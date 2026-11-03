@@ -1,0 +1,99 @@
+{
+  "source_revision": "9c4e90071a41ba59ec9679c86484f058bdcf8ba4",
+  "rust": "1.88.0",
+  "jobs": 2,
+  "debug": 0,
+  "locked": true,
+  "offline": true,
+  "commands": [
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "-p",
+        "concert-domain",
+        "--test",
+        "community_party",
+        "--test",
+        "community_giveaway"
+      ],
+      "exit_code": 0,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-community-final-7s59tedb/build-0.log",
+      "sha256": "c965aa95949d2a7d400c66b089d4b84ed3a9ca1e4d7ac3905a93c62785bc5b9f"
+    },
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "-p",
+        "concert-application",
+        "--test",
+        "community_command"
+      ],
+      "exit_code": 0,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-community-final-7s59tedb/build-1.log",
+      "sha256": "432bc29c12537b76005569c4ccf442cbca77de3cc960d43698c5c631f84f080a"
+    },
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "-p",
+        "concert-service",
+        "--test",
+        "community_party",
+        "--test",
+        "community_giveaway",
+        "--test",
+        "maintenance_outbox",
+        "--test",
+        "community_policy",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "exit_code": 0,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-community-final-7s59tedb/build-2.log",
+      "sha256": "3146bac7d2047e2b89050be463f3358179d4c11e508f7b84ead345589d73104d"
+    }
+  ],
+  "binaries": {
+    "community_party": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-community-final-7s59tedb/community_party",
+      "sha256": "d3277f1e662e9b10a4508229e880a49e816fa1c7b28d5eda18c7c713bcde3da3"
+    },
+    "community_giveaway": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-community-final-7s59tedb/community_giveaway",
+      "sha256": "fa7130994bf090d284d903775fc7b37f2e9ef6d02088a1e7074b1d7338eb7548"
+    },
+    "community_policy": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-community-final-7s59tedb/community_policy",
+      "sha256": "ed70b4f92ea835cea5daca9d48cd40d6458b489d12721ac424b7956f7e758af7"
+    },
+    "maintenance_outbox": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-community-final-7s59tedb/maintenance_outbox",
+      "sha256": "845d39e53d7e6c7d067042690b132db45b549b0a14b72473ec6d9d722ecccbe0"
+    }
+  },
+  "focused_test_count": 15,
+  "cache_failure": {
+    "exit_code": 101,
+    "reason": "shared target retained other-worktree build script referencing concert_feed.proto",
+    "repair": "mtime refresh only, no content change to current contracts-build source and Concert build script; successful bounded rerun"
+  },
+  "compiler_diagnostics": []
+}
