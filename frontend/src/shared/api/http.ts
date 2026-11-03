@@ -92,7 +92,9 @@ export interface HttpRequest<T> {
   /** Explicit frozen-contract permission; never applies to any /api/auth operation. */
   readonly refresh?: 'once'
   readonly query?: Readonly<Record<string, string | number | boolean>>
-  readonly body?: { readonly json: JsonValue } | { readonly form: FormData }
+  readonly body?: { readonly json: JsonValue } | { readonly form: FormData } | { readonly binary: Blob }
+  /** Bounded image response, qualified only for readConcertMedia. The decoder receives a Blob. */
+  readonly binaryResponse?: { readonly maxBytes: number; readonly contentTypes: readonly string[] }
   /** Only bounded X-Correlation-Id, X-Request-Id, X-Client-Id are accepted. */
   readonly headers?: HeadersInit
   readonly signal?: AbortSignal
@@ -163,17 +165,33 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
   headers.set('Accept', 'application/json')
   if (operation?.idempotency) headers.set('Idempotency-Key', request.idempotencyKey!)
   if (method !== 'GET') headers.set('X-MCR-Intent', 'browser')
-  let body: string | FormData | undefined
+  const imageTypes = ['image/jpeg', 'image/png', 'image/webp']
+  const binaryRead = request.binaryResponse
+  if (binaryRead && (request.domainOperation !== 'readConcertMedia' || method !== 'GET'
+    || !Number.isSafeInteger(binaryRead.maxBytes) || binaryRead.maxBytes < 1 || binaryRead.maxBytes > 10 * 1024 * 1024
+    || !Array.isArray(binaryRead.contentTypes) || binaryRead.contentTypes.length < 1
+    || binaryRead.contentTypes.some(t => !imageTypes.includes(t)))) throw new TransportError('invalid-request')
+  if (request.domainOperation === 'readConcertMedia' && !binaryRead) throw new TransportError('invalid-request')
+  if (request.domainOperation === 'putConcertUploadBytes' && (!request.body || !('binary' in request.body))) throw new TransportError('invalid-request')
+  if (binaryRead) headers.set('Accept', binaryRead.contentTypes.join(', '))
+  let body: string | FormData | Blob | undefined
   if (request.body) {
     if (method === 'GET') throw new TransportError('invalid-request')
-    if ('json' in request.body && !('form' in request.body)) {
+    if ('json' in request.body && Object.keys(request.body).length === 1) {
       body = JSON.stringify(request.body.json)
       if (body === undefined) throw new TransportError('invalid-request')
       headers.set('Content-Type', 'application/json')
-    } else if ('form' in request.body && !('json' in request.body) && request.body.form instanceof FormData) body = request.body.form
+    } else if ('binary' in request.body && Object.keys(request.body).length === 1) {
+      const image = request.body.binary
+      if (request.domainOperation !== 'putConcertUploadBytes' || !(image instanceof Blob)
+        || image.size < 1 || image.size > 10 * 1024 * 1024 || !imageTypes.includes(image.type)) throw new TransportError('invalid-request')
+      // Blob bytes are immutable; slice snapshots size/type without retaining caller metadata or filename.
+      body = image.slice(0, image.size, image.type)
+      headers.set('Content-Type', image.type)
+    } else if ('form' in request.body && Object.keys(request.body).length === 1 && request.body.form instanceof FormData) body = request.body.form
     else throw new TransportError('invalid-request')
   }
-  return { url, headers, body, operation }
+  return { url, headers, body, operation, binaryRead: binaryRead ? { maxBytes: binaryRead.maxBytes, contentTypes: [...binaryRead.contentTypes] } : undefined }
 }
 
 function deadline(milliseconds: number, sessionSignal: AbortSignal, callerSignal?: AbortSignal) {
@@ -205,13 +223,12 @@ function cancellable<T>(promise: PromiseLike<T>, signal: AbortSignal): Promise<T
   })
 }
 
-async function readJson(response: Response, signal: AbortSignal): Promise<unknown> {
-  if (response.status === 204) return undefined
-  if (!/^application\/(?:[\w.-]+\+)?json(?:\s*;|$)/i.test(response.headers.get('Content-Type') ?? '')) {
+async function readBytes(response: Response, signal: AbortSignal, maxBytes: number): Promise<Uint8Array<ArrayBuffer>> {
+  const declared = response.headers.get('Content-Length')
+  if (declared !== null && (!/^\d+$/.test(declared) || Number(declared) > maxBytes)) {
     void response.body?.cancel().catch(() => undefined)
     throw new TransportError('invalid-response')
   }
-  // Bounded collection also protects non-JSON/proxy and pathological error payloads.
   const reader = response.body?.getReader()
   if (!reader) throw new TransportError('invalid-response')
   const chunks: Uint8Array[] = []
@@ -221,15 +238,34 @@ async function readJson(response: Response, signal: AbortSignal): Promise<unknow
       const { done, value } = await cancellable(reader.read(), signal)
       if (done) break
       length += value.length
-      if (length > 4 * 1024 * 1024) throw new TransportError('invalid-response')
+      if (length > maxBytes) throw new TransportError('invalid-response')
       chunks.push(value)
     }
     const bytes = new Uint8Array(length)
     let offset = 0
     for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length }
-    try { return JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)) as unknown }
-    catch { throw new TransportError('invalid-response') }
+    return bytes
   } finally { void reader.cancel().catch(() => undefined); reader.releaseLock() }
+}
+async function readJson(response: Response, signal: AbortSignal): Promise<unknown> {
+  if (response.status === 204) return undefined
+  if (!/^application\/(?:[\w.-]+\+)?json(?:\s*;|$)/i.test(response.headers.get('Content-Type') ?? '')) {
+    void response.body?.cancel().catch(() => undefined)
+    throw new TransportError('invalid-response')
+  }
+  const bytes = await readBytes(response, signal, 4 * 1024 * 1024)
+  try { return JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)) as unknown }
+  catch { throw new TransportError('invalid-response') }
+}
+async function readImage(response: Response, signal: AbortSignal, rule: NonNullable<HttpRequest<unknown>['binaryResponse']>): Promise<Blob> {
+  const type = response.headers.get('Content-Type')?.trim().toLowerCase()
+  if (!type || !rule.contentTypes.includes(type)) {
+    void response.body?.cancel().catch(() => undefined)
+    throw new TransportError('invalid-response')
+  }
+  const bytes = await readBytes(response, signal, rule.maxBytes)
+  if (!bytes.length) throw new TransportError('invalid-response')
+  return new Blob([bytes], { type })
 }
 
 export function createHttpClient(options: HttpClientOptions): HttpClient {
@@ -286,7 +322,8 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
       }
       if (response.redirected || response.type === 'opaqueredirect') throw new TransportError('invalid-response')
       let value: unknown
-      try { value = await readJson(response, lifetime.signal) } catch (error) {
+      try { value = response.ok && prepared.binaryRead
+        ? await readImage(response, lifetime.signal, prepared.binaryRead) : await readJson(response, lifetime.signal) } catch (error) {
         assertCurrent()
         if (response.ok) throw error
         // HTML, malformed JSON and oversized errors retain their HTTP status, never raw content.

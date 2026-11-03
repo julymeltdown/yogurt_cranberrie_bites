@@ -487,3 +487,76 @@ describe('same-origin URL and header boundaries', () => {
     expect(uploaded.name).toBe('avatar.png'); expect(await uploaded.text()).toBe('pixels')
   })
 })
+
+describe('qualified media binary transport', () => {
+  const media = '00000000-0000-4000-8000-000000000301'
+  const base = `/api/concert/events/${EVENT}/media/${media}`
+  const put = (extra: Partial<HttpRequest<boolean>> = {}): HttpRequest<boolean> => ({
+    path: `${base}/bytes`, method: 'PUT', access: 'protected', errorFamily: 'domain',
+    domainOperation: 'putConcertUploadBytes', idempotencyKey: media, decode,
+    body: { binary: new Blob(['image bytes'], { type: 'image/png' }) }, ...extra,
+  })
+  const get = (extra: Partial<HttpRequest<Blob>> = {}): HttpRequest<Blob> => ({
+    path: `${base}/content`, method: 'GET', access: 'protected', errorFamily: 'domain',
+    domainOperation: 'readConcertMedia', binaryResponse: { maxBytes: 20, contentTypes: ['image/png'] },
+    decode: v => { if (!(v instanceof Blob)) throw new Error('Invalid blob'); return v }, ...extra,
+  })
+  it('snapshots raw bytes with canonical auth, exact key, intent and no-store; no filename or metadata', async () => {
+    const { client, fetch } = setup(async r => {
+      expect(r.headers.get('Authorization')).toBe('Bearer old-token')
+      expect(r.headers.get('Idempotency-Key')).toBe(media)
+      expect(r.headers.get('X-MCR-Intent')).toBe('browser')
+      expect(r.headers.get('Content-Type')).toBe('image/png')
+      expect(r.credentials).toBe('same-origin'); expect(r.cache).toBe('no-store'); expect(r.redirect).toBe('error')
+      expect(await r.text()).toBe('image bytes'); return json()
+    })
+    await expect(client.request(put())).resolves.toMatchObject({ data: true }); expect(fetch).toHaveBeenCalledTimes(1)
+  })
+  it.each([
+    { body: { binary: new Blob([],{ type: 'image/png' }) } },
+    { body: { binary: new Blob(['x'],{ type: 'video/mp4' }) } },
+    { body: { binary: new Blob([new Uint8Array(10485761)],{ type: 'image/png' }) } },
+    { body: { json: {} } }, { idempotencyKey: 'wrong' }, { path: 'https://user:pass@external.invalid/upload' },
+    { domainOperation: 'finalizeConcertUpload', path: `${base}/finalize`, method: 'POST' },
+  ] satisfies Partial<HttpRequest<boolean>>[])('rejects invalid bytes or qualification before dispatch %j', async patch => {
+    const { client, fetch } = setup(() => json())
+    await expect(client.request(put(patch))).rejects.toMatchObject({ kind: 'invalid-request', uncertain: false }); expect(fetch).not.toHaveBeenCalled()
+  })
+  it('returns a bounded Blob through the unchanged generic decoder seam', async () => {
+    const { client } = setup(r => { expect(r.headers.get('Accept')).toBe('image/png'); return new Response('png', { headers: { 'Content-Type': 'image/png' } }) })
+    const result = await client.request(get()); expect(await result.data.text()).toBe('png'); expect(result.data.type).toBe('image/png')
+  })
+  it.each([
+    { maxBytes: 0, contentTypes: ['image/png'] }, { maxBytes: 10485761, contentTypes: ['image/png'] },
+    { maxBytes: 20, contentTypes: ['text/html'] }, { maxBytes: 20, contentTypes: [] },
+  ])('rejects invalid binary response bounds %j', async binaryResponse => {
+    const { client, fetch } = setup(() => json())
+    await expect(client.request(get({ binaryResponse }))).rejects.toMatchObject({ kind: 'invalid-request' }); expect(fetch).not.toHaveBeenCalled()
+  })
+  it.each(['empty', 'oversize', 'declared', 'wrong-type', 'missing-type', 'redirect'] as const)('rejects %s image response', async mode => {
+    const { client } = setup(() => {
+      const r = new Response(mode === 'empty' ? '' : mode === 'oversize' ? 'x'.repeat(21) : 'png',
+        { headers: { 'Content-Type': mode === 'wrong-type' ? 'text/html' : 'image/png', ...(mode === 'declared' ? { 'Content-Length': '21' } : {}) } })
+      if (mode === 'missing-type') r.headers.delete('Content-Type')
+      if (mode === 'redirect') Object.defineProperty(r, 'redirected', { value: true })
+      return r
+    })
+    await expect(client.request(get())).rejects.toMatchObject({ kind: 'invalid-response' })
+  })
+  it('parses structured JSON errors on binary reads and preserves uncertain writes without replay', async () => {
+    const { client, fetch } = setup(() => json({ code: 'UNAVAILABLE', message: 'Safe', details: { reason: 'DEPENDENCY_UNAVAILABLE' } }, 503))
+    await expect(client.request(get())).rejects.toMatchObject({ kind: 'http', status: 503, uncertain: false, server: { reason: 'DEPENDENCY_UNAVAILABLE' } })
+    await expect(client.request(put())).rejects.toMatchObject({ kind: 'http', status: 503, uncertain: true }); expect(fetch).toHaveBeenCalledTimes(2)
+  })
+  it.each(['caller', 'identity'] as const)('cancels an in-flight binary stream on %s and discards late bytes', async mode => {
+    let source!: ReadableStreamDefaultController<Uint8Array>
+    const cancelled = vi.fn()
+    const { client, session, fetch } = setup(() => new Response(new ReadableStream({ start(c) { source = c }, cancel: cancelled }), { headers: { 'Content-Type': 'image/png' } }))
+    const controller = new AbortController()
+    const pending = errorOf(client.request(get({ signal: controller.signal })))
+    await vi.waitFor(() => expect(fetch).toHaveBeenCalledTimes(1))
+    source.enqueue(new Uint8Array([1]))
+    if (mode === 'caller') controller.abort(); else session.replace(1, null)
+    expect(await pending).toMatchObject({ kind: mode === 'caller' ? 'aborted' : 'session-changed' }); expect(cancelled).toHaveBeenCalled()
+  })
+})
