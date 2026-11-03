@@ -39,6 +39,11 @@ async fn main() -> anyhow::Result<()> {
             .map_err(|_| anyhow::anyhow!("Concert product release is unavailable"))
         })
         .transpose()?;
+    let world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
+    let world_owners = world_settings
+        .as_ref()
+        .map(|_| config::world_runtime::production_owners())
+        .transpose()?;
     let pool = config::connect_pool(&config).await?;
     let _application = config::build_application(pool.clone());
     let health = health::router(health::readiness(pool.clone()));
@@ -47,6 +52,7 @@ async fn main() -> anyhow::Result<()> {
         .map_err(|_| anyhow::anyhow!("Concert health listener bind failed"))?;
     println!("CONCERT_HEALTH_LISTENER={}", listener.local_addr()?);
     let grpc_pool = pool.clone();
+    let world_pool = pool.clone();
     let result = platform::shutdown::supervise(async move {
         let http = async move {
             axum::serve(listener, health)
@@ -102,7 +108,13 @@ async fn main() -> anyhow::Result<()> {
             }
             Ok::<(), anyhow::Error>(())
         };
-        tokio::try_join!(http, grpc)?;
+        let world = async move {
+            match (world_settings, world_owners) {
+                (Some(settings), Some(owners)) => settings.serve(world_pool, owners).await,
+                _ => platform::shutdown::idle().await,
+            }
+        };
+        tokio::try_join!(http, grpc, world)?;
         Ok(())
     })
     .await;
