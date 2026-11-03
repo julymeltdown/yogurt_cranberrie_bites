@@ -1,0 +1,5 @@
+/* Fixture frame only; production Feed portrait CSS is imported unchanged. */
+body { margin: 0; background: #e7dfcf; }
+main { padding: 6px; }
+aside { padding: 8px; font: 12px/1.4 system-ui; }
+aside button { margin: 3px; }

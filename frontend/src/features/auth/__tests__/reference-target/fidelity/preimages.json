@@ -1,0 +1,8 @@
+{
+  "base": "8f89d1905a86143d34ff77d2951fc60651ab2497",
+  "sha256": {
+    "frontend/src/features/auth/ui/SignIn.tsx": "cb1d6a52d8cec34f8b149d2037212996a6e1627eaf06f2cbcb432d5f297ab7ea",
+    "frontend/src/features/auth/ui/sign-in.css": "a874f4d77cd3bd3a291a7c1073233594f844e772e64431dc2f908be689d10c68",
+    "frontend/src/features/auth/ui/reference-sign-in/Cemetery.tsx": "62947ef5491caca3795a8a7c3c29aa4bc87587a0849ede144130c1304ec104d8"
+  }
+}

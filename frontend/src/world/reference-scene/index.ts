@@ -1,2 +1,6 @@
 export { getReferenceOverviewMetadata, referenceSceneIdentity } from './metadata'
 export type { ReferenceOverviewIdentity, ReferenceOverviewLabel } from './metadata'
+export { referenceSceneFor, requireReferenceScene, referenceScenery } from './model'
+export type { ReferenceSceneBinding } from './model'
+export { loadReferenceScene } from './loader'
+export { createReferenceSceneOverview, drawReferenceOverview } from './overview'
