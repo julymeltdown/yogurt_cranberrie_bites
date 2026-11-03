@@ -26,7 +26,7 @@ def sources() -> dict[str, str]:
              BACKEND / "scripts/mcr/test_invalidation_clients_smoke.py"}
     # Pin the actual linked owners/platform and generated contract inputs, not
     # only the client facade. Peer changes cannot reuse an old executable receipt.
-    for directory in ["services/auth-service", "services/friend-service", "services/concert-service", "crates/platform", "proto/relationship"]:
+    for directory in ["services/auth-service", "services/friend-service", "services/profile-service", "services/concert-service", "crates/platform", "crates/concert-domain", "crates/concert-application", "crates/migration-runtime", "crates/contracts-build", "proto"]:
         paths.update(p for p in (BACKEND / directory).rglob("*") if p.is_file() and p.suffix in {".rs", ".toml", ".sql", ".proto"})
     return {str(p.relative_to(ROOT)): digest(p) for p in sorted(paths)}
 
