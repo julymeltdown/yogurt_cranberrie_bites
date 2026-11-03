@@ -1,0 +1,86 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-illustrated-world/frontend
+
+ ❯ src/world/__tests__/illustrated/resolver.test.ts (3 tests | 1 failed) 36ms
+   × admits original qualified selected/optional scenery descriptors and fences all reads after privacy withdrawal 23ms
+stderr | src/world/__tests__/illustrated/loader.test.ts > disposes earlier assets and a decoder ignoring cancellation when its late result arrives
+Promise returned by `expect(actual).rejects.toMatchObject(expected)` was not awaited. Vitest currently auto-awaits hanging assertions at the end of the test, but this will cause the test to fail in the next Vitest major. Please remember to await the assertion.
+    at /Users/lhs/Desktop/mcr-worktrees/fe-illustrated-world/frontend/src/world/__tests__/illustrated/loader.test.ts:52:36
+
+ ❯ src/world/__tests__/illustrated/loader.test.ts (11 tests | 4 failed) 1081ms
+   × loads exact bounded original REVENGE sources and releases every decoded lease once 16ms
+   × loads exact bounded original PARADE sources and releases every decoded lease once 9ms
+   × loads exact bounded original DANGER sources and releases every decoded lease once 7ms
+   × disposes earlier assets and a decoder ignoring cancellation when its late result arrives 1011ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/__tests__/illustrated/loader.test.ts > loads exact bounded original REVENGE sources and releases every decoded lease once
+ FAIL  src/world/__tests__/illustrated/loader.test.ts > loads exact bounded original PARADE sources and releases every decoded lease once
+ FAIL  src/world/__tests__/illustrated/loader.test.ts > loads exact bounded original DANGER sources and releases every decoded lease once
+Error: ENOENT: no such file or directory, open '/Users/lhs/Desktop/mcr-worktrees/fe-illustrated-world/public/world/maps/courtyard-tiled.json'
+ ❯ Object.bytes [as read] src/world/__tests__/illustrated/loader.test.ts:10:53
+      8| import { sceneryDescriptors } from '../../illustrated/model'
+      9| beforeEach(() => vi.stubGlobal('crypto', webcrypto))
+     10| const bytes = async (r: Resource) => new Uint8Array(await readFile(res…
+       |                                                     ^
+     11| const decoded = () => {
+     12|   const disposals: ReturnType<typeof vi.fn>[] = []
+ ❯ loadMap src/world/map/resources.ts:94:17
+ ❯ src/world/__tests__/illustrated/loader.test.ts:20:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/world/__tests__/illustrated/loader.test.ts > disposes earlier assets and a decoder ignoring cancellation when its late result arrives
+AssertionError: expected undefined to be type of 'function'
+
+Expected: "function"
+Received: "undefined"
+
+ ❯ src/world/__tests__/illustrated/loader.test.ts:53:41
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/world/__tests__/illustrated/resolver.test.ts > admits original qualified selected/optional scenery descriptors and fences all reads after privacy withdrawal
+AssertionError: expected Uint8Array[ 84, 69, 83, 84, 32, …(-33) ] to deeply equal Uint8Array[ 84, 69, 83, 84, 32, …(-33) ]
+
+Compared values have no visual difference.
+
+ ❯ src/world/__tests__/illustrated/resolver.test.ts:28:66
+     26|   const result = await resolve(request)
+     27|   for (const t of b.theme_manifests) for (const resource of sceneryRes…
+     28|     await expect(result.resources.read(resource, request.signal)).reso…
+       |                                                                  ^
+     29|   }
+     30|   expect(calls).toHaveLength(6)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 1 unhandled error during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+AssertionError: expected Error: ENOENT: no such file or directory,… { …(4) } to match object { reason: 'cancelled' }
+(4 matching properties omitted from actual)
+ ❯ _Assertion.__VITEST_REJECTS__ ../../../mcr/frontend/node_modules/.pnpm/@vitest+expect@4.1.9/node_modules/@vitest/expect/dist/index.js:1747:17
+ ❯ _Assertion.propertyGetter ../../../mcr/frontend/node_modules/.pnpm/chai@6.2.2/node_modules/chai/index.js:1570:27
+ ❯ Object.proxyGetter [as get] ../../../mcr/frontend/node_modules/.pnpm/chai@6.2.2/node_modules/chai/index.js:1659:22
+ ❯ src/world/__tests__/illustrated/loader.test.ts:52:36
+
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@vitest+runner@4.1.9/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20
+
+This error originated in "src/world/__tests__/illustrated/loader.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "disposes earlier assets and a decoder ignoring cancellation when its late result arrives". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  2 failed | 2 passed (4)
+      Tests  5 failed | 54 passed (59)
+     Errors  1 error
+   Start at  06:09:36
+   Duration  2.31s (transform 268ms, setup 0ms, import 506ms, tests 2.78s, environment 795ms)

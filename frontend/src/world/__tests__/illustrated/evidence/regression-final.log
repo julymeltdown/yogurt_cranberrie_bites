@@ -1,0 +1,8 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-illustrated-world/frontend
+
+
+ Test Files  23 passed (23)
+      Tests  649 passed (649)
+   Start at  06:19:14
+   Duration  5.24s (transform 1.09s, setup 0ms, import 2.09s, tests 12.06s, environment 4.40s)

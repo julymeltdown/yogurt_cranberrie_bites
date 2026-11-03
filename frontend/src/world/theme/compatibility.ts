@@ -1,6 +1,7 @@
 import { canonicalJson, requireMap } from '../map/json'
 import { requireProvided, validateManifests } from '../map/manifest'
 import type { LoadedMap } from '../map/resources'
+import { validateLoadedScenery } from '../illustrated/model'
 
 /** A skin cannot revise the active world, its interaction semantics, or avatar release. */
 export function assertSameWorld(current: LoadedMap, next: LoadedMap) {
@@ -10,6 +11,10 @@ export function assertSameWorld(current: LoadedMap, next: LoadedMap) {
     && canonicalJson(current.spawn) === canonicalJson(next.spawn))
   for (const key of ['avatar_manifest_id', 'avatar_manifest_version', 'avatar_content_hash'] as const) {
     requireMap(current.theme[key] === next.theme[key])
+  }
+  if (current.theme.scenery && next.theme.scenery) {
+    // Era resources change color/art, not the bound landmark/detail placement or foot ordering.
+    requireMap(canonicalJson(current.theme.scenery.objects) === canonicalJson(next.theme.scenery.objects))
   }
 }
 
@@ -22,4 +27,5 @@ export async function validateReplacement(current: LoadedMap, next: LoadedMap) {
       content_hash: current.theme.avatar_content_hash },
   })
   requireMap(next.image.naturalWidth === next.theme.texture.width_px && next.image.naturalHeight === next.theme.texture.height_px)
+  validateLoadedScenery(next)
 }

@@ -2,6 +2,7 @@ import type { WorldCamera } from './camera/port'
 import type { createPhaserMuralScene } from './mural/phaser'
 import type { MuralScenePort } from './mural/sink'
 import type { AvatarScenePort } from './avatar/scene'
+import type { SceneryDiagnostics } from './illustrated/model'
 import { MapError } from './map/json'
 import { limits } from './map/manifest'
 import { abortable, type LoadedMap } from './map/resources'
@@ -20,6 +21,8 @@ export interface EngineLease {
   readonly avatarScene?: AvatarScenePort
   /** Existing scene only. Caller must independently qualify the anchor and C04 policy. */
   readonly muralScene?: IncumbentMuralScene
+  /** Bounded incumbent-scene allocation observations, with no scene/texture capability. */
+  readonly readScenery?: () => SceneryDiagnostics
 }
 export interface ControlAttachment { setEnabled(value: boolean): void; dispose(): void }
 export interface ControlContext { readonly host: HTMLElement; readonly map: LoadedMap; readonly camera: WorldCamera; readonly signal: AbortSignal; readonly avatarScene?: AvatarScenePort; readonly muralScene?: IncumbentMuralScene }

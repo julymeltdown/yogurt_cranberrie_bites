@@ -1,0 +1,43 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-illustrated-world/frontend
+
+ ❯ src/world/composition/__tests__/composition.test.ts (27 tests | 1 failed) 3100ms
+   × releases a decoded map that completes after an abort-resistant asset load is withdrawn 1119ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/composition/__tests__/composition.test.ts > releases a decoded map that completes after an abort-resistant asset load is withdrawn
+AssertionError: expected +0 to be 1 // Object.is equality
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div />[39m
+  [36m</body>[39m
+[36m</html>[39m
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/world/composition/__tests__/composition.test.ts:134:48
+    132|   const lease = f.mount(); await waitFor(() => expect(reads).toBe(1))
+    133|   lease.dispose(); pending.resolve()
+    134|   await waitFor(() => expect(decoded.releases).toBe(1))
+       |                                                ^
+    135|   expect(decoded.calls).toBe(1); expect(f.stats.mounts).toBe(0); expec…
+    136| })
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 21 passed (22)
+      Tests  1 failed | 622 passed (623)
+   Start at  06:11:50
+   Duration  5.37s (transform 1.12s, setup 0ms, import 2.06s, tests 13.32s, environment 3.96s)

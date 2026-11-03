@@ -19,6 +19,10 @@ export interface LoadedScenery {
   readonly assets: readonly Readonly<{ descriptor: SceneryTexture; image: HTMLImageElement }>[]
   readonly transferBytes: number; readonly decodedBytes: number
 }
+export interface SceneryDiagnostics {
+  readonly textures: number; readonly decodedBytes: number; readonly objects: number
+  readonly peakTextures: number; readonly peakDecodedBytes: number
+}
 /** Bound both steady-state and the two simultaneously resident skins during an atomic swap. */
 export const sceneryLimits = Object.freeze({ textures: 4, objects: 96, transferBytes: 2_097_152,
   pixels: 2_097_152, side: 2048, objectSide: 1024, overhang: 128 })

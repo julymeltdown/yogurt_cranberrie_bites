@@ -7,6 +7,8 @@ import type { EngineFactory } from '../runtime'
 import type { LoadedMap } from '../map/resources'
 import { assertSameWorld } from '../theme/compatibility'
 import type { AvatarScenePort, AvatarSceneTexture, AvatarSceneSprite } from '../avatar/scene'
+import { prepareIllustratedSkin } from '../illustrated/phaser'
+import { validateLoadedScenery } from '../illustrated/model'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
 export async function loadPhaserEngine(): Promise<EngineFactory> {
   const Phaser = (await import('phaser')).default
@@ -19,6 +21,14 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     const muralClose = new Set<() => void>()
     const closeMural = () => { for (const close of Array.from(muralClose)) { try { close() } catch { /* Continue scene teardown. */ } }; muralClose.clear() }
     let skinRevision = 0
+    let peakTextures = 0, peakDecodedBytes = 0
+    const readScenery = () => {
+      const keys = destroyed ? [] : game.textures.getTextureKeys().filter(key => key.startsWith('mcr-reviewed-map-'))
+      const decodedBytes = keys.reduce((n, key) => { const image = game.textures.get(key).getSourceImage() as HTMLImageElement; return n + image.width * image.height * 4 }, 0)
+      peakTextures = Math.max(peakTextures, keys.length); peakDecodedBytes = Math.max(peakDecodedBytes, decodedBytes)
+      const objects = !sceneReady || destroyed ? 0 : game.scene.getScene('mcr-map').children.list.filter(child => child instanceof Phaser.GameObjects.Image && child.texture.key.startsWith('mcr-reviewed-map-')).length
+      return Object.freeze({ textures: keys.length, decodedBytes, objects, peakTextures, peakDecodedBytes })
+    }
     type Skin = { show(): void; remove(): void }
     let skin: Skin | null = null
     let sceneReady = false, cameraFoot: Point | null = null, cameraZoom: number | null = null
@@ -40,7 +50,9 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
           const remove = () => { sceneReady = false; closeMural(); clearAvatars(); skin?.remove(); skin = null }
           this.events.once(Phaser.Scenes.Events.SHUTDOWN, remove)
           this.events.once(Phaser.Scenes.Events.DESTROY, remove)
-          this.cameras.main.setBounds(0, 0, loaded.widthPx, loaded.heightPx).setRoundPixels(true)
+          // Phaser Canvas roundPixels expands every frame by half a source pixel.
+          // Illustrated atlas rectangles must keep their exact placement/extents instead.
+          this.cameras.main.setBounds(0, 0, loaded.widthPx, loaded.heightPx).setRoundPixels(!loaded.scenery)
           this.cameras.main.setBackgroundColor(loaded.theme.palette.background)
           resolveReady()
         } catch (error) { rejectReady(error) }
@@ -48,6 +60,8 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       /** Prepare hidden layers before touching the active renderer. No camera/input/network mutation. */
       prepareSkin(next: LoadedMap): Skin {
         const textureKey = `mcr-reviewed-map-${++skinRevision}`
+        validateLoadedScenery(next)
+        if (next.scenery) return prepareIllustratedSkin(this, next, textureKey, Phaser.Textures.FilterMode.NEAREST, () => { readScenery() }, () => !stopped && sceneReady)
         let tilemap: PhaserType.Tilemaps.Tilemap | null = null, removed = false
         const layers: PhaserType.Tilemaps.TilemapLayer[] = []
         const remove = () => {
@@ -212,14 +226,14 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       }
     }
     const spriteTextures = new Map<AvatarSceneSprite, AvatarSceneTexture>()
-    return { ready, closed, camera: cameraView, avatarScene, muralScene,
+    return { ready, closed, camera: cameraView, avatarScene, muralScene, readScenery,
       replaceSkin(next) {
         if (stopped || !sceneReady) throw new Error('Map scene unavailable')
         assertSameWorld(loaded, next)
         const scene = game.scene.getScene('mcr-map') as MapScene
         const prepared = scene.prepareSkin(next), previous = skin
         prepared.show()
-        scene.cameras.main.setBackgroundColor(next.theme.palette.background)
+        scene.cameras.main.setBackgroundColor(next.theme.palette.background).setRoundPixels(!next.scenery)
         skin = prepared; previous?.remove()
         if (!visible) game.loop.tick()
       },

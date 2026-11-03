@@ -9,6 +9,7 @@ import { createAssetResources, type AssetResources, type Resource } from '../../
 import { validateManifests } from '../../world/map/manifest'
 import { canonicalJson } from '../../features/auth/model/bootstrap'
 import type { Geometry } from '../../world/map/manifest'
+import { sceneryResources } from '../../world/illustrated/model'
 import type { ResolvedWorldRelease, WorldReleaseResolver } from '../../world/composition'
 import { assertEntry, captureEntry, validateEntry, type WorldEntryRequest } from './authority'
 
@@ -59,7 +60,21 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
       requireValue(provenance.source_id === characterSourcePack.source_pack_id)
       // Never carry C06 synthetic place metadata into a production map release.
       requireValue(list(map.places).map(object).every(place => object(place.provenance).source_kind !== 'ORIGINAL_FIXTURE'))
+      const metadata = await validateManifests(canonicalJson(map), canonicalJson(theme), {
+        mapHash: text(map.content_hash), themeHash: text(theme.content_hash),
+        avatar: { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) },
+      })
       const allow = [provided(map.tilemap, 'json'), provided(theme.texture, 'png'), provided(object(avatar.atlas).texture, 'png')]
+      const merge = (resources: readonly Resource[]) => {
+        const staged = [...allow]
+        for (const resource of resources) {
+          const existing = staged.find(item => item.path === resource.path)
+          requireValue(!existing || existing.sha256 === resource.sha256 && existing.kind === resource.kind)
+          if (!existing) staged.push(resource)
+        }
+        allow.splice(0, allow.length, ...staged)
+      }
+      merge(sceneryResources(metadata.theme))
       const availableThemeIds: ThemeId[] = [themeId]
       for (const candidate of list(document.theme_manifests).map(object)) {
         if (candidate === theme) continue
@@ -67,12 +82,12 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
         try {
           reviewedArt(candidate)
           const resource = provided(candidate.texture, 'png')
-          await validateManifests(canonicalJson(map), canonicalJson(candidate), { mapHash: text(map.content_hash), themeHash: text(candidate.content_hash),
+          const optional = await validateManifests(canonicalJson(map), canonicalJson(candidate), { mapHash: text(map.content_hash), themeHash: text(candidate.content_hash),
             avatar: { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) } })
-          const existing = allow.find(item => item.path === resource.path)
-          requireValue(!existing || existing.sha256 === resource.sha256 && existing.kind === resource.kind)
-          if (!existing) allow.push(resource)
-          requireValue(isThemeId(candidate.theme_id)); availableThemeIds.push(candidate.theme_id)
+          const entries = [resource, ...sceneryResources(optional.theme)]
+          requireValue(isThemeId(candidate.theme_id))
+          // Includes conflicts within this candidate, not only against already admitted skins.
+          merge(entries); availableThemeIds.push(candidate.theme_id)
         } catch { /* An unqualified optional skin remains unavailable; selected release checks above stay mandatory. */ }
       }
       const assets = createAssetResources({ origin, allow, ...(assetFetch ? { fetch: assetFetch } : {}) })

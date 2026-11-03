@@ -1,0 +1,33 @@
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/world/maps/geometry.json instead of /public/world/maps/geometry.json.
+If you intend to use the URL of that asset, use /world/maps/geometry.json?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/world/maps/virtual-places.json instead of /public/world/maps/virtual-places.json.
+If you intend to use the URL of that asset, use /world/maps/virtual-places.json?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/world/maps/binding-inputs.json instead of /public/world/maps/binding-inputs.json.
+If you intend to use the URL of that asset, use /world/maps/binding-inputs.json?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/world/themes/binding-inputs.json instead of /public/world/themes/binding-inputs.json.
+If you intend to use the URL of that asset, use /world/themes/binding-inputs.json?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/world/illustrated-runtime/bindings.json instead of /public/world/illustrated-runtime/bindings.json.
+If you intend to use the URL of that asset, use /world/illustrated-runtime/bindings.json?url.
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"stage":"360/era0","landmark":0,"parity":{"different":17,"maxDifference":1,"examples":[{"index":414945,"actual":135,"expected":136},{"index":414949,"actual":135,"expected":136},{"index":414953,"actual":135,"expected":136},{"index":414977,"actual":135,"expected":136},{"index":415049,"actual":135,"expected":136},{"index":415320,"actual":215,"expected":216},{"index":415321,"actual":204,"expected":205},{"index":415322,"actual":180,"expected":181},{"index":415324,"actual":222,"expected":223},{"index":415325,"actual":210,"expected":211},{"index":415326,"actual":185,"expected":186},{"index":415328,"actual":222,"expected":223}],"channels":1008000,"magenta":0}}
+
+17 !== 0
+
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-illustrated-world/frontend/src/world/__tests__/illustrated/native.mjs:28:12 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 17,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2
