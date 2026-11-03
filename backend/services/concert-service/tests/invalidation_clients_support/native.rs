@@ -22,8 +22,8 @@ async fn pool(owner: InvalidationOwner) -> anyhow::Result<PgPool> {
         InvalidationOwner::Friend => "mcr_invalidation_client_friend",
     };
     let key = match owner {
-        InvalidationOwner::Auth => "MCR_INVALIDATION_CLIENT_AUTH_URL",
-        InvalidationOwner::Friend => "MCR_INVALIDATION_CLIENT_FRIEND_URL",
+        InvalidationOwner::Auth => "MCR_INVALIDATION_CLIENT_AUTH_DATABASE_URL",
+        InvalidationOwner::Friend => "MCR_INVALIDATION_CLIENT_FRIEND_DATABASE_URL",
     };
     let options = sqlx::postgres::PgConnectOptions::from_str(&std::env::var(key)?)?;
     anyhow::ensure!(

@@ -384,6 +384,18 @@ async fn original_budget_includes_readiness_decode_validation_and_cancellation(
         let (result, _) = tokio::join!(pending, trigger);
         assert_eq!(result.unwrap_err(), ReadError::Cancelled);
         assert!(start.elapsed() < Duration::from_millis(300));
+        let b = budget();
+        let parent = Instant::now() + Duration::from_millis(40);
+        let start = Instant::now();
+        let result = platform::call_deadline::scope(parent, source.read_head(consumer, &b)).await;
+        assert_eq!(result.unwrap_err(), ReadError::DeadlineExceeded);
+        assert!(start.elapsed() < Duration::from_millis(300));
+        // Dropping the caller future must stop the in-flight observation too.
+        let cloned = source.clone();
+        let pending = tokio::spawn(async move { cloned.read_head(consumer, &budget()).await });
+        tokio::time::sleep(Duration::from_millis(25)).await;
+        pending.abort();
+        assert!(pending.await.unwrap_err().is_cancelled());
         drop(source);
         server.close().await?;
     }

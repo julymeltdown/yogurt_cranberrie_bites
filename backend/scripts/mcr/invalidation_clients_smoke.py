@@ -94,8 +94,8 @@ def qualify(artifacts: dict[str, Path], pg: Path, report: dict) -> None:
         env = {**cluster.env, "MCR_INVALIDATION_CLIENT_ROOT": str(cluster.root),
                "MCR_INVALIDATION_CLIENT_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}",
                "MCR_INVALIDATION_CLIENT_TOKEN": cluster.token,
-               "MCR_INVALIDATION_CLIENT_AUTH_URL": cluster.url(DATABASES["auth-service"]),
-               "MCR_INVALIDATION_CLIENT_FRIEND_URL": cluster.url(DATABASES["friend-service"]),
+               "MCR_INVALIDATION_CLIENT_AUTH_DATABASE_URL": cluster.url(DATABASES["auth-service"]),
+               "MCR_INVALIDATION_CLIENT_FRIEND_DATABASE_URL": cluster.url(DATABASES["friend-service"]),
                "MCR_INVALIDATION_CLIENT_SYSTEM_IDENTIFIER": cluster.sql("postgres", "select system_identifier from pg_control_system();")}
         test(artifacts["unit"], cluster.env, report, "sealed_validation", 4, prefix="adapters::out::relationship_authority::invalidation::validation::tests::")
         test(artifacts["invalidation_clients"], cluster.env, report, "pure_configuration", 1)
