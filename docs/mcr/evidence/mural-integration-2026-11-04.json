@@ -1,0 +1,87 @@
+{
+  "integration_base": "e40151fe6c19ca1cab09d7e223cfb4cd65e088d2",
+  "author_base": "7fc3e38a85a91a99567e62f661869092cb03dc3b",
+  "author": "1bc041f5ae60f54f0875e53c1214c4b4deba74ec",
+  "paths": [
+    "backend/crates/concert-application/src/commands/mod.rs",
+    "backend/crates/concert-application/src/lib.rs",
+    "backend/crates/concert-application/src/mural/mod.rs",
+    "backend/crates/concert-domain/src/lib.rs",
+    "backend/crates/concert-domain/src/mural/mod.rs",
+    "backend/scripts/mcr/mural_smoke.py",
+    "backend/scripts/mcr/test_mural_smoke.py",
+    "backend/services/concert-service/migrations/0019_mural.sql",
+    "backend/services/concert-service/migrations/0020_mural_receipt_failures.sql",
+    "backend/services/concert-service/src/adapters/out/repository.rs",
+    "backend/services/concert-service/src/adapters/out/repository/mural.rs",
+    "backend/services/concert-service/src/world/mod.rs",
+    "backend/services/concert-service/src/world/mural_subscription.rs",
+    "backend/services/concert-service/tests/mural.rs",
+    "backend/services/concert-service/tests/mural_subscription.rs",
+    "backend/services/concert-service/tests/mural_support/build-receipt.json",
+    "backend/services/concert-service/tests/mural_support/mod.rs",
+    "backend/services/concert-service/tests/mural_support/native-evidence.json",
+    "backend/services/concert-service/tests/mural_support/native-path-refusal.json",
+    "backend/services/concert-service/tests/mural_support/source-provenance.json",
+    "docs/mcr/backend/mural.md"
+  ],
+  "out_of_scope": [],
+  "preimage_mismatches": [],
+  "new_collisions": [],
+  "native_source_pins": 42,
+  "pin_mismatches": [],
+  "backend_changes_since_author_base": [],
+  "native_result": "PASS",
+  "native_cleanup": "PASS",
+  "native_tests": [
+    {
+      "phase": "before-restart",
+      "binary": "mural-fcc6b2e81d8d9d09",
+      "binary_sha256": "8449d35be52ce0ba04b2a9248be2f5403dfd9a24ea8014039449bba63f6dda00",
+      "exit_code": 0,
+      "passed_tests": 8,
+      "output_sha256": "42276f541f4143d2fbe42be8fb7ba2ae1b530fc2fd1407c1a2bc12295445d9dd"
+    },
+    {
+      "phase": "before-restart",
+      "binary": "mural_subscription-3a0b152de08f35c2",
+      "binary_sha256": "8c4cdeb25b46d2bc3131990110d8108415a0a0a16ebbc3a36b9ee046c65d1984",
+      "exit_code": 0,
+      "passed_tests": 2,
+      "output_sha256": "b116a6a077ccc3dd2f7a1b07f851c691fd34ee683fec1b07825ced7ae7d0ca67"
+    },
+    {
+      "phase": "after-restart",
+      "binary": "mural-fcc6b2e81d8d9d09",
+      "binary_sha256": "8449d35be52ce0ba04b2a9248be2f5403dfd9a24ea8014039449bba63f6dda00",
+      "exit_code": 0,
+      "passed_tests": 8,
+      "output_sha256": "d7fc386f7638669569c5022c5ebb4edb375531793a621f578e74eacde742f48e"
+    },
+    {
+      "phase": "after-restart",
+      "binary": "mural_subscription-3a0b152de08f35c2",
+      "binary_sha256": "8c4cdeb25b46d2bc3131990110d8108415a0a0a16ebbc3a36b9ee046c65d1984",
+      "exit_code": 0,
+      "passed_tests": 2,
+      "output_sha256": "b116a6a077ccc3dd2f7a1b07f851c691fd34ee683fec1b07825ced7ae7d0ca67"
+    }
+  ],
+  "native_evidence_sha256": "9f88bed69ad63dc3f3e7525ff6583a63bd5aaade04ad8f4aa5e772fa1f0cbac8",
+  "integrated_head": "505bb8c22ea5323869fea295a93e9fdeeeb1ece5",
+  "exact_author_bytes_match": true,
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s backend/scripts/mcr -p test_mural_smoke.py",
+      "exit_code": 0,
+      "passed": 2
+    },
+    {
+      "command": "git diff --check e40151fe HEAD",
+      "exit_code": 0
+    }
+  ],
+  "unique_native_tests": 10,
+  "native_invocations": 20,
+  "full_task_acceptance": "IN_PROGRESS"
+}
