@@ -193,3 +193,15 @@ owner adapters; reviewed selected-source-pack avatar runtime plus map/skin
 release and genuine art receipt. The provisioner does not acquire any of those
 owners' writable paths.18 offline tests now additionally verify inherited-secret
 scrubbing, invalid-event preflight with zero allocation, and control-error cleanup.
+
+
+Offline compatibility was additionally executed through the unchanged frontend
+`loadConfig` implementation with Node24.22.2 at
+`/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node`:
+`--experimental-strip-types --input-type=module -e <import loadConfig; await loadConfig(privatePath)>`.
+Exit0; exact closed shape, private ownership/mode, two distinct offline identities
+and receipt byte pins accepted. This used explicitly offline shape-only values
+and existing documentation bytes as hash inputs; no product art approval,
+provisioned real user or browser/world execution was asserted. No frontend file
+or dependency was written. Planning integrity `python3 scripts/mcr/check-plan.py`
+also exited0 with all13 source archive hashes intact.
