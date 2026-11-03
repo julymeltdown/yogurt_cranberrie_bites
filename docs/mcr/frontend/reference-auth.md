@@ -1,0 +1,32 @@
+# FE-REF-AUTH — screen 2 sign-in
+
+Status: **MOCK_READY**, 2026-11-04. Production `SignIn.tsx` and scoped CSS now implement the exact reference composition: compact cream window, dark heading and close, newly authored cemetery scenery, centered stacked EMAIL/PASSWORD fields, reference-width red SIGN IN, forgot-password divider, recognizable disabled X/Discord/Google row and create-account footer. No remember-session behavior or provider wire is invented. The screenshot is never an application background. Original source text/art is not copied.
+
+## Assignment and provenance
+
+Worktree `/Users/lhs/Desktop/mcr-worktrees/fe-ref-auth-profile`, branch `codex/mcr-fe-REF-AUTH-PROFILE`, starting parent `f837bef676cd26869c26c172a699a91b7842d832`. Old FE38 checkout remains read-only. Source preimages are recorded in `frontend/src/features/auth/__tests__/reference-target/preimages.json`; final source/shared-frame/session/screenshot SHA-256 are in `evidence/report.json` there. Exact ten-screen PNG viewed from `/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/codex-clipboard-1c0bbe99-a4bc-4721-a1d3-478a34ef9e76.png`, SHA-256 `d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617`. The advertised durable copy is not present at this base. Screen 2 was compared directly with the 390px rendered capture at approximately the same portrait aspect ratio; report records frame/field/button/provider geometry at all three widths. Form width stays 72–82% of frame and action equals field width. Scenery is a new small declarative SVG, with no character imagery or derived screenshot assets.
+
+Exact writes are the assigned two production files, new `auth/ui/reference-sign-in/**`, new `auth/__tests__/reference-target/**`, and this document. Frontend king additionally granted ONLY changing the disabled-provider presentation expectation Apple→Discord in existing `auth/__tests__/sign-in.test.tsx`; all other assertions are unchanged. Models/session/transport, other enrollment UI, shared/root files, dependencies, manifests, contracts and source archive are untouched.
+
+## Behavior preserved
+
+The same canonical `auth.login`, `logout`, capability retry, privacy cleanup, immediate rendered-password scrub, safe return-target validation and post-unmount navigation fence remain in use. Pending disables double submit; generic credential/rate errors never expose server text. Current unavailable and capability error/loading states remain truthful. Close goes home; successful login goes only to its validated target. Provider buttons remain disabled irrespective of advertised capability; decorative SVGs have no independent accessible labels. Fields retain real labels, correct autofill and password semantics. Main action retains its accessible “Sign in with email” name. Every visible interactive target is at least 44×44px, without inflated page/form gaps. No storage or new request is introduced.
+
+## Validation
+
+Pinned executable `NODE` is `/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node` (24.22.2). Commands use frontend cwd except repository guards. `evidence/checks.json` records commands and exit codes, `tests.log` and `build.log` retain normalized output, and `report.json` contains native outcomes and hashes.
+
+- Vitest owned runner with `--configLoader runner`: **27/27**, three files, exit 0; existing sign-in/session regressions plus new reference semantics. No skips in final run.
+- Whole frontend strict `tsc --noEmit --incremental false`: exit 0.
+- Scoped oxlint for changed UI/helpers/tests: exit 0.
+- Owned `build.mjs`: exit 0, production transform of actual SignIn/canonical Auth fixture graph. Public assets are not copied; bundle-size warning retained. This is not a root app build.
+- Owned `browser.mjs`: Chrome 156.0.8078.80, **360/390/430px**, all pass, zero page errors. Canonical Auth plus synthetic in-memory fetch/cookie policy; no real credentials/backend. Tests cover fields/autofill/disabled providers, focus order and visible outline, 44px controls, geometry/no overflow, credential/throttle neutral errors, immediate scrub, identity cleanup, pending single-submit, close/unmount late-result fence, unavailable/options error/loading, foreign redirect fallback and no persistent token storage.
+- Planning and UI-origin guards: exit 0. Boundary and source staged-whitespace checks pass (exit 0) after removing the authorized dependency symlink.
+
+Bounded evidence retains three ready-width images plus only 390px credential-error, pending and unavailable images. The 390px ready image was visually inspected against the original reference. Initial native inspection caught invisible dark crosses on a dark field; final scenery uses light cemetery crosses. The final run/hashes are after this correction. Initial fixture typing was corrected to pass an explicit nullable event ID. The obsolete Apple assertion was updated under the explicit additional grant, rather than skipped.
+
+## Integration and limits
+
+The existing production route imports SignIn and receives canonical shell ports; no new root prop is required. Feature CSS stays under `.auth-sign-in`, compatible with the root owner’s compact full-window body. Unsupported Discord/X/Google remain visibly unavailable; there is no real-provider qualification. Real backend sign-in, cookie/security runtime, actual mobile Safari/Android and king’s combined ten-route visual gate remain **NOT_RUN**. This task does not certify FE09/IN05 project acceptance. Source commit `368a3f7e31ef0787ad76a9a646832f50ac8375d4` is followed by the evidence/documentation commit. Separate source and evidence commits allow serial integration; current integrator owns master push.
+
+No install/copy was performed. Only the authorized temporary `frontend/node_modules` symlink was used and removed at handoff. Own build/browser caches are removed, public originals retained. The approved sparse pattern removes only tracked backend and old source/docs PNG material from this checkout; newly authored evidence is explicitly staged with `--sparse`. Disk stayed above the 8GiB floor for build/browser execution.

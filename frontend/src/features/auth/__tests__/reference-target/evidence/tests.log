@@ -1,0 +1,7 @@
+RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-auth-profile/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  27 passed (27)
+   Start at  07:39:38
+   Duration  2.43s (transform 741ms, setup 0ms, import 553ms, tests 3.51s, environment 534ms)

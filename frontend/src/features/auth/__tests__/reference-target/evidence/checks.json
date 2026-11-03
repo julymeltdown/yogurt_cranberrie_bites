@@ -1,0 +1,52 @@
+{
+  "task": "FE-REF-AUTH",
+  "status": "MOCK_READY",
+  "base": "f837bef676cd26869c26c172a699a91b7842d832",
+  "reference_sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "node": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "checks": [
+    {
+      "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/auth/__tests__/reference-target/runner.ts --configLoader runner (27/27)",
+      "exit": 0
+    },
+    {
+      "command": "NODE node_modules/typescript/bin/tsc --noEmit --incremental false",
+      "exit": 0
+    },
+    {
+      "command": "NODE node_modules/oxlint/bin/oxlint src/features/auth/ui/SignIn.tsx src/features/auth/ui/reference-sign-in src/features/auth/__tests__/reference-target src/features/auth/__tests__/sign-in.test.tsx",
+      "exit": 0
+    },
+    {
+      "command": "NODE src/features/auth/__tests__/reference-target/build.mjs",
+      "exit": 0
+    },
+    {
+      "command": "NODE src/features/auth/__tests__/reference-target/browser.mjs",
+      "exit": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0
+    },
+    {
+      "command": "NODE scripts/mcr/check-ui-origin.mjs",
+      "exit": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-boundaries.py --base f837bef676cd26869c26c172a699a91b7842d832 --lane frontend --allow-doc docs/mcr/frontend/reference-auth.md (dependency symlink removed)",
+      "exit": 0
+    },
+    {
+      "command": "git diff --cached --check (source)",
+      "exit": 0
+    }
+  ],
+  "limitations": [
+    "Synthetic canonical Auth fixture only; real server/device/providers/root ten-route gate NOT_RUN",
+    "Fixture production graph build retains >500kB warning",
+    "Initial fixture optional eventId typing fixed; initial lease link boundary rejection resolved by removal",
+    "Provider expectation additional grant only Apple to Discord; all other assertions retained"
+  ],
+  "sourceCommit": "368a3f7e31ef0787ad76a9a646832f50ac8375d4"
+}
