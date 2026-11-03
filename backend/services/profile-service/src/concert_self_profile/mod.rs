@@ -2,4 +2,9 @@
 pub mod fingerprint;
 mod identity;
 pub mod model;
+mod operation;
 pub mod patch;
+mod store;
+
+#[cfg(test)]
+mod native;

@@ -11,6 +11,13 @@ pub enum Error {
     Unavailable,
 }
 
+impl std::fmt::Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str("Self Profile owner operation failed")
+    }
+}
+impl std::error::Error for Error {}
+
 /// Internal concurrency token. It never becomes the event participant revision.
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub struct Version {
