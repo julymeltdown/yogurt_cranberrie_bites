@@ -45,7 +45,7 @@ Commands ran from the isolated worktree, using Node24.22.2 and pnpm11.7.0. Logs 
 | Command | Exit | Evidence/result |
 | --- | --- | --- |
 | `corepack pnpm@11.7.0 --dir frontend install --frozen-lockfile --offline` | 0 | install.txt; retained lock untouched |
-| `MCR_FE14_PYTHON=/tmp/mcr-fe14-format-venv/bin/python corepack pnpm@11.7.0 --dir frontend test` | 0 | unit-tests.txt; 21 files, 850 tests, including113 new runtime cases |
+| `MCR_FE14_PYTHON=/tmp/mcr-fe14-format-venv/bin/python corepack pnpm@11.7.0 --dir frontend test` | 0 | unit-tests.txt; 21 files, 853 tests, including116 new runtime cases |
 | `corepack pnpm@11.7.0 --dir frontend build` | 0 | build.txt; strict TypeScript and Vite; existing root chunk544.82kB warning unchanged |
 | `corepack pnpm@11.7.0 --dir frontend lint` | 0 | lint.txt; no warnings |
 | `node src/world/__tests__/runtime-browser-smoke.mjs` from frontend | 0 | browser-smoke.txt/report.json; installed Chrome156.0.8078.80 |
@@ -58,7 +58,7 @@ Commands ran from the isolated worktree, using Node24.22.2 and pnpm11.7.0. Logs 
 | `python3 scripts/mcr/check-boundaries.py --base 244d35a85dd884655e270f7c6af6a90657fabfbd --lane frontend --allow-doc docs/mcr/frontend/phaser-runtime.md` | 0 | boundary.txt; 15 exact assigned new paths; manual imports reviewed |
 | `git diff --check` | 0 | No whitespace errors |
 
-One earlier full-suite run concurrent with Chrome had two unchanged FE16 mock-transport timing failures (`socket.open` on missing socket). The isolated final full run passes all850; no transport test or application code was changed to mask them. Earlier browser harness iterations exposed restored canvas context state and lazy Playwright listeners; final assertions inspect actual tile draw smoothing and compare fully initialized listener baselines.
+One earlier full-suite run concurrent with Chrome had two unchanged FE16 mock-transport timing failures (`socket.open` on missing socket). The isolated final full run passes all853; no transport test or application code was changed to mask them. Earlier browser harness iterations exposed restored canvas context state and lazy Playwright listeners; final assertions inspect actual tile draw smoothing and compare fully initialized listener baselines.
 
 Native matrix:360×800,390×844,430×932,1280×800, each resized to420px height and restored. All pass actual canvas/host size, exact terrain/overdraw pixel colors, default foot48,48 and bounds160×160, pixelated CSS, non-smoothed tile draws, no horizontal overflow, ≥44px controls and keyboard focus. Five sleep/stop/unmount/mount cycles per width pass, alongside duplicate start, early boot cancellation, slow dynamic import cancellation, visible malformed manifest, wrong resource hash, HTTP503, and late resource response after unmount. Final teardown compares exact persistent window/document listener registrations and zero owned RAF/blob URLs/canvases/observers. This qualifies Chrome browser behavior, not physical mobile Safari or device behavior.
 
@@ -102,3 +102,5 @@ Production PNG/Tiled resources remain NOT_PROVIDED at this base. Production lice
 Final native report SHA256: `7119b7d2ae3c467921068c5b8e20ed8794a3a2e36baedb974f4981922448e30d`; browser harness SHA256: `cc64403538d9c8d3a0e5072f590fd11f0177f1f464abc3a0b95b0ba9f0f9bc7a`. Exact assignment review found15 new files only, with imports restricted to the assigned module set, public C06 schemas/type-only fixture projections and declared frontend dependencies; no backend/server/config/secret imports.
 
 Delivered implementation commit: `a7dcb792d7804c1328f53dcbb586b58cd9a8f0bc`, parent `244d35a85dd884655e270f7c6af6a90657fabfbd`. The following evidence-only commit adds this document; both commits are required for handoff. No worker push is authorized or performed.
+
+Parent QA identified optional checker regexes accepting a trailing newline. Client UUID/time/URI formats now require a full-string match (UUID additionally exact length36), with explicit newline negative regressions; the parent owns central pinned-checker correction. Post-handoff format hardening is delivered in a follow-up commit.

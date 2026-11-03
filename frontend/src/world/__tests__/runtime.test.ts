@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { canonicalJson, contentHash, digest, MapError, sha256, strictJson } from '../map/json'
 import { validateManifests, type ReleasePin } from '../map/manifest'
-import { validDateTime, validUri } from '../map/formats'
+import { validDateTime, validUri, validUuid } from '../map/formats'
 import { schemaValid } from '../map/schema'
 import { abortable, createAssetResources, loadMap, pngDimensions, type AssetResources, type LoadedMap } from '../map/resources'
 import { validateTiled } from '../map/tiled'
@@ -249,9 +249,9 @@ it.each(['aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '11111111-1111-0111-1111-111111
   expect(result.status, result.stderr).toBe(0)
 })
 it.each(['2026-11-03t00:00:00z', '2024-02-29T23:59:59+09:00', '2026-11-03T00:00:00.123456789Z'])('accepts RFC3339 timestamp %s', value => expect(validDateTime(value)).toBe(true))
-it.each(['2025-02-29T00:00:00Z', '2026-11-03T24:00:00Z', '2026-11-03T00:00:00+25:00', 'not-a-time', '2026-11-03T00:00:60Z', '2016-12-31T23:59:60Z'])('rejects timestamps outside the pinned C06 checker %s', value => expect(validDateTime(value)).toBe(false))
+it.each(['2025-02-29T00:00:00Z', '2026-11-03T24:00:00Z', '2026-11-03T00:00:00+25:00', 'not-a-time', '2026-11-03T00:00:60Z', '2016-12-31T23:59:60Z', '2026-11-03T00:00:00Z\n'])('rejects timestamps outside the pinned C06 checker %s', value => expect(validDateTime(value)).toBe(false))
 it.each(['urn:test:x', 'https:', 'https://x/a%20b?x=y#z', 'mailto:a@b', 'file:///tmp/example', 'http://[::1]/', 'x://[v1.ab:cd]/'])('accepts RFC3986 URI %s', value => expect(validUri(value)).toBe(true))
-it.each(['not-absolute', 'https://x/a b', 'https://x/%ZZ', 'https://例え.テスト/', 'http://[nonsense]/', 'https://a:bad/', 'https://a/x#y#z'])('rejects malformed URI %s', value => expect(validUri(value)).toBe(false))
+it.each(['not-absolute', 'https://x/a b', 'https://x/%ZZ', 'https://例え.テスト/', 'http://[nonsense]/', 'https://a:bad/', 'https://a/x#y#z', 'https://x/\n'])('rejects malformed URI %s', value => expect(validUri(value)).toBe(false))
 
 // Parent's format-prerequisite venv is opt-in; never silently use missing optional checkers.
 it.runIf(Boolean(process.env.MCR_FE14_PYTHON))('differentially rejects fully rehashed invalid provenance with registered pinned Python formats', async () => {
@@ -272,3 +272,5 @@ it.runIf(Boolean(process.env.MCR_FE14_PYTHON))('differentially rejects fully reh
     expect(result.stderr).toContain('AssetError: theme: schema')
   }
 })
+
+it('rejects trailing-newline UUID even when regex dollar would match before it', () => expect(validUuid('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\n')).toBe(false))
