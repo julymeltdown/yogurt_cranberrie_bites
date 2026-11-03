@@ -1,0 +1,142 @@
+{
+  "date": "2026-11-04",
+  "base": "215da400385c400f059913c826105ca4ec5f134b",
+  "scope": "FE13 / UIV04 compact Customize presentation",
+  "status": "MOCK_READY",
+  "checks": [
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/vitest/vitest.mjs run src/features/avatar/__tests__/compact-layout.test.tsx src/features/avatar/__tests__/option-previews.test.tsx src/features/avatar/__tests__/ui.test.tsx src/features/avatar/__tests__/visual-adoption/presentation.test.tsx --configLoader runner --no-cache",
+      "exitCode": 0,
+      "result": "26/26 PASS",
+      "output": "\n RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-customize-layout/frontend\n\n\n Test Files  4 passed (4)\n      Tests  26 passed (26)\n   Start at  05:13:27\n   Duration  2.16s (transform 437ms, setup 0ms, import 896ms, tests 3.08s, environment 1.13s)\n\n"
+    },
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/oxlint/bin/oxlint src/features/avatar/AvatarEditor.tsx src/features/avatar/OptionStrip.tsx src/features/avatar/__tests__/compact-layout.test.tsx src/features/avatar/__tests__/compact-layout src/features/avatar/__tests__/visual-adoption/presentation.test.tsx",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "cwd": ".",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/src/features/avatar/__tests__/compact-layout/native.mjs",
+      "exitCode": 0,
+      "result": "9 native scenarios PASS",
+      "report": "native/report.json"
+    },
+    {
+      "cwd": ".",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/src/features/avatar/__tests__/compact-layout/production.mjs",
+      "exitCode": 0,
+      "report": "production.json"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "output": {
+        "scope": "Planning provenance, structure, exporter regression, and delivery routing only",
+        "result": "PASS",
+        "python_version": "3.14.3",
+        "checks": [
+          "13 original archive checksums match",
+          "pinned upstream narrative checksum matches",
+          "active and original narrative/table task and IA content match",
+          "original: nine regression probes pass and all committed exports reproduce",
+          "active: nine regression probes pass and all committed exports reproduce",
+          "all active metadata and 118 task destinations use mcr/master; baseline remains NOT_STARTED",
+          "release checklist contains 111 prerequisites plus IN05 and 61 required IA entries"
+        ],
+        "task_count": 118,
+        "ia_count": 64,
+        "application_build": "NOT_RUN",
+        "application_tests": "NOT_RUN",
+        "deployment": "NOT_RUN",
+        "input_sha256": {
+          "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+          "PLAN_TABLES_EN.md": "7e81683fcc05f8441b473f673b282a1010931721ffabf15aeef6548811ec8ba5",
+          "MCR_EXPORT_PLAN_EN.py": "57cdba6af51feb45bef5b74a0ed2755b448d475b0ceb1ad2c9ff16b72060e348",
+          "TEST_PLAN_EXPORT_EN.py": "cd7b1cb49636db9468041d8bf87e7dacfeb483b0679facf50638d0f181557b8e",
+          "scripts/mcr/check-plan.py": "a172af72eb033dcc3e9461d8a16c58ac7704702a4ced39801a67b3b3edcc3cd3",
+          "docs/mcr/source-provenance.json": "bf249c1e414928d5946803243ca1857f8d6e4435fa0fe49fb2185bc778d54fd8"
+        }
+      }
+    },
+    {
+      "cwd": ".",
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "peerReview": {
+    "agent": "01a1a309-f338-76c0-8b90-bedc11daff1b",
+    "readOnly": true,
+    "initialP2": "Half-height shell panel shrank editor body to16px at390x560.",
+    "fix": "Minimum usable editor height permits outer shell scrolling; inner body192px in new actual-shell-CSS nested fixtures.",
+    "recheck": "P2 resolved; no remaining actionable findings; current product hashes verified."
+  },
+  "limits": {
+    "approvedArt": "NOT_RUN",
+    "actualRootIntegration": "NOT_RUN",
+    "liveMultiuser": "NOT_RUN",
+    "physicalDevices": "NOT_RUN",
+    "finalUserReferenceApproval": "NOT_RUN",
+    "releaseAcceptance": "NOT_RUN"
+  },
+  "sha256": {
+    "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "docs/mcr/frontend/avatar-compact-layout.md": "55e8b95da5daddded596eb31537a43bcc8481d0ab0e3610ca8d953cf2aced5dc",
+    "frontend/src/app/shell.css": "b12ac66307766e8c397dab7cc4674743887a301f81e358498ce5b72bb4189eb7",
+    "frontend/src/entities/avatar/runtime/compositor.ts": "fac22cf5948afd10420ad53bc408590657291ccb44e38defb61f2e96ee595740",
+    "frontend/src/features/avatar/AvatarEditor.tsx": "1b56b4bd23205ad08d661c52785b6953f67e66e59d34df8444c40109c7c3524c",
+    "frontend/src/features/avatar/OptionStrip.tsx": "5bc07a3101696ad4bf1a5ceb34aa57a2ba1a28dab9a14ac0918679bb3e7942f4",
+    "frontend/src/features/avatar/__tests__/compact-layout.test.tsx": "2445f037856643d75681df09d71868942ffd677de9b0da28c3cfdd92851ec2e0",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/initial-presentation-failure.json": "bf7f060fe664787424ac7190690430de7329e16d77a56eb1a0647a792434f123",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/draft-360x560.png": "6c079aebd0ce41445df52ac7e40b92e4ed1b989c8b63a772c59ac598706f7198",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/draft-360x844.png": "0bc4870198e33a1ce83594625e60101613f77bf7f5fb406128d2b9d0f98ffb4d",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/draft-390x560.png": "db21cfb8cb424e92f7d87003635c7f24fe8a5b0dca96c997ae8acd60fd8f87b7",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/draft-390x844.png": "4e46ea2bc8556c1799800433cd81ebb3e6388434afe0518ee68dcb1629d5cfc8",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/draft-430x560.png": "12a3294464d1721b4455f9c11c9349ba07fdfdb7d93bb7479a418fb60bf984ec",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/draft-430x844.png": "7c751d4069d6a5c60b35d7b12ec9aa65c8ac3ecbe14f8a27ebf7e5dee0f79a14",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/error-390x560.png": "e153c052acbaedfce31f682d1d155d760eb551b2e42f5d58ebf4880dd0f9b797",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/loaded-360x560.png": "363864cbeebf4aa4989757c9eeb7c3fd7200d209ac38a585d131f7da42267ddc",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/loaded-360x844.png": "48a82475b994fdbd8ded379ba7739a176764a31a39109ce893a1c0ec6b6c39c8",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/loaded-390x560.png": "1e7fdd4b34bbd50c822854e56ceaa19d1db298c4da5c0601ea4e16a865265d29",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/loaded-390x844.png": "2badea48797eba8975901d8a73e3508ccfdab13ede4beff167d50db0d1ca624b",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/loaded-430x560.png": "defb8c0f8cd91e6042753870534169543d5b4806735b589427579a9154034c84",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/loaded-430x844.png": "19d7f040d31d78ae4a6f22f505b427085d21cedb102a345c9c22a931f0100b3d",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/long-label-360x560.png": "c91c59c96123633226f1abfe097ab1a9ab7b1a0f03985628a8381d831102f3e8",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/long-label-IDs-360x560.png": "b4ebeebf6f7e544dce61de67bccc7cbb9c684ba27322ffc3d948b88982f4727a",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/nested-actions-360x560.png": "4f7d5184e7a11e32233c6b3581aec378e3253016dc0bd20956e9af59f9557ef1",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/nested-actions-390x560.png": "b646327d169da20478efbe95fb45b1bb48e1eddc9a1c856d4e86416b3c40357c",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/nested-actions-430x560.png": "3bd22f2de38092aab95b150106cc202ef2fba54217b5b104ea52cace76130e45",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/nested-uncertain-390x560.png": "b3fefe0c32780a03a5ffc248ac207044c1b739134d82487076f7b5584f695825",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/report.json": "23b2ff1a07eb46a01b5d0471be8135b3e3796223a158dfb00cf952f120bfdad9",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/unavailable-360x560.png": "d12a1f77d7f057675d82faad16bca501c209fc81213276d950c61dadb740f29c",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/unavailable-360x844.png": "c7f474c35a44522e04ffe7109e632047bfed9765b5497533879413266c531b72",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/unavailable-390x560.png": "a031b2f821644969ec63643fb4467cab09d54d940985effec3894fd72f6d59e8",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/unavailable-390x844.png": "d7193901857e381650ea6289ddcc81b36f6e29741a001565e7e18048a3ef9f15",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/unavailable-430x560.png": "d95c4a29f213d9219898f4a9a0cc18db00a9639e0a638adc2133268e104ee5bb",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/unavailable-430x844.png": "b99230cbb934c87189ce0d2dfb0416eb4e159b42c8d727f12b0ef6914ad76621",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/native/uncertain-390x560.png": "c344753671989b9c55f6c4313bfdf8009b7914b4f760f3845f577ea189b86bce",
+    "frontend/src/features/avatar/__tests__/compact-layout/evidence/production.json": "c16b7f94b1cd0c0267ad3d594bd65295f738ab829d992243a513bfaf57515ca0",
+    "frontend/src/features/avatar/__tests__/compact-layout/native.mjs": "6cb98866d52e37f7d21a56ceed7b40e89353d38e9da37cc21bceef74bff96004",
+    "frontend/src/features/avatar/__tests__/compact-layout/preview.html": "a0226b7d62a183fe62c0b9edde17b64ba146d1bc0e4e1f23153cdb8f81883c4e",
+    "frontend/src/features/avatar/__tests__/compact-layout/preview.tsx": "a79e896b317df6d8e5841f9b21dd6cf8b339f7c86623f2bee9cf0e198732e3fd",
+    "frontend/src/features/avatar/__tests__/compact-layout/production.mjs": "2ef5ab8e6847f547d71e57a94dec78df63ad11a6677aac82e0c16c7c11798d73",
+    "frontend/src/features/avatar/__tests__/option-previews/data.ts": "1f51fdb7f1289cafd6da116decf0f86c297c1f4aa2f567f3712888609b1256b2",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/loaded-390.png": "2395a8201bdd744a8ba75a8b91006ebabd41ac386631e4f79eac9886ec0c743e",
+    "frontend/src/features/avatar/__tests__/visual-adoption/presentation.test.tsx": "44987b212657cc668f2ce0b4b62dcf4e4fe617e889583f8f9a925f321d8ab2b7",
+    "frontend/src/features/avatar/avatar-editor.css": "1eb7684c1a923ed7d1ce3387713a67f190a5e8e27015e8d25a6f7df97eec00c9",
+    "frontend/src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "frontend/src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "frontend/src/features/avatar/preview.ts": "77c304050d0fb324a6d8b236a6e65eb2655bff83e488bdfe9b768df9e740b981",
+    "frontend/src/world/avatar/__tests__/fixtures/png.mjs": "661960ae8958bd4453fb30dea0da205d676f902d15d9ab4a964275a5f7a9b642"
+  }
+}

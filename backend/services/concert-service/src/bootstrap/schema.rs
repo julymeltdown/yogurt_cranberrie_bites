@@ -76,6 +76,67 @@ pub fn validate(document: &Value) -> Result<(), Error> {
                 }
             }
         }
+        if let Some(scenery) = theme.get("scenery") {
+            scenery_semantics(scenery, geometry)?;
+        }
+    }
+    Ok(())
+}
+
+/// Closed C06 schema validation precedes these cross-field bounds. Matching
+/// Python/Phaser limits do not confer source-art or venue approval.
+fn scenery_semantics(scenery: &Value, geometry: &Value) -> Result<(), Error> {
+    let width = number(&geometry["width_cells"])?
+        .checked_mul(number(&geometry["tile_width_px"])?)
+        .ok_or(Error::ReleaseUnavailable)?;
+    let height = number(&geometry["height_cells"])?
+        .checked_mul(number(&geometry["tile_height_px"])?)
+        .ok_or(Error::ReleaseUnavailable)?;
+    let ground = &scenery["ground"];
+    let atlases = unique(&scenery["atlases"], "id")?;
+    let mut ids = BTreeSet::new();
+    let mut paths = BTreeSet::new();
+    let mut pixels = 0_u64;
+    let mut bytes = 0_u64;
+    for texture in std::iter::once(ground).chain(atlases.values().copied()) {
+        ensure(ids.insert(text(&texture["id"])?))?;
+        ensure(paths.insert(text(&texture["path"])?))?;
+        pixels = pixels
+            .checked_add(number(&texture["width_px"])? * number(&texture["height_px"])?)
+            .ok_or(Error::ReleaseUnavailable)?;
+        bytes = bytes
+            .checked_add(number(&texture["bytes"])?)
+            .ok_or(Error::ReleaseUnavailable)?;
+    }
+    ensure(bytes <= 2_097_152 && pixels <= 2_097_152)?;
+    ensure(number(&ground["width_px"])? == width && number(&ground["height_px"])? == height)?;
+    // Ground's schema bounds establish these conversions and additions as safe.
+    let (width, height) = (width as i64, height as i64);
+    for object in unique(&scenery["objects"], "id")?.values() {
+        let atlas = atlases
+            .get(text(&object["atlas_id"])?)
+            .ok_or(Error::ReleaseUnavailable)?;
+        let frame = &object["frame"];
+        ensure(number(&frame["x"])? + number(&frame["width"])? <= number(&atlas["width_px"])?)?;
+        ensure(number(&frame["y"])? + number(&frame["height"])? <= number(&atlas["height_px"])?)?;
+        let integer = |key: &str| object[key].as_i64().ok_or(Error::ReleaseUnavailable);
+        let (x, y, w, h) = (
+            integer("x")?,
+            integer("y")?,
+            integer("width")?,
+            integer("height")?,
+        );
+        ensure(
+            x >= -128
+                && y >= -128
+                && x < width
+                && y < height
+                && x + w > 0
+                && y + h > 0
+                && x + w <= width + 128
+                && y + h <= height + 128
+                && integer("depth_y")? <= height + 128,
+        )?;
     }
     Ok(())
 }
@@ -221,4 +282,70 @@ fn map_semantics(map: &Value) -> Result<(BTreeSet<String>, BTreeSet<String>), Er
         places.keys().map(|v| (*v).to_owned()).collect(),
         interactions.keys().map(|v| (*v).to_owned()).collect(),
     ))
+}
+
+#[cfg(test)]
+mod scenery_tests {
+    use super::*;
+    use sha2::{Digest, Sha256};
+
+    #[test]
+    fn embedded_bootstrap_schema_and_scenery_semantics_match_shared_cases() {
+        let template: Value = serde_json::from_str(include_str!(
+            "../../../../../contracts/fixtures/core/bootstrap-open.json"
+        ))
+        .unwrap();
+        // Legacy releases retain precisely their prior optional-field behavior.
+        assert!(validate(&template).is_ok());
+        let cases: Value = serde_json::from_str(include_str!(
+            "../../../../../contracts/fixtures/asset-semantics/illustrated-cases.json"
+        ))
+        .unwrap();
+        for case in cases["cases"].as_array().unwrap() {
+            let mut document = template.clone();
+            let theme = document["theme_manifests"]
+                .as_array_mut()
+                .unwrap()
+                .iter_mut()
+                .find(|theme| theme["theme_id"] == "REVENGE")
+                .unwrap();
+            theme["scenery"] = case["scenery"].clone();
+            let mut unsigned = theme.clone();
+            unsigned.as_object_mut().unwrap().remove("content_hash");
+            // Fixture keys/values are ASCII; explicit sorted keys preserve C06
+            // canonical bytes even if serde_json enables preserve_order later.
+            fn sorted(value: &Value) -> String {
+                match value {
+                    Value::Object(map) => {
+                        let entries: BTreeMap<_, _> = map.iter().collect();
+                        format!(
+                            "{{{}}}",
+                            entries
+                                .into_iter()
+                                .map(|(k, v)| format!(
+                                    "{}:{}",
+                                    serde_json::to_string(k).unwrap(),
+                                    sorted(v)
+                                ))
+                                .collect::<Vec<_>>()
+                                .join(",")
+                        )
+                    }
+                    Value::Array(values) => format!(
+                        "[{}]",
+                        values.iter().map(sorted).collect::<Vec<_>>().join(",")
+                    ),
+                    _ => serde_json::to_string(value).unwrap(),
+                }
+            }
+            theme["content_hash"] =
+                format!("sha256:{:x}", Sha256::digest(sorted(&unsigned))).into();
+            assert_eq!(
+                validate(&document).is_ok(),
+                case["valid"].as_bool().unwrap(),
+                "{}",
+                case["name"]
+            );
+        }
+    }
 }

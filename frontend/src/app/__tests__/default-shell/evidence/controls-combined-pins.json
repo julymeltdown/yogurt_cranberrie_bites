@@ -1,0 +1,107 @@
+{
+  "testedRevision": "a36551fb0c8df521e87a94303f016c084d76c93c",
+  "rootAuthor": "e6c9f9ec46dd644e0d3cb0042187a9f84f9f2e65",
+  "rootPublished": "dd86095c14e705219e3810f1234dcca878b34edd",
+  "controlsPublished": [
+    "54fe2c7ee78a263a0c9703c7dc32d4891e65109b",
+    "22b45fb55fe8b0fd02eb95377db8822f1fbd43c4"
+  ],
+  "controlsLocal": [
+    "fc81c31f02c51dd955f59f777b6a4d6c6d3f1199",
+    "a36551fb0c8df521e87a94303f016c084d76c93c"
+  ],
+  "publishedContentComparison": {
+    "revision": "22b45fb55fe8b0fd02eb95377db8822f1fbd43c4",
+    "paths": [
+      "frontend/src/app/WorldShell.tsx",
+      "frontend/src/app/shell.css",
+      "frontend/src/app/world-panels/index.tsx",
+      "frontend/src/app/world-panels/presentation.css",
+      "frontend/src/world/composition/index.ts",
+      "frontend/src/world/input/controller.ts",
+      "frontend/src/world/input/controls.css",
+      "frontend/src/world/runtime.ts",
+      "frontend/src/world/scenes/MapScene.ts"
+    ],
+    "result": "MATCH"
+  },
+  "referenceOriginalSha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "checks": {
+    "native": {
+      "exit": 0,
+      "captures": 15
+    },
+    "focusedTests": {
+      "exit": 0,
+      "files": 9,
+      "passed": 273,
+      "skipped": 0
+    },
+    "fullTypes": {
+      "exit": 0
+    },
+    "lint": {
+      "exit": 0
+    },
+    "productionBuild": {
+      "exit": 0,
+      "limitation": "Existing large-chunk warning"
+    }
+  },
+  "qualification": "Actual default canonical Auth/HTTP/production resolver/Phaser, deterministic C04/C05 MockSocket/geometric resources. Combined clean root+compact controls. Visible intersection measured against every clipping ancestor; native scroll may move scene out while viewing help, which remains reversible. No live service/approved art/two-user/device/load acceptance.",
+  "hashes": {
+    "docs/mcr/frontend/default-shell-integration.md": "0f49a63d97c7813c1fda210a1085de67b255c0710c1f72f8caaa1d3098491a92",
+    "frontend/src/app/WorldShell.tsx": "1fd72bb91d667d87924e71ad1e832049cef73fe99c5eb2b9a262b119667a0f41",
+    "frontend/src/app/__tests__/default-shell/chrome-native.mjs": "8b19b9853d3d7f15a3e4752f0ca7cef6130e4f7a90180aa01650bd515dcb6540",
+    "frontend/src/app/__tests__/default-shell/chrome.test.tsx": "89e92c98399cc2c2c5af0c8d1295e60b4be840fec7fd00d9cdb78c1cf96df159",
+    "frontend/src/app/__tests__/default-shell/controls-combined-native.mjs": "88fb57eb92550e75a773e4c0d199f57fc8a2fac5292a93faa949d53da59b8c65",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined-build.log": "de66f89b3d8c43028f3167ed7fedc6fa5c9e3526ac2e284ad629c7590c37e858",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined-lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined-native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined-tests-initial.log": "6268dbdc43d5b004d1a8b622014f971290bf99a56a84a6447c5dbb4d66a86018",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined-tests.log": "f892fafe2eb0b9ab2b28a250cc0eba03254fcb89fe5727081222331cc89b69b9",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined-types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/normal-360.png": "1688002f090f8c55d0fac03bc226590152ad9daacdbf0d88309266c6543aec06",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/normal-390.png": "d6a65a31cfdb94a21b7b5885385e6765a9852e00092e0d5db55fc8fcb5382934",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/normal-430.png": "ed66e0915e9a891aa082a9f4f22c5a61ecf9fb4f7b5835856dc5e04d432a53f9",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/report.json": "862fb4392bb689ea265e1a5507a8a0ae2666ac6ee68e0a412e11235a6ce34106",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-closed-360.png": "3630446e818c882e82ca4297bd8712de0405b5753286060a3384ff2cb40f1025",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-closed-390.png": "07753b5d6f8f1699436d823fcb22153cc30f048ae02f10bc37ce29edfeeb5a40",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-closed-430.png": "2d6b11671b7fbb1fe756298a3bc8c0a9a675f4d319154b9504f2e8331f0b55e3",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-expanded-focus-360.png": "aae7c38e2c40e70c5e524e41e29b021410323943ce5fedf1fbcb43bfad2463de",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-expanded-focus-390.png": "9be68e4ee4dedf54f76ce46dc89b54a94f35c1774a0ad118bf0a6f4390dc9c32",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-expanded-focus-430.png": "1edcff56bb4ba3ffe23e0dd247c2f87e30791f542f9d364a2dc48650df002874",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-expanded-scene-360.png": "3630446e818c882e82ca4297bd8712de0405b5753286060a3384ff2cb40f1025",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-expanded-scene-390.png": "07753b5d6f8f1699436d823fcb22153cc30f048ae02f10bc37ce29edfeeb5a40",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-expanded-scene-430.png": "2d6b11671b7fbb1fe756298a3bc8c0a9a675f4d319154b9504f2e8331f0b55e3",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-keyboard-map-360.png": "5186633b0251623aad06272a622ac67ff93730bde2224efbd9d1aa95a51fc590",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-keyboard-map-390.png": "63d0b68d90411b7f5b9796eb47938c589a5ac1067f4ec3998be6a91588285306",
+    "frontend/src/app/__tests__/default-shell/evidence/controls-combined/short-keyboard-map-430.png": "fbf10066ecf5a602c2c3c0d5a926b73c6006be273ab57afe63acc05123bd1872",
+    "frontend/src/app/__tests__/default-shell/preview.html": "5f65c241e8abcc1ed252d49312b38cd7cdf7111acc2dcf96d88e10c6bbe802b8",
+    "frontend/src/app/__tests__/default-shell/preview.tsx": "80114bc20d1cbc096f5175be3493d2f58e12b6ea477d2df35e5b7a5da484e4c4",
+    "frontend/src/app/__tests__/default-shell/qualified-data.ts": "fcc5a4a2c776c56e66b720ba032b33e84de7b4426b6c371e80e8042b37677e0c",
+    "frontend/src/app/__tests__/default-shell/qualified-native.mjs": "907bf5419e84c6cc4d15fbeee3a406db199545bf0157cdd11a57db92f7cae193",
+    "frontend/src/app/__tests__/default-shell/qualified.html": "816d8476a3cb1f5cdc2375509d7830a4a365ae1694e130f4232ee60f6f932db6",
+    "frontend/src/app/__tests__/default-shell/qualified.tsx": "c38c9545ab51d2eea0bb25c77a7977b151a6dc5ea2c08912ea9c50ac7cb1f977",
+    "frontend/src/app/__tests__/default-shell/resolver.test.ts": "1932acd6c43f44200b72b70ce0614fd189c93924ad071c893ac0766f1519e04c",
+    "frontend/src/app/__tests__/default-shell/social-native.mjs": "ec8891f1e5b31cd0a1590d4eaeb035b935fe76089b71fcdd7afe9cced6284dff",
+    "frontend/src/app/__tests__/default-shell/social.test.tsx": "4365e5e26ee309d508a1362d8f14298030dc3577a6d43bbb799a5c5a4bbbbd44",
+    "frontend/src/app/ports.ts": "2e6beaeb753d0fcbeac0d34c88b5ba2acef569d3454c51396689eab0caeb6de4",
+    "frontend/src/app/router.tsx": "c2c5e605b275be98af1ca618aacba77d95491b6539ab00b4b41f155c28a6aa46",
+    "frontend/src/app/routes.ts": "a7b2d75c2ea7a41a0b5e699731f48fba2ce00b29cd272370183b56287cadea3c",
+    "frontend/src/app/shell.css": "e4656156376d82d752c78cb0bcfa1b039f008e43f4337fa766c64e1d20cb63f6",
+    "frontend/src/app/world-panels/index.tsx": "0ef269e32726257bcf139d07bb1921887be115f841c11bccd51d5639434989e7",
+    "frontend/src/app/world-panels/ownership.tsx": "796e5c0e1fdcbcc3e9f0dc4a2e969ac2bb69d773191709a71843d4a3db65a4ef",
+    "frontend/src/app/world-panels/presentation.css": "a554c436ab7ac0169faef4c65d22ff5ee08f08ea4d11e9087d6c4b353f5f27e7",
+    "frontend/src/app/world-panels/social.css": "e7063785972419110220609b090600a68cc1cb1d0a01a93248847d73fee5adfa",
+    "frontend/src/app/world-panels/social.tsx": "5e8ac73c9d4b3015ad3b20026d103252deff304a7bc20d838a23d2251e5b4031",
+    "frontend/src/features/places/ui/Places.tsx": "987eb1b0b103fee10471258195427dfd4fa7117667fede0be5a0905e1971e1b2",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/world/composition/index.ts": "ac3d52def1392f90420e612c6ce6649fdd2a6c6f3c79e6bc73227ce8a6f1c997",
+    "frontend/src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "frontend/src/world/input/controller.ts": "10ee84de4f0fafd976baf604b7727d023efc302d0ba8653a5169ed8af65da36f",
+    "frontend/src/world/input/controls.css": "77f6355ccdc56f9d5f8bbe0a549ea05c0675639a77f0abce8f97e8d2d6305d69",
+    "frontend/src/world/runtime.ts": "5e471081a021699d8f09c85102b014036d48e345fb1865b996d3cb8000c32288",
+    "frontend/src/world/scenes/MapScene.ts": "558f4cc9fae9f0714cc5008f81d0ef0a8526a2a9123731ff925b233774546635"
+  }
+}

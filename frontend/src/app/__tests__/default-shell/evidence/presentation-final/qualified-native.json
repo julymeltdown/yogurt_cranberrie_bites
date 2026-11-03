@@ -1,0 +1,164 @@
+{
+  "result": "PASS",
+  "qualification": "Actual default createAppRoutes, canonical Auth login/bootstrap/HTTP, production lazy owner/resolver/composition, actual single Phaser, deterministic in-process C04 reads and C05 MockSocket, geometric TEST ONLY resources/review metadata. Default Wall unavailable: no approved anchor/write policy. No live service, approved artwork, two-user, physical device or load acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "sceneClosed": 1,
+      "lateWrites": 0,
+      "defaultMuralPosts": 0,
+      "visibleSceneAt430": 120
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "sceneClosed": 1,
+      "lateWrites": 0,
+      "defaultMuralPosts": 0,
+      "visibleSceneAt430": 120
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "sceneClosed": 1,
+      "lateWrites": 0,
+      "defaultMuralPosts": 0,
+      "visibleSceneAt430": 120
+    }
+  ],
+  "directEntries": [
+    {
+      "width": 360,
+      "path": "/world/map",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 360,
+      "path": "/world/places/00000000-0000-4000-8000-000000000001",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 360,
+      "path": "/wall",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 360,
+      "path": "/world/theme",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 390,
+      "path": "/world/map",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 390,
+      "path": "/world/places/00000000-0000-4000-8000-000000000001",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 390,
+      "path": "/wall",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 390,
+      "path": "/world/theme",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 430,
+      "path": "/world/map",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 430,
+      "path": "/world/places/00000000-0000-4000-8000-000000000001",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 430,
+      "path": "/wall",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 430,
+      "path": "/world/theme",
+      "restored": "PARADE",
+      "mounts": 1,
+      "disposals": 1
+    }
+  ],
+  "screenshots": [
+    "qualified-world-360.png",
+    "qualified-pending-360.png",
+    "qualified-parade-360.png",
+    "qualified-rollback-360.png",
+    "qualified-place-360.png",
+    "qualified-map-360.png",
+    "qualified-wall-unavailable-360.png",
+    "qualified-full-panel-360.png",
+    "qualified-short-viewport-360.png",
+    "qualified-short-world-360.png",
+    "qualified-short-world-controls-360.png",
+    "qualified-withdrawn-360.png",
+    "qualified-world-390.png",
+    "qualified-pending-390.png",
+    "qualified-parade-390.png",
+    "qualified-rollback-390.png",
+    "qualified-place-390.png",
+    "qualified-map-390.png",
+    "qualified-wall-unavailable-390.png",
+    "qualified-full-panel-390.png",
+    "qualified-short-viewport-390.png",
+    "qualified-short-world-390.png",
+    "qualified-short-world-controls-390.png",
+    "qualified-withdrawn-390.png",
+    "qualified-world-430.png",
+    "qualified-pending-430.png",
+    "qualified-parade-430.png",
+    "qualified-rollback-430.png",
+    "qualified-place-430.png",
+    "qualified-map-430.png",
+    "qualified-wall-unavailable-430.png",
+    "qualified-full-panel-430.png",
+    "qualified-short-viewport-430.png",
+    "qualified-short-world-430.png",
+    "qualified-short-world-controls-430.png",
+    "qualified-withdrawn-430.png"
+  ],
+  "errors": []
+}

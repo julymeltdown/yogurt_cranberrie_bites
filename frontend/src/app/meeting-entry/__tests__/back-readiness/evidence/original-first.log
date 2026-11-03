@@ -1,0 +1,447 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/qa-back-readiness/frontend
+
+ ❯ src/app/meeting-entry/__tests__/root-registration.test.tsx (7 tests | 1 failed) 1799ms
+   × preserves direct-beacon back navigation through Meet to World without creating a second world lease 1029ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/meeting-entry/__tests__/root-registration.test.tsx > preserves direct-beacon back navigation through Meet to World without creating a second world lease
+AssertionError: expected '/meet' to be '/world' // Object.is equality
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"world-shell"[39m
+        [33mdata-mcr-shell[39m=[32m""[39m
+        [33mstyle[39m=[32m"--shell-viewport-height: 768px;"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"skip-link"[39m
+          [33mhref[39m=[32m"#shell-content"[39m
+        [36m>[39m
+          [0mSkip to content[0m
+        [36m</a>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"shell-header"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<a[39m
+              [33maria-label[39m=[32m"MCR Concert World home"[39m
+              [33mclass[39m=[32m"shell-brand"[39m
+              [33mdata-discover[39m=[32m"true"[39m
+              [33mhref[39m=[32m"/"[39m
+            [36m>[39m
+              [0mMCR [0m
+              [36m<span>[39m
+                [0mConcert World[0m
+              [36m</span>[39m
+            [36m</a>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"shell-event"[39m
+            [36m>[39m
+              [0mShell review · test event[0m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"shell-link"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/notifications"[39m
+            [33mid[39m=[32m"shell-inbox"[39m
+          [36m>[39m
+            [0mInbox[0m
+          [36m</a>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shell-era"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/world/theme"[39m
+            [33mid[39m=[32m"shell-era"[39m
+          [36m>[39m
+            [0mRevenge / Parade / Danger [0m
+            [36m<span[39m
+              [33maria-hidden[39m=[32m"true"[39m
+            [36m>[39m
+              [0m↗[0m
+            [36m</span>[39m
+          [36m</a>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shell-stage"[39m
+          [33mdata-panel-size[39m=[32m"half"[39m
+        [36m>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"World viewport"[39m
+            [33mclass[39m=[32m"shell-world"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shell-world-host"[39m
+              [33mdata-world-host[39m=[32m""[39m
+              [33minert[39m=[32m""[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"fixture-host-label"[39m
+              [36m>[39m
+                [0mInstrumented test host · no live world[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</section>[39m
+          [36m<main[39m
+            [33maria-labelledby[39m=[32m"panel-title"[39m
+            [33mclass[39m=[32m"shell-panel"[39m
+            [33mid[39m=[32m"shell-content"[39m
+            [33mtabindex[39m=[32m"-1"[39m
+          [36m>[39m
+            [36m<header[39m
+              [33mclass[39m=[32m"shell-panel-header"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Back to previous panel"[39m
+                [33mclass[39m=[32m"mcr-button mcr-button--quiet "[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0m← Back[0m
+              [36m</button>[39m
+              [36m<h1[39m
+                [33mid[39m=[32m"panel-title"[39m
+                [33mtabindex[39m=[32m"-1"[39m
+              [36m>[39m
+                [0mMeet[0m
+              [36m</h1>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"false"[39m
+                [33maria-label[39m=[32m"Expand panel"[39m
+                [33mclass[39m=[32m"mcr-button mcr-button--quiet "[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mExpand[0m
+              [36m</button>[39m
+              [36m<button[39m
+                [33maria-expanded[39m=[32m"true"[39m
+                [33maria-label[39m=[32m"Minimize panel"[39m
+                [33mclass[39m=[32m"mcr-button mcr-button--quiet "[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mHide[0m
+              [36m</button>[39m
+            [36m</header>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"shell-panel-body"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"party-view party-browse"[39m
+              [36m>[39m
+                [36m<section[39m
+                  [33maria-labelledby[39m=[32m"_r_4_"[39m
+                  [33mclass[39m=[32m"concert-kit concert-window"[39m
+                [36m>[39m
+                  [36m<header[39m
+                    [33mclass[39m=[32m"concert-window__titlebar"[39m
+                  [36m>[39m
+                    [36m<svg[39m
+                      [33maria-hidden[39m=[32m"true"[39m
+                      [33mclass[39m=[32m"concert-icon"[39m
+                      [33mfill[39m=[32m"none"[39m
+                      [33mfocusable[39m=[32m"false"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-linecap[39m=[32m"square"[39m
+                      [33mstroke-linejoin[39m=[32m"miter"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [36m>[39m
+                      [36m<circle[39m
+                        [33mcx[39m=[32m"8"[39m
+                        [33mcy[39m=[32m"7"[39m
+                        [33mr[39m=[32m"3"[39m
+                      [36m/>[39m
+                      [36m<circle[39m
+                        [33mcx[39m=[32m"17"[39m
+                        [33mcy[39m=[32m"9"[39m
+                        [33mr[39m=[32m"2"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M2 21v-4a6 6 0 0 1 12 0v4M16 14a5 5 0 0 1 6 5v2"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                    [36m<h2[39m
+                      [33mid[39m=[32m"_r_4_"[39m
+                    [36m>[39m
+                      [0mMEET[0m
+                    [36m</h2>[39m
+                  [36m</header>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"concert-window__body"[39m
+                  [36m>[39m
+                    [36m<nav[39m
+                      [33maria-label[39m=[32m"Meet views"[39m
+                      [33mclass[39m=[32m"party-tabs"[39m
+                    [36m>[39m
+                      [36m<button[39m
+                        [33maria-pressed[39m=[32m"true"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0mParties[0m
+                      [36m</button>[39m
+                      [36m<button[39m
+                        [33maria-pressed[39m=[32m"false"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0mMY PLAN[0m
+                      [36m</button>[39m
+                      [36m<a[39m
+                        [33mdata-discover[39m=[32m"true"[39m
+                        [33mhref[39m=[32m"/meet/people"[39m
+                        [33mid[39m=[32m"party-people"[39m
+                      [36m>[39m
+                        [0mPeople[0m
+                      [36m</a>[39m
+                    [36m</nav>[39m
+                    [36m<section[39m
+                      [33maria-label[39m=[32m"Party discovery"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"party-heading"[39m
+                      [36m>[39m
+                        [36m<h2>[39m
+                          [0mFind your company[0m
+                        [36m</h2>[39m
+                        [36m<button[39m
+                          [33mclass[39m=[32m"concert-kit concert-action concert-action--paper "[39m
+                          [33mtype[39m=[32m"button"[39m
+                        [36m>[39m
+                          [0mRefresh parties[0m
+                        [36m</button>[39m
+                      [36m</div>[39m
+                      [36m<details[39m
+                        [33mclass[39m=[32m"party-filters"[39m
+                      [36m>[39m
+                        [36m<summary>[39m
+                          [0mFilter parties[0m
+                        [36m</summary>[39m
+                        [36m<form>[39m
+                          [36m<label>[39m
+                            [0mTicket section[0m
+                            [36m<input[39m
+                              [33mmaxlength[39m=[32m"120"[39m
+                              [33mname[39m=[32m"ticket_section"[39m
+                              [33mplaceholder[39m=[32m"Any section"[39m
+                              [33mvalue[39m=[32m""[39m
+                            [36m/>[39m
+                          [36m</label>[39m
+                          [36m<label>[39m
+                            [0mParty state[0m
+                            [36m<select[39m
+                              [33mname[39m=[32m"state"[39m
+                            [36m>[39m
+                              [36m<option[39m
+                                [33mselected[39m=[32m""[39m
+                                [33mvalue[39m=[32m""[39m
+                              [36m>[39m
+                                [0mAll states[0m
+                              [36m</option>[39m
+                              [36m<option[39m
+                                [33mvalue[39m=[32m"OPEN"[39m
+                              [36m>[39m
+                                [0mopen[0m
+                              [36m</option>[39m
+                              [36m<option[39m
+                                [33mvalue[39m=[32m"CLOSED"[39m
+                              [36m>[39m
+                                [0mclosed[0m
+                              [36m</option>[39m
+                              [36m<option[39m
+                                [33mvalue[39m=[32m"CANCELLED"[39m
+                              [36m>[39m
+                                [0mcancelled[0m
+                              [36m</option>[39m
+                              [36m<option[39m
+                                [33mvalue[39m=[32m"COMPLETED"[39m
+                              [36m>[39m
+                                [0mcompleted[0m
+                              [36m</option>[39m
+                            [36m</select>[39m
+                          [36m</label>[39m
+                          [36m<label>[39m
+                            [0mStarts on or after[0m
+                            [36m<input[39m
+                              [33mname[39m=[32m"starts_after"[39m
+                              [33mtype[39m=[32m"datetime-local"[39m
+                              [33mvalue[39m=[32m""[39m
+                            [36m/>[39m
+                          [36m</label>[39m
+                          [36m<label>[39m
+                            [0mStarts before[0m
+                            [36m<input[39m
+                              [33mname[39m=[32m"starts_before"[39m
+                              [33mtype[39m=[32m"datetime-local"[39m
+                              [33mvalue[39m=[32m""[39m
+                            [36m/>[39m
+                          [36m</label>[39m
+                          [36m<p[39m
+                            [33mclass[39m=[32m"party-hint"[39m
+                          [36m>[39m
+                            [0mDates use your device’s local time. The end of the filter range is exclusive.[0m
+                          [36m</p>[39m
+                          [36m<label[39m
+                            [33mclass[39m=[32m"party-checkbox"[39m
+                          [36m>[39m
+                            [36m<input[39m
+                              [33mname[39m=[32m"has_space"[39m
+                              [33mtype[39m=[32m"checkbox"[39m
+                            [36m/>[39m
+                            [0mOnly parties with space[0m
+                          [36m</label>[39m
+                          [36m<button[39m
+                            [33mtype[39m=[32m"submit"[39m
+                          [36m>[39m
+                            [0mShow parties[0m
+                          [36m</button>[39m
+                        [36m</form>[39m
+                      [36m</details>[39m
+                      [36m<div[39m
+                        [33mrole[39m=[32m"alert"[39m
+                      [36m>[39m
+                        [36m<p>[39m
+                          [0mThe response could not be verified.[0m
+                        [36m</p>[39m
+                        [36m<button[39m
+                          [33mtype[39m=[32m"button"[39m
+                        [36m>[39m
+                          [0mRead [0m
+                          [0mparties[0m
+                          [0m again[0m
+                        [36m</button>[39m
+                      [36m</div>[39m
+                      [36m<p[39m
+                        [33mclass[39m=[32m"party-hint party-browse-guidance"[39m
+                      [36m>[39m
+                        [0mReview details before applying. The host approves membership; a virtual position does not confirm arrival.[0m
+                      [36m</p>[39m
+                    [36m</section>[39m
+                  [36m</div>[39m
+                [36m</section>[39m
+              [36m</div>[39m
+              [36m<nav[39m
+                [33maria-label[39m=[32m"Meet sections"[39m
+                [33mclass[39m=[32m"shell-section-links"[39m
+              [36m>[39m
+                [36m<a[39m
+                  [33mdata-discover[39m=[32m"true"[39m
+                  [33mhref[39m=[32m"/meet/parties/new"[39m
+                  [33mid[39m=[32m"section--meet-parties-new"[39m
+                [36m>[39m
+                  [0mCreate party[0m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                  [36m>[39m
+                    [0m→[0m
+                  [36m</span>[39m
+                [36m</a>[39m
+                [36m<a[39m
+                  [33mdata-discover[39m=[32m"true"[39m
+                  [33mhref[39m=[32m"/meet/people"[39m
+                  [33mid[39m=[32m"section--meet-people"[39m
+                [36m>[39m
+                  [0mPeople[0m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                  [36m>[39m
+                    [0m→[0m
+                  [36m</span>[39m
+                [36m</a>[39m
+                [36m<a[39m
+                  [33mdata-discover[39m=[32m"true"[39m
+                  [33mhref[39m=[32m"/meet/intro/edit"[39m
+                  [33mid[39m=[32m"section--meet-intro-edit"[39m
+                [36m>[39m
+                  [0mYour intro[0m
+                  [36m<span[39m
+                    [33maria-hidden[39m=[32m"true"[39m
+                  [36m>[39m
+                    [0m→[0m
+                  [36m</span>[39m
+                [36m</a>[39m
+              [36m</nav>[39m
+            [36m</div>[39m
+          [36m</main>[39m
+        [36m</div>[39m
+        [36m<nav[39m
+          [33maria-label[39m=[32m"Main navigation"[39m
+          [33mclass[39m=[32m"shell-tabs"[39m
+        [36m>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/world"[39m
+            [33mid[39m=[32m"tab-world"[39m
+          [36m>[39m
+            [0mWorld[0m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/feed"[39m
+            [33mid[39m=[32m"tab-feed"[39m
+          [36m>[39m
+            [0mFeed[0m
+          [36m</a>[39m
+          [36m<a[39m
+            [33maria-current[39m=[32m"page"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/meet"[39m
+            [33mid[39m=[32m"tab-meet"[39m
+          [36m>[39m
+            [0mMeet[0m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/gifts"[39m
+            [33mid[39m=[32m"tab-gifts"[39m
+          [36m>[39m
+            [0mGifts[0m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/wall"[39m
+            [33mid[39m=[32m"tab-wall"[39m
+          [36m>[39m
+            [0mWall[0m
+          [36m</a>[39m
+          [36m<a[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/me"[39m
+            [33mid[39m=[32m"tab-me"[39m
+          [36m>[39m
+            [0mMe[0m
+          [36m</a>[39m
+        [36m</nav>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+
+Expected: "/world"
+Received: "/meet"
+
+ ❯ src/app/meeting-entry/__tests__/root-registration.test.tsx:71:64
+     69|   await waitFor(() => expect(f.router.state.location.pathname).toBe('/…
+     70|   fireEvent.click(screen.getByRole('button', { name: 'Back to previous…
+     71|   await waitFor(() => expect(f.router.state.location.pathname).toBe('/…
+       |                                                                ^
+     72|   expect(document.querySelector('[data-world-host]')).toBe(host); expe…
+     73| })
+ ❯ runWithExpensiveErrorDiagnosticsDisabled ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  03:28:05
+   Duration  2.74s (transform 401ms, setup 0ms, import 455ms, tests 1.80s, environment 403ms)
+

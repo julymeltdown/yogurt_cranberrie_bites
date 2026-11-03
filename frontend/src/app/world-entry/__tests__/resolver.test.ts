@@ -18,6 +18,18 @@ const assetResponse = (url: string, bytes: Uint8Array) => {
   Object.defineProperty(response, 'url', { value: url }); return response
 }
 describe('production world entry resolver boundaries', () => {
+  it('shares warm and overlapping public art within this release while rechecking privacy on cache hits', async () => {
+    const h = setup(), request = await requestFor(h.auth), assetFetch = vi.fn<typeof fetch>(async (input) => assetResponse(String(input), assetBytes.png))
+    const result = await createWorldEntryResolver({ ...options(h.auth), assetFetch })(request)
+    const texture = (request.bootstrap.document as unknown as Bundle).avatar_manifest.atlas.texture
+    const resource = { path: texture.path!, sha256: texture.sha256!, kind: 'png' as const }
+    await Promise.all([result.resources.read(resource, request.signal), result.resources.read(resource, request.signal)])
+    await result.resources.read(resource, request.signal)
+    expect(assetFetch).toHaveBeenCalledTimes(1)
+    h.auth.privacy.changePolicy(request.privacyScope, 'block')
+    await expect(result.resources.read(resource, request.signal)).rejects.toThrow()
+    expect(assetFetch).toHaveBeenCalledTimes(1)
+  })
   it('uses the exact immutable bootstrap and persisted theme, one canonical protected no-store room read, and validated default', async () => {
     const h = setup(), request = await requestFor(h.auth), resolve = createWorldEntryResolver(options(h.auth))
     const loadBootstrap = vi.spyOn(h.auth, 'loadBootstrap'), result = await resolve(request)
@@ -33,7 +45,7 @@ describe('production world entry resolver boundaries', () => {
     const prepared = await prepareRelease(result, request)
     expect(prepared.resources.roomId).toBe(result.roomId); expect(prepared.mapInput.resources).toBe(result.resources)
   })
-  it('derives only the selected theme, map and selected-source atlas hash/path allowlist through the existing resource reader', async () => {
+  it('derives reviewed compatible original themes, map and selected-source atlas hash/path allowlist through the existing resource reader', async () => {
     const h = setup(), request = await requestFor(h.auth), calls: { url: string; init: RequestInit }[] = []
     const assetFetch: typeof fetch = async (input, init) => { const url = String(input); calls.push({ url, init: init! }); return assetResponse(url, url.endsWith('.json') ? assetBytes.json : assetBytes.png) }
     const result = await createWorldEntryResolver({ ...options(h.auth), assetFetch })(request)
@@ -44,10 +56,12 @@ describe('production world entry resolver boundaries', () => {
       const data = await result.resources.read(resource, request.signal); expect(Array.from(data)).toEqual(Array.from(kind === 'json' ? assetBytes.json : assetBytes.png))
     }
     expect(calls).toHaveLength(3); expect(calls[0]!.init).toMatchObject({ credentials: 'omit', mode: 'same-origin', redirect: 'error', referrerPolicy: 'no-referrer' })
+    const optional = doc.theme_manifests.find(t => t.theme_id === 'REVENGE')!.texture
+    expect(Array.from(await result.resources.read({ path: optional.path!, sha256: optional.sha256!, kind: 'png' }, request.signal))).toEqual(Array.from(assetBytes.png))
     const base = { path: selected.texture.path!, sha256: selected.texture.sha256!, kind: 'png' as const }
-    for (const resource of [{ ...base, path: 'https://evil.test/a.png' }, { ...base, path: 'world/test-only/revenge.png' }, { ...base, path: '../avatar.png' }, { ...base, sha256: 'sha256:' + '0'.repeat(64) }]) await expect(result.resources.read(resource, request.signal)).rejects.toThrow()
-    expect(calls).toHaveLength(3)
-    h.auth.privacy.changePolicy(request.privacyScope, 'block'); await expect(result.resources.read(base, request.signal)).rejects.toThrow(); expect(calls).toHaveLength(3)
+    for (const resource of [{ ...base, path: 'https://evil.test/a.png' }, { ...base, path: 'world/test-only/unlisted.png' }, { ...base, path: '../avatar.png' }, { ...base, sha256: 'sha256:' + '0'.repeat(64) }]) await expect(result.resources.read(resource, request.signal)).rejects.toThrow()
+    expect(calls).toHaveLength(4)
+    h.auth.privacy.changePolicy(request.privacyScope, 'block'); await expect(result.resources.read(base, request.signal)).rejects.toThrow(); expect(calls).toHaveLength(4)
   })
   it('pins a caller resource before async work so mutation cannot replace the authorized hash', async () => {
     const h = setup(), request = await requestFor(h.auth)

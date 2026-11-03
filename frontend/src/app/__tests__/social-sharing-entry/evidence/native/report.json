@@ -1,0 +1,69 @@
+{
+  "result": "PASS",
+  "qualification": "Actual default routes, WorldShell, canonical Auth/HTTP/FE31 and one production world/Phaser owner. Explicit TEST ONLY C04/readiness, MockSocket, geometric terrain. Live provider, physical device, two-user IN03 and load NOT_RUN.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "uncertainKey": "7c7e9e49-8b8d-4367-a0b6-e415d62d346f",
+      "uncertainWrites": 1,
+      "uncertainWithdrawalTransitions": 4,
+      "lateRevealTransitions": 7,
+      "peakGames": 1,
+      "queryEntries": 0,
+      "disposal": "no active sockets/game"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "uncertainKey": "0fe51d14-c463-468b-b88b-5cc704ee3e02",
+      "uncertainWrites": 1,
+      "uncertainWithdrawalTransitions": 4,
+      "lateRevealTransitions": 7,
+      "peakGames": 1,
+      "queryEntries": 0,
+      "disposal": "no active sockets/game"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "uncertainKey": "0584f92f-7fb1-4c5a-b3b1-334eb2dc9797",
+      "uncertainWrites": 1,
+      "uncertainWithdrawalTransitions": 4,
+      "lateRevealTransitions": 7,
+      "peakGames": 1,
+      "queryEntries": 0,
+      "disposal": "no active sockets/game"
+    }
+  ],
+  "screenshots": [
+    "handles-shell-360.png",
+    "handles-keyboard-360.png",
+    "detail-revealed-360.png",
+    "requests-360.png",
+    "uncertain-360.png",
+    "read-only-360.png",
+    "unavailable-360.png",
+    "empty-360.png",
+    "error-360.png",
+    "handles-shell-390.png",
+    "handles-keyboard-390.png",
+    "detail-revealed-390.png",
+    "requests-390.png",
+    "uncertain-390.png",
+    "read-only-390.png",
+    "unavailable-390.png",
+    "empty-390.png",
+    "error-390.png",
+    "handles-shell-430.png",
+    "handles-keyboard-430.png",
+    "detail-revealed-430.png",
+    "requests-430.png",
+    "uncertain-430.png",
+    "read-only-430.png",
+    "unavailable-430.png",
+    "empty-430.png",
+    "error-430.png"
+  ],
+  "errors": []
+}

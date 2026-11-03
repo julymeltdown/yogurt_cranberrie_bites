@@ -1,0 +1,9 @@
+.gift-pickup { max-width: 44rem; margin: 0 auto; padding: 1rem; padding-bottom: max(2rem,env(safe-area-inset-bottom)); color: #eae6df; background: #191b20; font: 1rem/1.5 system-ui,sans-serif; overflow-wrap: anywhere; }
+.gift-pickup h1 { font-size: clamp(1.8rem,5vw,2.5rem); line-height: 1.15; }
+.gift-pickup section { margin: 2rem 0; }
+.gift-pickup label { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin: 1rem 0; }
+.gift-pickup input,.gift-pickup button { min-height: 44px; max-width: 100%; box-sizing: border-box; font: inherit; color: inherit; border: 1px solid #85878c; border-radius: .35rem; padding: .65rem; background: #25282f; }
+.gift-pickup input[type=checkbox] { width: 24px; min-height: 24px; flex-shrink: 0; }
+.gift-pickup :focus-visible { outline: 3px solid #f0c969; outline-offset: 3px; }
+.gift-pickup :disabled { opacity: .6; }
+.gift-pickup output { display: block; font-size: 2rem; letter-spacing: .25em; margin: 1rem 0; }

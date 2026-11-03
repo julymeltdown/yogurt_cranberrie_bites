@@ -1,0 +1,11 @@
+# IN01 provisioning tooling integration — 2026-11-04
+
+The eight handed-off commits from `9ad192cdffd919e077d6dda3df51b06ccb718c2d` through `f54c192fbad87a3a8997ed4a4939db4167d9cd42` were applied serially, without conflicts or source changes, above published `453312121ae7539c027b9deb19009f9f569d4040`. Integrated application/tooling head: `af63371f50233a105e7a2de73a7cbad7244a50b2`. This evidence is a documentation-only child.
+
+Exactly three source handoff paths changed: `backend/scripts/mcr/in01_provision.py`, `backend/scripts/mcr/test_in01_provision.py`, and `docs/mcr/backend/in01-provisioning.md`. All three files are byte-identical to the author's final handoff. No frontend implementation, shared contract, service binary, migration, dependency or original source file changed. The original Delivery checkout remains untouched.
+
+Integration validation: `python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py` exited 0, 23 tests passed. Exact path-set/source-byte assertions and `git diff --check` exited 0. The author's targeted review is reused; all three findings were fixed in source `21d1657` and are covered by the committed regressions. No second general review or unnecessary repeat of the native run was imposed.
+
+The author executed actual signup, captured email verification, login, held-owner attachment, control status/stop and cleanup using the explicitly historical six-service bundle. Main verified the existing sanitized receipt byte hashes: owner `10b459905a2a81e7ce23d562ecd398b1a3af3994647151e05c7837d90a236691`, attach `85f13ecf0c5f44aca93e9d21f1a5724ea401d7d1382a6fc35164e1d24d2acbb7`. Detailed command/provenance/limits are preserved in [the source handoff](../backend/in01-provisioning.md).
+
+The historical bundle has 32 recorded current-source differences and returns bootstrap 404. No default room or reviewed runtime-art pins were supplied, no World gate configuration was emitted, and the temporary accounts were removed during successful cleanup. This proves the bounded provisioning tool's recorded behavior; it does **not** qualify the current service build, real World entry, approved artwork, or full IN01. Those gates remain NOT_RUN. Current-source binary qualification has a separately assigned QA owner and isolated build target.

@@ -4,13 +4,21 @@ import { Button, Feedback } from '../shared/ui'
 import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad, validBootstrap } from './access'
 import { MAX_SHELL_LOCATIONS, NavigationMemory, ShellLink, usePanelBack } from './navigation'
 import type { ActiveScope, ShellBootstrap } from './ports'
-import { resolvePanel, tabs, type PanelRoute } from './routes'
+import { resolvePanel, type PanelRoute } from './routes'
 import { WorldHost } from './WorldHost'
+import { BottomNavigation, PanelHeader } from './shell-chrome'
+import { ParadeFooter } from './shell-chrome/parade-footer'
+import { ConcertIcon, ConcertWindowEmbedding } from '../shared/ui/concert-window'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
 
+const SessionShellHeader = lazy(() => import('./shell-chrome/identity').then(module => ({ default: module.SessionShellHeader })))
+const RootSocialFeatures = lazy(() => import('./world-panels/social').then(module => ({ default: module.RootSocialFeatures })))
+const ProductionEraControls = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionEraControls })))
 const ProductionWorldFeatures = lazy(() => import('./world-entry/root-features'))
+const AccountProvider = lazy(() => import('./account-entry/provider'))
 const CommunityFeatures = lazy(() => import('./CommunityFeatures'))
+const MeetingEntryFeatures = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingEntryFeatures })))
 
 export function WorldBoundary() {
   const { scope } = useAccess()
@@ -62,10 +70,10 @@ function typingTarget(target: EventTarget | null) {
 export function WorldShell({ scope, bootstrap, privacyScope = null }: {
   scope: ActiveScope; bootstrap: ShellBootstrap; privacyScope?: PrivacyScope | null
 }) {
+  const { auth, accountAssets } = usePorts()
   const location = useLocation()
-  const route = resolvePanel(location.pathname)
   const panelOpen = location.pathname !== '/world'
-  const [size, setSize] = useState<'peek' | 'half' | 'full'>('half')
+  const [size, setSize] = useState<'peek' | 'half' | 'full'>(() => window.matchMedia?.('(max-width: 799px)').matches ? 'full' : 'half')
   const [typing, setTyping] = useState(false)
   const root = useRef<HTMLDivElement>(null)
   const positions = useRef(new Map<string, number>())
@@ -78,34 +86,28 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     window.addEventListener('resize', update)
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
-  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures>
-    <NavigationMemory><div className="world-shell" data-mcr-shell="" ref={root}
+  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
+    <RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory><div className="world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
     <a className="skip-link" href="#shell-content">Skip to content</a>
-    <header className="shell-header">
-      <div><Link to="/" className="shell-brand" aria-label="MCR Concert World home">MCR <span>Concert World</span></Link>
-        <p className="shell-event">{bootstrap.event.title}</p></div>
-      <ShellLink to="/notifications" className="shell-link" id="shell-inbox">Inbox</ShellLink>
-    </header>
-    <div className="shell-era"><ShellLink to="/world/theme" id="shell-era">Revenge / Parade / Danger <span aria-hidden="true">↗</span></ShellLink>
-      {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <span>Read only</span>}</div>
+    <SessionShellHeader bootstrap={bootstrap} />
+    <div className="shell-era-region"><ProductionEraControls />
+      {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <p className="shell-mode" role="status">Read only</p>}
+    </div>
     <div className="shell-stage" data-panel-size={panelOpen ? size : 'closed'}>
       <WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full'} />
       {panelOpen ? <PanelFrame size={size} onSize={setSize} positions={positions.current}><Outlet /></PanelFrame>
         : <main id="shell-content" className="shell-world-tools" tabIndex={-1}>
           <h1 className="mcr-visually-hidden">World</h1>
-          <nav aria-label="World tools"><ShellLink id="world-map" to="/world/map">Map</ShellLink>
-            <ShellLink id="world-rooms" to="/world/rooms">Rooms</ShellLink>
-            <ShellLink id="world-nearby" to="/world/nearby">Nearby</ShellLink>
-            <ShellLink id="world-help" to="/world/help">Help</ShellLink></nav>
+          <nav aria-label="World tools"><ShellLink id="world-map" to="/world/map"><ConcertIcon name="map" /><span>Map</span></ShellLink>
+            <ShellLink id="world-rooms" to="/world/rooms"><ConcertIcon name="world" /><span>Rooms</span></ShellLink>
+            <ShellLink id="world-nearby" to="/world/nearby"><ConcertIcon name="meet" /><span>Nearby</span></ShellLink>
+            <ShellLink id="world-help" to="/world/help"><ConcertIcon name="help" /><span>Help</span></ShellLink></nav>
         </main>}
     </div>
-    <nav className="shell-tabs" aria-label="Main navigation">
-      {tabs.map(tab => <ShellLink key={tab.path} id={`tab-${tab.label.toLowerCase()}`} to={tab.path}
-        aria-current={route?.route.tab === tab.path ? 'page' : undefined}>{tab.label}</ShellLink>)}
-    </nav>
-  </div></NavigationMemory></ProductionWorldFeatures></CommunityFeatures></Suspense>
+    <BottomNavigation />
+  </div></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></Suspense>
 }
 
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {
@@ -129,20 +131,16 @@ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'hal
     }
   }, [location.key, location.pathname, location.search, navigation])
   // A destination includes its query target. Reopen on navigation, not on a user size change.
-  useLayoutEffect(() => { if (size === 'peek') onSize('half') }, [location.key])
+  useLayoutEffect(() => { if (window.matchMedia?.('(max-width: 799px)').matches) onSize('full'); else if (size === 'peek') onSize('half') }, [location.key])
   return <main id="shell-content" tabIndex={-1} className="shell-panel" aria-labelledby="panel-title"
     onKeyDown={event => {
       if (event.key === 'Escape' && !event.defaultPrevented && !typingTarget(event.target)) { event.preventDefault(); back() }
     }}>
-    <header className="shell-panel-header">
-      <Button variant="quiet" onClick={back} aria-label="Back to previous panel">← Back</Button>
-      <h1 id="panel-title" ref={heading} tabIndex={-1}>{title}</h1>
-      <Button variant="quiet" onClick={() => onSize(size === 'full' ? 'half' : 'full')}
-        aria-label={size === 'full' ? 'Reduce panel' : 'Expand panel'} aria-expanded={size === 'full'}>{size === 'full' ? 'Reduce' : 'Expand'}</Button>
-      <Button variant="quiet" onClick={() => onSize(size === 'peek' ? 'half' : 'peek')}
-        aria-label={size === 'peek' ? 'Show panel content' : 'Minimize panel'} aria-expanded={size !== 'peek'}>{size === 'peek' ? 'Show' : 'Hide'}</Button>
-    </header>
-    <div className="shell-panel-body" ref={scroll} hidden={size === 'peek'}>{children}</div>
+    <PanelHeader title={title} headingRef={heading} size={size} back={back}
+      toggleSize={() => onSize(size === 'full' ? 'half' : 'full')}
+      toggleContent={() => onSize(size === 'peek' ? 'half' : 'peek')} />
+    <div className="shell-panel-body" ref={scroll} hidden={size === 'peek'}><ConcertWindowEmbedding>{children}</ConcertWindowEmbedding></div>
+    {size !== 'peek' && ['/meet', '/gifts', '/me'].includes(location.pathname) && <ParadeFooter />}
   </main>
 }
 

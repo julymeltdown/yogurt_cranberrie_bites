@@ -1,12 +1,16 @@
 import type { SessionController } from '../../features/auth/model/session'
 import { list, object, requireValue, text } from '../../features/auth/model/contract'
-import { isThemeId } from '../../features/theme/model/preferences'
+import { isThemeId, type ThemeId } from '../../features/theme/model/preferences'
 import { validateWorldRooms } from '../../features/world-rooms/model/contract'
 import { characterSourcePack } from '../../entities/avatar/source-catalog'
 import { immutable } from '../../world/entities/replicated'
 import { validatePolicy, type SimulationPolicy } from '../../world/input/simulation'
 import { createAssetResources, type AssetResources, type Resource } from '../../world/map/resources'
+import { createResourceByteCache } from '../../world/map/resource-cache'
+import { validateManifests } from '../../world/map/manifest'
+import { canonicalJson } from '../../features/auth/model/bootstrap'
 import type { Geometry } from '../../world/map/manifest'
+import { sceneryResources } from '../../world/illustrated/model'
 import type { ResolvedWorldRelease, WorldReleaseResolver } from '../../world/composition'
 import { assertEntry, captureEntry, validateEntry, type WorldEntryRequest } from './authority'
 
@@ -57,8 +61,39 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
       requireValue(provenance.source_id === characterSourcePack.source_pack_id)
       // Never carry C06 synthetic place metadata into a production map release.
       requireValue(list(map.places).map(object).every(place => object(place.provenance).source_kind !== 'ORIGINAL_FIXTURE'))
+      const metadata = await validateManifests(canonicalJson(map), canonicalJson(theme), {
+        mapHash: text(map.content_hash), themeHash: text(theme.content_hash),
+        avatar: { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) },
+      })
       const allow = [provided(map.tilemap, 'json'), provided(theme.texture, 'png'), provided(object(avatar.atlas).texture, 'png')]
-      const assets = createAssetResources({ origin, allow, ...(assetFetch ? { fetch: assetFetch } : {}) })
+      const merge = (resources: readonly Resource[]) => {
+        const staged = [...allow]
+        for (const resource of resources) {
+          const existing = staged.find(item => item.path === resource.path)
+          requireValue(!existing || existing.sha256 === resource.sha256 && existing.kind === resource.kind)
+          if (!existing) staged.push(resource)
+        }
+        allow.splice(0, allow.length, ...staged)
+      }
+      merge(sceneryResources(metadata.theme))
+      const availableThemeIds: ThemeId[] = [themeId]
+      for (const candidate of list(document.theme_manifests).map(object)) {
+        if (candidate === theme) continue
+        // Optional skins gain only their original C03 descriptor, never a caller URL or art fallback.
+        try {
+          reviewedArt(candidate)
+          const resource = provided(candidate.texture, 'png')
+          const optional = await validateManifests(canonicalJson(map), canonicalJson(candidate), { mapHash: text(map.content_hash), themeHash: text(candidate.content_hash),
+            avatar: { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) } })
+          const entries = [resource, ...sceneryResources(optional.theme)]
+          requireValue(isThemeId(candidate.theme_id))
+          // Includes conflicts within this candidate, not only against already admitted skins.
+          merge(entries); availableThemeIds.push(candidate.theme_id)
+        } catch { /* An unqualified optional skin remains unavailable; selected release checks above stay mandatory. */ }
+      }
+      const resourceOptions = { origin, allow, ...(assetFetch ? { fetch: assetFetch } : {}) }
+      // Keep invalid/duplicate resource rejection before any rooms request. No bytes are read here.
+      createAssetResources(resourceOptions)
       validatePolicy(object(map.geometry) as unknown as Geometry, configuration.movementPolicy)
       requireValue(Number.isFinite(configuration.zoom) && configuration.zoom >= 1 && configuration.zoom <= 8)
       // No resource pin is guessed; C03 validated the hashes and cross-manifest bindings locally above.
@@ -68,6 +103,14 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
       assertEntry(auth, captured)
       requireValue(auth.session.isCurrent(response.scope))
       const rooms = response.data
+      // Public immutable bytes share this release only. Every read still passes the original privacy and allowlist fences.
+      const cache = createResourceByteCache({ signal: captured.signal })
+      let stopCache = () => {}
+      const stop = () => { cache.dispose(); stopCache(); captured.signal.removeEventListener('abort', stop) }
+      stopCache = auth.privacy.registerCleanup(stop)
+      captured.signal.addEventListener('abort', stop, { once: true })
+      if (captured.signal.aborted || !auth.privacy.isCurrent(captured.privacyScope)) { stop(); throw new Error('World authority unavailable') }
+      const assets = createAssetResources({ ...resourceOptions, cache })
       // The default is a catalog choice only. The canonical ticket/snapshot still decides admission, including full rooms.
       const resources: AssetResources = Object.freeze({ read(resource: Resource, readSignal: AbortSignal) {
         const pinned = Object.freeze({ path: resource.path, sha256: resource.sha256, kind: resource.kind })
@@ -76,7 +119,7 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
           assertEntry(auth, captured); return assets.read(pinned, leaseSignal)
         }, combined)
       } })
-      return Object.freeze({ privacyScope: captured.privacyScope, bootstrap: captured.bootstrap.document!, themeId,
+      return Object.freeze({ availableThemeIds: Object.freeze(availableThemeIds), privacyScope: captured.privacyScope, bootstrap: captured.bootstrap.document!, themeId,
         roomId: rooms.default_room_id, rooms, resources, movementPolicy: configuration.movementPolicy, zoom: configuration.zoom })
     }, captured.signal)
   }

@@ -1,0 +1,89 @@
+# FE35 notification inbox — bounded frontend handoff
+
+Date: 2026-11-04. Status: **MOCK_READY**, not full FE35 acceptance. U10 `/notifications`, BE33 runtime, IN03 social/privacy qualification and release acceptance remain **NOT_RUN** in this handoff. The canonical unread-total consumer is now implemented against additive C04 0.1.1; its real BE33 producer and root integration remain unqualified. No scope cut is implied.
+
+## Ownership, ancestry and provenance
+
+- Delivery repository/branch: `julymeltdown/mcr`, `master`; only the designated delivery integrator publishes it.
+- Worker: `codex/mcr-fe-FE35`, isolated `/Users/lhs/Desktop/mcr-worktrees/fe-inbox`, base `e6fef53d9f0841b3e16ce3baa4db01a834043957`.
+- Exact writable scope: `frontend/src/features/inbox/**` and this document. No shared contracts, manifests, lockfile, root routing, backend or source archives changed.
+- Product authority: `MCR_IMPLEMENTATION_PLAN_V2_EN.md` FE35/BE33, U10 and IN03. Assessment/execution plans and `docs/mcr/parallel-delivery.md` informed allocation, not product amendments.
+- All inbox rendering, controller, adapters and tests are newly authored. No Bigyeting rendering, notification implementation or art is copied. Existing MCR headless `event-feed/contract.ts` supplies the strict generated-schema validator and deep freeze by import, at source revision `aa9d01c9bb9518b5c79f180fa871ba6b1ba5549c`.
+- Canonical Auth/session, HTTP and privacy code is reused by import, not duplicated. The base includes `7bfea962136df4c35be43571c657d140d2982079` for the latest Auth/privacy-path change. Runtime dependencies remain React 19, canonical MCR Auth/transport/privacy and the existing generated public schema/operation registry. No package added; retained resolutions unchanged.
+- Pinned contract inputs: `contracts/domain/v1/feed.schema.json` last changed at `d0649ec2a1ea8dd520627fc214792c877d1d4c22`; generated `contracts/generated/mcr-domain.openapi.json` and `frontend/src/shared/api/domain-operations.generated.ts` at `ca9f955cd22f7e4c1da029d034c1923f1e98bb9d`. Target schemas and registered operations come from that same generated contract.
+- Synthetic tests import existing MCR Auth, party, giveaway and feed fixtures read-only from this base. The browser fixture supplies its own synthetic in-memory identity, HTTP DTOs and availability port; none is reachable through the production module entry.
+- Delivery commit: the first commit containing this document and the paths below is the immutable worker handoff; any follow-up identifies its parent in Git. Do not infer a master merge/push from a worker commit.
+
+## Changed paths and behavior
+
+| Path within `frontend/src/features/inbox/` | Purpose |
+| --- | --- |
+| `index.ts` | Public controller/UI/navigation exports |
+| `model/contract.ts` | Strict closed list, target, read result and captured command-receipt decoding; bounded deduplication |
+| `model/controller.ts` | Canonical private reads, explicit commands/recovery, lifecycle clearing and stale response fences |
+| `model/targets.ts` | Fresh authorized resource reads and reviewed shell destinations |
+| `ui/Inbox.tsx`, `ui/inbox.css` | Newly authored inbox list, read controls, honest loaded count and neutral unavailable feedback |
+| `__tests__/controller.test.ts`, `__tests__/targets.test.ts`, `__tests__/fixtures/data.ts` | Deterministic private/read/command/navigation tests |
+| `__tests__/preview.html`, `__tests__/preview.tsx`, `__tests__/browser-smoke.mjs` | Isolated production-built canonical-session browser fixture |
+| `__tests__/evidence/*` | Browser report with source hashes and screenshots at four widths |
+
+Reads use only `listConcertNotifications` for the current canonical user/event. Unknown or private DTO fields, foreign event/target IDs, malformed timestamps, invalid unread-filter results and cursor loops fail closed. The controller keeps at most 200 rows and ten continuation requests, deduplicates overlapping IDs by revision, and rejects conflicting same-revision projections. It stores no raw errors, handles, location payloads, target projections or tokens. There is no persistent inbox cache or fallback account.
+
+`unreadShown` counts only loaded unread rows. The UI separately presents the server's complete unread total from `getConcertNotificationUnreadCount`, plus its observation time, and labels loaded unread rows independently. An unavailable total stays unavailable; there is no loaded-row or zero fallback. Read-all remains server-scoped, and its server cutoff is authoritative; the client never blanket-marks cached or future notifications read.
+
+Individual mark-read sends `expected_revision`; mark-read and all-read send one canonical UUID idempotency key per explicit intent. They are SAFETY writes and have no invented `mutations` capability gate. Pending, network loss, malformed success, expired/retired history and failed/unknown receipts never authorize automatic mutation replay or a new key for the identical intent. Original operation/key recovery is an explicit user action. Receipt success is bound to actor/event/operation/key, expected resource/revision and result status 200, then followed by a fresh authorized list read. There is no notification-by-ID read contract; a missing paged row is not fabricated or treated as proof of absence. An older manual/filter read is canceled and fenced before a command's authoritative reread. Any present matching row contradicting the confirmed resource revision or read state is discarded; receipt recovery stays unconfirmed. The scope is checked again after the reread. A failed all-read restriction remains stable across pagination, filtering and other read commands; only confirmed all-read success releases it for a later explicit intent.
+
+Identity/event changes, logout, block/consent policy generation changes, suspension and disposal synchronously clear rows, targets and command bindings and cancel pending work. A producer-only outage within the same valid privacy lease clears observations and cancels work but preserves original command bindings and attempt restrictions; sending/checking becomes uncertain until explicit original-key recovery after access returns. Delayed non-cooperative responses cannot repopulate old state. Block changes may reauthorize a new scoped list; the prior list is never retained as placeholder. Scoped invalidation drops existing rows/targets and requires an explicit refresh; it does not ingest a pushed notification or replay a write.
+
+Opening a notification does not mark it read. The controller first fetches and validates the target through canonical Auth, then emits only a reviewed path plus the captured privacy scope. Party, application-to-party, published giveaway, current user's pickup reservation, participant social request, feed post and published notice destinations are supported. REPORT has no participant detail route and stays unavailable, with no moderator-evidence fetch. Deleted, denied, foreign, malformed or unavailable targets never navigate or render cached details. The destination page must authorize its own current read again; a successful preflight is not a durable permission grant.
+
+## Root composition and remaining required work
+
+The feature exports `createInboxController`, `Inbox`, `InboxController`, `InboxOptions`, `InboxState` and the scoped navigation types. The integration owner must mount it at U10 using the **existing shell Auth controller**, call `start()` once for that instance and `dispose()` when removing it. Do not create a second Auth/session/world instance. The root remains the owner of `/notifications`, badges, navigation and capabilities.
+
+Composition must supply `access: { read, subscribe }` from actual producer readiness and current shell policy. No notification capability exists in the pinned seven-capability projection. Keep the feature unavailable until the canonical producer is available; do not infer readiness from another capability or substitute local production fixtures. `navigate({ path, scope })` must recheck `auth.privacy.isCurrent(scope)` before using the existing router. Authorized invalidation may call `invalidate(capturedScope)`; backend payloads never become UI notification authority. Shared root/contracts remain integrator-owned.
+
+Required gaps, without reducing the specification:
+
+1. **Canonical unread total producer/root:** C04 0.1.1 now defines the separate closed actor/event-bound total response, and this frontend consumes it. BE33 must qualify the full authorized snapshot producer; root badge composition and actual invalidation delivery remain required. `NotificationList` remains unchanged; loaded counts cannot stand in for this observation.
+2. **BE33 producer and read semantics:** real durable deduplication, server actor/event authorization, safe payload production, concurrent read-all cutoff, receipt retention and status behavior require executed backend evidence. Frontend fixtures do not prove them.
+3. **Root and vertical flow:** wire U10, actual availability and safe navigation, current invalidation delivery and any count badge. Verify real duplicate deliveries, stale targets, cross-user/event changes and block/revoke propagation through HTTP, WS and cache under IN03.
+4. **Device/release:** actual mobile devices, assistive technology and full release qualification remain NOT_RUN. Chrome viewport checks are not device acceptance.
+
+## Initial handoff validation evidence
+
+Node `24.22.2`, pnpm `11.7.0`, TypeScript `6.0.2`, Vitest `4.1.9`, Vite `8.1.3`, native headless Chrome `156.0.8078.80`. A private offline frozen install populated this worktree's own ignored `node_modules`; no dependency or lockfile changes. Commands below run from the worker root unless a directory is stated. Put the pinned Node `bin` on `PATH`.
+
+| Command | Result / scope |
+| --- | --- |
+| `python3 scripts/mcr/check-plan.py` | Exit 0; all 13 archive checksums, pinned narrative, exporters and routing pass. Planning only. |
+| `node frontend/node_modules/vitest/vitest.mjs run frontend/src/features/inbox/__tests__ frontend/src/features/auth/__tests__/domain-request.test.ts frontend/src/features/auth/__tests__/session.test.ts frontend/src/shared/query/__tests__/privacy.test.ts frontend/src/shared/api/__tests__/http.test.ts frontend/src/features/event-feed/__tests__/controller.test.ts` | Exit 0; 283/283 tests in seven files, including 63 inbox tests. Canonical transport/privacy and strict decoder dependency regression. |
+| `node frontend/node_modules/typescript/bin/tsc -p frontend --noEmit --incremental false` | Exit 0. |
+| `frontend/node_modules/.bin/oxlint frontend/src/features/inbox` | Exit 0. |
+| `node /Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs build` in `frontend/` | Exit 0; application production build. Existing chunk-size warnings remain. Root build does not imply inbox route integration; the separate fixture compiles the actual inbox UI. |
+| `node frontend/src/features/inbox/__tests__/browser-smoke.mjs` | Exit 0; production fixture build/preview, four viewports 360/390/430/1280. Source hashes and check list in `frontend/src/features/inbox/__tests__/evidence/browser-report.json`. |
+| `git diff --check`; assigned-path and cross-directory-import inspection | Exit 0; no backend imports, source edits or changes outside assignment. |
+
+Focused coverage includes overlapping/duplicate pages and bounded duplicate-only chains; closed/private DTO rejection; availability and privacy clearing; delayed filter/target/command responses; no optimistic state or replay; explicit status binding/expiry/retirement; read-all new arrival; and participant target authorization. Browser coverage exercises empty/offline states, pending receipt recovery without a second PATCH, fresh denied target handling, read-all cutoff, invalidation, availability/logout clearing, visible keyboard focus, buttons at least 44 px high, no horizontal overflow, no decorative left borders/pseudo-bars and no browser errors. Screenshots were visually inspected at 390 px. These are fixture-level evidence only.
+
+## Targeted review fixes
+
+A separate read-only review reproduced two recovery defects in the initial worker checkpoint `fb44efbe83fb9557f8ef0214ee1109265c1fcaab`: a present unread/older list row could contradict a successful receipt, and pagination could change the failed all-read fingerprint and permit a replacement key. The follow-up validates any present recovered row (missing page rows remain permissible), fences its scope after the reread and keeps failed all-read intent restrictions independent of loaded pages. Five added regressions cover old revision/unread contradictions, direct/receipt failure across pagination/filter changes, and a later new explicit all-read after confirmed success. The follow-up is part of the required handoff; the first checkpoint alone is superseded.
+
+## Full unread-total consumer follow-up
+
+Delivery transferred exact `frontend/src/features/inbox/**` plus this document back to the same owner in the **new** social-composition checkout; the old inbox checkout stays stopped. Source base for that checkout is `f1dee537af728475b3e47300de20de34777e05c2`. Authorized prerequisites were imported unchanged: `fb44efb` → `7a8c345`, `021a191` → `db5b867`; shared contract `a25b85592b906209f4a9d20f9c7279ced8abab02` → `47bebae`. People/intro prerequisites `08bbfb1` → `1732ace`, `3477041` → `59ee7e8` are separate dependency commits and are not inbox edits. No shared contract was authored by this worker.
+
+`GET /api/concert/events/{eventId}/me/notifications/unread-count` uses the generated registered operation, canonical Auth and no-store transport, without query/body. The closed decoder validates actor, event, UTC `as_of` and the full nonnegative safe integer range. `state.count` exposes an independent phase/total/asOf/failure observation. List refresh, filter refresh and confirmed read/read-all explicitly reread it; pagination never derives or changes the full count. Starting a command removes the preceding observation rather than subtracting locally. Current-scope invalidation clears it and requires explicit refresh. Count requests have their own cancellation/version fence; policy/identity/unavailability/dispose clear them synchronously. An unavailable/malformed response leaves the list independently usable and the total null.
+
+Follow-up validation in the new checkout, pinned Node24.22.2: `vitest run frontend/src/features/inbox/__tests__` exit0, **79/79** (16 new full-count cases). Native production fixture `node frontend/src/features/inbox/__tests__/browser-smoke.mjs` exit0 at 360/390/430/1280, Chrome156.0.8078.80, including total31 while only one unread row is loaded. Its source-hashed report and refreshed screenshots are committed under the existing inbox evidence paths. Typecheck/feature lint pass. Count tests cover full-versus-loaded independence, zero/MAX_SAFE_INTEGER boundaries, actor/event/private-field/UTC/negative/fraction/unsafe rejection, policy/late-refresh fencing, 503 availability, invalidation and fresh reads after individual/all-read. Backend full-snapshot enforcement, actual root badge and live BE33 remain unclaimed; the former missing frontend count consumer is resolved at fixture level.
+
+## Published-base refresh and empty-page read-all correction
+
+The social-composition branch preserves full-count commit `e677f7929f14ab7aa8547ca94145cc68b4ae23b3` and WIP checkpoint `fe2167f`, then merges published master `e869480395b70b4aae6cfcf50e904b079a59a0e7` as `9e62f70`. All 16 authorized non-inbox merge-conflict paths were taken byte for byte from that published base; inbox-owned conflicts retained the full-count consumer. No contract regeneration or dependency installation occurred.
+
+Read-all now remains available when the loaded page has zero unread rows and a fresh canonical count is positive. Both controller and UI enforce this condition; zero/unavailable totals with no loaded unread evidence do not enable a write. Server cutoff, idempotency and explicit recovery behavior are unchanged. Two added controller regressions exercise positive/zero totals with an empty page. Fresh native Chrome proof covers the same empty-page positive-total action at 360/390/430/1280, including its single PATCH, then the existing receipt recovery/new-arrival/privacy cases. The source-hashed report supersedes the earlier browser observation while its prior committed evidence remains in history.
+
+Current focused validation: **83 inbox cases plus 43 composition cases, 126/126**, exit 0; native inbox script exit 0 at all four widths; The combined social feature suite passes **218/218** across 15 files; TypeScript and scoped lint exit 0. These remain deterministic fixture results. Actual root badge, live BE33 and IN03 acceptance remain NOT_RUN by this worker.
+
+Targeted composition review also reproduced lost uncertain inbox command identity after a producer-only outage, plus late target lookup navigation. The inbox now retains command identity/attempt restrictions across the same valid lease's outage, cancels only private observations, and exposes `cancelTarget()` so composition can fence subsequent navigation immediately. Two sending/uncertain outage regressions verify one PATCH and recovery with the original key; native proof withdraws/restores availability before recovering the pending command. Full privacy/identity changes still clear bindings.

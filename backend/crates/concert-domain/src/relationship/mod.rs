@@ -129,3 +129,65 @@ pub fn decide(s: PolicySnapshot) -> Result<PolicyDecision, RelationshipError> {
 }
 
 pub mod social;
+
+/// Current actor eligibility only; deliberately carries no relationship revision or target grant.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ActorDecision {
+    key: crate::ParticipantKey,
+    event_revision: Revision,
+    authority_revision: Revision,
+    checked_at: DateTime<Utc>,
+    valid_until: DateTime<Utc>,
+}
+impl ActorDecision {
+    pub fn key(self) -> crate::ParticipantKey {
+        self.key
+    }
+    pub fn event_revision(self) -> Revision {
+        self.event_revision
+    }
+    pub fn authority_revision(self) -> Revision {
+        self.authority_revision
+    }
+    pub fn checked_at(self) -> DateTime<Utc> {
+        self.checked_at
+    }
+    pub fn valid_until(self) -> DateTime<Utc> {
+        self.valid_until
+    }
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct ActorSnapshot {
+    pub key: crate::ParticipantKey,
+    pub phase: EventPhase,
+    pub event_revision: Revision,
+    pub member: bool,
+    pub now: DateTime<Utc>,
+    pub authority: FreshAuthority,
+}
+pub fn decide_actor(s: ActorSnapshot) -> Result<ActorDecision, RelationshipError> {
+    let a = s.authority;
+    let expected = PolicyQuery {
+        event: s.key.event_id,
+        actor: s.key.user_id,
+        subject: s.key.user_id,
+        field: Field::SafetySelf,
+    };
+    if a.query != expected || a.checked_at != s.now || a.valid_until <= s.now {
+        return Err(RelationshipError::Unavailable);
+    }
+    if !s.member
+        || !a.actor_allowed
+        || !a.subject_allowed
+        || matches!(s.phase, EventPhase::Draft | EventPhase::Archived)
+    {
+        return Err(RelationshipError::Denied);
+    }
+    Ok(ActorDecision {
+        key: s.key,
+        event_revision: s.event_revision,
+        authority_revision: a.revision,
+        checked_at: s.now,
+        valid_until: a.valid_until,
+    })
+}

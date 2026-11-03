@@ -1,0 +1,137 @@
+{
+  "status": "INTEGRATED",
+  "sourceCommit": "4a05e4678e3ad27f05b8d5f880b9b754da8bf323",
+  "authorCommits": [
+    "2e33bba3b6da453f0443a47e6acdd9fef4be98cc",
+    "78e3ce3c2b0743285f115c3be1dc317ecbc28efb"
+  ],
+  "deliveredCommits": [
+    "1d008582",
+    "4a05e467"
+  ],
+  "authorBase": "aa33fa7eea26c2918e956e85983890560db98daf",
+  "authorSourcePinsVerified": 1577,
+  "currentSourcePinsVerified": 1626,
+  "exactAuthorPaths": {
+    "backend/services/concert-service/src/config/world_runtime.rs": "2515ccb9cfb5850c1b850c7bed706ffd0ace1eb8c2a48da4f9131389b7e32ee5",
+    "backend/services/concert-service/src/world/admission_bridge.rs": "b591e74c182d80b5ce4507f6481959a1ad485788473d3b54d7725ed9709f6f0a",
+    "backend/services/concert-service/src/world/membership.rs": "811d27f7a84f2086b10035668d73a0018dee028b2e4c60932c86ad9749a75dcd",
+    "backend/services/concert-service/src/world/mod.rs": "b3649376832f145b12fd4e1ce68d61f5f223af80f2a7b82d23f03e745e5502f2",
+    "backend/services/concert-service/src/world/production_owners.rs": "9066641086cc46a9932bd70bd8cd3b822c525fd2fa4036cbe3c722464c8c8bf8",
+    "backend/services/concert-service/src/world/runtime.rs": "0a0932d191b5f264131679e1605b43b0b4db224e7ac6c921c381ea6db66840ae",
+    "backend/services/concert-service/tests/world_owner_composition/mod.rs": "1526b3ea3924a4d8b71845599ab5f59291dde56dbb960a8fb38abe0538ff70dc",
+    "backend/services/concert-service/tests/world_owner_composition/native_smoke.py": "f0deb5a9398e0d3e6f60d40afaac946bbe44abb3c06662ae18472fcb6aa1ae39",
+    "backend/services/concert-service/tests/world_runtime.rs": "fcccc0eb8b7b544ac434245f265fcb6df6c47d2c461561e3ad5872860626d3e5",
+    "backend/services/concert-service/tests/world_runtime_support/auth_bridge.rs": "1170af7a755758f3e5b6dce7f8184bba195c7eb9e5a527047ddcd151fb916f15",
+    "docs/mcr/backend/world-owner-composition.md": "42b6a06d75921868ec3d5f4f7491a2150ab6cc1b5f25c107b69d616fffc9d3b5"
+  },
+  "compile": {
+    "toolchain": "1.88.0",
+    "locked": true,
+    "offline": true,
+    "jobs": 2,
+    "exit": 0,
+    "seconds": 21.24
+  },
+  "checks": [
+    {
+      "name": "concert_service",
+      "exit": 0,
+      "seconds": 1.32
+    },
+    {
+      "name": "world_runtime",
+      "exit": 0,
+      "seconds": 0.27
+    },
+    {
+      "name": "world_ws",
+      "exit": 0,
+      "seconds": 5.04
+    }
+  ],
+  "passed": {
+    "library": 30,
+    "runtime": 28,
+    "websocket": 16,
+    "nativeComposition": 1
+  },
+  "native": {
+    "reportSha256": "9548010fb1f0160dff2e96ade2f2cfc1d69348b13dab4025523f1fd0b9b11069",
+    "binarySha256": "3b30f315380138de733f825a77a1c29e707be7cb5cb068e9a4db4ada08285ef2",
+    "result": "PASS",
+    "exit": 0,
+    "cleanup": "PASS",
+    "ownedRootAbsent": true,
+    "migrationCounts": {
+      "auth-service": 15,
+      "friend-service": 15,
+      "profile-service": 7,
+      "concert-service": 17
+    },
+    "migrationHashes": {
+      "backend/services/auth-service/migrations/0001_init_auth.sql": "a4af04e2d91b4ebbcad2b4d1e31724030492b859a16627d576f235203f75d1e6",
+      "backend/services/auth-service/migrations/0002_oauth_identities.sql": "902c977960e9d3c85ee7b4e96d355e8bbea5af92cad27855a53e1e8944bdf2d2",
+      "backend/services/auth-service/migrations/0003_governance.sql": "a0a47910510fc53fa218c7303bb3411f2a22f75af504061d913677875d3379b9",
+      "backend/services/auth-service/migrations/0004_oauth_authorizations.sql": "8da1c9adefd84cf22e9566c77fc0b180b4a8ce50fe2baa5a262653076dab2c30",
+      "backend/services/auth-service/migrations/0005_user_deletion_sagas.sql": "286811b445dae24dbeb87e79075c27d62936caa04b8c1c8708aa8494aef774b4",
+      "backend/services/auth-service/migrations/0006_atomic_auth_and_delivery.sql": "a1d72adc0b0fc558f6d20615198ca511a06c8eaaad6e0a95ccdc59e7bc81d5cc",
+      "backend/services/auth-service/migrations/0007_login_attempt_classification.sql": "ad3f0604a1c831cb7999337f564d6350aeca3cc691c185bdff26b3d63c011eb5",
+      "backend/services/auth-service/migrations/0008_refresh_token_families.sql": "8e06bf45a6082e63666e95fe2993d27e15b341ca4535e2ebe9793388d0e6e535",
+      "backend/services/auth-service/migrations/0009_user_deletion_operator_retries.sql": "7422660c10813cf3a4d64d85b30c53749cab41be4b22c05bc3daafdf2ea2c0ff",
+      "backend/services/auth-service/migrations/0010_user_deletion_dead_letter_cursor.sql": "27fcd1c9d7fccc206b78499b570e1b5fc5b711842c965aed3f815654e00ebe24",
+      "backend/services/auth-service/migrations/0011_user_deletion_trace_context.sql": "1b068d731b3959f276fde68ad2ed6dd6bb75500404d62f06a37cc4fed803168a",
+      "backend/services/auth-service/migrations/0012_mail_outbox_trace_context.sql": "3d98845e8e5b0ee12f9150d5ef1deb42b88013478165a02be3b9ff0f7c585404",
+      "backend/services/auth-service/migrations/0013_identity_binding_epoch.sql": "0062e550ad7895389f9e49175795db73e1e4b8b4fd4be5e3bcf2a6b083dcfc9a",
+      "backend/services/auth-service/migrations/0014_concert_relationship_revision.sql": "ab2b935a378a6c1f0a2a9339edfcc057ec4e74092c38410e8fb8a6225358b6a7",
+      "backend/services/auth-service/migrations/0015_concert_deletion_steps.sql": "6b5ad5b41e145dab76b41569f225d0f38f3db304e9b9c8e7e649af87a465f751",
+      "backend/services/friend-service/migrations/0001_init_friend.sql": "08b1f1d611b856c72237b907e206e534a7ebcddb06d79afa3207a5e25c2c06ba",
+      "backend/services/friend-service/migrations/0002_governance.sql": "b2fca092e1b81a6283b144919c54dbc9252327c39f74df359823aac87380e5aa",
+      "backend/services/friend-service/migrations/0003_query_hardening.sql": "1e3bd6d8a28ee725b86d7af751bbcdf6fbbf2d6b9ac199cc2cfd0ce0862bffe7",
+      "backend/services/friend-service/migrations/0004_follow_requests.sql": "faf17e6eefccfd2f26a669e92af6b753c54c9639a45bb41552c6dd04e013d2b9",
+      "backend/services/friend-service/migrations/0005_blocks_mutes.sql": "39480d08724c3cd17d773c29d82bed36ea5fa995ecd72012c6a4ef64698d030a",
+      "backend/services/friend-service/migrations/0006_user_lifecycle.sql": "30d3f49c2e2f8a43cce5639c32be53ab446e1bdb6653ec1928135a169cccb439",
+      "backend/services/friend-service/migrations/0007_people_recommendations.sql": "57cbd758e30fe83fa52ef5cbdfdf6034cbe54427497186dbe02d94cdd5091834",
+      "backend/services/friend-service/migrations/0008_people_model_registry.sql": "cf88b876fe303e4e2e7220ef57dc966ce709518107b0fa926bc9096891d9bd22",
+      "backend/services/friend-service/migrations/0009_recommendation_retention.sql": "f16ee1e167d7dbf6c3d4eaf4e511ce03ca2bc966b06bd2eed66c68f2c35bc3da",
+      "backend/services/friend-service/migrations/0010_owner_mutation_receipts.sql": "3c85dde8c8c556ee9a75af49703282cfa93d612d13a0130c6d9c1082e4d0462d",
+      "backend/services/friend-service/migrations/0011_user_deletion_fences.sql": "73be9a37e9b2049ea1dae45c9f4d42505af14ce9c70b1b7358ab8cb307466765",
+      "backend/services/friend-service/migrations/0012_recommendation_event_admission.sql": "3db47ecdc17f16122a9df9f2d310ee0b343c2c9a682ba2f6b8b54bc1dbc06f52",
+      "backend/services/friend-service/migrations/0013_recommendation_metadata_admission.sql": "cc012b57865f4c1c2f3da664b833baa6ee32be46dcbc8c99a3b90db299d49ab5",
+      "backend/services/friend-service/migrations/0014_runtime_recommendation_cleanup.sql": "169a785331a228d19446a6ccc1a90ca92ce202cd6658162826bff524b1c7126b",
+      "backend/services/friend-service/migrations/0015_concert_relationship_revision.sql": "05fe915674d7bfc755f3943d19f3bfd7e0659b0236b616be765dc96dcbb5ee62",
+      "backend/services/profile-service/migrations/0001_init_profile.sql": "4c0c0ce757b6971895f5bd1f46e4b2314f4d5abfda76cab9a535142d9053d862",
+      "backend/services/profile-service/migrations/0002_governance.sql": "bbc3f355293924abe5628610a1bdbfb1ceca15f9abcb1070eb2916b2ec6bcc21",
+      "backend/services/profile-service/migrations/0003_account_privacy.sql": "b20fec5d9e20339bd0abfe3363c86b9b6e76b5dcb08d7a873ba5fe13124051a9",
+      "backend/services/profile-service/migrations/0004_search_trigram_index.sql": "8e1bfe023ae99a02c039de9cd69ad713eaeaf69f045c227307863a551d2d0459",
+      "backend/services/profile-service/migrations/0005_owner_mutation_receipts.sql": "3eead515b0032692d67666fcc813615d60e9f33332b34fc90c07de1e688cba58",
+      "backend/services/profile-service/migrations/0006_profile_edit_owner_receipts.sql": "5a8e1d4fcd88582a914dc46e1649003a732d1a081c17d8b599857968407677a7",
+      "backend/services/profile-service/migrations/0007_user_deletion_fences.sql": "050a2239f3efbf14016b36b41d0e50ed22ba408284165418d1a347059b3f2930",
+      "backend/services/concert-service/migrations/0001_concert_core.sql": "9978e75e569c1ba25cb191ddf5b02bbdffcd5e64f3385173f05a885370d9215a",
+      "backend/services/concert-service/migrations/0002_command_receipts_outbox.sql": "5f5760dfe6384cb2ab5162bcc27fbc0ed75bdca6bb85229012f6389269ee442f",
+      "backend/services/concert-service/migrations/0003_places_map_releases.sql": "b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a",
+      "backend/services/concert-service/migrations/0004_bootstrap_admission.sql": "cb1c0093eeaef79dbe783052447c34c78aad5c6daebdc2f6f3dc7f4b17112ac9",
+      "backend/services/concert-service/migrations/0005_world_admission.sql": "100e8de5a8392a4cd11e83337303e44e9ef79cee7c6f3c7547e333bcd9c7b761",
+      "backend/services/concert-service/migrations/0006_relationship_policy.sql": "0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3",
+      "backend/services/concert-service/migrations/0007_community.sql": "6c22de4cbfc51db3b3bc23b151d19e5ad43ddc36a794ffdf7cf4507e19090930",
+      "backend/services/concert-service/migrations/0008_meeting_beacons.sql": "b8259eb000c15059ddcba60db64518562d2cede7d2d68c42de3df8a85b44c655",
+      "backend/services/concert-service/migrations/0009_receipt_domain_failures.sql": "e357529103bb998f337508a30b03bddc372fe387b7e587dcb7f96a8b295fa4c6",
+      "backend/services/concert-service/migrations/0010_feed.sql": "a0d3ac6672e37a1bff26129317ddaafdecfc18701c751b340df219c0859d7997",
+      "backend/services/concert-service/migrations/0011_outbox_maintenance.sql": "8971093dee1293dfd160920c773d663866dcb5cb688fb7cabf6746eaca2eb61b",
+      "backend/services/concert-service/migrations/0012_media.sql": "aae18779fda409d5a9de1844336c3e58d3705197346ce94b9b5e0a926e119224",
+      "backend/services/concert-service/migrations/0016_meeting_deadline_guards.sql": "4375673c48b46096cf20dcbac807eace37d96136e347ac9da3b95a884135ff7d",
+      "backend/services/concert-service/migrations/0018_event_lifecycle.sql": "8a93ed7e1b02345c3071cb0583384d61bb1e0b509e8939daf568f9ea352e2cb0",
+      "backend/services/concert-service/migrations/0019_mural.sql": "50afb9fd802353f6e3e21b47f0506c2faf7413e99ad3575c24bfb01194b8075f",
+      "backend/services/concert-service/migrations/0020_mural_receipt_failures.sql": "293da98d083ebed19ce68875682f707de6db17103649a2da3211f46308ee2912",
+      "backend/services/concert-service/migrations/0021_moderation_operations.sql": "01622e9d134c6cb9e9950a450397e6c542af5289a8e372b331bf7ec52a786506"
+    },
+    "migrationMode": "DIRECT_SQL_NOT_SERVING_LEDGER"
+  },
+  "authorNativeBridgeChecks": "4 SQL bridge plus1 sealed Auth bridge passed on author source; not freshly rerun",
+  "remaining": [
+    "Reliable known-invalidation producer/delivery/local acknowledgment remains missing; startup stays unavailable.",
+    "No global distributed transaction requirement.",
+    "No live production browser, approved art, device, load, deployment or IN01 acceptance."
+  ],
+  "buildReservation": "RELEASED"
+}

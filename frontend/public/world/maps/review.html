@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AR02 virtual courtyard review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#151719;color:#f5f2e8;font:16px/1.45 system-ui,sans-serif}main{padding:16px;max-width:680px;margin:auto}h1{font-size:24px;margin:0 0 8px}h2{font-size:19px;margin:20px 0 10px}p{margin:8px 0 16px}.warning{color:#e6d7aa}label{display:block;font-weight:600;margin:12px 0 6px}select,button{min-height:44px;background:#25292b;color:inherit;border:1px solid #a4aaad;border-radius:4px;padding:8px;font:inherit;max-width:100%;width:100%}canvas{display:block;width:100%;image-rendering:pixelated;background:#101214}#focus{height:320px}#overview{height:auto}ol{padding-left:26px}li{padding:5px 0}#current{min-height:44px;margin:8px 0}small{font-size:14px}a{color:#bde6f0}
+</style>
+</head>
+<body><main>
+<h1>Virtual courtyard</h1>
+<p class="warning">AR02 asset review. Original virtual paths and landmarks. Not a physical venue route or arrival guide.</p>
+<label for="theme">World skin</label><select id="theme"><option value="revenge">Revenge</option><option value="parade">Parade</option><option value="danger">Danger</option></select>
+<label for="target">Inspect landmark</label><select id="target"></select>
+<p id="current" aria-live="polite"></p>
+<canvas id="focus" aria-label="Virtual map close view at one source pixel per CSS pixel"></canvas>
+<h2>Virtual map overview</h2>
+<canvas id="overview" width="1152" height="896" aria-label="Full virtual map; numbered landmarks match the list below"></canvas>
+<ol id="legend"></ol>
+<p><small>Three spawns share one connected walkable area. Buildings, stage and planting footprints block virtual movement. Numbers identify virtual information points only. No characters or physical meeting destinations are included.</small></p>
+<p><a href="/world/places/source-pack.json">Source qualification and unresolved operator evidence</a></p>
+</main>
+<script type="module">
+const geometry=await fetch('./geometry.json').then(r=>r.json()), places=await fetch('./virtual-places.json').then(r=>r.json())
+const theme=document.querySelector('#theme'),target=document.querySelector('#target'),focus=document.querySelector('#focus'),overview=document.querySelector('#overview')
+for(const [i,point]of geometry.interactions.entries()){
+ const place=places.find(p=>p.place_id===point.place_id),option=document.createElement('option');option.value=i;option.textContent=place.label;target.append(option)
+ const li=document.createElement('li');li.textContent=place.label;document.querySelector('#legend').append(li)
+}
+let image,currentTheme
+async function draw(){
+ const selected=theme.value
+ if(selected!==currentTheme){const next=new Image();next.src=`/world/themes/${selected}.png`;await next.decode();image=next;currentTheme=selected}
+ const point=geometry.interactions[Number(target.value)],label=places.find(p=>p.place_id===point.place_id).label
+ document.querySelector('#current').textContent=`${label} · virtual information point`
+ focus.width=Math.round(focus.getBoundingClientRect().width);focus.height=320
+ function render(canvas,scale,ox,oy,labels){
+  const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.clearRect(0,0,canvas.width,canvas.height)
+  for(const grid of[geometry.terrain_layer,geometry.overdraw_layer])for(let y=0;y<geometry.height_cells;y++)for(let x=0;x<geometry.width_cells;x++){
+   const id=grid[y][x];if(!id)continue;const index=id-1
+   ctx.drawImage(image,index%8*32,Math.floor(index/8)*32,32,32,Math.round((x*32-ox)*scale),Math.round((y*32-oy)*scale),Math.ceil(32*scale),Math.ceil(32*scale))
+  }
+  for(const[i,p]of geometry.interactions.entries()){
+   const x=((p.cell_x+.5)*32-ox)*scale,y=((p.cell_y+.5)*32-oy)*scale,r=labels?25:14
+   ctx.fillStyle='#101214';ctx.strokeStyle='#fff6d6';ctx.lineWidth=labels?3:2;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle='#fff6d6';ctx.font=`bold ${labels?28:16}px system-ui`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(String(i+1),x,y)
+  }
+ }
+ render(overview,1,0,0,true)
+ render(focus,1,(point.cell_x+.5)*32-focus.width/2,(point.cell_y+.5)*32-focus.height/2,false)
+ window.ar02Review={ready:true,theme:selected,point:point.interaction_id,canvasWidth:focus.width,geometryHash:(await fetch('./binding-inputs.json').then(r=>r.json())).geometry_hash}
+}
+theme.addEventListener('change',()=>{window.ar02Review.ready=false;draw()});target.addEventListener('change',()=>{window.ar02Review.ready=false;draw()});window.addEventListener('resize',draw);await draw()
+</script></body></html>

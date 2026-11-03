@@ -1,0 +1,38 @@
+   Compiling concert-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-community/backend/crates/concert-domain)
+    Finished `test` profile [unoptimized] target(s) in 0.74s
+     Running tests/community_giveaway.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/community_giveaway-d930dd37d9cb1c96)
+
+running 7 tests
+test one_unit_stock_duplicate_and_window_based_expiry ... ok
+test admission_ends_before_existing_reservation_grace ... ok
+test expiry_and_cancel_release_once_at_exclusive_boundary ... ok
+test code_expiry_capped_by_fractional_reservation_uses_database_precision ... ok
+test ready_code_expiry_and_one_time_claim ... ok
+test quantity_window_owner_and_meeting_are_enforced ... ok
+test pause_honors_existing_holds_cancel_clears_codes ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/community_party.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/community_party-6c004be9108b9290)
+
+running 5 tests
+test invalid_fields_revision_and_window_leave_no_effect ... ok
+test cancellation_is_terminal_and_cancels_pending ... ok
+test removal_revokes_audience_and_capacity_owner_never_orphaned ... ok
+test last_slot_and_duplicate_application_are_guarded ... ok
+test transfer_preserves_one_owner_and_meeting_move_fences_guidance ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling concert-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-community/backend/crates/concert-domain)
+   Compiling concert-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-community/backend/crates/concert-application)
+    Finished `test` profile [unoptimized] target(s) in 0.94s
+     Running tests/community_command.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/community_command-b5484fe190867749)
+
+running 3 tests
+test delete_revision_uses_query_and_never_json_body ... ok
+test pickup_hash_binds_reservation_generation_and_rotation ... ok
+test restart_id_is_stable_and_request_is_bound_to_exact_body_and_path ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

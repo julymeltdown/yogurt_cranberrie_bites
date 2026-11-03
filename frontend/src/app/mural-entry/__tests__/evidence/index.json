@@ -1,0 +1,174 @@
+{
+  "base": "01a8e6bceb583a5aba080e401478c7fae4ec0d58",
+  "changedPaths": [
+    "docs/mcr/frontend/mural-entry.md",
+    "frontend/src/app/mural-entry/__tests__/browser.mjs",
+    "frontend/src/app/mural-entry/__tests__/build.mjs",
+    "frontend/src/app/mural-entry/__tests__/evidence/index.json",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-360.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-390.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-430.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-controls-360.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-controls-390.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-controls-430.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-360.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-390.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-430.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-controls-360.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-controls-390.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-controls-430.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/report.json",
+    "frontend/src/app/mural-entry/__tests__/evidence/unavailable-360.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/unavailable-390.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/unavailable-430.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-360.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-390.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-430.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-controls-360.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-controls-390.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-controls-430.png",
+    "frontend/src/app/mural-entry/__tests__/evidence/validation.json",
+    "frontend/src/app/mural-entry/__tests__/fixtures.ts",
+    "frontend/src/app/mural-entry/__tests__/owner.test.ts",
+    "frontend/src/app/mural-entry/__tests__/preview.html",
+    "frontend/src/app/mural-entry/__tests__/preview.tsx",
+    "frontend/src/app/mural-entry/__tests__/routes.test.tsx",
+    "frontend/src/app/mural-entry/index.ts",
+    "frontend/src/app/mural-entry/owner.ts",
+    "frontend/src/app/mural-entry/ports.ts",
+    "frontend/src/app/mural-entry/provider.tsx"
+  ],
+  "inputPins": {
+    "contracts/domain/v1/mural.schema.json": {
+      "sha256": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
+      "baseBlob": "1134e67f1dcb5786ed83001f34a976a92fa3f4f0"
+    },
+    "contracts/domain/v1/operations.json": {
+      "sha256": "411fcee8222db2f5a7938866ac37791033e85682f11d024ceb895c245c708500",
+      "baseBlob": "7ee7b48d3ec85241ad448035268c8f17afd9369f"
+    },
+    "contracts/domain/v1/policy.json": {
+      "sha256": "01c6b9e9a44b81bcf1273ebd7ba8361d3cc035a969399b4dad1f9dedec05839a",
+      "baseBlob": "35e3e398d55a94d8f00c5dff3123c1f56deacb35"
+    },
+    "contracts/realtime/v1/world.schema.json": {
+      "sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+      "baseBlob": "8d92e39cee9576ca91696a068f236273561a09ce"
+    },
+    "contracts/realtime/v1/policy.json": {
+      "sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+      "baseBlob": "aa3b32060e318227d959b30232a2a53a063d0b35"
+    },
+    "frontend/src/features/mural/sync/controller.ts": {
+      "sha256": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+      "baseBlob": "56450be6041679fd30fe973d1a8da19e16eb6455"
+    },
+    "frontend/src/features/mural/sync/http.ts": {
+      "sha256": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144",
+      "baseBlob": "54f58381ab29c58da4fa68f0c040d107f8e8f2b1"
+    },
+    "frontend/src/features/mural/sync/contract.ts": {
+      "sha256": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+      "baseBlob": "4e02e20ad35ecf0c3284192be0770483ba8e05d4"
+    },
+    "frontend/src/features/mural/editor/controller.ts": {
+      "sha256": "0af993f96cbe303a6e920a87faeab32b4e5652ae68ef44809c1a41cbdb9dd26f",
+      "baseBlob": "823ea9a40b895ab115754de79cd61968719ffac5"
+    },
+    "frontend/src/features/mural/editor/contract.ts": {
+      "sha256": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+      "baseBlob": "4c128b2e0c42af4b19630029a10a62d6ec58fb44"
+    },
+    "frontend/src/features/mural/editor/MuralEditor.tsx": {
+      "sha256": "8492827741db327607dd24bad88900a60f607cab2a810b24d3bd051e541e6e00",
+      "baseBlob": "124254503ac58cd66e7042f21e7919dc8bcc9c76"
+    },
+    "frontend/src/features/mural/editor/editor.css": {
+      "sha256": "bba609bd9832e5d4e90f1decc51be3c86d21886ee9c332561f120480daff31e3",
+      "baseBlob": "4c13623414903bf21a8ed94e24abd70fc8925feb"
+    },
+    "frontend/src/world/mural/authority.ts": {
+      "sha256": "f08a51650603fc0f0e6b6049df27e7fb20d554c07768ec89c82958cbc9f8b078",
+      "baseBlob": "0e9e9e1ebb421024626b3930705f152c686add7a"
+    },
+    "frontend/src/world/mural/sink.ts": {
+      "sha256": "105180874d00863e00ce2d3918051103f9a2ec25ba9e79eb5c330d737c15e1e8",
+      "baseBlob": "8115a48585c5d97dc3cb0a00fc85bea85dcbb16e"
+    },
+    "frontend/src/world/mural/phaser.ts": {
+      "sha256": "b254fcc7bfd572f94a048f859f72fecc4baa35e61bafb5c293ed7203bdf64af9",
+      "baseBlob": "13967881cfb0c15a5bee0bc3d203c254504d432e"
+    },
+    "frontend/src/shared/api/http.ts": {
+      "sha256": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+      "baseBlob": "64e89f6f2aec1b864ecc0ca51a51e004418b4f2f"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "sha256": "9e48ad68c1f1b6ff0ae876fae0355bdc873ff26907a29ec004469ac4aa191484",
+      "baseBlob": "6964e4ca971e55baf41106b7a30454658d0fd371"
+    },
+    "frontend/src/shared/query/privacy.ts": {
+      "sha256": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+      "baseBlob": "5af53399b632c8b3a73c719a20ee68cb1e8d461b"
+    },
+    "frontend/src/features/auth/model/session.ts": {
+      "sha256": "dae6680d1f4a0600b6d3012639fd82c9317d63d1a55eb856e5c4dc81f9a5dc53",
+      "baseBlob": "f2d0b3e0e06269e37674b84200d4085a0cc12b2d"
+    },
+    "frontend/src/app/router.tsx": {
+      "sha256": "6626b51bd8bfa3589dff42ab0166ec05bd07438b83cb83e5bffe21b7d32d1eb2",
+      "baseBlob": "0fa9e64a640142b3ee42b70cb030593412ec96c1"
+    },
+    "frontend/src/app/WorldShell.tsx": {
+      "sha256": "9418ecaa41689bcdf2d1a15872097bb2672d29786602a14e5251fa308f4ed27b",
+      "baseBlob": "95cc883ad5a5e33d1b76232befa7803ea4649b4a"
+    },
+    "docs/mcr/design/ui-ux-reference-review.md": {
+      "sha256": "2966652a4bb2a3edea34d171d0da6aa10fe2c394959b21ab3ddb622edc3f1568",
+      "baseBlob": "b09882f55a57c0d881cd02a52b3e89ce6f063c65"
+    },
+    "docs/mcr/frontend/mural-sync.md": {
+      "sha256": "0694dd68f3dae604ee2c1e7b8f509729812d5c9f7e3362ab9a506e21f207697a",
+      "baseBlob": "ef43beeefd5c4906975bc99ba392590bef6fe857"
+    }
+  },
+  "newFileSha256": {
+    "docs/mcr/frontend/mural-entry.md": "6cb16b3016ab549826b868239f0b4a2679282edf13ce3b11ba24054168ebc405",
+    "frontend/src/app/mural-entry/__tests__/browser.mjs": "7fe3a78ea77dbbf115e702135481629977ad1fc2031e921b23f87afb3462012c",
+    "frontend/src/app/mural-entry/__tests__/build.mjs": "b5dc951f3fd7eb3c1409e262309cabdd16ec67bf2533639efc592eb05045b16d",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-360.png": "591e36bbbede44bb2dbd87084f99ce6d7223a2d4842f7fc8a7a8d6ceada8cf56",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-390.png": "88b5af7d30357525a199eecc48caacf6d1e49f74a5387cadc68d614242ff3a2f",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-430.png": "75a83ff1b560920eae8931498eb550ac16e17c1b80672c7ec642b51d68532df5",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-controls-360.png": "9d5fc4f2b0f674d524e51bbfd508a879a0fc1544b3d13c1eb31efb6957ca48c5",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-controls-390.png": "3bed832efc31ea6f2387bb5393b9bc3c5915c2f0ed4b5191cb4a4673c8400edb",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-controls-430.png": "b8be1e9a34df9db5aca531daf8a7bcc0a1172a701fc4b0e9250ba441ebea89f1",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-360.png": "b064bf81c78b5077b0c93432ab0d9343bde314dc598aca342169ffc3fae5fac8",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-390.png": "d53597658e132daffa43189c379d60f10a9e8afc5af95816fa74f9f37a5b7bb9",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-430.png": "1ea9488d65cdda8cf9ba00c8365e0631a82d9a14d045b585e1a66b0f77372f45",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-controls-360.png": "2fa29c0b8faaf08a8c2436fdc216b4201142e02ffb6f96619a79b47e0fea08af",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-controls-390.png": "b2980f61617cf38d0e3c5875285fda6eb4ee2b38904106d7652f094d6440c62a",
+    "frontend/src/app/mural-entry/__tests__/evidence/read-only-controls-430.png": "ae8dfdfe436e4c2035bd2ba5853f060b19e52fec8440c72d9b0224480f473b44",
+    "frontend/src/app/mural-entry/__tests__/evidence/report.json": "52ae7f6cc431f60c345cb80e9790cf82af8bf080a7d9a0e774e15e47a1daf422",
+    "frontend/src/app/mural-entry/__tests__/evidence/unavailable-360.png": "c5f6e0035e8ffc359b4215c3dc966a897ee2629578d76f641af8751119b3912e",
+    "frontend/src/app/mural-entry/__tests__/evidence/unavailable-390.png": "b7b22bf00bef4e28869ab5c93f24ae8e1cbf42e746f6a0417668734883d1cb30",
+    "frontend/src/app/mural-entry/__tests__/evidence/unavailable-430.png": "1510dc21e2b0012ecf6a8308cd0119c4dea431f732395dbd94481c828dab9a43",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-360.png": "af4752a61385c170a7fdfb9bffd9c70f0ce2511254a01042683029a1211c6eba",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-390.png": "12d41a9612304ac948a4d96304f7175c2ffff10d0f549e400a609c12037c5123",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-430.png": "c575b5ee56226f57a195ffd2dba82c88a1e8aa8f02212df57f1c211027ad6139",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-controls-360.png": "c193e68595b5215b03ed553154a8494ecd18c358d61a881ae25f5ae5a6c8f605",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-controls-390.png": "bc5da3a9cd58a9636aac45da9d9573aa8cd89d2fde650d7a37291bdc36c46099",
+    "frontend/src/app/mural-entry/__tests__/evidence/unknown-controls-430.png": "584b314aee196fb7a0cb4651df39918ea3815bfdf7ccf2500aa22a01a6650196",
+    "frontend/src/app/mural-entry/__tests__/evidence/validation.json": "6c69aa4049c5a1dd3cd5da937fda5ffe34e33699807a739637d407a96ffbb70e",
+    "frontend/src/app/mural-entry/__tests__/fixtures.ts": "c54b34a241daa112e225a25357a3c23d04af840e2e434a32b0e8063b67d4fe3a",
+    "frontend/src/app/mural-entry/__tests__/owner.test.ts": "631374c196ace772d707b5d7c35a4140a8a3486c1440b28fa2045b43566962e5",
+    "frontend/src/app/mural-entry/__tests__/preview.html": "c55f0ae9e3e97ee8fb851755bc3d88e04ad1cac4f5bdfa86843a552496200a66",
+    "frontend/src/app/mural-entry/__tests__/preview.tsx": "3e916bfbcb04e9578607839268036a23ada31edffb03445e1b129bd8c4e38bb1",
+    "frontend/src/app/mural-entry/__tests__/routes.test.tsx": "9a9dfd01b2593dadbba5d7ff1839da40129dad9c730dd40970b2c5497bdb187c",
+    "frontend/src/app/mural-entry/index.ts": "3949e167f001e23bd248520afbbe251db55a68dfd29c7d70bde55c03c5ba629a",
+    "frontend/src/app/mural-entry/owner.ts": "d798f2804ebd569a422da17692b9b0f3764053bceaca98488b156a00ef31a4c9",
+    "frontend/src/app/mural-entry/ports.ts": "1031c444a4f632bb35e5aacb8c791591c73a348b0c3702f2e1bcee3fbcc7f038",
+    "frontend/src/app/mural-entry/provider.tsx": "975918620fb178f68e2af0110a494926ef5aee28fb044b50549ecc1a7e646d60"
+  },
+  "pngCount": 21,
+  "selfHash": "Excluded to avoid a recursive hash; commit binds this index."
+}

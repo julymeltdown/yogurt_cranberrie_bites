@@ -1,0 +1,43 @@
+{
+  "scope": "UIV05-WALL",
+  "base": "3e3b54a3aa6052536cc48b5afadc0992e7482084",
+  "status": "MOCK_READY",
+  "checks": {
+    "affectedTests": {
+      "exit": 0,
+      "tests": 205,
+      "files": 12,
+      "report": "affected-tests.json"
+    },
+    "browserBefore": {
+      "exit": 0,
+      "cases": 9
+    },
+    "browserAfter": {
+      "exit": 0,
+      "cases": 84,
+      "interactionFlows": 3,
+      "shortHeightCaptures": 12
+    },
+    "strictCombinedTypes": {
+      "exit": 0
+    },
+    "combinedLint": {
+      "exit": 0
+    },
+    "productionBuild": {
+      "exit": 0,
+      "outDir": "/tmp/mcr-uiv05-final-build",
+      "warning": "Existing large chunks"
+    },
+    "planningProvenance": {
+      "exit": 0
+    },
+    "broadSuite": "NOT_RUN"
+  },
+  "limitations": [
+    "No production root consumer/default mural integration spec at assigned base; main confirmed separate unfinished composition.",
+    "Actual component/controller fixtures, not a live producer or collaborative proof.",
+    "Native devices, manual screen readers, real server/moderation/recovery/performance and IN04 remain separate."
+  ]
+}

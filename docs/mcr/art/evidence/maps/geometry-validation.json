@@ -1,0 +1,43 @@
+{
+  "status": "CONTRACT_READY",
+  "scope": "AR02 unpublished original virtual map candidate; no theme/avatar/release binding",
+  "base": "a25b85592b906209f4a9d20f9c7279ced8abab02",
+  "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+  "tilemap_sha256": "sha256:a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d",
+  "source_revisions": {
+    "scripts/mcr/validate-assets.py": "sha256:94cb9f3eae7b184794fefa626b4d00e4ff690c80975f0c140072f2d094ff8cf0",
+    "backend/crates/concert-domain/src/world/mod.rs": "sha256:5bed3adce15687b7f952e117a2550e54a090205dc066b513e2ec034aeefa7e1e",
+    "contracts/assets/v1/avatar-config.schema.json": "sha256:37b9be22cff7cbde882ab144aec3b75b5edc24f70653f97c9dcec14e87c652bd",
+    "contracts/assets/v1/avatar-manifest.schema.json": "sha256:cb98594db269ef017545806b368d5edd1d0a47b53819809392f8ac57cf30da98",
+    "contracts/assets/v1/common.schema.json": "sha256:b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+    "contracts/assets/v1/map-manifest.schema.json": "sha256:ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800",
+    "contracts/assets/v1/theme-manifest.schema.json": "sha256:7e4b0d9a8e2e21ffe76172870ea5ef44b5282e8f7852671862889c492f38b1d5"
+  },
+  "checks": {
+    "c06_schema_hash_and_reachability": "PASS",
+    "tiled_normalized_grid_parity": "PASS",
+    "landmark_interaction_resolution": "PASS",
+    "physical_candidate_exclusion": "PASS",
+    "closed_boundary_and_structures": "PASS",
+    "all_walkable_cells_connected": "PASS"
+  },
+  "cells": 1008,
+  "walkable_cells": 713,
+  "blocked_cells": 295,
+  "spawns": 3,
+  "interactions": 5,
+  "negative_cases_rejected": [
+    "export-collision-drift",
+    "blocked-spawn",
+    "unknown-place",
+    "severed-route",
+    "nonbinary-collision"
+  ],
+  "server_parity": "Encoded BE12 cell-center row-major convention checked exhaustively; actual Rust runtime NOT_RUN (no build lease).",
+  "external_gates": [
+    "Operator venue qualification NOT_RUN",
+    "Physical device/QA06 NOT_RUN",
+    "Actual multiuser/IN01 NOT_RUN",
+    "Final product release pins NOT_RUN"
+  ]
+}

@@ -7217,273 +7217,24 @@
         ]
       },
       "AvatarConfig": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "contract_version",
-          "kind",
-          "manifest_id",
-          "manifest_version",
-          "item_ids",
-          "skin_tone_id"
-        ],
-        "properties": {
-          "contract_version": {
-            "const": "1.0.0"
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/LayeredAvatarConfig"
           },
-          "kind": {
-            "const": "avatar_config"
-          },
-          "manifest_id": {
-            "$ref": "#/components/schemas/AssetId"
-          },
-          "manifest_version": {
-            "type": "integer",
-            "minimum": 1
-          },
-          "item_ids": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "body",
-              "eyes",
-              "hair",
-              "outfit",
-              "accessory"
-            ],
-            "properties": {
-              "body": {
-                "$ref": "#/components/schemas/AssetId"
-              },
-              "eyes": {
-                "$ref": "#/components/schemas/AssetId"
-              },
-              "hair": {
-                "$ref": "#/components/schemas/AssetId"
-              },
-              "outfit": {
-                "$ref": "#/components/schemas/AssetId"
-              },
-              "accessory": {
-                "anyOf": [
-                  {
-                    "$ref": "#/components/schemas/AssetId"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            }
-          },
-          "skin_tone_id": {
-            "$ref": "#/components/schemas/AssetId"
+          {
+            "$ref": "#/components/schemas/WholeCharacterAvatarConfig"
           }
-        }
+        ]
       },
       "AvatarManifest": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "contract_version",
-          "kind",
-          "manifest_id",
-          "manifest_version",
-          "content_hash",
-          "provenance",
-          "layer_order",
-          "skin_tones",
-          "atlas",
-          "presets",
-          "fallback_preset_id"
-        ],
-        "properties": {
-          "contract_version": {
-            "const": "1.0.0"
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/LayeredAvatarManifest"
           },
-          "kind": {
-            "const": "avatar_manifest"
-          },
-          "manifest_id": {
-            "$ref": "#/components/schemas/AssetId"
-          },
-          "manifest_version": {
-            "type": "integer",
-            "minimum": 1
-          },
-          "content_hash": {
-            "$ref": "#/components/schemas/ContentHash"
-          },
-          "provenance": {
-            "$ref": "#/components/schemas/Provenance"
-          },
-          "layer_order": {
-            "const": [
-              "body",
-              "eyes",
-              "hair",
-              "outfit",
-              "accessory"
-            ]
-          },
-          "skin_tones": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "skin_tone_id",
-                "color"
-              ],
-              "properties": {
-                "skin_tone_id": {
-                  "$ref": "#/components/schemas/AssetId"
-                },
-                "color": {
-                  "type": "string",
-                  "pattern": "^#[0-9A-F]{6}$"
-                }
-              }
-            }
-          },
-          "atlas": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "atlas_id",
-              "cell",
-              "anchor",
-              "frame_layout",
-              "texture",
-              "items"
-            ],
-            "properties": {
-              "atlas_id": {
-                "$ref": "#/components/schemas/AssetId"
-              },
-              "cell": {
-                "$ref": "#/components/schemas/Cell"
-              },
-              "anchor": {
-                "$ref": "#/components/schemas/Anchor"
-              },
-              "frame_layout": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": [
-                  "direction_order",
-                  "idle_column",
-                  "walk_columns"
-                ],
-                "properties": {
-                  "direction_order": {
-                    "const": [
-                      "down",
-                      "left",
-                      "right",
-                      "up"
-                    ]
-                  },
-                  "idle_column": {
-                    "const": 0
-                  },
-                  "walk_columns": {
-                    "const": [
-                      1,
-                      2,
-                      3,
-                      4
-                    ]
-                  }
-                }
-              },
-              "texture": {
-                "$ref": "#/components/schemas/TextureMetadata"
-              },
-              "items": {
-                "type": "array",
-                "minItems": 1,
-                "items": {
-                  "type": "object",
-                  "additionalProperties": false,
-                  "required": [
-                    "item_id",
-                    "layer_id",
-                    "anchor",
-                    "region"
-                  ],
-                  "properties": {
-                    "item_id": {
-                      "$ref": "#/components/schemas/AssetId"
-                    },
-                    "layer_id": {
-                      "enum": [
-                        "body",
-                        "eyes",
-                        "hair",
-                        "outfit",
-                        "accessory"
-                      ]
-                    },
-                    "anchor": {
-                      "$ref": "#/components/schemas/Anchor"
-                    },
-                    "region": {
-                      "type": "object",
-                      "additionalProperties": false,
-                      "required": [
-                        "x",
-                        "y",
-                        "width_px",
-                        "height_px"
-                      ],
-                      "properties": {
-                        "x": {
-                          "type": "integer",
-                          "minimum": 0
-                        },
-                        "y": {
-                          "type": "integer",
-                          "minimum": 0
-                        },
-                        "width_px": {
-                          "const": 320
-                        },
-                        "height_px": {
-                          "const": 256
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "presets": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "preset_id",
-                "config"
-              ],
-              "properties": {
-                "preset_id": {
-                  "$ref": "#/components/schemas/AssetId"
-                },
-                "config": {
-                  "$ref": "#/components/schemas/AvatarConfig"
-                }
-              }
-            }
-          },
-          "fallback_preset_id": {
-            "$ref": "#/components/schemas/AssetId"
+          {
+            "$ref": "#/components/schemas/WholeCharacterAvatarManifest"
           }
-        }
+        ]
       },
       "AvatarState": {
         "type": "object",
@@ -8087,6 +7838,275 @@
           "timezone",
           "revision"
         ]
+      },
+      "LayeredAvatarConfig": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract_version",
+          "kind",
+          "manifest_id",
+          "manifest_version",
+          "item_ids",
+          "skin_tone_id"
+        ],
+        "properties": {
+          "contract_version": {
+            "const": "1.0.0"
+          },
+          "kind": {
+            "const": "avatar_config"
+          },
+          "manifest_id": {
+            "$ref": "#/components/schemas/AssetId"
+          },
+          "manifest_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "item_ids": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "body",
+              "eyes",
+              "hair",
+              "outfit",
+              "accessory"
+            ],
+            "properties": {
+              "body": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "eyes": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "hair": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "outfit": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "accessory": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/AssetId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          },
+          "skin_tone_id": {
+            "$ref": "#/components/schemas/AssetId"
+          }
+        }
+      },
+      "LayeredAvatarManifest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract_version",
+          "kind",
+          "manifest_id",
+          "manifest_version",
+          "content_hash",
+          "provenance",
+          "layer_order",
+          "skin_tones",
+          "atlas",
+          "presets",
+          "fallback_preset_id"
+        ],
+        "properties": {
+          "contract_version": {
+            "const": "1.0.0"
+          },
+          "kind": {
+            "const": "avatar_manifest"
+          },
+          "manifest_id": {
+            "$ref": "#/components/schemas/AssetId"
+          },
+          "manifest_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "content_hash": {
+            "$ref": "#/components/schemas/ContentHash"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "layer_order": {
+            "const": [
+              "body",
+              "eyes",
+              "hair",
+              "outfit",
+              "accessory"
+            ]
+          },
+          "skin_tones": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "skin_tone_id",
+                "color"
+              ],
+              "properties": {
+                "skin_tone_id": {
+                  "$ref": "#/components/schemas/AssetId"
+                },
+                "color": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-F]{6}$"
+                }
+              }
+            }
+          },
+          "atlas": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "atlas_id",
+              "cell",
+              "anchor",
+              "frame_layout",
+              "texture",
+              "items"
+            ],
+            "properties": {
+              "atlas_id": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "cell": {
+                "$ref": "#/components/schemas/Cell"
+              },
+              "anchor": {
+                "$ref": "#/components/schemas/Anchor"
+              },
+              "frame_layout": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "direction_order",
+                  "idle_column",
+                  "walk_columns"
+                ],
+                "properties": {
+                  "direction_order": {
+                    "const": [
+                      "down",
+                      "left",
+                      "right",
+                      "up"
+                    ]
+                  },
+                  "idle_column": {
+                    "const": 0
+                  },
+                  "walk_columns": {
+                    "const": [
+                      1,
+                      2,
+                      3,
+                      4
+                    ]
+                  }
+                }
+              },
+              "texture": {
+                "$ref": "#/components/schemas/TextureMetadata"
+              },
+              "items": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "item_id",
+                    "layer_id",
+                    "anchor",
+                    "region"
+                  ],
+                  "properties": {
+                    "item_id": {
+                      "$ref": "#/components/schemas/AssetId"
+                    },
+                    "layer_id": {
+                      "enum": [
+                        "body",
+                        "eyes",
+                        "hair",
+                        "outfit",
+                        "accessory"
+                      ]
+                    },
+                    "anchor": {
+                      "$ref": "#/components/schemas/Anchor"
+                    },
+                    "region": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "x",
+                        "y",
+                        "width_px",
+                        "height_px"
+                      ],
+                      "properties": {
+                        "x": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "y": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "width_px": {
+                          "const": 320
+                        },
+                        "height_px": {
+                          "const": 256
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "presets": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "preset_id",
+                "config"
+              ],
+              "properties": {
+                "preset_id": {
+                  "$ref": "#/components/schemas/AssetId"
+                },
+                "config": {
+                  "$ref": "#/components/schemas/AvatarConfig"
+                }
+              }
+            }
+          },
+          "fallback_preset_id": {
+            "$ref": "#/components/schemas/AssetId"
+          }
+        }
       },
       "LinkedProvidersResponse": {
         "type": "object",
@@ -8942,6 +8962,163 @@
           "status"
         ]
       },
+      "Scenery": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "ground",
+          "atlases",
+          "objects"
+        ],
+        "properties": {
+          "version": {
+            "const": 1
+          },
+          "ground": {
+            "$ref": "#/components/schemas/SceneryTexture"
+          },
+          "atlases": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/SceneryTexture"
+            },
+            "maxItems": 3
+          },
+          "objects": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/SceneryObject"
+            },
+            "maxItems": 96
+          }
+        },
+        "description": "Optional v1 illustrated skin. Loader enforces aggregate transfer/pixel budgets, unique IDs/paths, frame/world bounds and exact map-sized ground; original map geometry stays authoritative. depth_y=-1 is a ground-attached detail."
+      },
+      "SceneryObject": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "atlas_id",
+          "frame",
+          "x",
+          "y",
+          "width",
+          "height",
+          "depth_y"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+          },
+          "atlas_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+          },
+          "frame": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2048
+              },
+              "y": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2048
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2048
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2048
+              }
+            }
+          },
+          "x": {
+            "type": "integer",
+            "minimum": -128,
+            "maximum": 16512
+          },
+          "y": {
+            "type": "integer",
+            "minimum": -128,
+            "maximum": 16512
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1024
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1024
+          },
+          "depth_y": {
+            "type": "integer",
+            "minimum": -1,
+            "maximum": 16512
+          }
+        }
+      },
+      "SceneryTexture": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path",
+          "sha256",
+          "width_px",
+          "height_px",
+          "bytes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^world/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+\\.png$",
+            "maxLength": 512
+          },
+          "sha256": {
+            "$ref": "#/components/schemas/ContentHash"
+          },
+          "width_px": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2048
+          },
+          "height_px": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2048
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2097152
+          }
+        }
+      },
       "SetAvatarRequest": {
         "type": "object",
         "additionalProperties": false,
@@ -9173,6 +9350,9 @@
                 "pattern": "^#[0-9A-F]{6}$"
               }
             }
+          },
+          "scenery": {
+            "$ref": "#/components/schemas/Scenery"
           }
         }
       },
@@ -9279,7 +9459,11 @@
               "PROFILE",
               "FRIEND",
               "POST",
-              "NOTIFICATION"
+              "NOTIFICATION",
+              "CONCERT_TICKETS",
+              "CONCERT_SESSIONS",
+              "CONCERT_SHARING",
+              "CONCERT_PRIVATE_DATA"
             ]
           },
           "status": {
@@ -9335,6 +9519,343 @@
         "type": "string",
         "format": "date-time",
         "pattern": "Z$"
+      },
+      "WholeCharacterAvatarConfig": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract_version",
+          "kind",
+          "manifest_id",
+          "manifest_version",
+          "representation",
+          "preset_id"
+        ],
+        "properties": {
+          "contract_version": {
+            "const": "1.1.0"
+          },
+          "kind": {
+            "const": "avatar_config"
+          },
+          "manifest_id": {
+            "const": "mcr_selected_static_20261103"
+          },
+          "manifest_version": {
+            "const": 1
+          },
+          "representation": {
+            "const": "whole_character"
+          },
+          "preset_id": {
+            "enum": [
+              "photo01_front_01",
+              "photo01_front_02",
+              "photo01_front_03",
+              "photo01_front_04",
+              "photo01_front_05",
+              "photo01_front_06"
+            ]
+          }
+        }
+      },
+      "WholeCharacterAvatarManifest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract_version",
+          "kind",
+          "manifest_id",
+          "manifest_version",
+          "representation",
+          "source",
+          "capabilities",
+          "content_hash",
+          "atlas",
+          "presets",
+          "default_preset_id"
+        ],
+        "properties": {
+          "contract_version": {
+            "const": "1.1.0"
+          },
+          "kind": {
+            "const": "avatar_manifest"
+          },
+          "manifest_id": {
+            "const": "mcr_selected_static_20261103"
+          },
+          "manifest_version": {
+            "const": 1
+          },
+          "representation": {
+            "const": "whole_character"
+          },
+          "source": {
+            "const": {
+              "source_pack_id": "mcr_user_characters_20261103",
+              "source_pack_revision": 3,
+              "source_id": "photo_01",
+              "source_sha256": "sha256:67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+              "release_path": "world/avatars/derived-v1/static-release.json",
+              "release_sha256": "sha256:cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+              "source_commit": "7e07f7328f079991a9aedb7ad83a4b682decb543"
+            }
+          },
+          "capabilities": {
+            "const": {
+              "poses": [
+                "front_idle"
+              ],
+              "layer_customization": false,
+              "skin_tone_customization": false
+            }
+          },
+          "content_hash": {
+            "$ref": "#/components/schemas/ContentHash"
+          },
+          "atlas": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "atlas_id",
+              "cell",
+              "anchor",
+              "texture"
+            ],
+            "properties": {
+              "atlas_id": {
+                "const": "mcr_selected_static_front_idle_64"
+              },
+              "cell": {
+                "$ref": "#/components/schemas/Cell"
+              },
+              "anchor": {
+                "$ref": "#/components/schemas/Anchor"
+              },
+              "texture": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TextureMetadata"
+                  },
+                  {
+                    "const": {
+                      "image_state": "PROVIDED",
+                      "path": "world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+                      "sha256": "sha256:e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+                      "width_px": 384,
+                      "height_px": 64
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "presets": {
+            "type": "array",
+            "minItems": 6,
+            "maxItems": 6,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/components/schemas/WholeCharacterPreset"
+            }
+          },
+          "default_preset_id": {
+            "enum": [
+              "photo01_front_01",
+              "photo01_front_02",
+              "photo01_front_03",
+              "photo01_front_04",
+              "photo01_front_05",
+              "photo01_front_06"
+            ]
+          }
+        }
+      },
+      "WholeCharacterFrame": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "x",
+          "y",
+          "width_px",
+          "height_px"
+        ],
+        "properties": {
+          "x": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "y": {
+            "const": 0
+          },
+          "width_px": {
+            "const": 64
+          },
+          "height_px": {
+            "const": 64
+          }
+        }
+      },
+      "WholeCharacterPreset": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "preset_id",
+          "config",
+          "art_id",
+          "frame"
+        ],
+        "properties": {
+          "preset_id": {
+            "enum": [
+              "photo01_front_01",
+              "photo01_front_02",
+              "photo01_front_03",
+              "photo01_front_04",
+              "photo01_front_05",
+              "photo01_front_06"
+            ]
+          },
+          "config": {
+            "$ref": "#/components/schemas/WholeCharacterAvatarConfig"
+          },
+          "art_id": {
+            "enum": [
+              "photo01-front-01",
+              "photo01-front-02",
+              "photo01-front-03",
+              "photo01-front-04",
+              "photo01-front-05",
+              "photo01-front-06"
+            ]
+          },
+          "frame": {
+            "$ref": "#/components/schemas/WholeCharacterFrame"
+          }
+        },
+        "oneOf": [
+          {
+            "const": {
+              "preset_id": "photo01_front_01",
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_01"
+              },
+              "art_id": "photo01-front-01",
+              "frame": {
+                "x": 0,
+                "y": 0,
+                "width_px": 64,
+                "height_px": 64
+              }
+            }
+          },
+          {
+            "const": {
+              "preset_id": "photo01_front_02",
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_02"
+              },
+              "art_id": "photo01-front-02",
+              "frame": {
+                "x": 64,
+                "y": 0,
+                "width_px": 64,
+                "height_px": 64
+              }
+            }
+          },
+          {
+            "const": {
+              "preset_id": "photo01_front_03",
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_03"
+              },
+              "art_id": "photo01-front-03",
+              "frame": {
+                "x": 128,
+                "y": 0,
+                "width_px": 64,
+                "height_px": 64
+              }
+            }
+          },
+          {
+            "const": {
+              "preset_id": "photo01_front_04",
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_04"
+              },
+              "art_id": "photo01-front-04",
+              "frame": {
+                "x": 192,
+                "y": 0,
+                "width_px": 64,
+                "height_px": 64
+              }
+            }
+          },
+          {
+            "const": {
+              "preset_id": "photo01_front_05",
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_05"
+              },
+              "art_id": "photo01-front-05",
+              "frame": {
+                "x": 256,
+                "y": 0,
+                "width_px": 64,
+                "height_px": 64
+              }
+            }
+          },
+          {
+            "const": {
+              "preset_id": "photo01_front_06",
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "representation": "whole_character",
+                "preset_id": "photo01_front_06"
+              },
+              "art_id": "photo01-front-06",
+              "frame": {
+                "x": 320,
+                "y": 0,
+                "width_px": 64,
+                "height_px": 64
+              }
+            }
+          }
+        ]
       }
     }
   },

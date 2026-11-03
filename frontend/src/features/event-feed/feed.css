@@ -11,3 +11,61 @@
 .feed-list > li { padding-block: 1.25rem; border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
 .feed-text { white-space: pre-wrap; line-height: 1.6; }
 .event-feed fieldset { min-width: 0; margin-block: 1rem; padding: .75rem; }
+
+.feed-image { display: block; max-width: 100%; height: auto; }
+
+/* The shell owns its frame, titlebar and 6px body inset. Feed owns only content. */
+.feed-browse { display: flex; flex-direction: column; width: 100%; max-width: none; min-height: 100%; margin: 0; padding: 0; color: #201b18; font: 14px/1.35 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; }
+.feed-browse *, .feed-browse *::before, .feed-browse *::after { box-sizing: border-box; }
+.feed-browse button, .feed-browse summary { min-height: 44px; min-width: 44px; margin: 0; border-radius: 2px; font: inherit; color: inherit; }
+.feed-browse button { cursor: pointer; }
+.feed-browse button:disabled { cursor: default; opacity: .55; }
+.feed-browse .mcr-tabs { flex: 1; min-height: 0; }
+.feed-browse .mcr-tablist { display: grid; grid-template-columns: .8fr 1.05fr 1.3fr 1fr; gap: 5px; padding: 0 0 7px; border: 0; border-bottom: 1px solid #847669; overflow: visible; }
+.feed-browse .mcr-tab { padding: 4px 3px; border: 1px solid #51453b; background: #f1eadd; font: 800 13px/1 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; text-align: center; }
+.feed-browse .mcr-tab[aria-selected="true"] { background: #ac2430; color: #fff8ec; border-color: #5d2022; box-shadow: inset 0 0 0 1px #e5b8aa66; }
+.feed-browse .mcr-tabpanel { padding: 0; margin: 0; }
+.feed-browse .feed-posts { display: grid; gap: 5px; padding: 5px 0 0; margin: 0; }
+.feed-browse .feed-posts > li { padding: 0; border: 0; min-width: 0; }
+.feed-browse .feed-post { display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 10px; padding: 10px 10px 0; border: 1px solid #6b5e50; border-radius: 3px; background: #fffaf222; }
+.feed-post-heading { display: contents; }
+.feed-portrait { grid-column: 1; grid-row: 1 / span 2; width: 48px; height: 48px; overflow: hidden; border: 1px solid #3f3933; border-radius: 2px; background: #ddd2c1; }
+.feed-portrait > *, .feed-portrait img, .feed-portrait canvas { width: 100%; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain; image-rendering: pixelated; }
+.feed-initial { display: grid; place-items: center; color: #433a34; font-size: 24px; font-weight: 800; }
+.feed-author-line { grid-column: 2; display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+.feed-author-line strong { min-width: 0; overflow-wrap: anywhere; font-size: 14px; line-height: 1.2; font-weight: 800; }
+.feed-author-line time { flex-shrink: 0; font-size: 12px; white-space: nowrap; }
+.feed-author-line small { font-size: 10px; }
+.feed-browse .feed-post-copy { grid-column: 2; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-width: 0; margin: 5px 0 8px; font-size: 14px; line-height: 1.35; }
+.feed-media { grid-column: 2; display: grid; gap: 6px; min-width: 0; }
+.feed-browse .feed-media figure { display: grid; margin: 0; aspect-ratio: 2.65; overflow: hidden; border: 1px solid #40362d; border-radius: 2px; background: #ded5c8; }
+.feed-browse .feed-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.feed-media-unavailable { grid-column: 2; font-size: 12px; margin: 4px 0; }
+.feed-browse .feed-related { grid-column: 2; display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 4px 0 0; padding: 0; }
+.feed-browse .feed-related button { padding: 4px 6px; background: transparent; border: 0; text-decoration: underline; text-underline-offset: 3px; font-size: 12px; }
+.feed-post-actions { grid-column: 2; display: flex; justify-content: space-between; margin: 0 -7px; }
+.feed-browse .feed-post-actions button { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 6px 7px; border: 0; background: transparent; font-weight: 700; font-size: 12px; }
+.feed-post-actions svg { width: 15px; height: 15px; }
+.feed-browse .feed-post-actions .feed-reacted { color: #a0222c; }
+.feed-browse .feed-footer { position: sticky; bottom: 0; z-index: 2; display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 8px; padding: 9px 4px max(5px, env(safe-area-inset-bottom, 0px)); border-top: 1px solid #86786c; margin-top: 7px; background: var(--mcr-paper, #eee6d7); }
+.feed-browse .feed-compose { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 6px 10px; background: #b12631; color: #fff6e8; border: 1px solid #4d2623; box-shadow: inset 0 0 0 1px #e5b8aa66; font: 700 18px/1 "Arial Narrow", "Helvetica Neue", Arial, sans-serif; }
+.feed-footer svg { display: block; width: 20px; height: 20px; }
+.feed-browse .feed-refresh { display: grid; place-items: center; padding: 0; background: transparent; border: 0; }
+.feed-tools { position: relative; }
+.feed-browse .feed-tools summary { display: grid; place-items: center; cursor: pointer; list-style: none; }
+.feed-tools summary::-webkit-details-marker { display: none; }
+.feed-tools > div { position: absolute; bottom: 48px; left: 0; width: min(240px, 70vw); padding: 10px; border: 1px solid #67564b; background: #f5ecdd; box-shadow: 0 3px 12px #33281e33; }
+.feed-browse .feed-tools label { display: flex; align-items: center; gap: 8px; min-height: 44px; margin: 0; }
+.feed-browse .feed-tools input { width: 22px; height: 22px; min-height: 22px; margin: 0; accent-color: #aa2430; }
+.feed-tools p { font-size: 12px; margin: 4px 0 0; }
+.feed-readonly, .feed-empty { padding: 12px 4px; margin: 0; font-size: 14px; }
+.feed-archive { text-align: center; font-weight: 800; font-size: 13px; }
+.feed-browse .feed-older { width: 100%; margin-top: 6px; border: 1px solid #776758; background: transparent; }
+.feed-browse .feed-notices > .feed-list > li { border-bottom: 1px solid #a49686; padding: 8px 2px; }
+.feed-browse .feed-notice-link { padding: 4px; border: 0; background: transparent; font-weight: 800; text-align: left; text-decoration: underline; }
+.feed-browse .feed-notices p { margin: 4px 0; font-size: 12px; }
+.feed-browse .feed-notice-detail { padding: 8px 4px; }
+.feed-browse .feed-notice-detail h2 { margin: 4px 0 8px; font-size: 18px; }
+.feed-browse .feed-notice-detail .feed-text { font-size: 14px; }
+.feed-browse :is(button, a, summary, input, [tabindex]):focus-visible { outline: 3px solid #9b202c; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .feed-browse, .feed-browse * { animation: none; transition: none; scroll-behavior: auto; } }

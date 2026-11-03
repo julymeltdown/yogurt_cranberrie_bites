@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/Users/lhs/.cargo/bin/cargo",
+    "+1.88.0",
+    "test",
+    "--manifest-path",
+    "backend/Cargo.toml",
+    "--locked",
+    "--offline",
+    "-p",
+    "concert-service",
+    "--test",
+    "media",
+    "--no-run",
+    "--message-format=json"
+  ],
+  "exit_code": 0,
+  "source_revision": "b0994119eef8c2b45b201ba7509498c2ce0d26c6",
+  "toolchain": "Rust1.88.0",
+  "settings": "locked/offline/jobs2/dev+testdebug0",
+  "cargo_stderr": "   Compiling contracts-build v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-media-upload/backend/crates/contracts-build)\n   Compiling concert-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-media-upload/backend/crates/concert-domain)\n   Compiling concert-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-media-upload/backend/services/concert-service)\n   Compiling concert-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-media-upload/backend/crates/concert-application)\n   Compiling auth-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-media-upload/backend/services/auth-service)\n   Compiling friend-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-media-upload/backend/services/friend-service)\n    Finished `test` profile [unoptimized] target(s) in 10.58s\n",
+  "source_sha256": {
+    "backend/Cargo.lock": "208bd6ae3e1657ee5cc6128241bf7fbc39c122efc467efa8deba30b98f2a1dc4",
+    "backend/crates/concert-application/src/media/mod.rs": "cedd1fbd677c28bb4cc2ff64638935238cf0fc8bcf6967e5df9387cdd9333618",
+    "backend/services/concert-service/Cargo.toml": "4d5267c08a16fc58db65372526368388eca81949c275beb322c6c99c49eaf14b",
+    "backend/services/concert-service/src/adapters/out/media/body.rs": "3c50d22df399c712aed08ed9ad5dcca4ecc74840e9bbb0aa07ef1aa566cab8df",
+    "backend/services/concert-service/src/adapters/out/media/codec.rs": "6888a021fcee24ea8a4a8e27121b199496a95b9618f4f69f56a7bda90e4de052",
+    "backend/services/concert-service/src/adapters/out/media/mod.rs": "e579de7fe0496c8fe3e54ab0fb29af957d8a9e94306055d3bb0ba82c9e3717d0",
+    "backend/services/concert-service/tests/media.rs": "262781d2175b4fb5860e1d9059bc884485bba4e0fecd32191bd6cd30822d0573",
+    "backend/services/concert-service/tests/media_support/mod.rs": "9056f421f97966fcec6bca87390cd510e784018132bde19de36feb0e06fdf14f"
+  },
+  "source_artifact": "/Users/lhs/Desktop/mcr-build/backend/debug/deps/media-3c63a013d105ab66",
+  "private_artifact": "/Users/lhs/Desktop/mcr-worktrees/be-media-upload/backend/services/concert-service/tests/media_support/artifacts/media-tests-corrected-b099411",
+  "artifact_sha256": "d32fd9fb3192edb066014e29a8670cbb8e9df60c252c11504fc8fd3508a60b26",
+  "artifact_size": 17572544,
+  "uid": 501
+}

@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package concert.world.v1;
+
+// Internal Gateway-to-Concert world API. The existing Ed25519 actor delegation
+// signs the exact body and method; field 1 must equal the verified actor.
+message WorldRequest {
+  string user_id = 1;
+  string event_id = 2;
+  string session_family_id = 3;
+  string request_id = 4;
+  string http_method = 5;
+  string http_target = 6;
+  bytes http_body = 7;
+  int64 authority_expires_unix_micros = 8;
+  int64 auth_observed_at_unix_micros = 9;
+  int64 profile_observed_at_unix_micros = 10;
+  // Exact verified access-JWT expiry supplied by the trusted Gateway edge.
+  // It may exceed the shorter request/RPC deadline but never extends the JWT.
+  int64 access_expires_unix_micros = 11;
+}
+
+message WorldResponse {
+  // Frozen C05 WorldRooms or WorldTicketResponse JSON.
+  bytes world_json = 1;
+}
+
+message CurrentMembershipRequest {
+  string user_id = 1;
+  string event_id = 2;
+  string session_family_id = 3;
+  string request_id = 4;
+  int64 authority_expires_unix_micros = 5;
+  int64 auth_observed_at_unix_micros = 6;
+  int64 profile_observed_at_unix_micros = 7;
+  int64 access_expires_unix_micros = 8;
+}
+
+message CurrentMembershipResponse {
+  bool present = 1;
+  string user_id = 2;
+  string event_id = 3;
+  string session_id = 4;
+  string connection_id = 5;
+  string room_id = 6;
+  string owner_process_id = 7;
+  string owner_epoch = 8;
+  string map_id = 9;
+  int64 map_revision = 10;
+  string avatar_manifest_id = 11;
+  int64 avatar_manifest_version = 12;
+  int64 checked_at_unix_micros = 13;
+  int64 lease_expires_at_unix_micros = 14;
+  int64 access_expires_at_unix_micros = 15;
+}
+
+service WorldService {
+  rpc ListRooms(WorldRequest) returns (WorldResponse);
+  rpc IssueTicket(WorldRequest) returns (WorldResponse);
+  rpc CurrentMembership(CurrentMembershipRequest) returns (CurrentMembershipResponse);
+}

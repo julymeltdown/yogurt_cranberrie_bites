@@ -1,0 +1,137 @@
+{
+  "task": "BE41",
+  "status": "IN_PROGRESS",
+  "scope": "real owned PostgreSQL constraints/restart and source-qualified native adapters; not production-owner or full BE41 acceptance",
+  "checks": [
+    {
+      "name": "atomic_readonly_and_durable_job",
+      "exit_code": 0
+    },
+    {
+      "name": "one_job_per_event",
+      "exit_code": 0
+    },
+    {
+      "name": "false_completion_rejected",
+      "exit_code": 0
+    },
+    {
+      "name": "success_without_owner_evidence_rejected",
+      "exit_code": 0
+    },
+    {
+      "name": "deadline_missing_rejected",
+      "exit_code": 0
+    },
+    {
+      "name": "expired_deadline_rejected",
+      "exit_code": 0
+    },
+    {
+      "name": "explicit_rollback_discards_effect_and_progress",
+      "exit_code": 0
+    },
+    {
+      "name": "backend_process_death_rolls_back_uncommitted_effect",
+      "exit_code": 0
+    },
+    {
+      "name": "applied_effect_and_progress_commit_together",
+      "exit_code": 0
+    },
+    {
+      "name": "partial_failure_persists",
+      "exit_code": 0
+    },
+    {
+      "name": "restart_preserves_success_and_failed_boundary",
+      "exit_code": 0
+    },
+    {
+      "name": "partial_failed_effect_not_committed",
+      "exit_code": 0
+    },
+    {
+      "name": "completed_effect_cannot_regress",
+      "exit_code": 0
+    },
+    {
+      "name": "resume_failed_boundary_without_repeating_success",
+      "exit_code": 0
+    },
+    {
+      "name": "retention_and_actor_binding_immutable",
+      "exit_code": 0
+    },
+    {
+      "name": "retention_due_timestamp_immutable",
+      "exit_code": 0
+    },
+    {
+      "name": "final_mural_immutable",
+      "exit_code": 0
+    },
+    {
+      "name": "archive_revision_requires_source_advance",
+      "exit_code": 0
+    },
+    {
+      "name": "archive_source_revision_advances_atomically",
+      "exit_code": 0
+    },
+    {
+      "name": "actual_concert_privacy_expiry_sql_revokes_only_closed_event",
+      "exit_code": 0
+    },
+    {
+      "name": "actual_concert_privacy_expiry_preserves_foreign_event",
+      "exit_code": 0
+    },
+    {
+      "name": "evidence_append_only",
+      "exit_code": 0
+    },
+    {
+      "name": "audit_append_only",
+      "exit_code": 0
+    }
+  ],
+  "source_hashes": {
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/Cargo.lock": "43156ddc41a0e88246f86dcea65d567106ff900dba0e5e97bc5f9c0d93b092f1",
+    "backend/crates/concert-domain/src/lib.rs": "a960783e8bc3f70691fab28189a293e3bf79cc33720a7770e8fd819cb8dd8251",
+    "backend/crates/concert-application/src/lib.rs": "add14f0aa8fc1a7f3e493ab3dcd0c34f46b2ae563c0c28981589ac8bacaa1b05",
+    "backend/services/concert-service/src/lib.rs": "05ed36234f1d4892d5db4fbefff2b5bf5d3c10855f1914113076c5c5e1f0d497",
+    "contracts/generated/mcr-domain.openapi.json": "0b42e9589cef4eca9c5530d9d3db3fa30abd0852f61f6d1d079945eaf192d72f",
+    "backend/services/concert-service/migrations/0001_concert_core.sql": "9978e75e569c1ba25cb191ddf5b02bbdffcd5e64f3385173f05a885370d9215a",
+    "backend/services/concert-service/migrations/0002_command_receipts_outbox.sql": "5f5760dfe6384cb2ab5162bcc27fbc0ed75bdca6bb85229012f6389269ee442f",
+    "backend/services/concert-service/migrations/0003_places_map_releases.sql": "b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a",
+    "backend/services/concert-service/migrations/0004_bootstrap_admission.sql": "cb1c0093eeaef79dbe783052447c34c78aad5c6daebdc2f6f3dc7f4b17112ac9",
+    "backend/services/concert-service/migrations/0005_world_admission.sql": "100e8de5a8392a4cd11e83337303e44e9ef79cee7c6f3c7547e333bcd9c7b761",
+    "backend/services/concert-service/migrations/0006_relationship_policy.sql": "0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3",
+    "backend/services/concert-service/migrations/0007_community.sql": "6c22de4cbfc51db3b3bc23b151d19e5ad43ddc36a794ffdf7cf4507e19090930",
+    "backend/services/concert-service/migrations/0008_meeting_beacons.sql": "b8259eb000c15059ddcba60db64518562d2cede7d2d68c42de3df8a85b44c655",
+    "backend/services/concert-service/migrations/0009_receipt_domain_failures.sql": "e357529103bb998f337508a30b03bddc372fe387b7e587dcb7f96a8b295fa4c6",
+    "backend/services/concert-service/migrations/0010_feed.sql": "a0d3ac6672e37a1bff26129317ddaafdecfc18701c751b340df219c0859d7997",
+    "backend/services/concert-service/migrations/0011_outbox_maintenance.sql": "8971093dee1293dfd160920c773d663866dcb5cb688fb7cabf6746eaca2eb61b",
+    "backend/services/concert-service/migrations/0012_media.sql": "aae18779fda409d5a9de1844336c3e58d3705197346ce94b9b5e0a926e119224",
+    "backend/services/concert-service/migrations/0016_meeting_deadline_guards.sql": "4375673c48b46096cf20dcbac807eace37d96136e347ac9da3b95a884135ff7d",
+    "backend/services/concert-service/migrations/0018_event_lifecycle.sql": "8a93ed7e1b02345c3071cb0583384d61bb1e0b509e8939daf568f9ea352e2cb0",
+    "backend/services/concert-service/src/event_lifecycle/privacy.rs": "9e46fb2762e91e48a571091384d98c06b1b0af7fadbe49cc52900e6b604d9e81"
+  },
+  "native_adapter_suite": [
+    {
+      "exit_code": 0,
+      "binary_sha256": "cbdcec0c641ad91fc0003ec1d1837406eee7d41049cc0fb29c5f67dde50a2367",
+      "owned_source_pin": "fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828",
+      "output": "\nrunning 6 tests\ntest event_lifecycle_actual_privacy_sql_expires_and_cleans_only_owned_event ... BE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\nok\ntest event_lifecycle_concurrent_workers_and_wrong_receipt ... BE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\nok\ntest event_lifecycle_full_migration_ledger_and_reapply ... BE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\nBE41_MIGRATIONS=fresh,forward0018,preserved_event,exact_receipts,reapply\nok\ntest event_lifecycle_idempotent_start_receipt_is_admission_only ... BE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\nok\ntest event_lifecycle_partial_failure_rolls_back_and_explicit_resume_skips_success ... BE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\nok\ntest event_lifecycle_retention_wait_and_current_authority_fail_closed ... BE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\nok\n\ntest result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.35s\n\n\nrunning 1 test\nBE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\ntest event_lifecycle_restart_seed ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.02s\n\n\nrunning 1 test\nBE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\ntest event_lifecycle_restart_resume ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.03s\n\n"
+    },
+    {
+      "exit_code": 0,
+      "binary_sha256": "0f9d344949f9aee64dd8bcadfb56beeedfb7d3b3d2289a594b9e2bef8bdab26b",
+      "owned_source_pin": "fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828",
+      "output": "\nrunning 1 test\ntest event_lifecycle_archive_deletion_invalidates_cursor_and_never_reintroduces_content ... BE41_SOURCE_PIN=fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s\n\n"
+    }
+  ],
+  "result": "PASS"
+}

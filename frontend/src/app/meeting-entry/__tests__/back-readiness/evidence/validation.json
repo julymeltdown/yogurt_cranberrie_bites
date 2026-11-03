@@ -1,0 +1,207 @@
+{
+  "task": "QA-BACK-READINESS",
+  "status": "MOCK_READY",
+  "handoff": "READY",
+  "base": "adb73ce109d5f67ef7c0234a730d1cd0459f219a",
+  "branch": "codex/mcr-qa-back-readiness",
+  "environment": {
+    "node": "v24.22.2",
+    "vitest": "4.1.9",
+    "node_path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin",
+    "dependencies": "Retained integration checkout, temporary read-only-consumption symlink; no install; removed before handoff"
+  },
+  "new_test_sha256": {
+    "frontend/src/app/meeting-entry/__tests__/back-readiness/navigation.test.tsx": "2259cd67490ffa185b1ce8cf28a0bdc3121bedea77980087ab862e9bce6cafcc"
+  },
+  "unchanged_source_sha256": {
+    "frontend/src/app/meeting-entry/__tests__/root-registration.test.tsx": "1321636a31ff4e4e6730374fb029cbfd6ef0c45de966ef97619970c4db66457b",
+    "frontend/src/app/router.tsx": "6626b51bd8bfa3589dff42ab0166ec05bd07438b83cb83e5bffe21b7d32d1eb2",
+    "frontend/src/app/WorldShell.tsx": "9418ecaa41689bcdf2d1a15872097bb2672d29786602a14e5251fa308f4ed27b",
+    "frontend/src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "frontend/src/app/routes.ts": "e49ceffdc2e6e52bfba8e361b727504268fab264763c124878a556ee7f677829",
+    "frontend/src/app/WorldHost.tsx": "8438ad02ad8d21b3fc0e64d76ea2e47fdfb89d8f7ca5db86e57516678170a491",
+    "frontend/src/app/ports.ts": "71741772296f3590ef3d8e04b7c5e462d4410f7e18f575e44cf0775c379b2be7",
+    "frontend/src/app/__tests__/fixtures/ports.ts": "ff8b01aa247d6c8ca3afc3e5ed92fa7d1fecabab2dadc79e586e4ce14f3daf10",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts": "79993cf295f0f398a508ca6b3f70a3d10cbd1b992b9ac72a98db14d8730a35be",
+    "frontend/src/app/meeting-entry/routes.tsx": "6d1972f2fab6536e1ae5a0eb7d39247ed1adf19d527f551fcc2b29b6c65cc2a9",
+    "frontend/src/app/meeting-entry/bridge.ts": "ecb3adf14cac50f11457f8a6868b84753c967ae7c60fe38c25e43b813f4befdb",
+    "frontend/src/features/me/__tests__/visual-adoption/evidence/validation.json": "41c19562b1cfe2cc05b99f90401ecad3f1bc20c885d41264f7e5b552a0c92890",
+    "frontend/src/app/meeting-entry/__tests__/routes.test.tsx": "0f6aa8692e42b800698d9f6ed5a1231ef7b37818be439ec852ae4545c1ce8788",
+    "frontend/src/app/__tests__/routes.test.ts": "5ca28a98aa0964eb53903c5c0e0abd7df3f87e813b4e43d742ec61c8b8588ead",
+    "frontend/src/app/__tests__/shell.test.tsx": "243a2e96c505883b400e6cdd898b7b3f708c108d41f753fc1e8506a39a7162ec",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "log_sha256": {
+    "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/original-first.log": "d1edb8be32cc49494d063fda58a206ac9af179728a3accd1af07da7bbecc109b",
+    "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/combined.log": "660d8df7c6a9f613035ca3759e0e82f82e308df0db7dba3d263bf9921d9dabf6",
+    "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/repeat-1.log": "bc610c207438c2aa47b27229e35335a5ea0b9669984f3c3c937411c2486d015d",
+    "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/repeat-2.log": "3e90dfa56285378644652d040518d4f5b4de6cbaff15dc53a2e302667fd414da",
+    "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/repeat-3.log": "751c7b788f70f9c6734787d5330f8c070f66bd03e5aba48c967ce5899af00c58",
+    "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "checks": [
+    {
+      "name": "untouched original first run",
+      "command": [
+        "node",
+        "frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--root",
+        "frontend",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "src/app/meeting-entry/__tests__/root-registration.test.tsx"
+      ],
+      "exit": 1,
+      "passed": 6,
+      "failed": 1,
+      "log": "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/original-first.log"
+    },
+    {
+      "name": "focused combined navigation",
+      "command": [
+        "node",
+        "frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--root",
+        "frontend",
+        "--configLoader",
+        "runner",
+        "--no-cache",
+        "src/app/meeting-entry/__tests__/back-readiness/navigation.test.tsx",
+        "src/app/meeting-entry/__tests__/root-registration.test.tsx",
+        "src/app/meeting-entry/__tests__/routes.test.tsx",
+        "src/app/__tests__/routes.test.ts",
+        "src/app/__tests__/shell.test.tsx"
+      ],
+      "exit": 0,
+      "files": 5,
+      "passed": 82,
+      "failed": 0,
+      "log": "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/combined.log"
+    },
+    {
+      "name": "strict combined types",
+      "command": [
+        "node",
+        "frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--project",
+        "frontend/tsconfig.json"
+      ],
+      "exit": 0,
+      "log": "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/types.log"
+    },
+    {
+      "name": "strict combined lint",
+      "cwd": "frontend",
+      "command": [
+        "node",
+        "node_modules/oxlint/bin/oxlint",
+        "src",
+        "vite.config.ts"
+      ],
+      "exit": 0,
+      "log": "frontend/src/app/meeting-entry/__tests__/back-readiness/evidence/lint.log"
+    }
+  ],
+  "finite_repeats": {
+    "command": [
+      "node",
+      "frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--root",
+      "frontend",
+      "--configLoader",
+      "runner",
+      "--no-cache",
+      "src/app/meeting-entry/__tests__/back-readiness/navigation.test.tsx",
+      "src/app/meeting-entry/__tests__/root-registration.test.tsx"
+    ],
+    "runs": [
+      {
+        "run": 1,
+        "exit": 1,
+        "summary": [
+          "\u00d7 preserves direct-beacon back navigation through Meet to World without creating a second world lease 1029ms",
+          "\u23af\u23af\u23af\u23af\u23af\u23af\u23af Failed Tests 1 \u23af\u23af\u23af\u23af\u23af\u23af\u23af",
+          "FAIL  src/app/meeting-entry/__tests__/root-registration.test.tsx > preserves direct-beacon back navigation through Meet to World without creating a second world lease",
+          "Test Files  1 failed | 1 passed (2)",
+          "Tests  1 failed | 9 passed (10)"
+        ],
+        "log_sha256": "bc610c207438c2aa47b27229e35335a5ea0b9669984f3c3c937411c2486d015d"
+      },
+      {
+        "run": 2,
+        "exit": 1,
+        "summary": [
+          "\u00d7 preserves direct-beacon back navigation through Meet to World without creating a second world lease 1030ms",
+          "\u23af\u23af\u23af\u23af\u23af\u23af\u23af Failed Tests 1 \u23af\u23af\u23af\u23af\u23af\u23af\u23af",
+          "FAIL  src/app/meeting-entry/__tests__/root-registration.test.tsx > preserves direct-beacon back navigation through Meet to World without creating a second world lease",
+          "Test Files  1 failed | 1 passed (2)",
+          "Tests  1 failed | 9 passed (10)"
+        ],
+        "log_sha256": "3e90dfa56285378644652d040518d4f5b4de6cbaff15dc53a2e302667fd414da"
+      },
+      {
+        "run": 3,
+        "exit": 0,
+        "summary": [
+          "Test Files  2 passed (2)",
+          "Tests  10 passed (10)"
+        ],
+        "log_sha256": "751c7b788f70f9c6734787d5330f8c070f66bd03e5aba48c967ce5899af00c58"
+      }
+    ]
+  },
+  "observations_asserted_by_controlled_test": [
+    {
+      "phase": "first public router publication inside act commit boundary",
+      "pathname": "/meet",
+      "committed_heading": "Find each other"
+    },
+    {
+      "phase": "second DOM click before boundary release",
+      "pathname": "/meet",
+      "committed_heading": "Find each other"
+    },
+    {
+      "phase": "boundary released and committed Meet observed",
+      "pathname": "/meet",
+      "committed_heading": "Meet"
+    },
+    {
+      "phase": "click committed Meet Back and observe World tools",
+      "pathname": "/world",
+      "same_host": true,
+      "mounts": 1,
+      "peak_games": 1,
+      "peak_connections": 1
+    },
+    {
+      "phase": "unmount",
+      "games": 0,
+      "connections": 0,
+      "disposals": 1
+    }
+  ],
+  "proposed_owner_correction": {
+    "owner": "Delivery / reserved meeting-entry test owner",
+    "path": "frontend/src/app/meeting-entry/__tests__/root-registration.test.tsx",
+    "insert_after_original_line": 69,
+    "code": "expect(await screen.findByRole('heading', { name: 'Meet', level: 1 })).toBeVisible()",
+    "implemented": false
+  },
+  "limits": [
+    "Original test unchanged and still intermittent: repeats 1/2 failed, repeat3 passed; a combined green run is not remediation.",
+    "Public React act controls commit scheduling only; no mocked navigation, forced production state or route composition overrides.",
+    "Fixture world lease counters are not live World, actual Phaser, native device or multiuser proof.",
+    "No grant/source/venue/clock fabrication; actual fail-closed meeting panel and canonical auth fixtures retained.",
+    "No full 96-file suite, product acceptance or production correction claimed."
+  ]
+}

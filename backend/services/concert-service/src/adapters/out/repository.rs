@@ -1,4 +1,7 @@
+pub mod report;
+pub mod event_operations;
 pub mod outbox;
+pub mod outbox_maintenance;
 pub mod place;
 pub mod receipt;
 
@@ -157,3 +160,6 @@ impl CoreRepository for PgConcertRepository {
 }
 
 pub mod avatar;
+
+pub mod mural;
+pub mod intro;

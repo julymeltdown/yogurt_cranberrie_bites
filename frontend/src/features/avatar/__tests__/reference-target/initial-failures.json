@@ -1,0 +1,22 @@
+{
+  "base": "f837bef676cd26869c26c172a699a91b7842d832",
+  "initialAffectedRun": {
+    "files": 6,
+    "tests": 47,
+    "passed": 43,
+    "failed": 4
+  },
+  "reason": "Old UI assertions reference DRESS UP/Cancel changes; new target uses CUSTOMIZE/Reset draft. Controller and option lifetime tests pass.",
+  "scopeGrant": "Frontendking explicitly granted only heading/Reset-label queries in ui.test.tsx, Reset query in compact-layout.test.tsx, Reset queries in visual-adoption/presentation.test.tsx:42/76. Original assertion semantics retained.",
+  "hairFirstRun": {
+    "files": 7,
+    "tests": 54,
+    "passed": 50,
+    "failed": 4,
+    "reason": "option-previews.test.tsx mounted setup still assumed initial Presets; all four retained assertions pass after explicit Presets navigation."
+  },
+  "scopeExtensions": [
+    "Frontendking granted Hair-first Presets setup and keyboard/Home expectations in ui.test.tsx, compact-layout.test.tsx, visual-adoption/presentation.test.tsx.",
+    "Frontendking granted option-previews.test.tsx mounted setup only: explicit Presets navigation before existing wait."
+  ]
+}

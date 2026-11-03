@@ -1,0 +1,6 @@
+{
+  "job_id": "not-a-job-id",
+  "expected_revision": 8,
+  "confirmation": "RESUME_CLOSURE",
+  "reason": "Retry failed export after recovery"
+}

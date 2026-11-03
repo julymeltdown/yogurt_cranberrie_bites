@@ -1,0 +1,634 @@
+{
+  "assignment": "ART-ILLUSTRATED-WORLD source scenery",
+  "status": "MOCK_READY",
+  "source_art_delivery": "COMPLETE",
+  "product_integration": "NOT_RUN",
+  "base": "a5ff446b6fe9eedb825f16710216a1eeb8c00d5e",
+  "branch": "codex/mcr-art-illustrated-world",
+  "commit_resolution": "Final handoff commit is the commit adding this file; use git log --diff-filter=A --format=%H -- docs/mcr/art/evidence/illustrated-world/handoff.json. No recursive commit/self hash is embedded.",
+  "owned_paths": [
+    "frontend/public/world/illustrated/**",
+    "docs/mcr/art/illustrated-world.md",
+    "docs/mcr/art/evidence/illustrated-world/**"
+  ],
+  "changed_paths": [
+    "docs/mcr/art/evidence/illustrated-world/.gitignore",
+    "docs/mcr/art/evidence/illustrated-world/comparison-validation.json",
+    "docs/mcr/art/evidence/illustrated-world/comparison.cjs",
+    "docs/mcr/art/evidence/illustrated-world/comparison.html",
+    "docs/mcr/art/evidence/illustrated-world/danger-gifts-360.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-gifts-390.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-gifts-430.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-park-360.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-park-390.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-park-430.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-stage-360.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-stage-390.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-stage-430.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-studio-360.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-studio-390.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-studio-430.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-wall-360.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-wall-390.png",
+    "docs/mcr/art/evidence/illustrated-world/danger-wall-430.png",
+    "docs/mcr/art/evidence/illustrated-world/export.cjs",
+    "docs/mcr/art/evidence/illustrated-world/native-validation.json",
+    "docs/mcr/art/evidence/illustrated-world/native.cjs",
+    "docs/mcr/art/evidence/illustrated-world/parade-gifts-360.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-gifts-390.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-gifts-430.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-park-360.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-park-390.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-park-430.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-stage-360.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-stage-390.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-stage-430.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-studio-360.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-studio-390.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-studio-430.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-wall-360.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-wall-390.png",
+    "docs/mcr/art/evidence/illustrated-world/parade-wall-430.png",
+    "docs/mcr/art/evidence/illustrated-world/planning-validation.json",
+    "docs/mcr/art/evidence/illustrated-world/prompts.json",
+    "docs/mcr/art/evidence/illustrated-world/reference-comparison-360.png",
+    "docs/mcr/art/evidence/illustrated-world/reference-comparison-390.png",
+    "docs/mcr/art/evidence/illustrated-world/reference-comparison-430.png",
+    "docs/mcr/art/evidence/illustrated-world/resource-validation.json",
+    "docs/mcr/art/evidence/illustrated-world/revenge-gifts-360.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-gifts-390.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-gifts-430.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-park-360.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-park-390.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-park-430.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-stage-360.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-stage-390.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-stage-430.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-studio-360.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-studio-390.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-studio-430.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-wall-360.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-wall-390.png",
+    "docs/mcr/art/evidence/illustrated-world/revenge-wall-430.png",
+    "docs/mcr/art/evidence/illustrated-world/verify.py",
+    "docs/mcr/art/illustrated-world.md",
+    "frontend/public/world/illustrated/binding-proposal.json",
+    "frontend/public/world/illustrated/booth-original.png",
+    "frontend/public/world/illustrated/build.cjs",
+    "frontend/public/world/illustrated/danger-ground.png",
+    "frontend/public/world/illustrated/danger-ground.svg",
+    "frontend/public/world/illustrated/danger-landmarks-atlas.png",
+    "frontend/public/world/illustrated/danger-landmarks-atlas.svg",
+    "frontend/public/world/illustrated/danger-landmarks.png",
+    "frontend/public/world/illustrated/danger-landmarks.svg",
+    "frontend/public/world/illustrated/danger-scene.png",
+    "frontend/public/world/illustrated/danger-scene.svg",
+    "frontend/public/world/illustrated/danger-terrain-tiles.png",
+    "frontend/public/world/illustrated/danger-terrain-tiles.svg",
+    "frontend/public/world/illustrated/exported-resources.json",
+    "frontend/public/world/illustrated/greenery-original.png",
+    "frontend/public/world/illustrated/mural-original.png",
+    "frontend/public/world/illustrated/parade-ground.png",
+    "frontend/public/world/illustrated/parade-ground.svg",
+    "frontend/public/world/illustrated/parade-landmarks-atlas.png",
+    "frontend/public/world/illustrated/parade-landmarks-atlas.svg",
+    "frontend/public/world/illustrated/parade-landmarks.png",
+    "frontend/public/world/illustrated/parade-landmarks.svg",
+    "frontend/public/world/illustrated/parade-scene.png",
+    "frontend/public/world/illustrated/parade-scene.svg",
+    "frontend/public/world/illustrated/parade-terrain-tiles.png",
+    "frontend/public/world/illustrated/parade-terrain-tiles.svg",
+    "frontend/public/world/illustrated/revenge-ground.png",
+    "frontend/public/world/illustrated/revenge-ground.svg",
+    "frontend/public/world/illustrated/revenge-landmarks-atlas.png",
+    "frontend/public/world/illustrated/revenge-landmarks-atlas.svg",
+    "frontend/public/world/illustrated/revenge-landmarks.png",
+    "frontend/public/world/illustrated/revenge-landmarks.svg",
+    "frontend/public/world/illustrated/revenge-scene.png",
+    "frontend/public/world/illustrated/revenge-scene.svg",
+    "frontend/public/world/illustrated/revenge-terrain-tiles.png",
+    "frontend/public/world/illustrated/revenge-terrain-tiles.svg",
+    "frontend/public/world/illustrated/review.html",
+    "frontend/public/world/illustrated/stage-original.png",
+    "frontend/public/world/illustrated/studio-original.png",
+    "docs/mcr/art/evidence/illustrated-world/handoff.json"
+  ],
+  "file_receipts_excluding_self": [
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/.gitignore",
+      "bytes": 13,
+      "sha256": "sha256:32dae3052f331ee34d628ef535709b301259a45df7c7522c4d35dcf49873f00b"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/comparison-validation.json",
+      "bytes": 1279,
+      "sha256": "sha256:1a9352e640ac6000eed1f1e88b2398746d9c856cb76eae2ce2d4af63a86a568c"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/comparison.cjs",
+      "bytes": 1676,
+      "sha256": "sha256:554bcdb5721fe7fe24d735e0508c85af028a8b565697cadf3562374b98020b30"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/comparison.html",
+      "bytes": 1827,
+      "sha256": "sha256:8840e3297f827a1d278065a8ac6b43304d345eb1fdb86186828b7c3caf0c2e14"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-gifts-360.png",
+      "bytes": 367529,
+      "sha256": "sha256:46e5e423fef978794dc52998eaf4d24d35998b871442071c95cf3105f69df595"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-gifts-390.png",
+      "bytes": 409314,
+      "sha256": "sha256:413eb96e94567fd21f2e263e7137c8b6e7494bfc16508694682e5d9fb1cbac15"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-gifts-430.png",
+      "bytes": 480615,
+      "sha256": "sha256:104f6d76be1dd1e1f231288e7e624aa9ef3b95a0326db0a18f43c8b3d47fbc1d"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-park-360.png",
+      "bytes": 394384,
+      "sha256": "sha256:f136add377a3e447a2063bc1268ea9de35cd959e65b66d74045540d5bc68affe"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-park-390.png",
+      "bytes": 442299,
+      "sha256": "sha256:4d4bda448812b7a3e94f2c7642827d7de55f48d7f60b4bc4ba55bcc1e1307a79"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-park-430.png",
+      "bytes": 513897,
+      "sha256": "sha256:27c70d9d677cd3670db47a03a22ea76d2c158837720f42243bb08ac65b171fb7"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-stage-360.png",
+      "bytes": 415645,
+      "sha256": "sha256:57a7203222ce29bbb3fdb562d90d10b23a6ed6fc35f20ed2066a4becd7bbb95b"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-stage-390.png",
+      "bytes": 468356,
+      "sha256": "sha256:ebedf4f85c550071594b99330a019cddd0cd5a6f3ff9d55a391dae4008fa022d"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-stage-430.png",
+      "bytes": 549165,
+      "sha256": "sha256:0999aa62f63fd0e8ab18916eedde97b5ffca935703016ae7a8427a682f4d3a00"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-studio-360.png",
+      "bytes": 444421,
+      "sha256": "sha256:9bb1d9bdaedd706f40a00004e1fb1def4bc499e3faeff7cd7272ea3d24e9bd64"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-studio-390.png",
+      "bytes": 490317,
+      "sha256": "sha256:b53b78fe138781b4e5c8a22bd7a9d3268a792d3daff550d534be2b7153ee3d24"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-studio-430.png",
+      "bytes": 556987,
+      "sha256": "sha256:4b6e2e9e5da45e24eb0690983ed9deb1ae2983369f12681c91186f0e5a45d02d"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-wall-360.png",
+      "bytes": 350640,
+      "sha256": "sha256:c6441b332f1208dd90353ac727023d94833ce1bb6da881375fb3791fcdc2c9be"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-wall-390.png",
+      "bytes": 391221,
+      "sha256": "sha256:b7b45235d2b33037d481a8b41ef1c25f9dc30cd44a13af4fed7a4d382d78f75c"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/danger-wall-430.png",
+      "bytes": 462458,
+      "sha256": "sha256:f0c292d132be21bdc3cc658f71b6767655415225e35ad09285448a1d76742cae"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/export.cjs",
+      "bytes": 2038,
+      "sha256": "sha256:7cd1c12c78bd279182b1ef7aa1385d50cd480c14bc9fc3658695ef433fed57fb"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/native-validation.json",
+      "bytes": 35270,
+      "sha256": "sha256:6bb1853805fe95fafbe4babc121421a7e1a81f5c2022756b796148eb8775678e"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/native.cjs",
+      "bytes": 3913,
+      "sha256": "sha256:a098b333f6d1af2ecb35cba7af8eab72d8555539ab78043173508d7deda32429"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-gifts-360.png",
+      "bytes": 363859,
+      "sha256": "sha256:819b3a6177a740c02f18a602930fbe275dfe6cfa64fb36134ca657ac284718a9"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-gifts-390.png",
+      "bytes": 405232,
+      "sha256": "sha256:06147b8cf7889555d3c37b75b9148856a6d1610ee93970d31aedacad1b88b7e7"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-gifts-430.png",
+      "bytes": 477430,
+      "sha256": "sha256:bb7b816fc6c64b85a98975caf257f59d5812d3516be42011c10343407ba0508d"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-park-360.png",
+      "bytes": 391589,
+      "sha256": "sha256:331e789ee3f24e85e1b4543d136cd4d3d882ca9059d9db38a812c8486d8876a6"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-park-390.png",
+      "bytes": 438269,
+      "sha256": "sha256:ac2ce5db837109725f0b1f64a1c9a81d9278032e00e3c56ba89fb30ec50742ca"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-park-430.png",
+      "bytes": 510247,
+      "sha256": "sha256:d5cef5a731aeacd5a872cf0d502b6833e64b7dac1bb33151d471993d02d008ee"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-stage-360.png",
+      "bytes": 408263,
+      "sha256": "sha256:fc7f4a01f8045e907544ee568b45161b24e2d75856b23244ced94586732af650"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-stage-390.png",
+      "bytes": 460597,
+      "sha256": "sha256:208d3b160edc1c73cff018674c10baf5371604d538bdd26eecf21275141c3b9f"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-stage-430.png",
+      "bytes": 541626,
+      "sha256": "sha256:ce3b62eb77cd224f3d0aa08b7ec031992fea726ac98821a57cfe615a6774b3f6"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-studio-360.png",
+      "bytes": 442477,
+      "sha256": "sha256:95e6c94128888ac10a46472955e972b4eb2abff3c4ec77f63ef9319370a8a738"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-studio-390.png",
+      "bytes": 487144,
+      "sha256": "sha256:57c2d0fd8ff683e5205d300cc8235cdec3a5ba6bd859561500c134ca4f33d8ef"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-studio-430.png",
+      "bytes": 554296,
+      "sha256": "sha256:990d3d51fab1d322c1af2c1e8e9fcf9b829728540b1b71cf4faaab049a2eedd5"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-wall-360.png",
+      "bytes": 346040,
+      "sha256": "sha256:807598ac703c74f0e8a0d6b147eeb720d68141cecc4fd665363e213f22cef8d0"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-wall-390.png",
+      "bytes": 386442,
+      "sha256": "sha256:c3845b0bf5d1992f1dea19d997f4e5822db1bad7fb4846b46ace9e474ec8d5b0"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/parade-wall-430.png",
+      "bytes": 458584,
+      "sha256": "sha256:0cc7dd32faa5812a1e860884204950ad030e569df2a45b0b3f62144dd355e9e1"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/planning-validation.json",
+      "bytes": 1521,
+      "sha256": "sha256:9a05b1b2cb66eec39c1ff18e32aac365290af65fecb4f09fb891e60231779560"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/prompts.json",
+      "bytes": 6213,
+      "sha256": "sha256:6b4f64233981cefae330f2672bf6fed15a6aa038eaf725c8142af9336d5ff5f5"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/reference-comparison-360.png",
+      "bytes": 563134,
+      "sha256": "sha256:6b42471f82e2b5de879ab902b339e1d3652c33ed5d88a9ba7e862f78994224fa"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/reference-comparison-390.png",
+      "bytes": 625141,
+      "sha256": "sha256:c548fcd15feeabe7f8b91beb235e0f0a25a03431762a50c10ecbf047e1c4d3b1"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/reference-comparison-430.png",
+      "bytes": 714402,
+      "sha256": "sha256:bc540d76cddd4a9d6c67c6cd1ea99268ff92ad5d177965faafe8f63c5f9b9b8b"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/resource-validation.json",
+      "bytes": 9077,
+      "sha256": "sha256:150266de3ff3bf0d4878f901291f3c05dbc14d04fbb2d7aceb7f5358ae14ea27"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-gifts-360.png",
+      "bytes": 367273,
+      "sha256": "sha256:50b2acd2b7df1fa3a18db9487e22d04b765831a6b50e93551ba971586b802226"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-gifts-390.png",
+      "bytes": 408940,
+      "sha256": "sha256:ed9aaa6a9f9dde5cc4cfdaf8904a77ef9c5a07ff8b88670e98b2d78f9fb5331c"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-gifts-430.png",
+      "bytes": 480232,
+      "sha256": "sha256:d9355312b8cb86e8190b7bc4b5b4b62a4450acce64de11d5a37e05880165ab75"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-park-360.png",
+      "bytes": 393975,
+      "sha256": "sha256:4e61c6ea9a297d5402a1385b0712a2c66607f784351402d01ea0c15941173da1"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-park-390.png",
+      "bytes": 441971,
+      "sha256": "sha256:f9b476e40d3fe6798329bef9f8c64f6babd37d7f014fce0dade036583b3be777"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-park-430.png",
+      "bytes": 514098,
+      "sha256": "sha256:7fd62f0eef8437b252adb98c6c8605809a7d091d9d1a38651a646c9e95f43d27"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-stage-360.png",
+      "bytes": 415596,
+      "sha256": "sha256:6992a42c3612200f2da5d847f7bb350062c5321c47822a7dfcb9195de1cdb708"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-stage-390.png",
+      "bytes": 468050,
+      "sha256": "sha256:15ada4addbc58ea3b945074c814443aa2d9b4328f87659e373c846aa621b0163"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-stage-430.png",
+      "bytes": 549273,
+      "sha256": "sha256:24a516200615df7328db70d28c33915d757a5d3cf4aa13574cf791e5574e7f06"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-studio-360.png",
+      "bytes": 443570,
+      "sha256": "sha256:d0e9355beb0268405b5cd06f667334fb02aa576b1ccc2f09c0a0a06bb0ba014b"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-studio-390.png",
+      "bytes": 489547,
+      "sha256": "sha256:358c2cfc0ff91fa13c3aab8b62e3969d507602d078b4457d57d1832948f65132"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-studio-430.png",
+      "bytes": 556951,
+      "sha256": "sha256:a75afb909dfa6e7ea84a029a4e4fe00a4159287e84e84a799e663869cea20be7"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-wall-360.png",
+      "bytes": 350224,
+      "sha256": "sha256:e6ebf9c8140e1fb6719d925f3326271b6be6326ee702851ab6d24ab091d8483b"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-wall-390.png",
+      "bytes": 390957,
+      "sha256": "sha256:251fdcac3b866eaff23939efa745d98fcb8e314d7bc308fe5c81e894d132ff3c"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/revenge-wall-430.png",
+      "bytes": 462298,
+      "sha256": "sha256:7ec1ce9620b22c6e62453e3ed7a5b9a1dcd26130fcd0c658e865d7091eef6a45"
+    },
+    {
+      "path": "docs/mcr/art/evidence/illustrated-world/verify.py",
+      "bytes": 5454,
+      "sha256": "sha256:8110f5af14842528271bba07049bae6c211f555a5e47aa720e9df6e72f687af2"
+    },
+    {
+      "path": "docs/mcr/art/illustrated-world.md",
+      "bytes": 10943,
+      "sha256": "sha256:83985a07d805b2a38581b920445997cabbfff37a35b42e86ead212ab62baf83c"
+    },
+    {
+      "path": "frontend/public/world/illustrated/binding-proposal.json",
+      "bytes": 13382,
+      "sha256": "sha256:b788d6b4820ec987fa5e94148e67c89c4518cf584127e81bc44a0e5e9a661a30"
+    },
+    {
+      "path": "frontend/public/world/illustrated/booth-original.png",
+      "bytes": 2467365,
+      "sha256": "sha256:3a40c3414a43575fa7e53cb2f897c230366e7d80f6889ddb447754832c0d6aea"
+    },
+    {
+      "path": "frontend/public/world/illustrated/build.cjs",
+      "bytes": 13707,
+      "sha256": "sha256:608f70fdea3292da7e30646c22f329b6a1652c16ea6d1bb57d66621fcc3a0b64"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-ground.png",
+      "bytes": 96210,
+      "sha256": "sha256:dd82b20521f8032c2813cb3f842d719bfe1b328afc607094effecd6d499973bc"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-ground.svg",
+      "bytes": 1210458,
+      "sha256": "sha256:4e8d79a938d005ddb18f13e3f9eb44515246b54d552913fcaf2a19fbf0d5e020"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-landmarks-atlas.png",
+      "bytes": 440906,
+      "sha256": "sha256:ec273042bc867552b76d1144ce002fbb1b63825a0c67f2ba3bba089dd2b6ca8d"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-landmarks-atlas.svg",
+      "bytes": 1287,
+      "sha256": "sha256:c6fd01cd2e1f79614d1574bc0a49f6e479397b9295437a53a9cf46362ebf0be3"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-landmarks.png",
+      "bytes": 580161,
+      "sha256": "sha256:bade82235c4bedcc91091d2ef21036aa8064ba01eec8508087cc30d8ee04b6d1"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-landmarks.svg",
+      "bytes": 7131,
+      "sha256": "sha256:7d87feb86ef6b66dd31a3ba52ec9ebeefcb4ff9bf227702e9d5309fed000dd23"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-scene.png",
+      "bytes": 555605,
+      "sha256": "sha256:325e88a4cb6c7c6fa5be71d38f56d17f479733174b408bb685d95f466a155dba"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-scene.svg",
+      "bytes": 1217367,
+      "sha256": "sha256:c830437e8e57d53c0580aff93e3e96413c37b7b204d6ef4c8a7f71b2e4ee0d4f"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-terrain-tiles.png",
+      "bytes": 1912,
+      "sha256": "sha256:06cc8ea6f68f931ef122b5de5f9c3323b54a2e03f03bbc3eb3f73db4063c27ee"
+    },
+    {
+      "path": "frontend/public/world/illustrated/danger-terrain-tiles.svg",
+      "bytes": 1212468,
+      "sha256": "sha256:7a3366450ceea0e23fabbc174be14bedcec65b4efaa290b377105701a53d34d4"
+    },
+    {
+      "path": "frontend/public/world/illustrated/exported-resources.json",
+      "bytes": 4434,
+      "sha256": "sha256:1f5e821d73d7e091f4564d3a546b0e40259174efb9d12d775ee6de582404f14b"
+    },
+    {
+      "path": "frontend/public/world/illustrated/greenery-original.png",
+      "bytes": 1902489,
+      "sha256": "sha256:d697bd0134a952230308f0804da2c0d5a176165cfa178b41043737fef8f609e9"
+    },
+    {
+      "path": "frontend/public/world/illustrated/mural-original.png",
+      "bytes": 2718134,
+      "sha256": "sha256:9a3b42fb18841285e3899fab38d6bb54cf7faa55993cddb04358432353ae9af2"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-ground.png",
+      "bytes": 96414,
+      "sha256": "sha256:19a2450268ae02dd52331bbcac6b19b4d5a36462eeacf973c36af688bf638dea"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-ground.svg",
+      "bytes": 1210458,
+      "sha256": "sha256:e59e385f9a70c96d8a0c2b980e5b5de1cfe15995ca92995cc9502b506f57cbcf"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-landmarks-atlas.png",
+      "bytes": 423491,
+      "sha256": "sha256:06314ddf23ef02c2fa0432ded5c3f317287d9a08d014fcb1b382aeaf8af577ed"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-landmarks-atlas.svg",
+      "bytes": 1242,
+      "sha256": "sha256:b69e1a6de23cf10e81f49f7e4ee6bd031ac684733a55fe944932a9cb62e3d828"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-landmarks.png",
+      "bytes": 567228,
+      "sha256": "sha256:82b20290522aff6b35e8ff24ccbe8476c90eb4bbaf8c3d8223e585107128fe84"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-landmarks.svg",
+      "bytes": 7386,
+      "sha256": "sha256:67a6400a099b8db7b618308d35e446a5aed0fa9ab24d0f87bcc01627220aa20f"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-scene.png",
+      "bytes": 544653,
+      "sha256": "sha256:db0b712ae4026b51729122a7dd992866793872fb7373f7cf76a6aad5e252d798"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-scene.svg",
+      "bytes": 1217622,
+      "sha256": "sha256:9c0852e69ea901d23fc256f663d0cd01bfe4164f761bd9711672df40dedd900b"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-terrain-tiles.png",
+      "bytes": 1941,
+      "sha256": "sha256:e49f7ce3c01eb32bdc2c651f285a86ef3c3ebf3ee10570dc57a364cc9c5a3283"
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-terrain-tiles.svg",
+      "bytes": 1212468,
+      "sha256": "sha256:cbf41a94106381cf56b500f02a2ffd03dfb5f23101a7c59cc7675a9896941e66"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-ground.png",
+      "bytes": 96285,
+      "sha256": "sha256:aa889f913f8b518409529130fd6710f78f12cb40f28d746ce83c4a01a04aab8e"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-ground.svg",
+      "bytes": 1210459,
+      "sha256": "sha256:fff28ff7fb32fa87a4f536b94aeaab12ae5ead3b4942fa8ef856fea6bd2611df"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-landmarks-atlas.png",
+      "bytes": 445101,
+      "sha256": "sha256:0c2ff90ddf18a61791ca2825a25361c536e5fd8d3a86f927aeea5150db292879"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-landmarks-atlas.svg",
+      "bytes": 1114,
+      "sha256": "sha256:52e9d615c8fb0652e30357adee431b41ee92aaed0ba6508ce7dc30a94741efdd"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-landmarks.png",
+      "bytes": 583100,
+      "sha256": "sha256:602503514f088937720f580983e2d9c214fc2835860bf42253ffa8cf9c6ef6cb"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-landmarks.svg",
+      "bytes": 6853,
+      "sha256": "sha256:b3933c420164c790fa4478f651f04c7d367fa29fc81c5b9e8db59562240871d3"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-scene.png",
+      "bytes": 552479,
+      "sha256": "sha256:584bb7de9a3e032d9ec6c90cae4c6751fce65d5943475f9e7e4498f38372236e"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-scene.svg",
+      "bytes": 1217089,
+      "sha256": "sha256:be4bb151a04d05d0f02324f58ca3e43728d5d1ca3316e3ee0de7d49edbf6f712"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-terrain-tiles.png",
+      "bytes": 1931,
+      "sha256": "sha256:4cfaf3d2907e5c463a9e251095a149599e6b50033fa3f54cb04d03a71fe86b69"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-terrain-tiles.svg",
+      "bytes": 1212469,
+      "sha256": "sha256:a583ca00e3249b05f6cad162ea4db40e39680422ee1c78988ce266daee66f7c6"
+    },
+    {
+      "path": "frontend/public/world/illustrated/review.html",
+      "bytes": 6240,
+      "sha256": "sha256:997bb5d9ddc3735bf88aba93fe1f6f145f3db2343217c85c4675388f2ded374c"
+    },
+    {
+      "path": "frontend/public/world/illustrated/stage-original.png",
+      "bytes": 2776818,
+      "sha256": "sha256:ed9874d7f0bca415a448c29324994ebf6f71d67033a924a07ee0de18fa821b1e"
+    },
+    {
+      "path": "frontend/public/world/illustrated/studio-original.png",
+      "bytes": 2461792,
+      "sha256": "sha256:5fabecf4409259f07c24451e6b83213591fab010a812a634dbe30bcb8d80e005"
+    }
+  ],
+  "validation": {
+    "resource-validation.json": "PASS",
+    "native-validation.json": "PASS:45cases,45pointer+keyboard actions",
+    "comparison-validation.json": "PASS:3widths",
+    "planning-validation.json": "PASS:planning-only",
+    "git_diff_cached_check": "Required immediately before commit; success recorded in delivered handoff message"
+  },
+  "review_fixes": [
+    "North planting root moved to immutable blocked column21",
+    "Plaza lamp moved to400,608 to clear original interaction target",
+    "Flat backing blocks removed in favor of continuous material",
+    "Opaque RGB PNG exports accepted as valid opaque resources; transparent layers remain RGBA"
+  ],
+  "provenance": "Exact prompts, original hashes/dimensions and immutable source revisions in sibling prompts.json/resource-validation.json and binding-proposal.json; generation tool did not expose model version.",
+  "limitations": [
+    "No characters",
+    "Source-only standalone browser review",
+    "No actual product, device, GPU or multiuser qualification",
+    "No central release binding changes",
+    "No push to master"
+  ]
+}

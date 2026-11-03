@@ -1,0 +1,57 @@
+{
+  "scope": "BE15 maintenance origin",
+  "result": "PASS",
+  "public_routes": "NOT_RUN",
+  "real_policy": "NOT_RUN",
+  "source_revision": "5d8efe7d2108b59579696ab10cd8800f270e8701",
+  "source_sha256": {
+    "backend/crates/concert-application/src/community/giveaway.rs": "dfff04ffa35ab0b10307e5d1cbf1599e153f7d010688a03ca55b934aea9555ca",
+    "backend/crates/concert-application/src/community/mod.rs": "11bdc4e48695c520538793b6f87c05a2037700fcda13428c1b8c1d0afb063199",
+    "backend/crates/concert-application/tests/community_command.rs": "0017e19cc0dc9f7b7e2b1bc12e3c7b3480e9b4bf1b865a22875cf9ff98244b3a",
+    "backend/crates/concert-domain/src/community/giveaway.rs": "34c847398197f8d3413194abab050789a8a8344f10b2c878c26dbab78be6b4eb",
+    "backend/crates/concert-domain/src/community/mod.rs": "452c1f23cbae0bd5871d17c96ca46103db1f763a2a778a4aa0ecb3cbf3442265",
+    "backend/crates/concert-domain/src/community/party.rs": "85f4cfa70ea937baa840f52cf179fbc2ea6a75f36b864a3c6755528474c85675",
+    "backend/crates/concert-domain/tests/community_giveaway.rs": "6568bdfa8b2577786656c0f847e21f3973033d423f5c9c6fc85a1410e2f855bb",
+    "backend/crates/concert-domain/tests/community_party.rs": "6611c7bb03e622c19bd9fd3ab25817d7eed63863d357160382ded8d01c35e696",
+    "backend/scripts/mcr/community_smoke.py": "37ff0cd98087156fc6e3741d674f25d1b46a49821831a9b38b511fcd0ef348da",
+    "backend/services/concert-service/migrations/0007_community.sql": "0ed0d15d3aa0eb484222774f09dad2ddafdd22c3cb2a43c932a52a3c03759388",
+    "backend/services/concert-service/src/community/audience.rs": "70b3a5b90000c0997defb0852bf0bc6c939136cec1d0ebb5eb671383c915b6ed",
+    "backend/services/concert-service/src/community/catalog.rs": "f0efbd060843bb24b2636db8837077dfeb75b52723a65abb5ff8af8750f38a8d",
+    "backend/services/concert-service/src/community/giveaway.rs": "1d782465138ad01e2134ee67f1193b114e422da8721b49f9c97993d6e7c80d3b",
+    "backend/services/concert-service/src/community/mod.rs": "350902d882f468e9f514f3178893c5d189e075cbf4a83fd61a9b29831cbb97fd",
+    "backend/services/concert-service/tests/community_giveaway.rs": "6fe2d5d7c700274f0d396f70df82ae258ce0268c0d1457c2eb919cf4340175ec",
+    "backend/services/concert-service/tests/community_party.rs": "b128986f97724b8718b7932e3469f503f93264ccbca5eb9f48e854082c0ede03",
+    "backend/services/concert-service/tests/support/community/owned.rs": "de0cab155156534734e214bf5d7f3a090309179672a5a42ea179936dccb39385"
+  },
+  "contract_sha256": {
+    "contracts/domain/v1/party.schema.json": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
+    "contracts/domain/v1/giveaway.schema.json": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d",
+    "contracts/domain/v1/operations.json": "42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223",
+    "contracts/domain/v1/policy.json": "508d22af964b718cdcbd5a25b32b9a1e3f7b651a5b8c25c87d56f1f6b68d0ebe"
+  },
+  "owned_root": "/private/tmp/mcr-pg-a8xo4czl",
+  "postgres_version": "16.14 (Homebrew)",
+  "binary_sha256": "b2201e1814efee22295cc2971abde9a46fa20b8f5f9526ccd170039aa9642474",
+  "native_runs": [
+    {
+      "arguments": [],
+      "exit_code": 0,
+      "stdout": "\nrunning 2 tests\ntest maintenance_origin_transactions_and_leases ... ok\ntest maintenance_restart_dedupe ... ok\n\ntest result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s\n\n",
+      "stderr": ""
+    },
+    {
+      "arguments": [
+        "--exact",
+        "maintenance_restart_dedupe"
+      ],
+      "exit_code": 0,
+      "stdout": "\nrunning 1 test\ntest maintenance_restart_dedupe ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.05s\n\n",
+      "stderr": ""
+    }
+  ],
+  "durable_rows_before_restart": "2:1:2",
+  "durable_rows_after_restart": "2:1:2",
+  "restart_replay": "PASS",
+  "cleanup": "PASS",
+  "qualification": "Pre-0009 source5d8efe7; synthetic local authority; public routes/real Auth/Friend NOT_RUN"
+}

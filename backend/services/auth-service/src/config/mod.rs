@@ -175,10 +175,14 @@ impl AppConfig {
         let runtime_mode = RuntimeMode::parse(&env_or("AUTH_RUNTIME_MODE", "production"))?;
         let is_production = matches!(runtime_mode, RuntimeMode::Production);
         // Only the edge may drive user-facing auth RPCs. No internal service
-        // calls auth except the edge, so the accepted set stays minimal.
+        // calls the existing Auth API except the edge; Concert is accepted only by
+        // the separate relationship service method policy.
         let caller_registry = platform::config::build_caller_registry(
             is_production,
-            &[platform::grpc_auth::Workload::Gateway],
+            &[
+                platform::grpc_auth::Workload::Gateway,
+                platform::grpc_auth::Workload::Concert,
+            ],
             &[platform::grpc_auth::Workload::Gateway],
         )?;
         let outbound_identity = platform::config::resolve_outbound_identity(

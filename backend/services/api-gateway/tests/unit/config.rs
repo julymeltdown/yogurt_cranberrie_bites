@@ -3,6 +3,29 @@ use api_gateway::config::{
 };
 
 #[test]
+fn concert_endpoint_is_explicit_and_obeys_production_endpoint_policy() {
+    let mut config = production_config();
+    assert!(config.concert_grpc_endpoint.is_none());
+    config.validate().unwrap();
+    config.concert_grpc_endpoint = Some("http://concert.internal:50056".into());
+    config.validate().unwrap();
+    for endpoint in [
+        "",
+        "http://127.0.0.1:50056",
+        "not-a-url",
+        "ftp://concert.internal",
+        "http://concert.internal/path",
+        "http://concert.internal?secret=value",
+        "http://user:password@concert.internal",
+        "http://concert.internal#fragment",
+    ] {
+        config.concert_grpc_endpoint = Some(endpoint.into());
+        let error = config.validate().expect_err(endpoint);
+        assert!(error.to_string().contains("GATEWAY_CONCERT_GRPC_ENDPOINT"));
+    }
+}
+
+#[test]
 fn production_config_rejects_unsafe_gateway_defaults() {
     let mut config = production_config();
     config.http_addr = "127.0.0.1:8080".parse().expect("addr");
@@ -399,6 +422,7 @@ fn production_config() -> AppConfig {
         database_url: "postgres://gateway:secret@postgres.internal:5432/gateway_db".into(),
         seed_enabled: false,
         auth_grpc_endpoint: "http://auth.internal:50051".into(),
+        concert_grpc_endpoint: None,
         profile_grpc_endpoint: "http://profile.internal:50052".into(),
         friend_grpc_endpoint: "http://friend.internal:50053".into(),
         notification_grpc_endpoint: "http://notification.internal:50054".into(),

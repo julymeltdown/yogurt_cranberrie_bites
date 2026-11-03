@@ -98,6 +98,23 @@ class CoreContractTests(unittest.TestCase):
         value["avatar"]["revision"] += 1
         self.reject(value, "Bootstrap")
 
+    def test_bootstrap_selected_static_reuses_canonical_union_and_theme_pins(self):
+        value = self.fixture("bootstrap-open")
+        directory = ROOT / "contracts/fixtures/assets/selected-static"
+        manifest = json.loads((directory / "avatar-manifest.json").read_text())
+        config = json.loads((directory / "photo01_front_06.json").read_text())
+        value["avatar_manifest"] = manifest
+        value["avatar"]["config"] = config
+        value["participant"]["profile"]["avatar"] = copy.deepcopy(value["avatar"])
+        for theme in value["theme_manifests"]:
+            theme.update(avatar_manifest_id=manifest["manifest_id"], avatar_manifest_version=1,
+                         avatar_content_hash=manifest["content_hash"])
+            theme["content_hash"] = core.assets.content_hash(theme)
+        core.validate(value, "Bootstrap", self.document)
+        value["avatar"]["config"]["preset_id"] = "photo01_front_07"
+        value["participant"]["profile"]["avatar"] = copy.deepcopy(value["avatar"])
+        self.reject(value, "Bootstrap")
+
     def test_bootstrap_rejects_unknown_avatar_item_even_with_consistent_projection(self):
         value = self.fixture("bootstrap-open")
         value["avatar"]["config"]["item_ids"]["hair"] = "unknown_hair"
@@ -217,6 +234,21 @@ class CoreContractTests(unittest.TestCase):
         self.assertEqual(self.document, core.generator.build_document())
         result = subprocess.run([sys.executable, str(ROOT / "backend/scripts/docs/generate-mcr-core.py"), "--check"], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_deletion_step_accepts_concert_targets_and_rejects_unknown(self):
+        step = {
+            "target": "PROFILE", "status": "PENDING", "attemptCount": 0,
+            "nextAttemptAt": "2026-11-04T00:00:00Z", "lastError": None,
+            "completedAt": None,
+        }
+        targets = ["PROFILE", "FRIEND", "POST", "NOTIFICATION", "CONCERT_TICKETS",
+                   "CONCERT_SESSIONS", "CONCERT_SHARING", "CONCERT_PRIVATE_DATA"]
+        actual = self.document["components"]["schemas"]["UserDeletionStep"]["properties"]["target"]["enum"]
+        self.assertEqual(actual, targets)
+        for target in targets:
+            with self.subTest(target=target):
+                core.validate({**step, "target": target}, "UserDeletionStep", self.document)
+        self.reject({**step, "target": "CONCERT_ALL"}, "UserDeletionStep")
 
 
 if __name__ == "__main__":

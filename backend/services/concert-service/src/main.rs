@@ -1,6 +1,6 @@
 use concert_service::{
     bootstrap::{BootstrapFeatures, BootstrapService, ProductReleaseBundle},
-    config, health, rpc,
+    config, health, rpc, world_rpc,
 };
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -39,6 +39,11 @@ async fn main() -> anyhow::Result<()> {
             .map_err(|_| anyhow::anyhow!("Concert product release is unavailable"))
         })
         .transpose()?;
+    let world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
+    let world_owners = world_settings
+        .as_ref()
+        .map(|_| config::world_runtime::production_owners())
+        .transpose()?;
     let pool = config::connect_pool(&config).await?;
     let _application = config::build_application(pool.clone());
     let health = health::router(health::readiness(pool.clone()));
@@ -47,6 +52,7 @@ async fn main() -> anyhow::Result<()> {
         .map_err(|_| anyhow::anyhow!("Concert health listener bind failed"))?;
     println!("CONCERT_HEALTH_LISTENER={}", listener.local_addr()?);
     let grpc_pool = pool.clone();
+    let world_pool = pool.clone();
     let result = platform::shutdown::supervise(async move {
         let http = async move {
             axum::serve(listener, health)
@@ -64,15 +70,34 @@ async fn main() -> anyhow::Result<()> {
                     if let Some(tls) = runtime.tls {
                         server = server.tls_config(tls.server_config()?)?;
                     }
+                    let bootstrap =
+                        std::sync::Arc::new(BootstrapService::new(grpc_pool.clone(), release));
+                    let world = world_rpc::WorldRpcService::new(
+                        grpc_pool.clone(),
+                        bootstrap.clone(),
+                        world_rpc::PgWorldCanonicalAuthority::new(
+                            bootstrap.clone(),
+                            grpc_pool.clone(),
+                        ),
+                        std::sync::Arc::new(world_rpc::CsprngTicketEntropy),
+                    );
+                    let bootstrap = platform::grpc_method_policy::guard(
+                        &rpc::POLICY,
+                        rpc::proto::concert_service_server::ConcertServiceServer::new(
+                            BootstrapService::new(grpc_pool.clone(), bootstrap.release().clone()),
+                        ),
+                        runtime.callers.clone(),
+                        runtime.actors.clone(),
+                    )?;
+                    let world = platform::grpc_method_policy::guard(
+                        &world_rpc::POLICY,
+                        world_rpc::proto::world_service_server::WorldServiceServer::new(world),
+                        runtime.callers,
+                        runtime.actors,
+                    )?;
                     server
-                        .add_service(platform::grpc_method_policy::guard(
-                            &rpc::POLICY,
-                            rpc::proto::concert_service_server::ConcertServiceServer::new(
-                                BootstrapService::new(grpc_pool, release),
-                            ),
-                            runtime.callers,
-                            runtime.actors,
-                        )?)
+                        .add_service(bootstrap)
+                        .add_service(world)
                         .serve_with_shutdown(
                             runtime.address,
                             platform::shutdown::global().cancelled(),
@@ -83,7 +108,13 @@ async fn main() -> anyhow::Result<()> {
             }
             Ok::<(), anyhow::Error>(())
         };
-        tokio::try_join!(http, grpc)?;
+        let world = async move {
+            match (world_settings, world_owners) {
+                (Some(settings), Some(owners)) => settings.serve(world_pool, owners).await,
+                _ => platform::shutdown::idle().await,
+            }
+        };
+        tokio::try_join!(http, grpc, world)?;
         Ok(())
     })
     .await;

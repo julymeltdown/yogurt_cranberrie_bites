@@ -1,0 +1,121 @@
+{
+  "status": "PASS",
+  "scope": "New FE38 components/controller + canonical Auth/privacy/request with deterministic synthetic role/clock/HTTP/place-write ports. No production router, real operator, native device, publication, venue facts or closure acceptance.",
+  "baseCommit": "707ea68d585324430144c971724efbf5c73167d6",
+  "browser": "156.0.8078.80",
+  "sources": {
+    "frontend/src/features/admin/event/__tests__/browser.mjs": "9c4a972c1084fa8da93a05c2a8b49d92c856e5c63bf2325299559478138341f4",
+    "frontend/src/features/admin/event/__tests__/build.mjs": "57352cf6b8aa42a5f31ec8c98cee94bd384590f75f5dd8296a44bdc2a7ff0b9d",
+    "frontend/src/features/admin/event/__tests__/contract.test.ts": "f4d19d613f1a54cc340a7b3495143f61ca9e4e62a10b4fdb0450ef25d4927b8a",
+    "frontend/src/features/admin/event/__tests__/controller.test.ts": "3425af5578bde80e0b408bb69b6ba5968d3b9eb163d35daa7fab4db041d432f2",
+    "frontend/src/features/admin/event/__tests__/fixtures/data.ts": "cbcff7c01fe0695958674c9484864d856103496bd7da80e91f83cc22180fcbd9",
+    "frontend/src/features/admin/event/__tests__/fixtures/preview.html": "6ff042d65f884864d7880afe3052939b417ce8fba835920237a6903365d49744",
+    "frontend/src/features/admin/event/__tests__/fixtures/preview.tsx": "965b66b8752f909130e4e3c407419d475ab0f7517eca767f03bcc4003d6e2211",
+    "frontend/src/features/admin/event/__tests__/runner.ts": "831d2f0fa1689d028acd9a1177f0f83469f34b3844fbbd227770d6382dc4234e",
+    "frontend/src/features/admin/event/index.ts": "dcb17bd90072752952946e4008ddf8338cc9b9bfb6094d19a6839de6e748bef4",
+    "frontend/src/features/admin/event/model/contract.ts": "42b8624fc4e0b07c1410fcc6084ae9bf85e81692ef2f9f0d80d126eab8bfad20",
+    "frontend/src/features/admin/event/model/controller.ts": "dcb105e816ab1e61e3014be431f2cc33f485a2a5dcda91dcfed675635c63019e",
+    "frontend/src/features/admin/event/model/lease.ts": "64139083f91530cbe75a5e37fa473e82e5196c3f8c8253dfa69b5ba8d6223214",
+    "frontend/src/features/admin/event/model/ports.ts": "38e116b5fb365920c9ca35a2d445ec2b34eefc6148cf35b7da021be60c70252b",
+    "frontend/src/features/admin/event/ui/EventOperations.tsx": "ef7af68d29d17627b57d31d1ad926ec234f7b3d05a5b852419351ba208a364b6",
+    "frontend/src/features/admin/event/ui/common.tsx": "7055c5c6b844fd8df88714576d9cd9aaa986b3326937a2a173c0eeae9b35969c",
+    "frontend/src/features/admin/event/ui/operations.css": "56c26b90323d4acd1a86b3e80a3aff7f9efb8eec5dce2807ee2ab8f3387ab17c",
+    "frontend/src/features/admin/places/PlacesOperations.tsx": "eb6654419e4e3a659677bed38c6db5e9d3d7b38ea811b01c43230a62a0224507",
+    "frontend/src/features/admin/places/contract.ts": "b56c89d81a270240342ff11a8265737cf8651acda6ebefe0ea6aaa6b3a0d5493",
+    "frontend/src/features/admin/places/index.ts": "5b38bc4d82bad648a590496c7488c0682a3615bf0a6c957fccf0c1a04e44939a",
+    "frontend/src/features/admin/audit/AuditOperations.tsx": "68dfca7cc1cc820bc0fa2523dce73b533508f5b872bc9f28ded8be704cb95d8c",
+    "frontend/src/features/admin/audit/contract.ts": "6fe7f35047e83b29f2340c9de1b025c7e7ae767c1f0abc78fc9c5888ef68b2c7",
+    "frontend/src/features/admin/audit/index.ts": "d23181ff148c5b9fe446b33fdaba99eb25952cc28635ef8de5d7f5aade49871c",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/features/auth/model/session.ts": "dae6680d1f4a0600b6d3012639fd82c9317d63d1a55eb856e5c4dc81f9a5dc53",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/features/places/model/contract.ts": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee"
+  },
+  "contracts": {
+    "contracts/domain/v1/admin.schema.json": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+    "contracts/domain/v1/feed.schema.json": "590cce6afc00c7a869b5a9711104550ba280ffa5875c9dc49a0753d272320801",
+    "contracts/domain/v1/common.schema.json": "303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35",
+    "contracts/domain/v1/operations.json": "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839",
+    "contracts/domain/v1/policy.json": "81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb",
+    "contracts/assets/v1/map-manifest.schema.json": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800"
+  },
+  "reference": {
+    "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "captures": {
+    "frontend/src/features/admin/event/__tests__/evidence/native/denied-event-390.png": "513ec464b388826a6a4fad3234e7dc95c8da31ff90a6d4282acb1f5a915eed0f",
+    "frontend/src/features/admin/event/__tests__/evidence/native/denied-places-390.png": "513ec464b388826a6a4fad3234e7dc95c8da31ff90a6d4282acb1f5a915eed0f",
+    "frontend/src/features/admin/event/__tests__/evidence/native/denied-audit-390.png": "513ec464b388826a6a4fad3234e7dc95c8da31ff90a6d4282acb1f5a915eed0f",
+    "frontend/src/features/admin/event/__tests__/evidence/native/event-confirm-390.png": "8d83a4586b54d5eb201f818e810ffbff4869cf050d40ea74c0b329fd9e3b2898",
+    "frontend/src/features/admin/event/__tests__/evidence/native/event-applied-390.png": "4ffb775f3fc9f1b7da366960db826bd761523bb9e87b7506fb1880d1e0bd8305",
+    "frontend/src/features/admin/event/__tests__/evidence/native/notice-withdrawn-390.png": "4ec205887591a5da74b23d1694d5c83bd73e08652e5031ee86f9a1d41a3507d6",
+    "frontend/src/features/admin/event/__tests__/evidence/native/place-review-390.png": "634cb68dbebad784a04f91a597d007c869285c3b1411831a2372a277664846aa",
+    "frontend/src/features/admin/event/__tests__/evidence/native/audit-detail-390.png": "82f9d81cad0876b22defbb61c49c8254d70cd7772feb033d9e19f89c1eb62ca2"
+  },
+  "scenarios": [
+    {
+      "width": 360,
+      "state": "PASS",
+      "surfaces": [
+        "O01/O02 event/settings/notices",
+        "O03 places",
+        "O08 audit"
+      ],
+      "strictMode": true,
+      "deniedReadsWrites": 0,
+      "touchMinimum": 44,
+      "keyboardFocus": "PASS",
+      "overflow": false,
+      "cancel": "PASS",
+      "conflictDraft": "PASS",
+      "pendingNoReplay": "PASS",
+      "noticePublishWithdraw": "PASS",
+      "provenancePreserved": "PASS",
+      "permissionExpiryIdentityCleanup": "PASS"
+    },
+    {
+      "width": 390,
+      "state": "PASS",
+      "surfaces": [
+        "O01/O02 event/settings/notices",
+        "O03 places",
+        "O08 audit"
+      ],
+      "strictMode": true,
+      "deniedReadsWrites": 0,
+      "touchMinimum": 44,
+      "keyboardFocus": "PASS",
+      "overflow": false,
+      "cancel": "PASS",
+      "conflictDraft": "PASS",
+      "pendingNoReplay": "PASS",
+      "noticePublishWithdraw": "PASS",
+      "provenancePreserved": "PASS",
+      "permissionExpiryIdentityCleanup": "PASS"
+    },
+    {
+      "width": 430,
+      "state": "PASS",
+      "surfaces": [
+        "O01/O02 event/settings/notices",
+        "O03 places",
+        "O08 audit"
+      ],
+      "strictMode": true,
+      "deniedReadsWrites": 0,
+      "touchMinimum": 44,
+      "keyboardFocus": "PASS",
+      "overflow": false,
+      "cancel": "PASS",
+      "conflictDraft": "PASS",
+      "pendingNoReplay": "PASS",
+      "noticePublishWithdraw": "PASS",
+      "provenancePreserved": "PASS",
+      "permissionExpiryIdentityCleanup": "PASS"
+    }
+  ],
+  "errors": [],
+  "cleanup": "PASS"
+}

@@ -1,6 +1,8 @@
 import { MapError, requireMap, sha256 } from './json'
 import { limits, requireProvided, validateManifests, type ReleasePin } from './manifest'
 import { validateTiled } from './tiled'
+import { sceneryDescriptors, type LoadedScenery } from '../illustrated/model'
+import type { ResourceByteCache } from './resource-cache'
 export interface Resource { readonly path: string; readonly sha256: string; readonly kind: 'json' | 'png' }
 export interface AssetResources { read(resource: Resource, signal: AbortSignal): Promise<Uint8Array<ArrayBuffer>> }
 export function abortable<T>(work: Promise<T>, signal: AbortSignal, timeoutMs: number = limits.deadlineMs): Promise<T> {
@@ -17,7 +19,7 @@ export function abortable<T>(work: Promise<T>, signal: AbortSignal, timeoutMs: n
     work.then(value => finish(value), error => finish(undefined, error))
   })
 }
-export function createAssetResources(options: { origin: string; allow: readonly Resource[]; fetch?: typeof fetch }): AssetResources {
+export function createAssetResources(options: { origin: string; allow: readonly Resource[]; fetch?: typeof fetch; cache?: ResourceByteCache }): AssetResources {
   const origin = new URL(options.origin).origin
   requireMap(origin === options.origin && /^https?:$/.test(new URL(origin).protocol))
   const allowed = new Map<string, Resource>()
@@ -31,6 +33,7 @@ export function createAssetResources(options: { origin: string; allow: readonly 
     const approved = allowed.get(resource.path)
     requireMap(approved && approved.sha256 === resource.sha256 && approved.kind === resource.kind)
     if (signal.aborted) throw new MapError('cancelled')
+    const load = async (signal: AbortSignal) => {
     const controller = new AbortController(), abort = () => controller.abort()
     signal.addEventListener('abort', abort, { once: true })
     const max = resource.kind === 'png' ? limits.pngBytes : limits.tiledBytes, url = `${origin}/${resource.path}`
@@ -58,6 +61,8 @@ export function createAssetResources(options: { origin: string; allow: readonly 
     }
     try { return await abortable(operation(), signal) }
     finally { signal.removeEventListener('abort', abort); controller.abort() }
+    }
+    return options.cache ? options.cache.read(JSON.stringify([origin, resource.path, resource.sha256, resource.kind]), signal, load) : load(signal)
   } }
 }
 export function pngDimensions(bytes: Uint8Array<ArrayBuffer>, width: number, height: number) {
@@ -83,7 +88,7 @@ export async function decodeImage(bytes: Uint8Array<ArrayBuffer>, signal: AbortS
   finally { signal.removeEventListener('abort', dispose) }
 }
 export async function loadMap(input: { mapText: string; themeText: string; pin: ReleasePin; resources: AssetResources;
-  decode?: typeof decodeImage }, signal: AbortSignal) {
+  decode?: typeof decodeImage }, signal: AbortSignal): Promise<LoadedMap> {
   const metadata = await validateManifests(input.mapText, input.themeText, input.pin)
   if (signal.aborted) throw new MapError('cancelled')
   const { map, theme } = metadata
@@ -93,14 +98,50 @@ export async function loadMap(input: { mapText: string; themeText: string; pin: 
   const tiled = await input.resources.read(tiledResource, signal)
   requireMap(tiled.length <= limits.tiledBytes && await sha256(tiled) === tiledResource.sha256)
   validateTiled(new TextDecoder('utf-8', { fatal: true }).decode(tiled), map.geometry, theme.texture)
-  const bytes = await input.resources.read(textureResource, signal)
-  requireMap(await sha256(bytes) === textureResource.sha256)
-  pngDimensions(bytes, theme.texture.width_px, theme.texture.height_px)
-  const decoded = await (input.decode ?? decodeImage)(bytes, signal)
+  if (!theme.scenery) {
+    // Keep the existing v1 single-image lease semantics, including late injected decoders.
+    const bytes = await input.resources.read(textureResource, signal)
+    requireMap(await sha256(bytes) === textureResource.sha256)
+    pngDimensions(bytes, theme.texture.width_px, theme.texture.height_px)
+    const decoded = await (input.decode ?? decodeImage)(bytes, signal)
+    try {
+      requireMap(decoded.image.naturalWidth === theme.texture.width_px && decoded.image.naturalHeight === theme.texture.height_px)
+      if (signal.aborted) throw new MapError('cancelled')
+      return { ...metadata, image: decoded.image, dispose: decoded.dispose }
+    } catch (error) { decoded.dispose(); throw error }
+  }
+  const controller = new AbortController(), combined = AbortSignal.any([signal, controller.signal])
+  const owned: DecodedImage[] = []
+  let disposed = false
+  const dispose = () => { if (disposed) return; disposed = true; for (const decoded of owned) decoded.dispose() }
+  async function image(resource: Resource, width: number, height: number, expectedBytes?: number) {
+    const bytes = await abortable(input.resources.read(resource, combined), combined)
+    requireMap(expectedBytes === undefined || bytes.length === expectedBytes)
+    requireMap(await sha256(bytes) === resource.sha256)
+    pngDimensions(bytes, width, height)
+    const pending = (input.decode ?? decodeImage)(bytes, combined).then(decoded => {
+      // Injected decoders can ignore abort/timeout; never retain their late result.
+      if (combined.aborted || disposed) { decoded.dispose(); throw new MapError('cancelled') }
+      owned.push(decoded); return decoded
+    })
+    const decoded = await abortable(pending, combined)
+    requireMap(decoded.image.naturalWidth === width && decoded.image.naturalHeight === height)
+    return decoded.image
+  }
   try {
-    requireMap(decoded.image.naturalWidth === theme.texture.width_px && decoded.image.naturalHeight === theme.texture.height_px)
-    if (signal.aborted) throw new MapError('cancelled')
-    return { ...metadata, image: decoded.image, dispose: decoded.dispose }
-  } catch (error) { decoded.dispose(); throw error }
+    const texture = await image(textureResource, theme.texture.width_px, theme.texture.height_px)
+    const assets: LoadedScenery['assets'][number][] = []
+    for (const descriptor of sceneryDescriptors(theme)) {
+      const decoded = await image({ ...descriptor, kind: 'png' }, descriptor.width_px, descriptor.height_px, descriptor.bytes)
+      assets.push(Object.freeze({ descriptor, image: decoded }))
+    }
+    if (combined.aborted) throw new MapError('cancelled')
+    const scenery: LoadedScenery | undefined = theme.scenery ? Object.freeze({ manifest: theme.scenery, assets: Object.freeze(assets),
+      transferBytes: assets.reduce((n, a) => n + a.descriptor.bytes, 0),
+      decodedBytes: assets.reduce((n, a) => n + a.descriptor.width_px * a.descriptor.height_px * 4, 0) }) : undefined
+    return { ...metadata, image: texture, ...(scenery ? { scenery } : {}), dispose }
+  } catch (error) { controller.abort(); dispose(); throw error }
 }
-export type LoadedMap = Awaited<ReturnType<typeof loadMap>>
+export type LoadedMap = Awaited<ReturnType<typeof validateManifests>> & {
+  image: HTMLImageElement; dispose(): void; readonly scenery?: LoadedScenery
+}

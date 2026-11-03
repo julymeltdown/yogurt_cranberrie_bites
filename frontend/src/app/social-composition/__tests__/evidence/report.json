@@ -1,0 +1,36 @@
+{
+  "result": "PASS",
+  "scope": "Production-built social adapter fixture with real canonical controllers/Auth/HTTP/privacy, test-only world lease and server. No actual product root wiring, real game/socket, BE33 or IN03/device acceptance.",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "checks": [
+    "real canonical controller and fullcount composition",
+    "StrictMode peak one instrumented world lease; same host/mount through navigation",
+    "discarded edit does not reopen; composer and intro drafts retained, including edit-button guard",
+    "fresh inbox link preflight plus destination reread",
+    "denied profile evicts old content",
+    "sharing/block/provider/requests absent failclosed",
+    "unresolved command retains key/draft and blocks navigation with one write",
+    "data-router Link and history POP blocked without changing path/key/draft",
+    "policy clears private DOM/count and world lease",
+    "keyboard focus/44px/no horizontal overflow/no browser errors"
+  ],
+  "sourceHashes": {
+    "ports.ts": "348aa542f7e6ae7032c9e0f1195d67700881077870986a88af6b88822deee1e9",
+    "routes.ts": "069f2f60387a785d6607d25e86fddd0c10b41e7192fa829227a5ea9537826554",
+    "owner.ts": "b0c13edeb117de750ed8a30e76e72808ccf031d00010363582f21de502a527d4",
+    "provider.tsx": "21a3c2d3660ffc27f7953436782a6d050bc2cc9fb051f040558c522f77dda219",
+    "panels.tsx": "49bff496ac81f6aef4ed8798d636132c8298071b6c878b66e8950529f5f37446",
+    "composition.css": "b4869aae8a49818965a5f6b1c6fa3fd4b79526b5a45fbbd099786c5bf2bc918c",
+    "navigation.tsx": "13fdc6d570dd79db90f2310b320637ac86757fee817a561eb13cf59bde3c3902",
+    "index.ts": "914a68b6c45aa00012bfd85c322bb0dea59e54fc00a3b82c8ffbb4df29949cd4",
+    "__tests__/preview.tsx": "0ce982210dfef55d7aeb76f9ddbc0c71376c394476a5fef13d6ac516eefeb1de",
+    "__tests__/fixtures.ts": "69c1110092ae076ed05ba831d86da7f67fb96816cc060661d146aeb228fb924f",
+    "__tests__/preview.css": "461685e0358c52e3276681cb289d573cfe7fc4743972f53acab8d99c150a3fd4",
+    "__tests__/browser-smoke.mjs": "87a57ab24771f8ac876fd86dc835c5dc185e6afa2b48add64273cb2a0d46c983"
+  },
+  "browser": "156.0.8078.80"
+}

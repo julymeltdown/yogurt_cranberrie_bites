@@ -1,0 +1,50 @@
+vite v8.1.3 building client environment for production...
+[2Ktransforming...✓ 349 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../tmp/mcr-default-shell-production/index.html                                   1.27 kB │ gzip:   0.54 kB
+../../../../../../tmp/mcr-default-shell-production/assets/panels-BN_4I1Xa.css                   0.87 kB │ gzip:   0.39 kB
+../../../../../../tmp/mcr-default-shell-production/assets/composition-Cskz_TlR.css              1.36 kB │ gzip:   0.58 kB
+../../../../../../tmp/mcr-default-shell-production/assets/root-features-nb6jl9cq.css            1.55 kB │ gzip:   0.65 kB
+../../../../../../tmp/mcr-default-shell-production/assets/meeting-entry-jVy7UCgi.css            1.58 kB │ gzip:   0.66 kB
+../../../../../../tmp/mcr-default-shell-production/assets/world-panels-B1K2u2Sf.css             6.53 kB │ gzip:   1.95 kB
+../../../../../../tmp/mcr-default-shell-production/assets/provider-CZ46c4C1.css                 8.07 kB │ gzip:   2.03 kB
+../../../../../../tmp/mcr-default-shell-production/assets/CommunityFeatures-DGIz2iOG.css        9.32 kB │ gzip:   2.20 kB
+../../../../../../tmp/mcr-default-shell-production/assets/PublicBoundary-DO3B2XUN.css          15.51 kB │ gzip:   3.38 kB
+../../../../../../tmp/mcr-default-shell-production/assets/index-WMDNDhfI.css                   21.04 kB │ gzip:   4.93 kB
+../../../../../../tmp/mcr-default-shell-production/assets/rolldown-runtime-Bh1tDfsg.js          0.56 kB │ gzip:   0.36 kB
+../../../../../../tmp/mcr-default-shell-production/assets/compatibility-NxiEzhrU.js             0.74 kB │ gzip:   0.37 kB
+../../../../../../tmp/mcr-default-shell-production/assets/phaser-C-L-RzyC.js                    1.19 kB │ gzip:   0.62 kB
+../../../../../../tmp/mcr-default-shell-production/assets/preload-helper-CZgWQFsJ.js            1.25 kB │ gzip:   0.70 kB
+../../../../../../tmp/mcr-default-shell-production/assets/AdminBoundary-uXTjRqH9.js             1.34 kB │ gzip:   0.67 kB
+../../../../../../tmp/mcr-default-shell-production/assets/Tabs-zndLuvpQ.js                      1.40 kB │ gzip:   0.68 kB
+../../../../../../tmp/mcr-default-shell-production/assets/avatar-config.schema-BEz1Qm5v.js      2.08 kB │ gzip:   0.77 kB
+../../../../../../tmp/mcr-default-shell-production/assets/resolver-BtHVji5F.js                  2.49 kB │ gzip:   1.29 kB
+../../../../../../tmp/mcr-default-shell-production/assets/authority-3jXV6v1w.js                 2.73 kB │ gzip:   1.19 kB
+../../../../../../tmp/mcr-default-shell-production/assets/contract-ZPXHOE5k.js                  2.98 kB │ gzip:   1.33 kB
+../../../../../../tmp/mcr-default-shell-production/assets/simulation-sCcriVKG.js                3.15 kB │ gzip:   1.27 kB
+../../../../../../tmp/mcr-default-shell-production/assets/panels-CjAfVJg0.js                    4.98 kB │ gzip:   1.86 kB
+../../../../../../tmp/mcr-default-shell-production/assets/MapScene-BzBqtI-8.js                  7.45 kB │ gzip:   3.02 kB
+../../../../../../tmp/mcr-default-shell-production/assets/resources-BQT93mEs.js                 8.01 kB │ gzip:   3.35 kB
+../../../../../../tmp/mcr-default-shell-production/assets/root-features-CLFnPlpf.js            14.81 kB │ gzip:   4.91 kB
+../../../../../../tmp/mcr-default-shell-production/assets/schema-BLPkPMKb.js                   15.48 kB │ gzip:   4.35 kB
+../../../../../../tmp/mcr-default-shell-production/assets/source-catalog-B2GN78SH.js           15.97 kB │ gzip:   4.30 kB
+../../../../../../tmp/mcr-default-shell-production/assets/contract-BxDqEr9E.js                 28.08 kB │ gzip:   6.21 kB
+../../../../../../tmp/mcr-default-shell-production/assets/PublicBoundary-DZqennLj.js           32.53 kB │ gzip:   8.87 kB
+../../../../../../tmp/mcr-default-shell-production/assets/meeting-entry-BiwgEp31.js            37.35 kB │ gzip:  10.43 kB
+../../../../../../tmp/mcr-default-shell-production/assets/provider-C-dVFkKH.js                 38.25 kB │ gzip:  11.88 kB
+../../../../../../tmp/mcr-default-shell-production/assets/composition-Dl_Ma2yB.js              46.78 kB │ gzip:  15.75 kB
+../../../../../../tmp/mcr-default-shell-production/assets/world-panels-CzcB4fA-.js             56.77 kB │ gzip:  18.56 kB
+../../../../../../tmp/mcr-default-shell-production/assets/schemas-B9zUvP7H.js                  66.99 kB │ gzip:  17.93 kB
+../../../../../../tmp/mcr-default-shell-production/assets/routes-DwBYLKVg.js                  104.89 kB │ gzip:  34.65 kB
+../../../../../../tmp/mcr-default-shell-production/assets/mcr-core.openapi-C8Ltq9-m.js        118.71 kB │ gzip:  11.28 kB
+../../../../../../tmp/mcr-default-shell-production/assets/index-Bx0lxoZx.js                   384.33 kB │ gzip:  99.68 kB
+../../../../../../tmp/mcr-default-shell-production/assets/CommunityFeatures-C_6wxaNC.js       809.90 kB │ gzip:  63.56 kB
+../../../../../../tmp/mcr-default-shell-production/assets/phaser-DVTuvjT6.js                1,198.04 kB │ gzip: 319.11 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 454ms

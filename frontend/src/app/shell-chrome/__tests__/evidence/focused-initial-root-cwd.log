@@ -1,0 +1,40 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-shell-chrome/frontend
+
+ ❯ src/world/theme/__tests__/replacement.test.ts (28 tests | 1 failed) 208ms
+   × uses exactly one immutable map and three textures in a C06-valid bundle 50ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/theme/__tests__/replacement.test.ts > uses exactly one immutable map and three textures in a C06-valid bundle
+AssertionError: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import runpy,sys,json;m=runpy.run_path('../scripts/mcr/validate-assets.py');m['validate_bundle'](json.loads(sys.stdin.read(),object_pairs_hook=m['reject_duplicates']))
+                            ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 254, in _get_code_from_file
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/lhs/Desktop/mcr-worktrees/scripts/mcr/validate-assets.py'
+: expected 1 to be +0 // Object.is equality
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ src/world/theme/__tests__/replacement.test.ts:47:40
+     45|   const program = "import runpy,sys,json;m=runpy.run_path('../scripts/…
+     46|   const result = spawnSync(process.env.MCR_FE14_PYTHON!, ['-c', progra…
+     47|   expect(result.status, result.stderr).toBe(0)
+       |                                        ^
+     48| })
+     49| it('accepts only the fixed neutral image marker or the exact legacy te…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  1 failed | 80 passed (81)
+   Start at  04:19:56
+   Duration  846ms (transform 174ms, setup 0ms, import 400ms, tests 506ms, environment 1.30s)
+

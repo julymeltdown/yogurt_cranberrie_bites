@@ -1,0 +1,92 @@
+{
+  "result": "PASS",
+  "scope": "Actual IntroEditor/controller, synthetic owner HTTP fixture; Google Chrome. No backend, real IME/device, root routing or release acceptance.",
+  "browser": "156.0.8078.80",
+  "hashes": {
+    "src/features/intro/IntroEditor.tsx": "fdd45a21f21f3e4e4e20393a22de1d715142738832271cb9da1b6074c0045511",
+    "src/features/intro/contract.ts": "ca1a009b9f6666da8fe8e0985932196b5120adfa49f8949373bac7cff917502e",
+    "src/shared/validation/text.ts": "6874e0c437563d820f00337bcd254fdbfea1356c7e4414ff0e80aed12aa04a39"
+  },
+  "checks": [
+    {
+      "width": 360,
+      "positive": [
+        500,
+        501,
+        1000
+      ],
+      "savedLength": 1000,
+      "negative": 1001,
+      "writesAfterRejection": 1,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "positive": [
+        500,
+        501,
+        1000
+      ],
+      "savedLength": 1000,
+      "negative": 1001,
+      "writesAfterRejection": 1,
+      "overflow": false
+    },
+    {
+      "width": 430,
+      "positive": [
+        500,
+        501,
+        1000
+      ],
+      "savedLength": 1000,
+      "negative": 1001,
+      "writesAfterRejection": 1,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "positive": [
+        500,
+        501,
+        1000
+      ],
+      "savedLength": 1000,
+      "negative": 1001,
+      "writesAfterRejection": 1,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "positive": [
+        500,
+        501,
+        1000
+      ],
+      "savedLength": 1000,
+      "negative": 1001,
+      "writesAfterRejection": 1,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "positive": [
+        500,
+        501,
+        1000
+      ],
+      "savedLength": 1000,
+      "negative": 1001,
+      "writesAfterRejection": 1,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "post_run_nonsemantic_changes": {
+    "src/shared/validation/text.ts": {
+      "tested_sha256": "6874e0c437563d820f00337bcd254fdbfea1356c7e4414ff0e80aed12aa04a39",
+      "delivery_sha256": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",
+      "change": "Removed one trailing blank line only; executable text is byte-identical."
+    }
+  }
+}

@@ -1,29 +1,53 @@
-.mcr-mural { max-inline-size: 40rem; margin-inline: auto; padding: 1rem; color: var(--mcr-ink, #201d1d); background: var(--mcr-paper, #faf6ed); overflow-wrap: anywhere; }
-.mcr-mural * { box-sizing: border-box; }
-.mcr-mural__heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: .5rem; border-bottom: 2px solid currentColor; padding-bottom: .75rem; }
-.mcr-mural__heading h2 { font-size: 2.25rem; line-height: 1; margin: .3rem 0 0; letter-spacing: -.04em; }
-.mcr-mural__heading span, .mcr-mural__kicker { font-family: ui-monospace, monospace; font-size: .8rem; }
-.mcr-mural p { margin: .7rem 0; font-size: .9rem; line-height: 1.5; }
-.mcr-mural [role="status"] { min-block-size: 2.7rem; font-weight: 650; }
-.mcr-mural button, .mcr-mural input { min-inline-size: 44px; min-block-size: 44px; border: 2px solid currentColor; border-radius: 0; padding: .5rem; color: inherit; background: var(--mcr-paper, #faf6ed); font: inherit; font-size: .9rem; }
-.mcr-mural button { cursor: pointer; font-weight: 650; }
-.mcr-mural button:disabled { cursor: not-allowed; color: #605952; background: #e5dfd4; }
-.mcr-mural :focus-visible { outline: 3px solid var(--mcr-red, #a22635); outline-offset: 3px; }
-.mcr-mural__toolbar, .mcr-mural__actions { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-block: .75rem; }
-.mcr-mural__toolbar output { min-inline-size: 1.5rem; text-align: center; }
-.mcr-mural__surface { inline-size: 100%; aspect-ratio: 1; overflow: hidden; touch-action: none; cursor: crosshair; background: #e5dfd4; outline: 1px solid currentColor; }
-.mcr-mural__surface canvas { display: block; inline-size: 100%; block-size: 100%; image-rendering: pixelated; }
-.mcr-mural fieldset { border: 0; border-top: 1px solid currentColor; margin: 1rem 0; padding: .5rem 0 0; min-inline-size: 0; }
-.mcr-mural legend { font-weight: 700; padding-inline-end: .75rem; }
-.mcr-mural__coordinates { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; align-items: end; }
-.mcr-mural__coordinates label { display: grid; gap: .25rem; min-inline-size: 0; }
-.mcr-mural__coordinates input { inline-size: 100%; min-inline-size: 44px; }
-.mcr-mural__coordinates button { grid-column: 1 / -1; }
-.mcr-mural__palette { display: grid; grid-template-columns: repeat(4, minmax(44px, 1fr)); gap: .5rem; }
-.mcr-mural__palette button { display: flex; gap: .25rem; align-items: center; justify-content: center; }
-.mcr-mural__palette [aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: 1px; }
-.mcr-mural__swatch { display: inline-block; inline-size: 18px; block-size: 18px; border: 1px solid #605952; }
-.mcr-mural__preview { border-block: 1px dashed currentColor; padding-block: .75rem; }
-.mcr-mural .mcr-mural__confirm:not(:disabled) { color: #faf6ed; background: #201d1d; }
-@media (min-width: 600px) { .mcr-mural__palette { grid-template-columns: repeat(8, minmax(44px, 1fr)); } .mcr-mural__coordinates { grid-template-columns: 1fr 1fr 2fr; } .mcr-mural__coordinates button { grid-column: auto; } }
-@media (forced-colors: active) { .mcr-mural__swatch { forced-color-adjust: none; } }
+.mcr-mural { inline-size:100%; max-inline-size:40rem; min-inline-size:0; margin-inline:auto; overflow-wrap:anywhere; }
+.mcr-mural * { box-sizing:border-box; }
+.mcr-mural .concert-window__body { padding:0; }
+.mcr-mural .concert-window__titlebar { min-block-size:32px; padding:4px 8px; gap:6px; }
+.mcr-mural .concert-window__titlebar h2 { font-size:20px; line-height:1; }
+.mcr-mural .concert-window__titlebar .concert-icon { inline-size:18px; block-size:18px; }
+.mcr-mural p { margin:0; font-size:12px; line-height:1.35; }
+.mcr-mural__heading { margin:0; padding:5px 8px; color:#fff5e3; background:#1b1917; border-block-end:3px double #d7cab3; font:700 20px/1.15 Impact,"Arial Narrow",sans-serif; letter-spacing:.03em; }
+.mcr-mural button,.mcr-mural input,.mcr-mural summary { min-inline-size:44px; min-block-size:44px; border:1px solid #80705b; border-radius:0; padding:7px; color:#1d1a17; background:#f5eddd; font:700 13px/1.2 "Arial Narrow",Arial,sans-serif; }
+.mcr-mural input { font-size:16px; font-weight:400; }
+.mcr-mural button,.mcr-mural summary { cursor:pointer; }
+.mcr-mural button:disabled,.mcr-mural input:disabled { cursor:not-allowed; color:#595044; background:#ddd2bf; }
+.mcr-mural :focus-visible { outline:3px solid #a1212c; outline-offset:-3px; }
+.mcr-mural__workspace { position:relative; min-inline-size:0; container-type:inline-size; }
+.mcr-mural__surface { inline-size:100%; aspect-ratio:10/11; min-block-size:260px; max-block-size:max(100cqi,260px,calc(var(--mcr-wall-viewport-height,100dvh) - 210px)); overflow:hidden; touch-action:none; cursor:crosshair; background:#201d1d; }
+.mcr-mural__surface--pan { cursor:grab; }
+.mcr-mural__surface--pan:active { cursor:grabbing; }
+.mcr-mural__surface canvas { display:block; inline-size:100%; block-size:100%; image-rendering:pixelated; }
+.mcr-mural__toolbar { position:absolute; inset-block:6px; inset-inline-end:6px; display:flex; flex-direction:column; justify-content:space-between; inline-size:44px; pointer-events:none; }
+.mcr-mural__tools { display:grid; inline-size:44px; gap:2px; pointer-events:auto; }
+.mcr-mural__tools button { display:grid; place-items:center; inline-size:44px; block-size:44px; padding:10px; border-color:#201d1d; box-shadow:inset 0 0 0 1px #fff6e7; }
+.mcr-mural__tools button[aria-pressed="true"] { background:#201d1d; color:#fff5e3; box-shadow:inset 0 0 0 2px #f5eddd; }
+.mcr-mural__tools svg { inline-size:22px; block-size:22px; }
+.mcr-mural__tools output { padding:2px; background:#201d1d; color:#fff5e3; text-align:center; font:700 11px/1.2 monospace; }
+.mcr-mural fieldset { margin:0; padding:0; min-inline-size:0; border:0; }
+.mcr-mural legend { padding:0; font-size:12px; font-weight:700; }
+.mcr-mural .mcr-mural__palette-frame { margin:4px; padding:3px; border:4px double #201d1d; }
+.mcr-mural__palette { display:flex; gap:2px; max-inline-size:100%; overflow-x:auto; overscroll-behavior-inline:contain; scrollbar-width:thin; scrollbar-color:#605952 #e5dfd4; padding-block:1px 3px; }
+.mcr-mural__palette button { position:relative; flex:0 0 44px; inline-size:44px; block-size:44px; padding:3px; border-color:#605952; }
+.mcr-mural__palette [aria-pressed="true"] { outline:2px solid #921f28; outline-offset:-2px; }
+.mcr-mural__swatch { display:block; inline-size:100%; block-size:100%; border:1px solid #605952; }
+.mcr-mural__color-marker { position:absolute; inset-inline-end:3px; inset-block-end:3px; padding:0 2px; background:#fff5e3; color:#201d1d; font-size:11px; }
+.mcr-mural__preview { display:grid; grid-template-columns:minmax(0,1fr) minmax(88px,auto) 44px; gap:5px; align-items:center; padding:3px 6px 5px; }
+.mcr-mural__preview strong { display:block; font-size:10px; line-height:1.2; letter-spacing:.05em; }
+.mcr-mural__preview p { font-size:11px; }
+.mcr-mural .mcr-mural__confirm { padding:6px; font-size:12px; border-radius:0; }
+.mcr-mural .mcr-mural__confirm:not(:disabled) { background:#921f28; color:#fff6e7; border:2px solid #34201b; }
+.mcr-mural__meta { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:3px 8px; padding:7px; color:#fff5e3; background:#201d1d; font:700 11px/1.2 monospace; text-transform:uppercase; }
+.mcr-mural__status { padding:5px 7px; }
+.mcr-mural__status p { font-size:11px; }
+.mcr-mural__status .mcr-mural__sync-state[data-phase="ready"] { font-size:10px; color:#514637; }
+.mcr-mural__status [aria-label="Original placement status"] { margin-block-start:4px; font-weight:700; }
+.mcr-mural__details { margin:0 6px 6px; }
+.mcr-mural__details summary { display:list-item; align-content:center; padding:12px 8px; border:0; border-block:1px solid #a99b83; background:transparent; }
+.mcr-mural__details p { margin-block:6px; font-size:12px; }
+.mcr-mural__coordinates { display:grid; grid-template-columns:minmax(44px,1fr) minmax(44px,1fr) minmax(80px,1.5fr); gap:6px; align-items:end; padding-block:6px; }
+.mcr-mural__coordinates label { display:grid; gap:3px; min-inline-size:0; font-size:12px; }
+.mcr-mural__coordinates input { inline-size:100%; }
+.mcr-mural__recovery { display:flex; flex-wrap:wrap; gap:6px; margin:0 6px 6px; }
+.mcr-mural__recovery button { flex:1 1 140px; }
+.mcr-mural__sr-only { position:absolute; inline-size:1px; block-size:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+@media(prefers-reduced-motion:reduce) { .mcr-mural * { scroll-behavior:auto; animation:none; transition:none; } }
+@media(forced-colors:active) { .mcr-mural__swatch { forced-color-adjust:none; } .mcr-mural__palette [aria-pressed="true"] { outline-color:Highlight; } }

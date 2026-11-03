@@ -1,0 +1,37 @@
+{
+  "format": "AR02_LOCAL_BINDING_INPUTS_NOT_RELEASE_MANIFEST",
+  "map_id": "paradise_virtual_courtyard",
+  "map_revision": 1,
+  "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+  "tilemap_sha256": "sha256:a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d",
+  "tilemap_path": "world/maps/courtyard-tiled.json",
+  "source_pack_sha256": "sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+  "texture_dimensions": {
+    "width_px": 256,
+    "height_px": 128
+  },
+  "tile_semantics": [
+    "empty",
+    "lawn",
+    "paving",
+    "alternate_paving",
+    "gravel",
+    "stage_deck",
+    "roof",
+    "wall",
+    "water",
+    "canopy",
+    "flower",
+    "banner",
+    "truss",
+    "sign",
+    "lamp"
+  ],
+  "publication": "UNBOUND; final MapManifest/ThemeManifest and release pins belong to Delivery.",
+  "limits": [
+    "Original virtual geometry, not surveyed physical venue.",
+    "No physical candidate IDs or operational destinations published.",
+    "Collision layer is logical0/1; rendering must hide collision and choose an AR04 texture for inert marker.",
+    "Spawns/interactions are normalized C06 data; landmarks are sidecar associations."
+  ]
+}

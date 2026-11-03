@@ -12,10 +12,23 @@ pub enum UserDeletionTarget {
     Friend,
     Post,
     Notification,
+    ConcertTickets,
+    ConcertSessions,
+    ConcertSharing,
+    ConcertPrivateData,
 }
 
 impl UserDeletionTarget {
-    pub const ALL: [Self; 4] = [Self::Profile, Self::Friend, Self::Post, Self::Notification];
+    pub const ALL: [Self; 8] = [
+        Self::Profile,
+        Self::Friend,
+        Self::Post,
+        Self::Notification,
+        Self::ConcertTickets,
+        Self::ConcertSessions,
+        Self::ConcertSharing,
+        Self::ConcertPrivateData,
+    ];
 
     pub const fn as_str(self) -> &'static str {
         match self {
@@ -23,6 +36,10 @@ impl UserDeletionTarget {
             Self::Friend => "FRIEND",
             Self::Post => "POST",
             Self::Notification => "NOTIFICATION",
+            Self::ConcertTickets => "CONCERT_TICKETS",
+            Self::ConcertSessions => "CONCERT_SESSIONS",
+            Self::ConcertSharing => "CONCERT_SHARING",
+            Self::ConcertPrivateData => "CONCERT_PRIVATE_DATA",
         }
     }
 }
@@ -42,6 +59,10 @@ impl FromStr for UserDeletionTarget {
             "FRIEND" => Ok(Self::Friend),
             "POST" => Ok(Self::Post),
             "NOTIFICATION" => Ok(Self::Notification),
+            "CONCERT_TICKETS" => Ok(Self::ConcertTickets),
+            "CONCERT_SESSIONS" => Ok(Self::ConcertSessions),
+            "CONCERT_SHARING" => Ok(Self::ConcertSharing),
+            "CONCERT_PRIVATE_DATA" => Ok(Self::ConcertPrivateData),
             _ => anyhow::bail!("Unknown user deletion target"),
         }
     }
@@ -198,6 +219,34 @@ redact_debug!(
 #[cfg(test)]
 mod debug_redaction_tests {
     use super::*;
+
+    #[test]
+    fn required_deletion_targets_are_unique_and_roundtrip_all_eight() {
+        let expected = [
+            "PROFILE",
+            "FRIEND",
+            "POST",
+            "NOTIFICATION",
+            "CONCERT_TICKETS",
+            "CONCERT_SESSIONS",
+            "CONCERT_SHARING",
+            "CONCERT_PRIVATE_DATA",
+        ];
+        assert_eq!(
+            UserDeletionTarget::ALL.map(UserDeletionTarget::as_str),
+            expected
+        );
+        let unique: std::collections::HashSet<_> = UserDeletionTarget::ALL.into_iter().collect();
+        assert_eq!(unique.len(), 8);
+        for target in UserDeletionTarget::ALL {
+            assert_eq!(
+                UserDeletionTarget::from_str(target.as_str()).unwrap(),
+                target
+            );
+            assert_eq!(serde_json::to_value(target).unwrap(), target.as_str());
+        }
+        assert!(UserDeletionTarget::from_str("CONCERT_UNKNOWN").is_err());
+    }
 
     #[test]
     fn user_deletion_debug_redacts_ids_rationale_and_dependency_errors() {

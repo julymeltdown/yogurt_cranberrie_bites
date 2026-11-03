@@ -1,0 +1,208 @@
+{
+  "pack_id": "paradise_city_source_pack",
+  "revision": 1,
+  "status": "IN_PROGRESS",
+  "research_date_kst": "2026-11-04",
+  "worker_base": "a25b85592b906209f4a9d20f9c7279ced8abab02",
+  "sources": [
+    {
+      "source_id": "venue_overview",
+      "uri": "https://www.p-city.com/front/culturePark/overview?language=EN",
+      "publisher": "Paradise City / Paradise Group",
+      "retrieved_at": "2026-11-03T16:17:33Z",
+      "retrieved_sha256": "sha256:d45769b556f4f207da03492d141af879aa926f900980aeecb4d02594b56bb872",
+      "response_bytes": 91290,
+      "http_revision_headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "text/html; charset=utf-8"
+      },
+      "publisher_revision": "No explicit page revision established; retrieval hash identifies observed bytes only.",
+      "trust": "PRIMARY_OFFICIAL_PUBLIC_REFERENCE",
+      "review_state": "RESEARCH_CHECKED_NOT_OPERATOR_VERIFIED",
+      "supported_facts": [
+        "Culture Park is an outdoor lawn and event space.",
+        "Station Plaza is separately described; it is not equated with the concert entrance."
+      ],
+      "reuse_permission": "No photo or map-art redistribution permission established. Factual reference only; third-party pixels not shipped.",
+      "photo_permission": "UNREVIEWED",
+      "operational_limit": "Does not establish event-day gates, closures, accessibility, safe routes or approved meeting points."
+    },
+    {
+      "source_id": "venue_location",
+      "uri": "https://www.p-city.com/front/contents/pcity/location?language=EN",
+      "publisher": "Paradise City / Paradise Group",
+      "retrieved_at": "2026-11-03T16:17:33Z",
+      "retrieved_sha256": "sha256:b388c49df41f2b1677fbccc004e7de04f5aa6f2eb13b1f998d37453f9bb3c26b",
+      "response_bytes": 301273,
+      "http_revision_headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "text/html; charset=utf-8"
+      },
+      "publisher_revision": "No explicit page revision established; retrieval hash identifies observed bytes only.",
+      "trust": "PRIMARY_OFFICIAL_PUBLIC_REFERENCE",
+      "review_state": "RESEARCH_CHECKED_NOT_OPERATOR_VERIFIED",
+      "supported_facts": [
+        "Official legend associates10 with Studio Paradise and11 with Culture Park.",
+        "Studio Paradise is described as a multipurpose studio."
+      ],
+      "reuse_permission": "No photo or map-art redistribution permission established. Factual reference only; third-party pixels not shipped.",
+      "photo_permission": "UNREVIEWED",
+      "operational_limit": "Does not establish event-day gates, closures, accessibility, safe routes or approved meeting points."
+    },
+    {
+      "source_id": "venue_diagram",
+      "uri": "https://www.p-city.com/pcPub/static/images/map/img_paradise_map01.jpg",
+      "publisher": "Paradise City / Paradise Group",
+      "retrieved_at": "2026-11-03T16:17:33Z",
+      "retrieved_sha256": "sha256:f4bd424e7528e9734ce963790aca23a8f693557c3daa0846a057fc059d3904f2",
+      "response_bytes": 40129,
+      "http_revision_headers": {
+        "ETag": "\"0-16fba-5c0e1ff2\"",
+        "Last-Modified": "Wed, 21 Oct 2026 08:26:09 GMT",
+        "Content-Type": "image/jpeg"
+      },
+      "publisher_revision": "No explicit page revision established; retrieval hash identifies observed bytes only.",
+      "trust": "PRIMARY_OFFICIAL_PUBLIC_REFERENCE",
+      "review_state": "RESEARCH_CHECKED_NOT_OPERATOR_VERIFIED",
+      "supported_facts": [
+        "Diagram10 appears above diagram11; diagram6 appears to their right.",
+        "This supports only broad diagram-relative adjacency; no compass bearing, measured footprint or event route is derived."
+      ],
+      "reuse_permission": "No photo or map-art redistribution permission established. Factual reference only; third-party pixels not shipped.",
+      "photo_permission": "UNREVIEWED",
+      "operational_limit": "Does not establish event-day gates, closures, accessibility, safe routes or approved meeting points."
+    },
+    {
+      "source_id": "venue_event",
+      "uri": "https://www.p-city.com/front/event/eventView?P_CTNT_TY=imageTy&P_SEQ=14396",
+      "publisher": "Paradise City / Paradise Group",
+      "retrieved_at": "2026-11-03T16:17:34Z",
+      "retrieved_sha256": "sha256:a8f29720e972f4e317c9fcb980d7d1d7be01dd91a271d10c324f11fd0567b90e",
+      "response_bytes": 57737,
+      "http_revision_headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "text/html; charset=utf-8"
+      },
+      "publisher_revision": "No explicit page revision established; retrieval hash identifies observed bytes only.",
+      "trust": "PRIMARY_OFFICIAL_PUBLIC_REFERENCE",
+      "review_state": "RESEARCH_CHECKED_NOT_OPERATOR_VERIFIED",
+      "supported_facts": [
+        "Venue event14396 lists November7,2026 at19:00 and Culture Park."
+      ],
+      "reuse_permission": "No photo or map-art redistribution permission established. Factual reference only; third-party pixels not shipped.",
+      "photo_permission": "UNREVIEWED",
+      "operational_limit": "Does not establish event-day gates, closures, accessibility, safe routes or approved meeting points."
+    },
+    {
+      "source_id": "ticket_notice",
+      "uri": "https://www.ticketlink.co.kr/global/en/help/notice/63744",
+      "publisher": "Ticketlink",
+      "retrieved_at": "2026-11-03T16:17:34Z",
+      "retrieved_sha256": "sha256:c2dec3d54ed790fe5209961b87e51dc9d227c4219b78d15eb1cbd5141585776a",
+      "response_bytes": 27286,
+      "http_revision_headers": {
+        "ETag": null,
+        "Last-Modified": null,
+        "Content-Type": "text/html;charset=UTF-8"
+      },
+      "publisher_revision": "No explicit page revision established; retrieval hash identifies observed bytes only.",
+      "trust": "PRIMARY_OFFICIAL_PUBLIC_REFERENCE",
+      "review_state": "RESEARCH_CHECKED_NOT_OPERATOR_VERIFIED",
+      "supported_facts": [
+        "Postponement notice63744 lists November7,2026 at19:00 and Paradise City Culture Park."
+      ],
+      "reuse_permission": "No photo or map-art redistribution permission established. Factual reference only; third-party pixels not shipped.",
+      "photo_permission": "UNREVIEWED",
+      "operational_limit": "Does not establish event-day gates, closures, accessibility, safe routes or approved meeting points."
+    }
+  ],
+  "landmarks": [
+    {
+      "place_id": "0b6f634a-994f-49a1-9150-000000000001",
+      "label": "Culture Park",
+      "place_kind": "PHYSICAL",
+      "verification_state": "UNVERIFIED",
+      "operator_closure_state": "UNKNOWN",
+      "publication_availability": "UNAVAILABLE",
+      "source_ids": [
+        "venue_overview",
+        "venue_location",
+        "venue_diagram",
+        "venue_event",
+        "ticket_notice"
+      ],
+      "source_review": "Factual identity and broad diagram relationship researched by AR01; no operator/on-site verification.",
+      "photo_permission": "UNREVIEWED",
+      "accessibility": "Unknown event-day step-free routes, surfaces, queues and accessible meeting areas.",
+      "meeting_eligibility": "DENIED_UNTIL_OPERATOR_REVIEW",
+      "expiry": "No operational authorization issued; recheck before any publication or activation.",
+      "c06_publication": "EXCLUDED: unknown physical closure is not representable by C06 OPEN/CLOSED; no product Place record issued."
+    },
+    {
+      "place_id": "0b6f634a-994f-49a1-9150-000000000002",
+      "label": "Studio Paradise",
+      "place_kind": "PHYSICAL",
+      "verification_state": "UNVERIFIED",
+      "operator_closure_state": "UNKNOWN",
+      "publication_availability": "UNAVAILABLE",
+      "source_ids": [
+        "venue_location",
+        "venue_diagram"
+      ],
+      "source_review": "Factual identity and broad diagram relationship researched by AR01; no operator/on-site verification.",
+      "photo_permission": "UNREVIEWED",
+      "accessibility": "Unknown event-day step-free routes, surfaces, queues and accessible meeting areas.",
+      "meeting_eligibility": "DENIED_UNTIL_OPERATOR_REVIEW",
+      "expiry": "No operational authorization issued; recheck before any publication or activation.",
+      "c06_publication": "EXCLUDED: unknown physical closure is not representable by C06 OPEN/CLOSED; no product Place record issued."
+    }
+  ],
+  "concept_reference": {
+    "path": "docs/source/mcr_v2_en/reference/approved_mobile_world.png",
+    "sha256": "sha256:7abdfbd492216b84317fe31161b65345af5a8e6fa8de7deaed239c49d3db23e1",
+    "inspected": true,
+    "use": "User-authorized design inspiration only; no source pixels, characters, routes or operational facts extracted.",
+    "warning": "CONCEPT MAP - VERIFY ON SITE"
+  },
+  "layout_qualification": {
+    "supported": "Culture Park below Studio Paradise in official diagram; lawn character from official overview.",
+    "not_supported": [
+      "Dimensions/scale/compass direction",
+      "Precise building footprints or path geometry",
+      "Temporary stage/gates/fences/queues",
+      "Emergency/accessible routes",
+      "Physical arrival or measured walking distance"
+    ],
+    "ar02_rule": "Original virtual geometry may use broad landmark relationship, never identify its authored paths/collision as real-world guidance."
+  },
+  "external_gates": [
+    {
+      "owner": "Event/venue operator via Delivery",
+      "required": "Dated event-day layout and temporary closure/gate/fence review",
+      "status": "NOT_RUN"
+    },
+    {
+      "owner": "Event/venue operator via Delivery",
+      "required": "On-site accessible-route and safe meeting-place qualification",
+      "status": "NOT_RUN"
+    },
+    {
+      "owner": "Event/venue operator via Delivery",
+      "required": "Named operator reviewer, revision, expiry and closure-update responsibility",
+      "status": "NOT_RUN"
+    },
+    {
+      "owner": "Event/venue operator via Delivery",
+      "required": "Explicit license/permission before any third-party photo/map-art reuse",
+      "status": "NOT_RUN"
+    }
+  ],
+  "release_binding": "NONE; Delivery owns final map/theme/release pins.",
+  "licenses": {
+    "source_material": "Linked factual references; no blanket license or photo permission inferred.",
+    "authored_data": "New AR01 factual summaries and metadata for MCR; no third-party artwork copied."
+  }
+}

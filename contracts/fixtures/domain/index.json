@@ -178,5 +178,60 @@
     "file": "receipt-fingerprint-leak.json",
     "schema": "common.CommandReceipt",
     "expected": "reject"
+  },
+  {
+    "file": "mural-own-result.json",
+    "schema": "mural.OwnPixelResult",
+    "expected": "accept"
+  },
+  {
+    "file": "mural-own-result-author-leak.json",
+    "schema": "mural.OwnPixelResult",
+    "expected": "reject"
+  },
+  {
+    "file": "notification-unread-total.json",
+    "schema": "feed.NotificationUnreadCount",
+    "expected": "accept"
+  },
+  {
+    "file": "notification-negative-unread-total.json",
+    "schema": "feed.NotificationUnreadCount",
+    "expected": "reject"
+  },
+  {
+    "file": "notification-unread-payload-leak.json",
+    "schema": "feed.NotificationUnreadCount",
+    "expected": "reject"
+  },
+  {
+    "file": "closure-start-command.json",
+    "schema": "admin.CloseEvent",
+    "expected": "accept"
+  },
+  {
+    "file": "closure-resume-command.json",
+    "schema": "admin.CloseEvent",
+    "expected": "accept"
+  },
+  {
+    "file": "closure-resume-missing-job.json",
+    "schema": "admin.CloseEvent",
+    "expected": "reject"
+  },
+  {
+    "file": "closure-start-with-job.json",
+    "schema": "admin.CloseEvent",
+    "expected": "reject"
+  },
+  {
+    "file": "closure-resume-unknown-field.json",
+    "schema": "admin.CloseEvent",
+    "expected": "reject"
+  },
+  {
+    "file": "closure-resume-invalid-job.json",
+    "schema": "admin.CloseEvent",
+    "expected": "reject"
   }
 ]

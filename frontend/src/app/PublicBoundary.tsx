@@ -6,10 +6,12 @@ import { ResetPassword } from '../features/auth/ui/ResetPassword'
 import { SignUp } from '../features/auth/ui/SignUp'
 import { VerifyEmail } from '../features/auth/ui/VerifyEmail'
 import { Callback } from '../features/auth/ui/Callback'
+import { AccountDeletionRecovery } from './account-deletion-entry/recovery'
 
 /** Lazy public-only boundary. No game/network imports and no fabricated session. */
 export default function PublicBoundary() {
   const location = useLocation(), params = useParams()
+  if (location.pathname === '/account/deleted') return <AccountDeletionRecovery />
   if (location.pathname === '/') return <FoundationApp />
   if (location.pathname === '/signup') return <SignUp />
   if (location.pathname === '/verify-email') return <VerifyEmail />

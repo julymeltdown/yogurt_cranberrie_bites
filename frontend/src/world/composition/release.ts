@@ -1,6 +1,8 @@
 import type { ActiveScope, ShellBootstrap } from '../../app/ports'
 import { canonicalJson, decodeBootstrap } from '../../features/auth/model/bootstrap'
 import { decodeContract, list, number, object, requireValue, text } from '../../features/auth/model/contract'
+import { themeIds, type ThemeId } from '../../features/theme/model/preferences'
+import type { ThemeRelease } from '../theme/loader'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import { validateManifests } from '../map/manifest'
 import type { AssetResources } from '../map/resources'
@@ -18,6 +20,8 @@ export interface ResolvedWorldRelease {
   readonly privacyScope: PrivacyScope
   readonly bootstrap: unknown
   readonly themeId: 'REVENGE' | 'PARADE' | 'DANGER'
+  /** Additional skins qualified by the resolver against this same original C03. Omitted means selected only. */
+  readonly availableThemeIds?: readonly ThemeId[]
   readonly roomId: string
   /** C05 room read authorized by the same privacy lease; tickets still decide admission. */
   readonly rooms: WorldRooms
@@ -55,14 +59,29 @@ export async function prepareRelease(input: ResolvedWorldRelease, expected: Omit
   const pin = { mapHash: text(map.content_hash), themeHash: text(theme.content_hash), avatar: {
     manifest_id: text(avatar.manifest_id), manifest_version: number(avatar.manifest_version), content_hash: text(avatar.content_hash),
   } }
+  const availableThemeIds = Object.freeze([...new Set([themeId, ...(input.availableThemeIds ?? [])])])
+  requireValue(availableThemeIds.every(id => themeIds.includes(id)))
   const mapText = canonicalJson(map), themeText = canonicalJson(theme)
+  const themeInputs = {} as Record<ThemeId, ThemeRelease>
+  for (const id of themeIds) {
+    const candidate = list(bundle.theme_manifests).map(object).find(value => value.theme_id === id)
+    requireValue(candidate)
+    if (id !== themeId && availableThemeIds.includes(id)) {
+      const provenance = object(candidate.provenance), texture = object(candidate.texture)
+      requireValue(provenance.source_kind === 'ORIGINAL_ART' && provenance.review_state === 'REVIEWED'
+        && text(provenance.reviewed_by).trim().length > 0 && text(provenance.reviewed_at).length > 0 && texture.image_state === 'PROVIDED')
+    }
+    const candidatePin = { ...pin, themeHash: text(candidate.content_hash) }
+    await validateManifests(mapText, canonicalJson(candidate), candidatePin)
+    themeInputs[id] = Object.freeze({ mapText, themeText: canonicalJson(candidate), pin: Object.freeze(candidatePin), resources: assets })
+  }
   const metadata = await validateManifests(mapText, themeText, pin)
   validatePolicy(metadata.map.geometry, movementPolicy)
   requireValue(Number.isFinite(zoom) && zoom >= 1 && zoom <= 8)
   const resources: WorldResources = Object.freeze({ eventId: expected.scope.eventId, roomId,
     mapId: metadata.map.map_id, mapRevision: metadata.map.map_revision,
     avatarManifestId: pin.avatar.manifest_id, avatarManifestVersion: pin.avatar.manifest_version })
-  return { resources, rooms, mapInput: { mapText, themeText, pin, resources: assets },
+  return { resources, rooms, map: immutable(metadata.map), themeId, availableThemeIds, themeInputs: Object.freeze(themeInputs), mapInput: { mapText, themeText, pin, resources: assets },
     avatarManifest: immutable(avatar), movementPolicy, zoom }
 }
 export type PreparedWorldRelease = Awaited<ReturnType<typeof prepareRelease>>

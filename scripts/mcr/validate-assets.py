@@ -149,9 +149,16 @@ def index_unique(entries, field, label):
     return result
 
 
-def validate_config(config, avatar, items, tones):
+def validate_config(config, avatar, items=None, tones=None):
     require((config["manifest_id"], config["manifest_version"]) ==
             (avatar["manifest_id"], avatar["manifest_version"]), "avatar manifest identity/version mismatch")
+    if config.get("representation") == "whole_character":
+        require(avatar.get("representation") == "whole_character", "avatar representation mismatch")
+        presets = index_unique(avatar["presets"], "preset_id", "avatar")
+        require(config["preset_id"] in presets, "unknown whole-character preset")
+        require(config == presets[config["preset_id"]]["config"], "whole-character preset config mismatch")
+        return
+    require(avatar.get("representation") != "whole_character", "avatar representation mismatch")
     for layer, item_id in config["item_ids"].items():
         if layer == "accessory" and item_id is None:
             continue
@@ -161,6 +168,12 @@ def validate_config(config, avatar, items, tones):
 
 
 def validate_avatar(avatar, configs):
+    if avatar.get("representation") == "whole_character":
+        presets = index_unique(avatar["presets"], "preset_id", "avatar")
+        require(avatar["default_preset_id"] in presets, "unknown default_preset_id")
+        for config in [*configs, *(preset["config"] for preset in presets.values())]:
+            validate_config(config, avatar)
+        return
     atlas = avatar["atlas"]
     items = index_unique(atlas["items"], "item_id", "atlas")
     tones = index_unique(avatar["skin_tones"], "skin_tone_id", "avatar")
@@ -226,6 +239,34 @@ def validate_map(map_):
     return places, interactions
 
 
+def validate_scenery(scenery, geometry):
+    """C06 cross-field rules, after schema validation; no image/art approval."""
+    width = geometry["width_cells"] * geometry["tile_width_px"]
+    height = geometry["height_cells"] * geometry["tile_height_px"]
+    textures = [scenery["ground"], *scenery["atlases"]]
+    index_unique(textures, "id", "scenery textures")
+    index_unique(textures, "path", "scenery textures")
+    require(sum(t["bytes"] for t in textures) <= 2_097_152,
+            "scenery aggregate transfer budget exceeded")
+    require(sum(t["width_px"] * t["height_px"] for t in textures) <= 2_097_152,
+            "scenery aggregate pixel budget exceeded")
+    require((scenery["ground"]["width_px"], scenery["ground"]["height_px"]) == (width, height),
+            "scenery ground dimensions differ from map extent")
+    atlases = index_unique(scenery["atlases"], "id", "scenery atlases")
+    objects = index_unique(scenery["objects"], "id", "scenery objects")
+    for obj in objects.values():
+        require(obj["atlas_id"] in atlases, "scenery object references unknown atlas")
+        atlas, frame = atlases[obj["atlas_id"]], obj["frame"]
+        require(frame["x"] + frame["width"] <= atlas["width_px"] and
+                frame["y"] + frame["height"] <= atlas["height_px"],
+                "scenery frame exceeds atlas bounds")
+        x, y, w, h = (obj[key] for key in ("x", "y", "width", "height"))
+        require(-128 <= x < width and -128 <= y < height and
+                0 < x + w <= width + 128 and 0 < y + h <= height + 128 and
+                obj["depth_y"] <= height + 128,
+                "scenery object exceeds world intersection, overhang or depth bounds")
+
+
 def validate_bundle(documents, checks=None):
     checks = checks or validators()
     groups = {kind: [] for kind in KINDS}
@@ -233,6 +274,20 @@ def validate_bundle(documents, checks=None):
     for label, document in sorted(documents.items()):
         validate_document(document, checks, label)
         groups[document["kind"]].append(document)
+    if (len(groups["avatar_manifest"]) == 1
+            and groups["avatar_manifest"][0].get("representation") == "whole_character"
+            and groups["avatar_config"] and not groups["map_manifest"] and not groups["theme_manifest"]):
+        avatar = groups["avatar_manifest"][0]
+        validate_avatar(avatar, groups["avatar_config"])
+        return {"status": "CONTRACT_READY", "contract_version": "1.1.0",
+                "scope": "selected whole-character avatar component release only",
+                "documents_validated": len(documents),
+                "manifest_pin": {key: avatar[key] for key in ("manifest_id", "manifest_version", "content_hash")},
+                "capabilities": avatar["capabilities"],
+                "atlas_image_state": avatar["atlas"]["texture"]["image_state"],
+                "atlas_image_coverage": "NOT_RUN", "resource_bytes_and_hashes": "NOT_RUN",
+                "limits": "Schema, canonical hash and preset mapping only. No animation, layered customization, "
+                          "rendering, mobile, backend persistence or World acceptance implied."}
     for kind in ("avatar_manifest", "map_manifest", "avatar_config"):
         require(len(groups[kind]) == 1, f"bundle requires exactly one {kind}")
     avatar, map_ = groups["avatar_manifest"][0], groups["map_manifest"][0]
@@ -260,9 +315,11 @@ def validate_bundle(documents, checks=None):
         tile_count = (texture["width_px"] // tile_w) * (texture["height_px"] // tile_h)
         require(all(gid <= tile_count for layer in ("terrain_layer", "overdraw_layer")
                     for row in geometry[layer] for gid in row), "tile ID exceeds theme texture layout")
+        if "scenery" in theme:
+            validate_scenery(theme["scenery"], geometry)
     return {
         "status": "CONTRACT_READY", "documents_validated": len(documents),
-        "themes": sorted(themes), "contract_version": "1.0.0",
+        "themes": sorted(themes), "contract_version": avatar["contract_version"],
         "atlas_image_coverage": "NOT_RUN",
         "atlas_image_state": avatar["atlas"]["texture"]["image_state"],
         "resource_bytes_and_hashes": "NOT_RUN",
@@ -274,8 +331,10 @@ def validate_bundle(documents, checks=None):
 
 def load_bundle(directory):
     require(directory.is_dir(), f"asset bundle directory not found: {directory}")
+    # One directory is one bundle. Nested directories hold independent positive
+    # and negative probes, not additional manifests in the containing release.
     return {path.relative_to(directory).as_posix(): read_json(path)
-            for path in sorted(directory.rglob("*.json"))}
+            for path in sorted(directory.glob("*.json"))}
 
 
 def main():

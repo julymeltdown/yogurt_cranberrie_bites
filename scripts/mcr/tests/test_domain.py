@@ -30,7 +30,7 @@ class DomainTests(unittest.TestCase):
             action()
 
     def test_golden_and_negative_fixture_index(self):
-        self.assertEqual(domain.validate_fixtures(self.contract), 36)
+        self.assertEqual(domain.validate_fixtures(self.contract), 47)
 
     def test_all_refs_and_exact_inherited_paths_resolve(self):
         self.contract.check_inherited()

@@ -1,0 +1,65 @@
+{
+  "assignmentBase": "f837bef676cd26869c26c172a699a91b7842d832",
+  "ownedSourceCommit": "3dc37b17d815e6bd13135b9633610d0c156ee797",
+  "externalDependencies": [
+    {
+      "upstream": "1e5022885525ab56f056aa2c24100e18c4bc67ed",
+      "local": "1e05e47b",
+      "purpose": "Shared selected-static public illustration consumer, not this worker owned patch"
+    }
+  ],
+  "paths": [
+    {
+      "path": "docs/mcr/frontend/reference-public.md",
+      "sourceSHA256": "cbe8155d4f2b7cb3d922f77d65036fa417b1068329bf533d071d18c43e22e0cc",
+      "baseSHA256": null
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/capture.mjs",
+      "sourceSHA256": "b9bc51412fd2eaf2ef81996c0c57d2536496645404e6151cce36f2aeb87a270f",
+      "baseSHA256": null
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/comparison.html",
+      "sourceSHA256": "745531010c918fab926f6587aa1f77f6b3b2e4d5c8111efa2ea48174696e3ff7",
+      "baseSHA256": null
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/presentation.test.tsx",
+      "sourceSHA256": "043da6f3ca80366b00d1beb3b67913c3595841362e7819405c42b34770ad37ef",
+      "baseSHA256": null
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/preview.html",
+      "sourceSHA256": "9a6b9bf7f47e103173aa9beb81a3e1139a118d5c45cc6b61a8a04eb8d129f960",
+      "baseSHA256": null
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/preview.tsx",
+      "sourceSHA256": "f4710cbe2a080ed76662a68f18de80a49ed639b6b200eaf0ec19d49eb075e7ff",
+      "baseSHA256": null
+    },
+    {
+      "path": "frontend/src/features/public/ui/Landing.tsx",
+      "sourceSHA256": "8399a1798ec0c37362438df97b2fb37fee0dd5b655bb6f5eb9a9cc8d6015a9aa",
+      "baseSHA256": "d74a9fe1ddedfb751bd7931b1bd12b8bf3a68a6f9a1adeca62a3463d46e1b52e"
+    },
+    {
+      "path": "frontend/src/features/public/ui/PublicFrame.tsx",
+      "sourceSHA256": "f8d4086d54d09c3901d2cbbb66d61167e6e629e121636351e1744a84b4f6f807",
+      "baseSHA256": "b00e9f6995b8d65d44272a4a55a121f4b1739168ef1b997ce5f891111ecb0682"
+    },
+    {
+      "path": "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx",
+      "sourceSHA256": "8c3d01eb63376c76c0cdcd332678acd68d19333137af4008877b00dbe7b858d4",
+      "baseSHA256": null
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "sourceSHA256": "6ddc276468640d7b15f9b19a7771e81d8d86ed630f46929b243ff0cfeeb36f61",
+      "baseSHA256": "23c31dcb9d35019c33e1a30211d80012dd25891b2dc13d6d27f43d1e1cbb50a0"
+    }
+  ],
+  "gapAtInitialCheckpoint": "Approved-art release/atlas native comparison pending",
+  "qualificationNote": "Historical first source handoff; final approved-art result is qualification.json"
+}

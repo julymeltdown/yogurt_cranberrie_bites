@@ -1,0 +1,39 @@
+{
+  "source_base": "1b7caeccdd10856b3c5ebaa0e9b0286ef8a2ced0",
+  "author_commit": "0ece22b5594d0b59b384d608d771721b6fdb6e03",
+  "current_consumer_report": "phaser-validation-current.json",
+  "all_current_source_pins_match": true,
+  "fresh_screenshots_identical_to_preserved_author_files": [
+    "phaser-430-revenge.png",
+    "phaser-390-revenge.png",
+    "phaser-360-parade.png",
+    "phaser-390-danger.png",
+    "phaser-430-parade.png",
+    "phaser-360-revenge.png",
+    "phaser-360-danger.png",
+    "phaser-390-parade.png",
+    "phaser-430-danger.png"
+  ],
+  "native_command": "node frontend/public/world/maps/phaser-check.mjs",
+  "exit_code": 0,
+  "summary": {
+    "renderCases": 9,
+    "landmarkPixelComparisons": 45,
+    "differentChannels": 0,
+    "persistentCanvasAcrossSkins": "PASS",
+    "corruptResourceRejections": 12,
+    "canvasCleanup": "PASS"
+  },
+  "server_pid": 26273,
+  "server_command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/public/world/maps/serve-phaser-review.mjs",
+  "cleanup_signal": "SIGTERM",
+  "limits": [
+    "In-memory review candidate pins only; required avatar identity is explicit unbound sentinel, no avatar art/manifest loaded",
+    "No authenticated product shell or final release manifests",
+    "No Rust runtime/server collision execution",
+    "No physical venue operational qualification",
+    "No real device/QA06, multiuser/IN01 or release acceptance"
+  ],
+  "server_exit_observed": 143,
+  "port_8874_released": true
+}

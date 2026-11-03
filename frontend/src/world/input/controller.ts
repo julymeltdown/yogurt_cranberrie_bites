@@ -26,19 +26,32 @@ export function attachMovement(context: ControlContext, options: MovementOptions
   let pointer: { id: number; kind: 'stick' | 'tap'; element: HTMLElement; x: number; y: number; time: number; dragged: boolean } | null = null
   let lastIntent: MovementIntent = { axisX: 0, axisY: 0, buttons: [] }
   const held = new Set<string>(), removers: (() => void)[] = []
+  const hadStageClass = context.host.classList.contains('world-controls-stage')
+  context.host.classList.add('world-controls-stage')
+  const hadHostClass = options.controls.classList.contains('world-controls-host')
+  options.controls.classList.add('world-controls-host')
   const root = document.createElement('section'); root.className = 'world-controls'; root.setAttribute('aria-label', 'World movement controls')
   const stick = document.createElement('button'); stick.type = 'button'; stick.className = 'world-joystick'; stick.setAttribute('aria-label', 'Movement joystick. Arrow keys or W A S D when focused')
   const knob = document.createElement('span'); knob.setAttribute('aria-hidden', 'true'); stick.append(knob)
   const actions = document.createElement('div'); actions.className = 'world-actions'
-  const recenter = document.createElement('button'); recenter.type = 'button'; recenter.textContent = 'Recenter'
+  const recenter = document.createElement('button'); recenter.type = 'button'; recenter.className = 'world-recenter'; recenter.setAttribute('aria-label', 'Recenter'); recenter.innerHTML = '<span aria-hidden="true">⌖</span><span class="world-control-sr">Recenter</span>'
   const zoomIn = document.createElement('button'); zoomIn.type = 'button'; zoomIn.textContent = 'Zoom +'; zoomIn.setAttribute('aria-label', 'Zoom in')
   const zoomOut = document.createElement('button'); zoomOut.type = 'button'; zoomOut.textContent = 'Zoom −'; zoomOut.setAttribute('aria-label', 'Zoom out')
-  const interact = document.createElement('button'); interact.type = 'button'; interact.textContent = 'Interact'
+  const interact = document.createElement('button'); interact.type = 'button'; interact.className = 'world-interact'; interact.textContent = 'Interact'
   const label = document.createElement('label'); label.append('Nearby in world')
   const select = document.createElement('select'); select.setAttribute('aria-label', 'Nearby interaction'); label.append(select)
-  const hint = document.createElement('p'); hint.textContent = 'Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination. Virtual movement never confirms real arrival.'
+  const primary = document.createElement('div'); primary.className = 'world-controls-primary'
+  const details = document.createElement('details'); details.className = 'world-controls-help'
+  const summary = document.createElement('summary'); summary.textContent = 'Controls & help'; summary.setAttribute('aria-label', 'Controls & help')
+  const secondary = document.createElement('div'); secondary.className = 'world-control-details'
+  const zoom = document.createElement('div'); zoom.className = 'world-control-zoom'
+  const hint = document.createElement('p'); hint.textContent = 'Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.'
   const status = document.createElement('p'); status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite')
-  actions.append(recenter, zoomIn, zoomOut, interact, label); root.append(stick, actions, hint, status); options.controls.append(root)
+  status.className = 'world-control-status'
+  actions.append(interact, recenter); primary.append(stick, actions)
+  zoom.append(zoomOut, zoomIn); secondary.append(label, zoom, hint); details.append(summary, secondary)
+  root.append(primary, details, status); options.controls.append(root)
+  function setStatus(message: string, prominent = false) { status.textContent = message; status.dataset.prominent = String(prominent) }
   const attributes = new Map(['tabindex', 'role', 'aria-label'].map(key => [key, surface.getAttribute(key)]))
   const ownedAttributes = { tabindex: '0', role: 'group', 'aria-label': 'World movement map. Arrow keys or W A S D move. E interacts. R recenters.' }
   for (const [key, value] of Object.entries(ownedAttributes)) surface.setAttribute(key, value)
@@ -52,7 +65,7 @@ export function attachMovement(context: ControlContext, options: MovementOptions
     if (!activeIntent(intent) && !activeIntent(lastIntent)) return
     intent = Object.freeze({ axisX: intent.axisX, axisY: intent.axisY, buttons: Object.freeze(Array.from(intent.buttons)) })
     lastIntent = intent // Reentrant consumers cannot replay the previous one-shot or recursively neutralize it.
-    try { options.consume(intent) } catch { failed = true; enabled = false; clear(); status.textContent = 'Movement unavailable: input consumer failed.' }
+    try { options.consume(intent) } catch { failed = true; enabled = false; clear(); setStatus('Movement unavailable: input consumer failed.', true) }
   }
   function releasePointer() {
     const old = pointer; pointer = null
@@ -67,18 +80,18 @@ export function attachMovement(context: ControlContext, options: MovementOptions
   function refresh() {
     const snapshot = model.read(), selected = snapshot.nearby.find(target => target.interactionId === snapshot.selectedId)
     const entries = snapshot.nearby.map(target => ({ id: target.interactionId, label: target.label }))
+    const displayed = entries.length ? entries : [{ id: '', label: 'No reachable interaction nearby' }]
     const current = Array.from(select.options).map(option => ({ id: option.value, label: option.textContent }))
-    if (JSON.stringify(entries) !== JSON.stringify(current)) {
+    if (JSON.stringify(displayed) !== JSON.stringify(current)) {
       select.replaceChildren()
-      if (!entries.length) { const option = document.createElement('option'); option.value = ''; option.textContent = 'No reachable interaction nearby'; select.append(option) }
-      else for (const entry of entries) { const option = document.createElement('option'); option.value = entry.id; option.textContent = entry.label; select.append(option) }
+      for (const entry of displayed) { const option = document.createElement('option'); option.value = entry.id; option.textContent = entry.label; select.append(option) }
     }
     select.value = selected?.interactionId ?? ''; select.disabled = !running() || !entries.length
-    interact.disabled = !running() || !selected; interact.textContent = selected ? `Interact: ${selected.label}` : 'Interact'
+    interact.disabled = !running() || !selected; interact.textContent = selected ? `Interact: ${selected.label}` : 'Interact'; interact.setAttribute('aria-label', interact.textContent)
     stick.disabled = !running(); recenter.disabled = !running(); zoomIn.disabled = !running(); zoomOut.disabled = !running()
     if (!disposed && !failed && !context.signal.aborted) {
       try { camera.update(snapshot.foot); if (!disposed && !context.signal.aborted) options.onPrediction?.(snapshot) }
-      catch { failed = true; enabled = false; clear(); status.textContent = 'Movement unavailable: prediction consumer failed.' }
+      catch { failed = true; enabled = false; clear(); setStatus('Movement unavailable: prediction consumer failed.', true) }
     }
   }
   function schedule() { if (running() && frame === null && (model.active() || activeIntent(lastIntent))) frame = requestAnimationFrame(tick) }
@@ -141,8 +154,8 @@ export function attachMovement(context: ControlContext, options: MovementOptions
     if (old.kind === 'stick') { clear(); return }
     if (running() && !old.dragged && Math.hypot(e.clientX - old.x, e.clientY - old.y) <= 10 && e.timeStamp >= old.time && e.timeStamp - old.time <= 500) {
       const point = camera.project({ x: e.clientX, y: e.clientY })
-      if (!point || !model.tap(point)) status.textContent = 'Choose a reachable, walkable destination.'
-      else { status.textContent = 'Moving locally. Server position remains authoritative.'; schedule() }
+      if (!point || !model.tap(point)) setStatus('Choose a reachable, walkable destination.', true)
+      else { setStatus('Moving locally. Server position remains authoritative.'); schedule() }
     }
   })
   const cancelled: EventListener = event => { if (pointer?.id === (event as PointerEvent).pointerId) clear() }
@@ -152,6 +165,10 @@ export function attachMovement(context: ControlContext, options: MovementOptions
   listen(document, 'visibilitychange', () => { clear(); refresh() })
   listen(document, 'focusin', event => { if (!keyboardTarget(event.target)) clear() })
   listen(document, 'pointerdown', event => { if (event.target !== surface && event.target !== stick && event.target !== knob) clear() }, { capture: true })
+  listen(details, 'keydown', event => {
+    const e = event as KeyboardEvent
+    if (e.key === 'Escape' && details.open) { e.preventDefault(); clear(); details.open = false; summary.focus({ preventScroll: true }) }
+  })
   listen(interact, 'click', () => { if (running() && model.interact()) schedule() })
   listen(interact, 'keydown', event => { if ((event as KeyboardEvent).repeat) event.preventDefault() })
   listen(recenter, 'click', () => { if (running()) { camera.recenter(); refresh() } })
@@ -162,12 +179,14 @@ export function attachMovement(context: ControlContext, options: MovementOptions
   refresh()
   return {
     camera, read: () => model.read(),
-    setEnabled(value) { if (disposed) return; enabled = value; clear(); refresh(); if (!failed) status.textContent = running() ? 'Local movement ready.' : 'Movement paused.' },
+    setEnabled(value) { if (disposed) return; enabled = value; clear(); refresh(); if (!failed) setStatus(running() ? 'Local movement ready.' : 'Movement paused.') },
     dispose() {
       if (disposed) return
       disposed = true; enabled = false; clear(); for (const remove of removers.splice(0)) remove(); camera.dispose(); root.remove()
       for (const [key, value] of Object.entries(ownedAttributes)) if (surface.getAttribute(key) === value) { const prior = attributes.get(key); if (prior === null || prior === undefined) surface.removeAttribute(key); else surface.setAttribute(key, prior) }
       if (!hadClass) surface.classList.remove('world-keyboard')
+      if (!hadHostClass) options.controls.classList.remove('world-controls-host')
+      if (!hadStageClass) context.host.classList.remove('world-controls-stage')
     },
   }
 }

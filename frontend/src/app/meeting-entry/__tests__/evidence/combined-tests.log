@@ -1,0 +1,9 @@
+$ vitest run src/app/meeting-entry/__tests__ src/features/meet-beacon/__tests__ src/features/places/__tests__ src/shared/api/__tests__ src/shared/query/__tests__ src/features/auth/__tests__/domain-request.test.ts
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-meeting-entry/frontend
+
+
+ Test Files  11 passed (11)
+      Tests  369 passed (369)
+   Start at  00:55:58
+   Duration  2.30s (transform 1.19s, setup 0ms, import 2.34s, tests 4.86s, environment 1.44s)

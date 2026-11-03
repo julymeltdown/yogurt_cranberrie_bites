@@ -1,9 +1,14 @@
+import { createPhaserMuralScene } from '../mural/phaser'
+import type { MuralSceneTexture } from '../mural/sink'
+import type { IncumbentMuralScene } from '../runtime'
 import type { Point, WorldCamera } from '../camera/port'
 import type PhaserType from 'phaser'
 import type { EngineFactory } from '../runtime'
 import type { LoadedMap } from '../map/resources'
 import { assertSameWorld } from '../theme/compatibility'
 import type { AvatarScenePort, AvatarSceneTexture, AvatarSceneSprite } from '../avatar/scene'
+import { prepareIllustratedSkin } from '../illustrated/phaser'
+import { validateLoadedScenery } from '../illustrated/model'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
 export async function loadPhaserEngine(): Promise<EngineFactory> {
   const Phaser = (await import('phaser')).default
@@ -13,7 +18,17 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     const ready = new Promise<void>((resolve, reject) => { resolveReady = resolve; rejectReady = reject })
     const closed = new Promise<void>(resolve => { resolveClosed = resolve })
     const g = loaded.map.geometry
+    const muralClose = new Set<() => void>()
+    const closeMural = () => { for (const close of Array.from(muralClose)) { try { close() } catch { /* Continue scene teardown. */ } }; muralClose.clear() }
     let skinRevision = 0
+    let peakTextures = 0, peakDecodedBytes = 0
+    const readScenery = () => {
+      const keys = destroyed ? [] : game.textures.getTextureKeys().filter(key => key.startsWith('mcr-reviewed-map-'))
+      const decodedBytes = keys.reduce((n, key) => { const image = game.textures.get(key).getSourceImage() as HTMLImageElement; return n + image.width * image.height * 4 }, 0)
+      peakTextures = Math.max(peakTextures, keys.length); peakDecodedBytes = Math.max(peakDecodedBytes, decodedBytes)
+      const objects = !sceneReady || destroyed ? 0 : game.scene.getScene('mcr-map').children.list.filter(child => child instanceof Phaser.GameObjects.Image && child.texture.key.startsWith('mcr-reviewed-map-')).length
+      return Object.freeze({ textures: keys.length, decodedBytes, objects, peakTextures, peakDecodedBytes })
+    }
     type Skin = { show(): void; remove(): void }
     let skin: Skin | null = null
     let sceneReady = false, cameraFoot: Point | null = null, cameraZoom: number | null = null
@@ -32,10 +47,12 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
           sceneReady = true
           skin = this.prepareSkin(loaded)
           skin.show()
-          const remove = () => { clearAvatars(); skin?.remove(); skin = null }
+          const remove = () => { sceneReady = false; closeMural(); clearAvatars(); skin?.remove(); skin = null }
           this.events.once(Phaser.Scenes.Events.SHUTDOWN, remove)
           this.events.once(Phaser.Scenes.Events.DESTROY, remove)
-          this.cameras.main.setBounds(0, 0, loaded.widthPx, loaded.heightPx).setRoundPixels(true)
+          // Phaser Canvas roundPixels expands every frame by half a source pixel.
+          // Illustrated atlas rectangles must keep their exact placement/extents instead.
+          this.cameras.main.setBounds(0, 0, loaded.widthPx, loaded.heightPx).setRoundPixels(!loaded.scenery)
           this.cameras.main.setBackgroundColor(loaded.theme.palette.background)
           resolveReady()
         } catch (error) { rejectReady(error) }
@@ -43,6 +60,8 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       /** Prepare hidden layers before touching the active renderer. No camera/input/network mutation. */
       prepareSkin(next: LoadedMap): Skin {
         const textureKey = `mcr-reviewed-map-${++skinRevision}`
+        validateLoadedScenery(next)
+        if (next.scenery) return prepareIllustratedSkin(this, next, textureKey, Phaser.Textures.FilterMode.NEAREST, () => { readScenery() }, () => !stopped && sceneReady)
         let tilemap: PhaserType.Tilemaps.Tilemap | null = null, removed = false
         const layers: PhaserType.Tilemaps.TilemapLayer[] = []
         const remove = () => {
@@ -108,7 +127,13 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       if (stopped || !sceneReady) return
       const camera = game.scene.getScene('mcr-map').cameras.main
       camera.setSize(game.scale.width, game.scale.height).setZoom(cameraZoom ?? Math.max(1, Math.floor(Math.min(game.scale.width / loaded.widthPx, game.scale.height / loaded.heightPx))))
-      const foot = cameraFoot ?? { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px }
+      // Before a server/self or explicit camera target exists, present the bound stage.
+      // This is a view only: no spawn, player, geometry or interaction is moved.
+      const stage = loaded.scenery?.manifest.objects.find(object => object.id === 'stage')
+      const stageInteraction = g.interactions.find(interaction => interaction.interaction_id === 'stage_info')
+      const foot = cameraFoot ?? (stage && stageInteraction ? { x: stage.x + stage.width / 2 + Math.min(64, game.scale.width / camera.zoom * .14),
+        y: stage.y + stage.height / 2 + Math.min(260, game.scale.height / camera.zoom * .32) }
+        : { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px })
       camera.centerOn(foot.x, foot.y)
       camera.preRender() // Updates bounded scroll and the matrix used by public getWorldPoint().
     }
@@ -183,15 +208,38 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       },
       read: () => ({ textures: avatarTextures.size, sprites: avatarSprites.size, listeners: avatarListeners.size }),
     }
+    const muralScene: IncumbentMuralScene = (anchor, key) => {
+      if (stopped || !sceneReady) throw new Error('Mural scene unavailable')
+      const port = createPhaserMuralScene(game.scene.getScene('mcr-map'), anchor, key)
+      const textures = new WeakMap<MuralSceneTexture, MuralSceneTexture>()
+      const live = () => { if (stopped || !sceneReady) throw new Error('Mural scene unavailable') }
+      return {
+        texture() {
+          live(); const owned = port.texture()
+          const lease: MuralSceneTexture = { replace(rgba) { live(); owned.replace(rgba) }, dispose() { textures.delete(lease); owned.dispose() } }
+          textures.set(lease, owned); return lease
+        },
+        object(texture) { live(); const owned = textures.get(texture); if (!owned) throw new Error('Unowned mural texture'); return port.object(owned) },
+        onFrame(listener) { live(); return port.onFrame(() => { if (!stopped && sceneReady) listener() }) },
+        onClose(listener) {
+          if (stopped || !sceneReady) { listener(); return () => {} }
+          let active = true
+          const close = () => { if (!active) return; active = false; muralClose.delete(close); removeScene(); listener() }
+          const removeScene = port.onClose?.(close) ?? (() => {})
+          muralClose.add(close)
+          return () => { active = false; muralClose.delete(close); removeScene() }
+        },
+      }
+    }
     const spriteTextures = new Map<AvatarSceneSprite, AvatarSceneTexture>()
-    return { ready, closed, camera: cameraView, avatarScene,
+    return { ready, closed, camera: cameraView, avatarScene, muralScene, readScenery,
       replaceSkin(next) {
         if (stopped || !sceneReady) throw new Error('Map scene unavailable')
         assertSameWorld(loaded, next)
         const scene = game.scene.getScene('mcr-map') as MapScene
         const prepared = scene.prepareSkin(next), previous = skin
         prepared.show()
-        scene.cameras.main.setBackgroundColor(next.theme.palette.background)
+        scene.cameras.main.setBackgroundColor(next.theme.palette.background).setRoundPixels(!next.scenery)
         skin = prepared; previous?.remove()
         if (!visible) game.loop.tick()
       },
@@ -204,7 +252,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       setVisible(value) { visible = value; if (!stopped && game.isRunning) { if (value) game.loop.wake(); else game.loop.sleep() } },
       destroy() {
         if (stopped) return
-        stopped = true; clearAvatars(); game.canvas?.remove()
+        stopped = true; closeMural(); clearAvatars(); game.canvas?.remove()
         flushDestroy() // Boot in progress is fenced by postBoot; its mount has already been detached.
       },
     }

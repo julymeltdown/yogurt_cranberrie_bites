@@ -1,4 +1,5 @@
 //! Pure Concert values. Auth UUIDs are references, never a second identity store.
+pub mod report;
 pub mod place;
 use chrono::{DateTime, Utc};
 use std::str::FromStr;
@@ -266,3 +267,12 @@ pub mod beacon;
 pub mod rally;
 pub mod feed;
 pub mod avatar;
+pub mod world;
+pub mod community;
+
+pub mod intro_policy;
+pub mod age_policy;
+
+pub mod event_lifecycle;
+
+pub mod mural;

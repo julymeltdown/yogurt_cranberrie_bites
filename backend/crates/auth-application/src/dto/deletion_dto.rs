@@ -10,6 +10,10 @@ pub enum AuthUserDeletionTargetDto {
     Friend,
     Post,
     Notification,
+    ConcertTickets,
+    ConcertSessions,
+    ConcertSharing,
+    ConcertPrivateData,
 }
 impl From<auth_domain::user_deletion::UserDeletionTarget> for AuthUserDeletionTargetDto {
     fn from(value: auth_domain::user_deletion::UserDeletionTarget) -> Self {
@@ -18,6 +22,14 @@ impl From<auth_domain::user_deletion::UserDeletionTarget> for AuthUserDeletionTa
             auth_domain::user_deletion::UserDeletionTarget::Friend => Self::Friend,
             auth_domain::user_deletion::UserDeletionTarget::Post => Self::Post,
             auth_domain::user_deletion::UserDeletionTarget::Notification => Self::Notification,
+            auth_domain::user_deletion::UserDeletionTarget::ConcertTickets => Self::ConcertTickets,
+            auth_domain::user_deletion::UserDeletionTarget::ConcertSessions => {
+                Self::ConcertSessions
+            }
+            auth_domain::user_deletion::UserDeletionTarget::ConcertSharing => Self::ConcertSharing,
+            auth_domain::user_deletion::UserDeletionTarget::ConcertPrivateData => {
+                Self::ConcertPrivateData
+            }
         }
     }
 }
@@ -28,6 +40,10 @@ impl From<AuthUserDeletionTargetDto> for auth_domain::user_deletion::UserDeletio
             AuthUserDeletionTargetDto::Friend => Self::Friend,
             AuthUserDeletionTargetDto::Post => Self::Post,
             AuthUserDeletionTargetDto::Notification => Self::Notification,
+            AuthUserDeletionTargetDto::ConcertTickets => Self::ConcertTickets,
+            AuthUserDeletionTargetDto::ConcertSessions => Self::ConcertSessions,
+            AuthUserDeletionTargetDto::ConcertSharing => Self::ConcertSharing,
+            AuthUserDeletionTargetDto::ConcertPrivateData => Self::ConcertPrivateData,
         }
     }
 }

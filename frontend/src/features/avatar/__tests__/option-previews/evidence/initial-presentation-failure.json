@@ -1,0 +1,13 @@
+{
+  "base": "e869480395b70b4aae6cfcf50e904b079a59a0e7",
+  "result": "FAIL",
+  "files": 4,
+  "tests": 27,
+  "passed": 26,
+  "failed": 1,
+  "test": "visual-adoption/presentation.test.tsx category-navigation total-render assertion",
+  "expected": 3,
+  "actual": 4,
+  "reason": "The old visual-only category navigation assertion prohibited all new rendering. Visible option candidates now legitimately render through the existing owner.",
+  "resolution": "Main explicitly transferred this test path for the obsolete title/assertion only. Retain original semantic assertions and check main canvas, draft/selection, no PUT and bounded option leases instead. No production workaround."
+}

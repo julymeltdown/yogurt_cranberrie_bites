@@ -23,7 +23,18 @@ function setup(lane: 'mock' | 'native', patch: Partial<WorldTransportOptions> = 
   const transport = lane === 'mock' ? new MockWorldTransport(options) : new WebSocketWorldTransport(options, url => { urls.push(url); const s = new MockSocket(); sockets.push(s); return s })
   const all = () => lane === 'mock' ? (transport as MockWorldTransport).sockets : sockets
   transport.subscribe(event => events.push(event))
-  return { session, clock, transport, all, urls, events, acquireTicket, async opening() { const connected = transport.connect(resources); await flush(); return { connected, socket: all().at(-1)! } }, async live() { const { connected,socket } = await this.opening(); socket.open(); socket.receive(JSON.stringify(initial)); await connected; return socket } }
+  const waitForSocket = (index: number) => vi.waitFor(() => {
+    const socket = all()[index]
+    expect(socket, `authorized socket ${index}`).toBeDefined()
+    expect(transport.state).toBe('opening')
+    return socket!
+  }, { timeout: 2000, interval: 1 })
+  return { session, clock, transport, all, urls, events, acquireTicket, waitForSocket, async opening() {
+    const index = all().length, connected = transport.connect(resources)
+    // Keep the original rejection observable even if readiness itself times out.
+    void connected.catch(() => {})
+    return { connected, socket: await waitForSocket(index) }
+  }, async live() { const { connected,socket } = await this.opening(); socket.open(); socket.receive(JSON.stringify(initial)); await connected; return socket } }
 }
 function send(t: WorldTransport, frame: Record<string,unknown>) {
   if (frame.type === 'input') t.sendInput(frame as never)
@@ -51,6 +62,27 @@ for (const lane of ['mock','native'] as const) describe(`${lane} common lifecycl
       expect(s.transport.state).toBe('closed'); expect(s.clock.pending).toBe(0)
     })
   }
+  it('waits for a newly authorized socket while ticket readiness is deferred', async () => {
+    let release!: (ticket: WorldTicketResponse) => void
+    const ticket = new Promise<WorldTicketResponse>(resolve => { release = resolve })
+    const s = setup(lane, { acquireTicket: () => ticket })
+    let ready = false
+    const opening = s.opening().then(value => { ready = true; return value })
+    try {
+      await flush()
+      expect(s.all()).toHaveLength(0)
+      expect(ready).toBe(false)
+      release(ticketResponse as WorldTicketResponse)
+      const { connected, socket } = await opening
+      socket.open(); socket.receive(JSON.stringify(initial)); await connected
+      expect(s.transport.state).toBe('live')
+    } finally {
+      release(ticketResponse as WorldTicketResponse)
+      const { connected } = await opening
+      connected.catch(() => {})
+      s.transport.dispose()
+    }
+  })
   it('requires a fresh ticket and only explicit reconnection', async () => {
     const s = setup(lane), old = await s.live(); old.serverClose(); await flush()
     expect(s.acquireTicket).toHaveBeenCalledTimes(1)
@@ -74,7 +106,8 @@ for (const lane of ['mock','native'] as const) describe(`${lane} common lifecycl
     const s = setup(lane, stage === 'ticket' ? { acquireTicket: () => deferred } : {})
     const abort = new AbortController(), connected = s.transport.connect(resources,abort.signal)
     const rejection = stage === 'active' ? undefined : expect(connected).rejects.toThrow()
-    await flush(); const old = s.all()[0]
+    if (stage === 'ticket') await flush(); else await s.waitForSocket(0)
+    const old = s.all()[0]
     if (stage === 'active') { old!.open(); old!.receive(JSON.stringify(initial)); await connected }
     const callbacks = [...old?.listeners.get('message') ?? []]
     abort.abort(); release(ticketResponse as WorldTicketResponse); await flush()
@@ -92,7 +125,8 @@ for (const lane of ['mock','native'] as const) describe(`${lane} common lifecycl
   for (const stage of ['ticket','opening','authenticate'] as const) it(`bounded ${stage} handshake`, async () => {
     const s = setup(lane, stage === 'ticket' ? {acquireTicket: () => new Promise(() => {})} : {})
     const connected = s.transport.connect(resources), rejection = expect(connected).rejects.toThrow('timeout')
-    await flush(); if (stage === 'authenticate') s.all()[0]!.open()
+    if (stage === 'ticket') await flush(); else await s.waitForSocket(0)
+    if (stage === 'authenticate') s.all()[0]!.open()
     s.clock.advance(3000); await rejection; expect(s.transport.state).toBe('closed'); expect(s.clock.pending).toBe(0)
   })
   for (const field of ['protocolVersion','eventId','roomId','mapId','mapRevision','avatarManifestId','avatarManifestVersion','selfUserId','roomEpoch'] as const) it(`fails closed on wrong ${field}`, async () => {
@@ -244,7 +278,7 @@ for (const lane of ['mock','native'] as const) describe(`${lane} common lifecycl
       const s=setup(lane)
       s.transport.subscribe(e=>{if(e.type==='state'&&e.state===stage)s.transport.disconnect()})
       const connected=s.transport.connect(resources); const settled=connected.catch(()=>{})
-      await flush();if(stage==='live'){s.all()[0]!.open();s.all()[0]!.receive(JSON.stringify(initial))}
+      if(stage==='live') await s.waitForSocket(0); else await flush();if(stage==='live'){s.all()[0]!.open();s.all()[0]!.receive(JSON.stringify(initial))}
       await settled;expect(s.transport.state).toBe('closed');expect(s.clock.pending).toBe(0)
     }
   })

@@ -35,6 +35,7 @@ use tonic::Status;
 use uuid::Uuid;
 
 pub mod authority_deadline;
+pub mod relationship_read;
 pub mod cache;
 pub mod exchange;
 pub mod fanout;

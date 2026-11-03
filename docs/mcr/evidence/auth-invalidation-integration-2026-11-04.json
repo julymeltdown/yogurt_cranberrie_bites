@@ -1,0 +1,49 @@
+{
+  "scope": "C05 Auth owning journal integration only",
+  "author_base": "df66607c3afec927d44f3ffd9fb570d6ef6d5b7a",
+  "author_head": "441f3418992b2f4a51bc0a431bfd5e771930fc76",
+  "integrated_head": "fae31527d28e7bd57fc8d4b21187c35eb1b7027c",
+  "paths": [
+    "backend/scripts/mcr/auth_invalidation_smoke.py",
+    "backend/scripts/mcr/test_auth_invalidation_smoke.py",
+    "backend/services/auth-service/migrations/0016_concert_invalidation_journal.sql",
+    "backend/services/auth-service/src/concert_invalidation/mod.rs",
+    "backend/services/auth-service/src/lib.rs",
+    "backend/services/auth-service/tests/concert_invalidation.rs",
+    "backend/services/auth-service/tests/concert_invalidation_support/native.rs",
+    "docs/mcr/backend/auth-invalidation.md"
+  ],
+  "exact_author_bytes": true,
+  "preimages_checked_before_integration": true,
+  "author_validation": {
+    "auth_units": 124,
+    "pure": 2,
+    "native_pg16": 3,
+    "migration_receipts": 16,
+    "owned_pg_removed": true
+  },
+  "fresh_integration_validation": {
+    "python_harness_tests": 2,
+    "git_diff_check": "PASS",
+    "rust_native_repetition": "NOT_RUN; qualified author evidence reused, both targets reserved"
+  },
+  "local_evidence": {
+    "native-report.json": {
+      "path": "/private/tmp/mcr-auth-invalidation-snphm8k4/native-report.json",
+      "sha256": "4e5538f1fda16cfc85f2f815f993a385a4c639171f12e8f7d7097bd0bccb2157"
+    },
+    "binaries.json": {
+      "path": "/private/tmp/mcr-auth-invalidation-snphm8k4/binaries.json",
+      "sha256": "36bceab42d268a5fba4636c072e93dc6a933e730b35d173c74eaa4e477f3cc6d"
+    },
+    "handoff.json": {
+      "path": "/private/tmp/mcr-auth-invalidation-snphm8k4/handoff.json",
+      "sha256": "fc8346b8bea5c609f1d175e6a92fe93540f8885c0918f73c7f5808a46cf7d336"
+    }
+  },
+  "limits": [
+    "No RPC or startup enabled",
+    "No World remote signal delivery or latency acceptance",
+    "Parent C05 and IN01 not accepted"
+  ]
+}

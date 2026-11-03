@@ -449,3 +449,48 @@ async fn restart_replays_persisted_receipt_and_authorized_projection() -> anyhow
     pool.close().await;
     Ok(())
 }
+
+#[tokio::test]
+async fn expiry_or_owner_proof_expiry_before_commit_rolls_back_effect() -> anyhow::Result<()> {
+    let pool = owned_pool().await?;
+    let f = setup(&pool).await?;
+    for proof in [false, true] {
+        let id = Uuid::new_v4();
+        let mut tx = pool.begin().await?;
+        let mut m = f.meeting.clone();
+        if proof {
+            sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '150 milliseconds')::text,true)").execute(&mut *tx).await?;
+        } else {
+            m.expires_at =
+                sqlx::query_scalar("select clock_timestamp()+interval '150 milliseconds'")
+                    .fetch_one(&mut *tx)
+                    .await?;
+        }
+        mutate_in(
+            &mut tx,
+            &SyntheticAuthority,
+            f.actor(f.owner),
+            id,
+            &BeaconMutation::Create(CreateBeacon {
+                meeting: m,
+                physical_presence_acknowledged: true,
+            }),
+        )
+        .await?;
+        sqlx::query("select pg_sleep(0.2)")
+            .execute(&mut *tx)
+            .await?;
+        assert!(
+            tx.commit().await.is_err(),
+            "expiry during receipt/outbox work cannot commit a stale effect"
+        );
+        let count: i64 =
+            sqlx::query_scalar("select count(*) from concert_meeting_beacons where beacon_id=$1")
+                .bind(id)
+                .fetch_one(&pool)
+                .await?;
+        assert_eq!(count, 0);
+    }
+    pool.close().await;
+    Ok(())
+}

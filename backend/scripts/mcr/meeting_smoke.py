@@ -12,7 +12,7 @@ import migration_smoke as migration
 
 ROOT = Path(__file__).resolve().parents[3]
 DATABASE = 'mcr_meeting'
-MIGRATIONS = ('0001_concert_core.sql','0002_command_receipts_outbox.sql','0003_places_map_releases.sql','0008_meeting_beacons.sql','0009_receipt_domain_failures.sql')
+MIGRATIONS = ('0001_concert_core.sql','0002_command_receipts_outbox.sql','0003_places_map_releases.sql','0006_relationship_policy.sql','0007_community.sql','0008_meeting_beacons.sql','0009_receipt_domain_failures.sql','0011_outbox_maintenance.sql','0016_meeting_deadline_guards.sql')
 
 def sql_guards(cluster):
     event='dddddddd-dddd-4ddd-8ddd-dddddddddddd'
@@ -66,6 +66,7 @@ def main() -> int:
         cluster.init();cluster.start()
         cluster.sql('postgres',f'create database {DATABASE} template template0;')
         report['migration_sha256']={}
+        report['ledger_source_sha256']={path.name:hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted((ROOT/'backend/services/concert-service/migrations').glob('*.sql'))}
         for name in MIGRATIONS:
             path=ROOT/'backend/services/concert-service/migrations'/name
             report['migration_sha256'][name]=hashlib.sha256(path.read_bytes()).hexdigest()
@@ -84,6 +85,7 @@ def main() -> int:
                 raise RuntimeError('secret-leak')
             row={'phase':phase,'binary':binary.name,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'exit_code':result.returncode,'output_sha256':hashlib.sha256(output.encode()).hexdigest()}
             if result.returncode: row['tail']=output[-4000:]
+            row['test_result']=next((line for line in output.splitlines() if line.startswith('test result:')),None)
             report['tests'].append(row)
             if result.returncode: raise RuntimeError('native-meeting-test')
         for binary in binaries: native(binary,'before-restart')
@@ -97,6 +99,7 @@ def main() -> int:
         # Rerun adapters on independent event fixtures after an actual process restart.
         environment['MEETING_RESTART_VERIFY']='1'
         for binary in binaries: native(binary,'after-restart')
+        if any(binary.name=='meeting_migrations' for binary in binaries): report['migration_ledger']='PASS_FRESH_UPGRADE_REPLAY'
         report['result']='PASS'
     except BaseException as error:
         report['failure']=getattr(error,'detail',type(error).__name__+': '+str(error))

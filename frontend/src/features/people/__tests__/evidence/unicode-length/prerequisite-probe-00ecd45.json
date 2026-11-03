@@ -1,0 +1,102 @@
+{
+  "source": "00ecd45999dacf29addf8ede9532060112eb9a03",
+  "cases": [
+    {
+      "kind": "intro",
+      "codepoints": 500,
+      "actual": true,
+      "schema_valid": true
+    },
+    {
+      "kind": "intro",
+      "codepoints": 501,
+      "actual": false,
+      "schema_valid": true
+    },
+    {
+      "kind": "intro",
+      "codepoints": 1000,
+      "actual": false,
+      "schema_valid": true
+    },
+    {
+      "kind": "intro",
+      "codepoints": 1001,
+      "actual": false,
+      "schema_valid": false
+    },
+    {
+      "kind": "display_name",
+      "codepoints": 20,
+      "actual": true,
+      "schema_valid": true
+    },
+    {
+      "kind": "display_name",
+      "codepoints": 21,
+      "actual": false,
+      "schema_valid": true
+    },
+    {
+      "kind": "display_name",
+      "codepoints": 40,
+      "actual": false,
+      "schema_valid": true
+    },
+    {
+      "kind": "display_name",
+      "codepoints": 41,
+      "actual": false,
+      "schema_valid": false
+    },
+    {
+      "kind": "bio",
+      "codepoints": 80,
+      "actual": true,
+      "schema_valid": true
+    },
+    {
+      "kind": "bio",
+      "codepoints": 81,
+      "actual": false,
+      "schema_valid": true
+    },
+    {
+      "kind": "bio",
+      "codepoints": 160,
+      "actual": false,
+      "schema_valid": true
+    },
+    {
+      "kind": "bio",
+      "codepoints": 161,
+      "actual": false,
+      "schema_valid": false
+    },
+    {
+      "kind": "query",
+      "codepoints": 50,
+      "actual": true,
+      "schema_valid": true
+    },
+    {
+      "kind": "query",
+      "codepoints": 51,
+      "actual": false,
+      "schema_valid": true
+    },
+    {
+      "kind": "query",
+      "codepoints": 100,
+      "actual": false,
+      "schema_valid": true
+    },
+    {
+      "kind": "query",
+      "codepoints": 101,
+      "actual": false,
+      "schema_valid": false
+    }
+  ],
+  "oracle": "Actual frozen C03/C04 Draft202012Validator with local referencing Registry; no network"
+}

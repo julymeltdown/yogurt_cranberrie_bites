@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "scope": "Actual FE14 validateTiled plus strict JSON parser on original AR02 exported resources",
+  "node": "v26.7.0",
+  "typescript": "6.0.3",
+  "sourceHashes": {
+    "frontend/src/world/map/json.ts": "74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/map/tiled.ts": "65af544bfb262f5d266b5986b43dc05dc03b7179e55b061095d032a623e83a00"
+  },
+  "accepted": "courtyard-tiled.json",
+  "rejected": [
+    "collision-drift",
+    "extra-object-layer",
+    "external-tileset",
+    "wrong-atlas-dimensions",
+    "flipped-gid"
+  ],
+  "limits": [
+    "No application composition or final manifest pin",
+    "No actual server runtime or physical devices"
+  ]
+}

@@ -306,6 +306,8 @@ pub struct AppConfig {
     pub background_pool_max_connections: u32,
     pub seed_enabled: bool,
     pub auth_grpc_endpoint: String,
+    /// Explicit opt-in; absent Concert configuration keeps bootstrap unavailable.
+    pub concert_grpc_endpoint: Option<String>,
     pub profile_grpc_endpoint: String,
     pub friend_grpc_endpoint: String,
     pub notification_grpc_endpoint: String,
@@ -483,6 +485,7 @@ impl AppConfig {
                 &env_or("GATEWAY_SEED_ENABLED", "false"),
             )?,
             auth_grpc_endpoint: env_or("GATEWAY_AUTH_GRPC_ENDPOINT", "http://127.0.0.1:50051"),
+            concert_grpc_endpoint: platform::config::optional_env("GATEWAY_CONCERT_GRPC_ENDPOINT"),
             profile_grpc_endpoint: env_or(
                 "GATEWAY_PROFILE_GRPC_ENDPOINT",
                 "http://127.0.0.1:50052",
@@ -691,6 +694,21 @@ impl AppConfig {
         ] {
             require_production_safe_url(production, name, endpoint)?;
         }
+        if let Some(endpoint) = self.concert_grpc_endpoint.as_ref() {
+            let uri = endpoint.parse::<axum::http::Uri>().map_err(|_| {
+                anyhow::anyhow!("GATEWAY_CONCERT_GRPC_ENDPOINT must be an HTTP(S) endpoint")
+            })?;
+            anyhow::ensure!(
+                matches!(uri.scheme_str(), Some("http" | "https"))
+                    && uri.authority().is_some()
+                    && uri.host().is_some_and(|host| !host.is_empty())
+                    && uri.query().is_none()
+                    && matches!(uri.path(), "" | "/")
+                    && !endpoint.contains(['@', '#']),
+                "GATEWAY_CONCERT_GRPC_ENDPOINT must be an HTTP(S) endpoint without credentials, path or query"
+            );
+            require_production_safe_url(production, "GATEWAY_CONCERT_GRPC_ENDPOINT", endpoint)?;
+        }
 
         require_production_safe_urls(
             production,
@@ -794,6 +812,8 @@ pub struct AppState {
     /// Fresh signed owner reads for Concert. Test-double compositions leave this
     /// absent; only the configured concrete clients populate it.
     pub concert_identity: Option<crate::adapters::out::concert_identity::ConcertIdentityReader>,
+    pub concert_client: Option<crate::adapters::out::concert_client::GrpcConcertClient>,
+    pub concert_world_client: Option<crate::adapters::out::concert_world::GrpcConcertWorldClient>,
     pub auth_service: AuthGatewayService,
     pub profile_service: ProfileGatewayService,
     pub friend_service: FriendGatewayService,
@@ -1631,6 +1651,30 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
     )
     .await?;
     state.concert_identity = Some(concert_identity);
+    state.concert_client = config
+        .concert_grpc_endpoint
+        .as_ref()
+        .map(|endpoint| {
+            crate::adapters::out::concert_client::GrpcConcertClient::connect(
+                endpoint,
+                &config.outbound_identity,
+                config.tls_material.as_ref(),
+                config.actor_delegation_signer.clone(),
+            )
+        })
+        .transpose()?;
+    state.concert_world_client = config
+        .concert_grpc_endpoint
+        .as_ref()
+        .map(|endpoint| {
+            crate::adapters::out::concert_world::GrpcConcertWorldClient::connect(
+                endpoint,
+                &config.outbound_identity,
+                config.tls_material.as_ref(),
+                config.actor_delegation_signer.clone(),
+            )
+        })
+        .transpose()?;
     state.auth_service = state
         .auth_service
         .with_verification_client(verification_client);
@@ -1755,6 +1799,8 @@ async fn build_state_with_clients_and_moderation_with_metrics(
 
     Ok(AppState {
         concert_identity: None,
+        concert_client: None,
+        concert_world_client: None,
         high_risk_sessions: HighRiskSessionGuard::over_auth_client(
             auth_client.clone(),
             Duration::from_secs(config.high_risk_session_freshness_seconds),

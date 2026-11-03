@@ -1,5 +1,8 @@
 //! Signed generated-client composition with controlled Auth and Profile owners.
 //! This proves Gateway sequencing and borrowed validity, not HTTP or native owners.
+#[allow(dead_code)]
+#[path = "unit/http_support.rs"]
+mod bootstrap_http_support;
 use api_gateway::adapters::out::{
     auth_client::{
         concert_admission::{AdmissionReadError, BindingProvider, BindingReference, BindingState},
@@ -788,3 +791,6 @@ async fn profile_hold_cannot_outlive_same_original_context_after_auth_pass() {
 
 #[path = "support/concert_bootstrap_client.rs"]
 mod bootstrap_dispatch;
+
+#[path = "support/concert_world_client.rs"]
+mod world_dispatch;

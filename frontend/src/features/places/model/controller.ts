@@ -4,6 +4,7 @@ import type { MapManifest } from '../../../world/map/manifest'
 import { schemaValid } from '../../../world/map/schema'
 import { canonicalJson } from '../../../world/map/json'
 import type { createCameraControl } from '../../../world/camera/port'
+import type { SceneryOverview, SceneryOverviewPort } from '../../../world/illustrated/overview'
 import { decodePlace, decodePlaces, placeId, type PlaceList, type PlaceResponse } from './contract'
 
 /** Already validated by FE14's asset owner. No map/image/network ownership here. */
@@ -28,6 +29,7 @@ export interface PlacesHttpPort {
 export type PlaceFailure = 'signed-out' | 'denied' | 'missing' | 'conflict' | 'map-mismatch' | 'rate-limited' | 'invalid' | 'unavailable'
 export interface Resource<T> { readonly phase: 'idle' | 'loading' | 'ready' | 'empty' | 'error'; readonly data: T | null; readonly reason: PlaceFailure | null }
 export interface PlacesState {
+  readonly overview?: SceneryOverview | null
   readonly list: Resource<PlaceList>
   readonly detail: Resource<PlaceResponse>
   readonly selectedId: string | null
@@ -72,21 +74,34 @@ function failure(error: unknown): PlaceFailure {
   return 'unavailable'
 }
 /** Catalog revision is NOT map_revision. Geometry targets use the separately pinned C06 release. */
-export function createPlacesController(options: { session: SessionPort; http: PlacesHttpPort; map: PlaceMapPort; camera?: PlaceCameraPort }) {
+export function createPlacesController(options: { session: SessionPort; http: PlacesHttpPort; map: PlaceMapPort; camera?: PlaceCameraPort; overview?: SceneryOverviewPort }) {
   let state: PlacesState = freeze({ list: resource<PlaceList>('idle'), detail: resource<PlaceResponse>('idle'),
-    selectedId: null, map: null, mapMismatch: false, unavailablePlaceIds: [], notice: null })
+    selectedId: null, map: null, mapMismatch: false, unavailablePlaceIds: [], notice: null, overview: null })
   let started = false, disposed = false, revision = 0, detailRevision = 0
   let activeReleaseKey = ''
   let listAbort: AbortController | null = null, detailAbort: AbortController | null = null
-  let removeScope = () => {}, removeMap = () => {}
+  let removeScope = () => {}, removeMap = () => {}, removeOverview = () => {}
   const listeners = new Set<() => void>()
   const publish = (patch: Partial<PlacesState>) => {
     if (disposed) return
-    state = freeze({ ...state, ...patch })
+    const next = { ...state, ...patch }
+    next.overview = qualifiedOverview(next)
+    state = freeze(next)
     for (const listener of Array.from(listeners)) { try { listener() } catch { /* Snapshot prevents reentrant observers changing this publication. */ } }
   }
   const scope = () => options.session.read()
   const sameScope = (snapshot: SessionScope) => options.session.isCurrent(snapshot)
+  function qualifiedOverview(next: PlacesState): SceneryOverview | null {
+    if (disposed || !started || next.mapMismatch || !next.map || !['ready', 'empty'].includes(next.list.phase)
+      || !sameScope(activeScope) || key(options.map.read()) !== activeReleaseKey) return null
+    try {
+      const image = options.overview?.read(), m = next.map, g = m.geometry
+      return image && image.imageUrl.startsWith('blob:') && image.mapId === m.map_id && image.mapRevision === m.map_revision
+        && image.mapHash === m.content_hash && image.geometryHash === m.geometry_hash
+        && image.width === g.width_cells * g.tile_width_px && image.height === g.height_cells * g.tile_height_px
+        && image.themeRevision > 0 && !!image.themeId && !!image.themeHash ? image : null
+    } catch { return null }
+  }
   const unavailableTargets = new Set<string>()
   let invalidationScope: SessionScope = scope(), invalidReleaseKey: string | null = null
   function cancel() { ++revision; ++detailRevision; listAbort?.abort(); detailAbort?.abort(); listAbort = null; detailAbort = null }
@@ -200,6 +215,7 @@ export function createPlacesController(options: { session: SessionPort; http: Pl
       if (disposed || started) return
       started = true; activeScope = scope(); bindScope()
       removeMap = options.map.subscribe(() => { activeScope = scope(); void refresh() })
+      removeOverview = options.overview?.subscribe(() => publish({})) ?? (() => {})
       void refresh()
     },
     refresh() { activeScope = scope(); return refresh() },
@@ -220,9 +236,9 @@ export function createPlacesController(options: { session: SessionPort; http: Pl
     zoom(delta: -1 | 1) { return cameraAction(camera => { const zoom = camera.read().camera?.zoom; if (zoom !== undefined) camera.setZoom(Math.max(1, Math.min(8, zoom + delta))) }) },
     dispose() {
       if (disposed) return
-      disposed = true; started = false; cancel(); removeScope(); removeMap()
+      disposed = true; started = false; cancel(); removeScope(); removeMap(); removeOverview()
       unavailableTargets.clear(); invalidReleaseKey = null
-      state = freeze({ list: resource<PlaceList>('idle'), detail: resource<PlaceResponse>('idle'), selectedId: null, map: null, mapMismatch: true, unavailablePlaceIds: [], notice: null })
+      state = freeze({ list: resource<PlaceList>('idle'), detail: resource<PlaceResponse>('idle'), selectedId: null, map: null, mapMismatch: true, unavailablePlaceIds: [], notice: null, overview: null })
       for (const listener of Array.from(listeners)) { try { listener() } catch { /* Best-effort final eviction notification. */ } }
       listeners.clear()
     },

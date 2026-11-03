@@ -6,3 +6,4 @@ mod concert_identity;
 pub mod server;
 
 pub mod author_authority;
+pub mod world_identity;

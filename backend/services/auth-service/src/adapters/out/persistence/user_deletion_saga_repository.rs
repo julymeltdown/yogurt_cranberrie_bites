@@ -200,7 +200,11 @@ impl UserDeletionSagaPort for PgUserDeletionSagaRepository {
             .await?;
 
             let saga_id = if let Some(saga_id) = inserted {
-                for target in request.targets {
+                // Old callers may still submit the inherited four targets.
+                // Every canonical saga must include all required Concert work.
+                // The primary key and ON CONFLICT also deduplicate callers'
+                // repeated targets without introducing another receipt store.
+                for target in request.targets.into_iter().chain(UserDeletionTarget::ALL) {
                     sqlx::query(
                         r#"
                     insert into user_deletion_steps (
@@ -621,21 +625,29 @@ impl UserDeletionSagaPort for PgUserDeletionSagaRepository {
             }
             sqlx::query(
                 r#"
+            with completion as (
+                select count(*) = cardinality($3::text[])
+                    and count(*) filter (
+                        where target = any($3::text[])
+                          and status = 'SUCCEEDED' and completed_at is not null
+                    ) = cardinality($3::text[]) as complete
+                from user_deletion_steps where saga_id = $1
+            )
             update user_deletion_sagas g
-            set status = case when not exists (
-                    select 1 from user_deletion_steps s
-                    where s.saga_id = g.id and s.status <> 'SUCCEEDED'
-                ) then 'COMPLETED' else g.status end,
-                completed_at = case when not exists (
-                    select 1 from user_deletion_steps s
-                    where s.saga_id = g.id and s.status <> 'SUCCEEDED'
-                ) then $2 else g.completed_at end,
+            set status = case when c.complete then 'COMPLETED' else g.status end,
+                completed_at = case when c.complete then $2 else g.completed_at end,
                 updated_at = $2
+            from completion c
             where g.id = $1
             "#,
             )
             .bind(step.saga_id)
             .bind(now)
+            .bind(
+                UserDeletionTarget::ALL
+                    .map(UserDeletionTarget::as_str)
+                    .to_vec(),
+            )
             .execute(&mut *tx)
             .await?;
             tx.commit().await?;

@@ -1,0 +1,3 @@
+/* Fixture framing only. Product selectors, layout and presentation remain unchanged. */
+body { margin: 0; padding: 8px; background: #171616; }
+.wall-reference-host { width: 100%; margin: 0 auto; }

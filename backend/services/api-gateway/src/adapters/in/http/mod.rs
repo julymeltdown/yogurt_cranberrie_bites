@@ -6,6 +6,8 @@ pub mod auth_shadow_routes;
 pub mod browser_auth;
 pub mod client_identity;
 pub mod concert_access;
+pub mod concert_world;
+pub mod concert_bootstrap;
 
 pub mod friend_routes;
 pub mod moderation_decision_worker;
@@ -234,6 +236,8 @@ pub fn router(state: Arc<AppState>) -> Router {
             state.developer_portal_links.clone(),
         ))
         .merge(browser_auth::router(state.clone()))
+        .merge(concert_bootstrap::router(state.clone()))
+        .merge(concert_world::router_with_boundary(state.clone()))
         .merge(profile_routes::router(state.clone()))
         .merge(friend_routes::router(state.clone()))
         .merge(moderation_routes::router(state.clone()))
@@ -269,6 +273,7 @@ pub fn router(state: Arc<AppState>) -> Router {
             state.browser_auth_origins.clone(),
             browser_auth::boundary,
         ))
+        .layer(axum::middleware::from_fn(concert_bootstrap::protect_response))
 }
 
 pub fn metrics_router(metrics_state: GatewayMetrics) -> Router {

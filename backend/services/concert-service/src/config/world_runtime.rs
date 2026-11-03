@@ -1,0 +1,400 @@
+//! Strict opt-in for actual World serving. Product files retain the bootstrap
+//! validator; synthetic metadata is never promoted by this configuration path.
+use crate::{
+    adapters::out::{
+        relationship_authority::{
+            grpc::GrpcRelationshipAuthority,
+            world_auth::{GrpcWorldAuthReader, WorldAuthRead},
+        },
+        world_profile::GrpcWorldProfileReader,
+    },
+    adapters::r#in::world_ws::{self, SocketTransport, WorldSocketState},
+    bootstrap::{BootstrapFeatures, BootstrapService, ProductReleaseBundle},
+    world::{
+        admission_bridge::AdmissionBridge,
+        ingress::OriginPolicy,
+        membership::ClockAnchor,
+        production_owners::ProductionOwners,
+        recipient_owners::WorldRecipientReader,
+        runtime::{RoomSpec, WorldRuntime},
+        simulation::ResourcePin,
+    },
+};
+use concert_application::world_ticket::OwnerIdentity;
+use concert_domain::{
+    world::{Limits, WorldMap},
+    AssetId, EventId, Revision,
+};
+use serde::Deserialize;
+use std::{
+    collections::{BTreeMap, BTreeSet},
+    net::SocketAddr,
+    sync::Arc,
+    time::{Duration, Instant},
+};
+use uuid::Uuid;
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ConfiguredRoom {
+    room_id: Uuid,
+    capacity: usize,
+}
+/// Opaque production dependencies keep the sealed Auth port inside this crate.
+/// No fixture or public subject constructor can manufacture these startup ports.
+pub struct WorldProductionPorts {
+    profile: GrpcWorldProfileReader,
+    relationship: GrpcRelationshipAuthority,
+    auth: Arc<dyn WorldAuthRead>,
+}
+pub struct WorldRuntimeSettings {
+    pub address: SocketAddr,
+    origins: OriginPolicy,
+    owner: Uuid,
+    event: EventId,
+    rooms: Vec<ConfiguredRoom>,
+    release: Arc<concert_application::bootstrap::ValidatedProductRelease>,
+}
+fn read(name: &str) -> anyhow::Result<Option<String>> {
+    match std::env::var(name) {
+        Ok(v) => Ok(Some(v)),
+        Err(std::env::VarError::NotPresent) => Ok(None),
+        Err(_) => anyhow::bail!("{name} must contain valid Unicode"),
+    }
+}
+impl WorldRuntimeSettings {
+    pub fn load() -> anyhow::Result<Option<Self>> {
+        Self::settings(read)
+    }
+    pub fn settings(
+        mut read: impl FnMut(&str) -> anyhow::Result<Option<String>>,
+    ) -> anyhow::Result<Option<Self>> {
+        let address = read("CONCERT_WORLD_LISTEN_ADDR")?;
+        let names = [
+            "CONCERT_WORLD_ALLOWED_ORIGINS",
+            "CONCERT_WORLD_OWNER_ID",
+            "CONCERT_WORLD_EVENT_ID",
+            "CONCERT_WORLD_ROOMS_JSON",
+        ];
+        let values: Vec<_> = names
+            .iter()
+            .map(|n| read(n))
+            .collect::<anyhow::Result<_>>()?;
+        let Some(address) = address else {
+            anyhow::ensure!(
+                values.iter().all(Option::is_none),
+                "World settings require CONCERT_WORLD_LISTEN_ADDR"
+            );
+            return Ok(None);
+        };
+        let values: Vec<_> = values
+            .into_iter()
+            .enumerate()
+            .map(|(i, v)| {
+                v.filter(|v| !v.trim().is_empty())
+                    .ok_or_else(|| anyhow::anyhow!("{} is required for World", names[i]))
+            })
+            .collect::<anyhow::Result<_>>()?;
+        let address: SocketAddr = address
+            .parse()
+            .map_err(|_| anyhow::anyhow!("CONCERT_WORLD_LISTEN_ADDR is invalid"))?;
+        let local = match read("CONCERT_RUNTIME_MODE")?.as_deref() {
+            Some("local") => true,
+            None | Some("production") => false,
+            _ => anyhow::bail!("CONCERT_RUNTIME_MODE is invalid"),
+        };
+        anyhow::ensure!(
+            if local {
+                address.ip().is_loopback()
+            } else {
+                address.port() != 0
+            },
+            "World listener address is unsafe for runtime mode"
+        );
+        let origins: Vec<String> = serde_json::from_str(&values[0])
+            .map_err(|_| anyhow::anyhow!("World origins must be a JSON array"))?;
+        let origins = OriginPolicy::new(origins, local)
+            .map_err(|_| anyhow::anyhow!("World origins are invalid"))?;
+        let canonical = |v: &str| -> anyhow::Result<Uuid> {
+            let id: Uuid = v
+                .parse()
+                .map_err(|_| anyhow::anyhow!("World identity is invalid"))?;
+            anyhow::ensure!(
+                !id.is_nil() && id.to_string() == v,
+                "World identity must be canonical"
+            );
+            Ok(id)
+        };
+        let owner = canonical(&values[1])?;
+        let event = EventId::from_uuid(canonical(&values[2])?);
+        anyhow::ensure!(
+            values[3].len() <= 8192,
+            "World room configuration is too large"
+        );
+        let rooms: Vec<ConfiguredRoom> = serde_json::from_str(&values[3])
+            .map_err(|_| anyhow::anyhow!("World rooms are invalid"))?;
+        let mut seen = BTreeSet::new();
+        anyhow::ensure!(
+            !rooms.is_empty()
+                && rooms.len() <= 16
+                && rooms.iter().all(|r| !r.room_id.is_nil()
+                    && r.capacity > 0
+                    && r.capacity <= 50
+                    && seen.insert(r.room_id)),
+            "World rooms must be unique and bounded"
+        );
+        let files: Vec<_> = super::bootstrap_runtime::RELEASE_SETTINGS
+            .iter()
+            .map(|n| {
+                read(n)?
+                    .filter(|v| !v.trim().is_empty())
+                    .map(std::path::PathBuf::from)
+                    .ok_or_else(|| anyhow::anyhow!("{n} is required for World product serving"))
+            })
+            .collect::<anyhow::Result<_>>()?;
+        let release = ProductReleaseBundle::from_product_files(
+            &files[0],
+            &files[1],
+            &files[2],
+            [&files[3], &files[4], &files[5]],
+            BootstrapFeatures {
+                world: true,
+                ..Default::default()
+            },
+        )
+        .map_err(|_| anyhow::anyhow!("World product release is unavailable"))?;
+        Ok(Some(Self {
+            address,
+            origins,
+            owner,
+            event,
+            rooms,
+            release,
+        }))
+    }
+    /// Composes the actual DB bridge, 20Hz owner and socket server with supplied
+    /// qualified live owner ports. Absence is rejected before binding a listener.
+    pub async fn serve(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+    ) -> anyhow::Result<()> {
+        ports.require_publication_qualification()?;
+        let template: serde_json::Value =
+            serde_json::from_slice(self.release.release().bootstrap_json())?;
+        anyhow::ensure!(
+            template["event"]["event_id"].as_str() == Some(self.event.uuid().to_string().as_str()),
+            "World event and release differ"
+        );
+        let map = concert_domain::place::parse_stored_release(&serde_json::to_vec(
+            &template["map_manifest"],
+        )?)?;
+        let avatar = &template["avatar_manifest"];
+        let asset = |v: &serde_json::Value| {
+            AssetId::new(
+                v.as_str()
+                    .ok_or_else(|| anyhow::anyhow!("World asset is invalid"))?
+                    .to_owned(),
+            )
+            .map_err(anyhow::Error::from)
+        };
+        let resources = ResourcePin {
+            map_id: AssetId::new(map.map_id.clone())?,
+            map_revision: Revision::new(map.map_revision)?,
+            avatar_manifest_id: asset(&avatar["manifest_id"])?,
+            avatar_manifest_version: Revision::new(
+                avatar["manifest_version"]
+                    .as_i64()
+                    .ok_or_else(|| anyhow::anyhow!("World avatar version is invalid"))?,
+            )?,
+        };
+        let mut epochs = BTreeMap::new();
+        let mut specs = Vec::new();
+        for room in self.rooms {
+            let epoch = Uuid::new_v4();
+            epochs.insert(room.room_id, epoch);
+            specs.push(RoomSpec {
+                room_id: room.room_id,
+                room_epoch: epoch,
+                resources: resources.clone(),
+                map: WorldMap::from_geometry(&map.geometry)?,
+                limits: Limits::new(160.0, 48.0, 250)?,
+                capacity: room.capacity,
+                spawn_id: map.geometry.default_spawn_id.clone(),
+            });
+        }
+        let anchor = ClockAnchor {
+            monotonic_ms: 0,
+            utc: chrono::Utc::now(),
+        };
+        let started = Instant::now();
+        let bootstrap = Arc::new(BootstrapService::new(pool.clone(), self.release));
+        let owners = ProductionOwners::new(
+            pool.clone(),
+            ports.profile,
+            WorldRecipientReader::new(pool.clone(), ports.relationship),
+            concert_domain::avatar::AvatarCatalog::from_validated_manifest(avatar)
+                .map_err(|_| anyhow::anyhow!("World avatar catalog is invalid"))?,
+        );
+        let bridge = AdmissionBridge::new_production(
+            pool,
+            bootstrap,
+            owners,
+            ports.auth,
+            OwnerIdentity::new(self.owner.to_string(), Uuid::new_v4())?,
+            self.event,
+            epochs,
+            resources,
+            anchor.clone(),
+            started,
+        )?;
+        tokio::time::timeout(Duration::from_secs(2), bridge.claim_rooms()).await??;
+        let transport = SocketTransport::default();
+        let runtime = WorldRuntime::new(
+            self.event,
+            self.owner,
+            anchor,
+            specs,
+            bridge.clone(),
+            bridge.clone(),
+            transport.clone(),
+        )
+        .map_err(|_| anyhow::anyhow!("World owner construction failed"))?;
+        let (clock, origin_ms) = runtime.clock_origin();
+        let listener = tokio::net::TcpListener::bind(self.address).await?;
+        let (handle, owner_task) = runtime.spawn();
+        let handle = Arc::new(handle);
+        let state = WorldSocketState::new(
+            self.origins,
+            transport.clone(),
+            bridge.clone(),
+            handle.clone(),
+            clock,
+            origin_ms,
+        );
+        println!("CONCERT_WORLD_LISTENER={}", listener.local_addr()?);
+        let authority = async {
+            let mut tick = tokio::time::interval(Duration::from_secs(1));
+            tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
+            loop {
+                tokio::select! {biased;_ = platform::shutdown::global().cancelled()=>return Ok::<(),anyhow::Error>(()),_ = tick.tick()=>{tokio::time::timeout(Duration::from_secs(2),bridge.maintain()).await??;}}
+            }
+        };
+        let server = axum::serve(listener, world_ws::router(state))
+            .with_graceful_shutdown(platform::shutdown::global().cancelled());
+        let result = tokio::select! {result=async { server.await }=>result.map_err(anyhow::Error::from),result=authority=>result};
+        // Dropping all listener states closes sockets and the final handle stops
+        // the owner independently of a full command queue. Await its cleanup report.
+        transport.close_all(crate::world::ingress::SafeClose::UNAVAILABLE);
+        handle.request_stop();
+        drop(handle);
+        let report = tokio::time::timeout(Duration::from_secs(2), owner_task).await??;
+        for b in report.remaining_cleanup {
+            let _ = crate::world::membership::CanonicalAuthorityPort::release(&bridge, &b);
+        }
+        let pending = tokio::time::timeout(Duration::from_secs(2), bridge.cleanup()).await??;
+        anyhow::ensure!(
+            pending == 0,
+            "World shutdown has pending persistent membership cleanup"
+        );
+        result
+    }
+}
+/// Current owner reads are concrete; none of these ports supplies a distributed
+/// known-invalidation delivery and acknowledgment before further sends. This is a qualification
+/// failure, not a missing-client placeholder, and cannot be bypassed by a flag.
+const PUBLICATION_GAP: &str = "World production publication unavailable: bounded owner reads are configured, but reliable known-invalidation delivery and local publication acknowledgment for Auth, Friend and Profile are unavailable";
+impl WorldProductionPorts {
+    fn require_publication_qualification(&self) -> anyhow::Result<()> {
+        anyhow::bail!(PUBLICATION_GAP)
+    }
+}
+fn endpoint(name: &str, value: &str, production: bool) -> anyhow::Result<()> {
+    let uri: tonic::codegen::http::Uri = value
+        .parse()
+        .map_err(|_| anyhow::anyhow!("{name} is invalid"))?;
+    anyhow::ensure!(
+        matches!(uri.scheme_str(), Some("http" | "https"))
+            && uri.authority().is_some_and(|a| !a.as_str().contains('@'))
+            && uri.host().is_some_and(|h| !h.is_empty())
+            && matches!(uri.path_and_query().map(|p| p.as_str()), None | Some("/")),
+        "{name} must be an internal gRPC origin"
+    );
+    platform::config::require_production_https_url(production, name, value)?;
+    Ok(())
+}
+/// Validate explicit typed owner configuration before any DB or listener opens.
+/// Even correctly configured clients remain unavailable for production sends
+/// until their owning services provide the missing publication contract.
+pub fn production_owners() -> anyhow::Result<WorldProductionPorts> {
+    use platform::{
+        actor_delegation::{relationship_read::RelationshipReadSigner, ActorDelegationVerifier},
+        grpc_auth::Workload,
+    };
+    let production = match read("CONCERT_RUNTIME_MODE")?.as_deref() {
+        Some("local") => false,
+        None | Some("production") => true,
+        _ => anyhow::bail!("CONCERT_RUNTIME_MODE is invalid"),
+    };
+    let required = |name| {
+        read(name)?
+            .filter(|v| !v.trim().is_empty())
+            .ok_or_else(|| anyhow::anyhow!("{name} is required for World owner composition"))
+    };
+    let auth_endpoint = required("CONCERT_AUTH_GRPC_ENDPOINT")?;
+    let friend_endpoint = required("CONCERT_FRIEND_GRPC_ENDPOINT")?;
+    let profile_endpoint = required("CONCERT_PROFILE_GRPC_ENDPOINT")?;
+    for (name, value) in [
+        ("CONCERT_AUTH_GRPC_ENDPOINT", &auth_endpoint),
+        ("CONCERT_FRIEND_GRPC_ENDPOINT", &friend_endpoint),
+        ("CONCERT_PROFILE_GRPC_ENDPOINT", &profile_endpoint),
+    ] {
+        endpoint(name, value, production)?;
+    }
+    // No development fallback credential is accepted by this composition.
+    let credential = required("CONCERT_SERVICE_CREDENTIAL")?;
+    let tls = platform::config::resolve_tls_material(production, "concert")?;
+    let gateway = ActorDelegationVerifier::from_env(production, Workload::Concert)?;
+    let signer = RelationshipReadSigner::from_env(&gateway)?;
+    let ports = WorldProductionPorts {
+        auth: Arc::new(GrpcWorldAuthReader::connect(
+            &auth_endpoint,
+            &credential,
+            tls.as_ref(),
+            signer.clone(),
+        )?),
+        profile: GrpcWorldProfileReader::connect(
+            &profile_endpoint,
+            &credential,
+            tls.as_ref(),
+            signer.clone(),
+        )?,
+        relationship: GrpcRelationshipAuthority::connect(
+            &auth_endpoint,
+            &friend_endpoint,
+            &credential,
+            tls.as_ref(),
+            signer,
+        )?,
+    };
+    ports.require_publication_qualification()?;
+    Ok(ports)
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn owner_endpoints_reject_non_origins_and_unsafe_production_hosts() {
+        for value in [
+            "http://user@owner.internal",
+            "http://owner.internal/path",
+            "http://owner.internal/?token=x",
+            "ftp://owner.internal",
+            "http://localhost:9000",
+        ] {
+            assert!(endpoint("owner", value, true).is_err());
+        }
+        assert!(endpoint("owner", "https://auth.mcr.internal:443", true).is_ok());
+        assert!(endpoint("owner", "http://127.0.0.1:9000", false).is_ok());
+    }
+}

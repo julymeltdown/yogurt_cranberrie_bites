@@ -1,26 +1,48 @@
-.places-view { display: grid; gap: 1.25rem; max-width: 48rem; margin-inline: auto; overflow-wrap: anywhere; }
-.places-intro h2 { font-size: clamp(1.65rem, 6vw, 2.35rem); line-height: 1.12; letter-spacing: -.04em; margin: .35rem 0 .75rem; }
-.places-kicker { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--mcr-muted); }
-.places-view h3 { margin: 0 0 .5rem; font-size: 1.05rem; }
-.places-view section > p + p { margin-top: .6rem; }
-.places-legend { display: grid; gap: .5rem; font-size: .9rem; padding-block: 1rem; border-block: 1px solid currentColor; }
-.places-legend-disclosure summary { min-height: 44px; padding-block: .7rem; cursor: pointer; font-weight: 650; }
-.places-legend-disclosure summary:focus-visible { outline: 3px solid var(--mcr-red); outline-offset: 3px; }
-.places-actions { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: .65rem; }
-.places-link { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; padding: .55rem .25rem; font-weight: 650; }
+.places-view { max-width: 48rem; margin-inline: auto; padding: 4px 4px max(16px, env(safe-area-inset-bottom, 0px)); overflow-wrap: anywhere; color: #1d1a17; }
+.places-view .concert-window__body { display: grid; gap: 8px; }
+.places-view .concert-window__titlebar h2 { margin: 0; font: 700 23px/1.15 Impact, "Arial Narrow", sans-serif; letter-spacing: .045em; }
+.places-view h3 { margin: 0 0 4px; font-size: 17px; line-height: 1.2; }
+.places-view p { margin: 0; }
+.places-view section > p + p { margin-top: 6px; }
+.places-kicker { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: #514637; margin-bottom: 5px!important; }
+.places-status { font-weight: 750; font-size: 16px; line-height: 1.4; }
+.places-actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.places-actions[aria-label="Virtual camera controls"] { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+.places-view .concert-action { font-size: 14px; padding: 8px; }
+.places-link { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; padding: 8px 4px; font-size: 14px; font-weight: 750; color: #1d1a17; }
 .places-diagram { margin: 0; }
-.places-diagram svg { display: block; width: 100%; max-height: 20rem; background: var(--mcr-paper); border: 1px solid var(--mcr-ink); }
-.places-diagram .places-blocked { fill: #bfb6a8; }
-.places-diagram .places-walkable { fill: #faf6ed; }
-.places-diagram circle { fill: #201d1d; }
-.places-diagram text { fill: #faf6ed; font-size: .5px; font-weight: 700; }
-.places-diagram figcaption { margin-top: .5rem; font-size: .85rem; line-height: 1.5; color: var(--mcr-muted); }
+.places-diagram svg { display: block; width: 100%; max-height: 20rem; background: #eee5d3; border: 2px solid #302a23; }
+.places-diagram .places-blocked { fill: #a89a85; }
+.places-diagram .places-walkable { fill: #f8f0df; }
+.places-diagram circle { fill: #921f28; }
+.places-diagram text { fill: #fff8eb; font-size: .5px; font-weight: 700; }
+.places-diagram figcaption { margin-top: 5px; font-size: 12px; line-height: 1.4; color: #514637; }
+.places-virtual-note, .places-camera-notice { font-size: 13px; line-height: 1.4; }
+.places-camera-notice:empty { display: none; }
+.places-legend { display: grid; gap: 6px; font-size: 13px; line-height: 1.45; padding-block: 10px; border-block: 1px solid #a99b83; }
+.places-legend-disclosure { border-block: 1px solid #a99b83; }
+.places-legend-disclosure summary { min-height: 44px; padding: 12px 4px; cursor: pointer; font-size: 14px; font-weight: 750; }
+.places-view .mcr-field { margin: 0; gap: 4px; }
+.places-view .mcr-field__label { font-size: 14px; }
+.places-view .mcr-input { min-height: 44px; background: #fbf4e7; border: 1px solid #736350; border-radius: 0; }
 .places-list { list-style: none; padding: 0; margin: 0; }
-.places-list li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .5rem; padding-block: 1rem; border-bottom: 1px solid #bfb6a8; }
-.places-number { font-variant-numeric: tabular-nums; color: var(--mcr-muted); }
-.places-facts { display: grid; gap: .65rem; }
-.places-facts div { display: grid; grid-template-columns: minmax(6rem, .4fr) minmax(0, 1fr); gap: .75rem; }
-.places-facts dt { color: var(--mcr-muted); }
+.places-list li { display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 6px; padding-block: 10px; border-bottom: 1px solid #a99b83; }
+.places-list li:last-child { border-bottom: 0; }
+.places-list li > div > p { font-size: 13px; color: #514637; line-height: 1.4; }
+.places-list .places-actions { margin-top: 5px; }
+.places-list .places-link { background: #921f28; color: #fff6e7; border: 2px solid #34201b; text-decoration: none; padding: 8px; }
+.places-number { font-variant-numeric: tabular-nums; font-weight: 750; color: #514637; font-size: 13px; }
+.places-facts { display: grid; gap: 8px; margin: 8px 0; padding-block: 10px; border-block: 1px solid #a99b83; font-size: 14px; }
+.places-facts div { display: grid; grid-template-columns: minmax(6rem,.4fr) minmax(0,1fr); gap: 10px; }
+.places-facts dt { color: #514637; }
 .places-facts dd { margin: 0; }
-.places-status { font-weight: 650; }
-@media (max-width: 380px) { .places-facts div { grid-template-columns: 1fr; gap: .1rem; } }
+.places-detail .places-intro { padding-bottom: 8px; border-bottom: 1px solid #a99b83; }
+.places-view :is(a, button, input, summary):focus-visible { outline: 3px solid #921f28; outline-offset: 3px; }
+@media (max-width: 380px) { .places-facts div { grid-template-columns: 1fr; gap: 2px; } }
+@media (prefers-reduced-motion: reduce) { .places-view, .places-view * { animation: none; transition: none; scroll-behavior: auto; } }
+.places-illustrated[hidden] { display: none; }
+.places-overview-image { position: relative; border: 2px solid var(--concert-ink, #211b1b); background: #eee5d3; }
+.places-overview-image img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.places-map-marker { position: absolute; transform: translate(-50%, -50%); width: 44px; height: 44px; padding: 0; border: 2px solid #211b1b; border-radius: 50%; background: #f7eed9; color: #241d1c; font: 800 16px/1 system-ui, sans-serif; cursor: pointer; }
+.places-map-marker:disabled { background: #ddd5c4; color: #59514a; cursor: default; }
+.places-map-marker:focus-visible { outline: 3px solid #a02431; outline-offset: 3px; }

@@ -1,0 +1,61 @@
+{
+  "base": "f5af234c09fc75d9a91ba26e1c2a3766fc90f1f4",
+  "source_author": "61136cdc10a82a74bd0288a5f0b443a9cf2c4696",
+  "final_owner": "4b5ce76c2f89da44189a2c3bd96b87f9fa6b288e",
+  "independent_qa": "981b399a3d089c2bbc6699d6eafea34013115171",
+  "integrated_commits": [
+    "fc19e47",
+    "7b1c729",
+    "9589eef",
+    "46bccb4",
+    "a42d897",
+    "49702d6"
+  ],
+  "paths": [
+    "docs/mcr/frontend/social-sharing.md",
+    "frontend/src/features/social-sharing/__tests__/browser-smoke.mjs",
+    "frontend/src/features/social-sharing/__tests__/controller.test.ts",
+    "frontend/src/features/social-sharing/__tests__/evidence/browser-report.json",
+    "frontend/src/features/social-sharing/__tests__/evidence/sharing-360.png",
+    "frontend/src/features/social-sharing/__tests__/evidence/sharing-390.png",
+    "frontend/src/features/social-sharing/__tests__/evidence/sharing-430.png",
+    "frontend/src/features/social-sharing/__tests__/fixtures/data.ts",
+    "frontend/src/features/social-sharing/__tests__/fixtures/preview.html",
+    "frontend/src/features/social-sharing/__tests__/fixtures/preview.tsx",
+    "frontend/src/features/social-sharing/__tests__/ui.test.tsx",
+    "frontend/src/features/social-sharing/index.ts",
+    "frontend/src/features/social-sharing/model/contract.ts",
+    "frontend/src/features/social-sharing/model/controller.ts",
+    "frontend/src/features/social-sharing/model/runtime.ts",
+    "frontend/src/features/social-sharing/ui/SocialSharing.tsx",
+    "frontend/src/features/social-sharing/ui/sharing.css",
+    "docs/mcr/reviews/fe31-receipt-privacy.md"
+  ],
+  "exact_author_bytes": true,
+  "no_backend_imports": true,
+  "fresh_combined_check": {
+    "command": "node frontend/node_modules/vitest/vitest.mjs run --root frontend src/features/social-sharing/__tests__/controller.test.ts src/features/social-sharing/__tests__/ui.test.tsx",
+    "exit_code": 0,
+    "passed": 75,
+    "files": 2
+  },
+  "qa_probes": {
+    "unchanged": true,
+    "passed": 9,
+    "attribution": "independent QA 981b399, not rerun by integrator"
+  },
+  "limits": [
+    "root composition is not included",
+    "real gateway/DB/multiuser/device/QA04/IN03 not qualified by this client handoff"
+  ],
+  "combined_strict_types": {
+    "command": "node frontend/node_modules/typescript/bin/tsc -b frontend --pretty false",
+    "exit_code": 0,
+    "initial_failure": "Pre-existing closure START parity test expected CloseEvent.required/additionalProperties after the closure union contract changed.",
+    "correction_author": "45d44fce8c2a9ad346adc01e4d73c1717ddbac90",
+    "correction_integrated": "3f7be97",
+    "correction_path": "frontend/src/features/admin/mural/__tests__/contract.test.ts",
+    "retained_contract_tests": 3,
+    "retained_contract_exit_code": 0
+  }
+}

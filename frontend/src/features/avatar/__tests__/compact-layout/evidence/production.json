@@ -1,0 +1,28 @@
+{
+  "result": "PASS",
+  "base": "215da400385c400f059913c826105ca4ec5f134b",
+  "syntheticEntryOnly": true,
+  "output": "/private/tmp/mcr-fe13-compact-production-ZxptFW",
+  "hashes": {
+    "src/features/avatar/AvatarEditor.tsx": "1b56b4bd23205ad08d661c52785b6953f67e66e59d34df8444c40109c7c3524c",
+    "src/features/avatar/OptionStrip.tsx": "5bc07a3101696ad4bf1a5ceb34aa57a2ba1a28dab9a14ac0918679bb3e7942f4",
+    "src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "src/features/avatar/avatar-editor.css": "1eb7684c1a923ed7d1ce3387713a67f190a5e8e27015e8d25a6f7df97eec00c9",
+    "src/features/avatar/__tests__/compact-layout/preview.tsx": "a79e896b317df6d8e5841f9b21dd6cf8b339f7c86623f2bee9cf0e198732e3fd",
+    "src/features/avatar/__tests__/option-previews/data.ts": "1f51fdb7f1289cafd6da116decf0f86c297c1f4aa2f567f3712888609b1256b2"
+  },
+  "bundles": [
+    {
+      "file": "assets/preview-BOoIJz2w.js",
+      "sha256": "492c722b8aa17bcdb1e1f3df6b63d7d0575082c2d80e700ec773df3ed28cdfaa"
+    },
+    {
+      "file": "assets/preview-BK88Dqdx.css",
+      "sha256": "d06fb330937c6467866b9c9ce2b251c6b5c0d538745007e6b452cabb88e3fbe1"
+    },
+    {
+      "file": "src/features/avatar/__tests__/compact-layout/preview.html",
+      "sha256": "688e28fd7db6994ed24746b8d110e900e066fbf4d3624bdef0fef571331f18ea"
+    }
+  ]
+}

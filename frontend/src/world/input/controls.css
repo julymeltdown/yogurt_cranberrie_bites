@@ -1,10 +1,29 @@
-.world-controls{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;color:inherit;font:inherit;padding:12px 0;max-width:100%}
-.world-controls button,.world-controls select{font:inherit;color:inherit;background:var(--world-control-bg,#fffaf0);border:1px solid currentColor;border-radius:4px;min-width:44px;min-height:44px;padding:8px 10px}
-.world-controls :focus-visible,canvas.world-keyboard:focus-visible{outline:3px solid #873342;outline-offset:3px}
-.world-controls .world-joystick{width:104px;height:104px;border-radius:50%;touch-action:none;position:relative;padding:0;overflow:hidden;background:#e5dfd2}
-.world-joystick span{display:block;position:absolute;width:36px;height:36px;border:1px solid currentColor;border-radius:50%;background:#fffaf0;left:33px;top:33px;pointer-events:none;transform:translate(var(--stick-x,0px),var(--stick-y,0px))}
-.world-controls .world-actions{display:flex;gap:8px;flex-wrap:wrap;min-width:0;align-items:center}
-.world-controls label{display:grid;gap:4px;min-width:0;flex-basis:100%}
-.world-controls select{width:100%;max-width:100%}.world-controls p{grid-column:1/-1;margin:0;overflow-wrap:anywhere}.world-controls button:disabled{opacity:.6}
+/* Owned input overlay. The composition owner anchors .world-controls-host to the scene. */
+.world-controls-host{position:absolute;inset:0;pointer-events:none;z-index:1;min-width:0}
+.world-controls{position:absolute;inset:8px;container-type:size;pointer-events:none;color:#211d19;font:600 13px/1.25 ui-monospace,monospace;min-width:0}
+.world-controls button,.world-controls select,.world-controls summary{box-sizing:border-box;font:inherit;color:inherit;background:var(--world-control-bg,#f3ead8);border:2px solid #29221e;border-radius:2px;min-width:44px;min-height:44px;padding:6px 8px;pointer-events:auto}
+.world-controls :focus-visible,canvas.world-keyboard:focus-visible{outline:3px solid #b32532;outline-offset:2px}
+.world-controls .world-controls-primary{position:absolute;inset:auto 0 0;display:flex;justify-content:space-between;align-items:end;gap:8px;pointer-events:none}
+.world-controls .world-joystick{flex:none;width:64px;height:64px;border-radius:50%;touch-action:none;position:relative;padding:0;overflow:hidden;background:#eee5d5e8}
+.world-controls .world-joystick span{display:block;position:absolute;width:26px;height:26px;box-sizing:border-box;border:2px solid #29221e;border-radius:50%;background:#bcae93;left:17px;top:17px;pointer-events:none;transform:translate(var(--stick-x,0px),var(--stick-y,0px))}
+.world-controls .world-actions{display:flex;align-items:end;gap:6px;min-width:0;max-width:calc(100% - 72px)}
+.world-controls .world-actions button{overflow-wrap:anywhere;max-width:100%}
+.world-controls .world-recenter{flex:none;width:44px;height:44px;padding:0;font-size:28px}
+.world-controls .world-interact{max-width:160px;text-align:start}
+.world-controls .world-controls-help{position:absolute;inset:0 0 auto auto;max-width:min(276px,100%);pointer-events:none}
+.world-controls summary{position:relative;display:block;margin-inline-start:auto;width:44px;height:44px;cursor:pointer;font-size:0;text-align:center;list-style:none}
+.world-controls summary::marker{content:''}
+.world-controls summary::-webkit-details-marker{display:none}
+.world-controls summary::after{content:'?';font:bold 23px/28px ui-monospace,monospace}
+.world-controls details[open] summary::after{content:'×'}
+.world-controls .world-control-details{display:grid;gap:8px;max-height:max(44px,min(300px,calc(100cqh - 124px)));overflow:auto;overscroll-behavior:contain;padding:8px;background:#f3ead8;border:2px solid #29221e;margin-top:4px;scroll-padding:8px;pointer-events:auto}
+.world-controls label{display:grid;gap:4px;min-width:0}
+.world-controls .world-control-zoom{display:flex;gap:8px;flex-wrap:wrap}
+.world-controls select{width:100%;max-width:100%}
+.world-controls p{margin:0;overflow-wrap:anywhere}
+.world-controls button:disabled{opacity:.65}
+.world-controls .world-control-status[data-prominent="true"]{position:absolute;inset:0 52px auto 0;padding:6px;background:#f3ead8;border:2px solid #29221e;pointer-events:auto}
+.world-controls .world-control-sr,.world-controls .world-control-status:not([data-prominent="true"]){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 canvas.world-keyboard{touch-action:none}
-@media(max-width:380px){.world-controls{gap:8px}.world-controls .world-joystick{width:96px;height:96px}.world-joystick span{left:29px;top:29px}}
+@media(max-height:550px){.world-controls{inset:4px}.world-controls .world-control-details{max-height:max(44px,min(110px,calc(100cqh - 112px)))}.world-controls .world-joystick{width:56px;height:56px}.world-controls .world-joystick span{left:13px;top:13px}.world-controls .world-interact{max-width:150px}}
+@media(forced-colors:active){.world-controls button,.world-controls summary,.world-controls select,.world-controls .world-control-details{background:Canvas;color:CanvasText;border-color:CanvasText}}

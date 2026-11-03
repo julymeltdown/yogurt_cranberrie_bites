@@ -10,7 +10,7 @@ await mkdir(out,{recursive:true})
 const server=await createServer({root:resolve(root,'frontend'),logLevel:'error',server:{host:'127.0.0.1',port:5197,strictPort:true}})
 const report={scope:'FE22 isolated UI with deterministic C04 fetch fixtures through canonical Auth/privacy. No real backend/world/multiuser/device acceptance.',result:'FAIL',widths:[],checks:[]}
 report.base=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim()
-report.sourceHashes=Object.fromEntries(await Promise.all(['model/controller.ts','model/contract.ts','ui/PartyAuthoring.tsx','ui/authoring.css','__tests__/fixtures/preview.tsx','__tests__/fixtures/harness.ts'].map(async p=>[p,createHash('sha256').update(await readFile(resolve(import.meta.dirname,'..',p))).digest('hex')])))
+report.sourceHashes=Object.fromEntries(await Promise.all(['model/time.ts','model/controller.ts','model/contract.ts','ui/PartyAuthoring.tsx','ui/authoring.css','__tests__/fixtures/preview.tsx','__tests__/fixtures/harness.ts'].map(async p=>[p,createHash('sha256').update(await readFile(resolve(import.meta.dirname,'..',p))).digest('hex')])))
 let browser
 try { await server.listen();browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});report.browser=browser.version()
 for(const width of [360,390,430,1280]){
@@ -20,8 +20,8 @@ for(const width of [360,390,430,1280]){
  await create.click();await expect(page.getByRole('alert').first()).toBeVisible();assert.equal(await page.evaluate(()=>window.__FE22__.requests().length),0)
  await page.getByRole('textbox',{name:'Party title',exact:true}).fill('Encore friends')
  await page.getByRole('spinbutton',{name:'Capacity',exact:true}).fill('5')
- await page.getByRole('textbox',{name:'Start time (UTC)',exact:true}).fill('2026-11-07T08:00:00Z')
- await page.getByRole('textbox',{name:'End time (UTC)',exact:true}).fill('2026-11-07T09:00:00Z')
+ await page.getByLabel('Start time (KST)',{exact:true}).fill('2026-11-07T17:00')
+ await page.getByLabel('End time (KST)',{exact:true}).fill('2026-11-07T18:00')
  await page.locator('#party-place').selectOption('00000000-0000-4000-8000-000000000030')
  await page.getByRole('button',{name:'Save session draft'}).click();await page.getByRole('textbox',{name:'Party title',exact:true}).fill('Changed')
  await page.getByRole('button',{name:'Restore draft'}).click();await expect(page.getByRole('textbox',{name:'Party title',exact:true})).toHaveValue('Encore friends')

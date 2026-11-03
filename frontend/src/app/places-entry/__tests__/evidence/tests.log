@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-places-entry/frontend
+
+
+ Test Files  6 passed (6)
+      Tests  150 passed (150)
+   Start at  03:46:29
+   Duration  2.24s (transform 1.13s, setup 0ms, import 1.41s, tests 5.43s, environment 1.30s)
+

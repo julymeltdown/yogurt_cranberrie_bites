@@ -1,15 +1,106 @@
 # AR03 selected-source runtime preparation
 
-Status: **IN_PROGRESS**. This checkpoint delivers a runnable source-registration
-review fixture and the rejected extraction evidence. It delivers no approved
-transparent PNG, C06 atlas, inventory entry or production fallback.
+Status: **IN_PROGRESS**. The current checkpoint delivers six selected-source
+transparent front-idle figures, a shared static atlas, a runnable art fixture,
+and source/pixel/network evidence. C06 composition, layer choices and animation
+remain unfinished. Earlier source-only checkpoints below are historical.
 
-Source base: `f0e44bd1bba943b02319f9d9a42433e253e8de6f` on
+Original assignment base: `f0e44bd1bba943b02319f9d9a42433e253e8de6f` on
 `codex/mcr-art-runtime`. Selected authority: `mcr_user_characters_20261103`,
 revision 3. The original twenty selected JPEG hashes and byte lengths were
 verified unchanged by the report below. `docs/source/` and the source catalog
 are unchanged. All review rendering and tooling here is newly authored; no
 upstream implementation or visual library was copied.
+
+## Current six-character static release
+
+The human's source-faithful reconstruction instruction, relayed by Main on
+2026-11-04, authorizes deterministic provided-pixel cuts and background masks.
+The earlier method-authorization blocker is resolved. The recorded goal still
+shows its historical BLOCKED state; available goal tools cannot resume it.
+Required unfinished work has not been falsely marked complete.
+
+This patch starts at `37e0e0369443c3365c94d8dcaef99eaec06a4038` and introduces
+only assigned art assets, preparation tools and evidence. All twenty original
+files still match source-pack revision 3 hashes and lengths. The source photo
+is `photo_01`, SHA-256
+`67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311`.
+All six complete designs retain their source-baked skin, face, hair and clothes.
+
+The public `world/avatars/derived-v1/static-release.json` follows
+`mcr-selected-static-v1`: pack/revision, `front_idle_only`, review attribution,
+one atlas and six explicit frames. Its IDs `photo01-front-01` through
+`photo01-front-06` identify public static illustrations, never backend inventory
+or saved `AvatarConfig` items. It does not change the C06 contract. Frontend
+consumer ownership is separate; the frontend owner's filename compatibility
+finding was fixed before handoff by using a hyphen before each content hash.
+
+| Resource | Dimensions | Bytes | Role |
+|---|---|---|---|
+| `static-release.json` | Six frame records | 1,898 | Default metadata |
+| `photo01-front-idle-64-e124c88815b22220.png` | 384×64 RGBA | 36,030 | One default texture, six 64×64 cells |
+| `photo01-front-idle-256-6258b9f9ee51aed7.png` | 1536×256 RGBA | 368,812 | Optional separate high-resolution texture; not fetched by the default fixture |
+| Six `photo01-row*_col*-<hash>.png` cutouts | Native source crops | Per-file lengths/hashes in provenance | Source fidelity and future preparation; not fetched by default |
+
+Default atlas SHA-256:
+`e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe`.
+The [package provenance](../../../frontend/src/entities/avatar/derived-assets/static-package.json)
+and [extraction evidence](evidence/static-extraction.json) record every source
+rectangle, crop origin, native foot, registration transform and derivative hash.
+Initial art payload is 37,928 bytes before HTTP overhead/compression. No source
+JPEG, native crop or high-resolution atlas is needed by that default fixture.
+
+`mask-presets.mjs` removes only exterior-connected near-neutral pixels with
+minimum RGB 118 and channel spread at most 18, then discards detached JPEG
+ringing. Native alpha is binary and retained RGB is unchanged. Uniform nearest
+sampling registers a foot at `(32,60)` in each cell; transparent padding is
+explicit. An initial wider color tolerance lost pale hair and was rejected
+before this release. Its obsolete trial outputs are excluded from delivery.
+No redraw, tinting, stretching or synthetic missing frames are used.
+
+Independent decoding of the actual exported PNGs verifies zero retained RGB
+mismatches, zero lost dark-outline pixels, intact protected eye/collar/pale-hair
+regions and exact nearest-sample atlas registration for all six characters.
+A first overly broad white-pixel assertion also counted bright exterior JPEG
+ringing. The [validation report](evidence/static-validation.json) records those
+92 removed exterior light samples separately and checks reviewed interior
+feature regions, rather than claiming every bright background pixel is art.
+Retained original light-pixel counts are 538/389/194/286/251/130. A fine beige
+JPEG fringe remains visible at native resolution on dark backgrounds; source
+RGB fidelity is preserved rather than silently repainting that fringe.
+
+The [native light](evidence/static-native-light.png),
+[native dark](evidence/static-native-dark.png), native checker and 390px light,
+dark and checker screenshots were visually inspected. All six identities,
+pale hair, eyes, collars, ornaments and complete figures are present. The art
+fixture shows 64px/72px/192px versions and the common foot marker. Browser
+checks at 360/390/430px pass: 18 sprite views, no overflow/page errors, one
+descriptor and one atlas request across four surfaces and repeated display
+changes. The loopback fixture server gives hashed textures immutable one-year
+caching and verifies ETag revalidation with HTTP 304. These are isolated art
+fixture results; deployment cache policy and application integration are owned
+and validated separately.
+
+Reproduce with Node 24.22.2 and the existing installed Playwright dependency:
+
+```sh
+MCR_ART_REVIEWED_AT=2026-11-03T22:38:33Z \
+MCR_ART_PLAYWRIGHT=/absolute/installed/frontend/node_modules/@playwright/test/index.mjs \
+  node frontend/src/entities/avatar/derived-assets/build-presets.mjs
+MCR_ART_PLAYWRIGHT=/absolute/installed/frontend/node_modules/@playwright/test/index.mjs \
+  node frontend/src/entities/avatar/derived-assets/verify-static.mjs
+node frontend/src/entities/avatar/derived-assets/serve.mjs
+# http://127.0.0.1:4193/src/entities/avatar/derived-assets/static-review.html
+```
+
+The build and independent verification commands exited 0 with Chrome
+156.0.8078.80. Scoped Oxlint on the owned `.mjs` files, `git diff --check`, and
+`python3 scripts/mcr/check-plan.py` also exited 0; the last command verifies
+planning/source-archive integrity only. No new dependencies, renderer imports, manifest/schema changes,
+private API calls or original-image modifications are introduced. Five-layer
+composition, selectable skin, four directions/four walking frames, actual
+world/profile parity, real mobile devices and multiuser acceptance remain
+**NOT_RUN**. AR03 is not accepted by this static release.
 
 ## Delivered review geometry
 
@@ -57,12 +148,10 @@ alpha reaches x=0 and y=1239. Those counts are measurements of this rejected
 candidate, not acceptable edge registration. Recoloring or making every white
 pixel transparent would lose intentional highlights/collars and is prohibited.
 
-The assignment requires imagegen for image edits unless the human explicitly
-permits another method. A question requesting deterministic source-pixel
-extraction was sent to the human. No such exception has been received at this
-checkpoint. The actionable next asset step is a source-color-preserving mask
-and aligned transparent cutout after that method is authorized; further
-generative redraws do not establish exact extraction fidelity.
+At the historical source-only checkpoint, deterministic extraction awaited a
+human exception to the imagegen editing default. That exception has now been
+received and the six cutouts above supersede this blocker. The rejected redraw
+remains evidence only and never enters product assets.
 
 ## FE12 coordination and composition constraints
 
@@ -216,9 +305,10 @@ and existing `/Users/lhs/Desktop/mcr/frontend/node_modules/@playwright/test/inde
 | `python3 scripts/mcr/check-plan.py` | 0, PASS; planning/source archive checks only | No implementation acceptance inferred |
 | `git diff --check` | 0 | No whitespace errors |
 
-Application-wide build/lint, C06 production composition, transparent-edge acceptance,
+Application-wide build/lint, C06 production composition,
 real devices, load, multiuser integration and AR03 acceptance: **NOT_RUN**.
 No backend imports or external network dependencies are added. Exact changed
 paths and commit ancestry are sent directly to delivery after committing; only
-delivery publishes master. The unbudgeted asset goal remains active because
-transparent derivation, animation and production compatibility are unfinished.
+delivery publishes master. The unbudgeted asset objective remains unfinished
+because layer derivation, animation and production compatibility are unfinished;
+the historical recorded goal status is explained in the current checkpoint.

@@ -1,0 +1,83 @@
+{
+  "status": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "base": "e6fef53d9f0841b3e16ce3baa4db01a834043957",
+  "candidateParent": "08bbfb175c387628dc9b498ee27eaf9305af6b1f",
+  "results": [
+    {
+      "width": 360,
+      "discoveryNoXAndPrivateProjection": "PASS",
+      "searchAndProfileNavigation": "PASS",
+      "deniedDirectIdListConsistency": "PASS",
+      "sharedProductionEntryRejectsUnreviewedArt": "PASS",
+      "draftNavigationAndReadOnly": "PASS",
+      "uncertainReceiptResourceReadNoReplay": "PASS",
+      "publishAndSafetyClose": "PASS",
+      "unknownProviderNoSelfDeclaration": "PASS",
+      "privacyCleanup": "PASS",
+      "keyboardTouchAndClipping": "PASS"
+    },
+    {
+      "width": 390,
+      "discoveryNoXAndPrivateProjection": "PASS",
+      "searchAndProfileNavigation": "PASS",
+      "deniedDirectIdListConsistency": "PASS",
+      "sharedProductionEntryRejectsUnreviewedArt": "PASS",
+      "draftNavigationAndReadOnly": "PASS",
+      "uncertainReceiptResourceReadNoReplay": "PASS",
+      "publishAndSafetyClose": "PASS",
+      "unknownProviderNoSelfDeclaration": "PASS",
+      "privacyCleanup": "PASS",
+      "keyboardTouchAndClipping": "PASS"
+    },
+    {
+      "width": 430,
+      "discoveryNoXAndPrivateProjection": "PASS",
+      "searchAndProfileNavigation": "PASS",
+      "deniedDirectIdListConsistency": "PASS",
+      "sharedProductionEntryRejectsUnreviewedArt": "PASS",
+      "draftNavigationAndReadOnly": "PASS",
+      "uncertainReceiptResourceReadNoReplay": "PASS",
+      "publishAndSafetyClose": "PASS",
+      "unknownProviderNoSelfDeclaration": "PASS",
+      "privacyCleanup": "PASS",
+      "keyboardTouchAndClipping": "PASS"
+    }
+  ],
+  "pageErrors": [],
+  "protectedRequests": 33,
+  "mutationCount": 9,
+  "sourceHashes": {
+    "src/features/age-status/AgeStatus.tsx": "2558f9112374456d15b746d637d33ef82cc414a6fecbfd6215c2248b832ed684",
+    "src/features/age-status/__tests__/age.test.ts": "034c55bacc92740cf24d34da26902e77078e471075c38e59db621982464ce420",
+    "src/features/age-status/controller.ts": "51d0e2c32eb17899698c7ae128a2cb8d38199f475fcf7e82bd20190c28157633",
+    "src/features/age-status/index.ts": "1853d6a5db47d0818935e8f5b8e034ad94986a9ea9f8e77e05efb53b4cbdf6af",
+    "src/features/intro/IntroEditor.tsx": "190a55986e4b1126f3855325c17230507ceec6843fd0e51aa05c54e71acb3ad1",
+    "src/features/intro/__tests__/intro.test.ts": "d105c8cf1a38d526f65ac0e5a7e32a19685c1a7c9d284dbeb9be6ce7d45cb216",
+    "src/features/intro/command.ts": "b42bfef71779e743f1909dcb3fb16542d5b85d5c1668b362097d29552f7ab99c",
+    "src/features/intro/contract.ts": "d21fd785818cf65604ed9e47a44222460a3c70475b603d32f97e499bab0d4299",
+    "src/features/intro/controller.ts": "a5a8bcebdf915b51130161d9362ce1c068c3d858029143501603fdc74787f6cd",
+    "src/features/intro/index.ts": "b292dcf1fa9ebdc348d151c4b1e50b6dbb1d4e8520ae80cc52a034667e884434",
+    "src/features/people/People.tsx": "bd131f09d1792b4c0b869d22700c415f79fbdbe6937362b51f2084991e28c74c",
+    "src/features/people/__tests__/browser-smoke.mjs": "cc620c661e3d4f0429878547af77f4d6d5f59a32c8f5b39a92275a751bb07076",
+    "src/features/people/__tests__/fixtures/harness.ts": "99b8d351a0025e9f25629a01094d59b6b7ced06e92f0bb39fca054603951bcf3",
+    "src/features/people/__tests__/fixtures/preview.html": "a1eab5e879826e8d5f4ca4ea8c7633182a51b01f54b2b71071474cea4dcc57e8",
+    "src/features/people/__tests__/fixtures/preview.tsx": "4a018ff7d8c7c8b509f7f6710ef597c64b6eed1583bf09b1e9a5a4cc7a89533b",
+    "src/features/people/__tests__/people.test.ts": "80beea618ede6d0e6f8414eb9d2b04e4f927d8ab58f032611e57f0e2490f6fa6",
+    "src/features/people/__tests__/ui.test.tsx": "3948e8a99c67e3e99ecb6f6e63ca2b3bcc195fd677fb6ee7c0d09b0f098e9ce2",
+    "src/features/people/contract.ts": "cbd09f66f41f02b33a3e10408400bba78c2b39de54e24ff5ecdebb38ade5bdb3",
+    "src/features/people/controller.ts": "0dcf1a7626a0c097319be8ac9f2f104b91b7f15f55a9e3cf7fe233470d3443be",
+    "src/features/people/index.ts": "8038915036f86b7ce087ccd86c9e8d4f1e0d6bf8d6e4ba8e302780a2c7b443bf",
+    "src/features/people/people.css": "939c17cfae06880839f0b0133b1cdd0a16af4b74316dbfbc9c211edb46b3f7c8",
+    "src/features/people/runtime.ts": "fb415aac362022a6c1e4c49734fb610f9f01d6ca3d79aa9da75128a906aa9ef3",
+    "src/features/profile/Avatar.tsx": "021551ceae705f680a7b4e99515b9d18cae511eb8f7af5c193656ccbe8b124e4",
+    "src/features/profile/PublicProfile.tsx": "0a7419b97c12ce0ebc6363b978212ca028a01321352abe92e9dbb210806aac5e",
+    "src/features/profile/index.ts": "7dbf0d6236d3bdb7458c817b949bada352611c55b2a00e596c9a7a86551ef83a"
+  },
+  "limits": [
+    "Test-only HTTP fixtures with canonical Auth/shared transport; real backend and persistence NOT_RUN.",
+    "C06 synthetic metadata is deliberately rejected by shared production compositor. No product artwork rendered or approved.",
+    "Root routes/access/bootstrap/provider callback composition, two-account IN03, physical iOS/Android and production verification NOT_RUN."
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "result": "PASS",
+  "scope": "FE40/X01 MOCK_READY: deterministic registered public HTTP fixtures, mobile touch contexts in native desktop Chrome. BE41/live archive, qualified public media and physical iOS/Android NOT_RUN.",
+  "assignmentBase": "cd7192febf9c2764169b55d63a70d7e00d13fd08",
+  "testedHead": "cd7192febf9c2764169b55d63a70d7e00d13fd08",
+  "browser": "156.0.8078.80",
+  "configurations": [
+    {
+      "width": 360,
+      "height": 844,
+      "isMobile": true,
+      "hasTouch": true,
+      "reducedMotion": "reduce",
+      "result": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "isMobile": true,
+      "hasTouch": true,
+      "reducedMotion": "reduce",
+      "result": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "isMobile": true,
+      "hasTouch": true,
+      "reducedMotion": "reduce",
+      "result": "PASS"
+    }
+  ],
+  "checks": [
+    "native Chrome mobile touch360/390/430 and keyboard pagination",
+    "decoded Blob image and exact frozen canvas pixel samples",
+    "all requests are registered archive GET,omit credentials,no-store,no auth,zero mutations",
+    "no horizontal overflow; enabled controls>=44px; no live-feed links/forms/write inputs",
+    "one-page pagination and focus; previous/deleted posts disappear",
+    "account/event/invalidation remove post/image/canvas data",
+    "strict private/deleted projection is rejected and never rendered/retained",
+    "unavailable/empty/offline and missing public image states",
+    "no browser exceptions"
+  ],
+  "screenshots": [
+    {
+      "file": "360-ready.png",
+      "width": 360,
+      "state": "ready",
+      "sha256": "30413c60e5ee94fb22dcdcac6360418f40236ab7f565cfbc22022e4672b4f71e"
+    },
+    {
+      "file": "360-next-page.png",
+      "width": 360,
+      "state": "next-page",
+      "sha256": "79d0b0c70fed22610a76ea809714059885c65ef6868f3de2f50cc4d501fa0cfe"
+    },
+    {
+      "file": "360-unavailable.png",
+      "width": 360,
+      "state": "unavailable",
+      "sha256": "06decff2786ded435cbf6da0771a5db6135d4d36ec87fee87a7e95618ed7719f"
+    },
+    {
+      "file": "360-empty.png",
+      "width": 360,
+      "state": "empty",
+      "sha256": "4f48bf57c79a765debd35cecc964570221fd142d3545d5d3983974285ece025b"
+    },
+    {
+      "file": "360-offline.png",
+      "width": 360,
+      "state": "offline",
+      "sha256": "d71bf76917192735b889c28d455a69638173b4189257fd628a187225b4a2d163"
+    },
+    {
+      "file": "390-ready.png",
+      "width": 390,
+      "state": "ready",
+      "sha256": "465afec3c4d825cdce886b3cfbe8c573636da0e562a5538130e34a76e647151f"
+    },
+    {
+      "file": "390-next-page.png",
+      "width": 390,
+      "state": "next-page",
+      "sha256": "10b69f9cb809fffde1e85e4879b8549ecca35f8a83f17dde669d00f79d79d11d"
+    },
+    {
+      "file": "390-unavailable.png",
+      "width": 390,
+      "state": "unavailable",
+      "sha256": "697d497064e2883bc283058f7ef2d739781f623e69f77d4cd5b9c05452f9bf88"
+    },
+    {
+      "file": "390-empty.png",
+      "width": 390,
+      "state": "empty",
+      "sha256": "c76307377c77eaaebf74b18635a1578efd39b59cdac2c8e27e8ca687760cf56d"
+    },
+    {
+      "file": "390-offline.png",
+      "width": 390,
+      "state": "offline",
+      "sha256": "308491b32d703a189e47293d5260f1ab7c4f9196521987500cc2d4b8385a1bb4"
+    },
+    {
+      "file": "430-ready.png",
+      "width": 430,
+      "state": "ready",
+      "sha256": "962849c74c0a1f511176e8364120a6fb6c4e2aa4c45ce82bf4fd4e700d6c0060"
+    },
+    {
+      "file": "430-next-page.png",
+      "width": 430,
+      "state": "next-page",
+      "sha256": "9917aeb00f9ed4b4ce844506302bdd79d69c3b60132e4c67267d7e0bfddaf659"
+    },
+    {
+      "file": "430-unavailable.png",
+      "width": 430,
+      "state": "unavailable",
+      "sha256": "298072575731525a9c01c8a0726043f5c7da77e475834c5836712b0d26063847"
+    },
+    {
+      "file": "430-empty.png",
+      "width": 430,
+      "state": "empty",
+      "sha256": "23e9b7358430caa42cdc7bd1ecd4a0a79ce960d3c231a910846f8eb87deb84e7"
+    },
+    {
+      "file": "430-offline.png",
+      "width": 430,
+      "state": "offline",
+      "sha256": "242fa565b00095c32c2a5a3d6d5bc2e88c014600bf1494cfc7de60bfac509d0a"
+    }
+  ],
+  "sourceHashes": {
+    "contracts/domain/v1/admin.schema.json": "b8a4f8b91440d561bbcf23dc68bc196919a8893cf744ca09ac05ecaabff72cb8",
+    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
+    "contracts/domain/v1/operations.json": "411fcee8222db2f5a7938866ac37791033e85682f11d024ceb895c245c708500",
+    "contracts/generated/mcr-domain.openapi.json": "edd8f89cda100a3f031d6e9b47ff39b615136938faab59259c7351851e139f1b",
+    "frontend/src/features/archive/ArchivePage.tsx": "7b306f3b9b038171d3b5f6eeefa8ee985b2c7eb249c5a9285195b4524c2d6ef9",
+    "frontend/src/features/archive/__tests__/archive.test.ts": "28b6a1fa840c22139a8ff56a21698ea1c3d5e6d121121593fa5a1a663be23a00",
+    "frontend/src/features/archive/__tests__/browser.mjs": "f060072046a909be2ad94b8153df1c3061fac749692783f423fce384753deda3",
+    "frontend/src/features/archive/__tests__/fixtures/data.ts": "8641d43911753c7cf68cd2e305db3394f1e2229ea307cd8cb7315dd570860ca6",
+    "frontend/src/features/archive/__tests__/fixtures/preview.html": "33a2e7a11e895f39b12bf36c3e02ccfaa1076da795bd58afd988cd8f154d3f25",
+    "frontend/src/features/archive/__tests__/fixtures/preview.tsx": "941e511ebcff01350a79cbedd97860e108a69a7293dd715008bb66b04dec052f",
+    "frontend/src/features/archive/archive.css": "1484e6d6eb65deb19a530691d17cf882b8e69ce9d0642713b5899260bca17acc",
+    "frontend/src/features/archive/context.ts": "17890bf4a56d086a416d8624798ff2272e4298c993fa2026c18665e64e0d7005",
+    "frontend/src/features/archive/contract.ts": "a9b1c5af279fe20cd99656ba0097be4c9879349e88fbd3d69ea32885a5bcd2d4",
+    "frontend/src/features/archive/controller.ts": "3ceacf8c227b1ed2b7ab11d8168c98e3590f4e14a779567649e7332d6528bd0b",
+    "frontend/src/features/archive/http.ts": "4d1dbab726c6379f26dda3bfc92561e4a9e3d22ff89cea4775897e7494e46262",
+    "frontend/src/features/archive/index.ts": "1644cdbe5135acfeeb7b6c50129a6f0922e421d064bdfaa4bc7aa5ee96fed7df",
+    "frontend/src/features/event-feed/contract.ts": "3752e9f21488cd149af6d4d4e5baa0c09f34502dd7366cad1d14491b574ba860"
+  }
+}

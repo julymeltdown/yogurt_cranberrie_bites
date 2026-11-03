@@ -1,0 +1,278 @@
+{
+  "kind": "ar04_theme_source_inputs",
+  "source_revision": "AR04-source-v1",
+  "contract_version": "1.0.0",
+  "release_binding_state": "NOT_RUN",
+  "shared_tile_layout": {
+    "tile_width_px": 32,
+    "tile_height_px": 32,
+    "width_px": 256,
+    "height_px": 128,
+    "columns": 8,
+    "rows": 4,
+    "margin": 0,
+    "spacing": 0,
+    "empty_gid": 0,
+    "tiles": [
+      {
+        "gid": 1,
+        "identity": "lawn",
+        "layer": "terrain"
+      },
+      {
+        "gid": 2,
+        "identity": "paving",
+        "layer": "terrain"
+      },
+      {
+        "gid": 3,
+        "identity": "alternate_paving",
+        "layer": "terrain"
+      },
+      {
+        "gid": 4,
+        "identity": "gravel",
+        "layer": "terrain"
+      },
+      {
+        "gid": 5,
+        "identity": "stage_deck",
+        "layer": "terrain"
+      },
+      {
+        "gid": 6,
+        "identity": "roof",
+        "layer": "terrain"
+      },
+      {
+        "gid": 7,
+        "identity": "wall",
+        "layer": "terrain"
+      },
+      {
+        "gid": 8,
+        "identity": "water",
+        "layer": "terrain"
+      },
+      {
+        "gid": 9,
+        "identity": "shrub_canopy",
+        "layer": "overdraw"
+      },
+      {
+        "gid": 10,
+        "identity": "flower",
+        "layer": "overdraw"
+      },
+      {
+        "gid": 11,
+        "identity": "banner",
+        "layer": "overdraw"
+      },
+      {
+        "gid": 12,
+        "identity": "truss",
+        "layer": "overdraw"
+      },
+      {
+        "gid": 13,
+        "identity": "sign",
+        "layer": "overdraw"
+      },
+      {
+        "gid": 14,
+        "identity": "lamp",
+        "layer": "overdraw"
+      }
+    ],
+    "reserved_gids": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+    ],
+    "collision": "Explicit map collision_grid only; never inferred from art or GID."
+  },
+  "required_integrator_pins": [
+    "map_id",
+    "map_revision",
+    "map_content_hash",
+    "geometry_hash",
+    "collision_id",
+    "place_ids",
+    "interaction_ids",
+    "avatar_manifest_id",
+    "avatar_manifest_version",
+    "avatar_content_hash",
+    "content_hash"
+  ],
+  "themes": [
+    {
+      "theme_id": "REVENGE",
+      "theme_revision": 1,
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/revenge.png",
+        "sha256": "sha256:245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "palette": {
+        "background": "#211F28",
+        "terrain": "#6A7C56",
+        "accent": "#BE435B"
+      },
+      "art_palette": {
+        "ink": "#211F28",
+        "metal": "#62616B",
+        "light": "#C6BFBA",
+        "paper": "#EFE2CD",
+        "accent": "#BE435B",
+        "bright": "#DF6A77",
+        "grass": "#6A7C56",
+        "grass2": "#7F8E60",
+        "grass3": "#536A49",
+        "pave": "#AFA394",
+        "pave2": "#C4B8A6",
+        "joint": "#8A827B",
+        "leaf": "#405D49",
+        "leaf2": "#587956",
+        "leaf3": "#849262",
+        "water": "#496779",
+        "water2": "#698392",
+        "roof": "#696271",
+        "roof2": "#8B7C87"
+      },
+      "editable_source": "world/themes/revenge.tsrct",
+      "editable_sha256": "sha256:dfbe31be32c2beda1f7695e141de09171ba882824ccd59099af113f86cb7e999",
+      "provenance": {
+        "source_id": "ar04_revenge_original_v1",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "AR04-source-v1; generator sha256:2dad63b7e9532957fca46d5e09c05e1518fc8bfa818a01391f74ca25cedfee40",
+        "source_uri": null,
+        "author": "Codex for julymeltdown/mcr",
+        "license": "Project-original Codex-authored artwork. No third-party asset pixels, fonts or imagery included; no external asset license dependency. No third-party rights certification implied.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "theme_id": "PARADE",
+      "theme_revision": 1,
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/parade.png",
+        "sha256": "sha256:3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "palette": {
+        "background": "#25272D",
+        "terrain": "#788475",
+        "accent": "#DFD4B4"
+      },
+      "art_palette": {
+        "ink": "#25272D",
+        "metal": "#747B83",
+        "light": "#C1C4BE",
+        "paper": "#F1E9D5",
+        "accent": "#DFD4B4",
+        "bright": "#FFF3CF",
+        "grass": "#788475",
+        "grass2": "#8E9880",
+        "grass3": "#637365",
+        "pave": "#B5B6AE",
+        "pave2": "#CBCCC1",
+        "joint": "#8D9690",
+        "leaf": "#4C665C",
+        "leaf2": "#6D8470",
+        "leaf3": "#9CA88B",
+        "water": "#5E7682",
+        "water2": "#8A9BA4",
+        "roof": "#646D78",
+        "roof2": "#92989A"
+      },
+      "editable_source": "world/themes/parade.tsrct",
+      "editable_sha256": "sha256:5786fce5561c1c82c1ca1294170826574136474bbcef6569db0a9155be7813e2",
+      "provenance": {
+        "source_id": "ar04_parade_original_v1",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "AR04-source-v1; generator sha256:2dad63b7e9532957fca46d5e09c05e1518fc8bfa818a01391f74ca25cedfee40",
+        "source_uri": null,
+        "author": "Codex for julymeltdown/mcr",
+        "license": "Project-original Codex-authored artwork. No third-party asset pixels, fonts or imagery included; no external asset license dependency. No third-party rights certification implied.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "theme_id": "DANGER",
+      "theme_revision": 1,
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/danger.png",
+        "sha256": "sha256:1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "palette": {
+        "background": "#223340",
+        "terrain": "#91A95B",
+        "accent": "#F6D447"
+      },
+      "art_palette": {
+        "ink": "#223340",
+        "metal": "#4E7382",
+        "light": "#A9CED0",
+        "paper": "#FFF4D2",
+        "accent": "#F6D447",
+        "bright": "#FF8A68",
+        "grass": "#91A95B",
+        "grass2": "#AABC68",
+        "grass3": "#708D50",
+        "pave": "#C6BBA1",
+        "pave2": "#DECFAD",
+        "joint": "#9F987F",
+        "leaf": "#46775B",
+        "leaf2": "#70A364",
+        "leaf3": "#A9C96E",
+        "water": "#337F93",
+        "water2": "#63B5C0",
+        "roof": "#4E8F9B",
+        "roof2": "#79B8BF"
+      },
+      "editable_source": "world/themes/danger.tsrct",
+      "editable_sha256": "sha256:79af8297ff93fe10d8c9711e2211f9b3efedeaf6c6d9e75ae26271ba8927252b",
+      "provenance": {
+        "source_id": "ar04_danger_original_v1",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "AR04-source-v1; generator sha256:2dad63b7e9532957fca46d5e09c05e1518fc8bfa818a01391f74ca25cedfee40",
+        "source_uri": null,
+        "author": "Codex for julymeltdown/mcr",
+        "license": "Project-original Codex-authored artwork. No third-party asset pixels, fonts or imagery included; no external asset license dependency. No third-party rights certification implied.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+/* Fixture-only page. Does not import or amend application base CSS. */
+html { background: #24201e; }
+body { margin: 0; }
+.preview {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: max(12px, env(safe-area-inset-top, 0px)) 10px max(16px, env(safe-area-inset-bottom, 0px));
+  color: #f1e7d4;
+  font: 14px/1.4 Arial, sans-serif;
+}
+.preview__label { font-size: 12px; font-weight: 800; letter-spacing: .09em; }
+.preview__intro { margin: 4px 0 10px; font-size: 12px; }
+.preview__tools { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.preview__tools select { min-width: 44px; min-height: 44px; padding: 6px; font: inherit; color: #221c18; background: #efe5d0; border: 1px solid #9a8468; }
+.preview__tools select:focus-visible { outline: 3px solid #e5bb71; outline-offset: 2px; }
+.preview > .concert-action { margin-bottom: 10px; }
+.preview .concert-navigation { margin-top: 10px; }
+.preview .concert-window__footer > .concert-action { width: 100%; }
+.preview .concert-window__footer p { margin: 10px 0 2px; font-size: 14px; }
+.preview__notes { margin-top: 22px; padding-bottom: 12px; }
+.preview__notes h2 { font-size: 18px; margin-bottom: 6px; }
+.preview__notes h3 { font-size: 15px; margin-bottom: 0; }
+.preview__notes p { margin-top: 3px; color: #d3c4aa; }
+.preview__notes section { scroll-margin-top: 12px; }

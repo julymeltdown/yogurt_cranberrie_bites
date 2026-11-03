@@ -1,0 +1,52 @@
+[
+  {
+    "landmark_id": "studio",
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000001",
+    "interaction_id": "studio_info",
+    "cell_x": 13,
+    "cell_y": 9,
+    "source_reference": "venue_diagram",
+    "qualification": "Broad diagram-relative position above park; original virtual footprint.",
+    "physical_candidate_alias": null
+  },
+  {
+    "landmark_id": "park",
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+    "interaction_id": "park_info",
+    "cell_x": 12,
+    "cell_y": 16,
+    "source_reference": "venue_overview",
+    "qualification": "Lawn character and broad relation only; no real paths or scale.",
+    "physical_candidate_alias": null
+  },
+  {
+    "landmark_id": "stage",
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+    "interaction_id": "stage_info",
+    "cell_x": 6,
+    "cell_y": 15,
+    "source_reference": "concept_reference",
+    "qualification": "Original activity landmark; no physical stage location asserted.",
+    "physical_candidate_alias": null
+  },
+  {
+    "landmark_id": "gifts",
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+    "interaction_id": "gifts_info",
+    "cell_x": 28,
+    "cell_y": 13,
+    "source_reference": "concept_reference",
+    "qualification": "Original virtual activity destination; not a pickup location.",
+    "physical_candidate_alias": null
+  },
+  {
+    "landmark_id": "wall",
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+    "interaction_id": "wall_info",
+    "cell_x": 28,
+    "cell_y": 22,
+    "source_reference": "concept_reference",
+    "qualification": "Original virtual mural destination; no physical wall claimed.",
+    "physical_candidate_alias": null
+  }
+]

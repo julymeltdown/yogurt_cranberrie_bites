@@ -2,6 +2,8 @@
 use super::*;
 use api_gateway::adapters::out::concert_client::{proto, BootstrapError, GrpcConcertClient};
 use uuid::Uuid;
+#[path = "concert_bootstrap_http.rs"]
+mod http_ingress;
 #[derive(Clone, Copy)]
 enum Reply {
     Valid,

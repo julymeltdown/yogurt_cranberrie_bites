@@ -1,0 +1,47 @@
+{
+  "result": "PASS",
+  "base": "45d44fce8c2a9ad346adc01e4d73c1717ddbac90",
+  "scope": "FE39 explicit RESUME_CLOSURE frontend through canonical HttpClient and authenticated deterministic C04 fixture. No live backend, original-actor server proof, real cleanup, IN04, physical-device or production-root acceptance.",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "sourceHashes": {
+    "frontend/src/features/admin/closure/EventClosure.tsx": "fd4b11be8c59a332c475ae03f1799891793bde147c8b4935257f4ee62e826cd1",
+    "frontend/src/features/admin/closure/contract.ts": "873d48455a60c75f9ed247d8095281584bf9233c44e56c347f6cf08ccaea9cdd",
+    "frontend/src/features/admin/closure/controller.ts": "e10eb54be82d7c0c6581cf4ef15cc02260f221b175c10fdc72662a90416136fb",
+    "frontend/src/features/admin/closure/http.ts": "6ab2abb003e2c80c1683c5cd7d81231dcbc3ccf3bcafd4ead5fb72fb63f467e9",
+    "frontend/src/features/admin/closure/index.ts": "9489ddd233e0225243946f252976a0c83d825cceceb42fa14208b30a39e5ec26",
+    "frontend/src/features/admin/mural/WallControl.tsx": "3219cec02fe7d2ca7985d3f9691cc9af35bb645076cfe5bbabcd00a108c59838",
+    "frontend/src/features/admin/mural/admin.css": "ebc05982ccebd55930450728fb00757e0368d026aea78b6eb553c3484c65849b",
+    "frontend/src/features/admin/mural/contract.ts": "996e1099335427ab5b515d89e4725675cf85b3cd782b5cad878610e353382917",
+    "frontend/src/features/admin/mural/controller.ts": "8c9be4341fb5d1d9f909c56328e5d020238cd04a69473b5540fdf2d97b5bd43b",
+    "frontend/src/features/admin/mural/http.ts": "cd87f2cbf3257f202008bba978181ae1b17eb3f6f51298c21eaa9699125fbfab",
+    "frontend/src/features/admin/mural/index.ts": "0d9d924f75f3ee3af88c4d603925f4b888ecfdf9d23e8f67d32f690f483b4c47",
+    "frontend/src/features/admin/mural/owner.ts": "7de653bbaf968f412b4bbfb96c51074e3bec04d0d13deb2e12ead7b1be13f045",
+    "frontend/src/features/admin/mural/transport.ts": "cdfd9e71c322ad495a0c54b59f825158c73c3874d33e9e2cf1443b4f542fc091",
+    "frontend/src/features/admin/closure/__tests__/resume/fixture.ts": "ce69b511bc399c35e0abe0acc9d24a58135c746cb4ed1f354447c93fb80be230",
+    "frontend/src/features/admin/closure/__tests__/resume/preview.tsx": "2e549859097263de06f67b1d8198d98f4cd253a08903fd29f87ac350135980ce",
+    "frontend/src/features/admin/closure/__tests__/resume/preview.css": "3867d04298b80c2c20d6c2c41d8bd3c50bc87373e05d30e21a7050a946c91b70",
+    "frontend/src/features/admin/closure/__tests__/resume/preview.html": "842d69f1661bc5b1bfa1be0283759324402760efa559e6885721495bce9cf26d",
+    "frontend/src/features/admin/closure/__tests__/resume/browser-smoke.mjs": "4a6ba638bc29f924dac3f74682cfb02f0742cab5fac960b3580d38be668ae08e",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "contracts/domain/v1/admin.schema.json": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+    "contracts/domain/v1/operations.json": "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839",
+    "contracts/domain/v1/policy.json": "81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb",
+    "docs/mcr/contracts/event-closure-resume.md": "7a47264d6141810dd2b1028089edf7f4ea6256e074a60df615e7a55ac09729a4",
+    "frontend/src/shared/api/domain-operations.generated.ts": "cf2bc3b5f3015820891773723181f106cdf29656dbc478f747b284cf9f6e593a"
+  },
+  "checks": [
+    "exact job/revision/reason preview; cancel sends no POST; focused review and keyboard confirmation",
+    "one explicit resume admission preserves completed steps; RUNNING is not completion; progress GET never resumes",
+    "lost response preserves command identity across job GET; original receipt plus authorized job GET resolves without replay",
+    "later failed boundary requires explicit fresh intent; pending202 status remains blocked until settled",
+    "stale job revision409 withdraws data; current authorized read and new preview required",
+    "role revocation and logout scrub draft/job/command before another POST",
+    "360/390/430 touch widths, targets>=44px, no overflow, no page errors, reduced motion"
+  ],
+  "browser": "156.0.8078.80"
+}

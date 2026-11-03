@@ -4,7 +4,7 @@ import map from '../../../../contracts/assets/v1/map-manifest.schema.json'
 import theme from '../../../../contracts/assets/v1/theme-manifest.schema.json'
 import { canonicalJson, record, requireMap } from './json'
 const documents: Record<string, unknown> = { [common.$id]: common, [map.$id]: map, [theme.$id]: theme }
-const keywords = new Set(['$id', '$schema', '$defs', 'title', 'description', '$ref', 'type', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'uniqueItems', 'minLength', 'maxLength', 'minimum', 'pattern', 'format', 'anyOf', 'allOf', 'if', 'then', 'else'])
+const keywords = new Set(['$id', '$schema', '$defs', 'title', 'description', '$ref', 'type', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'uniqueItems', 'minLength', 'maxLength', 'minimum', 'maximum', 'pattern', 'format', 'anyOf', 'allOf', 'if', 'then', 'else'])
 /** Evaluates only the checked-in C06 common/map/theme keyword subset; local refs only, no network. */
 export function schemaValid(input: unknown, kind: 'map' | 'theme'): boolean {
   let nodes = 0
@@ -24,6 +24,7 @@ export function schemaValid(input: unknown, kind: 'map' | 'theme'): boolean {
       : s.type === 'array' ? Array.isArray(value) : s.type === 'integer' ? typeof value === 'number' && Number.isSafeInteger(value)
         : s.type === 'null' ? value === null : typeof value === s.type)) return false
     if (typeof value === 'number' && typeof s.minimum === 'number' && value < s.minimum) return false
+    if (typeof value === 'number' && typeof s.maximum === 'number' && value > s.maximum) return false
     if (typeof value === 'string') {
       const length = Array.from(value).length
       if (typeof s.minLength === 'number' && length < s.minLength || typeof s.maxLength === 'number' && length > s.maxLength) return false
@@ -35,6 +36,7 @@ export function schemaValid(input: unknown, kind: 'map' | 'theme'): boolean {
     }
     if (Array.isArray(value)) {
       if (typeof s.minItems === 'number' && value.length < s.minItems) return false
+      if (typeof s.maxItems === 'number' && value.length > s.maxItems) return false
       if (s.uniqueItems && new Set(value.map(v => canonicalJson(v))).size !== value.length) return false
       if (s.items && !value.every(v => check(v, s.items, root, depth + 1))) return false
     }

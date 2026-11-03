@@ -22,6 +22,16 @@ pub trait MeetingAuthority: Send + Sync {
         connection: &mut PgConnection,
         query: AudienceQuery,
     ) -> Result<AudienceGrant, MeetingError>;
+    /// Lock all referenced party roots in a stable order before any pair or
+    /// command-admission lock. No audience/private permission is granted here.
+    async fn lock_audiences_in(
+        &self,
+        c: &mut PgConnection,
+        actor: MeetingActor,
+        _: &[concert_domain::beacon::Audience],
+    ) -> Result<(), MeetingError> {
+        self.actor_in(c, actor).await
+    }
     /// Receipt lookup/replay is freshly gated even when private guidance expired.
     async fn actor_in(
         &self,
@@ -85,3 +95,18 @@ impl MeetingAuthority for UnavailableMeetingAuthority {
 }
 
 pub mod rally;
+
+pub mod authority;
+
+/// Check the concrete owning policy's pinned earliest deadline after all blocking
+/// read work. Missing settings are not a grant: custom authority remains obliged
+/// to provide its own qualified through-commit fence.
+pub(crate) async fn ensure_authority_current(c: &mut PgConnection) -> Result<(), MeetingError> {
+    let fresh:bool=sqlx::query_scalar("select coalesce(nullif(current_setting('mcr.relationship_authority_until',true),'')::timestamptz>clock_timestamp(),true)")
+        .fetch_one(c).await.map_err(storage)?;
+    if fresh {
+        Ok(())
+    } else {
+        Err(MeetingError::PolicyUnavailable)
+    }
+}

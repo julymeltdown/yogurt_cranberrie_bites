@@ -140,3 +140,38 @@ fn cross_user_safety_in_readonly_still_checks_blocks() {
     s.blocked = true;
     assert_eq!(decide(s), Err(RelationshipError::Denied));
 }
+
+#[test]
+fn actor_only_decision_is_bound_to_self_and_current_eligibility() {
+    let s = snapshot();
+    let key = concert_domain::ParticipantKey {
+        event_id: s.query.event,
+        user_id: s.query.actor,
+    };
+    let mut a = s.authority;
+    a.query = PolicyQuery {
+        event: key.event_id,
+        actor: key.user_id,
+        subject: key.user_id,
+        field: Field::SafetySelf,
+    };
+    let mut own = ActorSnapshot {
+        key,
+        phase: EventPhase::ReadOnly,
+        event_revision: s.event_revision,
+        member: true,
+        now: s.now,
+        authority: a,
+    };
+    assert_eq!(decide_actor(own).unwrap().key(), key);
+    own.authority.inherited_block = true;
+    assert!(decide_actor(own).is_ok());
+    own.authority.subject_allowed = false;
+    assert_eq!(decide_actor(own), Err(RelationshipError::Denied));
+    own.authority.subject_allowed = true;
+    own.authority.actor_allowed = false;
+    assert_eq!(decide_actor(own), Err(RelationshipError::Denied));
+    own.authority.actor_allowed = true;
+    own.authority.query.subject = s.query.subject;
+    assert_eq!(decide_actor(own), Err(RelationshipError::Unavailable));
+}

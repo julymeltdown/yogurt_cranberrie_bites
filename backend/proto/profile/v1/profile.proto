@@ -198,3 +198,27 @@ service ProfileService {
   rpc GetAvatar(GetAvatarRequest) returns (GetAvatarResponse);
   rpc ApplyUserDeletion(ApplyUserDeletionRequest) returns (ApplyUserDeletionResponse);
 }
+
+// Dedicated trusted Concert self projection. This is current content, never
+// admission, account/session evidence, visibility permission or an avatar source.
+enum WorldProfilePurpose {
+  WORLD_PROFILE_PURPOSE_UNSPECIFIED = 0;
+  WORLD_PROFILE_PURPOSE_SELF_PROFILE = 1;
+}
+message WorldProfileReadRequest {
+  string actor_id = 1;
+  string event_id = 2;
+  string subject_id = 3;
+  string session_family_id = 4;
+  string request_id = 5;
+  WorldProfilePurpose purpose = 6;
+  int64 expires_unix_micros = 7;
+}
+message WorldProfileObservation {
+  string subject_id = 1;
+  string display_name = 2;
+  int64 observed_at_unix_micros = 3;
+}
+service ConcertWorldProfileService {
+  rpc ReadCurrent(WorldProfileReadRequest) returns (WorldProfileObservation);
+}

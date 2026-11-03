@@ -48,18 +48,59 @@ mod tests {
     use platform::grpc_method_policy::proto_rpc_names;
     use std::collections::BTreeSet;
 
+    const PROTO: &str = include_str!(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/../../proto/profile/v1/profile.proto"
+    ));
+    fn declared(service: &str) -> BTreeSet<String> {
+        let header = format!("service {service} {{");
+        let body = PROTO
+            .split_once(&header)
+            .expect("declared service")
+            .1
+            .split_once('}')
+            .expect("closed service")
+            .0;
+        proto_rpc_names(body).into_iter().collect()
+    }
+
     #[test]
     fn table_covers_exactly_the_proto_service() {
-        let proto = include_str!(concat!(
-            env!("CARGO_MANIFEST_DIR"),
-            "/../../proto/profile/v1/profile.proto"
-        ));
-        let declared: BTreeSet<String> = proto_rpc_names(proto).into_iter().collect();
         let listed: BTreeSet<String> = PROFILE_METHOD_POLICY
             .method_names()
             .map(str::to_owned)
             .collect();
-        assert_eq!(listed, declared);
+        assert_eq!(listed, declared("ProfileService"));
+    }
+
+    #[test]
+    fn world_profile_has_separate_complete_concert_only_policy() {
+        use crate::adapters::r#in::grpc::world_identity::{METHOD, WORLD_PROFILE_POLICY};
+        let listed: BTreeSet<String> = WORLD_PROFILE_POLICY
+            .method_names()
+            .map(str::to_owned)
+            .collect();
+        assert_eq!(listed, declared("ConcertWorldProfileService"));
+        assert_eq!(listed, BTreeSet::from(["ReadCurrent".to_owned()]));
+        assert_eq!(
+            WORLD_PROFILE_POLICY.callers("ReadCurrent"),
+            Some(&[Workload::Concert][..])
+        );
+        for workload in Workload::ALL {
+            assert_eq!(
+                WORLD_PROFILE_POLICY.allows(METHOD, workload),
+                workload == Workload::Concert
+            );
+        }
+        let services: BTreeSet<_> = PROTO
+            .lines()
+            .filter_map(|line| line.trim_start().strip_prefix("service "))
+            .map(|rest| rest.split_whitespace().next().unwrap())
+            .collect();
+        assert_eq!(
+            services,
+            BTreeSet::from(["ProfileService", "ConcertWorldProfileService"])
+        );
     }
 
     #[test]

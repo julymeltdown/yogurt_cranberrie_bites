@@ -26,6 +26,11 @@ async fn main() -> anyhow::Result<()> {
     platform::shutdown::install_signal_handlers()?;
     let config = AppConfig::load()?;
     let pool = connect_pool(&config).await?;
+    let relationship_verifier = platform::actor_delegation::relationship_read::RelationshipReadVerifier::configured_from_env(platform::grpc_auth::Workload::Friend, &config.actor_delegation)?;
+    let relationship_service =
+        friend_service::adapters::r#in::grpc::concert_relationship::RelationshipServer::from_pool(
+            pool.clone(),
+        );
     let readiness = readiness(pool.clone()).with_dependencies(vec![Probe::grpc(
         platform::edge::Edge::FriendProfile,
         &config.profile_grpc_endpoint,
@@ -76,6 +81,12 @@ async fn main() -> anyhow::Result<()> {
             }
             builder
                 .add_service(readiness.grpc_service(config.caller_registry.clone())?)
+                .add_optional_service(relationship_verifier.map(|verifier| platform::grpc_method_policy::guard(
+                    &friend_service::adapters::r#in::grpc::concert_relationship::POLICY,
+                    friend_service::adapters::r#in::grpc::concert_relationship::proto::friend_concert_relationship_service_server::FriendConcertRelationshipServiceServer::new(relationship_service)
+                        .max_decoding_message_size(4096).max_encoding_message_size(4096),
+                    config.caller_registry.clone(), verifier.into_inner(),
+                )).transpose()?)
                 .add_service(platform::grpc_method_policy::guard_with_forwarding(
                     &friend_service::adapters::r#in::grpc::method_policy::FRIEND_METHOD_POLICY,
                     friend_service::adapters::r#in::grpc::method_policy::FRIEND_FORWARDING,

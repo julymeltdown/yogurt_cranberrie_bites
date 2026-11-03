@@ -1,0 +1,36 @@
+{
+  "result": "PASS",
+  "scope": "FE33 two independent canonical-session consumers against in-process deterministic C04 HTTP fixtures, one actual Phaser game/two texture sinks, no world socket. C04 0.1.2 original-result HTTP route is simulated as unavailable then enabled; deployment is NOT_RUN. Real multiuser, device and IN04 acceptance NOT_RUN.",
+  "base": "a4f1b86592666ad3be53e4958f784236b19c3730",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "sourceHashes": {
+    "frontend/src/features/mural/sync/controller.ts": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+    "frontend/src/features/mural/sync/contract.ts": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+    "frontend/src/features/mural/sync/projection.ts": "e69dd552120a4f02e3abd7a81e079ec76f7a2cf04014c71dd9618d196aaf79c6",
+    "frontend/src/features/mural/sync/http.ts": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "1a31c8eb6fb36a1737afcdf37542f95f75635df45de0b9df122a11711721d274",
+    "frontend/src/world/mural/sink.ts": "105180874d00863e00ce2d3918051103f9a2ec25ba9e79eb5c330d737c15e1e8",
+    "frontend/src/world/mural/phaser.ts": "b254fcc7bfd572f94a048f859f72fecc4baa35e61bafb5c293ed7203bdf64af9",
+    "frontend/src/world/mural/authority.ts": "f08a51650603fc0f0e6b6049df27e7fb20d554c07768ec89c82958cbc9f8b078",
+    "frontend/src/features/mural/sync/__tests__/fixture.ts": "c61d33f5258a19541a8d70989686ebfdfa19a5711a9bcf44d2e22ae9b0d52a56",
+    "frontend/src/features/mural/sync/__tests__/preview.tsx": "f47cec4d96c5502729d7ee0acd26af3d8a9062c1b154f14e80707b262b98b80b",
+    "frontend/src/features/mural/sync/__tests__/browser-smoke.mjs": "bd83166fd2edb90d2f13a8799da6f7bc0102b29da54bf40237518070b260a790"
+  },
+  "checks": [
+    "two canonical actors converge with ordered/reordered/duplicate delivery",
+    "new/reconnect snapshot and editor interplay",
+    "preview sends no mutation; keyboard confirm sends once",
+    "actual one Phaser game, zero world sockets, two independently owned textures",
+    "unknown survives authoritative snapshot and SUCCEEDED metadata without original own result",
+    "C04 0.1.2 HTTP own-result recovers without POST replay",
+    "pause/freeze create higher revisions and disable editing",
+    "360/390/430 no overflow and targets>=44px",
+    "privacy clears editor and all texture/object/frame resources",
+    "no runtime errors"
+  ],
+  "browser": "156.0.8078.80"
+}

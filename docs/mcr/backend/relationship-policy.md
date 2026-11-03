@@ -245,3 +245,86 @@ The dedicated reveal response adapter is qualified in process; no public route
 or live provider configuration is enabled. Full task acceptance, real users,
 browsers/devices, PostgreSQL17, load and release remain NOT_RUN/IN_PROGRESS.
 Only the delivery integrator publishes master; this lane does not push master.
+
+## Actor-only consumer lock-order correction
+
+Meeting/community consumers identified a concrete cycle: preflight took an
+actor self-pair before the party root, while a command took that root before the
+self-pair. The follow-up adds `PgRelationshipPolicy::authorize_actor_in(c,key)`
+returning `ActorDecision`, with exact key, current event/owner revisions and proof
+window but no relationship revision, target, field permission or mutation grant.
+It takes only event/share, own participant/share and fresh fenced actor authority;
+it neither reads, inserts nor locks a relationship pair. Consumers may preflight
+actor eligibility, lock roots in deterministic order, then acquire sorted canonical
+user pairs and run full target authorization. Pair checks must remain after roots.
+READ_ONLY actor checks do not become Interaction permission. A blocked counterpart
+does not remove actor-only safety eligibility or give that counterpart any access.
+
+The required follow-up includes a real PostgreSQL schedule where a root writer
+waits for self-pair authorization while an actor-preflight reader waits for the
+root, plus a regression proving the actor-only guard leaves no pair row. It also
+adds pure actor binding/eligibility checks. The prior 20-test evidence remains pinned to its unchanged a5e84da/b71ae36
+source. The actor-only follow-up qualification below supersedes its local
+verification counts without changing the published migration.
+
+
+## Qualified actor-only correction — 2026-11-04
+
+Source commits `f5e5d44` and `49ce4647c901143cf86c230d5c6a7576da0cbd1d`
+add the actor-only check and deny inconsistent self-eligibility assertions.
+`authorize_actor_in` binds the exact canonical key, checks current event/member
+and both self-bound owner eligibility assertions, pins the earliest trusted
+expiry deadline, and never acquires a relationship pair. The change preserves
+published migration 0006 byte for byte (SHA256 remains
+`0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3`).
+
+The resource blocker cleared on an explicit Delivery → this lane transfer.
+The same focused Rust 1.88 / locked / offline / jobs=2 / debug=0 build command
+above exited 0 in 4.28 seconds with no warnings. Cargo JSON selected all binary
+paths; copies and source hashes were pinned before immediate transfer to meeting.
+The copied-source hash snapshot matched the clean checkout before documentation
+changed. No Cargo ran during the following native fixtures.
+
+| Follow-up check | Result |
+| --- | --- |
+| Domain matrix, normalization and actor-only binding/eligibility | exit 0; 7 passed, none skipped |
+| Focused AEAD crypto unit tests | exit 0; 2 passed; 1 unrelated unit filtered |
+| Real owned PostgreSQL producer suite | exit 0; all 22 named cases passed, none skipped |
+| Actor-only no-pair regression | PASS; no pair read/insert/lock, unavailable owner fails closed |
+| Root-writer versus actor-preflight-reader contention schedule | PASS; writer self-pair check completed while reader waited on root, then reader completed |
+| Runtime migrate/verify/reapply, 0006 rollback and forward recovery, checksum refusal | PASS; expected refusal exits 1, success exits 0 |
+| Actual postmaster restart, stable four-row ledger and persisted block | PASS |
+| Marker/inode-owned fixture cleanup | PASS |
+| Owned rustfmt, Python compilation and whitespace checks | exit 0 |
+
+The complete report is `/tmp/mcr-relationship-actor-runtime-final.json`, SHA256
+`e5734e61fd10d1b038b220ee789e648955219cf63e46500f2130dfac4c682155`.
+It records clean source revision `49ce464`, all source/migration hashes,
+versions 1/2/3/6, exact command exits, all 22 tests and cleanup. The private copy
+manifest is
+`/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-relationship-actor-native-20261104-43luvd5c/manifest.json`.
+
+| Binary | SHA256 |
+| --- | --- |
+| Domain relationship tests | 01c77cb03b6144c4c0fd05ee2ea9b0dca15601334ab562f7c4491e535b46f9f4 |
+| Service crypto unit tests | 4b39e937f455a92d897b7b20c4606092d84ccfa984183899d1841db3811bad46 |
+| Real PostgreSQL producer tests | 5ee99147450ec938eca78ca859cbeda4a746a12a81c7917be80c9f9f98fd4046 |
+| Migration runtime | 180f5a385dd9e916520777381b32b207cf663e199c811d6500717a277ceb9275 |
+
+Reproduce the native checks with the committed runner, `--pg-bin
+/opt/homebrew/opt/postgresql@16/bin`, `--repository-test` pointing to the copied
+`concert-service-relationship_policy`, `--binary` pointing to the copied
+`concert-service-concert-service`, and a new absolute `--report` path. The runner
+requires all 22 named producer cases; an old 20-case binary cannot certify this
+follow-up.
+
+This completes the assigned relationship/private-social implementation,
+meaningful local validation, documentation and known owned correction. Delivery
+and consumers receive the committed handoff directly; no coordinator approval is
+required. Community/meeting retain event → deterministic roots → canonical
+sorted pairs ordering and must prove each target/audience after its root lock.
+Actor-only success never replaces target authorization. The complementary
+cross-domain beacon rollback fixture belongs to the meeting owner. Real owner
+fencing, intro/claim authority, root/Gateway composition, realtime invalidation
+consumption and real two-account IN03 remain their separately owned obligations;
+this local handoff does not claim those tasks or production acceptance.

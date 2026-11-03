@@ -1,0 +1,56 @@
+vite v8.1.3 building client environment for production...
+[2Ktransforming...✓ 394 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../tmp/mcr-default-shell-social-production/index.html                                   1.27 kB │ gzip:   0.54 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/social-B2BJaqd0.css                   0.53 kB │ gzip:   0.30 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/panels-BN_4I1Xa.css                   0.87 kB │ gzip:   0.39 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/composition-Cskz_TlR.css              1.36 kB │ gzip:   0.58 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/root-features-nb6jl9cq.css            1.55 kB │ gzip:   0.65 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/meeting-entry-jVy7UCgi.css            1.58 kB │ gzip:   0.66 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/social-composition-DqSISAcm.css       6.41 kB │ gzip:   1.88 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/world-panels-B1K2u2Sf.css             6.53 kB │ gzip:   1.95 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/provider-CZ46c4C1.css                 8.07 kB │ gzip:   2.03 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/CommunityFeatures-DGIz2iOG.css        9.32 kB │ gzip:   2.20 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/PublicBoundary-DO3B2XUN.css          15.51 kB │ gzip:   3.38 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/index-WMDNDhfI.css                   21.04 kB │ gzip:   4.93 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/rolldown-runtime-Bh1tDfsg.js          0.56 kB │ gzip:   0.36 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/compatibility-NxiEzhrU.js             0.74 kB │ gzip:   0.37 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/social-DYM1OYe2.js                    1.12 kB │ gzip:   0.59 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/phaser-C-L-RzyC.js                    1.19 kB │ gzip:   0.62 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/preload-helper-CZgWQFsJ.js            1.25 kB │ gzip:   0.70 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/AdminBoundary-Pxh2OC7-.js             1.34 kB │ gzip:   0.67 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/Tabs-DuKw1W9G.js                      1.40 kB │ gzip:   0.68 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/avatar-config.schema-BEz1Qm5v.js      2.08 kB │ gzip:   0.77 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/resolver-EfoJbRXg.js                  2.49 kB │ gzip:   1.29 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/authority-C4f7dXj3.js                 2.73 kB │ gzip:   1.19 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/contract-ZPXHOE5k.js                  2.98 kB │ gzip:   1.33 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/simulation-sCcriVKG.js                3.15 kB │ gzip:   1.27 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/panels-D5I2t3CJ.js                    4.98 kB │ gzip:   1.86 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/MapScene-BzBqtI-8.js                  7.45 kB │ gzip:   3.02 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/resources-BQT93mEs.js                 8.01 kB │ gzip:   3.35 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/runtime-Cs4-Dr5W.js                  11.84 kB │ gzip:   4.13 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/root-features-n3cRDt4N.js            14.81 kB │ gzip:   4.91 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/schema-BLPkPMKb.js                   15.48 kB │ gzip:   4.35 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/source-catalog-B2GN78SH.js           15.97 kB │ gzip:   4.30 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/provider-DQl4bl_4.js                 26.58 kB │ gzip:   8.27 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/contract-BxDqEr9E.js                 28.08 kB │ gzip:   6.21 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/PublicBoundary-BBQ7AoiY.js           32.53 kB │ gzip:   8.88 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/meeting-entry-D8bFoXTX.js            37.36 kB │ gzip:  10.44 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/composition-DV9PJCE_.js              46.78 kB │ gzip:  15.75 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/world-panels-C1Ezpgun.js             56.81 kB │ gzip:  18.59 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/CommunityFeatures-CphSuaCT.js        58.52 kB │ gzip:  16.45 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/schemas-B9zUvP7H.js                  66.99 kB │ gzip:  17.93 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/social-composition-BvKgpkdc.js       92.66 kB │ gzip:  26.25 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/routes-esT69xcs.js                  105.47 kB │ gzip:  34.82 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/mcr-core.openapi-C8Ltq9-m.js        118.71 kB │ gzip:  11.28 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/index-wUCSESXZ.js                   385.70 kB │ gzip: 100.13 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/mcr-domain.openapi-BGDzoq3Z.js      751.44 kB │ gzip:  47.45 kB
+../../../../../../tmp/mcr-default-shell-social-production/assets/phaser-DVTuvjT6.js                1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 449ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

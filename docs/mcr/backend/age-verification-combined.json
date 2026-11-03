@@ -1,0 +1,81 @@
+{
+  "scope": "BE26 isolated adapter integration; real provider/Auth/HTTP remain unqualified",
+  "source_revision": "34a11e4f3e4aa6d817bedda4ff7cb0ca1ac11a07",
+  "author_revision": "0e97c855a0795e278a2e53564a1806649563dc6d",
+  "author_base": "3810016a72a82358e785790cf67d7b1b292db80e",
+  "author_changed_paths": [
+    "backend/crates/concert-application/src/age_verification/mod.rs",
+    "backend/crates/concert-application/tests/age_verification.rs",
+    "backend/services/concert-service/src/adapters/out/age_provider/mod.rs",
+    "backend/services/concert-service/src/adapters/out/age_provider/schema-v1.sql",
+    "backend/services/concert-service/tests/age_claims.rs",
+    "backend/services/concert-service/tests/age_claims_support/mod.rs",
+    "backend/services/concert-service/tests/age_claims_support/native_smoke.py",
+    "docs/mcr/backend/age-verification.md"
+  ],
+  "verified_author_input_pins": 1453,
+  "combined_source_pins": 1461,
+  "result": "PASS",
+  "application_tests": {
+    "passed": 10,
+    "exit_code": 0
+  },
+  "service_no_run_exit_code": 0,
+  "native": {
+    "postgres_version": "16.14 (Homebrew)",
+    "schema_files": 14,
+    "command_exit_codes": {
+      "schema-0001_concert_core.sql": 0,
+      "schema-0002_command_receipts_outbox.sql": 0,
+      "schema-0003_places_map_releases.sql": 0,
+      "schema-0004_bootstrap_admission.sql": 0,
+      "schema-0005_world_admission.sql": 0,
+      "schema-0006_relationship_policy.sql": 0,
+      "schema-0007_community.sql": 0,
+      "schema-0008_meeting_beacons.sql": 0,
+      "schema-0009_receipt_domain_failures.sql": 0,
+      "schema-0010_feed.sql": 0,
+      "schema-0011_outbox_maintenance.sql": 0,
+      "schema-0012_media.sql": 0,
+      "schema-0016_meeting_deadline_guards.sql": 0,
+      "schema-schema-v1.sql": 0,
+      "producer-tests": 0,
+      "restart-tests": 0
+    },
+    "producer_tests": {
+      "passed": 16,
+      "failed": 0,
+      "ignored": 1
+    },
+    "actual_stop_start": {
+      "before_pid": 54956,
+      "after_pid": 55107,
+      "before_start": "2026-11-04 04:29:43.118009+09",
+      "after_start": "2026-11-04 04:29:45.902425+09"
+    },
+    "restart_tests": {
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0
+    },
+    "cleanup": "PASS",
+    "owned_root_absent": true,
+    "tcp_listeners_disabled": true
+  },
+  "sha256": {
+    "build_receipt": "064549c6d30b7fb00e1de226268c0fcc34a4b89dfda294d7909b0e4e1458df89",
+    "native_receipt": "45d8f740c4c3d5e55bed84030884056b3b83daaca4409cb8cdf27ab45e993654",
+    "immutable_binary": "a9e8fa30c833fb76f4f45ed3cc01a0c741ee60d7c1ab5412f0d39048e67ba841",
+    "qualification_runner": "d6040ea9c431b4a5cd5aefdea288b8719c684a928d8907e6f6ba7aee55ffac22"
+  },
+  "not_run": [
+    "real age verifier",
+    "canonical Auth read/mutation fence",
+    "public HTTP",
+    "root module registration",
+    "runtime migration ledger/grants",
+    "BE27 ClaimReader lifetime bridge",
+    "IN03",
+    "release acceptance"
+  ]
+}

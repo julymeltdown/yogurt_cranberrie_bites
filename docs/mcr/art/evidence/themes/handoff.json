@@ -1,0 +1,97 @@
+{
+  "task": "AR04",
+  "source_scope": "Three original world skin-pack texture sources; no final release bindings",
+  "status": "IN_PROGRESS",
+  "checkout": "/Users/lhs/.codex/worktrees/1ff9/mcr",
+  "branch": "codex/mcr-art-AR04",
+  "base_commit": "a3bdb38a83f5f220f6b934139da7cb0ad6bb9fae",
+  "source_commit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+  "evidence_commit": "Commit containing this file; exact SHA sent to Delivery",
+  "goal_status": "ACTIVE through committed handoff and concrete Delivery findings",
+  "delivery_authority": "Delivery only, julymeltdown/mcr master",
+  "changed_paths": [
+    "docs/mcr/art/evidence/themes/.gitignore",
+    "docs/mcr/art/evidence/themes/author.py",
+    "docs/mcr/art/evidence/themes/browser-review.cjs",
+    "docs/mcr/art/evidence/themes/browser-validation.json",
+    "docs/mcr/art/evidence/themes/danger-360.png",
+    "docs/mcr/art/evidence/themes/danger-390.png",
+    "docs/mcr/art/evidence/themes/danger-430.png",
+    "docs/mcr/art/evidence/themes/danger.editable.json",
+    "docs/mcr/art/evidence/themes/handoff.json",
+    "docs/mcr/art/evidence/themes/map-compatibility.json",
+    "docs/mcr/art/evidence/themes/parade-360.png",
+    "docs/mcr/art/evidence/themes/parade-390.png",
+    "docs/mcr/art/evidence/themes/parade-430.png",
+    "docs/mcr/art/evidence/themes/parade.editable.json",
+    "docs/mcr/art/evidence/themes/pixel-validation.json",
+    "docs/mcr/art/evidence/themes/preview.html",
+    "docs/mcr/art/evidence/themes/revenge-360.png",
+    "docs/mcr/art/evidence/themes/revenge-390.png",
+    "docs/mcr/art/evidence/themes/revenge-430.png",
+    "docs/mcr/art/evidence/themes/revenge.editable.json",
+    "docs/mcr/art/evidence/themes/verify-map-compatibility.cjs",
+    "docs/mcr/art/evidence/themes/verify.py",
+    "docs/mcr/art/theme-packs.md",
+    "frontend/public/world/themes/ORIGIN.md",
+    "frontend/public/world/themes/binding-inputs.json",
+    "frontend/public/world/themes/danger.png",
+    "frontend/public/world/themes/danger.tsrct",
+    "frontend/public/world/themes/parade.png",
+    "frontend/public/world/themes/parade.tsrct",
+    "frontend/public/world/themes/revenge.png",
+    "frontend/public/world/themes/revenge.tsrct"
+  ],
+  "commands": [
+    {
+      "command": "python3 docs/mcr/art/evidence/themes/author.py --render",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 docs/mcr/art/evidence/themes/verify.py",
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_PLAYWRIGHT_MODULE=/Users/lhs/Desktop/mcr/frontend/node_modules/@playwright/test node docs/mcr/art/evidence/themes/browser-review.cjs",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_TYPESCRIPT_MODULE=/Users/lhs/Desktop/mcr/frontend/node_modules/typescript node docs/mcr/art/evidence/themes/verify-map-compatibility.cjs",
+      "exit_code": 0
+    }
+  ],
+  "tool_versions": {
+    "tesseract": "0.4.0 d7ccb4bc20fc69f2356c53b80336e52cff31dcc5",
+    "node": "26.7.0 (standalone art preview only; no app build)",
+    "python": "3.14.3",
+    "pillow": "12.2.0 (read-only pixel verification/negative probes)",
+    "playwright": "1.61.1",
+    "chrome": "156.0.8078.80",
+    "jsonschema": "4.26.0",
+    "referencing": "0.37.0",
+    "typescript": "6.0.3 (immutable FE14 parser transpilation only)"
+  },
+  "evidence": [
+    "docs/mcr/art/evidence/themes/pixel-validation.json",
+    "docs/mcr/art/evidence/themes/browser-validation.json",
+    "docs/mcr/art/theme-packs.md",
+    "docs/mcr/art/evidence/themes/map-compatibility.json"
+  ],
+  "limitations": {
+    "production_theme_manifests_and_registry": "NOT_RUN; integrator-owned actual map/avatar pins required",
+    "selected_avatar_compatibility": "NOT_RUN; no characters or avatar fixture substitutes used",
+    "actual_ar02_map": "Committed AR02 source export e394b585 passes current FE14 parser for all three texture pins; actual Phaser/runtime binding NOT_RUN",
+    "real_ios_safari_android_chrome": "NOT_RUN",
+    "live_two_account_world_qa06_in01_in05": "NOT_RUN",
+    "master_delivery_ancestry": "NOT_RUN here; Delivery owns integration/push"
+  },
+  "source_compatibility_commit": "Commit containing verify-map-compatibility.cjs; follows evidence commit 9ab0a4c28b73051f89f1a0d792a091d1768637db"
+}

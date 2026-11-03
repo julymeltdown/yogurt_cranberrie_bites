@@ -1,0 +1,12 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: TypeError: canvas.getContext is not a function
+    at eval (eval at evaluate (:303:30), <anonymous>:4:21)
+    at async <anonymous>:329:30
+    at /Users/lhs/Desktop/mcr-worktrees/fe-illustrated-world/frontend/src/world/__tests__/illustrated/export.mjs:21:29 {
+  log: []
+}
+
+Node.js v24.22.2

@@ -1,0 +1,47 @@
+{
+  "result": "PASS",
+  "base": "75856239d273e14a21a17f4c6248af35fe7e7007",
+  "scope": "FE39 deterministic authenticated C04 HTTP fixture through actual canonical client. No liveBE, IN04, native-device or production-root acceptance. Closure mutation retry awaits pinned amendment; progress refresh never counts as job retry.",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "sourceHashes": {
+    "frontend/src/features/admin/mural/WallControl.tsx": "3219cec02fe7d2ca7985d3f9691cc9af35bb645076cfe5bbabcd00a108c59838",
+    "frontend/src/features/admin/mural/admin.css": "ebc05982ccebd55930450728fb00757e0368d026aea78b6eb553c3484c65849b",
+    "frontend/src/features/admin/mural/contract.ts": "996e1099335427ab5b515d89e4725675cf85b3cd782b5cad878610e353382917",
+    "frontend/src/features/admin/mural/controller.ts": "8c9be4341fb5d1d9f909c56328e5d020238cd04a69473b5540fdf2d97b5bd43b",
+    "frontend/src/features/admin/mural/http.ts": "cd87f2cbf3257f202008bba978181ae1b17eb3f6f51298c21eaa9699125fbfab",
+    "frontend/src/features/admin/mural/index.ts": "0d9d924f75f3ee3af88c4d603925f4b888ecfdf9d23e8f67d32f690f483b4c47",
+    "frontend/src/features/admin/mural/owner.ts": "7de653bbaf968f412b4bbfb96c51074e3bec04d0d13deb2e12ead7b1be13f045",
+    "frontend/src/features/admin/mural/transport.ts": "cdfd9e71c322ad495a0c54b59f825158c73c3874d33e9e2cf1443b4f542fc091",
+    "frontend/src/features/admin/closure/EventClosure.tsx": "dfdd25b9ba0dea99c6497463cf38db04b1fd9917da4722e8b1966ada38171fa6",
+    "frontend/src/features/admin/closure/contract.ts": "3c99d1f93ea85ecccf6b4f99150bab8785dff3f565223f01671e91513480a4c0",
+    "frontend/src/features/admin/closure/controller.ts": "19480c169de90dab2fb39946f451164e3fc66ddb671273dad9bbb81492b78f05",
+    "frontend/src/features/admin/closure/http.ts": "e4bea896233e6e9727f4d678a57ba0cfd92e3e689ce068b2c1c32d49e330e183",
+    "frontend/src/features/admin/closure/index.ts": "7c21dedb65c80e05392bbf09023d876cdd62c98958e24bae849577e81212e11d",
+    "frontend/src/features/admin/mural/__tests__/fixture.ts": "ca67ae20bc74ec6b63d44c29b1f751f59cae86fdcea72f48e34a25103dba760e",
+    "frontend/src/features/admin/mural/__tests__/preview.tsx": "9baf6e687f5c53951563ddd616e63cfc52a3aaa5d41f2591303d026b3f85ba43",
+    "frontend/src/features/admin/mural/__tests__/preview.css": "df094ae087b5c03d9e3a6d4bb7faec002da26642172f51d0c4dffe52e9b0511b",
+    "frontend/src/features/admin/mural/__tests__/preview.html": "3009ca44a282fa5578a7fd3ed96091918eb4c04cd3dea09410a2bcc90ccaea8c",
+    "frontend/src/features/admin/mural/__tests__/browser-smoke.mjs": "ef55bd3a890e2aeb28be30302a5d92a29bc134d3dd15806bfb07090743930098",
+    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
+    "contracts/domain/v1/admin.schema.json": "b8a4f8b91440d561bbcf23dc68bc196919a8893cf744ca09ac05ecaabff72cb8",
+    "contracts/domain/v1/operations.json": "411fcee8222db2f5a7938866ac37791033e85682f11d024ceb895c245c708500",
+    "contracts/domain/v1/policy.json": "01c6b9e9a44b81bcf1273ebd7ba8361d3cc035a969399b4dad1f9dedec05839a"
+  },
+  "checks": [
+    "preview/cancel never mutate",
+    "keyboard explicit confirmation",
+    "restore names exact snapshot and revision",
+    "half-open lock rectangle",
+    "unknown wall action recovers only through verified status and current read without replay",
+    "pause/resume/permanentfreeze",
+    "partial closure failed step visible; independent authorized progress refresh never retries mutation",
+    "privacy scrubs both retained controllers",
+    "360/390/430 targets>=44px/no overflow; labeled native DOM and focused confirmation",
+    "no browser runtime errors"
+  ],
+  "browser": "156.0.8078.80"
+}

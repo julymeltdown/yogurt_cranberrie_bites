@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-default-shell/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  05:05:21
+   Duration  1.69s (transform 612ms, setup 0ms, import 349ms, tests 1.01s, environment 262ms)
+

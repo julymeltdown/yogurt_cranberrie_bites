@@ -1,4 +1,6 @@
 //! Use cases depend only on Concert values and explicit ports, never adapters.
+pub mod report;
+pub mod admin;
 pub mod commands;
 
 use async_trait::async_trait;
@@ -175,3 +177,16 @@ pub mod rally;
 pub mod feed;
 
 pub mod avatar;
+pub mod world_ticket;
+
+pub mod community;
+
+pub mod media;
+
+pub mod intro_policy;
+pub mod age_policy;
+pub mod intro;
+
+pub mod event_lifecycle;
+
+pub mod mural;

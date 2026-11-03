@@ -1,0 +1,274 @@
+# BE12 authoritative world simulation
+
+Status: **CONTRACT_READY** for this bounded BE12 core. All 26 deterministic
+regressions executed and passed with Rust 1.88.0 after scoped formatting, planning
+and focused source review. This is not full BE12/IN01 acceptance or a remote
+master-delivery claim. IN01, real multiuser movement, database admission composition,
+WebSocket delivery, device and load qualification are **NOT_RUN** by this patch.
+
+## Ownership and ancestry
+
+Worker branch: `codex/mcr-be-BE12`; isolated checkout:
+`/Users/lhs/Desktop/mcr-worktrees/be-world-simulation`.
+Assignment base: `8bb878c979138d0f6b3a4b880edb394f41cf99be`.
+The BE10/BE11 owner explicitly excluded this carve-out from its writes.
+
+New implementation/test/document paths:
+
+- `backend/crates/concert-domain/src/world/mod.rs`
+- `backend/services/concert-service/src/world/simulation.rs`
+- `backend/services/concert-service/tests/world_simulation.rs`
+- `docs/mcr/backend/world-simulation.md`
+
+Delivery explicitly delegated a separate registration-only commit for
+`backend/crates/concert-domain/src/lib.rs` (`pub mod world;`),
+`backend/services/concert-service/src/world/mod.rs` (`pub mod simulation;`),
+and `backend/services/concert-service/src/lib.rs` (`pub mod world;` when absent).
+Delivery composes admission exports when integrating these exact registrations.
+No manifests, lockfiles, router, migrations, contracts, frontend, selected art or
+`docs/source/` bytes are changed. Only delivery pushes master. Commit IDs and
+final command results are sent directly to delivery with the exact path list;
+remote delivery remains unverified until delivery reports the published ancestry.
+
+## Behavior
+
+`Input` decodes the frozen C05 shape with closed fields, exact protocol/type,
+canonical UUID strings, safe positive sequence, finite axes in [-1,1], vector
+length at most 1 + 1e-9, and zero/one `interact` button. Rounding-only excess length
+is clamped to one. The type exposes no client coordinate, speed, delta-time or
+identity field. Unknown fields and repeated typed fields are rejected by Serde.
+The listener must still enforce the assembled 4096-byte envelope, nesting,
+UTF-8/binary rules and all-message rate limit before decoding; this module is
+not the listener.
+
+The room owner calls `advance` on a monotonic server clock. Logical ticks are
+50 ms (20 Hz); input receipt never advances coordinates. A per-player FIFO holds at most 128 timestamped movement inputs; a full queue
+explicitly rejects the input. Each tick coalesces only eligible axes, preserving
+a stop applicable to an earlier catch-up tick when a later packet arrives.
+The separate one-slot interaction intent cannot be overwritten by axes; another
+button intent is explicitly rejected until it is consumed or expires. Strictly increasing input
+sequence allows gaps, rejects duplicates/decreases and resets only on a fresh
+stream. `ack_input_seq` advances only when a pending input is consumed by a tick;
+held motion does not invent acknowledgements. Inputs received after a tick's
+time cannot be backdated into it. At most four steps run per call; excess wall
+time is discarded and reported as `dropped_steps`, with server ticks advancing
+over those omitted steps. The process cannot accumulate an unbounded catch-up
+loop or grant extra speed for a packet flood.
+
+`Limits::new` requires explicit server values: positive speed up to 1000 virtual
+pixels/second, interaction range 0..256 virtual pixels, input hold 50..1000 ms.
+These hard ceilings bound collision work; they are implementation limits, not
+measured tuning/capacity claims or changes to C05/C06. Tests select speed 120,
+range 48, hold 250 ms. Analog magnitudes below one retain proportional speed;
+diagonal movement cannot exceed the configured scalar speed. Zero axes stop;
+expired held input stops. Expired unsimulated input is discarded unacknowledged.
+
+A per-player token bucket enforces C05 input 30/s and burst 60 with integer
+milli-token accounting. Replays consume rate credit too. An in-place stream
+replacement preserves the bucket rather than granting another burst. The listener
+still owns the separate 40/s burst 80 all-message bucket and reconnect/global
+admission rate limits. A new connection does not authorize any input before
+admission.
+
+`WorldMap` copies immutable C06 row-major `0=walkable/1=blocked` geometry after
+rechecking dimensions/cell ceiling (65536, matching BE08), virtual wire bounds,
+finite runtime values, unique asset IDs, named/default spawns, walkable interaction
+cells and connected spawn/interaction components. Runtime interaction count is
+capped at 256. A single flood fill runs only when loading geometry. Production
+composition must first validate the exact immutable BE08 release, content/geometry
+hashes and resource pins. This constructor does not establish art rights, physical
+venue truth or production resource readiness.
+
+Server-selected named spawn uses the C06 cell-centered foot coordinate. Collision
+uses a swept point-foot segment, not the visible sprite rectangle: all crossed
+cells are checked with supercover grid traversal, including both neighbors at a
+diagonal corner and the adjacent cell when traveling exactly along a grid edge.
+Outside cells are blocked. A blocked segment rejects the whole step (no wall
+slide); a clear endpoint beyond a wall cannot tunnel through it. Traversal fails
+closed at 512 visited cells, covering both a 50-pixel maximum movement step
+and a 256-pixel interaction segment even with 1-pixel tiles.
+
+`interaction_in_range` requires a known interaction, server foot coordinate,
+configured Euclidean virtual range and clear segment. A consumed one-shot intent
+selects the first qualifying interaction by stable ID order. It emits at most once,
+not on subsequent held-input ticks. Accepted interactions survive later motion packets and are consumed once or
+expire. A second pending button returns `InteractionPending`; a saturated motion
+history returns `InputQueueFull`. The listener must map these explicit denials
+to bounded recovery/rate-limit behavior. This is not a durable command channel.
+These candidates only open virtual interactions. They never change physical
+arrival, stock, party membership or pickup state, and they do not authorize a
+player-to-player operation. Durable operations and social-policy checks remain
+with their owning HTTP/application boundaries.
+
+## Membership integration boundary
+
+`MembershipPort` is a typed synchronous view of current authoritative membership
+owned by the single room process. The production adapter must serialize calls
+with admission, takeover, switch, disconnect and owner fencing; it must not issue
+blocking network/database queries inside each simulation tick. It returns a
+complete binding and independently validated deadlines, or fails closed on
+revoked/unavailable/unknown state. It is not a test-default allow policy.
+
+Binding includes canonical `(event,user)`, session, non-nil connection and owner,
+room, room epoch, stream ID, and exact map/avatar IDs and versions. A lease may be
+at most 5000 ms ahead and both lease/access deadlines must be strictly later than
+now. The access deadline is captured once at admission and cannot change through
+input, heartbeat, lease renewal or same-connection resync. Renewing policy authority
+requires the live Auth/Concert check owned by BE10/BE11, not client activity.
+The adapter must map authoritative UTC deadlines conservatively onto the same
+monotonic millisecond origin used here, without extending expiry on conversion.
+
+Every accepted input and every `advance` validates authority at current server
+time; even an advance with no tick removes expired/revoked players. During one
+serialized advance, the same current authority fence covers its bounded tick
+batch. Before publishing any output, BE13 must apply current recipient policy
+and revoke subscriptions; removed simulation state alone is not a socket close.
+The synchronous port must not change authority mid-batch outside the owner lock.
+
+A stream replacement requires a freshly authorized binding and distinct stream
+ID never previously used by that connection, preserves the server coordinate and clears pending/held input and ack. A
+new authorized connection takeover can capture its new access expiry; old
+connection input and disconnect cannot mutate/remove the replacement. A bounded
+1024-entry stream history prevents A → B → A replay; exhaustion requires a new
+connection. Same-connection session changes are rejected. Failed
+replacement leaves old simulation state for the authoritative owner to revoke
+on its next check. Room/owner/epoch/resource changes reject stale bindings; create
+a new owner simulation for an epoch reset and atomically replace streams, rather
+than translating old coordinates into changed geometry. Room switching needs the
+BE11 owner transaction; callers must not leave two simulation owners active.
+
+The configured room capacity cannot exceed 50, one player per canonical user in
+this event/room. The pure owner API additionally rejects duplicate admissions;
+only committed takeover/resync may replace a stream. `state` is an owner-local
+read for BE13 projection, not an authorized public roster or presence endpoint.
+
+## Provenance and dependencies
+
+All three new Rust files and this document are newly authored for MCR BE12.
+No Bigyeting/port-rust movement, rendering, UI, art or game library is copied.
+The existing BE08 `Geometry`, source/canonical-release parser and canonical
+Concert identity/asset/revision types are reused from the assigned base.
+No dependency or lock resolution changes are needed: existing `serde`,
+`serde_json` (tests), `uuid`, `thiserror` and the Rust standard library suffice.
+No migration or database write is introduced.
+
+Specification source: `MCR_IMPLEMENTATION_PLAN_V2_EN.md` §§5.4, 7.5 and BE12,
+revision `f5b97aca2b002484fc4cbdd7581c723392df10c6`, SHA-256
+`e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36`.
+
+Frozen C05 v1.0.0 at `69a5624cd153a216f2398cebabf062400dce23eb`:
+
+- `contracts/realtime/v1/world.schema.json`: SHA-256 `1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36`
+- `contracts/realtime/v1/policy.json`: SHA-256 `3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b`
+
+C06 metadata v1 at `12acc2d7a93701d89aad63ea7c3376f91b7fcb13`:
+
+- `contracts/assets/v1/map-manifest.schema.json`: SHA-256 `ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800`
+- `contracts/fixtures/assets/map-manifest.json`: SHA-256 `0cccde2c009a44cc2355dfa15ef2d030bc7b85be6f58bec7470108dba46562f7`
+
+The fixture regression canonicalizes those existing synthetic metadata bytes
+before using BE08's strict stored-release parser. It makes no production-art,
+physical-place or actual Tiled resource claim.
+
+## Validation record
+
+Executed from the assigned checkout on 2026-11-04 (Asia/Seoul):
+
+| Command | Exit/result |
+| --- | --- |
+| `python3 scripts/mcr/check-plan.py` | 0; preserved archive hashes, plan graph/export regressions and delivery destinations pass; application tests NOT_RUN by that checker |
+| `rustfmt +1.88.0 --edition 2021 --check backend/crates/concert-domain/src/world/mod.rs backend/services/concert-service/src/world/simulation.rs backend/services/concert-service/tests/world_simulation.rs` | 0 |
+| `git diff --check` | 0 |
+| `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_simulation` | First invocation 101: stale shared domain artifact omitted the world export. After refreshing only owned Rust-file mtimes, rerun 0; domain/application/service recompiled and all 26 tests passed |
+
+Twenty-six deterministic test cases cover strict intent decoding/teleport attempts,
+invalid axes and safe counters, scalar/diagonal speed, 50ms timing/ack, packet
+flood/rate refill, input gaps/replays, stream/epoch/session/connection/owner/pin
+fencing, takeover reset, access-expiry immutability and bucket preservation,
+revocation/expiry/unavailability without a due tick, held stop/timeout, catch-up
+bounds/non-backdating, high-speed wall tunneling, corner/edge/bounds collision,
+spawn/malformed geometry, interaction distance/occlusion/unknown IDs, one-shot
+behavior, movement-history limits, accepted-stop preservation, interaction
+preservation across later motion, symmetric incident-endpoint collision checks,
+fifty-player bounded workload and the frozen synthetic fixture.
+All 26 executed tests passed (0 failed/ignored/filtered). No native admission, two-account world, actual WebSocket, mobile,
+200-connection load, QA05/QA08 or IN01 acceptance is asserted.
+
+
+Targeted read-only peer review found three concrete P2 issues before native
+execution: interaction overwrite, accepted-stop loss during delayed catch-up,
+and asymmetric wall edge/corner endpoint contact. All three are fixed in the
+worker commit `988ddb3` with four direct regressions. Focused read-only re-review
+of that commit reports no remaining actionable findings in the requested fixes.
+The reviewer ran no Rust commands. Initial source-ready checkpoints are
+`1ea1813` (implementation), `8f649a6` (separate delegated registrations),
+`398bbfd` (maximum interaction sweep) and `4187219` (stream reuse fencing).
+These are ancestry/progress records, not native test acceptance.
+
+The review confirmed that `InteractionPending`/`InputQueueFull` reject an entire
+input before sequence acceptance while consuming rate credit, and that
+`pending_input_count()` is bounded at 6400 for a 50-player room. The source review
+is independent evidence, not a compiled test result. Native validation subsequently ran under the explicit delivery lease below.
+
+
+## Native execution and final handoff
+
+Delivery explicitly transferred the shared Cargo lease from admission to BE12.
+The exact command above ran at committed candidate
+`158b8147d5d018ce03a7747446005d32592a1a6a`, whose Rust source is `988ddb3`.
+The first invocation reused an older `concert-domain` artifact and failed with
+E0432/E0433 for its absent world export. `touch` refreshed only the six owned Rust
+files (domain lib/world; service lib/world mod/simulation; test) without changing
+bytes. The identical command then explicitly compiled `concert-domain`,
+`concert-application` and `concert-service`, finished in 2.91 seconds and executed
+`world_simulation-04ef4cb814b4979f`: **26 passed, 0 failed, 0 ignored,
+0 measured, 0 filtered out**; exit code 0. No source change or cache deletion was
+needed. No alternate target or compiler artifact workaround was used.
+
+The lease was immediately released to the next BE24 owner and reported to
+delivery; this worker runs no further Cargo after release. The final evidence
+commit changes only this document, so the tested Rust bytes are unchanged.
+The worker checkout is clean after committing; the exact changed-path set is the
+four implementation/test/document paths plus three explicitly delegated export
+registrations listed above. There are no cross-directory application imports.
+
+Delivery receives the full ordered worker history from base `8bb878c`:
+`1ea1813` → `8f649a6` → `398bbfd` → `4187219` → `988ddb3` → `158b814`,
+followed by this evidence-only commit (SHA sent in the handoff). BE13/BE14 receives
+its corrected committed consumer pins directly. Its next scope is recipient
+projection/queues and session recovery, through the actual Social policy port;
+no ownership of those files is acquired by this BE12 patch. All concrete source
+review fixes and the assigned native simulation checks are delivered. Runtime
+membership-port composition, real WebSocket/two-account movement, bidirectional
+presence privacy, resource loading, load/device qualification and verified remote
+master ancestry remain the integrator/owning tasks' outstanding obligations.
+
+
+## BE13 replication provenance correction
+
+A concrete BE13 review found that combining `state(user_id)` with caller-supplied
+room/epoch/tick metadata could relabel an older simulation as a new room stream.
+The narrow follow-up adds `replication_state(&Binding) -> Option<(u64, PlayerState)>`.
+It verifies the expected room/event/epoch/owner/resource scope against the actual
+simulation, then requires equality with the full stored player binding, including
+user/session/connection/stream and map/avatar pins. The returned tick is always
+`self.server_tick`; consumers must not supply or substitute their own tick.
+There is no unfiltered roster endpoint. The existing `state` diagnostic remains
+for owner-local use; BE13 capture must use the binding-checked API.
+
+This is a provenance check, not a current-authorization check: BE13 still validates
+live membership/recipient policy under the same owner serialization, and lease
+refresh/expiry/removal semantics are unchanged. Reads cannot renew authority.
+Two new regression cases cover all twelve mismatching binding components,
+actual tick/position/ack, stale connection/stream after takeover, and removed
+membership. They extend the suite from 26 to 28 declarations. **The two new tests
+and the 28-case native suite are NOT_RUN in this follow-up**: BE13 owns the shared
+compile lease and explicitly requested a source-only correction with no Cargo.
+The earlier 26/26 result remains bound to the earlier native candidate above.
+
+Follow-up base: `6e2fe75dbd47d641e84888981b535e577db54c7a`. Changed paths are only
+this document, service `world/simulation.rs`, and `tests/world_simulation.rs`.
+No export, manifest, lockfile, contract, other worker's source or build target
+is changed. Scoped `rustfmt +1.88.0 --edition 2021 --check` for the two Rust files
+and `git diff --check` executed with exit 0. The committed correction SHA is sent
+directly to BE13 and delivery for consumer adoption and native validation.

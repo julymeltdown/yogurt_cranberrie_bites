@@ -31,8 +31,8 @@ class DomainBundleTests(unittest.TestCase):
 
     def test_every_registered_http_operation_once_and_no_fake_websocket_endpoint(self):
         ids = [o["operationId"] for methods in self.document["paths"].values() for o in methods.values()]
-        self.assertEqual(len(ids), 132)
-        self.assertEqual(len(set(ids)), 132)
+        self.assertEqual(len(ids), 134)
+        self.assertEqual(len(set(ids)), 134)
         for row in self.rows + self.world:
             self.assertEqual(self.operation(row)["operationId"], row["operationId"])
         self.assertFalse(any("websocket" in p or p.endswith("/world") for p in self.document["paths"]))
@@ -72,7 +72,7 @@ class DomainBundleTests(unittest.TestCase):
                     self.assertEqual(bundle.resolve(document, references[absolute]),
                                      bundle.rewrite(schema, references, source["$id"]))
                     counts[family] += 1
-        self.assertEqual(counts, {"domain": 162, "realtime": 19})
+        self.assertEqual(counts, {"domain": 164, "realtime": 19})
 
     def test_query_projection_is_exact_closed_and_delete_has_no_body(self):
         for row in self.rows:
@@ -170,6 +170,24 @@ class DomainBundleTests(unittest.TestCase):
             if entry["expected"] == "accept":
                 self.validate(bundle.domain_ref(entry["schema"]),
                               json.loads((ROOT / "contracts/fixtures/domain" / entry["file"]).read_text()))
+
+    def test_closure_start_and_resume_remain_closed_after_relocation(self):
+        entries = json.loads((ROOT / "contracts/fixtures/domain/index.json").read_text())
+        for entry in entries:
+            if entry["schema"] != "admin.CloseEvent":
+                continue
+            value = json.loads((ROOT / "contracts/fixtures/domain" / entry["file"]).read_text())
+            with self.subTest(fixture=entry["file"]):
+                if entry["expected"] == "accept":
+                    self.validate(bundle.domain_ref("admin.CloseEvent"), value)
+                else:
+                    with self.assertRaises(ValidationError):
+                        self.validate(bundle.domain_ref("admin.CloseEvent"), value)
+        row = next(row for row in self.rows if row["operationId"] == "closeConcertEvent")
+        operation = self.operation(row)
+        self.assertEqual(operation["x-mcr-command-modes"], row["command_modes"])
+        self.assertEqual(operation["x-mcr-retry"], "STATUS_THEN_IDENTICAL_COMMAND")
+        self.assertEqual(row["command_modes"]["RESUME_CLOSURE"]["revision_subject"], "CLOSURE_JOB")
 
     def test_duplicate_registration_and_equivalent_path_names_fail(self):
         document = copy.deepcopy(self.document)

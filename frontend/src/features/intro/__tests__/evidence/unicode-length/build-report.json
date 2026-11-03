@@ -1,0 +1,35 @@
+{
+  "result": "PASS",
+  "node": "v24.22.2",
+  "scope": "Explicit helper entries and actual editor/controller synthetic fixture; no root shell or live acceptance",
+  "hashes": {
+    "src/features/intro/__tests__/evidence/unicode-length/preview.html": "28461ae63958030ce01e10c78359b3747e9a4120ab0b736d758117b006b5b112",
+    "src/shared/validation/text.ts": "6874e0c437563d820f00337bcd254fdbfea1356c7e4414ff0e80aed12aa04a39",
+    "src/shared/validation/tags.ts": "187eb5c650db584d64a9d3b5d98d8450363e0582b7278b069412a07a8b6d3a6e",
+    "src/entities/intro/model/contract.ts": "8e19d17047d2ed6594d156acf12d3f0f539bafe08e6ee31288f94f31ff0bcaef",
+    "src/entities/intro/model/policy.ts": "489864e7a0f808707d708e5d818f3694a24f32b713b587483c0f39a3f36f794f",
+    "src/entities/intro/model/age.ts": "1d1f762dcc6baed4297216c83f380ef7ccbbf29643e512b7abad742c465206b5",
+    "src/entities/intro/model/errors.ts": "d3eb60792e3a10591bdea9214f8d9bbb9fee6900116bfdb338971c5e060934a1"
+  },
+  "outputs": [
+    "assets/age-uMtc6EL6.js",
+    "assets/contract-EHINUdNg.js",
+    "assets/errors-ClMyDz3i.js",
+    "assets/policy-CAGdOLAt.js",
+    "assets/preview-D7wXguyi.js",
+    "assets/tags-DvqG8IWI.js",
+    "assets/text-DJ1TOspX.js",
+    "assets/contract-Dpf65f70.js",
+    "assets/domain-operations.generated-Ck-JZXyo.js",
+    "assets/schemas-IZRseGQ9.js",
+    "assets/preview-CzvotWnc.css",
+    "src/features/intro/__tests__/evidence/unicode-length/preview.html"
+  ],
+  "post_run_nonsemantic_changes": {
+    "src/shared/validation/text.ts": {
+      "tested_sha256": "6874e0c437563d820f00337bcd254fdbfea1356c7e4414ff0e80aed12aa04a39",
+      "delivery_sha256": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",
+      "change": "Removed one trailing blank line only; executable text is byte-identical."
+    }
+  }
+}

@@ -1,7 +1,7 @@
 //! Shared HTTP, world and projection policy port. Implementations resolve fresh authority.
 use async_trait::async_trait;
 pub use concert_domain::relationship::{
-    Field, PolicyDecision, PolicyQuery, PolicyStamp, RelationshipError,
+    ActorDecision, Field, PolicyDecision, PolicyQuery, PolicyStamp, RelationshipError,
 };
 
 #[async_trait]

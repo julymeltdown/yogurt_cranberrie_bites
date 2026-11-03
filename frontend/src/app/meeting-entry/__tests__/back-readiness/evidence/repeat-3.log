@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/qa-back-readiness/frontend
+
+
+ Test Files  2 passed (2)
+      Tests  10 passed (10)
+   Start at  03:29:56
+   Duration  1.55s (transform 795ms, setup 0ms, import 800ms, tests 1.30s, environment 548ms)
+

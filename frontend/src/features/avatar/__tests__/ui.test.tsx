@@ -11,13 +11,13 @@ function setup(strict = false) { const f = harness(); owned.push(f); const view 
 describe('FE13 accessible editor', () => {
   it('mounts through strict effects, previews selections and cancels without persisting them', async () => {
     const f = setup(true)
-    await screen.findByRole('img', { name: 'Draft outfit preview' })
-    expect(screen.getByRole('heading', { name: 'DRESS UP' })).toBeInTheDocument()
+    await screen.findByRole('img', { name: 'Draft outfit preview' }); fireEvent.click(screen.getByRole('tab', { name: 'Presets' }))
+    expect(screen.getByRole('heading', { name: 'CUSTOMIZE' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Save outfit' })).toBeDisabled()
     expect(screen.getByRole('button', { name: 'fixture unsupported' })).toBeDisabled()
     fireEvent.change(screen.getByLabelText('hair'), { target: { value: 'hair_second' } })
     expect(screen.getByRole('button', { name: 'Save outfit' })).toBeEnabled()
-    fireEvent.click(screen.getByRole('button', { name: 'Cancel changes' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Reset draft' }))
     expect(screen.getByLabelText('hair')).toHaveValue('hair_fixture')
     expect(f.requests.filter(r => r.method === 'PUT')).toHaveLength(0)
     fireEvent.click(screen.getByRole('button', { name: 'fixture alternate' }))
@@ -26,7 +26,7 @@ describe('FE13 accessible editor', () => {
     expect(f.controller.read().persisted?.revision).toBe(2)
   })
   it('keeps draft visible through conflict and allows explicit adoption of the saved outfit', async () => {
-    const f = setup(); await screen.findByRole('img', { name: 'Draft outfit preview' })
+    const f = setup(); await screen.findByRole('img', { name: 'Draft outfit preview' }); fireEvent.click(screen.getByRole('tab', { name: 'Presets' }))
     f.setMode('conflict'); fireEvent.click(screen.getByRole('button', { name: 'fixture alternate' })); fireEvent.click(screen.getByRole('button', { name: 'Save outfit' }))
     await screen.findByRole('button', { name: 'Check latest saved outfit' })
     expect(screen.getByRole('button', { name: 'Save outfit' })).toBeDisabled(); expect(screen.getByLabelText('hair')).toHaveValue('hair_second')
@@ -38,7 +38,7 @@ describe('FE13 accessible editor', () => {
     expect(f.requests.filter(r => r.method === 'PUT')).toHaveLength(1)
   })
   it('erases mounted pixels synchronously on policy cleanup and on unmount', async () => {
-    const f = setup(); await screen.findByRole('img', { name: 'Draft outfit preview' }); const canvas = f.container.querySelector('canvas')!
+    const f = setup(); await screen.findByRole('img', { name: 'Draft outfit preview' }); fireEvent.click(screen.getByRole('tab', { name: 'Presets' })); const canvas = f.container.querySelector('canvas')!
     act(() => { f.privacy.changePolicy(f.privacy.capture(), 'suspended') })
     expect(canvas.width).toBe(0); expect(f.container.querySelector('canvas')).toBeNull(); expect(screen.getByRole('button', { name: 'Save outfit' })).toBeDisabled()
     f.unmount(); expect(f.controller.read().draft).toBeNull(); expect(f.previews.every(p => p.disposed)).toBe(true)

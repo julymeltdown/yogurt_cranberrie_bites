@@ -1,0 +1,126 @@
+{
+  "kind": "ILLUSTRATED_EXPORT_SOURCE_RECEIPT",
+  "browser": "156.0.8078.80",
+  "resources": [
+    {
+      "path": "world/illustrated/revenge-ground.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 96285,
+      "sha256": "sha256:aa889f913f8b518409529130fd6710f78f12cb40f28d746ce83c4a01a04aab8e",
+      "source": "world/illustrated/revenge-ground.svg"
+    },
+    {
+      "path": "world/illustrated/revenge-landmarks.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 583100,
+      "sha256": "sha256:602503514f088937720f580983e2d9c214fc2835860bf42253ffa8cf9c6ef6cb",
+      "source": "world/illustrated/revenge-landmarks.svg"
+    },
+    {
+      "path": "world/illustrated/revenge-scene.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 552479,
+      "sha256": "sha256:584bb7de9a3e032d9ec6c90cae4c6751fce65d5943475f9e7e4498f38372236e",
+      "source": "world/illustrated/revenge-scene.svg"
+    },
+    {
+      "path": "world/illustrated/revenge-landmarks-atlas.png",
+      "width_px": 768,
+      "height_px": 512,
+      "bytes": 445101,
+      "sha256": "sha256:0c2ff90ddf18a61791ca2825a25361c536e5fd8d3a86f927aeea5150db292879",
+      "source": "world/illustrated/revenge-landmarks-atlas.svg"
+    },
+    {
+      "path": "world/illustrated/revenge-terrain-tiles.png",
+      "width_px": 256,
+      "height_px": 128,
+      "bytes": 1931,
+      "sha256": "sha256:4cfaf3d2907e5c463a9e251095a149599e6b50033fa3f54cb04d03a71fe86b69",
+      "source": "world/illustrated/revenge-terrain-tiles.svg"
+    },
+    {
+      "path": "world/illustrated/parade-ground.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 96414,
+      "sha256": "sha256:19a2450268ae02dd52331bbcac6b19b4d5a36462eeacf973c36af688bf638dea",
+      "source": "world/illustrated/parade-ground.svg"
+    },
+    {
+      "path": "world/illustrated/parade-landmarks.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 567228,
+      "sha256": "sha256:82b20290522aff6b35e8ff24ccbe8476c90eb4bbaf8c3d8223e585107128fe84",
+      "source": "world/illustrated/parade-landmarks.svg"
+    },
+    {
+      "path": "world/illustrated/parade-scene.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 544653,
+      "sha256": "sha256:db0b712ae4026b51729122a7dd992866793872fb7373f7cf76a6aad5e252d798",
+      "source": "world/illustrated/parade-scene.svg"
+    },
+    {
+      "path": "world/illustrated/parade-landmarks-atlas.png",
+      "width_px": 768,
+      "height_px": 512,
+      "bytes": 423491,
+      "sha256": "sha256:06314ddf23ef02c2fa0432ded5c3f317287d9a08d014fcb1b382aeaf8af577ed",
+      "source": "world/illustrated/parade-landmarks-atlas.svg"
+    },
+    {
+      "path": "world/illustrated/parade-terrain-tiles.png",
+      "width_px": 256,
+      "height_px": 128,
+      "bytes": 1941,
+      "sha256": "sha256:e49f7ce3c01eb32bdc2c651f285a86ef3c3ebf3ee10570dc57a364cc9c5a3283",
+      "source": "world/illustrated/parade-terrain-tiles.svg"
+    },
+    {
+      "path": "world/illustrated/danger-ground.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 96210,
+      "sha256": "sha256:dd82b20521f8032c2813cb3f842d719bfe1b328afc607094effecd6d499973bc",
+      "source": "world/illustrated/danger-ground.svg"
+    },
+    {
+      "path": "world/illustrated/danger-landmarks.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 580161,
+      "sha256": "sha256:bade82235c4bedcc91091d2ef21036aa8064ba01eec8508087cc30d8ee04b6d1",
+      "source": "world/illustrated/danger-landmarks.svg"
+    },
+    {
+      "path": "world/illustrated/danger-scene.png",
+      "width_px": 1152,
+      "height_px": 896,
+      "bytes": 555605,
+      "sha256": "sha256:325e88a4cb6c7c6fa5be71d38f56d17f479733174b408bb685d95f466a155dba",
+      "source": "world/illustrated/danger-scene.svg"
+    },
+    {
+      "path": "world/illustrated/danger-landmarks-atlas.png",
+      "width_px": 768,
+      "height_px": 512,
+      "bytes": 440906,
+      "sha256": "sha256:ec273042bc867552b76d1144ce002fbb1b63825a0c67f2ba3bba089dd2b6ca8d",
+      "source": "world/illustrated/danger-landmarks-atlas.svg"
+    },
+    {
+      "path": "world/illustrated/danger-terrain-tiles.png",
+      "width_px": 256,
+      "height_px": 128,
+      "bytes": 1912,
+      "sha256": "sha256:06cc8ea6f68f931ef122b5de5f9c3323b54a2e03f03bbc3eb3f73db4063c27ee",
+      "source": "world/illustrated/danger-terrain-tiles.svg"
+    }
+  ]
+}

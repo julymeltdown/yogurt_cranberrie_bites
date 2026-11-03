@@ -1,0 +1,163 @@
+{
+  "task": "FE19-ENTRY",
+  "status": "MOCK_READY",
+  "handoff": "READY",
+  "base": "fe0c3359b53bf928fd5d43fe7fdb646f9cdf03de",
+  "branch": "codex/mcr-fe-FE19-entry",
+  "scope": "NEW Places lifecycle/provider/routes; native synthetic existing map/Phaser/camera, not default root or live server/venue/device acceptance",
+  "source_sha256": {
+    "frontend/src/app/places-entry/__tests__/fixture.ts": "a319f5b5e7b2acd5228eeca037778e32f872264640ee8eb62dc4e5f3f8d07841",
+    "frontend/src/app/places-entry/__tests__/native.mjs": "e3c9633c767d826b347a89afa2bfed5bcf7b4916218bb009622382b4c8c7e192",
+    "frontend/src/app/places-entry/__tests__/owner.test.ts": "e621adc234aa7285bf89374a0098a93e0719897bb3ffa80218d1002c7bab39e7",
+    "frontend/src/app/places-entry/__tests__/preview.html": "cbef6699c50fe409740e471589c414d20ef7613e49a58829e805d67342bae8f3",
+    "frontend/src/app/places-entry/__tests__/preview.tsx": "ef3b9ac2c979967576f3d963a7271d1b518a227dbbf6581420fe0a26747189c5",
+    "frontend/src/app/places-entry/__tests__/routes.test.tsx": "f60eeaba7e72f8216432d7f95df2437a03acb04d791f206c6074900eb7004c64",
+    "frontend/src/app/places-entry/index.ts": "bf86889f5bc5dc3ffb560dd65212261a0d76e4e07186dc0e78ce9c0a66b05cd5",
+    "frontend/src/app/places-entry/owner.ts": "d8dc03c6fa7e08a1bc22504fe6f84140c886970a9a4b697759ab5e66b381ddf9",
+    "frontend/src/app/places-entry/provider.tsx": "ca59285cd6b4556a0f3b59144288ef9ae1bda6e974cfe704581ea48317e33e4c"
+  },
+  "readonly_source_contract_reference_sha256": {
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "docs/mcr/project-assessment.md": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+    "docs/mcr/execution-plan.md": "e833d39d89f13f7eed605bd30f6ba82ab81be81d4247435893c3d5435cca5763",
+    "docs/mcr/design/ui-ux-reference-review.md": "baaff0eb88a2d77c27a5a405bb28156137f2e78e647d3a7c094dd3ce823574e9",
+    "docs/mcr/frontend/places-help.md": "61d5a6748f482aefc230ea4c57ede464f540fa83b0a57114e86c34997a52238d",
+    "docs/mcr/frontend/map-visual.md": "9a4a42577ad31d299ba1db68edf13407d8f96e79186d6a25c14a2b4ac80bac53",
+    "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "frontend/src/features/places/model/controller.ts": "2c2fee61d377effe63c2494c11b55d0ddac3e939da49b4a48310cdb1e67a81d4",
+    "frontend/src/features/places/model/contract.ts": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee",
+    "frontend/src/features/places/ui/Places.tsx": "987eb1b0b103fee10471258195427dfd4fa7117667fede0be5a0905e1971e1b2",
+    "frontend/src/features/places/ui/places.css": "276253177957a24a0297eaa0b3614c495696ab4faa33be5c73514ad0d7a75a8a",
+    "frontend/src/features/places/__tests__/fixtures/data.ts": "f19893c015a971f96e5bc93fa651b84087706ba195d989bd5f37c53e15a79e20",
+    "frontend/src/features/places/__tests__/fixtures/preview.tsx": "e5953a7a1bdd2277a2e5b8729df83506d14645b3ae4851d58badfa08dacfc1ab",
+    "frontend/src/app/account-entry/owner.ts": "02f2c4b27997c1e474efa86253543bc4f4f6e1ff59309c3863a210981dbe840e",
+    "frontend/src/app/account-entry/provider.tsx": "0ce22f22bcb4a36d031b29e17ec18b332550965a6bc983601a2bda3f9b4836a3",
+    "frontend/src/app/world-entry/root-features.tsx": "442a363a59a2a9a389c93118397a904099a668440ceccd511f0e0c90f7455418",
+    "frontend/src/app/ports.ts": "71741772296f3590ef3d8e04b7c5e462d4410f7e18f575e44cf0775c379b2be7",
+    "frontend/src/app/router.tsx": "6626b51bd8bfa3589dff42ab0166ec05bd07438b83cb83e5bffe21b7d32d1eb2",
+    "frontend/src/app/routes.ts": "e49ceffdc2e6e52bfba8e361b727504268fab264763c124878a556ee7f677829",
+    "frontend/src/app/WorldShell.tsx": "9418ecaa41689bcdf2d1a15872097bb2672d29786602a14e5251fa308f4ed27b",
+    "frontend/src/app/world-entry/production.ts": "3ed2b333a3ecb1800dad576a665e3d36ad06de56a1c5736d8bced55cc4c789d4",
+    "frontend/src/features/auth/model/session.ts": "dae6680d1f4a0600b6d3012639fd82c9317d63d1a55eb856e5c4dc81f9a5dc53",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/world/runtime.ts": "ca4ebd13cecded807d2a283c973503a3428f0ad57af5d62f6223f03b25314ed3",
+    "frontend/src/world/map/resources.ts": "829e8e8c901223307e5ba8bcf4a306e01e12f7d09f7b08bc9c4f884c0d0ead4a",
+    "frontend/src/world/camera/port.ts": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9",
+    "frontend/src/world/input/controller.ts": "598c4719e73a8f5c8ca99e7cb513aa8c22bfdb70ae46d6548307791d8d718476",
+    "contracts/generated/mcr-core.openapi.json": "c8de71d5f3dfc125fd3a5206bc404a76df39367a45fa6c3f67ed6323de91c15d",
+    "contracts/assets/v1/map-manifest.schema.json": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800",
+    "contracts/assets/v1/common.schema.json": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/src/world/__tests__/fixtures/movement-data.ts": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7",
+    "contracts/fixtures/assets/map-manifest.json": "0cccde2c009a44cc2355dfa15ef2d030bc7b85be6f58bec7470108dba46562f7",
+    "frontend/src/features/places/__tests__/places.test.ts": "4afcd0d31c9e6324f114877f9b44d2f7e230d0bb3aadb1c8b577a0bb77eebfb6",
+    "frontend/src/features/places/__tests__/places-ui.test.tsx": "b4d2f2f2fc38700ec6aee365176ca1fe5ed128cf0c865a035d8bca98f995e8f8"
+  },
+  "evidence_sha256": {
+    "frontend/src/app/places-entry/__tests__/evidence/detail-360.png": "6232ae38061908f1e86396bb12b6ce92dff180414756855539f2379d7ebfb6f9",
+    "frontend/src/app/places-entry/__tests__/evidence/detail-390.png": "d6d09222f145863661559c0814132744dfe9cab6abb239c2aa8dc97b38bd25cc",
+    "frontend/src/app/places-entry/__tests__/evidence/detail-430.png": "2c5f59254c69b8c10d27c6243de14ba9fc70b684fed660b85b804f896afa723a",
+    "frontend/src/app/places-entry/__tests__/evidence/direct-detail-360.png": "6232ae38061908f1e86396bb12b6ce92dff180414756855539f2379d7ebfb6f9",
+    "frontend/src/app/places-entry/__tests__/evidence/direct-detail-390.png": "d6d09222f145863661559c0814132744dfe9cab6abb239c2aa8dc97b38bd25cc",
+    "frontend/src/app/places-entry/__tests__/evidence/direct-detail-430.png": "2c5f59254c69b8c10d27c6243de14ba9fc70b684fed660b85b804f896afa723a",
+    "frontend/src/app/places-entry/__tests__/evidence/initial-tests-failed.log": "200b6598a23f655346ee852d2f7558830c53158d2754baf2c694cfeb1faf6b57",
+    "frontend/src/app/places-entry/__tests__/evidence/initial-types-failed.log": "930fbfe545d2f5e4dddd940804f2cfbfcce1a87ce48b784dce7b8cbd64f27c7f",
+    "frontend/src/app/places-entry/__tests__/evidence/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/app/places-entry/__tests__/evidence/loaded-360.png": "137bae4ca6be5144a3e8a52cec5179dad42b9cf00760e0f70e468d40b04000ab",
+    "frontend/src/app/places-entry/__tests__/evidence/loaded-390.png": "a8f81394f911370554bfb096d91bd5c5fc6f735580e7aae989e080d096545063",
+    "frontend/src/app/places-entry/__tests__/evidence/loaded-430.png": "668713ba9ead1a983fc37a489c51edbc4d8ee361b227cb4a7e7a86787c621608",
+    "frontend/src/app/places-entry/__tests__/evidence/mismatch-360.png": "fb6c314be2c1f8138eca00d9700bc83784e6c7546e6b4957213a7054060b6996",
+    "frontend/src/app/places-entry/__tests__/evidence/mismatch-390.png": "b623e0ab798a5a7674ac99abcf669009f5d73b4fcdb6d41e2f6519e21dccde7f",
+    "frontend/src/app/places-entry/__tests__/evidence/mismatch-430.png": "f53b2179720b03fbf753f490353210a19c3883c9a75b73af0ae068f156a0ea86",
+    "frontend/src/app/places-entry/__tests__/evidence/native-build.log": "266bf002d1357d2b2874fa861577d33c8a982a4c2651783e2c7b846064b91507",
+    "frontend/src/app/places-entry/__tests__/evidence/native.json": "ff5c3a039fd98db638b8cff15ea4805b530ef34c80cd31cb3d45732785b7ca54",
+    "frontend/src/app/places-entry/__tests__/evidence/origin.json": "806e4f6cecd5721a4f73f603c7090885f2492cfaea17df5c7a3233f08e4f6261",
+    "frontend/src/app/places-entry/__tests__/evidence/plan.json": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "frontend/src/app/places-entry/__tests__/evidence/recovered-360.png": "137bae4ca6be5144a3e8a52cec5179dad42b9cf00760e0f70e468d40b04000ab",
+    "frontend/src/app/places-entry/__tests__/evidence/recovered-390.png": "a8f81394f911370554bfb096d91bd5c5fc6f735580e7aae989e080d096545063",
+    "frontend/src/app/places-entry/__tests__/evidence/recovered-430.png": "668713ba9ead1a983fc37a489c51edbc4d8ee361b227cb4a7e7a86787c621608",
+    "frontend/src/app/places-entry/__tests__/evidence/tests.log": "a432dd5d515ae7a1ee78a39f18376a707461837ca39a0c1192128e9e663a66ef",
+    "frontend/src/app/places-entry/__tests__/evidence/types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/app/places-entry/__tests__/evidence/unavailable-360.png": "bc019884338999a2c3a1d34f7d79a35cd794d31776625c73449952d2a65ac382",
+    "frontend/src/app/places-entry/__tests__/evidence/unavailable-390.png": "904f730bb59dc0b662a072453bebd2e5a973e46bf7bd58c14e4543000049a909",
+    "frontend/src/app/places-entry/__tests__/evidence/unavailable-430.png": "c8aaecdecbb5b7f4d3f1bbd028f8b79785989dd4a67c5a24955ab3b79a912198"
+  },
+  "checks": [
+    {
+      "name": "focused Places/entry/shell/routes",
+      "command": "node frontend/node_modules/vitest/vitest.mjs run --root frontend --configLoader runner --no-cache src/app/places-entry/__tests__ src/features/places/__tests__ src/app/__tests__/shell.test.tsx src/app/__tests__/routes.test.ts",
+      "exit": 0,
+      "files": 6,
+      "passed": 150
+    },
+    {
+      "name": "strict combined types",
+      "command": "node frontend/node_modules/typescript/bin/tsc --noEmit --incremental false --project frontend/tsconfig.json",
+      "exit": 0
+    },
+    {
+      "name": "strict combined lint",
+      "command": "node node_modules/oxlint/bin/oxlint src vite.config.ts",
+      "cwd": "frontend",
+      "exit": 0
+    },
+    {
+      "name": "production app and fixture build; native browser",
+      "command": "node frontend/src/app/places-entry/__tests__/native.mjs",
+      "exit": 0,
+      "screenshots": 18,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "browser": "156.0.8078.80",
+      "warnings": [
+        "Existing >500kB Phaser chunk warning"
+      ]
+    },
+    {
+      "name": "C08 static source origin",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exit": 0
+    },
+    {
+      "name": "planning consistency only",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0
+    }
+  ],
+  "initial_failures": [
+    {
+      "log": "initial-tests-failed.log",
+      "exit": 1,
+      "finding": "New policy UI test initially expected feature fallback synchronously while actual shell was checking a new bootstrap. Corrected to assert synchronous owner/data eviction, then wait for committed unavailable panel. No production failure hidden."
+    },
+    {
+      "log": "initial-types-failed.log",
+      "exit": 2,
+      "finding": "New Testing Library ByRole options incorrectly used Playwright exact; removed unsupported option. Prior exploratory TransportError kind was also corrected to existing invalid-request before final compilation."
+    }
+  ],
+  "provenance": [
+    {
+      "source": "frontend/src/features/places/__tests__/fixtures/preview.tsx",
+      "source_revision": "fe0c3359b53bf928fd5d43fe7fdb646f9cdf03de",
+      "destination": "frontend/src/app/places-entry/__tests__/preview.tsx",
+      "changes": "Test-only derivative; replaces separate bare session/http and per-fixture controller with canonical SessionController and actual new Places provider/routes; retains synthetic FE14 loader, Phaser, FE15 attachMovement."
+    }
+  ],
+  "root_gates": [
+    "Publish existing qualified LoadedMap manifest/trusted expected pins/captured SessionScope and existing FE15 camera under one real current-mount privacy/lifetime release; never bootstrap-cast or construct another owner.",
+    "PlaceCameraPort has read only and no public disposed/subscription state: producer must abort/withdraw binding before attachment disposal/replacement, and publish every map/camera owner change. Pointer and missing/throwing snapshot fences supplement this requirement.",
+    "Mount provider once in stable shell and register map/detail elements in reserved router. Default createAppRouter/main remains unchanged.",
+    "Existing detail header Back parent is /world; browser Back returns to map and All places works. Reserved route parent correction to /world/map remains Delivery-owned."
+  ],
+  "limits": [
+    "No default root wiring, real admission/world socket/backend/venue/device/multiuser/approved map or character art acceptance.",
+    "Fixtures explicitly synthetic and test-only; no production fixture mode/fallback art/endpoint/storage/session.",
+    "Mismatch/removed-target latches remain in unchanged controller for one valid release; do not manufacture replacement bindings to clear them. Actual full-document recovery verified."
+  ]
+}

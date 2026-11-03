@@ -1,0 +1,7 @@
+.sync-fixture-world { max-inline-size: 320px; margin: 1rem auto; overflow: hidden; }
+.sync-fixture-world canvas { display: block; inline-size: 100%; block-size: auto; }
+.sync-fixture { max-inline-size: 42rem; margin: auto; }
+.sync-fixture > p, .sync-fixture > div > p { margin-block: .75rem; }
+.sync-fixture nav { display: flex; gap: .5rem; margin-block: .75rem; }
+.sync-fixture nav button { min-inline-size: 44px; min-block-size: 44px; padding: .5rem 1rem; border: 2px solid #201D1D; background: #FAF6ED; font: inherit; }
+.sync-fixture nav button[aria-pressed="true"] { background: #201D1D; color: #FAF6ED; }

@@ -19571,7 +19571,11 @@
               "PROFILE",
               "FRIEND",
               "POST",
-              "NOTIFICATION"
+              "NOTIFICATION",
+              "CONCERT_TICKETS",
+              "CONCERT_SESSIONS",
+              "CONCERT_SHARING",
+              "CONCERT_PRIVATE_DATA"
             ]
           },
           "status": {

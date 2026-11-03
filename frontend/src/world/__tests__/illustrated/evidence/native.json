@@ -1,0 +1,3653 @@
+{
+  "result": "PASS",
+  "qualification": "Actual loadMap, bounded same-origin resource reader, single incumbent Phaser/runtime/camera; original source scenery and AR02 geometry. TEST ONLY rectangular depth marker, no avatar fallback/art, canonical Auth/C03, socket/live multiplayer, devices or product acceptance.",
+  "browser": "156.0.8078.80",
+  "pins": {
+    "src/world/map/manifest.ts": "d765ce6b7e47a76a2763fde32c6a9e4bde244beb872e761d2c6f73b757cd033c",
+    "src/world/map/resources.ts": "af2652ab28d7d43b080c80de7c69b5e7cbd9fc27a2843092b4bd79b155f2767e",
+    "src/world/scenes/MapScene.ts": "560c616d4e984c73a7ffd4d790ff3ad9169a39b0952730ca1527de442fdfc801",
+    "src/world/illustrated/model.ts": "a53157f04d6482f1265b4d37bf08e45d832628fb046c5a5e1a4db2cac56bd29e",
+    "src/world/illustrated/phaser.ts": "c602992cba72af1918968ef74b8d96cc2cbc2e5fd23c1e596af08119b19eda8d",
+    "src/world/theme/compatibility.ts": "4be7d0f3806ff612be6cf911b3651ba3098c68377b8d722d87aa1ed44d83b15f",
+    "src/app/world-entry/resolver.ts": "8f58c12f03031ad44056c9ea2c6355fe18e9a5f44b1b112eaabf905ddcf98726",
+    "public/world/illustrated-runtime/bindings.json": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "cases": [
+        {
+          "theme": "REVENGE",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 252,
+              "scrollY": 0,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:0b3555abadc387480c48e65a0eee8b081894aabb78cabd3af0fa9bdaf1090330",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 220,
+              "scrollY": 186,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:781c2deaaaf9ef97552b068ce12396f157802eb8d17d67d02b0f8828325e44b7",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 28,
+              "scrollY": 154,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:b0f0dc7ef702e83e96c236eb98624b90c31cafe3fa34d6bbddf46db083aa8803",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 732,
+              "scrollY": 90,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:d63e0f8b9c7a4364bc1518bb96a01660a85e461a06589d94d69106495a15c0ff",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 732,
+              "scrollY": 212,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:e6696b0288662b93d6bbdb94e21886640795774cd5aa2406a75a5909382c6e2d",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 252,
+              "scrollY": 0,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:531ea4abc2c63acad8be12a77e2187faa8b30fa38b3dd2fb74e660ea4dd10b71",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 220,
+              "scrollY": 186,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:eebec301911a67f70c1e0a44bc424f05eba2a91c3c44c35bc283399718455fc6",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 28,
+              "scrollY": 154,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:8396312d8d284d78b3f3ecb524158f7254f21eec27684dfc6140018b14afda47",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 732,
+              "scrollY": 90,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:c287f5f3a1513795838e8988ad5b67b6ea9b45f38660c4530dd40f4122650786",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 732,
+              "scrollY": 212,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:3308c10fce3b14bedb2d2c57ddd66b30720cf658f4de00bedb6640632f6a8168",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 252,
+              "scrollY": 0,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:0a7316bd4d26d46bc59df26bd905794939936f520eafe9cd76fec54b58aaad60",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 220,
+              "scrollY": 186,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:cdac7e1d32e8a271fdbc0c5d208734ecdd58844576956c53e5b577ca39dbe11f",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 28,
+              "scrollY": 154,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:c90cb15cdfbbeb20f27661434387c4e33c80d056c63d6e349c21a7430d61f998",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 732,
+              "scrollY": 90,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:fdc68a36898eb601e36343fbcfcf6522c211a115b41c178e952fb04eddc3507d",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 732,
+              "scrollY": 212,
+              "width": 360,
+              "height": 684
+            },
+            "signature": "sha256:7b6a9991bb4cd242e88f5e4b0261da0bddf2d2cb02918a09db384e7f31040dea",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 984960,
+            "magenta": 0
+          }
+        }
+      ],
+      "behind": {
+        "different": 0,
+        "maxDifference": 0,
+        "examples": [],
+        "channels": 984960,
+        "magenta": 81
+      },
+      "front": {
+        "different": 0,
+        "maxDifference": 0,
+        "examples": [],
+        "channels": 984960,
+        "magenta": 392
+      },
+      "atomic": {
+        "before": {
+          "phase": "ready",
+          "theme": "DANGER",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 547109,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 360,
+            "height": 684
+          },
+          "signature": "sha256:28f8c38a0f7d9860e86cfd2b38cbfb631754384eb5c9a80cdf8f23e7c45cbadd",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "held": {
+          "phase": "ready",
+          "theme": "DANGER",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 547109,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 360,
+            "height": 684
+          },
+          "signature": "sha256:28f8c38a0f7d9860e86cfd2b38cbfb631754384eb5c9a80cdf8f23e7c45cbadd",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "after": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 360,
+            "height": 684
+          },
+          "signature": "sha256:2050c4b9300f92d19aace44cc45a1fb53e9985243864790601d5f19aeac64f0d",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "peakTextures": 6,
+        "peakBytes": 12451840
+      },
+      "negative": [
+        {
+          "kind": "digest",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "dimension",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "budget",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "geometry",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "missing-binding",
+          "reason": "Error: Missing qualified binding"
+        }
+      ],
+      "cancelled": {
+        "before": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 360,
+            "height": 684
+          },
+          "signature": "sha256:2050c4b9300f92d19aace44cc45a1fb53e9985243864790601d5f19aeac64f0d",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png"
+          ]
+        },
+        "after": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 360,
+            "height": 684
+          },
+          "signature": "sha256:2050c4b9300f92d19aace44cc45a1fb53e9985243864790601d5f19aeac64f0d",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png"
+          ]
+        }
+      },
+      "cleanup": {
+        "canvases": 0,
+        "decodedImages": 0,
+        "disposals": 1,
+        "sceneTextures": 0
+      }
+    },
+    {
+      "width": 390,
+      "cases": [
+        {
+          "theme": "REVENGE",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:2f141ed46202cf2ec34163635cfd8434dd6aa8c50869714386e30c120304618b",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 205,
+              "scrollY": 186,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:1a4203a10a5852e4521adda4e9a220b5204f179a59246cbdd9e2a51935c7d0db",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 13,
+              "scrollY": 154,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:7a8f8fd14569eba5bcfc2aa9057cb078703052cf43cedf65efbc31e8cef6581f",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 717,
+              "scrollY": 90,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:6b938003ee32c30ad457617331d0d7977b75c6ef75a91105771f495986bfd5a8",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 717,
+              "scrollY": 212,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:567a5e88915a1f93eb0a96558b73282e9acc6ead3dfd183996cb940549c9dc6a",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:6650124a97a96bfac064f8dd6ff6eb8e03b6b37b1988761980e80ab258183654",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 205,
+              "scrollY": 186,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:9b37e8e9d411d543030ba0c4bd1488a4b944c1b4d5ce118d596a006c48239116",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 13,
+              "scrollY": 154,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:69a52c7f8e9ffdea40cc7845a62e158549f8263e7eb847d8675fa5ec86075c87",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 717,
+              "scrollY": 90,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:93732bd73bb90505e87a7e698261b06b203aa13410f19cc546fa3396ff7ae2a3",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 717,
+              "scrollY": 212,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:e81bf8160bf93b2fc5d6d758fb9be3fcb8c75d09b6fa1ce52ec91f83809b3fdb",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 237,
+              "scrollY": 0,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:6351e725b4060b6e535ed3ba64459856aa0c47e5a908efc57db1e878fe2c7a0a",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 205,
+              "scrollY": 186,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:4042c72d01f43911ef4df38d8a4f05fa90d6c4c0bdafb8d0ce7859819865320d",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 13,
+              "scrollY": 154,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:23e5e8f8439576d139bb429f83564d73ed5cb0f013228229cb18a4ddf63be0ed",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 717,
+              "scrollY": 90,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:2e68311eeb3c1ed905c8536b131640df3c39d0f4ad225c0d7f88ab9445ee6a78",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 717,
+              "scrollY": 212,
+              "width": 390,
+              "height": 684
+            },
+            "signature": "sha256:b80113a2da5ed619d4a6125fceba1007b684b98373d8ba07837ad73206b72db0",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1067040,
+            "magenta": 0
+          }
+        }
+      ],
+      "behind": {
+        "different": 0,
+        "maxDifference": 0,
+        "examples": [],
+        "channels": 1067040,
+        "magenta": 81
+      },
+      "front": {
+        "different": 0,
+        "maxDifference": 0,
+        "examples": [],
+        "channels": 1067040,
+        "magenta": 392
+      },
+      "atomic": {
+        "before": {
+          "phase": "ready",
+          "theme": "DANGER",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 547109,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 390,
+            "height": 684
+          },
+          "signature": "sha256:2462f6ee3981de2a1d3a5b6a3990ba996cc477832ad72510ad4ace306d075af3",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "held": {
+          "phase": "ready",
+          "theme": "DANGER",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 547109,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 390,
+            "height": 684
+          },
+          "signature": "sha256:2462f6ee3981de2a1d3a5b6a3990ba996cc477832ad72510ad4ace306d075af3",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "after": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 390,
+            "height": 684
+          },
+          "signature": "sha256:ed0a63596aa7faca2da49812ef3be642e62848c21f2710871dd9aaac43fe4bde",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "peakTextures": 6,
+        "peakBytes": 12451840
+      },
+      "negative": [
+        {
+          "kind": "digest",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "dimension",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "budget",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "geometry",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "missing-binding",
+          "reason": "Error: Missing qualified binding"
+        }
+      ],
+      "cancelled": {
+        "before": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 390,
+            "height": 684
+          },
+          "signature": "sha256:ed0a63596aa7faca2da49812ef3be642e62848c21f2710871dd9aaac43fe4bde",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png"
+          ]
+        },
+        "after": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 390,
+            "height": 684
+          },
+          "signature": "sha256:ed0a63596aa7faca2da49812ef3be642e62848c21f2710871dd9aaac43fe4bde",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png"
+          ]
+        }
+      },
+      "cleanup": {
+        "canvases": 0,
+        "decodedImages": 0,
+        "disposals": 1,
+        "sceneTextures": 0
+      }
+    },
+    {
+      "width": 430,
+      "cases": [
+        {
+          "theme": "REVENGE",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 217,
+              "scrollY": 0,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:46daf702cbb6a528aa85cab3778313f8ab34762a6f524dcc4285607404ccf59f",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 185,
+              "scrollY": 186,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:65d5ad2c860a4c0fb25d3db0d0e509b241bde17a9f46e29cd467eb140c9903cc",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 154,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:c919d1cf1e3e0c2eb8edc8e53bc827b8a61bee234c25e14743ed5a50f9481cc2",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 697,
+              "scrollY": 90,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:5d913bc3e3ff5bb9cbb748128852404ccd389af51c9ebed36213031f5ea17722",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "REVENGE",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "REVENGE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 551505,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 697,
+              "scrollY": 212,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:6a3dd87c5088849abf4dbfaf579c7609116564c1e81ff6e26b8fbe9ed555fdb3",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 217,
+              "scrollY": 0,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:66b2d9ffb8b8eeeb2e2f85ed09e3e47399ec76ebbba59512a420bcd567ec7ec5",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 185,
+              "scrollY": 186,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:b184cd2e3b3496863d56b8461ae836772a9cb0fd9763c81b4cafb999fb8b2910",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 154,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:17e6f18715cda0e2bcd88539d90035800b40cd2a943db8a3ef29c73be9b10032",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 697,
+              "scrollY": 90,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:8c48794c90aa02e83095e74fad19d160a925cb06fdf70586a84dbfe8d7cece00",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "PARADE",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "PARADE",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 529746,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 697,
+              "scrollY": 212,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:abcb75c1d4f314c1d3c2adf4e77c637b7af516e5df38f001bea0c5167fadba50",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 0,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 217,
+              "scrollY": 0,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:7d0f9fcfe086978a6a08198899d4d3c8249c6d536dc55ce18b0081d9ba4e6870",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 1,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 185,
+              "scrollY": 186,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:1cdb915a6f0b7a2c3823901e709095cf679a61971deecc92be966d4b3224a602",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 2,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 0,
+              "scrollY": 154,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:09ba392e5085e81a768d08b7f9ad1ddd66ce963c25a31a13b00f448cbc9763b3",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 3,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 697,
+              "scrollY": 90,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:51c7e602f86e5aa77f4606cb69ed07a157c36cd5898150caae30579b83ef9e79",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        },
+        {
+          "theme": "DANGER",
+          "landmark": 4,
+          "state": {
+            "phase": "ready",
+            "theme": "DANGER",
+            "mounts": 1,
+            "disposals": 0,
+            "canvases": 1,
+            "skinTextures": 3,
+            "textureBytes": 6225920,
+            "measured": {
+              "textures": 3,
+              "decodedBytes": 6225920,
+              "objects": 30,
+              "peakTextures": 6,
+              "peakDecodedBytes": 12451840
+            },
+            "decodedImages": 3,
+            "transferBytes": 547109,
+            "objects": 29,
+            "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+            "camera": {
+              "zoom": 1,
+              "scrollX": 697,
+              "scrollY": 212,
+              "width": 430,
+              "height": 684
+            },
+            "signature": "sha256:761c2861753a99414f7ca20735604873f34f379b4dc8081c8ec7ceb7740f0d94",
+            "requests": [
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/revenge.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/parade.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+              "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+              "http://127.0.0.1:5173/world/themes/danger.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+              "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+              "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png"
+            ]
+          },
+          "parity": {
+            "different": 0,
+            "maxDifference": 0,
+            "examples": [],
+            "channels": 1176480,
+            "magenta": 0
+          }
+        }
+      ],
+      "behind": {
+        "different": 0,
+        "maxDifference": 0,
+        "examples": [],
+        "channels": 1176480,
+        "magenta": 81
+      },
+      "front": {
+        "different": 0,
+        "maxDifference": 0,
+        "examples": [],
+        "channels": 1176480,
+        "magenta": 392
+      },
+      "atomic": {
+        "before": {
+          "phase": "ready",
+          "theme": "DANGER",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 547109,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 430,
+            "height": 684
+          },
+          "signature": "sha256:8458cf14d0d64d6ce4ba8b51432c884ebeddd7ae5137dc71d54dc86cf0223aad",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "held": {
+          "phase": "ready",
+          "theme": "DANGER",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 547109,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 430,
+            "height": 684
+          },
+          "signature": "sha256:8458cf14d0d64d6ce4ba8b51432c884ebeddd7ae5137dc71d54dc86cf0223aad",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "after": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 430,
+            "height": 684
+          },
+          "signature": "sha256:7e8fbf662e694995312c4f622a16c0216951e717bcb2a2a15a6d4732b552de51",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png"
+          ]
+        },
+        "peakTextures": 6,
+        "peakBytes": 12451840
+      },
+      "negative": [
+        {
+          "kind": "digest",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "dimension",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "budget",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "geometry",
+          "reason": "MapError: Map resource invalid."
+        },
+        {
+          "kind": "missing-binding",
+          "reason": "Error: Missing qualified binding"
+        }
+      ],
+      "cancelled": {
+        "before": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 430,
+            "height": 684
+          },
+          "signature": "sha256:7e8fbf662e694995312c4f622a16c0216951e717bcb2a2a15a6d4732b552de51",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png"
+          ]
+        },
+        "after": {
+          "phase": "ready",
+          "theme": "REVENGE",
+          "mounts": 1,
+          "disposals": 0,
+          "canvases": 1,
+          "skinTextures": 3,
+          "textureBytes": 6225920,
+          "measured": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          },
+          "decodedImages": 3,
+          "transferBytes": 551505,
+          "objects": 29,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "camera": {
+            "zoom": 1,
+            "scrollX": 0,
+            "scrollY": 0,
+            "width": 430,
+            "height": 684
+          },
+          "signature": "sha256:7e8fbf662e694995312c4f622a16c0216951e717bcb2a2a15a6d4732b552de51",
+          "requests": [
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/danger.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/danger-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/danger-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/revenge.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/revenge-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/revenge-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-landmarks-atlas.png",
+            "http://127.0.0.1:5173/world/illustrated-runtime/parade-details.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/maps/courtyard-tiled.json",
+            "http://127.0.0.1:5173/world/themes/parade.png",
+            "http://127.0.0.1:5173/world/illustrated/parade-ground.png"
+          ]
+        }
+      },
+      "cleanup": {
+        "canvases": 0,
+        "decodedImages": 0,
+        "disposals": 1,
+        "sceneTextures": 0
+      }
+    }
+  ],
+  "screenshots": [
+    "revenge-landmark0-360.png",
+    "revenge-landmark1-360.png",
+    "revenge-landmark2-360.png",
+    "revenge-landmark3-360.png",
+    "revenge-landmark4-360.png",
+    "parade-landmark0-360.png",
+    "parade-landmark1-360.png",
+    "parade-landmark2-360.png",
+    "parade-landmark3-360.png",
+    "parade-landmark4-360.png",
+    "danger-landmark0-360.png",
+    "danger-landmark1-360.png",
+    "danger-landmark2-360.png",
+    "danger-landmark3-360.png",
+    "danger-landmark4-360.png",
+    "marker-behind-360.png",
+    "marker-front-360.png",
+    "revenge-landmark0-390.png",
+    "revenge-landmark1-390.png",
+    "revenge-landmark2-390.png",
+    "revenge-landmark3-390.png",
+    "revenge-landmark4-390.png",
+    "parade-landmark0-390.png",
+    "parade-landmark1-390.png",
+    "parade-landmark2-390.png",
+    "parade-landmark3-390.png",
+    "parade-landmark4-390.png",
+    "danger-landmark0-390.png",
+    "danger-landmark1-390.png",
+    "danger-landmark2-390.png",
+    "danger-landmark3-390.png",
+    "danger-landmark4-390.png",
+    "marker-behind-390.png",
+    "marker-front-390.png",
+    "revenge-landmark0-430.png",
+    "revenge-landmark1-430.png",
+    "revenge-landmark2-430.png",
+    "revenge-landmark3-430.png",
+    "revenge-landmark4-430.png",
+    "parade-landmark0-430.png",
+    "parade-landmark1-430.png",
+    "parade-landmark2-430.png",
+    "parade-landmark3-430.png",
+    "parade-landmark4-430.png",
+    "danger-landmark0-430.png",
+    "danger-landmark1-430.png",
+    "danger-landmark2-430.png",
+    "danger-landmark3-430.png",
+    "danger-landmark4-430.png",
+    "marker-behind-430.png",
+    "marker-front-430.png"
+  ],
+  "errors": []
+}

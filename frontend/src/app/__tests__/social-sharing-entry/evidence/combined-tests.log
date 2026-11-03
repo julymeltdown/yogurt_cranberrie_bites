@@ -1,0 +1,8 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-social-sharing-entry/frontend
+
+
+ Test Files  17 passed (17)
+      Tests  406 passed (406)
+   Start at  06:04:44
+   Duration  15.32s (transform 1.11s, setup 0ms, import 2.17s, tests 10.09s, environment 1.89s)

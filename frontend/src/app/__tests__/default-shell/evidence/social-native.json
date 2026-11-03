@@ -1,0 +1,48 @@
+{
+  "result": "PASS",
+  "qualification": "Actual default createAppRoutes/WorldShell/SocialFeatures, canonical Auth/HTTP, existing one Phaser/production world owner and C05 MockSocket. Deterministic in-process C04 fixture/readiness and geometric terrain; no live backend, approved avatar/media/provider, sharing, two-user, device or load acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "mounts": 1,
+      "peak": 1,
+      "posts": 1,
+      "retainedKey": "3236310a-931d-43d3-becd-993bc60ba577",
+      "disposals": 1,
+      "sceneClosed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mounts": 1,
+      "peak": 1,
+      "posts": 1,
+      "retainedKey": "3b24caca-e74f-4a51-86d8-356cbcb060f5",
+      "disposals": 1,
+      "sceneClosed": 1
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "mounts": 1,
+      "peak": 1,
+      "posts": 1,
+      "retainedKey": "7b134612-ed2b-447d-97a8-90ccb1f84818",
+      "disposals": 1,
+      "sceneClosed": 1
+    }
+  ],
+  "screenshots": [
+    "social-default-inbox-360.png",
+    "social-default-profile-360.png",
+    "social-default-pending-360.png",
+    "social-default-inbox-390.png",
+    "social-default-profile-390.png",
+    "social-default-pending-390.png",
+    "social-default-inbox-430.png",
+    "social-default-profile-430.png",
+    "social-default-pending-430.png"
+  ],
+  "errors": []
+}

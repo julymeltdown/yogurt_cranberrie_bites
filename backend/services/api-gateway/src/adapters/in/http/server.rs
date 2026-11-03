@@ -67,6 +67,7 @@ pub fn with_transport_layers(
             config.cors_allowed_origins.clone(),
             super::browser_auth::boundary,
         ))
+        .layer(from_fn(super::concert_bootstrap::protect_response))
 }
 
 // Restrict replay to command results, never read-by-POST profile batches or

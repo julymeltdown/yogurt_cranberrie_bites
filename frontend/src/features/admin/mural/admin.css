@@ -1,0 +1,16 @@
+.mcr-ops { max-width: 48rem; margin-inline: auto; padding: 1rem; color: #211f1d; background: #faf7ef; font-family: Arial, sans-serif; line-height: 1.5; overflow-wrap: anywhere; }
+.mcr-ops h1 { font-size: 1.8rem; line-height: 1.15; margin-block: .5rem 1.5rem; }
+.mcr-ops h2 { font-size: 1.2rem; margin-block: 1.5rem .5rem; }
+.mcr-ops code { font-size: .9em; overflow-wrap: anywhere; }
+.mcr-ops button, .mcr-ops input, .mcr-ops select, .mcr-ops textarea { box-sizing: border-box; font: inherit; min-height: 44px; min-width: 44px; max-width: 100%; border: 1px solid #211f1d; border-radius: 0; padding: .6rem; color: inherit; background: #fffdf7; }
+.mcr-ops button { cursor: pointer; margin-block: .25rem; }
+.mcr-ops button:disabled { opacity: .6; cursor: default; }
+.mcr-ops :focus-visible { outline: 3px solid #245475; outline-offset: 3px; }
+.mcr-ops label { display: grid; gap: .3rem; }
+.mcr-ops__form { display: grid; gap: 1rem; margin-block: 1rem; }
+.mcr-ops fieldset { min-width: 0; border: 1px solid #777; padding: .75rem; }
+.mcr-ops__coordinates { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem; }
+.mcr-ops__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.mcr-ops__review { border-block: 1px solid #777; padding-block: 1rem; margin-block: 1rem; }
+.mcr-ops__steps { padding-inline-start: 1.5rem; }
+.mcr-ops__steps li { padding-block: .4rem; }

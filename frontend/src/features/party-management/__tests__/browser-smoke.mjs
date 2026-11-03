@@ -6,7 +6,7 @@ import {createServer} from 'vite'
 import {chromium,expect} from '@playwright/test'
 const root=resolve(import.meta.dirname,'../../../../..'),out=resolve(import.meta.dirname,'evidence/browser');await mkdir(out,{recursive:true})
 const report={result:'FAIL',scope:'FE23 isolated native UI against deterministic C04 fetch fixture and canonical Auth/privacy; no real backend/world/device/physical authority acceptance.',widths:[],checks:[]}
-report.sourceHashes=Object.fromEntries(await Promise.all(['model/controller.ts','ui/PartyManagement.tsx','ui/management.css','__tests__/harness.ts','__tests__/preview.tsx'].map(async p=>[p,createHash('sha256').update(await readFile(resolve(import.meta.dirname,'..',p))).digest('hex')])))
+report.sourceHashes=Object.fromEntries(await Promise.all(['../party-authoring/model/time.ts','model/controller.ts','ui/PartyManagement.tsx','ui/management.css','__tests__/harness.ts','__tests__/preview.tsx'].map(async p=>[p,createHash('sha256').update(await readFile(resolve(import.meta.dirname,'..',p))).digest('hex')])))
 const server=await createServer({root:resolve(root,'frontend'),logLevel:'error',server:{host:'127.0.0.1',port:5198,strictPort:true}});let browser
 try{await server.listen();browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});report.browser=browser.version()
 for(const width of [360,390,430,1280]){const page=await browser.newPage({viewport:{width,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message))

@@ -1,0 +1,78 @@
+{
+  "result": "PASS",
+  "scope": "Committed AR02 source-map compatibility with all three AR04 textures; no final release manifests",
+  "map_commit": "e394b5851eb2bab203087aee57920f54481d4ea5",
+  "texture_source_commit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+  "current_parser_checkout_head": "9ab0a4c28b73051f89f1a0d792a091d1768637db",
+  "parser_sources": {
+    "frontend/src/world/map/json.ts": "sha256:74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/map/tiled.ts": "sha256:65af544bfb262f5d266b5986b43dc05dc03b7179e55b061095d032a623e83a00"
+  },
+  "map_resource": {
+    "path": "frontend/public/world/maps/courtyard-tiled.json",
+    "sha256": "sha256:a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d"
+  },
+  "geometry_hash_from_committed_map_inputs": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+  "used_gids": {
+    "terrain": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "overdraw": [
+      9,
+      10,
+      12,
+      14
+    ]
+  },
+  "common_tile_semantics": "PASS; explicit AR02 canopy = AR04 shrub_canopy alias only",
+  "accepted": [
+    {
+      "theme": "REVENGE",
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/revenge.png",
+        "sha256": "sha256:245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "parser": "PASS",
+      "ar02_browser_resource_receipt": "PASS: exact committed texture bytes"
+    },
+    {
+      "theme": "PARADE",
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/parade.png",
+        "sha256": "sha256:3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "parser": "PASS",
+      "ar02_browser_resource_receipt": "PASS: exact committed texture bytes"
+    },
+    {
+      "theme": "DANGER",
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/danger.png",
+        "sha256": "sha256:1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "parser": "PASS",
+      "ar02_browser_resource_receipt": "PASS: exact committed texture bytes"
+    }
+  ],
+  "node": "v26.7.0",
+  "typescript": "6.0.3",
+  "limits": [
+    "No production MapManifest/ThemeManifest or registry binding",
+    "No avatar art, real devices, Phaser runtime or live multiuser acceptance"
+  ]
+}

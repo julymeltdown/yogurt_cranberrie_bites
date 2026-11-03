@@ -4,13 +4,16 @@ use crate::rpc::{self, proto, VerifiedBootstrap};
 use async_trait::async_trait;
 use chrono::Utc;
 use concert_application::bootstrap::*;
+use concert_application::world_ticket::{AvatarPin, MapPin};
 use concert_domain::{
-    AssetId, AuthUserId, AvatarSelection, EventId, EventPhase, Preferences, Revision,
+    AssetId, AuthUserId, AvatarSelection, EventId, EventPhase, ParticipantKey, Preferences,
+    Revision,
 };
 use serde_json::Value;
 use sqlx::{postgres::PgRow, PgPool, Row};
 use std::{fmt, path::Path, sync::Arc};
 use tonic::{Request, Response, Status};
+use uuid::Uuid;
 
 mod json;
 pub mod release;
@@ -106,6 +109,53 @@ pub struct BootstrapPostgresRepository {
 impl BootstrapPostgresRepository {
     pub fn new(pool: PgPool) -> Self {
         Self { pool }
+    }
+
+    /// Read the current event/participant/restriction state without creating or
+    /// changing participation. It shares the same locked tables as Bootstrap,
+    /// but has no default-write side effect.
+    pub async fn world_admission(
+        &self,
+        event: EventId,
+        user: AuthUserId,
+    ) -> Result<(i64, i64, bool), BootstrapError> {
+        let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        let phase: String = sqlx::query_scalar(
+            "select phase from public.concert_events where event_id=$1 for share",
+        )
+        .bind(event.uuid())
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(unavailable)?
+        .ok_or(BootstrapError::EventNotFound)?;
+        if !matches!(phase.as_str(), "OPEN" | "LIVE") {
+            return Err(BootstrapError::EventNotOpen);
+        }
+        let state: Option<(String, i64)> = sqlx::query_as(
+            "select state,restriction_revision from public.concert_event_admissions where event_id=$1 and user_id=$2 for share",
+        )
+        .bind(event.uuid())
+        .bind(user.uuid())
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(unavailable)?;
+        let participant: Option<i64> = sqlx::query_scalar(
+            "select revision from public.concert_participants where event_id=$1 and user_id=$2 for share",
+        )
+        .bind(event.uuid())
+        .bind(user.uuid())
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(unavailable)?;
+        tx.commit().await.map_err(unavailable)?;
+        let (state, restriction_revision) = state.ok_or(BootstrapError::Denied)?;
+        if state != "ACTIVE" {
+            return Err(BootstrapError::Denied);
+        }
+        let participant_revision = participant.ok_or(BootstrapError::Denied)?;
+        let permitted = matches!(restriction_revision, 0..=9_007_199_254_740_991)
+            && matches!(participant_revision, 1..=9_007_199_254_740_991);
+        Ok((restriction_revision, participant_revision, permitted))
     }
 }
 
@@ -311,7 +361,122 @@ impl BootstrapService {
     pub fn repository(&self) -> &Arc<BootstrapPostgresRepository> {
         &self.repository
     }
+
+    pub fn release_scope(&self) -> Result<(EventId, i64), BootstrapServiceError> {
+        let document: serde_json::Value =
+            serde_json::from_slice(self.release.release().bootstrap_json())
+                .map_err(|_| BootstrapServiceError::ReleaseUnavailable)?;
+        let event = document["event"]["event_id"]
+            .as_str()
+            .and_then(|value| value.parse::<Uuid>().ok())
+            .filter(|value| !value.is_nil())
+            .ok_or(BootstrapServiceError::ReleaseUnavailable)?;
+        let revision = document["event"]["revision"]
+            .as_i64()
+            .filter(|value| (1..=9_007_199_254_740_991).contains(value))
+            .ok_or(BootstrapServiceError::ReleaseUnavailable)?;
+        Ok((EventId::from_uuid(event), revision))
+    }
+
+    /// Configuration-only current release pins. They are not a claim that the
+    /// account/event has been authorized; the world composition must combine
+    /// these with fresh Auth and Concert ownership reads before ticket issuance.
+    pub fn canonical_pins(
+        &self,
+        event: EventId,
+    ) -> Result<WorldReleasePins, BootstrapServiceError> {
+        let (release_event, _) = self.release_scope()?;
+        if event != release_event {
+            return Err(BootstrapServiceError::ReleaseUnavailable);
+        }
+        let document: serde_json::Value =
+            serde_json::from_slice(self.release.release().bootstrap_json())
+                .map_err(|_| BootstrapServiceError::ReleaseUnavailable)?;
+        let map = document["map_manifest"]
+            .as_object()
+            .ok_or(BootstrapServiceError::ReleaseUnavailable)?;
+        let avatar = document["avatar_manifest"]
+            .as_object()
+            .ok_or(BootstrapServiceError::ReleaseUnavailable)?;
+        let asset = |value: Option<&serde_json::Value>| {
+            AssetId::new(
+                value
+                    .and_then(serde_json::Value::as_str)
+                    .ok_or(BootstrapServiceError::ReleaseUnavailable)?
+                    .to_owned(),
+            )
+            .map_err(|_| BootstrapServiceError::ReleaseUnavailable)
+        };
+        let revision = |value: Option<&serde_json::Value>| {
+            Revision::new(
+                value
+                    .and_then(serde_json::Value::as_i64)
+                    .ok_or(BootstrapServiceError::ReleaseUnavailable)?,
+            )
+            .map_err(|_| BootstrapServiceError::ReleaseUnavailable)
+        };
+        Ok(WorldReleasePins {
+            event_id: event,
+            map: MapPin::new(
+                asset(map.get("map_id"))?,
+                revision(map.get("map_revision"))?,
+            ),
+            avatar: AvatarPin::new(
+                asset(avatar.get("manifest_id"))?,
+                revision(avatar.get("manifest_version"))?,
+            ),
+            captured_at: Utc::now(),
+        })
+    }
+
+    /// Canonical event/participant/restriction read for World issuance. The
+    /// underlying query shares Bootstrap's event/admission locks but never
+    /// invokes Bootstrap's participant/default write path.
+    pub async fn world_admission(
+        &self,
+        user: AuthUserId,
+        event: EventId,
+        session_family_id: uuid::Uuid,
+        request_id: uuid::Uuid,
+    ) -> Result<WorldAdmission, BootstrapError> {
+        let admission = BootstrapAdmission::from_verified(
+            user,
+            event,
+            session_family_id,
+            request_id,
+            "world admission".into(),
+            None,
+            Utc::now(),
+        )?;
+        let session = concert_application::identity::SessionId::new(session_family_id.to_string())
+            .map_err(|_| BootstrapError::Unauthenticated)?;
+        let (restriction_revision, _, permitted) = self
+            .repository
+            .world_admission(admission.key().event_id, admission.key().user_id)
+            .await?;
+        if !permitted {
+            return Err(BootstrapError::Denied);
+        }
+        Ok(WorldAdmission {
+            key: ParticipantKey {
+                event_id: event,
+                user_id: user,
+            },
+            session_id: session,
+            event_id: event,
+            restriction_revision,
+        })
+    }
 }
+
+pub struct WorldAdmission {
+    pub key: ParticipantKey,
+    pub session_id: concert_application::identity::SessionId,
+    pub event_id: EventId,
+    pub restriction_revision: i64,
+}
+
+pub type WorldReleasePins = concert_application::world_ticket::ReleasePins;
 
 #[tonic::async_trait]
 impl proto::concert_service_server::ConcertService for BootstrapService {

@@ -1016,3 +1016,85 @@ async fn authority_expiry_at_commit_rolls_back_effect_receipt_and_outbox() -> an
     }
     Ok(())
 }
+
+#[tokio::test]
+async fn actor_only_guard_has_no_pair_side_effect_or_target_permission() -> anyhow::Result<()> {
+    let (p, q) = fixture().await?;
+    let policy = PgRelationshipPolicy::new(p.clone(), TestAuthority);
+    let mut tx = p.begin().await?;
+    let result = policy.authorize_actor_in(&mut tx, actor(q)).await?;
+    assert_eq!(result.key(), actor(q));
+    assert!(result.valid_until() > result.checked_at());
+    let pairs: i64 =
+        sqlx::query_scalar("select count(*) from concert_relationship_pairs where event_id=$1")
+            .bind(q.event.uuid())
+            .fetch_one(&mut *tx)
+            .await?;
+    assert_eq!(pairs, 0);
+    tx.commit().await?;
+    let mut tx = p.begin().await?;
+    assert_eq!(
+        PgRelationshipPolicy::new(p.clone(), UnavailableAuthority)
+            .authorize_actor_in(&mut tx, actor(q))
+            .await,
+        Err(RelationshipError::Unavailable)
+    );
+    tx.rollback().await?;
+    Ok(())
+}
+#[tokio::test]
+async fn actor_guard_then_root_avoids_root_then_self_pair_deadlock() -> anyhow::Result<()> {
+    let (p, q) = fixture().await?;
+    sqlx::query("insert into relationship_test_roots(event_id) values($1)")
+        .bind(q.event.uuid())
+        .execute(&p)
+        .await?;
+    let mut writer = p.begin().await?;
+    sqlx::query("select event_id from concert_events where event_id=$1 for share")
+        .bind(q.event.uuid())
+        .fetch_one(&mut *writer)
+        .await?;
+    sqlx::query("select event_id from relationship_test_roots where event_id=$1 for update")
+        .bind(q.event.uuid())
+        .fetch_one(&mut *writer)
+        .await?;
+    let (ready_tx, ready_rx) = tokio::sync::oneshot::channel();
+    let other = p.clone();
+    let reader = tokio::spawn(async move {
+        let policy = PgRelationshipPolicy::new(other.clone(), TestAuthority);
+        let mut tx = other.begin().await?;
+        policy.authorize_actor_in(&mut tx, actor(q)).await?;
+        let _ = ready_tx.send(());
+        sqlx::query("select event_id from relationship_test_roots where event_id=$1 for share")
+            .bind(q.event.uuid())
+            .fetch_one(&mut *tx)
+            .await?;
+        policy.authorize_in(&mut tx, q, None).await?;
+        tx.commit().await?;
+        Ok::<_, anyhow::Error>(())
+    });
+    ready_rx.await?;
+    let policy = PgRelationshipPolicy::new(p.clone(), TestAuthority);
+    let completion = tokio::time::timeout(
+        std::time::Duration::from_secs(2),
+        policy.authorize_in(
+            &mut writer,
+            PolicyQuery {
+                subject: q.actor,
+                field: Field::SafetySelf,
+                ..q
+            },
+            None,
+        ),
+    )
+    .await;
+    if completion.is_err() {
+        reader.abort();
+        writer.rollback().await?;
+        anyhow::bail!("actor guard acquired a self pair before the resource root")
+    }
+    completion??;
+    writer.commit().await?;
+    reader.await??;
+    Ok(())
+}

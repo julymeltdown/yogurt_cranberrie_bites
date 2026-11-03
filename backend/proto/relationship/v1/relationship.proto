@@ -1,0 +1,108 @@
+syntax = "proto3";
+package relationship.v1;
+// Internal bounded observations only; never mutation/reveal authority or leases.
+message RelationshipRead {
+  string actor_id = 1;
+  string event_id = 2;
+  string subject_id = 3;
+  string session_family_id = 4;
+  string request_id = 5;
+  // PUBLIC_PROFILE, PRESENCE, INTERACTION, SAFETY_SELF, SAFETY_INTERACTION, PRIVATE_HANDLE.
+  string purpose = 6;
+  int64 expires_unix_micros = 7;
+}
+message AuthRelationshipObservation {
+  RelationshipRead query = 1;
+  int64 observed_at_unix_micros = 2;
+  int64 valid_until_unix_micros = 3;
+  string owner_epoch = 4;
+  int64 revision = 5;
+  bool actor_active = 6;
+  bool session_live = 7;
+  bool subject_active = 8;
+}
+message FriendRelationshipObservation {
+  RelationshipRead query = 1;
+  int64 observed_at_unix_micros = 2;
+  int64 valid_until_unix_micros = 3;
+  string owner_epoch = 4;
+  int64 revision = 5;
+  bool actor_blocks_subject = 6;
+  bool subject_blocks_actor = 7;
+  bool actor_deleted = 8;
+  bool subject_deleted = 9;
+}
+service AuthConcertRelationshipService {
+  rpc ReadCurrent(RelationshipRead) returns (AuthRelationshipObservation);
+}
+service FriendConcertRelationshipService {
+  rpc ReadCurrent(RelationshipRead) returns (FriendRelationshipObservation);
+}
+
+// Internal system-consumer replay, separate from actor-authorized ReadCurrent.
+// Only authenticated Concert workloads may call these methods. These records
+// invalidate cached authority; they never grant membership, consent or access.
+message InvalidationCursor {
+  string owner_epoch = 1; // Canonical nonzero UUID; independent per owner.
+  int64 sequence = 2; // Committed contiguous cursor, 0..9007199254740991.
+}
+message ReadInvalidationHeadRequest {
+  string consumer_id = 1; // Stable World owner UUID, not an authorization claim.
+  string request_id = 2; // Fresh canonical UUID; echoed without substitution.
+}
+message ReadInvalidationHeadResponse {
+  ReadInvalidationHeadRequest query = 1;
+  InvalidationCursor head = 2;
+}
+message ReadInvalidationsRequest {
+  string consumer_id = 1;
+  string request_id = 2;
+  InvalidationCursor after = 3;
+  uint32 limit = 4; // Required 1..256; no implicit default or unbounded reads.
+}
+enum InvalidationReason {
+  INVALIDATION_REASON_UNSPECIFIED = 0; // Always rejected by consumers.
+  AUTH_SESSION_CHANGED = 1;
+  AUTH_USER_AUTHORITY_CHANGED = 2;
+  AUTH_CREDENTIALS_CHANGED = 3;
+  AUTH_USER_REMOVED = 4;
+  FRIEND_RELATIONSHIP_CHANGED = 5;
+  FRIEND_USER_REMOVED = 6;
+}
+message InvalidationUserScope {
+  string user_id = 1;
+}
+message InvalidationFamilyScope {
+  string user_id = 1;
+  string session_family_id = 2;
+}
+message InvalidationPairScope {
+  string actor_id = 1;
+  string subject_id = 2; // Distinct user. Consumers invalidate both directions.
+}
+message InvalidationSignal {
+  InvalidationCursor cursor = 1;
+  string signal_id = 2; // Stable canonical UUID across delivery attempts.
+  InvalidationReason reason = 3;
+  oneof scope {
+    InvalidationUserScope user = 4;
+    InvalidationFamilyScope family = 5;
+    InvalidationPairScope pair = 6;
+  }
+}
+message ReadInvalidationsResponse {
+  ReadInvalidationsRequest query = 1;
+  InvalidationCursor next = 2; // Last returned signal, or query.after if empty.
+  InvalidationCursor head = 3; // Committed high-water mark from the same snapshot.
+  repeated InvalidationSignal signals = 4; // Contiguous after+1 through next.
+}
+// No remote acknowledge/prune method: producers retain the journal. The World
+// owner durably advances its own cursor only after local invalidation is applied.
+service AuthConcertInvalidationService {
+  rpc ReadHead(ReadInvalidationHeadRequest) returns (ReadInvalidationHeadResponse);
+  rpc ReadAfter(ReadInvalidationsRequest) returns (ReadInvalidationsResponse);
+}
+service FriendConcertInvalidationService {
+  rpc ReadHead(ReadInvalidationHeadRequest) returns (ReadInvalidationHeadResponse);
+  rpc ReadAfter(ReadInvalidationsRequest) returns (ReadInvalidationsResponse);
+}

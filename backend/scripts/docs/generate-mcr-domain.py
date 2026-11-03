@@ -151,6 +151,8 @@ def domain_operation(row, document, references, media_types):
               "x-mcr-rule": row["rule"], "x-mcr-write-policy": row["write_policy"]}
     if row["rule"] == "moderate_user":
         target["x-mcr-authority-scope"] = row["authority_scope"]
+    if "command_modes" in row:
+        target["x-mcr-command-modes"] = copy.deepcopy(row["command_modes"])
     target["parameters"].extend(query_parameters(document, query))
     if row["response"] == "BINARY":
         success = response({}, "Sanitized authorized media bytes")

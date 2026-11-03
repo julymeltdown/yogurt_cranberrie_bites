@@ -1,0 +1,18 @@
+.mcr-inbox { color: var(--mcr-ink, #201d1d); background: var(--mcr-paper, #faf6ed); padding: clamp(1rem, 4vw, 2rem); max-width: 52rem; margin-inline: auto; overflow-wrap: anywhere; }
+.mcr-inbox header { margin-bottom: 1.5rem; }
+.mcr-inbox h1 { font-size: clamp(1.7rem, 6vw, 2.5rem); margin: .25rem 0 .5rem; letter-spacing: .04em; }
+.mcr-inbox h2 { font-size: 1.1rem; margin: 0; }
+.mcr-inbox p { margin-block: .65rem; }
+.mcr-inbox button { font: inherit; min-height: 44px; padding: .6rem .85rem; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: .25rem; cursor: pointer; }
+.mcr-inbox button:disabled { opacity: .55; cursor: default; }
+.mcr-inbox button:focus-visible, .mcr-inbox input:focus-visible { outline: 3px solid var(--mcr-red, #a22635); outline-offset: 3px; }
+.inbox-eyebrow { font-size: .85rem; text-transform: uppercase; letter-spacing: .07em; }
+.inbox-controls, .inbox-row-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; }
+.inbox-controls label { display: flex; align-items: center; min-height: 44px; gap: .5rem; }
+.inbox-controls input { width: 20px; height: 20px; }
+.inbox-count { font-weight: 650; }
+.inbox-note { font-size: .9rem; color: var(--mcr-muted, #605952); }
+.inbox-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+.inbox-list > li { padding-block: 1.1rem; border-top: 1px solid var(--mcr-cream, #e5dfd4); }
+.inbox-row-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .4rem 1rem; }
+.inbox-row-heading span { font-size: .85rem; }

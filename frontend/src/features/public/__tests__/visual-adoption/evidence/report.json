@@ -1,0 +1,386 @@
+{
+  "result": "PASS",
+  "task": "UIV02 public/auth actual adoption",
+  "assignmentBase": "453312121ae7539c027b9deb19009f9f569d4040",
+  "testedCheckoutHead": "453312121ae7539c027b9deb19009f9f569d4040",
+  "node": "v24.22.2",
+  "browser": "156.0.8078.80",
+  "sourceHashes": {
+    "frontend/src/features/public/ui/Landing.tsx": "d74a9fe1ddedfb751bd7931b1bd12b8bf3a68a6f9a1adeca62a3463d46e1b52e",
+    "frontend/src/features/public/ui/PublicFrame.tsx": "b00e9f6995b8d65d44272a4a55a121f4b1739168ef1b997ce5f891111ecb0682",
+    "frontend/src/features/public/ui/public.css": "23c31dcb9d35019c33e1a30211d80012dd25891b2dc13d6d27f43d1e1cbb50a0",
+    "frontend/src/features/auth/ui/SignIn.tsx": "57aa4d7a60eb8d40f77278bc2b0f879c973fef087053ee7be38d9b98cd2b3065",
+    "frontend/src/features/auth/ui/sign-in.css": "5c93592c26a164ee2fadf27ef37356e129780de6e404efd37a5d13c0e43dcfd0",
+    "frontend/src/features/public/__tests__/visual-adoption/browser.mjs": "88fb6c27322c966aa3cb0c015b3c5af717c3e231bddda856127eafbaa85b04e6",
+    "frontend/src/features/public/__tests__/visual-adoption/preview.html": "ad65d74770eabbe8f1541f17beb8a5c35b720bfe820fc2ecc5476503c75062f7",
+    "frontend/src/features/public/__tests__/visual-adoption/preview.tsx": "93889a05252e5ba6f658dac20dd52f6ee0230157ff7e44ec19ca982258c1922b",
+    "frontend/src/features/auth/__tests__/visual-adoption/preview.html": "f703b19c86e6ca805eb34f7682de6006d8a742d157f6512d8eb04b4fb3e1d350",
+    "frontend/src/features/auth/__tests__/visual-adoption/preview.tsx": "694b09d157dc104eb08bb7a9651621e1bc8fc366d9d207becbe9a1a5137e14c4"
+  },
+  "screenshots": [
+    {
+      "lane": "public",
+      "file": "production-home-360.png",
+      "width": 360,
+      "sha256": "9b1d8e0e92e77695ac75079dee59009d0c75ae3202544e54e04fede00961d36e"
+    },
+    {
+      "lane": "auth",
+      "file": "production-login-unavailable-360.png",
+      "width": 360,
+      "sha256": "5d776a913b0764e75395e18f3a48203995c0075be1b6da9962f5cf5006e455fe"
+    },
+    {
+      "lane": "public",
+      "file": "production-document-unavailable-360.png",
+      "width": 360,
+      "sha256": "bb0202ba6136533124c11659b3a6fb9da7a7165daf386c1b11a21a5a429399fc"
+    },
+    {
+      "lane": "auth",
+      "file": "production-signup-regression-360.png",
+      "width": 360,
+      "sha256": "a6040ea3c65a323094f27dd1952269d8af5890a43ba671db855d490d6365fab3"
+    },
+    {
+      "lane": "auth",
+      "file": "production-reset-regression-360.png",
+      "width": 360,
+      "sha256": "fd91160780548ac4470a70a7894f7bc24abf6df8aa43efc2ce394f57f332fd47"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-anonymous-360.png",
+      "width": 360,
+      "sha256": "05d156e3532fe703d3194c5d6edcb1c84a7d4bc2e661d6f6350d834c4e972939"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-entry-checking-360.png",
+      "width": 360,
+      "sha256": "a136dc6a0e26eb99e41b0076c44509f1747bee13c218fd9223bc778ad15ba19c"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-entry-error-360.png",
+      "width": 360,
+      "sha256": "e3d47bc473d44576b9b5e37f6a9479535ade4759fdca86cf569c01804c0c1f15"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-loading-360.png",
+      "width": 360,
+      "sha256": "a306f549c4cf46df3128a8c7282a4188109e734585a6cb4acdb0472fc0a02a0e"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-published-360.png",
+      "width": 360,
+      "sha256": "c1868e6981177bd4b827ac386f2eca8ca2c331d00ea81da416e8674423e364f2"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-error-360.png",
+      "width": 360,
+      "sha256": "d595f1cae5bfd52e126176deb0295c0b85f675d6bdecb0884cb969e64745b64d"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-populated-360.png",
+      "width": 360,
+      "sha256": "872fbe2d2aa2a1f5d9087bc8fc7240c94c71f1a8d7eb5b6099adf96250c6b973"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-keyboard-360.png",
+      "width": 360,
+      "sha256": "239b86445fd1f6c359995303daf1478bac05d60ab1b1d7cd802a7acb613d2fa5"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-pending-360.png",
+      "width": 360,
+      "sha256": "cdb5f56e44038c33072bb596e7a1b6510a8fb9766a5f88fc13410c7f808052a8"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-credentials-error-360.png",
+      "width": 360,
+      "sha256": "26b80c74bf1212c661aa397066f1ace90933b68c9cbe8c64f2ef180edcb9d74e"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-capabilities-loading-360.png",
+      "width": 360,
+      "sha256": "f29e274405a4d7eb78e06561b47eba86efb7e499d07c9dd65218b1245ed38162"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-capabilities-error-360.png",
+      "width": 360,
+      "sha256": "9da2a7fcc93b165282ca0783bfba1086e0714745f1658ac7e68bfe3e44ae36c8"
+    },
+    {
+      "lane": "public",
+      "file": "production-home-390.png",
+      "width": 390,
+      "sha256": "e0c184a5a84b26ae5038c039fb4a7c195626852a2d1fab4f0c3e880bea6b9894"
+    },
+    {
+      "lane": "auth",
+      "file": "production-login-unavailable-390.png",
+      "width": 390,
+      "sha256": "883214edabe8aa1b47a3ad6ee8ed2e93d7afe523d8dcd04b837d78216a80aa1b"
+    },
+    {
+      "lane": "public",
+      "file": "production-document-unavailable-390.png",
+      "width": 390,
+      "sha256": "f7b9479aa485cbe003b971977030f2eff759da253df65ad820a6caa5c62cff54"
+    },
+    {
+      "lane": "auth",
+      "file": "production-signup-regression-390.png",
+      "width": 390,
+      "sha256": "b2578b6b7a345b807ced526366ab7a23adde194a3ff6d78ceae05d9815d06328"
+    },
+    {
+      "lane": "auth",
+      "file": "production-reset-regression-390.png",
+      "width": 390,
+      "sha256": "826527d95d6171b9cf0dbea31b765f646f8c45c2562876453d4cd4b7eaddec19"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-anonymous-390.png",
+      "width": 390,
+      "sha256": "8e77a413440e41fe1d13d4c4ef9fa86513586dd0ed05cc6449ffcf4b7aa1d60f"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-entry-checking-390.png",
+      "width": 390,
+      "sha256": "b9df10205fbab901fea51545ba32fe6a9667c805b16c8816748a1daa4951a7da"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-entry-error-390.png",
+      "width": 390,
+      "sha256": "72ea172defec1d9b5f0645c37f46f24f54521df947a2929c8ca78ea7f6831a2f"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-loading-390.png",
+      "width": 390,
+      "sha256": "8552a7def109828ca850ce3a3f259bc6b9307a7ad33dc56e9ea11b958081fd36"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-published-390.png",
+      "width": 390,
+      "sha256": "fee9dc7b28388484a654ed8a244847158cd64da43b75a487fe4a074348e76799"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-error-390.png",
+      "width": 390,
+      "sha256": "dab0b1e13533567ee1c3d2b31f168bf7ce588b59cf51b9af597da5be70b2d75a"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-populated-390.png",
+      "width": 390,
+      "sha256": "5b80dd3c74c182f9e1f286835046681b41d2bc325e7962ec88bf72bad37c2078"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-keyboard-390.png",
+      "width": 390,
+      "sha256": "47aa13162e6b42dca8539ed062edd309fe6859cbc6fd7490319ef6f1c4e3d019"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-pending-390.png",
+      "width": 390,
+      "sha256": "04c93b5df2c6b3515c29a912dfbb26c56c8c02aa187fe739f26ce1ff2d66b26d"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-credentials-error-390.png",
+      "width": 390,
+      "sha256": "1d1f1c5b475239f643808fde1bc64063aca8ae1deefbfe899b00346d165b7305"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-capabilities-loading-390.png",
+      "width": 390,
+      "sha256": "930b76447617000b715ab884189525b0bad895cc46cbda7df12c63cbce507efd"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-capabilities-error-390.png",
+      "width": 390,
+      "sha256": "9978bf172b4aadfffadd6eec2fd6b5bace7deb3573e77af9329742b6c21415a9"
+    },
+    {
+      "lane": "public",
+      "file": "production-home-430.png",
+      "width": 430,
+      "sha256": "96e1bb5b646c01e3de8423cdfacabc4284db85db0370c33bff68910453c0dfe1"
+    },
+    {
+      "lane": "auth",
+      "file": "production-login-unavailable-430.png",
+      "width": 430,
+      "sha256": "fce40c72c757cbd118f77f6deb2693ea78ad3eb0815e989aa73adabf51c375b2"
+    },
+    {
+      "lane": "public",
+      "file": "production-document-unavailable-430.png",
+      "width": 430,
+      "sha256": "b25b70fab2ba02cebcdbb15afd5e53f7b75109677250606d9f9a38204d0dae7a"
+    },
+    {
+      "lane": "auth",
+      "file": "production-signup-regression-430.png",
+      "width": 430,
+      "sha256": "eba3abb2b939988b7142436ab99f3d3397016eb080da81758078dbdee1f58d41"
+    },
+    {
+      "lane": "auth",
+      "file": "production-reset-regression-430.png",
+      "width": 430,
+      "sha256": "3e193628dd642cd916599fa54ee985ac419a922560ddc34f27c2d76a719de480"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-anonymous-430.png",
+      "width": 430,
+      "sha256": "8d5b18658bf1d8588d15cdcd7d26033ef523320efb935f7191d285927de833bb"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-entry-checking-430.png",
+      "width": 430,
+      "sha256": "0e9d89d8ea6e5c90b45bdad4eef9803a82f1d36625927a8c4b5204634e765e3f"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-entry-error-430.png",
+      "width": 430,
+      "sha256": "74f9be909390fcb1528328f9d9585fcd37c011422ca6f68b75c43c419ef0bdd0"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-loading-430.png",
+      "width": 430,
+      "sha256": "c1cf707c1d8d4ed75b853d06dc96696abbaf07e51a7a51e90911acdc112d7b8c"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-published-430.png",
+      "width": 430,
+      "sha256": "6398c47d62e060aa510f872fbd06180b3c6f8b0b93ab0a0a0352796888a89a9c"
+    },
+    {
+      "lane": "public",
+      "file": "fixture-document-error-430.png",
+      "width": 430,
+      "sha256": "f3ac65b3a0fc192095a53625babb7cb5f6661e65b09c9f2b8b736cb1a228b362"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-populated-430.png",
+      "width": 430,
+      "sha256": "44e0d90123bb8fa13f549456c7f181250fc11809c25d56e822386a04a4040040"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-keyboard-430.png",
+      "width": 430,
+      "sha256": "8d8a0b42b0da26780f9ffecf3a83df663ee9f50e329d889cbe008075df3bf93a"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-pending-430.png",
+      "width": 430,
+      "sha256": "d3b6a869f30a03cdc71cbcb645a7b67ad284430c20d76ea9e2e4421300cff338"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-credentials-error-430.png",
+      "width": 430,
+      "sha256": "1c656b3835f828f8983a3f196895efdd3efb98ebbe252e80259abe7bb04bf61f"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-capabilities-loading-430.png",
+      "width": 430,
+      "sha256": "c8067cac38cda97213856af9146ebdf43c63b752d18d4fc79fbeaa6c410601c5"
+    },
+    {
+      "lane": "auth",
+      "file": "fixture-capabilities-error-430.png",
+      "width": 430,
+      "sha256": "e163aec1c5b39ad085d8c33b133853d5c1cf29b76d14e0e48a4be5fb7e4967ee"
+    }
+  ],
+  "results": [
+    {
+      "width": 360,
+      "height": 844,
+      "productionRoutes": "PASS",
+      "fixtureStates": "PASS",
+      "keyboard44pxContrast": "PASS",
+      "documentsOtherAuth": "PASS",
+      "browserBack": "PASS",
+      "noWorldOrExternal": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "productionRoutes": "PASS",
+      "fixtureStates": "PASS",
+      "keyboard44pxContrast": "PASS",
+      "documentsOtherAuth": "PASS",
+      "browserBack": "PASS",
+      "noWorldOrExternal": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "productionRoutes": "PASS",
+      "fixtureStates": "PASS",
+      "keyboard44pxContrast": "PASS",
+      "documentsOtherAuth": "PASS",
+      "browserBack": "PASS",
+      "noWorldOrExternal": "PASS"
+    }
+  ],
+  "requests": [
+    {
+      "width": 360,
+      "method": "POST",
+      "path": "/api/auth/login",
+      "scenario": "synthetic credential denial"
+    },
+    {
+      "width": 390,
+      "method": "POST",
+      "path": "/api/auth/login",
+      "scenario": "synthetic credential denial"
+    },
+    {
+      "width": 430,
+      "method": "POST",
+      "path": "/api/auth/login",
+      "scenario": "synthetic credential denial"
+    }
+  ],
+  "errors": [],
+  "scope": "Actual production build routes with no configured event, plus clearly labeled synthetic canonical-Auth/public-document fixtures. No live login, approved artwork, native device or release acceptance.",
+  "reference": {
+    "path": "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  }
+}

@@ -1,11 +1,16 @@
 import type { WorldCamera } from './camera/port'
+import type { createPhaserMuralScene } from './mural/phaser'
+import type { MuralScenePort } from './mural/sink'
 import type { AvatarScenePort } from './avatar/scene'
+import type { SceneryDiagnostics } from './illustrated/model'
+import { createSceneryOverview } from './illustrated/overview'
 import { MapError } from './map/json'
 import { limits } from './map/manifest'
 import { abortable, type LoadedMap } from './map/resources'
 import { validateReplacement } from './theme/compatibility'
 export type RuntimeState = Readonly<{ phase: 'stopped' | 'loading' | 'ready' | 'unavailable' | 'error' | 'disposed';
   reason?: 'invalid' | 'load-failed' | 'timeout' | 'engine-failed' | 'host-busy'; widthPx?: number; heightPx?: number; spawnFoot?: Readonly<{ x: number; y: number }> }>
+export type IncumbentMuralScene = (anchor: Parameters<typeof createPhaserMuralScene>[1], key?: string) => MuralScenePort & Required<Pick<MuralScenePort, 'onClose'>>
 export interface EngineLease {
   ready: Promise<void>; closed: Promise<void>
   resize(width: number, height: number): void
@@ -15,9 +20,13 @@ export interface EngineLease {
   replaceSkin?(map: LoadedMap): void
   readonly camera?: WorldCamera
   readonly avatarScene?: AvatarScenePort
+  /** Existing scene only. Caller must independently qualify the anchor and C04 policy. */
+  readonly muralScene?: IncumbentMuralScene
+  /** Bounded incumbent-scene allocation observations, with no scene/texture capability. */
+  readonly readScenery?: () => SceneryDiagnostics
 }
 export interface ControlAttachment { setEnabled(value: boolean): void; dispose(): void }
-export interface ControlContext { readonly host: HTMLElement; readonly map: LoadedMap; readonly camera: WorldCamera; readonly signal: AbortSignal; readonly avatarScene?: AvatarScenePort }
+export interface ControlContext { readonly host: HTMLElement; readonly map: LoadedMap; readonly camera: WorldCamera; readonly signal: AbortSignal; readonly avatarScene?: AvatarScenePort; readonly muralScene?: IncumbentMuralScene }
 export type AttachControls = (context: ControlContext) => ControlAttachment
 export type EngineFactory = (host: HTMLElement, map: LoadedMap) => EngineLease
 export interface RuntimeOptions {
@@ -30,6 +39,7 @@ export interface RuntimeOptions {
 const claimedHosts = new WeakMap<HTMLElement, { owner: object }>()
 /** Explicitly started resource owner. No auth, network admission, avatar or production shell wiring. */
 export function createWorldRuntime(options: RuntimeOptions) {
+  const overview = createSceneryOverview()
   let state: RuntimeState = Object.freeze({ phase: 'stopped' }), generation = 0, disposed = false, visible = true, inputBlocked = false, visibilityRevision = 0
   let active: { controller: AbortController; mount: HTMLDivElement; engine: EngineLease | null; map: LoadedMap | null; controls: ControlAttachment | null;
     observer: ResizeObserver | null; resize: (() => void) | null; frame: number | null; detach: () => void; claim: { owner: object }; creating: boolean; finish: () => void } | null = null
@@ -44,6 +54,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
     if (!old) return
     skinFlight?.abort(); skinFlight = null
     ++generation; active = null; flight = null; old.controller.abort(); old.detach()
+    overview.replace(null)
     old.observer?.disconnect()
     if (old.resize) window.removeEventListener('resize', old.resize)
     if (old.frame !== null) cancelAnimationFrame(old.frame)
@@ -117,7 +128,8 @@ export function createWorldRuntime(options: RuntimeOptions) {
           if (!owned.engine.camera) throw new MapError('invalid')
           owned.creating = true
           try { owned.controls = options.attachControls({ host: options.host, map, camera: owned.engine.camera, signal: controller.signal,
-            ...(owned.engine.avatarScene ? { avatarScene: owned.engine.avatarScene } : {}) }) }
+            ...(owned.engine.avatarScene ? { avatarScene: owned.engine.avatarScene } : {}),
+            ...(owned.engine.muralScene ? { muralScene: owned.engine.muralScene } : {}) }) }
           finally { owned.creating = false; if (!current()) owned.finish() }
           if (!current()) return state
           owned.controls.setEnabled(visible && !inputBlocked)
@@ -126,6 +138,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
         const g = map.map.geometry
         publish({ phase: 'ready', widthPx: map.widthPx, heightPx: map.heightPx,
           spawnFoot: Object.freeze({ x: (map.spawn.cell_x + .5) * g.tile_width_px, y: (map.spawn.cell_y + .5) * g.tile_height_px }) })
+        if (current()) overview.replace(map)
       } catch (error) {
         if (!current()) return state
         const next: RuntimeState = error instanceof MapError && error.reason === 'unavailable' ? { phase: 'unavailable' }
@@ -176,6 +189,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
         // no longer roll it back. The next request will inherit this live skin.
         if (active !== owned || owned.controller.signal.aborted) throw new MapError('cancelled')
         owned.map = next; committed = true
+        overview.replace(next)
         previous.dispose()
       } finally { skinCommitting = false }
     } finally {
@@ -188,6 +202,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
   }
   return {
     start, stop, replaceSkin,
+    overview: Object.freeze({ read: overview.read, subscribe: overview.subscribe }),
     readSkin: () => active?.map?.theme.theme_id ?? null,
     read: () => state,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } },
@@ -198,7 +213,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
       if (active === owned && revision === visibilityRevision) owned?.engine?.setVisible(value)
     },
     setInputBlocked(value: boolean) { inputBlocked = value; active?.controls?.setEnabled(visible && !inputBlocked) },
-    dispose() { if (disposed) return; disposed = true; stop(); publish({ phase: 'disposed' }); listeners.clear() },
+    dispose() { if (disposed) return; disposed = true; stop(); overview.dispose(); publish({ phase: 'disposed' }); listeners.clear() },
     /** Allows a host adapter to await engine teardown before transferring ownership. */
     settled: () => drain,
   }
