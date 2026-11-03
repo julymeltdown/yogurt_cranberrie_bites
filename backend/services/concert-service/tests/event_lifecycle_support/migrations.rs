@@ -8,7 +8,7 @@ pub async fn qualify(server: &PgPool) -> anyhow::Result<()> {
     let full = Migrator::new(directory.clone()).await?;
     assert_eq!(
         full.iter().map(|m| m.version).collect::<Vec<_>>(),
-        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 18, 19, 20, 21, 22, 23, 24],
+        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 18, 19, 20, 21, 22, 23, 24, 25],
         "every assigned migration must be present exactly once and ordered"
     );
     use sha2::{Digest, Sha256};

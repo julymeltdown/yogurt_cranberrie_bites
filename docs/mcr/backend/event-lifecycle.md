@@ -1,13 +1,14 @@
 # BE41 event lifecycle — implementation and qualification record
 
-## READ_ONLY increment — authorization-race fix awaiting native qualification
+## READ_ONLY increment — native-qualified, full BE41 still IN_PROGRESS
 
-The earlier 21-native/23-SQL/6-pure run below is historical for source `3d65e251`.
-A subsequent owner-found authorization race is being fixed: retain actual authority
-SQL locks after the delivery wait, check conservative monotonic expiry under both
-World native/views mutexes before any mutation, then release SQL before admission
-gate/drain. World API source `e4685896` + `98235424` is consumed. Two deterministic
-race tests are authored; this revised source is NOT_RUN until recompilation.
+The earlier `3d65e251` run passed 21 native/23 SQL/6 pure checks, then developer-owned
+risk verification identified an authorization race while waiting on delivery/native
+mutexes. That source was not published as final. The fix retains actual authority
+SQL locks after the delivery wait, checks conservative monotonic expiry under both
+World native/views mutexes immediately before any mutation, then releases SQL
+before admission/drain. Two deterministic regression tests now pass. The current
+reconciled candidate passes **23 native, 23 SQL and 6 pure checks**, exit 0.
 
 The bounded READ_ONLY increment implements actual World/community closure in one
 transaction and qualifies the native command driver. It is **INTEGRATED** within
@@ -43,11 +44,15 @@ editing World-owned files:
 | `1f6b0c7a` | `6ec81cc7` merge | Narrow cfg(test) fixture access; includes published peer ancestry through `8430cd57` |
 | `3fa3f53c` | `83f0814f` cherry-pick | Narrow cfg(test) socket trace/geometry access |
 
-The native-qualified source candidate is `83f0814f` plus the subsequent owned
-28-file source-pin/driver-test patch. Intervening World Avatar compatibility
-`d9e9a00a` was intentionally excluded: it requires a newer canonical Avatar
-producer. These results use the prior synthetic Avatar metadata fixture and do
-not qualify that newer producer. Peer frontend/Friend changes inherited through
+The first native source candidate was `83f0814f` plus `3d65e251`.
+The current qualification consumes World-owned guarded invalidation source
+`e4685896` + `98235424` (cherry-picked as `cf64caa6`/`e56e2f01`) and the driver's
+retained-authority fix `3a6957e2`. Merge `9d247403` reconciles published master,
+including canonical Avatar `b13d79e6`, actual World compatibility `d9e9a00a` and
+fixture adaptation `e28549a3`. The owned forward-ledger test now includes published
+0025. Frozen current source includes that exact ledger adaptation. Avatar metadata
+remains synthetic test data; this run does not certify approved character art.
+Peer frontend/Friend changes inherited through
 merges are preserved, not authored by this assignment. `docs/source/`, contracts,
 central manifests/locks, previous migrations and root composition are unchanged
 by the lifecycle patch.
@@ -64,15 +69,23 @@ its complete binding with an insert trigger; it does not duplicate World schema.
 The community receipt has an exact scoped composite FK.
 
 `ReadOnlyCommandDriver` derives its event/pool from the actual `AdmissionBridge`.
-Input, event binding, current authority and revision are checked before native
-preparation; the existing BE15 producer reauthorizes inside the SQL transaction.
-Preflight grants no durable permission. Exact replay, conflicts and RESUME use
-canonical BE15 behavior. Fresh START follows delivery gate -> short actual native
-fence via stable operation/Event scope -> admission gate -> actual
-`pause_invalidation().await` -> existing BE15 event FOR UPDATE transaction.
-There is no SQL transaction while entering owner gates and no native mutex across
-an await. The private operation-bound token permits only this prepared READ_ONLY
-composition; later six steps require an explicitly supplied owning adapter.
+After input/event validation it waits for the delivery gate FIRST, then checks
+current authority and revision under event SHARE and the authority implementation's
+retained identity/role/policy locks. SQL supplies its clock and authority deadline;
+a monotonic anchor taken BEFORE that query conservatively excludes query/network
+latency and local wall-clock skew. `begin_invalidation_if` obtains the actual World
+native and views mutexes, checks capacity, then invokes the synchronous expiry
+callback immediately before its first mutation. Expired/revoked preparation causes
+zero view removal, pending marker insertion or parent cancellation. Authority locks
+remain held until that guarded mutation completes. The read-only authority
+transaction rolls back/releases before entering the admission gate or draining
+publication leases. The existing BE15 producer reauthorizes in its subsequent
+event UPDATE transaction. The exact order is delivery gate -> current retained
+SQL authority -> guarded native/view fence -> release SQL -> admission gate ->
+pause/drain -> existing BE15 transaction/event FOR UPDATE. No SQL lock spans entry
+to either asynchronous gate; no native mutex spans an await. Exact-key replay,
+conflicts and RESUME retain canonical BE15 behavior. Later six steps still require
+explicitly supplied actual owning adapters.
 
 Production publication permits retain event SHARE and OPEN/LIVE revision checks.
 Their tasks disable native sends under the shared publication fence before SQL
@@ -109,9 +122,10 @@ cached contracts-build artifacts retained the former checkout's protobuf paths.
 Rebuilding only that package's artifacts under the lease resolved it; source,
 protobufs and manifests were not patched. Subsequent integration-only and combined
 library/integration compilation exited 0. Four executables were copied to private
-`/tmp/mcr-be41-frozen-qualified`; freeze manifest records source and binary hashes.
-World received explicit target return after copies, empty `lsof +D` and no active
-Cargo/rustc processes. All later native execution used copied binaries only.
+`/tmp/mcr-be41-frozen-race`; freeze manifest records source and binary hashes.
+After the second exclusive fix-build lease, uploader-media received explicit
+target transfer after copied hashes, empty `lsof +D` and no target Cargo/rustc
+processes. Separate MEDIA builds were not affected. All later native execution used copied binaries only.
 
 | Executed check | Result and scope |
 | --- | --- |
@@ -119,23 +133,24 @@ Cargo/rustc processes. All later native execution used copied binaries only.
 | New READ_ONLY PostgreSQL suite | 10 PASS: actual World/community effects, replay/foreign isolation, concurrent START, scope/immutability/autocommit refusal, claimed-ticket/new-lease denial, SHARE serialization, after-component/between-owner rollback, commit deadline and new restart pair |
 | Actual four-owner full driver rollback/recovery | 1 PASS: real Auth/Friend/Profile/Concert readers, active publication, failure at composite insertion rolls back all SQL; old grant stays invalid; pending marker denies new admission; explicit fresh qualified recovery, successful composite commit, replay and full receipt bindings |
 | Actual native socket/driver drain | 1 PASS: real WorldRuntime and SocketTransport; an in-flight native handoff blocks START; after release driver closes, composite/community effects commit, owner leases disappear, no later snapshot/delta is published |
+| Authorization-wait regression natives | 2 PASS: revocation while delivery gate is held and expiry while actual native fence is held; rejected commands leave OPEN and existing qualified World views/current authority intact |
 | SQL constraint/restart probes | 23 PASS |
-| Focused lifecycle library units | 6 PASS, including exact World receipt binding and preparation-token cancellation; 2 native tests ignored in this pure invocation and then run explicitly above |
+| Focused lifecycle library units | 6 PASS, including exact World receipt binding and preparation-token cancellation; 4 native tests ignored in this pure invocation and then run explicitly above |
 | Planning/source provenance | PASS, exit 0; all 13 source archives unchanged, distinct from application/runtime evidence |
 | Formatting, Python parse, diff whitespace and ordered pin parity | PASS, exit 0; exact 28-file Rust/Python registry |
 
 Combined runner exit 0; driver cluster cleanup PASS; lifecycle runner stops its
 socket-only owned PostgreSQL in finally and removes its temporary directory.
 Both restart pairs run in separate processes around actual PostgreSQL stop/start.
-The ledger requires exactly `1..12,16,18,19,20,21,22,23,24`, published 0018 SHA256,
+The ledger requires exactly `1..12,16,18,19,20,21,22,23,24,25`, published 0018 SHA256,
 exact fresh/forward receipts and unchanged reapplication. No live database is used.
 
 Reproduction (absolute copied executable paths, PostgreSQL 16.14 on PATH):
 
 ```sh
 CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --lib --test event_lifecycle --test event_lifecycle_archive --test event_lifecycle_read_only --no-run
-/tmp/mcr-be41-frozen-qualified/concert_service event_lifecycle:: --nocapture
-PATH=/opt/homebrew/opt/postgresql@16/bin:$PATH python3 backend/scripts/mcr/event_lifecycle_pg.py --native-binary /tmp/mcr-be41-frozen-qualified/event_lifecycle --native-binary /tmp/mcr-be41-frozen-qualified/event_lifecycle_archive --native-binary /tmp/mcr-be41-frozen-qualified/event_lifecycle_read_only --native-driver-binary /tmp/mcr-be41-frozen-qualified/concert_service --output /tmp/mcr-be41-read-only-qualified.json
+/tmp/mcr-be41-frozen-race/concert_service event_lifecycle:: --nocapture
+PATH=/opt/homebrew/opt/postgresql@16/bin:$PATH python3 backend/scripts/mcr/event_lifecycle_pg.py --native-binary /tmp/mcr-be41-frozen-race/event_lifecycle --native-binary /tmp/mcr-be41-frozen-race/event_lifecycle_archive --native-binary /tmp/mcr-be41-frozen-race/event_lifecycle_read_only --native-driver-binary /tmp/mcr-be41-frozen-race/concert_service --output /tmp/mcr-be41-race-qualified.json
 ```
 
 Build command requires a newly transferred exclusive target lease. Native runner
@@ -145,13 +160,13 @@ identified by Cargo to the private directory before relinquishing the lease.
 
 | Artifact | SHA256 |
 | --- | --- |
-| Ordered 28-file compiled source pin | `7ce1990d422c47a6488a9837f6af38d5fd82e220c1586349bc200aa7c0ceedbb` |
-| event_lifecycle executable | `dff4d3ecdbe8ed0b86e321ac83ac8ed06eb3e3f014ea7acde7ee846b3aa1e903` |
-| event_lifecycle_archive executable | `c54dcf724d674f2c699c161339b79a3cff6331faf73393165f7a37488d430c20` |
-| event_lifecycle_read_only executable | `d3a8f5701d9fd0795eb88cc53ad4a69b13c7b9b16c42aba7a29d0c812ac6464f` |
-| concert_service library-test executable | `94ad5cef81a7227e96859763934f4847035efa9cf35d0f52cd0515f5ba9fcc3a` |
-| `/tmp/mcr-be41-frozen-qualified/freeze.json` | `cfeb0735f78a7c58d5c734055e134544d3bc83e0bd1853957ffa29eba6517217` |
-| `/tmp/mcr-be41-read-only-qualified.json` raw combined evidence | `dd60cdea4ec17e76c3832f63d5596984871a4240c9825295e5df4b35e5847436` |
+| Ordered 28-file compiled source pin | `9bbe31441bb178bef85edd890002fc20ceca8364acb4dc3ed331bb3b381f3f9a` |
+| event_lifecycle executable | `6c3a9c16964719ad0cec8f86f993c82332c71754d7626435d5c7e69f97fe6783` |
+| event_lifecycle_archive executable | `18df1373eac853449f6a697a7e677b58e148ed188708eb5508348de692d22c60` |
+| event_lifecycle_read_only executable | `7d3b0f185295c39369bce20a35615c6e94171b9125c195011531f706d86692df` |
+| concert_service library-test executable | `f694c4b2d467a25317a56659d42bcfc6d46183257acdba03863306bb2e836047` |
+| `/tmp/mcr-be41-frozen-race/freeze.json` | `6a31004b3ed76f6758bf661fb5c1065ab933dd0890296e576299057f6802e0c3` |
+| `/tmp/mcr-be41-race-qualified.json` raw combined evidence | `88e42252c7ee1f5a91c0c227c9618b25c86e9823c27c0a0ad541cc0a885ce6ac` |
 
 The driver tests deliberately use synthetic operator-role/retention authority and
 synthetic Avatar metadata. They prove the actual World four-source/native and
