@@ -1,0 +1,164 @@
+:root {
+  color: #201d1d;
+  background: #e5dfd4;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible,
+[tabindex="-1"]:focus-visible {
+  outline: 3px solid #a22635;
+  outline-offset: 4px;
+}
+
+p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.foundation {
+  max-width: 64rem;
+  margin-inline: auto;
+  border: 2px solid #201d1d;
+  background: #faf6ed;
+  overflow-wrap: anywhere;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  color: #faf6ed;
+  background: #201d1d;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  border-bottom: 2px solid #201d1d;
+  padding: 0.75rem 1.25rem;
+}
+
+.wordmark {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.wordmark span {
+  display: inline-block;
+  margin-left: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.welcome {
+  padding: clamp(1.5rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+.eyebrow,
+.margin-note {
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.eyebrow {
+  color: #a22635;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 1.25rem 0;
+  font-size: clamp(2.25rem, 8vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+}
+
+.welcome-copy {
+  max-width: 34rem;
+  font-size: 1.125rem;
+}
+
+.margin-note {
+  margin-top: 2rem;
+  border-left: 4px solid #a22635;
+  padding-left: 0.75rem;
+}
+
+.availability {
+  border-block: 2px solid #201d1d;
+  padding: 1.25rem clamp(1.25rem, 5vw, 4rem);
+  color: #faf6ed;
+  background: #201d1d;
+}
+
+h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+.availability p,
+.about p {
+  max-width: 42rem;
+}
+
+.about {
+  padding: 2rem clamp(1.25rem, 5vw, 4rem);
+  scroll-margin-top: 1rem;
+}
+
+.fan-disclosure {
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.footer {
+  border-top: 1px solid #201d1d;
+  padding: 1rem 1.25rem;
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: 0.75rem;
+}
