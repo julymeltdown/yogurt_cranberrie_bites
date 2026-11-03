@@ -1,0 +1,56 @@
+{
+  "task": "FE-FEED-CHARACTER-PORT",
+  "status": "CONTRACT_READY",
+  "existing_port_source": "10978fab7b341afd2b3c36cdbe2e448af249c69a",
+  "start_base": "08d1b1c048a92db3f55ce53c306694f2549df177",
+  "qualification_base": "903773b82836f6b76f2a2ece5b37ec686633a655",
+  "source_hashes": {
+    "frontend/src/features/event-feed/EventFeed.tsx": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+    "frontend/src/features/event-feed/index.ts": "4832214a64cd326ef84ba99377d2c2d91c6b72eaa2d9415c87f4747900b959c8",
+    "frontend/src/features/event-feed/feed.css": "d310ea2abe043a0a79e570f826b0cafd15a541162431fedb082bdf97879e7880",
+    "frontend/src/features/event-feed/controller.ts": "0d528342c21b6d1e3c9a7038c6a243d2fb4d32e9f2e00beda6ac7c3091d83c5b",
+    "frontend/src/features/event-feed/contract.ts": "69aa62ed8317f4b3a6a2c882d0733fe8229d4a53606fbce185dfc680d37e5a1e",
+    "frontend/src/features/event-feed/runtime.ts": "b06fd89a3f9fbbb923329b7be01b9d7193f0b9c8e8c06e1de16e8cf4f6f9ce66",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/entities/avatar/whole-character/runtime.ts": "46aa13d5ec97b9c956ce8fc99957450818b99aa0c7704167e7939f0013b49420",
+    "frontend/src/entities/avatar/whole-character/view.tsx": "209ade8b11f93e4f711ffc83b7a663c59f69a54c51c7eff7fb3280ab29e1c324",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e"
+  },
+  "production_source_changes": [],
+  "checks": {
+    "feed_tests": {
+      "exit": 0,
+      "tests": 34,
+      "files": 4,
+      "new_port_cases": 12
+    },
+    "types": 0,
+    "scoped_lint": 0,
+    "native": {
+      "exit": 0,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "fullpage_captures": 3,
+      "portrait_captures": 18,
+      "report": "report.json"
+    }
+  },
+  "not_run": [
+    "Live Feed backend/content authorization",
+    "Root/Media route binding by this fixture",
+    "Business mutations",
+    "Physical devices",
+    "Multiuser/release acceptance",
+    "New application build: only tests and documentation changed"
+  ],
+  "role_boundary": "Developer-owned verification and direct non-force publication; no king/SL technical approval gate",
+  "owned_paths": [
+    "frontend/src/features/event-feed/__tests__/character-port/**",
+    "docs/mcr/frontend/feed-character-port.md"
+  ],
+  "publication_parent": "aa3e2f3d67afc1f288aee63f994dc829fcc81e7b",
+  "reconciliation": "Every recorded producer/schema/privacy/runtime source hash unchanged; peer Media binding preserved, no repeat native matrix necessary for disjoint root-only changes."
+}

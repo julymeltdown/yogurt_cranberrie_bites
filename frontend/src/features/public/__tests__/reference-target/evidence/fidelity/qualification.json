@@ -1,0 +1,277 @@
+{
+  "task": "FE-REF-PUBLIC-FIDELITY",
+  "status": "MOCK_READY",
+  "qualifiedAt": "2026-11-03T23:52:28.497253+00:00",
+  "assignmentBase": "493b05cb18052ead6690bdbf000ae1b967b49e4d",
+  "ownedSourceCommit": "b80956ea926278048e18e4593103a110a306636f",
+  "qualifiedCombinedParent": "e7d5d7287ba00919617316242d005d3d397b493a",
+  "preservedPriorBranch": "codex/mcr-fe-avatar-union",
+  "sourcePaths": [
+    "docs/mcr/frontend/reference-public.md",
+    "frontend/src/features/public/__tests__/reference-target/capture.mjs",
+    "frontend/src/features/public/__tests__/reference-target/fidelity-comparison.html",
+    "frontend/src/features/public/ui/Landing.tsx",
+    "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx",
+    "frontend/src/features/public/ui/public.css"
+  ],
+  "canonicalLandingGuardUnchanged": true,
+  "legalStylePrefixAndPublicFrameUnchanged": true,
+  "docsSourceUnchanged": true,
+  "approvedAssetsAndLockfileUnchanged": true,
+  "validationOwner": "Implementation developer; no king/SL technical review or approval stage.",
+  "baseline": "Fresh native 390px capture from unchanged assignment-base product source, in sibling fidelity-before directory.",
+  "runtime": {
+    "node": "24.22.2",
+    "browser": "Installed macOS Google Chrome, headless",
+    "nativeWidths": [
+      360,
+      390,
+      430
+    ],
+    "actualMainEntryCases": 3,
+    "memorySessionCases": 3,
+    "shortViewportHeight": 420,
+    "tests": 111,
+    "testFiles": 5,
+    "noHorizontalOverflow": true,
+    "minCtaHeight": 44,
+    "sameDocumentDescriptorRequests": 1,
+    "sameDocumentAtlasRequests": 1,
+    "perCharacterRequests": 0,
+    "missingArtworkCase": "390px actual main entry remains anonymous and navigable without fallback art.",
+    "pageErrors": []
+  },
+  "commands": [
+    {
+      "cwd": ".",
+      "command": "MCR_REF_REQUIRE_ART=1 /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/src/features/public/__tests__/reference-target/capture.mjs",
+      "exitCode": 0,
+      "log": "native.log"
+    },
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/vitest/vitest.mjs run --no-cache --maxWorkers 1 src/features/public src/app/__tests__/public-entry.test.tsx src/features/auth/__tests__/contract.test.ts src/entities/avatar/selected-static",
+      "exitCode": 0,
+      "log": "behavior.log"
+    },
+    {
+      "cwd": ".",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/node_modules/typescript/bin/tsc -p frontend --pretty false",
+      "exitCode": 0,
+      "log": "types.log"
+    },
+    {
+      "cwd": ".",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/node_modules/oxlint/bin/oxlint frontend/src/features/public/ui/Landing.tsx frontend/src/features/public/ui/PublicFrame.tsx frontend/src/features/public/ui/landing-reference frontend/src/features/public/__tests__/reference-target",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node --input-type=module",
+      "stdin": "import { statfs } from 'node:fs/promises'\nimport { build } from 'vite'\nconst disk = await statfs('.')\nif(disk.bavail * disk.bsize < 8 * 1024 ** 3) throw new Error('8GiB disk guard')\nconsole.log(JSON.stringify({freeBytes:disk.bavail * disk.bsize, publicDirCopied:false}))\nawait build({publicDir:false,build:{outDir:'/tmp/mcr-public-fidelity-build',emptyOutDir:true}})\n",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "log": "plan.log"
+    },
+    {
+      "cwd": ".",
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "docs/mcr/frontend/reference-public.md",
+      "bytes": 16978,
+      "sha256": "687ea32310b0908de4751c16c457d45173c265b191a1194ebe73435d2edebef1"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/capture.mjs",
+      "bytes": 13562,
+      "sha256": "d9279b45e9f99c0a2e11d42e660cbaa53b98e3ab5aa851b2015927eb7f48c38d"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/fidelity-comparison.html",
+      "bytes": 2615,
+      "sha256": "abf0c0b5e3ca95d5d1aa8b8af18fcbaf5365d07ca8758f5d2cd014f1dd33ea93"
+    },
+    {
+      "path": "frontend/src/features/public/ui/Landing.tsx",
+      "bytes": 3936,
+      "sha256": "9da76dbc47a9cfc486a861679582f0cf9d4e5ae1e4b83b51c049b204f8c49b45"
+    },
+    {
+      "path": "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx",
+      "bytes": 9556,
+      "sha256": "4daf77b2a5252e3aaba3c7ae0e9f86cb9d9af53c77448b9e253d8ff32488b59c"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "bytes": 10852,
+      "sha256": "f4c0b1796539ac9df4d29c498ccf244006ce2864926c975a2e8a4b4c6aa0a657"
+    }
+  ],
+  "approvedPins": [
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/target-full.png",
+      "bytes": 2967126,
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+      "bytes": 1898,
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "bytes": 36030,
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-01.jpg",
+      "bytes": 168045,
+      "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "bytes": 80328,
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/actual-entry-anonymous-360.png",
+      "bytes": 161035,
+      "sha256": "04e7b74dbf7a3653864fcab7417c60ec67d055da9281d43ad5b01758cc59973e"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/actual-entry-anonymous-390.png",
+      "bytes": 176098,
+      "sha256": "d94038bac0257a92465f4ed657073a299945a05ad2be0652fa67abdacc7eddfb"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/actual-entry-anonymous-430.png",
+      "bytes": 196922,
+      "sha256": "4364c59e58db41efe3b73893242f457bc5211906ceedb786b4187c885a278065"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/behavior.log",
+      "bytes": 243,
+      "sha256": "cd42255b3ab1ddf6b4c55fd8ce1f990679b96c89663cd056407fd71d5323d513"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/build.log",
+      "bytes": 8132,
+      "sha256": "9a6cfeca67fb971b4be3b26ecef23bc6f0be96f175e672ef7cbf60ecc4442694"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/comparison-390.png",
+      "bytes": 660164,
+      "sha256": "8f7673f24d0b30921266be835115215ed77dba47ea40a28fe415e4ed50f29a84"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/landing-360.png",
+      "bytes": 160360,
+      "sha256": "d42f3a2960181d5a07818f0f55ed6ef3c498ab51f978576ac9694d987ff26a5b"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/landing-390.png",
+      "bytes": 175036,
+      "sha256": "ffbcd59fad7167de2a857d5c0f4416d2e7e7cf8b63c5ff4fc6abba81b8a63a4b"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/landing-430.png",
+      "bytes": 196922,
+      "sha256": "4364c59e58db41efe3b73893242f457bc5211906ceedb786b4187c885a278065"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/native.json",
+      "bytes": 7502,
+      "sha256": "986e98fa8062fdd3c60d40e84eb244e40fe399b35fa4e60aeca73b5b5d4fba89"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/native.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/plan.log",
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/poster-360.png",
+      "bytes": 145428,
+      "sha256": "b89a1ab35139c9e9ec0254cb8efa813c5d2931de407731841d5f637d331b5a83"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/poster-390.png",
+      "bytes": 161072,
+      "sha256": "86e843c751cab993c4b0e4094aa0727083151768de7b52ffc5203963ecf34961"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/poster-430.png",
+      "bytes": 182077,
+      "sha256": "63644c378f7fd790854e4d9cc77281ac3a4f5aa2963ca2a515dc8899f9df8101"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/production-unavailable-360.png",
+      "bytes": 160085,
+      "sha256": "461780d1957a213f43f224e8d81634b433799c592b27815c6a296798e2d4e1ec"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/production-unavailable-390.png",
+      "bytes": 174842,
+      "sha256": "443943ea180b399279f3d2c426ee30b5256179f4b2daf91453c9f323e3c190f3"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/production-unavailable-430.png",
+      "bytes": 196657,
+      "sha256": "f269d7829846f49d1ef10179ec57c9bb8f52d5b75f0a84d7dbc5d1e65046624c"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity/types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity-before/landing-390.png",
+      "bytes": 103122,
+      "sha256": "79527d77cc9771de278fb23cf25a3ee845ff41cc65f106ed207f0fb829d57d4a"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity-before/native.json",
+      "bytes": 1544,
+      "sha256": "38b3cf094b28a1da9db9d07a9ad84a89776348b1c7d4b9d56a6c317d4c87e4ab"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/evidence/fidelity-before/poster-390.png",
+      "bytes": 89655,
+      "sha256": "7ef46558d2ea5636681d8673a24cf3d682c96d7f51f65ae0abf95bdb554828ce"
+    }
+  ],
+  "remainingDifferences": [
+    "Authored lettering and ornament contours/print texture still differ from the target.",
+    "Approved original character costumes, face/pose proportions and colors differ and remain authoritative.",
+    "Real Sign in control replaces counterfeit window Close/minimize decoration; truthful readiness, disclosure and legal content remain below the poster."
+  ],
+  "notRun": [
+    "Live provider/public backend gateway",
+    "Physical device",
+    "World/real multiuser",
+    "IN01/IN05",
+    "All-ten-screen acceptance"
+  ],
+  "publication": "Publish only new owned source/evidence by non-force push after reconciling remote history; no duplicate old PUBLIC/art/shared checkpoints."
+}
