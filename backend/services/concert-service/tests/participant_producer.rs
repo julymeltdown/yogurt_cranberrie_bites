@@ -734,6 +734,9 @@ async fn native_guarded_participant_persistence_and_reread() {
             .0,
         Code::Unavailable
     );
+    // A sequence is deliberately nontransactional: it proves the UPDATE
+    // executed before permit withdrawal, while the row itself must roll back.
+    sqlx::raw_sql("create sequence public.participant_native_update_probe; create function public.participant_native_probe() returns trigger language plpgsql as $$ begin perform nextval('public.participant_native_update_probe'); return new; end; $$; create trigger participant_native_probe after update on concert_avatar_settings for each row execute function public.participant_native_probe();").execute(&pool).await.unwrap();
     let withdrawing = Arc::new(Owners {
         calls: Arc::new(Counters::default()),
         fault: "withdraw-after-update",
@@ -753,6 +756,15 @@ async fn native_guarded_participant_persistence_and_reread() {
         .await
         .0,
         Code::PermissionDenied
+    );
+    let executed: bool =
+        sqlx::query_scalar("select is_called from public.participant_native_update_probe")
+            .fetch_one(&pool)
+            .await
+            .unwrap();
+    assert!(
+        executed,
+        "withdrawal must happen after a real SQL UPDATE, not before dispatch"
     );
     let (code, initial, _) = call(
         service.clone(),
