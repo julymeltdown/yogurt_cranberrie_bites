@@ -1,6 +1,6 @@
 # C04 frontend consumer review — FE21 / FE24
 
-Status: **C04_REVIEW_CANDIDATE; changes required before scoped freeze.** Independent review, not feature/runtime acceptance.
+Status: **C04_REVIEW_CANDIDATE; final R1–R3 prerequisite qualification PASS, R4/R5 open.** Independent review, not freeze or feature/runtime acceptance. Initial findings below are preserved against their pinned base; final candidate results supersede R1–R3.
 Date: 2026-11-03. Base: `4dc3bb3dd8015abcf26839c34954f7ca91870ceb`; branch `codex/mcr-fe-C04-consumer`.
 Only this report changes. Read specification §§5–8 and FE21/FE24, assessment/execution plan, C04 operation/schema/policy/combined candidate, and actual FE01/FE02/FE07/FE09 sources. No application, contract, dependency, source archive edits or push.
 
@@ -63,5 +63,24 @@ Private evidence: `/tmp/mcr-c04-fe-review/`; no server/browser port opened. Requ
 `/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node /tmp/mcr-c04-fe-review/consumer-probe.mjs`: exit 0, ten cases exercising actual transpiled pinned sources, including FE09 request/bootstrap; hashes/results `consumer-result.json`, output `consumer.log`.
 Transpiler reads retained TypeScript/dependencies from stopped FE19 checkout and writes modules only under private `/tmp`; no install/dependency edits. First attempt exit 1 used an invalid synthetic capability reason; corrected to `FEATURE_DISABLED`, preserving `consumer-first.log`. Product sources were not changed to pass probes.
 `python3 -B /tmp/mcr-c04-fe-review/contract-probe.py`: exit 0, 24 narrow checks/reproductions, including nine assembled operation registrations, valid state/cursor/DELETE/status targets and domain error. Inputs/results/pins `contract-result.json`; output `contract.log`.
-`git diff --check` and sole-path staged review: exit 0. Commit descends directly from full base above; SHA reported separately to avoid self-reference.
+`git diff --check` and sole-path staged review: exit 0. Initial report `51376b5` descends directly from full base above; final qualification report descends from the parent-applied candidate below.
 No broad 47-test/domain/build reruns, Cargo/PostgreSQL, production authorization/races, browser/device or feature acceptance is claimed. Goal remains ACTIVE through parent review and required report corrections.
+
+## Final R1–R3 candidate qualification
+
+Clean reviewed HEAD: `6630324a5ed2f20d235afe2393d4f2095626ab81`, applying parent `2645b6f4cc639837932fb9f8480046533987a3de` atop `51376b5`. Contract input hashes above remain unchanged.
+Inspected generator derivation from the C04 registry/schema, metadata input hashes, closed typed query checks, operation/method/path/status/error bindings, canonical key/header restriction and all seven C03 capability projections. Metadata enables no endpoint and does not replace response DTO/context decoders.
+
+| New source surface | SHA-256 |
+|---|---|
+| `scripts/mcr/generate-domain-transport.py` | `bfee134b146488384c8aae2c2d65c4fd3bd59d726314053b0445d20798e55938` |
+| `frontend/src/shared/api/domain.ts` | `a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741` |
+| `frontend/src/shared/api/domain-operations.generated.ts` | `8ce476f66c04bb129c9d14f268d26e39dbd39127236f37bb291642e52146dafb` |
+| `frontend/src/app/capabilities.ts` | `82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4` |
+
+`MCR_C04_QUALIFY_COMMIT=6630324a5ed2f20d235afe2393d4f2095626ab81 /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node /tmp/mcr-c04-fe-qualification/qualify.mjs`: exit 0, **26 focused cases**, actual pinned canonical sources with synthetic fetch; no broad suites repeated. Private transpiler resolves extensionless `.generated` TypeScript modules before loading; source files are unchanged.
+Checks cover typed key/exact header and intent, raw/absent/malformed/read key rejection, registered party/gift state filters, operation/method/family/event fencing, closed typed queries, domain reason/status and rate-limit hints, 202 decoder responsibility/no replay, unexpected successful status remaining uncertain, all seven available/reason values, and nine selected generated bindings against C04. R1/R2/R3 are closed within this prerequisite scope.
+Evidence: `/tmp/mcr-c04-fe-qualification/{qualify.mjs,loader.mjs,result.json,qualification.log,manifest.json}`; all 17 tested source hashes match the candidate. Manifest SHA-256 is reported in the committed handoff; the manifest also preserves the original passing run and exact new reproduction below.
+**R4 remains open:** `python3 -B /tmp/mcr-c04-fe-qualification/receipt-semantics.py`, exit 0, independently reproduces `SUCCEEDED/result_status=202` accepted by current status-query oracle for `applyConcertParty` whose final status is 200. Bind succeeded result status to the registered final success status, never pending 202/arbitrary 2xx; preserve the other R4 lookup/unknown/retirement predicates. Exact input/output: `receipt-semantics.json/.log`. The unchanged oracle hash is pinned in the manifest.
+**Cancellation caveat:** C03 requires mutations unavailable in READ_ONLY; C04 `SAFETY` explicitly keeps cancellation possible there. Do not use `mutations=false/EVENT_READ_ONLY` as a blanket ban on applicant cancellation alongside NORMAL apply. Other denial/unavailable reasons and current server authorization still fail closed; freeze this distinction with the command subset.
+**Disposition:** the parent prerequisite patch introduces no open finding in this bounded review. R4/R5 and current resource authorization/eligibility remain required follow-ups; neither the read subset nor FE21/FE24 nor C04 is frozen/accepted by these checks. Report-only handoff is ready for parent disposition; goal remains ACTIVE through review.
