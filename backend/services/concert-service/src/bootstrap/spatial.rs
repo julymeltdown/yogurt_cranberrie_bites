@@ -51,6 +51,7 @@ struct Binding {
 struct ProposalGeometry {
     geometry: Value,
     geometry_hash: String,
+    places: Value,
 }
 
 #[derive(Clone, Debug)]
@@ -174,6 +175,7 @@ fn load(
         .map_err(invalid)?;
     ensure(
         proposal.geometry == map_value["geometry"]
+            && proposal.places == map_value["places"]
             && proposal.geometry_hash == binding.geometry_hash
             && digest(&geometry) == binding.geometry_hash,
     )?;

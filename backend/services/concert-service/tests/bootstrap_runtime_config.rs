@@ -176,6 +176,24 @@ fn spatial_actual_byte_and_dimension_pins_fail_closed() {
     }
 }
 #[test]
+fn spatial_binding_refuses_resealed_place_qualification_changes() {
+    use sha2::{Digest, Sha256};
+    let (map, index, root) = spatial_paths();
+    let scratch = SpatialScratch::new();
+    let mut map: serde_json::Value = serde_json::from_slice(&std::fs::read(map).unwrap()).unwrap();
+    let mut binding: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(index).unwrap()).unwrap();
+    map["places"][0]["label"] = "Unattributed changed place".into();
+    map.as_object_mut().unwrap().remove("content_hash");
+    let bytes =
+        concert_domain::place::canonical_json_bytes(&serde_json::to_vec(&map).unwrap()).unwrap();
+    map["content_hash"] = format!("sha256:{:x}", Sha256::digest(bytes)).into();
+    binding["map_content_hash"] = map["content_hash"].clone();
+    let map = scratch.write("map.json", &map);
+    let index = scratch.write("binding.json", &binding);
+    assert!(concert_service::bootstrap::spatial::load_candidate(&map, &index, &root).is_err());
+}
+#[test]
 fn spatial_index_rejects_unknown_duplicate_and_traversal_inputs() {
     let (map, index, root) = spatial_paths();
     let scratch = SpatialScratch::new();
