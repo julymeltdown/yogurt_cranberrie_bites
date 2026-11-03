@@ -49,6 +49,8 @@ describe('accessible overview and place sheet', () => {
     if (mode === 'error') expect(await screen.findByRole('heading', { name: 'Places could not be loaded' })).toBeInTheDocument()
     if (mode === 'mismatch') {
       expect(await screen.findByRole('heading', { name: 'Your map and places do not match' })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: 'Reload event' })).toBeInTheDocument()
+      expect(screen.queryByRole('button', { name: 'Reload places' })).not.toBeInTheDocument()
       expect(screen.queryByRole('img')).not.toBeInTheDocument()
       expect(screen.getByRole('button', { name: 'Show Synthetic virtual stage on virtual map' })).toBeDisabled()
     }

@@ -33,6 +33,7 @@ export interface PlacesState {
   readonly selectedId: string | null
   readonly map: MapManifest | null
   readonly mapMismatch: boolean
+  readonly unavailablePlaceIds: readonly string[]
   readonly notice: string | null
 }
 const resource = <T>(phase: Resource<T>['phase'], data: T | null = null, reason: PlaceFailure | null = null): Resource<T> => ({ phase, data, reason })
@@ -73,7 +74,7 @@ function failure(error: unknown): PlaceFailure {
 /** Catalog revision is NOT map_revision. Geometry targets use the separately pinned C06 release. */
 export function createPlacesController(options: { session: SessionPort; http: PlacesHttpPort; map: PlaceMapPort; camera?: PlaceCameraPort }) {
   let state: PlacesState = freeze({ list: resource<PlaceList>('idle'), detail: resource<PlaceResponse>('idle'),
-    selectedId: null, map: null, mapMismatch: false, notice: null })
+    selectedId: null, map: null, mapMismatch: false, unavailablePlaceIds: [], notice: null })
   let started = false, disposed = false, revision = 0, detailRevision = 0
   let activeReleaseKey = ''
   let listAbort: AbortController | null = null, detailAbort: AbortController | null = null
@@ -86,6 +87,8 @@ export function createPlacesController(options: { session: SessionPort; http: Pl
   }
   const scope = () => options.session.read()
   const sameScope = (snapshot: SessionScope) => options.session.isCurrent(snapshot)
+  const unavailableTargets = new Set<string>()
+  let invalidationScope: SessionScope = scope(), invalidReleaseKey: string | null = null
   function cancel() { ++revision; ++detailRevision; listAbort?.abort(); detailAbort?.abort(); listAbort = null; detailAbort = null }
   function bindScope() {
     removeScope()
@@ -119,35 +122,59 @@ export function createPlacesController(options: { session: SessionPort; http: Pl
       if (result.data.revision !== catalog.revision) { publish({ detail: resource<never>('error', null, 'conflict'), mapMismatch: true }); return }
       const listed = catalog.items.find(p => p.place_id === id)
       if (!listed || canonicalJson(listed) !== canonicalJson(result.data.place)) {
+        invalidReleaseKey = releaseKey
         publish({ detail: resource<never>('error', null, 'map-mismatch'), mapMismatch: true }); return
       }
-      publish({ detail: resource('ready', result.data) })
-    } catch (error) { if (current()) publish({ detail: resource<never>('error', null, failure(error)) }) }
+      unavailableTargets.delete(id)
+      publish({ detail: resource('ready', result.data), unavailablePlaceIds: Array.from(unavailableTargets) })
+    } catch (error) {
+      if (!current()) return
+      const reason = failure(error)
+      if (reason === 'missing' && catalog.items.some(p => p.place_id === id)) unavailableTargets.add(id)
+      if (reason === 'map-mismatch') invalidReleaseKey = releaseKey
+      publish({ detail: resource<never>('error', null, reason), unavailablePlaceIds: Array.from(unavailableTargets),
+        ...(reason === 'map-mismatch' ? { mapMismatch: true } : {}) })
+    }
   }
   async function refresh() {
     if (disposed || !started) return
     cancel()
     const ticket = revision, snapshot = scope(), release = options.map.read(), releaseKey = key(release)
+    if (invalidationScope.generation !== snapshot.generation || invalidationScope.userId !== snapshot.userId || invalidationScope.eventId !== snapshot.eventId) {
+      unavailableTargets.clear(); invalidReleaseKey = null; invalidationScope = snapshot
+    }
     activeScope = snapshot; activeReleaseKey = releaseKey
     if (!snapshot.userId || !snapshot.eventId || !snapshot.accessToken || snapshot.signal.aborted) {
-      publish({ list: resource<never>('error', null, 'signed-out'), detail: resource('idle'), map: null, mapMismatch: true, notice: null }); return
+      publish({ list: resource<never>('error', null, 'signed-out'), detail: resource('idle'), map: null, mapMismatch: true, unavailablePlaceIds: [], notice: null }); return
     }
     const abort = new AbortController(); listAbort = abort
     const current = () => !disposed && started && ticket === revision && !abort.signal.aborted && sameScope(snapshot) && key(options.map.read()) === releaseKey
     let map: MapManifest | null = null
     try { map = validatedMap(release, snapshot) } catch { /* Invalid or withdrawn release cannot supply targets. */ }
-    publish({ list: resource('loading'), detail: resource('idle'), map, mapMismatch: !map, notice: null })
+    publish({ list: resource('loading'), detail: resource('idle'), map, mapMismatch: !map || invalidReleaseKey !== null,
+      unavailablePlaceIds: Array.from(unavailableTargets), notice: null })
     if (!current()) return
     try {
       const result = await options.http.request({ path: `/api/concert/events/${snapshot.eventId}/places`,
         method: 'GET', access: 'protected', errorFamily: 'core', decode: decodePlaces, signal: abort.signal })
       if (!current()) return
-      publish({ list: resource(result.data.items.length ? 'ready' : 'empty', result.data), mapMismatch: !mapped(result.data, map) })
+      const consistent = mapped(result.data, map)
+      // A new, matching map/catalog pair can reconcile a rejected release. Re-reading
+      // the same old catalog/pin must not silently undo an authoritative mismatch.
+      if (consistent && invalidReleaseKey !== releaseKey) invalidReleaseKey = null
+      for (const id of unavailableTargets) if (!result.data.items.some(p => p.place_id === id)) unavailableTargets.delete(id)
+      publish({ list: resource(result.data.items.length ? 'ready' : 'empty', result.data),
+        mapMismatch: !consistent || invalidReleaseKey !== null, unavailablePlaceIds: Array.from(unavailableTargets) })
       if (current() && state.selectedId) {
         if (result.data.items.length) await loadDetail(state.selectedId)
         else publish({ detail: resource<never>('error', null, 'missing') })
       }
-    } catch (error) { if (current()) publish({ list: resource<never>('error', null, failure(error)), detail: resource('idle'), mapMismatch: true }) }
+    } catch (error) {
+      if (!current()) return
+      const reason = failure(error)
+      if (reason === 'map-mismatch') invalidReleaseKey = releaseKey
+      publish({ list: resource<never>('error', null, reason), detail: resource('idle'), mapMismatch: true })
+    }
   }
   function cameraAction(action: (camera: NonNullable<ReturnType<PlaceCameraPort['read']>>) => void) {
     const camera = options.camera?.read()
@@ -159,6 +186,7 @@ export function createPlacesController(options: { session: SessionPort; http: Pl
   let activeScope: SessionScope = scope()
   function canShow(id: string) {
     return !disposed && started && sameScope(activeScope) && !state.mapMismatch && state.list.phase === 'ready'
+      && !unavailableTargets.has(id)
       && key(options.map.read()) === activeReleaseKey
       && Boolean(options.camera?.read()) && Boolean(state.map?.geometry.interactions.some(p => p.place_id === id))
       && state.map?.places.some(p => p.place_id === id && p.closure_state === 'OPEN') === true
@@ -193,7 +221,8 @@ export function createPlacesController(options: { session: SessionPort; http: Pl
     dispose() {
       if (disposed) return
       disposed = true; started = false; cancel(); removeScope(); removeMap()
-      state = freeze({ list: resource<PlaceList>('idle'), detail: resource<PlaceResponse>('idle'), selectedId: null, map: null, mapMismatch: true, notice: null })
+      unavailableTargets.clear(); invalidReleaseKey = null
+      state = freeze({ list: resource<PlaceList>('idle'), detail: resource<PlaceResponse>('idle'), selectedId: null, map: null, mapMismatch: true, unavailablePlaceIds: [], notice: null })
       for (const listener of Array.from(listeners)) { try { listener() } catch { /* Best-effort final eviction notification. */ } }
       listeners.clear()
     },

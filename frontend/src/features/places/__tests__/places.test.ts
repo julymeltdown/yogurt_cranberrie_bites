@@ -119,6 +119,53 @@ describe('scoped reads, revisions and map targets', () => {
     c.start(); c.select(places()[0]!.place_id); await vi.waitFor(() => expect(c.read().detail.reason).toBe('map-mismatch'))
     expect(c.read().mapMismatch).toBe(true)
   })
+  it.each([404, 410])('retains authoritative detail %s target invalidation after Back and catalog retry without blocking unrelated places', async status => {
+    let unavailable = true
+    const data = places(), target = data[1]!.place_id, other = data[0]!.place_id
+    const { controller: c, camera } = await setup(request => request.url.endsWith('/places') ? Response.json(catalog())
+      : unavailable ? Response.json({ code: 'fixture', message: 'not rendered', details: { reason: 'RESOURCE_UNAVAILABLE' } }, { status })
+        : Response.json({ event_id: eventId, revision: 7, place: data[1] }))
+    c.start(); await vi.waitFor(() => expect(c.read().list.phase).toBe('ready')); expect(c.canShow(target)).toBe(true)
+    c.select(target); await vi.waitFor(() => expect(c.read().detail.reason).toBe('missing'))
+    c.select(null); expect(c.canShow(target)).toBe(false); expect(c.showOnMap(target)).toBe(false)
+    expect(c.canShow(other)).toBe(true); expect(c.cameraAvailable()).toBe(true); expect(camera.lookAt).not.toHaveBeenCalled()
+    await c.refresh(); expect(c.canShow(target)).toBe(false); expect(c.read().unavailablePlaceIds).toContain(target)
+    unavailable = false; c.select(target); await vi.waitFor(() => expect(c.read().detail.phase).toBe('ready'))
+    c.select(null); expect(c.canShow(target)).toBe(true); expect(c.read().unavailablePlaceIds).not.toContain(target)
+  })
+  it('retains authoritative detail map-version rejection across navigation and same-pin retries until a new matching release/catalog pair', async () => {
+    let rejected = true
+    const data = places(), target = data[1]!.place_id
+    const { controller: c, setMap, camera } = await setup(request => request.url.endsWith('/places') ? Response.json(catalog())
+      : rejected ? Response.json({ code: 'fixture', message: 'not rendered', details: { reason: 'MAP_VERSION_MISMATCH' } }, { status: 409 })
+        : Response.json({ event_id: eventId, revision: 7, place: data[1] }))
+    c.start(); await vi.waitFor(() => expect(c.read().list.phase).toBe('ready'))
+    c.select(target); await vi.waitFor(() => expect(c.read().detail.reason).toBe('map-mismatch'))
+    c.select(null); expect(c.canShow(target)).toBe(false); expect(c.canShow(data[0]!.place_id)).toBe(false)
+    expect(c.cameraAvailable()).toBe(false); expect(c.recenter()).toBe(false); expect(c.zoom(1)).toBe(false)
+    expect(camera.recenter).not.toHaveBeenCalled(); expect(camera.setZoom).not.toHaveBeenCalled()
+    rejected = false; await c.refresh(); expect(c.read().mapMismatch).toBe(true); expect(c.canShow(target)).toBe(false)
+    setMap(await release(data, 2)); await vi.waitFor(() => expect(c.read().list.phase).toBe('ready'))
+    expect(c.read().mapMismatch).toBe(false); expect(c.canShow(target)).toBe(true)
+    expect(c.read().list.data!.revision).toBe(7); expect(c.read().map!.map_revision).toBe(2)
+  })
+  it('list map-version errors also remain latched through catalog-only recovery', async () => {
+    let rejected = true
+    const { controller: c, setMap } = await setup(() => rejected
+      ? Response.json({ code: 'fixture', message: 'not rendered', details: { reason: 'MAP_VERSION_MISMATCH' } }, { status: 409 }) : Response.json(catalog()))
+    c.start(); await vi.waitFor(() => expect(c.read().list.reason).toBe('map-mismatch'))
+    rejected = false; await c.refresh(); expect(c.read().list.phase).toBe('ready'); expect(c.read().mapMismatch).toBe(true)
+    setMap(await release(places(), 2)); await vi.waitFor(() => expect(c.read().list.phase).toBe('ready')); expect(c.read().mapMismatch).toBe(false)
+  })
+  it('discarding an obsolete missing-place response cannot invalidate the newly selected target', async () => {
+    const old = deferred<Response>(), data = places()
+    const { controller: c } = await setup(request => request.url.endsWith('/places') ? Response.json(catalog())
+      : request.url.endsWith(data[0]!.place_id) ? old.promise : Response.json({ event_id: eventId, revision: 7, place: data[1] }))
+    c.start(); await vi.waitFor(() => expect(c.read().list.phase).toBe('ready')); c.select(data[0]!.place_id); c.select(data[1]!.place_id)
+    await vi.waitFor(() => expect(c.read().detail.phase).toBe('ready'))
+    old.resolve(Response.json({ code: 'fixture', message: 'not rendered', details: { reason: 'RESOURCE_UNAVAILABLE' } }, { status: 404 }))
+    await settle(); expect(c.read().unavailablePlaceIds).toEqual([]); expect(c.canShow(data[1]!.place_id)).toBe(true)
+  })
   it.each([[401, 'AUTHENTICATION_REQUIRED', 'signed-out'], [403, 'PERMISSION_DENIED', 'denied'], [404, 'RESOURCE_UNAVAILABLE', 'missing'],
     [409, 'MAP_VERSION_MISMATCH', 'map-mismatch'], [409, 'VERSION_CONFLICT', 'conflict'], [429, 'RATE_LIMITED', 'rate-limited'],
     [503, 'DEPENDENCY_UNAVAILABLE', 'unavailable']])('classifies %s/%s without leaking server text', async (status, reason, expected) => {

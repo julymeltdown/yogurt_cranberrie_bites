@@ -24,7 +24,8 @@ function Failure({ reason, controller }: { reason: PlaceFailure; controller: Pla
   const message = failures[reason]
   return <Feedback kind="error" title={message.title}><p>{message.text}</p>
     <div className="places-actions">
-      {!['signed-out', 'denied'].includes(reason) && <Button onClick={() => void controller.refresh()}>Reload places</Button>}
+      {reason === 'map-mismatch' ? <Button onClick={() => window.location.reload()}>Reload event</Button>
+        : !['signed-out', 'denied'].includes(reason) && <Button onClick={() => void controller.refresh()}>Reload places</Button>}
       <ShellLink id="places-recovery-world" className="places-link" to="/world">Return to world</ShellLink>
     </div>
   </Feedback>
@@ -87,7 +88,8 @@ export function PlacesOverview({ controller }: { controller: PlacesController })
         <ol className="places-list">
           {shown.map(({ place, index }) => <li key={place.place_id}>
             <p className="places-number">{String(index + 1).padStart(2, '0')}</p>
-            <div><h3>{place.label}</h3><p>{physicalStatus(place)}</p>
+            <div><h3>{place.label}</h3><p>{state.unavailablePlaceIds.includes(place.place_id)
+              ? 'Currently unavailable — open details to check again' : physicalStatus(place)}</p>
               <div className="places-actions">
                 <ShellLink id={`place-${place.place_id}`} className="places-link" to={`/world/places/${place.place_id}`}>View {place.label}</ShellLink>
                 <Button variant="quiet" disabled={!controller.canShow(place.place_id)} onClick={() => controller.showOnMap(place.place_id)} aria-label={`Show ${place.label} on virtual map`}>Show on map</Button>

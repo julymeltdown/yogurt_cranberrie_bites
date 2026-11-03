@@ -25,8 +25,9 @@ export function places(): Place[] {
   ]
 }
 export function catalog(items = places(), revision = 7): PlaceList { return { event_id: eventId, revision, items } }
-export async function release(items = places()): Promise<PlaceMapRelease> {
+export async function release(items = places(), mapRevision = 1): Promise<PlaceMapRelease> {
   const map: MapManifest = structuredClone(fixture), cells = [[1, 1], [2, 1], [3, 1], [3, 2], [3, 3]] as const
+  map.map_revision = mapRevision
   map.places = structuredClone(items)
   map.geometry.interactions = items.map((place, i) => ({ interaction_id: `inspect_${i}`, place_id: place.place_id,
     cell_x: cells[i % cells.length]![0], cell_y: cells[i % cells.length]![1] }))

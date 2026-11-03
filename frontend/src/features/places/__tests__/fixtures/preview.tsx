@@ -24,6 +24,7 @@ session.replace(0, { userId, eventId, accessToken: 'synthetic-memory-only-token'
 let mode = 'ok', map: PlaceMapRelease | null = null, movement: MovementAttachment | null = null, runtime: WorldRuntime | null = null
 let mounts = 0, disposals = 0, controls: HTMLDivElement | null = null, disposed = false
 const mapListeners = new Set<() => void>(), requests: string[] = []
+const documentId = crypto.randomUUID()
 function publishMap() { for (const listener of Array.from(mapListeners)) listener() }
 function currentMap() {
   return map && mode === 'mismatch' ? { ...map, expected: { ...map.expected, revision: map.expected.revision + 1 } } : map
@@ -37,6 +38,7 @@ const http = createHttpClient({ session, fetch: async input => {
   if (mode === 'denied') return envelope(403, 'PERMISSION_DENIED')
   const id = path.split('/').at(-1), data = catalog(mode === 'empty' ? [] : metadata)
   if (id === 'places') return Response.json(data)
+  if (mode === 'detail-map-error') return envelope(409, 'MAP_VERSION_MISMATCH')
   if (mode === 'removed') return envelope(404, 'RESOURCE_UNAVAILABLE')
   return Response.json({ event_id: eventId, revision: mode === 'conflict' ? 8 : 7, place: metadata.find(place => place.place_id === id) })
 } })
@@ -74,14 +76,14 @@ const router = createBrowserRouter(createAppRoutes(ports, { panels: { '/world/ma
 const root = createRoot(document.getElementById('root')!); root.render(<RouterProvider router={router} />)
 const style = document.createElement('style'); style.textContent = '#qualification{font:12px/1.4 system-ui;padding:8px;background:#faf6ed;position:relative;z-index:3}body{padding:0}.world-shell{height:calc(100dvh - 58px)}'; document.head.append(style)
 window.__FE19__ = {
-  state: () => ({ places: controller.read(), runtime: runtime?.read(), camera: movement?.camera.read(), foot: movement?.read().foot,
+  state: () => ({ documentId, places: controller.read(), runtime: runtime?.read(), camera: movement?.camera.read(), foot: movement?.read().foot,
     mounts, disposals, requests, canvases: document.querySelectorAll('canvas').length, controls: document.querySelectorAll('.world-controls').length }),
   mode(value) { mode = value; publishMap(); void controller.refresh() },
   replace() { session.replace(session.read().generation, { userId: otherUser, eventId, accessToken: 'replacement-fixture-token' }) },
   async dispose() { if (disposed) return; disposed = true; controller.dispose(); root.unmount(); router.dispose(); runtime?.dispose(); await runtime?.settled(); style.remove() },
 }
 declare global { interface Window { __FE19__: {
-  state(): { places: ReturnType<typeof controller.read>; runtime: ReturnType<WorldRuntime['read']> | undefined; camera: ReturnType<MovementAttachment['camera']['read']> | undefined;
+  state(): { documentId: string; places: ReturnType<typeof controller.read>; runtime: ReturnType<WorldRuntime['read']> | undefined; camera: ReturnType<MovementAttachment['camera']['read']> | undefined;
     foot: ReturnType<MovementAttachment['read']>['foot'] | undefined; mounts: number; disposals: number; requests: string[]; canvases: number; controls: number }
   mode(value: string): void; replace(): void; dispose(): Promise<void>
 } } }

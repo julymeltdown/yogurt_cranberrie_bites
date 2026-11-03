@@ -27,7 +27,17 @@ const report = { scope: 'FE19 deterministic C03/C06 fixtures, actual Phaser came
   widths: [], checks: [], cleanup: 'NOT_RUN' }
 const reservation = createNetServer(); await new Promise(resolve => reservation.listen(0, '127.0.0.1', resolve))
 const port = reservation.address().port; await new Promise(resolve => reservation.close(resolve))
-const server = await createServer({ root: frontend, logLevel: 'error', server: { host: '127.0.0.1', port, strictPort: true } })
+const server = await createServer({ root: frontend, logLevel: 'error', server: { host: '127.0.0.1', port, strictPort: true },
+  plugins: [{ name: 'fe19-reload-fixture', configureServer(vite) {
+    vite.middlewares.use(async (request, response, next) => {
+      if (new URL(request.url, 'http://127.0.0.1').pathname !== '/world/map') return next()
+      try {
+        const html = await readFile(resolve(frontend, 'src/features/places/__tests__/fixtures/preview.html'), 'utf8')
+        response.setHeader('Content-Type', 'text/html'); response.end(await vite.transformIndexHtml(request.url, html))
+      } catch (error) { next(error) }
+    })
+  } }],
+})
 let browser, stage = 'start'
 try {
   await server.listen()
@@ -94,7 +104,18 @@ try {
         await mode(value); await expect(page.getByRole('heading', { name: heading })).toBeVisible()
         const target = page.getByRole('button', { name: 'Show Synthetic virtual stage on virtual map' })
         if (await target.count()) await expect(target).toBeDisabled()
-        if (value === 'mismatch') { await page.locator('.shell-panel-body').evaluate(element => { element.scrollTop = 0 }); await page.screenshot({ path: resolve(evidence, 'mismatch-390.png'), fullPage: true }) }
+        if (value === 'mismatch') {
+          await page.locator('.shell-panel-body').evaluate(element => { element.scrollTop = 0 }); await page.screenshot({ path: resolve(evidence, 'mismatch-390.png'), fullPage: true })
+          const previousDocument = (await state()).documentId
+          await Promise.all([page.waitForEvent('load'), page.getByRole('button', { name: 'Reload event' }).click()])
+          await page.waitForFunction(() => Boolean(window.__FE19__))
+          await expect.poll(async () => (await state()).runtime?.phase).toBe('ready')
+          await expect.poll(async () => (await state()).places.list.phase).toBe('ready')
+          assert.notEqual((await state()).documentId, previousDocument)
+          assert.equal((await state()).places.mapMismatch, false); assert.equal((await state()).canvases, 1)
+          await page.getByRole('button', { name: 'Expand panel' }).click()
+          report.checks.push('Actual Reload event navigation replaces the document/owner and recovers from stale map pin; no catalog-only false recovery')
+        }
         await mode('ok'); await expect(page.getByRole('link', { name: 'View Synthetic virtual stage' })).toBeVisible()
       }
       await mode('empty'); await expect(page.getByText('No places are published for this event yet.')).toBeVisible()
@@ -104,7 +125,29 @@ try {
       await expect(page.getByRole('heading', { name: 'Synthetic reviewed landmark', exact: true })).toBeVisible()
       await page.locator('.shell-panel-body').evaluate(element => { element.scrollTop = 0 }); await page.screenshot({ path: resolve(evidence, 'detail-390.png'), fullPage: true })
       await mode('removed'); await expect(page.getByRole('heading', { name: 'This place is unavailable' })).toBeVisible()
-      await mode('ok'); await expect(page.getByRole('heading', { name: 'Synthetic reviewed landmark', exact: true })).toBeVisible()
+      await page.getByRole('link', { name: 'All places', exact: true }).click()
+      await expect(page.getByRole('button', { name: 'Show Synthetic reviewed landmark on virtual map' })).toBeDisabled()
+      await expect(page.getByRole('button', { name: 'Show Synthetic virtual stage on virtual map' })).toBeEnabled()
+      await mode('ok'); await expect.poll(async () => (await state()).places.list.phase).toBe('ready')
+      await expect(page.getByRole('button', { name: 'Show Synthetic reviewed landmark on virtual map' })).toBeDisabled()
+      await page.getByRole('link', { name: 'View Synthetic reviewed landmark' }).click()
+      await expect(page.getByRole('heading', { name: 'Synthetic reviewed landmark', exact: true })).toBeVisible()
+      await expect(page.getByRole('button', { name: 'Show on virtual map' })).toBeEnabled()
+      await mode('detail-map-error'); await expect(page.getByRole('heading', { name: 'Your map and places do not match' })).toBeVisible()
+      await page.getByRole('link', { name: 'All places', exact: true }).click()
+      await expect(page.getByRole('button', { name: 'Show Synthetic reviewed landmark on virtual map' })).toBeDisabled()
+      await expect(page.getByRole('button', { name: 'Show Synthetic virtual stage on virtual map' })).toBeDisabled()
+      assert.equal((await state()).places.mapMismatch, true)
+      await mode('ok'); await expect.poll(async () => (await state()).places.list.phase).toBe('ready')
+      await expect(page.getByRole('button', { name: 'Show Synthetic virtual stage on virtual map' })).toBeDisabled()
+      await Promise.all([page.waitForEvent('load'), page.getByRole('button', { name: 'Reload event' }).click()])
+      await page.waitForFunction(() => Boolean(window.__FE19__))
+      await expect.poll(async () => (await state()).places.list.phase).toBe('ready')
+      await expect(page.getByRole('button', { name: 'Show Synthetic virtual stage on virtual map' })).toBeEnabled()
+      await page.getByRole('button', { name: 'Expand panel' }).click()
+      report.checks.push('R1: authoritative removed target stays disabled after All places and catalog retry; unrelated target remains enabled; detail map mismatch survives navigation/retry until event reload')
+      await page.getByRole('link', { name: 'View Synthetic reviewed landmark' }).click()
+      await expect(page.getByRole('heading', { name: 'Synthetic reviewed landmark', exact: true })).toBeVisible()
       await mode('conflict'); await expect(page.getByRole('heading', { name: 'Place information changed' })).toBeVisible()
       await mode('ok'); await expect(page.getByRole('heading', { name: 'Synthetic reviewed landmark', exact: true })).toBeVisible()
       await page.getByRole('link', { name: 'Read controls and meeting safety' }).click()
