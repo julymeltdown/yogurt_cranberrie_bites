@@ -46,12 +46,14 @@ fn identity(n: u128) -> PublicIdentity {
         avatar: AvatarSelection {
             manifest_id: asset("avatar_test"),
             manifest_version: Revision::initial(),
-            body: asset("body_test"),
-            eyes: asset("eyes_test"),
-            hair: asset("hair_test"),
-            outfit: asset("outfit_test"),
-            accessory: None,
-            skin_tone: asset("tone_test"),
+            appearance: concert_domain::AvatarAppearance::Layered {
+                body: asset("body_test"),
+                eyes: asset("eyes_test"),
+                hair: asset("hair_test"),
+                outfit: asset("outfit_test"),
+                accessory: None,
+                skin_tone: asset("tone_test"),
+            },
         },
         facing: Facing::Down,
         moving: false,
@@ -254,6 +256,48 @@ fn oracle(v: &Value) {
         String::from_utf8_lossy(&result.stderr)
     );
 }
+/// Synthetic metadata checks the wire variant, not catalog or product-art admission.
+#[test]
+fn whole_character_snapshot_and_delta_preserve_canonical_config() {
+    let mut f = Fixture::new();
+    f.identities[1].avatar.appearance = concert_domain::AvatarAppearance::WholeCharacter {
+        preset_id: asset("preset_fixture"),
+    };
+    let viewer = &f.bindings[0];
+    let mut r = replica(viewer, &f.authority, QueueLimits::default());
+    let snapshot = decode(r.next(&f.frame(), 0, &f.authority, &f.policy).unwrap());
+    let subject = f.bindings[1].key.user_id.uuid().to_string();
+    let player = snapshot["players"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|p| p["userId"] == subject)
+        .unwrap();
+    let config = &player["avatar"]["config"];
+    assert_eq!(config["contract_version"], "1.1.0");
+    assert_eq!(config["representation"], "whole_character");
+    assert_eq!(config["preset_id"], "preset_fixture");
+    assert!(config.get("item_ids").is_none());
+    assert!(config.get("skin_tone_id").is_none());
+    let layered = &snapshot["players"][0]["avatar"]["config"];
+    assert_eq!(layered["contract_version"], "1.0.0");
+    assert_eq!(layered["item_ids"]["body"], "body_test");
+    f.identities[1].avatar_revision = Revision::new(2).unwrap();
+    f.identities[1].avatar.appearance = concert_domain::AvatarAppearance::WholeCharacter {
+        preset_id: asset("preset_changed"),
+    };
+    let delta = decode(r.next(&f.frame(), 100, &f.authority, &f.policy).unwrap());
+    assert_eq!(delta["upserts"].as_array().unwrap().len(), 1);
+    assert_eq!(delta["upserts"][0]["userId"], subject);
+    assert_eq!(delta["upserts"][0]["avatar"]["revision"], 2);
+    assert_eq!(
+        delta["upserts"][0]["avatar"]["config"]["preset_id"],
+        "preset_changed"
+    );
+    assert!(delta["upserts"][0]["avatar"]["config"]
+        .get("item_ids")
+        .is_none());
+}
 #[test]
 fn two_filtered_viewers_have_no_false_gaps_and_avatar_versions_upsert() {
     let mut f = Fixture::new();
@@ -274,7 +318,12 @@ fn two_filtered_viewers_have_no_false_gaps_and_avatar_versions_upsert() {
     let db = decode(rb.next(&f.frame(), 100, &f.authority, &f.policy).unwrap());
     assert_eq!(db["streamSeq"], 1);
     f.identities[1].avatar_revision = Revision::new(2).unwrap();
-    f.identities[1].avatar.hair = asset("hair_changed");
+    let concert_domain::AvatarAppearance::Layered { hair, .. } =
+        &mut f.identities[1].avatar.appearance
+    else {
+        panic!("layered fixture required");
+    };
+    *hair = asset("hair_changed");
     let da = decode(ra.next(&f.frame(), 200, &f.authority, &f.policy).unwrap());
     let db = decode(rb.next(&f.frame(), 200, &f.authority, &f.policy).unwrap());
     assert_eq!(da["streamSeq"], 1);

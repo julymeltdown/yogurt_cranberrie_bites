@@ -1,10 +1,10 @@
 //! Copied test metadata geometry at 18d4af02; never approved product artwork.
+use crate::world::{interest::*, runtime::*, simulation::*};
 use concert_domain::{
     place::{Geometry, Interaction, PlaceId, Spawn},
     world::{Limits, WorldMap},
     AssetId, AvatarSelection, Revision,
 };
-use crate::world::{interest::*, runtime::*, simulation::*};
 use std::str::FromStr;
 use uuid::Uuid;
 pub fn id(v: u128) -> Uuid {
@@ -28,12 +28,14 @@ pub fn identity() -> PublicIdentity {
         avatar: AvatarSelection {
             manifest_id: asset("avatar_fixture"),
             manifest_version: Revision::initial(),
-            body: asset("body_fixture"),
-            eyes: asset("eyes_fixture"),
-            hair: asset("hair_fixture"),
-            outfit: asset("outfit_fixture"),
-            accessory: None,
-            skin_tone: asset("tone_fixture"),
+            appearance: concert_domain::AvatarAppearance::Layered {
+                body: asset("body_fixture"),
+                eyes: asset("eyes_fixture"),
+                hair: asset("hair_fixture"),
+                outfit: asset("outfit_fixture"),
+                accessory: None,
+                skin_tone: asset("tone_fixture"),
+            },
         },
         facing: Facing::Down,
         moving: false,
