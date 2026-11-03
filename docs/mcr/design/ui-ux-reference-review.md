@@ -8,6 +8,30 @@ The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged cop
 
 ## Evidence and limits
 
+### Illustrated scenery source delivered — `bc60edb`
+
+The illustrated-world source handoff from `19d7085` is now integrated, with all
+100 assigned new paths, 99 artifact hashes and four unchanged reference/map
+inputs verified. It contains original stage, studio, booth, tree and mural
+objects, editable composition sources and three era exports. The author passed
+45 mobile width/era/landmark cases and corrected the concrete footprint and
+interaction-clearance findings before committing. Main inspected the recorded
+390px reference/current comparison; this is visibly illustrated scenery, while
+the original reference's character density and diagonal layout remain different.
+
+This closes the missing **source scenery** handoff, not its application binding.
+The completed default-shell owner has a new isolated illustrated-world runtime
+assignment: consume the individual atlas objects in the existing Phaser scene,
+preserve player-foot depth and immutable map geometry, validate bound resources,
+and qualify atomic theme replacement and cleanup. Flattening the foreground
+over every player is explicitly prohibited. Original character art remains a
+separate open requirement; no substitute character is introduced.
+
+See [source provenance and limitations](../art/illustrated-world.md) and the
+[390px direct comparison](../art/evidence/illustrated-world/reference-comparison-390.png).
+The overall visual-implementation verdict remains incomplete until actual
+runtime binding and the remaining character/content gaps are resolved.
+
 ### Delivery recheck at `f5af234`
 
 The original attachment and preserved reference still match byte for byte.
