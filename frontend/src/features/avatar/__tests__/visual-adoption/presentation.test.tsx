@@ -15,8 +15,8 @@ const tab = (name: string) => screen.getByRole('tab', { name })
 const writes = (f: ReturnType<typeof harness>) => f.requests.filter(r => r.method === 'PUT')
 
 describe('UIV04 avatar category presentation', () => {
-  it('keeps every layer and tone available through keyboard categories without rendering or saving on navigation', async () => {
-    const f = await setup(), renders = f.previews[0]!.renders
+  it('keeps every layer and tone available through keyboard categories with bounded option previews and no draft change or save', async () => {
+    const f = await setup(), main = f.controller.read().preview.canvas
     for (const [index, name] of ['Presets', 'Body', 'Eyes', 'Hair', 'Outfit', 'Accessory', 'Tones'].entries()) {
       if (index) fireEvent.keyDown(tab(['Presets', 'Body', 'Eyes', 'Hair', 'Outfit', 'Accessory', 'Tones'][index - 1]!), { key: 'ArrowDown' })
       expect(tab(name)).toHaveAttribute('aria-selected', 'true')
@@ -26,7 +26,11 @@ describe('UIV04 avatar category presentation', () => {
     fireEvent.keyDown(tab('Tones'), { key: 'Home' })
     expect(tab('Presets')).toHaveFocus()
     expect(screen.getByRole('button', { name: 'fixture unsupported' })).toBeDisabled()
-    expect(f.previews[0]!.renders).toBe(renders)
+    expect(f.controller.read().preview.canvas).toBe(main)
+    expect(main?.isConnected).toBe(true)
+    expect(f.previews[0]!.leases.size).toBeLessThanOrEqual(4)
+    expect(document.querySelectorAll('.mcr-avatar-option canvas').length).toBeLessThanOrEqual(3)
+    expect(screen.getByRole('button', { name: 'fixture original' })).toHaveAttribute('aria-pressed', 'true')
     expect(f.controller.read().draft).toEqual(original); expect(writes(f)).toHaveLength(0)
     fireEvent.click(tab('Accessory'))
     expect(screen.getByRole('option', { name: 'None' })).toBeEnabled()

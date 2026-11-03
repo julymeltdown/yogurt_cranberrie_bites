@@ -23,6 +23,8 @@ export interface AvatarEditorOptions {
   /** Integrator updates/invalidates world and profile from this same verified response. No optimistic outfit publication. */
   readonly onCommitted?: (avatar: AvatarState, scope: PrivacyScope) => void
 }
+export const OPTION_PREVIEW_LIMIT = 3
+export interface OptionPreview { readonly phase: 'loading' | 'ready' | 'unavailable'; readonly canvas: HTMLCanvasElement | null }
 const empty = (phase: EditorPhase): EditorState => ({ phase, persisted: null, draft: null, catalog: null, candidate: null,
   needsReconciliation: false, notice: null, preview: { phase: 'idle', canvas: null } })
 export function createAvatarEditorController(options: AvatarEditorOptions) {
@@ -30,10 +32,59 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
   let lifetime = new AbortController(), previewFlight = new AbortController(), preview: AvatarPreviewPort | null = null, lease: PreviewLease | null = null
   let operation: AbortController | null = null, unsubscribe: (() => void) | null = null, cleanup: (() => void) | null = null
   let retained: { scope: PrivacyScope; persisted: AvatarState; draft: AvatarConfig; uncertain: boolean; notice: EditorNotice } | null = null
+  let optionBatch: { dispose(): void } | null = null, optionRendering = false
+  let optionQueue: (() => Promise<void>)[] = []
   const listeners = new Set<() => void>()
-  const publish = (patch: Partial<EditorState>) => { state = Object.freeze({ ...state, ...patch }); [...listeners].forEach(listener => listener()) }
+  const publish = (patch: Partial<EditorState>) => {
+    if (patch.draft !== undefined && patch.draft !== state.draft || patch.phase !== undefined && patch.phase !== 'ready') clearOptions()
+    state = Object.freeze({ ...state, ...patch }); [...listeners].forEach(listener => listener())
+  }
   const current = (captured: PrivacyScope, version = epoch) => started && !disposed && scope === captured && version === epoch && options.auth.privacy.isCurrent(captured)
+  function clearOptions() { const previous = optionBatch; optionBatch = null; optionQueue = []; previous?.dispose() }
+  async function renderOption() {
+    if (optionRendering) return
+    const next = optionQueue.shift(); if (!next) return
+    optionRendering = true
+    try { await next() } finally { optionRendering = false; void renderOption() }
+  }
+  /** One visible batch, at most three leases, one option render in flight across replacements.
+   * Never creates an owner or touches the main preview lease. Ignored aborts keep their
+   * render slot until settlement; late results are disposed before any notification.
+   */
+  function acquireOptionPreviews(configs: readonly AvatarConfig[], receive: (index: number, result: OptionPreview) => void): () => void {
+    if (configs.length > OPTION_PREVIEW_LIMIT) throw new RangeError('Too many visible outfit previews.')
+    clearOptions()
+    const owner = preview, captured = scope, version = epoch, draft = state.draft, flight = new AbortController(), leases = new Set<PreviewLease>()
+    let closed = false
+    const batch = { dispose() {
+      if (closed) return
+      closed = true; flight.abort(); for (const value of leases) value.dispose(); leases.clear()
+      if (optionBatch === batch) { optionBatch = null; optionQueue = [] }
+    } }
+    optionBatch = batch
+    const live = () => !closed && !!captured && current(captured, version) && preview === owner && optionBatch === batch
+      && state.phase === 'ready' && state.draft === draft
+    const notify = (index: number, result: OptionPreview) => { if (live()) { try { receive(index, result) } catch { batch.dispose() } } }
+    configs.forEach((config, index) => {
+      let candidate: AvatarConfig
+      try { candidate = copyConfig(config); if (!owner?.supports(candidate)) throw new Error('Unavailable') }
+      catch { notify(index, { phase: 'unavailable', canvas: null }); return }
+      notify(index, { phase: 'loading', canvas: null })
+      if (!live()) return
+      optionQueue.push(async () => {
+        if (!live() || !owner) return
+        try {
+          const next = await owner.render(candidate, flight.signal)
+          if (!live() || flight.signal.aborted) { next.dispose(); return }
+          leases.add(next); notify(index, { phase: 'ready', canvas: next.canvas })
+        } catch { notify(index, { phase: 'unavailable', canvas: null }) }
+      })
+    })
+    void renderOption()
+    return batch.dispose
+  }
   function clear(next: EditorPhase) {
+    clearOptions()
     epoch++; lifetime.abort(); lifetime = new AbortController(); operation?.abort(); operation = null
     previewFlight.abort(); lease?.dispose(); lease = null; preview?.dispose(); preview = null; scope = null
     state = empty(next)
@@ -110,6 +161,7 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
   }
   return {
     read: () => state,
+    acquireOptionPreviews,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } },
     start() {
       if (started || disposed) return
