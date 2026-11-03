@@ -75,8 +75,7 @@ pub fn validate(name: &str, value: &Value) -> Result<(), CommandError> {
         Err(CommandError::InvalidInput)
     }
 }
-/// Until Delivery freezes/regenerates the explicit RESUME union, generated schema
-/// validation deliberately rejects that new input at this HTTP boundary.
+/// Validates the frozen START/RESUME union against the generated public contract.
 pub fn parse(bytes: &[u8]) -> Result<CloseCommand, CommandError> {
     if bytes.len() > 8192 {
         return Err(CommandError::InvalidInput);
@@ -224,6 +223,29 @@ pub async fn archive_response<P: PublicArchiveOwner>(
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn published_start_resume_contract_is_closed() {
+        let start =
+            json!({"confirmation":"CLOSE_EVENT","expected_revision":1,"reason":"Close safely"});
+        assert!(matches!(
+            parse(&serde_json::to_vec(&start).unwrap()),
+            Ok(CloseCommand::Start { .. })
+        ));
+        let resume = json!({"confirmation":"RESUME_CLOSURE","job_id":Uuid::new_v4(),"expected_revision":3,"reason":"Retry failed boundary"});
+        assert!(matches!(
+            parse(&serde_json::to_vec(&resume).unwrap()),
+            Ok(CloseCommand::Resume { .. })
+        ));
+        let mut invalid = resume.clone();
+        invalid["extra"] = json!(true);
+        assert!(parse(&serde_json::to_vec(&invalid).unwrap()).is_err());
+        invalid = resume.clone();
+        invalid.as_object_mut().unwrap().remove("job_id");
+        assert!(parse(&serde_json::to_vec(&invalid).unwrap()).is_err());
+        invalid = start;
+        invalid["job_id"] = json!(Uuid::new_v4());
+        assert!(parse(&serde_json::to_vec(&invalid).unwrap()).is_err());
+    }
     #[test]
     fn malformed_server_projection_is_not_a_client_transition_conflict() {
         let response = output_response(

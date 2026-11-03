@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Owned BE41 SQL/restart fixture. Does not certify Rust adapters or BE41 acceptance."""
+"""Owned BE41 SQL/restart and optional native adapter fixture; not full acceptance."""
 import argparse
 import hashlib
 import json
@@ -39,7 +39,7 @@ def main():
         def start(): run(['pg_ctl','-D',str(data),'-l',str(home/'postgres.log'),'-o',options,'-w','start'])
         def stop(): run(['pg_ctl','-D',str(data),'-m','fast','-w','stop'])
         start()
-        evidence = {'task':'BE41','status':'IN_PROGRESS','scope':'real owned PostgreSQL SQL constraints and restart; not Rust/owner-adapter acceptance','checks':[], 'source_hashes':{}}
+        evidence = {'task':'BE41','status':'IN_PROGRESS','scope':('real owned PostgreSQL constraints/restart and source-qualified native adapters; not production-owner or full BE41 acceptance' if args.native_binary else 'real owned PostgreSQL SQL constraints and restart; not Rust/owner-adapter acceptance'),'checks':[], 'source_hashes':{}}
         def sql(command, database='mcr_be41_fixture', fails=False):
             p = subprocess.run(['psql','-X','-h',str(sock),'-d',database,'-v','ON_ERROR_STOP=1','-Atq'], input=command, capture_output=True, text=True, timeout=30)
             if (p.returncode == 0) == fails: raise AssertionError(f'Unexpected SQL result ({p.returncode}): {p.stderr[:300]}')
@@ -52,8 +52,15 @@ def main():
         progress={'job_id':JOB,'event_id':EVENT,'state':'PENDING','revision':1,'steps':[{'name':s,'state':'SUCCEEDED' if i==0 else 'PENDING'} for i,s in enumerate(STEPS)]}
         def encoded(p):return "'"+json.dumps(p,separators=(',',':')).replace("'","''")+"'::jsonb"
         try:
+            for relative in ['backend/Cargo.toml','backend/Cargo.lock',
+                    'backend/crates/concert-domain/src/lib.rs',
+                    'backend/crates/concert-application/src/lib.rs',
+                    'backend/services/concert-service/src/lib.rs',
+                    'contracts/generated/mcr-domain.openapi.json']:
+                evidence['source_hashes'][relative]=hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()
             sql('CREATE DATABASE mcr_be41_fixture;',database='postgres')
-            for path in [*sorted((SERVICE/'migrations').glob('*.sql')),SERVICE/'src/event_lifecycle/schema.sql']:
+            assert (SERVICE/'migrations/0018_event_lifecycle.sql').read_bytes()==(SERVICE/'src/event_lifecycle/schema.sql').read_bytes(), 'Lifecycle canonical migration drift'
+            for path in sorted((SERVICE/'migrations').glob('*.sql')):
                 content=path.read_text(); sql(content); evidence['source_hashes'][str(path.relative_to(ROOT))]=hashlib.sha256(content.encode()).hexdigest()
             sql(f"INSERT INTO concert_events(event_id,slug,title,phase) VALUES('{EVENT}','be41-owned','BE41 fixture','OPEN');")
             check('atomic_readonly_and_durable_job', f"BEGIN;{proof()} INSERT INTO concert_closure_jobs(job_id,event_id,actor_id,start_key,original_event_revision,retention_revision,closed_at,cleanup_after,progress) VALUES('{JOB}','{EVENT}','{ACTOR}','{KEY}',1,1,clock_timestamp(),clock_timestamp()+interval '1 hour',{encoded(progress)}); UPDATE concert_events SET phase='READ_ONLY',revision=revision+1 WHERE event_id='{EVENT}'; INSERT INTO concert_closure_effects VALUES('{EVENT}','{JOB}','READ_ONLY',gen_random_uuid(),1,clock_timestamp()); COMMIT;")
@@ -117,7 +124,7 @@ def main():
             evidence['native_adapter_suite']='NOT_RUN'
             if args.native_binary:
                 if len(args.native_binary)!=2:raise AssertionError('Provide both event_lifecycle and event_lifecycle_archive native binaries')
-                expected={'event_lifecycle_idempotent_start_receipt_is_admission_only','event_lifecycle_partial_failure_rolls_back_and_explicit_resume_skips_success','event_lifecycle_retention_wait_and_current_authority_fail_closed','event_lifecycle_concurrent_workers_and_wrong_receipt','event_lifecycle_archive_deletion_invalidates_cursor_and_never_reintroduces_content','event_lifecycle_restart_seed','event_lifecycle_restart_resume','event_lifecycle_actual_privacy_sql_expires_and_cleans_only_owned_event'}
+                expected={'event_lifecycle_full_migration_ledger_and_reapply','event_lifecycle_idempotent_start_receipt_is_admission_only','event_lifecycle_partial_failure_rolls_back_and_explicit_resume_skips_success','event_lifecycle_retention_wait_and_current_authority_fail_closed','event_lifecycle_concurrent_workers_and_wrong_receipt','event_lifecycle_archive_deletion_invalidates_cursor_and_never_reintroduces_content','event_lifecycle_restart_seed','event_lifecycle_restart_resume','event_lifecycle_actual_privacy_sql_expires_and_cleans_only_owned_event'}
                 sources=[ROOT/p for p in [
                     'backend/crates/concert-domain/src/event_lifecycle/mod.rs',
                     'backend/crates/concert-application/src/event_lifecycle/mod.rs',
@@ -129,7 +136,8 @@ def main():
                     'backend/services/concert-service/src/workers/cleanup.rs',
                     'backend/services/concert-service/tests/event_lifecycle.rs',
                     'backend/services/concert-service/tests/event_lifecycle_archive.rs',
-                    'backend/services/concert-service/tests/support/event_lifecycle/mod.rs']]
+                    'backend/services/concert-service/tests/support/event_lifecycle/mod.rs',
+                    'backend/services/concert-service/tests/event_lifecycle_support/migrations.rs']]
                 source_pin=hashlib.sha256()
                 for source in sources:
                     source_pin.update(str(source.relative_to(ROOT)).encode()+b'\0'+source.read_bytes()+b'\0')

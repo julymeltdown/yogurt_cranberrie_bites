@@ -64,6 +64,10 @@ pub fn owned_source_pin() -> String {
             "backend/services/concert-service/tests/support/event_lifecycle/mod.rs",
             include_str!("../../tests/support/event_lifecycle/mod.rs"),
         ),
+        (
+            "backend/services/concert-service/tests/event_lifecycle_support/migrations.rs",
+            include_str!("../../tests/event_lifecycle_support/migrations.rs"),
+        ),
     ];
     let mut hash = Sha256::new();
     for (path, source) in sources {

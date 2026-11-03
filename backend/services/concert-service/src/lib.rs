@@ -7,6 +7,7 @@ pub mod bootstrap;
 
 pub mod workers {
     pub mod outbox;
+    pub mod cleanup;
 }
 
 pub mod relationship;
@@ -15,3 +16,5 @@ pub mod feed;
 pub mod world;
 pub mod world_rpc;
 pub mod community;
+
+pub mod event_lifecycle;

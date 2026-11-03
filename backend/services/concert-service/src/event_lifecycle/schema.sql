@@ -1,4 +1,4 @@
--- BE41 candidate. Delivery must assign/copy to one forward-only migration.
+-- BE41 forward-only lifecycle schema; registered as 0018_event_lifecycle.sql.
 -- No seed identities, operator roles or retention values.
 CREATE TABLE public.concert_closure_jobs (
  job_id uuid PRIMARY KEY,event_id uuid NOT NULL UNIQUE REFERENCES public.concert_events(event_id),

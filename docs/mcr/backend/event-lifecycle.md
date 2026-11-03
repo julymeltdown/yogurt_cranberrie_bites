@@ -1,177 +1,160 @@
-# BE41 event lifecycle — implementation record
+# BE41 event lifecycle — implementation and qualification record
 
-Status: BLOCKED on external owner handoffs; BE41 is not complete. Base `cd7192febf9c2764169b55d63a70d7e00d13fd08`, branch
-`codex/mcr-be-BE41`, isolated checkout `/Users/lhs/Desktop/mcr-worktrees/be-event-lifecycle`.
-Persistent goal is ACTIVE, unbudgeted. Source milestones are not BE41 acceptance.
+BE41 remains **IN_PROGRESS**, with full acceptance **BLOCKED** on production owner
+composition and delivery wiring. The bounded native/migration continuation is
+validated. The persistent goal tool still reports **BLOCKED**: Main authorized
+manual continuation without replacing the aligned goal or falsely completing it.
+This record supersedes the earlier source-only/native-NOT_RUN checkpoint.
 
-## Provenance and contract
+Current continuation base: `f5af234c09fc75d9a91ba26e1c2a3766fc90f1f4`.
+Worker branch: `codex/mcr-be-lifecycle-resume`. The former
+`codex/mcr-be-BE41` checkout is read-only. Delivery alone integrates/pushes master.
 
-Newly authored Rust modules; no Bigyeting rendering or source code copied.
-Consulted BE15 command/receipt/outbox implementation at base above, C04
-`contracts/domain/v1/{admin,mural,common}.schema.json`, `operations.json` and
-`policy.json`. Archive is `admin.Archive`, not a separate archive schema.
-The seven public steps are READ_ONLY, FREEZE_MURAL, SNAPSHOT, EXPIRE_GRANTS,
-EXPIRE_BEACONS, EXPORT, CLEANUP. BE38 owner source consulted at its worker HEAD;
-shared migrations/exports/composition remain Delivery-owned. Source archives unchanged.
+## Provenance, scope and contract
 
-## Proposed explicit retry amendment (not frozen)
+All lifecycle logic is newly authored; no Bigyeting rendering/code was copied.
+Dependencies are existing pinned workspace Rust crates (SQLx/PostgreSQL, Tokio,
+Serde, Chrono, UUID, SHA2, Ring, Axum and JSON Schema), with no manifest/lock changes.
+The source milestone sequence was imported with `cherry-pick -x`:
 
-Existing `closeConcertEvent` POST route only. START retains existing
-`{expected_revision:event,confirmation:CLOSE_EVENT,reason}`. RESUME is
-`{job_id,expected_revision:job,confirmation:RESUME_CLOSURE,reason}` with a new
-idempotency key, current initiating actor/OPERATOR/Auth/event-policy checks and
-same bound job in READ_ONLY. Exact same-key/body transport replay returns the
-previous command acceptance; it never repeats job effects. GET status never
-resumes work. Failed step CAS and stable owner operation keys protect recovery.
-A receipt SUCCEEDED means durable local admission actually committed, not that
-all downstream steps succeeded. BE15 prohibits SUCCEEDED/202; use existing
-success status 200 with the job reference and project current authorized job.
-202 remains pending/uncertain only. Delivery must register/generate the amendment.
+| Original commit | Continuation commit | Purpose |
+| --- | --- | --- |
+| `077f01cf0fe99a829eb9919243d9ae43813bb195` | `e90a62a` | Durable closure and anonymous archive boundaries |
+| `2a8bfb469ed1f706330a595bb1a8014abfc8fbde` | `5221c2b` | Concert privacy expiry and retention components |
+| `e2b150e92040c577bc1199bb74aaa26f641af97f` | `48c67c6` | Owned PostgreSQL and native test runner |
+| `0136e90d1645633432cb0f9e07fa9d31a63326cb` | `410e146` | HTTP error separation and late-write retention regression |
+| `c0bc87e49b5dbb6d01ba221046d2fba59a4a6ae4` | `468418a` | Historical blocked audit |
 
-## Durable persistence increment
+The imported original scope is the domain/application `event_lifecycle/mod.rs`,
+service `src/event_lifecycle/{mod,archive,http,privacy}.rs` and `schema.sql`,
+`src/workers/cleanup.rs`, `tests/event_lifecycle{,_archive}.rs`,
+`tests/support/event_lifecycle/mod.rs`, `backend/scripts/mcr/event_lifecycle_pg.py`
+and this record. Main additionally assigned exactly the three `event_lifecycle`
+root exports, inline `workers::cleanup` export, canonical
+`migrations/0018_event_lifecycle.sql`, and `tests/event_lifecycle_support/**`.
+No routes, other-service implementations, central contracts, manifests, lockfiles
+or historical migrations were changed. `docs/source/` remains byte-for-byte intact.
 
-`src/event_lifecycle/mod.rs` implements the BE15 producer, atomic event lock +
-READ_ONLY + job + local admission-barrier receipt, current authority fences,
-exact actor/event/job/key binding and explicit failed-boundary CAS resume.
-One owner step runs per PostgreSQL transaction; owner SQL and applied evidence
-commit together. A savepoint rolls back partial mutations before recording
-FAILED. Completed steps cannot regress. READ_ONLY is not treated as proof that
-already-admitted world/party/reservation flows were invalidated: the actual local
-owner barrier is mandatory in START. Worker ticks do not auto-resume failed jobs.
-Retention is reviewed configuration, pinned by policy revision and due timestamp;
-CLEANUP is not executed before due. ARCHIVED is committed only with final success.
+The frozen contract is `911f156`, already included in the continuation base:
+[START/RESUME contract](../contracts/event-closure-resume.md). The existing
+`closeConcertEvent` route accepts the closed START/RESUME union. START uses the
+event revision; RESUME uses the job revision, original initiating actor, same
+event/job, a fresh key, and current Auth/operator/event-policy authority. Exact
+same-key/body replay returns prior admission and never retries failed effects.
+GET and worker scheduling do not resume PARTIAL_FAILURE. A SUCCEEDED/200 command
+means durable admission committed; it does not certify seven completed effects.
+202 is pending/uncertain only, with null resource references. Anonymous archive
+output is the exact C04 `admin.Archive` schema.
 
-`event_lifecycle/schema.sql` is a candidate inside the assigned scope, NOT an
-installed migration. Delivery must reserve/copy it into the canonical migration
-sequence and wire domain/application/service exports, cleanup worker and routes.
-No root/manifests/contracts/migrations have been edited by this worker.
+## Implemented behavior
 
-The archive adapter returns only the exact anonymous C04 fields. It never stores
-Post bodies or accepts protected-media fallback. Current Post/deletion/moderation,
-semantic privacy review and public-image qualification must be enforced by the
-public owning adapter on EVERY page, with a final revision fence. Pagination is
-strict descending `(created_at,post_id)` and encrypted/authenticated to event,
-archive revision, upper bound, last tuple, limit and 15-minute expiry. Public
-projection changes bump archive revision; a stale cursor conflicts. Final mural
-is immutable. The HTTP parser validates the generated C04 schema: RESUME remains
-rejected there until Delivery freezes/regenerates the proposed amendment.
+The service producer locks the event, checks current fenced authority and commits
+READ_ONLY, one durable bound job, real local admission-barrier owner evidence,
+audit, and BE15 command receipt/outbox atomically. Phase alone cannot invalidate
+already-admitted world/community flows: the owning adapter is mandatory.
 
-## Executed checks
+Seven durable steps are READ_ONLY, FREEZE_MURAL, SNAPSHOT, EXPIRE_GRANTS,
+EXPIRE_BEACONS, EXPORT and CLEANUP. Each owner step, its operation-bound receipt
+and progress commit in one local PostgreSQL transaction. A failed effect rolls
+back to a savepoint before recording FAILED. Completed steps cannot regress;
+explicit resume changes only the failed boundary. Retention policy revision and
+close/due timestamps are immutable. CLEANUP waits until due; ARCHIVED follows
+actual final success. Remote destructive work cannot be treated as local SQL.
 
-- `rustfmt +1.88.0 --edition 2021 --check` on all new Rust roots: exit 0.
-- `git diff --check`: exit 0.
-- `python3 -m py_compile backend/scripts/mcr/event_lifecycle_pg.py`: exit 0.
-- `python3 scripts/mcr/check-plan.py`: exit 0; planning/provenance only.
-- `python3 backend/scripts/mcr/event_lifecycle_pg.py --output /tmp/mcr-be41-sql-evidence.json`:
-  exit 0, 23 actual isolated PostgreSQL SQL checks. Fixture uses a uniquely owned
-  data directory and Unix socket, no TCP listener or existing database. It tests
-  phase/job atomicity, unique job, false completion and missing receipt denial,
-  authority deadlines, rollback, actual backend-process death before commit,
-  successful effect/progress commit, partial failure, PostgreSQL restart,
-  completed-step immutability, resume, actor/retention binding, immutable final mural, archive/source revision advancement, actual social/grant/beacon expiry SQL with foreign-event isolation, and append-only evidence/audit.
-  The temporary cluster is stopped and removed. The JSON identifies source hashes.
-  This is SQL persistence/restart evidence, NOT execution of the Rust adapters or
-  production owner integrations. Earlier fixture iterations caught/corrected
-  PL/pgSQL CASE parsing and generic-trigger field access before this green run.
+`schema.sql` and canonical migration `0018_event_lifecycle.sql` are identical.
+Deferred phase/progress/authority guards reject false completion, missing owner
+evidence, expired authority, changed bindings and mutable audit/effect receipts.
+The migration is forward-only and leaves all published migrations unchanged.
 
-Eight ignored native adapter tests are authored in `tests/event_lifecycle.rs` and `tests/event_lifecycle_archive.rs` with
-explicitly fixture-only authority/effects under `tests/support/event_lifecycle/`.
-The runner refuses empty/incomplete/duplicated suites and requires both binaries. It compares an owned-source SHA-256 compiled into each binary with the current sources; the restart seed and recovery tests run in separate processes with a PostgreSQL restart between them. Native build/run is
-NOT_RUN pending root exports and an explicit shared Cargo resource handoff.
+The public archive stores no Post bodies. Every page requires authoritative
+Post/deletion/moderation/privacy and independently public-media qualification,
+plus a final source revision fence. Changed public projections advance archive
+revision; stale cursors conflict. Pagination is strict descending time/UUID and
+AEAD-bound to event, revision, upper/last tuple, limit and 15-minute expiry. Final
+mural projection is frozen and immutable. Unknown/private output fields fail
+closed. HTTP server projection errors return 500; dependency failures remain 503;
+stale archive revision returns 409. Responses use no-store.
 
-## Required remaining implementation and evidence
+Actual Concert privacy SQL expires ACTIVE grants and PENDING/APPROVED requests,
+revokes ACTIVE beacons, and performs due-only event-owned privacy retention.
+It requires both lifecycle and independently pinned canonical relationship
+fences. Retention deletes terminal request/binding/grant and revoked beacon rows,
+scrubs handle ciphertext, preserves command/audit tombstones, and verifies no
+owned private residuals. A late write cannot renew the event-close retention
+period. Narrow beacon/retention component receipts cannot certify composite
+world/community cleanup. There are no permissive production owner defaults.
 
-Production current fenced authority; actual owner
-freeze, archive projection, grant/beacon + reservation/party/world expiry;
-configured ownership-aware retention; strict anonymous archive reads with current
-Post/media removal fences, immutable mural snapshot and revision-bound cursors.
-No fake applied owner receipt. ARCHIVED only after required cleanup succeeds.
+## Executed qualification — 2026-11-04
 
-Rust 1.88.0 locked/offline, jobs=2, debug=0. Shared target is Delivery-owned;
-no Cargo command run. Domain/application roots not exported yet. Unit compilation,
-real owned PostgreSQL persistence/restart/partial-failure, HTTP integration and
-acceptance are NOT_RUN at this source milestone.
+All commands below exited 0 on the continuation base plus the committed worker
+patch. Rust was pinned to 1.88.0, locked/offline, jobs=2, dev/test debug=0,
+incremental=0. The only assigned target was
+`/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target`; no third target was
+created and the 8 GiB floor was preserved (13 GiB free at inspection).
 
+```sh
+export CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target
+export CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0
+cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test event_lifecycle --test event_lifecycle_archive --no-run
+cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-domain -p concert-application -p concert-service --lib event_lifecycle
+python3 backend/scripts/mcr/event_lifecycle_pg.py --native-binary "$CARGO_TARGET_DIR/debug/deps/event_lifecycle-0a788f3afdfa0856" --native-binary "$CARGO_TARGET_DIR/debug/deps/event_lifecycle_archive-41a488a43c660038" --output backend/services/concert-service/tests/event_lifecycle_support/native-evidence.json
+python3 scripts/mcr/check-plan.py
+git diff --check
+```
 
-## Privacy components and remaining owner integration
+- Native integration: **9 passed, 0 failed, 0 ignored** across the two binaries.
+  This includes admission replay, stale revision rejection, fresh-key resume,
+  START replay leaving failure intact, START-key reuse conflict, rollback of
+  partial/wrong owner effects, concurrent workers, delayed retention and current
+  authority revocation. Actual Concert privacy SQL preserves a foreign event;
+  archive deletion invalidates cursors without resurrecting deleted content.
+- The seed and recovery tests ran in distinct native processes around an actual
+  PostgreSQL stop/start. Completed effects remained once-only and the failed
+  boundary required explicit resume after restart.
+- Migration test used real SQLx/runtime startup on two extra databases on the
+  verified fixture server: complete fresh install, full pre-0018 forward upgrade,
+  unchanged preexisting event, exact checksum verification and reapply preserving
+  every ledger field. All generated databases and fixture directories were removed.
+- SQL fixture: **23 passed** for durable/atomic state, uniqueness, rollback and
+  actual backend termination, restart, failure/resume, append-only evidence,
+  authority deadlines, immutable bindings/mural and foreign-event privacy isolation.
+- Focused units: **6 passed** (2 domain, 4 service). Application compiled but had
+  **0 matching tests**; this is not an application test pass count. Service units
+  include AEAD cursor failures, frozen mural projection, malformed response/500,
+  and frozen START/RESUME closed-shape input qualification.
+- Owned Rust roots passed `rustfmt +1.88.0 --edition 2021 --check`; Python source
+  passed `compile(..., 'exec')`; planning/provenance check passed independently.
+  Existing unrelated dead-code warnings remain; no native compile errors occurred.
 
-`privacy.rs` contains actual Concert SQL to revoke ACTIVE grants, PENDING/APPROVED
-social requests and ACTIVE beacons, plus due-only event-owned privacy retention.
-Retention deletes terminal Concert requests/bindings/grants and revoked beacons,
-scrubs retained handle ciphertext, preserves command/audit tombstones, and checks
-pinned policy revision and exact timestamps. These functions do not touch Auth or
-Post tables. SOCIAL_EXPIRY has a durable applied receipt; BEACON_EXPIRY and
-PRIVACY_RETENTION return deliberately narrower component receipts which cannot
-certify world/community or whole cleanup success.
+Committed raw [native/SQL evidence](../../../backend/services/concert-service/tests/event_lifecycle_support/native-evidence.json)
+contains exact migration, root export, generated contract and manifest/lock
+hashes, native counts/output and binary SHA256. The runner rejects missing,
+duplicate, unexpected or skipped native suites and mismatched compiled owned
+source pins. Final evidence SHA256:
+`de250f2e141a9bf5c8034346432a66b2298568ed890f2f67cb577e374d9d29ca`.
 
-Full-base migration execution exposed the BE37 relationship deadline guard. The
-production component requires BOTH an actual lifecycle authority fence and the
-canonical relationship owner's independently pinned authority deadline; it never
-manufactures the BE37 fence. Native fixtures pin synthetic authority only inside
-test-owned adapters/seed transactions. The successful SQL command explicitly
-qualifies raw SQL and foreign-event isolation, not the uncompiled Rust adapter.
+| Qualified artifact | SHA256 |
+| --- | --- |
+| Owned compiled-source pin (12 files) | `fd9c94c9139e7d722539520f26b9a4de6fa172b125056743126b8372b5ce3828` |
+| Lifecycle native binary | `cbdcec0c641ad91fc0003ec1d1837406eee7d41049cc0fb29c5f67dde50a2367` |
+| Archive native binary | `0f9d344949f9aee64dd8bcadfb56beeedfb7d3b3d2289a594b9e2bef8bdab26b` |
+| Canonical 0018 / owned schema | `8a93ed7e1b02345c3071cb0583384d61bb1e0b509e8939daf568f9ea352e2cb0` |
 
-Concrete unresolved owners: canonical Auth/operator/event-role policy plus
-reviewed retention configuration; BE37 owner fence; final mural freeze/snapshot;
-public Post/deletion/moderation/semantic review + independently public media;
-community party/reservation cancellation; world admission/lease invalidation;
-remaining owner retention. No production default/mock implementation supplies
-these. Required module exports, canonical migration number, C04 RESUME amendment
-and generated producer/consumer checks, Gateway mounting and cleanup-loop wiring
-remain Delivery-owned. Shared Cargo target still belongs to Delivery; no Cargo
-command or duplicate full target has been used by BE41.
+## Delivery boundary and remaining acceptance
 
-Native compile request (after exact exports and resource transfer), backend cwd:
-`CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --locked --offline -p concert-service --test event_lifecycle --test event_lifecycle_archive --no-run`.
-Then run the owned PG script with both explicitly qualified native binaries.
-Domain/application unit tests and service archive-cursor unit tests are also
-NOT_RUN until this handoff. Full BE41 goal remains ACTIVE and required acceptance
-is not claimed. Commits 077f01cf and 2a8bfb4 are source milestones sent to Delivery.
+The target was explicitly released to Main after all Cargo/native/PG handles
+finished. `lsof` found no target/fixture handles; process inspection found no
+retaining process; the owned temporary-root glob was empty. Further compilation
+requires a new explicit resource transfer. Delivery serially integrates the
+worker commits and requalifies changed combined composition before master push.
 
-
-## Targeted review fixes
-
-A bounded independent read-only review of archive/http at e2b150e9 found a P2:
-response validator outages were collapsed to InvalidState and returned misleading
-HTTP 409 conflicts. The adapter now preserves dependency outages as 503 and
-separates malformed server projections as 500, both no-store. A focused Rust
-regression is authored (NOT_RUN pending the same compile handoff).
-
-Local retention review also removed per-row updated/created-time filters from
-event-close privacy cleanup: the reviewed event-close deadline cannot be silently
-renewed by a late write. Cleanup verifies no event-owned private rows/ciphertext
-remain; the native test includes an unexpected late handle update. This does not
-authorize cross-event or cross-service cleanup, and composite-owner obligations
-remain required.
-
-
-## Blocked audit — 2026-11-04
-
-The same external blocker was observed across three consecutive goal turns,
-including the implementation handoff turn and two automatic continuations.
-The source checkpoint is `0136e90d1645633432cb0f9e07fa9d31a63326cb`, committed and
-pushed to `origin/codex/mcr-be-BE41`; the checkout was clean on both follow-ups.
-Direct reads confirm that neither the isolated checkout nor Delivery's checkout
-exports the new domain/application/service modules or cleanup worker. Delivery's
-checkout still names base `cd7192f`. Current bounded thread snapshots show no new
-owner interface, build-resource transfer or contract amendment handoff. An active
-chat label is not treated as a live compile process or as a build lease.
-
-The full objective remains unchanged and unachieved. Do not integrate this as an
-accepted/full BE41 implementation. Resume this same writer after Delivery provides:
-
-- Exact shared module exports, canonical forward-only migration assignment/copy,
-  route/worker composition, and the C04 explicit START/RESUME amendment with
-  generated producer/consumer qualification.
-- An explicit Cargo target resource handoff or source-qualified native binaries
-  for both test suites, preserving Rust 1.88.0, locked/offline, two jobs, debug=0.
-- Actual owner interfaces/adapters for fenced Auth/operator/event policy and
-  reviewed retention, canonical relationship fence, mural freeze/snapshot,
-  public Post/deletion/media review, community/world admission invalidation and
-  the remaining composite retention work.
-
-These are ownership/resource/interface dependencies, not an extra main-chat or
-scrum-lead approval gate. No additional user permission is requested. The 23 SQL
-checks apply to the source checkpoint; this audit is documentation only and does
-not rerun unchanged checks or convert them into Rust/integration acceptance.
-The persistent goal is to be marked BLOCKED after this audit, never COMPLETE.
+Still **NOT_RUN / unresolved**: production canonical Auth/operator/event-policy
+and reviewed retention composition; canonical BE37 relationship fence adapter;
+real final mural freeze/snapshot/export; authoritative public Post/deletion/media
+owner; community cancellation and world admission/lease invalidation; remaining
+composite retention; Gateway route mounting and actual scheduled cleanup loop;
+real multiuser/release acceptance. Synthetic authorities/healthy owners exist only
+inside marker-owned native fixtures. Their receipts cannot certify those services.
+This patch supplies validated lifecycle machinery and Concert privacy components,
+not full BE41 acceptance or a scope cut. Required work remains on the original
+persistent goal, whose actual tool status is BLOCKED.

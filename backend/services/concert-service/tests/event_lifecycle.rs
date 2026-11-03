@@ -1,4 +1,6 @@
 //! Adapter persistence tests require a runner-owned real PostgreSQL cluster.
+#[path = "event_lifecycle_support/migrations.rs"]
+mod migrations;
 #[path = "support/event_lifecycle/mod.rs"]
 mod support;
 use chrono::Duration;
@@ -76,18 +78,36 @@ async fn event_lifecycle_partial_failure_rolls_back_and_explicit_resume_skips_su
         },
         owners.clone(),
     );
-    let jobid = service
-        .command(actor, Uuid::new_v4(), start(), &keys())
+    let start_key = Uuid::new_v4();
+    let admission = service
+        .command(actor, start_key, start(), &keys())
         .await
-        .unwrap()
-        .reference
-        .unwrap()
-        .resource;
+        .unwrap();
+    let jobid = admission.reference.unwrap().resource;
     service.run_next(actor, jobid).await.unwrap();
     let failed = service.run_next(actor, jobid).await.unwrap();
     assert_eq!(failed.state, JobState::PartialFailure);
     assert_eq!(count(&pool, actor.event, "FREEZE_MURAL").await, 1);
     assert_eq!(count(&pool, actor.event, "SNAPSHOT").await, 0);
+    assert_eq!(
+        service
+            .command(actor, start_key, start(), &keys())
+            .await
+            .unwrap(),
+        admission
+    );
+    assert_eq!(
+        service.job(actor, jobid).await.unwrap(),
+        failed,
+        "START replay must not retry a failed job"
+    );
+    assert_eq!(
+        service
+            .command(actor, start_key, resume(jobid, failed.revision), &keys())
+            .await
+            .unwrap_err(),
+        CommandError::Conflict
+    );
     assert_eq!(
         service.run_next(actor, jobid).await.unwrap_err(),
         CommandError::InvalidState
@@ -408,4 +428,11 @@ async fn event_lifecycle_actual_privacy_sql_expires_and_cleans_only_owned_event(
     .await
     .unwrap();
     assert_eq!(receipts, 3);
+}
+
+#[tokio::test]
+#[ignore = "requires event_lifecycle_pg.py owned fixture"]
+async fn event_lifecycle_full_migration_ledger_and_reapply() -> anyhow::Result<()> {
+    let pool = pool().await;
+    migrations::qualify(&pool).await
 }
