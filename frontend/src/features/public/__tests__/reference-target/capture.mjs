@@ -17,7 +17,7 @@ try {
   const base = `http://127.0.0.1:${server.httpServer.address().port}`
   for (const [width, height] of (process.env.MCR_REF_PREVIEW_ONLY ? [[390,844]] : [[360,800],[390,844],[430,932]])) {
     page = await browser.newPage({ viewport: { width, height }, reducedMotion: 'reduce' })
-    const assets = []
+    const assets = []; let remountRequests = null
     page.on('request', request => { const url = new URL(request.url()); if(url.pathname.startsWith('/world/avatars/derived-v1/')) assets.push(url.pathname) })
     page.on('pageerror', e => report.errors.push(e.message))
     const fixture = `${base}/src/features/public/__tests__/reference-target/preview.html`
@@ -41,25 +41,27 @@ try {
     assert(geometry.cta.height >= 44)
     assert.equal(await page.evaluate(() => window.__REFERENCE_PUBLIC__.state().mounts), 0)
     if (!process.env.MCR_REF_PREVIEW_ONLY) {
+      await page.keyboard.press('Tab'); await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused(); await page.keyboard.press('Enter'); await expect(page.locator('#public-main')).toBeFocused()
+      for(let step=0;step<8 && !await entry.evaluate(el=>el===document.activeElement);step++) await page.keyboard.press('Tab')
+      await expect(entry).toBeFocused(); assert.notEqual(await entry.evaluate(el => getComputedStyle(el).outlineStyle), 'none')
       await expect(page.getByText('A place for the crowd.',{exact:true})).not.toBeVisible()
       await page.getByText('About this space',{exact:true}).click();await expect(page.getByText('A place for the crowd.',{exact:true})).toBeVisible();await page.getByText('About this space',{exact:true}).click()
-      await page.keyboard.press('Tab'); await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused(); await page.keyboard.press('Enter'); await expect(page.locator('#public-main')).toBeFocused()
-      await entry.focus(); assert.notEqual(await entry.evaluate(el => getComputedStyle(el).outlineStyle), 'none')
       await entry.click(); await expect(page.getByRole('heading', { name: 'Sign in', exact: true })).toBeVisible(); assert.equal((await page.evaluate(() => window.__REFERENCE_PUBLIC__.state())).path, '/login')
       await page.evaluate(() => window.__REFERENCE_PUBLIC__.back()); await expect(entry).toBeVisible()
       const nav = page.getByRole('navigation', { name: 'Public information' })
       await nav.getByRole('link', { name: 'Terms', exact: true }).click(); await expect(page.getByRole('heading', { name: 'Terms', exact: true })).toBeFocused(); assert.equal(await page.locator('.public-entry--poster').count(),0)
       await page.getByRole('link', { name: 'Back to home' }).click(); await expect(entry).toBeVisible()
-      if(process.env.MCR_REF_REQUIRE_ART) { await expect(page.locator('.landing-crowd')).toHaveAttribute('data-art-state','ready');assert.equal(assets.filter(path=>path.endsWith('.json')).length,1);assert.equal(assets.filter(path=>path.endsWith('.png')).length,1) }
+      if(process.env.MCR_REF_REQUIRE_ART) { await expect(page.locator('.landing-crowd')).toHaveAttribute('data-art-state','ready');assert.equal(assets.filter(path=>path.endsWith('.json')).length,1);assert.equal(assets.filter(path=>path.endsWith('.png')).length,1); remountRequests = [...assets] }
       await page.setViewportSize({ width, height: 420 }); await entry.scrollIntoViewIfNeeded(); await expect(entry).toBeInViewport(); await page.setViewportSize({ width, height })
       await page.goto(`${fixture}?entry=error`); await page.getByRole('button', { name: 'Check entry again' }).click(); await expect(page.getByText('Checking your session…', { exact: true })).toBeVisible(); assert.equal(await page.evaluate(() => window.__REFERENCE_PUBLIC__.state().retries),1)
       await page.evaluate(() => window.__REFERENCE_PUBLIC__.readiness('anonymous')); await expect(page.getByRole('link', { name: 'Sign in to enter' })).toBeVisible()
       await page.evaluate(() => window.__REFERENCE_PUBLIC__.ready()); await expect(page.locator('[data-world-host]')).toBeVisible(); assert.equal(await page.evaluate(() => window.__REFERENCE_PUBLIC__.state().action),'REPLACE')
       await page.evaluate(() => window.__REFERENCE_PUBLIC__.revoke()); await expect(page.locator('[data-world-host]')).toHaveCount(0)
       await page.goto(base); await expect(page.getByText('World entry is not open yet.', { exact: true })).toBeVisible(); await expect(page.getByRole('button', { name: 'Enter the world', exact: true })).toBeDisabled()
+      if(process.env.MCR_REF_REQUIRE_ART) { await expect(page.locator('.landing-crowd')).toHaveAttribute('data-art-state','ready'); await expect(page.locator('.landing-crowd > span')).toHaveCount(4) }
       const production = `production-unavailable-${width}.png`; await page.screenshot({path:resolve(evidence,production)});report.screenshots.push(production)
     }
-    report.cases.push({ width, height, geometry, approvedArtworkRequired:!!process.env.MCR_REF_REQUIRE_ART, publicAssetRequests:assets }); await page.close()
+    report.cases.push({ width, height, geometry, approvedArtworkRequired:!!process.env.MCR_REF_REQUIRE_ART, sameDocumentRouteRemountRequests:remountRequests, publicAssetRequestsIncludingFullReloads:assets }); await page.close()
   }
   if(process.env.MCR_REF_REQUIRE_ART) {
     page=await browser.newPage({viewport:{width:760,height:820}})
