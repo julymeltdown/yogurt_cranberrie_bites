@@ -14,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 OUTPUT = ROOT / "backend/docs/api/mcr-core.openapi.json"
+PUBLIC_OUTPUT = ROOT / "contracts/generated/mcr-core.openapi.json"
 AUTH_IDS = {
     "signupWithEmail", "verifyEmail", "resendVerificationEmail", "login",
     "refreshAccessToken", "logout", "requestPasswordReset", "confirmPasswordReset",
@@ -228,11 +229,13 @@ def main():
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     content = json.dumps(build_document(), ensure_ascii=False, indent=2) + "\n"
-    if args.check:
-        if not OUTPUT.exists() or OUTPUT.read_text() != content:
-            parser.exit(1, "MCR core contract is stale; run generate-mcr-core.py\n")
-    else:
-        OUTPUT.write_text(content)
+    for output in (OUTPUT, PUBLIC_OUTPUT):
+        if args.check:
+            if not output.exists() or output.read_text() != content:
+                parser.exit(1, f"MCR core contract is stale: {output.relative_to(ROOT)}; run generate-mcr-core.py\n")
+        else:
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_text(content)
     print("MCR core target contract " + ("checked" if args.check else "generated"))
 
 
