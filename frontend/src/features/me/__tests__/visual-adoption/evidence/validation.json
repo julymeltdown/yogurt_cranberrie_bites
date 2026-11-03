@@ -1,0 +1,83 @@
+{
+  "base": "11d7cb00165f78b2ec9c564dd93669edad104e88",
+  "scope": "UIV04-ME",
+  "targeted": {
+    "exit": 0,
+    "files": 11,
+    "passed": 132
+  },
+  "strictTypes": {
+    "exit": 0,
+    "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false"
+  },
+  "lint": {
+    "exit": 0,
+    "command": "node node_modules/oxlint/bin/oxlint src vite.config.ts"
+  },
+  "productionBuild": {
+    "exit": 0,
+    "command": "node node_modules/vite/bin/vite.js build --configLoader runner --outDir /tmp/mcr-uiv04-build",
+    "limits": [
+      "Existing bundle-size warning; no bundle optimization in this assignment."
+    ]
+  },
+  "fullSuite": {
+    "exit": 1,
+    "files": 96,
+    "passed": 2204,
+    "failed": 5,
+    "skipped": 14,
+    "failures": [
+      "runtime positive UUID fixtures: missing Python date-time and uri format checkers (2)",
+      "meeting-entry direct-beacon back navigation: expected /world, got /meet",
+      "transport epoch recovery: undefined socket.open",
+      "world-rooms switch confirmation: undefined requestId"
+    ]
+  },
+  "comparisons": {
+    "baseline": {
+      "exit": 1,
+      "passed": 288,
+      "failed": 3,
+      "tests": [
+        {
+          "file": "src/world/__tests__/runtime.test.ts",
+          "name": "matches C06 positive UUID/provenance semantics with consistent references aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "failure": "AssertionError: Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import runpy,sys,json;m=runpy.run_path('../scripts/mcr/validate-assets.py');d=json.loads(sys.stdin.read(),object_pairs_hook=m['reject_duplicates']);checks=m['validators']();m['validate_document'](d['map'],checks,'map');m['validate_document'](d['theme'],checks,'theme');m['validate_map'](d['map'])\n                                                                                                                                                               ~~~~~~~~~~~~~~~^^\n  File \"../scripts/mcr/validate-assets.py\", line 107, in validators\n    require(not missing,\n    ~~~~~~~^^^^^^^^^^^^^\n            \"required asset format checkers unavailable: \" + \", \".join(missing) +\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            \"; install scripts/mcr/requirements-contracts.txt in the validation environment\")\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"../scripts/mcr/validate-assets.py\", line 34, in require\n    raise AssetError(message)\n<run_path>.AssetError: required asset format checkers unavailable: date-time, uri; install scripts/mcr/requirements-contracts.txt in the validation environment\n: expected 1 to be +0 // Object.is equality\n    at /private/tmp/mcr-uiv04-baseline/frontend/src/world/__tests__/runtime.test.ts:262:40\n    at file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/@vitest+runner@4.1.9/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+        },
+        {
+          "file": "src/world/__tests__/runtime.test.ts",
+          "name": "matches C06 positive UUID/provenance semantics with consistent references 11111111-1111-0111-1111-111111111111",
+          "failure": "AssertionError: Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import runpy,sys,json;m=runpy.run_path('../scripts/mcr/validate-assets.py');d=json.loads(sys.stdin.read(),object_pairs_hook=m['reject_duplicates']);checks=m['validators']();m['validate_document'](d['map'],checks,'map');m['validate_document'](d['theme'],checks,'theme');m['validate_map'](d['map'])\n                                                                                                                                                               ~~~~~~~~~~~~~~~^^\n  File \"../scripts/mcr/validate-assets.py\", line 107, in validators\n    require(not missing,\n    ~~~~~~~^^^^^^^^^^^^^\n            \"required asset format checkers unavailable: \" + \", \".join(missing) +\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            \"; install scripts/mcr/requirements-contracts.txt in the validation environment\")\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"../scripts/mcr/validate-assets.py\", line 34, in require\n    raise AssetError(message)\n<run_path>.AssetError: required asset format checkers unavailable: date-time, uri; install scripts/mcr/requirements-contracts.txt in the validation environment\n: expected 1 to be +0 // Object.is equality\n    at /private/tmp/mcr-uiv04-baseline/frontend/src/world/__tests__/runtime.test.ts:262:40\n    at file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/@vitest+runner@4.1.9/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+        },
+        {
+          "file": "src/app/meeting-entry/__tests__/root-registration.test.tsx",
+          "name": "preserves direct-beacon back navigation through Meet to World without creating a second world lease",
+          "failure": "AssertionError: expected '/meet' to be '/world' // Object.is equality"
+        }
+      ]
+    },
+    "changed": {
+      "exit": 1,
+      "passed": 289,
+      "failed": 2,
+      "tests": [
+        {
+          "file": "src/world/__tests__/runtime.test.ts",
+          "name": "matches C06 positive UUID/provenance semantics with consistent references aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "failure": "AssertionError: Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import runpy,sys,json;m=runpy.run_path('../scripts/mcr/validate-assets.py');d=json.loads(sys.stdin.read(),object_pairs_hook=m['reject_duplicates']);checks=m['validators']();m['validate_document'](d['map'],checks,'map');m['validate_document'](d['theme'],checks,'theme');m['validate_map'](d['map'])\n                                                                                                                                                               ~~~~~~~~~~~~~~~^^\n  File \"../scripts/mcr/validate-assets.py\", line 107, in validators\n    require(not missing,\n    ~~~~~~~^^^^^^^^^^^^^\n            \"required asset format checkers unavailable: \" + \", \".join(missing) +\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            \"; install scripts/mcr/requirements-contracts.txt in the validation environment\")\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"../scripts/mcr/validate-assets.py\", line 34, in require\n    raise AssetError(message)\n<run_path>.AssetError: required asset format checkers unavailable: date-time, uri; install scripts/mcr/requirements-contracts.txt in the validation environment\n: expected 1 to be +0 // Object.is equality\n    at /Users/lhs/Desktop/mcr-worktrees/fe-me-visual/frontend/src/world/__tests__/runtime.test.ts:262:40\n    at file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/@vitest+runner@4.1.9/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+        },
+        {
+          "file": "src/world/__tests__/runtime.test.ts",
+          "name": "matches C06 positive UUID/provenance semantics with consistent references 11111111-1111-0111-1111-111111111111",
+          "failure": "AssertionError: Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import runpy,sys,json;m=runpy.run_path('../scripts/mcr/validate-assets.py');d=json.loads(sys.stdin.read(),object_pairs_hook=m['reject_duplicates']);checks=m['validators']();m['validate_document'](d['map'],checks,'map');m['validate_document'](d['theme'],checks,'theme');m['validate_map'](d['map'])\n                                                                                                                                                               ~~~~~~~~~~~~~~~^^\n  File \"../scripts/mcr/validate-assets.py\", line 107, in validators\n    require(not missing,\n    ~~~~~~~^^^^^^^^^^^^^\n            \"required asset format checkers unavailable: \" + \", \".join(missing) +\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            \"; install scripts/mcr/requirements-contracts.txt in the validation environment\")\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"../scripts/mcr/validate-assets.py\", line 34, in require\n    raise AssetError(message)\n<run_path>.AssetError: required asset format checkers unavailable: date-time, uri; install scripts/mcr/requirements-contracts.txt in the validation environment\n: expected 1 to be +0 // Object.is equality\n    at /Users/lhs/Desktop/mcr-worktrees/fe-me-visual/frontend/src/world/__tests__/runtime.test.ts:262:40\n    at file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/@vitest+runner@4.1.9/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Scoped UI READY, not full-suite green or release acceptance.",
+    "The same four files were rerun on base and changed tree. Timing failures are not claimed fixed.",
+    "Baseline was git archive of exact base in /tmp/mcr-uiv04-baseline with retained dependency link."
+  ]
+}

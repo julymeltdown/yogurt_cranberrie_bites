@@ -6,3 +6,39 @@
 .me-view :focus-visible{outline:3px solid currentColor;outline-offset:3px}.me-actions,.me-links{display:flex;flex-wrap:wrap;gap:.75rem}.me-links a{display:inline-flex;align-items:center}.me-bio{white-space:pre-wrap}.me-avatar canvas{width:128px;height:128px;image-rendering:pixelated}
 .me-view .me-check{display:flex;align-items:center;gap:.75rem;min-height:44px}.me-check input{width:22px;height:22px;flex-shrink:0}.me-note{font-size:.9rem}
 @media(prefers-reduced-motion:reduce){.me-view *{scroll-behavior:auto}}
+
+/* UIV04: only MeHub/ProfileForm opt in. Settings retains the rules above. */
+.me-view--concert{padding:0;max-width:42rem;color:#1d1a17;line-height:1.35}
+.me-view--concert .concert-window__titlebar h2{margin:0;font-size:23px;letter-spacing:.045em}
+.me-view--concert .concert-window__body{padding:14px}
+.me-view--concert p{margin:0 0 10px}
+.me-view--concert .me-identity{display:grid;grid-template-columns:minmax(0,112px) minmax(0,1fr);gap:14px;align-items:start}
+.me-view--concert .me-avatar{display:grid;align-content:center;min-height:128px;padding:8px;border:1px solid #817361;background:#dfd4c0;text-align:center}
+.me-view--concert .me-avatar p{margin:0;font-size:12px;line-height:1.35}
+.me-view--concert .me-avatar canvas{display:block;max-width:100%;height:auto;margin:auto}
+.me-view--concert .me-identity__copy{min-width:0}
+.me-view--concert .me-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#5b4c3b;margin:0 0 5px}
+.me-view--concert .me-identity h3{font-family:Impact,"Arial Narrow",sans-serif;font-size:25px;line-height:1.1;margin:0 0 10px;overflow-wrap:anywhere}
+.me-view--concert .me-bio{font-size:14px;line-height:1.4}
+.me-view--concert .me-optionality{font-size:13px;color:#514637;margin:12px 0}
+.me-view--concert .me-links{gap:6px}
+.me-view--concert .me-links a{display:flex;justify-content:center;gap:6px;min-width:44px;padding:8px;border:1px solid #80705b;background:#f5eddd;text-decoration:none;font-size:14px;font-weight:700;text-align:center}
+.me-view--concert .me-profile-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.me-view--concert .me-profile-links a{flex-direction:column}
+.me-view--concert .me-activity{margin-top:18px}
+.me-view--concert .me-activity h3{font-size:17px;text-transform:uppercase;margin:0 0 8px}
+.me-view--concert .me-activity .me-links{display:grid;grid-template-columns: minmax(0,1.5fr) minmax(0,1fr)}
+.me-view--concert .me-status{margin-top:14px;padding-top:10px;border-top:1px solid #a99b83;font-size:13px}
+.me-view--concert .me-status p{margin:0 0 6px}
+.me-view--concert .me-status button{width:100%;min-width:44px;padding:8px;border:1px solid #80705b;border-radius:0;background:#f5eddd;font-size:13px}
+.me-view--concert fieldset{margin:16px 0 12px}
+.me-view--concert legend{margin-bottom:4px;font-size:15px;text-transform:uppercase}
+.me-view--concert label{margin:10px 0 4px;font-size:14px;font-weight:700;gap:5px}
+.me-view--concert input:not([type=checkbox]),.me-view--concert textarea{border:1px solid #817361;border-radius:0;background:#faf4e8;padding:10px;font:16px/1.4 "Arial Narrow",Arial,sans-serif}
+.me-view--concert fieldset p{font-size:12px;color:#514637;margin:0 0 12px}
+.me-view--concert .me-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:8px;margin-top:14px}
+.me-view--concert .concert-action{padding:9px;font-size:13px;border:2px solid #34201b;border-radius:2px;background:#921f28;color:#fff6e7;font-weight:800}
+.me-view--concert .concert-action--paper{background:#f5eddd;color:#1d1a17;border-color:#615443}
+.me-view--concert .concert-action:disabled{background:#ddd2bf;color:#595044;border-color:#796e5c;opacity:1}
+.me-view--concert .concert-window__footer a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding:8px;font-size:14px;font-weight:700}
+.me-view--concert :focus-visible{outline:3px solid #a1212c;outline-offset:3px}
