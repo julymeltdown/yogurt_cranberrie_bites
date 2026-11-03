@@ -1,7 +1,7 @@
 # IN01 canonical account and owned-event provisioning
 
-Status: **IN_PROGRESS; bounded tooling candidate, IN01 NOT_RUN**. The provisioning
-run passed at `c6e86fe`: two independent canonical Auth accounts completed actual
+Status: **IN_PROGRESS; committed tooling handoff, IN01 NOT_RUN**. The provisioning
+run passed at `21d1657`: two independent canonical Auth accounts completed actual
 signup, email delivery, verification and login against the immutable historical
 `600582d` six-service build. A new owned OPEN event persisted and cleanup passed.
 Offline ownership/failure/config checks pass 23/23. The historical Gateway has no
@@ -289,8 +289,8 @@ against the actual URL helper. The passing rerun above used a new namespace;
 the failed receipt was not rewritten.
 
 Delivery ancestry from `cd7192febf9c2764169b55d63a70d7e00d13fd08`:
-`9ad192c` → `a2b813a` → `e15d7d6` → `192c409` → `c6e86fe`, followed by the
-documentation/evidence handoff commit. Every changed path is one of the three
+`9ad192c` → `a2b813a` → `e15d7d6` → `192c409` → `c6e86fe` → `14f54b3` →
+`21d1657`, followed by the final evidence handoff commit. Every changed path is one of the three
 assigned files. No Cargo invocation, shared target write, dependency change,
 frontend modification or source-archive modification occurred.
 
@@ -307,10 +307,43 @@ only after confirmed cleanup; otherwise lifetime says data may remain. The
 regressions exercise both returned and raised cleanup failures and helper
 lifecycle failure independently of file cleanup.
 
-The current-service build prerequisite now has a separate owner in
-`codex/mcr-qa-current-service-build` at `683484b` (owner chat
+The current-service build prerequisite now has a separate owner starting from
+`683484b` (owner chat
 `01a1a00c-c94e-74a2-a306-1ff686372881`). Its artifact receipt interface was
 communicated directly. Current artifact validation must execute on a checkout
 containing that exact build's backend sources plus these tooling files; a newer
 build does not make this older assignment base's different source hashes match.
 This tool does not launch another Rust build or write that owner's checkout.
+
+## Final held-owner and attach qualification
+
+At clean `21d16575d84bd78f0ad7e3469d02fceae381f685`, the actual owned command
+above was rerun with a new output directory
+`/private/tmp/mcr-in01-final-proof-21d1657-20261104` and `--hold-seconds 60`.
+After provisioning PASS, the unchanged `dev_stack.control_request` returned
+READY with six services. A separate actual invocation of `attach` used that
+owner's `ready.json`, its privately read eventId, the same declared release and
+new output directory `/private/tmp/mcr-in01-attach-proof-21d1657-20261104`.
+Both invocations exited 0. Attached accounts went through the actual email
+signup/verify/login flow and all four canonical identities across the two
+namespaces differed. Attach revalidated the pinned artifact receipt and retained
+HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD with all 32 source drift paths.
+
+The owner control request returned STOPPING; the foreground owner exited 0 with
+cleanup PASS. Its owned root was absent afterward, and status against the stale
+descriptor was refused. Attach correctly recorded that it did not stop/delete
+the owner's stack; the subsequent owner shutdown removed all four accounts and
+the event. Both receipts contain actual bootstrap 404, no gate config and IN01
+NOT_RUN. All private output modes remained 0700/0600 and neither receipt contains
+any of the four generated emails/passwords/access tokens/refresh cookies.
+
+Final native evidence, preserving the earlier attempts:
+
+| Receipt | SHA256 |
+| --- | --- |
+| `/private/tmp/mcr-in01-final-proof-21d1657-20261104/receipt.json` | `10b459905a2a81e7ce23d562ecd398b1a3af3994647151e05c7837d90a236691` |
+| `/private/tmp/mcr-in01-attach-proof-21d1657-20261104/receipt.json` | `85f13ecf0c5f44aca93e9d21f1a5724ea401d7d1382a6fc35164e1d24d2acbb7` |
+
+The bounded worker implementation/validation/documentation/review-fix handoff is
+ready for serial Delivery integration. This does not mark IN01 ACCEPTED, qualify
+current service binaries, supply reviewed art, or leave live frontend gate users.
