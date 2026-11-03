@@ -417,5 +417,11 @@ async fn native_relationship_owner_snapshot_and_revisions() {
     ] {
         assert!(sqlx::query(sql).execute(&pool).await.is_err());
     }
+    // Leave both denial inputs durable for the harness restart assertion.
+    sqlx::query("update users set status='SUSPENDED' where id=$1")
+        .bind(subject)
+        .execute(&pool)
+        .await
+        .unwrap();
     pool.close().await;
 }
