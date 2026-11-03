@@ -254,3 +254,64 @@ refresh failure/replay cases. Existing pointers include Gateway
 `tests/auth_lifecycle_postgres.rs` / `tests/auth_password_reset_postgres.rs`.
 No passing result for these tests is claimed here. Asset schemas and constraints
 are intentionally left to the parallel asset/schema reviewer.
+
+## Bounded PR01/PR06 recheck — 2026-11-03
+
+This note supersedes the outstanding **contract** requests in PR01 and PR06 for
+the snapshot below. Both are **resolved at the contract level**. The parent
+retains C03 freeze authority; this is not producer implementation acceptance.
+PR05 remains resolved. Original source observations are preserved above as the
+BE03 implementation baseline.
+
+Recheck worker base: `644fd2cbf90124593828efa60d2f158888cb9057`. The main checkout
+was read without modification at observed HEAD
+`ae24437645454467a38f810c196a049c21508b51`. Exact draft SHA-256 values:
+
+| Input | SHA-256 |
+|---|---|
+| `contracts/core/v1/core.schema.json` | `4f93c214a2e526964c4c9a10d96ee25155358bbdf255995a0c61bccd4e51e06e` |
+| `backend/scripts/docs/generate-mcr-core.py` | `2658516606b366018159e01bd2ca21fe30e9527426d7c07694b641eee853692f` |
+| `backend/docs/api/mcr-core.openapi.json` | `fa2873c29ca64f1101d729dd9864ae2c4d675efff9ca77aeaf85285f5d637ff7` |
+| `docs/mcr/core-contract.md` | `16fd7d58544285b869874a1b786b09524d8c3601626fb880e4bdecdf09e551e1` |
+| `contracts/fixtures/core/index.json` | `c9cb88267aed7f93d4a81c947703d0abc39ba22297bfb011079af8c0301035f2` |
+
+The index now contains **33 fixtures**. Set digest, using the same algorithm
+defined above:
+`d858b19056b2f1bcebce69ca1793f381f8136cc144224d3961bf1cfd0bf235ac`.
+
+Read-only JSON Schema probes against the generated document passed (Python
+`Draft202012Validator`, bytecode disabled, exit **0**):
+
+- Both `ORIGIN_NOT_ALLOWED` and `BROWSER_INTENT_REQUIRED` pass the strict
+  OriginErrorResponse and AuthForbiddenResponse alternatives. An unknown reason
+  and an extra private detail field fail. A generic inherited auth forbidden
+  body with null details still passes AuthForbiddenResponse.
+- All **12** non-callback mutation operations have the exact origin-policy and
+  rejection metadata: status 403, OriginErrorResponse and
+  `downstream_dispatch: false`. Each declared 403 response accepts both strict
+  guard reasons and rejects an unknown guard reason. Resend explicitly declares
+  403. The dedicated OAuth callback exceptions remain outside this guard.
+- All **48** combinations of eight new core operations and statuses
+  413/415/422/500/502/504 were checked. The respective registered reasons are
+  PAYLOAD_TOO_LARGE / INVALID_MEDIA_TYPE / INVALID_INPUT / INTERNAL_ERROR /
+  DEPENDENCY_UNAVAILABLE / DEADLINE_EXCEEDED. Expected bodies pass, null-detail
+  generic bodies fail, and an unrelated VERSION_CONFLICT reason fails.
+- The auth unauthenticated/rate-limited fixtures keep null details and validate
+  against inherited ErrorResponse. The document explicitly prescribes auth
+  HTTP status/code fallback without English-message matching.
+
+Source reading confirms the generator now supplies these policies/statuses and
+the document makes safe normalization at the **new core** HTTP boundary an
+explicit producer obligation, including extractor, admission and deadline
+failures. Preserve the explicit OriginErrorResponse guard alternative on core
+403. Do not apply strict core reason requirements to inherited generic auth
+errors. The parent's reported **23 core tests PASS** was not independently rerun
+here; the targeted schema probes above were independently executed. No generator,
+Cargo build, database, service, provider or browser run was performed.
+
+**PR02 / PR03 / PR04 remain BE03 implementation obligations, runtime NOT_RUN:**
+actual no-store coverage, body/header correlation consistency, and byte-accurate
+password messaging plus producer boundary tests. PR01's runtime guard/CORS/zero
+dispatch checks and PR06's runtime normalization also remain unimplemented and
+NOT_RUN. The missing OAuth handoff stays deliberately disabled. No BE03 code or
+normal-service startup was authorized or started during this review.
