@@ -1,5 +1,6 @@
 //! Request-bound uploader-only media runtime. No public/link authority is implied.
 //! Production composition must supply a qualified canonical Auth owner fence.
+pub mod context;
 pub mod settlement;
 mod wire;
 use crate::adapters::out::media::{MediaAuthority, PgMedia, PrivateImage};
@@ -8,6 +9,7 @@ use concert_application::{
     commands::{CommandError, FingerprintKeys},
     media::*,
 };
+pub use context::{capture_owner_context_in, OwnerMediaContextMode};
 use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
 use sha2::{Digest, Sha256};
 use sqlx::{PgConnection, PgPool};
@@ -25,6 +27,21 @@ pub struct OwnerMediaIdentity {
     pub request_id: Uuid,
     pub deadline: AuthorityRpcDeadline,
 }
+impl OwnerMediaIdentity {
+    /// Shape and original deadline only. This does not authenticate or grant access.
+    pub fn check_current(self) -> Result<(), CommandError> {
+        if [self.actor, self.event, self.session_family, self.request_id]
+            .iter()
+            .any(Uuid::is_nil)
+        {
+            return Err(CommandError::Denied);
+        }
+        self.deadline
+            .remaining(REQUEST_CEILING, self.deadline.expires_micros())
+            .map_err(|_| CommandError::Unavailable)?;
+        Ok(())
+    }
+}
 /// Exact request scope retained by the owner guard. No credentials or image data.
 /// No Debug: this binding is internal authority, not diagnostic/public data.
 pub struct OwnerMediaBinding {
@@ -38,22 +55,7 @@ pub struct OwnerMediaBinding {
 }
 impl OwnerMediaBinding {
     pub fn check_current(&self) -> Result<(), CommandError> {
-        if [
-            self.identity.actor,
-            self.identity.event,
-            self.identity.session_family,
-            self.identity.request_id,
-        ]
-        .iter()
-        .any(Uuid::is_nil)
-        {
-            return Err(CommandError::Denied);
-        }
-        self.identity
-            .deadline
-            .remaining(REQUEST_CEILING, self.identity.deadline.expires_micros())
-            .map_err(|_| CommandError::Unavailable)?;
-        Ok(())
+        self.identity.check_current()
     }
     /// Domain-separated, length-prefixed exact binding; not a transferable grant.
     pub fn digest(&self) -> [u8; 32] {
@@ -264,43 +266,18 @@ struct BoundOwnerAuthority {
 }
 impl BoundOwnerAuthority {
     async fn context_in(&self, c: &mut PgConnection) -> Result<Context, CommandError> {
-        self.binding.check_current()?;
-        let i = self.binding.identity;
-        // Same event-first order as PgMedia. SHARE locks exclude phase, suspension
-        // and participant deletion changes through commit, not just a snapshot.
-        let event: Option<(String, i64)> = sqlx::query_as(
-            "select phase,revision from public.concert_events where event_id=$1 for share",
+        let mode = if self.access == wire::AccessKind::Read || self.recovery {
+            OwnerMediaContextMode::OwnerReadOrRecovery
+        } else {
+            OwnerMediaContextMode::Mutation
+        };
+        capture_owner_context_in(
+            c,
+            self.binding.identity,
+            self.guard.authority_revision(),
+            mode,
         )
-        .bind(i.event)
-        .fetch_optional(&mut *c)
         .await
-        .map_err(|_| CommandError::Unavailable)?;
-        let (phase, event_revision) = event.ok_or(CommandError::Denied)?;
-        let readable = self.access == wire::AccessKind::Read || self.recovery;
-        if !matches!(phase.as_str(), "OPEN" | "LIVE") && !(readable && phase == "READ_ONLY") {
-            return Err(CommandError::Denied);
-        }
-        let admission: Option<(String,i64)> = sqlx::query_as("select state,restriction_revision from public.concert_event_admissions where event_id=$1 and user_id=$2 for share")
-            .bind(i.event).bind(i.actor).fetch_optional(&mut *c).await.map_err(|_| CommandError::Unavailable)?;
-        let (state, restriction) = admission.ok_or(CommandError::Denied)?;
-        if state != "ACTIVE" {
-            return Err(CommandError::Denied);
-        }
-        let participant: Option<i64> = sqlx::query_scalar("select revision from public.concert_participants where event_id=$1 and user_id=$2 for share")
-            .bind(i.event).bind(i.actor).fetch_optional(&mut *c).await.map_err(|_| CommandError::Unavailable)?;
-        if participant.is_none() {
-            return Err(CommandError::Denied);
-        }
-        Context {
-            actor: i.actor,
-            event: i.event,
-            policy: PolicyFence {
-                event_revision,
-                relationship_revision: restriction,
-                authority_revision: self.guard.authority_revision(),
-            },
-        }
-        .validate()
     }
 }
 #[async_trait]
