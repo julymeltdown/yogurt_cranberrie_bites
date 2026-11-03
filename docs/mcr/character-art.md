@@ -1,12 +1,20 @@
 # Selected character artwork
 
 The user's 2026-11-03 instruction replaces previous character imagery with the
-ten supplied photographs. The selected source pack is
-[`mcr_user_characters_20261103`, revision 1](../../frontend/src/entities/avatar/character-source-pack.json).
+latest ten supplied photographs. The selected source pack is
+[`mcr_user_characters_20261103`, revision 2](../../frontend/src/entities/avatar/character-source-pack.json).
 Original JPEG bytes are preserved in `frontend/public/world/avatars/supplied-v1/`.
 The catalog records filenames, SHA-256, byte sizes, dimensions, categories and
-duplicate provenance. These are user-supplied assets, not an upstream import or
+upload ordering and archived-duplicate provenance. These are user-supplied assets, not an upstream import or
 newly generated substitutes.
+
+The second upload (`2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD`) is the current selection.
+It retains nine sheets byte for byte, omits the earlier duplicate body sheet,
+and adds a face/body-accessory sheet as its Photo 10. Storage filenames and source
+IDs stay stable; attachment numbers refer to the latest upload. The storage
+directory name `supplied-v1` identifies the original collection, not the current
+catalog revision. The archived duplicate is excluded from `files`, the frontend
+lookup and the review gallery.
 
 No character image had been imported into the application before this change.
 The existing C06 avatar manifest contains synthetic IDs and no image resource.
@@ -18,18 +26,20 @@ or derivatives prepared from it. A missing asset must never load a legacy image.
 |---|---|---|---:|
 | Photo 1 | `photo_01` | Six complete characters, two each under Revenge / Parade / Danger | 6 |
 | Photo 2 | `photo_02` | Bodies in eight skin tones | 8 |
-| Photo 3 | `photo_03` | Byte-identical duplicate of Photo 2; kept but not counted again | 0 additional |
-| Photo 4 | `photo_04` | Front hair | 16 |
-| Photo 5 | `photo_05` | Back hair | 16 |
-| Photo 6 | `photo_06` | Outfits | 16 |
-| Photo 7 | `photo_07` | Bottoms and footwear | 16 |
-| Photo 8 | `photo_08` | Eyewear | 18 |
-| Photo 9 | `photo_09` | Eye pairs and expressions | 18 |
-| Photo 10 | `photo_10` | Face treatments | 20 |
+| Photo 3 | `photo_04` | Front hair | 16 |
+| Photo 4 | `photo_05` | Back hair | 16 |
+| Photo 5 | `photo_06` | Outfits | 16 |
+| Photo 6 | `photo_07` | Bottoms and footwear | 16 |
+| Photo 7 | `photo_08` | Eyewear | 18 |
+| Photo 8 | `photo_09` | Eye pairs and expressions | 18 |
+| Photo 9 | `photo_10` | Face treatments | 20 |
+| Photo 10 | `photo_11` | Face/body accessories shown on busts | 18 |
 
-There are nine unique sheets and 134 visible examples/choices. These counts do
-not assert 134 independently composable runtime items. Photos 2 and 3 share
-SHA-256 `cb66e99ef86893e542728864933a694663cc4bdee9440df52de64a9323a46489`.
+There are ten unique selected sheets and 152 visible examples/choices. These
+counts do not assert 152 independently composable runtime items. The first
+upload's Photos 2 and 3 were identical; the current Photo 3 is front hair.
+Historical `photo_03` is preserved in `archived_files` with its original body
+sheet bytes and is not a selectable source.
 Photo 1 is 1280×853; all other sheets are 1280×960. All are RGB JPEGs without
 alpha. The catalog's row/column hints describe the contact sheets, not validated
 sprite rectangles, consistent anchors or animation frames.
@@ -37,7 +47,7 @@ sprite rectangles, consistent anchors or animation frames.
 ## Frontend use
 
 [`source-catalog.ts`](../../frontend/src/entities/avatar/source-catalog.ts)
-exports the selected pack, the nine unique sheets and an allowlisted source-ID
+exports the selected pack, the ten unique sheets and an allowlisted source-ID
 URL lookup. Unknown IDs throw instead of returning old artwork. These source IDs
 are for artwork preparation and review; they are not accepted AvatarConfig item
 IDs and must not be saved to the backend as if they were.
@@ -62,8 +72,11 @@ does not yet represent separate front/back hair, tops/bottoms and face details.
 Bodies already contain eyes and base clothes; several outfits include hands and
 lower hems, and face-detail sheets include eyes/mouths. These overlapping pixels
 need deliberate separation, skin-tone handling and an explicit composition
-order. Photo 5 is not a complete four-direction animation set or an automatic
-one-to-one match with Photo 4. The integrator must review and version the
+order. The latest accessory sheet also includes full heads/busts; its bandages,
+face marks, jewelry, headphones, scarves, masks and glasses require isolation
+and suitable anchor/occlusion rules. The back-hair sheet is not a complete
+four-direction animation set or an automatic one-to-one match with front hair.
+The integrator must review and version the
 composition contract before consumers persist new slot/ID shapes.
 
 The six examples establish designs, not a rule that changes everyone's avatar
@@ -78,11 +91,13 @@ FE13, device rendering or world integration.
 
 ## Registration checks
 
-[Verification evidence](evidence/character-sources.json) records exact copies of
-all ten attachments, SHA-256/size/dimension checks, production-build byte parity,
-strict TypeScript/build/lint, and successful image decoding in Chrome at widths
-360, 390, 430 and 1280. The review page shows nine unique sheets, rejects an
-unknown source ID and has no horizontal overflow. The
-[390px review image](evidence/character-sources-390.png) was visually inspected.
+[Revision 2 evidence](evidence/character-sources-r2.json) records byte parity with
+all ten latest attachments, SHA-256/size/dimension checks, production-build byte
+parity, strict TypeScript/build/lint and successful decoding of ten sheets in
+390px Chrome. The review page rejects both an unknown source ID and the archived
+duplicate and has no horizontal overflow. The
+[accessory-sheet review image](evidence/character-sources-r2-accessories-390.png)
+was visually inspected. [Revision 1 evidence](evidence/character-sources.json)
+and its four-viewport run remain historical evidence for the earlier selection.
 This verifies source delivery and its review page; it does not verify extracted
 layers or production avatar rendering.

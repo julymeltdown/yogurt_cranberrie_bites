@@ -21,11 +21,13 @@
     <main>
       <h1>Character source sheets</h1>
       <p>The artwork supplied for MCR. Original files are displayed unchanged.</p>
-      <p class="source">10 attachments · 9 unique sheets. Photo 3 duplicates Photo 2 and is preserved in the source pack.</p>
+      <p class="source" id="source-summary"></p>
       <div id="sources"></div>
     </main>
     <script type="module">
-      import { characterArtSources, getCharacterSourceUrl } from '../source-catalog.ts'
+      import { characterSourcePack, characterArtSources, getCharacterSourceUrl } from '../source-catalog.ts'
+      document.getElementById('source-summary').textContent =
+        `${characterArtSources.length} selected attachments · ${characterSourcePack.unique_source_count} unique sheets · revision ${characterSourcePack.revision}.`
       const root = document.getElementById('sources')
       for (const source of characterArtSources) {
         const section = document.createElement('section')

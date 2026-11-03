@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-03",
+  "source_pack_id": "mcr_user_characters_20261103",
+  "revision": 2,
+  "selected_upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD",
+  "scope": "Latest user source batch, not a production atlas",
+  "catalog_sha256": "2c237a680f3977b89ba9ce168ea398d0e870829d4fff9d8c9f896dbd67a0d1e8",
+  "source_originals_byte_identical": 10,
+  "retained_source_sheets": 9,
+  "new_source_sheets": 1,
+  "unique_source_count": 10,
+  "unique_visible_choice_count": 152,
+  "archived_source_id": "photo_03",
+  "production_build_copies_byte_identical": 10,
+  "source_hash_size_dimensions_decode": "PASS",
+  "build_exit_code": 0,
+  "lint_exit_code": 0,
+  "browser": "156.0.8078.76",
+  "viewport": {
+    "width": 390,
+    "height": 850
+  },
+  "images_loaded": 10,
+  "unknown_and_archived_sources_rejected": true,
+  "no_horizontal_overflow": true,
+  "page_and_network_errors": [],
+  "screenshot": "docs/mcr/evidence/character-sources-r2-accessories-390.png",
+  "screenshot_sha256": "0ffdafb2f9b3a3789f9dfebaabd18f0f5d6ae1319342ad7759f2a28a5f826860",
+  "not_run": [
+    "transparent layer preparation",
+    "directional animation",
+    "runtime atlas/compositor",
+    "physical devices"
+  ],
+  "visually_reviewed": true
+}

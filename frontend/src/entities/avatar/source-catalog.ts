@@ -3,8 +3,8 @@ import pack from './character-source-pack.json'
 /** User-selected artwork inputs. These source IDs are not runtime AvatarConfig item IDs. */
 export const characterSourcePack = pack
 
-/** Photo 3 is preserved for provenance but must not become eight duplicate choices. */
-export const characterArtSources = pack.files.filter(source => source.duplicate_of === null)
+/** Only the latest selected batch; archived sources are never selectable or fallback art. */
+export const characterArtSources = pack.files
 
 /** A missing source must never fall back to legacy character artwork. */
 export function getCharacterSourceUrl(sourceId: string): string {
