@@ -11,7 +11,7 @@ the Auth-owner read and independent event/RPC-prerequisite review have
 COMPLETE bounded goals and stopped checkouts. The authenticated Auth RPC and its actual-handler QA review now have COMPLETE
 bounded goals after final native qualification. The
 original BE04 goal is BLOCKED on central composition. FE14 runtime/resource
-consumption has a separate new ACTIVE goal. Actual goal state and
+consumption and strict Gateway access context have separate new ACTIVE goals. Actual goal state and
 assignments are recorded in the [ownership register](chat-coordination.md) and
 [capacity assessment](parallel-capacity.md).
 

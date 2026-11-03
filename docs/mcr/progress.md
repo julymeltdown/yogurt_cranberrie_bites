@@ -92,3 +92,12 @@ cases. All source pins, restart/cleanup and independent disposition are verified
 The parent also corrected the BE15 harness's stale candidate pins after `5c02a31`;
 all 98 helper tests, 138 contract regressions and planning checks pass at `d197379`.
 No production moderation, identity admission or release gate is thereby enabled.
+
+
+The next BE04 strict Gateway access-context increment is now tool-confirmed
+ACTIVE on its fresh worktree at published `b16a679`, alongside FE14. It preserves
+legacy JWT behavior and adds only a verified identity/expiry/original-stop
+prerequisite; no Concert route or accepting authority is enabled by dispatch.
+The completed Auth and QA checkouts remain stopped. Exact exceptions are recorded
+in the ownership register. Project goal remains ACTIVE; accepted counts remain
+11/112 required and 11/118 total.

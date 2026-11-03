@@ -112,3 +112,9 @@ Backend RPC integration and a fresh independent actual-handler review proceed
 in their separate lanes; the P2 expiry-fixture finding is being resolved before
 final qualification. Reusing these chats serves concrete work; no fixed chat
 count is imposed. Exact current paths and actual goals are in the register.
+
+
+Auth RPC and actual-handler QA have since completed final review with verified
+COMPLETE goals. Its backend chat now owns a new ACTIVE strict Gateway access
+context goal at `b16a679`, in parallel with FE14. The QA chat is stopped. This
+keeps two useful implementation lanes active without a fixed staffing count.

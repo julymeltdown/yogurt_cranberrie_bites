@@ -2,7 +2,7 @@
 
 Updated 2026-11-03. The user authorized additional visible Codex chats, then
 clarified that a fixed backend/frontend count is unnecessary. Four visible chats
-are available; FE14 is the current implementation writer. Auth RPC, FE10 and
+are available; FE14 and the strict Gateway access context are current writers. Auth RPC, FE10 and
 both independent authority reviews completed bounded parent review with actual
 COMPLETE goals and stopped checkouts. Each assigned writer has
 its own worktree and branch; every shell command
@@ -12,7 +12,7 @@ can still point to the integration checkout.
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
 | BE04 | `mcr(be) BE04 canonical identity adapter` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-identity` / `codex/mcr-be-BE04` |
-| BE04 Auth RPC | `mcr(be) BE04 authenticated Auth admission RPC` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-auth-admission-rpc` / `codex/mcr-be-auth-admission-rpc` |
+| BE04 Gateway access | `mcr(be) BE04 strict Gateway access context` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-gateway-concert-access` / `codex/mcr-be-gateway-concert-access` |
 | FE14 | `mcr(fe) FE14 Phaser runtime and map loading` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-runtime` / `codex/mcr-fe-FE14` |
 | QA | `mcr(qa) admission and event authority review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-auth-rpc` / `codex/mcr-qa-auth-rpc` |
 
@@ -199,3 +199,25 @@ source pins, migration/restart and owned cleanup pass. No source/build writer
 remains on either completed checkout. FE14 alone remains ACTIVE until a new
 ready backend assignment is explicitly recorded. Whole BE04 and production
 Concert admission remain open.
+
+
+## Current Gateway access ownership
+
+After tool-confirmed RPC completion, that backend chat received a new unbudgeted
+goal and confirmed it ACTIVE on `be-gateway-concert-access`, branch
+`codex/mcr-be-gateway-concert-access`, published base
+`b16a679c42ee54c4a3e73575263b390f9334e064`. Its exact writable paths are new
+Gateway `src/adapters/out/jwt/concert_access.rs`, new `tests/concert_access.rs`,
+`docs/mcr/backend/gateway-concert-access.md`, plus the existing `jwt.rs` module
+export and minimal shared verified-decoder extraction. Existing public legacy
+identity shape, routes, validation/leeway/key rotation and all other behavior must
+be preserved; broader changes require a concrete parent prerequisite.
+
+The strict context retains authenticated canonical user/family and signed expiry
+with the original monotonic request stop. Future expiry is normal; malformed,
+already expired or overflowed expiry fails, and future not-before is denied when
+present. It provides no owner facts, event roles or signed Concert admission.
+No Auth client, HTTP/config, proto/platform/domain, dependency, frontend or art
+writes are delegated. The backend owns the idle retained Rust target with two
+jobs. FE14 proceeds independently on its frontend checkout; QA stays stopped
+until another concrete review is ready. No extra chats were created.
