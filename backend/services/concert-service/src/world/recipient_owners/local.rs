@@ -6,7 +6,7 @@ use concert_domain::{
     relationship::{Field, PolicyQuery, RelationshipError},
     EventPhase, Revision,
 };
-use sqlx::{PgConnection, Row};
+use sqlx::{Connection, PgConnection, Row};
 use std::str::FromStr;
 
 /// Local revisions remain independent of the Auth/Friend observation vector.
@@ -200,10 +200,26 @@ pub(super) async fn read(
         } else {
             false
         };
+        // SQLx can surface the cancelled statement's ErrorResponse before its
+        // ReadyForQuery. Drain that expected response before issuing ROLLBACK,
+        // otherwise rollback itself can return the old cancellation error.
+        let drain = match (&mut *tx).flush().await {
+            Err(sqlx::Error::Database(ref error))
+                if matches!(error.code().as_deref(), Some("57014" | "55P03")) =>
+            {
+                (&mut *tx).flush().await.map_err(unavailable)
+            }
+            result => result.map_err(unavailable),
+        };
         // Never commit lock_state's provisional neutral-pair insertion.
         let rollback = tx.rollback().await.map_err(unavailable);
         // Transaction-local limits disappear without changing serving defaults.
         let control_rollback = control.rollback().await.map_err(unavailable);
+        #[cfg(test)]
+        if cancel_query {
+            eprintln!("recipient SQL cleanup: cancel_ack={cancellation_ack} drain_ok={} data_rollback_ok={} control_rollback_ok={}",drain.is_ok(),rollback.is_ok(),control_rollback.is_ok());
+        }
+        drain?;
         rollback?;
         control_rollback?;
         #[cfg(test)]

@@ -253,6 +253,11 @@ async fn context(
 #[tokio::test]
 #[ignore = "requires marker/inode-owned Auth/Friend/Concert PostgreSQL"]
 async fn native_signed_presence_local_policy_revocation_and_deadlines() -> anyhow::Result<()> {
+    // Heap-pin the long native scenario rather than copying its large async
+    // state through libtest/Tokio's default test-thread stack.
+    Box::pin(native_scenario()).await
+}
+async fn native_scenario() -> anyhow::Result<()> {
     let auth_pool = owned_pool("auth").await;
     let friend_pool = owned_pool("friend").await;
     let concert = owned_pool("concert").await;
