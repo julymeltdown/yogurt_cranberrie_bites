@@ -1,11 +1,12 @@
 # Community/meeting shared-adapter lock order and rollback qualification
 
-Status: **IN_PROGRESS**. Recovery resumes on published producer base `707ea68`.
-The earlier source reportedly failed compilation with SQLx “Executor is not
-general enough” in `after_connect`/`raw_sql`; no successful native qualification
-is inferred. This revision replaces that callback stream with prepared single
-statements and explicit connection reborrows. Its compile retry awaits an actual
-released Cargo lease; native PostgreSQL execution remains **NOT_RUN**.
+Status: **bounded native QA qualification PASS** on source
+`ef74f62981329480588bcf8747a5c15b552ab2cf` over published producer base
+`707ea68d585324430144c971724efbf5c73167d6`. The recovered SQLx callback repair
+compiles successfully. The real shared-adapter contention/rollback test passes
+before and after an actual PostgreSQL restart; wrong-inode refusal and owned
+cleanup pass. This is an internal adapter qualification, not acceptance of a
+public multiuser flow, IN02, whole backend tasks, or a release.
 
 ## Ownership and provenance
 
@@ -87,16 +88,129 @@ TCP listener. There is no generic `DATABASE_URL` or arbitrary local fallback.
 The pool has acquisition, statement, lock and idle-transaction bounds; spawned
 reader/writer futures have their own deadlines as well as coordinator bounds.
 
-## Commands and results so far
+## Commands and results
 
-- `rustup run 1.88.0 rustfmt --edition 2021 backend/services/concert-service/tests/qa_community_policy_lock_order.rs`: exit **0**.
-- `python3 scripts/mcr/check-plan.py`: exit **0**, planning-only PASS;
-  application runtime qualification is separate.
-- Previous native compilation: **reported FAIL**, SQLx callback lifetime error;
-  the original command/log/exit code was not recovered with the two-file source
-  transfer. This is retained as a failure, not described as a passing build.
-- Recovered callback repair compile retry: **NOT_RUN**, no Cargo lease used yet.
-- Guarded PostgreSQL: **NOT_RUN** for this revision.
+The earlier source reportedly failed compilation with SQLx “Executor is not
+general enough” in `after_connect`/`raw_sql`. Its original command/log/exit code
+was not recovered with the two-file transfer; that failure is retained here.
+The repaired callback uses prepared single statements with explicit connection
+reborrows. The following successful rerun supersedes that compile failure.
+
+- `rustup run 1.88.0 rustfmt --edition 2021 --config skip_children=true backend/services/concert-service/tests/qa_community_policy_lock_order.rs`: exit **0**.
+- `python3 scripts/mcr/check-plan.py`: exit **0**, planning-only PASS.
+- Embedded reproduction runner Python syntax parse: exit **0**.
+- Native build, from the resumed checkout: exit **0** in **20.08 seconds**;
+  exact command below. Rust `1.88.0 (6b00bc388 2025-06-23)`, two jobs, dev/test
+  debug **0**, incremental **0**, offline/locked, existing backend target only.
+  Five pre-existing library dead-code warnings and two unused shared-fixture
+  warnings were emitted; there were no compiler errors. No warning fixes outside
+  the two assigned paths were bundled.
+- Cargo exec session `67640` was terminal before the executable was frozen.
+  Process group `88896` was then independently checked empty before the target
+  was explicitly released to Main.
+  No subsequent Cargo invocation occurred. Free space after build was
+  **12,345,147,392 bytes**, above the enforced **8 GiB** floor.
+- The reproduction runner below ran from the report source against the copied
+  binary: exit **0**, PostgreSQL **16.14 (Homebrew)**. The single test passed
+  **1/1 before restart** (0.21s) and **1/1 after restart** (0.19s). These are
+  independent event fixtures in the same owned database, not separate product
+  acceptance gates. The process PID changed and committed party-row digest
+  remained unchanged across the actual stop/start.
+- Wrong-inode phase exited **101**, its expected refusal, with
+  `fixture inode changed`; this is a passing guard check, not a hidden native
+  test failure. No database credentials appeared in captured output.
+- Owned-cluster cleanup **PASS**; `/private/tmp/mcr-pg-ai7p6ao2` was independently
+  checked absent afterward. Retained build/log/binary evidence is test-only;
+  no live database was contacted.
+
+```bash
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_INCREMENTAL=false CARGO_PROFILE_TEST_INCREMENTAL=false \
+cargo +1.88.0 test --manifest-path backend/Cargo.toml -p concert-service \
+  --test qa_community_policy_lock_order --no-run --locked --offline -j 2 \
+  --message-format=json-render-diagnostics
+```
+
+The build supervisor checked free space every two seconds and would terminate
+its own Cargo process group below the 8 GiB floor or after 600 seconds. Neither
+limit was reached. PostgreSQL execution began only after explicit target release.
+
+## Frozen artifacts and native evidence
+
+- Source commit: `ef74f62981329480588bcf8747a5c15b552ab2cf`, parent
+  `707ea68d585324430144c971724efbf5c73167d6`; clean status recorded at build.
+- QA source SHA-256:
+  `206db0a6461608773b509d38023af458d77f0755d1eb9a2d39aad99465ed9061`.
+  No source change followed native qualification; the final child commit updates
+  only this report.
+- Cargo-selected executable:
+  `/Users/lhs/Desktop/mcr-build/backend/debug/deps/qa_community_policy_lock_order-abe1bb32e9dfe66c`.
+- Frozen executable (15,726,768 bytes):
+  `/private/tmp/mcr-qa-native-20261104-bfe55wps/qa_community_policy_lock_order`.
+  Its SHA-256, checked equal to the Cargo-selected artifact:
+  `3bd3fca8b3a6937db496bdccda3cd48beac0c72ad5c5071a5aef613ef854438b`.
+- Build evidence directory: `/private/tmp/mcr-qa-native-20261104-bfe55wps`.
+  `input-pins.json` records **142** current source, contract, migration and
+  manifest/lockfile hashes; `build.jsonl` and `build.stderr` retain diagnostics;
+  `build-result.json`, `binary.json`, and `release.json` retain exact metadata.
+- Native evidence directory: `/private/tmp/mcr-qa-lock-order-_1sf1z9e`;
+  `report.json` and the three named phase logs are retained there. The report is
+  embedded below so its core evidence survives temporary-directory cleanup.
+
+| Evidence artifact | SHA-256 |
+| --- | --- |
+| `build-result.json` | `c26751364bdd70c25f355456cdd34529c3ed309a860556a706f181a510f22855` |
+| `input-pins.json` | `a04046939f3ed4fe4c2b2986621a39794e49a62c98beb12f0da1b0377c2c1f2b` |
+| `release.json` | `1a164af77bcc6077eee9c825050315682470817fcfb00ac55186d88cba754ff8` |
+| `report.json` | `ce61c2ed7965f654196b2e77c2fffb15b9b5d6b39c53c93fb97f88bf0c8377e8` |
+
+```json
+{
+  "result": "PASS",
+  "cleanup": "PASS",
+  "tests": [
+    {
+      "phase": "wrong-inode-refused",
+      "exit_code": 101,
+      "expected_exit": 101,
+      "output_sha256": "fcfc9d44e567a21f046de80764f971b78cbf285dbe261d8182dea3a9b6fb4c21"
+    },
+    {
+      "phase": "before-restart",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "output_sha256": "9a3d1b0f5f1efc290aa4a500a6f6520d20d04def40fb0cf0321ada7ec0967c0f"
+    },
+    {
+      "phase": "after-restart",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "output_sha256": "74c31e17cc1d09fc0196a64af3d575bc25e415219a94f04de259d46ba1ae2ed2"
+    }
+  ],
+  "source_head": "ef74f62981329480588bcf8747a5c15b552ab2cf",
+  "binary_sha256": "3bd3fca8b3a6937db496bdccda3cd48beac0c72ad5c5071a5aef613ef854438b",
+  "migration_ledger": "NOT_APPLIED",
+  "public_policy": "NOT_RUN",
+  "IN02": "NOT_RUN",
+  "qa_source_sha256": "206db0a6461608773b509d38023af458d77f0755d1eb9a2d39aad99465ed9061",
+  "owned_directory": "/private/tmp/mcr-pg-ai7p6ao2",
+  "migration_sha256": {
+    "0001_concert_core.sql": "9978e75e569c1ba25cb191ddf5b02bbdffcd5e64f3385173f05a885370d9215a",
+    "0002_command_receipts_outbox.sql": "5f5760dfe6384cb2ab5162bcc27fbc0ed75bdca6bb85229012f6389269ee442f",
+    "0003_places_map_releases.sql": "b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a",
+    "0006_relationship_policy.sql": "0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3",
+    "0007_community.sql": "6c22de4cbfc51db3b3bc23b151d19e5ad43ddc36a794ffdf7cf4507e19090930",
+    "0008_meeting_beacons.sql": "b8259eb000c15059ddcba60db64518562d2cede7d2d68c42de3df8a85b44c655",
+    "0009_receipt_domain_failures.sql": "e357529103bb998f337508a30b03bddc372fe387b7e587dcb7f96a8b295fa4c6",
+    "0011_outbox_maintenance.sql": "8971093dee1293dfd160920c773d663866dcb5cb688fb7cabf6746eaca2eb61b",
+    "0016_meeting_deadline_guards.sql": "4375673c48b46096cf20dcbac807eace37d96136e347ac9da3b95a884135ff7d"
+  },
+  "postgres_version": "16.14 (Homebrew)",
+  "restart_persistence": "PASS"
+}
+```
 
 ## Limits
 
