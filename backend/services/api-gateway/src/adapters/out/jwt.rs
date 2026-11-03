@@ -19,6 +19,8 @@ use serde::Deserialize;
 use std::collections::HashMap;
 use std::sync::{Arc, PoisonError, RwLock};
 
+pub mod concert_access;
+
 /// Largest key-set document accepted, in bytes.
 ///
 /// A published key is well under 1 KiB of JSON, so real key sets are a few
@@ -206,6 +208,20 @@ impl JwtVerifier {
     }
 
     pub fn verify_access_token(&self, token: &str) -> Result<VerifiedAccessToken, TokenRejection> {
+        let claims = self.verified_access_claims::<LegacyClaims>(token)?;
+        Ok(VerifiedAccessToken {
+            subject: claims.sub,
+            roles: claims.roles,
+            session_id: claims.sid.filter(|sid| !sid.is_empty()),
+        })
+    }
+
+    // Both projections use this one configured-key verifier. Additional strict
+    // claims are decoded from the authenticated payload, never reparsed unsigned.
+    fn verified_access_claims<T: serde::de::DeserializeOwned>(
+        &self,
+        token: &str,
+    ) -> Result<AccessClaims<T>, TokenRejection> {
         let header = decode_header(token).map_err(|_| TokenRejection::Malformed)?;
         // Keys come only from the configured issuer. A header that names where
         // to fetch a key (`jku`, `x5u`) or carries one (`jwk`, `x5c`) is an
@@ -228,8 +244,8 @@ impl JwtVerifier {
         validation.set_audience(&[self.audience.as_str()]);
         validation.set_required_spec_claims(&["aud", "exp", "iss", "sub"]);
 
-        let data =
-            decode::<AccessClaims>(token, key, &validation).map_err(|_| TokenRejection::Invalid)?;
+        let data = decode::<AccessClaims<T>>(token, key, &validation)
+            .map_err(|_| TokenRejection::Invalid)?;
         if data.claims.aud != self.audience {
             return Err(TokenRejection::WrongAudience);
         }
@@ -237,11 +253,7 @@ impl JwtVerifier {
             return Err(TokenRejection::NotAccessToken);
         }
 
-        Ok(VerifiedAccessToken {
-            subject: data.claims.sub,
-            roles: data.claims.roles,
-            session_id: data.claims.sid.filter(|sid| !sid.is_empty()),
-        })
+        Ok(data.claims)
     }
 
     fn current(&self) -> Arc<VerificationKeys> {
@@ -290,7 +302,7 @@ fn usable_exponent(e: &str) -> bool {
 }
 
 #[derive(Debug, Deserialize)]
-struct AccessClaims {
+struct AccessClaims<T> {
     sub: String,
     aud: String,
     #[serde(default)]
@@ -298,7 +310,13 @@ struct AccessClaims {
     token_type: String,
     #[serde(default)]
     sid: Option<String>,
+    #[serde(flatten)]
+    extra: T,
 }
+
+// An empty projection preserves legacy handling of additional JWT claims.
+#[derive(Debug, Deserialize)]
+struct LegacyClaims {}
 
 #[derive(Debug, Deserialize)]
 struct JwkSet {
