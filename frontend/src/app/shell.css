@@ -1,0 +1,78 @@
+/* FE07 original composition. No art, simulated venue, decorative rails or private content. */
+body:has([data-mcr-shell]) { padding: 0; }
+.world-shell {
+  --shell-viewport-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  block-size: var(--shell-viewport-height);
+  min-block-size: 18rem;
+  max-inline-size: 100rem;
+  margin-inline: auto;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: var(--mcr-paper);
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+.shell-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .65rem 1rem; }
+.shell-header > div { min-inline-size: 0; }
+.shell-brand { display: inline-flex; align-items: center; gap: .5rem; min-block-size: 44px; font-size: 1.65rem; font-weight: 900; text-decoration: none; letter-spacing: -.06em; }
+.shell-brand span { font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; }
+.shell-event { color: var(--mcr-muted); font-size: .8rem; line-height: 1.4; }
+.shell-era { display: flex; align-items: center; justify-content: space-between; gap: .75rem; border-block: 1px solid var(--mcr-cream); padding-inline: 1rem; font-size: .75rem; }
+.shell-era a { display: inline-flex; align-items: center; gap: .75rem; min-block-size: 44px; font-weight: 650; }
+.shell-stage { position: relative; min-block-size: 0; isolation: isolate; display: grid; grid-template-rows: minmax(0, 1fr) auto; }
+.shell-world { position: relative; min-inline-size: 0; min-block-size: 0; display: grid; place-items: center; background: #eae5dc; overflow: hidden; }
+.shell-world-host { position: absolute; inset: 0; }
+.shell-world-host canvas { display: block; max-inline-size: 100%; }
+.shell-world-message { position: relative; max-inline-size: 30rem; padding: 2rem 1.5rem; pointer-events: none; text-align: center; }
+.shell-world-message button { pointer-events: auto; margin-block-start: 1rem; }
+.shell-world-message h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); letter-spacing: -.03em; }
+.shell-world-message p:not(.shell-kicker) { font-size: .9rem; color: var(--mcr-muted); }
+.shell-kicker { margin-block-end: .5rem; color: var(--mcr-muted); font: 650 .7rem/1.5 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .06em; }
+.shell-world-tools { padding: .5rem 1rem; }
+.shell-world-tools nav { display: flex; justify-content: center; gap: .5rem; flex-wrap: wrap; }
+.shell-world-tools a, .shell-link { display: inline-flex; align-items: center; justify-content: center; min-block-size: 44px; min-inline-size: 44px; padding: .5rem .65rem; font-weight: 650; }
+.shell-tabs { z-index: 2; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); padding: .35rem .4rem; gap: .1rem; border-top: 1px solid var(--mcr-ink); background: var(--mcr-paper); }
+.shell-tabs a { display: flex; align-items: center; justify-content: center; min-inline-size: 44px; min-block-size: 48px; padding: .5rem .1rem; text-transform: uppercase; font-size: .7rem; font-weight: 750; text-decoration: none; border: 1px solid transparent; }
+.shell-tabs a[aria-current="page"] { background: var(--mcr-ink); color: var(--mcr-paper); border-color: var(--mcr-ink); text-decoration: underline; text-underline-offset: .2em; }
+.shell-panel { position: absolute; z-index: 1; inset-inline: 0; inset-block-end: 0; block-size: 55%; min-block-size: 11rem; max-block-size: 100%; display: flex; flex-direction: column; background: var(--mcr-paper); border-top: 1px solid var(--mcr-ink); }
+[data-panel-size="full"] .shell-panel { block-size: 100%; }
+[data-panel-size="peek"] .shell-panel { block-size: auto; min-block-size: 0; }
+.shell-panel-header { flex: 0 0 auto; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: .1rem; padding: .5rem; border-bottom: 1px solid var(--mcr-cream); }
+.shell-panel-header h1 { margin: 0; font-size: 1.1rem; line-height: 1.35; letter-spacing: -.03em; }
+.shell-panel-header .mcr-button { padding: .5rem .45rem; border-width: 1px; font-size: .75rem; }
+.shell-panel-body { min-block-size: 0; flex: 1 1 auto; overflow-y: auto; overscroll-behavior: contain; scroll-padding-block: 1rem; padding: 1.25rem; overflow-wrap: anywhere; }
+.shell-unavailable { max-inline-size: 34rem; padding-block: .5rem 1.5rem; }
+.shell-unavailable h2 { font-size: 1.3rem; letter-spacing: -.03em; }
+.shell-unavailable p:not(.shell-kicker) { color: var(--mcr-muted); font-size: .9rem; }
+.shell-section-links { display: grid; }
+.shell-section-links a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-block-size: 48px; padding-block: .75rem; border-top: 1px solid var(--mcr-cream); text-decoration: none; font-size: .9rem; font-weight: 650; }
+.shell-section-links a:hover { text-decoration: underline; }
+.shell-gate { max-inline-size: 44rem; margin: clamp(1rem, 5vh, 3rem) auto; }
+.shell-gate h1 { font-size: clamp(1.8rem, 6vw, 3rem); margin-block: 1.5rem; }
+.shell-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-block-start: 1rem; }
+.shell-panel .shell-gate { margin: 0; }
+.shell-panel .shell-gate h1 { font-size: 1.5rem; }
+.world-shell :focus-visible { outline-offset: -3px; }
+.world-shell .skip-link { z-index: 10; }
+@media (min-width: 800px) {
+  .shell-header, .shell-era { padding-inline: 1.5rem; }
+  .shell-tabs { grid-template-columns: repeat(6, minmax(5rem, 9rem)); justify-content: center; }
+  .shell-panel { inset-inline-start: auto; inline-size: min(44%, 38rem); block-size: 100%; border: 1px solid var(--mcr-ink); border-bottom: 0; }
+  [data-panel-size="peek"] .shell-panel { inline-size: min(44%, 38rem); }
+  .shell-panel-body { padding: 1.5rem; }
+  .shell-stage:has(.shell-panel) .shell-world-message { margin-inline-end: min(44vw, 38rem); }
+}
+@media (max-height: 550px) {
+  .shell-header { padding-block: .25rem; }
+  .shell-event { display: none; }
+  .shell-era { display: none; }
+  .shell-panel { block-size: 100%; }
+  .shell-world-message { padding: .75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .world-shell *, .world-shell *::before, .world-shell *::after { scroll-behavior: auto; }
+}
+@media (forced-colors: active) {
+  .shell-tabs a[aria-current="page"] { outline: 2px solid Highlight; outline-offset: -4px; }
+}
