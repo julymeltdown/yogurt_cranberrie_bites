@@ -57,6 +57,8 @@ struct State {
     hide_on_author: bool,
     wrong_binding: bool,
     comments: Vec<Comment>,
+    scan_override: Option<Position>,
+    more_override: Option<bool>,
 }
 #[derive(Clone)]
 struct Ports(Arc<Mutex<State>>);
@@ -96,8 +98,26 @@ impl FeedPolicy for Ports {
 }
 #[async_trait]
 impl PostReader for Ports {
-    async fn page(&self, _: Context, _: Window, _: Filter, _: u16) -> Result<Vec<Post>, FeedError> {
-        Ok(self.0.lock().unwrap().rows.clone())
+    async fn page(
+        &self,
+        _: Context,
+        _: Window,
+        _: Filter,
+        limit: u16,
+    ) -> Result<ScannedPosts, FeedError> {
+        let state = self.0.lock().unwrap();
+        let items = state.rows.clone();
+        let scanned_through = state
+            .scan_override
+            .or_else(|| items.last().map(Post::position));
+        let has_more = state
+            .more_override
+            .unwrap_or(items.len() == usize::from(limit));
+        Ok(ScannedPosts {
+            items,
+            scanned_through,
+            has_more,
+        })
     }
     async fn post(&self, _: Context, n: Uuid) -> Result<Option<Post>, FeedError> {
         Ok(self
@@ -323,9 +343,16 @@ impl CommentReader for Ports {
         _: Context,
         _: Uuid,
         _: Window,
-        _: u16,
-    ) -> Result<Vec<Comment>, FeedError> {
-        Ok(self.0.lock().unwrap().comments.clone())
+        limit: u16,
+    ) -> Result<ScannedComments, FeedError> {
+        let items = self.0.lock().unwrap().comments.clone();
+        let scanned_through = items.last().map(Comment::position);
+        let has_more = items.len() == usize::from(limit);
+        Ok(ScannedComments {
+            items,
+            scanned_through,
+            has_more,
+        })
     }
 }
 fn comment(n: u128) -> Comment {
@@ -566,5 +593,39 @@ async fn create_rejects_unready_media_or_nonpublic_link() {
             .prepare(ctx(), id(50), FeedCommand::CreatePost { content })
             .await
             .is_err());
+    }
+}
+
+#[tokio::test]
+async fn owner_scan_continuation_survives_an_empty_authorized_page() {
+    let (f, p) = setup(vec![]);
+    let boundary = row(12).position();
+    {
+        let mut state = p.0.lock().unwrap();
+        state.scan_override = Some(boundary);
+        state.more_override = Some(true);
+    }
+    let page = f.page(ctx(), window(), Filter::All, 20).await.unwrap();
+    assert!(page.items.is_empty());
+    assert_eq!(page.next, Some(boundary));
+}
+#[tokio::test]
+async fn owner_scan_cannot_jump_backwards_or_skip_a_returned_row() {
+    for boundary in [
+        Position {
+            created_at: now() + chrono::Duration::seconds(1),
+            id: id(20),
+        },
+        row(13).position(),
+    ] {
+        let (f, p) = setup(vec![row(12)]);
+        let mut state = p.0.lock().unwrap();
+        state.scan_override = Some(boundary);
+        state.more_override = Some(true);
+        drop(state);
+        assert!(matches!(
+            f.page(ctx(), window(), Filter::All, 20).await,
+            Err(FeedError::DependencyUnavailable)
+        ));
     }
 }

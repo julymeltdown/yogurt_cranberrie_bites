@@ -36,8 +36,18 @@ impl FeedPolicy for TestPorts {
 }
 #[async_trait]
 impl PostReader for TestPorts {
-    async fn page(&self, _: Context, _: Window, _: Filter, _: u16) -> Result<Vec<Post>, FeedError> {
-        Ok(vec![])
+    async fn page(
+        &self,
+        _: Context,
+        _: Window,
+        _: Filter,
+        _: u16,
+    ) -> Result<ScannedPosts, FeedError> {
+        Ok(ScannedPosts {
+            items: vec![],
+            scanned_through: None,
+            has_more: false,
+        })
     }
     async fn post(&self, _: Context, _: Uuid) -> Result<Option<Post>, FeedError> {
         Ok(None)
@@ -54,8 +64,12 @@ impl CommentReader for TestPorts {
         _: Uuid,
         _: Window,
         _: u16,
-    ) -> Result<Vec<Comment>, FeedError> {
-        Ok(vec![])
+    ) -> Result<ScannedComments, FeedError> {
+        Ok(ScannedComments {
+            items: vec![],
+            scanned_through: None,
+            has_more: false,
+        })
     }
 }
 #[async_trait]

@@ -89,6 +89,32 @@ pub trait FeedPolicy: Send + Sync {
 }
 /// Exact owner content snapshot. Results must be current and viewer-authorized. No
 /// user feed/search fallback; all rows bind event and upper/last created_at,id tuple.
+pub struct ScannedPosts {
+    pub items: Vec<Post>,
+    pub scanned_through: Option<Position>,
+    pub has_more: bool,
+}
+pub struct ScannedComments {
+    pub items: Vec<Comment>,
+    pub scanned_through: Option<Position>,
+    pub has_more: bool,
+}
+pub(crate) fn continuation(
+    window: Window,
+    positions: &[Position],
+    scanned: Option<Position>,
+    more: bool,
+) -> Result<Option<Position>, FeedError> {
+    if more && scanned.is_none()
+        || scanned.is_some_and(|p| !window.contains(p))
+        || positions
+            .last()
+            .is_some_and(|last| scanned.is_none_or(|p| p > *last))
+    {
+        return Err(FeedError::DependencyUnavailable);
+    }
+    Ok(if more { scanned } else { None })
+}
 #[async_trait]
 pub trait PostReader: Send + Sync {
     async fn page(
@@ -97,7 +123,7 @@ pub trait PostReader: Send + Sync {
         window: Window,
         filter: Filter,
         limit: u16,
-    ) -> Result<Vec<Post>, FeedError>;
+    ) -> Result<ScannedPosts, FeedError>;
     async fn post(&self, context: Context, id: Uuid) -> Result<Option<Post>, FeedError>;
 }
 /// Public profile bytes must match frozen C03 PublicProfile and exact user_id.
@@ -237,7 +263,8 @@ impl<R: PostReader, P: FeedPolicy, S: FeedResources, C: crate::Clock> Feed<R, P,
             return Err(FeedError::InvalidInput);
         }
         let member = self.observe(context, context.actor, Action::Read).await?;
-        let rows = self.reader.page(context, window, filter, limit).await?;
+        let batch = self.reader.page(context, window, filter, limit).await?;
+        let rows = batch.items;
         if rows.len() > usize::from(limit)
             || rows.windows(2).any(|w| w[0].position() <= w[1].position())
             || rows
@@ -247,11 +274,8 @@ impl<R: PostReader, P: FeedPolicy, S: FeedResources, C: crate::Clock> Feed<R, P,
             return Err(FeedError::DependencyUnavailable);
         }
         // One bounded scan; empty pages may have a continuation when rows are revoked.
-        let next = if rows.len() == usize::from(limit) {
-            rows.last().map(Post::position)
-        } else {
-            None
-        };
+        let positions = rows.iter().map(Post::position).collect::<Vec<_>>();
+        let next = continuation(window, &positions, batch.scanned_through, batch.has_more)?;
         let mut items = Vec::new();
         let mut observations = Vec::new();
         for row in rows {
@@ -312,7 +336,13 @@ impl FeedPolicy for UnavailableFeed {
 }
 #[async_trait]
 impl PostReader for UnavailableFeed {
-    async fn page(&self, _: Context, _: Window, _: Filter, _: u16) -> Result<Vec<Post>, FeedError> {
+    async fn page(
+        &self,
+        _: Context,
+        _: Window,
+        _: Filter,
+        _: u16,
+    ) -> Result<ScannedPosts, FeedError> {
         Err(FeedError::DependencyUnavailable)
     }
     async fn post(&self, _: Context, _: Uuid) -> Result<Option<Post>, FeedError> {

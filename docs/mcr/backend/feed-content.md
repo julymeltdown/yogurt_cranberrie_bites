@@ -177,3 +177,5 @@ unready media/private links. The native `feed_postgres` test exercises real SQL
 Pending/replay/conflict, default unavailable authority, current denial after
 queueing, bound owner acknowledgement, outbox deduplication and late-insert
 rollback. These Rust tests remain NOT_RUN until the shared Cargo lease.
+
+Recovery refinement: durable work now retains the original authority digest, resolved parent and captured parent revision; a composite receipt foreign key binds all scope fields. Owner scan continuation is explicit (`scanned_through`, `has_more`) so a filtered empty batch cannot falsely end pagination. SQL-only run `/tmp/mcr-feed-sql-20261104-02.json` passed migration/restart/cleanup (exit 0), migration SHA-256 `2f59731ad04ae25ec99276ddb36a705debf0af014b4ba8928eff9a5bd2d11433`. Rust remains NOT_RUN pending lease.

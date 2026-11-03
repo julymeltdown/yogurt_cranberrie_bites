@@ -43,6 +43,10 @@ impl<A: FencedFeedAuthority> FeedProducer<'_, A> {
         {
             return Err(CommandError::Denied);
         }
+        self.command
+            .context()
+            .check(chrono::Utc::now())
+            .map_err(|_| CommandError::Denied)?;
         Ok(())
     }
 }
@@ -55,7 +59,8 @@ impl<A: FencedFeedAuthority> CommandProducer for FeedProducer<'_, A> {
         target: Uuid,
     ) -> Result<(), CommandError> {
         self.binding(s, target)?;
-        self.authority.check_in(c, self.command).await
+        self.authority.check_in(c, self.command).await?;
+        self.binding(s, target)
     }
     async fn apply(
         &self,
@@ -68,9 +73,9 @@ impl<A: FencedFeedAuthority> CommandProducer for FeedProducer<'_, A> {
             serde_json::to_value(self.command.command()).map_err(|_| CommandError::InvalidInput)?;
         // Scope and target are selected from the just-created receipt, not provided
         // by a separate request. Durable job and Pending receipt commit together.
-        let n=sqlx::query("insert into public.concert_feed_owner_work(receipt_id,event_id,target_id,actor_id,operation_id,idempotency_key,session_family_id,request_id,authority_expires_at,payload) select receipt_id,event_id,target_id,actor_id,operation_id,idempotency_key,$6,$7,$8,$9 from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 and target_id=$5 and state='PENDING'")
+        let n=sqlx::query("insert into public.concert_feed_owner_work(receipt_id,event_id,target_id,actor_id,operation_id,idempotency_key,session_family_id,request_id,authority_expires_at,payload,authority_digest,parent_id,parent_revision) select receipt_id,event_id,target_id,actor_id,operation_id,idempotency_key,$6,$7,$8,$9,$10,$11,$12 from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 and target_id=$5 and state='PENDING'")
             .bind(s.actor).bind(s.event).bind(s.operation.id()).bind(s.key).bind(target)
-            .bind(self.command.context().session_family).bind(self.command.context().request).bind(self.command.context().expires_at).bind(payload)
+            .bind(self.command.context().session_family).bind(self.command.context().request).bind(self.command.context().expires_at).bind(payload).bind(self.command.context().authority_digest.as_slice()).bind(self.command.parent()).bind(self.command.parent_revision())
             .execute(c).await.map_err(|_|CommandError::Unavailable)?.rows_affected();
         if n != 1 {
             return Err(CommandError::InvalidState);
@@ -138,8 +143,19 @@ impl FeedQueue {
         .fetch_one(&mut *tx)
         .await
         .map_err(unavailable)?;
-        let row=sqlx::query("select r.receipt_id,r.state,r.resource_revision,r.expires_at,w.state work_state,w.payload from public.concert_command_receipts r join public.concert_feed_owner_work w using(receipt_id) where r.actor_id=$1 and r.event_id=$2 and r.operation_id=$3 and r.idempotency_key=$4 and r.target_id=$5 for update of r,w")
+        let row=sqlx::query("select r.receipt_id,r.state,r.resource_revision,r.expires_at,w.state work_state,w.payload,w.parent_id,w.parent_revision from public.concert_command_receipts r join public.concert_feed_owner_work w using(receipt_id) where r.actor_id=$1 and r.event_id=$2 and r.operation_id=$3 and r.idempotency_key=$4 and r.target_id=$5 for update of r,w")
             .bind(scope.actor).bind(scope.event).bind(scope.operation.id()).bind(scope.key).bind(commit.resource).fetch_optional(&mut *tx).await.map_err(unavailable)?.ok_or(CommandError::Denied)?;
+        if row
+            .try_get::<Option<Uuid>, _>("parent_id")
+            .map_err(unavailable)?
+            != command.parent()
+            || row
+                .try_get::<Option<i64>, _>("parent_revision")
+                .map_err(unavailable)?
+                != command.parent_revision()
+        {
+            return Err(CommandError::Conflict);
+        }
         // Compare intent as well as scope/target before a qualified acknowledgement.
         let stored: serde_json::Value = row.try_get("payload").map_err(unavailable)?;
         if stored

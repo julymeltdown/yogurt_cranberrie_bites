@@ -12,7 +12,7 @@ pub trait CommentReader: Send + Sync {
         parent: Uuid,
         window: Window,
         limit: u16,
-    ) -> Result<Vec<Comment>, FeedError>;
+    ) -> Result<ScannedComments, FeedError>;
 }
 pub struct ProjectedComment {
     pub comment: Comment,
@@ -42,7 +42,8 @@ impl<R: PostReader + CommentReader, P: FeedPolicy, S: FeedResources, C: crate::C
             return Err(FeedError::InvalidInput);
         }
         let before = self.post(context, parent).await?;
-        let rows = self.reader.comments(context, parent, window, limit).await?;
+        let batch = self.reader.comments(context, parent, window, limit).await?;
+        let rows = batch.items;
         if rows.len() > usize::from(limit)
             || rows.windows(2).any(|w| w[0].position() <= w[1].position())
             || rows.iter().any(|c| {
@@ -51,11 +52,8 @@ impl<R: PostReader + CommentReader, P: FeedPolicy, S: FeedResources, C: crate::C
         {
             return Err(FeedError::DependencyUnavailable);
         }
-        let next = if rows.len() == usize::from(limit) {
-            rows.last().map(Comment::position)
-        } else {
-            None
-        };
+        let positions = rows.iter().map(Comment::position).collect::<Vec<_>>();
+        let next = continuation(window, &positions, batch.scanned_through, batch.has_more)?;
         let mut items = Vec::new();
         let mut fences = Vec::new();
         for comment in rows {
@@ -455,7 +453,7 @@ impl CommentReader for UnavailableFeed {
         _: Uuid,
         _: Window,
         _: u16,
-    ) -> Result<Vec<Comment>, FeedError> {
+    ) -> Result<ScannedComments, FeedError> {
         Err(FeedError::DependencyUnavailable)
     }
 }
