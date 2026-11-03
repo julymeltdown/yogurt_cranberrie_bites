@@ -30,12 +30,17 @@ source pins match its tested commit; this audit's follow-through narrative is
 the sole intentionally newer integrated pin. See [community evidence](../frontend/community-visual.md).
 Qualified imagery and root shell chrome remain open; no live flow is inferred.
 
-That released chat is now assigned UIV05-MAP in a new isolated worktree for only
-Places presentation. Chat `01a1a26e-1de2-7b41-a294-c9a79cfded9b` has a verified
-new ACTIVE unbudgeted UIV04-ME goal for My Profile presentation. Their new
-handoffs are not yet delivered. World/shell, customize and wall adoption also
-remain open. Sending the reference to other leads is still distinct from their
-implementing it.
+That released chat now has a verified ACTIVE unbudgeted UIV05-MAP goal in a new
+isolated worktree for only Places presentation; its handoff is not yet delivered.
+UIV04-ME's actual MeHub/ProfileForm adoption is integrated in `970b272` from clean
+author handoff `600bc50afdedf4db2713dd680e60f9ecd5428e26`. Its 132 affected tests
+and 51 native state/width cases passed, including unchanged Settings geometry.
+Fresh combined strict types also passed. [My Profile evidence](../frontend/me-visual.md)
+discloses broader-suite failures separately; [environment follow-up](../qa/contract-validation-environment.md)
+resolves the two missing Python format-checker failures without claiming to fix
+the other three intermittent failures. Approved avatar rendering and live profile
+composition remain unqualified. World/shell, customize and wall adoption remain
+open. Sending the reference to other leads is still distinct from implementation.
 
 Integration verified exact assigned paths and source equality with the UIV02
 handoff, all ten tested-source hashes and 51 final screenshot hashes, and fresh
