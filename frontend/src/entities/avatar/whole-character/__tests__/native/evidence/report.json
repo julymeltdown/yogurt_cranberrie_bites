@@ -1,0 +1,122 @@
+{
+  "result": "PASS",
+  "scope": "Real WholeCharacterView/runtime with golden canonical configs and reviewed art; fixture canonical session, no live backend/world",
+  "checks": [
+    {
+      "width": 360,
+      "sixDistinctPixelHashes": [
+        "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5",
+        "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219",
+        "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f",
+        "310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8",
+        "29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7",
+        "cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+      ],
+      "exact64px": true,
+      "noSmoothing": true,
+      "eraIdentityUnchanged": true,
+      "resourceReads": 3,
+      "detailOnlyOnRequest": true,
+      "consumerUnmountPreservesOwner": true,
+      "synchronousRevocationClearsPixels": true,
+      "final": {
+        "disposed": true,
+        "leases": 0,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 0
+      }
+    },
+    {
+      "width": 390,
+      "sixDistinctPixelHashes": [
+        "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5",
+        "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219",
+        "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f",
+        "310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8",
+        "29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7",
+        "cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+      ],
+      "exact64px": true,
+      "noSmoothing": true,
+      "eraIdentityUnchanged": true,
+      "resourceReads": 3,
+      "detailOnlyOnRequest": true,
+      "consumerUnmountPreservesOwner": true,
+      "synchronousRevocationClearsPixels": true,
+      "final": {
+        "disposed": true,
+        "leases": 0,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 0
+      }
+    },
+    {
+      "width": 430,
+      "sixDistinctPixelHashes": [
+        "a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5",
+        "e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219",
+        "7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f",
+        "310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8",
+        "29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7",
+        "cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+      ],
+      "exact64px": true,
+      "noSmoothing": true,
+      "eraIdentityUnchanged": true,
+      "resourceReads": 3,
+      "detailOnlyOnRequest": true,
+      "consumerUnmountPreservesOwner": true,
+      "synchronousRevocationClearsPixels": true,
+      "final": {
+        "disposed": true,
+        "leases": 0,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 0
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "revenge-360.png",
+      "sha256": "3aa14c0b061b82e21cb2751270e0fc44841b22a43842d5222a6466ec4db83d23"
+    },
+    {
+      "file": "parade-360.png",
+      "sha256": "eb1c7e7f1560ba64ad1539fdfaa375c599f1caa5b9c3a5549fea9f89025afcaf"
+    },
+    {
+      "file": "danger-360.png",
+      "sha256": "d7f9402a8b6b89e8e09d53e276697bcd801f7d2b29e3f807bfe693dc6ff87685"
+    },
+    {
+      "file": "revenge-390.png",
+      "sha256": "2689e280068156a1e8b9c66f47598b1804a8f11c26ddb13f1b0befcdf1c36c41"
+    },
+    {
+      "file": "parade-390.png",
+      "sha256": "77c834d0d647cf42c2fc62f4b2c279a0185cb6dabc94690e94a57adf93a6b117"
+    },
+    {
+      "file": "danger-390.png",
+      "sha256": "c5b3fb7a7dc92ab4eecf0d75c39204469fda09096ce4dd73957445f215f21405"
+    },
+    {
+      "file": "revenge-430.png",
+      "sha256": "29f3cc99efaa090680002631b9dd78065720848b3e483c2fdaa61e3c0452e8b3"
+    },
+    {
+      "file": "parade-430.png",
+      "sha256": "ab375bf87082ac843ce9ab55bf08bafa7c042ce92854dc53fa396269f2e99275"
+    },
+    {
+      "file": "danger-430.png",
+      "sha256": "3250acca226879296fbc9816402d3e491ef29898774e767ff6dda70720a6812c"
+    }
+  ],
+  "errors": [],
+  "cleanup": "PASS",
+  "browser": "156.0.8078.80"
+}

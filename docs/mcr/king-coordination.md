@@ -51,6 +51,55 @@ Auth journal, Friend journal and World invalidation workers remain under Backend
 king. Future worker allocations belong in their lane records rather than a
 second central approval queue.
 
+## Current backend feature ownership
+
+The following assignments reuse existing chats and checkouts. They are exclusive
+implementation scopes, not approval roles. Detailed path grants travel with each
+assignment; narrow existing root exports preserve the other owner's additions.
+
+| Feature owner | Chat | Writable checkout and scope |
+| --- | --- | --- |
+| Canonical selected avatars | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `be-world-profile-producer`: canonical avatar contract/persistence/bootstrap; avatar-only `CoreRepository::avatar`; no World or frontend edits. |
+| World invalidation and READ_ONLY | `01a1a20f-8d37-71c3-a429-8a55bb6d6c49` | `be-world-invalidation`: native World fences, closure and migration 0023; World avatar projection/serializer compatibility. |
+| Event closure composition | `01a1a267-37a0-7723-a4e9-a3a6f5b27f52` | `be-lifecycle-resume`: lifecycle/community closure and composite receipt migration 0024; consumes the World API without editing World. |
+| Participant owner | `01a1a209-80da-7e53-a295-b64cfe09c1d7` | `be-participant-producer`: participant module/RPC, its proto and narrow module/build registration. |
+| Auth/Friend replay clients | `01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c` | `be-auth-invalidation`: Concert relationship-authority invalidation client subtree and sealed verified response types; no World effects. |
+| Production owner media | `01a1a213-03de-72d3-9ecf-2f72b574cf82` | `be-media-upload`: existing media producer plus new media runtime/authority; exact tests/harness. Root exports, configuration, Gateway and proto belong to the composer. |
+| Production event Feed reads | `01a1a21a-a088-7c31-83e3-19de119ba873` | `be-world-recipient-producer`: Concert Feed adapters, Post event-content read authority/RPC and necessary Post read-authority proto extension; no root/media/World edits. Former Friend RPC work is published and preserved. |
+| Product API composition | `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` | `be-media-combined`: new Concert product RPC/config/proto, Gateway product routes/client, public notice-read wiring and narrow root registrations. Consumes the media/Feed implementations; does not approve their commits. Its former main-checkout ownership is revoked. |
+| Canonical owner authority | `01a1a207-f012-7343-a24b-12b9c544973f` | `be-intro-age-policy`: real Auth/Friend owner-held guards, new authority protocol, Concert guarded consumer and narrow shared authorization-policy/exchange registration; no observation-to-authority substitution. |
+| Canonical public-profile projection | `01a1a205-3f89-78c3-aa67-719c4bb40b8d` | `be-operations-resume`: Profile-owned public projection/RPC/proto and Concert public-profile adapter; coordinates shared authorization registration with the authority owner, not World-specific display authority. |
+
+All checkout names above are under `/Users/lhs/Desktop/mcr-worktrees/`. A chat's
+old app cwd is not write permission. The original `/Users/lhs/Desktop/mcr`
+checkout and `delivery-checkpoints` are not assigned to any worker above.
+
+Media/Feed scope requires genuine canonical authority and actual HTTP journeys.
+Their library producers and inherited Post routes do not establish event API
+readiness. Feed reads, Feed writes, owner media, linked/public media and unrelated
+People/introduction/sharing/inbox capabilities must not be conflated. Missing
+cross-owner authority is an implementation dependency, never permission to ship
+fixture authority or a permissive capability flag. These increments do not cut
+remaining project scope.
+
+Build targets remain single-writer resources. The current named owners may pass
+an explicitly released target directly to the assigned next worker after frozen
+artifact copying, handle cleanup and a fresh 8 GiB free-space check. They report
+the transfer; no separate king approval is required. World and lifecycle may
+alternate BACKEND, and canonical avatars and participant may alternate MEDIA
+for their actual dependencies. A worker uses copied executables for its own
+socket-only PostgreSQL cluster; distinct owned native clusters may run alongside
+another worker's compilation. No native test reads a mutable shared executable.
+
+Stale old turns were interrupted with branches/WIP preserved. The BE25 chat
+is now reused for canonical owner authority; the completed bounded moderation
+chat is reused for public-profile projection after its prior handoff was already
+integrated. BE33 notifications and beacon-photo chats remain archived backlog
+candidates, not completed requirements or falsely active workers. Existing
+historical goal states are reported honestly when the goal API cannot replace an
+unfinished objective; that administrative limitation does not prevent the
+authorized new assignment.
+
 ## Exact visual target
 
 The latest user-supplied PNG is preserved byte for byte as

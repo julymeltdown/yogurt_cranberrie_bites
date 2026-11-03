@@ -1,0 +1,229 @@
+{
+  "result": "PASS",
+  "qualification": "Actual production Places/router/Auth/owner/Phaser with existing TEST ONLY in-process HTTP/C05/review metadata; Published root deb5865d (author7201b875), no preview layout override. Original orthogonal1152x896 scenery; diagonal portrait reference fidelity remains incomplete. Not live/device/character acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "mapBounds": {
+        "x": 17,
+        "y": 65,
+        "width": 326,
+        "height": 718
+      },
+      "firstPlaque": "View Virtual Studio landmark",
+      "localGesturesRequests": 0,
+      "incumbentCameraUnchanged": true,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "createdURLs": 24,
+      "revokedURLs": 24
+    },
+    {
+      "width": 390,
+      "mapBounds": {
+        "x": 17,
+        "y": 65,
+        "width": 356,
+        "height": 718
+      },
+      "firstPlaque": "View Virtual Studio landmark",
+      "localGesturesRequests": 0,
+      "incumbentCameraUnchanged": true,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "createdURLs": 24,
+      "revokedURLs": 24
+    },
+    {
+      "width": 430,
+      "mapBounds": {
+        "x": 17,
+        "y": 65,
+        "width": 396,
+        "height": 718
+      },
+      "firstPlaque": "View Virtual Studio landmark",
+      "localGesturesRequests": 0,
+      "incumbentCameraUnchanged": true,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "createdURLs": 24,
+      "revokedURLs": 24
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "geometry": [
+    {
+      "s": ".world-shell",
+      "r": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 844,
+        "top": 0,
+        "right": 430,
+        "bottom": 844,
+        "left": 0
+      },
+      "display": "grid",
+      "grid": "836px",
+      "height": "844px",
+      "flex": "0 1 auto",
+      "classes": "world-shell"
+    },
+    {
+      "s": ".shell-header"
+    },
+    {
+      "s": ".shell-era-region",
+      "r": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "display": "none",
+      "grid": "none",
+      "height": "auto",
+      "flex": "0 1 auto",
+      "classes": "shell-era-region"
+    },
+    {
+      "s": ".shell-stage",
+      "r": {
+        "x": 4,
+        "y": 4,
+        "width": 422,
+        "height": 836,
+        "top": 4,
+        "right": 426,
+        "bottom": 840,
+        "left": 4
+      },
+      "display": "grid",
+      "grid": "836px 0px",
+      "height": "836px",
+      "flex": "0 1 auto",
+      "classes": "shell-stage"
+    },
+    {
+      "s": ".shell-panel",
+      "r": {
+        "x": 6,
+        "y": 4,
+        "width": 418,
+        "height": 836,
+        "top": 4,
+        "right": 424,
+        "bottom": 840,
+        "left": 6
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "836px",
+      "flex": "0 1 auto",
+      "classes": "shell-panel"
+    },
+    {
+      "s": ".shell-panel-body",
+      "r": {
+        "x": 9,
+        "y": 57,
+        "width": 412,
+        "height": 780,
+        "top": 57,
+        "right": 421,
+        "bottom": 837,
+        "left": 9
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "780px",
+      "flex": "1 1 auto",
+      "classes": "shell-panel-body"
+    },
+    {
+      "s": ".mcr-root-map",
+      "r": {
+        "x": 15,
+        "y": 63,
+        "width": 400,
+        "height": 768,
+        "top": 63,
+        "right": 415,
+        "bottom": 831,
+        "left": 15
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "768px",
+      "flex": "1 1 0px",
+      "classes": "mcr-root-map"
+    },
+    {
+      "s": ".places-map-full",
+      "r": {
+        "x": 15,
+        "y": 63,
+        "width": 400,
+        "height": 768,
+        "top": 63,
+        "right": 415,
+        "bottom": 831,
+        "left": 15
+      },
+      "display": "block",
+      "grid": "none",
+      "height": "768px",
+      "flex": "0 1 auto",
+      "classes": "places-view places-overview places-map-full"
+    },
+    {
+      "s": ".places-map-surface",
+      "r": {
+        "x": 15,
+        "y": 63,
+        "width": 400,
+        "height": 768,
+        "top": 63,
+        "right": 415,
+        "bottom": 831,
+        "left": 15
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "768px",
+      "flex": "0 1 auto",
+      "classes": "places-map-surface"
+    },
+    {
+      "s": ".places-map-viewport",
+      "r": {
+        "x": 17,
+        "y": 65,
+        "width": 396,
+        "height": 718,
+        "top": 65,
+        "right": 413,
+        "bottom": 783,
+        "left": 17
+      },
+      "display": "block",
+      "grid": "none",
+      "height": "718px",
+      "flex": "1 1 auto",
+      "classes": "places-map-viewport"
+    },
+    {
+      "s": ".shell-tabs"
+    }
+  ]
+}

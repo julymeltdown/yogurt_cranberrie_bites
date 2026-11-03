@@ -41,7 +41,7 @@ const schemas: Record<string, unknown> = browserContract.components.schemas
 const compiled = new Map<string, z.ZodType>()
 const pending = new Set<string>()
 const supported = new Set(['type', '$ref', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items',
-  'minItems', 'maxItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'maximum', 'anyOf', 'description', 'default'])
+  'minItems', 'maxItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'maximum', 'anyOf', 'oneOf', 'description', 'default'])
 // Compile ONLY the frozen, reachable browser schemas; unknown keywords fail closed.
 // New schemas are not independently maintained approximations of the wire contract.
 function compile(value: unknown): z.ZodType {
@@ -53,6 +53,10 @@ function compile(value: unknown): z.ZodType {
   if (Array.isArray(s.anyOf)) {
     const branches = s.anyOf.map(compile)
     return z.unknown().refine(v => branches.some(branch => branch.safeParse(v).success))
+  }
+  if (Array.isArray(s.oneOf)) {
+    const branches = s.oneOf.map(compile)
+    return z.unknown().refine(v => branches.filter(branch => branch.safeParse(v).success).length === 1)
   }
   if (Object.hasOwn(s, 'const')) return z.unknown().refine(v => v === s.const)
   if (Array.isArray(s.enum)) return z.unknown().refine(v => (s.enum as unknown[]).includes(v))

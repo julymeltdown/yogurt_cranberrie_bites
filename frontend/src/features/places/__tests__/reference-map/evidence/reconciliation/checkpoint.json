@@ -1,0 +1,19 @@
+{
+  "qualifiedBaseline": "a4ae8555af8d43b1cddf8b07d71f48d14ad20940",
+  "mergedRemote": "dad5282c42026d4e68b8b41e04c0b35b28cfd046",
+  "testedMerge": "82f2c0a1",
+  "result": "FAIL",
+  "testFiles": {
+    "passed": 7,
+    "failed": 2
+  },
+  "tests": {
+    "passed": 103,
+    "failed": 8
+  },
+  "types": 0,
+  "build": 0,
+  "native": "FAIL at360/open sign-in boundary",
+  "cause": "New AvatarConfig oneOf is unsupported by existing Auth and gift-discovery schema compilers",
+  "publication": "HELD pending current owner fix; no unassigned edits"
+}
