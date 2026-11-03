@@ -51,7 +51,13 @@ async fn native_bootstrap_transactions_and_guarded_response() {
         .unwrap();
     assert_eq!(record.preferences.theme, concert_domain::Theme::Danger);
     assert!(record.preferences.low_power);
-    assert!(record.avatar.accessory.is_none());
+    assert!(matches!(
+        &record.avatar.appearance,
+        concert_domain::AvatarAppearance::Layered {
+            accessory: None,
+            ..
+        }
+    ));
     let event2 = Uuid::new_v4();
     support::seed(&pool, event2).await;
     repo.bootstrap(
@@ -597,4 +603,97 @@ fn missing_world_resources_override_enabled_configuration() {
         release.source_digest(),
         bundle.load(false, true).unwrap().source_digest()
     );
+}
+
+#[test]
+fn selected_release_binds_all_six_presets_without_layered_defaults() {
+    use concert_domain::{
+        avatar::{config_value, parse_config},
+        AssetId, AvatarAppearance,
+    };
+    use serde_json::{json, Value};
+    use sha2::{Digest, Sha256};
+    let mut bundle = Bundle::new();
+    let manifest: Value = serde_json::from_str(include_str!(
+        "../../../../contracts/fixtures/assets/selected-static/avatar-manifest.json"
+    ))
+    .unwrap();
+    bundle.document["avatar_manifest"] = manifest.clone();
+    bundle.document["avatar"]["config"] = manifest["presets"][0]["config"].clone();
+    bundle.document["participant"]["profile"]["avatar"] = bundle.document["avatar"].clone();
+    for theme in bundle.document["theme_manifests"].as_array_mut().unwrap() {
+        theme["avatar_manifest_id"] = manifest["manifest_id"].clone();
+        theme["avatar_manifest_version"] = manifest["manifest_version"].clone();
+        theme["avatar_content_hash"] = manifest["content_hash"].clone();
+        theme.as_object_mut().unwrap().remove("content_hash");
+        let canonical =
+            concert_domain::place::canonical_json_bytes(&serde_json::to_vec(theme).unwrap())
+                .unwrap();
+        theme["content_hash"] = format!("sha256:{:x}", Sha256::digest(canonical)).into();
+    }
+    bundle.write();
+    let release = bundle.load(false, true).unwrap();
+    assert!(bundle.load(true, true).is_err()); // fixture map/themes are still unapproved product art
+    let event = bundle.document["event"]["event_id"]
+        .as_str()
+        .unwrap()
+        .parse()
+        .unwrap();
+    let actor = Uuid::new_v4();
+    let admission = support::admission(event, actor);
+    for preset in manifest["presets"].as_array().unwrap() {
+        let selection = parse_config(&serde_json::to_vec(&preset["config"]).unwrap()).unwrap();
+        let record = BootstrapRecord {
+            event_id: concert_domain::EventId::from_uuid(event),
+            event_revision: 1,
+            event_slug: "selected-event".into(),
+            event_title: "Selected event".into(),
+            event_timezone: "Asia/Seoul".into(),
+            phase: concert_domain::EventPhase::Open,
+            restriction_revision: 0,
+            active: true,
+            participant_revision: 1,
+            preferences: concert_domain::Preferences {
+                theme: concert_domain::Theme::Revenge,
+                low_power: false,
+                reduced_motion: false,
+                sound_enabled: false,
+            },
+            avatar_revision: 7,
+            avatar: selection,
+            completed_at: chrono::Utc::now(),
+        };
+        let mut result = BootstrapResult {
+            record,
+            release: release.release().clone(),
+        };
+        let bytes = concert_service::bootstrap::release::bind_response(
+            release.release().bootstrap_json(),
+            &admission,
+            &result,
+            release.source_digest(),
+        )
+        .unwrap();
+        let wire: Value = serde_json::from_slice(&bytes).unwrap();
+        assert_eq!(
+            wire["avatar"],
+            json!({"revision":7,"config":preset["config"]})
+        );
+        assert_eq!(wire["participant"]["profile"]["avatar"], wire["avatar"]);
+        assert_eq!(config_value(&result.record.avatar), preset["config"]);
+        result.record.avatar.appearance = AvatarAppearance::WholeCharacter {
+            preset_id: AssetId::new("photo01_front_07".into()).unwrap(),
+        };
+        assert!(concert_service::bootstrap::release::bind_response(
+            release.release().bootstrap_json(),
+            &admission,
+            &result,
+            release.source_digest()
+        )
+        .is_err());
+    }
+    bundle.document["avatar"]["config"]["item_ids"] = json!({});
+    bundle.document["participant"]["profile"]["avatar"] = bundle.document["avatar"].clone();
+    bundle.write();
+    assert!(bundle.load(false, true).is_err());
 }
