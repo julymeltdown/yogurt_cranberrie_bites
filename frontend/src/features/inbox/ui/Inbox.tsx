@@ -32,7 +32,7 @@ export function Inbox({ controller }: { controller: InboxController }) {
       {state.command.phase === 'checking' && <p role="status">Checking command status…</p>}
       {(state.command.phase === 'uncertain' || state.command.phase === 'retired') && <p role="status">The read-state outcome is unconfirmed. Refreshing does not repeat the command.</p>}
       {state.command.phase === 'succeeded' && <p role="status">Read-state command confirmed.</p>}
-      {state.command.phase === 'failed' && <p role="alert">{state.command.failure ? messages[state.command.failure] : 'Read state was not confirmed.'}</p>}
+      {state.command.phase === 'failed' && <p role="alert">{state.command.failure ? messages[state.command.failure] : 'Read state was not confirmed.'} The original command will not be repeated. You can inspect current updates or check its status.</p>}
       {['uncertain', 'failed'].includes(state.command.phase) && <button type="button" onClick={() => void controller.recover()}>Check command status</button>}
       {state.command.phase === 'retired' && <p>Command history is unavailable. Inspect current updates; the old command will not be retried.</p>}
       {state.phase === 'ready' && state.rows.length === 0 && <p>{state.unreadOnly ? 'No unread updates in this page.' : 'Your inbox is empty.'}</p>}

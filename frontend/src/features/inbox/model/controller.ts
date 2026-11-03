@@ -71,7 +71,7 @@ export function createInboxController(options: InboxOptions) {
   function rows(next: readonly InboxNotification[], cursor: string | null) {
     publish({ rows: next, nextCursor: cursor, unreadShown: next.filter(n => n.read_at === null).length, atLimit: next.length >= 200 || cursors.size >= 10 })
   }
-  async function load(more = false) {
+  async function load(more = false, confirmed?: { readonly notification_id: string; readonly revision: number }) {
     if (!usable() || !scope || state.phase === 'loading' || (more && (!state.nextCursor || state.atLimit))) return
     const version = ++listVersion
     const captured = scope, g = generation, before = more ? state.rows : [], cursor = more ? state.nextCursor : null, unread = state.unreadOnly
@@ -89,19 +89,23 @@ export function createInboxController(options: InboxOptions) {
       if (cursor) cursors.add(cursor)
       const combined = combine(before, result.items)
       if (combined.length > 200) throw new Error('Inbox bound exceeded')
+      const present = confirmed && combined.find(n => n.notification_id === confirmed.notification_id)
+      if (present && (present.revision < confirmed.revision || present.read_at === null)) throw new Error('Contradictory read state')
       rows(combined, result.next_cursor); publish({ phase: 'ready' })
     } catch (error) {
       if (same(g, captured) && version === listVersion) { rows([], null); publish({ phase: 'error', failure: failure(error) }) }
     }
   }
   const unresolved = () => ['sending', 'uncertain', 'checking', 'retired'].includes(state.command.phase)
-  async function rereadAfterCommand() {
+  async function rereadAfterCommand(confirmed?: { readonly notification_id: string; readonly revision: number }) {
     // A manual/filter read may have begun before the write settled. Fence it before
     // rereading, so its older unread projection cannot replace confirmed state.
-    listVersion++; cancel('list'); publish({ phase: 'idle' }); await load()
+    const captured = scope, g = generation
+    listVersion++; cancel('list'); publish({ phase: 'idle' })
+    if (captured && same(g, captured)) await load(false, confirmed)
   }
   const fingerprint = (id: string | null, revision: number | null) => id ? `${id}:${revision}`
-    : `all:${state.rows.filter(n => !n.read_at).map(n => `${n.notification_id}:${n.revision}`).sort().join(',')}`
+    : 'all'
   async function mark(id: string | null) {
     if (!usable() || !scope || state.phase !== 'ready' || unresolved() || state.stale) return
     const item = id === null ? null : state.rows.find(n => n.notification_id === id)
@@ -129,9 +133,10 @@ export function createInboxController(options: InboxOptions) {
       if (!same(g, captured) || binding !== b) return
       if ('receipt' in result) { currentReceipt = result.receipt; publish({ command: { phase: 'uncertain', failure: null } }); return }
       if (result.item) rows(state.rows.map(n => n.notification_id === id ? result.item! : n).filter(n => !state.unreadOnly || !n.read_at), state.nextCursor)
-      binding = null; publish({ command: { phase: 'succeeded', failure: null } })
+      binding = null; if (id === null) attempts.delete('all')
+      publish({ command: { phase: 'succeeded', failure: null } })
       // Read-all's server cutoff is authoritative; never blanket-mark cached or future rows locally.
-      await rereadAfterCommand()
+      await rereadAfterCommand(result.item ?? undefined)
     } catch (error) {
       if (same(g, captured) && binding === b) {
         const definite = error instanceof TransportError && !error.uncertain
@@ -156,9 +161,11 @@ export function createInboxController(options: InboxOptions) {
       if (r.state !== 'SUCCEEDED') { publish({ command: { phase: 'uncertain', failure: null } }); return }
       // There is no notification-by-ID read contract. Reread the authorized list, without inferring
       // a missing paged row is unread/nonexistent; current rows come only from that fresh response.
-      await rereadAfterCommand()
-      if (same(g, captured) && state.phase === 'ready' && binding === b) { binding = null; publish({ command: { phase: 'succeeded', failure: null } }) }
-      else if (same(g, captured)) publish({ command: { phase: 'uncertain', failure: 'unavailable' } })
+      await rereadAfterCommand(b.notificationId ? { notification_id: b.notificationId, revision: r.resource_revision! } : undefined)
+      if (same(g, captured) && state.phase === 'ready' && binding === b) {
+        binding = null; if (b.notificationId === null) attempts.delete('all')
+        publish({ command: { phase: 'succeeded', failure: null } })
+      } else if (same(g, captured)) publish({ command: { phase: 'uncertain', failure: state.failure ?? 'unavailable' } })
     } catch (error) { if (same(g, captured) && binding === b) publish({ command: { phase: 'uncertain', failure: failure(error) } }) }
   }
   return {
@@ -167,7 +174,7 @@ export function createInboxController(options: InboxOptions) {
       if (started || disposed) return
       started = true; removers = [auth.privacy.registerCleanup(clear), auth.privacy.subscribe(sync), access.subscribe(sync)]; sync()
     },
-    load, markRead: (id: string) => mark(id), markAllRead: () => mark(null), recover,
+    load: (more = false) => load(more), markRead: (id: string) => mark(id), markAllRead: () => mark(null), recover,
     setUnreadOnly(unreadOnly: boolean) {
       if (state.unreadOnly === unreadOnly || !usable()) return
       listVersion++; targetVersion++; cancel('list'); cancel('target'); publish({ unreadOnly, phase: 'idle', target: { phase: 'idle', notificationId: null } }); rows([], null); void load()

@@ -73,6 +73,38 @@ describe('private bounded inbox', () => {
   })
 })
 describe('server-confirmed read commands', () => {
+  it.each(['old-revision', 'unread'] as const)('rejects a current row contradicting recovered success: %s', async mode => {
+    let key = '', recovered = false
+    const h = own(r => {
+      if (r.method === 'PATCH') { key = r.headers.get('Idempotency-Key')!; return Response.json(pending('markConcertNotification', key), { status: 202 }) }
+      if (new URL(r.url).pathname.endsWith('/commands')) { recovered = true; return Response.json(pending('markConcertNotification', key, { state: 'SUCCEEDED', result_status: 200, resource_id: id, resource_revision: 2 })) }
+      return Response.json(page([update(recovered ? { revision: mode === 'old-revision' ? 1 : 2, read_at: mode === 'unread' ? null : later } : {})]))
+    })
+    await ready(h); await h.controller.markRead(id)
+    const observed: number[] = []; h.controller.subscribe(() => { if (recovered && h.controller.read().phase === 'ready') observed.push(h.controller.read().rows.length) })
+    await h.controller.recover(); expect(observed).not.toContain(1)
+    expect(h.controller.read()).toMatchObject({ rows: [], phase: 'error', failure: 'invalid', command: { phase: 'uncertain' } })
+    await h.controller.markRead(id); expect(h.fetch.mock.calls.filter(([r]) => (r as Request).method === 'PATCH')).toHaveLength(1)
+  })
+  it.each(['failed-response', 'failed-receipt'] as const)('keeps %s mark-all locked across pagination and filters', async mode => {
+    let key = ''
+    const h = own(r => {
+      const u = new URL(r.url)
+      if (r.method === 'PATCH') { key = r.headers.get('Idempotency-Key')!; return mode === 'failed-response' ? error(409, 'VERSION_CONFLICT') : Response.json(pending('markAllConcertNotifications', key), { status: 202 }) }
+      if (u.pathname.endsWith('/commands')) return Response.json(pending('markAllConcertNotifications', key, { state: 'FAILED', failure_reason: 'VERSION_CONFLICT' }))
+      return Response.json(u.searchParams.has('cursor') ? page([update({ notification_id: uid(7) })]) : page([update()], 'older'))
+    })
+    await ready(h); await h.controller.markAllRead(); if (mode === 'failed-receipt') await h.controller.recover()
+    await h.controller.load(true); await h.controller.markAllRead()
+    h.controller.setUnreadOnly(true); await vi.waitFor(() => expect(h.controller.read().phase).toBe('ready')); await h.controller.markAllRead()
+    expect(h.fetch.mock.calls.filter(([r]) => (r as Request).method === 'PATCH')).toHaveLength(1)
+  })
+  it('allows a new explicit mark-all only after previous confirmed success, for later updates', async () => {
+    let counter = 3
+    const h = own(r => r.method === 'PATCH' ? (++counter, Response.json({ read_count: 1, read_at: later })) : Response.json(page([update({ notification_id: uid(counter) })])))
+    await ready(h); await h.controller.markAllRead(); await h.controller.markAllRead()
+    expect(h.fetch.mock.calls.filter(([r]) => (r as Request).method === 'PATCH')).toHaveLength(2)
+  })
   it.each(['direct', 'receipt'] as const)('fences an older refresh before %s command reread', async mode => {
     const delayed = deferred<Response>(), command = deferred<Response>(); let lists = 0, key = '', committed = false
     const h = own(r => {
