@@ -52,7 +52,7 @@ export function createSafetyController(options:SafetyOptions){
   return p
  }
  async function execute(operation:SafetyOperation,target:ReportTarget,body:ReturnType<typeof reportInputSchema.parse>|null){
-  if(!current()||busy()||operation!=='createConcertReport'&&(options.blocksAvailable===false||target.target_type!=='USER'||target.target_id===scope.userId))return
+  if(!current()||busy()||operation!=='createConcertReport'&&(options.blocksAvailable!==true||target.target_type!=='USER'||target.target_id===scope.userId))return
   const key=newKey();if(!uuid.safeParse(key).success)return
   const b=freeze({scope,operation,key,target,resourceId:operation==='createConcertReport'?null:target.target_id}) satisfies CommandBinding
   intent=b;const controller=new AbortController();flight=controller;const ticket=++sequence
@@ -105,7 +105,7 @@ export function createSafetyController(options:SafetyOptions){
  }
  async function loadBlocks(cursor?:string){
   if(!current())return
-  if(options.blocksAvailable===false){publish({blocksPhase:'error',blocks:null,message:'Block controls are unavailable.'});return}
+  if(options.blocksAvailable!==true){publish({blocksPhase:'error',blocks:null,message:'Block controls are unavailable.'});return}
   const controller=new AbortController();listFlight?.abort();listFlight=controller
   publish({blocksPhase:'loading',blocks:null})
   try{const page=await request({path:`${base}/me/blocks`,method:'GET',access:'protected',errorFamily:'domain',domainOperation:'listConcertBlocks',query:{limit:20,...(cursor?{cursor}:{})},decode:v=>{
@@ -114,13 +114,16 @@ export function createSafetyController(options:SafetyOptions){
   if(current()&&listFlight===controller)publish({blocksPhase:'ready',blocks:page})
   }catch{if(current()&&listFlight===controller)publish({blocksPhase:'error',blocks:null,message:'Blocked users could not be loaded. Try again.'})}
  }
- return{scope,read:()=>state,subscribe(f:()=>void){listeners.add(f);return()=>{listeners.delete(f)}},open,checkStatus,loadBlocks,
+ return{scope,blocksAvailable:options.blocksAvailable===true,read:()=>state,subscribe(f:()=>void){listeners.add(f);return()=>{listeners.delete(f)}},open,checkStatus,loadBlocks,
   edit(patch:Partial<Pick<SafetyState,'reason'|'text'|'evidence'>>){if(current()&&state.phase==='ready'&&!intent)publish(patch)},
   async report(){if(!state.target||state.phase!=='ready'||!current())return;const parsed=reportInputSchema.safeParse({...state.target,reason:state.reason,text:state.text,evidence_media_ids:state.evidence})
    if(!parsed.success){publish({message:'Choose a valid reason, at most 2000 text characters and up to four distinct evidence items.'});return}await execute('createConcertReport',state.target,parsed.data)},
   block(userId:string){const p=targetSchema.safeParse({target_type:'USER',target_id:userId});return p.success?execute('blockConcertUser',p.data,null):Promise.resolve()},
   unblock(userId:string){const p=targetSchema.safeParse({target_type:'USER',target_id:userId});return p.success?execute('unblockConcertUser',p.data,null):Promise.resolve()},
-  close(){cleanup()},dispose(){if(disposed)return;cleanup();disposed=true;unsubscribe();listeners.clear()},
+  close(){
+   if(intent&&state.phase!=='succeeded'){++sequence;flight?.abort();flight=null;publish({...initial(),phase:'unknown',message:'An earlier request has an unresolved outcome. Check that original request; no new action will be sent.'})}
+   else cleanup()
+  },dispose(){if(disposed)return;cleanup();disposed=true;unsubscribe();listeners.clear()},
  }
 }
 export type SafetyController=ReturnType<typeof createSafetyController>

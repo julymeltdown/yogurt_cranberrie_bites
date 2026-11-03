@@ -28,7 +28,7 @@ export function ReportDialog({controller,search,evidenceChoices=[],onDismiss}:{c
 export function BlocksPanel({controller,onBack}:{controller:SafetyController;onBack:()=>void}){
  const s=useSyncExternalStore(controller.subscribe,controller.read),[confirm,setConfirm]=useState<string|null>(null)
  useEffect(()=>{void controller.loadBlocks()},[controller])
- const locked=['submitting','pending','unknown','failed','closed'].includes(s.phase)
+ const locked=!controller.blocksAvailable||['submitting','pending','unknown','failed','closed'].includes(s.phase)
  return <section className="mcr-safety-panel" aria-labelledby="mcr-blocks-title">
   <button type="button" onClick={onBack}>Back</button><h1 id="mcr-blocks-title">Blocked users</h1>
   <p>Blocking closes affected private views. Unblocking never restores previous consent or social access.</p>
@@ -44,6 +44,6 @@ export function BlocksPanel({controller,onBack}:{controller:SafetyController;onB
 }
 export function BlockUserButton({controller,userId}:{controller:SafetyController;userId:string}){
  const s=useSyncExternalStore(controller.subscribe,controller.read),[confirm,setConfirm]=useState(false)
- const locked=['submitting','pending','unknown','failed','closed'].includes(s.phase)
- return <><button disabled={locked} onClick={()=>setConfirm(true)}>Block user</button>{confirm&&!locked&&<SafetyDialog title="Block this user?" onDismiss={()=>setConfirm(false)}><p>This ends access to affected private interactions. Previous consent will not return if you unblock later.</p><button data-initial-focus onClick={()=>setConfirm(false)}>Cancel block</button><button onClick={()=>{setConfirm(false);void controller.block(userId)}}>Confirm block</button></SafetyDialog>}</>
+ const locked=!controller.blocksAvailable||['submitting','pending','unknown','failed','closed'].includes(s.phase)
+ return <><button disabled={locked} onClick={()=>setConfirm(true)}>Block user</button>{confirm&&!locked&&<SafetyDialog title="Block this user?" onDismiss={()=>setConfirm(false)}><p>This ends access to affected private interactions. Previous consent will not return if you unblock later.</p><button data-initial-focus onClick={()=>setConfirm(false)}>Cancel block</button><button onClick={()=>{setConfirm(false);void controller.block(userId)}}>Confirm block</button></SafetyDialog>}<p role="status">{s.message}</p>{['pending','unknown','failed'].includes(s.phase)&&<button onClick={()=>void controller.checkStatus()}>Check original request status</button>}</>
 }
