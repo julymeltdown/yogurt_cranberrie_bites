@@ -9,7 +9,7 @@ use concert_application::commands::{FingerprintKeys, SigningKey};
 use concert_application::intro::{self as app, cursor};
 use concert_domain::intro_policy::IntroState;
 use concert_domain::{AuthUserId, EventId, Revision};
-use concert_service::intro_adapter::{self as repo, IntroPolicy};
+use concert_service::adapters::out::repository::intro::{self as repo, IntroPolicy};
 use repo::{IntroProfileProjection, IntroProjectionExecutor, PgIntro};
 use serde_json::{json, Value};
 use sqlx::{PgConnection, PgPool};

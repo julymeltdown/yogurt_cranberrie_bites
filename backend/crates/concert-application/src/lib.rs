@@ -183,6 +183,7 @@ pub mod media;
 
 pub mod intro_policy;
 pub mod age_policy;
+pub mod intro;
 
 pub mod event_lifecycle;
 

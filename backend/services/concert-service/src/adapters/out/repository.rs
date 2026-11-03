@@ -160,3 +160,4 @@ impl CoreRepository for PgConcertRepository {
 pub mod avatar;
 
 pub mod mural;
+pub mod intro;
