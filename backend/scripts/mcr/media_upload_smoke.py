@@ -164,6 +164,8 @@ def main(argv=None):
     except (Exception, KeyboardInterrupt) as error:
         # Do not publish raw database diagnostics, DSNs or fixture credentials.
         report.update(result="FAIL", failure=type(error).__name__)
+        if type(error) is RuntimeError:
+            report["failure_detail"] = str(error)
     finally:
         for sig, handler in handlers.items():
             signal.signal(sig, handler)
