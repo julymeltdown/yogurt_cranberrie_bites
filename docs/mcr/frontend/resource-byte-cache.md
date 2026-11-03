@@ -1,6 +1,6 @@
 # Release-scoped resource byte cache
 
-Status: IN_PROGRESS until committed integration and publication. This frontend-only change addresses repeated public immutable asset reads. Existing browser `force-cache` requests and local avatar drafts predate this change and are not claimed as new optimizations.
+Status: INTEGRATED in the frontend reference checkpoint. Publication ancestry is recorded separately. This frontend-only change addresses repeated public immutable asset reads. Existing browser `force-cache` requests and local avatar drafts predate this change and are not claimed as new optimizations.
 
 The frontend king owns `world/map/resource-cache.ts`, the optional cache seam in `world/map/resources.ts`, the production resolver binding in `app/world-entry/resolver.ts`, focused cache tests and the resolver's cache regression. No feature worker, backend, contract, source artwork, dependency or lockfile is changed here.
 
