@@ -29,7 +29,15 @@ export function harness(fetcher?: (r: Request) => Promise<Response> | Response, 
   return { auth, clock, requests, transport, replication, controller, projected, receive, lastSwitch,
     release: () => release,
     publish(value: WorldAccessRelease | null) { release = value; [...worldListeners].forEach(fn => fn()) },
-    async live() { controller.start(); const p = replication.start(); await flush(); transport.sockets.at(-1)!.open(); receive(initial); await p; await controller.loadRooms() },
+    async live() {
+      controller.start(); const p = replication.start()
+      // Ticket validation includes asynchronous digest work. Wait for the
+      // socket it authorizes, not an assumed single event-loop turn under load.
+      const deadline = performance.now() + 2000
+      while (!transport.sockets.length && performance.now() < deadline) await flush()
+      if (!transport.sockets.length) throw new Error('Fixture ticket did not authorize a socket')
+      transport.sockets.at(-1)!.open(); receive(initial); await p; await controller.loadRooms()
+    },
     reject() { receive({ protocolVersion: '1.0.0', type: 'switchRejected', requestId: lastSwitch().requestId, streamId: replication.read().baseline!.streamId, reason: 'ROOM_FULL' }) },
     admit() { receive({ ...initial, cause: 'ROOM_SWITCH', requestId: lastSwitch().requestId, roomId: lastSwitch().roomId, streamId: uid(401), roomEpoch: uid(402), players: [initial.players[0]] }) },
     dispose() { controller.dispose(); replication.dispose(); auth.dispose() },
