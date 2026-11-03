@@ -1,3 +1,5 @@
+pub mod report;
+pub mod event_operations;
 pub mod outbox;
 pub mod outbox_maintenance;
 pub mod place;
