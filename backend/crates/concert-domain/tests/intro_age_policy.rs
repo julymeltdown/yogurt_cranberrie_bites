@@ -303,3 +303,18 @@ fn audited_contact_obfuscation_and_safe_text_fixtures() {
         assert!(!contact_bypass(text), "{text}");
     }
 }
+
+#[test]
+fn canonical_expired_newer_row_never_falls_back_to_older_live_row() {
+    let old = claim(25);
+    let mut newest = old.clone();
+    newest.claim_id = Uuid::from_u128(11);
+    newest.verified_at += Duration::seconds(1);
+    newest.expires_at = now() + Duration::days(1);
+    assert_eq!(
+        assess(user(), &[newest, old], now() + Duration::days(2))
+            .unwrap()
+            .status(),
+        AgeStatus::Expired
+    );
+}

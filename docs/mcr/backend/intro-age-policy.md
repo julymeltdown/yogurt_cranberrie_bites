@@ -110,7 +110,7 @@ No method is an authorization fence for a later remote mutation.
 Direct and list filtering use the same introduction checks. List reads authorize
 the collection even when empty, retain every row/claim lease through the final
 page check, and omit rows denied at that check. Authority unavailability aborts
-the page. Lists are bounded to 100 input records. The caller's owning repository
+the page. Lists are bounded to 100 input records and duplicate candidate IDs fail closed. The caller's owning repository
 must provide a consistent event-bound candidate page and preserve pagination;
 this pure filter is not a database list endpoint or cursor implementation.
 
@@ -161,9 +161,19 @@ matching direct/list age decisions; both block directions, restrictions,
 membership, session and revision denial; owner/event binding; stale/mismatched/
 future/expired observations and deadlines; unbounded discovery without provider
 access; safe own status; earlier list-row block, claim revocation and Seoul
-birthday changes while reading later rows; nil identities; exact read-query binding.
+birthday changes while reading later rows; nil identities; exact read-query binding; deadlines crossed during later reads;
+and duplicate/oversized candidate pages.
 
 Real verifier/callback/persistence/PostgreSQL, transport producer/consumer,
 real multiuser races, browser/device/load and release gates are **NOT_RUN** and
 outside BE25. Source upstream tests were inspected for semantics, not executed.
 The task's deterministic fixtures cannot substitute for those later gates.
+
+## Checkpoint ancestry
+
+- `6bb5053`: audited pure modules, deterministic fixtures and initial provenance;
+  Cargo evidence explicitly pending.
+- `dbd170b`: the two exact delegated exports in each crate root, isolated from
+  implementation changes. Apply after the source checkpoint, never by itself.
+- Subsequent validation/fix commits will record the executed commands and results
+  before the final integration handoff. No push to master is performed by this worker.

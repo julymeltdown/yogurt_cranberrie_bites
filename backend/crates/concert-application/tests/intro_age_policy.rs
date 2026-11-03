@@ -115,6 +115,7 @@ enum Change {
     Birthday,
     BlockFirst,
     RevokeClaim,
+    Deadline,
 }
 struct Authority {
     state: Shared,
@@ -140,6 +141,7 @@ impl IntroAuthority for Authority {
             if at == n {
                 match change {
                     Change::Birthday => self.clock.advance(Duration::seconds(1)),
+                    Change::Deadline => self.clock.advance(Duration::hours(2)),
                     Change::BlockFirst => {
                         self.state.lock().unwrap().blocked_reverse.insert(user(10));
                     }
@@ -472,4 +474,33 @@ async fn read_lease_checks_bind_the_exact_query() {
     let mut other = q;
     other.context.request = Uuid::from_u128(999);
     assert_eq!(lease.check(other, c.now()), Err(PolicyError::Unavailable));
+}
+
+#[tokio::test]
+async fn deadline_crossed_during_later_read_invalidates_whole_page() {
+    let (s, c) = fixture();
+    let mut authority = Authority::new(s.clone(), c.clone());
+    authority.change = Some((3, Change::Deadline));
+    let policy = IntroPolicy::new(Claims::new(s, c.clone()), authority, c);
+    assert!(matches!(
+        policy.list(context(), &[intro(8, 10), intro(9, 11)]).await,
+        Err(PolicyError::Unavailable)
+    ));
+}
+#[tokio::test]
+async fn duplicate_candidate_ids_and_oversized_pages_fail_closed() {
+    let (s, c) = fixture();
+    let policy = IntroPolicy::new(
+        Claims::new(s.clone(), c.clone()),
+        Authority::new(s, c.clone()),
+        c,
+    );
+    assert!(matches!(
+        policy.list(context(), &[intro(8, 10), intro(8, 11)]).await,
+        Err(PolicyError::Unavailable)
+    ));
+    assert!(matches!(
+        policy.list(context(), &vec![intro(8, 10); 101]).await,
+        Err(PolicyError::Unavailable)
+    ));
 }

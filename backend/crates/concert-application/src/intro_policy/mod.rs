@@ -166,6 +166,10 @@ impl<R: ClaimReader, A: IntroAuthority, C: Clock> IntroPolicy<R, A, C> {
         if intros.len() > 100 {
             return Err(PolicyError::Unavailable);
         }
+        let mut ids = std::collections::HashSet::new();
+        if intros.iter().any(|i| !ids.insert(i.intro_id)) {
+            return Err(PolicyError::Unavailable);
+        }
         let query = ReadQuery {
             context,
             target: ReadTarget::Collection,
