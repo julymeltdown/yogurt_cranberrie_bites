@@ -15,14 +15,15 @@ it is not feature integration or release acceptance.
 | C06 | CONTRACT_READY | Five asset schemas, six golden JSON fixtures and 21 checks pass; all three themes share geometry and avatar identities. Pixel alignment/art/venue truth remain NOT_RUN. |
 | AR03 | IN_PROGRESS | [User-selected character source pack](character-art.md), revision 3: twenty unique JPEGs (ten base sheets plus ten additions); the first batch's duplicate stays archived. Source catalog and frontend lookup preserve both selected batches. Previous character art is prohibited. Transparent cutouts, layer-contract revision and direction/walk atlas remain. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
-| BE01 | IN_PROGRESS | 1,071 pinned files imported in `909e2bf`, full build passes. Explicit MCR runtime configuration and safe launch qualification remain. |
-| BE02 | IN_PROGRESS | [Isolated DB report](evidence/be02-migration-smoke.json): 84 migrations in six stores, ledger checksums and six records survive PG restart; cleanup PASS. 24 guard tests pass. Normal service startup/restart, runtime roles and packaging remain NOT_RUN. |
+| BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
+| BE02 | IN_PROGRESS | [Integrated native runtime receipt](evidence/be02-runtime-integrated.json): six services start, fail readiness on required dependency outages, recover and restart; 84 migrations and six synthetic records persist; cleanup PASS. 55 runtime/migration tests pass. Image contexts and usable local-stack tooling remain in progress; production roles and packaging execution are not qualified. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
-| FE01 | IN_PROGRESS | Frontend-only transport worker implementing against frozen C03; strict same-origin paths, memory/session ports, safe 401 replay and cancellation/error cases. |
+| FE01 | ACCEPTED | [Integrated review](evidence/core-foundation-integration.md): 144 transport/error tests plus 22 existing UI tests, strict build/lint; memory-only session, bounded read refresh, cancellation, safe error/upload ports and stale-identity isolation. Real cookies and auth journeys remain BE03/FE09 work. |
+| FE02 | IN_PROGRESS | Frontend chat implementing canonical private query keys, cancellation and eviction, observer/draft cleanup and stale-result guards with actual TanStack Query. |
 
-All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **5/112**;
-accepted total: **5/118**. No required IA entry or IN01–IN05 integration gate has
-been accepted. Real identity/provider flows, service startup, multiplayer,
+All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **7/112**;
+accepted total: **7/118**. No required IA entry or IN01–IN05 integration gate has
+been accepted. Real identity/provider flows, Concert service startup, multiplayer,
 transactions, privacy/revocation, physical place verification, original production
 assets, real devices, load/recovery and deployment remain outstanding.
 
@@ -49,8 +50,8 @@ review reproduced and rechecked the preliminary nested-modal defect, then found
 no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
-The next implementation queue is guarded MCR runtime configuration/full service
-startup for BE02, BE03 auth hardening against the frozen C03 email/core surface,
-then typed frontend transport and the persistent shell. C04/C05 domain/realtime
+The next implementation queue is BE02 local-stack/image tooling, BE03 auth
+hardening against the frozen C03 email/core surface, FE02 cache privacy, then
+the persistent shell. C04/C05 domain/realtime
 contracts remain required before feature lanes diverge. No runtime, OAuth or
 release acceptance follows from the completed component/contract checks.
