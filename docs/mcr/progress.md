@@ -11,7 +11,7 @@ it is not feature integration or release acceptance.
 | C02 | ACCEPTED | [Foundation qualification](evidence/foundation.md): pinned frozen installation, strict FE build/lint, pinned source and imported full BE workspace builds. Docker execution is NOT_RUN and is not claimed by this minimal build task. |
 | C03 | ACCEPTED | [Frozen core v0.1 contract](core-contract.md), exact inherited auth mapping, public/private DTOs, 33 examples and 23 tests; three scoped reviews. Email/core consumers can proceed. Optional OAuth exposure remains explicitly disabled until a separate handoff revision; runtime implementation is NOT_RUN. |
 | C04 | IN_PROGRESS | Eight untested domain-schema drafts preserved in the stopped contract worker's isolated worktree; the integrator owns continuation. No frozen domain contract or runtime implementation claimed. |
-| C05 | CONTRACT_READY | [Realtime review candidate](realtime-contract.md): strict frame/HTTP schemas, ticket/session/admission and stream rules, 24 fixtures and 31 oracle regressions. Both lane reviews found issues; corrections are awaiting final recheck. Runtime ticket, socket, queue, capacity and race tests are NOT_RUN. |
+| C05 | ACCEPTED | [Frozen realtime v1.0.0](realtime-contract.md): strict frame/HTTP schemas and admission/stream rules, 24 fixtures and 31 regressions. [BE/FE rechecks](qa/realtime-contract-review.md) find no remaining scoped issues after corrections. Runtime ticket, socket, queue, capacity and race tests are NOT_RUN. |
 | C06 | CONTRACT_READY | Five asset schemas, six golden JSON fixtures and 21 checks pass; all three themes share geometry and avatar identities. Pixel alignment/art/venue truth remain NOT_RUN. |
 | AR03 | IN_PROGRESS | [User-selected character source pack](character-art.md), revision 3: twenty unique JPEGs (ten base sheets plus ten additions); the first batch's duplicate stays archived. Source catalog and frontend lookup preserve both selected batches. Previous character art is prohibited. Transparent cutouts, layer-contract revision and direction/walk atlas remain. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
@@ -21,8 +21,8 @@ it is not feature integration or release acceptance.
 | FE01 | ACCEPTED | [Integrated review](evidence/core-foundation-integration.md): 144 transport/error tests plus 22 existing UI tests, strict build/lint; memory-only session, bounded read refresh, cancellation, safe error/upload ports and stale-identity isolation. Real cookies and auth journeys remain BE03/FE09 work. |
 | FE02 | ACCEPTED | [Integrated privacy review](evidence/privacy-local-stack-integration.md): actual QueryClient/observers, canonical private keys, cancellation plus eviction, commit fencing and cleanup ports; 45 new tests and combined 189-test transport/privacy run pass. UI/event/real-server owner wiring remains. |
 
-All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **9/112**;
-accepted total: **9/118**. No required IA entry or IN01–IN05 integration gate has
+All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **10/112**;
+accepted total: **10/118**. No required IA entry or IN01–IN05 integration gate has
 been accepted. Real identity/provider flows, Concert service startup, multiplayer,
 transactions, privacy/revocation, physical place verification, original production
 assets, real devices, load/recovery and deployment remain outstanding.

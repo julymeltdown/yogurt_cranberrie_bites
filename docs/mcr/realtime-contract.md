@@ -1,7 +1,8 @@
-# C05 realtime contract v1 — review candidate
+# C05 realtime contract v1.0.0 — frozen
 
-State: **CONTRACT_READY**, pending independent review and freeze. The JSON schemas,
-policy, deterministic fixtures and offline oracle define the proposed producer
+State: **ACCEPTED as the C05 contract task**, after both lane reviews and corrected
+regressions; see the [review record](qa/realtime-contract-review.md). The JSON schemas,
+policy, deterministic fixtures and offline oracle define the frozen producer
 and consumer agreement. No WebSocket server/client, Auth session check, ticket
 store, real room admission, load test or multiuser acceptance is implemented here.
 The HTTP registry is an input for C07's final inherited OpenAPI assembler, not a

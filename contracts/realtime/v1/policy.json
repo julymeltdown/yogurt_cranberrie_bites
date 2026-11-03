@@ -1,6 +1,6 @@
 {
   "protocol_version": "1.0.0",
-  "state": "DRAFT",
+  "state": "FROZEN_V1_0",
   "client_message_bytes": 4096,
   "server_message_bytes": 65536,
   "ticket_ttl_ms": 30000,

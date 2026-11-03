@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://contracts.mcr.invalid/realtime/v1/world.schema.json",
-  "title": "MCR realtime wire protocol v1 (draft)",
+  "title": "MCR realtime wire protocol v1.0.0",
   "$defs": {
     "WorldPosition": {
       "type": "object",
