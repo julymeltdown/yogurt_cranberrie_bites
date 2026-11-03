@@ -135,6 +135,8 @@ def corridor(points, radius):
     for (ax,ay),(bx,by) in zip(points,points[1:]):
         length=math.hypot(bx-ax,by-ay);dx,dy=-(by-ay)*radius/length,(bx-ax)*radius/length
         result.append([[ax+dx,ay+dy],[bx+dx,by+dy],[bx-dx,by-dy],[ax-dx,ay-dy]])
+    for x,y in points:
+        result.append([[x+math.cos(i*math.tau/12)*radius,y+math.sin(i*math.tau/12)*radius] for i in range(12)])
     return result
 
 
@@ -142,7 +144,9 @@ PAVING = corridor([[16,1290],[270,1020],[270,840],[500,590],[752,330]],43)+corri
 PAVING += corridor([[0,960],[260,780],[540,960],[760,820]],38)
 PAVING += corridor([[220,1160],[520,1120],[760,1020]],32)
 PAVING += corridor([[0,560],[150,430],[410,190],[740,60]],32)
-PAVING += [[[140,390],[500,330],[740,465],[585,740],[170,710],[70,530]]]
+PAVING += [[[140,390],[500,330],[740,465],[720,780],[140,800],[70,530]],[[620,200],[768,200],[768,400],[620,400]]]
+PAVING += corridor([[90,150],[100,230],[190,300]],30)+corridor([[596,150],[600,210],[560,280]],28)
+PLAZA=[[238,563],[432,555],[515,659],[440,754],[303,777],[226,688]]
 
 
 def ground(theme):
@@ -160,8 +164,6 @@ def ground(theme):
                 art.poly([[px+1,py+1],[px+8,py],[px+11,py+3],[px+8,py+6],[px+2,py+6],[px,py+3]],r.choice(stone),'individual-paving-stones')
                 if r.random()>.7:art.rect(px+3,py+1,3,1,'#e4d7be','paving-highlights')
     # A framed gathering island below the close courtyard, visible in the overview.
-    art.poly([[252,720],[380,700],[468,780],[351,851],[251,797]],'#666d3e','plaza-island-rim')
-    art.poly([[259,725],[378,707],[457,780],[349,841],[259,794]],'#9a9a57','plaza-island-lawn')
     # Deliberate low planting follows parcel edges. These are walkable ground details,
     # not repeated tree sprites or solid canopy props.
     for cx,cy,rx,ry,seed in [(47,80,39,40,1),(670,45,78,35,2),(44,760,33,49,3),(708,755,45,59,4),(47,1032,40,60,5),(640,1090,36,55,6),(385,1215,85,37,7),(405,952,35,36,8),(588,872,34,36,9),(70,1185,36,34,10)]:
@@ -360,10 +362,26 @@ def main():
         nx,ny,nw,nh=resized[o['id']];ox,oy=o['x'],o['y']
         o['footprint']=[[round(nx+(x-ox)*nw/176,2),round(ny+(y-oy)*nh/154,2)] for x,y in o['footprint']]
         o.update(x=nx,y=ny,width=nw,height=nh,depth_y=ny+nh)
+    refinements={'main_stage':(160,216,300,336),'west_white_merch':(160,560,132,154),'north_white_food':(665,210,100,120),
+                 'rooted_tree_05':(634,400,134,136),'rooted_tree_06':(640,580,128,184),'rooted_tree_08':(40,1000,166,204),'plaza_seating':(292,630,144,94),
+                 'food_counters':(568,790,190,164)}
+    for o in placements:
+        if o['id'] not in refinements:continue
+        nx,ny,nw,nh=refinements[o['id']];ox,oy=o['x'],o['y']
+        f=frames[o['frame']];ow,oh=o.get('width',f['width']),o.get('height',f['height'])
+        o['footprint']=[[round(nx+(x-ox)*nw/ow,2),round(ny+(y-oy)*nh/oh,2)] for x,y in o['footprint']]
+        o.update(x=nx,y=ny,width=nw,height=nh,depth_y=round(max(y for _,y in o['footprint']),2))
+        if o['id']=='west_white_merch':o['interaction_id']=None
+    placements += [
+      {'id':'merch_venue_hall','frame':'north_hall','x':8,'y':730,'width':212,'height':180,'depth_y':910,'footprint':[[30,852],[208,826],[208,897],[62,910]],'interaction_id':'gifts_info'},
+    ]
+    # Overview representations are semantic illustration, not invisible WORLD
+    # solids. The same physical prop/interaction/collision geometry remains canonical.
+    placements=[o for o in placements if o['id']!='plaza_seating']
     old_places=json.loads((ROOT/'frontend/public/world/maps/virtual-places.json').read_text());old_geometry=json.loads((ROOT/'frontend/public/world/maps/geometry.json').read_text())
     point_by_id={p['interaction_id']:p for p in old_geometry['interactions']}
     points=[]
-    for key,x,y in [('stage_info',440,528),('park_info',616,608),('gifts_info',216,800),('wall_info',168,1100)]:
+    for key,x,y in [('stage_info',488,568),('park_info',616,608),('gifts_info',216,952),('wall_info',232,1100)]:
         points.append({'interaction_id':key,'place_id':point_by_id[key]['place_id'],'cell_x':x//CELL,'cell_y':y//CELL})
     collision=[]
     for cy in range(H//CELL):
@@ -378,11 +396,18 @@ def main():
               'default_spawn_id':'courtyard_entry','interactions':points}
     proposal={'format':'MCR_REFERENCE_SCENE_PROPOSAL','proposal_version':2,'status':'PROPOSAL_NOT_RELEASE_BOUND','worker_base':BASE,
               'target':{'path':TARGET,'sha256':'sha256:'+TARGET_HASH,'panels':['WORLD (third)','MAP (fourth)']},'coordinates':{'width_px':W,'height_px':H,'origin':'top-left, x right/y down; virtual pixels only'},
-              'geometry':geometry,'geometry_hash':digest(geometry),'placements':placements,'paving_polygons':PAVING,
+              'geometry':geometry,'geometry_hash':digest(geometry),'placements':placements,'paving_polygons':PAVING,'plaza_parcel':PLAZA,
+              'overview_representations':[{'id':'stage_venue_representation','replaces_prop_id':'main_stage','frame':'west_hall','x':132,'y':260,'width':406,'height':292,'depth_y':552,'interaction_id':'stage_info','kind':'semantic_map_landmark_not_a_world_solid'},
+                                          {'id':'plaza_seating_representation','frame':'plaza_furniture','x':292,'y':630,'width':144,'height':94,'depth_y':724,'interaction_id':None,'kind':'unbound_map_illustration_not_a_world_solid'},
+                                          {'id':'west_edge_venue_illustration','frame':'north_hall','x':-75,'y':500,'width':200,'height':180,'depth_y':680,'interaction_id':None,'kind':'cropped_unbound_map_architecture_not_a_world_solid'},
+                                          {'id':'east_edge_venue_illustration','frame':'north_hall','x':710,'y':430,'width':210,'height':160,'depth_y':590,'interaction_id':None,'kind':'cropped_unbound_map_architecture_not_a_world_solid'},
+                                          {'id':'south_west_venue_illustration','frame':'west_hall','x':-75,'y':1050,'width':240,'height':220,'depth_y':1270,'interaction_id':None,'kind':'cropped_unbound_map_architecture_not_a_world_solid'},
+                                          {'id':'south_east_venue_illustration','frame':'north_hall','x':700,'y':1110,'width':220,'height':180,'depth_y':1290,'interaction_id':None,'kind':'cropped_unbound_map_architecture_not_a_world_solid'}],
+              'overview_zone_policy':'Green Plaza is a semantic gathering-zone overlay on the overview, not a second terrain/collision map or a claim of physical lawn. WORLD shows its walkable paved surface. Map hall art represents the same stage_info venue; only WORLD prop footprints are solid.',
               'world_camera':{'x':160,'y':192,'width':584,'height':584,'notes':'Stage-led close courtyard; no backend position/admission meaning.'},
               'overview_camera':{'x':0,'y':0,'width':W,'height':H},'places':[p for p in old_places if p['place_id'] in {q['place_id'] for q in points}],
-              'map_labels':[{'label':'MAIN STAGE','x':440,'y':282,'interaction_id':'stage_info'},{'label':'PLAZA','x':364,'y':855,'interaction_id':'park_info'},
-                            {'label':'MERCH','x':232,'y':790,'interaction_id':'gifts_info'},{'label':'FOOD','x':658,'y':976,'interaction_id':None},
+              'map_labels':[{'label':'MAIN STAGE','x':434,'y':370,'interaction_id':'stage_info'},{'label':'PLAZA','x':370,'y':640,'interaction_id':None},
+                            {'label':'MERCH','x':118,'y':929,'interaction_id':'gifts_info'},{'label':'FOOD','x':658,'y':937,'interaction_id':None},
                             {'label':'MEETUP ZONE','x':372,'y':1118,'interaction_id':None},{'label':'GIVEAWAY BOOTH','x':540,'y':1260,'interaction_id':None}],
               'resources':all_resources,'identities':'Only four existing C06 virtual place/interaction pairs are referenced; other labels/objects are unbound virtual decoration, not invented backend identities.',
               'limitations':['Not a physical venue map, arrival guide or safe route.','No current MapManifest/release/renderer/schema changes.','No characters drawn or embedded; selected static derivatives belong to AR03 owner.','Server/client adoption of this changed geometry requires coordinated release binding.']}

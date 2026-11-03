@@ -6,6 +6,8 @@ import { createPartyController, PartyDetail, PartyDiscovery, type PartyControlle
 import type { PrivacyScope } from '../shared/query/privacy'
 import { usePorts } from './access'
 import type { ShellBootstrap } from './ports'
+import { RootGiftImage } from './media-entry/RootMediaView'
+const renderGiftImage = (request: Parameters<typeof RootGiftImage>[0]) => <RootGiftImage {...request} />
 
 const GiftsContext = createContext<GiftDiscoveryController | null>(null)
 const PartiesContext = createContext<PartyController | null>(null)
@@ -57,5 +59,5 @@ export function GiftsPanel({ view }: { view: 'list' | 'detail' | 'mine' }) {
   if (!controller) return <p role="status">{auth ? 'Opening gifts…' : 'Gift access is unavailable.'}</p>
   return view === 'mine' ? <MyGifts controller={controller} />
     : view === 'detail' ? <GiftDetail controller={controller} giveawayId={giveawayId} />
-      : <GiftDiscovery controller={controller} />
+      : <GiftDiscovery controller={controller} renderGiftImage={renderGiftImage} />
 }
