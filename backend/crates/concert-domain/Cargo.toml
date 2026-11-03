@@ -1,0 +1,10 @@
+[package]
+name = "concert-domain"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+chrono.workspace = true
+thiserror.workspace = true
+uuid.workspace = true

@@ -1,0 +1,15 @@
+[package]
+name = "concert-application"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+concert-domain = { path = "../concert-domain" }
+async-trait.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true
+uuid.workspace = true
