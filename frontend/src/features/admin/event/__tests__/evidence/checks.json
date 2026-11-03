@@ -1,0 +1,63 @@
+{
+  "status": "MOCK_READY",
+  "baseCommit": "707ea68d585324430144c971724efbf5c73167d6",
+  "node": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "nodeVersion": "24.22.2",
+  "checks": [
+    {
+      "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/admin/event/__tests__/runner.ts --configLoader runner",
+      "exitCode": 0,
+      "result": "72 tests / 2 files"
+    },
+    {
+      "command": "NODE node_modules/typescript/bin/tsc --noEmit --incremental false",
+      "exitCode": 0,
+      "result": "Whole frontend strict TypeScript; no incremental cache"
+    },
+    {
+      "command": "NODE node_modules/oxlint/bin/oxlint src/features/admin/event src/features/admin/places src/features/admin/audit",
+      "exitCode": 0
+    },
+    {
+      "command": "NODE src/features/admin/event/__tests__/build.mjs",
+      "exitCode": 0,
+      "result": "FE38 fixture Vite production build; chunk-size warning; not root integration"
+    },
+    {
+      "command": "NODE src/features/admin/event/__tests__/browser.mjs",
+      "exitCode": 0,
+      "result": "156.0.8078.80; 360/390/430; deterministic fixture ports only"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": "repository",
+      "exitCode": 0
+    },
+    {
+      "command": "NODE scripts/mcr/check-ui-origin.mjs",
+      "cwd": "repository",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-boundaries.py --base 707ea68d585324430144c971724efbf5c73167d6 --lane frontend --allow-doc docs/mcr/frontend/event-operations.md",
+      "cwd": "repository",
+      "exitCode": 0
+    }
+  ],
+  "evidenceHashes": {
+    "frontend/src/features/admin/event/__tests__/evidence/build.log": "9c9b3ca70e8f74cf3cfcbe012ec4505c949cd55b1cd494013b27ae504efa2ddd",
+    "frontend/src/features/admin/event/__tests__/evidence/native/audit-detail-390.png": "82f9d81cad0876b22defbb61c49c8254d70cd7772feb033d9e19f89c1eb62ca2",
+    "frontend/src/features/admin/event/__tests__/evidence/native/denied-audit-390.png": "513ec464b388826a6a4fad3234e7dc95c8da31ff90a6d4282acb1f5a915eed0f",
+    "frontend/src/features/admin/event/__tests__/evidence/native/denied-event-390.png": "513ec464b388826a6a4fad3234e7dc95c8da31ff90a6d4282acb1f5a915eed0f",
+    "frontend/src/features/admin/event/__tests__/evidence/native/denied-places-390.png": "513ec464b388826a6a4fad3234e7dc95c8da31ff90a6d4282acb1f5a915eed0f",
+    "frontend/src/features/admin/event/__tests__/evidence/native/event-applied-390.png": "4ffb775f3fc9f1b7da366960db826bd761523bb9e87b7506fb1880d1e0bd8305",
+    "frontend/src/features/admin/event/__tests__/evidence/native/event-confirm-390.png": "8d83a4586b54d5eb201f818e810ffbff4869cf050d40ea74c0b329fd9e3b2898",
+    "frontend/src/features/admin/event/__tests__/evidence/native/notice-withdrawn-390.png": "4ec205887591a5da74b23d1694d5c83bd73e08652e5031ee86f9a1d41a3507d6",
+    "frontend/src/features/admin/event/__tests__/evidence/native/place-review-390.png": "634cb68dbebad784a04f91a597d007c869285c3b1411831a2372a277664846aa",
+    "frontend/src/features/admin/event/__tests__/evidence/native/report.json": "724396f009cc8bae6cfa9a4d41cd0865a4f1584440ac3788fd28eac5e4b477a8",
+    "frontend/src/features/admin/event/__tests__/evidence/origin.json": "f89d65f64833c791b51acbd5e8804c156b759cbe84d97065aa7c90a724e96f7f",
+    "frontend/src/features/admin/event/__tests__/evidence/planning.json": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "frontend/src/features/admin/event/__tests__/evidence/tests.log": "f8f4cf0b4aa92615bdfad751755c68570f484b75a6091db63c4486584adf60dc"
+  },
+  "limitations": "No actual operator/backend/root route/device/publication/closure acceptance. Dependency link and owned scratch removed."
+}

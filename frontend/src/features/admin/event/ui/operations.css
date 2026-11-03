@@ -1,0 +1,27 @@
+.event-ops { max-width: 58rem; margin: auto; padding: .4rem; font-family: "Arial Narrow", Arial, sans-serif; line-height: 1.35; color: #231f21; overflow-wrap: anywhere; }
+.event-ops h2 { font-size: 1.15rem; margin-top: 1.1rem; }
+.event-ops section + section { margin-top: 2rem; }
+.event-ops button, .event-ops input, .event-ops select, .event-ops textarea { box-sizing: border-box; min-height: 44px; min-width: 44px; max-width: 100%; font: inherit; }
+.event-ops button { padding: .55rem .8rem; background: #231f21; color: #fff; border: 1px solid #231f21; border-radius: 3px; cursor: pointer; }
+.event-ops button:disabled { opacity: .55; cursor: default; }
+.event-ops :focus-visible { outline: 3px solid #355d91; outline-offset: 3px; }
+.event-ops input:not([type=checkbox]), .event-ops textarea, .event-ops select { width: 100%; padding: .55rem; background: white; color: #231f21; border: 1px solid #777; border-radius: 3px; }
+.event-ops textarea { min-height: 7rem; resize: vertical; }
+.event-ops fieldset { min-width: 0; margin: 1rem 0; padding: .75rem; border: 1px solid #999; }
+.ops-field { display: grid; gap: .3rem; margin: .9rem 0; }
+.ops-check { display: flex; align-items: center; gap: .65rem; min-height: 44px; }
+.ops-actions { display: flex; gap: .65rem; flex-wrap: wrap; margin: .8rem 0; }
+.ops-confirm { padding: .8rem; border: 1px solid #777; border-radius: 3px; }
+.event-ops dl { display: grid; grid-template-columns: minmax(5rem, 1fr) minmax(0, 2fr); gap: .35rem .7rem; }
+.event-ops dt { font-weight: 650; }
+.event-ops dd { margin: 0; min-width: 0; }
+.ops-table-wrap { overflow-x: auto; max-width: 100%; }
+.event-ops table { border-collapse: collapse; width: 100%; }
+.event-ops th, .event-ops td { text-align: left; vertical-align: top; padding: .6rem .35rem; border-bottom: 1px solid #ccc; }
+.event-ops th { font-size: .9rem; }
+.event-ops .ops-state { white-space: nowrap; }
+.event-ops .ops-audit-detail { display: block; }
+.ops-audit-detail > div { display: grid; grid-template-columns: minmax(5rem, 1fr) minmax(0, 2fr); gap: .35rem .7rem; margin: .5rem 0; }
+.ops-record { padding: .6rem 0 1rem; border-bottom: 1px solid #ccc; }
+.event-ops code { white-space: normal; }
+@media (min-width: 640px) { .ops-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; } }

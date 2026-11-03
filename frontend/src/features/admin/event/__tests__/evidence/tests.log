@@ -1,0 +1,7 @@
+RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-event-operations-resume/frontend
+
+
+ Test Files  2 passed (2)
+      Tests  72 passed (72)
+   Start at  06:03:36
+   Duration  577ms (transform 242ms, setup 0ms, import 425ms, tests 298ms, environment 0ms)
