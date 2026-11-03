@@ -75,7 +75,7 @@ paths. Concrete findings go directly to the author and are rechecked; QA is not
 an additional generic approval gate. Real devices and live IN04 are not implied.
 
 Author task-local work is MOCK_READY and committed; independent QA is
-IN_PROGRESS. Integration and publication ancestry remain to be verified.
+IN_PROGRESS. Integration is verified below; remote publication remains pending.
 
 The author reports the three presentation files implemented and 126 existing
 editor/synchronization tests across seven files passing (exit 0). This is an
@@ -134,6 +134,26 @@ COMPLETE get_goal, then corrected its subsequent observation to a fresh null
 goal. The terminal completed turn and idle writer were verified. No broad
 release or real-IN04 goal was falsely completed. This writer is available for
 concrete Wall QA fixes; a new assignment needs an explicit ownership transfer.
+
+Frontend king integrated source as `7b567acb`, author evidence as `fe9cbb2d`,
+and the shared root as `deb5865d`; these commits were read from its actual
+integration checkout history. All three integrated source files were compared
+byte for byte to `832c7de9`, and the delivered author document to `4eb2d252`;
+they match. The initial coordinator document is integrated as `7ebf17d9`.
+Thus this bounded patch is INTEGRATED locally; publication and combined root
+qualification are separate. At that inspection the integrator's origin/master
+ref was `1e5022885525ab56f056aa2c24100e18c4bc67ed`, not this source delivery.
+
+Independent QA loaded all three pinned Git blobs, passed committed-byte semantic
+TypeScript, and passed eight coarse structural checks at 360/390/430. Its first
+candidate behavior probe timed out because its own locator omitted controls
+inside closed details. The genuine summary locator is corrected; the full
+failed probe and three loaded captures are preserved. The corrected native
+rerun was refused before browser allocation when disk again fell below 8 GiB.
+The coordinator verified 7,769,484 KiB free and notified both resource owners.
+QA removed only its stopped 21 MiB cache, preserving its 3.1 MiB evidence.
+Final behavior qualification and QA committed handoff remain pending; no
+application failure or independent full-fidelity acceptance is inferred.
 
 ## Shared shell seam and production dependencies
 
