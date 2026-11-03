@@ -1,4 +1,9 @@
 :root {
+  --mcr-ink: #201d1d;
+  --mcr-paper: #faf6ed;
+  --mcr-cream: #e5dfd4;
+  --mcr-red: #a22635;
+  --mcr-muted: #605952;
   color: #201d1d;
   background: #e5dfd4;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -25,8 +30,10 @@ a {
 }
 
 a:focus-visible,
-[tabindex="-1"]:focus-visible {
-  outline: 3px solid #a22635;
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--mcr-red);
   outline-offset: 4px;
 }
 
@@ -161,4 +168,316 @@ h2 {
   padding: 1rem 1.25rem;
   font-family: ui-monospace, "Courier New", monospace;
   font-size: 0.75rem;
+}
+
+/* Original FE05 primitives. Import this stylesheet once at the browser entry. */
+[hidden] {
+  display: none !important;
+}
+
+.mcr-visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mcr-button,
+.mcr-input,
+.mcr-tab {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  border: 2px solid var(--mcr-ink);
+  border-radius: 2px;
+  font: inherit;
+}
+
+.mcr-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  color: var(--mcr-paper);
+  background: var(--mcr-ink);
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.mcr-button--secondary,
+.mcr-button--quiet {
+  color: var(--mcr-ink);
+  background: var(--mcr-paper);
+}
+
+.mcr-button--quiet {
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.mcr-button--danger {
+  color: var(--mcr-paper);
+  background: var(--mcr-red);
+  border-color: var(--mcr-red);
+}
+
+.mcr-button:disabled,
+.mcr-tab:disabled {
+  cursor: not-allowed;
+  color: var(--mcr-muted);
+  background: var(--mcr-cream);
+  border-color: var(--mcr-muted);
+}
+
+@media (hover: hover) {
+  .mcr-button:not(:disabled):hover {
+    color: var(--mcr-paper);
+    background: var(--mcr-red);
+  }
+}
+
+.mcr-field {
+  display: grid;
+  gap: 0.5rem;
+  margin-block: 1rem;
+  min-inline-size: 0;
+}
+
+.mcr-field__label {
+  font-weight: 700;
+}
+
+.mcr-field__required,
+.mcr-field__hint {
+  color: var(--mcr-muted);
+  font-size: 0.875rem;
+}
+
+.mcr-input {
+  inline-size: 100%;
+  min-inline-size: 0;
+  padding: 0.65rem 0.75rem;
+  color: var(--mcr-ink);
+  background: var(--mcr-paper);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.mcr-input:disabled {
+  color: var(--mcr-muted);
+  background: var(--mcr-cream);
+}
+
+.mcr-input[aria-invalid="true"] {
+  border-color: var(--mcr-red);
+  border-style: dashed;
+}
+
+.mcr-field__error {
+  color: var(--mcr-red);
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.mcr-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(100 + var(--mcr-modal-depth, 0));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  background: rgb(32 29 29 / 65%);
+}
+
+.mcr-dialog {
+  inline-size: min(100%, 34rem);
+  min-inline-size: 0;
+  max-block-size: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 2px solid var(--mcr-ink);
+  background: var(--mcr-paper);
+  color: var(--mcr-ink);
+  overflow-wrap: anywhere;
+  box-shadow: 6px 6px 0 var(--mcr-ink);
+}
+
+.mcr-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 2px solid var(--mcr-ink);
+  padding: 0.75rem 1rem;
+}
+
+.mcr-dialog__header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.mcr-dialog__body {
+  padding: 1rem;
+}
+
+.mcr-dialog__description {
+  margin-bottom: 1rem;
+}
+
+.mcr-overlay--sheet {
+  align-items: flex-end;
+  padding-bottom: 0;
+}
+
+.mcr-dialog--sheet {
+  inline-size: min(100%, 42rem);
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  border-bottom: 0;
+  box-shadow: 4px -4px 0 var(--mcr-ink);
+}
+
+.mcr-tablist {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  padding: 0.4rem;
+  border-bottom: 2px solid var(--mcr-ink);
+  scrollbar-width: thin;
+}
+
+.mcr-tablist[aria-orientation="vertical"] {
+  flex-direction: column;
+}
+
+.mcr-tab {
+  flex: 0 0 auto;
+  padding: 0.6rem 0.85rem;
+  color: var(--mcr-ink);
+  background: var(--mcr-paper);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mcr-tab[aria-selected="true"] {
+  color: var(--mcr-paper);
+  background: var(--mcr-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.mcr-tabpanel {
+  padding: 1rem 0.4rem;
+  overflow-wrap: anywhere;
+}
+
+.mcr-feedback {
+  border: 2px solid var(--mcr-ink);
+  padding: 1rem;
+  color: var(--mcr-ink);
+  background: var(--mcr-paper);
+  overflow-wrap: anywhere;
+}
+
+.mcr-feedback--error {
+  border-left: 6px solid var(--mcr-red);
+}
+
+.mcr-feedback--empty {
+  border-style: dashed;
+}
+
+.mcr-feedback h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.mcr-feedback__action {
+  margin-top: 1rem;
+}
+
+.mcr-skeleton {
+  padding-block: 0.5rem;
+}
+
+.mcr-skeleton__line {
+  block-size: 1rem;
+  margin-block: 0.5rem;
+  background: var(--mcr-cream);
+  border-left: 3px solid var(--mcr-muted);
+}
+
+.mcr-skeleton__line:last-child {
+  inline-size: 70%;
+}
+
+.mcr-toasts {
+  inline-size: 100%;
+  color: var(--mcr-ink);
+}
+
+.mcr-toast-list {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mcr-toast-list + .mcr-toast-list:not(:empty) {
+  margin-top: 0.75rem;
+}
+
+.mcr-toast {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border: 2px solid var(--mcr-ink);
+  padding: 0.75rem;
+  background: var(--mcr-paper);
+  overflow-wrap: anywhere;
+}
+
+.mcr-toast p {
+  flex: 1 1 12rem;
+  min-inline-size: 0;
+}
+
+.mcr-toast--error {
+  border-left: 6px solid var(--mcr-red);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcr-button,
+  .mcr-tab,
+  .mcr-dialog,
+  .mcr-skeleton {
+    animation: none;
+    transition: none;
+    scroll-behavior: auto;
+  }
+}
+
+@media (forced-colors: active) {
+  .mcr-overlay {
+    background: Canvas;
+  }
+
+  .mcr-tab[aria-selected="true"] {
+    outline: 2px solid Highlight;
+    outline-offset: -4px;
+  }
 }
