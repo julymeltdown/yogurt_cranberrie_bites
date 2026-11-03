@@ -1,0 +1,75 @@
+{
+  "test_exit": 0,
+  "cases": 25,
+  "binary_sha256": "7d814f67bf2caf506e6a27f2ef3edb651d5101a077936b07d4f63665ce789a45",
+  "log_sha256": "f7818dc5b03f9d220e8ae91ac1cf967ecf248304c5dc340a33bc80c23e1f5e9e",
+  "source_sha256": {
+    "backend/services/concert-service/src/bootstrap/schema.rs": "9c8b8a1fe22e267aa074d3636dbca93466ac9d2243d652acde75dc719ca900eb",
+    "backend/docs/api/mcr-core.openapi.json": "f97f8e5fe21324b36021f3ec1a40d90a7a42dc2ed9d6a5ddaf37a250c6a527a3",
+    "contracts/assets/v1/theme-manifest.schema.json": "1cd7b7da879f73768b657f8802c7502164ba9b023ea9707519df75a82de3271d",
+    "contracts/fixtures/asset-semantics/illustrated-cases.json": "cb37aa0a71540c0aa987a2ae7f588d7a94e413ce4022bf3d17febed5d211fb73",
+    "contracts/generated/mcr-core.openapi.json": "f97f8e5fe21324b36021f3ec1a40d90a7a42dc2ed9d6a5ddaf37a250c6a527a3",
+    "contracts/generated/mcr-domain.openapi.json": "8c761311d8df7059b48f6c58826565e039bd952481257575ac576815ea9296ac",
+    "scripts/mcr/validate-assets.py": "1cddf1c4f6535d45b843ce1a1c7a177a5beda011216c6487705b3d9ffee0f529",
+    "scripts/mcr/tests/test_assets.py": "f9001dfa2d58fbd7aa311f09ae98856f36dbe73c4de81ed35f8b56677f8686f8"
+  },
+  "status": "CONTRACT_READY",
+  "scope": "Optional C06 scenery schema and generated C03/C04 plus Python/Rust metadata parity; no artwork or full product acceptance",
+  "source_commit": "d682bb4ea345eae9bed2132436f141822e9d8f71",
+  "integrated_commit": "0fd471d",
+  "validation": [
+    {
+      "command": "python -m unittest discover -s scripts/mcr/tests -p test_assets.py",
+      "exit": 0,
+      "tests": 29
+    },
+    {
+      "command": "python -m unittest discover -s scripts/mcr/tests -p test_core.py",
+      "exit": 0,
+      "tests": 23
+    },
+    {
+      "command": "python scripts/mcr/validate-domain.py",
+      "exit": 0,
+      "fixtures": 47
+    },
+    {
+      "command": "python3 backend/scripts/docs/generate-mcr-core.py --check; python3 backend/scripts/docs/generate-mcr-domain.py --check",
+      "exits": [
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit -p tsconfig.json",
+      "exit": 0
+    },
+    {
+      "command": "node node_modules/vitest/vitest.mjs run src/world/__tests__/illustrated/contract.test.ts src/features/auth/__tests__/contract.test.ts",
+      "exit": 0,
+      "tests": 60
+    },
+    {
+      "command": "cargo +1.88.0 test --manifest-path backend/Cargo.toml -p concert-service --lib bootstrap::schema::scenery_tests --locked --offline -j1",
+      "exit": 0,
+      "tests": 1,
+      "shared_cases": 25,
+      "compile_seconds": 21.96
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0
+    }
+  ],
+  "prior_attempts": [
+    "TypeScript first invocation referenced absent tsconfig.app.json; corrected to existing tsconfig.json, exit0.",
+    "Shared-target Friend generated relationship proto was stale; service-only cache reset then exposed stale friend-application rlib. Workspace-local package caches were invalidated, third-party dependency cache preserved, and exact compile/test passed. No product source workaround."
+  ],
+  "not_run": [
+    "actual new illustrated Phaser consumer (active FE owner)",
+    "approved character raster derivation",
+    "product release/artwork approval",
+    "real multiuser IN01",
+    "device/GPU/load acceptance"
+  ]
+}
