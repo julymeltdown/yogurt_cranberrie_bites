@@ -364,6 +364,11 @@ impl<A: MuralAuthority> MuralReader for PgMuralRepository<A> {
             .map_err(storage)?;
         sqlx::query("insert into public.concert_mural_snapshots(snapshot_id,event_id,revision,state,pixels,palette,created_at) select snapshot_id,event_id,revision,state,pixels,palette,snapshot_created_at from public.concert_mural_state where event_id=$1 on conflict(snapshot_id) do nothing")
             .bind(actor.event).execute(&mut *tx).await.map_err(storage)?;
+        let checkpoint_matches:bool=sqlx::query_scalar("select exists(select 1 from public.concert_mural_snapshots s join public.concert_mural_state m on m.snapshot_id=s.snapshot_id where m.event_id=$1 and (s.event_id,s.revision,s.state,s.pixels,s.palette,s.created_at)=(m.event_id,m.revision,m.state,m.pixels,m.palette,m.snapshot_created_at))")
+            .bind(actor.event).fetch_one(&mut *tx).await.map_err(storage)?;
+        if !checkpoint_matches {
+            return Err(MuralError::InvalidState);
+        }
         let pixels: Vec<u8> = row.try_get("pixels").map_err(invalid)?;
         let palette: Vec<String> = row.try_get("palette").map_err(invalid)?;
         if pixels.len() != PIXELS || pixels.iter().any(|v| *v > 15) || palette.len() != 16 {

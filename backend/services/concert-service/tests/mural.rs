@@ -367,6 +367,19 @@ async fn forced_outbox_failure_rolls_back_pixel_revision_cooldown_receipt_and_bu
     assert_eq!(repo.recover(a, key).await, Err(MuralError::Denied));
     repo.place(a, key, pixel(1, 0, 8), &keys).await?;
     assert_eq!(counts(&pool, a.event).await?, (1, 1, 1, 1));
+    assert!(
+        sqlx::query(
+            "update concert_mural_state set revision=revision+1,snapshot_id=$2 where event_id=$1"
+        )
+        .bind(a.event)
+        .bind(before.snapshot_id)
+        .execute(&pool)
+        .await
+        .is_err(),
+        "restore must allocate a new snapshot ID, never alias a retained checkpoint"
+    );
+    assert_eq!(repo.snapshot(a).await?.revision, 2);
+
     Ok(())
 }
 #[tokio::test]

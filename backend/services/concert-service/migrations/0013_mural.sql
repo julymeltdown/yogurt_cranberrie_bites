@@ -2,7 +2,7 @@
 CREATE TABLE public.concert_mural_state (
  event_id uuid PRIMARY KEY REFERENCES public.concert_events(event_id) ON DELETE RESTRICT,
  revision bigint NOT NULL DEFAULT 1 CHECK(revision BETWEEN 1 AND 9007199254740991),
- snapshot_id uuid NOT NULL,
+ snapshot_id uuid NOT NULL UNIQUE,
  state text NOT NULL CHECK(state IN ('EDITABLE','PAUSED','FROZEN')),
  pixels bytea NOT NULL CHECK(octet_length(pixels)=16384),
  palette text[] NOT NULL CHECK(cardinality(palette)=16 AND array_ndims(palette)=1),
@@ -54,6 +54,9 @@ BEGIN
   END IF;
   -- BE40 restore/control must lock this row, increment revision, and advance reset_revision
   -- to NEW.revision whenever the revision has no single public pixel operation.
+ END IF;
+ IF EXISTS(SELECT 1 FROM public.concert_mural_snapshots WHERE snapshot_id=NEW.snapshot_id) THEN
+  RAISE EXCEPTION 'reused mural recovery checkpoint ID' USING ERRCODE='23514';
  END IF;
  FOREACH p IN ARRAY NEW.palette LOOP
   IF p IS NULL OR p !~ '^#[0-9A-F]{6}$' THEN RAISE EXCEPTION 'invalid palette' USING ERRCODE='23514'; END IF;
