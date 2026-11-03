@@ -1,9 +1,9 @@
 # C05 Auth invalidation RPC
 
-Status: **IN_PROGRESS**. Source implementation is authored; compilation and
-native execution are **NOT_RUN**, awaiting an explicitly released build/PG slot.
-The persistent C05-AUTH-INVALIDATION-RPC goal remains active through validation,
-committed handoff and concrete fixes. This is not combined World acceptance.
+Owner-local RPC: **CONTRACT_READY**. Implementation, startup composition and
+native qualification are complete; delivery ancestry is verified in the final
+handoff. Parent C05 remains **IN_PROGRESS**. Combined World and deployed-service
+acceptance are **NOT_RUN**.
 
 ## Assignment and provenance
 
@@ -74,13 +74,14 @@ Auth-only closed reasons and exclusive user/family scope, and caps the encoded
 message at 128 KiB. No grants, expiry extension, acknowledgments or pruning are
 introduced. Bootstrap/application/checkpoint obligations remain with World.
 
-## Qualification plan and limits
+## Qualification and delivery evidence
 
-Source checkpoint precedes Cargo. After an explicit exclusive lease: Rust1.88,
-locked/offline, jobs<=2, dev/test debug0, incremental0, >=8GiB free, assigned
-existing target only. Freeze exact Cargo JSON-selected Auth binary, RPC test,
-relationship test and unit executables with clean source hashes outside targets;
-close target handles before private PG. No customer database or third target.
+Source checkpoint `d901b13309095e1886bc3e9827b6bf6028eaa6c1` preceded Cargo.
+The exclusive assigned MEDIA lease used Rust 1.88, locked/offline, jobs 2,
+dev/test debug 0 and incremental 0. Fresh free-space and handle checks preceded
+builds; when capacity fell below 8 GiB the rebuild was refused before Cargo and
+resumed only after coordinated space recovery. Only the assigned existing target
+was used; no third target, install or customer database was involved.
 
 The runner requires an exact frozen artifact inventory, checks clean source and
 digests before starting, uses only a fresh marker/inode-owned socket-only PG16
@@ -93,19 +94,60 @@ denials, malformed/truncated/oversized frames, missing storage, cancellation,
 shared pool-plus-SQL deadline, and the original one-second cap. Retained actor
 relationship guard/native tests and Auth unit tests remain separate regressions.
 
-Rust compilation, native RPC, existing regressions and process cleanup are
-**NOT_RUN** at this checkpoint. Source/format/Python safety checks are recorded
-with the source handoff. The planned gate compiles Auth startup composition; the
-entire production binary is not started with provider workers. Private transport
-uses the exact retained registration function and TLS configuration. Combined
-World invalidation, real two-user removal, send races, deployment and release
-qualification remain **NOT_RUN** even after an owner-local transport pass.
+The first build found the retained interceptor's `ResponseBody` type mismatch;
+`d46e19cc` normalized its body in the operation wrapper. Compilation then passed.
+The first native run found a test comparing full responses containing fresh
+query IDs; `9411c5e93c1d4304754c1cb90132a0e3c97b197e` corrects that assertion to
+compare stable signals/positions while separately verifying exact query echo on
+each call. The final clean build at that commit took4.311s (exit0), followed by
+the complete fresh native gate (exit 0). Earlier failed reports are retained.
 
-Source-only checks: two new Python runner safety tests passed (exit0);
-Rust1.88 rustfmt check on the new adapter/test/support passed (exit0), and
-`git diff --check 68daf583` passed. The boundary command delegates only the
-recognized central composition path `backend/services/auth-service/src/main.rs`;
-the assigned gRPC module export is an ordinary backend path checked manually.
-An initial invocation incorrectly listed that export as a composition path and
-the checker refused the invocation before checking files; no permission or
-ownership changed. The corrected boundary command is recorded at source handoff.
+Evidence root: `/private/tmp/mcr-auth-invalidation-rpc-_7aenthl` (local artifacts,
+not published CI). `binaries-3.json` records the clean source checkpoint, all
+source/contract inputs, four exact Cargo JSON-selected executables and digests.
+The binaries were frozen outside the target; fresh lsof found no target handles
+before private PG. The regular Auth executable was emitted by the test build,
+so no separate binary build was necessary.
+
+| Command / gate | Exit / result |
+| --- | --- |
+| `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 -p auth-service --test concert_invalidation_rpc --test concert_relationship --test unit --no-run --message-format=json` | 0; `build-3.jsonl`, `build-result-3.json`; Auth startup binary and all three test executables compiled |
+| `python3 backend/scripts/mcr/auth_invalidation_rpc_smoke.py --binaries-json /private/tmp/mcr-auth-invalidation-rpc-_7aenthl/binaries-3.json --pg-bin-dir /opt/homebrew/opt/postgresql@16/bin --report /private/tmp/mcr-auth-invalidation-rpc-_7aenthl/native-report-3.json` | 0; PASS; 134 Rust tests: 4 pure RPC, 3 native RPC, 2 relationship guards, 1 native relationship, 124 Auth unit |
+| `python3 -m unittest discover -s backend/scripts/mcr -p test_auth_invalidation_rpc_smoke.py -v` | 0; 2 safety tests passed |
+| `rustup run 1.88.0 rustfmt --check --edition 2021 backend/services/auth-service/src/adapters/in/grpc/concert_invalidation.rs backend/services/auth-service/tests/concert_invalidation_rpc.rs backend/services/auth-service/tests/concert_invalidation_rpc_support/native.rs` | 0 |
+| `python3 scripts/mcr/check-plan.py` | 0; PASS, planning provenance only |
+| `python3 scripts/mcr/check-boundaries.py --base af7310c8c742416171ef66b2a02fc23e9ee0c138 --lane backend --allow-composition backend/services/auth-service/src/main.rs --allow-doc docs/mcr/backend/auth-invalidation-rpc.md --allow-harness backend/scripts/mcr/auth_invalidation_rpc_smoke.py --allow-harness backend/scripts/mcr/test_auth_invalidation_rpc_smoke.py` | 0; exactly 8 assigned paths; gRPC module export/imports manually inspected |
+| `git diff --check af7310c8c742416171ef66b2a02fc23e9ee0c138` | 0 |
+
+The native report records PostgreSQL 16.14, all 16 exact migration receipts in
+both private databases, 313 committed contiguous records, actual postmaster
+restart PID 31155 to 34219, byte-identical replay, and owned-root cleanup.
+Both failed and passing run roots were removed. `qualification-audit.json`
+checks source pins, frozen executable digests, absent roots, and no matching
+process or open MEDIA/frozen-artifact handle. The standing MEDIA lease was
+unconditionally released after qualification; no further Cargo is authorized
+without a new lease.
+
+| Artifact | SHA256 |
+| --- | --- |
+| `native-report-3.json` | `e01a5a2bcd67052b3d0884634db3aa3a2d31a0f09a4e1bb055c86883bc73e98e` |
+| `binaries-3.json` | `605b5b5132002f5d833acd4c2d8d0da84d827b035ead8b91c15e2186d4d3b00c` |
+| `build-3.jsonl` | `2988645b6bef4421bbe8d6651d460a895dd929af76b146412e11e591011e617b` |
+| RPC test executable | `aa97ec290c305c365b825db6e4b1d6d6436a565485f2079da0a1ace452ab654c` |
+| Regular Auth executable | `3cd1433836476891c3cc3dd55dd2cd6871a545a03bebd7f7adb546ec8d4b270d` |
+
+Current remote master was fetched/reconciled serially at `d8f9f9ac` and
+`af7310c8c742416171ef66b2a02fc23e9ee0c138`; both merges were conflict-free.
+The qualified source/contract input hashes remain byte-identical after peer
+integration. Only the exact 8 assigned Auth RPC paths differ from the reconciled
+remote; producer migrations, journal, platform, shared protobuf, manifests/locks
+and `docs/source/` remain unchanged by this work. The final evidence commit
+changes this document only. Latest human policy authorizes direct non-force
+publication after qualification; the final handoff records delivered SHA and
+verified remote ancestry. No additional king/SL approval is required.
+
+The entire production binary was not started with provider workers; private
+transport used the exact retained registration function and TLS configuration.
+Combined World invalidation, real two-user removal, send races, deployment and
+release qualification remain **NOT_RUN**. All concrete qualification fixes are
+resolved; deployment credentials and consumer wiring remain separate ownership.
