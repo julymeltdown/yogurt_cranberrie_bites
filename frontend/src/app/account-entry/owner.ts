@@ -1,4 +1,4 @@
-import { AvatarError } from '../../entities/avatar/runtime'
+import { AvatarError, createReviewedAtlasLeases } from '../../entities/avatar/runtime'
 import { createAvatarEditorController, createReviewedAvatarPreview } from '../../features/avatar'
 import { createMeController } from '../../features/me'
 import type { SessionController } from '../../features/auth/model/session'
@@ -17,7 +17,8 @@ export function createAccountOwner({ auth, bootstrap, scope, assets }: AccountOw
   if (!auth.privacy.isCurrent(scope) || bootstrap.participant.userId !== scope.userId || bootstrap.participant.eventId !== scope.eventId
     || bootstrap.event.eventId !== scope.eventId) throw new AvatarError('unavailable')
   let disposed = false
-  const source = thumbnailSource(bootstrap, scope, assets), me = createMeController(auth)
+  const leases = createReviewedAtlasLeases({ isCurrent: () => !disposed && auth.privacy.isCurrent(scope) })
+  const source = thumbnailSource(bootstrap, scope, assets, leases), me = createMeController(auth)
   const avatar = createAvatarEditorController({ auth,
     async createPreview(expected, signal) {
       if (disposed || signal.aborted || !auth.privacy.isCurrent(scope) || !auth.privacy.isCurrent(expected)) throw new AvatarError('cancelled')
@@ -30,7 +31,7 @@ export function createAccountOwner({ auth, bootstrap, scope, assets }: AccountOw
     },
   })
   let unregister = () => {}
-  const dispose = () => { if (disposed) return; disposed = true; unregister(); avatar.dispose(); me.dispose() }
+  const dispose = () => { if (disposed) return; disposed = true; unregister(); avatar.dispose(); me.dispose(); leases.dispose() }
   unregister = auth.privacy.registerCleanup(dispose)
   return Object.freeze({ auth, bootstrap, scope, assets, me, avatar, source, dispose, isDisposed: () => disposed })
 }

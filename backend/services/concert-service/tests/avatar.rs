@@ -350,7 +350,13 @@ async fn native_avatar_restart_persistence() {
     let read = support::Authority::new(own, AvatarOperation::Read, service.release_digest());
     let snapshot = service.read(own, &read).await.unwrap();
     assert_eq!(snapshot.avatar.revision.get(), 2);
-    assert!(snapshot.avatar.selection.accessory.is_none());
+    assert!(matches!(
+        &snapshot.avatar.selection.appearance,
+        AvatarAppearance::Layered {
+            accessory: None,
+            ..
+        }
+    ));
     assert_eq!(snapshot.participant.revision.get(), 2);
     assert_eq!(snapshot.participant.preferences.theme, Theme::Danger);
     let old: Value = serde_json::from_slice(

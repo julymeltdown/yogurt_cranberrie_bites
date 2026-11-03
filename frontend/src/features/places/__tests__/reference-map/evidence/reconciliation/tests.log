@@ -1,0 +1,1116 @@
+RUN  v4.1.9 <checkout>/frontend
+
+stderr | src/app/places-entry/__tests__/routes.test.tsx > retains one Places owner and world lease through map/detail/All places/header Back (StrictMode=false)
+Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21 {
+  [stack]: [Getter/Setter],
+  [message]: 'Invalid giveaway response'
+}
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+React Router caught the following error during render Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+
+(node:74823) [DEP0129] DeprecationWarning: _channel is deprecated. Use ChildProcess.channel instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+stderr | src/app/places-entry/__tests__/routes.test.tsx > retains one Places owner and world lease through map/detail/All places/header Back (StrictMode=true)
+Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21 {
+  [stack]: [Getter/Setter],
+  [message]: 'Invalid giveaway response'
+}
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+React Router caught the following error during render Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+
+stderr | src/app/__tests__/reference-root/root.test.tsx > mobile default routes fill the window, retain one world through sizing and restore Back focus
+Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21 {
+  [stack]: [Getter/Setter],
+  [message]: 'Invalid giveaway response'
+}
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+React Router caught the following error during render Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+
+stderr | src/app/places-entry/__tests__/routes.test.tsx > opens direct detail, and uses the current Map parent without a foreign history entry
+Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21 {
+  [stack]: [Getter/Setter],
+  [message]: 'Invalid giveaway response'
+}
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+React Router caught the following error during render Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+
+stderr | src/app/__tests__/reference-root/root.test.tsx > a new mobile route restores full content after a deliberate reduction or minimized panel
+Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21 {
+  [stack]: [Getter/Setter],
+  [message]: 'Invalid giveaway response'
+}
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+React Router caught the following error during render Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+
+ ❯ src/app/__tests__/reference-root/root.test.tsx (3 tests | 2 failed) 2033ms
+   × mobile default routes fill the window, retain one world through sizing and restore Back focus 1017ms
+   × a new mobile route restores full content after a deliberate reduction or minimized panel 1005ms
+stderr | src/app/places-entry/__tests__/routes.test.tsx > clears the visible owner on release withdrawal and permits a new explicit qualified binding
+Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21 {
+  [stack]: [Getter/Setter],
+  [message]: 'Invalid giveaway response'
+}
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+React Router caught the following error during render Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+
+stderr | src/app/places-entry/__tests__/routes.test.tsx > clears the panel immediately on same-identity policy withdrawal without restamping the old binding
+Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21 {
+  [stack]: [Getter/Setter],
+  [message]: 'Invalid giveaway response'
+}
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+React Router caught the following error during render Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+
+stderr | src/app/places-entry/__tests__/routes.test.tsx > retains authoritative removed-target and mismatch latches across route navigation and catalog retry
+Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21 {
+  [stack]: [Getter/Setter],
+  [message]: 'Invalid giveaway response'
+}
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+React Router caught the following error during render Error: Invalid giveaway response
+    at assert (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:36:68)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:49:3)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+    at Array.map (<anonymous>)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:65:73)
+    at named (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:88:24)
+    at compile (<checkout>/frontend/src/features/gift-discovery/model/contract.ts:51:76)
+    at <checkout>/frontend/src/features/gift-discovery/model/contract.ts:66:21
+
+ ❯ src/app/places-entry/__tests__/routes.test.tsx (6 tests | 6 failed) 6063ms
+   × retains one Places owner and world lease through map/detail/All places/header Back (StrictMode=false) 1028ms
+   × retains one Places owner and world lease through map/detail/All places/header Back (StrictMode=true) 1009ms
+   × opens direct detail, and uses the current Map parent without a foreign history entry 1007ms
+   × clears the visible owner on release withdrawal and permits a new explicit qualified binding 1006ms
+   × clears the panel immediately on same-identity policy withdrawal without restamping the old binding 1007ms
+   × retains authoritative removed-target and mismatch latches across route navigation and catalog retry 1005ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/__tests__/reference-root/root.test.tsx > mobile default routes fill the window, retain one world through sizing and restore Back focus
+TestingLibraryElementError: Unable to find role="link" and name `/^Feed$/`
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_2_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_2_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_2_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_2_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/reference-root/root.test.tsx:14:28
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  src/app/__tests__/reference-root/root.test.tsx > a new mobile route restores full content after a deliberate reduction or minimized panel
+TestingLibraryElementError: Unable to find role="heading" and name "Feed"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_5_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_5_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_5_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_5_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/__tests__/reference-root/root.test.tsx:23:15
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ FAIL  src/app/places-entry/__tests__/routes.test.tsx > retains one Places owner and world lease through map/detail/All places/header Back (StrictMode=false)
+TestingLibraryElementError: Unable to find role="link" and name "View Synthetic virtual stage"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_2_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_2_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_2_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_2_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/places-entry/__tests__/routes.test.tsx:28:16
+     26|   const h = await setup('/world/map', strict)
+     27|   const label = places()[0]!.label
+     28|   await screen.findByRole('link', { name: `View ${label}` })
+       |                ^
+     29|   const controller = h.current(), host = document.querySelector('[data…
+     30|   fireEvent.click(screen.getByRole('link', { name: `View ${label}` }))
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯
+
+ FAIL  src/app/places-entry/__tests__/routes.test.tsx > retains one Places owner and world lease through map/detail/All places/header Back (StrictMode=true)
+TestingLibraryElementError: Unable to find role="link" and name "View Synthetic virtual stage"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_5_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_5_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_5_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_5_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/places-entry/__tests__/routes.test.tsx:28:16
+     26|   const h = await setup('/world/map', strict)
+     27|   const label = places()[0]!.label
+     28|   await screen.findByRole('link', { name: `View ${label}` })
+       |                ^
+     29|   const controller = h.current(), host = document.querySelector('[data…
+     30|   fireEvent.click(screen.getByRole('link', { name: `View ${label}` }))
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯
+
+ FAIL  src/app/places-entry/__tests__/routes.test.tsx > opens direct detail, and uses the current Map parent without a foreign history entry
+TestingLibraryElementError: Unable to find role="heading" and name "Synthetic reviewed landmark"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_8_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_8_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_8_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_8_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/places-entry/__tests__/routes.test.tsx:47:23
+     45| it('opens direct detail, and uses the current Map parent without a for…
+     46|   const place = places()[1]!, h = await setup(`/world/places/${place.p…
+     47|   expect(await screen.findByRole('heading', { name: place.label })).to…
+       |                       ^
+     48|   expect(screen.getByRole('link', { name: 'Open source reference (new …
+     49|   fireEvent.click(screen.getByRole('button', { name: 'Back to previous…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯
+
+ FAIL  src/app/places-entry/__tests__/routes.test.tsx > clears the visible owner on release withdrawal and permits a new explicit qualified binding
+TestingLibraryElementError: Unable to find role="link" and name "View Synthetic virtual stage"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_b_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_b_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_b_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_b_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/places-entry/__tests__/routes.test.tsx:54:41
+     52| })
+     53| it('clears the visible owner on release withdrawal and permits a new e…
+     54|   const h = await setup(); await screen.findByRole('link', { name: `Vi…
+       |                                         ^
+     55|   const previous = h.current(), binding = h.source.read()!
+     56|   act(() => { h.publish(null) })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯
+
+ FAIL  src/app/places-entry/__tests__/routes.test.tsx > clears the panel immediately on same-identity policy withdrawal without restamping the old binding
+TestingLibraryElementError: Unable to find role="link" and name "View Synthetic virtual stage"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_e_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_e_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_e_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_e_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/places-entry/__tests__/routes.test.tsx:64:41
+     62| })
+     63| it('clears the panel immediately on same-identity policy withdrawal wi…
+     64|   const h = await setup(); await screen.findByRole('link', { name: `Vi…
+       |                                         ^
+     65|   act(() => { h.auth.privacy.changePolicy(h.auth.privacy.capture(), 'b…
+     66|   expect(screen.queryByRole('link', { name: `View ${places()[0]!.label…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯
+
+ FAIL  src/app/places-entry/__tests__/routes.test.tsx > retains authoritative removed-target and mismatch latches across route navigation and catalog retry
+TestingLibraryElementError: Unable to find role="link" and name "View Synthetic virtual stage"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_h_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_h_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="shell-gate"
+    >
+      <section
+        aria-labelledby="_r_h_"
+        class="mcr-feedback mcr-feedback--error"
+        role="alert"
+      >
+        <h2
+          id="_r_h_"
+        >
+          This page is unavailable
+        </h2>
+        <div
+          class="mcr-feedback__body"
+        >
+          <p>
+            We could not open this page. You can return safely and try another section.
+          </p>
+          <div
+            class="shell-actions"
+          >
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/world"
+            >
+              Back to world
+            </a>
+            <a
+              class="shell-link"
+              data-discover="true"
+              href="/"
+            >
+              Back to home
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/places-entry/__tests__/routes.test.tsx:72:16
+     70| it('retains authoritative removed-target and mismatch latches across r…
+     71|   const h = await setup(), place = places()[0]!
+     72|   await screen.findByRole('link', { name: `View ${place.label}` })
+       |                ^
+     73|   const controller = h.current()!
+     74|   h.setMode('removed')
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  2 failed | 7 passed (9)
+      Tests  8 failed | 103 passed (111)
+   Start at  07:59:23
+   Duration  7.72s (transform 732ms, setup 0ms, import 1.95s, tests 12.21s, environment 1.55s)

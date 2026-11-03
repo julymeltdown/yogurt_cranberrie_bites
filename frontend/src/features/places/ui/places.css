@@ -40,9 +40,43 @@
 .places-view :is(a, button, input, summary):focus-visible { outline: 3px solid #921f28; outline-offset: 3px; }
 @media (max-width: 380px) { .places-facts div { grid-template-columns: 1fr; gap: 2px; } }
 @media (prefers-reduced-motion: reduce) { .places-view, .places-view * { animation: none; transition: none; scroll-behavior: auto; } }
-.places-illustrated[hidden] { display: none; }
-.places-overview-image { position: relative; border: 2px solid var(--concert-ink, #211b1b); background: #eee5d3; }
-.places-overview-image img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
-.places-map-marker { position: absolute; transform: translate(-50%, -50%); width: 44px; height: 44px; padding: 0; border: 2px solid #211b1b; border-radius: 50%; background: #f7eed9; color: #241d1c; font: 800 16px/1 system-ui, sans-serif; cursor: pointer; }
-.places-map-marker:disabled { background: #ddd5c4; color: #59514a; cursor: default; }
-.places-map-marker:focus-visible { outline: 3px solid #a02431; outline-offset: 3px; }
+
+/* The shell supplies the single titlebar; this feature fills its content body. */
+.places-map-full { width: 100%; height: 100%; min-height: 0; max-width: none; margin: 0; padding: 0; }
+.places-map-full .places-map-surface { position: relative; display: flex; flex-direction: column; height: 100%; min-height: 0; border: 2px solid #29231c; background: #a5ad72; overflow: hidden; }
+.places-map-full .places-map-viewport { flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; touch-action: pan-x pan-y; position: relative; background: #a5ad72; }
+.places-map-full .places-map-plane { position: relative; min-width: 100%; margin-inline: auto; }
+.places-map-full .places-map-plane > img { display: block; width: 100%; height: 100%; image-rendering: pixelated; user-select: none; cursor: grab; }
+.places-map-full .places-map-leaders { position: absolute; inset: 0; pointer-events: none; stroke: #272018; stroke-width: 1.5; fill: none; }
+.places-map-full .places-map-plaque { position: absolute; transform: translate(-50%,-50%); display: grid; grid-template-columns: 24px minmax(0,1fr); align-items: center; gap: 4px; min-height: 44px; width: max-content; max-width: 138px; padding: 4px 6px; border: 2px solid #282018; box-shadow: 1px 2px 0 #1c161a66; background: #f2e9d5; color: #191715; text-decoration: none; font: 800 13px/1.05 "Arial Narrow",sans-serif; text-transform: uppercase; overflow-wrap: anywhere; z-index: 1; }
+.places-map-full .places-map-plaque > span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.places-map-full .places-map-plaque > svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+.places-map-full .places-map-plaque small { grid-column: 2; font-size: 11px; text-transform: none; }
+.places-map-full .places-map-plaque[data-status="closed"], .places-map-full .places-map-plaque[data-status="unavailable"] { background: #d8d0c2; color: #50483d; }
+.places-map-full .places-map-plaque:focus-visible { outline: 3px solid #a02531; outline-offset: 3px; z-index: 3; }
+.places-map-full .places-map-pin { position: absolute; width: 25px; height: 34px; transform: translate(-50%,5px); pointer-events: none; z-index: 2; }
+.places-map-full .places-map-pin svg { display: block; width: 100%; height: 100%; fill: #af2636; stroke: #6e1523; stroke-width: 1; }
+.places-map-full .places-map-pin circle { fill: #f6ead9; stroke: none; }
+.places-map-full .places-map-zoom { position: absolute; right: 8px; bottom: 105px; z-index: 4; display: grid; border: 2px solid #32291e; }
+.places-map-full .places-map-zoom button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: #f5eddb; color: #211c18; font: 700 28px/1 sans-serif; }
+.places-map-full .places-map-zoom button + button { border-top: 1px solid #564e3e; }
+.places-map-full .places-map-zoom button:disabled { color: #877c6c; }
+.places-map-full .places-map-caption { position: absolute; bottom: 44px; inset-inline: 0; background: #f4ecdceF; color: #29221b; padding: 4px 6px; font-size: 12px; line-height: 1.25; pointer-events: none; }
+.places-map-full .places-map-caption span { display: block; font-size: 11px; }
+.places-map-full .places-map-tools { flex: 0 0 44px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); background: #eee5d3; border-top: 2px solid #30291f; z-index: 4; }
+.places-map-full .places-map-tools button { display: flex; align-items: center; justify-content: center; gap: 4px; min-width: 0; min-height: 44px; padding: 2px; border: 1px solid #746855; background: transparent; color: #211d17; font: 750 12px/1.1 "Arial Narrow",sans-serif; }
+.places-map-full .places-map-tools svg { width: 18px; height: 18px; }
+.places-map-full .places-map-fallback { position: absolute; inset: 0; padding: 8px; overflow: auto; background: #eee5d3; }
+.places-map-full .places-map-sheet { width: min(390px,calc(100% - 20px)); max-height: min(80dvh,700px); padding: 12px; border: 3px double #272019; background: #f4ecdd; color: #201b15; }
+.places-map-full .places-map-sheet::backdrop { background: #15111199; }
+.places-map-full .places-map-sheet header { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-bottom: 1px solid #a99b83; }
+.places-map-full .places-map-sheet h2 { font: 750 21px/1.2 "Arial Narrow",sans-serif; margin: 0; }
+.places-map-full .places-map-sheet button, .places-map-full .places-map-sheet a { min-height: 44px; min-width: 44px; border: 1px solid #655642; background: #ede2ce; color: #211b14; font-size: 14px; padding: 6px; }
+.places-map-full .places-map-sheet header button { font-size: 24px; }
+.places-map-full .places-map-sheet ol { list-style: none; margin: 8px 0; padding: 0; }
+.places-map-full .places-map-sheet li { padding-block: 6px; border-bottom: 1px solid #a99b83; }
+.places-map-full .places-map-sheet li button { width: 100%; text-align: start; font-weight: 750; }
+.places-map-full .places-map-sheet p { font-size: 13px; line-height: 1.4; margin-block: 4px; }
+.places-map-full .places-map-search { display: grid; gap: 4px; margin-top: 8px; font-size: 14px; font-weight: 700; }
+.places-map-full .places-map-search input { min-height: 44px; width: 100%; border: 1px solid #655642; background: #fff8e9; font-size: 16px; padding: 6px; }
+@media (max-height: 500px) { .places-map-full .places-map-caption { display: none; } .places-map-full .places-map-zoom { top: 8px; bottom: auto; right: 4px; } }
