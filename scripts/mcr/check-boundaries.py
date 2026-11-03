@@ -122,12 +122,21 @@ def valid_doc(path: str, lane: str) -> bool:
     ) and central_reason(path) is None
 
 
-def path_reason(path: str, lane: str, docs: set[str]) -> str | None:
+def valid_composition(path: str, lane: str) -> bool:
+    return safe_path(path) and not any(c in path for c in "*?[]") and (
+        path.startswith(lane + "/") and PurePosixPath(path).suffix in SOURCE_SUFFIXES
+        and central_reason(path) == "integrator-owned root router/service composition"
+    )
+
+
+def path_reason(path: str, lane: str, docs: set[str], composition: set[str]) -> str | None:
     if not safe_path(path):
         return "unsafe/non-canonical repository path"
     other = "frontend" if lane == "backend" else "backend"
     if path == other or path.startswith(other + "/"):
         return f"opposite-lane write ({other})"
+    if path in composition and valid_composition(path, lane):
+        return None
     if reason := central_reason(path):
         return reason
     if path in docs:
@@ -201,7 +210,7 @@ def cross_imports(path: str, source: str, lane: str) -> list[str]:
     return findings
 
 
-def check(root: Path, base: str, lane: str, docs: set[str]) -> tuple[list[str], int]:
+def check(root: Path, base: str, lane: str, docs: set[str], composition: set[str]) -> tuple[list[str], int]:
     violations = []
     paths = set()
     for cached in (True, False):
@@ -212,7 +221,7 @@ def check(root: Path, base: str, lane: str, docs: set[str]) -> tuple[list[str], 
             if change.status.startswith(("U", "X", "B")):
                 violations.append(f"{change.paths!r}: unresolved or unsupported Git change {change.status}")
             for path in change.paths:
-                if reason := path_reason(path, lane, docs):
+                if reason := path_reason(path, lane, docs, composition):
                     violations.append(f"{path!r} ({snapshot}, {change.status}): {reason}")
             path = change.paths[-1]
             if change.status.startswith("D") or path in scanned or not safe_path(path):
@@ -240,6 +249,10 @@ def main() -> int:
         "--allow-doc", action="append", default=[], metavar="PATH",
         help="exact assigned .md/.rst/.txt path, or .json under docs/mcr/; no directories/globs",
     )
+    parser.add_argument(
+        "--allow-composition", action="append", default=[], metavar="PATH",
+        help="exact same-lane composition file explicitly delegated by the integrator; no globs or directories",
+    )
     args = parser.parse_args()
     try:
         root = Path(os.fsdecode(git(Path.cwd(), "rev-parse", "--show-toplevel")).removesuffix("\n"))
@@ -247,7 +260,10 @@ def main() -> int:
         for path in args.allow_doc:
             if not valid_doc(path, args.lane):
                 raise ValueError(f"Invalid documentation assignment: {path!r}")
-        violations, count = check(root, base, args.lane, set(args.allow_doc))
+        for path in args.allow_composition:
+            if not valid_composition(path, args.lane):
+                raise ValueError(f"Invalid composition assignment: {path!r}")
+        violations, count = check(root, base, args.lane, set(args.allow_doc), set(args.allow_composition))
     except (OSError, ValueError) as error:
         print(f"BOUNDARIES ERROR: {str(error)!r}", file=sys.stderr)
         return 2
@@ -257,6 +273,8 @@ def main() -> int:
             print(f"- {violation}", file=sys.stderr)
         return 1
     print(f"BOUNDARIES PASS: {args.lane}, {count} changes vs {base}; manual assignment/import review required")
+    for path in sorted(set(args.allow_composition)):
+        print(f"Explicit composition delegation: {path!r}; verify against the recorded assignment")
     return 0
 
 

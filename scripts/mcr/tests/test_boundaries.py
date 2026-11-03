@@ -135,6 +135,44 @@ class BoundariesTest(unittest.TestCase):
         self.assertIn("scripts/mcr/extra.py", output)
         self.assertIn("docs/source/fixture.md", output)
 
+    def test_explicit_composition_delegation_keeps_default_closed(self):
+        path = "frontend/src/app/router.tsx"
+        self.write(path, "export const routes = [];\n")
+        self.assert_guard(1, contains="integrator-owned root router")
+        self.assert_guard(0, "frontend", "--allow-composition", path,
+                          contains="Explicit composition delegation")
+        self.write("frontend/src/main.tsx", "export {};\n")
+        self.assert_guard(1, "frontend", "--allow-composition", path, contains="main.tsx")
+
+    def test_composition_delegation_still_scans_imports(self):
+        path = "frontend/src/main.tsx"
+        self.write(path, 'import "../../backend/private";\n')
+        self.git("add", "--", path)
+        self.write(path, "export {};\n")
+        self.assert_guard(1, "frontend", "--allow-composition", path,
+                          contains="index: 'frontend/src/main.tsx':1: cross-implementation")
+
+    def test_composition_delegation_cannot_allow_manifests_locks_or_other_lane(self):
+        for path in ("backend/services/api-gateway/src/main.rs", "frontend/package.json",
+                     "frontend/pnpm-lock.yaml", "frontend/src/app/router/*", "frontend/src/app/router",
+                     "frontend/src/app/router/../router.tsx", "/frontend/src/main.tsx",
+                     "frontend/src/app/router/generated/api.ts", "frontend/src/main.png",
+                     "frontend/src/features/item.ts", "contracts/schema.json"):
+            with self.subTest(path=path):
+                self.assert_guard(2, "frontend", "--allow-composition", path,
+                                  contains="Invalid composition assignment")
+
+    def test_backend_http_composition_requires_exact_assignment(self):
+        path = "backend/services/api-gateway/src/adapters/in/http/mod.rs"
+        self.write(path, "pub fn router() {}\n")
+        self.assert_guard(1, "backend", contains="root router/service composition")
+        self.assert_guard(0, "backend", "--allow-composition", path)
+
+    def test_delegated_composition_symlink_is_still_denied(self):
+        path = "frontend/src/main.tsx"
+        (self.root / path).symlink_to("/nonexistent/mcr-fixture")
+        self.assert_guard(1, "frontend", "--allow-composition", path, contains="symlink")
+
     def test_allowed_exact_docs_do_not_scan_prose(self):
         for path in ("docs/mcr/qa/assigned.md", "frontend/docs/assigned.md"):
             self.write(path, 'Example: import x from "../../backend/server";\n')
