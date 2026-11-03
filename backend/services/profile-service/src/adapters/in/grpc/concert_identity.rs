@@ -36,8 +36,13 @@ pub(super) async fn read(
         return Err(Status::permission_denied("Profile actor mismatch"));
     }
     deadline.remaining(ceiling, deadline.expires_micros())?;
-    let result =
-        tokio::time::timeout_at(deadline.stop(), state.concert_self_profile.execute(query)).await;
+    // Carry the same captured signed/original stop into the repository; pool
+    // acquisition and timeout setup must consume it before the content SELECT.
+    let result = platform::call_deadline::scope(
+        deadline.stop().into_std(),
+        tokio::time::timeout_at(deadline.stop(), state.concert_self_profile.execute(query)),
+    )
+    .await;
     // Tokio can finish polling a noncooperative owner after the timeout. Recheck
     // both clocks before inspecting even an owner error or building the response.
     deadline.remaining(ceiling, deadline.expires_micros())?;
