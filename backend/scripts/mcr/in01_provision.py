@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 from datetime import datetime, timezone
 import hashlib
+import http.client
 import json
 import os
 from pathlib import Path
@@ -311,17 +312,42 @@ def initialize_event(stack, nonce, report, resources=None, concert_binary=None):
     return event
 
 
+class WorldReader(auth.Browser):
+    """Bodyless current-contract GET; retain the Auth helper's response checks."""
+    def read(self, label, path, *, bearer, origin):
+        headers = {"X-Correlation-Id": "in01-" + label, "X-MCR-Intent": "browser",
+                   "Authorization": "Bearer " + bearer, "Origin": origin or self.origin}
+        connection = http.client.HTTPConnection(self.target.hostname, self.target.port, timeout=10)
+        try:
+            connection.request("GET", path, headers=headers)  # No JSON payload or body headers.
+            response = connection.getresponse()
+            raw = response.read(65537)
+            observed = dict(response.getheaders())
+            self.report["statuses"][label] = response.status
+            auth.require(response.status == 200, label + ":status")
+            auth.require(len(raw) <= 65536, label + ":body-limit")
+            auth.require(observed.get("cache-control") == "no-store", label + ":no-store")
+            auth.require(observed.get("x-correlation-id") == headers["X-Correlation-Id"], label + ":correlation")
+            auth.require(observed.get("referrer-policy") == "no-referrer", label + ":referrer")
+            auth.require("location" not in observed, label + ":unexpected-redirect")
+            return json.loads(raw)
+        finally:
+            connection.close()
+
+
 def check_world(descriptor, state, event, report, browser_origin=None):
-    browser = auth.Browser(descriptor["gateway_url"], report)
+    browser = WorldReader(descriptor["gateway_url"], report)
     default = None
     for i, account in enumerate(state["accounts"]):
         for suffix in ("bootstrap", "rooms"):
             label = f"account-{i}-{suffix}"
             try:
-                _, value = browser.request(label, f"/api/concert/events/{event}/{suffix}", method="GET",
-                                           bearer=account["accessToken"], origin=browser_origin or True)
+                value = browser.read(label, f"/api/concert/events/{event}/{suffix}",
+                                     bearer=account["accessToken"], origin=browser_origin)
             except auth.CheckFailure:
-                need(report["statuses"].get(label) != 200, "REAL_WORLD_RESPONSE_POLICY_FAILED")
+                status = report["statuses"].get(label)
+                need(status != 200, "REAL_WORLD_RESPONSE_POLICY_FAILED")
+                need(status in (404, 503), "REAL_WORLD_READ_REJECTED")
                 report["world_prerequisites"] = {"status": "NOT_RUN", "code": "REAL_BOOTSTRAP_OR_ROOMS_UNAVAILABLE",
                                                  "failed_operation": suffix, "observed_status": report["statuses"].get(label)}
                 return False

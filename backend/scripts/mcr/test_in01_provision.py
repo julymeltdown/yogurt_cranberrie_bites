@@ -2,10 +2,12 @@
 import argparse
 import contextlib
 import io
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
 from pathlib import Path
 import tempfile
+import threading
 import unittest
 from unittest.mock import Mock, patch
 from uuid import uuid4
@@ -251,6 +253,66 @@ class FailureTests(Fixture):
         stack.start.assert_not_called()
         self.assertEqual(result["failure"],"INVALID_EVENT_ID")
         self.assertFalse((run.path/"private.json").exists())
+
+
+class WorldReadTests(Fixture):
+    def server(self, *, status=200, cache_control="no-store"):
+        event, room = str(uuid4()), str(uuid4())
+        accounts = [{"userId":str(uuid4()), "accessToken":"offline-token-" + str(i)} for i in range(2)]
+        seen = []
+        class Handler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                body_size = int(self.headers.get("Content-Length", "0"))
+                seen.append((body_size, self.headers.get("Content-Type"), self.headers.get("X-MCR-Intent")))
+                actual = 413 if body_size or self.headers.get("Transfer-Encoding") else status
+                account = next(a for a in accounts if self.headers.get("Authorization") == "Bearer " + a["accessToken"])
+                value = ({"event":{"event_id":event}, "participant":{"user_id":account["userId"]},
+                          "capabilities":{"world":{"available":True}}} if self.path.endswith("/bootstrap") else
+                         {"event_id":event,"default_room_id":room,"items":[{"room_id":room,"availability":"AVAILABLE"}]})
+                raw = json.dumps(value).encode()
+                self.send_response(actual)
+                self.send_header("cache-control", cache_control)
+                self.send_header("x-correlation-id", self.headers["X-Correlation-Id"])
+                self.send_header("referrer-policy", "no-referrer")
+                self.send_header("Content-Length", str(len(raw)))
+                self.end_headers(); self.wfile.write(raw)
+            def log_message(self, *_):
+                pass
+        server = ThreadingHTTPServer(("127.0.0.1",0),Handler)
+        worker = threading.Thread(target=server.serve_forever, kwargs={"poll_interval":.01}, daemon=True)
+        worker.start()
+        def close():
+            server.shutdown(); server.server_close(); worker.join(timeout=2)
+        self.addCleanup(close)
+        return {"gateway_url":f"http://127.0.0.1:{server.server_port}"}, {"accounts":accounts}, event, seen
+
+    def test_real_http_reads_are_bodyless_and_scope_both_accounts(self):
+        descriptor, state, event, seen = self.server()
+        report = {"statuses":{}}
+        self.assertTrue(p.check_world(descriptor, state, event, report))
+        self.assertEqual(len(report["statuses"]),4)
+        self.assertEqual(seen,[(0,None,"browser")]*4)
+        self.assertEqual(report["world_prerequisites"]["status"],"PASS")
+
+    def test_unexpected_rejection_is_not_a_missing_prerequisite(self):
+        descriptor, state, event, _ = self.server(status=413)
+        report = {"statuses":{}}
+        with self.assertRaisesRegex(p.Failure,"REAL_WORLD_READ_REJECTED"):
+            p.check_world(descriptor,state,event,report)
+        self.assertEqual(report["statuses"]["account-0-bootstrap"],413)
+
+    def test_missing_owner_route_stays_explicitly_not_run(self):
+        descriptor, state, event, _ = self.server(status=503)
+        report = {"statuses":{}}
+        self.assertFalse(p.check_world(descriptor,state,event,report))
+        self.assertEqual(report["world_prerequisites"]["observed_status"],503)
+        self.assertEqual(report["world_prerequisites"]["status"],"NOT_RUN")
+
+    def test_success_status_cannot_mask_response_policy_failure(self):
+        descriptor, state, event, _ = self.server(cache_control="public")
+        report = {"statuses":{}}
+        with self.assertRaisesRegex(p.Failure,"REAL_WORLD_RESPONSE_POLICY_FAILED"):
+            p.check_world(descriptor,state,event,report)
 
 
 if __name__ == "__main__":

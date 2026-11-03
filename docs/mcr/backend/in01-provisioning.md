@@ -315,6 +315,26 @@ containing that exact build's backend sources plus these tooling files; a newer
 build does not make this older assignment base's different source hashes match.
 This tool does not launch another Rust build or write that owner's checkout.
 
+## Current-route bodyless read correction
+
+The subsequent strict current-service qualification at base `5ef2df7` exposed a
+tooling defect: the unchanged Auth helper sends `{}` even for GET, while the
+current bootstrap route has a zero-byte body limit. Its actual response was 413.
+`WorldReader` now performs bodyless HTTP GET using the same bounded response,
+no-store, correlation, no-referrer and no-redirect checks as the unchanged Auth
+helper. Auth mutation requests still use that helper without modifications.
+The adapted read-policy logic comes from `browser_auth_smoke.Browser.request`
+at base `5ef2df7f9fa01868b0f734233c87a00e37195b61`; no dependency was added.
+
+Only 404 and 503 are classified as unavailable World prerequisites. Unexpected
+rejections, including 413 or authentication failures, fail the provisioning run;
+HTTP 200 cannot bypass privacy/header checks. Four new loopback HTTP regression
+cases bring the focused suite to 27 passing checks. They verify bodyless reads
+for both accounts, explicit missing-dependency status, unexpected rejection and
+response policy failure. These are transport regressions, not product World
+acceptance. Actual current evidence and exact remaining owner seams belong in
+`docs/mcr/backend/in01-current-runtime.md`.
+
 ## Final held-owner and attach qualification
 
 At clean `21d16575d84bd78f0ad7e3469d02fceae381f685`, the actual owned command
