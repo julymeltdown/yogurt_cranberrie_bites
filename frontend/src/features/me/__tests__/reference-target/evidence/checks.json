@@ -42,9 +42,13 @@
     }
   ],
   "inputHashes": {
-    "contracts/generated/mcr-domain.openapi.json": "a5fbe73124ed069e6357f5797a264e2d2a1bec93b0179bfc8550bf1122b69fde",
+    "contracts/generated/mcr-domain.openapi.json": "ef678d3445e5ee5ed3b90594ef1decc1d53b342166b10a91c4d9c9b3f20aa057",
     "contracts/fixtures/domain/public-post.json": "7015cda316531b4e44c7f1e8a6dcea697eb299dfe4c5d9d6e2ff332d85c8920e",
-    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f"
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/src/features/auth/model/contract.ts": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
+    "frontend/src/features/auth/model/bootstrap.ts": "202388462a13e4940f62f18b57afdf726790da42038073a40ead9728747b47b9",
+    "frontend/src/features/me/model/contract.ts": "c25f344aee392ed78d659a330dbcaa088acf8c7560fd3d7767a27e1423886d0c",
+    "frontend/src/features/people/contract.ts": "067a94397097071304cc334787faeffd75dcef7ec5b224e4d0cf92e92d830b0d"
   },
   "limitations": [
     "Missing reviewed canonical current-user portrait binding; no decorative gallery substituted",
@@ -54,13 +58,13 @@
   ],
   "sourceCommit": "6191f740ca53c6f476e951ad75ecbc0e90bf16a5",
   "publicationReconciliation": {
-    "base": "fb0bfcaa6939d18f6fd4bd7d87d93412d7a7dafe",
+    "base": "f4b4080897a6b1ad835fa4e5e9372f82d58e489e",
     "branch": "codex/mcr-fe-ref-auth-profile-publish",
     "preservedPeerHistory": true,
     "combinedTests": {
       "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/me/__tests__/reference-target/combined-runner.ts --configLoader runner",
       "exit": 0,
-      "passed": 97,
+      "passed": 99,
       "files": 10,
       "includes": "actual root shell direct-link regression; auth and profile owned/baseline suites"
     },
@@ -73,15 +77,26 @@
       430
     ],
     "nativeExit": 0,
-    "sourceSharedCaptureHashComparison": "PASS",
+    "sourceSharedCaptureHashComparison": "PASS after final native reruns",
     "temporaryDependencyAndCaches": "removed before final guards",
     "authAlreadyPublishedSourceMapping": "51d89f71",
-    "onlyNewAuthEvidenceMapping": "5b98a58874ce5e8bf9c5fd300ea6971ae3d15c09",
-    "newProfileSourceMapping": "0a855bfad9012bb5834a10b240ed6c2cf3291eb9",
-    "newProfileEvidenceMapping": "18c73422aa4dd321f488c4380e337074d074caf2",
+    "onlyNewAuthEvidenceMapping": "8f6f423937a6e31e1d82430d798c84ac595baab1",
+    "newProfileSourceMapping": "2e1885d8060a9a5ebe94a24f04adf1276b993e77",
+    "newProfileEvidenceMapping": "3ff07c18181f84efee4ebedce9d4d65642a76141",
     "boundaryExit": 0,
     "planningExit": 0,
     "originExit": 0,
-    "scopeReview": "PASS exact authorized paths and presentation-only imports"
+    "scopeReview": "PASS exact authorized paths and presentation-only imports",
+    "decoderRepairAncestor": "90f44fd99fdfe17f3ee3e596ceff0583f6db2c47",
+    "exactBlockedChecksRerun": "PASS after actual decoder repair; original48/99 failure retained in union-regression.txt",
+    "wholeCharacterRootIdentityGate": "NOT_RUN: separate canonical1.1 admission/runtime/root binding",
+    "portraitPortMapping": "6869aadb14ad52d7683528956d78677356acfe33",
+    "portraitNativeProbesMapping": "a16083bdfa658012c5ceaa7485ad84433cc22901",
+    "boundaryCommand": "python3 scripts/mcr/check-boundaries.py --base f4b4080897a6b1ad835fa4e5e9372f82d58e489e --lane frontend --allow-doc docs/mcr/frontend/reference-auth.md --allow-doc docs/mcr/frontend/reference-profile.md --allow-doc frontend/src/features/me/__tests__/reference-target/evidence/union-regression.txt"
+  },
+  "originalInputHashes": {
+    "contracts/generated/mcr-domain.openapi.json": "a5fbe73124ed069e6357f5797a264e2d2a1bec93b0179bfc8550bf1122b69fde",
+    "contracts/fixtures/domain/public-post.json": "7015cda316531b4e44c7f1e8a6dcea697eb299dfe4c5d9d6e2ff332d85c8920e",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f"
   }
 }

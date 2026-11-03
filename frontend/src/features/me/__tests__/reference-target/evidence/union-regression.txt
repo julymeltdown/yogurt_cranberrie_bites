@@ -52,3 +52,5 @@ Fresh reconciliation base c08cc570c58202bcd1d629f0407f3ba96f3023f3; owning decod
       Tests  48 failed | 51 passed (99)
    Duration  42.59s (transform 601ms, setup 0ms, import 1.78s, tests 37.67s, environment 2.40s)
 Native PROFILE also failed before first capture: canonical Me load rejected, no Synthetic listener heading; unavailable status correctly displayed.
+
+Resolved: after fetching actual repair90f44fd9 on publication basef4b4080897a6b1ad835fa4e5e9372f82d58e489e, exact combined99/99 and native AUTH/PROFILE360/390/430 pass. This is backward compatibility, not full1.1 identity admission or runtime/root proof.
