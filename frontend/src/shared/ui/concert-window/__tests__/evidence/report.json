@@ -1,0 +1,145 @@
+{
+  "result": "PASS",
+  "task": "UIV01",
+  "assignmentBase": "be85021c1e28f0b0f4a6182c4300a93b16179f5b",
+  "testedCheckoutHead": "be85021c1e28f0b0f4a6182c4300a93b16179f5b",
+  "scope": "Local deterministic component presentation; no backend, app adoption, character art or physical-device acceptance.",
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "reducedMotion": true,
+  "results": [
+    {
+      "width": 360,
+      "result": "PASS",
+      "keyboard": true,
+      "controls44px": true,
+      "noOverflow": true,
+      "primaryLocalDisclosure": true,
+      "closeFocusRestored": true
+    },
+    {
+      "width": 390,
+      "result": "PASS",
+      "keyboard": true,
+      "controls44px": true,
+      "noOverflow": true,
+      "primaryLocalDisclosure": true,
+      "closeFocusRestored": true
+    },
+    {
+      "width": 430,
+      "result": "PASS",
+      "keyboard": true,
+      "controls44px": true,
+      "noOverflow": true,
+      "primaryLocalDisclosure": true,
+      "closeFocusRestored": true
+    }
+  ],
+  "sourceHashes": {
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/shared/ui/concert-window/__tests__/preview.html": "768ed0b3d77bf9ec5788c7b842ecb88b8fdde3684567d5eb400a6cdac9c2c6ee",
+    "frontend/src/shared/ui/concert-window/__tests__/preview.tsx": "8fa55ef745b82a0d397e7709b5c5c97cf900c7530cac4e71eb02b16d9139b2c5",
+    "frontend/src/shared/ui/concert-window/__tests__/preview.css": "c5ef9b4d5bea12254df891b5ea979039887b312a09c9dbd112e3a2804e87b295",
+    "frontend/src/shared/ui/concert-window/__tests__/browser.mjs": "eb586e1b5b667336ef7ec824fca2a15a8b1ee655a97e3ee0d5f5fa8878756f14"
+  },
+  "screenshots": [
+    {
+      "file": "360-loaded.png",
+      "width": 360,
+      "state": "loaded",
+      "sha256": "2e5930193c120b86bfc1741424cd933d6a82aeb6bd6e37607d8253724e45e428"
+    },
+    {
+      "file": "360-keyboard.png",
+      "width": 360,
+      "state": "keyboard",
+      "sha256": "f8837dbab10fa7fb0611ab1b3322f5c16a3818705980089df0d2cf0f220ebd21"
+    },
+    {
+      "file": "360-empty.png",
+      "width": 360,
+      "state": "empty",
+      "sha256": "a06d0a34354be55d2639d77466c7ec0b6d7545adb9eb338828b3735e5c0d1f1d"
+    },
+    {
+      "file": "360-unavailable.png",
+      "width": 360,
+      "state": "unavailable",
+      "sha256": "8bd6869c2026aa09af4e5b21483f0bbee62758fc71bb2b2a76fc6180d07c0f8f"
+    },
+    {
+      "file": "360-pending.png",
+      "width": 360,
+      "state": "pending",
+      "sha256": "4ed064b14eb925bec59d52f7b816161499d120539574edebea568ccad551de42"
+    },
+    {
+      "file": "390-loaded.png",
+      "width": 390,
+      "state": "loaded",
+      "sha256": "c2a1e9157ad20ad47ddbad09af112a3be57a44e40664b5c59ee264d73d51d07d"
+    },
+    {
+      "file": "390-keyboard.png",
+      "width": 390,
+      "state": "keyboard",
+      "sha256": "2ce57c5ed5d75b0345ca406eeaf4ede973dcc96f16d5ef027b2c1ecc4ff8a565"
+    },
+    {
+      "file": "390-empty.png",
+      "width": 390,
+      "state": "empty",
+      "sha256": "ec9572ba4b0d753a701aac497cddeed6e89bee982f458656bb44a5a1a0e8c6c8"
+    },
+    {
+      "file": "390-unavailable.png",
+      "width": 390,
+      "state": "unavailable",
+      "sha256": "498650fd092c44c1eae16eea329601f7447a62ee69efe4b5154ca41e4a837164"
+    },
+    {
+      "file": "390-pending.png",
+      "width": 390,
+      "state": "pending",
+      "sha256": "a04092bbb3ce022375299b1f778fb5d2a22e613f7df19c7facd357211357883f"
+    },
+    {
+      "file": "430-loaded.png",
+      "width": 430,
+      "state": "loaded",
+      "sha256": "f8447270f8f527701ddcef2d744e27207fb7872a390c3d6f9595a8f9c81bc0c1"
+    },
+    {
+      "file": "430-keyboard.png",
+      "width": 430,
+      "state": "keyboard",
+      "sha256": "b6212308f28e161ab4b32a7d17feb480e1af929c885deb87fd779d66c584a934"
+    },
+    {
+      "file": "430-empty.png",
+      "width": 430,
+      "state": "empty",
+      "sha256": "1ab77afe68975d7df0a0b6fff9a96b0fb340ba4c4f2d7b5f05765f56e4602bf1"
+    },
+    {
+      "file": "430-unavailable.png",
+      "width": 430,
+      "state": "unavailable",
+      "sha256": "3cce02472173e473ab06210566dd447911fe2caecc11bcd15bdd1f75fbd4570b"
+    },
+    {
+      "file": "430-pending.png",
+      "width": 430,
+      "state": "pending",
+      "sha256": "0e8b180f24753ded24d1c31e28998dd59730fc5ae5d19380e114b59584e2be88"
+    }
+  ],
+  "reference": {
+    "path": "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg",
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "errors": [],
+  "externalRequests": []
+}
