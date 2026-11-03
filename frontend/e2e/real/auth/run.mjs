@@ -163,13 +163,21 @@ try {
   await login(page); const identity = (await snapshot(page)).userId; assert(identity)
   await expect.poll(() => requests.some(r => r.path.endsWith('/bootstrap') && r.status >= 400)).toBe(true)
   await expect(page.locator('canvas')).toHaveCount(0); checks.actualBootstrapUnavailable = 'PASS: actual unsuccessful backend response; no world opened'; await capture('signed-in-bootstrap-unavailable'); checks.signIn = 'PASS'
-  const cookie = (await context.cookies()).find(c => c.name === 'refresh_token'); assert(cookie?.httpOnly && cookie.sameSite === 'Lax' && !cookie.secure)
+  const cookie = (await context.cookies()).find(c => c.name === 'refresh_token'); assert(cookie?.httpOnly && cookie.sameSite === 'Lax' && !cookie.secure && cookie.value.length >= 20)
   checks.localHttpCookie = 'PASS'; assert.equal(await page.evaluate(() => localStorage.length + sessionStorage.length), 0)
   async function rejectOldSession(cookies) {
+    const credential = cookies.find(cookie => cookie.name === 'refresh_token')
+    assert(credential?.httpOnly && credential.value.length >= 20)
     const stale = await browser.newContext({ storageState: { cookies, origins: [] } }), stalePage = await stale.newPage()
     try {
       await stalePage.goto(origin + '/login')
-      const rejected = await stalePage.evaluate(async () => (await fetch('/api/auth/refresh', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json', 'X-MCR-Intent': 'browser' }, body: '{}' })).status)
+      assert((await stale.cookies()).some(cookie => cookie.name === credential.name && cookie.value === credential.value))
+      const observed = stalePage.waitForRequest(request => new URL(request.url()).pathname === '/api/auth/refresh')
+      const [rejected, request] = await Promise.all([
+        stalePage.evaluate(async () => (await fetch('/api/auth/refresh', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json', 'X-MCR-Intent': 'browser' }, body: '{}' })).status), observed,
+      ])
+      const headers = await request.allHeaders()
+      assert(headers.cookie?.split(';').some(part => part.trim() === `refresh_token=${credential.value}`))
       assert.equal(rejected, 401)
     } finally { await stale.close() }
   }

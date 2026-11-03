@@ -15,8 +15,8 @@ Executed bundle: `/Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793
 - Production `src/main.tsx` signup remains policy-blocked. A separate, visibly labeled test-only entry opts into the existing synthetic eligibility/consent acknowledgements; it uses actual product forms/controller and actual server account creation. **The approved eligibility/consent persistence contract is still missing; production consent acceptance is NOT_RUN.**
 - Actual signup queues verification delivery to the launcher's private local HTTP mailbox; an incorrect code is rejected, the delivered code succeeds, and sign-in establishes the same canonical Auth identity.
 - Native HttpOnly SameSite=Lax refresh cookie behavior is exercised with the launcher's explicit local-HTTP exception. Access is memory-only; local/session storage stay empty. This does not qualify Secure cookies/TLS.
-- A second tab's login invalidates the first tab. Logout invalidates the peer's generation and clears its real form draft; a separate native browser cookie context proves the old logout refresh credential receives 401.
-- Forgot-password uses actual mail delivery. The browser opens the **actual delivered app-origin link**, the fragment is scrubbed, reset succeeds, peer access is revoked, the old refresh session receives 401, the old password fails, and the new password signs into the same identity. No manual token substitution or fabricated successful link.
+- A second tab's login invalidates the first tab. Logout invalidates the peer's generation and clears its real form draft; a separate native browser cookie context proves the nonempty old logout refresh credential is restored and actually sent before receiving 401.
+- Forgot-password uses actual mail delivery. The browser opens the **actual delivered app-origin link**, the fragment is scrubbed, reset succeeds, peer access is revoked, the nonempty old refresh cookie is confirmed in the actual request and receives 401, the old password fails, and the new password signs into the same identity. No manual token substitution or fabricated successful link.
 - The real bootstrap endpoint returns an unsuccessful response. No canvas/world is opened; bootstrap/world acceptance remains NOT_RUN. The proxy forwards original request bodies, Origin, cookies and actual Gateway response bytes/status/headers without substitutions.
 
 Owned ephemeral PostgreSQL/Redis/services, OS-selected frontend port and browser contexts are disposed. The test uses only throwaway `.invalid` accounts and private local mail. Reports omit emails, passwords, codes, tokens, cookies and response bodies; screenshots mask inputs. The private `ready.json` is an ownership descriptor, not a publishable receipt. No HAR, tracing, external mail/accounts, Cargo/target writes or push.
@@ -26,18 +26,18 @@ Owned ephemeral PostgreSQL/Redis/services, OS-selected frontend port and browser
 From `frontend/`, with the pinned Node on PATH:
 
 ```sh
-node e2e/real/auth/run.mjs --bin-dir /Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/bin --receipt /Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/receipt.json --evidence /tmp/mcr-real-email-delivery
+node e2e/real/auth/run.mjs --bin-dir /Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/bin --receipt /Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/receipt.json --evidence /tmp/mcr-real-email-cookie-proof
 ```
 
 Use a **new** evidence directory for a replay. Source/binary mismatch fails closed; historical exploratory runs require explicit `--historical` and cannot pass the current-candidate gate. `--service-source-root` optionally names the exact read-only backend source tree corresponding to a qualified bundle.
 
 | Check | Exit and evidence |
 |---|---|
-| Final actual browser journey | 0; `/tmp/mcr-real-email-delivery/report.json`, `stack.json`, `/tmp/mcr-real-email-delivery.log` |
+| Final actual browser journey | 0; `/tmp/mcr-real-email-cookie-proof/report.json`, `stack.json`, `/tmp/mcr-real-email-cookie-proof.log` |
 | Focused auth + enrollment/recovery app regressions | 0; 247 tests / 9 files; `/tmp/mcr-real-email-auth-regression.txt` |
 | Production strict build | 0; `/tmp/mcr-real-email-build.txt`; existing 544.82kB chunk warning retained |
 | Strict standalone e2e entry typecheck | 0; `/tmp/mcr-real-email-entry-typecheck-final.txt` (same strict options as app, explicit `--ignoreConfig`) |
 | Source/e2e lint and runner syntax | 0; `/tmp/mcr-real-email-lint.txt`, `/tmp/mcr-real-email-harness-final-lint.txt`; `node --check` |
 | C03 generation check, C08 origin, planning, exact boundaries, whitespace | Recorded in accompanying delivery receipt; no acceptance inference from these static checks |
 
-The delivery receipt binds source/runner bytes, exact commit ancestry, bundle receipt, final reports, masked screenshots and check logs. Historical `/tmp/mcr-real-email-historical-first` failed safely at current Auth's added `0013_identity_binding_epoch.sql` ledger mismatch and cleaned up; it did not execute a browser journey. Current-first failed before startup because the harness initially expected the older receipt shape. Current-second and final passed their then-current runners; delivery adds strict ephemeral-port selection and executed migration/binary assertions. These development attempts remain preserved and do not replace the final evidence.
+The delivery receipt binds source/runner bytes, exact commit ancestry, bundle receipt, final reports, masked screenshots and check logs. Historical `/tmp/mcr-real-email-historical-first` failed safely at current Auth's added `0013_identity_binding_epoch.sql` ledger mismatch and cleaned up; it did not execute a browser journey. Current-first failed before startup because the harness initially expected the older receipt shape. Current-second/final/delivery passed their then-current runners. The cookie-proof follow-up additionally requires nonempty stale credentials, restored browser cookies and the actual Cookie request header for both logout/reset rejection, preventing a missing-cookie 401 from satisfying those assertions. It retains strict ephemeral ports and executed migration/binary checks. These development attempts remain preserved and do not replace the final evidence.
