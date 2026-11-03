@@ -121,9 +121,11 @@ and revoke subscriptions; removed simulation state alone is not a socket close.
 The synchronous port must not change authority mid-batch outside the owner lock.
 
 A stream replacement requires a freshly authorized binding and distinct stream
-ID, preserves the server coordinate and clears pending/held input and ack. A
+ID never previously used by that connection, preserves the server coordinate and clears pending/held input and ack. A
 new authorized connection takeover can capture its new access expiry; old
-connection input and disconnect cannot mutate/remove the replacement. Failed
+connection input and disconnect cannot mutate/remove the replacement. A bounded
+1024-entry stream history prevents A → B → A replay; exhaustion requires a new
+connection. Same-connection session changes are rejected. Failed
 replacement leaves old simulation state for the authoritative owner to revoke
 on its next check. Room/owner/epoch/resource changes reject stale bindings; create
 a new owner simulation for an epoch reset and atomically replace streams, rather
@@ -174,7 +176,7 @@ Executed from the assigned checkout on 2026-11-04 (Asia/Seoul):
 | `git diff --check` | 0 |
 | `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_simulation` | NOT_RUN; queued explicit shared compile lease with delivery |
 
-Twenty deterministic test cases cover strict intent decoding/teleport attempts,
+Twenty-two deterministic test cases cover strict intent decoding/teleport attempts,
 invalid axes and safe counters, scalar/diagonal speed, 50ms timing/ack, packet
 flood/rate refill, input gaps/replays, stream/epoch/session/connection/owner/pin
 fencing, takeover reset, access-expiry immutability and bucket preservation,

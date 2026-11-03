@@ -5,7 +5,7 @@ use concert_domain::{
     world::{Input, Limits, Position, WorldMap, STEP_MS},
     AssetId, ParticipantKey, Revision,
 };
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 use uuid::Uuid;
 
 pub const ROOM_CAPACITY: usize = 50;
@@ -13,6 +13,7 @@ pub const MAX_CATCH_UP_STEPS: u64 = 4;
 pub const INPUT_RATE: u64 = 30;
 pub const INPUT_BURST: u64 = 60;
 pub const AUTH_LEASE_MAX_MS: u64 = 5000;
+pub const MAX_STREAMS_PER_CONNECTION: usize = 1024;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct ResourcePin {
@@ -76,6 +77,7 @@ pub enum SimulationError {
     StaleStream,
     Replay,
     RateLimited,
+    StreamLimit,
     Clock,
     Spawn,
 }
@@ -93,6 +95,7 @@ struct Player {
     held: Option<(Input, u64)>,
     credits: u64, // Milli-tokens: 1000 per message, 30 per ms.
     rate_updated_ms: u64,
+    used_streams: BTreeSet<Uuid>,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct InteractionIntent {
@@ -222,6 +225,7 @@ impl Simulation {
         self.players.insert(
             id,
             Player {
+                used_streams: BTreeSet::from([binding.stream_id]),
                 binding,
                 access_expires_at_ms,
                 state,
@@ -255,12 +259,27 @@ impl Simulation {
             return Err(SimulationError::StaleStream);
         }
         let same_connection = binding.connection_id == player.binding.connection_id;
+        if same_connection {
+            if binding.session_id != player.binding.session_id {
+                return Err(SimulationError::Binding);
+            }
+            if player.used_streams.contains(&binding.stream_id) {
+                return Err(SimulationError::StaleStream);
+            }
+            if player.used_streams.len() >= MAX_STREAMS_PER_CONNECTION {
+                return Err(SimulationError::StreamLimit);
+            }
+        }
         let expiry = Self::authorize(
             port,
             &binding,
             same_connection.then_some(player.access_expires_at_ms),
             now,
         )?;
+        if !same_connection {
+            player.used_streams.clear();
+        }
+        player.used_streams.insert(binding.stream_id);
         player.binding = binding;
         player.access_expires_at_ms = expiry;
         player.state.ack_input_seq = 0;

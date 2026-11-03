@@ -489,3 +489,41 @@ fn maximum_range_interaction_on_one_pixel_grid_is_not_truncated() {
         Limits::new(120.0, 256.0, 250).unwrap()
     ));
 }
+
+#[test]
+fn resync_cannot_cycle_back_to_an_old_stream_and_replay_its_input() {
+    let (mut s, b, a) = fixture(32, 120.0);
+    s.submit(&b, input(&b, 1, 1.0, 0.0, false), 0, &a).unwrap();
+    let mut newer = b.clone();
+    newer.stream_id = id(900);
+    a.grant(&newer, 5000, 10000);
+    s.replace_stream(newer.clone(), 0, &a).unwrap();
+    a.grant(&b, 5000, 10000);
+    assert_eq!(
+        s.replace_stream(b.clone(), 0, &a),
+        Err(SimulationError::StaleStream)
+    );
+    assert_eq!(
+        s.submit(&b, input(&b, 2, 1.0, 0.0, false), 0, &a),
+        Err(SimulationError::StaleStream)
+    );
+}
+#[test]
+fn resync_history_is_bounded_and_new_connection_can_start_fresh() {
+    let (mut s, b, a) = fixture(32, 120.0);
+    let mut newer = b.clone();
+    for n in 1..MAX_STREAMS_PER_CONNECTION {
+        newer.stream_id = id(1000 + n as u128);
+        a.grant(&newer, 5000, 10000);
+        s.replace_stream(newer.clone(), 0, &a).unwrap();
+    }
+    newer.stream_id = id(9000);
+    a.grant(&newer, 5000, 10000);
+    assert_eq!(
+        s.replace_stream(newer.clone(), 0, &a),
+        Err(SimulationError::StreamLimit)
+    );
+    newer.connection_id = id(9001);
+    a.grant(&newer, 5000, 12000);
+    s.replace_stream(newer, 0, &a).unwrap();
+}
