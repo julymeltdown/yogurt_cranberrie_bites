@@ -60,16 +60,19 @@ pub fn guarded_server(
     )?))
 }
 /// One original budget starts before guard/decode. Dropping this future on
-/// HTTP/2 cancellation/timeout drops in-flight journal SQL and its transaction.
+/// HTTP/2 cancellation/timeout drops the read future and queues transaction
+/// rollback; any in-flight SQL retains its original bounded statement timer.
 #[derive(Clone)]
 pub struct OperationDeadline<S>(S);
 impl<S: NamedService> NamedService for OperationDeadline<S> {
     const NAME: &'static str = S::NAME;
 }
-impl<S> Service<http::Request<Body>> for OperationDeadline<S>
+impl<S, B> Service<http::Request<Body>> for OperationDeadline<S>
 where
-    S: Service<http::Request<Body>, Response = http::Response<Body>, Error = Infallible>,
+    S: Service<http::Request<Body>, Response = http::Response<B>, Error = Infallible>,
     S::Future: Send + 'static,
+    B: tonic::codegen::Body<Data = tonic::codegen::Bytes> + Send + 'static,
+    B::Error: Into<tonic::codegen::StdError>,
 {
     type Response = http::Response<Body>;
     type Error = Infallible;
@@ -90,7 +93,7 @@ where
         let future = self.0.call(request);
         Box::pin(platform::call_deadline::scope(stop, async move {
             match tokio::time::timeout_at(stop.into(), future).await {
-                Ok(result) => result,
+                Ok(result) => result.map(|response| response.map(Body::new)),
                 Err(_) => Ok(elapsed().into_http()),
             }
         }))
