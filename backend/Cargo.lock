@@ -742,6 +742,7 @@ dependencies = [
  "contracts-build",
  "friend-service",
  "http-body-util",
+ "image",
  "jsonschema",
  "migration-runtime",
  "platform",
