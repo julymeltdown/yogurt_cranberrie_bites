@@ -14,6 +14,7 @@ async function ready() { const h = optionHarness(); owned.push(h); h.controller.
 async function mounted(strict = false) {
   const h = optionHarness(); owned.push(h); const child = <AvatarEditor controller={h.controller} />
   const view = render(strict ? <StrictMode>{child}</StrictMode> : child)
+  await screen.findByRole('tab', { name: 'Presets' }); fireEvent.click(screen.getByRole('tab', { name: 'Presets' }))
   await vi.waitFor(() => expect(screen.getByRole('button', { name: 'Try option 1 · full outfit' })).toBeEnabled())
   return { ...h, ...view }
 }
