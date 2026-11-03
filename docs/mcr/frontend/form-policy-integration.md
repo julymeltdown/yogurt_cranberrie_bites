@@ -23,12 +23,30 @@ C08 passed with **four registered extracts and zero violations**. Raw logs are
 `/private/tmp/mcr-fe03-combined-0faaf8b-origin.log`. The author's historical C08
 report correctly retains its earlier zero registered extracts.
 
-A separate follow-up remains active for the released people/discovery consumers.
-Main executed the actual published module and an independent frozen C03/C04
-JSON Schema oracle: eight of sixteen Unicode boundary cases disagreed. Valid
-501/1,000-code-point introductions, 21/40-code-point names, 81/160-code-point bios,
-and 51/100-code-point search text were rejected by UTF-16 limits. Evidence is
-`/private/tmp/mcr-fe29-unicode-probe-00ecd45.json`. This checkpoint does not claim
-that read-path bug is fixed. The follow-up owns only the three explicitly
-transferred people files and its new tests/evidence; existing privacy, pagination
-and receipt behavior remain outside that correction.
+The released people/discovery follow-up is now integrated in `b67d8b2` from
+stopped, clean author `a95ce037a23b1d7986c69e04b7d6b67c65133349`, exact parent
+`0faaf8b4c4cfc999db8e8976bb96dfd4527eace2`. Its actual bounded goal completed and
+subsequent goal read returned null. It changes only the three transferred people
+production files, new focused evidence/tests and the existing handoff document.
+
+Main verified all 23 paths and exact author bytes, eight production/test hashes,
+three shared helper/contract pins and the three original baseline file hashes.
+The sole merge conflict was the handoff document's add/add ancestry: the
+integrated preimage was byte-identical to the author's parent, so resolution
+retains the exact updated author document. No implementation conflict or
+unrelated rewrite occurred.
+
+All 16 original Unicode boundary cases now agree with the independent frozen
+C03/C04 oracle, including the eight previously rejected valid cases. Author
+evidence covers 45 distinct passing affected tests: 35 existing tests in the
+first run and 10 corrected new-file tests. Initial test/native harness failures
+are preserved rather than reported as passing. Strict types, lint and production
+Chrome checks at 360/390/430 passed, including actual discovery/direct-profile
+rendering and retained 101-code-point search input with no extra GET.
+
+Fresh combined whole-frontend strict types passed at
+`b67d8b2d72ad7e2e19a36a82d09c5a8ec50f5c35` after the shell component handoff was
+integrated separately. [The combined receipt](shell-chrome-integration.json)
+records that source and log hash. Existing privacy, paging, receipts, root
+composition and other validators remain unchanged. Real service, operating-system
+IME, physical device and full FE03/FE29 acceptance remain unverified.

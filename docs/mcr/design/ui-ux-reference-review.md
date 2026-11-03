@@ -2,7 +2,7 @@
 
 ## Decision
 
-**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has now been read by the visual implementation owners, and several bounded presentation changes have reached master. Some updated components still lack default application routes, while shell presentation, approved imagery and visual item choices remain unfinished. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; the follow-through below records what changed.
+**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has now been read by the visual implementation owners, and several bounded presentation changes have reached master. Some updated components still lack default application routes, while default shell adoption, approved imagery and visual item choices remain unfinished. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; the follow-through below records what changed.
 
 The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged copy is [user-reference.jpg](ui-reference-audit-2026-11-04/user-reference.jpg), SHA256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`. This is the current screen-level design handoff. The earlier [approved mobile world sheet](../../source/mcr_v2_en/reference/approved_mobile_world.png) contains five world compositions, not these ten screens. It remains an immutable historical source.
 
@@ -90,6 +90,47 @@ at SHA256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`.
 Freshly inspected sign-in and wall captures also show the compact black title bar,
 ivory frame and deep-red actions. Their missing illustrations and fixture content
 remain visible limitations, not full visual acceptance.
+
+### Shell presentation follow-through at `0beafce`
+
+FE07-CHROME is integrated from stopped, clean author
+`d6d7d935aafbc5b03db72e1e66bea357e1b0a76f`. Its bounded goal was actually
+completed and a subsequent goal read returned null. The reference was inspected
+by the author and remains byte-identical to the supplied attachment.
+
+The reusable header, three direct era controls, icon-plus-label bottom navigation
+and panel header now implement the compact black/ivory/red direction. Main
+inspected the actual 390px Parade, Me-panel and unavailable-era captures. Their
+symmetric frames, typography and compact navigation address the earlier outer
+chrome gap; no decorative left accent bars are introduced. The images explicitly
+show synthetic terrain, unavailable avatar art and fixture panel content. They
+are **module composition evidence**, not screenshots of a finished default app.
+
+[Parade module capture](../../../frontend/src/app/shell-chrome/__tests__/evidence/world-parade-390.png),
+[panel capture](../../../frontend/src/app/shell-chrome/__tests__/evidence/me-panel-390.png),
+and [unavailable-era capture](../../../frontend/src/app/shell-chrome/__tests__/evidence/theme-unavailable-390.png)
+show both adoption and the remaining visual limits. See
+[shell handoff and exact root insertion](../frontend/shell-chrome.md).
+
+The author recorded 81 affected tests, strict types, lint, production builds and
+30 native Chrome captures at 360/390/430. The fixture uses actual Phaser and the
+existing theme controller with synthetic qualified maps and mock transport;
+confirmed theme selection, rollback, navigation, Back focus and disposal passed.
+Main verified all 46 assigned new paths, 8 new source/document hashes, 51 unchanged
+input hashes and 37 evidence hashes. Fresh combined whole-frontend strict types
+passed after the unrelated Unicode read-path handoff was integrated serially;
+[the integration receipt](../frontend/shell-chrome-integration.json) binds the
+candidate and records this without repeating the author's general review.
+
+**Default WorldShell adoption remains open.** Its root files are unchanged, and
+its production ports do not yet expose the existing theme controller with a
+qualified resource/lifetime producer. The module must be inserted into that
+single existing shell; a second runtime or fabricated selected theme is not a
+substitute. Default Feed, Map and Wall registration, approved character/venue
+imagery, visual avatar item choices and live/device acceptance remain open.
+The previous reachability table therefore still applies. This delivery advances
+the shell implementation package without marking the screenshot reproduced or
+changing task/IA acceptance counts.
 
 ### Default application reachability — root source recheck at `572473f`
 

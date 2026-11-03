@@ -1,0 +1,49 @@
+{
+  "source_revision": "b67d8b2d72ad7e2e19a36a82d09c5a8ec50f5c35",
+  "shell_author": "d6d7d935aafbc5b03db72e1e66bea357e1b0a76f",
+  "shell_integration": "0beafce72c97e04365685be183f0bc311b726add",
+  "shell_paths": 46,
+  "shell_verified_pins": {
+    "new_source_and_document": 8,
+    "unchanged_inputs": 51,
+    "evidence": 37
+  },
+  "shell_author_validation": {
+    "affected_tests": 81,
+    "new_dom_tests": 17,
+    "native_widths": [
+      360,
+      390,
+      430
+    ],
+    "screenshots": 30,
+    "browser_errors": 0
+  },
+  "unicode_author": "a95ce037a23b1d7986c69e04b7d6b67c65133349",
+  "unicode_integration": "b67d8b2d72ad7e2e19a36a82d09c5a8ec50f5c35",
+  "unicode_paths": 23,
+  "unicode_verified_pins": {
+    "production_and_test": 8,
+    "shared_dependencies": 3,
+    "baseline_paths": 3
+  },
+  "unicode_author_validation": {
+    "distinct_passing_tests": 45,
+    "native_widths": [
+      360,
+      390,
+      430
+    ],
+    "screenshots": 6,
+    "browser_errors": 0
+  },
+  "combined_types": {
+    "exit_code": 0,
+    "elapsed_seconds": 4.956,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "document_conflict_resolution": "Only author document add/add; integrated preimage identical to author parent; take exact updated author document.",
+  "default_shell_adoption": "NOT_COMPOSED",
+  "full_visual_acceptance": "NOT_ACCEPTED",
+  "live_multiuser": "NOT_RUN"
+}
