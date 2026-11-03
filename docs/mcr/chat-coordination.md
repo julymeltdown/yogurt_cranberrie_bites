@@ -1,16 +1,15 @@
 # Active chat ownership
 
-Updated 2026-11-03. Four existing visible chats are reused for concrete disjoint
-work. Profile self RPC, its Gateway client and FE15 are being implemented in
-separate worktrees; independent QA reviews FE15. Reviewed Auth-client and Profile
-owner increments are integrated. Every command targets its assigned checkout.
+Updated 2026-11-03. Current allocation prioritizes completing real service flows.
+Model and reasoning choices belong to the user; all four chats received the
+instruction to preserve them without orchestration overrides.
 
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| BE04 Profile RPC | `mcr(be) BE04 guarded Profile self RPC` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc` / `codex/mcr-be-profile-self-rpc` |
-| BE04 Profile client | `mcr(be) BE04 Gateway Profile owner client` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner` / `codex/mcr-be-gateway-profile-owner` |
-| FE15 | `mcr(fe) FE15 movement camera and interactions` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-movement` / `codex/mcr-fe-FE15` |
-| QA | `mcr(qa) FE15 movement and camera review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-fe-movement` / `codex/mcr-qa-FE15` |
+| BE04 actual Profile chain | `mcr(be) BE04 Gateway to Profile integration` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration` / `codex/mcr-be-profile-client-integration` |
+| BE04 database deadline fix | `mcr(be) Profile query deadline fix` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound` / `codex/mcr-be-profile-query-bound` |
+| FE09–FE11 real email flows | `mcr(fe) Real email account journeys` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow` / `codex/mcr-fe-real-email-flow` |
+| QA FE15 complete; awaiting runnable email flow | `mcr(qa) FE15 movement and camera review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | stopped `/Users/lhs/Desktop/mcr-worktrees/qa-fe-movement` / `codex/mcr-qa-FE15` |
 
 The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
@@ -357,3 +356,35 @@ debug information zero apply. Only the fixture owner may start/stop its private
 native PG store. Parent, Profile RPC and QA run no concurrent Rust target work.
 Continue compact chat checks, transfer resources promptly, and publish reviewed
 checkpoints serially.
+
+
+## Delivery cadence correction — 2026-11-03
+
+The user challenged the slow accepted-task delivery. Prefer complete feature
+flows over additional tiny prerequisite handoffs. Run focused checks during
+changes and one relevant integration gate; reuse exact-source prior evidence
+where inputs are unchanged. Repeat a broad suite only for a changed boundary,
+failure or unresolved concern. Keep handoff prose concise. Do not advance task
+acceptance from fixtures or remove required product scope.
+
+Current exact ownership supersedes earlier allocations:
+
+- Profile integration: base `c6404c3`; Gateway tests
+  `concert_profile_owner_integration.rs`, support
+  `concert_profile_owner_fixture.rs` and `concert_profile_owner_native.py`, plus
+  `docs/mcr/backend/gateway-profile-owner-integration.md`. Actual lock-held
+  PostgreSQL cancellation exposes pool starvation; two failed runs are retained.
+- Production fix: base `c6404c3`; Profile service persistence and gRPC
+  `concert_identity.rs` only, plus `docs/mcr/backend/profile-query-deadline.md`.
+  Transaction-local statement timeout must use the captured original deadline.
+  This writer exclusively holds `/Users/lhs/Desktop/mcr-build/backend` until
+  explicit release; integration worker holds no build or PostgreSQL process.
+- Real email frontend: base `b381d03`; `frontend/e2e/real/auth/**`, demonstrated
+  real-journey fixes in `frontend/src/features/auth/**`, and
+  `docs/mcr/frontend/real-email-flow.md`. No backend/root/shared/contract writes.
+  Existing isolated backend launcher may be invoked unchanged. Current-source
+  binary qualification precedes final service claims. Existing test-only
+  enrollment-policy opt-in is confined to e2e; production consent remains gated.
+- FE15 implementation and independent review goals are tool-confirmed COMPLETE.
+  The original broad BE04 goal and new query-fix/email-flow goals remain active;
+  scope completion never silently completes a broader product task.

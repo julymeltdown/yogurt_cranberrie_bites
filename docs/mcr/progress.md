@@ -30,6 +30,7 @@ it is not feature integration or release acceptance.
 | FE10 | MOCK_READY | [Integrated review](evidence/signup-verification-integration.md), `f825b31`/`f498194`/`7bfea96`: 737 combined frontend tests, build/lint/C03/C08/boundary/plan and four-width enrollment/sign-in/recovery browser suites pass. Three concrete review fixes delivered; bounded goal COMPLETE. Anonymous verification is event-independent; production signup/eligibility/consent/live mail/device/vertical gates remain unqualified. |
 | FE11 | MOCK_READY | [Integrated recovery review](evidence/password-recovery-integration.md), `d290391`/`4360d58`/`4550029`: 669 combined tests, strict build/lint/C03/origin/boundary/plan and four-width native recovery plus retained sign-in suites pass. Source fragment intake, canonical confirmation fencing and safe callback presentation delivered; bounded goal COMPLETE. Real mail/BASE_URL/Secure cookies/OAuth/device/IN01 remain NOT_RUN. |
 | FE14 | MOCK_READY | [Reviewed runtime foundation](evidence/phaser-runtime-integration.md), final `77ae6bd`: 871 combined tests, strict build/lint and real Chrome four-width lifecycle/resource matrix pass. Three P2 findings corrected and independently cleared; both bounded goals COMPLETE. Production assets, protected-shell/avatar/world composition, devices and whole FE14 acceptance remain open. |
+| FE15 | MOCK_READY | Reviewed movement/camera/interaction implementation `d91ee02` and bottom-edge correction `aec5d17`; independent QA `b381d03` closes visibility and valid-boundary-route findings. Worker 958 tests/22 files (87 FE15), build/lint and four-width native/short-height checks pass. Parent reran affected movement/runtime tests, build/lint and inspected mobile/short screenshots. Actual networking, authoritative physics, selected artwork, devices and full-world integration remain open. |
 | FE16 | MOCK_READY | [Reviewed transport integration](evidence/world-transport-integration.md), `e3a4d84`/`5863f91`: 568 combined frontend tests (158 transport), build/lint/type-drift/origin/plan and installed-Chrome five canonical traces pass. Gap recovery and pre-send room-switch failure findings corrected. Bounded goal COMPLETE; production lifecycle, replication and real-server/IN01 remain NOT_RUN. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **11/112**;
@@ -48,9 +49,9 @@ model and reasoning setting without overrides. The Profile chat now validates th
 actual Gateway-to-Profile-to-PostgreSQL chain in its four-path integration checkout.
 Its original compatible BE04 goal is tool-confirmed ACTIVE after user resumption;
 earlier BLOCKED snapshots are historical. The Profile-client chat has delivered
-its candidate and a read-only compatibility review. FE15 has delivered its movement
-candidate and bottom-edge correction, with independent QA reviewing the exact
-commits. These bounded increments do not complete broad identity or world tasks.
+its candidate and compatibility review and now fixes the real-chain database
+cancellation defect. FE15 and its QA scope are complete; the frontend chat now
+implements actual email-account browser journeys against real services. These bounded increments do not complete broad identity or world tasks.
 The [chat ownership register](chat-coordination.md) records exact scopes.
 
 Reviewed imports through `2b42fd4`: frontend audit/scaffold, backend audit/import,
