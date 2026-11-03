@@ -1,0 +1,14 @@
+{
+  "contract_version": "1.0.0",
+  "kind": "avatar_config",
+  "manifest_id": "avatar_fixture",
+  "manifest_version": 1,
+  "item_ids": {
+    "body": "body_fixture",
+    "eyes": "eyes_fixture",
+    "hair": "hair_fixture",
+    "outfit": "outfit_fixture",
+    "accessory": "accessory_fixture"
+  },
+  "skin_tone_id": "tone_fixture"
+}

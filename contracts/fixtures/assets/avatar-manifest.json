@@ -1,0 +1,157 @@
+{
+  "contract_version": "1.0.0",
+  "kind": "avatar_manifest",
+  "manifest_id": "avatar_fixture",
+  "manifest_version": 1,
+  "provenance": {
+    "source_id": "mcr_c06_fixture",
+    "source_kind": "ORIGINAL_FIXTURE",
+    "source_revision": "c06-fixture-v1",
+    "source_uri": null,
+    "author": "MCR C06 contract author",
+    "license": "Synthetic metadata only; no artwork or venue license asserted",
+    "review_state": "UNREVIEWED",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "photo_permission": "NOT_APPLICABLE"
+  },
+  "layer_order": [
+    "body",
+    "eyes",
+    "hair",
+    "outfit",
+    "accessory"
+  ],
+  "skin_tones": [
+    {
+      "skin_tone_id": "tone_fixture",
+      "color": "#C89070"
+    }
+  ],
+  "atlas": {
+    "atlas_id": "atlas_fixture",
+    "cell": {
+      "width_px": 64,
+      "height_px": 64
+    },
+    "anchor": {
+      "x": 32,
+      "y": 60
+    },
+    "frame_layout": {
+      "direction_order": [
+        "down",
+        "left",
+        "right",
+        "up"
+      ],
+      "idle_column": 0,
+      "walk_columns": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "texture": {
+      "image_state": "NOT_PROVIDED",
+      "path": null,
+      "sha256": null,
+      "width_px": 320,
+      "height_px": 1280
+    },
+    "items": [
+      {
+        "item_id": "body_fixture",
+        "layer_id": "body",
+        "anchor": {
+          "x": 32,
+          "y": 60
+        },
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width_px": 320,
+          "height_px": 256
+        }
+      },
+      {
+        "item_id": "eyes_fixture",
+        "layer_id": "eyes",
+        "anchor": {
+          "x": 32,
+          "y": 60
+        },
+        "region": {
+          "x": 0,
+          "y": 256,
+          "width_px": 320,
+          "height_px": 256
+        }
+      },
+      {
+        "item_id": "hair_fixture",
+        "layer_id": "hair",
+        "anchor": {
+          "x": 32,
+          "y": 60
+        },
+        "region": {
+          "x": 0,
+          "y": 512,
+          "width_px": 320,
+          "height_px": 256
+        }
+      },
+      {
+        "item_id": "outfit_fixture",
+        "layer_id": "outfit",
+        "anchor": {
+          "x": 32,
+          "y": 60
+        },
+        "region": {
+          "x": 0,
+          "y": 768,
+          "width_px": 320,
+          "height_px": 256
+        }
+      },
+      {
+        "item_id": "accessory_fixture",
+        "layer_id": "accessory",
+        "anchor": {
+          "x": 32,
+          "y": 60
+        },
+        "region": {
+          "x": 0,
+          "y": 1024,
+          "width_px": 320,
+          "height_px": 256
+        }
+      }
+    ]
+  },
+  "presets": [
+    {
+      "preset_id": "preset_fixture",
+      "config": {
+        "contract_version": "1.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "avatar_fixture",
+        "manifest_version": 1,
+        "item_ids": {
+          "body": "body_fixture",
+          "eyes": "eyes_fixture",
+          "hair": "hair_fixture",
+          "outfit": "outfit_fixture",
+          "accessory": "accessory_fixture"
+        },
+        "skin_tone_id": "tone_fixture"
+      }
+    }
+  ],
+  "fallback_preset_id": "preset_fixture",
+  "content_hash": "sha256:b2fb2a3e746711f4aaddf8ac7a2b8b11da31911ec9c6a9ea5cb6c9cdf2e0c5c3"
+}

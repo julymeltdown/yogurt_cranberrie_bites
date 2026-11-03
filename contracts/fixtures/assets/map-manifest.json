@@ -1,0 +1,182 @@
+{
+  "contract_version": "1.0.0",
+  "kind": "map_manifest",
+  "map_id": "map_fixture",
+  "map_revision": 1,
+  "geometry_hash": "sha256:50ef23b282b18f10aaf28d18c9bc1f2ee44ff46504dd81b41df9d7ddca363a94",
+  "provenance": {
+    "source_id": "mcr_c06_fixture",
+    "source_kind": "ORIGINAL_FIXTURE",
+    "source_revision": "c06-fixture-v1",
+    "source_uri": null,
+    "author": "MCR C06 contract author",
+    "license": "Synthetic metadata only; no artwork or venue license asserted",
+    "review_state": "UNREVIEWED",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "photo_permission": "NOT_APPLICABLE"
+  },
+  "tilemap": {
+    "format": "TILED_JSON",
+    "resource_state": "NOT_PROVIDED",
+    "path": null,
+    "sha256": null
+  },
+  "geometry": {
+    "width_cells": 5,
+    "height_cells": 5,
+    "tile_width_px": 32,
+    "tile_height_px": 32,
+    "collision_id": "collision_fixture",
+    "collision_grid": [
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "terrain_layer": [
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    ],
+    "overdraw_layer": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "spawns": [
+      {
+        "spawn_id": "spawn_fixture",
+        "cell_x": 1,
+        "cell_y": 1
+      }
+    ],
+    "default_spawn_id": "spawn_fixture",
+    "interactions": [
+      {
+        "interaction_id": "inspect_concept",
+        "place_id": "00000000-0000-4000-8000-000000000001",
+        "cell_x": 3,
+        "cell_y": 3
+      }
+    ]
+  },
+  "places": [
+    {
+      "place_id": "00000000-0000-4000-8000-000000000001",
+      "label": "Virtual fixture landmark",
+      "place_kind": "VIRTUAL_CONCEPT",
+      "verification_state": "CONCEPT_ONLY",
+      "closure_state": "OPEN",
+      "accessibility_notes": "Synthetic virtual geometry; no physical access claim.",
+      "provenance": {
+        "source_id": "mcr_c06_fixture",
+        "source_kind": "ORIGINAL_FIXTURE",
+        "source_revision": "c06-fixture-v1",
+        "source_uri": null,
+        "author": "MCR C06 contract author",
+        "license": "Synthetic metadata only; no artwork or venue license asserted",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "content_hash": "sha256:21b91a4e02b04943100909d7a008f68cafb9e21b284f26b93ba09ddcc39a4dff"
+}

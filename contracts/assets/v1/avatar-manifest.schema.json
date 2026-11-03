@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/assets/v1/avatar-manifest.schema.json",
+  "title": "MCR AvatarManifest v1",
+  "$ref": "#/$defs/AvatarManifest",
+  "$defs": {
+    "AvatarManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "kind",
+        "manifest_id",
+        "manifest_version",
+        "content_hash",
+        "provenance",
+        "layer_order",
+        "skin_tones",
+        "atlas",
+        "presets",
+        "fallback_preset_id"
+      ],
+      "properties": {
+        "contract_version": {
+          "const": "1.0.0"
+        },
+        "kind": {
+          "const": "avatar_manifest"
+        },
+        "manifest_id": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+        },
+        "manifest_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "content_hash": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/ContentHash"
+        },
+        "provenance": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/Provenance"
+        },
+        "layer_order": {
+          "const": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ]
+        },
+        "skin_tones": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "skin_tone_id",
+              "color"
+            ],
+            "properties": {
+              "skin_tone_id": {
+                "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+              },
+              "color": {
+                "type": "string",
+                "pattern": "^#[0-9A-F]{6}$"
+              }
+            }
+          }
+        },
+        "atlas": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "atlas_id",
+            "cell",
+            "anchor",
+            "frame_layout",
+            "texture",
+            "items"
+          ],
+          "properties": {
+            "atlas_id": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+            },
+            "cell": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/Cell"
+            },
+            "anchor": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/Anchor"
+            },
+            "frame_layout": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "direction_order",
+                "idle_column",
+                "walk_columns"
+              ],
+              "properties": {
+                "direction_order": {
+                  "const": [
+                    "down",
+                    "left",
+                    "right",
+                    "up"
+                  ]
+                },
+                "idle_column": {
+                  "const": 0
+                },
+                "walk_columns": {
+                  "const": [
+                    1,
+                    2,
+                    3,
+                    4
+                  ]
+                }
+              }
+            },
+            "texture": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/TextureMetadata"
+            },
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "item_id",
+                  "layer_id",
+                  "anchor",
+                  "region"
+                ],
+                "properties": {
+                  "item_id": {
+                    "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+                  },
+                  "layer_id": {
+                    "enum": [
+                      "body",
+                      "eyes",
+                      "hair",
+                      "outfit",
+                      "accessory"
+                    ]
+                  },
+                  "anchor": {
+                    "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/Anchor"
+                  },
+                  "region": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "x",
+                      "y",
+                      "width_px",
+                      "height_px"
+                    ],
+                    "properties": {
+                      "x": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "y": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "width_px": {
+                        "const": 320
+                      },
+                      "height_px": {
+                        "const": 256
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "presets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "preset_id",
+              "config"
+            ],
+            "properties": {
+              "preset_id": {
+                "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+              },
+              "config": {
+                "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json#/$defs/AvatarConfig"
+              }
+            }
+          }
+        },
+        "fallback_preset_id": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+        }
+      }
+    }
+  }
+}

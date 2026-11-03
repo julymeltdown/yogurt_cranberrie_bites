@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/assets/v1/common.schema.json",
+  "title": "MCR shared asset definitions v1",
+  "$defs": {
+    "AssetId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]{0,63}$"
+    },
+    "ContentHash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "ThemeId": {
+      "enum": [
+        "REVENGE",
+        "PARADE",
+        "DANGER"
+      ]
+    },
+    "Provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_kind",
+        "source_revision",
+        "source_uri",
+        "author",
+        "license",
+        "review_state",
+        "reviewed_by",
+        "reviewed_at",
+        "photo_permission"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "source_kind": {
+          "enum": [
+            "ORIGINAL_FIXTURE",
+            "ORIGINAL_ART",
+            "PLACE_REFERENCE"
+          ]
+        },
+        "source_revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "source_uri": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uri"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "review_state": {
+          "enum": [
+            "UNREVIEWED",
+            "REVIEWED",
+            "REJECTED"
+          ]
+        },
+        "reviewed_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "photo_permission": {
+          "enum": [
+            "NOT_APPLICABLE",
+            "UNREVIEWED",
+            "GRANTED",
+            "DENIED"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "review_state": {
+                "const": "REVIEWED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reviewed_by": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              },
+              "reviewed_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "reviewed_by": {
+                "const": null
+              },
+              "reviewed_at": {
+                "const": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TextureMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "image_state",
+        "path",
+        "sha256",
+        "width_px",
+        "height_px"
+      ],
+      "properties": {
+        "image_state": {
+          "enum": [
+            "NOT_PROVIDED",
+            "PROVIDED"
+          ]
+        },
+        "path": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_/-]+\\.png$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/ContentHash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "width_px": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height_px": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "image_state": {
+                "const": "NOT_PROVIDED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "const": null
+              },
+              "sha256": {
+                "const": null
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_/-]+\\.png$"
+              },
+              "sha256": {
+                "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/ContentHash"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "const": 32
+        },
+        "y": {
+          "const": 60
+        }
+      }
+    },
+    "Cell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width_px",
+        "height_px"
+      ],
+      "properties": {
+        "width_px": {
+          "const": 64
+        },
+        "height_px": {
+          "const": 64
+        }
+      }
+    },
+    "PlaceId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    }
+  }
+}

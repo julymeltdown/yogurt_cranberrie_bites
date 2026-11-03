@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json",
+  "title": "MCR AvatarConfig v1",
+  "$ref": "#/$defs/AvatarConfig",
+  "$defs": {
+    "AvatarConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "kind",
+        "manifest_id",
+        "manifest_version",
+        "item_ids",
+        "skin_tone_id"
+      ],
+      "properties": {
+        "contract_version": {
+          "const": "1.0.0"
+        },
+        "kind": {
+          "const": "avatar_config"
+        },
+        "manifest_id": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+        },
+        "manifest_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "item_ids": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "body",
+            "eyes",
+            "hair",
+            "outfit",
+            "accessory"
+          ],
+          "properties": {
+            "body": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+            },
+            "eyes": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+            },
+            "hair": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+            },
+            "outfit": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+            },
+            "accessory": {
+              "anyOf": [
+                {
+                  "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "skin_tone_id": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+        }
+      }
+    }
+  }
+}
