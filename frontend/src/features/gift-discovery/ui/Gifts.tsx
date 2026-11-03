@@ -1,10 +1,13 @@
-import { useEffect, useId, useState, useSyncExternalStore, type ReactNode } from 'react'
+import { useEffect, useId, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
 import { ShellLink } from '../../../app/navigation'
-import { Button } from '../../../shared/ui'
+import { Button, Tabs } from '../../../shared/ui'
 import type { Giveaway, GiftFilters } from '../model/contract'
 import { giveawayStatus, reservationEligibility, type GiftDiscoveryController, type GiftDiscoveryState, type GiftPage, type GiftResource } from '../model/controller'
-import { ConcertRow, ConcertState, ConcertWindow } from '../../../shared/ui/concert-window'
+import { ConcertRow, ConcertState } from '../../../shared/ui/concert-window'
+import { canReviewReservation, ReferenceGiftRow, ReferencePickupRow, type RenderGiftImage } from './reference-presentation'
+export type { GiftImageRequest, RenderGiftImage } from './reference-presentation'
 import './gifts.css'
+import './reference-gifts.css'
 
 export interface GiftPlaceOption { readonly id: string; readonly label: string }
 export function useGifts(controller: GiftDiscoveryController) {
@@ -89,18 +92,51 @@ function GiftFilterForm({ controller, state, places }: { controller: GiftDiscove
     </div></details>
   </form>
 }
-export function GiftDiscovery({ controller, places = [] }: { controller: GiftDiscoveryController; places?: readonly GiftPlaceOption[] }) {
+export interface GiftDiscoveryProps {
+  readonly controller: GiftDiscoveryController
+  readonly places?: readonly GiftPlaceOption[]
+  readonly renderGiftImage?: RenderGiftImage
+}
+export function GiftDiscovery({ controller, places = [], renderGiftImage }: GiftDiscoveryProps) {
   const state = useGifts(controller)
-  return <section className="gifts-view gifts-browse" aria-label="Giveaway discovery"><ConcertWindow title="GIVEAWAY" icon="gifts"><GiftAccess state={state}>
-    <nav className="gift-browse-nav" aria-label="Gift views"><span aria-current="page">Browse</span><ShellLink id="gift-own" to="/gifts/mine">My gifts →</ShellLink></nav>
-    {state.context?.eventPhase === 'READ_ONLY' && <ConcertState title="Read-only event">Browse gifts. New reservations are unavailable.</ConcertState>}
-    <GiftFilterForm key={JSON.stringify(state.context?.scope)} controller={controller} state={state} places={places} />
+  return <section className="gifts-reference" aria-label="Giveaway discovery"><GiftAccess state={state}>
+    <GiftCollections key={JSON.stringify(state.context?.scope)} controller={controller} state={state} places={places} renderGiftImage={renderGiftImage} />
+  </GiftAccess></section>
+}
+function GiftCollections({ controller, state, places, renderGiftImage }: {
+  controller: GiftDiscoveryController; state: GiftDiscoveryState; places: readonly GiftPlaceOption[]; renderGiftImage?: RenderGiftImage | undefined
+}) {
+  const [collection, setCollection] = useState('browse'), activityRequested = useRef(false)
+  useEffect(() => {
+    if (collection !== 'browse' && !activityRequested.current && state.context?.capabilities.gifts.available) {
+      activityRequested.current = true
+      if (state.giving.phase === 'idle' && state.receiving.phase === 'idle') void controller.loadActivity()
+    }
+  }, [collection, controller, state.context, state.giving.phase, state.receiving.phase])
+  const giftRows = (rows: readonly Giveaway[], own = false) => <ul className="gift-reference-list">{rows.map(gift => <ReferenceGiftRow key={gift.giveaway_id} gift={gift} state={state}
+    {...(places.find(place => place.id === gift.public_place_id) ? { place: places.find(place => place.id === gift.public_place_id)!.label } : {})}
+    renderGiftImage={renderGiftImage} own={own} />)}</ul>
+  const browse = <>
+    {state.context?.eventPhase === 'READ_ONLY' && <p className="gift-reference-note" role="status">Read-only event. New reservations are unavailable.</p>}
     <GiftResult resource={state.list} label="giveaways" retry={() => { void controller.retryList() }} now={state.now}>{data => data.items.length
-      ? <ul className="gift-list concert-rows">{data.items.map(gift => <GiftRow key={gift.giveaway_id} gift={gift} now={state.now} />)}</ul>
-      : <ConcertState title="No matching gifts">No giveaways match these filters on this page. Try another filter or return later.</ConcertState>}</GiftResult>
-    <GiftPagination page={state.list} label="Giveaways" turn={direction => { void controller.pageList(direction) }} />
-    <p className="gift-meta gift-browse-guidance">Review details and current availability before reserving. Stock and pickup windows can change.</p>
-  </GiftAccess></ConcertWindow></section>
+      ? giftRows(data.items) : <ConcertState title="No matching gifts">No giveaways match these filters on this page. Try another filter or return later.</ConcertState>}</GiftResult>
+    <div className="gift-reference-tools"><GiftFilterForm controller={controller} state={state} places={places} />
+      {(state.list.canPrevious || state.list.data?.next_cursor || state.list.page > 1) && <GiftPagination page={state.list} label="Giveaways" turn={direction => { void controller.pageList(direction) }} />}</div>
+  </>
+  const giving = <><GiftResult resource={state.giving} label="giving activity" retry={() => { void controller.retryActivity('giving') }} now={state.now}>{data => data.items.length
+    ? giftRows(data.items, true) : <ConcertState title="Nothing shared on this page">Your giveaways will appear here.</ConcertState>}</GiftResult>
+    {(state.giving.canPrevious || state.giving.data?.next_cursor || state.giving.page > 1) && <GiftPagination page={state.giving} label="Giving" turn={direction => { controller.pageActivity('giving', direction) }} />}</>
+  const receiving = <><GiftResult resource={state.receiving} label="pickup activity" retry={() => { void controller.retryActivity('receiving') }} now={state.now}>{data => data.items.length
+    ? <ul className="gift-reference-list">{data.items.map(reservation => <ReferencePickupRow key={reservation.reservation_id} reservation={reservation} now={state.now} />)}</ul>
+    : <ConcertState title="No pickups on this page">Your own reservation history will appear here.</ConcertState>}</GiftResult>
+    {(state.receiving.canPrevious || state.receiving.data?.next_cursor || state.receiving.page > 1) && <GiftPagination page={state.receiving} label="Receiving" turn={direction => { controller.pageActivity('receiving', direction) }} />}
+    <p className="gift-reference-note">Pickup instructions and codes are available only through your authorized pickup journey.</p></>
+  return <><Tabs label="Gift collections" value={collection} onValueChange={setCollection} items={[
+    { value: 'browse', label: 'Browse', content: collection === 'browse' ? browse : null },
+    { value: 'giving', label: 'My giving', content: collection === 'giving' ? giving : null },
+    { value: 'receiving', label: 'My pickups', content: collection === 'receiving' ? receiving : null },
+  ]} /><footer className="gift-reference-footnote"><p>Availability is checked in the reservation journey. Stock and pickup windows can change.</p>
+    <ShellLink id="gift-own" to="/gifts/mine">My gifts →</ShellLink></footer></>
 }
 
 export function GiftDetail({ controller, giveawayId, places = [] }: { controller: GiftDiscoveryController; giveawayId: string; places?: readonly GiftPlaceOption[] }) {
@@ -117,7 +153,8 @@ export function GiftDetail({ controller, giveawayId, places = [] }: { controller
           <ShellLink id={`gift-place-${gift.public_place_id}`} to={`/world/places/${gift.public_place_id}`}>View public place reference</ShellLink></dd></div></dl>
       <p className="gift-meta">Check the current place information before travelling. This public reference does not confirm arrival or disclose private pickup instructions.</p>
       <section className="gift-reservation" aria-label="Reservation availability"><h3>Reservation availability</h3><p>{reservationEligibility(gift, state)}</p>
-        <Button disabled aria-describedby="gift-reserve-note">Reserve unavailable</Button><p id="gift-reserve-note" className="gift-meta">Reservations and pickup details are not available from this view.</p></section>
+        <Button disabled aria-describedby="gift-reserve-note">Reserve unavailable</Button>
+        {canReviewReservation(gift, state) && <ShellLink id={`gift-detail-reserve-${gift.giveaway_id}`} to={`/gifts/${gift.giveaway_id}/reservation`}>Review reservation</ShellLink>}<p id="gift-reserve-note" className="gift-meta">Open the reservation journey to confirm current eligibility. No item has been reserved from this view.</p></section>
       <ShellLink id="gift-detail-own" to="/gifts/mine">Check my gifts →</ShellLink>
     </>}</GiftResult>
   </GiftAccess></section>
