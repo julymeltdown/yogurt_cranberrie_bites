@@ -1,0 +1,8 @@
+.me-view{max-width:42rem;min-width:0;padding:clamp(.75rem,3vw,1.5rem);line-height:1.55;color:var(--color-text,inherit)}
+.me-view h2{font-size:1.4rem;letter-spacing:.06em;margin:0 0 1rem}.me-view h3{margin-top:1.5rem}.me-view p{overflow-wrap:anywhere}
+.me-view fieldset{border:0;padding:0;margin:1.5rem 0;min-width:0}.me-view legend{font-weight:700;margin-bottom:1rem}
+.me-view label{display:grid;gap:.4rem;margin:1rem 0}.me-view input:not([type=checkbox]),.me-view textarea,.me-view select{width:100%;box-sizing:border-box;min-height:44px;border:1px solid currentColor;border-radius:.25rem;padding:.65rem;font:inherit;background:transparent;color:inherit}.me-view textarea{resize:vertical}
+.me-view button,.me-links a{min-height:44px;box-sizing:border-box;padding:.65rem .85rem;font:inherit;color:inherit}.me-view button{border:1px solid currentColor;border-radius:.25rem;background:transparent;cursor:pointer}.me-view button:disabled{opacity:.55;cursor:default}
+.me-view :focus-visible{outline:3px solid currentColor;outline-offset:3px}.me-actions,.me-links{display:flex;flex-wrap:wrap;gap:.75rem}.me-links a{display:inline-flex;align-items:center}.me-bio{white-space:pre-wrap}.me-avatar canvas{width:128px;height:128px;image-rendering:pixelated}
+.me-view .me-check{display:flex;align-items:center;gap:.75rem;min-height:44px}.me-check input{width:22px;height:22px;flex-shrink:0}.me-note{font-size:.9rem}
+@media(prefers-reduced-motion:reduce){.me-view *{scroll-behavior:auto}}
