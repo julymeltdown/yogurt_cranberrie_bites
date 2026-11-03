@@ -14,6 +14,7 @@ CREATE TABLE public.concert_feed_owner_work (
  session_family_id uuid NOT NULL,
  request_id uuid NOT NULL,
  authority_expires_at timestamptz NOT NULL,
+ authority_expires_text text NOT NULL CHECK(char_length(authority_expires_text) BETWEEN 20 AND 40),
  authority_digest bytea NOT NULL CHECK(octet_length(authority_digest)=32),
  parent_id uuid,
  parent_revision bigint CHECK(parent_revision BETWEEN 1 AND 9007199254740991),

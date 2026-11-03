@@ -442,18 +442,26 @@ async fn comment_parent_and_revision_guard_and_order_are_enforced() {
     p.0.lock().unwrap().comments.push(comment(20));
     let page = f.comments(ctx(), id(12), window(), 20).await.unwrap();
     assert_eq!(page.items.len(), 1);
-    assert!(matches!(
-        f.prepare(
+    // Preparation preserves original expectation for receipt lookup; first execution
+    // must enforce this CAS under the qualified owner/transaction fence.
+    let prepared = f
+        .prepare(
             ctx(),
             id(50),
             FeedCommand::CreateComment {
                 post: id(12),
                 post_revision: 2,
-                text: "New".into()
-            }
+                text: "New".into(),
+            },
         )
-        .await,
-        Err(FeedError::VersionConflict)
+        .await
+        .unwrap();
+    assert!(matches!(
+        prepared.command(),
+        FeedCommand::CreateComment {
+            post_revision: 2,
+            ..
+        }
     ));
     p.0.lock().unwrap().comments[0].event = id(999);
     assert!(matches!(
@@ -627,5 +635,36 @@ async fn owner_scan_cannot_jump_backwards_or_skip_a_returned_row() {
             f.page(ctx(), window(), Filter::All, 20).await,
             Err(FeedError::DependencyUnavailable)
         ));
+    }
+}
+
+#[tokio::test]
+async fn identical_edit_intent_survives_revision_advance_for_receipt_replay() {
+    let (f, p) = setup(vec![Post {
+        author: ctx().actor,
+        ..row(12)
+    }]);
+    p.0.lock().unwrap().comments.push(comment(20));
+    for command in [
+        FeedCommand::EditPost {
+            post: id(12),
+            expected_revision: 1,
+            content: row(12).content,
+        },
+        FeedCommand::EditComment {
+            comment: id(20),
+            expected_revision: 1,
+            text: "Original edit".into(),
+        },
+    ] {
+        let before = f.prepare(ctx(), id(60), command.clone()).await.unwrap();
+        {
+            let mut state = p.0.lock().unwrap();
+            state.rows[0].revision = 2;
+            state.comments[0].revision = 2;
+        }
+        let replay = f.prepare(ctx(), id(60), command).await.unwrap();
+        assert_eq!(before.scope().unwrap(), replay.scope().unwrap());
+        assert_eq!(before.target(), replay.target());
     }
 }

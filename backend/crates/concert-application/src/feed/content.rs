@@ -123,51 +123,34 @@ impl<R: PostReader + CommentReader, P: FeedPolicy, S: FeedResources, C: crate::C
             FeedCommand::CreatePost { content } => self.validate_content(context, content).await?,
             FeedCommand::EditPost {
                 post,
-                expected_revision,
+                expected_revision: _,
                 content,
             } => {
                 let current = self.post(context, *post).await?.post;
-                require_owner(
-                    context,
-                    current.author,
-                    current.revision,
-                    *expected_revision,
-                )?;
+                require_owner(context, current.author)?;
                 self.validate_content(context, content).await?;
             }
             FeedCommand::DeletePost {
                 post,
-                expected_revision,
+                expected_revision: _,
             } => {
                 let current = self.post(context, *post).await?.post;
-                require_owner(
-                    context,
-                    current.author,
-                    current.revision,
-                    *expected_revision,
-                )?;
+                require_owner(context, current.author)?;
             }
-            FeedCommand::CreateComment {
-                post: _,
-                post_revision,
-                ..
-            } => {
+            FeedCommand::CreateComment { post, .. } => {
                 let current = self.post(context, *post).await?.post;
-                if current.revision != *post_revision {
-                    return Err(FeedError::VersionConflict);
-                }
                 subject = current.author;
                 parent = Some(current.id);
                 parent_revision = Some(current.revision);
             }
             FeedCommand::EditComment {
                 comment,
-                expected_revision,
+                expected_revision: _,
                 ..
             }
             | FeedCommand::DeleteComment {
                 comment,
-                expected_revision,
+                expected_revision: _,
             } => {
                 let current = self
                     .reader
@@ -186,12 +169,7 @@ impl<R: PostReader + CommentReader, P: FeedPolicy, S: FeedResources, C: crate::C
                 let post = self.post(context, current.post).await?.post;
                 parent = Some(post.id);
                 parent_revision = Some(post.revision);
-                require_owner(
-                    context,
-                    current.author,
-                    current.revision,
-                    *expected_revision,
-                )?;
+                require_owner(context, current.author)?;
             }
             FeedCommand::SetReaction { post, .. } => {
                 let current = self.post(context, *post).await?.post;
@@ -227,15 +205,13 @@ impl<R: PostReader + CommentReader, P: FeedPolicy, S: FeedResources, C: crate::C
         Ok(())
     }
 }
-fn require_owner(c: Context, author: Uuid, actual: i64, expected: i64) -> Result<(), FeedError> {
+fn require_owner(c: Context, author: Uuid) -> Result<(), FeedError> {
     if c.actor != author {
         return Err(FeedError::PermissionDenied);
     }
-    if actual != expected {
-        return Err(FeedError::VersionConflict);
-    }
     Ok(())
 }
+
 /// Validated intent only, NOT a grant. Any sink must recheck current phase, policy,
 /// content, media/linked visibility and CAS inside its qualified commit fence.
 /// Fields are private to prevent a caller substituting command/scope after hashing.

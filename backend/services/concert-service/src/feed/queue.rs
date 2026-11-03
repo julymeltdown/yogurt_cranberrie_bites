@@ -2,7 +2,10 @@
 //! inside Concert's transaction and PENDING never means content was published.
 use crate::adapters::out::repository::receipt::{CommandProducer, PgCommandRepository};
 use async_trait::async_trait;
-use concert_application::{commands::*, feed::PreparedCommand};
+use concert_application::{
+    commands::*,
+    feed::{Context, PreparedCommand},
+};
 use sqlx::{PgConnection, PgPool, Row};
 use uuid::Uuid;
 
@@ -11,7 +14,26 @@ use uuid::Uuid;
 /// authority through commit. A bounded remote observation cannot implement this.
 #[async_trait]
 pub trait FencedFeedAuthority: Send + Sync {
+    /// Current visibility/ownership only. Do not apply first-execution CAS here:
+    /// this path also reauthorizes existing receipts after their mutation succeeded.
     async fn check_in(
+        &self,
+        connection: &mut PgConnection,
+        command: &PreparedCommand,
+    ) -> Result<(), CommandError>;
+    /// Reauthorize the explicit original receipt target and parent, independently
+    /// of the incoming target. No incoming body or cached allow grants this read.
+    async fn stored_in(
+        &self,
+        connection: &mut PgConnection,
+        context: Context,
+        scope: Scope,
+        target: Uuid,
+        parent: Option<Uuid>,
+    ) -> Result<(), CommandError>;
+    /// First admission only: repeat CAS, phase, parent revision, media and links
+    /// under the qualified transaction/owner fence. Never called for receipt replay.
+    async fn first_execution_in(
         &self,
         connection: &mut PgConnection,
         command: &PreparedCommand,
@@ -21,6 +43,23 @@ pub struct UnavailableFeedAuthority;
 #[async_trait]
 impl FencedFeedAuthority for UnavailableFeedAuthority {
     async fn check_in(
+        &self,
+        _: &mut PgConnection,
+        _: &PreparedCommand,
+    ) -> Result<(), CommandError> {
+        Err(CommandError::Unavailable)
+    }
+    async fn stored_in(
+        &self,
+        _: &mut PgConnection,
+        _: Context,
+        _: Scope,
+        _: Uuid,
+        _: Option<Uuid>,
+    ) -> Result<(), CommandError> {
+        Err(CommandError::Unavailable)
+    }
+    async fn first_execution_in(
         &self,
         _: &mut PgConnection,
         _: &PreparedCommand,
@@ -39,7 +78,7 @@ impl<A: FencedFeedAuthority> FeedProducer<'_, A> {
             .scope()
             .map_err(|_| CommandError::InvalidInput)?
             != scope
-            || self.command.target() != target
+            || target.is_nil()
         {
             return Err(CommandError::Denied);
         }
@@ -59,7 +98,16 @@ impl<A: FencedFeedAuthority> CommandProducer for FeedProducer<'_, A> {
         target: Uuid,
     ) -> Result<(), CommandError> {
         self.binding(s, target)?;
-        self.authority.check_in(c, self.command).await?;
+        if target == self.command.target() {
+            self.authority.check_in(c, self.command).await?;
+        }
+        let parent:Option<Option<Uuid>>=sqlx::query_scalar("select parent_id from public.concert_feed_owner_work where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 and target_id=$5")
+            .bind(s.actor).bind(s.event).bind(s.operation.id()).bind(s.key).bind(target).fetch_optional(&mut *c).await.map_err(unavailable)?;
+        if parent.is_some() || target != self.command.target() {
+            self.authority
+                .stored_in(c, self.command.context(), s, target, parent.flatten())
+                .await?;
+        }
         self.binding(s, target)
     }
     async fn apply(
@@ -68,14 +116,19 @@ impl<A: FencedFeedAuthority> CommandProducer for FeedProducer<'_, A> {
         s: Scope,
         target: Uuid,
     ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        if target != self.command.target() {
+            return Err(CommandError::Denied);
+        }
         self.authorize(c, s, target).await?;
+        self.authority.first_execution_in(c, self.command).await?;
+        self.binding(s, target)?;
         let payload =
             serde_json::to_value(self.command.command()).map_err(|_| CommandError::InvalidInput)?;
         // Scope and target are selected from the just-created receipt, not provided
         // by a separate request. Durable job and Pending receipt commit together.
-        let n=sqlx::query("insert into public.concert_feed_owner_work(receipt_id,event_id,target_id,actor_id,operation_id,idempotency_key,session_family_id,request_id,authority_expires_at,payload,authority_digest,parent_id,parent_revision) select receipt_id,event_id,target_id,actor_id,operation_id,idempotency_key,$6,$7,$8,$9,$10,$11,$12 from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 and target_id=$5 and state='PENDING'")
+        let n=sqlx::query("insert into public.concert_feed_owner_work(receipt_id,event_id,target_id,actor_id,operation_id,idempotency_key,session_family_id,request_id,authority_expires_at,payload,authority_digest,parent_id,parent_revision,authority_expires_text) select receipt_id,event_id,target_id,actor_id,operation_id,idempotency_key,$6,$7,$8,$9,$10,$11,$12,$13 from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 and target_id=$5 and state='PENDING'")
             .bind(s.actor).bind(s.event).bind(s.operation.id()).bind(s.key).bind(target)
-            .bind(self.command.context().session_family).bind(self.command.context().request).bind(self.command.context().expires_at).bind(payload).bind(self.command.context().authority_digest.as_slice()).bind(self.command.parent()).bind(self.command.parent_revision())
+            .bind(self.command.context().session_family).bind(self.command.context().request).bind(self.command.context().expires_at).bind(payload).bind(self.command.context().authority_digest.as_slice()).bind(self.command.parent()).bind(self.command.parent_revision()).bind(self.command.context().expires_at.to_rfc3339())
             .execute(c).await.map_err(|_|CommandError::Unavailable)?.rows_affected();
         if n != 1 {
             return Err(CommandError::InvalidState);
@@ -135,6 +188,10 @@ impl FeedQueue {
             revision: commit.revision,
         }
         .validate()?;
+        command
+            .context()
+            .check(chrono::Utc::now())
+            .map_err(|_| CommandError::Denied)?;
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
         authority.check_in(&mut tx, command).await?;
         sqlx::query(
@@ -143,8 +200,33 @@ impl FeedQueue {
         .fetch_one(&mut *tx)
         .await
         .map_err(unavailable)?;
-        let row=sqlx::query("select r.receipt_id,r.state,r.resource_revision,r.expires_at,w.state work_state,w.payload,w.parent_id,w.parent_revision from public.concert_command_receipts r join public.concert_feed_owner_work w using(receipt_id) where r.actor_id=$1 and r.event_id=$2 and r.operation_id=$3 and r.idempotency_key=$4 and r.target_id=$5 for update of r,w")
+        let row=sqlx::query("select r.receipt_id,r.state,r.resource_revision,r.expires_at,w.state work_state,w.payload,w.parent_id,w.parent_revision,w.session_family_id,w.request_id,w.authority_digest,w.authority_expires_at,w.authority_expires_text from public.concert_command_receipts r join public.concert_feed_owner_work w using(receipt_id) where r.actor_id=$1 and r.event_id=$2 and r.operation_id=$3 and r.idempotency_key=$4 and r.target_id=$5 for update of r,w")
             .bind(scope.actor).bind(scope.event).bind(scope.operation.id()).bind(scope.key).bind(commit.resource).fetch_optional(&mut *tx).await.map_err(unavailable)?.ok_or(CommandError::Denied)?;
+        let original = command.context();
+        if row
+            .try_get::<Uuid, _>("session_family_id")
+            .map_err(unavailable)?
+            != original.session_family
+            || row.try_get::<Uuid, _>("request_id").map_err(unavailable)? != original.request
+            || row
+                .try_get::<Vec<u8>, _>("authority_digest")
+                .map_err(unavailable)?
+                != original.authority_digest
+            || row
+                .try_get::<chrono::DateTime<chrono::Utc>, _>("authority_expires_at")
+                .map_err(unavailable)?
+                .timestamp_micros()
+                != original.expires_at.timestamp_micros()
+            || row
+                .try_get::<String, _>("authority_expires_text")
+                .map_err(unavailable)?
+                != original.expires_at.to_rfc3339()
+        {
+            return Err(CommandError::Denied);
+        }
+        original
+            .check(chrono::Utc::now())
+            .map_err(|_| CommandError::Denied)?;
         if row
             .try_get::<Option<Uuid>, _>("parent_id")
             .map_err(unavailable)?
@@ -182,6 +264,9 @@ impl FeedQueue {
                 .map_err(unavailable)?
                 == Some(commit.revision)
         {
+            original
+                .check(chrono::Utc::now())
+                .map_err(|_| CommandError::Denied)?;
             tx.commit().await.map_err(unavailable)?;
             return Ok(());
         }
@@ -202,6 +287,9 @@ impl FeedQueue {
         sqlx::query("update public.concert_command_receipts set state='SUCCEEDED',resource_id=$2,resource_revision=$3,result_status=200 where receipt_id=$1").bind(receipt).bind(commit.resource).bind(commit.revision).execute(&mut *tx).await.map_err(unavailable)?;
         sqlx::query("update public.concert_feed_owner_work set state='ACKNOWLEDGED',acknowledged_at=clock_timestamp() where receipt_id=$1").bind(receipt).execute(&mut *tx).await.map_err(unavailable)?;
         sqlx::query("insert into public.concert_outbox(outbox_id,receipt_id,event_id,resource_id,resource_revision) values($1,$2,$3,$4,$5)").bind(Uuid::new_v4()).bind(receipt).bind(scope.event).bind(commit.resource).bind(commit.revision).execute(&mut *tx).await.map_err(unavailable)?;
+        original
+            .check(chrono::Utc::now())
+            .map_err(|_| CommandError::Denied)?;
         tx.commit().await.map_err(unavailable)
     }
 }

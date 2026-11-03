@@ -1,181 +1,196 @@
-# BE31–BE32 feed/content adapter
+# BE31–BE32 feed/content implementation handoff
 
-Status: **IN_PROGRESS**. This is a bounded implementation handoff, not BE31/BE32
-acceptance or IN03 qualification. Base: `9f72a71a99091fe89411b180af3404be85d963f1`.
-Worktree: `/Users/lhs/Desktop/mcr-worktrees/be-feed-content`, branch
-`codex/mcr-be-feed-content`. Only feed-owned modules/tests, this document and exact
-`pub mod feed;` exports are changed. Delivery owns HTTP/RPC/root composition.
+The bounded Concert feed adapter is implemented and validated. BE31/BE32 remain
+**IN_PROGRESS** as whole tasks; production forwarding, authority and root
+composition are unqualified. This is not IN03 or release acceptance.
 
-## Contract and source pins
+Base: `9f72a71a99091fe89411b180af3404be85d963f1`. Worktree:
+`/Users/lhs/Desktop/mcr-worktrees/be-feed-content`, branch
+`codex/mcr-be-feed-content`. Source milestones: `016f45c`, `59d6aa4`, `2a7113e`,
+followed by the final typed-owner/review-fix commit. Only delivery pushes master.
 
-C04 inputs are the base versions of `contracts/domain/v1/feed.schema.json`,
-`operations.json`, `policy.json`, `common.schema.json` and generated
-`contracts/generated/mcr-domain.openapi.json`. C03 PublicProfile and C06 avatar
-references remain closed allowlists. No contract registry or source archive is
-modified. New code is newly authored; no inherited implementation is copied.
+## Ownership and dependency provenance
 
-Audited inherited source at the base:
+Feed changes own only these paths:
 
-- `backend/proto/post/v1/post.proto`: ordinary Post/Comment/Create/Get/Feed/
-  Delete/Like contracts have no Concert event binding, revisions, edit operations,
-  media or linked-resource IDs. Its feed is user-scoped, not an event timeline.
-- `backend/crates/post-application/src/use_cases/mod.rs`: create/comment owner
-  mutations already use owner receipts and transactional event ports; visibility
-  and relationship filtering are useful foundations. These remain Post-owned.
-- `backend/crates/post-domain/src/post.rs`, `comment.rs` and Post persistence:
-  content remains the inherited owner's responsibility. Concert creates no second
-  content store and never fabricates a revision for legacy rows.
-- BE15 `concert-application/src/commands/` and Concert repository receipt/outbox
-  APIs are inspected. Their registry and existing semantics are not modified.
+- `backend/crates/concert-domain/src/feed/mod.rs` and `tests/feed.rs`.
+- `backend/crates/concert-application/src/feed/{mod,content}.rs` and `tests/feed.rs`.
+- `backend/services/concert-service/src/feed/{mod,cursor,wire,queue,owner}.rs`.
+- `backend/services/concert-service/tests/feed_{cursor,wire,owner,postgres}.rs`
+  and `tests/support/feed/mod.rs`.
+- `backend/services/concert-service/migrations/0010_feed.sql`.
+- `backend/scripts/mcr/feed_smoke.py` and this document.
+- Exact `pub mod feed;` additions in the three Concert crate library roots.
 
-Separate Post owner `01a1a207-f012-7343-a24b-12b9c544973f` owns the new owner
-extension. Delivery owns shared interfaces. The live Auth/Friend owner explicitly
-states that bounded remote observations cannot fence mutations through Concert
-commit. No injected observation is production authority.
+No Gateway, existing Post implementation, central manifest/lock, registry,
+frontend, asset or source-archive file is authored by this owner. No frontend
+implementation is imported into the backend.
 
-## First BE31 slice
+Delivery explicitly authorized importing Post owner source commit `e975500`
+(base `9f72a71`) as a **test dependency**, locally `bbf1b58`. Its ten paths are
+Post domain/application new `concert_feed` modules/tests and exact exports;
+`backend/proto/post/v1/concert_feed.proto`; both service build-script appends;
+and `docs/mcr/backend/post-concert-feed.md`. Post owner remains the writer.
+**Do not integrate local `bbf1b58` as another feed handoff**: delivery integrates
+the original owner commit once. The typed feed adapter requires that original
+proto/build dependency before its final commit is built. Proto SHA-256:
+`f90759e4ada1d14169cf49a3d1b8f3dee14c0e5ac5ad6cb1fbc5751cb83eb165`.
 
-`concert-domain::feed` defines bounded content, resource links, event-bound owner
-snapshots, safe errors and strict `(created_at,id)` positions. Original creation
-time controls order; revisions never reorder content. Text is not Debug-printed.
+Audited inherited sources at the base: `backend/proto/post/v1/post.proto`,
+`backend/crates/post-domain/src/{post,comment}.rs`,
+`backend/crates/post-application/src/use_cases/mod.rs`, owner receipt/persistence
+ports, and BE15 Concert command/receipt/outbox APIs. Existing ordinary Post lacked
+Concert event binding, revisions, media/link metadata and edit operations; no
+legacy row receives an invented event/revision. Content remains Post-owned.
+All feed application code is newly authored; no inherited implementation is copied.
+The native harness imports unchanged `migration_smoke.py` (base SHA-256
+`a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8`). Its Rust
+fixture guard follows the existing Concert command-test marker/inode checks with
+a distinct feed database and environment namespace.
 
-`concert-application::feed::Feed` depends on explicit `PostReader`, `FeedPolicy`
-and `FeedResources` ports. Every request binds canonical actor, event, session
-family, request UUID and original expiry. Current observations preserve separate
-Auth actor, Auth subject, Friend, local relationship and event revisions. Final
-fences must re-query authority, not echo an earlier stamp. All production defaults
-return `DependencyUnavailable`.
+## Contract pins
 
-The read adapter rejects cross-event, malformed or unordered owner batches;
-removes hidden/deleted/private rows; and reauthorizes actual public linked
-resources plus READY author-owned POST media. It never publishes private social,
-recipient, membership or beacon activity automatically. Revoked links/media are
-removed. A filtered page can become empty and still have a continuation. One
-bounded scan reads at most 100 candidates; there is no hidden automatic loop.
-Owner state is rechecked after profile/resource enrichment, then current policy
-is fenced. Distributed point-in-time reads do not claim instantaneous revocation
-across independent services; production freshness qualification remains required.
+C04 base inputs and tested SHA-256:
 
-`concert_service::feed::cursor` uses AES-256-GCM with a fresh OS-random nonce and
-a dedicated injected key. AAD binds actor, event, operation, collection, filter,
-before and limit. Ciphertext contains version, immutable upper snapshot, last
-strict tuple and 15-minute expiry. Tokens are canonical unpadded base64url;
-tampering, context changes, malformed encoding, expired tokens and unavailable
-keys fail closed. Cursors never authorize a request.
+| Input under `contracts/domain/v1/` | SHA-256 |
+| --- | --- |
+| `feed.schema.json` | `9c8d991df0bb707d7a7a2d43d4b132e7fadb878a52633e1c1f338afc9407f8ed` |
+| `operations.json` | `42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223` |
+| `policy.json` | `508d22af964b718cdcbd5a25b32b9a1e3f7b651a5b8c25c87d56f1f6b68d0ebe` |
 
-`concert_service::feed::wire` validates exact generated C04 DTOs and the nested
-C03 public author schema. Unknown/private fields, mismatched author identities,
-noncanonical UUID inputs, duplicate keys and invalid content are rejected. No
-placeholder profile/avatar or fixture content is used in production composition.
+`common.schema.json`, generated `mcr-domain.openapi.json`, C03 PublicProfile and
+C06 avatar references remain the same closed contracts. No DTO/registry change.
 
-## Owner/root integration request
+## Implemented behavior
 
-Post owner implements current event-scoped `GetPost`, `ListPosts`, comments and
-command/receipt operations through its new owner extension. Minimal snapshots
-match the feed-owned Post types: immutable event/author/created_at; actual
-revision; public/published/moderation/deletion state; text/media/link IDs;
-viewer-specific reaction and safe counts. List order is descending tuple with
-an inclusive upper timestamp and strict last tuple, maximum 100 candidates.
+`concert-domain::feed` provides bounded text, at most four distinct media IDs,
+typed links, actual event-bound Post/Comment snapshots, safe revisions/errors
+and strict descending `(created_at,id)` positions. Content does not implement
+Debug. Creation time, not edit time, determines order.
 
-Commands require original operation/key, canonical actor/event/request binding,
-original resource identity, CAS expected revision (or parent revision for comment
-creation), current parent visibility, author/moderator authority and an actual
-qualified commit fence. The owner records receipt/content/outbox atomically.
-Replay must reauthorize current visibility. Deletion success is returned only
-after the owner commits. Links/media need real current owner authorization;
-caller-supplied booleans are not capabilities. Root integration must preserve
-C04 same-origin/browser-intent guards and map unavailable dependencies safely.
-No notices, operator facts, venue information or media uploads are invented.
+`concert-application::feed::Feed` binds canonical actor, event, session family,
+request, original authority digest and original deadline. Observations retain
+separate Auth actor/subject, Friend, event and local relationship revisions.
+Digests and snapshots are bindings, never capabilities. Current fences re-query
+authority after enrichment; production defaults are unavailable.
 
-## Validation evidence
+Reads reject malformed/cross-event/unsorted owner batches and hidden, deleted or
+private rows. Linked targets require actual current owner event/audience/
+membership/visibility; POST media must be READY, author-owned and currently
+publishable. Revoked links/media disappear. No private social, recipient, beacon
+or membership activity is automatically projected. Public author DTOs are exact
+C03 allowlists; no placeholder avatar/profile/art is invented.
 
-Commands run from the assigned worktree on 2026-11-04 (Asia/Seoul):
+Owner `scanned_through` and `has_more` survive even when every scanned row is
+filtered out. The boundary must stay within the immutable upper/last tuple and
+at or below the last returned row. One bounded scan has at most 100 candidates;
+there are no automatic pagination loops. Every comment route resolves the
+actual current parent, including direct comment-ID mutations. Hidden/deleted
+parents cannot be recovered through comments. Thread reads recheck their parent.
 
-| Command | Exit | Scope |
-| --- | --- | --- |
-| `rustfmt +1.88.0 --edition 2021` on all new feed Rust files | 0 | Parser/format check |
-| `python3 scripts/mcr/check-plan.py` | 0 | Planning/provenance only; all 13 source archives intact |
-| `git diff --check` | 0 | Whitespace |
+Prepared commands cover all eight C04 post/comment/reaction operations. Normal
+edits/deletions are author-only; moderator commands remain BE39. An input cannot
+choose another reaction actor. Canonical BE15 requests preserve exact registered
+path/query/body and original key. Creates derive a stable UUIDv8 from a version
+marker plus actor/event/key/operation; changed input with the same key conflicts.
+CAS expectations remain in the intent so an identical successful edit can reach
+receipt lookup after revision advance. First execution rechecks CAS/phase/media/
+links under its qualified transaction/owner fence; replays independently
+reauthorize current target and actual original parent. Missing target visibility
+never yields historical content.
 
-Authored targeted Rust tests cover bounds, tie ordering, cross-event batches,
-strict cursors, hidden/deleted/private parents, linked filtering, stale/block/
-wrong-binding/expired observations, hide-during-enrichment, unavailable defaults,
-AEAD binding/tampering/expiry and closed DTOs. Cargo tests are **NOT_RUN** pending
-delivery's shared `/Users/lhs/Desktop/mcr-build/backend` target lease. No duplicate
-Rust target is created. No database persistence is introduced in this first slice,
-so native SQL, restart and cleanup checks are NOT_RUN/not applicable here. Real
-Post/Auth/Friend/media/link owner composition, HTTP, two-account social flows,
-browser/device/load/release checks are **NOT_RUN**.
+`feed::cursor` uses AES-256-GCM, OS-random nonces and an injected dedicated key.
+AAD binds actor/event/operation/collection/filter/before/limit. Ciphertext retains
+version, original upper snapshot, strict last tuple and 15-minute expiry. Tokens
+are canonical unpadded base64url. Tampering, wrong scope/key, malformed encoding
+and expiry fail closed. A cursor never grants access.
 
-## BE31 command / BE32 content slice
+`feed::wire` rejects duplicate/unknown/private fields and noncanonical UUID input,
+validates exact C04 schemas, and verifies nested author identity. Safe errors do
+not expose upstream text. The typed `feed::owner` adapter preserves original
+context, tuple scans, resource IDs and current actual revisions. Post's internal
+operation UUID is the BE15 receipt UUID, distinct from the public operation name.
+Owner replies must match original actor/event/key/operation/post/comment and
+expected outcome shape. Missing receipt does not prove nonexecution. The only
+shipped transport is unavailable: no raw channel or actor-forwarding shortcut.
 
-`feed::content` adds parent-protected comment pagination/thread reads and validated
-`PreparedCommand` intents for all eight C04 create/edit/delete/comment/reaction
-operations. Normal edit/delete is author-only; moderator operations remain the
-separate BE39 owner contract. A direct comment-ID mutation resolves the actual
-current parent, checks its event/public/published state and checks the comment's
-owner/revision. Creating a comment checks `post_revision`; edits/deletions check
-`expected_revision`. Reactions cannot supply another actor. Parent revision for
-an owner reaction CAS is captured on the server and adds no browser parameter.
+## Durable receipt/outbox behavior and limits
 
-Prepared commands are private immutable intents, never grants. Canonical BE15
-requests use exact registered paths, original query/body shapes, current actor,
-event and original key. Create resources use a stable UUIDv8 derived from
-SHA-256 of a version marker, actor, event, original key and operation; changed
-input with the same key reaches fingerprint conflict, not a second target.
-The exact original authority digest and expiry stay in Context; a digest is a
-binding, not an authority capability. The owner independently reauthorizes.
+Reserved migration 0010 adds protected **intent work**, not a second Post content
+store. It preserves exact original session/request/digest/deadline (including its
+text precision), resolved parent/revision and payload. Its composite foreign key
+binds all receipt scope fields. Receipt and work commit together as PENDING.
+There is no remote mutation inside the Concert transaction and no publication
+invalidation before verified owner success.
 
-`concert_service::feed::queue` implements BE15 `CommandProducer` with protected
-owner work in reserved `0010_feed.sql`. A receipt and durable command intent
-commit together as PENDING. No Post mutation happens within the Concert
-transaction and no publication invalidation is emitted before actual owner
-success. An authenticated owner-commit acknowledgement must bind exact original
-scope/target/intent and actual revision. It completes the receipt and emits only
-resource UUID/revision invalidation in one transaction; repeated acknowledgement
-does not duplicate outbox effects. There is no automatic dispatcher or retry.
-Uncertain outcomes stay PENDING until verified reconciliation.
+Qualified acknowledgement checks original scope/target/intent/parent/context and
+original expiry, then atomically completes the receipt and inserts metadata-only
+resource UUID/revision outbox work. Duplicate acknowledgement creates no duplicate
+invalidation. A late work-insert failure rolls back receipt and budget admission.
+Stored-target authorization is independent of the incoming target, so an
+otherwise authorized key reuse against another target returns conflict safely.
 
-`FencedFeedAuthority::check_in` must hold current policy, owner/CAS, membership,
-phase, media and linked-target fences through commit. The only shipped production
-implementation is `UnavailableFeedAuthority`. Bounded Auth/Friend observations
-cannot implement this contract. There is no production mutation enablement,
-trusted fake success or fixture authority. Work payloads are protected internal
-content; receipt/outbox contain metadata only. Reviewed expired-job payload
-retention/account-deletion cleanup remains an integration obligation; no arbitrary
-retention interval or destructive automatic cleanup is introduced.
+`FencedFeedAuthority` separates current authorization, stored-target authorization
+and first-execution invariants. Its only production implementation is unavailable.
+Bounded remote Auth/Friend observations cannot fence either database's mutation
+through commit. Media's Concert-local transaction cannot alone fence a separate
+Post database commit. Post also reports inherited Concert actor forwarding is
+unqualified. Root authenticated transport, qualified cross-owner fences, actual
+media/link owners, dispatcher/reconciliation and exact failed-owner receipt
+mapping remain delivery/owner integration work. No automatic dispatch/retry is
+enabled. Uncertain outcomes remain Pending. Reviewed expired-work/account-deletion
+payload cleanup remains required; no invented destructive retention policy.
+Distributed point-in-time read checks do not claim instantaneous global revocation.
 
-Post owner has accepted a caller-assigned stable create target and additive
-`post.concert.v1.PostConcertFeedService` API. Its requested GetComment endpoint
-must resolve current parent authority; comments must use the same C04 descending
-order and upper timestamp ceiling. Internal receipts must echo actor/event/
-operation/key/target; receipt metadata never substitutes for a current authorized
-reread. The owner also reports that Concert actor forwarding is not yet qualified
-by the inherited platform. All root RPC composition remains hard unavailable
-until qualified forwarding and a real authority protocol are supplied.
+## Validation — 2026-11-04, Asia/Seoul
 
-Additional checks:
+All commands use the assigned worktree. Cargo uses only
+`CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend`, Rust **1.88.0**,
+`--locked --offline -j 2`, `CARGO_PROFILE_DEV_DEBUG=0` and
+`CARGO_PROFILE_TEST_DEBUG=0`. No duplicate Rust target. Cargo was explicitly
+released to Post owner before native PostgreSQL ran.
 
 | Command | Exit | Result |
 | --- | --- | --- |
-| `python3 -B backend/scripts/mcr/feed_smoke.py --sql-only --report /tmp/mcr-feed-sql-20261104-01.json` | 0 | SQL_ONLY_PASS; PostgreSQL 16.14; migrations 0001/0002/0010; empty work/index; actual restart; owned cluster removed |
-| Python AST parse of `feed_smoke.py` | 0 | Syntax only |
+| `cargo ... test -p concert-domain -p concert-application --test feed` | 0 | Domain 2/2, application 18/18 |
+| `cargo ... test -p concert-service --test feed_cursor --test feed_wire --test feed_owner` | 0 | Cursor 2/2, wire 3/3, owner adapter 2/2 |
+| `cargo ... test -p concert-service --test feed_postgres --no-run --message-format=json` | 0 | Exact native executable compiled and copied/pinned |
+| `python3 -B backend/scripts/mcr/feed_smoke.py --repository-test /Users/lhs/Desktop/mcr-build/feed/bin/feed-postgres-tests --report /tmp/mcr-feed-native-20261104-01.json` | 0 | Native transaction test 1/1, real PG16.14 restart persistence and cleanup PASS |
+| Rustfmt 1.88 `--check` on owned Rust paths | 0 | Formatting |
+| Python AST parse of `feed_smoke.py` | 0 | Syntax |
+| `python3 scripts/mcr/check-plan.py` | 0 | Planning/provenance only; all 13 archives intact |
+| `git diff --check` | 0 | Whitespace |
 
-The SQL-only report hashes migration 0010 as
-`df722616b0a673e7ba14e4ea93d7599558a8f1c71b5e7fd7c550f8d4b0c3ada7`.
-It does **not** run the Rust native transaction test. The harness imports the
-existing marker/inode fixture helper `backend/scripts/mcr/migration_smoke.py`
-(base SHA-256 `a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8`)
-without changing it. The dedicated Rust fixture guard follows the existing
-Concert command test ownership checks at the base, with a distinct feed database
-and environment namespace. No application implementation is copied.
+The first service build exited 101 because a shared cross-checkout build cache
+lacked generated `post.concert.v1.rs`. Touching the local imported build script's
+mtime forced correct regeneration without any content change; the final compile
+and tests above pass. Earlier SQL-only reports `...feed-sql-20261104-01.json` and
+`...-02.json` tested earlier migration bytes; the final native receipt below
+supersedes them. The harness applies the three SQL files transactionally; it does
+not qualify the application's SQLx migration CLI or deployed ledger.
 
-Authored additional tests cover every comment route under hidden/deleted parent,
-foreign writes, parent/event/revision binding, stale reaction authority, all eight
-canonical operation shapes, stable create targets/fingerprint conflicts and
-unready media/private links. The native `feed_postgres` test exercises real SQL
-Pending/replay/conflict, default unavailable authority, current denial after
-queueing, bound owner acknowledgement, outbox deduplication and late-insert
-rollback. These Rust tests remain NOT_RUN until the shared Cargo lease.
+Native report: `/tmp/mcr-feed-native-20261104-01.json`, SHA-256
+`78c1b0274ae73cf7f59c1e4551b1594ec9b7e7ff5706f97d7b82e84ef4412ee6`.
+Executed binary SHA-256:
+`d668391c956b1f8c8f127ec1fc6d3bc56c378193292c5a327642f2f6d1ab3dd9`.
+Final migration 0010 SHA-256:
+`a0d3ac6672e37a1bff26129317ddaafdecfc18701c751b340df219c0859d7997`.
+The receipt records all feed source/test hashes, contract pins and original
+revision `bbf1b58` with tested changes not yet committed. Subsequent comparison
+found **zero tested-source drift**. The final commit preserves those code bytes.
 
-Recovery refinement: durable work now retains the original authority digest, resolved parent and captured parent revision; a composite receipt foreign key binds all scope fields. Owner scan continuation is explicit (`scanned_through`, `has_more`) so a filtered empty batch cannot falsely end pagination. SQL-only run `/tmp/mcr-feed-sql-20261104-02.json` passed migration/restart/cleanup (exit 0), migration SHA-256 `2f59731ad04ae25ec99276ddb36a705debf0af014b4ba8928eff9a5bd2d11433`. Rust remains NOT_RUN pending lease.
+Native coverage includes default-deny authority; atomic Pending work; replay and
+changed-input conflict; stored-target conflict; replacement-context denial;
+original expiry; bound owner-DTO acknowledgement; one outbox effect; late-insert
+rollback with budget restoration; and persisted receipt/work/outbox counts
+`4|4|1` across a real postmaster restart. The Post commit response and policy in
+this fixture are explicitly simulated; real SQL does not certify live authority
+or a real cross-service Post mutation. The owned cluster was stopped and removed.
+
+A targeted source review found the comment-pattern compile error, eager-CAS replay
+problem, stored-target conflict error and incomplete original acknowledgement
+binding. Fixes and regressions are included. Live HTTP/RPC forwarding, real
+Post/Auth/Friend/media/link composition, two-account IN03, browser/device/load,
+cleanup policy and release qualification remain **NOT_RUN/unqualified**.
+
+The same reviewer verified all four original findings resolved after the fixes, with no remaining finding in that narrow recheck. This static review did not rerun tests or assess broader integration.
