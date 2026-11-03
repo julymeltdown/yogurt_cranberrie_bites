@@ -1,0 +1,28 @@
+{
+  "candidate": "e7de0f3",
+  "source_sha256": {
+    "docs/mcr/frontend/public-entry.md": "af77baab7185e76a2f2b641236d7fc19bd199f90cacec635f33b19997c4f2bd5",
+    "frontend/src/app/FoundationApp.tsx": "39d01aa5f204126484e4c020dad39ca6436ddc0a8f14f2740dd5753331937bcc",
+    "frontend/src/app/PublicBoundary.tsx": "8de158c2e56a4678ff62719dc699c38d02075b3351d2fcb91aecd5314ac16c86",
+    "frontend/src/app/__tests__/browser-smoke.mjs": "800de495fed738b0d11a4f7c7d460260817975c1e48752a52b5b5070836b21fd",
+    "frontend/src/app/__tests__/public-entry.test.tsx": "df2dd2ff53b94a8a1be31c2e449803f8218aeeca8932c9c0b5191ce75f34bc9e",
+    "frontend/src/app/__tests__/shell.test.tsx": "651fcd7574b1be234f02cbf4d515945e4929b2960dd2c9e15895dd46fef87617",
+    "frontend/src/features/public/__tests__/browser-smoke.mjs": "6b903ee9907ae08956878cd3945f0380677f41ab244fc74e05c3fa22e45f1baf",
+    "frontend/src/features/public/__tests__/documents.test.ts": "8a8bcf8e52a3af63674dcf2eecb5e3cccc65e7ccf01ec9be65934958e4742c7e",
+    "frontend/src/features/public/__tests__/fixtures/documents.ts": "d3be4b47f15ba8a1d8ef93145abcbb1b1a71d5fcb5fe37e84ff4df955af408d1",
+    "frontend/src/features/public/__tests__/fixtures/preview.html": "2aaac1661f5347dbd8accf2cf37aefc2f484e8a9db60f94d28804afea75bf79b",
+    "frontend/src/features/public/__tests__/fixtures/preview.tsx": "260047f88c5ec5cc09681d1c7f16ffb2a84e27c9ba5f7a4ac983e0401dcdf842",
+    "frontend/src/features/public/model/document-provider.tsx": "3a40053f2d881cf733604a1dd9dbf17bb756b6f38a082f73db7c4ed97428ccd9",
+    "frontend/src/features/public/model/documents.ts": "687f57f523e2aff899f61d43a52a90f2a772ad47d60458445c17082da37db7ac",
+    "frontend/src/features/public/ui/DocumentPage.tsx": "a919c9ad52af7a30d7b0ccd6818dfbdb7bac6ba8a9cc3e3507f46cfd3e9b3d70",
+    "frontend/src/features/public/ui/Landing.tsx": "f3e210391468888e881c2099636617788643e9ea3164501f39c6a57f7468e605",
+    "frontend/src/features/public/ui/PublicFrame.tsx": "aab856068c7a1da42137c02c20fac52d930d2b3ecad028c057a31dca964635bd",
+    "frontend/src/features/public/ui/public.css": "dbdcd7cc78001f1d71b9d500556650121031063a27e1417e9747ec1a175f4fb5"
+  },
+  "artifact_sha256": {
+    "production-home-390.png": "8580c234f1fc88d8a57310a50b4bae5d8600698489a499ea7d2953c6eb09faf0",
+    "browser-results.json": "14902f6d89f47fe02bbd7f63e3d7b34a9c8f017890bac45137c773df06aaa1c4",
+    "landing-390.png": "af414a4501c5aa9c713a6d90364843da0feaebfc6e6aff3cd1312fc5b4df82d8",
+    "synthetic-document-1280.png": "d2e3b7934fb1219bfb97a9fd50d0eddd3c42740e474852f157ca6624a529ab2a"
+  }
+}

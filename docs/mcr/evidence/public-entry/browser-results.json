@@ -1,0 +1,49 @@
+{
+  "status": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "height": 800,
+      "anonymousNoWorld": "PASS",
+      "readyReplace": "PASS",
+      "documents": "PASS",
+      "focusContrastTargets": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "anonymousNoWorld": "PASS",
+      "readyReplace": "PASS",
+      "documents": "PASS",
+      "focusContrastTargets": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "anonymousNoWorld": "PASS",
+      "readyReplace": "PASS",
+      "documents": "PASS",
+      "focusContrastTargets": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "anonymousNoWorld": "PASS",
+      "readyReplace": "PASS",
+      "documents": "PASS",
+      "focusContrastTargets": "PASS",
+      "reducedHeight": "PASS"
+    }
+  ],
+  "production": {
+    "noDocumentEndpointOrWorldRequests": "PASS",
+    "defaultUnavailable": "PASS",
+    "noSockets": "PASS",
+    "fixtureExclusion": "PASS"
+  },
+  "limitations": "Synthetic document provider and mock world leases only. Approved legal/publication/contact/retention contract, real document delivery, actual Phaser/socket and device/IN01 gates NOT_RUN."
+}
