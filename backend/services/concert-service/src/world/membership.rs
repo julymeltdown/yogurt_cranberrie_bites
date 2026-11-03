@@ -49,6 +49,11 @@ pub trait CanonicalAuthorityPort: Send + Sync + 'static {
     /// Stable shared fence also used by canonical-view and recipient-policy invalidation.
     /// Upstream I/O must finish before taking this fence; never await while holding it.
     fn publication_fence(&self) -> Arc<Mutex<()>>;
+    /// Promote a previously checked pending observation inside the owner fence.
+    /// Default supports ports whose observations are already synchronously current.
+    fn install_pending(&self, _binding: &Binding, _now_ms: u64) -> Result<(), AuthorityError> {
+        Ok(())
+    }
     fn current(
         &self,
         expected: &Binding,
@@ -155,6 +160,7 @@ impl<P: CanonicalAuthorityPort> MembershipAdapter<P> {
         b: &Binding,
         now: u64,
     ) -> Result<InstalledMembership, AuthorityError> {
+        self.port.install_pending(b, now)?;
         let (observation, lease) = self.observe(b, now)?;
         let previous = self.captured.get(&key(b));
         if previous.is_none() && self.captured.len() >= self.capacity {

@@ -3,7 +3,7 @@
 use crate::world::{
     ingress::{
         AdmissionIntent, ClientMessage, ConnectionIngress, FragmentKind, OriginPolicy, SafeClose,
-        CLIENT_BYTES,
+        SwitchFailure, CLIENT_BYTES,
     },
     replication::{Delivery, SnapshotCause},
     runtime::{Command, RuntimeHandle, TransportPort, WriteError},
@@ -43,7 +43,7 @@ pub trait AdmissionPort: Send + Sync + 'static {
         current: &Binding,
         intent: AdmissionIntent,
         request: Uuid,
-    ) -> Result<Binding, SafeClose>;
+    ) -> Result<Binding, SwitchFailure>;
     async fn resync(&self, current: &Binding, request: Uuid) -> Result<Binding, SafeClose>;
     /// Must retain/retry persistent cleanup even if this request is cancelled.
     async fn disconnected(&self, current: &Binding);
@@ -54,8 +54,13 @@ impl AdmissionPort for UnavailableAdmission {
     async fn admit(&self, _: AdmissionIntent, _: Uuid) -> Result<Binding, SafeClose> {
         Err(SafeClose::UNAVAILABLE)
     }
-    async fn switch(&self, _: &Binding, _: AdmissionIntent, _: Uuid) -> Result<Binding, SafeClose> {
-        Err(SafeClose::UNAVAILABLE)
+    async fn switch(
+        &self,
+        _: &Binding,
+        _: AdmissionIntent,
+        _: Uuid,
+    ) -> Result<Binding, SwitchFailure> {
+        Err(SwitchFailure::Close(SafeClose::UNAVAILABLE))
     }
     async fn resync(&self, _: &Binding, _: Uuid) -> Result<Binding, SafeClose> {
         Err(SafeClose::UNAVAILABLE)
@@ -192,6 +197,7 @@ pub struct WorldSocketState {
     pub started: Instant,
     pub origin_ms: u64,
     permits: Arc<Semaphore>,
+    native_write_bytes: usize,
 }
 impl WorldSocketState {
     pub fn new(
@@ -202,7 +208,31 @@ impl WorldSocketState {
         started: Instant,
         origin_ms: u64,
     ) -> Arc<Self> {
-        Arc::new(Self {
+        Self::with_native_write_budget(
+            origins,
+            transport,
+            admission,
+            owner,
+            started,
+            origin_ms,
+            NATIVE_WRITE_BYTES,
+        )
+        .expect("frozen native write cap")
+    }
+    /// Server-owned tightening only. Never accepts a client-supplied budget.
+    pub fn with_native_write_budget(
+        origins: OriginPolicy,
+        transport: SocketTransport,
+        admission: Arc<dyn AdmissionPort>,
+        owner: Arc<RuntimeHandle>,
+        started: Instant,
+        origin_ms: u64,
+        native_write_bytes: usize,
+    ) -> Result<Arc<Self>, SafeClose> {
+        if !(256..=NATIVE_WRITE_BYTES).contains(&native_write_bytes) {
+            return Err(SafeClose::UNAVAILABLE);
+        }
+        Ok(Arc::new(Self {
             origins,
             transport,
             admission,
@@ -210,7 +240,8 @@ impl WorldSocketState {
             started,
             origin_ms,
             permits: Arc::new(Semaphore::new(MAX_SOCKETS)),
-        })
+            native_write_bytes,
+        }))
     }
     fn now(&self) -> Result<u64, SafeClose> {
         self.origin_ms
@@ -260,7 +291,7 @@ async fn upgrade(
     ws.max_message_size(CLIENT_BYTES)
         .max_frame_size(CLIENT_BYTES)
         .write_buffer_size(0)
-        .max_write_buffer_size(NATIVE_WRITE_BYTES)
+        .max_write_buffer_size(state.native_write_bytes)
         .on_upgrade(move |socket| async move {
             let _permit = permit;
             serve_socket(state, socket).await;
@@ -395,7 +426,16 @@ async fn session(
                     },
                     ClientMessage::SwitchRoom { request_id, admission, .. } => {
                         let b = bound.as_ref().ok_or(SafeClose::AUTH_REQUIRED)?;
-                        let next = tokio::time::timeout(Duration::from_millis(500),state.admission.switch(b,admission,request_id)).await.map_err(|_| SafeClose::UNAVAILABLE)??;
+                        let next = match tokio::time::timeout(Duration::from_millis(500),state.admission.switch(b,admission,request_id)).await.map_err(|_| SafeClose::UNAVAILABLE)? {
+                            Ok(next)=>next,
+                            Err(SwitchFailure::Close(close))=>return Err(close),
+                            Err(SwitchFailure::Rejected(reason))=> {
+                                let (reply,answer)=oneshot::channel();
+                                state.owner.try_submit(Command::RejectSwitch{binding:b.clone(),request_id,reason,reply}).map_err(|_|SafeClose::UNAVAILABLE)?;
+                                tokio::time::timeout(Duration::from_millis(100),answer).await.map_err(|_|SafeClose::UNAVAILABLE)?.map_err(|_|SafeClose::UNAVAILABLE)?.map_err(|_|SafeClose::UNAVAILABLE)?;
+                                continue;
+                            }
+                        };
                         if next.connection_id != connection || next.session_id != b.session_id || next.key != b.key { return Err(SafeClose::UNAVAILABLE); }
                         *bound = Some(next.clone());
                         owner_install(state,next.clone(),SnapshotCause::RoomSwitch(request_id)).await?;

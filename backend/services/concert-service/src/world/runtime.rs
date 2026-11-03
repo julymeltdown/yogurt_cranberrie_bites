@@ -1,7 +1,7 @@
 //! Incumbent process controller. All room mutation, capture, policy checks and transport
 //! handoff occur on one owner task. No public listener or permissive production adapter.
 use super::{
-    ingress::SafeClose,
+    ingress::{SafeClose, SwitchRejection},
     interest::{Facing, RecipientPolicy, RoomFrame},
     membership::{CanonicalAuthorityPort, ClockAnchor, MembershipAdapter},
     recovery::Recovery,
@@ -387,6 +387,40 @@ where
         }
         Ok(())
     }
+    pub fn reject_switch(
+        &mut self,
+        b: &Binding,
+        request_id: Uuid,
+        reason: SwitchRejection,
+        now: u64,
+    ) -> Result<(), RuntimeError> {
+        let fence = self.membership.publication_fence();
+        let _guard = fence.lock().map_err(|_| RuntimeError::Authority)?;
+        self.clock(now)?;
+        if request_id.is_nil()
+            || self.members.get(&member_key(b)) != Some(b)
+            || self.membership.current(b, now).is_err()
+        {
+            return Err(RuntimeError::Authority);
+        }
+        let bytes=serde_json::to_vec(&serde_json::json!({"protocolVersion":"1.0.0","type":"switchRejected","requestId":request_id,"streamId":b.stream_id,"reason":reason.wire()})).map_err(|_|RuntimeError::Transport)?;
+        if !self.transport.ready(b)
+            || self
+                .transport
+                .send(
+                    b,
+                    Delivery {
+                        bytes,
+                        close_code: None,
+                    },
+                )
+                .is_err()
+        {
+            self.close_member(b, RevokeReason::PolicyUnavailable);
+            return Err(RuntimeError::Transport);
+        }
+        Ok(())
+    }
     pub fn input(&mut self, b: &Binding, input: Input, now: u64) -> Result<(), RuntimeError> {
         let fence = self.membership.publication_fence();
         let _guard = fence.lock().map_err(|_| RuntimeError::Authority)?;
@@ -696,6 +730,7 @@ where
                     let Some(now) = self.origin_ms.checked_add(self.started.elapsed().as_millis().try_into().unwrap_or(u64::MAX)) else { break; };
                     match command {
                         Command::Install { binding,cause,reply } => { let _ = reply.send(self.install(binding,cause,now)); },
+                        Command::RejectSwitch{binding,request_id,reason,reply}=>{let _=reply.send(self.reject_switch(&binding,request_id,reason,now));},
                         Command::Input { binding,input,reply } => { let _ = reply.send(self.input(&binding,input,now)); },
                         Command::Disconnect { binding,reply } => { let _ = reply.send(self.disconnect(&binding,now)); },
                         Command::Revoke { binding,reason,reply } => { let _ = reply.send(self.revoke(&binding,reason,now)); },
@@ -720,6 +755,12 @@ where
     }
 }
 pub enum Command {
+    RejectSwitch {
+        binding: Binding,
+        request_id: Uuid,
+        reason: SwitchRejection,
+        reply: oneshot::Sender<Result<(), RuntimeError>>,
+    },
     Install {
         binding: Binding,
         cause: SnapshotCause,

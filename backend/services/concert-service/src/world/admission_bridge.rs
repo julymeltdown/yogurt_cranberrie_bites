@@ -1,7 +1,7 @@
 //! Database admission and nonblocking runtime views. External live Auth/Profile
 //! and recipient authority are explicit dependencies, never inferred from a ticket.
 use super::{
-    ingress::{AdmissionIntent, SafeClose},
+    ingress::{AdmissionIntent, SafeClose, SwitchFailure, SwitchRejection},
     interest::{ProjectionError, PublicIdentity, RecipientPolicy, RecipientView},
     membership::{CanonicalAuthorityPort, CanonicalMembership, ClockAnchor},
     simulation::{AuthorityError, Binding, ResourcePin},
@@ -121,6 +121,7 @@ struct Entry {
 #[derive(Default)]
 struct Views {
     entries: BTreeMap<(Uuid, Uuid), Entry>,
+    pending: BTreeMap<(Uuid, Uuid), Entry>,
     cleanup: BTreeMap<(Uuid, Uuid, Uuid), Binding>,
     absent: BTreeSet<(Uuid, Uuid, Uuid)>,
 }
@@ -161,8 +162,22 @@ fn validate_live(
     }
     Ok(())
 }
-fn safe(_: WorldError) -> SafeClose {
-    SafeClose::UNAVAILABLE
+fn safe(error: WorldError) -> SafeClose {
+    match error {
+        WorldError::CredentialInvalid
+        | WorldError::CredentialExpired
+        | WorldError::CredentialConsumed => SafeClose::AUTH_REQUIRED,
+        WorldError::Denied => SafeClose {
+            code: 4403,
+            label: "FORBIDDEN",
+        },
+        WorldError::MapVersionMismatch => SafeClose {
+            code: 4409,
+            label: "MAP_VERSION_MISMATCH",
+        },
+        WorldError::Invalid => SafeClose::INVALID,
+        _ => SafeClose::UNAVAILABLE,
+    }
 }
 /// Real production bridge once a qualified live-owner implementation is supplied.
 /// All I/O occurs outside the shared publication fence; only bounded snapshots are read at 20Hz.
@@ -182,6 +197,19 @@ pub struct AdmissionBridge {
     views: Mutex<Views>,
     admission_gate: tokio::sync::Mutex<()>,
     owner_until: Mutex<DateTime<Utc>>,
+}
+/// Reserve cleanup before the first durable admission mutation. Cancellation
+/// leaves an exact bounded obligation for supervised async cleanup.
+struct AdmissionAttempt<'a> {
+    bridge: &'a AdmissionBridge,
+    binding: Option<Binding>,
+}
+impl Drop for AdmissionAttempt<'_> {
+    fn drop(&mut self) {
+        if let Some(b) = self.binding.as_ref() {
+            let _ = self.bridge.request_cleanup(b);
+        }
+    }
 }
 impl AdmissionBridge {
     pub fn new(
@@ -249,15 +277,6 @@ impl AdmissionBridge {
         &self,
         intent: &AdmissionIntent,
     ) -> Result<concert_application::world_ticket::ResourcePin, WorldError> {
-        if intent.event_id != self.event.uuid()
-            || !self.rooms.contains_key(&intent.room_id)
-            || intent.map_id != self.resources.map_id
-            || intent.map_revision != self.resources.map_revision
-            || intent.avatar_manifest_id != self.resources.avatar_manifest_id
-            || intent.avatar_manifest_version != self.resources.avatar_manifest_version
-        {
-            return Err(WorldError::MapVersionMismatch);
-        }
         Ok(concert_application::world_ticket::ResourcePin {
             event_id: self.event,
             room_id: RoomId::from_uuid(intent.room_id),
@@ -268,11 +287,26 @@ impl AdmissionBridge {
             ),
         })
     }
+    fn validate_requested(&self, intent: &AdmissionIntent) -> Result<(), WorldError> {
+        if intent.event_id != self.event.uuid()
+            || !self.rooms.contains_key(&intent.room_id)
+            || intent.map_id != self.resources.map_id
+            || intent.map_revision != self.resources.map_revision
+            || intent.avatar_manifest_id != self.resources.avatar_manifest_id
+            || intent.avatar_manifest_version != self.resources.avatar_manifest_version
+        {
+            return Err(WorldError::MapVersionMismatch);
+        }
+        Ok(())
+    }
     fn invalidate(&self, b: &Binding) {
         if let Ok(_fence) = self.fence.lock() {
             if let Ok(mut views) = self.views.lock() {
                 if views.entries.get(&key(b)).is_some_and(|e| e.binding == *b) {
                     views.entries.remove(&key(b));
+                }
+                if views.pending.get(&key(b)).is_some_and(|e| e.binding == *b) {
+                    views.pending.remove(&key(b));
                 }
             }
         }
@@ -360,7 +394,22 @@ impl AdmissionBridge {
         if views.entries.len() >= MAX_MEMBERS && !views.entries.contains_key(&key(&binding)) {
             return Err(WorldError::RoomFull);
         }
-        views.entries.insert(
+        let active = views
+            .entries
+            .get(&key(&binding))
+            .is_some_and(|e| e.binding == binding);
+        if !active
+            && views.pending.len() >= MAX_MEMBERS
+            && !views.pending.contains_key(&key(&binding))
+        {
+            return Err(WorldError::RoomFull);
+        }
+        let destination = if active {
+            &mut views.entries
+        } else {
+            &mut views.pending
+        };
+        destination.insert(
             key(&binding),
             Entry {
                 binding: binding.clone(),
@@ -415,7 +464,7 @@ impl AdmissionBridge {
             .owner_until
             .lock()
             .map_err(|_| WorldError::Unavailable)? = until;
-        self.cleanup().await?;
+        self.cleanup_inner().await?;
         let entries: Vec<_> = self
             .views
             .lock()
@@ -463,6 +512,10 @@ impl AdmissionBridge {
         Err(AuthorityError::Unavailable)
     }
     pub async fn cleanup(&self) -> Result<usize, WorldError> {
+        let _gate = self.admission_gate.lock().await;
+        self.cleanup_inner().await
+    }
+    async fn cleanup_inner(&self) -> Result<usize, WorldError> {
         let pending: Vec<_> = self
             .views
             .lock()
@@ -472,6 +525,25 @@ impl AdmissionBridge {
             .cloned()
             .collect();
         for b in pending {
+            let replaced = {
+                let views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+                views.entries.get(&key(&b)).is_some_and(|e| {
+                    e.binding.connection_id == b.connection_id
+                        && e.binding.session_id == b.session_id
+                        && e.binding != b
+                })
+            };
+            if replaced {
+                let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+                views.cleanup.remove(&cleanup_key(&b));
+                // Eviction loses only a confirmed-absence receipt, never an
+                // obligation. A late repeat rechecks idempotent DB absence.
+                if views.absent.len() >= MAX_MEMBERS {
+                    views.absent.pop_first();
+                }
+                views.absent.insert(cleanup_key(&b));
+                continue;
+            }
             if self
                 .service
                 .leave(&subscription(&b, &self.owner)?)
@@ -481,9 +553,12 @@ impl AdmissionBridge {
                 let _fence = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
                 let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
                 views.cleanup.remove(&cleanup_key(&b));
-                if views.absent.len() < MAX_MEMBERS {
-                    views.absent.insert(cleanup_key(&b));
+                // Eviction loses only a confirmed-absence receipt, never an
+                // obligation. A late repeat rechecks idempotent DB absence.
+                if views.absent.len() >= MAX_MEMBERS {
+                    views.absent.pop_first();
                 }
+                views.absent.insert(cleanup_key(&b));
                 if views.entries.get(&key(&b)).is_some_and(|e| e.binding == b) {
                     views.entries.remove(&key(&b));
                 }
@@ -501,6 +576,25 @@ impl CanonicalAuthorityPort for Arc<AdmissionBridge> {
     fn publication_fence(&self) -> Arc<Mutex<()>> {
         self.fence.clone()
     }
+    fn install_pending(&self, b: &Binding, now: u64) -> Result<(), AuthorityError> {
+        let mut views = self.views.lock().map_err(|_| AuthorityError::Unavailable)?;
+        if views.entries.get(&key(b)).is_some_and(|e| e.binding == *b) {
+            return Ok(());
+        }
+        let pending = views
+            .pending
+            .get(&key(b))
+            .filter(|e| {
+                e.binding == *b
+                    && e.valid_until_ms > now
+                    && e.owner_generation == self.owners.generation()
+            })
+            .cloned()
+            .ok_or(AuthorityError::Revoked)?;
+        views.pending.remove(&key(b));
+        views.entries.insert(key(b), pending);
+        Ok(())
+    }
     fn current(&self, b: &Binding, now: u64) -> Result<CanonicalMembership, AuthorityError> {
         let views = self.views.lock().map_err(|_| AuthorityError::Unavailable)?;
         let e = views.entries.get(&key(b)).ok_or(AuthorityError::Revoked)?;
@@ -513,7 +607,12 @@ impl CanonicalAuthorityPort for Arc<AdmissionBridge> {
         Ok(CanonicalMembership {
             binding: b.clone(),
             checked_at_ms: now,
-            lease_expires_at: e.membership.lease_until.min(e.live.expires_at),
+            lease_expires_at: e.membership.lease_until.min(e.live.expires_at).min(
+                *self
+                    .owner_until
+                    .lock()
+                    .map_err(|_| AuthorityError::Unavailable)?,
+            ),
             access_expires_at: e.membership.access_expires_at,
             identity: e.live.identity.clone(),
         })
@@ -586,6 +685,7 @@ impl AdmissionPort for AdmissionBridge {
         if claim.record.pin != requested {
             return Err(SafeClose::AUTH_REQUIRED);
         }
+        self.validate_requested(&intent).map_err(safe)?;
         self.authority
             .reauthorize(&claim.record.subject, Utc::now())
             .await
@@ -603,6 +703,33 @@ impl AdmissionPort for AdmissionBridge {
                     claim.record.subject.key.user_id.uuid(),
                 ));
         }
+        let stream = Uuid::new_v4();
+        let pending = Binding {
+            key: claim.record.subject.key,
+            session_id: Uuid::parse_str(claim.record.subject.session_id.as_str())
+                .map_err(|_| SafeClose::AUTH_REQUIRED)?,
+            connection_id: connection,
+            owner_id: Uuid::parse_str(&self.owner.process_id)
+                .map_err(|_| SafeClose::UNAVAILABLE)?,
+            room_id: claim.record.pin.room_id.uuid(),
+            room_epoch: *self
+                .rooms
+                .get(&claim.record.pin.room_id.uuid())
+                .ok_or(SafeClose::UNAVAILABLE)?,
+            stream_id: stream,
+            resources: self.resources.clone(),
+        };
+        {
+            let mut views = self.views.lock().map_err(|_| SafeClose::UNAVAILABLE)?;
+            if views.cleanup.len() >= MAX_MEMBERS {
+                return Err(SafeClose::UNAVAILABLE);
+            }
+            views.cleanup.insert(cleanup_key(&pending), pending.clone());
+        }
+        let mut attempt = AdmissionAttempt {
+            bridge: self,
+            binding: Some(pending.clone()),
+        };
         let admitted = match self
             .repository
             .admit(&self.owner, &claim, Utc::now())
@@ -612,34 +739,96 @@ impl AdmissionPort for AdmissionBridge {
             AdmissionOutcome::Admitted(a) | AdmissionOutcome::Replaced(a) => a,
             _ => return Err(SafeClose::UNAVAILABLE),
         };
-        self.publish(admitted.membership, connection, Uuid::new_v4())
+        let result = self
+            .publish(admitted.membership, connection, stream)
             .await
-            .map_err(safe)
+            .map_err(safe)?;
+        self.views
+            .lock()
+            .map_err(|_| SafeClose::UNAVAILABLE)?
+            .cleanup
+            .remove(&cleanup_key(&pending));
+        attempt.binding = None;
+        Ok(result)
     }
     async fn switch(
         &self,
         current: &Binding,
         intent: AdmissionIntent,
         _request: Uuid,
-    ) -> Result<Binding, SafeClose> {
+    ) -> Result<Binding, SwitchFailure> {
         let _gate = self.admission_gate.lock().await;
-        let requested = self.requested(&intent).map_err(safe)?;
+        let requested = self
+            .requested(&intent)
+            .map_err(|e| SwitchFailure::Close(safe(e)))?;
         let ticket =
             AdmissionTicket::from_secret(intent.ticket.expose_for_consumption().to_owned())
-                .map_err(safe)?;
-        self.invalidate(current);
-        let result = self
-            .service
-            .switch_room(
-                ticket,
-                &subscription(current, &self.owner).map_err(safe)?,
-                requested,
+                .map_err(|_| SwitchFailure::Rejected(SwitchRejection::TicketInvalid))?;
+        let consumed = self
+            .repository
+            .consume(ConsumeClaim {
+                digest: ticket.digest(),
+                connection_id: ConnectionId::from_uuid(current.connection_id)
+                    .map_err(|e| SwitchFailure::Close(safe(e)))?,
+                requested: requested.clone(),
+                now: Utc::now(),
+            })
+            .await
+            .map_err(|e| SwitchFailure::Close(safe(e)))?;
+        let ConsumeOutcome::Consumed(claim) = consumed else {
+            return Err(SwitchFailure::Rejected(SwitchRejection::TicketInvalid));
+        };
+        if claim.record.pin != requested
+            || claim.record.subject.key != current.key
+            || claim.record.subject.session_id.as_str() != current.session_id.to_string()
+        {
+            return Err(SwitchFailure::Rejected(SwitchRejection::TicketInvalid));
+        }
+        self.validate_requested(&intent)
+            .map_err(|_| SwitchFailure::Rejected(SwitchRejection::MapVersionMismatch))?;
+        // Denied capacity leaves the current canonical stream untouched. The
+        // eventual repository switch repeats this capacity check under its locks.
+        let space:Option<bool>=sqlx::query_scalar("select capacity > (select count(*) from public.concert_world_memberships m where m.event_id=r.event_id and m.room_id=r.room_id and m.lease_until>clock_timestamp() and m.user_id<>$3) from public.concert_world_rooms r where event_id=$1 and room_id=$2 and availability='AVAILABLE'")
+            .bind(current.key.event_id.uuid()).bind(intent.room_id).bind(current.key.user_id.uuid()).fetch_optional(&self.pool).await.map_err(|_|SwitchFailure::Close(SafeClose::UNAVAILABLE))?;
+        match space {
+            Some(true) => {}
+            Some(false) => return Err(SwitchFailure::Rejected(SwitchRejection::RoomFull)),
+            None => {
+                return Err(SwitchFailure::Rejected(
+                    SwitchRejection::ResourceUnavailable,
+                ))
+            }
+        }
+        self.authority
+            .reauthorize(&claim.record.subject, Utc::now())
+            .await
+            .map_err(|e| SwitchFailure::Close(safe(e)))?;
+        let held = self
+            .repository
+            .reauthorize(
+                &subscription(current, &self.owner).map_err(|e| SwitchFailure::Close(safe(e)))?,
+                Utc::now(),
             )
             .await
-            .map_err(safe)?;
+            .map_err(|e| SwitchFailure::Close(safe(e)))?;
+        let LeaseState::Active(held) = held else {
+            return Err(SwitchFailure::Close(SafeClose::AUTH_REQUIRED));
+        };
+        if held.access_expires_at != claim.record.access_expires_at {
+            return Err(SwitchFailure::Rejected(SwitchRejection::TicketInvalid));
+        }
+        self.invalidate(current);
+        let result = self
+            .repository
+            .switch(&self.owner, &held, &claim, Utc::now())
+            .await
+            .map_err(|e| SwitchFailure::Close(safe(e)))?;
+        let SwitchOutcome::Switched(result) = result else {
+            return Err(SwitchFailure::Close(SafeClose::UNAVAILABLE));
+        };
         self.publish(result.membership, current.connection_id, Uuid::new_v4())
             .await
-            .map_err(safe)
+            .map_err(|e| SwitchFailure::Close(safe(e)))
     }
     async fn resync(&self, current: &Binding, _request: Uuid) -> Result<Binding, SafeClose> {
         let _gate = self.admission_gate.lock().await;
@@ -655,7 +844,6 @@ impl AdmissionPort for AdmissionBridge {
         {
             return Err(SafeClose::UNAVAILABLE);
         }
-        self.invalidate(current);
         self.publish(m.membership, current.connection_id, Uuid::new_v4())
             .await
             .map_err(safe)

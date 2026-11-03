@@ -1,5 +1,4 @@
 //! Explicit synthetic authority/geometry for socket regressions only, never IN01.
-use chrono::{DateTime, Utc};
 use concert_domain::{
     place::{Geometry, Interaction, PlaceId, Spawn},
     world::{Limits, WorldMap},
@@ -10,9 +9,6 @@ use std::str::FromStr;
 use uuid::Uuid;
 pub fn id(v: u128) -> Uuid {
     Uuid::from_u128(v)
-}
-pub fn utc() -> DateTime<Utc> {
-    "2026-11-03T16:00:00Z".parse().unwrap()
 }
 pub fn asset(s: &str) -> AssetId {
     AssetId::new(s.into()).unwrap()

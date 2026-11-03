@@ -26,6 +26,7 @@ type Client = WebSocketStream<MaybeTlsStream<tokio::net::TcpStream>>;
 #[derive(Default)]
 struct Records {
     entries: BTreeMap<Uuid, CanonicalMembership>,
+    pending: BTreeMap<Uuid, CanonicalMembership>,
     tickets: BTreeMap<String, u128>,
     blocked: BTreeSet<(Uuid, Uuid)>,
 }
@@ -53,6 +54,23 @@ impl std::ops::Deref for OwnerPort {
 impl CanonicalAuthorityPort for OwnerPort {
     fn publication_fence(&self) -> Arc<Mutex<()>> {
         self.fence.clone()
+    }
+    fn install_pending(&self, b: &Binding, _now: u64) -> Result<(), AuthorityError> {
+        let mut records = self.records.lock().unwrap();
+        if records
+            .entries
+            .get(&b.key.user_id.uuid())
+            .is_some_and(|e| e.binding == *b)
+        {
+            return Ok(());
+        }
+        let entry = records
+            .pending
+            .remove(&b.key.user_id.uuid())
+            .filter(|e| e.binding == *b)
+            .ok_or(AuthorityError::Revoked)?;
+        records.entries.insert(b.key.user_id.uuid(), entry);
+        Ok(())
     }
     fn current(&self, b: &Binding, now: u64) -> Result<CanonicalMembership, AuthorityError> {
         let mut e = self
@@ -131,7 +149,7 @@ impl AdmissionPort for Authority {
             stream_id: Uuid::new_v4(),
             resources: pins(),
         };
-        r.entries.insert(
+        r.pending.insert(
             id(user),
             CanonicalMembership {
                 binding: b.clone(),
@@ -143,11 +161,27 @@ impl AdmissionPort for Authority {
         );
         Ok(b)
     }
-    async fn switch(&self, _: &Binding, _: AdmissionIntent, _: Uuid) -> Result<Binding, SafeClose> {
-        Err(SafeClose::UNAVAILABLE)
+    async fn switch(
+        &self,
+        _: &Binding,
+        _: AdmissionIntent,
+        _: Uuid,
+    ) -> Result<Binding, SwitchFailure> {
+        Err(SwitchFailure::Rejected(SwitchRejection::RoomFull))
     }
-    async fn resync(&self, _: &Binding, _: Uuid) -> Result<Binding, SafeClose> {
-        Err(SafeClose::UNAVAILABLE)
+    async fn resync(&self, current: &Binding, _: Uuid) -> Result<Binding, SafeClose> {
+        let _f = self.fence.lock().unwrap();
+        let mut records = self.records.lock().unwrap();
+        let mut entry = records
+            .entries
+            .get(&current.key.user_id.uuid())
+            .filter(|e| e.binding == *current)
+            .cloned()
+            .ok_or(SafeClose::AUTH_REQUIRED)?;
+        entry.binding.stream_id = Uuid::new_v4();
+        let result = entry.binding.clone();
+        records.pending.insert(current.key.user_id.uuid(), entry);
+        Ok(result)
     }
     async fn disconnected(&self, b: &Binding) {
         let _f = self.fence.lock().unwrap();
@@ -171,6 +205,9 @@ struct Harness {
 }
 impl Harness {
     async fn start() -> Self {
+        Self::with_budget(NATIVE_WRITE_BYTES).await
+    }
+    async fn with_budget(budget: usize) -> Self {
         let event = EventId::from_uuid(Uuid::new_v4());
         let anchor = Utc::now();
         let room = id(50);
@@ -201,14 +238,16 @@ impl Harness {
         let (started, origin_ms) = runtime.clock_origin();
         let (handle, owner) = runtime.spawn();
         let handle = Arc::new(handle);
-        let state = WorldSocketState::new(
+        let state = WorldSocketState::with_native_write_budget(
             OriginPolicy::new(vec!["http://localhost:9000".into()], true).unwrap(),
             transport.clone(),
             authority.clone(),
             handle.clone(),
             started,
             origin_ms,
-        );
+            budget,
+        )
+        .unwrap();
         let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
         let address = listener.local_addr().unwrap();
         let (stop, stopped) = tokio::sync::oneshot::channel();
@@ -504,5 +543,132 @@ async fn peer_close_releases_room_without_stopping_another_client() {
     }
     assert!(removed);
     assert_eq!(h.authority.records.lock().unwrap().entries.len(), 1);
+    h.close().await;
+}
+
+#[tokio::test]
+async fn full_room_switch_rejection_keeps_the_old_stream_and_accepts_more_input() {
+    let h = Harness::start().await;
+    let mut client = h.connect().await;
+    client.send(h.auth('A')).await.unwrap();
+    let initial = value(&mut client).await;
+    let request = Uuid::new_v4();
+    client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"switchRoom","requestId":request,"streamId":initial["streamId"],"ticket":"B".repeat(43),"eventId":h.authority.event.uuid(),"roomId":id(51),"mapId":"map_fixture","mapRevision":1,"avatarManifestId":"avatar_fixture","avatarManifestVersion":1}).to_string())).await.unwrap();
+    let mut rejected = false;
+    for _ in 0..8 {
+        let frame = value(&mut client).await;
+        if frame["type"] == "switchRejected" {
+            assert_eq!(frame["reason"], "ROOM_FULL");
+            assert_eq!(frame["streamId"], initial["streamId"]);
+            assert_eq!(frame["requestId"], request.to_string());
+            rejected = true;
+            break;
+        }
+    }
+    assert!(rejected);
+    client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"input","streamId":initial["streamId"],"roomEpoch":initial["roomEpoch"],"seq":1,"axisX":1,"axisY":0,"buttons":[]}).to_string())).await.unwrap();
+    let mut ack = false;
+    for _ in 0..8 {
+        if value(&mut client).await["ackInputSeq"] == 1 {
+            ack = true;
+            break;
+        }
+    }
+    assert!(ack);
+    h.close().await;
+}
+#[tokio::test]
+async fn recipient_block_removes_the_subject_from_actual_socket_deltas() {
+    let h = Harness::start().await;
+    let mut a = h.connect().await;
+    let mut b = h.connect().await;
+    a.send(h.auth('A')).await.unwrap();
+    let _ = value(&mut a).await;
+    b.send(h.auth('B')).await.unwrap();
+    let _ = value(&mut b).await;
+    // Wait for the first peer baseline, then invalidate under the same owner fence.
+    let mut seen = false;
+    for _ in 0..8 {
+        if value(&mut a).await["upserts"]
+            .as_array()
+            .is_some_and(|v| v.iter().any(|p| p["userId"] == id(2).to_string()))
+        {
+            seen = true;
+            break;
+        }
+    }
+    assert!(seen);
+    {
+        let _f = h.authority.fence.lock().unwrap();
+        h.authority
+            .records
+            .lock()
+            .unwrap()
+            .blocked
+            .insert((id(1), id(2)));
+    }
+    let mut removed = false;
+    for _ in 0..8 {
+        let frame = value(&mut a).await;
+        if frame["removes"]
+            .as_array()
+            .is_some_and(|v| v.contains(&json!(id(2))))
+        {
+            removed = true;
+            break;
+        }
+    }
+    assert!(removed);
+    h.close().await;
+}
+#[tokio::test]
+async fn resync_installs_a_new_correlated_stream_snapshot_with_original_access_expiry() {
+    let h = Harness::start().await;
+    let mut client = h.connect().await;
+    client.send(h.auth('A')).await.unwrap();
+    let initial = value(&mut client).await;
+    tokio::time::sleep(Duration::from_millis(1050)).await;
+    let request = Uuid::new_v4();
+    client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"resync","requestId":request,"streamId":initial["streamId"],"roomEpoch":initial["roomEpoch"],"lastStreamSeq":0,"reason":"FOREGROUND"}).to_string())).await.unwrap();
+    let mut found = false;
+    for _ in 0..24 {
+        let frame = value(&mut client).await;
+        if frame["type"] == "snapshot" {
+            assert_ne!(frame["streamId"], initial["streamId"]);
+            assert_eq!(frame["streamSeq"], 0);
+            assert_eq!(frame["cause"], "RESYNC");
+            assert_eq!(frame["requestId"], request.to_string());
+            assert_eq!(frame["accessExpiresAt"], initial["accessExpiresAt"]);
+            found = true;
+            break;
+        }
+    }
+    assert!(found);
+    h.close().await;
+}
+#[path = "world_runtime_support/postgres.rs"]
+mod postgres;
+#[tokio::test]
+async fn actual_native_write_buffer_rejects_an_oversized_snapshot_without_replay() {
+    let h = Harness::with_budget(256).await;
+    let mut client = h.connect().await;
+    client.send(h.auth('A')).await.unwrap();
+    // The real tungstenite sink rejects its first snapshot against a deliberately
+    // tightened server-owned native buffer. A numbered projection is never replayed.
+    let message = tokio::time::timeout(Duration::from_secs(2), client.next())
+        .await
+        .unwrap()
+        .unwrap()
+        .unwrap();
+    assert!(matches!(message,Message::Close(Some(ref frame)) if u16::from(frame.code)==4500));
+    let mut cleaned = false;
+    for _ in 0..10 {
+        if h.authority.records.lock().unwrap().entries.is_empty() {
+            cleaned = true;
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(25)).await;
+    }
+    assert!(cleaned);
     h.close().await;
 }

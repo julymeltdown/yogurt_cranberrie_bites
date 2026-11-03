@@ -43,6 +43,33 @@ impl SafeClose {
         label: "MESSAGE_TOO_BIG",
     };
 }
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SwitchRejection {
+    RoomFull,
+    ResourceUnavailable,
+    TicketInvalid,
+    MapVersionMismatch,
+}
+impl SwitchRejection {
+    pub fn wire(self) -> &'static str {
+        match self {
+            Self::RoomFull => "ROOM_FULL",
+            Self::ResourceUnavailable => "RESOURCE_UNAVAILABLE",
+            Self::TicketInvalid => "TICKET_INVALID",
+            Self::MapVersionMismatch => "MAP_VERSION_MISMATCH",
+        }
+    }
+}
+#[derive(Clone, Copy, Debug)]
+pub enum SwitchFailure {
+    Rejected(SwitchRejection),
+    Close(SafeClose),
+}
+impl From<SafeClose> for SwitchFailure {
+    fn from(value: SafeClose) -> Self {
+        Self::Close(value)
+    }
+}
 #[derive(Clone)]
 pub struct OpaqueTicket(String);
 impl OpaqueTicket {
