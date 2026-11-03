@@ -65,7 +65,7 @@ describe('persistent world ownership', () => {
     back(); expect(router.state.location.pathname).toBe('/world')
     expect(stats.mounts).toBe(1)
   })
-  it.each(['/', '/legal/privacy', '/admin/reports'])('releases resources when exiting to %s', async destination => {
+  it.each(['/legal/privacy', '/admin/reports'])('releases resources when exiting to %s', async destination => {
     const { stats, router } = setup()
     await open()
     await act(() => router.navigate(destination))
@@ -73,6 +73,17 @@ describe('persistent world ownership', () => {
     expect(stats.connections).toBe(0)
     expect(document.querySelector('[data-world-host]')).toBeNull()
     if (destination.startsWith('/admin')) expect(await screen.findByRole('heading', { name: 'Access denied' })).toBeVisible()
+  })
+  it('replaces signed-in home with world and keeps a single current owner', async () => {
+    const { stats, router } = setup()
+    await open()
+    await act(() => router.navigate('/'))
+    await waitFor(() => expect(router.state.location.pathname).toBe('/world'))
+    await open()
+    expect(router.state.historyAction).toBe('REPLACE')
+    expect(stats.games).toBe(1); expect(stats.connections).toBe(1)
+    expect(stats.peakGames).toBe(1); expect(stats.peakConnections).toBe(1)
+    expect(stats.mounts - stats.disposals).toBe(1)
   })
   it('releases old identity synchronously, then allocates one owner for account/event replacement', async () => {
     const { ports, stats, replace } = setup()
@@ -219,11 +230,11 @@ describe('honest access, bootstrap and failure boundaries', () => {
     expect(authorize).toHaveBeenCalledOnce()
     expect(fixture.stats.mounts).toBe(0)
   })
-  it('keeps public routes lazy and entirely outside bootstrap/world allocation', async () => {
-    const fixture = createFixturePorts()
+  it('keeps anonymous public routes lazy and entirely outside bootstrap/world allocation', async () => {
+    const fixture = createFixturePorts('anonymous')
     const load = vi.fn(fixture.ports.bootstrap.load)
     setup('/', { ...fixture, ports: { ...fixture.ports, bootstrap: { load } } })
-    await screen.findByRole('heading', { name: /Find your people.*Share the night/ })
+    await screen.findByRole('heading', { name: /One world.*Every era/ })
     expect(load).not.toHaveBeenCalled()
     expect(fixture.stats.mounts).toBe(0)
   })
