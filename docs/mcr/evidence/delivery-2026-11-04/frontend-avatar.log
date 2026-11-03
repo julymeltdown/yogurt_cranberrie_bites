@@ -1,0 +1,10 @@
+$ vitest run src/features/avatar --maxWorkers=1
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
+   Start at  00:45:15
+   Duration  3.38s (transform 147ms, setup 0ms, import 436ms, tests 1.64s, environment 1.07s)
+

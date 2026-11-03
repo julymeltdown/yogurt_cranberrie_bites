@@ -5,27 +5,35 @@ historical assessments. `generated/` remains the original planning baseline.
 Acceptance below applies only to the stated task criteria and candidate paths;
 it is not feature integration or release acceptance.
 
-Current delivery checkpoint: `920631d` was pushed to `julymeltdown/mcr/master`
-and verified against the remote. Later local integrations include BE06 producer
-`48458d5` (worker `2cb878b`), FE27 `9f72a71` (worker `97ef9fb`), and FE22
-`e82a220` (worker `1c38ad4`). These later SHAs are not yet publication evidence.
-The entry resolver `b7a05b5`, bounded bootstrap QA `22042dd`, and BE08 evidence
-are already within the published checkpoint. Delivery reran 99 combined entry,
-rooms and lifecycle tests, 10 FE27 controller tests, and 8 FE22 authoring tests,
-all exit 0. Startup/HTTP code and durable domain-failure receipt extensions are
-being qualified separately; no live multiplayer or approved-art acceptance is
-inferred. Main and functional leads track progress; delivery owns integration
-and publication without an additional coordinator approval gate.
+The published ancestry was verified through `54900ec`; the next bounded
+checkpoint includes root world entry `8bb878c`, FE12 compositor `1db1680`,
+FE04 binary/media `a56f043`/`0952149`, FE13 `371ff01`/`1fdf411`, FE20
+`ee41a3b`, FE25 `95d9f37`, feed/thread `5bc0055`/`5a81f08`, and cache-race
+fix `cf7836a`. Final publication is verified against the remote after commit;
+local integration alone is not publication evidence.
 
-BE06's native PostgreSQL 16.14 worker receipt passes actual migration ledger
-1/2/4, concurrent participant creation, guarded in-process generated RPC,
-C03/C06 validation, restart and cleanup. Its 18 source/contract hashes were
-compared after integration: 16 match; the application library additionally
-exports integrated `place`, and delivery extends the bootstrap harness with a
-real-binary synthetic-product startup refusal. A combined current migration
-ledger run remains required. BE10/11's first native run exposed a real room
-capacity comparison defect and a ticket digest fixture issue; the owner is
-correcting and rerunning them, so this gate is not reported as passing.
+[Current delivery evidence](evidence/delivery-2026-11-04/checkpoint.md) records
+857 combined frontend tests, then 8 giveaway, 24 avatar and 15 feed-fix tests,
+plus build/typecheck/lint and unchanged source-origin/planning checks. Independent
+QA executed both original feed/notice cache resurrection reproductions against
+worker fix `7fecec0`: 32/32 checks passed. These are bounded fixture checks,
+not real backend or multiuser acceptance.
+
+Concert product bootstrap startup `e6fef53` and domain-failure receipts
+`204e09a` passed fresh PostgreSQL 16.14 qualification: exact combined ledger
+1/2/3/4/9, 17 receipt tests, two in-process guarded bootstrap tests, restart and
+owned cleanup. The real executable rejects synthetic product releases before
+opening a listener. A positive approved-product startup remains NOT_RUN. Gateway
+HTTP changes are separately pending; no live product path is implied.
+
+Admission corrected source `91569e7` remains queued for compile/native rerun
+after its earlier two failures; it is not green. Community and meeting have
+bounded copied-binary native reports; their concrete policy adoption and final
+handoffs remain active. BE37 compiled and passed eight pure/crypto tests while
+its 20 native tests were still pending at this record. Live owner authority,
+feed, Post, avatar persistence, simulation and media producers each retain
+isolated ownership and explicit shared-build turns. Source implementation
+continues independently of that resource queue.
 
 | Task | State | Evidence and remaining scope |
 |---|---|---|
@@ -35,19 +43,19 @@ correcting and rerunning them, so this gate is not reported as passing.
 | C04 | IN_PROGRESS | [Domain review candidate](domain-contract.md), [target/query follow-up](evidence/domain-targets.md), [combined assembly](evidence/domain-assembly.md) and [internal keyed fingerprint correction](evidence/receipt-fingerprint-review.md) `9044417`: 162 definitions, 106 operations, 25 closed query schemas, 75 semantic rules, 15 inherited mappings, 36 payload fixtures, 47 domain and 15 assembly tests. Final/core pipeline emits 132 HTTP operations without changing frozen C03. [Readiness audit](qa/domain-readiness-review.md) identifies missing operation fixtures and actual frontend idempotency/error prerequisites. Full context coverage, deletion/legal/retention, client qualification and independent BE/FE reviews remain; not frozen or runtime-qualified. |
 | C05 | ACCEPTED | [Frozen realtime v1.0.0](realtime-contract.md): strict frame/HTTP schemas and admission/stream rules, 24 fixtures and 31 regressions. [BE/FE rechecks](qa/realtime-contract-review.md) find no remaining scoped issues after corrections. Runtime ticket, socket, queue, capacity and race tests are NOT_RUN. |
 | C06 | CONTRACT_READY | Five asset schemas and six golden fixtures preserve shared geometry/avatar identity. [Format correction](evidence/asset-format-validation.md) and [independent review](qa/asset-format-review.md) close missing checker and final-LF gaps; 27 C06 and 144 combined regressions pass. No schema/fixture bytes changed. Pixel alignment/art/venue truth remain NOT_RUN. |
-| AR03 | IN_PROGRESS | [User-selected character source pack](character-art.md), revision 3: twenty unique JPEGs (ten base sheets plus ten additions); the first batch's duplicate stays archived. Source catalog and frontend lookup preserve both selected batches. Previous character art is prohibited. Transparent cutouts, layer-contract revision and direction/walk atlas remain. |
+| AR03 | BLOCKED | [User-selected character source pack](character-art.md), revision 3: twenty unique JPEGs (ten base sheets plus ten additions); the first batch's duplicate stays archived. Source catalog and frontend lookup preserve both selected batches. Previous character art is prohibited. Transparent cutouts and direction/walk atlas remain. The actual art goal is BLOCKED on the existing source-preserving edit-method authorization question; preview/source registration through `e7fe93b` is not product art. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
 | BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
 | BE03 | INTEGRATED | [Email ingress review](evidence/browser-auth-integration.md), candidate `689e4d2`: parent reran 221 Gateway tests, nine harness tests and 53 real native HTTP checks with three mail deliveries and cleanup PASS. Frozen email/account mapping, browser guards and invalid-credential handling delivered. Real browser cookie policy, configured OAuth and complete BE03 acceptance remain open. |
 | BE04 | IN_PROGRESS | [Joined owner chain](backend/http-owner-chain.md), `ca26683` integrated as `e6c629d`: production Axum extraction/timeout and configured clients reach actual guarded Auth/Profile services and isolated databases. One native scenario with nine controls passes, including negative Auth dispatch suppression, restored-account fresh login, owner outages and original-stop refusal; cleanup passes. HTTP route is test-only/in-process. Signed Concert admission, event authority and whole identity acceptance remain open. |
 | BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
-| BE06 | IN_PROGRESS | Transactional producer integrated `48458d5`; [source-bound native receipt](backend/bootstrap.md) passes in the isolated worker ledger. Combined migrations, actual product release, configured startup and public-route qualification remain separate. |
+| BE06 | IN_PROGRESS | Transactional producer integrated `48458d5`; [source-bound native receipt](backend/bootstrap.md) passes in the isolated worker ledger. Combined ledger and guarded startup checks now pass [bounded runtime evidence](evidence/delivery-2026-11-04/bootstrap-runtime.md); actual product release and public live-route qualification remain separate. |
 | BE08 | IN_PROGRESS | Bounded implementation and fixes integrated through `5f7eb1c`, independent review through `4d6fc85`, and [retained evidence](evidence/backend-places-integration.md) published `920631d`. Nine focused tests pass. Worker PostgreSQL evidence used direct SQL, not the migration ledger; public routes and whole-task qualification remain open. |
 | BE09 / BE19 | IN_PROGRESS | Separate `be-physical-meeting` owner implements typed beacon/rally commands using caller-held reviewed-place locks; migration 0008 reserved. No real venue guidance or arrival inferred from world movement. |
 | BE10 / BE11 | IN_PROGRESS | Isolated admission owner implements one-use tickets and room membership, migration 0005. Native failures are under correction; no public ticket/room/WebSocket or capacity acceptance is claimed. |
-| BE16–18 / BE20–23 | IN_PROGRESS | Separate community backend owner; party source checkpoint `4bf2bd4` is not yet compile/native-qualified. Migration 0007 reserved; no public command acceptance. |
-| BE37 / BE28–30 | IN_PROGRESS | Typed relationship seam checkpoint `bcd2cd2` is not yet Cargo-qualified. Migration 0006 reserved. A separate Auth/Friend authority owner is assigned; a fresh RPC read alone does not establish revocation fencing through a Concert transaction. |
+| BE16–18 / BE20–23 | IN_PROGRESS | Separate community backend owner; party/gift/maintenance source through `5d8efe7` has bounded compiled/copied-binary native proof; durable-error/current-policy follow-up remains active before final handoff. Migration 0007 reserved; no public command acceptance. |
+| BE37 / BE28–30 | IN_PROGRESS | Typed relationship source `b71ae36` compiled and passed eight pure/crypto checks; native qualification is pending at this checkpoint. Migration 0006 reserved. A separate Auth/Friend authority owner is assigned; a fresh RPC read alone does not establish revocation fencing through a Concert transaction. |
 | BE15 | IN_PROGRESS | [Reviewed internal receipt/outbox foundation](evidence/command-receipts-integration.md), `7cbb97e`/`c2a2c30`: 33 combined deterministic Rust, 82 Python helper and 17 real PostgreSQL tests pass; owned migration failure/recovery, restart persistence and cleanup pass. Review fixes cover keyed private fingerprints, post-authorization expiry and result/outbox revision equality. Bounded goal COMPLETE; production producer/Auth/public API/key configuration/runtime/load gates remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
 | FE04 | IN_PROGRESS | Separate media owner also has exact shared `api/http.ts` and HTTP-test ownership for canonical authenticated binary transport. Current C04 same-origin authenticated PUT and credential-free presigned upload semantics remain distinct; no presigned endpoint is invented. |
@@ -72,7 +80,7 @@ correcting and rerunning them, so this gate is not reported as passing.
 | FE21 | MOCK_READY | Worker `0497d86` integrated as `78cfb7c`; scoped independent review and parent72affected tests/build/lint pass. Default `/meet` and detail routes now use one shell-owned controller, retain pending commands across tabs and enforce fresh READ_ONLY cancellation decisions. [Composition evidence](evidence/community-shell-integration.md) records worker actual-Phaser fixture and parent default-router native runs. Real backend/SQL/multiuser and whole-task gates remain open. |
 | FE24 | MOCK_READY | Worker `5f1005d`/`595c07f` integrated as `3cb3f9c`/`8c33ba3`; scoped QA clear, parent105affected tests/build/lint pass. [Composition evidence](evidence/community-shell-integration.md) connects list/detail/own activity to default routes with policy-bound bootstrap, lifecycle cleanup and390px/wide Chrome checks. No actual backend or reservation-command qualification. |
 
-All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **11/112**;
+Unlisted task states are tracked in the active lane reports and isolated handoffs; generated planning baselines do not report implementation progress. Accepted required tasks: **11/112**;
 accepted total: **11/118**. No required IA entry or IN01–IN05 integration gate has
 been accepted. Real identity/provider flows, Concert product APIs, multiplayer, transactions,
 privacy/revocation, physical place verification, original production assets, real
@@ -82,8 +90,7 @@ startup is verified within BE05; product APIs/identity are not.
 ## Integration and ownership
 
 The main checkout integrates reviewed commits serially and alone publishes master.
-Current parallel work covers BE08 correction/evidence review and FE18 rooms/nearby
-implementation. FE21/FE24 feature reviews and the independent
+Current parallel work includes the assigned world, community, social, media and mural slices. Each writer has its own checkout; current grants and direct handoffs supersede the earlier wave summary. FE21/FE24 feature reviews and the independent
 [community-shell review](qa/community-shell-review.md) are clear; both features
 are composed in the default router. The original
 BE04 goal is tool-confirmed BLOCKED awaiting an isolated assignment/shared
