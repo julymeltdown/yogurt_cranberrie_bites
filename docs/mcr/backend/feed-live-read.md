@@ -129,3 +129,22 @@ qualified protocol remains pending outside the published adapter checkpoint.
 These drafts are not part of the 19 passing Rust cases or the live acceptance
 claim. Export, combined compilation, guarded/native/HTTP qualification and final
 publication remain required after the real producer implementations land.
+
+The shared owner IDL was subsequently published by its owner at `79f7bc87`.
+The task branch now contains the four qualified Post envelopes with mandatory
+ReadAuthority.root field 4. Descriptor generation using the retained vendored
+protoc passes. The root composer explicitly delegated only
+`backend/services/post-service/build.rs` for two-pass owner-IDL generation and
+an extern_path to `crate::concert_feed::authority_proto`; all existing inputs,
+rerun tracking and settings are retained. That build glue and crate-local module
+are source-only follow-up work. Concert's matching generation and canonical
+guard module remain with their owners; publishing the importing IDL before
+those are coherent would break combined compilation.
+
+Feed's follow-up policy reads actual per-user Auth security revisions from the
+sealed subject, while retaining both independent global epoch/revision vectors
+inside the actual owner scope. No global scalar substitutes for per-user facts.
+The Post request admission draft requires verified signed read context, both
+owner views, original bindings, and the root capability; its constructor alone
+never grants a storage read. Real owner checks, subject callbacks, transaction
+registration, final fences and settlement remain required before enabling it.

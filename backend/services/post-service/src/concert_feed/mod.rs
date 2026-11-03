@@ -3,6 +3,10 @@
 mod persistence;
 mod query;
 pub mod read_registry;
+/// Canonical crate-local owner protocol, generated before importing Feed IDL.
+pub mod authority_proto {
+    tonic::include_proto!("authority.lease.v1");
+}
 #[cfg(test)]
 mod tests;
 

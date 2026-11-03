@@ -1,6 +1,8 @@
 syntax = "proto3";
 package post.concert.v1;
 
+import "authority/v1/lease.proto";
+
 // Additive event-content owner. Existing post.v1 data is never assigned a fake
 // event or revision. Only authenticated Concert workload; actor context is
 // untrusted until separately qualified owner authority admission.
@@ -115,4 +117,27 @@ service PostConcertFeedService {
   rpc ListPosts(ListPostsRequest) returns (ListPostsResponse);
   rpc ListComments(ListCommentsRequest) returns (ListCommentsResponse);
   rpc GetComment(GetCommentRequest) returns (GetCommentResponse);
+}
+
+// Canonical read envelopes preserve every legacy field and RPC. The dedicated
+// delegation signs the complete envelope, including both actual owner views.
+// Completion secrets never cross this boundary. Workload/context is not a grant.
+message ReadAuthority {
+  authority.lease.v1.GuardBinding binding = 1;
+  authority.lease.v1.GuardView auth = 2;
+  authority.lease.v1.GuardView friend = 3;
+  authority.lease.v1.RootReadView root = 4; // REQUIRED by every qualified producer
+}
+message QualifiedGetPostRequest { GetPostRequest query = 1; ReadAuthority authority = 2; }
+message QualifiedListPostsRequest { ListPostsRequest query = 1; ReadAuthority authority = 2; }
+message QualifiedGetCommentRequest { GetCommentRequest query = 1; ReadAuthority authority = 2; }
+message QualifiedListCommentsRequest { ListCommentsRequest query = 1; ReadAuthority authority = 2; }
+
+// Actual transaction/scope settlement uses the shared owner-only
+// authority.lease.v1.ProducerSettlementService, not a caller-supplied outcome.
+service PostConcertFeedReadService {
+  rpc GetPost(QualifiedGetPostRequest) returns (GetPostResponse);
+  rpc ListPosts(QualifiedListPostsRequest) returns (ListPostsResponse);
+  rpc GetComment(QualifiedGetCommentRequest) returns (GetCommentResponse);
+  rpc ListComments(QualifiedListCommentsRequest) returns (ListCommentsResponse);
 }

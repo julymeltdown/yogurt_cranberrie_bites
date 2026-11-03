@@ -27,6 +27,34 @@ pub static POST_CONCERT_FEED_POLICY: MethodPolicy = MethodPolicy {
     // any read/effect. Adding actor forwarding must use its qualified guard.
     actor_fields: &[],
 };
+/// Dedicated whole-envelope actor policy. A passing signature still requires
+/// both actual owner views and the retained Concert subject callback.
+pub static POST_CONCERT_FEED_READ_POLICY: MethodPolicy = MethodPolicy {
+    service: "post.concert.v1.PostConcertFeedReadService",
+    workload: Some(Workload::Post),
+    methods: &[
+        ("GetPost", CONCERT),
+        ("ListPosts", CONCERT),
+        ("GetComment", CONCERT),
+        ("ListComments", CONCERT),
+    ],
+    actor_fields: &[
+        ("GetPost", &[&[1, 1, 1]]),
+        ("ListPosts", &[&[1, 1, 1]]),
+        ("GetComment", &[&[1, 1, 1]]),
+        ("ListComments", &[&[1, 1, 1]]),
+    ],
+};
+/// Settlement is owner-to-producer reconciliation, never a user read grant.
+pub static POST_READ_SETTLEMENT_POLICY: MethodPolicy = MethodPolicy {
+    service: "authority.lease.v1.ProducerSettlementService",
+    workload: Some(Workload::Post),
+    methods: &[
+        ("ResolveTransaction", &[Workload::Auth, Workload::Friend]),
+        ("ResolveScope", &[Workload::Auth, Workload::Friend]),
+    ],
+    actor_fields: &[],
+};
 #[derive(Clone, Default)]
 pub struct PostConcertFeedGrpcServer;
 fn admission<T>(request: &Request<T>) -> Status {

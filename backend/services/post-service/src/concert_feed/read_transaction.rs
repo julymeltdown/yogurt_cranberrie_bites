@@ -1,6 +1,7 @@
 //! Actual read-transaction identity and outcome lookup for canonical settlement.
 //! A terminal PostgreSQL status is necessary, never sufficient: the caller must
 //! also authenticate owner registration and seal/drain the matching read scope.
+//! PostgreSQL semantics: https://www.postgresql.org/docs/16/functions-info.html#FUNCTIONS-TXID-SNAPSHOT
 use chrono::{DateTime, Utc};
 use post_domain::concert_feed::Error;
 use sqlx::{PgPool, Postgres, Row, Transaction};

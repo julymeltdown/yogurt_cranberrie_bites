@@ -77,6 +77,9 @@ impl FeedPolicy for GuardedPolicy {
             }
         })?;
         let owners = guarded.revision_vector();
+        let (actor_security, subject_security) = guarded
+            .security_revisions()
+            .map_err(|status| subject_failure(status, c.actor == subject))?;
         // Both independent owner epochs remain in the sealed canonical scope;
         // scalar feed observations are never exported as standalone authority.
         owners
@@ -100,8 +103,8 @@ impl FeedPolicy for GuardedPolicy {
             action,
             event_revision: local.event_revision,
             relationship_revision: local.pair_revision,
-            auth_actor_revision: owners.auth.revision,
-            auth_subject_revision: owners.auth.revision,
+            auth_actor_revision: actor_security,
+            auth_subject_revision: subject_security,
             friend_revision: owners.friend.revision,
             valid_until: local.valid_until.min(deadline).min(c.expires_at),
         };
