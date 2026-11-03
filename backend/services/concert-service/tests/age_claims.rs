@@ -662,7 +662,7 @@ async fn closed_event_allows_owner_erasure_without_verification_authority() -> a
     let (pending, _) = begin(&f).await?;
     sqlx::query("with n as materialized(select clock_timestamp() t) update concert_age_claims set verified_at=n.t-interval '2 days',expires_at=n.t-interval '1 day' from n where claim_id=$1").bind(id).execute(&f.p).await?;
     sqlx::query("with n as materialized(select clock_timestamp() t) update concert_age_verifications set created_at=n.t-interval '11 minutes',expires_at=n.t-interval '1 minute' from n where verification_id=$1").bind(pending).execute(&f.p).await?;
-    sqlx::query("update concert_events set phase='CLOSED' where event_id=$1")
+    sqlx::query("update concert_events set phase='CLOSED',revision=revision+1 where event_id=$1")
         .bind(f.c.event.uuid())
         .execute(&f.p)
         .await?;
