@@ -7,7 +7,9 @@ use auth_service::adapters::r#in::grpc::{
     server::{proto, AuthGrpcServer},
 };
 use auth_service::config::{build_state, AppState};
-use platform::actor_delegation::{ActorDelegationSigner, ActorDelegationVerifier, HEADER};
+use platform::actor_delegation::{
+    ActorDelegationSigner, ActorDelegationVerifier, HEADER, LIFETIME_SECONDS,
+};
 use platform::call_deadline::{CallDeadlineLayer, REMAINING_HEADER};
 use platform::grpc_auth::{CallerRegistry, Workload};
 use prost::Message;
@@ -26,7 +28,11 @@ use std::{
     },
     time::{Duration, Instant},
 };
-use tokio::{net::TcpListener, sync::oneshot, task::JoinHandle};
+use tokio::{
+    net::TcpListener,
+    sync::{oneshot, Notify},
+    task::JoinHandle,
+};
 use tokio_stream::wrappers::TcpListenerStream;
 use tonic::{
     transport::{Channel, Endpoint, Server},
@@ -407,11 +413,13 @@ enum Mode {
     Error(ReadError),
     Delay(Duration),
     Block(Duration),
+    Hold,
 }
 struct ControlledOwner {
     mode: Mutex<Mode>,
     calls: AtomicUsize,
     budgets: Mutex<Vec<ReadBudget>>,
+    entered: Notify,
 }
 impl ControlledOwner {
     fn new(mode: Mode) -> Arc<Self> {
@@ -419,6 +427,7 @@ impl ControlledOwner {
             mode: Mutex::new(mode),
             calls: AtomicUsize::new(0),
             budgets: Mutex::new(Vec::new()),
+            entered: Notify::new(),
         })
     }
 }
@@ -431,12 +440,14 @@ impl CurrentAdmissionPort for ControlledOwner {
     ) -> Result<CurrentAdmission, ReadError> {
         self.calls.fetch_add(1, Ordering::SeqCst);
         self.budgets.lock().unwrap().push(budget.clone());
+        self.entered.notify_one();
         let mode = *self.mode.lock().unwrap();
         match mode {
             Mode::Success => {}
             Mode::Error(error) => return Err(error),
             Mode::Delay(delay) => tokio::time::sleep(delay).await,
             Mode::Block(delay) => std::thread::sleep(delay),
+            Mode::Hold => std::future::pending::<()>().await,
         }
         Ok(CurrentAdmission {
             observed_at: chrono::Utc::now(),
@@ -692,12 +703,6 @@ async fn deterministic_legacy_skew_valid_but_expired_proof_has_no_strict_authori
     let (mut server, owner) = controlled(Mode::Success).await?;
     let actor = Uuid::new_v4();
     let msg = message(actor);
-    // Leave enough actual signed wall time for dispatch on a loaded host; the
-    // proof itself still expires within one second rather than a fresh 2s budget.
-    let remainder = 1_000_000 - chrono::Utc::now().timestamp_subsec_micros();
-    if remainder < 300_000 {
-        tokio::time::sleep(Duration::from_micros(u64::from(remainder) + 20_000)).await;
-    }
     let proof = ActorDelegationSigner::local_parity(Workload::Gateway).issue(
         Workload::Auth,
         METHOD,
@@ -783,23 +788,67 @@ async fn deterministic_whole_owner_await_and_late_noncooperative_completion_are_
 #[tokio::test]
 async fn deterministic_proof_expiry_bounds_a_longer_original_transport_deadline(
 ) -> anyhow::Result<()> {
-    let (mut server, owner) = controlled(Mode::Delay(Duration::from_millis(1300))).await?;
+    let (mut server, owner) = controlled(Mode::Hold).await?;
     let actor = Uuid::new_v4();
     let msg = message(actor);
-    let proof = ActorDelegationSigner::local_parity(Workload::Gateway).issue(
-        Workload::Auth,
-        METHOD,
-        actor,
-        None,
-        &frame(&msg),
-        chrono::Utc::now().timestamp() - 29,
-    );
-    let error = server
-        .client
-        .read_concert_admission(request(msg, Some(&proof), Some("5S")))
-        .await
-        .unwrap_err();
+    let signer = ActorDelegationSigner::local_parity(Workload::Gateway);
+    let body = frame(&msg);
+    // The public signer fixes lifetime at 30s with integer-second claims. Align
+    // before issuing the one request so it has 1.25..1.5s live authority: ample
+    // dispatch margin, while still expiring before the 2s resource ceiling.
+    let sampled = tokio::time::timeout(Duration::from_secs(2), async {
+        loop {
+            let now = chrono::Utc::now();
+            let micros = now.timestamp_subsec_micros();
+            if (500_000..=750_000).contains(&micros) {
+                break now;
+            }
+            let wait = if micros < 500_000 {
+                500_000 - micros
+            } else {
+                1_500_000 - micros
+            };
+            tokio::time::sleep(Duration::from_micros(u64::from(wait) + 1_000)).await;
+        }
+    })
+    .await?;
+    let issued_at = sampled.timestamp() + 2 - LIFETIME_SECONDS;
+    let expires_at = chrono::DateTime::from_timestamp(issued_at + LIFETIME_SECONDS, 0).unwrap();
+    let proof = signer.issue(Workload::Auth, METHOD, actor, None, &body, issued_at);
+    let sent = Instant::now();
+    let error = {
+        let rpc = server
+            .client
+            .read_concert_admission(request(msg, Some(&proof), Some("5S")));
+        tokio::pin!(rpc);
+        // Hold the owner pending until the handler cancels it. An early denial
+        // fails directly; the signed RPC is never retried to obtain dispatch.
+        tokio::time::timeout(Duration::from_millis(750), async {
+            tokio::select! {
+                biased;
+                () = owner.entered.notified() => {},
+                result = &mut rpc => anyhow::bail!("RPC returned before owner dispatch: {result:?}"),
+            }
+            anyhow::Ok(())
+        })
+        .await??;
+        assert_eq!(owner.calls.load(Ordering::SeqCst), 1);
+        assert!(
+            chrono::Utc::now() < expires_at,
+            "proof expired before dispatch"
+        );
+        rpc.await.unwrap_err()
+    };
     assert_eq!(error.code(), Code::DeadlineExceeded);
+    assert!(
+        chrono::Utc::now() >= expires_at,
+        "response preceded signed expiry"
+    );
+    assert!(sent.elapsed() < ReadBudget::MAX_DURATION);
     assert_eq!(owner.calls.load(Ordering::SeqCst), 1);
+    assert_eq!(
+        owner.budgets.lock().unwrap()[0].check(),
+        Err(ReadError::Cancelled)
+    );
     server.stop().await
 }

@@ -142,6 +142,24 @@ accompany the handoff and clean-candidate receipt.
   invalid/elapsed original deadline, strict proof expiry, fixed owner failures,
   inconsistent binding facts and late/noncooperative completion fences. Denials
   prove zero owner dispatch where appropriate; replay proves no second dispatch.
+- Review fix R1 corrects the live-proof timing fixture only. The public signer
+  issues fixed 30-second, integer-second claims; the test completes server/key/
+  channel setup, then bounds a pre-issuance phase wait to two seconds. It issues
+  one proof with 1.25–1.5 seconds of live authority and sends one RPC with its
+  original five-second deadline. An explicit owner-entry notification must arrive
+  within 750ms while the proof is live; the owner stays pending until cancellation.
+  Early denials fail without retry. Assertions require exactly one dispatch,
+  `DeadlineExceeded` at or after actual signed expiry, cancellation, and a response
+  before the two-second resource ceiling. This proves proof expiry wins over both
+  longer limits. The misplaced wait in the already-expired legacy-skew case is
+  removed. The previous 11-case pass did not expose its near-second-boundary
+  dispatch race. The corrected `deterministic_` suite passed **11/11**, exit **0**,
+  with the five native cases filtered, using the command below. Its separate log
+  is `/Users/lhs/Desktop/mcr-build/auth-admission-rpc-R1-controlled.log`.
+  No native database or global Python suite is rerun for this test-only fix;
+  the parent owns combined-candidate native and contract verification. The
+  retained 97-case Python result below remains evidence at the original contract
+  base, not a claim about the parent's subsequently revised C04 contract pin.
 - Native generated-server suite: **5 passed**, plus the retained **22 owner
   tests** in a separate cluster. SQLx all 13 Auth migrations, exact ledger,
   reapplication, PostgreSQL restart/data persistence and owned cleanup pass.
