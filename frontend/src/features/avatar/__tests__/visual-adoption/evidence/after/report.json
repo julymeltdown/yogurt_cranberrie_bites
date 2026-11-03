@@ -1,0 +1,454 @@
+{
+  "status": "PASS",
+  "phase": "after",
+  "base": "b3889feeed0fa7485a2326cf5bd00ffc4bb4f894",
+  "fixtureOnly": true,
+  "browser": "156.0.8078.80",
+  "sources": {
+    "frontend/src/features/avatar/AvatarEditor.tsx": "2ba5fcc807d83455c95e10f2422909456dc7be63dfad0edeb15866eaed9b9994",
+    "frontend/src/features/avatar/avatar-editor.css": "6b82e45dde0186b95ced461bc8763b9d29acdfc779c189446048cf05eb7ace24",
+    "frontend/src/features/avatar/controller.ts": "bc2a1bac34961e720b434a3ee2fe1bae23d4e93d27c6b763b6cbe1f0ae552780",
+    "frontend/src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "frontend/src/features/avatar/preview.ts": "77c304050d0fb324a6d8b236a6e65eb2655bff83e488bdfe9b768df9e740b981",
+    "frontend/src/features/avatar/__tests__/fixtures/harness.ts": "e4c8bf64a4a0106aa0817b4ef71e605340b650c9bc184e5cacb96f44d923937d",
+    "frontend/src/features/avatar/__tests__/visual-adoption/preview.tsx": "9ea24cf798b1b85cb4e25bf9323cac75b68b18202aa1b807e540679c6b36d658",
+    "frontend/src/features/avatar/__tests__/visual-adoption/preview.html": "e3e4c5c45b027c466bbc1776c242acea9d9c79f6601c343579e01c81a661c70c",
+    "frontend/src/features/avatar/__tests__/visual-adoption/browser.mjs": "e5a6fe18b092eb0365eed8c9df24c39cfe57e9466c7263e8b2059fb06b18db36",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/shared/ui/Tabs.tsx": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee",
+    "frontend/src/shared/styles/base.css": "63fb6160fa17471c9f40cc58c8d60890390f31af2da2078f50640b5ae7b6b762",
+    "frontend/src/app/account-entry/panels.tsx": "2998df96ff61a0fdc3ca8857b9a17d78d6cfe2e163e07455ddc602c047bd189b",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "contracts/fixtures/assets/avatar-manifest.json": "375527f8e8228a1c1025813dd9b441e6bad6ce84b603e321d4eca0d7a4e16c48",
+    "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "results": [
+    {
+      "state": "loaded",
+      "width": 360,
+      "controls": 12,
+      "png": "loaded-360.png",
+      "sha256": "6b8ed5791005f7e543d76d3f740d9696bd6bd37c71732420157ea60b92ce8475"
+    },
+    {
+      "state": "unavailable",
+      "width": 360,
+      "controls": 3,
+      "png": "unavailable-360.png",
+      "sha256": "697c8f9a11a11da798fd0b5fc97a09b7db44e9a4932d8ff91615399350f0b9a2"
+    },
+    {
+      "state": "loading",
+      "width": 360,
+      "controls": 2,
+      "png": "loading-360.png",
+      "sha256": "ef976258c1f65e132fd7cc81bc1b519f9da4be51305fd069188040661d800d31"
+    },
+    {
+      "state": "load-error",
+      "width": 360,
+      "controls": 13,
+      "png": "load-error-360.png",
+      "sha256": "d2f316ca4518e2967094213e3f107a309c2ac664e6bf5eb5384a59185c95d187"
+    },
+    {
+      "state": "draft",
+      "width": 360,
+      "controls": 12,
+      "png": "draft-360.png",
+      "sha256": "1cb7a3059db8a66ecfcf7d7d8b4ed7380b35c77212f01c0c4fae4e447e2ce881"
+    },
+    {
+      "state": "denied",
+      "width": 360,
+      "controls": 12,
+      "png": "denied-360.png",
+      "sha256": "a6d1979f61f581b98e00bdc7dd99bf7195eb7498cac9ccd721db3c2e4d836f88"
+    },
+    {
+      "state": "unknown",
+      "width": 360,
+      "controls": 13,
+      "png": "unknown-360.png",
+      "sha256": "86f9c68769f530d022d6493355abe0bd94eeba5c7cc669dc2033c04e1df693b5"
+    },
+    {
+      "state": "conflict",
+      "width": 360,
+      "controls": 13,
+      "png": "conflict-360.png",
+      "sha256": "3d0c3daad6f65eecb064c5f8970dac2e0e6f690bdcefc44c054d24d6bcd5e687"
+    },
+    {
+      "state": "candidate",
+      "width": 360,
+      "controls": 14,
+      "png": "candidate-360.png",
+      "sha256": "dcb80304ec1341e6d5489911bd8b5c8f4cb0cf955d342c3e8a407b6b570a85ae"
+    },
+    {
+      "state": "saving",
+      "width": 360,
+      "controls": 12,
+      "png": "saving-360.png",
+      "sha256": "71893aaf13f4c637425297ca2fabb77fcfc947fefa06059f4d23323f16abfb88"
+    },
+    {
+      "state": "saved",
+      "width": 360,
+      "controls": 12,
+      "png": "saved-360.png",
+      "sha256": "bd6d89e73d6779d45daca76bb42cbd76d2275774a4788a32410528f69241b2b9"
+    },
+    {
+      "state": "preview-loading",
+      "width": 360,
+      "controls": 12,
+      "png": "preview-loading-360.png",
+      "sha256": "cc7658ec1faab6ab420a3e2c33dd6098e9808ffa71d22d139c429b826161b467"
+    },
+    {
+      "state": "expired",
+      "width": 360,
+      "controls": 12,
+      "png": "expired-360.png",
+      "sha256": "bfc424e01d73cd31bc487b6384185047f04e00727b38dc5cd31502edcf80d6b1"
+    },
+    {
+      "state": "category-presets",
+      "width": 360,
+      "png": "category-presets-360.png",
+      "sha256": "6b8ed5791005f7e543d76d3f740d9696bd6bd37c71732420157ea60b92ce8475"
+    },
+    {
+      "state": "category-body",
+      "width": 360,
+      "png": "category-body-360.png",
+      "sha256": "53201b38afa08f5166e0646b69a636baf9158efe63048aab5e1c067b2830b895"
+    },
+    {
+      "state": "category-eyes",
+      "width": 360,
+      "png": "category-eyes-360.png",
+      "sha256": "8e4748b4e21048558e61e1206203b326a06216b7f9f43abf7cbef5986902b050"
+    },
+    {
+      "state": "category-hair",
+      "width": 360,
+      "png": "category-hair-360.png",
+      "sha256": "6f18f95816020cdcedf43d2beb8db3e13e8b3416495f039eb3d5c111b77acf4e"
+    },
+    {
+      "state": "category-outfit",
+      "width": 360,
+      "png": "category-outfit-360.png",
+      "sha256": "c8cc7950bdf3f4608ccdd559b8b836e1c7cb44ef669683acc173e9786963b089"
+    },
+    {
+      "state": "category-accessory",
+      "width": 360,
+      "png": "category-accessory-360.png",
+      "sha256": "813b2a8ab8fd12f585dcd2eb6709508a04073c607fc9a6c3ee248e1acdcb870a"
+    },
+    {
+      "state": "category-tones",
+      "width": 360,
+      "png": "category-tones-360.png",
+      "sha256": "fc6f6a554cd2eaa5b32c123fd78c2618969e48e8a662601f17981ebae8727f27"
+    },
+    {
+      "state": "loaded",
+      "width": 390,
+      "controls": 12,
+      "png": "loaded-390.png",
+      "sha256": "18a02557b3d5d01bf934d53703ed81c2318cd27271388918fd5c281feb4c053b"
+    },
+    {
+      "state": "unavailable",
+      "width": 390,
+      "controls": 3,
+      "png": "unavailable-390.png",
+      "sha256": "ef07cda6096a5e511a749e24e0edf5bba6919a497ad69c52c0e7f8024e709adc"
+    },
+    {
+      "state": "loading",
+      "width": 390,
+      "controls": 2,
+      "png": "loading-390.png",
+      "sha256": "c26e36d5ab40ff4047269e8696241bd93fada20bac5a84efb75cc1681bb8f342"
+    },
+    {
+      "state": "load-error",
+      "width": 390,
+      "controls": 13,
+      "png": "load-error-390.png",
+      "sha256": "d3fca78bc65bb3114e0156dd904f0abf2d6475dcc4e01920e7e2c4288e6f8b62"
+    },
+    {
+      "state": "draft",
+      "width": 390,
+      "controls": 12,
+      "png": "draft-390.png",
+      "sha256": "84a7d68d41db547258acab43ef2c4c00d9f7380ef504c7497e1cd707c9b5bfb2"
+    },
+    {
+      "state": "denied",
+      "width": 390,
+      "controls": 12,
+      "png": "denied-390.png",
+      "sha256": "50b799072e3182ea82a0a4b11f9bca369fca99f0652c232c90a20a474afb7824"
+    },
+    {
+      "state": "unknown",
+      "width": 390,
+      "controls": 13,
+      "png": "unknown-390.png",
+      "sha256": "7963b66b8dcb107ee2929b9ac535acfc7b9321a4b66a2dfb5b1f2e71aa96d80b"
+    },
+    {
+      "state": "conflict",
+      "width": 390,
+      "controls": 13,
+      "png": "conflict-390.png",
+      "sha256": "8a8080c768d7c7468f9b4121d968160a381cf944613dd34cb4c2b9142def054e"
+    },
+    {
+      "state": "candidate",
+      "width": 390,
+      "controls": 14,
+      "png": "candidate-390.png",
+      "sha256": "733929f8877f4da09832842c1b859f4e2a23c1f3c8b84c01524f1aa932d2ca45"
+    },
+    {
+      "state": "saving",
+      "width": 390,
+      "controls": 12,
+      "png": "saving-390.png",
+      "sha256": "bf5b53fd9597de8742d8b2163ad1575f1985e1e41d95aaaf0969f60200f180b7"
+    },
+    {
+      "state": "saved",
+      "width": 390,
+      "controls": 12,
+      "png": "saved-390.png",
+      "sha256": "e1d9be30bbe293dc40ba68457063b9d2c851f61780a62a3bdef1f7864b662c1c"
+    },
+    {
+      "state": "preview-loading",
+      "width": 390,
+      "controls": 12,
+      "png": "preview-loading-390.png",
+      "sha256": "0eeb7bb5018d9c98621d7b459afd2d5fe1b2596a7d0db1629786628f5f5d6aed"
+    },
+    {
+      "state": "expired",
+      "width": 390,
+      "controls": 12,
+      "png": "expired-390.png",
+      "sha256": "17d25cf53cef3e5b5ae0725903dd687637b2affff1d04d2d6f866aba6d66a3c4"
+    },
+    {
+      "state": "category-presets",
+      "width": 390,
+      "png": "category-presets-390.png",
+      "sha256": "18a02557b3d5d01bf934d53703ed81c2318cd27271388918fd5c281feb4c053b"
+    },
+    {
+      "state": "category-body",
+      "width": 390,
+      "png": "category-body-390.png",
+      "sha256": "b22fa3e04f9b0ba084cc4bcacee2b0fefa7f67c255099b33969c6678f2083172"
+    },
+    {
+      "state": "category-eyes",
+      "width": 390,
+      "png": "category-eyes-390.png",
+      "sha256": "8fe379b0342a10a4cdc2193ea45b1be934596b1edacd3a3f5230e9bfd57bbd3f"
+    },
+    {
+      "state": "category-hair",
+      "width": 390,
+      "png": "category-hair-390.png",
+      "sha256": "7fefbfbe7a00d5106e6f6e3216500945eaec06816c5ef6849310c1a7dfcb8245"
+    },
+    {
+      "state": "category-outfit",
+      "width": 390,
+      "png": "category-outfit-390.png",
+      "sha256": "782fe8f9bd99f27a3f078b391bf70d6839264dafce83cb8ec9798cf357537491"
+    },
+    {
+      "state": "category-accessory",
+      "width": 390,
+      "png": "category-accessory-390.png",
+      "sha256": "21e6f3ecc74ff07e0846b316a325a7c765284be6e95807981699a9bd43753149"
+    },
+    {
+      "state": "category-tones",
+      "width": 390,
+      "png": "category-tones-390.png",
+      "sha256": "caeee16725a460d573ad39d5c5f860c80f0ace872a65c751e68f7655874063ee"
+    },
+    {
+      "state": "loaded",
+      "width": 430,
+      "controls": 12,
+      "png": "loaded-430.png",
+      "sha256": "048fd5501177e4de8fc1042cca29f03d8b9dd916dd7e39282bbb980ff85b01a3"
+    },
+    {
+      "state": "unavailable",
+      "width": 430,
+      "controls": 3,
+      "png": "unavailable-430.png",
+      "sha256": "1b07f8d4b40ace1909a244c3df50d060a029b0fa4e921a50fa3edaa68228241f"
+    },
+    {
+      "state": "loading",
+      "width": 430,
+      "controls": 2,
+      "png": "loading-430.png",
+      "sha256": "761b0a6c12c8b200720692a1f4bae510fe6abd1e17c6f3d476cb4a083d1acbc1"
+    },
+    {
+      "state": "load-error",
+      "width": 430,
+      "controls": 13,
+      "png": "load-error-430.png",
+      "sha256": "9ab6180bf8bfbe283b07485f7442ec6a17a7addcb6687e68bab072cfc31b7677"
+    },
+    {
+      "state": "draft",
+      "width": 430,
+      "controls": 12,
+      "png": "draft-430.png",
+      "sha256": "05b685b3723e6198fa78080df371c4912153417fc96d36bc8d617fc7ea2981d8"
+    },
+    {
+      "state": "denied",
+      "width": 430,
+      "controls": 12,
+      "png": "denied-430.png",
+      "sha256": "6d77c96b80bec7f3c2445687fa5d1f230d6cbd610d6063617bc8116ec7f488a9"
+    },
+    {
+      "state": "unknown",
+      "width": 430,
+      "controls": 13,
+      "png": "unknown-430.png",
+      "sha256": "25bc1e747f36886ed3d6b01b22a3efcafbf41af4761bc6d4331ae3de23b2655c"
+    },
+    {
+      "state": "conflict",
+      "width": 430,
+      "controls": 13,
+      "png": "conflict-430.png",
+      "sha256": "fcebd04fa558292c1904d303286bf2f54871c052e974e90c3a5d9fd966c08e00"
+    },
+    {
+      "state": "candidate",
+      "width": 430,
+      "controls": 14,
+      "png": "candidate-430.png",
+      "sha256": "f3326a17010db119b25d62f33a3968f3140979828d71cd6752618761c52ef069"
+    },
+    {
+      "state": "saving",
+      "width": 430,
+      "controls": 12,
+      "png": "saving-430.png",
+      "sha256": "58972884567c9542cb3276a4ff3f9ca87c879c119d767f400df39fcce5377e36"
+    },
+    {
+      "state": "saved",
+      "width": 430,
+      "controls": 12,
+      "png": "saved-430.png",
+      "sha256": "21cdadd69c7f7e61ae49c089ec41afbadfeba01a159097f467035cb910f8085d"
+    },
+    {
+      "state": "preview-loading",
+      "width": 430,
+      "controls": 12,
+      "png": "preview-loading-430.png",
+      "sha256": "bf59838a518c62963e686fa90db0fffc12ac551a0c3a2709482fea9d8f614cd6"
+    },
+    {
+      "state": "expired",
+      "width": 430,
+      "controls": 12,
+      "png": "expired-430.png",
+      "sha256": "f1edad8366d21f0c5188629c1995f6b39e881bc78b14f99a24b470014126948b"
+    },
+    {
+      "state": "category-presets",
+      "width": 430,
+      "png": "category-presets-430.png",
+      "sha256": "048fd5501177e4de8fc1042cca29f03d8b9dd916dd7e39282bbb980ff85b01a3"
+    },
+    {
+      "state": "category-body",
+      "width": 430,
+      "png": "category-body-430.png",
+      "sha256": "06e3fdb9cf9f2f3bcef7cef8f9af590996f060c1a0bff97fd6ffc98649b98b63"
+    },
+    {
+      "state": "category-eyes",
+      "width": 430,
+      "png": "category-eyes-430.png",
+      "sha256": "988ccf98e2e284f0d654bf20fd850aa8a0af46c9e91204abfbbc1171f68d3a1c"
+    },
+    {
+      "state": "category-hair",
+      "width": 430,
+      "png": "category-hair-430.png",
+      "sha256": "cde2a3182625bf1f95c4b6d797e70e78bc83d367130ab98a1c51af88329e1bbc"
+    },
+    {
+      "state": "category-outfit",
+      "width": 430,
+      "png": "category-outfit-430.png",
+      "sha256": "03a30183fb036f1ae99b98ed998a53979b4ab7654605b18035203aff5532ef25"
+    },
+    {
+      "state": "category-accessory",
+      "width": 430,
+      "png": "category-accessory-430.png",
+      "sha256": "16aa387418d87bcb397ac2357460bfc43ad20e69aa4a4f50b3252ab47edbf781"
+    },
+    {
+      "state": "category-tones",
+      "width": 430,
+      "png": "category-tones-430.png",
+      "sha256": "9c1c36be9bc8ba6cc79094fa00f06484791fd5a3555991de6e3d1fdb656932b4"
+    }
+  ],
+  "flows": [
+    {
+      "width": 360,
+      "categoryKeyboardNoWrite": true,
+      "catalogEligibility": true,
+      "cancelNoWrite": true,
+      "explicitSave": true,
+      "reconciliationNoReplay": true
+    },
+    {
+      "width": 390,
+      "categoryKeyboardNoWrite": true,
+      "catalogEligibility": true,
+      "cancelNoWrite": true,
+      "explicitSave": true,
+      "reconciliationNoReplay": true
+    },
+    {
+      "width": 430,
+      "categoryKeyboardNoWrite": true,
+      "catalogEligibility": true,
+      "cancelNoWrite": true,
+      "explicitSave": true,
+      "reconciliationNoReplay": true
+    }
+  ],
+  "errors": []
+}

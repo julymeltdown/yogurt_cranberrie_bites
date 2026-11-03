@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "base": "b3889feeed0fa7485a2326cf5bd00ffc4bb4f894",
+  "browser": "156.0.8078.80",
+  "sources": {
+    "frontend/src/features/avatar/AvatarEditor.tsx": "2ba5fcc807d83455c95e10f2422909456dc7be63dfad0edeb15866eaed9b9994",
+    "frontend/src/features/avatar/avatar-editor.css": "6b82e45dde0186b95ced461bc8763b9d29acdfc779c189446048cf05eb7ace24",
+    "frontend/src/features/avatar/__tests__/visual-adoption/account-browser.mjs": "d488a9b1b76e8ce904e93666a303be17e60a17676383ff9cd6a145d54987e68d",
+    "frontend/src/app/account-entry/__tests__/preview.tsx": "79c2eb34925ebf9975fc42ff4d822dca13001f6d809d436655da295f72b88bb7",
+    "frontend/src/app/account-entry/assets.ts": "ed15657f1a417fdb77c88f38663285ed67bfaa7fcffb417f98f18cb4cd5bf1fa",
+    "frontend/src/app/account-entry/panels.tsx": "2998df96ff61a0fdc3ca8857b9a17d78d6cfe2e163e07455ddc602c047bd189b",
+    "frontend/src/app/account-entry/provider.tsx": "0ce22f22bcb4a36d031b29e17ec18b332550965a6bc983601a2bda3f9b4836a3",
+    "frontend/src/app/account-entry/owner.ts": "02f2c4b27997c1e474efa86253543bc4f4f6e1ff59309c3863a210981dbe840e",
+    "frontend/src/app/router.tsx": "6626b51bd8bfa3589dff42ab0166ec05bd07438b83cb83e5bffe21b7d32d1eb2",
+    "frontend/src/app/shell.css": "75b74f145de44da52657f3743cc93cdfd6744af39509c596b21639f61ca7b10d",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f"
+  },
+  "results": [
+    {
+      "width": 360,
+      "route": "/me/avatar",
+      "realComposition": true,
+      "fixturePorts": true,
+      "reviewedArtUnavailable": true,
+      "canvasCount": 0,
+      "instrumentedWorld": {
+        "active": 1,
+        "peak": 1,
+        "mounts": 2,
+        "disposals": 1
+      },
+      "png": "default-avatar-unavailable-360.png",
+      "sha256": "2408ec73fd7117d8a5e320004ddda7e9de1ed7ef0fbdb7424afde70d8266f6f7"
+    },
+    {
+      "width": 390,
+      "route": "/me/avatar",
+      "realComposition": true,
+      "fixturePorts": true,
+      "reviewedArtUnavailable": true,
+      "canvasCount": 0,
+      "instrumentedWorld": {
+        "active": 1,
+        "peak": 1,
+        "mounts": 2,
+        "disposals": 1
+      },
+      "png": "default-avatar-unavailable-390.png",
+      "sha256": "3779b6ab269714211f7a8e053446c0f5d72cd107da0f6df035dac4e2d47f70b8"
+    },
+    {
+      "width": 430,
+      "route": "/me/avatar",
+      "realComposition": true,
+      "fixturePorts": true,
+      "reviewedArtUnavailable": true,
+      "canvasCount": 0,
+      "instrumentedWorld": {
+        "active": 1,
+        "peak": 1,
+        "mounts": 2,
+        "disposals": 1
+      },
+      "png": "default-avatar-unavailable-430.png",
+      "sha256": "60665a237102beea73ab69721b29141f3ba2cc5969622b6f76997024db4feede"
+    }
+  ],
+  "requests": [
+    {
+      "path": "/api/auth/capabilities",
+      "method": "GET"
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST"
+    },
+    {
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+      "method": "GET"
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "method": "GET"
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST"
+    },
+    {
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+      "method": "GET"
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "method": "GET"
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST"
+    },
+    {
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+      "method": "GET"
+    }
+  ],
+  "errors": []
+}

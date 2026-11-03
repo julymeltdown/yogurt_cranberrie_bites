@@ -1,0 +1,81 @@
+{
+  "base": "b3889feeed0fa7485a2326cf5bd00ffc4bb4f894",
+  "status": "PASS",
+  "scope": "UIV04 presentation only; no live artwork/server/device/multiuser acceptance",
+  "commands": [
+    {
+      "name": "focused tests",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/vitest/vitest.mjs run --configLoader runner --no-cache src/features/avatar src/app/account-entry src/shared/ui/__tests__/primitives.test.tsx",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "7 files / 50 tests passed"
+    },
+    {
+      "name": "strict types",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "no diagnostics; no shared build-info writes"
+    },
+    {
+      "name": "lint",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/oxlint/bin/oxlint src vite.config.ts",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "no diagnostics"
+    },
+    {
+      "name": "production build",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/vite/bin/vite.js build --configLoader runner --outDir /tmp/mcr-uiv04-avatar-build --emptyOutDir",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "319 modules; existing CommunityFeatures/Phaser large-chunk warning"
+    },
+    {
+      "name": "before browser",
+      "command": "UIV04_PHASE=before /Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node src/features/avatar/__tests__/visual-adoption/browser.mjs",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "9 cases at base; see before/report.json"
+    },
+    {
+      "name": "after browser",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node src/features/avatar/__tests__/visual-adoption/browser.mjs",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "60 cases + 9 short-height PNGs; 3 keyboard/save/reconciliation flows; no page errors"
+    },
+    {
+      "name": "default account composition",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node src/features/avatar/__tests__/visual-adoption/account-browser.mjs",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "3 native mobile widths; fail-closed production art admission; no PUT; synthetic ports"
+    },
+    {
+      "name": "planning provenance",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": ".",
+      "exitCode": 0,
+      "result": "planning only PASS; original checksums preserved"
+    },
+    {
+      "name": "whitespace",
+      "command": "git diff --check",
+      "cwd": ".",
+      "exitCode": 0,
+      "result": "no diagnostics"
+    }
+  ],
+  "correctedVerificationErrors": [
+    "Test used preview.status instead of preview.phase; fixed in new test only.",
+    "New test initially used Playwright-only exact option and unchecked fixture indexes; strict type errors corrected.",
+    "Default-route probe initially asserted total mounts=1; corrected to actual active and peak lease counts because existing StrictMode remount is sequential.",
+    "An initial browser locator matched tabpanel and select labels; category titles now use title case and probes use combobox roles."
+  ],
+  "notRun": [
+    "broad 96-file suite",
+    "live backend/database/approved art journey",
+    "real device/assistive technology/load/release qualification"
+  ]
+}

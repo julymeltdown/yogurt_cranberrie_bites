@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "phase": "before",
+  "base": "b3889feeed0fa7485a2326cf5bd00ffc4bb4f894",
+  "fixtureOnly": true,
+  "browser": "156.0.8078.80",
+  "sources": {
+    "frontend/src/features/avatar/AvatarEditor.tsx": "bfd55693ca9ff942dd603612c79de523f77b3604a689fe0078a2b1a6183521a6",
+    "frontend/src/features/avatar/avatar-editor.css": "e3ef3c8168545493ae67e897cb6a70d37a49ecb2dc11dc79779919ead4416619",
+    "frontend/src/features/avatar/controller.ts": "bc2a1bac34961e720b434a3ee2fe1bae23d4e93d27c6b763b6cbe1f0ae552780",
+    "frontend/src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "frontend/src/features/avatar/preview.ts": "77c304050d0fb324a6d8b236a6e65eb2655bff83e488bdfe9b768df9e740b981",
+    "frontend/src/features/avatar/__tests__/fixtures/harness.ts": "e4c8bf64a4a0106aa0817b4ef71e605340b650c9bc184e5cacb96f44d923937d",
+    "frontend/src/features/avatar/__tests__/visual-adoption/preview.tsx": "ee0a6a67e38d3ea0b0f182947fa9d45d190cca7b2309b476175c6f38560efd77",
+    "frontend/src/features/avatar/__tests__/visual-adoption/preview.html": "e3e4c5c45b027c466bbc1776c242acea9d9c79f6601c343579e01c81a661c70c",
+    "frontend/src/features/avatar/__tests__/visual-adoption/browser.mjs": "0ae199d4db5ece1e20b59f77e16fad13a2ec675a093f7504d56bfedf93f27a76",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/shared/ui/Tabs.tsx": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee",
+    "frontend/src/shared/styles/base.css": "63fb6160fa17471c9f40cc58c8d60890390f31af2da2078f50640b5ae7b6b762",
+    "frontend/src/app/account-entry/panels.tsx": "2998df96ff61a0fdc3ca8857b9a17d78d6cfe2e163e07455ddc602c047bd189b",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "contracts/fixtures/assets/avatar-manifest.json": "375527f8e8228a1c1025813dd9b441e6bad6ce84b603e321d4eca0d7a4e16c48",
+    "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "results": [
+    {
+      "state": "loaded",
+      "width": 360,
+      "controls": 11,
+      "png": "loaded-360.png",
+      "sha256": "00a33c4f798dfbdbff440c4b9ad2c68f94053c4ccadcf211fed57c05f1cfa5de"
+    },
+    {
+      "state": "unavailable",
+      "width": 360,
+      "controls": 3,
+      "png": "unavailable-360.png",
+      "sha256": "d6cd6369b2296ff15617e8e5a6ea93cdb331b3cfb9ef37e2224eee6f58537c23"
+    },
+    {
+      "state": "candidate",
+      "width": 360,
+      "controls": 13,
+      "png": "candidate-360.png",
+      "sha256": "355fcabbf850156cc9affed300d8c00859c8656a1b53bcd60efa6e7fcaee4d4b"
+    },
+    {
+      "state": "loaded",
+      "width": 390,
+      "controls": 11,
+      "png": "loaded-390.png",
+      "sha256": "615c37470cc5b4784bf3782394c710e85325cb64512f8b12f7e503db0a80fc20"
+    },
+    {
+      "state": "unavailable",
+      "width": 390,
+      "controls": 3,
+      "png": "unavailable-390.png",
+      "sha256": "155e75450399974087fa40a43a456358a317a2c5848d175ece9e53c0884292f6"
+    },
+    {
+      "state": "candidate",
+      "width": 390,
+      "controls": 13,
+      "png": "candidate-390.png",
+      "sha256": "9984fc43911314078191a512fcebb0f1fe9cab65d4e5c7a28514798a3f0f9ea6"
+    },
+    {
+      "state": "loaded",
+      "width": 430,
+      "controls": 11,
+      "png": "loaded-430.png",
+      "sha256": "69209708e7c26d70477d35e8a24206465fde88e1fbb171bed5a7d9d8207c528b"
+    },
+    {
+      "state": "unavailable",
+      "width": 430,
+      "controls": 3,
+      "png": "unavailable-430.png",
+      "sha256": "c0bdb0683a35e45741fc8b97672de6cda58173cbb2c77d919d0f7b6bc7409f8e"
+    },
+    {
+      "state": "candidate",
+      "width": 430,
+      "controls": 13,
+      "png": "candidate-430.png",
+      "sha256": "dcaf7f50ce3934d74e9fce8bc74418292400961f378091eadfac00033675d168"
+    }
+  ],
+  "flows": [],
+  "errors": []
+}
