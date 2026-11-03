@@ -15,6 +15,7 @@ axum.workspace = true
 chrono.workspace = true
 jsonschema = { version = "=0.30.0", default-features = false }
 prost.workspace = true
+ring = "=0.17.14"
 serde.workspace = true
 serde_json.workspace = true
 sha2.workspace = true
