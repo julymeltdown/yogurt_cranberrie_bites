@@ -101,6 +101,14 @@ class PrivateTests(Fixture):
         binding=p.validate_binaries(self.root,receipt,historical_auth_only=True)
         self.assertEqual(binding["qualification_scope"],"HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD")
         self.assertEqual(len(binding["current_source_drift"]),1)
+        descriptor = {"in01_qualification": {"scope": binding["qualification_scope"],
+                                               "bin_dir": str(self.root), "receipt": p.pinned(receipt)}}
+        self.assertEqual(p.attached_qualification(descriptor), binding)
+        descriptor["in01_qualification"]["receipt"]["sha256"] = "0" * 64
+        with self.assertRaisesRegex(p.Failure, "OWNER_QUALIFICATION_CHANGED"):
+            p.attached_qualification(descriptor)
+        self.assertEqual(p.attached_qualification({})["qualification_scope"],
+                         "UNVERIFIED_OWNER_ARTIFACTS_NO_GATE_CONFIG")
 
     def test_mail_matches_exact_owned_generated_email(self):
         mail = self.root / "mail"; mail.mkdir(mode=0o700)
@@ -146,7 +154,7 @@ class FailureTests(Fixture):
     def test_mid_provision_failure_closes_owned_stack_and_sanitizes_error(self):
         run = self.run_dir(); stack = Mock(); stack.report = {"cleanup": "PASS"}
         stack.start.return_value = {"gateway_url": "http://127.0.0.1:12345"}
-        with patch.object(p, "source_receipt", return_value={}), patch.object(p, "validate_binaries", return_value={}), patch.object(p.dev, "Control"), patch.object(p, "provision_accounts", side_effect=RuntimeError("PRIVATE_PASSWORD_MUST_NOT_LEAK")), contextlib.redirect_stdout(io.StringIO()):
+        with patch.object(p, "source_receipt", return_value={}), patch.object(p, "validate_binaries", return_value={"qualification_scope":"SOURCE_HASHES_MATCH_BUILD_RECEIPT","receipt":{}}), patch.object(p.dev, "Control"), patch.object(p, "provision_accounts", side_effect=RuntimeError("PRIVATE_PASSWORD_MUST_NOT_LEAK")), contextlib.redirect_stdout(io.StringIO()):
             result = p.execute(self.args(), run, stack)
         stack.close.assert_called_once()
         self.assertEqual(result["result"], "FAIL");self.assertEqual(result["cleanup"], "PASS")
@@ -158,6 +166,39 @@ class FailureTests(Fixture):
         with patch.object(p, "source_receipt", return_value={}), patch.object(p, "validate_binaries", side_effect=p.Failure("BINARY_RECEIPT_MISMATCH")):
             result = p.execute(self.args(), run, stack)
         stack.start.assert_not_called();self.assertEqual(result["result"], "FAIL");self.assertEqual(result["cleanup"], "FAIL")
+        self.assertEqual(result["lifetime"], "OWNED_CLEANUP_UNCONFIRMED_DATA_MAY_REMAIN")
+
+    def test_unqualified_attach_never_emits_config_despite_successful_reads(self):
+        art = self.root / "supplied-art-receipt.json"; art.write_text('{}')
+        for scope in ("HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD", "UNVERIFIED_OWNER_ARTIFACTS_NO_GATE_CONFIG"):
+            with self.subTest(scope=scope):
+                run = p.PrivateRun(self.root / scope)
+                self.addCleanup(run.close)
+                args = self.args(); args.event_id = str(uuid4()); args.art_review = art
+                args.browser_origin = "http://127.0.0.1:12345"
+                with patch.object(p, "source_receipt", return_value={}), patch.object(p, "owned_descriptor", return_value=({}, "offline")), patch.object(p, "attached_qualification", return_value={"qualification_scope":scope}), patch.object(p, "provision_accounts", return_value={"accounts":[]}), patch.object(p, "check_world", return_value=True), patch.object(p, "gate_config") as config, contextlib.redirect_stdout(io.StringIO()):
+                    result = p.execute(args, run)
+                self.assertEqual(result["result"], "PASS")
+                self.assertEqual(result["binary_bindings"]["qualification_scope"], scope)
+                config.assert_not_called()
+                self.assertFalse((run.path / "config.json").exists())
+
+    def test_owned_lifecycle_failure_is_not_masked_by_successful_file_cleanup(self):
+        run = self.run_dir(); stack = Mock(); stack.report = {"result":"FAIL", "cleanup":"PASS"}
+        stack.start.return_value = {}
+        with patch.object(p, "source_receipt", return_value={}), patch.object(p, "validate_binaries", return_value={"qualification_scope":"SOURCE_HASHES_MATCH_BUILD_RECEIPT", "receipt":{}}), patch.object(p.dev, "Control"), patch.object(p, "provision_accounts", return_value={"accounts":[]}), patch.object(p, "initialize_event", return_value=str(uuid4())), patch.object(p, "check_world", return_value=False), contextlib.redirect_stdout(io.StringIO()):
+            result = p.execute(self.args(), run, stack)
+        stack.close.assert_called_once()
+        self.assertEqual(result["result"], "FAIL")
+        self.assertEqual(result["cleanup"], "PASS")
+        self.assertEqual(result["lifetime"], "ENDED_ACCOUNTS_AND_EVENT_REMOVED_WITH_OWNED_CLUSTER")
+
+    def test_returned_cleanup_failure_never_claims_removal(self):
+        run = self.run_dir(); stack = Mock(); stack.report = {"result":"FAIL", "cleanup":"FAIL"}
+        with patch.object(p, "source_receipt", return_value={}), patch.object(p, "validate_binaries", side_effect=p.Failure("BINARY_RECEIPT_MISMATCH")):
+            result = p.execute(self.args(), run, stack)
+        self.assertEqual(result["result"], "FAIL")
+        self.assertEqual(result["lifetime"], "OWNED_CLEANUP_UNCONFIRMED_DATA_MAY_REMAIN")
 
     def test_partial_signup_keeps_only_private_recoverable_credentials(self):
         run = self.run_dir(); report={"statuses": {}}
@@ -187,8 +228,9 @@ class FailureTests(Fixture):
 
     def test_shutdown_failure_still_calls_stack_cleanup(self):
         run=self.run_dir();stack=Mock();stack.report={"cleanup":"PASS"}
+        stack.start.return_value = {}
         control=Mock();control.server_close.side_effect=OSError("private diagnostic")
-        with patch.object(p,"source_receipt",return_value={}), patch.object(p,"validate_binaries",return_value={}), patch.object(p.dev,"Control",return_value=control), patch.object(p,"provision_accounts",side_effect=p.Failure("SIGNUP_UNAVAILABLE")):
+        with patch.object(p,"source_receipt",return_value={}), patch.object(p,"validate_binaries",return_value={"qualification_scope":"SOURCE_HASHES_MATCH_BUILD_RECEIPT","receipt":{}}), patch.object(p.dev,"Control",return_value=control), patch.object(p,"provision_accounts",side_effect=p.Failure("SIGNUP_UNAVAILABLE")):
             result=p.execute(self.args(),run,stack)
         stack.close.assert_called_once()
         self.assertEqual(result["cleanup"],"FAIL")

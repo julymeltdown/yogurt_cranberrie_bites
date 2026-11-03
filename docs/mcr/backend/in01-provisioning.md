@@ -4,7 +4,7 @@ Status: **IN_PROGRESS; bounded tooling candidate, IN01 NOT_RUN**. The provisioni
 run passed at `c6e86fe`: two independent canonical Auth accounts completed actual
 signup, email delivery, verification and login against the immutable historical
 `600582d` six-service build. A new owned OPEN event persisted and cleanup passed.
-Offline ownership/failure/config checks pass 20/20. The historical Gateway has no
+Offline ownership/failure/config checks pass 23/23. The historical Gateway has no
 Concert bootstrap route (observed HTTP 404); no default room, art approval, World
 admission, WebSocket or movement result is inferred. No gate config was emitted.
 
@@ -82,6 +82,10 @@ Attach validates the private descriptor, root marker/inode, control socket,
 READY response, matching Gateway origin and private inbox. It never starts,
 stops, migrates or initializes the attached owner's databases/events. Its newly
 created account namespace is unique. No existing user credentials are accepted.
+An IN01-owned descriptor also pins the owner's binary receipt, bundle directory
+and qualification scope. Attach revalidates these bytes/source pins and carries
+historical-only scope forward. Older descriptors without that binding permit
+account provisioning only and cannot emit a gate config.
 The owner retains the stack and accounts; attach receipt cleanup explicitly says
 NOT_REQUESTED rather than implying account deletion. Own mode cleans its entire
 fresh cluster after its bounded foreground lifetime, including on failure/signal.
@@ -149,7 +153,7 @@ remain separate IN01 obligations. A bounded provisioning PASS always retains
 
 ## Verification checkpoint
 
-- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py -v`: exit 0, 20 offline checks.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py -v`: exit 0, 23 offline checks.
 - `python3 -B -m py_compile backend/scripts/mcr/in01_provision.py`: exit0.
 - `git diff --check`: exit0.
 
@@ -289,3 +293,24 @@ Delivery ancestry from `cd7192febf9c2764169b55d63a70d7e00d13fd08`:
 documentation/evidence handoff commit. Every changed path is one of the three
 assigned files. No Cargo invocation, shared target write, dependency change,
 frontend modification or source-archive modification occurred.
+
+## Targeted lifecycle and readiness review corrections
+
+A read-only peer review found three concrete risks, corrected in the assigned
+tool and tests: attach could discard historical-only qualification; a failed
+child shutdown could be masked by successful file cleanup; and a returned
+cleanup failure could still claim the accounts/event were removed. The owner
+descriptor now carries a revalidated artifact binding, and historical or
+unverified attach can never emit config even when simulated readiness succeeds.
+Final success requires both lifecycle and cleanup success. Removal is asserted
+only after confirmed cleanup; otherwise lifetime says data may remain. The
+regressions exercise both returned and raised cleanup failures and helper
+lifecycle failure independently of file cleanup.
+
+The current-service build prerequisite now has a separate owner in
+`codex/mcr-qa-current-service-build` at `683484b` (owner chat
+`01a1a00c-c94e-74a2-a306-1ff686372881`). Its artifact receipt interface was
+communicated directly. Current artifact validation must execute on a checkout
+containing that exact build's backend sources plus these tooling files; a newer
+build does not make this older assignment base's different source hashes match.
+This tool does not launch another Rust build or write that owner's checkout.

@@ -180,6 +180,24 @@ def validate_binaries(bin_dir, receipt_path, *, historical_auth_only=False):
             "qualification_scope": "HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD" if historical_auth_only else "SOURCE_HASHES_MATCH_BUILD_RECEIPT"}
 
 
+def attached_qualification(descriptor):
+    declaration = descriptor.get("in01_qualification")
+    if declaration is None:
+        return {"qualification_scope": "UNVERIFIED_OWNER_ARTIFACTS_NO_GATE_CONFIG"}
+    need(isinstance(declaration, dict) and set(declaration) == {"scope", "bin_dir", "receipt"},
+         "OWNER_QUALIFICATION_INVALID")
+    scope = declaration["scope"]
+    need(scope in ("SOURCE_HASHES_MATCH_BUILD_RECEIPT", "HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD"),
+         "OWNER_QUALIFICATION_INVALID")
+    receipt = declaration["receipt"]
+    need(isinstance(receipt, dict) and set(receipt) == {"path", "sha256"}, "OWNER_QUALIFICATION_INVALID")
+    binding = validate_binaries(Path(declaration["bin_dir"]), Path(receipt["path"]),
+                                historical_auth_only=scope == "HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD")
+    need(binding["receipt"] == receipt and binding["qualification_scope"] == scope,
+         "OWNER_QUALIFICATION_CHANGED")
+    return binding
+
+
 def wait_mail(inbox, email, *, timeout=20):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
@@ -411,11 +429,15 @@ def execute(args, run, stack=None):
             report["binary_bindings"] = validate_binaries(args.bin_dir, args.binary_receipt,
                                                            historical_auth_only=getattr(args, "historical_auth_only", False))
             descriptor = stack.start()
+            descriptor["in01_qualification"] = {"scope": report["binary_bindings"]["qualification_scope"],
+                                                "bin_dir": str(args.bin_dir),
+                                                "receipt": report["binary_bindings"]["receipt"]}
             control = dev.Control(stack)
             run.write("ready.json", descriptor)
             descriptor_hash = digest(dev.encode(descriptor))
         else:
             descriptor, descriptor_hash = owned_descriptor(args.ready_file)
+            report["binary_bindings"] = attached_qualification(descriptor)
         report["owned_stack_descriptor_sha256"] = descriptor_hash
         run.write("binding.json", {"ready_file": str(args.ready_file) if not stack else str(run.path / "ready.json"),
                                    "descriptor_sha256": descriptor_hash})
@@ -431,7 +453,8 @@ def execute(args, run, stack=None):
             state["eventId"] = event
             run.write("private.json", state)
             ready = check_world(descriptor, state, event, report, args.browser_origin)
-            if ready and args.art_review and args.browser_origin and not getattr(args, "historical_auth_only", False):
+            qualified = report["binary_bindings"]["qualification_scope"] == "SOURCE_HASHES_MATCH_BUILD_RECEIPT"
+            if ready and args.art_review and args.browser_origin and qualified:
                 run.write("services.json", {"kind": "mcr-in01-services-v1", "observed_at": datetime.now(timezone.utc).isoformat(),
                                            "release_revision_declared": args.release_revision, "observations": report})
                 run.write("config.json", gate_config(state, args.browser_origin, event, args.release_revision,
@@ -463,11 +486,13 @@ def execute(args, run, stack=None):
                     stack.close()
                 report["owned_stack"] = stack.report
                 report["cleanup"] = stack.report.get("cleanup", "FAIL")
-                report["lifetime"] = "ENDED_ACCOUNTS_AND_EVENT_REMOVED_WITH_OWNED_CLUSTER"
-                if report["cleanup"] != "PASS":
+                report["lifetime"] = ("ENDED_ACCOUNTS_AND_EVENT_REMOVED_WITH_OWNED_CLUSTER" if report["cleanup"] == "PASS"
+                                      else "OWNED_CLEANUP_UNCONFIRMED_DATA_MAY_REMAIN")
+                if report["cleanup"] != "PASS" or stack.report.get("result") == "FAIL":
                     report["result"] = "FAIL"
+                    report.setdefault("failure", "OWNED_STACK_LIFECYCLE_OR_CLEANUP_FAILED")
             except BaseException:
-                report.update(result="FAIL", cleanup="FAIL")
+                report.update(result="FAIL", cleanup="FAIL", lifetime="OWNED_CLEANUP_UNCONFIRMED_DATA_MAY_REMAIN")
         else:
             report["cleanup"] = "NOT_REQUESTED_EXISTING_OWNER_STACK_RETAINED"
         save_receipt(run, report)
