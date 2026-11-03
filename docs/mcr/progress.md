@@ -17,9 +17,11 @@ it is not feature integration or release acceptance.
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
 | BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
+| BE03 | IN_PROGRESS | Backend chat assigned frozen C03 email/core browser adapter and real isolated auth qualification in fresh `be-auth` worktree; honest disabled-provider behavior and Origin/intent protections required. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
 | FE01 | ACCEPTED | [Integrated review](evidence/core-foundation-integration.md): 144 transport/error tests plus 22 existing UI tests, strict build/lint; memory-only session, bounded read refresh, cancellation, safe error/upload ports and stale-identity isolation. Real cookies and auth journeys remain BE03/FE09 work. |
 | FE02 | ACCEPTED | [Integrated privacy review](evidence/privacy-local-stack-integration.md): actual QueryClient/observers, canonical private keys, cancellation plus eviction, commit fencing and cleanup ports; 45 new tests and combined 189-test transport/privacy run pass. UI/event/real-server owner wiring remains. |
+| FE07 | IN_PROGRESS | Frontend chat assigned persistent six-tab shell, routes/back and lifecycle seam in fresh `fe-shell` worktree; fake fixture counters will not certify real Phaser/socket operation. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **10/112**;
 accepted total: **10/118**. No required IA entry or IN01–IN05 integration gate has
@@ -51,6 +53,7 @@ no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
 The next implementation queue is BE03 auth hardening against the frozen C03
-email/core surface and FE07 persistent shell composition. C04/C05 domain/realtime
-contracts remain required before feature lanes diverge. No runtime, OAuth or
+email/core surface and FE07 persistent shell composition. C04 domain and C06 asset
+freeze remain required; C05 producer/consumer implementation follows its frozen
+wire contract. No runtime, OAuth or
 release acceptance follows from the completed component/contract checks.

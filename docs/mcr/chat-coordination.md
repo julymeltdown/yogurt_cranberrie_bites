@@ -1,15 +1,15 @@
 # Active chat ownership
 
 Updated 2026-11-03 after the user supplied two existing chats and explicitly
-authorized stopping their former tasks and assigning MCR development. Both
-accepted the assignments and were observed executing in the designated
-worktrees. Their app-level working directory remains the integration checkout,
+authorized stopping their former tasks and assigning MCR development. After
+reviewed BE02/FE02 delivery and read-only C05 review, both chats received new
+assignments in fresh worktrees. Their app-level directory remains the integration checkout,
 so every shell command and edit must target the assigned worktree explicitly.
 
 | Role | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| Backend | `mcr(be) BE02 native runtime smoke` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-runtime` / `codex/mcr-be-runtime` |
-| Frontend | `mcr(fe) FE01 HTTP transport` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-transport` / `codex/mcr-fe-transport` |
+| Backend | `mcr(be) BE03 browser auth adapter` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-auth` / `codex/mcr-be-BE03` |
+| Frontend | `mcr(fe) FE07 persistent world shell` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-shell` / `codex/mcr-fe-FE07` |
 
 Both assignments were dispatched with model `gpt-6.1-sol` and reasoning `high`.
 The user's standing language instruction is **English only in every chat**, even
@@ -17,33 +17,32 @@ when the user writes in Korean. It covers replies, progress, questions, reviews,
 handoffs and final answers. Both development chats received this instruction
 directly; all future assignments must carry it. Preserve source text and
 identifiers where exact fidelity is needed.
-The first handoffs started from `2d9198a684ec363c476ae75835ddf4289e47762c` and
-were reviewed and integrated through `360adfd`; see the
-[integration review](evidence/core-foundation-integration.md). Current backend
-work starts from its handoff `0fb22af06fbc139a8f9b6740d8cf780eaa55557a`;
-frontend starts from `d76cbb5ca7ff419cf8c4e6ac1d587e4c69c42644`. Both read current
-integration working agreements in addition to branch-local instructions. No
-subagent continues writing either worktree. The table records the last observed
-chat titles; the new task scopes below supersede the titles' former scope.
+Both current worktrees start at `69a5624cd153a216f2398cebabf062400dce23eb`.
+The former worktrees are preserved but have no current writer. Earlier delivery
+ancestry and checks are in the [foundation review](evidence/core-foundation-integration.md)
+and [privacy/tooling review](evidence/privacy-local-stack-integration.md).
+Both read current integration agreements; no subagent writes their worktrees.
 
-Backend now owns only `backend/scripts/mcr/dev_stack.py`,
-`backend/scripts/mcr/test_dev_stack.py`, `infra/mcr/backend/**`, and
-`docs/mcr/backend/local-development.md`. The infrastructure subtree is an explicit
-bounded delegation by the integrator. Its BE02 work audits image/protobuf/SQLx
-paths and builds an owned foreground local-development stack. Runtime/migration
-helpers are read-only inputs; changes require a concrete request to the parent.
-Docker execution remains NOT_RUN when its daemon is unavailable; no global
-Docker restart is authorized. Auth hardening and real user journeys follow.
+Backend owns `backend/services/api-gateway/src/adapters/in/http/**` (explicitly
+including HTTP router composition), `backend/services/api-gateway/src/config/**`
+only for needed auth/origin configuration, `backend/services/api-gateway/tests/**`,
+and necessary Auth producer adaptations under `backend/services/auth-service/src/**`
+and `backend/services/auth-service/tests/**`. Tool/doc paths are
+`backend/scripts/mcr/browser_auth_smoke.py`, `test_browser_auth_smoke.py` in that
+same directory, `infra/mcr/backend/verify_local_auth.py`, and
+`docs/mcr/backend/browser-auth.md`. BE03's first increment implements frozen C03
+email/core routes, Origin/intent/no-store protections, honest provider capabilities
+and real isolated auth qualification. Native helpers are read-only. New binaries
+use `/Users/lhs/Desktop/mcr-build/be03`, preserving the qualified shared artifacts.
 
-Frontend now owns only `frontend/src/shared/query/keys.ts`,
-`frontend/src/shared/query/privacy.ts`, `frontend/src/shared/query/__tests__/**`,
-and `docs/mcr/frontend/query-privacy.md`. Its FE02 task uses actual TanStack
-Query with canonical user/event/generation keys, cancellation plus eviction,
-observer-visible cleanup, private draft ownership and late-result suppression
-after logout/account/event or policy changes. FE01 is a read-only input; report
-concrete required changes to the parent. No backend, shared contract, dependency,
-router or style edits are assigned. Mock cache evidence does not qualify real
-cookie rotation or cross-tab behavior.
+Frontend owns `frontend/src/app/**`, `frontend/src/main.tsx`, and
+`docs/mcr/frontend/world-shell.md`. App router/entrypoint composition is an explicit
+bounded delegation. FE07 builds the six-tab persistent shell, nested routes/back,
+safe return targets, lazy public/admin boundaries and injected auth/bootstrap/world
+lifecycle ports. Deterministic lifecycle fixtures must not become production fake
+identity or world data. No shared UI/styles, assets, contracts, dependencies or
+backend edits are assigned. Local app CSS is allowed; shared changes require a
+concrete handoff. Actual Phaser/socket/device behavior remains later qualification.
 
 The main chat reviews diffs, verifies file ownership and failure behavior,
 integrates commits serially, updates evidence, and pushes `master`. Workers
@@ -58,5 +57,6 @@ Local transfer records are preserved outside Git at
 `/Users/lhs/Desktop/mcr-build/handoff-contracts-C04.md`.
 The stopped C04 writer's eight untested schema drafts remain under
 `/Users/lhs/Desktop/mcr-worktrees/contracts-C04/contracts/domain/v1/` for the
-integrator to continue. The integrator also owns the unaccepted C05 realtime
-drafts. These drafts are not a frozen contract or an accepted task.
+integrator to continue; they are not a frozen contract. C05 realtime v1 is now
+frozen after [both independent reviews](qa/realtime-contract-review.md); the
+integrator retains ownership of shared contract changes and C04 continuation.
