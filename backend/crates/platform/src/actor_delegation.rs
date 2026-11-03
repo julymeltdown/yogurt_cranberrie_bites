@@ -39,6 +39,7 @@ pub mod cache;
 pub mod exchange;
 pub mod fanout;
 pub mod notification;
+pub mod read_authority;
 
 /// Metadata header carrying the signed delegation.
 pub const HEADER: &str = "x-actor-delegation";
@@ -655,6 +656,12 @@ where
     B::Error: Into<Box<dyn std::error::Error + Send + Sync>>,
 {
     let (mut parts, body) = request.into_parts();
+    let started_at = std::time::Instant::now();
+    let original_deadline = crate::call_deadline::current();
+    // Only this successful verifier may install current signed read authority.
+    parts
+        .extensions
+        .remove::<read_authority::VerifiedReadAuthority>();
     let single = |name: &str| -> Result<Option<String>, Denial> {
         let mut values = parts.headers.get_all(name).iter();
         let value = values.next();
@@ -703,6 +710,14 @@ where
     }
     verifier.consume(&verified, now)?;
     parts.extensions.insert(VerifiedActor(verified.actor));
+    if let Some(authority) = read_authority::VerifiedReadAuthority::capture(
+        verified.actor,
+        verified.exp,
+        started_at,
+        original_deadline,
+    ) {
+        parts.extensions.insert(authority);
+    }
     if !forwarded && verifier.audience() == Workload::Post {
         parts
             .extensions
@@ -807,6 +822,70 @@ mod tests {
     use super::*;
 
     const METHOD: &str = "/post.v1.PostService/CreatePost";
+
+    #[tokio::test]
+    async fn strict_read_context_is_installed_only_after_real_actor_verification() {
+        use read_authority::VerifiedReadAuthority;
+        let (signer, verifier, actor, body) = setup();
+        let token = signer.issue(Workload::Post, METHOD, actor, None, &body, now());
+        let deadline = std::time::Instant::now() + std::time::Duration::from_millis(200);
+        let request = http::Request::builder()
+            .uri(METHOD)
+            .header(HEADER, &token)
+            .body(Full::new(tonic::codegen::Bytes::from(body.clone())))
+            .unwrap();
+        let verified = crate::call_deadline::scope(
+            deadline,
+            verify_request(request, Workload::Gateway, &[&[1]], &verifier),
+        )
+        .await
+        .unwrap();
+        let context = *verified
+            .extensions()
+            .get::<VerifiedReadAuthority>()
+            .unwrap();
+        assert_eq!(context.actor(), actor);
+        assert_eq!(
+            context
+                .deadline(std::time::Duration::from_secs(2))
+                .unwrap()
+                .stop()
+                .into_std(),
+            deadline
+        );
+        // The same signed body is not a second source of verified authority.
+        let replay = http::Request::builder()
+            .uri(METHOD)
+            .header(HEADER, token)
+            .body(Full::new(tonic::codegen::Bytes::from(body)))
+            .unwrap();
+        assert!(
+            verify_request(replay, Workload::Gateway, &[&[1]], &verifier)
+                .await
+                .is_err()
+        );
+    }
+
+    #[tokio::test]
+    async fn tolerated_legacy_skew_never_becomes_strict_read_authority() {
+        use read_authority::VerifiedReadAuthority;
+        let (signer, verifier, actor, body) = setup();
+        let token =
+            signer.issue_with_lifetime(Workload::Post, METHOD, actor, None, &body, now() - 31, 30);
+        let request = http::Request::builder()
+            .uri(METHOD)
+            .header(HEADER, token)
+            .body(Full::new(tonic::codegen::Bytes::from(body)))
+            .unwrap();
+        let verified = verify_request(request, Workload::Gateway, &[&[1]], &verifier)
+            .await
+            .unwrap();
+        assert!(verified.extensions().get::<VerifiedActor>().is_some());
+        assert!(verified
+            .extensions()
+            .get::<VerifiedReadAuthority>()
+            .is_none());
+    }
 
     fn frame(message: &[u8]) -> Vec<u8> {
         let mut body = vec![0];

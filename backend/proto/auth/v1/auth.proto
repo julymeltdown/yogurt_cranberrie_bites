@@ -217,6 +217,35 @@ message CheckSessionResponse {
   repeated string roles = 2;
 }
 
+// Internal owner read for Gateway orchestration, never a browser credential or
+// signed Concert capability. Gateway must authenticate sub/sid from its JWT and
+// supply a request-bound actor delegation plus an original short call deadline.
+message ReadConcertAdmissionRequest {
+  string user_id = 1; // Canonical authenticated actor UUID; signed actor field.
+  string session_family_id = 2; // Exact authenticated JWT sid, not another user.
+  ConcertBindingReference binding = 3; // Optional; omitted for ordinary entry.
+}
+
+message ConcertBindingReference {
+  string identity_id = 1; // Auth-owned row UUID, never an OAuth subject.
+  string provider = 2; // Closed EMAIL/GOOGLE/APPLE/X owner names.
+  int64 binding_epoch = 3; // Owner-issued positive generation, never linked_at.
+}
+
+message ReadConcertAdmissionResponse {
+  enum BindingState {
+    BINDING_STATE_UNSPECIFIED = 0; // Invalid response; never grants eligibility.
+    BINDING_NOT_REQUESTED = 1;
+    BINDING_BOUND = 2;
+    BINDING_NOT_BOUND = 3;
+  }
+  int64 observed_at_unix_micros = 1; // Database observation, not a proof lifetime.
+  bool account_active = 2;
+  bool session_live = 3;
+  BindingState binding_state = 4;
+  // No echoed actor/event/purpose, role, provider subject, email or profile.
+}
+
 service AuthService {
   rpc SignupEmail(SignupEmailRequest) returns (SignupResponse);
   rpc VerifyEmail(VerifyEmailRequest) returns (SignupResponse);
@@ -240,4 +269,5 @@ service AuthService {
   rpc RetryUserDeletion(RetryUserDeletionRequest) returns (RetryUserDeletionResponse);
   rpc GetSigningKeys(GetSigningKeysRequest) returns (GetSigningKeysResponse);
   rpc CheckSession(CheckSessionRequest) returns (CheckSessionResponse);
+  rpc ReadConcertAdmission(ReadConcertAdmissionRequest) returns (ReadConcertAdmissionResponse);
 }

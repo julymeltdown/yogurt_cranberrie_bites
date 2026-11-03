@@ -32,12 +32,14 @@ pub static AUTH_METHOD_POLICY: MethodPolicy = MethodPolicy {
         ("RetryUserDeletion", EDGE),
         ("GetSigningKeys", EDGE),
         ("CheckSession", EDGE),
+        ("ReadConcertAdmission", EDGE),
     ],
     actor_fields: &[
         ("LinkOAuthProvider", &[&[2]]),
         ("DeleteUser", &[&[1], &[2]]),
         ("RetryUserDeletion", &[&[2]]),
         ("GetUserDeletion", &[&[1]]),
+        ("ReadConcertAdmission", &[&[1]]),
     ],
 };
 
@@ -96,6 +98,14 @@ mod tests {
             (
                 "GetUserDeletion",
                 GetUserDeletionRequest { user_id: a() }.encode_to_vec(),
+            ),
+            (
+                "ReadConcertAdmission",
+                ReadConcertAdmissionRequest {
+                    user_id: a(),
+                    ..Default::default()
+                }
+                .encode_to_vec(),
             ),
         ];
         platform::grpc_method_policy::check_actor_samples(&AUTH_METHOD_POLICY, &samples, actor)

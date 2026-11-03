@@ -20,6 +20,15 @@ impl AuthGrpcServer {
 
 #[tonic::async_trait]
 impl proto::auth_service_server::AuthService for AuthGrpcServer {
+    async fn read_concert_admission(
+        &self,
+        _request: Request<proto::ReadConcertAdmissionRequest>,
+    ) -> Result<Response<proto::ReadConcertAdmissionResponse>, Status> {
+        // Integrator prerequisite only. The assigned handler must require the
+        // verified actor/expiry/original deadline before calling the real owner.
+        Err(Status::unavailable("Concert owner read is not composed"))
+    }
+
     async fn signup_email(
         &self,
         request: Request<proto::SignupEmailRequest>,

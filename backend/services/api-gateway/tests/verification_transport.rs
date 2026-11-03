@@ -61,6 +61,15 @@ struct FakeAuth {
 
 #[tonic::async_trait]
 impl proto::auth_service_server::AuthService for FakeAuth {
+    async fn read_concert_admission(
+        &self,
+        _request: Request<proto::ReadConcertAdmissionRequest>,
+    ) -> Result<Response<proto::ReadConcertAdmissionResponse>, Status> {
+        Err(Status::unimplemented(
+            "not part of verification transport test",
+        ))
+    }
+
     async fn resend_verification(
         &self,
         request: Request<proto::ResendVerificationRequest>,
