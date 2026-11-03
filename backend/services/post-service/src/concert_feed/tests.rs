@@ -191,7 +191,13 @@ async fn fixture() -> PgPool {
             .await
             .unwrap();
     assert!(empty);
-    sqlx::migrate!("./migrations").run(&pool).await.unwrap();
+    let directory = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("migrations");
+    sqlx::migrate::Migrator::new(directory)
+        .await
+        .unwrap()
+        .run(&pool)
+        .await
+        .unwrap();
     pool
 }
 
