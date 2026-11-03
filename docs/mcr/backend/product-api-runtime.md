@@ -26,6 +26,14 @@ The assigned checkout is `mcr-worktrees/be-media-combined`, branch
 assignment. Source work began at `f4b4080897a6b1ad835fa4e5e9372f82d58e489e`,
 fast-forwarded to `be629fa0`. Media owner source `cb9f75eb` was cherry-picked as
 `fa25fea2` solely to consume its typed API; that source was explicitly **NOT_RUN**.
+The qualified media dependency was subsequently published by its owner as
+`84126f6adddc1573287b04c6d4e2611e4f2f3970` and reconciled here. Add/add conflicts
+from the preparatory cherry-pick were resolved to the exact published owner
+versions, preserving its settlement helper and qualification record. Its 9 runtime,
+17 retained-producer and 1 restart tests qualify that component; actual canonical
+guard/Gateway integration remains unqualified. Feed groundwork
+`02b17e0496877636dbe6f0ff42f5d31ab5643faa` is also present, with its owner's
+bounded facade/codec evidence, not a live Feed claim.
 
 ## Internal and public boundaries
 
@@ -99,8 +107,8 @@ Outstanding concrete prerequisites:
 | --- | --- | --- |
 | Canonical authority developer | Account/session and relationship exclusion through commit/response; exact signed Gateway parent; durable unknown-outcome settlement | Source active, **NOT_RUN** |
 | Public Profile developer | Qualified feed-author projection with real avatar state and held privacy/deletion exclusion | Source active, **NOT_RUN** |
-| Feed developer | Guarded Post read constructor, actual owner reader, cursor/schema projection and producer settlement | Source active, **NOT_RUN** |
-| Media developer | Uploader-only local transactional policy and producer settlement under canonical fence | Typed source consumed; native qualification pending |
+| Feed developer | Guarded Post read constructor, actual owner reader, cursor/schema projection and producer settlement | Facade/codec groundwork qualified; actual guard/PG/HTTP **NOT_RUN** |
+| Media developer | Uploader-only local transactional policy and producer settlement under canonical fence | Runtime/settlement helper qualified; actual canonical/root/HTTP **NOT_RUN** |
 | Participant developer | Actual self-profile/avatar/preferences authority and constructor | Source active, **NOT_RUN** |
 
 The proposed prepared-transaction owner guard has explicit environment and crash
