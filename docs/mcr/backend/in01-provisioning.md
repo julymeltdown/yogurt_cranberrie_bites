@@ -1,5 +1,16 @@
 # IN01 canonical account and owned-event provisioning
 
+Current optional Concert checkpoint (2026-11-04): **bounded provisioning PASS;
+IN01 NOT_RUN**. Driver commit `2b4976319111bce84357a009ba94bdcee0730857` completed
+two real canonical Auth journeys and the qualified Concert binary's full12 SQLx
+migrate/verify/repeat/restart checks, with owned cleanup PASS. Actual bootstrap
+remained503 without Concert serving or reviewed art; no gate config was emitted.
+See [current Concert provisioning evidence](in01-concert-provision.md) for exact
+source differences, artifacts, commands and limitations. The checkpoints below
+retain their historical revisions and narrower qualification scopes.
+
+## Original historical checkpoint
+
 Status: **IN_PROGRESS; committed tooling handoff, IN01 NOT_RUN**. The provisioning
 run passed at `21d1657`: two independent canonical Auth accounts completed actual
 signup, email delivery, verification and login against the immutable historical
