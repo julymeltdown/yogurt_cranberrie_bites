@@ -128,3 +128,20 @@ Validation at this slice:
 All live BE31/32/24 endpoints, two-user IN03, actual iOS/Android, production media
 and final acceptance remain `NOT_RUN`. BE31/32 owner is
 `01a1a205-3f89-78c3-aa67-719c4bb40b8d`. No master push was performed by this worker.
+
+Follow-up hardening: feed order compares exact UTC fractions (including
+submillisecond precision) before the UUID tie-breaker; equivalent timestamp
+precision is treated as the same instant. Added a focused regression probe.
+Both `EventFeed` and `FeedThread` optionally accept `renderMedia(mediaId, post)`
+(`RenderPostMedia` export). Delivery can supply the qualified FE04 protected
+media reader using the canonical identity; the callback receives only the
+strict public post/ID. Without it, attachments stay explicitly unavailable.
+This is an integration seam, not proof that protected image reading has run.
+
+Delivery ancestry: first FE27 worker commit `97ef9fb` (base `f0e44bd`),
+then FE28 worker commit `7e4f533` (parent `97ef9fb`). Delivery reported the FE27
+integration as `9f72a71`; worker does not infer final remote delivery from this
+message. Follow-up exact-fraction ordering test: 11 FE27 controller tests exit 0;
+total focused controller/UI cases now 24. Typecheck and focused oxlint exit 0.
+`node scripts/mcr/check-ui-origin.mjs`: exit 0, 311 files scanned, zero static
+origin/import violations. This guard does not replace QA02 manual visual review.

@@ -78,7 +78,17 @@ export function parse<T>(name: string, value: unknown): T {
 export function decoder<T>(name: string, check: (data: T) => boolean): Decoder<T> {
   return value => { const data = parse<T>(name, value); if (!check(data)) throw new Error('Wrong feed context'); return data }
 }
+function compareTime(a: string, b: string): number {
+  const seconds = a.slice(0, 19).localeCompare(b.slice(0, 19))
+  if (seconds) return seconds
+  const fraction = (time: string) => time.slice(19, -1).replace(/^\./, '')
+  const af = fraction(a), bf = fraction(b), width = Math.max(af.length, bf.length)
+  return af.padEnd(width, '0').localeCompare(bf.padEnd(width, '0'))
+}
 export function ordered<T extends { readonly created_at: string }>(items: readonly T[], id: (row: T) => string): boolean {
-  return new Set(items.map(id)).size === items.length && items.every((row, i) => i === 0 || Date.parse(items[i - 1]!.created_at) > Date.parse(row.created_at)
-    || (items[i - 1]!.created_at === row.created_at && id(items[i - 1]!) > id(row)))
+  return new Set(items.map(id)).size === items.length && items.every((row, i) => {
+    if (i === 0) return true
+    const previous = items[i - 1]!, time = compareTime(previous.created_at, row.created_at)
+    return time > 0 || (time === 0 && id(previous) > id(row))
+  })
 }

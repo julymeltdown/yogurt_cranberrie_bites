@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react'
+import { useSyncExternalStore, type ReactNode } from 'react'
 import type { EventFeedController } from './controller'
 import type { Filter, Notice, Post, ResourceLink } from './contract'
 import { messages, type Slot } from './runtime'
@@ -12,15 +12,16 @@ export function ReadStatus({ slot, retry }: { slot: Slot<unknown>; retry: () => 
 export function NoticeContent({ notice }: { notice: Notice }) {
   return <article><h2>{notice.title}</h2><p className="feed-text">{notice.text}</p><p><a href={notice.source_uri} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">Source</a> · Confirmed <time dateTime={notice.confirmed_at}>{new Date(notice.confirmed_at).toLocaleString()}</time></p></article>
 }
-export function PostContent({ post, onLink }: { post: Post; onLink: (link: ResourceLink) => void }) {
+export type RenderPostMedia = (mediaId: string, post: Post) => ReactNode
+export function PostContent({ post, onLink, renderMedia }: { post: Post; onLink: (link: ResourceLink) => void; renderMedia?: RenderPostMedia | undefined }) {
   return <><p><strong>{post.author.display_name}</strong> · <time dateTime={post.created_at}>{new Date(post.created_at).toLocaleString()}</time>{post.edited_at ? ' · Edited' : ''}</p>
     <p className="feed-text">{post.text}</p>
-    {post.media_ids.length > 0 && <p>{post.media_ids.length} image attachment(s). Image viewing is currently unavailable.</p>}
+    {post.media_ids.length > 0 && (renderMedia ? <div aria-label="Post images">{post.media_ids.map(id => <figure key={id}>{renderMedia(id, post)}</figure>)}</div> : <p>{post.media_ids.length} image attachment(s). Image viewing is currently unavailable.</p>)}
     {post.links.length > 0 && <ul aria-label="Related content">{post.links.map((link, i) => <li key={`${link.target_id}-${i}`}><button type="button" onClick={() => onLink(link)}>Open {link.target_type.toLowerCase()}</button></li>)}</ul>}
   </>
 }
-export function EventFeed({ controller, onPost, onCompose, onLink }: {
-  controller: EventFeedController; onPost: (id: string) => void; onCompose: () => void; onLink: (link: ResourceLink) => void
+export function EventFeed({ controller, onPost, onCompose, onLink, renderMedia }: {
+  renderMedia?: RenderPostMedia | undefined; controller: EventFeedController; onPost: (id: string) => void; onCompose: () => void; onLink: (link: ResourceLink) => void
 }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
   return <section className="event-feed" aria-label="Event feed"><header><p>From the crowd</p><h1>FEED</h1><p>Latest posts from this event.</p>
@@ -37,7 +38,7 @@ export function EventFeed({ controller, onPost, onCompose, onLink }: {
       <button type="button" disabled={state.feed.phase === 'loading'} onClick={() => { void controller.loadFeed() }}>Refresh feed</button>
       <ReadStatus slot={state.feed} retry={() => { void controller.loadFeed() }} />
       {state.feed.data?.items.length === 0 && <p>No posts yet.</p>}
-      <ol className="feed-list" aria-label="Latest posts">{state.feed.data?.items.map(post => <li key={post.post_id}><article><PostContent post={post} onLink={onLink} /><button type="button" onClick={() => onPost(post.post_id)}>Open thread · {post.comment_count} comments · {post.reaction_count} reactions</button></article></li>)}</ol>
+      <ol className="feed-list" aria-label="Latest posts">{state.feed.data?.items.map(post => <li key={post.post_id}><article><PostContent post={post} onLink={onLink} renderMedia={renderMedia} /><button type="button" onClick={() => onPost(post.post_id)}>Open thread · {post.comment_count} comments · {post.reaction_count} reactions</button></article></li>)}</ol>
       {state.feed.data?.next_cursor && <button type="button" disabled={state.feed.phase === 'loading'} onClick={() => { void controller.loadFeed(true) }}>Load older posts</button>}
     </>}
   </section>

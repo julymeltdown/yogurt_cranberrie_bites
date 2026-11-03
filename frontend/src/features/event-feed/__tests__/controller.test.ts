@@ -65,3 +65,8 @@ it('validates source HTTPS and exact public profile instead of accepting leaked 
   expect(() => parse('Domain_feed_PostPublic', { ...post, author: { ...post.author, handles: 'private' } })).toThrow()
   expect(eventId).toBe(post.event_id)
 })
+it('orders submillisecond timestamps and equivalent UTC precision without losing cursor ties', async () => {
+  const { ordered } = await import('../contract')
+  expect(ordered([{ created_at: '2026-11-01T00:00:00.000002Z', id: 'a' }, { created_at: '2026-11-01T00:00:00.000001Z', id: 'z' }], row => row.id)).toBe(true)
+  expect(ordered([{ created_at: '2026-11-01T00:00:00Z', id: 'z' }, { created_at: '2026-11-01T00:00:00.000Z', id: 'a' }], row => row.id)).toBe(true)
+})

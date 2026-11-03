@@ -1,7 +1,7 @@
 import { useState, useSyncExternalStore } from 'react'
 import type { FeedThreadController } from './controller'
 import type { ResourceLink } from '../event-feed/contract'
-import { PostContent, ReadStatus } from '../event-feed/EventFeed'
+import { PostContent, ReadStatus, type RenderPostMedia } from '../event-feed/EventFeed'
 import { messages } from '../event-feed/runtime'
 import '../event-feed/feed.css'
 
@@ -42,8 +42,8 @@ export function PostComposer({ controller, onPost }: { controller: FeedThreadCon
     {state.draft.edit && <button type="button" disabled={busy} onClick={() => { void controller.loadPost() }}>Reload current post</button>}
   </section>
 }
-export function FeedThread({ controller, onLink, onEditPost, onReport }: {
-  controller: FeedThreadController; onLink: (link: ResourceLink) => void; onEditPost: () => void
+export function FeedThread({ controller, onLink, onEditPost, onReport, renderMedia }: {
+  renderMedia?: RenderPostMedia | undefined; controller: FeedThreadController; onLink: (link: ResourceLink) => void; onEditPost: () => void
   onReport: (target: { target_type: 'POST' | 'COMMENT'; target_id: string }) => void
 }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
@@ -52,7 +52,7 @@ export function FeedThread({ controller, onLink, onEditPost, onReport }: {
   return <section className="event-feed" aria-label="Post thread"><h1>THREAD</h1>
     {!state.available && <p role="status">Thread unavailable for the current account or event.</p>}
     {state.readOnly && <p role="status">This event is read-only.</p>}<ReadStatus slot={state.detail} retry={() => { void controller.loadPost() }} />
-    {post && <><article><PostContent post={post} onLink={onLink} /><p>{post.reaction_count} reactions · {post.comment_count} comments</p>
+    {post && <><article><PostContent post={post} onLink={onLink} renderMedia={renderMedia} /><p>{post.reaction_count} reactions · {post.comment_count} comments</p>
       <button type="button" aria-pressed={post.reacted_by_me} disabled={disabled} onClick={() => { void controller.react() }}>{post.reacted_by_me ? 'Remove reaction' : 'React'}</button>
       <button type="button" onClick={() => onReport({ target_type: 'POST', target_id: post.post_id })}>Report post</button>
       {post.author.user_id === state.userId && <><button type="button" disabled={disabled} onClick={() => { if (controller.beginPostEdit()) onEditPost() }}>Edit post</button><button type="button" disabled={disabled} onClick={() => setDeletion({ postId: post.post_id, commentId: null })}>Delete post</button></>}
