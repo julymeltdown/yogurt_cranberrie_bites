@@ -253,8 +253,8 @@ async fn context(
 #[tokio::test]
 #[ignore = "requires marker/inode-owned Auth/Friend/Concert PostgreSQL"]
 async fn native_signed_presence_local_policy_revocation_and_deadlines() -> anyhow::Result<()> {
-    // Heap-pin the long native scenario rather than copying its large async
-    // state through libtest/Tokio's default test-thread stack.
+    // Heap-pin the long scenario AND each typed recipient read, keeping the
+    // aggregate native fixture out of libtest/Tokio's default test-thread stack.
     Box::pin(native_scenario()).await
 }
 async fn native_scenario() -> anyhow::Result<()> {
@@ -303,7 +303,7 @@ async fn native_scenario() -> anyhow::Result<()> {
         )?,
     );
     let ctx = context(&auth, &a, &t).await?;
-    let first = reader.read(&ctx).await?;
+    let first = Box::pin(reader.read(&ctx)).await?;
     assert!(first.visible());
     first.check_scope(&ctx)?;
     assert!(first.valid_until() <= a.membership.lease_until.min(t.membership.lease_until));
@@ -321,7 +321,7 @@ async fn native_scenario() -> anyhow::Result<()> {
     assert_eq!(self_context.request_id(), ctx.request_id());
     assert!(self_context.deadline().stop() <= ctx.parent().deadline().stop());
     assert!(
-        reader.read(&self_context).await?.visible(),
+        Box::pin(reader.read(&self_context)).await?.visible(),
         "distinct target shares original request"
     );
     assert!(
@@ -330,7 +330,7 @@ async fn native_scenario() -> anyhow::Result<()> {
     );
     assert_eq!(format!("{first:?}"), "RecipientObservation([REDACTED])");
     assert!(
-        reader.read(&ctx).await.is_err(),
+        Box::pin(reader.read(&ctx)).await.is_err(),
         "same owner attempts cannot be reset"
     );
     assert_eq!(
@@ -350,7 +350,7 @@ async fn native_scenario() -> anyhow::Result<()> {
     .bind(actor)
     .execute(&friend_pool)
     .await?;
-    let blocked = reader.read(&context(&auth, &a, &t).await?).await?;
+    let blocked = Box::pin(reader.read(&context(&auth, &a, &t).await?)).await?;
     assert!(!blocked.visible());
     assert_eq!(blocked.owner_revisions().auth, first.owner_revisions().auth);
     assert!(blocked.owner_revisions().friend.revision > first.owner_revisions().friend.revision);
@@ -362,7 +362,7 @@ async fn native_scenario() -> anyhow::Result<()> {
     .execute(&friend_pool)
     .await?;
     sqlx::query("update concert_event_admissions set state='SUSPENDED',restriction_revision=restriction_revision+1 where event_id=$1 and user_id=$2").bind(event.uuid()).bind(subject).execute(&concert).await?;
-    let local_denied = reader.read(&context(&auth, &a, &t).await?).await?;
+    let local_denied = Box::pin(reader.read(&context(&auth, &a, &t).await?)).await?;
     assert!(!local_denied.visible());
     assert!(
         local_denied.local_revisions().subject_restriction.get()
@@ -376,7 +376,9 @@ async fn native_scenario() -> anyhow::Result<()> {
     sqlx::query("insert into concert_relationship_pairs(event_id,low_user,high_user,low_blocks_high) values($1,$2,$3,true)")
         .bind(event.uuid()).bind(actor.min(subject)).bind(actor.max(subject)).execute(&mut *block_tx).await?;
     block_tx.commit().await?;
-    assert!(!reader.read(&context(&auth, &a, &t).await?).await?.visible());
+    assert!(!Box::pin(reader.read(&context(&auth, &a, &t).await?))
+        .await?
+        .visible());
     let mut block_tx = concert.begin().await?;
     crate::relationship::pin_deadline(&mut block_tx, Utc::now() + chrono::Duration::seconds(5))
         .await?;
@@ -387,7 +389,7 @@ async fn native_scenario() -> anyhow::Result<()> {
         .bind(subject)
         .execute(&auth_pool)
         .await?;
-    let revoked_subject = reader.read(&context(&auth, &a, &t).await?).await?;
+    let revoked_subject = Box::pin(reader.read(&context(&auth, &a, &t).await?)).await?;
     assert!(!revoked_subject.visible());
     assert!(
         revoked_subject.owner_revisions().auth.revision > blocked.owner_revisions().auth.revision
@@ -405,7 +407,7 @@ async fn native_scenario() -> anyhow::Result<()> {
     .bind(subject)
     .execute(&concert)
     .await?;
-    assert!(reader.read(&drift).await.is_err());
+    assert!(Box::pin(reader.read(&drift)).await.is_err());
     sqlx::query(
         "update concert_world_memberships set disconnected=false where event_id=$1 and user_id=$2",
     )
@@ -418,7 +420,7 @@ async fn native_scenario() -> anyhow::Result<()> {
         .bind(event.uuid())
         .execute(&concert)
         .await?;
-    assert!(reader.read(&pin_drift).await.is_err());
+    assert!(Box::pin(reader.read(&pin_drift)).await.is_err());
     sqlx::query("update concert_world_rooms set map_revision=1 where event_id=$1")
         .bind(event.uuid())
         .execute(&concert)
@@ -429,7 +431,7 @@ async fn native_scenario() -> anyhow::Result<()> {
         .bind(Uuid::new_v4())
         .execute(&concert)
         .await?;
-    assert!(reader.read(&owner_drift).await.is_err());
+    assert!(Box::pin(reader.read(&owner_drift)).await.is_err());
     sqlx::query("update concert_world_owner_leases set owner_epoch=$2 where event_id=$1")
         .bind(event.uuid())
         .bind(owner.epoch)
@@ -458,7 +460,7 @@ async fn native_scenario() -> anyhow::Result<()> {
         }
     };
     let start = tokio::time::Instant::now();
-    let (result, observed_wait) = tokio::join!(reader.read(&waiting), cancel);
+    let (result, observed_wait) = tokio::join!(Box::pin(reader.read(&waiting)), cancel);
     assert!(
         observed_wait > 0,
         "test must cancel an actually blocked local query"
@@ -482,17 +484,20 @@ async fn native_scenario() -> anyhow::Result<()> {
     blocker.rollback().await?;
     let ctx = context(&auth, &a, &t).await?;
     ctx.cancel();
-    assert!(reader.read(&ctx).await.is_err());
+    assert!(Box::pin(reader.read(&ctx)).await.is_err());
     // A live wall credential cannot extend the original operation stop.
     let ctx = context(&auth, &a, &t).await?;
     tokio::time::sleep_until(ctx.deadline().stop()).await;
-    assert!(reader.read(&ctx).await.is_err());
+    assert!(Box::pin(reader.read(&ctx)).await.is_err());
     let ctx = context(&auth, &a, &t).await?;
     sqlx::query("update refresh_tokens set revoked_at=clock_timestamp() where user_id=$1")
         .bind(actor)
         .execute(&auth_pool)
         .await?;
-    assert_eq!(reader.read(&ctx).await.unwrap_err(), WorldError::Denied);
+    assert_eq!(
+        Box::pin(reader.read(&ctx)).await.unwrap_err(),
+        WorldError::Denied
+    );
     drop(reader);
     drop(auth);
     drop(friend);
