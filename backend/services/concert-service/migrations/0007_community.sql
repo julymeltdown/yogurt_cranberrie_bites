@@ -87,3 +87,15 @@ CREATE CONSTRAINT TRIGGER concert_community_party_deadline AFTER INSERT OR UPDAT
  DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.concert_community_deadline_guard();
 CREATE CONSTRAINT TRIGGER concert_community_gift_deadline AFTER INSERT OR UPDATE ON public.concert_community_giveaways
  DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.concert_community_deadline_guard();
+
+-- Guess admission is idempotent even if a process dies before its BE15 result receipt.
+-- Correlation and keyed request MAC only; never plaintext code, IP or actor claims.
+CREATE TABLE public.concert_community_pickup_admissions (
+ actor_id uuid NOT NULL,event_id uuid NOT NULL REFERENCES public.concert_events(event_id),
+ idempotency_key uuid NOT NULL,reservation_id uuid NOT NULL,
+ request_hash text NOT NULL CHECK(request_hash ~ '^hmac-sha256:v1:[A-Za-z0-9_-]{1,32}:[0-9a-f]{64}$'),
+ created_at timestamptz NOT NULL,expires_at timestamptz NOT NULL,
+ PRIMARY KEY(actor_id,event_id,idempotency_key),
+ FOREIGN KEY(event_id,reservation_id) REFERENCES public.concert_community_reservations(event_id,reservation_id),
+ CHECK(expires_at=created_at+interval '86400 seconds')
+);

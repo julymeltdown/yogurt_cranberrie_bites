@@ -360,7 +360,7 @@ impl Giveaway {
                 if self.state != GiftState::Open || !self.meeting_valid(now) {
                     return Err(GiftError::InvalidTransition);
                 }
-                if now >= self.expires_at() {
+                if now >= self.fields.pickup_ends_at {
                     return Err(GiftError::Expired);
                 }
                 if self
@@ -451,7 +451,13 @@ impl Giveaway {
                 if r.state != ReservationState::Ready {
                     return Err(GiftError::InvalidTransition);
                 }
-                r.code_expires_at = Some(std::cmp::min(now + Duration::seconds(300), r.expires_at));
+                r.code_expires_at = Some(
+                    DateTime::from_timestamp_micros(
+                        std::cmp::min(now + Duration::seconds(300), r.expires_at)
+                            .timestamp_micros(),
+                    )
+                    .ok_or(GiftError::InvalidInput)?,
+                );
                 r.code_generation = r
                     .code_generation
                     .checked_add(1)

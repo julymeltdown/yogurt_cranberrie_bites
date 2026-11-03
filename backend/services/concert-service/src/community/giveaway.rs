@@ -101,7 +101,7 @@ impl<A: GiftAuthority> PgGifts<A> {
             issued: Mutex::new(None),
         };
         if matches!(command.action, GiftAction::Claim { .. }) {
-            self.charge_attempt(&producer, context.ok_or(CommandError::Unavailable)?)
+            self.charge_attempt(&producer, &request, receipt_keys, context)
                 .await?;
         }
         let result = PgCommandRepository::new(self.pool.clone())
@@ -149,12 +149,14 @@ impl<A: GiftAuthority> PgGifts<A> {
     async fn charge_attempt(
         &self,
         p: &GiftProducer<'_, A>,
-        context: &TrustedPickupContext,
+        request: &CanonicalRequest,
+        keys: &FingerprintKeys,
+        context: Option<&TrustedPickupContext>,
     ) -> Result<(), GiftServiceError> {
         let cmd = p.command;
         let mut tx = self.pool.begin().await.map_err(db)?;
         p.authorize(&mut tx, cmd.scope()?, cmd.target()).await?;
-        p.write_guard(&mut tx, cmd.scope()?).await?;
+
         let g = load(&mut tx, cmd.event, cmd.giveaway_id(), true, false)
             .await?
             .ok_or(CommandError::Denied)?;
@@ -163,9 +165,38 @@ impl<A: GiftAuthority> PgGifts<A> {
             .iter()
             .find(|r| r.id == cmd.target())
             .ok_or(CommandError::Denied)?;
+        // Resolve terminal/current receipt correlation before spending any new guess budget.
+        // BE15 performs authoritative fingerprint/expiry projection after this transaction.
+        sqlx::query("select singleton from concert_command_budget where singleton for update")
+            .fetch_one(&mut *tx)
+            .await
+            .map_err(db)?;
+        let receipt_exists:bool=sqlx::query_scalar("select exists(select 1 from concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4)").bind(cmd.actor).bind(cmd.event).bind(cmd.operation()).bind(cmd.key).fetch_one(&mut *tx).await.map_err(db)?;
+        if receipt_exists {
+            tx.commit().await.map_err(db)?;
+            return Ok(());
+        }
+        if let Some(row)=sqlx::query("select reservation_id,request_hash,expires_at from concert_community_pickup_admissions where actor_id=$1 and event_id=$2 and idempotency_key=$3 for update").bind(cmd.actor).bind(cmd.event).bind(cmd.key).fetch_optional(&mut *tx).await.map_err(db)? {
+            let expired:bool=sqlx::query_scalar("select clock_timestamp()>=$1").bind(row.try_get::<DateTime<Utc>,_>("expires_at").map_err(db)?).fetch_one(&mut *tx).await.map_err(db)?;
+            if expired{return Err(CommandError::Expired.into())}
+            let hash=Fingerprint::from_storage(&row.try_get::<String,_>("request_hash").map_err(db)?)?;
+            if row.try_get::<Uuid,_>("reservation_id").map_err(db)?!=cmd.target() || !keys.verify(request,&hash)? {return Err(CommandError::Conflict.into())}
+            tx.commit().await.map_err(db)?;return Ok(())
+        }
         if r.state == ReservationState::Claimed {
             tx.commit().await.map_err(db)?;
             return Ok(());
+        }
+        p.write_guard(&mut tx, cmd.scope()?).await?;
+        let context = context.ok_or(CommandError::Unavailable)?;
+        let used: i64 =
+            sqlx::query_scalar("select count(*) from concert_community_pickup_admissions")
+                .fetch_one(&mut *tx)
+                .await
+                .map_err(db)?;
+        let actor_used:i64=sqlx::query_scalar("select count(*) from concert_community_pickup_admissions where actor_id=$1 and event_id=$2").bind(cmd.actor).bind(cmd.event).fetch_one(&mut *tx).await.map_err(db)?;
+        if used >= 1000000 || actor_used >= 1000 {
+            return Err(CommandError::Capacity.into());
         }
         // Budget commit is independent from command savepoint rollback, so wrong guesses persist.
         let mut buckets = vec![
@@ -182,6 +213,8 @@ impl<A: GiftAuthority> PgGifts<A> {
                 return Err(CommandError::Capacity.into());
             }
         }
+        let fingerprint = keys.sign(request)?;
+        sqlx::query("insert into concert_community_pickup_admissions(actor_id,event_id,idempotency_key,reservation_id,request_hash,created_at,expires_at) select $1,$2,$3,$4,$5,t,t+interval '86400 seconds' from (select clock_timestamp() t) q").bind(cmd.actor).bind(cmd.event).bind(cmd.key).bind(cmd.target()).bind(fingerprint.as_storage()).execute(&mut *tx).await.map_err(db)?;
         tx.commit().await.map_err(db)?;
         Ok(())
     }
@@ -511,7 +544,7 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
             self.authority.meeting_in(c, scope.event, meeting).await?;
         }
         if matches!(cmd.action, GiftAction::Reserve { .. }) {
-            super::policy::pin_effect_until(c, gift.expires_at()).await?;
+            super::policy::pin_effect_until(c, gift.fields.pickup_ends_at).await?;
         }
         if matches!(
             cmd.action,

@@ -252,3 +252,28 @@ only the explicit owner-management projection may include drafts. Management
 paginates reservations with exact actor/event/target checks and sorted current
 relationship decisions. A focused native draft/public-detail regression is
 included in the pending candidate.
+
+
+Focused pickup review fixes (latest candidate still pending native rebuild):
+
+- New reservations stop at the exclusive pickup-end boundary; configured grace
+  preserves existing holds only. The same end is deferred-checked at commit.
+- Claim quota admission is correlated by actor/event/idempotency key and the
+  existing BE15 keyed canonical fingerprint. It commits with guess counters before
+  BE15 execution, preventing concurrent duplicate requests or a crash gap from
+  charging the same guess again. Existing BE15 receipts are resolved before any
+  new quota/write gate; READ_ONLY can recover the original result. Different input
+  under an admitted key conflicts; admission expires after86400 seconds and its
+  retained correlation is bounded at1000 per actor/event and1000000 globally.
+  Admission rows contain no plaintext code, raw IP or provider claims. They do
+  not replace the BE15 command receipt or grant any authority. Root and current
+  READ checks still precede correlation, and a genuinely new command uses the
+  normal write gate.
+- Issued-code expiry is rounded down once to PostgreSQL microseconds before
+  aggregate storage, SQL storage and HMAC generation. Canonical request timestamps
+  retain their original precision. This avoids false rejection when expiry is
+  capped by a reservation with fractional nanoseconds.
+
+Regressions cover grace admission, capped fractional expiry, concurrent and
+repeated failed-claim replay, changed-body conflict, distinct-guess limits and
+successful claim recovery in READ_ONLY without a fresh IP context.

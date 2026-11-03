@@ -1,4 +1,4 @@
-use chrono::{DateTime, Duration, Utc};
+use chrono::{DateTime, Duration, Timelike, Utc};
 use concert_domain::community::giveaway::*;
 use uuid::Uuid;
 fn now() -> DateTime<Utc> {
@@ -279,4 +279,55 @@ fn quantity_window_owner_and_meeting_are_enforced() {
         ),
         Err(GiftError::InvalidTransition)
     );
+}
+
+#[test]
+fn admission_ends_before_existing_reservation_grace() {
+    let mut g = gift();
+    g.fields.quantity_total = 2;
+    let id = reserve(&mut g, Uuid::new_v4());
+    let end = g.fields.pickup_ends_at;
+    g.advance_time(end, 100).unwrap();
+    assert_eq!(g.reservations[0].id, id);
+    assert_eq!(g.reservations[0].state, ReservationState::Ready);
+    assert_eq!(g.reserved_unclaimed, 1);
+    for at in [end, end + Duration::seconds(30)] {
+        assert_eq!(
+            g.change(
+                Uuid::new_v4(),
+                &GiftAction::Reserve {
+                    giveaway_revision: g.revision
+                },
+                Uuid::new_v4(),
+                at
+            ),
+            Err(GiftError::Expired)
+        );
+    }
+    assert_eq!(g.advance_time(end + Duration::seconds(60), 100).unwrap(), 1);
+}
+
+#[test]
+fn code_expiry_capped_by_fractional_reservation_uses_database_precision() {
+    let mut g = gift();
+    let start = g.fields.pickup_starts_at;
+    g.fields.pickup_ends_at = (start + Duration::seconds(30))
+        .with_nanosecond(123456789)
+        .unwrap();
+    let user = Uuid::new_v4();
+    let id = reserve(&mut g, user);
+    g.advance_time(start, 100).unwrap();
+    g.change(
+        user,
+        &GiftAction::IssueCode {
+            reservation: id,
+            expected: 2,
+        },
+        Uuid::new_v4(),
+        start,
+    )
+    .unwrap();
+    let expires = g.reservations[0].code_expires_at.unwrap();
+    assert_eq!(expires.timestamp_subsec_nanos(), 123456000);
+    assert!(expires <= g.reservations[0].expires_at);
 }

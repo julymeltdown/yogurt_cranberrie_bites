@@ -2,7 +2,7 @@
 #[path = "support/community/owned.rs"]
 mod owned;
 use async_trait::async_trait;
-use chrono::{Duration, Utc};
+use chrono::{Duration, Timelike, Utc};
 use concert_application::{commands::*, community::giveaway::*};
 use concert_domain::community::giveaway::*;
 use concert_service::community::{giveaway::*, CommunityAuthority};
@@ -354,6 +354,23 @@ async fn community_gift_code_rotation_throttle_and_one_time_pickup() -> anyhow::
             .receipt,
         receipt
     );
+    sqlx::query("update concert_events set phase='READ_ONLY' where event_id=$1")
+        .bind(event)
+        .execute(&pool)
+        .await?;
+    // Recovery requires fresh read authority rather than a new write or guess admission.
+    assert_eq!(
+        service
+            .execute(&claim, &keys, &codes, None)
+            .await
+            .unwrap()
+            .receipt,
+        receipt
+    );
+    sqlx::query("update concert_events set phase='OPEN' where event_id=$1")
+        .bind(event)
+        .execute(&pool)
+        .await?;
     claim.key = Uuid::new_v4();
     assert_eq!(
         service
@@ -427,22 +444,59 @@ async fn community_gift_guesses_persist_and_expiry_cancel_race_release_once() ->
     } else {
         "000000"
     };
-    for _ in 0..5 {
-        let mut claim = command(
-            owner,
-            event,
-            gift,
-            GiftAction::Claim {
-                reservation,
-                expected: 2,
-            },
-        );
-        claim.code = Some(PickupCode::parse(wrong.into()).unwrap());
+    let mut failed = command(
+        owner,
+        event,
+        gift,
+        GiftAction::Claim {
+            reservation,
+            expected: 2,
+        },
+    );
+    failed.code = Some(PickupCode::parse(wrong.into()).unwrap());
+    let (first, concurrent) = tokio::join!(
+        service.execute(&failed, &keys, &codes, Some(&context)),
+        service.execute(&failed, &keys, &codes, Some(&context))
+    );
+    for result in [first, concurrent] {
         assert!(matches!(
-            service.execute(&claim, &keys, &codes, Some(&context)).await,
+            result,
             Err(GiftServiceError::Gift(GiftError::CodeInvalid))
         ));
     }
+    for _ in 0..7 {
+        assert!(matches!(
+            service
+                .execute(&failed, &keys, &codes, Some(&context))
+                .await,
+            Err(GiftServiceError::Gift(GiftError::CodeInvalid))
+        ));
+    }
+    // Same key with a different guess conflicts without consuming another guess.
+    failed.code = Some(PickupCode::parse(issued.code.expose().into()).unwrap());
+    assert!(matches!(
+        service
+            .execute(&failed, &keys, &codes, Some(&context))
+            .await,
+        Err(GiftServiceError::Command(CommandError::Conflict))
+    ));
+    for _ in 0..4 {
+        failed.key = Uuid::new_v4();
+        failed.code = Some(PickupCode::parse(wrong.into()).unwrap());
+        assert!(matches!(
+            service
+                .execute(&failed, &keys, &codes, Some(&context))
+                .await,
+            Err(GiftServiceError::Gift(GiftError::CodeInvalid))
+        ));
+    }
+    let admissions: i64 = sqlx::query_scalar(
+        "select count(*) from concert_community_pickup_admissions where event_id=$1",
+    )
+    .bind(event)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(admissions, 5);
     let mut claim = command(
         owner,
         event,
@@ -590,5 +644,95 @@ async fn community_gift_draft_stays_out_of_public_detail() -> anyhow::Result<()>
         .management(Uuid::new_v4(), event, gift, None, None, 20)
         .await
         .is_err());
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "requires marker-owned native cluster"]
+async fn community_gift_fractional_capped_code_can_be_claimed() -> anyhow::Result<()> {
+    let (pool, event, owner, gift) = fixture(1).await?;
+    let user = Uuid::new_v4();
+    allow(&pool, event, user).await?;
+    let service = PgGifts::new(pool.clone(), SyntheticAuthority);
+    let keys = keys();
+    let codes = code_keys();
+    let mut fields = service.detail(owner, event, gift).await.unwrap().fields;
+    fields.pickup_ends_at = (Utc::now() + Duration::seconds(30))
+        .with_nanosecond(123456789)
+        .unwrap();
+    service
+        .execute(
+            &command(
+                owner,
+                event,
+                gift,
+                GiftAction::Update {
+                    expected: 3,
+                    fields,
+                    state: GiftState::Open,
+                },
+            ),
+            &keys,
+            &codes,
+            None,
+        )
+        .await
+        .unwrap();
+    let reserve = command(
+        user,
+        event,
+        gift,
+        GiftAction::Reserve {
+            giveaway_revision: 4,
+        },
+    );
+    let reservation = reserve.target();
+    service
+        .execute(&reserve, &keys, &codes, None)
+        .await
+        .unwrap();
+    let issued = service
+        .execute(
+            &command(
+                user,
+                event,
+                gift,
+                GiftAction::IssueCode {
+                    reservation,
+                    expected: 1,
+                },
+            ),
+            &keys,
+            &codes,
+            None,
+        )
+        .await
+        .unwrap()
+        .issued_code
+        .unwrap();
+    assert_eq!(issued.expires_at.timestamp_subsec_nanos(), 123456000);
+    let mut claim = command(
+        owner,
+        event,
+        gift,
+        GiftAction::Claim {
+            reservation,
+            expected: 2,
+        },
+    );
+    claim.code = Some(issued.code);
+    let context = TrustedPickupContext::from_trusted_keyed_ip_bucket([39; 32]);
+    service
+        .execute(&claim, &keys, &codes, Some(&context))
+        .await
+        .unwrap();
+    assert_eq!(
+        service
+            .reservation(user, event, gift, reservation)
+            .await
+            .unwrap()
+            .state,
+        ReservationState::Claimed
+    );
     Ok(())
 }
