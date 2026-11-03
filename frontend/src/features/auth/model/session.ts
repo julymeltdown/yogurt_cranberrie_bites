@@ -7,6 +7,7 @@ import { canonicalUuid, decodeAuth, decodeCapabilities, decodeContract, validLog
 import { decodeBootstrap } from './bootstrap'
 import { createBrowserCookiePolicy, type CookiePolicy } from './cookie-policy'
 import { createRecovery } from './recovery'
+import { createEnrollment } from './enrollment'
 
 type Notice = 'invalid-input' | 'credentials' | 'rate-limited' | 'unavailable' | 'expired' | 'changed' | null
 export interface AuthState {
@@ -24,6 +25,8 @@ export interface SessionOptions {
   /** Test/qualification seam only. Production composition never enables it. */
   qualifiedRefresh?: boolean
   timeoutMs?: number
+  /** Test-only synthetic policy qualification; never authorizes production consent. */
+  syntheticEnrollment?: boolean
 }
 export function createSessionController(options: SessionOptions) {
   const eventId = canonicalUuid(options.eventId) ? options.eventId : null
@@ -34,9 +37,10 @@ export function createSessionController(options: SessionOptions) {
     ...(options.fetch ? { fetch: options.fetch } : {}), ...(options.timeoutMs ? { timeoutMs: options.timeoutMs } : {}) })
   let state: AuthState = Object.freeze({ readiness: eventId ? 'anonymous' : 'unavailable', pending: null,
     capabilities: 'loading', emailEnabled: false, notice: null, logout: 'none' })
-  let started = false, disposed = false, intent = 0, expiresAt = 0
+  let started = false, disposed = false, intent = 0, expiresAt = 0, enrollmentEmailAvailable = false
   let expiry: ReturnType<typeof setTimeout> | undefined
   let refreshFlight: Promise<void> | undefined
+  let capabilitiesFlight: Promise<void> | undefined
   const listeners = new Set<() => void>()
   const publish = (patch: Partial<AuthState>) => {
     if (disposed) return
@@ -48,7 +52,9 @@ export function createSessionController(options: SessionOptions) {
     publish({ readiness: eventId ? 'anonymous' : 'unavailable', pending: null, notice })
   }
   const recovery = createRecovery({ session, http, privacy, cookiePolicy,
-    canStart: () => !disposed && state.pending === null, beforeConfirm: () => clear() })
+    canStart: () => !disposed && state.pending === null && !enrollment.pending, beforeConfirm: () => clear() })
+  const enrollment = createEnrollment({ session, http, privacy, syntheticQualification: options.syntheticEnrollment === true,
+    canStart: () => !disposed && state.pending === null && !recovery.pending && privacy.capture().gate === 'open', available: () => enrollmentEmailAvailable })
   const stopPeer = cookiePolicy.onInvalidate(() => {
     const interruptedLogout = state.pending === 'logout'
     clear('changed')
@@ -72,13 +78,23 @@ export function createSessionController(options: SessionOptions) {
     }
     return 'unavailable'
   }
-  async function capabilities() {
-    if (disposed || !eventId) { publish({ capabilities: 'error' }); return }
+  async function capabilities(forEnrollment = false) {
+    if (disposed) return
+    if (capabilitiesFlight) return capabilitiesFlight
+    if (!eventId && !forEnrollment) { publish({ capabilities: 'error' }); return }
+    // Reserve before notifying observers: public enrollment discovery and FE09 share one flight.
+    const flight = Promise.resolve().then(async () => {
+      try {
+        const result = await http.request({ path: '/api/auth/capabilities', method: 'GET', access: 'public', errorFamily: 'core', decode: decodeCapabilities })
+        if (!disposed) {
+          enrollmentEmailAvailable = result.data.email
+          publish({ capabilities: 'ready', emailEnabled: Boolean(eventId && result.data.email && cookiePolicy.available) })
+        }
+      } catch { publish({ capabilities: 'error', emailEnabled: false }) }
+    })
+    capabilitiesFlight = flight; enrollmentEmailAvailable = false
     publish({ capabilities: 'loading', emailEnabled: false })
-    try {
-      const result = await http.request({ path: '/api/auth/capabilities', method: 'GET', access: 'public', errorFamily: 'core', decode: decodeCapabilities })
-      if (!disposed) publish({ capabilities: 'ready', emailEnabled: result.data.email && cookiePolicy.available })
-    } catch { publish({ capabilities: 'error', emailEnabled: false }) }
+    try { await flight } finally { if (capabilitiesFlight === flight) capabilitiesFlight = undefined }
   }
   async function refresh(): Promise<void> {
     if (!options.qualifiedRefresh || disposed || !session.read().userId) throw new TransportError('authentication-required')
@@ -124,7 +140,8 @@ export function createSessionController(options: SessionOptions) {
     }
   }
   return {
-    session, queryClient, privacy, request,
+    session, queryClient, privacy, request, enrollment,
+    checkEnrollmentAvailability: () => capabilities(true),
     requestPasswordReset: recovery.request,
     async confirmPasswordReset(token: string, newPassword: string, signal?: AbortSignal) {
       const result = await recovery.confirm(token, newPassword, signal)
@@ -138,7 +155,7 @@ export function createSessionController(options: SessionOptions) {
     start() { if (!started && !disposed) { started = true; void capabilities() } },
     retryCapabilities() { if (state.capabilities !== 'loading') void capabilities() },
     async login(email: string, password: string): Promise<boolean> {
-      if (disposed || state.pending || recovery.pending || !eventId || !state.emailEnabled) return false
+      if (disposed || state.pending || recovery.pending || enrollment.pending || !eventId || !state.emailEnabled) return false
       if (!validLogin(email, password)) { publish({ notice: 'invalid-input', logout: 'none' }); return false }
       clear(); const attempt = intent
       publish({ pending: 'login', logout: 'none' })
@@ -198,7 +215,7 @@ export function createSessionController(options: SessionOptions) {
     },
     dispose() {
       if (disposed) return
-      recovery.dispose(); clear(); privacy.dispose(); queryClient.clear(); stopPeer(); cookiePolicy.dispose(); disposed = true; listeners.clear()
+      enrollment.dispose(); recovery.dispose(); clear(); privacy.dispose(); queryClient.clear(); stopPeer(); cookiePolicy.dispose(); disposed = true; listeners.clear()
     },
   }
 }

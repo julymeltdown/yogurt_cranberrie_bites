@@ -1,0 +1,23 @@
+.auth-enrollment { width: min(100% - 2.5rem, 29rem); margin-inline: auto; padding: 2rem 0 max(2rem, env(safe-area-inset-bottom)); color: var(--mcr-ink); overflow-wrap: anywhere; }
+.auth-enrollment h1 { font-size: clamp(2.25rem, 8vw, 3.5rem); line-height: 1.05; letter-spacing: -.045em; margin: .5rem 0 1.25rem; }
+.auth-enrollment :focus-visible { outline: 3px solid var(--mcr-red); outline-offset: 4px; }
+.enrollment-home, .enrollment-link { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; color: inherit; text-underline-offset: .25em; }
+.enrollment-home { font-weight: 650; }
+.enrollment-eyebrow { margin: 2.5rem 0 .75rem; color: var(--mcr-muted); font-size: .75rem; letter-spacing: .08em; }
+.enrollment-intro { color: var(--mcr-muted); margin-bottom: 1.5rem; }
+.auth-enrollment form { display: grid; gap: .6rem; margin: 1.5rem 0 .75rem; }
+.auth-enrollment label { font-weight: 650; margin-top: .5rem; }
+.auth-enrollment input, .auth-enrollment button { box-sizing: border-box; min-width: 44px; min-height: 48px; padding: .75rem .9rem; border: 1px solid #8a8178; border-radius: 6px; font: inherit; }
+.auth-enrollment input { width: 100%; background: var(--mcr-paper); color: var(--mcr-ink); }
+.auth-enrollment button { cursor: pointer; color: inherit; background: var(--mcr-paper); }
+.auth-enrollment .enrollment-submit { background: var(--mcr-ink); color: var(--mcr-paper); font-weight: 650; margin-top: .75rem; }
+.auth-enrollment :disabled { cursor: not-allowed; opacity: .5; }
+.auth-enrollment .enrollment-choice { display: flex; align-items: center; gap: .75rem; font-weight: 400; }
+.auth-enrollment input[type=checkbox] { flex: 0 0 44px; width: 44px; height: 44px; min-height: 44px; accent-color: var(--mcr-ink); }
+.auth-enrollment .enrollment-help { margin: 0 0 .5rem; font-size: .85rem; color: var(--mcr-muted); }
+.enrollment-feedback { color: #7d2430; }
+.enrollment-feedback:empty { display: none; }
+.enrollment-feedback p { margin: 1rem 0; }
+.enrollment-preview { font-size: .9rem; }
+.enrollment-link { margin-top: .75rem; margin-right: 1rem; }
+@media (prefers-reduced-motion: reduce) { .auth-enrollment * { scroll-behavior: auto; } }

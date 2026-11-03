@@ -3,12 +3,16 @@ import { FoundationApp } from './FoundationApp'
 import { DocumentPage } from '../features/public/ui/DocumentPage'
 import { SignIn } from '../features/auth/ui/SignIn'
 import { ResetPassword } from '../features/auth/ui/ResetPassword'
+import { SignUp } from '../features/auth/ui/SignUp'
+import { VerifyEmail } from '../features/auth/ui/VerifyEmail'
 import { Callback } from '../features/auth/ui/Callback'
 
 /** Lazy public-only boundary. No game/network imports and no fabricated session. */
 export default function PublicBoundary() {
   const location = useLocation(), params = useParams()
   if (location.pathname === '/') return <FoundationApp />
+  if (location.pathname === '/signup') return <SignUp />
+  if (location.pathname === '/verify-email') return <VerifyEmail />
   if (location.pathname === '/login') return <SignIn />
   if (location.pathname === '/reset-password') return <ResetPassword />
   if (location.pathname === '/auth/callback') return <Callback />
