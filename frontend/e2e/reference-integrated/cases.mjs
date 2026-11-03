@@ -22,3 +22,10 @@ export function summarizeNetwork(entries){
     imageRequests:entries.filter(e=>e.type==='Image').length,
     byPath:Object.fromEntries([...new Set(entries.map(e=>e.path))].sort().map(path=>[path,entries.filter(e=>e.path===path).length])) }
 }
+
+export function counterDelta(before,after){
+ const paths=new Set([...Object.keys(before.network.byPath),...Object.keys(after.network.byPath)])
+ return {loaderCalls:after.loaderCalls-before.loaderCalls,fixtureHttpCalls:after.fixtureHttpCalls-before.fixtureHttpCalls,avatarPuts:after.avatarPuts-before.avatarPuts,
+  explicitDecodeCalls:after.decode.calls-before.decode.calls,browserRequests:after.network.requests-before.network.requests,transferredBytes:after.network.transferredBytes-before.network.transferredBytes,cacheHits:after.network.cacheHits-before.network.cacheHits,
+  byPath:Object.fromEntries([...paths].sort().map(path=>[path,(after.network.byPath[path]??0)-(before.network.byPath[path]??0)]).filter(([,count])=>count!==0))}
+}

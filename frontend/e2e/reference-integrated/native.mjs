@@ -6,7 +6,7 @@ import { resolve } from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { createServer } from 'vite'
 import { chromium, expect } from '@playwright/test'
-import { CASES, WIDTHS, CLOCK, REFERENCE_SHA256, viewportFor, summarizeNetwork } from './cases.mjs'
+import { CASES, WIDTHS, CLOCK, REFERENCE_SHA256, viewportFor, summarizeNetwork, counterDelta } from './cases.mjs'
 import { writeComparison } from './comparison.mjs'
 const harnessFiles=['native.mjs','cases.mjs','comparison.mjs','preview.tsx','data.ts','preview.html','metrics.test.mjs']
 const root=resolve(import.meta.dirname,'../../..'),frontend=resolve(root,'frontend')
@@ -21,7 +21,7 @@ const report={kind:'mcr-reference-integrated-v1',candidate:execFileSync('git',['
  evidenceStatus:'IN_PROGRESS',visualAcceptance:'NOT_RUN',liveServices:'NOT_RUN',devices:'NOT_RUN',fixtureMetadataIsApproval:false,
  harnessHashes:{},sourceHashes:{},approvedBytePins:{},cases:[],warm:[],findings:[],browser:''}
 for(const file of harnessFiles)report.harnessHashes[file]=hash(await readFile(resolve(import.meta.dirname,file)))
-for(const path of ['AGENTS.md','frontend/src/app/router.tsx','frontend/src/app/CommunityFeatures.tsx','frontend/src/app/WorldShell.tsx','frontend/src/app/shell.css','frontend/src/world/scenes/MapScene.ts','frontend/src/world/input/controller.ts','frontend/src/world/input/controls.css','frontend/src/entities/avatar/selected-static/release.ts','frontend/src/world/map/resource-cache.ts','frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.tsx','frontend/src/entities/avatar/character-source-pack.json','contracts/generated/mcr-core.openapi.json','contracts/generated/mcr-domain.openapi.json']){
+for(const path of ['AGENTS.md','frontend/src/app/__tests__/default-shell/qualified-data.ts','frontend/src/app/world-entry/__tests__/data.ts','contracts/fixtures/core/bootstrap-open.json','contracts/fixtures/assets/avatar-config.json','contracts/assets/v1/avatar-config.schema.json','contracts/assets/v1/avatar-manifest.schema.json','frontend/src/app/router.tsx','frontend/src/app/CommunityFeatures.tsx','frontend/src/app/WorldShell.tsx','frontend/src/app/shell.css','frontend/src/world/scenes/MapScene.ts','frontend/src/world/input/controller.ts','frontend/src/world/input/controls.css','frontend/src/entities/avatar/selected-static/release.ts','frontend/src/world/map/resource-cache.ts','frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.tsx','frontend/src/entities/avatar/character-source-pack.json','contracts/generated/mcr-core.openapi.json','contracts/generated/mcr-domain.openapi.json']){
  report.sourceHashes[path]=hash(await readFile(resolve(root,path)))
 }
 const releasePath='world/avatars/derived-v1/static-release.json',releaseBytes=await readFile(resolve(frontend,'public',releasePath)),release=JSON.parse(releaseBytes)
@@ -134,13 +134,13 @@ try{
     await random.click();const drafted=await snapshotCounters(page,i.records);assert.equal(drafted.avatarPuts,before.avatarPuts);avatar.draftWrites=0
     if(await save.isEnabled()){await save.click();await expect.poll(async()=>(await snapshotCounters(page,i.records)).avatarPuts).toBe(before.avatarPuts+1);avatar.status='PASS';avatar.code='ONE_CANONICAL_SAVE_REQUEST';avatar.savePuts=1}
    }
-   for(const step of steps){assert.equal(step.singletons.games,1);assert.equal(step.singletons.mounts,1);assert.equal(step.singletons.peak,1);assert.equal(step.singletons.sockets,1);assert.equal(step.singletons.socketPeak,1);assert.equal(step.singletons.activeSockets,1);assert.equal(step.singletons.sameCamera,true);assert.equal(step.singletons.geometry,steps[0].singletons.geometry);assert.deepEqual(step.singletons.outfit,steps[0].singletons.outfit)}assert.equal(i.errors.length,0);report.warm.push({width,status:'PASS',steps,avatar,errors:i.errors})
+   for(let index=1;index<steps.length;index++)steps[index].delta=counterDelta(steps[index-1],steps[index]);for(const step of steps){assert.equal(step.singletons.games,1);assert.equal(step.singletons.mounts,1);assert.equal(step.singletons.peak,1);assert.equal(step.singletons.sockets,1);assert.equal(step.singletons.socketPeak,1);assert.equal(step.singletons.activeSockets,1);assert.equal(step.singletons.sameCamera,true);assert.equal(step.singletons.geometry,steps[0].singletons.geometry);assert.deepEqual(step.singletons.outfit,steps[0].singletons.outfit)}assert.equal(i.errors.length,0);report.warm.push({width,status:'PASS',steps,avatar,errors:i.errors})
   }catch(error){report.warm.push({width,status:'FAIL',steps,code:'WARM_ASSERTION',error:String(error.message).slice(0,1200)})}
   finally{await page.evaluate(()=>window.__REFERENCE_INTEGRATED__?.dispose()).catch(()=>{});await context.close()}
  }
  report.evidenceStatus=report.cases.every(c=>c.status==='CAPTURED')&&report.warm.every(c=>c.status==='PASS')?'CAPTURED':'PARTIAL'
  // Pin actual immutable public scenery/selected-art files that were requested; never synthetic bytes as approved art.
- for(const path of new Set(report.cases.flatMap(c=>c.measurements?.images??[]).map(x=>x.source).filter(p=>p.startsWith('/world/')))){
+ for(const path of new Set([...report.cases.flatMap(c=>c.measurements?.images??[]).map(x=>x.source),...report.cases.flatMap(c=>Object.keys(c.counters?.network.byPath??{})),...report.warm.flatMap(w=>w.steps.flatMap(step=>Object.keys(step.network.byPath)))].filter(p=>p.startsWith('/world/')))){
   try{report.approvedBytePins[path]={sha256:hash(await readFile(resolve(frontend,'public',path.slice(1)))),authority:'SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING'}}catch{report.approvedBytePins[path]={status:'UNREADABLE'}}
  }
  report.selection={widths:process.env.QA_WIDTH?[Number(process.env.QA_WIDTH)]:WIDTHS,cases:report.cases.map(c=>c.id),full:!process.env.QA_WIDTH&&!process.env.QA_CASE};if(!report.selection.full)report.evidenceStatus='PARTIAL';await writeComparison(output,report)
