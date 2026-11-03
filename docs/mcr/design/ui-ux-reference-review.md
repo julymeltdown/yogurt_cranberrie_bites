@@ -20,11 +20,22 @@ committed handoff. These two routes are **MOCK_READY**, not full visual or live
 entry acceptance. Their remaining differences include approved characters,
 illustrated silhouettes and poster lettering.
 
-UIV03 is actively assigned to `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` in an isolated
-frontend worktree for feed, party discovery and gifts presentation. Its actual
-unbudgeted goal is active; its handoff is not yet delivered. World/shell, map,
-customize, wall and profile adoption remain open. Sending the reference to the
-other leads is still distinct from their implementing it.
+UIV03's actual feed, party discovery and gifts presentation is published in
+`bea2e72` from clean author handoff `41adada6eff2de12a87f94a6ac65684c4597bb69`.
+Its bounded goal completed and the writer stopped. The owner recorded 261 tests
+and 96 native browser screenshots at 360/390/430, including the existing default
+community composition. Integration checked the exact assigned paths and bytes,
+121 delivery hashes and fresh combined strict types (exit 0). All 20 author
+source pins match its tested commit; this audit's follow-through narrative is
+the sole intentionally newer integrated pin. See [community evidence](../frontend/community-visual.md).
+Qualified imagery and root shell chrome remain open; no live flow is inferred.
+
+That released chat is now assigned UIV05-MAP in a new isolated worktree for only
+Places presentation. Chat `01a1a26e-1de2-7b41-a294-c9a79cfded9b` has a verified
+new ACTIVE unbudgeted UIV04-ME goal for My Profile presentation. Their new
+handoffs are not yet delivered. World/shell, customize and wall adoption also
+remain open. Sending the reference to other leads is still distinct from their
+implementing it.
 
 Integration verified exact assigned paths and source equality with the UIV02
 handoff, all ten tested-source hashes and 51 final screenshot hashes, and fresh
