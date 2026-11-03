@@ -47,9 +47,10 @@ startup is verified within BE05; product APIs/identity are not.
 ## Integration and ownership
 
 The main checkout integrates reviewed commits serially and alone publishes master.
-Five visible chats now cover real HTTP owner-chain validation, BE08 place storage,
-FE17 replication implementation, independent frontend C04 consumer review and
-QA C04 contract-readiness review. Each has an isolated worktree and exact writable paths. The user withdrew
+Four active visible chats cover real HTTP owner-chain validation, BE08 place
+storage, FE17 replication and independent frontend C04 consumer review. The QA
+readiness audit is integrated with parent corrections; its goal is COMPLETE and
+checkout stopped. Each has an isolated worktree and exact writable paths. The user withdrew
 the fixed-model requirement; coordination preserves chosen model/reasoning settings.
 Both FE19 implementation and independent review goals completed after integration.
 The extra frontend chat now implements FE17; the original prepares the exact

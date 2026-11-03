@@ -10,7 +10,7 @@ instruction to preserve them without orchestration overrides.
 | BE08 places and map releases | `mcr(be) BE08 places and map releases` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-places` / `codex/mcr-be-BE08` |
 | C04 frontend party/gift consumer review | `mcr(fe) C04 party and gift consumer review` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-domain-consumer` / `codex/mcr-fe-C04-consumer` |
 | FE17 replication and reconnect | `mcr(fe) FE17 replication and reconnect` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-replication` / `codex/mcr-fe-FE17` |
-| C04 feature readiness review | `mcr(qa) C04 feature readiness review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-domain-readiness` / `codex/mcr-qa-C04-readiness` |
+| C04 readiness audit COMPLETE; checkout stopped | `mcr(qa) C04 feature readiness review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-domain-readiness` / `codex/mcr-qa-C04-readiness` |
 
 The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
@@ -495,3 +495,10 @@ BE04 retains exclusive Rust target ownership. BE08 continues source work and has
 parent dependency prerequisite `ec4728d` cherry-picked as `097651c`; no package
 version changed. Its source is not yet compile-ready. QA C04 report corrections
 are still under parent review. Only the integrator publishes reviewed work.
+
+
+QA readiness audit disposition: the corrected report chain is integrated through
+`518f7ea`, with parent count/header corrections in `2cb59b3`. Actual goal update
+returned COMPLETE and a subsequent read returned null; its clean checkout is
+stopped. Four development/review chats remain active. No duplicate audit is
+assigned while the independent frontend consumer review is already running.
