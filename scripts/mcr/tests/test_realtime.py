@@ -220,9 +220,10 @@ class RealtimeContractTests(unittest.TestCase):
 
     def test_imported_avatar_revision_is_bounded_without_duplicating_its_schema(self):
         snapshot = self.fixture('movement-heartbeat')['messages'][1]['message']
-        for revision in (9007199254740992, 10 ** 100):
+        for revision in (9007199254740992, 10 ** 1000):
             snapshot['players'][0]['avatar']['revision'] = revision
             self.reject(lambda: self.contract.decode(json.dumps(snapshot), 'server'))
+        self.reject(lambda: self.contract.decode('{"revision":' + '9' * 5000 + '}', 'server'))
 
     def test_asset_mismatch_and_backpressure_require_a_new_connection(self):
         for reason in ('MAP_VERSION_MISMATCH', 'BACKPRESSURE'):

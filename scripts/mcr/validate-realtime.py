@@ -53,7 +53,7 @@ def inspect_json(value, depth=0):
     require(depth <= 16, 'JSON nesting limit')
     require(type(value) in (dict, list, str, int, float, bool, type(None)), 'invalid JSON value')
     if type(value) in (int, float):
-        require(math.isfinite(value), 'non-finite JSON number')
+        require(type(value) is int or math.isfinite(value), 'non-finite JSON number')
         require(abs(value) <= 9007199254740991, 'number exceeds safe wire range')
     elif isinstance(value, str):
         try:
@@ -185,7 +185,9 @@ class Contract:
                                parse_constant=reject_constant)
         except UnicodeError:
             raise WireError('invalid UTF-8', 1007) from None
-        except (json.JSONDecodeError, RecursionError):
+        except WireError:
+            raise
+        except (ValueError, RecursionError):
             raise WireError('invalid JSON') from None
         return self.validate(value, 'ClientMessage' if direction == 'client' else 'ServerMessage')
 
