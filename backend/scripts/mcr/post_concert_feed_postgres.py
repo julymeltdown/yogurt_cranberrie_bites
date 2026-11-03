@@ -59,6 +59,7 @@ def main():
             base = [tools["psql"], "-h", "127.0.0.1", "-p", str(port), "-U", user, "-d", "postgres", "-v", "ON_ERROR_STOP=1", "-At"]
             run(base + ["-c", f'create database "{database}" template template0'])
             lineage = run(base + ["-c", "select system_identifier::text from pg_control_system()"]).stdout.strip()
+            server_version = run(base + ["-c", "show server_version"]).stdout.strip()
             if args.sql_only:
                 migrations = Path(__file__).resolve().parents[2] / "services/post-service/migrations"
                 files = sorted(migrations.glob("*.sql"))
@@ -71,10 +72,10 @@ def main():
                 run(fixture + sql_args)
                 checks = "select count(*) from pg_tables where schemaname='public' and tablename like 'post_concert_%'"
                 assert run(fixture + ["-c", checks]).stdout.strip() == "5"
-                print(json.dumps({"scope":"empty isolated Post database; all31 migrations", "result":"PASS", "exit_code":0, "production_authority":"NOT_QUALIFIED"}))
+                print(json.dumps({"scope":"empty isolated Post database; all31 migrations", "result":"PASS", "exit_code":0, "production_authority":"NOT_QUALIFIED", "postgres":server_version}))
                 return 0
             env = dict(os.environ, POST_CONCERT_TEST_DATABASE_URL=f"postgresql://{user}@127.0.0.1:{port}/{database}", POST_CONCERT_TEST_LINEAGE=lineage)
-            result = subprocess.run([str(binary), "concert_feed::tests::postgres_owner_authorization_persistence_and_races", "--ignored", "--exact", "--nocapture"], env=env, text=True, capture_output=True)
+            result = subprocess.run([str(binary), "concert_feed::tests::postgres_owner_authorization_persistence_and_races", "--ignored", "--exact", "--nocapture"], env=env, text=True, capture_output=True, timeout=60)
             # Rust assertions never print content/URLs. Do not echo subprocess
             # PostgreSQL diagnostics that could include a private connection URL.
             if result.returncode == 0 and ("running 1 test" not in result.stdout or "1 passed; 0 failed" not in result.stdout):
@@ -82,7 +83,7 @@ def main():
             print(result.stdout, end="")
             if result.returncode:
                 print(result.stderr, end="")
-            print(json.dumps({"scope": "isolated Post owner PostgreSQL; test authority only", "exit_code": result.returncode, "production_authority": "NOT_QUALIFIED", "cleanup": "owned ephemeral cluster"}))
+            print(json.dumps({"scope": "isolated Post owner PostgreSQL; test authority only", "exit_code": result.returncode, "production_authority": "NOT_QUALIFIED", "postgres": server_version, "cleanup": "owned ephemeral cluster"}))
             return result.returncode
         finally:
             if started or (data / "postmaster.pid").exists():
