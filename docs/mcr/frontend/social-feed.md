@@ -161,3 +161,19 @@ after StrictMode's setup-cleanup-setup. The UI fixture explicitly enables React'
 act environment; the previous qualification warning is removed. The media
 factory is stable per root composition; the component owns individual controller
 lifetimes. Total focused cases: 26. Real FE04 controller composition still pending.
+
+## QA cache resurrection fixes
+
+Targeted QA reproduced two in-flight races: an older feed page could restore a
+removed related-target link, and an older notices page could restore a notice
+whose detail had become 404. Both were cached-response resurrection; no live
+backend authorization bypass was established. The initial linked-target test
+used an empty links fixture and did not exercise revocation; it now uses a real
+PARTY link.
+
+The controller records denied related targets and inaccessible notice IDs for
+the current privacy scope, filters both captured prior rows and new page rows
+at settlement, and clears these records only when that scope is replaced. This
+covers delayed pagination and refresh without aborting unrelated safe reads or
+replaying writes. Four real nonempty regression cases cover both races and both
+read paths. FE27 controller tests: 15/15 pass, exit 0; typecheck exit 0.

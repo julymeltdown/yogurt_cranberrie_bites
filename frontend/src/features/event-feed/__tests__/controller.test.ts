@@ -54,9 +54,10 @@ it('withdrawn notice is removed from list, with safe error and no raw server pro
   expect(s.controller.read().notices.data?.items).toEqual([]); expect(s.controller.read().notice.failure).toBe('unavailable')
 })
 it('removes revoked linked target and read-only capabilities update immediately', async () => {
-  const s = fixture(r => r.url.includes('/notices') ? empty() : Response.json({ items: [post], next_cursor: null }))
+  const linked = { ...post, links: [{ target_type: 'PARTY' as const, target_id: id(80) }] }
+  const s = fixture(r => r.url.includes('/notices') ? empty() : Response.json({ items: [linked], next_cursor: null }))
   s.controller.start(); await vi.waitFor(() => expect(s.controller.read().feed.phase).toBe('ready'))
-  for (const link of post.links) s.controller.removeLink(link)
+  for (const link of linked.links) s.controller.removeLink(link)
   expect(s.controller.read().feed.data?.items[0]?.links).toEqual([])
   s.setAccess({ available: true, readOnly: true }); expect(s.controller.read().readOnly).toBe(true)
 })
@@ -69,4 +70,39 @@ it('orders submillisecond timestamps and equivalent UTC precision without losing
   const { ordered } = await import('../contract')
   expect(ordered([{ created_at: '2026-11-01T00:00:00.000002Z', id: 'a' }, { created_at: '2026-11-01T00:00:00.000001Z', id: 'z' }], row => row.id)).toBe(true)
   expect(ordered([{ created_at: '2026-11-01T00:00:00Z', id: 'z' }, { created_at: '2026-11-01T00:00:00.000Z', id: 'a' }], row => row.id)).toBe(true)
+})
+
+it.each(['pagination', 'refresh'] as const)('never restores destination-denied links from in-flight %s', async mode => {
+  const target = { target_type: 'PARTY' as const, target_id: id(80) }, linked = { ...post, links: [target] }, late = deferred<Response>()
+  let calls = 0
+  const s = fixture(r => {
+    if (r.url.includes('/notices')) return empty()
+    if (++calls === 1) return Response.json({ items: [linked], next_cursor: 'older' })
+    return late.promise
+  })
+  s.controller.start(); await vi.waitFor(() => expect(s.controller.read().feed.phase).toBe('ready'))
+  expect(s.controller.read().feed.data?.items[0]?.links).toEqual([target])
+  const flight = s.controller.loadFeed(mode === 'pagination')
+  await vi.waitFor(() => expect(calls).toBe(2)); s.controller.removeLink(target)
+  late.resolve(Response.json({ items: mode === 'pagination' ? [{ ...linked, post_id: id(3), created_at: '2020-01-01T00:00:00Z' }] : [linked], next_cursor: null }))
+  await flight
+  expect(s.controller.read().feed.phase).toBe('ready')
+  expect(s.controller.read().feed.data?.items.flatMap(row => row.links)).toEqual([])
+})
+
+it.each(['pagination', 'refresh'] as const)('never restores withdrawn notice fields from in-flight %s', async mode => {
+  const late = deferred<Response>(); let noticeCalls = 0
+  const s = fixture(r => {
+    if (r.url.endsWith(`/notices/${notice.notice_id}`)) return Response.json({}, { status: 404 })
+    if (r.url.includes('/notices')) return ++noticeCalls === 1 ? Response.json({ items: [notice], next_cursor: 'older-notices' }) : late.promise
+    return empty()
+  })
+  s.controller.start(); await vi.waitFor(() => expect(s.controller.read().notices.phase).toBe('ready'))
+  const flight = s.controller.loadNotices(mode === 'pagination')
+  await vi.waitFor(() => expect(noticeCalls).toBe(2)); await s.controller.selectNotice(notice.notice_id)
+  expect(s.controller.read().notices.data?.items ?? []).not.toContainEqual(notice)
+  late.resolve(Response.json({ items: mode === 'pagination' ? [{ ...notice, notice_id: id(61) }] : [notice], next_cursor: null }))
+  await flight
+  expect(s.controller.read().notices.phase).toBe('ready')
+  expect(s.controller.read().notices.data?.items.some(row => row.notice_id === notice.notice_id)).toBe(false)
 })
