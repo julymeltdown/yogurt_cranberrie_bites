@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-shell-chrome/frontend
+
+
+ Test Files  4 passed (4)
+      Tests  81 passed (81)
+   Start at  04:20:52
+   Duration  796ms (transform 222ms, setup 0ms, import 430ms, tests 617ms, environment 976ms)
+
