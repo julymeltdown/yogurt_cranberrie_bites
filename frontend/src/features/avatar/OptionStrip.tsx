@@ -47,7 +47,7 @@ export function OptionStrip({ controller, category }: { readonly controller: Ava
   }, [controller, visible, editable])
   if (!choices.length) return null
   return <section className="mcr-avatar-option-strip" aria-labelledby={`${id}-title`}>
-    <div className="mcr-avatar-option-heading"><h2 id={`${id}-title`}>{category === 'tone' ? 'Tones' : label(category)} · full outfits</h2>
+    <div className="mcr-avatar-option-heading"><h2 id={`${id}-title`}>{category === 'tone' ? 'Skin tone' : label(category)}<span className="mcr-avatar-sr-only"> · full outfits</span></h2>
       <span aria-live="polite">{currentPage * OPTION_PREVIEW_LIMIT + 1}–{Math.min((currentPage + 1) * OPTION_PREVIEW_LIMIT, choices.length)} / {choices.length}</span></div>
     <div className={`mcr-avatar-choice-row${choices.length > OPTION_PREVIEW_LIMIT ? ' mcr-avatar-choice-row--pages' : ''}`}>
     {choices.length > OPTION_PREVIEW_LIMIT && <button type="button" disabled={currentPage === 0} onClick={() => setPage(currentPage - 1)} aria-label="Previous outfit choices">‹</button>}
@@ -56,7 +56,7 @@ export function OptionStrip({ controller, category }: { readonly controller: Ava
         const result = editable && previews.source === visible ? previews.items[index] : undefined
         return <button key={choice.id} className="mcr-avatar-option" type="button" aria-label={`Try ${choice.text} · full outfit`} aria-pressed={choice.selected}
           disabled={!editable || result?.phase !== 'ready' || !controller.canSelect(choice.config)} onClick={() => choice.select()}>
-          <OutfitCanvas canvas={result?.canvas ?? null} /><span className="mcr-avatar-option-name" title={choice.id}>{choice.text}</span>
+          <OutfitCanvas canvas={result?.canvas ?? null} /><span className="mcr-avatar-option-name mcr-avatar-sr-only" title={choice.id}>{choice.text}</span>
           {result?.phase !== 'ready' && <span className="mcr-avatar-option-state">{result?.phase === 'unavailable' ? 'Unavailable' : 'Loading…'}</span>}
         </button>
       })}

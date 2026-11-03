@@ -57,3 +57,30 @@ pub async fn run_batch<S: IdempotentInvalidationSink + 'static>(
     }
     Ok(result)
 }
+
+/// Opt-in only: World application is one fanout leg, never a global queue ack.
+/// `remaining` must apply every other required feature/owner leg durably. An
+/// unavailable/unbound leg must return Retryable rather than claim completion.
+/// No constructor here starts a worker or qualifies production startup.
+pub struct WorldCompositeSink<S> {
+    world: std::sync::Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+    remaining: std::sync::Arc<S>,
+}
+impl<S: IdempotentInvalidationSink> WorldCompositeSink<S> {
+    pub fn new(
+        world: std::sync::Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+        remaining: std::sync::Arc<S>,
+    ) -> Self {
+        Self { world, remaining }
+    }
+}
+#[async_trait]
+impl<S: IdempotentInvalidationSink> IdempotentInvalidationSink for WorldCompositeSink<S> {
+    async fn deliver(&self, delivery: &Delivery) -> Result<(), DeliveryFailure> {
+        self.world
+            .apply(delivery)
+            .await
+            .map_err(DeliveryFailure::from)?;
+        self.remaining.deliver(delivery).await
+    }
+}

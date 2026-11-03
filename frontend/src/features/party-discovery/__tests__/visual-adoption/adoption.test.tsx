@@ -11,7 +11,7 @@ it('shows capacity and a detail route without promising membership or rendering 
   f = harness(); render(<MemoryRouter><PartyDiscovery controller={f.controller} /></MemoryRouter>)
   const link = await screen.findByRole('link', { name: `View details for ${party().title}` })
   expect(link.getAttribute('href')).toBe(`/meet/parties/${party().party_id}`)
-  expect(screen.getByText('2/5 members')).toBeTruthy(); expect(screen.getByText('3 spaces')).toBeTruthy()
+  expect(document.querySelector('.meet-party__capacity')?.textContent).toBe('2/5 members'); expect(screen.getByText(/3 spaces\./)).toBeTruthy()
   expect(screen.queryByRole('button', { name: /join|apply/i })).toBeNull()
   expect(document.querySelector('img,canvas')).toBeNull()
 })

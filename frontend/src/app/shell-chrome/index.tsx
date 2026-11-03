@@ -1,4 +1,4 @@
-import { useId, useSyncExternalStore, type Ref } from 'react'
+import { useId, useSyncExternalStore, type ReactNode, type Ref } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ShellLink } from '../navigation'
 import { resolvePanel, tabs, type TabPath } from '../routes'
@@ -7,20 +7,18 @@ import type { ThemeController, ThemeState } from '../../features/theme/model/con
 import { themeIds, type ThemeId } from '../../features/theme/model/preferences'
 import './shell-chrome.css'
 
-/** Caller supplies only current authorized event text. No identity/art fallback. */
-export function ShellHeader({ eventTitle }: { eventTitle?: string }) {
+/** Current identity text and approved visual only; no fabricated level, balances or presence. */
+export function ShellHeader({ eventTitle, displayName, avatar }: { eventTitle?: string; displayName?: string; avatar?: ReactNode }) {
   return <header className="concert-kit mcr-chrome-header">
     <ShellLink to="/world" className="mcr-chrome-brand" id="shell-brand" aria-label="MCR Concert World">
-      <span>MCR <small>Concert World</small></span>
-      {eventTitle && <span className="mcr-chrome-event" title={eventTitle}>{eventTitle}</span>}
+      <span className="mcr-chrome-identity-visual" aria-hidden="true">{avatar ?? <ConcertIcon name="star" />}</span>
+      <span className="mcr-chrome-identity-copy"><strong>{displayName || 'MCR Concert World'}</strong>
+        {eventTitle && <span className="mcr-chrome-event" title={eventTitle}>{eventTitle}</span>}
+      </span>
     </ShellLink>
     <div className="mcr-chrome-header__actions">
-      <ShellLink to="/notifications" id="shell-inbox" aria-label="Inbox"><ConcertIcon name="feed" /></ShellLink>
-      <ShellLink to="/me/settings" id="shell-settings" aria-label="Settings">
-        <svg className="concert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
-          <path d="m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4-3 0-2 3 0 3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z" /><circle cx="12" cy="12" r="3" />
-        </svg>
-      </ShellLink>
+      <ShellLink to="/notifications" id="shell-inbox" aria-label="Inbox"><ConcertIcon name="bell" /></ShellLink>
+      <ShellLink to="/me/settings" id="shell-settings" aria-label="Settings"><ConcertIcon name="settings" /></ShellLink>
     </div>
   </header>
 }
@@ -81,9 +79,9 @@ export function PanelHeader({ title, headingRef, size, back, toggleSize, toggleC
   back: () => void; toggleSize: () => void; toggleContent: () => void
 }) {
   return <header className="concert-kit mcr-chrome-panel-header">
-    <button type="button" onClick={back} aria-label="Back to previous panel"><span aria-hidden="true">←</span></button>
     <h1 id="panel-title" ref={headingRef} tabIndex={-1}>{title}</h1>
     <button type="button" onClick={toggleSize} aria-label={size === 'full' ? 'Reduce panel' : 'Expand panel'} aria-expanded={size === 'full'}><span aria-hidden="true">{size === 'full' ? '−' : '+'}</span></button>
     <button type="button" onClick={toggleContent} aria-label={size === 'peek' ? 'Show panel content' : 'Minimize panel'} aria-expanded={size !== 'peek'}><span aria-hidden="true">{size === 'peek' ? '▴' : '▾'}</span></button>
+    <button className="mcr-chrome-panel-close" type="button" onClick={back} aria-label="Back to previous panel"><ConcertIcon name="close" /></button>
   </header>
 }

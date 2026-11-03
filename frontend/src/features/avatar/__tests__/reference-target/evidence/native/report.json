@@ -1,0 +1,253 @@
+{
+  "result": "PASS",
+  "base": "f837bef676cd26869c26c172a699a91b7842d832",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "referenceScreen": {
+    "x": 1238,
+    "y": 0,
+    "width": 298,
+    "height": 530
+  },
+  "browser": "156.0.8078.80",
+  "syntheticOnly": true,
+  "approvedAvatarArt": "UNAVAILABLE",
+  "hashes": {
+    "src/features/avatar/AvatarEditor.tsx": "37d30c4a71f0c669100d1ee84f5932c3b22eb42c49e7c833ff2209d37ea77fb6",
+    "src/features/avatar/OptionStrip.tsx": "f162f9e5ee96c44b4b2e10ec059a09ee0e9272accf82954d68b4dcf48d6e7c7b",
+    "src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "src/features/avatar/avatar-editor.css": "3a0c5b842ffd8dc66452805db3c8a88de233d3970f60bc0a45a6f8c6cdcbdc17",
+    "src/features/avatar/preview.ts": "77c304050d0fb324a6d8b236a6e65eb2655bff83e488bdfe9b768df9e740b981",
+    "src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "src/entities/avatar/runtime/compositor.ts": "fac22cf5948afd10420ad53bc408590657291ccb44e38defb61f2e96ee595740"
+  },
+  "checks": [
+    {
+      "width": 360,
+      "height": 660,
+      "geometry": {
+        "editor": {
+          "x": 0,
+          "y": 21,
+          "width": 360,
+          "height": 572.25
+        },
+        "preview": {
+          "x": 9,
+          "y": 70,
+          "width": 291,
+          "height": 314
+        },
+        "rail": {
+          "x": 305,
+          "y": 70,
+          "width": 46,
+          "height": 314
+        },
+        "choices": {
+          "x": 9,
+          "y": 389,
+          "width": 342,
+          "height": 94.25
+        },
+        "actions": {
+          "x": 9,
+          "y": 540.25,
+          "width": 342,
+          "height": 44
+        }
+      },
+      "keyboardAndTouch": true,
+      "randomResetDraftOnly": true,
+      "explicitSave": true,
+      "currentPaletteOnly": true,
+      "oneOwnerOneRead": true,
+      "boundedChurn": true,
+      "scopeCleanup": true
+    },
+    {
+      "width": 390,
+      "height": 714,
+      "geometry": {
+        "editor": {
+          "x": 0,
+          "y": 21,
+          "width": 390,
+          "height": 572.25
+        },
+        "preview": {
+          "x": 9,
+          "y": 70,
+          "width": 321,
+          "height": 314
+        },
+        "rail": {
+          "x": 335,
+          "y": 70,
+          "width": 46,
+          "height": 314
+        },
+        "choices": {
+          "x": 9,
+          "y": 389,
+          "width": 372,
+          "height": 94.25
+        },
+        "actions": {
+          "x": 9,
+          "y": 540.25,
+          "width": 372,
+          "height": 44
+        }
+      },
+      "keyboardAndTouch": true,
+      "randomResetDraftOnly": true,
+      "explicitSave": true,
+      "currentPaletteOnly": true,
+      "oneOwnerOneRead": true,
+      "boundedChurn": true,
+      "scopeCleanup": true
+    },
+    {
+      "width": 430,
+      "height": 785,
+      "geometry": {
+        "editor": {
+          "x": 0,
+          "y": 21,
+          "width": 430,
+          "height": 572.25
+        },
+        "preview": {
+          "x": 9,
+          "y": 70,
+          "width": 361,
+          "height": 314
+        },
+        "rail": {
+          "x": 375,
+          "y": 70,
+          "width": 46,
+          "height": 314
+        },
+        "choices": {
+          "x": 9,
+          "y": 389,
+          "width": 412,
+          "height": 94.25
+        },
+        "actions": {
+          "x": 9,
+          "y": 540.25,
+          "width": 412,
+          "height": 44
+        }
+      },
+      "keyboardAndTouch": true,
+      "randomResetDraftOnly": true,
+      "explicitSave": true,
+      "currentPaletteOnly": true,
+      "oneOwnerOneRead": true,
+      "boundedChurn": true,
+      "scopeCleanup": true
+    }
+  ],
+  "errors": [],
+  "assetRequests": [
+    {
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    }
+  ],
+  "explicitWrites": [
+    {
+      "expected_revision": 1,
+      "config": {
+        "contract_version": "1.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "avatar_fixture",
+        "manifest_version": 1,
+        "item_ids": {
+          "body": "body_fixture",
+          "eyes": "eyes_fixture",
+          "hair": "hair_fixture",
+          "outfit": "outfit_fixture",
+          "accessory": null
+        },
+        "skin_tone_id": "tone_fixture"
+      }
+    },
+    {
+      "expected_revision": 1,
+      "config": {
+        "contract_version": "1.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "avatar_fixture",
+        "manifest_version": 1,
+        "item_ids": {
+          "body": "body_fixture",
+          "eyes": "eyes_fixture",
+          "hair": "hair_fixture",
+          "outfit": "outfit_fixture",
+          "accessory": null
+        },
+        "skin_tone_id": "tone_fixture"
+      }
+    },
+    {
+      "expected_revision": 2,
+      "config": {
+        "contract_version": "1.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "avatar_fixture",
+        "manifest_version": 1,
+        "item_ids": {
+          "body": "body_fixture",
+          "eyes": "eyes_fixture",
+          "hair": "hair_fixture",
+          "outfit": "outfit_fixture",
+          "accessory": "accessory_fixture"
+        },
+        "skin_tone_id": "tone_fixture"
+      }
+    },
+    {
+      "expected_revision": 1,
+      "config": {
+        "contract_version": "1.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "avatar_fixture",
+        "manifest_version": 1,
+        "item_ids": {
+          "body": "body_fixture",
+          "eyes": "eyes_fixture",
+          "hair": "hair_fixture",
+          "outfit": "outfit_fixture",
+          "accessory": null
+        },
+        "skin_tone_id": "tone_fixture"
+      }
+    }
+  ],
+  "temporaryDirectory": "/private/tmp/mcr-ref-customize-native-WA7EyN"
+}

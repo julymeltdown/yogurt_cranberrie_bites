@@ -1,0 +1,6 @@
+/* Fixture-only root surrogate. Production root chrome belongs to its owner. */
+body { padding: 0; background: #e6ddcb; }
+.reference-gifts-fixture { padding: 6px; }
+.reference-gifts-fixture > .concert-window { min-height: calc(100dvh - 48px); }
+.reference-gifts-fixture .concert-window__body { padding: 6px; }
+.reference-gifts-fixture-label { margin-top: 4px; font: 10px/1.3 system-ui; color: #5e5043; }

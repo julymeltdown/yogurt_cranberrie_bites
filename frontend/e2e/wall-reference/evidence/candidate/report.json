@@ -1,0 +1,1471 @@
+{
+  "task": "FE-REF-WALL-QA",
+  "reportVersion": 2,
+  "phase": "candidate",
+  "status": "PASS",
+  "fixtureOnly": true,
+  "scope": "Native desktop Chrome mobile/touch emulation of actual MuralEditor/MuralSyncPanel with canonical memory session/privacy/HTTP/controllers and frozen C04 deterministic fixtures. No physical device, live login/backend authority, real two-client proof or IN04 acceptance.",
+  "base": "f837bef676cd26869c26c172a699a91b7842d832",
+  "sourceRevision": "f837bef676cd26869c26c172a699a91b7842d832",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "referenceRegion": {
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "wall": {
+      "x": 925,
+      "y": 541,
+      "width": 290,
+      "height": 480
+    },
+    "method": "manual region annotation of supplied 10-screen image, bottom row fourth"
+  },
+  "sourceHashes": {
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "a5bbb147d4e56c1039428234ae9b02cf36da529b96d658cff217c503b37ec762",
+    "frontend/src/features/mural/editor/editor.css": "079b5441ce3a16e0757b688289f388ad50cc156f93903e4ac78f43098e9e694b",
+    "frontend/src/features/mural/editor/controller.ts": "0af993f96cbe303a6e920a87faeab32b4e5652ae68ef44809c1a41cbdb9dd26f",
+    "frontend/src/features/mural/editor/input.ts": "6e2744b189e6887f34c477a28a7522f5d76c4c3e16ee25cf1141f1c65cf57b04",
+    "frontend/src/features/mural/editor/contract.ts": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+    "frontend/src/features/mural/editor/__tests__/fixture.ts": "ba6fa5bd95472e078f4c4a5a1c0eebe4b25f6a56c81c4cac74eaf79eb92a2bf4",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "70c86e0b4804e6ad9e560aad31e7de73eaa58098941b716fd070018a7aaeaebe",
+    "frontend/src/features/mural/sync/controller.ts": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+    "frontend/src/features/mural/sync/contract.ts": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+    "frontend/src/features/mural/sync/projection.ts": "e69dd552120a4f02e3abd7a81e079ec76f7a2cf04014c71dd9618d196aaf79c6",
+    "frontend/src/features/mural/sync/http.ts": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144",
+    "frontend/src/features/mural/sync/__tests__/fixture.ts": "c61d33f5258a19541a8d70989686ebfdfa19a5711a9bcf44d2e22ae9b0d52a56",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/shared/styles/base.css": "63fb6160fa17471c9f40cc58c8d60890390f31af2da2078f50640b5ae7b6b762",
+    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
+    "contracts/generated/mcr-domain.openapi.json": "a5fbe73124ed069e6357f5797a264e2d2a1bec93b0179bfc8550bf1122b69fde",
+    "frontend/e2e/wall-reference/index.html": "821135cbf18265d1a67ef0c9b559d8a2186d829aeddfd6ceb16895bf73b78c1f",
+    "frontend/e2e/wall-reference/fixture.tsx": "99aefa4253ce3dd3375b3b25e09c037b08ae842eb1c1e6d579c25c5e4d279210",
+    "frontend/e2e/wall-reference/host.css": "ff96583da3cdc3c49e3927c52fd13bfeed9d1729eed15fcaafe5c6c77dfbe26c",
+    "frontend/e2e/wall-reference/run.mjs": "6a59539567aa91782760ea12a339690a4247eb3d8dd746b1f09c94361e569b6c",
+    "frontend/e2e/wall-reference/check-types.mjs": "28180020e7017d80284661949e6fde712162b84ba144836105fefe6fb813d686"
+  },
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "widths": [
+    {
+      "width": 360,
+      "geometry": {
+        "panel": {
+          "x": 8,
+          "y": 8,
+          "width": 344,
+          "height": 631.125,
+          "bottom": 639.125,
+          "right": 352
+        },
+        "surface": {
+          "x": 12,
+          "y": 80,
+          "width": 336,
+          "height": 369.59375,
+          "bottom": 449.59375,
+          "right": 348
+        },
+        "palette": {
+          "x": 23,
+          "y": 460.59375,
+          "width": 314,
+          "height": 48,
+          "bottom": 508.59375,
+          "right": 337
+        },
+        "zoomIn": {
+          "x": 298,
+          "y": 307.59375,
+          "width": 44,
+          "height": 44,
+          "bottom": 351.59375,
+          "right": 342
+        },
+        "status": {
+          "x": 19,
+          "y": 551.78125,
+          "width": 322,
+          "height": 14.84375,
+          "bottom": 566.625,
+          "right": 341
+        },
+        "paletteRows": 1,
+        "controls": [
+          {
+            "name": "Pencil preview",
+            "x": 298,
+            "y": 86,
+            "width": 44,
+            "height": 44,
+            "bottom": 130,
+            "right": 342
+          },
+          {
+            "name": "Pan wall",
+            "x": 298,
+            "y": 132,
+            "width": 44,
+            "height": 44,
+            "bottom": 176,
+            "right": 342
+          },
+          {
+            "name": "Zoom in",
+            "x": 298,
+            "y": 307.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 351.59375,
+            "right": 342
+          },
+          {
+            "name": "Zoom out",
+            "x": 298,
+            "y": 353.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 397.59375,
+            "right": 342
+          },
+          {
+            "name": "Fit wall",
+            "x": 298,
+            "y": 399.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 443.59375,
+            "right": 342
+          },
+          {
+            "name": "Color 0 #FAF6ED",
+            "x": 23,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 67
+          },
+          {
+            "name": "Color 1 #201D1D",
+            "x": 69,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 113
+          },
+          {
+            "name": "Color 2 #A22635",
+            "x": 115,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 159
+          },
+          {
+            "name": "Color 3 #605952",
+            "x": 161,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 205
+          },
+          {
+            "name": "Color 4 #E5DFD4",
+            "x": 207,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 251
+          },
+          {
+            "name": "Color 5 #713B70",
+            "x": 253,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 297
+          },
+          {
+            "name": "Color 6 #244C69",
+            "x": 299,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 343
+          },
+          {
+            "name": "Color 7 #42736B",
+            "x": 345,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 389
+          },
+          {
+            "name": "Color 8 #7E8245",
+            "x": 391,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 435
+          },
+          {
+            "name": "Color 9 #BD8E46",
+            "x": 437,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 481
+          },
+          {
+            "name": "Color 10 #CF6845",
+            "x": 483,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 527
+          },
+          {
+            "name": "Color 11 #D4A2AC",
+            "x": 529,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 573
+          },
+          {
+            "name": "Color 12 #938EB0",
+            "x": 575,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 619
+          },
+          {
+            "name": "Color 13 #8EBDD0",
+            "x": 621,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 665
+          },
+          {
+            "name": "Color 14 #ACCB96",
+            "x": 667,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 711
+          },
+          {
+            "name": "Color 15 #FFFFFF",
+            "x": 713,
+            "y": 461.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 505.59375,
+            "right": 757
+          },
+          {
+            "name": "Coordinates & help",
+            "x": 18,
+            "y": 585.125,
+            "width": 324,
+            "height": 44,
+            "bottom": 629.125,
+            "right": 342
+          },
+          {
+            "name": "",
+            "x": 18,
+            "y": 753.25,
+            "width": 89.140625,
+            "height": 44,
+            "bottom": 797.25,
+            "right": 107.140625
+          },
+          {
+            "name": "",
+            "x": 113.140625,
+            "y": 753.25,
+            "width": 89.140625,
+            "height": 44,
+            "bottom": 797.25,
+            "right": 202.28125
+          },
+          {
+            "name": "Preview pixel",
+            "x": 208.28125,
+            "y": 753.25,
+            "width": 133.71875,
+            "height": 44,
+            "bottom": 797.25,
+            "right": 342
+          },
+          {
+            "name": "Refresh confirmed wall",
+            "x": 18,
+            "y": 847.625,
+            "width": 133.3125,
+            "height": 44,
+            "bottom": 891.625,
+            "right": 151.3125
+          }
+        ],
+        "documentWidth": 360,
+        "viewportWidth": 360
+      },
+      "visual": {
+        "canvasNearHeader": true,
+        "canvasDominatesWidth": true,
+        "toolsOnCanvasRight": true,
+        "singlePaletteRow": true,
+        "paletteImmediatelyBelow": true,
+        "statusBelowPalette": true,
+        "compactInitialPanel": true,
+        "portraitSurface": true
+      },
+      "checks": [
+        "initial actual 128x128 canvas matches every confirmed RGBA pixel",
+        "all visible controls>=44px and no horizontal page overflow",
+        "all16 palette colors retained; last horizontal swatch reachable by keyboard without POST",
+        "palette selects real color",
+        "arrow/Enter canvas preview does not POST; Escape cancels; keyboard focus visible",
+        "native physical corner clicks map to128-grid bounds; portrait letterbox selects nothing; square pixels are not CSS-stretched",
+        "actual raster changes on pan/zoom and fit restores authoritative pixels without POST",
+        "one explicit keyboard confirm makes exactly one canonical fixture HTTP POST",
+        "truthful 5s fixture cooldown disables new confirmation",
+        "pending: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "unknown: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "PAUSED/FROZEN/read-only fixture state forbids editing and retains truthful status"
+      ],
+      "flows": [
+        {
+          "scenario": "explicitConfirm",
+          "placements": 1,
+          "revision": 11,
+          "remainingMs": 5000
+        },
+        {
+          "scenario": "pending",
+          "originalKey": "00000000-0000-4000-8000-000000000601",
+          "counts": {
+            "placements": 1,
+            "reads": 5
+          },
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "POST",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/pixels",
+              "query": "",
+              "key": "00000000-0000-4000-8000-000000000601"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            }
+          ]
+        },
+        {
+          "scenario": "unknown",
+          "originalKey": "00000000-0000-4000-8000-000000000601",
+          "counts": {
+            "placements": 1,
+            "reads": 6
+          },
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "POST",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/pixels",
+              "query": "",
+              "key": "00000000-0000-4000-8000-000000000601"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            }
+          ]
+        }
+      ],
+      "status": "PASS",
+      "confirmedColors": 3
+    },
+    {
+      "width": 390,
+      "geometry": {
+        "panel": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 664.125,
+          "bottom": 672.125,
+          "right": 382
+        },
+        "surface": {
+          "x": 12,
+          "y": 80,
+          "width": 366,
+          "height": 402.59375,
+          "bottom": 482.59375,
+          "right": 378
+        },
+        "palette": {
+          "x": 23,
+          "y": 493.59375,
+          "width": 344,
+          "height": 48,
+          "bottom": 541.59375,
+          "right": 367
+        },
+        "zoomIn": {
+          "x": 328,
+          "y": 340.59375,
+          "width": 44,
+          "height": 44,
+          "bottom": 384.59375,
+          "right": 372
+        },
+        "status": {
+          "x": 19,
+          "y": 584.78125,
+          "width": 352,
+          "height": 14.84375,
+          "bottom": 599.625,
+          "right": 371
+        },
+        "paletteRows": 1,
+        "controls": [
+          {
+            "name": "Pencil preview",
+            "x": 328,
+            "y": 86,
+            "width": 44,
+            "height": 44,
+            "bottom": 130,
+            "right": 372
+          },
+          {
+            "name": "Pan wall",
+            "x": 328,
+            "y": 132,
+            "width": 44,
+            "height": 44,
+            "bottom": 176,
+            "right": 372
+          },
+          {
+            "name": "Zoom in",
+            "x": 328,
+            "y": 340.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 384.59375,
+            "right": 372
+          },
+          {
+            "name": "Zoom out",
+            "x": 328,
+            "y": 386.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 430.59375,
+            "right": 372
+          },
+          {
+            "name": "Fit wall",
+            "x": 328,
+            "y": 432.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 476.59375,
+            "right": 372
+          },
+          {
+            "name": "Color 0 #FAF6ED",
+            "x": 23,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 67
+          },
+          {
+            "name": "Color 1 #201D1D",
+            "x": 69,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 113
+          },
+          {
+            "name": "Color 2 #A22635",
+            "x": 115,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 159
+          },
+          {
+            "name": "Color 3 #605952",
+            "x": 161,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 205
+          },
+          {
+            "name": "Color 4 #E5DFD4",
+            "x": 207,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 251
+          },
+          {
+            "name": "Color 5 #713B70",
+            "x": 253,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 297
+          },
+          {
+            "name": "Color 6 #244C69",
+            "x": 299,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 343
+          },
+          {
+            "name": "Color 7 #42736B",
+            "x": 345,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 389
+          },
+          {
+            "name": "Color 8 #7E8245",
+            "x": 391,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 435
+          },
+          {
+            "name": "Color 9 #BD8E46",
+            "x": 437,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 481
+          },
+          {
+            "name": "Color 10 #CF6845",
+            "x": 483,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 527
+          },
+          {
+            "name": "Color 11 #D4A2AC",
+            "x": 529,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 573
+          },
+          {
+            "name": "Color 12 #938EB0",
+            "x": 575,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 619
+          },
+          {
+            "name": "Color 13 #8EBDD0",
+            "x": 621,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 665
+          },
+          {
+            "name": "Color 14 #ACCB96",
+            "x": 667,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 711
+          },
+          {
+            "name": "Color 15 #FFFFFF",
+            "x": 713,
+            "y": 494.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 538.59375,
+            "right": 757
+          },
+          {
+            "name": "Coordinates & help",
+            "x": 18,
+            "y": 618.125,
+            "width": 354,
+            "height": 44,
+            "bottom": 662.125,
+            "right": 372
+          },
+          {
+            "name": "",
+            "x": 18,
+            "y": 786.25,
+            "width": 97.703125,
+            "height": 44,
+            "bottom": 830.25,
+            "right": 115.703125
+          },
+          {
+            "name": "",
+            "x": 121.703125,
+            "y": 786.25,
+            "width": 97.71875,
+            "height": 44,
+            "bottom": 830.25,
+            "right": 219.421875
+          },
+          {
+            "name": "Preview pixel",
+            "x": 225.421875,
+            "y": 786.25,
+            "width": 146.578125,
+            "height": 44,
+            "bottom": 830.25,
+            "right": 372
+          },
+          {
+            "name": "Refresh confirmed wall",
+            "x": 18,
+            "y": 880.625,
+            "width": 133.3125,
+            "height": 44,
+            "bottom": 924.625,
+            "right": 151.3125
+          }
+        ],
+        "documentWidth": 390,
+        "viewportWidth": 390
+      },
+      "visual": {
+        "canvasNearHeader": true,
+        "canvasDominatesWidth": true,
+        "toolsOnCanvasRight": true,
+        "singlePaletteRow": true,
+        "paletteImmediatelyBelow": true,
+        "statusBelowPalette": true,
+        "compactInitialPanel": true,
+        "portraitSurface": true
+      },
+      "checks": [
+        "initial actual 128x128 canvas matches every confirmed RGBA pixel",
+        "all visible controls>=44px and no horizontal page overflow",
+        "all16 palette colors retained; last horizontal swatch reachable by keyboard without POST",
+        "palette selects real color",
+        "arrow/Enter canvas preview does not POST; Escape cancels; keyboard focus visible",
+        "native physical corner clicks map to128-grid bounds; portrait letterbox selects nothing; square pixels are not CSS-stretched",
+        "actual raster changes on pan/zoom and fit restores authoritative pixels without POST",
+        "one explicit keyboard confirm makes exactly one canonical fixture HTTP POST",
+        "truthful 5s fixture cooldown disables new confirmation",
+        "pending: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "unknown: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "PAUSED/FROZEN/read-only fixture state forbids editing and retains truthful status"
+      ],
+      "flows": [
+        {
+          "scenario": "explicitConfirm",
+          "placements": 1,
+          "revision": 11,
+          "remainingMs": 5000
+        },
+        {
+          "scenario": "pending",
+          "originalKey": "00000000-0000-4000-8000-000000000601",
+          "counts": {
+            "placements": 1,
+            "reads": 5
+          },
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "POST",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/pixels",
+              "query": "",
+              "key": "00000000-0000-4000-8000-000000000601"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            }
+          ]
+        },
+        {
+          "scenario": "unknown",
+          "originalKey": "00000000-0000-4000-8000-000000000601",
+          "counts": {
+            "placements": 1,
+            "reads": 6
+          },
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "POST",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/pixels",
+              "query": "",
+              "key": "00000000-0000-4000-8000-000000000601"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            }
+          ]
+        }
+      ],
+      "status": "PASS",
+      "confirmedColors": 3
+    },
+    {
+      "width": 430,
+      "geometry": {
+        "panel": {
+          "x": 8,
+          "y": 8,
+          "width": 414,
+          "height": 708.125,
+          "bottom": 716.125,
+          "right": 422
+        },
+        "surface": {
+          "x": 12,
+          "y": 80,
+          "width": 406,
+          "height": 446.59375,
+          "bottom": 526.59375,
+          "right": 418
+        },
+        "palette": {
+          "x": 23,
+          "y": 537.59375,
+          "width": 384,
+          "height": 48,
+          "bottom": 585.59375,
+          "right": 407
+        },
+        "zoomIn": {
+          "x": 368,
+          "y": 384.59375,
+          "width": 44,
+          "height": 44,
+          "bottom": 428.59375,
+          "right": 412
+        },
+        "status": {
+          "x": 19,
+          "y": 628.78125,
+          "width": 392,
+          "height": 14.84375,
+          "bottom": 643.625,
+          "right": 411
+        },
+        "paletteRows": 1,
+        "controls": [
+          {
+            "name": "Pencil preview",
+            "x": 368,
+            "y": 86,
+            "width": 44,
+            "height": 44,
+            "bottom": 130,
+            "right": 412
+          },
+          {
+            "name": "Pan wall",
+            "x": 368,
+            "y": 132,
+            "width": 44,
+            "height": 44,
+            "bottom": 176,
+            "right": 412
+          },
+          {
+            "name": "Zoom in",
+            "x": 368,
+            "y": 384.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 428.59375,
+            "right": 412
+          },
+          {
+            "name": "Zoom out",
+            "x": 368,
+            "y": 430.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 474.59375,
+            "right": 412
+          },
+          {
+            "name": "Fit wall",
+            "x": 368,
+            "y": 476.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 520.59375,
+            "right": 412
+          },
+          {
+            "name": "Color 0 #FAF6ED",
+            "x": 23,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 67
+          },
+          {
+            "name": "Color 1 #201D1D",
+            "x": 69,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 113
+          },
+          {
+            "name": "Color 2 #A22635",
+            "x": 115,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 159
+          },
+          {
+            "name": "Color 3 #605952",
+            "x": 161,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 205
+          },
+          {
+            "name": "Color 4 #E5DFD4",
+            "x": 207,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 251
+          },
+          {
+            "name": "Color 5 #713B70",
+            "x": 253,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 297
+          },
+          {
+            "name": "Color 6 #244C69",
+            "x": 299,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 343
+          },
+          {
+            "name": "Color 7 #42736B",
+            "x": 345,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 389
+          },
+          {
+            "name": "Color 8 #7E8245",
+            "x": 391,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 435
+          },
+          {
+            "name": "Color 9 #BD8E46",
+            "x": 437,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 481
+          },
+          {
+            "name": "Color 10 #CF6845",
+            "x": 483,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 527
+          },
+          {
+            "name": "Color 11 #D4A2AC",
+            "x": 529,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 573
+          },
+          {
+            "name": "Color 12 #938EB0",
+            "x": 575,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 619
+          },
+          {
+            "name": "Color 13 #8EBDD0",
+            "x": 621,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 665
+          },
+          {
+            "name": "Color 14 #ACCB96",
+            "x": 667,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 711
+          },
+          {
+            "name": "Color 15 #FFFFFF",
+            "x": 713,
+            "y": 538.59375,
+            "width": 44,
+            "height": 44,
+            "bottom": 582.59375,
+            "right": 757
+          },
+          {
+            "name": "Coordinates & help",
+            "x": 18,
+            "y": 662.125,
+            "width": 394,
+            "height": 44,
+            "bottom": 706.125,
+            "right": 412
+          },
+          {
+            "name": "",
+            "x": 18,
+            "y": 830.25,
+            "width": 109.140625,
+            "height": 44,
+            "bottom": 874.25,
+            "right": 127.140625
+          },
+          {
+            "name": "",
+            "x": 133.140625,
+            "y": 830.25,
+            "width": 109.140625,
+            "height": 44,
+            "bottom": 874.25,
+            "right": 242.28125
+          },
+          {
+            "name": "Preview pixel",
+            "x": 248.28125,
+            "y": 830.25,
+            "width": 163.71875,
+            "height": 44,
+            "bottom": 874.25,
+            "right": 412
+          },
+          {
+            "name": "Refresh confirmed wall",
+            "x": 18,
+            "y": 924.625,
+            "width": 133.3125,
+            "height": 44,
+            "bottom": 968.625,
+            "right": 151.3125
+          }
+        ],
+        "documentWidth": 430,
+        "viewportWidth": 430
+      },
+      "visual": {
+        "canvasNearHeader": true,
+        "canvasDominatesWidth": true,
+        "toolsOnCanvasRight": true,
+        "singlePaletteRow": true,
+        "paletteImmediatelyBelow": true,
+        "statusBelowPalette": true,
+        "compactInitialPanel": true,
+        "portraitSurface": true
+      },
+      "checks": [
+        "initial actual 128x128 canvas matches every confirmed RGBA pixel",
+        "all visible controls>=44px and no horizontal page overflow",
+        "all16 palette colors retained; last horizontal swatch reachable by keyboard without POST",
+        "palette selects real color",
+        "arrow/Enter canvas preview does not POST; Escape cancels; keyboard focus visible",
+        "native physical corner clicks map to128-grid bounds; portrait letterbox selects nothing; square pixels are not CSS-stretched",
+        "actual raster changes on pan/zoom and fit restores authoritative pixels without POST",
+        "one explicit keyboard confirm makes exactly one canonical fixture HTTP POST",
+        "truthful 5s fixture cooldown disables new confirmation",
+        "pending: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "unknown: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "PAUSED/FROZEN/read-only fixture state forbids editing and retains truthful status"
+      ],
+      "flows": [
+        {
+          "scenario": "explicitConfirm",
+          "placements": 1,
+          "revision": 11,
+          "remainingMs": 5000
+        },
+        {
+          "scenario": "pending",
+          "originalKey": "00000000-0000-4000-8000-000000000601",
+          "counts": {
+            "placements": 1,
+            "reads": 5
+          },
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "POST",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/pixels",
+              "query": "",
+              "key": "00000000-0000-4000-8000-000000000601"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            }
+          ]
+        },
+        {
+          "scenario": "unknown",
+          "originalKey": "00000000-0000-4000-8000-000000000601",
+          "counts": {
+            "placements": 1,
+            "reads": 6
+          },
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "POST",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/pixels",
+              "query": "",
+              "key": "00000000-0000-4000-8000-000000000601"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/snapshot",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/commands",
+              "query": "?operation_id=placeConcertPixel&idempotency_key=00000000-0000-4000-8000-000000000601",
+              "key": null
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000002/mural/commands/00000000-0000-4000-8000-000000000601/result",
+              "query": "",
+              "key": null
+            }
+          ]
+        }
+      ],
+      "status": "PASS",
+      "confirmedColors": 3
+    }
+  ],
+  "errors": [],
+  "developmentSockets": 18,
+  "developmentSocketEndpoints": [
+    {
+      "origin": "ws://127.0.0.1:5173",
+      "pathname": "/",
+      "kind": "same-origin Vite development client; query intentionally omitted"
+    }
+  ],
+  "captures": [
+    {
+      "width": 360,
+      "scenario": "loaded",
+      "path": "360-loaded.png",
+      "sha256": "2d45a47fcc71f9fc3b5cfd6263e777a34457e600c70ced22a7f27dcef210b147"
+    },
+    {
+      "width": 360,
+      "scenario": "preview",
+      "path": "360-preview.png",
+      "sha256": "66b0af8b94b06fa5120d40f7dcf785551038466bef8abf751b465214e5197c62"
+    },
+    {
+      "width": 360,
+      "scenario": "cooldown",
+      "path": "360-cooldown.png",
+      "sha256": "885677236db05ff794b65437174e7658313088f0f3549e505caa6b4c9b625d2f"
+    },
+    {
+      "width": 360,
+      "scenario": "pending",
+      "path": "360-pending.png",
+      "sha256": "a77fa2ba6de34b0284c9551feb0ef5601c10071c1d90df4d9b913f5f2ee4e057"
+    },
+    {
+      "width": 360,
+      "scenario": "unknown",
+      "path": "360-unknown.png",
+      "sha256": "bf23696e78910e2ee8b26a7962b084ec08f020ebb006e90bea60e0a5895ad613"
+    },
+    {
+      "width": 360,
+      "scenario": "paused",
+      "path": "360-paused.png",
+      "sha256": "83bf067c4f7bfc25875322daf22023e62f55446c01b98bad80b7d12b1b272696"
+    },
+    {
+      "width": 360,
+      "scenario": "frozen",
+      "path": "360-frozen.png",
+      "sha256": "78afc8dc1fe6e98f1b07c9b42ec4425940309caf78f7c99aef25deb8522d8385"
+    },
+    {
+      "width": 360,
+      "scenario": "read-only",
+      "path": "360-read-only.png",
+      "sha256": "cd1d499a8fa052cbe49317d6e10d3de7d25febe0519d52c5c2b000261cb9541e"
+    },
+    {
+      "width": 390,
+      "scenario": "loaded",
+      "path": "390-loaded.png",
+      "sha256": "979ce6af8da6b8e7dd34617187b1b99c56c0fcdbcb0b7f2d14b45f34d307b590"
+    },
+    {
+      "width": 390,
+      "scenario": "preview",
+      "path": "390-preview.png",
+      "sha256": "825fd5460c1be76a0ca5ea550531e4ab1c957f957b7edb8881f3916c9d599cdc"
+    },
+    {
+      "width": 390,
+      "scenario": "cooldown",
+      "path": "390-cooldown.png",
+      "sha256": "64b51a1af420b8a6ad5585475ba6df82e99ca16dad8f6e38607209bbac08c17d"
+    },
+    {
+      "width": 390,
+      "scenario": "pending",
+      "path": "390-pending.png",
+      "sha256": "4a64fc8f467d3adaae5893f1e82d0e87a808f77e8e9abf7e790192e5faa706ef"
+    },
+    {
+      "width": 390,
+      "scenario": "unknown",
+      "path": "390-unknown.png",
+      "sha256": "ccf3461d3b92932ee0eaa71262c46d6f87bbeb8fb519c888089f24bd4810baa6"
+    },
+    {
+      "width": 390,
+      "scenario": "paused",
+      "path": "390-paused.png",
+      "sha256": "977b3e4748f6c8ea614db0e88f327c69b55bfa8b2b4faa822f772b2b74cc198a"
+    },
+    {
+      "width": 390,
+      "scenario": "frozen",
+      "path": "390-frozen.png",
+      "sha256": "240eb46b2c0da46edcefccb61e7830730b633f709b65a6c5a3137a64976b2148"
+    },
+    {
+      "width": 390,
+      "scenario": "read-only",
+      "path": "390-read-only.png",
+      "sha256": "5610f29d559e8a0be40dc6f461baa5a5a9db9f1ebdda912952a854245f974e99"
+    },
+    {
+      "width": 430,
+      "scenario": "loaded",
+      "path": "430-loaded.png",
+      "sha256": "5e6100f78e951f8695e6a7db05740be9f02563db93224b6d10a71b30356b2fc7"
+    },
+    {
+      "width": 430,
+      "scenario": "preview",
+      "path": "430-preview.png",
+      "sha256": "409200d8e1d4d72b0af37ab8935dc8212bba2572d33915de488255b360747d3c"
+    },
+    {
+      "width": 430,
+      "scenario": "cooldown",
+      "path": "430-cooldown.png",
+      "sha256": "842a241193d40f7d726dc6107a30f8c4f5ffe257edbd31684b98225e84609959"
+    },
+    {
+      "width": 430,
+      "scenario": "pending",
+      "path": "430-pending.png",
+      "sha256": "42d50af336a7c528ed01d5e425bb6f8a0f39b7294d7c11db8f5a5129cbc4486a"
+    },
+    {
+      "width": 430,
+      "scenario": "unknown",
+      "path": "430-unknown.png",
+      "sha256": "cecee631fb1d8d82a1652ed8dc1f70e791d5430e3e3025a5bb066b30f3ef4ee0"
+    },
+    {
+      "width": 430,
+      "scenario": "paused",
+      "path": "430-paused.png",
+      "sha256": "49017480c26458af179a18503e77c3f01e055388e6a24c0c0f6293394422cce5"
+    },
+    {
+      "width": 430,
+      "scenario": "frozen",
+      "path": "430-frozen.png",
+      "sha256": "6b6ba15f774a52d6a50967b06b18889b714eba2baa594ea7cc638968dcbe1a6b"
+    },
+    {
+      "width": 430,
+      "scenario": "read-only",
+      "path": "430-read-only.png",
+      "sha256": "ea7eefdcee560ab61f5a85b030c3306927f08705f0d753ebd101fc5c6b3e875c"
+    }
+  ],
+  "sourceDependencies": {
+    "mural": "832c7de9c57f6f8931b5564f61f68d82fa99d89d",
+    "sharedPresentationBase": "f837bef676cd26869c26c172a699a91b7842d832",
+    "rootOverride": false
+  },
+  "pinnedPaths": [
+    "frontend/src/features/mural/editor/MuralEditor.tsx",
+    "frontend/src/features/mural/editor/editor.css",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx"
+  ],
+  "loadedPinnedPaths": [
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx",
+    "frontend/src/features/mural/editor/MuralEditor.tsx",
+    "frontend/src/features/mural/editor/editor.css"
+  ],
+  "presentation": "MEETS_STRUCTURAL_GEOMETRY_CHECKS"
+}

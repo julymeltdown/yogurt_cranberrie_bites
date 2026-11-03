@@ -127,7 +127,13 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       if (stopped || !sceneReady) return
       const camera = game.scene.getScene('mcr-map').cameras.main
       camera.setSize(game.scale.width, game.scale.height).setZoom(cameraZoom ?? Math.max(1, Math.floor(Math.min(game.scale.width / loaded.widthPx, game.scale.height / loaded.heightPx))))
-      const foot = cameraFoot ?? { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px }
+      // Before a server/self or explicit camera target exists, present the bound stage.
+      // This is a view only: no spawn, player, geometry or interaction is moved.
+      const stage = loaded.scenery?.manifest.objects.find(object => object.id === 'stage')
+      const stageInteraction = g.interactions.find(interaction => interaction.interaction_id === 'stage_info')
+      const foot = cameraFoot ?? (stage && stageInteraction ? { x: stage.x + stage.width / 2 + Math.min(64, game.scale.width / camera.zoom * .14),
+        y: stage.y + stage.height / 2 + Math.min(260, game.scale.height / camera.zoom * .32) }
+        : { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px })
       camera.centerOn(foot.x, foot.y)
       camera.preRender() // Updates bounded scroll and the matrix used by public getWorldPoint().
     }
