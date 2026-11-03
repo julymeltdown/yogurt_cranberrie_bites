@@ -9,6 +9,7 @@ instruction to preserve them without orchestration overrides.
 | BE04 actual Profile chain | `mcr(be) BE04 Gateway to Profile integration` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration` / `codex/mcr-be-profile-client-integration` |
 | BE04 database deadline fix | `mcr(be) Profile query deadline fix` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound` / `codex/mcr-be-profile-query-bound` |
 | FE09–FE11 real email flows | `mcr(fe) Real email account journeys` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow` / `codex/mcr-fe-real-email-flow` |
+| FE06 themes | `mcr(fe) FE06 atomic themes` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/.codex/worktrees/3c8d/mcr` / `codex/mcr-fe-FE06` |
 | QA FE15 complete; awaiting runnable email flow | `mcr(qa) FE15 movement and camera review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | stopped `/Users/lhs/Desktop/mcr-worktrees/qa-fe-movement` / `codex/mcr-qa-FE15` |
 
 The entries below retain earlier assignment history; this table and the latest
@@ -388,3 +389,18 @@ Current exact ownership supersedes earlier allocations:
 - FE15 implementation and independent review goals are tool-confirmed COMPLETE.
   The original broad BE04 goal and new query-fix/email-flow goals remain active;
   scope completion never silently completes a broader product task.
+
+
+## Additional frontend chat — FE06
+
+The user explicitly requested a second frontend development chat. It starts at
+`600582d6b5deda6037c190c303f80752ba4a6bb3`; creation omitted model and reasoning
+overrides, and its unbudgeted implementation goal is confirmed ACTIVE. It owns
+`frontend/src/shared/styles/themes/**`, `frontend/src/features/theme/**`,
+`frontend/src/world/theme/**`, and `docs/mcr/frontend/theme-system.md`. Limited
+`world/runtime.ts` and `world/scenes/MapScene.ts` seams are assigned exclusively
+for atomic skin replacement on the current Phaser owner. Auth/e2e ownership is
+unchanged. Parent owns the single CSS import, scoped shell/controller composition
+and selector mount; existing world, room, camera and avatar identity must survive
+switches. Production texture absence remains explicit; synthetic tests do not
+approve replacement artwork. Focused tests and one native gate precede review.
