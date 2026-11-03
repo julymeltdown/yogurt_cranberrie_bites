@@ -83,27 +83,11 @@ class BoundaryTests(unittest.TestCase):
         old,new=packages(original),packages(current)
         for key,value in old.items():
             self.assertIn(key,new,f"existing package resolution disappeared: {key}")
-            manifest_fields={"name","version","source","checksum"}
-            if key[0] != "auth-service":
-                manifest_fields.add("dependencies")
-            retained={field:item for field,item in new[key].items() if field in manifest_fields}
-            expected={field:item for field,item in value.items() if field in manifest_fields}
-            self.assertEqual(set(retained),set(expected),f"existing package fields changed: {key}")
-            self.assertEqual(retained,expected,f"existing package resolution changed: {key}")
-            if key[0] != "auth-service":
-                self.assertEqual(new[key].get("dependencies"),value.get("dependencies"),f"existing dependency set changed: {key}")
-        self.assertEqual(
-            set(new[("auth-service","0.1.0",None)]["dependencies"])
-            - set(old[("auth-service","0.1.0",None)]["dependencies"]),
-            {"profile-service"},
-            "only the joint owner integration test may add a local Auth dependency",
-        )
-        self.assertEqual(
-            set(old[("auth-service","0.1.0",None)]["dependencies"])
-            - set(new[("auth-service","0.1.0",None)]["dependencies"]),
-            set(),
-            "joint owner integration must not remove an Auth dependency",
-        )
+            expected=dict(value)
+            if key == ("auth-service","0.1.0",None):
+                self.assertNotIn("profile-service",value["dependencies"])
+                expected["dependencies"]=sorted([*value["dependencies"],"profile-service"])
+            self.assertEqual(new[key],expected,f"existing package changed outside reviewed owner-test dependency: {key}")
         self.assertEqual({key[0] for key in new.keys()-old.keys()},{"concert-domain","concert-application","concert-service"})
         original=tomllib.loads(subprocess.check_output(["git","show","f795ed4:backend/Cargo.toml"],cwd=smoke.ROOT,text=True))
         current=tomllib.loads((smoke.ROOT/"backend/Cargo.toml").read_text())

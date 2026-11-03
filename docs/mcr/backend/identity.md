@@ -165,13 +165,13 @@ closed when requested. Foreign/deleted/unlinked claims cannot attach.
 The following earlier Concert-to-owner exchange proposal remains historical
 design evidence and is not the selected first increment:
 
-> The superseded proposal used Gateway to establish a signed root, then Concert
-> to exchange that root for narrowly scoped Auth/Profile child authority. A
-> `GatewayConcertAuthorizationExchangeService` would bind presenter, audience,
-> method/body digest, root digest, operation and expiry. That architecture is
-> retained only for a future explicit decision; it would require new methods,
-> policies, issuer code, owner guards, revocation and real transport evidence.
-> Existing Post child v2 is not a generic Concert switch.
+The superseded proposal used Gateway to establish a signed root, then Concert
+to exchange that root for narrowly scoped Auth/Profile child authority. A
+`GatewayConcertAuthorizationExchangeService` would bind presenter, audience,
+method/body digest, root digest, operation and expiry. That architecture is
+retained only for a future explicit decision; it would require new methods,
+policies, issuer code, owner guards, revocation and real transport evidence.
+Existing Post child v2 is not a generic Concert switch.
 
 ### Remaining change map and qualification
 
