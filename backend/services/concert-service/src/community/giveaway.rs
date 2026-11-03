@@ -662,7 +662,7 @@ async fn enqueue_time(c: &mut PgConnection, g: &Giveaway) -> Result<(), CommandE
     .await?;
     Ok(())
 }
-async fn load(
+pub(super) async fn load(
     c: &mut PgConnection,
     event: Uuid,
     id: Uuid,
@@ -705,7 +705,7 @@ async fn load(
     })
     .transpose()
 }
-async fn save(c: &mut PgConnection, g: &Giveaway) -> Result<(), CommandError> {
+pub(super) async fn save(c: &mut PgConnection, g: &Giveaway) -> Result<(), CommandError> {
     let next = g
         .reservations
         .iter()

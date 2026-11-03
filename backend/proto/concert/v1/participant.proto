@@ -1,0 +1,29 @@
+syntax = "proto3";
+package concert.participant.v1;
+
+// Gateway-only signed internal envelope. Public DTOs remain frozen C03 JSON.
+// Workload/actor delegation signs this complete message and the exact RPC path.
+// This envelope is a bounded transport assertion, NEVER a mutation capability.
+message ParticipantRequest {
+  string user_id = 1;
+  string event_id = 2;
+  string session_family_id = 3;
+  string request_id = 4;
+  string http_method = 5;
+  string http_target = 6;
+  bytes request_json = 7; // Empty for GET. Exact unmodified browser body for writes.
+  string release_digest = 8; // Current validated release SHA-256, 64 lowercase hex.
+  int64 authority_expires_unix_micros = 9; // Original bound, never renewed here.
+  int64 auth_observed_at_unix_micros = 10;
+  int64 profile_observed_at_unix_micros = 11;
+}
+message ParticipantResponse {
+  // GetParticipant/UpdatePreferences: PrivateParticipant; SetAvatar: AvatarState.
+  bytes response_json = 1;
+}
+service ConcertParticipantService {
+  rpc GetParticipant(ParticipantRequest) returns (ParticipantResponse);
+  rpc SetAvatar(ParticipantRequest) returns (ParticipantResponse);
+  // Preference-only PATCH subset. Profile edits need a separate owner protocol.
+  rpc UpdatePreferences(ParticipantRequest) returns (ParticipantResponse);
+}
