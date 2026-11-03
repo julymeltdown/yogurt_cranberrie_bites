@@ -60,3 +60,5 @@ No new character design or invalid static-front animation binding is used. Real 
 ## Final ownership check
 
 `python3 scripts/mcr/check-boundaries.py --base b756e9d9d16e1541d8155e09537fcb142317aa44 --lane frontend --allow-doc docs/mcr/frontend/reference-root.md` exited 0 for exactly 14 changes. Manual grant/import review and result.json source-hash verification passed. `git diff --check` exited 0. The task-owned dependency symlink was removed; no source writer remains active after committed handoff. Final disk headroom was 8.9GiB. Sparse checkout settings are local only and original tracked bytes remain in Git.
+
+The published root follow-up replaces the fixed34px control bottom inset with a shared explicit grid row for scene and controls and an automatic live-summary row. Fresh actual-default-root Chrome checks at360/390/430 pass control/canvas alignment within1px and prevent control overlap with the summary; route sizing, keyboard/Back/focus and singleton cleanup still pass. See `world-control-overlay-sizing.json`. This is synthetic integration evidence, not visual/live acceptance.
