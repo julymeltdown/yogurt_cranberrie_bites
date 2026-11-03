@@ -847,6 +847,7 @@ fn bounded_switch_transition_survives_a_committed_scope_change_between_owner_tic
         f.owner.publish(b, 0, true).unwrap();
     }
     let before = f.socket.0.lock().unwrap().frames.len();
+    f.owner.input(&elsewhere, input(&elsewhere, 1), 0).unwrap();
     let request = id(2000);
     f.owner.begin_switch(&old, request, 0).unwrap();
     let mut next = old.clone();
@@ -859,14 +860,15 @@ fn bounded_switch_transition_survives_a_committed_scope_change_between_owner_tic
     f.owner.publish(&old, 100, true).unwrap();
     f.owner.publish(&observer, 100, true).unwrap();
     f.owner.publish(&elsewhere, 100, true).unwrap();
-    {
+    let other_room_progress = {
         let socket = f.socket.0.lock().unwrap();
         assert!(!socket.closes.iter().any(|(b, _)| b == &old));
         assert!(!socket.frames[before..].iter().any(|(b, _, _)| b == &old));
-        assert!(socket.frames[before..]
+        socket.frames[before..]
             .iter()
-            .any(|(b, _, _)| b == &elsewhere));
-    }
+            .any(|(b, frame, _)| b == &elsewhere && frame["ackInputSeq"] == 1)
+    };
+    assert!(other_room_progress);
     f.owner
         .install(next.clone(), SnapshotCause::RoomSwitch(request), 100)
         .unwrap();
@@ -923,6 +925,9 @@ fn abandoned_switch_expires_with_a_bounded_deadline_without_other_room_stalling(
         f.owner.input(&b, input(&b, 1), 50),
         Err(RuntimeError::Stale)
     );
+    f.owner
+        .input(&other, input(&other, 1), SWITCH_TRANSITION_MS - 100)
+        .unwrap();
     f.owner.maintain(SWITCH_TRANSITION_MS).unwrap();
     f.owner.publish(&other, SWITCH_TRANSITION_MS, true).unwrap();
     assert_eq!(f.owner.active_count(), 1);

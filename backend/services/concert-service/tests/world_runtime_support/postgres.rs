@@ -172,7 +172,7 @@ impl DatabaseFixture {
             utc: Utc::now(),
         };
         let started = Instant::now();
-        let bridge = AdmissionBridge::new(
+        let bridge = AdmissionBridge::new_fixture(
             pool.clone(),
             bootstrap,
             owners.clone(),

@@ -189,7 +189,7 @@ async fn write_membership(
     let record = &claim.record;
     let lease_until = record
         .access_expires_at
-        .min(now + Duration::seconds(FRESH_AUTHORITY_MILLISECONDS));
+        .min(now + Duration::milliseconds(FRESH_AUTHORITY_MILLISECONDS));
     if lease_until <= now {
         return Err(WorldError::CredentialExpired);
     }

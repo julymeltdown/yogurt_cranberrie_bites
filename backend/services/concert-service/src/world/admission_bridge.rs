@@ -7,19 +7,49 @@ use super::{
     simulation::{AuthorityError, Binding, ResourcePin},
     PgWorldRepository,
 };
-use crate::{adapters::r#in::world_ws::AdmissionPort, bootstrap::BootstrapService};
+use crate::{
+    adapters::{
+        out::relationship_authority::world_auth::{WorldAuthRead, WorldOwnerRequest},
+        r#in::world_ws::AdmissionPort,
+    },
+    bootstrap::BootstrapService,
+};
 use async_trait::async_trait;
 use chrono::{DateTime, TimeDelta, Utc};
 use concert_application::{identity::AccessCredential, world_ticket::*};
 use concert_domain::EventId;
+use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
 use std::{
     collections::{BTreeMap, BTreeSet},
     sync::{Arc, Mutex},
-    time::Instant,
+    time::{Duration, Instant},
 };
 use uuid::Uuid;
 
 const MAX_MEMBERS: usize = 800;
+/// Only production composition can supply the sealed Auth reader. The explicit
+/// fixture branch is used by isolated DB tests and is never selected by startup.
+enum AuthMode {
+    Production(Arc<dyn WorldAuthRead>),
+    Fixture,
+}
+#[derive(Clone)]
+struct AuthWindow {
+    subject: WorldSubject,
+    credential_expires_at: DateTime<Utc>,
+    valid_until: DateTime<Utc>,
+}
+impl AuthWindow {
+    fn check(&self, expected: &WorldSubject, expiry: DateTime<Utc>) -> Result<(), WorldError> {
+        if &self.subject != expected || self.credential_expires_at != expiry {
+            return Err(WorldError::Conflict);
+        }
+        if Utc::now() >= self.valid_until || Utc::now() >= expiry {
+            return Err(WorldError::CredentialExpired);
+        }
+        Ok(())
+    }
+}
 #[derive(Clone)]
 pub struct LiveOwnerView {
     pub subject: WorldSubject,
@@ -113,6 +143,7 @@ struct Entry {
     binding: Binding,
     membership: Membership,
     live: LiveOwnerView,
+    auth_until: DateTime<Utc>,
     valid_until_ms: u64,
     visible: BTreeSet<Uuid>,
     generation: Uuid,
@@ -187,6 +218,7 @@ pub struct AdmissionBridge {
     service: Service,
     authority: CurrentAuthority,
     owners: Arc<dyn LiveWorldOwners>,
+    auth: AuthMode,
     owner: OwnerIdentity,
     event: EventId,
     rooms: BTreeMap<Uuid, Uuid>,
@@ -216,10 +248,62 @@ impl Drop for AdmissionAttempt<'_> {
     }
 }
 impl AdmissionBridge {
-    pub fn new(
+    /// Synthetic external authority for isolated DB regression fixtures only.
+    /// Production settings have no route to this constructor.
+    pub fn new_fixture(
         pool: sqlx::PgPool,
         bootstrap: Arc<BootstrapService>,
         owners: Arc<dyn LiveWorldOwners>,
+        owner: OwnerIdentity,
+        event: EventId,
+        rooms: BTreeMap<Uuid, Uuid>,
+        resources: ResourcePin,
+        anchor: ClockAnchor,
+        started: Instant,
+    ) -> Result<Arc<Self>, WorldError> {
+        Self::build(
+            pool,
+            bootstrap,
+            owners,
+            AuthMode::Fixture,
+            owner,
+            event,
+            rooms,
+            resources,
+            anchor,
+            started,
+        )
+    }
+    pub(crate) fn new_production(
+        pool: sqlx::PgPool,
+        bootstrap: Arc<BootstrapService>,
+        owners: Arc<dyn LiveWorldOwners>,
+        auth: Arc<dyn WorldAuthRead>,
+        owner: OwnerIdentity,
+        event: EventId,
+        rooms: BTreeMap<Uuid, Uuid>,
+        resources: ResourcePin,
+        anchor: ClockAnchor,
+        started: Instant,
+    ) -> Result<Arc<Self>, WorldError> {
+        Self::build(
+            pool,
+            bootstrap,
+            owners,
+            AuthMode::Production(auth),
+            owner,
+            event,
+            rooms,
+            resources,
+            anchor,
+            started,
+        )
+    }
+    fn build(
+        pool: sqlx::PgPool,
+        bootstrap: Arc<BootstrapService>,
+        owners: Arc<dyn LiveWorldOwners>,
+        auth: AuthMode,
         owner: OwnerIdentity,
         event: EventId,
         rooms: BTreeMap<Uuid, Uuid>,
@@ -253,6 +337,7 @@ impl AdmissionBridge {
             repository: PgWorldRepository::new(pool.clone()),
             pool,
             owners,
+            auth,
             owner,
             event,
             rooms,
@@ -264,6 +349,91 @@ impl AdmissionBridge {
             admission_gate: tokio::sync::Mutex::new(()),
             owner_until: Mutex::new(anchor.utc),
         }))
+    }
+    fn auth_deadline(&self, expires: DateTime<Utc>) -> Result<AuthorityRpcDeadline, WorldError> {
+        AuthorityRpcDeadline::new(expires.timestamp_micros(), Duration::from_secs(2))
+            .map_err(|_| WorldError::Unavailable)
+    }
+    async fn observe_auth(&self, request: WorldOwnerRequest) -> Result<AuthWindow, WorldError> {
+        let result = match &self.auth {
+            AuthMode::Production(auth) => {
+                let observation = auth.observe(&request).await?;
+                observation.check(&request)?;
+                AuthWindow {
+                    subject: observation.subject().clone(),
+                    credential_expires_at: observation.credential_expires_at(),
+                    valid_until: observation.valid_until(),
+                }
+            }
+            AuthMode::Fixture => {
+                request.check()?;
+                AuthWindow {
+                    subject: request.subject().clone(),
+                    credential_expires_at: request.credential_expires_at(),
+                    valid_until: (Utc::now() + TimeDelta::milliseconds(5000))
+                        .min(request.credential_expires_at()),
+                }
+            }
+        };
+        result.check(request.subject(), request.credential_expires_at())?;
+        Ok(result)
+    }
+    async fn auth_consumed(
+        &self,
+        claim: &TicketClaim,
+        request_id: Uuid,
+    ) -> Result<AuthWindow, WorldError> {
+        self.observe_auth(WorldOwnerRequest::from_consumed(
+            claim,
+            request_id,
+            self.auth_deadline(claim.record.expires_at)?,
+        )?)
+        .await
+    }
+    async fn auth_current(
+        &self,
+        binding: &Binding,
+        request_id: Uuid,
+    ) -> Result<AuthWindow, WorldError> {
+        let current = self
+            .repository
+            .current_owned_membership(binding.key, Utc::now())
+            .await?
+            .ok_or(WorldError::MembershipMissing)?;
+        let expected = subscription(binding, &self.owner)?;
+        let captured_expiry = self
+            .views
+            .lock()
+            .map_err(|_| WorldError::Unavailable)?
+            .entries
+            .get(&key(binding))
+            .filter(|entry| entry.binding == *binding)
+            .map(|entry| entry.membership.access_expires_at)
+            .ok_or(WorldError::MembershipMissing)?;
+        if current.membership.room_id != expected.room_id
+            || current.membership.access_expires_at != captured_expiry
+            || current.membership.pin.map.id != binding.resources.map_id
+            || current.membership.pin.map.revision != binding.resources.map_revision
+            || current.membership.pin.avatar.manifest_id != binding.resources.avatar_manifest_id
+            || current.membership.pin.avatar.manifest_version
+                != binding.resources.avatar_manifest_version
+        {
+            return Err(WorldError::Conflict);
+        }
+        let subject = WorldSubject {
+            key: expected.key,
+            event_id: expected.key.event_id,
+            session_id: expected.session_id,
+        };
+        self.observe_auth(WorldOwnerRequest::from_current(
+            &current,
+            &self.owner,
+            &subject,
+            expected.connection_id,
+            request_id,
+            self.auth_deadline(current.membership.lease_until)?,
+        )?)
+        .await
     }
     fn now_ms(&self) -> Result<u64, WorldError> {
         self.anchor
@@ -320,6 +490,7 @@ impl AdmissionBridge {
         membership: Membership,
         connection: Uuid,
         stream: Uuid,
+        auth: AuthWindow,
     ) -> Result<Binding, WorldError> {
         let generation = self.owners.generation();
         if generation.is_nil() {
@@ -327,6 +498,7 @@ impl AdmissionBridge {
         }
         let now = Utc::now();
         let expected = subject(&membership);
+        auth.check(&expected, membership.access_expires_at)?;
         let live = self.owners.current(&expected, now).await?;
         validate_live(&live, &expected, Utc::now())?;
         if live.identity.avatar.manifest_id != self.resources.avatar_manifest_id
@@ -380,6 +552,7 @@ impl AdmissionBridge {
             .lease_until
             .min(membership.access_expires_at)
             .min(live.expires_at)
+            .min(auth.valid_until)
             .min(
                 *self
                     .owner_until
@@ -394,6 +567,7 @@ impl AdmissionBridge {
         if valid_until_ms <= self.now_ms()? || self.owners.generation() != generation {
             return Err(WorldError::Unavailable);
         }
+        auth.check(&expected, membership.access_expires_at)?;
         let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
         if views.entries.len() >= MAX_MEMBERS && !views.entries.contains_key(&key(&binding)) {
             return Err(WorldError::RoomFull);
@@ -419,6 +593,7 @@ impl AdmissionBridge {
                 binding: binding.clone(),
                 membership,
                 live,
+                auth_until: auth.valid_until,
                 valid_until_ms,
                 visible,
                 generation: Uuid::new_v4(),
@@ -479,16 +654,19 @@ impl AdmissionBridge {
             .collect();
         for entry in entries {
             let b = &entry.binding;
-            let checked = self.service.renew(&subscription(b, &self.owner)?).await;
             let result=async {
-                let LeaseState::Active(m)=checked? else { return Err(WorldError::Denied); };
+                // Bind fresh Auth to the exact current DB owner, canonical family
+                // and connection before any persistent lease extension.
+                let auth = self.auth_current(b, Uuid::new_v4()).await?;
+                let LeaseState::Active(m)=self.service.renew(&subscription(b, &self.owner)?).await? else { return Err(WorldError::Denied); };
+                auth.check(&subject(&m), m.access_expires_at)?;
                 // Repository renew is a current read, not an expiry extension. Extend
                 // only after fresh Auth/event/restriction checks and exact owner fencing.
                 let lease=Utc::now().checked_add_signed(TimeDelta::milliseconds(5000)).ok_or(WorldError::Invalid)?.min(m.access_expires_at);
                 let changed=sqlx::query("update public.concert_world_memberships m set lease_until=$6 where event_id=$1 and user_id=$2 and room_id=$3 and session_id=$4 and connection_id=$5 and access_expires_at=$7 and lease_until>clock_timestamp() and not disconnected and exists(select 1 from public.concert_world_owner_leases l where l.event_id=m.event_id and l.room_id=m.room_id and l.owner_process_id=$8 and l.owner_epoch=$9 and l.lease_until>clock_timestamp())")
                     .bind(b.key.event_id.uuid()).bind(b.key.user_id.uuid()).bind(b.room_id).bind(b.session_id).bind(b.connection_id).bind(lease).bind(m.access_expires_at).bind(&self.owner.process_id).bind(self.owner.epoch).execute(&self.pool).await.map_err(|_|WorldError::Unavailable)?.rows_affected();
                 if changed!=1 { return Err(WorldError::OwnerFenced); }
-                let mut m=m; m.lease_until=lease; self.publish(m,b.connection_id,b.stream_id).await.map(|_|())
+                let mut m=m; m.lease_until=lease; self.publish(m,b.connection_id,b.stream_id,auth).await.map(|_|())
             }.await;
             if result.is_err() {
                 self.invalidate(b);
@@ -611,12 +789,17 @@ impl CanonicalAuthorityPort for Arc<AdmissionBridge> {
         Ok(CanonicalMembership {
             binding: b.clone(),
             checked_at_ms: now,
-            lease_expires_at: e.membership.lease_until.min(e.live.expires_at).min(
-                *self
-                    .owner_until
-                    .lock()
-                    .map_err(|_| AuthorityError::Unavailable)?,
-            ),
+            lease_expires_at: e
+                .membership
+                .lease_until
+                .min(e.live.expires_at)
+                .min(e.auth_until)
+                .min(
+                    *self
+                        .owner_until
+                        .lock()
+                        .map_err(|_| AuthorityError::Unavailable)?,
+                ),
             access_expires_at: e.membership.access_expires_at,
             identity: e.live.identity.clone(),
         })
@@ -690,9 +873,15 @@ impl AdmissionPort for AdmissionBridge {
             return Err(SafeClose::AUTH_REQUIRED);
         }
         self.validate_requested(&intent).map_err(safe)?;
+        let auth = self
+            .auth_consumed(&claim, Uuid::new_v4())
+            .await
+            .map_err(safe)?;
         self.authority
             .reauthorize(&claim.record.subject, Utc::now())
             .await
+            .map_err(safe)?;
+        auth.check(&claim.record.subject, claim.record.access_expires_at)
             .map_err(safe)?;
         // Known takeover invalidation precedes the durable commit. Upstream I/O
         // never holds the synchronous publication fence across an await.
@@ -745,7 +934,7 @@ impl AdmissionPort for AdmissionBridge {
             _ => return Err(SafeClose::UNAVAILABLE),
         };
         let result = self
-            .publish(admitted.membership, connection, stream)
+            .publish(admitted.membership, connection, stream, auth)
             .await
             .map_err(safe)?;
         self.views
@@ -760,7 +949,7 @@ impl AdmissionPort for AdmissionBridge {
         &self,
         current: &Binding,
         intent: AdmissionIntent,
-        _request: Uuid,
+        request: Uuid,
     ) -> Result<Binding, SwitchFailure> {
         let _gate = self.admission_gate.lock().await;
         let requested = self
@@ -804,6 +993,10 @@ impl AdmissionPort for AdmissionBridge {
                 ))
             }
         }
+        let auth = self
+            .auth_consumed(&claim, request)
+            .await
+            .map_err(|e| SwitchFailure::Close(safe(e)))?;
         self.authority
             .reauthorize(&claim.record.subject, Utc::now())
             .await
@@ -822,6 +1015,8 @@ impl AdmissionPort for AdmissionBridge {
         if held.access_expires_at != claim.record.access_expires_at {
             return Err(SwitchFailure::Rejected(SwitchRejection::TicketInvalid));
         }
+        auth.check(&subject(&held), held.access_expires_at)
+            .map_err(|e| SwitchFailure::Close(safe(e)))?;
         let stream = Uuid::new_v4();
         let pending = Binding {
             key: current.key,
@@ -877,7 +1072,7 @@ impl AdmissionPort for AdmissionBridge {
         // unclosed recovery slot until installation of the checked new stream.
         self.invalidate(current);
         let result = self
-            .publish(result.membership, current.connection_id, stream)
+            .publish(result.membership, current.connection_id, stream, auth)
             .await
             .map_err(|e| SwitchFailure::Close(safe(e)))?;
         self.views
@@ -888,8 +1083,9 @@ impl AdmissionPort for AdmissionBridge {
         attempt.binding = None;
         Ok(result)
     }
-    async fn resync(&self, current: &Binding, _request: Uuid) -> Result<Binding, SafeClose> {
+    async fn resync(&self, current: &Binding, request: Uuid) -> Result<Binding, SafeClose> {
         let _gate = self.admission_gate.lock().await;
+        let auth = self.auth_current(current, request).await.map_err(safe)?;
         let m = self
             .repository
             .current_owned_membership(current.key, Utc::now())
@@ -902,7 +1098,7 @@ impl AdmissionPort for AdmissionBridge {
         {
             return Err(SafeClose::UNAVAILABLE);
         }
-        self.publish(m.membership, current.connection_id, Uuid::new_v4())
+        self.publish(m.membership, current.connection_id, Uuid::new_v4(), auth)
             .await
             .map_err(safe)
     }
@@ -912,3 +1108,7 @@ impl AdmissionPort for AdmissionBridge {
         let _ = self.cleanup().await;
     }
 }
+
+#[cfg(test)]
+#[path = "../../tests/world_runtime_support/auth_bridge.rs"]
+mod auth_bridge_tests;
