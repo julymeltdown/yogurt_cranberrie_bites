@@ -2,7 +2,11 @@
 
 Owner-local producer: **CONTRACT_READY**, with implementation and validation
 complete. Parent C05 remains **IN_PROGRESS**; authenticated delivery and a World
-consumer are **NOT_RUN**. Integration into the delivery branch is pending.
+consumer are **NOT_RUN**. The clean three-commit author handoff is integrated;
+all eight assigned files matched the author exactly before this delivery note.
+The fresh Python harness checks pass (2 tests). Existing qualified native
+evidence is reused without a duplicate general review or taking either active
+worker's build target. See the [integration receipt](../evidence/auth-invalidation-integration-2026-11-04.json).
 
 ## Scope and provenance
 
