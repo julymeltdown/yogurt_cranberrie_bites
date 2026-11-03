@@ -1,6 +1,6 @@
 # BE08 places & immutable map releases fix review
 
-Status: **Scoped fix review PASS; candidate verified, awaiting integrator disposition.** This is a bounded implementation review of BE08 fixes, not project-wide BE08/BE09 acceptance.
+Status: **Scoped fix review PASS; final candidate verified, awaiting integrator disposition.** This is a bounded implementation review of BE08 fixes through final candidate `83d8c47`, not project-wide BE08/BE09 acceptance.
 
 ## Candidate and ownership
 
@@ -8,11 +8,13 @@ Review checkout: `/Users/lhs/Desktop/mcr-worktrees/qa-places-fixes`, branch `cod
 Integration parent commit: `097651c24b741ce0d179ea9b7b8e8a761806d249`.
 Initial implementation candidate: `c135bffcb0283aff35180fc14fd9783af975afcb`.
 Review fix commit: `a91ed08668aa8aca53200f94d3c25ae0162c2a85`.
-Post-commit evidence & documentation HEAD: `bbc152454ebdf1b30361f955a1ad096ec5599fc2` (tree `e04d25f080f736f6820ffeccd75abcaba0b416a9`).
+Post-commit evidence HEAD: `bbc152454ebdf1b30361f955a1ad096ec5599fc2`.
+Tilemap path correction: `f5855351c6b4b51983145a277a27715a94aeeeb0`.
+Provenance URI correction & final handoff candidate: `83d8c47ce6558aa39c7772524d866e515f58548a` (tree `15bee94252a5b8e2dd9eeb60bd61096160f9968d`).
 
 This report (`/Users/lhs/Desktop/mcr-worktrees/qa-places-fixes/docs/mcr/qa/places-fix-review.md`) is the reviewer's sole tracked write. No application code, migrations, contracts, manifests, lockfiles, or root scripts were modified by the reviewer. Main checkout was accessed read-only. No git push was performed.
 
-All 12 changed paths across the candidate relative to parent `097651c` match the authorized BE08 assignment:
+All 12 changed paths across the final candidate relative to parent `097651c` match the authorized BE08 assignment:
 - Domain: `backend/crates/concert-domain/src/{lib.rs,place/mod.rs}`, `backend/crates/concert-domain/tests/place.rs`
 - Application: `backend/crates/concert-application/src/{lib.rs,place/mod.rs}`, `backend/crates/concert-application/tests/place.rs`
 - Persistence: `backend/services/concert-service/src/adapters/out/repository.rs`,
@@ -61,29 +63,46 @@ The prior source review (`docs/mcr/qa/places-review.md` at `fc8c5d9`) identified
 
 ---
 
+## Addendum: C06 parser corrections (commits `f585535` and `83d8c47`)
+
+Following completion audit, two contract mismatches in the domain parser were resolved:
+
+1. **Tilemap path pattern enforcement (`f585535`)**:
+   - The frozen C06 schema (`map-manifest.schema.json`) defines tilemap path pattern as `^[a-zA-Z0-9_/-]+\.json$`, permitting exactly one `.json` suffix and forbidding internal dots in the filename stem.
+   - Initial `Tilemap::new` allowed dots anywhere in the string as long as it ended in `.json`, erroneously admitting filenames like `world/a.b.json`.
+   - Fix strips `.json` via `v.strip_suffix(".json")` and strictly validates `stem.bytes().all(|b| b.is_ascii_alphanumeric() || matches!(b, b'_' | b'-' | b'/'))`. Rehashed invalid manifest test in `tests/place.rs` asserts rejection of `world/a.b.json` and acceptance of canonical `world/a-b_1.json`.
+   - **Status: VERIFIED.**
+
+2. **Provenance `source_uri` absolute URI support (`83d8c47`)**:
+   - The frozen C06 schema (`common.schema.json`) defines `source_uri` as general RFC 3986 URI format (`format: "uri"`), which admits non-hierarchical absolute URIs such as `urn:mcr:format-fixture` or `mailto:fixture@example.invalid`.
+   - Initial `uri()` validator required HTTP/HTTPS with a host, over-constraining the schema.
+   - Fix updates `uri()` to validate printable ASCII (`b'!'..=b'~'`), well-formed hex percent escapes (`%[0-9a-fA-F]{2}`), valid URI scheme with content after the scheme delimiter, and host presence for hierarchical URLs (`url.cannot_be_a_base() || url.host_str().is_some()`).
+   - Domain tests in `tests/place.rs` verify acceptance of valid URNs, mailto, and percent-encoded HTTP(S) URIs, and rejection of relative references, bare schemes, raw whitespace/control characters, non-ASCII characters, and malformed percent escapes.
+   - **Status: VERIFIED.**
+
+---
+
 ## Evidence and verification audit
 
-1. **Native worker evidence**:
-   - Report: `/Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103141447-postcommit.json` (SHA-256: `978ddd07ba369956515298c87ebeb7b7dba7ae0c48c51073b0fead476b6d8486`).
-   - Handoff receipt: `/Users/lhs/Desktop/mcr-build/be08/handoff-bb08-bbc1524.json` (SHA-256: `8e960cb6570a3d4e0c7f5e17ac28d0f0fc3b806f995a8aa4c8e9ab618b84c7e2`).
-   - Verified that the SHA-256 digests of all 4 source files recorded in `native-20261103141447-postcommit.json` match the current worktree files exactly:
-     - `backend/crates/concert-domain/src/place/mod.rs`: `ee505aa435265ebade6e105d1126e2f059c43c658957dc0e52cee37156507584`
-     - `backend/crates/concert-application/src/place/mod.rs`: `af26f6af39d3170cb96dfc524c353daa918468e5108f32b35813bea170c4ba05`
-     - `backend/services/concert-service/src/adapters/out/repository/place.rs`: `9a6e004fb6d7a54ba43381fef7e13a65da05709ee82edcb6939b7aeff788b660`
-     - `backend/services/concert-service/migrations/0003_places_map_releases.sql`: `b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a`
-     - `backend/scripts/mcr/places_smoke.py`: `ab0d26ef2274a8d2c39622f83645dab80ac14b4926cc26a21ce647d9f37e684f`
-   - Handoff `head_tree` matches `git rev-parse HEAD^{tree}`: `e04d25f080f736f6820ffeccd75abcaba0b416a9`.
+1. **Native worker evidence attribution**:
+   - Post-commit native report: `/Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103141447-postcommit.json` (SHA-256: `978ddd07ba369956515298c87ebeb7b7dba7ae0c48c51073b0fead476b6d8486`).
+   - Final handoff receipt: `/Users/lhs/Desktop/mcr-build/be08/handoff-bb08-83d8c47.json` (SHA-256: `b3fb90cf05f91f721ac2b084a55f093b2d36e65f00a8892db171b59718fbaebf`).
+   - Handoff `head_tree` matches `git rev-parse 83d8c47^{tree}`: `15bee94252a5b8e2dd9eeb60bd61096160f9968d`.
+   - **Evidence Attribution Distinction**:
+     - The native PostgreSQL test report (`native-20261103141447-postcommit.json`) was executed against commit `a91ed08` / `bbc1524`.
+     - The persistence inputs—repository (`9a6e004fb6d7a54ba43381fef7e13a65da05709ee82edcb6939b7aeff788b660`), migration 0003 (`b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a`), native test suite (`88a848c51094d70074634d70fd39e31a90b12ce1cbc0f58faed7505ce67809c0`), and smoke harness (`ab0d26ef2274a8d2c39622f83645dab80ac14b4926cc26a21ce647d9f37e684f`)—remain byte-for-byte identical across commits `bbc1524`, `f585535`, and `83d8c47`.
+     - The subsequent parser-only fixes (`f585535` and `83d8c47`) affect only `concert-domain` source/tests and documentation, verified via focused domain tests (4/4 passed). PostgreSQL was not rerun and is accurately retained from the `a91ed08` gate.
 
 2. **Planning & consistency checks**:
    - `python3 scripts/mcr/check-plan.py`: exit 0, PASS (118 tasks, 64 IA entries, planning/source preservation verified).
-   - Rust/PG shared target was not executed, preserving the shared target ownership for the integrator.
+   - Cargo/PostgreSQL review reruns were not executed in this worktree, preserving shared native compilation target ownership for the integrator.
 
 ---
 
 ## Limitations and boundaries
 
-1. This review covers the backend domain, application, and persistence implementation of BE08 (Places & Immutable Map Releases) and fixes up to commit `bbc1524`.
+1. This review covers the backend domain, application, and persistence implementation of BE08 (Places & Immutable Map Releases) and fixes up to final candidate `83d8c47`.
 2. Public HTTP endpoints, real client/browser routing, and multiplayer Phaser integration remain separate obligations (FE19/BE09/QA07).
 3. Migration execution in production requires application migration ledger qualification; smoke test verifies direct SQL migration compatibility on PostgreSQL 16.
-4. Goal remains ACTIVE through parent review disposition.
+4. Goal remains ACTIVE through integrator review disposition.
 
