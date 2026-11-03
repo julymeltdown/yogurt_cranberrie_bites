@@ -1,0 +1,13 @@
+.reference-activity{min-height:150px;padding:5px 9px 8px;color:#211d19;font:13px/1.35 'Arial Narrow',Arial,sans-serif}
+.reference-activity .reference-activity__scope{font-size:10px;line-height:1.3;color:#5c5143;margin:0 0 3px}
+.reference-activity .reference-activity__notice{margin:12px 0;font-size:13px}
+.reference-activity__list{list-style:none;padding:0;margin:0}
+.reference-activity__list li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;padding:6px 0;border-bottom:1px solid #c2b39a;min-width:0}
+.reference-activity__list li:last-child{border:0}
+.reference-activity__visual{display:grid;place-items:center;width:44px;height:44px;border:1px solid #80715d;border-radius:2px;background:#302a24;color:#eee5d3}
+.reference-activity__entry{display:flex;flex-direction:column;justify-content:center;min-height:44px;min-width:44px;color:inherit;text-decoration:none;overflow-wrap:anywhere;gap:2px}
+.reference-activity__entry strong{font-size:14px;line-height:1.2}
+.reference-activity__entry:hover strong{text-decoration:underline}
+.reference-activity__text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:pre-wrap;font-size:12px;line-height:1.25}
+.reference-activity__list li p{font-size:10px;line-height:1.3;margin:2px 0 0;color:#5a4e3f}
+.reference-activity :focus-visible{outline:3px solid #921f28;outline-offset:2px}
