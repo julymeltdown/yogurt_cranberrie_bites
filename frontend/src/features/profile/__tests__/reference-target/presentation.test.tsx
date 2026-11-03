@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/vitest'
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
+import type { PublicProfile as PublicProfileData } from '../../../people/contract'
 import { PublicProfile } from '../../PublicProfile'
 import { harness, publicIntro } from '../../../people/__tests__/fixtures/harness'
 import { activity } from '../../../me/__tests__/reference-target/data'
@@ -28,4 +29,17 @@ it('never enables callbacks or invents portrait/activity when dependencies are m
   expect(screen.getByRole('button',{name:'Request sharing'})).toBeDisabled();expect(screen.getByRole('button',{name:'Block user'})).toBeDisabled()
   expect(screen.getByText('Recent activity is unavailable in this connection.')).toBeVisible()
   expect(screen.getByRole('img',{name:`${author.display_name}'s avatar: avatar unavailable`})).toBeVisible()
+})
+it('gives the optional root portrait renderer the exact authorized public avatar only while profile is readable',async()=>{
+  const h=harness();disposers.push(h.dispose);const author=publicIntro().author
+  const renderAvatar=vi.fn((avatar:PublicProfileData['avatar'],label:string)=><output aria-label={label}>Presentation port probe {avatar.revision}</output>)
+  render(<MemoryRouter><PublicProfile controller={h.controller} userId={author.user_id} renderAvatar={renderAvatar}/></MemoryRouter>)
+  await screen.findByRole('heading',{name:author.display_name})
+  const actual=h.controller.read().profile.data!.avatar
+  expect(renderAvatar.mock.calls.every(([avatar])=>avatar===actual)).toBe(true)
+  expect(renderAvatar).toHaveBeenCalledWith(actual,`${author.display_name}'s avatar`)
+  expect(screen.getByLabelText(`${author.display_name}'s avatar`)).toBeVisible()
+  const count=renderAvatar.mock.calls.length
+  act(()=>h.privacy.changePolicy(h.privacy.capture(),'block'))
+  expect(screen.queryByText(/Presentation port probe/)).toBeNull();expect(renderAvatar).toHaveBeenCalledTimes(count)
 })

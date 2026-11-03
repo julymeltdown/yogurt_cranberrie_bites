@@ -3,6 +3,7 @@ import { ProfileActivity, type ProfileActivityInput } from './reference-profile/
 import { ProfileIcon } from '../../profile/reference-presentation/ProfileIcon'
 import { ShellLink } from '../../../app/navigation'
 import type { SessionController } from '../../auth/model/session'
+import type { Participant } from '../model/contract'
 import type { MeController } from '../model/controller'
 import { AvatarThumbnail, type ReviewedThumbnailSource } from './AvatarThumbnail'
 import { ConcertAction, ConcertIcon, ConcertWindow } from '../../../shared/ui/concert-window'
@@ -13,11 +14,11 @@ export function MeStatus({ controller }: { controller: MeController }) {
   return <><p role="status" aria-live="polite" aria-atomic="true">{s.message || 'Your profile and preferences are optional. You can enter the world without completing them.'}</p>
     {!busy && <button type="button" onClick={() => void controller.load()}>{s.participant ? 'Discard drafts and reload saved version' : 'Load your profile'}</button>}</>
 }
-export function MeHub({ controller, auth, thumbnailSource, activity }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; thumbnailSource?: ReviewedThumbnailSource; activity?: ProfileActivityInput }) {
+export function MeHub({ controller, auth, thumbnailSource, activity, renderAvatar }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; thumbnailSource?: ReviewedThumbnailSource; activity?: ProfileActivityInput; renderAvatar?: (avatar: Participant['profile']['avatar'], label: string) => ReactNode }) {
   const s = useMe(controller)
   return <section className="me-view me-view--concert me-hub me-hub--reference" aria-label="ME"><ConcertWindow title="My profile" icon="me" footer={<ShellLink id="me-enter-world" to="/world">Back to world</ShellLink>}>
     <div className="me-profile-header">
-      {s.participant ? <div className="me-identity"><AvatarThumbnail auth={auth} config={s.participant.profile.avatar.config} {...(thumbnailSource ? { source: thumbnailSource } : {})} />
+      {s.participant ? <div className="me-identity">{renderAvatar ? <div className="me-avatar me-avatar--presentation">{renderAvatar(s.participant.profile.avatar, `${s.participant.profile.display_name}'s avatar`)}</div> : s.participant.profile.avatar.config.contract_version === '1.0.0' ? <AvatarThumbnail auth={auth} config={s.participant.profile.avatar.config} {...(thumbnailSource ? { source: thumbnailSource } : {})} /> : <div className="me-avatar"><p role="status">Selected character portrait unavailable in this connection.</p></div>}
         <div className="me-identity__copy"><h3>{s.participant.profile.display_name}</h3><p className="me-saved-era">{s.participant.preferences.theme}</p><p className="me-bio">{s.participant.profile.bio || 'No bio yet. Add one whenever you like.'}</p></div></div>
         : <div className="me-identity-unavailable" role="status">{s.message || 'Your saved profile is not loaded yet.'}</div>}
       <nav className="me-profile-icons" aria-label="Profile actions">

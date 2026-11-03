@@ -5,6 +5,7 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import { MeHub, ProfileForm } from '../../ui/MePages'
 import { ProfileActivity, qualifiedProfilePosts } from '../../ui/reference-profile/ProfileActivity'
+import type { Participant } from '../../model/contract'
 import { participant, setup } from '../fixtures'
 import { activity } from './data'
 const disposers: (() => void)[] = []
@@ -53,4 +54,17 @@ it('retains saved identity, honest art absence, current draft cancellation and n
   fireEvent.click(screen.getByRole('button',{name:'Cancel profile changes'}))
   expect(screen.getByLabelText('Display name')).toHaveValue(participant().profile.display_name)
   expect(screen.getByLabelText('Bio (optional)')).toHaveValue('')
+})
+it('forwards only the actual authorized saved avatar to the optional root portrait renderer, then removes it on revoke',async()=>{
+  const h=await fixture(),renderAvatar=vi.fn((avatar:Participant['profile']['avatar'],label:string)=><output aria-label={label}>Presentation port probe {avatar.revision}</output>)
+  h.controller.editProfile({display_name:'Unsaved name'})
+  render(<MemoryRouter><MeHub controller={h.controller} auth={h.auth} renderAvatar={renderAvatar}/></MemoryRouter>)
+  const saved=h.controller.read().participant!.profile
+  expect(renderAvatar).toHaveBeenCalledWith(saved.avatar,`${saved.display_name}'s avatar`)
+  expect(renderAvatar.mock.calls.every(([avatar])=>avatar===saved.avatar)).toBe(true)
+  expect(screen.getByLabelText(`${saved.display_name}'s avatar`)).toBeVisible()
+  expect(screen.queryByText(/Avatar preview unavailable/)).toBeNull()
+  const count=renderAvatar.mock.calls.length
+  act(()=>h.auth.privacy.changePolicy(h.auth.privacy.capture(),'consent-revoked'))
+  expect(screen.queryByText(/Presentation port probe/)).toBeNull();expect(renderAvatar).toHaveBeenCalledTimes(count)
 })
