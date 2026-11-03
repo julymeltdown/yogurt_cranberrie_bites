@@ -1,9 +1,9 @@
 # Authenticated Auth admission RPC review
 
-Date: 2026-11-03. Status: **IN_PROGRESS — R1 source correction verified;
-parent combined evidence and final disposition pending**. Independent source
-review found one P2 test-timing defect. No introduced
-production authorization defect was identified in the inspected handler. This is
+Date: 2026-11-03. Status: **R1 CLOSED — source and final combined evidence
+verified; parent disposition pending**. Independent source review found one P2
+test-timing defect, now corrected. No additional actionable bounded finding or
+introduced production authorization defect was identified in the inspected handler. This is
 a bounded review of the Auth-owned read RPC, not whole BE04 or release acceptance.
 
 ## Source and ownership
@@ -40,7 +40,7 @@ and identity/security requirements, project assessment/execution context,
 `docs/mcr/identity-admission-decision.md` and the Auth RPC composition contract.
 Analysis prose and test counts do not replace specification acceptance.
 
-## R1 [P2] — live-proof expiry regression can expire before dispatch
+## R1 [P2] CLOSED — live-proof expiry regression could expire before dispatch
 
 Owning path at the reviewed base:
 `backend/services/auth-service/tests/concert_admission_rpc.rs:789–803`, test
@@ -83,8 +83,8 @@ Worker focused run `/Users/lhs/Desktop/mcr-build/auth-admission-rpc-R1-controlle
 has verified SHA-256
 `c34854c87438c2548ca7a25292a0d3f969aa1268e99061c0391b11dbdc0868e3` and records
 11 controlled cases PASS, zero failed/ignored and five native cases filtered.
-The parent's clean combined-candidate focused/native evidence remains pending;
-R1 is source-cleared, not yet credited as fully qualified at that candidate.
+The final parent qualification below also verifies this correction in the clean
+combined candidate. R1 is closed for this bounded review.
 
 ## Handler, owner and composition review
 
@@ -177,6 +177,36 @@ parent evidence, not an independent QA rerun or a claim that the original
 97-case combined run passed. This review changes neither the central helper nor
 its contracts and does not expand into a separate BE15 implementation review.
 
+## Final combined qualification after R1
+
+The parent integrated worker correction `5c59f1fe8b3ce96aea7cd825d1176ebbc7ecf9f6`
+as `4bc75bbd5ead53a4218b5a36941c9ff9e2695767`. Final qualified candidate
+`97a698a43e502a73ff00a489b3155b370cb9d681` follows that correction and records
+the preceding qualification/ownership context. Explicit comparison of all nine
+delivered handler paths between worker `5c59f1f` and this candidate exits 0:
+the reviewed fix is the actual integrated source, not an unintegrated proposal.
+
+QA inspected completed `/tmp/mcr-rpc-parent/final-checks.json`: `completed: true`,
+that exact candidate, empty dirty paths, and build/test-build/controlled/native
+commands each exit 0. The final controlled log records 11 passed, zero failed or
+ignored, five native cases filtered. Final native receipt records five real RPC
+cases and all 22 retained owner cases on separate owned PG16.14 clusters, all 13
+migrations, verification/reapplication, restart persistence and cleanup PASS.
+Expected refusal exits remain explicit rather than being counted as test errors.
+
+All 178 final native-receipt source hashes were independently recomputed from
+`git show 97a698a:<path>` and match, as do the RPC harness and all three helper
+hashes. Both final owned roots, `/private/tmp/mcr-pg-us4k9wy4` and
+`/private/tmp/mcr-pg-ua5utg2p`, are absent, including no dangling symlink at either
+path. These are inspections of completed parent runs; QA performed no new Rust,
+database or service execution.
+
+| Final inspected artifact | SHA-256 |
+|---|---|
+| `/tmp/mcr-rpc-parent/final-checks.json` | `bf2d107f77289e4969fb0895325a17194cb60cbbed0c5c00e0405c38057a4565` |
+| `/tmp/mcr-rpc-parent/final-deterministic.log` | `47d160938bdfbe290de73e559001d80c854a33c5d98d9aab33d4b9e25e69bbc2` |
+| `/tmp/mcr-rpc-parent/final-native.json` | `2a3c7664c955f7a6558e214275875e2b41788bc59ec48fe9f6f021265c2b71e7` |
+
 ## Remaining limits and handoff
 
 Pre-handler body collection is byte-bounded; source tracing shows elapsed time
@@ -195,7 +225,10 @@ separate obligations. No whole BE04, C04, integration-gate or release acceptance
 is granted by this document.
 
 The new unbudgeted persistent review goal was actually created and returned
-ACTIVE. R1's source correction and worker focused log are verified; this goal
-stays active through parent combined evidence verification and disposition.
-The integrator alone publishes the
-committed review document. No implementation fix or push is made by QA.
+ACTIVE. R1's correction, worker focused log and final parent combined qualification
+are verified; this goal stays active through parent disposition. The review
+document's initial commit is `d16759cb639ae806d7177ddf71a3eae7a5b8cf98`, followed
+by `4d50bd29276ce05918eac1534c1e4558b11dea15`; the final evidence/closure commit
+is supplied in the handoff. Every review commit changes only this document from
+the stated QA base. The integrator alone publishes the committed review document.
+No implementation fix or push is made by QA.
