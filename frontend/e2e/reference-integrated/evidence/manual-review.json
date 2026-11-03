@@ -1,0 +1,319 @@
+{
+  "kind": "MANUAL_REFERENCE_REVIEW",
+  "status": "INTEGRATED",
+  "visualAcceptance": "BLOCKED",
+  "baselineCandidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6",
+  "target": {
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "width": 1536,
+    "height": 1024,
+    "crops": [
+      {
+        "id": "landing",
+        "rect": {
+          "x": 4,
+          "y": 3,
+          "width": 300,
+          "height": 526
+        }
+      },
+      {
+        "id": "login",
+        "rect": {
+          "x": 309,
+          "y": 3,
+          "width": 275,
+          "height": 526
+        }
+      },
+      {
+        "id": "world",
+        "rect": {
+          "x": 589,
+          "y": 3,
+          "width": 370,
+          "height": 526
+        }
+      },
+      {
+        "id": "map",
+        "rect": {
+          "x": 963,
+          "y": 3,
+          "width": 272,
+          "height": 526
+        }
+      },
+      {
+        "id": "customize",
+        "rect": {
+          "x": 1240,
+          "y": 3,
+          "width": 294,
+          "height": 526
+        }
+      },
+      {
+        "id": "feed",
+        "rect": {
+          "x": 3,
+          "y": 539,
+          "width": 298,
+          "height": 482
+        }
+      },
+      {
+        "id": "meet",
+        "rect": {
+          "x": 307,
+          "y": 539,
+          "width": 295,
+          "height": 482
+        }
+      },
+      {
+        "id": "gifts",
+        "rect": {
+          "x": 607,
+          "y": 539,
+          "width": 309,
+          "height": 482
+        }
+      },
+      {
+        "id": "wall",
+        "rect": {
+          "x": 920,
+          "y": 539,
+          "width": 294,
+          "height": 482
+        }
+      },
+      {
+        "id": "me",
+        "rect": {
+          "x": 1218,
+          "y": 539,
+          "width": 316,
+          "height": 482
+        }
+      }
+    ]
+  },
+  "reviewedPairs": [
+    "landing",
+    "login",
+    "world",
+    "map",
+    "customize",
+    "feed",
+    "meet",
+    "gifts",
+    "wall",
+    "me"
+  ],
+  "limits": [
+    "Root routes use a custom world load resolver/engine and MockSocket; default production loader NOT_RUN",
+    "Canonical whole-character save and propagation NOT_RUN",
+    "Live-service and real-device acceptance NOT_RUN",
+    "No synthetic C06 approval or fabricated identity/media mapping"
+  ],
+  "findings": [
+    {
+      "screen": "landing",
+      "code": "WORDMARK_SCENE_SPACING_DIFFER"
+    },
+    {
+      "screen": "login",
+      "code": "PAPER_GEOMETRY_REMEMBER_PROVIDER_GAP"
+    },
+    {
+      "screen": "world",
+      "code": "SCENERY_FRAMING_AVATAR_AUTHORITY_GAP"
+    },
+    {
+      "screen": "map",
+      "code": "SCENERY_LABEL_FRAMING_DIFFER"
+    },
+    {
+      "screen": "customize",
+      "code": "APPROVED_EDIT_AUTHORITY_UNAVAILABLE"
+    },
+    {
+      "screen": "feed",
+      "code": "FIXTURE_ONE_POST_NO_APPROVED_MEDIA"
+    },
+    {
+      "screen": "meet",
+      "code": "PORTRAITS_MEMBERS_CREATE_AUTHORITY_UNAVAILABLE"
+    },
+    {
+      "screen": "gifts",
+      "code": "TOUCH_TARGETS_RESOLVED_MEDIA_AND_VISUAL_GAP_REMAIN",
+      "historicalUntilPublishedRepairQualified": false,
+      "repair": "9055af1e03a5418457e32b1a8d125c5d0e49d823",
+      "qaCandidate": "44e13ac9d156f77386c49d40c65a761b59bf519a",
+      "reserveTargets": "ALL_NINE_76x44_FULLY_SCROLL_VISIBLE_CENTER_HIT"
+    },
+    {
+      "screen": "wall",
+      "code": "QUALIFIED_ANCHOR_UNAVAILABLE"
+    },
+    {
+      "screen": "me",
+      "code": "PROFILE_ART_AND_ACTIVITY_DIFFER"
+    }
+  ],
+  "perCaseSources": [
+    {
+      "id": "landing",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "login",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "world",
+      "width": 360,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "map",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "customize",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "feed",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "meet",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "gifts",
+      "width": 360,
+      "candidate": "44e13ac9d156f77386c49d40c65a761b59bf519a"
+    },
+    {
+      "id": "wall",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "me",
+      "width": 360,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "landing",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "login",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "world",
+      "width": 390,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "map",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "customize",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "feed",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "meet",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "gifts",
+      "width": 390,
+      "candidate": "44e13ac9d156f77386c49d40c65a761b59bf519a"
+    },
+    {
+      "id": "wall",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "me",
+      "width": 390,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "landing",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "login",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "world",
+      "width": 430,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "map",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "customize",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "feed",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "meet",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "gifts",
+      "width": 430,
+      "candidate": "44e13ac9d156f77386c49d40c65a761b59bf519a"
+    },
+    {
+      "id": "wall",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "me",
+      "width": 430,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    }
+  ]
+}
