@@ -1,0 +1,130 @@
+syntax = "proto3";
+package authority.lease.v1;
+
+// Request binding only. Eligibility comes exclusively from owning stores while
+// their durable exclusion is held. None of these fields is an admission grant.
+message GuardBinding {
+  string actor_id = 1;
+  string event_id = 2;
+  string session_family_id = 3;
+  string request_id = 4;
+  string operation = 5;
+  repeated string subject_ids = 6; // <=100 distinct subjects, actor additional.
+  int64 expires_unix_micros = 7;
+  bytes parent_digest = 8;
+  bytes parent_body_digest = 9;
+  string parent_method = 10;
+  string http_method = 11;
+  string http_target = 12;
+  bytes body_digest = 13;
+}
+message ProducerScope {
+  string instance_id = 1;
+  string scope_id = 2;
+  bytes binding_digest = 3;
+}
+message AcquireRequest { GuardBinding binding = 1; ProducerScope response_scope = 2; }
+// View and completion secrets are different capabilities. A Post/Profile child
+// may inspect/enroll/track but must never receive the root's completion secret.
+message GuardView {
+  string guard_id = 1;
+  bytes binding_digest = 2;
+  bytes view_secret = 3;
+  int64 expires_unix_micros = 4;
+}
+message OwnerRevision { string epoch = 1; int64 revision = 2; }
+message SubjectState {
+  string user_id = 1;
+  bool active = 2;
+  bool actor_blocks_subject = 3;
+  bool subject_blocks_actor = 4;
+  int64 security_revision = 5; // Auth per-user security generation; Friend zero.
+}
+message AcquireResponse {
+  GuardView view = 1;
+  bytes completion_secret = 2;
+  OwnerRevision revision = 3;
+  bool session_live = 4;
+  repeated SubjectState subjects = 5;
+}
+message CheckRequest { GuardView view = 1; GuardBinding binding = 2; }
+message CheckResponse { OwnerRevision revision = 1; repeated SubjectState subjects = 2; bool session_live = 3; }
+message EnrollRequest { GuardView view = 1; GuardBinding binding = 2; repeated string subject_ids = 3; }
+// Actual producer connection identity, captured before any protected effect.
+// The producer must register durably before continuing. It is not supplied by
+// the external client, and a caller-selected status/receipt is never settlement.
+enum Producer { PRODUCER_UNSPECIFIED = 0; CONCERT = 1; POST = 2; PROFILE = 3; }
+message TransactionIdentity {
+  Producer producer = 1;
+  string full_xid = 2;
+  int32 backend_pid = 3;
+  int64 backend_started_unix_micros = 4;
+  bytes effect_binding_digest = 5;
+  string system_identifier = 6;
+  uint32 database_oid = 7;
+  bytes settlement_reference = 8; // owner-defined bounded reference; never diagnostics.
+  string producer_instance_id = 9;
+}
+message TrackRequest { GuardView view = 1; GuardBinding binding = 2; TransactionIdentity transaction = 3; }
+message TrackResponse { string registration_id = 1; }
+message CompleteRequest {
+  GuardView view = 1;
+  GuardBinding binding = 2;
+  bytes completion_secret = 3;
+}
+message CompleteResponse {
+  // A response never claims completion while any registered producer is unknown.
+  bool completed = 1;
+}
+// Deadline/cancellation do not release durable exclusions. Complete seals late
+// registration and independently resolves producer outcomes before release.
+// Acquisition is actor-bound; other methods require both independently verified
+// workload identity and the exact non-exported view capability.
+service AuthOwnerAuthorityService {
+  rpc Acquire(AcquireRequest) returns (AcquireResponse);
+  rpc Check(CheckRequest) returns (CheckResponse);
+  rpc Enroll(EnrollRequest) returns (CheckResponse);
+  rpc Track(TrackRequest) returns (TrackResponse);
+  rpc Complete(CompleteRequest) returns (CompleteResponse);
+}
+service FriendOwnerAuthorityService {
+  rpc Acquire(AcquireRequest) returns (AcquireResponse);
+  rpc Check(CheckRequest) returns (CheckResponse);
+  rpc Enroll(EnrollRequest) returns (CheckResponse);
+  rpc Track(TrackRequest) returns (TrackResponse);
+  rpc Complete(CompleteRequest) returns (CompleteResponse);
+}
+
+// Owner services resolve these against the actual configured producing store
+// and scope registry. They never accept statuses supplied by the external actor.
+enum TransactionStatus { TRANSACTION_STATUS_UNSPECIFIED = 0; IN_PROGRESS = 1; COMMITTED = 2; ABORTED = 3; UNKNOWN = 4; }
+message ResolveTransactionRequest { GuardBinding binding = 1; TransactionIdentity transaction = 2; string registration_id = 3; }
+message ResolveTransactionResponse { TransactionIdentity transaction = 1; bytes binding_digest = 2; TransactionStatus status = 3; bytes receipt_evidence = 4; }
+message ResolveScopeRequest { ProducerScope scope = 1; }
+message ResolveScopeResponse { ProducerScope scope = 1; bool sealed_and_finished = 2; }
+service ProducerSettlementService {
+  rpc ResolveTransaction(ResolveTransactionRequest) returns (ResolveTransactionResponse);
+  rpc ResolveScope(ResolveScopeRequest) returns (ResolveScopeResponse);
+}
+
+// Opaque, root-issued capability for deferred subject admission after Post has
+// learned actual authors. Only the current configured Concert scope can resolve
+// it, enroll/check both owners and retain the canonical local subject exclusion.
+message RootReadView {
+  ProducerScope scope = 1;
+  bytes view_secret = 2;
+  GuardBinding binding = 3;
+}
+message CheckSubjectRequest { RootReadView root = 1; string subject_id = 2; }
+message CheckSubjectResponse {
+  ProducerScope scope = 1;
+  string subject_id = 2;
+  int64 event_revision = 3;
+  int64 pair_revision = 4;
+  int64 expires_unix_micros = 5;
+  OwnerRevision auth_revision = 6;
+  OwnerRevision friend_revision = 7;
+}
+service ConcertRootReadService {
+  rpc CheckSubject(CheckSubjectRequest) returns (CheckSubjectResponse);
+}

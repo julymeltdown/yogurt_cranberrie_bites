@@ -2,7 +2,9 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 import { useParams } from 'react-router-dom'
 import { createGiftDiscoveryController, GiftDetail, GiftDiscovery, type GiftDiscoveryController } from '../features/gift-discovery'
 import { MyGifts } from '../features/my-gifts'
-import { createPartyController, PartyDetail, PartyDiscovery, type PartyController } from '../features/party-discovery'
+import { createPartyController, PartyDetail, PartyDiscovery, type PartyController, type PartyDiscoveryPresentation } from '../features/party-discovery'
+import { WholeCharacterView, validateWholeCharacterConfig } from '../entities/avatar/whole-character'
+import { useCharacterRuntime } from './character-entry/provider'
 import type { PrivacyScope } from '../shared/query/privacy'
 import { usePorts } from './access'
 import type { ShellBootstrap } from './ports'
@@ -48,8 +50,17 @@ export function PartiesPanel({ detail = false }: { detail?: boolean }) {
   const controller = useContext(PartiesContext)
   const { partyId = '' } = useParams()
   const { auth } = usePorts()
+  const runtime = useCharacterRuntime()
+  const renderOwnerPortrait: PartyDiscoveryPresentation['renderOwnerPortrait'] = owner => {
+    const avatar = owner.avatar
+    if (!runtime || !avatar || typeof avatar !== 'object' || !('config' in avatar)) return null
+    try {
+      validateWholeCharacterConfig(avatar.config)
+      return <WholeCharacterView runtime={runtime} config={avatar.config} label={`${owner.display_name}'s avatar`} size={64} />
+    } catch { return null }
+  }
   if (!controller) return <p role="status">{auth ? 'Opening parties…' : 'Party access is unavailable.'}</p>
-  return detail ? <PartyDetail controller={controller} partyId={partyId} /> : <PartyDiscovery controller={controller} />
+  return detail ? <PartyDetail controller={controller} partyId={partyId} /> : <PartyDiscovery controller={controller} {...(runtime ? { presentation: { renderOwnerPortrait } } : {})} />
 }
 
 export function GiftsPanel({ view }: { view: 'list' | 'detail' | 'mine' }) {
