@@ -1,0 +1,24 @@
+{
+  "event_id": "00000000-0000-4000-8000-000000000201",
+  "revision": 1,
+  "place": {
+    "place_id": "00000000-0000-4000-8000-000000000001",
+    "label": "Virtual fixture landmark",
+    "place_kind": "VIRTUAL_CONCEPT",
+    "verification_state": "CONCEPT_ONLY",
+    "closure_state": "OPEN",
+    "accessibility_notes": "Synthetic virtual geometry; no physical access claim.",
+    "provenance": {
+      "source_id": "mcr_c06_fixture",
+      "source_kind": "ORIGINAL_FIXTURE",
+      "source_revision": "c06-fixture-v1",
+      "source_uri": null,
+      "author": "MCR C06 contract author",
+      "license": "Synthetic metadata only; no artwork or venue license asserted",
+      "review_state": "UNREVIEWED",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "photo_permission": "NOT_APPLICABLE"
+    }
+  }
+}

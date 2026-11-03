@@ -37,11 +37,21 @@ check_guards() {
   node "$mcr_root/scripts/mcr/check-ui-origin.mjs" --root "$mcr_root"
 }
 
+check_contracts() {
+  python3 "$mcr_root/backend/scripts/docs/generate-openapi.py" --check
+  python3 "$mcr_root/backend/scripts/docs/generate-mcr-core.py" --check
+  python3 "$mcr_root/scripts/mcr/validate-assets.py"
+  python3 "$mcr_root/scripts/mcr/validate-core.py"
+  python3 -B -m unittest discover -s "$mcr_root/scripts/mcr/tests" -p 'test_assets.py'
+  python3 -B -m unittest discover -s "$mcr_root/scripts/mcr/tests" -p 'test_core.py'
+}
+
 case "$mcr_scope" in
   plan) check_plan ;;
   frontend) check_frontend ;;
   backend) check_backend ;;
   guards) check_guards ;;
-  foundation) check_plan; check_guards; check_frontend; check_backend ;;
-  *) echo 'Usage: scripts/mcr/check.sh [plan|frontend|backend|guards|foundation]' >&2; exit 2 ;;
+  contracts) check_contracts ;;
+  foundation) check_plan; check_guards; check_contracts; check_frontend; check_backend ;;
+  *) echo 'Usage: scripts/mcr/check.sh [plan|frontend|backend|guards|contracts|foundation]' >&2; exit 2 ;;
 esac

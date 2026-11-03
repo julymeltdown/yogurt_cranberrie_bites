@@ -1,0 +1,66 @@
+[
+  {
+    "method": "get",
+    "path": "/api/auth/capabilities",
+    "operationId": "getAuthCapabilities",
+    "response": "AuthCapabilities",
+    "request": null,
+    "authenticated": false
+  },
+  {
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/bootstrap",
+    "operationId": "getConcertBootstrap",
+    "response": "Bootstrap",
+    "request": null,
+    "authenticated": true
+  },
+  {
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me",
+    "operationId": "getConcertParticipant",
+    "response": "PrivateParticipant",
+    "request": null,
+    "authenticated": true
+  },
+  {
+    "method": "patch",
+    "path": "/api/concert/events/{eventId}/me",
+    "operationId": "updateConcertParticipant",
+    "response": "PrivateParticipant",
+    "request": "UpdateParticipantRequest",
+    "authenticated": true
+  },
+  {
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/people/{userId}",
+    "operationId": "getConcertPublicProfile",
+    "response": "PublicProfile",
+    "request": null,
+    "authenticated": true
+  },
+  {
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/me/avatar",
+    "operationId": "setConcertAvatar",
+    "response": "AvatarState",
+    "request": "SetAvatarRequest",
+    "authenticated": true
+  },
+  {
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/places",
+    "operationId": "listConcertPlaces",
+    "response": "PlaceList",
+    "request": null,
+    "authenticated": true
+  },
+  {
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/places/{placeId}",
+    "operationId": "getConcertPlace",
+    "response": "PlaceResponse",
+    "request": null,
+    "authenticated": true
+  }
+]

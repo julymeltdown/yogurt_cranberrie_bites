@@ -1,0 +1,711 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/core/v1/core.schema.json",
+  "title": "MCR core target DTOs (C03 draft)",
+  "$defs": {
+    "UtcTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "Event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "phase": {
+          "enum": [
+            "DRAFT",
+            "OPEN",
+            "LIVE",
+            "READ_ONLY",
+            "ARCHIVED"
+          ]
+        },
+        "timezone": {
+          "const": "Asia/Seoul"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "event_id",
+        "slug",
+        "title",
+        "phase",
+        "timezone",
+        "revision"
+      ]
+    },
+    "AvatarState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "config": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json#/$defs/AvatarConfig"
+        }
+      },
+      "required": [
+        "revision",
+        "config"
+      ]
+    },
+    "PublicProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "bio": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 160
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "avatar": {
+          "$ref": "#/$defs/AvatarState"
+        }
+      },
+      "required": [
+        "user_id",
+        "display_name",
+        "bio",
+        "avatar"
+      ]
+    },
+    "Preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "theme": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/ThemeId"
+        },
+        "low_power": {
+          "type": "boolean"
+        },
+        "reduced_motion": {
+          "type": "boolean"
+        },
+        "sound_enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "theme",
+        "low_power",
+        "reduced_motion",
+        "sound_enabled"
+      ]
+    },
+    "PrivateParticipant": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "profile": {
+          "$ref": "#/$defs/PublicProfile"
+        },
+        "preferences": {
+          "$ref": "#/$defs/Preferences"
+        },
+        "age_status": {
+          "enum": [
+            "UNKNOWN",
+            "VERIFIED",
+            "EXPIRED",
+            "PROVIDER_UNAVAILABLE"
+          ]
+        }
+      },
+      "required": [
+        "event_id",
+        "user_id",
+        "revision",
+        "profile",
+        "preferences",
+        "age_status"
+      ]
+    },
+    "Capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "reason": {
+          "enum": [
+            null,
+            "EVENT_READ_ONLY",
+            "DEPENDENCY_UNAVAILABLE",
+            "PROVIDER_UNAVAILABLE",
+            "FEATURE_DISABLED",
+            "NOT_ELIGIBLE"
+          ]
+        }
+      },
+      "required": [
+        "available",
+        "reason"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "available": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reason": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "CoreCapabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "world": {
+          "$ref": "#/$defs/Capability"
+        },
+        "feed": {
+          "$ref": "#/$defs/Capability"
+        },
+        "meet": {
+          "$ref": "#/$defs/Capability"
+        },
+        "gifts": {
+          "$ref": "#/$defs/Capability"
+        },
+        "wall": {
+          "$ref": "#/$defs/Capability"
+        },
+        "social_sharing": {
+          "$ref": "#/$defs/Capability"
+        },
+        "mutations": {
+          "$ref": "#/$defs/Capability"
+        }
+      },
+      "required": [
+        "world",
+        "feed",
+        "meet",
+        "gifts",
+        "wall",
+        "social_sharing",
+        "mutations"
+      ]
+    },
+    "AuthProviderCapability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "EMAIL",
+            "GOOGLE",
+            "APPLE",
+            "X"
+          ]
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "disabled_reason": {
+          "enum": [
+            null,
+            "NOT_CONFIGURED",
+            "HANDOFF_NOT_QUALIFIED",
+            "TEMPORARILY_UNAVAILABLE"
+          ]
+        }
+      },
+      "required": [
+        "provider",
+        "enabled",
+        "disabled_reason"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "disabled_reason": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "disabled_reason": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "AuthCapabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": "0.1.0"
+        },
+        "providers": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/AuthProviderCapability"
+          }
+        },
+        "server_time": {
+          "$ref": "#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "contract_version",
+        "providers",
+        "server_time"
+      ]
+    },
+    "Bootstrap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": "0.1.0"
+        },
+        "event": {
+          "$ref": "#/$defs/Event"
+        },
+        "participant": {
+          "$ref": "#/$defs/PrivateParticipant"
+        },
+        "avatar": {
+          "$ref": "#/$defs/AvatarState"
+        },
+        "capabilities": {
+          "$ref": "#/$defs/CoreCapabilities"
+        },
+        "map_manifest": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/map-manifest.schema.json#/$defs/MapManifest"
+        },
+        "avatar_manifest": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-manifest.schema.json#/$defs/AvatarManifest"
+        },
+        "server_time": {
+          "$ref": "#/$defs/UtcTimestamp"
+        },
+        "theme_manifests": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/assets/v1/theme-manifest.schema.json#/$defs/ThemeManifest"
+          }
+        }
+      },
+      "required": [
+        "contract_version",
+        "event",
+        "participant",
+        "avatar",
+        "capabilities",
+        "map_manifest",
+        "avatar_manifest",
+        "server_time",
+        "theme_manifests"
+      ]
+    },
+    "UpdateParticipantRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "bio": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 160
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "preferences": {
+          "$ref": "#/$defs/Preferences"
+        }
+      },
+      "required": [
+        "expected_revision"
+      ],
+      "minProperties": 2
+    },
+    "SetAvatarRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "config": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json#/$defs/AvatarConfig"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "config"
+      ]
+    },
+    "PlaceResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "place": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/map-manifest.schema.json#/$defs/Place"
+        }
+      },
+      "required": [
+        "event_id",
+        "revision",
+        "place"
+      ]
+    },
+    "PlaceList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/assets/v1/map-manifest.schema.json#/$defs/Place"
+          }
+        }
+      },
+      "required": [
+        "event_id",
+        "revision",
+        "items"
+      ]
+    },
+    "CoreErrorDetails": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "PARTY_FULL"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "GIVEAWAY_SOLD_OUT"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "RESERVATION_EXPIRED"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "VERSION_CONFLICT"
+            },
+            "current_revision": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "CONSENT_REQUIRED"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "RESOURCE_UNAVAILABLE"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "MURAL_COOLDOWN"
+            },
+            "retry_after_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 86400000
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "MAP_VERSION_MISMATCH"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "EVENT_READ_ONLY"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "INVALID_INPUT"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "AUTHENTICATION_REQUIRED"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "PERMISSION_DENIED"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "RATE_LIMITED"
+            },
+            "retry_after_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 86400000
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "const": "DEPENDENCY_UNAVAILABLE"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        }
+      ]
+    },
+    "CoreErrorResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "message",
+        "details"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "traceId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 128
+        },
+        "timestamp": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "details": {
+          "$ref": "#/$defs/CoreErrorDetails"
+        }
+      }
+    }
+  }
+}

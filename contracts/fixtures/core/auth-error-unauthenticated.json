@@ -1,0 +1,6 @@
+{
+  "code": "GATEWAY_401",
+  "message": "The request could not be completed.",
+  "traceId": null,
+  "details": null
+}

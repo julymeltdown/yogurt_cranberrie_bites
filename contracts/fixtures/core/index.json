@@ -1,0 +1,128 @@
+[
+  {
+    "file": "bootstrap-open.json",
+    "schema": "Bootstrap",
+    "actor_id": "00000000-0000-4000-8000-000000000101",
+    "event_id": "00000000-0000-4000-8000-000000000201"
+  },
+  {
+    "file": "bootstrap-read-only.json",
+    "schema": "Bootstrap",
+    "actor_id": "00000000-0000-4000-8000-000000000101",
+    "event_id": "00000000-0000-4000-8000-000000000201"
+  },
+  {
+    "file": "public-profile.json",
+    "schema": "PublicProfile",
+    "target_user_id": "00000000-0000-4000-8000-000000000101",
+    "operation_id": "getConcertPublicProfile",
+    "http_status": 200
+  },
+  {
+    "file": "private-participant.json",
+    "schema": "PrivateParticipant",
+    "actor_id": "00000000-0000-4000-8000-000000000101",
+    "event_id": "00000000-0000-4000-8000-000000000201"
+  },
+  {
+    "file": "avatar-state.json",
+    "schema": "AvatarState"
+  },
+  {
+    "file": "set-avatar-request.json",
+    "schema": "SetAvatarRequest"
+  },
+  {
+    "file": "update-participant-request.json",
+    "schema": "UpdateParticipantRequest"
+  },
+  {
+    "file": "place.json",
+    "schema": "PlaceResponse",
+    "event_id": "00000000-0000-4000-8000-000000000201",
+    "place_id": "00000000-0000-4000-8000-000000000001",
+    "operation_id": "getConcertPlace",
+    "http_status": 200
+  },
+  {
+    "file": "place-list.json",
+    "schema": "PlaceList",
+    "event_id": "00000000-0000-4000-8000-000000000201"
+  },
+  {
+    "file": "auth-capabilities-disabled.json",
+    "schema": "AuthCapabilities"
+  },
+  {
+    "file": "auth-success.json",
+    "schema": "AuthResponse"
+  },
+  {
+    "file": "signup-pending.json",
+    "schema": "SignupResponse"
+  },
+  {
+    "file": "password-reset-neutral.json",
+    "schema": "PasswordResetResponse"
+  },
+  {
+    "file": "signup-unicode.json",
+    "schema": "EmailSignupRequest"
+  },
+  {
+    "file": "error-party-full.json",
+    "schema": "CoreErrorResponse"
+  },
+  {
+    "file": "error-giveaway-sold-out.json",
+    "schema": "CoreErrorResponse"
+  },
+  {
+    "file": "error-reservation-expired.json",
+    "schema": "CoreErrorResponse"
+  },
+  {
+    "file": "error-version-conflict.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 409
+  },
+  {
+    "file": "error-consent-required.json",
+    "schema": "CoreErrorResponse"
+  },
+  {
+    "file": "error-resource-unavailable.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "getConcertPlace",
+    "http_status": 404
+  },
+  {
+    "file": "error-mural-cooldown.json",
+    "schema": "CoreErrorResponse"
+  },
+  {
+    "file": "error-map-version-mismatch.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 409
+  },
+  {
+    "file": "error-event-read-only.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 409
+  },
+  {
+    "file": "auth-error-unauthenticated.json",
+    "schema": "ErrorResponse",
+    "operation_id": "login",
+    "http_status": 401
+  },
+  {
+    "file": "auth-error-rate-limited.json",
+    "schema": "ErrorResponse",
+    "operation_id": "login",
+    "http_status": 429
+  }
+]

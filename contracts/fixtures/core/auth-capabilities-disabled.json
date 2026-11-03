@@ -1,0 +1,26 @@
+{
+  "contract_version": "0.1.0",
+  "providers": [
+    {
+      "provider": "EMAIL",
+      "enabled": false,
+      "disabled_reason": "NOT_CONFIGURED"
+    },
+    {
+      "provider": "GOOGLE",
+      "enabled": false,
+      "disabled_reason": "HANDOFF_NOT_QUALIFIED"
+    },
+    {
+      "provider": "APPLE",
+      "enabled": false,
+      "disabled_reason": "HANDOFF_NOT_QUALIFIED"
+    },
+    {
+      "provider": "X",
+      "enabled": false,
+      "disabled_reason": "HANDOFF_NOT_QUALIFIED"
+    }
+  ],
+  "server_time": "2026-11-03T00:00:00Z"
+}

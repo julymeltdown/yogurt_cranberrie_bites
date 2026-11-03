@@ -1,0 +1,569 @@
+{
+  "contract_version": "0.1.0",
+  "event": {
+    "event_id": "00000000-0000-4000-8000-000000000201",
+    "slug": "fixture-event",
+    "title": "Synthetic contract fixture",
+    "phase": "READ_ONLY",
+    "timezone": "Asia/Seoul",
+    "revision": 1
+  },
+  "participant": {
+    "event_id": "00000000-0000-4000-8000-000000000201",
+    "user_id": "00000000-0000-4000-8000-000000000101",
+    "revision": 1,
+    "profile": {
+      "user_id": "00000000-0000-4000-8000-000000000101",
+      "display_name": "Fixture fan",
+      "bio": null,
+      "avatar": {
+        "revision": 1,
+        "config": {
+          "contract_version": "1.0.0",
+          "kind": "avatar_config",
+          "manifest_id": "avatar_fixture",
+          "manifest_version": 1,
+          "item_ids": {
+            "body": "body_fixture",
+            "eyes": "eyes_fixture",
+            "hair": "hair_fixture",
+            "outfit": "outfit_fixture",
+            "accessory": "accessory_fixture"
+          },
+          "skin_tone_id": "tone_fixture"
+        }
+      }
+    },
+    "preferences": {
+      "theme": "REVENGE",
+      "low_power": false,
+      "reduced_motion": false,
+      "sound_enabled": false
+    },
+    "age_status": "UNKNOWN"
+  },
+  "avatar": {
+    "revision": 1,
+    "config": {
+      "contract_version": "1.0.0",
+      "kind": "avatar_config",
+      "manifest_id": "avatar_fixture",
+      "manifest_version": 1,
+      "item_ids": {
+        "body": "body_fixture",
+        "eyes": "eyes_fixture",
+        "hair": "hair_fixture",
+        "outfit": "outfit_fixture",
+        "accessory": "accessory_fixture"
+      },
+      "skin_tone_id": "tone_fixture"
+    }
+  },
+  "capabilities": {
+    "world": {
+      "available": false,
+      "reason": "FEATURE_DISABLED"
+    },
+    "feed": {
+      "available": false,
+      "reason": "FEATURE_DISABLED"
+    },
+    "meet": {
+      "available": false,
+      "reason": "FEATURE_DISABLED"
+    },
+    "gifts": {
+      "available": false,
+      "reason": "FEATURE_DISABLED"
+    },
+    "wall": {
+      "available": false,
+      "reason": "FEATURE_DISABLED"
+    },
+    "social_sharing": {
+      "available": false,
+      "reason": "FEATURE_DISABLED"
+    },
+    "mutations": {
+      "available": false,
+      "reason": "EVENT_READ_ONLY"
+    }
+  },
+  "map_manifest": {
+    "contract_version": "1.0.0",
+    "kind": "map_manifest",
+    "map_id": "map_fixture",
+    "map_revision": 1,
+    "geometry_hash": "sha256:50ef23b282b18f10aaf28d18c9bc1f2ee44ff46504dd81b41df9d7ddca363a94",
+    "provenance": {
+      "source_id": "mcr_c06_fixture",
+      "source_kind": "ORIGINAL_FIXTURE",
+      "source_revision": "c06-fixture-v1",
+      "source_uri": null,
+      "author": "MCR C06 contract author",
+      "license": "Synthetic metadata only; no artwork or venue license asserted",
+      "review_state": "UNREVIEWED",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "photo_permission": "NOT_APPLICABLE"
+    },
+    "tilemap": {
+      "format": "TILED_JSON",
+      "resource_state": "NOT_PROVIDED",
+      "path": null,
+      "sha256": null
+    },
+    "geometry": {
+      "width_cells": 5,
+      "height_cells": 5,
+      "tile_width_px": 32,
+      "tile_height_px": 32,
+      "collision_id": "collision_fixture",
+      "collision_grid": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "terrain_layer": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "overdraw_layer": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "spawns": [
+        {
+          "spawn_id": "spawn_fixture",
+          "cell_x": 1,
+          "cell_y": 1
+        }
+      ],
+      "default_spawn_id": "spawn_fixture",
+      "interactions": [
+        {
+          "interaction_id": "inspect_concept",
+          "place_id": "00000000-0000-4000-8000-000000000001",
+          "cell_x": 3,
+          "cell_y": 3
+        }
+      ]
+    },
+    "places": [
+      {
+        "place_id": "00000000-0000-4000-8000-000000000001",
+        "label": "Virtual fixture landmark",
+        "place_kind": "VIRTUAL_CONCEPT",
+        "verification_state": "CONCEPT_ONLY",
+        "closure_state": "OPEN",
+        "accessibility_notes": "Synthetic virtual geometry; no physical access claim.",
+        "provenance": {
+          "source_id": "mcr_c06_fixture",
+          "source_kind": "ORIGINAL_FIXTURE",
+          "source_revision": "c06-fixture-v1",
+          "source_uri": null,
+          "author": "MCR C06 contract author",
+          "license": "Synthetic metadata only; no artwork or venue license asserted",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        }
+      }
+    ],
+    "content_hash": "sha256:21b91a4e02b04943100909d7a008f68cafb9e21b284f26b93ba09ddcc39a4dff"
+  },
+  "avatar_manifest": {
+    "contract_version": "1.0.0",
+    "kind": "avatar_manifest",
+    "manifest_id": "avatar_fixture",
+    "manifest_version": 1,
+    "provenance": {
+      "source_id": "mcr_c06_fixture",
+      "source_kind": "ORIGINAL_FIXTURE",
+      "source_revision": "c06-fixture-v1",
+      "source_uri": null,
+      "author": "MCR C06 contract author",
+      "license": "Synthetic metadata only; no artwork or venue license asserted",
+      "review_state": "UNREVIEWED",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "photo_permission": "NOT_APPLICABLE"
+    },
+    "layer_order": [
+      "body",
+      "eyes",
+      "hair",
+      "outfit",
+      "accessory"
+    ],
+    "skin_tones": [
+      {
+        "skin_tone_id": "tone_fixture",
+        "color": "#C89070"
+      }
+    ],
+    "atlas": {
+      "atlas_id": "atlas_fixture",
+      "cell": {
+        "width_px": 64,
+        "height_px": 64
+      },
+      "anchor": {
+        "x": 32,
+        "y": 60
+      },
+      "frame_layout": {
+        "direction_order": [
+          "down",
+          "left",
+          "right",
+          "up"
+        ],
+        "idle_column": 0,
+        "walk_columns": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "texture": {
+        "image_state": "NOT_PROVIDED",
+        "path": null,
+        "sha256": null,
+        "width_px": 320,
+        "height_px": 1280
+      },
+      "items": [
+        {
+          "item_id": "body_fixture",
+          "layer_id": "body",
+          "anchor": {
+            "x": 32,
+            "y": 60
+          },
+          "region": {
+            "x": 0,
+            "y": 0,
+            "width_px": 320,
+            "height_px": 256
+          }
+        },
+        {
+          "item_id": "eyes_fixture",
+          "layer_id": "eyes",
+          "anchor": {
+            "x": 32,
+            "y": 60
+          },
+          "region": {
+            "x": 0,
+            "y": 256,
+            "width_px": 320,
+            "height_px": 256
+          }
+        },
+        {
+          "item_id": "hair_fixture",
+          "layer_id": "hair",
+          "anchor": {
+            "x": 32,
+            "y": 60
+          },
+          "region": {
+            "x": 0,
+            "y": 512,
+            "width_px": 320,
+            "height_px": 256
+          }
+        },
+        {
+          "item_id": "outfit_fixture",
+          "layer_id": "outfit",
+          "anchor": {
+            "x": 32,
+            "y": 60
+          },
+          "region": {
+            "x": 0,
+            "y": 768,
+            "width_px": 320,
+            "height_px": 256
+          }
+        },
+        {
+          "item_id": "accessory_fixture",
+          "layer_id": "accessory",
+          "anchor": {
+            "x": 32,
+            "y": 60
+          },
+          "region": {
+            "x": 0,
+            "y": 1024,
+            "width_px": 320,
+            "height_px": 256
+          }
+        }
+      ]
+    },
+    "presets": [
+      {
+        "preset_id": "preset_fixture",
+        "config": {
+          "contract_version": "1.0.0",
+          "kind": "avatar_config",
+          "manifest_id": "avatar_fixture",
+          "manifest_version": 1,
+          "item_ids": {
+            "body": "body_fixture",
+            "eyes": "eyes_fixture",
+            "hair": "hair_fixture",
+            "outfit": "outfit_fixture",
+            "accessory": "accessory_fixture"
+          },
+          "skin_tone_id": "tone_fixture"
+        }
+      }
+    ],
+    "fallback_preset_id": "preset_fixture",
+    "content_hash": "sha256:b2fb2a3e746711f4aaddf8ac7a2b8b11da31911ec9c6a9ea5cb6c9cdf2e0c5c3"
+  },
+  "server_time": "2026-11-03T00:00:00Z",
+  "theme_manifests": [
+    {
+      "contract_version": "1.0.0",
+      "kind": "theme_manifest",
+      "theme_id": "DANGER",
+      "theme_revision": 1,
+      "provenance": {
+        "source_id": "mcr_c06_fixture",
+        "source_kind": "ORIGINAL_FIXTURE",
+        "source_revision": "c06-fixture-v1",
+        "source_uri": null,
+        "author": "MCR C06 contract author",
+        "license": "Synthetic metadata only; no artwork or venue license asserted",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      },
+      "map_id": "map_fixture",
+      "map_revision": 1,
+      "map_content_hash": "sha256:21b91a4e02b04943100909d7a008f68cafb9e21b284f26b93ba09ddcc39a4dff",
+      "geometry_hash": "sha256:50ef23b282b18f10aaf28d18c9bc1f2ee44ff46504dd81b41df9d7ddca363a94",
+      "collision_id": "collision_fixture",
+      "place_ids": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "interaction_ids": [
+        "inspect_concept"
+      ],
+      "avatar_manifest_id": "avatar_fixture",
+      "avatar_manifest_version": 1,
+      "avatar_content_hash": "sha256:b2fb2a3e746711f4aaddf8ac7a2b8b11da31911ec9c6a9ea5cb6c9cdf2e0c5c3",
+      "texture": {
+        "image_state": "NOT_PROVIDED",
+        "path": null,
+        "sha256": null,
+        "width_px": 32,
+        "height_px": 32
+      },
+      "palette": {
+        "background": "#19160E",
+        "terrain": "#473A20",
+        "accent": "#E3C63B"
+      },
+      "content_hash": "sha256:400100602d98bd62bdbf3ebe88bf8c55e51acc540d8c5d0b11f5b1a4c2a5af0b"
+    },
+    {
+      "contract_version": "1.0.0",
+      "kind": "theme_manifest",
+      "theme_id": "PARADE",
+      "theme_revision": 1,
+      "provenance": {
+        "source_id": "mcr_c06_fixture",
+        "source_kind": "ORIGINAL_FIXTURE",
+        "source_revision": "c06-fixture-v1",
+        "source_uri": null,
+        "author": "MCR C06 contract author",
+        "license": "Synthetic metadata only; no artwork or venue license asserted",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      },
+      "map_id": "map_fixture",
+      "map_revision": 1,
+      "map_content_hash": "sha256:21b91a4e02b04943100909d7a008f68cafb9e21b284f26b93ba09ddcc39a4dff",
+      "geometry_hash": "sha256:50ef23b282b18f10aaf28d18c9bc1f2ee44ff46504dd81b41df9d7ddca363a94",
+      "collision_id": "collision_fixture",
+      "place_ids": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "interaction_ids": [
+        "inspect_concept"
+      ],
+      "avatar_manifest_id": "avatar_fixture",
+      "avatar_manifest_version": 1,
+      "avatar_content_hash": "sha256:b2fb2a3e746711f4aaddf8ac7a2b8b11da31911ec9c6a9ea5cb6c9cdf2e0c5c3",
+      "texture": {
+        "image_state": "NOT_PROVIDED",
+        "path": null,
+        "sha256": null,
+        "width_px": 32,
+        "height_px": 32
+      },
+      "palette": {
+        "background": "#151515",
+        "terrain": "#353535",
+        "accent": "#ECE4CF"
+      },
+      "content_hash": "sha256:6dc7d0ad2292b5244e88bcbfb07f5f196bdafd1900b0c29ded0750ce7da5bd2e"
+    },
+    {
+      "contract_version": "1.0.0",
+      "kind": "theme_manifest",
+      "theme_id": "REVENGE",
+      "theme_revision": 1,
+      "provenance": {
+        "source_id": "mcr_c06_fixture",
+        "source_kind": "ORIGINAL_FIXTURE",
+        "source_revision": "c06-fixture-v1",
+        "source_uri": null,
+        "author": "MCR C06 contract author",
+        "license": "Synthetic metadata only; no artwork or venue license asserted",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      },
+      "map_id": "map_fixture",
+      "map_revision": 1,
+      "map_content_hash": "sha256:21b91a4e02b04943100909d7a008f68cafb9e21b284f26b93ba09ddcc39a4dff",
+      "geometry_hash": "sha256:50ef23b282b18f10aaf28d18c9bc1f2ee44ff46504dd81b41df9d7ddca363a94",
+      "collision_id": "collision_fixture",
+      "place_ids": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "interaction_ids": [
+        "inspect_concept"
+      ],
+      "avatar_manifest_id": "avatar_fixture",
+      "avatar_manifest_version": 1,
+      "avatar_content_hash": "sha256:b2fb2a3e746711f4aaddf8ac7a2b8b11da31911ec9c6a9ea5cb6c9cdf2e0c5c3",
+      "texture": {
+        "image_state": "NOT_PROVIDED",
+        "path": null,
+        "sha256": null,
+        "width_px": 32,
+        "height_px": 32
+      },
+      "palette": {
+        "background": "#151019",
+        "terrain": "#302032",
+        "accent": "#D34C66"
+      },
+      "content_hash": "sha256:bfb25e49355bd5c16086d520744faf144f290ce8d92b49ac1341d2b09aa92e29"
+    }
+  ]
+}

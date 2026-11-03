@@ -1,0 +1,9 @@
+{
+  "code": "GATEWAY_404",
+  "message": "The requested action is unavailable.",
+  "traceId": "fixture-correlation-123",
+  "timestamp": "2026-11-03T00:00:00Z",
+  "details": {
+    "reason": "RESOURCE_UNAVAILABLE"
+  }
+}
