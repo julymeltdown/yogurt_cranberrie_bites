@@ -17,7 +17,7 @@ export function createAccountOwner({ auth, bootstrap, scope, assets }: AccountOw
   if (!auth.privacy.isCurrent(scope) || bootstrap.participant.userId !== scope.userId || bootstrap.participant.eventId !== scope.eventId
     || bootstrap.event.eventId !== scope.eventId) throw new AvatarError('unavailable')
   let disposed = false
-  const me = createMeController(auth), source = thumbnailSource(bootstrap, scope, assets)
+  const source = thumbnailSource(bootstrap, scope, assets), me = createMeController(auth)
   const avatar = createAvatarEditorController({ auth,
     async createPreview(expected, signal) {
       if (disposed || signal.aborted || !auth.privacy.isCurrent(scope) || !auth.privacy.isCurrent(expected)) throw new AvatarError('cancelled')

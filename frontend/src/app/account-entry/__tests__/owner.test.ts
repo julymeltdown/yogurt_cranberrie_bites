@@ -62,3 +62,11 @@ it('rejects stale lease or mismatched bootstrap identity before allocating owner
   f.auth.privacy.changePolicy(f.scope,'consent-revoked');expect(()=>createAccountOwner({auth:f.auth,bootstrap:f.bootstrap,scope:f.scope})).toThrow()
   expect(f.fetcher).not.toHaveBeenCalled();f.dispose()
 })
+it('disposes an ignored-abort late preview and never reads participant after owner teardown',async()=>{
+  const f=fixture(),owner=createAccountOwner({auth:f.auth,bootstrap:f.bootstrap,scope:f.scope,assets})
+  let resolve!:(value:Awaited<ReturnType<typeof createReviewedAvatarPreview>>)=>void
+  vi.mocked(createReviewedAvatarPreview).mockImplementationOnce(()=>new Promise(r=>{resolve=r}))
+  owner.avatar.start();await vi.waitFor(()=>expect(createReviewedAvatarPreview).toHaveBeenCalledTimes(1))
+  owner.dispose();const dispose=vi.fn();resolve({catalog:{presets:[],items:[],tones:[]},supports:()=>false,render:vi.fn(),dispose})
+  await vi.waitFor(()=>expect(dispose).toHaveBeenCalledTimes(1));expect(f.fetcher).not.toHaveBeenCalled();expect(owner.avatar.read().phase).toBe('disposed');f.dispose()
+})
