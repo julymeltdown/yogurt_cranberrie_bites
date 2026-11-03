@@ -1,6 +1,10 @@
 //! Durable BE10/BE11 PostgreSQL adapter. No HTTP, WebSocket or public DTO is exposed here.
 pub mod rpc;
 pub mod simulation;
+pub mod interest;
+pub mod replication;
+pub mod session;
+pub mod recovery;
 use async_trait::async_trait;
 use chrono::{DateTime, Duration, Utc};
 use concert_application::world_ticket::*;
