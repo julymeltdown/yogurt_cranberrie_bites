@@ -1,11 +1,10 @@
 # BE37 owner relationship observations
 
-Status: `IN_PROGRESS`. Source and test harness are authored. Rust compilation
-passes, but transport runtime qualification found the shared method-policy guard
-rejects Concert-issued actor-bound reads at service construction. A narrowly
-scoped platform fix is requested from delivery. Native PostgreSQL remains
-`NOT_RUN`; the build lease was released for this source fix.
-This is an identity/privacy prerequisite, not acceptance of BE37 or IN03.
+Status: `CONTRACT_READY` for the bounded internal read prerequisite. Implementation
+and focused runtime fixtures pass at clean source revision
+`dc7b67e41725a7703d20a1b4571db6a77901c5ca`. Delivery integration is pending.
+This is not acceptance of BE37 or IN03. Production product composition, distributed
+revocation fencing, private reveal and real multiuser acceptance remain `NOT_RUN`.
 
 ## Scope and provenance
 
@@ -101,11 +100,12 @@ protocol is implemented and independently qualified.
 
 ## Composition requirements
 
-Auth/Friend startup registers their new isolated service on the existing guarded,
-TLS-capable server. Concert is an optional accepted workload in owner configuration;
+Auth/Friend startup conditionally registers the new isolated service on the existing
+guarded, TLS-capable server when dedicated read verification keys are configured. Concert is an optional accepted workload in owner configuration;
 no credential means Concert is not accepted in production. Deployers must provision
-its dedicated service credential and trusted Concert actor-delegation public key
-in both owners. Constructor TLS parameters use the existing owner-audience checks.
+its dedicated service credential and separate Concert read-proof public keys
+in `CONCERT_RELATIONSHIP_VERIFYING_KEYS` in both owners. Do not place read keys
+in the existing Gateway verification ring. Constructor TLS parameters use the existing owner-audience checks.
 No production credentials, TLS deployment, receiver key rotation or new Concert
 product router composition are qualified by loopback fixtures.
 
@@ -127,7 +127,7 @@ workload/signature guards. Concert transport tests use a genuine guarded Gateway
 bootstrap to construct the binding, then production signed clients against guarded
 loopback owner services. Controlled replies cover scope mismatch, malformed epoch,
 revision and timestamps, missing no-store, outages, delay and every restriction.
-These are authored expectations until executed with Cargo.
+These expectations now pass in the focused runtime qualification below.
 
 The native harness selects exact executables from successful Cargo JSON receipts;
 it never globs old binaries. In a fresh marker/inode-owned PostgreSQL 16.14 root it
@@ -139,7 +139,7 @@ block/unblock generations, tombstones, revision permanence and bounded lock wait
 Missing fixture ownership must fail before database access. PG restart must
 preserve epochs, revisions and denial facts; cleanup must remove the owned root.
 
-Pending lease commands use Rust 1.88.0, target
+Reproduction commands use Rust 1.88.0, target
 `/Users/lhs/Desktop/mcr-build/backend`, `--locked --offline -j2`, and both
 `CARGO_PROFILE_DEV_DEBUG=0` and `CARGO_PROFILE_TEST_DEBUG=0`:
 
@@ -156,9 +156,10 @@ Pending lease commands use Rust 1.88.0, target
 The persistent goal was inspected and remains `blocked` from the earlier broader
 identity assignment. Delivery explicitly retained that aligned goal while this
 prerequisite is source-active; the goal is not falsely completed or cosmetically
-recreated. Runtime status, committed handoff and review fixes remain required.
+recreated. The broader legacy goal remains unfinished; this bounded prerequisite has its own
+qualified handoff below. Delivery owns integration and any concrete review fixes.
 
-## First runtime checkpoint
+## Historical first runtime checkpoint (superseded by final qualification)
 
 Private diagnostics: `/tmp/mcr-owner-relationship-validation.7uZzuj`.
 All builds used the pinned toolchain/profile/target above, with exit 0:
@@ -210,7 +211,80 @@ fixtures use separate read seed 37 and Gateway seed 41. New tests attempt to for
 the other issuer string using each key, so a string-only issuer check cannot pass
 cross-domain tests. Other tests cover missing/wrong/tampered/actor/audience/method,
 replayed and expired proofs, strict registration, and dedicated environment loads.
-These are source-authored expectations pending the next bounded Cargo lease.
+These cases now pass in the final runtime qualification.
 This remains trusted Concert-signed observation, not forwarded Gateway child
 proof and not a remote database fence. The sealed bootstrap binding and current
-owner session check remain required. No platform runtime claim is made yet.
+owner session check remain required. The bounded platform and native claims are recorded below.
+
+## Final qualification and committed handoff
+
+All commands below used Rust 1.88.0, `--locked --offline -j2`, debug 0 for DEV
+and TEST, and the sole shared target `/Users/lhs/Desktop/mcr-build/backend`.
+Source was clean at `dc7b67e41725a7703d20a1b4571db6a77901c5ca`; no Rust source
+content changed during the run. Two cross-checkout cache reuse failures reported
+missing exports that were present in this checkout. Refreshing only assigned
+source mtimes forced the corresponding application/platform variants to rebuild.
+The successful receipts, not those failed attempts, select the native executables.
+
+| Command / selected executable | Exit | Result |
+| --- | --- | --- |
+| `cargo test -p platform --lib --no-run --message-format=json` with common flags | 0 | 5.07 s |
+| Platform proof executable, `grpc_method_policy --test-threads=1` | 0 | 13 passed, 0 failed/ignored |
+| Platform proof executable, `actor_delegation --test-threads=1` | 0 | 105 passed, 0 failed/ignored |
+| `cargo test -p auth-application -p friend-application -p auth-service -p friend-service --test concert_relationship --no-run --message-format=json` with common flags | 0 | 21.13 s rebuilt |
+| `cargo test -p concert-service --test relationship_authority --no-run --message-format=json` with common flags | 0 | 10.50 s rebuilt |
+| `cargo build -p auth-service -p friend-service --bins --message-format=json` with common flags | 0 | 9.40 s |
+| Exact five focused executables, `--test-threads=1` | 0 each | 17 passed; three native tests deliberately ignored here |
+| Python harness unit suite | 0 | 9 passed |
+| `owner_relationship_smoke.py --cargo-json /tmp/mcr-owner-relationship-requalification.FoQVSH/combined.json --pg-bin /opt/homebrew/opt/postgresql@16/bin --report /tmp/mcr-owner-relationship-requalification.FoQVSH/native-report.json` | 0 | 3 native tests passed, restart and cleanup PASS |
+
+The native harness runs each ignored test explicitly with `--ignored --exact` and
+requires one passed, zero failed and zero ignored per invocation. It qualified the
+actual Auth/Friend persistence implementations, generated isolated services,
+production method/signature guards, sealed Gateway bootstrap context and Concert
+production signed client against two fresh owned databases on PostgreSQL 16.14.
+The three tests are:
+
+- Auth `native_relationship_owner_snapshot_and_revisions`.
+- Friend `native_relationship_owner_snapshot_and_revisions`.
+- Concert `native_two_owner_client_rechecks_revocation_and_block_generations`.
+
+Auth migrations 1–14 and Friend migrations 1–15 passed migrate/verify/reapply and
+checksum ledger checks. Missing explicit DB and verification of empty DB exited 1
+as required. All three missing-ownership invocations failed with exit 101 before
+DB access. Explicit native invocations and both post-restart migration verifications
+exited 0. Epochs, revisions, suspended accounts/revoked sessions, block rows and
+tombstones survived an actual postmaster restart. The owned cluster was removed;
+cleanup was PASS. No deployment or shared database was used.
+
+The harness copied all five Cargo-selected executables and verified SHA-256 before
+native work. The platform proof executable was separately copied and hashed.
+The target was explicitly released to delivery at the pin marker, before the
+independent native run completed; no further Cargo/target use remains in this chat.
+
+Private evidence directory: `/tmp/mcr-owner-relationship-requalification.FoQVSH`.
+Receipts retain individual build/test exits, full selected binary hashes, migration
+checksums, source revision/clean status, and a separate complete backend source pin
+set covering platform as well as owners:
+
+| Evidence file | SHA-256 |
+| --- | --- |
+| `native-report.json` | `9e59b42c4317afe5cecd01bda12ca9f24ba528de83a731a841c31cf30b021072` |
+| `source-pins.json` | `6d12cc2fccc43fecc444e4ab22cbaa42380bdd2d9dd2c64f06d71d17c2bcb3a9` |
+| `combined.json` | `61bd6ece8fe200cf3b4831ae2193d220687633656275852797e27ed4b0d1a872` |
+| `platform-results.json` | `7a58b93ad404b6ab92b1582805734ed2bbb32d6b905155fb15181a25d783ab8e` |
+| `focused-results.json` | `45c4053b9bbee1aa8c2c5fc185fe6b849aae5e15d351d9f1e54aadf04a48f8bb` |
+
+Own patch ancestry after prerequisite commits is `3608e7f` → `ff77d5e` → `c3a4f81`
+→ `d813ecd` → `dc7b67e`, followed by this documentation-only qualification record.
+`c3a4f81` is the separately granted platform/key-isolation fix. The integrator
+should inspect the exact changed paths and avoid replaying already composed
+`cbdfcfd`/`dd15c78`/`ed2ee0f` prerequisites. Only delivery publishes reviewed work
+to master; this worker has not pushed.
+
+Remaining limits: no qualified distributed fence, protected mutation/private
+reveal integration, production TLS/credential deployment or rotation, process-wide
+owner startup environment journey, restore invalidation, sustained singleton
+contention/load measurement, public HTTP/WS product journey, IN03 or whole-task
+acceptance. Independent owner reads remain non-atomic across services and bounded
+by the original request. Existing Gateway RPC key trust is unchanged.
