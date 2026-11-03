@@ -522,6 +522,36 @@ async fn place_failure_rolls_back_and_shared_release_cannot_mutate_another_event
     PgPlaceRepository::new(p.clone())
         .publish_release(EventId::from_uuid(a2.event), release)
         .await?;
+    // Directly exercise the recovered acquisition trigger. The normal owner
+    // port detects shared bindings earlier; that alone cannot prove this guard.
+    let mut acquisition = p.begin().await?;
+    sqlx::query("select set_config('mcr.operations_authority_until',(clock_timestamp()+interval '1 minute')::text,true)").execute(&mut *acquisition).await?;
+    let map_id = format!("be38_{}", place.id.uuid().simple());
+    let failure = sqlx::query(
+        "insert into concert_operated_place_releases(map_id,map_revision,event_id) values($1,1,$2)",
+    )
+    .bind(&map_id)
+    .bind(a.event)
+    .execute(&mut *acquisition)
+    .await
+    .expect_err("shared release acquisition must fail in the database");
+    let error = failure
+        .as_database_error()
+        .expect("database acquisition guard");
+    assert_eq!(error.code().as_deref(), Some("23514"));
+    assert_eq!(
+        error.message(),
+        "shared release cannot acquire an event operator owner"
+    );
+    acquisition.rollback().await?;
+    let acquired: i64 = sqlx::query_scalar(
+        "select count(*) from concert_operated_place_releases where map_id=$1 and map_revision=1",
+    )
+    .bind(&map_id)
+    .fetch_one(&p)
+    .await?;
+    assert_eq!(acquired, 0);
+
     let repo = PgEventOperations::new(
         p.clone(),
         authority(Role::Operator),
