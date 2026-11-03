@@ -58,6 +58,15 @@ BEGIN
     THEN
         RAISE EXCEPTION 'participant profile operation is immutable' USING ERRCODE = '23514';
     END IF;
+    IF NEW.decision = 'COMMIT' AND (
+        NEW.concert_full_xid <> pg_current_xact_id()::text
+        OR NEW.concert_backend_pid <> pg_backend_pid()
+        OR NEW.concert_database_oid <> (SELECT oid::bigint FROM pg_database WHERE datname = current_database())
+        OR NEW.concert_system_identifier <> (SELECT system_identifier::text FROM pg_control_system())
+        OR NEW.concert_backend_started <> (SELECT backend_start FROM pg_stat_activity WHERE pid = pg_backend_pid())
+    ) THEN
+        RAISE EXCEPTION 'participant decision requires registered native transaction' USING ERRCODE = '23514';
+    END IF;
     RETURN NEW;
 END;
 $$;

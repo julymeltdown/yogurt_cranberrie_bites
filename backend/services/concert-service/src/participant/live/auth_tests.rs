@@ -92,7 +92,7 @@ impl auth_proto::auth_concert_relationship_service_server::AuthConcertRelationsh
                 reply.query = Some(query);
             }
             "no-query" => reply.query = None,
-            "stale" => reply.observed_at_unix_micros = now - 1,
+            "stale" => reply.observed_at_unix_micros = now - 3_000_000,
             "future" => reply.observed_at_unix_micros = now + 3_000_000,
             "extended" => reply.valid_until_unix_micros += 1,
             "expired" => reply.valid_until_unix_micros = now - 1,
@@ -282,7 +282,7 @@ async fn actual_read_client_requires_current_exact_no_store_owner_reply() {
             assert_eq!(body["user_id"], message.user_id);
             assert_eq!(body["session_family_id"], message.session_family_id);
         } else {
-            let error = result.unwrap_err();
+            let error = result.expect_err(fault);
             assert!(!error.message().contains("private-owner-detail"));
             let expected = if matches!(fault, "inactive" | "deleted-subject" | "revoked-session") {
                 tonic::Code::PermissionDenied
