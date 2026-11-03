@@ -167,3 +167,5 @@ pub mod identity;
 pub mod place;
 pub mod bootstrap;
 pub mod relationship;
+
+pub mod beacon;

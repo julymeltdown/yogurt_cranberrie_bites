@@ -10,3 +10,4 @@ pub mod workers {
 }
 
 pub mod relationship;
+pub mod meeting;
