@@ -52,7 +52,10 @@ describe('FE17 authoritative entity projection', () => {
     s.delta(1, [changed], [initial.players[2]!.userId])
     expect(s.c.read().entities.map(e => e.player.displayName)).toEqual(['Raven', 'New name'])
     expect(s.c.read().entities[1]!.player.avatar.revision).toBe(2)
-    expect(Object.isFrozen(s.c.read().entities[1]!.player.avatar.config.item_ids)).toBe(true)
+    const config = s.c.read().entities[1]!.player.avatar.config
+    expect(config.contract_version).toBe('1.0.0')
+    if (config.contract_version !== '1.0.0') throw new Error('Expected the retained layered fixture')
+    expect(Object.isFrozen(config.item_ids)).toBe(true)
     const ref = s.c.read(); s.receive({ ...initial, cause: 'EPOCH_CHANGED', roomEpoch: id(300), streamId: id(301), players: [initial.players[0]], serverTick: 0 })
     expect(s.c.read().entities).toHaveLength(1); expect(s.c.read().baseline!.streamSeq).toBe(0); expect(ref).not.toBe(s.c.read())
   })

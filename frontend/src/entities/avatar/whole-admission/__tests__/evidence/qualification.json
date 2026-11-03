@@ -1,0 +1,118 @@
+{
+  "status": "CONTRACT_READY",
+  "recorded_at": "2026-11-03T23:15:51.713868+00:00",
+  "base": "8430cd57ebb628fc093cb43f5ab547f042440830",
+  "contract_source": "3398d8331863775ecc0180e5eccebddd179fedd5",
+  "whole_runtime_source": "9fbc89426c6d0781c6f7a1f1a78ef722656407e5",
+  "layered_lease_source": "c987a20b60ae9dc39fb16bd8a7d180f22c4991d2",
+  "repair_source": "58824c4f8ece5a32afba5fd63c6272cb95e569f5",
+  "repair_publication": "90f44fd99fdfe17f3ee3e596ceff0583f6db2c47",
+  "node": "24.22.2",
+  "source_hashes": {
+    "frontend/src/entities/avatar/whole-admission/index.ts": "4758dde94b5eb8b3f51e1dac60365219e9a8b63fcd194964e81e8508f4325777",
+    "frontend/src/entities/avatar/runtime/contract.ts": "06887a522a33090937f84d0174b2f5bda24776627683e1791842af87018ef290",
+    "frontend/src/entities/avatar/runtime/schema.ts": "81443f94f16c7f1d52122d96727fb21c583c82e757f6fc24b5a6b45947fd5628",
+    "frontend/src/features/auth/model/contract.ts": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
+    "frontend/src/features/auth/model/bootstrap.ts": "028fce14336c1e8357ce7e836631e1b05fb937a005b178344f0941b7db8fa87e",
+    "frontend/src/features/event-feed/contract.ts": "69aa62ed8317f4b3a6a2c882d0733fe8229d4a53606fbce185dfc680d37e5a1e",
+    "frontend/src/features/gift-discovery/model/contract.ts": "2a931610213c57eb1dc439ac224800e0d86fd8f3a67f4804a9c6c8ceead38cba",
+    "frontend/src/features/party-discovery/model/contract.ts": "73d3dd2a7e6a09a7edc22bee5c24358ddfeda1049f4c5c35a7b754474508a3b7",
+    "frontend/src/features/party-authoring/model/contract.ts": "9aa33a2a259ba38c9356aea32817d8864cf1a6a07fc707e60d4fb7f5e71b11b3",
+    "frontend/src/features/me/model/contract.ts": "d419b356ff330f7f1a5745c2a2ebefe3e88b8e609b8100dabc29b9c5a5fcd0e8",
+    "frontend/src/features/people/contract.ts": "155140bd934aa3d73bf0a0d7f874c9ac92efc38c4f2f5fefeb00397d76d90722",
+    "frontend/src/world/network/transport/wire-types.ts": "32771057af2878b42315d907a519baeb50514467f508b3b0ab3775bac5443bfc",
+    "frontend/src/entities/avatar/whole-character/contract.ts": "5d60fa0bd3eb89f750646a4e75ad33670d8ca1d09b4d2af7eba1a6d3a0990a0d",
+    "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+    "contracts/generated/mcr-domain.openapi.json": "ef678d3445e5ee5ed3b90594ef1decc1d53b342166b10a91c4d9c9b3f20aa057",
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "checks": [
+    {
+      "command": [
+        "node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--no-cache",
+        "--maxWorkers",
+        "1",
+        "src/entities/avatar/whole-admission",
+        "src/entities/avatar/whole-character",
+        "src/world/network",
+        "src/world/avatar",
+        "src/features/avatar",
+        "src/features/auth/__tests__/contract.test.ts",
+        "src/features/me",
+        "src/features/people",
+        "src/features/profile",
+        "src/features/event-feed",
+        "src/features/gift-discovery",
+        "src/features/party-discovery",
+        "src/features/party-authoring",
+        "src/features/places",
+        "src/app/places-entry",
+        "src/app/account-entry",
+        "src/app/__tests__/reference-root/root.test.tsx"
+      ],
+      "cwd": "frontend",
+      "exit_code": 0,
+      "tests": 909,
+      "files": 61
+    },
+    {
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--project",
+        "tsconfig.json"
+      ],
+      "cwd": "frontend",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "node",
+        "src/world/network/__tests__/generate-types.mjs",
+        "--check"
+      ],
+      "cwd": "frontend",
+      "exit_code": 0
+    },
+    {
+      "command": "scoped oxlint on owned runtime/admission/model/generated/test paths",
+      "exit_code": 0
+    },
+    {
+      "command": "Vite build({publicDir:false,build:{outDir:\"/tmp/mcr-fe-avatar-union-build\",emptyOutDir:true}})",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "disk_bytes_before_build": 35960115200,
+      "existing_large_chunk_advisory": true
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "limits": [
+    "unit/contract and production compilation evidence only",
+    "no live backend or real API/bootstrap/World proof",
+    "no new native capture/device/multiuser/IN01/IN05 acceptance",
+    "no root/renderer/art/lease/shared-contract writes"
+  ]
+}
