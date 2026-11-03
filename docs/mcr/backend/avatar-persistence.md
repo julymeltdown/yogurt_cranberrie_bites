@@ -234,3 +234,48 @@ preference revisions across postmaster restart. These are real native database
 checks over synthetic metadata, not production Auth, artwork or multiuser-world
 acceptance. No live HTTP/RPC mutation, current mutation-authority adapter,
 real-provider/device/load flow, approved art or IN01/IN05 gate is certified.
+
+## Selected whole-character canonical increment (2026-11-04)
+
+Status: `IN_PROGRESS`. Contract source `3398d8331863775ecc0180e5eccebddd179fedd5`
+adds the exact C06 `1.1.0` whole-character branch; layered `1.0.0` remains supported.
+The new domain `AvatarAppearance` representation is exclusive. `SetAvatar::parse`,
+`config_value` and `AvatarCatalog` retain their call signatures; `parse_config`
+provides the same strict decoder to release projection. Six selected presets have
+no component IDs, skin tones, URLs or frame choices. Manifest pin:
+`mcr_selected_static_20261103` / `1` /
+`sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b`.
+
+Additive migration `0025_whole_character_avatar.sql` retains old migration bytes,
+keys, revision/timestamp triggers and participant foreign keys. It adds
+`representation` and `preset_id` to `public.concert_avatar_settings`, relaxes
+component-column nullability, and enforces mutually exclusive variant checks.
+Layered rows retain required components; whole rows require the six-preset
+whitelist and all component columns NULL. Canonical avatar/bootstrap/core reads
+share `selection_from_row`; writes/default insertion project only the selected
+variant. Unknown or corrupt persisted values fail closed.
+
+The explicitly granted scope extension is only `CoreRepository::avatar` in
+`src/adapters/out/repository.rs`, necessary to decode saved variants. World
+serialization/SQL and associated tests belong to the World owner; this owner
+must not modify those files. Participant producer uses the unchanged parser and
+serializer interfaces. `tests/support/bootstrap::selected_release()` reads
+`release-selected` inside the private native harness; Python
+`avatar_smoke.write_selected_release(root, document)` creates its fixture map/theme
+bindings without changing the golden inputs. This is metadata/native evidence,
+not full approved product scenery or a public multiuser acceptance claim.
+
+Initial focused Rust 1.88 validation passed: domain avatar 3, application avatar
+and bootstrap tests (see `/tmp/mcr-selected-domain-application.log`). Locked,
+offline, two build jobs, debug 0, incremental 0, existing MEDIA target only.
+Service/native qualification remains `NOT_RUN` at this source checkpoint; first
+service build exposed an absent peer-owned participant.proto in the older local
+checkout. Reconcile current peer source before compilation. New native cases
+cover six saves/reloads/default preservation, SQL variant checks, stale/foreign
+actor/event/release denial, rollback after SQL, optimistic race, preference
+preservation, closure race and postmaster restart. Do not treat authored cases
+as executed evidence. No default database is touched.
+
+The goal API still reports the historical incompatible BE04 goal as `BLOCKED`;
+no new goal was created or the old goal falsely completed. The concrete new
+objective/completion criteria remain in `docs/mcr/contracts/selected-static-avatar.md`.

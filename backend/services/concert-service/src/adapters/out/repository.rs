@@ -85,33 +85,14 @@ impl CoreRepository for PgConcertRepository {
             .bind(key.event_id.uuid()).bind(key.user_id.uuid()).fetch_optional(&self.pool).await.map_err(unavailable)?.map(participant).transpose()
     }
     async fn avatar(&self, key: ParticipantKey) -> Result<Option<AvatarSettings>, StoreError> {
-        let row = sqlx::query("select event_id,user_id,revision,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id,created_at,updated_at from public.concert_avatar_settings where event_id=$1 and user_id=$2")
+        let row = sqlx::query("select event_id,user_id,revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id,created_at,updated_at from public.concert_avatar_settings where event_id=$1 and user_id=$2")
             .bind(key.event_id.uuid()).bind(key.user_id.uuid()).fetch_optional(&self.pool).await.map_err(unavailable)?;
         row.map(|row| {
-            let asset =
-                |column| AssetId::new(row.try_get(column).map_err(invalid)?).map_err(invalid);
             let value = AvatarSettings {
                 key: parse_key(&row)?,
                 revision: Revision::new(row.try_get("revision").map_err(invalid)?)
                     .map_err(invalid)?,
-                selection: AvatarSelection {
-                    manifest_id: asset("manifest_id")?,
-                    manifest_version: Revision::new(
-                        row.try_get("manifest_version").map_err(invalid)?,
-                    )
-                    .map_err(invalid)?,
-                    body: asset("body_id")?,
-                    eyes: asset("eyes_id")?,
-                    hair: asset("hair_id")?,
-                    outfit: asset("outfit_id")?,
-                    accessory: row
-                        .try_get::<Option<String>, _>("accessory_id")
-                        .map_err(invalid)?
-                        .map(AssetId::new)
-                        .transpose()
-                        .map_err(invalid)?,
-                    skin_tone: asset("skin_tone_id")?,
-                },
+                selection: avatar::selection_from_row(&row).map_err(invalid)?,
                 created_at: row.try_get("created_at").map_err(invalid)?,
                 updated_at: row.try_get("updated_at").map_err(invalid)?,
             };

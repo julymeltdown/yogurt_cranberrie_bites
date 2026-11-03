@@ -59,13 +59,23 @@ impl AvatarPersistence {
             return Err(AvatarError::Unavailable);
         }
         if !synthetic {
-            let mut resources = vec![avatar, &doc["map_manifest"]];
+            let whole = avatar["representation"] == "whole_character";
+            let mut resources = vec![&doc["map_manifest"]];
+            if !whole {
+                resources.push(avatar);
+            }
+            if whole
+                && avatar["content_hash"]
+                    != "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+            {
+                return Err(AvatarError::Unavailable);
+            }
             resources.extend(
                 doc["theme_manifests"]
                     .as_array()
                     .ok_or(AvatarError::Unavailable)?,
             );
-            if resources.len() != 5
+            if resources.len() != if whole { 4 } else { 5 }
                 || resources.iter().any(|v| {
                     v["provenance"]["review_state"] != "REVIEWED"
                         || v["provenance"]["source_kind"] != "ORIGINAL_ART"
@@ -260,7 +270,7 @@ impl AvatarRepository for PgAvatarRepository {
             .bind(event).bind(user).fetch_optional(&mut *tx).await.map_err(unavailable)?;
         check()?;
         let mut participant = participant(row.ok_or(AvatarError::Missing)?, key)?;
-        let row = sqlx::query("select revision,contract_version,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id,created_at,updated_at from public.concert_avatar_settings where event_id=$1 and user_id=$2 for update")
+        let row = sqlx::query("select revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id,created_at,updated_at from public.concert_avatar_settings where event_id=$1 and user_id=$2 for update")
             .bind(event).bind(user).fetch_optional(&mut *tx).await.map_err(unavailable)?;
         check()?;
         let mut avatar = avatar(row.ok_or(AvatarError::Missing)?, key)?;
@@ -273,10 +283,12 @@ impl AvatarRepository for PgAvatarRepository {
                 }
                 let next = command.expected.next().map_err(|_| AvatarError::Conflict)?;
                 let s = command.selection;
-                let updated: chrono::DateTime<chrono::Utc> = sqlx::query_scalar("update public.concert_avatar_settings set revision=$3,manifest_id=$4,manifest_version=$5,body_id=$6,eyes_id=$7,hair_id=$8,outfit_id=$9,accessory_id=$10,skin_tone_id=$11 where event_id=$1 and user_id=$2 returning updated_at")
+                let columns = storage_columns(&s);
+                let updated: chrono::DateTime<chrono::Utc> = sqlx::query_scalar("update public.concert_avatar_settings set revision=$3,manifest_id=$4,manifest_version=$5,body_id=$6,eyes_id=$7,hair_id=$8,outfit_id=$9,accessory_id=$10,skin_tone_id=$11,contract_version=$12,representation=$13,preset_id=$14 where event_id=$1 and user_id=$2 returning updated_at")
                     .bind(event).bind(user).bind(next.get()).bind(s.manifest_id.as_str()).bind(s.manifest_version.get())
-                    .bind(s.body.as_str()).bind(s.eyes.as_str()).bind(s.hair.as_str()).bind(s.outfit.as_str())
-                    .bind(s.accessory.as_ref().map(AssetId::as_str)).bind(s.skin_tone.as_str())
+                    .bind(columns.body).bind(columns.eyes).bind(columns.hair).bind(columns.outfit)
+                    .bind(columns.accessory).bind(columns.skin_tone).bind(columns.contract_version)
+                    .bind(columns.representation).bind(columns.preset_id)
                     .fetch_one(&mut *tx).await.map_err(unavailable)?;
                 check()?;
                 avatar.selection = s;
@@ -327,34 +339,88 @@ fn participant(row: PgRow, key: ParticipantKey) -> Result<Participant, AvatarErr
         updated_at: row.try_get("updated_at").map_err(invalid)?,
     })
 }
-fn avatar(row: PgRow, key: ParticipantKey) -> Result<AvatarSettings, AvatarError> {
-    let asset = |column| AssetId::new(row.try_get(column).map_err(invalid)?).map_err(invalid);
-    if row
-        .try_get::<String, _>("contract_version")
-        .map_err(invalid)?
-        != "1.0.0"
-    {
-        return Err(AvatarError::InvalidState);
+pub(crate) struct AvatarStorage<'a> {
+    pub contract_version: &'static str,
+    pub representation: &'static str,
+    pub preset_id: Option<&'a str>,
+    pub body: Option<&'a str>,
+    pub eyes: Option<&'a str>,
+    pub hair: Option<&'a str>,
+    pub outfit: Option<&'a str>,
+    pub accessory: Option<&'a str>,
+    pub skin_tone: Option<&'a str>,
+}
+pub(crate) fn storage_columns(s: &AvatarSelection) -> AvatarStorage<'_> {
+    match &s.appearance {
+        AvatarAppearance::Layered {
+            body,
+            eyes,
+            hair,
+            outfit,
+            accessory,
+            skin_tone,
+        } => AvatarStorage {
+            contract_version: "1.0.0",
+            representation: "layered",
+            preset_id: None,
+            body: Some(body.as_str()),
+            eyes: Some(eyes.as_str()),
+            hair: Some(hair.as_str()),
+            outfit: Some(outfit.as_str()),
+            accessory: accessory.as_ref().map(AssetId::as_str),
+            skin_tone: Some(skin_tone.as_str()),
+        },
+        AvatarAppearance::WholeCharacter { preset_id } => AvatarStorage {
+            contract_version: "1.1.0",
+            representation: "whole_character",
+            preset_id: Some(preset_id.as_str()),
+            body: None,
+            eyes: None,
+            hair: None,
+            outfit: None,
+            accessory: None,
+            skin_tone: None,
+        },
     }
+}
+/// Decode the exclusive database representation through the canonical strict parser.
+/// Callers must select all representation/component columns; absent columns fail closed.
+pub fn selection_from_row(row: &PgRow) -> Result<AvatarSelection, AvatarError> {
+    let text = |key| row.try_get::<String, _>(key).map_err(invalid);
+    let optional = |key| row.try_get::<Option<String>, _>(key).map_err(invalid);
+    let mut config = json!({"kind":"avatar_config","contract_version":text("contract_version")?,
+        "manifest_id":text("manifest_id")?,"manifest_version":row.try_get::<i64,_>("manifest_version").map_err(invalid)?});
+    let body = optional("body_id")?;
+    let eyes = optional("eyes_id")?;
+    let hair = optional("hair_id")?;
+    let outfit = optional("outfit_id")?;
+    let accessory = optional("accessory_id")?;
+    let skin_tone = optional("skin_tone_id")?;
+    let preset = optional("preset_id")?;
+    match text("representation")?.as_str() {
+        "layered" if preset.is_none() => {
+            config["item_ids"] =
+                json!({"body":body,"eyes":eyes,"hair":hair,"outfit":outfit,"accessory":accessory});
+            config["skin_tone_id"] = json!(skin_tone);
+        }
+        "whole_character"
+            if [&body, &eyes, &hair, &outfit, &accessory, &skin_tone]
+                .iter()
+                .all(|v| v.is_none()) =>
+        {
+            config["representation"] = json!("whole_character");
+            config["preset_id"] = json!(preset);
+        }
+        _ => return Err(AvatarError::InvalidState),
+    }
+    concert_domain::avatar::parse_config(&serde_json::to_vec(&config).map_err(invalid)?)
+        .map_err(invalid)
+}
+fn avatar(row: PgRow, key: ParticipantKey) -> Result<AvatarSettings, AvatarError> {
     Ok(AvatarSettings {
         key,
         revision: Revision::new(row.try_get("revision").map_err(invalid)?).map_err(invalid)?,
-        selection: AvatarSelection {
-            manifest_id: asset("manifest_id")?,
-            manifest_version: Revision::new(row.try_get("manifest_version").map_err(invalid)?)
-                .map_err(invalid)?,
-            body: asset("body_id")?,
-            eyes: asset("eyes_id")?,
-            hair: asset("hair_id")?,
-            outfit: asset("outfit_id")?,
-            accessory: row
-                .try_get::<Option<String>, _>("accessory_id")
-                .map_err(invalid)?
-                .map(AssetId::new)
-                .transpose()
-                .map_err(invalid)?,
-            skin_tone: asset("skin_tone_id")?,
-        },
+        selection: selection_from_row(&row)?,
         created_at: row.try_get("created_at").map_err(invalid)?,
         updated_at: row.try_get("updated_at").map_err(invalid)?,
     })

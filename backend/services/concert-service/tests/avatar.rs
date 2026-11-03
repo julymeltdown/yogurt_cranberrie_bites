@@ -364,3 +364,278 @@ async fn native_avatar_restart_persistence() {
     assert_eq!(old, avatar_state(&snapshot.avatar));
     pool.close().await;
 }
+
+const SELECTED_EVENT: &str = "00000000-0000-4000-8000-000000000711";
+const SELECTED_USER: &str = "00000000-0000-4000-8000-000000000712";
+fn selected_manifest() -> Value {
+    serde_json::from_str(include_str!(
+        "../../../../contracts/fixtures/assets/selected-static/avatar-manifest.json"
+    ))
+    .unwrap()
+}
+#[tokio::test]
+#[ignore = "requires avatar_smoke.py owned PostgreSQL cluster"]
+async fn native_selected_avatar_transactions() {
+    let pool = support::pool().await;
+    let release = support::selected_release();
+    let event: Uuid = SELECTED_EVENT.parse().unwrap();
+    let user: Uuid = SELECTED_USER.parse().unwrap();
+    let own = key(event, user);
+    support::seed(&pool, event).await;
+    let bootstrap = BootstrapPostgresRepository::new(pool.clone());
+    let first = bootstrap
+        .bootstrap(
+            &support::admission(event, user),
+            release.release().defaults(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(
+        config_value(&first.avatar),
+        selected_manifest()["presets"][0]["config"]
+    );
+    let service = Arc::new(
+        AvatarPersistence::from_synthetic_test(pool.clone(), release.clone(), true).unwrap(),
+    );
+    let write = support::Authority::new(own, AvatarOperation::SetAvatar, service.release_digest());
+    let read = support::Authority::new(own, AvatarOperation::Read, service.release_digest());
+    let mut revision = 1;
+    for preset in selected_manifest()["presets"].as_array().unwrap() {
+        let desired = preset["config"].clone();
+        let state = service
+            .set_avatar(own, &command(revision, desired.clone()), &write)
+            .await
+            .unwrap();
+        revision += 1;
+        assert_eq!(state, json!({"revision":revision,"config":desired}));
+        let snapshot = service.read(own, &read).await.unwrap();
+        assert_eq!(avatar_state(&snapshot.avatar), state);
+        // Canonical CoreRepository GET projection uses the same exclusive decoder.
+        use concert_application::CoreRepository;
+        let core =
+            concert_service::adapters::out::repository::PgConcertRepository::new(pool.clone());
+        assert_eq!(core.avatar(own).await.unwrap().unwrap(), snapshot.avatar);
+        let stored:(String,String,String,bool) = sqlx::query_as("select contract_version,representation,preset_id,body_id is null and eyes_id is null and hair_id is null and outfit_id is null and accessory_id is null and skin_tone_id is null from concert_avatar_settings where event_id=$1 and user_id=$2")
+            .bind(event).bind(user).fetch_one(&pool).await.unwrap();
+        assert_eq!(
+            stored,
+            (
+                "1.1.0".into(),
+                "whole_character".into(),
+                preset["preset_id"].as_str().unwrap().into(),
+                true
+            )
+        );
+        // Repeated bootstrap preserves a saved preset instead of default substitution.
+        let again = bootstrap
+            .bootstrap(
+                &support::admission(event, user),
+                release.release().defaults(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(config_value(&again.avatar), desired);
+        assert_eq!(again.avatar_revision, revision);
+    }
+    let desired = selected_manifest()["presets"][2]["config"].clone();
+    let before = service.read(own, &read).await.unwrap();
+    for (field, bad) in [
+        ("preset_id", json!("photo01_front_07")),
+        ("manifest_id", json!("other")),
+        ("manifest_version", json!(2)),
+        ("item_ids", json!({})),
+        ("skin_tone_id", json!("tone_fixture")),
+        ("url", json!("https://evil.invalid/a.png")),
+        ("frame", json!(0)),
+    ] {
+        let mut invalid = desired.clone();
+        invalid[field] = bad;
+        assert_eq!(
+            service
+                .set_avatar(own, &command(revision, invalid), &write)
+                .await
+                .unwrap_err(),
+            AvatarError::InvalidInput
+        );
+    }
+    assert_eq!(
+        service
+            .set_avatar(own, &command(1, desired.clone()), &write)
+            .await
+            .unwrap_err(),
+        AvatarError::Conflict
+    );
+    let wrong = support::Authority::new(
+        key(event, Uuid::new_v4()),
+        AvatarOperation::SetAvatar,
+        service.release_digest(),
+    );
+    assert_eq!(
+        service
+            .set_avatar(own, &command(revision, desired.clone()), &wrong)
+            .await
+            .unwrap_err(),
+        AvatarError::Denied
+    );
+    let wrong_event = support::Authority::new(
+        key(Uuid::new_v4(), user),
+        AvatarOperation::SetAvatar,
+        service.release_digest(),
+    );
+    assert_eq!(
+        service
+            .set_avatar(own, &command(revision, desired.clone()), &wrong_event)
+            .await
+            .unwrap_err(),
+        AvatarError::Denied
+    );
+    let wrong_release = support::Authority::new(own, AvatarOperation::SetAvatar, &"b".repeat(64));
+    assert_eq!(
+        service
+            .set_avatar(own, &command(revision, desired.clone()), &wrong_release)
+            .await
+            .unwrap_err(),
+        AvatarError::Unavailable
+    );
+    let mut fail =
+        support::Authority::new(own, AvatarOperation::SetAvatar, service.release_digest());
+    fail.fail_at = 8; // after SQL UPDATE, before commit
+    assert_eq!(
+        service
+            .set_avatar(own, &command(revision, desired.clone()), &fail)
+            .await
+            .unwrap_err(),
+        AvatarError::Unauthenticated
+    );
+    assert_eq!(service.read(own, &read).await.unwrap(), before);
+    // Server storage constraints independently reject mixed/unknown variants.
+    for expression in [
+        "body_id='body_fixture'",
+        "preset_id='photo01_front_07'",
+        "representation='layered'",
+        "contract_version='1.0.0'",
+    ] {
+        let sql = format!("update concert_avatar_settings set revision=revision+1,{expression} where event_id=$1 and user_id=$2");
+        let err = sqlx::query(&sql)
+            .bind(event)
+            .bind(user)
+            .execute(&pool)
+            .await
+            .unwrap_err();
+        assert_eq!(
+            err.as_database_error().unwrap().code().as_deref(),
+            Some("23514")
+        );
+    }
+    let mut tasks = vec![];
+    for _ in 0..16 {
+        let service = service.clone();
+        let bytes = command(revision, desired.clone());
+        tasks.push(tokio::spawn(async move {
+            let a =
+                support::Authority::new(own, AvatarOperation::SetAvatar, service.release_digest());
+            service.set_avatar(own, &bytes, &a).await
+        }));
+    }
+    let mut winners = 0;
+    for task in tasks {
+        match task.await.unwrap() {
+            Ok(value) => {
+                winners += 1;
+                assert_eq!(value, json!({"revision":revision+1,"config":desired}));
+            }
+            Err(e) => assert_eq!(e, AvatarError::Conflict),
+        }
+    }
+    assert_eq!(winners, 1);
+    revision += 1;
+    let preference = support::Authority::new(
+        own,
+        AvatarOperation::SetPreferences,
+        service.release_digest(),
+    );
+    let changed = service
+        .set_preferences(own, &prefs(1), &preference)
+        .await
+        .unwrap();
+    assert_eq!(changed.avatar.revision.get(), revision);
+    assert_eq!(config_value(&changed.avatar.selection), desired);
+    // Closure while a write waits on the event lock must prevent its SQL mutation.
+    let mut tx = pool.begin().await.unwrap();
+    sqlx::query("select event_id from concert_events where event_id=$1 for update")
+        .bind(event)
+        .execute(&mut *tx)
+        .await
+        .unwrap();
+    let signal = Arc::new(support::Authority::new(
+        own,
+        AvatarOperation::SetAvatar,
+        service.release_digest(),
+    ));
+    let probe = signal.clone();
+    let delayed = service.clone();
+    let bytes = command(
+        revision,
+        selected_manifest()["presets"][0]["config"].clone(),
+    );
+    let waiting = tokio::spawn(async move { delayed.set_avatar(own, &bytes, &*signal).await });
+    while probe.calls.load(std::sync::atomic::Ordering::SeqCst) < 3 {
+        tokio::task::yield_now().await;
+    }
+    sqlx::query(
+        "update concert_events set phase='READ_ONLY',revision=revision+1 where event_id=$1",
+    )
+    .bind(event)
+    .execute(&mut *tx)
+    .await
+    .unwrap();
+    tx.commit().await.unwrap();
+    assert_eq!(waiting.await.unwrap().unwrap_err(), AvatarError::ReadOnly);
+    assert_eq!(service.read(own, &read).await.unwrap(), changed);
+    let row = avatar_state(&changed.avatar);
+    std::fs::write(
+        std::path::PathBuf::from(std::env::var("MCR_BOOTSTRAP_ROOT").unwrap())
+            .join("selected-avatar-state.json"),
+        serde_json::to_vec(&row).unwrap(),
+    )
+    .unwrap();
+    pool.close().await;
+}
+#[tokio::test]
+#[ignore = "requires avatar_smoke.py postmaster restart"]
+async fn native_selected_avatar_restart_persistence() {
+    let pool = support::pool().await;
+    let release = support::selected_release();
+    let service = AvatarPersistence::from_synthetic_test(pool.clone(), release, true).unwrap();
+    let own = key(
+        SELECTED_EVENT.parse().unwrap(),
+        SELECTED_USER.parse().unwrap(),
+    );
+    let read = support::Authority::new(own, AvatarOperation::Read, service.release_digest());
+    let snapshot = service.read(own, &read).await.unwrap();
+    let expected: Value = serde_json::from_slice(
+        &std::fs::read(
+            std::path::PathBuf::from(std::env::var("MCR_BOOTSTRAP_ROOT").unwrap())
+                .join("selected-avatar-state.json"),
+        )
+        .unwrap(),
+    )
+    .unwrap();
+    assert_eq!(avatar_state(&snapshot.avatar), expected);
+    assert_eq!(snapshot.participant.preferences.theme, Theme::Danger);
+    assert_eq!(
+        service
+            .set_avatar(
+                own,
+                &command(
+                    snapshot.avatar.revision.get(),
+                    selected_manifest()["presets"][0]["config"].clone()
+                ),
+                &support::Authority::new(own, AvatarOperation::SetAvatar, service.release_digest())
+            )
+            .await
+            .unwrap_err(),
+        AvatarError::ReadOnly
+    );
+    pool.close().await;
+}
