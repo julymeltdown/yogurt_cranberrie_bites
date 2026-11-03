@@ -5847,7 +5847,8 @@
         "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
       }
     },
-    "query_schema": "common.EmptyRequest"
+    "query_schema": "common.EmptyRequest",
+    "authority_scope": "PATH_EVENT_ONLY"
   },
   {
     "operationId": "listConcertAdminContent",

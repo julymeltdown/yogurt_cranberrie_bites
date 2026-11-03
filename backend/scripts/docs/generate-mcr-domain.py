@@ -130,6 +130,11 @@ def query_parameters(document, schema):
 
 def domain_operation(row, document, references, media_types):
     method = row["method"]
+    if row["rule"] == "moderate_user":
+        if (row.get("authority_scope") != "PATH_EVENT_ONLY"
+                or row["path"] != "/api/concert/events/{eventId}/admin/users/{userId}/moderation"
+                or row["actor"] != "MODERATOR"):
+            raise ValueError("Concert user moderation requires exact event-local authority scope")
     if row["request_location"] != ("query" if method in {"get", "delete"} else "body"):
         raise ValueError(f'Invalid request location: {row["operationId"]}')
     query = domain_ref(row["query_schema"])
@@ -144,6 +149,8 @@ def domain_operation(row, document, references, media_types):
               "x-mcr-runtime-status": row["implementation"], "x-mcr-retry": row["retry"],
               "x-mcr-cache": "NO_STORE", "x-mcr-actor": row["actor"],
               "x-mcr-rule": row["rule"], "x-mcr-write-policy": row["write_policy"]}
+    if row["rule"] == "moderate_user":
+        target["x-mcr-authority-scope"] = row["authority_scope"]
     target["parameters"].extend(query_parameters(document, query))
     if row["response"] == "BINARY":
         success = response({}, "Sanitized authorized media bytes")

@@ -1,0 +1,45 @@
+OpenAPI generation check passed: 92 operations; 2 artifacts
+MCR core target contract checked
+MCR domain HTTP REVIEW_CANDIDATE checked
+{
+  "atlas_image_coverage": "NOT_RUN",
+  "atlas_image_state": "NOT_PROVIDED",
+  "contract_version": "1.0.0",
+  "documents_validated": 6,
+  "limits": "Metadata and geometry only. No PNG/Tiled file bytes, pixel coverage, clipping, contrast, license truth, physical venue truth, AR03 or mobile acceptance validated. Integrator review/freeze pending.",
+  "resource_bytes_and_hashes": "NOT_RUN",
+  "status": "CONTRACT_READY",
+  "themes": [
+    "DANGER",
+    "PARADE",
+    "REVENGE"
+  ]
+}
+{"state": "CONTRACT_READY", "fixtures": 33, "producer_runtime": "NOT_RUN", "contract_freeze": "CORE_V0_1"}
+{"state": "CONTRACT_READY", "fixtures": 24, "websocket_runtime": "NOT_RUN", "capacity": "NOT_RUN"}
+{"state": "REVIEW_CANDIDATE", "schemas": 162, "operations": 106, "fixtures": 36, "runtime": "NOT_IMPLEMENTED", "freeze": "NOT_ACCEPTED"}
+.....................
+----------------------------------------------------------------------
+Ran 21 tests in 0.693s
+
+OK
+.......................
+----------------------------------------------------------------------
+Ran 23 tests in 0.277s
+
+OK
+...............................
+----------------------------------------------------------------------
+Ran 31 tests in 0.192s
+
+OK
+...............................................
+----------------------------------------------------------------------
+Ran 47 tests in 1.132s
+
+OK
+................
+----------------------------------------------------------------------
+Ran 16 tests in 1.028s
+
+OK

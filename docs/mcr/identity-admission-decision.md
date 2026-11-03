@@ -17,8 +17,9 @@ Email-only admission has no X/provider prerequisite.
 An event-path moderation action applies only to that event: it must fence that
 event's membership, sockets, tickets and private grants. It cannot revoke unrelated
 Auth families or convert a local operator into a global operator. Unsuspension
-does not revive old grants or tickets. The ambiguous C04 suspension wording needs
-an explicit reviewed scope revision before its public producer is enabled.
+does not revive old grants or tickets. The ambiguous C04 suspension wording is
+clarified in the [event moderation candidate correction](evidence/event-moderation-scope.md).
+Its public producer still requires actual owner/epoch/invalidation qualification.
 Global account restriction, if introduced, remains a separately authorized Auth
 operation; no silent `ROLE_ADMIN` mapping to event/global operator is permitted.
 

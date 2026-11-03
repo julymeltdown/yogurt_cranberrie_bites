@@ -14169,6 +14169,7 @@
         "x-mcr-actor": "MODERATOR",
         "x-mcr-rule": "moderate_user",
         "x-mcr-write-policy": "OPERATIONS",
+        "x-mcr-authority-scope": "PATH_EVENT_ONLY",
         "requestBody": {
           "required": true,
           "content": {
@@ -56539,7 +56540,8 @@
           "action",
           "expires_at",
           "reason"
-        ]
+        ],
+        "description": "Event-local Concert restriction in the exact path event. Requires a fresh event role and event restriction revision. Does not modify Auth accounts, refresh families or other events."
       },
       "Domain_admin_Overview": {
         "type": "object",
@@ -57040,7 +57042,8 @@
               "SUSPENDED",
               "DELETION_PENDING",
               "DELETED"
-            ]
+            ],
+            "description": "Review projection for the path event: SUSPENDED is a Concert event restriction. Deletion states reflect owning account lifecycle; this endpoint cannot change global Auth lifecycle."
           },
           "revision": {
             "$ref": "#/components/schemas/Domain_common_Revision"
@@ -63858,7 +63861,7 @@
     "common_guards": [
       "Exact allowed Origin AND X-MCR-Intent: browser before mutation side effects",
       "Active canonical Auth user/session; actor is never a request-body authority",
-      "Fresh event role and bidirectional block/suspension checks; unavailable policy fails closed",
+      "Fresh event-scoped roles, bidirectional relationship blocks and event restrictions; unavailable owning policy fails closed",
       "Event/target membership bound to canonical path IDs; errors do not reveal private target existence",
       "Expected revision checked in same transaction as command; no preflight-only authorization",
       "JSON UTF-8, unique keys, safe finite integers, closed schemas; bounded bodies; no sensitive logging",
@@ -64772,15 +64775,16 @@
       },
       "moderate_user": {
         "preconditions": [
-          "Server role MODERATOR or OPERATOR",
-          "Target/revision current",
+          "Fresh server role MODERATOR or OPERATOR for the exact path event; no Auth/global role inference",
+          "Target and expected event restriction revision current in the same transaction",
           "Suspension expiry if present is future",
-          "Operator peers cannot be modified by lower role"
+          "Operator peers cannot be modified by lower event role"
         ],
         "result": [
-          "Apply suspension/release through owning identity/policy service",
-          "On suspension revoke sessions, sockets, tickets and private grants",
-          "UNSUSPEND does not restore consent"
+          "Apply event-local suspension/release in Concert for the canonical path event only",
+          "On suspension advance the event admission/revocation epoch and invalidate that event membership, sockets, tickets and private grants",
+          "Do not revoke Auth refresh families or change another event; a global account action requires a separate Auth-owned operation",
+          "UNSUSPEND requires fresh authorization and never revives prior tickets, sessions, grants or consent"
         ]
       },
       "moderate_content": {
@@ -65025,6 +65029,19 @@
       "discovery": "Ticket section exact match; has_space means member_count < capacity, in_stock means available > 0; neither overrides current actor eligibility. Giveaway public discovery excludes drafts. Intro q is a bounded case-insensitive literal substring of authorized public introduction text/display name, never SQL wildcard/regex/private handle or age search. Feed filters select actual ready media/typed linked resource categories; linked target eligibility is rechecked.",
       "audit_operation_filter": "operation_id must name a registered domain command; no arbitrary unbounded log query.",
       "transport_errors": "Malformed targets return 400 INVALID_INPUT; they cause no downstream mutation. Idempotency hashing uses decoded, validated query fields with defaults resolved deterministically, not input parameter ordering."
+    },
+    "event_user_moderation": {
+      "owner": "CONCERT",
+      "scope": "PATH_EVENT_ONLY",
+      "actor_roles": [
+        "MODERATOR",
+        "OPERATOR"
+      ],
+      "auth_refresh_families": "UNCHANGED",
+      "other_events": "UNCHANGED",
+      "suspend": "ADVANCE_EVENT_ADMISSION_EPOCH_AND_REVOKE_EVENT_DERIVED_AUTHORITY",
+      "unsuspend": "REQUIRE_FRESH_AUTHORIZATION_NEVER_RESTORE_PRIOR_AUTHORITY",
+      "global_account_action": "SEPARATE_AUTH_OWNED_OPERATION"
     }
   },
   "x-mcr-realtime-policy": {

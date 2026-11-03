@@ -45,6 +45,15 @@ class DomainBundleTests(unittest.TestCase):
             self.assertEqual(self.document["components"]["schemas"][name], schema)
         self.assertEqual(json.loads((ROOT / "contracts/generated/mcr-core.openapi.json").read_text()), self.core)
 
+    def test_event_user_moderation_cannot_silently_become_global_authority(self):
+        row = next(row for row in self.rows if row["operationId"] == "moderateConcertUser")
+        self.assertEqual(self.operation(row)["x-mcr-authority-scope"], "PATH_EVENT_ONLY")
+        for changed in ({"authority_scope": "GLOBAL_AUTH"},
+                        {"path": "/api/admin/users/{userId}/moderation"},
+                        {"actor": "AUTH_ADMIN"}):
+            with self.subTest(changed=changed), self.assertRaisesRegex(ValueError, "event-local authority"):
+                bundle.domain_operation({**row, **changed}, self.document, {}, [])
+
     def test_all_schemas_valid_and_all_references_local_and_resolved(self):
         bundle.validate_document(self.document)
         for schema in self.document["components"]["schemas"].values():

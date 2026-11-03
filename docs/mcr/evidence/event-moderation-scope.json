@@ -1,0 +1,16 @@
+{
+  "state": "REVIEW_CANDIDATE",
+  "runtime": "NOT_IMPLEMENTED",
+  "scope": "PATH_EVENT_ONLY",
+  "command": "bash scripts/mcr/check.sh contracts",
+  "exit_code": 0,
+  "regression_tests": 138,
+  "sha256": {
+    "contracts/domain/v1/policy.json": "0e04fe478d757d9d6ab434d3aa25aade523d35d2d2a2a0574f17a04f7f395339",
+    "contracts/domain/v1/admin.schema.json": "b8a4f8b91440d561bbcf23dc68bc196919a8893cf744ca09ac05ecaabff72cb8",
+    "contracts/domain/v1/operations.json": "42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223",
+    "contracts/generated/mcr-domain.openapi.json": "40b0791c1172c983fac7f7f51dedc43b482ba74cb10151baed5b7efac0f98625",
+    "backend/scripts/docs/generate-mcr-domain.py": "8ce608896b463accf6dde7a3c7fa3b45bc0d400749f4ffd5ef189a75109eb39b",
+    "scripts/mcr/tests/test_domain_bundle.py": "5785635b0cf58ed49a0df54378b35fd7f76251673a217157e561579c20f1d844"
+  }
+}

@@ -373,7 +373,8 @@
         "action",
         "expires_at",
         "reason"
-      ]
+      ],
+      "description": "Event-local Concert restriction in the exact path event. Requires a fresh event role and event restriction revision. Does not modify Auth accounts, refresh families or other events."
     },
     "UserReview": {
       "type": "object",
@@ -391,7 +392,8 @@
             "SUSPENDED",
             "DELETION_PENDING",
             "DELETED"
-          ]
+          ],
+          "description": "Review projection for the path event: SUSPENDED is a Concert event restriction. Deletion states reflect owning account lifecycle; this endpoint cannot change global Auth lifecycle."
         },
         "revision": {
           "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"

@@ -195,3 +195,8 @@ only for the assembly call and restores the search path afterward.
 5. Obtain independent BE/FE review and fix their findings before marking C04
    CONTRACT_READY/ACCEPTED. Runtime implementations and integration gates remain
    separate obligations even after that contract freeze.
+
+The [event moderation scope correction](evidence/event-moderation-scope.md) makes
+this event route explicitly Concert-local. It cannot revoke global Auth families
+or modify other events. Unsuspension never restores prior authority. Static
+assembly/regression evidence does not enable the producer or freeze C04.
