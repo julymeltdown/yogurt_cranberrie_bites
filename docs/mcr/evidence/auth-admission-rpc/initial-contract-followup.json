@@ -1,0 +1,38 @@
+{
+  "candidate": "d1973796ca6a2310c8d46041ef0de81cc6710dc0",
+  "commands": [
+    {
+      "name": "helpers-corrected",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "backend/scripts/mcr",
+        "-p",
+        "test_*smoke.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "contracts",
+      "argv": [
+        "bash",
+        "scripts/mcr/check.sh",
+        "contracts"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "plan",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

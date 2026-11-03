@@ -1,0 +1,188 @@
+{
+  "candidate": "9dd8bc61d3e15118ed870ebb18991db20957d19e",
+  "commands": [
+    {
+      "name": "build",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--locked",
+        "--offline",
+        "-p",
+        "auth-service",
+        "--bin",
+        "auth-service",
+        "--message-format=json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "test-build",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "auth-service",
+        "--test",
+        "concert_admission_rpc",
+        "--test",
+        "concert_identity_owner",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "authority",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "platform",
+        "--lib",
+        "actor_delegation::"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "guard",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "platform",
+        "--test",
+        "live_grpc_guard"
+      ],
+      "exit_code": 101
+    },
+    {
+      "name": "guard-corrected",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "platform",
+        "--test",
+        "grpc_method_policy_network"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "auth-lib",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "auth-service",
+        "--lib",
+        "--",
+        "--skip",
+        "config::tests::external_migration_mode_rejects_schema_damage_without_owner_privileges"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "application",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "auth-application",
+        "--lib"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "values",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "auth-application",
+        "--test",
+        "concert_identity"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "gateway",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "api-gateway",
+        "--test",
+        "verification_transport"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "deterministic",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_admission_rpc-a103461207cc823e",
+        "deterministic_",
+        "--test-threads=1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "native",
+      "argv": [
+        "python3",
+        "backend/scripts/mcr/auth_admission_rpc_smoke.py",
+        "--binary",
+        "/Users/lhs/Desktop/mcr-build/backend/debug/auth-service",
+        "--rpc-test",
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_admission_rpc-a103461207cc823e",
+        "--owner-test",
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_identity_owner-74bbc6b164f59f91",
+        "--pg-bin",
+        "/opt/homebrew/opt/postgresql@16/bin",
+        "--report",
+        "/tmp/mcr-rpc-parent/native.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "helpers",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "backend/scripts/mcr",
+        "-p",
+        "test_*smoke.py"
+      ],
+      "exit_code": 1
+    }
+  ]
+}

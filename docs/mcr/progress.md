@@ -29,6 +29,7 @@ it is not feature integration or release acceptance.
 | FE09 | MOCK_READY | [Integrated review](evidence/session-sign-in-integration.md), candidate `a9e130e`: 354 tests including 78 FE09, strict build/lint/origin/boundary checks and four-width native Chrome/cross-tab/production-isolation checks pass. Review fixes preserve valid session on 403 while 401 clears. Production automatic restore/refresh stays disabled; real BE03 Secure-cookie/revocation/rotation, event/world and IN01 gates remain open. Delivered increment goal completed; task not accepted. |
 | FE10 | MOCK_READY | [Integrated review](evidence/signup-verification-integration.md), `f825b31`/`f498194`/`7bfea96`: 737 combined frontend tests, build/lint/C03/C08/boundary/plan and four-width enrollment/sign-in/recovery browser suites pass. Three concrete review fixes delivered; bounded goal COMPLETE. Anonymous verification is event-independent; production signup/eligibility/consent/live mail/device/vertical gates remain unqualified. |
 | FE11 | MOCK_READY | [Integrated recovery review](evidence/password-recovery-integration.md), `d290391`/`4360d58`/`4550029`: 669 combined tests, strict build/lint/C03/origin/boundary/plan and four-width native recovery plus retained sign-in suites pass. Source fragment intake, canonical confirmation fencing and safe callback presentation delivered; bounded goal COMPLETE. Real mail/BASE_URL/Secure cookies/OAuth/device/IN01 remain NOT_RUN. |
+| FE14 | IN_PROGRESS | New tool-confirmed ACTIVE bounded goal on isolated `fe-runtime`, base `244d35a`: Phaser lifecycle, strict existing map/theme/resource consumption and synthetic native-browser fixture assigned. No production shell, avatar, real map/venue or whole-world acceptance. |
 | FE16 | MOCK_READY | [Reviewed transport integration](evidence/world-transport-integration.md), `e3a4d84`/`5863f91`: 568 combined frontend tests (158 transport), build/lint/type-drift/origin/plan and installed-Chrome five canonical traces pass. Gap recovery and pre-send room-switch failure findings corrected. Bounded goal COMPLETE; production lifecycle, replication and real-server/IN01 remain NOT_RUN. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **11/112**;
@@ -81,3 +82,13 @@ BE03 browser/provider gates remain open.
 The integrator retains shared Auth/Profile authority and C04/C06 contracts;
 BE06/bootstrap follows qualified authority. No runtime, OAuth or release
 acceptance follows from completed component/contract checks.
+
+
+FE14 runtime/resource work and actual-handler QA now have new tool-confirmed
+ACTIVE goals on fresh frontend and QA worktrees. Auth RPC R1 was a test setup
+race; its test-only fix is integrated for final parent qualification. The initial
+combined RPC candidate passes five real RPC and 22 retained PostgreSQL cases;
+final corrected-source evidence and independent review disposition remain open.
+The parent also corrected the BE15 harness's stale candidate pins after `5c02a31`;
+all 98 helper tests, 138 contract regressions and planning checks pass at `d197379`.
+No production moderation, identity admission or release gate is thereby enabled.

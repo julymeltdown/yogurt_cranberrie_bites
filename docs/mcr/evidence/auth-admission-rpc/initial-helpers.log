@@ -1,0 +1,24 @@
+............................F....................................................................
+======================================================================
+FAIL: test_pinned_contract_registry_matches_exact_command_set (test_command_receipts_smoke.HarnessTests.test_pinned_contract_registry_matches_exact_command_set)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/lhs/Desktop/mcr/backend/scripts/mcr/test_command_receipts_smoke.py", line 50, in test_pinned_contract_registry_matches_exact_command_set
+    self.assertEqual(tuple(smoke.digest(root/"contracts/domain/v1"/name) for name in smoke.CONTRACTS),smoke.PINNED)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('303[60 chars]5', '42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41[88 chars]339') != ('303[60 chars]5', '0acd5e1c68b5136916d1560dfbb2eef7e59410c81[88 chars]019')
+
+First differing element 1:
+'42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223'
+'0acd5e1c68b5136916d1560dfbb2eef7e59410c81987bf0ea24b0d605c11083e'
+
+  ('303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35',
+-  '42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223',
+-  '0e04fe478d757d9d6ab434d3aa25aade523d35d2d2a2a0574f17a04f7f395339')
++  '0acd5e1c68b5136916d1560dfbb2eef7e59410c81987bf0ea24b0d605c11083e',
++  '728b397bd175c55b35eddef8b925f585676d7589a0b1250fbde5ef3c7c9d4019')
+
+----------------------------------------------------------------------
+Ran 97 tests in 0.167s
+
+FAILED (failures=1)

@@ -1,0 +1,87 @@
+{
+  "auth-retained-lib-filtered": {
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--target-dir",
+      "/Users/lhs/Desktop/mcr-build/backend",
+      "--locked",
+      "--offline",
+      "-j2",
+      "-p",
+      "auth-service",
+      "--lib",
+      "--",
+      "--skip",
+      "config::tests::external_migration_mode_rejects_schema_damage_without_owner_privileges"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/auth-admission-rpc-auth-retained-lib-filtered.log",
+    "sha256": "b2e959c88304d8fc1979aa15dd8a99446d0d897a72cd7bb83c68a35915c239f5"
+  },
+  "auth-application-lib": {
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--target-dir",
+      "/Users/lhs/Desktop/mcr-build/backend",
+      "--locked",
+      "--offline",
+      "-j2",
+      "-p",
+      "auth-application",
+      "--lib"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/auth-admission-rpc-auth-application-lib.log",
+    "sha256": "05c15758f8c9b8d35d7477907f034625f5bb65f22bbf4f3fbde7c0528fb87911"
+  },
+  "auth-application-values": {
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--target-dir",
+      "/Users/lhs/Desktop/mcr-build/backend",
+      "--locked",
+      "--offline",
+      "-j2",
+      "-p",
+      "auth-application",
+      "--test",
+      "concert_identity"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/auth-admission-rpc-auth-application-values.log",
+    "sha256": "3847102ce4373b1cb1a87e51ad22f683315aa93fc1b8119c1b14f10832ea9e6f"
+  },
+  "gateway-verification-transport": {
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--target-dir",
+      "/Users/lhs/Desktop/mcr-build/backend",
+      "--locked",
+      "--offline",
+      "-j2",
+      "-p",
+      "api-gateway",
+      "--test",
+      "verification_transport"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/auth-admission-rpc-gateway-verification-transport.log",
+    "sha256": "4fb7246973be4c0d37ecbe4d3d1cfb912a503e115c05577426b955ff9021a087"
+  }
+}

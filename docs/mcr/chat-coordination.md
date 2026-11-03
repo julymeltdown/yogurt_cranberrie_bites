@@ -13,8 +13,8 @@ can still point to the integration checkout.
 |---|---|---|---|
 | BE04 | `mcr(be) BE04 canonical identity adapter` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-identity` / `codex/mcr-be-BE04` |
 | BE04 Auth RPC | `mcr(be) BE04 authenticated Auth admission RPC` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-auth-admission-rpc` / `codex/mcr-be-auth-admission-rpc` |
-| FE10 | `mcr(fe) FE10 signup and email verification` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-signup` / `codex/mcr-fe-FE10` |
-| QA | `mcr(qa) admission and event authority review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-admission-contract` / `codex/mcr-qa-admission-contract` |
+| FE14 | `mcr(fe) FE14 Phaser runtime and map loading` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-runtime` / `codex/mcr-fe-FE14` |
+| QA | `mcr(qa) admission and event authority review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-auth-rpc` / `codex/mcr-qa-auth-rpc` |
 
 The original four increments started at `376cf21`; FE11 starts at `b39d5e5`
 after the same chat completed FE08. All use `gpt-6.1-sol` with `high` reasoning
@@ -167,3 +167,26 @@ event correction and Auth prerequisites. Sixteen focused QA regressions and
 source-pin checks passed. Its actual bounded goal is COMPLETE and checkout
 stopped. The real RPC handler was outside that review; parent review remains
 required. No new chats were created to satisfy a numeric quota.
+
+
+## Runtime and final RPC review continuation
+
+FE14 now has a new tool-confirmed ACTIVE unbudgeted goal on fresh `fe-runtime`,
+base `244d35a`. The completed FE10 checkout remains stopped. Exact ownership:
+`frontend/src/world/runtime.ts`, new `world/map/**` and `world/scenes/**`, new
+`world/__tests__/runtime.test.ts`, `runtime-browser-smoke.mjs` and feature-only
+`world/__tests__/fixtures/runtime-preview.{html,tsx}`/data/helpers, plus
+`docs/mcr/frontend/phaser-runtime.md`. It consumes the existing pinned C06
+map/theme subset with real Phaser and explicitly synthetic resource fixtures.
+No avatar artwork, contract mutation, production map, app/session/transport
+wiring, manifests or backend edits are delegated. Production art, venue, FE12,
+whole C06 and world acceptance remain unqualified.
+
+The same QA chat has a new tool-confirmed ACTIVE goal on fresh `qa-auth-rpc`,
+base `9dd8bc6`, only `docs/mcr/qa/auth-admission-rpc-review.md` writable. It reviews
+the actual handler, owning adapter and generated-server/native evidence; it runs
+no Rust build or database. Its P2 timing finding R1 was returned to the backend
+worker, fixed as `5c59f1f` and integrated for final parent qualification. The
+handler's runtime behavior is unchanged by that test-only correction. Parent
+owns the retained Rust target after the worker's clean fix handoff. The original
+QA prerequisite checkout is stopped; no redundant chat was created.

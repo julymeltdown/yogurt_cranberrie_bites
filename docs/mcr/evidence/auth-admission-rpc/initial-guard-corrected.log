@@ -1,0 +1,10 @@
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/platform)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.71s
+     Running tests/grpc_method_policy_network.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/grpc_method_policy_network-b6c24f7b0aeede35)
+
+running 2 tests
+test only_listed_callers_reach_a_live_guarded_service ... ok
+test only_a_matching_actor_delegation_reaches_an_actor_bound_method ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

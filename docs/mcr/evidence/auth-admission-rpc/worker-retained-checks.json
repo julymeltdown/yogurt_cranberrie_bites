@@ -1,0 +1,64 @@
+{
+  "platform-authority": {
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--target-dir",
+      "/Users/lhs/Desktop/mcr-build/backend",
+      "--locked",
+      "--offline",
+      "-j2",
+      "-p",
+      "platform",
+      "--lib",
+      "actor_delegation"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/auth-admission-rpc-platform-authority.log",
+    "sha256": "7626be2fad96b8585df314d68386cf77f9649d8a72c400845188002d4874c950"
+  },
+  "platform-native-guard": {
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--target-dir",
+      "/Users/lhs/Desktop/mcr-build/backend",
+      "--locked",
+      "--offline",
+      "-j2",
+      "-p",
+      "platform",
+      "--test",
+      "grpc_method_policy_network"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/auth-admission-rpc-platform-native-guard.log",
+    "sha256": "64b845ec20021a1151650ef2c5243fc94ec1f49a3b6a3c71deb20411b4cfb83f"
+  },
+  "auth-retained-lib": {
+    "argv": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--target-dir",
+      "/Users/lhs/Desktop/mcr-build/backend",
+      "--locked",
+      "--offline",
+      "-j2",
+      "-p",
+      "auth-service",
+      "--lib"
+    ],
+    "exit_code": 101,
+    "log": "/Users/lhs/Desktop/mcr-build/auth-admission-rpc-auth-retained-lib.log",
+    "sha256": "8ded935b4e84a2997b9a0d8bb22da37ac43beea9af96cc26e78affbe1765525f"
+  }
+}

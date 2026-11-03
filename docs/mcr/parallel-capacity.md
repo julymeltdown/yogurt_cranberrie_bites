@@ -99,3 +99,16 @@ The FE16 chat remains idle and the original BE04 chat blocked; no extra chat is
 created merely to reach a count. The Auth RPC's shared prerequisite is prepared
 and tested on the parent branch, while the worker implements/qualifies the real
 handler. The parent alone will publish the combined reviewed result.
+
+
+## Latest allocation
+
+FE10 completed bounded parent review with 737 frontend tests and all three native
+auth browser suites. Its chat now owns FE14 on a fresh checkout at `244d35a`:
+actual Phaser lifecycle and strict existing map/theme resource consumption can
+progress with explicitly synthetic test resources, without waiting for avatar
+cutouts or inventing a production map. Whole FE14/AR02/C06 remain unaccepted.
+Backend RPC integration and a fresh independent actual-handler review proceed
+in their separate lanes; the P2 expiry-fixture finding is being resolved before
+final qualification. Reusing these chats serves concrete work; no fixed chat
+count is imposed. Exact current paths and actual goals are in the register.

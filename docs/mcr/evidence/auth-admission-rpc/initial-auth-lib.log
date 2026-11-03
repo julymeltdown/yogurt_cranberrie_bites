@@ -1,0 +1,79 @@
+   Compiling auth-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/auth-service)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.34s
+     Running unittests src/lib.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/auth_service-f534107f9c015b02)
+
+running 48 tests
+test adapters::out::persistence::onboarding_transactions::tests::provider_subject_is_bounded_before_whitespace_normalization ... ok
+test adapters::out::errors::tests::explicit_auth_policy_precedes_provider_cause_and_safe_provider_codes_survive ... ok
+test adapters::out::security::email_verification::tests::entropy_failure_and_repeated_rejection_are_bounded_errors ... ok
+test adapters::out::security::email_verification::tests::rejection_sampling_preserves_bounds_leading_zeroes_and_redaction ... ok
+test adapters::out::security::password_reset::tests::reset_material_preserves_entropy_encoding_fingerprint_and_redaction ... ok
+test adapters::out::errors::tests::library_failures_are_opaque_and_transport_failures_are_unavailable ... ok
+test adapters::r#in::grpc::concert_admission::tests::canonical_identity_shapes_and_safe_errors ... ok
+test adapters::r#in::grpc::concert_admission::tests::all_owner_errors_have_fixed_statuses ... ok
+test adapters::r#in::grpc::method_policy::tests::actor_fields_name_the_actor_in_generated_requests ... ok
+test adapters::out::oauth::provider_client::tests::provider_jwks_rejects_noncanonical_rsa_base64url_uints ... ok
+test adapters::out::oauth::provider_client::tests::provider_jwks_rejects_even_rsa_modulus ... ok
+test adapters::out::oauth::provider_client::tests::provider_jwks_binds_ec_algorithms_to_curve_and_coordinate_length ... ok
+test adapters::r#in::grpc::verification::tests::oversized_email_is_rejected_before_normalized_allocation ... ok
+test adapters::r#in::grpc::verification::tests::normalizes_like_the_http_and_application_paths ... ok
+test adapters::r#in::grpc::verification::tests::validation_failures_do_not_echo_the_input ... ok
+test adapters::r#in::grpc::method_policy::tests::concert_admission_is_gateway_only_and_actor_bound ... ok
+test adapters::out::oauth::provider_client::tests::provider_jwks_accepts_sixteen_keys_and_rejects_the_seventeenth ... ok
+test adapters::out::oauth::provider_client::tests::id_token_key_selection_rejects_ambiguous_signing_keys ... ok
+test adapters::out::oauth::provider_client::tests::provider_jwks_enforces_rsa_strength_and_valid_public_exponents ... ok
+test adapters::r#in::grpc::server::presentation_tests::auth_wire_matrix_keeps_codes_messages_and_unknown_cause_redaction ... ok
+test adapters::out::oauth::provider_client::tests::id_token_key_selection_uses_signature_metadata_and_token_algorithm ... ok
+test adapters::r#in::http::oauth_routes::tests::reject_query_access_token_allows_unrelated_query_parameters ... ok
+test adapters::r#in::messaging::mail_outbox_worker::tests::mail_kind_trace_label_is_fixed_and_bounded ... ok
+test adapters::r#in::http::oauth_routes::tests::reject_query_access_token_is_case_insensitive ... ok
+test adapters::r#in::http::oauth_routes::tests::reject_query_access_token_blocks_url_token_transport ... ok
+test adapters::r#in::messaging::mail_outbox_worker::tests::retry_delays_are_bounded_and_increase ... ok
+test config::tests::external_pool_acceptance::rejection_oracle_tests::restoration_outcome_never_hides_a_single_failure ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=transport ConnectionRefused
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="renamed required table" category=transport ConnectionRefused
+test adapters::r#in::jwks::tests::projection_preserves_exact_public_fields_and_configured_key_order ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="expected rejection" category=required schema probe rejection
+test adapters::out::oauth::provider_client::tests::provider_jwks_rejects_encryption_and_non_verification_keys ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="test config::tests::external_pool_acceptance::rejection_oracle_tests::simultaneous_verification_and_restoration_failures_preserve_both_causes ... ok
+wrong rejection" category=required schema probe rejection
+test adapters::r#in::http::oauth_routes::tests::resolve_access_token_reads_bearer_authorization_header ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="misleading context" category=required schema probe rejection
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="test adapters::r#in::http::oauth_routes::tests::resolve_access_token_accepts_case_insensitive_scheme_and_trims_token ... ok
+test adapters::r#in::http::oauth_routes::tests::resolve_access_token_rejects_empty_bearer_header ... ok
+unexpected success" category=unexpected success
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="unexpected success" category=unexpected success
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="unexpected success" category=unexpected success
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="unexpected success" category=unexpected successtest adapters::out::oauth::provider_client::tests::configured_jwks_accepts_the_limit_and_rejects_the_first_oversized_byte ... ok
+
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase=test config::tests::external_pool_acceptance::rejection_oracle_tests::successful_operations_never_satisfy_negative_acceptance ... ok
+"test adapters::r#in::grpc::method_policy::tests::table_covers_exactly_the_proto_service ... ok
+expected rejection" category=unsuccessful migration receipt
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="wrong rejection" category=unsuccessful migration receipt
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="misleading context" category=unsuccessful migration receipt
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=pool timeout
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=other SQLx error
+test config::tests::external_pool_acceptance::rejection_oracle_tests::schema_markers_must_be_root_causes_and_match_the_expected_case ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=transport ConnectionRefused
+test config::tests::reset_targets_are_explicit_http_urls_without_redirect_credentials_or_token_parameters ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=pool timeout
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=other SQLx error
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=transport ConnectionRefused
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=pool timeout
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=other SQLx error
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=transport ConnectionRefused
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=pool timeout
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=other SQLx error
+test adapters::r#in::messaging::mail_outbox_worker::tests::rejects_insecure_or_credential_bearing_production_destinations ... ok
+test config::tests::external_pool_acceptance::rejection_oracle_tests::transport_and_pool_failures_never_satisfy_negative_acceptance ... ok
+test adapters::r#in::http::presentation_tests::development_http_failures_preserve_known_shapes_and_sanitize_dependencies ... ok
+test config::tests::parity_config_allows_local_auth_defaults_and_ephemeral_key ... ok
+test config::tests::production_config_accepts_explicit_remote_auth_settings ... ok
+test config::tests::production_config_rejects_unsafe_auth_defaults ... ok
+test adapters::out::security::admitted_argon2::tests::clones_share_admission_and_metrics ... ok
+test adapters::out::security::admitted_argon2::tests::a_full_login_class_returns_busy_and_recovers_after_release ... ok
+test adapters::out::security::admitted_argon2::tests::signup_and_reset_saturation_preserve_login_capacity ... ok
+test config::tests::invalid_expired_wrong_type_and_unknown_key_credentials_are_rejected_safely ... ok
+
+test result: ok. 48 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 4.21s
+

@@ -1,0 +1,26 @@
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/platform)
+   Compiling post-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/post-service)
+   Compiling friend-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/friend-service)
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/api-gateway)
+   Compiling notification-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/notification-service)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/profile-service)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 18.09s
+     Running tests/verification_transport.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/verification_transport-d812b586e6059cf7)
+
+running 13 tests
+test empty_and_oversized_requests_are_rejected_before_rpc ... ok
+test oauth_authorization_neutral_dto_preserves_valid_uri_auth_and_deadline ... ok
+test malformed_oauth_authorization_uri_is_refused_at_rpc_adapter ... ok
+test signing_keys_arrive_over_the_authenticated_channel_with_a_deadline ... ok
+test session_checks_ask_the_issuer_over_the_authenticated_channel ... ok
+test wrong_or_missing_service_token_never_reaches_the_handler ... ok
+test deletion_admin_queries_use_authenticated_grpc_and_validate_page_cursor ... ok
+test issuer_transfers_preserve_opaque_ids_roles_and_raw_keys_without_exposing_diagnostics ... ok
+test carries_service_auth_and_deadline_and_preserves_the_accepted_contract ... ok
+test an_oversized_signing_key_reply_is_refused_by_the_transport ... ok
+test non_accepted_success_payloads_are_protocol_failures ... ok
+test downstream_failures_are_sanitized_and_not_retried ... ok
+test local_deadline_bounds_a_slow_call_without_a_retry ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
