@@ -2,11 +2,63 @@
 
 ## Decision
 
-**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has been read by the visual implementation owners. Default shell chrome is now integrated at `a1dcf56`, alongside the bounded screen changes below. Default Feed/Map/Wall producers, approved imagery and visual avatar choices remain unfinished. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; dated follow-through records what changed.
+**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has been read by the visual implementation owners. Default shell chrome, qualified Map/theme producers and visual outfit choices are integrated. Default Social wiring is underway; Wall still lacks qualified write inputs. Approved character/venue art, scene prominence and compact screen hierarchy remain material gaps. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; dated follow-through records what changed.
 
 The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged copy is [user-reference.jpg](ui-reference-audit-2026-11-04/user-reference.jpg), SHA256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`. This is the current screen-level design handoff. The earlier [approved mobile world sheet](../../source/mcr_v2_en/reference/approved_mobile_world.png) contains five world compositions, not these ten screens. It remains an immutable historical source.
 
 ## Evidence and limits
+
+### Current visual comparison and delivery follow-through — `8c0e7d3`
+
+The reference again matches the user's original attachment byte for byte at the
+SHA-256 above. Main inspected source-bound 390px default World and Map captures
+from the qualified producer checkpoint, plus the delivered Customize option
+capture. This is a fresh comparison of existing native evidence, not a newly
+run live-service or physical-device test.
+
+| Surface | Delivered evidence | Remaining reference gap and owner |
+| --- | --- | --- |
+| World shell | Compact header, three era controls and six icon/label destinations reach the default app. The new producer uses the existing Phaser/camera/socket. | Actual capture is dominated by movement controls, help and status text; terrain is synthetic and approved avatars are absent. A separate FE chat owns compact movement controls; FE07 retains root spacing/status composition. |
+| Map and place detail | Default routes now mount the Places adapter with the same qualified map/camera. Map → Place → Back restores the Map origin; direct Place falls back to Map. | The schematic is not the reference's illustrated venue. Nested outer/inner Map headings need a clearer hierarchy; root presentation follow-up stays with FE07. |
+| Customize | `bcb0428` integrates three bounded full-outfit option previews using the existing compositor, without implicit saves. | The inspected fixture is explicitly geometric TEST ONLY. Bulky categories and repeated preset grids push actions down the page. The completed avatar owner has a new compact-layout goal; approved character art remains separate. |
+| Feed and social routes | `a557188` delivers the canonical Social composition and Inbox recovery package. | FE07 is installing it in the actual default shell with explicit producer readiness. Package completion alone does not certify a populated default Feed. |
+| Wall | Default route now mounts the existing adapter. | No qualified mural anchor/write-policy input exists; the native default route correctly displays unavailable and emits zero writes. Editor fixture styling is not a live collaborative Wall. |
+| Landing, sign-in, Meet, Gifts and My Profile | Their previously delivered visual checkpoints are retained below. | Approved illustrations/avatars and live flows retain their recorded limits. This follow-through does not claim a new visual or runtime pass for those surfaces. |
+
+The reference is a screen hierarchy and visual direction, not permission to add
+decorative levels, currency, unsupported controls or unverified venue guidance.
+The inspected current captures use symmetric frames and ordinary focus styling;
+no decorative left accent bars were found in these captures.
+
+The two independent presentation follow-ups have isolated checkouts and disjoint
+ownership: movement controls only (`controller.ts`, `controls.css`), and
+Customize presentation only (`AvatarEditor.tsx`, `avatar-editor.css`,
+`OptionStrip.tsx`). Root routes/composition remain exclusively FE07-owned. They
+must preserve keyboard/DOM access, 44px targets, privacy/disposal, explicit Save,
+and the existing single world owner. No new art or fallback image is authorized
+by these UI assignments. Both assignments carry concrete unbudgeted goals with
+implementation, focused/native validation, documentation and committed handoff.
+
+Producer author `81866181d7ace1f3fda5650a0b8b8c9b0b11d738` is integrated as
+`0b2d3a5`; its 65 assigned paths, 87 hashes and existing dependency preimages
+matched. The narrow Place-parent test follows as `0d2ea12`, with an unsupported
+Testing Library `exact` option corrected in `8c0e7d3` from author `21f8d60`.
+Fresh combined strict TypeScript and all six Places route tests pass (exit 0).
+The initial combined type failure is retained and is not counted as a pass.
+The author's 119 focused tests, pre-parent-change 759-test run, actual Phaser
+native checks at 360/390/430 (30 captures), and 12 fresh-document entries remain
+bound to their documented candidate. Native transport/place reads are mocked;
+no real two-user qualification is inferred.
+
+[World capture](../../../frontend/src/app/__tests__/default-shell/evidence/qualified-world-390.png),
+[Map capture](../../../frontend/src/app/__tests__/default-shell/evidence/qualified-map-390.png),
+[Customize capture](../../../frontend/src/features/avatar/__tests__/option-previews/evidence/native/loaded-390.png),
+[producer handoff](../frontend/default-shell-integration.md),
+[option handoff](../frontend/avatar-option-previews.md), and
+[Social composition handoff](../frontend/social-composition.md) retain the
+evidence and its limits. Older sections below are dated snapshots; the table
+above supersedes their former statements that Map registration and visual
+outfit choices were still missing.
 
 ### Latest default shell checkpoint — `a1dcf56`
 
