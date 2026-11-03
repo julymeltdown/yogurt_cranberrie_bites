@@ -234,3 +234,16 @@ were corrected before the passing checks. Backend/public upload and owner routes
 actual BE24/FE04 upload integration, FE20/live physical instruction projection,
 shell routing, real stock races, devices and IN02 remain **NOT_RUN**. FE26 remains
 active and is the next bounded increment.
+
+### KST display correction (supersedes earlier explicit-UTC UI wording)
+
+Specification §7.4 requires UTC transport and KST display. The three delivered
+features now use KST date/time inputs and English KST meeting/inventory labels.
+Owned `party-authoring/model/time.ts` converts strict KST local input to UTC
+RFC3339 and formats server UTC in Asia/Seoul; no backend contract is changed.
+Two regressions cover date rollover and impossible calendar input. Native
+receipts/screenshots/source hashes for all three features were regenerated and
+pass at 360/390/430/1280; typed date controls use normalized minute input in the
+browser harness. Combined feature/discovery/domain-consumer checks **213/213**,
+strict build/typecheck, four-feature Oxlint and source-origin/boundary checks all
+exit **0**. FE26's separately staged consumer uses the same owned helper.
