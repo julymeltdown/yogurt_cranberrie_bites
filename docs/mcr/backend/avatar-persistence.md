@@ -237,7 +237,7 @@ real-provider/device/load flow, approved art or IN01/IN05 gate is certified.
 
 ## Selected whole-character canonical increment (2026-11-04)
 
-Status: `IN_PROGRESS`. Contract source `3398d8331863775ecc0180e5eccebddd179fedd5`
+Contract source `3398d8331863775ecc0180e5eccebddd179fedd5`
 adds the exact C06 `1.1.0` whole-character branch; layered `1.0.0` remains supported.
 The new domain `AvatarAppearance` representation is exclusive. `SetAvatar::parse`,
 `config_value` and `AvatarCatalog` retain their call signatures; `parse_config`
@@ -268,16 +268,82 @@ not full approved product scenery or a public multiuser acceptance claim.
 Initial focused Rust 1.88 validation passed: domain avatar 3, application avatar
 and bootstrap tests (see `/tmp/mcr-selected-domain-application.log`). Locked,
 offline, two build jobs, debug 0, incremental 0, existing MEDIA target only.
-Service/native qualification remains `NOT_RUN` at this source checkpoint. Initial
-service builds exposed stale shared-target build scripts/helper artifacts pointing
-at the previous participant checkout. Refreshing current checkout mtimes (no source
-byte changes) rebuilds those inputs. The remaining known compile dependency is the
-World owner’s representation compatibility patch. New native cases
-cover six saves/reloads/default preservation, SQL variant checks, stale/foreign
-actor/event/release denial, rollback after SQL, optimistic race, preference
-preservation, closure race and postmaster restart. Do not treat authored cases
-as executed evidence. No default database is touched.
+Initial service builds exposed stale shared-target build scripts/helper artifacts
+pointing at the previous participant checkout. Refreshing current checkout mtimes
+(no source byte changes) rebuilt those inputs. The World owner supplied the
+representation compatibility patch and affected test adaptations separately.
+No default database was touched.
 
 The goal API still reports the historical incompatible BE04 goal as `BLOCKED`;
 no new goal was created or the old goal falsely completed. The concrete new
 objective/completion criteria remain in `docs/mcr/contracts/selected-static-avatar.md`.
+
+### Fresh canonical component qualification
+
+Tested source: `71e9c6d4242329f1f6d9e3588ce2316e83964331`, including canonical
+implementation `86123961`, import correction `3621c04a`, upgrade proof `b297b9a6`,
+bootstrap binding tests `7dbd8d5b`/fixture correction `61b42bd2`, and mechanically
+adapted PostgreSQL assertion `4bd9a7de`. World production patch `d9e9a00a`
+was supplied by its owner and incorporated as `b6a6a210`; nine World test/helper
+adaptations `e28549a3` were incorporated as `71e9c6d4`. Their new whole-character
+oracle fixture initially used invalid synthetic preset IDs; the owner corrected
+it in `48335f67` (incorporated as `b37ae80a`) to canonical preset IDs and matching
+room/simulation pins. The contract whitelist was retained.
+
+Validation commands and actual exits:
+
+- Rust 1.88, `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target`,
+  `CARGO_BUILD_JOBS=2`, `CARGO_INCREMENTAL=0`, dev/test debug 0:
+  `cargo +1.88.0 test --locked --offline -p concert-domain --test avatar -p concert-application --test bootstrap`:
+  exit 0; domain avatar 3, application avatar 2 and bootstrap 6 passed.
+- `cargo +1.88.0 test --locked --offline -p concert-service --test avatar --test bootstrap --test postgres --lib --no-run --message-format=json`:
+  exit 0. Five affected World integration targets also compiled, exit 0.
+- Copied service avatar executable: 2 nonnative passed, 4 native ignored until the
+  private harness. Copied bootstrap executable: 5 nonnative passed, 2 native
+  ignored. Copied service library with `bootstrap::` filter: 2 passed.
+- `python3 backend/scripts/mcr/avatar_smoke.py --build-metadata /tmp/mcr-selected-71e9c6d4-eqrqg2cu/compiler-artifacts.jsonl --pinned-binaries /tmp/mcr-selected-71e9c6d4-eqrqg2cu/binary.json --pg-bin /opt/homebrew/opt/postgresql@16/bin`:
+  exit 0; PostgreSQL 16.14, 4 native cases passed, existing-layered upgrade passed,
+  restart passed and cleanup passed.
+- Pinned contract environment `/tmp/mcr-fe14-format-venv/bin/python` selected-static
+  contract tests: 7 passed, exit 0. The generated selected native bootstrap also
+  passed authoritative Bootstrap/C06 validation. Core/domain generator checks,
+  planning check and `git diff --check`: exit 0.
+
+Exact copied avatar executable SHA256:
+`6c7dca5c5d8118db3dda581273a6553eb46276c94100ea3ab8c04f4b8ea83697`.
+Bootstrap executable SHA256:
+`8fa1269a3251b788ea999c36418a7b0687f606c50939766259e4b6a8132b1f56`.
+Compiler receipts, frozen executables and native report are under
+`/tmp/mcr-selected-71e9c6d4-eqrqg2cu/` (local evidence, not a deployment artifact).
+
+The real native checks execute the service persistence and bootstrap repositories,
+not only SQL fixtures. They prove all six canonical selections, reload and repeated
+bootstrap preservation; unknown presets, wrong manifests/versions, mixed fields,
+foreign actor/event/release grants and stale revisions fail closed. An authority
+withdrawal after SQL UPDATE rolls back. Sixteen competing same-revision writes
+produce one winner. Preference updates preserve the avatar. A write waiting on
+event closure returns read-only without changing state. Database constraints
+independently reject mixed/unknown representations. Postmaster restart preserves
+both layered and whole-character state. Migration 0025 preserves the preexisting
+layered row including revision, timestamps and every old column.
+
+The private cluster was removed; postmasters 98340 and 98799 were gone after
+cleanup. Exact compiler binaries were copied and hashed before native execution,
+with no open handles on the MEDIA target. MEDIA was unconditionally returned to
+the participant owner afterwards; this chat holds no target or PostgreSQL resource.
+
+Limits: authority/admission are explicit test adapters, and map/themes remain
+synthetic metadata fixtures. This does not certify real Auth/participant RPC,
+public root HTTP, browser rendering, or a real multiuser World flow. Those owner
+journeys remain `NOT_RUN` here. Full AR03 directional animation and layered
+customization are unfinished; front-idle selected art is the only new capability.
+There is no live-data migration or replacement of stale persisted manifests with
+a guessed default. Layered and whole-character releases both retain strict
+catalog binding.
+
+Exact additional mechanical test scope was granted for
+`backend/services/concert-service/tests/postgres.rs`: only the old nullable
+accessory assertion now explicitly matches the layered variant. Other active
+feature tests remain with their owners. `docs/source/` and existing layered golden
+fixture bytes were verified unchanged. No frontend, Cargo manifest/lockfile,
+proto, root router or infrastructure changes were authored in this increment.
