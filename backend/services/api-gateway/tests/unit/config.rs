@@ -80,6 +80,34 @@ fn production_config_rejects_unsafe_gateway_defaults() {
 }
 
 #[test]
+fn browser_origin_allowlist_rejects_non_origins_in_every_runtime_mode() {
+    for mode in [RuntimeMode::Production, RuntimeMode::Parity] {
+        for origin in [
+            "*",
+            "null",
+            "https://*.company.com",
+            "https://app.company.com/",
+            "https://app.company.com/path",
+            "https://app.company.com?next=hostile",
+            "https://app.company.com#fragment",
+            "https://user@app.company.com",
+        ] {
+            let mut config = production_config();
+            config.runtime_mode = mode;
+            config.cors_allowed_origins = vec![origin.into()];
+            assert!(
+                config
+                    .validate()
+                    .expect_err(origin)
+                    .to_string()
+                    .contains("GATEWAY_CORS_ALLOWED_ORIGINS"),
+                "{mode:?}: {origin}"
+            );
+        }
+    }
+}
+
+#[test]
 fn production_config_accepts_explicit_remote_gateway_settings() {
     production_config().validate().expect("production config");
 }

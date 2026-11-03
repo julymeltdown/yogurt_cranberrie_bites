@@ -7,10 +7,19 @@ use axum::http::{header, Request, StatusCode};
 use tower::ServiceExt;
 
 fn form_request(path: &str, body: impl Into<Body>, cookie: Option<&str>) -> Request<Body> {
-    let mut request = Request::builder()
-        .method("POST")
-        .uri(path)
-        .header(header::CONTENT_TYPE, "application/x-www-form-urlencoded");
+    let mut request = Request::builder().method("POST").uri(path).header(
+        header::CONTENT_TYPE,
+        if path.starts_with("/api/auth/") {
+            "application/json"
+        } else {
+            "application/x-www-form-urlencoded"
+        },
+    );
+    if path.starts_with("/api/auth/") {
+        request = request
+            .header(header::ORIGIN, "http://localhost:3000")
+            .header("x-mcr-intent", "browser");
+    }
     if let Some(cookie) = cookie {
         request = request.header(header::COOKIE, cookie);
     }
@@ -18,12 +27,9 @@ fn form_request(path: &str, body: impl Into<Body>, cookie: Option<&str>) -> Requ
 }
 
 #[tokio::test]
-async fn transport_rejection_is_protected_before_the_oauth_handler_runs() {
+async fn transport_rejection_is_protected_before_browser_auth_dispatch() {
     let harness = RouteHarness::new().await;
-    for path in [
-        "/auth/oauth/apple/callback",
-        "/auth/oauth/apple/callback/complete",
-    ] {
+    for path in ["/api/auth/login"] {
         let mut request = form_request(path, "code=fixture-code&state=apple-state", None);
         request
             .headers_mut()
@@ -48,7 +54,7 @@ async fn transport_rejection_is_protected_before_the_oauth_handler_runs() {
 }
 
 #[tokio::test]
-async fn composed_quota_saturation_and_deadline_errors_keep_security_headers() {
+async fn composed_browser_auth_quota_saturation_and_deadline_errors_keep_security_headers() {
     use api_gateway::domain::admission::{AdmissionPolicies, RouteClass};
     use std::sync::Arc;
     use std::time::Duration;
@@ -62,10 +68,7 @@ async fn composed_quota_saturation_and_deadline_errors_keep_security_headers() {
         assert!(!response.headers().contains_key(header::SET_COOKIE));
     }
 
-    for path in [
-        "/auth/oauth/apple/callback",
-        "/auth/oauth/apple/callback/complete",
-    ] {
+    for path in ["/api/auth/login"] {
         let harness = RouteHarness::with_admission(
             AdmissionPolicies::default().with_budget(RouteClass::Login, 1),
         )
@@ -77,7 +80,7 @@ async fn composed_quota_saturation_and_deadline_errors_keep_security_headers() {
             .clone()
             .oneshot(form_request(
                 path,
-                "code=&state=apple-state",
+                "{",
                 Some("oauth_state_apple=apple-state"),
             ))
             .await
@@ -109,7 +112,7 @@ async fn composed_quota_saturation_and_deadline_errors_keep_security_headers() {
         let signal = readable.clone();
         let (sender, receiver) = tokio::sync::mpsc::channel::<axum::body::Bytes>(1);
         sender
-            .send(axum::body::Bytes::from_static(b"code=x&state="))
+            .send(axum::body::Bytes::from_static(b"{\"email\":\""))
             .await
             .unwrap();
         let stream = tokio_stream::wrappers::ReceiverStream::new(receiver).map(move |bytes| {

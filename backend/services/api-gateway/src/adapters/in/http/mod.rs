@@ -3,6 +3,7 @@ pub mod aggregation_routes;
 pub mod api_docs_routes;
 pub mod auth_routes;
 pub mod auth_shadow_routes;
+pub mod browser_auth;
 pub mod client_identity;
 pub mod friend_routes;
 pub mod moderation_decision_worker;
@@ -225,15 +226,12 @@ pub fn router(state: Arc<AppState>) -> Router {
             high_risk_session_middleware,
         ))
         .layer(from_fn_with_state(state.clone(), admin_audit_middleware));
-    let mut router = Router::new()
+    let router = Router::new()
         .merge(api_docs_routes::router(
             state.runtime_mode,
             state.developer_portal_links.clone(),
         ))
-        .merge(auth_routes::router(state.clone()))
-        .merge(verification_routes::router(state.clone()))
-        .merge(refresh_routes::router(state.clone()))
-        .merge(oauth_routes::router(state.clone()))
+        .merge(browser_auth::router(state.clone()))
         .merge(profile_routes::router(state.clone()))
         .merge(friend_routes::router(state.clone()))
         .merge(moderation_routes::router(state.clone()))
@@ -248,9 +246,6 @@ pub fn router(state: Arc<AppState>) -> Router {
             high_risk_session_middleware,
         ))
         .merge(admin_router);
-    if state.runtime_mode.allows_parity_routes() {
-        router = router.merge(auth_shadow_routes::router(state.clone()));
-    }
     // Rate admission precedes durable intent; the external request deadline
     // remains outside all writes. Production transport enables durable dispatch.
     router
@@ -258,7 +253,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         .layer(from_fn_with_state(state.clone(), rate_limit_middleware))
         .layer(from_fn_with_state(state.clone(), telemetry_middleware))
         .layer(axum::middleware::from_fn(normalize_extractor_rejections))
-        .layer(from_fn_with_state(state, timeout_middleware))
+        .layer(from_fn_with_state(state.clone(), timeout_middleware))
         .layer(axum::middleware::from_fn(
             client_identity::normalize_forwarded_for,
         ))
@@ -267,6 +262,10 @@ pub fn router(state: Arc<AppState>) -> Router {
         ))
         .layer(axum::middleware::from_fn(
             oauth_routes::protect_form_post_response,
+        ))
+        .layer(from_fn_with_state(
+            state.browser_auth_origins.clone(),
+            browser_auth::boundary,
         ))
 }
 
@@ -658,11 +657,17 @@ pub fn header_value(value: &str) -> Result<HeaderValue, GatewayError> {
 }
 
 fn matched_route<B>(request: &Request<B>) -> &str {
-    request
+    let route = request
         .extensions()
         .get::<MatchedPath>()
         .map(MatchedPath::as_str)
-        .unwrap_or("unmatched")
+        .unwrap_or("unmatched");
+    // Reuse the owning Auth admission/session policies at the new C03 ingress.
+    if route.starts_with("/api/auth/") {
+        route.strip_prefix("/api").unwrap_or(route)
+    } else {
+        route
+    }
 }
 
 async fn rate_limit_middleware(

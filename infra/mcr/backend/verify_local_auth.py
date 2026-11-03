@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exercise inherited auth and actual local mail on an already-owned dev stack; not C03 acceptance."""
+"""Exercise C03 email routes and actual local mail on an already-owned dev stack; not C03 acceptance."""
 import argparse
 import http.client
 import json
@@ -55,22 +55,22 @@ def exercise(ready_file):
             time.sleep(0.1)
         raise ValueError("actual Auth outbox delivery did not arrive")
 
-    request("signup", "/auth/email/signup", {"email": email, "password": password})
+    request("signup", "/api/auth/email/signup", {"email": email, "password": password})
     delivery = mail("VERIFY_EMAIL")
-    request("verify", "/auth/email/verify", {"email": email, "code": delivery["verification_code"]})
-    headers, data = request("login", "/auth/login", {"email": email, "password": password})
+    request("verify", "/api/auth/email/verify", {"email": email, "code": delivery["verification_code"]})
+    headers, data = request("login", "/api/auth/login", {"email": email, "password": password})
     if not data["accessToken"] or data["refreshToken"] != "" or "HttpOnly" not in headers.get("set-cookie", ""):
         raise ValueError("inherited token/cookie seam mismatch")
     cookie = headers["set-cookie"].split(";", 1)[0]
-    headers, data = request("refresh", "/auth/refresh", cookie=cookie)
-    request("logout", "/auth/logout", cookie=headers["set-cookie"].split(";", 1)[0], expected=204)
-    request("reset_request", "/auth/password/reset/request", {"email": email})
+    headers, data = request("refresh", "/api/auth/refresh", cookie=cookie)
+    request("logout", "/api/auth/logout", cookie=headers["set-cookie"].split(";", 1)[0], expected=204)
+    request("reset_request", "/api/auth/password/reset/request", {"email": email})
     link = urlsplit(mail("PASSWORD_RESET")["reset_link"])
     if f"{link.scheme}://{link.netloc}" != origin or link.path != "/reset-password" or link.query:
         raise ValueError("reset link does not bind the owned local application")
     # Source PasswordResetLinkBaseUrl deliberately puts the token in a fragment.
     token = parse_qs(link.fragment)["token"][0]
-    request("reset_confirm", "/auth/password/reset/confirm", {"token": token, "newPassword": "Mcr!" + secrets.token_hex(16)})
+    request("reset_confirm", "/api/auth/password/reset/confirm", {"token": token, "newPassword": "Mcr!" + secrets.token_hex(16)})
     return {"result": "PASS", "scope": "inherited auth/local delivery seam only", "C03_acceptance": "NOT_RUN",
             "statuses": statuses, "actual_local_deliveries": 2, "secret_values_recorded": False,
             "script_sha256": dev.runtime.digest(Path(__file__))}

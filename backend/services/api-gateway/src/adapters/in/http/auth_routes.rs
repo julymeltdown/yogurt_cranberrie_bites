@@ -33,6 +33,29 @@ pub fn router(state: Arc<AppState>) -> Router {
         .with_state(state)
 }
 
+/// Frozen C03 email/account surface. Bare routes and email availability are not mounted.
+pub fn browser_router(state: Arc<AppState>) -> Router {
+    Router::new()
+        .route("/api/auth/email/signup", post(signup))
+        .route("/api/auth/email/verify", post(verify))
+        .route(
+            "/api/auth/password/reset/request",
+            post(request_password_reset),
+        )
+        .route(
+            "/api/auth/password/reset/confirm",
+            post(confirm_password_reset),
+        )
+        .route("/api/auth/login", post(login))
+        .route("/api/auth/logout", post(logout))
+        .route(
+            "/api/auth/account",
+            get(get_account_deletion).delete(delete_account),
+        )
+        .route("/api/auth/account/deletion", get(get_account_deletion))
+        .with_state(state)
+}
+
 async fn signup(
     State(state): State<Arc<AppState>>,
     Json(request): Json<EmailSignupRequest>,

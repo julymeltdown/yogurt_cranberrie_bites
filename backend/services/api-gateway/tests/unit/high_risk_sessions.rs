@@ -308,9 +308,16 @@ fn admin_token(harness: &RouteHarness) -> String {
 }
 
 fn request(method: Method, uri: &str, authorization: Option<&str>) -> Request<Body> {
+    let uri = if uri.starts_with("/auth/") {
+        format!("/api{uri}")
+    } else {
+        uri.to_owned()
+    };
     let mut builder = Request::builder()
         .method(method)
         .uri(uri)
+        .header(header::ORIGIN, "http://localhost:3000")
+        .header("x-mcr-intent", "browser")
         .header(header::CONTENT_TYPE, "application/json");
     if let Some(authorization) = authorization {
         builder = builder.header(header::AUTHORIZATION, authorization);
@@ -545,7 +552,13 @@ async fn a_logged_out_session_cannot_delete_the_account_or_link_a_provider() {
         .unwrap();
 
     assert_eq!(deletion.status(), StatusCode::UNAUTHORIZED);
-    assert_eq!(link.status(), StatusCode::UNAUTHORIZED);
+    assert_eq!(link.status(), StatusCode::NOT_FOUND);
+    assert!(harness
+        .clients
+        .oauth_callback_calls
+        .lock()
+        .unwrap()
+        .is_empty());
     assert!(harness
         .clients
         .delete_account_calls
@@ -617,7 +630,8 @@ async fn every_documented_high_risk_operation_is_enforced_by_the_router() {
         let template = path.replace('{', ":").replace('}', "");
         for method in operations.as_object().unwrap().keys() {
             let method = method.to_ascii_uppercase();
-            if classify(&method, &template).is_none() {
+            // OAuth is unavailable under frozen C03; its inherited classifier is tested above.
+            if path.starts_with("/auth/oauth/") || classify(&method, &template).is_none() {
                 continue;
             }
             let uri = path
@@ -651,8 +665,8 @@ async fn every_documented_high_risk_operation_is_enforced_by_the_router() {
     }
 
     // Guard against a vacuous pass: the contract documents the whole admin
-    // surface, account deletion, and provider linking.
-    assert!(enforced.len() >= 22, "only {enforced:?}");
+    // surface and account deletion. Optional provider linking is disabled in C03.
+    assert!(enforced.len() >= 21, "only {enforced:?}");
     assert!(enforced.contains(&"DELETE /auth/account".to_owned()));
-    assert!(enforced.contains(&"POST /auth/oauth/{provider}/link".to_owned()));
+    assert!(!enforced.contains(&"POST /auth/oauth/{provider}/link".to_owned()));
 }

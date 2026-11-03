@@ -224,9 +224,16 @@ fn only_reads_may_continue_without_the_store() {
 }
 
 fn post(uri: &str, body: serde_json::Value) -> Request<Body> {
+    let uri = if uri.starts_with("/auth/") {
+        format!("/api{uri}")
+    } else {
+        uri.to_owned()
+    };
     Request::builder()
         .method(Method::POST)
         .uri(uri)
+        .header(header::ORIGIN, "http://localhost:3000")
+        .header("x-mcr-intent", "browser")
         .header(header::CONTENT_TYPE, "application/json")
         .body(Body::from(body.to_string()))
         .expect("request")

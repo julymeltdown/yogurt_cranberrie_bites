@@ -847,6 +847,17 @@ pub async fn build_state_with_auth_capabilities(
 fn validate_password_reset_base_url(production: bool, value: &str) -> anyhow::Result<()> {
     require_non_empty_setting("AUTH_PASSWORD_RESET_BASE_URL", value.to_owned())?;
     PasswordResetLinkBaseUrl::new(value.to_owned())?;
+    let uri: http::Uri = value.parse().map_err(|_| {
+        anyhow::anyhow!("AUTH_PASSWORD_RESET_BASE_URL must be an absolute HTTP(S) URL")
+    })?;
+    anyhow::ensure!(
+        matches!(uri.scheme_str(), Some("http" | "https"))
+            && uri.authority().is_some_and(|authority| !authority.as_str().contains('@'))
+            && uri.query().is_none()
+            && !value.contains('#')
+            && !value.contains('\\'),
+        "AUTH_PASSWORD_RESET_BASE_URL must be an absolute HTTP(S) URL without credentials, query or fragment"
+    );
     require_production_https_url(production, "AUTH_PASSWORD_RESET_BASE_URL", value)?;
     Ok(())
 }
@@ -1305,6 +1316,8 @@ impl TokenServicePort for JwtTokenService {
     ) -> crate::application::errors::AuthResult<
         crate::application::dto::token_dto::AuthDecodedAccessTokenDto,
     > {
+        // Keys/configuration are qualified at construction. Decode failures are
+        // untrusted credential failures, not infrastructure or signing defects.
         let result: anyhow::Result<_> = (|| {
             let mut validation = Validation::new(Algorithm::RS256);
             validation.validate_exp = true;
@@ -1336,7 +1349,7 @@ impl TokenServicePort for JwtTokenService {
             })
         })();
         result
-            .map_err(crate::adapters::out::errors::boundary_error)
+            .map_err(|_| crate::application::errors::AuthError::CredentialRejected)
             .map(Into::into)
     }
 
@@ -1365,7 +1378,7 @@ impl TokenServicePort for JwtTokenService {
             })
         })();
         result
-            .map_err(crate::adapters::out::errors::boundary_error)
+            .map_err(|_| crate::application::errors::AuthError::CredentialRejected)
             .map(Into::into)
     }
 
@@ -1435,6 +1448,104 @@ async fn seed_users(pool: &PgPool) -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn invalid_expired_wrong_type_and_unknown_key_credentials_are_rejected_safely() {
+        use crate::application::errors::AuthError;
+        let service = JwtTokenService::new("mcr-test", "mcr-browser", 3600, 86400).unwrap();
+        let pair = service
+            .issue_token_pair(Uuid::new_v4(), vec!["ROLE_USER".into()])
+            .unwrap();
+        for token in ["malformed", "a.b.c", "", &pair.access_token] {
+            assert_eq!(
+                service.decode_refresh_token(token).unwrap_err(),
+                AuthError::CredentialRejected
+            );
+        }
+        assert_eq!(
+            service
+                .decode_access_token(&pair.refresh_token)
+                .unwrap_err(),
+            AuthError::CredentialRejected
+        );
+        let expired = JwtTokenService::new("mcr-test", "mcr-browser", -3600, -3600).unwrap();
+        let pair = expired.issue_token_pair(Uuid::new_v4(), vec![]).unwrap();
+        assert_eq!(
+            expired.decode_access_token(&pair.access_token).unwrap_err(),
+            AuthError::CredentialRejected
+        );
+        assert_eq!(
+            expired
+                .decode_refresh_token(&pair.refresh_token)
+                .unwrap_err(),
+            AuthError::CredentialRejected
+        );
+        let mut claims = Claims {
+            sub: Uuid::new_v4().to_string(),
+            iss: "mcr-test".into(),
+            iat: Utc::now().timestamp(),
+            exp: Utc::now().timestamp() + 3600,
+            jti: Uuid::new_v4().to_string(),
+            aud: Some("mcr-browser".into()),
+            token_type: "access".into(),
+            roles: vec![],
+            sid: None,
+        };
+        let mut header = Header {
+            alg: Algorithm::RS256,
+            kid: Some("unknown".into()),
+            ..Header::default()
+        };
+        let unknown = jsonwebtoken::encode(&header, &claims, &service.encoding).unwrap();
+        assert_eq!(
+            service.decode_access_token(&unknown).unwrap_err(),
+            AuthError::CredentialRejected
+        );
+        // Retain Auth's inherited no-kid decoding compatibility. The Gateway's
+        // account-security test separately requires a canonical session ID.
+        header.kid = None;
+        let legacy = jsonwebtoken::encode(&header, &claims, &service.encoding).unwrap();
+        assert!(service
+            .decode_access_token(&legacy)
+            .unwrap()
+            .session_id
+            .is_none());
+        claims.sub = "not-a-uuid".into();
+        let invalid_subject = jsonwebtoken::encode(&header, &claims, &service.encoding).unwrap();
+        assert_eq!(
+            service.decode_access_token(&invalid_subject).unwrap_err(),
+            AuthError::CredentialRejected
+        );
+    }
+
+    #[test]
+    fn reset_targets_are_explicit_http_urls_without_redirect_credentials_or_token_parameters() {
+        for value in [
+            "javascript:alert(1)",
+            "//hostile.test/reset",
+            "https://user@hostile.test/reset",
+            "https://app.example/reset?next=https://hostile.test",
+            "https://app.example/reset#token=x",
+            "https://app.example\\@hostile.test/reset",
+        ] {
+            assert!(
+                validate_password_reset_base_url(false, value).is_err(),
+                "{value}"
+            );
+        }
+        assert!(
+            validate_password_reset_base_url(false, "http://127.0.0.1:43210/reset-password")
+                .is_ok()
+        );
+        assert!(
+            validate_password_reset_base_url(true, "https://app.company.com/reset-password")
+                .is_ok()
+        );
+        assert!(
+            validate_password_reset_base_url(true, "http://app.company.com/reset-password")
+                .is_err()
+        );
+    }
 
     #[test]
     fn production_config_rejects_unsafe_auth_defaults() {

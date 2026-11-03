@@ -19,6 +19,7 @@ impl TestClients {
         &self,
         _request: EmailSignupRequest,
     ) -> anyhow::Result<SignupResponse> {
+        self.auth_calls.lock().expect("auth calls").push("signup");
         Ok(SignupResponse {
             user_id: Uuid::parse_str(USER_ID)?,
             status: "PENDING_VERIFICATION".into(),
@@ -29,6 +30,7 @@ impl TestClients {
         &self,
         _request: EmailVerifyRequest,
     ) -> anyhow::Result<SignupResponse> {
+        self.auth_calls.lock().expect("auth calls").push("verify");
         Ok(SignupResponse {
             user_id: Uuid::parse_str(USER_ID)?,
             status: "ACTIVE".into(),
@@ -39,6 +41,10 @@ impl TestClients {
         &self,
         request: EmailCheckRequest,
     ) -> anyhow::Result<EmailAvailabilityResponse> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("check_email");
         Ok(EmailAvailabilityResponse {
             email: request.email,
             available: true,
@@ -50,6 +56,10 @@ impl TestClients {
         &self,
         _request: PasswordResetRequest,
     ) -> anyhow::Result<PasswordResetResponse> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("request_password_reset");
         Ok(PasswordResetResponse {
             status: "RESET_REQUESTED".into(),
         })
@@ -59,6 +69,10 @@ impl TestClients {
         &self,
         _request: PasswordResetConfirmRequest,
     ) -> anyhow::Result<PasswordResetResponse> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("confirm_password_reset");
         Ok(PasswordResetResponse {
             status: "RESET_CONFIRMED".into(),
         })
@@ -70,6 +84,7 @@ impl TestClients {
         ip_address: Option<String>,
         user_agent: Option<String>,
     ) -> anyhow::Result<AuthResponse> {
+        self.auth_calls.lock().expect("auth calls").push("login");
         self.login_calls
             .lock()
             .expect("login calls")
@@ -85,6 +100,7 @@ impl TestClients {
         &self,
         refresh_token: String,
     ) -> anyhow::Result<AuthResponse> {
+        self.auth_calls.lock().expect("auth calls").push("refresh");
         self.refresh_calls
             .lock()
             .expect("refresh calls")
@@ -93,6 +109,7 @@ impl TestClients {
     }
 
     async fn logout_auth_client_port_inner(&self, refresh_token: String) -> anyhow::Result<()> {
+        self.auth_calls.lock().expect("auth calls").push("logout");
         self.logout_calls
             .lock()
             .expect("logout calls")
@@ -104,6 +121,10 @@ impl TestClients {
         &self,
         provider: IdentityProvider,
     ) -> anyhow::Result<api_gateway::application::dto::auth_dto::OAuthAuthorizationDto> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("authorize");
         let state = match provider {
             IdentityProvider::Email => "email-state",
             IdentityProvider::Google => "google-state",
@@ -127,6 +148,10 @@ impl TestClients {
         _ip_address: Option<String>,
         _user_agent: Option<String>,
     ) -> anyhow::Result<AuthResponse> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("oauth_callback");
         self.oauth_callback_calls
             .lock()
             .expect("oauth callback calls")
@@ -140,6 +165,10 @@ impl TestClients {
         _request: OAuthLinkRequest,
         _user_id: String,
     ) -> anyhow::Result<LinkedProvidersResponse> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("link_provider");
         Ok(LinkedProvidersResponse {
             user_id: Uuid::parse_str(USER_ID)?,
             providers: vec![IdentityProvider::Email, provider],
@@ -153,6 +182,10 @@ impl TestClients {
         ip_address: Option<String>,
         user_agent: Option<String>,
     ) -> anyhow::Result<DeleteAccountResponse> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("delete_account");
         self.delete_account_calls
             .lock()
             .expect("delete account calls")
@@ -174,6 +207,10 @@ impl TestClients {
         &self,
         user_id: String,
     ) -> anyhow::Result<Option<UserDeletionSagaResponse>> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("get_user_deletion");
         self.get_deletion_calls
             .lock()
             .expect("get deletion calls")
@@ -185,6 +222,10 @@ impl TestClients {
         &self,
         saga_id: String,
     ) -> anyhow::Result<Option<UserDeletionSagaResponse>> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("get_user_deletion_by_saga_id");
         self.get_deletion_by_saga_id_calls
             .lock()
             .expect("get deletion by saga id calls")
@@ -200,6 +241,10 @@ impl TestClients {
         after_updated_at: Option<chrono::DateTime<chrono::Utc>>,
         after_saga_id: Option<Uuid>,
     ) -> anyhow::Result<DeadLetteredUserDeletionListResponse> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("list_dead_lettered_user_deletions");
         self.list_dead_lettered_deletion_calls
             .lock()
             .expect("list dead-lettered deletion calls")
@@ -221,6 +266,10 @@ impl TestClients {
         &self,
         request: RetryUserDeletionRequestDto,
     ) -> anyhow::Result<UserDeletionSagaResponse> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("retry_user_deletion");
         self.retry_user_deletion_calls
             .lock()
             .expect("retry user deletion calls")
@@ -234,6 +283,10 @@ impl TestClients {
         &self,
         request: &SessionAuthorityRequestDto,
     ) -> anyhow::Result<SessionState> {
+        self.auth_calls
+            .lock()
+            .expect("auth calls")
+            .push("session_state");
         self.session_checks
             .lock()
             .expect("session checks")

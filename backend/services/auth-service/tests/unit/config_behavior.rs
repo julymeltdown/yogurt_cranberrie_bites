@@ -70,7 +70,10 @@ fn refresh_decoder_rejects_access_tokens() {
         .decode_refresh_token(&tokens.access_token)
         .expect_err("access token is not a refresh token");
 
-    assert_eq!(error.to_string(), "Invalid token type");
+    assert_eq!(
+        error,
+        auth_service::application::errors::AuthError::CredentialRejected
+    );
 }
 
 #[tokio::test]

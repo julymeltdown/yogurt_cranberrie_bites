@@ -16,6 +16,12 @@ pub fn router(state: Arc<AppState>) -> Router {
         .with_state(state)
 }
 
+pub fn browser_router(state: Arc<AppState>) -> Router {
+    Router::new()
+        .route("/api/auth/refresh", post(refresh))
+        .with_state(state)
+}
+
 async fn refresh(
     State(state): State<Arc<AppState>>,
     headers: HeaderMap,

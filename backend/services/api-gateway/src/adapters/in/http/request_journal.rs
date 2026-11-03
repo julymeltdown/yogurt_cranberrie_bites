@@ -306,7 +306,14 @@ async fn dispatch_inner(
     // Admission happens against the budget for this path's class, so saturating
     // one class cannot deny the other. A login arriving while every mutation
     // permit is held still gets a permit.
-    let class = RouteClass::of(&path);
+    // C03 auth keeps the inherited reserved auth class and never journals bodies,
+    // credentials or cookie rotation at its new browser ingress.
+    let auth_path = if path.starts_with("/api/auth/") {
+        path.strip_prefix("/api").unwrap_or(&path)
+    } else {
+        &path
+    };
+    let class = RouteClass::of(auth_path);
     let permit = capacity(class).try_acquire_owned().map_err(|_| {
         GatewayError::too_many_requests(match class {
             RouteClass::Authentication => "Authentication capacity exhausted",

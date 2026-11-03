@@ -708,6 +708,7 @@ impl AppConfig {
                 anyhow::anyhow!("GATEWAY_CORS_ALLOWED_ORIGINS contains an invalid URI: {error}")
             })?;
             if !matches!(uri.scheme_str(), Some("http" | "https"))
+                || origin.contains('*')
                 || uri.authority().is_none()
                 || uri
                     .authority()
@@ -715,6 +716,14 @@ impl AppConfig {
                 || uri
                     .path_and_query()
                     .is_some_and(|path| path.as_str() != "/")
+                || origin
+                    != &format!(
+                        "{}://{}",
+                        uri.scheme_str().unwrap_or(""),
+                        uri.authority()
+                            .map(|authority| authority.as_str())
+                            .unwrap_or("")
+                    )
             {
                 anyhow::bail!("GATEWAY_CORS_ALLOWED_ORIGINS must contain explicit HTTP(S) origins");
             }
@@ -802,6 +811,8 @@ pub struct AppState {
     pub refresh_cookie_secure: bool,
     pub refresh_cookie_max_age_seconds: i64,
     pub jwt_verifier: JwtVerifier,
+    /// Exact browser mutation allowlist, shared with explicitly configured CORS origins.
+    pub browser_auth_origins: Vec<String>,
     /// Keeps `jwt_verifier` current with the issuer. `None` when signing keys
     /// come only from configuration.
     pub signing_keys: Option<SigningKeyRefresher>,
@@ -1782,6 +1793,7 @@ async fn build_state_with_clients_and_moderation_with_metrics(
         refresh_cookie_secure: config.refresh_cookie_secure,
         refresh_cookie_max_age_seconds: config.refresh_cookie_max_age_seconds,
         jwt_verifier,
+        browser_auth_origins: config.cors_allowed_origins.clone(),
         signing_keys: None,
         runtime_mode: config.runtime_mode,
         developer_portal_links: config.developer_portal_links.clone(),

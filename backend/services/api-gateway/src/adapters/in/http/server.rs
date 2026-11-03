@@ -5,7 +5,7 @@ use anyhow::Context;
 use axum::body::Body;
 use axum::http::header::{HeaderName, AUTHORIZATION, CONTENT_TYPE};
 use axum::http::{HeaderValue, Method, Request};
-use axum::middleware::{from_fn, Next};
+use axum::middleware::{from_fn, from_fn_with_state, Next};
 use axum::response::{IntoResponse, Response};
 use axum::{Extension, Router};
 use std::net::SocketAddr;
@@ -44,6 +44,7 @@ pub fn with_transport_layers(
             HeaderName::from_static("x-request-id"),
             HeaderName::from_static("x-correlation-id"),
             HeaderName::from_static("x-client-id"),
+            HeaderName::from_static("x-mcr-intent"),
             HeaderName::from_static("idempotency-key"),
             HeaderName::from_static("traceparent"),
             HeaderName::from_static("tracestate"),
@@ -52,6 +53,7 @@ pub fn with_transport_layers(
             HeaderName::from_static("x-correlation-id"),
             HeaderName::from_static("x-operation-id"),
             HeaderName::from_static("idempotency-replayed"),
+            HeaderName::from_static("retry-after"),
         ]);
     application_router
         .layer(from_fn(enforce_idempotency_scope))
@@ -60,6 +62,11 @@ pub fn with_transport_layers(
         .layer(Extension(trusted_proxies))
         .layer(platform::trace_context::TraceContextLayer)
         .layer(from_fn(super::oauth_routes::protect_form_post_response))
+        // Also cover transport rejections/preflights before the application router.
+        .layer(from_fn_with_state(
+            config.cors_allowed_origins.clone(),
+            super::browser_auth::boundary,
+        ))
 }
 
 // Restrict replay to command results, never read-by-POST profile batches or

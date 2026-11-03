@@ -83,6 +83,8 @@ fn request(harness: &RouteHarness, method: Method, uri: &str) -> Request<Body> {
     Request::builder()
         .method(method)
         .uri(uri)
+        .header(header::ORIGIN, "http://localhost:3000")
+        .header("x-mcr-intent", "browser")
         .header(header::AUTHORIZATION, harness.bearer_token(USER_ID))
         .body(Body::empty())
         .expect("request")

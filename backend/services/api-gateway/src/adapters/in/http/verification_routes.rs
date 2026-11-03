@@ -23,6 +23,13 @@ pub fn router(state: Arc<AppState>) -> Router {
         .with_state(state)
 }
 
+pub fn browser_router(state: Arc<AppState>) -> Router {
+    Router::new()
+        .route("/api/auth/email/resend", post(resend_verification))
+        .layer(DefaultBodyLimit::max(MAX_BODY_BYTES))
+        .with_state(state)
+}
+
 async fn resend_verification(
     State(state): State<Arc<AppState>>,
     body: Result<Json<ResendVerificationRequest>, JsonRejection>,

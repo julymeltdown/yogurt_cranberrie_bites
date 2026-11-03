@@ -231,6 +231,7 @@ pub struct PeopleRecommendationEventCall {
 
 #[derive(Default)]
 pub struct TestClients {
+    pub auth_calls: Mutex<Vec<&'static str>>,
     pub notification_items:
         Mutex<Option<Vec<api_gateway::application::dto::notification_dto::NotificationResponse>>>,
     pub notification_post_access: Mutex<std::collections::HashMap<String, bool>>,
