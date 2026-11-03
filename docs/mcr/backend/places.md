@@ -78,7 +78,7 @@ CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/be08/target \
 cd ..
 python3 backend/scripts/mcr/places_smoke.py \
   --binary /Users/lhs/Desktop/mcr-build/be08/target/debug/deps/places-d1afcc5efcbf013b \
-  --report /Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103231508.json
+  --report /Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103141447-postcommit.json
 # exit 0; result PASS, native test exit 0, restart PASS, cleanup PASS
 ```
 
@@ -93,7 +93,7 @@ python3 backend/scripts/mcr/places_smoke.py \
 
 `places_smoke.py` creates a new marker/token/device/inode-owned PostgreSQL 16.14 cluster with TCP disabled. It applies all three direct SQL migrations; verifies content and geometry hashes and immutable release bytes; reopens and recloses current closure without rewriting bytes; rejects member mutation; exercises exact one-step revision checks; runs the focused native repository test; proves a competing closure update waits behind the transaction seam's SHARE lock until the caller records and commits; confirms independent event bindings and historical release bytes; restarts the cluster; and verifies persisted state. Direct SQL reapplication is **EXPECTED_REFUSED** at the existing schema; it is not SQLx migration-ledger qualification.
 
-The latest passing report is `/Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103231508.json`. It records source candidate `c135bff`, domain source SHA-256 `ee505aa435265ebade6e105d1126e2f059c43c658957dc0e52cee37156507584`, repository SHA-256 `9a6e004fb6d7a54ba43381fef7e13a65da05709ee82edcb6939b7aeff788b660`, migration SHA-256 `b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a`, harness SHA-256 `ab0d26ef2274a8d2c39622f83645dab80ac14b4926cc26a21ce647d9f37e684f`, native test output SHA-256 `29b84c7494cd5ac19c63a59398f6624039531a80234bddb29eeb359b2a1c1bd7`, and test binary SHA-256 `555b435db1d595f8131d08bfbff511403b474d1494ba614cb7ec6fd138203429`. The report predates the review-fix commit, so its source digest and revision identify the tested candidate rather than the later documentation-only update.
+The latest passing report is `/Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103141447-postcommit.json`, run from commit `a91ed08668aa8aca53200f94d3c25ae0162c2a85`. It records domain source SHA-256 `ee505aa435265ebade6e105d1126e2f059c43c658957dc0e52cee37156507584`, repository SHA-256 `9a6e004fb6d7a54ba43381fef7e13a65da05709ee82edcb6939b7aeff788b660`, migration SHA-256 `b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a`, harness SHA-256 `ab0d26ef2274a8d2c39622f83645dab80ac14b4926cc26a21ce647d9f37e684f`, native test output SHA-256 `d16a4918888cc6975a8c8cdc577f17b5f9b4c24d3e13909b0540393aaf2009d5`, and test binary SHA-256 `555b435db1d595f8131d08bfbff511403b474d1494ba614cb7ec6fd138203429`. The report SHA-256 is `978ddd07ba369956515298c87ebeb7b7dba7ae0c48c51073b0fead476b6d8486`. Its source hashes and revision bind the tested code; this documentation update does not alter those code paths.
 
 The database proof is a direct SQL migration and reapply check, not an application SQLx migration ledger. Public HTTP routes, real browser/device use, production deployment, load/soak tests and integrator acceptance remain **NOT_RUN**. No external venue, source-default database or Docker instance was used.
 
