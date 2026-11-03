@@ -268,9 +268,11 @@ not full approved product scenery or a public multiuser acceptance claim.
 Initial focused Rust 1.88 validation passed: domain avatar 3, application avatar
 and bootstrap tests (see `/tmp/mcr-selected-domain-application.log`). Locked,
 offline, two build jobs, debug 0, incremental 0, existing MEDIA target only.
-Service/native qualification remains `NOT_RUN` at this source checkpoint; first
-service build exposed an absent peer-owned participant.proto in the older local
-checkout. Reconcile current peer source before compilation. New native cases
+Service/native qualification remains `NOT_RUN` at this source checkpoint. Initial
+service builds exposed stale shared-target build scripts/helper artifacts pointing
+at the previous participant checkout. Refreshing current checkout mtimes (no source
+byte changes) rebuilds those inputs. The remaining known compile dependency is the
+World owner’s representation compatibility patch. New native cases
 cover six saves/reloads/default preservation, SQL variant checks, stale/foreign
 actor/event/release denial, rollback after SQL, optimistic race, preference
 preservation, closure race and postmaster restart. Do not treat authored cases

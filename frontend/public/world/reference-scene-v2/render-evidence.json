@@ -1,0 +1,164 @@
+[
+  {
+    "command": [
+      "tsrct",
+      "project",
+      "commit",
+      "--project",
+      "parade-ground.tsrct",
+      "--file",
+      "parade-ground-editable.json"
+    ],
+    "exit_code": 0,
+    "output": "{\"project\":\"parade-ground.tsrct\"}\n"
+  },
+  {
+    "command": [
+      "tsrct",
+      "preview",
+      "--project",
+      "parade-ground.tsrct",
+      "--time",
+      "1",
+      "--output",
+      "parade-ground.png"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "tsrct",
+      "project",
+      "commit",
+      "--project",
+      "parade-scenery.tsrct",
+      "--file",
+      "parade-scenery-editable.json"
+    ],
+    "exit_code": 0,
+    "output": "{\"project\":\"parade-scenery.tsrct\"}\n"
+  },
+  {
+    "command": [
+      "tsrct",
+      "preview",
+      "--project",
+      "parade-scenery.tsrct",
+      "--time",
+      "1",
+      "--output",
+      "parade-scenery.png"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "tsrct",
+      "project",
+      "commit",
+      "--project",
+      "revenge-ground.tsrct",
+      "--file",
+      "revenge-ground-editable.json"
+    ],
+    "exit_code": 0,
+    "output": "{\"project\":\"revenge-ground.tsrct\"}\n"
+  },
+  {
+    "command": [
+      "tsrct",
+      "preview",
+      "--project",
+      "revenge-ground.tsrct",
+      "--time",
+      "1",
+      "--output",
+      "revenge-ground.png"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "tsrct",
+      "project",
+      "commit",
+      "--project",
+      "revenge-scenery.tsrct",
+      "--file",
+      "revenge-scenery-editable.json"
+    ],
+    "exit_code": 0,
+    "output": "{\"project\":\"revenge-scenery.tsrct\"}\n"
+  },
+  {
+    "command": [
+      "tsrct",
+      "preview",
+      "--project",
+      "revenge-scenery.tsrct",
+      "--time",
+      "1",
+      "--output",
+      "revenge-scenery.png"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "tsrct",
+      "project",
+      "commit",
+      "--project",
+      "danger-ground.tsrct",
+      "--file",
+      "danger-ground-editable.json"
+    ],
+    "exit_code": 0,
+    "output": "{\"project\":\"danger-ground.tsrct\"}\n"
+  },
+  {
+    "command": [
+      "tsrct",
+      "preview",
+      "--project",
+      "danger-ground.tsrct",
+      "--time",
+      "1",
+      "--output",
+      "danger-ground.png"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "tsrct",
+      "project",
+      "commit",
+      "--project",
+      "danger-scenery.tsrct",
+      "--file",
+      "danger-scenery-editable.json"
+    ],
+    "exit_code": 0,
+    "output": "{\"project\":\"danger-scenery.tsrct\"}\n"
+  },
+  {
+    "command": [
+      "tsrct",
+      "preview",
+      "--project",
+      "danger-scenery.tsrct",
+      "--time",
+      "1",
+      "--output",
+      "danger-scenery.png"
+    ],
+    "exit_code": 0,
+    "output": ""
+  }
+]

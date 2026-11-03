@@ -5,7 +5,7 @@ import manifest from '../../../../../contracts/assets/v1/avatar-manifest.schema.
 import config from '../../../../../contracts/assets/v1/avatar-config.schema.json'
 import { canonicalJson, record, requireMap } from '../../../world/map/json'
 const documents: Record<string, unknown> = { [common.$id]: common, [manifest.$id]: manifest, [config.$id]: config }
-const keywords = new Set(['$id', '$schema', '$defs', 'title', 'description', '$ref', 'type', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'uniqueItems', 'minLength', 'maxLength', 'minimum', 'pattern', 'format', 'anyOf', 'allOf', 'if', 'then', 'else'])
+const keywords = new Set(['$id', '$schema', '$defs', 'title', 'description', '$ref', 'type', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'uniqueItems', 'minLength', 'maxLength', 'minimum', 'maximum', 'pattern', 'format', 'anyOf', 'oneOf', 'allOf', 'if', 'then', 'else'])
 /** Evaluates only the checked-in C06 common/avatar-manifest/avatar-config keyword subset; local refs only, no network. */
 export function schemaValid(input: unknown, kind: 'manifest' | 'config'): boolean {
   let nodes = 0
@@ -25,6 +25,7 @@ export function schemaValid(input: unknown, kind: 'manifest' | 'config'): boolea
       : s.type === 'array' ? Array.isArray(value) : s.type === 'integer' ? typeof value === 'number' && Number.isSafeInteger(value)
         : s.type === 'null' ? value === null : typeof value === s.type)) return false
     if (typeof value === 'number' && typeof s.minimum === 'number' && value < s.minimum) return false
+    if (typeof value === 'number' && typeof s.maximum === 'number' && value > s.maximum) return false
     if (typeof value === 'string') {
       const length = Array.from(value).length
       if (typeof s.minLength === 'number' && length < s.minLength || typeof s.maxLength === 'number' && length > s.maxLength) return false
@@ -36,6 +37,7 @@ export function schemaValid(input: unknown, kind: 'manifest' | 'config'): boolea
     }
     if (Array.isArray(value)) {
       if (typeof s.minItems === 'number' && value.length < s.minItems) return false
+      if (typeof s.maxItems === 'number' && value.length > s.maxItems) return false
       if (s.uniqueItems && new Set(value.map(v => canonicalJson(v))).size !== value.length) return false
       if (s.items && !value.every(v => check(v, s.items, root, depth + 1))) return false
     }
@@ -46,6 +48,7 @@ export function schemaValid(input: unknown, kind: 'manifest' | 'config'): boolea
       if (!Object.entries(props).every(([k, p]) => !Object.hasOwn(v, k) || check(v[k], p, root, depth + 1))) return false
     }
     if (Array.isArray(s.anyOf) && !s.anyOf.some(p => check(value, p, root, depth + 1))) return false
+    if (Array.isArray(s.oneOf) && s.oneOf.filter(p => check(value, p, root, depth + 1)).length !== 1) return false
     if (Array.isArray(s.allOf) && !s.allOf.every(p => check(value, p, root, depth + 1))) return false
     if (s.if) { const branch = check(value, s.if, root, depth + 1) ? s.then : s.else; if (branch && !check(value, branch, root, depth + 1)) return false }
     return true

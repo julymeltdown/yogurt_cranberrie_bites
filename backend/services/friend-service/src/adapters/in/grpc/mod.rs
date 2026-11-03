@@ -5,3 +5,5 @@ pub mod notification_authority;
 pub mod server;
 
 pub mod concert_relationship;
+
+pub mod concert_invalidation;

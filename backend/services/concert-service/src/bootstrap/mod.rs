@@ -6,7 +6,7 @@ use chrono::Utc;
 use concert_application::bootstrap::*;
 use concert_application::world_ticket::{AvatarPin, MapPin};
 use concert_domain::{
-    AuthUserId, AvatarSelection, EventId, EventPhase, ParticipantKey, Preferences, Revision,
+    AssetId, AuthUserId, AvatarSelection, EventId, EventPhase, ParticipantKey, Preferences, Revision,
 };
 use serde_json::Value;
 use sqlx::{postgres::PgRow, PgPool, Row};
