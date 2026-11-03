@@ -8,6 +8,36 @@ The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged cop
 
 ## Evidence and limits
 
+### Delivery recheck at `aa33fa7`
+
+The original attachment and committed reference were freshly hashed and still
+match exactly. The public/auth, community, Map, Customize, Wall, Profile and
+shell handoffs each identify viewing this same reference. Current source uses
+the shared concert frame and navigation, and the incumbent MapScene imports the
+illustrated scenery consumer. The actual default Wall provider still passes
+`release={null}`; its live canvas is unavailable.
+
+Main inspected the recorded 390px illustrated World and compact Customize
+captures again. The former contains illustrated scenery in a test host; the
+latter still displays explicitly synthetic geometric outfits. Neither proves
+approved character delivery or full reference fidelity.
+
+The active Map owner has now produced an illustrated overview in the actual
+default application fixture. Main inspected its 390px capture in the isolated
+`fe-illustrated-map` checkout. The owner reports native 360/390/430 checks passing
+for theme changes, fallback, keyboard camera controls, Back focus and cleanup;
+final source-bound qualification and committed handoff are still pending. This
+work is not yet delivered on `aa33fa7`, and the fixture is not a live service.
+Its numbered venue markers and orthogonal geography still differ from the
+reference's labeled diagonal venue composition.
+
+No decorative left accent appears in these inspected captures or the shared
+frame CSS. Approved characters, richer avatar/media rows, distinctive landing
+artwork, production release binding and live Wall composition remain open. The
+decision remains **handoff confirmed; partial adoption; visual implementation
+not accepted**. This recheck creates no duplicate general review gate and does
+not change task acceptance counts.
+
 ### Illustrated runtime delivered — `3eefd4ef`
 
 The exact attachment still matches the committed reference byte for byte. The
