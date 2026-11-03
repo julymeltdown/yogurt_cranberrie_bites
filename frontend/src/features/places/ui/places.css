@@ -40,3 +40,9 @@
 .places-view :is(a, button, input, summary):focus-visible { outline: 3px solid #921f28; outline-offset: 3px; }
 @media (max-width: 380px) { .places-facts div { grid-template-columns: 1fr; gap: 2px; } }
 @media (prefers-reduced-motion: reduce) { .places-view, .places-view * { animation: none; transition: none; scroll-behavior: auto; } }
+.places-illustrated[hidden] { display: none; }
+.places-overview-image { position: relative; border: 2px solid var(--concert-ink, #211b1b); background: #eee5d3; }
+.places-overview-image img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.places-map-marker { position: absolute; transform: translate(-50%, -50%); width: 44px; height: 44px; padding: 0; border: 2px solid #211b1b; border-radius: 50%; background: #f7eed9; color: #241d1c; font: 800 16px/1 system-ui, sans-serif; cursor: pointer; }
+.places-map-marker:disabled { background: #ddd5c4; color: #59514a; cursor: default; }
+.places-map-marker:focus-visible { outline: 3px solid #a02431; outline-offset: 3px; }

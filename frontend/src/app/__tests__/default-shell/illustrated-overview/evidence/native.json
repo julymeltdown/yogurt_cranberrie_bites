@@ -1,0 +1,133 @@
+{
+  "result": "PASS",
+  "qualification": "Actual default router/Auth/resolver/production composition/Phaser/Places. Original scenery pixels, immutable orthogonal geometry; TEST ONLY simulated admission metadata and geometric avatar resource inherited from qualified fixture. Deterministic HTTP/C05. No approved character, live backend, physical venue, device or complete visual acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "pixels": [
+        {
+          "theme": "REVENGE",
+          "actual": "8e1e6ee016e6a62c88c4b6d2e95db48fc5263e85017a6461b7f9af29ff61645d",
+          "expected": "8e1e6ee016e6a62c88c4b6d2e95db48fc5263e85017a6461b7f9af29ff61645d"
+        },
+        {
+          "theme": "PARADE",
+          "actual": "b7c27a7d497f1fa6993fc37cc08c53db1c5a32d25ecfc9c49ec28f743cea92e6",
+          "expected": "b7c27a7d497f1fa6993fc37cc08c53db1c5a32d25ecfc9c49ec28f743cea92e6"
+        },
+        {
+          "theme": "DANGER",
+          "actual": "3fc1998f7d04013bd9460cbd85724da0140d348011373d6492aee79a5266436c",
+          "expected": "3fc1998f7d04013bd9460cbd85724da0140d348011373d6492aee79a5266436c"
+        }
+      ],
+      "socketPeak": 1,
+      "socketConnections": 2,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "createdURLs": 41,
+      "revokedURLs": 41,
+      "checks": [
+        "default illustrated map",
+        "keyboard camera",
+        "zoom/recenter",
+        "Back focus",
+        "search/list",
+        "theme replacement",
+        "missing/invalid/broken encoding fallback",
+        "late/superseded encoding",
+        "closed/removed/mismatched target",
+        "withdrawal/late result",
+        "one world/connection",
+        "URL cleanup"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "pixels": [
+        {
+          "theme": "REVENGE",
+          "actual": "8e1e6ee016e6a62c88c4b6d2e95db48fc5263e85017a6461b7f9af29ff61645d",
+          "expected": "8e1e6ee016e6a62c88c4b6d2e95db48fc5263e85017a6461b7f9af29ff61645d"
+        },
+        {
+          "theme": "PARADE",
+          "actual": "b7c27a7d497f1fa6993fc37cc08c53db1c5a32d25ecfc9c49ec28f743cea92e6",
+          "expected": "b7c27a7d497f1fa6993fc37cc08c53db1c5a32d25ecfc9c49ec28f743cea92e6"
+        },
+        {
+          "theme": "DANGER",
+          "actual": "3fc1998f7d04013bd9460cbd85724da0140d348011373d6492aee79a5266436c",
+          "expected": "3fc1998f7d04013bd9460cbd85724da0140d348011373d6492aee79a5266436c"
+        }
+      ],
+      "socketPeak": 1,
+      "socketConnections": 2,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "createdURLs": 41,
+      "revokedURLs": 41,
+      "checks": [
+        "default illustrated map",
+        "keyboard camera",
+        "zoom/recenter",
+        "Back focus",
+        "search/list",
+        "theme replacement",
+        "missing/invalid/broken encoding fallback",
+        "late/superseded encoding",
+        "closed/removed/mismatched target",
+        "withdrawal/late result",
+        "one world/connection",
+        "URL cleanup"
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "pixels": [
+        {
+          "theme": "REVENGE",
+          "actual": "8e1e6ee016e6a62c88c4b6d2e95db48fc5263e85017a6461b7f9af29ff61645d",
+          "expected": "8e1e6ee016e6a62c88c4b6d2e95db48fc5263e85017a6461b7f9af29ff61645d"
+        },
+        {
+          "theme": "PARADE",
+          "actual": "b7c27a7d497f1fa6993fc37cc08c53db1c5a32d25ecfc9c49ec28f743cea92e6",
+          "expected": "b7c27a7d497f1fa6993fc37cc08c53db1c5a32d25ecfc9c49ec28f743cea92e6"
+        },
+        {
+          "theme": "DANGER",
+          "actual": "3fc1998f7d04013bd9460cbd85724da0140d348011373d6492aee79a5266436c",
+          "expected": "3fc1998f7d04013bd9460cbd85724da0140d348011373d6492aee79a5266436c"
+        }
+      ],
+      "socketPeak": 1,
+      "socketConnections": 2,
+      "mounts": 1,
+      "peak": 1,
+      "disposals": 1,
+      "createdURLs": 41,
+      "revokedURLs": 41,
+      "checks": [
+        "default illustrated map",
+        "keyboard camera",
+        "zoom/recenter",
+        "Back focus",
+        "search/list",
+        "theme replacement",
+        "missing/invalid/broken encoding fallback",
+        "late/superseded encoding",
+        "closed/removed/mismatched target",
+        "withdrawal/late result",
+        "one world/connection",
+        "URL cleanup"
+      ]
+    }
+  ],
+  "errors": []
+}

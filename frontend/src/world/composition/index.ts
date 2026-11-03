@@ -16,6 +16,7 @@ import { MapError } from '../map/json'
 import { createThemeLoader } from '../theme/loader'
 import type { PlaceMapRelease } from '../../features/places/model/controller'
 import type { AvatarScenePort } from '../avatar/scene'
+import type { SceneryOverviewPort } from '../illustrated/overview'
 
 export type { WorldReleaseResolver, ResolvedWorldRelease, WorldReleaseRequest } from './release'
 export type WorldRendererStatus = 'loading' | 'ready' | 'unavailable'
@@ -47,6 +48,7 @@ export interface WorldReplicationRelease {
 }
 /** Read-only capabilities of this exact live engine/release, withdrawn before any resource cleanup. */
 export interface WorldPresentationRelease {
+  readonly overview?: SceneryOverviewPort
   readonly request: import('./release').WorldReleaseRequest
   readonly map: PlaceMapRelease
   readonly camera: Pick<MovementAttachment['camera'], 'lookAt' | 'recenter' | 'setZoom' | 'read'>
@@ -282,7 +284,9 @@ export function createWorldComposition(options: WorldCompositionOptions) {
         presented = Object.freeze({ request: Object.freeze({ ...request, signal: presentationAbort.signal }),
           map: Object.freeze({ scope: context.scope, manifest: prepared.map,
             expected: Object.freeze({ mapId: prepared.resources.mapId, revision: prepared.resources.mapRevision, contentHash: prepared.mapInput.pin.mapHash, geometryHash: prepared.map.geometry_hash }) }),
-          camera: publicCamera, theme: Object.freeze({ read: theme.read, subscribe: theme.subscribe, select: theme.select }) })
+          camera: publicCamera, theme: Object.freeze({ read: theme.read, subscribe: theme.subscribe, select: theme.select }),
+          overview: Object.freeze({ read: () => livePresentation() ? runtime?.overview.read() ?? null : null,
+            subscribe: runtime.overview.subscribe }) })
         void theme.restore()
         publish({ phase: 'ready', runtime: mounted, renderer: renderer ? renderer.readStatus?.() ?? 'ready' : 'unavailable' })
         if (!isBootCurrent()) return

@@ -62,6 +62,31 @@ function OverviewDiagram({ state }: { state: PlacesState }) {
     <figcaption>Schema-derived virtual schematic · map revision {map.map_revision}. Numbers match the place list; × means closed. Not venue artwork or a physical route.</figcaption>
   </figure>
 }
+function IllustratedOverview({ state, controller }: { state: PlacesState; controller: PlacesController }) {
+  const [loaded, setLoaded] = useState(''), [failed, setFailed] = useState('')
+  const image = state.overview, map = state.map
+  if (!image || !map || state.mapMismatch || failed === image.imageUrl) return <OverviewDiagram state={state} />
+  const ready = loaded === image.imageUrl, g = map.geometry
+  return <>
+    {!ready && <OverviewDiagram state={state} />}
+    <figure className="places-diagram places-illustrated" hidden={!ready}>
+      <div className="places-overview-image">
+        <img src={image.imageUrl} width={image.width} height={image.height} alt={`${image.themeId} illustrated virtual map. Numbered places are listed below.`}
+          onLoad={() => setLoaded(image.imageUrl)} onError={() => setFailed(image.imageUrl)} />
+        {ready && state.list.data?.items.map((place, index) => {
+          const point = g.interactions.find(p => p.place_id === place.place_id)
+          return point && <button key={place.place_id} type="button" className="places-map-marker"
+            style={{ left: `${(point.cell_x + .5) / g.width_cells * 100}%`, top: `${(point.cell_y + .5) / g.height_cells * 100}%` }}
+            title={place.label} aria-label={`Show ${place.label} on illustrated virtual map`}
+            disabled={!controller.canShow(place.place_id)} onClick={() => controller.showOnMap(place.place_id)}>
+            {place.closure_state === 'CLOSED' ? '×' : index + 1}
+          </button>
+        })}
+      </div>
+      <figcaption>{image.themeId} · virtual map · revision {map.map_revision}. Numbers match the place list; × means closed. No physical route or arrival is implied.</figcaption>
+    </figure>
+  </>
+}
 export function PlacesOverview({ controller }: { controller: PlacesController }) {
   const state = usePlaces(controller), [search, setSearch] = useState('')
   useEffect(() => { controller.select(null) }, [controller])
@@ -72,7 +97,7 @@ export function PlacesOverview({ controller }: { controller: PlacesController })
     {state.list.phase === 'error' && <Failure reason={state.list.reason!} controller={controller} />}
     {['ready', 'empty'].includes(state.list.phase) && <>
       {state.mapMismatch && <Failure reason="map-mismatch" controller={controller} />}
-      <OverviewDiagram state={state} />
+      <IllustratedOverview state={state} controller={controller} />
       {!state.mapMismatch && <div className="places-actions" aria-label="Virtual camera controls">
         <ConcertAction tone="paper" disabled={!controller.cameraAvailable()} onClick={() => controller.recenter()}>Recenter avatar</ConcertAction>
         <ConcertAction tone="paper" disabled={!controller.cameraAvailable()} onClick={() => controller.zoom(-1)}>Zoom out</ConcertAction>

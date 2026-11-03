@@ -2,6 +2,7 @@ import type { SessionController } from '../../features/auth/model/session'
 import { createPlacesController, type PlaceMapPort, type PlaceCameraPort, type PlacesHttpPort } from '../../features/places'
 import { TransportError } from '../../shared/api/errors'
 import type { PrivacyScope } from '../../shared/query/privacy'
+import type { SceneryOverviewPort } from '../../world/illustrated/overview'
 
 /** One existing world mount's public inputs, not a bootstrap/admission substitute.
  * Publish a new immutable binding for a fresh mount; abort before withdrawing it.
@@ -12,6 +13,7 @@ export interface PlacesEntryRelease {
   readonly signal: AbortSignal
   readonly map: PlaceMapPort
   readonly camera?: PlaceCameraPort
+  readonly overview?: SceneryOverviewPort
 }
 export interface PlacesEntryPort {
   /** Stable snapshot until the underlying owner changes. Never restamp an old mount. */
@@ -50,7 +52,11 @@ export function createPlacesEntry({ auth, source, release }: {
       return auth.request({ ...input, signal: context.signal })
     }, signal)
   } }
-  const controller = createPlacesController({ session: auth.session, http, map: mapPort, camera: cameraPort })
+  const overview: SceneryOverviewPort | undefined = release.overview ? {
+    read: () => valid() ? release.overview!.read() : null,
+    subscribe: release.overview.subscribe,
+  } : undefined
+  const controller = createPlacesController({ session: auth.session, http, map: mapPort, camera: cameraPort, ...(overview ? { overview } : {}) })
   function dispose() {
     if (disposed) return
     disposed = true; lifetime.abort()

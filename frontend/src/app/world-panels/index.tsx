@@ -19,6 +19,7 @@ export function createPlacesPresentationSource(source: WorldPresentationPort): P
     if (current !== previous) {
       previous = current
       release = Object.freeze({ scope: current.request.privacyScope, signal: current.request.signal,
+        ...(current.overview ? { overview: { read: () => source.read() === current ? current.overview!.read() : null, subscribe: current.overview.subscribe } } : {}),
         map: { read: () => source.read() === current ? current.map : null, subscribe: source.subscribe },
         camera: { read: () => source.read() === current ? current.camera : null } })
     }
