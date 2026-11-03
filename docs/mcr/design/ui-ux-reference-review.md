@@ -8,6 +8,32 @@ The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged cop
 
 ## Evidence and limits
 
+### Delivery recheck at `f5af234`
+
+The original attachment and preserved reference still match byte for byte.
+The public/auth, community, Map, My Profile, Wall, Customize and shell handoffs
+record viewing that exact image. Current default route source registers these
+features; the World shell consumes the shared era and icon navigation controls.
+All nine source pins in the combined compact-shell report and all seven pins in
+the compact Customize report match the delivered source. Main inspected those
+recorded 390px captures, the current compact Map capture and the Feed fixture.
+This is a fresh check of recorded evidence and source, not a new live UI journey.
+
+The most visible mismatch remains the content: World and Customize captures use
+explicit test geometry, Map remains schematic, and Feed lacks the reference's
+illustrated avatar/media rows. The shared palette, symmetric frame and controls
+are delivered, but do not establish a faithful reproduction. Scoped shared,
+shell and avatar CSS inspection found no decorative left accent line. The
+default Wall provider still supplies `release={null}`; its route registration
+does not make a collaborative canvas available.
+
+The existing illustrated-world chat has inspected this exact reference and is
+actively producing original stage, studio, booth, foliage and mural scenery in
+its isolated `art-illustrated-world` checkout. Its new assets are not yet
+integrated or accepted. Approved character derivatives remain a separate open
+requirement. The verdict remains **handoff confirmed; visual implementation
+incomplete**. Historical sections below retain their own dated source bounds.
+
 ### Latest handoff recheck and compact layouts — `f790a98`
 
 **The exact image reached the UI owners; faithful implementation is still
