@@ -5,6 +5,7 @@ import type { PlacesEntryPort, PlacesEntryRelease } from '../places-entry'
 import { PlacesEntryProvider, PlacesOverviewRoute, PlaceDetailRoute } from '../places-entry'
 import { MuralEntryProvider, MuralWallPanel } from '../mural-entry'
 import { EraControls } from '../shell-chrome'
+import './presentation.css'
 import { useWorldPanelOwnership } from './ownership'
 import { usePorts } from '../access'
 const Context = createContext<WorldPresentationRelease | null>(null)
@@ -34,4 +35,5 @@ export function WorldPanels({ source, scope, children }: { source: WorldPresenta
 }
 export function ProductionEraControls() { const release = useContext(Context); return <EraControls controller={release?.theme ?? null} /> }
 export function ProductionThemePanel() { return <><ProductionEraControls /><p>Era preferences are saved on this device for this account and event. Server preference synchronization is unavailable.</p></> }
-export { PlacesOverviewRoute as ProductionMapPanel, PlaceDetailRoute as ProductionPlacePanel, MuralWallPanel as ProductionWallPanel }
+export function ProductionMapPanel() { return <div className="mcr-root-map"><PlacesOverviewRoute /></div> }
+export { PlaceDetailRoute as ProductionPlacePanel, MuralWallPanel as ProductionWallPanel }

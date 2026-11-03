@@ -79,3 +79,8 @@ body:has([data-mcr-shell]) { padding: 0; }
 
 .shell-era-region { min-inline-size: 0; }
 .shell-mode { margin: 0; padding: 3px 8px; font-size: .75rem; font-weight: 700; }
+
+.world-composition-summary { flex: none; padding: 4px 12px 6px; font-size: .75rem; line-height: 1.35; }
+.world-composition-summary > p { margin: 0; }
+.world-composition-summary > button { min-block-size: 44px; margin-block: 4px; }
+.world-composition:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }

@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict'
 import { createServer } from 'vite'
 import { chromium, expect } from '@playwright/test'
-import { writeFile } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-const frontend=resolve(import.meta.dirname,'../../../..'),evidence=resolve(import.meta.dirname,'evidence')
-const server=await createServer({root:frontend,configLoader:'runner',cacheDir:'/tmp/mcr-default-social-cache',server:{host:'127.0.0.1',port:0},logLevel:'warn'})
+const frontend=resolve(import.meta.dirname,'../../../..'),evidence=process.env.MCR_DEFAULT_EVIDENCE??resolve(import.meta.dirname,'evidence')
+assert(evidence===resolve(import.meta.dirname,'evidence')||evidence.startsWith(resolve(import.meta.dirname,'evidence')+'/'))
+await mkdir(evidence,{recursive:true})
+const server=await createServer({root:frontend,configLoader:'runner',cacheDir:'/tmp/mcr-default-social-cache',server:{host:'127.0.0.1',port:0,strictPort:false},logLevel:'warn'})
 await server.listen()
 const {post,publicIntro}=await server.ssrLoadModule('/src/app/social-composition/__tests__/fixtures.ts')
 const intro=publicIntro(),report={result:'FAIL',qualification:'Actual default createAppRoutes/WorldShell/SocialFeatures, canonical Auth/HTTP, existing one Phaser/production world owner and C05 MockSocket. Deterministic in-process C04 fixture/readiness and geometric terrain; no live backend, approved avatar/media/provider, sharing, two-user, device or load acceptance.',cases:[],screenshots:[],errors:[]}

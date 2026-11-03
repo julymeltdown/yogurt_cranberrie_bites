@@ -1,0 +1,4 @@
+/* The shell owns the Map heading and Back/size actions. Feature data/state stay intact. */
+.mcr-root-map .places-overview > .concert-window > .concert-window__titlebar { display: none; }
+.mcr-root-map .places-overview > .concert-window { border: 0; box-shadow: none; background: transparent; }
+.mcr-root-map .places-overview > .concert-window > .concert-window__body { padding: 0; }

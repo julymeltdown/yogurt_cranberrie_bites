@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict'
 import { createServer } from 'vite'
 import { chromium, expect } from '@playwright/test'
-import { writeFile } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-const frontend=resolve(import.meta.dirname,'../../../..'),evidence=resolve(import.meta.dirname,'evidence')
-const server=await createServer({root:frontend,configLoader:'runner',cacheDir:'/tmp/mcr-default-qualified-cache',server:{host:'127.0.0.1',port:0},logLevel:'warn'})
+const frontend=resolve(import.meta.dirname,'../../../..'),evidence=process.env.MCR_DEFAULT_EVIDENCE??resolve(import.meta.dirname,'evidence')
+assert(evidence===resolve(import.meta.dirname,'evidence')||evidence.startsWith(resolve(import.meta.dirname,'evidence')+'/'))
+await mkdir(evidence,{recursive:true})
+const server=await createServer({root:frontend,configLoader:'runner',cacheDir:'/tmp/mcr-default-qualified-cache',server:{host:'127.0.0.1',port:0,strictPort:false},logLevel:'warn'})
 await server.listen()
 const report={result:'FAIL',qualification:'Actual default createAppRoutes, canonical Auth login/bootstrap/HTTP, production lazy owner/resolver/composition, actual single Phaser, deterministic in-process C04 reads and C05 MockSocket, geometric TEST ONLY resources/review metadata. Default Wall unavailable: no approved anchor/write policy. No live service, approved artwork, two-user, physical device or load acceptance.',cases:[],directEntries:[],screenshots:[],errors:[]}
 let browser,currentPage,stage='start'
@@ -32,6 +34,7 @@ try{
   const place=page.locator('[id^="place-"]').filter({hasText:'View'}).first();const placeId=await place.getAttribute('id');await place.click();await expect(page.getByRole('heading',{name:'Place',exact:true,level:1})).toBeVisible();await expect(page.getByRole('region',{name:'Place information'})).toBeVisible();await shot('place')
   await page.getByRole('button',{name:'Back to previous panel'}).click();await expect(page.getByRole('heading',{name:'Map',exact:true,level:1})).toBeVisible();await expect(page.locator(`[id="${placeId}"]`)).toBeFocused();await shot('map')
   const mapRegion=page.getByRole('region',{name:'Map overview'})
+  await expect(page.locator('.mcr-root-map .concert-window__titlebar')).toBeHidden();await expect(page.getByRole('heading',{name:'Map',exact:true,level:1})).toBeVisible()
   await mapRegion.getByRole('button',{name:/Show .+ on virtual map/}).first().click();assert.equal((await state()).camera.following,false)
   await mapRegion.getByRole('button',{name:'Recenter avatar',exact:true}).click();assert.equal((await state()).camera.following,true)
   const search=page.getByRole('searchbox',{name:'Find a place',exact:true});await search.focus();await page.keyboard.press('ArrowLeft');await page.keyboard.press('Escape');assert.equal((await state()).path,'/world/map')
@@ -43,10 +46,17 @@ try{
   await navigate('/wall');await expect(page.getByText('Wall unavailable.',{exact:false})).toBeVisible();assert.equal((await state()).requests.filter(r=>r.method==='POST'&&r.path.endsWith('/mural/pixels')).length,0);await shot('wall-unavailable')
   await page.getByRole('button',{name:'Expand panel'}).click();await shot('full-panel');await page.getByRole('button',{name:'Reduce panel'}).click();await page.getByRole('button',{name:'Minimize panel'}).click();await page.getByRole('button',{name:'Show panel content'}).click()
   await page.setViewportSize({width,height:430});await expect(page.getByRole('navigation',{name:'Main navigation'})).toBeInViewport();await shot('short-viewport');await page.setViewportSize({width,height})
-  stage=`${width}/withdraw`;await navigate('/world');await mode('pending');await page.getByRole('button',{name:'Danger',exact:true}).click();await expect.poll(async()=>(await state()).gates).toBeGreaterThan(0);const writes=(await state()).writes
+  stage=`${width}/short-world`;await navigate('/world');await page.setViewportSize({width,height:430})
+  const visibleScene=await page.locator('.shell-world-host canvas').evaluate(canvas=>{
+   const c=canvas.getBoundingClientRect(),w=document.querySelector('.shell-world').getBoundingClientRect(),s=document.querySelector('.world-composition').getBoundingClientRect()
+   return Math.max(0,Math.min(c.bottom,w.bottom,s.bottom,innerHeight)-Math.max(c.top,w.top,s.top,0))
+  });assert(visibleScene>=100,`Visible short world scene: ${visibleScene}`);await shot('short-world')
+  const recenter=page.getByRole('button',{name:'Recenter',exact:true});await recenter.focus();await expect(recenter).toBeInViewport();await expect(page.getByRole('navigation',{name:'Main navigation'})).toBeInViewport();await shot('short-world-controls')
+  await page.setViewportSize({width,height})
+  stage=`${width}/withdraw`;await mode('pending');await page.getByRole('button',{name:'Danger',exact:true}).click();await expect.poll(async()=>(await state()).gates).toBeGreaterThan(0);const writes=(await state()).writes
   await page.evaluate(()=>window.__DEFAULT_QUALIFIED__.withdraw());await expect(page.getByText('Eras unavailable.',{exact:true})).toBeVisible();await mode('valid');await page.evaluate(()=>window.__DEFAULT_QUALIFIED__.release());await shot('withdrawn')
   const end=await state();assert.equal(end.writes,writes);assert.equal(end.games,0);assert.equal(end.activeSockets,0);assert.equal(end.sceneClosed,1);assert.equal(end.canvases,0)
-  await page.evaluate(()=>window.__DEFAULT_QUALIFIED__.dispose());report.cases.push({width,height,mounts:end.mounts,peak:end.peak,disposals:end.disposals,sceneClosed:end.sceneClosed,lateWrites:end.writes-writes,defaultMuralPosts:0})
+  await page.evaluate(()=>window.__DEFAULT_QUALIFIED__.dispose());report.cases.push({width,height,mounts:end.mounts,peak:end.peak,disposals:end.disposals,sceneClosed:end.sceneClosed,lateWrites:end.writes-writes,defaultMuralPosts:0,visibleSceneAt430:visibleScene})
   // Fresh documents prove initial-entry registration and local preference restore, not only navigation.
   for(const [path,title] of [['/world/map','Map'],[`/world/places/${placeId.slice(6)}`,'Place'],['/wall','Wall'],['/world/theme','Choose an era']]){
    stage=`${width}/entry${path}`;await page.goto(`${base}/src/app/__tests__/default-shell/qualified.html?path=${encodeURIComponent(path)}`);await ready()

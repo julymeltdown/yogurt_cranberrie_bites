@@ -99,12 +99,15 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     let controller = new AbortController(), bootRevision = 0
     const waiting = Promise.all([drain, authority.drain]).then(() => {})
     const root = document.createElement('div'), stage = document.createElement('div'), inputs = document.createElement('div'), status = document.createElement('p'), retry = document.createElement('button')
-    root.className = 'world-composition'; root.style.cssText = 'height:100%;min-height:0;display:flex;flex-direction:column'
-    stage.style.cssText = 'flex:1;min-height:120px;overflow:hidden'; inputs.style.cssText = 'flex:none'; status.setAttribute('role', 'status')
-    const authorityNotice = document.createElement('p')
-    authorityNotice.textContent = 'Your position in this world does not confirm arrival at the venue.'
+    root.className = 'world-composition'; root.style.cssText = 'height:100%;min-height:0;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain'
+    root.setAttribute('role', 'region'); root.setAttribute('aria-label', 'World scene and controls'); root.tabIndex = 0
+    stage.style.cssText = 'flex:1 0 120px;min-height:120px;overflow:hidden'; inputs.style.cssText = 'flex:none'; status.setAttribute('role', 'status')
+    const authorityNotice = document.createElement('p'), summary = document.createElement('div')
+    summary.className = 'world-composition-summary'
+    status.className = 'world-composition-status'; authorityNotice.className = 'world-composition-notice'
+    authorityNotice.textContent = 'Virtual position is not physical arrival.'
     retry.type = 'button'; retry.hidden = true; retry.textContent = 'Reconnect world'
-    status.textContent = 'Opening the world…'; root.append(stage, inputs, status, retry, authorityNotice); host.append(root)
+    status.textContent = 'Opening the world…'; summary.append(status, retry, authorityNotice); root.append(stage, inputs, summary); host.append(root)
     const cleanup: (() => void)[] = []
     const current = () => !disposed && !failed && owner === owned && !controller.signal.aborted
       && auth.privacy.isCurrent(privacyScope) && auth.session.isCurrent(context.scope)
@@ -123,7 +126,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
       const view = owned.replication?.read()
       if (!view) return
       status.textContent = view.phase === 'live' ? rendererState === 'ready' ? 'World connected.'
-        : rendererState === 'loading' ? 'World connected. Loading avatar artwork…' : 'World connected. Avatar artwork is unavailable.'
+        : rendererState === 'loading' ? 'Connected. Loading avatar artwork…' : 'Connected. Avatar artwork is unavailable.'
         : view.phase === 'suspended' ? 'World paused. Return to continue.'
           : view.phase === 'closed' ? 'World disconnected. Select Reconnect world to continue.' : 'Connecting to the world…'
       retry.hidden = view.phase !== 'closed'; retry.textContent = 'Reconnect world'
