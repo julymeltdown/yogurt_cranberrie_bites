@@ -1,0 +1,53 @@
+{
+  "base": "0faaf8b4c4cfc999db8e8976bb96dfd4527eace2",
+  "scope": "Coupled FE03/FE29 read-path only; no release or whole-project acceptance",
+  "result": "PASS",
+  "initial_affected_five_file_run": {
+    "exit_code": 1,
+    "test_count": 45,
+    "passed": 44,
+    "failed": 1,
+    "existing_four_files": {
+      "test_count": 35,
+      "passed": 35
+    },
+    "failure": "New jsdom oracle harness static URL-to-file conversion; corrected without production change"
+  },
+  "corrected_new_file_run": {
+    "exit_code": 0,
+    "test_count": 10,
+    "passed": 10
+  },
+  "distinct_affected_tests_with_passing_evidence": 45,
+  "whole_types": {
+    "exit_code": 0,
+    "incremental": false
+  },
+  "affected_lint": {
+    "exit_code": 0,
+    "warnings": 0
+  },
+  "production_native": {
+    "exit_code": 0,
+    "report": "report.json",
+    "widths": [
+      360,
+      390,
+      430
+    ]
+  },
+  "targeted_peer_review": {
+    "result": "NO_ACTIONABLE_FINDINGS",
+    "scope": "Three production-file deltas, shared helper and C03/C04/read paths; static only"
+  },
+  "production_and_test_sha256": {
+    "frontend/src/features/people/contract.ts": "067a94397097071304cc334787faeffd75dcef7ec5b224e4d0cf92e92d830b0d",
+    "frontend/src/features/people/controller.ts": "cb490a4469782f82489fd06e1be0636f32693644a5d5f6fcc5cdf647edd8a087",
+    "frontend/src/features/people/People.tsx": "6d95f84a9dfb985292af4d1caaa3f87670ca18e99974b114b50797a5649d62b9",
+    "frontend/src/features/people/__tests__/unicode-length.test.tsx": "4623a0b94570f6a329d95f65c48a42954935eebe1c15fdc65ccc12e0765e0527",
+    "frontend/src/features/people/__tests__/people.test.ts": "80beea618ede6d0e6f8414eb9d2b04e4f927d8ab58f032611e57f0e2490f6fa6",
+    "frontend/src/features/people/__tests__/ui.test.tsx": "3948e8a99c67e3e99ecb6f6e63ca2b3bcc195fd677fb6ee7c0d09b0f098e9ce2",
+    "frontend/src/features/intro/__tests__/intro.test.ts": "d105c8cf1a38d526f65ac0e5a7e32a19685c1a7c9d284dbeb9be6ce7d45cb216",
+    "frontend/src/features/intro/__tests__/unicode-length.test.tsx": "74f3211c29f0385dfae3529836ff773ac20558c490a15f610b653c973d400d09"
+  }
+}

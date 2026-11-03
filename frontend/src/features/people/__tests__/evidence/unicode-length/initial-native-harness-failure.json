@@ -1,0 +1,17 @@
+{
+  "result": "FAIL",
+  "scope": "Actual people/profile/controller views, synthetic HTTP and existing unavailable-art state; no live/root/realOSIME/acceptance",
+  "hashes": {
+    "src/features/people/contract.ts": "067a94397097071304cc334787faeffd75dcef7ec5b224e4d0cf92e92d830b0d",
+    "src/features/people/controller.ts": "cb490a4469782f82489fd06e1be0636f32693644a5d5f6fcc5cdf647edd8a087",
+    "src/features/people/People.tsx": "6d95f84a9dfb985292af4d1caaa3f87670ca18e99974b114b50797a5649d62b9",
+    "src/shared/validation/text.ts": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61"
+  },
+  "build": "PASS",
+  "browser": "156.0.8078.80",
+  "widths": [],
+  "errors": [
+    "$RefreshSig$ is not defined"
+  ],
+  "resolution": "Use Vite production preview of the built fixture rather than constructing a dev server after production build in the same process. No product code changed for this harness-only failure."
+}
