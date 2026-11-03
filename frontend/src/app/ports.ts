@@ -1,4 +1,5 @@
 import type { SessionController } from '../features/auth/model/session'
+import type { AccountAssetsPort } from './account-entry/assets'
 import type { ShellCapabilities } from './capabilities'
 import { createProductionWorld, type ProductionWorldOptions } from './world-entry/production'
 import type { ReplicationReader } from '../features/world-rooms'
@@ -47,6 +48,8 @@ export interface WorldLifecyclePort {
 export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader }
 export interface WorldAccessBindingPort { read(): WorldAccessBinding | null; subscribe(listener: () => void): () => void }
 export interface ShellPorts {
+  /** Explicit reviewed local avatar inputs; absent means previews are unavailable. */
+  readonly accountAssets?: AccountAssetsPort
   readonly auth?: SessionController
   readonly session: SessionPort
   readonly readiness: ReadinessPort

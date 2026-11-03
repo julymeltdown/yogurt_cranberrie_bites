@@ -10,6 +10,7 @@ import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
 
 const ProductionWorldFeatures = lazy(() => import('./world-entry/root-features'))
+const AccountProvider = lazy(() => import('./account-entry/provider'))
 const CommunityFeatures = lazy(() => import('./CommunityFeatures'))
 
 export function WorldBoundary() {
@@ -62,6 +63,7 @@ function typingTarget(target: EventTarget | null) {
 export function WorldShell({ scope, bootstrap, privacyScope = null }: {
   scope: ActiveScope; bootstrap: ShellBootstrap; privacyScope?: PrivacyScope | null
 }) {
+  const { auth, accountAssets } = usePorts()
   const location = useLocation()
   const route = resolvePanel(location.pathname)
   const panelOpen = location.pathname !== '/world'
@@ -78,7 +80,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     window.addEventListener('resize', update)
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
-  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures>
+  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}>
     <NavigationMemory><div className="world-shell" data-mcr-shell="" ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
@@ -105,7 +107,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
       {tabs.map(tab => <ShellLink key={tab.path} id={`tab-${tab.label.toLowerCase()}`} to={tab.path}
         aria-current={route?.route.tab === tab.path ? 'page' : undefined}>{tab.label}</ShellLink>)}
     </nav>
-  </div></NavigationMemory></ProductionWorldFeatures></CommunityFeatures></Suspense>
+  </div></NavigationMemory></AccountProvider></ProductionWorldFeatures></CommunityFeatures></Suspense>
 }
 
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {
