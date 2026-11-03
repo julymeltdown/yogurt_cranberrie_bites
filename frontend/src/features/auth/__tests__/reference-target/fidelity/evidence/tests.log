@@ -1,0 +1,7 @@
+RUN  v4.1.9 $CHECKOUT/frontend
+
+
+ Test Files  8 passed (8)
+      Tests  156 passed (156)
+   Start at  08:46:33
+   Duration  7.05s (transform 1.66s, setup 0ms, import 2.12s, tests 9.52s, environment 1.78s)
