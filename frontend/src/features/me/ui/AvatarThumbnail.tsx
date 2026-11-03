@@ -7,6 +7,8 @@ export interface ReviewedThumbnailSource {
   readonly scope: PrivacyScope
   readonly options: Omit<Parameters<typeof createReviewedAvatarCompositor>[0], 'signal'>
 }
+// options.leases, when supplied by the account owner, retains only the verified atlas.
+// Each mount still owns its compositor, thumbnail canvas and cancellation independently.
 export function AvatarThumbnail({ auth, config, source }: { auth: Pick<SessionController, 'privacy'>; config: AvatarConfig; source?: ReviewedThumbnailSource }) {
   const host = useRef<HTMLDivElement>(null), [message, setMessage] = useState('Avatar preview unavailable. Your saved outfit is unchanged.')
   useLayoutEffect(() => {
