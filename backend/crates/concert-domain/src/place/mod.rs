@@ -137,8 +137,23 @@ fn asset_id(value: &str) -> bool {
             .all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'_')
 }
 fn uri(value: &str) -> bool {
-    Url::parse(value)
-        .is_ok_and(|url| matches!(url.scheme(), "http" | "https") && url.host_str().is_some())
+    let printable = value.bytes().all(|byte| matches!(byte, b'!'..=b'~'));
+    let hex = |byte: u8| byte.is_ascii_hexdigit();
+    let valid_escapes = value.match_indices('%').all(|(index, _)| {
+        value
+            .as_bytes()
+            .get(index + 1..index + 3)
+            .is_some_and(|pair| pair.len() == 2 && hex(pair[0]) && hex(pair[1]))
+    });
+    printable
+        && valid_escapes
+        && Url::parse(value).is_ok_and(|url| {
+            let scheme = url.scheme();
+            value
+                .get(scheme.len() + 1..)
+                .is_some_and(|rest| !rest.is_empty())
+                && (url.cannot_be_a_base() || url.host_str().is_some())
+        })
 }
 fn hash_bytes(bytes: &[u8]) -> String {
     use sha2::Digest as _;

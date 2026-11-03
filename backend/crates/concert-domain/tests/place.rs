@@ -133,6 +133,50 @@ fn canonical_place_and_provenance_values_are_closed_and_reviewed_when_verified()
     }
     assert!(PlaceId::from_uuid(Uuid::nil()).is_err());
     assert!(PlaceId::from_str("00000000-0000-4000-8000-00000000000A").is_err());
+    for invalid in [
+        "relative/path",
+        "https://example.invalid/a b",
+        "https://example.invalid/%zz",
+        "https://example.invalid/ref\n",
+        "https://example.invalid/ref\u{7f}",
+        "https://example.invalid/refé",
+        "urn:",
+        "mailto:",
+        "",
+    ] {
+        assert!(Provenance::new(
+            "fixture_source".into(),
+            SourceKind::PlaceReference,
+            "revision1".into(),
+            Some(invalid.into()),
+            "MCR fixture author".into(),
+            "Synthetic metadata only".into(),
+            ReviewState::Unreviewed,
+            None,
+            None,
+            PhotoPermission::NotApplicable,
+        )
+        .is_err());
+    }
+    for valid in [
+        "https://example.invalid/encoded%20space",
+        "urn:mcr:format-fixture",
+        "mailto:fixture@example.invalid",
+    ] {
+        assert!(Provenance::new(
+            "fixture_source".into(),
+            SourceKind::PlaceReference,
+            "revision1".into(),
+            Some(valid.into()),
+            "MCR fixture author".into(),
+            "Synthetic metadata only".into(),
+            ReviewState::Unreviewed,
+            None,
+            None,
+            PhotoPermission::NotApplicable,
+        )
+        .is_ok());
+    }
     assert!(place(
         PLACE_A,
         PlaceKind::Physical,
