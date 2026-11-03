@@ -88,11 +88,11 @@ def build_document():
     document = {
         "openapi": "3.1.0",
         "info": {"title": "MCR core target contract", "version": "0.1.0",
-                 "description": "C03 draft; target contracts are not runtime acceptance."},
+                 "description": "C03 v0.1 frozen core target; runtime implementation and optional OAuth handoff are separately qualified."},
         "servers": [{"url": "/"}],
         "paths": {},
         "components": json_schema(copy.deepcopy(inherited["components"])),
-        "x-mcr-contract-state": "DRAFT",
+        "x-mcr-contract-state": "CONTRACT_READY",
     }
     found = set()
     for path, methods in inherited["paths"].items():

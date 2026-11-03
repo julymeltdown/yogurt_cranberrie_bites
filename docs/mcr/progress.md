@@ -9,15 +9,15 @@ it is not feature integration or release acceptance.
 |---|---|---|
 | C01 | ACCEPTED | [Source map](source-map.md), two reviewed per-file inventories and exact import whitelist. Headless candidates need their own later extraction approval/tests. |
 | C02 | ACCEPTED | [Foundation qualification](evidence/foundation.md): pinned frozen installation, strict FE build/lint, pinned source and imported full BE workspace builds. Docker execution is NOT_RUN and is not claimed by this minimal build task. |
-| C03 | IN_PROGRESS | [Core contract draft](core-contract.md), exact inherited auth mapping, public/private DTOs and 33 validated examples; 23 checks pass. Producer/consumer review and OAuth decisions keep freeze pending. |
+| C03 | ACCEPTED | [Frozen core v0.1 contract](core-contract.md), exact inherited auth mapping, public/private DTOs, 33 examples and 23 tests; three scoped reviews. Email/core consumers can proceed. Optional OAuth exposure remains explicitly disabled until a separate handoff revision; runtime implementation is NOT_RUN. |
 | C06 | CONTRACT_READY | Five asset schemas, six golden JSON fixtures and 21 checks pass; all three themes share geometry and avatar identities. Pixel alignment/art/venue truth remain NOT_RUN. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | IN_PROGRESS | 1,071 pinned files imported in `909e2bf`, full build passes. Explicit MCR runtime configuration and safe launch qualification remain. |
 | BE02 | IN_PROGRESS | [Isolated DB report](evidence/be02-migration-smoke.json): 84 migrations in six stores, ledger checksums and six records survive PG restart; cleanup PASS. 24 guard tests pass. Normal service startup/restart, runtime roles and packaging remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. Simultaneous nested-modal issue resolved. Physical devices and screen readers remain separate QA work. |
 
-All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **4/112**;
-accepted total: **4/118**. No required IA entry or IN01–IN05 integration gate has
+All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **5/112**;
+accepted total: **5/118**. No required IA entry or IN01–IN05 integration gate has
 been accepted. Real identity/provider flows, service startup, multiplayer,
 transactions, privacy/revocation, physical place verification, original production
 assets, real devices, load/recovery and deployment remain outstanding.
@@ -44,7 +44,7 @@ no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
 The next implementation queue is guarded MCR runtime configuration/full service
-startup for BE02, the remaining C03 freeze decisions and BE03 auth hardening,
+startup for BE02, BE03 auth hardening against the frozen C03 email/core surface,
 then typed frontend transport and the persistent shell. C04/C05 domain/realtime
 contracts remain required before feature lanes diverge. No runtime, OAuth or
 release acceptance follows from the completed component/contract checks.

@@ -117,8 +117,8 @@ def main():
     except (ValueError, ValidationError, OSError) as error:
         print(f"Core fixture validation failed: {error}", file=sys.stderr)
         return 1
-    print(json.dumps({"state": "DRAFT_VALIDATED", "fixtures": count,
-                      "producer_runtime": "NOT_RUN", "contract_freeze": "PENDING"}))
+    print(json.dumps({"state": "CONTRACT_READY", "fixtures": count,
+                      "producer_runtime": "NOT_RUN", "contract_freeze": "CORE_V0_1"}))
     return 0
 
 

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://contracts.mcr.invalid/core/v1/core.schema.json",
-  "title": "MCR core target DTOs (C03 draft)",
+  "title": "MCR core target DTOs v0.1.0",
   "$defs": {
     "UtcTimestamp": {
       "type": "string",

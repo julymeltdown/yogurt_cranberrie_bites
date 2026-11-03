@@ -1,9 +1,10 @@
 # C03 core HTTP target contract
 
-State: **IN_PROGRESS / DRAFT**, version 0.1.0. This is a reviewable contract input,
-not runtime route registration. Final freeze needs producer/consumer review,
-all golden fixtures and the listed open OAuth decisions. Implementation may use
-these fixtures for preparation, but C03 is not accepted by publishing this draft.
+State: **CONTRACT_READY**, version 0.1.0. The integrator freezes the email/core
+surface and the exact inherited operation mapping after consumer, schema and
+producer reviews plus 33 golden fixtures and 23 core tests. This is contract
+acceptance, not runtime route registration. OAuth exposure remains disabled;
+enabling an SPA handoff requires a separately reviewed contract revision.
 
 ## Source and generator
 
@@ -112,7 +113,14 @@ UUID; private query identity is `(user_id,event_id)` plus a session generation.
   providers remain disabled; enum membership cannot enable a button. No secrets
   or client credentials are returned. Naver/Instagram are not auth providers here.
 
-## Open before C03 freeze / BE03 acceptance
+## Frozen OAuth exposure policy and remaining BE03 work
+
+Retain the exact inherited OAuth schemas as mapped references, with
+`DISABLED_UNTIL_HANDOFF_QUALIFIED` exposure. These operations must not be offered
+by the MCR browser or enabled by capabilities in v0.1. No provider enum or secret
+configuration may override this policy. This allows the required email flow and
+core consumers to implement against a frozen contract without inventing OAuth
+behavior. It is not a permanent removal of optional configured providers.
 
 OAuth navigation currently returns JSON, and Apple's intermediate form posts to
 absolute `/auth/oauth/apple/callback/complete`. A same-origin edge must preserve
@@ -135,5 +143,7 @@ unknown avatar items, inconsistent bootstrap avatars, writes during read-only
 events, duplicate provider/place IDs, leaked refresh credentials, stale/empty
 update revisions and invalid UTF-8 password lengths. Place/public-profile fixtures
 bind requested event/place/target-user context, and operation/status validation
-rejects inappropriate error reasons. The inherited 22 generator
-regressions pass separately. These results do not close the open decisions above.
+rejects inappropriate error reasons. The inherited 22 generator regressions pass
+separately. Schema-review R01–R04 and producer contract requests PR01/PR05/PR06
+are resolved in their review records. PR02–PR04, actual Origin enforcement, core
+error normalization and real Auth journeys remain BE03/runtime obligations.
