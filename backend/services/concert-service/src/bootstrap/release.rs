@@ -64,7 +64,7 @@ pub fn validate_product_files(
         avatar: parse_avatar_config(&config)?,
     };
     validate_default(defaults.avatar.clone(), avatar)?;
-    let fallback = string(avatar, "fallback_preset_id")?;
+    let fallback = string(avatar, default_preset_key(avatar))?;
     if !avatar["presets"]
         .as_array()
         .ok_or(super::BootstrapServiceError::ReleaseUnavailable)?
@@ -280,34 +280,17 @@ fn manifest_id(value: &Value, key: &str) -> Result<String, super::BootstrapServi
         .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)
 }
 fn parse_avatar_config(value: &Value) -> Result<AvatarSelection, super::BootstrapServiceError> {
-    let item = object(value, "item_ids")?;
-    let item_id = |name: &str| {
-        item.get(name)
-            .and_then(Value::as_str)
-            .map(|value| AssetId::new(value.to_owned()))
-            .transpose()
-            .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)
-    };
-    Ok(AvatarSelection {
-        manifest_id: AssetId::new(manifest_id(value, "manifest_id")?)
-            .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?,
-        manifest_version: Revision::new(positive(value, "manifest_version")?)
-            .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?,
-        body: item_id("body")?.ok_or(super::BootstrapServiceError::ReleaseUnavailable)?,
-        eyes: item_id("eyes")?.ok_or(super::BootstrapServiceError::ReleaseUnavailable)?,
-        hair: item_id("hair")?.ok_or(super::BootstrapServiceError::ReleaseUnavailable)?,
-        outfit: item_id("outfit")?.ok_or(super::BootstrapServiceError::ReleaseUnavailable)?,
-        accessory: match item.get("accessory") {
-            Some(Value::Null) | None => None,
-            Some(Value::String(value)) => Some(
-                AssetId::new(value.to_owned())
-                    .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?,
-            ),
-            _ => return Err(super::BootstrapServiceError::ReleaseUnavailable),
-        },
-        skin_tone: AssetId::new(string(value, "skin_tone_id")?.to_owned())
-            .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?,
-    })
+    let bytes =
+        serde_json::to_vec(value).map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)?;
+    concert_domain::avatar::parse_config(&bytes)
+        .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)
+}
+fn default_preset_key(avatar: &Value) -> &'static str {
+    if avatar["representation"] == "whole_character" {
+        "default_preset_id"
+    } else {
+        "fallback_preset_id"
+    }
 }
 
 fn validate_template(value: &Value) -> Result<(), super::BootstrapServiceError> {
@@ -336,7 +319,7 @@ fn validate_template(value: &Value) -> Result<(), super::BootstrapServiceError> 
 }
 pub(super) fn validate_avatar(value: &Value) -> Result<(), super::BootstrapServiceError> {
     if string(value, "kind")? != "avatar_manifest"
-        || string(value, "contract_version")? != ASSET_VERSION
+        || !matches!(string(value, "contract_version")?, "1.0.0" | "1.1.0")
     {
         return Err(super::BootstrapServiceError::ReleaseUnavailable);
     }
@@ -347,7 +330,7 @@ pub(super) fn validate_avatar(value: &Value) -> Result<(), super::BootstrapServi
         .get("presets")
         .and_then(Value::as_array)
         .ok_or(super::BootstrapServiceError::ReleaseUnavailable)?;
-    let fallback = string(value, "fallback_preset_id")?;
+    let fallback = string(value, default_preset_key(value))?;
     if !presets
         .iter()
         .any(|v| string(v, "preset_id").ok() == Some(fallback))
@@ -401,45 +384,11 @@ fn validate_default(
     selection: AvatarSelection,
     avatar: &Value,
 ) -> Result<(), super::BootstrapServiceError> {
-    let identity = (
-        selection.manifest_id.as_str(),
-        selection.manifest_version.get(),
-    );
-    if identity
-        != (
-            manifest_id(avatar, "manifest_id")?.as_str(),
-            positive(avatar, "manifest_version")?,
-        )
-    {
-        return Err(super::BootstrapServiceError::ReleaseUnavailable);
-    }
-    let tones: BTreeSet<_> = avatar["skin_tones"]
-        .as_array()
-        .ok_or(super::BootstrapServiceError::ReleaseUnavailable)?
-        .iter()
-        .filter_map(|v| string(v, "skin_tone_id").ok())
-        .collect();
-    if !tones.contains(selection.skin_tone.as_str()) {
-        return Err(super::BootstrapServiceError::ReleaseUnavailable);
-    }
-    let items = avatar["atlas"]["items"]
-        .as_array()
-        .ok_or(super::BootstrapServiceError::ReleaseUnavailable)?;
-    let items_to_check: [(&str, &str); 4] = [
-        (selection.body.as_str(), "body"),
-        (selection.eyes.as_str(), "eyes"),
-        (selection.hair.as_str(), "hair"),
-        (selection.outfit.as_str(), "outfit"),
-    ];
-    for (id, layer) in items_to_check {
-        if !items.iter().any(|v| {
-            string(v, "item_id").ok() == Some(id) && string(v, "layer_id").ok() == Some(layer)
-        }) {
-            return Err(super::BootstrapServiceError::ReleaseUnavailable);
-        }
-    }
-    Ok(())
+    concert_domain::avatar::AvatarCatalog::from_validated_manifest(avatar)
+        .and_then(|catalog| catalog.validate(&selection))
+        .map_err(|_| super::BootstrapServiceError::ReleaseUnavailable)
 }
+
 pub(super) fn validate_themes(
     themes: &[Value],
     avatar: &Value,
@@ -514,7 +463,11 @@ fn validate_release_provenance(
         check(value, policy)?;
     }
     if policy == ReleasePolicy::Product
-        && string(&values[1]["provenance"], "source_id")? != "mcr_user_characters_20261103"
+        && if values[1]["representation"] == "whole_character" {
+            string(&values[1]["source"], "source_pack_id")? != "mcr_user_characters_20261103"
+        } else {
+            string(&values[1]["provenance"], "source_id")? != "mcr_user_characters_20261103"
+        }
     {
         return Err(super::BootstrapServiceError::ReleaseUnavailable);
     }
@@ -668,21 +621,9 @@ pub fn bind_response(
 }
 
 fn avatar_config_value(selection: &AvatarSelection) -> Value {
-    json!({
-        "contract_version": "1.0.0",
-        "kind": "avatar_config",
-        "manifest_id": selection.manifest_id.as_str(),
-        "manifest_version": selection.manifest_version.get(),
-        "item_ids": {
-            "body": selection.body.as_str(),
-            "eyes": selection.eyes.as_str(),
-            "hair": selection.hair.as_str(),
-            "outfit": selection.outfit.as_str(),
-            "accessory": selection.accessory.as_ref().map(AssetId::as_str),
-        },
-        "skin_tone_id": selection.skin_tone.as_str(),
-    })
+    concert_domain::avatar::config_value(selection)
 }
+
 fn validate_persisted_binding(
     document: &Value,
     admission: &BootstrapAdmission,

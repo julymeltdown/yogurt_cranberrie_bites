@@ -34,6 +34,28 @@ def artifacts(path):
     return selected[0]
 
 
+def write_selected_release(root, document):
+    selected = json.loads((ROOT / 'contracts/fixtures/assets/selected-static/avatar-manifest.json').read_text())
+    selected_document = json.loads(json.dumps(document))
+    selected_document['avatar_manifest'] = selected
+    selected_document['avatar']['config'] = selected['presets'][0]['config']
+    selected_document['participant']['profile']['avatar'] = selected_document['avatar']
+    for theme in selected_document['theme_manifests']:
+        theme['avatar_manifest_id'] = selected['manifest_id']
+        theme['avatar_manifest_version'] = selected['manifest_version']
+        theme['avatar_content_hash'] = selected['content_hash']
+        theme.pop('content_hash')
+        theme['content_hash'] = 'sha256:' + hashlib.sha256(json.dumps(
+            theme, sort_keys=True, separators=(',', ':'), ensure_ascii=True).encode()).hexdigest()
+    selected_dir = root / 'release-selected'; selected_dir.mkdir(mode=0o700)
+    selected_files = {'bootstrap': selected_document, 'avatar': selected,
+                      'map': selected_document['map_manifest']}
+    selected_files.update({theme['theme_id'].lower(): theme for theme in selected_document['theme_manifests']})
+    for name, value in selected_files.items():
+        (selected_dir / (name + '.json')).write_text(json.dumps(value))
+    return {key: selected[key] for key in ('manifest_id', 'manifest_version', 'content_hash')}
+
+
 def run(metadata, pg_bin, pinned_binaries=None):
     binary = artifacts(metadata)
     source_commit = None
@@ -74,13 +96,16 @@ def run(metadata, pg_bin, pinned_binaries=None):
         files.update({theme['theme_id'].lower(): theme for theme in document['theme_manifests']})
         for name, value in files.items():
             (release / (name + '.json')).write_text(json.dumps(value))
+        report['selected_manifest_pin'] = write_selected_release(cluster.root, document)
         bootstrap.run_test(cluster, binary, 'native_avatar_transactions', report)
+        bootstrap.run_test(cluster, binary, 'native_selected_avatar_transactions', report)
         report['response_sha256'] = hashlib.sha256((cluster.root / 'avatar-state.json').read_bytes()).hexdigest()
         before = cluster.assert_postmaster(); cluster.stop(); cluster.start()
         after = cluster.assert_postmaster(); bootstrap.require(before != after, 'postmaster did not restart')
         report['restart'] = {'before_pid': before, 'after_pid': after}
         bootstrap.run_test(cluster, binary, 'native_avatar_restart_persistence', report)
-        report['native_tests'] = 2
+        bootstrap.run_test(cluster, binary, 'native_selected_avatar_restart_persistence', report)
+        report['native_tests'] = 4
         report['state'] = 'PASS'
     except (migration.SmokeError, OSError, ValueError, subprocess.SubprocessError) as error:
         report['error'] = error.detail if isinstance(error, migration.SmokeError) else type(error).__name__
