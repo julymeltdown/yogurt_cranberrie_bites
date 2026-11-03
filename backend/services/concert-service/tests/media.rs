@@ -450,6 +450,13 @@ async fn all_formats_decode_reencode_and_animation_is_rejected() -> anyhow::Resu
     actl.extend(0u32.to_be_bytes());
     png.splice(33..33, chunk(b"acTL", &actl));
     assert!(codec.sanitize(png, Mime::Png).await.is_err());
+    // Both axes fit 4096 but 4001*4001 exceeds the separate 16,000,000 pixel cap.
+    let mut pixels = encode(ImageFormat::Png);
+    pixels[16..20].copy_from_slice(&4001u32.to_be_bytes());
+    pixels[20..24].copy_from_slice(&4001u32.to_be_bytes());
+    let crc = crc32(&pixels[12..29]);
+    pixels[29..33].copy_from_slice(&crc.to_be_bytes());
+    assert!(codec.sanitize(pixels, Mime::Png).await.is_err());
     assert!(codec.sanitize(b"GIF89a".to_vec(), Mime::Png).await.is_err());
     Ok(())
 }
