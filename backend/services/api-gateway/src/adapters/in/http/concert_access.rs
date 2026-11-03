@@ -49,9 +49,11 @@ impl HttpConcertAccess {
             .map_err(|_| GatewayError::unauthorized("Invalid bearer token"))
     }
 
-    #[allow(dead_code)]
-    pub(crate) fn borrowed(&self) -> &ConcertAccessContext {
-        &self.0
+    /// Borrow the original sealed input for configured owner composition. Every
+    /// owner read and observation still checks the same original context.
+    pub fn borrowed(&self) -> Result<&ConcertAccessContext, GatewayError> {
+        self.check()?;
+        Ok(&self.0)
     }
 }
 

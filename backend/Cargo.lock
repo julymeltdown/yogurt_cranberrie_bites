@@ -270,6 +270,7 @@ dependencies = [
  "opentelemetry_sdk",
  "p256",
  "platform",
+ "profile-service",
  "prost",
  "protoc-bin-vendored",
  "rand 0.8.6",

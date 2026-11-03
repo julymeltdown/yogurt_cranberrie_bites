@@ -791,6 +791,9 @@ impl RuntimeMode {
 
 #[derive(Clone)]
 pub struct AppState {
+    /// Fresh signed owner reads for Concert. Test-double compositions leave this
+    /// absent; only the configured concrete clients populate it.
+    pub concert_identity: Option<crate::adapters::out::concert_identity::ConcertIdentityReader>,
     pub auth_service: AuthGatewayService,
     pub profile_service: ProfileGatewayService,
     pub friend_service: FriendGatewayService,
@@ -1574,7 +1577,11 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
             metrics.clone(),
         )
         .await?,
-    ) as Arc<dyn ProfileClientPort>;
+    );
+    let concert_identity = crate::adapters::out::concert_identity::ConcertIdentityReader::new(
+        auth_client.as_ref().clone(),
+        profile_client.as_ref().clone(),
+    );
     let friend_client = Arc::new(
         GrpcFriendClient::connect_with_metrics(
             config.friend_grpc_endpoint.clone(),
@@ -1623,6 +1630,7 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
         metrics,
     )
     .await?;
+    state.concert_identity = Some(concert_identity);
     state.auth_service = state
         .auth_service
         .with_verification_client(verification_client);
@@ -1746,6 +1754,7 @@ async fn build_state_with_clients_and_moderation_with_metrics(
     )?;
 
     Ok(AppState {
+        concert_identity: None,
         high_risk_sessions: HighRiskSessionGuard::over_auth_client(
             auth_client.clone(),
             Duration::from_secs(config.high_risk_session_freshness_seconds),

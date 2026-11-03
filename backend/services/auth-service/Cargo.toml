@@ -55,6 +55,7 @@ test-support = { path = "../../crates/test-support" }
 # The signing-key rotation drill runs the Gateway's own client, refresher and
 # verifier against this service's real gRPC handler.
 api-gateway = { path = "../api-gateway" }
+profile-service = { path = "../profile-service" }
 http-body-util.workspace = true
 opentelemetry.workspace = true
 opentelemetry_sdk = { workspace = true, features = ["testing"] }
