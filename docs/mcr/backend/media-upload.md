@@ -2,7 +2,8 @@
 
 Status: **IN_PROGRESS** for BE24 as a whole. The scoped internal producer is implemented;
 The focused Concert library check passes; producer runtime qualification remains
-in progress under the explicitly granted Cargo lease. HTTP composition, real fenced authority, scheduled cleanup and the real
+in progress after the first native failure. The shared Cargo lease was released;
+the corrected producer test binary is queued by delivery. HTTP composition, real fenced authority, scheduled cleanup and the real
 FE04/Post/Giveaway/Report journeys are **NOT_RUN**. This is not an IN02/IN03 acceptance.
 
 ## Scope and provenance
@@ -159,6 +160,12 @@ is content sanitization, not a separate antivirus scanning service.
   unit string. A separate owned PG cluster reproduces that exact parameter error and
   verifies the explicit `1500ms` correction. Failed run and cleanup are preserved in
   `tests/media_support/native-evidence.json`; corrected binary/native run pending.
+- Exact corrected SQL string extracted from `limit_sql_in` and executed against a
+  new owned PG16 cluster: unlimited settings clamp to 1500/5000 ms, shorter caller
+  settings remain 100/200 ms, and PostgreSQL's maximum 2147483647 ms settings clamp
+  without overflow. All three source-query probes and cleanup PASS in
+  `tests/media_support/timeout-clamp-evidence.json`. Rust producer rerun remains
+  separately NOT_RUN until the explicitly queued correction compile lease.
 
 `tests/media.rs` covers real PostgreSQL effects with a clearly synthetic transaction-
 locked policy fixture, plus retained real raster codecs. Cases include private staging,

@@ -688,7 +688,10 @@ async fn shorter_caller_sql_deadline_is_preserved() -> anyhow::Result<()> {
     )
     .await?;
     let mut tx = p.begin().await?;
-    sqlx::query("set local lock_timeout='100ms';set local statement_timeout='200ms'")
+    sqlx::query("set local lock_timeout='100ms'")
+        .execute(&mut *tx)
+        .await?;
+    sqlx::query("set local statement_timeout='200ms'")
         .execute(&mut *tx)
         .await?;
     s.link_owned_in(

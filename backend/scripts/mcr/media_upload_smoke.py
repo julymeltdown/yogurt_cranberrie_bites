@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import signal
 import subprocess
@@ -38,6 +39,22 @@ def run(args, report):
             require(result.returncode == 0, f"migration failed: {path.name}")
         require(cluster.sql(DATABASE, "select count(*) from information_schema.columns where table_name='concert_media';") == "21", "media columns differ")
         report["schema"] = "PASS"
+        # Exercise the exact SQL string from the owning Rust source, independently of
+        # cached artifacts, including the largest PostgreSQL millisecond setting.
+        media_source = (ROOT / "backend/services/concert-service/src/adapters/out/media/mod.rs").read_text()
+        clamp_source = media_source[media_source.index("async fn limit_sql_in"):]
+        clamp = re.search(r'sqlx::query\("([^"\n]+)"\)', clamp_source)
+        require(clamp is not None, "timeout clamp source missing")
+        for label, lock, statement, expected in (
+                ("unlimited", "0", "0", "1500,5000"),
+                ("shorter-caller", "100ms", "200ms", "100,200"),
+                ("max-integer", "2147483647ms", "2147483647ms", "1500,5000")):
+            query = (f"begin;set local lock_timeout='{lock}';set local statement_timeout='{statement}';"
+                     + clamp[1] + ";select (extract(epoch from current_setting('lock_timeout')::interval)*1000)::bigint::text||','||"
+                     "(extract(epoch from current_setting('statement_timeout')::interval)*1000)::bigint::text;rollback;")
+            require(expected in cluster.sql(DATABASE, query).splitlines(), f"timeout clamp differs: {label}")
+            report["commands"][f"timeout-clamp-{label}"] = 0
+        report["timeout_clamp"] = "PASS"
         if test:
             report["test_binary_sha256"] = digest(test)
             env = {**cluster.env, "CONCERT_TEST_DATABASE_URL": cluster.url(DATABASE), "CONCERT_TEST_OWNER_ROOT": str(cluster.root), "CONCERT_TEST_OWNER_TOKEN": cluster.token, "CONCERT_TEST_OWNER_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}"}
