@@ -100,6 +100,12 @@ pub struct AvatarCatalog {
 }
 impl AvatarCatalog {
     pub fn from_validated_manifest(value: &Value) -> Result<Self, ConfigError> {
+        if value["contract_version"] != "1.0.0"
+            || value["kind"] != "avatar_manifest"
+            || value["layer_order"] != json!(["body", "eyes", "hair", "outfit", "accessory"])
+        {
+            return Err(ConfigError::Catalog);
+        }
         let text = |v: &Value, key: &str| {
             v[key]
                 .as_str()

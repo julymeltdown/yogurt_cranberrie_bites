@@ -67,6 +67,8 @@ write authority. Production authority/root HTTP/RPC wiring belongs to delivery;
 this patch exposes no new route and enables no mutation capability. Product
 resource byte/rights/selected-source qualification remains the release owner's
 obligation; metadata/hash validation does not establish it.
+Realtime avatar-change publication and the real two-account IN01 flow remain
+separate composition/qualification work; this module emits no world delta.
 
 ## Transaction and error rules
 
@@ -129,3 +131,33 @@ schema application does not qualify service migration-runner/ledger behavior.
 Validation results and final commit ancestry will be recorded here before the
 committed handoff. Build phases use only the leased shared target, Rust 1.88.0,
 two jobs, debug=0 and `--locked`; no duplicate Cargo target is created.
+
+
+## Validation commands
+
+The requested leased compile phase is:
+
+```sh
+env RUSTUP_TOOLCHAIN=1.88.0 \
+  CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+  CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+  cargo test --manifest-path backend/Cargo.toml --locked --offline -j 2 \
+    -p concert-domain -p concert-application -p concert-service \
+    --test avatar --no-run --message-format=json
+```
+
+Run only the exact emitted test executables for the three packages. The service
+avatar executable has explicit ignored native tests; execute them through:
+
+```sh
+python3 backend/scripts/mcr/avatar_smoke.py \
+  --build-metadata /absolute/path/to/compiler-artifacts.jsonl \
+  --pg-bin /opt/homebrew/opt/postgresql@16/bin
+```
+
+Current checks: planning provenance/structure PASS (exit 0), scoped rustfmt check
+PASS (exit 0), avatar harness Python compilation PASS (exit 0), changed-path and
+cross-directory import ownership audit PASS (exit 0), whitespace check PASS
+(exit 0). Rust compilation, emitted test executables and native persistence are
+NOT_RUN until the shared build lease is granted. SIGINT/SIGTERM during the
+harness enter the same owned cleanup path as failures.

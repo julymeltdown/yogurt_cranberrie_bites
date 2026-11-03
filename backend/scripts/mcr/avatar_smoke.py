@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import signal
 from pathlib import Path
 import subprocess
 import bootstrap_smoke as bootstrap
@@ -38,6 +39,9 @@ def run(metadata, pg_bin):
     tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
     report = {'state': 'FAIL', 'commands': {}, 'binary_sha256': hashlib.sha256(binary.read_bytes()).hexdigest()}
     cluster = migration.Cluster(tools)
+    def interrupted(number, _frame):
+        raise migration.SmokeError('signal', f'interrupted by signal {number}')
+    previous = {number: signal.signal(number, interrupted) for number in (signal.SIGINT, signal.SIGTERM)}
     try:
         cluster.init(); cluster.start()
         report['postgres_version'] = cluster.sql('postgres', 'show server_version;')
@@ -72,6 +76,8 @@ def run(metadata, pg_bin):
         except (migration.SmokeError, OSError) as error:
             report['state'] = 'FAIL'; report['cleanup'] = 'FAIL'
             report['cleanup_error'] = error.detail if isinstance(error, migration.SmokeError) else type(error).__name__
+    for number, handler in previous.items():
+        signal.signal(number, handler)
     return report
 
 

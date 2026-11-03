@@ -86,3 +86,28 @@ fn grant_binds_canonical_actor_event_operation_and_release() {
         );
     }
 }
+
+#[test]
+fn nil_scope_and_malformed_release_are_never_authorized() {
+    let key = key();
+    let grant = AvatarGrant {
+        key,
+        operation: AvatarOperation::Read,
+        release_digest: "a".repeat(64),
+    };
+    let authority = Authority(Ok(grant));
+    let nil = ParticipantKey {
+        user_id: AuthUserId::from_uuid(uuid::Uuid::nil()),
+        ..key
+    };
+    assert_eq!(
+        authorize(&authority, nil, AvatarOperation::Read, &"a".repeat(64)),
+        Err(AvatarError::Denied)
+    );
+    for bad in ["".into(), "A".repeat(64), "g".repeat(64), "a".repeat(65)] {
+        assert_eq!(
+            authorize(&authority, key, AvatarOperation::Read, &bad),
+            Err(AvatarError::Unavailable)
+        );
+    }
+}
