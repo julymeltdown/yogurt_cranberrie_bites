@@ -127,3 +127,11 @@ its actual Phaser/browser work. The idle QA chat is reused on a fresh report-onl
 C06 format audit because it independently reproduces two real tooling issues;
 parent fixes stay in a separate central checkout. No new chats or fixed staffing
 count are needed for this allocation.
+
+
+C06 QA completed its scoped review and actual goal after both fixes and parent
+144-test qualification. The backend chat now owns a fresh four-path authenticated
+Auth owner-client goal; the frontend runtime handoff is ready for review. A QA
+chat may be reused for that concrete candidate while parent runs the combined
+browser checks. These allocations follow useful independent work, not a fixed
+two-backend/three-frontend count.

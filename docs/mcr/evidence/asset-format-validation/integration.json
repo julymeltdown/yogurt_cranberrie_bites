@@ -1,0 +1,25 @@
+{
+  "acceptance": "C06 remains CONTRACT_READY; project acceptance unchanged",
+  "candidate": "bab2f1f2e81c59ff69241fb5a9cd8ee1c0e404db",
+  "command": [
+    "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-contract-formats-parent-5i3nz7rw/venv/bin/python",
+    "-m",
+    "unittest",
+    "scripts/mcr/tests/test_assets.py",
+    "scripts/mcr/tests/test_core.py",
+    "scripts/mcr/tests/test_realtime.py",
+    "scripts/mcr/tests/test_domain.py",
+    "scripts/mcr/tests/test_domain_bundle.py"
+  ],
+  "exit": 0,
+  "integrated_review_commit": "bab2f1f2e81c59ff69241fb5a9cd8ee1c0e404db",
+  "log_sha256": "2817ec31f526112363f110904252d9a9fcadd0201bae42936628d9909c1ddd25",
+  "parent_commits": [
+    "6a1e394",
+    "04a8268"
+  ],
+  "schema_and_fixture_changes": [],
+  "source_and_fixture_pins": "MATCH final isolated correction",
+  "tests": 144,
+  "worker_review_commit": "edd02269f3dec2b2bae8897a6837bd23018c72e6"
+}

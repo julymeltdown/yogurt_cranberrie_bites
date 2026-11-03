@@ -238,3 +238,23 @@ writes or Rust/DB/service work is delegated. Parent owns the separate central
 C06 checker/plugin correction on `contract-format-prereq`, including concrete
 QA review fixes. This reuse serves an independently reproduced tooling defect,
 not a chat-count requirement. Only the parent integrates and pushes.
+
+
+## Auth owner client and final format disposition
+
+C06 correction `27c6bbc`/`0cfffca` and sole-path QA report `edd0226` are
+integrated as `6a1e394`/`04a8268`/`bab2f1f`; both reproduced findings are closed
+and parent combined 144 tests pass. QA's actual goal is COMPLETE and its checkout
+stopped. Its immutable report remains the review evidence.
+
+Backend chat `01a1a00c-2690-7bc0-94fc-52609655ea83` now has a new actual ACTIVE
+unbudgeted goal on `/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner`,
+branch `codex/mcr-be-gateway-auth-owner`, published base `e6efa4c`. Exact writable
+paths: new Gateway `src/adapters/out/auth_client/concert_admission.rs`, new
+`tests/concert_admission_transport.rs`, `docs/mcr/backend/gateway-auth-owner-client.md`,
+and only one module export in existing `auth_client.rs`. It uses the reviewed
+strict context and existing authenticated signer/channel; no HTTP/config/ports/
+proto/platform/domain/Auth/Concert/frontend/manifest ownership is transferred.
+The worker owns the retained Rust target, two jobs; prior JWT checkout stopped.
+FE14's clean `a7dcb79`/`a1243ff` fifteen-path handoff retains its ACTIVE goal
+through parent review. Parent serially integrates and alone publishes.

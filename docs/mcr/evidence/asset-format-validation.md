@@ -40,3 +40,13 @@ This closes the observed C06 tooling gaps. Other validators using `FormatChecker
 from installed plugins but do not gain this explicit registry-refusal guard in
 this patch. C06 remains `CONTRACT_READY`, not frozen or accepted. Runtime loading,
 original artwork, venue truth and whole-project acceptance remain separate work.
+
+
+Parent integrated both corrections serially as `6a1e394`/`04a8268` and the
+independent [QA report](../qa/asset-format-review.md) `edd0226` as `bab2f1f`.
+Final combined candidate `bab2f1f` passes all **144** asset/core/realtime/domain/
+bundle regressions using the isolated pinned environment. All final source and
+fixture pins match. [Integration receipt](asset-format-validation/integration.json)
+and combined log record this result separately from the isolated-candidate logs.
+QA independently closed both findings; no schema, fixture or acceptance count
+was changed.
