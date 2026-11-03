@@ -3,6 +3,7 @@ import type PhaserType from 'phaser'
 import type { EngineFactory } from '../runtime'
 import type { LoadedMap } from '../map/resources'
 import { assertSameWorld } from '../theme/compatibility'
+import type { AvatarScenePort, AvatarSceneTexture, AvatarSceneSprite } from '../avatar/scene'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
 export async function loadPhaserEngine(): Promise<EngineFactory> {
   const Phaser = (await import('phaser')).default
@@ -16,6 +17,13 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     type Skin = { show(): void; remove(): void }
     let skin: Skin | null = null
     let sceneReady = false, cameraFoot: Point | null = null, cameraZoom: number | null = null
+    let avatarRevision = 0
+    const avatarTextures = new Map<AvatarSceneTexture, () => void>(), avatarSprites = new Map<AvatarSceneSprite, () => void>(), avatarListeners = new Set<() => void>()
+    const clearAvatars = () => {
+      for (const remove of Array.from(avatarListeners)) remove()
+      for (const remove of Array.from(avatarSprites.values())) remove()
+      for (const remove of Array.from(avatarTextures.values())) remove()
+    }
     class MapScene extends Phaser.Scene {
       constructor() { super('mcr-map') }
       create() {
@@ -24,7 +32,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
           sceneReady = true
           skin = this.prepareSkin(loaded)
           skin.show()
-          const remove = () => { skin?.remove(); skin = null }
+          const remove = () => { clearAvatars(); skin?.remove(); skin = null }
           this.events.once(Phaser.Scenes.Events.SHUTDOWN, remove)
           this.events.once(Phaser.Scenes.Events.DESTROY, remove)
           this.cameras.main.setBounds(0, 0, loaded.widthPx, loaded.heightPx).setRoundPixels(true)
@@ -132,7 +140,51 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
         return { zoom: camera.zoom, scrollX: camera.scrollX, scrollY: camera.scrollY, width: camera.width, height: camera.height }
       },
     }
-    return { ready, closed, camera: cameraView,
+    const avatarScene: AvatarScenePort = {
+      texture(canvas) {
+        if (stopped || !sceneReady || canvas.width !== 320 || canvas.height !== 256) throw new Error('Avatar scene unavailable')
+        const scene = game.scene.getScene('mcr-map'), key = `mcr-avatar-${++avatarRevision}`, ownedCanvas = document.createElement('canvas')
+        ownedCanvas.width = 320; ownedCanvas.height = 256
+        const context = ownedCanvas.getContext('2d'); if (!context) throw new Error('Avatar texture unavailable')
+        context.drawImage(canvas, 0, 0) // Phaser owns this copy; texture removal cannot erase the shared thumbnail/cache pixels.
+        const texture = scene.textures.addCanvas(key, ownedCanvas)
+        if (!texture) throw new Error('Avatar texture unavailable')
+        try {
+          if (stopped || !sceneReady) throw new Error('Avatar scene unavailable')
+          texture.setFilter(Phaser.Textures.FilterMode.NEAREST)
+          for (let frame = 0; frame < 20; frame++) texture.add(frame, 0, frame % 5 * 64, Math.floor(frame / 5) * 64, 64, 64)
+          let removed = false
+          const lease: AvatarSceneTexture = { key, dispose() {
+            if (removed) return; removed = true
+            for (const [sprite, remove] of Array.from(avatarSprites)) if (spriteTextures.get(sprite) === lease) remove()
+            avatarTextures.delete(lease)
+            if (scene.textures.exists(key)) scene.textures.remove(key)
+          } }
+          avatarTextures.set(lease, lease.dispose); return lease
+        } catch (error) { scene.textures.remove(key); throw error }
+      },
+      sprite(texture) {
+        if (stopped || !sceneReady || !avatarTextures.has(texture)) throw new Error('Avatar texture unavailable')
+        const image = game.scene.getScene('mcr-map').add.sprite(0, 0, texture.key, 0).setOrigin(.5, 60 / 64).setVisible(false)
+        let removed = false
+        const lease: AvatarSceneSprite = { update(x, y, frame, depth) {
+          if (removed || stopped || !Number.isFinite(x) || !Number.isFinite(y) || !Number.isInteger(frame) || frame < 0 || frame >= 20
+            || !Number.isFinite(depth) || depth < 1 || depth >= 2) throw new Error('Avatar sprite unavailable')
+          image.setPosition(x, y).setFrame(frame).setDepth(depth).setVisible(true)
+        }, dispose() { if (removed) return; removed = true; avatarSprites.delete(lease); spriteTextures.delete(lease); image.destroy() } }
+        avatarSprites.set(lease, lease.dispose); spriteTextures.set(lease, texture); return lease
+      },
+      onFrame(listener) {
+        if (stopped || !sceneReady) throw new Error('Avatar scene unavailable')
+        const scene = game.scene.getScene('mcr-map')
+        const callback = (time: number) => { if (!stopped && Number.isFinite(time)) listener(time) }
+        const remove = () => { scene.events.off(Phaser.Scenes.Events.UPDATE, callback); avatarListeners.delete(remove) }
+        scene.events.on(Phaser.Scenes.Events.UPDATE, callback); avatarListeners.add(remove); return remove
+      },
+      read: () => ({ textures: avatarTextures.size, sprites: avatarSprites.size, listeners: avatarListeners.size }),
+    }
+    const spriteTextures = new Map<AvatarSceneSprite, AvatarSceneTexture>()
+    return { ready, closed, camera: cameraView, avatarScene,
       replaceSkin(next) {
         if (stopped || !sceneReady) throw new Error('Map scene unavailable')
         assertSameWorld(loaded, next)
@@ -152,7 +204,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       setVisible(value) { visible = value; if (!stopped && game.isRunning) { if (value) game.loop.wake(); else game.loop.sleep() } },
       destroy() {
         if (stopped) return
-        stopped = true; game.canvas?.remove()
+        stopped = true; clearAvatars(); game.canvas?.remove()
         flushDestroy() // Boot in progress is fenced by postBoot; its mount has already been detached.
       },
     }

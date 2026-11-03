@@ -10,20 +10,27 @@ import { WebSocketWorldTransport } from '../network/websocket'
 import { immutable } from '../entities/replicated'
 import { createTicketAcquirer } from './ticket'
 import { prepareRelease, samePrivacy, type PreparedWorldRelease, type WorldReleaseResolver } from './release'
+import type { AvatarScenePort } from '../avatar/scene'
 
 export type { WorldReleaseResolver, ResolvedWorldRelease, WorldReleaseRequest } from './release'
-export interface WorldRendererLease { replace(view: ReplicationView): void; dispose(): void }
+export type WorldRendererStatus = 'loading' | 'ready' | 'unavailable'
+export interface WorldRendererLease {
+  replace(view: ReplicationView): void
+  dispose(): void
+  readStatus?(): WorldRendererStatus
+  subscribeStatus?(listener: () => void): () => void
+}
 /** FE12 owns art. No fallback character, synthetic sprite or second Phaser game lives here.
  * The renderer calls sample from its existing frame loop; composition adds no render RAF.
  */
 export interface WorldRendererPort {
   mount(context: { host: HTMLElement; map: LoadedMap; camera: WorldCamera; release: PreparedWorldRelease;
-    signal: AbortSignal; sample(): ReplicationView | null }): WorldRendererLease
+    signal: AbortSignal; avatarScene?: AvatarScenePort; sample(): ReplicationView | null }): WorldRendererLease
 }
 export interface WorldCompositionState {
   readonly phase: 'idle' | 'loading' | 'ready' | 'unavailable' | 'disposed'
   readonly runtime: RuntimeState | null
-  readonly renderer: 'unavailable' | 'ready'
+  readonly renderer: WorldRendererStatus
   readonly problem: 'release' | 'runtime' | 'renderer' | null
 }
 /** Stable FE18 release; null withdraws all prior membership/presence immediately. */
@@ -70,6 +77,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     let disposed = false, failed = false, blocked = true, visible = true
     let runtime: WorldRuntime | null = null
     let renderer: WorldRendererLease | null = null, camera: WorldCamera | null = null, foot: Point | null = null, zoom = 1, inputPaused: boolean | null = null
+    let removeRendererStatus = () => {}
     let controller = new AbortController(), bootRevision = 0
     const waiting = Promise.all([drain, authority.drain]).then(() => {})
     const root = document.createElement('div'), stage = document.createElement('div'), inputs = document.createElement('div'), status = document.createElement('p'), retry = document.createElement('button')
@@ -90,6 +98,18 @@ export function createWorldComposition(options: WorldCompositionOptions) {
       const paused = blocked || document.hidden || !visible || owned.replication?.read().phase !== 'live'
       if (runtime && paused !== inputPaused) { inputPaused = paused; runtime.setInputBlocked(paused) }
     }
+    function renderStatus() {
+      if (!current()) return
+      const rendererState = renderer ? renderer.readStatus?.() ?? 'ready' : 'unavailable'
+      state = Object.freeze({ ...state, renderer: rendererState })
+      const view = owned.replication?.read()
+      if (!view) return
+      status.textContent = view.phase === 'live' ? rendererState === 'ready' ? 'World connected.'
+        : rendererState === 'loading' ? 'World connected. Loading avatar artwork…' : 'World connected. Avatar artwork is unavailable.'
+        : view.phase === 'suspended' ? 'World paused. Return to continue.'
+          : view.phase === 'closed' ? 'World disconnected. Select Reconnect world to continue.' : 'Connecting to the world…'
+      retry.hidden = view.phase !== 'closed'; retry.textContent = 'Reconnect world'
+    }
     function replace(view: ReplicationView) {
       if (!current()) return
       if (view.phase === 'unavailable' && (view.problem === 'authority' || view.problem === 'sink')) { dispose(); return }
@@ -100,15 +120,13 @@ export function createWorldComposition(options: WorldCompositionOptions) {
       renderer?.replace(view)
       if (!current()) return
       refreshControls()
-      status.textContent = view.phase === 'live' ? (renderer ? 'World connected.' : 'World connected. Avatar artwork is unavailable.')
-        : view.phase === 'suspended' ? 'World paused. Return to continue.'
-          : view.phase === 'closed' ? 'World disconnected. Select Reconnect world to continue.' : 'Connecting to the world…'
-      retry.hidden = view.phase !== 'closed'
-      retry.textContent = 'Reconnect world'
+      renderStatus()
       notify()
     }
     function stopResources() {
       ++bootRevision
+      const removeStatus = removeRendererStatus; removeRendererStatus = () => {}
+      try { removeStatus() } catch { /* A broken observer must not strand privacy teardown. */ }
       // Withdraw socket authority and roster before releasing visual ownership.
       owned.replication?.dispose()
       try { if (owned.replication) renderer?.replace(owned.replication.read()) } catch { /* Disposal still clears a broken sink. */ }
@@ -197,8 +215,17 @@ export function createWorldComposition(options: WorldCompositionOptions) {
               if (options.renderer) {
                 step = 'renderer'
                 const returned = options.renderer.mount({ host: stage, map: control.map, camera: control.camera, release: prepared,
-                  signal: attempt.signal, sample: () => isBootCurrent() ? owned.replication?.sample() ?? null : null })
-                if (!isBootCurrent()) returned.dispose(); else renderer = returned
+                  signal: attempt.signal, ...(control.avatarScene ? { avatarScene: control.avatarScene } : {}),
+                  sample: () => isBootCurrent() ? owned.replication?.sample() ?? null : null })
+                if (!isBootCurrent()) returned.dispose()
+                else {
+                  renderer = returned
+                  const remove = returned.subscribeStatus?.(() => {
+                    if (!isBootCurrent()) return
+                    try { renderStatus(); notify() } catch { fail('renderer') }
+                  }) ?? (() => {})
+                  if (!isBootCurrent()) remove(); else removeRendererStatus = remove
+                }
               }
               return attachment
             } catch (error) { attachment.dispose(); throw error }
@@ -207,7 +234,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
         const mounted = await runtime.start(attempt.signal)
         if (!isBootCurrent()) return
         if (mounted.phase !== 'ready') { fail(step); return }
-        publish({ phase: 'ready', runtime: mounted, renderer: renderer ? 'ready' : 'unavailable' })
+        publish({ phase: 'ready', runtime: mounted, renderer: renderer ? renderer.readStatus?.() ?? 'ready' : 'unavailable' })
         if (!isBootCurrent()) return
         owned.replication.setVisible(visible && !document.hidden)
         await owned.replication.start()

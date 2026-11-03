@@ -211,6 +211,30 @@ it('returns an unavailable state and tears down partial resources when the rende
   expect(f.host.querySelector('.world-controls')).toBeNull()
 })
 
+it('reflects optional async renderer status and synchronously detaches its subscription on privacy teardown', async () => {
+  let status: 'loading' | 'ready' | 'unavailable' = 'loading', listener = () => {}, removes = 0, disposals = 0
+  const f = await fixture({ renderer: { mount() { return { replace() {}, dispose() { disposals++ },
+    readStatus: () => status, subscribeStatus(next) { listener = next; return () => { removes++ } } } } } })
+  await live(f)
+  expect(f.composition.read().renderer).toBe('loading'); expect(f.host.textContent).toContain('Loading avatar artwork')
+  status = 'ready'; listener(); expect(f.composition.read().renderer).toBe('ready')
+  status = 'unavailable'; listener(); expect(f.composition.read().renderer).toBe('unavailable')
+  expect(f.host.textContent).toContain('Avatar artwork is unavailable')
+  f.auth.privacy.changePolicy(f.auth.privacy.capture(), 'block')
+  expect(removes).toBe(1); expect(disposals).toBe(1); expect(f.host.childElementCount).toBe(0)
+  status = 'ready'; listener(); expect(f.composition.read().renderer).toBe('unavailable')
+})
+
+it('still releases private resources when an injected renderer status unsubscriber throws', async () => {
+  const dispose = vi.fn()
+  const f = await fixture({ renderer: { mount() { return { replace() {}, dispose,
+    subscribeStatus() { return () => { throw new Error('Test-only observer failure') } } } } } })
+  await live(f)
+  f.controller.abort()
+  expect(dispose).toHaveBeenCalledOnce(); expect(f.stats.engines).toBe(0)
+  expect(f.composition.replication.read()).toBeNull(); expect(f.host.childElementCount).toBe(0)
+})
+
 it('offers an explicit resource retry without changing the captured lease or duplicating ownership', async () => {
   let attempts = 0
   const f = await fixture({ resolve: async request => {

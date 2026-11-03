@@ -9,8 +9,9 @@ import { validDateTime, validUri, validUuid } from '../map/formats'
 import { schemaValid } from '../map/schema'
 import { abortable, createAssetResources, loadMap, pngDimensions, type AssetResources, type LoadedMap } from '../map/resources'
 import { validateTiled } from '../map/tiled'
-import { createWorldRuntime, type EngineFactory, type WorldRuntime } from '../runtime'
+import { createWorldRuntime, type ControlContext, type EngineFactory, type WorldRuntime } from '../runtime'
 import { rehash, synthetic } from './fixtures/synthetic'
+import type { AvatarScenePort } from '../avatar/scene'
 function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(r => { resolve = r }); return { promise, resolve } }
 const runtimes: WorldRuntime[] = []
 let frames: Map<number, FrameRequestCallback>, frameId = 0, observers: Set<FakeObserver>
@@ -176,6 +177,18 @@ it('reserves one start, renders geometry and releases canvas/observer/frame/imag
   runtime.stop(); runtime.stop(); await runtime.settled()
   expect(document.querySelectorAll('canvas')).toHaveLength(0); expect(observers.size).toBe(0); expect(frames.size).toBe(0); expect(dispose).toHaveBeenCalledOnce()
   runtime.dispose(); runtime.dispose(); expect((await runtime.start()).phase).toBe('disposed')
+})
+it('forwards the existing engine avatar scene capability without constructing another owner', async () => {
+  const { map } = await loaded(), host = document.createElement('div'), attachment = { setEnabled: vi.fn(), dispose: vi.fn() }
+  document.body.append(host)
+  const avatarScene: AvatarScenePort = { texture: vi.fn(), sprite: vi.fn(), onFrame: vi.fn(), read: () => ({ textures: 0, sprites: 0, listeners: 0 }) }
+  const camera = { surface: () => null, center() {}, project: () => null, unproject: () => null, read: () => null }
+  const factory = vi.fn(() => ({ ready: Promise.resolve(), closed: Promise.resolve(), resize() {}, setVisible() {}, destroy() {}, camera, avatarScene }))
+  const controls = vi.fn((context: ControlContext) => { expect(context.avatarScene).toBe(avatarScene); return attachment })
+  const runtime = createWorldRuntime({ host, load: async () => map, importEngine: async () => factory, attachControls: controls })
+  runtimes.push(runtime); expect((await runtime.start()).phase).toBe('ready')
+  expect(factory).toHaveBeenCalledOnce(); expect(controls).toHaveBeenCalledOnce()
+  runtime.dispose(); expect(attachment.dispose).toHaveBeenCalledOnce()
 })
 it.each(['stop', 'dispose', 'abort'] as const)('never loads or imports after synchronous %s during start reservation', async action => {
   const load = vi.fn(async () => (await loaded()).map), { runtime, importer } = owner(load), controller = new AbortController()

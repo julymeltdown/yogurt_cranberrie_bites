@@ -1,4 +1,5 @@
 import type { WorldCamera } from './camera/port'
+import type { AvatarScenePort } from './avatar/scene'
 import { MapError } from './map/json'
 import { limits } from './map/manifest'
 import { abortable, type LoadedMap } from './map/resources'
@@ -13,9 +14,10 @@ export interface EngineLease {
   /** Synchronous atomic visual commit. Throws with the old skin intact. */
   replaceSkin?(map: LoadedMap): void
   readonly camera?: WorldCamera
+  readonly avatarScene?: AvatarScenePort
 }
 export interface ControlAttachment { setEnabled(value: boolean): void; dispose(): void }
-export interface ControlContext { readonly host: HTMLElement; readonly map: LoadedMap; readonly camera: WorldCamera; readonly signal: AbortSignal }
+export interface ControlContext { readonly host: HTMLElement; readonly map: LoadedMap; readonly camera: WorldCamera; readonly signal: AbortSignal; readonly avatarScene?: AvatarScenePort }
 export type AttachControls = (context: ControlContext) => ControlAttachment
 export type EngineFactory = (host: HTMLElement, map: LoadedMap) => EngineLease
 export interface RuntimeOptions {
@@ -114,7 +116,8 @@ export function createWorldRuntime(options: RuntimeOptions) {
         if (options.attachControls) {
           if (!owned.engine.camera) throw new MapError('invalid')
           owned.creating = true
-          try { owned.controls = options.attachControls({ host: options.host, map, camera: owned.engine.camera, signal: controller.signal }) }
+          try { owned.controls = options.attachControls({ host: options.host, map, camera: owned.engine.camera, signal: controller.signal,
+            ...(owned.engine.avatarScene ? { avatarScene: owned.engine.avatarScene } : {}) }) }
           finally { owned.creating = false; if (!current()) owned.finish() }
           if (!current()) return state
           owned.controls.setEnabled(visible && !inputBlocked)
