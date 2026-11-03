@@ -1,11 +1,11 @@
 # C04 domain contract readiness and consumer unblocking review
 
 Date: 2026-11-03. **Bounded review complete: Domain contract candidate v0.1.0
-is structurally sound, closed, and valid. Core feature subdomains (Parties,
-Giveaways, and Feed) have complete typed operations and wire semantics ready
-for bounded FE/BE consumer implementation without inventing protocol contracts.
-Full contract freeze remains gated on fixture expansion, media DTO adjustment,
-and external legal/operator policy choices.**
+is structurally closed and locally validated. Core feature subdomains (Parties,
+Giveaways, and Feed) have defined operations, typed DTOs, and documented wire rules
+suitable for parent-authorized bounded FE/BE consumer implementation.
+Formal C04 contract freeze remains pending independent BE and FE lane reviews,
+fixture expansion, media state adjustments, and global deletion orchestration.**
 Contract candidate status remains REVIEW_CANDIDATE; freeze remains NOT_ACCEPTED.
 
 ## Scope and authority
@@ -19,6 +19,7 @@ No Cargo, PostgreSQL, or live services were run.
 
 Reviewed source documents and contract surfaces:
 - `docs/mcr/domain-contract.md` (version 0.1.0 candidate narrative).
+- `MCR_IMPLEMENTATION_PLAN_V2_EN.md` and `PLAN_TABLES_EN.md` (authoritative plan and task mappings).
 - Eight JSON schemas under `contracts/domain/v1/` (162 definitions across
   `admin`, `beacon`, `common`, `feed`, `giveaway`, `mural`, `party`, `social`).
 - `contracts/domain/v1/operations.json` (106 event-scoped operations).
@@ -34,79 +35,108 @@ Reviewed source documents and contract surfaces:
 ## Audit of the five stated gaps (remaining before C04 freeze)
 
 Section "Remaining before C04 freeze" in `docs/mcr/domain-contract.md` enumerates
-five items. This audit classifies which are genuine engineering omissions the parent
-can resolve versus external policy decisions, and assesses their impact on consumer unblocking.
+five items. This audit classifies their engineering and policy realities based on
+direct inspection of schemas, operations, and fixtures.
 
 ### Gap 1: Per-operation fixture coverage and compatibility
 - **Status: REAL (Engineering omission).**
-- **Inspection finding**: `contracts/fixtures/domain/index.json` indexes exactly 36
-  fixtures covering 18 schemas out of 162 definitions. Over 70 of the 106 operations
-  have zero dedicated request/response fixture files. For example:
-  - Parties: Only `party.PartyPublic` has fixtures (`party-full.json`,
-    `party-over-capacity.json`, `party-private-leak.json`). `CreateParty`,
-    `UpdateParty`, `Apply`, `ApplicationDecision`, and `PartyList` have none.
-  - Giveaways: Only `GiveawayManagement` and `Reservation` have fixtures.
-    `CreateGiveaway`, `GiveawayPublic`, `Reserve`, `PickupCode`, and `PickupReceipt` have none.
-  - Feed: Only `PostPublic` and `Notification` have fixtures. `CreatePost`,
-    `EditPost`, `CreateComment`, `CommentPublic`, and `ReactionState` have none.
-- **Consumer impact**: Does **NOT** block bounded FE/BE development. All request and
-  response shapes are already strictly defined in `contracts/domain/v1/*.schema.json`
-  and mapped in `operations.json`. Bounded consumers can build against the schemas
-  now. Fixture authoring can proceed in parallel before formal freeze.
+- **Authoritative artifact evidence**:
+  - `contracts/fixtures/domain/index.json` indexes exactly 36 fixture files covering
+    18 distinct schema definitions out of 162 total definitions in `contracts/domain/v1/`.
+  - Of the 106 operations in `operations.json`, exactly **25 operations** have at least
+    one DTO (request or response) represented among those 18 indexed schemas.
+  - Exactly **81 operations** have neither their request nor their response represented
+    in `index.json`.
+  - Exactly **zero operations** have both their request and response covered by dedicated
+    fixture files (for instance, `createConcertParty` has `party.PartyPublic` covered,
+    but lacks a fixture for `party.CreateParty`).
+  - Core subdomains lack operation-level positive and negative request/response fixtures:
+    - Parties: Lacks fixtures for `CreateParty`, `UpdateParty`, `Apply`, `ApplicationDecision`,
+      `PartyList`, `MemberList`, and `PartyActivity`.
+    - Giveaways: Lacks fixtures for `CreateGiveaway`, `UpdateGiveaway`, `GiveawayPublic`,
+      `Reserve`, `PickupCode`, and `PickupReceipt`.
+    - Feed: Lacks fixtures for `CreatePost`, `EditPost`, `CreateComment`, `CommentPublic`,
+      and `ReactionState`.
+- **Consumer impact**: Does **NOT** block bounded consumer implementation. All request
+  and response shapes are strictly defined in `contracts/domain/v1/*.schema.json` and
+  mapped in `operations.json`. Bounded consumers can develop against these candidate
+  schemas while fixture expansion proceeds.
 
-### Gap 2: Global account deletion, legal publication, and retention policies
-- **Status: REAL (External legal/operator choices, NOT a concert domain omission).**
-- **Inspection finding**: Event-scoped admin closure is already specified in
-  `admin.schema.json` (`closeConcertEvent` / `getConcertClosure` returning `ClosureJob`).
-  However, cross-service account deletion, account recovery after authentication revocation,
-  terms/privacy document publication, and data retention schedules are global Auth/platform
-  and legal compliance policies.
-- **Consumer impact**: Does **NOT** block bounded in-event feature development (parties,
-  giveaways, feed, beacons, social handles). It is an external policy input required for
-  general release, not a wire contract omission for event feature lanes.
+### Gap 2: Global account deletion, auth revocation recovery, legal publication, and retention policies
+- **Status: REAL (Split between concrete engineering omissions and external policy choices).**
+- **Engineering omissions**:
+  - **No domain deletion coordinator wire**: There is no domain-level operation or event
+    schema defining how an Auth-service account deletion cascades to Concert entities
+    (scrubbing participant records, deleting private handles, reassigning/cancelling
+    owned parties, or releasing held reservations).
+  - **No post-revocation recovery wire**: There is no contract defining gateway error
+    recovery or session-invalidation handling when an auth token is revoked mid-flow.
+  - Event closure is specified in `admin.schema.json` (`closeConcertEvent` /
+    `getConcertClosure` returning `ClosureJob`), but this is Concert-local and does not
+    coordinate global Auth erasure.
+- **External legal/operator choices**:
+  - Legal terms and privacy policy publication.
+  - Mandatory data retention schedules, statutory erasure deadlines, and operational
+    archive retention periods.
+- **Consumer impact**: The lack of a global deletion wire does **NOT** block in-event
+  feature workflows (parties, giveaways, feed). It is an integration obligation for
+  account lifecycle (BE42) and release gates, not an in-event feature contract omission.
 
-### Gap 3: Response context checks, terminal tombstones, and media failure/pending DTOs
-- **Status: REAL (Narrow engineering omission in media; policy handles the rest).**
-- **Inspection finding**:
-  - **Media DTO omission**: In `feed.schema.json`, `Media` requires `state: const "READY"`,
-    `width: integer`, and `height: integer`. While `UploadIntent` models `state: PENDING`
-    and `UploadBytesResult` models `state: UPLOADED`, there is no DTO or union allowing
-    `getConcertMedia` to represent a media item that is still processing or failed.
-    If a client polls `getConcertMedia` while processing, the response cannot return a valid
-    non-READY `Media` object without schema violation unless the server returns an HTTP error.
-  - **Terminal tombstones and draft visibility**: `deleteConcertPost` and `deleteConcertComment`
-    return typed `common.Deleted` records (`deleted: true`, `revision: Revision`). Deleted
-    items are excluded from public feeds per policy rules. In giveaways, `GiveawayPublic.state`
-    includes `DRAFT`, while `policy.json` explicitly specifies that public discovery excludes
-    drafts.
-- **Consumer impact**:
-  - Text posts, comments, reactions, and attaching pre-finalized media IDs are completely unblocked.
-  - Media upload consumers should assume `finalizeConcertUpload` completes before media is attached,
-    or parent should extend `Media` to include non-ready states.
+### Gap 3: Response context checks, terminal tombstones, media DTOs, and archive scope
+- **Status: REAL (Engineering omissions across several schema/context boundaries).**
+- **Specific inspection findings**:
+  1. **Media DTO state omission**: In `feed.schema.json`, `Media` requires `state: const "READY"`,
+     along with `width`, `height`, and `read_path`. `UploadIntent` models `state: PENDING`
+     and `UploadBytesResult` models `state: UPLOADED`. However, there is no DTO allowing
+     `getConcertMedia` (`GET /api/concert/events/{eventId}/media/{mediaId}`) to represent
+     media that is currently processing or has failed validation/re-encoding. An in-flight
+     query will either violate schema or require an undocumented HTTP error code.
+  2. **Operation-context validation**: `policy.json` rules (e.g. ticket-section matching,
+     phase restrictions, and owner invariants) must be enforced by backend business logic.
+     Static JSON schema validation alone cannot enforce multi-entity contextual preconditions.
+  3. **Terminal tombstones and feed collections**: Deletions return `common.Deleted`
+     (`deleted: true`, `revision: Revision`), but `FeedPage` and `PostDetail` schemas
+     only allow `PostPublic` with `state: const "PUBLISHED"`. The contract prunes deleted posts
+     from feeds rather than emitting tombstones. References to deleted posts in resource links
+     must be handled by clients as absent entities.
+  4. **Archive media scope**: In `admin.schema.json`, `Archive` provides read-only
+     historical projections of feed, mural, and attendance, but does not define media
+     lifecycle or storage retention guarantees for attached assets after event closure.
+- **Consumer impact**: Text posts, comments, reactions, and attaching pre-finalized media IDs
+  are unblocked. Media upload pipelines must treat media as unusable until `finalizeConcertUpload`
+  succeeds.
 
 ### Gap 4: Combined OpenAPI qualification and generated client adoption
-- **Status: REAL (Post-freeze integration obligation).**
+- **Status: REAL (Post-freeze tooling and integration gate).**
 - **Inspection finding**: `generate-mcr-domain.py --check` passes cleanly and generates
-  132 operations (24 C03 + 106 C04 + 2 C05). Reference resolution and naming checks pass.
-  However, typed frontend client SDKs (e.g. Orval / OpenAPI-typescript client wrappers)
-  have not yet been generated for C04 domain operations.
-- **Consumer impact**: Does **NOT** block bounded development. Workers can reference
-  the frozen schemas and `operations.json` DTOs directly for manual typing or bounded adapters.
+  132 operations (24 C03 + 106 C04 + 2 C05). However, generated TypeScript client wrappers
+  (e.g. Orval / OpenAPI-typescript client interfaces) have not been produced or qualified
+  for C04 domain operations in `frontend/src/`.
+- **Consumer impact**: Does **NOT** block bounded development. Workers can write typed
+  adapters directly against the candidate OpenAPI operations and schemas.
 
-### Gap 5: Independent BE/FE review
-- **Status: ACTIVE / SATISFIED by this review.**
-- **Inspection finding**: This review fulfills the independent QA/review gate for domain
-  readiness and identifies bounded feature sets for implementation.
+### Gap 5: Independent BE and FE review
+- **Status: ACTIVE / ONGOING.**
+- **Inspection finding**: The specification requires independent reviews from both backend
+  and frontend lanes. This QA audit provides cross-cutting contract analysis, but does
+  **not** substitute for the independent BE and FE development lane reviews required prior
+  to formal C04 freeze.
 
 ---
 
 ## Stable feature contracts ready for bounded FE/BE consumers
 
-The following three prioritized domains have complete, closed, unambiguous wire
-contracts in `contracts/domain/v1/` and `operations.json`. Bounded implementation can
-proceed without inventing wire semantics or waiting for a formal C04 freeze.
+The candidate contracts for the three prioritized feature sets are structurally closed,
+typed, and internally consistent in `contracts/domain/v1/` and `operations.json`.
+With parent authorization of bounded contract pinning, implementation in the assigned
+feature tasks can proceed without workers inventing wire semantics.
 
-### 1. Party discovery and authoring
+### 1. Party discovery, authoring, and management (BE16–BE19 / FE21–FE23)
+- **Relevant Plan Tasks**:
+  - Backend: `BE16` (Party aggregate & CRUD), `BE17` (Applications & atomic approval),
+    `BE18` (Leave, remove & cancel), `BE19` (Rally & real arrival).
+  - Frontend: `FE21` (Party discovery & application), `FE22` (Party authoring form),
+    `FE23` (Party management & rally).
 - **Discovery (GET)**:
   - `listConcertParties` (`GET /api/concert/events/{eventId}/parties`):
     Query `party.PartyQuery` (`limit`, `cursor`, `ticket_section`, `state`, `has_space`,
@@ -119,45 +149,51 @@ proceed without inventing wire semantics or waiting for a formal C04 freeze.
     Request `party.CreateParty` (`title`, `description`, `ticket_section`, `capacity: 2..50`,
     `meeting_starts_at`, `meeting_ends_at`, `requirements`, `public_place_id`).
     Returns `party.PartyPublic` (state `OPEN`, `member_count: 1`, `revision: 1`, `meeting_revision: 1`).
-    Idempotency key required.
+    Requires `X-Idempotency-Key`.
   - `updateConcertParty` (`PATCH /api/concert/events/{eventId}/parties/{partyId}`):
     Request `party.UpdateParty` (requires `expected_revision`). Returns `party.PartyPublic`.
   - `cancelConcertParty` (`POST /api/concert/events/{eventId}/parties/{partyId}/cancel`):
     Request `common.RevisionRequest`. Sets terminal state `CANCELLED`.
   - `transferConcertParty` (`POST /api/concert/events/{eventId}/parties/{partyId}/transfer`):
     Request `party.TransferOwnership` (`expected_revision`, `new_owner_id`).
-- **Membership & Applications**:
+- **Applications & Membership**:
   - `applyConcertParty` (`POST /api/concert/events/{eventId}/parties/{partyId}/applications`):
     Request `party.Apply` (`party_revision`, `note`). Returns `party.Application` (state `PENDING`).
   - `decideConcertApplication` (`POST /api/concert/events/{eventId}/party-applications/{applicationId}/decision`):
     Request `party.ApplicationDecision` (`expected_revision`, `decision: 'APPROVE' | 'REJECT'`, `party_revision`).
   - `listConcertMembers` / `removeConcertMember`:
-    Typed `party.MemberQuery` and `party.RemoveMember` (`expected_revision`, `party_revision`).
-- **Activity**:
+    Query `party.MemberQuery` and `party.RemoveMember` (`expected_revision`, `party_revision`).
+- **Activity & Rendezvous**:
   - `getConcertPartyActivity` (`GET /api/concert/events/{eventId}/me/party-activity`):
-    Query `party.ActivityQuery`. Returns `party.PartyActivity` with independent collections
-    and cursors (`owned`, `memberships`, `applications`).
-- **Invariants**: Capacity strictly 2..50 including owner. Optimistic concurrency via
-  `expected_revision` and `party_revision`. Public places are references to asset place IDs;
-  private meeting rally uses `beacon_id` references.
+    Returns `party.PartyActivity` with independent collections and cursors (`owned`,
+    `memberships`, `applications`).
+  - `getConcertRally` / `setConcertRally`:
+    Uses `party.Rally` and `party.SetRally` (requires `physical_presence_acknowledged: true`,
+    binds to `beacon_id` in `beacon.schema.json`).
 
-### 2. Giveaway reservation and pickup
-- **Public & Discovery**:
+### 2. Giveaway reservation and pickup journey (BE20–BE23 / FE24–FE26)
+- **Relevant Plan Tasks**:
+  - Backend: `BE20` (Giveaway aggregate & catalog), `BE21` (Atomic reservation command),
+    `BE22` (Cancellation & expiry worker), `BE23` (Pickup confirmation & receipts).
+  - Frontend: `FE24` (Giveaway discovery & own activity), `FE25` (Giveaway authoring & owner tools),
+    `FE26` (Reservation & pickup journey).
+- **Public Discovery**:
   - `listConcertGiveaways` (`GET /api/concert/events/{eventId}/giveaways`):
     Query `giveaway.GiveawayQuery` (`limit`, `cursor`, `state`, `in_stock`, `public_place_id`).
     Returns `giveaway.GiveawayList` (`items: [GiveawayPublic]`, `next_cursor`).
   - `getConcertGiveaway` (`GET /api/concert/events/{eventId}/giveaways/{giveawayId}`):
     Returns `giveaway.GiveawayPublic`.
-- **Authoring & Management**:
+- **Authoring & Owner Management**:
   - `createConcertGiveaway` (`POST /api/concert/events/{eventId}/giveaways`):
     Request `giveaway.CreateGiveaway` (`title`, `description`, `image_media_id`, `quantity_total: 1..10000`,
-    `pickup_starts_at`, `pickup_ends_at`, `public_place_id`). Creates state `DRAFT`.
+    `pickup_starts_at`, `pickup_ends_at`, `public_place_id`). Creates `DRAFT`.
   - `getConcertGiveawayManagement` (`GET /api/concert/events/{eventId}/giveaways/{giveawayId}/management`):
     Returns `giveaway.GiveawayManagement` (`giveaway`, `reserved_unclaimed`, `quantity_claimed`,
     `reservations: [Reservation]`, `next_cursor`).
   - `setConcertPickupMeeting` (`PUT /api/concert/events/{eventId}/giveaways/{giveawayId}/meeting`):
-    Request `giveaway.SetPickupMeeting` (`expected_revision`, `meeting: PickupMeeting`, `physical_presence_acknowledged: true`).
-- **Reservation & Pickup Flow**:
+    Request `giveaway.SetPickupMeeting` (`expected_revision`, `meeting: PickupMeeting`,
+    `physical_presence_acknowledged: true`).
+- **Reservation & One-Time Pickup Flow**:
   - `reserveConcertGiveaway` (`POST /api/concert/events/{eventId}/giveaways/{giveawayId}/reservations`):
     Request `giveaway.Reserve` (`giveaway_revision`). Returns `giveaway.Reservation` (state `HELD`).
     Stock equation enforced: `available = quantity_total - reserved_unclaimed - quantity_claimed`.
@@ -168,20 +204,21 @@ proceed without inventing wire semantics or waiting for a formal C04 freeze.
     (`confirmation_code: string [0-9]{6}`, `expires_at: <= 5 min`, `reservation_revision`).
   - `claimConcertReservation` (`POST /api/concert/events/{eventId}/reservations/{reservationId}/claim`):
     Request `giveaway.ClaimReservation` (`expected_revision`, `confirmation_code`).
-    Returns `giveaway.PickupReceipt` (`receipt_id`, `reservation_id`, `state: CLAIMED`, `claimed_at`).
+    Returns `giveaway.PickupReceipt` (`receipt_id`, `state: CLAIMED`, `claimed_at`).
   - `getConcertGiftActivity` (`GET /api/concert/events/{eventId}/me/gift-activity`):
     Returns `giveaway.GiveawayActivity` with independent `giving` and `receiving` cursors.
-- **Invariants**: 6-digit confirmation code issued once on demand, never persisted plaintext.
-  Pickup window grace is captured at creation. HELD transitions to READY at pickup start.
 
-### 3. Feed, posts, comments, and reactions
+### 3. Event feed, posts, comments, and reactions (BE31–BE32 / FE27–FE28)
+- **Relevant Plan Tasks**:
+  - Backend: `BE31` (Event feed and post adapter), `BE32` (Comments, reactions & content controls).
+  - Frontend: `FE27` (Event timeline and notices), `FE28` (Thread, composer & comments).
 - **Feed Listing & Detail**:
   - `listConcertFeed` (`GET /api/concert/events/{eventId}/feed`):
     Query `feed.FeedQuery` (`limit`, `cursor`, `filter: 'ALL' | 'MEDIA' | 'PARTY' | 'GIVEAWAY'`, `before`).
     Returns `feed.FeedPage` (`items: [PostPublic]`, `next_cursor`).
   - `getConcertPost` (`GET /api/concert/events/{eventId}/posts/{postId}`):
     Returns `feed.PostDetail` (`post: PostPublic`, `comments: [CommentPublic]`, `next_cursor`).
-- **Post Authoring & Management**:
+- **Post Authoring & Moderation**:
   - `createConcertPost` (`POST /api/concert/events/{eventId}/posts`):
     Request `feed.CreatePost` (`text: 1..2000`, `media_ids: [Uuid]`, `links: [ResourceLink]`).
     Returns `feed.PostPublic`.
@@ -194,34 +231,52 @@ proceed without inventing wire semantics or waiting for a formal C04 freeze.
     Request `feed.CreateComment` (`text: 1..500`, `post_revision`). Returns `feed.CommentPublic`.
   - `editConcertComment` / `deleteConcertComment`:
     Typed `feed.EditComment` and `common.RevisionRequest`.
-  - `likeConcertPost` (`PUT /api/concert/events/{eventId}/posts/{postId}/reaction`):
-    Returns `feed.ReactionState` (`reacted_by_me: true`, `reaction_count`, `revision`).
-  - `unlikeConcertPost` (`DELETE /api/concert/events/{eventId}/posts/{postId}/reaction`):
-    Returns `feed.ReactionState` (`reacted_by_me: false`, `reaction_count`, `revision`).
-- **Invariants**: Reaction toggle is atomic with revision. Soft deletion returns `common.Deleted`.
-  Text posts, resource links (parties, giveaways), and attaching finalized media IDs are fully stable.
+  - `likeConcertPost` / `unlikeConcertPost`:
+    Atomic toggle on `/api/concert/events/{eventId}/posts/{postId}/reaction` returning `feed.ReactionState`.
+- **Boundaries**: Text posts, linked entity cards (parties, giveaways), and attaching
+  already-finalized media IDs are fully ready. As noted in Gap 3, the media upload pipeline
+  itself (`initConcertUpload` -> `putConcertUploadBytes` -> `finalizeConcertUpload`)
+  should be treated as synchronous-to-READY until the non-ready media DTO is resolved.
 
 ---
 
 ## Minimal action items for parent integrator
 
-To unblock feature lanes without waiting for formal C04 freeze, the parent should:
-1. **Authorize feature lanes on frozen subcontracts**:
-   Explicitly authorize BE and FE workers to begin Party (`BE14`/`FE18`), Giveaway (`BE15`/`FE19`),
-   and Feed (`BE16`/`FE20`) using the existing typed schemas in `contracts/domain/v1/` and
-   `operations.json`. These contracts do not require invented wire semantics.
+To unblock feature development lanes without waiting for formal C04 freeze:
+1. **Authorize bounded pinning for prioritized feature tasks**:
+   Authorize backend and frontend workers to begin implementation on the agreed candidate
+   contracts for Party (`BE16–BE19` / `FE21–FE23`), Giveaway (`BE20–BE23` / `FE24–FE26`),
+   and Feed (`BE31–BE32` / `FE27–FE28`). Workers pin these candidate schemas locally
+   without modifying shared contract roots.
 2. **Resolve Media DTO omission (Gap 3 minimal fix)**:
    In `contracts/domain/v1/feed.schema.json`:
    Update `Media` to allow non-ready states (e.g. `state: ['PENDING', 'PROCESSING', 'READY', 'FAILED']`,
-   making `width`, `height`, and `read_path` required only when `state === 'READY'`), OR explicitly
-   document in `policy.json` that `getConcertMedia` returns 404 until `finalizeConcertUpload` succeeds.
-3. **Expand representative fixtures (Gap 1 follow-up)**:
-   Add 10–15 positive and negative fixture JSON files for primary request/response pairs
-   (`CreateParty`, `Apply`, `CreateGiveaway`, `Reserve`, `PickupCode`, `CreatePost`, `CreateComment`)
-   to `contracts/fixtures/domain/` and index them in `index.json`.
-4. **Defer Gap 2 (Legal/Operator Policies)**:
-   Keep global account deletion, legal terms publishing, and GDPR retention distinct from in-event
-   domain features; treat Gap 2 as a pre-release gate, not a development blocker.
+   making `width`, `height`, and `read_path` required only when `state === 'READY'`), OR document
+   in `policy.json` that `getConcertMedia` returns 404 until `finalizeConcertUpload` succeeds.
+3. **Specify domain account-deletion wire (Gap 2 engineering fix)**:
+   Define the internal command or event payload for Concert to consume when Auth initiates
+   account deletion (handling cascading cleanup of participant data, handles, and reservations).
+4. **Expand representative fixtures (Gap 1 follow-up)**:
+   Author request/response fixture JSON pairs for key operations (`CreateParty`, `Apply`,
+   `CreateGiveaway`, `Reserve`, `PickupCode`, `CreatePost`, `CreateComment`) under
+   `contracts/fixtures/domain/` and index them in `index.json`.
+5. **Conduct lane-specific BE and FE reviews (Gap 5 follow-up)**:
+   Ensure the assigned BE and FE implementation lanes review their respective endpoint
+   mappings and concurrency controls prior to formal freeze.
+
+---
+
+## Precommit boundary check limitation
+
+The boundary verifier `scripts/mcr/check-boundaries.py` inspects changes using `git diff base`
+and `git ls-files --others` within the repository root discovered from `Path.cwd()`.
+- **Limitation**: When executed from a lane worktree, `check-boundaries.py` only inspects
+  the index and untracked files of *that specific worktree*. If a tool or process executes
+  from a default session directory pointing to the integration checkout or another lane,
+  accidental writes in those external checkouts are completely invisible to the lane's
+  boundary checker.
+- **Rule**: All file write operations in assigned worker and QA chats must use explicit
+  absolute filesystem paths targeting only the assigned worktree.
 
 ---
 
@@ -235,15 +290,13 @@ The following checks were executed directly in worktree `/Users/lhs/Desktop/mcr-
 | Domain unit tests | `python3 -m unittest discover -s scripts/mcr/tests -p test_domain.py -v` | 0 | Ran 47 tests in 1.224s; OK (all 47 pass) |
 | Domain OpenAPI check | `python3 backend/scripts/docs/generate-mcr-domain.py --check` | 0 | `MCR domain HTTP REVIEW_CANDIDATE checked` |
 | Planning gate | `python3 scripts/mcr/check-plan.py` | 0 | Result: PASS (118 tasks, 64 IA entries) |
-| Boundary check | `python3 scripts/mcr/check-boundaries.py --base 6716ed7 --lane frontend --allow-doc docs/mcr/qa/domain-readiness-review.md` | 0 | BOUNDARIES PASS: frontend, 0 changes vs `6716ed7` |
+| Boundary check | `python3 scripts/mcr/check-boundaries.py --base 6716ed7 --lane frontend --allow-doc docs/mcr/qa/domain-readiness-review.md` | 0 | BOUNDARIES PASS: frontend, 1 changes vs `6716ed7` |
 
 ---
 
 ## Conclusion and disposition
 
-- The five stated gaps are accurately audited: Gap 1 (fixtures) and Gap 3 (media DTO) are
-  engineering omissions; Gap 2 is an external legal/operator policy requirement; Gap 4 is
-  a post-freeze tooling obligation; Gap 5 is actively addressed by this review.
-- **Parties, Giveaways, and Feed are stable, fully specified, and ready for bounded implementation.**
-- This review report is committed to branch `codex/mcr-qa-C04-readiness` without pushing.
+- The five stated gaps are audited with exact counts: Gap 1 (81 operations lack fixtures; 0 operations have both request/response covered) and Gap 3 (Media DTO and context validation) are engineering omissions; Gap 2 is split between missing internal deletion wires and external legal policies; Gap 4 is post-freeze tooling; Gap 5 requires separate BE/FE lane reviews.
+- **Party (BE16–BE19 / FE21–FE23), Giveaway (BE20–BE23 / FE24–FE26), and Feed (BE31–BE32 / FE27–FE28) candidate contracts are stable and ready for parent-authorized bounded consumer implementation.**
+- This report is committed to branch `codex/mcr-qa-C04-readiness` without pushing.
 - The persistent goal remains **ACTIVE** awaiting parent review and disposition.
