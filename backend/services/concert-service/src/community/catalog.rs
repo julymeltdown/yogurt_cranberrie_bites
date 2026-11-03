@@ -36,13 +36,15 @@ impl<A: CommunityAuthority> PgCommunity<A> {
         }
         let mut tx = self.pool.begin().await.map_err(db)?;
         self.authority
-            .authorize_in(&mut tx, actor, event, actor, true)
+            .actor_in(&mut tx, actor, event, CommunityAccess::ReadParties)
             .await?;
         let rows=sqlx::query("select party_id,aggregate->>'created_at' as created_at from concert_community_parties where event_id=$1 and ($2::text is null or aggregate->'fields'->>'ticket_section'=$2) and ($3::text is null or state=$3) and ($4::boolean is null or (member_count<capacity)=$4) and ($5::timestamptz is null or (aggregate->'fields'->>'meeting_starts_at')::timestamptz >=$5) and ($6::timestamptz is null or (aggregate->'fields'->>'meeting_starts_at')::timestamptz<$6) and ($7::timestamptz is null or ((aggregate->>'created_at')::timestamptz,party_id)>($7,$8)) order by (aggregate->>'created_at')::timestamptz,party_id limit $9")
    .bind(event).bind(&filter.ticket_section).bind(filter.state.map(concert_application::community::state_name)).bind(filter.has_space).bind(filter.starts_after).bind(filter.starts_before).bind(filter.after.map(|x|x.0)).bind(filter.after.map(|x|x.1)).bind(limit).fetch_all(&mut *tx).await.map_err(db)?;
+        tx.commit().await.map_err(db)?;
         let mut items = vec![];
         let mut next = None;
         for r in rows {
+            let mut tx = self.pool.begin().await.map_err(db)?;
             let id: Uuid = r.try_get("party_id").map_err(db)?;
             let created: String = r.try_get("created_at").map_err(db)?;
             let at: DateTime<Utc> = created.parse().map_err(|_| CommandError::InvalidState)?;
@@ -52,7 +54,7 @@ impl<A: CommunityAuthority> PgCommunity<A> {
                 .ok_or(CommandError::InvalidState)?;
             match self
                 .authority
-                .authorize_in(&mut tx, actor, event, p.owner, true)
+                .authorize_in(&mut tx, actor, event, p.owner, CommunityAccess::ReadParties)
                 .await
             {
                 Ok(()) => {}
@@ -60,11 +62,8 @@ impl<A: CommunityAuthority> PgCommunity<A> {
                 Err(e) => return Err(e.into()),
             }
             items.push(public_party(&p));
+            tx.commit().await.map_err(db)?;
         }
-        if items.len() < limit as usize && next.is_none() {
-            next = None;
-        }
-        tx.commit().await.map_err(db)?;
         Ok(PartyPage { items, next })
     }
     pub async fn applications(
@@ -77,28 +76,26 @@ impl<A: CommunityAuthority> PgCommunity<A> {
         let p = load(&mut tx, event, party, false)
             .await?
             .ok_or(CommandError::Denied)?;
-        self.authority
-            .authorize_in(&mut tx, actor, event, p.owner, true)
-            .await?;
-        let mut result = vec![];
-        for a in p
+        let candidates: Vec<_> = p
             .applications
             .iter()
             .filter(|a| p.owner == actor || a.user == actor)
-        {
-            match self
-                .authority
-                .authorize_in(&mut tx, actor, event, a.user, true)
-                .await
-            {
-                Ok(()) => result.push(a.clone()),
-                Err(CommandError::Denied) => {}
-                Err(e) => return Err(e.into()),
-            }
-            if result.len() >= 100 {
-                break;
-            }
-        }
+            .take(100)
+            .collect();
+        let permitted = permitted(
+            &self.authority,
+            &mut tx,
+            actor,
+            event,
+            p.owner,
+            candidates.iter().map(|a| a.user).collect(),
+        )
+        .await?;
+        let result = candidates
+            .into_iter()
+            .filter(|a| permitted.contains(&a.user))
+            .cloned()
+            .collect();
         tx.commit().await.map_err(db)?;
         Ok(result)
     }
@@ -112,24 +109,24 @@ impl<A: CommunityAuthority> PgCommunity<A> {
         let p = load(&mut tx, event, party, false)
             .await?
             .ok_or(CommandError::Denied)?;
-        self.authority
-            .authorize_in(&mut tx, actor, event, p.owner, true)
-            .await?;
         if !p.member_access(actor) {
             return Err(CommandError::Denied.into());
         }
-        let mut result = vec![];
-        for m in &p.members {
-            match self
-                .authority
-                .authorize_in(&mut tx, actor, event, m.user, true)
-                .await
-            {
-                Ok(()) => result.push(m.clone()),
-                Err(CommandError::Denied) => {}
-                Err(e) => return Err(e.into()),
-            }
-        }
+        let permitted = permitted(
+            &self.authority,
+            &mut tx,
+            actor,
+            event,
+            p.owner,
+            p.members.iter().map(|m| m.user).collect(),
+        )
+        .await?;
+        let result = p
+            .members
+            .iter()
+            .filter(|m| permitted.contains(&m.user))
+            .cloned()
+            .collect();
         tx.commit().await.map_err(db)?;
         Ok(result)
     }
@@ -146,4 +143,31 @@ fn public_party(p: &Party) -> PublicParty {
         member_count: p.member_count(),
         created_at: p.created_at,
     }
+}
+
+async fn permitted<A: CommunityAuthority>(
+    authority: &A,
+    c: &mut PgConnection,
+    actor: Uuid,
+    event: Uuid,
+    owner: Uuid,
+    mut subjects: Vec<Uuid>,
+) -> Result<std::collections::HashSet<Uuid>, CommandError> {
+    subjects.push(owner);
+    subjects.sort();
+    subjects.dedup();
+    let mut permitted = std::collections::HashSet::new();
+    for subject in subjects {
+        match authority
+            .authorize_in(c, actor, event, subject, CommunityAccess::ReadParties)
+            .await
+        {
+            Ok(()) => {
+                permitted.insert(subject);
+            }
+            Err(CommandError::Denied) if subject != owner => {}
+            Err(e) => return Err(e),
+        }
+    }
+    Ok(permitted)
 }

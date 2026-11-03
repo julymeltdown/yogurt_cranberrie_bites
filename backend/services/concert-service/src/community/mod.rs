@@ -8,18 +8,58 @@ use sqlx::{PgConnection, PgPool, Row};
 use std::sync::Mutex;
 use uuid::Uuid;
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CommunityAccess {
+    ReadParties,
+    WriteParties,
+    SafetyParties,
+    ReadGifts,
+    WriteGifts,
+    SafetyGifts,
+}
+impl CommunityAccess {
+    pub fn party(write: bool, safety: bool) -> Self {
+        if !write {
+            Self::ReadParties
+        } else if safety {
+            Self::SafetyParties
+        } else {
+            Self::WriteParties
+        }
+    }
+    pub fn gift(write: bool, safety: bool) -> Self {
+        if !write {
+            Self::ReadGifts
+        } else if safety {
+            Self::SafetyGifts
+        } else {
+            Self::WriteGifts
+        }
+    }
+}
 /// Temporary composition port, not a second policy engine. An implementation must call
 /// BE37 authorize_in for each exact actor/subject/event and hold its fence through commit.
 /// It must also fence current canonical session eligibility/feature policy. No default grant.
 #[async_trait]
 pub trait CommunityAuthority: Send + Sync {
+    /// Actor-only admission before scans; no relationship pair or target lock here.
+    async fn actor_in(
+        &self,
+        c: &mut PgConnection,
+        actor: Uuid,
+        event: Uuid,
+        access: CommunityAccess,
+    ) -> Result<(), CommandError> {
+        let _ = (c, actor, event, access);
+        Err(CommandError::Unavailable)
+    }
     async fn authorize_in(
         &self,
         connection: &mut PgConnection,
         actor: Uuid,
         event: Uuid,
         subject: Uuid,
-        safety: bool,
+        access: CommunityAccess,
     ) -> Result<(), CommandError>;
     /// Resolve BE08's current published/open reviewed place, holding its binding/state locks
     /// through commit. A profile or a place UUID's existence is never permission.
@@ -39,7 +79,7 @@ impl CommunityAuthority for UnavailableAuthority {
         _: Uuid,
         _: Uuid,
         _: Uuid,
-        _: bool,
+        _: CommunityAccess,
     ) -> Result<(), CommandError> {
         Err(CommandError::Unavailable)
     }
@@ -88,7 +128,25 @@ impl<A: CommunityAuthority> PgCommunity<A> {
         {
             return Err(error);
         }
-        result.map_err(CommunityError::Command)
+        let receipt = result.map_err(CommunityError::Command)?;
+        if let Some(error) = receipt.failure.and_then(party_failure_error) {
+            return Err(CommunityError::Party(error));
+        }
+        Ok(receipt)
+    }
+    pub async fn party_status(
+        &self,
+        command: &PartyCommand,
+    ) -> Result<Option<SafeReceipt>, CommunityError> {
+        let producer = PartyProducer {
+            command,
+            authority: &self.authority,
+            error: Mutex::new(None),
+        };
+        PgCommandRepository::new(self.pool.clone())
+            .lookup(command.scope()?, command.target(), &producer)
+            .await
+            .map_err(CommunityError::Command)
     }
     /// Safe internal public projection. Caller still maps canonical public owner profile via owner service.
     /// No application notes, member IDs or physical meeting guidance is exposed.
@@ -103,7 +161,13 @@ impl<A: CommunityAuthority> PgCommunity<A> {
             .await?
             .ok_or(CommunityError::Party(PartyError::Unavailable))?;
         self.authority
-            .authorize_in(&mut tx, actor, event, party.owner, true)
+            .authorize_in(
+                &mut tx,
+                actor,
+                event,
+                party.owner,
+                CommunityAccess::ReadParties,
+            )
             .await?;
         let result = PublicParty {
             id: party.id,
@@ -133,7 +197,13 @@ impl<A: CommunityAuthority> PgCommunity<A> {
             .await?
             .ok_or(CommandError::Denied)?;
         self.authority
-            .authorize_in(&mut tx, actor, event, party.owner, true)
+            .authorize_in(
+                &mut tx,
+                actor,
+                event,
+                party.owner,
+                CommunityAccess::ReadParties,
+            )
             .await?;
         if !party.member_access(actor) || party.audience_revision != expected {
             return Err(CommandError::Denied.into());
@@ -189,17 +259,12 @@ impl<A: CommunityAuthority> CommandProducer for PartyProducer<'_, A> {
         let Some(phase) = phase else {
             return Err(CommandError::Denied);
         };
-        if !matches!(phase.as_str(), "OPEN" | "LIVE") && !(cmd.safety() && phase == "READ_ONLY") {
-            if let Ok(mut slot) = self.error.lock() {
-                *slot = Some(CommunityError::EventReadOnly)
-            }
+        if !matches!(phase.as_str(), "OPEN" | "LIVE" | "READ_ONLY") {
             return Err(CommandError::Denied);
         }
         let party = load(c, scope.event, cmd.party_id(), true).await?;
         let owner = party.as_ref().map(|p| p.owner).unwrap_or(scope.actor);
-        self.authority
-            .authorize_in(c, scope.actor, scope.event, owner, cmd.safety())
-            .await?;
+        let mut subjects = vec![owner];
         if let Some(p) = party {
             let subject = match cmd.action {
                 PartyAction::Decide { application, .. }
@@ -244,12 +309,23 @@ impl<A: CommunityAuthority> CommandProducer for PartyProducer<'_, A> {
                 PartyAction::Apply { .. } => {}
             }
             if let Some(subject) = subject {
-                self.authority
-                    .authorize_in(c, scope.actor, scope.event, subject, cmd.safety())
-                    .await?;
+                subjects.push(subject);
             }
         } else if !matches!(cmd.action, PartyAction::Create(_)) {
             return Err(CommandError::Denied);
+        }
+        subjects.sort();
+        subjects.dedup();
+        for subject in subjects {
+            self.authority
+                .authorize_in(
+                    c,
+                    scope.actor,
+                    scope.event,
+                    subject,
+                    CommunityAccess::ReadParties,
+                )
+                .await?;
         }
         Ok(())
     }
@@ -259,6 +335,7 @@ impl<A: CommunityAuthority> CommandProducer for PartyProducer<'_, A> {
         scope: Scope,
         target: Uuid,
     ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        self.write_guard(c, scope).await?;
         let now = sqlx::query_scalar("select clock_timestamp()")
             .fetch_one(&mut *c)
             .await
@@ -277,14 +354,21 @@ impl<A: CommunityAuthority> CommandProducer for PartyProducer<'_, A> {
             let mut p = load(c, scope.event, self.command.party_id(), true)
                 .await?
                 .ok_or(CommandError::Denied)?;
-            let change = p
-                .change(
-                    scope.actor,
-                    &self.command.action,
-                    self.command.created_id(),
-                    now,
-                )
-                .map_err(|e| self.domain(e))?;
+            let change = match p.change(
+                scope.actor,
+                &self.command.action,
+                self.command.created_id(),
+                now,
+            ) {
+                Ok(value) => value,
+                Err(error) => {
+                    if let Some(failure) = party_safe_failure(error) {
+                        return Ok((Completion::Failed(failure), None));
+                    } else {
+                        return Err(self.domain(error));
+                    }
+                }
+            };
             (p, change)
         };
         if matches!(
@@ -294,6 +378,12 @@ impl<A: CommunityAuthority> CommandProducer for PartyProducer<'_, A> {
             self.authority
                 .place_in(c, scope.event, party.fields.public_place_id)
                 .await?;
+        }
+        if matches!(
+            self.command.action,
+            PartyAction::Apply { .. } | PartyAction::Decide { approve: true, .. }
+        ) {
+            policy::pin_effect_until(c, party.fields.meeting_ends_at).await?;
         }
         save(c, &party).await?;
         let reference = SafeReference {
@@ -360,3 +450,71 @@ fn db(_: sqlx::Error) -> CommandError {
 pub mod giveaway;
 
 pub mod catalog;
+
+fn party_safe_failure(e: PartyError) -> Option<SafeFailure> {
+    match e {
+        PartyError::Full => Some(SafeFailure::PartyFull),
+        PartyError::DuplicateApplication => Some(SafeFailure::DuplicateApplication),
+        PartyError::VersionConflict => Some(SafeFailure::VersionConflict),
+        PartyError::InvalidTransition => Some(SafeFailure::InvalidTransition),
+        _ => None,
+    }
+}
+fn party_failure_error(e: SafeFailure) -> Option<PartyError> {
+    match e {
+        SafeFailure::PartyFull => Some(PartyError::Full),
+        SafeFailure::DuplicateApplication => Some(PartyError::DuplicateApplication),
+        SafeFailure::VersionConflict => Some(PartyError::VersionConflict),
+        SafeFailure::InvalidTransition => Some(PartyError::InvalidTransition),
+        _ => None,
+    }
+}
+impl<A: CommunityAuthority> PartyProducer<'_, A> {
+    async fn write_guard(&self, c: &mut PgConnection, scope: Scope) -> Result<(), CommandError> {
+        let phase: String =
+            sqlx::query_scalar("select phase from concert_events where event_id=$1 for share")
+                .bind(scope.event)
+                .fetch_one(&mut *c)
+                .await
+                .map_err(db)?;
+        if !matches!(phase.as_str(), "OPEN" | "LIVE")
+            && !(self.command.safety() && phase == "READ_ONLY")
+        {
+            if let Ok(mut e) = self.error.lock() {
+                *e = Some(CommunityError::EventReadOnly)
+            }
+            return Err(CommandError::Denied);
+        }
+        let p = load(c, scope.event, self.command.party_id(), true).await?;
+        let owner = p.as_ref().map(|p| p.owner).unwrap_or(scope.actor);
+        let access = CommunityAccess::party(true, self.command.safety());
+        let mut subjects = vec![owner];
+        if let Some(p) = p {
+            let subject = match self.command.action {
+                PartyAction::Decide { application, .. }
+                | PartyAction::CancelApplication { application, .. } => Some(
+                    p.applications
+                        .iter()
+                        .find(|a| a.id == application)
+                        .ok_or(CommandError::Denied)?
+                        .user,
+                ),
+                PartyAction::Transfer { user, .. } | PartyAction::Remove { user, .. } => Some(user),
+                _ => None,
+            };
+            if let Some(subject) = subject {
+                subjects.push(subject);
+            }
+        }
+        subjects.sort();
+        subjects.dedup();
+        for subject in subjects {
+            self.authority
+                .authorize_in(c, scope.actor, scope.event, subject, access)
+                .await?;
+        }
+        Ok(())
+    }
+}
+
+pub mod policy;

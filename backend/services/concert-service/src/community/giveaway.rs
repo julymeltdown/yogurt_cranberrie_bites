@@ -1,5 +1,5 @@
 //! SQL-serialized giveaway/reservation commands, one-shot codes and restart-safe bounded sweeps.
-use super::{db, CommunityAuthority};
+use super::{db, CommunityAccess, CommunityAuthority};
 use crate::adapters::out::repository::{
     outbox_maintenance::enqueue_maintenance_in,
     receipt::{CommandProducer, PgCommandRepository},
@@ -34,6 +34,7 @@ pub trait GiftAuthority: CommunityAuthority {
         c: &mut PgConnection,
         event: Uuid,
         actor: Uuid,
+        giveaway: Uuid,
         media: Option<Uuid>,
     ) -> Result<(), CommandError>;
     /// Current reviewed BE08 map/place versions and allowed event cutoff are fenced here.
@@ -115,6 +116,9 @@ impl<A: GiftAuthority> PgGifts<A> {
             return Err(e);
         }
         let receipt = result?;
+        if let Some(error) = receipt.failure.and_then(gift_failure_error) {
+            return Err(GiftServiceError::Gift(error));
+        }
         let issued_code = producer
             .issued
             .lock()
@@ -125,6 +129,23 @@ impl<A: GiftAuthority> PgGifts<A> {
             issued_code,
         })
     }
+    pub async fn status(
+        &self,
+        command: &GiftCommand,
+        pickup_keys: &PickupKeys,
+    ) -> Result<Option<SafeReceipt>, GiftServiceError> {
+        let producer = GiftProducer {
+            command,
+            authority: &self.authority,
+            pickup_keys,
+            error: Mutex::new(None),
+            issued: Mutex::new(None),
+        };
+        PgCommandRepository::new(self.pool.clone())
+            .lookup(command.scope()?, command.target(), &producer)
+            .await
+            .map_err(GiftServiceError::Command)
+    }
     async fn charge_attempt(
         &self,
         p: &GiftProducer<'_, A>,
@@ -133,6 +154,7 @@ impl<A: GiftAuthority> PgGifts<A> {
         let cmd = p.command;
         let mut tx = self.pool.begin().await.map_err(db)?;
         p.authorize(&mut tx, cmd.scope()?, cmd.target()).await?;
+        p.write_guard(&mut tx, cmd.scope()?).await?;
         let g = load(&mut tx, cmd.event, cmd.giveaway_id(), true, false)
             .await?
             .ok_or(CommandError::Denied)?;
@@ -174,7 +196,7 @@ impl<A: GiftAuthority> PgGifts<A> {
             .await?
             .ok_or(CommandError::Denied)?;
         self.authority
-            .authorize_in(&mut tx, actor, event, g.owner, true)
+            .authorize_in(&mut tx, actor, event, g.owner, CommunityAccess::ReadGifts)
             .await?;
         if g.state == GiftState::Draft && actor != g.owner {
             return Err(CommandError::Denied.into());
@@ -194,9 +216,7 @@ impl<A: GiftAuthority> PgGifts<A> {
         let mut g = load(&mut tx, event, giveaway, true, false)
             .await?
             .ok_or(CommandError::Denied)?;
-        self.authority
-            .authorize_in(&mut tx, actor, event, g.owner, true)
-            .await?;
+
         let r = g
             .reservations
             .iter()
@@ -205,9 +225,15 @@ impl<A: GiftAuthority> PgGifts<A> {
         if actor != g.owner && actor != r.recipient {
             return Err(CommandError::Denied.into());
         }
-        self.authority
-            .authorize_in(&mut tx, actor, event, r.recipient, true)
-            .await?;
+
+        let mut subjects = vec![g.owner, r.recipient];
+        subjects.sort();
+        subjects.dedup();
+        for subject in subjects {
+            self.authority
+                .authorize_in(&mut tx, actor, event, subject, CommunityAccess::ReadGifts)
+                .await?;
+        }
         let now = sqlx::query_scalar("select clock_timestamp()")
             .fetch_one(&mut *tx)
             .await
@@ -323,17 +349,12 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
         let Some(phase) = phase else {
             return Err(CommandError::Denied);
         };
-        if !matches!(phase.as_str(), "OPEN" | "LIVE") && !(cmd.safety() && phase == "READ_ONLY") {
-            if let Ok(mut s) = self.error.lock() {
-                *s = Some(GiftServiceError::EventReadOnly)
-            }
+        if !matches!(phase.as_str(), "OPEN" | "LIVE" | "READ_ONLY") {
             return Err(CommandError::Denied);
         }
         let gift = load(c, scope.event, cmd.giveaway_id(), true, false).await?;
         let owner = gift.as_ref().map(|g| g.owner).unwrap_or(scope.actor);
-        self.authority
-            .authorize_in(c, scope.actor, scope.event, owner, cmd.safety())
-            .await?;
+        let mut subjects = vec![owner];
         if let Some(g) = gift {
             match cmd.action {
                 GiftAction::Create(_)
@@ -363,13 +384,24 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
                     if !permitted {
                         return Err(CommandError::Denied);
                     }
-                    self.authority
-                        .authorize_in(c, scope.actor, scope.event, r.recipient, cmd.safety())
-                        .await?;
+                    subjects.push(r.recipient);
                 }
             }
         } else if !matches!(cmd.action, GiftAction::Create(_)) {
             return Err(CommandError::Denied);
+        }
+        subjects.sort();
+        subjects.dedup();
+        for subject in subjects {
+            self.authority
+                .authorize_in(
+                    c,
+                    scope.actor,
+                    scope.event,
+                    subject,
+                    CommunityAccess::ReadGifts,
+                )
+                .await?;
         }
         Ok(())
     }
@@ -379,6 +411,7 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
         scope: Scope,
         target: Uuid,
     ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        self.write_guard(c, scope).await?;
         let now = sqlx::query_scalar("select clock_timestamp()")
             .fetch_one(&mut *c)
             .await
@@ -413,11 +446,14 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
                     .find(|r| r.id == reservation)
                     .ok_or(CommandError::Denied)?;
                 if r.state != ReservationState::Claimed {
-                    let row=sqlx::query("select key_id,keyed_hash,generation,expires_at from concert_community_pickup_secrets where event_id=$1 and reservation_id=$2 for update").bind(scope.event).bind(reservation).fetch_optional(&mut *c).await.map_err(db)?.ok_or_else(||self.domain(GiftError::CodeInvalid))?;
+                    let row=sqlx::query("select key_id,keyed_hash,generation,expires_at from concert_community_pickup_secrets where event_id=$1 and reservation_id=$2 for update").bind(scope.event).bind(reservation).fetch_optional(&mut *c).await.map_err(db)?;
+                    let Some(row) = row else {
+                        return Ok((Completion::Failed(SafeFailure::PickupCodeInvalid), None));
+                    };
                     let expiry: DateTime<Utc> = row.try_get("expires_at").map_err(db)?;
                     let generation: i64 = row.try_get("generation").map_err(db)?;
                     if now >= r.expires_at {
-                        return Err(self.domain(GiftError::Expired));
+                        return Ok((Completion::Failed(SafeFailure::ReservationExpired), None));
                     }
                     if now >= expiry
                         || r.code_expires_at != Some(expiry)
@@ -432,13 +468,20 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
                             cmd.code.as_ref().ok_or(CommandError::InvalidInput)?,
                         )?
                     {
-                        return Err(self.domain(GiftError::CodeInvalid));
+                        return Ok((Completion::Failed(SafeFailure::PickupCodeInvalid), None));
                     }
                 }
             }
-            let change = g
-                .change(scope.actor, &cmd.action, cmd.created_id(), now)
-                .map_err(|e| self.domain(e))?;
+            let change = match g.change(scope.actor, &cmd.action, cmd.created_id(), now) {
+                Ok(v) => v,
+                Err(e) => {
+                    if let Some(f) = gift_safe_failure(e) {
+                        return Ok((Completion::Failed(f), None));
+                    } else {
+                        return Err(self.domain(e));
+                    }
+                }
+            };
             (g, change)
         };
         if gift.expires_at() > settings.event_cutoff {
@@ -452,7 +495,13 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
                 .place_in(c, scope.event, gift.fields.public_place_id)
                 .await?;
             self.authority
-                .media_in(c, scope.event, scope.actor, gift.fields.image_media_id)
+                .media_in(
+                    c,
+                    scope.event,
+                    scope.actor,
+                    gift.id,
+                    gift.fields.image_media_id,
+                )
                 .await?;
         }
         if let GiftAction::SetMeeting { meeting, .. } = &cmd.action {
@@ -460,6 +509,30 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
                 return Err(CommandError::InvalidInput);
             }
             self.authority.meeting_in(c, scope.event, meeting).await?;
+        }
+        if matches!(cmd.action, GiftAction::Reserve { .. }) {
+            super::policy::pin_effect_until(c, gift.expires_at()).await?;
+        }
+        if matches!(
+            cmd.action,
+            GiftAction::IssueCode { .. } | GiftAction::Claim { .. }
+        ) {
+            let previous = load(c, scope.event, cmd.giveaway_id(), true, false)
+                .await?
+                .ok_or(CommandError::Denied)?;
+            let r = previous
+                .reservations
+                .iter()
+                .find(|r| r.id == target)
+                .ok_or(CommandError::Denied)?;
+            if r.state != ReservationState::Claimed {
+                super::policy::pin_effect_until(c, r.expires_at).await?;
+                if let Some(expiry) = r.code_expires_at {
+                    if matches!(cmd.action, GiftAction::Claim { .. }) {
+                        super::policy::pin_effect_until(c, expiry).await?;
+                    }
+                }
+            }
         }
         save(c, &gift).await?;
         if let GiftAction::IssueCode { reservation, .. } = cmd.action {
@@ -636,13 +709,15 @@ impl<A: GiftAuthority> PgGifts<A> {
         }
         let mut tx = self.pool.begin().await.map_err(db)?;
         self.authority
-            .authorize_in(&mut tx, actor, event, actor, true)
+            .actor_in(&mut tx, actor, event, CommunityAccess::ReadGifts)
             .await?;
         let rows=sqlx::query("select giveaway_id from concert_community_giveaways where event_id=$1 and state<>'DRAFT' and ($2::text is null or state=$2) and ($3::boolean is null or (quantity_total-reserved_unclaimed-quantity_claimed>0)=$3) and ($4::timestamptz is null or (aggregate->'fields'->>'pickup_starts_at')::timestamptz>=$4) and ($5::timestamptz is null or (aggregate->'fields'->>'pickup_starts_at')::timestamptz<$5) and ($6::uuid is null or (aggregate->'fields'->>'public_place_id')::uuid=$6) and ($7::timestamptz is null or ((aggregate->>'created_at')::timestamptz,giveaway_id)>($7,$8)) order by (aggregate->>'created_at')::timestamptz,giveaway_id limit $9")
    .bind(event).bind(filter.state.map(state_name)).bind(filter.in_stock).bind(filter.pickup_after).bind(filter.pickup_before).bind(filter.public_place_id).bind(filter.after.map(|x|x.0)).bind(filter.after.map(|x|x.1)).bind(limit).fetch_all(&mut *tx).await.map_err(db)?;
+        tx.commit().await.map_err(db)?;
         let mut items = vec![];
         let mut next = None;
         for row in rows {
+            let mut tx = self.pool.begin().await.map_err(db)?;
             let id: Uuid = row.try_get("giveaway_id").map_err(db)?;
             let g = load(&mut tx, event, id, false, false)
                 .await?
@@ -650,15 +725,15 @@ impl<A: GiftAuthority> PgGifts<A> {
             next = Some((g.created_at, id));
             match self
                 .authority
-                .authorize_in(&mut tx, actor, event, g.owner, true)
+                .authorize_in(&mut tx, actor, event, g.owner, CommunityAccess::ReadGifts)
                 .await
             {
                 Ok(()) => items.push(GiftSummary::from(&g)),
-                Err(CommandError::Denied) => {}
+                Err(CommandError::Denied) => continue,
                 Err(e) => return Err(e.into()),
             }
+            tx.commit().await.map_err(db)?;
         }
-        tx.commit().await.map_err(db)?;
         Ok(GiftPage { items, next })
     }
     pub async fn pickup(
@@ -676,7 +751,7 @@ impl<A: GiftAuthority> PgGifts<A> {
             .await?
             .ok_or(CommandError::Denied)?;
         self.authority
-            .authorize_in(&mut tx, actor, event, g.owner, true)
+            .authorize_in(&mut tx, actor, event, g.owner, CommunityAccess::ReadGifts)
             .await?;
         let r = g
             .reservations
@@ -702,5 +777,100 @@ impl<A: GiftAuthority> PgGifts<A> {
         };
         tx.commit().await.map_err(db)?;
         Ok(result)
+    }
+}
+
+fn gift_safe_failure(e: GiftError) -> Option<SafeFailure> {
+    match e {
+        GiftError::SoldOut => Some(SafeFailure::GiveawaySoldOut),
+        GiftError::DuplicateReservation => Some(SafeFailure::DuplicateActiveReservation),
+        GiftError::Expired => Some(SafeFailure::ReservationExpired),
+        GiftError::CodeInvalid => Some(SafeFailure::PickupCodeInvalid),
+        GiftError::VersionConflict => Some(SafeFailure::VersionConflict),
+        GiftError::InvalidTransition => Some(SafeFailure::InvalidTransition),
+        _ => None,
+    }
+}
+fn gift_failure_error(e: SafeFailure) -> Option<GiftError> {
+    match e {
+        SafeFailure::GiveawaySoldOut => Some(GiftError::SoldOut),
+        SafeFailure::DuplicateActiveReservation => Some(GiftError::DuplicateReservation),
+        SafeFailure::ReservationExpired => Some(GiftError::Expired),
+        SafeFailure::PickupCodeInvalid => Some(GiftError::CodeInvalid),
+        SafeFailure::VersionConflict => Some(GiftError::VersionConflict),
+        SafeFailure::InvalidTransition => Some(GiftError::InvalidTransition),
+        _ => None,
+    }
+}
+impl<A: GiftAuthority> GiftProducer<'_, A> {
+    async fn write_guard(&self, c: &mut PgConnection, scope: Scope) -> Result<(), CommandError> {
+        let phase: String =
+            sqlx::query_scalar("select phase from concert_events where event_id=$1 for share")
+                .bind(scope.event)
+                .fetch_one(&mut *c)
+                .await
+                .map_err(db)?;
+        if !matches!(phase.as_str(), "OPEN" | "LIVE")
+            && !(self.command.safety() && phase == "READ_ONLY")
+        {
+            if let Ok(mut e) = self.error.lock() {
+                *e = Some(GiftServiceError::EventReadOnly)
+            }
+            return Err(CommandError::Denied);
+        }
+        let g = load(c, scope.event, self.command.giveaway_id(), true, false).await?;
+        let owner = g.as_ref().map(|g| g.owner).unwrap_or(scope.actor);
+        let access = CommunityAccess::gift(true, self.command.safety());
+        let mut subjects = vec![owner];
+        if let Some(g) = g {
+            if matches!(
+                self.command.action,
+                GiftAction::Cancel { .. } | GiftAction::IssueCode { .. } | GiftAction::Claim { .. }
+            ) {
+                let r = g
+                    .reservations
+                    .iter()
+                    .find(|r| r.id == self.command.target())
+                    .ok_or(CommandError::Denied)?;
+                subjects.push(r.recipient);
+            }
+        }
+        subjects.sort();
+        subjects.dedup();
+        for subject in subjects {
+            self.authority
+                .authorize_in(c, scope.actor, scope.event, subject, access)
+                .await?;
+        }
+        Ok(())
+    }
+}
+
+#[async_trait]
+impl GiftAuthority for super::UnavailableAuthority {
+    async fn settings_in(
+        &self,
+        _: &mut PgConnection,
+        _: Uuid,
+    ) -> Result<GiftSettings, CommandError> {
+        Err(CommandError::Unavailable)
+    }
+    async fn media_in(
+        &self,
+        _: &mut PgConnection,
+        _: Uuid,
+        _: Uuid,
+        _: Uuid,
+        _: Option<Uuid>,
+    ) -> Result<(), CommandError> {
+        Err(CommandError::Unavailable)
+    }
+    async fn meeting_in(
+        &self,
+        _: &mut PgConnection,
+        _: Uuid,
+        _: &PickupMeeting,
+    ) -> Result<(), CommandError> {
+        Err(CommandError::Unavailable)
     }
 }

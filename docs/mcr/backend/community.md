@@ -178,3 +178,61 @@ Compilation/native test execution is still NOT_RUN until the shared lease.
 A separate lightweight owned PostgreSQL16.14 fixture successfully applied
 0001/0002/0007/0011 and checked both new origin constraints; exit0 and validated
 owned cleanup PASS. This is DDL evidence only, not transaction/runtime evidence.
+
+## Follow-up: shared policy and durable failure integration
+
+The initial source checkpoint5d8efe7 passed13 focused domain/application tests,
+5 party native tests,2 maintenance native tests and4 gift native tests. Each
+native fixture passed its actual PostgreSQL restart probe and owned cleanup.
+Committed reports are [community-evidence](community-evidence/initial-binaries.json),
+including exact source/binary hashes and full outputs. They qualify the initial
+pre0009 synthetic-authority slice only. They do not qualify later source changes.
+
+Owning prerequisites imported separately (exclude from worker implementation
+cherry-picks):204e09a→c716097 (durable domain failures/0009),0c161d7→a1a6b76
+(retained ring edge),bcd2cd2→d44b436,b71ae36→5af7e50,a5e84da→1678b30,
+f5e5d44→b03b881 (shared BE37 policy, validation and actor-only preflight).
+Only the allowed module-export conflicts were resolved locally; other source
+owner files remain their original committed changes.
+
+Current follow-up, pending bounded rebuild/native requalification:
+
+- Party/gift declared business errors now persist precise FAILED receipts via
+  SafeFailure/0009. Same-key replay preserves failure and changed input conflicts.
+  Invalid input/denied authority still rolls back without exposing target data.
+- Receipt status/replay uses fresh READ authorization, independently of new-write
+  phase/feature gates. READ_ONLY permits recovery of prior outcomes and explicit
+  safety operations; it does not permit new normal commands.
+- `CommunityAccess` distinguishes party/gift READ, NORMAL and SAFETY operations.
+  `SharedCommunityAuthority` calls the actual BE37 transactional adapter plus
+  injected feature/place/media/settings owner ports. Its actor-only preflight
+  uses `authorize_actor_in`, checks exact ParticipantKey and never takes a pair
+  or grants target access. Missing owner/resource authority fails closed.
+- Lock order is event→root→canonical sorted subject pairs. Catalogue scans
+  validate actor without a pair and use one transaction per projected root;
+  they do not carry pair locks into the next root. Private multiple-subject
+  projections acquire complete subject sets in sorted order. This addresses the
+  root/self-pair cycle independently found by the meeting owner.
+- Media hook includes the exact giveaway target UUID. BE24 link composition must
+  retain its full event/relationship/authority revision triple and current target
+  fence; this worker does not collapse stamps or invent an owning media grant.
+- Verified policy validity and time-sensitive apply/approval/reservation/code/claim
+  deadlines are pinned to deferred guards on community roots and rechecked at
+  actual commit after BE15 receipt/outbox SQL. The guard does not manufacture a
+  missing owner proof; production requires the qualified injected fenced port.
+  System maintenance and deliberately synthetic test ports remain distinct.
+
+Migration0007's guard bytes changed after initial evidence; it is still an
+unpublished worker candidate, not a repair of a deployed migration. Native
+harness now applies0009 and, for policy mode,0006. It rejects zero-test execution,
+records all owning source/migration hashes and checks restart exact-test counts.
+Dedicated `community_policy.rs` uses real BE37 SQL with explicitly synthetic
+owner/resources and covers missing membership, blocks, policy outage, READ_ONLY
+recovery, commit deadlines and cross-party leave/remove pair ordering.
+
+Required latest-candidate Rust/native validation is NOT_RUN at this checkpoint.
+No prior binary/hash is presented as qualification for these follow-up changes.
+The persistent goal remains active until that validation, documentation,
+committed handoff and concrete fixes are delivered. Live Auth/Friend mutation
+fencing, operator/place/media decisions, public code-replay wire amendment,
+HTTP/WS composition and real IN02 remain external gates, not inferred acceptance.

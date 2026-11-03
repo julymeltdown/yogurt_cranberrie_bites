@@ -11,13 +11,23 @@ use uuid::Uuid;
 struct SyntheticAuthority;
 #[async_trait]
 impl CommunityAuthority for SyntheticAuthority {
+    async fn actor_in(
+        &self,
+        c: &mut PgConnection,
+        actor: Uuid,
+        event: Uuid,
+        access: concert_service::community::CommunityAccess,
+    ) -> Result<(), CommandError> {
+        self.authorize_in(c, actor, event, actor, access).await
+    }
+
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
         actor: Uuid,
         event: Uuid,
         _: Uuid,
-        _: bool,
+        _: concert_service::community::CommunityAccess,
     ) -> Result<(), CommandError> {
         let allowed: Option<bool> = sqlx::query_scalar(
             "select allowed from community_test_authority where actor=$1 and event=$2 for share",
@@ -69,6 +79,7 @@ impl GiftAuthority for SyntheticAuthority {
     async fn media_in(
         &self,
         _: &mut PgConnection,
+        _: Uuid,
         _: Uuid,
         _: Uuid,
         media: Option<Uuid>,

@@ -68,3 +68,22 @@ CREATE TABLE public.concert_community_pickup_attempts (
  bucket bytea NOT NULL CHECK(octet_length(bucket)=32),window_started_at timestamptz NOT NULL,
  attempts integer NOT NULL CHECK(attempts BETWEEN 1 AND 100),PRIMARY KEY(event_id,bucket)
 );
+
+-- Check the earliest verified proof/effect deadline at actual commit, after BE15 receipt/outbox SQL.
+CREATE FUNCTION public.concert_community_deadline_guard() RETURNS trigger LANGUAGE plpgsql AS $$
+DECLARE deadline timestamptz;
+BEGIN
+ deadline:=nullif(current_setting('mcr.community_authority_until',true),'')::timestamptz;
+ IF deadline IS NOT NULL AND clock_timestamp()>=deadline THEN
+  RAISE EXCEPTION 'community authority expired' USING ERRCODE='23514';
+ END IF;
+ deadline:=nullif(current_setting('mcr.community_effect_until',true),'')::timestamptz;
+ IF deadline IS NOT NULL AND clock_timestamp()>=deadline THEN
+  RAISE EXCEPTION 'community effect expired' USING ERRCODE='23514';
+ END IF;
+ RETURN NULL;
+END $$;
+CREATE CONSTRAINT TRIGGER concert_community_party_deadline AFTER INSERT OR UPDATE ON public.concert_community_parties
+ DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.concert_community_deadline_guard();
+CREATE CONSTRAINT TRIGGER concert_community_gift_deadline AFTER INSERT OR UPDATE ON public.concert_community_giveaways
+ DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.concert_community_deadline_guard();

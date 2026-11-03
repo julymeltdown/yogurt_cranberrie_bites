@@ -66,13 +66,23 @@ async fn owned_pool() -> anyhow::Result<PgPool> {
 struct SyntheticAuthority;
 #[async_trait]
 impl CommunityAuthority for SyntheticAuthority {
+    async fn actor_in(
+        &self,
+        c: &mut PgConnection,
+        actor: Uuid,
+        event: Uuid,
+        access: concert_service::community::CommunityAccess,
+    ) -> Result<(), CommandError> {
+        self.authorize_in(c, actor, event, actor, access).await
+    }
+
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
         actor: Uuid,
         event: Uuid,
         _: Uuid,
-        _: bool,
+        _: concert_service::community::CommunityAccess,
     ) -> Result<(), CommandError> {
         let allowed: Option<bool> = sqlx::query_scalar(
             "select allowed from community_test_authority where actor=$1 and event=$2 for share",
@@ -246,6 +256,21 @@ async fn community_last_slot_race_and_replay() -> anyhow::Result<()> {
         service.execute_party(&full, &keys).await,
         Err(CommunityError::Party(PartyError::Full))
     );
+    assert_eq!(
+        service.execute_party(&full, &keys).await,
+        Err(CommunityError::Party(PartyError::Full))
+    );
+    let mut changed = full;
+    changed.action = PartyAction::Decide {
+        application: loser,
+        expected: 1,
+        party_revision: 999,
+        approve: true,
+    };
+    assert_eq!(
+        service.execute_party(&changed, &keys).await,
+        Err(CommunityError::Command(CommandError::Conflict))
+    );
     let count: i32 = sqlx::query_scalar(
         "select member_count from concert_community_parties where event_id=$1 and party_id=$2",
     )
@@ -259,7 +284,7 @@ async fn community_last_slot_race_and_replay() -> anyhow::Result<()> {
             .bind(event)
             .fetch_one(&pool)
             .await?;
-    assert_eq!(receipts, 4);
+    assert_eq!(receipts, 6); // last-slot VERSION_CONFLICT and PARTY_FULL are durable failed receipts
     let outbox: i64 = sqlx::query_scalar("select count(*) from concert_outbox where event_id=$1")
         .bind(event)
         .fetch_one(&pool)

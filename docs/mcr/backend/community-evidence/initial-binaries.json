@@ -1,0 +1,33 @@
+{
+  "source_revision": "5d8efe7",
+  "rust": "1.88.0",
+  "jobs": 2,
+  "debug": 0,
+  "locked": true,
+  "offline": true,
+  "binaries": {
+    "community_party": {
+      "path": "/tmp/mcr-community-native-20261104-5ujru236/community_party",
+      "sha256": "aa711bc0412fdbe2ac5514f33be73bd688cf18a18ab520a9994ebb32810f8dc4"
+    },
+    "maintenance_outbox": {
+      "path": "/tmp/mcr-community-native-20261104-5ujru236/maintenance_outbox",
+      "sha256": "b2201e1814efee22295cc2971abde9a46fa20b8f5f9526ccd170039aa9642474"
+    },
+    "community_giveaway": {
+      "path": "/tmp/mcr-community-native-20261104-5ujru236/community_giveaway",
+      "sha256": "dc86f1fb6cddbad9f2d651aa8de672655793ce3ae0011865ce5cac276314475b"
+    }
+  },
+  "domain_application_tests": {
+    "exit_code": 0,
+    "passed": 13
+  },
+  "first_service_compile": {
+    "exit_code": 101,
+    "reason": "shared target selected stale domain rlib lacking community"
+  },
+  "after_owned_lib_mtime_refresh": {
+    "exit_code": 0
+  }
+}
