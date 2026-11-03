@@ -1,0 +1,7 @@
+.connection-status { width: 100%; min-width: 0; }
+.connection-status p { margin: 0 0 12px; overflow-wrap: anywhere; }
+.connection-status__stale { font-weight: 700; }
+.connection-status__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.connection-status__actions > button, .connection-status__actions > a { min-height: 44px; min-width: 44px; }
+.connection-status__actions > a { display: inline-flex; align-items: center; justify-content: center; padding: 8px 12px; color: #201b19; background: #f5eddf; border: 1px solid currentColor; font-weight: 700; }
+.connection-status__actions > a:focus-visible { outline: 3px solid #9a2028; outline-offset: 3px; }

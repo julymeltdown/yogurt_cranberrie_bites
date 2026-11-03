@@ -144,6 +144,21 @@ Default registration, qualified scene/anchor/write authority, approved art and
 live two-user IN04 remain open. The author completed its bounded goal and stopped
 before the next assignment; this handoff is not a completed default Wall screen.
 
+FE41-STATES is integrated from clean author handoff
+`c0de4c88cb1b81ef0cf838b5b9535ef9bbdd70e1`. Its offline, reconnect, resync,
+maintenance, version and safe-route states use the same reference-derived
+concert-window presentation. The author recorded 103 affected tests, strict
+types, lint, production fixture build and 42 native captures at 360/390/430.
+Integration verified all 64 new assigned paths, 63 source/evidence hashes and
+44 author input pins, then passed fresh combined strict types. All 43 executable,
+contract and unchanged-reference inputs still match; this audit is the sole
+intentionally newer prose input. See [degraded-state evidence](../frontend/degraded-states.md).
+The existing WorldHost/Phaser/FE17 fixture proves bounded recovery presentation
+and no pickup POST replay. Global placement, root error routes and trusted
+maintenance/version producers remain unconnected; this does not complete the
+default shell or a live recovery journey. The author completed its bounded goal
+and stopped before reassignment.
+
 Integration verified exact assigned paths and source equality with the UIV02
 handoff, all ten tested-source hashes and 51 final screenshot hashes, and fresh
 combined whole-frontend strict types (exit 0). The author's 356 existing tests,

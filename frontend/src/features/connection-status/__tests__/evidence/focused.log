@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-degraded-states/frontend
+
+
+ Test Files  7 passed (7)
+      Tests  103 passed (103)
+   Start at  04:05:24
+   Duration  3.01s (transform 1.02s, setup 0ms, import 1.94s, tests 2.65s, environment 1.64s)
+
