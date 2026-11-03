@@ -32,3 +32,39 @@ CREATE TABLE public.concert_community_members (
  CHECK(NOT is_owner OR state='ACTIVE')
 );
 CREATE UNIQUE INDEX concert_community_one_owner ON public.concert_community_members(event_id,party_id) WHERE is_owner;
+
+CREATE TABLE public.concert_community_giveaways (
+ event_id uuid NOT NULL REFERENCES public.concert_events(event_id), giveaway_id uuid NOT NULL,
+ owner_id uuid NOT NULL, revision bigint NOT NULL CHECK(revision BETWEEN 1 AND 9007199254740991),
+ state text NOT NULL CHECK(state IN ('DRAFT','OPEN','PAUSED','CLOSED','CANCELLED')),
+ quantity_total integer NOT NULL CHECK(quantity_total BETWEEN 1 AND 10000),
+ reserved_unclaimed integer NOT NULL CHECK(reserved_unclaimed>=0),
+ quantity_claimed integer NOT NULL CHECK(quantity_claimed>=0),
+ next_action_at timestamptz, aggregate jsonb NOT NULL CHECK(jsonb_typeof(aggregate)='object'),
+ PRIMARY KEY(event_id,giveaway_id), CHECK(reserved_unclaimed+quantity_claimed<=quantity_total),
+ CHECK((aggregate->>'id')::uuid=giveaway_id AND (aggregate->>'event')::uuid=event_id AND (aggregate->>'owner')::uuid=owner_id),
+ CHECK((aggregate->>'revision')::bigint=revision AND aggregate->>'state'=state),
+ CHECK((aggregate->'fields'->>'quantity_total')::integer=quantity_total),
+ CHECK((aggregate->>'reserved_unclaimed')::integer=reserved_unclaimed AND (aggregate->>'quantity_claimed')::integer=quantity_claimed)
+);
+CREATE INDEX concert_community_expiry_scan ON public.concert_community_giveaways(next_action_at,event_id,giveaway_id) WHERE next_action_at IS NOT NULL;
+CREATE TABLE public.concert_community_reservations (
+ event_id uuid NOT NULL, giveaway_id uuid NOT NULL,reservation_id uuid NOT NULL,recipient_id uuid NOT NULL,
+ state text NOT NULL CHECK(state IN ('HELD','READY','CLAIMED','CANCELLED','EXPIRED')),
+ revision bigint NOT NULL CHECK(revision BETWEEN 1 AND 9007199254740991),expires_at timestamptz NOT NULL,
+ PRIMARY KEY(event_id,reservation_id),FOREIGN KEY(event_id,giveaway_id) REFERENCES public.concert_community_giveaways(event_id,giveaway_id)
+);
+CREATE UNIQUE INDEX concert_community_active_reservation ON public.concert_community_reservations(event_id,giveaway_id,recipient_id) WHERE state IN ('HELD','READY');
+CREATE TABLE public.concert_community_pickup_secrets (
+ event_id uuid NOT NULL,reservation_id uuid NOT NULL,generation bigint NOT NULL CHECK(generation>0),
+ key_id text NOT NULL CHECK(key_id ~ '^[A-Za-z0-9_-]{1,32}$'),
+ keyed_hash bytea NOT NULL CHECK(octet_length(keyed_hash)=32),expires_at timestamptz NOT NULL,
+ PRIMARY KEY(event_id,reservation_id), FOREIGN KEY(event_id,reservation_id) REFERENCES public.concert_community_reservations(event_id,reservation_id)
+);
+-- Shared durable guess budgets: reservation, owner, recipient and trusted keyed IP bucket.
+-- Counts are retained across code rotation/restart. No raw IP or code is stored.
+CREATE TABLE public.concert_community_pickup_attempts (
+ event_id uuid NOT NULL REFERENCES public.concert_events(event_id),
+ bucket bytea NOT NULL CHECK(octet_length(bucket)=32),window_started_at timestamptz NOT NULL,
+ attempts integer NOT NULL CHECK(attempts BETWEEN 1 AND 100),PRIMARY KEY(event_id,bucket)
+);

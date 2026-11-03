@@ -32,7 +32,7 @@ def run(args, report):
         report["postgres_version"] = cluster.sql("postgres", "show server_version;")
         cluster.sql("postgres", f"create database {DATABASE} template template0;")
         # Deliberate isolated slice: no unrelated migration owners' files are needed.
-        for name in (("0001_concert_core.sql", "0002_command_receipts_outbox.sql", "0011_outbox_maintenance.sql") if args.maintenance else ("0001_concert_core.sql", "0002_command_receipts_outbox.sql", "0007_community.sql")):
+        for name in (("0001_concert_core.sql", "0002_command_receipts_outbox.sql", "0011_outbox_maintenance.sql") if args.maintenance else (("0001_concert_core.sql", "0002_command_receipts_outbox.sql", "0007_community.sql", "0011_outbox_maintenance.sql") if args.giveaway else ("0001_concert_core.sql", "0002_command_receipts_outbox.sql", "0007_community.sql"))):
             path = ROOT / "backend/services/concert-service/migrations" / name
             cluster.sql(DATABASE, path.read_text())
         cluster.sql(DATABASE, "create table community_test_authority(event uuid,actor uuid,allowed boolean not null,primary key(event,actor)); create table community_test_places(event uuid,place uuid,allowed boolean not null,primary key(event,place));")
@@ -46,15 +46,23 @@ def run(args, report):
             require(result.returncode == 0, "native tests failed")
         report["binary_sha256"] = digest(binary)
         native([])
-        query = "select (select count(*) from " + ("concert_maintenance_invalidations" if args.maintenance else "concert_community_parties") + ")||':'||(select count(*) from concert_command_receipts)||':'||(select count(*) from concert_outbox);"
+        query = "select (select count(*) from " + ("concert_maintenance_invalidations" if args.maintenance else ("concert_community_giveaways" if args.giveaway else "concert_community_parties")) + ")||':'||(select count(*) from concert_command_receipts)||':'||(select count(*) from concert_outbox);"
         before = cluster.sql(DATABASE, query)
         pid = cluster.assert_postmaster()
         cluster.stop()
         cluster.start()
         require(cluster.assert_postmaster() != pid, "restart identity")
         require(cluster.sql(DATABASE, query) == before, "durable rows after restart")
-        native(["--exact", "maintenance_restart_dedupe" if args.maintenance else "community_restart_replay"])
-        require(cluster.sql(DATABASE, query) == before, "restart replay did not repeat effects")
+        native(["--exact", "maintenance_restart_dedupe" if args.maintenance else ("community_gift_restart_expiry" if args.giveaway else "community_restart_replay")])
+        after = cluster.sql(DATABASE, query)
+        if args.giveaway:
+            old, new = list(map(int, before.split(":"))), list(map(int, after.split(":")))
+            require(new[:2] == old[:2] and new[2] == old[2] + 1, "restart expiry has exactly one atomic maintenance invalidation")
+            report["restart_expiry"] = "PASS"
+        else:
+            require(after == before, "restart replay did not repeat effects")
+        report["durable_rows_before_restart"] = before
+        report["durable_rows_after_restart"] = after
         report["restart_replay"] = "PASS"
         report["result"] = "PASS"
     except BaseException as error:
@@ -76,13 +84,14 @@ def main():
     parser.add_argument("--repository-test", type=Path, required=True)
     parser.add_argument("--pg-bin", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))
     parser.add_argument("--report", type=Path, required=True)
+    parser.add_argument("--giveaway", action="store_true", help="qualify BE20–23 gift slice")
     parser.add_argument("--maintenance", action="store_true", help="qualify delegated BE15 maintenance queue extension")
     args = parser.parse_args()
     require(args.report.is_absolute(), "absolute evidence file required")
     descriptor = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     source_paths = sorted([*ROOT.glob("backend/**/community/*.rs"), *ROOT.glob("backend/**/tests/community*.rs"), ROOT / "backend/services/concert-service/migrations/0007_community.sql", Path(__file__).resolve()])
     pins = [ROOT / "contracts/domain/v1" / n for n in ("party.schema.json", "giveaway.schema.json", "operations.json", "policy.json")]
-    report = {"scope": "BE15 maintenance origin" if args.maintenance else "BE16–18 internal transaction slice", "result": "NOT_RUN", "public_routes": "NOT_RUN", "real_policy": "NOT_RUN",
+    report = {"scope": "BE15 maintenance origin" if args.maintenance else ("BE20–23 internal gift transactions" if args.giveaway else "BE16–18 internal transaction slice"), "result": "NOT_RUN", "public_routes": "NOT_RUN", "real_policy": "NOT_RUN",
               "source_revision": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
               "source_sha256": {str(p.relative_to(ROOT)): digest(p) for p in source_paths}, "contract_sha256": {str(p.relative_to(ROOT)): digest(p) for p in pins}}
     try:

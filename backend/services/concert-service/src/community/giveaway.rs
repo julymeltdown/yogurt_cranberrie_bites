@@ -1,0 +1,706 @@
+//! SQL-serialized giveaway/reservation commands, one-shot codes and restart-safe bounded sweeps.
+use super::{db, CommunityAuthority};
+use crate::adapters::out::repository::{
+    outbox_maintenance::enqueue_maintenance_in,
+    receipt::{CommandProducer, PgCommandRepository},
+};
+use async_trait::async_trait;
+use chrono::{DateTime, Utc};
+use concert_application::{
+    commands::maintenance::MaintenanceInvalidation,
+    commands::*,
+    community::{giveaway::*, resource_id},
+};
+use concert_domain::community::giveaway::*;
+use sha2::{Digest, Sha256};
+use sqlx::{PgConnection, PgPool, Row};
+use std::sync::Mutex;
+use uuid::Uuid;
+
+pub struct GiftSettings {
+    pub pickup_grace_seconds: i32,
+    pub event_cutoff: DateTime<Utc>,
+}
+#[async_trait]
+pub trait GiftAuthority: CommunityAuthority {
+    async fn settings_in(
+        &self,
+        c: &mut PgConnection,
+        event: Uuid,
+    ) -> Result<GiftSettings, CommandError>;
+    /// READY, owned, correct-purpose media; no raw browser URL is accepted.
+    async fn media_in(
+        &self,
+        c: &mut PgConnection,
+        event: Uuid,
+        actor: Uuid,
+        media: Option<Uuid>,
+    ) -> Result<(), CommandError>;
+    /// Current reviewed BE08 map/place versions and allowed event cutoff are fenced here.
+    async fn meeting_in(
+        &self,
+        c: &mut PgConnection,
+        event: Uuid,
+        meeting: &PickupMeeting,
+    ) -> Result<(), CommandError>;
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum GiftServiceError {
+    Command(CommandError),
+    Gift(GiftError),
+    EventReadOnly,
+}
+impl From<CommandError> for GiftServiceError {
+    fn from(v: CommandError) -> Self {
+        Self::Command(v)
+    }
+}
+/// Integration derives this from the authenticated request's trusted network context,
+/// using an injected privacy key. Never accept a browser field or retain raw IP.
+pub struct TrustedPickupContext {
+    ip_bucket: [u8; 32],
+}
+impl TrustedPickupContext {
+    pub fn from_trusted_keyed_ip_bucket(bucket: [u8; 32]) -> Self {
+        Self { ip_bucket: bucket }
+    }
+}
+/// No Debug/Serialize; expose only in the authorized one-shot no-store transport response.
+pub struct IssuedCode {
+    pub code: PickupCode,
+    pub reservation: Uuid,
+    pub revision: i64,
+    pub expires_at: DateTime<Utc>,
+}
+pub struct GiftResult {
+    pub receipt: SafeReceipt,
+    pub issued_code: Option<IssuedCode>,
+}
+pub struct PgGifts<A> {
+    pool: PgPool,
+    authority: A,
+}
+impl<A: GiftAuthority> PgGifts<A> {
+    pub fn new(pool: PgPool, authority: A) -> Self {
+        Self { pool, authority }
+    }
+    pub async fn execute(
+        &self,
+        command: &GiftCommand,
+        receipt_keys: &FingerprintKeys,
+        pickup_keys: &PickupKeys,
+        context: Option<&TrustedPickupContext>,
+    ) -> Result<GiftResult, GiftServiceError> {
+        let request = command.request()?;
+        let producer = GiftProducer {
+            command,
+            authority: &self.authority,
+            pickup_keys,
+            error: Mutex::new(None),
+            issued: Mutex::new(None),
+        };
+        if matches!(command.action, GiftAction::Claim { .. }) {
+            self.charge_attempt(&producer, context.ok_or(CommandError::Unavailable)?)
+                .await?;
+        }
+        let result = PgCommandRepository::new(self.pool.clone())
+            .execute(&request, command.target(), receipt_keys, &producer)
+            .await;
+        if let Some(e) = producer
+            .error
+            .lock()
+            .map_err(|_| CommandError::Unavailable)?
+            .take()
+        {
+            return Err(e);
+        }
+        let receipt = result?;
+        let issued_code = producer
+            .issued
+            .lock()
+            .map_err(|_| CommandError::Unavailable)?
+            .take();
+        Ok(GiftResult {
+            receipt,
+            issued_code,
+        })
+    }
+    async fn charge_attempt(
+        &self,
+        p: &GiftProducer<'_, A>,
+        context: &TrustedPickupContext,
+    ) -> Result<(), GiftServiceError> {
+        let cmd = p.command;
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        p.authorize(&mut tx, cmd.scope()?, cmd.target()).await?;
+        let g = load(&mut tx, cmd.event, cmd.giveaway_id(), true, false)
+            .await?
+            .ok_or(CommandError::Denied)?;
+        let r = g
+            .reservations
+            .iter()
+            .find(|r| r.id == cmd.target())
+            .ok_or(CommandError::Denied)?;
+        if r.state == ReservationState::Claimed {
+            tx.commit().await.map_err(db)?;
+            return Ok(());
+        }
+        // Budget commit is independent from command savepoint rollback, so wrong guesses persist.
+        let mut buckets = vec![
+            (bucket(b"reservation", r.id.as_bytes()), 5),
+            (bucket(b"owner", g.owner.as_bytes()), 25),
+            (bucket(b"recipient", r.recipient.as_bytes()), 10),
+            (bucket(b"ip", &context.ip_bucket), 25),
+        ];
+        buckets.sort_by_key(|x| x.0);
+        for (key, limit) in buckets {
+            let count:Option<i32>=sqlx::query_scalar("insert into concert_community_pickup_attempts(event_id,bucket,window_started_at,attempts) values($1,$2,clock_timestamp(),1) on conflict(event_id,bucket) do update set attempts=case when concert_community_pickup_attempts.window_started_at<=clock_timestamp()-interval '15 minutes' then 1 else concert_community_pickup_attempts.attempts+1 end,window_started_at=case when concert_community_pickup_attempts.window_started_at<=clock_timestamp()-interval '15 minutes' then clock_timestamp() else concert_community_pickup_attempts.window_started_at end where concert_community_pickup_attempts.window_started_at<=clock_timestamp()-interval '15 minutes' or concert_community_pickup_attempts.attempts<$3 returning attempts")
+    .bind(cmd.event).bind(key.as_slice()).bind(limit).fetch_optional(&mut *tx).await.map_err(db)?;
+            if count.is_none() {
+                return Err(CommandError::Capacity.into());
+            }
+        }
+        tx.commit().await.map_err(db)?;
+        Ok(())
+    }
+    pub async fn detail(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        id: Uuid,
+    ) -> Result<GiftSummary, GiftServiceError> {
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        let g = load(&mut tx, event, id, false, false)
+            .await?
+            .ok_or(CommandError::Denied)?;
+        self.authority
+            .authorize_in(&mut tx, actor, event, g.owner, true)
+            .await?;
+        if g.state == GiftState::Draft && actor != g.owner {
+            return Err(CommandError::Denied.into());
+        }
+        let result = GiftSummary::from(&g);
+        tx.commit().await.map_err(db)?;
+        Ok(result)
+    }
+    pub async fn reservation(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        giveaway: Uuid,
+        reservation: Uuid,
+    ) -> Result<Reservation, GiftServiceError> {
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        let mut g = load(&mut tx, event, giveaway, true, false)
+            .await?
+            .ok_or(CommandError::Denied)?;
+        self.authority
+            .authorize_in(&mut tx, actor, event, g.owner, true)
+            .await?;
+        let r = g
+            .reservations
+            .iter()
+            .find(|r| r.id == reservation)
+            .ok_or(CommandError::Denied)?;
+        if actor != g.owner && actor != r.recipient {
+            return Err(CommandError::Denied.into());
+        }
+        self.authority
+            .authorize_in(&mut tx, actor, event, r.recipient, true)
+            .await?;
+        let now = sqlx::query_scalar("select clock_timestamp()")
+            .fetch_one(&mut *tx)
+            .await
+            .map_err(db)?;
+        if g.advance_time(now, 100).map_err(GiftServiceError::Gift)? > 0 {
+            save(&mut tx, &g).await?;
+            enqueue_time(&mut tx, &g).await?;
+        }
+        let r = g
+            .reservations
+            .iter()
+            .find(|r| r.id == reservation)
+            .ok_or(CommandError::Denied)?
+            .clone();
+        tx.commit().await.map_err(db)?;
+        Ok(r)
+    }
+    /// Bounded global due scan; each root has its own atomic transaction and SKIP LOCKED.
+    /// No recipient impersonation, process-local timer truth or external side effect.
+    pub async fn sweep(&self, limit: i64) -> Result<usize, GiftServiceError> {
+        if !(1..=100).contains(&limit) {
+            return Err(CommandError::InvalidInput.into());
+        }
+        let due=sqlx::query("select event_id,giveaway_id from concert_community_giveaways where next_action_at<=clock_timestamp() order by next_action_at,event_id,giveaway_id limit $1").bind(limit).fetch_all(&self.pool).await.map_err(db)?;
+        let mut changed = 0;
+        for row in due {
+            let event: Uuid = row.try_get("event_id").map_err(db)?;
+            let id: Uuid = row.try_get("giveaway_id").map_err(db)?;
+            let mut tx = self.pool.begin().await.map_err(db)?;
+            sqlx::query("select event_id from concert_events where event_id=$1 for share")
+                .bind(event)
+                .fetch_one(&mut *tx)
+                .await
+                .map_err(db)?;
+            let Some(mut g) = load(&mut tx, event, id, true, true).await? else {
+                continue;
+            };
+            let now = sqlx::query_scalar("select clock_timestamp()")
+                .fetch_one(&mut *tx)
+                .await
+                .map_err(db)?;
+            let count = g.advance_time(now, 100).map_err(GiftServiceError::Gift)?;
+            if count > 0 {
+                save(&mut tx, &g).await?;
+                enqueue_time(&mut tx, &g).await?;
+                changed += count;
+            }
+            tx.commit().await.map_err(db)?;
+        }
+        Ok(changed)
+    }
+}
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct GiftSummary {
+    pub id: Uuid,
+    pub event: Uuid,
+    pub owner: Uuid,
+    pub fields: GiftFields,
+    pub state: GiftState,
+    pub revision: i64,
+    pub available: i32,
+    pub pickup_grace_seconds: i32,
+    pub created_at: DateTime<Utc>,
+}
+impl From<&Giveaway> for GiftSummary {
+    fn from(g: &Giveaway) -> Self {
+        Self {
+            id: g.id,
+            event: g.event,
+            owner: g.owner,
+            fields: g.fields.clone(),
+            state: g.state,
+            revision: g.revision,
+            available: g.available(),
+            pickup_grace_seconds: g.pickup_grace_seconds,
+            created_at: g.created_at,
+        }
+    }
+}
+struct GiftProducer<'a, A> {
+    command: &'a GiftCommand,
+    authority: &'a A,
+    pickup_keys: &'a PickupKeys,
+    error: Mutex<Option<GiftServiceError>>,
+    issued: Mutex<Option<IssuedCode>>,
+}
+impl<A> GiftProducer<'_, A> {
+    fn domain(&self, e: GiftError) -> CommandError {
+        if let Ok(mut s) = self.error.lock() {
+            *s = Some(GiftServiceError::Gift(e))
+        }
+        CommandError::InvalidState
+    }
+}
+#[async_trait]
+impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
+    async fn authorize(
+        &self,
+        c: &mut PgConnection,
+        scope: Scope,
+        target: Uuid,
+    ) -> Result<(), CommandError> {
+        let cmd = self.command;
+        if scope != cmd.scope()? || target != cmd.target() {
+            return Err(CommandError::Denied);
+        }
+        let phase: Option<String> =
+            sqlx::query_scalar("select phase from concert_events where event_id=$1 for share")
+                .bind(scope.event)
+                .fetch_optional(&mut *c)
+                .await
+                .map_err(db)?;
+        let Some(phase) = phase else {
+            return Err(CommandError::Denied);
+        };
+        if !matches!(phase.as_str(), "OPEN" | "LIVE") && !(cmd.safety() && phase == "READ_ONLY") {
+            if let Ok(mut s) = self.error.lock() {
+                *s = Some(GiftServiceError::EventReadOnly)
+            }
+            return Err(CommandError::Denied);
+        }
+        let gift = load(c, scope.event, cmd.giveaway_id(), true, false).await?;
+        let owner = gift.as_ref().map(|g| g.owner).unwrap_or(scope.actor);
+        self.authority
+            .authorize_in(c, scope.actor, scope.event, owner, cmd.safety())
+            .await?;
+        if let Some(g) = gift {
+            match cmd.action {
+                GiftAction::Create(_)
+                | GiftAction::Update { .. }
+                | GiftAction::SetMeeting { .. } => {
+                    if g.owner != scope.actor {
+                        return Err(CommandError::Denied);
+                    }
+                }
+                GiftAction::Reserve { .. } => {}
+                GiftAction::Cancel { .. }
+                | GiftAction::IssueCode { .. }
+                | GiftAction::Claim { .. } => {
+                    let r = g
+                        .reservations
+                        .iter()
+                        .find(|r| r.id == target)
+                        .ok_or(CommandError::Denied)?;
+                    let permitted = match cmd.action {
+                        GiftAction::Cancel { .. } => {
+                            scope.actor == g.owner || scope.actor == r.recipient
+                        }
+                        GiftAction::IssueCode { .. } => scope.actor == r.recipient,
+                        GiftAction::Claim { .. } => scope.actor == g.owner,
+                        _ => false,
+                    };
+                    if !permitted {
+                        return Err(CommandError::Denied);
+                    }
+                    self.authority
+                        .authorize_in(c, scope.actor, scope.event, r.recipient, cmd.safety())
+                        .await?;
+                }
+            }
+        } else if !matches!(cmd.action, GiftAction::Create(_)) {
+            return Err(CommandError::Denied);
+        }
+        Ok(())
+    }
+    async fn apply(
+        &self,
+        c: &mut PgConnection,
+        scope: Scope,
+        target: Uuid,
+    ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        let now = sqlx::query_scalar("select clock_timestamp()")
+            .fetch_one(&mut *c)
+            .await
+            .map_err(db)?;
+        let cmd = self.command;
+        let settings = self.authority.settings_in(c, scope.event).await?;
+        let (gift, change) = if let GiftAction::Create(fields) = &cmd.action {
+            let g = Giveaway::create(
+                target,
+                scope.event,
+                scope.actor,
+                fields.clone(),
+                settings.pickup_grace_seconds,
+                now,
+            )
+            .map_err(|e| self.domain(e))?;
+            (
+                g,
+                GiftChange {
+                    resource: target,
+                    revision: 1,
+                },
+            )
+        } else {
+            let mut g = load(c, scope.event, cmd.giveaway_id(), true, false)
+                .await?
+                .ok_or(CommandError::Denied)?;
+            if let GiftAction::Claim { reservation, .. } = cmd.action {
+                let r = g
+                    .reservations
+                    .iter()
+                    .find(|r| r.id == reservation)
+                    .ok_or(CommandError::Denied)?;
+                if r.state != ReservationState::Claimed {
+                    let row=sqlx::query("select key_id,keyed_hash,generation,expires_at from concert_community_pickup_secrets where event_id=$1 and reservation_id=$2 for update").bind(scope.event).bind(reservation).fetch_optional(&mut *c).await.map_err(db)?.ok_or_else(||self.domain(GiftError::CodeInvalid))?;
+                    let expiry: DateTime<Utc> = row.try_get("expires_at").map_err(db)?;
+                    let generation: i64 = row.try_get("generation").map_err(db)?;
+                    if now >= r.expires_at {
+                        return Err(self.domain(GiftError::Expired));
+                    }
+                    if now >= expiry
+                        || r.code_expires_at != Some(expiry)
+                        || r.code_generation != generation
+                        || !self.pickup_keys.verify(
+                            &row.try_get::<String, _>("key_id").map_err(db)?,
+                            &row.try_get::<Vec<u8>, _>("keyed_hash").map_err(db)?,
+                            scope.event,
+                            reservation,
+                            generation,
+                            expiry,
+                            cmd.code.as_ref().ok_or(CommandError::InvalidInput)?,
+                        )?
+                    {
+                        return Err(self.domain(GiftError::CodeInvalid));
+                    }
+                }
+            }
+            let change = g
+                .change(scope.actor, &cmd.action, cmd.created_id(), now)
+                .map_err(|e| self.domain(e))?;
+            (g, change)
+        };
+        if gift.expires_at() > settings.event_cutoff {
+            return Err(CommandError::InvalidInput);
+        }
+        if matches!(
+            cmd.action,
+            GiftAction::Create(_) | GiftAction::Update { .. }
+        ) {
+            self.authority
+                .place_in(c, scope.event, gift.fields.public_place_id)
+                .await?;
+            self.authority
+                .media_in(c, scope.event, scope.actor, gift.fields.image_media_id)
+                .await?;
+        }
+        if let GiftAction::SetMeeting { meeting, .. } = &cmd.action {
+            if meeting.expires_at > settings.event_cutoff {
+                return Err(CommandError::InvalidInput);
+            }
+            self.authority.meeting_in(c, scope.event, meeting).await?;
+        }
+        save(c, &gift).await?;
+        if let GiftAction::IssueCode { reservation, .. } = cmd.action {
+            let r = gift
+                .reservations
+                .iter()
+                .find(|r| r.id == reservation)
+                .ok_or(CommandError::InvalidState)?;
+            let expiry = r.code_expires_at.ok_or(CommandError::InvalidState)?;
+            let previous = sqlx::query("select key_id,keyed_hash,generation,expires_at from concert_community_pickup_secrets where event_id=$1 and reservation_id=$2 for update")
+                .bind(scope.event).bind(reservation).fetch_optional(&mut *c).await.map_err(db)?;
+            let code = loop {
+                let candidate = PickupCode::generate();
+                if let Some(old) = &previous {
+                    if self.pickup_keys.verify(
+                        &old.try_get::<String, _>("key_id").map_err(db)?,
+                        &old.try_get::<Vec<u8>, _>("keyed_hash").map_err(db)?,
+                        scope.event,
+                        reservation,
+                        old.try_get("generation").map_err(db)?,
+                        old.try_get("expires_at").map_err(db)?,
+                        &candidate,
+                    )? {
+                        continue;
+                    }
+                }
+                break candidate;
+            };
+            let (key, hash) = self.pickup_keys.sign(
+                scope.event,
+                reservation,
+                r.code_generation,
+                expiry,
+                &code,
+            )?;
+            sqlx::query("insert into concert_community_pickup_secrets(event_id,reservation_id,generation,key_id,keyed_hash,expires_at) values($1,$2,$3,$4,$5,$6) on conflict(event_id,reservation_id) do update set generation=excluded.generation,key_id=excluded.key_id,keyed_hash=excluded.keyed_hash,expires_at=excluded.expires_at").bind(scope.event).bind(reservation).bind(r.code_generation).bind(key).bind(hash).bind(expiry).execute(&mut *c).await.map_err(db)?;
+            *self.issued.lock().map_err(|_| CommandError::Unavailable)? = Some(IssuedCode {
+                code,
+                reservation,
+                revision: r.revision,
+                expires_at: expiry,
+            });
+        }
+        let reference = SafeReference {
+            resource: change.resource,
+            revision: change.revision,
+        };
+        Ok((
+            Completion::Succeeded {
+                reference,
+                status: 200,
+            },
+            Some(Invalidation { reference }),
+        ))
+    }
+}
+fn bucket(tag: &[u8], value: &[u8]) -> [u8; 32] {
+    let mut hash = Sha256::new();
+    hash.update(b"mcr-pickup-attempt:v1");
+    hash.update(tag);
+    hash.update(value);
+    hash.finalize().into()
+}
+async fn enqueue_time(c: &mut PgConnection, g: &Giveaway) -> Result<(), CommandError> {
+    let id = resource_id(
+        Uuid::nil(),
+        g.event,
+        g.id,
+        &format!("maintenance:{}", g.revision),
+    );
+    enqueue_maintenance_in(
+        c,
+        MaintenanceInvalidation {
+            id,
+            event: g.event,
+            reference: SafeReference {
+                resource: g.id,
+                revision: g.revision,
+            },
+        },
+    )
+    .await?;
+    Ok(())
+}
+async fn load(
+    c: &mut PgConnection,
+    event: Uuid,
+    id: Uuid,
+    write: bool,
+    skip: bool,
+) -> Result<Option<Giveaway>, CommandError> {
+    let sql = if !write {
+        "select aggregate from concert_community_giveaways where event_id=$1 and giveaway_id=$2 for share"
+    } else if skip {
+        "select aggregate from concert_community_giveaways where event_id=$1 and giveaway_id=$2 for update skip locked"
+    } else {
+        "select aggregate from concert_community_giveaways where event_id=$1 and giveaway_id=$2 for update"
+    };
+    let row = sqlx::query(sql)
+        .bind(event)
+        .bind(id)
+        .fetch_optional(c)
+        .await
+        .map_err(db)?;
+    row.map(|r| {
+        let g: Giveaway =
+            serde_json::from_value(r.try_get::<serde_json::Value, _>("aggregate").map_err(db)?)
+                .map_err(|_| CommandError::InvalidState)?;
+        if g.event != event || g.id != id {
+            return Err(CommandError::InvalidState);
+        }
+        g.validate().map_err(|_| CommandError::InvalidState)?;
+        Ok(g)
+    })
+    .transpose()
+}
+async fn save(c: &mut PgConnection, g: &Giveaway) -> Result<(), CommandError> {
+    let next = g
+        .reservations
+        .iter()
+        .filter(|r| r.state.active())
+        .map(|r| {
+            if r.state == ReservationState::Held {
+                std::cmp::min(g.fields.pickup_starts_at, r.expires_at)
+            } else {
+                r.expires_at
+            }
+        })
+        .min();
+    sqlx::query("insert into concert_community_giveaways(event_id,giveaway_id,owner_id,revision,state,quantity_total,reserved_unclaimed,quantity_claimed,next_action_at,aggregate) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) on conflict(event_id,giveaway_id) do update set owner_id=excluded.owner_id,revision=excluded.revision,state=excluded.state,quantity_total=excluded.quantity_total,reserved_unclaimed=excluded.reserved_unclaimed,quantity_claimed=excluded.quantity_claimed,next_action_at=excluded.next_action_at,aggregate=excluded.aggregate")
+  .bind(g.event).bind(g.id).bind(g.owner).bind(g.revision).bind(state_name(g.state)).bind(g.fields.quantity_total).bind(g.reserved_unclaimed).bind(g.quantity_claimed).bind(next).bind(serde_json::to_value(g).map_err(|_|CommandError::InvalidState)?).execute(&mut *c).await.map_err(db)?;
+    for r in &g.reservations {
+        sqlx::query("insert into concert_community_reservations(event_id,giveaway_id,reservation_id,recipient_id,state,revision,expires_at) values($1,$2,$3,$4,$5,$6,$7) on conflict(event_id,reservation_id) do update set state=excluded.state,revision=excluded.revision,expires_at=excluded.expires_at").bind(g.event).bind(g.id).bind(r.id).bind(r.recipient).bind(match r.state{ReservationState::Held=>"HELD",ReservationState::Ready=>"READY",ReservationState::Claimed=>"CLAIMED",ReservationState::Cancelled=>"CANCELLED",ReservationState::Expired=>"EXPIRED"}).bind(r.revision).bind(r.expires_at).execute(&mut *c).await.map_err(db)?;
+        if !r.state.active() || r.code_expires_at.is_none() {
+            sqlx::query("delete from concert_community_pickup_secrets where event_id=$1 and reservation_id=$2").bind(g.event).bind(r.id).execute(&mut *c).await.map_err(db)?;
+        }
+    }
+    Ok(())
+}
+
+pub struct GiftFilter {
+    pub state: Option<GiftState>,
+    pub in_stock: Option<bool>,
+    pub pickup_after: Option<DateTime<Utc>>,
+    pub pickup_before: Option<DateTime<Utc>>,
+    pub public_place_id: Option<Uuid>,
+    pub after: Option<(DateTime<Utc>, Uuid)>,
+}
+pub struct GiftPage {
+    pub items: Vec<GiftSummary>,
+    pub next: Option<(DateTime<Utc>, Uuid)>,
+}
+pub struct PickupView {
+    pub reservation: Reservation,
+    pub meeting: PickupMeeting,
+    pub meeting_revision: i64,
+}
+impl<A: GiftAuthority> PgGifts<A> {
+    pub async fn list(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        filter: GiftFilter,
+        limit: i64,
+    ) -> Result<GiftPage, GiftServiceError> {
+        if !(1..=100).contains(&limit)
+            || filter.state == Some(GiftState::Draft)
+            || filter
+                .pickup_after
+                .zip(filter.pickup_before)
+                .is_some_and(|(a, b)| a >= b)
+        {
+            return Err(CommandError::InvalidInput.into());
+        }
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        self.authority
+            .authorize_in(&mut tx, actor, event, actor, true)
+            .await?;
+        let rows=sqlx::query("select giveaway_id from concert_community_giveaways where event_id=$1 and state<>'DRAFT' and ($2::text is null or state=$2) and ($3::boolean is null or (quantity_total-reserved_unclaimed-quantity_claimed>0)=$3) and ($4::timestamptz is null or (aggregate->'fields'->>'pickup_starts_at')::timestamptz>=$4) and ($5::timestamptz is null or (aggregate->'fields'->>'pickup_starts_at')::timestamptz<$5) and ($6::uuid is null or (aggregate->'fields'->>'public_place_id')::uuid=$6) and ($7::timestamptz is null or ((aggregate->>'created_at')::timestamptz,giveaway_id)>($7,$8)) order by (aggregate->>'created_at')::timestamptz,giveaway_id limit $9")
+   .bind(event).bind(filter.state.map(state_name)).bind(filter.in_stock).bind(filter.pickup_after).bind(filter.pickup_before).bind(filter.public_place_id).bind(filter.after.map(|x|x.0)).bind(filter.after.map(|x|x.1)).bind(limit).fetch_all(&mut *tx).await.map_err(db)?;
+        let mut items = vec![];
+        let mut next = None;
+        for row in rows {
+            let id: Uuid = row.try_get("giveaway_id").map_err(db)?;
+            let g = load(&mut tx, event, id, false, false)
+                .await?
+                .ok_or(CommandError::InvalidState)?;
+            next = Some((g.created_at, id));
+            match self
+                .authority
+                .authorize_in(&mut tx, actor, event, g.owner, true)
+                .await
+            {
+                Ok(()) => items.push(GiftSummary::from(&g)),
+                Err(CommandError::Denied) => {}
+                Err(e) => return Err(e.into()),
+            }
+        }
+        tx.commit().await.map_err(db)?;
+        Ok(GiftPage { items, next })
+    }
+    pub async fn pickup(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        giveaway: Uuid,
+        reservation: Uuid,
+    ) -> Result<PickupView, GiftServiceError> {
+        // Lazy DB-clock readiness/expiry is a durable maintenance transition before projection.
+        self.reservation(actor, event, giveaway, reservation)
+            .await?;
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        let g = load(&mut tx, event, giveaway, false, false)
+            .await?
+            .ok_or(CommandError::Denied)?;
+        self.authority
+            .authorize_in(&mut tx, actor, event, g.owner, true)
+            .await?;
+        let r = g
+            .reservations
+            .iter()
+            .find(|r| r.id == reservation && r.recipient == actor)
+            .ok_or(CommandError::Denied)?;
+        let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
+            .fetch_one(&mut *tx)
+            .await
+            .map_err(db)?;
+        if !r.state.active() || now >= r.expires_at || !g.state.active() {
+            return Err(CommandError::Denied.into());
+        }
+        let meeting = g.meeting.as_ref().ok_or(CommandError::Denied)?;
+        if now >= meeting.expires_at {
+            return Err(CommandError::Denied.into());
+        }
+        self.authority.meeting_in(&mut tx, event, meeting).await?;
+        let result = PickupView {
+            reservation: r.clone(),
+            meeting: meeting.clone(),
+            meeting_revision: g.meeting_revision,
+        };
+        tx.commit().await.map_err(db)?;
+        Ok(result)
+    }
+}

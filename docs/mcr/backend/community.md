@@ -113,3 +113,68 @@ party/member queries under fresh authorization. Do not infer party from user ID
 or compare member revisions across parties. A future targeted consumer needs an
 explicit internal metadata extension. Delivery authorized this convention in
 chat, 2026-11-04; FE23 and BE09/19 owners were notified.
+
+## BE20–BE23 source checkpoint
+
+Giveaway implementation is authored under the same owned community roots.
+Status remains IN_PROGRESS pending compilation/native proof and public/policy
+composition. Giveaway states are DRAFT/OPEN/PAUSED/CLOSED/CANCELLED. Public
+catalogue excludes DRAFT; authorized owner detail may read it. Public summaries
+contain no reservations, recipients, private instructions or code fields.
+
+The root row serializes reservations, cancellation, stock edits and claims.
+Quantity cannot drop below held+claimed units; outstanding holds prohibit
+pickup window/place changes. Publication requires an explicitly acknowledged
+reviewed pickup meeting. Server settings capture grace at creation, and an
+injected cutoff/BE08/media authority must validate it; no default operator or
+place truth is invented. PAUSED allows existing pickup; CLOSED requires no
+outstanding holds. Cancellation revokes private meeting/code access and releases
+all outstanding units once. Reservations are one unit and unique while active.
+Expiry is pickup end + captured grace, using DB time, never a creation-time
+10-minute timer. HELD becomes READY at pickup start. Terminal claim never releases
+stock, including later expiry scans.
+
+`PgGifts::sweep(limit1..100)` scans a durable due index with one transaction per
+root, DB clock and SKIP LOCKED; each root changes at most100 reservations per
+pass. `reservation` performs the same lazy READY/EXPIRED transition before
+projection. Mutation plus delegated BE15 maintenance enqueue share one
+transaction; a failed enqueue rolls back stock changes. Crash/restart resumes
+from durable state. It does not impersonate a user or reuse a reserve receipt.
+
+Pickup codes are cryptographically sampled six-digit values; only a keyed HMAC
+bound to exact event/reservation/generation/expiry is persisted. HMAC verify is
+constant-time, with injected active/retained versioned keys and no defaults.
+Rotation excludes the prior plaintext by verifying new candidates against the
+old keyed hash. Code expiry is min(DBnow+300s,reservation expiry). Code/hash/key
+materials have no Debug/Serialize implementations. Application/domain plain
+code storage is prohibited. Code issuance returns plaintext only in a transient
+`IssuedCode`; same-key replay yields only the original safe receipt, never a
+recreated secret. Exact public response semantics for that replay are pending
+C04 owner decision, so public code issuance remains disabled.
+
+Wrong-code attempts commit durable budget consumption independently from the
+BE15 command's rollback savepoint. Sorted DB buckets enforce reservation5,
+recipient10, owner25 and trusted keyed-IP25 attempts per15minutes. IP context
+must come from trusted authenticated runtime composition; browsers cannot choose
+it and no raw IP is retained. Missing context fails closed. Code rotation does
+not reset budgets. Claim reauthorizes/locks owner+recipient, verifies the current
+reservation-bound code, then moves reserved--/claimed++ once. The stored pickup
+receipt ID/revision survives later authorized duplicate claim commands. It is
+separate from the BE15 command receipt UUID.
+
+Proposed gift result convention sent to delivery: reserve/cancel/code/claim use
+reservation_id and post-action Reservation.revision; code DTO exposes the same
+reservation_revision. Pickup meeting uses giveaway_id and Giveaway.revision.
+No public DTO/schema/contract change is made by this worker.
+
+Additional authored validation: five-buyer/one-unit race, keyed input replay,
+code rotation and one-shot replay, missing-key failure, reservation/generation
+binding, shared persisted guessing limits, claim duplicates, expiry/cancel race,
+one-time stock release, terminal private-access denial, restart expiry and
+coarse metadata invalidation. Native command:
+`python3 -B backend/scripts/mcr/community_smoke.py --giveaway --repository-test <absolute-native-test> --report <new-absolute-json>`.
+Compilation/native test execution is still NOT_RUN until the shared lease.
+
+A separate lightweight owned PostgreSQL16.14 fixture successfully applied
+0001/0002/0007/0011 and checked both new origin constraints; exit0 and validated
+owned cleanup PASS. This is DDL evidence only, not transaction/runtime evidence.

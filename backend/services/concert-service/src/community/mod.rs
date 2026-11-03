@@ -356,3 +356,7 @@ async fn save(c: &mut PgConnection, p: &Party) -> Result<(), CommandError> {
 fn db(_: sqlx::Error) -> CommandError {
     CommandError::Unavailable
 }
+
+pub mod giveaway;
+
+pub mod catalog;

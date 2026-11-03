@@ -209,3 +209,5 @@ pub fn state_name(s: PartyState) -> &'static str {
         PartyState::Completed => "COMPLETED",
     }
 }
+
+pub mod giveaway;

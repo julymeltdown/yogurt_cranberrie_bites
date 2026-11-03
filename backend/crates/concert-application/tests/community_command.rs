@@ -45,3 +45,33 @@ fn delete_revision_uses_query_and_never_json_body() {
     };
     assert!(c.request().is_ok());
 }
+
+#[test]
+fn pickup_hash_binds_reservation_generation_and_rotation() {
+    use concert_application::community::giveaway::*;
+    let event = Uuid::new_v4();
+    let reservation = Uuid::new_v4();
+    let expiry = "2030-01-01T00:00:00Z".parse().unwrap();
+    let code = PickupCode::parse("012345".into()).unwrap();
+    let keys = PickupKeys::new(PickupKey::new("old", &[1; 32]).unwrap(), vec![]).unwrap();
+    let (id, hash) = keys.sign(event, reservation, 1, expiry, &code).unwrap();
+    let rotated = PickupKeys::new(
+        PickupKey::new("new", &[2; 32]).unwrap(),
+        vec![PickupKey::new("old", &[1; 32]).unwrap()],
+    )
+    .unwrap();
+    assert!(rotated
+        .verify(&id, &hash, event, reservation, 1, expiry, &code)
+        .unwrap());
+    assert!(!rotated
+        .verify(&id, &hash, event, Uuid::new_v4(), 1, expiry, &code)
+        .unwrap());
+    assert!(!rotated
+        .verify(&id, &hash, event, reservation, 2, expiry, &code)
+        .unwrap());
+    let missing = PickupKeys::new(PickupKey::new("new", &[2; 32]).unwrap(), vec![]).unwrap();
+    assert_eq!(
+        missing.verify(&id, &hash, event, reservation, 1, expiry, &code),
+        Err(CommandError::Unavailable)
+    );
+}

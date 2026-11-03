@@ -58,9 +58,37 @@ async fn maintenance_origin_transactions_and_leases() -> anyhow::Result<()> {
         Err(CommandError::Conflict)
     );
     tx.rollback().await?;
+    let command_scope = Scope {
+        actor: Uuid::new_v4(),
+        event,
+        key: Uuid::new_v4(),
+        operation: RegisteredOperation::find("createConcertParty").unwrap(),
+    };
+    let target = Uuid::new_v4();
+    let request =
+        CanonicalRequest::json(command_scope, &[("eventId", &event.to_string())], &[], None)
+            .unwrap();
+    let keys =
+        FingerprintKeys::new(SigningKey::new("legacy-test", &[81; 32]).unwrap(), vec![]).unwrap();
+    let legacy =
+        concert_service::adapters::out::repository::receipt::PgCommandRepository::new(pool.clone())
+            .execute(
+                &request,
+                target,
+                &keys,
+                &SyntheticCommand {
+                    scope: command_scope,
+                    target,
+                },
+            )
+            .await
+            .unwrap();
     let box_ = PgOutbox::new(pool.clone());
     let items = box_.claim(100).await.unwrap();
     let first = items.iter().find(|x| x.id == id).unwrap();
+    let legacy_delivery = items.iter().find(|x| x.receipt == Some(legacy.id)).unwrap();
+    assert_eq!(legacy_delivery.kind, InvalidationKind::ResourceInvalidated);
+    assert!(box_.acknowledge(legacy_delivery).await.unwrap());
     assert_eq!(first.receipt, None);
     assert_eq!(first.kind, InvalidationKind::MaintenanceInvalidated);
     // Crash/reclaim rotates lease and stale holder cannot acknowledge.
@@ -105,7 +133,7 @@ async fn maintenance_origin_transactions_and_leases() -> anyhow::Result<()> {
             .bind(event)
             .fetch_one(&pool)
             .await?;
-    assert_eq!(receipts, 0);
+    assert_eq!(receipts, 1); // only the explicit synthetic legacy command, never maintenance
     assert!(InvalidationKind::parse("MAINTENANCE_INVALIDATED", Some(Uuid::new_v4())).is_err());
     assert!(InvalidationKind::parse("RESOURCE_INVALIDATED", None).is_err());
     Ok(())
@@ -137,4 +165,42 @@ async fn maintenance_restart_dedupe() -> anyhow::Result<()> {
         .await?;
     assert_eq!(count, 1);
     Ok(())
+}
+
+struct SyntheticCommand {
+    scope: Scope,
+    target: Uuid,
+}
+#[async_trait::async_trait]
+impl concert_service::adapters::out::repository::receipt::CommandProducer for SyntheticCommand {
+    async fn authorize(
+        &self,
+        _: &mut sqlx::PgConnection,
+        scope: Scope,
+        target: Uuid,
+    ) -> Result<(), CommandError> {
+        if scope == self.scope && target == self.target {
+            Ok(())
+        } else {
+            Err(CommandError::Denied)
+        }
+    }
+    async fn apply(
+        &self,
+        _: &mut sqlx::PgConnection,
+        _: Scope,
+        target: Uuid,
+    ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        let reference = SafeReference {
+            resource: target,
+            revision: 1,
+        };
+        Ok((
+            Completion::Succeeded {
+                reference,
+                status: 200,
+            },
+            Some(Invalidation { reference }),
+        ))
+    }
 }
