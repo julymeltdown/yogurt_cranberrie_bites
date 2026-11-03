@@ -1,0 +1,219 @@
+{
+  "root": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_",
+  "candidate": "77ae6bdf0c8b47d9468727befcea75a9af64234c",
+  "worker_final": "9b9307c922facb7c8786595b2d0a78c6086e084a",
+  "changed_paths": [
+    "docs/mcr/frontend/phaser-runtime.md",
+    "frontend/src/world/__tests__/fixtures/png.ts",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.html",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.tsx",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts",
+    "frontend/src/world/__tests__/runtime-browser-smoke.mjs",
+    "frontend/src/world/__tests__/runtime.test.ts",
+    "frontend/src/world/map/formats.ts",
+    "frontend/src/world/map/json.ts",
+    "frontend/src/world/map/manifest.ts",
+    "frontend/src/world/map/resources.ts",
+    "frontend/src/world/map/schema.ts",
+    "frontend/src/world/map/tiled.ts",
+    "frontend/src/world/runtime.ts",
+    "frontend/src/world/scenes/MapScene.ts"
+  ],
+  "source_sha256": {
+    "docs/mcr/frontend/phaser-runtime.md": "bb6195ad98dabadb07c0ba83b27991187d46a75deb2da469bc639526cb2b46a9",
+    "frontend/src/world/__tests__/fixtures/png.ts": "13bc13762daa32a956fb08f7fd10698572ac41e2a210e3b140770b22ef295aa5",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.html": "85def9f9a77d25c5642932949dad01662aaf977d16372581d665e484c72d08f8",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.tsx": "2cd3f574642965547718a04915ce6b3706f625e910e1be8ff1cac2cb92567e66",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7",
+    "frontend/src/world/__tests__/runtime-browser-smoke.mjs": "98e9e1b329004c5f38c457d66b6b959239fc577915d04609ec11c901c3ed26e4",
+    "frontend/src/world/__tests__/runtime.test.ts": "7cd429511d2fd04815ac04a91ef3451d3bdf16e40a9882c57f220260491796b7",
+    "frontend/src/world/map/formats.ts": "0e31dc185d0e3c0fa148c70443d2b2a9b34c96d3b43dc72e2070fce62cb98770",
+    "frontend/src/world/map/json.ts": "74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/map/manifest.ts": "575b89163952959bdc20760a9ab19cafe6c950e7ffeb48e3a00bf3305ac8b4a2",
+    "frontend/src/world/map/resources.ts": "829e8e8c901223307e5ba8bcf4a306e01e12f7d09f7b08bc9c4f884c0d0ead4a",
+    "frontend/src/world/map/schema.ts": "fcc2a15a5be5181f794e8cf3740bd6813860ddb100953473ba722dd50f6f48e4",
+    "frontend/src/world/map/tiled.ts": "bff9084e3270cf1a15f324c8480c993ae92b333b89e9b5f7de8c85bb903c4d57",
+    "frontend/src/world/runtime.ts": "822b3fcd9d3c380bd9d781b9ca908184714b0e2810f09c8aff4d82a1ca7ec679",
+    "frontend/src/world/scenes/MapScene.ts": "0431b7e4e48cfab8a59daf701407e5adb43a4a7a81db24c6b21acb6d63996d96"
+  },
+  "commands": [
+    {
+      "name": "frontend-tests",
+      "command": [
+        "corepack",
+        "pnpm@11.7.0",
+        "--dir",
+        "frontend",
+        "test"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr",
+      "exit": 0,
+      "seconds": 4.36,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/frontend-tests.log",
+      "sha256": "9562e5ec58501e94b2aa4c9b171927c11a6ea327a8f53601fb529e73c64315d3",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/frontend-tests.log"
+    },
+    {
+      "name": "frontend-build",
+      "command": [
+        "corepack",
+        "pnpm@11.7.0",
+        "--dir",
+        "frontend",
+        "build"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr",
+      "exit": 0,
+      "seconds": 2.25,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/frontend-build.log",
+      "sha256": "993befa66eb8db6454b9d5ef5b08b29b91cece8713c7805a9b8a2e92fc3749a5",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/frontend-build.log"
+    },
+    {
+      "name": "frontend-lint",
+      "command": [
+        "corepack",
+        "pnpm@11.7.0",
+        "--dir",
+        "frontend",
+        "lint"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr",
+      "exit": 0,
+      "seconds": 0.29,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/frontend-lint.log",
+      "sha256": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/frontend-lint.log"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "node",
+        "src/world/__tests__/runtime-browser-smoke.mjs"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr/frontend",
+      "exit": 0,
+      "seconds": 29.71,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/browser.log",
+      "sha256": "f74ba4f25bda2d7972278851b76163b30e14f831ffa5b61a7d19cc9e33523aa4",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/browser.log"
+    },
+    {
+      "name": "assets",
+      "command": [
+        "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-contract-formats-parent-5i3nz7rw/venv/bin/python",
+        "scripts/mcr/validate-assets.py"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr",
+      "exit": 0,
+      "seconds": 0.11,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/assets.log",
+      "sha256": "19fa348abd240f607b8a66ea254de4dfd46a65965ce6ae721976eb664fd9afd2",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/assets.log"
+    },
+    {
+      "name": "core-generation",
+      "command": [
+        "python3",
+        "backend/scripts/docs/generate-mcr-core.py",
+        "--check"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr",
+      "exit": 0,
+      "seconds": 0.05,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/core-generation.log",
+      "sha256": "ab0ac16503eb1f7b4ba226deb28d7f17a0db67712698c41480ccdad4653fffa6",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/core-generation.log"
+    },
+    {
+      "name": "ui-origin",
+      "command": [
+        "node",
+        "scripts/mcr/check-ui-origin.mjs"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr",
+      "exit": 0,
+      "seconds": 0.09,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/ui-origin.log",
+      "sha256": "dede765af71b1b3ecf260c1bf10d0ef9e6757676816d299d9fadc3746455f1c1",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/ui-origin.log"
+    },
+    {
+      "name": "boundaries",
+      "command": [
+        "python3",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "3fdb977d6a64798d76ea137099026879a68a67f9",
+        "--lane",
+        "frontend",
+        "--allow-doc",
+        "docs/mcr/frontend/phaser-runtime.md"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr",
+      "exit": 0,
+      "seconds": 0.29,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/boundaries.log",
+      "sha256": "ee4b5cce8799138ac41cae526308153658cd76e22c4a5d4d3a23e93e1f56ffe6",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/boundaries.log"
+    },
+    {
+      "name": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/Users/lhs/Desktop/mcr",
+      "exit": 0,
+      "seconds": 0.01,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-fe14-review-parent-r6e8fm4_/diff.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "durable_log": "docs/mcr/evidence/phaser-runtime/diff.log"
+    }
+  ],
+  "completed": true,
+  "worker_bytes_match": true,
+  "qualification": "MOCK_READY bounded runtime foundation, no whole FE14/world acceptance",
+  "review_findings": {
+    "R1": "CLEARED inherited drain",
+    "R2": "CLEARED pinned URI literals",
+    "R3": "CLEARED reentrant visibility"
+  },
+  "qa_worker_commits": [
+    "6480707e0cc1dcd37776a14c87dae8c4f989f0fb",
+    "5bf0708ba073e183cdf26e92009eb2c5c73ea18e"
+  ],
+  "qa_integrated_candidate": "b1a19c4",
+  "visual_review": {
+    "reviewed": [
+      "map-390.png",
+      "invalid-390.png",
+      "production-public-390.png"
+    ],
+    "result": "Synthetic map/error/production public legible; ordinary symmetric control/focus outlines; no decorative left accent; no character artwork"
+  },
+  "artifact_sha256": {
+    "qa-review-probe.mjs": "cda455e8d583950ce98295d0909e253acc7379c0b999a1d72868bdaec8640af9",
+    "browser.log": "f74ba4f25bda2d7972278851b76163b30e14f831ffa5b61a7d19cc9e33523aa4",
+    "production-public-390.png": "903ee5886a63322a478f088e3fd8d3ab4a03b3876f28c632286a56fb4ef7b970",
+    "qa-final-source-pins.json": "265590db8f5413d4f12b60c81ab4d91527b6682cf06bb7c9458978ff895f34a3",
+    "core-generation.log": "ab0ac16503eb1f7b4ba226deb28d7f17a0db67712698c41480ccdad4653fffa6",
+    "qa-combined-final.json": "bcf497958a31a08b1c78ce3f92e633dc8401d2e38fabe243ab289a169489423b",
+    "assets.log": "19fa348abd240f607b8a66ea254de4dfd46a65965ce6ae721976eb664fd9afd2",
+    "qa-final-targeted-tests.log": "00aa3cda7ca8a7ec3a89fbb65e5e4351440445da5f17418fdcdcae357a347643",
+    "map-390.png": "5f70da25c62ae5572c6df3396777c161a7b5b3a845383e79a626097337a10b15",
+    "ui-origin.log": "dede765af71b1b3ecf260c1bf10d0ef9e6757676816d299d9fadc3746455f1c1",
+    "qa-final-ip-literal-matrix.json": "2dc02344a750cddedfe9cfe5e496b209bfd6331deaf11af35a12b88f86214ea7",
+    "boundaries.log": "ee4b5cce8799138ac41cae526308153658cd76e22c4a5d4d3a23e93e1f56ffe6",
+    "invalid-390.png": "f2829794c5a6a02e15b4b639c76f2b216d74118dba450789364efea80165f0f4",
+    "worker-browser-report.json": "5f012373b0be81c1f27f654f9adab3b80b12f490337c80d02e92aa729277d1db",
+    "frontend-tests.log": "9562e5ec58501e94b2aa4c9b171927c11a6ea327a8f53601fb529e73c64315d3",
+    "qa-combined-initial.json": "82093261390e7d80a14b993aab9db3ce004037b5c5e734e7f91230a9ea601737",
+    "browser-report.json": "5f012373b0be81c1f27f654f9adab3b80b12f490337c80d02e92aa729277d1db",
+    "initial-review.json": "a3879b6dabf59fe7bd5e5dc1342a1490c96a964344d99905c8a85d8b5be2d97b",
+    "frontend-lint.log": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372",
+    "diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend-build.log": "993befa66eb8db6454b9d5ef5b08b29b91cece8713c7805a9b8a2e92fc3749a5"
+  }
+}

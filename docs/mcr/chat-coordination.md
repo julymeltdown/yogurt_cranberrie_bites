@@ -1,20 +1,19 @@
 # Active chat ownership
 
-Updated 2026-11-03. The user authorized additional visible Codex chats, then
-clarified that a fixed backend/frontend count is unnecessary. Four visible chats
-are available; FE14 and the strict Gateway access context are current writers. Auth RPC, FE10 and
-both independent authority reviews completed bounded parent review with actual
-COMPLETE goals and stopped checkouts. Each assigned writer has
-its own worktree and branch; every shell command
-and edit must explicitly target that worktree because app-level project context
-can still point to the integration checkout.
+Updated 2026-11-03. Four existing visible chats are reused for concrete disjoint
+work. The Profile-owner and FE15 chats implement features; the Auth-client chat
+has a clean handoff under independent QA. Previous FE14 and QA goals are actually
+COMPLETE. Every command must explicitly target its assigned checkout.
 
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| BE04 | `mcr(be) BE04 canonical identity adapter` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-identity` / `codex/mcr-be-BE04` |
-| BE04 Gateway access | `mcr(be) BE04 strict Gateway access context` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-gateway-concert-access` / `codex/mcr-be-gateway-concert-access` |
-| FE14 | `mcr(fe) FE14 Phaser runtime and map loading` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-runtime` / `codex/mcr-fe-FE14` |
-| QA | `mcr(qa) admission and event authority review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-auth-rpc` / `codex/mcr-qa-auth-rpc` |
+| BE04 Profile owner | `mcr(be) BE04 minimal Profile owner read` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-owner` / `codex/mcr-be-profile-owner` |
+| BE04 Auth client | `mcr(be) BE04 authenticated Auth owner client` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner` / `codex/mcr-be-gateway-auth-owner` |
+| FE15 | `mcr(fe) FE15 movement camera and interactions` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-movement` / `codex/mcr-fe-FE15` |
+| QA | `mcr(qa) Gateway Auth owner client review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-gateway-auth-owner` / `codex/mcr-qa-gateway-auth-owner` |
+
+The entries below retain earlier assignment history; this table and the latest
+allocation section at the end supersede their historical active/idle wording.
 
 The original four increments started at `376cf21`; FE11 starts at `b39d5e5`
 after the same chat completed FE08. All use `gpt-6.1-sol` with `high` reasoning
@@ -258,3 +257,48 @@ proto/platform/domain/Auth/Concert/frontend/manifest ownership is transferred.
 The worker owns the retained Rust target, two jobs; prior JWT checkout stopped.
 FE14's clean `a7dcb79`/`a1243ff` fifteen-path handoff retains its ACTIVE goal
 through parent review. Parent serially integrates and alone publishes.
+
+## Latest allocation after FE14 review
+
+FE14 worker `9b9307c` and QA report `5bf0708` completed the exact review scope.
+Both goal update and subsequent goal reads confirm COMPLETE. Their checkouts
+are stopped. Parent final `77ae6bd` passes 871 tests, build/lint, native browser,
+contract/origin/boundary checks; [integration evidence](evidence/phaser-runtime-integration.md)
+records the three corrected P2 findings and limits.
+
+The previously idle BE04 chat now actively implements the Profile-owner read at
+published base `3fdb977d6a64798d76ea137099026879a68a67f9`. Exact seven paths: new
+`profile-application/src/concert_identity.rs` and `tests/concert_identity.rs`;
+new Profile service persistence `concert_identity.rs` and
+`tests/concert_identity_owner.rs`; `docs/mcr/backend/profile-identity-owner.md`;
+only module exports in the existing application `src/lib.rs` and persistence
+`mod.rs`. It reads current self nickname/bio with deleted-row and owning deletion
+fence semantics, through one bounded uncached query. No Auth authority, portable
+proof, public RPC, migration or production activation is delegated. Real isolated
+PostgreSQL qualification is required. Its compatible original goal still returns
+BLOCKED and the available goal API has no resume transition; the explicit user
+continuation is being executed without falsely completing that larger objective.
+
+Auth client `868d02c` is clean and retains an ACTIVE review goal. Its worker
+explicitly released the shared Rust target after all owned processes ended.
+The Profile-owner worker now exclusively owns `/Users/lhs/Desktop/mcr-build/backend`,
+Rust 1.88, locked/offline, two jobs, debug information disabled. Parent and QA
+must not concurrently compile there. QA's fresh candidate is exact `868d02c`;
+its sole writable path is `docs/mcr/qa/gateway-auth-owner-client-review.md`.
+Source/evidence review can proceed without owning the target or a database.
+
+FE15 starts at `b1a19c425a30641410d71986714d72b7101f43e8` and has a new tool-confirmed
+ACTIVE unbudgeted goal. Writable paths are new world `input/**`, `camera/**`,
+`interaction/**`, `__tests__/movement.test.ts`, `movement-browser-smoke.mjs`,
+`__tests__/fixtures/movement-*`, and `docs/mcr/frontend/world-movement.md`.
+Bounded existing-file exceptions are runtime typed control attachment/lifecycle
+and MapScene camera/world-coordinate integration only. No Phaser input plugin,
+network/replication/avatar/auth/app/contract/dependency/production-art ownership
+is transferred. It implements real browser controls and local prediction against
+validated geometry, with injected simulation parameters and actual Phaser camera
+checks. The parent owns future shell and authenticated transport composition.
+
+Recheck chat status during work and at every handoff. Assign the next ready task
+when its predecessor's reviewed scope is complete; a message alone does not prove
+execution or an ACTIVE goal. Preserve lane/file/resource boundaries and publish
+reviewed units serially rather than accumulating them behind unrelated work.

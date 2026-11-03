@@ -1,0 +1,80 @@
+6:18:51 PM [vite] (client) dependency optimized: phaser
+6:18:56 PM [vite] (client) [Unhandled error] Error: FE14_SYNC_START_THROW
+ > document.addEventListener src/world/scenes/MapScene.ts:51:21
+    49 |          document.addEventListener = function(this: Document, type: string, listener: EventListenerOrEventListenerObje...
+    50 |            if (type === 'visibilitychange') visibilityHandlers.push({ listener, capture: typeof options === 'boolean' ...
+    51 |            return add.call(this, type, listener, options)
+       |                       ^
+    52 |          } as typeof document.addEventListener
+    53 |          try { super.start() }
+ > VisibilityHandler node_modules/.pnpm/phaser@3.90.0/node_modules/phaser/dist/phaser.js:18457:17
+ > OwnedGame.start node_modules/.pnpm/phaser@3.90.0/node_modules/phaser/dist/phaser.js:17151:8
+ > OwnedGame.start src/world/scenes/MapScene.ts:53:20
+ > OwnedGame.texturesReady node_modules/.pnpm/phaser@3.90.0/node_modules/phaser/dist/phaser.js:17124:13
+ > TextureManager.emit node_modules/.pnpm/phaser@3.90.0/node_modules/phaser/dist/phaser.js:218:32
+ > TextureManager.updatePending node_modules/.pnpm/phaser@3.90.0/node_modules/phaser/dist/phaser.js:216452:17
+ > TextureManager.emit node_modules/.pnpm/phaser@3.90.0/node_modules/phaser/dist/phaser.js:199:34
+ > image.onload node_modules/.pnpm/phaser@3.90.0/node_modules/phaser/dist/phaser.js:216598:22
+
+{
+  "browser": "156.0.8078.80",
+  "status": "MOCK_READY",
+  "results": [
+    {
+      "width": 360,
+      "height": 800,
+      "realPhaserPixels": "PASS",
+      "terrainAndOverdraw": "PASS",
+      "footGeometry": "PASS",
+      "repeatedStrictModeMount": "PASS",
+      "resizeAndReducedHeight": "PASS",
+      "resourcesAndLateImport": "PASS",
+      "invalidVisible": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "realPhaserPixels": "PASS",
+      "terrainAndOverdraw": "PASS",
+      "footGeometry": "PASS",
+      "repeatedStrictModeMount": "PASS",
+      "resizeAndReducedHeight": "PASS",
+      "resourcesAndLateImport": "PASS",
+      "invalidVisible": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "realPhaserPixels": "PASS",
+      "terrainAndOverdraw": "PASS",
+      "footGeometry": "PASS",
+      "repeatedStrictModeMount": "PASS",
+      "resizeAndReducedHeight": "PASS",
+      "resourcesAndLateImport": "PASS",
+      "invalidVisible": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "realPhaserPixels": "PASS",
+      "terrainAndOverdraw": "PASS",
+      "footGeometry": "PASS",
+      "repeatedStrictModeMount": "PASS",
+      "resizeAndReducedHeight": "PASS",
+      "resourcesAndLateImport": "PASS",
+      "invalidVisible": "PASS"
+    }
+  ],
+  "negativeResources": "PASS: hash/failure/late resource teardown",
+  "productionIsolation": "PASS",
+  "reviewRegressions": "PASS: inherited held-close owner exclusion and reentrant visibility stop/dispose/restart with real Phaser",
+  "requests": 11,
+  "pageErrors": [],
+  "expectedInjectedStartErrors": [
+    "FE14_SYNC_START_THROW"
+  ],
+  "limits": [
+    "Synthetic controlled resources only; no production map, venue or character artwork.",
+    "No shell wiring, avatar, movement, socket, world admission or physical device qualification."
+  ]
+}

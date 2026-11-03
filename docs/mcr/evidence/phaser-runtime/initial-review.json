@@ -1,0 +1,41 @@
+{
+  "candidate": "26f5e4fd6b822f81d82dd340363b8666ad20d066",
+  "source_review_status": "CHANGES_REQUESTED",
+  "initial_all_commands_exit_zero": true,
+  "findings": [
+    {
+      "id": "R1",
+      "owner": "parent",
+      "path": "frontend/src/world/runtime.ts",
+      "issue": "Aborted replacement without an engine releases inherited pending host drain",
+      "repro": [
+        "A ready with closed deferred",
+        "A.stop(); const restart=A.start(); A.stop()",
+        "B on same host starts before prior closed"
+      ],
+      "observed": {
+        "second_state": "ready",
+        "live_before_old_closed": 2,
+        "peak": 2
+      },
+      "required": "Retain host reservation across every inherited teardown until closure; qualify stop/dispose/abort and transfer"
+    },
+    {
+      "id": "R2",
+      "owner": "independent QA",
+      "path": "frontend/src/world/map/formats.ts",
+      "issue": "IPv-literal format semantics diverge from pinned owner checker",
+      "values": [
+        "http://[::ffff:192.168.001.1]/",
+        "x://[V1.ab:cd]/"
+      ]
+    },
+    {
+      "id": "R3",
+      "owner": "independent QA",
+      "path": "frontend/src/world/runtime.ts",
+      "issue": "setVisible reentrant stop/dispose can be overwritten by late ready publication"
+    }
+  ],
+  "disposition": "Returned to frontend worker, bounded goal ACTIVE; no final integration acceptance or push"
+}

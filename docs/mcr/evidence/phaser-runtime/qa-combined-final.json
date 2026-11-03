@@ -1,0 +1,161 @@
+{
+  "candidateRoot": "/Users/lhs/Desktop/mcr-worktrees/qa-fe-runtime",
+  "inheritedDrain": [
+    {
+      "action": "stop",
+      "before": {
+        "phase": "error",
+        "reason": "host-busy"
+      },
+      "allocationsBeforeOldClosed": 1,
+      "after": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsAfterOldClosed": 2
+    },
+    {
+      "action": "dispose",
+      "before": {
+        "phase": "error",
+        "reason": "host-busy"
+      },
+      "allocationsBeforeOldClosed": 1,
+      "after": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsAfterOldClosed": 2
+    },
+    {
+      "action": "abort",
+      "before": {
+        "phase": "error",
+        "reason": "host-busy"
+      },
+      "allocationsBeforeOldClosed": 1,
+      "after": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsAfterOldClosed": 2
+    }
+  ],
+  "reentrantVisibility": [
+    {
+      "action": "stop",
+      "initialResult": {
+        "phase": "stopped"
+      },
+      "finalState": {
+        "phase": "stopped"
+      },
+      "seen": [
+        "loading",
+        "stopped"
+      ],
+      "destroyed": 1,
+      "disposed": 1,
+      "childCount": 0
+    },
+    {
+      "action": "dispose",
+      "initialResult": {
+        "phase": "disposed"
+      },
+      "finalState": {
+        "phase": "disposed"
+      },
+      "seen": [
+        "loading",
+        "disposed"
+      ],
+      "destroyed": 1,
+      "disposed": 1,
+      "childCount": 0
+    },
+    {
+      "action": "restart",
+      "initialResult": {
+        "phase": "loading"
+      },
+      "finalState": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "seen": [
+        "loading",
+        "stopped",
+        "loading",
+        "ready"
+      ],
+      "destroyed": 1,
+      "disposed": 1,
+      "childCount": 1
+    }
+  ],
+  "uriParity": [
+    {
+      "uri": "http://[::ffff:192.168.001.1]/",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "http://[::ffff:192.168.01.1]/",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "http://[::ffff:192.168.1.1]/",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "x://[V1.ab:cd]/",
+      "client": false,
+      "python": false,
+      "pythonExit": 1
+    },
+    {
+      "uri": "x://[v1.ab:cd]/",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "http://[::]/",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "urn:abc:def",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    }
+  ]
+}

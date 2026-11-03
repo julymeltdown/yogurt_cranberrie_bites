@@ -1,0 +1,3281 @@
+{
+  "count": 655,
+  "mismatches": [],
+  "rows": [
+    {
+      "uri": "http://[::]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "x://[v1.ab:cd]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "x://[V1.ab:cd]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[:::1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1%25zone]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[192.168.1.1::]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:5]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:5]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:5]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::5]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5::]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:5:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:5:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:5:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::5:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5::192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:5:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:5:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:5:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::5:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5::192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:5:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:5:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:5:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::5:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5::192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:5:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:5:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:5:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::5:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5::0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:192.168.001.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:192.168.01.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:192.168.1.1]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:0.00.000.255]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8]/",
+      "client": true,
+      "python": true
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::192.168.001.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::192.168.01.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::192.168.1.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::0.00.000.255]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::192.168.256.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::192.168.0000.1]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::1.2.3]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::1.2.3.4.5]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[::1:2:3:4:5:6:7:8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1::2:3:4:5:6:7:8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2::3:4:5:6:7:8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3::4:5:6:7:8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4::5:6:7:8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5::6:7:8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6::7:8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7::8:9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8::9:-1.2.3.4]/",
+      "client": false,
+      "python": false
+    },
+    {
+      "uri": "http://[1:2:3:4:5:6:7:8:9::-1.2.3.4]/",
+      "client": false,
+      "python": false
+    }
+  ]
+}

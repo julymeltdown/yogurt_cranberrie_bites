@@ -1,0 +1,62 @@
+{
+  "browser": "156.0.8078.80",
+  "status": "MOCK_READY",
+  "results": [
+    {
+      "width": 360,
+      "height": 800,
+      "realPhaserPixels": "PASS",
+      "terrainAndOverdraw": "PASS",
+      "footGeometry": "PASS",
+      "repeatedStrictModeMount": "PASS",
+      "resizeAndReducedHeight": "PASS",
+      "resourcesAndLateImport": "PASS",
+      "invalidVisible": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "realPhaserPixels": "PASS",
+      "terrainAndOverdraw": "PASS",
+      "footGeometry": "PASS",
+      "repeatedStrictModeMount": "PASS",
+      "resizeAndReducedHeight": "PASS",
+      "resourcesAndLateImport": "PASS",
+      "invalidVisible": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "realPhaserPixels": "PASS",
+      "terrainAndOverdraw": "PASS",
+      "footGeometry": "PASS",
+      "repeatedStrictModeMount": "PASS",
+      "resizeAndReducedHeight": "PASS",
+      "resourcesAndLateImport": "PASS",
+      "invalidVisible": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "realPhaserPixels": "PASS",
+      "terrainAndOverdraw": "PASS",
+      "footGeometry": "PASS",
+      "repeatedStrictModeMount": "PASS",
+      "resizeAndReducedHeight": "PASS",
+      "resourcesAndLateImport": "PASS",
+      "invalidVisible": "PASS"
+    }
+  ],
+  "negativeResources": "PASS: hash/failure/late resource teardown",
+  "productionIsolation": "PASS",
+  "reviewRegressions": "PASS: inherited held-close owner exclusion and reentrant visibility stop/dispose/restart with real Phaser",
+  "requests": 11,
+  "pageErrors": [],
+  "expectedInjectedStartErrors": [
+    "FE14_SYNC_START_THROW"
+  ],
+  "limits": [
+    "Synthetic controlled resources only; no production map, venue or character artwork.",
+    "No shell wiring, avatar, movement, socket, world admission or physical device qualification."
+  ]
+}

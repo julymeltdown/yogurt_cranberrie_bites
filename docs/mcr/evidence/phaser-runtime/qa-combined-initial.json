@@ -1,0 +1,208 @@
+{
+  "candidateRoot": "/Users/lhs/Desktop/mcr-worktrees/qa-fe-runtime",
+  "inheritedDrain": [
+    {
+      "action": "stop",
+      "before": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsBeforeOldClosed": 2,
+      "after": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsAfterOldClosed": 2
+    },
+    {
+      "action": "dispose",
+      "before": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsBeforeOldClosed": 2,
+      "after": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsAfterOldClosed": 2
+    },
+    {
+      "action": "abort",
+      "before": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsBeforeOldClosed": 2,
+      "after": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "allocationsAfterOldClosed": 2
+    }
+  ],
+  "reentrantVisibility": [
+    {
+      "action": "stop",
+      "initialResult": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "finalState": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "seen": [
+        "loading",
+        "stopped",
+        "ready"
+      ],
+      "destroyed": 1,
+      "disposed": 1,
+      "childCount": 0
+    },
+    {
+      "action": "dispose",
+      "initialResult": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "finalState": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "seen": [
+        "loading",
+        "disposed"
+      ],
+      "destroyed": 1,
+      "disposed": 1,
+      "childCount": 0
+    },
+    {
+      "action": "restart",
+      "initialResult": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "finalState": {
+        "phase": "ready",
+        "widthPx": 160,
+        "heightPx": 160,
+        "spawnFoot": {
+          "x": 48,
+          "y": 48
+        }
+      },
+      "seen": [
+        "loading",
+        "stopped",
+        "loading",
+        "ready",
+        "ready"
+      ],
+      "destroyed": 1,
+      "disposed": 1,
+      "childCount": 1
+    }
+  ],
+  "uriParity": [
+    {
+      "uri": "http://[::ffff:192.168.001.1]/",
+      "client": false,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "http://[::ffff:192.168.01.1]/",
+      "client": false,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "http://[::ffff:192.168.1.1]/",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "x://[V1.ab:cd]/",
+      "client": true,
+      "python": false,
+      "pythonExit": 1
+    },
+    {
+      "uri": "x://[v1.ab:cd]/",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "http://[::]/",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    },
+    {
+      "uri": "urn:abc:def",
+      "client": true,
+      "python": true,
+      "pythonExit": 0
+    }
+  ]
+}

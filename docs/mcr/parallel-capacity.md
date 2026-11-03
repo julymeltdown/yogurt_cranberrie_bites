@@ -8,14 +8,15 @@ backend plus three frontend chats need not be forced.
 The desktop tools support creation, messaging, renaming and compact status
 tracking of separate user-visible chats. Two existing chats were reassigned
 after reviewed delivery; two additional project chats were successfully created.
-All four initially acknowledged actual active persistent goals. Current status
-has changed: FE08, BE15 and FE16 bounded goals are COMPLETE; BE04's goal is BLOCKED
-on shared owning contracts. FE11 and the Auth-owner read subsequently completed parent review and their actual
-bounded goals; both clean checkouts are stopped. The original BE04 goal remains
-BLOCKED on shared composition. No writer is kept active just to meet a quota.
-The requested model is
-`gpt-6.1-sol` with `high` reasoning. Exact IDs, worktrees, branches and ownership
-are in the [coordination register](chat-coordination.md).
+All four initially acknowledged active persistent goals and are now reused for
+successive scopes. The latest allocation is Profile-owner development, FE15
+movement/camera development, Auth-client review fixes and independent Auth-client
+QA. FE14 and its QA goal are COMPLETE. The Profile chat's historical compatible
+goal still reports BLOCKED through the API, while its explicitly resumed work is
+active. The requested model remains `gpt-6.1-sol` with `high` reasoning. Exact
+IDs, worktrees, branches and resource ownership are in the
+[coordination register](chat-coordination.md). Later paragraphs retain allocation
+history and do not override that current register.
 
 ## Delivered allocation and current capacity
 
@@ -135,3 +136,11 @@ Auth owner-client goal; the frontend runtime handoff is ready for review. A QA
 chat may be reused for that concrete candidate while parent runs the combined
 browser checks. These allocations follow useful independent work, not a fixed
 two-backend/three-frontend count.
+
+
+The user's idle-chat correction is now applied: the original BE04 chat implements
+a minimal Profile owner component with no overlap with the authenticated Auth
+client. The completed FE14 chat has a fresh ACTIVE FE15 goal; completed FE14 QA
+was immediately reused for Auth-client review. Shared Rust compilation is handed
+off explicitly, while frontend builds and source review proceed independently.
+Each reviewed checkpoint is committed and pushed before unrelated tasks finish.

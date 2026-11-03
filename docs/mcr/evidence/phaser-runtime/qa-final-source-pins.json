@@ -1,0 +1,28 @@
+{
+  "worker_fix": "9b9307c922facb7c8786595b2d0a78c6086e084a",
+  "qa_cherry_pick": "afa6a977bc329ace65f9f3b80e1827fa4fa84f2d",
+  "source_sha256": {
+    "docs/mcr/frontend/phaser-runtime.md": "bb6195ad98dabadb07c0ba83b27991187d46a75deb2da469bc639526cb2b46a9",
+    "frontend/src/world/__tests__/fixtures/png.ts": "13bc13762daa32a956fb08f7fd10698572ac41e2a210e3b140770b22ef295aa5",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.html": "85def9f9a77d25c5642932949dad01662aaf977d16372581d665e484c72d08f8",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.tsx": "2cd3f574642965547718a04915ce6b3706f625e910e1be8ff1cac2cb92567e66",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7",
+    "frontend/src/world/__tests__/runtime-browser-smoke.mjs": "98e9e1b329004c5f38c457d66b6b959239fc577915d04609ec11c901c3ed26e4",
+    "frontend/src/world/__tests__/runtime.test.ts": "7cd429511d2fd04815ac04a91ef3451d3bdf16e40a9882c57f220260491796b7",
+    "frontend/src/world/map/formats.ts": "0e31dc185d0e3c0fa148c70443d2b2a9b34c96d3b43dc72e2070fce62cb98770",
+    "frontend/src/world/map/json.ts": "74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/map/manifest.ts": "575b89163952959bdc20760a9ab19cafe6c950e7ffeb48e3a00bf3305ac8b4a2",
+    "frontend/src/world/map/resources.ts": "829e8e8c901223307e5ba8bcf4a306e01e12f7d09f7b08bc9c4f884c0d0ead4a",
+    "frontend/src/world/map/schema.ts": "fcc2a15a5be5181f794e8cf3740bd6813860ddb100953473ba722dd50f6f48e4",
+    "frontend/src/world/map/tiled.ts": "bff9084e3270cf1a15f324c8480c993ae92b333b89e9b5f7de8c85bb903c4d57",
+    "frontend/src/world/runtime.ts": "822b3fcd9d3c380bd9d781b9ca908184714b0e2810f09c8aff4d82a1ca7ec679",
+    "frontend/src/world/scenes/MapScene.ts": "0431b7e4e48cfab8a59daf701407e5adb43a4a7a81db24c6b21acb6d63996d96"
+  },
+  "evidence_sha256": {
+    "review-probe.mjs": "cda455e8d583950ce98295d0909e253acc7379c0b999a1d72868bdaec8640af9",
+    "combined-initial.json": "82093261390e7d80a14b993aab9db3ce004037b5c5e734e7f91230a9ea601737",
+    "combined-final.json": "bcf497958a31a08b1c78ce3f92e633dc8401d2e38fabe243ab289a169489423b",
+    "final-ip-literal-matrix.json": "2dc02344a750cddedfe9cfe5e496b209bfd6331deaf11af35a12b88f86214ea7",
+    "final-targeted-tests.log": "00aa3cda7ca8a7ec3a89fbb65e5e4351440445da5f17418fdcdcae357a347643"
+  }
+}

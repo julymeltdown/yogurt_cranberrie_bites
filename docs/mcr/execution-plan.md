@@ -6,14 +6,14 @@ Intake and assessment are delivered. Foundation implementation is active: review
 
 The main chat is the integrator. Backend and frontend development run in separate visible Codex chats, as the user explicitly requested. Each uses `gpt-6.1-sol` with `high` reasoning and an isolated worktree. The [chat ownership register](chat-coordination.md) records the current writers and scopes. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
 
-Four visible chats are available; no fixed lane count is required. FE10, FE11,
-the Auth-owner read and independent event/RPC-prerequisite review have
-COMPLETE bounded goals and stopped checkouts. The authenticated Auth RPC and its actual-handler QA review now have COMPLETE
-bounded goals after final native qualification. The
-original BE04 goal is BLOCKED on central composition. FE14 runtime/resource
-consumption and strict Gateway access context have separate new ACTIVE goals. Actual goal state and
-assignments are recorded in the [ownership register](chat-coordination.md) and
-[capacity assessment](parallel-capacity.md).
+Four existing visible chats are reused for ready work. FE14 and its independent
+review completed their bounded goals after three corrections and parent 871-test
+and native-browser qualification. FE15 has a new confirmed ACTIVE goal. The
+previously idle original identity chat now implements the Profile-owner read;
+the other backend chat's Auth client is committed and undergoing independent QA.
+The integrator publishes each reviewed checkpoint while these disjoint tasks
+continue. Actual goal state, resource ownership and assignments are recorded in
+the [ownership register](chat-coordination.md). No fixed chat count is imposed.
 
 ## Separate code ownership and workspaces
 

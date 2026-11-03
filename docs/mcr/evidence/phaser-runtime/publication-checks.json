@@ -1,0 +1,10 @@
+{
+  "raw_artifact_whitespace_exit": 2,
+  "raw_artifact_whitespace_output": "docs/mcr/evidence/phaser-runtime/frontend-build.log:14: trailing whitespace.\n+[plugin builtin:vite-reporter] \ndocs/mcr/evidence/phaser-runtime/frontend-tests.log:10: new blank line at EOF.\n",
+  "code_and_documents_whitespace_exit": 0,
+  "excluded_exact_raw_logs": [
+    "docs/mcr/evidence/phaser-runtime/frontend-build.log",
+    "docs/mcr/evidence/phaser-runtime/frontend-tests.log"
+  ],
+  "reason": "Preserve original process output and existing SHA256 evidence; Vite trailing space and Vitest extra EOF newline are not source changes."
+}

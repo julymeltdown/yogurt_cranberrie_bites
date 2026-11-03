@@ -1,0 +1,10 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/qa-fe-runtime/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  134 passed (134)
+   Start at  18:18:07
+   Duration  3.39s (transform 54ms, setup 0ms, import 69ms, tests 2.99s, environment 252ms)
+
+$ vitest run src/world/__tests__/runtime.test.ts

@@ -18,7 +18,7 @@ it is not feature integration or release acceptance.
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
 | BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
 | BE03 | INTEGRATED | [Email ingress review](evidence/browser-auth-integration.md), candidate `689e4d2`: parent reran 221 Gateway tests, nine harness tests and 53 real native HTTP checks with three mail deliveries and cleanup PASS. Frozen email/account mapping, browser guards and invalid-credential handling delivered. Real browser cookie policy, configured OAuth and complete BE03 acceptance remain open. |
-| BE04 | IN_PROGRESS | [Identity foundation](evidence/identity-integration.md), [Auth-owner read](evidence/auth-identity-owner-integration.md) and [authenticated RPC review](evidence/auth-admission-rpc-integration.md): final `97a698a` passes 11 controlled, five actual RPC and 22 retained PostgreSQL cases, migrations/reapply/restart/cleanup. Independent QA closed R1; both bounded goals COMPLETE. [Strict Gateway context](evidence/gateway-concert-access-integration.md) `e7d208e` additionally passes 235 tests, three compile-fail checks and binary build; bounded goal COMPLETE. HTTP capture/owner RPC/Profile/event/signed Concert composition and production policy remain unqualified; original identity goal BLOCKED. |
+| BE04 | IN_PROGRESS | [Identity foundation](evidence/identity-integration.md), [Auth-owner read](evidence/auth-identity-owner-integration.md) and [authenticated RPC review](evidence/auth-admission-rpc-integration.md): final `97a698a` passes 11 controlled, five actual RPC and 22 retained PostgreSQL cases, migrations/reapply/restart/cleanup. Independent QA closed R1; both bounded goals COMPLETE. [Strict Gateway context](evidence/gateway-concert-access-integration.md) `e7d208e` additionally passes 235 tests, three compile-fail checks and binary build; bounded goal COMPLETE. Gateway owner client `868d02c` is committed on its isolated branch and under independent review. The original identity chat is implementing the Profile-owner read after explicit resume; its old goal tool still reports BLOCKED. HTTP capture/Profile RPC/event/signed Concert composition and production policy remain unqualified. |
 | BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
 | BE15 | IN_PROGRESS | [Reviewed internal receipt/outbox foundation](evidence/command-receipts-integration.md), `7cbb97e`/`c2a2c30`: 33 combined deterministic Rust, 82 Python helper and 17 real PostgreSQL tests pass; owned migration failure/recovery, restart persistence and cleanup pass. Review fixes cover keyed private fingerprints, post-authorization expiry and result/outbox revision equality. Bounded goal COMPLETE; production producer/Auth/public API/key configuration/runtime/load gates remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
@@ -29,7 +29,7 @@ it is not feature integration or release acceptance.
 | FE09 | MOCK_READY | [Integrated review](evidence/session-sign-in-integration.md), candidate `a9e130e`: 354 tests including 78 FE09, strict build/lint/origin/boundary checks and four-width native Chrome/cross-tab/production-isolation checks pass. Review fixes preserve valid session on 403 while 401 clears. Production automatic restore/refresh stays disabled; real BE03 Secure-cookie/revocation/rotation, event/world and IN01 gates remain open. Delivered increment goal completed; task not accepted. |
 | FE10 | MOCK_READY | [Integrated review](evidence/signup-verification-integration.md), `f825b31`/`f498194`/`7bfea96`: 737 combined frontend tests, build/lint/C03/C08/boundary/plan and four-width enrollment/sign-in/recovery browser suites pass. Three concrete review fixes delivered; bounded goal COMPLETE. Anonymous verification is event-independent; production signup/eligibility/consent/live mail/device/vertical gates remain unqualified. |
 | FE11 | MOCK_READY | [Integrated recovery review](evidence/password-recovery-integration.md), `d290391`/`4360d58`/`4550029`: 669 combined tests, strict build/lint/C03/origin/boundary/plan and four-width native recovery plus retained sign-in suites pass. Source fragment intake, canonical confirmation fencing and safe callback presentation delivered; bounded goal COMPLETE. Real mail/BASE_URL/Secure cookies/OAuth/device/IN01 remain NOT_RUN. |
-| FE14 | IN_PROGRESS | Worker `a7dcb79`/`a1243ff` handoff ready, goal ACTIVE through review: Phaser lifecycle and strict existing map/theme/resource consumption with synthetic native-browser fixture, 850 reported tests and four-width browser matrix. Parent combined review pending. No production shell, avatar, real map/venue or whole-world acceptance. |
+| FE14 | MOCK_READY | [Reviewed runtime foundation](evidence/phaser-runtime-integration.md), final `77ae6bd`: 871 combined tests, strict build/lint and real Chrome four-width lifecycle/resource matrix pass. Three P2 findings corrected and independently cleared; both bounded goals COMPLETE. Production assets, protected-shell/avatar/world composition, devices and whole FE14 acceptance remain open. |
 | FE16 | MOCK_READY | [Reviewed transport integration](evidence/world-transport-integration.md), `e3a4d84`/`5863f91`: 568 combined frontend tests (158 transport), build/lint/type-drift/origin/plan and installed-Chrome five canonical traces pass. Gap recovery and pre-send room-switch failure findings corrected. Bounded goal COMPLETE; production lifecycle, replication and real-server/IN01 remain NOT_RUN. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **11/112**;
@@ -41,17 +41,17 @@ startup is verified within BE05; product APIs/identity are not.
 
 ## Integration and ownership
 
-The main checkout integrates reviewed commits serially. Two user-supplied chats and two newly created
-visible Codex chats use disjoint backend/frontend worktrees and requested
-`gpt-6.1-sol` / high settings. Chat count does not imply four active writers:
-FE14 has an ACTIVE goal on a separate runtime checkout. Auth RPC, FE10 and
-both independent QA reviews have tool-confirmed COMPLETE bounded goals and
-stopped checkouts. The original BE04 chat is blocked
-on shared contracts. Completed chats are reused only for useful, disjoint work.
-Previous subagents were stopped
-before ownership transferred; their unfinished work was preserved. The
-[chat ownership register](chat-coordination.md) gives exact paths and handoffs.
-The integrator owns common contracts and alone pushes master.
+The main checkout integrates reviewed commits serially and alone publishes master.
+Four existing visible chats are reused with disjoint worktrees and requested
+`gpt-6.1-sol` / high settings. The Profile-owner chat is actively implementing
+seven assigned backend paths; the Auth-owner-client chat retains its goal through
+review, with source/build work stopped after its clean handoff. QA reviews that
+client on a separate report-only checkout. FE14 and its QA goals are COMPLETE;
+the frontend chat has confirmed a new ACTIVE FE15 goal. The Profile chat's old
+compatible goal still reports BLOCKED because the exposed goal API cannot resume
+it, although explicit continuation and implementation are active. No broader
+identity objective was falsely completed to bypass that limitation.
+The [chat ownership register](chat-coordination.md) records exact scopes.
 
 Reviewed imports through `2b42fd4`: frontend audit/scaffold, backend audit/import,
 frontend lock/toolchain configuration, exact auth review, boundary guard and C08
