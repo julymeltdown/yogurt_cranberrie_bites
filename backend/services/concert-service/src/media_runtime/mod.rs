@@ -96,6 +96,12 @@ impl OwnerMediaBinding {
 pub trait OwnerMediaFence: Send + Sync {
     /// The scope owns cancellation, durable quarantine and settlement. A dropped
     /// work future or uncertain SQL outcome must NEVER release its owner exclusion.
+    /// Returning a headless reply is production, not delivery completion. Before
+    /// work starts, the canonical adapter must retain the actual owner scope in
+    /// the root delivery registry. Keep it beyond dispatch and gRPC serialization
+    /// until the qualified Gateway HTTP terminal callback settles that same scope.
+    /// Neither Ok(reply), mark_serialized, deadline expiry nor dropping the local
+    /// guard adapter may complete/release it. Unknown delivery remains quarantined.
     async fn run(
         &self,
         binding: Arc<OwnerMediaBinding>,
@@ -106,7 +112,9 @@ pub type OwnerMediaFuture =
     Pin<Box<dyn Future<Output = Result<OwnerMediaReply, CommandError>> + Send>>;
 pub type OwnerMediaWork = Box<dyn FnOnce(Arc<dyn OwnerMediaGuard>) -> OwnerMediaFuture + Send>;
 
-/// Held until producer/read/recovery SQL finishes (including commit/rollback).
+/// Retained locally through producer/read/recovery SQL (including commit/rollback).
+/// The canonical scope must separately outlive this adapter in the root delivery
+/// registry through the qualified HTTP terminal outcome. Local Drop is not release.
 /// The guard must stay effective on owner/network failure: uncertain remote guard
 /// release must never permit a conflicting revoke to overtake a possible commit.
 #[async_trait]
