@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "scope": "inherited auth/local delivery seam only",
+  "C03_acceptance": "NOT_RUN",
+  "statuses": {
+    "signup": 200,
+    "verify": 200,
+    "login": 200,
+    "refresh": 200,
+    "logout": 204,
+    "reset_request": 200,
+    "reset_confirm": 200
+  },
+  "actual_local_deliveries": 2,
+  "secret_values_recorded": false,
+  "script_sha256": "665c1c1378ae89f6e7a0244518aba3f0d8f64393e1516953e0ff86af653f85fd"
+}

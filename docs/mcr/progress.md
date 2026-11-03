@@ -11,18 +11,18 @@ it is not feature integration or release acceptance.
 | C02 | ACCEPTED | [Foundation qualification](evidence/foundation.md): pinned frozen installation, strict FE build/lint, pinned source and imported full BE workspace builds. Docker execution is NOT_RUN and is not claimed by this minimal build task. |
 | C03 | ACCEPTED | [Frozen core v0.1 contract](core-contract.md), exact inherited auth mapping, public/private DTOs, 33 examples and 23 tests; three scoped reviews. Email/core consumers can proceed. Optional OAuth exposure remains explicitly disabled until a separate handoff revision; runtime implementation is NOT_RUN. |
 | C04 | IN_PROGRESS | Eight untested domain-schema drafts preserved in the stopped contract worker's isolated worktree; the integrator owns continuation. No frozen domain contract or runtime implementation claimed. |
-| C05 | CONTRACT_READY | [Realtime review candidate](realtime-contract.md): strict frame/HTTP schemas, ticket/session/admission and stream rules, 24 fixtures and 25 oracle regressions. BE/FE read-only reviews are pending; runtime ticket, socket, queue, capacity and race tests are NOT_RUN. |
+| C05 | CONTRACT_READY | [Realtime review candidate](realtime-contract.md): strict frame/HTTP schemas, ticket/session/admission and stream rules, 24 fixtures and 31 oracle regressions. Both lane reviews found issues; corrections are awaiting final recheck. Runtime ticket, socket, queue, capacity and race tests are NOT_RUN. |
 | C06 | CONTRACT_READY | Five asset schemas, six golden JSON fixtures and 21 checks pass; all three themes share geometry and avatar identities. Pixel alignment/art/venue truth remain NOT_RUN. |
 | AR03 | IN_PROGRESS | [User-selected character source pack](character-art.md), revision 3: twenty unique JPEGs (ten base sheets plus ten additions); the first batch's duplicate stays archived. Source catalog and frontend lookup preserve both selected batches. Previous character art is prohibited. Transparent cutouts, layer-contract revision and direction/walk atlas remain. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
-| BE02 | IN_PROGRESS | [Integrated native runtime receipt](evidence/be02-runtime-integrated.json): six services start, fail readiness on required dependency outages, recover and restart; 84 migrations and six synthetic records persist; cleanup PASS. 55 runtime/migration tests pass. Image contexts and usable local-stack tooling remain in progress; production roles and packaging execution are not qualified. |
+| BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
 | FE01 | ACCEPTED | [Integrated review](evidence/core-foundation-integration.md): 144 transport/error tests plus 22 existing UI tests, strict build/lint; memory-only session, bounded read refresh, cancellation, safe error/upload ports and stale-identity isolation. Real cookies and auth journeys remain BE03/FE09 work. |
-| FE02 | IN_PROGRESS | Frontend chat implementing canonical private query keys, cancellation and eviction, observer/draft cleanup and stale-result guards with actual TanStack Query. |
+| FE02 | ACCEPTED | [Integrated privacy review](evidence/privacy-local-stack-integration.md): actual QueryClient/observers, canonical private keys, cancellation plus eviction, commit fencing and cleanup ports; 45 new tests and combined 189-test transport/privacy run pass. UI/event/real-server owner wiring remains. |
 
-All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **7/112**;
-accepted total: **7/118**. No required IA entry or IN01–IN05 integration gate has
+All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **9/112**;
+accepted total: **9/118**. No required IA entry or IN01–IN05 integration gate has
 been accepted. Real identity/provider flows, Concert service startup, multiplayer,
 transactions, privacy/revocation, physical place verification, original production
 assets, real devices, load/recovery and deployment remain outstanding.
@@ -50,8 +50,7 @@ review reproduced and rechecked the preliminary nested-modal defect, then found
 no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
-The next implementation queue is BE02 local-stack/image tooling, BE03 auth
-hardening against the frozen C03 email/core surface, FE02 cache privacy, then
-the persistent shell. C04/C05 domain/realtime
+The next implementation queue is BE03 auth hardening against the frozen C03
+email/core surface and FE07 persistent shell composition. C04/C05 domain/realtime
 contracts remain required before feature lanes diverge. No runtime, OAuth or
 release acceptance follows from the completed component/contract checks.
