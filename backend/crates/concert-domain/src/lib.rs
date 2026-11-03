@@ -268,3 +268,6 @@ pub mod feed;
 pub mod avatar;
 pub mod world;
 pub mod community;
+
+pub mod intro_policy;
+pub mod age_policy;

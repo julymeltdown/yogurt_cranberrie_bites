@@ -180,3 +180,6 @@ pub mod world_ticket;
 pub mod community;
 
 pub mod media;
+
+pub mod intro_policy;
+pub mod age_policy;
