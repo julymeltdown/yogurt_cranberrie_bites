@@ -5,3 +5,5 @@ pub mod ports;
 pub mod presentation;
 pub mod profile_runtime;
 pub mod use_cases;
+
+pub mod concert_identity;
