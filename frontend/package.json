@@ -11,7 +11,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "typecheck": "tsc -b --pretty false",
-    "lint": "oxlint",
+    "lint": "oxlint src vite.config.ts",
     "test": "vitest run",
     "preview": "vite preview --host 127.0.0.1"
   },
