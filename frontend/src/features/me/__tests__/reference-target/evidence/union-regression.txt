@@ -1,0 +1,56 @@
+Fresh reconciliation base c08cc570c58202bcd1d629f0407f3ba96f3023f3; owning decoder fix not yet present. Full log summarized to avoid accumulated DOM dump.
+⎯⎯⎯⎯⎯⎯ Failed Tests 48 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > keeps one identical host and lease through six tabs, details and history
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > survives StrictMode setup-cleanup and fully releases on unmount
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > closes a direct gift deep link through list to world without foreign history
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > releases resources when exiting to /legal/privacy
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > releases resources when exiting to /admin/reports
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > replaces signed-in home with world and keeps a single current owner
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > releases old identity synchronously, then allocates one owner for account/event replacement
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > does not restart the host on a same-identity memory bearer refresh
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > keeps panel navigation available after a world mount failure and retries explicitly
+ FAIL  src/app/__tests__/shell.test.tsx > persistent world ownership > disposes a lease returned after synchronous session invalidation inside mount
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > never starts the world during unknown auth
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > never starts the world during checking auth
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > never starts the world during anonymous auth
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > never starts the world during unavailable auth
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > never starts the world during error auth
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > preserves the direct target through checking, anonymous login and legitimate readiness
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > discards a late bootstrap from the former identity even when it ignores abort
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > fails closed for wrong bootstrap identity, then retries without losing the deep link
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > shows unavailable state for invalid IDs without exposing the target in product text
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > retains the shell across a nested render error and does not display thrown secrets
+ FAIL  src/app/__tests__/shell.test.tsx > honest access, bootstrap and failure boundaries > keeps navigation usable while the world capability is unavailable
+ FAIL  src/app/__tests__/shell.test.tsx > panel input, focus and scrolling > bounds scroll memory across more than 100 detail routes and clears it for a new identity
+ FAIL  src/app/__tests__/shell.test.tsx > panel input, focus and scrolling > blocks input and pauses presentation while hidden, without assuming persistent networking
+ FAIL  src/app/__tests__/shell.test.tsx > panel input, focus and scrolling > focuses new headings and restores the known opener on browser back
+ FAIL  src/app/__tests__/shell.test.tsx > panel input, focus and scrolling > pauses input for panels and leaves Escape to editable fields
+ FAIL  src/app/__tests__/shell.test.tsx > panel input, focus and scrolling > supports peek/half/full without remount and restores scroll after world navigation
+ FAIL  src/app/__tests__/shell.test.tsx > panel input, focus and scrolling > reveals a minimized panel when a new query target opens on the same path
+ FAIL  src/features/auth/__tests__/session.test.ts > session authority, privacy and stale completion fences > validates full bundle and context before returning the shell projection
+ FAIL  src/features/auth/__tests__/sign-in.test.tsx > keeps a mounted world for feature denial but revokes it for authentication failure: 403
+ FAIL  src/features/auth/__tests__/sign-in.test.tsx > keeps a mounted world for feature denial but revokes it for authentication failure: 401
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > decodes frozen shape and rejects leaked/private or cross-identity fields
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > saves only the selected section with exact revision and no token persistence or replay
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > keeps conflict draft, never replays, and requires explicit reload
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > blocks replay after an uncertain network save, retaining the draft
+ FAIL  src/features/me/__tests__/controller.test.ts > FE34 canonical own profile > rejects oversized unicode names but accepts 40 astral characters and optional null bio
+ FAIL  src/features/me/__tests__/controller.test.ts > serializes saves and sends the exact preference-only BE07 subset
+ FAIL  src/features/me/__tests__/controller.test.ts > fences a late write after canonical event/identity change
+ FAIL  src/features/me/__tests__/controller.test.ts > rejects stale read and mutation revisions without presenting false save success
+ FAIL  src/features/me/__tests__/controller.test.ts > does not silently rebase drafts when FE13 notifies of a verified avatar commit
+ FAIL  src/features/me/__tests__/controller.test.ts > does not lose a verified avatar notification while a profile save is pending
+ FAIL  src/features/me/__tests__/controller.test.ts > ignores stale-scope and duplicate-avatar notifications
+ FAIL  src/features/me/__tests__/ui.test.tsx > FE34 accessible route-ready UI > aborts a pending runtime adapter on privacy invalidation and drops its late success in StrictMode
+ FAIL  src/features/me/__tests__/reference-target/presentation.test.tsx > shows two real-schema own posts only in the partial event-page view; does not fetch on presentation
+ FAIL  src/features/me/__tests__/reference-target/presentation.test.tsx > filters other authors; empty current page never claims an empty history
+ FAIL  src/features/me/__tests__/reference-target/presentation.test.tsx > retains saved identity, honest art absence, current draft cancellation and no private handle links
+ FAIL  src/features/me/__tests__/reference-target/presentation.test.tsx > forwards only the actual authorized saved avatar to the optional root portrait renderer, then removes it on revoke
+ FAIL  src/features/me/__tests__/visual-adoption/presentation.test.tsx > keeps saved identity separate from an unsaved public draft and uses only existing destinations
+ FAIL  src/features/profile/__tests__/reference-target/presentation.test.tsx > keeps consent callbacks explicit and private activity disabled; clears public content on revoke
+ Test Files  8 failed | 2 passed (10)
+      Tests  48 failed | 51 passed (99)
+   Duration  42.59s (transform 601ms, setup 0ms, import 1.78s, tests 37.67s, environment 2.40s)
+Native PROFILE also failed before first capture: canonical Me load rejected, no Synthetic listener heading; unavailable status correctly displayed.
+
+Resolved: after fetching actual repair90f44fd9 on publication basef4b4080897a6b1ad835fa4e5e9372f82d58e489e, exact combined99/99 and native AUTH/PROFILE360/390/430 pass. This is backward compatibility, not full1.1 identity admission or runtime/root proof.
