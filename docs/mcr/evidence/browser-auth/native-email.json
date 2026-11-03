@@ -1,0 +1,536 @@
+{
+  "scope": "BE03 isolated native C03 email auth",
+  "result": "PASS",
+  "statuses": {
+    "capabilities": 200,
+    "missing-origin": 403,
+    "null-origin": 403,
+    "hostile-origin": 403,
+    "origin-suffix": 403,
+    "missing-intent": 403,
+    "wrong-intent": 403,
+    "signup-short-utf8": 400,
+    "signup-long-utf8": 400,
+    "signup-8-utf8-bytes": 200,
+    "verify-wrong": 400,
+    "verify": 200,
+    "verify-reused": 400,
+    "resend-unknown": 202,
+    "login-not-normalized": 401,
+    "refresh-missing": 401,
+    "refresh-malformed": 401,
+    "legacy-unavailable": 404,
+    "availability-unavailable": 404,
+    "oauth-google": 404,
+    "oauth-apple": 404,
+    "oauth-x": 404,
+    "oauth-apple-callback": 404,
+    "login": 200,
+    "account-status": 404,
+    "refresh": 200,
+    "refresh-immediate-reuse": 409,
+    "refresh-family-survives-race": 200,
+    "denied-refresh-cookie": 403,
+    "refresh-after-denial": 200,
+    "logout": 204,
+    "refresh-after-logout": 401,
+    "delete-after-logout": 401,
+    "login-for-reuse": 200,
+    "rotate-for-reuse": 200,
+    "refresh-outside-grace-reuse": 401,
+    "refresh-family-revoked": 401,
+    "login-for-expiry": 200,
+    "refresh-database-expired": 401,
+    "login-before-reset": 200,
+    "reset-unknown": 200,
+    "reset-request-expiry": 200,
+    "reset-expired": 400,
+    "reset-cooldown-neutral": 200,
+    "reset-request": 200,
+    "reset-password-too-long": 400,
+    "reset-confirm-128-utf8-bytes": 200,
+    "reset-reused": 400,
+    "old-password-rejected": 401,
+    "reset-revokes-session": 401,
+    "new-password-login": 200,
+    "final-logout": 204,
+    "logout-missing-cookie": 204
+  },
+  "script_sha256": "292dbd7bc36434ddb7ed2c615eb621e663c7b13d243c7649a996d22cf526bb4d",
+  "source_revision": "689e4d27c67debcd05d7280394184619cb4aea3b",
+  "browser_cookie_engine": "NOT_RUN",
+  "optional_oauth": "DISABLED_UNTIL_HANDOFF_QUALIFIED",
+  "C03_acceptance": "integrator decision",
+  "production": "NOT_RUN",
+  "secrets_recorded": false,
+  "source_files_sha256": {
+    "backend/services/api-gateway/src/adapters/in/grpc/authority_exchange.rs": "33103524f8beaf3a180eac6e4a660e995573d3b9f5bf7ca1198dd38fc0069930",
+    "backend/services/api-gateway/src/adapters/in/grpc/cache_authority.rs": "580c4c019aac092d04fde65e015e4b50e3f26d8963d63362aacca8fdcac4c13a",
+    "backend/services/api-gateway/src/adapters/in/grpc/fanout_authority.rs": "2fd7923ff0cb78dda8269b5541e6e69b0c0dac531a5474212ed5a00588bbfe70",
+    "backend/services/api-gateway/src/adapters/in/grpc/mod.rs": "cb862a4957af31a18bfc1e0fb4304148f2fbbb84c71ac4a7353a8d9a05703a0b",
+    "backend/services/api-gateway/src/adapters/in/grpc/notification_authority.rs": "a97f7444732e9d97797d31890e07e34ac2754b62dc6d93929f8bd22f912f3167",
+    "backend/services/api-gateway/src/adapters/in/http/admin_routes.rs": "8b6df5bc22ad56c7038a99866b143df3cf9c247477248bf0cb8fdcae1044b074",
+    "backend/services/api-gateway/src/adapters/in/http/aggregation_routes.rs": "6c53880b55c8fc855137c4cc453b5b34f68276e924b45d2c94885eb899030e5c",
+    "backend/services/api-gateway/src/adapters/in/http/api_docs_routes/contract.rs": "0af38023b390d19470726a42f5ddb0d215a569eae5ed48a0e45c645ea3e8ede4",
+    "backend/services/api-gateway/src/adapters/in/http/api_docs_routes.rs": "3e743cd1b7081a293050135fbb801b7540b600379c48fd137e85e35f78581a7b",
+    "backend/services/api-gateway/src/adapters/in/http/auth_routes.rs": "a0c4939deb09908dd5093578396fc21775992f8aeaf449b4dfe9654a313b5e4d",
+    "backend/services/api-gateway/src/adapters/in/http/auth_shadow_routes.rs": "700830401ceb1ef2bb7a5c41ecc705b0dc3e548f5986d37f09611ff9ed1fecc9",
+    "backend/services/api-gateway/src/adapters/in/http/browser_auth.rs": "1f7752029efdfb72f8e5f8bd416a3ffeeb503c322551d03b8ad8333ec1ab7a4f",
+    "backend/services/api-gateway/src/adapters/in/http/client_identity.rs": "335cde77fc91f0aded3baacf5fed646dddcbb75b81d0ba3b3307b1f4682159f1",
+    "backend/services/api-gateway/src/adapters/in/http/extractor_rejections.rs": "8c47fb656ae0b9e28cb5ce49bebc3f342a93a91b313e679820b43b190d5cae0e",
+    "backend/services/api-gateway/src/adapters/in/http/friend_routes.rs": "96ae0405272f9adf2d526d85471768a7c6dda6b92371ea4143fc23e20b150c66",
+    "backend/services/api-gateway/src/adapters/in/http/mod.rs": "d7b4cbe9ae4eb9e81f490d304b1619adfc4f34bedc75cc8b36831efa8c77c2cc",
+    "backend/services/api-gateway/src/adapters/in/http/moderation_decision_worker.rs": "27b4b588a1fbc192162f4afd6560f72f2a238d477dadf3237b5b6d6c236d2072",
+    "backend/services/api-gateway/src/adapters/in/http/moderation_routes.rs": "ee3007206306a4f6d5783c5b812e8b763aa6cfe32e2a84acc0545709dcb0d2ce",
+    "backend/services/api-gateway/src/adapters/in/http/notification_routes.rs": "46ff0d03e6489d6f9f392d7bc18574dd54e14b1412246af508d8dc47397faefb",
+    "backend/services/api-gateway/src/adapters/in/http/oauth_routes/form_post.rs": "52c7b8646f4be9f6ce5dee6c1de211f76edd9ca50a2fc7b7b7db8fb13004393b",
+    "backend/services/api-gateway/src/adapters/in/http/oauth_routes.rs": "81c3fcd65f521e62374c5042559f3fbc5d3b0f7637c8aeca1bc9c31e7e5dc7e3",
+    "backend/services/api-gateway/src/adapters/in/http/operation_routes.rs": "649a208af477674be8524b7a5371fda08597379fda74bd5dcbfbe376afd1db39",
+    "backend/services/api-gateway/src/adapters/in/http/operation_worker.rs": "30c2016a24a34d76f1ee83ae7013adf032f8101d9c0d1925c4dfff0773018306",
+    "backend/services/api-gateway/src/adapters/in/http/owner_receipts.rs": "9c0a4a0e9ee62b9c803b6aab55a9bbe2e7f6a39fe3efe58c8b1b7749618e4642",
+    "backend/services/api-gateway/src/adapters/in/http/post_routes.rs": "9498eef9f38a2592cf3c404617959a4ec40b1feb5d0dfc8a67df6b90a028d515",
+    "backend/services/api-gateway/src/adapters/in/http/profile_routes.rs": "ea23c7e1f7f3d54eb92d6ef075f2eb2e252e113ea19f1857924ba0fc24258af2",
+    "backend/services/api-gateway/src/adapters/in/http/refresh_routes.rs": "e0fe118e5795a5e9e5fefdf1335f833c8081429fa141db271cceda2a9efa02b2",
+    "backend/services/api-gateway/src/adapters/in/http/request_journal/policy.rs": "9fb14e2d323513236c9d1810cfb6b088b8a066daaad12970d9eda2c427e901b1",
+    "backend/services/api-gateway/src/adapters/in/http/request_journal.rs": "95c021290a0c60347862be7f7fa84a3200335d16c0b878cc6f1e5fb0b097ea33",
+    "backend/services/api-gateway/src/adapters/in/http/server.rs": "1a885b1472f5206a8cddca9e5bcce1c5745149b51ee5a70a62b198eaada9ce49",
+    "backend/services/api-gateway/src/adapters/in/http/verification_routes.rs": "44473296ac9042f97ea3180d22b2df7c5258e414dcf434557953e31ed315eb88",
+    "backend/services/api-gateway/src/adapters/in/mod.rs": "056838b43ddebb96010e30f5c4423423580ca03d81efb2146e3100180dca777f",
+    "backend/services/api-gateway/src/adapters/mod.rs": "752e250cd085d27b1c14b23df382793b5c4fb2a80b1b53131db814049d9d1bb4",
+    "backend/services/api-gateway/src/adapters/out/auth_client/verification.rs": "e198718a50facbcc9ae44bae8e557d182f44caae12711d2274dae8c921644cc7",
+    "backend/services/api-gateway/src/adapters/out/auth_client.rs": "e928ce11bf1c16fcec89b51c4ce7574146637500728b44afbcaffce76e3e1267",
+    "backend/services/api-gateway/src/adapters/out/authority_exchange.rs": "50e35ccf8417ca5680c09b596a3192b393351cad6e96b82db4cab1e367f0707d",
+    "backend/services/api-gateway/src/adapters/out/cache/mod.rs": "d3c08b74252e301f6342a6ce055e1708bcb80ccfcb3a862dbd567fc739fe959d",
+    "backend/services/api-gateway/src/adapters/out/cache/response_cache/state.rs": "737dd3dc031e763bba4a01a49d95f5b97f0e8e730ecaed0fa98a945b0191ca07",
+    "backend/services/api-gateway/src/adapters/out/cache/response_cache/tests.rs": "49db36a6bc1546bf26cc2bfc3fb09a1ab9e2086438e7f9b0d363d7d85aa4ef2a",
+    "backend/services/api-gateway/src/adapters/out/cache/response_cache.rs": "2835ee2845ffcfa5764e2228c0196b1056811e121b396fc50fb04f98d89ca1b0",
+    "backend/services/api-gateway/src/adapters/out/cache_authority.rs": "8f2fa91393c5b4711bba4f3f34fbee9f80b40aa9547fccdd703602f1737f8b01",
+    "backend/services/api-gateway/src/adapters/out/client_error.rs": "bfd0ef9c06a4fa5fe9a3ca84a2e913b586bd1d6737a877809a0f651aa9c71616",
+    "backend/services/api-gateway/src/adapters/out/fanout_authority.rs": "78d8445d171a21c079f1d25a4c4507a7085bb16291422e049f273a7f1a05a686",
+    "backend/services/api-gateway/src/adapters/out/friend_client.rs": "0da1d8be94b44e5c0bdba694d38135c8e3f094a49d8e177ea7aa77fe746a5690",
+    "backend/services/api-gateway/src/adapters/out/grpc_call.rs": "2a5aa5faa472c47423e305ca316d9e6721688cd724c5ec65076f98234f2b6c99",
+    "backend/services/api-gateway/src/adapters/out/infrastructure_error.rs": "dd60ba2c9936495b19bc4db92252b4a65ac809109e2b89326090fca664113508",
+    "backend/services/api-gateway/src/adapters/out/jwt.rs": "5bcba57711a0933ce99860f5875076ba99b5f0a9ef450926b9892cd04bcfb573",
+    "backend/services/api-gateway/src/adapters/out/mod.rs": "64e984ec69fb3a8f0d4318bf3c76a6ac1a3e9b4a17729adc09bcf550852291d3",
+    "backend/services/api-gateway/src/adapters/out/moderation_runtime.rs": "a3c51cb2fe6ea3b782a0857103346174433f08a92a11dc80e52cbbd6a64afa9e",
+    "backend/services/api-gateway/src/adapters/out/notification_authority.rs": "5852aeba3acc51a312c23348b78684f9e0edb7a6db3d9383afdeb9c268b52afe",
+    "backend/services/api-gateway/src/adapters/out/notification_client.rs": "dd50bd4dc3edb735a84952f2525c8ddd2e6944280931d6f3548f271dbd3e6636",
+    "backend/services/api-gateway/src/adapters/out/owner_resource_client.rs": "f6ec670d3eeb62dedb2f42d4a211c751e1bb6c96e105353d1e5de580d1a45b15",
+    "backend/services/api-gateway/src/adapters/out/post_client.rs": "f59403599b0815a6904e6599ed7ae3ad96f473ede31dc8c28e0683cd7de782e5",
+    "backend/services/api-gateway/src/adapters/out/profile_client.rs": "9c73c9fc7a0c728d0e37a7366d5e4c30b2435c872c1a258ffa8fdd85775bb243",
+    "backend/services/api-gateway/src/adapters/out/repository/aggregation_recipe_repository.rs": "d4215d316699b2ad38a1382c1c9c5c0326ac1b751192effa04b025f29e15df1a",
+    "backend/services/api-gateway/src/adapters/out/repository/async_operation_queue.rs": "9db30df83c4d47fa674c69aacf3742189726471d2960033df5ec26e45263bc65",
+    "backend/services/api-gateway/src/adapters/out/repository/client_profile_repository.rs": "573841c088169d2bc0765907059c87473661ca300be3bf6978e8b3567f7bafdb",
+    "backend/services/api-gateway/src/adapters/out/repository/journal_maintenance.rs": "3c71ceb2992bb8b05f126661440526ff53ae800b5a4aa7605cccc01d8337bac0",
+    "backend/services/api-gateway/src/adapters/out/repository/journal_write_repository.rs": "9426c5cdb185b6d5e645c147b49a8635461cf3a45532aeaae88eb279c09ef964",
+    "backend/services/api-gateway/src/adapters/out/repository/legacy_audit_repository.rs": "4c8e33d1471e33899f47fc403fe50acc2597e6241e0a45f71a1822d0725242f7",
+    "backend/services/api-gateway/src/adapters/out/repository/mod.rs": "6782eea7fe04d0aa1f3cdb30fdc2a64cba4060b4a8ecca7e709d10c157831d11",
+    "backend/services/api-gateway/src/adapters/out/repository/moderation_repository.rs": "b605569ffaad075f04442923adf0c5c3fc37ed7b6c446815630811c1d913023e",
+    "backend/services/api-gateway/src/adapters/out/repository/operation_journal_repository.rs": "0fb66999757a75f39224afca156c9211f0537bfedd0e40b5d8c018a0013cf156",
+    "backend/services/api-gateway/src/adapters/out/repository/owner_receipt_journal_repository.rs": "5c99deb51287ca696d08ebbb4ed48ecd8a032c8dd5cf04bdb9617be5b3ea5255",
+    "backend/services/api-gateway/src/adapters/out/repository/policy_repository.rs": "96615b913f24e87d874b7573abbdae1a1ac7ead7ceb39dbd888e350875475acf",
+    "backend/services/api-gateway/src/adapters/out/repository/route_contract_repository.rs": "4ce5f33d65e4d010b04e4339e9ae5e22113e0b08d7b8c7834b8219f9e350ee34",
+    "backend/services/api-gateway/src/adapters/out/repository/telemetry_repository.rs": "73a9e4dafd5176051c65537654056787f53e2ed0394d704bd6283e97d9176a85",
+    "backend/services/api-gateway/src/adapters/out/runtime.rs": "fd6b33b2c7046f92005ef25f3d8feefe256da6de72207e6293b397f246c69915",
+    "backend/services/api-gateway/src/adapters/out/signing_keys.rs": "18599b6e478142023191809b4065e3c470c78bf217f043b2ac6e33484b82f6de",
+    "backend/services/api-gateway/src/adapters/out/telemetry_queue.rs": "7c85021f68797279eca15128d91caab223d4a4417bc93f1ee1f51de26d6a579e",
+    "backend/services/api-gateway/src/application/dto/mod.rs": "8188cc0fc2a0b011e373bdd6cc8f611dc60322dea95bcf6891ac741c2627f8a5",
+    "backend/services/api-gateway/src/application/mod.rs": "53e90b3d01d3408f1f4e524fd0d8d455ef9528a6c20661635e43b8395f2939dc",
+    "backend/services/api-gateway/src/config/hardening_tests.rs": "75144453fbe5e90258d7384b334dd514eff9a6e2752edbe11897bde22de0f26d",
+    "backend/services/api-gateway/src/config/mod.rs": "399bfe67e12289c73328a5af7b3362fdece05053e322d996ea8619fda07fbf7f",
+    "backend/services/api-gateway/src/config/rate_limit.rs": "cf1013795b1460309ce3de81285862e475596b7ca5a9e63c2ff207931275b555",
+    "backend/services/api-gateway/src/config/schema-probe.sql": "bf55432d19fa116fdf895ed0446db4b3a8070e44fc707ac9b96d2a988830aef5",
+    "backend/services/api-gateway/src/domain/mod.rs": "71b73db51e3cb3a893ae7080629ec2299deb192e9f120bd179b99e06a437cc8c",
+    "backend/services/api-gateway/src/lib.rs": "3e7de45356ff38393e001594165d37fcbe432eefead0c1d12e4ac300488be1c2",
+    "backend/services/api-gateway/src/main.rs": "4d02a6eaba18244ecb0cec3832df313336c00ebb09791969b18b23c51de6dd77",
+    "backend/services/auth-service/src/adapters/in/grpc/method_policy.rs": "897205c31e76c13e5feb99868ac9d901f27858ee3bd1748ae8ea013d5de2d8b2",
+    "backend/services/auth-service/src/adapters/in/grpc/mod.rs": "9a55c297bded94a2516c97df26f2f8b4e53433c3ab4337ef33a6ba8c0d466aa8",
+    "backend/services/auth-service/src/adapters/in/grpc/server.rs": "a9b079f373dbf529aa16beffefce62f65dc3dd6f766386994328328a80f6eb7e",
+    "backend/services/auth-service/src/adapters/in/grpc/verification.rs": "c2fe420a0301ecf44e57880095a097fcac7801eb1ab1ebb37d3908f69c357c01",
+    "backend/services/auth-service/src/adapters/in/http/jwks_routes.rs": "5ce66eb01bf32447e4897c894d7f62f1054e9cb2fbd0f63e7b6e4834fcb4358a",
+    "backend/services/auth-service/src/adapters/in/http/mod.rs": "19787f6687a274c940f4647525f465c95dfa1cdce2952e7ee9bef1bc0a957a35",
+    "backend/services/auth-service/src/adapters/in/http/oauth_routes.rs": "dbefe67a61299dbfad060457235f675f1d344ac1ad01cccd9aa191be12e19691",
+    "backend/services/auth-service/src/adapters/in/http/routes.rs": "0e9dc8e7c2998c9792b9b21db357c131a0331c480f88c58bc15db6f26685944e",
+    "backend/services/auth-service/src/adapters/in/http/server.rs": "8e4b624aafab8da769cefeecdc7dad2186dc888496e2e40a409759f08966821f",
+    "backend/services/auth-service/src/adapters/in/http/verification_routes.rs": "78d27c5c19ae4cd25077d922fcf7d295653c227b64adf8855342485c075cf4d7",
+    "backend/services/auth-service/src/adapters/in/jwks.rs": "cc85d2d46e6ffbf1d344ee8dfbcbbdfd8d6c07ee869efdecf104783a877f68b4",
+    "backend/services/auth-service/src/adapters/in/messaging/lifecycle_cleanup_worker.rs": "c745bc3da473e4e7d41f49631a241044de9f1c08a35aebf2da9a625fb475ffc3",
+    "backend/services/auth-service/src/adapters/in/messaging/mail_outbox_worker.rs": "a089c70d3e8f9c6e7fa503191ce27d445ea1d057882e491243a95dc86be36f91",
+    "backend/services/auth-service/src/adapters/in/messaging/mod.rs": "27bd3b812c5fa5a4ac70718a98580f82385367f01a52edfbea0a5b244f8cb12d",
+    "backend/services/auth-service/src/adapters/in/messaging/user_deletion_worker.rs": "4423c0cf2788b137dd8f8656894e8cd554ac2fe6e9ed334c1f3fd2467e84d673",
+    "backend/services/auth-service/src/adapters/in/mod.rs": "058e7597d52a9e316f3d0b20acfda6b3507d96cb732e64a3b8716631580edebb",
+    "backend/services/auth-service/src/adapters/mod.rs": "752e250cd085d27b1c14b23df382793b5c4fb2a80b1b53131db814049d9d1bb4",
+    "backend/services/auth-service/src/adapters/out/cache/mod.rs": "137d2540cae5221f1bb7535034441d768d5c7589d482c42e602f4bc550411c69",
+    "backend/services/auth-service/src/adapters/out/cache/session_store.rs": "513046d3459ad68fd082faf864221c74adace32d555564b694d31b7f09c73a77",
+    "backend/services/auth-service/src/adapters/out/errors.rs": "58161bf71f055cbaeee0858277600772d7ca1315c0cb36c304b0feb02ee2e477",
+    "backend/services/auth-service/src/adapters/out/grpc/mod.rs": "5c0a53a1583762fb2089d63ff4f0cd40e9cdc5e58c14a386d8fad4fe4265ff4b",
+    "backend/services/auth-service/src/adapters/out/grpc/user_deletion_dispatcher.rs": "def54cf5beb0defea1a90e878ffa441200a5aff4240bab96e0b03fecc69aecfe",
+    "backend/services/auth-service/src/adapters/out/mail/mod.rs": "b6adf6a0b0492dd051d5846d5a49b455bff642ecc3fee6b3dad525e89070a1ea",
+    "backend/services/auth-service/src/adapters/out/mail/reset_mailer.rs": "a1be9486325189e9b6396ba937049e307fc7e569fd8ea98c260ae720f6f40b79",
+    "backend/services/auth-service/src/adapters/out/mod.rs": "24382502e519f46c27cc30bcdde92b92ec99042154ca113c3a44454f3725f165",
+    "backend/services/auth-service/src/adapters/out/oauth/mod.rs": "c25cb3fdeddaa8759daff5cc463194ee308a8bd868ed05e8ddc324194a451ab7",
+    "backend/services/auth-service/src/adapters/out/oauth/provider_client.rs": "b480689b0ebda054ebb72f2bebd46dbfc8d515f7f1dbdfc939dd26eb57ccaea1",
+    "backend/services/auth-service/src/adapters/out/persistence/auth_lifecycle_cleanup_repository.rs": "5cc58495c4843f114de9f622c24d1fffdd49b4d7e0bdc015bbdaa97a313444cb",
+    "backend/services/auth-service/src/adapters/out/persistence/auth_transactions.rs": "d00d6b97b0ead1942060de3e3e75f95be04d2624d290cec1c7bfa2e9215d72d2",
+    "backend/services/auth-service/src/adapters/out/persistence/mod.rs": "ad3e0495d07365f42c188f9348e8d024be4dc0fa43a7410961b8078c2b063a0c",
+    "backend/services/auth-service/src/adapters/out/persistence/oauth_authorization_store.rs": "360f00f0d18dd8f64bc320d36ce099ceb8b57f51aca72150c7633534f897eae0",
+    "backend/services/auth-service/src/adapters/out/persistence/onboarding_transactions.rs": "cf4daf601c9113696258f436eec1a424cced27365aab817e419c881844f69156",
+    "backend/services/auth-service/src/adapters/out/persistence/user_deletion_saga_repository.rs": "66218c366c0eff1163a185ed343262ae5725d66cb3d0fb0ce30d2f4ea299cd77",
+    "backend/services/auth-service/src/adapters/out/persistence/user_repository.rs": "27eb724157f2dd0b4f0ae5dfdddd852c67cf6256137d972b3cd90b3c41011e0c",
+    "backend/services/auth-service/src/adapters/out/runtime.rs": "69d473690b443cb02b97a4ba23f19a841319045f98e0222d18c913797c5887d5",
+    "backend/services/auth-service/src/adapters/out/security/admitted_argon2.rs": "b983367c64e38301e83d672d8fc573500b02689de6bef23d42feefe00bcda3e9",
+    "backend/services/auth-service/src/adapters/out/security/apple_client_secret.rs": "bcb2d9749029455cdf27ee98553e3af619fed0cee4db01247aad3079cfdeae79",
+    "backend/services/auth-service/src/adapters/out/security/email_verification.rs": "4c224155f6a246d1c6ac294bcabcf3e14116702b058e3ebb10c41a4a0bd1a9f1",
+    "backend/services/auth-service/src/adapters/out/security/mod.rs": "0db3ef8428060bd471a433e4b9b9404195e8588062e06237aa54c2cccd92ab68",
+    "backend/services/auth-service/src/adapters/out/security/oauth_authorization.rs": "65b530dcce8e4ed27e08a917ccb37e453dae5343b74659fb6f2dece1f4a97cbf",
+    "backend/services/auth-service/src/adapters/out/security/password_reset.rs": "dacdc9d322e6fd11d52aed30b4a1d8577702c058ffe4d31f58b2039f92b3065d",
+    "backend/services/auth-service/src/application/dto.rs": "d7600279574af2dc9d7ae3a242c2f4546cf138ef1e0127c27a7b4983b97aa927",
+    "backend/services/auth-service/src/application/mod.rs": "6a17a8d2e6c2bdfb0b3fa86342e251df43108845160ff64cc09d6510fddc06ac",
+    "backend/services/auth-service/src/config/mod.rs": "e06323342c06b9dcff3ce32c0377b7baae6e9ff646c8fa7e827dcfb337142fa0",
+    "backend/services/auth-service/src/config/schema-probe.sql": "7c3464a388c892683cd789f5253d7e82c1f5c01122165be07c3adce6e02e51db",
+    "backend/services/auth-service/src/config/signing_keys.rs": "be2a71f531bf3d66e09f378a8e7279ab1149aca73908606747c973b774e03ce8",
+    "backend/services/auth-service/src/domain/mod.rs": "250a9952bfa0a1006f60def9691aeb140f51ec049decdabbab1eccd6620dd886",
+    "backend/services/auth-service/src/lib.rs": "3e7de45356ff38393e001594165d37fcbe432eefead0c1d12e4ac300488be1c2",
+    "backend/services/auth-service/src/main.rs": "fe8e3dffb4ff0b9fb4c7eb5c0377a62d0dad9fa5162a581343b565c4a7be1d4b"
+  },
+  "contract_inputs_sha256": {
+    "docs/mcr/core-contract.md": "97a907d3f215701c068bec717a20fdb62d01aa5d2f1d6552571fc098a74edf64",
+    "contracts/core/v1/operations.json": "2f5b972dbccea09340e1519a1a2c522e3c42f63690fa26b9e58d721e9927ba62",
+    "contracts/core/v1/core.schema.json": "9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88",
+    "backend/docs/api/mcr-core.openapi.json": "c8de71d5f3dfc125fd3a5206bc404a76df39367a45fa6c3f67ed6323de91c15d"
+  },
+  "native_denial_state_unchanged": true,
+  "email_lifecycle": "PASS",
+  "refresh_rotation_reuse_revocation": "PASS",
+  "utf8_password_boundaries": "PASS",
+  "safe_reset_target": "PASS",
+  "actual_local_deliveries": 3,
+  "canonical_identity_preserved": true,
+  "expiry_fixture": "owned database deadlines; actual JWT clock expiration NOT_RUN",
+  "owned_stack": {
+    "scope": "BE02 foreground native local development",
+    "result": "PASS",
+    "cleanup": "PASS",
+    "started_at_utc": "2026-11-03T05:35:48.451441+00:00",
+    "services": [
+      {
+        "service": "api-gateway",
+        "database": "mcr_api_gateway",
+        "expected_migrations": 17,
+        "binary_sha256": "c1fa9838efe79a930725abaa68318cb5e710f2e997f9ed663da1ef3fb4de2af0",
+        "migration_manifest_sha256": "1bea1d8e70e1c6490f554a07780945e5087445033b957b319285a31c899921b7",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 17,
+        "ledger_after": 17,
+        "verify_after_restart_exit_code": 0,
+        "pid": 52790,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->auth": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->notification": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->post": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->profile": {
+              "required": true,
+              "status": "up"
+            },
+            "signing-keys": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "auth-service",
+        "database": "mcr_auth",
+        "expected_migrations": 12,
+        "binary_sha256": "518a5cc5229e8577d48be3f40562298917e0f13cc56e625a0eb5d3e6a0a2a9ca",
+        "migration_manifest_sha256": "b10c5d61096f49ba5bd35c3e0967ecca2ebb0f3b948e62c470f5ee67c8a38203",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 12,
+        "ledger_after": 12,
+        "verify_after_restart_exit_code": 0,
+        "pid": 52780,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "auth->friend": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->notification": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->post": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->profile": {
+              "required": false,
+              "status": "up"
+            },
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "profile-service",
+        "database": "mcr_profile",
+        "expected_migrations": 7,
+        "binary_sha256": "b56a3a05b2aa59c1ed018608ce94ef9d673ccbc8d04c746d645b2ecc24587ffc",
+        "migration_manifest_sha256": "fb3157ff90c207cf9bbe93b13bdf5e59b904591e130e42bf44fc52b09fced9b6",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 7,
+        "ledger_after": 7,
+        "verify_after_restart_exit_code": 0,
+        "pid": 52745,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "friend-service",
+        "database": "mcr_friend",
+        "expected_migrations": 14,
+        "binary_sha256": "86de8d434db675a7d5707adb2a6dbfa0e2011e9c9d55c118b616674c010fbdab",
+        "migration_manifest_sha256": "fc4be0cda1ceae19e8dce129bbb7c43e244ad4ca4a7a9e2ba129afbec7076e6a",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 14,
+        "ledger_after": 14,
+        "verify_after_restart_exit_code": 0,
+        "pid": 52758,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "friend->profile": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "post-service",
+        "database": "mcr_post",
+        "expected_migrations": 30,
+        "binary_sha256": "965f56cd25518ee004f795036979098649b29cf78944a34523a5cda596a7c915",
+        "migration_manifest_sha256": "48c2719172fbac00ab9a61397277149603452a3c4fc19aebcc08911cd5896a6b",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 30,
+        "ledger_after": 30,
+        "verify_after_restart_exit_code": 0,
+        "pid": 52770,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "post->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "post->gateway": {
+              "required": true,
+              "status": "up"
+            },
+            "post->notification": {
+              "required": false,
+              "status": "up"
+            },
+            "post->profile": {
+              "required": false,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "notification-service",
+        "database": "mcr_notification",
+        "expected_migrations": 4,
+        "binary_sha256": "c1be3ea3b1ee80a310e9d6d96a046438ad457718face137100b01d45aa11153d",
+        "migration_manifest_sha256": "8b24102aa694a1147dcfc904376b70c20bd9fec98c72fd40b23761d9b2907650",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 4,
+        "ledger_after": 4,
+        "verify_after_restart_exit_code": 0,
+        "pid": 52752,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      }
+    ],
+    "process_stops": [
+      {
+        "service": "local-mail",
+        "resource": "in_process_mail_sink",
+        "exit_code": 0,
+        "forced": false
+      },
+      {
+        "service": "api-gateway",
+        "pid": 52790,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "auth-service",
+        "pid": 52780,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "post-service",
+        "pid": 52770,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "friend-service",
+        "pid": 52758,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "notification-service",
+        "pid": 52752,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "profile-service",
+        "pid": 52745,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "redis",
+        "pid": 52740,
+        "forced": false,
+        "exit_code": 0
+      }
+    ],
+    "script_sha256": "dbfb13b6b9b8beef70c02b2c814590ecdbfcfa41dc8c2d3ea4597efe47672aa0",
+    "runtime_helper_sha256": "da2ac13ca1502e80a2528c982bf28b61c06707b4018c2a436e7f8bf41512e7a8",
+    "migration_helper_sha256": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+    "auth_acceptance": "NOT_RUN",
+    "image_build": "NOT_RUN",
+    "production": "NOT_RUN",
+    "source_revision": "689e4d27c67debcd05d7280394184619cb4aea3b",
+    "owned_directory": "/private/tmp/mcr-pg-g4cxnrd6",
+    "postgres_version": "16.14 (Homebrew)",
+    "restart": {
+      "status": "PASS",
+      "before_pid": 52592,
+      "after_pid": 52688
+    },
+    "configuration": {
+      "mode": "parity",
+      "seed": false,
+      "migration_mode": "external",
+      "home": "OMITTED",
+      "cookie_secure": false,
+      "cookie_scope": "explicit local HTTP fixture only",
+      "browser_origin": "http://127.0.0.1:52754",
+      "mail": "private local HTTP capture",
+      "kafka": "DISABLED",
+      "oauth": "NOT_EXERCISED; inherited parity routes are not C03 provider qualification"
+    },
+    "captured_mail_count": 3,
+    "finished_at_utc": "2026-11-03T05:36:00.411794+00:00"
+  }
+}
