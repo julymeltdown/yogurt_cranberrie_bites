@@ -23,6 +23,16 @@ no-store policy, and status/reason matrix. GET/DELETE structured arguments use
 query parameters; POST/PUT/PATCH use JSON except the explicitly bounded image
 byte PUT. The register is a target interface, not runtime route coverage.
 
+The combined [browser HTTP review artifact](browser-contract.md) now reproduces
+through the retained final/core pipeline. It contains 132 HTTP operations: 24
+unchanged C03, 106 C04 and two C05. The new assembler preserves all source schema
+assertions, namespaces domain/realtime definitions, resolves references locally,
+and emits explicit path/query/body parameters, error status/reason restrictions,
+no-store headers, idempotency headers, pending receipts and binary image content.
+The frozen core artifact and FE09's input are unchanged. Its 14 integrity tests
+are assembly/schema evidence, not a full OpenAPI conformance certification or
+complete producer/consumer semantics. See [assembly evidence](evidence/domain-assembly.md).
+
 All 106 operations now declare exact path parameter types and a closed query
 schema, including an empty query for body operations. Public discovery has bounded
 ticket-section, capacity/stock, time and feed filters; own/admin lists use explicit
@@ -175,8 +185,9 @@ only for the assembly call and restores the search path afterward.
    media failure/pending DTOs, owner/public draft distinctions, private activity
    ownership and public archive eligibility. Source-derived semantics take
    precedence over convenience in this candidate.
-4. Assemble the target through the retained final OpenAPI pipeline, with C03/C05
-   operation collision checks and reproducible generated output; no parallel SDK.
+4. Review the combined retained-pipeline candidate and qualify generated client
+   adoption after the full contract freezes. Assembly/collision/drift checks now
+   pass; they do not establish per-operation producer/consumer compatibility.
 5. Obtain independent BE/FE review and fix their findings before marking C04
    CONTRACT_READY/ACCEPTED. Runtime implementations and integration gates remain
    separate obligations even after that contract freeze.

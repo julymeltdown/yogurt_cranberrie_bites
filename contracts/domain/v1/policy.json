@@ -1114,7 +1114,7 @@
     }
   },
   "remaining_before_freeze": [
-    "Final inherited OpenAPI assembly and drift proof",
+    "Review combined inherited OpenAPI candidate, complete fixtures and qualify client adoption",
     "Every operation producer/consumer fixture and response matrix",
     "Independent backend/frontend contract review",
     "Global account deletion/recovery, legal publication and retention contracts",

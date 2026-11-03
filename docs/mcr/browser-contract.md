@@ -13,6 +13,22 @@ in either artifact. There is no independent schema/SDK authority. Runtime and
 OAuth implementation status metadata retain their existing meaning; publication
 of this artifact does not qualify unimplemented endpoints.
 
+The wider `contracts/generated/mcr-domain.openapi.json` is a **review candidate**,
+assembled by `backend/scripts/docs/generate-mcr-domain.py` through that same core
+and retained final pipeline. It adds the 106 C04 domain and two C05 world HTTP
+operations to the 24 core operations. It preserves the core paths/components and
+does not switch FE09 to an unfrozen contract. Domain/realtime definitions are
+namespaced; all schema references resolve locally. Closed query schemas, path
+types, command receipts, status/reason restrictions and policy metadata remain
+attached. WebSocket frames remain the C05 JSON Schema authority; their presence
+as bundle components does not invent an HTTP WebSocket endpoint.
+
+Regenerate this candidate with `python3 backend/scripts/docs/generate-mcr-domain.py`.
+The contract command checks both outputs through their owning assemblers. Neither
+is manually maintained. C04 freeze, per-operation producer/consumer fixtures,
+independent reviews and generated client adoption remain separate work; this
+candidate is not a second independently authored wire contract or an approved SDK.
+
 FE09 may consume the public artifact from its feature-local decoder. Fail closed
 for unsupported validation keywords and invalid/context-mismatched responses;
 do not claim complete JSON Schema support from a narrow decoder. Semantic C03
