@@ -10,6 +10,7 @@ import { ticket } from '../../../src/world/composition/__tests__/fixtures/data'
 import { MockSocket } from '../../../src/world/network/mock'
 import { validate } from '../../../src/world/network/transport/contract'
 import { validateWholeCharacterConfig, type WholeCharacterRuntime } from '../../../src/entities/avatar/whole-character'
+import { isPublicQueryKey } from '../../../src/shared/query/keys'
 import { sha256 } from '../../../src/world/map/json'
 import type { WorldTicketRequest, Snapshot, Delta } from '../../../src/world/network/WorldTransport'
 import type PhaserType from 'phaser'
@@ -20,10 +21,20 @@ const data=await wholeData(),requests:{path:string;method:string;body:unknown}[]
 let server=structuredClone(data.avatar),worldServer=structuredClone(server),serial=0,socketPeak=0,deltaCount=0
 let retained:WholeCharacterRuntime|null=null,firstCamera:unknown=null,firstGame:object|null=null,peakGames=0,canvasPeak=0
 const knownGames=new Set<object>(),activeGames=new Set<PhaserType.Game>()
-let debugGame:PhaserType.Game|undefined
-// Observe the real retained Phaser3.90 debug assignment; do not wrap its engine/factory/loader.
-Object.defineProperty(window,'PHASER_GAME',{configurable:true,get:()=>debugGame,set(game:PhaserType.Game){debugGame=game;knownGames.add(game);activeGames.add(game);peakGames=Math.max(peakGames,activeGames.size);game.events.once('destroy',()=>activeGames.delete(game))}})
-const mutation=new MutationObserver(()=>{canvasPeak=Math.max(canvasPeak,document.querySelectorAll('.shell-world-host canvas').length)})
+async function observeGames(){
+ if(!document.querySelector('.shell-world-host canvas'))return
+ const Phaser=(await import('phaser')).default
+ // Phaser3.90 CANVAS renderer retains its real Game as this actual canvas pool entry's parent.
+ // Read the retained pool only; no debug-global, factory, engine or loader replacement.
+ const pool=Reflect.get(Phaser.Display.Canvas.CanvasPool,'pool') as {canvas:HTMLCanvasElement;parent:PhaserType.Game|null}[]
+ for(const entry of pool){
+  const game=entry.parent
+  if(!game||game.canvas!==entry.canvas||!entry.canvas.closest('.shell-world-host')||knownGames.has(game))continue
+  knownGames.add(game);activeGames.add(game);peakGames=Math.max(peakGames,activeGames.size)
+  game.events.once('destroy',()=>activeGames.delete(game))
+ }
+}
+const mutation=new MutationObserver(()=>{canvasPeak=Math.max(canvasPeak,document.querySelectorAll('.shell-world-host canvas').length);void observeGames()})
 mutation.observe(document.getElementById('root')!,{childList:true,subtree:true})
 const auth=createSessionController({eventId,cookiePolicy:isolatedCookiePolicy(),fetch:async input=>{
  const request=input as Request,path=new URL(request.url).pathname,body=request.method==='PUT'?await request.clone().json():null
@@ -83,24 +94,26 @@ function state(){
  const binding=ports.worldAccess?.read(),presentation=binding?.presentation?.read(),view=binding?.replication.read(),current=runtime()
  if(presentation&&!firstCamera)firstCamera=presentation.camera
  return {clock:CLOCK,defaultProductionLoad:true,compositionOverride:false,path:router.state.location.pathname,bootstrapVersion:data.bootstrap.avatar_manifest.contract_version,manifestPin:data.pin,
-  server:structuredClone(server),requests,frames,deltaCount,published:!!presentation,phase:view?.phase,entities:view?.entities.map(e=>({self:e.self,userId:e.player.userId,avatar:e.player.avatar})),
+  privateQueries:auth.queryClient.getQueryCache().getAll().filter(q=>!isPublicQueryKey(q.queryKey)).length,server:structuredClone(server),requests,frames,deltaCount,published:!!presentation,phase:view?.phase,entities:view?.entities.map(e=>({self:e.self,userId:e.player.userId,avatar:e.player.avatar})),
   sameCamera:presentation?presentation.camera===firstCamera:null,camera:presentation?.camera.read(),geometry:presentation?.map.manifest.geometry_hash,theme:presentation?.theme.read(),
   currentRuntime:!!current,sameRuntime:current?current===retained:null,runtime:retained?.diagnostics(),retainedCurrent:retained?.isCurrent()??false,
   sockets:sockets.length,socketPeak,activeSockets:sockets.filter(s=>s.readyState<2).length,canvasPeak,canvases:document.querySelectorAll('.shell-world-host canvas').length}
 }
 async function inspectWorld(){
- const Phaser=(await import('phaser')).default,games=[...activeGames]
+ await observeGames();const games=[...activeGames]
  peakGames=Math.max(peakGames,games.length);for(const game of games)knownGames.add(game)
  const game=games[0];if(game&&!firstGame)firstGame=game
  const scene=game?.scene.getScenes(true).find(s=>s.scene.key==='mcr-map')
- const sprites=scene?.children.list.filter((object):object is import('phaser').GameObjects.Sprite=>object instanceof Phaser.GameObjects.Sprite&&object.texture.key.startsWith('mcr-avatar-'))??[]
+ const objects=scene?.children.list??[]
+ // Inspect the actual scene by public Sprite type/texture; Vite can expose multiple Phaser class identities.
+ const sprites=objects.filter((object):object is PhaserType.GameObjects.Sprite=>object.type==='Sprite'&&String(Reflect.get(object,'texture')?.key).startsWith('mcr-avatar-'))
  const hashes=[]
  for(const sprite of sprites){
   const source=sprite.texture.getSourceImage() as HTMLCanvasElement,canvas=document.createElement('canvas');canvas.width=canvas.height=64
   const context=canvas.getContext('2d')!;context.imageSmoothingEnabled=false;context.drawImage(source,0,0,64,64)
   hashes.push({x:sprite.x,y:sprite.y,visible:sprite.visible,frame:Number(sprite.frame.name),hash:await sha256(new Uint8Array(context.getImageData(0,0,64,64).data.buffer))});canvas.width=canvas.height=0
  }
- return {games:games.length,peakGames,totalObservedGames:knownGames.size,sameGame:game?game===firstGame:null,sprites:hashes,canvases:document.querySelectorAll('.shell-world-host canvas').length}
+ return {sceneKeys:game?.scene.getScenes(true).map(s=>s.sys.settings.key)??[],objects:objects.map(o=>({type:o.type,key:Reflect.get(o,'texture')?.key??null})),games:games.length,peakGames,totalObservedGames:knownGames.size,sameGame:game?game===firstGame:null,sprites:hashes,canvases:document.querySelectorAll('.shell-world-host canvas').length}
 }
 async function approvedPixels(){
  const current=runtime();if(!current)throw Error('Actual root registry has no current runtime')

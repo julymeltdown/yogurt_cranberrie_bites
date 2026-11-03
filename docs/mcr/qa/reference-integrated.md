@@ -89,3 +89,21 @@ Gifts owner published the exact touch/density repair `9055af1e03a5418457e32b1a8d
 The independent Gifts refresh at `44e13ac9d156f77386c49d40c65a761b59bf519a` above published `9055af1e` captured **3/3**, with **zero undersized controls or overflow/page errors**. Every Reserve (all nine across widths) is 76×44, becomes fully visible in its scroll viewport and passes center hit-testing. Filter keyboard open/close passes; detail navigation/back restores focus without a business write. The 26px/36px touch-target finding is **resolved at this pin**. The original density observation was not a functional reachability failure. Current images remain unavailable honestly; full visual acceptance stays BLOCKED.
 
 The first boundary check rejected the nested QA `.gitignore` because the checker classifies every ignore/build configuration as integrator-owned. That optional file was removed; native cleanup now removes only its own newly created Vite cache/partial receipt. The corrected exact-scope boundary check passes. No configuration exception or shared-file ownership was required.
+
+## Genuine selected-character default-root fixture
+
+Developer-owned assistance lives in `frontend/e2e/reference-integrated/whole/`. Source-data commit `af158006a315ded9746628ef3802ed04acc00be7` preserves the selected 1.1.0 manifest unchanged (`sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b`). Bootstrap, Me and six-player C05 snapshot/delta pass the actual published validators. Only deterministic Auth HTTP, C05 sockets and map/theme/place test admission are simulated. No synthetic avatar review/provenance or preset translation is supplied.
+
+The preview calls actual `createProductionPorts` without a load, importEngine, asset-fetch or renderer override. It requires the implementation owner's root registry/provider, whole resolver dispatch, account/editor and default World adapter integration. The implementation owner executes and owns final native qualification on that source. This assistance is not an independent review or approval gate. The earlier 30-screen baseline remains separate.
+
+Run from the selected root checkout with retained dependencies and the pinned Node toolchain, choosing a NEW absolute output directory:
+
+```sh
+PATH=/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin:$PATH MCR_WHOLE_ROOT_OUTPUT=/private/tmp/mcr-whole-root-new-run node frontend/e2e/reference-integrated/whole/native.mjs
+```
+
+Default widths are 360/390/430 at 844px height. `QA_WIDTH=390` selects a bounded diagnostic run; the receipt records requested widths. The runner verifies six actual scene sprite pixel hashes against admitted atlas frames, actual Header/Me/Customize pixels, draft/Reset without PUT, exactly one Save PUT at expected revision 7, canonical revision 8, server delta propagation, warm navigation/eras, retained runtime/camera/game and privacy teardown. CDP response bodies verify actual atlas/release bytes without an extra asset fetch. Network request/transfer/cache and explicit decode counts remain separate; default loader calls are NOT_INSTRUMENTED. Approved-pixel diagnostics borrow/release six leases only after six actual World sprites exist; these diagnostics precede cold-sample accounting.
+
+Read-only Phaser inspection matches the actual world canvas to its retained `Phaser.Display.Canvas.CanvasPool.pool` parent Game. The actual engine is CANVAS. It does not rely on the packaged build's omitted `PHASER_GAME` debug global. Actual Game destroy events and DOM canvas peaks are observed; no engine/factory/loader replacement supplies counters. Scene object keys/types and candidate source hashes accompany receipts. This inspector is pinned to retained Phaser 3.90 and must fail visibly if its observation interface changes.
+
+Fixture-source validation: published Bootstrap/Me/C05 data test 1 PASS, strict isolated TypeScript PASS, scoped lint PASS, native runner syntax PASS (all exit 0). Final native widths are NOT_RUN by this QA checkout because the required root implementation is owned and qualified in its isolated checkout; no native PASS is inferred from source checks. Deterministic HTTP/socket results can establish MOCK_READY only. Live backend, physical device and full visual acceptance remain NOT_RUN.
