@@ -262,3 +262,55 @@ Candidate-bound native report:
   "restart_persistence": "PASS"
 }
 ```
+
+## Root-aware authority correction (source checkpoint)
+
+The lock-order finding now has one owning fix rather than documentation-only
+closure. BE37's original `f5e5d44` and `49ce464` add/strengthen
+`PgRelationshipPolicy::authorize_actor_in(ParticipantKey)` with no relationship
+pair read, insert or lock. It validates current actor/session/event/member evidence
+and pins its earliest proof deadline; success is not target/audience permission.
+Local dependency copies are `87ff594` and `9315bde` (with qualification-document
+prerequisite `a5e84da` imported as `90a0205`). Peer validation remains owned by BE37.
+
+The meeting-owned `src/meeting/authority.rs::PgMeetingAuthority` binds a canonical
+actor/event per request, consumes that actor-only guard before the community root,
+then uses actual `party_meeting_in`/`party_audience_in` and full BE37 pair decisions
+in sorted recipient order. No party policy or Auth identity is duplicated. The
+injected remote owner authority still defaults to BE37's unavailable authority
+until a genuine through-commit owner fence exists.
+
+`tests/meeting_authority.rs` exercises the actual BE37, Community and meeting
+adapters, with only remote Auth/Friend proof synthetic. It creates/approves a party
+through Community's command API, then holds the party root in a writer transaction.
+A reader passes the actor-only guard and demonstrably waits on that root
+(`pg_blocking_pids` identifies the writer). The writer must acquire the full self
+pair while the reader waits, create a meeting effect and roll back. The reader
+then completes; the rolled-back beacon must not exist. Actual community removal
+must immediately deny meeting/rally access and stale the old audience fence.
+This is the shared transaction schedule that the original synthetic-authority
+suite could not establish.
+
+The forward-only migration 0016 adds deferred meeting-table commit guards for beacon expiry,
+rally meeting deadline, configured cutoff and any pinned BE37 owner-proof deadline.
+This closes the window between protected apply and BE15 receipt/outbox commit.
+Reads check proof freshness after blocking work. A separate native regression
+lets either beacon or proof expire after apply and requires commit failure with
+no remaining beacon. The direct SQL fixture applies successfully before the forward-only correction (`/tmp/mcr-meeting-sql-20261104-f.json`, exit 0, restart/cleanup PASS).
+
+The correction source and new common-adapter/commit-deadline tests are NOT_RUN
+until a new explicit bounded shared Cargo lease and the owned native run. The
+six-test historical report above does not certify these later changes. The
+existing production-unavailable adapter behavior and IN02 limits remain in force.
+
+
+Published migration 0008 was restored byte for byte from `c7b0b59` after delivery
+confirmed its remote publication. The deadline changes belong only to newly
+reserved `0016_meeting_deadline_guards.sql`. Its ALTER adds the legacy deadline
+using a constant epoch default, then drops that default. Existing report fields
+and revisions remain unchanged; legacy reports have no qualified current arrival
+and require a new explicit report. `tests/meeting_migrations.rs` qualifies actual
+SQLx ledger fresh install, upgrade with a preexisting 0008-era report, exact 0008
+checksum preservation, and replay after restart. The earlier draft `d382f13` must
+not be integrated because its temporary 0008 edit is superseded; clean replacement
+commits will be provided. New native migration/contention checks are pending.

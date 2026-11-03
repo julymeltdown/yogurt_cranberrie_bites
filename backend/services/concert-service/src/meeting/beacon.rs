@@ -201,6 +201,7 @@ pub async fn read_in<A: MeetingAuthority>(
     current(c, &value).await?;
     // Recheck DB expiry after all potentially blocking locks/authority calls.
     live_time(c, &value).await?;
+    super::ensure_authority_current(c).await?;
     Ok(value)
 }
 pub(crate) async fn live_time(
