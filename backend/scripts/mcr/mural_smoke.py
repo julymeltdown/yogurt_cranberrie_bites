@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import signal
 import subprocess
@@ -30,6 +31,7 @@ def source_paths():
         'backend/services/concert-service/src/lib.rs','backend/services/concert-service/src/world/mod.rs',
         'backend/services/concert-service/src/adapters/out/repository.rs',
         'backend/Cargo.toml','backend/Cargo.lock',
+        'backend/scripts/mcr/migration_smoke.py','backend/scripts/mcr/test_mural_smoke.py',
         'backend/crates/concert-domain/Cargo.toml','backend/crates/concert-application/Cargo.toml',
         'backend/services/concert-service/Cargo.toml',
         'contracts/domain/v1/mural.schema.json','contracts/domain/v1/operations.json','contracts/domain/v1/policy.json'])
@@ -105,9 +107,12 @@ def main() -> int:
         def native(binary:Path,phase:str):
             result=subprocess.run([str(binary),'--test-threads=1'],cwd=cluster.root,env=environment,capture_output=True,text=True,timeout=60)
             output=result.stdout+result.stderr
+            expected=2 if binary.name.startswith('mural_subscription-') else 8 if binary.name.startswith('mural-') else None
+            if result.returncode==0 and (expected is None or not re.search(rf'test result: ok\. {expected} passed; 0 failed; 0 ignored;',output)):
+                raise RuntimeError('native-suite-empty-or-incomplete')
             if cluster.password in output or cluster.url(DATABASE) in output:
                 raise RuntimeError('secret-leak')
-            row={'phase':phase,'binary':binary.name,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'exit_code':result.returncode,'output_sha256':hashlib.sha256(output.encode()).hexdigest()}
+            row={'phase':phase,'binary':binary.name,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'exit_code':result.returncode,'passed_tests':expected if result.returncode==0 else None,'output_sha256':hashlib.sha256(output.encode()).hexdigest()}
             if result.returncode: row['tail']=output[-4000:]
             report['tests'].append(row)
             if result.returncode: raise RuntimeError('native-mural-test')
