@@ -7,4 +7,3 @@ $ vitest run src/features/event-feed --maxWorkers=1
       Tests  15 passed (15)
    Start at  00:46:35
    Duration  1.33s (transform 224ms, setup 0ms, import 349ms, tests 897ms, environment 0ms)
-

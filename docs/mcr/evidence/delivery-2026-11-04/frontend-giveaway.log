@@ -7,4 +7,3 @@ $ vitest run src/features/giveaway-authoring --maxWorkers=1
       Tests  8 passed (8)
    Start at  00:44:24
    Duration  1.05s (transform 246ms, setup 0ms, import 431ms, tests 121ms, environment 417ms)
-
