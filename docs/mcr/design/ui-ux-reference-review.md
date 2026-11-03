@@ -91,7 +91,7 @@ Freshly inspected sign-in and wall captures also show the compact black title ba
 ivory frame and deep-red actions. Their missing illustrations and fixture content
 remain visible limitations, not full visual acceptance.
 
-### Default application reachability — source recheck at `3810016`
+### Default application reachability — root source recheck at `572473f`
 
 The source check follows `main.tsx` into `createAppRouter(ports)`, then
 `createAppRoutes(ports)` without a `composition.panels` override. The default
@@ -109,14 +109,14 @@ browser or multiuser pass.
 | Me / profile / customize / settings | `AccountPanel` registers `/me`, `/me/profile`, `/me/avatar`, `/me/settings`. | Me/profile and Customize layout adoption are delivered; approved avatar art, visual item metadata and live save behavior retain their recorded gates. |
 | Feed | `/feed` is declared but absent from `featurePanels`; no production `EventFeed` consumer was found in `app/`. | Updated feed component evidence is not default-route delivery. |
 | Map / place detail | `/world/map` and `/world/places/:placeId` are declared but absent from `featurePanels`. Production owner/provider/route adapters now exist in `app/places-entry/`, delivered in `6c018d6`. | The adapters have bounded native composition evidence; the default map/place entry still needs qualified map/camera exposure and root registration. |
-| Wall | `/wall` is declared but absent from `featurePanels`; no production `MuralSyncPanel` or `createMuralSync` consumer was found in `app/`. | UIV05-WALL is a component delivery; the default wall remains unfinished. |
+| Wall | `/wall` is declared but absent from `featurePanels`. Production sync/HTTP/scene owner and provider adapters now exist in `app/mural-entry/`, integrated from author `c91c7f0`. | The adapter preserves unresolved placement across navigation and release replacement, but needs a qualified scene/write release and default root registration. |
 
 These are concrete root-composition dependencies, not missing acknowledgements
 from leads. Delivery's reserved root ownership remains unchanged. Do not silently
 edit its active checkout or treat visual fixtures as completion of those routes.
 Source hashes and exact inspected paths are recorded in
 [default-route-composition.json](ui-reference-audit-2026-11-04/default-route-composition.json).
-All six root route-source pins remain unchanged at `3810016`. FE19-ENTRY is now
+All six root route-source pins remain unchanged at `572473f`. FE19-ENTRY is now
 published in `6c018d6` from author `4809fad`: 150 focused tests, 18 native captures
 at 360/390/430, actual FE14 loader/Phaser and FE15 camera, real document recovery
 and one feature owner across navigation. Main verified the exact 38 new paths,
@@ -128,8 +128,21 @@ disposal cannot be detected through its read-only public port; the producer must
 withdraw the release before disposal. The detail header Back parent correction
 also remains with the root owner. These are explicit integration requirements,
 not acceptance of the default map route. The completed Places chat has moved to
-the separate FE41 degraded-state scope; the Wall entry chat is implementing its
-own isolated adapter and has not yet delivered it.
+the separate FE41 degraded-state scope.
+
+FE33-ENTRY is integrated from the clean author handoff
+`c91c7f017c6374a98225c9518374ff32c8863d55`. Its 148 affected tests, strict types,
+lint, default and adapter production builds, and 21 native captures passed.
+Main verified all 36 assigned paths and 35 new file hashes, all 23 author input
+pins, and fresh combined strict types. The 22 executable/contract inputs remain
+identical in the combined tree; the current audit prose is intentionally newer.
+The native fixture uses one existing Phaser scene and the real route composition
+seam with explicitly synthetic authority. It demonstrates an unknown placement
+surviving navigation and release replacement with exactly one POST, plus
+synchronous privacy raster erasure. See [Wall entry evidence](../frontend/mural-entry.md).
+Default registration, qualified scene/anchor/write authority, approved art and
+live two-user IN04 remain open. The author completed its bounded goal and stopped
+before the next assignment; this handoff is not a completed default Wall screen.
 
 Integration verified exact assigned paths and source equality with the UIV02
 handoff, all ten tested-source hashes and 51 final screenshot hashes, and fresh

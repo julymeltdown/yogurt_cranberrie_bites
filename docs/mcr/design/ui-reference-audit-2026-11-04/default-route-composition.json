@@ -1,6 +1,6 @@
 {
   "kind": "MCR_UI_REFERENCE_DEFAULT_ROUTE_COMPOSITION",
-  "source_revision": "3810016a72a82358e785790cf67d7b1b292db80e",
+  "source_revision": "572473fe344fe0f2a933f352cc6a409fd70aceaa",
   "evidence": "STATIC_SOURCE_TRACE_ONLY",
   "live_browser_run": "NOT_RUN",
   "source_sha256": {
@@ -39,6 +39,20 @@
         "Qualified current world map/camera producer release",
         "Stable shell provider mount and default route registration",
         "Place detail header Back parent correction"
+      ]
+    },
+    "mural": {
+      "author_commit": "c91c7f017c6374a98225c9518374ff32c8863d55",
+      "source_sha256": {
+        "frontend/src/app/mural-entry/index.ts": "3949e167f001e23bd248520afbbe251db55a68dfd29c7d70bde55c03c5ba629a",
+        "frontend/src/app/mural-entry/owner.ts": "d798f2804ebd569a422da17692b9b0f3764053bceaca98488b156a00ef31a4c9",
+        "frontend/src/app/mural-entry/provider.tsx": "975918620fb178f68e2af0110a494926ef5aee28fb044b50549ecc1a7e646d60",
+        "frontend/src/app/mural-entry/ports.ts": "1031c444a4f632bb35e5aacb8c791591c73a348b0c3702f2e1bcee3fbcc7f038"
+      },
+      "remaining": [
+        "Qualified incumbent scene and reviewed virtual wall anchor",
+        "Current authoritative write capability and privacy/binding/signal release",
+        "Stable provider mount and default /wall route registration"
       ]
     }
   }

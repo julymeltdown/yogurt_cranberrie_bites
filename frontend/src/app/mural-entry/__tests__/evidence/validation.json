@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "base": "01a8e6bceb583a5aba080e401478c7fae4ec0d58",
+  "commands": [
+    {
+      "name": "affected tests",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/vitest/vitest.mjs run --configLoader runner --no-cache src/app/mural-entry src/features/mural src/world/mural",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "11 files / 148 tests PASS, including15 new owner/actual-route cases"
+    },
+    {
+      "name": "strict types",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "no diagnostics"
+    },
+    {
+      "name": "lint",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/oxlint/bin/oxlint src vite.config.ts",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "no diagnostics"
+    },
+    {
+      "name": "default build",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/vite/bin/vite.js build --configLoader runner --outDir /tmp/mcr-fe33-entry-build --emptyOutDir",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "319 modules; default registry unchanged; existing CommunityFeatures/Phaser large-chunk warning"
+    },
+    {
+      "name": "new adapter production build",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node src/app/mural-entry/__tests__/build.mjs",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "103 modules; 230.29 kB ES adapter +8.72 kB CSS; external React/Router"
+    },
+    {
+      "name": "native fixture",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node src/app/mural-entry/__tests__/browser.mjs",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "result": "21 captures, three native widths, actual incumbent Phaser + real scene/sink, no page errors; all tested source pins reverified"
+    },
+    {
+      "name": "planning",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": ".",
+      "exitCode": 0,
+      "result": "planning provenance PASS; source archive checksums intact"
+    },
+    {
+      "name": "whitespace",
+      "command": "git diff --check",
+      "cwd": ".",
+      "exitCode": 0,
+      "result": "no diagnostics"
+    }
+  ],
+  "scope": "MOCK_READY adapter only; default root pending; no live/two-user/IN04 acceptance",
+  "correctedProbeIssues": [
+    "Node fixture initially lacked location.origin; canonical HTTP correctly failed before fetch. Added explicit synthetic test origin.",
+    "Initial probe expected Cache-Control request header instead of canonical Request.cache=no-store, and used invalid spaced replacement token; corrected test expectations/data.",
+    "Actual route JSDOM required a ResizeObserver stub (native browser uses real implementation).",
+    "Programmatic focus after pointer input did not trigger :focus-visible; probe now uses keyboard modality before checking focus outline.",
+    "Withdrawal now zeroes retained DOM canvas before notifications; presentation generation remount avoids a zero-size/hidden canvas if React batches release replacement."
+  ],
+  "notRun": [
+    "broad full suite",
+    "default root activation",
+    "live server/two-user/IN04",
+    "approved product scene/anchor/art qualification",
+    "real device/screen-reader/performance/load/release"
+  ]
+}
