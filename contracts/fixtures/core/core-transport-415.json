@@ -1,0 +1,7 @@
+{
+  "code": "GATEWAY_415",
+  "message": "The request could not be completed.",
+  "details": {
+    "reason": "INVALID_MEDIA_TYPE"
+  }
+}

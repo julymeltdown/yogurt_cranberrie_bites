@@ -39,6 +39,11 @@ UUID; private query identity is `(user_id,event_id)` plus a session generation.
   this in BE03, with negative producer/browser probes. OAuth callbacks use their
   dedicated one-use state-cookie/provider validation; do not apply this header
   requirement to Apple's cross-site form callback.
+  Guard rejection is HTTP 403 with `OriginErrorResponse` and reason
+  `ORIGIN_NOT_ALLOWED` or `BROWSER_INTENT_REQUIRED`, before downstream dispatch.
+  Resend now explicitly declares 403. Every guarded operation carries the same
+  machine-readable origin/rejection metadata. Other inherited auth 403 errors
+  may retain null details through `AuthForbiddenResponse`.
 - Production refresh/state cookies are Secure, HttpOnly, Path=/, SameSite=Lax;
   exact domain configuration must pass the inherited production validator. Do not
   weaken the domain policy silently. Native/local HTTP development remains a
@@ -56,6 +61,10 @@ UUID; private query identity is `(user_id,event_id)` plus a session generation.
   required registered reason plus only safe, reason-specific detail fields.
   Generic inherited auth errors retain `ErrorResponse`, where details may be null.
   Core operation/status schemas further constrain valid reasons for that status.
+  For inherited auth errors without a recognized reason, consumers use HTTP
+  status and the bounded code for generic recovery; never match English text or
+  assume a refresh conflict detail exists. 401 login remains failed credentials,
+  429 is rate limiting and uncertain 409/5xx is not automatic replay permission.
 - Logout allows a missing cookie and still clears matching cookie attributes.
   Origin/intent checks remain mandatory. Clear local identity immediately, cancel
   private requests/subscriptions and invalidate the session generation. A failed
@@ -92,6 +101,12 @@ UUID; private query identity is `(user_id,event_id)` plus a session generation.
 - Event READ_ONLY/ARCHIVED disables mutation capability. Capabilities report
   availability with bounded reasons; they are UX hints, never authorization.
   All writes recheck event state, membership, policy, version and item validity.
+  New core transport failures retain 413/415/422/500/502/504 as applicable. The
+  MCR core HTTP adapter must normalize all core errors to safe `CoreErrorResponse`
+  reasons (including extractor, admission and deadline errors); it cannot reuse
+  the inherited null-details error wrapper unchanged. This is an explicit
+  producer obligation, not evidence of an existing route. Auth remains separately
+  compatible with its inherited generic error envelope.
 - Public auth capabilities list EMAIL/GOOGLE/APPLE/X truthfully. Enabled means
   configured and the complete browser handoff qualified. Disabled optional OAuth
   providers remain disabled; enum membership cannot enable a button. No secrets
@@ -114,7 +129,7 @@ provider, concurrent refresh and multiuser privacy acceptance remain NOT_RUN.
 ## Current validation
 
 `scripts/mcr/check.sh contracts` checks both deterministic generators, the C06
-bundle, all 25 indexed C03 examples, 21 asset test cases and 20 core test cases.
+bundle, all 33 indexed C03 examples, 21 asset test cases and 23 core test cases.
 Core failures include leaked private profile fields, cross-user/event responses,
 unknown avatar items, inconsistent bootstrap avatars, writes during read-only
 events, duplicate provider/place IDs, leaked refresh credentials, stale/empty

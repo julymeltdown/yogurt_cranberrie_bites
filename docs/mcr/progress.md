@@ -9,7 +9,7 @@ it is not feature integration or release acceptance.
 |---|---|---|
 | C01 | ACCEPTED | [Source map](source-map.md), two reviewed per-file inventories and exact import whitelist. Headless candidates need their own later extraction approval/tests. |
 | C02 | ACCEPTED | [Foundation qualification](evidence/foundation.md): pinned frozen installation, strict FE build/lint, pinned source and imported full BE workspace builds. Docker execution is NOT_RUN and is not claimed by this minimal build task. |
-| C03 | IN_PROGRESS | [Core contract draft](core-contract.md), exact inherited auth mapping, public/private DTOs and 25 validated examples; 20 checks pass. Producer/consumer review and OAuth decisions keep freeze pending. |
+| C03 | IN_PROGRESS | [Core contract draft](core-contract.md), exact inherited auth mapping, public/private DTOs and 33 validated examples; 23 checks pass. Producer/consumer review and OAuth decisions keep freeze pending. |
 | C06 | CONTRACT_READY | Five asset schemas, six golden JSON fixtures and 21 checks pass; all three themes share geometry and avatar identities. Pixel alignment/art/venue truth remain NOT_RUN. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | IN_PROGRESS | 1,071 pinned files imported in `909e2bf`, full build passes. Explicit MCR runtime configuration and safe launch qualification remain. |

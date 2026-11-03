@@ -124,5 +124,53 @@
     "schema": "ErrorResponse",
     "operation_id": "login",
     "http_status": 429
+  },
+  {
+    "file": "error-origin-not-allowed.json",
+    "schema": "OriginErrorResponse",
+    "operation_id": "resendVerificationEmail",
+    "http_status": 403
+  },
+  {
+    "file": "error-browser-intent-required.json",
+    "schema": "OriginErrorResponse",
+    "operation_id": "resendVerificationEmail",
+    "http_status": 403
+  },
+  {
+    "file": "core-transport-413.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 413
+  },
+  {
+    "file": "core-transport-415.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 415
+  },
+  {
+    "file": "core-transport-422.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 422
+  },
+  {
+    "file": "core-transport-500.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 500
+  },
+  {
+    "file": "core-transport-502.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 502
+  },
+  {
+    "file": "core-transport-504.json",
+    "schema": "CoreErrorResponse",
+    "operation_id": "setConcertAvatar",
+    "http_status": 504
   }
 ]

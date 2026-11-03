@@ -276,16 +276,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -398,7 +393,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET"
+        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/auth/account/deletion": {
@@ -733,6 +736,87 @@
               }
             }
           },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "429": {
             "description": "Rate limited",
             "content": {
@@ -760,6 +844,60 @@
               }
             }
           },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "503": {
             "description": "Required dependency unavailable",
             "content": {
@@ -776,6 +914,33 @@
                             "reason": {
                               "enum": [
                                 "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
                               ]
                             }
                           }
@@ -1075,6 +1240,16 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Origin/intent denied, or forbidden by Auth",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
+                }
+              }
+            }
           }
         },
         "description": "Public Gateway endpoint. Uses authenticated internal gRPC; no browser service token, Bearer token or cookie is required. JSON body is limited to 4096 bytes. Pending, unknown, active, deleted and account-quota-limited emails have the same 202 body. Auth permits one verification intent per minute and at most 20 per rolling day, including signup. Edge quota can return 429 independently. ACCEPTED is not proof of delivery. No automatic retry or Idempotency-Key replay is supported. Timeout can occur after the downstream request was accepted.",
@@ -1098,7 +1273,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET"
+        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/auth/email/signup": {
@@ -1206,16 +1389,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -1333,7 +1511,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET"
+        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/auth/email/verify": {
@@ -1441,16 +1627,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -1568,7 +1749,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET"
+        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/auth/login": {
@@ -1679,16 +1868,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -1807,7 +1991,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET"
+        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/auth/logout": {
@@ -1881,16 +2073,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -1999,6 +2186,14 @@
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
         "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        },
         "description": " MCR permits missing refresh cookie for local logout; Origin/intent remain required."
       }
     },
@@ -3057,16 +3252,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -3190,7 +3380,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "DISABLED_UNTIL_HANDOFF_QUALIFIED"
+        "x-mcr-browser-exposure": "DISABLED_UNTIL_HANDOFF_QUALIFIED",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/auth/password/reset/confirm": {
@@ -3298,16 +3496,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -3425,7 +3618,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET"
+        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/auth/password/reset/request": {
@@ -3533,16 +3734,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -3661,7 +3857,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET"
+        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/auth/refresh": {
@@ -3742,16 +3946,11 @@
             }
           },
           "403": {
-            "description": "Authenticated but not permitted",
-            "headers": {
-              "X-Correlation-Id": {
-                "$ref": "#/components/headers/XCorrelationId"
-              }
-            },
+            "description": "Origin/intent denied, or forbidden by Auth",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/AuthForbiddenResponse"
                 }
               }
             }
@@ -3864,7 +4063,15 @@
         "x-mcr-runtime-status": "ADAPTATION_REQUIRED",
         "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
         "x-mcr-cache": "NO_STORE",
-        "x-mcr-browser-exposure": "TARGET"
+        "x-mcr-browser-exposure": "TARGET",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/concert/events/{eventId}/bootstrap": {
@@ -4020,6 +4227,87 @@
               }
             }
           },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "429": {
             "description": "Rate limited",
             "content": {
@@ -4047,6 +4335,60 @@
               }
             }
           },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "503": {
             "description": "Required dependency unavailable",
             "content": {
@@ -4063,6 +4405,33 @@
                             "reason": {
                               "enum": [
                                 "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
                               ]
                             }
                           }
@@ -4248,6 +4617,87 @@
               }
             }
           },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "429": {
             "description": "Rate limited",
             "content": {
@@ -4275,6 +4725,60 @@
               }
             }
           },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "503": {
             "description": "Required dependency unavailable",
             "content": {
@@ -4291,6 +4795,33 @@
                             "reason": {
                               "enum": [
                                 "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
                               ]
                             }
                           }
@@ -4404,23 +4935,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CoreErrorResponse"
-                    },
-                    {
-                      "properties": {
-                        "details": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
                           "properties": {
-                            "reason": {
-                              "enum": [
-                                "PERMISSION_DENIED",
-                                "CONSENT_REQUIRED"
-                              ]
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
                             }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
                     }
                   ]
                 }
@@ -4483,6 +5021,87 @@
               }
             }
           },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "429": {
             "description": "Rate limited",
             "content": {
@@ -4510,6 +5129,60 @@
               }
             }
           },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "503": {
             "description": "Required dependency unavailable",
             "content": {
@@ -4526,6 +5199,33 @@
                             "reason": {
                               "enum": [
                                 "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
                               ]
                             }
                           }
@@ -4566,7 +5266,14 @@
             }
           }
         },
-        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER"
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/concert/events/{eventId}/me/avatar": {
@@ -4652,23 +5359,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CoreErrorResponse"
-                    },
-                    {
-                      "properties": {
-                        "details": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
                           "properties": {
-                            "reason": {
-                              "enum": [
-                                "PERMISSION_DENIED",
-                                "CONSENT_REQUIRED"
-                              ]
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
                             }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
                     }
                   ]
                 }
@@ -4731,6 +5445,87 @@
               }
             }
           },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "429": {
             "description": "Rate limited",
             "content": {
@@ -4758,6 +5553,60 @@
               }
             }
           },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "503": {
             "description": "Required dependency unavailable",
             "content": {
@@ -4774,6 +5623,33 @@
                             "reason": {
                               "enum": [
                                 "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
                               ]
                             }
                           }
@@ -4814,7 +5690,14 @@
             }
           }
         },
-        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER"
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
       }
     },
     "/api/concert/events/{eventId}/people/{userId}": {
@@ -4979,6 +5862,87 @@
               }
             }
           },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "429": {
             "description": "Rate limited",
             "content": {
@@ -5006,6 +5970,60 @@
               }
             }
           },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "503": {
             "description": "Required dependency unavailable",
             "content": {
@@ -5022,6 +6040,33 @@
                             "reason": {
                               "enum": [
                                 "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
                               ]
                             }
                           }
@@ -5207,6 +6252,87 @@
               }
             }
           },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "429": {
             "description": "Rate limited",
             "content": {
@@ -5234,6 +6360,60 @@
               }
             }
           },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "503": {
             "description": "Required dependency unavailable",
             "content": {
@@ -5250,6 +6430,33 @@
                             "reason": {
                               "enum": [
                                 "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
                               ]
                             }
                           }
@@ -5443,6 +6650,87 @@
               }
             }
           },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "429": {
             "description": "Rate limited",
             "content": {
@@ -5470,6 +6758,60 @@
               }
             }
           },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
           "503": {
             "description": "Required dependency unavailable",
             "content": {
@@ -5486,6 +6828,33 @@
                             "reason": {
                               "enum": [
                                 "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
                               ]
                             }
                           }
@@ -5700,6 +7069,46 @@
           "contract_version",
           "providers",
           "server_time"
+        ]
+      },
+      "AuthForbiddenResponse": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "traceId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 128
+              },
+              "timestamp": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "details": {
+                "type": "null"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          }
         ]
       },
       "AuthProviderCapability": {
@@ -6429,6 +7838,54 @@
             "required": [
               "reason"
             ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "PAYLOAD_TOO_LARGE"
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "INVALID_MEDIA_TYPE"
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "INTERNAL_ERROR"
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "const": "DEADLINE_EXCEEDED"
+              }
+            },
+            "required": [
+              "reason"
+            ]
           }
         ]
       },
@@ -6950,6 +8407,62 @@
           "code",
           "state"
         ]
+      },
+      "OriginErrorDetails": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "reason": {
+            "enum": [
+              "ORIGIN_NOT_ALLOWED",
+              "BROWSER_INTENT_REQUIRED"
+            ]
+          }
+        }
+      },
+      "OriginErrorResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "message",
+          "details"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "traceId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 128
+          },
+          "timestamp": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/UtcTimestamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "details": {
+            "$ref": "#/components/schemas/OriginErrorDetails"
+          }
+        }
       },
       "PasswordResetConfirmRequest": {
         "type": "object",

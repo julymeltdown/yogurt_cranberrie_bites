@@ -1,0 +1,7 @@
+{
+  "code": "GATEWAY_502",
+  "message": "The request could not be completed.",
+  "details": {
+    "reason": "DEPENDENCY_UNAVAILABLE"
+  }
+}

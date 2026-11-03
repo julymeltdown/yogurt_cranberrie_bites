@@ -110,6 +110,13 @@ def build_document():
             target["x-mcr-browser-exposure"] = (
                 "DISABLED_UNTIL_HANDOFF_QUALIFIED" if "oauth" in path else "TARGET")
             if method in {"post", "delete"} and not ("oauth" in path and "callback" in path):
+                target["x-mcr-origin-policy"] = "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER"
+                target["x-mcr-origin-rejection"] = {
+                    "status": 403, "schema": {"$ref": "#/components/schemas/OriginErrorResponse"},
+                    "downstream_dispatch": False,
+                }
+                target["responses"]["403"] = {"description": "Origin/intent denied, or forbidden by Auth",
+                    "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AuthForbiddenResponse"}}}}
                 target.setdefault("parameters", []).append({
                     "name": "X-MCR-Intent", "in": "header", "required": True,
                     "schema": {"type": "string", "const": "browser"},
@@ -149,7 +156,9 @@ def build_document():
             400: ["INVALID_INPUT"], 401: ["AUTHENTICATION_REQUIRED"],
             403: ["PERMISSION_DENIED", "CONSENT_REQUIRED"], 404: ["RESOURCE_UNAVAILABLE"],
             409: ["VERSION_CONFLICT", "MAP_VERSION_MISMATCH", "EVENT_READ_ONLY"],
-            429: ["RATE_LIMITED"], 503: ["DEPENDENCY_UNAVAILABLE"],
+            413: ["PAYLOAD_TOO_LARGE"], 415: ["INVALID_MEDIA_TYPE"], 422: ["INVALID_INPUT"],
+            429: ["RATE_LIMITED"], 500: ["INTERNAL_ERROR"], 502: ["DEPENDENCY_UNAVAILABLE"],
+            503: ["DEPENDENCY_UNAVAILABLE"], 504: ["DEADLINE_EXCEEDED"],
         }
         responses = {str(code): {"description": description, "content": {"application/json": {
             "schema": {"allOf": [{"$ref": "#/components/schemas/CoreErrorResponse"},
@@ -157,8 +166,11 @@ def build_document():
                                        "reason": {"enum": error_reasons[code]}}}}}]}}}}
             for code, description in [(400, "Invalid input"), (401, "Authentication required"),
                                       (403, "Not permitted"), (404, "Resource unavailable"),
-                                      (409, "Revision or state conflict"), (429, "Rate limited"),
-                                      (503, "Required dependency unavailable")]}
+                                      (409, "Revision or state conflict"), (413, "Payload too large"),
+                                      (415, "JSON media type required"), (422, "Invalid field types"),
+                                      (429, "Rate limited"), (500, "Internal failure"),
+                                      (502, "Bad dependency response"), (503, "Required dependency unavailable"),
+                                      (504, "Dependency deadline exceeded")]}
         responses["200"] = {"description": "Success", "content": {"application/json": {
             "schema": {"$ref": f'#/components/schemas/{operation["response"]}'}}}}
         target = {"operationId": identity, "parameters": parameters, "responses": responses,
@@ -171,6 +183,13 @@ def build_document():
                 "schema": {"$ref": f'#/components/schemas/{operation["request"]}'}}}}
         if method in {"put", "patch", "post", "delete"}:
             target["x-mcr-origin-policy"] = "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER"
+            target["x-mcr-origin-rejection"] = {
+                "status": 403, "schema": {"$ref": "#/components/schemas/OriginErrorResponse"},
+                "downstream_dispatch": False,
+            }
+            target["responses"]["403"]["content"]["application/json"]["schema"] = {
+                "anyOf": [target["responses"]["403"]["content"]["application/json"]["schema"],
+                          {"$ref": "#/components/schemas/OriginErrorResponse"}]}
             target["parameters"].append({"name": "X-MCR-Intent", "in": "header", "required": True,
                                          "schema": {"type": "string", "const": "browser"}})
         document["paths"].setdefault(path, {})[method] = target

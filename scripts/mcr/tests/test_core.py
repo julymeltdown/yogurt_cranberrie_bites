@@ -27,7 +27,7 @@ class CoreContractTests(unittest.TestCase):
             core.validate(value, schema, self.document, **context)
 
     def test_all_indexed_golden_success_and_failure_envelopes(self):
-        self.assertEqual(core.validate_fixtures(self.document), 25)
+        self.assertEqual(core.validate_fixtures(self.document), 33)
 
     def test_auth_operation_map_uses_final_generator(self):
         source = core.generator.inherited_document()
@@ -121,6 +121,34 @@ class CoreContractTests(unittest.TestCase):
         operation = self.document["paths"]["/api/auth/capabilities"]["get"]
         self.assertEqual(operation["security"], [])
         self.assertEqual(operation["x-mcr-retry"], "PUBLIC_READ_NO_AUTH_REFRESH")
+
+    def test_origin_denial_is_typed_and_documented_for_resend(self):
+        value = self.fixture("error-origin-not-allowed")
+        core.validate(value, "OriginErrorResponse", self.document,
+                      operation_id="resendVerificationEmail", http_status=403)
+        value["details"]["private_handle"] = "private"
+        self.reject(value, "OriginErrorResponse")
+        self.reject(value, "AuthForbiddenResponse")
+        core.validate({"code": "GATEWAY_403", "message": "Forbidden", "details": None},
+                      "AuthForbiddenResponse", self.document)
+
+    def test_all_guarded_operations_document_origin_failures(self):
+        for methods in self.document["paths"].values():
+            for operation in methods.values():
+                if "x-mcr-origin-policy" in operation:
+                    denial = operation["x-mcr-origin-rejection"]
+                    self.assertEqual(denial["status"], 403)
+                    self.assertFalse(denial["downstream_dispatch"])
+                    self.assertIn("403", operation["responses"])
+                    self.assertEqual(denial["schema"]["$ref"], "#/components/schemas/OriginErrorResponse")
+
+    def test_core_transport_failures_keep_status_and_safe_reason(self):
+        for status in [413, 415, 422, 500, 502, 504]:
+            value = self.fixture(f"core-transport-{status}")
+            core.validate(value, "CoreErrorResponse", self.document,
+                          operation_id="setConcertAvatar", http_status=status)
+            value["details"]["reason"] = "VERSION_CONFLICT"
+            self.reject(value, "CoreErrorResponse", operation_id="setConcertAvatar", http_status=status)
 
     def test_place_and_public_profile_request_identity_are_bound(self):
         other = "00000000-0000-4000-8000-000000000999"

@@ -1,0 +1,7 @@
+{
+  "code": "GATEWAY_403",
+  "message": "The request is not permitted.",
+  "details": {
+    "reason": "BROWSER_INTENT_REQUIRED"
+  }
+}

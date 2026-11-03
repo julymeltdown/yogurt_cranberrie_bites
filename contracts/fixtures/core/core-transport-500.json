@@ -1,0 +1,7 @@
+{
+  "code": "GATEWAY_500",
+  "message": "The request could not be completed.",
+  "details": {
+    "reason": "INTERNAL_ERROR"
+  }
+}

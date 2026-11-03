@@ -1,0 +1,7 @@
+{
+  "code": "GATEWAY_403",
+  "message": "The request is not permitted.",
+  "details": {
+    "reason": "ORIGIN_NOT_ALLOWED"
+  }
+}
