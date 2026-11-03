@@ -1,0 +1,13 @@
+.event-feed { width: 100%; max-width: 46rem; margin-inline: auto; padding: 1rem; padding-bottom: max(2rem, env(safe-area-inset-bottom)); overflow-wrap: anywhere; box-sizing: border-box; }
+.event-feed h1 { font-size: clamp(2rem, 8vw, 3.5rem); letter-spacing: -.04em; margin-block: .25rem .75rem; }
+.event-feed h2 { font-size: 1.25rem; margin-block: 1.5rem .75rem; }
+.event-feed button, .event-feed select, .event-feed input { min-height: 44px; max-width: 100%; font: inherit; padding: .5rem .75rem; }
+.event-feed button { cursor: pointer; margin: .25rem .5rem .25rem 0; }
+.event-feed button:disabled { cursor: default; }
+.event-feed :focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
+.event-feed textarea { display: block; width: 100%; min-height: 8rem; box-sizing: border-box; font: inherit; padding: .75rem; resize: vertical; }
+.event-feed label { display: block; margin-block: .75rem; }
+.feed-list { list-style: none; padding: 0; margin-block: .75rem; }
+.feed-list > li { padding-block: 1.25rem; border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
+.feed-text { white-space: pre-wrap; line-height: 1.6; }
+.event-feed fieldset { min-width: 0; margin-block: 1rem; padding: .75rem; }
