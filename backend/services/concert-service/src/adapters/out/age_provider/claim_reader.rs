@@ -205,8 +205,14 @@ impl PgClaimProjection {
         if now >= valid_until {
             return Err(PolicyError::Denied);
         }
-        source_deadline(&mut tx, until).await?;
+        source_deadline(&mut tx, until.min(valid_until)).await?;
         tx.commit().await.map_err(unavailable)?;
+        // SQL/COMMIT may itself cross a claim/birthday/request boundary. A known
+        // commit establishes source ordering but never extends temporal validity.
+        validate(query, self.clock.now())?;
+        if self.clock.now() >= valid_until || Utc::now() >= until.min(valid_until) {
+            return Err(PolicyError::Denied);
+        }
         // The private projection is released only after a known source commit.
         Ok(value)
     }

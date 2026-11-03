@@ -500,20 +500,109 @@ async fn cancellation_and_projection_error_roll_back_and_release_pool() -> anyho
 async fn original_deadline_cancels_projection_without_result_or_leaked_transaction(
 ) -> anyhow::Result<()> {
     let mut f = setup().await?;
-    f.q.context.expires_at = Utc::now() + Duration::milliseconds(100);
+    f.q.context.expires_at = Utc::now() + Duration::seconds(2);
     sqlx::query("update be26_reader_fixture_authority set deadline=$2 where actor=$1")
         .bind(f.q.context.actor.uuid())
         .bind(f.q.context.expires_at)
         .execute(&f.p)
         .await?;
-    assert!(matches!(
-        f.reader
-            .project(f.q, |_| Box::pin(std::future::pending::<
-                Result<(), PolicyError>,
-            >()))
-            .await,
-        Err(PolicyError::Unavailable)
-    ));
+    let entered = Arc::new(Notify::new());
+    let e = entered.clone();
+    let reader = f.reader.clone();
+    let q = f.q;
+    let read = tokio::spawn(async move {
+        reader
+            .project(q, move |_| {
+                Box::pin(async move {
+                    e.notify_one();
+                    std::future::pending::<Result<(), PolicyError>>().await
+                })
+            })
+            .await
+    });
+    tokio::time::timeout(std::time::Duration::from_secs(1), entered.notified()).await?;
+    assert!(f.authority.pid.load(Ordering::SeqCst) > 0);
+    // Prove the pending closure holds the actual authority row lock.
+    let mut tx = f.p.begin().await?;
+    let pid: i32 = sqlx::query_scalar("select pg_backend_pid()")
+        .fetch_one(&mut *tx)
+        .await?;
+    let actor = f.q.context.actor.uuid();
+    let writer = tokio::spawn(async move {
+        sqlx::query("select actor from be26_reader_fixture_authority where actor=$1 for update")
+            .bind(actor)
+            .fetch_one(&mut *tx)
+            .await?;
+        tx.rollback().await
+    });
+    wait_lock(&f.p, pid).await?;
+    assert!(matches!(read.await?, Err(PolicyError::Unavailable)));
+    writer.await??;
+    pool_released(&f).await?;
+    Ok(())
+}
+struct CommitDelayAuthority {
+    base: Arc<FixtureAuthority>,
+    calls: std::sync::atomic::AtomicUsize,
+}
+#[async_trait]
+impl ProjectionAuthority for CommitDelayAuthority {
+    async fn authorize_in(
+        &self,
+        c: &mut PgConnection,
+        q: ClaimQuery,
+    ) -> Result<AuthorityDecision, PolicyError> {
+        let decision = self.base.authorize_in(c, q).await?;
+        if self.calls.fetch_add(1, Ordering::SeqCst) == 1 {
+            sqlx::query("insert into be26_reader_commit_delay values($1)")
+                .bind(q.context.request)
+                .execute(c)
+                .await
+                .map_err(|_| PolicyError::Unavailable)?;
+        }
+        Ok(decision)
+    }
+}
+#[tokio::test]
+async fn claim_expiry_during_known_commit_discards_private_projection() -> anyhow::Result<()> {
+    let f = setup().await?;
+    // Test-only deferred trigger delays COMMIT after the final source-time check.
+    sqlx::query("create table be26_reader_commit_delay(request uuid primary key)")
+        .execute(&f.p)
+        .await?;
+    sqlx::query("create function be26_reader_delay_commit() returns trigger language plpgsql as $$ begin perform pg_sleep(0.4); return new; end $$").execute(&f.p).await?;
+    sqlx::query("create constraint trigger be26_reader_delay after insert on be26_reader_commit_delay deferrable initially deferred for each row execute function be26_reader_delay_commit()").execute(&f.p).await?;
+    let at = Utc::now() - Duration::days(2);
+    add_claim(
+        &f,
+        "VERIFIED",
+        at,
+        Utc::now() + Duration::milliseconds(250),
+        Some(25),
+        Some((at + Duration::hours(9)).date_naive() + Duration::days(30)),
+    )
+    .await?;
+    let authority = Arc::new(CommitDelayAuthority {
+        base: f.authority.clone(),
+        calls: std::sync::atomic::AtomicUsize::new(0),
+    });
+    let reader = PgClaimProjection::new(f.p.clone(), authority.clone(), f.clock.clone());
+    let result = reader
+        .project(f.q, |age| {
+            Box::pin(async move {
+                assert_eq!(age.status(), AgeStatus::Verified);
+                Ok(true)
+            })
+        })
+        .await;
+    assert!(matches!(result, Err(PolicyError::Denied)));
+    assert_eq!(authority.calls.load(Ordering::SeqCst), 2);
+    let committed: i64 =
+        sqlx::query_scalar("select count(*) from be26_reader_commit_delay where request=$1")
+            .bind(f.q.context.request)
+            .fetch_one(&f.p)
+            .await?;
+    assert_eq!(committed, 1); // Known COMMIT occurred; its late value was withheld.
     pool_released(&f).await?;
     Ok(())
 }
