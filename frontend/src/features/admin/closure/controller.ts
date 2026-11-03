@@ -2,14 +2,14 @@ import type { AdminCommand, OperatorContextPort, PrivacyPort } from '../mural/co
 import { uuid } from '../mural/contract'
 import { createAdminOwner } from '../mural/owner'
 import type { ClosureApi } from './http'
-import { closeEventSchema } from './contract'
-import type { ClosureJob } from './contract'
+import { closeEventSchema, resumeClosureSchema } from './contract'
+import type { ClosureDraft, ClosureJob } from './contract'
 
 export interface ClosureState {
   readonly phase: 'idle' | 'loading' | 'ready' | 'error' | 'unavailable' | 'disposed'
   readonly job: ClosureJob | null
   readonly jobId: string | null
-  readonly draft: Readonly<{ expected_revision: number; confirmation: 'CLOSE_EVENT'; reason: string }> | null
+  readonly draft: ClosureDraft | null
   readonly command: AdminCommand | null
   readonly commandPhase: 'idle' | 'sending' | 'checking' | 'unknown' | 'pending' | 'confirmed' | 'rejected'
   readonly message: string
@@ -20,10 +20,11 @@ export function createEventClosure({ privacy, context, api, newKey = () => crypt
   privacy: PrivacyPort; context: OperatorContextPort; api: ClosureApi; newKey?: () => string
 }) {
   let state = Object.freeze(empty()), disposed = false, latest: ClosureJob | null = null, rejectedRevision = 0
+  const issuedKeys = new Set<string>()
   const listeners = new Set<() => void>()
   const publish = (patch: Partial<ClosureState>) => { state = Object.freeze({ ...state, ...patch, version: state.version + 1 }); for (const f of Array.from(listeners)) { try { f() } catch { /* Independent views. */ } } }
   const owner = createAdminOwner(privacy, context, security => {
-    if (security) { latest = null; rejectedRevision = 0 }
+    if (security) { latest = null; rejectedRevision = 0; issuedKeys.clear() }
     publish({ phase: 'unavailable', draft: null, job: null, ...(security ? { command: null, jobId: null, commandPhase: 'idle' as const } : state.command ? { commandPhase: 'unknown' as const } : {}),
       message: 'Operator context changed. Reauthorize and reload the exact closure job.' })
   })
@@ -50,19 +51,37 @@ export function createEventClosure({ privacy, context, api, newKey = () => crypt
     if (!draft.success) return false
     publish({ draft: Object.freeze(draft.data), message: 'Confirm closure of this exact event revision. This starts read-only archival and cleanup.' }); return true
   }
+  function canResume() {
+    const active = owner.capture()
+    return !disposed && !!active && active.phase === 'READ_ONLY' && state.phase === 'ready' && !state.command
+      && state.job?.state === 'PARTIAL_FAILURE' && state.job.job_id === state.jobId && state.job.revision < Number.MAX_SAFE_INTEGER
+  }
+  function prepareResume(text: string) {
+    if (!canResume() || !state.job) return false
+    const draft = resumeClosureSchema.safeParse({ job_id: state.job.job_id, expected_revision: state.job.revision, confirmation: 'RESUME_CLOSURE', reason: text })
+    if (!draft.success) return false
+    publish({ draft: Object.freeze(draft.data), message: 'Review retry of this exact failed job revision. Completed steps will remain complete.' }); return true
+  }
   async function confirm() {
     const draft = state.draft
     if (!draft || state.command || disposed) return
     const lease = owner.begin(); if (!lease) return
-    if (lease.context.eventRevision !== draft.expected_revision || !['OPEN', 'LIVE'].includes(lease.context.phase)) { owner.finish(lease); publish({ draft: null }); return }
-    const key = newKey(); if (!uuid.safeParse(key).success) { owner.finish(lease); throw new Error('Invalid command key') }
+    const resume = draft.confirmation === 'RESUME_CLOSURE'
+    if (resume ? !canResume() || state.job?.job_id !== draft.job_id || state.job.revision !== draft.expected_revision
+      : lease.context.eventRevision !== draft.expected_revision || !['OPEN', 'LIVE'].includes(lease.context.phase)) { owner.finish(lease); publish({ draft: null }); return }
+    const key = newKey()
+    if (!uuid.safeParse(key).success || issuedKeys.has(key)) { owner.finish(lease); publish({ message: 'A fresh command identity is unavailable. No closure action was sent.' }); return }
+    issuedKeys.add(key)
     const command: AdminCommand = Object.freeze({ operation: 'closeConcertEvent', key, body: draft, scope: lease.context.scope, roleRevision: lease.context.roleRevision })
-    publish({ draft: null, command, commandPhase: 'sending', message: 'Waiting for closure acceptance. Do not start another job.' })
+    publish({ draft: null, command, commandPhase: 'sending', message: resume ? 'Waiting for resume acceptance. Do not retry this boundary again.' : 'Waiting for closure acceptance. Do not start another job.' })
     try {
       const result = await api.send(lease.context, lease.signal, command)
       if (!owner.valid(lease)) return
       if (result.kind === 'confirmed') { accept(result.data); publish({ command: null, commandPhase: 'confirmed' }) }
-      else if (result.kind === 'rejected') { rejectedRevision = draft.expected_revision; publish({ phase: 'error', command: null, commandPhase: 'rejected', message: `Closure rejected (${result.reason}). Refresh operator event context before another attempt.` }) }
+      else if (result.kind === 'rejected') {
+        if (!resume) rejectedRevision = draft.expected_revision
+        publish({ phase: 'error', job: null, command: null, commandPhase: 'rejected', message: `Closure ${resume ? 'resume' : 'start'} rejected (${result.reason}). Reload the job or event context before reviewing another action.` })
+      }
       else publish({ commandPhase: result.kind, message: 'Original closure command unresolved. Check it; do not repeat closure or create a new key.' })
     } catch { if (owner.valid(lease)) publish({ commandPhase: 'unknown', message: 'Closure outcome unknown. Check original command; no replay is allowed.' }) }
     finally { owner.finish(lease) }
@@ -79,7 +98,10 @@ export function createEventClosure({ privacy, context, api, newKey = () => crypt
         if (!owner.valid(lease)) return
         if (job.revision < receipt.resource_revision!) throw new Error('Closure behind receipt')
         accept(job); publish({ command: null, commandPhase: 'confirmed' })
-      } else if (receipt.state === 'FAILED') { rejectedRevision = Number(command.body.expected_revision); publish({ command: null, commandPhase: 'rejected', phase: 'error', message: `Original closure failed (${receipt.failure_reason}). Revalidate event context.` }) }
+      } else if (receipt.state === 'FAILED') {
+        if (command.body.confirmation === 'CLOSE_EVENT') rejectedRevision = Number(command.body.expected_revision)
+        publish({ command: null, job: null, commandPhase: 'rejected', phase: 'error', message: `Original closure command failed (${receipt.failure_reason}). Reload current authorized state before another action.` })
+      }
       else publish({ commandPhase: receipt.state === 'PENDING' ? 'pending' : 'unknown', message: 'Original closure pending or unavailable. No destructive retry is permitted.' })
     } catch { if (owner.valid(lease)) publish({ commandPhase: 'unknown', message: 'Original closure could not be verified. No replay is permitted.' }) }
     finally { owner.finish(lease) }
@@ -91,9 +113,9 @@ export function createEventClosure({ privacy, context, api, newKey = () => crypt
     }
   }
   return { read: () => state, subscribe(f: () => void) { listeners.add(f); return () => { listeners.delete(f) } },
-    start() { if (!disposed) { owner.start(); revalidate() } }, revalidate, prepare, confirm, check, refresh,
+    start() { if (!disposed) { owner.start(); revalidate() } }, revalidate, prepare, prepareResume, canResume, confirm, check, refresh,
     cancel() { publish({ draft: null }) },
-    dispose() { if (!disposed) { disposed = true; latest = null; owner.dispose(); publish({ ...empty(), phase: 'disposed' }); listeners.clear() } },
+    dispose() { if (!disposed) { disposed = true; latest = null; issuedKeys.clear(); owner.dispose(); publish({ ...empty(), phase: 'disposed' }); listeners.clear() } },
   }
 }
 export type EventClosure = ReturnType<typeof createEventClosure>
