@@ -165,8 +165,10 @@ fn actor_only_decision_is_bound_to_self_and_current_eligibility() {
     };
     assert_eq!(decide_actor(own).unwrap().key(), key);
     own.authority.inherited_block = true;
-    own.authority.subject_allowed = false;
     assert!(decide_actor(own).is_ok());
+    own.authority.subject_allowed = false;
+    assert_eq!(decide_actor(own), Err(RelationshipError::Denied));
+    own.authority.subject_allowed = true;
     own.authority.actor_allowed = false;
     assert_eq!(decide_actor(own), Err(RelationshipError::Denied));
     own.authority.actor_allowed = true;

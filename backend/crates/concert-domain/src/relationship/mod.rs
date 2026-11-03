@@ -176,7 +176,10 @@ pub fn decide_actor(s: ActorSnapshot) -> Result<ActorDecision, RelationshipError
     if a.query != expected || a.checked_at != s.now || a.valid_until <= s.now {
         return Err(RelationshipError::Unavailable);
     }
-    if !s.member || !a.actor_allowed || matches!(s.phase, EventPhase::Draft | EventPhase::Archived)
+    if !s.member
+        || !a.actor_allowed
+        || !a.subject_allowed
+        || matches!(s.phase, EventPhase::Draft | EventPhase::Archived)
     {
         return Err(RelationshipError::Denied);
     }
