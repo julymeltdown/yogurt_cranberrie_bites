@@ -1,0 +1,60 @@
+{
+  "task": "FE-WORLD-WHOLE-AVATAR",
+  "status": "INTEGRATED",
+  "qualification": "Bounded real-art/real-producer/incumbent Phaser consumer; isolated canonical C05 roster/privacy. Root/live/multiuser/device acceptance NOT_RUN.",
+  "base": "391bc21525453f05d809a45eb4a9b4966a70c2ae",
+  "validatedParent": "8430cd57ebb628fc093cb43f5ab547f042440830",
+  "reconciledParent": "6ccb4e8fbcd70e6e8cb37670ec0b938a2e706ad9",
+  "producer": "9fbc89426c6d0781c6f7a1f1a78ef722656407e5",
+  "commands": [
+    {
+      "command": "vitest run (seven exact files listed in docs/mcr/frontend/world-whole-character.md)",
+      "exitCode": 0,
+      "tests": 381,
+      "files": 7,
+      "ownedTests": 20
+    },
+    {
+      "command": "tsc -b --pretty false",
+      "exitCode": 0
+    },
+    {
+      "command": "oxlint (three owned source paths and new test directory)",
+      "exitCode": 0
+    },
+    {
+      "command": "node src/world/avatar/__tests__/whole-character/native.mjs",
+      "exitCode": 0,
+      "widths": [
+        360,
+        390,
+        430
+      ]
+    },
+    {
+      "command": "Vite build API; temporary output removed",
+      "exitCode": 0,
+      "warning": "Existing chunk size warning"
+    },
+    {
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0
+    }
+  ],
+  "reconciliation": "Published peer auth/profile source and coordination documentation only. All 17 native source pins and three artifact hashes match after reconciliation; full tsc rerun.",
+  "resources": {
+    "dependencyInstall": false,
+    "dependencyCopy": false,
+    "temporarySymlink": "Removed before handoff",
+    "diskFloorGiB": 8
+  },
+  "limits": [
+    "No live Auth/server/socket",
+    "No real multiuser or physical device acceptance",
+    "Root renderer selection separately owned"
+  ]
+}
