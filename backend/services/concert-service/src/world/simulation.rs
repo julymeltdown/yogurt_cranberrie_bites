@@ -438,6 +438,19 @@ impl Simulation {
     pub fn state(&self, user_id: Uuid) -> Option<PlayerState> {
         self.players.get(&user_id).map(|p| p.state)
     }
+    /// Owner-local replication provenance: require the exact stored binding and return
+    /// this simulation's tick. Caller still checks current membership/recipient authority
+    /// under the same owner serialization; this read does not renew or validate a lease.
+    pub fn replication_state(&self, expected: &Binding) -> Option<(u64, PlayerState)> {
+        if !self.binding_valid(expected) {
+            return None;
+        }
+        self.players
+            .get(&expected.key.user_id.uuid())
+            .filter(|player| player.binding == *expected)
+            .map(|player| (self.server_tick, player.state))
+    }
+
     pub fn player_count(&self) -> usize {
         self.players.len()
     }

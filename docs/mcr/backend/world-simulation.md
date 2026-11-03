@@ -242,3 +242,33 @@ review fixes and the assigned native simulation checks are delivered. Runtime
 membership-port composition, real WebSocket/two-account movement, bidirectional
 presence privacy, resource loading, load/device qualification and verified remote
 master ancestry remain the integrator/owning tasks' outstanding obligations.
+
+
+## BE13 replication provenance correction
+
+A concrete BE13 review found that combining `state(user_id)` with caller-supplied
+room/epoch/tick metadata could relabel an older simulation as a new room stream.
+The narrow follow-up adds `replication_state(&Binding) -> Option<(u64, PlayerState)>`.
+It verifies the expected room/event/epoch/owner/resource scope against the actual
+simulation, then requires equality with the full stored player binding, including
+user/session/connection/stream and map/avatar pins. The returned tick is always
+`self.server_tick`; consumers must not supply or substitute their own tick.
+There is no unfiltered roster endpoint. The existing `state` diagnostic remains
+for owner-local use; BE13 capture must use the binding-checked API.
+
+This is a provenance check, not a current-authorization check: BE13 still validates
+live membership/recipient policy under the same owner serialization, and lease
+refresh/expiry/removal semantics are unchanged. Reads cannot renew authority.
+Two new regression cases cover all twelve mismatching binding components,
+actual tick/position/ack, stale connection/stream after takeover, and removed
+membership. They extend the suite from 26 to 28 declarations. **The two new tests
+and the 28-case native suite are NOT_RUN in this follow-up**: BE13 owns the shared
+compile lease and explicitly requested a source-only correction with no Cargo.
+The earlier 26/26 result remains bound to the earlier native candidate above.
+
+Follow-up base: `6e2fe75dbd47d641e84888981b535e577db54c7a`. Changed paths are only
+this document, service `world/simulation.rs`, and `tests/world_simulation.rs`.
+No export, manifest, lockfile, contract, other worker's source or build target
+is changed. Scoped `rustfmt +1.88.0 --edition 2021 --check` for the two Rust files
+and `git diff --check` executed with exit 0. The committed correction SHA is sent
+directly to BE13 and delivery for consumer adoption and native validation.

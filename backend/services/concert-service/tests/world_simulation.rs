@@ -601,3 +601,70 @@ fn movement_history_is_bounded_when_ticks_are_not_serviced() {
     s.advance(4400, &a).unwrap();
     assert_eq!(s.pending_input_count(), 0);
 }
+
+#[test]
+fn replication_read_returns_actual_tick_and_rejects_every_foreign_binding_component() {
+    let (mut s, b, a) = fixture(32, 120.0);
+    s.submit(&b, input(&b, 9, 1.0, 0.0, false), 0, &a).unwrap();
+    s.advance(100, &a).unwrap();
+    assert_eq!(
+        s.replication_state(&b),
+        Some((
+            2,
+            PlayerState {
+                position: Position { x: 60.0, y: 80.0 },
+                ack_input_seq: 9,
+            }
+        ))
+    );
+    for component in 0..12 {
+        let mut foreign = b.clone();
+        match component {
+            0 => foreign.key.event_id = EventId::from_uuid(id(900)),
+            1 => foreign.key.user_id = AuthUserId::from_uuid(id(901)),
+            2 => foreign.session_id = id(902),
+            3 => foreign.connection_id = id(903),
+            4 => foreign.owner_id = id(904),
+            5 => foreign.room_id = id(905),
+            6 => foreign.room_epoch = id(906),
+            7 => foreign.stream_id = id(907),
+            8 => foreign.resources.map_id = AssetId::new("map_other".into()).unwrap(),
+            9 => foreign.resources.map_revision = Revision::new(2).unwrap(),
+            10 => {
+                foreign.resources.avatar_manifest_id = AssetId::new("avatar_other".into()).unwrap()
+            }
+            _ => foreign.resources.avatar_manifest_version = Revision::new(2).unwrap(),
+        }
+        assert_eq!(
+            s.replication_state(&foreign),
+            None,
+            "foreign binding component {component}"
+        );
+    }
+}
+
+#[test]
+fn replication_read_fences_superseded_streams_and_removed_membership() {
+    let (mut s, b, mut a) = fixture(32, 120.0);
+    s.submit(&b, input(&b, 1, 1.0, 0.0, false), 0, &a).unwrap();
+    s.advance(50, &a).unwrap();
+    let mut replacement = b.clone();
+    replacement.connection_id = id(900);
+    replacement.stream_id = id(901);
+    a.grant(&replacement, 5000, 12000);
+    s.replace_stream(replacement.clone(), 50, &a).unwrap();
+    assert_eq!(s.replication_state(&b), None);
+    assert_eq!(
+        s.replication_state(&replacement),
+        Some((
+            1,
+            PlayerState {
+                position: Position { x: 54.0, y: 80.0 },
+                ack_input_seq: 0,
+            }
+        ))
+    );
+    a.unavailable = true;
+    s.advance(51, &a).unwrap();
+    assert_eq!(s.replication_state(&replacement), None);
+}
