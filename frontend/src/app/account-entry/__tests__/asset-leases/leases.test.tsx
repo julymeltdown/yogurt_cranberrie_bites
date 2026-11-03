@@ -177,3 +177,16 @@ it('rejects a changed manifest hash without decoding a warm atlas under a differ
   await expect(leases.acquire({ ...source, document, pin: document }, signal())).rejects.toThrow()
   expect(decodeImage).toHaveBeenCalledOnce(); leases.dispose()
 })
+it.each([
+  { contract_version: '1.1.0', kind: 'avatar_config', manifest_id: 'whole_fixture', manifest_version: 1, render_mode: 'whole_character', character_id: 'photo01_front_01' },
+  { contract_version: '1.0.0', kind: 'avatar_config', item_ids: {} },
+  null,
+])('fails unavailable for non-layered display input without fetching artwork or hiding text', async config => {
+  const f = await account(), resolve = vi.fn(async () => f.owner.source!.options)
+  const view = render(<><p>Visible profile biography</p><AvatarThumbnail auth={f.auth} config={config} source={f.owner.source!} />
+    <ReviewedProfileAvatar config={config} label="Profile" options={{ auth: f.auth, scope: f.scope, resolve, source: f.owner.source! }} /></>)
+  expect(view.container.textContent).toContain('Visible profile biography')
+  expect(view.container.textContent).toContain('Avatar unavailable'); expect(view.container.querySelector('canvas')).toBeNull()
+  expect(resolve).not.toHaveBeenCalled(); expect(f.source.resources.read).not.toHaveBeenCalled()
+  view.unmount(); f.owner.dispose(); f.dispose()
+})
