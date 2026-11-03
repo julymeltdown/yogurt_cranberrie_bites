@@ -145,7 +145,7 @@ class DevTests(unittest.TestCase):
                 dev.local_origin(value)
         self.assertEqual(dev.local_origin("http://localhost:5173"), "http://localhost:5173")
 
-    def envs(self):
+    def envs(self, browser_origin=None):
         for service in runtime.START_ORDER:
             for kind in ("http", "metrics", "grpc"):
                 self.ports.reserve(f"{service}:{kind}")
@@ -153,7 +153,7 @@ class DevTests(unittest.TestCase):
             self.ports.reserve(name)
         keys = {key: "fresh-test-key" for key in ("AUTH_JWT_PRIVATE_KEY_PEM", "ACTOR_DELEGATION_VERIFYING_KEYS",
                 "ACTOR_DELEGATION_SIGNING_SEED", "RESOURCE_EVIDENCE_VERIFYING_KEYS", "RESOURCE_EVIDENCE_SIGNING_SEED")}
-        return dev.development_environments(self.cluster, self.ports, keys, {}, "new-redis-password", "new-mail-token")
+        return dev.development_environments(self.cluster, self.ports, keys, {}, "new-redis-password", "new-mail-token", browser_origin)
 
     def test_local_auth_configuration_keeps_gateway_boundary_and_owned_mail(self):
         with patch.dict(os.environ, {"HOME": "/foreign", "AUTH_DATABASE_URL": "postgres://foreign", "AUTH_GOOGLE_CLIENT_SECRET": "secret"}):
@@ -167,6 +167,14 @@ class DevTests(unittest.TestCase):
         self.assertEqual(auth["AUTH_PASSWORD_RESET_MAILER_ENDPOINT"], self.ports.url("mail") + "/reset")
         self.assertEqual(gateway["GATEWAY_REFRESH_COOKIE_SECURE"], "false")
         self.assertEqual(gateway["GATEWAY_CORS_ALLOWED_ORIGINS"], self.ports.url("api-gateway:http"))
+        self.assertEqual(auth["AUTH_PASSWORD_RESET_BASE_URL"], self.ports.url("api-gateway:http") + "/reset-password")
+
+    def test_reset_link_targets_the_configured_browser_origin(self):
+        origin = "http://127.0.0.1:5173"
+        envs = self.envs(origin)
+        self.assertEqual(envs["auth-service"]["AUTH_PASSWORD_RESET_BASE_URL"], origin + "/reset-password")
+        self.assertEqual(envs["api-gateway"]["GATEWAY_CORS_ALLOWED_ORIGINS"], origin)
+        self.assertEqual(envs["auth-service"]["AUTH_PASSWORD_RESET_MAILER_ENDPOINT"], self.ports.url("mail") + "/reset")
 
     def control(self):
         stack = Mock()

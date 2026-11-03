@@ -153,7 +153,7 @@ def development_environments(cluster, ports, keys, credentials, redis_password, 
     origin = local_origin(browser_origin or ports.url("api-gateway:http"))
     envs["api-gateway"].update(GATEWAY_REFRESH_COOKIE_SECURE="false", GATEWAY_CORS_ALLOWED_ORIGINS=origin)
     auth = envs["auth-service"]
-    auth["AUTH_PASSWORD_RESET_BASE_URL"] = ports.url("api-gateway:http") + "/reset-password"
+    auth["AUTH_PASSWORD_RESET_BASE_URL"] = origin + "/reset-password"
     auth["AUTH_PASSWORD_RESET_MAILER_MODE"] = "http"
     for label, path in (("VERIFICATION", "/verify"), ("PASSWORD_RESET", "/reset")):
         auth[f"AUTH_{label}_MAILER_ENDPOINT"] = ports.url("mail") + path
