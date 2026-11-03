@@ -253,12 +253,12 @@ async fn page(
     .await?
 }
 async fn save_replay(p: &PgPool, c: &mut Client) -> anyhow::Result<()> {
-    let h = head(c).await?;
+    let h = Box::pin(head(c)).await?;
     let mut after = h.clone();
     after.sequence = 0;
     let mut encoded = Vec::new();
     loop {
-        let r = page(c, after, 256).await?;
+        let r = Box::pin(page(c, after, 256)).await?;
         for s in r.signals {
             encoded.push(s.encode_to_vec());
         }
@@ -292,7 +292,7 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
     .await?;
     drop(conn);
     let server = Running::start(p.clone()).await?;
-    let mut c = server.client(Workload::Concert).await?;
+    let mut c = Box::pin(server.client(Workload::Concert)).await?;
     let channel = tls(Workload::Concert)?
         .connect(&server.endpoint, Workload::Friend)
         .await?;
@@ -332,9 +332,9 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
         .await;
         assert!(!matches!(public_result, Ok(Ok(_))));
     }
-    let empty = head(&mut c).await?;
+    let empty = Box::pin(head(&mut c)).await?;
     assert_eq!(empty.sequence, 0);
-    let e = page(&mut c, empty.clone(), 256).await?;
+    let e = Box::pin(page(&mut c, empty.clone(), 256)).await?;
     assert!(e.signals.is_empty());
     assert_eq!(e.next, e.head);
     // Correct TLS and credential authenticate other workloads, but both methods
@@ -343,7 +343,7 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
         .into_iter()
         .filter(|w| *w != Workload::Concert)
     {
-        let mut sibling = server.client(w).await?;
+        let mut sibling = Box::pin(server.client(w)).await?;
         assert_eq!(
             sibling
                 .read_head(request(head_query(), w))
@@ -384,20 +384,23 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
     let a = Uuid::new_v4();
     let b = Uuid::new_v4();
     let repo = PgFollowRepository::new(p.clone());
-    let before = head(&mut c).await?;
+    let before = Box::pin(head(&mut c)).await?;
     repo.block(a, b, chrono::Utc::now()).await?;
     assert!(repo.policy(a, b).await?.blocked_by_viewer);
-    let blocked = page(&mut c, before.clone(), 256).await?;
+    let blocked = Box::pin(page(&mut c, before.clone(), 256)).await?;
     assert_eq!(blocked.signals.len(), 1);
     assert_eq!(
         blocked.signals[0].reason,
         proto::InvalidationReason::FriendRelationshipChanged as i32
     );
-    assert_eq!(page(&mut c, before, 256).await?.signals, blocked.signals);
+    assert_eq!(
+        Box::pin(page(&mut c, before, 256)).await?.signals,
+        blocked.signals
+    );
     repo.unblock(a, b).await?;
     assert!(!repo.policy(a, b).await?.blocked_by_viewer);
     repo.block(b, a, chrono::Utc::now()).await?;
-    let before_delete = head(&mut c).await?;
+    let before_delete = Box::pin(head(&mut c)).await?;
     repo.apply_user_deletion(
         Uuid::new_v4(),
         a,
@@ -405,19 +408,19 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
         chrono::Utc::now() + chrono::Duration::days(30),
     )
     .await?;
-    let deleted = page(&mut c, before_delete, 256).await?;
+    let deleted = Box::pin(page(&mut c, before_delete, 256)).await?;
     assert!(deleted.signals.iter().any(|s|s.reason==proto::InvalidationReason::FriendUserRemoved as i32 && matches!(s.scope.as_ref(),Some(proto::invalidation_signal::Scope::User(u)) if u.user_id==a.to_string())));
     assert!(repo.block(a, b, chrono::Utc::now()).await.is_err());
-    let checkpoint = head(&mut c).await?;
+    let checkpoint = Box::pin(head(&mut c)).await?;
     let mut tx = p.begin().await?;
     sqlx::query("INSERT INTO user_blocks(blocker_id,blocked_id,created_at) VALUES($1,$2,now())")
         .bind(Uuid::new_v4())
         .bind(Uuid::new_v4())
         .execute(&mut *tx)
         .await?;
-    assert_eq!(head(&mut c).await?, checkpoint);
+    assert_eq!(Box::pin(head(&mut c)).await?, checkpoint);
     tx.rollback().await?;
-    assert_eq!(head(&mut c).await?, checkpoint);
+    assert_eq!(Box::pin(head(&mut c)).await?, checkpoint);
     // Force the actual owner mutation's trigger to fail; both block and journal
     // allocation must roll back. No private token/actor proof is needed to replay.
     let fail_a = Uuid::new_v4();
@@ -427,7 +430,7 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
         .block(fail_a, fail_b, chrono::Utc::now())
         .await
         .is_err());
-    assert_eq!(head(&mut c).await?, checkpoint);
+    assert_eq!(Box::pin(head(&mut c)).await?, checkpoint);
     assert!(!repo.policy(fail_a, fail_b).await?.is_blocked());
     sqlx::query(
         "ALTER TABLE friend_world_invalidation_journal DROP CONSTRAINT rpc_fixture_failure",
@@ -435,12 +438,12 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
     .execute(&p)
     .await?;
     sqlx::query("INSERT INTO user_blocks(blocker_id,blocked_id,created_at) SELECT gen_random_uuid(),gen_random_uuid(),now() FROM generate_series(1,300)").execute(&p).await?;
-    let first = page(&mut c, empty.clone(), 256).await?;
+    let first = Box::pin(page(&mut c, empty.clone(), 256)).await?;
     assert_eq!(first.signals.len(), 256);
     assert!(first.next.as_ref().unwrap().sequence < first.head.as_ref().unwrap().sequence);
-    let second = page(&mut c, first.next.unwrap(), 256).await?;
+    let second = Box::pin(page(&mut c, first.next.unwrap(), 256)).await?;
     assert_eq!(second.next, second.head);
-    let caught = page(&mut c, second.next.unwrap(), 17).await?;
+    let caught = Box::pin(page(&mut c, second.next.unwrap(), 17)).await?;
     assert!(caught.signals.is_empty());
     assert_eq!(caught.next, caught.head);
     for foreign in [
@@ -450,7 +453,7 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
         },
         proto::InvalidationCursor {
             owner_epoch: empty.owner_epoch.clone(),
-            sequence: head(&mut c).await?.sequence + 1,
+            sequence: Box::pin(head(&mut c)).await?.sequence + 1,
         },
     ] {
         let mut q = after_query();
@@ -495,7 +498,7 @@ async fn deadline_includes_pool_sql_and_cancellation_releases_work() -> anyhow::
     let observer = pool(3).await?;
     let readers = pool(1).await?;
     let server = Running::start(readers.clone()).await?;
-    let mut c = server.client(Workload::Concert).await?;
+    let mut c = Box::pin(server.client(Workload::Concert)).await?;
     let mut lock = observer.begin().await?;
     sqlx::query("lock table friend_world_invalidation_head in access exclusive mode")
         .execute(&mut *lock)
@@ -552,8 +555,8 @@ async fn deadline_includes_pool_sql_and_cancellation_releases_work() -> anyhow::
     }
     drained(&observer).await?;
     lock.rollback().await?;
-    head(&mut c).await?;
-    let checkpoint = head(&mut c).await?;
+    Box::pin(head(&mut c)).await?;
+    let checkpoint = Box::pin(head(&mut c)).await?;
     let mut break_storage = observer.begin().await?;
     sqlx::query("alter table friend_world_invalidation_head rename to rpc_fixture_hidden_head")
         .execute(&mut *break_storage)
@@ -571,7 +574,7 @@ async fn deadline_includes_pool_sql_and_cancellation_releases_work() -> anyhow::
     sqlx::query("alter table rpc_fixture_hidden_head rename to friend_world_invalidation_head")
         .execute(&observer)
         .await?;
-    assert_eq!(head(&mut c).await?, checkpoint);
+    assert_eq!(Box::pin(head(&mut c)).await?, checkpoint);
     drop(c);
     server.close().await?;
     readers.close().await;
@@ -589,15 +592,15 @@ async fn restart_replays_same_epoch_positions_and_signal_identity() -> anyhow::R
     .fetch_one(&p)
     .await?;
     let server = Running::start(p.clone()).await?;
-    let mut c = server.client(Workload::Concert).await?;
-    let h = head(&mut c).await?;
+    let mut c = Box::pin(server.client(Workload::Concert)).await?;
+    let h = Box::pin(head(&mut c)).await?;
     assert_eq!(h.owner_epoch, saved.0);
     assert_eq!(h.sequence, saved.1);
     let mut after = h.clone();
     after.sequence = 0;
     let mut signals = Vec::<Vec<u8>>::new();
     loop {
-        let r = page(&mut c, after, 23).await?;
+        let r = Box::pin(page(&mut c, after, 23)).await?;
         for s in r.signals {
             signals.push(s.encode_to_vec());
         }
