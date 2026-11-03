@@ -9,6 +9,7 @@ use crate::adapters::out::relationship_authority::{
 use chrono::{DateTime, Utc};
 use concert_application::world_ticket::WorldError;
 use concert_domain::relationship::{PolicyQuery, RelationshipError};
+pub(crate) use local::LocalRevision;
 use sqlx::PgPool;
 use uuid::Uuid;
 
@@ -130,7 +131,7 @@ pub(crate) struct RecipientObservation {
     actor: super::CurrentOwnedMembership,
     candidate: super::CurrentOwnedMembership,
     owners: RevisionVector,
-    local: local::LocalRevision,
+    local: LocalRevision,
     checked_at: DateTime<Utc>,
     valid_until: DateTime<Utc>,
     visible: bool,
@@ -164,7 +165,7 @@ impl RecipientObservation {
     pub(crate) fn owner_revisions(&self) -> RevisionVector {
         self.owners
     }
-    pub(crate) fn local_revisions(&self) -> local::LocalRevision {
+    pub(crate) fn local_revisions(&self) -> LocalRevision {
         self.local
     }
     pub(crate) fn checked_at(&self) -> DateTime<Utc> {

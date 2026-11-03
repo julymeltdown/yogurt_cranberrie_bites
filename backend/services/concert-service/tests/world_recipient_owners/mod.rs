@@ -319,6 +319,10 @@ async fn native_signed_presence_local_policy_revocation_and_deadlines() -> anyho
         reader.read(&self_context).await?.visible(),
         "distinct target shares original request"
     );
+    assert!(
+        first.check_scope(&self_context).is_err(),
+        "one target cannot consume another target observation"
+    );
     assert_eq!(format!("{first:?}"), "RecipientObservation([REDACTED])");
     assert!(
         reader.read(&ctx).await.is_err(),
