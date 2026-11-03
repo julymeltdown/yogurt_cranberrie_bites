@@ -381,7 +381,12 @@ async fn owning_mutations_replay_over_guarded_mutual_tls() -> anyhow::Result<()>
     store(&p).revoke(&jti).await?;
     let logout = page(&mut c, before.clone(), 256).await?;
     assert!(logout.signals.iter().any(|s|matches!(s.scope.as_ref(),Some(proto::invalidation_signal::Scope::Family(x)) if x.user_id==u.to_string()&&x.session_family_id==f.to_string())));
-    assert_eq!(page(&mut c, before.clone(), 256).await?, logout);
+    let repeated = page(&mut c, before.clone(), 256).await?;
+    // Each call has a fresh request ID and checks its own exact echo in page().
+    // Redelivery stability applies to retained signals and committed positions.
+    assert_eq!(repeated.signals, logout.signals);
+    assert_eq!(repeated.next, logout.next);
+    assert_eq!(repeated.head, logout.head);
     assert!(!store(&p).session_is_live(u, f, chrono::Utc::now()).await?);
     let f2 = Uuid::new_v4();
     session(&p, u, f2).await?;
