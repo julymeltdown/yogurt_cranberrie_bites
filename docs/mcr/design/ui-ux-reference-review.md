@@ -2,7 +2,18 @@
 
 ## Decision
 
-**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has been read by the visual implementation owners. Default shell chrome, qualified Map/theme producers, Social route composition and visual outfit choices are integrated. Social services require explicit readiness; Wall still lacks qualified write inputs. Approved character/venue art, scene prominence and compact screen hierarchy remain material gaps. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; dated follow-through records what changed.
+**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has been read by the visual implementation owners. Default shell chrome, illustrated World scenery, illustrated Map overview, Social route composition and visual outfit choices are integrated. Approved character rendering, populated avatar/item-media rows, distinctive landing artwork and live Wall composition remain unfinished. Map also retains orthogonal geography, numbered markers and a split-sheet default composition instead of the reference's large labeled map. The illustrated scenery source is delivered; its remaining production release binding must not be confused with missing source artwork. Social services require explicit readiness; Wall still lacks qualified write inputs. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; dated follow-through records what changed.
+
+At published `9204e1e5`, Main freshly rehashed the original attachment and its
+committed copy, checked the viewed-reference handoffs, inspected recorded 390px
+captures across all ten reference surfaces, and checked current route/provider
+composition. Public/auth, community presentation, Customize and Profile source
+pins still match their recorded captures. Historical community-router and
+Customize-host CSS pins are older than the current root; those isolated captures
+are not a fresh integrated browser run. The current default Wall still supplies
+`release={null}`. The inspected captures and scoped presentation styles contain
+no decorative left accent; symmetric borders and keyboard focus remain. No
+general SL review or live-service test was repeated for this handoff check.
 
 The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged copy is [user-reference.jpg](ui-reference-audit-2026-11-04/user-reference.jpg), SHA256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`. This is the current screen-level design handoff. The earlier [approved mobile world sheet](../../source/mcr_v2_en/reference/approved_mobile_world.png) contains five world compositions, not these ten screens. It remains an immutable historical source.
 
