@@ -20,7 +20,7 @@ it is not feature integration or release acceptance.
 | BE03 | INTEGRATED | [Email ingress review](evidence/browser-auth-integration.md), candidate `689e4d2`: parent reran 221 Gateway tests, nine harness tests and 53 real native HTTP checks with three mail deliveries and cleanup PASS. Frozen email/account mapping, browser guards and invalid-credential handling delivered. Real browser cookie policy, configured OAuth and complete BE03 acceptance remain open. |
 | BE04 | IN_PROGRESS | [Joined owner chain](backend/http-owner-chain.md), `ca26683` integrated as `e6c629d`: production Axum extraction/timeout and configured clients reach actual guarded Auth/Profile services and isolated databases. One native scenario with nine controls passes, including negative Auth dispatch suppression, restored-account fresh login, owner outages and original-stop refusal; cleanup passes. HTTP route is test-only/in-process. Signed Concert admission, event authority and whole identity acceptance remain open. |
 | BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
-| BE08 | IN_PROGRESS | Source candidate `c135bff` is committed. Independent source review identifies a timestamp check/trigger conflict and a missing caller-held transaction seam. Worker owns corrections and now exclusively owns the shared Rust target for focused/native validation. No runtime or whole-task acceptance yet. |
+| BE08 | IN_PROGRESS | Candidate `c135bff`, corrections `a91ed08` and handoff `bbc1524` are committed on the isolated worker branch. Worker reports focused Rust and fresh PostgreSQL/restart/cleanup PASS, including caller-held transaction and concurrent closure. Independent correction/evidence review is assigned; main integration and public routes remain open. The worker explicitly released the shared Rust target. |
 | BE15 | IN_PROGRESS | [Reviewed internal receipt/outbox foundation](evidence/command-receipts-integration.md), `7cbb97e`/`c2a2c30`: 33 combined deterministic Rust, 82 Python helper and 17 real PostgreSQL tests pass; owned migration failure/recovery, restart persistence and cleanup pass. Review fixes cover keyed private fingerprints, post-authorization expiry and result/outbox revision equality. Bounded goal COMPLETE; production producer/Auth/public API/key configuration/runtime/load gates remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
 | FE06 | MOCK_READY | [Theme integration review](evidence/email-and-theme-integration.md): three scoped palettes and atomic Phaser skin replacement; unchanged map/camera/movement, fallback, reentry and resource disposal pass focused262, build/lint and three-width native checks. Parent fixed-source checks pass. Production art/shell wiring, server preferences and real multiplayer remain open. |
@@ -35,9 +35,10 @@ it is not feature integration or release acceptance.
 | FE15 | MOCK_READY | Reviewed movement/camera/interaction implementation `d91ee02` and bottom-edge correction `aec5d17`; independent QA `b381d03` closes visibility and valid-boundary-route findings. Worker 958 tests/22 files (87 FE15), build/lint and four-width native/short-height checks pass. Parent reran affected movement/runtime tests, build/lint and inspected mobile/short screenshots. Actual networking, authoritative physics, selected artwork, devices and full-world integration remain open. |
 | FE16 | MOCK_READY | [Reviewed transport integration](evidence/world-transport-integration.md), `e3a4d84`/`5863f91`: 568 combined frontend tests (158 transport), build/lint/type-drift/origin/plan and installed-Chrome five canonical traces pass. Gap recovery and pre-send room-switch failure findings corrected. Bounded goal COMPLETE; production lifecycle, replication and real-server/IN01 remain NOT_RUN. |
 | FE17 | MOCK_READY | [Replication integration](evidence/replication-integration.md), worker `bd202ad` integrated as `79e4556`: bounded headless roster/interpolation/input/ack/recovery ownership; parent181combined tests/build/lint and independent probes pass. Actual authoritative physics is unavailable under C05; FE12 rendering/art and production server/shell qualification remain open. |
+| FE18 | IN_PROGRESS | Separate `fe-world-access` checkout at `366cf8b`; actual unbudgeted goal confirmed ACTIVE. Rooms and accessible nearby-people panels consume the existing replication owner and C05 room list. Invitation contracts, avatar art, root composition and real server qualification remain open. |
 | FE19 | MOCK_READY | [Places integration](evidence/places-integration.md): map overview, scoped place details and controls help; stale-target and actual reload corrections independently closed. Parent61focused/build/lint pass and all154review source hashes match. Production shell/BE08/venue/device and whole-task gates remain open. |
-| FE21 | IN_PROGRESS | Party discovery, detail, MY PLAN and apply/cancel/recovery implementation uses the reviewed nine-operation consumer freeze. Assigned isolated worker is testing UI/native behavior; root composition and real backend journey remain open. |
-| FE24 | IN_PROGRESS | Worker `5f1005d`/`595c07f` delivers giveaway list/detail and independent GIVING/RECEIVING pagination.60focused tests/build/lint and390px/wide native fixture evidence pass. Independent review is active; main owns production shell panel composition. No actual backend or reservation-command qualification. |
+| FE21 | MOCK_READY | Worker `0497d86` integrated as `78cfb7c`; scoped independent review and parent72affected tests/build/lint pass. Default `/meet` and detail routes now use one shell-owned controller, retain pending commands across tabs and enforce fresh READ_ONLY cancellation decisions. [Composition evidence](evidence/community-shell-integration.md) records worker actual-Phaser fixture and parent default-router native runs. Real backend/SQL/multiuser and whole-task gates remain open. |
+| FE24 | MOCK_READY | Worker `5f1005d`/`595c07f` integrated as `3cb3f9c`/`8c33ba3`; scoped QA clear, parent105affected tests/build/lint pass. [Composition evidence](evidence/community-shell-integration.md) connects list/detail/own activity to default routes with policy-bound bootstrap, lifecycle cleanup and390px/wide Chrome checks. No actual backend or reservation-command qualification. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **11/112**;
 accepted total: **11/118**. No required IA entry or IN01–IN05 integration gate has
@@ -49,15 +50,19 @@ startup is verified within BE05; product APIs/identity are not.
 ## Integration and ownership
 
 The main checkout integrates reviewed commits serially and alone publishes master.
-Current parallel work covers BE08 review fixes/native validation, FE21 party UI,
-FE24 giveaway handoff/review fixes and independent FE24 QA. The HTTP owner-chain
-writer explicitly stopped; the integrator repaired and qualified its preserved
-fixture, committed it and released the shared Rust target to BE08. Each chat uses
-an isolated worktree and exact paths. Coordination preserves the user's selected
-model/reasoning. The nine-operation party/gift consumer contract is ready; full
-C04 remains a candidate. FE21/FE24 proceed independently of matching backend completion.
-The original BE04 goal and all current bounded assignments are ACTIVE; prior
-completed scopes remain historical. Shared Rust validation has one explicit owner.
+Current parallel work covers BE08 correction/evidence review and FE18 rooms/nearby
+implementation. FE21/FE24 feature reviews and the independent
+[community-shell review](qa/community-shell-review.md) are clear; both features
+are composed in the default router. The original
+BE04 goal is tool-confirmed BLOCKED awaiting an isolated assignment/shared
+admission contract; its writer is stopped after an ownership violation was
+caught, reviewed and corrected. Each active writer has its own exact checkout
+and paths. Coordination preserves the user's selected model/reasoning. Bounded
+FE21 and FE24 delivery and FE21 QA goals are confirmed COMPLETE; FE18 is confirmed
+ACTIVE. The shell review is accepted at `fc8c5d9`, with goal closure requested.
+BE08 released Rust/PostgreSQL ownership after its clean handoff; the integrator
+now owns shared native validation. QA's next BE08 goal has been dispatched and
+awaits actual tool confirmation.
 The [chat ownership register](chat-coordination.md) records exact scopes.
 
 Historical delivery notes below retain their original checkpoint states. Current

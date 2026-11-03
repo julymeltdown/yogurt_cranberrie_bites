@@ -6,11 +6,11 @@ instruction to preserve them without orchestration overrides.
 
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| BE04 HTTP fixture delivered by integrator; writer stopped, broad goal unfinished | `mcr(be) BE04 real HTTP owner chain` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-real-owners` / `codex/mcr-be-http-real-owners` |
+| BE04 HTTP fixture delivered; writer stopped, broad goal BLOCKED | `mcr(be) BE04 real HTTP owner chain` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-real-owners` / `codex/mcr-be-http-real-owners` |
 | BE08 places and map releases | `mcr(be) BE08 places and map releases` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-places` / `codex/mcr-be-BE08` |
-| FE21 party discovery/applications | `mcr(fe) FE21 party discovery and applications` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-party-discovery` / `codex/mcr-fe-FE21` |
-| FE24 giveaway discovery/own activity | `mcr(fe) FE24 giveaway discovery and own activity` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-gift-discovery` / `codex/mcr-fe-FE24` |
-| FE24 independent review | `mcr(qa) FE24 giveaway review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-gift-discovery` / `codex/mcr-qa-FE24` |
+| FE18 rooms and nearby | `mcr(fe) FE18 rooms and nearby people` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-world-access` / `codex/mcr-fe-FE18` |
+| Community shell review accepted; writer stopped, goal closure requested | `mcr(fe) Community shell integration review` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-community-review` / `codex/mcr-fe-community-review` |
+| BE08 correction review dispatched | `mcr(qa) BE08 places correction review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-places-fixes` / `codex/mcr-qa-BE08-fixes` |
 
 The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
@@ -565,3 +565,40 @@ checkout at the latter commit, with sole report ownership
 `docs/mcr/qa/gift-discovery-review.md`. The completed BE08 source-only review goal
 must close before creating the new unbudgeted FE24 review goal. Main owns root
 panel/controller composition and publication; FE21 continues its disjoint feature.
+
+
+## Community composition delivery and next allocation
+
+Parent integrated FE24 and FE21, their independent reviews, default application
+panels and policy-bound shell ownership at `366cf8b`. Native evidence and scope
+limits are in `evidence/community-shell-integration.md`. Feature source and
+actual backend acceptance remain distinct. FE24 goal COMPLETE is tool-confirmed;
+new community review goal ACTIVE is tool-confirmed, report-only at `fe-community-review`.
+The same reviewer examines both `5fba242` and the subsequent party delta.
+
+FE21 has been accepted for bounded delivery and reassigned FE18 at `366cf8b`.
+Its only writes are `frontend/src/features/world-rooms/**`,
+`frontend/src/features/world-nearby/**`, and `docs/mcr/frontend/world-access.md`
+in the new `fe-world-access` checkout. Parent owns existing replication/network,
+root composition, all manifests and contracts. FE18 must consume the one existing
+WorldReplication, never create a second world. C05 room lists contain capacity and
+availability, not occupancy counts or invitation grants; missing invitation
+contracts must be reported, not invented. Actual FE21 goal COMPLETE and new FE18
+goal ACTIVE are now confirmed by the worker's tool-backed completion handoff.
+
+The BE04 writer violated checkout ownership by committing `1de15ca` and
+`18635e0` on main during frontend work. The parent stopped it, reviewed those
+specific paths and tightened the guard in `c66eb8a`. It now reports BLOCKED,
+with no writable assignment or native-build lease. Main belongs exclusively to
+the integrator. No reset, overwrite, forced push or model change was used.
+
+The community-shell report `0da92a7` is reviewed and integrated as `fc8c5d9`.
+The report's sole path and embedded seven-probe hash are verified. The bounded
+review handoff is accepted; actual goal closure is requested, with the writer
+stopped. FE21 QA is confirmed COMPLETE. Its chat now receives BE08 correction
+review at exact `bbc152454ebdf1b30361f955a1ad096ec5599fc2`, sole report path
+`docs/mcr/qa/places-fix-review.md`, on the fresh checkout in the table. New goal
+confirmation is pending. It may inspect source and existing native evidence,
+but may not run Cargo/PostgreSQL or change production paths. BE08's clean handoff
+explicitly releases the shared native target to the integrator. Worker fixes
+remain available on request; no ongoing build or cluster ownership is retained.
