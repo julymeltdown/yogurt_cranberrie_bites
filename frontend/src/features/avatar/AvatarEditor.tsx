@@ -2,7 +2,10 @@ import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react'
 import { layers, sameConfig, type AvatarConfig } from './contract'
 import type { AvatarEditorController, EditorNotice } from './controller'
 import { OptionStrip } from './OptionStrip'
-import { ConcertAction, ConcertTabs, ConcertWindow } from '../../shared/ui/concert-window'
+import { ConcertAction, ConcertWindow } from '../../shared/ui/concert-window'
+import { CategoryRail } from './reference-presentation/CategoryRail'
+import { randomCandidates, randomizeDraft } from './reference-presentation/actions'
+import { TonePalette, type ToneColor } from './reference-presentation/TonePalette'
 import './avatar-editor.css'
 const messages: Record<Exclude<EditorNotice, null>, string> = {
   'invalid-selection': 'That selection is unavailable in the current avatar collection.',
@@ -15,9 +18,9 @@ const messages: Record<Exclude<EditorNotice, null>, string> = {
   'preview-unavailable': 'Reviewed avatar artwork is unavailable. Customization will be available when the current collection is ready.',
 }
 const name = (id: string) => id.replaceAll('_', ' ')
-export function AvatarEditor({ controller }: { readonly controller: AvatarEditorController }) {
+export function AvatarEditor({ controller, tonePalette }: { readonly controller: AvatarEditorController; readonly tonePalette?: readonly ToneColor[] | undefined }) {
   const id = useId()
-  const [category, setCategory] = useState('presets')
+  const [category, setCategory] = useState('hair')
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), host = useRef<HTMLDivElement>(null)
   useEffect(() => { controller.start(); return () => controller.stop() }, [controller])
   useEffect(() => { const element = host.current, canvas = state.preview.canvas; if (!element || !canvas) return
@@ -41,23 +44,28 @@ export function AvatarEditor({ controller }: { readonly controller: AvatarEditor
     {state.draft && !state.catalog.tones.includes(state.draft.skin_tone_id) && <option value={state.draft.skin_tone_id} disabled>Saved skin tone unavailable</option>}
     {state.catalog.tones.map(tone => <option key={tone} value={tone} disabled={!state.draft || !available({ ...state.draft, skin_tone_id: tone })}>{name(tone)}</option>)}
   </select></div> }] : []
-  return <section className="mcr-avatar-editor" aria-label="Avatar editor" aria-busy={busy}><ConcertWindow title="DRESS UP" headingLevel={1} icon="me" footer={<>
-    <div className="mcr-avatar-actions"><ConcertAction pending={state.phase === 'saving'} disabled={!editable || state.needsReconciliation || !state.draft || !state.persisted || !available(state.draft) || sameConfig(state.draft, state.persisted.config)} onClick={() => void controller.save()}>Save outfit</ConcertAction>
-      <ConcertAction tone="paper" disabled={!editable} onClick={() => controller.cancel()}>Cancel changes</ConcertAction></div>
-    {state.needsReconciliation && !state.candidate && <p className="mcr-avatar-note">Cancel changes only restores the local draft. Check the saved outfit before another save.</p>}
+  return <section className="mcr-avatar-editor" aria-label="Avatar editor" aria-busy={busy}><ConcertWindow title="CUSTOMIZE" headingLevel={1} icon="me" footer={<>
+    <div className="mcr-avatar-actions">
+      <ConcertAction tone="paper" aria-label="Random outfit" disabled={!randomCandidates(controller).length} onClick={() => randomizeDraft(controller)}>Random</ConcertAction>
+      <ConcertAction tone="paper" aria-label="Reset draft" disabled={!editable || !!state.candidate} onClick={() => controller.cancel()}>Reset</ConcertAction>
+      <ConcertAction aria-label="Save outfit" pending={state.phase === 'saving'} disabled={!editable || state.needsReconciliation || !state.draft || !state.persisted || !available(state.draft) || sameConfig(state.draft, state.persisted.config)} onClick={() => void controller.save()}>Save</ConcertAction>
+    </div>
+    {state.needsReconciliation && !state.candidate && <p className="mcr-avatar-note">Reset only restores the local draft. Check the saved outfit before another save.</p>}
+    {state.candidate && <p className="mcr-avatar-note">Choose Keep my draft or Use saved outfit before resetting.</p>}
   </>}>
-    <p className="mcr-avatar-revision">{state.persisted ? `Saved outfit · revision ${state.persisted.revision}` : 'No verified saved outfit'}</p>
+    <p className="mcr-avatar-revision mcr-avatar-sr-only">{state.persisted ? `Saved outfit · revision ${state.persisted.revision}` : 'No verified saved outfit'}</p>
     <div className={`mcr-avatar-workbench${state.catalog ? ' mcr-avatar-workbench--catalog' : ''}`}>
     <div className="mcr-avatar-preview" role="img" aria-label={state.preview.phase === 'ready' ? 'Draft outfit preview' : 'Avatar preview unavailable'}>
       <div ref={host} />
       {state.preview.phase !== 'ready' && <p>{state.preview.phase === 'loading' ? 'Loading preview…' : 'Preview unavailable'}</p>}
     </div>
-    {state.catalog && <ConcertTabs label="Avatar categories" orientation="vertical" items={categories.map(item => ({ ...item, content:
+    {state.catalog && <CategoryRail items={['hair', 'outfit', 'accessory', 'tone', 'presets', 'body', 'eyes'].flatMap(value => categories.filter(item => item.value === value)).map(item => ({ ...item, content:
       <>{item.value === category && state.draft && <OptionStrip key={category} controller={controller} category={category} />}
+      {item.value === category && <TonePalette controller={controller} palette={tonePalette} />}
       <details className="mcr-avatar-id-options"><summary>Choose by ID</summary>{item.content}</details></>,
-    }))} value={category} onValueChange={setCategory} />}
+    }))} value={category} onChange={setCategory} />}
     </div>
-    <div className="mcr-avatar-status">
+    <div className={`mcr-avatar-status${state.phase === 'ready' && !state.notice && !state.needsReconciliation ? ' mcr-avatar-sr-only' : ''}`}>
     <p role="status" aria-live="polite">{state.phase === 'saving' ? 'Saving outfit…' : state.phase === 'reconciling' ? 'Checking latest saved outfit…'
       : state.phase === 'loading' ? 'Loading your outfit…' : state.notice ? messages[state.notice]
         : state.phase === 'unavailable' || state.phase === 'disposed' ? 'Avatar editing is unavailable for this session.' : 'Changes are a draft until you save.'}</p>
