@@ -66,7 +66,7 @@ impl RelationshipReadSigner {
         audience: Workload,
     ) -> anyhow::Result<ActorDelegationClient<S>> {
         anyhow::ensure!(
-            matches!(audience, Workload::Auth | Workload::Friend),
+            matches!(audience, Workload::Auth | Workload::Friend | Workload::Profile),
             "relationship reads require an owner audience"
         );
         Ok(ActorDelegationClient::new(inner, self.0.clone(), audience))
@@ -79,7 +79,7 @@ impl RelationshipReadVerifier {
         gateway: &ActorDelegationVerifier,
     ) -> anyhow::Result<Self> {
         anyhow::ensure!(
-            matches!(audience, Workload::Auth | Workload::Friend) && gateway.audience() == audience,
+            matches!(audience, Workload::Auth | Workload::Friend | Workload::Profile) && gateway.audience() == audience,
             "relationship read verifier requires matching owner audience"
         );
         for key in keys {

@@ -750,6 +750,7 @@ dependencies = [
  "jsonschema",
  "migration-runtime",
  "platform",
+ "profile-service",
  "prost",
  "protoc-bin-vendored",
  "ring",

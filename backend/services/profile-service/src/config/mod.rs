@@ -87,6 +87,7 @@ impl AppConfig {
                 platform::grpc_auth::Workload::Post,
                 platform::grpc_auth::Workload::Friend,
                 platform::grpc_auth::Workload::Auth,
+                platform::grpc_auth::Workload::Concert,
             ],
             &[platform::grpc_auth::Workload::Gateway],
         )?;
