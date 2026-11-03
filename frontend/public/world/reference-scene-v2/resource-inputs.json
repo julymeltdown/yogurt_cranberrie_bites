@@ -1,0 +1,186 @@
+{
+  "format": "MCR_REFERENCE_SCENE_RESOURCE_INPUTS",
+  "version": 2,
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "geometry_hash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+  "geometry": {
+    "path": "geometry-proposal.json",
+    "sha256": "sha256:6f1a338a848cdf517ec44638132090bef8da331a97f662e0f05e7b872015e62e",
+    "bytes": 154709
+  },
+  "worker_base": "1e5022885525ab56f056aa2c24100e18c4bc67ed",
+  "target": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "panels": [
+      "WORLD (third)",
+      "MAP (fourth)"
+    ]
+  },
+  "themes": [
+    {
+      "theme_id": "PARADE",
+      "ground": {
+        "path": "parade-ground.png",
+        "sha256": "sha256:9adeee682cad005cd8e0407234dc2fe675a35880723cd83c1f8fa8cdfd439277",
+        "bytes": 534309,
+        "width": 768,
+        "height": 1296
+      },
+      "atlas": {
+        "path": "parade-scenery.png",
+        "sha256": "sha256:541511b117190d3e265a7cb9726c9365b66e3000f497da0b5aab2bcee77a20d1",
+        "bytes": 286255,
+        "width": 1024,
+        "height": 1024,
+        "frames": {
+          "path": "parade-frames.json",
+          "sha256": "sha256:9c24780dfd8675d3966ab838ee25a8d2e68e7f4391edf9dd5822f4c6d59e80a8",
+          "bytes": 1893
+        }
+      },
+      "editable_sources": [
+        {
+          "path": "parade-ground.svg",
+          "sha256": "sha256:dbdd7f49ea6df15b9dc31badc8e670ed649b9ebd04f4d3844eeae17c513e1819",
+          "bytes": 1329533
+        },
+        {
+          "path": "parade-ground.tsrct",
+          "sha256": "sha256:94f038611770a91ae0158961bb58a97cb7e781cb4e8878e91d1c2f8d9d6fb2dc",
+          "bytes": 3261931
+        },
+        {
+          "path": "parade-ground-editable.json",
+          "sha256": "sha256:b1ac870066559642d103e2163865087ba77c7f626252056a8cd1818ac8f344d3",
+          "bytes": 3260862
+        },
+        {
+          "path": "parade-scenery.svg",
+          "sha256": "sha256:7ba724a45eeba230cda2f14ed97788a63350d6956bec621d68c88c560085caed",
+          "bytes": 578201
+        },
+        {
+          "path": "parade-scenery.tsrct",
+          "sha256": "sha256:6deceb1a5120b7b65bc0ddd09104df98742507ebaa2dfb8741dd90c4e86e405f",
+          "bytes": 1319332
+        },
+        {
+          "path": "parade-scenery-editable.json",
+          "sha256": "sha256:798d4483caed9f984673b4b7c77e9a34963a9f198e8c2ee685903e8b750b1935",
+          "bytes": 1318263
+        }
+      ]
+    },
+    {
+      "theme_id": "REVENGE",
+      "ground": {
+        "path": "revenge-ground.png",
+        "sha256": "sha256:9adeee682cad005cd8e0407234dc2fe675a35880723cd83c1f8fa8cdfd439277",
+        "bytes": 534309,
+        "width": 768,
+        "height": 1296
+      },
+      "atlas": {
+        "path": "revenge-scenery.png",
+        "sha256": "sha256:541511b117190d3e265a7cb9726c9365b66e3000f497da0b5aab2bcee77a20d1",
+        "bytes": 286255,
+        "width": 1024,
+        "height": 1024,
+        "frames": {
+          "path": "revenge-frames.json",
+          "sha256": "sha256:9c24780dfd8675d3966ab838ee25a8d2e68e7f4391edf9dd5822f4c6d59e80a8",
+          "bytes": 1893
+        }
+      },
+      "editable_sources": [
+        {
+          "path": "revenge-ground.svg",
+          "sha256": "sha256:9308f6a4f3e01ea809ab067b262ad9f5c801229357b7a55b3d0c6f7dd438c206",
+          "bytes": 1329534
+        },
+        {
+          "path": "revenge-ground.tsrct",
+          "sha256": "sha256:814db8c2ad3ee06809232f17dcec251e99b822fbd95958d6058a406b01fc4e99",
+          "bytes": 3261932
+        },
+        {
+          "path": "revenge-ground-editable.json",
+          "sha256": "sha256:b74f30dbc53de997fe040c809518ce6d3c13ff53bd18c7cffe6c48efa8674048",
+          "bytes": 3260863
+        },
+        {
+          "path": "revenge-scenery.svg",
+          "sha256": "sha256:f4625cf265f7669acf2cc3f173f39ee15d9b066b6ff26245ac022bacd63e4797",
+          "bytes": 578202
+        },
+        {
+          "path": "revenge-scenery.tsrct",
+          "sha256": "sha256:d7ffd383833a125068d0cc71456340a1b3a87765a61cbccd94cea0bb518f54de",
+          "bytes": 1319333
+        },
+        {
+          "path": "revenge-scenery-editable.json",
+          "sha256": "sha256:2edde0fb2787742032ce4cd67a207cc7f41c2f0afdbd384fb2212f123f1327d5",
+          "bytes": 1318264
+        }
+      ]
+    },
+    {
+      "theme_id": "DANGER",
+      "ground": {
+        "path": "danger-ground.png",
+        "sha256": "sha256:9adeee682cad005cd8e0407234dc2fe675a35880723cd83c1f8fa8cdfd439277",
+        "bytes": 534309,
+        "width": 768,
+        "height": 1296
+      },
+      "atlas": {
+        "path": "danger-scenery.png",
+        "sha256": "sha256:6f05d17832001cf3f6ad07ca13e753ebf26e576244dad229e73761d9f50d6cb8",
+        "bytes": 286381,
+        "width": 1024,
+        "height": 1024,
+        "frames": {
+          "path": "danger-frames.json",
+          "sha256": "sha256:9c24780dfd8675d3966ab838ee25a8d2e68e7f4391edf9dd5822f4c6d59e80a8",
+          "bytes": 1893
+        }
+      },
+      "editable_sources": [
+        {
+          "path": "danger-ground.svg",
+          "sha256": "sha256:bcc8eea676f8423e7c001e9a342f4675184810ab92a02d6109250bcb2ac20f30",
+          "bytes": 1329533
+        },
+        {
+          "path": "danger-ground.tsrct",
+          "sha256": "sha256:b807825e97803630f2bc6b8c716ad47a537ef1a66f4db4838c5ff13f8834ce87",
+          "bytes": 3261931
+        },
+        {
+          "path": "danger-ground-editable.json",
+          "sha256": "sha256:530f83599f8383592c594b1febefca67dbfefe64fe416126b281949858936d9f",
+          "bytes": 3260862
+        },
+        {
+          "path": "danger-scenery.svg",
+          "sha256": "sha256:6aed1d5da72ec188dd67a1dac4c00e40472f7e1c22cbc9b37b21b12e02e48aec",
+          "bytes": 578201
+        },
+        {
+          "path": "danger-scenery.tsrct",
+          "sha256": "sha256:2d22689390eea0de5d6db782873e131e9dc89fa8b02fa19089550fd1c65f888b",
+          "bytes": 1319332
+        },
+        {
+          "path": "danger-scenery-editable.json",
+          "sha256": "sha256:32730cf52a26574b44ff1b0b289681c1a795cd79694b23f6a4d5b164e2af4959",
+          "bytes": 1318263
+        }
+      ]
+    }
+  ],
+  "placement_contract": "geometry-proposal.json placements; stable id/frame/x/y/optional width/height/depth_y/footprint/interaction_id. Draw atlas frames sorted ascending depth_y, actor depth=feet y. Alpha canopy overhang is not a solid wall.",
+  "adoption": "Integrator must validate coordinated server collision/release and renderer adoption. This file is not a current release manifest."
+}

@@ -1,0 +1,83 @@
+{
+  "task": "FE-REF-MAP",
+  "node": "24.22.2",
+  "checks": {
+    "tests": {
+      "command": "node node_modules/vitest/vitest.mjs run --configLoader runner --no-cache --maxWorkers 3 src/features/places src/app/places-entry src/app/__tests__/reference-root/root.test.tsx",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "log": "tests.log"
+    },
+    "types": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --project tsconfig.json",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "log": "types.log"
+    },
+    "lint": {
+      "command": "node node_modules/oxlint/bin/oxlint src vite.config.ts",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    "native": {
+      "command": "node src/features/places/__tests__/reference-map/native.mjs",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "log": "native.log"
+    },
+    "build": {
+      "command": "node --input-type=module -e 'import {build} from \"vite\"; await build({configLoader:\"runner\",build:{outDir:\"/tmp/mcr-ref-map-production\",emptyOutDir:true,copyPublicDir:false}})'",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    "origin": {
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "cwd": "repository",
+      "exitCode": 0,
+      "log": "origin.log"
+    },
+    "plan": {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": "repository",
+      "exitCode": 0,
+      "log": "plan.log",
+      "qualification": "Prior unchanged planning check retained; planner/source files unchanged"
+    }
+  },
+  "testFiles": 9,
+  "tests": 111,
+  "native": "native.json",
+  "captures": [
+    {
+      "path": "fit-selected-390.jpg",
+      "bytes": 52516
+    },
+    {
+      "path": "portrait-360.jpg",
+      "bytes": 66389
+    },
+    {
+      "path": "portrait-390.jpg",
+      "bytes": 71681
+    },
+    {
+      "path": "portrait-430.jpg",
+      "bytes": 77557
+    },
+    {
+      "path": "short-390.jpg",
+      "bytes": 40554
+    }
+  ],
+  "limitations": [
+    "Deterministic in-process HTTP/C05 and simulated review metadata only",
+    "Inherited test avatar is not approved selected-pack product art",
+    "Orthogonal source is not the diagonal reference scene",
+    "No real-device, live two-account, FPS or load acceptance"
+  ],
+  "qualifiedMerge": "957132f33cef853356bf66dd40d1fec2df540b1d",
+  "publishedCompatibilityRepair": "90f44fd99fdfe17f3ee3e596ceff0583f6db2c47",
+  "resetNativeProof": true
+}
