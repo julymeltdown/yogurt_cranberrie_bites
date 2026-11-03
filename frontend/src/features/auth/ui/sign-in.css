@@ -1,0 +1,23 @@
+.auth-sign-in { width: min(100% - 2.5rem, 26rem); margin: 0 auto; padding: 2rem 0 max(2rem, env(safe-area-inset-bottom)); color: var(--mcr-ink, #201d1d); }
+.auth-sign-in h1 { font-size: clamp(2.4rem, 8vw, 3.5rem); line-height: 1.05; margin: .5rem 0 1rem; letter-spacing: -.04em; }
+.auth-home, .auth-link { color: inherit; text-underline-offset: .25em; }
+.auth-home { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
+.auth-eyebrow { margin: 2.5rem 0 .75rem; font-size: .7rem; letter-spacing: .14em; color: var(--mcr-muted, #605952); }
+.auth-intro { margin-bottom: 1rem; color: var(--mcr-muted, #605952); }
+.auth-sign-in form { display: grid; gap: .6rem; margin: 1.5rem 0 .75rem; }
+.auth-sign-in label { margin-top: .35rem; font-weight: 600; }
+.auth-sign-in input, .auth-sign-in button, .auth-submit { font: inherit; min-height: 48px; border: 1px solid #8a8178; border-radius: 6px; padding: .7rem .85rem; }
+.auth-sign-in input { width: 100%; box-sizing: border-box; background: var(--mcr-paper, #faf6ed); color: var(--mcr-ink, #201d1d); }
+.auth-sign-in button { background: transparent; color: inherit; cursor: pointer; }
+.auth-sign-in .auth-submit { display: flex; align-items: center; justify-content: center; background: var(--mcr-ink, #201d1d); color: var(--mcr-paper, #faf6ed); font-weight: 650; margin-top: .5rem; text-decoration: none; }
+.auth-sign-in :disabled { opacity: .48; cursor: not-allowed; }
+.auth-sign-in :focus-visible { outline: 2px solid var(--mcr-red, #a22635); outline-offset: 4px; }
+.auth-message { color: #7d2430; overflow-wrap: anywhere; }
+.auth-message:empty { display: none; }
+.auth-message p { margin: .75rem 0; }
+.auth-providers { display: grid; gap: .6rem; margin: 2rem 0; }
+.auth-providers p { margin: .25rem 0; color: var(--mcr-muted, #605952); font-size: .9rem; }
+.auth-link { display: inline-flex; align-items: center; min-height: 44px; }
+.auth-actions { display: grid; gap: .75rem; }
+.auth-back { margin-top: 1rem; margin-right: 1rem; }
+@media (prefers-reduced-motion: reduce) { .auth-sign-in * { scroll-behavior: auto; } }

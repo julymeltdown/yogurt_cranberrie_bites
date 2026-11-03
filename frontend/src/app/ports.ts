@@ -1,3 +1,4 @@
+import type { SessionController } from '../features/auth/model/session'
 import { createMemorySession, type SessionPort, type SessionScope } from '../shared/api/http'
 
 export type SessionReadiness = 'unknown' | 'checking' | 'ready' | 'anonymous' | 'unavailable' | 'error'
@@ -36,6 +37,7 @@ export interface WorldLifecyclePort {
   mount(host: HTMLElement, context: { scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal }): WorldLease
 }
 export interface ShellPorts {
+  readonly auth?: SessionController
   readonly session: SessionPort
   readonly readiness: ReadinessPort
   readonly bootstrap: { load(scope: ActiveScope, signal: AbortSignal): Promise<ShellBootstrap> }
@@ -43,7 +45,9 @@ export interface ShellPorts {
   /** Requires a current server authorization decision. C03 participant data grants no admin role. */
   readonly admin: { authorize(scope: ActiveScope, signal: AbortSignal): Promise<boolean> }
 }
-export function createProductionPorts(): ShellPorts {
+export function createProductionPorts(auth?: SessionController): ShellPorts {
+  if (auth) return { auth, session: auth.session, readiness: auth.readiness,
+    bootstrap: { load: auth.loadBootstrap }, admin: { authorize: () => Promise.resolve(false) } }
   return {
     session: createMemorySession(),
     readiness: { read: () => 'unavailable', subscribe: () => () => undefined },

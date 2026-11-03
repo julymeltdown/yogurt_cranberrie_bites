@@ -1,3 +1,4 @@
+import { QueryClientProvider } from '@tanstack/react-query'
 import { lazy, Suspense, type ReactNode } from 'react'
 import { createBrowserRouter, Link, Outlet, type RouteObject } from 'react-router-dom'
 import { Feedback } from '../shared/ui'
@@ -27,7 +28,8 @@ export interface RouteComposition {
   panels?: Readonly<Record<string, ReactNode>>
 }
 export function createAppRoutes(ports: ShellPorts, composition: RouteComposition = {}): RouteObject[] {
-  return [{ element: <PortsProvider ports={ports}><Outlet /></PortsProvider>, errorElement: <RouteFailure />, children: [
+  const outlet = <PortsProvider ports={ports}><Outlet /></PortsProvider>
+  return [{ element: ports.auth ? <QueryClientProvider client={ports.auth.queryClient}>{outlet}</QueryClientProvider> : outlet, errorElement: <RouteFailure />, children: [
     ...publicPaths.map(path => ({ path, element: <LazyBoundary><PublicBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     ...adminPaths.map(path => ({ path, element: <LazyBoundary><AdminBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     { element: <WorldBoundary />, children: [
