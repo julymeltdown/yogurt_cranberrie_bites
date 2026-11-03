@@ -8,6 +8,32 @@ The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged cop
 
 ## Evidence and limits
 
+### Follow-through after the initial audit
+
+The initial comparison below is retained as a dated baseline. It is no longer a
+description of every current screen. UIV01's shared concert-window components are
+published in `4533121`; UIV02's actual landing and sign-in adoption is integrated
+in `be644ec` from author commit `1a8fdadcaa06152fc91ea652ea25962f9c76bd34`.
+See [the before/after evidence](../frontend/public-auth-visual.md). The author
+confirmed viewing this exact reference and completed the bounded goal and clean
+committed handoff. These two routes are **MOCK_READY**, not full visual or live
+entry acceptance. Their remaining differences include approved characters,
+illustrated silhouettes and poster lettering.
+
+UIV03 is actively assigned to `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` in an isolated
+frontend worktree for feed, party discovery and gifts presentation. Its actual
+unbudgeted goal is active; its handoff is not yet delivered. World/shell, map,
+customize, wall and profile adoption remain open. Sending the reference to the
+other leads is still distinct from their implementing it.
+
+Integration verified exact assigned paths and source equality with the UIV02
+handoff, all ten tested-source hashes and 51 final screenshot hashes, and fresh
+combined whole-frontend strict types (exit 0). The author's 356 existing tests,
+lint, production build and 360/390/430 browser checks remain its bounded evidence;
+they were not repeated as another general review gate. The 390-pixel landing and
+populated sign-in captures were inspected for this requested visual comparison.
+No task or IA acceptance count is advanced by these visual checkpoints.
+
 - Audited application commit: `6240ea72f078fb235c4fb947b50bd3264c4f7bfd`, published to `master` and independently verified against remote HEAD before this audit.
 - Fresh browser captures: 390 × 844 CSS-pixel viewport, isolated browser context, dedicated Vite server, retained dependencies, Node 24.22.2. No install, application edit, backend change, or change to another worker's checkout.
 - Production entry captures: `/` and `/login`, with no configured live event. Sign-in correctly reports that entry is unavailable; the missing live configuration is not called a visual defect.
