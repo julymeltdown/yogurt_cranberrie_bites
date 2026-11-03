@@ -29,6 +29,7 @@
 ## Implementation boundaries
 
 - All rendering/UI is newly authored. Only audited headless Bigyeting logic may be reused; keep old rendering and unneeded visual libraries out of the new application.
+- Character artwork must come from the user's selected [source pack](frontend/src/entities/avatar/character-source-pack.json) and its reviewed derivatives. Previous/legacy character images are prohibited, including fallback images. See [character-source guidance](docs/mcr/character-art.md). The C06 synthetic fixtures are metadata tests, not approved product art. Preserve supplied originals byte for byte and do not silently replace them with newly generated designs.
 - Never use decorative left accent lines, colored left borders, inset left rails or pseudo-element left bars in product UI, notices, error panels, toasts, skeletons or documentation-style panels. The user explicitly prohibits this pattern. Avoid generic AI-styled decoration and repetitive accented cards; use spacing, typography, clear labels and restrained semantic styling instead. Preserve necessary keyboard focus outlines and ordinary symmetric control borders.
 - Use the fixed frontend stack and preserve retained lockfile resolutions. Import the selected port-rust backend foundation with its source history/provenance and add one concert service.
 - One canonical Auth identity, one persistent Phaser instance, and one world connection per active shell. Access tokens stay in memory; private caches are scoped by user and event.

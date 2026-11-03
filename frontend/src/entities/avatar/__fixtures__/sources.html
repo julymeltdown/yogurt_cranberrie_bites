@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCR character source sheets</title>
+    <link rel="icon" href="data:," />
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #fff; color: #211d1c; font-family: system-ui, sans-serif; }
+      main { width: min(100%, 60rem); margin: auto; padding: 2rem 1rem; }
+      h1 { font-size: clamp(1.7rem, 5vw, 2.5rem); letter-spacing: -.03em; }
+      h2 { font-size: 1.15rem; margin-bottom: .5rem; }
+      p { line-height: 1.6; }
+      section { margin-top: 3rem; }
+      img { display: block; width: 100%; height: auto; }
+      .source { color: #625c58; font-size: .875rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Character source sheets</h1>
+      <p>The artwork supplied for MCR. Original files are displayed unchanged.</p>
+      <p class="source">10 attachments · 9 unique sheets. Photo 3 duplicates Photo 2 and is preserved in the source pack.</p>
+      <div id="sources"></div>
+    </main>
+    <script type="module">
+      import { characterArtSources, getCharacterSourceUrl } from '../source-catalog.ts'
+      const root = document.getElementById('sources')
+      for (const source of characterArtSources) {
+        const section = document.createElement('section')
+        const title = document.createElement('h2')
+        title.textContent = source.label
+        const caption = document.createElement('p')
+        caption.className = 'source'
+        caption.textContent = `${source.original_name} · ${source.visible_choice_count} choices`
+        const image = document.createElement('img')
+        image.src = getCharacterSourceUrl(source.source_id)
+        image.alt = source.label
+        image.width = source.width_px
+        image.height = source.height_px
+        section.append(title, caption, image)
+        root.append(section)
+      }
+    </script>
+  </body>
+</html>

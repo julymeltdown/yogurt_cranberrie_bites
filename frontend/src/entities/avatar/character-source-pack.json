@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "kind": "avatar_source_pack",
+  "source_pack_id": "mcr_user_characters_20261103",
+  "revision": 1,
+  "selected_for": "ALL_MCR_CHARACTER_ART",
+  "status": "SOURCE_REGISTERED",
+  "source_authority": "User supplied these 10 images and instructed replacing prior character imagery on 2026-11-03.",
+  "base_url": "/world/avatars/supplied-v1/",
+  "allow_legacy_character_fallback": false,
+  "unique_source_count": 9,
+  "unique_visible_choice_count": 134,
+  "production_atlas": {
+    "status": "NOT_PREPARED",
+    "transparent_cutouts": "NOT_PREPARED",
+    "layer_alignment": "NOT_VERIFIED",
+    "four_direction_idle_and_walk": "NOT_PROVIDED",
+    "runtime_manifest_id": null
+  },
+  "files": [
+    {
+      "source_id": "photo_01",
+      "original_name": "Photo 1.jpg",
+      "file": "photo-01.jpg",
+      "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+      "byte_length": 168045,
+      "width_px": 1280,
+      "height_px": 853,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "presets",
+      "label": "Six character presets",
+      "visible_choice_count": 6,
+      "layout": {
+        "columns": 3,
+        "rows": 2,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Front-facing complete characters; columns are Revenge, Parade and Danger."
+    },
+    {
+      "source_id": "photo_02",
+      "original_name": "Photo 2.jpg",
+      "file": "photo-02.jpg",
+      "sha256": "cb66e99ef86893e542728864933a694663cc4bdee9440df52de64a9323a46489",
+      "byte_length": 166375,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "bodies",
+      "label": "Bodies and skin tones",
+      "visible_choice_count": 8,
+      "layout": {
+        "columns": 4,
+        "rows": 2,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Bodies already include eyes, mouths and base clothing; separate them before layer composition."
+    },
+    {
+      "source_id": "photo_03",
+      "original_name": "Photo 3.jpg",
+      "file": "photo-03.jpg",
+      "sha256": "cb66e99ef86893e542728864933a694663cc4bdee9440df52de64a9323a46489",
+      "byte_length": 166375,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "bodies_duplicate",
+      "label": "Bodies and skin tones (duplicate)",
+      "visible_choice_count": 8,
+      "layout": {
+        "columns": 4,
+        "rows": 2,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": "photo_02",
+      "notes": "Byte-identical to Photo 2; preserve attachment provenance, do not create extra choices."
+    },
+    {
+      "source_id": "photo_04",
+      "original_name": "Photo 4.jpg",
+      "file": "photo-04.jpg",
+      "sha256": "87cdfbff215758c12d7042a7c435a17a6cdccb7637b0542dd9e0508d832e2a63",
+      "byte_length": 189238,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "hair_front",
+      "label": "Front hair",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Front hair choices; item-by-item alignment remains required."
+    },
+    {
+      "source_id": "photo_05",
+      "original_name": "Photo 5.jpg",
+      "file": "photo-05.jpg",
+      "sha256": "681f566ab7ef081fa7f8a39ea0c3367cc822ea31f1bcfe3065f2755679950027",
+      "byte_length": 185536,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "hair_back",
+      "label": "Back hair",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Back-hair artwork; not a complete set of directional walking frames and not automatically paired with Photo 4."
+    },
+    {
+      "source_id": "photo_06",
+      "original_name": "Photo 6.jpg",
+      "file": "photo-06.jpg",
+      "sha256": "a5fa9ecebf1ce7f36d1cb3eb50c5a21d75fe817797d9f1cd330d252b3677845f",
+      "byte_length": 193901,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "outfits",
+      "label": "Outfits",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Includes visible hands, lower hems and some leg elements; prepare masks and decide skin-tone treatment."
+    },
+    {
+      "source_id": "photo_07",
+      "original_name": "Photo 7.jpg",
+      "file": "photo-07.jpg",
+      "sha256": "5ff980e6268beb3162c23f1d8d0478d09d2180ce45f5df9c4303eac80b9c82ce",
+      "byte_length": 172536,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "bottoms",
+      "label": "Bottoms and footwear",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Separate bottoms and shoes; the current five-slot contract has no separate bottom slot."
+    },
+    {
+      "source_id": "photo_08",
+      "original_name": "Photo 8.jpg",
+      "file": "photo-08.jpg",
+      "sha256": "9b9e5ba41b8f286ecf73ca2e859a03eefa294ff3750c013f75310189343445d9",
+      "byte_length": 111594,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "eyewear",
+      "label": "Eyewear",
+      "visible_choice_count": 18,
+      "layout": {
+        "columns": 6,
+        "rows": 3,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Eighteen eyewear/accessory choices."
+    },
+    {
+      "source_id": "photo_09",
+      "original_name": "Photo 9.jpg",
+      "file": "photo-09.jpg",
+      "sha256": "e4e857fb1a7f98d1a52538f47738b8fe01f0e352be0cd71e7b2f9e36ae4008c8",
+      "byte_length": 142915,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "eyes",
+      "label": "Eyes",
+      "visible_choice_count": 18,
+      "layout": {
+        "columns": 3,
+        "rows": 6,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Eighteen eye pairs, including expressions; each pair is one choice."
+    },
+    {
+      "source_id": "photo_10",
+      "original_name": "Photo 10.jpg",
+      "file": "photo-10.jpg",
+      "sha256": "397ffa665515ebe8c573f1a5164358c5cb698633a1680f545994404026ecc96d",
+      "byte_length": 98841,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "face_details",
+      "label": "Face details",
+      "visible_choice_count": 20,
+      "layout": {
+        "columns": 5,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Twenty face treatments, including eyes and mouths; not isolated overlays yet."
+    }
+  ]
+}

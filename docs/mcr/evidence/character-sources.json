@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-03",
+  "scope": "User-supplied character source registration and browser review fixture, not a runtime atlas",
+  "catalog_path": "frontend/src/entities/avatar/character-source-pack.json",
+  "catalog_sha256": "889098be32588a3038faabe9f02167341b3680569b3f903b15da78cc593ee607",
+  "source_originals_byte_identical": 10,
+  "production_build_copies_byte_identical": 10,
+  "unique_sources": 9,
+  "source_sha256_size_dimensions_decode": "PASS",
+  "build_exit_code": 0,
+  "lint_exit_code": 0,
+  "browser": "156.0.8078.76",
+  "viewports": [
+    {
+      "width": 360,
+      "height": 850,
+      "images_loaded": 9,
+      "no_horizontal_overflow": true,
+      "unknown_source_rejected": true
+    },
+    {
+      "width": 390,
+      "height": 850,
+      "images_loaded": 9,
+      "no_horizontal_overflow": true,
+      "unknown_source_rejected": true
+    },
+    {
+      "width": 430,
+      "height": 850,
+      "images_loaded": 9,
+      "no_horizontal_overflow": true,
+      "unknown_source_rejected": true
+    },
+    {
+      "width": 1280,
+      "height": 850,
+      "images_loaded": 9,
+      "no_horizontal_overflow": true,
+      "unknown_source_rejected": true
+    }
+  ],
+  "page_and_network_errors": [],
+  "screenshot": "docs/mcr/evidence/character-sources-390.png",
+  "visually_reviewed": true,
+  "initial_probe_issue": "Vite public-JSON import warning resolved by moving catalog into src; missing fixture favicon resolved with an explicit empty favicon.",
+  "not_run": [
+    "transparent layer preparation",
+    "directional animation",
+    "runtime atlas/compositor",
+    "physical devices"
+  ],
+  "screenshot_sha256": "99192cac908ed4e4e327edbe4fa1dd7849667317cf1fc50e871aad8bf8821e9d",
+  "independent_review": {
+    "chat_id": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+    "result": "NO_ACTIONABLE_FINDINGS",
+    "scope": "Read-only registry, byte hashes/sizes/dimensions, category inspection, duplicate accounting, Vite import and URL review, source-vs-production documentation",
+    "browser_reproduction": "NOT_RUN by reviewer; parent performed the four-viewport run"
+  }
+}

@@ -1,6 +1,7 @@
 # Frontend lane
 
 - Follow the repository-root working agreement and the assigned task's exact writable paths.
+- Use only the user-selected character source pack in `public/world/avatars/supplied-v1/` and its reviewed derivatives for character art. `src/entities/avatar/source-catalog.ts` is the source-sheet lookup. Do not use old character art as a fallback. JPEG contact sheets are not transparent or animated world atlases; follow `docs/mcr/character-art.md` before composition.
 - No decorative left accent lines or colored left borders, including error/toast/skeleton variants or pseudo-element substitutes. Avoid generic AI-styled card decoration. Use clear labels, spacing and typography; preserve accessible focus indicators.
 - Own newly authored browser UI, client state, Phaser runtime, headless client logic, and frontend tests under `frontend/`. Backend services, migrations, and server tests belong to their backend owner.
 - Work in an isolated task worktree/branch. Do not edit the backend or the integrator's checkout.

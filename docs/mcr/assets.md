@@ -1,5 +1,12 @@
 # C06 asset contracts v1.0.0
 
+Current character-art decision (2026-11-03): use the user's ten supplied images
+and their reviewed derivatives exclusively. See [selected artwork](character-art.md)
+for the preserved source pack, frontend lookup, duplicate handling and required
+layer-contract follow-up. The synthetic fixtures below remain metadata tests;
+they are not product art or fallback images. Source registration does not turn
+the JPEG sheets into the transparent, animated atlas described below.
+
 Status: **CONTRACT_READY for parent review; not frozen or ACCEPTED**. This is an isolated common-contract handoff, based on `605b858b3baa2bb93ce4a01a6620cd25bc648c14`, branch `codex/mcr-contracts-C06`. Only the parent integrator reviews/freezes the contracts, integrates consumer work, and publishes to `julymeltdown/mcr/master`. No remote delivery is claimed here.
 
 ## Public schema references
@@ -129,6 +136,6 @@ The local delivery commit is the Git commit containing this handoff, descended d
 
 AR01 still needs authorized venue references, source/photo rights, review and closure evidence, and operator-controlled publication. AR02 still needs the real Tiled export and measured agreement with server collision and client loading. The contract fixture's walkability proof is limited to its encoded grid.
 
-AR03 still owes the original emo visual design, six presets, six hairstyles, four eye options, six outfits, four accessories, selectable skin tones, animation timing, and actual atlas production. Artist review must confirm that the proposed five-layer order and frame convention support the intended silhouettes; any different layer/layout contract returns to the parent for revision before freeze. Pixel clipping, missing art, eye readability, approximately two-head proportions and 56–72 CSS-pixel display are not validated by metadata tests.
+AR03 now derives its artwork from the user's [selected character sheets](character-art.md), which supply six preset designs and broader part choices. Transparent cutouts, compatible layer separation, animation timing and actual atlas production remain. Artist review must confirm that the proposed five-layer order and frame convention support the supplied silhouettes; the new front/back-hair, bottom and face-detail categories require a reviewed layer/layout decision before freeze. Pixel clipping, missing frames, eye readability, approximately two-head proportions and 56–72 CSS-pixel display are not validated by metadata tests.
 
 AR04 still owes three original skin packs, final palettes/decorations, licenses, actual texture/hash verification, readable contrast and performance budgets. The sample palette values are deterministic fixtures, not accepted art direction. Actual mobile-scale checks at widths 360/390/430, iOS Safari/Android Chrome, two-account live-world flows, one-game/one-socket behavior, persistence/concurrency, real resource loading and release readiness are **NOT_RUN** here. No AR task, QA06, IN01, or IN05 acceptance is claimed.
