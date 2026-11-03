@@ -231,3 +231,18 @@ their respective owners. No World `production_owners` configuration is enabled.
 The preexisting broader BE04 persistent goal remains truthfully `BLOCKED` in
 the goal service; Main authorized aligned manual continuation for this bounded
 increment. Sending an assignment or producing source does not change that status.
+
+## Committed handoff ancestry
+
+The qualified producer source commit is
+`f9dcab02cc88ea9e9e21d741ebc909d680c3714b`; its parent is context-doc prerequisite
+`027ba44`. It changes exactly the 19 paths listed above. This ancestry record is
+a subsequent documentation-only commit. Integrate the producer source and this
+record serially after the canonical context prerequisite series.
+
+Exclude duplicate imported context commits `73d0c7d`, `ccf7028`, `3aeaed7`,
+and `027ba44` when the canonical `353e7f8`, `9aabea8`, `65419f6`, `4fc7d33`
+series is already integrated. There are no frontend, runtime bridge, migration,
+deployment or source-archive changes in the producer commit. Only the designated
+integrator publishes to master. This checkout holds no build-target lease,
+server, native fixture or pending implementation/review fix for this increment.
