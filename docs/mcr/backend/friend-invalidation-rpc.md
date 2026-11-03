@@ -206,3 +206,20 @@ It does not claim a full operational Friend process boot with every dependency,
 production deployment credentials, World consumer acceptance or IN01. The service
 binary's migration/verification CLI is exercised; the narrow main registration
 is compiled and statically checked to omit this service without TLS.
+
+## Publication integration
+
+Qualified document checkpoint `ab27d959` was merged with peer master
+`335066396502782426c4b86ae8aacb9704def988` without conflicts or history rewrite.
+The delta was exactly the eight granted paths, byte-identical to that checkpoint;
+both existing-file preimages matched the assignment base and all six new paths
+were absent from peer master. Every final native-report source hash remained
+unchanged after merging. Peer Auth RPC, World and frontend work was preserved.
+
+Focused Python harness checks passed again (5 tests, exit 0); original journal,
+migrations, Auth/platform/proto/manifests/lockfiles/source archives and frontend
+were unchanged by this handoff. Native tests were not repeated after an unchanged
+merge. Direct publication uses a non-force push and fetch/remote ancestry check.
+The delivered SHA is reported after verification; no general second review or
+central publisher approval is imposed. The exclusive MEDIA lease is released
+after publication, with frozen artifacts retained and both private clusters absent.
