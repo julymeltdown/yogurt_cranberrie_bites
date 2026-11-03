@@ -341,7 +341,13 @@ async fn native_context_uses_consumed_and_current_pg_records_with_signed_auth() 
 {
     let auth = pool("auth").await?;
     let concert = pool("concert").await?;
-    let c = fixture(&auth).await?;
+    let mut c = fixture(&auth).await?;
+    // The retained native regression has already consumed claim()'s fixed digest.
+    // This is a separate real ticket, not a replay or relaxed repository invariant.
+    let mut entropy = [0u8; 32];
+    entropy[..16].copy_from_slice(Uuid::new_v4().as_bytes());
+    entropy[16..].copy_from_slice(Uuid::new_v4().as_bytes());
+    c.record.digest = AdmissionTicket::from_entropy(&entropy)?.digest();
     let repo = PgWorldRepository::new(concert.clone());
     let event = c.record.subject.event_id.uuid();
     sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Context fixture','OPEN')").bind(event).bind(format!("ctx-{}",event.simple())).execute(&concert).await?;

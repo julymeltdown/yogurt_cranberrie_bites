@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Extend retained Auth native qualification with sealed projection contexts."""
 import importlib.util
-import os
 from pathlib import Path
 import re
 import subprocess
@@ -16,6 +15,8 @@ PREFIX = "adapters::out::relationship_authority::world_auth::tests::native::proj
 
 
 def exercise(cluster, pinned, report):
+    report["scope"] = "Sealed World projection context plus retained signed Auth native regressions"
+    report["source_sha256"][str(Path(__file__).relative_to(ROOT))] = base.digest(Path(__file__))
     listing = base.command(report, "list-context-native", [pinned["test"], "--list"], cluster.env, cluster.root)
     names = re.findall(r"^(" + re.escape(PREFIX) + r"[a-z0-9_]+): test$", listing.stdout.decode(), re.MULTILINE)
     base.require(len(names) == 1, "exact-context-native-test-required")
