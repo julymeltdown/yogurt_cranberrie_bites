@@ -31,12 +31,13 @@ if(mode==='expired') h.auth.privacy.changePolicy(h.auth.privacy.capture(),'conse
 const input=mode==='no-activity'?undefined:activity(h.auth.privacy.capture(),saved.user_id)
 const social=harness(),author=publicIntro().author
 const publicActivity=mode==='no-activity'?undefined:activity(social.privacy.capture(),author.user_id)
+const portrait=(avatar:{revision:number},label:string)=><output aria-label={label} data-portrait-revision={avatar.revision}>Renderer port probe · no artwork</output>
 let sharing=0,blocking=0
 function Frame({children,title}:{children:ReactNode;title:string}){return params.has('embedded')?<ConcertWindow title={title} headingLevel={1} onClose={()=>{void router.navigate('/world')}}><ConcertWindowEmbedding>{children}</ConcertWindowEmbedding></ConcertWindow>:children}
 const router=createMemoryRouter([
-  {path:'/me',element:<Frame title="My profile"><MeHub controller={h.controller} auth={h.auth} {...(input?{activity:input}:{})}/><div className="fixture-root-footer"><p>64px reserved for root-owned footer · no duplicate feature artwork</p></div></Frame>},
+  {path:'/me',element:<Frame title="My profile"><MeHub controller={h.controller} auth={h.auth} {...(mode==='portrait-port'?{renderAvatar:portrait}:{})} {...(input?{activity:input}:{})}/><div className="fixture-root-footer"><p>64px reserved for root-owned footer · no duplicate feature artwork</p></div></Frame>},
   {path:'/me/profile',element:<Frame title="Edit profile"><ProfileForm controller={h.controller}/></Frame>},
-  {path:'/people/fixture',element:<Frame title="Profile"><PublicProfile controller={social.controller} userId={author.user_id} {...(mode==='actions'?{sharing:()=>{sharing++},blocking:()=>{blocking++}}:{})} {...(publicActivity?{activity:publicActivity,activityPrivacy:social.privacy}:{})}/></Frame>},
+  {path:'/people/fixture',element:<Frame title="Profile"><PublicProfile controller={social.controller} userId={author.user_id} {...(mode==='portrait-port'?{renderAvatar:portrait}:{})} {...(mode==='actions'?{sharing:()=>{sharing++},blocking:()=>{blocking++}}:{})} {...(publicActivity?{activity:publicActivity,activityPrivacy:social.privacy}:{})}/></Frame>},
   {path:'*',element:<p role="status">Fixture destination</p>},
 ],{initialEntries:[route==='public'?'/people/fixture':route==='edit'?'/me/profile':'/me']})
 createRoot(document.getElementById('root')!).render(<StrictMode><RouterProvider router={router}/></StrictMode>)
