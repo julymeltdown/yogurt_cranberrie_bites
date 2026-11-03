@@ -1,23 +1,15 @@
 import { canonicalJson } from '../../../world/map/json'
 import type { AssetResources } from '../../../world/map/resources'
 import { createAvatarCompositor } from './compositor'
-import { AvatarError, validateManifest, type AvatarConfig } from './contract'
-import { schemaValid } from './schema'
+import { AvatarError, validateManifest } from './contract'
 import { loadReviewedAvatar, type ReviewedAvatarBinding } from './resources'
 import type { ReviewedAtlasLeases } from './atlas-lease'
 
 export type { AvatarConfig, AvatarManifest, Pose, Direction, Layer } from './contract'
 export type { AvatarCompositor, ComposedAvatar } from './compositor'
-export type { ReviewedAvatarBinding } from './resources'
+export { isLayeredAvatarConfig, type ReviewedAvatarBinding } from './resources'
 export { createReviewedAtlasLeases, type ReviewedAtlasLeases } from './atlas-lease'
 export { validateConfig, frameIndex, sourceRect, AvatarError } from './contract'
-
-/** A whole-character config cannot enter the layered compositor through a display boundary. */
-export function isLayeredAvatarConfig(value: unknown): value is AvatarConfig {
-  return value !== null && typeof value === 'object' && !Array.isArray(value)
-    && 'contract_version' in value && value.contract_version === '1.0.0'
-    && 'kind' in value && value.kind === 'avatar_config' && schemaValid(value, 'config')
-}
 
 /** Shared product entry for world/editor/profile. Pin to the current authorized bootstrap;
  * caller owns one user/event/lease-scoped instance. No default art or implicit fallback.

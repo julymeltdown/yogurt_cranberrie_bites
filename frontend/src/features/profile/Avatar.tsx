@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { createReviewedAvatarCompositor, isLayeredAvatarConfig, validateConfig, type AvatarCompositor } from '../../entities/avatar/runtime'
+import { createReviewedAvatarCompositor, validateConfig, type AvatarCompositor } from '../../entities/avatar/runtime'
+import { isLayeredAvatarConfig } from '../../entities/avatar/runtime/resources'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import type { SocialOptions } from '../people/runtime'
 export type AvatarResources = Omit<Parameters<typeof createReviewedAvatarCompositor>[0], 'signal'>

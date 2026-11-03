@@ -1,0 +1,273 @@
+{
+  "task": "FE-ASSET-LEASE",
+  "result": "PASS",
+  "assignmentBase": "26a8eb61afc1bfc5310c1628543691b4e725e840",
+  "sourceCheckpoint": "4ae9e742",
+  "boundaryCheckpoint": "65a3c9d6",
+  "listenerCleanupCheckpoint": "6fae2657",
+  "reconciledSourceHead": "e0522b864e08b461ac1ef4e20a199b8c303cde7b",
+  "requiredCompatibilityRepair": "58824c4f8ece5a32afba5fd63c6272cb95e569f5",
+  "checks": {
+    "affectedTests": {
+      "exitCode": 0,
+      "files": 25,
+      "tests": 265,
+      "newLeaseTests": 22,
+      "maxWorkers": 1
+    },
+    "types": {
+      "exitCode": 0
+    },
+    "lint": {
+      "exitCode": 0
+    },
+    "build": {
+      "exitCode": 0,
+      "warning": "existing Phaser chunk exceeds 500 kB"
+    },
+    "plan": {
+      "exitCode": 0
+    },
+    "origin": {
+      "exitCode": 0
+    }
+  },
+  "native": {
+    "result": "PASS",
+    "productionBuiltTestEntry": true,
+    "realImageDecode": true,
+    "testOnlySyntheticCatalog": true,
+    "productionSelectedArt": false,
+    "actualWorldRendererSharing": "NOT_RUN",
+    "liveServices": "NOT_RUN",
+    "cases": [
+      {
+        "width": 360,
+        "cold": {
+          "reads": 1,
+          "decodes": 1,
+          "createdUrls": 1,
+          "revokedUrls": 0,
+          "meReads": 0,
+          "disposed": false,
+          "draft": null,
+          "phase": "idle",
+          "preview": "idle",
+          "leases": {
+            "entries": 1,
+            "reservedDecodedBytes": 1638400,
+            "references": 1,
+            "pending": 0,
+            "loads": 1,
+            "hits": 0,
+            "disposed": false
+          }
+        },
+        "warm": {
+          "reads": 1,
+          "decodes": 1,
+          "createdUrls": 1,
+          "revokedUrls": 0,
+          "meReads": 2,
+          "disposed": false,
+          "draft": null,
+          "phase": "idle",
+          "preview": "idle",
+          "leases": {
+            "entries": 1,
+            "reservedDecodedBytes": 1638400,
+            "references": 2,
+            "pending": 0,
+            "loads": 1,
+            "hits": 4,
+            "disposed": false
+          }
+        },
+        "end": {
+          "reads": 2,
+          "decodes": 2,
+          "createdUrls": 2,
+          "revokedUrls": 2,
+          "meReads": 2,
+          "disposed": true,
+          "draft": null,
+          "phase": "unavailable",
+          "preview": "idle",
+          "leases": {
+            "entries": 0,
+            "reservedDecodedBytes": 0,
+            "references": 0,
+            "pending": 0,
+            "loads": 1,
+            "hits": 4,
+            "disposed": true
+          }
+        },
+        "originalPixelsUnchanged": true,
+        "equalsUnpooledPixels": true,
+        "baselineExtraDecode": 1,
+        "draftPixelsRetained": true,
+        "canvasesErased": true
+      },
+      {
+        "width": 390,
+        "cold": {
+          "reads": 1,
+          "decodes": 1,
+          "createdUrls": 1,
+          "revokedUrls": 0,
+          "meReads": 0,
+          "disposed": false,
+          "draft": null,
+          "phase": "idle",
+          "preview": "idle",
+          "leases": {
+            "entries": 1,
+            "reservedDecodedBytes": 1638400,
+            "references": 1,
+            "pending": 0,
+            "loads": 1,
+            "hits": 0,
+            "disposed": false
+          }
+        },
+        "warm": {
+          "reads": 1,
+          "decodes": 1,
+          "createdUrls": 1,
+          "revokedUrls": 0,
+          "meReads": 2,
+          "disposed": false,
+          "draft": null,
+          "phase": "idle",
+          "preview": "idle",
+          "leases": {
+            "entries": 1,
+            "reservedDecodedBytes": 1638400,
+            "references": 2,
+            "pending": 0,
+            "loads": 1,
+            "hits": 4,
+            "disposed": false
+          }
+        },
+        "end": {
+          "reads": 2,
+          "decodes": 2,
+          "createdUrls": 2,
+          "revokedUrls": 2,
+          "meReads": 2,
+          "disposed": true,
+          "draft": null,
+          "phase": "unavailable",
+          "preview": "idle",
+          "leases": {
+            "entries": 0,
+            "reservedDecodedBytes": 0,
+            "references": 0,
+            "pending": 0,
+            "loads": 1,
+            "hits": 4,
+            "disposed": true
+          }
+        },
+        "originalPixelsUnchanged": true,
+        "equalsUnpooledPixels": true,
+        "baselineExtraDecode": 1,
+        "draftPixelsRetained": true,
+        "canvasesErased": true
+      },
+      {
+        "width": 430,
+        "cold": {
+          "reads": 1,
+          "decodes": 1,
+          "createdUrls": 1,
+          "revokedUrls": 0,
+          "meReads": 0,
+          "disposed": false,
+          "draft": null,
+          "phase": "idle",
+          "preview": "idle",
+          "leases": {
+            "entries": 1,
+            "reservedDecodedBytes": 1638400,
+            "references": 1,
+            "pending": 0,
+            "loads": 1,
+            "hits": 0,
+            "disposed": false
+          }
+        },
+        "warm": {
+          "reads": 1,
+          "decodes": 1,
+          "createdUrls": 1,
+          "revokedUrls": 0,
+          "meReads": 2,
+          "disposed": false,
+          "draft": null,
+          "phase": "idle",
+          "preview": "idle",
+          "leases": {
+            "entries": 1,
+            "reservedDecodedBytes": 1638400,
+            "references": 2,
+            "pending": 0,
+            "loads": 1,
+            "hits": 4,
+            "disposed": false
+          }
+        },
+        "end": {
+          "reads": 2,
+          "decodes": 2,
+          "createdUrls": 2,
+          "revokedUrls": 2,
+          "meReads": 2,
+          "disposed": true,
+          "draft": null,
+          "phase": "unavailable",
+          "preview": "idle",
+          "leases": {
+            "entries": 0,
+            "reservedDecodedBytes": 0,
+            "references": 0,
+            "pending": 0,
+            "loads": 1,
+            "hits": 4,
+            "disposed": true
+          }
+        },
+        "originalPixelsUnchanged": true,
+        "equalsUnpooledPixels": true,
+        "baselineExtraDecode": 1,
+        "draftPixelsRetained": true,
+        "canvasesErased": true
+      }
+    ],
+    "errors": []
+  },
+  "sourceSHA256": {
+    "frontend/src/app/account-entry/__tests__/asset-leases/catalog.ts": "41da5319f2ea58f75fd314ef3a25ced7cb069c86a1c0e8fd0ee289fa3bfb6508",
+    "frontend/src/app/account-entry/__tests__/asset-leases/fixture.ts": "ac298c352c107b2fd7e73c10271b2de318a381865b9ff03f72179d123d25e6b1",
+    "frontend/src/app/account-entry/__tests__/asset-leases/leases.test.tsx": "ef97cf86c2dc6474ac4e49accf10b0c9c5dc9d2839c6c66a638396d798ce1b81",
+    "frontend/src/app/account-entry/__tests__/asset-leases/native.mjs": "d6cb9665202f385a9a976abd52984997c05ec81ffdde50e16616825b804fa3ec",
+    "frontend/src/app/account-entry/__tests__/asset-leases/preview.html": "1863d9578e37133e13a0dad6a420ab081c67aa0865aaa9775fbda1311c4ec7d0",
+    "frontend/src/app/account-entry/__tests__/asset-leases/preview.tsx": "c4bbfc69a4de2755159686f08007d1192c7ed69f3acd27f0beb4876167e0954c",
+    "frontend/src/app/account-entry/assets.ts": "e3868e19ddc67cde161cf3378958f16a9a3b57441406d49b4a6a7b30e014dd6a",
+    "frontend/src/app/account-entry/owner.ts": "4241d5dd92c4c65576e5e35b076c2314ad6de6f2bca038786e6b113914abefdb",
+    "frontend/src/entities/avatar/runtime/atlas-lease.ts": "f619127345292274795fc0805f0f344591f8bbcaf2bf6c772e740cb1e164ff52",
+    "frontend/src/entities/avatar/runtime/index.ts": "7a049bd448017dfa71614acd1c0ddea486d95fb8cf93981332fa7784e3f1b346",
+    "frontend/src/features/avatar/preview.ts": "258f08cd7a5e1ebcc1917f8b36b8accb83a260f1aad0d388766f54736414945b",
+    "frontend/src/features/me/ui/AvatarThumbnail.tsx": "829748940d147959bf8656e9448d00b7f9ba49305a9d5e8ac17acb0de72cfdd0",
+    "frontend/src/features/profile/Avatar.tsx": "cae62acf82fd44db50cd5549dbffd1b1d93f6a4374d2034a07f7f6b31fcfee5b",
+    "frontend/src/entities/avatar/runtime/resources.ts": "53268ddc31ba8668ea0ac8de4e017b53e80cceb1fab69db9649f06f1bf86f965"
+  },
+  "limitations": [
+    "Synthetic catalog and geometric atlas only; no selected art approval",
+    "Actual World renderer atlas sharing NOT_RUN",
+    "Live services and multiuser flows NOT_RUN",
+    "Separate canonical whole-character union admission followup remains owned by its author"
+  ]
+}

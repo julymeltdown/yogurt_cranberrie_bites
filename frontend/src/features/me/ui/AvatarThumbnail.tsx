@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
-import { createReviewedAvatarCompositor, isLayeredAvatarConfig, type AvatarCompositor } from '../../../entities/avatar/runtime'
+import { createReviewedAvatarCompositor, type AvatarCompositor } from '../../../entities/avatar/runtime'
+import { isLayeredAvatarConfig } from '../../../entities/avatar/runtime/resources'
 import type { SessionController } from '../../auth/model/session'
 import type { PrivacyScope } from '../../../shared/query/privacy'
 /** Preserve the captured bootstrap lease; never attach a fresh lease to stale assets. */
