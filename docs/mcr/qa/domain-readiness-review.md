@@ -2,7 +2,7 @@
 
 Date: 2026-11-03. **Bounded review complete: Domain candidate v0.1.0 is structurally
 closed in `contracts/domain/v1/`. Core subdomains (Parties, Giveaways, Feed) have
-complete DTO definitions suitable for parent-authorized bounded pinning. Full freeze
+typed DTO definitions available for parent review of bounded consumers. Full freeze
 remains NOT_ACCEPTED pending independent BE/FE lane reviews and fixture expansion.**
 Contract candidate status remains REVIEW_CANDIDATE.
 
@@ -19,8 +19,9 @@ No contracts, schemas, manifests, application source, or Cargo/PG processes were
 1. **Fixture coverage (Engineering omission)**: `contracts/fixtures/domain/index.json`
    indexes 36 fixtures covering 18 schemas out of 162. Of 106 operations in
    `operations.json`, exactly **25 operations** have at least one DTO represented;
-   **81 operations** have zero DTOs represented; and **zero operations** have both
-   request and response covered. Does not block bounded consumer typing because all
+   **81 operations** have neither DTO represented; 24 have one represented and one
+   (`decideConcertSocialRequest`) has both referenced schemas represented. This
+   schema-membership count does not prove operation-specific positive/negative coverage. Does not block bounded consumer typing because all
    schemas in `contracts/domain/v1/*.schema.json` are closed and typed.
 2. **Account deletion & recovery (Split omission vs policy)**:
    - *Engineering omission*: No domain deletion coordinator wire defines how Auth
@@ -69,7 +70,7 @@ No contracts, schemas, manifests, application source, or Cargo/PG processes were
 Before frontend feature workers (FE21–FE28) can execute mutations and error handling:
 1. `frontend/src/shared/api/http.ts:133`: Header allowlist permits only `x-correlation-id`,
    `x-request-id`, and `x-client-id`. Sending required mutation idempotency headers
-   (`X-Idempotency-Key` / `Idempotency-Key`) triggers `TransportError('invalid-request')`.
+   (`Idempotency-Key`, the exact C04 header) triggers `TransportError('invalid-request')`.
 2. `frontend/src/shared/api/http.ts:114`: `errorFamily` strictly permits `'auth' | 'core'`,
    rejecting any domain error family.
 3. `frontend/src/shared/api/errors.ts:2`: `CORE_REASONS` contains only 18 reasons. C04
@@ -97,3 +98,12 @@ Candidate contracts for Parties, Giveaways, and Feed are structurally ready for
 parent-authorized bounded pinning. Shared frontend HTTP/error client updates are required
 prerequisites for frontend mutations. Full freeze remains NOT_ACCEPTED.
 Report committed; goal remains **ACTIVE** awaiting parent disposition.
+
+
+Parent disposition: accepted as a bounded audit with the corrections above; not a
+contract freeze. The reported full hashes for the latter two worker commits were
+incorrect. Actual Git ancestry is `a9777b06b489dfa0720bd50c5451f6d4d1d191a2` →
+`497919993ebbbc39a56254deed859eb3150c9b12` →
+`af501ae774f3a472ba108dce8a57e5290f077878`. Parent recomputed fixture membership
+and corrected the erroneous zero-both assertion. Original report history is
+preserved; operation-specific fixtures and independent lane reviews remain open.
