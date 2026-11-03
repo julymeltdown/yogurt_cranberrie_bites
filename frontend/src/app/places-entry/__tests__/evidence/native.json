@@ -1,0 +1,62 @@
+{
+  "result": "PASS",
+  "scope": "Synthetic canonical Auth/HTTP + actual routes, FE14 map loader/Phaser and FE15 attachment; no default root/live backend/venue/device qualification",
+  "browser": "156.0.8078.80",
+  "widths": [
+    {
+      "width": 360,
+      "height": 800,
+      "result": "PASS",
+      "directDetailAndHeaderBack": true,
+      "minFeatureTouchTarget": 44,
+      "ownerCountBeforeNavigation": 1,
+      "sameOwnerAfterNavigation": true,
+      "mapReloadRecovered": true,
+      "canvasDisposed": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "result": "PASS",
+      "directDetailAndHeaderBack": true,
+      "minFeatureTouchTarget": 44,
+      "ownerCountBeforeNavigation": 1,
+      "sameOwnerAfterNavigation": true,
+      "mapReloadRecovered": true,
+      "canvasDisposed": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "result": "PASS",
+      "directDetailAndHeaderBack": true,
+      "minFeatureTouchTarget": 44,
+      "ownerCountBeforeNavigation": 1,
+      "sameOwnerAfterNavigation": true,
+      "mapReloadRecovered": true,
+      "canvasDisposed": true
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "loaded-360.png",
+    "detail-360.png",
+    "mismatch-360.png",
+    "recovered-360.png",
+    "unavailable-360.png",
+    "direct-detail-360.png",
+    "loaded-390.png",
+    "detail-390.png",
+    "mismatch-390.png",
+    "recovered-390.png",
+    "unavailable-390.png",
+    "direct-detail-390.png",
+    "loaded-430.png",
+    "detail-430.png",
+    "mismatch-430.png",
+    "recovered-430.png",
+    "unavailable-430.png",
+    "direct-detail-430.png"
+  ],
+  "cleanup": true
+}
