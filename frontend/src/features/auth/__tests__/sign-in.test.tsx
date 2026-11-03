@@ -7,7 +7,7 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { createAppRoutes } from '../../../app/router'
 import { createProductionPorts } from '../../../app/ports'
 import { createSessionController, type SessionController } from '../model/session'
-import { authResponse, capabilities, deferred, eventId, isolatedCookiePolicy } from './fixtures/data'
+import { authResponse, capabilities, deferred, eventId, fixture, isolatedCookiePolicy } from './fixtures/data'
 const instances: SessionController[] = [], routers: ReturnType<typeof createMemoryRouter>[] = []
 afterEach(() => { cleanup(); routers.splice(0).forEach(r => r.dispose()); instances.splice(0).forEach(c => c.dispose()); vi.unstubAllGlobals() })
 function setup(response: () => Promise<Response> | Response, target = '/feed', providers = capabilities()) {
@@ -70,4 +70,40 @@ it('ignores successful login completion after the sign-in view unmounts', async 
   await act(async () => { delayed.resolve(Response.json(authResponse())) })
   await waitFor(() => expect(auth.read().readiness).toBe('ready'))
   expect(router.state.location.pathname).toBe('/legal/privacy')
+})
+
+it.each([403, 401])('keeps a mounted world for feature denial but revokes it for authentication failure: %s', async status => {
+  const source = fixture(), bootstrap = { ...source, capabilities: { ...source.capabilities, world: { available: true, reason: null } } }
+  const fetch = vi.fn<typeof globalThis.fetch>(async input => {
+    const path = new URL((input as Request).url).pathname
+    return path.endsWith('capabilities') ? Response.json(capabilities()) : path.endsWith('login') ? Response.json(authResponse())
+      : path.endsWith('bootstrap') ? Response.json(bootstrap) : Response.json({ code: 'FAILURE', message: 'Safe envelope',
+        details: { reason: status === 403 ? 'PERMISSION_DENIED' : 'AUTHENTICATION_REQUIRED' } }, { status })
+  })
+  const auth = createSessionController({ eventId, fetch, cookiePolicy: isolatedCookiePolicy() }); instances.push(auth); auth.start()
+  const world = { live: 0, disposed: 0 }
+  const router = createMemoryRouter(createAppRoutes({ ...createProductionPorts(auth), world: {
+    mount(_host, context) {
+      world.live++; let closed = false
+      const dispose = () => { if (closed) return; closed = true; world.live--; world.disposed++ }
+      context.signal.addEventListener('abort', dispose, { once: true })
+      return { dispose, setInputBlocked() {}, setVisible() {} }
+    },
+  } }), { initialEntries: ['/login?returnTo=%2Fworld'] }); routers.push(router)
+  render(<RouterProvider router={router} />); await fill()
+  fireEvent.submit(screen.getByRole('form', { name: 'Email sign-in' }))
+  await screen.findByRole('navigation', { name: 'Main navigation' })
+  expect(world.live).toBe(1)
+  const scope = auth.session.read(), cleanup = vi.fn(); auth.privacy.registerCleanup(cleanup)
+  await act(async () => { await auth.request({ path: `/api/concert/events/${eventId}/me`, method: 'GET', access: 'protected', errorFamily: 'core', decode: value => value }).catch(() => undefined) })
+  if (status === 403) {
+    expect(auth.session.read()).toBe(scope); expect(scope.signal.aborted).toBe(false)
+    expect(world).toEqual({ live: 1, disposed: 0 }); expect(cleanup).not.toHaveBeenCalled()
+    expect(screen.getByRole('navigation', { name: 'Main navigation' })).toBeVisible()
+  } else {
+    expect(auth.session.read().userId).toBeNull(); expect(scope.signal.aborted).toBe(true)
+    expect(world).toEqual({ live: 0, disposed: 1 }); expect(cleanup).toHaveBeenCalledTimes(1)
+    expect(screen.queryByRole('navigation', { name: 'Main navigation' })).not.toBeInTheDocument()
+  }
+  expect(fetch).toHaveBeenCalledTimes(4)
 })

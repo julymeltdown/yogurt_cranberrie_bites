@@ -96,7 +96,7 @@ export function createSessionController(options: SessionOptions) {
   }
   async function request<T>(input: Omit<HttpRequest<T>, 'refresh'>) {
     // Features cannot opt into FE01's uncoordinated refresh path through this composition.
-    if (Object.hasOwn(input, 'refresh') || input.path.startsWith('/api/auth/')) throw new TransportError('invalid-request')
+    if ('refresh' in input || input.path.startsWith('/api/auth/')) throw new TransportError('invalid-request')
     const expected = session.read()
     const execute = async () => {
       const result = await http.request(input)
@@ -116,7 +116,7 @@ export function createSessionController(options: SessionOptions) {
       }
     } catch (error) {
       if (input.access === 'protected' && session.isCurrent(expected)
-        && error instanceof TransportError && (error.status === 401 || error.status === 403)) clear('expired')
+        && error instanceof TransportError && error.status === 401) clear('expired')
       throw error
     }
   }

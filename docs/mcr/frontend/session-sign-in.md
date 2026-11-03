@@ -20,7 +20,7 @@ C03 core version `0.1.0`, C06 assets version `1.0.0`, FE01 transport, FE02 priva
 | `frontend/src/features/auth/model/cookie-policy.ts` | Native origin Web Lock for cookie writers; credential-free BroadcastChannel revocation; bounded lock wait, uncertainty latch and capability failure handling. |
 | `frontend/src/features/auth/ui/SignIn.tsx`, `sign-in.css` | New labelled/autofill form, pending/double-submit protection, neutral credentials and throttling feedback, safe return, disabled frozen OAuth, truthful local/server logout states. Quiet typography and symmetric controls, with keyboard focus and no decorative left accents. |
 | `frontend/src/app/ports.ts`, `PublicBoundary.tsx`, `router.tsx`, `frontend/src/main.tsx` | Exact delegated composition: optional auth port preserving FE07 fixtures; login page; single QueryClientProvider; explicit validated event input and one application-lifetime controller outside StrictMode. |
-| `frontend/src/features/auth/__tests__/**` | 71 focused cases and isolated native-Chrome HTTP/cookie fixtures, screenshots and reproducible browser checks. Fixtures are excluded from the production entry. |
+| `frontend/src/features/auth/__tests__/**` | 78 focused cases and isolated native-Chrome HTTP/cookie fixtures, screenshots and reproducible browser checks. Fixtures are excluded from the production entry. |
 
 FE01/FE02/shared styles, shell lifetime, route registry, assets, manifests, lockfiles, configuration, backend, generated inputs and `docs/source/` were not modified by FE09. No retained dependency resolutions changed. Runtime imports were reviewed: feature model to public contract/shared browser facilities/app port types; UI to existing shell context/navigation; no cross-lane imports.
 
@@ -45,8 +45,8 @@ Commands ran with retained Node `24.22.2` and `corepack pnpm@11.7.0`, in this wo
 | Command | Result |
 | --- | --- |
 | `corepack pnpm@11.7.0 --dir frontend install --frozen-lockfile` | Retained installation; no lock/manifests changed. |
-| `corepack pnpm@11.7.0 --dir frontend test` | **347/347**, 12 files; includes **71 FE09** cases. |
-| `corepack pnpm@11.7.0 --dir frontend test src/features/auth/__tests__/sign-in.test.tsx` | **6/6** after strengthening the frozen OAuth case to advertise all providers enabled. |
+| `corepack pnpm@11.7.0 --dir frontend test` | **354/354**, 12 files; includes **78 FE09** cases. |
+| `corepack pnpm@11.7.0 --dir frontend test src/features/auth/__tests__/sign-in.test.tsx` | **8/8**, including advertised-enabled frozen OAuth and mounted-world 403/401 regression cases. |
 | `corepack pnpm@11.7.0 --dir frontend build` | Strict TypeScript and production build pass. Main chunk approximately 538 kB / 143 kB gzip; Vite emits its >500 kB advisory. No build/config threshold was changed. |
 | `corepack pnpm@11.7.0 --dir frontend lint` | No errors or warnings. |
 | `node src/features/auth/__tests__/browser-smoke.mjs` from `frontend/` | Installed Chrome **156.0.8078.80**, owned ephemeral servers/browser contexts, 360×800, 390×844, 430×932, 1280×800; focus, enabled-text contrast, 44px controls, pending/error/throttling, login return, immediate world release, unconfirmed logout/retry, reduced-height viewport and no overflow pass. |
@@ -68,3 +68,9 @@ The native-browser test uses synthetic same-origin **HTTP** endpoints and a test
 The decoder is deliberately bounded (200,000 validation visits / depth 40) and limited to this frozen reachable vocabulary. Future contract assertion/format changes require explicit decoder compatibility review; unsupported input fails closed. Contract-facing scalar checks use retained Zod formats. Full contract exposure adds the recorded bundle advisory; no unrelated code-splitting/config changes were made.
 
 No backend process, database, volume, build target, server or other worker checkout was touched. No push or task-ledger acceptance update was performed. Main review/integration and any concrete review fixes remain part of the active assignment.
+
+## Bounded review R1
+
+The integrator found that the original generic protected-request catch revoked identity for both 401 and 403. Frozen C03 bootstrap 403 explicitly permits `PERMISSION_DENIED` and `CONSENT_REQUIRED`; neither mandates identity clearing. Origin/intent 403 likewise does not mean bearer identity was revoked. The focused follow-up removes generic 403 invalidation: the original safe transport denial reaches the feature without refresh/replay or private cleanup, and bootstrap maps it to `ShellLoadError('denied')` while its scope remains current. Actual 401 still clears canonical identity/private state immediately; malformed/context-mismatched bootstrap/auth identity checks remain fail closed. A failed explicitly qualified renewal remains a failed-renewal path, not an inference from a feature permission denial.
+
+Seven new regressions prove both frozen denial reasons preserve generation, token, signal, private query data and registered drafts; bootstrap returns denied for each; real React shell composition keeps its mounted mock world on a feature 403 but releases it and runs cleanup on 401. Self-review also tightened the request boundary from own-property-only checking to rejecting inherited `refresh` options before transport, with a no-dispatch regression. This prevents bypassing the cookie coordinator through an inherited option. All changes stay within the original model/test/document ownership. Final counts above include these review regressions; real backend and production rotation limitations are unchanged.
