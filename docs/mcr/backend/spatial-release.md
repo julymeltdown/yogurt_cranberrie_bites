@@ -77,3 +77,21 @@ artifact/receipt, creates its own marker/inode-owned PG16.14 cluster over privat
 Unix sockets, applies real migrations, runs canonical-byte/virtual-eligibility
 checks, restarts the postmaster, verifies persistence, then removes its own cluster.
 This is component evidence; it does not activate an operator release.
+
+### First frozen runtime qualification
+
+Source `486253900a710fa5357ac7a67185a6ae4ac0d500` compiled with Rust1.88
+locked/offline, two jobs, debug0/incremental0 on the explicitly leased BACKEND
+target. A stale peer `contracts-build` cache initially produced a protobuf path
+shadow error; package-only cache removal (816 KiB), with no source edit or global
+cleanup, resolved it. Frozen library/runtime/bootstrap executables passed
+38 + 8 + 5 pure tests. Thirteen library native cases and two incumbent bootstrap
+native cases were not run by this slice.
+
+The first scoped PostgreSQL run failed an authored test oracle: the existing
+administrative publication API advances the event catalog revision even when
+immutable map bytes are identical. Cleanup passed. Source `56e6e4ed` corrects the
+assertion to require an incremented event revision plus identical canonical map
+bytes, then uses the current event revision for virtual-place selection checks.
+No place repository behavior was changed. A fresh named compile lease is queued;
+BACKEND was explicitly returned after freezing, and no target access is retained.
