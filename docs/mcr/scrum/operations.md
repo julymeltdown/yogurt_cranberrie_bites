@@ -74,8 +74,8 @@ Author paths consumed as dependencies are identified separately from QA-authored
 paths. Concrete findings go directly to the author and are rechecked; QA is not
 an additional generic approval gate. Real devices and live IN04 are not implied.
 
-At this snapshot both assignments are IN_PROGRESS. Neither a final source
-handoff nor final native QA acceptance is recorded yet.
+At this snapshot both assignments are IN_PROGRESS. The final product source is
+committed; author evidence/documentation and independent QA handoffs follow.
 
 The author reports the three presentation files implemented and 126 existing
 editor/synchronization tests across seven files passing (exit 0). This is an
@@ -101,6 +101,27 @@ needed. Final native raster/corner checks remain pending. QA will serve only the
 three exact author files through a read-only Git-blob loader, recording hashes
 of actually served bytes rather than the old baseline files. Coarse geometry
 success alone will not certify exact imagery, icons, or full visual fidelity.
+
+Final product source pin:
+`832c7de9c57f6f8931b5564f61f68d82fa99d89d`, parent
+`f837bef676cd26869c26c172a699a91b7842d832`. Its exact changed-path list was
+independently inspected: only the three granted presentation files. Imports
+remain frontend-only. The coordinator compared each committed file SHA-256 to
+the actual native report: all three match. Author reports 131 tests across nine
+files, full frontend strict TypeScript, scoped lint, production build, planning
+check, and whitespace check all exit 0. Native Chrome 156.0.8078.80 passes
+360/390/430. The coordinator inspected the 360px loaded PNG and report.
+
+Measured standalone panel heights are 635.53/668.53/712.53px. Canvas starts
+72px below the top, measures 340 by 374 / 370 by 407 / 410 by 451px, and occupies
+58.8/60.9/63.3 percent of panel height. The framed palette is 62px tall; tools
+are 44px and 10px from the right. Checks cover every 16,384 snapshot cell,
+uniform raster scale, corner and zoom hit testing, all 16 colors via scroll and
+keyboard, no page overflow, explicit one-POST confirmation, cooldown, lost/202
+GET-only recovery, paused/frozen/read-only/privacy, and a short 420px viewport
+using the root height variable. No uncommitted root implementation was consumed.
+The pixel pattern is deterministic fixture data, not a claim that product mural
+imagery matches the supplied drawing. Final independent QA is still pending.
 
 ## Shared shell seam and production dependencies
 
