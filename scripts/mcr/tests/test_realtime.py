@@ -180,6 +180,33 @@ class RealtimeContractTests(unittest.TestCase):
         trace.consume('server', fixture['messages'][3]['message'])
         self.reject(lambda: trace.consume('client', switch))
 
+    def test_room_switch_cannot_change_map_or_avatar_manifest(self):
+        switch = self.fixture('room-switch')['messages'][2]['message']
+        for patch in [{'mapId': 'different_map'}, {'mapRevision': 2},
+                      {'avatarManifestId': 'different_avatar'}, {'avatarManifestVersion': 2}]:
+            self.reject(lambda: self.started().consume('client', switch | patch))
+
+    def test_queued_old_stream_delta_is_discarded_while_waiting_for_resync(self):
+        trace = self.started()
+        fixture = self.fixture('resync')
+        trace.consume('client', fixture['messages'][3]['message'])
+        before = copy.deepcopy(trace.players)
+        delta = self.fixture('movement-heartbeat')['messages'][3]['message'] | {'ackInputSeq': 0}
+        trace.consume('server', delta)
+        self.assertEqual(trace.players, before)
+        self.assertEqual(trace.sequence, 0)
+        trace.consume('server', fixture['messages'][4]['message'])
+        self.assertEqual(set(trace.players), {trace.actor})
+
+    def test_snapshot_metadata_does_not_retain_removed_roster_or_ticket(self):
+        trace = self.started()
+        self.assertNotIn('ticket', trace.authenticate)
+        self.assertNotIn('players', trace.snapshot)
+        delta = self.fixture('movement-heartbeat')['messages'][3]['message']
+        removed = next(uid for uid in trace.players if uid != trace.actor)
+        trace.consume('server', delta | {'ackInputSeq': 0, 'upserts': [], 'removes': [removed]})
+        self.assertNotIn(removed, trace.players)
+
     def test_epoch_replacement_requires_new_epoch(self):
         trace = self.started()
         value = self.fixture('epoch-replacement')['messages'][2]['message']
@@ -191,6 +218,8 @@ class RealtimeContractTests(unittest.TestCase):
         trace = self.started()
         trace.consume('server', self.fixture('revoke')['messages'][2]['message'])
         self.assertFalse(trace.players)
+        self.assertIsNone(trace.snapshot)
+        self.assertIsNone(trace.authenticate)
         self.reject(lambda: trace.consume('server', self.fixture('movement-heartbeat')['messages'][4]['message']))
         self.reject(lambda: trace.consume('client', self.fixture('movement-heartbeat')['messages'][0]['message']))
 

@@ -212,7 +212,8 @@ class Trace:
         kind = message['type']
         if direction == 'client' and kind == 'authenticate':
             require(self.authenticate is None, 'duplicate authenticate')
-            self.authenticate = copy.deepcopy(message)
+            # Admission context only; never retain the consumed bearer ticket.
+            self.authenticate = {key: message[key] for key in IDENTITY}
             return
         require(self.authenticate is not None, 'authenticate must be first', 4401)
         if direction == 'server' and kind == 'snapshot':
@@ -236,7 +237,8 @@ class Trace:
                     self.suspended = True
                 else:
                     require(not self.suspended, 'switch during resync')
-                    require(message['eventId'] == self.snapshot['eventId'], 'cross-event switch')
+                    require(all(message[key] == self.snapshot[key] for key in IDENTITY if key != 'roomId'),
+                            'switch changes event or asset versions')
                     require(message['roomId'] != self.snapshot['roomId'], 'switch targets current room')
                 self.used_requests.add(message['requestId'])
                 self.pending = copy.deepcopy(message)
@@ -245,7 +247,10 @@ class Trace:
                 self.heartbeat = None
             return
         if kind == 'delta':
-            require(not self.suspended, 'delta before resync snapshot', 4409)
+            if self.suspended:
+                # The server may have enqueued these before it receives our resync.
+                # Decode/schema-check, then discard without advancing the frozen baseline.
+                return
             require(message['streamSeq'] == self.sequence + 1, 'stream sequence gap/replay', 4409)
             require(message['serverTick'] >= self.tick, 'server tick regressed')
             require(self.ack <= message['ackInputSeq'] <= self.input_sequence, 'invalid input acknowledgement')
@@ -269,7 +274,10 @@ class Trace:
         elif kind == 'revoke':
             self.closed = True
             self.players.clear()
+            self.snapshot = self.authenticate = None
             self.pending = self.heartbeat = None
+            self.used_streams.clear()
+            self.used_requests.clear()
         elif kind == 'ping':
             require(self.heartbeat is None, 'previous heartbeat unanswered')
             self.heartbeat = message['heartbeatId']
@@ -294,7 +302,8 @@ class Trace:
         if self.snapshot is not None and message['roomId'] == self.snapshot['roomId'] and message['roomEpoch'] == self.snapshot['roomEpoch']:
             require(message['serverTick'] >= self.tick, 'snapshot tick regressed')
         # Validate everything before replacing the old complete baseline.
-        self.snapshot = copy.deepcopy(message)
+        # Retain one roster only; a snapshot copy must not retain subsequently blocked players.
+        self.snapshot = {key: copy.deepcopy(value) for key, value in message.items() if key != 'players'}
         self.players = {row['userId']: copy.deepcopy(row) for row in message['players']}
         self.sequence = self.input_sequence = self.ack = 0
         self.tick = message['serverTick']

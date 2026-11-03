@@ -132,7 +132,10 @@ current held-input state afresh. One-shot interactions are never replayed.
 `delta` has a full public player upsert list and UUID removal list. Lists are
 unique and disjoint; removals must refer to known non-self players. Membership
 removal of self uses revoke or a room-switch snapshot. Apply each valid delta
-atomically, with no partial roster mutation on an error. serverTick cannot decrease
+atomically, with no partial roster mutation on an error. Retain a single current
+roster; do not keep an initial snapshot.players copy that preserves later-blocked
+people. Drop the consumed ticket after admission. Revoke also clears snapshot
+metadata and pending control state. serverTick cannot decrease
 within a room epoch but may skip simulation ticks. Input acknowledgements cannot
 decrease or exceed the greatest sent input for this stream.
 
@@ -159,6 +162,10 @@ freezes input/prediction until a replacement snapshot. Keep one resync request
 pending, with a fresh requestId, current stream/epoch and last applied streamSeq;
 server minimum spacing is one second. A correlated RESYNC snapshot creates a new
 stream and replaces the whole roster atomically; never append it to stale players.
+While waiting, schema-valid deltas already queued for the old stream are discarded
+without applying players, sequence or input acknowledgements. They do not cause
+an additional reconnect loop; the server could have sent them before it received
+the resync request. Invalid wire data still fails validation.
 An unsolicited EPOCH_CHANGED snapshot also creates a new stream, requires a new
 epoch and null requestId, and preserves event/room/map identity. Concurrent pending
 control requests during such a reset fail the connection rather than guessing
@@ -167,7 +174,9 @@ and obtaining a fresh ticket, rather than interpreting old coordinates with new
 geometry. Obsolete stream frames never update current state.
 
 For `switchRoom`, first issue a fresh ticket for a different room in the same
-event. Send one request with a new requestId and current streamId. The old lease,
+event with identical map ID/revision and avatar manifest ID/version. Asset changes
+require a new connection as above. Send one request with a new requestId and
+current streamId. The old lease,
 roster and stream remain authoritative until target admission commits. A failed
 target reservation yields correlated switchRejected and preserves the old room;
 the consumed target ticket is not reusable. Success atomically transfers the
