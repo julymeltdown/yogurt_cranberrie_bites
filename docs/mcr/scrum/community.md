@@ -10,9 +10,9 @@ approval gate. Implementation owners send validated commits directly to delivery
 
 | Task | State and implemented deliverable | Assigned writer / scope | Validation and commit | Next action / blocking owner |
 |---|---|---|---|---|
-| BE16–18 | IN_PROGRESS: party aggregate rules authored; service transaction slice underway. Capacity includes owner; removal changes audience revision. | BE `01a1a1fd-6b5d-75b0-8d42-01ade79b9393`, isolated `be-community`, base `f0e44bd`; assigned community modules/tests, migration `0007_community.sql`, minimal named exports and backend evidence only. | Worker planning and rustfmt exit 0; focused tests authored. Cargo/PG NOT_RUN pending lease; no new committed handoff or published ancestry yet. | Deliver party slice first. Delivery owns Cargo lease/composition; BE37 owns common relationship policy. |
-| BE20–23 | NOT_STARTED: queued after party handoff; stock/reservation/release/expiry/pickup remains required. | Same BE writer; no ownership expansion. | NOT_RUN; no new commit. | Start domain/atomic commands with retained BE15 receipt/outbox; qualify five-way last-unit race, restart-safe expiry and one-time pickup. |
-| FE22 | MOCK_READY: scoped RHF authoring form/controller committed with conflict preservation, explicit draft restore and receipt recovery. | FE `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`, isolated `fe-community-authoring`, base `f0e44bd`; `frontend/src/features/party-authoring/**` first. | Worker `1c38ad459bf133411f9a11e9e836410642fca3fa`, parent `f0e44bd`; eight focused tests, typecheck/build/lint and Chromium 360/390/430/1280 checks exit 0. Published ancestry not yet verified. | Direct delivery handoff sent; delivery owns shell integration and affected checks. Owner continues FE23 without waiting. |
+| BE16–18 | IN_PROGRESS: party aggregate rules authored; service transaction slice underway. Capacity includes owner; removal changes audience revision. | BE `01a1a1fd-6b5d-75b0-8d42-01ade79b9393`, isolated `be-community`, base `f0e44bd`; assigned community modules/tests, migration `0007_community.sql`, minimal named exports and backend evidence only. | Source checkpoint `4bf2bd4c4ec30bc2ce536a2120d86372173ef6e2` committed; planning/rustfmt/py_compile exit 0. Cargo/native PG NOT_RUN pending lease; not a validated handoff or published feature. | Deliver party slice first. Delivery owns Cargo lease/composition; BE37 owns common relationship policy. |
+| BE20–23 | IN_PROGRESS: giveaway domain source proceeding alongside party validation queue; stock/reservation/release/expiry/pickup remains required. | Same BE writer; no ownership expansion. | NOT_RUN; no new commit. | Start domain/atomic commands with retained BE15 receipt/outbox; qualify five-way last-unit race, restart-safe expiry and one-time pickup. |
+| FE22 | MOCK_READY: scoped RHF authoring form/controller committed with conflict preservation, explicit draft restore and receipt recovery. | FE `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`, isolated `fe-community-authoring`, base `f0e44bd`; `frontend/src/features/party-authoring/**` first. | Worker `1c38ad459bf133411f9a11e9e836410642fca3fa`, parent `f0e44bd`; eight focused tests, typecheck/build/lint and Chromium 360/390/430/1280 checks exit 0. Delivery integrated as `e82a220`, parent eight focused tests PASS; combined build running at report time. Remote publication not yet verified. | Direct delivery handoff sent; delivery owns shell integration and affected checks. Owner continues FE23 without waiting. |
 | FE23 | IN_PROGRESS: owner management/rally started after FE22 commit. | Same FE writer; assigned party-management/rally feature paths. | NOT_RUN; no new commit. | Use pinned contracts/fixtures. FE20 and BE09/19 are separate physical-flow dependencies, not an FE22 barrier. |
 | FE24 | MOCK_READY: existing discovery/detail/own-activity delivery. | Existing scoped delivery; no new discovery writer assigned here. | Progress ledger records worker `595c07f`, integrated `3cb3f9c`/`8c33ba3`; browser fixture/affected checks available. No real reservation acceptance. | Retain consumer compatibility for FE25/26; delivery owns root composition. |
 | FE25–26 | NOT_STARTED: giveaway owner tools and reservation/pickup follow party authoring/management. | Same FE authoring writer; assigned gift-authoring/gift-management/pickup paths only. | NOT_RUN; no new commit. | Deterministic fixtures permit independent implementation; later real stock/pickup qualification is mandatory. |
@@ -91,3 +91,47 @@ integrator-owned contract amendment. This is routed to delivery, not a reason
 to stop the text-based physical beacon. Actual party membership writes stay
 with community BE; meeting owner requested its fresh transactional authority
 and audience-revision seam directly.
+
+## Next ready work and concrete blockers
+
+The human requires continuous team follow-through. Bounded handoffs go directly
+to delivery; owners continue their next assigned slice and required fixes. A
+scope transfer requires the former writer to stop first. Current queues:
+
+| Writer | Current deliverable | Next ready scope |
+|---|---|---|
+| Community BE | Party source `4bf2bd4`, Cargo/native proof pending | Giveaway/reservation domain and transactions; then expiry/pickup qualification |
+| Community FE | FE22 `1c38ad4` handed off/integrated `e82a220`; FE23 coding | FE25 owner tools then FE26 pickup; concrete FE22/23 fixes remain owned |
+| Physical BE | BE09 beacon TTL/audience/receipt-backed adapter | BE19 explicit member-only rally and native authorization/restart proof |
+| Physical FE | FE20 form/detail/arrival controls, validation | Required fixes; proposed exact production meeting-entry adapter/test, only after delivery grants shared-path ownership |
+
+FE20's proposed follow-on adapter is a ready staffing request, not permission to
+edit root/shared composition now. Existing root ownership stays with delivery.
+No completed worker is kept active merely to satisfy a staffing count.
+
+- **Receipt convention:** delivery qualified member references as `user_id` plus
+  revision, bound to the exact canonical party/user HMAC target. Outbox
+  `RESOURCE_INVALIDATED` invalidates event community queries; member revisions
+  are never compared across parties. FE23 was sent this convention. Rally schema
+  identity still needs the actual BE09/19 owner's proposal; uncertain outcomes
+  remain locked until receipt and current resource validate.
+- **Place revisions:** FE19 supplies catalog revision while the beacon command
+  requires a distinct place revision. FE20 requires qualified per-place
+  revisions and disables publishing without them. Delivery owns public BE08
+  projection/root exposure; catalog revision cannot substitute.
+- **Photo binding:** delivery explicitly keeps text-based C04 now. Qualified
+  optional display is permitted; photo attachment remains unavailable pending
+  an exact contract amendment and privacy/upload-binding consumer checks.
+- **Maintenance outbox:** delivery reports an explicit 00:31 KST shared-scope
+  grant to community BE: `0011_outbox_maintenance.sql`, application
+  `commands/maintenance.rs`, repository `outbox_maintenance.rs`, exact
+  `outbox.rs` delivery optional-receipt/typed-origin changes, and dedicated
+  tests/script/doc. Use existing leases/dedup; stable transaction-local metadata
+  UUIDs, no recipient impersonation or receipt reuse. Delivery-owned
+  `command_receipts.rs` / `0009` / tests remain excluded during pending work.
+  This is a recorded grant, not a new coordinator request.
+
+Tracker commits `7a1ed34`, `f29a82a`, `181878b` were handed directly to delivery;
+master now contains the corresponding documentation history (observed local
+master `54900ec`). At the last remote check, `refs/heads/master` was still
+`920631d`; FE22 integration and latest tracker publication were not yet proven.
