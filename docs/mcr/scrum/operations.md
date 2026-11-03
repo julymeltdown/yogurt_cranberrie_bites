@@ -13,6 +13,14 @@ remains NOT_RUN until its separate live journey is executed.
   `01a19e5c-e9c6-7973-a53b-a6d19141620f`.
 - Wall/operations coordination: `01a1a21d-39ec-7912-84cb-910058e7a110`.
   Main and scrum leads are not mandatory review or approval gates.
+- Latest direct human policy, relayed by both kings and verified in
+  `origin/master` AGENTS.md at `d8f9f9ac`, permits exclusive scoped owners to
+  validate, commit, and publish new scoped checkpoints directly to master.
+  Fetch/reconcile peer history, run affected checks, preserve scope, verify
+  remote ancestry, and never force-push. Kings are not mandatory publishers or
+  per-commit reviewers. Shared-contract and frontend-root ownership stays
+  unchanged. Already handed-off Wall/root patches on frontend king's branch
+  are published once by that king; their former authors must not duplicate them.
 - All three current lane checkouts started at
   `f837bef676cd26869c26c172a699a91b7842d832`. This coordinator writes only this
   document in `codex/mcr-sl-wall-reference`, isolated checkout
@@ -30,7 +38,7 @@ remains NOT_RUN until its separate live journey is executed.
 
 | Task | Owner and isolated branch | Exact write grant | Actual goal state |
 | --- | --- | --- | --- |
-| FE-REF-WALL, presentation follow-up to FE32/FE33 | `01a1a213-61d6-7a20-a8e7-476649312f8c`; `codex/mcr-fe-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target` | `frontend/src/features/mural/editor/MuralEditor.tsx`, `frontend/src/features/mural/editor/editor.css`, `frontend/src/features/mural/sync/MuralSyncPanel.tsx`, new `frontend/src/features/mural/editor/__tests__/reference-target/**`, new `frontend/src/features/mural/sync/__tests__/reference-target/**`, `docs/mcr/frontend/wall-reference-target.md` | Owner verified no unfinished goal, created unbudgeted concrete goal; ACTIVE. |
+| FE-REF-WALL, presentation follow-up to FE32/FE33 | `01a1a213-61d6-7a20-a8e7-476649312f8c`; `codex/mcr-fe-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target` | `frontend/src/features/mural/editor/MuralEditor.tsx`, `frontend/src/features/mural/editor/editor.css`, `frontend/src/features/mural/sync/MuralSyncPanel.tsx`, new `frontend/src/features/mural/editor/__tests__/reference-target/**`, new `frontend/src/features/mural/sync/__tests__/reference-target/**`, `docs/mcr/frontend/wall-reference-target.md` | Owner verified unbudgeted goal COMPLETE after committed handoff; fresh get_goal now null. Writer STOPPED. |
 | FE-REF-WALL-QA, bounded presentation and interaction qualification | `01a1a20f-e2a9-7ca2-a21e-f2bd3a9703be`; `codex/mcr-qa-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/qa-wall-reference-target` | New `frontend/e2e/wall-reference/**`, `docs/mcr/qa/wall-reference-target.md` only | Broader unfinished real-IN04 goal remains BLOCKED; related preparation continues manually. No competing goal or false completion. |
 | Lane coordination and committed evidence handoff | Operations SL above | This document only | Original broad goal verified BLOCKED; explicit new authorization permits useful work manually. No tool capability is claimed to resume it. |
 
@@ -43,8 +51,9 @@ chat snapshots. Sending an assignment alone was not treated as acceptance.
 No implicit grant covers controllers, input logic, HTTP adapters, contracts,
 existing tests, root composition, shared UI/styles, manifests, lockfiles, art,
 backend code, or another worker checkout. Extra paths require an exact transfer
-from their owner. Only the designated frontend integrator publishes these
-patches to master, serially with relevant combined checks.
+from their owner. Frontend king publishes the already-integrated Wall/root
+patches once; new scoped follow-ups may be published by their exclusive owners
+with the latest direct-publication safeguards above.
 
 ## Delivery behavior and evidence still required
 
@@ -74,8 +83,9 @@ Author paths consumed as dependencies are identified separately from QA-authored
 paths. Concrete findings go directly to the author and are rechecked; QA is not
 an additional generic approval gate. Real devices and live IN04 are not implied.
 
-At this snapshot both assignments are IN_PROGRESS. Neither a final source
-handoff nor final native QA acceptance is recorded yet.
+Author task-local work is MOCK_READY and committed; independent QA is
+IN_PROGRESS. Wall implementation/evidence and root publication are verified
+below; independent QA report publication is pending.
 
 The author reports the three presentation files implemented and 126 existing
 editor/synchronization tests across seven files passing (exit 0). This is an
@@ -83,6 +93,108 @@ owner-run intermediate result, not final source/native qualification. QA's first
 baseline launch stopped at its disk-floor guard before Vite/Chrome allocation;
 no failed launch is counted as browser evidence. Its isolated fixture strict
 TypeScript and scoped lint now pass; baseline captures are resuming.
+
+QA subsequently completed baseline behavior at 360/390/430 (exit 0), with six
+of seven coarse target-geometry checks failing. At 390px the old panel is
+1101px tall, canvas begins 226px below the panel top, and palette occupies three
+rows. The coordinator viewed that native screenshot and the supplied target.
+The first probe misclassified 18 Vite development sockets; QA corrected its
+same-origin development-endpoint classification while retaining the product
+socket guard and transcribed the initial failed stdout honestly. That failed
+full report had already been overwritten; no retained full-report claim is made.
+
+The author accepted the measured portrait proportion (approximately 274 by
+304 in the supplied image), conditional idle preview, and root-height seam.
+Its local presentation math keeps uniform pixel scale and centered vertical
+offset with matching hit testing; no controller/input ownership expansion was
+needed. Final native raster/corner checks remain pending. QA will serve only the
+three exact author files through a read-only Git-blob loader, recording hashes
+of actually served bytes rather than the old baseline files. Coarse geometry
+success alone will not certify exact imagery, icons, or full visual fidelity.
+
+Final product source pin:
+`832c7de9c57f6f8931b5564f61f68d82fa99d89d`, parent
+`f837bef676cd26869c26c172a699a91b7842d832`. Its exact changed-path list was
+independently inspected: only the three granted presentation files. Imports
+remain frontend-only. The coordinator compared each committed file SHA-256 to
+the actual native report: all three match. Author reports 131 tests across nine
+files, full frontend strict TypeScript, scoped lint, production build, planning
+check, and whitespace check all exit 0. Native Chrome 156.0.8078.80 passes
+360/390/430. The coordinator inspected the 360px loaded PNG and report.
+
+Measured standalone panel heights are 635.53/668.53/712.53px. Canvas starts
+72px below the top, measures 340 by 374 / 370 by 407 / 410 by 451px, and occupies
+58.8/60.9/63.3 percent of panel height. The framed palette is 62px tall; tools
+are 44px and 10px from the right. Checks cover every 16,384 snapshot cell,
+uniform raster scale, corner and zoom hit testing, all 16 colors via scroll and
+keyboard, no page overflow, explicit one-POST confirmation, cooldown, lost/202
+GET-only recovery, paused/frozen/read-only/privacy, and a short 420px viewport
+using the root height variable. No uncommitted root implementation was consumed.
+The pixel pattern is deterministic fixture data, not a claim that product mural
+imagery matches the supplied drawing. Final independent QA is still pending.
+
+Author evidence/documentation commit:
+`4eb2d25290eeb6915c85c24a3d030b181b17fa9c` atop the source pin. All 26 changed
+paths were checked against the assignment; no path drift was found. The new
+tests, 15 PNGs and source-bound report, and
+`docs/mcr/frontend/wall-reference-target.md` are delivered. Evidence totals
+about 736 KiB. Own 36 MiB build output, cache, and dependency link were removed;
+the checkout is clean. Owner reported update_goal COMPLETE and an immediate
+COMPLETE get_goal, then corrected its subsequent observation to a fresh null
+goal. The terminal completed turn and idle writer were verified. No broad
+release or real-IN04 goal was falsely completed. This writer is available for
+concrete Wall QA fixes; a new assignment needs an explicit ownership transfer.
+
+Frontend king integrated source as `7b567acb`, author evidence as `fe9cbb2d`,
+and the shared root as `deb5865d`; these commits were read from its actual
+integration checkout history. All three integrated source files were compared
+byte for byte to `832c7de9`, and the delivered author document to `4eb2d252`;
+they match. The initial coordinator document is integrated as `7ebf17d9`.
+Thus this bounded patch is INTEGRATED locally; publication and combined root
+qualification are separate. At that inspection the integrator's origin/master
+ref was `1e5022885525ab56f056aa2c24100e18c4bc67ed`, not this source delivery.
+
+Independent QA loaded all three pinned Git blobs, passed committed-byte semantic
+TypeScript, and passed eight coarse structural checks at 360/390/430. Its first
+candidate behavior probe timed out because its own locator omitted controls
+inside closed details. The genuine summary locator is corrected; the full
+failed probe and three loaded captures are preserved. The corrected native
+rerun was refused before browser allocation when disk again fell below 8 GiB.
+The coordinator verified 7,769,484 KiB free and notified both resource owners.
+QA removed only its stopped 21 MiB cache, preserving its 3.1 MiB evidence.
+Final behavior qualification and QA committed handoff remain pending; no
+application failure or independent full-fidelity acceptance is inferred.
+
+The corrected independent candidate subsequently passed all 360/390/430
+interaction probes with no runtime errors. Its report records actual served
+pin `832c7de9`, shared presentation base `f837bef`, no root override, all three
+loaded pinned paths, and structural label `MEETS_STRUCTURAL_GEOMETRY_CHECKS`.
+Checks include every authoritative RGBA cell, all palette colors and keyboard
+access, physical corner/margin hit testing, genuine pan/zoom raster changes,
+explicit one-POST confirmation, fixture cooldown, pending/unknown original-key
+GET-only resolution, and paused/frozen/read-only states. Native imagery remains
+deterministic test content; exact full-photo fidelity, combined root route,
+real devices and IN04 are not certified. QA is finishing its committed report
+and qualified publication receipt; its original broader IN04 goal stays BLOCKED.
+
+Published frontend checkpoint:
+`e9ce93daf2c0d6aa453d055efad271d1de34349c`. A fresh origin fetch and
+`git merge-base --is-ancestor` independently verified `7b567acb`, `fe9cbb2d`,
+and `deb5865d` are all contained in published master (all exit 0).
+`docs/mcr/frontend/reference-checkpoint-2026-11-04.json` records the king-run
+combined candidate: 617 tests / 38 files, strict types, lint, build, UI origin,
+planning and three-width default-root native checks pass. Its actual Phaser
+uses synthetic HTTP/socket; approved authenticated character binding, live
+services and full reference acceptance are explicitly NOT_RUN. This is not
+new real-IN04 proof. The coordinator also viewed QA's final 390px capture and
+verified all three actually served source hashes against committed `832c7de9`.
+
+The coordinator reconciled published history in its own checkout. The sole
+add/add conflict was this originally absent ledger: king's published first
+version versus this same owner's later execution updates. The complete updated
+ledger is retained; no application, source-pack, or peer changes are resolved
+away. This docs-only follow-up uses direct non-force publication under the new
+policy, rather than waiting for a coordinator approval queue.
 
 ## Shared shell seam and production dependencies
 
@@ -95,7 +207,13 @@ full mobile panels, uses a flex body with min-height zero, overflow auto and
 areas. Automatic `ConcertWindowEmbedding` suppresses the first embedded
 feature's duplicate frame/title while retaining a semantic heading; standalone,
 nested, or explicitly closable windows retain their own frame/title. No feature
-opt-in edit is needed. Root native evidence and its committed pin are pending.
+opt-in edit is needed. Root owner subsequently delivered committed pin
+`7201b875f9ed6a07a0a77b9ae4aeac2f3f2fbd57` atop `b756e9d9`, reported clean and
+STOPPED. Its document is `docs/mcr/frontend/reference-root.md`; it reports 600
+tests, types/lint/build and native default-Auth/Phaser checks for eight surfaces
+at three widths. Those are root-owner reports, not coordinator reruns or a
+combined Wall candidate. Frontend king owns serial integration and combined
+route evidence. Standalone Wall source does not import the new shared export.
 
 At base `f837bef`, `frontend/src/app/world-panels/index.tsx` still passes
 `release={null}` into `MuralEntryProvider`. Backend kernel qualification alone
@@ -105,6 +223,13 @@ An eventual release needs the actual privacy scope, abort signal, room/epoch/
 stream binding, read/subscription authority, write policy, qualified scene
 anchor, and incumbent scene on close. Do not fabricate them or broaden the
 public realtime contract to bypass missing composition.
+
+Main confirmed the exact dependency request: BE34 kernel delivery `505bb8c2`
+has native migration-ledger evidence but does not qualify `MuralEntryRelease`.
+The C05 world consumer and Auth/Friend journal/RPC chain are still being
+qualified by backend owners. Main will provide exact qualified producer/release
+pins; frontend king owns the actual root binding. No extra Operations build or
+review gate was requested.
 
 IN04 separately requires multiple real clients, authoritative server cooldown,
 moderation/pause, restore to a new revision, convergence, final freeze, and denied
