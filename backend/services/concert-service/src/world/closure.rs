@@ -127,4 +127,4 @@ pub(crate) async fn fence_event_read_only_in(
 
 #[cfg(test)]
 #[path = "../../tests/world_read_only_support/qualified.rs"]
-mod tests;
+pub(crate) mod tests;
