@@ -178,6 +178,23 @@ passing component is promoted to BE41 ACCEPTED. Current owner-directed delivery
 policy allows this validated exclusive patch to publish non-force to master after
 peer reconciliation; no main-chat or scrum-lead approval gate is required.
 
+### Delivery ancestry and final peer reconciliation
+
+Owned implementation commits are `3265fb1a` and `d47479cb`; actual driver/native
+qualification is `3d65e251`; the authorization race fix is `3a6957e2`; current
+23-native evidence and exact migration-25 ledger adaptation are `bb8db428`.
+Merge `129d0c31` reconciles the subsequently published participant producer.
+The 28 qualified lifecycle/World/native-fixture inputs remain byte-identical to
+the passing compiled source pin after that merge. Among the 1407 frozen backend
+inputs, only `concert-service/build.rs` and `src/lib.rs` change: additive generation
+and export of the participant RPC module. Its new protocol/implementation/tests
+remain the participant owner's patch. Static dependency comparison finds no
+lifecycle/World coupling or changed migration, manifest or lockfile. No fresh
+Cargo compilation or participant-native qualification is claimed for this final
+additive merge; the recorded native proof belongs to the exact frozen candidate.
+Planning/provenance, ordered source-pin verification and diff checks after peer
+reconciliation all exit 0. Backend build resources remain released to uploader.
+
 ## Historical native-qualified continuation at c2a09dcc
 
 The following section describes the earlier isolated `f5af234` continuation only;
