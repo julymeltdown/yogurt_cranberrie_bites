@@ -1,9 +1,31 @@
 # Execution record
 
-Updated 2026-11-03. This record supersedes intake-only status statements in the
+Updated 2026-11-04. This record supersedes intake-only status statements in the
 historical assessments. `generated/` remains the original planning baseline.
 Acceptance below applies only to the stated task criteria and candidate paths;
 it is not feature integration or release acceptance.
+
+Current delivery checkpoint: `920631d` was pushed to `julymeltdown/mcr/master`
+and verified against the remote. Later local integrations include BE06 producer
+`48458d5` (worker `2cb878b`), FE27 `9f72a71` (worker `97ef9fb`), and FE22
+`e82a220` (worker `1c38ad4`). These later SHAs are not yet publication evidence.
+The entry resolver `b7a05b5`, bounded bootstrap QA `22042dd`, and BE08 evidence
+are already within the published checkpoint. Delivery reran 99 combined entry,
+rooms and lifecycle tests, 10 FE27 controller tests, and 8 FE22 authoring tests,
+all exit 0. Startup/HTTP code and durable domain-failure receipt extensions are
+being qualified separately; no live multiplayer or approved-art acceptance is
+inferred. Main and functional leads track progress; delivery owns integration
+and publication without an additional coordinator approval gate.
+
+BE06's native PostgreSQL 16.14 worker receipt passes actual migration ledger
+1/2/4, concurrent participant creation, guarded in-process generated RPC,
+C03/C06 validation, restart and cleanup. Its 18 source/contract hashes were
+compared after integration: 16 match; the application library additionally
+exports integrated `place`, and delivery extends the bootstrap harness with a
+real-binary synthetic-product startup refusal. A combined current migration
+ledger run remains required. BE10/11's first native run exposed a real room
+capacity comparison defect and a ticket digest fixture issue; the owner is
+correcting and rerunning them, so this gate is not reported as passing.
 
 | Task | State | Evidence and remaining scope |
 |---|---|---|
@@ -20,9 +42,19 @@ it is not feature integration or release acceptance.
 | BE03 | INTEGRATED | [Email ingress review](evidence/browser-auth-integration.md), candidate `689e4d2`: parent reran 221 Gateway tests, nine harness tests and 53 real native HTTP checks with three mail deliveries and cleanup PASS. Frozen email/account mapping, browser guards and invalid-credential handling delivered. Real browser cookie policy, configured OAuth and complete BE03 acceptance remain open. |
 | BE04 | IN_PROGRESS | [Joined owner chain](backend/http-owner-chain.md), `ca26683` integrated as `e6c629d`: production Axum extraction/timeout and configured clients reach actual guarded Auth/Profile services and isolated databases. One native scenario with nine controls passes, including negative Auth dispatch suppression, restored-account fresh login, owner outages and original-stop refusal; cleanup passes. HTTP route is test-only/in-process. Signed Concert admission, event authority and whole identity acceptance remain open. |
 | BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
-| BE08 | IN_PROGRESS | Candidate `c135bff`, corrections `a91ed08` and handoff `bbc1524` are committed on the isolated worker branch. Worker reports focused Rust and fresh PostgreSQL/restart/cleanup PASS, including caller-held transaction and concurrent closure. Independent correction/evidence review is assigned; main integration and public routes remain open. The worker explicitly released the shared Rust target. |
+| BE06 | IN_PROGRESS | Transactional producer integrated `48458d5`; [source-bound native receipt](backend/bootstrap.md) passes in the isolated worker ledger. Combined migrations, actual product release, configured startup and public-route qualification remain separate. |
+| BE08 | IN_PROGRESS | Bounded implementation and fixes integrated through `5f7eb1c`, independent review through `4d6fc85`, and [retained evidence](evidence/backend-places-integration.md) published `920631d`. Nine focused tests pass. Worker PostgreSQL evidence used direct SQL, not the migration ledger; public routes and whole-task qualification remain open. |
+| BE09 / BE19 | IN_PROGRESS | Separate `be-physical-meeting` owner implements typed beacon/rally commands using caller-held reviewed-place locks; migration 0008 reserved. No real venue guidance or arrival inferred from world movement. |
+| BE10 / BE11 | IN_PROGRESS | Isolated admission owner implements one-use tickets and room membership, migration 0005. Native failures are under correction; no public ticket/room/WebSocket or capacity acceptance is claimed. |
+| BE16–18 / BE20–23 | IN_PROGRESS | Separate community backend owner; party source checkpoint `4bf2bd4` is not yet compile/native-qualified. Migration 0007 reserved; no public command acceptance. |
+| BE37 / BE28–30 | IN_PROGRESS | Typed relationship seam checkpoint `bcd2cd2` is not yet Cargo-qualified. Migration 0006 reserved. A separate Auth/Friend authority owner is assigned; a fresh RPC read alone does not establish revocation fencing through a Concert transaction. |
 | BE15 | IN_PROGRESS | [Reviewed internal receipt/outbox foundation](evidence/command-receipts-integration.md), `7cbb97e`/`c2a2c30`: 33 combined deterministic Rust, 82 Python helper and 17 real PostgreSQL tests pass; owned migration failure/recovery, restart persistence and cleanup pass. Review fixes cover keyed private fingerprints, post-authorization expiry and result/outbox revision equality. Bounded goal COMPLETE; production producer/Auth/public API/key configuration/runtime/load gates remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
+| FE04 | IN_PROGRESS | Separate media owner also has exact shared `api/http.ts` and HTTP-test ownership for canonical authenticated binary transport. Current C04 same-origin authenticated PUT and credential-free presigned upload semantics remain distinct; no presigned endpoint is invented. |
+| FE12 | IN_PROGRESS | Shared selected-source compositor and minimal scene hooks are being validated on the isolated avatar checkout. Synthetic native pixel parity is test evidence; current C06 and product-art availability remain unchanged. |
+| FE20 | IN_PROGRESS | Separate text-beacon/explicit-arrival frontend owner. Current C04 contains no photo mutation field; no fake persistence is introduced. Server-qualified audience/place/TTL authority remains required. |
+| FE22 | MOCK_READY | Worker `1c38ad4` integrated `e82a220`; parent 8 focused tests pass. [Authoring evidence](frontend/community-authoring.md) reports browser fixtures at 360/390/430/1280, receipt recovery and privacy cleanup. Root composition, real service/multiuser/device acceptance remain open; FE23/25/26 continue independently. |
+| FE27 | MOCK_READY | Worker `97ef9fb` integrated `9f72a71`; parent 10 focused tests pass. [Feed evidence](frontend/social-feed.md) covers scoped timeline/notices controller behavior. Root/browser/live acceptance remain open; FE28 text/thread and media qualification continue. |
 | FE06 | MOCK_READY | [Theme integration review](evidence/email-and-theme-integration.md): three scoped palettes and atomic Phaser skin replacement; unchanged map/camera/movement, fallback, reentry and resource disposal pass focused262, build/lint and three-width native checks. Parent fixed-source checks pass. Production art/shell wiring, server preferences and real multiplayer remain open. |
 | FE01 | ACCEPTED | [Integrated review](evidence/core-foundation-integration.md): 144 transport/error tests plus 22 existing UI tests, strict build/lint; memory-only session, bounded read refresh, cancellation, safe error/upload ports and stale-identity isolation. Real cookies and auth journeys remain BE03/FE09 work. |
 | FE02 | ACCEPTED | [Integrated privacy review](evidence/privacy-local-stack-integration.md): actual QueryClient/observers, canonical private keys, cancellation plus eviction, commit fencing and cleanup ports; 45 new tests and combined 189-test transport/privacy run pass. UI/event/real-server owner wiring remains. |

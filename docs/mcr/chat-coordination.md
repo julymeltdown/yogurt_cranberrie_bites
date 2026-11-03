@@ -1,5 +1,58 @@
 # Active chat ownership
 
+## Current delivery authority — 2026-11-04
+
+This section supersedes all historical allocations and main-review gates below.
+The delivery integrator `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` exclusively owns
+`/Users/lhs/Desktop/mcr` on `master`; main and scrum leads coordinate progress.
+All writers preserve the user's model/reasoning, communicate in English, and
+work only in their assigned isolated checkout. Each implementation goal covers
+validation, evidence, committed handoff and concrete fixes, without a token budget.
+
+| Scope | Chat | Isolated checkout under `/Users/lhs/Desktop/mcr-worktrees/` |
+|---|---|---|
+| BE06 producer, handed off `2cb878b`, integrated `48458d5` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `be-bootstrap` |
+| BE10/11 tickets and membership, migration 0005 | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `be-world-admission` |
+| FE production entry and root composition | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `fe-world-entry` |
+| FE12 avatar compositor and minimal scene hooks | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `fe-avatar-runtime` |
+| Selected-source artwork and honest preview derivatives | `01a1a1fe-1eed-7d12-a247-879cd521e0ec` | `art-runtime` |
+| BE16–18/20–23 community, migration 0007 | `01a1a1fd-6b5d-75b0-8d42-01ade79b9393` | `be-community` |
+| FE22/23/25/26 community authoring and pickup | `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e` | `fe-community-authoring` |
+| BE37/28–30 relationship policy, migration 0006 | `01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c` | `be-social-policy` |
+| FE27/28 event feed and threads | `01a1a1fe-1ab7-79b0-adbc-d4c025701acb` | `fe-social-feed` |
+| Targeted QA, bounded bootstrap report delivered | `01a1a00c-c94e-74a2-a306-1ff686372881` | `qa-bootstrap-boundary` |
+
+World, community and social progress leads are respectively
+`01a1a1fe-c276-7eb3-a36e-2f383c0e81b8`,
+`01a1a1fe-c5f1-7e60-87c2-43785b07f941`, and
+`01a1a1fe-ca12-7cc3-9a1d-62bbb2689498`. Their only assigned writes are the
+corresponding `docs/mcr/scrum/{world,community,social}.md` in separate worktrees.
+They are not code approval gates.
+
+The frontend root owner has an explicit single-writer transfer for
+`frontend/src/main.tsx` and `frontend/src/app/{ports.ts,WorldShell.tsx,router.tsx,WorldHost.tsx}`,
+new entry glue/tests, and `docs/mcr/frontend/world-root-wiring.md`.
+The avatar owner alone retains `world/runtime.ts`, `world/scenes/MapScene.ts`,
+`world/composition/index.ts` minimal hooks and directly affected tests.
+Contracts, other roots, manifests/lockfiles, infrastructure, public Gateway and
+Concert startup remain with delivery. No static cutout is approved as a walking
+or layered atlas; current C06 remains unchanged.
+
+Shared Rust target `/Users/lhs/Desktop/mcr-build/backend`: bootstrap explicitly
+released to admission; then delivery combined/startup checks, community party
+checks, and BE37. Rust 1.88.0, locked/offline where available, two jobs/debug=0;
+serialize builds rather than source work. No duplicate full Rust targets.
+Migrations 0008 (`meeting_beacons`) and 0009 (`receipt_domain_failures`) are
+reserved for meeting and delivery respectively. FE04 paths `shared/media/**`
+and `features/media/model/**`, and FE20 `features/meet-beacon/**`, are reserved
+for separate forthcoming owners; no incumbent acquires them implicitly.
+
+The entry worker confirmed its previous bounded goal COMPLETE and its new root
+goal ACTIVE. Other active development goals remain required through delivery;
+the historical broad BE04 BLOCKED goal is not falsely completed by BE06 delivery.
+Only delivery pushes master. Publication `920631d` was verified against the remote;
+subsequent integration commits remain local until the next recorded push.
+
 Updated 2026-11-03. Current allocation prioritizes completing real service flows.
 Model and reasoning choices belong to the user; all five chats received the
 instruction to preserve them without orchestration overrides.
