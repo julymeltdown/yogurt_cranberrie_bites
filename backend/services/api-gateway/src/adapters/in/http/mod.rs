@@ -6,6 +6,7 @@ pub mod auth_shadow_routes;
 pub mod browser_auth;
 pub mod client_identity;
 pub mod concert_access;
+pub mod concert_world;
 pub mod concert_bootstrap;
 
 pub mod friend_routes;
@@ -236,6 +237,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         ))
         .merge(browser_auth::router(state.clone()))
         .merge(concert_bootstrap::router(state.clone()))
+        .merge(concert_world::router_with_boundary(state.clone()))
         .merge(profile_routes::router(state.clone()))
         .merge(friend_routes::router(state.clone()))
         .merge(moderation_routes::router(state.clone()))

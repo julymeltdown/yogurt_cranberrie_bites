@@ -46,6 +46,8 @@ pub enum WorldError {
     MembershipMissing,
     #[error("world membership conflicts with current authority")]
     Conflict,
+    #[error("world release version does not match")]
+    MapVersionMismatch,
 }
 
 impl From<IdentityError> for WorldError {
@@ -300,6 +302,28 @@ pub struct TicketIssuance {
     pub avatar: AvatarPin,
     pub server_time: DateTime<Utc>,
     pub expires_at: DateTime<Utc>,
+}
+
+/// Pins captured from the currently validated product release. The Gateway
+/// never supplies these values; composition reads them from owner state.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct ReleasePins {
+    pub event_id: EventId,
+    pub map: MapPin,
+    pub avatar: AvatarPin,
+    pub captured_at: DateTime<Utc>,
+}
+
+/// A checked canonical world request after strict Access, fresh Auth session,
+/// event/participant/restriction, current release and Profile reads. It is an
+/// internal value, never a browser DTO or portable grant.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct VerifiedTicketSubject {
+    pub key: ParticipantKey,
+    pub event_id: EventId,
+    pub session_id: SessionId,
+    pub access_expires_at: DateTime<Utc>,
+    pub release: ReleasePins,
 }
 impl TicketIssuance {
     pub fn protocol_version(&self) -> &'static str {
@@ -645,6 +669,67 @@ impl<A: WorldAuthority, R: TicketRepository + WorldRepository, C: Clock, G: Tick
             issued_at: now,
             expires_at,
             access_expires_at: authority.access_expires_at,
+        };
+        match self.repository.issue(record).await? {
+            IssueOutcome::Issued => Ok(TicketIssuance {
+                ticket,
+                event_id: request.event_id,
+                room_id: request.room_id,
+                map: request.map,
+                avatar: request.avatar,
+                server_time: now,
+                expires_at,
+            }),
+            IssueOutcome::Full => Err(WorldError::RoomFull),
+            IssueOutcome::Hidden => Err(WorldError::Unavailable),
+        }
+    }
+
+    /// Issue through a typed, already-authorized owner record. It retains the
+    /// exact expiry, pin, CSPRNG and digest-only TicketRepository paths.
+    pub async fn issue_verified(
+        &self,
+        subject: VerifiedTicketSubject,
+        request: TicketRequest,
+    ) -> Result<TicketIssuance, WorldError> {
+        let now = self.clock.now();
+        if subject.key.event_id != request.event_id
+            || subject.event_id != request.event_id
+            || subject.release.event_id != request.event_id
+            || subject.release.captured_at > now
+            || subject.release.captured_at + Duration::seconds(FRESH_AUTHORITY_MILLISECONDS) <= now
+            || subject.access_expires_at <= now
+        {
+            return Err(WorldError::Denied);
+        }
+        if subject.release.map != request.map || subject.release.avatar != request.avatar {
+            return Err(WorldError::MapVersionMismatch);
+        }
+        let expires_at = now
+            .checked_add_signed(Duration::seconds(TICKET_TTL_SECONDS))
+            .ok_or(WorldError::Invalid)?
+            .min(subject.access_expires_at);
+        if expires_at <= now {
+            return Err(WorldError::CredentialExpired);
+        }
+        let ticket = self.generator.generate()?;
+        let pin = ResourcePin {
+            event_id: request.event_id,
+            room_id: request.room_id,
+            map: request.map.clone(),
+            avatar: request.avatar.clone(),
+        };
+        let record = TicketRecord {
+            digest: ticket.digest(),
+            subject: WorldSubject {
+                key: subject.key,
+                event_id: subject.event_id,
+                session_id: subject.session_id,
+            },
+            pin,
+            issued_at: now,
+            expires_at,
+            access_expires_at: subject.access_expires_at,
         };
         match self.repository.issue(record).await? {
             IssueOutcome::Issued => Ok(TicketIssuance {

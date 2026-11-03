@@ -246,6 +246,14 @@ fn request() -> TicketRequest {
         avatar: avatar(),
     }
 }
+fn pins(event: EventId) -> ReleasePins {
+    ReleasePins {
+        event_id: event,
+        map: map(),
+        avatar: avatar(),
+        captured_at: Utc.timestamp_opt(NOW, 0).unwrap(),
+    }
+}
 fn membership(claim: &TicketClaim, now: DateTime<Utc>) -> Membership {
     Membership {
         key: claim.record.subject.key,
@@ -423,6 +431,57 @@ async fn wrong_room_is_rejected_after_consumption_without_admission() {
         Err(WorldError::CredentialInvalid)
     );
     assert_eq!(store.state.lock().unwrap().calls, vec!["consume"]);
+}
+
+#[tokio::test]
+async fn typed_issuance_uses_same_digest_bound_one_use_store() {
+    let now = Utc.timestamp_opt(NOW, 0).unwrap();
+    let (authority, _, _) = authority(now + Duration::seconds(60));
+    let store = Store::default();
+    let service = WorldService::new(authority, store.clone(), FixedClock, Entropy(11.into()));
+    let request = request();
+    let subject = VerifiedTicketSubject {
+        key: key(request.event_id),
+        event_id: request.event_id,
+        session_id: session(),
+        access_expires_at: now + Duration::seconds(60),
+        release: pins(request.event_id),
+    };
+    let issued = service
+        .issue_verified(subject, request.clone())
+        .await
+        .unwrap();
+    assert_eq!(issued.expires_at, now + Duration::seconds(30));
+    assert_eq!(issued.room_id, request.room_id);
+    let records = store.state.lock().unwrap();
+    assert_eq!(records.records.len(), 1);
+    assert_eq!(records.records[0].0.pin.map, map());
+    assert_eq!(records.records[0].0.pin.avatar, avatar());
+}
+
+#[tokio::test]
+async fn typed_issuance_rejects_stale_release_with_distinct_error() {
+    let now = Utc.timestamp_opt(NOW, 0).unwrap();
+    let (authority, _, _) = authority(now + Duration::seconds(60));
+    let service = WorldService::new(authority, Store::default(), FixedClock, Entropy(12.into()));
+    let request = request();
+    let mut release = pins(request.event_id);
+    release.map.revision = Revision::new(2).unwrap();
+    assert_eq!(
+        service
+            .issue_verified(
+                VerifiedTicketSubject {
+                    key: key(request.event_id),
+                    event_id: request.event_id,
+                    session_id: session(),
+                    access_expires_at: now + Duration::seconds(60),
+                    release,
+                },
+                request,
+            )
+            .await,
+        Err(WorldError::MapVersionMismatch)
+    );
 }
 
 #[test]

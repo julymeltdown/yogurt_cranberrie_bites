@@ -58,3 +58,7 @@ pub fn source_authority_proto() -> PathBuf {
 pub fn source_concert_proto() -> PathBuf {
     proto_root().join("concert/v1/concert.proto")
 }
+
+pub fn source_world_proto() -> PathBuf {
+    proto_root().join("concert/v1/world.proto")
+}

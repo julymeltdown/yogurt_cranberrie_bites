@@ -1,4 +1,5 @@
 //! Durable BE10/BE11 PostgreSQL adapter. No HTTP, WebSocket or public DTO is exposed here.
+pub mod rpc;
 pub mod simulation;
 use async_trait::async_trait;
 use chrono::{DateTime, Duration, Utc};
@@ -15,6 +16,38 @@ impl PgWorldRepository {
     pub fn new(pool: PgPool) -> Self {
         Self { pool }
     }
+
+    /// Read one current server-owned membership. Stream and epoch are runtime
+    /// fields and are deliberately absent from this canonical lease.
+    pub async fn current_owned_membership(
+        &self,
+        key: ParticipantKey,
+        now: DateTime<Utc>,
+    ) -> Result<Option<CurrentOwnedMembership>, WorldError> {
+        let row = sqlx::query("select m.event_id,m.user_id,m.room_id,m.session_id,m.connection_id,m.map_id,m.map_revision,m.avatar_manifest_id,m.avatar_manifest_version,m.lease_until,m.access_expires_at,m.disconnected,l.owner_process_id,l.owner_epoch from public.concert_world_memberships m join public.concert_world_owner_leases l on l.event_id=m.event_id and l.room_id=m.room_id where m.event_id=$1 and m.user_id=$2 and m.lease_until>$3 and not m.disconnected and l.lease_until>$3")
+            .bind(key.event_id.uuid())
+            .bind(key.user_id.uuid())
+            .bind(now)
+            .fetch_optional(&self.pool)
+            .await
+            .map_err(unavailable)?;
+        row.map(|row| {
+            Ok(CurrentOwnedMembership {
+                membership: membership(&row)?,
+                owner: OwnerIdentity::new(
+                    row.try_get("owner_process_id").map_err(invalid)?,
+                    row.try_get("owner_epoch").map_err(invalid)?,
+                )?,
+            })
+        })
+        .transpose()
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct CurrentOwnedMembership {
+    pub membership: Membership,
+    pub owner: OwnerIdentity,
 }
 
 fn unavailable(_: sqlx::Error) -> WorldError {
