@@ -3,6 +3,7 @@ import { ShellLink } from '../../../app/navigation'
 import { Button } from '../../../shared/ui'
 import type { Giveaway, GiftFilters } from '../model/contract'
 import { giveawayStatus, reservationEligibility, type GiftDiscoveryController, type GiftDiscoveryState, type GiftPage, type GiftResource } from '../model/controller'
+import { ConcertRow, ConcertState, ConcertWindow } from '../../../shared/ui/concert-window'
 import './gifts.css'
 
 export interface GiftPlaceOption { readonly id: string; readonly label: string }
@@ -34,13 +35,12 @@ export function GiftResult<T>({ resource, now, retry, children, label }: {
 const timeFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Seoul', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })
 export function GiftTime({ value }: { value: string }) { return <time dateTime={value}>{timeFormat.format(Date.parse(value))} KST</time> }
 export function GiftRow({ gift, now, own = false }: { gift: Giveaway; now: number; own?: boolean }) {
-  return <li className="gift-row">
-    <div className="gift-row-heading"><h3>{gift.state === 'DRAFT' ? gift.title : <ShellLink id={`gift-${gift.giveaway_id}`} to={`/gifts/${gift.giveaway_id}`}>{gift.title}</ShellLink>}</h3>
-      <span className="gift-status">{giveawayStatus(gift, now)}</span></div>
-    <p className="gift-meta">{own ? 'Your giveaway' : `From ${gift.owner.display_name}`} · <strong>{gift.available} remaining</strong> of {gift.quantity_total}</p>
-    <p className="gift-meta">Pickup <GiftTime value={gift.pickup_starts_at} /> – <GiftTime value={gift.pickup_ends_at} /></p>
+  return <ConcertRow title={gift.state === 'DRAFT' ? gift.title : <ShellLink id={`gift-${gift.giveaway_id}`} to={`/gifts/${gift.giveaway_id}`}>{gift.title}</ShellLink>}
+    metadata={<><span className="gift-status">{giveawayStatus(gift, now)}</span><br />{own ? 'Your giveaway' : `From ${gift.owner.display_name}`} · <strong>{gift.available} remaining</strong> of {gift.quantity_total}</>}
+    action={gift.state !== 'DRAFT' && <ShellLink className="gift-details" id={`gift-details-${gift.giveaway_id}`} to={`/gifts/${gift.giveaway_id}`} aria-label={`View details for ${gift.title}`}>Details</ShellLink>}>
+    Pickup <GiftTime value={gift.pickup_starts_at} /> – <GiftTime value={gift.pickup_ends_at} />
     {gift.state === 'DRAFT' && <p className="gift-meta">Only you can see this draft.</p>}
-  </li>
+  </ConcertRow>
 }
 export function GiftPagination<T>({ page, label, turn }: { page: GiftPage<T>; label: string; turn(direction: 'previous' | 'next'): void }) {
   return <nav className="gift-pagination" aria-label={`${label} pages`}>
@@ -91,18 +91,18 @@ function GiftFilterForm({ controller, state, places }: { controller: GiftDiscove
 }
 export function GiftDiscovery({ controller, places = [] }: { controller: GiftDiscoveryController; places?: readonly GiftPlaceOption[] }) {
   const state = useGifts(controller)
-  return <section className="gifts-view" aria-label="Giveaway discovery"><GiftAccess state={state}>
-    <header className="gift-intro"><div><p className="gift-eyebrow">Fan to fan</p><h2>Find a little something</h2></div>
-      <ShellLink id="gift-own" to="/gifts/mine">My gifts →</ShellLink></header>
-    <p>Browse gifts shared at this event. Stock and pickup times can change.</p>
+  return <section className="gifts-view gifts-browse" aria-label="Giveaway discovery"><ConcertWindow title="GIVEAWAY" icon="gifts"><GiftAccess state={state}>
+    <nav className="gift-browse-nav" aria-label="Gift views"><span aria-current="page">Browse</span><ShellLink id="gift-own" to="/gifts/mine">My gifts →</ShellLink></nav>
+    {state.context?.eventPhase === 'READ_ONLY' && <ConcertState title="Read-only event">Browse gifts. New reservations are unavailable.</ConcertState>}
     <GiftFilterForm key={JSON.stringify(state.context?.scope)} controller={controller} state={state} places={places} />
-    <GiftResult resource={state.list} now={state.now} label="giveaways" retry={() => void controller.retryList()}>{page => <>
-      {page.items.length ? <ul className="gift-list">{page.items.map(gift => <GiftRow key={gift.giveaway_id} gift={gift} now={state.now} />)}</ul>
-        : <p className="gift-empty">No giveaways on this page. Try different filters{page.next_cursor ? ' or continue to the next page' : ''}.</p>}
-    </>}</GiftResult>
-    <GiftPagination page={state.list} label="Giveaways" turn={direction => controller.pageList(direction)} />
-  </GiftAccess></section>
+    <GiftResult resource={state.list} label="giveaways" retry={() => { void controller.retryList() }} now={state.now}>{data => data.items.length
+      ? <ul className="gift-list concert-rows">{data.items.map(gift => <GiftRow key={gift.giveaway_id} gift={gift} now={state.now} />)}</ul>
+      : <ConcertState title="No matching gifts">No giveaways match these filters on this page. Try another filter or return later.</ConcertState>}</GiftResult>
+    <GiftPagination page={state.list} label="Giveaways" turn={direction => { void controller.pageList(direction) }} />
+    <p className="gift-meta gift-browse-guidance">Review details and current availability before reserving. Stock and pickup windows can change.</p>
+  </GiftAccess></ConcertWindow></section>
 }
+
 export function GiftDetail({ controller, giveawayId, places = [] }: { controller: GiftDiscoveryController; giveawayId: string; places?: readonly GiftPlaceOption[] }) {
   const state = useGifts(controller), key = JSON.stringify(state.context?.scope)
   useEffect(() => { controller.select(giveawayId) }, [controller, giveawayId, key])

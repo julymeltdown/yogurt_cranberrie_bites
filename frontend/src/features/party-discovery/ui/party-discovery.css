@@ -7,3 +7,24 @@
 .party-filters{margin-block:1.25rem;border-block:1px solid #d7d8d4}.party-filters summary{cursor:pointer}.party-filters form{display:grid;gap:1rem;padding-block:.75rem}.party-view label{display:grid;gap:.375rem}.party-view input:not([type=checkbox]),.party-view select,.party-view textarea{width:100%;min-width:0;box-sizing:border-box;border:1px solid #929991;border-radius:4px;padding:.625rem;min-height:44px;background:#fff}.party-checkbox{display:flex!important;align-items:center;min-height:44px}.party-checkbox input{width:24px;height:24px;accent-color:#294c52;margin:10px}.party-view textarea{min-height:7rem;resize:vertical}
 .party-prose{white-space:pre-wrap}.party-facts{display:grid;gap:.75rem;padding-block:1rem;border-block:1px solid #d7d8d4}.party-facts dt{font-size:.8rem;color:#5b615e}.party-facts dd{margin:0}.party-apply,.party-command{padding-block:1.25rem;border-block:1px solid #d7d8d4;margin-block:1.5rem}.party-command button{margin:.375rem .5rem .375rem 0}.party-apply button{margin-top:1rem}
 @media(min-width:760px){.party-filters form{grid-template-columns:repeat(2,minmax(0,1fr))}.party-filters form>p,.party-filters form>.party-checkbox{grid-column:1/-1}.party-facts{grid-template-columns:1fr 2fr}.party-view{padding-inline:.5rem}}
+
+/* Browse-only window chrome; detail/application controls keep their existing flow. */
+.party-browse { max-width: 46rem; padding: 4px 4px max(16px, env(safe-area-inset-bottom, 0px)); color: #1d1a17; }
+.party-browse .concert-window__titlebar h2 { margin: 0; font: 700 23px/1.15 Impact, "Arial Narrow", sans-serif; letter-spacing: .045em; }
+.party-browse .party-tabs { margin: 0 0 8px; padding: 0; gap: 4px; border: 0; }
+.party-browse .party-tabs :is(button,a) { flex: 1; justify-content: center; text-align: center; padding: 8px 5px; border: 1px solid #736350; border-radius: 0; background: #f5eddc; color: #1d1a17; font-size: 14px; font-weight: 800; text-transform: uppercase; text-decoration: none; }
+.party-browse .party-tabs [aria-pressed=true] { background: #921f28; color: #fff8eb; border-color: #44171a; }
+.party-browse .party-heading h2 { font: 700 18px/1.15 "Arial Narrow", Arial, sans-serif; margin: 0; }
+.party-browse .concert-action { border: 2px solid #34201b; border-radius: 2px; background: #921f28; color: #fff6e7; font-size: 14px; }
+.party-browse .concert-action--paper { background: #f5eddd; color: #1d1a17; border-color: #615443; }
+.party-browse .party-filters { margin: 8px 0 0; border-color: #a99b83; }
+.party-browse .party-filters summary { padding: 10px 4px; font-weight: 700; font-size: 14px; }
+.party-view .concert-row { grid-template-columns: minmax(0, 1fr) auto; }
+.party-view .concert-row__copy { grid-column: 1; }
+.party-view .concert-row__action { grid-column: 2; }
+.party-view .concert-row h3 { margin: 0 0 3px; }
+.party-view .concert-row h3 a { color: #1d1a17; font-size: 17px; font-weight: 800; min-height: 44px; line-height: 1.2; }
+.party-view .party-details { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px; background: #921f28; color: #fff6e7; border: 2px solid #34201b; text-decoration: none; font-size: 13px; font-weight: 800; text-transform: uppercase; }
+.party-browse .party-browse-guidance { font-size: 12px; line-height: 1.4; margin: 10px 0 0; }
+.party-browse :is(button, a, input, select, textarea, summary):focus-visible { outline: 3px solid #921f28; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .party-browse, .party-browse * { animation: none; transition: none; scroll-behavior: auto; } }

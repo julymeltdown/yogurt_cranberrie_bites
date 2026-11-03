@@ -2,6 +2,7 @@ import { useEffect, useSyncExternalStore, type FormEvent } from 'react'
 import { ShellLink as Link } from '../../../app/navigation'
 import { noticeText, type Filters, type PartyController, type Resource } from '../model/controller'
 import type { Application, Party } from '../model/contract'
+import { ConcertAction, ConcertRow, ConcertState, ConcertWindow } from '../../../shared/ui/concert-window'
 import './party-discovery.css'
 
 function useParty(controller: PartyController) {
@@ -18,10 +19,12 @@ function ReadState({ resource, retry, label }: { resource: Resource<unknown>; re
   </>
 }
 function PartyRow({ party }: { party: Party }) {
-  return <li className="party-row"><div><p className="party-meta">{party.ticket_section ?? 'Any ticket section'} · {party.state.toLowerCase()}</p>
-    <h3><Link id={`party-open-${party.party_id}`} to={partyPath(party.party_id)}>{party.title}</Link></h3><p>{party.owner.display_name} · {party.member_count}/{party.capacity} members</p>
-    <p><time dateTime={party.meeting_starts_at}>{time(party.meeting_starts_at)}</time></p></div>
-    <span className="party-space">{party.member_count >= party.capacity ? 'Full' : `${party.capacity - party.member_count} spaces`}</span></li>
+  return <ConcertRow title={<Link id={`party-open-${party.party_id}`} to={partyPath(party.party_id)}>{party.title}</Link>}
+    metadata={<>{party.ticket_section ?? 'Any ticket section'} · {party.state.toLowerCase()}<br />{party.owner.display_name} · <strong>{party.member_count}/{party.capacity} members</strong></>}
+    action={<Link className="party-details" id={`party-details-${party.party_id}`} to={partyPath(party.party_id)} aria-label={`View details for ${party.title}`}>Details</Link>}>
+    <time dateTime={party.meeting_starts_at}>{time(party.meeting_starts_at)}</time><br />
+    <strong>{party.member_count >= party.capacity ? 'Full' : `${party.capacity - party.member_count} spaces`}</strong>
+  </ConcertRow>
 }
 const commandCopy = {
   idle: '', sending: 'Sending once. Please wait.', uncertain: 'The response was lost. The outcome is unknown.', pending: 'The server is still processing this command.',
@@ -84,17 +87,20 @@ function FilterForm({ controller }: { controller: PartyController }) {
 }
 export function PartyDiscovery({ controller }: { controller: PartyController }) {
   const s = useParty(controller)
-  return <div className="party-view"><nav className="party-tabs" aria-label="Meet views"><button type="button" aria-pressed={s.view === 'parties'} onClick={() => controller.setView('parties')}>Parties</button><button type="button" aria-pressed={s.view === 'plan'} onClick={() => controller.setView('plan')}>MY PLAN</button><Link id="party-people" to="/meet/people">People</Link></nav>
-    {!s.access && <p role="status">Party information is unavailable until your current event access is verified.</p>}
+  return <div className="party-view party-browse"><ConcertWindow title="MEET" icon="meet">
+    <nav className="party-tabs" aria-label="Meet views"><button type="button" aria-pressed={s.view === 'parties'} onClick={() => controller.setView('parties')}>Parties</button><button type="button" aria-pressed={s.view === 'plan'} onClick={() => controller.setView('plan')}>MY PLAN</button><Link id="party-people" to="/meet/people">People</Link></nav>
+    {!s.access && <ConcertState kind="unavailable" title="Event access required">Party information is unavailable until your current event access is verified.</ConcertState>}
     <CommandStatus controller={controller} />
-    {s.view === 'plan' ? <MyPlan controller={controller} /> : <section aria-label="Party discovery"><div className="party-heading"><h2>Find your company</h2><button type="button" disabled={s.list.phase === 'loading'} onClick={() => void controller.loadList()}>Refresh parties</button></div>
-      <p>Meet people around your concert plans. Applying does not reserve a place or confirm physical arrival.</p><FilterForm controller={controller} /><ReadState resource={s.list} label="parties" retry={() => void controller.loadList()} />
-      {s.list.data && <>{!s.list.data.items.length && <p>No parties match this page. Try another filter{ s.list.data.next_cursor ? ' or load the next page' : '' }.</p>}
-        <ul className="party-list">{s.list.data.items.map(p => <PartyRow key={p.party_id} party={p} />)}</ul>
-        {s.list.data.next_cursor && <button type="button" disabled={s.list.phase === 'loading'} onClick={() => void controller.loadList(true)}>Load more parties</button>}</>}
+    {s.view === 'plan' ? <MyPlan controller={controller} /> : <section aria-label="Party discovery"><div className="party-heading"><h2>Find your company</h2><ConcertAction tone="paper" pending={s.list.phase === 'loading'} onClick={() => void controller.loadList()}>Refresh parties</ConcertAction></div>
+      <FilterForm controller={controller} /><ReadState resource={s.list} label="parties" retry={() => void controller.loadList()} />
+      {s.list.data && <>{!s.list.data.items.length && <ConcertState title="No matching parties">No parties match this page. Try another filter{ s.list.data.next_cursor ? ' or load the next page' : '' }.</ConcertState>}
+        <ul className="party-list concert-rows">{s.list.data.items.map(p => <PartyRow key={p.party_id} party={p} />)}</ul>
+        {s.list.data.next_cursor && <ConcertAction tone="paper" pending={s.list.phase === 'loading'} onClick={() => void controller.loadList(true)}>Load more parties</ConcertAction>}</>}
+      <p className="party-hint party-browse-guidance">Review details before applying. The host approves membership; a virtual position does not confirm arrival.</p>
     </section>}
-  </div>
+  </ConcertWindow></div>
 }
+
 export function PartyDetail({ controller, partyId }: { controller: PartyController; partyId: string }) {
   const s = useParty(controller)
   useEffect(() => { void controller.loadDetail(partyId) }, [controller, partyId])

@@ -2,6 +2,7 @@ import { useSyncExternalStore, type ReactNode } from 'react'
 import type { EventFeedController } from './controller'
 import type { Filter, Notice, Post, ResourceLink } from './contract'
 import { messages, type Slot } from './runtime'
+import { ConcertAction, ConcertState, ConcertTabs, ConcertWindow } from '../../shared/ui/concert-window'
 import './feed.css'
 
 export function ReadStatus({ slot, retry }: { slot: Slot<unknown>; retry: () => void }) {
@@ -24,25 +25,39 @@ export function EventFeed({ controller, onPost, onCompose, onLink, renderMedia }
   renderMedia?: RenderPostMedia | undefined; controller: EventFeedController; onPost: (id: string) => void; onCompose: () => void; onLink: (link: ResourceLink) => void
 }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
-  return <section className="event-feed" aria-label="Event feed"><header><p>From the crowd</p><h1>FEED</h1><p>Latest posts from this event.</p>
-    {state.available && !state.readOnly && <button type="button" onClick={onCompose}>Write a post</button>}</header>
-    {!state.available ? <p role="status">Feed unavailable for the current account or event.</p> : <>
-      {state.readOnly && <p role="status">This event is read-only.</p>}
-      <section aria-label="Event notices"><h2>Notices</h2><ReadStatus slot={state.notices} retry={() => { void controller.loadNotices() }} />
+  const filters: { value: Filter; label: string }[] = [
+    { value: 'ALL', label: 'All' }, { value: 'WITH_MEDIA', label: 'Images' },
+    { value: 'PARTY_LINK', label: 'Parties' }, { value: 'GIVEAWAY_LINK', label: 'Gifts' },
+  ]
+  const posts = <>
+    <ReadStatus slot={state.feed} retry={() => { void controller.loadFeed() }} />
+    {state.feed.data?.items.length === 0 && <ConcertState title="No posts yet.">Try another filter or come back later.</ConcertState>}
+    <ol className="feed-list feed-posts" aria-label="Latest posts">{state.feed.data?.items.map(post => <li key={post.post_id}><article>
+      <PostContent post={post} onLink={onLink} renderMedia={renderMedia} />
+      <ConcertAction tone="paper" onClick={() => onPost(post.post_id)}>Open thread · {post.comment_count} comments · {post.reaction_count} reactions</ConcertAction>
+    </article></li>)}</ol>
+    {state.feed.data?.next_cursor && <ConcertAction tone="paper" pending={state.feed.phase === 'loading'} onClick={() => { void controller.loadFeed(true) }}>Load older posts</ConcertAction>}
+  </>
+  return <section className="event-feed feed-browse" aria-label="Event feed"><ConcertWindow title="FEED" icon="feed" headingLevel={1}>
+    {!state.available ? <ConcertState kind="unavailable" title="Feed unavailable">Feed unavailable for the current account or event.</ConcertState> : <>
+      <div className="feed-toolbar">
+        {state.available && !state.readOnly && <ConcertAction onClick={onCompose}>Write a post</ConcertAction>}
+        <ConcertAction tone="paper" pending={state.feed.phase === 'loading'} onClick={() => { void controller.loadFeed() }}>Refresh feed</ConcertAction>
+      </div>
+      {state.readOnly && <ConcertState title="Read-only event">This event is read-only.</ConcertState>}
+      <details className="feed-notices"><summary>Event notices{state.notices.data ? ` · ${state.notices.data.items.length}` : ''}</summary>
+        <ReadStatus slot={state.notices} retry={() => { void controller.loadNotices() }} />
         {state.notices.data?.items.length === 0 && <p>No published notices.</p>}
         <ul className="feed-list">{state.notices.data?.items.map(notice => <li key={notice.notice_id}><button type="button" onClick={() => { void controller.selectNotice(notice.notice_id) }}>{notice.title}</button><p>Confirmed <time dateTime={notice.confirmed_at}>{new Date(notice.confirmed_at).toLocaleString()}</time></p></li>)}</ul>
-        {state.notices.data?.next_cursor && <button type="button" disabled={state.notices.phase === 'loading'} onClick={() => { void controller.loadNotices(true) }}>More notices</button>}
-      </section>
+        {state.notices.data?.next_cursor && <ConcertAction tone="paper" pending={state.notices.phase === 'loading'} onClick={() => { void controller.loadNotices(true) }}>More notices</ConcertAction>}
+      </details>
       <ReadStatus slot={state.notice} retry={() => { void controller.loadNotices() }} />{state.notice.data && <NoticeContent notice={state.notice.data} />}
-      <label>Show <select value={state.filter} onChange={e => controller.setFilter(e.target.value as Filter)}><option value="ALL">All posts</option><option value="WITH_MEDIA">With images</option><option value="PARTY_LINK">Parties</option><option value="GIVEAWAY_LINK">Giveaways</option></select></label>
-      <button type="button" disabled={state.feed.phase === 'loading'} onClick={() => { void controller.loadFeed() }}>Refresh feed</button>
-      <ReadStatus slot={state.feed} retry={() => { void controller.loadFeed() }} />
-      {state.feed.data?.items.length === 0 && <p>No posts yet.</p>}
-      <ol className="feed-list" aria-label="Latest posts">{state.feed.data?.items.map(post => <li key={post.post_id}><article><PostContent post={post} onLink={onLink} renderMedia={renderMedia} /><button type="button" onClick={() => onPost(post.post_id)}>Open thread · {post.comment_count} comments · {post.reaction_count} reactions</button></article></li>)}</ol>
-      {state.feed.data?.next_cursor && <button type="button" disabled={state.feed.phase === 'loading'} onClick={() => { void controller.loadFeed(true) }}>Load older posts</button>}
+      <ConcertTabs label="Post filters" value={state.filter} onValueChange={value => controller.setFilter(value as Filter)}
+        items={filters.map(filter => ({ ...filter, content: state.filter === filter.value ? posts : null }))} />
     </>}
-  </section>
+  </ConcertWindow></section>
 }
+
 export function EventNotice({ controller, retry }: { controller: EventFeedController; retry: () => void }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
   return <section className="event-feed" aria-label="Notice"><h1>NOTICE</h1><ReadStatus slot={state.notice} retry={retry} />{state.notice.data && <NoticeContent notice={state.notice.data} />}</section>

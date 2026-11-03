@@ -1,0 +1,41 @@
+{
+  "node": "v24.22.2",
+  "checks": [
+    {
+      "name": "tests",
+      "command": "frontend/node_modules/.bin/vitest run --root frontend --no-cache src/app/__tests__/community.test.tsx src/app/__tests__/shell.test.tsx src/app/community-entry src/shared/ui/concert-window src/features/event-feed src/features/feed-thread src/features/gift-discovery src/features/my-gifts src/features/party-discovery src/features/party-authoring src/features/giveaway-authoring src/features/gift-pickup",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "types",
+      "command": "node frontend/node_modules/typescript/bin/tsc --noEmit --incremental false --project frontend/tsconfig.json",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "lint",
+      "command": "frontend/node_modules/.bin/oxlint frontend/src frontend/vite.config.ts",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "plan",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "ui-origin",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "name": "whitespace",
+      "command": "git diff --check",
+      "exitCode": 0,
+      "signal": null
+    }
+  ]
+}
