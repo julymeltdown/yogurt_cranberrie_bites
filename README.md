@@ -4,7 +4,7 @@ A mobile-first fan community centered on a persistent multiplayer pixel world. F
 
 **Delivery:** [`julymeltdown/mcr`, `master`](https://github.com/julymeltdown/mcr/tree/master). The user's repository choice supersedes the old Bigyeting delivery destination in the original package. Bigyeting and port-rust are source foundations.
 
-**Current checkpoint (2026-11-03): foundation implementation.** The original React foundation and imported six-service Rust workspace build. Accessible UI primitives pass component and Chrome checks. All 84 inherited migrations pass in six isolated databases and survive a database restart. Core contracts are still drafts; service startup, authentication and the multiplayer product remain outstanding. Frontend/backend workers use separate worktrees and file ownership, with reviewed integration into `master`. See the [execution record](docs/mcr/progress.md).
+**Current checkpoint (2026-11-03): foundation implementation.** The original React foundation and imported six-service Rust workspace build. Accessible UI primitives pass component and Chrome checks. All 84 inherited migrations pass in six isolated databases and survive a database restart. The email/core v0.1 contract is frozen for implementation; service startup, authentication and the multiplayer product remain outstanding. Frontend/backend workers use separate worktrees and file ownership, with reviewed integration into `master`. See the [execution record](docs/mcr/progress.md).
 
 ## Start here
 

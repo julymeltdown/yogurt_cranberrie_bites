@@ -10,11 +10,14 @@ it is not feature integration or release acceptance.
 | C01 | ACCEPTED | [Source map](source-map.md), two reviewed per-file inventories and exact import whitelist. Headless candidates need their own later extraction approval/tests. |
 | C02 | ACCEPTED | [Foundation qualification](evidence/foundation.md): pinned frozen installation, strict FE build/lint, pinned source and imported full BE workspace builds. Docker execution is NOT_RUN and is not claimed by this minimal build task. |
 | C03 | ACCEPTED | [Frozen core v0.1 contract](core-contract.md), exact inherited auth mapping, public/private DTOs, 33 examples and 23 tests; three scoped reviews. Email/core consumers can proceed. Optional OAuth exposure remains explicitly disabled until a separate handoff revision; runtime implementation is NOT_RUN. |
+| C04 | IN_PROGRESS | Domain HTTP and command/state/permission contracts assigned to a dedicated contract worktree; no runtime implementation claimed. |
+| C05 | IN_PROGRESS | Integrator authoring realtime frames, ticket/admission/stream rules and negative fixtures in disjoint contract paths. |
 | C06 | CONTRACT_READY | Five asset schemas, six golden JSON fixtures and 21 checks pass; all three themes share geometry and avatar identities. Pixel alignment/art/venue truth remain NOT_RUN. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | IN_PROGRESS | 1,071 pinned files imported in `909e2bf`, full build passes. Explicit MCR runtime configuration and safe launch qualification remain. |
 | BE02 | IN_PROGRESS | [Isolated DB report](evidence/be02-migration-smoke.json): 84 migrations in six stores, ledger checksums and six records survive PG restart; cleanup PASS. 24 guard tests pass. Normal service startup/restart, runtime roles and packaging remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. Simultaneous nested-modal issue resolved. Physical devices and screen readers remain separate QA work. |
+| FE01 | IN_PROGRESS | Frontend-only transport worker implementing against frozen C03; strict same-origin paths, memory/session ports, safe 401 replay and cancellation/error cases. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **5/112**;
 accepted total: **5/118**. No required IA entry or IN01–IN05 integration gate has
