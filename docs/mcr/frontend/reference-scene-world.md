@@ -1,0 +1,11 @@
+# Reference-scene World adoption
+
+Task `FE-SCENE-R3-WORLD`, isolated branch `codex/mcr-fe-scene-r3-world`, initial master base `8f89d1905a86143d34ff77d2951fc60651ab2497`. Status: `IN_PROGRESS`; no new production scene is activated by the first metadata handoff.
+
+Exclusive ownership is new `frontend/src/world/reference-scene/**`, `frontend/src/world/scenes/MapScene.ts` and this document. Artist public inputs, backend/contracts, root, runtime/composition, existing illustrated/map modules, avatar and Places implementation remain separately owned. Developer verification and direct non-force scoped publication do not require a king/SL review.
+
+The first handoff exports `getReferenceOverviewMetadata({geometryHash,width,height,themeId})` from `world/reference-scene`. It returns immutable source revision, candidate map identity, dimensions and six source label offsets only for geometry `sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5`, 768×1296 and PARADE. The Map consumer additionally checks map ID/revision and resolves current catalog authorization/labels; metadata supplies no place authority or image capability. Only `stage_info` and `gifts_info` label offsets are bound; four null IDs remain decoration. Labels are real UI, never baked into ground pixels.
+
+These coordinates are a new typed projection of immutable artist `geometry-proposal.json` at source revision `8f89d190` (proposal v2, exact source file SHA-256 `d2650b06842b577eb8a8a455446a10e8f69ef5f9c6cfa2dd2d6008fcc7b89542`). No old rendering code is copied. Source-projection and mismatch tests pass: `node node_modules/vitest/vitest.mjs run src/world/reference-scene/__tests__/metadata.test.ts`, 5 tests, exit 0.
+
+The original v3 painted source exceeds current C06 resource budgets. The artist is producing a versioned packed derivative and explicit integer C06 projection within existing limits; those are required before the loader/drawing handoff. No implicit limit extension or alternative authority loader is introduced. Actual backend release admission remains unavailable: only painted PARADE exists, places remain unreviewed, and real Tiled/release publication is separately owned. Retain the coherent current release. Independent fixtures do not establish live admission or visual acceptance; artist fidelity remains below target and artist-owned.

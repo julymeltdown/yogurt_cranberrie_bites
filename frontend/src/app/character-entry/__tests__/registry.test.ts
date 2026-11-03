@@ -38,6 +38,16 @@ it('rejects cross-user bootstrap data before allocating a runtime', () => {
   expect(f.registry.get(f.scope, { ...f.bootstrap, participant: { ...f.bootstrap.participant, userId: '33333333-3333-4333-8333-333333333333' } })).toBeNull()
   expect(f.create).not.toHaveBeenCalled()
 })
+it('lets World borrow only an admitted current release and refuses another manifest pin', () => {
+  const f = fixture(), pin = { manifest_id: manifest.manifest_id, manifest_version: 1, content_hash: manifest.content_hash }
+  expect(f.registry.read(f.scope, pin)).toBeNull()
+  const runtime = f.registry.get(f.scope, f.bootstrap)
+  expect(f.registry.read(f.scope, pin)).toBe(runtime)
+  expect(f.registry.read(f.scope, { ...pin, content_hash: `sha256:${'a'.repeat(64)}` })).toBeNull()
+  expect(f.create).toHaveBeenCalledTimes(1)
+  f.privacy.changePolicy(f.scope, 'block')
+  expect(f.registry.read(f.scope, pin)).toBeNull()
+})
 it('rejects a runtime created during synchronous identity replacement and releases it', () => {
   const f = fixture(), runtime = { isCurrent: () => true, dispose: vi.fn() }
   const registry = createCharacterRuntimeRegistry({ auth: f, create: () => { f.session.replace(f.scope.generation, null); return runtime } })

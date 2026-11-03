@@ -1,0 +1,1159 @@
+{
+  "kind": "GENUINE_SELECTED_ROOT_FIXTURE",
+  "status": "PASS",
+  "qualification": "MOCK_READY_ONLY",
+  "candidate": "a3182b3167a4a5e0f0b2b4cb801f319c26566413",
+  "clock": "2026-11-07T07:00:00.000Z",
+  "defaultProductionLoad": true,
+  "compositionOverride": false,
+  "liveServices": "NOT_RUN",
+  "devices": "NOT_RUN",
+  "fullVisualAcceptance": "NOT_RUN",
+  "sourceHashes": {
+    "frontend/src/app/ports.ts": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
+    "frontend/src/app/WorldShell.tsx": "a0ca5d43d4bb1a862284eee2f879f6cafaa900d792dc2defa0e15b821c68615d",
+    "frontend/src/app/world-entry/production.ts": "e27fdf77fc828529086cbfa373af4321e176cbbcece1e9db8f695fa3d6c95b82",
+    "frontend/src/app/world-entry/resolver.ts": "a488583ab5e6e2f7916d4db1885a12622d07755956c303a40d0e69dbfdbc5f07",
+    "frontend/src/app/account-entry/owner.ts": "b92e9f9cb7884949677fb6f58a160f6382b0ce482f3afb546003c3b430a330ae",
+    "frontend/src/world/avatar/whole-character.ts": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85",
+    "frontend/src/world/scenes/MapScene.ts": "971e8a838d2cebde9d3db86392b4a11167451cf15f8e296e08ab9ac525b90c59",
+    "frontend/src/features/avatar/whole-character/controller.ts": "9e34de46c857062892d5b64347876fe2485f7117c6c11e2af438775bb402a353",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+    "frontend/e2e/reference-integrated/whole/preview.tsx": "9806a79f318b30b6bf189c673575168f85d9c33983fb32bf811d2b284d679787",
+    "frontend/e2e/reference-integrated/whole/data.ts": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+    "frontend/e2e/reference-integrated/whole/native.mjs": "179d713526ff121f6dce36759eed1f210438a1abaf76a08a95a22ce3889e2231"
+  },
+  "assetBytes": {
+    "/world/avatars/derived-v1/static-release.json": {
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+    },
+    "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+    }
+  },
+  "requestedWidths": [
+    360,
+    390,
+    430
+  ],
+  "browser": "156.0.8078.80",
+  "rawReportSha256": "06f94b3f9c0705b8ae63b547fbcbfee719692debb2fcfd2e915ca8921489ea50",
+  "cases": [
+    {
+      "width": 360,
+      "status": "PASS",
+      "approvedPixels": [
+        {
+          "preset": "photo01_front_01",
+          "hash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "preset": "photo01_front_02",
+          "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+        },
+        {
+          "preset": "photo01_front_03",
+          "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+        },
+        {
+          "preset": "photo01_front_04",
+          "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+        },
+        {
+          "preset": "photo01_front_05",
+          "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+        },
+        {
+          "preset": "photo01_front_06",
+          "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+        }
+      ],
+      "errors": [],
+      "actualNetworkAssetBodies": [
+        {
+          "path": "/world/avatars/derived-v1/static-release.json",
+          "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+        },
+        {
+          "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+          "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+        }
+      ],
+      "samples": [
+        {
+          "name": "cold-world",
+          "runtime": {
+            "disposed": false,
+            "leases": 7,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 304,
+            "transferredBytes": 38949993,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "me-first",
+          "runtime": {
+            "disposed": false,
+            "leases": 2,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 313,
+            "transferredBytes": 39033267,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "customize-first",
+          "runtime": {
+            "disposed": false,
+            "leases": 5,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 313,
+            "transferredBytes": 39033267,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "world-after-save",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 313,
+            "transferredBytes": 39033267,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "me-saved",
+          "runtime": {
+            "disposed": false,
+            "leases": 2,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 313,
+            "transferredBytes": 39033267,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "customize-warm",
+          "runtime": {
+            "disposed": false,
+            "leases": 5,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 313,
+            "transferredBytes": 39033267,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Parade",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 9,
+            "resolved": 9,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 317,
+            "transferredBytes": 39569096,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Danger",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 13,
+            "resolved": 13,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 321,
+            "transferredBytes": 40122180,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Revenge",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 17,
+            "resolved": 17,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 321,
+            "transferredBytes": 40122180,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        }
+      ],
+      "save": {
+        "avatar": {
+          "revision": 8,
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_06",
+            "representation": "whole_character"
+          }
+        },
+        "deltaCount": 1,
+        "putBodies": [
+          {
+            "expected_revision": 7,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_06",
+              "representation": "whole_character"
+            }
+          }
+        ]
+      },
+      "privacy": {
+        "runtime": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "currentRuntime": false,
+        "retainedCurrent": false,
+        "privateQueries": 0,
+        "activeSockets": 0,
+        "canvases": 0
+      }
+    },
+    {
+      "width": 390,
+      "status": "PASS",
+      "approvedPixels": [
+        {
+          "preset": "photo01_front_01",
+          "hash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "preset": "photo01_front_02",
+          "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+        },
+        {
+          "preset": "photo01_front_03",
+          "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+        },
+        {
+          "preset": "photo01_front_04",
+          "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+        },
+        {
+          "preset": "photo01_front_05",
+          "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+        },
+        {
+          "preset": "photo01_front_06",
+          "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+        }
+      ],
+      "errors": [],
+      "actualNetworkAssetBodies": [
+        {
+          "path": "/world/avatars/derived-v1/static-release.json",
+          "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+        },
+        {
+          "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+          "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+        }
+      ],
+      "samples": [
+        {
+          "name": "cold-world",
+          "runtime": {
+            "disposed": false,
+            "leases": 7,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 303,
+            "transferredBytes": 38949850,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "me-first",
+          "runtime": {
+            "disposed": false,
+            "leases": 2,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "customize-first",
+          "runtime": {
+            "disposed": false,
+            "leases": 5,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "world-after-save",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "me-saved",
+          "runtime": {
+            "disposed": false,
+            "leases": 2,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "customize-warm",
+          "runtime": {
+            "disposed": false,
+            "leases": 5,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Parade",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 9,
+            "resolved": 9,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 316,
+            "transferredBytes": 39568953,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Danger",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 13,
+            "resolved": 13,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 320,
+            "transferredBytes": 40122037,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Revenge",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 17,
+            "resolved": 17,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 320,
+            "transferredBytes": 40122037,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        }
+      ],
+      "save": {
+        "avatar": {
+          "revision": 8,
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_06",
+            "representation": "whole_character"
+          }
+        },
+        "deltaCount": 1,
+        "putBodies": [
+          {
+            "expected_revision": 7,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_06",
+              "representation": "whole_character"
+            }
+          }
+        ]
+      },
+      "privacy": {
+        "runtime": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "currentRuntime": false,
+        "retainedCurrent": false,
+        "privateQueries": 0,
+        "activeSockets": 0,
+        "canvases": 0
+      }
+    },
+    {
+      "width": 430,
+      "status": "PASS",
+      "approvedPixels": [
+        {
+          "preset": "photo01_front_01",
+          "hash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+        },
+        {
+          "preset": "photo01_front_02",
+          "hash": "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219"
+        },
+        {
+          "preset": "photo01_front_03",
+          "hash": "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f"
+        },
+        {
+          "preset": "photo01_front_04",
+          "hash": "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8"
+        },
+        {
+          "preset": "photo01_front_05",
+          "hash": "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7"
+        },
+        {
+          "preset": "photo01_front_06",
+          "hash": "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+        }
+      ],
+      "errors": [],
+      "actualNetworkAssetBodies": [
+        {
+          "path": "/world/avatars/derived-v1/static-release.json",
+          "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+        },
+        {
+          "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+          "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+        }
+      ],
+      "samples": [
+        {
+          "name": "cold-world",
+          "runtime": {
+            "disposed": false,
+            "leases": 7,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 303,
+            "transferredBytes": 38949850,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "me-first",
+          "runtime": {
+            "disposed": false,
+            "leases": 2,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "customize-first",
+          "runtime": {
+            "disposed": false,
+            "leases": 5,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "world-after-save",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "me-saved",
+          "runtime": {
+            "disposed": false,
+            "leases": 2,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "customize-warm",
+          "runtime": {
+            "disposed": false,
+            "leases": 5,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 5,
+            "resolved": 5,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 312,
+            "transferredBytes": 39033124,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Parade",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 9,
+            "resolved": 9,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 316,
+            "transferredBytes": 39568953,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Danger",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 13,
+            "resolved": 13,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 320,
+            "transferredBytes": 40122037,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        },
+        {
+          "name": "era-Revenge",
+          "runtime": {
+            "disposed": false,
+            "leases": 6,
+            "pending": 0,
+            "cleanupFailures": 0,
+            "decodedAtlases": 1
+          },
+          "sameRuntime": true,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "socketPeak": 1,
+          "canvasPeak": 1,
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalObservedGames": 1,
+            "sameGame": true
+          },
+          "decode": {
+            "calls": 17,
+            "resolved": 17,
+            "rejected": 0
+          },
+          "network": {
+            "requests": 320,
+            "transferredBytes": 40122037,
+            "cacheHits": 0,
+            "assetRequests": 2
+          }
+        }
+      ],
+      "save": {
+        "avatar": {
+          "revision": 8,
+          "config": {
+            "contract_version": "1.1.0",
+            "kind": "avatar_config",
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "preset_id": "photo01_front_06",
+            "representation": "whole_character"
+          }
+        },
+        "deltaCount": 1,
+        "putBodies": [
+          {
+            "expected_revision": 7,
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_06",
+              "representation": "whole_character"
+            }
+          }
+        ]
+      },
+      "privacy": {
+        "runtime": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "currentRuntime": false,
+        "retainedCurrent": false,
+        "privateQueries": 0,
+        "activeSockets": 0,
+        "canvases": 0
+      }
+    }
+  ]
+}

@@ -77,6 +77,229 @@ impl proto::post_concert_feed_service_server::PostConcertFeedService for PostCon
         Err(admission(&r))
     }
 }
+/// Strict read DTO conversion shared by the eventual qualified read handler.
+/// Decoding supplies no authority. The workload-only server above remains closed.
+pub mod read_wire {
+    use super::proto;
+    use chrono::{DateTime, Utc};
+    use post_application::concert_feed::{Context, Filter, Page, Position, PostView, Window};
+    use post_domain::concert_feed::{Comment, Error, LinkKind, State};
+    use tonic::Status;
+    use uuid::Uuid;
+
+    pub struct DecodedRead {
+        pub context: Context,
+        pub query: ReadQuery,
+    }
+    pub enum ReadQuery {
+        Post(Uuid),
+        Posts(Window),
+        Comment(Uuid),
+        Comments {
+            post: Uuid,
+            upper: DateTime<Utc>,
+            after: Option<Position>,
+            limit: u32,
+        },
+    }
+    fn id(value: &str) -> Result<Uuid, Status> {
+        Uuid::parse_str(value)
+            .ok()
+            .filter(|id| !id.is_nil() && id.to_string() == value)
+            .ok_or_else(|| Status::invalid_argument("invalid canonical read binding"))
+    }
+    fn time(value: &str) -> Result<DateTime<Utc>, Status> {
+        DateTime::parse_from_rfc3339(value)
+            .map(|v| v.with_timezone(&Utc))
+            .map_err(|_| Status::invalid_argument("invalid read timestamp"))
+    }
+    fn context(value: Option<proto::Context>) -> Result<Context, Status> {
+        let c = value.ok_or_else(|| Status::invalid_argument("read context required"))?;
+        let context = Context {
+            actor_id: id(&c.actor_id)?,
+            event_id: id(&c.event_id)?,
+            session_family_id: id(&c.session_family_id)?,
+            request_id: id(&c.request_id)?,
+            original_authority: c
+                .original_authority_digest
+                .try_into()
+                .map_err(|_| Status::invalid_argument("invalid read binding"))?,
+            expires_at: time(&c.expires_at)?,
+        };
+        context.validate(Utc::now()).map_err(status)?;
+        Ok(context)
+    }
+    fn position(value: Option<proto::Position>) -> Result<Option<Position>, Status> {
+        value
+            .map(|p| {
+                Ok(Position {
+                    created_at: time(&p.created_at)?,
+                    id: id(&p.id)?,
+                })
+            })
+            .transpose()
+    }
+    fn window(
+        upper: &str,
+        after: Option<proto::Position>,
+        filter: Filter,
+        limit: u32,
+    ) -> Result<Window, Status> {
+        let w = Window {
+            upper: time(upper)?,
+            after: position(after)?,
+            filter,
+            limit,
+        };
+        w.validate().map_err(status)?;
+        if w.upper > Utc::now() {
+            return Err(Status::invalid_argument("future read window"));
+        }
+        Ok(w)
+    }
+    impl TryFrom<proto::GetPostRequest> for DecodedRead {
+        type Error = Status;
+        fn try_from(r: proto::GetPostRequest) -> Result<Self, Status> {
+            Ok(Self {
+                context: context(r.context)?,
+                query: ReadQuery::Post(id(&r.post_id)?),
+            })
+        }
+    }
+    impl TryFrom<proto::GetCommentRequest> for DecodedRead {
+        type Error = Status;
+        fn try_from(r: proto::GetCommentRequest) -> Result<Self, Status> {
+            Ok(Self {
+                context: context(r.context)?,
+                query: ReadQuery::Comment(id(&r.comment_id)?),
+            })
+        }
+    }
+    impl TryFrom<proto::ListPostsRequest> for DecodedRead {
+        type Error = Status;
+        fn try_from(r: proto::ListPostsRequest) -> Result<Self, Status> {
+            let filter = match r.filter.as_str() {
+                "ALL" => Filter::All,
+                "WITH_MEDIA" => Filter::WithMedia,
+                "PARTY_LINK" => Filter::PartyLink,
+                "GIVEAWAY_LINK" => Filter::GiveawayLink,
+                _ => return Err(Status::invalid_argument("invalid feed filter")),
+            };
+            Ok(Self {
+                context: context(r.context)?,
+                query: ReadQuery::Posts(window(&r.upper, r.after, filter, r.limit)?),
+            })
+        }
+    }
+    impl TryFrom<proto::ListCommentsRequest> for DecodedRead {
+        type Error = Status;
+        fn try_from(r: proto::ListCommentsRequest) -> Result<Self, Status> {
+            let w = window(&r.upper, r.after, Filter::All, r.limit)?;
+            Ok(Self {
+                context: context(r.context)?,
+                query: ReadQuery::Comments {
+                    post: id(&r.post_id)?,
+                    upper: w.upper,
+                    after: w.after,
+                    limit: w.limit,
+                },
+            })
+        }
+    }
+    pub fn status(error: Error) -> Status {
+        match error {
+            Error::Invalid => Status::invalid_argument("invalid feed read"),
+            Error::Forbidden | Error::NotFound => Status::not_found("feed resource unavailable"),
+            Error::Conflict | Error::Idempotency => Status::aborted("feed resource changed"),
+            Error::Authority | Error::Unavailable => {
+                Status::unavailable("feed read authority unavailable")
+            }
+        }
+    }
+    fn state(value: State) -> String {
+        match value {
+            State::Published => "PUBLISHED",
+            State::Hidden => "HIDDEN",
+            State::Deleted => "DELETED",
+        }
+        .into()
+    }
+    pub fn post(value: PostView) -> proto::PostRecord {
+        let p = value.post;
+        proto::PostRecord {
+            post_id: p.post_id.to_string(),
+            event_id: p.event_id.to_string(),
+            author_id: p.author_id.to_string(),
+            content: Some(proto::Content {
+                text: p.content.text,
+                media_ids: p
+                    .content
+                    .media_ids
+                    .iter()
+                    .map(ToString::to_string)
+                    .collect(),
+                links: p
+                    .content
+                    .links
+                    .into_iter()
+                    .map(|l| proto::Link {
+                        target_id: l.target_id.to_string(),
+                        target_type: match l.target_type {
+                            LinkKind::Party => "PARTY",
+                            LinkKind::Giveaway => "GIVEAWAY",
+                            LinkKind::Post => "POST",
+                            LinkKind::Intro => "INTRO",
+                            LinkKind::Mural => "MURAL",
+                            LinkKind::Notice => "NOTICE",
+                        }
+                        .into(),
+                    })
+                    .collect(),
+            }),
+            revision: p.revision,
+            state: state(p.state),
+            created_at: p.created_at.to_rfc3339(),
+            edited_at: p.edited_at.map(|v| v.to_rfc3339()),
+            comment_count: p.comment_count,
+            reaction_count: p.reaction_count,
+            reacted_by_me: value.reacted_by_me,
+            is_public: true,
+        }
+    }
+    pub fn comment(c: Comment) -> proto::CommentRecord {
+        proto::CommentRecord {
+            comment_id: c.comment_id.to_string(),
+            post_id: c.post_id.to_string(),
+            event_id: c.event_id.to_string(),
+            author_id: c.author_id.to_string(),
+            text: c.text,
+            revision: c.revision,
+            state: state(c.state),
+            created_at: c.created_at.to_rfc3339(),
+            edited_at: c.edited_at.map(|v| v.to_rfc3339()),
+        }
+    }
+    fn scan(value: Option<Position>) -> Option<proto::Position> {
+        value.map(|p| proto::Position {
+            created_at: p.created_at.to_rfc3339(),
+            id: p.id.to_string(),
+        })
+    }
+    pub fn posts(page: Page<PostView>) -> proto::ListPostsResponse {
+        proto::ListPostsResponse {
+            posts: page.items.into_iter().map(post).collect(),
+            scanned_through: scan(page.scanned_through),
+            has_more: page.has_more,
+        }
+    }
+    pub fn comments(page: Page<Comment>) -> proto::ListCommentsResponse {
+        proto::ListCommentsResponse {
+            comments: page.items.into_iter().map(comment).collect(),
+            scanned_through: scan(page.scanned_through),
+            has_more: page.has_more,
+        }
+    }
+}
 #[cfg(test)]
 mod tests {
     use super::*;
