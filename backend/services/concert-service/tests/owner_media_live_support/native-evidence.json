@@ -1,0 +1,46 @@
+{
+  "task": "BE-OWNER-MEDIA-LIVE",
+  "status": "IN_PROGRESS",
+  "build_source_revision": "4a8221186c15c68497710827fa6db786d4570da5",
+  "build_exit_code": 0,
+  "toolchain": "rustc 1.88.0 (6b00bc388 2025-06-23)",
+  "build_constraints": {
+    "jobs": 2,
+    "debug": "0",
+    "incremental": "0",
+    "locked": true,
+    "offline": true
+  },
+  "artifact_sha256": "6bb0c0ca38828396edc6fd0d3b9449cfc4efa7c9d92d94481d7e6aeb1ce7896a",
+  "source_pin_count": 1570,
+  "runtime_tests": {
+    "passed": 8,
+    "failed": 0,
+    "ignored": 0
+  },
+  "runtime_result": "PASS",
+  "runtime_cleanup": "PASS",
+  "retained_producer_tests": {
+    "passed": 17,
+    "failed": 0,
+    "ignored": 1
+  },
+  "restart_tests": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0
+  },
+  "restart_persistence": "PASS",
+  "producer_cleanup": "PASS",
+  "schema": "PASS",
+  "sql_timeout_clamp": "PASS",
+  "expiry_source_guards": "PASS",
+  "artifact_boundary_python_tests": {
+    "passed": 6,
+    "exit_code": 0
+  },
+  "canonical_auth_owner": "NOT_RUN",
+  "gateway_concert_http": "NOT_RUN",
+  "authority_fixture_only": true,
+  "sqlx_runtime_migration_ledger": "NOT_RUN"
+}

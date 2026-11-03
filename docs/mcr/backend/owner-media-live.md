@@ -41,3 +41,22 @@ Source checkpoint `cb9f75eba33f3782bb5b3afe19b545c498e875bb` was committed local
 `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_owner_media_live_smoke.py -v` exited **0**: six artifact-boundary tests passed. They verify exact binary/source manifests, stale binary/source refusal, required source coverage, checkout containment and Rust1.88/locked/offline/jobs/debug/incremental build constraints. These tests create temporary files only; no PostgreSQL cluster, target access or Cargo process was started. The harness requires a source-pinned exact Cargo JSON test artifact before cluster construction.
 
 The internal `media_runtime::settlement` module captures the actual PostgreSQL system identifier, database OID and xid8 on the effects connection. A production `OwnerMediaGuard::authorize_in` must persist that identity in its canonical guard journal before returning success. `transaction_state` verifies the same cluster/database and uses PostgreSQL16 `pg_xact_status` to distinguish in-progress/committed/aborted; errors, missing status or mismatched cluster remain Unknown. This primitive does not seal late work, authorize receipt access or release any owner guard. `pg_control_system` visibility is an explicit role prerequisite. A native transaction-outcome regression is authored; execution remains NOT_RUN.
+
+## Native checkpoint
+
+The media source chain was rebased onto delivered peer master `a93a70ec2b692e4837aa78b0350b5c6cebdec459` without conflicts. Equivalent commits are `15cfe5a3`, `e5628901`, `4a822118`; earlier source-only handoff IDs remain historical. Build source is `4a8221186c15c68497710827fa6db786d4570da5`.
+
+Developer-owned validation completed:
+
+| Check | Command / result |
+| --- | --- |
+| Build | Rust1.88 `cargo test --manifest-path backend/Cargo.toml -p concert-service --test owner_media_live --test media --no-run --locked --offline --message-format=json`; jobs2, dev/test debug0, incremental0; exit **0** |
+| Artifact freeze | Exact Cargo JSON executables copied to a private directory, hashed, and pinned to 1,570 source inputs before PostgreSQL; owner runtime SHA256 `6bb0c0ca38828396edc6fd0d3b9449cfc4efa7c9d92d94481d7e6aeb1ce7896a` |
+| Runtime native | `owner_media_live_smoke.py` with the frozen runtime artifact/receipt and installed PostgreSQL16; exit **0**, **8 passed**, 0 failed, 0 ignored, cleanup PASS |
+| Retained producer | `media_upload_smoke.py` with the separately frozen producer artifact/receipt; exit **0**, **17 passed**, then **1 passed** after an actual PostgreSQL restart; no skipped obligation |
+| SQL/source guards | Current schema, millisecond timeout clamp, shorter caller deadlines and exact source expiry guards PASS |
+| Artifact helper | Six Python tests passed, exit **0** |
+
+The first build attempt exposed cached Friend build-script paths from another checkout; the second exposed a cached domain library with a different avatar shape. The developer cleaned only the affected workspace packages in the exclusively leased BACKEND target, then rebuilt the correct source. No source workaround, dependency installation or third target was used. After the successful final build, exact binaries were copied/hashed, no open target handles remained, and the target was explicitly released. Both PostgreSQL clusters were private socket-only disposable stores and were removed successfully. Compact sanitized evidence is in `tests/owner_media_live_support/native-evidence.json`; raw private artifact receipts and diagnostics remain local.
+
+This checkpoint validates the uploader runtime and durable producer with test authority only. Production canonical owner guard registration/sealing/quarantine settlement and actual Gateway → Concert behavior remain **NOT_RUN**, so the feature is still **IN_PROGRESS** and must not be advertised live. The internal settlement primitive was tested for actual in-progress, committed and aborted xid8 outcomes; its design follows [PostgreSQL16 transaction information semantics](https://www.postgresql.org/docs/16/functions-info.html#FUNCTIONS-PG-SNAPSHOT), including Unknown for discarded or unavailable state.
