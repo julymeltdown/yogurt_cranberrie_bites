@@ -1,8 +1,8 @@
 # BE07 avatar and preference persistence
 
-Status: **IN_PROGRESS**. Implementation and focused native validation are in
-progress. This is not BE07/IN01 acceptance, a live HTTP producer, or artwork
-qualification.
+Bounded persistence handoff: **implemented and native-tested**. Overall BE07
+remains **IN_PROGRESS** until delivery composes verified production mutation
+and read producers. This is not BE07/IN01 acceptance or artwork qualification.
 
 Base: `1db1680e6a5041250b79ca0ffb1dfd965a279edc`, isolated branch
 `codex/mcr-be-avatar-persistence`. Contract sources: C03
@@ -128,8 +128,9 @@ service schema SQL, executes real adapter tests, restarts its postmaster and
 verifies persisted values, then cleans only its marker/inode-owned root. Direct
 schema application does not qualify service migration-runner/ledger behavior.
 
-Validation results and final commit ancestry will be recorded here before the
-committed handoff. Build phases use only the leased shared target, Rust 1.88.0,
+Rust implementation ancestry is `1db1680` -> `c321acd` ->
+`01670bdadb3827727dbc415b87de3e81d1d90809`. The final documentation/harness
+handoff commit descends directly from `01670bd` and is reported to delivery. Build phases use only the leased shared target, Rust 1.88.0,
 two jobs, debug=0 and `--locked`; no duplicate Cargo target is created.
 
 
@@ -152,12 +153,84 @@ avatar executable has explicit ignored native tests; execute them through:
 ```sh
 python3 backend/scripts/mcr/avatar_smoke.py \
   --build-metadata /absolute/path/to/compiler-artifacts.jsonl \
+  --pinned-binaries /absolute/path/to/pinned-binaries.json \
   --pg-bin /opt/homebrew/opt/postgresql@16/bin
 ```
 
-Current checks: planning provenance/structure PASS (exit 0), scoped rustfmt check
-PASS (exit 0), avatar harness Python compilation PASS (exit 0), changed-path and
-cross-directory import ownership audit PASS (exit 0), whitespace check PASS
-(exit 0). Rust compilation, emitted test executables and native persistence are
-NOT_RUN until the shared build lease is granted. SIGINT/SIGTERM during the
-harness enter the same owned cleanup path as failures.
+Executed from the assigned isolated worktree on 2026-11-04 (KST):
+
+| Check | Exit / result |
+|---|---|
+| `python3 scripts/mcr/check-plan.py` | 0 / PASS, planning only |
+| Scoped Rust 1.88 `rustfmt --check --edition 2021` on seven owned Rust files | 0 / PASS |
+| `python3 -m py_compile backend/scripts/mcr/avatar_smoke.py` | 0 / PASS |
+| Changed-path/export/import ownership audit | 0 / exact 12 paths, three exports, no frontend source imports |
+| Leased Cargo command above, final invocation | 0 / all three exact avatar test targets built |
+| Copied `concert-domain-avatar-tests` | 0 / 2 passed |
+| Copied `concert-application-avatar-tests` | 0 / 2 passed |
+| Copied `concert-service-avatar-tests` | 0 / 2 passed, 2 native tests explicitly deferred to owned harness |
+| `python3 backend/scripts/mcr/avatar_smoke.py --build-metadata /tmp/mcr-avatar-01670bd/compiler-artifacts.jsonl --pinned-binaries /tmp/mcr-avatar-01670bd/pinned-binaries.json --pg-bin /opt/homebrew/opt/postgresql@16/bin` | 0 / both deferred native tests passed; restart and cleanup PASS |
+| `git diff --check` | 0 / PASS |
+
+The initial Cargo attempt exited 101 because the shared target reused a
+previous checkout's Concert build-script artifact referencing absent
+`post/v1/concert_feed.proto`. Refreshing the local `build.rs` mtime rebuilt it
+from unchanged source; final compilation exited 0 in 4.07 seconds. There is no
+build-script/proto/manifests content change. All emitted binaries were copied
+and hash-verified before the Cargo lease was transferred BE07 -> admission.
+Runtime checks use those copies, not whichever binary a later checkout leaves
+in the shared target. The harness's explicit pinned-binaries receipt binds
+package, manifest, compiler-emitted path, copied path and SHA-256. SIGINT and
+SIGTERM enter the same owned cleanup path as failures.
+
+Binary evidence for Rust source `01670bd`:
+
+| Package | Copied executable SHA-256 |
+|---|---|
+| concert-domain | `07b13925cfb5d92e87887efc479bd8a9a10a9a2fa3e1c8b1d3e3d3598979c1dd` |
+| concert-application | `6268089a7708393b425b432ddbb74d1c5e1a7bcfe0dede6e24e0448bf9dad90a` |
+| concert-service | `c2ef844c1d1a8483ce8512b9c636e7ab3b19b9792cac2042d62f6e5d66e464f4` |
+
+Native report:
+
+```json
+{
+  "binary_sha256": "c2ef844c1d1a8483ce8512b9c636e7ab3b19b9792cac2042d62f6e5d66e464f4",
+  "cleanup": "PASS",
+  "commands": {
+    "0001_concert_core.sql": 0,
+    "0002_command_receipts_outbox.sql": 0,
+    "0003_places_map_releases.sql": 0,
+    "0004_bootstrap_admission.sql": 0,
+    "native_avatar_restart_persistence": 0,
+    "native_avatar_transactions": 0
+  },
+  "migration_sha384": {
+    "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+    "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+    "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+    "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd"
+  },
+  "native_tests": 2,
+  "postgres_version": "16.14 (Homebrew)",
+  "response_sha256": "e812465b184e29adb802eeb92576c339f9e6a422147d3d76d04b9dfb2dca2088",
+  "restart": {
+    "after_pid": 8275,
+    "before_pid": 8130
+  },
+  "source_commit": "01670bdadb3827727dbc415b87de3e81d1d90809",
+  "state": "PASS"
+}
+```
+
+The native transaction test exercises 16 competing avatar saves and 12 competing
+preference saves, exactly one winner in each revision race; authority expiry
+immediately after each SQL update with full rollback; expiry after commit with
+explicit uncertain outcome; invalid layer; foreign actor/event; stale release;
+wrong operation; missing admission; closure while waiting for the event lock;
+READ_ONLY/ARCHIVED/DRAFT refusal; suspension; unchanged other-user outfit;
+unchanged avatar across preference/theme writes; and exact persisted avatar and
+preference revisions across postmaster restart. These are real native database
+checks over synthetic metadata, not production Auth, artwork or multiuser-world
+acceptance. No live HTTP/RPC mutation, current mutation-authority adapter,
+real-provider/device/load flow, approved art or IN01/IN05 gate is certified.

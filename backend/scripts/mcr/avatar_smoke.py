@@ -34,10 +34,25 @@ def artifacts(path):
     return selected[0]
 
 
-def run(metadata, pg_bin):
+def run(metadata, pg_bin, pinned_binaries=None):
     binary = artifacts(metadata)
+    source_commit = None
+    if pinned_binaries is not None:
+        # Explicit copies are tied to an exact compiler artifact and checksum;
+        # a later checkout build may overwrite the shared executable path.
+        receipt = json.loads(pinned_binaries.read_text())
+        matches = [row for row in receipt['artifacts']
+                   if row['package'] == 'concert-service'
+                   and Path(row['manifest_path']).resolve() == ROOT / 'backend/services/concert-service/Cargo.toml'
+                   and Path(row['compiler_executable']).resolve() == binary]
+        bootstrap.require(len(matches) == 1, 'exact pinned compiler artifact required')
+        row = matches[0]
+        snapshot = migration.executable(Path(row['snapshot']))
+        bootstrap.require(hashlib.sha256(snapshot.read_bytes()).hexdigest() == row['sha256'], 'pinned binary checksum mismatch')
+        binary = snapshot
+        source_commit = receipt['source_commit']
     tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
-    report = {'state': 'FAIL', 'commands': {}, 'binary_sha256': hashlib.sha256(binary.read_bytes()).hexdigest()}
+    report = {'state': 'FAIL', 'commands': {}, 'source_commit': source_commit, 'binary_sha256': hashlib.sha256(binary.read_bytes()).hexdigest()}
     cluster = migration.Cluster(tools)
     def interrupted(number, _frame):
         raise migration.SmokeError('signal', f'interrupted by signal {number}')
@@ -85,8 +100,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--build-metadata', type=Path, required=True)
     parser.add_argument('--pg-bin', type=Path, required=True)
+    parser.add_argument('--pinned-binaries', type=Path)
     args = parser.parse_args()
-    report = run(args.build_metadata, args.pg_bin)
+    report = run(args.build_metadata, args.pg_bin, args.pinned_binaries)
     print(json.dumps(report, sort_keys=True))
     return 0 if report['state'] == 'PASS' else 1
 
