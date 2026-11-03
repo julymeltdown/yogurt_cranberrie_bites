@@ -92,7 +92,7 @@ fn decimal(s: &str) -> bool {
     !s.is_empty()
         && s.len() <= 20
         && s.bytes().all(|b| b.is_ascii_digit())
-        && s.parse::<u64>().is_ok_and(|v| v > 0)
+        && s.parse::<u64>().is_ok_and(|v| v > 0 && v.to_string() == s)
 }
 
 /// Frozen producer-owned settlement reference. It contains no credentials/image
@@ -186,6 +186,7 @@ pub async fn resolve_transaction(
         .iter()
         .any(uuid::Uuid::is_nil)
         || binding.guard_digest == [0; 32]
+        || binding.body_digest == [0; 32]
         || binding.guard_digest != transaction.effect_binding_digest
         || !decimal(&transaction.system_identifier)
         || !decimal(&transaction.full_xid)
