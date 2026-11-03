@@ -9,11 +9,11 @@ producer. Base: `d8f9f9ac0b2aa60c7c861a2701bb62c37f9a0b8c`; isolated branch:
 `docs/mcr/world-invalidation-contract.md`, published at `9204e1e5`, and
 `backend/proto/relationship/v1/relationship.proto`.
 
-Status: `IN_PROGRESS`. Source and nonnative harness checks are authored;
-compilation/native qualification wait for an explicitly released build slot
-and at least 8 GiB free disk. No native acceptance follows from this document.
-The broader BE13/BE14 persistent goal remains unfinished and historically
-`blocked`; it is reused manually without reset, token budget, or false completion.
+Status: `CONTRACT_READY` for the guarded owner RPC, with native component
+qualification complete. Publication integrates the bounded owner scope; production
+World acceptance remains separate. The broader BE13/BE14 persistent goal remains
+unfinished and historically `blocked`; it is reused manually without reset, token
+budget, or false completion.
 
 Exact owned paths: new `src/adapters/in/grpc/concert_invalidation.rs`,
 `src/adapters/in/grpc/mod.rs` module export only, `src/main.rs` guarded-service
@@ -104,7 +104,7 @@ listeners bind only loopback ephemeral ports and are explicitly shut down.
 Private PKI files use the owned temporary directory. No live/foreign database,
 provider URL or production credential is inherited.
 
-Planned native evidence includes actual mTLS plus block/unblock/deletion through
+Passing native evidence includes actual mTLS plus block/unblock/deletion through
 the owner repository to retained journal to both generated RPCs; no-actor replay
 after deletion; missing/public/sibling credentials, workload certificate/credential
 forgery, malformed protobuf bodies, epoch/future rejection, stable redelivery,
@@ -120,11 +120,89 @@ operation timeout; production World consumer validation remains separate.
 
 Existing producer evidence is documented in `friend-invalidation.md` and is not
 replaced by mocks. Retained Friend units, query-shape and relationship guards,
-and unchanged native relationship/revision behavior will be exercised with the
+and unchanged native relationship/revision behavior were exercised with the
 RPC qualification. The pre-existing unblock/deletion advisory-lock inversion
 remains separate work; no concurrency acceptance for that path is claimed.
 Docker-backed contract cases, deployed credentials, production World serving,
 consumer checkpoint/fence, real multiuser IN01 and release remain `NOT_RUN`.
-Commands, exit codes, native report and publication ancestry will be appended
-after qualification. Direct non-force publication is authorized within scope;
+Commands, exit codes and frozen native report follow below.
+Direct non-force publication is authorized within scope;
 there is no mandatory king/SL per-commit review or publisher queue.
+
+## Validation receipt — 2026-11-04
+
+Implementation ancestry: `1f83d4d5` → `c6ba6fc8` → `fd1a8c74`, directly on
+assignment base `d8f9f9ac0b2aa60c7c861a2701bb62c37f9a0b8c`. The second checkpoint
+pins large typed native futures on the heap; no alternate test stack is used.
+The third addresses the specific cancellation-evidence review finding below.
+
+- MEDIA was explicitly transferred after Auth's unconditional release. Fresh
+  free disk was 13.0 GiB before the first build and 12.60 GiB before the final
+  build; `lsof` returned exit 1/no target handles before both. No third target,
+  new dependency, configuration change, or foreign process cleanup was used.
+- Rust `+1.88.0`, `--locked --offline`, jobs 2, dev/test debug info 0 and
+  `CARGO_INCREMENTAL=0`. Both focused compilation runs exited 0. Final build
+  completed in 3.27 seconds with no warnings.
+- Exact Cargo-JSON-selected service/RPC/relationship/journal/unit binaries and
+  source SHA-256 manifests were copied outside the target. Zero target handles
+  were verified before either private PostgreSQL run. No build overlapped PG.
+- Native runner: **98 Rust tests passed**: 4 new pure RPC checks, 87 retained
+  Friend units, 2 retained relationship guards, 1 journal shape regression,
+  3 new native RPC scenarios and 1 unchanged native relationship/revision case.
+  All exact native selections require `1 passed; 0 failed` and exit 0; ignored
+  discovery is not counted. PostgreSQL 16.14 restart and owned cleanup PASS.
+- `python3 -m unittest discover -s backend/scripts/mcr -p test_friend_invalidation_rpc_smoke.py -v`:
+  5 passed, exit 0. `python3 scripts/mcr/check-plan.py`: exit 0, planning
+  provenance only. Rust formatting, path/import/preimage boundaries and
+  `git diff --check` passed.
+
+Focused build (with authorized retained target and the environment above):
+
+```sh
+cargo +1.88.0 test --locked --offline -p friend-service \
+  --test concert_invalidation_rpc --test concert_invalidation \
+  --test concert_relationship --test unit --no-run --message-format=json
+```
+
+Final native command from repository root:
+
+```sh
+python3 backend/scripts/mcr/friend_invalidation_rpc_smoke.py \
+  --binaries-json /private/tmp/mcr-friend-invalidation-rpc-20261104/frozen-2/binaries.json \
+  --pg-bin-dir /opt/homebrew/opt/postgresql@16/bin \
+  --report /private/tmp/mcr-friend-invalidation-rpc-20261104/native-2.json
+```
+
+A rerun requires a new report path. Final report SHA-256:
+`40a781be5cb77bf51db484a7cd92e684a63f49095d4598340240fe9818dc22f4`. Source checkpoint: `fd1a8c74eb97a6bfc1ba0b9f158f1f721a1de4c6`.
+Frozen RPC test executable SHA-256:
+`9c34c5da81ba51a1de006a8ead2bd1758473df109303f75f585d974cf3f59b6f`. The report and frozen metadata include
+all five binary identities, exact source hashes and unchanged migration receipts.
+All runtime source/contract/manifest/lockfile hashes match the final checkpoint.
+The first passing native report is superseded by the second's stronger transport
+cancellation observation. Both actual owned cluster roots were stopped and removed.
+
+### Cancellation evidence precision
+
+A targeted review noted that disappearance within 1,100 ms after abort could be
+explained by the request's ordinary 900 ms deadline. That does not require an
+immediate PostgreSQL cancel acknowledgement, but it weakens an independent
+transport-cancellation claim. A test-only wrapper now records when the returned
+guarded service future is dropped while pending, explicitly drops that inner
+future before notifying, and never modifies the production adapter or journal.
+After observing the actual SQL lock wait, the native test aborts the HTTP/2 client
+call, requires the pending-drop notification within 200 ms and at least 100 ms
+before the original deadline, then separately checks disappearance of that exact
+backend while retaining the table blocker.
+
+This proves transport-driven RPC future cancellation independently of deadline
+expiry. SQL cleanup remains bounded by the original statement timeout plus the
+test's observation allowance; it does not prove instantaneous PostgreSQL cancel
+acknowledgement. The final run passed both observations with no test stack override.
+
+Native TLS qualification uses the real generated adapter, credential/method
+guards, retained mutual-TLS material and actual repository/database mutations.
+It does not claim a full operational Friend process boot with every dependency,
+production deployment credentials, World consumer acceptance or IN01. The service
+binary's migration/verification CLI is exercised; the narrow main registration
+is compiled and statically checked to omit this service without TLS.
