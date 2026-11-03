@@ -1,5 +1,6 @@
 import type { SessionController } from '../features/auth/model/session'
 import type { ShellCapabilities } from './capabilities'
+import type { PrivacyScope } from '../shared/query/privacy'
 import { createMemorySession, type SessionPort, type SessionScope } from '../shared/api/http'
 
 export type SessionReadiness = 'unknown' | 'checking' | 'ready' | 'anonymous' | 'unavailable' | 'error'
@@ -36,7 +37,7 @@ export interface WorldLifecyclePort {
    * No credentials in the DOM/context. The adapter obtains tickets from the canonical session.
    * A throwing mount must release partial resources itself; dispose must never throw.
    */
-  mount(host: HTMLElement, context: { scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal }): WorldLease
+  mount(host: HTMLElement, context: { scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal; privacyScope?: PrivacyScope | null }): WorldLease
 }
 export interface ShellPorts {
   readonly auth?: SessionController

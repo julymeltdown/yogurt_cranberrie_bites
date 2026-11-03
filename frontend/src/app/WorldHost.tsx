@@ -40,7 +40,7 @@ export function WorldHost({ scope, bootstrap, privacyScope = null, blocked, cove
       if (!ports.session.isCurrent(scope) || sessionSignal.aborted
         || (ports.auth && (!privacyScope || !ports.auth.privacy.isCurrent(privacyScope)))) dispose()
       else {
-        owned = ports.world.mount(element, { scope, bootstrap, signal: controller.signal })
+        owned = ports.world.mount(element, { scope, bootstrap, signal: controller.signal, privacyScope })
         // A port may synchronously trigger session invalidation during allocation.
         if (disposed) { owned.dispose(); element.replaceChildren() }
         else {
