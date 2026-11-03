@@ -1,0 +1,161 @@
+{
+  "status": "INTEGRATED",
+  "fullAccountDeletionAcceptance": "NOT_RUN",
+  "sourceCommit": "36b8bc9cc4729997eb2a0ac36f05f77a28b2a5e8",
+  "integrationBase": "7f05f596cb64ae7f415d0822addf4b3e1fe77a44",
+  "frontendAuthor": "3f2bb32b64c8fc0cf9f94bd04c89b681616e9de7",
+  "backendAuthor": "5c89566281353e1661383c94a7401de241d5fa41",
+  "backendQualifiedSource": "389060b90703be7bc1e8e9645c4b0bd926fb0ed9",
+  "contract": "d3b7c38268924d2db6bcdefce7bb84b86dafe329",
+  "omittedDuplicateContractImport": "57e23860",
+  "exactAuthorFiles": {
+    "backend/crates/auth-application/src/concert_deletion/mod.rs": "36bbe8fe406833b6fc9f0d992b03efaa5e7e745e35d31ca872ef187fbd54fd06",
+    "backend/crates/auth-application/src/dto/deletion_dto.rs": "50896e4e6cc5031aa17ac2aa688e539c1df95582e41f74bbaa551a497b90ea43",
+    "backend/crates/auth-application/src/lib.rs": "05227466b6aaaf1881a8886c73e30798641ab98a09a6e256cb694e59ba13bf05",
+    "backend/crates/auth-domain/src/user_deletion.rs": "1d2550e764ee37875f82db63ddf2ff829e2fb421fd0d518c8d7435d84918fb0a",
+    "backend/scripts/mcr/account_deletion_smoke.py": "34480c3ada48d235971771ecc10b0f0054ee915c71e4c1b9610b86f3b7981f55",
+    "backend/scripts/mcr/test_account_deletion_smoke.py": "852c12aa5f65ec51d92b56e9904ee5d9fa8734606ea440c3c66add842b174723",
+    "backend/services/auth-service/migrations/0015_concert_deletion_steps.sql": "6b5ad5b41e145dab76b41569f225d0f38f3db304e9b9c8e7e649af87a465f751",
+    "backend/services/auth-service/src/adapters/out/grpc/user_deletion_dispatcher.rs": "0edb5e90141da2c77daac88450509c5217d333dfb7b3d185e488b32474167340",
+    "backend/services/auth-service/src/adapters/out/persistence/user_deletion_saga_repository.rs": "4985910d5d9cae4b8e3f028553cf9bb5bebc58ba4b9ff9b661b704a295bf8402",
+    "backend/services/auth-service/src/concert_deletion/mod.rs": "8a0537035b4883762a0d2c89b58fe4bb35c28945cb4d830b9c04e73d9e31d752",
+    "backend/services/auth-service/src/lib.rs": "821f7b6a487962936bd87f521b2a14caceade65bc3a08a938eba2d80274ebfc7",
+    "backend/services/auth-service/tests/concert_deletion.rs": "80c36e48cf2d40cd9ec0e4c18fc6de2ff48d9dc166292b5f0e9ee4c6e752021e",
+    "backend/services/auth-service/tests/concert_deletion_support/native.rs": "1a87597cf660d39862e40e23afe540cd5021fcd1ca615be6d64bc3848f3a80ca",
+    "backend/services/auth-service/tests/unit/user_deletion_saga.rs": "955e8c7dee28c7d0823825b790b2bae68c0ba2f69597e994c6068f2e9fbd79d8",
+    "backend/services/auth-service/tests/user_deletion_saga_durable.rs": "5e8f5eafc6d5c603d92ae25b8653d8f7f98c66aa58921392497f0b4ba5a10278",
+    "docs/mcr/backend/account-deletion.md": "2514cc4311e45f6ed53fbb5f4820a59ee109d2591ae85b18a8c94b5f5cc72091",
+    "docs/mcr/frontend/account-deletion-targets.md": "4616adddf785bd3da90063ec46fe9ff1e65f1d81f0df50ef9158a329fec5364a",
+    "frontend/src/features/account/__tests__/controller.test.ts": "5e11bea72418500cfe4a4b4b95e1027a9e20f02dc79e635d3a107e86d252c9a1",
+    "frontend/src/features/account/__tests__/deletion-browser-smoke.mjs": "f1a50ba68fc119a240d485b2f8428ae3b8e9ef8513fc749e2442d4a958897930",
+    "frontend/src/features/account/__tests__/deletion-fixtures.ts": "df819d1647c01d8c63b9b60c864e6164a4c5e2ef4baeb705cadb74a6581334e9",
+    "frontend/src/features/account/__tests__/deletion-preview.html": "01365eb8081f5f0d9eaaed264600fa7dc0db72a48f2533971168284bdaf0a8ef",
+    "frontend/src/features/account/__tests__/deletion-preview.tsx": "51d1a7556a0d6fab4becdb92b0f2b0fc25cd399163c2c1a05c3e29339f00dd23",
+    "frontend/src/features/account/__tests__/deletion-targets.test.ts": "5f77f524a81fc1f0971ba08828337ca43b44014e00ad6423de9f210f4bf5c603",
+    "frontend/src/features/account/contract.ts": "221c87cd5f0949e18f5b986def90f199c07a19c712b6b7a0ac6ac2fa21cc10ed",
+    "frontend/src/features/account/panel.tsx": "3a823b12112bc5a76049b43b460fecb20859f907214b35d052f27cefcb626188",
+    "frontend/src/features/safety/__tests__/preview.tsx": "49aeb6eecb3c6561bece477e74691eb4a856bc3ab6bb9900e0f589e9b588a33d"
+  },
+  "evidenceSourcePinsMatched": 26,
+  "checks": [
+    {
+      "name": "frontend-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "src/features/account",
+        "src/features/auth",
+        "src/shared/query"
+      ],
+      "exit": 0,
+      "seconds": 2.94
+    },
+    {
+      "name": "frontend-types",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "frontend/tsconfig.json",
+        "--incremental",
+        "--tsBuildInfoFile",
+        "/private/tmp/mcr-deletion-combined-20261104/types.tsbuildinfo",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "seconds": 4.92
+    },
+    {
+      "name": "deletion-harness",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "backend/scripts/mcr",
+        "-p",
+        "test_account_deletion_smoke.py"
+      ],
+      "exit": 0,
+      "seconds": 0.07
+    }
+  ],
+  "rust": {
+    "toolchain": "1.88.0",
+    "jobs": 2,
+    "locked": true,
+    "offline": true,
+    "initialCompileExit": 101,
+    "initialFailure": "stale former-worktree protobuf include root in shared workspace cache",
+    "cleanup": {
+      "localWorkspacePackages": 33,
+      "generatedFiles": 427,
+      "reportedMiB": 681.8,
+      "dependenciesPreserved": true
+    },
+    "finalCompileExit": 0,
+    "finalCompileSeconds": 22.61,
+    "unit": {
+      "passed": 124,
+      "exit": 0
+    },
+    "adapter": {
+      "passed": 5,
+      "filteredNative": 2,
+      "exit": 0
+    },
+    "nativeRerun": false,
+    "buildReservation": "RELEASED"
+  },
+  "sourceProvenance": {
+    "planExit": 0,
+    "diffCheckExit": 0,
+    "publishedAuthMigrations1To14": "UNCHANGED",
+    "docsSource": "UNCHANGED"
+  },
+  "authorEvidence": {
+    "frontendAccount": {
+      "artifact": "result.json",
+      "sha256": "9f2de4dac04750ce39088ba9b91209898ca6d94ec31318d0fdc5826bdaf70d99",
+      "status": "PASS"
+    },
+    "frontendMixedSafety": {
+      "artifact": "result.json",
+      "sha256": "e13a2395b369991ad9e31b100090e6eca092d90be41d295d87dc15e979bd432e",
+      "status": "PASS"
+    },
+    "backendNative": {
+      "artifact": "native-report-final.json",
+      "sha256": "626f1e2b25c69d8ea1c56b227e98f39e8582028c7b6f1b560632e947caffd23a",
+      "status": "PASS",
+      "postgresVersion": "16.14",
+      "migrationReceipts": 15,
+      "durabilityCases": 5,
+      "restart": "PASS",
+      "ownedCleanup": "PASS"
+    }
+  },
+  "limitations": [
+    "Real Concert cleanup owners remain uncomposed and fail closed.",
+    "Canonical Auth transport and root account/recovery composition are separately assigned.",
+    "No live reconnect/reveal denial, retained-field erasure, deployment, device or full integration acceptance."
+  ],
+  "deliveryCommits": [
+    "5050bd285129ac8c00eb5bdac9f1a5f5393b5f16",
+    "f786e0152c18ab9378cbfbe32e7e1536838d8546",
+    "3ef9ae547297566cc6351216d91ca81aaefe12b4",
+    "4c95ec5a51f636f93fd0bee8593a0db740de4ace",
+    "c73d3784cb318a406002fbce7300d45f47502b4f",
+    "6a0f2c5e22f1e2bfec7c80484ad7c842775b88f6",
+    "45ec687d3ff6d059b5f7521b11a128205670e50e",
+    "5e57aa2243cba272c3907d144b2e06c2178d7749",
+    "aa6a4b1c091c282ce74081e7fe3f942a012bbd11",
+    "57598ef152aef790a5baf6242281838c73cbcd12",
+    "f00611d66fee2a2a08c8757536039720df6ff495",
+    "3616e6cc7433d35caab1accd7bbc3d3d40dfcd90",
+    "36b8bc9cc4729997eb2a0ac36f05f77a28b2a5e8"
+  ]
+}
