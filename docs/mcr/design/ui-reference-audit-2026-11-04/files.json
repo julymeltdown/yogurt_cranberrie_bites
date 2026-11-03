@@ -1,0 +1,50 @@
+{
+  "feed-base-css.png": {
+    "sha256": "a064623a63ec6388b37c52625723a934abe76dd29d9d45147c6308860ecbcec3",
+    "bytes": 36671
+  },
+  "gifts-expanded.png": {
+    "sha256": "d9061a19c54f00db1ea1238b922502ab5a5a0db75feb667ef766f1b8ec873a57",
+    "bytes": 64747
+  },
+  "gifts.png": {
+    "sha256": "aae4780c3b8d0baf1902d9ae4c4c129ccb9c2f4a993dfbecd1690ea1fef50852",
+    "bytes": 46905
+  },
+  "landing.png": {
+    "sha256": "14ca9d65e06ee91100976c336e432c9aedc3c48131085de571fb660adacce5b5",
+    "bytes": 90485
+  },
+  "login-fixture.png": {
+    "sha256": "9a416831c210590124f10dd22ce4a5b6c35c2fda049cb878b0fa8872e49a8024",
+    "bytes": 43874
+  },
+  "login-unconfigured.png": {
+    "sha256": "83331b9f8a1739270dc18787d2e028d564cda683a8c02c89a100f4a5a2fb50c3",
+    "bytes": 26809
+  },
+  "map.png": {
+    "sha256": "ea02153b860a5316f2cff79239baa5e5afef8726006615415a4f3fae8c2bcee1",
+    "bytes": 51491
+  },
+  "mural.png": {
+    "sha256": "7bb3d95b7affcba0be45c8033b53460bb4f1a32926ad932b112addb02fc77984",
+    "bytes": 70442
+  },
+  "parties-expanded.png": {
+    "sha256": "013ff9b6ae7752aed76c58f93a1d26c474238e685dac77a38f90a364946c2c05",
+    "bytes": 53333
+  },
+  "parties.png": {
+    "sha256": "46ab852cd9b96be50adf7149810c08e47c9de4a5409f73cb7dd5d68dea8eebc2",
+    "bytes": 40073
+  },
+  "profile.png": {
+    "sha256": "eab26b7e2be9b0be2371ff4e1440c6926d94fa2ee3b701be14dd49045c20b7b4",
+    "bytes": 40059
+  },
+  "user-reference.jpg": {
+    "sha256": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "bytes": 482737
+  }
+}
