@@ -127,6 +127,13 @@ async fn main() -> anyhow::Result<()> {
                     ),
                     config.caller_registry.clone(),
                 )?)
+                .add_service(platform::grpc_method_policy::guard_without_delegation(
+                    &post_service::adapters::r#in::grpc::concert_feed::POST_CONCERT_FEED_POLICY,
+                    post_service::adapters::r#in::grpc::concert_feed::proto::post_concert_feed_service_server::PostConcertFeedServiceServer::new(
+                        post_service::adapters::r#in::grpc::concert_feed::PostConcertFeedGrpcServer,
+                    ),
+                    config.caller_registry.clone(),
+                )?)
                 .serve_with_shutdown(config.grpc_addr, platform::shutdown::global().cancelled())
                 .await?;
             Ok::<(), anyhow::Error>(())

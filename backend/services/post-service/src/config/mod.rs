@@ -230,9 +230,11 @@ impl AppConfig {
         // The edge owns user-facing writes and moderation; no other workload may
         // drive them. Account deletion is the auth coordinator's job, so it is
         // accepted here as well but never from a sibling service.
+        // Optional explicit Concert credentials apply only to the separate
+        // fail-closed concert-feed service, never to inherited Post methods.
         let caller_registry = build_caller_registry(
             is_production,
-            &[Workload::Gateway, Workload::Auth],
+            &[Workload::Gateway, Workload::Auth, Workload::Concert],
             &[Workload::Gateway],
         )?;
         let outbound_identity = resolve_outbound_identity(is_production, Workload::Post)?;

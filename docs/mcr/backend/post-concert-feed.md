@@ -89,11 +89,16 @@ reads; moderation entrypoints remain future assigned work.
 ## Validation record
 
 - `python3 scripts/mcr/check-plan.py`: exit 0, planning/provenance PASS.
-- Focused `rustfmt +1.88.0 --edition 2021`: exit 0.
+- Focused `rustfmt +1.88.0 --edition 2021 --check`: exit 0.
+- `protoc --proto_path=backend/proto --descriptor_set_out=<temporary path>
+  backend/proto/post/v1/concert_feed.proto`: exit 0; descriptor compiles.
 - `python3 -m py_compile backend/scripts/mcr/post_concert_feed_postgres.py`: exit 0.
 - `git diff --check`: exit 0.
 - Rust build/unit tests: NOT_RUN pending assigned shared Cargo lease.
-- PostgreSQL owner regression: NOT_RUN pending exact built unit executable.
+- `python3 backend/scripts/mcr/post_concert_feed_postgres.py --sql-only`: exit 0,
+  all 31 Post migrations applied to an empty isolated database; five owner tables
+  present; owned cluster stopped and removed.
+- PostgreSQL owner Rust regression: NOT_RUN pending exact built unit executable.
 - Real authority, real multiuser HTTP flow, production RPC, load/device and
   BE31/BE32 acceptance: NOT_RUN.
 

@@ -1,4 +1,5 @@
 pub mod cache_authority;
+pub mod concert_feed;
 pub mod fanout_authority;
 pub mod method_policy;
 pub mod notification_authority;
