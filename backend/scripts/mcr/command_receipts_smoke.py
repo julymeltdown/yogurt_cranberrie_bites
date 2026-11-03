@@ -13,9 +13,9 @@ from concert_core_smoke import command, digest, require, ROOT
 DATABASE = "mcr_concert_be_commands"
 FAILURE_DATABASE = "mcr_concert_be_commands_failure"
 CONTRACTS = ("common.schema.json", "operations.json", "policy.json")
-PINNED = ("29e89618ae0258f8793407ab67a26b88ccd4383f513ea1869b416b0739c3ee4f",
+PINNED = ("303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35",
           "0acd5e1c68b5136916d1560dfbb2eef7e59410c81987bf0ea24b0d605c11083e",
-          "58d136b8f067848bd724d2870d6596bddff82e7b8f61bc2dbd75e47d7392a66d")
+          "728b397bd175c55b35eddef8b925f585676d7589a0b1250fbde5ef3c7c9d4019")
 
 def exercise(cluster, binary, test, report):
     cluster.init()
@@ -68,8 +68,8 @@ def exercise(cluster, binary, test, report):
     require(all(value.encode() not in result.stdout + result.stderr for value in secrets), "test-output-redaction")
     report["test_diagnostics"] = migration.redact((result.stdout + result.stderr).decode(errors="replace"), secrets)
     require(result.returncode == 0, "real-command-tests:exit")
-    require(b"13 passed; 0 failed" in result.stdout, "tests-not-skipped")
-    report["real_postgres_tests"] = 13
+    require(b"17 passed; 0 failed" in result.stdout, "tests-not-skipped")
+    report["real_postgres_tests"] = 17
     # Already committed pending rows and safe results must survive actual server restart.
     before = cluster.sql(DATABASE, "select count(*) from concert_command_receipts;")
     queue = cluster.sql(DATABASE, "select count(*) from concert_outbox;")

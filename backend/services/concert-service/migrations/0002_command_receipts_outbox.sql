@@ -73,7 +73,7 @@ CREATE TABLE public.concert_command_receipts (
  event_id uuid NOT NULL REFERENCES public.concert_events(event_id) ON DELETE RESTRICT,
  operation_id text NOT NULL REFERENCES public.concert_command_operations(operation_id),
  idempotency_key uuid NOT NULL,
- request_hash text NOT NULL CHECK(request_hash ~ '^sha256:[0-9a-f]{64}$'),
+ request_hash text NOT NULL CHECK(request_hash ~ '^hmac-sha256:v1:[A-Za-z0-9_-]{1,32}:[0-9a-f]{64}$'),
  target_id uuid NOT NULL,
  state text NOT NULL CHECK(state IN ('PENDING','SUCCEEDED','FAILED','RETIRED')),
  resource_id uuid,

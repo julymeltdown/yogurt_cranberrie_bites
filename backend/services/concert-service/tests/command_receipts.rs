@@ -71,6 +71,7 @@ enum Mode {
     Failed,
     Pending,
     WrongReference,
+    WrongRevision,
 }
 struct TestProducer {
     mode: Mode,
@@ -106,6 +107,18 @@ impl CommandProducer for TestProducer {
             Mode::Abort => Err(CommandError::InvalidState),
             Mode::Failed => Ok((Completion::Failed(SafeFailure::VersionConflict), None)),
             Mode::Pending => Ok((Completion::Pending, Some(Invalidation { reference }))),
+            Mode::WrongRevision => Ok((
+                Completion::Succeeded {
+                    reference,
+                    status: 200,
+                },
+                Some(Invalidation {
+                    reference: SafeReference {
+                        resource: target,
+                        revision: revision + 1,
+                    },
+                }),
+            )),
             Mode::WrongReference => Ok((
                 Completion::Succeeded {
                     reference: SafeReference {
@@ -126,7 +139,7 @@ impl CommandProducer for TestProducer {
         }
     }
 }
-async fn fixture() -> anyhow::Result<(PgPool, Scope, Uuid, RequestHash)> {
+async fn fixture() -> anyhow::Result<(PgPool, Scope, Uuid, CanonicalRequest)> {
     let pool = owned_pool().await?;
     // Tables created only in the harness-owned fixture. Every test has unique keys.
     sqlx::query("create table if not exists be15_test_policy(actor uuid,event uuid,operation text,target uuid,allowed boolean not null,primary key(actor,event,operation,target))").execute(&pool).await?;
@@ -153,12 +166,18 @@ async fn fixture() -> anyhow::Result<(PgPool, Scope, Uuid, RequestHash)> {
         .bind(target)
         .execute(&pool)
         .await?;
-    let hash = hash(scope, 1);
+    let hash = request(scope, 1);
     Ok((pool, scope, target, hash))
 }
-fn hash(s: Scope, value: i64) -> RequestHash {
-    RequestHash::canonical(
-        s.operation,
+fn keys() -> &'static FingerprintKeys {
+    static KEYS: std::sync::OnceLock<FingerprintKeys> = std::sync::OnceLock::new();
+    KEYS.get_or_init(|| {
+        FingerprintKeys::new(SigningKey::new("test_v1", &[0x42; 32]).unwrap(), vec![]).unwrap()
+    })
+}
+fn request(s: Scope, value: i64) -> CanonicalRequest {
+    CanonicalRequest::json(
+        s,
         &[("eventId", &s.event.to_string())],
         &[],
         Some(&CanonicalValue::Integer(value)),
@@ -204,8 +223,8 @@ async fn simultaneous_duplicates_apply_once_and_return_same_safe_receipt() -> an
         mode: Mode::Success,
     };
     let (a, b) = tokio::join!(
-        repo.execute(s, t, h, &producer),
-        repo.execute(s, t, h, &producer)
+        repo.execute(&h, t, keys(), &producer),
+        repo.execute(&h, t, keys(), &producer)
     );
     assert_eq!(a?, b?);
     assert_eq!(revision(&p, s, t).await, 1);
@@ -220,9 +239,10 @@ async fn simultaneous_changed_body_conflicts_without_double_effect() -> anyhow::
     let producer = TestProducer {
         mode: Mode::Success,
     };
+    let changed = request(s, 2);
     let (a, b) = tokio::join!(
-        repo.execute(s, t, h, &producer),
-        repo.execute(s, t, hash(s, 2), &producer)
+        repo.execute(&h, t, keys(), &producer),
+        repo.execute(&changed, t, keys(), &producer)
     );
     assert_eq!(
         [a.clone(), b.clone()].iter().filter(|v| v.is_ok()).count(),
@@ -245,7 +265,7 @@ async fn rollback_has_no_orphan_and_failed_receipt_rolls_back_effects() -> anyho
     let (p, s, t, h) = fixture().await?;
     let repo = PgCommandRepository::new(p.clone());
     assert_eq!(
-        repo.execute(s, t, h, &TestProducer { mode: Mode::Abort })
+        repo.execute(&h, t, keys(), &TestProducer { mode: Mode::Abort })
             .await,
         Err(CommandError::InvalidState)
     );
@@ -253,7 +273,7 @@ async fn rollback_has_no_orphan_and_failed_receipt_rolls_back_effects() -> anyho
     assert_eq!(count(&p, "concert_command_receipts", s).await, 0);
     assert_eq!(count(&p, "concert_outbox", s).await, 0);
     let r = repo
-        .execute(s, t, h, &TestProducer { mode: Mode::Failed })
+        .execute(&h, t, keys(), &TestProducer { mode: Mode::Failed })
         .await?;
     assert_eq!(r.state, ReceiptState::Failed);
     assert_eq!(r.failure, Some(SafeFailure::VersionConflict));
@@ -261,9 +281,9 @@ async fn rollback_has_no_orphan_and_failed_receipt_rolls_back_effects() -> anyho
     assert_eq!(count(&p, "concert_outbox", s).await, 0);
     assert_eq!(
         repo.execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::Success
             }
@@ -280,9 +300,9 @@ async fn pending_is_not_success_or_automatic_mutation_retry() -> anyhow::Result<
     let repo = PgCommandRepository::new(p.clone());
     let r = repo
         .execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::Pending,
             },
@@ -292,9 +312,9 @@ async fn pending_is_not_success_or_automatic_mutation_retry() -> anyhow::Result<
     assert!(r.reference.is_none() && r.result_status.is_none());
     assert_eq!(
         repo.execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::Success
             }
@@ -313,7 +333,7 @@ async fn current_policy_denies_existing_missing_conflict_and_wrong_scopes() -> a
     let producer = TestProducer {
         mode: Mode::Success,
     };
-    repo.execute(s, t, h, &producer).await?;
+    repo.execute(&h, t, keys(), &producer).await?;
     for wrong in [
         Scope {
             actor: Uuid::new_v4(),
@@ -329,7 +349,7 @@ async fn current_policy_denies_existing_missing_conflict_and_wrong_scopes() -> a
         },
     ] {
         assert_eq!(
-            repo.execute(wrong, t, h, &producer).await,
+            repo.execute(&request(wrong, 1), t, keys(), &producer).await,
             Err(CommandError::Denied)
         );
         assert_eq!(
@@ -351,7 +371,7 @@ async fn current_policy_denies_existing_missing_conflict_and_wrong_scopes() -> a
         Err(CommandError::Denied)
     );
     assert_eq!(
-        repo.execute(s, t, hash(s, 2), &producer).await,
+        repo.execute(&request(s, 2), t, keys(), &producer).await,
         Err(CommandError::Denied)
     );
     assert_eq!(
@@ -379,9 +399,9 @@ async fn expired_and_retired_tombstones_never_rerun_and_hash_conflict_persists(
         mode: Mode::Success,
     };
     sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,created_at,expires_at) values($1,$2,$3,$4,$5,$6,$7,'PENDING',clock_timestamp()-interval '2 days',clock_timestamp()-interval '1 day 1 second')")
- .bind(Uuid::new_v4()).bind(s.actor).bind(s.event).bind(s.operation.id()).bind(s.key).bind(h.as_storage()).bind(t).execute(&p).await?;
+ .bind(Uuid::new_v4()).bind(s.actor).bind(s.event).bind(s.operation.id()).bind(s.key).bind(keys().sign(&h)?.as_storage()).bind(t).execute(&p).await?;
     assert_eq!(
-        repo.execute(s, t, h, &producer).await,
+        repo.execute(&h, t, keys(), &producer).await,
         Err(CommandError::Expired)
     );
     assert_eq!(
@@ -390,12 +410,17 @@ async fn expired_and_retired_tombstones_never_rerun_and_hash_conflict_persists(
     );
     assert_eq!(repo.retire_expired(1).await?, 1);
     assert_eq!(
-        repo.execute(s, t, h, &producer).await,
+        repo.execute(&h, t, keys(), &producer).await,
         Err(CommandError::Expired)
     );
     assert_eq!(
-        repo.execute(s, t, hash(s, 2), &producer).await,
+        repo.execute(&request(s, 2), t, keys(), &producer).await,
         Err(CommandError::Conflict)
+    );
+    let lost = FingerprintKeys::new(SigningKey::new("other", &[0x77; 32])?, vec![])?;
+    assert_eq!(
+        repo.execute(&h, t, &lost, &producer).await,
+        Err(CommandError::Expired)
     );
     assert_eq!(revision(&p, s, t).await, 0);
     p.close().await;
@@ -407,9 +432,9 @@ async fn expired_lease_reclaim_fences_stale_workers_and_consumer_effect_is_once(
     let (p, s, t, h) = fixture().await?;
     PgCommandRepository::new(p.clone())
         .execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::Success,
             },
@@ -456,9 +481,9 @@ async fn retries_are_bounded_backoff_and_exhausted_crash_is_dead() -> anyhow::Re
     let (p, s, t, h) = fixture().await?;
     PgCommandRepository::new(p.clone())
         .execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::Success,
             },
@@ -512,9 +537,9 @@ async fn lifetime_exhaustion_rolls_back_and_storage_has_no_secret_payload_column
         .await?;
     let result = repo
         .execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::Success,
             },
@@ -549,7 +574,7 @@ async fn lifetime_exhaustion_rolls_back_and_storage_has_no_secret_payload_column
     );
     // Closed safe failure enum is enforced in the database as well as Rust.
     let receipt = repo
-        .execute(s, t, h, &TestProducer { mode: Mode::Failed })
+        .execute(&h, t, keys(), &TestProducer { mode: Mode::Failed })
         .await?;
     let error = sqlx::query(
         "update concert_command_receipts set failure_reason='private-handle' where receipt_id=$1",
@@ -570,9 +595,9 @@ async fn concurrent_role_revocation_is_rechecked_under_database_lock() -> anyhow
     let (p, s, t, h) = fixture().await?;
     let repo = PgCommandRepository::new(p.clone());
     repo.execute(
-        s,
+        &h,
         t,
-        h,
+        keys(),
         &TestProducer {
             mode: Mode::Success,
         },
@@ -586,9 +611,9 @@ async fn concurrent_role_revocation_is_rechecked_under_database_lock() -> anyhow
         .await?;
     let mut replay = tokio::spawn(async move {
         repo.execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::Success,
             },
@@ -626,9 +651,9 @@ async fn explicit_batch_runner_delivers_real_idempotent_consumer_effect() -> any
     let (p, s, t, h) = fixture().await?;
     PgCommandRepository::new(p.clone())
         .execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::Success,
             },
@@ -667,9 +692,9 @@ async fn actor_and_queue_admission_limits_roll_back_complete_command() -> anyhow
     let producer = TestProducer {
         mode: Mode::Success,
     };
-    sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state) select gen_random_uuid(),$1,$2,$3,gen_random_uuid(),$4,$5,'PENDING' from generate_series(1,1000)").bind(s.actor).bind(s.event).bind(s.operation.id()).bind(h.as_storage()).bind(t).execute(&p).await?;
+    sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state) select gen_random_uuid(),$1,$2,$3,gen_random_uuid(),$4,$5,'PENDING' from generate_series(1,1000)").bind(s.actor).bind(s.event).bind(s.operation.id()).bind(keys().sign(&h)?.as_storage()).bind(t).execute(&p).await?;
     assert_eq!(
-        repo.execute(s, t, h, &producer).await,
+        repo.execute(&h, t, keys(), &producer).await,
         Err(CommandError::Capacity)
     );
     assert_eq!(revision(&p, s, t).await, 0);
@@ -694,9 +719,9 @@ async fn actor_and_queue_admission_limits_roll_back_complete_command() -> anyhow
         .execute(&p)
         .await?;
     sqlx::query("update concert_outbox set state='DEAD',lease_token=null,lease_until=null,terminal_at=clock_timestamp(),last_error='REJECTED' where state in ('READY','LEASED')").execute(&p).await?;
-    sqlx::query("with fixtures as (insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state) select gen_random_uuid(),gen_random_uuid(),$1,$2,gen_random_uuid(),$3,$4,'PENDING' from generate_series(1,10000) returning receipt_id,event_id,target_id) insert into concert_outbox(outbox_id,receipt_id,event_id,resource_id,resource_revision) select gen_random_uuid(),receipt_id,event_id,target_id,1 from fixtures").bind(s.event).bind(s.operation.id()).bind(h.as_storage()).bind(t).execute(&p).await?;
+    sqlx::query("with fixtures as (insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state) select gen_random_uuid(),gen_random_uuid(),$1,$2,gen_random_uuid(),$3,$4,'PENDING' from generate_series(1,10000) returning receipt_id,event_id,target_id) insert into concert_outbox(outbox_id,receipt_id,event_id,resource_id,resource_revision) select gen_random_uuid(),receipt_id,event_id,target_id,1 from fixtures").bind(s.event).bind(s.operation.id()).bind(keys().sign(&h)?.as_storage()).bind(t).execute(&p).await?;
     assert_eq!(
-        repo.execute(actor_scope, new_target, hash(actor_scope, 1), &producer)
+        repo.execute(&request(actor_scope, 1), new_target, keys(), &producer)
             .await,
         Err(CommandError::Capacity)
     );
@@ -718,11 +743,212 @@ async fn safe_reference_must_bind_authorized_target_and_roll_back_other_effects(
     let repo = PgCommandRepository::new(p.clone());
     assert_eq!(
         repo.execute(
-            s,
+            &h,
             t,
-            h,
+            keys(),
             &TestProducer {
                 mode: Mode::WrongReference
+            }
+        )
+        .await,
+        Err(CommandError::InvalidState)
+    );
+    assert_eq!(revision(&p, s, t).await, 0);
+    assert_eq!(count(&p, "concert_command_receipts", s).await, 0);
+    assert_eq!(count(&p, "concert_outbox", s).await, 0);
+    p.close().await;
+    Ok(())
+}
+#[tokio::test]
+async fn rotated_active_key_verifies_original_receipt_and_lost_key_never_reruns(
+) -> anyhow::Result<()> {
+    let (p, s, t, input) = fixture().await?;
+    let repo = PgCommandRepository::new(p.clone());
+    let producer = TestProducer {
+        mode: Mode::Success,
+    };
+    let receipt = repo.execute(&input, t, keys(), &producer).await?;
+    let before: String =
+        sqlx::query_scalar("select request_hash from concert_command_receipts where receipt_id=$1")
+            .bind(receipt.id)
+            .fetch_one(&p)
+            .await?;
+    let rotated = FingerprintKeys::new(
+        SigningKey::new("test_v2", &[0x77; 32])?,
+        vec![SigningKey::new("test_v1", &[0x42; 32])?],
+    )?;
+    assert_eq!(repo.execute(&input, t, &rotated, &producer).await?, receipt);
+    let after: String =
+        sqlx::query_scalar("select request_hash from concert_command_receipts where receipt_id=$1")
+            .bind(receipt.id)
+            .fetch_one(&p)
+            .await?;
+    assert!(before == after);
+    let lost = FingerprintKeys::new(SigningKey::new("test_v2", &[0x77; 32])?, vec![])?;
+    assert_eq!(
+        repo.execute(&input, t, &lost, &producer).await,
+        Err(CommandError::Unavailable)
+    );
+    assert_eq!(revision(&p, s, t).await, 1);
+    assert_eq!(count(&p, "concert_outbox", s).await, 1);
+    let next = Scope {
+        key: Uuid::new_v4(),
+        ..s
+    };
+    let new_receipt = repo
+        .execute(&request(next, 1), t, &rotated, &producer)
+        .await?;
+    let stored: String =
+        sqlx::query_scalar("select request_hash from concert_command_receipts where receipt_id=$1")
+            .bind(new_receipt.id)
+            .fetch_one(&p)
+            .await?;
+    assert!(stored.starts_with("hmac-sha256:v1:test_v2:"));
+    p.close().await;
+    Ok(())
+}
+#[tokio::test]
+async fn low_entropy_secret_changes_conflict_without_plaintext_unkeyed_or_error_leaks(
+) -> anyhow::Result<()> {
+    let (p, s, t, _) = fixture().await?;
+    let s = Scope {
+        operation: RegisteredOperation::find("claimConcertReservation")?,
+        ..s
+    };
+    sqlx::query("insert into be15_test_policy values($1,$2,$3,$4,true)")
+        .bind(s.actor)
+        .bind(s.event)
+        .bind(s.operation.id())
+        .bind(t)
+        .execute(&p)
+        .await?;
+    let build = |secret: &str| {
+        CanonicalRequest::json(
+            s,
+            &[
+                ("eventId", &s.event.to_string()),
+                ("reservationId", &t.to_string()),
+            ],
+            &[],
+            Some(&CanonicalValue::Object(vec![
+                ("expected_revision".into(), CanonicalValue::Integer(1)),
+                (
+                    "confirmation_code".into(),
+                    CanonicalValue::String(secret.into()),
+                ),
+            ])),
+        )
+        .unwrap()
+    };
+    let input = build("123456");
+    let changed = build("654321");
+    let repo = PgCommandRepository::new(p.clone());
+    let producer = TestProducer {
+        mode: Mode::Success,
+    };
+    let receipt = repo.execute(&input, t, keys(), &producer).await?;
+    let error = repo
+        .execute(&changed, t, keys(), &producer)
+        .await
+        .unwrap_err();
+    assert_eq!(error, CommandError::Conflict);
+    let stored: String =
+        sqlx::query_scalar("select request_hash from concert_command_receipts where receipt_id=$1")
+            .bind(receipt.id)
+            .fetch_one(&p)
+            .await?;
+    assert!(stored.starts_with("hmac-sha256:v1:test_v1:"));
+    // Public/debug projection and errors have no fingerprint, raw code or injected key.
+    for output in [
+        format!("{receipt:?}"),
+        format!("{error:?}"),
+        error.to_string(),
+    ] {
+        for private in [
+            &stored,
+            "123456",
+            "654321",
+            "confirmation_code",
+            "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        ] {
+            assert!(!output.contains(private));
+        }
+    }
+    let row: String = sqlx::query_scalar(
+        "select row_to_json(r)::text from concert_command_receipts r where receipt_id=$1",
+    )
+    .bind(receipt.id)
+    .fetch_one(&p)
+    .await?;
+    assert!(!row.contains("confirmation_code"));
+    assert_eq!(revision(&p, s, t).await, 1);
+    p.close().await;
+    Ok(())
+}
+struct DelayedAuthorization {
+    calls: std::sync::atomic::AtomicUsize,
+}
+#[async_trait]
+impl CommandProducer for DelayedAuthorization {
+    async fn authorize(&self, c: &mut PgConnection, s: Scope, t: Uuid) -> Result<(), CommandError> {
+        TestProducer {
+            mode: Mode::Success,
+        }
+        .authorize(c, s, t)
+        .await?;
+        if self.calls.fetch_add(1, std::sync::atomic::Ordering::SeqCst) == 1 {
+            tokio::time::sleep(std::time::Duration::from_millis(250)).await;
+        }
+        Ok(())
+    }
+    async fn apply(
+        &self,
+        _: &mut PgConnection,
+        _: Scope,
+        _: Uuid,
+    ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        panic!("expired receipt cannot execute")
+    }
+}
+#[tokio::test]
+async fn expiry_during_stored_target_authorization_is_rechecked_for_execute_and_lookup(
+) -> anyhow::Result<()> {
+    for lookup in [true, false] {
+        let (p, s, t, input) = fixture().await?;
+        let repo = PgCommandRepository::new(p.clone());
+        sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,resource_id,resource_revision,result_status,created_at,expires_at) values($1,$2,$3,$4,$5,$6,$7,'SUCCEEDED',$7,1,200,clock_timestamp()-interval '1 hour',clock_timestamp()+interval '150 milliseconds')").bind(Uuid::new_v4()).bind(s.actor).bind(s.event).bind(s.operation.id()).bind(s.key).bind(keys().sign(&input)?.as_storage()).bind(t).execute(&p).await?;
+        let delayed = DelayedAuthorization {
+            calls: std::sync::atomic::AtomicUsize::new(0),
+        };
+        if lookup {
+            assert_eq!(
+                repo.lookup(s, t, &delayed).await,
+                Err(CommandError::Expired)
+            );
+        } else {
+            assert_eq!(
+                repo.execute(&input, t, keys(), &delayed).await,
+                Err(CommandError::Expired)
+            );
+        }
+        assert_eq!(revision(&p, s, t).await, 0);
+        assert_eq!(count(&p, "concert_outbox", s).await, 0);
+        p.close().await;
+    }
+    Ok(())
+}
+#[tokio::test]
+async fn succeeded_outbox_revision_mismatch_rolls_back_receipt_aggregate_and_enqueue(
+) -> anyhow::Result<()> {
+    let (p, s, t, input) = fixture().await?;
+    let repo = PgCommandRepository::new(p.clone());
+    assert_eq!(
+        repo.execute(
+            &input,
+            t,
+            keys(),
+            &TestProducer {
+                mode: Mode::WrongRevision
             }
         )
         .await,

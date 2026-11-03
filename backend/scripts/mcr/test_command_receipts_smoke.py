@@ -49,6 +49,10 @@ class HarnessTests(unittest.TestCase):
         root=smoke.ROOT
         self.assertEqual(tuple(smoke.digest(root/"contracts/domain/v1"/name) for name in smoke.CONTRACTS),smoke.PINNED)
         operations=json.loads((root/"contracts/domain/v1/operations.json").read_text())
+        receipt=json.loads((root/"contracts/domain/v1/common.schema.json").read_text())["$defs"]["CommandReceipt"]
+        self.assertNotIn("request_hash",receipt["properties"])
+        self.assertNotIn("request_hash",receipt["required"])
+
         registered={x["operationId"] for x in operations if x["idempotency_key"]}
         import re
         source=(root/"backend/crates/concert-application/src/commands/registry.rs").read_text()

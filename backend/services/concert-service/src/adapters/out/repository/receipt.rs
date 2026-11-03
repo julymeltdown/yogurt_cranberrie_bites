@@ -35,11 +35,12 @@ impl PgCommandRepository {
     }
     pub async fn execute<P: CommandProducer>(
         &self,
-        scope: Scope,
+        request: &CanonicalRequest,
         target: Uuid,
-        hash: RequestHash,
+        keys: &FingerprintKeys,
         producer: &P,
     ) -> Result<SafeReceipt, CommandError> {
+        let scope = request.scope();
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
         producer.authorize(&mut tx, scope, target).await?;
         // Global admission lock also serializes new-key races. Bounded foundation favors
@@ -50,19 +51,27 @@ impl PgCommandRepository {
         .fetch_one(&mut *tx)
         .await
         .map_err(unavailable)?;
-        let existing=sqlx::query("select *,clock_timestamp() >= expires_at as expired from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 for update")
+        let existing=sqlx::query("select * from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 for update")
             .bind(scope.actor).bind(scope.event).bind(scope.operation.id()).bind(scope.key).fetch_optional(&mut *tx).await.map_err(unavailable)?;
         if let Some(row) = existing {
             // Current authorization gates *all* receipt metadata, even conflicts/expiry.
             let stored_target: Uuid = row.try_get("target_id").map_err(invalid)?;
             producer.authorize(&mut tx, scope, stored_target).await?;
-            if row.try_get::<String, _>("request_hash").map_err(invalid)? != hash.as_storage() {
-                return Err(CommandError::Conflict);
+            let expires_at = row.try_get("expires_at").map_err(invalid)?;
+            let expired = db_expired(&mut tx, expires_at).await?;
+            let fingerprint = Fingerprint::from_storage(
+                &row.try_get::<String, _>("request_hash").map_err(invalid)?,
+            )?;
+            match keys.verify(request, &fingerprint) {
+                Ok(true) => {}
+                Ok(false) => return Err(CommandError::Conflict),
+                Err(_) if expired => return Err(CommandError::Expired),
+                Err(error) => return Err(error),
             }
             if stored_target != target {
                 return Err(CommandError::Conflict);
             }
-            if row.try_get::<bool, _>("expired").map_err(invalid)? {
+            if expired {
                 return Err(CommandError::Expired);
             }
             let value = project(row, scope)?;
@@ -83,6 +92,7 @@ impl PgCommandRepository {
         if used >= 1_000_000 || actor_used >= 1000 {
             return Err(CommandError::Capacity);
         }
+        let hash = keys.sign(request)?;
         let id = Uuid::new_v4();
         // Use a single DB timestamp for exact TTL.
         sqlx::query("insert into public.concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,created_at,expires_at) select $1,$2,$3,$4,$5,$6,$7,'PENDING',t,t+interval '86400 seconds' from (select clock_timestamp() t) now")
@@ -116,7 +126,9 @@ impl PgCommandRepository {
         };
         if let Some(event) = invalidation {
             event.reference.validate()?;
-            if event.reference.resource != target {
+            if event.reference.resource != target
+                || reference.is_some_and(|result| result != event.reference)
+            {
                 return Err(CommandError::InvalidState);
             }
             let queued: i64 = sqlx::query_scalar(
@@ -146,7 +158,7 @@ impl PgCommandRepository {
     ) -> Result<Option<SafeReceipt>, CommandError> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
         producer.authorize(&mut tx, scope, target).await?;
-        let row=sqlx::query("select *,clock_timestamp() >= expires_at as expired from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 for share")
+        let row=sqlx::query("select * from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4 for share")
             .bind(scope.actor).bind(scope.event).bind(scope.operation.id()).bind(scope.key).fetch_optional(&mut *tx).await.map_err(unavailable)?;
         let Some(row) = row else { return Ok(None) };
         let stored_target: Uuid = row.try_get("target_id").map_err(invalid)?;
@@ -154,7 +166,7 @@ impl PgCommandRepository {
         if stored_target != target {
             return Ok(None);
         }
-        if row.try_get::<bool, _>("expired").map_err(invalid)? {
+        if db_expired(&mut tx, row.try_get("expires_at").map_err(invalid)?).await? {
             return Err(CommandError::Expired);
         }
         let receipt = project(row, scope)?;
@@ -201,4 +213,15 @@ fn unavailable(_: sqlx::Error) -> CommandError {
 }
 fn invalid(_: sqlx::Error) -> CommandError {
     CommandError::InvalidState
+}
+
+async fn db_expired(
+    connection: &mut PgConnection,
+    expires_at: chrono::DateTime<chrono::Utc>,
+) -> Result<bool, CommandError> {
+    sqlx::query_scalar("select clock_timestamp() >= $1")
+        .bind(expires_at)
+        .fetch_one(connection)
+        .await
+        .map_err(unavailable)
 }

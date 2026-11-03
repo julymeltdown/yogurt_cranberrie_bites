@@ -3,6 +3,7 @@
 //! current target/policy guards inside the aggregate transaction. No public DTOs here.
 mod registry;
 use chrono::{DateTime, Utc};
+use hmac::{Hmac, Mac};
 pub use registry::OPERATIONS;
 use sha2::{Digest, Sha256};
 use uuid::Uuid;
@@ -169,18 +170,24 @@ fn encode_string(value: &str, out: &mut Vec<u8>) -> Result<(), CommandError> {
     out.push(b'"');
     Ok(())
 }
-#[derive(Clone, Copy, PartialEq, Eq)]
-pub struct RequestHash([u8; 32]);
-impl RequestHash {
-    /// Query values must already be decoded, closed-schema validated with defaults resolved.
-    /// Method is fixed by registry; path is constructed from canonical registered parameters.
-    pub fn canonical(
-        operation: RegisteredOperation,
+/// Transient validated canonical input, including scope. Never Debug/Serialize/log it.
+/// Construct only after closed-schema transport parsing. No fingerprint is accepted
+/// from a browser and no unkeyed fingerprint API exists.
+pub struct CanonicalRequest {
+    scope: Scope,
+    framed: Vec<u8>,
+}
+impl CanonicalRequest {
+    pub fn scope(&self) -> Scope {
+        self.scope
+    }
+    pub fn json(
+        scope: Scope,
         parameters: &[(&str, &str)],
         query: &[(&str, &str)],
         body: Option<&CanonicalValue>,
     ) -> Result<Self, CommandError> {
-        if operation.binary {
+        if scope.operation.binary || (scope.operation.method == "DELETE" && body.is_some()) {
             return Err(CommandError::InvalidInput);
         }
         let mut canonical_body = Vec::new();
@@ -191,33 +198,38 @@ impl RequestHash {
                 value.encode(&mut canonical_body, 0)?;
             }
         }
-        if operation.method == "DELETE" && body.is_some() {
-            return Err(CommandError::InvalidInput);
-        }
-        Self::encode(operation, parameters, query, &canonical_body)
+        Self::encode(scope, parameters, query, &canonical_body)
     }
-    /// Exact binary bytes, at most 10 MiB; content/media schema checks remain producer
-    /// obligations. Only length and SHA256 enter the request digest, never the bytes.
+    /// Exact bytes, maximum 10 MiB before producer's stricter media schema validation.
     pub fn binary(
-        operation: RegisteredOperation,
+        scope: Scope,
         parameters: &[(&str, &str)],
         query: &[(&str, &str)],
         bytes: &[u8],
     ) -> Result<Self, CommandError> {
-        if !operation.binary || bytes.len() > 10 * 1024 * 1024 {
+        if !scope.operation.binary || bytes.len() > 10 * 1024 * 1024 {
             return Err(CommandError::InvalidInput);
         }
         let mut body = b"BINARY-SHA256:".to_vec();
         body.extend((bytes.len() as u64).to_be_bytes());
         body.extend(Sha256::digest(bytes));
-        Self::encode(operation, parameters, query, &body)
+        Self::encode(scope, parameters, query, &body)
     }
     fn encode(
-        operation: RegisteredOperation,
+        scope: Scope,
         parameters: &[(&str, &str)],
         query: &[(&str, &str)],
         canonical_body: &[u8],
     ) -> Result<Self, CommandError> {
+        let operation = scope.operation;
+        if parameters
+            .iter()
+            .find(|(name, _)| *name == "eventId")
+            .map(|(_, v)| *v)
+            != Some(scope.event.to_string().as_str())
+        {
+            return Err(CommandError::InvalidInput);
+        }
         let path = operation.path(parameters)?;
         let mut fields = query.to_vec();
         fields.sort();
@@ -238,39 +250,129 @@ impl RequestHash {
         );
         let mut canonical_query = Vec::new();
         query.encode(&mut canonical_query, 0)?;
-        let mut digest = Sha256::new();
+        let mut framed = Vec::new();
         for part in [
-            b"MCR-BE15-v1".as_slice(),
+            b"MCR-BE15-HMAC-v1".as_slice(),
+            scope.actor.as_bytes(),
+            scope.event.as_bytes(),
+            operation.id.as_bytes(),
+            scope.key.as_bytes(),
             operation.method.as_bytes(),
             path.as_bytes(),
             &canonical_query,
             canonical_body,
         ] {
-            digest.update((part.len() as u64).to_be_bytes());
-            digest.update(part);
+            framed.extend((part.len() as u64).to_be_bytes());
+            framed.extend(part);
         }
-        Ok(Self(digest.finalize().into()))
+        Ok(Self { scope, framed })
     }
-    pub fn as_storage(self) -> String {
-        format!("sha256:{:x}", Sha256Output(self.0))
+}
+/// Only safe correlation text is durable. Intentionally no Debug/Serialize.
+#[derive(Clone, PartialEq, Eq)]
+pub struct Fingerprint {
+    key_id: String,
+    mac: [u8; 32],
+}
+fn valid_key_id(id: &str) -> bool {
+    !id.is_empty()
+        && id.len() <= 32
+        && id
+            .bytes()
+            .all(|b| b.is_ascii_alphanumeric() || b == b'_' || b == b'-')
+}
+impl Fingerprint {
+    pub fn as_storage(&self) -> String {
+        format!(
+            "hmac-sha256:v1:{}:{:x}",
+            self.key_id,
+            Sha256Output(self.mac)
+        )
     }
     pub fn from_storage(value: &str) -> Result<Self, CommandError> {
-        let hex = value
-            .strip_prefix("sha256:")
-            .ok_or(CommandError::InvalidInput)?;
-        if hex.len() != 64
+        let mut parts = value.split(':');
+        if parts.next() != Some("hmac-sha256") || parts.next() != Some("v1") {
+            return Err(CommandError::InvalidState);
+        }
+        let id = parts.next().ok_or(CommandError::InvalidState)?;
+        let hex = parts.next().ok_or(CommandError::InvalidState)?;
+        if !valid_key_id(id)
+            || parts.next().is_some()
+            || hex.len() != 64
             || !hex
                 .bytes()
-                .all(|v| v.is_ascii_digit() || (b'a'..=b'f').contains(&v))
+                .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
         {
+            return Err(CommandError::InvalidState);
+        }
+        let mut mac = [0; 32];
+        for (i, v) in mac.iter_mut().enumerate() {
+            *v = u8::from_str_radix(&hex[i * 2..i * 2 + 2], 16)
+                .map_err(|_| CommandError::InvalidState)?;
+        }
+        Ok(Self {
+            key_id: id.to_owned(),
+            mac,
+        })
+    }
+}
+/// Trusted key injection only. No defaults, environment reads, deserialization or Debug.
+/// Reusing a key ID for different bytes is prohibited by the key-management contract.
+pub struct SigningKey {
+    id: String,
+    secret: Vec<u8>,
+}
+impl SigningKey {
+    pub fn new(id: &str, secret: &[u8]) -> Result<Self, CommandError> {
+        if !valid_key_id(id) || secret.len() < 32 || secret.len() > 4096 {
             return Err(CommandError::InvalidInput);
         }
-        let mut out = [0; 32];
-        for (i, v) in out.iter_mut().enumerate() {
-            *v = u8::from_str_radix(&hex[i * 2..i * 2 + 2], 16)
-                .map_err(|_| CommandError::InvalidInput)?;
+        Ok(Self {
+            id: id.to_owned(),
+            secret: secret.to_vec(),
+        })
+    }
+}
+/// Active signing key plus retained verification versions. Keep versions until reviewed
+/// receipt/tombstone cleanup. Missing verification material fails closed, never reruns.
+pub struct FingerprintKeys {
+    active: SigningKey,
+    retained: Vec<SigningKey>,
+}
+impl FingerprintKeys {
+    pub fn new(active: SigningKey, retained: Vec<SigningKey>) -> Result<Self, CommandError> {
+        if retained.len() > 31 {
+            return Err(CommandError::InvalidInput);
         }
-        Ok(Self(out))
+        let mut ids = std::collections::BTreeSet::new();
+        ids.insert(active.id.as_str());
+        if retained.iter().any(|key| !ids.insert(key.id.as_str())) {
+            return Err(CommandError::InvalidInput);
+        }
+        Ok(Self { active, retained })
+    }
+    pub fn sign(&self, request: &CanonicalRequest) -> Result<Fingerprint, CommandError> {
+        let mut mac = Hmac::<Sha256>::new_from_slice(&self.active.secret)
+            .map_err(|_| CommandError::Unavailable)?;
+        mac.update(&request.framed);
+        Ok(Fingerprint {
+            key_id: self.active.id.clone(),
+            mac: mac.finalize().into_bytes().into(),
+        })
+    }
+    pub fn verify(
+        &self,
+        request: &CanonicalRequest,
+        stored: &Fingerprint,
+    ) -> Result<bool, CommandError> {
+        let key = std::iter::once(&self.active)
+            .chain(self.retained.iter())
+            .find(|key| key.id == stored.key_id)
+            .ok_or(CommandError::Unavailable)?;
+        let mut mac =
+            Hmac::<Sha256>::new_from_slice(&key.secret).map_err(|_| CommandError::Unavailable)?;
+        mac.update(&request.framed);
+        Ok(mac.verify_slice(&stored.mac).is_ok())
     }
 }
 struct Sha256Output([u8; 32]);
