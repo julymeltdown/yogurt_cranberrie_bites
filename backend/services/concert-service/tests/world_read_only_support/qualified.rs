@@ -250,7 +250,7 @@ async fn profile_server(pool: PgPool) -> Running {
     }
 }
 
-async fn ticket(
+pub(crate) async fn ticket(
     repo: &PgWorldRepository,
     subject: &WorldSubject,
     room: Uuid,
@@ -283,25 +283,25 @@ async fn ticket(
     Ok(intent)
 }
 
-struct Stack {
+pub(crate) struct Stack {
     auth: PgPool,
-    concert: PgPool,
+    pub(crate) concert: PgPool,
     friend: PgPool,
     profile: PgPool,
     auth_server: Running,
     friend_server: Running,
     profile_server: Running,
-    event: EventId,
-    subject: WorldSubject,
-    room: Uuid,
-    target: Uuid,
-    owners: Arc<ProductionOwners>,
-    bridge: Arc<AdmissionBridge>,
-    anchor: ClockAnchor,
+    pub(crate) event: EventId,
+    pub(crate) subject: WorldSubject,
+    pub(crate) room: Uuid,
+    pub(crate) target: Uuid,
+    pub(crate) owners: Arc<ProductionOwners>,
+    pub(crate) bridge: Arc<AdmissionBridge>,
+    pub(crate) anchor: ClockAnchor,
     started: Instant,
 }
 impl Stack {
-    async fn new() -> anyhow::Result<Self> {
+    pub(crate) async fn new() -> anyhow::Result<Self> {
         let auth = owned::pool("auth").await?;
         let concert = owned::pool("concert").await?;
         let friend_pool = owned::pool("friend").await?;
@@ -417,13 +417,13 @@ impl Stack {
             started,
         })
     }
-    fn repo(&self) -> PgWorldRepository {
+    pub(crate) fn repo(&self) -> PgWorldRepository {
         PgWorldRepository::new(self.concert.clone())
     }
-    fn now(&self) -> u64 {
+    pub(crate) fn now(&self) -> u64 {
         self.started.elapsed().as_millis() as u64
     }
-    async fn finish(self) -> anyhow::Result<()> {
+    pub(crate) async fn finish(self) -> anyhow::Result<()> {
         self.owners.pause().await?;
         drop(self.bridge);
         drop(self.owners);
@@ -449,7 +449,7 @@ use concert_application::{
 };
 use concert_domain::event_lifecycle::{Retention, Step};
 use sqlx::PgConnection;
-struct OperatorFixture;
+pub(crate) struct OperatorFixture;
 #[async_trait]
 impl FencedLifecycleAuthority for OperatorFixture {
     async fn check_in(
@@ -518,20 +518,20 @@ impl LifecycleOwners for WorldComponent {
         })
     }
 }
-fn keys() -> FingerprintKeys {
+pub(crate) fn keys() -> FingerprintKeys {
     FingerprintKeys::new(
         SigningKey::new("world-read-only-fixture", &[93; 32]).unwrap(),
         vec![],
     )
     .unwrap()
 }
-fn start() -> CloseCommand {
+pub(crate) fn start() -> CloseCommand {
     CloseCommand::Start {
         expected_revision: 1,
         reason: "Owned World component validation".into(),
     }
 }
-fn actor(s: &Stack) -> Actor {
+pub(crate) fn actor(s: &Stack) -> Actor {
     Actor {
         actor: s.subject.key.user_id.uuid(),
         event: s.event.uuid(),
@@ -726,16 +726,16 @@ use tokio_tungstenite::{
     tungstenite::{client::IntoClientRequest, Message},
 };
 #[path = "geometry.rs"]
-mod geometry;
+pub(crate) mod geometry;
 #[derive(Clone)]
-struct Trace {
-    native: SocketTransport,
-    paused: Arc<AtomicBool>,
-    waits: Arc<AtomicUsize>,
-    sent: Arc<Mutex<Vec<(Binding, Value, Instant)>>>,
-    hold_user: Arc<Mutex<Option<Uuid>>>,
-    held: Arc<AtomicBool>,
-    release: Arc<AtomicBool>,
+pub(crate) struct Trace {
+    pub(crate) native: SocketTransport,
+    pub(crate) paused: Arc<AtomicBool>,
+    pub(crate) waits: Arc<AtomicUsize>,
+    pub(crate) sent: Arc<Mutex<Vec<(Binding, Value, Instant)>>>,
+    pub(crate) hold_user: Arc<Mutex<Option<Uuid>>>,
+    pub(crate) held: Arc<AtomicBool>,
+    pub(crate) release: Arc<AtomicBool>,
 }
 impl TransportPort for Trace {
     fn installed(&mut self, b: &Binding, n: u64) -> Result<(), WriteError> {

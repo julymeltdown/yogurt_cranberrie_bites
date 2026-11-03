@@ -1,0 +1,26 @@
+{
+  "round": 3,
+  "checkpoint": "Current revision, published follow-up to f4619879; retained highest-scoring reviewed version",
+  "art_director": {
+    "WORLD": 6.5,
+    "MAP": 6.0
+  },
+  "spatial_specialist": {
+    "WORLD": 6.6,
+    "MAP": 6.4
+  },
+  "per_design_panel": {
+    "WORLD": 6.5,
+    "MAP": 6.0
+  },
+  "set_panel": 6.0,
+  "pass_threshold": 8.5,
+  "passed": false,
+  "limits": [
+    "Remaining density, venue architecture, softer textures and stronger map hierarchy.",
+    "No further rendered change after final scored version.",
+    "Runtime/server/other skins not evaluated."
+  ],
+  "retained": "Round3 has highest setpanel; no restoration required.",
+  "report": "Visual target acceptance remains IN_PROGRESS. Stable source proposal is independently validated and may be handed to implementation owners."
+}

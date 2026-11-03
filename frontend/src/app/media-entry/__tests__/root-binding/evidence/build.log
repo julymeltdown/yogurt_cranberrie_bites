@@ -1,0 +1,66 @@
+vite v8.1.3 building client environment for production...
+[2Ktransforming...✓ 451 modules transformed.
+
+(!) outDir /tmp/mcr-root-media-build is not inside project root and will not be emptied.
+Use --emptyOutDir to override.
+
+rendering chunks...
+computing gzip size...
+../../../../../tmp/mcr-root-media-build/index.html                                  1.34 kB │ gzip:   0.55 kB
+../../../../../tmp/mcr-root-media-build/assets/RootMediaView-BdfnIHbK.css           0.55 kB │ gzip:   0.25 kB
+../../../../../tmp/mcr-root-media-build/assets/panels-BN_4I1Xa.css                  0.87 kB │ gzip:   0.39 kB
+../../../../../tmp/mcr-root-media-build/assets/ProfileIcon-C5jlMgdD.css             1.36 kB │ gzip:   0.59 kB
+../../../../../tmp/mcr-root-media-build/assets/safety-BViJNTBJ.css                  1.51 kB │ gzip:   0.56 kB
+../../../../../tmp/mcr-root-media-build/assets/root-features-nb6jl9cq.css           1.55 kB │ gzip:   0.65 kB
+../../../../../tmp/mcr-root-media-build/assets/meeting-entry-jVy7UCgi.css           1.58 kB │ gzip:   0.66 kB
+../../../../../tmp/mcr-root-media-build/assets/social-BMiG3aQa.css                  1.71 kB │ gzip:   0.71 kB
+../../../../../tmp/mcr-root-media-build/assets/composition-C7uV5nlu.css             3.55 kB │ gzip:   1.13 kB
+../../../../../tmp/mcr-root-media-build/assets/world-panels-CH3wTtvz.css           13.47 kB │ gzip:   3.51 kB
+../../../../../tmp/mcr-root-media-build/assets/provider-DprRFUma.css               14.46 kB │ gzip:   3.38 kB
+../../../../../tmp/mcr-root-media-build/assets/social-composition-BptHfI5j.css     15.11 kB │ gzip:   3.74 kB
+../../../../../tmp/mcr-root-media-build/assets/CommunityFeatures-CtYOQD37.css      17.33 kB │ gzip:   3.90 kB
+../../../../../tmp/mcr-root-media-build/assets/PublicBoundary-D0zCkIa6.css         18.15 kB │ gzip:   4.25 kB
+../../../../../tmp/mcr-root-media-build/assets/index-farIHVCP.css                  27.51 kB │ gzip:   5.98 kB
+../../../../../tmp/mcr-root-media-build/assets/rolldown-runtime-Bh1tDfsg.js         0.56 kB │ gzip:   0.36 kB
+../../../../../tmp/mcr-root-media-build/assets/identity-D3j6ut_V.js                 0.70 kB │ gzip:   0.45 kB
+../../../../../tmp/mcr-root-media-build/assets/compatibility-D87CLDIt.js            0.84 kB │ gzip:   0.40 kB
+../../../../../tmp/mcr-root-media-build/assets/phaser-C-L-RzyC.js                   1.19 kB │ gzip:   0.62 kB
+../../../../../tmp/mcr-root-media-build/assets/preload-helper-CZgWQFsJ.js           1.25 kB │ gzip:   0.70 kB
+../../../../../tmp/mcr-root-media-build/assets/AdminBoundary-BOemcPl6.js            1.34 kB │ gzip:   0.67 kB
+../../../../../tmp/mcr-root-media-build/assets/Tabs-DuKw1W9G.js                     1.40 kB │ gzip:   0.68 kB
+../../../../../tmp/mcr-root-media-build/assets/authority-BFRDfkGT.js                2.68 kB │ gzip:   1.17 kB
+../../../../../tmp/mcr-root-media-build/assets/contract-DcaKwr0K.js                 2.98 kB │ gzip:   1.33 kB
+../../../../../tmp/mcr-root-media-build/assets/simulation-sCcriVKG.js               3.15 kB │ gzip:   1.27 kB
+../../../../../tmp/mcr-root-media-build/assets/resolver-KG_WzX3K.js                 4.30 kB │ gzip:   2.03 kB
+../../../../../tmp/mcr-root-media-build/assets/RootMediaView-CnRoji2s.js            4.65 kB │ gzip:   2.05 kB
+../../../../../tmp/mcr-root-media-build/assets/panel-u8SKdnFP.js                    4.67 kB │ gzip:   1.91 kB
+../../../../../tmp/mcr-root-media-build/assets/panels-r2jRY6rG.js                   5.29 kB │ gzip:   1.99 kB
+../../../../../tmp/mcr-root-media-build/assets/MapScene-CsZyQbda.js                 9.49 kB │ gzip:   3.80 kB
+../../../../../tmp/mcr-root-media-build/assets/resources-DBOcdWuE.js               10.80 kB │ gzip:   4.29 kB
+../../../../../tmp/mcr-root-media-build/assets/schema-RIsVhCwq.js                  10.83 kB │ gzip:   2.65 kB
+../../../../../tmp/mcr-root-media-build/assets/ProfileIcon-heepbDWk.js             11.87 kB │ gzip:   4.68 kB
+../../../../../tmp/mcr-root-media-build/assets/root-features-tkOVYc5Q.js           14.79 kB │ gzip:   4.90 kB
+../../../../../tmp/mcr-root-media-build/assets/source-catalog-B2GN78SH.js          15.97 kB │ gzip:   4.30 kB
+../../../../../tmp/mcr-root-media-build/assets/contract-B8zcs2LW.js                28.04 kB │ gzip:   6.20 kB
+../../../../../tmp/mcr-root-media-build/assets/social-BK9QZe0C.js                  34.95 kB │ gzip:  10.21 kB
+../../../../../tmp/mcr-root-media-build/assets/provider-zxexTyMc.js                36.86 kB │ gzip:  11.47 kB
+../../../../../tmp/mcr-root-media-build/assets/meeting-entry-Bp1slQqP.js           37.36 kB │ gzip:  10.43 kB
+../../../../../tmp/mcr-root-media-build/assets/PublicBoundary-CAOhNHw5.js          45.50 kB │ gzip:  14.15 kB
+../../../../../tmp/mcr-root-media-build/assets/composition-Cs8ryKwX.js             50.18 kB │ gzip:  16.94 kB
+../../../../../tmp/mcr-root-media-build/assets/schemas-B9zUvP7H.js                 66.99 kB │ gzip:  17.93 kB
+../../../../../tmp/mcr-root-media-build/assets/CommunityFeatures-DKXJlWjv.js       68.30 kB │ gzip:  18.74 kB
+../../../../../tmp/mcr-root-media-build/assets/world-panels-BNtqDOX-.js            70.26 kB │ gzip:  22.79 kB
+../../../../../tmp/mcr-root-media-build/assets/errors-BMGg8byu.js                  85.41 kB │ gzip:   5.95 kB
+../../../../../tmp/mcr-root-media-build/assets/social-composition-B9JUViup.js      94.02 kB │ gzip:  26.44 kB
+../../../../../tmp/mcr-root-media-build/assets/routes-esT69xcs.js                 105.47 kB │ gzip:  34.82 kB
+../../../../../tmp/mcr-root-media-build/assets/mcr-core.openapi-BTwes0QT.js       126.29 kB │ gzip:  12.56 kB
+../../../../../tmp/mcr-root-media-build/assets/index-DuxylsYI.js                  341.57 kB │ gzip: 105.12 kB
+../../../../../tmp/mcr-root-media-build/assets/mcr-domain.openapi-CbO9FwOW.js     760.84 kB │ gzip:  49.27 kB
+../../../../../tmp/mcr-root-media-build/assets/phaser-DVTuvjT6.js               1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 886ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

@@ -1,0 +1,48 @@
+syntax = "proto3";
+package profile.concert_public.v1;
+
+// Internal Concert-only owner read. This is neither admission nor a public DTO.
+service ConcertPublicProfileService {
+  rpc ReadCurrent(PublicProfileReadRequest) returns (PublicProfileObservation);
+  rpc Check(PublicProfileGuardRequest) returns (PublicProfileGuardReply);
+  rpc Complete(PublicProfileGuardRequest) returns (PublicProfileGuardReply);
+}
+enum PublicProfilePurpose {
+  PUBLIC_PROFILE_PURPOSE_UNSPECIFIED = 0;
+  PUBLIC_PROFILE = 1;
+}
+message PublicProfileReadRequest {
+  string actor_id = 1;
+  string event_id = 2;
+  string subject_id = 3;
+  string session_family_id = 4;
+  string request_id = 5;
+  PublicProfilePurpose purpose = 6;
+  int64 expires_unix_micros = 7;
+}
+// Only current, PUBLIC, nondeleted Profile-owned content. No avatar or Auth facts.
+message PublicProfileObservation {
+  string subject_id = 1;
+  string display_name = 2;
+  optional string bio = 3;
+  int64 observed_at_unix_micros = 4;
+  string actor_id = 5;
+  string event_id = 6;
+  string session_family_id = 7;
+  string request_id = 8;
+  string child_id = 9;
+  string completion_secret = 10;
+}
+// Control is actor/event/subject/family/request bound. Check never releases.
+message PublicProfileGuardRequest {
+  string actor_id = 1;
+  string event_id = 2;
+  string subject_id = 3;
+  string session_family_id = 4;
+  string request_id = 5;
+  PublicProfilePurpose purpose = 6;
+  int64 expires_unix_micros = 7;
+  string child_id = 8;
+  string completion_secret = 9;
+}
+message PublicProfileGuardReply { bool held = 1; }

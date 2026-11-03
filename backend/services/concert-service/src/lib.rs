@@ -18,3 +18,5 @@ pub mod world_rpc;
 pub mod community;
 
 pub mod event_lifecycle;
+
+pub mod participant;

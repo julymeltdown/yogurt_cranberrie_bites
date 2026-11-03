@@ -6,6 +6,7 @@ use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
 use std::{fmt, time::Duration};
 use uuid::Uuid;
 pub mod grpc;
+pub mod invalidation;
 pub(crate) mod world_auth;
 pub(crate) mod world_projection;
 pub const BUDGET: Duration = Duration::from_secs(2);
