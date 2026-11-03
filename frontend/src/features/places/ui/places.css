@@ -79,4 +79,4 @@
 .places-map-full .places-map-sheet p { font-size: 13px; line-height: 1.4; margin-block: 4px; }
 .places-map-full .places-map-search { display: grid; gap: 4px; margin-top: 8px; font-size: 14px; font-weight: 700; }
 .places-map-full .places-map-search input { min-height: 44px; width: 100%; border: 1px solid #655642; background: #fff8e9; font-size: 16px; padding: 6px; }
-@media (max-height: 500px) { .places-map-full .places-map-caption { display: none; } .places-map-full .places-map-zoom { bottom: 54px; right: 4px; } }
+@media (max-height: 500px) { .places-map-full .places-map-caption { display: none; } .places-map-full .places-map-zoom { top: 8px; bottom: auto; right: 4px; } }

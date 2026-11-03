@@ -32,8 +32,10 @@ export function IllustratedMap({ controller, state, fallback, legend }: {
   const [scroll, setScroll] = useState({ left: 0, top: 0 })
   const ready = loaded === image.imageUrl && failed !== image.imageUrl
   const baseWidth = Math.max(size.width, size.height * image.width / image.height)
-  const scale = baseWidth * zoom / image.width, width = image.width * scale, height = image.height * scale
   const minZoom = Math.min(1, size.width / baseWidth)
+  // A shorter viewport changes the fit bound; retain a valid local zoom after resize.
+  const effectiveZoom = clamp(zoom, minZoom, 3)
+  const scale = baseWidth * effectiveZoom / image.width, width = image.width * scale, height = image.height * scale
   const current = items.find(p => p.place_id === selected)
   const supported = !!current && current.closure_state === 'OPEN' && !state.unavailablePlaceIds.includes(current.place_id)
   const target = supported ? map.geometry.interactions.find(p => p.place_id === selected) : null
@@ -110,8 +112,8 @@ export function IllustratedMap({ controller, state, fallback, legend }: {
       </div>
     </div>
     <div className="places-map-zoom" aria-label="Map view zoom">
-      <button type="button" aria-label="Zoom in map view" disabled={zoom >= 3 || !ready} onClick={() => setZoom(z => clamp(z + .25, minZoom, 3))}>+</button>
-      <button type="button" aria-label="Zoom out map view" disabled={zoom <= minZoom || !ready} onClick={() => setZoom(z => clamp(z - .25, minZoom, 3))}>−</button>
+      <button type="button" aria-label="Zoom in map view" disabled={effectiveZoom >= 3 || !ready} onClick={() => setZoom(clamp(effectiveZoom + .25, minZoom, 3))}>+</button>
+      <button type="button" aria-label="Zoom out map view" disabled={effectiveZoom <= minZoom || !ready} onClick={() => setZoom(clamp(effectiveZoom - .25, minZoom, 3))}>−</button>
     </div>
     <div className="places-map-caption" role="status">{current ? `${current.label} · ${supported ? 'virtual target selected' : physicalStatus(current)}` : 'Virtual map · select a landmark'}<span>No physical arrival is implied.</span></div>
     <div className="places-map-tools">

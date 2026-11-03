@@ -12,7 +12,7 @@ export function layoutPlaques(anchors: readonly PlaqueAnchor[], view: { left: nu
     const minY = view.top + 32, maxY = Math.max(minY, Math.min(worldHeight, view.top + view.height) - 32)
     let y = clamp(point.y, minY, maxY)
     for (let pass = 0; pass <= placed.length; pass++) {
-      const collision = placed.find(p => Math.abs(p.x - x) < 144 && Math.abs(p.y - y) < 64)
+      const collision = placed.find(p => Math.abs(p.x - x) < 140 && Math.abs(p.y - y) < 64)
       if (!collision) break
       const below = collision.y + 64
       y = below <= maxY ? below : clamp(collision.y - 64, minY, maxY)
