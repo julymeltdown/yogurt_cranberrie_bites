@@ -13,11 +13,20 @@ anyhow.workspace = true
 async-trait.workspace = true
 axum.workspace = true
 chrono.workspace = true
+prost.workspace = true
+serde.workspace = true
 serde_json.workspace = true
 sha2.workspace = true
 sqlx.workspace = true
 tokio.workspace = true
+tonic.workspace = true
+tonic-prost.workspace = true
 uuid.workspace = true
+
+[build-dependencies]
+contracts-build = { path = "../../crates/contracts-build" }
+protoc-bin-vendored = "3.1.0"
+tonic-prost-build.workspace = true
 
 [dev-dependencies]
 tower.workspace = true

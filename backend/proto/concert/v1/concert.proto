@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package concert.v1;
+
+// Internal Gateway assertion, never accepted directly from a browser. The
+// existing Ed25519 actor delegation signs the exact protobuf body and RPC path;
+// Concert additionally requires the authenticated Gateway workload and actor.
+// No bearer, email, provider subject, private Profile field or caller role enters
+// this message. Gateway constructs it only after fresh Auth and Profile reads.
+message BootstrapRequest {
+  string user_id = 1;
+  string event_id = 2;
+  string session_family_id = 3;
+  // Effective original request/JWT/owner-read bound. Never a fresh RPC lifetime.
+  int64 authority_expires_unix_micros = 4;
+  int64 auth_observed_at_unix_micros = 5;
+  int64 profile_observed_at_unix_micros = 6;
+  string display_name = 7;
+  optional string bio = 8;
+  string request_id = 9;
+  // Exactly GET /api/concert/events/{event_id}/bootstrap, with no query/body.
+  string http_method = 10;
+  string http_target = 11;
+}
+
+message BootstrapResponse {
+  // Frozen C03 Bootstrap JSON; no second public DTO or competing contract.
+  // The producer validates its configured C06 release before creating defaults.
+  bytes bootstrap_json = 1;
+}
+
+service ConcertService {
+  // Idempotent participant/default creation with current event restriction and
+  // phase checks in the same transaction. No permission from Profile existence.
+  rpc Bootstrap(BootstrapRequest) returns (BootstrapResponse);
+}

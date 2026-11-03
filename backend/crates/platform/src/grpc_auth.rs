@@ -20,16 +20,18 @@ pub enum Workload {
     Profile,
     Friend,
     Notification,
+    Concert,
 }
 
 impl Workload {
-    pub const ALL: [Workload; 6] = [
+    pub const ALL: [Workload; 7] = [
         Workload::Gateway,
         Workload::Auth,
         Workload::Post,
         Workload::Profile,
         Workload::Friend,
         Workload::Notification,
+        Workload::Concert,
     ];
 
     /// Stable wire identifier. Lowercase and ASCII so it satisfies HTTP/2 metadata.
@@ -41,6 +43,7 @@ impl Workload {
             Workload::Profile => "profile",
             Workload::Friend => "friend",
             Workload::Notification => "notification",
+            Workload::Concert => "concert",
         }
     }
 
@@ -52,6 +55,7 @@ impl Workload {
             "profile" => Some(Workload::Profile),
             "friend" => Some(Workload::Friend),
             "notification" => Some(Workload::Notification),
+            "concert" => Some(Workload::Concert),
             _ => None,
         }
     }

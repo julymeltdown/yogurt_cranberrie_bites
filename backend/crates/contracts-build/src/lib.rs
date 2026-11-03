@@ -54,3 +54,7 @@ pub fn source_post_include_dir() -> PathBuf {
 pub fn source_authority_proto() -> PathBuf {
     proto_root().join("authority/v1/authority.proto")
 }
+
+pub fn source_concert_proto() -> PathBuf {
+    proto_root().join("concert/v1/concert.proto")
+}
