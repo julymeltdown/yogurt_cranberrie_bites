@@ -174,3 +174,63 @@ Both feature suites: **23 passed**, exit 0. Updated native browser receipts and
 source hashes at all four widths: exit 0. Typecheck: exit 0. This follow-up changes
 only the two owned party features and this document; FE25 remains an uncommitted
 separate increment at this checkpoint.
+
+## FE25 bounded handoff — 2026-11-04
+
+Status **MOCK_READY**. Parent `58e18ab`, original source/candidate base `f0e44bd`.
+Exact changes: `frontend/src/features/giveaway-authoring/**` and this document.
+All UI/controller/validation is newly authored; only existing React/RHF/Zod,
+canonical Auth/privacy, FE24 public types and the owned FE22 closed-schema
+interpreter are used. No source archive, contracts, locks, shared media/transport,
+backend or root route changes.
+
+Exports: `createGiveawayAuthoring`, `GiveawayAuthoring`, `GiftDraft`, typed
+`QualifiedImagePort`, `QualifiedPickupMeeting` and options. New creates send only
+C04 CreateGiveaway fields and require DRAFT response. Owner management reads
+validate owner/event/giveaway and reservation context, stock equation, partial
+page counter bounds and duplicate IDs. Total quantity cannot undercut reserved
+plus claimed inventory; outstanding reservations prevent window/place edits.
+Independent reservation continuation rejects changed stock revisions. Version
+conflicts keep the form and require explicit reread/rebase. Pause/completion/
+cancellation are the frozen UpdateGiveaway state field; cancellation requires
+explicit acknowledgement. Current capability checks fail closed.
+
+The structural image seam matches the FE04 owner's published ImageUploadPort
+subset. It is an injected port, not a local upload transport. Only a current
+scope, GIVEAWAY-purpose READY attachment passing C04 Media validation and exact
+same-event media path is attached. Upload failure/missing port never pretends
+media exists. Text-only drafts send `image_media_id=null`; optional blob preview
+comes only from the qualified ephemeral upload port. Privacy cleanup cancels the
+upload and clears saved forms/inventory. Session drafts restore text/form values
+only, not an old upload attachment.
+
+An optional qualified pickup-meeting read/subscribe port enables the existing
+`setConcertPickupMeeting` operation, with an explicit physical acknowledgement.
+The projection must already carry reviewed place/map/instruction authority and
+current scope/expiry; the controller never creates that authority. Missing port
+shows an honest publication prerequisite. Server authorization, instruction
+validation and lifecycle invariants remain authoritative. Owner reservation-row
+callback allows delivery to wire the separate FE26 claim journey.
+
+Unknown writes lock the form and use original-key receipt recovery. Successful
+save/receipt requires an authorized management reread at least as new as the
+confirmed result revision. Server errors preserve form; owner denial evicts it.
+Draft restore is memory-only. No photo, token, code or physical instruction is
+persisted by this feature.
+
+Validation, all exit **0**:
+
+- `pnpm --dir frontend test src/features/giveaway-authoring`: **8 passed**.
+- `pnpm --dir frontend typecheck` and `build`: passed (existing bundle warning).
+- scoped Oxlint: passed with no warnings; `git diff --check`: passed.
+- Native `giveaway-authoring/__tests__/browser-smoke.mjs`: Chromium
+  156.0.8078.80, widths 360/390/430/1280. Checks loaded edit values, honest absent
+  upload, stock-conflict form preservation, explicit rebase, uncertain-write
+  lock, owner inventory, logout eviction, no overflow/browser errors. Evidence
+  and source hashes: `giveaway-authoring/__tests__/evidence/browser/`.
+
+An initial test-fixture relative import and a TypeScript JSON structural type
+were corrected before the passing checks. Backend/public upload and owner routes,
+actual BE24/FE04 upload integration, FE20/live physical instruction projection,
+shell routing, real stock races, devices and IN02 remain **NOT_RUN**. FE26 remains
+active and is the next bounded increment.

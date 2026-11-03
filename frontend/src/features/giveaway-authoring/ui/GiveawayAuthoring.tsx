@@ -1,0 +1,35 @@
+import {useEffect,useSyncExternalStore} from 'react'
+import {useForm} from 'react-hook-form'
+import {zodResolver} from '@hookform/resolvers/zod'
+import {giftDraftSchema,type GiftDraft} from '../model/contract'
+import type {GiveawayAuthoringController} from '../model/controller'
+import './giveaway-authoring.css'
+export function GiveawayAuthoring({controller,editing=false,onReservation}:{controller:GiveawayAuthoringController;editing?:boolean;onReservation?:(id:string)=>void}){
+ const s=useSyncExternalStore(controller.subscribe,controller.read,controller.read)
+ useEffect(()=>{if(editing)void controller.loadLatest()},[controller,editing])
+ if(!s.access||s.phase==='denied')return <section className="giveaway-authoring"><h1>Giveaway owner tools unavailable</h1><p>Current owner access is required.</p></section>
+ return <GiftForm key={s.epoch} controller={controller} editing={editing} {...onReservation?{onReservation}:{}}/>
+}
+function GiftForm({controller,editing,onReservation}:{controller:GiveawayAuthoringController;editing:boolean;onReservation?:((id:string)=>void)}){
+ const s=useSyncExternalStore(controller.subscribe,controller.read,controller.read),u=controller.image()
+ const{register,reset,getValues,handleSubmit,formState:{errors}}=useForm<GiftDraft>({resolver:zodResolver(giftDraftSchema),defaultValues:s.draft})
+ useEffect(()=>{reset(controller.read().draft)},[controller,reset,s.epoch,s.gift?.giveaway_id])
+ const locked=!controller.canWrite()||!['idle','failed','conflict'].includes(s.phase),labels={title:'Item title',description:'Description',quantity_total:'Total quantity',pickup_starts_at:'Pickup start (UTC)',pickup_ends_at:'Pickup end (UTC)'}
+ const field=(name:keyof typeof labels)=><label key={name}>{labels[name]}<input aria-label={labels[name]} type={name==='quantity_total'?'number':'text'} {...register(name,name==='quantity_total'?{valueAsNumber:true}:{})} aria-invalid={!!errors[name]}/>{errors[name]&&<span role="alert">{errors[name].message}</span>}</label>
+ return <section className="giveaway-authoring"><header><p>GIFTS / OWNER TOOLS</p><h1>{editing||s.gift?'Make something worth sharing':'Start a giveaway'}</h1><p>Create a draft, then publish when the pickup plan is ready. Times use UTC; Seoul is UTC+9.</p></header>
+ <form noValidate onChange={()=>controller.edit(getValues())} onSubmit={handleSubmit(d=>controller.submit(d))}><fieldset disabled={locked}><legend>Item and pickup window</legend>{field('title')}{field('description')}{field('quantity_total')}{field('pickup_starts_at')}{field('pickup_ends_at')}
+ <label>Public pickup place<select aria-label="Public pickup place" {...register('public_place_id')}><option value="">Choose a qualified place</option>{controller.places().map(p=><option value={p.id} key={p.id}>{p.label}</option>)}</select>{errors.public_place_id&&<span role="alert">Choose a qualified place.</span>}</label>
+ {s.gift&&<label>Publication state<select aria-label="Publication state" {...register('state')}><option value="DRAFT">Draft</option><option value="OPEN">Open reservations</option><option value="PAUSED">Paused</option><option value="CLOSED">Completed</option><option value="CANCELLED">Cancelled</option></select></label>}</fieldset>
+ <section aria-label="Giveaway photo"><h2>Photo</h2>{!controller.hasUpload()?<p>Image upload is unavailable. You can save a text-only draft.</p>:<><label>Choose an image<input aria-label="Choose an image" type="file" accept="image/jpeg,image/png,image/webp" disabled={locked} onChange={e=>{const file=e.target.files?.[0];if(file)void controller.selectImage(file)}}/></label><p>{u?.phase==='ready'?'Qualified image ready':u?.phase==='uncertain'?'Image outcome unknown. Check its status.':u?.phase==='failed'?'Image upload failed. Your form is preserved.':u?.phase==='prepared'?'Image prepared. Upload to attach.':'No new qualified image attached.'}</p><button type="button" disabled={locked||u?.phase!=='prepared'} onClick={()=>void controller.uploadImage()}>Upload image</button>{u?.previewUrl?.startsWith('blob:')&&<img src={u.previewUrl} alt="Selected giveaway preview"/>}{u?.phase==='uncertain'&&<button type="button" onClick={()=>void controller.recoverImage()}>Check image status</button>}</>}
+ <button type="button" disabled={locked} onClick={()=>controller.removeImage()}>Use no photo</button></section>
+ {s.gift&&<label><input type="checkbox" checked={s.confirmCancel} disabled={locked} onChange={e=>{controller.confirmCancel(e.target.checked)}}/>I confirm cancellation will revoke outstanding pickup access.</label>}
+ <div className="giveaway-authoring-actions"><button type="submit" disabled={locked||s.phase==='conflict'||!controller.places().length}>{s.gift?'Save giveaway changes':'Create giveaway draft'}</button><button type="button" disabled={locked} onClick={()=>{controller.edit(getValues());controller.saveDraft()}}>Save session draft</button><button type="button" disabled={locked||!s.saved} onClick={()=>controller.restoreDraft()}>Restore draft</button></div></form>
+ <p role="status" aria-live="polite">{s.message}</p>
+ {s.phase==='succeeded'&&<button onClick={()=>controller.continueEditing()}>Continue editing current giveaway</button>}
+ {['failed','conflict'].includes(s.phase)&&s.gift&&<button onClick={()=>void controller.loadLatest()}>Read latest stock and settings</button>}
+ {s.latest&&<section><h2>Current server version</h2><p>{s.latest.title} · revision {s.latest.revision} · {s.latest.available} available</p><button onClick={()=>controller.keepDraftWithLatest()}>Keep my form with this revision</button></section>}
+ {['pending','uncertain'].includes(s.phase)&&<button onClick={()=>void controller.checkStatus()} disabled={s.retryAt>Date.now()}>Check original command</button>}
+ {s.management&&<section aria-label="Owner inventory"><h2>Inventory and reservations</h2><p>{s.management.giveaway.available} available · {s.management.reserved_unclaimed} reserved · {s.management.quantity_claimed} claimed</p><div className="giveaway-table-scroll"><table><caption>Authorized reservation page</caption><thead><tr><th>Reservation</th><th>State</th><th>Expiry (UTC)</th>{onReservation&&<th>Pickup</th>}</tr></thead><tbody>{s.management.reservations.map((r,i)=><tr key={r.reservation_id}><td>Reservation {i+1}</td><td>{r.state}</td><td>{r.expires_at}</td>{onReservation&&<td><button onClick={()=>onReservation(r.reservation_id)}>Open pickup {i+1}</button></td>}</tr>)}</tbody></table></div>{s.management.next_cursor&&<button disabled={locked} onClick={()=>void controller.moreReservations()}>More reservations</button>}</section>}
+ {s.gift&&<section><h2>Private pickup instructions</h2><p>{controller.meeting()?'A current qualified physical pickup plan is available.':'A qualified pickup plan is unavailable. Configure reviewed instructions before publication.'}</p><button disabled={locked||!controller.meeting()} onClick={()=>void controller.setMeeting(true)}>Confirm and save qualified physical pickup plan</button></section>}
+ </section>
+}

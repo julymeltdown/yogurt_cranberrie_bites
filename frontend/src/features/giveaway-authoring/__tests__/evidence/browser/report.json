@@ -1,0 +1,29 @@
+{
+  "result": "PASS",
+  "scope": "FE25 isolated C04 fixture/native UI via canonical auth/privacy. No production upload/backend/device or IN02 acceptance.",
+  "widths": [
+    360,
+    390,
+    430,
+    1280
+  ],
+  "sourceHashes": {
+    "model/controller.ts": "472b7e2adfedcfeb00053497a19a2ddcb08ceb35122ed24923c37a24ca837462",
+    "model/contract.ts": "b0211f60a68ce990b0e8aca7b4ed8514640c73797a67c1cf4347e3b81a3f2315",
+    "ui/GiveawayAuthoring.tsx": "86427688d1bf5dace4e2f67d2ab9ee66814c4172849b751e4279a82cb6583dab",
+    "ui/giveaway-authoring.css": "e68ef83c4a15c752b9c5bb0688b500078bc8f643cf7fe83d6e24c083957abc83",
+    "__tests__/harness.ts": "20f02805d7368ec9b5d9af699744f0a8b98a8b5c0a5469937a98761c3c294596",
+    "__tests__/preview.tsx": "aa86b447527786e29955d781978bfb822b5b2cb6e1f55559e08b4bb5387f4b0c"
+  },
+  "browser": "156.0.8078.80",
+  "checks": [
+    "loaded edit values",
+    "missing upload honest",
+    "stock conflict keeps form",
+    "explicit rebase keeps edits",
+    "unknown write locks resubmit",
+    "authorized inventory shown",
+    "logout scrubs draft and inventory",
+    "no horizontal overflow or browser errors"
+  ]
+}
