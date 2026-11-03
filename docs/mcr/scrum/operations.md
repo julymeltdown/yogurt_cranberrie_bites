@@ -13,6 +13,14 @@ remains NOT_RUN until its separate live journey is executed.
   `01a19e5c-e9c6-7973-a53b-a6d19141620f`.
 - Wall/operations coordination: `01a1a21d-39ec-7912-84cb-910058e7a110`.
   Main and scrum leads are not mandatory review or approval gates.
+- Latest direct human policy, relayed by both kings and verified in
+  `origin/master` AGENTS.md at `d8f9f9ac`, permits exclusive scoped owners to
+  validate, commit, and publish new scoped checkpoints directly to master.
+  Fetch/reconcile peer history, run affected checks, preserve scope, verify
+  remote ancestry, and never force-push. Kings are not mandatory publishers or
+  per-commit reviewers. Shared-contract and frontend-root ownership stays
+  unchanged. Already handed-off Wall/root patches on frontend king's branch
+  are published once by that king; their former authors must not duplicate them.
 - All three current lane checkouts started at
   `f837bef676cd26869c26c172a699a91b7842d832`. This coordinator writes only this
   document in `codex/mcr-sl-wall-reference`, isolated checkout
@@ -43,8 +51,9 @@ chat snapshots. Sending an assignment alone was not treated as acceptance.
 No implicit grant covers controllers, input logic, HTTP adapters, contracts,
 existing tests, root composition, shared UI/styles, manifests, lockfiles, art,
 backend code, or another worker checkout. Extra paths require an exact transfer
-from their owner. Only the designated frontend integrator publishes these
-patches to master, serially with relevant combined checks.
+from their owner. Frontend king publishes the already-integrated Wall/root
+patches once; new scoped follow-ups may be published by their exclusive owners
+with the latest direct-publication safeguards above.
 
 ## Delivery behavior and evidence still required
 
@@ -154,6 +163,18 @@ The coordinator verified 7,769,484 KiB free and notified both resource owners.
 QA removed only its stopped 21 MiB cache, preserving its 3.1 MiB evidence.
 Final behavior qualification and QA committed handoff remain pending; no
 application failure or independent full-fidelity acceptance is inferred.
+
+The corrected independent candidate subsequently passed all 360/390/430
+interaction probes with no runtime errors. Its report records actual served
+pin `832c7de9`, shared presentation base `f837bef`, no root override, all three
+loaded pinned paths, and structural label `MEETS_STRUCTURAL_GEOMETRY_CHECKS`.
+Checks include every authoritative RGBA cell, all palette colors and keyboard
+access, physical corner/margin hit testing, genuine pan/zoom raster changes,
+explicit one-POST confirmation, fixture cooldown, pending/unknown original-key
+GET-only resolution, and paused/frozen/read-only states. Native imagery remains
+deterministic test content; exact full-photo fidelity, combined root route,
+real devices and IN04 are not certified. QA is finishing its committed report
+and qualified publication receipt; its original broader IN04 goal stays BLOCKED.
 
 ## Shared shell seam and production dependencies
 
