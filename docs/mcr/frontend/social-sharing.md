@@ -1,6 +1,6 @@
 # FE31 private social sharing
 
-Status: **IN_PROGRESS** through concrete review fixes and independent recheck. C04 contract binding is **CONTRACT_READY**. Independent QA found eight defects in nine probes against `310dd65`; its in-flight access-loss control passed. The fixes below have current local regression evidence, while the independent nine-probe recheck remains pending. Root composition, real gateway, multiuser privacy, device, QA04 and IN03 acceptance are **NOT_RUN**. This document does not accept FE31 or the social gate.
+Status: bounded client implementation, review fixes and isolated evidence are **MOCK_READY**, with C04 contract binding **CONTRACT_READY**. Independent QA found eight defects in nine probes against `310dd65`, then passed the same nine probes on fixed source `61136cd`. Its separate affected-feature run passed75/75. The committed independent report is `981b399`, referenced below. Root composition, real gateway, multiuser privacy, device, QA04 and IN03 acceptance are **NOT_RUN**. This document does not accept FE31 or the social gate.
 
 ## Ownership and provenance
 
@@ -72,7 +72,7 @@ Remaining product qualification: integrator-owned U04/U05/current-introduction/d
 
 ## Review fixes after 310dd65
 
-The sole independent reader is the same QA chat `01a1a204-c583-7670-965a-4891b8b1289e`. Its original `/tmp/mcr-fe31-qa.a62uiW/probes.test.ts` has nine probes: eight failures and the R4 access-loss control passing on310dd65. No QA report or probe was edited by this implementation owner. The fixed-source recheck is assigned separately; local regression success does not substitute for it.
+The sole independent reader is the same QA chat `01a1a204-c583-7670-965a-4891b8b1289e`. Its original `/tmp/mcr-fe31-qa.a62uiW/probes.test.ts` has nine probes: eight failures and the R4 access-loss control passing on310dd65. No QA report or probe was edited by this implementation owner. The same reader independently rechecked61136cd; local regression success was not substituted for that recheck.
 
 | QA item | Owned fix and retained regression |
 | --- | --- |
@@ -101,4 +101,8 @@ The source-fix commit is `61136cdc10a82a74bd0288a5f0b443a9cf2c4696`, a direct ch
 
 Fixed-source browser proof was refreshed with the unchanged owned runner on an ephemeral port and a new Chromium process/context. No other project's server or profile was reused or stopped. Command from `frontend/`: pinned `node src/features/social-sharing/__tests__/browser-smoke.mjs`, exit0, Chrome156.0.8078.80. All360/390/430 widths passed, each with33 native same-origin requests,7 writes and3 explicit reveals. The refreshed report's source hashes match61136cd. The screenshot files are byte-identical to the previous synthetic captures; no new artwork or private user data was introduced. The isolated actual-feature Vite build also passed exit0 on61136cd, with only the existing large-chunk advisory.
 
-These current source/build/browser receipts cover the owned client fixes and fixture flows. The same QA's independent nine-probe recheck remains required before this bounded goal is complete; the historical8FAIL/1PASS result is not represented as resolved by local evidence alone.
+These current source/build/browser receipts cover the owned client fixes and fixture flows. Independent `/tmp/mcr-fe31-qa.a62uiW/fixed-results.json` was inspected directly: success=true,9 total,9 passed,0 failed. The unchanged probe SHA-256 is `4868302feb9f700cc737c309432c35c73bda79d65c5a68b4ae7c6525555d8feb`. All R1–R9 assertions passed; R3 needed no readiness-wait or private-data assertion adaptation. The independent reader also reported its75/75 affected-feature run exit0 and no remaining concrete findings in this targeted scope. The historical8FAIL/1PASS result remains preserved in its report; these are bounded client checks, not live authorization acceptance.
+
+Final independent report: [FE31 receipt and privacy review](../reviews/fe31-receipt-privacy.md), committed as `981b399a3d089c2bbc6699d6eafea34013115171`, direct parent61136cd and sole changed path `docs/mcr/reviews/fe31-receipt-privacy.md`. The report commit and its source/criteria/command evidence were inspected directly. Its disposition is PASS for the targeted client criteria, with no remaining concrete finding. QA verified its actual goal COMPLETE and stopped cleanly after removing its authorized dependency symlink. Integrator should take that separate report commit alongside the owner lane commits.
+
+Final owner ancestry is `310dd65` → `61136cd` source fixes → `b118083` source-pinned native evidence → the documentation closure carrying this record. The final closure changes no application source or test assertion. Owner worktree and path audit are clean after committing; no process, browser slot, install, master push or further client review work remains. The assigned bounded client objective is delivered. Root composition and real-service/device/QA04/IN03 qualification remain separate responsibilities and have not been added as prerequisites for closing this owned implementation scope.
