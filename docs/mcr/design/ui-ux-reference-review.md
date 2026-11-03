@@ -8,6 +8,38 @@ The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged cop
 
 ## Evidence and limits
 
+### Illustrated runtime delivered — `3eefd4ef`
+
+The exact attachment still matches the committed reference byte for byte. The
+public/auth, community, Map, Customize, Wall, My Profile and shell handoffs each
+record viewing that image, rather than merely receiving a message. The handoff
+is confirmed across all ten reference screens.
+
+Author `2afb527` is now integrated as `3eefd4ef`: the incumbent Phaser runtime
+loads the original ground and individual depth-sorted scenery objects, including
+the stage, studio, booths, foliage and labels. Main checked all 91 assigned paths,
+existing-file preimages, 105 delivery hashes and 79 unchanged input hashes. Fresh
+combined strict TypeScript and all 649 affected tests passed. The author's
+51 native captures include 45 exact pixel comparisons and front/behind depth
+probes. These comparisons are against the bound original scenery composition,
+**not** against the ten-screen reference. No duplicate general review was added.
+
+Main inspected the recorded 390px illustrated runtime, compact World shell and
+Customize captures. The runtime fixture now has illustrated scenery, but is a
+separate test host without approved characters. The shell and Customize captures
+still contain explicitly synthetic test resources. Production C03/avatar release
+binding, the illustrated Map overview, populated avatar/media rows, distinctive
+landing artwork and live Wall write composition remain open. The existing
+orthogonal map also differs from the reference's diagonal composition.
+
+The shared frame, black/ivory/red palette, compact era controls and navigation
+have reached application code. This does **not** establish that the actual
+default application reproduces the collage. No decorative left accent was found
+in the inspected presentation captures. The overall decision remains **handoff
+confirmed; partial adoption; visual implementation not accepted**. See the
+[scoped integration evidence](../frontend/illustrated-runtime-integration.md)
+and [390px illustrated fixture](../../../frontend/src/world/__tests__/illustrated/evidence/revenge-landmark0-390.png).
+
 ### Sharing entry and event operations delivered
 
 The qualified sharing module now has actual default `/me/social` and
