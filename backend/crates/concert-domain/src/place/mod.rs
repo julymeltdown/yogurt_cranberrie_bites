@@ -304,11 +304,11 @@ impl Tilemap {
             ResourceState::NotProvided => path.is_none() && sha256.is_none(),
             ResourceState::Provided => {
                 path.as_deref().is_some_and(|v| {
-                    !v.is_empty()
-                        && v.ends_with(".json")
-                        && v.bytes().all(|b| {
-                            b.is_ascii_alphanumeric() || matches!(b, b'_' | b'-' | b'/' | b'.')
-                        })
+                    let Some(stem) = v.strip_suffix(".json") else {
+                        return false;
+                    };
+                    stem.bytes()
+                        .all(|b| b.is_ascii_alphanumeric() || matches!(b, b'_' | b'-' | b'/'))
                 }) && sha256.as_deref().is_some_and(digest)
             }
         };

@@ -210,11 +210,22 @@ fn golden_manifest_parses_and_rehashed_invalid_geometry_or_place_relations_are_r
         |v: &mut Value| {
             v["geometry"]["spawns"][0]["cell_x"] = json!(0);
         },
+        |v: &mut Value| {
+            v["tilemap"]["resource_state"] = json!("PROVIDED");
+            v["tilemap"]["path"] = json!("world/a.b.json");
+            v["tilemap"]["sha256"] = json!("sha256:".to_owned() + &"0".repeat(64));
+        },
     ] {
         let mut value = serde_json::from_slice::<Value>(&bytes).unwrap();
         mutate(&mut value);
         assert_rehashed_invalid(value);
     }
+    let mut valid_path = serde_json::from_slice::<Value>(&bytes).unwrap();
+    valid_path["tilemap"]["resource_state"] = json!("PROVIDED");
+    valid_path["tilemap"]["path"] = json!("world/a-b_1.json");
+    valid_path["tilemap"]["sha256"] = json!("sha256:".to_owned() + &"0".repeat(64));
+    hash(&mut valid_path);
+    assert!(parse_stored_release(&canonical(&valid_path)).is_ok());
     for mutate in [
         |v: &mut Value| {
             v["places"][0]["extra"] = json!(true);
