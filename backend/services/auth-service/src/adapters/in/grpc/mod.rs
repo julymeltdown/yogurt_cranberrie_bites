@@ -3,4 +3,5 @@ pub mod method_policy;
 pub mod server;
 mod verification;
 
+pub mod concert_invalidation;
 pub mod concert_relationship;

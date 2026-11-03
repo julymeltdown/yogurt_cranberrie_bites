@@ -218,6 +218,7 @@ struct Views {
     pending: BTreeMap<(Uuid, Uuid), Entry>,
     cleanup: BTreeMap<(Uuid, Uuid, Uuid), Binding>,
     absent: BTreeSet<(Uuid, Uuid, Uuid)>,
+    invalidations: BTreeMap<Uuid, super::invalidation::Removal>,
 }
 fn key(b: &Binding) -> (Uuid, Uuid) {
     (b.key.event_id.uuid(), b.key.user_id.uuid())
@@ -291,6 +292,7 @@ pub struct AdmissionBridge {
     fence: Arc<Mutex<()>>,
     views: Mutex<Views>,
     admission_gate: tokio::sync::Mutex<()>,
+    invalidation_delivery_gate: tokio::sync::Mutex<()>,
     owner_until: Mutex<DateTime<Utc>>,
 }
 /// Reserve cleanup before the first durable admission mutation. Cancellation
@@ -311,6 +313,94 @@ impl Drop for AdmissionAttempt<'_> {
     }
 }
 impl AdmissionBridge {
+    pub(crate) fn invalidation_context(&self) -> (sqlx::PgPool, Uuid, Uuid, Uuid) {
+        (
+            self.pool.clone(),
+            Uuid::parse_str(&self.owner.process_id).expect("validated owner"),
+            self.owner.epoch,
+            self.event.uuid(),
+        )
+    }
+    pub(crate) fn invalidation_delivery_gate(&self) -> &tokio::sync::Mutex<()> {
+        &self.invalidation_delivery_gate
+    }
+    pub(crate) fn invalidation_admission_gate(&self) -> &tokio::sync::Mutex<()> {
+        &self.admission_gate
+    }
+    pub(crate) async fn pause_invalidation(&self) -> Result<(), WorldError> {
+        self.owners.pause().await
+    }
+    pub(crate) fn begin_invalidation(
+        &self,
+        id: Uuid,
+        removal: super::invalidation::Removal,
+    ) -> Result<(), WorldError> {
+        let _f = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+        if views.invalidations.len() >= 1000 && !views.invalidations.contains_key(&id) {
+            return Err(WorldError::Unavailable);
+        }
+        views.invalidations.insert(id, removal.clone());
+        let mut removed = BTreeSet::new();
+        // Split maps explicitly so removal never holds two mutable field borrows.
+        views.entries.retain(|_, e| {
+            if removal.matches(&e.binding, self.owner.epoch) {
+                if let Some(p) = &e.parent {
+                    p.cancel();
+                }
+                removed.insert(e.binding.key.user_id.uuid());
+                false
+            } else {
+                true
+            }
+        });
+        views.pending.retain(|_, e| {
+            if removal.matches(&e.binding, self.owner.epoch) {
+                if let Some(p) = &e.parent {
+                    p.cancel();
+                }
+                removed.insert(e.binding.key.user_id.uuid());
+                false
+            } else {
+                true
+            }
+        });
+        if let super::invalidation::Removal::Scope(super::invalidation::Scope::Pair {
+            a, b, ..
+        }) = &removal
+        {
+            removed.insert(*a);
+            removed.insert(*b);
+        }
+        for e in views.entries.values_mut() {
+            let n = e.visible.len();
+            e.visible.retain(|u| !removed.contains(u));
+            if e.visible.len() != n {
+                e.generation = Uuid::new_v4();
+            }
+        }
+        for e in views.pending.values_mut() {
+            let n = e.visible.len();
+            e.visible.retain(|u| !removed.contains(u));
+            if e.visible.len() != n {
+                e.generation = Uuid::new_v4();
+            }
+        }
+        drop(views);
+        if let OwnerPorts::Production(p) = &self.owners {
+            p.forget_invalidated(&removed)?;
+        }
+        Ok(())
+    }
+    pub(crate) fn finish_invalidation(&self, id: Uuid) -> Result<(), WorldError> {
+        let _f = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        self.views
+            .lock()
+            .map_err(|_| WorldError::Unavailable)?
+            .invalidations
+            .remove(&id);
+        Ok(())
+    }
     /// Synthetic external authority for isolated DB regression fixtures only.
     /// Production settings have no route to this constructor.
     pub fn new_fixture(
@@ -435,6 +525,7 @@ impl AdmissionBridge {
             fence,
             views: Mutex::new(Views::default()),
             admission_gate: tokio::sync::Mutex::new(()),
+            invalidation_delivery_gate: tokio::sync::Mutex::new(()),
             owner_until: Mutex::new(anchor.utc),
         }))
     }
@@ -656,7 +747,7 @@ impl AdmissionBridge {
                 .chain(std::iter::once(expected.clone()))
                 .collect()
         };
-        let (visible, visibility_until) = match &self.owners {
+        let (mut visible, visibility_until) = match &self.owners {
             OwnerPorts::Fixture(owners) => (
                 owners.visible(&expected, &subjects, Utc::now()).await?,
                 auth.valid_until,
@@ -716,6 +807,29 @@ impl AdmissionBridge {
         }
         auth.check(&expected, membership.access_expires_at)?;
         let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
+        if views
+            .invalidations
+            .values()
+            .any(|r| r.matches(&binding, self.owner.epoch))
+        {
+            return Err(WorldError::Denied);
+        }
+        // A signal may arrive during an unrelated recipient read. Mask pending
+        // removals before reinstalling any delayed projection.
+        for (key, entry) in views.entries.iter().chain(views.pending.iter()) {
+            if views
+                .invalidations
+                .values()
+                .any(|r| r.matches(&entry.binding, self.owner.epoch))
+            {
+                visible.remove(&key.1);
+            }
+        }
+        for removal in views.invalidations.values() {
+            if let super::invalidation::Removal::Scope(scope) = removal {
+                visible.retain(|u| !scope.matches(binding.key.event_id.uuid(), *u));
+            }
+        }
         if views.entries.len() >= MAX_MEMBERS && !views.entries.contains_key(&key(&binding)) {
             return Err(WorldError::RoomFull);
         }

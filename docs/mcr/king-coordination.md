@@ -10,13 +10,19 @@ required IA entries remain in scope.
 | Backend king | `01a19e5c-e9c6-7973-a53b-a6d19141620f` | `backend/`, shared HTTP/proto/realtime/asset contracts, infrastructure and cross-lane contract decisions; `/Users/lhs/Desktop/mcr-worktrees/delivery-checkpoints` |
 | Frontend king | `01a1a385-9f32-73c2-8715-ff54bd1e0497` | `frontend/`, selected-art derivatives, visual/FE/art documentation, frontend root/shared composition; `/Users/lhs/Desktop/mcr-worktrees/king-frontend` |
 
-Both kings may integrate qualified handoffs and publish to `julymeltdown/mcr`
-`master` without a second general review. They use separate branches/checkouts,
-explicit staged paths and non-force pushes. Before publishing, reconcile current
-remote history; a non-fast-forward rejection preserves both sides' commits and
-requires incorporating the peer's changes with affected validation. Verify
-remote ancestry. Cross-lane contract changes keep one explicit writer. A worker
-does not gain shared-path ownership merely by needing it.
+The user's latest instruction removes per-commit review and publishing queues
+for both kings and SLs. Every assigned implementation owner may validate, commit
+and publish its exclusive scope directly to `julymeltdown/mcr` `master`.
+Use separate branches/checkouts, explicit staged paths and non-force pushes.
+Reconcile remote history, preserve peer commits, run affected checks and verify
+remote ancestry. Report delivered SHA, paths, evidence and remaining limits.
+Cross-lane contract changes keep one explicit writer; needing a shared file does
+not grant ownership. Escalate actual scope conflicts, not routine publication.
+
+Kings track major feature outcomes and periodically inspect commit history.
+SLs manage feature context, dependencies and resources. Neither role routinely
+re-reads every diff, repeats completed reviews or requires every worker to wait
+for its next review. Use targeted review only for a concrete unresolved risk.
 
 ## SL dispatch lanes
 
@@ -28,7 +34,9 @@ does not gain shared-path ownership merely by needing it.
 | Wall / operations | `01a1a21d-39ec-7912-84cb-910058e7a110` | Wall and operations frontend, relevant QA; backend dependencies go to Backend king |
 
 SLs inspect actual turns, persistent goals and clean/dirty worktrees before
-reassignment. Each writer receives an exact task ID, exclusive branch/worktree,
+reassignment. Reuse completed chats for related ready work; archive genuinely
+finished chats with no next task after preserving commits and unfinished files.
+Do not create additional chats just to maintain a quota. Each writer receives an exact task ID, exclusive branch/worktree,
 disjoint paths, implementation and validation criteria, committed handoff, and
 next ready task. A historical active flag is not proof of current execution.
 Do not reset models, incompatible goals or stalled processes to manufacture

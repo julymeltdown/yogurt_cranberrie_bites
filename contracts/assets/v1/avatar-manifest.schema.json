@@ -5,6 +5,16 @@
   "$ref": "#/$defs/AvatarManifest",
   "$defs": {
     "AvatarManifest": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/LayeredAvatarManifest"
+        },
+        {
+          "$ref": "#/$defs/WholeCharacterAvatarManifest"
+        }
+      ]
+    },
+    "LayeredAvatarManifest": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -205,6 +215,304 @@
         },
         "fallback_preset_id": {
           "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+        }
+      }
+    },
+    "WholeCharacterAvatarManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "kind",
+        "manifest_id",
+        "manifest_version",
+        "representation",
+        "source",
+        "capabilities",
+        "content_hash",
+        "atlas",
+        "presets",
+        "default_preset_id"
+      ],
+      "properties": {
+        "contract_version": {
+          "const": "1.1.0"
+        },
+        "kind": {
+          "const": "avatar_manifest"
+        },
+        "manifest_id": {
+          "const": "mcr_selected_static_20261103"
+        },
+        "manifest_version": {
+          "const": 1
+        },
+        "representation": {
+          "const": "whole_character"
+        },
+        "source": {
+          "const": {
+            "source_pack_id": "mcr_user_characters_20261103",
+            "source_pack_revision": 3,
+            "source_id": "photo_01",
+            "source_sha256": "sha256:67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+            "release_path": "world/avatars/derived-v1/static-release.json",
+            "release_sha256": "sha256:cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+            "source_commit": "7e07f7328f079991a9aedb7ad83a4b682decb543"
+          }
+        },
+        "capabilities": {
+          "const": {
+            "poses": [
+              "front_idle"
+            ],
+            "layer_customization": false,
+            "skin_tone_customization": false
+          }
+        },
+        "content_hash": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/ContentHash"
+        },
+        "atlas": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "atlas_id",
+            "cell",
+            "anchor",
+            "texture"
+          ],
+          "properties": {
+            "atlas_id": {
+              "const": "mcr_selected_static_front_idle_64"
+            },
+            "cell": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/Cell"
+            },
+            "anchor": {
+              "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/Anchor"
+            },
+            "texture": {
+              "allOf": [
+                {
+                  "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/TextureMetadata"
+                },
+                {
+                  "const": {
+                    "image_state": "PROVIDED",
+                    "path": "world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+                    "sha256": "sha256:e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+                    "width_px": 384,
+                    "height_px": 64
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "presets": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/WholeCharacterPreset"
+          }
+        },
+        "default_preset_id": {
+          "enum": [
+            "photo01_front_01",
+            "photo01_front_02",
+            "photo01_front_03",
+            "photo01_front_04",
+            "photo01_front_05",
+            "photo01_front_06"
+          ]
+        }
+      }
+    },
+    "WholeCharacterPreset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preset_id",
+        "config",
+        "art_id",
+        "frame"
+      ],
+      "properties": {
+        "preset_id": {
+          "enum": [
+            "photo01_front_01",
+            "photo01_front_02",
+            "photo01_front_03",
+            "photo01_front_04",
+            "photo01_front_05",
+            "photo01_front_06"
+          ]
+        },
+        "config": {
+          "$ref": "https://contracts.mcr.invalid/assets/v1/avatar-config.schema.json#/$defs/WholeCharacterAvatarConfig"
+        },
+        "art_id": {
+          "enum": [
+            "photo01-front-01",
+            "photo01-front-02",
+            "photo01-front-03",
+            "photo01-front-04",
+            "photo01-front-05",
+            "photo01-front-06"
+          ]
+        },
+        "frame": {
+          "$ref": "#/$defs/WholeCharacterFrame"
+        }
+      },
+      "oneOf": [
+        {
+          "const": {
+            "preset_id": "photo01_front_01",
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "representation": "whole_character",
+              "preset_id": "photo01_front_01"
+            },
+            "art_id": "photo01-front-01",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width_px": 64,
+              "height_px": 64
+            }
+          }
+        },
+        {
+          "const": {
+            "preset_id": "photo01_front_02",
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "representation": "whole_character",
+              "preset_id": "photo01_front_02"
+            },
+            "art_id": "photo01-front-02",
+            "frame": {
+              "x": 64,
+              "y": 0,
+              "width_px": 64,
+              "height_px": 64
+            }
+          }
+        },
+        {
+          "const": {
+            "preset_id": "photo01_front_03",
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "representation": "whole_character",
+              "preset_id": "photo01_front_03"
+            },
+            "art_id": "photo01-front-03",
+            "frame": {
+              "x": 128,
+              "y": 0,
+              "width_px": 64,
+              "height_px": 64
+            }
+          }
+        },
+        {
+          "const": {
+            "preset_id": "photo01_front_04",
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "representation": "whole_character",
+              "preset_id": "photo01_front_04"
+            },
+            "art_id": "photo01-front-04",
+            "frame": {
+              "x": 192,
+              "y": 0,
+              "width_px": 64,
+              "height_px": 64
+            }
+          }
+        },
+        {
+          "const": {
+            "preset_id": "photo01_front_05",
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "representation": "whole_character",
+              "preset_id": "photo01_front_05"
+            },
+            "art_id": "photo01-front-05",
+            "frame": {
+              "x": 256,
+              "y": 0,
+              "width_px": 64,
+              "height_px": 64
+            }
+          }
+        },
+        {
+          "const": {
+            "preset_id": "photo01_front_06",
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "representation": "whole_character",
+              "preset_id": "photo01_front_06"
+            },
+            "art_id": "photo01-front-06",
+            "frame": {
+              "x": 320,
+              "y": 0,
+              "width_px": 64,
+              "height_px": 64
+            }
+          }
+        }
+      ]
+    },
+    "WholeCharacterFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "width_px",
+        "height_px"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "y": {
+          "const": 0
+        },
+        "width_px": {
+          "const": 64
+        },
+        "height_px": {
+          "const": 64
         }
       }
     }

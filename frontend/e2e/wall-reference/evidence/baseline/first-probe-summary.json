@@ -1,0 +1,33 @@
+{
+  "kind": "transcribed initial probe tool result; original full report was overwritten by the corrected rerun",
+  "command": "node frontend/e2e/wall-reference/run.mjs --baseline",
+  "exit": 1,
+  "browser": "156.0.8078.80",
+  "widthStatuses": {
+    "360": "PASS",
+    "390": "PASS",
+    "430": "PASS"
+  },
+  "presentation": "REFERENCE_GEOMETRY_MISMATCH",
+  "errors": [
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket",
+    "Unexpected fixture WebSocket"
+  ],
+  "diagnosis": "Harness false alarm: same-origin Vite development client, distinguished from product world sockets in corrected run; no product change."
+}
