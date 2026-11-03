@@ -38,6 +38,8 @@
     "closed removed mismatch",
     "late account replacement",
     "one game and socket lifetime",
-    "URL create revoke balance"
-  ]
+    "URL create revoke balance",
+    "Reset clears pin/restores view without requests or camera writes"
+  ],
+  "qualifiedMerge": "957132f33cef853356bf66dd40d1fec2df540b1d"
 }

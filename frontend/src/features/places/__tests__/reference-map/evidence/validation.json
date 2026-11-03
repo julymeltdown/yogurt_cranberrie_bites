@@ -42,7 +42,8 @@
       "command": "python3 scripts/mcr/check-plan.py",
       "cwd": "repository",
       "exitCode": 0,
-      "log": "plan.log"
+      "log": "plan.log",
+      "qualification": "Prior unchanged planning check retained; planner/source files unchanged"
     }
   },
   "testFiles": 9,
@@ -75,5 +76,8 @@
     "Inherited test avatar is not approved selected-pack product art",
     "Orthogonal source is not the diagonal reference scene",
     "No real-device, live two-account, FPS or load acceptance"
-  ]
+  ],
+  "qualifiedMerge": "957132f33cef853356bf66dd40d1fec2df540b1d",
+  "publishedCompatibilityRepair": "90f44fd99fdfe17f3ee3e596ceff0583f6db2c47",
+  "resetNativeProof": true
 }
