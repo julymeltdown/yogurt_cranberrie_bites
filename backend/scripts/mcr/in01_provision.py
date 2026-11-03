@@ -155,7 +155,7 @@ def owned_descriptor(path):
     return value, digest(raw)
 
 
-def validate_binaries(bin_dir, receipt_path):
+def validate_binaries(bin_dir, receipt_path, *, historical_auth_only=False):
     receipt = json.loads(read_regular(receipt_path))
     need(receipt.get("exit_code") == 0 and re.fullmatch(r"[0-9a-f]{40}", receipt.get("source_revision", "")),
          "SUCCESSFUL_BINARY_SOURCE_RECEIPT_REQUIRED")
@@ -164,8 +164,20 @@ def validate_binaries(bin_dir, receipt_path):
         path = Path(bin_dir) / service
         need(path.is_absolute() and path.is_file() and os.access(path, os.X_OK), "SERVICE_BINARY_REQUIRED")
         need(hashes.get(service) == digest(read_regular(path, limit=512 * 1024 * 1024)), "BINARY_RECEIPT_MISMATCH")
+    sources = receipt.get("source_files_sha256", {})
+    need(isinstance(sources, dict) and sources, "BINARY_SOURCE_HASHES_REQUIRED")
+    drift = []
+    for relative, expected in sources.items():
+        candidate = Path(relative)
+        need(not candidate.is_absolute() and ".." not in candidate.parts and candidate.parts[0] == "backend",
+             "BINARY_SOURCE_PATH_INVALID")
+        path = ROOT / candidate
+        if not path.is_file() or digest(read_regular(path)) != expected:
+            drift.append(relative)
+    need(not drift or historical_auth_only, "BINARY_SOURCE_DRIFT_REQUIRES_HISTORICAL_AUTH_ONLY")
     return {"source_revision": receipt["source_revision"], "binary_sha256": {s: hashes[s] for s in dev.runtime.START_ORDER},
-            "receipt": pinned(receipt_path)}
+            "receipt": pinned(receipt_path), "current_source_drift": drift,
+            "qualification_scope": "HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD" if historical_auth_only else "SOURCE_HASHES_MATCH_BUILD_RECEIPT"}
 
 
 def wait_mail(inbox, email, *, timeout=20):
@@ -396,7 +408,8 @@ def execute(args, run, stack=None):
             report["concert_binary_binding"] = {"source_revision": binding["source_revision"], "receipt": pinned(concert_receipt),
                                                 "binary_sha256": binding["binary_sha256"]["concert-service"]}
         if stack:
-            report["binary_bindings"] = validate_binaries(args.bin_dir, args.binary_receipt)
+            report["binary_bindings"] = validate_binaries(args.bin_dir, args.binary_receipt,
+                                                           historical_auth_only=getattr(args, "historical_auth_only", False))
             descriptor = stack.start()
             control = dev.Control(stack)
             run.write("ready.json", descriptor)
@@ -418,7 +431,7 @@ def execute(args, run, stack=None):
             state["eventId"] = event
             run.write("private.json", state)
             ready = check_world(descriptor, state, event, report, args.browser_origin)
-            if ready and args.art_review and args.browser_origin:
+            if ready and args.art_review and args.browser_origin and not getattr(args, "historical_auth_only", False):
                 run.write("services.json", {"kind": "mcr-in01-services-v1", "observed_at": datetime.now(timezone.utc).isoformat(),
                                            "release_revision_declared": args.release_revision, "observations": report})
                 run.write("config.json", gate_config(state, args.browser_origin, event, args.release_revision,
@@ -477,6 +490,7 @@ def main(argv=None):
         if kind == "owned":
             c.add_argument("--bin-dir", type=Path, required=True)
             c.add_argument("--binary-receipt", type=Path, required=True)
+            c.add_argument("--historical-auth-only", action="store_true")
             c.add_argument("--concert-binary", type=Path)
             c.add_argument("--concert-build-receipt", type=Path)
             c.add_argument("--pg-bin-dir", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))

@@ -1,7 +1,7 @@
 # IN01 canonical account and owned-event provisioning
 
 Status: **IN_PROGRESS**. This is a provisioning tool, not IN01 acceptance.
-Current offline ownership/failure/config checks pass18/18. Actual two-account
+Current offline ownership/failure/config checks pass19/19. Actual two-account
 provisioning is NOT_RUN pending a current qualified runtime artifact binding;
 owned PostgreSQL event fixture execution passed at9ad192c. No art receipt or world result is
 invented to turn those prerequisites green.
@@ -145,7 +145,7 @@ remain separate IN01 obligations. A bounded provisioning PASS always retains
 
 ## Verification checkpoint
 
-- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py -v`: exit0,18 offline checks.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py -v`: exit0,19 offline checks.
 - `python3 -B -m py_compile backend/scripts/mcr/in01_provision.py`: exit0.
 - `git diff --check`: exit0.
 
@@ -205,3 +205,26 @@ and existing documentation bytes as hash inputs; no product art approval,
 provisioned real user or browser/world execution was asserted. No frontend file
 or dependency was written. Planning integrity `python3 scripts/mcr/check-plan.py`
 also exited0 with all13 source archive hashes intact.
+
+
+## Explicit historical Auth qualification mode
+
+The world producer located an immutable six-service snapshot at
+`/Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/bin`,
+with sibling `receipt.json`, SHA256
+`766d7c6c6fd392c907bd1216768e2131b04d06ed4eb1fadafd1b1a2259066f0d`,
+built from600582d6b5deda6037c190c303f80752ba4a6bb3. Its receipt contains1108
+source hashes and all six exact binary hashes; build runtime_validation was
+NOT_RUN, with separate historical email-flow execution evidence. It predates
+the current Concert/world composition and cannot qualify it.
+
+Default own-mode provisioning now requires all supplied build source hashes to
+match current source as well as exact binary hashes. Any source drift is denied
+before launch unless the operator explicitly passes `--historical-auth-only`.
+That mode records every mismatching source path and labels its qualification
+HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD; it can never emit a world-gate config.
+This permits meaningful real canonical signup/mail/verify/login against a pinned
+isolated Auth server without pretending current runtime code or world integration
+was executed. The unchanged launcher's current migration ledger verification
+still applies; a schema mismatch is a real failure with owned cleanup. Current
+world-ready artifacts remain unavailable according to the producer.

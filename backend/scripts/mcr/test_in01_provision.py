@@ -88,6 +88,20 @@ class PrivateTests(Fixture):
         with self.assertRaises(p.Failure):
             p.validate_binaries(self.root, receipt)
 
+    def test_source_drift_is_explicitly_historical_and_cannot_be_default(self):
+        hashes={}
+        for service in p.dev.runtime.START_ORDER:
+            path=self.root/service;path.write_bytes(b"offline-artifact");path.chmod(0o700)
+            hashes[service]=p.digest(path.read_bytes())
+        receipt=self.root/"build.json"
+        receipt.write_text(json.dumps({"source_revision":"a"*40,"exit_code":0,"binary_sha256":hashes,
+                                       "source_files_sha256":{"backend/services/auth-service/src/main.rs":"0"*64}}))
+        with self.assertRaisesRegex(p.Failure,"BINARY_SOURCE_DRIFT_REQUIRES_HISTORICAL_AUTH_ONLY"):
+            p.validate_binaries(self.root,receipt)
+        binding=p.validate_binaries(self.root,receipt,historical_auth_only=True)
+        self.assertEqual(binding["qualification_scope"],"HISTORICAL_AUTH_ONLY_NOT_CURRENT_WORLD")
+        self.assertEqual(len(binding["current_source_drift"]),1)
+
     def test_mail_matches_exact_owned_generated_email(self):
         mail = self.root / "mail"; mail.mkdir(mode=0o700)
         for name, email, code in [("other", "other@example.test", "111111"), ("own", "own@example.test", "222222")]:
