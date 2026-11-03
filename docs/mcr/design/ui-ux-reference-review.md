@@ -8,7 +8,57 @@ The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged cop
 
 ## Evidence and limits
 
-### Current visual comparison and delivery follow-through — `35bac11`
+### Latest handoff recheck and compact layouts — `f790a98`
+
+**The exact image reached the UI owners; faithful implementation is still
+incomplete.** Main freshly compared the original attachment against the committed
+copy: identical bytes, SHA-256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`.
+The public/auth, community, Map, Customize, Wall, My Profile and shell handoffs
+each record viewing this same reference. This is stronger evidence than merely
+sending an instruction. The screen checklist and common design requirements
+below remain the handoff; this audit adds no new review gate.
+
+Main inspected the existing source-bound 390px World, Map, compact controls,
+Customize, Feed, My Profile and Wall captures, and checked current root route
+registration and shared presentation CSS. These are fresh inspections of
+recorded native evidence, not newly executed live-service journeys. The frame,
+condensed headings, black/ivory/red palette, era controls and icon navigation
+are visible. No decorative left accent was found in the inspected captures or
+the scoped presentation styles; symmetric borders and focus outlines remain.
+
+| Surface | Current delivery | Remaining gap |
+| --- | --- | --- |
+| World | Root short-viewport fix `dd86095`; compact controls `22b45fb`, both pushed and remote-verified. Controls occupy 136px; normal scene space increases substantially. Secondary help uses an accessible disclosure. | Captures still use synthetic terrain and unavailable character art. FE07 owns the single combined short-height/expanded-help proof; separate author captures alone do not prove the combined layout. |
+| Map | The default route mounts Places; `dd86095` removes the redundant inner title/frame while preserving the outer Map heading, Back, actions and region. | The geometry is a schema-derived schematic, not the illustrated venue in the reference. Physical routes remain unverified. |
+| Customize | `f790a98` integrates author `11e2cc6`: one visual outfit chooser, compact category rail, disclosed ID alternatives, explicit Save/Cancel and usable short-panel scrolling. | The visual examples are labeled TEST ONLY geometry. Approved character layers, real product previews and actual root/save flow remain unqualified. |
+| Feed / Meet / Gifts / My Profile | Reference-derived feature presentation is delivered; root registration exists. | Authorized imagery/avatars and rich populated identity/activity rows remain visibly incomplete. A registered route does not guarantee a qualified live producer. |
+| Wall | Reference-derived editor and default route registration exist. | The default provider still has `release={null}`. It correctly remains unavailable until qualified scene geometry and write authority exist. Fixture canvas styling does not prove collaboration. |
+| Landing / sign-in | Existing public-route visual adoption and viewed-reference provenance remain delivered. | Distinctive poster lettering, illustrated silhouettes and approved characters remain unfinished. No new capture or live entry pass is claimed here. |
+
+The latest integration used the completed author/peer handoffs without a second
+general review. Customize's 40 changed paths, four existing-file preimages and
+48 source/evidence hashes match; all integrated bytes match the author commit.
+Fresh combined strict TypeScript passed at `f790a98` (exit 0, 4.84s). Its author
+recorded 26 focused tests and nine native scenarios passing. The previously
+reported 16px nested editor body is corrected to 192px in the three tested
+half-panel widths. The independent root and control authors' validation remains
+bound to their own documented source revisions.
+
+Main forwarded published `22b45fb` and the exact reference pin to FE07, which
+started the combined check. The World lead received the outstanding approved-art
+and visual-fidelity gaps within its existing assignment. Layout writers retain
+disjoint ownership; this check neither assigns backend work to frontend authors
+nor changes the 112-task/61-IA acceptance counts.
+
+[Compact World capture](../../../frontend/src/world/__tests__/controls-layout/evidence/after-world-390.png),
+[compact Customize capture](../../../frontend/src/features/avatar/__tests__/compact-layout/evidence/native/loaded-390x844.png),
+[Customize handoff](../frontend/avatar-compact-layout.md),
+[controls handoff](../frontend/world-controls-layout.md) and
+[root handoff](../frontend/default-shell-integration.md) expose the actual result
+and its limits. The dated sections below are historical snapshots; this section
+supersedes their former compact-layout ownership and delivery status.
+
+### Earlier visual comparison and delivery follow-through — `35bac11`
 
 The reference again matches the user's original attachment byte for byte at the
 SHA-256 above. Main inspected source-bound 390px default World and Map captures
