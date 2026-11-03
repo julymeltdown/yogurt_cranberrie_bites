@@ -1,6 +1,6 @@
 # Uploader-owned media runtime
 
-BE-OWNER-MEDIA-LIVE is **IN_PROGRESS**. Source is prepared for composition; Rust/native checks and the actual Gateway → Concert journey are **NOT_RUN**. No production canonical Auth fence is supplied by this patch. This increment does not accept BE24, IN03 or IN05, waive linked/public media obligations, or make a disabled capability ready.
+BE-OWNER-MEDIA-LIVE is **IN_PROGRESS**. The uploader runtime compiles, its eight PostgreSQL16 regression tests pass, and the retained producer suite passes 17 tests plus one real restart verification. Production canonical Auth and the actual Gateway → Concert journey remain **NOT_RUN**. No production canonical Auth fence is supplied by this patch. This increment does not accept BE24, IN03 or IN05, waive linked/public media obligations, or make a disabled capability ready.
 
 ## Scope and provenance
 
