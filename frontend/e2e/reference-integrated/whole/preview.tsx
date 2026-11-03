@@ -130,6 +130,6 @@ async function canvasPixels(selector:string){
  const canvas=document.createElement('canvas');canvas.width=canvas.height=64;const context=canvas.getContext('2d')!;context.imageSmoothingEnabled=false;context.drawImage(element,0,0,64,64)
  const hash=await sha256(new Uint8Array(context.getImageData(0,0,64,64).data.buffer));canvas.width=canvas.height=0;return hash
 }
-const api={state,inspectWorld,approvedPixels,canvasPixels,navigate:(path:string)=>router.navigate(path),privacy(){auth.privacy.changePolicy(auth.privacy.capture(),'block')},async dispose(){mutation.disconnect();root.unmount();router.dispose();ports.dispose?.();auth.dispose()}}
+const api={state,inspectWorld,approvedPixels,canvasPixels,navigate:(path:string)=>router.navigate(path),privacy(){auth.privacy.changePolicy(auth.privacy.capture(),'suspended')},async dispose(){mutation.disconnect();root.unmount();router.dispose();ports.dispose?.();auth.dispose()}}
 Object.assign(window,{__MCR_WHOLE_ROOT__:api})
 declare global{interface Window{__MCR_WHOLE_ROOT__:typeof api}}
