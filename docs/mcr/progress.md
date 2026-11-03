@@ -34,7 +34,8 @@ it is not feature integration or release acceptance.
 | FE14 | MOCK_READY | [Reviewed runtime foundation](evidence/phaser-runtime-integration.md), final `77ae6bd`: 871 combined tests, strict build/lint and real Chrome four-width lifecycle/resource matrix pass. Three P2 findings corrected and independently cleared; both bounded goals COMPLETE. Production assets, protected-shell/avatar/world composition, devices and whole FE14 acceptance remain open. |
 | FE15 | MOCK_READY | Reviewed movement/camera/interaction implementation `d91ee02` and bottom-edge correction `aec5d17`; independent QA `b381d03` closes visibility and valid-boundary-route findings. Worker 958 tests/22 files (87 FE15), build/lint and four-width native/short-height checks pass. Parent reran affected movement/runtime tests, build/lint and inspected mobile/short screenshots. Actual networking, authoritative physics, selected artwork, devices and full-world integration remain open. |
 | FE16 | MOCK_READY | [Reviewed transport integration](evidence/world-transport-integration.md), `e3a4d84`/`5863f91`: 568 combined frontend tests (158 transport), build/lint/type-drift/origin/plan and installed-Chrome five canonical traces pass. Gap recovery and pre-send room-switch failure findings corrected. Bounded goal COMPLETE; production lifecycle, replication and real-server/IN01 remain NOT_RUN. |
-| FE19 | IN_PROGRESS | Map, place details and help assigned to an isolated FE chat at `bed5ffa`; frozen C03/C06 consumers, truthful physical/virtual provenance and recovery states. Actual goal ACTIVE; no completed behavior claimed yet. |
+| FE17 | IN_PROGRESS | Headless replication/reconnect consumer assigned at `4dc3bb3` on a fresh isolated frontend checkout with actual ACTIVE goal. Frozen C05 and existing FE16 transport; FE12 rendering/art and actual server qualification remain separate. |
+| FE19 | MOCK_READY | [Places integration](evidence/places-integration.md): map overview, scoped place details and controls help; stale-target and actual reload corrections independently closed. Parent61focused/build/lint pass and all154review source hashes match. Production shell/BE08/venue/device and whole-task gates remain open. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **11/112**;
 accepted total: **11/118**. No required IA entry or IN01–IN05 integration gate has
@@ -47,10 +48,12 @@ startup is verified within BE05; product APIs/identity are not.
 
 The main checkout integrates reviewed commits serially and alone publishes master.
 Five visible chats now cover real HTTP owner-chain validation, BE08 place storage,
-FE19 places/help implementation, independent FE19 review and C04 contract-readiness
-review. Each has an isolated worktree and exact writable paths. The user withdrew
+FE17 replication implementation, independent frontend C04 consumer review and
+QA C04 contract-readiness review. Each has an isolated worktree and exact writable paths. The user withdrew
 the fixed-model requirement; coordination preserves chosen model/reasoning settings.
-The extra frontend chat completed FE06 and now reviews FE19's concrete fixes.
+Both FE19 implementation and independent review goals completed after integration.
+The extra frontend chat now implements FE17; the original prepares the exact
+party/gift contract prerequisites for the next feature lane.
 The original BE04 goal and all current bounded assignments are ACTIVE; prior
 completed scopes remain historical. Shared Rust validation has one explicit owner.
 The [chat ownership register](chat-coordination.md) records exact scopes.

@@ -7,9 +7,9 @@ Intake and assessment are delivered. Foundation implementation is active: review
 The main chat is the integrator. Backend and frontend development run in separate visible Codex chats, as the user explicitly requested. Each uses an isolated worktree and preserves the user's selected model and reasoning setting. The user withdrew the earlier fixed-model requirement; coordination and continuation calls omit model and reasoning overrides. The [chat ownership register](chat-coordination.md) records the current writers and scopes. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
 
 Five existing visible chats are reused for useful parallel work: real HTTP
-Auth/Profile integration, BE08 places, FE19 places/help, independent FE19 review
-and C04 readiness review. The additional frontend chat completed FE06 before
-moving to review. Work proceeds on satisfied prerequisites and bounded contracts;
+Auth/Profile integration, BE08 places, FE17 replication, independent frontend
+C04 consumer review and QA C04 readiness review. The additional frontend chat
+completed FE06 and FE19 review before moving to FE17 implementation. Work proceeds on satisfied prerequisites and bounded contracts;
 whole-task acceptance still requires the specified runtime gates. The integrator
 publishes reviewed checkpoints while disjoint implementation continues. Actual
 goals, exact paths and exclusive build ownership are recorded in the

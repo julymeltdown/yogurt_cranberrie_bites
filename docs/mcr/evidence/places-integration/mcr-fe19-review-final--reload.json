@@ -1,0 +1,12 @@
+{
+  "candidate": "5a56ee9354e483b43094cceed11b63abd1aa4639",
+  "scope": "independent R2 390x844 synthetic fixture on integration review candidate",
+  "result": "PASS",
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "documentChanged": true,
+  "rejectedPinRecovered": true,
+  "currentCanvases": 1,
+  "avatarUnchangedBeforeReload": true,
+  "cleanup": "PASS"
+}

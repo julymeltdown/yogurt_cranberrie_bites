@@ -1,0 +1,29 @@
+[
+  {
+    "status": 404,
+    "result": "PASS",
+    "backAndRetry": "PASS",
+    "unrelatedTarget": "available",
+    "reconciliation": "PASS",
+    "ownerChange": "PASS",
+    "disposal": "PASS"
+  },
+  {
+    "status": 410,
+    "result": "PASS",
+    "backAndRetry": "PASS",
+    "unrelatedTarget": "available",
+    "reconciliation": "PASS",
+    "ownerChange": "PASS",
+    "disposal": "PASS"
+  },
+  {
+    "status": 409,
+    "result": "PASS",
+    "backAndRetry": "PASS",
+    "unrelatedTarget": "release-wide refusal",
+    "reconciliation": "PASS",
+    "ownerChange": "PASS",
+    "disposal": "PASS"
+  }
+]

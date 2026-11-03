@@ -1,0 +1,33 @@
+[
+  {
+    "label": "focused",
+    "command": [
+      "node",
+      "<tools>/pnpm-11.7.0/package/bin/pnpm.cjs",
+      "exec",
+      "vitest",
+      "run",
+      "src/features/places/__tests__/places.test.ts",
+      "src/features/places/__tests__/places-ui.test.tsx"
+    ],
+    "exitCode": 0
+  },
+  {
+    "label": "build",
+    "command": [
+      "node",
+      "<tools>/pnpm-11.7.0/package/bin/pnpm.cjs",
+      "build"
+    ],
+    "exitCode": 0
+  },
+  {
+    "label": "lint",
+    "command": [
+      "node",
+      "<tools>/pnpm-11.7.0/package/bin/pnpm.cjs",
+      "lint"
+    ],
+    "exitCode": 0
+  }
+]

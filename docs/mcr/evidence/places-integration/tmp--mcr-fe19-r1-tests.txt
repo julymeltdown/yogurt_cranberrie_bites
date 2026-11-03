@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 <worktrees>/fe-places-help/frontend
+
+
+ Test Files  2 passed (2)
+      Tests  61 passed (61)
+   Start at  21:54:49
+   Duration  2.25s (transform 201ms, setup 0ms, import 390ms, tests 2.27s, environment 316ms)
+

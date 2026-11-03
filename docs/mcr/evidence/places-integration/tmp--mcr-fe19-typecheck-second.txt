@@ -1,0 +1,5 @@
+src/features/places/__tests__/fixtures/preview.tsx(69,39): error TS2554: Expected 1 arguments, but got 2.
+src/features/places/__tests__/places-ui.test.tsx(3,43): error TS6133: 'vi' is declared but its value is never read.
+src/features/places/__tests__/places-ui.test.tsx(24,32): error TS2540: Cannot assign to 'expected' because it is a read-only property.
+src/features/places/__tests__/places.test.ts(31,102): error TS2550: Property 'toSorted' does not exist on type 'string[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2023' or later.
+src/features/places/__tests__/places.test.ts(84,89): error TS2540: Cannot assign to 'expected' because it is a read-only property.

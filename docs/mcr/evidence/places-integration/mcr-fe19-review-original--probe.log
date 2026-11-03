@@ -1,0 +1,74 @@
+{
+  "candidate": "1ba3f7f6b0bb568524fd88ede22558ad6fd163fc",
+  "results": [
+    {
+      "status": 404,
+      "reason": "RESOURCE_UNAVAILABLE",
+      "atError": {
+        "reason": "missing",
+        "mapMismatch": false,
+        "canShow": false,
+        "recenter": true
+      },
+      "afterBack": {
+        "listPhase": "ready",
+        "mapMismatch": false,
+        "canShow": true,
+        "show": true
+      },
+      "cameraCalls": [
+        "recenter",
+        {
+          "x": 80,
+          "y": 48
+        }
+      ]
+    },
+    {
+      "status": 410,
+      "reason": "RESOURCE_UNAVAILABLE",
+      "atError": {
+        "reason": "missing",
+        "mapMismatch": false,
+        "canShow": false,
+        "recenter": true
+      },
+      "afterBack": {
+        "listPhase": "ready",
+        "mapMismatch": false,
+        "canShow": true,
+        "show": true
+      },
+      "cameraCalls": [
+        "recenter",
+        {
+          "x": 80,
+          "y": 48
+        }
+      ]
+    },
+    {
+      "status": 409,
+      "reason": "MAP_VERSION_MISMATCH",
+      "atError": {
+        "reason": "map-mismatch",
+        "mapMismatch": false,
+        "canShow": false,
+        "recenter": true
+      },
+      "afterBack": {
+        "listPhase": "ready",
+        "mapMismatch": false,
+        "canShow": true,
+        "show": true
+      },
+      "cameraCalls": [
+        "recenter",
+        {
+          "x": 80,
+          "y": 48
+        }
+      ]
+    }
+  ]
+}

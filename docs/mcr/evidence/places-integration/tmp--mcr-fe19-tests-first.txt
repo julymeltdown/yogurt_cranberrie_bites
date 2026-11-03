@@ -1,0 +1,33 @@
+
+ RUN  v4.1.9 <worktrees>/fe-places-help/frontend
+
+ ❯ src/features/places/__tests__/places.test.ts (39 tests | 1 failed) 1034ms
+     × invalid release pin disables targets while retaining readable place metadata 57ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/places/__tests__/places.test.ts > scoped reads, revisions and map targets > invalid release pin disables targets while retaining readable place metadata
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/places/__tests__/places.test.ts:87:137
+     85|     setMap(bad); c.start(); await vi.waitFor(() => expect(c.read().lis…
+     86|     expect(c.read().mapMismatch).toBe(true); expect(c.showOnMap(places…
+     87|     setMap(await release()); await vi.waitFor(() => expect(c.read().ma…
+       |                                                                                                                                         ^
+     88|   })
+     89|   it('unknown map place or changed stable provenance pauses targeting'…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 38 passed (39)
+   Start at  21:38:57
+   Duration  1.24s (transform 66ms, setup 0ms, import 131ms, tests 1.03s, environment 0ms)
+

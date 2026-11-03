@@ -1,0 +1,7 @@
+{
+  "candidate": "5a56ee9354e483b43094cceed11b63abd1aa4639",
+  "scope": "independent R2 390x844 synthetic fixture on integration review candidate",
+  "result": "FAIL",
+  "errors": [],
+  "failure": "TypeError: Cannot read properties of undefined (reading 'launch')"
+}

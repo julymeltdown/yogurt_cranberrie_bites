@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 <repo>/frontend
+
+
+ Test Files  2 passed (2)
+      Tests  61 passed (61)
+   Start at  22:00:07
+   Duration  2.20s (transform 168ms, setup 0ms, import 394ms, tests 2.22s, environment 426ms)
+

@@ -1,0 +1,369 @@
+{
+  "candidate": "5a56ee9354e483b43094cceed11b63abd1aa4639",
+  "checks": {
+    "delivered": [
+      {
+        "path": "<worktrees>/fe-places-review/docs/mcr/frontend/places-help.md",
+        "match": true,
+        "actualSha256": "61d5a6748f482aefc230ea4c57ede464f540fa83b0a57114e86c34997a52238d"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/__tests__/browser-smoke.mjs",
+        "match": true,
+        "actualSha256": "3fc5097754648e323c7e0ac0b30bc25f01ca44b5e3e4e7aa5c5b361e45e042cb"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/__tests__/fixtures/data.ts",
+        "match": true,
+        "actualSha256": "f19893c015a971f96e5bc93fa651b84087706ba195d989bd5f37c53e15a79e20"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/__tests__/fixtures/preview.html",
+        "match": true,
+        "actualSha256": "d065e8282746a6910eb09d76d0301f2dd1b602045e7ae4a40e20a7d6fa366879"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/__tests__/fixtures/preview.tsx",
+        "match": true,
+        "actualSha256": "de987c4232ef4496fbc273d3ed87d160785ba1f60af8ad57a26b9a52fe2383a4"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/__tests__/places-ui.test.tsx",
+        "match": true,
+        "actualSha256": "b4d2f2f2fc38700ec6aee365176ca1fe5ed128cf0c865a035d8bca98f995e8f8"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/__tests__/places.test.ts",
+        "match": true,
+        "actualSha256": "4afcd0d31c9e6324f114877f9b44d2f7e230d0bb3aadb1c8b577a0bb77eebfb6"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/index.ts",
+        "match": true,
+        "actualSha256": "9052d813d49a9c06022fc9626ea4186bfa3d11e093b0e2f1b79ce8a6cfc50e58"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/model/contract.ts",
+        "match": true,
+        "actualSha256": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/model/controller.ts",
+        "match": true,
+        "actualSha256": "2c2fee61d377effe63c2494c11b55d0ddac3e939da49b4a48310cdb1e67a81d4"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/ui/Places.tsx",
+        "match": true,
+        "actualSha256": "cc2712b2a21f1e33957e7cbd53e85696244088bcd46e4502c5d66b2784ca5d56"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/places/ui/places.css",
+        "match": true,
+        "actualSha256": "c36d79424ba5011007870bea0ea88b26418cf15261595ba0c95b620462e98221"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/world-help/WorldHelp.tsx",
+        "match": true,
+        "actualSha256": "db09b1ac62ce21696e2ad51968ebf7e6cb86aada569249406f712aef602a7baf"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/world-help/world-help.css",
+        "match": true,
+        "actualSha256": "dc65af4c4067531154868d5f6ce6d774cd65e1d8f0bf18c610b87095ce9bf347"
+      }
+    ],
+    "checks": [
+      {
+        "path": "<tmp>/mcr-fe19-install.txt",
+        "match": true,
+        "actualSha256": "e6ecbeb8130634081b8df924452150d0d2ad57baa59c0e025ea637218bc894ff"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-tests.txt",
+        "match": true,
+        "actualSha256": "47a4b44096de33585f0e380db8e040714834fa9b17c6493d35cb9ae62fc72020"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-build.txt",
+        "match": true,
+        "actualSha256": "7afd4f32cda6ac85365995160e4c8f52c327182e57c7af5a036ebe3cdca6b62b"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-lint.txt",
+        "match": true,
+        "actualSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-native.txt",
+        "match": true,
+        "actualSha256": "4206810b22ba659e65354a271e1022296f3ecd1d849361d293baaf45405b3a48"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-origin.json",
+        "match": true,
+        "actualSha256": "25ff0091b4223fabe949bc6f438fdc4022635205cf846d9c1ab7aaf41241e6cc"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-plan.txt",
+        "match": true,
+        "actualSha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-boundaries.txt",
+        "match": true,
+        "actualSha256": "f17bd950c0b9355c94a1f0e221d13fc57e39349c2af9d9786c3d422f88aa7dd8"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-boundaries-staged.txt",
+        "match": true,
+        "actualSha256": "f17bd950c0b9355c94a1f0e221d13fc57e39349c2af9d9786c3d422f88aa7dd8"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-probe.log",
+        "match": true,
+        "actualSha256": "9a2454c408465cd8aec932e58ac76935a37695590364470792ab4ab0380ed6dd"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "<tmp>/mcr-fe19-r1/detail-390.png",
+        "match": true,
+        "actualSha256": "8a43ed37f27ae493c640e2942553e8785368b2e1ab9fb715f48c6dcec6de56b5"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1/help-390.png",
+        "match": true,
+        "actualSha256": "8187757a8470e3629a12f322c46a3300523565c000e62a7d92b83bccbc814c08"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1/mismatch-390.png",
+        "match": true,
+        "actualSha256": "83ffb562eb306eddbd125807f3279d77c81e462bcc2953019210a12ae89f1452"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1/overview-390.png",
+        "match": true,
+        "actualSha256": "5ed2d38d3d2e1d3df74ab7129ac5dd0ea32fb8a025f8922bbe83c069a65a9b42"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1/report.json",
+        "match": true,
+        "actualSha256": "eeda84c3af6349426e3f8a9416db952c18041888f5e9af02e5e831f36e5442dc"
+      }
+    ],
+    "readOnlyInputs": [
+      {
+        "path": "<worktrees>/fe-places-review/contracts/generated/mcr-core.openapi.json",
+        "match": true,
+        "actualSha256": "c8de71d5f3dfc125fd3a5206bc404a76df39367a45fa6c3f67ed6323de91c15d"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/contracts/assets/v1/map-manifest.schema.json",
+        "match": true,
+        "actualSha256": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/contracts/assets/v1/common.schema.json",
+        "match": true,
+        "actualSha256": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/world/runtime.ts",
+        "match": false,
+        "actualSha256": "6863c88da903f0bca72bbe44f0b1ab9eb9484eb38050af908dd8f54c069f4c24"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/world/map/manifest.ts",
+        "match": true,
+        "actualSha256": "575b89163952959bdc20760a9ab19cafe6c950e7ffeb48e3a00bf3305ac8b4a2"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/world/map/resources.ts",
+        "match": true,
+        "actualSha256": "829e8e8c901223307e5ba8bcf4a306e01e12f7d09f7b08bc9c4f884c0d0ead4a"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/world/map/schema.ts",
+        "match": true,
+        "actualSha256": "fcc2a15a5be5181f794e8cf3740bd6813860ddb100953473ba722dd50f6f48e4"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/world/camera/port.ts",
+        "match": true,
+        "actualSha256": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/world/input/controller.ts",
+        "match": true,
+        "actualSha256": "598c4719e73a8f5c8ca99e7cb513aa8c22bfdb70ae46d6548307791d8d718476"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/shared/api/http.ts",
+        "match": true,
+        "actualSha256": "e658f8da8e97c5e6801762c5fc552732c2e84a058d4deebdd7b08a1d6b2b57bb"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/shared/api/errors.ts",
+        "match": true,
+        "actualSha256": "f9b2ef9b09c1f4cf136594f00be51a372ad7fba60b0f1998b8672fe1568d6012"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/features/auth/model/session.ts",
+        "match": true,
+        "actualSha256": "a2f380d2062e136302ed803f9a98c45ff1d84d300d56f31e0540758be3bb24e3"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/app/router.tsx",
+        "match": true,
+        "actualSha256": "2d34602c4af94952b16a3d0a31a5ef6fb8c961571d3dac1ed70bb1abf40a5ee0"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/app/routes.ts",
+        "match": true,
+        "actualSha256": "e49ceffdc2e6e52bfba8e361b727504268fab264763c124878a556ee7f677829"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/src/app/navigation.tsx",
+        "match": true,
+        "actualSha256": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc"
+      },
+      {
+        "path": "<worktrees>/fe-places-review/frontend/pnpm-lock.yaml",
+        "match": true,
+        "actualSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+      }
+    ],
+    "historicalEvidence": [
+      {
+        "path": "<tmp>/mcr-fe19-tests-first.txt",
+        "match": true,
+        "actualSha256": "328c5c77a86ee0f9919b44c41fbba58863aee66e5271843d7c5dac2a4be7c5c4"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-typecheck-first.txt",
+        "match": true,
+        "actualSha256": "fd0ee1409af01d3a84f9323263ed90838cc9a2a8a2e3c4c37d057e06ef6a6e5f"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-typecheck-second.txt",
+        "match": true,
+        "actualSha256": "2a39ed0aee95c8a691b537920874fe0221b0067011f007cccb9adc5f1ef325cb"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-native-first/report.json",
+        "match": true,
+        "actualSha256": "4a6fdb92837259cfba4da95137802d903523e68a0b072aeac40603e758fa7ea7"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-native-second/report.json",
+        "match": true,
+        "actualSha256": "701c9091c6178b8796a42491529e949fdad32a85ddde5a0958e4e6a7c718c325"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-native-third/report.json",
+        "match": true,
+        "actualSha256": "701c9091c6178b8796a42491529e949fdad32a85ddde5a0958e4e6a7c718c325"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-native-fourth/report.json",
+        "match": true,
+        "actualSha256": "0a93b0290edb14021cce14226c6f71adf1a61102e9ca3afa35ce59afb5616426"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-native-final/report.json",
+        "match": true,
+        "actualSha256": "b18fa0eb1f6069876d46a6e60fc324d4f5da1a45a58ad91be7ab3679231934c5"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-delivery/report.json",
+        "match": true,
+        "actualSha256": "6d9b693bfe5ca266e0fcb209e63f88cfa90ccf5e0cb1bf3ffc6781d99a270e14"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-handoff/detail-390.png",
+        "match": true,
+        "actualSha256": "8a43ed37f27ae493c640e2942553e8785368b2e1ab9fb715f48c6dcec6de56b5"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-handoff/help-390.png",
+        "match": true,
+        "actualSha256": "8187757a8470e3629a12f322c46a3300523565c000e62a7d92b83bccbc814c08"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-handoff/mismatch-390.png",
+        "match": true,
+        "actualSha256": "4d94263584f53bec51dfe3f8d35f42bdfc2e91d31074c6956b1e2f19602c7eef"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-handoff/overview-390.png",
+        "match": true,
+        "actualSha256": "5ed2d38d3d2e1d3df74ab7129ac5dd0ea32fb8a025f8922bbe83c069a65a9b42"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-handoff/report.json",
+        "match": true,
+        "actualSha256": "4ad33c1f2c68607c7de42ec9740836805780bdfb195127530a31cf57b4947f05"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-recovery/detail-390.png",
+        "match": true,
+        "actualSha256": "8a43ed37f27ae493c640e2942553e8785368b2e1ab9fb715f48c6dcec6de56b5"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-recovery/help-390.png",
+        "match": true,
+        "actualSha256": "8187757a8470e3629a12f322c46a3300523565c000e62a7d92b83bccbc814c08"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-recovery/mismatch-390.png",
+        "match": true,
+        "actualSha256": "83ffb562eb306eddbd125807f3279d77c81e462bcc2953019210a12ae89f1452"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-recovery/overview-390.png",
+        "match": true,
+        "actualSha256": "5ed2d38d3d2e1d3df74ab7129ac5dd0ea32fb8a025f8922bbe83c069a65a9b42"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-recovery/report.json",
+        "match": true,
+        "actualSha256": "89a085575aa49fccbbe334b7609920e3441d2279c16d327cd83cca2be086e6e9"
+      }
+    ],
+    "reviewEvidence": [
+      {
+        "path": "<tmp>/mcr-fe19-review-original/probe.json",
+        "match": true,
+        "actualSha256": "1dfe120001156de0e9e4a0e958edde2c8329d67b31b4c719980fe0430884ac75"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-review-original/probe.log",
+        "match": true,
+        "actualSha256": "a24189c97120960584ee21d95b21ee07d2ef15924aa291ab69d08514419e8a15"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-review-original/probe.mjs",
+        "match": true,
+        "actualSha256": "6ec7681bd5c1fca594cabc9d0ea90959afa542e66fbe8f5a94f9de35e8af5b7b"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-probe.mjs",
+        "match": true,
+        "actualSha256": "31874f069f55e7182fc3aa33bb4b56bdc74535609e0de673057ab0644e132969"
+      },
+      {
+        "path": "<tmp>/mcr-fe19-r1-probe.json",
+        "match": true,
+        "actualSha256": "e5865e65b3b2b374fe83fd1a037763387f9ced8cf33f2181fd767c553580ced8"
+      }
+    ]
+  },
+  "nativeSourceFilesChecked": 138,
+  "nativeSourceDifferences": [
+    "frontend/src/world/map/tiled.ts",
+    "frontend/src/world/runtime.ts",
+    "frontend/src/world/scenes/MapScene.ts"
+  ],
+  "nativeContractsMatch": true
+}

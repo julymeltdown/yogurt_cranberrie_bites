@@ -8,8 +8,8 @@ instruction to preserve them without orchestration overrides.
 |---|---|---|---|
 | BE04 real HTTP owner chain | `mcr(be) BE04 real HTTP owner chain` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-real-owners` / `codex/mcr-be-http-real-owners` |
 | BE08 places and map releases | `mcr(be) BE08 places and map releases` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-places` / `codex/mcr-be-BE08` |
-| FE19 map, places and help | `mcr(fe) FE19 map places and help` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-places-help` / `codex/mcr-fe-FE19` |
-| FE19 independent integration review | `mcr(fe) FE19 integration review` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-places-review` / `codex/mcr-fe-FE19-review` |
+| C04 frontend party/gift consumer review | `mcr(fe) C04 party and gift consumer review` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-domain-consumer` / `codex/mcr-fe-C04-consumer` |
+| FE17 replication and reconnect | `mcr(fe) FE17 replication and reconnect` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-replication` / `codex/mcr-fe-FE17` |
 | C04 feature readiness review | `mcr(qa) C04 feature readiness review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-domain-readiness` / `codex/mcr-qa-C04-readiness` |
 
 The entries below retain earlier assignment history; this table and the latest
@@ -466,3 +466,32 @@ path; a chat's inherited process directory is not write authorization.
 The main chat reviewed and integrated the HTTP and composition worker chains,
 then wired the configured reader. It retains shared contracts and publishing.
 Five purposeful chats currently suffice; no duplicate frontend writer is added.
+
+
+## Current frontend allocation after FE19 delivery
+
+FE19 implementation and independent review both report actual COMPLETE goals,
+followed by null goal reads, and clean stopped checkouts. Parent integrated both
+worker commits and both sole-report commits. Combined61 focused tests/build/lint
+pass; final source and independent evidence hashes match. The new assignments
+both start at `4dc3bb3dd8015abcf26839c34954f7ca91870ceb`, with tool-confirmed
+ACTIVE unbudgeted goals and unchanged model settings.
+
+- FE17 owns new `frontend/src/world/network/replication.ts`, optional new
+  `world/network/replication/**`, headless `world/entities/**`, new
+  `world/network/__tests__/replication.test.ts` and replication-only fixtures/
+  browser runner, and `docs/mcr/frontend/world-replication.md`. It consumes the
+  existing transport; no second connection, invented physics, command replay,
+  legacy artwork or production placeholder is authorized. Existing runtime,
+  transport engine, app, contracts and manifests remain outside its ownership.
+  FE12 rendering and real-server qualification are explicit later gates.
+- The original frontend chat independently reviews only FE21/FE24 candidate
+  schemas/operations and actual FE01/FE02/FE09 consumers. Sole tracked write:
+  `docs/mcr/qa/domain-frontend-consumer-review.md`. It identifies exact shared
+  transport/idempotency/error and contract prerequisites before feature writes;
+  it cannot freeze C04. Temporary probes stay outside the repository.
+
+BE04 retains exclusive Rust target ownership. BE08 continues source work and has
+parent dependency prerequisite `ec4728d` cherry-picked as `097651c`; no package
+version changed. Its source is not yet compile-ready. QA C04 report corrections
+are still under parent review. Only the integrator publishes reviewed work.
