@@ -5,7 +5,7 @@ use concert_domain::{
     world::{Limits, WorldMap},
     AssetId, AvatarSelection, Revision,
 };
-use concert_service::world::{interest::*, membership::*, runtime::*, simulation::*};
+use concert_service::world::{interest::*, runtime::*, simulation::*};
 use std::str::FromStr;
 use uuid::Uuid;
 pub fn id(v: u128) -> Uuid {

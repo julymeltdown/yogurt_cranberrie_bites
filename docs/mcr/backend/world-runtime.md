@@ -1,6 +1,6 @@
 # World runtime and socket delivery
 
-Status: IN_PROGRESS. Native compilation and socket tests are NOT_RUN at this source checkpoint. Production live-owner transport, real two-account Auth flow, reviewed product art, load and IN01 acceptance remain unproven.
+Status: IN_PROGRESS. The combined native source checkpoint compiles and 90 focused tests pass (28 simulation, 11 replication, 15 recovery, 24 runtime, 12 actual socket fixture tests). Production live-owner transport, real two-account Auth flow, reviewed product art, load and IN01 acceptance remain unproven.
 
 ## Ownership and ancestry
 
@@ -37,3 +37,15 @@ The bridge consumes a one-use digest through `PgWorldRepository`, performs fresh
 - Authored unit and actual loopback socket regressions are NOT_RUN. Socket fixtures explicitly synthesize authority and geometry. They do not prove live canonical Auth, product art, deployed Gateway routing, real multiuser behavior, load, IN01 or release acceptance.
 
 A later evidence checkpoint must record exact commands/exits, current source hashes, Cargo JSON-selected executable hashes/copies and unresolved failures. No test count or historical evidence is promoted here.
+
+## First native checkpoint (2026-11-04)
+
+Central source/dependency prerequisite `3b18b94` was merged at `5bc0554dacaae2bea11b1487a1cc71382190ca91`, preserving Main's ownership and the existing DB/RPC exports. Exact dependency follow-up `4091e4b` is local `ce9bab5`; it exposes retained tokio-tungstenite 0.24.0 for typed Capacity/Utf8/Protocol mapping without error-text parsing. Main's unrelated published frontend changes arrived only as unchanged central merge ancestry; this worker authored no frontend patch.
+
+The leased Rust 1.88 command was `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_runtime --test world_ws --test world_simulation --test world_replication --test world_recovery --no-run --message-format=json`. Initial compile exits 101 identified an owned ingress reference mismatch and a socket-test orphan implementation; both were corrected. Third combined compile exited 0. All five executables were selected from Cargo JSON, copied outside the mutable target and hashed before execution.
+
+The first run passed all 78 simulation/replication/recovery/runtime cases. Socket run passed 3/8 and found redundant recovery cleanup after an acknowledged disconnect and a known-revocation reason incorrectly mapped to unavailable. The owned runtime now retries newly registered recovery obligations and preserves expired/revoked authority close reasons. Fourth focused compile (runtime and sockets only) exited 0. Runtime 24/24 and socket 12/12 then passed with `--test-threads=2 --nocapture`; source inputs were captured before execution. The socket tests include two independent actual TCP/WS clients observing authoritative movement, Origin/query rejection, unknown/replayed tickets, connection-relative auth timeout, binary 1003, native UTF-8 1007, oversized/fragment aggregate 1009, input flood 4429, explicit revocation 4401, peer room cleanup and two-socket shutdown.
+
+Immutable evidence root: `/private/tmp/mcr-world-runtime-native-20261104/`. Commands/compile outputs are `compile{,-2,-3,-4}.{jsonl,stderr}`; test logs are `world_{simulation,replication,recovery,runtime,ws}-3.log`, corrected `world_runtime-4.log` and `world_ws-4.log`; source bindings are `inputs-3.json` and `inputs-4.json`. Exact corrected executable SHA256: runtime `b19e71cba03f529e4baeae62a0dd2d2e418e55cd6f8debaec1abdd2ab4311ea1`, sockets `6985bfcfbbd46fa1acb1c6e6fd6f94f60a532c79082bec5357fc3d5701d9a8a7`. Mutable build output is not treated as immutable proof.
+
+This proves focused native behavior with synthetic authority/geometry. Real database bridge lifecycle, production live Auth/Profile/recipient producer, distributed invalidation semantics, native backpressure under saturation, actual product release/assets, Gateway-deployed two-account flow and load are still outstanding. The active goal remains unfinished. Main allocated a separate real Auth ReadWorldSession producer; a local mutex/generation alone cannot qualify remote owner revocation.

@@ -5,9 +5,7 @@ use concert_domain::{
     world::{Input, Limits, WorldMap},
     AssetId, AuthUserId, AvatarSelection, EventId, ParticipantKey, Revision,
 };
-use concert_service::world::{
-    ingress, interest, membership, recovery, replication, runtime, session, simulation,
-};
+use concert_service::world::{ingress, interest, membership, replication, runtime, simulation};
 use ingress::*;
 use interest::{Facing, ProjectionError, PublicIdentity, RecipientPolicy, RecipientView};
 use membership::*;

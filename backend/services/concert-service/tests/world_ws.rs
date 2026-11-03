@@ -13,7 +13,7 @@ use serde_json::{json, Value};
 use std::{
     collections::{BTreeMap, BTreeSet},
     sync::{Arc, Mutex},
-    time::{Duration, Instant},
+    time::Duration,
 };
 use tokio_tungstenite::{
     connect_async,
@@ -42,7 +42,15 @@ impl Authority {
         self.records.lock().unwrap().entries.remove(&user);
     }
 }
-impl CanonicalAuthorityPort for Arc<Authority> {
+#[derive(Clone)]
+struct OwnerPort(Arc<Authority>);
+impl std::ops::Deref for OwnerPort {
+    type Target = Authority;
+    fn deref(&self) -> &Authority {
+        &self.0
+    }
+}
+impl CanonicalAuthorityPort for OwnerPort {
     fn publication_fence(&self) -> Arc<Mutex<()>> {
         self.fence.clone()
     }
@@ -70,7 +78,7 @@ impl CanonicalAuthorityPort for Arc<Authority> {
         Ok(())
     }
 }
-impl RecipientPolicy for Arc<Authority> {
+impl RecipientPolicy for OwnerPort {
     fn current(
         &self,
         b: &Binding,
@@ -185,8 +193,8 @@ impl Harness {
                 utc: anchor,
             },
             vec![spec(room, 50)],
-            authority.clone(),
-            authority.clone(),
+            OwnerPort(authority.clone()),
+            OwnerPort(authority.clone()),
             transport.clone(),
         )
         .unwrap();
@@ -406,4 +414,95 @@ fn production_configuration_never_promotes_unavailable_or_partial_authority() {
         (name == "CONCERT_WORLD_OWNER_ID").then(|| id(4).to_string())
     ))
     .is_err());
+}
+
+#[tokio::test]
+async fn native_oversize_and_fragment_aggregate_close_with_1009() {
+    use tokio_tungstenite::tungstenite::protocol::frame::{
+        coding::{Data, OpCode},
+        Frame,
+    };
+    let h = Harness::start().await;
+    let mut direct = h.connect().await;
+    direct.send(Message::Text("x".repeat(4097))).await.unwrap();
+    assert_eq!(close_code(&mut direct).await, 1009);
+    let mut fragments = h.connect().await;
+    fragments
+        .send(Message::Frame(Frame::message(
+            vec![b'x'; 3000],
+            OpCode::Data(Data::Text),
+            false,
+        )))
+        .await
+        .unwrap();
+    fragments
+        .send(Message::Frame(Frame::message(
+            vec![b'x'; 2000],
+            OpCode::Data(Data::Continue),
+            true,
+        )))
+        .await
+        .unwrap();
+    assert_eq!(close_code(&mut fragments).await, 1009);
+    h.close().await;
+}
+#[tokio::test]
+async fn native_invalid_utf8_closes_with_1007() {
+    use tokio_tungstenite::tungstenite::protocol::frame::{
+        coding::{Data, OpCode},
+        Frame,
+    };
+    let h = Harness::start().await;
+    let mut client = h.connect().await;
+    client
+        .send(Message::Frame(Frame::message(
+            vec![0xff],
+            OpCode::Data(Data::Text),
+            true,
+        )))
+        .await
+        .unwrap();
+    assert_eq!(close_code(&mut client).await, 1007);
+    h.close().await;
+}
+#[tokio::test]
+async fn native_input_burst_is_rate_limited_with_4429() {
+    let h = Harness::start().await;
+    let mut client = h.connect().await;
+    client.send(h.auth('A')).await.unwrap();
+    let snapshot = value(&mut client).await;
+    for seq in 1..=100 {
+        let _=client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"input","streamId":snapshot["streamId"],"roomEpoch":snapshot["roomEpoch"],"seq":seq,"axisX":1,"axisY":0,"buttons":[]}).to_string())).await;
+    }
+    assert_eq!(close_code(&mut client).await, 4429);
+    h.close().await;
+}
+#[tokio::test]
+async fn peer_close_releases_room_without_stopping_another_client() {
+    let h = Harness::start().await;
+    let mut a = h.connect().await;
+    let mut b = h.connect().await;
+    a.send(h.auth('A')).await.unwrap();
+    let _ = value(&mut a).await;
+    b.send(h.auth('B')).await.unwrap();
+    let _ = value(&mut b).await;
+    a.close(None).await.unwrap();
+    let mut removed = false;
+    for _ in 0..10 {
+        if !h
+            .authority
+            .records
+            .lock()
+            .unwrap()
+            .entries
+            .contains_key(&id(1))
+        {
+            removed = true;
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(25)).await;
+    }
+    assert!(removed);
+    assert_eq!(h.authority.records.lock().unwrap().entries.len(), 1);
+    h.close().await;
 }

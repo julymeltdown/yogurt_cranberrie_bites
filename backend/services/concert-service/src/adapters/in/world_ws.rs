@@ -362,7 +362,7 @@ async fn session(
                 let Ok(mut slot) = slot.lock() else { return Poll::Ready(None); };
                 Pin::new(&mut slot.socket).poll_next(cx)
             }) => {
-                let message = match message { Some(Ok(v)) => v, None => return Ok(()), Some(Err(_)) => return Err(SafeClose::INVALID) };
+                let message = match message { Some(Ok(v)) => v, None => return Ok(()), Some(Err(error)) => return Err(native_error(error)) };
                 let (kind, bytes) = match message {
                     Message::Text(text) => (FragmentKind::Text, text.as_bytes().to_vec()),
                     Message::Binary(bytes) => (FragmentKind::Binary, bytes.to_vec()),
@@ -405,5 +405,18 @@ async fn session(
                 }
             }
         }
+    }
+}
+
+fn native_error(error: axum::Error) -> SafeClose {
+    use tokio_tungstenite::tungstenite::Error;
+    match error.into_inner().downcast::<Error>().as_deref() {
+        Ok(Error::Capacity(_)) => SafeClose::TOO_BIG,
+        Ok(Error::Utf8) => SafeClose {
+            code: 1007,
+            label: "INVALID_UTF8",
+        },
+        Ok(Error::Protocol(_)) => SafeClose::INVALID,
+        _ => SafeClose::UNAVAILABLE,
     }
 }

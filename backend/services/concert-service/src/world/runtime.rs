@@ -7,7 +7,7 @@ use super::{
     recovery::Recovery,
     replication::{Delivery, QueueLimits, SnapshotCause},
     session::RevokeReason,
-    simulation::{Binding, ResourcePin, Simulation},
+    simulation::{AuthorityError, Binding, MembershipPort, ResourcePin, Simulation},
 };
 use concert_domain::{
     world::{Input, Limits, Position, WorldMap},
@@ -460,6 +460,25 @@ where
                 self.cleanup.remove(&cleanup_key(&b));
             }
         }
+        // Disconnect can register a new recovery cleanup obligation after the
+        // first pass. Confirm that exact idempotent release before reporting it.
+        let membership = &mut self.membership;
+        let _ = self
+            .recovery
+            .retry_cleanup(|b| membership.release(b).is_ok());
+    }
+    fn authority_reason(&mut self, b: &Binding, now: u64) -> RevokeReason {
+        if self
+            .recovery
+            .stream_mut(b)
+            .is_ok_and(|s| s.deadline().monotonic_ms <= now)
+        {
+            return RevokeReason::SessionExpired;
+        }
+        match self.membership.current(b, now) {
+            Err(AuthorityError::Revoked) => RevokeReason::SessionRevoked,
+            _ => RevokeReason::PolicyUnavailable,
+        }
     }
     /// Called independently of socket writes, on the one 20Hz process scheduler.
     pub fn maintain(&mut self, now: u64) -> Result<Maintenance, RuntimeError> {
@@ -469,7 +488,8 @@ where
         let mut report = Maintenance::default();
         let revoked = self.recovery.sweep(now, &self.membership);
         for b in revoked {
-            self.close_member(&b, RevokeReason::PolicyUnavailable);
+            let reason = self.authority_reason(&b, now);
+            self.close_member(&b, reason);
             report.closed += 1;
         }
         for room in self.rooms.values_mut() {
@@ -564,7 +584,8 @@ where
             .check_authority(now, &self.membership)
             .is_err()
         {
-            self.close_member(b, RevokeReason::PolicyUnavailable);
+            let reason = self.authority_reason(b, now);
+            self.close_member(b, reason);
             return Ok(());
         }
         let frame = match self.frame(b, now) {

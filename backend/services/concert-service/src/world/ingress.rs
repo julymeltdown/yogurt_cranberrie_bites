@@ -596,7 +596,7 @@ impl ConnectionIngress {
                 return Err(SafeClose::INVALID)
             }
             (Some((stream, _)), ClientMessage::SwitchRoom { stream_id, .. })
-                if stream_id != *stream =>
+                if *stream_id != *stream =>
             {
                 return Err(SafeClose::INVALID)
             }

@@ -11,7 +11,7 @@ use crate::{adapters::r#in::world_ws::AdmissionPort, bootstrap::BootstrapService
 use async_trait::async_trait;
 use chrono::{DateTime, TimeDelta, Utc};
 use concert_application::{identity::AccessCredential, world_ticket::*};
-use concert_domain::{EventId, ParticipantKey};
+use concert_domain::EventId;
 use std::{
     collections::{BTreeMap, BTreeSet},
     sync::{Arc, Mutex},
@@ -453,7 +453,7 @@ impl AdmissionBridge {
         }) {
             return Ok(());
         }
-        if views.absent.remove(&cleanup_key(b)) {
+        if views.absent.contains(&cleanup_key(b)) {
             return Ok(());
         }
         if views.cleanup.len() >= MAX_MEMBERS && !views.cleanup.contains_key(&cleanup_key(b)) {
