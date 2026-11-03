@@ -9,7 +9,8 @@ await writeFile(path, source)
 let ctx, substitutions = 0
 try {
   ctx = await startVitest('test', ['src/features/auth/__tests__/enrollment.test.ts'], {
-    watch:false, plugins:[{name:'exact-pre-FE04-baseline',enforce:'pre',resolveId(id){
+    watch:false,
+  }, { plugins:[{name:'exact-pre-FE04-baseline',enforce:'pre',resolveId(id){
       if(id.endsWith('/shared/api/http') || id.endsWith('/shared/api/http.ts')) { substitutions++; return path }
     }}],
   })

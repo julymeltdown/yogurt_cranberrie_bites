@@ -13,7 +13,7 @@ real media integration, real device, IN02/IN03 or release acceptance is claimed.
   were explicitly transferred to this worker and subsequently released back to
   central ownership. This document does not certify remote publication.
 - Media implementation: `795f46b4a32ab26bfb0e1cb334d46b6c69ed9b5a`, child of
-  the binary extension. The following documentation/diagnostic-only commit is
+  the binary extension. The final documentation/diagnostic-only correction is
   identified by `git log -1 --format=%H -- docs/mcr/frontend/media-upload.md`.
 - Only the designated delivery integrator publishes master. Worker handoffs go
   directly to delivery and consumers; main/SL review is not a prerequisite.
@@ -50,8 +50,8 @@ frontend/src/features/media/model/__tests__/browser-smoke.mjs
 frontend/src/features/media/model/__tests__/baseline-diagnostic.mjs
 ```
 
-The follow-up changes only this document and the diagnostic script's assertion
-that its baseline alias was exercised. No source archive, supplied artwork,
+The follow-ups change only this document and the diagnostic script: its baseline
+alias must be exercised and is configured through Vite overrides. No source archive, supplied artwork,
 backend, contract, manifest, lockfile, router or production UI was changed.
 
 ## Provenance and contract pin
@@ -181,7 +181,7 @@ run in this worktree's `frontend/` with that Node directory prepended to PATH.
 | `node node_modules/vitest/vitest.mjs run src/features/media/model/__tests__` | Exit 0; **73 tests in five files**: MIME/bytes/dimensions, compression errors, worker cancel/stall cleanup, all upload-stage cancels, stale identities, explicit retry restrictions, receipt recovery, canonical transport and authorized media display. |
 | `node node_modules/vitest/vitest.mjs run src/shared/api/__tests__ src/features/auth/__tests__` at binary checkpoint | Exit 0; **413 tests**. |
 | Combined media/HTTP/auth before adding display/worker cases | Exit 0; 476 tests. |
-| Final combined media/HTTP/auth (486 cases) | **Exit 1; 485 pass, one enrollment cancellation assertion fails**, described below. This is not a fully green broad gate. |
+| Latest combined media/HTTP/auth (486 cases) | **Exit 0; all 486 pass in 15 files**. An earlier run had one intermittent enrollment cancellation failure, described below. |
 | `pnpm build` | Exit 0, includes typecheck. Existing main/community >500kB chunk warnings persist; media is not yet wired into the application root. |
 | `node node_modules/oxlint/bin/oxlint src vite.config.ts` | Exit 0. |
 | `node src/features/media/model/__tests__/browser-smoke.mjs` | Exit 0; installed Chrome **156.0.8078.80**, development and separately built production fixture. Bundled module-worker startup is exercised. |
@@ -199,16 +199,21 @@ receives no Cookie, Authorization, browser-intent, idempotency or client headers
 Raw reproducible report: `/tmp/mcr-fe04-evidence/results.json`. These are synthetic
 fixtures only; browser rendering and codec support on actual phones are NOT_RUN.
 
-The final broad run exposed
+An earlier broad run exposed
 `src/features/auth/__tests__/enrollment.test.ts:131`: a stored cloned Request's
-signal sometimes remains un-aborted after logout. Earlier broad runs passed;
-a single focused test passed; later full-file runs failed. The diagnostic
-`node src/features/media/model/__tests__/baseline-diagnostic.mjs` reproduces the
-same **48 pass / 1 fail, exit 1** using the exact pre-FE04 transport at the
-assignment base. It verifies its baseline alias is used and removes its temporary
-file. No auth test/source or released HTTP file was changed to suppress this
-failure. Delivery has the finding for the auth owner; this evidence does not
-establish the root cause or certify the broad auth gate.
+signal sometimes remained un-aborted after logout (485/486 passed, exit 1).
+Earlier broad runs, a direct single-test run, and the **latest full 486-test run
+all pass**. Root cause is unresolved. The first diagnostic was incorrectly
+configured and did not exercise its baseline alias; its result is not baseline
+evidence, and the initial baseline-reproduction claim was explicitly withdrawn.
+
+The corrected `node src/features/media/model/__tests__/baseline-diagnostic.mjs`
+uses Vite overrides, asserts its alias was exercised (two substitutions), and
+removes the temporary file in `finally`. Its verified pre-FE04 transport run
+**passes 49/49 enrollment tests, exit 0**. This does not establish that the
+intermittent failure is preexisting or introduced by FE04. No auth test/source
+or released HTTP file was changed to suppress it. Delivery received the corrected
+evidence for follow-up; one passing run does not eliminate the intermittent risk.
 
 BE24 production handlers, live storage, real multiuser image publication,
 feed/giveaway root integration, revocation delivery from a real service, actual
