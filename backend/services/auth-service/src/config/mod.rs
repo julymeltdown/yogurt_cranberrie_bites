@@ -495,6 +495,7 @@ impl PasswordResetMailerMode {
 
 #[derive(Clone)]
 pub struct AppState {
+    pub concert_admission: Arc<dyn crate::application::concert_identity::CurrentAdmissionPort>,
     pub signup: SignupUseCase<Arc<PgUserRepository>>,
     pub login: LoginUseCase<
         Arc<PgUserRepository>,
@@ -769,6 +770,9 @@ pub async fn build_state_with_auth_capabilities(
     );
 
     Ok(AppState {
+        concert_admission: Arc::new(
+            crate::adapters::out::persistence::concert_identity::PgCurrentAdmission::new(pool.clone()),
+        ),
         signup: SignupUseCase::new(
             user_repository.clone(),
             auth_transactions.clone(),

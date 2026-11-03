@@ -50,6 +50,21 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
+    fn concert_admission_is_gateway_only_and_actor_bound() {
+        let path = "/auth.v1.AuthService/ReadConcertAdmission";
+        for caller in Workload::ALL {
+            assert_eq!(
+                AUTH_METHOD_POLICY.allows(path, caller),
+                caller == Workload::Gateway
+            );
+        }
+        assert_eq!(
+            AUTH_METHOD_POLICY.actor_fields_for(path),
+            Some(&[&[1_u32][..]][..])
+        );
+    }
+
+    #[test]
     fn table_covers_exactly_the_proto_service() {
         let proto = include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
