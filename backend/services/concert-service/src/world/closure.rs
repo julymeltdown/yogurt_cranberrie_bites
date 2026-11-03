@@ -62,7 +62,7 @@ pub(crate) async fn fence_event_read_only_in(
             .fetch_optional(&mut *c)
             .await
             .map_err(|_| CommandError::Unavailable)?;
-    if !phase.is_some_and(|p| p == "READ_ONLY") {
+    if !matches!(phase.as_deref(), Some("READ_ONLY" | "ARCHIVED")) {
         return Err(CommandError::InvalidState);
     }
     let valid: bool = sqlx::query_scalar(
@@ -80,6 +80,10 @@ pub(crate) async fn fence_event_read_only_in(
         .bind(event).bind(job).fetch_optional(&mut *c).await.map_err(|_|CommandError::Unavailable)? {
         if row.try_get::<Uuid,_>("operation_id").map_err(|_|CommandError::InvalidState)?!=operation {return Err(CommandError::Conflict)}
         return Ok(WorldReadOnlyReceipt{event,job,operation,receipt_id:row.try_get("receipt_id").map_err(|_|CommandError::InvalidState)?,revision:row.try_get("revision").map_err(|_|CommandError::InvalidState)?});
+    }
+    let initial:bool=sqlx::query_scalar("select exists(select 1 from public.concert_closure_jobs where event_id=$1 and job_id=$2 and revision=1 and progress->>'state'='PENDING')").bind(event).bind(job).fetch_one(&mut *c).await.map_err(|_|CommandError::Unavailable)?;
+    if phase.as_deref() != Some("READ_ONLY") || !initial {
+        return Err(CommandError::InvalidState);
     }
     // Capture the original owner identities before legally retiring their rows.
     let owners=sqlx::query("select room_id,owner_process_id,owner_epoch from public.concert_world_owner_leases where event_id=$1 order by room_id for update")
@@ -120,3 +124,7 @@ pub(crate) async fn fence_event_read_only_in(
         revision: 1,
     })
 }
+
+#[cfg(test)]
+#[path = "../../tests/world_read_only_support/qualified.rs"]
+mod tests;
