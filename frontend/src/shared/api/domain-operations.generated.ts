@@ -7,7 +7,7 @@
 // contracts/domain/v1/giveaway.schema.json: 3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d
 // contracts/domain/v1/mural.schema.json: cdff2c08a0d31de702064b8d5532320ccf88fb23d29c24c80b244c6531ba1a15
 // contracts/domain/v1/operations.json: 42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223
-// contracts/domain/v1/party.schema.json: 6a1ae03455cea256e26b75b0063927a4972c5e63ceaceeb45bf9b48837f63578
+// contracts/domain/v1/party.schema.json: 7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03
 // contracts/domain/v1/social.schema.json: b275b36f2ad8eee90922f7ad27cfcbece943773a94831720b6dfca588d0201d2
 export const DOMAIN_OPERATIONS = {
   "listConcertParties": {"method":"GET","path":"/api/concert/events/{eventId}/parties","query":"party.PartyQuery","parameters":{"eventId":{"type":"string","format":"uuid","pattern":"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"}},"idempotency":false,"errors":{"400":["INVALID_INPUT"],"401":["AUTHENTICATION_REQUIRED"],"403":["PERMISSION_DENIED"],"404":["RESOURCE_UNAVAILABLE"],"429":["RATE_LIMITED"],"500":["INTERNAL_ERROR"],"503":["DEPENDENCY_UNAVAILABLE"],"504":["DEADLINE_EXCEEDED"]},"success":[200]},

@@ -171,12 +171,12 @@ class DomainTests(unittest.TestCase):
     def test_receipt_is_scoped_to_operation_actor_event(self):
         receipt = fixture('command-pending')
         self.contract.validate_http(receipt, 'reserveConcertGiveaway', 202,
-                                    actor_id=uid(2), event_id=uid(1))
+                                    actor_id=uid(2), event_id=uid(1), idempotency_key=receipt['idempotency_key'])
         for operation, actor, event in [('claimConcertReservation', uid(2), uid(1)),
                                        ('reserveConcertGiveaway', uid(3), uid(1)),
                                        ('reserveConcertGiveaway', uid(2), uid(99))]:
             self.rejected(lambda: self.contract.validate_http(receipt, operation, 202,
-                                                               actor_id=actor, event_id=event))
+                                                               actor_id=actor, event_id=event, idempotency_key=receipt['idempotency_key']))
 
     def test_receipt_fingerprints_and_key_material_stay_server_only(self):
         receipt = fixture('command-pending')
@@ -190,14 +190,17 @@ class DomainTests(unittest.TestCase):
                     {**receipt, key: value}, 'common.CommandReceipt'))
 
     def test_status_query_returns_original_command_metadata(self):
-        self.contract.validate_http(fixture('command-pending'), 'getConcertCommandStatus', 200,
-                                    actor_id=uid(2), event_id=uid(1))
+        receipt = fixture('command-pending')
+        self.contract.validate_http(receipt, 'getConcertCommandStatus', 200,
+                                    actor_id=uid(2), event_id=uid(1),
+                                    request_path='/api/concert/events/' + uid(1) + '/commands',
+                                    request_query=urlencode({'operation_id': receipt['operation_id'], 'idempotency_key': receipt['idempotency_key']}))
 
     def test_202_never_claims_success(self):
         receipt = fixture('command-pending')
         receipt.update(state='SUCCEEDED', result_status=200, resource_id=uid(6), resource_revision=1)
         self.rejected(lambda: self.contract.validate_http(receipt, 'reserveConcertGiveaway', 202,
-                                                           actor_id=uid(2), event_id=uid(1)))
+                                                           actor_id=uid(2), event_id=uid(1), idempotency_key=receipt['idempotency_key']))
 
     def test_terminal_party_cannot_reopen_or_complete_cancelled(self):
         for before, after in [('CANCELLED', 'OPEN'), ('CANCELLED', 'COMPLETED'), ('COMPLETED', 'OPEN')]:

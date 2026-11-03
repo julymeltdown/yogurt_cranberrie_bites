@@ -41,6 +41,15 @@
       "unavailable_key": "An unexpired receipt whose verification key is unavailable fails closed DEPENDENCY_UNAVAILABLE; an expired or retired key/receipt never executes again. Lost verification capability does not imply changed input or permission to reuse a key.",
       "comparison": "Verify the full MAC using the library constant-time verification API only after current authority checks. No unkeyed or legacy format fallback.",
       "privacy": "Fingerprint/key IDs are server-internal and absent from CommandReceipt, outbox invalidations and client errors. Public schema rejects request_hash and fingerprint fields. One-shot secret response loss still requires explicit authorized rotation."
+    },
+    "status_recovery": {
+      "lookup": "Bind every status response to captured actor, event, requested command and original key; known final target IDs must match. Command response type fixes the expected resource kind. Metadata never substitutes for the authorized resource reread.",
+      "unknown_or_inaccessible": "404 RESOURCE_UNAVAILABLE deliberately conflates never-recorded, no-longer-visible and unavailable receipt targets. It proves neither nonexecution nor valid retention and NEVER authorizes replay, a new key, or a presumed success.",
+      "pending": "202 is PENDING only; status polling is an explicit bounded read. No automatic command replay.",
+      "succeeded": "SUCCEEDED result_status equals the original command registered success_status, never pending 202 or arbitrary 2xx. Reread current authorized resource/activity before showing current domain state.",
+      "failed": "FAILED is terminal safe feedback with a reason registered for the original command, not permission to mint a replacement key.",
+      "retired_or_expired": "RETIRED or expiry never reexecutes. Lost retention or verification cannot justify a new key. Preserve uncertainty and let the user inspect current authorized activity.",
+      "retry": "The client does not infer retry eligibility from any status alone. Only an explicitly reviewed operation-specific policy with current authorization, original identical input/key and valid retention may allow manual retry; no such automatic policy is enabled here."
     }
   },
   "pagination": {
@@ -1186,5 +1195,21 @@
     "suspend": "ADVANCE_EVENT_ADMISSION_EPOCH_AND_REVOKE_EVENT_DERIVED_AUTHORITY",
     "unsuspend": "REQUIRE_FRESH_AUTHORIZATION_NEVER_RESTORE_PRIOR_AUTHORITY",
     "global_account_action": "SEPARATE_AUTH_OWNED_OPERATION"
+  },
+  "consumer_projection": {
+    "operations": [
+      "listConcertParties",
+      "getConcertParty",
+      "getConcertPartyActivity",
+      "listConcertGiveaways",
+      "getConcertGiveaway",
+      "getConcertGiftActivity"
+    ],
+    "context": "Require captured canonical actor/event and validated actual request target. Every returned row carries the same event_id, including party.Member; detail ID matches requested ID.",
+    "own_activity": "owned/giving owner.user_id, application applicant.user_id, membership user_id and reservation recipient_id match captured actor. Private activity remains private even when elements reuse a public DTO.",
+    "public_gifts": "Public list/detail never return DRAFT. Authorized own giving/management may include drafts.",
+    "collections": "Each independently paged collection has distinct entity IDs and at most requested limit (default20/max100). Preserve all cursors; one loaded page or absent row is not evidence of nonmembership or eligibility.",
+    "server_authority": "Server reauthorizes each target and every linked party/giveaway/place in captured event before projecting. Row fields cannot certify database relations, block policy or current authorization; clients suppress late results after session/event/policy changes.",
+    "capabilities": "Retain all7 current C03 decisions and reasons. NORMAL application requires mutations and meet availability; SAFETY cancellation is not blanket-disabled by mutations=false/EVENT_READ_ONLY in READ_ONLY. Unknown eligibility and other denial/unavailability fail closed, with server authorization authoritative."
   }
 }

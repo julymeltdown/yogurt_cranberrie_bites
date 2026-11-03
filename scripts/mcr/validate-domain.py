@@ -384,7 +384,41 @@ class Contract:
                         for row in self.operations), 'query references unknown command')
         return {'path': parameters, 'query': query}
 
-    def validate_http(self, value, operation_id, status, *, actor_id=None, event_id=None):
+    def _consumer_read(self, value, operation_id, actor_id, event_id, target):
+        """Six discovery/detail/own-activity predicates; schema validity is not authorization."""
+        def rows(page, key, owner=None, public_gift=False):
+            distinct(page['items'], key)
+            require(len(page['items']) <= target['query'].get('limit', 20), 'response exceeds requested page size')
+            for row in page['items']:
+                require(row['event_id'] == event_id, 'row event mismatch')
+                if owner:
+                    identity = row[owner]
+                    if isinstance(identity, dict):
+                        identity = identity['user_id']
+                    require(identity == actor_id, 'own activity actor mismatch')
+                if public_gift:
+                    require(row['state'] != 'DRAFT', 'public draft disclosure')
+
+        if operation_id == 'listConcertParties':
+            rows(value, 'party_id')
+        elif operation_id == 'listConcertGiveaways':
+            rows(value, 'giveaway_id', public_gift=True)
+        elif operation_id in ('getConcertParty', 'getConcertGiveaway'):
+            gift = operation_id == 'getConcertGiveaway'
+            require(value['giveaway_id' if gift else 'party_id'] == target['path']['giveawayId' if gift else 'partyId'],
+                    'detail target mismatch')
+            if gift:
+                require(value['state'] != 'DRAFT', 'public draft disclosure')
+        elif operation_id == 'getConcertPartyActivity':
+            rows(value['owned'], 'party_id', 'owner')
+            rows(value['memberships'], 'party_id', 'user_id')
+            rows(value['applications'], 'application_id', 'applicant')
+        elif operation_id == 'getConcertGiftActivity':
+            rows(value['giving'], 'giveaway_id', 'owner')
+            rows(value['receiving'], 'reservation_id', 'recipient_id')
+
+    def validate_http(self, value, operation_id, status, *, actor_id=None, event_id=None,
+                      request_path=None, request_query='', idempotency_key=None, expected_resource_id=None):
         require(type(status) is int, 'HTTP status required')
         matches = [op for op in self.operations if op['operationId'] == operation_id]
         require(len(matches) == 1, 'unknown HTTP operation')
@@ -393,16 +427,40 @@ class Contract:
             name = op['response'] if status == op['success_status'] else op['pending_response']
             require(name != 'BINARY', 'binary response needs media qualification')
             self.validate(value, name)
+            reads = {'listConcertParties', 'getConcertParty', 'getConcertPartyActivity',
+                     'listConcertGiveaways', 'getConcertGiveaway', 'getConcertGiftActivity'}
+            target = None
+            if operation_id in reads or name == 'common.CommandReceipt':
+                self.validate(actor_id, 'common.Uuid')
+                self.validate(event_id, 'common.Uuid')
+                if operation_id in reads or operation_id == 'getConcertCommandStatus':
+                    require(request_path is not None, 'captured request target required')
+                    target = self.validate_target(operation_id, request_path, request_query, event_id=event_id)
             if isinstance(value, dict) and 'event_id' in value and event_id is not None:
                 require(value['event_id'] == event_id, 'response event mismatch')
+            if operation_id in reads:
+                self._consumer_read(value, operation_id, actor_id, event_id, target)
             if name == 'common.CommandReceipt':
                 if operation_id == 'getConcertCommandStatus':
-                    require(any(row['operationId'] == value['operation_id'] and
-                                row['method'] != 'get' for row in self.operations),
-                            'receipt references unknown command')
+                    command_id = target['query']['operation_id']
+                    key = target['query']['idempotency_key']
                 else:
-                    require(value['operation_id'] == operation_id, 'receipt operation mismatch')
+                    command_id, key = operation_id, idempotency_key
+                self.validate(key, 'common.Uuid')
+                require(value['operation_id'] == command_id, 'receipt operation mismatch')
+                require(value['idempotency_key'] == key, 'receipt key mismatch')
                 require(actor_id is not None and value['actor_id'] == actor_id, 'receipt actor mismatch')
+                commands = [row for row in self.operations if row['operationId'] == command_id and row['method'] != 'get']
+                require(len(commands) == 1, 'receipt references unknown command')
+                command = commands[0]
+                if value['state'] == 'SUCCEEDED':
+                    require(value['result_status'] == command['success_status'], 'receipt final status mismatch')
+                    if expected_resource_id is not None:
+                        self.validate(expected_resource_id, 'common.Uuid')
+                        require(value['resource_id'] == expected_resource_id, 'receipt resource mismatch')
+                if value['state'] == 'FAILED':
+                    require(value['failure_reason'] in {reason for reasons in command['errors'].values() for reason in reasons},
+                            'receipt failure reason not registered for command')
                 if status == 202:
                     require(value['state'] == 'PENDING', '202 must remain pending')
             return
