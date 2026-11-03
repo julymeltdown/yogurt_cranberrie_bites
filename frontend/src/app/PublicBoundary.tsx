@@ -1,12 +1,14 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { FoundationApp } from './FoundationApp'
+import { DocumentPage } from '../features/public/ui/DocumentPage'
 import { SignIn } from '../features/auth/ui/SignIn'
 
 /** Lazy public-only boundary. No game/network imports and no fabricated session. */
 export default function PublicBoundary() {
-  const location = useLocation()
+  const location = useLocation(), params = useParams()
   if (location.pathname === '/') return <FoundationApp />
   if (location.pathname === '/login') return <SignIn />
+  if (location.pathname.startsWith('/legal/')) return <DocumentPage document={params.document} />
   const title = location.pathname === '/login' ? 'Sign in'
     : location.pathname === '/signup' ? 'Create account'
       : location.pathname === '/verify-email' ? 'Verify email'
