@@ -193,7 +193,7 @@ async fn write_settings(
     }
     let row = sqlx::query("select beacon_ttl_seconds,event_cutoff from public.concert_meeting_settings where event_id=$1 for share")
         .bind(event).fetch_optional(&mut *c).await.map_err(storage)?.ok_or(MeetingError::PolicyUnavailable)?;
-    let valid: bool = sqlx::query_scalar("select clock_timestamp() < $1 and $1 <= clock_timestamp()+make_interval(secs=>$2) and $1 <= $3")
+    let valid: bool = sqlx::query_scalar("select clock_timestamp() < $1 and $1 <= clock_timestamp()+make_interval(secs=>$2::integer) and $1 <= $3")
         .bind(meeting.expires_at).bind(row.try_get::<i32,_>("beacon_ttl_seconds").map_err(invalid)?)
         .bind(row.try_get::<chrono::DateTime<chrono::Utc>,_>("event_cutoff").map_err(invalid)?)
         .fetch_one(c).await.map_err(storage)?;

@@ -62,3 +62,5 @@ impl MeetingAuthority for UnavailableMeetingAuthority {
         Err(MeetingError::PolicyUnavailable)
     }
 }
+
+pub mod rally;

@@ -169,3 +169,5 @@ pub mod bootstrap;
 pub mod relationship;
 
 pub mod beacon;
+
+pub mod rally;

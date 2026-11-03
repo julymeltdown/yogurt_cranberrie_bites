@@ -148,13 +148,16 @@ pub async fn setup(pool: &PgPool) -> anyhow::Result<Fixture> {
     let party = Uuid::new_v4();
     sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Synthetic meeting fixture','OPEN')").bind(event).bind(format!("meeting-{}",event.simple())).execute(pool).await?;
     sqlx::query("insert into concert_meeting_settings(event_id,event_cutoff) values($1,clock_timestamp()+interval '1 day')").bind(event).execute(pool).await?;
-    sqlx::query("create table if not exists meeting_fixture_authority(event uuid primary key,party uuid not null,members uuid[] not null,blocked uuid[] not null default '{}',unavailable boolean not null default false)").execute(pool).await?;
-    sqlx::query("insert into meeting_fixture_authority(event,party,members) values($1,$2,$3)")
-        .bind(event)
-        .bind(party)
-        .bind(vec![owner, peer])
-        .execute(pool)
-        .await?;
+    sqlx::query("create table if not exists meeting_fixture_authority(event uuid primary key,party uuid not null,members uuid[] not null,blocked uuid[] not null default '{}',unavailable boolean not null default false,owner uuid not null,public_place uuid,meeting_revision bigint not null default 1,member_generation bigint not null default 1,ends_at timestamptz not null default clock_timestamp()+interval '1 hour')").execute(pool).await?;
+    sqlx::query(
+        "insert into meeting_fixture_authority(event,party,members,owner) values($1,$2,$3,$4)",
+    )
+    .bind(event)
+    .bind(party)
+    .bind(vec![owner, peer])
+    .bind(owner)
+    .execute(pool)
+    .await?;
     let mut value: serde_json::Value = serde_json::from_slice(include_bytes!(
         "../../../../../../contracts/fixtures/assets/map-manifest.json"
     ))?;
@@ -174,6 +177,11 @@ pub async fn setup(pool: &PgPool) -> anyhow::Result<Fixture> {
     let release = CatalogRelease::new(parse_stored_release(&bytes)?, bytes)?;
     PgPlaceRepository::new(pool.clone())
         .publish_release(EventId::from_uuid(event), release)
+        .await?;
+    sqlx::query("update meeting_fixture_authority set public_place=$2 where event=$1")
+        .bind(event)
+        .bind(place)
+        .execute(pool)
         .await?;
     let expires = sqlx::query_scalar("select clock_timestamp()+interval '120 seconds'")
         .fetch_one(pool)
@@ -195,4 +203,60 @@ pub async fn setup(pool: &PgPool) -> anyhow::Result<Fixture> {
             expires_at: expires,
         },
     })
+}
+
+#[async_trait]
+impl concert_service::meeting::rally::RallyAuthority for SyntheticAuthority {
+    async fn party_in(
+        &self,
+        c: &mut PgConnection,
+        q: concert_application::rally::RallyQuery,
+    ) -> Result<concert_application::rally::PartyMeeting, MeetingError> {
+        use concert_application::rally::*;
+        self.actor_in(c, q.actor).await?;
+        let row = sqlx::query("select * from meeting_fixture_authority where event=$1 for share")
+            .bind(q.actor.event)
+            .fetch_one(c)
+            .await
+            .map_err(|_| MeetingError::PolicyUnavailable)?;
+        if row.get::<Uuid, _>("party") != q.party {
+            return Err(MeetingError::ResourceUnavailable);
+        }
+        Ok(PartyMeeting {
+            query: q,
+            owner: row.get("owner"),
+            meeting_revision: row.get("meeting_revision"),
+            audience_revision: 1,
+            public_place_id: row.get("public_place"),
+            ends_at: row.get("ends_at"),
+            members: row
+                .get::<Vec<Uuid>, _>("members")
+                .into_iter()
+                .map(|user| RallyMember {
+                    user,
+                    membership_revision: row.get("member_generation"),
+                })
+                .collect(),
+        })
+    }
+    async fn peer_in(
+        &self,
+        c: &mut PgConnection,
+        q: concert_application::rally::RallyQuery,
+        peer: Uuid,
+    ) -> Result<(), MeetingError> {
+        self.actor_in(c, q.actor).await?;
+        let row = sqlx::query("select * from meeting_fixture_authority where event=$1 for share")
+            .bind(q.actor.event)
+            .fetch_one(c)
+            .await
+            .map_err(|_| MeetingError::PolicyUnavailable)?;
+        if row.get::<Uuid, _>("party") != q.party
+            || !row.get::<Vec<Uuid>, _>("members").contains(&peer)
+            || row.get::<Vec<Uuid>, _>("blocked").contains(&peer)
+        {
+            return Err(MeetingError::ResourceUnavailable);
+        }
+        Ok(())
+    }
 }

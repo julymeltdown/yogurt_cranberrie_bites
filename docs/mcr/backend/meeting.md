@@ -95,3 +95,46 @@ migration-ledger/release evidence. Tests cover privacy, receipts, competing
 revisions, database expiry, destination closure, invalid acknowledgement,
 configured cutoff, and transaction-fenced removal. Results remain NOT_RUN until
 reported with exact commands and exit codes.
+
+## BE19 explicit rally source checkpoint
+
+`RallyAuthority::party_in` must consume community's current, transaction-locked
+party meeting/member-reference seam. The current party has a reviewed public
+place and meeting interval, but no private beacon binding. `beacon_id` is therefore
+null; selecting a latest beacon or aliasing its revision would invent authority.
+The service checks the actual current party meeting revision, current membership
+generations, reviewed/open BE08 destination, configured cutoff and database time.
+
+The self-report command takes no target actor, world position or GPS evidence.
+`ON_MY_WAY`, `HERE`, `MET`, `NEED_HELP` and `LEFT` are explicit acknowledgements.
+The actor comes exclusively from authenticated context. First-report races are
+serialized by an exact event/party/actor advisory transaction lock; subsequent
+reports compare the self revision. Meeting movement rejects old meeting commands.
+Authorized old reports retain their original meeting revision so clients can
+render them explicitly stale and use the monotonic self revision to report again.
+Removed memberships are filtered immediately, and reapproval cannot restore their
+physical report. A new membership generation starts with expected revision zero
+while the stored report revision remains monotonic.
+
+Delivery approved the C04 RallyEntry receipt convention: resource and target are
+acting `user_id`, revision is the resulting entry revision, exact canonical
+`eventId/partyId` path and full body bind the command. Outbox records invalidate
+event queries; entry revisions are never compared across parties. FE23 was
+informed directly of this convention and stale-report behavior.
+
+Additional source paths: `concert-domain/src/rally/**`,
+`concert-application/src/rally/**`, `concert-service/src/meeting/rally.rs`,
+`concert-service/tests/meeting_rally.rs` and exact `pub mod rally` exports. Migration
+0008 adds only meeting-owned report persistence, not party/membership writes.
+
+Direct SQL verification completed before native Cargo validation:
+
+- `python3 backend/scripts/mcr/meeting_smoke.py --sql-only --report
+  /tmp/mcr-meeting-sql-20261104-a.json`: exit 0; PostgreSQL 16.14, TTL/revision/
+  immutable scope/terminal revoke guards PASS, restart bytes PASS, cleanup PASS.
+- Same command with report `/tmp/mcr-meeting-sql-20261104-b.json` after adding the
+  rally table/triggers: exit 0, migration application/SQL guards/restart/cleanup PASS.
+
+These checks did not execute Rust adapters or establish migration-ledger,
+production authorization, public HTTP/RPC or IN02 acceptance. Native Rust tests
+are authored and await the serialized build lease.

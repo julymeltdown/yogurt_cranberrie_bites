@@ -1,5 +1,5 @@
 //! Receipt-backed commands. Canonical fingerprints are built from the exact effect input.
-use super::{beacon, MeetingAuthority};
+use super::{beacon, grant, MeetingAuthority};
 use crate::adapters::out::repository::receipt::{CommandProducer, PgCommandRepository};
 use async_trait::async_trait;
 use concert_application::{beacon::*, commands::*};
@@ -123,6 +123,22 @@ impl<A: MeetingAuthority> CommandProducer for BeaconProducer<'_, A> {
             if value.owner_id != self.actor.actor {
                 return Err(CommandError::Denied);
             }
+            grant(
+                self.authority,
+                c,
+                AudienceQuery {
+                    actor: self.actor,
+                    owner: value.owner_id,
+                    audience: value.meeting.audience,
+                    operation: if matches!(self.mutation, BeaconMutation::Revoke { .. }) {
+                        MeetingOperation::Revoke
+                    } else {
+                        MeetingOperation::Read
+                    },
+                },
+            )
+            .await
+            .map_err(command_error)?;
         }
         Ok(())
     }

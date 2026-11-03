@@ -62,3 +62,32 @@ END;
 $$;
 CREATE TRIGGER concert_meeting_beacon_guard BEFORE INSERT OR UPDATE ON public.concert_meeting_beacons
 FOR EACH ROW EXECUTE FUNCTION public.concert_guard_meeting_beacon();
+
+-- Party-owned authority is queried through its port; no foreign party policy or
+-- membership writes live here. Per-actor reports retain a membership-generation fence.
+CREATE TABLE public.concert_meeting_rally_states (
+    event_id uuid NOT NULL REFERENCES public.concert_events(event_id) ON DELETE CASCADE,
+    party_id uuid NOT NULL,
+    user_id uuid NOT NULL,
+    state text NOT NULL CHECK(state IN ('ON_MY_WAY','HERE','MET','NEED_HELP','LEFT')),
+    meeting_revision bigint NOT NULL CHECK(meeting_revision BETWEEN 1 AND 9007199254740991),
+    membership_revision bigint NOT NULL CHECK(membership_revision BETWEEN 1 AND 9007199254740991),
+    revision bigint NOT NULL DEFAULT 1 CHECK(revision BETWEEN 1 AND 9007199254740991),
+    self_reported_at timestamptz NOT NULL DEFAULT clock_timestamp(),
+    PRIMARY KEY(event_id,party_id,user_id)
+);
+CREATE FUNCTION public.concert_guard_meeting_rally() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+    IF TG_OP='INSERT' THEN
+        IF NEW.revision<>1 THEN RAISE EXCEPTION 'invalid initial rally revision' USING ERRCODE='23514'; END IF;
+    ELSE
+        IF NEW.event_id<>OLD.event_id OR NEW.party_id<>OLD.party_id OR NEW.user_id<>OLD.user_id OR NEW.revision<>OLD.revision+1 THEN
+            RAISE EXCEPTION 'invalid rally scope or revision' USING ERRCODE='23514';
+        END IF;
+    END IF;
+    NEW.self_reported_at:=clock_timestamp();
+    RETURN NEW;
+END;
+$$;
+CREATE TRIGGER concert_meeting_rally_guard BEFORE INSERT OR UPDATE ON public.concert_meeting_rally_states
+FOR EACH ROW EXECUTE FUNCTION public.concert_guard_meeting_rally();

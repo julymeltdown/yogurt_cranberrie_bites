@@ -14,11 +14,35 @@ ROOT = Path(__file__).resolve().parents[3]
 DATABASE = 'mcr_meeting'
 MIGRATIONS = ('0001_concert_core.sql','0002_command_receipts_outbox.sql','0003_places_map_releases.sql','0008_meeting_beacons.sql')
 
+def sql_guards(cluster):
+    event='dddddddd-dddd-4ddd-8ddd-dddddddddddd'
+    beacon='eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee'
+    actor='ffffffff-ffff-4fff-8fff-ffffffffffff'
+    cluster.sql(DATABASE,f"insert into concert_events(event_id,slug,title,phase) values('{event}','meeting-sql-fixture','SQL fixture','OPEN');")
+    cluster.sql(DATABASE,f"insert into concert_meeting_settings(event_id,event_cutoff) values('{event}',clock_timestamp()+interval '1 day');")
+    fields="beacon_id,event_id,owner_id,place_id,map_revision,place_revision,selected_catalog_revision,instructions,identification,audience,expires_at"
+    audience=json.dumps({'kind':'EXPLICIT_USERS','user_ids':[actor]},separators=(',',':'))
+    base=f"insert into concert_meeting_beacons({fields}) values('{beacon}','{event}','{actor}','{actor}',1,1,1,'Synthetic only','Synthetic only','{audience}',"
+    def refused(sql,label):
+        try: cluster.sql(DATABASE,sql)
+        except migration.SmokeError: return
+        raise RuntimeError(label)
+    refused(base+"clock_timestamp()+interval '901 seconds');",'ttl-not-enforced')
+    refused(base+"clock_timestamp()-interval '1 second');",'past-expiry-not-enforced')
+    cluster.sql(DATABASE,base+"clock_timestamp()+interval '2 seconds');")
+    refused(f"update concert_meeting_beacons set instructions='wrong revision' where beacon_id='{beacon}';",'revision-not-enforced')
+    refused(f"update concert_meeting_beacons set owner_id='{event}',revision=revision+1 where beacon_id='{beacon}';",'scope-not-enforced')
+    cluster.sql(DATABASE,f"update concert_meeting_beacons set state='REVOKED',revision=revision+1 where beacon_id='{beacon}';")
+    refused(f"update concert_meeting_beacons set state='ACTIVE',revision=revision+1 where beacon_id='{beacon}';",'terminal-revoke-not-enforced')
+
+
 def main() -> int:
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--binary',required=True,type=Path,action='append')
+    parser.add_argument('--binary',type=Path,action='append',default=[])
+    parser.add_argument('--sql-only',action='store_true')
     parser.add_argument('--report',required=True,type=Path)
     args=parser.parse_args()
+    if not args.binary and not args.sql_only: parser.error("--binary or --sql-only required")
     if not args.report.is_absolute() or any(not path.is_absolute() for path in args.binary):
         parser.error('explicit absolute paths required')
     fd=os.open(args.report,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
@@ -41,6 +65,9 @@ def main() -> int:
             report['migration_sha256'][name]=hashlib.sha256(path.read_bytes()).hexdigest()
             cluster.sql(DATABASE,path.read_text())
         report['postgres_version']=cluster.sql(DATABASE,'show server_version;')
+        sql_guards(cluster)
+        report['direct_sql_guards']='PASS'
+        report['native_adapters']='NOT_RUN' if not binaries else 'RUN'
         environment={**cluster.env,'MEETING_TEST_DATABASE_URL':cluster.url(DATABASE),
             'MEETING_TEST_OWNER_ROOT':str(cluster.root),'MEETING_TEST_OWNER_TOKEN':cluster.token,
             'MEETING_TEST_OWNER_IDENTITY':f'{cluster.identity[0]}:{cluster.identity[1]}'}

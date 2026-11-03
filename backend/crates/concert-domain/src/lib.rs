@@ -262,3 +262,5 @@ pub fn validate_times(
 
 pub mod relationship;
 pub mod beacon;
+
+pub mod rally;
