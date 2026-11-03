@@ -31,7 +31,13 @@
         ],
         "requests": [
           "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways?limit=20",
-          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/me/giveaways?limit=20"
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/me/giveaways?limit=20",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/parties?limit=20",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/me/parties?limit=20",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/parties/00000000-0000-4000-8000-000000000010",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/parties/00000000-0000-4000-8000-000000000010/applications",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/commands?operation_id=applyConcertParty&idempotency_key=cee6c192-ba61-4b2b-9544-af54475e806d",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/me/parties?limit=20"
         ],
         "bootstrapReads": 2
       }
@@ -63,24 +69,31 @@
         ],
         "requests": [
           "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways?limit=20",
-          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/me/giveaways?limit=20"
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/me/giveaways?limit=20",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/parties?limit=20",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/me/parties?limit=20",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/parties/00000000-0000-4000-8000-000000000010",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/parties/00000000-0000-4000-8000-000000000010/applications",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/commands?operation_id=applyConcertParty&idempotency_key=8bd818f9-ed89-4f15-ad4f-b63e3476f27b",
+          "http://127.0.0.1:5173/api/concert/events/00000000-0000-4000-8000-000000000001/me/parties?limit=20"
         ],
         "bootstrapReads": 2
       }
     }
   ],
   "publicScripts": [
-    "/assets/index-CYQGMhN_.js",
-    "/assets/PublicBoundary-BH8fAQq7.js"
+    "/assets/index-DiUpKoIq.js",
+    "/assets/PublicBoundary-BDfczsBr.js"
   ],
   "hashes": {
-    "src/app/CommunityFeatures.tsx": "80559dd3a2e28e8e1e03da1f0288a1b99d5b1900e8e1a2e20b6d8beda444af77",
+    "src/app/CommunityFeatures.tsx": "bd1ed8e760835301c7e8005db7bd4b4644eae78f0ea7f64c91f32dac30d24046",
     "src/app/WorldShell.tsx": "2c041d10129c6f5838abad11101cedf209a457f7f7a94f5fb1b2fe7db7004aad",
     "src/app/WorldHost.tsx": "41989e5dd609ad125f26dae657978946f8d8773eb79a3ed94db349d1579d7252",
     "src/app/access.tsx": "50120eef3fc1f665cf8b04944e4d4db53d5a7503f708423a6879e455483803be",
-    "src/app/router.tsx": "d7a282c8f5d082363ebd855979732358c767ae493380c2925aeb619a9c5d01f9",
-    "src/app/__tests__/community.test.tsx": "f09b8f87315ad05d94a0f5845bf3e8d14dcfa648ef60b70f1b68b141c5e75f7d",
-    "src/app/__tests__/community-browser.mjs": "ebf457a45add10326f4de686f6f839ed96974eb1a472b05ecec714410d797e49",
-    "src/app/__tests__/fixtures/community.tsx": "1f735b22ee4b40f200e2207498b817ecf93c97d4508afc499da5d34833d4a054"
+    "src/app/router.tsx": "894e3a28be0dc58a0abfd1eb2c920095152160db658bd300ad91788a98a2f0e7",
+    "src/app/__tests__/community.test.tsx": "60dea636293fc42e52f71a846feddaac769427e85c9790597e49623a3b6cd457",
+    "src/app/__tests__/community-browser.mjs": "67bb16d1561143cc9ddcd95c95a9b01c58c93350197d6d9f2e09ff672f9b52f5",
+    "src/app/__tests__/fixtures/community.tsx": "0b7f84757b28591e4d8b460b38dddccda8c7bc40fbd277bf07bfb1b315ae90e6",
+    "src/app/__tests__/fixtures/community-data.ts": "5ba42fe13349489c3c14c6501eb2a259520ea3b899553ce79d45bcf7fbdff8ea"
   }
 }

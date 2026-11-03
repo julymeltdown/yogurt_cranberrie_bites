@@ -17,7 +17,7 @@ This report (`/Users/lhs/Desktop/mcr-worktrees/qa-party-discovery/docs/mcr/qa/pa
 Read the FE21/M01/M03 specification, frozen consumer decisions in `docs/mcr/party-gift-consumer-contract.md`, and generated domain contract `contracts/generated/mcr-domain.openapi.json`.
 
 1. **Closed schema and private field exclusion**:
-   - Decoders in `model/contract.ts` validate closed wire formats directly against OpenAPI schemas for `listConcertParties`, `getConcertParty`, `getConcertPartyActivity`, `applyConcertParty`, `cancelConcertApplication`, and `getConcertPartyOperationReceipt`.
+   - Decoders in `model/contract.ts` validate closed wire formats directly against OpenAPI schemas for `listConcertParties`, `getConcertParty`, `getConcertPartyActivity`, `applyConcertParty`, `cancelConcertApplication`, and `getConcertCommandStatus`.
    - Unexpected wire fields fail closed. Response copies are deep-frozen.
    - Public projections exclude private fields: email, phone, private meeting instructions, and unreviewed external links.
 2. **Context and scope binding**:
@@ -50,7 +50,7 @@ All commands executed in `/Users/lhs/Desktop/mcr-worktrees/qa-party-discovery`:
 - **UI origin checks**:
   - `node scripts/mcr/check-ui-origin.mjs --root /Users/lhs/Desktop/mcr-worktrees/qa-party-discovery`: exit 0, PASS (209 files scanned, 0 violations).
 - **Worker evidence and logs**:
-  - Verified worker browser report `/tmp/mcr-fe21-browser-20261103-08/report.json` (SHA-256 and source hash map across all 180 inputs, including contract inputs matching OpenAPI, operations, and party schemas).
+  - Verified worker browser report `/tmp/mcr-fe21-browser-20261103-08/report.json` (SHA-256 and source hash map across 177 source inputs and 4 contract inputs, including contract inputs matching OpenAPI, operations, and party schemas).
   - Verified worker logs: `/tmp/mcr-fe21-tests-final.log` (65 tests passed), `/tmp/mcr-fe21-build-final.log` (built in 120ms), `/tmp/mcr-fe21-lint-final.log` (exit 0).
 - **Pinned runtime checks**:
   - Executed using retained Node 24.22.2 (`/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin`) and pnpm 11.7.0 (`/Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs`):
@@ -59,7 +59,7 @@ All commands executed in `/Users/lhs/Desktop/mcr-worktrees/qa-party-discovery`:
     - `export PATH="/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin:$PATH" && node /Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs test src/features/party-discovery`: exit 0 (3 test files, 65 tests passed in 1.21s).
     - `export PATH="/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin:$PATH" && node /Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs build`: exit 0 (`tsc -b && vite build`, built in 112ms).
 - **Targeted independent verification probe**:
-  - Authored temporary probe testing closed schema response validation (positive decode vs negative unknown-field/status failures), double-click single POST locking, and READ_ONLY safety cancellation vs forbidden apply.
+  - Authored temporary probe testing closed schema response validation (positive decode vs negative unknown-field/status failures), double-click single POST locking, and READ_ONLY apply denial. The temporary probe did not exercise positive cancellation; that proof comes from the worker controller/native runs and the parent default-router integration test.
   - Executed under pinned Node 24.22.2 with Vitest: exit 0 (3 tests passed in 680ms).
   - Temporary probe file was cleanly removed before handoff; worktree confirmed clean.
 
@@ -70,3 +70,5 @@ All commands executed in `/Users/lhs/Desktop/mcr-worktrees/qa-party-discovery`:
 3. Database transactions, multiplayer socket concurrency, and live event network integration remain separate obligations.
 4. The goal remains ACTIVE awaiting parent review disposition.
 
+
+Integrator correction: operation name, input count and narrow-probe attribution were corrected against the actual source/report and executed probe. These wording fixes do not add a new QA execution claim.

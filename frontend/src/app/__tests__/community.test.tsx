@@ -8,6 +8,7 @@ import { createAppRoutes } from '../router'
 import type { ActiveScope, ShellBootstrap, ShellPorts } from '../ports'
 import { bootstrapFor, createFixturePorts } from './fixtures/ports'
 import { deferred, fixture, giveaway, uid } from '../../features/gift-discovery/__tests__/fixtures/data'
+import { createCommunityData } from './fixtures/community-data'
 
 const disposals: (() => void)[] = []
 afterEach(() => { cleanup(); disposals.splice(0).forEach(dispose => dispose()) })
@@ -125,4 +126,42 @@ it('aborts pending feature data on account replacement and never renders its lat
   expect(screen.queryByRole('link', { name: 'Fan badges' })).not.toBeInTheDocument()
   expect(f.stats.peakGames).toBe(1)
   expect(f.load).toHaveBeenCalledTimes(2)
+})
+
+it('retains pending party commands across tabs and permits verified READ_ONLY safety cancellation', async () => {
+  const data = createCommunityData()
+  let readOnly = false
+  const f = setup({ path: '/meet', handler: data.handle, bootstrap: async scope => {
+    const value = bootstrapFor(scope)
+    return readOnly ? { ...value, event: { ...value.event, phase: 'READ_ONLY' }, capabilities: {
+      ...value.capabilities, mutations: { available: false, reason: 'EVENT_READ_ONLY' },
+    } } : value
+  } })
+  clickLink((await screen.findByRole('link', { name: 'Before the encore' })).textContent!)
+  const apply = await screen.findByRole('button', { name: 'Apply to party' })
+  await waitFor(() => expect(apply).toBeEnabled())
+  fireEvent.click(apply); fireEvent.click(apply)
+  expect(await screen.findByText('The server is still processing this command.')).toBeVisible()
+  clickLink('Gifts'); await listReady(); clickLink('Meet')
+  expect(await screen.findByText('The server is still processing this command.')).toBeVisible()
+  fireEvent.click(screen.getByRole('button', { name: 'Check original command status' }))
+  expect(await screen.findByText('The command was confirmed.')).toBeVisible()
+  const commands = f.requests.filter(request => request.method === 'POST')
+  expect(commands).toHaveLength(1)
+  const status = f.requests.find(request => new URL(request.url).pathname.endsWith('/commands'))!
+  expect(new URL(status.url).searchParams.get('idempotency_key')).toBe(commands[0]!.headers.get('Idempotency-Key'))
+  expect(f.stats.mounts).toBe(1)
+  act(() => { readOnly = true; f.auth.privacy.changePolicy(f.auth.privacy.capture(), 'consent-revoked') })
+  await screen.findByRole('link', { name: 'Before the encore' })
+  fireEvent.click(screen.getByRole('button', { name: 'MY PLAN' }))
+  const cancel = await screen.findByRole('button', { name: 'Cancel application' })
+  await waitFor(() => expect(cancel).toBeEnabled())
+  fireEvent.click(cancel)
+  expect(await screen.findByText('The command was confirmed.')).toBeVisible()
+  const deletion = f.requests.find(request => request.method === 'DELETE')!
+  expect(new URL(deletion.url).searchParams.get('expected_revision')).toBe('1')
+  expect(await deletion.clone().text()).toBe('')
+  clickLink('View party application')
+  expect(await screen.findByRole('button', { name: 'Apply to party' })).toBeDisabled()
+  expect(f.stats.peakGames).toBe(1)
 })

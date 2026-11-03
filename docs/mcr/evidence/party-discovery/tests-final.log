@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-party-discovery/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  65 passed (65)
+   Start at  23:03:24
+   Duration  1.01s (transform 375ms, setup 0ms, import 733ms, tests 563ms, environment 590ms)
+

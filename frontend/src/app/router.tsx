@@ -10,7 +10,10 @@ import { PanelScreen, WorldBoundary } from './WorldShell'
 const PublicBoundary = lazy(() => import('./PublicBoundary'))
 const AdminBoundary = lazy(() => import('./AdminBoundary'))
 const GiftsPanel = lazy(() => import('./CommunityFeatures').then(module => ({ default: module.GiftsPanel })))
+const PartiesPanel = lazy(() => import('./CommunityFeatures').then(module => ({ default: module.PartiesPanel })))
 const featurePanels: Readonly<Record<string, ReactNode>> = {
+  '/meet': <Suspense fallback={<p role="status">Opening parties…</p>}><PartiesPanel /></Suspense>,
+  '/meet/parties/:partyId': <Suspense fallback={<p role="status">Opening parties…</p>}><PartiesPanel detail /></Suspense>,
   '/gifts': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="list" /></Suspense>,
   '/gifts/:giveawayId': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="detail" /></Suspense>,
   '/gifts/mine': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="mine" /></Suspense>,

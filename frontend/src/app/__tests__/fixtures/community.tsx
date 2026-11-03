@@ -4,12 +4,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { createAppRoutes } from '../../router'
 import { bootstrapFor, createFixturePorts } from './ports'
 import { fixture } from '../../../features/gift-discovery/__tests__/fixtures/data'
+import { createCommunityData } from './community-data'
 import '../../../shared/styles/base.css'
 import '../../shell.css'
 
 // Real application route composition + FE01 transport, with deterministic HTTP
 // data and an explicitly instrumented world lease. No server/multiplayer claim.
-const f = fixture(), world = createFixturePorts()
+const data = createCommunityData(), f = fixture({ handler: data.handle }), world = createFixturePorts()
 let giftsAvailable = true, held = false
 const waiting: (() => void)[] = []
 let bootstrapReads = 0

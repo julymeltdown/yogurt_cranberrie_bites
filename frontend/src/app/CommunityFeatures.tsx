@@ -2,11 +2,13 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 import { useParams } from 'react-router-dom'
 import { createGiftDiscoveryController, GiftDetail, GiftDiscovery, type GiftDiscoveryController } from '../features/gift-discovery'
 import { MyGifts } from '../features/my-gifts'
+import { createPartyController, PartyDetail, PartyDiscovery, type PartyController } from '../features/party-discovery'
 import type { PrivacyScope } from '../shared/query/privacy'
 import { usePorts } from './access'
 import type { ShellBootstrap } from './ports'
 
 const GiftsContext = createContext<GiftDiscoveryController | null>(null)
+const PartiesContext = createContext<PartyController | null>(null)
 
 /** One feature owner per validated shell, surviving panel close/navigation.
  * Allocate in an effect so StrictMode cleanup never leaves a disposed singleton.
@@ -16,7 +18,8 @@ export default function CommunityFeatures({ bootstrap, privacyScope, children }:
   bootstrap: ShellBootstrap; privacyScope: PrivacyScope | null; children: ReactNode
 }) {
   const { auth } = usePorts()
-  const [owner, setOwner] = useState<{ auth: typeof auth; bootstrap: ShellBootstrap; scope: PrivacyScope; gifts: GiftDiscoveryController } | null>(null)
+  const [owner, setOwner] = useState<{ auth: typeof auth; bootstrap: ShellBootstrap; scope: PrivacyScope;
+    gifts: GiftDiscoveryController; parties: PartyController } | null>(null)
   useEffect(() => {
     if (!auth || !privacyScope || !auth.privacy.isCurrent(privacyScope)) return
     const gifts = createGiftDiscoveryController({ auth, context: {
@@ -25,12 +28,26 @@ export default function CommunityFeatures({ bootstrap, privacyScope, children }:
       } : null,
       subscribe: listener => auth.privacy.subscribe(listener),
     } })
-    setOwner({ auth, bootstrap, scope: privacyScope, gifts })
-    return () => gifts.dispose()
+    const parties = createPartyController({ auth, access: {
+      read: () => auth.privacy.isCurrent(privacyScope) ? {
+        scope: privacyScope, capabilities: bootstrap.capabilities, phase: bootstrap.event.phase,
+      } : null,
+      subscribe: listener => auth.privacy.subscribe(listener),
+    } })
+    setOwner({ auth, bootstrap, scope: privacyScope, gifts, parties })
+    return () => { gifts.dispose(); parties.dispose() }
   }, [auth, bootstrap, privacyScope])
   const current = owner?.auth === auth && owner?.bootstrap === bootstrap && owner?.scope === privacyScope
-    && privacyScope && auth?.privacy.isCurrent(privacyScope) ? owner.gifts : null
-  return <GiftsContext value={current}>{children}</GiftsContext>
+    && privacyScope && auth?.privacy.isCurrent(privacyScope) ? owner : null
+  return <GiftsContext value={current?.gifts ?? null}><PartiesContext value={current?.parties ?? null}>{children}</PartiesContext></GiftsContext>
+}
+
+export function PartiesPanel({ detail = false }: { detail?: boolean }) {
+  const controller = useContext(PartiesContext)
+  const { partyId = '' } = useParams()
+  const { auth } = usePorts()
+  if (!controller) return <p role="status">{auth ? 'Opening parties…' : 'Party access is unavailable.'}</p>
+  return detail ? <PartyDetail controller={controller} partyId={partyId} /> : <PartyDiscovery controller={controller} />
 }
 
 export function GiftsPanel({ view }: { view: 'list' | 'detail' | 'mine' }) {

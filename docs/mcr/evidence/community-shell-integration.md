@@ -1,9 +1,14 @@
-# Giveaway routes and shell ownership
+# Community routes and shell ownership
 
 Status: **MOCK_READY**. The default application router now opens giveaway
 discovery, detail and own activity at `/gifts`, `/gifts/:giveawayId` and
 `/gifts/mine`. This is production composition code qualified against deterministic
 HTTP fixtures, not a functioning Concert backend or a release gate.
+
+The subsequent party composition connects `/meet` and `/meet/parties/:partyId`
+to the same shell lifetime. Its controller survives tab navigation with the
+original pending command key, while fresh bootstrap permissions control read-only
+safety cancellation. It starts no party requests until a party panel opens.
 
 ## Reviewed inputs
 
@@ -13,6 +18,15 @@ The parent verified all 50 receipt file sizes/hashes and 177 candidate source
 hashes in the worker's native report. Independent review `1e85b25`, corrected
 by `1a1bbd0`, is integrated as `fe2caab`/`9921759`: no implementation findings.
 The report distinguishes host Node 26 checks from pinned Node 24 checks.
+
+FE21 worker `0497d86415c37114f300aefc52e76aac6bd65143` is integrated as
+`78cfb7c`. All 14 new paths match the assigned feature/document boundary. Parent
+verified **177 source hashes plus 4 contract hashes** against that exact candidate.
+The worker's 65 focused tests, build/lint logs, actual Phaser fixture browser
+report and screenshots are preserved under [party-discovery](party-discovery/).
+QA report `28b0e42` is integrated as `4b44d0c`; parent corrected an operation-name
+typo and the attribution of the narrow cancellation probe. No implementation
+finding was reported. This does not certify party backend operations.
 
 ## Composition behavior
 
@@ -47,13 +61,21 @@ specified. All final listed commands exited **0**.
   Existing main and new community chunks exceed the 500 kB uncompressed warning
   threshold; optimization remains required before release.
 - `pnpm --dir frontend lint`: pass.
+- After adding party ownership: `pnpm --dir frontend test
+  src/app/__tests__/community.test.tsx src/features/party-discovery`: **72 tests**,
+  four files, pass. Seven composition cases include preservation of a 202
+  PENDING command through Meet→Gifts→Meet, exact original-key receipt lookup,
+  fresh activity reconciliation, and READ_ONLY cancellation with query revision
+  and no body. Build and lint pass again. The first build caught an unsupported
+  Testing Library option in the new test; it was removed before the final build.
 - From `frontend`, `node src/app/__tests__/community-browser.mjs` with
   `MCR_COMMUNITY_EVIDENCE` pointing at `docs/mcr/evidence/community-shell`:
   installed Chrome **156.0.8078.80**, **390×844** and **1280×900**, pass.
   [Report](community-shell/report.json) records source hashes and resource counts.
   Native checks exercise actual default router composition and FE01 transport,
   focus/Back, own activity, one instrumented world owner, no extra list fetch on
-  return, synchronous revocation, fresh disabled capability, cleanup and built
+  return, party command recovery through tab changes, synchronous revocation,
+  fresh disabled capability, cleanup and built
   public-page bundle isolation. Parent inspected mobile list and desktop own
   activity screenshots; no decorative left accent is present.
 - `python3 scripts/mcr/check-plan.py`: pass; source archive remains unchanged.
