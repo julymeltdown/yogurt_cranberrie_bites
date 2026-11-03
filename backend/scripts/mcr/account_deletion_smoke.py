@@ -89,7 +89,7 @@ def main() -> int:
         report["source_dirty"] = bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=BACKEND, text=True).strip())
         report["source_sha256"] = {
             str(p.relative_to(BACKEND.parent)): hashlib.sha256(p.read_bytes()).hexdigest()
-            for p in [Path(__file__), BACKEND / "services/auth-service/tests/concert_deletion.rs",
+            for p in [Path(__file__).resolve(), BACKEND / "services/auth-service/tests/concert_deletion.rs",
                       BACKEND / "services/auth-service/tests/concert_deletion_support/native.rs",
                       BACKEND / "services/auth-service/src/concert_deletion/mod.rs",
                       BACKEND / "crates/auth-application/src/concert_deletion/mod.rs",

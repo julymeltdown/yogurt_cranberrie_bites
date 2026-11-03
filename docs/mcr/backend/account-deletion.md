@@ -125,8 +125,10 @@ Generated core/domain bundles and fixtures must append the four exact values.
 Auth gRPC and Gateway mappings already pass it through unchanged. No protobuf
 field numbers, statuses or HTTP shapes change.
 
-The main chat recorded the eight-target contract decision in the resume
-assignment and owns generator/artifact publication plus the separately assigned
+The canonical eight-target contract is published in `d3b7c382`, with the
+explicit decision in `docs/mcr/account-deletion-contract.md`. That exact commit
+is imported into this isolated checkout with provenance; its generator and four
+JSON bundles retain existing statuses/shapes. Main owns the separately assigned
 FE36 decoder adaptation. The original FE36 four-target decoder correctly rejects
 unknown/missing/duplicate steps; it must adopt the published revision/hash before
 producer wire acceptance. No heuristic unknown-target
@@ -164,3 +166,8 @@ Typed deterministic owner fixtures exercise orchestration, not actual Concert
 cleanup, socket shutdown or reveal authorization. HTTP/browser/two-account
 flows, BE41 owners, deployment, retention-policy approval and IN05 remain
 **NOT_RUN**. No full BE42 acceptance is claimed.
+
+Source checkpoint: repository safeguards `e040cb1a`, owned implementation and
+qualification `e593ad79`. Main owns integration/push; no master push is performed
+by this worker. Native validation results and final candidate ancestry follow
+after the explicit Cargo lease transfer.
