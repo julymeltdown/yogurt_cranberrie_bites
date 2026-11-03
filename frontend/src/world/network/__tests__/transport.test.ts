@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import { createMemorySession } from '../../../shared/api/http'
+import { parseServerError, TransportError } from '../../../shared/api/errors'
 import { MockSocket, MockWorldClock, MockWorldTransport } from '../mock'
 import { WebSocketWorldTransport } from '../websocket'
 import { decode, validate, WorldTransportError } from '../transport/contract'
@@ -245,6 +246,86 @@ for (const lane of ['mock','native'] as const) describe(`${lane} common lifecycl
       const connected=s.transport.connect(resources); const settled=connected.catch(()=>{})
       await flush();if(stage==='live'){s.all()[0]!.open();s.all()[0]!.receive(JSON.stringify(initial))}
       await settled;expect(s.transport.state).toBe('closed');expect(s.clock.pending).toBe(0)
+    }
+  })
+  for(const failure of [
+    {status:403,reason:'PERMISSION_DENIED'}, {status:404,reason:'RESOURCE_UNAVAILABLE'},
+    {status:409,reason:'RESOURCE_UNAVAILABLE'}, {status:429,reason:'RATE_LIMITED'},
+    {status:500,reason:'INTERNAL_ERROR'}, {status:503,reason:'DEPENDENCY_UNAVAILABLE'}, {status:504,reason:'DEADLINE_EXCEEDED'},
+  ]) it(`preserves the old room on target ticket ${failure.status}/${failure.reason} before send`, async () => {
+    const s=setup(lane),socket=await s.live()
+    s.transport.sendInput({seq:1,axisX:0,axisY:0,buttons:[]})
+    const pendingTimers=s.clock.pending
+    s.acquireTicket.mockRejectedValueOnce(new TransportError('http',{status:failure.status,
+      server:parseServerError({code:String(failure.status),message:'Denied target',details:{reason:failure.reason}},'core',failure.status)}))
+    const switching=s.transport.roomSwitch(user,resources.eventId)
+    expect(s.transport.state).toBe('switching')
+    socket.receive(JSON.stringify(movement.messages[3]!.message))
+    await expect(switching).rejects.toThrow('unavailable')
+    expect(s.transport.state).toBe('live');expect(s.all()).toHaveLength(1);expect(socket.closeCount).toBe(0)
+    expect(socket.sent.map(text=>JSON.parse(text).type)).toEqual(['authenticate','input'])
+    expect(s.clock.pending).toBe(pendingTimers);expect(s.events.filter(e=>e.type==='error')).toEqual([])
+    expect(()=>s.transport.sendInput({seq:1,axisX:0,axisY:0,buttons:[]})).toThrow()
+    s.transport.sendInput({seq:2,axisX:0.6,axisY:0.8,buttons:[]})
+    expect(JSON.parse(socket.sent.at(-1)!).streamId).toBe(initial.streamId)
+    await expect(s.transport.roomSwitch(user,resources.eventId)).rejects.toThrow()
+    await s.transport.roomSwitch(user,initial.streamId!)
+    const sent=JSON.parse(socket.sent.at(-1)!)
+    expect(sent.type).toBe('switchRoom');expect(sent.requestId).toBe(initial.streamId);expect(sent.ticket).not.toBe(ticketResponse.ticket)
+    expect(s.acquireTicket).toHaveBeenCalledTimes(3)
+    socket.receive(JSON.stringify({protocolVersion:'1.0.0',type:'switchRejected',streamId:initial.streamId,requestId:initial.streamId,reason:'ROOM_FULL'}))
+    expect(s.transport.state).toBe('live');s.transport.dispose();expect(s.clock.pending).toBe(0)
+  })
+  for(const kind of ['network','timeout'] as const) it(`preserves old authority on uncertain target issuance ${kind}`,async()=>{
+    const s=setup(lane),socket=await s.live()
+    s.acquireTicket.mockRejectedValueOnce(new TransportError(kind,{uncertain:true}))
+    await expect(s.transport.roomSwitch(user,resources.eventId)).rejects.toThrow(kind==='timeout'?'timeout':'unavailable')
+    expect(s.transport.state).toBe('live');expect(socket.sent).toHaveLength(1);expect(socket.closeCount).toBe(0)
+    s.transport.sendInput({seq:1,axisX:0,axisY:0,buttons:[]});s.transport.dispose()
+  })
+  it('bounds a pending ticket acquisition without destroying the old room or sending its late result',async()=>{
+    const s=setup(lane),socket=await s.live();let finish:(value:WorldTicketResponse)=>void=()=>{}
+    s.acquireTicket.mockImplementationOnce(()=>new Promise(resolve=>{finish=resolve}))
+    const switching=s.transport.roomSwitch(user,resources.eventId),rejected=expect(switching).rejects.toThrow('timeout')
+    const signal=s.acquireTicket.mock.calls.at(-1)![0].signal
+    s.clock.advance(3000);await rejected;expect(signal.aborted).toBe(true)
+    expect(s.transport.state).toBe('live');expect(socket.closeCount).toBe(0)
+    finish({...ticketResponse,room_id:user,ticket:'Z'.repeat(43)} as WorldTicketResponse);await flush()
+    expect(socket.sent).toHaveLength(1);s.transport.sendInput({seq:1,axisX:0,axisY:0,buttons:[]})
+    s.transport.dispose();expect(s.clock.pending).toBe(0)
+  })
+  it('bounds ticket processing cancellation while its fingerprint computation is pending',async()=>{
+    const s=setup(lane),socket=await s.live()
+    const digest=vi.spyOn(crypto.subtle,'digest').mockImplementationOnce(()=>new Promise(()=>{}))
+    try {
+      const switching=s.transport.roomSwitch(user,resources.eventId),rejected=expect(switching).rejects.toThrow('timeout')
+      await flush();expect(digest).toHaveBeenCalledTimes(1);s.clock.advance(3000);await rejected
+      expect(s.transport.state).toBe('live');expect(socket.sent).toHaveLength(1);expect(socket.closeCount).toBe(0)
+      s.transport.dispose();expect(s.clock.pending).toBe(0)
+    } finally {digest.mockRestore()}
+  })
+  for(const failure of [
+    new TransportError('authentication-required'),new TransportError('session-changed'),new TransportError('invalid-response'),new Error('Unknown adapter failure'),
+    ...[{status:401,reason:'AUTHENTICATION_REQUIRED'},{status:409,reason:'MAP_VERSION_MISMATCH'},{status:410,reason:'EVENT_READ_ONLY'},
+      {status:403,reason:'ORIGIN_NOT_ALLOWED'},{status:503,reason:'MAP_VERSION_MISMATCH'}].map(({status,reason})=>new TransportError('http',{
+        status,server:parseServerError({code:String(status),message:'Authority or protocol failure',details:{reason}},'core',status)})),
+  ]) it(`does not roll back a terminal ticket proof ${failure.message}`,async()=>{
+    const s=setup(lane),socket=await s.live();s.acquireTicket.mockRejectedValueOnce(failure)
+    await expect(s.transport.roomSwitch(user,resources.eventId)).rejects.toThrow()
+    expect(s.transport.state).toBe('closed');expect(socket.sent).toHaveLength(1);expect(s.clock.pending).toBe(0)
+  })
+  it('does not roll back a wrong target ticket binding or a post-send failure',async()=>{
+    const s=setup(lane),socket=await s.live()
+    s.acquireTicket.mockImplementationOnce(async()=>ticketResponse as WorldTicketResponse)
+    await expect(s.transport.roomSwitch(user,resources.eventId)).rejects.toThrow()
+    expect(s.transport.state).toBe('closed');expect(socket.sent).toHaveLength(1)
+    for(const result of ['timeout','close','reset']) {
+      const active=setup(lane),peer=await active.live();await active.transport.roomSwitch(user,resources.eventId)
+      expect(JSON.parse(peer.sent.at(-1)!).type).toBe('switchRoom')
+      if(result==='timeout')active.clock.advance(3000)
+      else if(result==='close')peer.serverClose(4500)
+      else peer.receive(JSON.stringify({...initial,cause:'EPOCH_CHANGED',streamId:user,roomEpoch:user}))
+      expect(active.transport.state).toBe('closed');expect(active.clock.pending).toBe(0)
     }
   })
   it('cancels an outstanding room-ticket request without a late switch send', async () => {

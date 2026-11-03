@@ -123,6 +123,24 @@ try {
     await traceContext.close();nativeTraces.push(name)
   }
   scriptTrace=undefined
+  const denialContext=await browser.newContext(),denialPage=await denialContext.newPage()
+  await denialPage.goto(`${base}/src/world/network/__tests__/fixtures/browser.html`)
+  await denialPage.waitForFunction(()=>window.__FE16_TEST_ONLY__)
+  await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.connect())
+  const deniedPeer=accepted.at(-1), switchCount=received.filter(m=>m.type==='switchRoom').length
+  await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.denyNextTicket())
+  assert.equal(await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.transport.roomSwitch('00000000-0000-4000-8000-000000000012','00000000-0000-4000-8000-000000000051').then(()=>'unexpected-success',error=>error.kind)),'unavailable')
+  assert.equal(await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.transport.state),'live')
+  assert.equal(await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.urls.length),1)
+  assert.equal(received.filter(m=>m.type==='switchRoom').length,switchCount)
+  assert(sockets.has(deniedPeer))
+  await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.transport.sendInput({seq:1,axisX:0,axisY:0,buttons:[]}))
+  await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.transport.roomSwitch('00000000-0000-4000-8000-000000000012','00000000-0000-4000-8000-000000000052'))
+  assert.equal(await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.count()),3)
+  await denialPage.waitForFunction(()=>window.__FE16_TEST_ONLY__.transport.state==='closed')
+  assert.equal(received.filter(m=>m.type==='switchRoom').length,switchCount+1)
+  assert.equal(await denialPage.evaluate(()=>window.__FE16_TEST_ONLY__.events.filter(e=>e.type==='error').at(-1).code),4408)
+  await denialContext.close()
   holdAdmission=true
   const timeoutContext=await browser.newContext(),timeoutPage=await timeoutContext.newPage()
   await timeoutPage.goto(`${base}/src/world/network/__tests__/fixtures/browser.html`)
@@ -136,7 +154,7 @@ try {
   await prodPage.goto(`http://127.0.0.1:${production.httpServer.address().port}`)
   assert.equal(await prodPage.evaluate(()=>window.__FE16_TEST_ONLY__),undefined);assert.equal(productSockets,0)
   await writeFile(`${evidence}/browser-results.json`,JSON.stringify({state:'MOCK_READY',browser:browser.version(),connections:accepted.length,nativeTraces,
-    scenarios:['native open/authenticate/snapshot/input/ping-pong','detected gap freezes input/queued delta discard/explicit resync','native handshake timeout','unknown frame closes','fresh-ticket explicit reconnect','revoke disables reconnect','canonical session cancellation','owned socket cleanup','no credential URL/storage/log','production no test entry/mock/socket'],
+    scenarios:['native open/authenticate/snapshot/input/ping-pong','detected gap freezes input/queued delta discard/explicit resync','native handshake timeout','target ticket denial preserves old socket/input; explicit fresh-ticket retry; post-send timeout terminal','unknown frame closes','fresh-ticket explicit reconnect','revoke disables reconnect','canonical session cancellation','owned socket cleanup','no credential URL/storage/log','production no test entry/mock/socket'],
     real_backend:'NOT_RUN',multiuser:'NOT_RUN',BE10_BE11_IN01:'NOT_RUN'},null,2))
   console.log(`PASS FE16 installed Chrome ${browser.version()}: native lifecycle and production exclusion`)
 } finally {

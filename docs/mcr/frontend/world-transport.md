@@ -48,6 +48,9 @@ must use frozen C05 `issueWorldTicket` semantics:
 - Exact Origin policy and `X-MCR-Intent: browser`; `Cache-Control: no-store`.
 - No automatic replay on 401, timeout or uncertain outcome. Do not opt this
   mutation into read-after-refresh retry behavior.
+- Propagate existing FE01 `TransportError` kinds and parsed C05 status/reason
+  errors rather than throwing raw response data. This permits safe target-only
+  ticket-failure handling without inferring authority from error messages.
 - Check captured canonical user/event/generation against current identity before
   returning; propagate the supplied AbortSignal and decode bounded HTTP bodies.
 - The transport independently validates returned ticket schema, resource bindings,
@@ -107,7 +110,22 @@ stream; conflicting pending control/reset transitions fail closed. No reconnect
 or recovery scheduling/controller is installed here.
 
 Switches keep the old room authoritative until a correlated ROOM_SWITCH snapshot.
-A correlated rejection preserves it. Results arriving before the switch ticket
+A correlated rejection preserves it. Before any switch frame is sent, documented
+ordinary target issuance denials/unavailability or a network/issuance timeout
+also preserve the still-current old room/socket, metadata, counters and roster.
+The switch promise rejects safely, its pending control clears, and live input
+continues. Existing FE01 TransportError kinds and the frozen C05 operation
+registry distinguish these cases: PERMISSION_DENIED, RESOURCE_UNAVAILABLE,
+RATE_LIMITED, INTERNAL_ERROR, DEPENDENCY_UNAVAILABLE and DEADLINE_EXCEEDED must
+match the registered HTTP status. Network/timeout failures may have issued an
+unused ticket but cannot have committed target membership without a switch frame.
+Unknown/malformed errors, identity/auth loss, invalid ticket/resource/protocol
+proofs, expiry, socket loss and conflicting resets remain terminal. A bounded
+issuance timeout aborts only its ticket request and ignores its late result. Once
+the switch frame is sent, uncertain failure or response timeout closes the
+connection rather than guessing which room committed. Explicit retries require
+a new request ID and another ticket request; there is no automatic retry.
+Results arriving before the switch ticket
 has actually been sent are rejected. Event/map/manifest changes require a fresh
 connection. Request/stream identifiers cannot repeat within a connection and are
 bounded at 1,024 each. Controls time out rather than retaining pending references.
@@ -166,23 +184,28 @@ by path. The index lists 24 fixtures; the index itself is the 25th hashed file.
 
 Toolchain: retained Node **24.22.2**, `corepack pnpm@11.7.0`. Evidence directory:
 `/Users/lhs/Desktop/mcr-build/fe16`; earlier failing/intermediate logs are preserved.
-The final receipt under `verification-02/` records exact commands and exit codes.
+The final receipt under `verification-03/` records exact commands and exit codes.
 
-The common mock/native-adapter suite has **116 passing tests**; the full frontend
-suite has **470 passing tests across 13 files**. It consumes all five canonical traces, all seven
+The common mock/native-adapter suite has **158 passing tests**; the full frontend
+suite has **512 passing tests across 13 files**. It consumes all five canonical traces, all seven
 wire rejection fixtures, and the privacy projection frames. It additionally tests
 handshake deadlines, pending/open/active abort, canonical session replacement,
 stale tickets/callbacks/timers, incompatible protocol/resources, numeric/schema and
 roster failures, expiry, resync freeze/one notification/queued discard/timeout,
 switch success/rejection/pending-ticket cancellation, ping/pong, send gating,
-byte/frame/rate bounds, fresh-ticket reconnect and complete cleanup.
+byte/frame/rate bounds, fresh-ticket reconnect and complete cleanup. Parent review
+regressions additionally cover pre-send ticket denials/outages/timeout preserving
+old input and stream counters, fresh-ID/fresh-ticket retry, terminal authority or
+protocol failures, and distinct post-send timeout/close/reset behavior.
 
 Installed Chrome **156.0.8078.80** uses a fresh owned context and an ephemeral
 loopback fixture server with explicitly test-only entrypoints. Actual native
 WebSockets replay all five canonical traces: movement/heartbeat, resync, room
 switch rejection/success, epoch replacement and revoke. Additional Chrome checks
 cover detected gap recovery, queued-delta discard, handshake timeout, explicit
-fresh-ticket reconnect, session cancellation, closed sockets, safe URL/storage/log
+fresh-ticket reconnect, session cancellation, closed sockets, target-ticket denial
+preserving old socket/input, explicit fresh-ticket retry and terminal post-send
+timeout, safe URL/storage/log
 behavior, and built-production exclusion. The server is not a backend or substitute
 for BE10/BE11. No existing browser profile or user server is used.
 

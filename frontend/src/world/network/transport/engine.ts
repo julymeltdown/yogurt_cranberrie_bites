@@ -1,4 +1,6 @@
 import type { SessionScope } from '../../../shared/api/http'
+import { TransportError } from '../../../shared/api/errors'
+import operations from '../../../../../contracts/realtime/v1/operations.json'
 import type { WorldEvent, WorldResources, WorldState, WorldTransport, WorldTransportOptions, Scheduler } from '../WorldTransport'
 import type { ServerMessage, Snapshot, Input, Resync, SwitchRoom } from './wire-types'
 import { decode, decodeTicket, ensure, policy, validate, WorldTransportError } from './contract'
@@ -26,12 +28,25 @@ function endpoint(origin: string): string {
     !(u.protocol === 'https:' || (u.protocol === 'http:' && ['localhost', '127.0.0.1', '[::1]'].includes(u.hostname)))) throw new WorldTransportError('invalid-context')
   return `${u.protocol === 'https:' ? 'wss:' : 'ws:'}//${u.host}/world-ws`
 }
+const ticketOperation = operations.find(operation => operation.operationId === 'issueWorldTicket')!
+const ordinaryTicketReasons = new Set(['PERMISSION_DENIED', 'RESOURCE_UNAVAILABLE', 'RATE_LIMITED', 'INTERNAL_ERROR', 'DEPENDENCY_UNAVAILABLE', 'DEADLINE_EXCEEDED'])
+class TicketAcquisitionFailure extends WorldTransportError {
+  readonly preserveOldRoom: boolean
+  constructor(error: unknown) {
+    const http = error instanceof TransportError ? error : null
+    super(http?.kind === 'timeout' ? 'timeout' : 'unavailable', http?.kind === 'timeout' ? 4408 : 4500)
+    const reasons = ticketOperation.errors as Record<string, readonly string[]>
+    this.preserveOldRoom = !!http && (http.kind === 'network' || http.kind === 'timeout' || (http.kind === 'http'
+      && !!http.server?.reason && ordinaryTicketReasons.has(http.server.reason)
+      && !!reasons[String(http.status)]?.includes(http.server.reason)))
+  }
+}
 function abortable<T>(work: Promise<T>, signal: AbortSignal): Promise<T> {
   return new Promise((resolve, reject) => {
     const cancel = () => reject(new WorldTransportError('cancelled'))
+    work.then(resolve, reject).finally(() => signal.removeEventListener('abort', cancel))
     if (signal.aborted) { cancel(); return }
     signal.addEventListener('abort', cancel, { once: true })
-    work.then(resolve, reject).finally(() => signal.removeEventListener('abort', cancel))
   })
 }
 /** Transport protocol bookkeeping only. No prediction, interpolation, automatic resync/reconnect or rendering. */
@@ -132,16 +147,18 @@ export class TransportEngine implements WorldTransport {
     if (this.current(g)) void this.open(g, resources)
     return result
   }
-  private async ticket(resources: WorldResources, g: number) {
+  private async ticket(resources: WorldResources, g: number, acquisitionSignal?: AbortSignal) {
     ensure(this.scope && this.controller)
-    const signal = this.controller.signal, started = this.clock.now()
-    const raw = await abortable(this.options.acquireTicket({ scope: { ...this.scope }, body: body(resources), signal }), signal)
-    if (!this.current(g)) throw new WorldTransportError('cancelled')
+    const signal = acquisitionSignal ?? this.controller.signal, started = this.clock.now()
+    let raw: unknown
+    try { raw = await abortable(this.options.acquireTicket({ scope: { ...this.scope }, body: body(resources), signal }), signal) }
+    catch (error) { throw new TicketAcquisitionFailure(error) }
+    if (!this.current(g) || signal.aborted) throw new WorldTransportError('cancelled')
     const ticket = decodeTicket(raw)
     ensure(ticket.event_id === resources.eventId && Object.entries(body(resources)).every(([k,v]) => ticket[k as keyof typeof ticket] === v))
     ensure(ticket.ws_path === '/world-ws')
-    const digest = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ticket.ticket))), b => b.toString(16).padStart(2,'0')).join('')
-    if (!this.current(g)) throw new WorldTransportError('cancelled')
+    const digest = Array.from(new Uint8Array(await abortable(crypto.subtle.digest('SHA-256',new TextEncoder().encode(ticket.ticket)),signal)), b => b.toString(16).padStart(2,'0')).join('')
+    if (!this.current(g) || signal.aborted) throw new WorldTransportError('cancelled')
     ensure(!this.usedTickets.has(digest) && this.usedTickets.size < 1024)
     this.usedTickets.add(digest)
     const elapsed = this.clock.now() - started, ttl = Date.parse(ticket.expires_at) - Date.parse(ticket.server_time)
@@ -220,19 +237,36 @@ export class TransportEngine implements WorldTransport {
     const target = { ...this.resources, roomId }, g = this.generation
     validate('WorldTicketRequest',body(target)); validate('SwitchRoom', { ...target, type: 'switchRoom', protocolVersion: policy.protocol_version, streamId: b.streamId, requestId, ticket: 'A'.repeat(43) })
     this.requestId(requestId); this.pending = { sent: false, type: 'switchRoom', requestId, roomId }
-    this.timer('control', policy.authenticate_deadline_ms, () => this.stop(new WorldTransportError('timeout',4408)))
+    const acquisition = new AbortController(), connectionSignal = this.controller!.signal
+    const cancelAcquisition = () => acquisition.abort()
+    connectionSignal.addEventListener('abort', cancelAcquisition, { once: true })
+    let issuanceTimedOut = false
+    this.timer('control', policy.authenticate_deadline_ms, () => { issuanceTimedOut = true; acquisition.abort() })
     this.stateTo('switching')
     try {
       if (!this.current(g)) throw new WorldTransportError('cancelled')
-      const acquired = await this.ticket(target,g)
+      const acquired = await this.ticket(target,g,acquisition.signal)
       if (!this.current(g)) throw new WorldTransportError('cancelled')
       ensure(this.baseline?.streamId === b.streamId && this.pending?.requestId === requestId)
       const frame: SwitchRoom = { protocolVersion: '1.0.0', type: 'switchRoom', streamId: b.streamId, requestId, ticket: acquired.ticket.ticket, ...target }
       this.pending.sent = true
+      this.timer('control', policy.authenticate_deadline_ms, () => this.stop(new WorldTransportError('timeout',4408)))
       this.send(frame)
     } catch (error) {
-      if (this.current(g)) this.stop(error instanceof WorldTransportError ? error : new WorldTransportError('unavailable',4500))
-      throw error instanceof WorldTransportError ? error : new WorldTransportError('unavailable',4500)
+      const safe = issuanceTimedOut ? new WorldTransportError('timeout',4408)
+        : error instanceof WorldTransportError ? error : new WorldTransportError('unavailable',4500)
+      if (this.current(g)) {
+        const ordinaryIssuanceFailure = issuanceTimedOut || (error instanceof TicketAcquisitionFailure && error.preserveOldRoom)
+        const oldRoomValid = this.status === 'switching' && this.pending?.requestId === requestId && !this.pending.sent
+          && this.baseline?.streamId === b.streamId && this.baseline.roomEpoch === b.roomEpoch && this.socket?.readyState === 1
+          && Date.parse(b.accessExpiresAt) > this.clock.now() + this.serverOffset
+        if (ordinaryIssuanceFailure && oldRoomValid) {
+          this.pending = null; this.clearTimer('control'); this.stateTo('live')
+        } else this.stop(safe)
+      }
+      throw safe
+    } finally {
+      connectionSignal.removeEventListener('abort', cancelAcquisition); acquisition.abort()
     }
   }
   clientPong(heartbeatId: string) {
