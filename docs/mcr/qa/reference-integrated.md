@@ -1,6 +1,6 @@
 # FE-REF-INTEGRATED-QA
 
-Status: IN_PROGRESS. Deterministic composed-root evidence only. Full visual acceptance, live-service journeys and physical-device acceptance remain NOT_RUN.
+Status: IN_PROGRESS pending final receipt/publication. Deterministic composed-root evidence only. Full visual acceptance, live-service journeys and physical-device acceptance remain NOT_RUN.
 
 ## Scope and provenance
 
@@ -39,4 +39,25 @@ The runner requires a new absolute output directory and ≥8 GiB free space befo
 
 Loader calls count resolver invocations, including synthetic fixture paths. Fixture HTTP calls count intercepted Request objects separately. CDP counts actual browser network requests and encoded transferred bytes, including development modules; these are not production bundle budgets. Browser memory/disk/service-worker cache flags are independent of loader reuse. `HTMLImageElement.decode()` instrumentation records explicit API calls/resolutions/rejections; it does not count all CSS/GPU decoding. Blob hashes verify bytes and do not certify decode reuse. Warm steps preserve cumulative counters and per-path counts so deltas can be computed without conflating request categories.
 
-Warm navigation follows World → Me → Customize → World → Customize, then actual Parade/Danger/Revenge controls, then supported avatar actions. Assertions check a single Phaser instance/connection, stable camera object/geometry/outfit across navigation/eras, zero draft PUTs and one canonical Save PUT only when enabled by the current production composition. Unavailable avatar authority yields explicit NOT_RUN rather than a passing save claim.
+Warm navigation follows World → Me → Customize → World → Customize, then actual Parade/Danger/Revenge controls, then supported avatar actions. Assertions check one persistent Phaser instance and peak one active connection. Covered full panels intentionally suspend the connection; returning reconnects, so total connection creations can exceed one. Camera object and geometry remain stable; outfit equality is checked when replication is published, zero draft PUTs and one canonical Save PUT only when enabled by the current production composition. Unavailable avatar authority yields explicit NOT_RUN rather than a passing save claim.
+
+## Visual review and functional limits
+
+All ten 390px side-by-side comparisons were inspected, with the original phone aspect preserved. No full visual acceptance is claimed. Differences are material and recorded per screen:
+
+| Screen | Observed difference or limitation | Classification |
+| --- | --- | --- |
+| Landing | Approved source-pack characters render; wordmark, spacing, moon/skyline and texture differ from target | Visual gap |
+| Login | Working canonical email sign-in; different paper/heading geometry; no Remember me; provider controls unavailable | Visual and capability gap |
+| World | Different scenery/framing, no approved self/other avatar image, extra tools/status band | Visual and authority gap |
+| Map | Latest published map fills panel with landmark plaques/zoom; supplied scenery, framing and labels still differ | Visual gap; independent map action evidence belongs to Map owner |
+| Customize | Preview unavailable; category/item/tone editing and Random/Reset/Save gated | Authority gap; draft/save NOT_RUN |
+| Feed | One fixture post, initials and no media vs target's illustrated multi-post layout; compose/footer position differs | Fixture coverage and visual gap, not evidence of server data loss |
+| Meet | Three rows/capacity counts render, JOIN opens details without applying; portraits/member strip missing, Create disabled | Authority/composition gap; no physical arrival claim |
+| Gifts | Three rows with honest No photo; title/filter/My gifts targets under 44px; third Reserve below initial viewport | Touch-target finding plus target-density difference; below-fold alone is not a functional failure |
+| Wall | Unavailable message, no qualified anchor, grid, palette or editing toolbar | Authority gap; mural edit/sync NOT_RUN |
+| Me | Saved fixture profile and route controls, missing approved avatar, target social links/activity-tab layout absent | Authority and visual gap |
+
+Gifts touch targets were handed to the existing Gifts owner through the frontend coordinator. QA owns no application fixes. JOIN and RESERVE remain navigation into the actual detail/reservation journey and do not create application/reservation writes. Detail data/authorization and real command outcomes are outside these fixture assertions; a successful route transition is not server-flow acceptance.
+
+The target-density finding must remain distinct from functional reachability: scrolling or browser focus can reveal a row outside the initial crop. The native test activates the first row and checks focus restoration; it does not certify every offscreen row reachable. Newly authored figures and labels are QA evidence, not replacement application UI.
