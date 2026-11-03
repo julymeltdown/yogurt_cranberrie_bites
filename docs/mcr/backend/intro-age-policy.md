@@ -175,5 +175,19 @@ The task's deterministic fixtures cannot substitute for those later gates.
   Cargo evidence explicitly pending.
 - `dbd170b`: the two exact delegated exports in each crate root, isolated from
   implementation changes. Apply after the source checkpoint, never by itself.
-- Subsequent validation/fix commits will record the executed commands and results
-  before the final integration handoff. No push to master is performed by this worker.
+- `80972a8`: reject duplicate candidate pages and cover canonical expiry and
+  mid-read deadline changes.
+- `4a075a3`: keep empty text draft-only and reject contact bypass in edits to
+  already published introductions.
+- Subsequent evidence will record the executed commands and results before the
+  final integration handoff. No push to master is performed by this worker.
+
+Planned shared-target command (not execution evidence until the lease is granted):
+
+```sh
+cd /Users/lhs/Desktop/mcr-worktrees/be-intro-age-policy/backend
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+cargo +1.88.0 test --offline --locked -p concert-domain -p concert-application \
+  --lib --test intro_age_policy
+```
