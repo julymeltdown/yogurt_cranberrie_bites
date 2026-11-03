@@ -1,0 +1,13 @@
+{
+  "result": "FAIL",
+  "provenance": "Preserved initial native tool-run failure before correcting the harness status expectation; final successful checks are separate in report.json.",
+  "browser": "156.0.8078.80",
+  "width": 360,
+  "failed_assertion": "expect(page.getByRole('status')).toContainText('Check your text')",
+  "expected_substring": "Check your text",
+  "actual_status": "Change confirmed by the server.",
+  "timeout_ms": 5000,
+  "observed_before_failure": "1000 emoji saved; maxlength absent; 1001-emoji draft retained with aria-invalid and the field alert present.",
+  "not_run_after_failure": "The subsequent writes-after-rejection assertion and remaining widths did not execute on this failed run.",
+  "resolution": "Existing command.message precedence preserves the previous success receipt. Leave receipt/controller semantics unchanged; assert the visible field alert and unchanged write count. Final runs verify both."
+}

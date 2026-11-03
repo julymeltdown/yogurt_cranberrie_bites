@@ -5,5 +5,69 @@
     "sha256": "9d1202211cd136948a7afeb5588238ba9de13613980dab42616011f47762a079",
     "source_revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a"
   },
-  "reviewed_headless_extracts": []
+  "reviewed_headless_extracts": [
+    {
+      "kind": "headless-extract",
+      "source_path": "frontend/src/lib/api/real/canonical-social-intro-schema-core.ts",
+      "source_revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "source_sha256": "5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165",
+      "destination": "frontend/src/shared/validation/text.ts",
+      "destination_sha256": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",
+      "symbols": [
+        "codePointLength",
+        "boundedText",
+        "tagSchema",
+        "tagArray"
+      ],
+      "tests": [
+        "frontend/src/shared/validation/__tests__/text.test.ts"
+      ],
+      "reviewed_by": "mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification"
+    },
+    {
+      "kind": "headless-extract",
+      "source_path": "frontend/src/features/social-intro/social-intro-model.ts",
+      "source_revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "source_sha256": "9f83535790e8882a0565330b89296b162fa609bf4c3a67b2128e49816b9f276f",
+      "destination": "frontend/src/shared/validation/tags.ts",
+      "destination_sha256": "187eb5c650db584d64a9d3b5d98d8450363e0582b7278b069412a07a8b6d3a6e",
+      "symbols": [
+        "parseTagInput"
+      ],
+      "tests": [
+        "frontend/src/shared/validation/__tests__/text.test.ts"
+      ],
+      "reviewed_by": "mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification"
+    },
+    {
+      "kind": "headless-extract",
+      "source_path": "frontend/src/lib/api/real/canonical-social-intro-schema-core.ts",
+      "source_revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "source_sha256": "5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165",
+      "destination": "frontend/src/entities/intro/model/publication-contact.ts",
+      "destination_sha256": "31aefa77596f710eebe311018de07a88ce1e2ceeb888c968ab4580b96254b6c4",
+      "symbols": [
+        "introContactBypass (renamed contactBypass)"
+      ],
+      "tests": [
+        "frontend/src/entities/intro/model/__tests__/policy.test.ts"
+      ],
+      "reviewed_by": "mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification"
+    },
+    {
+      "kind": "headless-extract",
+      "source_path": "frontend/src/lib/api/real/canonical-social-intro-schema-core.ts",
+      "source_revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "source_sha256": "5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165",
+      "destination": "frontend/src/entities/intro/model/age.ts",
+      "destination_sha256": "1d1f762dcc6baed4297216c83f380ef7ccbbf29643e512b7abad742c465206b5",
+      "symbols": [
+        "ageBoundsSchema (adapted socialIntroVisibilitySchema)"
+      ],
+      "tests": [
+        "frontend/src/entities/intro/model/__tests__/policy.test.ts"
+      ],
+      "reviewed_by": "mcr(fe) FE03 author audit; mcr(pm) Main source and delivery hash verification"
+    }
+  ]
 }

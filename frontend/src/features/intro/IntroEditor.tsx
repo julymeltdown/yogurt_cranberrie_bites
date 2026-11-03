@@ -1,11 +1,13 @@
 import { useEffect, useId, useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 import type { IntroController } from './controller'
+import { codePointLength } from '../../shared/validation/text'
 import '../people/people.css'
 export function IntroEditor({ controller }: { controller: IntroController }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), id = useId(), draft = state.draft
   useEffect(() => { controller.start() }, [controller])
   const locked = !state.available || state.command.locked || state.load.phase === 'loading'
+  const textLength = codePointLength(draft.text), textTooLong = textLength > 1000
   function bound(field: 'minimum_age' | 'maximum_age_exclusive', value: string) {
     controller.edit({ ...draft, age_bounds: { ...draft.age_bounds, [field]: value === '' ? null : Number(value) } as typeof draft.age_bounds })
   }
@@ -14,7 +16,8 @@ export function IntroEditor({ controller }: { controller: IntroController }) {
     <p role="status" aria-live="polite">{state.load.phase === 'loading' ? 'Loading your introduction…' : state.command.message || state.message || (state.saved ? `Saved state: ${state.saved.state}` : 'Your introduction has not been verified by the server.')}</p>
     {['pending', 'uncertain', 'reconciling', 'failed'].includes(state.command.phase) && state.command.locked && <button onClick={() => void controller.checkStatus()}>Check original command</button>}
     <form onSubmit={event => { event.preventDefault(); void controller.save() }}>
-      <label htmlFor={`${id}-text`}>Introduction</label><textarea id={`${id}-text`} value={draft.text} maxLength={1000} disabled={locked} onChange={event => controller.edit({ ...draft, text: event.target.value })} />
+      <label htmlFor={`${id}-text`}>Introduction</label><textarea id={`${id}-text`} value={draft.text} aria-describedby={`${id}-count`} aria-invalid={textTooLong} disabled={locked} onChange={event => controller.edit({ ...draft, text: event.target.value })} />
+      <p id={`${id}-count`} role={textTooLong ? 'alert' : undefined}>{textLength} / 1,000 Unicode code points.{textTooLong && ' Shorten your introduction before saving.'}</p>
       <fieldset disabled={locked}><legend>Private audience conditions</legend><p>Leave both bounds empty for no age condition. Otherwise use a minimum inclusive age and a maximum exclusive age. These are service sharing conditions, not concert admission rules.</p>
         <label htmlFor={`${id}-min`}>Minimum age · inclusive</label><input id={`${id}-min`} type="number" inputMode="numeric" min={14} max={100} value={draft.age_bounds.minimum_age ?? ''} onChange={event => bound('minimum_age', event.target.value)} />
         <label htmlFor={`${id}-max`}>Maximum age · exclusive</label><input id={`${id}-max`} type="number" inputMode="numeric" min={15} max={101} value={draft.age_bounds.maximum_age_exclusive ?? ''} onChange={event => bound('maximum_age_exclusive', event.target.value)} />
