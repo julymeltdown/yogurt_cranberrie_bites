@@ -35,3 +35,7 @@ Disk headroom exceeded 8GiB before final build/captures. Sparse checkout omits t
 ## Delivery
 
 The owner may publish these scoped commits once onto current `julymeltdown/mcr/master`, preserving peers and omitting separately published root work. Final handoff supplies fetched remote SHA and ancestry verification. Source, validation, preview inputs and delivered file hashes are pinned in the owned evidence directory. The containing commit identifies this document's delivery without a self-referential hash.
+
+## Current master reconciliation
+
+After the qualified baseline above, merge `82f2c0a1` preserved concurrent remote `dad5282c`. The new shared selected-static union changes AvatarConfig/AvatarManifest to `oneOf`. Existing Auth and gift-discovery schema compilers do not support that keyword: native360/open now fails at the sign-in boundary, and 8 root/Places-entry tests fail while 103 pass. Strict types and production build still exit 0. [Failed reconciliation receipt](../../../frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/checkpoint.json) and separate logs preserve this current failure without overwriting the earlier qualified baseline. The Map owner reported the exact upstream paths and is holding publication for the responsible shared-consumer fix; no unassigned parser/schema edit was made. Whole-character adoption remains outside Map ownership.

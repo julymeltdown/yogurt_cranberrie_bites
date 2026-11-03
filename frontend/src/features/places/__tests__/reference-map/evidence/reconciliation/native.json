@@ -1,0 +1,12 @@
+{
+  "result": "FAIL",
+  "qualification": "Actual production Places/router/Auth/owner/Phaser with existing TEST ONLY in-process HTTP/C05/review metadata; Published root deb5865d (author7201b875), no preview layout override. Original orthogonal1152x896 scenery; diagonal portrait reference fidelity remains incomplete. Not live/device/character acceptance.",
+  "cases": [],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "failure": {
+    "stage": "360/open",
+    "error": "Error: expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.places-map-plaque')\nExpected: 5\nReceived: 0\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.count\" with timeout 5000ms\n  - waiting for locator('.places-map-plaque')\n    14 × locator resolved to 0 elements\n       - unexpected value \"0\"\n",
+    "text": "MCR Concert World\nSign in to continue\nYour link is still here\n\nEntry requires a current account and event. This page does not grant access.\n\nSign in\nBack to home"
+  }
+}
