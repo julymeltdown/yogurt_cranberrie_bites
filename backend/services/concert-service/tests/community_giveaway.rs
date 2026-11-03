@@ -542,3 +542,53 @@ async fn community_gift_restart_expiry() -> anyhow::Result<()> {
     }
     Ok(())
 }
+
+#[tokio::test]
+#[ignore = "requires marker-owned native cluster"]
+async fn community_gift_draft_stays_out_of_public_detail() -> anyhow::Result<()> {
+    let pool = owned::owned_pool().await?;
+    let event = Uuid::new_v4();
+    let owner = Uuid::new_v4();
+    let place = Uuid::new_v4();
+    sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Draft privacy','OPEN')").bind(event).bind(format!("draft-{event}")).execute(&pool).await?;
+    allow(&pool, event, owner).await?;
+    sqlx::query("insert into community_test_places(event,place,allowed) values($1,$2,true)")
+        .bind(event)
+        .bind(place)
+        .execute(&pool)
+        .await?;
+    let fields = GiftFields {
+        title: "Private draft".into(),
+        description: String::new(),
+        image_media_id: None,
+        quantity_total: 1,
+        pickup_starts_at: Utc::now() + Duration::hours(1),
+        pickup_ends_at: Utc::now() + Duration::hours(2),
+        public_place_id: place,
+    };
+    let create = command(owner, event, Uuid::nil(), GiftAction::Create(fields));
+    let gift = create.giveaway_id();
+    let service = PgGifts::new(pool.clone(), SyntheticAuthority);
+    service
+        .execute(&create, &keys(), &code_keys(), None)
+        .await
+        .unwrap();
+    assert!(matches!(
+        service.detail(owner, event, gift).await,
+        Err(GiftServiceError::Command(CommandError::Denied))
+    ));
+    assert_eq!(
+        service
+            .management(owner, event, gift, None, None, 20)
+            .await
+            .unwrap()
+            .giveaway
+            .state,
+        GiftState::Draft
+    );
+    assert!(service
+        .management(Uuid::new_v4(), event, gift, None, None, 20)
+        .await
+        .is_err());
+    Ok(())
+}

@@ -198,7 +198,7 @@ impl<A: GiftAuthority> PgGifts<A> {
         self.authority
             .authorize_in(&mut tx, actor, event, g.owner, CommunityAccess::ReadGifts)
             .await?;
-        if g.state == GiftState::Draft && actor != g.owner {
+        if g.state == GiftState::Draft {
             return Err(CommandError::Denied.into());
         }
         let result = GiftSummary::from(&g);
@@ -895,5 +895,75 @@ impl GiftAuthority for super::UnavailableAuthority {
         _: &PickupMeeting,
     ) -> Result<(), CommandError> {
         Err(CommandError::Unavailable)
+    }
+}
+
+pub struct GiftManagement {
+    pub giveaway: GiftSummary,
+    pub reserved_unclaimed: i32,
+    pub quantity_claimed: i32,
+    pub reservations: Vec<Reservation>,
+    pub next: Option<Uuid>,
+}
+impl<A: GiftAuthority> PgGifts<A> {
+    pub async fn management(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        giveaway: Uuid,
+        state: Option<ReservationState>,
+        after: Option<Uuid>,
+        limit: usize,
+    ) -> Result<GiftManagement, GiftServiceError> {
+        if !(1..=100).contains(&limit) {
+            return Err(CommandError::InvalidInput.into());
+        }
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        let g = load(&mut tx, event, giveaway, false, false)
+            .await?
+            .ok_or(CommandError::Denied)?;
+        if actor != g.owner {
+            return Err(CommandError::Denied.into());
+        }
+        let mut candidates: Vec<_> = g
+            .reservations
+            .iter()
+            .filter(|r| state.is_none_or(|s| r.state == s) && after.is_none_or(|id| r.id > id))
+            .collect();
+        candidates.sort_by_key(|r| r.id);
+        candidates.truncate(limit);
+        let next = candidates.last().map(|r| r.id);
+        let mut subjects: Vec<_> = candidates.iter().map(|r| r.recipient).collect();
+        subjects.push(actor);
+        subjects.sort();
+        subjects.dedup();
+        let mut allowed = std::collections::HashSet::new();
+        for subject in subjects {
+            match self
+                .authority
+                .authorize_in(&mut tx, actor, event, subject, CommunityAccess::ReadGifts)
+                .await
+            {
+                Ok(()) => {
+                    allowed.insert(subject);
+                }
+                Err(CommandError::Denied) if subject != actor => {}
+                Err(e) => return Err(e.into()),
+            }
+        }
+        let reservations = candidates
+            .into_iter()
+            .filter(|r| allowed.contains(&r.recipient))
+            .cloned()
+            .collect();
+        let result = GiftManagement {
+            giveaway: GiftSummary::from(&g),
+            reserved_unclaimed: g.reserved_unclaimed,
+            quantity_claimed: g.quantity_claimed,
+            reservations,
+            next,
+        };
+        tx.commit().await.map_err(db)?;
+        Ok(result)
     }
 }

@@ -246,3 +246,9 @@ for the pending current-candidate Rust/native rerun. All aggregate loaders also
 lock their event before their root, including public/private reads, so event
 closure cannot invert the root/event order. Code issuance additionally pins its
 new code expiry at commit.
+
+Public giveaway detail now rejects DRAFT for every viewer, including its owner;
+only the explicit owner-management projection may include drafts. Management
+paginates reservations with exact actor/event/target checks and sorted current
+relationship decisions. A focused native draft/public-detail regression is
+included in the pending candidate.
