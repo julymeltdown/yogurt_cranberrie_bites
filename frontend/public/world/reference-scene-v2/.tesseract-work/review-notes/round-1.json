@@ -1,0 +1,19 @@
+{
+  "round": 1,
+  "checkpoint": ".tesseract-work/Versions/round-1",
+  "art_director": {
+    "WORLD": 5.5,
+    "MAP": 4.5
+  },
+  "spatial_specialist": {
+    "WORLD": 6.0,
+    "MAP": 4.8
+  },
+  "panel": 4.5,
+  "feedback": [
+    "Sparse courtyard framing and map precincts.",
+    "Repetitive paving and flat procedural foliage.",
+    "Labels substitute for distinct destination artwork."
+  ],
+  "action": "Preserved checkpoint, reworked shared parcels and original painted sprite/material sources."
+}

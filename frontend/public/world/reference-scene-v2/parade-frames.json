@@ -1,0 +1,134 @@
+{
+  "stage": {
+    "x": 0,
+    "y": 0,
+    "width": 336,
+    "height": 280
+  },
+  "tree_01": {
+    "x": 340,
+    "y": 0,
+    "width": 166,
+    "height": 204
+  },
+  "tree_02": {
+    "x": 510,
+    "y": 0,
+    "width": 166,
+    "height": 204
+  },
+  "tree_03": {
+    "x": 680,
+    "y": 0,
+    "width": 166,
+    "height": 204
+  },
+  "tree_04": {
+    "x": 850,
+    "y": 0,
+    "width": 166,
+    "height": 204
+  },
+  "tree_05": {
+    "x": 0,
+    "y": 284,
+    "width": 166,
+    "height": 204
+  },
+  "tree_06": {
+    "x": 170,
+    "y": 284,
+    "width": 166,
+    "height": 204
+  },
+  "tree_07": {
+    "x": 340,
+    "y": 284,
+    "width": 166,
+    "height": 204
+  },
+  "tree_08": {
+    "x": 510,
+    "y": 284,
+    "width": 166,
+    "height": 204
+  },
+  "tree_09": {
+    "x": 680,
+    "y": 284,
+    "width": 166,
+    "height": 204
+  },
+  "tree_10": {
+    "x": 850,
+    "y": 284,
+    "width": 166,
+    "height": 204
+  },
+  "tree_11": {
+    "x": 0,
+    "y": 492,
+    "width": 166,
+    "height": 204
+  },
+  "white_merch_booth": {
+    "x": 170,
+    "y": 492,
+    "width": 144,
+    "height": 164
+  },
+  "white_food_booth": {
+    "x": 318,
+    "y": 492,
+    "width": 144,
+    "height": 164
+  },
+  "meeting_pavilion": {
+    "x": 466,
+    "y": 492,
+    "width": 176,
+    "height": 154
+  },
+  "giveaway_pavilion": {
+    "x": 646,
+    "y": 492,
+    "width": 176,
+    "height": 154
+  },
+  "north_hall": {
+    "x": 826,
+    "y": 492,
+    "width": 176,
+    "height": 154
+  },
+  "west_hall": {
+    "x": 0,
+    "y": 700,
+    "width": 176,
+    "height": 154
+  },
+  "food_counter": {
+    "x": 180,
+    "y": 700,
+    "width": 168,
+    "height": 144
+  },
+  "cross_banner": {
+    "x": 352,
+    "y": 700,
+    "width": 50,
+    "height": 134
+  },
+  "park_plaque": {
+    "x": 406,
+    "y": 700,
+    "width": 156,
+    "height": 96
+  },
+  "plaza_furniture": {
+    "x": 566,
+    "y": 700,
+    "width": 144,
+    "height": 94
+  }
+}
