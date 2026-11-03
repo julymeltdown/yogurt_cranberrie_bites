@@ -76,3 +76,22 @@ Retained Rust 1.88.0, locked/offline, two jobs and debug info disabled:
 
 These checks use a generated in-process gRPC service and controlled producer;
 no database, actual owner reads or deployed product endpoint are claimed here.
+
+## Configured Gateway dispatch
+
+`api_gateway::adapters::out::concert_client::GrpcConcertClient` now composes the
+existing configured Auth/Profile reader with one signed Concert call. It requires
+explicit endpoint, service credential and signer, supports the retained TLS
+configuration, never retries, and carries the original request budget through
+all three services. It rejects cacheable replies and mismatched response actor or
+event. Public routing and the real PostgreSQL producer remain separate wiring.
+
+The extended `concert_identity_composition` suite passes **11/11** on retained
+Rust 1.88.0/default test stack. Three new cases exercise all three actual generated
+RPC services on loopback with controlled producers: success and exact signed
+bindings, Auth refusal suppressing both later calls, and foreign/cacheable/slow
+Concert replies with no replay. This is transport/ownership proof, not real
+database admission. The first three-service test exposed a stack overflow from
+large nested generated-client futures; boxing the nested owner and dispatch
+futures corrected it without increasing stack limits. The focused three tests
+and then the affected combined eleven tests pass after that correction.

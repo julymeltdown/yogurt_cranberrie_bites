@@ -785,3 +785,6 @@ async fn profile_hold_cannot_outlive_same_original_context_after_auth_pass() {
     assert_eq!(h.profile.calls.load(Ordering::SeqCst), 1);
     h.close().await;
 }
+
+#[path = "support/concert_bootstrap_client.rs"]
+mod bootstrap_dispatch;
