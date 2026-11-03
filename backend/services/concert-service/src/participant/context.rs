@@ -165,10 +165,8 @@ impl VerifiedParticipantRequest {
                     .map_err(|_| Status::invalid_argument("Invalid avatar request"))?;
             }
             Operation::UpdatePreferences => {
-                crate::adapters::out::repository::avatar::parse_preferences(&m.request_json)
-                    .map_err(|_| {
-                        Status::invalid_argument("Only preference updates are supported")
-                    })?;
+                super::live::update::ParticipantUpdate::parse(&m.request_json)
+                    .map_err(|_| Status::invalid_argument("Invalid participant update"))?;
             }
             _ => {}
         }

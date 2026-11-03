@@ -111,6 +111,16 @@ impl ParticipantService {
         if context.release_digest() != self.store.release_digest() {
             return Err(status(AvatarError::Unavailable));
         }
+        // The full C03 syntax is recognized by the verified context. Until the
+        // actual canonical SELF/coordinator adapter is composed, profile edits
+        // fail before any owner call or local preference mutation.
+        if context.operation() == Operation::UpdatePreferences
+            && live::update::ParticipantUpdate::parse(context.raw_body())
+                .map_err(status)?
+                .changes_profile()
+        {
+            return Err(status(AvatarError::Unavailable));
+        }
         let auth = self.auth.read(context).await.map_err(status)?;
         context.check()?;
         auth.check(context).map_err(status)?;

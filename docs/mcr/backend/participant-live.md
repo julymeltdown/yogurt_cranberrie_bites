@@ -30,8 +30,12 @@ this participant patch does not modify platform allowlists.
 
 The full C03 parser preserves absent versus explicit-null bio, permits selected
 profile fields and/or preferences, and rejects duplicate and unknown properties.
-It is not yet wired into the preference-only Phase A handler. No public header
-or expected_revision key is changed.
+The verified envelope now recognizes the full syntax. Until canonical SELF and
+coordinator orchestration are composed, profile edits explicitly return dependency
+unavailable before any owner call or preference write. No public header or
+expected_revision key is changed. Canonical Profile retains its established
+nonblank, no-control-character content rules; DTO parsing does not fabricate a
+successful canonical value that its owner refuses.
 
 ## Cross-store protocol under implementation
 
@@ -42,21 +46,53 @@ The planned effect digest is SHA256 over ASCII `mcr profile self effect v1\0`,
 the 32-byte guard-binding digest, the 16-byte operation UUID, the 16-byte Profile
 epoch, its big-endian i64 revision, and SHA256 of the exact raw PATCH body.
 
-Migration 0027 is a draft durable operation registry. It fixes the original
+Migration 0027 is a durable operation registry under implementation. It fixes the original
 binding, expected participant revision, Profile version/GID/effect, and actual
 Concert transaction identity before either store's protected effect. Only the
 actual Concert participant CAS transaction may write its COMMIT decision.
 Profile reconciliation must independently query the authoritative committed
 decision. A registered aborted Concert transaction can establish ABORT; timeout,
 absence, an unknown transaction, or a caller boolean cannot. Unknowns retain
-prepared effects and owner exclusion. Journal/recovery code, settlement RPC,
-native crash/race proofs, and cross-store read visibility remain unfinished.
+prepared effects and owner exclusion. The SQL trigger additionally requires the
+COMMIT writer's full XID, system identifier, database OID, PID and backend start
+to match the registered native transaction.
+
+The new Rust journal captures that identity from its own actual transaction,
+registers it before protected effects, durably inserts PENDING on a separate
+connection, and locks event/admission/participant before the stale-revision check.
+It writes the participant CAS and decision in that actual transaction. The
+dedicated Profile-only ResolveDecision RPC reads the exact operation binding and
+this store's actual pg_xact_status; a new recovery query cannot create an operation
+or choose an outcome. These new Rust paths remain unqualified at this checkpoint.
+The actual held-owner adapter, real Profile prepare/reconcile, cross-store crash
+and visibility proofs, and public route remain unfinished.
 
 ## Validation
 
-New live code: formatting and `git diff --check` PASS. Compile, focused tests,
-0027 SQL/native migration, actual live owner mutation, root/Gateway composition,
-browser and full signed-in multiuser acceptance: NOT_RUN at this source checkpoint.
+Auth source `ab01b9dc`: Rust 1.88 locked/offline jobs=2 debug=0 incremental=0
+compile exit 0, exact Cargo-emitted library-test copy SHA256
+`5b0427dbb72034bd15c7ba6253bc800abc5be243325cb09c87354941b3a1c715`.
+An initial cached contracts-build path pointed to a different checkout; selective
+`cargo clean -p contracts-build` repaired only that package. The subsequent compile
+caught a fixture helper shadowing its function; that was fixed before the passing
+build. From the frozen private copy: deadline/credential Auth test PASS; full Auth
+reply-case test FAIL because the synthetic "stale" observation was only one
+microsecond old and could still be fresh. Its fixture now uses an actual three
+second-old observation; rerun pending. No receiving authority check was relaxed.
+Both C03 parser tests PASS, including frozen-schema comparisons and duplicate keys.
+
+SQL-only command `python3 backend/scripts/mcr/participant_coordinator_sql_smoke.py
+--pg-bin /opt/homebrew/opt/postgresql@16/bin`: exit 0 on actual private PG16.14,
+six checks PASS and owned cluster cleanup PASS. All current Concert SQL applied;
+another connection could not decide; the exact registered transaction committed
+effect and decision together; rollback retained PENDING but neither effect nor
+decision; binding/Profile receipt/terminal decision were immutable; restart retained
+the decision/effect and actual aborted status. This exercises SQL using an explicit
+effect-probe table, not the Rust participant implementation or actual Profile.
+
+New journal/resolver Rust compile and native application test: NOT_RUN. Actual live
+owner mutation, root/Gateway composition, browser and full signed-in multiuser
+acceptance: NOT_RUN. Formatting, `git diff --check` and the plan checker PASS.
 Phase A validation in `participant-producer.md` does not qualify these new changes.
 
 Required completion remains implementation, meaningful native and public-route

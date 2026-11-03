@@ -1,10 +1,15 @@
 //! Live owning-service adapters. Construction is explicit; none mints a write
 //! capability from a read observation or silently enables product composition.
 pub mod auth;
+pub mod coordinator;
+pub mod decision_rpc;
 pub mod update;
 
 #[cfg(test)]
 mod auth_tests;
+
+#[cfg(test)]
+mod coordinator_tests;
 
 use super::{context::VerifiedParticipantRequest, ports::CurrentAuth};
 use concert_application::avatar::AvatarError;

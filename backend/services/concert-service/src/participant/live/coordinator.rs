@@ -3,6 +3,7 @@
 //! enroll the same connection's transaction before protected effects.
 use super::update::{Field, ParticipantUpdate};
 use crate::participant::context::VerifiedParticipantRequest;
+use crate::participant::Operation;
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use concert_application::avatar::AvatarError;
@@ -77,6 +78,9 @@ impl ExpectedProfileEffect {
         request
             .parent_authority()
             .map_err(|_| AvatarError::Denied)?;
+        if request.operation() != Operation::UpdatePreferences {
+            return Err(AvatarError::Denied);
+        }
         if version.epoch.is_nil() || binding_digest == [0; 32] {
             return Err(AvatarError::InvalidInput);
         }
