@@ -1,0 +1,5 @@
+body { margin: 0; background: #e5dfd4; }
+main { max-width: 50rem; margin-inline: auto; }
+.fixture-caption { margin: 1rem; font: 14px/1.5 Arial,sans-serif; }
+nav { display: flex; gap: .5rem; padding: 1rem; }
+nav button { font: 16px Arial,sans-serif; min-height: 44px; padding: .6rem; color: #211f1d; background: #faf7ef; border: 1px solid #211f1d; }
