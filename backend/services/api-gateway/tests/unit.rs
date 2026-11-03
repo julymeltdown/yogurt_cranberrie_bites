@@ -16,6 +16,8 @@ mod gateway_services;
 mod high_risk_sessions;
 #[path = "unit/http_auth_routes.rs"]
 mod http_auth_routes;
+#[path = "unit/http_concert_access.rs"]
+mod http_concert_access;
 #[path = "unit/http_friend_routes.rs"]
 mod http_friend_routes;
 #[path = "unit/http_notification_privacy.rs"]

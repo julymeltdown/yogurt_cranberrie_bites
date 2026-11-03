@@ -5,6 +5,8 @@ pub mod auth_routes;
 pub mod auth_shadow_routes;
 pub mod browser_auth;
 pub mod client_identity;
+pub mod concert_access;
+
 pub mod friend_routes;
 pub mod moderation_decision_worker;
 pub mod moderation_routes;
