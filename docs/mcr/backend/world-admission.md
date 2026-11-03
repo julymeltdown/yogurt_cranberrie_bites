@@ -1,9 +1,7 @@
 # World admission tickets and room membership
 
-State: **IN_PROGRESS**. BE10/BE11 source is integrated in this isolated branch;
-native qualification is incomplete. The application library tests (3) and
-application integration tests (5) currently pass. The shared service test binary
-compiles, but the latest pinned PostgreSQL run had two failing concurrency cases.
+State: **INTEGRATED** in this isolated branch, pending delivery integration and
+review. BE10/BE11 application tests and the guarded durable PostgreSQL gate pass.
 Public HTTP/WebSocket ingress, BE12 movement simulation and BE13 privacy projection
 remain outside this implementation.
 
@@ -45,9 +43,8 @@ on `consumed_at IS NULL`; concurrent attempts produce one `Consumed` result and
 ## PostgreSQL ownership
 
 `concert_service::world::PgWorldRepository::new(PgPool)` is the durable adapter.
-The service `src/lib.rs` export is intentionally not included here because the
-delivery integrator owns root service composition; it must register the module
-when composing the application and tests.
+The branch includes the separately delegated `pub mod world;` service export;
+the delivery integrator still owns production application composition.
 Migration `0005_world_admission.sql` creates four bounded tables:
 
 | Table | Purpose |
@@ -100,7 +97,7 @@ WebSocket socket.
 ## Verification
 
 Static/unit commands and native evidence are recorded below. The current receipt
-is a failure receipt, not a native pass.
+is the successful native receipt for `279aad1`.
 
 - Planning check: `python3 scripts/mcr/check-plan.py`.
 - Application tests: `cargo test -p concert-application --test world_ticket`.
@@ -124,11 +121,20 @@ Observed on the latest pinned run:
 - `check-plan.py`: PASS, exit 0.
 - Application lib: 3/3 PASS, exit 0.
 - Application `world_ticket` integration target: 5/5 PASS, exit 0.
-- Service `world_admission`: compiled, exit 0; latest copied-binary PostgreSQL run 3/4 PASS.
+- Service `world_admission`: compile PASS, exit 0; JSON-selected executable copied
+  to `/tmp/mcr-world-admission-279aad1/world_admission`, SHA-256
+  `2ebc105bef0ebbf7b21af8fdd86d7e7eac30f4c850d9a8a204dcb44101db10fb`.
 - Owned PostgreSQL 16.14 direct migration/schema constraints: PASS.
-- Native run result: **FAIL**; capacity/switch and owner-fencing/prune pass, while
-  `ticket_digest_is_single_use_under_competing_connections` still reaches
-  `WorldError::Conflict`. The source under diagnosis adds a digest advisory lock
-  ahead of the one-use row claim; that correction is not yet compiled or proven.
-- Owned cluster cleanup: PASS. No native success or restart-persistence claim is
-  made for the corrected source.
+- Native run result: **PASS**, all **4/4** tests on the copied binary, exit 0.
+  Concurrent ticket reuse returns exactly one consumed and one already-consumed
+  result; the original regression remains in the suite.
+- Restart ownership/ticket persistence: **PASS**. Owned cluster cleanup: **PASS**.
+  Direct migration reapplication is refused as expected. Receipt:
+  `/tmp/mcr-world-admission-279aad1/native-receipt.json`.
+
+The prior `8e80127` 3/4 failure remains historical evidence for source revision
+`91569e7`; it is not used as proof for the corrected source. The correction derives
+unique test tickets from each generated event/room fixture and serializes competing
+digest claims with a transaction-scoped advisory lock before the one-use row claim.
+Native unit success does not certify HTTP/WebSocket ingress, production authority,
+two-account transport, 50-user load, simulation, privacy projection or release.
