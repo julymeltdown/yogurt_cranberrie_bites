@@ -2,6 +2,7 @@ pub mod auth_client;
 pub mod cache;
 pub mod cache_authority;
 pub mod client_error;
+pub mod concert_identity;
 pub mod friend_client;
 pub(crate) mod grpc_call;
 pub mod jwt;
