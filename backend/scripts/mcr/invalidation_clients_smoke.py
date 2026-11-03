@@ -111,7 +111,11 @@ def qualify(artifacts: dict[str, Path], pg: Path, report: dict) -> None:
             report["migration_sha384"][service] = manifest
             check_ledger(cluster, db, manifest)
             owner = service.removesuffix("-service")
-            report["owner_journals"][owner] = cluster.sql(db, f"select committed_cursor,(select count(*) from {owner}_concert_invalidation_journal) from {owner}_concert_invalidation_head;")
+            summary = {
+                "auth": "select committed_cursor,(select count(*) from auth_concert_invalidation_journal) from auth_concert_invalidation_head;",
+                "friend": "select sequence,(select count(*) from friend_world_invalidation_journal) from friend_world_invalidation_head;",
+            }[owner]
+            report["owner_journals"][owner] = cluster.sql(db, summary)
         before = cluster.assert_postmaster()
         cluster.stop()
         cluster.start()
