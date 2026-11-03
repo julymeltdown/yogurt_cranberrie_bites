@@ -437,7 +437,7 @@ impl PgAgeClaims {
             .map_err(command)?;
         let changed=sqlx::query("with expired as(select verification_id from concert_age_verifications where user_id=$1 and expires_at<=clock_timestamp() and state<>'EXPIRED' order by expires_at,verification_id limit $2 for update skip locked) update concert_age_verifications v set state='EXPIRED',state_digest=null from expired e where v.verification_id=e.verification_id")
    .bind(c.actor.uuid()).bind(limit).execute(&mut *tx).await.map_err(db)?;
-        sqlx::query("with expired as(select claim_id from concert_age_claims where user_id=$1 and expires_at<=clock_timestamp() and status<>'EXPIRED' order by expires_at,claim_id limit $2 for update skip locked) update concert_age_claims c set status='EXPIRED',age_at_verification=null,next_birthday_at=null from expired e where c.claim_id=e.claim_id")
+        sqlx::query("with expired as(select claim_id from concert_age_claims where user_id=$1 and expires_at<=clock_timestamp() and age_at_verification is not null order by expires_at,claim_id limit $2 for update skip locked) update concert_age_claims c set status=case when c.status='VERIFIED' then 'EXPIRED' else c.status end,age_at_verification=null,next_birthday_at=null from expired e where c.claim_id=e.claim_id")
             .bind(c.actor.uuid()).bind(limit).execute(&mut *tx).await.map_err(db)?;
         deadline(self, &mut tx, c).await.map_err(command)?;
         tx.commit().await.map_err(db)?;

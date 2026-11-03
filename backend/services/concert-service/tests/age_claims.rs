@@ -9,7 +9,7 @@ pub mod age_verification;
 use age_provider::*;
 use age_verification::*;
 use async_trait::async_trait;
-use chrono::{DateTime, Duration, Utc};
+use chrono::{DateTime, Datelike, Duration, Utc};
 use concert_application::{commands::*, Clock};
 use concert_domain::{age_policy::AgeStatus, AuthUserId, EventId};
 use sqlx::{PgConnection, PgPool};
@@ -67,13 +67,22 @@ impl Verifier for FixtureVerifier {
             binding.session = Uuid::new_v4()
         }
         let at = Utc::now();
+        let tomorrow = (at + Duration::hours(9)).date_naive().succ_opt().unwrap();
+        let (birthyear, birthday) = if self.mode == 4 {
+            (
+                (tomorrow.year() - 101).to_string(),
+                tomorrow.format("%m-%d").to_string(),
+            )
+        } else {
+            ("2000".into(), "11-05".into())
+        };
         Ok(VerifiedProof {
             binding,
             verified_at: at,
             expires_at: at + Duration::days(90),
             source_revision: "fixture-v1".into(),
-            birthyear: "2000".into(),
-            birthday: "11-05".into(),
+            birthyear,
+            birthday,
         })
     }
 }
@@ -539,5 +548,49 @@ async fn durable_restart_verify() -> anyhow::Result<()> {
     .await?;
     assert_eq!(receipts, 2);
     p.close().await;
+    Ok(())
+}
+
+#[tokio::test]
+async fn persisted_100_to_101_transition_is_exact_seoul_midnight() -> anyhow::Result<()> {
+    let f = setup(4).await?;
+    let (id, state) = begin(&f).await?;
+    f.s.callback(f.c, Uuid::new_v4(), id, token(&state), response())
+        .await?;
+    let (age, next): (i16, chrono::NaiveDate) = sqlx::query_as(
+        "select age_at_verification,next_birthday_at from concert_age_claims where claim_id=$1",
+    )
+    .bind(id)
+    .fetch_one(&f.p)
+    .await?;
+    assert_eq!(age, 100);
+    let boundary = (next.and_hms_opt(0, 0, 0).unwrap() - Duration::hours(9)).and_utc();
+    let mut ctx = f.c;
+    ctx.expires_at = boundary + Duration::days(1);
+    *f.clock.0.lock().unwrap() = Some(boundary - Duration::nanoseconds(1));
+    assert_eq!(f.s.status(ctx).await?.status, AgeStatus::Verified);
+    *f.clock.0.lock().unwrap() = Some(boundary);
+    assert_eq!(f.s.status(ctx).await?.status, AgeStatus::Unsupported);
+    let stored: i16 =
+        sqlx::query_scalar("select age_at_verification from concert_age_claims where claim_id=$1")
+            .bind(id)
+            .fetch_one(&f.p)
+            .await?;
+    assert_eq!(stored, 100);
+    Ok(())
+}
+#[tokio::test]
+async fn expired_claim_details_are_erased_without_losing_canonical_tombstone() -> anyhow::Result<()>
+{
+    let f = setup(0).await?;
+    let (id, state) = begin(&f).await?;
+    f.s.callback(f.c, Uuid::new_v4(), id, token(&state), response())
+        .await?;
+    sqlx::query("with n as materialized(select clock_timestamp() t) update concert_age_claims set verified_at=n.t-interval '2 days',expires_at=n.t-interval '1 day' from n where claim_id=$1").bind(id).execute(&f.p).await?;
+    f.s.expire_states(f.c, 100).await?;
+    let (status,age,next):(String,Option<i16>,Option<chrono::NaiveDate>)=sqlx::query_as("select status,age_at_verification,next_birthday_at from concert_age_claims where claim_id=$1").bind(id).fetch_one(&f.p).await?;
+    assert_eq!(status, "EXPIRED");
+    assert!(age.is_none() && next.is_none());
+    assert_eq!(f.s.status(f.c).await?.status, AgeStatus::Expired);
     Ok(())
 }
