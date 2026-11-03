@@ -1,0 +1,30 @@
+{
+  "task": "FE-REF-GIFTS touch-target QA fix",
+  "base": "677f958e7965e15258f1249287ffe2f442ac1c18",
+  "qa_source": "12d987b34498fbfb434df468517eb1696b40d76b",
+  "checks": {
+    "tests": {
+      "exit": 0,
+      "files": 6,
+      "tests": 77
+    },
+    "types": 0,
+    "lint": 0,
+    "native": {
+      "exit": 0,
+      "root_cases": 5,
+      "stress_cases": 6,
+      "report": "report.json"
+    }
+  },
+  "production_build": "NOT_RUN for this presentation-only followup; separate runtime checkpoint build passed",
+  "live_services": "NOT_RUN",
+  "owned_scope": [
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+    "frontend/src/features/gift-discovery/__tests__/reference-native/touch-targets.mjs",
+    "frontend/src/features/gift-discovery/__tests__/reference-native/root-touch-data.ts",
+    "frontend/src/features/gift-discovery/__tests__/reference-native/evidence/touch-targets/**",
+    "docs/mcr/frontend/reference-gifts.md"
+  ]
+}

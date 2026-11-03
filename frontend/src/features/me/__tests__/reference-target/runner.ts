@@ -1,0 +1,2 @@
+import { defineConfig } from 'vitest/config'
+export default defineConfig({ cacheDir: 'src/features/me/__tests__/reference-target/.cache/vitest', test: { maxWorkers: 2, include: ['src/features/me/__tests__/{ui.test.tsx,controller.test.ts}', 'src/features/me/__tests__/visual-adoption/presentation.test.tsx', 'src/features/me/__tests__/reference-target/*.test.tsx', 'src/features/profile/__tests__/reference-target/*.test.tsx', 'src/features/people/__tests__/ui.test.tsx'] } })

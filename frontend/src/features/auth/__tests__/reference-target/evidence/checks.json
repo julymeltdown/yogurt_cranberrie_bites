@@ -59,7 +59,67 @@
     },
     "typesExit": 0,
     "lintExit": 0,
-    "native": "NOT_RUN for fix: disk assertion stopped before output, shared free 7527580KiB below8GiB. Existing report is pinned to prior source.",
-    "initialAttempt": "28/29; 403 mounted-world test hit existing1s lazy-loading timeout; unchanged serial rerun29/29"
+    "native": "PASS after disk recovery:360/390/430 includes actual anonymous destination click and foreign fallback, zero page errors, final source/screenshot hashes match",
+    "initialAttempt": "28/29; 403 mounted-world test hit existing1s lazy-loading timeout; unchanged serial rerun29/29",
+    "sourceCommit": "cfd4894f9ac3b3c16a4cf988fd3e9dcd743e53c3",
+    "buildExit": 0
+  },
+  "publicationReconciliation": {
+    "base": "8430cd57ebb628fc093cb43f5ab547f042440830",
+    "branch": "codex/mcr-fe-ref-auth-profile-publish",
+    "preservedPeerHistory": true,
+    "combinedTests": {
+      "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/me/__tests__/reference-target/combined-runner.ts --configLoader runner",
+      "exit": 0,
+      "passed": 99,
+      "files": 10,
+      "includes": "actual root shell direct-link regression; auth and profile owned/baseline suites"
+    },
+    "strictTypesExit": 0,
+    "scopedAuthProfileLintExit": 0,
+    "buildsExit": 0,
+    "nativeWidths": [
+      360,
+      390,
+      430
+    ],
+    "nativeExit": 0,
+    "sourceSharedCaptureHashComparison": "PASS after final native reruns",
+    "temporaryDependencyAndCaches": "removed before final guards",
+    "authAlreadyPublishedSourceMapping": "51d89f71",
+    "onlyNewAuthEvidenceMapping": "911bd6e8511a4c5488e8964d2ed29d78f511b154",
+    "newProfileSourceMapping": "3c1ac29103ce2a56b9612ebefaae0057636da625",
+    "newProfileEvidenceMapping": "193702fcff29b76807b3b0c090b28ae7df520078",
+    "boundaryExit": 0,
+    "planningExit": 0,
+    "originExit": 0,
+    "scopeReview": "PASS exact authorized paths and presentation-only imports",
+    "decoderRepairAncestor": "90f44fd99fdfe17f3ee3e596ceff0583f6db2c47",
+    "exactBlockedChecksRerun": "PASS after actual decoder repair; original48/99 failure retained in union-regression.txt",
+    "wholeCharacterRootIdentityGate": "NOT_RUN: canonical1.1 admission/root identity binding remain separately owned; published runtime alone is not that proof",
+    "portraitPortMapping": "8c188a9445850005ba525434bc92873d204707cc",
+    "portraitNativeProbesMapping": "4c729e10f9de96838801485b65632cbd6fcd68d3",
+    "boundaryCommand": "python3 scripts/mcr/check-boundaries.py --base 8430cd57ebb628fc093cb43f5ab547f042440830 --lane frontend --allow-doc docs/mcr/frontend/reference-auth.md --allow-doc docs/mcr/frontend/reference-profile.md --allow-doc frontend/src/features/me/__tests__/reference-target/evidence/union-regression.txt",
+    "testedPeerLeaseAndRuntimeContext": true,
+    "publishedWholeRuntime": "9fbc89426c6d0781c6f7a1f1a78ef722656407e5",
+    "ownReconciledCommitMap": {
+      "test(frontend): qualify profile ports after decoder repair": "817659a7e14dbe2af73835c8efb69f16daa16afb",
+      "test(frontend): prepare portrait port probes and retain union failure receipt": "4c729e10f9de96838801485b65632cbd6fcd68d3",
+      "feat(frontend): expose authorized profile portrait presentation ports": "8c188a9445850005ba525434bc92873d204707cc",
+      "test(frontend): qualify auth and profile against current shared frame": "a5616612637521da07636b03a9c7c7fa010c2903",
+      "docs(frontend): record bounded profile reference evidence": "193702fcff29b76807b3b0c090b28ae7df520078",
+      "feat(frontend): implement reference profile presentation and scoped activity": "3c1ac29103ce2a56b9612ebefaae0057636da625",
+      "docs(frontend): qualify sign-in destination fix in native Chrome": "911bd6e8511a4c5488e8964d2ed29d78f511b154"
+    }
+  },
+  "originalInputHashes": {},
+  "inputHashes": {
+    "contracts/generated/mcr-domain.openapi.json": "ef678d3445e5ee5ed3b90594ef1decc1d53b342166b10a91c4d9c9b3f20aa057",
+    "contracts/fixtures/domain/public-post.json": "7015cda316531b4e44c7f1e8a6dcea697eb299dfe4c5d9d6e2ff332d85c8920e",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/src/features/auth/model/contract.ts": "6e367afd4c54e54e8f02d0997f3d6f4450e369adcb13e7254bbefc47e3c5a904",
+    "frontend/src/features/auth/model/bootstrap.ts": "202388462a13e4940f62f18b57afdf726790da42038073a40ead9728747b47b9",
+    "frontend/src/features/me/model/contract.ts": "c25f344aee392ed78d659a330dbcaa088acf8c7560fd3d7767a27e1423886d0c",
+    "frontend/src/features/people/contract.ts": "067a94397097071304cc334787faeffd75dcef7ec5b224e4d0cf92e92d830b0d"
   }
 }

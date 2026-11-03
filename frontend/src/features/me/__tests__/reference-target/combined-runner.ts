@@ -1,0 +1,3 @@
+import { defineConfig } from 'vitest/config'
+/** Publication reconciliation check; reads root shell regression tests, owns no root code. */
+export default defineConfig({ cacheDir: 'src/features/me/__tests__/reference-target/.cache/combined', test: { maxWorkers: 1, include: ['src/app/__tests__/shell.test.tsx', 'src/features/auth/__tests__/{session.test.ts,sign-in.test.tsx}', 'src/features/auth/__tests__/reference-target/*.test.tsx', 'src/features/me/__tests__/{ui.test.tsx,controller.test.ts}', 'src/features/me/__tests__/visual-adoption/presentation.test.tsx', 'src/features/me/__tests__/reference-target/*.test.tsx', 'src/features/profile/__tests__/reference-target/*.test.tsx', 'src/features/people/__tests__/ui.test.tsx'] } })
