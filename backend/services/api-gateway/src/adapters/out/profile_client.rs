@@ -22,6 +22,7 @@ use tonic::transport::Channel;
 pub mod proto {
     tonic::include_proto!("profile.v1");
 }
+pub mod concert_identity;
 
 #[derive(Clone)]
 pub struct GrpcProfileClient {
