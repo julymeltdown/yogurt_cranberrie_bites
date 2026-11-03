@@ -1,7 +1,7 @@
 # FE14 independent runtime handoff review
 
-Date: 2026-11-03. Status: **IN_PROGRESS — three concrete P2 findings returned
-for correction; exact committed fixes and parent disposition pending.** This
+Date: 2026-11-03. Status: **review complete — all three P2 findings cleared on
+`9b9307c922facb7c8786595b2d0a78c6086e084a`; final parent disposition pending.** This
 report reviews the bounded synthetic runtime foundation, not acceptance of FE14
 as a whole, production artwork, real world admission, or IN01/IN05.
 
@@ -17,9 +17,11 @@ golden fixtures are unchanged from the worker base.
 Authorities read: root and frontend `AGENTS.md`, specification FE14 and its
 world/lifecycle/stack requirements, `docs/mcr/project-assessment.md`,
 `docs/mcr/execution-plan.md`, and `docs/mcr/frontend/phaser-runtime.md`.
-The sole writable tracked path is this new report. QA performed no application,
-contract, fixture, manifest, lockfile, backend, or source-archive edits. Only the
-parent integrates/publishes. The previous QA checkout is stopped.
+The sole QA-authored tracked path is this new report. The parent subsequently
+authorized an exact cherry-pick of the worker correction for local qualification;
+QA did not reauthor application files. No contract, golden fixture, manifest,
+lockfile, backend, or source-archive edits were performed. Only the parent
+integrates/publishes. The previous QA checkout is stopped.
 
 The exact fifteen reviewed paths are:
 
@@ -62,7 +64,8 @@ Required correction: retain the host reservation through the inherited drain,
 including no-engine replacement stop/dispose/abort, without allowing an older
 release to delete a newer generation's claim. Include a deferred-close regression
 that proves B remains host-busy until release and can subsequently acquire safely.
-Evidence: temporary `inherited-drain.json`. Disposition: **pending worker fix**.
+Evidence: temporary `inherited-drain.json`. Disposition: **CLEARED by exact
+`9b9307c`**, as independently verified below.
 
 ## F2 [P2] — a visibility callback can publish readiness after disposal
 
@@ -81,7 +84,8 @@ this callback reentrantly.
 
 Required correction: check generation/active ownership after the visibility
 callback before publishing readiness, with stop/dispose/restart regressions.
-Evidence: temporary `reentrant-visible.json`. Disposition: **pending worker fix**.
+Evidence: temporary `reentrant-visible.json`. Disposition: **CLEARED by exact
+`9b9307c`**, as independently verified below.
 
 ## F3 [P2] — IPv-literal provenance differs from the pinned C06 checker
 
@@ -107,7 +111,7 @@ Required correction: align the bounded IP-literal predicate with the selected
 owner checker and add differential full-manifest positives/negatives. Do not
 silently amend C06 schemas or resource URL policy. Evidence: `uri-parity.json`
 and three rehashed bundle JSONs in the QA temporary root. Disposition:
-**pending worker fix**.
+**CLEARED by exact `9b9307c`**, as independently verified below.
 
 ## Source review and evidence boundary
 
@@ -195,6 +199,77 @@ Phaser source and the worker browser report. Selected anchors:
 | Worker browser `report.json` | `7119b7d2ae3c467921068c5b8e20ed8794a3a2e36baedb974f4981922448e30d` |
 | Installed Phaser `Game.js` | `3f04fde6307e194518cc1704cc75ab53873c4012ec8d74f858065deb867d6e11` |
 | Installed Phaser `VisibilityHandler.js` | `3c8ece6e566a1c735cd684c76e57976c0778d59040eebd7e464d8a7432628bd5` |
+
+## Exact correction and final independent disposition
+
+Reviewed worker correction: **`9b9307c922facb7c8786595b2d0a78c6086e084a`**, parent
+`1ffff588d44ce7a7aa82a574aaae163cbcd1248c`. Per explicit parent authorization,
+QA cherry-picked it unchanged after the initial report commit `6480707`;
+the local application commit is `afa6a977bc329ace65f9f3b80e1827fa4fa84f2d`.
+This local ancestry is not an application patch authored or submitted by QA.
+All fifteen worker files now match exact `9b9307c` bytes. The correction changes
+only six originally assigned paths; C06 schemas and golden fixtures remain
+byte-identical to the original base.
+
+- **F1 CLEARED:** the no-engine branch chains release behind `drain`, preserving
+  inherited teardown lifetime. The same standalone probe now gets `host-busy`
+  and one allocation before old close for each stop/dispose/abort variant; B
+  reaches ready only after close. The targeted deferred-close regressions also
+  check zero B loads/factory calls while blocked, peak live engines of one, and
+  that obsolete A cleanup cannot evict the subsequent B/C owner.
+- **F2 CLEARED:** a second `current()` guard immediately after `setVisible()`
+  prevents stale publication. The unchanged probe returns stopped/disposed
+  without any ready publication for those actions. Restart returns loading for
+  the old start and publishes exactly one ready state for its replacement.
+  Targeted tests also verify later starts on disposed owners remain disposed.
+- **F3 CLEARED:** provenance IPv6 now uses an independently authored bounded
+  group/unit counter, not WHATWG normalization. Decimal dotted tails preserve
+  the selected checker's leading-zero behavior; uppercase IPvFuture `V` is
+  rejected consistently. The same seven rehashed full-manifest comparisons now
+  agree. An additional independent **655-case scalar IP-literal matrix** has
+  zero client/actual-Python mismatches, covering expanded/compressed group
+  counts, dotted-tail positions, octet width/range, zone/colon errors and
+  IPvFuture controls. This finite matrix is not exhaustive RFC certification.
+
+QA independently reran the targeted runtime file on the corrected bytes with
+`MCR_FE14_PYTHON` set: **134/134 tests PASS**, exit 0. This includes twelve
+additional full map/theme Python differential cases with critical positives
+and invalid octets, misplaced tails, zones and compression. The same temporary
+`review-probe.mjs` was executed against initial and corrected source and its
+recorded final outcomes were asserted separately; both drivers exited 0.
+`combined-initial.json` and `combined-final.json` retain the before/after results.
+
+Inspected, not independently rerun: worker final `unit-tests-r1-r2-r3.txt`
+(871/871), build/lint logs and `review-r1-r2-r3/report.json`. The final native
+report adds real-Phaser wrappers for inherited held-close and reentrant
+visibility stop/dispose/restart while retaining the four-width matrix and zero
+unexpected page errors. The held-close native test delays the lease's contract
+completion after Phaser has destroyed its engine; it does not claim two native
+engines remained physically alive. QA inspected the changed fixture/harness
+assertions. The parent owns final combined/native qualification.
+
+`final-source-pins.json` in the QA temporary root records all fifteen exact
+corrected file hashes and evidence hashes. The six corrected-path pins are:
+
+| Final source | SHA-256 |
+|---|---|
+| `docs/mcr/frontend/phaser-runtime.md` | `bb6195ad98dabadb07c0ba83b27991187d46a75deb2da469bc639526cb2b46a9` |
+| `frontend/src/world/runtime.ts` | `822b3fcd9d3c380bd9d781b9ca908184714b0e2810f09c8aff4d82a1ca7ec679` |
+| `frontend/src/world/map/formats.ts` | `0e31dc185d0e3c0fa148c70443d2b2a9b34c96d3b43dc72e2070fce62cb98770` |
+| `frontend/src/world/__tests__/runtime.test.ts` | `7cd429511d2fd04815ac04a91ef3451d3bdf16e40a9882c57f220260491796b7` |
+| `frontend/src/world/__tests__/runtime-browser-smoke.mjs` | `98e9e1b329004c5f38c457d66b6b959239fc577915d04609ec11c901c3ed26e4` |
+| `frontend/src/world/__tests__/fixtures/runtime-preview.tsx` | `2cd3f574642965547718a04915ce6b3706f625e910e1be8ff1cac2cb92567e66` |
+| QA `review-probe.mjs` | `cda455e8d583950ce98295d0909e253acc7379c0b999a1d72868bdaec8640af9` |
+| QA `combined-initial.json` | `82093261390e7d80a14b993aab9db3ce004037b5c5e734e7f91230a9ea601737` |
+| QA `combined-final.json` | `bcf497958a31a08b1c78ce3f92e633dc8401d2e38fabe243ab289a169489423b` |
+| QA `final-ip-literal-matrix.json` | `2dc02344a750cddedfe9cfe5e496b209bfd6331deaf11af35a12b88f86214ea7` |
+| QA `final-targeted-tests.log` | `00aa3cda7ca8a7ec3a89fbb65e5e4351440445da5f17418fdcdcae357a347643` |
+| Inspected final worker native `report.json` | `5f012373b0be81c1f27f654f9adab3b80b12f490337c80d02e92aa729277d1db` |
+
+Finding labels differ from the worker's documentation: this report's F1/F2/F3
+map to worker R1/R3/R2 respectively. **No actionable finding remains in this
+bounded correction review.** The sole QA-authored final patch updates this report;
+the parent should integrate QA report commits, not QA's local application cherry-pick.
 
 ## Qualification limits and goal
 
