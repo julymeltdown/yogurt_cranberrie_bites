@@ -84,8 +84,9 @@ impl PgInvalidationJournal {
         Ok(Self { pool, deadline })
     }
 
-    /// Owner-local bootstrap/checkpoint only. A new consumer must reconcile
-    /// current authority before choosing a starting checkpoint. No acknowledgments.
+    /// Owner-local bootstrap/checkpoint only; no acknowledgments. First fence old
+    /// authority, then capture this baseline, reread current typed authority and
+    /// apply intervening signals before becoming ready. Never skip cached authority.
     pub async fn checkpoint(&self) -> Result<ReplayCursor, ReplayError> {
         tokio::time::timeout(self.deadline, async {
             let mut tx = self.pool.begin().await.map_err(unavailable)?;
