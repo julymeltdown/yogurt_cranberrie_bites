@@ -152,3 +152,19 @@ released after exact artifact copy/hash and zero target handles; no BACKEND targ
 was used. Direct publication preserves peer ancestry, with no force push or
 separate king/SL approval stage. Durable World effects, polling/readiness wiring,
 multiuser acceptance and deployed credentials remain separate obligations.
+
+Publication boundary: client source and evidence reached master through
+`e1fecc4e52463b4b8cbb64add32add687ed1c08d`, preserving peer closure master
+`a93a70ec2b692e4837aa78b0350b5c6cebdec459`. That peer changed Concert's closure,
+event lifecycle, migration 0024 and related tests after the qualified build.
+The strict full Concert source-pin check consequently did not match; the final
+delivered combined HEAD was **not** rebuilt. The scoped audit confirms identical
+client, canonical protocol, platform and Auth/Friend RPC inputs and exactly the
+13 assigned client/test/runner/documentation paths versus that peer master.
+Native results above apply to the exact `998cf728` source, not a new claim about
+the later combined HEAD. `delivery-audit.json` records the peer differences and
+this limitation. World runtime integration owns its ensuing combined build.
+
+The initial PublicProfile resource offer was explicitly declined without target
+access; the released MEDIA handoff was then sent to Product API composition
+under the latest queue. This client owner retained no target after release.
