@@ -24,8 +24,16 @@ C04 domain v0.1 is REVIEW_CANDIDATE, not a full freeze. SHA256:
 | File under contracts/domain/v1 | SHA256 |
 | --- | --- |
 | common.schema.json | 303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35 |
-| operations.json | 0acd5e1c68b5136916d1560dfbb2eef7e59410c81987bf0ea24b0d605c11083e |
-| policy.json | 728b397bd175c55b35eddef8b925f585676d7589a0b1250fbde5ef3c7c9d4019 |
+| operations.json | 42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223 |
+| policy.json | 0e04fe478d757d9d6ab434d3aa25aade523d35d2d2a2a0574f17a04f7f395339 |
+
+The integrator refreshed these exact harness pins after event-scope correction
+`5c02a31`; [review and checks](../evidence/receipt-contract-pin-refresh.md).
+Earlier BE15 delivery pinned operations `0acd5e1c...` and policy `728b397b...`;
+its retained native receipt remains historical evidence of that candidate.
+Command IDs, paths, receipt schema and fingerprint/idempotency semantics are
+unchanged by the scope clarification. The pin refresh does not enable moderation
+or accept C04/BE15.
 
 Pre-review inputs at `11a7448` were common SHA256
 `29e89618ae0258f8793407ab67a26b88ccd4383f513ea1869b416b0739c3ee4f`

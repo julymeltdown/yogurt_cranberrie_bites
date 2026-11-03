@@ -60,4 +60,15 @@ class HarnessTests(unittest.TestCase):
         migration=(root/"backend/services/concert-service/migrations/0002_command_receipts_outbox.sql").read_text()
         self.assertTrue(all("('"+name+"')" in migration for name in registered))
 
+    def test_contract_drift_still_refuses_before_database_work(self):
+        original=smoke.digest
+        def changed(path):
+            return "00"*32 if Path(path)==smoke.ROOT/"contracts/domain/v1/operations.json" else original(path)
+        with tempfile.TemporaryDirectory() as folder:
+            report=Path(folder)/"receipt.json"
+            with patch.object(smoke,"digest",side_effect=changed),patch.object(smoke,"run") as run,contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(smoke.main(["--binary","/missing","--repository-test","/missing","--pg-bin","/missing","--report",str(report)]),1)
+            run.assert_not_called()
+            self.assertEqual(json.loads(report.read_text())["result"],"FAIL")
+
 if __name__=="__main__":unittest.main()
