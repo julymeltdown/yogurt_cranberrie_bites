@@ -22,9 +22,12 @@ export function Inbox({ controller }: { controller: InboxController }) {
     {!state.available ? <p role="status">Inbox is unavailable for the current account or event.</p> : <>
       <div className="inbox-controls"><label><input type="checkbox" checked={state.unreadOnly} onChange={e => controller.setUnreadOnly(e.target.checked)} /> Unread only</label>
         <button type="button" disabled={loading} onClick={() => void controller.load()}>Refresh inbox</button>
-        <button type="button" disabled={blocked || loading || state.phase !== 'ready' || !state.unreadShown || state.stale} onClick={() => void controller.markAllRead()}>Mark all as read</button></div>
-      <p aria-live="polite" className="inbox-count">{state.unreadShown} unread shown{state.nextCursor ? ' · More updates may be available' : ''}</p>
-      <p className="inbox-note">This count covers loaded updates. Mark all as read applies to updates already received by the server.</p>
+        <button type="button" disabled={blocked || loading || state.phase !== 'ready' || !(state.unreadShown > 0 || state.count.phase === 'ready' && state.count.total !== null && state.count.total > 0) || state.stale} onClick={() => void controller.markAllRead()}>Mark all as read</button></div>
+      <p aria-live="polite" className="inbox-count">{state.count.phase === 'ready' ? `${state.count.total} unread in this event` : state.count.phase === 'loading' ? 'Checking total unread…' : 'Total unread unavailable'}</p>
+      {state.count.asOf && <p className="inbox-note">Checked <time dateTime={state.count.asOf}>{new Date(state.count.asOf).toLocaleString()}</time></p>}
+      {state.count.phase === 'error' && <button type="button" onClick={() => void controller.loadUnreadCount()}>Refresh unread total</button>}
+      <p>{state.unreadShown} unread shown{state.nextCursor ? ' · More updates may be available' : ''}</p>
+      <p className="inbox-note">The list shows loaded updates. Mark all as read applies to updates already received by the server.</p>
       {loading && <p role="status">Loading inbox…</p>}
       {state.stale && <p role="status">New or changed updates are available. Refresh the inbox.</p>}
       {state.failure && <p role="alert">{messages[state.failure]}</p>}

@@ -1,0 +1,3 @@
+.social-composition > [role="status"], .social-navigation { padding: 1rem; overflow-wrap: anywhere; }
+.social-composition > [role="status"] button, .social-navigation button { min-width: 44px; min-height: 44px; font: inherit; padding: .6rem .8rem; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: .25rem; }
+.social-composition > [role="status"] button:focus-visible, .social-navigation button:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }

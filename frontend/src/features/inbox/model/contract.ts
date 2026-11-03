@@ -14,6 +14,12 @@ export interface InboxNotification {
 }
 export interface NotificationPage { readonly items: readonly InboxNotification[]; readonly next_cursor: string | null }
 export interface ReadAllResult { readonly read_count: number; readonly read_at: string }
+export interface UnreadCount { readonly actor_id: string; readonly event_id: string; readonly unread_total: number; readonly as_of: string }
+export function unreadCount(value: unknown, scope: SessionScope): UnreadCount {
+  const count = parse<UnreadCount>('Domain_feed_NotificationUnreadCount', value)
+  if (count.actor_id !== scope.userId || count.event_id !== scope.eventId) fail()
+  return count
+}
 export type NotificationOperation = 'markConcertNotification' | 'markAllConcertNotifications'
 export interface CommandBinding {
   readonly scope: SessionScope; readonly operation: NotificationOperation; readonly key: string

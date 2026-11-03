@@ -13,15 +13,17 @@ export const pending = (operation: string, key: string, patch: Partial<Receipt> 
   idempotency_key: key, state: 'PENDING', resource_id: null, resource_revision: null, result_status: null, failure_reason: null,
   created_at: stamp, expires_at: '2026-11-05T00:00:00Z', ...patch })
 export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(r => { resolve = r }); return { promise, resolve } }
-export function setup(handler: (request: Request) => Response | Promise<Response> = () => Response.json(page()), available = true) {
+export function setup(handler: (request: Request) => Response | Promise<Response> = () => Response.json(page()), available = true,
+  countHandler: (request: Request) => Response | Promise<Response> = () => Response.json({ actor_id: user, event_id: event, unread_total: 29, as_of: stamp })) {
   const fetch = vi.fn<typeof globalThis.fetch>(async r => handler(r as Request))
-  const auth = createSessionController({ eventId: event, fetch, cookiePolicy: isolatedCookiePolicy() })
+  const countFetch = vi.fn(countHandler)
+  const auth = createSessionController({ eventId: event, fetch: async r => new URL((r as Request).url).pathname.endsWith('/unread-count') ? countFetch(r as Request) : fetch(r), cookiePolicy: isolatedCookiePolicy() })
   auth.session.replace(0, { userId: user, eventId: event, accessToken: 'memory-only-token' })
   const listeners = new Set<() => void>()
   let enabled = available, key = 100
   const navigate = vi.fn()
   const access = { read: () => enabled, subscribe(fn: () => void) { listeners.add(fn); return () => listeners.delete(fn) } }
   const controller = createInboxController({ auth, access, navigate, now: () => Date.parse(stamp), key: () => uid(key++) })
-  return { auth, controller, fetch, navigate, setAvailable(value: boolean) { enabled = value; listeners.forEach(fn => fn()) },
+  return { auth, controller, fetch, countFetch, navigate, setAvailable(value: boolean) { enabled = value; listeners.forEach(fn => fn()) },
     dispose() { controller.dispose(); auth.dispose() } }
 }

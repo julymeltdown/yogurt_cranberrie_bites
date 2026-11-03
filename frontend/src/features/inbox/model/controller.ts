@@ -2,7 +2,7 @@ import type { SessionController } from '../../auth/model/session'
 import { TransportError } from '../../../shared/api/errors'
 import type { HttpRequest } from '../../../shared/api/http'
 import type { PrivacyScope } from '../../../shared/query/privacy'
-import { combine, decoder, freeze, notification, page, prefix, readAllResult, receipt, uuid,
+import { combine, decoder, freeze, notification, page, prefix, readAllResult, receipt, unreadCount, uuid,
   type CommandBinding, type InboxNotification, type Receipt } from './contract'
 import { targetRequest, type InboxDestination } from './targets'
 export type InboxFailure = 'offline' | 'denied' | 'unavailable' | 'invalid' | 'conflict' | 'rate-limited' | 'failed'
@@ -18,11 +18,12 @@ export interface InboxState {
   readonly phase: 'idle' | 'loading' | 'ready' | 'error'; readonly rows: readonly InboxNotification[]
   readonly nextCursor: string | null; readonly unreadShown: number; readonly atLimit: boolean; readonly stale: boolean
   readonly failure: InboxFailure | null
+  readonly count: { readonly phase: 'idle' | 'loading' | 'ready' | 'error'; readonly total: number | null; readonly asOf: string | null; readonly failure: InboxFailure | null }
   readonly command: { readonly phase: 'idle' | 'sending' | 'uncertain' | 'checking' | 'succeeded' | 'failed' | 'retired'; readonly failure: InboxFailure | null }
   readonly target: { readonly phase: 'idle' | 'checking' | 'unavailable'; readonly notificationId: string | null }
 }
 const blank = (): InboxState => ({ available: false, scope: null, unreadOnly: false, phase: 'idle', rows: [], nextCursor: null, unreadShown: 0, atLimit: false, stale: false,
-  failure: null, command: { phase: 'idle', failure: null }, target: { phase: 'idle', notificationId: null } })
+  failure: null, count: { phase: 'idle', total: null, asOf: null, failure: null }, command: { phase: 'idle', failure: null }, target: { phase: 'idle', notificationId: null } })
 function failure(error: unknown): InboxFailure {
   if (!(error instanceof TransportError)) return 'invalid'
   if (error.kind === 'network' || error.kind === 'timeout') return 'offline'
@@ -35,7 +36,7 @@ function failure(error: unknown): InboxFailure {
 export function createInboxController(options: InboxOptions) {
   const { auth, access } = options, now = options.now ?? Date.now, key = options.key ?? (() => crypto.randomUUID())
   let state = freeze(blank()), scope: PrivacyScope | null = null, generation = 0, started = false, disposed = false
-  let listVersion = 0, targetVersion = 0
+  let listVersion = 0, targetVersion = 0, countVersion = 0
   let binding: CommandBinding | null = null, currentReceipt: Receipt | null = null
   const listeners = new Set<() => void>(), flights = new Map<string, AbortController>(), cursors = new Set<string>(), attempts = new Set<string>()
   let removers: (() => void)[] = []
@@ -46,13 +47,25 @@ export function createInboxController(options: InboxOptions) {
     else { const pending = [...flights.values()]; flights.clear(); generation++; pending.forEach(c => c.abort()) }
   }
   function clear() {
-    cancel(); listVersion++; targetVersion++; scope = null; binding = null; currentReceipt = null; cursors.clear(); attempts.clear()
+    cancel(); listVersion++; targetVersion++; countVersion++; scope = null; binding = null; currentReceipt = null; cursors.clear(); attempts.clear()
     state = freeze(blank()); for (const listener of listeners) listener()
   }
   function sync() {
     if (disposed || !started) return
     const next = auth.privacy.capture(), available = access.read() && auth.privacy.isCurrent(next) && uuid(next.eventId)
-    if (scope && JSON.stringify(scope) === JSON.stringify(next) && state.available === available) return
+    if (scope && JSON.stringify(scope) === JSON.stringify(next) && auth.privacy.isCurrent(scope)) {
+      if (state.available === available) return
+      if (!available) {
+        // A producer outage is not a new identity or policy lease. Remove private
+        // observations but retain the original command binding/attempt restriction.
+        const command = state.command
+        cancel(); listVersion++; targetVersion++; countVersion++; cursors.clear()
+        state = freeze({ ...blank(), command: { ...command, phase: ['sending', 'checking'].includes(command.phase) ? 'uncertain' : command.phase } })
+        for (const listener of listeners) listener()
+        return
+      }
+      publish({ available: true, scope }); void load(); return
+    }
     clear(); scope = next
     publish({ available, scope: available ? scope : null })
     if (available) void load()
@@ -71,10 +84,23 @@ export function createInboxController(options: InboxOptions) {
   function rows(next: readonly InboxNotification[], cursor: string | null) {
     publish({ rows: next, nextCursor: cursor, unreadShown: next.filter(n => n.read_at === null).length, atLimit: next.length >= 200 || cursors.size >= 10 })
   }
+  async function loadUnreadCount() {
+    if (!usable() || !scope) return
+    const captured = scope, g = generation, version = ++countVersion, path = `${prefix(captured)}/me/notifications/unread-count`
+    publish({ count: { phase: 'loading', total: null, asOf: null, failure: null } })
+    try {
+      const count = await run('count', captured, { path, method: 'GET', access: 'protected', errorFamily: 'domain', domainOperation: 'getConcertNotificationUnreadCount',
+        decode: decoder(captured, path, (value, status) => { if (status !== 200) throw new Error('Invalid count status'); return unreadCount(value, captured) }) })
+      if (same(g, captured) && version === countVersion) publish({ count: { phase: 'ready', total: count.unread_total, asOf: count.as_of, failure: null } })
+    } catch (error) {
+      if (same(g, captured) && version === countVersion) publish({ count: { phase: 'error', total: null, asOf: null, failure: failure(error) } })
+    }
+  }
   async function load(more = false, confirmed?: { readonly notification_id: string; readonly revision: number }) {
     if (!usable() || !scope || state.phase === 'loading' || (more && (!state.nextCursor || state.atLimit))) return
     const version = ++listVersion
     const captured = scope, g = generation, before = more ? state.rows : [], cursor = more ? state.nextCursor : null, unread = state.unreadOnly
+    if (!more) void loadUnreadCount()
     targetVersion++; cancel('target')
     if (!more) { cursors.clear(); rows([], null) }
     publish({ phase: 'loading', failure: null, stale: false, target: { phase: 'idle', notificationId: null } })
@@ -109,7 +135,7 @@ export function createInboxController(options: InboxOptions) {
   async function mark(id: string | null) {
     if (!usable() || !scope || state.phase !== 'ready' || unresolved() || state.stale) return
     const item = id === null ? null : state.rows.find(n => n.notification_id === id)
-    if (id !== null && (!item || item.read_at !== null) || id === null && state.unreadShown === 0) return
+    if (id !== null && (!item || item.read_at !== null) || id === null && state.unreadShown === 0 && !(state.count.phase === 'ready' && state.count.total !== null && state.count.total > 0)) return
     const signature = fingerprint(id, item?.revision ?? null)
     if (attempts.has(signature)) return
     if (attempts.size >= 512) { publish({ command: { phase: 'failed', failure: 'unavailable' } }); return }
@@ -117,8 +143,9 @@ export function createInboxController(options: InboxOptions) {
     const captured = scope, g = generation
     binding = freeze({ scope: captured, key: k, operation: id ? 'markConcertNotification' : 'markAllConcertNotifications', notificationId: id, revision: item?.revision ?? null })
     const b = binding; currentReceipt = null; attempts.add(signature)
+    countVersion++; cancel('count')
     listVersion++; targetVersion++; cancel('list'); cancel('target')
-    publish({ command: { phase: 'sending', failure: null }, target: { phase: 'idle', notificationId: null } })
+    publish({ command: { phase: 'sending', failure: null }, count: { phase: 'idle', total: null, asOf: null, failure: null }, target: { phase: 'idle', notificationId: null } })
     const path = id ? `${prefix(captured)}/me/notifications/${id}/read` : `${prefix(captured)}/me/notifications/read-all`
     try {
       const result = await run('command', captured, { path, method: 'PATCH', access: 'protected', errorFamily: 'domain', domainOperation: b.operation, idempotencyKey: b.key,
@@ -174,7 +201,8 @@ export function createInboxController(options: InboxOptions) {
       if (started || disposed) return
       started = true; removers = [auth.privacy.registerCleanup(clear), auth.privacy.subscribe(sync), access.subscribe(sync)]; sync()
     },
-    load: (more = false) => load(more), markRead: (id: string) => mark(id), markAllRead: () => mark(null), recover,
+    cancelTarget() { targetVersion++; cancel('target'); if (state.target.phase !== 'idle') publish({ target: { phase: 'idle', notificationId: null } }) },
+    load: (more = false) => load(more), loadUnreadCount, markRead: (id: string) => mark(id), markAllRead: () => mark(null), recover,
     setUnreadOnly(unreadOnly: boolean) {
       if (state.unreadOnly === unreadOnly || !usable()) return
       listVersion++; targetVersion++; cancel('list'); cancel('target'); publish({ unreadOnly, phase: 'idle', target: { phase: 'idle', notificationId: null } }); rows([], null); void load()
@@ -204,7 +232,8 @@ export function createInboxController(options: InboxOptions) {
     invalidate(expected: PrivacyScope) {
       if (!usable() || !auth.privacy.isCurrent(expected)) return
       listVersion++; targetVersion++; cancel('list'); cancel('target'); rows([], null)
-      publish({ phase: 'idle', stale: true, failure: null, target: { phase: 'idle', notificationId: null } })
+      countVersion++; cancel('count')
+      publish({ phase: 'idle', stale: true, failure: null, count: { phase: 'idle', total: null, asOf: null, failure: null }, target: { phase: 'idle', notificationId: null } })
     },
     dispose() { if (disposed) return; disposed = true; started = false; removers.forEach(remove => remove()); removers = []; clear(); listeners.clear() },
   }

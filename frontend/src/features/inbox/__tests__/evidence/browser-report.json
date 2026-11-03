@@ -9,24 +9,25 @@
   ],
   "checks": [
     "production fixture bundle",
+    "full server unread total independent of loaded rows",
     "44px buttons and keyboard focus",
     "no horizontal overflow or left accents",
     "fresh target authorization denied safely without writes",
     "pending command does not optimistically mark read",
-    "explicit status recovery without mutation replay",
-    "empty and network error",
+    "producer outage retains pending command; explicit original-key status recovery without mutation replay",
+    "empty page with positive canonical count still supports read-all; network error",
     "read-all cutoff leaves new arrival unread",
     "invalidation/availability/logout clear private rows",
     "no browser errors"
   ],
   "sourceHashes": {
-    "model/controller.ts": "998bb105fa7de8199965c9b2ced9ba0c7fb26928de52958e1a2fa141c6af5f50",
-    "model/contract.ts": "049c776aa543ea664c8e69d2d2b8bea5595feb8174d0df72906c58adbdba6046",
+    "model/controller.ts": "42aa28dc1770ed01241e39d4ed260a6404c82ddfd629275fb1e11a4044289094",
+    "model/contract.ts": "2a21ea678e52cd837bcd50323600bcbf3ad4d3cabe9f395ace124fe25a08c38f",
     "model/targets.ts": "a29acab3f1b6e2681c4ee678b4221f147d8949f17a0bb404990f86286c4e4a3c",
-    "ui/Inbox.tsx": "e13d8cdff1584a066545e5c749eeee322f9a87ed17be85f377f55b6c26416d88",
+    "ui/Inbox.tsx": "e58a4525a57e5884e0bfd0d8f5cb76b0ff69f73cfbe08ec2ba20c428e7c881b9",
     "ui/inbox.css": "a1393a5b1c2bc56dd9a1db26bf5b6a184af41224786a930c73567347299131a4",
     "__tests__/preview.tsx": "66e63ae0764209e65825f0981d7075183d4413107078618f77dfd9c260d8b369",
-    "__tests__/browser-smoke.mjs": "d4e16315270bed6c5d1467cfe8e119a0d4daecda7414ceb594dcf48de45456bb"
+    "__tests__/browser-smoke.mjs": "91bb8b55ba62a2f05663e8e3318eab39515f44815f3061e7655a1bc7eee84560"
   },
   "browser": "156.0.8078.80"
 }

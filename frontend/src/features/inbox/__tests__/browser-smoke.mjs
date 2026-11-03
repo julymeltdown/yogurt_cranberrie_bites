@@ -25,6 +25,7 @@ try {
     await page.route('**/api/**', async route => {
       const r = route.request(), path = new URL(r.url()).pathname
       const respond = (body, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) })
+      if (path.endsWith('/unread-count')) return respond({ actor_id: uid(1), event_id: event, unread_total: newArrival ? 31 : read ? 30 : 31, as_of: '2026-11-04T00:02:00Z' })
       if (r.method() === 'PATCH') {
         writes.push({ path, key: r.headers()['idempotency-key'], body: r.postDataJSON() })
         if (mode === 'pending') {
@@ -42,6 +43,7 @@ try {
     })
     await page.goto(`${origin}/src/features/inbox/__tests__/preview.html`)
     await expect(page.getByText('1 unread shown', { exact: true })).toBeVisible()
+    await expect(page.getByText('31 unread in this event', { exact: true })).toBeVisible()
     await page.keyboard.press('Tab'); await expect(page.getByRole('checkbox', { name: 'Unread only' })).toBeFocused()
     assert(await page.evaluate(() => getComputedStyle(document.activeElement).outlineStyle !== 'none'))
     assert(await page.locator('button').evaluateAll(buttons => buttons.every(b => b.getBoundingClientRect().height >= 44)))
@@ -58,12 +60,16 @@ try {
     await expect(page.getByRole('button', { name: 'Check command status' })).toBeVisible(); await expect(page.getByText('1 unread shown', { exact: true })).toBeVisible()
     await expect(page.getByRole('button', { name: 'Mark all as read' })).toBeDisabled()
     await page.screenshot({ path: resolve(out, `${width}-pending.png`), fullPage: true })
+    await page.evaluate(() => window.__FE35__.available(false)); await expect(page.getByRole('article')).toHaveCount(0)
+    await page.evaluate(() => window.__FE35__.available(true)); await expect(page.getByRole('button', { name: 'Check command status' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Mark all as read' })).toBeDisabled(); assert.equal(writes.length, 1)
     await page.getByRole('button', { name: 'Check command status' }).click(); await expect(page.getByText('0 unread shown', { exact: true })).toBeVisible(); assert.equal(writes.length, 1)
     assert.equal(writes[0].body.expected_revision, 1); assert.match(writes[0].key, /^[0-9a-f-]{36}$/)
     mode = 'empty'; await page.getByRole('button', { name: 'Refresh inbox' }).click(); await expect(page.getByText('Your inbox is empty.')).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Mark all as read' })).toBeEnabled(); await page.getByRole('button', { name: 'Mark all as read' }).click(); await expect(page.getByText('Read-state command confirmed.')).toBeVisible(); assert.equal(writes.length, 2)
     mode = 'offline'; await page.getByRole('button', { name: 'Refresh inbox' }).click(); await expect(page.getByText('Connection unavailable. Reconnect, then refresh the inbox.')).toBeVisible()
-    mode = 'ready'; read = false; await page.getByRole('button', { name: 'Refresh inbox' }).click(); await expect(page.getByText('1 unread shown', { exact: true })).toBeVisible()
-    await page.getByRole('button', { name: 'Mark all as read' }).click(); await expect(page.getByText('1 unread shown', { exact: true })).toBeVisible(); await expect(page.getByRole('article')).toHaveCount(2); assert.equal(writes.length, 2)
+    mode = 'ready'; read = false; newArrival = false; await page.getByRole('button', { name: 'Refresh inbox' }).click(); await expect(page.getByText('1 unread shown', { exact: true })).toBeVisible()
+    await page.getByRole('button', { name: 'Mark all as read' }).click(); await expect(page.getByText('1 unread shown', { exact: true })).toBeVisible(); await expect(page.getByRole('article')).toHaveCount(2); assert.equal(writes.length, 3)
     await page.evaluate(() => window.__FE35__.invalidate()); await expect(page.getByRole('article')).toHaveCount(0)
     await page.getByRole('button', { name: 'Refresh inbox' }).click(); await expect(page.getByRole('article')).toHaveCount(2)
     await page.evaluate(() => window.__FE35__.available(false)); await expect(page.getByRole('article')).toHaveCount(0)
@@ -71,7 +77,7 @@ try {
     await page.evaluate(() => window.__FE35__.logout()); await expect(page.getByRole('article')).toHaveCount(0); await expect(page.getByText('Inbox is unavailable for the current account or event.')).toBeVisible()
     assert.deepEqual(errors, []); report.widths.push(width); await page.close()
   }
-  report.result = 'PASS'; report.checks = ['production fixture bundle', '44px buttons and keyboard focus', 'no horizontal overflow or left accents', 'fresh target authorization denied safely without writes', 'pending command does not optimistically mark read', 'explicit status recovery without mutation replay', 'empty and network error', 'read-all cutoff leaves new arrival unread', 'invalidation/availability/logout clear private rows', 'no browser errors']
+  report.result = 'PASS'; report.checks = ['production fixture bundle', 'full server unread total independent of loaded rows', '44px buttons and keyboard focus', 'no horizontal overflow or left accents', 'fresh target authorization denied safely without writes', 'pending command does not optimistically mark read', 'producer outage retains pending command; explicit original-key status recovery without mutation replay', 'empty page with positive canonical count still supports read-all; network error', 'read-all cutoff leaves new arrival unread', 'invalidation/availability/logout clear private rows', 'no browser errors']
 } finally {
   await browser?.close(); await server?.httpServer.close(); await rm(bundle, { recursive: true, force: true })
   await writeFile(resolve(out, 'browser-report.json'), JSON.stringify(report, null, 2) + '\n')
