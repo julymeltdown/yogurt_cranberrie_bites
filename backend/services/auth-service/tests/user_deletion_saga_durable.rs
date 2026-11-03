@@ -800,7 +800,11 @@ async fn operator_retry_is_atomic_idempotent_and_fences_previous_worker_claims(
     let saga_id = Uuid::parse_str(&created.saga_id)?;
     let now = Utc::now();
     let old_claims = saga_repository
-        .claim_due(now, Duration::minutes(5), 10)
+        .claim_due(
+            now,
+            Duration::minutes(5),
+            (2 * UserDeletionTarget::ALL.len()) as i32,
+        )
         .await?
         .into_iter()
         .map(auth_service::domain::user_deletion::UserDeletionStep::from)
