@@ -1,0 +1,187 @@
+{
+  "result": "PASS",
+  "qualification": "Actual Landing/PublicFrame and createAppRoutes, explicit synthetic MemorySession/document fixtures; actual production unavailable route also checked. No live auth/world/physical-device or all-ten-screen acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "geometry": {
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 348,
+          "height": 580
+        },
+        "wordmark": {
+          "x": 30.390625,
+          "y": 84.546875,
+          "width": 306,
+          "height": 160.109375
+        },
+        "scene": {
+          "x": 10,
+          "y": 170.953125,
+          "width": 340,
+          "height": 226.65625
+        },
+        "crowd": {
+          "x": 13.390625,
+          "y": 303.4375,
+          "width": 333.1875,
+          "height": 149.75
+        },
+        "copy": {
+          "x": 23.59375,
+          "y": 463.421875,
+          "width": 312.8125,
+          "height": 76.1875
+        },
+        "cta": {
+          "x": 37.1875,
+          "y": 547.453125,
+          "width": 285.625,
+          "height": 44
+        },
+        "overflow": false
+      },
+      "approvedArtworkRequired": true,
+      "sameDocumentRouteRemountRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "publicAssetRequestsIncludingFullReloads": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "geometry": {
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 378,
+          "height": 630
+        },
+        "wordmark": {
+          "x": 32.1875,
+          "y": 87.546875,
+          "width": 333,
+          "height": 174.234375
+        },
+        "scene": {
+          "x": 10,
+          "y": 181.453125,
+          "width": 370,
+          "height": 246.65625
+        },
+        "crowd": {
+          "x": 13.6875,
+          "y": 325.4375,
+          "width": 362.59375,
+          "height": 162.75
+        },
+        "copy": {
+          "x": 24.796875,
+          "y": 501.546875,
+          "width": 340.40625,
+          "height": 80.5625
+        },
+        "cta": {
+          "x": 39.59375,
+          "y": 594.453125,
+          "width": 310.8125,
+          "height": 44
+        },
+        "overflow": false
+      },
+      "approvedArtworkRequired": true,
+      "sameDocumentRouteRemountRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "publicAssetRequestsIncludingFullReloads": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "geometry": {
+        "poster": {
+          "x": 6,
+          "y": 50,
+          "width": 418,
+          "height": 696.65625
+        },
+        "wordmark": {
+          "x": 34.59375,
+          "y": 91.546875,
+          "width": 369,
+          "height": 193.078125
+        },
+        "scene": {
+          "x": 10,
+          "y": 195.453125,
+          "width": 410,
+          "height": 273.328125
+        },
+        "crowd": {
+          "x": 14.09375,
+          "y": 354.765625,
+          "width": 401.796875,
+          "height": 180.078125
+        },
+        "copy": {
+          "x": 26.390625,
+          "y": 550.75,
+          "width": 377.21875,
+          "height": 88.015625
+        },
+        "cta": {
+          "x": 42.796875,
+          "y": 657.109375,
+          "width": 344.40625,
+          "height": 44
+        },
+        "overflow": false
+      },
+      "approvedArtworkRequired": true,
+      "sameDocumentRouteRemountRequests": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ],
+      "publicAssetRequestsIncludingFullReloads": [
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "/world/avatars/derived-v1/static-release.json",
+        "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+      ]
+    }
+  ],
+  "screenshots": [
+    "landing-360.png",
+    "poster-360.png",
+    "production-unavailable-360.png",
+    "landing-390.png",
+    "poster-390.png",
+    "production-unavailable-390.png",
+    "landing-430.png",
+    "poster-430.png",
+    "production-unavailable-430.png",
+    "comparison-390.png"
+  ],
+  "errors": []
+}
