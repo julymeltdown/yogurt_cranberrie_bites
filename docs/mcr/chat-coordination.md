@@ -8,7 +8,7 @@ so every shell command and edit must target the assigned worktree explicitly.
 
 | Role | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| Backend | `mcr(be) BE03 browser auth adapter` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-auth` / `codex/mcr-be-BE03` |
+| Backend | `mcr(be) BE05 Concert service foundation` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-concert-core` / `codex/mcr-be-BE05` |
 | Frontend | `mcr(fe) FE09 session and sign-in` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-session` / `codex/mcr-fe-FE09` |
 
 Both assignments were dispatched with model `gpt-6.1-sol` and reasoning `high`.
@@ -17,7 +17,8 @@ when the user writes in Korean. It covers replies, progress, questions, reviews,
 handoffs and final answers. Both development chats received this instruction
 directly; all future assignments must carry it. Preserve source text and
 identifiers where exact fidelity is needed.
-The backend worktree starts at `69a5624cd153a216f2398cebabf062400dce23eb`.
+The new BE05 worktree starts at `f795ed4`, after the bounded BE03 email
+increment and its integration review. The previous `be-auth` checkout is preserved.
 The new FE09 worktree starts at `2a5c8e6`, with integrator prerequisite
 `153a3dc` providing the canonical public core artifact and event-config agreement.
 The user also explicitly requires persistent goals in every development chat.
@@ -29,24 +30,29 @@ must be confirmed. Future assignments carry this requirement without resetting
 aligned active goals or changing file ownership. No token budget was requested.
 Both chats confirmed their BE03/FE07 goals active. After the [FE07 integration
 recheck](evidence/world-shell-integration.md), the frontend completed its delivered
-shell-increment goal and confirmed its new FE09 goal active. BE03 stays active
-through handoff/review. FE07 remains MOCK_READY for its separate real-world gates.
+shell-increment goal and confirmed its new FE09 goal active. After the [BE03
+email integration recheck](evidence/browser-auth-integration.md), the backend
+confirmed its new BE05 goal active. FE07 remains MOCK_READY for its separate
+real-world gates, and the remaining BE03 provider/browser scope is not accepted.
 The former worktrees are preserved but have no current writer. Earlier delivery
 ancestry and checks are in the [foundation review](evidence/core-foundation-integration.md)
 and [privacy/tooling review](evidence/privacy-local-stack-integration.md).
 Both read current integration agreements; no subagent writes their worktrees.
 
-Backend owns `backend/services/api-gateway/src/adapters/in/http/**` (explicitly
-including HTTP router composition), `backend/services/api-gateway/src/config/**`
-only for needed auth/origin configuration, `backend/services/api-gateway/tests/**`,
-and necessary Auth producer adaptations under `backend/services/auth-service/src/**`
-and `backend/services/auth-service/tests/**`. Tool/doc paths are
-`backend/scripts/mcr/browser_auth_smoke.py`, `test_browser_auth_smoke.py` in that
-same directory, `infra/mcr/backend/verify_local_auth.py`, and
-`docs/mcr/backend/browser-auth.md`. BE03's first increment implements frozen C03
-email/core routes, Origin/intent/no-store protections, honest provider capabilities
-and real isolated auth qualification. Native helpers are read-only. New binaries
-use `/Users/lhs/Desktop/mcr-build/be03`, preserving the qualified shared artifacts.
+Backend now owns `backend/crates/concert-domain/**`,
+`backend/crates/concert-application/**`, `backend/services/concert-service/**`,
+`docs/mcr/backend/concert-core.md` and two exact new tools:
+`backend/scripts/mcr/concert_core_smoke.py` and
+`backend/scripts/mcr/test_concert_core_smoke.py`. The three new crate manifests
+and new service main/lib/config composition are explicitly delegated.
+`backend/Cargo.toml` is delegated only for the three new members/local edges;
+`backend/Cargo.lock` only for corresponding Cargo-generated workspace entries,
+with retained dependency versions. Root manifest/lock edits are committed
+separately for integrator review. Existing services, shared platform, migration
+helpers, proto/contracts, frontend and infrastructure remain outside ownership.
+BE05 requires real owned-cluster migration/constraint/restart/service checks.
+It may import the existing Cluster helper read-only. Builds use the separate
+`/Users/lhs/Desktop/mcr-build/be05` directory; BE03/BE02 artifacts are preserved.
 
 Frontend now owns `frontend/src/features/auth/model/**`,
 `frontend/src/features/auth/ui/SignIn.tsx` and feature-local auth CSS/tests/fixtures;
