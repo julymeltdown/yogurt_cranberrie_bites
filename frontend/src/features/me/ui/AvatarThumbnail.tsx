@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
-import { createReviewedAvatarCompositor, type AvatarConfig, type AvatarCompositor } from '../../../entities/avatar/runtime'
+import { createReviewedAvatarCompositor, type AvatarCompositor } from '../../../entities/avatar/runtime'
+import { isLayeredAvatarConfig } from '../../../entities/avatar/runtime/resources'
 import type { SessionController } from '../../auth/model/session'
 import type { PrivacyScope } from '../../../shared/query/privacy'
 /** Preserve the captured bootstrap lease; never attach a fresh lease to stale assets. */
@@ -7,7 +8,9 @@ export interface ReviewedThumbnailSource {
   readonly scope: PrivacyScope
   readonly options: Omit<Parameters<typeof createReviewedAvatarCompositor>[0], 'signal'>
 }
-export function AvatarThumbnail({ auth, config, source }: { auth: Pick<SessionController, 'privacy'>; config: AvatarConfig; source?: ReviewedThumbnailSource }) {
+// options.leases, when supplied by the account owner, retains only the verified atlas.
+// Each mount still owns its compositor, thumbnail canvas and cancellation independently.
+export function AvatarThumbnail({ auth, config, source }: { auth: Pick<SessionController, 'privacy'>; config: unknown; source?: ReviewedThumbnailSource }) {
   const host = useRef<HTMLDivElement>(null), [message, setMessage] = useState('Avatar preview unavailable. Your saved outfit is unchanged.')
   useLayoutEffect(() => {
     let active = true, compositor: AvatarCompositor | null = null, thumbnail: ReturnType<AvatarCompositor['thumbnail']> | null = null
@@ -15,7 +18,7 @@ export function AvatarThumbnail({ auth, config, source }: { auth: Pick<SessionCo
     setMessage('Avatar preview unavailable. Your saved outfit is unchanged.')
     const clear = () => { lifetime.abort(); thumbnail?.dispose(); compositor?.dispose(); host.current?.replaceChildren(); if (active) setMessage('Avatar preview unavailable. Your saved outfit is unchanged.') }
     const remove = auth.privacy.registerCleanup(clear)
-    if (source && auth.privacy.isCurrent(source.scope)) {
+    if (source && auth.privacy.isCurrent(source.scope) && isLayeredAvatarConfig(config)) {
       setMessage('Loading reviewed avatar preview…')
       void auth.privacy.run(source.scope, async ({ signal }) => {
         const candidate = await createReviewedAvatarCompositor({ ...source.options, signal })

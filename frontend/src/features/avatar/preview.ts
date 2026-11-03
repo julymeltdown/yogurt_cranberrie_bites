@@ -24,7 +24,9 @@ export function compositorPreview(compositor: AvatarCompositor, bakedSkinToneId:
       return { canvas: lease.canvas, dispose() { lease.canvas.remove(); lease.dispose() } }
     }, dispose }
 }
-/** Same committed C06 compositor entry as world/profile; no binding or artwork defaults. */
+/** Same committed C06 compositor entry as world/profile; no binding or artwork defaults.
+ * With explicit owner leases, disposal releases this compositor while retaining only the atlas.
+ */
 export async function createReviewedAvatarPreview(options: Parameters<typeof createReviewedAvatarCompositor>[0]): Promise<AvatarPreviewPort> {
   const compositor = await createReviewedAvatarCompositor(options)
   // The reviewed entry already rejects absent binding. Keep this guard explicit for future API changes.
