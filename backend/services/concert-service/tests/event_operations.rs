@@ -647,3 +647,6 @@ async fn expired_receipt_retirement_needs_no_user_role_lease() -> anyhow::Result
     p.close().await;
     Ok(())
 }
+
+#[path = "operations_support/mod.rs"]
+mod operations_support;

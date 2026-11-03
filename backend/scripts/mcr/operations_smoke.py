@@ -12,48 +12,92 @@ import migration_smoke as migration
 from concert_core_smoke import command, digest, require, ROOT
 
 DATABASE = "mcr_concert_be_operations"
+FORWARD_DATABASE = "mcr_concert_be_operations_forward"
 CONTRACTS = ("admin.schema.json", "feed.schema.json", "operations.json", "policy.json")
-PINNED = ("b8a4f8b91440d561bbcf23dc68bc196919a8893cf744ca09ac05ecaabff72cb8",
-          "9c8d991df0bb707d7a7a2d43d4b132e7fadb878a52633e1c1f338afc9407f8ed",
-          "42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223",
-          "508d22af964b718cdcbd5a25b32b9a1e3f7b651a5b8c25c87d56f1f6b68d0ebe")
+PINNED = ("953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+          "590cce6afc00c7a869b5a9711104550ba280ffa5875c9dc49a0753d272320801",
+          "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839",
+          "81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb")
+PUBLISHED = (1,2,3,4,5,6,7,8,9,10,11,12,16,18,19,20)
 
 def exercise(cluster, binary, tests, report):
     cluster.init()
     cluster.start()
     report["postgres_version"] = cluster.sql("postgres", "show server_version;")
     require(report["postgres_version"].startswith("16."), "postgres16-required")
-    cluster.sql("postgres", f"create database {DATABASE} template template0;")
-    url = cluster.url(DATABASE)
-    env = {**cluster.env, "CONCERT_DATABASE_URL": url}
-    secrets = (cluster.password, url)
-    def cli(label, *args, success=True, override=None):
-        return command(report, label, [binary, *args], override or env, cluster.root,
+    for database in (DATABASE, FORWARD_DATABASE):
+        cluster.sql("postgres", f"create database {database} template template0;")
+    urls = {name: cluster.url(name) for name in (DATABASE, FORWARD_DATABASE)}
+    secrets = (cluster.password, *urls.values())
+    def environment(database):
+        return {**cluster.env, "CONCERT_DATABASE_URL": urls[database]}
+    def cli(label, *args, database=DATABASE, success=True, override=None):
+        return command(report, label, [binary, *args], override or environment(database), cluster.root,
                        success=success, secrets=secrets)
+    def native(label, test, database, arguments, count, ignored=0):
+        cluster.assert_owned()
+        env = {**environment(database), "CONCERT_TEST_DATABASE_URL": urls[database],
+               "CONCERT_TEST_OWNER_ROOT": str(cluster.root), "CONCERT_TEST_OWNER_TOKEN": cluster.token,
+               "CONCERT_TEST_OWNER_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}"}
+        result = subprocess.run([str(test), *arguments, "--test-threads=1"], env=env, cwd=cluster.root,
+                                capture_output=True, timeout=60)
+        report["commands"][label] = result.returncode
+        report[label + "_diagnostics"] = migration.redact((result.stdout + result.stderr).decode(errors="replace"), secrets)
+        require(all(value.encode() not in result.stdout + result.stderr for value in secrets), label + "-redaction")
+        require(result.returncode == 0, label + "-exit")
+        require(f"test result: ok. {count} passed; 0 failed; {ignored} ignored;".encode() in result.stdout,
+                label + "-complete-exact-count")
+    def snapshot():
+        event = cluster.sql(FORWARD_DATABASE, "select row_to_json(e)::text from concert_events e where event_id='00000000-0000-4000-8000-000000000021';")
+        receipt = cluster.sql(FORWARD_DATABASE, "select row_to_json(r)::text from concert_command_receipts r where receipt_id='00000000-0000-4000-8000-000000000022';")
+        require(bool(event) and bool(receipt), "published-state-required")
+        return {"event_sha256": hashlib.sha256(event.encode()).hexdigest(),
+                "receipt_sha256": hashlib.sha256(receipt.encode()).hexdigest()}
+
     cli("missing-database-refused", "--migrate", success=False, override=cluster.env)
     cli("empty-ledger-refused", "--verify-migrations", success=False)
-    cli("migrate", "--migrate")
-    cli("verify", "--verify-migrations")
+    cli("fresh-migrate", "--migrate")
+    cli("fresh-verify", "--verify-migrations")
     manifest = migration.migration_manifest(ROOT / "backend", "concert-service")
-    require(15 in manifest, "operations-migration-required")
+    require(tuple(manifest) == (*PUBLISHED, 21), "exact-current-migration-set")
     report["migration_sha384"] = manifest
-    report["migration_ledger"] = migration.check_ledger(cluster, DATABASE, manifest)
-    cli("reapply", "--migrate")
-    cli("verify-reapply", "--verify-migrations")
-    require(migration.check_ledger(cluster, DATABASE, manifest) == len(manifest), "stable-ledger")
-    cluster.assert_owned()
-    test_env = {**env, "CONCERT_TEST_DATABASE_URL": url,
-                "CONCERT_TEST_OWNER_ROOT": str(cluster.root),
-                "CONCERT_TEST_OWNER_TOKEN": cluster.token,
-                "CONCERT_TEST_OWNER_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}"}
+    report["fresh_migration_ledger"] = migration.check_ledger(cluster, DATABASE, manifest)
+    cli("fresh-reapply", "--migrate")
+    cli("fresh-verify-reapply", "--verify-migrations")
+    require(migration.check_ledger(cluster, DATABASE, manifest) == len(manifest), "fresh-stable-ledger")
+
+    # A compiled, ownership-checked helper runs the actual SQLx baseline migrations.
+    # No SQLx success/checksum row is manufactured by this harness.
+    operations_test = next(test for label, test, _ in tests if label == "operations-tests")
+    native("published-0020-checkpoint", operations_test, FORWARD_DATABASE,
+           ["--ignored", "--exact", "operations_support::published_0020_checkpoint"], 1)
+    baseline = {version: checksum for version, checksum in manifest.items() if version <= 20}
+    report["forward_baseline_ledger"] = migration.check_ledger(cluster, FORWARD_DATABASE, baseline)
+    before_forward = snapshot()
+    cli("forward-pending-migration-refused", "--verify-migrations", database=FORWARD_DATABASE, success=False)
+    cli("forward-0021-late-fault", "--migrate", database=FORWARD_DATABASE, success=False)
+    require(migration.check_ledger(cluster, FORWARD_DATABASE, baseline) == len(baseline), "failed-forward-ledger-unchanged")
+    require(cluster.sql(FORWARD_DATABASE, "select count(*) from pg_tables where schemaname='public' and tablename in ('concert_reports','concert_event_settings','concert_operation_notices','concert_operations_audit');") == "0", "failed-forward-no-partial-tables")
+    require(snapshot() == before_forward, "failed-forward-published-state-unchanged")
+    cluster.sql(FORWARD_DATABASE, "drop table concert_operated_place_releases;")
+    cli("forward-0020-to-0021", "--migrate", database=FORWARD_DATABASE)
+    cli("forward-verify", "--verify-migrations", database=FORWARD_DATABASE)
+    report["forward_migration_ledger"] = migration.check_ledger(cluster, FORWARD_DATABASE, manifest)
+    require(snapshot() == before_forward, "forward-published-state-preserved")
+    cli("forward-reapply", "--migrate", database=FORWARD_DATABASE)
+    cli("forward-verify-reapply", "--verify-migrations", database=FORWARD_DATABASE)
+    require(migration.check_ledger(cluster, FORWARD_DATABASE, manifest) == len(manifest), "forward-stable-ledger")
+    report["forward_rollback"] = "PASS"
+    report["forward_published_state"] = before_forward
+
     for label, test, count in tests:
-        result = command(report, label, [test, "--test-threads=1"], test_env,
-                         cluster.root, secrets=secrets)
-        report[label + "_diagnostics"] = migration.redact((result.stdout + result.stderr).decode(errors="replace"), secrets)
-        require(f"{count} passed; 0 failed".encode() in result.stdout, label + "-not-skipped")
-    report["real_postgres_tests"] = sum(count for _, _, count in tests)
+        native(label, test, DATABASE, [], count, 1 if label == "operations-tests" else 0)
+    report["native_adapter_tests"] = sum(count for _, _, count in tests)
+    report["native_ledger_tests"] = 1
+    report["real_postgres_tests"] = report["native_adapter_tests"] + report["native_ledger_tests"]
     tables = ("concert_reports", "concert_event_settings", "concert_operation_notices",
-              "concert_command_receipts", "concert_outbox", "concert_operations_audit")
+              "concert_command_receipts", "concert_outbox", "concert_operations_audit",
+              "concert_operated_place_releases")
     before = {table: cluster.sql(DATABASE, f"select count(*) from {table};") for table in tables}
     require(all(int(count) > 0 for count in before.values()), "committed-restart-fixtures-required")
     prior = cluster.assert_postmaster()
@@ -62,7 +106,10 @@ def exercise(cluster, binary, tests, report):
     require(prior != cluster.assert_postmaster(), "new-postmaster-required")
     for table, count in before.items():
         require(cluster.sql(DATABASE, f"select count(*) from {table};") == count, table + "-restart-persistence")
-    cli("verify-after-restart", "--verify-migrations")
+    require(snapshot() == before_forward, "forward-published-state-survives-restart")
+    for database in (DATABASE, FORWARD_DATABASE):
+        cli(database + "-verify-after-restart", "--verify-migrations", database=database)
+        require(migration.check_ledger(cluster, database, manifest) == len(manifest), "restarted-ledger-preserved")
     report["restart_counts"] = before
     report["restart_persistence"] = "PASS"
     report["result"] = "PASS"

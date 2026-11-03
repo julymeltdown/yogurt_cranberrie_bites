@@ -87,3 +87,13 @@ CREATE FUNCTION public.concert_operated_place_owner_immutable() RETURNS trigger 
 BEGIN RAISE EXCEPTION 'operated place ownership is immutable' USING ERRCODE='23514'; END;
 $$;
 CREATE TRIGGER concert_operated_place_owner_immutable BEFORE UPDATE OR DELETE ON public.concert_operated_place_releases FOR EACH ROW EXECUTE FUNCTION public.concert_operated_place_owner_immutable();
+CREATE FUNCTION public.concert_operated_place_owner_guard() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+ PERFORM pg_advisory_xact_lock(hashtextextended(NEW.map_id::text||':'||NEW.map_revision::text,0));
+ IF EXISTS(SELECT 1 FROM public.concert_events_map_releases WHERE map_id=NEW.map_id AND map_revision=NEW.map_revision AND event_id<>NEW.event_id) THEN
+  RAISE EXCEPTION 'shared release cannot acquire an event operator owner' USING ERRCODE='23514';
+ END IF;
+ RETURN NEW;
+END;
+$$;
+CREATE TRIGGER concert_operated_place_owner_guard BEFORE INSERT ON public.concert_operated_place_releases FOR EACH ROW EXECUTE FUNCTION public.concert_operated_place_owner_guard();
