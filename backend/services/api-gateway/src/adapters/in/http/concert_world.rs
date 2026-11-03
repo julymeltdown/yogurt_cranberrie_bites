@@ -19,6 +19,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         .route("/api/concert/events/:event_id/rooms", get(rooms))
         .route("/api/concert/events/:event_id/world-tickets", post(ticket))
         .layer(DefaultBodyLimit::max(4096))
+        .layer(axum::middleware::from_fn(protect_error_response))
         .with_state(state)
 }
 
@@ -228,11 +229,28 @@ fn world_error(error: WorldClientError) -> GatewayError {
         WorldClientError::Expired => GatewayError::gateway_timeout("Request timed out"),
         WorldClientError::Denied => GatewayError::forbidden("Access is not permitted"),
         WorldClientError::NotFound => GatewayError::not_found("Resource unavailable"),
-        WorldClientError::Full => GatewayError::conflict("Room full"),
-        WorldClientError::VersionMismatch => GatewayError::conflict("Map version mismatch"),
+        WorldClientError::Full => GatewayError::conflict("RESOURCE_UNAVAILABLE"),
+        WorldClientError::VersionMismatch => GatewayError::conflict("MAP_VERSION_MISMATCH"),
         WorldClientError::Unavailable | WorldClientError::InvalidResponse => {
             GatewayError::ServiceBusy
         }
+    }
+}
+
+#[cfg(test)]
+mod error_tests {
+    use super::*;
+
+    #[test]
+    fn full_and_stale_release_reasons_remain_distinct() {
+        assert!(matches!(
+            world_error(WorldClientError::Full),
+            GatewayError::Conflict(message) if message == "RESOURCE_UNAVAILABLE"
+        ));
+        assert!(matches!(
+            world_error(WorldClientError::VersionMismatch),
+            GatewayError::Conflict(message) if message == "MAP_VERSION_MISMATCH"
+        ));
     }
 }
 
@@ -249,4 +267,56 @@ pub async fn protect_response(request: Request, next: Next) -> Response {
             .insert(header::PRAGMA, HeaderValue::from_static("no-cache"));
     }
     response
+}
+
+/// C05 errors use the shared CoreErrorResponse shape. This remains scoped to
+/// the isolated world router and does not change unrelated Gateway responses.
+pub async fn protect_error_response(request: Request, next: Next) -> Response {
+    let protected = request.uri().path().contains("/world-tickets")
+        || (request.uri().path().contains("/events/") && request.uri().path().ends_with("/rooms"));
+    let response = next.run(request).await;
+    if !protected || (!response.status().is_client_error() && !response.status().is_server_error())
+    {
+        return response;
+    }
+    let status = response.status();
+    let original_reason = response
+        .headers()
+        .get("x-mcr-reason")
+        .and_then(|value| value.to_str().ok())
+        .map(str::to_owned);
+    let reason = match original_reason.as_deref() {
+        Some("MAP_VERSION_MISMATCH") => "MAP_VERSION_MISMATCH",
+        _ => match status.as_u16() {
+            400 | 405 | 422 => "INVALID_INPUT",
+            401 => "AUTHENTICATION_REQUIRED",
+            403 => "PERMISSION_DENIED",
+            404 => "RESOURCE_UNAVAILABLE",
+            409 => "RESOURCE_UNAVAILABLE",
+            410 => "EVENT_READ_ONLY",
+            413 => "PAYLOAD_TOO_LARGE",
+            415 => "INVALID_MEDIA_TYPE",
+            429 => "RATE_LIMITED",
+            502 | 503 => "DEPENDENCY_UNAVAILABLE",
+            504 => "DEADLINE_EXCEEDED",
+            _ => "INTERNAL_ERROR",
+        },
+    };
+    let status = if status == StatusCode::METHOD_NOT_ALLOWED {
+        StatusCode::BAD_REQUEST
+    } else {
+        status
+    };
+    let mut safe = Json(serde_json::json!({
+        "code": format!("GATEWAY_{}", status.as_u16()),
+        "message": "The request could not be completed.",
+        "details": {"reason": reason}
+    }))
+    .into_response();
+    *safe.status_mut() = status;
+    safe.headers_mut()
+        .insert(header::CACHE_CONTROL, HeaderValue::from_static("no-store"));
+    safe.headers_mut()
+        .insert(header::PRAGMA, HeaderValue::from_static("no-cache"));
+    safe
 }
