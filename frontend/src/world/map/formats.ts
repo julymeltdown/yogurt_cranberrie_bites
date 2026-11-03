@@ -9,7 +9,7 @@ export function validDateTime(value: string) {
   return y >= 1 && m >= 1 && m <= 12 && Number(day) >= 1 && Number(day) <= days[m - 1]! && Number(hour) <= 23 && Number(minute) <= 59
     && Number(second) <= 59 && (zone!.toUpperCase() === 'Z' || Number(zone!.slice(1, 3)) <= 23 && Number(zone!.slice(4)) <= 59)
 }
-/** RFC3986 URI syntax, not WHATWG URL normalization or permission to fetch provenance links. */
+/** Pinned C06 URI-checker syntax, not WHATWG normalization or permission to fetch provenance. */
 export function validUri(value: string) {
   const match = /^[A-Za-z][A-Za-z0-9+.-]*:(.*)$/.exec(value)
   if (!match || match[0] !== value) return false
@@ -26,9 +26,32 @@ export function validUri(value: string) {
   if (hostPort.startsWith('[')) {
     const close = hostPort.indexOf(']'); if (close < 0 || !/^(?::\d*)?$/.test(hostPort.slice(close + 1))) return false
     const host = hostPort.slice(1, close)
-    if (/^[vV][0-9A-Fa-f]+\.[A-Za-z0-9._~!$&'()*+,;=:-]+$/.test(host)) return true
-    try { return new URL(`http://[${host}]/`).hostname.startsWith('[') && !host.includes('%') } catch { return false }
+    if (/^v[0-9A-Fa-f]+\.[A-Za-z0-9._~!$&'()*+,;=:-]+$/.test(host)) return true
+    return validIpv6(host)
   }
   const parts = hostPort.split(':')
   return parts.length <= 2 && /^(?:[A-Za-z0-9._~!$&'()*+,;=-]|%[0-9A-Fa-f]{2})*$/.test(parts[0]!) && (parts.length === 1 || /^\d*$/.test(parts[1]!))
+}
+
+/** Independently authored group counter matching the pinned URI checker's IPv6 alternatives.
+ * Its dotted tail accepts 1..3 decimal digits per octet, including leading zeros.
+ * Provenance syntax only: never normalize this into, or use it as, a fetch URL.
+ */
+function validIpv6(host: string) {
+  if (host.length > 45) return false
+  const halves = host.split('::')
+  if (halves.length > 2) return false
+  const groups = halves.flatMap(half => half === '' ? [] : half.split(':'))
+  let units = 0
+  for (const [index, group] of groups.entries()) {
+    if (group.includes('.')) {
+      const octets = group.split('.')
+      if (index !== groups.length - 1 || !host.endsWith(group) || octets.length !== 4 || !octets.every(o => /^\d{1,3}$/.test(o) && Number(o) <= 255)) return false
+      units += 2
+    } else {
+      if (!/^[0-9a-fA-F]{1,4}$/.test(group)) return false
+      units++
+    }
+  }
+  return halves.length === 2 ? units < 8 : units === 8
 }

@@ -57,7 +57,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
       if (owned.engine) {
         try { owned.engine.destroy() } catch { /* Continue releasing ownership after a broken injected engine. */ }
         drain = Promise.all([drain, owned.engine.closed]).then(release, release)
-      } else release()
+      } else drain = drain.then(release, release)
     }
     active = owned
     signal?.addEventListener('abort', abort, { once: true })
@@ -96,6 +96,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
         await abortable(owned.engine.ready, controller.signal, options.timeoutMs ?? limits.deadlineMs)
         if (!current()) return state
         resize(); owned.engine.setVisible(visible)
+        if (!current()) return state // A supported injected lease may synchronously stop/dispose/restart.
         const g = map.map.geometry
         publish({ phase: 'ready', widthPx: map.widthPx, heightPx: map.heightPx,
           spawnFoot: Object.freeze({ x: (map.spawn.cell_x + .5) * g.tile_width_px, y: (map.spawn.cell_y + .5) * g.tile_height_px }) })

@@ -274,3 +274,86 @@ it.runIf(Boolean(process.env.MCR_FE14_PYTHON))('differentially rejects fully reh
 })
 
 it('rejects trailing-newline UUID even when regex dollar would match before it', () => expect(validUuid('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa\n')).toBe(false))
+
+it.each(['stop', 'dispose', 'abort'] as const)('keeps inherited deferred shutdown exclusive after replacement %s', async action => {
+  const old = await loaded(), next = await loaded(), close = deferred<void>(), latestClose = deferred<void>()
+  const host = document.createElement('div'); document.body.append(host)
+  let live = 0, peak = 0
+  const oldFactory = vi.fn<EngineFactory>(() => {
+    peak = Math.max(peak, ++live)
+    return { ready: Promise.resolve(), closed: close.promise, resize() {}, setVisible() {}, destroy() {} }
+  })
+  const loadA = vi.fn(async () => old.map)
+  const a = createWorldRuntime({ host, load: loadA, importEngine: async () => oldFactory }); runtimes.push(a)
+  const loadB = vi.fn(async () => next.map), factoryB = vi.fn<EngineFactory>(() => {
+    peak = Math.max(peak, ++live)
+    return { ready: Promise.resolve(), closed: latestClose.promise, resize() {}, setVisible() {}, destroy() { live--; latestClose.resolve() } }
+  })
+  const b = createWorldRuntime({ host, load: loadB, importEngine: async () => factoryB }); runtimes.push(b)
+  expect((await a.start()).phase).toBe('ready'); a.stop()
+  const controller = new AbortController(), replacement = a.start(controller.signal)
+  if (action === 'dispose') a.dispose(); else if (action === 'abort') controller.abort(); else a.stop()
+  await replacement; await Promise.resolve()
+  expect((await b.start()).reason).toBe('host-busy')
+  expect(loadA).toHaveBeenCalledOnce(); expect(loadB).not.toHaveBeenCalled(); expect(factoryB).not.toHaveBeenCalled()
+  expect(live).toBe(1); expect(old.dispose).not.toHaveBeenCalled()
+  live--; close.resolve(); await a.settled()
+  expect(old.dispose).toHaveBeenCalledOnce()
+  expect((await b.start()).phase).toBe('ready'); expect(peak).toBe(1)
+  // Old already-settled disposal and obsolete claim releases cannot evict the new owner.
+  a.dispose(); await a.settled()
+  const loadC = vi.fn(async () => next.map), c = createWorldRuntime({ host, load: loadC, importEngine: async () => factoryB }); runtimes.push(c)
+  expect((await c.start()).reason).toBe('host-busy'); expect(loadC).not.toHaveBeenCalled()
+  b.stop(); await b.settled()
+  expect((await c.start()).phase).toBe('ready'); expect(peak).toBe(1)
+})
+it.runIf(Boolean(process.env.MCR_FE14_PYTHON)).each([
+  ['http://[::ffff:192.168.001.1]/', true], ['http://[::ffff:192.168.01.1]/', true],
+  ['http://[::ffff:192.168.1.1]/', true], ['x://[v1.ab:cd]/', true], ['x://[V1.ab:cd]/', false],
+  ['http://[::]/', true], ['http://[1:2:3:4:5:6:192.168.001.1]/', true],
+  ['http://[::ffff:192.168.256.1]/', false], ['http://[1:2:3:4:5:6:7:8::]/', false],
+  ['http://[192.168.1.1::]/', false], ['http://[:::1]/', false], ['http://[::1%25zone]/', false],
+] as const)('matches pinned owner on fully rehashed IPv-literal provenance %s', async (uri, accepted) => {
+  const f = await synthetic()
+  Object.assign(f.map.provenance, { source_uri: uri })
+  Object.assign(f.theme.provenance, { source_uri: uri })
+  const pin = await rehash(f.map, f.theme)
+  expect(validUri(uri)).toBe(accepted)
+  const client = validateManifests(JSON.stringify(f.map), JSON.stringify(f.theme), pin)
+  if (accepted) await expect(client).resolves.toHaveProperty('map.content_hash', pin.mapHash)
+  else await expect(client).rejects.toMatchObject({ reason: 'invalid' })
+  const program = "import runpy,sys,json;from jsonschema import FormatChecker;assert 'uri' in FormatChecker.checkers;m=runpy.run_path('../scripts/mcr/validate-assets.py');d=json.loads(sys.stdin.read());checks=m['validators']();m['validate_document'](d['map'],checks,'map');m['validate_document'](d['theme'],checks,'theme');m['validate_map'](d['map'])"
+  const result = spawnSync(process.env.MCR_FE14_PYTHON!, ['-c', program], { input: JSON.stringify({ map: f.map, theme: f.theme }), encoding: 'utf8' })
+  expect(result.status === 0, result.stderr).toBe(accepted)
+  if (!accepted) expect(result.stderr).toContain('AssetError:')
+})
+
+it.each(['stop', 'dispose', 'restart'] as const)('fences readiness after reentrant setVisible %s', async action => {
+  const first = await loaded(), second = await loaded(), maps = [first.map, second.map]
+  let runtime!: WorldRuntime, created = 0, destroyed = 0, restart: Promise<unknown> | undefined
+  const phases: { phase: string; created: number }[] = []
+  const factory: EngineFactory = host => {
+    const number = ++created, close = deferred<void>(); let closed = false
+    host.append(document.createElement('canvas'))
+    return { ready: Promise.resolve(), closed: close.promise, resize() {}, setVisible() {
+      if (number !== 1) return
+      if (action === 'dispose') runtime.dispose()
+      else { runtime.stop(); if (action === 'restart') restart = runtime.start() }
+    }, destroy() { if (!closed) { closed = true; destroyed++; close.resolve() } } }
+  }
+  runtime = owner(async () => maps.shift()!, factory).runtime
+  runtime.subscribe(() => phases.push({ phase: runtime.read().phase, created }))
+  await runtime.start()
+  if (action === 'restart') {
+    await restart
+    expect(runtime.read().phase).toBe('ready'); expect(created).toBe(2)
+    expect(phases.filter(s => s.phase === 'ready')).toEqual([{ phase: 'ready', created: 2 }])
+  } else {
+    await runtime.settled()
+    expect(runtime.read().phase).toBe(action === 'dispose' ? 'disposed' : 'stopped')
+    expect(phases.some(s => s.phase === 'ready')).toBe(false)
+    expect(document.querySelector('canvas')).toBeNull()
+    if (action === 'dispose') expect((await runtime.start()).phase).toBe('disposed')
+  }
+  expect(first.dispose).toHaveBeenCalledOnce(); expect(destroyed).toBe(1)
+})

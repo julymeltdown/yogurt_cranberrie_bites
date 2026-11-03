@@ -134,6 +134,25 @@ try {
       assert(await page.evaluate(() => window.__FE14_CHECK_THROW_RESTORE__()), 'synchronous throw failed to restore exact document method')
       await stopped(page, baseline)
     }
+    if (width === 390) {
+      for (const action of ['stop', 'dispose', 'abort']) {
+        const race = await page.evaluate(action => window.__FE14__.race(action), action)
+        assert.equal(race.blocked.state.reason, 'host-busy'); assert.equal(race.blocked.loads, 0); assert.equal(race.blocked.factories, 0)
+        assert.equal(race.transferred.phase, 'ready'); assert.equal(race.canvases, 1); assert.equal(race.factories, 1)
+        await stopped(page, baseline)
+        await page.getByRole('button', { name: 'Unmount runtime' }).click(); await page.getByRole('button', { name: 'Mount runtime' }).click()
+      }
+      for (const action of ['stop', 'dispose', 'restart']) {
+        const before = await page.evaluate(() => ({ allocations: window.__FE14__.allocations(), events: window.__FE14__.publications().length }))
+        await page.evaluate(action => { window.__FE14__.mode(`visible-${action}`); void window.__FE14__.start() }, action)
+        await expect(page.getByRole('status')).toHaveText(action === 'restart' ? 'ready' : action === 'stop' ? 'stopped' : 'disposed')
+        const readyEvents = await page.evaluate(before => window.__FE14__.publications().slice(before).filter(event => event.phase === 'ready'), before.events)
+        assert.deepEqual(readyEvents, action === 'restart' ? [{ phase: 'ready', allocations: before.allocations + 2 }] : [])
+        await stopped(page, baseline)
+        await page.evaluate(() => window.__FE14__.mode('valid'))
+        await page.getByRole('button', { name: 'Unmount runtime' }).click(); await page.getByRole('button', { name: 'Mount runtime' }).click()
+      }
+    }
     const allocations = await page.evaluate(() => window.__FE14__.allocations())
     await page.evaluate(() => { window.__FE14__.mode('stop-boot'); void window.__FE14__.start() })
     await expect(page.getByRole('status')).toHaveText('stopped')
@@ -181,7 +200,7 @@ try {
   await page.screenshot({ path: `${evidence}/production-public-390.png`, fullPage: true })
   assert.deepEqual(errors, [])
   const report = { browser: await browser.version(), status: 'MOCK_READY', results, negativeResources: 'PASS: hash/failure/late resource teardown',
-    productionIsolation: 'PASS', requests: resourceCalls.length, pageErrors: errors, expectedInjectedStartErrors: expectedErrors,
+    productionIsolation: 'PASS', reviewRegressions: 'PASS: inherited held-close owner exclusion and reentrant visibility stop/dispose/restart with real Phaser', requests: resourceCalls.length, pageErrors: errors, expectedInjectedStartErrors: expectedErrors,
     limits: ['Synthetic controlled resources only; no production map, venue or character artwork.', 'No shell wiring, avatar, movement, socket, world admission or physical device qualification.'] }
   await writeFile(`${evidence}/report.json`, JSON.stringify(report, null, 2)); console.log(JSON.stringify(report, null, 2)); await context.close()
 } finally { await browser?.close(); await dev.close(); if (production) await new Promise(resolve => production.httpServer.close(resolve)) }

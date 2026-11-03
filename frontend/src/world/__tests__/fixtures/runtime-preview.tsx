@@ -5,7 +5,8 @@ import { createAssetResources, loadMap } from '../../map/resources'
 import { loadPhaserEngine } from '../../scenes/MapScene'
 import { synthetic } from './synthetic'
 const fixture = await synthetic()
-let current: WorldRuntime | null = null, mode = 'valid', allocations = 0
+let current: WorldRuntime | null = null, currentHost: HTMLDivElement | null = null, mode = 'valid', allocations = 0
+const heldCloses: (() => void)[] = [], publications: { phase: string; allocations: number }[] = []
 const resources = createAssetResources({ origin: location.origin, allow: fixture.allow })
 function Surface() {
   const host = useRef<HTMLDivElement>(null), [status, setStatus] = useState('stopped')
@@ -21,15 +22,24 @@ function Surface() {
         const factory = await loadPhaserEngine()
         return (host, map) => {
           allocations++
-          const engine = factory(host, map)
+          const engine = factory(host, map), engineMode = mode
+          if (engineMode === 'hold-close') {
+            const hold = new Promise<void>(resolve => heldCloses.push(resolve))
+            return { ...engine, closed: engine.closed.then(() => hold) }
+          }
+          if (engineMode.startsWith('visible-')) return { ...engine, setVisible(value) {
+            engine.setVisible(value)
+            if (engineMode === 'visible-dispose') current?.dispose()
+            else { current?.stop(); if (engineMode === 'visible-restart') { mode = 'valid'; void current?.start() } }
+          } }
           if (mode === 'stop-boot') queueMicrotask(() => current?.stop())
           return engine
         }
       },
     })
-    current = runtime
-    const unsubscribe = runtime.subscribe(() => { const state = runtime.read(); setStatus(state.phase + ('reason' in state ? `: ${state.reason}` : '')) })
-    return () => { unsubscribe(); runtime.dispose(); if (current === runtime) current = null }
+    current = runtime; currentHost = host.current
+    const unsubscribe = runtime.subscribe(() => { const state = runtime.read(); publications.push({ phase: state.phase, allocations }); setStatus(state.phase + ('reason' in state ? `: ${state.reason}` : '')) })
+    return () => { unsubscribe(); runtime.dispose(); if (current === runtime) { current = null; currentHost = null } }
   }, [])
   return <><p role="status" aria-live="polite">{status}</p><div ref={host} className="map-host" aria-label="Synthetic map canvas" /></>
 }
@@ -46,7 +56,29 @@ function App() {
 declare global { interface Window { __FE14__: {
   mode(value: string): void; start(): Promise<unknown> | undefined; stop(): void; state(): unknown
   visible(value: boolean): void; allocations(): number; settled(): Promise<void> | undefined
+  publications(): typeof publications; race(action: 'stop' | 'dispose' | 'abort'): Promise<unknown>
 } } }
 window.__FE14__ = { mode(value) { mode = value }, start: () => current?.start(), stop: () => current?.stop(), state: () => current?.read(),
-  visible: value => current?.setVisible(value), allocations: () => allocations, settled: () => current?.settled() }
+  visible: value => current?.setVisible(value), allocations: () => allocations, settled: () => current?.settled(), publications: () => publications,
+  async race(action) {
+    mode = 'hold-close'; const a = current!
+    await a.start(); a.stop()
+    const controller = new AbortController(), replacement = a.start(controller.signal)
+    if (action === 'dispose') a.dispose(); else if (action === 'abort') controller.abort(); else a.stop()
+    await replacement
+    let loads = 0, factories = 0
+    const b = createWorldRuntime({ host: currentHost!,
+      load(signal) { loads++; return loadMap({ mapText: JSON.stringify(fixture.map), themeText: JSON.stringify(fixture.theme), pin: fixture.pin, resources }, signal) },
+      importEngine: async () => { const factory = await loadPhaserEngine(); return (host, map) => { factories++; return factory(host, map) } },
+    })
+    try {
+      const blocked = { state: await b.start(), loads, factories }
+      for (const release of heldCloses.splice(0)) release()
+      await a.settled()
+      const transferred = await b.start(), canvases = document.querySelectorAll('canvas').length
+      a.dispose(); await a.settled()
+      return { blocked, transferred, canvases, loads, factories }
+    } finally { mode = 'valid'; for (const release of heldCloses.splice(0)) release(); b.dispose(); await b.settled() }
+  },
+}
 createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>)
