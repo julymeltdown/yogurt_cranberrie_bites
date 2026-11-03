@@ -1,9 +1,9 @@
 # BE12 authoritative world simulation
 
-Status: **IN_PROGRESS**. Source and deterministic regressions are implemented;
-Rust formatting and planning checks have executed. Cargo execution is queued
-with the delivery owner of the shared target; no compiled/test PASS is claimed
-at this checkpoint. IN01, real multiuser movement, database admission composition,
+Status: **CONTRACT_READY** for this bounded BE12 core. All 26 deterministic
+regressions executed and passed with Rust 1.88.0 after scoped formatting, planning
+and focused source review. This is not full BE12/IN01 acceptance or a remote
+master-delivery claim. IN01, real multiuser movement, database admission composition,
 WebSocket delivery, device and load qualification are **NOT_RUN** by this patch.
 
 ## Ownership and ancestry
@@ -179,7 +179,7 @@ Executed from the assigned checkout on 2026-11-04 (Asia/Seoul):
 | `python3 scripts/mcr/check-plan.py` | 0; preserved archive hashes, plan graph/export regressions and delivery destinations pass; application tests NOT_RUN by that checker |
 | `rustfmt +1.88.0 --edition 2021 --check backend/crates/concert-domain/src/world/mod.rs backend/services/concert-service/src/world/simulation.rs backend/services/concert-service/tests/world_simulation.rs` | 0 |
 | `git diff --check` | 0 |
-| `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_simulation` | NOT_RUN; queued explicit shared compile lease with delivery |
+| `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_simulation` | First invocation 101: stale shared domain artifact omitted the world export. After refreshing only owned Rust-file mtimes, rerun 0; domain/application/service recompiled and all 26 tests passed |
 
 Twenty-six deterministic test cases cover strict intent decoding/teleport attempts,
 invalid axes and safe counters, scalar/diagonal speed, 50ms timing/ack, packet
@@ -191,8 +191,7 @@ spawn/malformed geometry, interaction distance/occlusion/unknown IDs, one-shot
 behavior, movement-history limits, accepted-stop preservation, interaction
 preservation across later motion, symmetric incident-endpoint collision checks,
 fifty-player bounded workload and the frozen synthetic fixture.
-These are authored tests, not executed results until the queued Cargo command
-completes. No native admission, two-account world, actual WebSocket, mobile,
+All 26 executed tests passed (0 failed/ignored/filtered). No native admission, two-account world, actual WebSocket, mobile,
 200-connection load, QA05/QA08 or IN01 acceptance is asserted.
 
 
@@ -209,5 +208,37 @@ These are ancestry/progress records, not native test acceptance.
 The review confirmed that `InteractionPending`/`InputQueueFull` reject an entire
 input before sequence acceptance while consuming rate credit, and that
 `pending_input_count()` is bounded at 6400 for a 50-player room. The source review
-is independent evidence, not a compiled test result. Cargo remains queued until
-an explicit shared-target lease is granted by delivery.
+is independent evidence, not a compiled test result. Native validation subsequently ran under the explicit delivery lease below.
+
+
+## Native execution and final handoff
+
+Delivery explicitly transferred the shared Cargo lease from admission to BE12.
+The exact command above ran at committed candidate
+`158b8147d5d018ce03a7747446005d32592a1a6a`, whose Rust source is `988ddb3`.
+The first invocation reused an older `concert-domain` artifact and failed with
+E0432/E0433 for its absent world export. `touch` refreshed only the six owned Rust
+files (domain lib/world; service lib/world mod/simulation; test) without changing
+bytes. The identical command then explicitly compiled `concert-domain`,
+`concert-application` and `concert-service`, finished in 2.91 seconds and executed
+`world_simulation-04ef4cb814b4979f`: **26 passed, 0 failed, 0 ignored,
+0 measured, 0 filtered out**; exit code 0. No source change or cache deletion was
+needed. No alternate target or compiler artifact workaround was used.
+
+The lease was immediately released to the next BE24 owner and reported to
+delivery; this worker runs no further Cargo after release. The final evidence
+commit changes only this document, so the tested Rust bytes are unchanged.
+The worker checkout is clean after committing; the exact changed-path set is the
+four implementation/test/document paths plus three explicitly delegated export
+registrations listed above. There are no cross-directory application imports.
+
+Delivery receives the full ordered worker history from base `8bb878c`:
+`1ea1813` → `8f649a6` → `398bbfd` → `4187219` → `988ddb3` → `158b814`,
+followed by this evidence-only commit (SHA sent in the handoff). BE13/BE14 receives
+its corrected committed consumer pins directly. Its next scope is recipient
+projection/queues and session recovery, through the actual Social policy port;
+no ownership of those files is acquired by this BE12 patch. All concrete source
+review fixes and the assigned native simulation checks are delivered. Runtime
+membership-port composition, real WebSocket/two-account movement, bidirectional
+presence privacy, resource loading, load/device qualification and verified remote
+master ancestry remain the integrator/owning tasks' outstanding obligations.
