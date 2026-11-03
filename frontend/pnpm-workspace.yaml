@@ -1,0 +1,4 @@
+# MSW's audited postinstall refreshes only a configured local worker file.
+# No worker directory is configured until the explicit mock-harness task.
+allowBuilds:
+  msw: true
