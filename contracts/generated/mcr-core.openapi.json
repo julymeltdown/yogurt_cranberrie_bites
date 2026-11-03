@@ -8942,6 +8942,163 @@
           "status"
         ]
       },
+      "Scenery": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "version",
+          "ground",
+          "atlases",
+          "objects"
+        ],
+        "properties": {
+          "version": {
+            "const": 1
+          },
+          "ground": {
+            "$ref": "#/components/schemas/SceneryTexture"
+          },
+          "atlases": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/SceneryTexture"
+            },
+            "maxItems": 3
+          },
+          "objects": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/SceneryObject"
+            },
+            "maxItems": 96
+          }
+        },
+        "description": "Optional v1 illustrated skin. Loader enforces aggregate transfer/pixel budgets, unique IDs/paths, frame/world bounds and exact map-sized ground; original map geometry stays authoritative. depth_y=-1 is a ground-attached detail."
+      },
+      "SceneryObject": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "atlas_id",
+          "frame",
+          "x",
+          "y",
+          "width",
+          "height",
+          "depth_y"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+          },
+          "atlas_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+          },
+          "frame": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "properties": {
+              "x": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2048
+              },
+              "y": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 2048
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2048
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2048
+              }
+            }
+          },
+          "x": {
+            "type": "integer",
+            "minimum": -128,
+            "maximum": 16512
+          },
+          "y": {
+            "type": "integer",
+            "minimum": -128,
+            "maximum": 16512
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1024
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1024
+          },
+          "depth_y": {
+            "type": "integer",
+            "minimum": -1,
+            "maximum": 16512
+          }
+        }
+      },
+      "SceneryTexture": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "path",
+          "sha256",
+          "width_px",
+          "height_px",
+          "bytes"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^world/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+\\.png$",
+            "maxLength": 512
+          },
+          "sha256": {
+            "$ref": "#/components/schemas/ContentHash"
+          },
+          "width_px": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2048
+          },
+          "height_px": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2048
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2097152
+          }
+        }
+      },
       "SetAvatarRequest": {
         "type": "object",
         "additionalProperties": false,
@@ -9173,6 +9330,9 @@
                 "pattern": "^#[0-9A-F]{6}$"
               }
             }
+          },
+          "scenery": {
+            "$ref": "#/components/schemas/Scenery"
           }
         }
       },

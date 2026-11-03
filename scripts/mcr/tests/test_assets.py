@@ -63,6 +63,27 @@ class AssetContractsTest(unittest.TestCase):
             self.assertIn(name, schema["$defs"])
             self.assertEqual(schema["$schema"], "https://json-schema.org/draft/2020-12/schema")
 
+    def test_illustrated_scenery_shared_bootstrap_semantics(self):
+        cases = assets.read_json(assets.ROOT /
+            "contracts/fixtures/asset-semantics/illustrated-cases.json")["cases"]
+        for case in cases:
+            with self.subTest(case=case["name"]):
+                self.setUp()
+                self.theme["scenery"] = deepcopy(case["scenery"])
+                self.seal()
+                if case["valid"]:
+                    self.assertEqual(assets.validate_bundle(self.docs, self.checks)["status"],
+                                     "CONTRACT_READY")
+                else:
+                    with self.assertRaises(assets.AssetError):
+                        assets.validate_bundle(self.docs, self.checks)
+
+    def test_bundle_does_not_merge_independent_nested_probe_fixtures(self):
+        self.assertTrue((assets.FIXTURES / "illustrated/invalid-unknown-field.json").is_file())
+        self.assertEqual(set(assets.load_bundle(assets.FIXTURES)), {
+            "avatar-config.json", "avatar-manifest.json", "map-manifest.json",
+            "theme-revenge.json", "theme-parade.json", "theme-danger.json"})
+
     def test_missing_format_plugins_refuse_validation(self):
         # A dependency-minimal environment must never report a passing bundle
         # by silently ignoring the optional date-time and URI assertions.

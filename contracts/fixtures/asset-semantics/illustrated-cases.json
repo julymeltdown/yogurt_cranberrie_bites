@@ -1,0 +1,2474 @@
+{
+  "scope": "Synthetic metadata probes only; not approved product artwork.",
+  "cases": [
+    {
+      "name": "valid-base",
+      "valid": true,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "valid-ground-detail",
+      "valid": true,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": -1
+          }
+        ]
+      }
+    },
+    {
+      "name": "valid-overhang-intersects-world",
+      "valid": true,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": -16,
+            "y": -16,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "valid-exact-transfer-budget",
+      "valid": true,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 2097052
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-ground-extent",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 161,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-transfer-budget",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 2097053
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-decoded-budget",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 2048,
+            "height_px": 2048,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-duplicate-texture-id",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "ground",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-duplicate-resource-path",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/ground.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-missing-atlas",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "absent",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-ground-as-atlas",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "ground",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-frame-x",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 1,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-frame-y",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 1,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-world-x-edge",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 160,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-world-y-edge",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 160,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-no-world-intersection",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": -32,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-right-overhang",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 159,
+            "y": 0,
+            "width": 130,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-bottom-overhang",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 159,
+            "width": 32,
+            "height": 130,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-foot-depth",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 289
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-object-duplicates",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-97-objects",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "object_0",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_1",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_2",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_3",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_4",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_5",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_6",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_7",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_8",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_9",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_10",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_11",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_12",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_13",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_14",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_15",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_16",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_17",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_18",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_19",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_20",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_21",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_22",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_23",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_24",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_25",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_26",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_27",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_28",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_29",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_30",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_31",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_32",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_33",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_34",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_35",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_36",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_37",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_38",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_39",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_40",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_41",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_42",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_43",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_44",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_45",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_46",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_47",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_48",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_49",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_50",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_51",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_52",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_53",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_54",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_55",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_56",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_57",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_58",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_59",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_60",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_61",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_62",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_63",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_64",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_65",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_66",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_67",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_68",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_69",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_70",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_71",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_72",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_73",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_74",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_75",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_76",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_77",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_78",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_79",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_80",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_81",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_82",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_83",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_84",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_85",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_86",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_87",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_88",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_89",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_90",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_91",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_92",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_93",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_94",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_95",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          },
+          {
+            "id": "object_96",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-texture-side",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 2049,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-negative-frame",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": -1,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-unknown-field",
+      "valid": false,
+      "scenery": {
+        "version": 1,
+        "ground": {
+          "id": "ground",
+          "path": "world/illustrated-test/ground.png",
+          "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "width_px": 160,
+          "height_px": 160,
+          "bytes": 100
+        },
+        "atlases": [
+          {
+            "id": "detail",
+            "path": "world/illustrated-test/detail.png",
+            "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "width_px": 32,
+            "height_px": 32,
+            "bytes": 100
+          }
+        ],
+        "objects": [
+          {
+            "id": "fixture",
+            "atlas_id": "detail",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "depth_y": 32
+          }
+        ],
+        "unrecognized": true
+      }
+    },
+    {
+      "name": "invalid-null-scenery",
+      "valid": false,
+      "scenery": null
+    }
+  ]
+}
