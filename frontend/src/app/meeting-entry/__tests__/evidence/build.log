@@ -1,0 +1,33 @@
+$ tsc -b && vite build
+vite v8.1.3 building client environment for production...
+[2K
+transforming...✓ 280 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                 0.86 kB │ gzip:   0.45 kB
+dist/assets/composition-Cskz_TlR.css            1.36 kB │ gzip:   0.58 kB
+dist/assets/root-features-nb6jl9cq.css          1.55 kB │ gzip:   0.65 kB
+dist/assets/CommunityFeatures-BC6bdkP0.css      5.62 kB │ gzip:   1.52 kB
+dist/assets/PublicBoundary-DnIBZcYv.css         9.26 kB │ gzip:   2.06 kB
+dist/assets/index-DrDW9HEH.css                 12.15 kB │ gzip:   3.07 kB
+dist/assets/rolldown-runtime-Bh1tDfsg.js        0.56 kB │ gzip:   0.36 kB
+dist/assets/compatibility-Bos-2KN_.js           0.71 kB │ gzip:   0.36 kB
+dist/assets/AdminBoundary-iN-5E3gw.js           1.30 kB │ gzip:   0.66 kB
+dist/assets/authority-1ao3jZ0z.js               2.68 kB │ gzip:   1.17 kB
+dist/assets/MapScene-CjwT0tEl.js                6.72 kB │ gzip:   2.77 kB
+dist/assets/root-features-CWloao3i.js          14.63 kB │ gzip:   4.83 kB
+dist/assets/resolver-B1rHQn8o.js               17.93 kB │ gzip:   5.38 kB
+dist/assets/resources-BE9Z18Z4.js              23.97 kB │ gzip:   7.88 kB
+dist/assets/PublicBoundary-DHEs05X9.js         31.85 kB │ gzip:   8.72 kB
+dist/assets/replicated-0GUVqR0l.js             32.58 kB │ gzip:   7.20 kB
+dist/assets/composition-CS90pYkI.js            42.87 kB │ gzip:  14.40 kB
+dist/assets/index-D7j1GiF8.js                 662.97 kB │ gzip: 159.39 kB
+dist/assets/CommunityFeatures-DTmToage.js     799.65 kB │ gzip:  62.28 kB
+dist/assets/phaser-DVTuvjT6.js              1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 454ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

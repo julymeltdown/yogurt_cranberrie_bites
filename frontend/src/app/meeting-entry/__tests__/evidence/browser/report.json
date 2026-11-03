@@ -1,0 +1,43 @@
+{
+  "result": "PASS",
+  "scope": "Synthetic meeting-entry provider/panels, canonical HTTP/privacy and FE19; no production router, live server, venue or IN02 acceptance",
+  "baseCommit": "ee41a3b61183a224a784d303210fcf2ef55737a5",
+  "sourceHashes": {
+    "frontend/src/app/meeting-entry/__tests__/bridge.test.ts": "49c770ed0831cca1bf2d56f1ce50b8660926491cba5cc82ceb8cb0f2483b0d16",
+    "frontend/src/app/meeting-entry/__tests__/browser.mjs": "ba7f785bcf5198da1b7334bbef0e7e54b597d77c094213fad8188afb5476c215",
+    "frontend/src/app/meeting-entry/__tests__/fixtures.ts": "13520b5f11832a158a58e379fd7574b1a55b25ab046730024633102dc5fa3f50",
+    "frontend/src/app/meeting-entry/__tests__/preview.html": "78c680fc225b02ea38ad45c968c32bce1ab777ffb62fb9fc0a3bed2e71ce1011",
+    "frontend/src/app/meeting-entry/__tests__/preview.tsx": "796c819a674cfb781ae0c18e57f175c0c4f410bf1fc4ce614b52da69f63f90a8",
+    "frontend/src/app/meeting-entry/__tests__/routes.test.tsx": "0f6aa8692e42b800698d9f6ed5a1231ef7b37818be439ec852ae4545c1ce8788",
+    "frontend/src/app/meeting-entry/bridge.ts": "ecb3adf14cac50f11457f8a6868b84753c967ae7c60fe38c25e43b813f4befdb",
+    "frontend/src/app/meeting-entry/index.ts": "0fd0a1f4709f3dab9815c2abb4ee43ecbc3a38f5e11fb182055a78b47ae1a245",
+    "frontend/src/app/meeting-entry/ports.ts": "5dbdd2b26085277d9e6fe03edef8370179a1e1299c70c73e8788a9c7759b5dd8",
+    "frontend/src/app/meeting-entry/routes.tsx": "6d1972f2fab6536e1ae5a0eb7d39247ed1adf19d527f551fcc2b29b6c65cc2a9"
+  },
+  "widths": [
+    {
+      "width": 360,
+      "result": "PASS",
+      "strictMode": true,
+      "minimumTouchTarget": 44,
+      "cleanup": "PASS"
+    },
+    {
+      "width": 390,
+      "result": "PASS",
+      "strictMode": true,
+      "minimumTouchTarget": 44,
+      "cleanup": "PASS"
+    },
+    {
+      "width": 430,
+      "result": "PASS",
+      "strictMode": true,
+      "minimumTouchTarget": 44,
+      "cleanup": "PASS"
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "cleanup": "PASS"
+}
