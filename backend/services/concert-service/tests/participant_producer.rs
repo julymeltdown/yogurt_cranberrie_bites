@@ -916,6 +916,113 @@ async fn native_guarded_participant_persistence_and_reread() {
 }
 
 #[tokio::test]
+#[ignore = "requires private marker-owned PostgreSQL16.14 selected-release fixture"]
+async fn native_guarded_selected_participant_roundtrip() {
+    use concert_application::bootstrap::BootstrapRepository;
+    use concert_service::{
+        adapters::out::repository::avatar::AvatarPersistence,
+        bootstrap::BootstrapPostgresRepository,
+    };
+    let pool = native_support::pool().await;
+    let release = native_support::selected_release();
+    let event = Uuid::parse_str("00000000-0000-4000-8000-000000000811").unwrap();
+    let user = Uuid::parse_str("00000000-0000-4000-8000-000000000812").unwrap();
+    native_support::seed(&pool, event).await;
+    BootstrapPostgresRepository::new(pool.clone())
+        .bootstrap(
+            &native_support::admission(event, user),
+            release.release().defaults(),
+        )
+        .await
+        .unwrap();
+    let persistence =
+        Arc::new(AvatarPersistence::from_synthetic_test(pool.clone(), release, true).unwrap());
+    let digest = persistence.release_digest().to_owned();
+    let owners = Arc::new(Owners {
+        calls: Arc::new(Counters::default()),
+        fault: "",
+    });
+    let service = ParticipantService::new(persistence, owners.clone(), owners.clone(), owners);
+    let make = |op| {
+        let mut m = message(op);
+        m.event_id = event.to_string();
+        m.user_id = user.to_string();
+        m.http_target = format!(
+            "/api/concert/events/{event}/{}",
+            if op == Operation::SetAvatar {
+                "me/avatar"
+            } else {
+                "me"
+            },
+        );
+        m.release_digest = digest.clone();
+        m
+    };
+    let selected: Value = serde_json::from_str(include_str!(
+        "../../../../contracts/fixtures/assets/selected-static/photo01_front_01.json"
+    ))
+    .unwrap();
+    let mut last_saved = Value::Null;
+    let mut stale = None;
+    for index in 1..=6 {
+        let mut config = selected.clone();
+        config["preset_id"] = format!("photo01_front_{index:02}").into();
+        let mut m = make(Operation::SetAvatar);
+        m.request_json = serde_json::to_vec(&json!({
+            "expected_revision": index,
+            "config": config,
+        }))
+        .unwrap();
+        if index == 1 {
+            stale = Some(m.clone());
+        }
+        let (code, saved, _) = call(service.clone(), m, Operation::SetAvatar).await;
+        assert_eq!(code, Code::Ok, "selected preset {index}");
+        last_saved = saved.unwrap();
+        assert_eq!(last_saved["config"], config);
+        assert_eq!(last_saved["revision"], index + 1);
+        let (code, current, _) = call(
+            service.clone(),
+            make(Operation::GetParticipant),
+            Operation::GetParticipant,
+        )
+        .await;
+        assert_eq!(code, Code::Ok);
+        assert_eq!(current.unwrap()["profile"]["avatar"], last_saved);
+    }
+    let mut stale = stale.unwrap();
+    let now = chrono::Utc::now().timestamp_micros();
+    stale.auth_observed_at_unix_micros = now;
+    stale.profile_observed_at_unix_micros = now;
+    stale.authority_expires_unix_micros = now + 1_800_000;
+    let (code, _, reason) = call(service.clone(), stale, Operation::SetAvatar).await;
+    assert_eq!(code, Code::Aborted);
+    assert_eq!(reason.as_deref(), Some("VERSION_CONFLICT"));
+    let mut invalid = make(Operation::SetAvatar);
+    let mut unknown = selected;
+    unknown["preset_id"] = "photo01_front_07".into();
+    invalid.request_json = serde_json::to_vec(&json!({
+        "expected_revision": 7,
+        "config": unknown,
+    }))
+    .unwrap();
+    let (code, _, _) = call(service.clone(), invalid, Operation::SetAvatar).await;
+    assert_eq!(code, Code::InvalidArgument);
+    let (code, updated, _) = call(
+        service,
+        make(Operation::UpdatePreferences),
+        Operation::UpdatePreferences,
+    )
+    .await;
+    assert_eq!(code, Code::Ok);
+    let updated = updated.unwrap();
+    assert_eq!(updated["revision"], 2);
+    assert_eq!(updated["profile"]["avatar"], last_saved);
+    assert_eq!(updated["preferences"]["theme"], "DANGER");
+    pool.close().await;
+}
+
+#[tokio::test]
 async fn direct_handler_without_verified_guard_context_is_denied() {
     use concert_service::participant::proto::concert_participant_service_server::ConcertParticipantService;
     let (service, calls) = service("");

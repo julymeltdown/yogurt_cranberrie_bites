@@ -346,3 +346,17 @@ finally:
 print(json.dumps(report,sort_keys=True))
 sys.exit(0 if report['state']=='PASS' else 1)
 ```
+
+## Pending native selected-union coverage
+
+The additional ignored `native_guarded_selected_participant_roundtrip` source
+uses the selected-source owner's announced `support/bootstrap::selected_release`
+helper and its `release-selected` fixture. It is **NOT_RUN** and awaits that
+source dependency. It owns distinct event/user rows from the layered native
+probe. It will exercise all six frozen presets through signed generated RPC and
+real AvatarPersistence, authorized GET after each save, stale-revision refusal,
+unknown-preset refusal, and preference mutation preserving the saved selected
+config. Its helper remains owned by the selected-source author; this slice adds
+no alternate parser, release validator, migration or bootstrap implementation.
+The first executed qualification above covers only source `08afce6c`; it does
+not qualify this later source addition.
