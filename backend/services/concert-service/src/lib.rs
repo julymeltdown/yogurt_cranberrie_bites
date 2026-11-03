@@ -13,3 +13,4 @@ pub mod relationship;
 pub mod meeting;
 pub mod feed;
 pub mod world;
+pub mod community;
