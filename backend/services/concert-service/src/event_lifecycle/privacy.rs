@@ -184,9 +184,21 @@ pub async fn cleanup_privacy_in(
     if active {
         return Err(CommandError::InvalidState);
     }
-    let requests=sqlx::query("delete from concert_social_requests where event_id=$1 and created_at<=$2 and state in ('REJECTED','CANCELLED','REVOKED','EXPIRED')").bind(key.event).bind(retention.closed_at).execute(&mut *c).await.map_err(unavailable)?.rows_affected();
-    let handles=sqlx::query("update concert_social_handles set key_id=null,nonce=null,ciphertext=null,revision=revision+1 where event_id=$1 and ciphertext is not null and updated_at<=$2").bind(key.event).bind(retention.closed_at).execute(&mut *c).await.map_err(unavailable)?.rows_affected();
-    let beacons=sqlx::query("delete from concert_meeting_beacons where event_id=$1 and state='REVOKED' and created_at<=$2").bind(key.event).bind(retention.closed_at).execute(&mut *c).await.map_err(unavailable)?.rows_affected();
+    let requests=sqlx::query("delete from concert_social_requests where event_id=$1 and state in ('REJECTED','CANCELLED','REVOKED','EXPIRED')").bind(key.event).execute(&mut *c).await.map_err(unavailable)?.rows_affected();
+    let handles=sqlx::query("update concert_social_handles set key_id=null,nonce=null,ciphertext=null,revision=revision+1 where event_id=$1 and ciphertext is not null").bind(key.event).execute(&mut *c).await.map_err(unavailable)?.rows_affected();
+    let beacons =
+        sqlx::query("delete from concert_meeting_beacons where event_id=$1 and state='REVOKED'")
+            .bind(key.event)
+            .execute(&mut *c)
+            .await
+            .map_err(unavailable)?
+            .rows_affected();
+    // The reviewed deadline is event-close retention, not a renewed per-row TTL.
+    let remains:bool=sqlx::query_scalar("select exists(select 1 from concert_social_requests where event_id=$1) or exists(select 1 from concert_meeting_beacons where event_id=$1) or exists(select 1 from concert_social_handles where event_id=$1 and ciphertext is not null)")
+        .bind(key.event).fetch_one(&mut *c).await.map_err(unavailable)?;
+    if remains {
+        return Err(CommandError::InvalidState);
+    }
     record(
         c,
         key,

@@ -131,8 +131,21 @@ fn command_error(e: CommandError) -> Response {
 }
 fn encode<T: serde::Serialize>(name: &str, value: T) -> Result<Value, CommandError> {
     let v = serde_json::to_value(value).map_err(|_| CommandError::InvalidState)?;
-    validate(name, &v).map_err(|_| CommandError::InvalidState)?;
+    validate(name, &v).map_err(|e| {
+        if e == CommandError::Unavailable {
+            e
+        } else {
+            CommandError::InvalidState
+        }
+    })?;
     Ok(v)
+}
+fn output_response<T: serde::Serialize>(status: StatusCode, name: &str, value: T) -> Response {
+    match encode(name, value) {
+        Ok(value) => response(status, value),
+        Err(CommandError::Unavailable) => command_error(CommandError::Unavailable),
+        Err(_) => error("INTERNAL_ERROR", StatusCode::INTERNAL_SERVER_ERROR),
+    }
 }
 pub async fn close_response<A: FencedLifecycleAuthority, O: LifecycleOwners>(
     service: &PgEventLifecycle<A, O>,
@@ -161,10 +174,7 @@ pub async fn close_response<A: FencedLifecycleAuthority, O: LifecycleOwners>(
             if job.job_id != reference.resource || job.revision < reference.revision {
                 return command_error(CommandError::InvalidState);
             }
-            match encode("Domain_admin_ClosureJob", job) {
-                Ok(v) => response(StatusCode::OK, v),
-                Err(e) => command_error(e),
-            }
+            output_response(StatusCode::OK, "Domain_admin_ClosureJob", job)
         }
         ReceiptState::Pending => {
             if receipt.reference.is_some()
@@ -174,10 +184,7 @@ pub async fn close_response<A: FencedLifecycleAuthority, O: LifecycleOwners>(
                 return command_error(CommandError::InvalidState);
             }
             let dto = json!({"receipt_id":receipt.id,"event_id":receipt.scope.event,"actor_id":receipt.scope.actor,"operation_id":"closeConcertEvent","idempotency_key":receipt.scope.key,"state":"PENDING","resource_id":null,"resource_revision":null,"failure_reason":null,"result_status":null,"created_at":receipt.created_at,"expires_at":receipt.expires_at});
-            match validate("Domain_common_CommandReceipt", &dto) {
-                Ok(()) => response(StatusCode::ACCEPTED, dto),
-                Err(e) => command_error(e),
-            }
+            output_response(StatusCode::ACCEPTED, "Domain_common_CommandReceipt", dto)
         }
         ReceiptState::Failed => error(
             receipt
@@ -193,12 +200,8 @@ pub async fn job_response<A: FencedLifecycleAuthority, O: LifecycleOwners>(
     actor: Actor,
     job: Uuid,
 ) -> Response {
-    match service
-        .job(actor, job)
-        .await
-        .and_then(|v| encode("Domain_admin_ClosureJob", v))
-    {
-        Ok(v) => response(StatusCode::OK, v),
+    match service.job(actor, job).await {
+        Ok(v) => output_response(StatusCode::OK, "Domain_admin_ClosureJob", v),
         Err(e) => command_error(e),
     }
 }
@@ -208,13 +211,27 @@ pub async fn archive_response<P: PublicArchiveOwner>(
     limit: u16,
     cursor: Option<&str>,
 ) -> Response {
-    match service
-        .page(event, limit, cursor)
-        .await
-        .and_then(|v| encode("Domain_admin_Archive", v))
-    {
-        Ok(v) => response(StatusCode::OK, v),
+    match service.page(event, limit, cursor).await {
+        Ok(v) => output_response(StatusCode::OK, "Domain_admin_Archive", v),
         Err(CommandError::Conflict) => error("VERSION_CONFLICT", StatusCode::CONFLICT),
+        Err(CommandError::InvalidState) => {
+            error("INTERNAL_ERROR", StatusCode::INTERNAL_SERVER_ERROR)
+        }
         Err(e) => command_error(e),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn malformed_server_projection_is_not_a_client_transition_conflict() {
+        let response = output_response(
+            StatusCode::OK,
+            "Domain_admin_Archive",
+            json!({"event_id":Uuid::new_v4()}),
+        );
+        assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+        assert_eq!(response.headers()[header::CACHE_CONTROL], "no-store");
     }
 }

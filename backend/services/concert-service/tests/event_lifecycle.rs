@@ -362,6 +362,14 @@ async fn event_lifecycle_actual_privacy_sql_expires_and_cleans_only_owned_event(
     for _ in 0..3 {
         service.run_next(actor, job).await.unwrap();
     }
+    // Unexpected late writes must not silently renew event-close retention.
+    let mut late = pool.begin().await.unwrap();
+    sqlx::query("set local mcr.relationship_authority_until='2100-01-01T00:00:00Z'")
+        .execute(&mut *late)
+        .await
+        .unwrap();
+    sqlx::query("update concert_social_handles set revision=revision+1,ciphertext=decode(repeat('01',17),'hex') where event_id=$1").bind(actor.event).execute(&mut *late).await.unwrap();
+    late.commit().await.unwrap();
     let active: i64 = sqlx::query_scalar(
         "select count(*) from concert_social_grants where event_id=$1 and state='ACTIVE'",
     )

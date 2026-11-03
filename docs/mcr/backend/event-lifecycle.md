@@ -127,3 +127,19 @@ Then run the owned PG script with both explicitly qualified native binaries.
 Domain/application unit tests and service archive-cursor unit tests are also
 NOT_RUN until this handoff. Full BE41 goal remains ACTIVE and required acceptance
 is not claimed. Commits 077f01cf and 2a8bfb4 are source milestones sent to Delivery.
+
+
+## Targeted review fixes
+
+A bounded independent read-only review of archive/http at e2b150e9 found a P2:
+response validator outages were collapsed to InvalidState and returned misleading
+HTTP 409 conflicts. The adapter now preserves dependency outages as 503 and
+separates malformed server projections as 500, both no-store. A focused Rust
+regression is authored (NOT_RUN pending the same compile handoff).
+
+Local retention review also removed per-row updated/created-time filters from
+event-close privacy cleanup: the reviewed event-close deadline cannot be silently
+renewed by a late write. Cleanup verifies no event-owned private rows/ciphertext
+remain; the native test includes an unexpected late handle update. This does not
+authorize cross-event or cross-service cleanup, and composite-owner obligations
+remain required.
