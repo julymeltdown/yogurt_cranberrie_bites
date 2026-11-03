@@ -1,0 +1,26 @@
+{
+  "task": "FE36-AUTH-ROOT",
+  "status": "MOCK_READY",
+  "date": "2026-11-04",
+  "integrator": "01a1a385-9f32-73c2-8715-ff54bd1e0497",
+  "worker_base": "36b8bc9cc4729997eb2a0ac36f05f77a28b2a5e8",
+  "worker_commits": ["52c2b357254b2e97f33b08c44561ac58ae545f6a", "be4ccf9a88110a40f8ef9933affe7234983d2174"],
+  "integrated_commits": ["c723ee4e", "b756e9d9"],
+  "combined_candidate": "5590bb87a41f907fab48cfa506a6793396c7b52c",
+  "reconciled_remote": "68daf58309241d00cefeaf6b9bc0483a5708dc9a",
+  "scope": "All 17 author paths matched their exact preimages. Core/domain generated contract SHA-256 values match the author record. No backend implementation was authored by this lane; backend peer commits were merged without changes.",
+  "checks": [
+    {"command": "vitest run --maxWorkers=1 (22 selected Auth/account/root/privacy/settings files)", "exit_code": 0, "tests": 538},
+    {"command": "tsc --project tsconfig.json --incremental --tsBuildInfoFile /tmp/mcr-king-account.tsbuildinfo --pretty false", "exit_code": 0},
+    {"command": "oxlint src vite.config.ts", "exit_code": 0},
+    {"command": "vite build", "exit_code": 0, "limitation": "Existing large-chunk advisory"},
+    {"command": "node src/app/account-deletion-entry/__tests__/native.mjs", "exit_code": 0, "widths": [360, 390, 430], "synthetic_requests": 120, "page_errors": 0},
+    {"command": "python3 scripts/mcr/check-plan.py", "exit_code": 0},
+    {"command": "python3 scripts/mcr/check-boundaries.py --base 68daf583 --lane frontend --allow-doc docs/mcr/frontend/account-deletion-composition.md --allow-composition frontend/src/app/router.tsx", "exit_code": 0},
+    {"command": "node scripts/mcr/check-ui-origin.mjs", "exit_code": 0},
+    {"command": "git diff --check", "exit_code": 0}
+  ],
+  "native_evidence": "/tmp/mcr-fe36-auth-deletion-root-evidence/result.json",
+  "limitations": ["Synthetic HTTP and instrumented world lifetime evidence only", "Live account deletion and backend cleanup NOT_RUN", "Real devices, real multiplayer, and IN05 acceptance NOT_RUN"],
+  "publication": "This receipt's commit must be contained in origin/master; verify ancestry after push."
+}

@@ -1,0 +1,2 @@
+.selected-static-gallery { display:flex; align-items:flex-end; justify-content:center; min-inline-size:0; }
+.selected-static-gallery > span { display:block; inline-size:0; flex:1 1 0; min-inline-size:0; max-inline-size:30%; aspect-ratio:1; background-repeat:no-repeat; background-size:600% 100%; image-rendering:pixelated; }
