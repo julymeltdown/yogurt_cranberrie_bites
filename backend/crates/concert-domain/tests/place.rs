@@ -140,8 +140,12 @@ fn canonical_place_and_provenance_values_are_closed_and_reviewed_when_verified()
         "https://example.invalid/ref\n",
         "https://example.invalid/ref\u{7f}",
         "https://example.invalid/refé",
-        "urn:",
-        "mailto:",
+        "https://example.invalid/[docs]",
+        "https://example.invalid/a?x=<y>",
+        "https://example.invalid/a?x={y}",
+        "urn:x<y",
+        "urn:x{y}",
+        "urn:x[y]",
         "",
     ] {
         assert!(Provenance::new(
@@ -162,6 +166,8 @@ fn canonical_place_and_provenance_values_are_closed_and_reviewed_when_verified()
         "https://example.invalid/encoded%20space",
         "urn:mcr:format-fixture",
         "mailto:fixture@example.invalid",
+        "file:///reviewed/source",
+        "custom:/source",
     ] {
         assert!(Provenance::new(
             "fixture_source".into(),
