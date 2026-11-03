@@ -266,6 +266,15 @@ impl UserDeletionDispatcherPort for GrpcUserDeletionDispatcher {
                 UserDeletionTarget::Friend => self.friend.apply(request).await,
                 UserDeletionTarget::Post => self.post.apply(request).await,
                 UserDeletionTarget::Notification => self.notification.apply(request).await,
+                // No unauthenticated/ad-hoc Concert endpoint or successful no-op.
+                // The owned composite dispatcher injects real typed owners;
+                // until then canonical retries retain these required steps.
+                UserDeletionTarget::ConcertTickets
+                | UserDeletionTarget::ConcertSessions
+                | UserDeletionTarget::ConcertSharing
+                | UserDeletionTarget::ConcertPrivateData => {
+                    return Err(crate::application::errors::AuthError::DependencyUnavailable.into());
+                }
             }
         }
         .await;

@@ -12,10 +12,15 @@ pub enum UserDeletionTarget {
     Friend,
     Post,
     Notification,
+    ConcertTickets,
+    ConcertSessions,
+    ConcertSharing,
+    ConcertPrivateData,
 }
 
 impl UserDeletionTarget {
-    pub const ALL: [Self; 4] = [Self::Profile, Self::Friend, Self::Post, Self::Notification];
+    pub const ALL: [Self; 8] = [Self::Profile, Self::Friend, Self::Post, Self::Notification,
+        Self::ConcertTickets, Self::ConcertSessions, Self::ConcertSharing, Self::ConcertPrivateData];
 
     pub const fn as_str(self) -> &'static str {
         match self {
@@ -23,6 +28,10 @@ impl UserDeletionTarget {
             Self::Friend => "FRIEND",
             Self::Post => "POST",
             Self::Notification => "NOTIFICATION",
+            Self::ConcertTickets => "CONCERT_TICKETS",
+            Self::ConcertSessions => "CONCERT_SESSIONS",
+            Self::ConcertSharing => "CONCERT_SHARING",
+            Self::ConcertPrivateData => "CONCERT_PRIVATE_DATA",
         }
     }
 }
@@ -42,6 +51,10 @@ impl FromStr for UserDeletionTarget {
             "FRIEND" => Ok(Self::Friend),
             "POST" => Ok(Self::Post),
             "NOTIFICATION" => Ok(Self::Notification),
+            "CONCERT_TICKETS" => Ok(Self::ConcertTickets),
+            "CONCERT_SESSIONS" => Ok(Self::ConcertSessions),
+            "CONCERT_SHARING" => Ok(Self::ConcertSharing),
+            "CONCERT_PRIVATE_DATA" => Ok(Self::ConcertPrivateData),
             _ => anyhow::bail!("Unknown user deletion target"),
         }
     }
