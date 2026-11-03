@@ -36,12 +36,14 @@ fn avatar() -> AvatarSelection {
     AvatarSelection {
         manifest_id: AssetId::new("avatar_product".into()).unwrap(),
         manifest_version: Revision::initial(),
-        body: AssetId::new("body_product".into()).unwrap(),
-        eyes: AssetId::new("eyes_product".into()).unwrap(),
-        hair: AssetId::new("hair_product".into()).unwrap(),
-        outfit: AssetId::new("outfit_product".into()).unwrap(),
-        accessory: None,
-        skin_tone: AssetId::new("tone_product".into()).unwrap(),
+        appearance: AvatarAppearance::Layered {
+            body: AssetId::new("body_product".into()).unwrap(),
+            eyes: AssetId::new("eyes_product".into()).unwrap(),
+            hair: AssetId::new("hair_product".into()).unwrap(),
+            outfit: AssetId::new("outfit_product".into()).unwrap(),
+            accessory: None,
+            skin_tone: AssetId::new("tone_product".into()).unwrap(),
+        },
     }
 }
 fn defaults() -> BootstrapDefaults {

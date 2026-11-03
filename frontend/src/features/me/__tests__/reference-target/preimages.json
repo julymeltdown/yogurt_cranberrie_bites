@@ -1,0 +1,6 @@
+{
+  "frontend/src/features/me/ui/MePages.tsx": "773fc408fc21ca325c7efc7d0de711b812e491a7d164fd48d14810f40289319d",
+  "frontend/src/features/me/ui/me.css": "eba1aff1a76dcbb06161ddd32c52c862cac7be72447d81bf99f73782b2cd5c5f",
+  "frontend/src/features/profile/PublicProfile.tsx": "0a7419b97c12ce0ebc6363b978212ca028a01321352abe92e9dbb210806aac5e",
+  "frontend/src/features/me/__tests__/visual-adoption/presentation.test.tsx": "b30df97eb0c7c8fb3da49eb594a88c87cc2898325515eec22f25e069bace2894"
+}

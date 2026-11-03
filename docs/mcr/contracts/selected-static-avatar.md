@@ -117,3 +117,15 @@ No Cargo, PostgreSQL or build target lease has been used for this checkpoint.
 Server persistence, authorization, stale/closure/restart cases, actual rendering
 and real two-user World public flow require their separate implementation and
 runtime evidence; schema and fixture validation do not certify those boundaries.
+
+## Subsequent canonical persistence qualification
+
+The backend increment is now implemented and component-qualified at source
+`71e9c6d4242329f1f6d9e3588ce2316e83964331`. PostgreSQL 16.14 migration-upgrade,
+all-six save/reload/default preservation, revision races, invalid/mixed input,
+authority rollback, closure and restart checks passed; private-cluster cleanup
+passed. See [the backend receipt](../backend/avatar-persistence.md) for exact
+commands, binary hashes, ownership, ancestry and limits. The earlier `NOT_RUN`
+statements describe the contract-only checkpoint, not this subsequent component
+proof. Public root/real Auth/participant RPC/browser/multiuser World acceptance
+remains outside that proof. The frozen contract and art pins are unchanged.
