@@ -341,7 +341,7 @@ fn saga(
 }
 
 #[tokio::test]
-async fn delete_user_starts_one_atomic_saga_with_four_targets() {
+async fn delete_user_starts_one_atomic_saga_with_eight_targets() {
     let users = crate::support::InMemoryUserRepository::default();
     let audits = crate::support::InMemoryAuthAuditRepository::default();
     let sagas = RecordingSagaRepository::default();
@@ -368,7 +368,7 @@ async fn delete_user_starts_one_atomic_saga_with_four_targets() {
 
     assert!(response.deleted);
     assert_eq!(response.saga_id, response.saga.id.to_string());
-    assert_eq!(response.saga.steps.len(), 4);
+    assert_eq!(response.saga.steps.len(), UserDeletionTarget::ALL.len());
     {
         let requests = sagas.begin_requests.lock().unwrap();
         assert_eq!(requests.len(), 1);
@@ -436,7 +436,7 @@ async fn get_user_deletion_returns_the_current_saga() {
         .expect("saga");
 
     assert_eq!(result.id, saga_id.to_string());
-    assert_eq!(result.steps.len(), 4);
+    assert_eq!(result.steps.len(), UserDeletionTarget::ALL.len());
 }
 
 #[tokio::test]
