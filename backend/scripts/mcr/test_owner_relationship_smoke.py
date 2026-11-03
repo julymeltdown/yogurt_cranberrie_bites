@@ -28,7 +28,7 @@ class HarnessTests(unittest.TestCase):
     def test_exception_and_interrupt_cleanup_are_sanitized(self):
         for error in (RuntimeError("private-token"),KeyboardInterrupt()):
             cluster=self.fake_cluster();report={}
-            with patch.object(smoke,"build_artifacts",return_value={"auth-bin":Path("/binary")}),patch.object(smoke.migration,"executable",side_effect=lambda p:p),patch.object(smoke.migration,"Cluster",return_value=cluster),patch.object(smoke,"digest",return_value="hash"),patch.object(smoke,"exercise",side_effect=error):
+            with patch.object(smoke,"build_artifacts",return_value={"auth-bin":Path("/binary")}),patch.object(smoke.migration,"executable",side_effect=lambda p:p),patch.object(smoke.migration,"Cluster",return_value=cluster),patch.object(smoke,"digest",return_value="hash"),patch.object(smoke,"copy_artifacts",side_effect=lambda artifacts,*_:artifacts),patch.object(smoke,"exercise",side_effect=error):
                 smoke.run(Path("/json"),Path("/pg"),report)
             cluster.cleanup.assert_called_once();self.assertEqual(report["cleanup"],"PASS");self.assertNotIn("private-token",json.dumps(report))
     def test_cleanup_failure_or_remaining_directory_revokes_success(self):
@@ -37,7 +37,7 @@ class HarnessTests(unittest.TestCase):
             if not remains:cluster.cleanup.side_effect=RuntimeError("private-token")
             report={}
             def passed(*args):report["result"]="PASS"
-            with patch.object(smoke,"build_artifacts",return_value={"auth-bin":Path("/binary")}),patch.object(smoke.migration,"executable",side_effect=lambda p:p),patch.object(smoke.migration,"Cluster",return_value=cluster),patch.object(smoke,"digest",return_value="hash"),patch.object(smoke,"exercise",side_effect=passed):
+            with patch.object(smoke,"build_artifacts",return_value={"auth-bin":Path("/binary")}),patch.object(smoke.migration,"executable",side_effect=lambda p:p),patch.object(smoke.migration,"Cluster",return_value=cluster),patch.object(smoke,"digest",return_value="hash"),patch.object(smoke,"copy_artifacts",side_effect=lambda artifacts,*_:artifacts),patch.object(smoke,"exercise",side_effect=passed):
                 smoke.run(Path("/json"),Path("/pg"),report)
             self.assertEqual((report["result"],report["cleanup"]),("FAIL","FAIL"))
     def test_metadata_failure_always_finalizes_private_failure_report(self):

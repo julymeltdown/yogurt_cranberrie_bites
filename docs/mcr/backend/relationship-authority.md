@@ -1,7 +1,10 @@
 # BE37 owner relationship observations
 
-Status: `IN_PROGRESS`. Source and test harness are authored; Rust compilation and
-native PostgreSQL qualification remain `NOT_RUN` pending the shared build lease.
+Status: `IN_PROGRESS`. Source and test harness are authored. Rust compilation
+passes, but transport runtime qualification found the shared method-policy guard
+rejects Concert-issued actor-bound reads at service construction. A narrowly
+scoped platform fix is requested from delivery. Native PostgreSQL remains
+`NOT_RUN`; the build lease was released for this source fix.
 This is an identity/privacy prerequisite, not acceptance of BE37 or IN03.
 
 ## Scope and provenance
@@ -154,3 +157,28 @@ The persistent goal was inspected and remains `blocked` from the earlier broader
 identity assignment. Delivery explicitly retained that aligned goal while this
 prerequisite is source-active; the goal is not falsely completed or cosmetically
 recreated. Runtime status, committed handoff and review fixes remain required.
+
+## First runtime checkpoint
+
+Private diagnostics: `/tmp/mcr-owner-relationship-validation.7uZzuj`.
+All builds used the pinned toolchain/profile/target above, with exit 0:
+
+- `cargo test --locked --offline -j2 -p auth-application -p friend-application -p auth-service -p friend-service --test concert_relationship --no-run --message-format=json` — 24.98 seconds.
+- `cargo test --locked --offline -j2 -p concert-service --test relationship_authority --no-run --message-format=json` — 16.12 seconds.
+- `cargo build --locked --offline -j2 -p auth-service -p friend-service --bins --message-format=json` — 9.80 seconds.
+
+Exact application test executables selected from these receipts passed five tests
+each (10 total). Auth/Friend's two transport tests each and Concert's three
+transport tests failed before dispatch with the same registration error:
+`acts for a user and must accept only the Gateway`. This comes from existing
+`platform::grpc_method_policy::MethodPolicy::validate`, not owner persistence.
+Native tests remain ignored until the explicit owned harness runs; compilation
+is not a runtime success claim. No database process was started by this chat.
+
+Delivery was asked to supply an exact exception for the two new internal owner
+service names/ReadCurrent, matching owner workload, Concert-only caller, and actor
+field 1, while retaining all other Gateway-only constraints. No platform file was
+modified without a grant. The lease was released immediately after collecting
+the failure; the next worker can proceed while this prerequisite is corrected.
+The harness now copies all selected binaries, verifies SHA-256, and uses only its
+private copies during native execution so it can release the shared target first.

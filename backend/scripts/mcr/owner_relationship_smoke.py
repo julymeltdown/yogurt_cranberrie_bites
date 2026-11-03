@@ -7,6 +7,8 @@ import os
 from pathlib import Path
 import re
 import signal
+import shutil
+import tempfile
 import subprocess
 import migration_smoke as migration
 from concert_core_smoke import command, digest, require, ROOT
@@ -103,6 +105,17 @@ def exercise(cluster, artifacts, report):
     report.update(restart_persistence="PASS", result="PASS")
 
 
+def copy_artifacts(artifacts, directory, hashes):
+    pinned = {}
+    for key, source in artifacts.items():
+        target = directory / key
+        shutil.copyfile(source, target)
+        target.chmod(0o700)
+        require(digest(target) == hashes[key], "pinned-binary-hash-mismatch")
+        pinned[key] = target
+    return pinned
+
+
 def run(metadata, pg_bin, report):
     cluster = None
     try:
@@ -113,7 +126,10 @@ def run(metadata, pg_bin, report):
         tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
         cluster = migration.Cluster(tools)
         report["owned_directory"] = str(cluster.root)
-        exercise(cluster, artifacts, report)
+        with tempfile.TemporaryDirectory(prefix="mcr-owner-relationship-binaries-") as folder:
+            pinned = copy_artifacts(artifacts, Path(folder), report["binary_sha256"])
+            print("OWNER_RELATIONSHIP_ARTIFACTS_PINNED", flush=True)
+            exercise(cluster, pinned, report)
     except (Exception, KeyboardInterrupt) as error:
         report.update(result="FAIL", failure=str(error) if type(error).__name__ == "CheckFailure" else type(error).__name__)
     finally:
