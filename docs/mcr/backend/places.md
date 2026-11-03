@@ -1,6 +1,6 @@
 # BE08 places and immutable map releases
 
-Date: 2026-11-03. Status: **UNVALIDATED_CANDIDATE / IN_PROGRESS**. This commit is sealed for independent source review while BE04 retains the shared Rust target. Native Rust build/test, native PostgreSQL execution and integrator acceptance remain **NOT_RUN**. The source is frozen for that reviewer until the target is explicitly transferred. No task, IA entry or production route is accepted here.
+Date: 2026-11-03. Status: **IN_PROGRESS / NATIVE_GATE_PASS**. The original candidate received an independent source review. Review fixes add the transactional selection seam for BE09, correct the SQL statement-time checks, and fix canonical JSON ordering and ASCII escaping. Focused Rust tests and one fresh owned-PostgreSQL gate pass. Integrator review and acceptance remain outstanding; no task, IA entry or production route is accepted here.
 
 ## Ownership and source basis
 
@@ -32,9 +32,9 @@ The synthetic fixture proves metadata parsing and C06 hash behavior. It does not
 
 ## Application and service behavior
 
-The application exposes event-scoped catalog, detail and checked-current physical selection use cases behind an injected `PlaceAuthorization`. Denial or unavailable authority stops the call before persistence; event/operation grants must match exactly. Repository failure and malformed returned data have typed outcomes. The catalog validates that released metadata and current projection have the same closed place identities and immutable fields, while current closure may differ. The selection result must carry the exact requested event, catalog revision, map revision and place ID. Not found, concept-only, unverified, closed, stale catalog and map mismatch remain distinguishable.
+The application exposes event-scoped catalog, detail and checked-current physical selection use cases behind an injected `PlaceAuthorization`. Denial or unavailable authority stops the call before persistence; event/operation grants must match exactly. Repository failure and malformed returned data have typed outcomes. The catalog validates that released metadata and current projection have the same closed place identities and immutable fields, while current closure may differ. The selection result must carry the exact requested event, catalog revision, map revision and place ID. Not found, concept-only, unverified, closed, stale catalog and map mismatch remain distinguishable. Selection is a point-in-time checked snapshot with its transaction committed before return; BE09 must recheck closure in the transaction that creates its private beacon, so the lock cannot be treated as an atomic write reservation.
 
-`PlaceSnapshot` carries only durable identities: event, catalog revision, map ID and map revision. It has no invented lease or per-read expiry. Stable reads use PostgreSQL repeatable-read snapshots. The adapter applies only SQL parameters, validates stored canonical bytes and matches every stored hash/identity field before projecting a place. It returns no private location, GPS route, audience or beacon detail.
+`PlaceSnapshot` carries only durable identities: event, catalog revision, map ID and map revision. It has no invented lease or per-read expiry. Stable reads use PostgreSQL repeatable-read snapshots. The adapter applies only SQL parameters, validates stored canonical bytes and matches every stored hash/identity field before projecting a place. It returns no private location, GPS route, audience or beacon detail. `PgPlaceRepository::select_physical_in_transaction` is the atomic BE09 seam: it checks release identity and current closure inside the caller's transaction and retains SHARE locks until that caller inserts its own record and commits. The existing convenience read wraps this seam with its own transaction and releases locks on return.
 
 Publication is a repository/administrator seam, not a public application authority. A future BE38 admin use case must authorize reviewed publication before invoking it. The adapter serializes first publication of a global map identity and creates or verifies exact immutable release bytes, full release-place membership and initial closure rows, then binds the event and increments its catalog revision atomically. Reusing identical bytes for another current binding increments only the event catalog revision. A same map identity with different bytes, mismatched member rows or a missing event fails with a typed conflict/not-found result. No map revision is rewritten.
 
@@ -47,26 +47,55 @@ Migration `0003_places_map_releases.sql` adds four MCR-owned tables:
 | `concert_map_releases` | Canonical bytes and C06 hashes keyed by immutable `(map_id,map_revision)`; exact-byte update/delete rejection, bounds and hash shape |
 | `concert_map_release_places` | Closed, validated release membership and provenance, under the release key; update/delete rejection |
 | `concert_events_map_releases` | One current event binding with independent `catalog_revision`, one-way insertion/update checks and foreign key to a real release |
-| `concert_place_current_state` | Mutable operator closure separate from immutable release metadata, with exact one-step revision and forbidding deletion |
+| `concert_place_current_state` | Mutable operator closure separate from immutable release metadata, with exact one-step revision and deletion rejection |
 
-SQL constraints check the closed enums, text bounds, physical/verified provenance relationships, exact provenance key set and type/value relationships. The database protects state through direct SQL, not only through Rust preflight. It does not independently reparse every canonical geometry or prove release source truth; the adapter does strict domain parsing on every read and publication.
+SQL constraints check the closed enums, text bounds, physical/verified provenance relationships, exact provenance key set and type/value relationships. Timestamps are database statements, and both mutable revisions advance by exactly one while remaining monotonic. The database protects state through direct SQL, not only through Rust preflight. It does not independently reparse every canonical geometry or prove release source truth; the adapter does strict domain parsing on every read and publication.
 
 ## Validation status
 
-Completed static checks in this worktree:
+The focused Rust suites and fresh native gate pass from this isolated worktree with Rust `1.88.0`, `--locked --offline -j 2`, `CARGO_PROFILE_DEV_DEBUG=0`, `CARGO_PROFILE_TEST_DEBUG=0` and an isolated target directory:
 
-| Command | Result |
+```sh
+cd backend
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/be08/target \
+  CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+  rustup run 1.88.0 cargo test --locked --offline -j 2 \
+    -p concert-domain --test place
+# exit 0; 4 passed, 0 failed
+
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/be08/target \
+  CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+  rustup run 1.88.0 cargo test --locked --offline -j 2 \
+    -p concert-application --test place
+# exit 0; 5 passed, 0 failed
+
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/be08/target \
+  CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+  rustup run 1.88.0 cargo test --locked --offline -j 2 \
+    -p concert-service --test places --no-run
+# prepared /Users/lhs/Desktop/mcr-build/be08/target/debug/deps/places-d1afcc5efcbf013b
+
+cd ..
+python3 backend/scripts/mcr/places_smoke.py \
+  --binary /Users/lhs/Desktop/mcr-build/be08/target/debug/deps/places-d1afcc5efcbf013b \
+  --report /Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103231508.json
+# exit 0; result PASS, native test exit 0, restart PASS, cleanup PASS
+```
+
+| Check | Result |
 | --- | --- |
-| `python3 scripts/mcr/check-plan.py` | PASS; planning/source preservation only; 118 tasks, 64 IA entries and exporter regressions |
-| `python3 -m py_compile backend/scripts/mcr/places_smoke.py` | PASS |
-| Rust 1.88 `rustfmt --check` on the six assigned Rust source/test paths | PASS |
-| `git diff --check` | PASS |
+| Domain `cargo test --locked --offline -j 2 -p concert-domain --test place` | PASS; 4 passed, 0 failed |
+| Application `cargo test --locked --offline -j 2 -p concert-application --test place` | PASS; 5 passed, 0 failed (test-double dead-field warnings only) |
+| Native service fixture build, then `places_smoke.py` with one fresh owned cluster | PASS; native test exit 0, restart persistence PASS, cleanup PASS |
+| `check-boundaries.py` against `097651c` with the assigned doc/harness allowances | PASS; 12 assigned changes |
+| `check-plan.py` | PASS; planning/source preservation only |
+| `py_compile`, Python Ruff, Rust `rustfmt 1.88 --check`, and `git diff --check` on assigned paths | PASS |
 
-The domain/application/service tests in the patch cover C06 parsing and malformed-but-rehashed manifests, hash and immutable-byte behavior, event grant mismatch, stable revision identity, catalog/detail cross-event rejection, every typed selection refusal, independent event bindings, exact release reuse/rebind refusal, concept-only refusal, verified-physical eligibility, closure changes and persisted release bytes. These tests are **NOT_RUN** as Rust binaries until the shared target is explicitly transferred.
+`places_smoke.py` creates a new marker/token/device/inode-owned PostgreSQL 16.14 cluster with TCP disabled. It applies all three direct SQL migrations; verifies content and geometry hashes and immutable release bytes; reopens and recloses current closure without rewriting bytes; rejects member mutation; exercises exact one-step revision checks; runs the focused native repository test; proves a competing closure update waits behind the transaction seam's SHARE lock until the caller records and commits; confirms independent event bindings and historical release bytes; restarts the cluster; and verifies persisted state. Direct SQL reapplication is **EXPECTED_REFUSED** at the existing schema; it is not SQLx migration-ledger qualification.
 
-The owned-PostgreSQL harness `backend/scripts/mcr/places_smoke.py` creates a fresh marker/token/device/inode-owned cluster with TCP disabled. It applies the three direct SQL migrations, verifies exact C06 content/geometry hashes, release/current-state constraints, event binding isolation, native focused tests, restart persistence and exact cleanup. Direct SQL reapplication is expected to fail at an existing object; this is not SQLx ledger qualification. Docker, a source-default database and external venue calls are not used.
+The latest passing report is `/Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103231508.json`. It records source candidate `c135bff`, domain source SHA-256 `ee505aa435265ebade6e105d1126e2f059c43c658957dc0e52cee37156507584`, repository SHA-256 `9a6e004fb6d7a54ba43381fef7e13a65da05709ee82edcb6939b7aeff788b660`, migration SHA-256 `b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a`, harness SHA-256 `ab0d26ef2274a8d2c39622f83645dab80ac14b4926cc26a21ce647d9f37e684f`, native test output SHA-256 `29b84c7494cd5ac19c63a59398f6624039531a80234bddb29eeb359b2a1c1bd7`, and test binary SHA-256 `555b435db1d595f8131d08bfbff511403b474d1494ba614cb7ec6fd138203429`. The report predates the review-fix commit, so its source digest and revision identify the tested candidate rather than the later documentation-only update.
 
-This source-only candidate commit is intentionally not a delivery claim. After explicit target transfer, the required evidence is one focused Rust suite from this worktree with Rust `1.88.0`, `--locked --offline -j 2`, `CARGO_PROFILE_DEV_DEBUG=0` and `CARGO_PROFILE_TEST_DEBUG=0`, followed by one fresh owned-PG gate. Concrete failures and review findings will be fixed in follow-up commits before final handoff. Until that run and integrator review complete, BE08 remains active, with native Rust/PG, public HTTP, browser/device, load, production and acceptance checks **NOT_RUN**.
+The database proof is a direct SQL migration and reapply check, not an application SQLx migration ledger. Public HTTP routes, real browser/device use, production deployment, load/soak tests and integrator acceptance remain **NOT_RUN**. No external venue, source-default database or Docker instance was used.
 
 ## Changed paths
 

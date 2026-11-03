@@ -59,9 +59,9 @@ def assert_schema(cluster: migration.Cluster) -> None:
         "concert_events_map_releases",
         "concert_place_current_state",
     )
-    query = " and ".join(
+    query = "select " + " and ".join(
         f"to_regclass('public.{table}') is not null" for table in tables
-    )
+    ) + ";"
     require(cluster.sql(DATABASE, query) == "t", "schema-missing")
 
 
@@ -154,6 +154,11 @@ def exercise(
     report["postgres_version"] = cluster.sql("postgres", "show server_version;")
     cluster.sql("postgres", f"create database {DATABASE} template template0;")
     apply_files(cluster)
+    cluster.sql(
+        DATABASE,
+        "create table public.concert_place_selection_race("
+        "event_id uuid not null, place_id uuid not null);",
+    )
     assert_schema(cluster)
     report["direct_sql_migrations"] = "PASS"
     value, encoded, event = seed_fixture(cluster)
@@ -200,6 +205,13 @@ def exercise(
         )
         == "CLOSED",
         "closure-update",
+    )
+    cluster.sql(
+        DATABASE,
+        "update concert_place_current_state set closure_state='OPEN',"
+        "revision=revision+1 "
+        f"where map_id='map_fixture' and map_revision=1 "
+        f"and place_id={literal(place['place_id'])};",
     )
     require(
         cluster.sql(
@@ -263,6 +275,8 @@ def exercise(
     output = result.stdout + result.stderr
     report["native_test_exit"] = result.returncode
     report["native_test_output_sha256"] = hashlib.sha256(output.encode()).hexdigest()
+    if result.returncode != 0:
+        report["native_test_tail"] = output[-3000:]
     require(
         cluster.password not in output and cluster.url(DATABASE) not in output,
         "secret-leak",
@@ -274,7 +288,7 @@ def exercise(
         f"where map_id='map_fixture' and map_revision=1 "
         f"and place_id={literal(place['place_id'])};",
     )
-    require(expected_closure == "CLOSED", "closure-during-native-test")
+    require(expected_closure == "OPEN", "closure-during-native-test")
     release_rows = cluster.sql(
         DATABASE,
         "select count(*) from concert_map_release_places "
@@ -330,7 +344,9 @@ def run(binary: Path, report: dict) -> None:
     except (Exception, KeyboardInterrupt) as error:
         report["result"] = "FAIL"
         report["failure"] = (
-            str(error) if isinstance(error, Failure) else type(error).__name__
+            str(error)
+            if isinstance(error, Failure)
+            else getattr(error, "detail", type(error).__name__)
         )
     finally:
         try:

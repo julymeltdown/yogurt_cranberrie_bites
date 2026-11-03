@@ -10,7 +10,7 @@ use concert_domain::place::{
 };
 use concert_domain::{EventId, Revision, MAX_REVISION};
 use serde_json::{Map, Value};
-use sqlx::{postgres::PgRow, PgPool, Row};
+use sqlx::{postgres::PgRow, PgPool, Postgres, Row, Transaction};
 
 #[derive(Clone)]
 pub struct PgPlaceRepository {
@@ -19,6 +19,62 @@ pub struct PgPlaceRepository {
 impl PgPlaceRepository {
     pub fn new(pool: PgPool) -> Self {
         Self { pool }
+    }
+
+    /// Check the current binding and place while retaining both SHARE locks in
+    /// the caller's transaction. BE09 uses this seam and commits after its
+    /// beacon insert, making physical selection and beacon creation atomic.
+    pub async fn select_physical_in_transaction(
+        transaction: &mut Transaction<'_, Postgres>,
+        event_id: EventId,
+        place_id: PlaceId,
+        expected_catalog: Revision,
+        expected_map: i64,
+    ) -> Result<SelectionOutcome, PlaceError> {
+        if !(1..=MAX_REVISION).contains(&expected_map) {
+            return Err(PlaceError::InvalidState);
+        }
+        let Some(head) = sqlx::query("select event_id,catalog_revision,map_id,map_revision from public.concert_events_map_releases where event_id=$1 for share")
+            .bind(event_id.uuid())
+            .fetch_optional(&mut **transaction)
+            .await
+            .map_err(db)?
+        else {
+            return Ok(SelectionOutcome::NotFound);
+        };
+        if revision(head.try_get("catalog_revision").map_err(invalid)?)? != expected_catalog {
+            return Ok(SelectionOutcome::StaleCatalog);
+        }
+        let map_id: String = head.try_get("map_id").map_err(invalid)?;
+        let current_map: i64 = head.try_get("map_revision").map_err(invalid)?;
+        if current_map != expected_map {
+            return Ok(SelectionOutcome::MapMismatch);
+        }
+        let row = sqlx::query(&format!(
+            "{PLACE_SELECT} where q.map_id=$1 and q.map_revision=$2 and q.place_id=$3 for share of q,s"
+        ))
+        .bind(&map_id)
+        .bind(expected_map)
+        .bind(place_id.uuid())
+        .fetch_optional(&mut **transaction)
+        .await
+        .map_err(db)?;
+        let Some(place_row) = row else {
+            return Ok(SelectionOutcome::NotFound);
+        };
+        let value = place(&place_row)?;
+        Ok(match (value.kind, value.verification, value.closure) {
+            (_, _, ClosureState::Closed) => SelectionOutcome::Closed,
+            (PlaceKind::VirtualConcept, _, _) => SelectionOutcome::ConceptOnly,
+            (PlaceKind::Physical, VerificationState::Unverified, _) => SelectionOutcome::Unverified,
+            (PlaceKind::Physical, VerificationState::Verified, ClosureState::Open) => {
+                SelectionOutcome::Eligible(concert_application::place::PlaceDetail {
+                    snapshot: snapshot(&head)?,
+                    place: value,
+                })
+            }
+            _ => return Err(PlaceError::InvalidState),
+        })
     }
 }
 
@@ -278,8 +334,8 @@ impl PlaceRepository for PgPlaceRepository {
         if !exists {
             return Err(PlaceError::NotFound);
         }
-        // Map identity is global. Serialize its first publication so two events
-        // cannot concurrently append different member sets to one release.
+        // Map identity is global. Serialize publication so no two writers can
+        // append different member sets to the same release.
         sqlx::query("select pg_advisory_xact_lock(hashtextextended($1::text,0))")
             .bind(format!(
                 "{}:{}",
@@ -405,16 +461,29 @@ impl PlaceRepository for PgPlaceRepository {
             .checked_add(1)
             .filter(|value| *value <= 60_000)
             .ok_or(PlaceError::Conflict)?;
-        sqlx::query(
-            "insert into public.concert_events_map_releases(event_id,catalog_revision,map_id,map_revision) values($1,$2,$3,$4) on conflict(event_id) do update set catalog_revision=excluded.catalog_revision,map_id=excluded.map_id,map_revision=excluded.map_revision",
-        )
-        .bind(event_id.uuid())
-        .bind(catalog_revision)
-        .bind(&release.map_id)
-        .bind(release.manifest.map_revision)
-        .execute(&mut *tx)
-        .await
-        .map_err(db)?;
+        if prior.is_some() {
+            sqlx::query(
+                "update public.concert_events_map_releases set catalog_revision=$2,map_id=$3,map_revision=$4 where event_id=$1",
+            )
+            .bind(event_id.uuid())
+            .bind(catalog_revision)
+            .bind(&release.map_id)
+            .bind(release.manifest.map_revision)
+            .execute(&mut *tx)
+            .await
+            .map_err(db)?;
+        } else {
+            sqlx::query(
+                "insert into public.concert_events_map_releases(event_id,catalog_revision,map_id,map_revision) values($1,$2,$3,$4)",
+            )
+            .bind(event_id.uuid())
+            .bind(catalog_revision)
+            .bind(&release.map_id)
+            .bind(release.manifest.map_revision)
+            .execute(&mut *tx)
+            .await
+            .map_err(db)?;
+        }
         let result = PlaceSnapshot::from_db(
             event_id,
             revision(catalog_revision)?,
@@ -431,51 +500,15 @@ impl PlaceRepository for PgPlaceRepository {
         expected_catalog: Revision,
         expected_map: i64,
     ) -> Result<SelectionOutcome, PlaceError> {
-        if !(1..=MAX_REVISION).contains(&expected_map) {
-            return Err(PlaceError::InvalidState);
-        }
         let mut tx = self.pool.begin().await.map_err(db)?;
-        let Some(head) = sqlx::query("select event_id,catalog_revision,map_id,map_revision from public.concert_events_map_releases where event_id=$1 for share")
-            .bind(event_id.uuid())
-            .fetch_optional(&mut *tx)
-            .await
-            .map_err(db)?
-        else {
-            return Ok(SelectionOutcome::NotFound);
-        };
-        if revision(head.try_get("catalog_revision").map_err(invalid)?)? != expected_catalog {
-            return Ok(SelectionOutcome::StaleCatalog);
-        }
-        let map_id: String = head.try_get("map_id").map_err(invalid)?;
-        let current_map: i64 = head.try_get("map_revision").map_err(invalid)?;
-        if current_map != expected_map {
-            return Ok(SelectionOutcome::MapMismatch);
-        }
-        let row = sqlx::query(&format!(
-            "{PLACE_SELECT} where q.map_id=$1 and q.map_revision=$2 and q.place_id=$3 for share of q,s"
-        ))
-        .bind(&map_id)
-        .bind(expected_map)
-        .bind(place_id.uuid())
-        .fetch_optional(&mut *tx)
-        .await
-        .map_err(db)?;
-        let Some(place_row) = row else {
-            return Ok(SelectionOutcome::NotFound);
-        };
-        let value = place(&place_row)?;
-        let outcome = match (value.kind, value.verification, value.closure) {
-            (_, _, ClosureState::Closed) => SelectionOutcome::Closed,
-            (PlaceKind::VirtualConcept, _, _) => SelectionOutcome::ConceptOnly,
-            (PlaceKind::Physical, VerificationState::Unverified, _) => SelectionOutcome::Unverified,
-            (PlaceKind::Physical, VerificationState::Verified, ClosureState::Open) => {
-                SelectionOutcome::Eligible(concert_application::place::PlaceDetail {
-                    snapshot: snapshot(&head)?,
-                    place: value,
-                })
-            }
-            _ => return Err(PlaceError::InvalidState),
-        };
+        let outcome = Self::select_physical_in_transaction(
+            &mut tx,
+            event_id,
+            place_id,
+            expected_catalog,
+            expected_map,
+        )
+        .await?;
         tx.commit().await.map_err(db)?;
         Ok(outcome)
     }

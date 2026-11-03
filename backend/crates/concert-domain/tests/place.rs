@@ -59,15 +59,59 @@ fn base_manifest() -> Value {
     ))
     .unwrap();
     let mut value = source;
+    assert_eq!(
+        value["content_hash"],
+        "sha256:21b91a4e02b04943100909d7a008f68cafb9e21b284f26b93ba09ddcc39a4dff"
+    );
     hash(&mut value);
     value
 }
+
+#[test]
+fn canonical_json_uses_codepoint_order_and_ascii_surrogate_escapes() {
+    let value = json!({
+        "😀": "astral",
+        "é": "bmp",
+        "a": "ascii",
+        "\u{e000}": "private",
+        "line": "é😀",
+    });
+    let bytes = canonical_json_bytes(&serde_json::to_vec(&value).unwrap()).unwrap();
+    assert_eq!(
+        bytes,
+        br#"{"a":"ascii","line":"\u00e9\ud83d\ude00","\u00e9":"bmp","\ue000":"private","\ud83d\ude00":"astral"}"#
+    );
+    let parsed: Value = serde_json::from_slice(&bytes).unwrap();
+    assert_eq!(parsed, value);
+    let escaped = json!({"v": "\u{7f}\u{0}\n\t\\\""});
+    assert_eq!(
+        canonical_json_bytes(&serde_json::to_vec(&escaped).unwrap()).unwrap(),
+        br#"{"v":"\u007f\u0000\n\t\\\""}"#
+    );
+    assert_eq!(
+        serde_json::from_slice::<Value>(
+            &canonical_json_bytes(&serde_json::to_vec(&escaped).unwrap()).unwrap()
+        )
+        .unwrap(),
+        escaped
+    );
+}
+
 fn hash(v: &mut Value) {
     v.as_object_mut().unwrap().remove("content_hash");
     let geometry = digest(&canonical(&v["geometry"]));
     v["geometry_hash"] = Value::String(geometry);
     let h = digest(&canonical(v));
     v["content_hash"] = Value::String(h);
+}
+fn assert_rehashed_invalid(mut value: Value) {
+    hash(&mut value);
+    let bytes = canonical(&value);
+    assert!(
+        parse_stored_release(&bytes).is_err(),
+        "rehashed invalid manifest unexpectedly parsed: {}",
+        String::from_utf8_lossy(&bytes)
+    );
 }
 
 #[test]
@@ -88,7 +132,7 @@ fn canonical_place_and_provenance_values_are_closed_and_reviewed_when_verified()
         );
     }
     assert!(PlaceId::from_uuid(Uuid::nil()).is_err());
-    assert!(PlaceId::from_str(&PLACE_A.to_uppercase()).is_err());
+    assert!(PlaceId::from_str("00000000-0000-4000-8000-00000000000A").is_err());
     assert!(place(
         PLACE_A,
         PlaceKind::Physical,
@@ -169,37 +213,48 @@ fn golden_manifest_parses_and_rehashed_invalid_geometry_or_place_relations_are_r
     ] {
         let mut value = serde_json::from_slice::<Value>(&bytes).unwrap();
         mutate(&mut value);
-        hash(&mut value);
-        assert!(parse_stored_release(&canonical(&value)).is_err());
+        assert_rehashed_invalid(value);
     }
     for mutate in [
         |v: &mut Value| {
             v["places"][0]["extra"] = json!(true);
         },
         |v: &mut Value| {
-            v["geometry"]["collision_grid"][0][0] = json!(false);
-        },
-        |v: &mut Value| {
             v["geometry"]["spawns"][0]["extra"] = json!(true);
         },
         |v: &mut Value| {
-            v["geometry"]["interactions"][0]["cell_x"] = json!(2);
-        },
-        |v: &mut Value| {
-            v["geometry_hash"] = json!(format!("sha256:{}", "0".repeat(64)));
+            v["geometry"]["interactions"]
+                .as_array_mut()
+                .unwrap()
+                .insert(
+                    0,
+                    json!({
+                        "interaction_id": "inspect_second",
+                        "place_id": PLACE_A,
+                        "cell_x": 0,
+                        "cell_y": 0
+                    }),
+                );
         },
     ] {
         let mut value = serde_json::from_slice::<Value>(&bytes).unwrap();
         mutate(&mut value);
-        hash(&mut value);
-        assert!(parse_stored_release(&canonical(&value)).is_err());
+        assert_rehashed_invalid(value);
     }
+    let mut internal = serde_json::from_slice::<Value>(&bytes).unwrap();
+    internal["geometry"]["collision_grid"][0][0] = json!(true);
+    internal["geometry"]["collision_grid"][0][1] = json!(true);
+    hash(&mut internal);
+    assert!(parse_stored_release(&canonical(&internal)).is_err());
     let mut pretty = serde_json::from_slice::<Value>(&bytes).unwrap();
     pretty["places"].as_array_mut().unwrap().clear();
     assert!(parse_stored_release(&serde_json::to_vec_pretty(&pretty).unwrap()).is_err());
     let mut broken_route = serde_json::from_slice::<Value>(&bytes).unwrap();
-    broken_route["geometry"]["collision_grid"][2][1] = json!(1);
-    broken_route["geometry"]["collision_grid"][3][1] = json!(1);
+    broken_route["geometry"]["collision_grid"][1][2] = json!(1);
+    broken_route["geometry"]["collision_grid"][1][3] = json!(1);
+    broken_route["geometry"]["collision_grid"][2][3] = json!(1);
+    broken_route["geometry"]["collision_grid"][3][2] = json!(1);
+    broken_route["geometry"]["collision_grid"][3][3] = json!(1);
     hash(&mut broken_route);
     assert!(parse_stored_release(&canonical(&broken_route)).is_err());
     let mut unknown = serde_json::from_slice::<Value>(&bytes).unwrap();

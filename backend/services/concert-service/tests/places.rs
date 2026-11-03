@@ -57,17 +57,13 @@ async fn owned_pool() -> anyhow::Result<PgPool> {
     Ok(pool)
 }
 fn manifest() -> Manifest {
-    parse_stored_release(include_bytes!(
+    parse_stored_release(&canonical_fixture()).unwrap()
+}
+fn canonical_fixture() -> Vec<u8> {
+    concert_domain::place::canonical_json_bytes(include_bytes!(
         "../../../../contracts/fixtures/assets/map-manifest.json"
     ))
     .unwrap()
-}
-fn canonical_fixture() -> Vec<u8> {
-    let value: serde_json::Value = serde_json::from_slice(include_bytes!(
-        "../../../../contracts/fixtures/assets/map-manifest.json"
-    ))
-    .unwrap();
-    serde_json::to_vec(&value).unwrap()
 }
 fn canonical_release(revision: i64, place: &Place) -> anyhow::Result<CatalogRelease> {
     let bytes = release_bytes(revision, place)?;
@@ -210,9 +206,13 @@ async fn owned_native_places_are_scoped_immutable_and_preserve_current_closure(
     let rebound = canonical_release(2, &physical)?;
     let mut collision =
         serde_json::from_slice::<serde_json::Value>(&canonical_fixture_for(&physical)?)?;
-    collision["geometry"]["collision_grid"][2][1] = serde_json::json!(1);
-    collision["geometry"]["collision_grid"][3][1] = serde_json::json!(1);
-    collision.remove("content_hash");
+    // Keep the interaction walkable but isolate it from the spawn.
+    collision["geometry"]["collision_grid"][3][2] = serde_json::json!(1);
+    collision["geometry"]["collision_grid"][2][3] = serde_json::json!(1);
+    collision
+        .as_object_mut()
+        .expect("fixture object")
+        .remove("content_hash");
     let geometry_hash = format!(
         "sha256:{}",
         sha2::Sha256::digest(serde_json::to_vec(&collision["geometry"])?)
@@ -239,13 +239,57 @@ async fn owned_native_places_are_scoped_immutable_and_preserve_current_closure(
         3,
         "exact immutable bytes may be reused without rewriting metadata"
     );
-    assert!(repo
-        .select_physical(a, id, Revision::new(3)?, 2)
-        .await?
-        .place
-        .permits_new_physical_selection());
+    assert!(matches!(
+        repo.select_physical(a, id, Revision::new(3)?, 2).await?,
+        SelectionOutcome::Eligible(detail)
+            if detail.place.permits_new_physical_selection()
+    ));
     assert_eq!(read.snapshot.revision, Revision::new(1)?);
-    sqlx::query("update concert_place_current_state set closure_state='CLOSED',revision=revision+1,updated_at=clock_timestamp() where map_id='map_fixture' and map_revision=2 and place_id=$1").bind(id.uuid()).execute(&pool).await?;
+    let reopen = sqlx::query(
+        "update concert_place_current_state set closure_state='OPEN',revision=revision+1 where map_id='map_fixture' and map_revision=2 and place_id=$1",
+    )
+    .bind(id.uuid())
+    .execute(&pool)
+    .await?;
+    assert_eq!(reopen.rows_affected(), 1);
+    let mut held = pool.begin().await?;
+    assert!(matches!(
+        PgPlaceRepository::select_physical_in_transaction(&mut held, a, id, Revision::new(3)?, 2,)
+            .await?,
+        SelectionOutcome::Eligible(_)
+    ));
+    sqlx::query("insert into concert_place_selection_race(event_id,place_id) values($1,$2)")
+        .bind(a.uuid())
+        .bind(id.uuid())
+        .execute(&mut *held)
+        .await?;
+    let contender = pool.clone();
+    let update = tokio::spawn(async move {
+        sqlx::query(
+            "update concert_place_current_state set closure_state='CLOSED',revision=revision+1 where map_id='map_fixture' and map_revision=2 and place_id=$1",
+        )
+        .bind(id.uuid())
+        .execute(&contender)
+        .await
+        .map(|result| result.rows_affected())
+    });
+    tokio::time::sleep(Duration::from_millis(80)).await;
+    assert!(
+        !update.is_finished(),
+        "closure update must wait for held share lock"
+    );
+    held.commit().await?;
+    assert_eq!(
+        sqlx::query_scalar::<_, i64>(
+            "select count(*) from concert_place_selection_race where event_id=$1 and place_id=$2",
+        )
+        .bind(a.uuid())
+        .bind(id.uuid())
+        .fetch_one(&pool)
+        .await?,
+        1
+    );
+    assert_eq!(update.await??, 1);
     assert_eq!(
         repo.select_physical(a, id, Revision::new(3)?, 2).await?,
         SelectionOutcome::Closed

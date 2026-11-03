@@ -69,8 +69,9 @@ CREATE TABLE public.concert_events_map_releases (
     map_id text NOT NULL, map_revision bigint NOT NULL,
     bound_at timestamptz NOT NULL DEFAULT statement_timestamp(),
     CONSTRAINT concert_events_map_binding FOREIGN KEY(map_id,map_revision) REFERENCES public.concert_map_releases(map_id,map_revision),
-    CONSTRAINT concert_events_map_bound_at CHECK (bound_at<=statement_timestamp())
+    CONSTRAINT concert_events_map_bound_at CHECK (bound_at <= statement_timestamp())
 );
+CREATE INDEX concert_events_map_releases_release ON public.concert_events_map_releases(map_id,map_revision);
 CREATE TABLE public.concert_place_current_state (
     map_id text NOT NULL, map_revision bigint NOT NULL, place_id uuid NOT NULL,
     closure_state text NOT NULL CONSTRAINT concert_place_closure CHECK (closure_state IN ('OPEN','CLOSED')),
@@ -78,8 +79,9 @@ CREATE TABLE public.concert_place_current_state (
     updated_at timestamptz NOT NULL DEFAULT statement_timestamp(),
     PRIMARY KEY(map_id,map_revision,place_id),
     FOREIGN KEY(map_id,map_revision,place_id) REFERENCES public.concert_map_release_places(map_id,map_revision,place_id),
-    CONSTRAINT concert_place_current_times CHECK (updated_at<=statement_timestamp())
+    CONSTRAINT concert_place_current_times CHECK (updated_at <= statement_timestamp())
 );
+CREATE INDEX concert_place_current_state_release ON public.concert_place_current_state(map_id,map_revision);
 CREATE FUNCTION public.concert_guard_initial_event_map() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
     IF NEW.catalog_revision<>1 OR NOT EXISTS(
@@ -112,10 +114,11 @@ BEGIN
     END IF;
     IF NEW.map_id<>OLD.map_id OR NEW.map_revision<>OLD.map_revision
        OR NEW.place_id<>OLD.place_id OR OLD.revision=9007199254740991
-       OR NEW.revision<>OLD.revision+1 THEN
+       OR NEW.revision<>OLD.revision+1
+       OR NEW.updated_at<OLD.updated_at THEN
         RAISE EXCEPTION 'current place state revision or identity is invalid' USING ERRCODE='23514';
     END IF;
-    NEW.updated_at := greatest(clock_timestamp(),OLD.updated_at);
+    NEW.updated_at := greatest(statement_timestamp(),OLD.updated_at);
     RETURN NEW;
 END;
 $$;
@@ -127,13 +130,14 @@ BEGIN
     IF OLD.event_id<>NEW.event_id OR NEW.bound_at IS NULL
         OR NEW.catalog_revision IS NULL OR OLD.catalog_revision=60000
         OR NEW.catalog_revision<>OLD.catalog_revision+1
+        OR NEW.bound_at<OLD.bound_at
         OR NOT EXISTS(
             SELECT 1 FROM public.concert_map_release_places
             WHERE map_id=NEW.map_id AND map_revision=NEW.map_revision
         ) THEN
         RAISE EXCEPTION 'event map binding revision must advance by one' USING ERRCODE='23514';
     END IF;
-    NEW.bound_at := clock_timestamp();
+    NEW.bound_at := greatest(statement_timestamp(),OLD.bound_at);
     RETURN NEW;
 END;
 $$;

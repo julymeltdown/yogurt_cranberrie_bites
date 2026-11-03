@@ -2,7 +2,7 @@
 use super::MAX_REVISION;
 use chrono::{DateTime, Utc};
 use serde_json::{Map, Value};
-use sha2::{Digest as _, Sha256};
+use sha2::Sha256;
 use std::{collections::HashSet, fmt, str::FromStr};
 use url::Url;
 use uuid::Uuid;
@@ -594,7 +594,78 @@ impl CatalogRelease {
 }
 
 fn canonicalize(value: &Value) -> Result<Vec<u8>, PlaceError> {
-    serde_json::to_vec(value).map_err(|_| PlaceError::Manifest)
+    let mut output = Vec::new();
+    write_canonical(value, &mut output).map_err(|_| PlaceError::Manifest)?;
+    Ok(output)
+}
+fn write_canonical(value: &Value, output: &mut Vec<u8>) -> Result<(), ()> {
+    match value {
+        Value::Object(object) => {
+            output.push(b'{');
+            let mut keys = object.keys().map(String::as_str).collect::<Vec<_>>();
+            keys.sort_unstable();
+            for (index, key) in keys.into_iter().enumerate() {
+                if index > 0 {
+                    output.push(b',');
+                }
+                write_canonical(&Value::String(key.into()), output)?;
+                output.push(b':');
+                write_canonical(object.get(key).ok_or(())?, output)?;
+            }
+            output.push(b'}');
+        }
+        Value::Array(values) => {
+            output.push(b'[');
+            for (index, value) in values.iter().enumerate() {
+                if index > 0 {
+                    output.push(b',');
+                }
+                write_canonical(value, output)?;
+            }
+            output.push(b']');
+        }
+        Value::String(text) => {
+            output.push(b'"');
+            for character in text.chars() {
+                if let Some(literal) = match character {
+                    '"' => Some("\\\""),
+                    '\\' => Some("\\\\"),
+                    '\u{08}' => Some("\\b"),
+                    '\u{0c}' => Some("\\f"),
+                    '\n' => Some("\\n"),
+                    '\r' => Some("\\r"),
+                    '\t' => Some("\\t"),
+                    ' '..='~' => None,
+                    _ => Some(""),
+                } {
+                    if literal.is_empty() {
+                        let point = character as u32;
+                        if point <= 0xffff {
+                            output.extend_from_slice(format!("\\u{point:04x}").as_bytes());
+                        } else {
+                            let value = point - 0x1_0000;
+                            let high = 0xd800 + (value >> 10);
+                            let low = 0xdc00 + (value & 0x3ff);
+                            output
+                                .extend_from_slice(format!("\\u{high:04x}\\u{low:04x}").as_bytes());
+                        }
+                    } else {
+                        output.extend_from_slice(literal.as_bytes());
+                    }
+                } else {
+                    output.push(character as u8);
+                }
+            }
+            output.push(b'"');
+        }
+        Value::Number(number) if number.is_i64() || number.is_u64() => {
+            output.extend_from_slice(number.to_string().as_bytes());
+        }
+        Value::Number(_) => return Err(()),
+        Value::Null => output.extend_from_slice(b"null"),
+        Value::Bool(value) => output.extend_from_slice(if *value { b"true" } else { b"false" }),
+    }
+    Ok(())
 }
 fn manifest_digest(bytes: &[u8]) -> Result<String, PlaceError> {
     let value: Value = serde_json::from_slice(bytes).map_err(|_| PlaceError::Manifest)?;
@@ -607,6 +678,13 @@ fn geometry_digest(bytes: &[u8]) -> Result<String, PlaceError> {
     let value: Value = serde_json::from_slice(bytes).map_err(|_| PlaceError::Manifest)?;
     let geometry = value.get("geometry").ok_or(PlaceError::Manifest)?;
     Ok(hash_bytes(&canonicalize(geometry)?))
+}
+
+/// Convert a noncanonical JSON document to exact C06 canonical bytes for
+/// contract fixtures and consumer tests. Floats and non-JSON values fail closed.
+pub fn canonical_json_bytes(source: &[u8]) -> Result<Vec<u8>, PlaceError> {
+    let value: Value = serde_json::from_slice(source).map_err(|_| PlaceError::Manifest)?;
+    canonicalize(&value)
 }
 
 /// Strictly decode the immutable stored release. The whole canonical document
@@ -813,7 +891,10 @@ pub fn parse_stored_release(bytes: &[u8]) -> Result<Manifest, PlaceError> {
         places,
     )
 }
-fn closed_object(value: &Value, fields: &[&str]) -> Result<&Map<String, Value>, PlaceError> {
+fn closed_object<'a>(
+    value: &'a Value,
+    fields: &[&str],
+) -> Result<&'a Map<String, Value>, PlaceError> {
     let object = value.as_object().ok_or(PlaceError::Manifest)?;
     if object.len() != fields.len()
         || object.keys().any(|key| !fields.contains(&key.as_str()))

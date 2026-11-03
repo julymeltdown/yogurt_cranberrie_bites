@@ -2,7 +2,9 @@ use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use concert_application::place::*;
 use concert_application::Clock;
-use concert_domain::place::{CatalogRelease, Place, PlaceId};
+use concert_domain::place::{
+    CatalogRelease, ClosureState, Place, PlaceId, PlaceKind, VerificationState,
+};
 use concert_domain::{EventId, Revision};
 use std::str::FromStr;
 use uuid::Uuid;
@@ -89,25 +91,25 @@ impl PlaceRepository for Repo {
         Ok(self.select.clone())
     }
 }
+const RAW_FIXTURE: &[u8] =
+    include_bytes!("../../../../contracts/fixtures/assets/map-manifest.json");
+fn manifest() -> concert_domain::place::Manifest {
+    concert_domain::place::parse_stored_release(&canonical_fixture()).unwrap()
+}
 fn catalog_read(event: EventId) -> CatalogRead {
-    let bytes = canonical_fixture();
-    let manifest = concert_domain::place::parse_stored_release(&bytes).unwrap();
+    let manifest = manifest();
     CatalogRead {
         snapshot: snapshot(event, 1, 1),
         release: CatalogRelease {
             map_id: "map_fixture".into(),
             manifest: manifest.clone(),
-            canonical_bytes: bytes,
+            canonical_bytes: canonical_fixture(),
         },
         places: manifest.places,
     }
 }
 fn canonical_fixture() -> Vec<u8> {
-    let value: serde_json::Value = serde_json::from_slice(include_bytes!(
-        "../../../../contracts/fixtures/assets/map-manifest.json"
-    ))
-    .unwrap();
-    serde_json::to_vec(&value).unwrap()
+    concert_domain::place::canonical_json_bytes(RAW_FIXTURE).unwrap()
 }
 fn policy(operation: PlaceOperation, event_id: EventId) -> Policy {
     Policy {
@@ -222,10 +224,7 @@ async fn selection_requires_exact_current_map_and_refuses_concept_unverified_clo
 }
 #[tokio::test]
 async fn detail_rejects_cross_event_and_wrong_place_responses() {
-    let manifest = concert_domain::place::parse_stored_release(include_bytes!(
-        "../../../../contracts/fixtures/assets/map-manifest.json"
-    ))
-    .unwrap();
+    let manifest = concert_domain::place::parse_stored_release(&canonical_fixture()).unwrap();
     let wanted = manifest.places[0].id;
     for (snapshot_event, place) in [
         (
