@@ -1,4 +1,6 @@
 import { useId, useSyncExternalStore, type ReactNode } from 'react'
+import { ProfileActivity, type ProfileActivityInput } from './reference-profile/ProfileActivity'
+import { ProfileIcon } from '../../profile/reference-presentation/ProfileIcon'
 import { ShellLink } from '../../../app/navigation'
 import type { SessionController } from '../../auth/model/session'
 import type { MeController } from '../model/controller'
@@ -11,15 +13,23 @@ export function MeStatus({ controller }: { controller: MeController }) {
   return <><p role="status" aria-live="polite" aria-atomic="true">{s.message || 'Your profile and preferences are optional. You can enter the world without completing them.'}</p>
     {!busy && <button type="button" onClick={() => void controller.load()}>{s.participant ? 'Discard drafts and reload saved version' : 'Load your profile'}</button>}</>
 }
-export function MeHub({ controller, auth, thumbnailSource }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; thumbnailSource?: ReviewedThumbnailSource }) {
+export function MeHub({ controller, auth, thumbnailSource, activity }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; thumbnailSource?: ReviewedThumbnailSource; activity?: ProfileActivityInput }) {
   const s = useMe(controller)
-  return <section className="me-view me-view--concert me-hub" aria-label="ME"><ConcertWindow title="My profile" icon="me" footer={<ShellLink id="me-enter-world" to="/world">Back to world</ShellLink>}>
-    {s.participant && <div className="me-identity"><AvatarThumbnail auth={auth} config={s.participant.profile.avatar.config} {...(thumbnailSource ? { source: thumbnailSource } : {})} />
-      <div className="me-identity__copy"><p className="me-eyebrow">Your saved profile</p><h3>{s.participant.profile.display_name}</h3><p className="me-bio">{s.participant.profile.bio || 'No bio yet. Add one whenever you like.'}</p></div></div>}
-    <p className="me-optionality">Profile details are optional. You can enter the world without completing them.</p>
-    <nav className="me-links me-profile-links" aria-label="Your profile"><ShellLink id="me-edit-profile" to="/me/profile"><ConcertIcon name="me" />Edit profile</ShellLink><ShellLink id="me-avatar" to="/me/avatar"><ConcertIcon name="star" />Dress up</ShellLink><ShellLink id="me-settings" to="/me/settings">Settings</ShellLink></nav>
-    <div className="me-activity"><h3>Your activity</h3><nav className="me-links" aria-label="Your activity"><ShellLink id="me-parties" to="/meet"><ConcertIcon name="meet" />Parties and MY PLAN</ShellLink><ShellLink id="me-gifts" to="/gifts/mine"><ConcertIcon name="gifts" />My gifts</ShellLink></nav></div>
-    <div className="me-status"><MeStatus controller={controller} /></div>
+  return <section className="me-view me-view--concert me-hub me-hub--reference" aria-label="ME"><ConcertWindow title="My profile" icon="me" footer={<ShellLink id="me-enter-world" to="/world">Back to world</ShellLink>}>
+    <div className="me-profile-header">
+      {s.participant ? <div className="me-identity"><AvatarThumbnail auth={auth} config={s.participant.profile.avatar.config} {...(thumbnailSource ? { source: thumbnailSource } : {})} />
+        <div className="me-identity__copy"><h3>{s.participant.profile.display_name}</h3><p className="me-saved-era">{s.participant.preferences.theme}</p><p className="me-bio">{s.participant.profile.bio || 'No bio yet. Add one whenever you like.'}</p></div></div>
+        : <div className="me-identity-unavailable" role="status">{s.message || 'Your saved profile is not loaded yet.'}</div>}
+      <nav className="me-profile-icons" aria-label="Profile actions">
+        <ShellLink id="me-edit-profile" to="/me/profile" aria-label="Edit profile" title="Edit profile"><ProfileIcon name="edit" /></ShellLink>
+        <ShellLink id="me-avatar" to="/me/avatar" aria-label="Dress up" title="Dress up"><ConcertIcon name="star" /></ShellLink>
+        <ShellLink id="me-social" to="/me/social" aria-label="Manage private social links" title="Manage private social links"><ProfileIcon name="link" /></ShellLink>
+        <ShellLink id="me-requests" to="/me/requests" aria-label="Sharing requests" title="Sharing requests"><ConcertIcon name="meet" /></ShellLink>
+      </nav>
+    </div>
+    <nav className="me-activity-navigation" aria-label="Your activity"><span aria-current="page">Activity</span><ShellLink id="me-parties" to="/meet" aria-label="Parties and MY PLAN">Parties</ShellLink><ShellLink id="me-gifts" to="/gifts/mine" aria-label="My gifts">Gifts</ShellLink></nav>
+    {s.participant && <ProfileActivity subject={s.participant.user_id} privacy={auth.privacy} input={activity} />}
+    <details className="me-profile-options"><summary>Profile options</summary><p className="me-optionality">Profile details are optional. You can enter the world without completing them.</p><ShellLink id="me-settings" to="/me/settings">Settings</ShellLink><div className="me-status"><MeStatus controller={controller} /></div></details>
   </ConcertWindow>
   </section>
 }
