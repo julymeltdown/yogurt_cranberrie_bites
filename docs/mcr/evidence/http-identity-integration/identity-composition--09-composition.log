@@ -1,0 +1,15 @@
+   Compiling api-gateway v0.1.0 (<worktrees>/be-identity-composition/backend/services/api-gateway)
+    Finished `test` profile [unoptimized] target(s) in 1.90s
+     Running tests/concert_identity_composition.rs (<build>/backend/debug/deps/concert_identity_composition-355ce36f05227524)
+
+running 7 tests
+test exact_requested_bound_result_is_required_but_x_is_not_a_login_prerequisite ... ok
+test inactive_ended_or_failed_auth_never_dispatches_profile ... ok
+test email_only_composes_one_active_session_and_fresh_current_self_profile ... ok
+test profile_mismatch_outage_and_missing_content_are_fixed_and_auth_is_rechecked ... ok
+test auth_hold_consumes_one_original_stop_and_delivers_no_profile_result ... ok
+test profile_hold_cannot_outlive_same_original_context_after_auth_pass ... ok
+test both_observations_are_borrowed_checked_and_cannot_survive_context_expiry ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.24s
+

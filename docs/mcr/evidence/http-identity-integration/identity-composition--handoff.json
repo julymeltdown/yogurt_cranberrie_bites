@@ -1,0 +1,117 @@
+{
+  "status": "IN_PROGRESS_PARENT_REVIEW_PENDING",
+  "base": "60ca208d23e67b2372f6a27db7e7cecc4ff7cdc6",
+  "commit": "9a2c202f26b1826836600e6464beabad28ae43a3",
+  "branch": "codex/mcr-be-identity-composition",
+  "changed_paths": [
+    "backend/services/api-gateway/src/adapters/out/concert_identity.rs",
+    "backend/services/api-gateway/src/adapters/out/mod.rs",
+    "backend/services/api-gateway/tests/concert_identity_composition.rs",
+    "docs/mcr/backend/identity-owner-composition.md"
+  ],
+  "file_sha256": {
+    "backend/services/api-gateway/src/adapters/out/concert_identity.rs": "43e262888785bad076dc9fe0275911d28918e6c9db073f729fc0920833062c1c",
+    "backend/services/api-gateway/src/adapters/out/mod.rs": "16ad71b49a649b7fe9ee60b4a199f51d318c24fbfa276e627eab8bb3fa965988",
+    "backend/services/api-gateway/tests/concert_identity_composition.rs": "32e9939150a29508cad6d857a256a47f5ceabdc345240be65a502f472abccfc0",
+    "docs/mcr/backend/identity-owner-composition.md": "a78f26338451f1cfc49680c46119963cacd315c9137e9acdb8f21a3ecf551c52"
+  },
+  "rust": "1.88.0",
+  "flags": [
+    "--locked",
+    "--offline",
+    "-j",
+    "2"
+  ],
+  "debug": {
+    "dev": 0,
+    "test": 0
+  },
+  "commands": [
+    {
+      "label": "first-composition-compile",
+      "log": "01-composition.log",
+      "exit": 101
+    },
+    {
+      "label": "composition-after-api-fix",
+      "log": "02-composition.log",
+      "exit": 101
+    },
+    {
+      "label": "composition-scaffold",
+      "log": "03-composition.log",
+      "exit": 101
+    },
+    {
+      "label": "composition-after-scaffold-fix",
+      "log": "04-composition.log",
+      "exit": 101
+    },
+    {
+      "label": "composition-assertions",
+      "log": "05-composition.log",
+      "exit": 101
+    },
+    {
+      "label": "composition-final-failure",
+      "log": "06-composition.log",
+      "exit": 101
+    },
+    {
+      "label": "composition-final-compile",
+      "log": "07-composition.log",
+      "exit": 101
+    },
+    {
+      "label": "composition-six-of-seven",
+      "log": "08-composition.log",
+      "exit": 101
+    },
+    {
+      "label": "composition-final-committed-source",
+      "log": "13-final-composition.log",
+      "exit": 0,
+      "passed": 7
+    },
+    {
+      "label": "retained-profile-transport",
+      "log": "10-retained-profile.log",
+      "exit": 0,
+      "passed": 15
+    },
+    {
+      "label": "doctests",
+      "log": "11-doctest.log",
+      "exit": 0,
+      "passed": 14
+    },
+    {
+      "label": "api-gateway-lib-bins",
+      "log": "12-lib-bins.log",
+      "exit": 0
+    },
+    {
+      "label": "captured-stop-fix-final-8-case",
+      "log": "14-final-eight-composition.log",
+      "exit": 0,
+      "passed": 8,
+      "source_head": "9a2c202f26b1826836600e6464beabad28ae43a3",
+      "log_sha256": "8cb8ed8802525b0cd30b5811d8ecc867e9c7be92eb95a66c74a73977e9ea60ae"
+    }
+  ],
+  "runtime": "8 current composition + prior same-production Profile15/doctest14/lib-bins pass; captured-stop regression now verified",
+  "release": {
+    "released": true,
+    "target": "<build>/backend",
+    "timestamp_utc": "2026-11-03T12:46:02.101806+00:00",
+    "active_rust_test_or_owned_pg": [],
+    "head": "9a2c202f26b1826836600e6464beabad28ae43a3",
+    "clean": true,
+    "no_further_rust_without_transfer": true
+  },
+  "limitations": [
+    "Controlled signed owners; parent owns HTTP original-stop wiring and actual two-owner native join",
+    "No TLS/public admission/whole BE04 claim"
+  ],
+  "parent_review_fix": "Observation retains captured outer stop; every check/accessor refuses after stop. New test context4s/outer140ms scope ends then sleep160ms; 8/8 pass."
+}

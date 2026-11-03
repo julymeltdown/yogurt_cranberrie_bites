@@ -1,0 +1,30 @@
+   Compiling api-gateway v0.1.0 (<worktrees>/be-identity-composition/backend/services/api-gateway)
+   Compiling notification-service v0.1.0 (<worktrees>/be-identity-composition/backend/services/notification-service)
+   Compiling friend-service v0.1.0 (<worktrees>/be-identity-composition/backend/services/friend-service)
+   Compiling profile-service v0.1.0 (<worktrees>/be-identity-composition/backend/services/profile-service)
+   Compiling post-service v0.1.0 (<worktrees>/be-identity-composition/backend/services/post-service)
+error[E0624]: method `check` is private
+   --> services/api-gateway/src/adapters/out/concert_identity.rs:108:21
+    |
+108 |             profile.check()?;
+    |                     ^^^^^ private method
+    |
+   ::: services/api-gateway/src/adapters/out/profile_client/concert_identity.rs:63:5
+    |
+63  |     fn check(&self) -> Result<(), ConcertProfileReadError> {
+    |     ------------------------------------------------------ private method defined here
+
+error[E0624]: method `check` is private
+   --> services/api-gateway/src/adapters/out/concert_identity.rs:172:22
+    |
+172 |         self.profile.check()?;
+    |                      ^^^^^ private method
+    |
+   ::: services/api-gateway/src/adapters/out/profile_client/concert_identity.rs:63:5
+    |
+63  |     fn check(&self) -> Result<(), ConcertProfileReadError> {
+    |     ------------------------------------------------------ private method defined here
+
+For more information about this error, try `rustc --explain E0624`.
+error: could not compile `api-gateway` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

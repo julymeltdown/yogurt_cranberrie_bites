@@ -1,0 +1,21 @@
+    Finished `test` profile [unoptimized] target(s) in 0.19s
+   Doc-tests api_gateway
+
+running 14 tests
+test services/api-gateway/src/adapters/out/auth_client/concert_admission.rs - adapters::out::auth_client::concert_admission::AdmissionObservation (line 100) - compile fail ... ok
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 37) - compile fail ... ok
+test services/api-gateway/src/adapters/out/concert_identity.rs - adapters::out::concert_identity::ConcertIdentityObservation (line 142) - compile fail ... ok
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 42) - compile fail ... ok
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 46) - compile fail ... ok
+test services/api-gateway/src/adapters/out/profile_client/concert_identity.rs - adapters::out::profile_client::concert_identity::ConcertProfileObservation (line 34) - compile fail ... ok
+test services/api-gateway/src/adapters/out/profile_client/concert_identity.rs - adapters::out::profile_client::concert_identity::ConcertProfileObservation (line 38) - compile fail ... ok
+test services/api-gateway/src/adapters/out/auth_client/concert_admission.rs - adapters::out::auth_client::concert_admission::AdmissionObservation (line 104) - compile fail ... ok
+test services/api-gateway/src/adapters/out/concert_identity.rs - adapters::out::concert_identity::ConcertIdentityObservation (line 150) - compile fail ... ok
+test services/api-gateway/src/adapters/out/concert_identity.rs - adapters::out::concert_identity::ConcertIdentityObservation (line 146) - compile fail ... ok
+test services/api-gateway/src/adapters/out/auth_client/concert_admission.rs - adapters::out::auth_client::concert_admission::AdmissionObservation (line 108) - compile fail ... ok
+test services/api-gateway/src/adapters/out/profile_client/concert_identity.rs - adapters::out::profile_client::concert_identity::ConcertProfileObservation (line 46) - compile fail ... ok
+test services/api-gateway/src/adapters/out/concert_identity.rs - adapters::out::concert_identity::ConcertIdentityObservation (line 154) - compile fail ... ok
+test services/api-gateway/src/adapters/out/profile_client/concert_identity.rs - adapters::out::profile_client::concert_identity::ConcertProfileObservation (line 42) - compile fail ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.30s
+

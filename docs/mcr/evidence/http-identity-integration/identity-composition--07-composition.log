@@ -1,0 +1,11 @@
+   Compiling api-gateway v0.1.0 (<worktrees>/be-identity-composition/backend/services/api-gateway)
+error[E0560]: struct `ProfileOwner` has no field named `active`
+   --> services/api-gateway/tests/concert_identity_composition.rs:387:13
+    |
+387 |             active: AtomicUsize::new(0),
+    |             ^^^^^^ `ProfileOwner` does not have this field
+    |
+    = note: all struct fields are already assigned
+
+For more information about this error, try `rustc --explain E0560`.
+error: could not compile `api-gateway` (test "concert_identity_composition") due to 1 previous error

@@ -6,16 +6,14 @@ Intake and assessment are delivered. Foundation implementation is active: review
 
 The main chat is the integrator. Backend and frontend development run in separate visible Codex chats, as the user explicitly requested. Each uses an isolated worktree and preserves the user's selected model and reasoning setting. The user withdrew the earlier fixed-model requirement; coordination and continuation calls omit model and reasoning overrides. The [chat ownership register](chat-coordination.md) records the current writers and scopes. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
 
-Four existing visible chats are reused for ready work. FE14 and its independent
-review completed their bounded goals after three corrections and parent 871-test
-and native-browser qualification. FE15 has a new confirmed ACTIVE goal. The
-previously idle original identity chat now implements the guarded Profile self
-RPC; the other backend chat implements its Gateway client against the frozen
-wire. The reviewed Profile owner and corrected Auth client are integrated; QA
-has completed Auth review and now reviews FE15.
-The integrator publishes each reviewed checkpoint while these disjoint tasks
-continue. Actual goal state, resource ownership and assignments are recorded in
-the [ownership register](chat-coordination.md). No fixed chat count is imposed.
+Five existing visible chats are reused for useful parallel work: real HTTP
+Auth/Profile integration, BE08 places, FE19 places/help, independent FE19 review
+and C04 readiness review. The additional frontend chat completed FE06 before
+moving to review. Work proceeds on satisfied prerequisites and bounded contracts;
+whole-task acceptance still requires the specified runtime gates. The integrator
+publishes reviewed checkpoints while disjoint implementation continues. Actual
+goals, exact paths and exclusive build ownership are recorded in the
+[ownership register](chat-coordination.md). No fixed chat count is imposed.
 
 ## Separate code ownership and workspaces
 

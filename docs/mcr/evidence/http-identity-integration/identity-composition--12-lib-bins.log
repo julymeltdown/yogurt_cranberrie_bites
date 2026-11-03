@@ -1,0 +1,9 @@
+    Checking search-policy v0.1.0 (<worktrees>/be-identity-composition/backend/crates/search-policy)
+   Compiling api-gateway v0.1.0 (<worktrees>/be-identity-composition/backend/services/api-gateway)
+    Checking gateway-domain v0.1.0 (<worktrees>/be-identity-composition/backend/crates/gateway-domain)
+    Checking recommendation-policy v0.1.0 (<worktrees>/be-identity-composition/backend/crates/recommendation-policy)
+    Checking gateway-application v0.1.0 (<worktrees>/be-identity-composition/backend/crates/gateway-application)
+    Checking platform v0.1.0 (<worktrees>/be-identity-composition/backend/crates/platform)
+    Checking migration-runtime v0.1.0 (<worktrees>/be-identity-composition/backend/crates/migration-runtime)
+    Checking api-contracts v0.1.0 (<worktrees>/be-identity-composition/backend/crates/api-contracts)
+    Finished `dev` profile [unoptimized] target(s) in 7.61s

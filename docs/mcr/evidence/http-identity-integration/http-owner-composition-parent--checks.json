@@ -1,0 +1,58 @@
+[
+  {
+    "label": "http",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "api-gateway",
+      "--test",
+      "unit",
+      "http_concert_access",
+      "--",
+      "--nocapture"
+    ],
+    "exitCode": 0
+  },
+  {
+    "label": "owners",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "api-gateway",
+      "--test",
+      "concert_identity_composition",
+      "--",
+      "--nocapture"
+    ],
+    "exitCode": 0
+  },
+  {
+    "label": "binary",
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "api-gateway",
+      "--lib",
+      "--bins"
+    ],
+    "exitCode": 0
+  }
+]

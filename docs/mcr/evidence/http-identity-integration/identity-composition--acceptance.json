@@ -1,0 +1,26 @@
+{
+  "status": "BOUNDED_GOAL_COMPLETE",
+  "accepted_by_parent": true,
+  "worker_final": "9a2c202f26b1826836600e6464beabad28ae43a3",
+  "ordered_worker_chain": [
+    "1d2e587c175959cbf95fceb192550fae4c3b6f72 feat(gateway): compose checked Auth and Profile identity",
+    "76d789974fc91bf113ba3853270168411a2eb7cc style(gateway): normalize composition test formatting",
+    "9a2c202f26b1826836600e6464beabad28ae43a3 fix(gateway): retain captured identity composition stop"
+  ],
+  "integrated_local_commits": [
+    "775d5f1210436d907bea6861e32cd80e0103058c",
+    "16a37fa4107a748a55091c2d90e6c8aca81c2780",
+    "4d66ce400fec0ef33bd934883cf96ec058892d34"
+  ],
+  "parent_reported_combined_checks": [
+    "actual HTTP 6",
+    "composition 8",
+    "Gateway library/binary"
+  ],
+  "captured_short_stop": "PASS",
+  "worker_receipt": "b59ac5b5159001590f466f4277a46b8e5142561d180694ba7ed2404469696b44",
+  "worker_checkout": "clean/stopped",
+  "target": "released before parent combined checks",
+  "remaining": "whole BE04 production admission/open; next BE08 assignment separate",
+  "verified_at": "2026-11-03T12:52:25.851711+00:00"
+}

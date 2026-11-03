@@ -1,0 +1,84 @@
+   Compiling api-gateway v0.1.0 (<worktrees>/be-identity-composition/backend/services/api-gateway)
+error[E0425]: cannot find function, tuple struct or tuple variant `Active` in this scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:270:23
+    |
+270 |         let _active = Active(self.0.active.clone());
+    |                       ^^^^^^ not found in this scope
+    |
+help: consider importing this unit variant
+    |
+3   + use platform::model_manifest::ModelStatus::Active;
+    |
+
+warning: unused imports: `Router` and `routing::any`
+  --> services/api-gateway/tests/concert_identity_composition.rs:15:12
+   |
+15 | use axum::{routing::any, Router};
+   |            ^^^^^^^^^^^^  ^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `AsyncWriteExt`
+  --> services/api-gateway/tests/concert_identity_composition.rs:39:24
+   |
+39 |     io::{AsyncReadExt, AsyncWriteExt},
+   |                        ^^^^^^^^^^^^^
+
+error[E0063]: missing field `remaining` in initializer of `AuthOwner`
+   --> services/api-gateway/tests/concert_identity_composition.rs:382:29
+    |
+382 |         let auth = Arc::new(AuthOwner {
+    |                             ^^^^^^^^^ missing `remaining`
+
+error[E0063]: missing field `remaining` in initializer of `ProfileOwner`
+   --> services/api-gateway/tests/concert_identity_composition.rs:388:32
+    |
+388 |         let profile = Arc::new(ProfileOwner {
+    |                                ^^^^^^^^^^^^ missing `remaining`
+
+error[E0596]: cannot borrow `stopped` as mutable, as it is not declared as mutable
+   --> services/api-gateway/tests/concert_identity_composition.rs:498:48
+    |
+498 |                     tokio::select! { biased; _=&mut stopped => break, x=listener.accept()=>x };
+    |                                                ^^^^^^^^^^^^ cannot borrow as mutable
+    |
+help: consider changing this to be mutable
+    |
+494 |         let (stop, mut stopped) = oneshot::channel();
+    |                    +++
+
+error[E0599]: no method named `clone` found for struct `AtomicUsize` in the current scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:270:44
+    |
+270 |         let _active = Active(self.0.active.clone());
+    |                                            ^^^^^ method not found in `AtomicUsize`
+
+warning: unused import: `AsyncReadExt`
+  --> services/api-gateway/tests/concert_identity_composition.rs:39:10
+   |
+39 |     io::{AsyncReadExt, AsyncWriteExt},
+   |          ^^^^^^^^^^^^
+
+error: future cannot be sent between threads safely
+   --> services/api-gateway/tests/concert_identity_composition.rs:106:5
+    |
+106 |     async fn read_concert_admission(
+    |     ^^^^^ future created by async block is not `Send`
+    |
+    = help: within `{async block@services/api-gateway/tests/concert_identity_composition.rs:106:5: 106:10}`, the trait `Send` is not implemented for `std::sync::MutexGuard<'_, Mode<ReadConcertAdmissionResponse>>`
+note: future is not `Send` as this value is used across an await
+   --> services/api-gateway/tests/concert_identity_composition.rs:133:50
+    |
+131 |         match self.0.mode.lock().unwrap().clone() {
+    |               --------------------------- has type `std::sync::MutexGuard<'_, Mode<ReadConcertAdmissionResponse>>` which is not `Send`
+132 |             Mode::Reply(value) => Ok(Response::new(value)),
+133 |             Mode::Hold => std::future::pending().await,
+    |                                                  ^^^^^ await occurs here, with `self.0.mode.lock().unwrap()` maybe used later
+    = note: required for the cast from `Pin<Box<...>>` to `Pin<Box<dyn Future<Output = Result<Response<...>, ...>> + Send>>`
+    = note: the full name for the type has been written to '<build>/backend/debug/deps/concert_identity_composition-355ce36f05227524.long-type-6331741575936008250.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+Some errors have detailed explanations: E0063, E0425, E0596, E0599.
+For more information about an error, try `rustc --explain E0063`.
+warning: `api-gateway` (test "concert_identity_composition") generated 3 warnings
+error: could not compile `api-gateway` (test "concert_identity_composition") due to 6 previous errors; 3 warnings emitted

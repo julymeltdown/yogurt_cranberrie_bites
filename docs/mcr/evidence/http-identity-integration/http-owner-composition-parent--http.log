@@ -1,0 +1,18 @@
+   Compiling api-gateway v0.1.0 (<repo>/backend/services/api-gateway)
+   Compiling friend-service v0.1.0 (<repo>/backend/services/friend-service)
+   Compiling post-service v0.1.0 (<repo>/backend/services/post-service)
+   Compiling profile-service v0.1.0 (<repo>/backend/services/profile-service)
+   Compiling notification-service v0.1.0 (<repo>/backend/services/notification-service)
+    Finished `test` profile [unoptimized] target(s) in 19.94s
+     Running tests/unit.rs (<build>/backend/debug/deps/unit-c2adff1fd41a404a)
+
+running 6 tests
+test http_concert_access::malformed_missing_session_and_foreign_issuer_tokens_fail_closed ... ok
+test http_concert_access::missing_trusted_deadline_is_refused_without_context_dispatch ... ok
+test http_concert_access::handler_delay_consumes_the_original_deadline_without_extension ... ok
+test http_concert_access::verified_request_captures_exact_private_context_after_middleware_delay ... ok
+test http_concert_access::production_timeout_refuses_stalled_context_before_handler_counter_runs ... ok
+test http_concert_access::unknown_key_refresh_wait_cannot_extend_original_deadline ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 209 filtered out; finished in 3.04s
+

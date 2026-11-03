@@ -1,0 +1,31 @@
+   Compiling api-gateway v0.1.0 (<worktrees>/be-identity-composition/backend/services/api-gateway)
+    Finished `test` profile [unoptimized] target(s) in 1.56s
+     Running tests/concert_profile_transport.rs (<build>/backend/debug/deps/concert_profile_transport-4cd74b2ca6850e78)
+
+running 15 tests
+test read_policy_matches_installed_gateway_actor_contract ... ok
+
+running 1 test
+test global_gateway_profile_capacity_refuses_before_dispatch_and_releases ... test guard_rejects_wrong_actor_body_audience_signature_and_missing_original_deadline ... ok
+GatewayProfile cancellation: calls=2 rejected=0 deadlines=0 available=256/256
+GatewayProfile lifecycle: calls=5 rejected=1 deadlines=2 available=256/256
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 14 filtered out; finished in 0.99s
+
+test global_gateway_profile_capacity_refuses_before_dispatch_and_releases ... ok
+test captured_jwt_monotonic_expiry_during_reply_wait_refuses_live_wall_token ... ok
+test signed_self_reads_validate_minimal_content_and_fresh_changes ... ok
+test wrong_caller_token_and_signature_never_reach_owner ... ok
+test decode_limit_counts_valid_unknown_fields_at_exact_boundary ... ok
+test missing_misbound_malformed_and_oversized_replies_are_denied ... ok
+test dependency_statuses_are_fixed_safe_and_not_retried ... ok
+test profile_content_limits_controls_empty_bio_and_calendar_are_exact ... ok
+test already_elapsed_context_never_dispatches_and_values_are_not_trimmed ... ok
+test channel_readiness_is_bounded_by_original_context_before_any_server_dispatch ... ok
+test consumed_observation_stops_after_borrowed_context_expiry ... ok
+test awaited_delayed_and_noncooperative_results_cannot_outlive_context ... ok
+test actual_jwt_wall_expiry_during_reply_wait_refuses_success ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.23s
+

@@ -6,11 +6,11 @@ instruction to preserve them without orchestration overrides.
 
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| BE04 HTTP boundary | `mcr(be) BE04 HTTP identity boundary` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-concert-context` / `codex/mcr-be-http-concert-context` |
-| BE04 owner composition | `mcr(be) BE04 identity owner composition` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-identity-composition` / `codex/mcr-be-identity-composition` |
+| BE04 real HTTP owner chain | `mcr(be) BE04 real HTTP owner chain` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-real-owners` / `codex/mcr-be-http-real-owners` |
+| BE08 places and map releases | `mcr(be) BE08 places and map releases` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-places` / `codex/mcr-be-BE08` |
 | FE19 map, places and help | `mcr(fe) FE19 map places and help` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-places-help` / `codex/mcr-fe-FE19` |
-| FE06 themes, implementation complete; evidence review | `mcr(fe) FE06 atomic themes` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/.codex/worktrees/3c8d/mcr` / `codex/mcr-fe-FE06` |
-| QA FE06 review | `mcr(qa) FE06 theme review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-fe-theme` / `codex/mcr-qa-FE06` |
+| FE19 independent integration review | `mcr(fe) FE19 integration review` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-places-review` / `codex/mcr-fe-FE19-review` |
+| C04 feature readiness review | `mcr(qa) C04 feature readiness review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-domain-readiness` / `codex/mcr-qa-C04-readiness` |
 
 The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
@@ -430,3 +430,39 @@ separate worktree. R1 reentrant texture commit ownership was fixed in `4cb28b5`;
 the parent integrated it as `5710363` after initial `4f4df6d`. Main owns production
 shell wiring and release catalogs. QA owns only its review document. Model and
 reasoning overrides are omitted on every assignment and continuation.
+
+
+## Current ownership after HTTP and identity integration
+
+All five current goals are reported ACTIVE. The original broad BE04 goal remains
+unfinished. The prior owner-composition and FE06 implementation/review goals were
+tool-confirmed COMPLETE before their chats received new assignments. Former
+checkouts are stopped. Every worker write must use an absolute assigned-worktree
+path; a chat's inherited process directory is not write authorization.
+
+- BE04 starts at `1f6dceb10f8147b5cfbbdc6bf486f994edf24c1e`. It owns only new Auth
+  test `concert_http_owner_chain.rs`, optional same-name test support, new backend
+  `scripts/mcr/concert_http_owner_chain_smoke.py` and focused helper tests, and
+  `docs/mcr/backend/http-owner-chain.md`. Actual guarded Auth and Profile owners,
+  real owned PostgreSQL and production HTTP timeout must be joined without fake
+  successful owner replies. It exclusively owns the retained Rust target until
+  explicit release; no other worker or parent compiles there concurrently.
+- BE08 starts at `f440df302c32e5490c1f95a9b1a7a1f61c72c2d2`. It owns domain and
+  application `src/place/**`, their exact `lib.rs` exports and `tests/place.rs`;
+  Concert repository `place.rs` and its exact module export; exclusively reserved
+  `migrations/0003_places_map_releases.sql`; service `tests/places.rs`; new backend
+  `scripts/mcr/places_smoke.py` and focused helper test; and
+  `docs/mcr/backend/places.md`. It is source-only until target transfer. Parent
+  owns central manifests, migration-count checks, HTTP/RPC and authority wiring.
+- FE19 retains its exact feature ownership. Ordered handoff `072c817`, `b528374`
+  awaits independent review of stale-target invalidation and actual event reload.
+  The reviewer has those exact changes atop integrated FE06, plus its own report,
+  and may write only `docs/mcr/qa/places-help-review.md`. No application ownership
+  transfers to the reviewer.
+- C04 review starts at `6716ed7d9796586d7f2b52980ed2a2fcab1ab2f8` and may write
+  only `docs/mcr/qa/domain-readiness-review.md`. Its first report is returned for
+  concrete factual corrections; it neither freezes C04 nor changes task scope.
+
+The main chat reviewed and integrated the HTTP and composition worker chains,
+then wired the configured reader. It retains shared contracts and publishing.
+Five purposeful chats currently suffice; no duplicate frontend writer is added.

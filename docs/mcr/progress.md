@@ -18,8 +18,9 @@ it is not feature integration or release acceptance.
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
 | BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
 | BE03 | INTEGRATED | [Email ingress review](evidence/browser-auth-integration.md), candidate `689e4d2`: parent reran 221 Gateway tests, nine harness tests and 53 real native HTTP checks with three mail deliveries and cleanup PASS. Frozen email/account mapping, browser guards and invalid-credential handling delivered. Real browser cookie policy, configured OAuth and complete BE03 acceptance remain open. |
-| BE04 | IN_PROGRESS | Auth owner/RPC and strict Gateway context remain integrated. [Profile chain checkpoint](evidence/profile-chain-and-movement-integration.md) delivers guarded Profile RPC, bounded client and the database cancellation correction: nine real Gateway/Profile/PG cases pass, with lock-held cleanup and pool reuse. Parent coherent six-service build passes. HTTP-to-Concert admission, event authority and complete identity acceptance remain open; broad goal stays ACTIVE. |
+| BE04 | IN_PROGRESS | [HTTP identity composition](evidence/http-identity-integration.md) integrates strict HTTP extraction, sequential configured Auth/Profile reads and retained shorter-deadline checks. Parent actual HTTP6/composition8/library-binary/test-link checks pass. The real two-owner HTTP/PostgreSQL journey is active; signed Concert admission, event authority and whole identity acceptance remain open. |
 | BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
+| BE08 | IN_PROGRESS | Isolated place/map-release domain, application and PostgreSQL implementation assigned at `f440df3`; actual goal ACTIVE, source work underway. No completed behavior or runtime qualification claimed. |
 | BE15 | IN_PROGRESS | [Reviewed internal receipt/outbox foundation](evidence/command-receipts-integration.md), `7cbb97e`/`c2a2c30`: 33 combined deterministic Rust, 82 Python helper and 17 real PostgreSQL tests pass; owned migration failure/recovery, restart persistence and cleanup pass. Review fixes cover keyed private fingerprints, post-authorization expiry and result/outbox revision equality. Bounded goal COMPLETE; production producer/Auth/public API/key configuration/runtime/load gates remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
 | FE06 | MOCK_READY | [Theme integration review](evidence/email-and-theme-integration.md): three scoped palettes and atomic Phaser skin replacement; unchanged map/camera/movement, fallback, reentry and resource disposal pass focused262, build/lint and three-width native checks. Parent fixed-source checks pass. Production art/shell wiring, server preferences and real multiplayer remain open. |
@@ -45,16 +46,17 @@ startup is verified within BE05; product APIs/identity are not.
 ## Integration and ownership
 
 The main checkout integrates reviewed commits serially and alone publishes master.
-Four existing visible chats are reused with disjoint worktrees. The user has
-withdrawn the fixed-model requirement; coordination preserves each chat's selected
-model and reasoning setting without overrides. The Profile chat now validates the
-actual Gateway-to-Profile-to-PostgreSQL chain in its four-path integration checkout.
-Its original compatible BE04 goal is tool-confirmed ACTIVE after user resumption;
-earlier BLOCKED snapshots are historical. The Profile-client chat has delivered
-its candidate and compatibility review and now fixes the real-chain database
-cancellation defect. FE15 and its QA scope are complete; the frontend chat now
-implements actual email-account browser journeys against real services. These bounded increments do not complete broad identity or world tasks.
+Five visible chats now cover real HTTP owner-chain validation, BE08 place storage,
+FE19 places/help implementation, independent FE19 review and C04 contract-readiness
+review. Each has an isolated worktree and exact writable paths. The user withdrew
+the fixed-model requirement; coordination preserves chosen model/reasoning settings.
+The extra frontend chat completed FE06 and now reviews FE19's concrete fixes.
+The original BE04 goal and all current bounded assignments are ACTIVE; prior
+completed scopes remain historical. Shared Rust validation has one explicit owner.
 The [chat ownership register](chat-coordination.md) records exact scopes.
+
+Historical delivery notes below retain their original checkpoint states. Current
+status is the table and ownership paragraph above.
 
 Reviewed imports through `2b42fd4`: frontend audit/scaffold, backend audit/import,
 frontend lock/toolchain configuration, exact auth review, boundary guard and C08

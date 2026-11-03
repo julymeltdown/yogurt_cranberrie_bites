@@ -1,0 +1,68 @@
+   Compiling api-gateway v0.1.0 (<worktrees>/be-identity-composition/backend/services/api-gateway)
+warning: field `active` is never read
+  --> services/api-gateway/tests/concert_identity_composition.rs:76:5
+   |
+73 | struct ProfileOwner {
+   |        ------------ field in this struct
+...
+76 |     active: AtomicUsize,
+   |     ^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: fields `ports` and `deadline_paths` are never read
+   --> services/api-gateway/tests/concert_identity_composition.rs:372:5
+    |
+368 | struct Running {
+    |        ------- fields in this struct
+...
+372 |     ports: Mutex<(Option<u16>, Option<u16>)>,
+    |     ^^^^^
+373 |     deadline_paths: Mutex<Vec<(String, usize)>>,
+    |     ^^^^^^^^^^^^^^
+
+warning: unused `std::result::Result` in tuple element 0 that must be used
+   --> services/api-gateway/tests/concert_identity_composition.rs:542:5
+    |
+542 |     tokio::join!(a, b);
+    |     ^^^^^^^^^^^^^^^^^^
+    |
+    = note: this `Result` may be an `Err` variant, which should be handled
+    = note: `#[warn(unused_must_use)]` on by default
+    = note: this warning originates in the macro `$crate::join` which comes from the expansion of the macro `tokio::join` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: unused `std::result::Result` in tuple element 1 that must be used
+   --> services/api-gateway/tests/concert_identity_composition.rs:542:5
+    |
+542 |     tokio::join!(a, b);
+    |     ^^^^^^^^^^^^^^^^^^
+    |
+    = note: this `Result` may be an `Err` variant, which should be handled
+    = note: this warning originates in the macro `$crate::join` which comes from the expansion of the macro `tokio::join` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `api-gateway` (test "concert_identity_composition") generated 4 warnings
+    Finished `test` profile [unoptimized] target(s) in 1.89s
+     Running tests/concert_identity_composition.rs (<build>/backend/debug/deps/concert_identity_composition-355ce36f05227524)
+
+running 7 tests
+test exact_requested_bound_result_is_required_but_x_is_not_a_login_prerequisite ... ok
+test inactive_ended_or_failed_auth_never_dispatches_profile ... ok
+test email_only_composes_one_active_session_and_fresh_current_self_profile ... ok
+
+thread 'profile_mismatch_outage_and_missing_content_are_fixed_and_auth_is_rechecked' panicked at services/api-gateway/tests/concert_identity_composition.rs:716:5:
+assertion failed: format!("{:?}",
+        ConcertIdentityReadError::Profile(ConcertProfileReadError::NotFound)).contains("Concert Profile read failed")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test profile_mismatch_outage_and_missing_content_are_fixed_and_auth_is_rechecked ... FAILED
+test auth_hold_consumes_one_original_stop_and_delivers_no_profile_result ... ok
+test profile_hold_cannot_outlive_same_original_context_after_auth_pass ... ok
+test both_observations_are_borrowed_checked_and_cannot_survive_context_expiry ... ok
+
+failures:
+
+failures:
+    profile_mismatch_outage_and_missing_content_are_fixed_and_auth_is_rechecked
+
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.33s
+
+error: test failed, to rerun pass `-p api-gateway --test concert_identity_composition`

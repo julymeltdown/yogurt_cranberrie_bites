@@ -1,0 +1,148 @@
+{
+  "candidate": "f440df302c32e5490c1f95a9b1a7a1f61c72c2d2",
+  "status": "REVIEWED_COMPONENT_INTEGRATION",
+  "parent_test_candidate": "4d66ce400fec0ef33bd934883cf96ec058892d34 plus committed central changes 1f6dceb10f8147b5cfbbdc6bf486f994edf24c1e",
+  "source_sha256": {
+    "backend/Cargo.lock": "e04342b7d05d8d9498a95abcfe8631ee7dcc24f0fdb10bb77c908e70ffe579c8",
+    "backend/crates/concert-domain/Cargo.toml": "9316aafc79048f473f03c024030d44a6c86932f110a780766def63b334b7ace3",
+    "backend/services/api-gateway/src/adapters/in/http/concert_access.rs": "a3914fa7eb63bba82de3c1e9c35d4a37915e4c29cc701e59816d6ad3ddf4704c",
+    "backend/services/api-gateway/src/adapters/in/http/mod.rs": "3b021c3813fa5d9c789171d2e8311548b916289a7a4f1c2822a72309901af358",
+    "backend/services/api-gateway/src/adapters/out/concert_identity.rs": "43e262888785bad076dc9fe0275911d28918e6c9db073f729fc0920833062c1c",
+    "backend/services/api-gateway/src/adapters/out/mod.rs": "16ad71b49a649b7fe9ee60b4a199f51d318c24fbfa276e627eab8bb3fa965988",
+    "backend/services/api-gateway/src/config/mod.rs": "06711fc4c26508b28fa5d4ef15545b36dba815014993c6f433e25326b5cfcfb8",
+    "backend/services/api-gateway/tests/concert_identity_composition.rs": "32e9939150a29508cad6d857a256a47f5ceabdc345240be65a502f472abccfc0",
+    "backend/services/api-gateway/tests/unit.rs": "fe719d9e84626f67cf0824a770b11957263605531ad3518693fd7903cb1e16c0",
+    "backend/services/api-gateway/tests/unit/http_concert_access.rs": "6b0155d2e93d3d680d360ab6f16eba721b4a9c5350517620f6a3e336ec27c612",
+    "backend/services/auth-service/Cargo.toml": "eebd79bf1930c55d0953a13ec07c41a69b1765ba80e0d1e21eb98a0d60c54601",
+    "docs/mcr/backend/http-concert-context.md": "be6665b877d9ad68e148476e27682969057e7c682ee1e4384f6710d8132bb404",
+    "docs/mcr/backend/identity-owner-composition.md": "a78f26338451f1cfc49680c46119963cacd315c9137e9acdb8f21a3ecf551c52"
+  },
+  "artifacts": [
+    {
+      "source": "identity-composition/01-composition.log",
+      "original_sha256": "e3d009ae11ccd8b0eddd9dbceb169448dd14a2da3b57183a4431bbe0d6f5e673",
+      "archive": "identity-composition--01-composition.log",
+      "archive_sha256": "d4c3f84c8f5ac394051e9e6935b3a3982000f9cbc5f86832814adfafe2499429"
+    },
+    {
+      "source": "identity-composition/02-composition.log",
+      "original_sha256": "0f6b988d68e5830a91d1807eb1247599c5a6dbe6a94ca9f7d17909c582a7db12",
+      "archive": "identity-composition--02-composition.log",
+      "archive_sha256": "ac51e22d695db26925e0dcd0a16fb493e16dae5403e7c23fbc8c351b3edc284c"
+    },
+    {
+      "source": "identity-composition/03-composition.log",
+      "original_sha256": "a727c75b1a0cfa2f979b49f6d6d0fb1771ca3bc9d5cb23abd8d07d9cbddc42ab",
+      "archive": "identity-composition--03-composition.log",
+      "archive_sha256": "9afa2e1043b147079d8a915cad3c56f81ff51e3493d20494449f161cff1d9e30"
+    },
+    {
+      "source": "identity-composition/04-composition.log",
+      "original_sha256": "e99630483ceb5338df1cc760a11c7bd4e1a648ce35816f3847524cc6eb99a2d2",
+      "archive": "identity-composition--04-composition.log",
+      "archive_sha256": "9b70fbd826a01ab38e295dfc176b8b6038ef3487180ba7f7301d2f3b580bd267"
+    },
+    {
+      "source": "identity-composition/05-composition.log",
+      "original_sha256": "5fa6b1f7b8fa8b4d6cb50ff9cc705136d22ef61929d01406bbde63320b072b49",
+      "archive": "identity-composition--05-composition.log",
+      "archive_sha256": "56e8969935240c5408c9ec36c81b946e8997f5989a14c8b86633bb7616be817d"
+    },
+    {
+      "source": "identity-composition/07-composition.log",
+      "original_sha256": "c317a6338fea12949612ed38e9d6189bf73c5b4bf3029424167b9edbcd99630a",
+      "archive": "identity-composition--07-composition.log",
+      "archive_sha256": "29075866c143833d2cdf6788ee9c2f7135ba6a8b1fa257e294e6c29de26d0e1a"
+    },
+    {
+      "source": "identity-composition/08-composition.log",
+      "original_sha256": "e332811325c4cf747c44c5e8442cd44873303d80f7397e1fb3a5d2dea43b1be8",
+      "archive": "identity-composition--08-composition.log",
+      "archive_sha256": "720adff2394d264182365c2758aeff0f5c4810657bbd36abd27b26b06e17cbd5"
+    },
+    {
+      "source": "identity-composition/09-composition.log",
+      "original_sha256": "4304a8a1f1364982c533811115ae6df8d9955c515739ee75f1e51ae56db19c26",
+      "archive": "identity-composition--09-composition.log",
+      "archive_sha256": "66e1cf17d287aff9348b0615b99dc04f568bbe488cef82fa82491cff11000c76"
+    },
+    {
+      "source": "identity-composition/10-retained-profile.log",
+      "original_sha256": "d6afc5d80f374d7d9df6e8c1e30b191840fb114f9d79c3cb1a802f4ef070f2e2",
+      "archive": "identity-composition--10-retained-profile.log",
+      "archive_sha256": "59274a3d5539f8cdb4e2c6a638857013bcb09d38efa65626cca01af98f359fb5"
+    },
+    {
+      "source": "identity-composition/11-doctest.log",
+      "original_sha256": "a1fabcfac937a920fccf58307a029b490a45650253769175ec9756ce5e1c2ec6",
+      "archive": "identity-composition--11-doctest.log",
+      "archive_sha256": "a1fabcfac937a920fccf58307a029b490a45650253769175ec9756ce5e1c2ec6"
+    },
+    {
+      "source": "identity-composition/12-lib-bins.log",
+      "original_sha256": "1b96f0108a7fc33f5a541facbd1a973f7dcc7d82a622f4a60be464ea65bdb3f6",
+      "archive": "identity-composition--12-lib-bins.log",
+      "archive_sha256": "2ad312aeb3557fdddc2e9526ae597968e560d9e038298f4a96fb982ec627652b"
+    },
+    {
+      "source": "identity-composition/13-final-composition.log",
+      "original_sha256": "13a91b48720ae37b72af62c4afc59e51186d7265e2b75c159cc96e40692e2db5",
+      "archive": "identity-composition--13-final-composition.log",
+      "archive_sha256": "ef9aa59ad9179c0a01b7ee70388a150a6d80e1e195a6e58600b2228fc96a79ab"
+    },
+    {
+      "source": "identity-composition/14-final-eight-composition.log",
+      "original_sha256": "8cb8ed8802525b0cd30b5811d8ecc867e9c7be92eb95a66c74a73977e9ea60ae",
+      "archive": "identity-composition--14-final-eight-composition.log",
+      "archive_sha256": "bb7503c91b9ec8e7d78e0c08e27759eb604c93127005e5f575765c9aa7cdddc0"
+    },
+    {
+      "source": "identity-composition/handoff.json",
+      "original_sha256": "b59ac5b5159001590f466f4277a46b8e5142561d180694ba7ed2404469696b44",
+      "archive": "identity-composition--handoff.json",
+      "archive_sha256": "a2816abc9579ab2872868b567610fe881ddd76ae68da930530cd0c37d21264d6"
+    },
+    {
+      "source": "identity-composition/acceptance.json",
+      "original_sha256": "6a18b57c667d20e09dfa32558545334490aea538527c1e2de8e2e9cf4d543126",
+      "archive": "identity-composition--acceptance.json",
+      "archive_sha256": "6a18b57c667d20e09dfa32558545334490aea538527c1e2de8e2e9cf4d543126"
+    },
+    {
+      "source": "http-owner-composition-parent/auth-test-link.log",
+      "original_sha256": "6946f7a72387bfd996edd3f6c9ae71737f24815942f7b30e024abfd563b05f1d",
+      "archive": "http-owner-composition-parent--auth-test-link.log",
+      "archive_sha256": "7b43db1c59fc0a1bf4ca1874b71c0b9710dfc3a766bb11efd0b773fe9304ed40"
+    },
+    {
+      "source": "http-owner-composition-parent/binary.log",
+      "original_sha256": "d667a425d4b1f65c3a47574e80ab794518ed0f34ecb96f35f4804b20ed5767df",
+      "archive": "http-owner-composition-parent--binary.log",
+      "archive_sha256": "16835f7d949f565e81080b98c4d65e38193295e9e0b6ee9f8e8e73dbbd2167d4"
+    },
+    {
+      "source": "http-owner-composition-parent/checks.json",
+      "original_sha256": "82cd9ac9ba04cf57cfc7e0872404d0464bcdb837e476ac6fb75c6d0c2f9c8c69",
+      "archive": "http-owner-composition-parent--checks.json",
+      "archive_sha256": "82cd9ac9ba04cf57cfc7e0872404d0464bcdb837e476ac6fb75c6d0c2f9c8c69"
+    },
+    {
+      "source": "http-owner-composition-parent/http.log",
+      "original_sha256": "bf0556f239b98ea8ea7ba6d333ec7f087f279d02dfc8cf5e675041349c42a1f0",
+      "archive": "http-owner-composition-parent--http.log",
+      "archive_sha256": "dd5d4697d5e1052c3e9c0d11dde4cb68ee01d722d06c4004fa15147cb2bfbaf2"
+    },
+    {
+      "source": "http-owner-composition-parent/owners.log",
+      "original_sha256": "cb31c38e04a93476b9cd1c5667c683a162014a93cbd095f008af0c0dd10609af",
+      "archive": "http-owner-composition-parent--owners.log",
+      "archive_sha256": "10e180ed45ca67c0ea6cdd3152ab55a210b76419b6439dd495590bd1efe3086a"
+    }
+  ],
+  "sanitization": "Local checkout/build/Cargo-home prefixes normalized; original and archive hashes retained.",
+  "limits": [
+    "HTTP and signed controlled owner composition tested; real two-owner HTTP/PG chain is assigned separately.",
+    "Concert event authority, public product routes, TLS and whole BE04 acceptance remain open.",
+    "f440df3 only exposes existing retained Concert dependency versions; metadata passed, BE08 compilation pending target transfer."
+  ]
+}

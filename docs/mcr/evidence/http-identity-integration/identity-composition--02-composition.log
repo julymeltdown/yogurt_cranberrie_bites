@@ -1,0 +1,341 @@
+   Compiling api-gateway v0.1.0 (<worktrees>/be-identity-composition/backend/services/api-gateway)
+   Compiling friend-service v0.1.0 (<worktrees>/be-identity-composition/backend/services/friend-service)
+   Compiling notification-service v0.1.0 (<worktrees>/be-identity-composition/backend/services/notification-service)
+   Compiling profile-service v0.1.0 (<worktrees>/be-identity-composition/backend/services/profile-service)
+warning: unused imports: `AsyncReadExt` and `AsyncWriteExt`
+   --> services/api-gateway/tests/concert_identity_composition.rs:655:21
+    |
+655 |     use tokio::io::{AsyncReadExt, AsyncWriteExt};
+    |                     ^^^^^^^^^^^^  ^^^^^^^^^^^^^
+    |
+    = note: `#[warn(unused_imports)]` on by default
+
+error[E0063]: missing field `remaining` in initializer of `AuthOwner`
+   --> services/api-gateway/tests/concert_identity_composition.rs:385:29
+    |
+385 |         let auth = Arc::new(AuthOwner {
+    |                             ^^^^^^^^^ missing `remaining`
+
+error[E0063]: missing field `remaining` in initializer of `ProfileOwner`
+   --> services/api-gateway/tests/concert_identity_composition.rs:391:32
+    |
+391 |         let profile = Arc::new(ProfileOwner {
+    |                                ^^^^^^^^^^^^ missing `remaining`
+
+error[E0308]: mismatched types
+   --> services/api-gateway/tests/concert_identity_composition.rs:483:17
+    |
+483 |                 auth_task,
+    |                 ^^^^^^^^^ expected `JoinHandle<()>`, found `JoinHandle<Result<(), Box<...>>>`
+    |
+    = note: expected struct `tokio::task::JoinHandle<()>`
+               found struct `tokio::task::JoinHandle<std::result::Result<(), Box<dyn std::error::Error + Send + Sync>>>`
+
+error[E0382]: use of moved value: `stopped`
+   --> services/api-gateway/tests/concert_identity_composition.rs:501:48
+    |
+501 |                     tokio::select! { biased; _=stopped => break, x=listener.accept()=>x };
+    |                                                ^^^^^^^ value moved here, in previous iteration of loop
+    |
+    = note: move occurs because `stopped` has type `tokio::sync::oneshot::Receiver<()>`, which does not implement the `Copy` trait
+
+error[E0599]: no method named `unwrap` found for unit type `()` in the current scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:520:18
+    |
+516 | //             tokio::time::timeout(Duration::from_secs(2), task)
+517 | ||                 .await
+    | ||______________________- method `unwrap` is available on `std::result::Result<std::result::Result<(), JoinError>, tokio::time::error::Elapsed>`
+518 | |                  .unwrap()
+    | |                   -------- method `unwrap` is available on `std::result::Result<(), JoinError>`
+519 | |                  .unwrap()
+520 | |                  .unwrap();
+    | |                  -^^^^^^ method not found in `()`
+    | |__________________|
+    |
+
+error[E0599]: no method named `encode_to_vec` found for reference `&ReadConcertAdmissionRequest` in the current scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:523:14
+    |
+522 |           assert!(self.auth.seen.lock().unwrap().iter().all(|x| !x
+    |  ________________________________________________________________-
+523 | |             .encode_to_vec()
+    | |_____________-^^^^^^^^^^^^^
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: trait `Message` which provides `encode_to_vec` is implemented but not in scope; perhaps you want to import it
+    |
+3   + use prost::message::Message;
+    |
+help: there is a method `encoded_len` with a similar name
+    |
+523 -             .encode_to_vec()
+523 +             .encoded_len()
+    |
+
+error[E0063]: missing field `remaining` in initializer of `AuthOwner`
+   --> services/api-gateway/tests/concert_identity_composition.rs:537:29
+    |
+537 |         let auth = Arc::new(AuthOwner {
+    |                             ^^^^^^^^^ missing `remaining`
+
+error[E0063]: missing field `remaining` in initializer of `ProfileOwner`
+   --> services/api-gateway/tests/concert_identity_composition.rs:543:32
+    |
+543 |         let profile = Arc::new(ProfileOwner {
+    |                                ^^^^^^^^^^^^ missing `remaining`
+
+error[E0599]: no method named `oneshot` found for struct `InterceptedService` in the current scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:623:34
+    |
+623 |                     auth_service.oneshot(request).await
+    |                                  ^^^^^^^
+    |
+   ::: <cargo-home>/registry/src/index.crates.io-1949cf8c6b5b557f/tower-0.5.3/src/util/mod.rs:89:8
+    |
+89  |     fn oneshot(self, req: Request) -> Oneshot<Self, Request>
+    |        ------- the method is available for `InterceptedService<MethodPolicyService<AuthServiceServer<FakeAuth>>, RequireRegisteredCallerInterceptor>` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `ready_oneshot` with a similar name, but with different arguments
+   --> <cargo-home>/registry/src/index.crates.io-1949cf8c6b5b557f/tower-0.5.3/src/util/mod.rs:81:5
+    |
+81  | /     fn ready_oneshot(self) -> ReadyOneshot<Self, Request>
+82  | |     where
+83  | |         Self: Sized,
+    | |____________________^
+help: trait `ServiceExt` which provides `oneshot` is implemented but not in scope; perhaps you want to import it
+    |
+3   + use tower::util::ServiceExt;
+    |
+
+error[E0599]: no method named `oneshot` found for struct `InterceptedService` in the current scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:625:37
+    |
+625 |                     profile_service.oneshot(request).await
+    |                                     ^^^^^^^
+    |
+   ::: <cargo-home>/registry/src/index.crates.io-1949cf8c6b5b557f/tower-0.5.3/src/util/mod.rs:89:8
+    |
+89  |     fn oneshot(self, req: Request) -> Oneshot<Self, Request>
+    |        ------- the method is available for `InterceptedService<MethodPolicyService<ProfileServiceServer<FakeProfile>>, RequireRegisteredCallerInterceptor>` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `ready_oneshot` with a similar name, but with different arguments
+   --> <cargo-home>/registry/src/index.crates.io-1949cf8c6b5b557f/tower-0.5.3/src/util/mod.rs:81:5
+    |
+81  | /     fn ready_oneshot(self) -> ReadyOneshot<Self, Request>
+82  | |     where
+83  | |         Self: Sized,
+    | |____________________^
+help: trait `ServiceExt` which provides `oneshot` is implemented but not in scope; perhaps you want to import it
+    |
+3   + use tower::util::ServiceExt;
+    |
+
+error[E0560]: struct `Running` has no field named `stub_stops`
+   --> services/api-gateway/tests/concert_identity_composition.rs:644:13
+    |
+644 |             stub_stops: Mutex::new(Vec::new()),
+    |             ^^^^^^^^^^ `Running` does not have this field
+    |
+    = note: available fields are: `reader`, `ports`, `deadline_paths`, `stops`, `tasks`
+
+error[E0560]: struct `Running` has no field named `stub_tasks`
+   --> services/api-gateway/tests/concert_identity_composition.rs:645:13
+    |
+645 |             stub_tasks: Mutex::new(Vec::new()),
+    |             ^^^^^^^^^^ `Running` does not have this field
+    |
+    = note: available fields are: `reader`, `ports`, `deadline_paths`, `stops`, `tasks`
+
+error[E0560]: struct `Running` has no field named `stop`
+   --> services/api-gateway/tests/concert_identity_composition.rs:646:13
+    |
+646 |             stop: Some(auth_stop),
+    |             ^^^^ unknown field
+    |
+help: a field with a similar name exists
+    |
+646 |             stops: Some(auth_stop),
+    |                 +
+
+error[E0560]: struct `Running` has no field named `task`
+   --> services/api-gateway/tests/concert_identity_composition.rs:647:13
+    |
+647 |             task: Some(task),
+    |             ^^^^ unknown field
+    |
+help: a field with a similar name exists
+    |
+647 |             tasks: Some(task),
+    |                 +
+
+error[E0560]: struct `Running` has no field named `auth_deadline`
+   --> services/api-gateway/tests/concert_identity_composition.rs:648:13
+    |
+648 |             auth_deadline: Mutex::new(None),
+    |             ^^^^^^^^^^^^^ `Running` does not have this field
+    |
+    = note: available fields are: `reader`, `ports`, `deadline_paths`, `stops`, `tasks`
+
+error[E0560]: struct `Running` has no field named `profile_deadline`
+   --> services/api-gateway/tests/concert_identity_composition.rs:649:13
+    |
+649 |             profile_deadline: Mutex::new(None),
+    |             ^^^^^^^^^^^^^^^^ `Running` does not have this field
+    |
+    = note: available fields are: `reader`, `ports`, `deadline_paths`, `stops`, `tasks`
+
+error[E0592]: duplicate definitions with name `start`
+   --> services/api-gateway/tests/concert_identity_composition.rs:384:5
+    |
+384 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^ duplicate definitions for `start`
+...
+536 |     async fn start() -> Self {
+    |     ------------------------ other definition for `start`
+
+error[E0599]: no method named `clone` found for struct `AtomicUsize` in the current scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:123:44
+    |
+123 |         let _active = Active(self.0.active.clone());
+    |                                            ^^^^^ method not found in `AtomicUsize`
+
+error[E0599]: no method named `clone` found for struct `AtomicUsize` in the current scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:273:44
+    |
+273 |         let _active = Active(self.0.active.clone());
+    |                                            ^^^^^ method not found in `AtomicUsize`
+
+error[E0034]: multiple applicable items in scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:712:22
+    |
+712 |     let h = Running::start().await;
+    |                      ^^^^^ multiple `start` found
+    |
+note: candidate #1 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:384:5
+    |
+384 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: candidate #2 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:536:5
+    |
+536 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0034]: multiple applicable items in scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:745:22
+    |
+745 |     let h = Running::start().await;
+    |                      ^^^^^ multiple `start` found
+    |
+note: candidate #1 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:384:5
+    |
+384 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: candidate #2 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:536:5
+    |
+536 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0034]: multiple applicable items in scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:773:22
+    |
+773 |     let h = Running::start().await;
+    |                      ^^^^^ multiple `start` found
+    |
+note: candidate #1 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:384:5
+    |
+384 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: candidate #2 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:536:5
+    |
+536 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0034]: multiple applicable items in scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:807:22
+    |
+807 |     let h = Running::start().await;
+    |                      ^^^^^ multiple `start` found
+    |
+note: candidate #1 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:384:5
+    |
+384 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: candidate #2 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:536:5
+    |
+536 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0034]: multiple applicable items in scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:837:22
+    |
+837 |     let h = Running::start().await;
+    |                      ^^^^^ multiple `start` found
+    |
+note: candidate #1 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:384:5
+    |
+384 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: candidate #2 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:536:5
+    |
+536 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0034]: multiple applicable items in scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:857:22
+    |
+857 |     let h = Running::start().await;
+    |                      ^^^^^ multiple `start` found
+    |
+note: candidate #1 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:384:5
+    |
+384 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: candidate #2 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:536:5
+    |
+536 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0034]: multiple applicable items in scope
+   --> services/api-gateway/tests/concert_identity_composition.rs:873:22
+    |
+873 |     let h = Running::start().await;
+    |                      ^^^^^ multiple `start` found
+    |
+note: candidate #1 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:384:5
+    |
+384 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: candidate #2 is defined in an impl for the type `Running`
+   --> services/api-gateway/tests/concert_identity_composition.rs:536:5
+    |
+536 |     async fn start() -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `kid`
+   --> services/api-gateway/tests/concert_identity_composition.rs:675:17
+    |
+675 |     fn generate(kid: &'static str) -> Self {
+    |                 ^^^ help: if this is intentional, prefix it with an underscore: `_kid`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+Some errors have detailed explanations: E0034, E0063, E0308, E0382, E0560, E0592, E0599.
+For more information about an error, try `rustc --explain E0034`.
+warning: `api-gateway` (test "concert_identity_composition") generated 2 warnings
+error: could not compile `api-gateway` (test "concert_identity_composition") due to 26 previous errors; 2 warnings emitted
+warning: build failed, waiting for other jobs to finish...
