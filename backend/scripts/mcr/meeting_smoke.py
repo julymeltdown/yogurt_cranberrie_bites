@@ -12,7 +12,7 @@ import migration_smoke as migration
 
 ROOT = Path(__file__).resolve().parents[3]
 DATABASE = 'mcr_meeting'
-MIGRATIONS = ('0001_concert_core.sql','0002_command_receipts_outbox.sql','0003_places_map_releases.sql','0008_meeting_beacons.sql')
+MIGRATIONS = ('0001_concert_core.sql','0002_command_receipts_outbox.sql','0003_places_map_releases.sql','0008_meeting_beacons.sql','0009_receipt_domain_failures.sql')
 
 def sql_guards(cluster):
     event='dddddddd-dddd-4ddd-8ddd-dddddddddddd'

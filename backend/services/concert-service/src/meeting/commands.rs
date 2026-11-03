@@ -193,10 +193,10 @@ pub(crate) fn safe_failure(
     let reason = match error {
         MeetingError::RevisionConflict => SafeFailure::VersionConflict,
         MeetingError::PolicyUnavailable => SafeFailure::DependencyUnavailable,
-        // Specific domain failure variants are reconciled with delivery-owned 0009.
-        MeetingError::ResourceUnavailable => return Err(CommandError::Denied),
-        MeetingError::InvalidInput => return Err(CommandError::InvalidInput),
-        MeetingError::MapMismatch | MeetingError::EventReadOnly => SafeFailure::InvalidTransition,
+        MeetingError::ResourceUnavailable => SafeFailure::ResourceUnavailable,
+        MeetingError::InvalidInput => SafeFailure::InvalidInput,
+        MeetingError::MapMismatch => SafeFailure::MapVersionMismatch,
+        MeetingError::EventReadOnly => SafeFailure::EventReadOnly,
         MeetingError::StorageUnavailable => return Err(CommandError::Unavailable),
         MeetingError::InvalidState => return Err(CommandError::InvalidState),
     };
