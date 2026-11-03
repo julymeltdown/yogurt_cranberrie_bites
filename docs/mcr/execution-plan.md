@@ -6,6 +6,12 @@ Intake and assessment are delivered. Foundation implementation is active: review
 
 The main chat is the integrator. Backend and frontend development run in separate visible Codex chats, as the user explicitly requested. Each uses `gpt-6.1-sol` with `high` reasoning and an isolated worktree. The [chat ownership register](chat-coordination.md) records the current writers and scopes. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
 
+Four useful implementation chats are currently active: BE04 identity, BE15
+receipts/outbox, FE08 public entry and FE16 transport. Actual persistent goals
+were confirmed in all four. The user does not require a fixed lane count; see
+the [current capacity assessment](parallel-capacity.md) for prerequisites, queued
+work and why no fifth chat is forced.
+
 ## Separate code ownership and workspaces
 
 The user explicitly requires frontend and backend changes to stay separate. The repository keeps both products together for integration, with these boundaries:

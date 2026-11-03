@@ -1,0 +1,31 @@
+{
+  "frontend_candidate": "a9e130e",
+  "worker_candidate": "831bb5dfd96cb86115ea0fcad3489c3bc3ddbe4c",
+  "source_sha256": {
+    "frontend/src/app/PublicBoundary.tsx": "5034f4bcb9b819a1d6f527677f5c6f3bab79bed5eee97e08946b4ceb3ed90b33",
+    "frontend/src/app/ports.ts": "90ecaf251fe1bbe98658cdfe06dc04b7b894d4354e2b6b06d22dc259ab192a16",
+    "frontend/src/app/router.tsx": "2d34602c4af94952b16a3d0a31a5ef6fb8c961571d3dac1ed70bb1abf40a5ee0",
+    "frontend/src/features/auth/__tests__/browser-smoke.mjs": "22d76a60d9e8ab13ebd2293111fce5205a87df046c8fe21e7a28d89d25981d63",
+    "frontend/src/features/auth/__tests__/contract.test.ts": "f81130ecf891dd921f913a8fa1acd1494cc6975a81889f692f74c8e6bdfb3d6a",
+    "frontend/src/features/auth/__tests__/cookie-policy.test.ts": "28bf2dc96019107745b0eb282717604b24f9a448bd86a55def1762134d858b4b",
+    "frontend/src/features/auth/__tests__/fixtures/data.ts": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
+    "frontend/src/features/auth/__tests__/fixtures/preview.html": "8b892bb88d1be103a3d4d6af602c53d68b2ff08cb3e7a80660e4851209fb9043",
+    "frontend/src/features/auth/__tests__/fixtures/preview.tsx": "7e55788c9a80b9a314a497ec608e565b69450f2add51f03bec6b489588708699",
+    "frontend/src/features/auth/__tests__/session.test.ts": "2d45597a5f96c4c481ae9378e10dc366506894685758140739fd2f6ed61764cb",
+    "frontend/src/features/auth/__tests__/sign-in.test.tsx": "c582c9b7fca4de7bfba2301b93fb7afd122a61081e1177c227d15913f693649c",
+    "frontend/src/features/auth/model/bootstrap.ts": "d62cd1b0f7e152f26eae57a896a19043cf4b8eb39c09ab01c094319d42f8c38d",
+    "frontend/src/features/auth/model/contract.ts": "49f3380515a722b10d9e58df241ecc7dad47e2a4792ec47e20b24680466939ff",
+    "frontend/src/features/auth/model/cookie-policy.ts": "f1081e9c04c3c91017855295983fb162e301c95a70d2f9d6f8692ef150e7837b",
+    "frontend/src/features/auth/model/session.ts": "2b203de542e6720ab3ad3b5d41ade1cbb4eed2681342c8173d3e7e1ff9485c3c",
+    "frontend/src/features/auth/ui/SignIn.tsx": "a548da9e96dab311e79494ed88dce362c9014b0bf4292a85bcd1782c6d40c621",
+    "frontend/src/features/auth/ui/sign-in.css": "1f728a8dbfb86db2108efbcd6cb09fcbce6510ca2c4e27f8cb30ed90f0d90326",
+    "frontend/src/main.tsx": "d4b7373d98a098192d7c5bb82833fce75ad0a3ceb5a49aa088b8478226b06caa"
+  },
+  "artifact_sha256": {
+    "browser-results.json": "cfe4f02af2d38cd47f8a09582ab985cda1074b31bde91e6bd7804420395d8363",
+    "failed-sign-in-390.png": "e510c0e654d290303deec46caa8ed33145aa861e1bab13cff8b6b121f4ee2a88",
+    "production-unavailable.png": "a81ede5b15f1de6e165b114577199fea6bf7a7bd35d6b2d8ff1f9c07ae3c08c1",
+    "sign-in-390.png": "346aafb3bb0c3f57f1f03186f7269f72ee6d45433d7c914259a593bf4e2cf9ab",
+    "unconfirmed-logout-1280.png": "6aa9dc7d236c0026c865a8eab773085ca6f0f633875d903f39feb7442c5cc4c9"
+  }
+}

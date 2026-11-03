@@ -18,23 +18,28 @@ it is not feature integration or release acceptance.
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
 | BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
 | BE03 | INTEGRATED | [Email ingress review](evidence/browser-auth-integration.md), candidate `689e4d2`: parent reran 221 Gateway tests, nine harness tests and 53 real native HTTP checks with three mail deliveries and cleanup PASS. Frozen email/account mapping, browser guards and invalid-credential handling delivered. Real browser cookie policy, configured OAuth and complete BE03 acceptance remain open. |
-| BE05 | IN_PROGRESS | New backend goal confirmed active in isolated `be-concert-core` at `f795ed4`; Concert domain/application/service, core migrations and real isolated startup qualification assigned. Exact manifest/member/lock additions are delegated separately for integration review. |
+| BE04 | IN_PROGRESS | Isolated identity ports/adapter lane at `376cf21`, active persistent goal confirmed. Auth session/minimum Profile inputs identified; owner-backed suspension/provider proof and authenticated Concert service edges remain integrator prerequisites. Production authority stays unavailable. |
+| BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
+| BE15 | IN_PROGRESS | Separate receipt/outbox lane at `376cf21`, active persistent goal confirmed. Internal design review and pinned C04 candidate inputs; real PostgreSQL crash/replay/lease qualification and committed review remain. Central prerequisite `f74fb66` stays isolated until complete implementation can compile. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
 | FE01 | ACCEPTED | [Integrated review](evidence/core-foundation-integration.md): 144 transport/error tests plus 22 existing UI tests, strict build/lint; memory-only session, bounded read refresh, cancellation, safe error/upload ports and stale-identity isolation. Real cookies and auth journeys remain BE03/FE09 work. |
 | FE02 | ACCEPTED | [Integrated privacy review](evidence/privacy-local-stack-integration.md): actual QueryClient/observers, canonical private keys, cancellation plus eviction, commit fencing and cleanup ports; 45 new tests and combined 189-test transport/privacy run pass. UI/event/real-server owner wiring remains. |
 | FE07 | MOCK_READY | [Integrated shell review](evidence/world-shell-integration.md), candidate `d7909c0`: 276 tests, frozen build/lint/origin scan, four installed-Chrome viewports and production-entry isolation pass. Review fixes block obsolete initial loader dispatch and bound scroll history. Actual Phaser/socket/camera preservation and device qualification remain; no real-world or IA acceptance. |
-| FE09 | IN_PROGRESS | New frontend goal confirmed active in isolated `fe-session` at `2a5c8e6`; canonical public C03 artifact and explicit event-config input supplied in `153a3dc`. Session/sign-in, cleanup, refresh coordination and validation are assigned; no real auth/browser acceptance yet. |
+| FE08 | IN_PROGRESS | Separate public-entry/document lane at `376cf21`, active persistent goal confirmed. Landing/redirect and test-only versioned presenter implementation underway; production legal publication contract/content still unavailable. |
+| FE09 | MOCK_READY | [Integrated review](evidence/session-sign-in-integration.md), candidate `a9e130e`: 354 tests including 78 FE09, strict build/lint/origin/boundary checks and four-width native Chrome/cross-tab/production-isolation checks pass. Review fixes preserve valid session on 403 while 401 clears. Production automatic restore/refresh stays disabled; real BE03 Secure-cookie/revocation/rotation, event/world and IN01 gates remain open. Delivered increment goal completed; task not accepted. |
+| FE16 | IN_PROGRESS | Separate mock/native transport lane at `376cf21`, active persistent goal confirmed. Frozen C05 and FE01 are ready; owned WebSocket parity/cleanup tests are assigned. Production lifecycle, replication and real-server/IN01 qualification remain separate. |
 
-All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **10/112**;
-accepted total: **10/118**. No required IA entry or IN01–IN05 integration gate has
-been accepted. Real identity/provider flows, Concert service startup, multiplayer,
-transactions, privacy/revocation, physical place verification, original production
-assets, real devices, load/recovery and deployment remain outstanding.
+All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **11/112**;
+accepted total: **11/118**. No required IA entry or IN01–IN05 integration gate has
+been accepted. Real identity/provider flows, Concert product APIs, multiplayer, transactions,
+privacy/revocation, physical place verification, original production assets, real
+devices, load/recovery and deployment remain outstanding. Concert foundation
+startup is verified within BE05; product APIs/identity are not.
 
 ## Integration and ownership
 
-The main checkout integrates reviewed commits serially. The two user-supplied
-visible Codex chats now own backend and frontend work in separate worktrees,
+The main checkout integrates reviewed commits serially. The two user-supplied chats and two newly created
+visible Codex chats now own four disjoint backend/frontend assignments in separate worktrees,
 using requested `gpt-6.1-sol` / high settings. Previous subagents were stopped
 before ownership transferred; their unfinished work was preserved. The
 [chat ownership register](chat-coordination.md) gives exact paths and handoffs.
@@ -54,9 +59,11 @@ review reproduced and rechecked the preliminary nested-modal defect, then found
 no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
-The current implementation queue is BE05 Concert service/core schema and FE09
-session/sign-in composition on the integrated FE07 shell. BE04 identity and BE06
-bootstrap follow the Concert foundation; BE03 browser/provider gates remain open. C04 domain and C06 asset
-freeze remain required; C05 producer/consumer implementation follows its frozen
-wire contract. No runtime, OAuth or
-release acceptance follows from the completed component/contract checks.
+The current implementation queue is BE04 canonical identity, BE15 internal
+command receipts/outbox, FE08 public entry/documents and FE16 mock/native world
+transport. Each chat confirmed an active persistent goal. The user explicitly
+removed any fixed two-backend/three-frontend quota; the [capacity assessment](parallel-capacity.md)
+keeps FE11 queued without a writer. BE03 browser/provider gates remain open.
+The integrator retains shared Auth/Profile authority and C04/C06 contracts;
+BE06/bootstrap follows qualified authority. No runtime, OAuth or release
+acceptance follows from completed component/contract checks.
