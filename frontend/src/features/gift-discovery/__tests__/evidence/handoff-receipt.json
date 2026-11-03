@@ -1,0 +1,513 @@
+{
+  "task": "FE24",
+  "status": "MOCK_READY; parent review pending",
+  "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+  "implementationCommit": "5f1005dc2b6309589c11f258c9c7036b976f6025",
+  "branch": "codex/mcr-fe-FE24",
+  "checkout": "/Users/lhs/Desktop/mcr-worktrees/fe-gift-discovery",
+  "createdAtUTC": "2026-11-03T13:51:47.492755+00:00",
+  "goal": {
+    "status": "active",
+    "verifiedBy": "get_goal tool immediately before sealing receipt",
+    "budget": null,
+    "completionCriteria": "Implementation, focused unit/native browser validation, docs, committed handoff and parent review fixes; keep active through review"
+  },
+  "changedPaths": [
+    "docs/mcr/frontend/gift-discovery.md",
+    "frontend/src/features/gift-discovery/__tests__/browser-smoke.mjs",
+    "frontend/src/features/gift-discovery/__tests__/contract.test.ts",
+    "frontend/src/features/gift-discovery/__tests__/controller.test.ts",
+    "frontend/src/features/gift-discovery/__tests__/evidence/boundaries.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/detail-1280.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/detail-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/discovery-1280.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/discovery-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/own-activity-1280.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/own-activity-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/report.json",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/unavailable-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-first.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-first/discovery-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-first/report.json",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-second.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-second/discovery-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-second/report.json",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/detail-1280.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/detail-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/discovery-1280.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/discovery-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/own-activity-1280.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/own-activity-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/report.json",
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/unavailable-390.png",
+    "frontend/src/features/gift-discovery/__tests__/evidence/build-final.log.gz",
+    "frontend/src/features/gift-discovery/__tests__/evidence/build-first.log.gz",
+    "frontend/src/features/gift-discovery/__tests__/evidence/first-tests.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/focused-fourth.log.gz",
+    "frontend/src/features/gift-discovery/__tests__/evidence/lint-first.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/origin.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/plan.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/second-tests.log",
+    "frontend/src/features/gift-discovery/__tests__/evidence/third-tests.log.gz",
+    "frontend/src/features/gift-discovery/__tests__/evidence/typecheck-first.log",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/preview.html",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/preview.tsx",
+    "frontend/src/features/gift-discovery/__tests__/ui.test.tsx",
+    "frontend/src/features/gift-discovery/index.ts",
+    "frontend/src/features/gift-discovery/model/contract.ts",
+    "frontend/src/features/gift-discovery/model/controller.ts",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+    "frontend/src/features/gift-discovery/ui/gifts.css",
+    "frontend/src/features/my-gifts/MyGifts.tsx",
+    "frontend/src/features/my-gifts/index.ts"
+  ],
+  "files": {
+    "docs/mcr/frontend/gift-discovery.md": {
+      "bytes": 12677,
+      "sha256": "9ba1b87d59608868e5966234bc9f1180393f39b899e5bc6afb87cd40e5f57786"
+    },
+    "frontend/src/features/gift-discovery/__tests__/browser-smoke.mjs": {
+      "bytes": 11758,
+      "sha256": "d9590a52191f1e2f64c4e110a16ad8a3f7f90e080b8294efde3bcbe366d29869"
+    },
+    "frontend/src/features/gift-discovery/__tests__/contract.test.ts": {
+      "bytes": 5341,
+      "sha256": "d4f5e03bf8b8ef72c89abac55b51856944a9cb739f5f9dba0097f6d81b989ef8"
+    },
+    "frontend/src/features/gift-discovery/__tests__/controller.test.ts": {
+      "bytes": 11583,
+      "sha256": "c9cab77c25c63e69815e16cafb45fa973bebd4381e196a1231194a6f9223727b"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/boundaries.log": {
+      "bytes": 124,
+      "sha256": "16800132a2c557cc0d3a7d72a4a241fd3523c051584e9c487c43b855fb498795"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final.log": {
+      "bytes": 367,
+      "sha256": "c3fa7f9829bfacc78d129b3c983f7390db73a1fd77cf07492e398d85f9266a31"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/detail-1280.png": {
+      "bytes": 86009,
+      "sha256": "7091d10af513ccc7bee2d0a06b423256ba7cbb4e9db6ed8269b12b65b70f4223"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/detail-390.png": {
+      "bytes": 63909,
+      "sha256": "7f6b4e3cd82501c621c276f39266d32d588add07e32eb753038456f66930d1ad"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/discovery-1280.png": {
+      "bytes": 81804,
+      "sha256": "73b0cdcb940cf31954d0e21a3f5110010558e68c229db17e66a86068521c76a4"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/discovery-390.png": {
+      "bytes": 63703,
+      "sha256": "3c620f2eaec049156537210f9b2bfc78968ef46a5c966610132a3df06d9fc169"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/own-activity-1280.png": {
+      "bytes": 65942,
+      "sha256": "fd84f3a217082bf8855d85f44d5bdf3aa06d1b1917dd4cc10ec9170bac535eb8"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/own-activity-390.png": {
+      "bytes": 54424,
+      "sha256": "f309f1185d5df26ec00e974f9c912d8fde5e40c0b4cd09803162cda2013a6145"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/report.json": {
+      "bytes": 23336,
+      "sha256": "8d7d7be5342b001e36ce58c6a2598f2fed20f14cec36b79c1228cd7d167b43ba"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/unavailable-390.png": {
+      "bytes": 35709,
+      "sha256": "cfc3615f580148e34e6365df2b74760438ad49c0753d031129d96a18ba2ab670"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-first.log": {
+      "bytes": 247,
+      "sha256": "af9ee7b3a3eaab7fd3e35c41d907630457d44e5b239ec0fa9fef587df54d5673"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-first/discovery-390.png": {
+      "bytes": 63703,
+      "sha256": "3c620f2eaec049156537210f9b2bfc78968ef46a5c966610132a3df06d9fc169"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-first/report.json": {
+      "bytes": 22885,
+      "sha256": "a49adcc9b61c7a3efc568ec10ceb7c61188f5f2f841c6e9b29e2df0ca9ceabf8"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-second.log": {
+      "bytes": 597,
+      "sha256": "24a432607bb1e9b9a63f593677aa828b97e3928a31f874d4c450d25085b5a668"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-second/discovery-390.png": {
+      "bytes": 63703,
+      "sha256": "3c620f2eaec049156537210f9b2bfc78968ef46a5c966610132a3df06d9fc169"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-second/report.json": {
+      "bytes": 23235,
+      "sha256": "25e89308511602daf93437a1771d8ff352d4d7d55d2517562a44de63e90c9259"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third.log": {
+      "bytes": 367,
+      "sha256": "c3fa7f9829bfacc78d129b3c983f7390db73a1fd77cf07492e398d85f9266a31"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/detail-1280.png": {
+      "bytes": 86009,
+      "sha256": "7091d10af513ccc7bee2d0a06b423256ba7cbb4e9db6ed8269b12b65b70f4223"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/detail-390.png": {
+      "bytes": 63909,
+      "sha256": "7f6b4e3cd82501c621c276f39266d32d588add07e32eb753038456f66930d1ad"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/discovery-1280.png": {
+      "bytes": 81804,
+      "sha256": "73b0cdcb940cf31954d0e21a3f5110010558e68c229db17e66a86068521c76a4"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/discovery-390.png": {
+      "bytes": 63703,
+      "sha256": "3c620f2eaec049156537210f9b2bfc78968ef46a5c966610132a3df06d9fc169"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/own-activity-1280.png": {
+      "bytes": 65942,
+      "sha256": "fd84f3a217082bf8855d85f44d5bdf3aa06d1b1917dd4cc10ec9170bac535eb8"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/own-activity-390.png": {
+      "bytes": 54424,
+      "sha256": "f309f1185d5df26ec00e974f9c912d8fde5e40c0b4cd09803162cda2013a6145"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/report.json": {
+      "bytes": 23336,
+      "sha256": "6b0da50e52847e795c5e0fec2d95651f4293767db79b1399aef196c9b748615f"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/browser-third/unavailable-390.png": {
+      "bytes": 35709,
+      "sha256": "cfc3615f580148e34e6365df2b74760438ad49c0753d031129d96a18ba2ab670"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/build-final.log.gz": {
+      "bytes": 546,
+      "sha256": "2a0010b5fdc9c7292c9b1b7a0eda0dd65e6a81dfa3d051d08e3e92dc66af61fe"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/build-first.log.gz": {
+      "bytes": 545,
+      "sha256": "39dafa009780422fdeb634481d49fe90a7b7d1dd71b152f2aa1ede94a36b37d1"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/first-tests.log": {
+      "bytes": 1855,
+      "sha256": "29c4f2045271d77408f34b7094130bd8e986720efc5ab5c4c5515095db288214"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/focused-fourth.log.gz": {
+      "bytes": 232,
+      "sha256": "c5f0d99b5b62cbef387f5515370a9ed57ec1df5b1376124f02bab35d50f89ac9"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/lint-first.log": {
+      "bytes": 28,
+      "sha256": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/origin.log": {
+      "bytes": 393,
+      "sha256": "3506c9faf16b409151b0fe702dea38158e677ca5c7019a1f5823738f52c0b586"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/plan.log": {
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/second-tests.log": {
+      "bytes": 1554,
+      "sha256": "78553e00498f1f2b7e7f4473063a100eec8885b11efadce06b89eaa1db4a5d8e"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/third-tests.log.gz": {
+      "bytes": 232,
+      "sha256": "0c907ee73ea39e67979b492bfdc9be163caf4fc65abd40052867f30f8675f4af"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/typecheck-first.log": {
+      "bytes": 24,
+      "sha256": "5cfb036289d819b2a87e947d65f4532031dd37753f3cf2def0f77d398eea1737"
+    },
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts": {
+      "bytes": 3348,
+      "sha256": "79993cf295f0f398a508ca6b3f70a3d10cbd1b992b9ac72a98db14d8730a35be"
+    },
+    "frontend/src/features/gift-discovery/__tests__/fixtures/preview.html": {
+      "bytes": 433,
+      "sha256": "6eaaa38c599a69af31e6e77fb80b618fdd53a0cfe54aa8562daa940fa2455495"
+    },
+    "frontend/src/features/gift-discovery/__tests__/fixtures/preview.tsx": {
+      "bytes": 7751,
+      "sha256": "9c264ce143b84b445cd3bd0f8060d491958367eb9c0474498c2e9c6f2badd4f6"
+    },
+    "frontend/src/features/gift-discovery/__tests__/ui.test.tsx": {
+      "bytes": 3304,
+      "sha256": "d496425ef170fb86489f10ef9700f2801a2a6e16c547585829a4393f87a689ab"
+    },
+    "frontend/src/features/gift-discovery/index.ts": {
+      "bytes": 413,
+      "sha256": "12766b9c79f8aa68c0b4c27e4692c56c49483d11718b4ccc65a1798fe9ea896e"
+    },
+    "frontend/src/features/gift-discovery/model/contract.ts": {
+      "bytes": 10339,
+      "sha256": "a4a5acaeec497fc8936905df3955194eb0993a306906c5f0d8b7e52197966f82"
+    },
+    "frontend/src/features/gift-discovery/model/controller.ts": {
+      "bytes": 17679,
+      "sha256": "fcc6af9ad3f78ccfb3ccdea1c0a623e96dbaea5bf3c736252a0726946b9eb470"
+    },
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": {
+      "bytes": 11294,
+      "sha256": "79e016aa2f5c3351799a517dc8f14b68d2d1d75693c6de90ae9502ab0ea5d479"
+    },
+    "frontend/src/features/gift-discovery/ui/gifts.css": {
+      "bytes": 3065,
+      "sha256": "f433a866619ad8da88b52832f0462281ed82e1e40bdd26543e3043bbaad06564"
+    },
+    "frontend/src/features/my-gifts/MyGifts.tsx": {
+      "bytes": 3476,
+      "sha256": "12f5a7c63ba4af7ddf0b3daa3044a44870c7585614640f166b5cf265c64dbc17"
+    },
+    "frontend/src/features/my-gifts/index.ts": {
+      "bytes": 36,
+      "sha256": "f8736dd4237769e72704533e2ab9e3f3684e31ea58b8e69427fec3c3a977dab2"
+    }
+  },
+  "unchangedInputs": {
+    "frontend/package.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "bytes": 1265
+    },
+    "frontend/pnpm-lock.yaml": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "bytes": 80328
+    },
+    "contracts/domain/v1/operations.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223",
+      "bytes": 156005
+    },
+    "contracts/domain/v1/common.schema.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35",
+      "bytes": 19763
+    },
+    "contracts/domain/v1/giveaway.schema.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d",
+      "bytes": 18133
+    },
+    "contracts/domain/v1/policy.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "508d22af964b718cdcbd5a25b32b9a1e3f7b651a5b8c25c87d56f1f6b68d0ebe",
+      "bytes": 45191
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "c47e767505e660d8f5eb69bb9759eae1f0aaee6472e4fb963edc82e060385f51",
+      "bytes": 1903262
+    },
+    "contracts/core/v1/core.schema.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88",
+      "bytes": 18901
+    },
+    "contracts/assets/v1/avatar-config.schema.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "37b9be22cff7cbde882ab144aec3b75b5edc24f70653f97c9dcec14e87c652bd",
+      "bytes": 2114
+    },
+    "docs/mcr/party-gift-consumer-contract.md": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "5999292d00fc62220e0fad533b2079d83ceba87e078a226a55c947fab24cc056",
+      "bytes": 3534
+    },
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+      "bytes": 93063
+    },
+    "docs/mcr/project-assessment.md": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+      "bytes": 8910
+    },
+    "docs/mcr/execution-plan.md": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "e833d39d89f13f7eed605bd30f6ba82ab81be81d4247435893c3d5435cca5763",
+      "bytes": 12380
+    },
+    "frontend/src/features/auth/model/session.ts": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "a2f380d2062e136302ed803f9a98c45ff1d84d300d56f31e0540758be3bb24e3",
+      "bytes": 12931
+    },
+    "frontend/src/shared/query/privacy.ts": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+      "bytes": 9885
+    },
+    "frontend/src/shared/query/keys.ts": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "3a82ee13efc4162e04e2a3348508c5d12b897d93c8b40554d370578e25e0daef",
+      "bytes": 2115
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "8708d572eb22e38aa92626b248ad54ff13d56dfde183520b567acbc6445a5132",
+      "bytes": 88017
+    },
+    "frontend/src/shared/api/http.ts": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "f214c64de92a14f49d23c764e1c950d87dfc8e43e9a2e79cd5d4ac56915d1f3f",
+      "bytes": 20583
+    },
+    "frontend/src/app/router.tsx": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "2d34602c4af94952b16a3d0a31a5ef6fb8c961571d3dac1ed70bb1abf40a5ee0",
+      "bytes": 2754
+    },
+    "frontend/src/app/WorldShell.tsx": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "c708b0b1dcb265b1197af474e2eb37d7f2feb2d2cd1e14276d58b7d39d0248db",
+      "bytes": 8598
+    },
+    "frontend/src/app/capabilities.ts": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4",
+      "bytes": 1590
+    },
+    "contracts/fixtures/domain/giveaway-management.json": {
+      "base": "5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa",
+      "sha256": "b2b74d4fa5070458e0e0f52798c6ba55fc39184f4b31c2825a19317b2993f7e3",
+      "bytes": 1703
+    }
+  },
+  "toolchain": {
+    "node": "24.22.2",
+    "pnpm": "11.7.0",
+    "browser": "156.0.8078.80"
+  },
+  "commands": [
+    {
+      "command": "pnpm install --offline --frozen-lockfile",
+      "exit": 0,
+      "evidence": "direct tool output; no lock or manifest change"
+    },
+    {
+      "command": "pnpm test src/features/gift-discovery/__tests__",
+      "exit": 0,
+      "evidence": "frontend/src/features/gift-discovery/__tests__/evidence/focused-fourth.log.gz",
+      "tests": 60,
+      "files": 3
+    },
+    {
+      "command": "pnpm build",
+      "exit": 0,
+      "evidence": "frontend/src/features/gift-discovery/__tests__/evidence/build-final.log.gz",
+      "limitation": "existing 627.99kB main chunk warning; product root injection pending"
+    },
+    {
+      "command": "pnpm lint",
+      "exit": 0,
+      "evidence": "frontend/src/features/gift-discovery/__tests__/evidence/lint-first.log"
+    },
+    {
+      "command": "node frontend/src/features/gift-discovery/__tests__/browser-smoke.mjs; MCR_FE24_EVIDENCE=<assigned>/frontend/src/features/gift-discovery/__tests__/evidence/browser-final",
+      "exit": 0,
+      "evidence": "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/report.json"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0,
+      "evidence": "frontend/src/features/gift-discovery/__tests__/evidence/plan.log"
+    },
+    {
+      "command": "node scripts/mcr/check-ui-origin.mjs --root <assigned>",
+      "exit": 0,
+      "evidence": "frontend/src/features/gift-discovery/__tests__/evidence/origin.log"
+    },
+    {
+      "command": "python3 scripts/mcr/check-boundaries.py --base 5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa --lane frontend --allow-doc docs/mcr/frontend/gift-discovery.md",
+      "exit": 0,
+      "evidence": "frontend/src/features/gift-discovery/__tests__/evidence/boundaries.log",
+      "scope": "all50 primary paths, working/index"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit": 0,
+      "evidence": "direct final tool output after lossless raw-log archiving"
+    }
+  ],
+  "rawArchives": {
+    "frontend/src/features/gift-discovery/__tests__/evidence/build-first.log.gz": {
+      "rawBytes": 979,
+      "rawSha256": "12b81b39627de55c0f0c3ac680785644d6d237398a47d54bb93954816a0b101a",
+      "encoding": "gzip; exact raw terminal bytes preserved"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/build-final.log.gz": {
+      "rawBytes": 979,
+      "rawSha256": "5818bb45cdbdfd81c08983eb17c44268fd36e2b4f48d8307513f12312353232e",
+      "encoding": "gzip; exact raw terminal bytes preserved"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/third-tests.log.gz": {
+      "rawBytes": 298,
+      "rawSha256": "ab7f7af6a34a5b8bf2cfde602cb3d247349aa5b97832fc806fbcdf6ebe48f5ec",
+      "encoding": "gzip; exact raw terminal bytes preserved"
+    },
+    "frontend/src/features/gift-discovery/__tests__/evidence/focused-fourth.log.gz": {
+      "rawBytes": 298,
+      "rawSha256": "3352d6cc75803b9272a757dfeda9c55f29dfa7f1989836dec3b8a12b13ec1ca7",
+      "encoding": "gzip; exact raw terminal bytes preserved"
+    }
+  },
+  "native": {
+    "report": "frontend/src/features/gift-discovery/__tests__/evidence/browser-final/report.json",
+    "result": "PASS",
+    "sourceAndContractHashesMatchedAgainstImplementationGitTree": 181,
+    "widths": [
+      {
+        "width": 390,
+        "height": 844,
+        "result": "PASS",
+        "peakShellResourceOwners": 1,
+        "cleanup": "PASS"
+      },
+      {
+        "width": 1280,
+        "height": 900,
+        "result": "PASS",
+        "peakShellResourceOwners": 1,
+        "cleanup": "PASS"
+      }
+    ],
+    "screenshotsInspected": [
+      "discovery-390.png",
+      "detail-390.png",
+      "own-activity-390.png",
+      "unavailable-390.png",
+      "discovery-1280.png",
+      "detail-1280.png",
+      "own-activity-1280.png"
+    ],
+    "inspection": "All seven final PNGs byte-identical to individually inspected browser-third PNGs",
+    "synthetic": [
+      "fetch",
+      "identities",
+      "stock",
+      "place labels",
+      "instrumented world resource lease"
+    ],
+    "real": [
+      "native Chrome",
+      "canonical FE09 request",
+      "FE02 privacy",
+      "FE07 shell/routes"
+    ]
+  },
+  "limits": [
+    "Parent-owned production root panel injection/context qualification still required",
+    "Three frozen reads only; FE25 authoring and FE26 commands not implemented",
+    "No authoritative per-target reservation eligibility in read contract; unknown/partial activity never enables reserve",
+    "No media URL invented from media ID; no character art rendered",
+    "Backend/database/multiuser/device/release NOT_RUN",
+    "Whole C04 and whole project acceptance not claimed"
+  ],
+  "provenance": "See docs/mcr/frontend/gift-discovery.md; all product rendering newly authored; source/contracts unchanged",
+  "receiptSeal": "This file excludes its own bytes and subsequent evidence-only commit to avoid circular hashes. Its Git commit seals the receipt; implementationCommit seals the50 primary paths."
+}
