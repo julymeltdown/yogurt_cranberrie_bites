@@ -203,10 +203,14 @@ pub struct AdmissionBridge {
 struct AdmissionAttempt<'a> {
     bridge: &'a AdmissionBridge,
     binding: Option<Binding>,
+    invalidate_on_cancel: Option<Binding>,
 }
 impl Drop for AdmissionAttempt<'_> {
     fn drop(&mut self) {
         if let Some(b) = self.binding.as_ref() {
+            if let Some(old) = self.invalidate_on_cancel.as_ref() {
+                self.bridge.invalidate(old);
+            }
             let _ = self.bridge.request_cleanup(b);
         }
     }
@@ -729,6 +733,7 @@ impl AdmissionPort for AdmissionBridge {
         let mut attempt = AdmissionAttempt {
             bridge: self,
             binding: Some(pending.clone()),
+            invalidate_on_cancel: None,
         };
         let admitted = match self
             .repository
@@ -817,18 +822,71 @@ impl AdmissionPort for AdmissionBridge {
         if held.access_expires_at != claim.record.access_expires_at {
             return Err(SwitchFailure::Rejected(SwitchRejection::TicketInvalid));
         }
-        self.invalidate(current);
+        let stream = Uuid::new_v4();
+        let pending = Binding {
+            key: current.key,
+            session_id: current.session_id,
+            connection_id: current.connection_id,
+            owner_id: current.owner_id,
+            room_id: claim.record.pin.room_id.uuid(),
+            room_epoch: *self
+                .rooms
+                .get(&claim.record.pin.room_id.uuid())
+                .ok_or(SwitchFailure::Close(SafeClose::UNAVAILABLE))?,
+            stream_id: stream,
+            resources: self.resources.clone(),
+        };
+        {
+            let mut views = self
+                .views
+                .lock()
+                .map_err(|_| SwitchFailure::Close(SafeClose::UNAVAILABLE))?;
+            if views.cleanup.len() >= MAX_MEMBERS {
+                return Err(SwitchFailure::Close(SafeClose::UNAVAILABLE));
+            }
+            views.cleanup.insert(cleanup_key(&pending), pending.clone());
+        }
+        let mut attempt = AdmissionAttempt {
+            bridge: self,
+            binding: Some(pending.clone()),
+            invalidate_on_cancel: Some(current.clone()),
+        };
+        // Runtime BeginSwitch suppresses old publication. Until the DB response,
+        // the prior qualified view is retained; a rejected transaction therefore
+        // preserves its simulated position and sequence. Cancellation invalidates it.
         let result = self
             .repository
             .switch(&self.owner, &held, &claim, Utc::now())
             .await
             .map_err(|e| SwitchFailure::Close(safe(e)))?;
-        let SwitchOutcome::Switched(result) = result else {
-            return Err(SwitchFailure::Close(SafeClose::UNAVAILABLE));
+        let result = match result {
+            SwitchOutcome::Switched(result) => result,
+            SwitchOutcome::Full => {
+                self.views
+                    .lock()
+                    .map_err(|_| SwitchFailure::Close(SafeClose::UNAVAILABLE))?
+                    .cleanup
+                    .remove(&cleanup_key(&pending));
+                attempt.binding = None;
+                return Err(SwitchFailure::Rejected(SwitchRejection::RoomFull));
+            }
+            _ => return Err(SwitchFailure::Close(SafeClose::UNAVAILABLE)),
         };
-        self.publish(result.membership, current.connection_id, Uuid::new_v4())
+        // Known committed scope change is invalidated immediately; BE12 can
+        // remove old presence while the bounded owner transition retains the
+        // unclosed recovery slot until installation of the checked new stream.
+        self.invalidate(current);
+        let result = self
+            .publish(result.membership, current.connection_id, stream)
             .await
-            .map_err(|e| SwitchFailure::Close(safe(e)))
+            .map_err(|e| SwitchFailure::Close(safe(e)))?;
+        self.views
+            .lock()
+            .map_err(|_| SwitchFailure::Close(SafeClose::UNAVAILABLE))?
+            .cleanup
+            .remove(&cleanup_key(&pending));
+        attempt.binding = None;
+        Ok(result)
     }
     async fn resync(&self, current: &Binding, _request: Uuid) -> Result<Binding, SafeClose> {
         let _gate = self.admission_gate.lock().await;

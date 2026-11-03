@@ -25,6 +25,7 @@ pub const MAX_ROOMS: usize = 16;
 pub const OWNER_QUEUE: usize = 64;
 pub const COMMANDS_PER_TICK: usize = 64;
 pub const STEP_MS: u64 = 50;
+pub const SWITCH_TRANSITION_MS: u64 = 750;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum RuntimeError {
@@ -131,6 +132,11 @@ pub struct ShutdownReport {
     pub remaining_cleanup: Vec<Binding>,
 }
 
+struct Transition {
+    binding: Binding,
+    request_id: Uuid,
+    until_ms: u64,
+}
 pub struct WorldRuntime<P, R, T>
 where
     P: CanonicalAuthorityPort,
@@ -142,6 +148,7 @@ where
     rooms: BTreeMap<Uuid, Room>,
     members: BTreeMap<(Uuid, Uuid), Binding>,
     cleanup: BTreeMap<(Uuid, Uuid, Uuid), Binding>,
+    transitions: BTreeMap<(Uuid, Uuid), Transition>,
     membership: MembershipAdapter<P>,
     recovery: Recovery,
     recipient: R,
@@ -219,6 +226,7 @@ where
             rooms,
             members: BTreeMap::new(),
             cleanup: BTreeMap::new(),
+            transitions: BTreeMap::new(),
             membership: MembershipAdapter::new(authority, anchor.clone(), capacity)
                 .map_err(|_| RuntimeError::Authority)?,
             recovery: Recovery::new(capacity, QueueLimits::default())
@@ -262,6 +270,13 @@ where
         Ok(())
     }
     fn close_member(&mut self, b: &Binding, reason: RevokeReason) {
+        if self
+            .transitions
+            .get(&member_key(b))
+            .is_some_and(|t| t.binding == *b)
+        {
+            self.transitions.remove(&member_key(b));
+        }
         if let Some(room) = self.rooms.get_mut(&b.room_id) {
             let _ = self.recovery.revoke(b, reason, &mut room.simulation);
             room.motion.remove(&b.key.user_id.uuid());
@@ -295,6 +310,15 @@ where
             || (!already_here && target.simulation.player_count() >= target.capacity)
         {
             return Err(RuntimeError::Capacity);
+        }
+        if let Some(t) = self
+            .transitions
+            .get(&member_key(&b))
+            .filter(|t| t.binding.connection_id == b.connection_id)
+        {
+            if now >= t.until_ms || cause != SnapshotCause::RoomSwitch(t.request_id) {
+                return Err(RuntimeError::Stale);
+            }
         }
         let installed = self
             .membership
@@ -354,6 +378,7 @@ where
             let _ = self.remember_cleanup(b);
             return Err(RuntimeError::Authority);
         }
+        self.transitions.remove(&member_key(&b));
         if let Some(previous) = old {
             if previous != b {
                 if let Some(room) = self.rooms.get_mut(&previous.room_id) {
@@ -387,6 +412,45 @@ where
         }
         Ok(())
     }
+    /// Suppress only this subscription's publication before asynchronous DB work.
+    /// Others omit its presence; BE12 keeps using actual canonical membership.
+    pub fn begin_switch(
+        &mut self,
+        b: &Binding,
+        request_id: Uuid,
+        now: u64,
+    ) -> Result<(), RuntimeError> {
+        let fence = self.membership.publication_fence();
+        let _guard = fence.lock().map_err(|_| RuntimeError::Authority)?;
+        self.clock(now)?;
+        if request_id.is_nil()
+            || self.members.get(&member_key(b)) != Some(b)
+            || self.transitions.contains_key(&member_key(b))
+        {
+            return Err(RuntimeError::Stale);
+        }
+        let lease = self
+            .membership
+            .current(b, now)
+            .map_err(|_| RuntimeError::Authority)?;
+        let until_ms = now
+            .checked_add(SWITCH_TRANSITION_MS)
+            .ok_or(RuntimeError::Clock)?
+            .min(lease.access_expires_at_ms)
+            .min(lease.lease_until_ms);
+        if until_ms <= now {
+            return Err(RuntimeError::Authority);
+        }
+        self.transitions.insert(
+            member_key(b),
+            Transition {
+                binding: b.clone(),
+                request_id,
+                until_ms,
+            },
+        );
+        Ok(())
+    }
     pub fn reject_switch(
         &mut self,
         b: &Binding,
@@ -403,6 +467,14 @@ where
         {
             return Err(RuntimeError::Authority);
         }
+        if !self
+            .transitions
+            .get(&member_key(b))
+            .is_some_and(|t| t.binding == *b && t.request_id == request_id && now < t.until_ms)
+        {
+            return Err(RuntimeError::Stale);
+        }
+        self.transitions.remove(&member_key(b));
         let bytes=serde_json::to_vec(&serde_json::json!({"protocolVersion":"1.0.0","type":"switchRejected","requestId":request_id,"streamId":b.stream_id,"reason":reason.wire()})).map_err(|_|RuntimeError::Transport)?;
         if !self.transport.ready(b)
             || self
@@ -426,6 +498,10 @@ where
         let _guard = fence.lock().map_err(|_| RuntimeError::Authority)?;
         self.clock(now)?;
         self.scope(b)?;
+        if self.transitions.contains_key(&member_key(b)) {
+            return Err(RuntimeError::Stale);
+        }
+
         if self.members.get(&member_key(b)) != Some(b) {
             return Err(RuntimeError::Stale);
         }
@@ -446,6 +522,13 @@ where
         self.clock(now)?;
         if self.members.get(&member_key(b)) != Some(b) {
             return Ok(false);
+        }
+        if self
+            .transitions
+            .get(&member_key(b))
+            .is_some_and(|t| t.binding == *b)
+        {
+            self.transitions.remove(&member_key(b));
         }
         if self.remember_cleanup(b.clone()).is_err() {
             self.close_member(b, RevokeReason::PolicyUnavailable);
@@ -520,11 +603,34 @@ where
         let _guard = fence.lock().map_err(|_| RuntimeError::Authority)?;
         self.clock(now)?;
         let mut report = Maintenance::default();
-        let revoked = self.recovery.sweep(now, &self.membership);
-        for b in revoked {
-            let reason = self.authority_reason(&b, now);
-            self.close_member(&b, reason);
-            report.closed += 1;
+        let bindings: Vec<_> = self.members.values().cloned().collect();
+        for b in bindings {
+            if let Some(t) = self.transitions.get(&member_key(&b)) {
+                if now < t.until_ms {
+                    continue;
+                }
+                let reason = if self
+                    .recovery
+                    .stream_mut(&b)
+                    .is_ok_and(|s| s.deadline().monotonic_ms <= now)
+                {
+                    RevokeReason::SessionExpired
+                } else {
+                    RevokeReason::PolicyUnavailable
+                };
+                self.close_member(&b, reason);
+                report.closed += 1;
+                continue;
+            }
+            if self
+                .recovery
+                .stream_mut(&b)
+                .map_or(true, |s| s.check_authority(now, &self.membership).is_err())
+            {
+                let reason = self.authority_reason(&b, now);
+                self.close_member(&b, reason);
+                report.closed += 1;
+            }
         }
         for room in self.rooms.values_mut() {
             let result = room
@@ -583,6 +689,9 @@ where
             .ok_or(RuntimeError::Binding)?;
         let mut roster = Vec::new();
         for b in self.members.values().filter(|b| b.room_id == scope.room_id) {
+            if self.transitions.contains_key(&member_key(b)) {
+                continue;
+            }
             if room.simulation.replication_state(b).is_none() {
                 continue;
             }
@@ -610,6 +719,13 @@ where
         self.clock(now)?;
         if self.members.get(&member_key(b)) != Some(b) {
             return Err(RuntimeError::Stale);
+        }
+        if let Some(t) = self.transitions.get(&member_key(b)) {
+            if t.binding == *b && now < t.until_ms {
+                return Ok(());
+            }
+            self.close_member(b, RevokeReason::PolicyUnavailable);
+            return Ok(());
         }
         if self
             .recovery
@@ -730,6 +846,7 @@ where
                     let Some(now) = self.origin_ms.checked_add(self.started.elapsed().as_millis().try_into().unwrap_or(u64::MAX)) else { break; };
                     match command {
                         Command::Install { binding,cause,reply } => { let _ = reply.send(self.install(binding,cause,now)); },
+                        Command::BeginSwitch{binding,request_id,reply}=>{let _=reply.send(self.begin_switch(&binding,request_id,now));},
                         Command::RejectSwitch{binding,request_id,reason,reply}=>{let _=reply.send(self.reject_switch(&binding,request_id,reason,now));},
                         Command::Input { binding,input,reply } => { let _ = reply.send(self.input(&binding,input,now)); },
                         Command::Disconnect { binding,reply } => { let _ = reply.send(self.disconnect(&binding,now)); },
@@ -755,6 +872,11 @@ where
     }
 }
 pub enum Command {
+    BeginSwitch {
+        binding: Binding,
+        request_id: Uuid,
+        reply: oneshot::Sender<Result<(), RuntimeError>>,
+    },
     RejectSwitch {
         binding: Binding,
         request_id: Uuid,

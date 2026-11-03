@@ -426,6 +426,9 @@ async fn session(
                     },
                     ClientMessage::SwitchRoom { request_id, admission, .. } => {
                         let b = bound.as_ref().ok_or(SafeClose::AUTH_REQUIRED)?;
+                        let (reply,answer)=oneshot::channel();
+                        state.owner.try_submit(Command::BeginSwitch{binding:b.clone(),request_id,reply}).map_err(|_|SafeClose::UNAVAILABLE)?;
+                        tokio::time::timeout(Duration::from_millis(100),answer).await.map_err(|_|SafeClose::UNAVAILABLE)?.map_err(|_|SafeClose::UNAVAILABLE)?.map_err(|_|SafeClose::UNAVAILABLE)?;
                         let next = match tokio::time::timeout(Duration::from_millis(500),state.admission.switch(b,admission,request_id)).await.map_err(|_| SafeClose::UNAVAILABLE)? {
                             Ok(next)=>next,
                             Err(SwitchFailure::Close(close))=>return Err(close),

@@ -835,3 +835,112 @@ fn ingress_rejects_stale_streams_noncanonical_ids_and_clock_regression() {
     wire["eventId"] = serde_json::json!("AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA");
     assert!(decode(&serde_json::to_vec(&wire).unwrap()).is_err());
 }
+
+#[test]
+fn bounded_switch_transition_survives_a_committed_scope_change_between_owner_ticks() {
+    let mut f = fixture(3, 2);
+    let old = binding(&f, 1, 0);
+    let observer = binding(&f, 2, 0);
+    let elsewhere = binding(&f, 3, 1);
+    for b in [&old, &observer, &elsewhere] {
+        enter(&mut f, b);
+        f.owner.publish(b, 0, true).unwrap();
+    }
+    let before = f.socket.0.lock().unwrap().frames.len();
+    let request = id(2000);
+    f.owner.begin_switch(&old, request, 0).unwrap();
+    let mut next = old.clone();
+    next.room_id = f.rooms[1];
+    next.stream_id = id(3000);
+    // The durable bridge has committed: the old actual canonical grant is gone.
+    f.authority.grant(&next);
+    f.owner.maintain(50).unwrap();
+    f.owner.maintain(100).unwrap();
+    f.owner.publish(&old, 100, true).unwrap();
+    f.owner.publish(&observer, 100, true).unwrap();
+    f.owner.publish(&elsewhere, 100, true).unwrap();
+    {
+        let socket = f.socket.0.lock().unwrap();
+        assert!(!socket.closes.iter().any(|(b, _)| b == &old));
+        assert!(!socket.frames[before..].iter().any(|(b, _, _)| b == &old));
+        assert!(socket.frames[before..]
+            .iter()
+            .any(|(b, _, _)| b == &elsewhere));
+    }
+    f.owner
+        .install(next.clone(), SnapshotCause::RoomSwitch(request), 100)
+        .unwrap();
+    f.owner.publish(&next, 100, true).unwrap();
+    let socket = f.socket.0.lock().unwrap();
+    let frame = &socket.frames.last().unwrap().1;
+    assert_eq!(frame["type"], "snapshot");
+    assert_eq!(frame["streamSeq"], 0);
+    assert_eq!(frame["requestId"], request.to_string());
+    assert_eq!(frame["roomId"], next.room_id.to_string());
+    drop(socket);
+    assert_eq!(
+        f.owner.input(&old, input(&old, 1), 101),
+        Err(RuntimeError::Stale)
+    );
+}
+#[test]
+fn rejected_switch_resumes_only_the_matching_still_current_subscription() {
+    let mut f = fixture(2, 1);
+    let b = binding(&f, 1, 0);
+    enter(&mut f, &b);
+    f.owner.publish(&b, 0, true).unwrap();
+    let request = id(2001);
+    f.owner.begin_switch(&b, request, 0).unwrap();
+    f.owner.maintain(50).unwrap();
+    assert_eq!(
+        f.owner
+            .reject_switch(&b, id(2002), SwitchRejection::RoomFull, 50),
+        Err(RuntimeError::Stale)
+    );
+    f.owner
+        .reject_switch(&b, request, SwitchRejection::RoomFull, 50)
+        .unwrap();
+    f.owner.input(&b, input(&b, 1), 50).unwrap();
+    f.owner.maintain(100).unwrap();
+    f.owner.publish(&b, 100, true).unwrap();
+    let socket = f.socket.0.lock().unwrap();
+    assert_eq!(socket.frames[1].1["type"], "switchRejected");
+    assert_eq!(socket.frames[1].1["streamId"], b.stream_id.to_string());
+    assert_eq!(socket.frames.last().unwrap().1["ackInputSeq"], 1);
+    assert!(socket.closes.is_empty());
+}
+#[test]
+fn abandoned_switch_expires_with_a_bounded_deadline_without_other_room_stalling() {
+    let mut f = fixture(2, 2);
+    let b = binding(&f, 1, 0);
+    let other = binding(&f, 2, 1);
+    enter(&mut f, &b);
+    enter(&mut f, &other);
+    f.owner.publish(&b, 0, true).unwrap();
+    f.owner.publish(&other, 0, true).unwrap();
+    f.owner.begin_switch(&b, id(2003), 0).unwrap();
+    assert_eq!(
+        f.owner.input(&b, input(&b, 1), 50),
+        Err(RuntimeError::Stale)
+    );
+    f.owner.maintain(SWITCH_TRANSITION_MS).unwrap();
+    f.owner.publish(&other, SWITCH_TRANSITION_MS, true).unwrap();
+    assert_eq!(f.owner.active_count(), 1);
+    assert!(f
+        .socket
+        .0
+        .lock()
+        .unwrap()
+        .closes
+        .iter()
+        .any(|(who, _)| who == &b));
+    assert!(f
+        .socket
+        .0
+        .lock()
+        .unwrap()
+        .frames
+        .iter()
+        .any(|(who, frame, _)| who == &other
+            && frame["serverTick"].as_u64().is_some_and(|tick| tick > 0)));
+}

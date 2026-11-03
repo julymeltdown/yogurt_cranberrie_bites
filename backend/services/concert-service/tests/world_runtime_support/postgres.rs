@@ -18,7 +18,7 @@ use std::{
     os::unix::fs::{MetadataExt, PermissionsExt},
     path::PathBuf,
     str::FromStr,
-    sync::atomic::{AtomicUsize, Ordering},
+    sync::atomic::{AtomicBool, AtomicUsize, Ordering},
     time::Duration as StdDuration,
 };
 async fn owned_pool() -> anyhow::Result<PgPool> {
@@ -75,6 +75,7 @@ struct Owners {
     generation: Mutex<Uuid>,
     calls: AtomicUsize,
     delay_publish: bool,
+    delay_switch: AtomicBool,
 }
 #[async_trait]
 impl LiveWorldOwners for Owners {
@@ -90,6 +91,9 @@ impl LiveWorldOwners for Owners {
         now: chrono::DateTime<Utc>,
     ) -> Result<LiveOwnerView, WorldError> {
         let call = self.calls.fetch_add(1, Ordering::SeqCst);
+        if self.delay_switch.load(Ordering::SeqCst) && call >= 2 {
+            tokio::time::sleep(Duration::from_millis(120)).await;
+        }
         if self.delay_publish && call == 1 {
             tokio::time::sleep(Duration::from_secs(4)).await;
         }
@@ -161,6 +165,7 @@ impl DatabaseFixture {
             generation: Mutex::new(Uuid::new_v4()),
             calls: AtomicUsize::new(0),
             delay_publish,
+            delay_switch: AtomicBool::new(false),
         });
         let anchor = ClockAnchor {
             monotonic_ms: 0,
@@ -412,6 +417,98 @@ async fn native_database_bridge_full_target_rejection_preserves_current_membersh
     assert_eq!(current.membership.room_id.uuid(), f.room);
     assert_eq!(current.membership.connection_id.uuid(), b.connection_id);
     f.bridge.disconnected(&b).await;
+    f.pool.close().await;
+    Ok(())
+}
+#[tokio::test]
+#[ignore = "requires world_runtime_support/bridge_native.py marker-owned PostgreSQL"]
+async fn native_database_bridge_successful_socket_switch_spans_owner_ticks() -> anyhow::Result<()> {
+    let f = DatabaseFixture::new(false).await?;
+    let mut target = spec(f.target, 1);
+    target.room_epoch = id(7);
+    let transport = SocketTransport::default();
+    let runtime = WorldRuntime::new(
+        f.event,
+        Uuid::parse_str(&f.owner.process_id)?,
+        f.anchor.clone(),
+        vec![spec(f.room, 1), target],
+        f.bridge.clone(),
+        f.bridge.clone(),
+        transport.clone(),
+    )
+    .unwrap();
+    let (started, origin_ms) = runtime.clock_origin();
+    let (handle, owner) = runtime.spawn();
+    let handle = Arc::new(handle);
+    let state = WorldSocketState::new(
+        OriginPolicy::new(vec!["http://localhost:9000".into()], true).unwrap(),
+        transport.clone(),
+        f.bridge.clone(),
+        handle.clone(),
+        started,
+        origin_ms,
+    );
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
+    let address = listener.local_addr()?;
+    let (stop, stopped) = tokio::sync::oneshot::channel();
+    let server = tokio::spawn(async move {
+        axum::serve(listener, router(state))
+            .with_graceful_shutdown(async {
+                let _ = stopped.await;
+            })
+            .await
+            .unwrap()
+    });
+    let mut request = format!("ws://{address}/world-ws").into_client_request()?;
+    request
+        .headers_mut()
+        .insert("origin", "http://localhost:9000".parse()?);
+    let (mut client, _) = connect_async(request).await?;
+    let (raw, _) = f.ticket(f.room, f.user).await?;
+    client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"authenticate","ticket":raw,"eventId":f.event.uuid(),"roomId":f.room,"mapId":"map_fixture","mapRevision":1,"avatarManifestId":"avatar_fixture","avatarManifestVersion":1}).to_string())).await?;
+    let initial = value(&mut client).await;
+    let (raw, _) = f.ticket(f.target, f.user).await?;
+    let request_id = Uuid::new_v4();
+    f.owners.delay_switch.store(true, Ordering::SeqCst);
+    client.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"switchRoom","requestId":request_id,"streamId":initial["streamId"],"ticket":raw,"eventId":f.event.uuid(),"roomId":f.target,"mapId":"map_fixture","mapRevision":1,"avatarManifestId":"avatar_fixture","avatarManifestVersion":1}).to_string())).await?;
+    let mut switched = false;
+    for _ in 0..8 {
+        let frame = value(&mut client).await;
+        if frame["type"] == "snapshot" {
+            assert_eq!(frame["roomId"], f.target.to_string());
+            assert_eq!(frame["cause"], "ROOM_SWITCH");
+            assert_eq!(frame["requestId"], request_id.to_string());
+            assert_ne!(frame["streamId"], initial["streamId"]);
+            assert_eq!(frame["streamSeq"], 0);
+            assert_eq!(frame["accessExpiresAt"], initial["accessExpiresAt"]);
+            switched = true;
+            break;
+        }
+    }
+    assert!(switched);
+    let current = PgWorldRepository::new(f.pool.clone())
+        .current_owned_membership(
+            ParticipantKey {
+                event_id: f.event,
+                user_id: f.user,
+            },
+            Utc::now(),
+        )
+        .await?
+        .unwrap();
+    assert_eq!(current.membership.room_id.uuid(), f.target);
+    client.close(None).await?;
+    tokio::time::sleep(Duration::from_millis(100)).await;
+    f.bridge.cleanup().await?;
+    transport.close_all(SafeClose::UNAVAILABLE);
+    handle.request_stop();
+    let report = tokio::time::timeout(Duration::from_secs(2), owner).await??;
+    for b in report.remaining_cleanup {
+        let _ = CanonicalAuthorityPort::release(&f.bridge, &b);
+    }
+    assert_eq!(f.bridge.cleanup().await?, 0);
+    let _ = stop.send(());
+    tokio::time::timeout(Duration::from_secs(2), server).await??;
     f.pool.close().await;
     Ok(())
 }
