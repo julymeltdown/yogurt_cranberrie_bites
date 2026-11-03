@@ -181,6 +181,10 @@ is content sanitization, not a separate antivirus scanning service.
   The native harness now requires exact build receipt/binary SHA/current source
   hashes and source ancestry, preventing a stale executable from certifying newer
   source. Detailed diagnostics and machine-readable test summaries are retained.
+  Negative admission deliberately supplies the previous binary after changing the
+  Rust fixture source: expected exit 1 and exact source-pin mismatch, before any
+  cluster is created. `stale-artifact-refusal.json` records that expected refusal;
+  it is not a producer or cleanup failure.
 - A continuation audit found an expiry-after-authority gap. Final PUT/publication,
   first linkage, private read and intent SQL now check database wall time after
   owner awaits. Exact source SQL executed against expired synthetic rows changes
