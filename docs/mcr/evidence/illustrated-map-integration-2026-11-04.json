@@ -1,0 +1,82 @@
+{
+  "author": "80d91501694ede5ddc6ad28ac37010309c035878",
+  "base": "1163b827f9e62390163788bb674d24855816e0ec",
+  "integration_base": "ef9422c4d83f8555ee5b48ef693d37fd5bf87e0c",
+  "paths": [
+    "docs/mcr/frontend/illustrated-map-overview.md",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/build.log",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/delivery-pins.json",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-broken-360.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-broken-390.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-broken-430.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-invalid-360.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-invalid-390.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-invalid-430.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-missing-360.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-missing-390.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/fallback-missing-430.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-danger-expanded-360.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-danger-expanded-390.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-danger-expanded-430.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-parade-360.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-parade-390.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-parade-430.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-revenge-360.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-revenge-390.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/illustrated-revenge-430.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/legacy-schematic-360.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/legacy-schematic-390.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/legacy-schematic-430.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/lint.log",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/map-mismatch-360.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/map-mismatch-390.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/map-mismatch-430.png",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/native.json",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/native.log",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/plan.log",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/source-pins.json",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/tests.log",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/types.log",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/evidence/ui-origin.log",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.html",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.tsx",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/native.mjs",
+    "frontend/src/app/places-entry/owner.ts",
+    "frontend/src/app/world-panels/index.tsx",
+    "frontend/src/features/places/__tests__/illustrated-overview/consumer.test.ts",
+    "frontend/src/features/places/__tests__/illustrated-overview/producer.test.ts",
+    "frontend/src/features/places/model/controller.ts",
+    "frontend/src/features/places/ui/Places.tsx",
+    "frontend/src/features/places/ui/places.css",
+    "frontend/src/world/composition/index.ts",
+    "frontend/src/world/illustrated/overview.ts",
+    "frontend/src/world/runtime.ts"
+  ],
+  "existing_preimages": 7,
+  "unchanged_inputs": 83,
+  "delivery_hashes": 47,
+  "result": "PASS",
+  "commands": [
+    {
+      "command": "git diff --check HEAD~1 HEAD",
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_FE14_PYTHON=<retained-validation-venv> node vitest run [31 affected world/places/default-shell files]",
+      "exit_code": 0,
+      "files": 31,
+      "tests": 764,
+      "duration_seconds": 7.24
+    },
+    {
+      "command": "node typescript/bin/tsc --noEmit --incremental false --project tsconfig.json",
+      "exit_code": 0
+    }
+  ],
+  "delivered_commit": "e506c1021489002225930f632b72c48ac00b57ae",
+  "limitations": [
+    "MOCK_READY, not live or full visual acceptance",
+    "Author native proof retained; no second general review",
+    "Initial unquoted HEAD^ diff check rejected by zsh; corrected command passed"
+  ]
+}

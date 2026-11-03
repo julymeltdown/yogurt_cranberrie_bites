@@ -8,6 +8,24 @@ The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged cop
 
 ## Evidence and limits
 
+### Illustrated Map overview delivered — `e506c102`
+
+The previous section's pending Map implementation is now integrated from clean
+author `80d91501`. All 48 assigned paths, seven preimages, 83 unchanged inputs and
+47 delivery hashes match. Fresh combined strict TypeScript and all 764 affected
+tests pass. The author qualified the actual default application fixture at
+360/390/430px with 24 captures, nine exact source-composition pixel comparisons,
+keyboard/camera/Back behavior, fallback, account withdrawal and resource cleanup.
+Main inspected the recorded 390px overview. See the
+[integration record](../frontend/illustrated-map-integration.md).
+
+This delivers illustrated Map presentation, not a live venue guide or full
+visual acceptance. Numbered markers and orthogonal geography still differ from
+the reference, and approved characters, populated media rows, landing artwork,
+production release binding and live Wall composition remain open. The overall
+decision stays **handoff confirmed; partial adoption; visual implementation not
+accepted**. Earlier sections retain their dated evidence bounds.
+
 ### Delivery recheck at `aa33fa7`
 
 The original attachment and committed reference were freshly hashed and still
