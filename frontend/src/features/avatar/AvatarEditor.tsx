@@ -1,0 +1,63 @@
+import { useEffect, useRef, useSyncExternalStore } from 'react'
+import { layers, sameConfig, type AvatarConfig } from './contract'
+import type { AvatarEditorController, EditorNotice } from './controller'
+import './avatar-editor.css'
+const messages: Record<Exclude<EditorNotice, null>, string> = {
+  'invalid-selection': 'That selection is unavailable in the current avatar collection.',
+  'load-failed': 'The saved outfit could not be verified. Reload to try again.',
+  'save-failed': 'Your outfit was not saved. Your draft is still here. Try again when access is available.',
+  saved: 'Outfit saved.', 'saved-refresh-needed': 'Outfit saved. Reload the world and profile to refresh their display.',
+  conflict: 'Your saved outfit changed elsewhere. Your draft is still here. Load the latest outfit before saving.',
+  uncertain: 'The save result is unknown. Your draft is still here. Check the latest saved outfit before another save.',
+  'review-server': 'Latest saved outfit loaded. Choose whether to keep your draft or use the saved outfit.',
+  'preview-unavailable': 'Reviewed avatar artwork is unavailable. Customization will be available when the current collection is ready.',
+}
+const name = (id: string) => id.replaceAll('_', ' ')
+export function AvatarEditor({ controller }: { readonly controller: AvatarEditorController }) {
+  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), host = useRef<HTMLDivElement>(null)
+  useEffect(() => { controller.start(); return () => controller.stop() }, [controller])
+  useEffect(() => { const element = host.current, canvas = state.preview.canvas; if (!element || !canvas) return
+    element.replaceChildren(canvas); return () => { canvas.remove() }
+  }, [state.preview.canvas])
+  const busy = ['loading', 'saving', 'reconciling'].includes(state.phase)
+  const editable = state.phase === 'ready' && state.draft !== null
+  function available(config: AvatarConfig) { return controller.canSelect(config) }
+  return <section className="mcr-avatar-editor" aria-labelledby="avatar-editor-title" aria-busy={busy}>
+    <header><p>YOUR AVATAR</p><h1 id="avatar-editor-title">DRESS UP</h1><p>Try an outfit here. Save to update your avatar across the world and your profile.</p></header>
+    <div className="mcr-avatar-preview" role="img" aria-label={state.preview.phase === 'ready' ? 'Draft outfit preview' : 'Avatar preview unavailable'}>
+      <div ref={host} />
+      {state.preview.phase !== 'ready' && <p>{state.preview.phase === 'loading' ? 'Loading preview…' : 'Preview unavailable'}</p>}
+    </div>
+    <p role="status" aria-live="polite">{state.phase === 'saving' ? 'Saving outfit…' : state.phase === 'reconciling' ? 'Checking latest saved outfit…'
+      : state.phase === 'loading' ? 'Loading your outfit…' : state.notice ? messages[state.notice]
+        : state.phase === 'unavailable' || state.phase === 'disposed' ? 'Avatar editing is unavailable for this session.' : 'Changes are a draft until you save.'}</p>
+    {state.phase !== 'unavailable' && state.phase !== 'disposed' && state.notice === 'load-failed' && <button type="button" disabled={busy} onClick={() => void controller.reload()}>Reload saved outfit</button>}
+    {state.needsReconciliation && !state.candidate && <button type="button" disabled={busy} onClick={() => void controller.reload()}>Check latest saved outfit</button>}
+    {state.candidate && <section aria-label="Saved outfit reconciliation"><h2>Saved outfit · revision {state.candidate.revision}</h2>
+      <p>Keeping your draft uses this revision for your next explicit save.</p>
+      <button type="button" disabled={busy} onClick={() => controller.resolveConflict('keep-draft')}>Keep my draft</button>
+      <button type="button" disabled={busy} onClick={() => controller.resolveConflict('use-server')}>Use saved outfit</button>
+    </section>}
+    {state.catalog && <>
+      <fieldset disabled={!editable}><legend>Presets</legend><div className="mcr-avatar-options">
+        {state.catalog.presets.map(preset => <button key={preset.id} type="button" disabled={!available(preset.config)}
+          aria-pressed={!!state.draft && sameConfig(state.draft, preset.config)} onClick={() => controller.selectPreset(preset.id)}>{name(preset.id)}</button>)}
+      </div></fieldset>
+      {layers.map(layer => <label key={layer}>{name(layer)}<select value={state.draft?.item_ids[layer] ?? ''} disabled={!editable} onChange={event => controller.selectItem(layer, event.target.value || null)}>
+        {!state.draft && <option value="">Choose {layer}</option>}
+        {layer === 'accessory' && <option value="" disabled={!!state.draft && !available({ ...state.draft, item_ids: { ...state.draft.item_ids, accessory: null } })}>None</option>}
+        {state.draft && state.draft.item_ids[layer] !== null && !state.catalog?.items.some(item => item.id === state.draft?.item_ids[layer] && item.layer === layer)
+          && <option value={state.draft.item_ids[layer]!} disabled>Saved item unavailable</option>}
+        {state.catalog!.items.filter(item => item.layer === layer).map(item => <option key={item.id} value={item.id}
+          disabled={!state.draft || !available({ ...state.draft, item_ids: { ...state.draft.item_ids, [layer]: item.id } })}>{name(item.id)}</option>)}
+      </select></label>)}
+      <label>Skin tone<select value={state.draft?.skin_tone_id ?? ''} disabled={!editable} onChange={event => controller.selectTone(event.target.value)}>
+        {!state.draft && <option value="">Choose skin tone</option>}
+        {state.draft && !state.catalog.tones.includes(state.draft.skin_tone_id) && <option value={state.draft.skin_tone_id} disabled>Saved skin tone unavailable</option>}
+        {state.catalog.tones.map(tone => <option key={tone} value={tone} disabled={!state.draft || !available({ ...state.draft, skin_tone_id: tone })}>{name(tone)}</option>)}
+      </select></label>
+    </>}
+    <footer><button type="button" disabled={!editable || state.needsReconciliation || !state.draft || !state.persisted || !available(state.draft) || sameConfig(state.draft, state.persisted.config)} onClick={() => void controller.save()}>Save outfit</button>
+      <button type="button" disabled={!editable} onClick={() => controller.cancel()}>Cancel changes</button></footer>
+  </section>
+}
