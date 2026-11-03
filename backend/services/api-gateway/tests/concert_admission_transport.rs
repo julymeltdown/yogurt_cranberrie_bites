@@ -411,16 +411,18 @@ impl Harness {
         token: &str,
         signer: ActorDelegationSigner,
     ) -> GrpcAuthClient {
-        GrpcAuthClient::connect_with_metrics(
-            url.into(),
-            caller,
-            token,
-            None,
-            signer,
-            GatewayMetrics::default(),
-        )
-        .await
-        .unwrap()
+        Self::client_with_metrics(url, caller, token, signer, GatewayMetrics::default()).await
+    }
+    async fn client_with_metrics(
+        url: &str,
+        caller: Workload,
+        token: &str,
+        signer: ActorDelegationSigner,
+        metrics: GatewayMetrics,
+    ) -> GrpcAuthClient {
+        GrpcAuthClient::connect_with_metrics(url.into(), caller, token, None, signer, metrics)
+            .await
+            .unwrap()
     }
     async fn close(mut self) {
         let _ = self.stop.take().unwrap().send(());
@@ -575,6 +577,7 @@ async fn upstream_private_errors_are_fixed_safe_and_never_retried() {
         Code::Unimplemented,
         Code::Unauthenticated,
         Code::PermissionDenied,
+        Code::ResourceExhausted,
     ] {
         *h.owner.mode.lock().unwrap() = Mode::Error(code);
         let error = h
@@ -585,14 +588,14 @@ async fn upstream_private_errors_are_fixed_safe_and_never_retried() {
         assert!(!format!("{error:?} {error}").contains(PRIVATE));
         assert_eq!(
             error,
-            if matches!(code, Code::Unauthenticated | Code::PermissionDenied) {
-                AdmissionReadError::Denied
-            } else {
-                AdmissionReadError::Unavailable
+            match code {
+                Code::Unauthenticated | Code::PermissionDenied => AdmissionReadError::Denied,
+                Code::ResourceExhausted => AdmissionReadError::CapacityExhausted,
+                _ => AdmissionReadError::Unavailable,
             }
         );
     }
-    assert_eq!(h.owner.calls.load(Ordering::SeqCst), 6);
+    assert_eq!(h.owner.calls.load(Ordering::SeqCst), 7);
     h.close().await;
 }
 #[tokio::test]
@@ -917,4 +920,170 @@ fn read_policy_matches_the_installed_auth_caller_and_actor_contract() {
     assert!(source.contains("(\"ReadConcertAdmission\", &[&[1]])"));
     assert!(POLICY.allows(METHOD, Workload::Gateway));
     assert!(!POLICY.allows(METHOD, Workload::Post));
+}
+
+// The child runs this exact test alone, so no other test shares its global pool.
+#[test]
+fn global_gateway_auth_capacity_refuses_before_dispatch_and_releases() {
+    const TEST: &str = "global_gateway_auth_capacity_refuses_before_dispatch_and_releases";
+    if std::env::var_os("MCR_GLOBAL_ADMISSION_CAPACITY_ISOLATED").is_none() {
+        let status = std::process::Command::new(std::env::current_exe().unwrap())
+            .args([TEST, "--exact", "--test-threads=1", "--nocapture"])
+            .env("MCR_GLOBAL_ADMISSION_CAPACITY_ISOLATED", "1")
+            .status()
+            .unwrap();
+        assert!(status.success(), "isolated capacity test failed: {status}");
+        return;
+    }
+    tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+        .unwrap()
+        .block_on(capacity_lifecycle());
+}
+
+fn edge_counter(metrics: &GatewayMetrics, name: &str) -> u64 {
+    let prefix = format!("{name}{{edge=\"gateway->auth\"}} ");
+    metrics
+        .render_prometheus()
+        .lines()
+        .find_map(|line| line.strip_prefix(&prefix).map(|n| n.parse().unwrap()))
+        .unwrap_or(0)
+}
+
+async fn capacity_lifecycle() {
+    use platform::edge_concurrency::EdgeLimiter;
+    const REJECTED: &str = "grpc_edge_in_flight_rejections_total";
+    const EXPIRED: &str = "grpc_edge_deadline_exhaustions_total";
+    let edge = platform::edge::Edge::GatewayAuth;
+    let h = Harness::start(Mode::Reply(reply()), false).await;
+    let metrics = GatewayMetrics::default();
+    let client = Harness::client_with_metrics(
+        &h.url,
+        Workload::Gateway,
+        TOKEN,
+        ActorDelegationSigner::local_parity(Workload::Gateway),
+        metrics.clone(),
+    )
+    .await;
+    let ctx = live();
+    let held: Vec<_> = std::iter::from_fn(|| EdgeLimiter::global().try_acquire(edge)).collect();
+    assert_eq!(held.len(), edge.max_in_flight());
+    assert_eq!(edge_counter(&metrics, REJECTED), 0);
+    assert_eq!(
+        client.read_concert_admission(&ctx, None).await.unwrap_err(),
+        AdmissionReadError::CapacityExhausted
+    );
+    assert_eq!(h.owner.calls.load(Ordering::SeqCst), 0);
+    assert_eq!(edge_counter(&metrics, REJECTED), 1);
+    assert_eq!(edge_counter(&metrics, EXPIRED), 0);
+    drop(held);
+    assert_eq!(EdgeLimiter::global().available(edge), edge.max_in_flight());
+
+    assert!(client.read_concert_admission(&ctx, None).await.is_ok());
+    assert_eq!(h.owner.calls.load(Ordering::SeqCst), 1);
+    assert_eq!(EdgeLimiter::global().available(edge), edge.max_in_flight());
+    *h.owner.mode.lock().unwrap() = Mode::Error(Code::Unavailable);
+    assert_eq!(
+        client.read_concert_admission(&ctx, None).await.unwrap_err(),
+        AdmissionReadError::Unavailable
+    );
+    assert_eq!(h.owner.calls.load(Ordering::SeqCst), 2);
+    assert_eq!(EdgeLimiter::global().available(edge), edge.max_in_flight());
+    assert_eq!(edge_counter(&metrics, EXPIRED), 0);
+
+    *h.owner.mode.lock().unwrap() = Mode::Error(Code::DeadlineExceeded);
+    assert_eq!(
+        client.read_concert_admission(&ctx, None).await.unwrap_err(),
+        AdmissionReadError::DeadlineExceeded
+    );
+    assert_eq!(h.owner.calls.load(Ordering::SeqCst), 3);
+    assert_eq!(edge_counter(&metrics, EXPIRED), 1);
+    assert_eq!(EdgeLimiter::global().available(edge), edge.max_in_flight());
+
+    // An earlier task stop must shorten the live context and count once.
+    *h.owner.mode.lock().unwrap() = Mode::Hold;
+    assert_eq!(
+        platform::call_deadline::scope(
+            std::time::Instant::now() + Duration::from_millis(100),
+            client.read_concert_admission(&ctx, None),
+        )
+        .await
+        .unwrap_err(),
+        AdmissionReadError::DeadlineExceeded
+    );
+    assert!(ctx.check().is_ok());
+    assert_eq!(h.owner.calls.load(Ordering::SeqCst), 4);
+    assert_eq!(edge_counter(&metrics, EXPIRED), 2);
+    assert_eq!(edge_counter(&metrics, REJECTED), 1);
+    assert_eq!(EdgeLimiter::global().available(edge), edge.max_in_flight());
+
+    // A fresh harness plus observed owner entry AND permit ownership prevent
+    // a stale notification or an unpolled spawned task proving cancellation.
+    let cancellation = Harness::start(Mode::Hold, false).await;
+    let cancellation_metrics = GatewayMetrics::default();
+    let cancel_client = Harness::client_with_metrics(
+        &cancellation.url,
+        Workload::Gateway,
+        TOKEN,
+        ActorDelegationSigner::local_parity(Workload::Gateway),
+        cancellation_metrics.clone(),
+    )
+    .await;
+    let cancel_context = live();
+    let task = tokio::spawn(async move {
+        cancel_client
+            .read_concert_admission(&cancel_context, None)
+            .await
+            .map(|_| ())
+    });
+    tokio::time::timeout(Duration::from_millis(600), async {
+        loop {
+            if cancellation.owner.calls.load(Ordering::SeqCst) == 1
+                && cancellation.owner.active.load(Ordering::SeqCst) == 1
+                && EdgeLimiter::global().available(edge) == edge.max_in_flight() - 1
+            {
+                break;
+            }
+            tokio::task::yield_now().await;
+        }
+    })
+    .await
+    .expect("cancelled read must hold a real permit and enter its owner");
+    assert!(!task.is_finished());
+    assert_eq!(cancellation.owner.calls.load(Ordering::SeqCst), 1);
+    assert_eq!(cancellation.owner.active.load(Ordering::SeqCst), 1);
+    assert_eq!(
+        EdgeLimiter::global().available(edge),
+        edge.max_in_flight() - 1
+    );
+    task.abort();
+    assert!(task.await.unwrap_err().is_cancelled());
+    assert_eq!(EdgeLimiter::global().available(edge), edge.max_in_flight());
+    assert_eq!(edge_counter(&cancellation_metrics, EXPIRED), 0);
+    assert_eq!(edge_counter(&cancellation_metrics, REJECTED), 0);
+    tokio::time::timeout(Duration::from_secs(2), async {
+        while cancellation.owner.active.load(Ordering::SeqCst) != 0 {
+            tokio::time::sleep(Duration::from_millis(5)).await;
+        }
+    })
+    .await
+    .expect("owned cancelled handler must stop");
+    *cancellation.owner.mode.lock().unwrap() = Mode::Reply(reply());
+    assert!(cancellation
+        .client
+        .read_concert_admission(&live(), None)
+        .await
+        .is_ok());
+    assert_eq!(cancellation.owner.calls.load(Ordering::SeqCst), 2);
+    assert_eq!(EdgeLimiter::global().available(edge), edge.max_in_flight());
+    cancellation.close().await;
+
+    *h.owner.mode.lock().unwrap() = Mode::Reply(reply());
+    assert!(client.read_concert_admission(&ctx, None).await.is_ok());
+    assert_eq!(h.owner.calls.load(Ordering::SeqCst), 5);
+    assert_eq!(EdgeLimiter::global().available(edge), edge.max_in_flight());
+    assert_eq!(edge_counter(&metrics, EXPIRED), 2);
+    assert_eq!(edge_counter(&metrics, REJECTED), 1);
+    h.close().await;
 }

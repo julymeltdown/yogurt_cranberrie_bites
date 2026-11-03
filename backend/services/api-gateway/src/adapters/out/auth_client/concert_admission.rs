@@ -4,7 +4,7 @@ use crate::adapters::out::jwt::concert_access::ConcertAccessContext;
 use chrono::{DateTime, Utc};
 use platform::{actor_delegation::request_for, edge::Edge};
 use std::fmt;
-use tonic::Code;
+use tonic::{Code, Status};
 use uuid::Uuid;
 
 /// Parse/decode guard, not an observation lifetime or revocation SLO.
@@ -86,6 +86,8 @@ pub enum AdmissionReadError {
     DeadlineExceeded,
     #[error("Admission read denied")]
     Denied,
+    #[error("Admission read capacity unavailable")]
+    CapacityExhausted,
     #[error("Admission owner unavailable")]
     Unavailable,
     #[error("Invalid admission owner response")]
@@ -206,23 +208,45 @@ impl GrpcAuthClient {
         access()?;
         // Includes readiness, protobuf/body collection, configured signing,
         // server and response decoding. No replay_safe_read, cache or retry.
-        let result = platform::call_deadline::scope(
-            stop.into_std(),
-            tokio::time::timeout_at(stop, client.read_concert_admission(request)),
-        )
+        let result = platform::call_deadline::scope(stop.into_std(), async {
+            // The shared non-retrying helper checks the process-wide edge
+            // limiter before polling generated readiness/signing/dispatch. Its
+            // permit and standard metrics live until completion, error, timeout
+            // or cancellation. The absolute timeout stays inside its accounting
+            // so a local expiry increments the standard counter exactly once.
+            let remaining = stop.saturating_duration_since(tokio::time::Instant::now());
+            if remaining.is_zero() {
+                self.metrics
+                    .edge_deadline_metrics()
+                    .record_deadline_exhausted(Edge::GatewayAuth);
+                return Err(Status::deadline_exceeded("Request timed out"));
+            }
+            platform::grpc_deadline::with_deadline(
+                remaining,
+                Edge::GatewayAuth,
+                self.metrics.edge_deadline_metrics(),
+                async {
+                    match tokio::time::timeout_at(stop, client.read_concert_admission(request))
+                        .await
+                    {
+                        Ok(result) if tokio::time::Instant::now() < stop => result,
+                        _ => Err(Status::deadline_exceeded("Request timed out")),
+                    }
+                },
+            )
+            .await
+        })
         .await;
         access()?;
         if tokio::time::Instant::now() >= stop {
             return Err(AdmissionReadError::DeadlineExceeded);
         }
         let response = result
-            .map_err(|_| AdmissionReadError::DeadlineExceeded)?
             .map_err(|status| match status.code() {
                 Code::DeadlineExceeded => AdmissionReadError::DeadlineExceeded,
                 Code::Unauthenticated | Code::PermissionDenied => AdmissionReadError::Denied,
-                Code::ResourceExhausted | Code::DataLoss | Code::OutOfRange => {
-                    AdmissionReadError::InvalidResponse
-                }
+                Code::ResourceExhausted => AdmissionReadError::CapacityExhausted,
+                Code::DataLoss | Code::OutOfRange => AdmissionReadError::InvalidResponse,
                 _ => AdmissionReadError::Unavailable,
             })?
             .into_inner();

@@ -102,10 +102,10 @@ NotBound remain explicit non-granting outcomes; no admission decision is made.
 Upstream diagnostic strings and details are dropped in favor of fixed safe
 errors. Raw bearer tokens or private claim/error canaries are not logged/stored.
 
-## Verification and evidence
+## Initial candidate verification and evidence
 
 Rust 1.88.0, `--locked --offline`, two jobs, disabled debug information, retained
-target `/Users/lhs/Desktop/mcr-build/backend`. The final combined run passed
+target `/Users/lhs/Desktop/mcr-build/backend`. The initial `868d02c` combined run passed
 **16 new guarded transport + 13 strict context + 209 retained Gateway unit +
 13 verification transport** cases, zero failed/ignored/filtered, exit **0**.
 The transport server is a clearly controlled owner double behind the actual
@@ -133,7 +133,8 @@ after selection of a short expiry. Key initialization now finishes before the
 one-token timing fixture; there is no retry of an unexpected denial. Both
 development failures are retained separately from the final passing invocation.
 
-Reproduction from this worktree uses `CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0`:
+Current reproduction uses `CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0`
+and `CARGO_PROFILE_TEST_DEBUG=0`:
 
 ```sh
 cargo +1.88.0 test --manifest-path backend/Cargo.toml --target-dir /Users/lhs/Desktop/mcr-build/backend --locked --offline -j2 -p api-gateway --test concert_admission_transport --test concert_access --test unit --test verification_transport -- --test-threads=2
@@ -152,10 +153,72 @@ whitespace, planning provenance and the exact four-path backend boundary check
 pass, exit **0**. The existing `auth_client.rs` differs by exactly one export;
 all protected inputs and strict-context sources remain byte-identical to base.
 
-The external handoff receipt retains exact source/contract/fixture/log hashes,
-commands/exits and committed ancestry at
-`/Users/lhs/Desktop/mcr-build/gateway-auth-owner-handoff.json`. Logs use the
-`gateway-auth-owner-` prefix there. Parent alone reviews, integrates and pushes;
+## Parent-review P2 correction
+
+The reviewed `868d02c` candidate was not accepted as final: its generated read
+was bounded by an absolute timeout but bypassed the retained per-edge concurrency
+permit and standard deadline/in-flight metrics. An exhausted GatewayAuth edge
+therefore still admitted encoding/signing/dispatch. The current correction calls
+the existing non-retrying `platform::grpc_deadline::with_deadline` helper inside
+the same absolute scoped stop. That helper checks the process-wide
+`EdgeLimiter::global()` permit before polling generated readiness/signing/dispatch,
+refuses a full edge immediately without queueing or retry, retains the normal
+deadline and in-flight metrics, and releases its owned permit on every normal
+return, error, timeout or caller cancellation. The new fixed
+`CapacityExhausted` result represents RESOURCE_EXHAUSTED, including local capacity
+refusal and peer overload; it does not certify where a peer failure occurred.
+Malformed payload states remain `InvalidResponse`; private upstream error
+strings/details are still dropped. The absolute `timeout_at` encloses the complete
+generated future inside the helper accounting. Late results become deadline
+errors before the helper counts them, followed by the retained context/stop checks.
+This avoids losing timeout metrics when the original stop wins.
+
+The correction suite adds one process-isolated capacity test. Its parent starts
+only the same exact test in a child process; no no-op child entry is counted as
+separate coverage. It holds all 256 real global GatewayAuth permits, requires
+zero owner dispatch and rejection counter 1, then verifies full capacity after
+success, owner Unavailable, peer DeadlineExceeded, a shorter outer task timeout,
+and cancellation. Exact deadline counters progress from 0 to 1 on the peer
+error and 2 on the local timeout; rejection stays 1. The local timeout preserves
+a still-live sealed context. Cancellation uses a fresh harness and waits for
+owner calls=1, active handlers=1, global available=255 and an unfinished client
+task before aborting. It requires all 256 permits afterward, zero cancellation
+deadline/rejection metrics, owned handler cleanup and a successful subsequent
+read. No public test-only limiter or authority seam is introduced.
+
+The earlier intermediate cancellation test used a Notify permit left by previous
+calls, so its passing result could prove only cancellation before first poll.
+Parent/QA required the fresh harness plus actual call/permit assertions above.
+The correction development logs also preserve three compiler failures involving
+the helper Result shape and missing Status import, and the interrupted test log.
+Those invocations used tee without pipefail: their shell exit 0 is not Cargo
+success. Final runs capture subprocess return codes directly (or use pipefail).
+
+Final correction validation uses Rust 1.88.0, locked/offline, two jobs and both
+`CARGO_PROFILE_DEV_DEBUG=0` and `CARGO_PROFILE_TEST_DEBUG=0`. All commands below
+returned exit **0**, with no warnings in final Rust logs:
+
+| Check | Result |
+|---|---|
+| Focused exact isolated capacity test | Parent and single child PASS; 16 unrelated tests deliberately filtered |
+| Full combined Gateway suites | 252 top-level tests PASS: 17 transport, 13 context, 209 unit, 13 retained transport; child capacity execution also PASS |
+| Compile-fail doctests | 6 PASS |
+| Gateway library check and binary build | PASS |
+| Rustfmt, whitespace, plan and four-path boundary checks | PASS |
+
+The child is a second execution of the same capacity test, not a distinct
+functional case; the combined top-level suites have no failed/ignored/filtered
+cases. Reproduce the focused check with the same environment and Cargo options
+above, selecting `--test concert_admission_transport
+global_gateway_auth_capacity_refuses_before_dispatch_and_releases -- --exact
+--test-threads=1`. Native Auth/PostgreSQL behavior remains outside this suite.
+
+The original receipt `/Users/lhs/Desktop/mcr-build/gateway-auth-owner-handoff.json`
+and its 251-test result remain immutable historical evidence for `868d02c`.
+Correction commands, exact exits, hashes, committed ancestry and lease release
+are recorded separately in
+`/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-handoff.json`; final logs use
+the `gateway-auth-owner-r1-` prefix. Parent alone reviews, integrates and pushes;
 the bounded goal stays active through concrete review fixes.
 
 ## Unqualified composition
