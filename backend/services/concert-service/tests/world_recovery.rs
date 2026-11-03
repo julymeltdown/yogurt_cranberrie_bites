@@ -868,3 +868,106 @@ fn multiroom_expiry_routes_cleanup_and_retains_failed_owner_for_retry() {
     assert!(book.is_empty());
     assert_eq!(sim_b.player_count(), 0);
 }
+#[test]
+fn failed_expiry_cleanup_survives_fresh_cross_owner_reconnect_and_retry() {
+    let (mut book, mut old_sim, b, a, _) = setup();
+    book.activate(
+        b.clone(),
+        deadline(),
+        SnapshotCause::Initial,
+        "spawn_test",
+        0,
+        &a,
+        &mut old_sim,
+    )
+    .unwrap();
+    assert!(book.expire(10000, |_| false).is_empty());
+    assert_eq!(old_sim.player_count(), 1);
+    let mut fresh = b.clone();
+    fresh.connection_id = id(900);
+    fresh.stream_id = id(901);
+    fresh.owner_id = id(902);
+    fresh.room_epoch = id(903);
+    let mut new_deadline = deadline();
+    new_deadline.monotonic_ms = 20000;
+    new_deadline.utc += chrono::Duration::seconds(10);
+    a.grant(&fresh, 15000, 20000);
+    let mut new_sim = simulation(&fresh);
+    book.activate(
+        fresh.clone(),
+        new_deadline,
+        SnapshotCause::Initial,
+        "spawn_test",
+        10000,
+        &a,
+        &mut new_sim,
+    )
+    .unwrap();
+    assert_eq!(book.len(), 1);
+    assert_eq!(book.pending_cleanup_count(), 1);
+    assert!(book.stream_mut(&fresh).is_ok());
+    assert!(book.retry_cleanup(|_| false).is_empty());
+    assert_eq!(book.pending_cleanup_count(), 1);
+    assert_eq!(
+        book.retry_cleanup(|binding| old_sim.remove(binding)),
+        vec![b]
+    );
+    assert_eq!(book.pending_cleanup_count(), 0);
+    assert_eq!(old_sim.player_count(), 0);
+    assert_eq!(new_sim.player_count(), 1);
+}
+#[test]
+fn displaced_owner_cleanup_history_is_bounded_before_destination_admission() {
+    let (mut book, mut first, b, a, _) = setup();
+    book = Recovery::new(1, QueueLimits::default()).unwrap();
+    book.activate(
+        b.clone(),
+        deadline(),
+        SnapshotCause::Initial,
+        "spawn_test",
+        0,
+        &a,
+        &mut first,
+    )
+    .unwrap();
+    let mut second = b.clone();
+    second.connection_id = id(900);
+    second.stream_id = id(901);
+    second.owner_id = id(902);
+    second.room_epoch = id(903);
+    a.grant(&second, 5000, 10000);
+    let mut second_sim = simulation(&second);
+    book.activate(
+        second.clone(),
+        deadline(),
+        SnapshotCause::Initial,
+        "spawn_test",
+        1,
+        &a,
+        &mut second_sim,
+    )
+    .unwrap();
+    assert_eq!(book.pending_cleanup_count(), 1);
+    let mut third = second.clone();
+    third.connection_id = id(910);
+    third.stream_id = id(911);
+    third.owner_id = id(912);
+    third.room_epoch = id(913);
+    a.grant(&third, 5000, 10000);
+    let mut third_sim = simulation(&third);
+    assert_eq!(
+        book.activate(
+            third,
+            deadline(),
+            SnapshotCause::Initial,
+            "spawn_test",
+            2,
+            &a,
+            &mut third_sim
+        ),
+        Err(RecoveryError::Capacity)
+    );
+    assert_eq!(third_sim.player_count(), 0);
+    assert_eq!(book.pending_cleanup_count(), 1);
+    assert!(book.stream_mut(&second).is_ok());
+}

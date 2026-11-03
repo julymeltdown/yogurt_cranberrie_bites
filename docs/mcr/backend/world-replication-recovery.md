@@ -232,3 +232,14 @@ results for the earlier source only; tests were not executed. Delivery requested
 lease release at that point; it was explicitly released to BE34/35 with no
 running Cargo. The provenance source correction is now ready for a later
 explicit slot; no compiled result is reused for its changed bytes.
+
+A follow-up peer reread identified a retained-cleanup edge case: replacing a
+closed slot after failed expiry cleanup could discard the old owner binding.
+The correction retains displaced bindings in an independent cleanup map,
+separately bounded by the configured subscription capacity. Activation checks
+that budget before destination admission; `retry_cleanup` routes each binding
+to its owner and keeps failures discoverable. `expire` also retries this map.
+Successful `switch_room` removal acknowledges its entry. Adapters must keep
+retrying pending cleanup even after the active slot disconnects. Added regressions
+cover failed expiry cleanup -> cross-owner fresh reconnect -> successful retry,
+and capacity refusal before mutation when pending owner cleanup is full.

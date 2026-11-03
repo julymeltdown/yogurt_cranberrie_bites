@@ -31,8 +31,17 @@ struct Slot {
 /// Capacity includes closed slots; clean them on disconnect/expiry. No unbounded tombstone map.
 pub struct Recovery {
     slots: BTreeMap<(Uuid, Uuid), Slot>,
+    pending_cleanup: BTreeMap<(Uuid, Uuid, Uuid, Uuid), Binding>,
     capacity: usize,
     limits: QueueLimits,
+}
+fn cleanup_key(b: &Binding) -> (Uuid, Uuid, Uuid, Uuid) {
+    (
+        b.key.event_id.uuid(),
+        b.key.user_id.uuid(),
+        b.connection_id,
+        b.stream_id,
+    )
 }
 fn key(b: &Binding) -> (Uuid, Uuid) {
     (b.key.event_id.uuid(), b.key.user_id.uuid())
@@ -44,9 +53,13 @@ impl Recovery {
         }
         Ok(Self {
             slots: BTreeMap::new(),
+            pending_cleanup: BTreeMap::new(),
             capacity,
             limits,
         })
+    }
+    pub fn pending_cleanup_count(&self) -> usize {
+        self.pending_cleanup.len()
     }
     pub fn len(&self) -> usize {
         self.slots.len()
@@ -136,6 +149,16 @@ impl Recovery {
             return Err(RecoveryError::Binding);
         }
         let same_owner_room = previous.is_some_and(|p| same_room(p.stream.binding(), &binding));
+        let cleanup_obligation = previous
+            .filter(|_| !same_owner_room)
+            .map(|s| s.stream.binding().clone());
+        if let Some(old) = &cleanup_obligation {
+            if self.pending_cleanup.len() >= self.capacity
+                && !self.pending_cleanup.contains_key(&cleanup_key(old))
+            {
+                return Err(RecoveryError::Capacity);
+            }
+        }
         if same_owner_room && simulation.state(binding.key.user_id.uuid()).is_some() {
             simulation
                 .replace_stream(binding.clone(), now, membership)
@@ -164,6 +187,9 @@ impl Recovery {
         used_streams.insert(binding.stream_id);
         if let Some(old) = self.slots.get_mut(&key(&binding)) {
             old.stream.revoke(RevokeReason::ConnectionReplaced);
+        }
+        if let Some(old) = cleanup_obligation {
+            self.pending_cleanup.insert(cleanup_key(&old), old);
         }
         self.slots.insert(
             key(&binding),
@@ -207,7 +233,9 @@ impl Recovery {
             membership,
             new_sim,
         )?;
-        old_sim.remove(old);
+        if old_sim.remove(old) {
+            self.pending_cleanup.remove(&cleanup_key(old));
+        }
         Ok(())
     }
     /// All input passes here after a delivered snapshot; no queued pre-snapshot/old-stream motion.
@@ -269,6 +297,20 @@ impl Recovery {
             })
             .collect()
     }
+    /// Retry displaced owner cleanup independently of the current subscription. A failed
+    /// expiry cleanup cannot be forgotten when a fresh connection moves to another owner.
+    pub fn retry_cleanup(&mut self, mut cleanup: impl FnMut(&Binding) -> bool) -> Vec<Binding> {
+        let mut cleaned = Vec::new();
+        self.pending_cleanup.retain(|_, b| {
+            if cleanup(b) {
+                cleaned.push(b.clone());
+                false
+            } else {
+                true
+            }
+        });
+        cleaned
+    }
     /// Deterministic expiry cleanup even when no socket writes or simulation ticks occur.
     /// Adapter must also sweep live authority/policy via Replication::refresh before publication.
     pub fn expire(&mut self, now: u64, mut cleanup: impl FnMut(&Binding) -> bool) -> Vec<Binding> {
@@ -278,7 +320,7 @@ impl Recovery {
             .filter(|s| s.stream.deadline().monotonic_ms <= now)
             .map(|s| s.stream.binding().clone())
             .collect();
-        let mut cleaned = Vec::new();
+        let mut cleaned = self.retry_cleanup(&mut cleanup);
         for b in expired {
             self.slots
                 .get_mut(&key(&b))
