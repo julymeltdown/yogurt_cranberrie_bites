@@ -1,0 +1,14 @@
+[
+  {
+    "check": "tests",
+    "exitCode": 0
+  },
+  {
+    "check": "build",
+    "exitCode": 0
+  },
+  {
+    "check": "lint",
+    "exitCode": 0
+  }
+]

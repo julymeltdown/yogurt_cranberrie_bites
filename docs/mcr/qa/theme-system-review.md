@@ -160,9 +160,9 @@ existence of `independent-probe-result.json`. That artifact was never written:
 resource cancelled`) during its supersession test section and exited with code 1.
 The claim that an independent probe result JSON file existed is formally retracted.
 
-Additionally, the screenshot hash in the previous report was mistakenly transcribed
-from the worker's evidence directory (`/tmp/mcr-fe06-evidence/theme-390.png`) rather
-than QA's own output file. Finally, `reentrancy-finding.json` on disk reflects the
+The earlier screenshot digest matches neither the current worker screenshot nor
+QA's screenshot; its precise origin is unverified. The table below replaces it
+with the measured QA digest. Finally, `reentrancy-finding.json` on disk reflects the
 final post-fix PASS verification run; the initial pre-fix failure observation was
 recorded in the process output stream and was overwritten when the probe was re-run
 against candidate `4cb28b5`.

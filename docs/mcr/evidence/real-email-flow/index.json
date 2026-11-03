@@ -1,0 +1,180 @@
+{
+  "workerCommits": [
+    "0cca6d2550d40b8f4b1147a4e716c2e12bc11f8e",
+    "9591fe57498eddb42efee64cc9f40209382c71bd"
+  ],
+  "integrationCommits": [
+    "2f398a3",
+    "bed5ffa"
+  ],
+  "references": [
+    {
+      "original": "/tmp/mcr-real-email-cookie-proof/receipt.json",
+      "archive": "e482f0173dec-receipt.json",
+      "sha256": "e482f0173dece132284cfdb0e36834e02fd8d46772a00cc37a19e1a1466d015a",
+      "bytes": 10599
+    },
+    {
+      "original": "/tmp/mcr-real-email-cookie-proof/report.json",
+      "archive": "7cdc75f2bada-report.json",
+      "sha256": "7cdc75f2bada1f934f6eb3bfe81df2104fe3cc667268c8f5c790b1070aadfc6d",
+      "bytes": 17573
+    },
+    {
+      "original": "/tmp/mcr-real-email-cookie-proof/signed-in-bootstrap-unavailable.png",
+      "archive": "6c4a38401e3d-signed-in-bootstrap-unavailable.png",
+      "sha256": "6c4a38401e3dda33dadafcb99a434ca0110d21cecfd4f00722372463e51e0b73",
+      "bytes": 38546
+    },
+    {
+      "original": "/tmp/mcr-real-email-cookie-proof/stack.json",
+      "archive": "e94bafc24eeb-stack.json",
+      "sha256": "e94bafc24eeb7d071233b38aa827d5e3a35e18f7a7dec8cc169aa385e8d7ad6d",
+      "bytes": 9102
+    },
+    {
+      "original": "/tmp/mcr-real-email-cookie-proof/verified-mobile.png",
+      "archive": "4877e06e80fd-verified-mobile.png",
+      "sha256": "4877e06e80fdd0e9fcbc1cab26bd2572f533d7e7958c8ed5d818ad65d5356af4",
+      "bytes": 42972
+    },
+    {
+      "original": "/tmp/mcr-real-email-cookie-proof.log",
+      "archive": "4e50a3585e23-mcr-real-email-cookie-proof.log",
+      "sha256": "4e50a3585e231be3c78bc586904281bbad24aae620d19a84c48da92f3601b8f5",
+      "bytes": 66
+    },
+    {
+      "original": "/tmp/mcr-real-email-auth-regression.txt",
+      "archive": "9e952c0e0ea3-mcr-real-email-auth-regression.txt",
+      "sha256": "9e952c0e0ea381c179e2edb568bd1be667c8b5c8cde673d0ee7ec6cdab68f1e8",
+      "bytes": 250
+    },
+    {
+      "original": "/tmp/mcr-real-email-build.txt",
+      "archive": "3f5daa3c0aa5-mcr-real-email-build.txt",
+      "sha256": "3f5daa3c0aa5a2a1dfc0ce3f9ac1e609ae01a8c452e02bccf7a6005ebc55b09b",
+      "bytes": 979
+    },
+    {
+      "original": "/tmp/mcr-real-email-entry-typecheck-final.txt",
+      "archive": "e3b0c44298fc-mcr-real-email-entry-typecheck-final.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/tmp/mcr-real-email-lint.txt",
+      "archive": "e3b0c44298fc-mcr-real-email-lint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/tmp/mcr-real-email-cookie-proof-lint.txt",
+      "archive": "e3b0c44298fc-mcr-real-email-cookie-proof-lint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/tmp/mcr-real-email-contract.txt",
+      "archive": "ab0ac16503eb-mcr-real-email-contract.txt",
+      "sha256": "ab0ac16503eb1f7b4ba226deb28d7f17a0db67712698c41480ccdad4653fffa6",
+      "bytes": 33
+    },
+    {
+      "original": "/tmp/mcr-real-email-origin-cookie-proof.txt",
+      "archive": "49bffded3f55-mcr-real-email-origin-cookie-proof.txt",
+      "sha256": "49bffded3f552b885af9e706fe41ae7c2cdacf6109944242d2ba11ec0c77e351",
+      "bytes": 393
+    },
+    {
+      "original": "/tmp/mcr-real-email-plan.json",
+      "archive": "88606f33d640-mcr-real-email-plan.json",
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+      "bytes": 1435
+    },
+    {
+      "original": "/tmp/mcr-real-email-boundaries-cookie-proof.txt",
+      "archive": "7a31d03b0b3f-mcr-real-email-boundaries-cookie-proof.txt",
+      "sha256": "7a31d03b0b3fa46d9e675a53e532934f2f0190e8eff524329b0597ad178da690",
+      "bytes": 123
+    },
+    {
+      "original": "/tmp/mcr-real-email-historical-first/report.json",
+      "archive": "7a186f484c9f-report.json",
+      "sha256": "7a186f484c9f95d8c60a0a55bf768baf4a01b05779ed0acc950dca414d8c83c5",
+      "bytes": 1868
+    },
+    {
+      "original": "/tmp/mcr-real-email-historical-first/stack.json",
+      "archive": "815599ea6132-stack.json",
+      "sha256": "815599ea61321a10cd3f97b7ec3adb022b3f080a487bb85db5787a9c58c3bec8",
+      "bytes": 1944
+    },
+    {
+      "original": "/tmp/mcr-real-email-current-first/report.json",
+      "archive": "c5a7a3a38b44-report.json",
+      "sha256": "c5a7a3a38b447edb92296e0dcbeb37bfe9348b048acfc7cb4d57e711352a550e",
+      "bytes": 13480
+    },
+    {
+      "original": "/tmp/mcr-real-email-current-second/report.json",
+      "archive": "cfccf9a62b67-report.json",
+      "sha256": "cfccf9a62b6731ab3ae150973704019afec74fc566b4005e8a46ceec5bb4c7fa",
+      "bytes": 17342
+    },
+    {
+      "original": "/tmp/mcr-real-email-current-second/stack.json",
+      "archive": "c93fc14dede3-stack.json",
+      "sha256": "c93fc14dede3d1620540eb45d047ec4a8cf415f4967fb60bbc79d855ad256906",
+      "bytes": 9086
+    },
+    {
+      "original": "/tmp/mcr-real-email-final/report.json",
+      "archive": "972aeee0c2b2-report.json",
+      "sha256": "972aeee0c2b27b7dfa40f325ff3604b58577846e4c3b93334629b1f3e1f87f6b",
+      "bytes": 17573
+    },
+    {
+      "original": "/tmp/mcr-real-email-final/stack.json",
+      "archive": "4f06543267ae-stack.json",
+      "sha256": "4f06543267ae20600a563e7a0a081099ab88b8fa366f6503f3596273b0706d80",
+      "bytes": 9086
+    },
+    {
+      "original": "/tmp/mcr-real-email-delivery/report.json",
+      "archive": "5e27a791047a-report.json",
+      "sha256": "5e27a791047abdd3b9b5b8b3df1424f828f490cf1b1cd00dae7616d001752f4c",
+      "bytes": 17573
+    },
+    {
+      "original": "/tmp/mcr-real-email-delivery/signed-in-bootstrap-unavailable.png",
+      "archive": "6c4a38401e3d-signed-in-bootstrap-unavailable.png",
+      "sha256": "6c4a38401e3dda33dadafcb99a434ca0110d21cecfd4f00722372463e51e0b73",
+      "bytes": 38546
+    },
+    {
+      "original": "/tmp/mcr-real-email-delivery/stack.json",
+      "archive": "9e9e9278c587-stack.json",
+      "sha256": "9e9e9278c587072922b4c339a84e9464f883934bcbec9254a156f82d50d156e8",
+      "bytes": 9102
+    },
+    {
+      "original": "/tmp/mcr-real-email-delivery/verified-mobile.png",
+      "archive": "4877e06e80fd-verified-mobile.png",
+      "sha256": "4877e06e80fdd0e9fcbc1cab26bd2572f533d7e7958c8ed5d818ad65d5356af4",
+      "bytes": 42972
+    },
+    {
+      "original": "/Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/receipt.json",
+      "archive": "766d7c6c6fd3-receipt.json",
+      "sha256": "766d7c6c6fd392c907bd1216768e2131b04d06ed4eb1fadafd1b1a2259066f0d",
+      "bytes": 154520
+    },
+    {
+      "original": "/tmp/mcr-real-email-delivery/receipt.json",
+      "archive": "479c6ba9f0b3-receipt.json",
+      "sha256": "479c6ba9f0b3295db19f3ca5c803e6e168a0189765746f5d6d152392b975bae3",
+      "bytes": 8704
+    }
+  ]
+}

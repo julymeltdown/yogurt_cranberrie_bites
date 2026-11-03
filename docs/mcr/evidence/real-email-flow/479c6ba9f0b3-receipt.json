@@ -1,0 +1,238 @@
+{
+  "task": "FE09/FE10/FE11 real local interoperability",
+  "scope": "Actual local HTTP Auth/browser journey; synthetic enrollment policy only; no production/world acceptance",
+  "result": "PASS",
+  "recordedAt": "2026-11-03T12:23:31.620305+00:00",
+  "initialBase": "b381d03cdc3b0168eba47eb0599f801843eff827",
+  "prerequisites": [
+    {
+      "parent": "66f749a",
+      "local": "57c3d9830ca30080858a26547be01d174fafe3d3"
+    },
+    {
+      "parent": "600582d6b5deda6037c190c303f80752ba4a6bb3",
+      "local": "abc329380a6f42d46180856d21b0e0e15e7e4b49"
+    }
+  ],
+  "deliveryBase": "abc329380a6f42d46180856d21b0e0e15e7e4b49",
+  "deliveryCommit": "0cca6d2550d40b8f4b1147a4e716c2e12bc11f8e",
+  "changedPaths": [
+    "docs/mcr/frontend/real-email-flow.md",
+    "frontend/e2e/real/auth/entry.html",
+    "frontend/e2e/real/auth/entry.tsx",
+    "frontend/e2e/real/auth/run.mjs"
+  ],
+  "delivered": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/docs/mcr/frontend/real-email-flow.md",
+      "bytes": 6338,
+      "sha256": "684017cec42ed28eb1d08ca972356d6e44022b301a563c318a8474bc0756ef58"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/frontend/e2e/real/auth/entry.html",
+      "bytes": 290,
+      "sha256": "f4f3c8aa647c15b7b421b7561efe5982d6f621aa10186e891086f26b939fad23"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/frontend/e2e/real/auth/entry.tsx",
+      "bytes": 1582,
+      "sha256": "d6a1316496a3a2fff9e130df9fccf32b62a744d3ba8de7e68555e101d9aaf30c"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/frontend/e2e/real/auth/run.mjs",
+      "bytes": 19035,
+      "sha256": "1fc71a4f91506f723170771aa7fc1b71caf5393b91eeb02bb8181926a14bebfc"
+    }
+  ],
+  "bundleReceipt": {
+    "path": "/Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/receipt.json",
+    "bytes": 154520,
+    "sha256": "766d7c6c6fd392c907bd1216768e2131b04d06ed4eb1fadafd1b1a2259066f0d"
+  },
+  "evidence": [
+    {
+      "path": "/tmp/mcr-real-email-delivery/report.json",
+      "bytes": 17573,
+      "sha256": "5e27a791047abdd3b9b5b8b3df1424f828f490cf1b1cd00dae7616d001752f4c"
+    },
+    {
+      "path": "/tmp/mcr-real-email-delivery/signed-in-bootstrap-unavailable.png",
+      "bytes": 38546,
+      "sha256": "6c4a38401e3dda33dadafcb99a434ca0110d21cecfd4f00722372463e51e0b73"
+    },
+    {
+      "path": "/tmp/mcr-real-email-delivery/stack.json",
+      "bytes": 9102,
+      "sha256": "9e9e9278c587072922b4c339a84e9464f883934bcbec9254a156f82d50d156e8"
+    },
+    {
+      "path": "/tmp/mcr-real-email-delivery/verified-mobile.png",
+      "bytes": 42972,
+      "sha256": "4877e06e80fdd0e9fcbc1cab26bd2572f533d7e7958c8ed5d818ad65d5356af4"
+    }
+  ],
+  "checks": [
+    {
+      "check": "real browser17 / owned cleanup",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-delivery.log",
+      "bytes": 66,
+      "sha256": "4e50a3585e231be3c78bc586904281bbad24aae620d19a84c48da92f3601b8f5"
+    },
+    {
+      "check": "auth regressions247 /9files",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-auth-regression.txt",
+      "bytes": 250,
+      "sha256": "9e952c0e0ea381c179e2edb568bd1be667c8b5c8cde673d0ee7ec6cdab68f1e8"
+    },
+    {
+      "check": "strict build",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-build.txt",
+      "bytes": 979,
+      "sha256": "3f5daa3c0aa5a2a1dfc0ce3f9ac1e609ae01a8c452e02bccf7a6005ebc55b09b"
+    },
+    {
+      "check": "strict e2e entry",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-entry-typecheck-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "source+e2e lint",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-lint.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "final runner lint",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-harness-final-lint.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "C03 generation",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-contract.txt",
+      "bytes": 33,
+      "sha256": "ab0ac16503eb1f7b4ba226deb28d7f17a0db67712698c41480ccdad4653fffa6"
+    },
+    {
+      "check": "C08",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-origin.txt",
+      "bytes": 393,
+      "sha256": "49bffded3f552b885af9e706fe41ae7c2cdacf6109944242d2ba11ec0c77e351"
+    },
+    {
+      "check": "plan",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-plan.json",
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "check": "boundary index+workingtree",
+      "exitCode": 0,
+      "path": "/tmp/mcr-real-email-boundaries.txt",
+      "bytes": 123,
+      "sha256": "7a31d03b0b3fa46d9e675a53e532934f2f0190e8eff524329b0597ad178da690"
+    }
+  ],
+  "readOnlyInputs": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/backend/scripts/mcr/dev_stack.py",
+      "bytes": 20905,
+      "sha256": "4a29da16d91a8747e6e1b9d69d94eea16e760e02241cd53b660d46a10907ac47"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/backend/scripts/mcr/runtime_smoke.py",
+      "bytes": 32516,
+      "sha256": "da2ac13ca1502e80a2528c982bf28b61c06707b4018c2a436e7f8bf41512e7a8"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/backend/scripts/mcr/migration_smoke.py",
+      "bytes": 18845,
+      "sha256": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/backend/scripts/mcr/browser_auth_smoke.py",
+      "bytes": 16084,
+      "sha256": "292dbd7bc36434ddb7ed2c615eb621e663c7b13d243c7649a996d22cf526bb4d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/frontend/package.json",
+      "bytes": 1265,
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/frontend/pnpm-lock.yaml",
+      "bytes": 80328,
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/contracts/generated/mcr-core.openapi.json",
+      "bytes": 271326,
+      "sha256": "c8de71d5f3dfc125fd3a5206bc404a76df39367a45fa6c3f67ed6323de91c15d"
+    }
+  ],
+  "manualReview": {
+    "paths": "PASS:4 exact scoped paths; prerequisite commits excluded from frontend patch",
+    "imports": "PASS:actual frontend modules only in browser; backend CLI process only in runner",
+    "whitespace": "PASS:working and staged diff checks",
+    "visuals": [
+      "verified-mobile.png",
+      "signed-in-bootstrap-unavailable.png"
+    ],
+    "worktree": "clean after commit",
+    "push": "not performed"
+  },
+  "historicalEvidence": [
+    {
+      "path": "/tmp/mcr-real-email-historical-first/report.json",
+      "bytes": 1868,
+      "sha256": "7a186f484c9f95d8c60a0a55bf768baf4a01b05779ed0acc950dca414d8c83c5"
+    },
+    {
+      "path": "/tmp/mcr-real-email-historical-first/stack.json",
+      "bytes": 1944,
+      "sha256": "815599ea61321a10cd3f97b7ec3adb022b3f080a487bb85db5787a9c58c3bec8"
+    },
+    {
+      "path": "/tmp/mcr-real-email-current-first/report.json",
+      "bytes": 13480,
+      "sha256": "c5a7a3a38b447edb92296e0dcbeb37bfe9348b048acfc7cb4d57e711352a550e"
+    },
+    {
+      "path": "/tmp/mcr-real-email-current-second/report.json",
+      "bytes": 17342,
+      "sha256": "cfccf9a62b6731ab3ae150973704019afec74fc566b4005e8a46ceec5bb4c7fa"
+    },
+    {
+      "path": "/tmp/mcr-real-email-current-second/stack.json",
+      "bytes": 9086,
+      "sha256": "c93fc14dede3d1620540eb45d047ec4a8cf415f4967fb60bbc79d855ad256906"
+    },
+    {
+      "path": "/tmp/mcr-real-email-final/report.json",
+      "bytes": 17573,
+      "sha256": "972aeee0c2b27b7dfa40f325ff3604b58577846e4c3b93334629b1f3e1f87f6b"
+    },
+    {
+      "path": "/tmp/mcr-real-email-final/stack.json",
+      "bytes": 9086,
+      "sha256": "4f06543267ae20600a563e7a0a081099ab88b8fa366f6503f3596273b0706d80"
+    }
+  ],
+  "limits": [
+    "Missing approved eligibility/consent persistence contract; production signup gate remains blocked",
+    "Actual world/bootstrap unavailable; no mock response or canvas/world",
+    "Local HTTP cookie only; production Secure/TLS not qualified",
+    "247 focused unit tests are distinct from the actual17-check browser journey",
+    "Goal ACTIVE through parent review"
+  ]
+}

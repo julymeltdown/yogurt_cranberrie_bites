@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "task": "FE06",
+  "status": "MOCK_READY",
+  "receipt_kind": "existing-evidence seal; no validation rerun",
+  "created_at_utc": "2026-11-03T12:36:42.376015+00:00",
+  "candidate": {
+    "commit": "4cb28b5f45e4d96fdb36e6e041a1bd0e8568e005",
+    "base": "600582d6b5deda6037c190c303f80752ba4a6bb3",
+    "commits": [
+      "40d86dc75ecb90c75dc80dbd358d9f4a7fce0944",
+      "4cb28b5f45e4d96fdb36e6e041a1bd0e8568e005"
+    ],
+    "tree": "ca012a927e78eff5c62531873e8fecb75b51d9ea",
+    "branch": "codex/mcr-fe-FE06",
+    "worktree": "/Users/lhs/.codex/worktrees/3c8d/mcr",
+    "clean_when_sealed": true
+  },
+  "changed_paths": [
+    {
+      "path": "docs/mcr/frontend/theme-system.md",
+      "sha256": "529427c9c1e09cd3a722ba25cb98f5d67520fe263e0f30ae5f89f786779d0666",
+      "bytes": 7730,
+      "git_blob": "51d3977b1f56711f3f614c74e55b2b990c1b7407"
+    },
+    {
+      "path": "frontend/src/features/theme/__tests__/browser-smoke.mjs",
+      "sha256": "a2c12220e7675272f2ec180e6578734cdbe29373858fd67ecb3622cf79b1b1dc",
+      "bytes": 11999,
+      "git_blob": "cf82bbdcf380290b1426bb1c6596cc1c8c858c51"
+    },
+    {
+      "path": "frontend/src/features/theme/__tests__/contrast.test.ts",
+      "sha256": "5f90de3729d9801ad8b474275b44503158785558e8e94b1ec5d1e1f63b4986e8",
+      "bytes": 1297,
+      "git_blob": "7b8ccd17effef1b6270839fd40265fb03266454a"
+    },
+    {
+      "path": "frontend/src/features/theme/__tests__/controller.test.tsx",
+      "sha256": "418f7081073622cc50f60f5b4c86c82f105d191404cc0105a310572d007328cb",
+      "bytes": 6233,
+      "git_blob": "88157d7d6be95ce8f1e57dbf32326e14c28c8b7e"
+    },
+    {
+      "path": "frontend/src/features/theme/__tests__/preview.html",
+      "sha256": "c9e88dd3c9302785c108b7d6fc16225be28bebb20ee924a6549e953ccdb7ae72",
+      "bytes": 340,
+      "git_blob": "70cfa1de28488d685c6b026397753a94aa66ef52"
+    },
+    {
+      "path": "frontend/src/features/theme/__tests__/preview.tsx",
+      "sha256": "e104a2055fd3228df1003c75461f9ad15bffe44ca023ad1091d9376e2a559ca1",
+      "bytes": 7113,
+      "git_blob": "971c121b924d5da7c7ca990602ef145347d7738c"
+    },
+    {
+      "path": "frontend/src/features/theme/model/controller.ts",
+      "sha256": "0060b976b71c704b658f65e62608a1eca68cd520f0d239c00fbb0eb3bf7b348b",
+      "bytes": 4470,
+      "git_blob": "92ea3e6f5e31e39151f3316c4e35b8530f7cd25d"
+    },
+    {
+      "path": "frontend/src/features/theme/model/preferences.ts",
+      "sha256": "9f990b199cce12067afbf79d408dbe674cfec826e533f31994c06d27ab95e7ad",
+      "bytes": 975,
+      "git_blob": "1c61843bcc23d68fdf27270cab65f0bdb5db4749"
+    },
+    {
+      "path": "frontend/src/features/theme/ui/ThemeScope.tsx",
+      "sha256": "04e39f4f89c9608dc5aacfe9c37322ec16736f8361755348d908dabeaab8c17b",
+      "bytes": 609,
+      "git_blob": "4e58dbab7e4ea68457c4e67720acac54973e2adb"
+    },
+    {
+      "path": "frontend/src/features/theme/ui/ThemeSelector.tsx",
+      "sha256": "50042fdadce49620b823e2520708336a2e4c75c376a3900deb76a274458eb34b",
+      "bytes": 1470,
+      "git_blob": "882fd0ed89ae8726c4ac6b64148bd3306acf73a6"
+    },
+    {
+      "path": "frontend/src/features/theme/ui/theme-selector.css",
+      "sha256": "efa98f8c022f8aab0e722423def1a4b273bb8b00548aebaf4ea2c604bcc7a30c",
+      "bytes": 984,
+      "git_blob": "bb45890bea50bcad2b62f0e61318c92644db55e5"
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "sha256": "f0b569f8576be2805e4a705f5cf393ba87c61baad8ca6cf46afa6e28f2ce3011",
+      "bytes": 1478,
+      "git_blob": "6f557fbebf545e740d80a888585694282fa302ca"
+    },
+    {
+      "path": "frontend/src/world/map/tiled.ts",
+      "sha256": "65af544bfb262f5d266b5986b43dc05dc03b7179e55b061095d032a623e83a00",
+      "bytes": 2927,
+      "git_blob": "921af54fce8fdd9f3091db209e49c3dadb795a5d"
+    },
+    {
+      "path": "frontend/src/world/runtime.ts",
+      "sha256": "6863c88da903f0bca72bbe44f0b1ab9eb9484eb38050af908dd8f54c069f4c24",
+      "bytes": 12181,
+      "git_blob": "8786c347d3daade1a44749dee94df1182d5ce7bd"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "sha256": "d5fd78d8908fe064b11b03480882405c9dde94fcc4b579c559e6f7f83ee65c56",
+      "bytes": 9904,
+      "git_blob": "dd61fe61791335ee748cdd0a2ef525fe72a49240"
+    },
+    {
+      "path": "frontend/src/world/theme/__tests__/fixtures/png.ts",
+      "sha256": "3c4e83221e18d1c74f59fb9fdc665fbad04e9bace2d8fbf3d1275980bd3f9929",
+      "bytes": 787,
+      "git_blob": "819e5010da26e73129b4331f03dddb416cfd05c7"
+    },
+    {
+      "path": "frontend/src/world/theme/__tests__/fixtures/releases.ts",
+      "sha256": "4cb2ca615447615a19a8e48a9ec82a9ea8d07f9a3b11b046c76b4d3ed91f2269",
+      "bytes": 1205,
+      "git_blob": "56788bbcf4ef26cc61df1d8e6411fa7295ebff31"
+    },
+    {
+      "path": "frontend/src/world/theme/__tests__/replacement.test.ts",
+      "sha256": "64a15a3f097ceca02c4b6a09a2f6b6aca7c967c39f5e4e1ac43741038722b2dd",
+      "bytes": 11437,
+      "git_blob": "8c42895eaff62830a663ebe466542e16fff44495"
+    },
+    {
+      "path": "frontend/src/world/theme/compatibility.ts",
+      "sha256": "ee062ad956d2e4bbda88ee96024e32f49f7780a735a337d4495b82eb61db2aeb",
+      "bytes": 1417,
+      "git_blob": "409023b4a5bc87eddca4afb66eb1d6cfd3c468cc"
+    },
+    {
+      "path": "frontend/src/world/theme/loader.ts",
+      "sha256": "bbddb7db35fcb682eff83ca7d1375814d125b2e50275b5e5f35aafb77fe91053",
+      "bytes": 449,
+      "git_blob": "05ea485bb311da57809613ec39ab56f41b0ea128"
+    }
+  ],
+  "configuration_hashes": [
+    {
+      "path": "frontend/package.json",
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "4f24f37e8ef13f1e888a0cd69c971b132eace79cc1ef633efd86a8b669b1644d"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "f068812eb2cc54891e2422112ccf14374b2a329c8c1d7d68b6195b7a87f743f8"
+    }
+  ],
+  "validation": {
+    "tests": {
+      "result": "PASS",
+      "count": 262,
+      "exit_code": 0,
+      "session_id": 47572,
+      "start_chunk": "414d2c",
+      "end_chunk": "eeb490",
+      "log": "tests-262.log"
+    },
+    "build": {
+      "result": "PASS",
+      "exit_code": 0,
+      "log": "build.log",
+      "warning": "Retained 544.82 kB entry chunk exceeds Vite warning threshold."
+    },
+    "lint": {
+      "result": "PASS",
+      "exit_code": 0,
+      "log": "lint.log",
+      "warnings": 0
+    },
+    "build_lint_capture": {
+      "session_id": 48892,
+      "start_chunk": "d02604",
+      "end_chunk": "89cbfe",
+      "command_relation": "build && lint; combined exit 0 establishes both success",
+      "unsplit_log": "build-and-lint.log"
+    },
+    "native": {
+      "result": "PASS",
+      "exit_code": 0,
+      "session_id": 2671,
+      "start_chunk": "c2c17a",
+      "end_chunk": "4ced39",
+      "browser": "156.0.8078.80",
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "stdout_matches_report_json": true,
+      "report": "/tmp/mcr-fe06-evidence/report.json",
+      "includes": "real texture callback reentry success and newer-load-failure fallback; immutable map identity; no marker fetch; failed/superseded loads; camera/canvas/movement preservation; scoped restore; teardown"
+    }
+  },
+  "capture_provenance": {
+    "source": "/Users/lhs/.codex/sessions/2026/11/03/rollout-2026-11-03T21-12-18-01a1a153-1227-7e72-801f-a2a6b91981e1.jsonl",
+    "source_lines": [
+      570,
+      574,
+      580,
+      583,
+      589,
+      593,
+      597,
+      600
+    ],
+    "copy": "execution-excerpt.jsonl",
+    "encoding": "UTF-8; extracted output fields concatenated in original chunk order, with no text normalization. Build/lint also preserved unsplit. These are captured merged tool-output logs, not redirected raw process stdout/stderr files.",
+    "final_edit_record": {
+      "line": 570,
+      "at": "2026-11-03T12:30:53.171Z"
+    },
+    "validation_launch_record": {
+      "line": 580,
+      "at": "2026-11-03T12:31:04.368Z"
+    },
+    "validation_completion_record": {
+      "line": 593,
+      "at": "2026-11-03T12:31:15.695Z"
+    },
+    "commit_completion_record": {
+      "line": 600,
+      "at": "2026-11-03T12:31:19.857Z"
+    }
+  },
+  "precommit_test_byte_matching": {
+    "tests_before_commit": true,
+    "contemporaneous_pretest_hash_manifest": "NOT_RECORDED",
+    "current_changed_files_equal_committed_bytes": true,
+    "historical_binding": "Ordered transcript shows final application/test/doc edits before the final launch, then only result collection and git add/commit before commit completion. No intervening source edit is recorded.",
+    "limitation": "Current SHA-256 hashes pin committed bytes now; absent a contemporaneous pre-run hash snapshot, exact historical test-byte equality is chronology-based evidence, not independently cryptographically proven."
+  },
+  "artifacts": [
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/tests-262.log",
+      "sha256": "035de5f6197761179695982699792384080d0ffe88fce14540b1b827bc4da9b6",
+      "bytes": 356,
+      "mtime_utc": "2026-11-03T12:36:42.044776+00:00"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/build.log",
+      "sha256": "b3eb458486bc9cdcb2933d246168e4bf9d592389d9fa97a1e98e9ae16b8805a2",
+      "bytes": 979,
+      "mtime_utc": "2026-11-03T12:36:42.044933+00:00"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/lint.log",
+      "sha256": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372",
+      "bytes": 28,
+      "mtime_utc": "2026-11-03T12:36:42.045021+00:00"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/build-and-lint.log",
+      "sha256": "809b111bd787fa2f3c87a25ff723cbb1271d28b9f5678854c2c3c08984668059",
+      "bytes": 1007,
+      "mtime_utc": "2026-11-03T12:36:42.045094+00:00"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/native-stdout.log",
+      "sha256": "e3f711c3354c7e3504253c7b41494a0ebcd203f02ed3a423964eac1389e698e4",
+      "bytes": 1123,
+      "mtime_utc": "2026-11-03T12:36:42.045165+00:00"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/execution-excerpt.jsonl",
+      "sha256": "75c43fd6f56cad02b1753f68be221faafde35fe3ab1db77034e60f64388bda8a",
+      "bytes": 16306,
+      "mtime_utc": "2026-11-03T12:36:42.045372+00:00"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/native/report.json",
+      "sha256": "5cb631fb8087b4f3294986b9e8d4fd8225fa4aadef28713439847735bf32b65d",
+      "bytes": 1122,
+      "mtime_utc": "2026-11-03T12:31:15.439155+00:00",
+      "copied_from": "/tmp/mcr-fe06-evidence/report.json"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/native/theme-360.png",
+      "sha256": "fcd82ccb17ea599dcab1ebd755c1c70416055ffe7050ed68e3a9320d794f3c69",
+      "bytes": 69880,
+      "mtime_utc": "2026-11-03T12:31:08.055331+00:00",
+      "copied_from": "/tmp/mcr-fe06-evidence/theme-360.png"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/native/theme-390.png",
+      "sha256": "fdc52a62bc2c7b3442f30a921dcaec1bcea149bd8f5e60bd1b2215b38892a0b7",
+      "bytes": 69927,
+      "mtime_utc": "2026-11-03T12:31:11.381933+00:00",
+      "copied_from": "/tmp/mcr-fe06-evidence/theme-390.png"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/native/theme-430.png",
+      "sha256": "afbb5b7adbae0737e8aaaf70f53afe06fce8a72273369e74017bfeb9d8b46945",
+      "bytes": 69173,
+      "mtime_utc": "2026-11-03T12:31:14.673092+00:00",
+      "copied_from": "/tmp/mcr-fe06-evidence/theme-430.png"
+    },
+    {
+      "path": "/tmp/mcr-fe06-sealed-4cb28b5/browser-smoke.mjs",
+      "sha256": "a2c12220e7675272f2ec180e6578734cdbe29373858fd67ecb3622cf79b1b1dc",
+      "bytes": 11999,
+      "mtime_utc": "2026-11-03T12:30:53.236143+00:00",
+      "copied_from": "/Users/lhs/.codex/worktrees/3c8d/mcr/frontend/src/features/theme/__tests__/browser-smoke.mjs"
+    }
+  ],
+  "limits": [
+    "Synthetic textures only; production AR04 artwork is separate.",
+    "Preferences are scoped device persistence; no BE07 server synchronization.",
+    "Room/avatar identity sentinels are not live multiplayer or character rendering.",
+    "Parent integration validation and real device/multiuser acceptance remain separate."
+  ],
+  "goal_disposition": "Evidence sealing follow-up remains ACTIVE until parent integration validation disposition."
+}

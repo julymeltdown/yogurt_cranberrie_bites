@@ -1,0 +1,10 @@
+$ vitest run src/features/theme src/world/theme src/world/__tests__/runtime.test.ts src/world/__tests__/movement.test.ts
+
+ RUN  v4.1.9 /Users/lhs/.codex/worktrees/3c8d/mcr/frontend
+
+
+ Test Files  5 passed (5)
+      Tests  262 passed (262)
+   Start at  21:31:04
+   Duration  3.97s (transform 339ms, setup 0ms, import 516ms, tests 4.17s, environment 1.36s)
+

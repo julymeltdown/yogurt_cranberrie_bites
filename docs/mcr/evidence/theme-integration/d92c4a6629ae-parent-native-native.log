@@ -1,0 +1,38 @@
+9:41:03 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+9:41:04 PM [vite] (client) dependency optimized: phaser
+{
+  "status": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "realPhaserPixels": "PASS",
+      "keyboardAndTouchTargets": "PASS",
+      "engineCameraMovementIdentityPreservation": "PASS",
+      "failureAndSupersessionRollback": "PASS",
+      "restorationAndTeardown": "PASS"
+    },
+    {
+      "width": 390,
+      "realPhaserPixels": "PASS",
+      "keyboardAndTouchTargets": "PASS",
+      "engineCameraMovementIdentityPreservation": "PASS",
+      "failureAndSupersessionRollback": "PASS",
+      "restorationAndTeardown": "PASS"
+    },
+    {
+      "width": 430,
+      "realPhaserPixels": "PASS",
+      "keyboardAndTouchTargets": "PASS",
+      "engineCameraMovementIdentityPreservation": "PASS",
+      "failureAndSupersessionRollback": "PASS",
+      "restorationAndTeardown": "PASS"
+    }
+  ],
+  "pageErrors": [],
+  "limits": [
+    "Synthetic textures only; production AR04 art is not delivered.",
+    "Room/avatar owner sentinels prove non-mutation only; no real socket or character rendering.",
+    "No real-device, backend preference or two-account multiuser acceptance."
+  ]
+}

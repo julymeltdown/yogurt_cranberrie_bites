@@ -1,0 +1,22 @@
+{
+  "docs/mcr/frontend/theme-system.md": "529427c9c1e09cd3a722ba25cb98f5d67520fe263e0f30ae5f89f786779d0666",
+  "frontend/src/features/theme/__tests__/browser-smoke.mjs": "a2c12220e7675272f2ec180e6578734cdbe29373858fd67ecb3622cf79b1b1dc",
+  "frontend/src/features/theme/__tests__/contrast.test.ts": "5f90de3729d9801ad8b474275b44503158785558e8e94b1ec5d1e1f63b4986e8",
+  "frontend/src/features/theme/__tests__/controller.test.tsx": "418f7081073622cc50f60f5b4c86c82f105d191404cc0105a310572d007328cb",
+  "frontend/src/features/theme/__tests__/preview.html": "c9e88dd3c9302785c108b7d6fc16225be28bebb20ee924a6549e953ccdb7ae72",
+  "frontend/src/features/theme/__tests__/preview.tsx": "e104a2055fd3228df1003c75461f9ad15bffe44ca023ad1091d9376e2a559ca1",
+  "frontend/src/features/theme/model/controller.ts": "0060b976b71c704b658f65e62608a1eca68cd520f0d239c00fbb0eb3bf7b348b",
+  "frontend/src/features/theme/model/preferences.ts": "9f990b199cce12067afbf79d408dbe674cfec826e533f31994c06d27ab95e7ad",
+  "frontend/src/features/theme/ui/ThemeScope.tsx": "04e39f4f89c9608dc5aacfe9c37322ec16736f8361755348d908dabeaab8c17b",
+  "frontend/src/features/theme/ui/ThemeSelector.tsx": "50042fdadce49620b823e2520708336a2e4c75c376a3900deb76a274458eb34b",
+  "frontend/src/features/theme/ui/theme-selector.css": "efa98f8c022f8aab0e722423def1a4b273bb8b00548aebaf4ea2c604bcc7a30c",
+  "frontend/src/shared/styles/themes/themes.css": "f0b569f8576be2805e4a705f5cf393ba87c61baad8ca6cf46afa6e28f2ce3011",
+  "frontend/src/world/map/tiled.ts": "65af544bfb262f5d266b5986b43dc05dc03b7179e55b061095d032a623e83a00",
+  "frontend/src/world/runtime.ts": "6863c88da903f0bca72bbe44f0b1ab9eb9484eb38050af908dd8f54c069f4c24",
+  "frontend/src/world/scenes/MapScene.ts": "d5fd78d8908fe064b11b03480882405c9dde94fcc4b579c559e6f7f83ee65c56",
+  "frontend/src/world/theme/__tests__/fixtures/png.ts": "3c4e83221e18d1c74f59fb9fdc665fbad04e9bace2d8fbf3d1275980bd3f9929",
+  "frontend/src/world/theme/__tests__/fixtures/releases.ts": "4cb2ca615447615a19a8e48a9ec82a9ea8d07f9a3b11b046c76b4d3ed91f2269",
+  "frontend/src/world/theme/__tests__/replacement.test.ts": "64a15a3f097ceca02c4b6a09a2f6b6aca7c967c39f5e4e1ac43741038722b2dd",
+  "frontend/src/world/theme/compatibility.ts": "ee062ad956d2e4bbda88ee96024e32f49f7780a735a337d4495b82eb61db2aeb",
+  "frontend/src/world/theme/loader.ts": "bbddb7db35fcb682eff83ca7d1375814d125b2e50275b5e5f35aafb77fe91053"
+}

@@ -1,0 +1,54 @@
+{
+  "scope": "BE02 foreground native local development",
+  "result": "FAIL",
+  "cleanup": "PASS",
+  "started_at_utc": "2026-11-03T12:10:33.129443+00:00",
+  "services": [
+    {
+      "service": "api-gateway",
+      "database": "mcr_api_gateway",
+      "expected_migrations": 17,
+      "binary_sha256": "c1fa9838efe79a930725abaa68318cb5e710f2e997f9ed663da1ef3fb4de2af0",
+      "migration_manifest_sha256": "1bea1d8e70e1c6490f554a07780945e5087445033b957b319285a31c899921b7",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "NOT_RUN",
+      "verify_after_restart": "NOT_RUN",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 17
+    },
+    {
+      "service": "auth-service",
+      "database": "mcr_auth",
+      "expected_migrations": 13,
+      "binary_sha256": "518a5cc5229e8577d48be3f40562298917e0f13cc56e625a0eb5d3e6a0a2a9ca",
+      "migration_manifest_sha256": "81e21cacb464f0f5b0dcb27de8efac89ac742fa4319a2ebc505c6db03dc96b9a",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "NOT_RUN",
+      "verify_after_restart": "NOT_RUN",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0
+    }
+  ],
+  "process_stops": [],
+  "script_sha256": "4a29da16d91a8747e6e1b9d69d94eea16e760e02241cd53b660d46a10907ac47",
+  "runtime_helper_sha256": "da2ac13ca1502e80a2528c982bf28b61c06707b4018c2a436e7f8bf41512e7a8",
+  "migration_helper_sha256": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+  "auth_acceptance": "NOT_RUN",
+  "image_build": "NOT_RUN",
+  "production": "NOT_RUN",
+  "source_revision": "57c3d9830ca30080858a26547be01d174fafe3d3",
+  "owned_directory": "/private/tmp/mcr-pg-vsyfxjx2",
+  "postgres_version": "16.14 (Homebrew)",
+  "restart": {
+    "status": "NOT_RUN",
+    "before_pid": 97037
+  },
+  "failure": {
+    "phase": "development",
+    "diagnostic": "SmokeError"
+  },
+  "finished_at_utc": "2026-11-03T12:10:34.416113+00:00"
+}

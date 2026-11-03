@@ -1,0 +1,34 @@
+{
+  "scope": "Actual isolated Auth/frontend interoperability; test-only enrollment acknowledgements",
+  "result": "FAIL",
+  "currentCandidateGate": false,
+  "checks": {},
+  "requests": [],
+  "productionConsent": "NOT_RUN: approved eligibility/consent persistence contract missing",
+  "world": "NOT_RUN: actual bootstrap remains unavailable",
+  "productionTLSCookies": "NOT_RUN: local HTTP only",
+  "secretsRecorded": false,
+  "serviceSourceRevision": "689e4d27c67debcd05d7280394184619cb4aea3b",
+  "binaryReceiptSha256": "1e54b1814690ba9edd9282f36e8a0771400b0789907097bd0a5e7ae653e49c88",
+  "binaryHashes": {
+    "api-gateway": "c1fa9838efe79a930725abaa68318cb5e710f2e997f9ed663da1ef3fb4de2af0",
+    "auth-service": "518a5cc5229e8577d48be3f40562298917e0f13cc56e625a0eb5d3e6a0a2a9ca",
+    "profile-service": "b56a3a05b2aa59c1ed018608ce94ef9d673ccbc8d04c746d645b2ecc24587ffc",
+    "friend-service": "86de8d434db675a7d5707adb2a6dbfa0e2011e9c9d55c118b616674c010fbdab",
+    "post-service": "965f56cd25518ee004f795036979098649b29cf78944a34523a5cda596a7c915",
+    "notification-service": "c1be3ea3b1ee80a310e9d6d96a046438ad457718face137100b01d45aa11153d"
+  },
+  "sourceDifferences": [
+    "backend/services/api-gateway/src/adapters/out/auth_client.rs",
+    "backend/services/api-gateway/src/adapters/out/jwt.rs",
+    "backend/services/api-gateway/src/adapters/out/profile_client.rs",
+    "backend/services/auth-service/src/adapters/in/grpc/method_policy.rs",
+    "backend/services/auth-service/src/adapters/in/grpc/mod.rs",
+    "backend/services/auth-service/src/adapters/in/grpc/server.rs",
+    "backend/services/auth-service/src/adapters/out/persistence/mod.rs",
+    "backend/services/auth-service/src/config/mod.rs"
+  ],
+  "failureStage": "owned-stack-start",
+  "cleanup": "PASS",
+  "stackReportSha256": "815599ea61321a10cd3f97b7ec3adb022b3f080a487bb85db5787a9c58c3bec8"
+}

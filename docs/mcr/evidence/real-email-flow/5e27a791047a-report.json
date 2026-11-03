@@ -1,0 +1,276 @@
+{
+  "scope": "Actual isolated Auth/frontend interoperability; test-only enrollment acknowledgements",
+  "result": "PASS",
+  "qualificationMode": "CURRENT_SOURCE_REQUESTED",
+  "currentCandidateGate": "PASS: declared source inputs and executed binary hashes match",
+  "checks": {
+    "stackReady": "PASS",
+    "productionSignupBlocked": "PASS",
+    "signup": "PASS",
+    "actualVerificationDelivery": "PASS",
+    "wrongVerificationRejected": "PASS",
+    "verification": "PASS",
+    "actualBootstrapUnavailable": "PASS: actual unsuccessful backend response; no world opened",
+    "signIn": "PASS",
+    "localHttpCookie": "PASS",
+    "logoutPeerDraftInvalidation": "PASS",
+    "logoutRevokesRefreshSession": "PASS",
+    "twoTabInvalidationAndLogout": "PASS",
+    "resetLinkScrubbed": "PASS",
+    "resetAndPeerInvalidation": "PASS",
+    "oldRefreshSessionRejected": "PASS",
+    "newPasswordAndCanonicalIdentity": "PASS",
+    "noCredentialStorageOrPageErrors": "PASS"
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/auth/capabilities",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/capabilities",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/verify",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/email/verify",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/bootstrap",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/capabilities",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/bootstrap",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/logout",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/capabilities",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/refresh",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/bootstrap",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/password/reset/request",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/password/reset/confirm",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/capabilities",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/refresh",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/concert/events/00000000-0000-4000-8000-000000000001/bootstrap",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/logout",
+      "status": 204
+    }
+  ],
+  "productionConsent": "NOT_RUN: approved eligibility/consent persistence contract missing",
+  "world": "NOT_RUN: actual bootstrap remains unavailable",
+  "productionTLSCookies": "NOT_RUN: local HTTP only",
+  "secretsRecorded": false,
+  "frontendRevision": "abc329380a6f42d46180856d21b0e0e15e7e4b49",
+  "frontendSourcesSha256": {
+    "frontend/src/app/AdminBoundary.tsx": "e37ab281a58f8c57d844ea4e81d1f87b47b6dadafd7b53e21e09b0264ae6e4bb",
+    "frontend/src/app/FoundationApp.tsx": "39d01aa5f204126484e4c020dad39ca6436ddc0a8f14f2740dd5753331937bcc",
+    "frontend/src/app/PublicBoundary.tsx": "a61bea26379f30c1e80484da32a06744973177e8843ff403b779ade4246e38ed",
+    "frontend/src/app/WorldHost.tsx": "e1ed8a70849c8c687e850e120c29627557cc2dfd1da8c91b18117fd6af722b10",
+    "frontend/src/app/WorldShell.tsx": "c708b0b1dcb265b1197af474e2eb37d7f2feb2d2cd1e14276d58b7d39d0248db",
+    "frontend/src/app/__tests__/enrollment.test.tsx": "1343483bbb4e3ca9bd8cdffd643546ef807ef422163b48e3d4d310137efd31e1",
+    "frontend/src/app/__tests__/fixtures/ports.ts": "e4e9f0c8be8f01e54785ab0fe017de1194d869bbd1d4285cadc818ba2ebe6695",
+    "frontend/src/app/__tests__/fixtures/preview.tsx": "194315865c8574cfdb47926acfb2e380150ada26d39bdd3f027f39e43ea65c27",
+    "frontend/src/app/__tests__/public-entry.test.tsx": "df2dd2ff53b94a8a1be31c2e449803f8218aeeca8932c9c0b5191ce75f34bc9e",
+    "frontend/src/app/__tests__/recovery.test.tsx": "b796042456a2bac705649850cb88e70c7ff924817463faec599b87e4d1cc512a",
+    "frontend/src/app/__tests__/routes.test.ts": "5ca28a98aa0964eb53903c5c0e0abd7df3f87e813b4e43d742ec61c8b8588ead",
+    "frontend/src/app/__tests__/shell.test.tsx": "651fcd7574b1be234f02cbf4d515945e4929b2960dd2c9e15895dd46fef87617",
+    "frontend/src/app/access.tsx": "9657e3804c38477dfa28de954d034512854d921c04b581a3d4713299c836ead6",
+    "frontend/src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "frontend/src/app/ports.ts": "90ecaf251fe1bbe98658cdfe06dc04b7b894d4354e2b6b06d22dc259ab192a16",
+    "frontend/src/app/router.tsx": "2d34602c4af94952b16a3d0a31a5ef6fb8c961571d3dac1ed70bb1abf40a5ee0",
+    "frontend/src/app/routes.ts": "e49ceffdc2e6e52bfba8e361b727504268fab264763c124878a556ee7f677829",
+    "frontend/src/app/shell.css": "75b74f145de44da52657f3743cc93cdfd6744af39509c596b21639f61ca7b10d",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/src/entities/avatar/source-catalog.ts": "7a48070b9e44f6450db88e7ef3c1857a553844d56af71c543dc7737d17ae9328",
+    "frontend/src/features/auth/__tests__/callback.test.ts": "4d655e336b7e1370b83be2b15fef34a6734f176076e099e31b3ceb47cfe4de4f",
+    "frontend/src/features/auth/__tests__/contract.test.ts": "f81130ecf891dd921f913a8fa1acd1494cc6975a81889f692f74c8e6bdfb3d6a",
+    "frontend/src/features/auth/__tests__/cookie-policy.test.ts": "28bf2dc96019107745b0eb282717604b24f9a448bd86a55def1762134d858b4b",
+    "frontend/src/features/auth/__tests__/enrollment.test.ts": "b6b3f9d92d2912df39744091e87b41ca035dd65ed11aad8e7b5ec40052ad3742",
+    "frontend/src/features/auth/__tests__/fixtures/data.ts": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
+    "frontend/src/features/auth/__tests__/fixtures/enrollment-preview.tsx": "d3ca92ac9b9355c96949485288a0eaa607c0ffdb94dff1d6e4516b572f34f22f",
+    "frontend/src/features/auth/__tests__/fixtures/preview.tsx": "7e55788c9a80b9a314a497ec608e565b69450f2add51f03bec6b489588708699",
+    "frontend/src/features/auth/__tests__/fixtures/recovery-preview.tsx": "25d6e85cad41cf4d18aca005ff78c88ce879e3c94567429269063ad12014b3d1",
+    "frontend/src/features/auth/__tests__/recovery.test.ts": "e1fe04a3a7c47e3500545b2c375d8c5e755cb5238706c5c0d68808d7dcc941ca",
+    "frontend/src/features/auth/__tests__/session.test.ts": "2d45597a5f96c4c481ae9378e10dc366506894685758140739fd2f6ed61764cb",
+    "frontend/src/features/auth/__tests__/sign-in.test.tsx": "c582c9b7fca4de7bfba2301b93fb7afd122a61081e1177c227d15913f693649c",
+    "frontend/src/features/auth/model/bootstrap.ts": "d62cd1b0f7e152f26eae57a896a19043cf4b8eb39c09ab01c094319d42f8c38d",
+    "frontend/src/features/auth/model/callback.ts": "54ca5e3655239227e60128767cad0814d0e590cba709abeb1da6c2ef6f244aa9",
+    "frontend/src/features/auth/model/contract.ts": "49f3380515a722b10d9e58df241ecc7dad47e2a4792ec47e20b24680466939ff",
+    "frontend/src/features/auth/model/cookie-policy.ts": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+    "frontend/src/features/auth/model/enrollment-contract.ts": "2e900351b139058f1f47f03ae6cb0577fb3b8ad5dbed59a1035e7a6539d5dc22",
+    "frontend/src/features/auth/model/enrollment.ts": "f74c325a21e9d8e246fa104ddfeef3c35b7fd4a4c4f22820b9aec8bd05bd2e4e",
+    "frontend/src/features/auth/model/recovery-contract.ts": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd",
+    "frontend/src/features/auth/model/recovery.ts": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d",
+    "frontend/src/features/auth/model/session.ts": "a2f380d2062e136302ed803f9a98c45ff1d84d300d56f31e0540758be3bb24e3",
+    "frontend/src/features/auth/ui/Callback.tsx": "6ad24e56d44cfc2c2bb590e9ef8c1cf5c9357d9d7ad612eafdf794143663575e",
+    "frontend/src/features/auth/ui/ResetPassword.tsx": "347c58317d605c6152d5d7ff818478aa54efde4a69800cbfde503ef4681260b5",
+    "frontend/src/features/auth/ui/SignIn.tsx": "a548da9e96dab311e79494ed88dce362c9014b0bf4292a85bcd1782c6d40c621",
+    "frontend/src/features/auth/ui/SignUp.tsx": "2179fbdc10809f87d0c1000e7ad754750a236e6e7ec5044b251f549a637d4354",
+    "frontend/src/features/auth/ui/VerifyEmail.tsx": "6d856d9dc04ef34b4209d43077d8cf0a3f4789228d9e7a2132fe836a04d8376c",
+    "frontend/src/features/auth/ui/enrollment.css": "71bcc85bf4f2b5358376c24c3024540798e920dc35a945414a83293fd9263800",
+    "frontend/src/features/auth/ui/recovery.css": "de4fd45cd2764815cc6347c09164c6a79e8dd2e0c7c2ab13818f144d81aba630",
+    "frontend/src/features/auth/ui/sign-in.css": "1f728a8dbfb86db2108efbcd6cb09fcbce6510ca2c4e27f8cb30ed90f0d90326",
+    "frontend/src/features/public/__tests__/documents.test.ts": "8a8bcf8e52a3af63674dcf2eecb5e3cccc65e7ccf01ec9be65934958e4742c7e",
+    "frontend/src/features/public/__tests__/fixtures/documents.ts": "d3be4b47f15ba8a1d8ef93145abcbb1b1a71d5fcb5fe37e84ff4df955af408d1",
+    "frontend/src/features/public/__tests__/fixtures/preview.tsx": "260047f88c5ec5cc09681d1c7f16ffb2a84e27c9ba5f7a4ac983e0401dcdf842",
+    "frontend/src/features/public/model/document-provider.tsx": "3a40053f2d881cf733604a1dd9dbf17bb756b6f38a082f73db7c4ed97428ccd9",
+    "frontend/src/features/public/model/documents.ts": "687f57f523e2aff899f61d43a52a90f2a772ad47d60458445c17082da37db7ac",
+    "frontend/src/features/public/ui/DocumentPage.tsx": "a919c9ad52af7a30d7b0ccd6818dfbdb7bac6ba8a9cc3e3507f46cfd3e9b3d70",
+    "frontend/src/features/public/ui/Landing.tsx": "f3e210391468888e881c2099636617788643e9ea3164501f39c6a57f7468e605",
+    "frontend/src/features/public/ui/PublicFrame.tsx": "aab856068c7a1da42137c02c20fac52d930d2b3ecad028c057a31dca964635bd",
+    "frontend/src/features/public/ui/public.css": "dbdcd7cc78001f1d71b9d500556650121031063a27e1417e9747ec1a175f4fb5",
+    "frontend/src/main.tsx": "d4b7373d98a098192d7c5bb82833fce75ad0a3ceb5a49aa088b8478226b06caa",
+    "frontend/src/shared/api/__tests__/errors.test.ts": "0bdea174670b53c7f12efccecf062a5eec36069a15ca9c58d0eac6827ad47e2b",
+    "frontend/src/shared/api/__tests__/http.test.ts": "f0c548d79ee5f00494c82a2d5af9a1f7694c2c166cd65811d4a4ce45dcced633",
+    "frontend/src/shared/api/errors.ts": "f9b2ef9b09c1f4cf136594f00be51a372ad7fba60b0f1998b8672fe1568d6012",
+    "frontend/src/shared/api/http.ts": "e658f8da8e97c5e6801762c5fc552732c2e84a058d4deebdd7b08a1d6b2b57bb",
+    "frontend/src/shared/query/__tests__/keys.test.ts": "371ff71d25b5370b0e7b5b643eecd725396955b06a8c3aa1a671a49f82cb8516",
+    "frontend/src/shared/query/__tests__/privacy.test.ts": "35761abb1a3654134701e85a4db0dbc532f129ad89bed0a561ae5c721e737381",
+    "frontend/src/shared/query/keys.ts": "3a82ee13efc4162e04e2a3348508c5d12b897d93c8b40554d370578e25e0daef",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/shared/styles/base.css": "63fb6160fa17471c9f40cc58c8d60890390f31af2da2078f50640b5ae7b6b762",
+    "frontend/src/shared/ui/Dialog.tsx": "f2c7a386e77652325206bafb4067f024a867754a112f021e3fa499ba78d3ee18",
+    "frontend/src/shared/ui/Tabs.tsx": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee",
+    "frontend/src/shared/ui/__tests__/dialog.test.tsx": "a75786280b150d6b6796967fad9dda8f47054d9b0a92e5b3557722c805afb569",
+    "frontend/src/shared/ui/__tests__/fixtures/preview.tsx": "5a571b11b779c26271d9e4aaa54e02f97eaf552b75dcfac23bf87a9c203ba26e",
+    "frontend/src/shared/ui/__tests__/primitives.test.tsx": "18468c9ac3c57df5008f09e843c17973398c4469f4cf5cafc9823a79f3d00a1d",
+    "frontend/src/shared/ui/controls.tsx": "0aca62d6862fa0a0e2cc28d53cf58f184defdc6f7f63afe0484d8c87931c470d",
+    "frontend/src/shared/ui/feedback.tsx": "b4c0517287e8f139799d6a836b66edd9961c00a6feb44bac173781a75a7f607f",
+    "frontend/src/shared/ui/index.ts": "4e34ffa485bd8d73feaaa0ad69ea3b12eeb0e2eccc606a3051cde37a9c3a346f",
+    "frontend/src/shared/ui/modal-focus.ts": "b8d0e5833ba7e0724e8233a629e6a64a682faf81df93ed5aba4ee38c86f9d328",
+    "frontend/src/world/__tests__/fixtures/movement-data.ts": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f",
+    "frontend/src/world/__tests__/fixtures/movement-preview.ts": "622f0542b7956a2eb71c4587ae6684988d618a2e7a07dae096c834745247bd0a",
+    "frontend/src/world/__tests__/fixtures/png.ts": "13bc13762daa32a956fb08f7fd10698572ac41e2a210e3b140770b22ef295aa5",
+    "frontend/src/world/__tests__/fixtures/runtime-preview.tsx": "2cd3f574642965547718a04915ce6b3706f625e910e1be8ff1cac2cb92567e66",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7",
+    "frontend/src/world/__tests__/movement.test.ts": "86f3f6fd645728f037c7f11a58f34e7939d08bae391f1e00184a7c5e8a741d94",
+    "frontend/src/world/__tests__/runtime.test.ts": "7cd429511d2fd04815ac04a91ef3451d3bdf16e40a9882c57f220260491796b7",
+    "frontend/src/world/camera/port.ts": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9",
+    "frontend/src/world/input/controller.ts": "598c4719e73a8f5c8ca99e7cb513aa8c22bfdb70ae46d6548307791d8d718476",
+    "frontend/src/world/input/controls.css": "045f475d935a4fc701d452c3ba36e183528c039fb3e4858b3d05f343c3e840d2",
+    "frontend/src/world/input/model.ts": "f1d5a5bcd4358dc6572939482aba2ea72477bc1f072caad08ba9090b67653560",
+    "frontend/src/world/input/simulation.ts": "f07ce399ae7dab373c80a97b97b6a5d960d05be38a3d84f31d0c1f60f91f37d3",
+    "frontend/src/world/interaction/selection.ts": "bb1e330b398016dfffd6a8da79f7b4eabfd2f9de81ef96592fea7332e8fcdd85",
+    "frontend/src/world/map/formats.ts": "0e31dc185d0e3c0fa148c70443d2b2a9b34c96d3b43dc72e2070fce62cb98770",
+    "frontend/src/world/map/json.ts": "74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/map/manifest.ts": "575b89163952959bdc20760a9ab19cafe6c950e7ffeb48e3a00bf3305ac8b4a2",
+    "frontend/src/world/map/resources.ts": "829e8e8c901223307e5ba8bcf4a306e01e12f7d09f7b08bc9c4f884c0d0ead4a",
+    "frontend/src/world/map/schema.ts": "fcc2a15a5be5181f794e8cf3740bd6813860ddb100953473ba722dd50f6f48e4",
+    "frontend/src/world/map/tiled.ts": "bff9084e3270cf1a15f324c8480c993ae92b333b89e9b5f7de8c85bb903c4d57",
+    "frontend/src/world/network/WorldTransport.ts": "f5d2397f61b5425f3638e81ec282b11017d2b336861860259437f2b1bcf51a8e",
+    "frontend/src/world/network/__tests__/fixtures/browser.ts": "13205d1ecb35d341a175dfdac6873dbfd317738a6268f18f37e8bdac9bcbbc80",
+    "frontend/src/world/network/__tests__/transport.test.ts": "2475980d0e2419a864c6e18c7a89214dd54654e5cc286bacb36c8f926a64de69",
+    "frontend/src/world/network/mock.ts": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+    "frontend/src/world/network/transport/contract.ts": "1b642a0e1bba8c5c45b39fc38d107af39ff3c83c25955295e49edc03b8402b08",
+    "frontend/src/world/network/transport/engine.ts": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac",
+    "frontend/src/world/network/transport/wire-types.ts": "c154c86f488ca681a0379087828ada028c8ecb54fd75c7bb8cb49f712be56618",
+    "frontend/src/world/network/websocket.ts": "f7c9a89e7545f9459f2d71eab8b0f5ea696db620d3685b0cc27c092b5ae75226",
+    "frontend/src/world/runtime.ts": "062d3e4272ebefc85e8c5505b2305ab5bd2d8fb21db1024f2d5843a899d8ffee",
+    "frontend/src/world/scenes/MapScene.ts": "04061aa690705faca2c9a28c829329096256292c8e3496f25895b631cb11b88f"
+  },
+  "harnessHashes": {
+    "entry.html": "f4f3c8aa647c15b7b421b7561efe5982d6f621aa10186e891086f26b939fad23",
+    "entry.tsx": "d6a1316496a3a2fff9e130df9fccf32b62a744d3ba8de7e68555e101d9aaf30c",
+    "run.mjs": "1fc71a4f91506f723170771aa7fc1b71caf5393b91eeb02bb8181926a14bebfc"
+  },
+  "lockfileSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "serviceSourceRevision": "600582d6b5deda6037c190c303f80752ba4a6bb3",
+  "serviceSourceRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow",
+  "binaryReceiptSha256": "766d7c6c6fd392c907bd1216768e2131b04d06ed4eb1fadafd1b1a2259066f0d",
+  "binaryHashes": {
+    "api-gateway": "87a06fba3401c24ce695f73fb7d0a49da5da104c6dcebaf31f8222bcfba0232f",
+    "auth-service": "31a0fe44747fab66dd0a48f96cc1ea68b971e63aaa324c0d41794b8710243d30",
+    "profile-service": "1259c5f071b7d3d2b43f8fd4c9571441c6d2aefeab4142f3962a15e6afc14898",
+    "post-service": "ecabe987e0eb471f2fb4c6eda34905416748b73f3b13f98b0edc5c74468af1c5",
+    "friend-service": "4a3e057ea5b01ffae66d204a040c5fcbdd6fb2feef5ac9336e39e9ea8f51e7bc",
+    "notification-service": "8a3fd5ed4b59c72fcf9583cd86e0123e12e37ca71c3789def38d6d58a7670be6"
+  },
+  "sourceDifferences": [],
+  "browser": "156.0.8078.80",
+  "resetEntry": "ACTUAL_DELIVERED_APP_LINK",
+  "cleanup": "PASS",
+  "stackReportSha256": "9e9e9278c587072922b4c339a84e9464f883934bcbec9254a156f82d50d156e8"
+}

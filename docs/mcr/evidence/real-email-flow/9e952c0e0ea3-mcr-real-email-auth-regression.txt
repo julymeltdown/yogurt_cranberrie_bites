@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow/frontend
+
+
+ Test Files  9 passed (9)
+      Tests  247 passed (247)
+   Start at  21:18:01
+   Duration  3.59s (transform 770ms, setup 0ms, import 1.68s, tests 8.62s, environment 1.61s)
+

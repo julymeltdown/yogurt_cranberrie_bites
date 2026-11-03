@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "browser": "156.0.8078.80",
+  "viewport": "390x844",
+  "singleCanvasPreserved": true,
+  "keyboardRadioSelection": true,
+  "rollbackOnFailure": true,
+  "cleanDisposal": true,
+  "pageErrors": []
+}

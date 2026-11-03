@@ -1,16 +1,16 @@
 # Active chat ownership
 
 Updated 2026-11-03. Current allocation prioritizes completing real service flows.
-Model and reasoning choices belong to the user; all four chats received the
+Model and reasoning choices belong to the user; all five chats received the
 instruction to preserve them without orchestration overrides.
 
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| BE04 actual Profile chain | `mcr(be) BE04 Gateway to Profile integration` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration` / `codex/mcr-be-profile-client-integration` |
-| BE04 database deadline fix | `mcr(be) Profile query deadline fix` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound` / `codex/mcr-be-profile-query-bound` |
-| FE09–FE11 real email flows | `mcr(fe) Real email account journeys` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-real-email-flow` / `codex/mcr-fe-real-email-flow` |
-| FE06 themes | `mcr(fe) FE06 atomic themes` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/.codex/worktrees/3c8d/mcr` / `codex/mcr-fe-FE06` |
-| QA FE15 complete; awaiting runnable email flow | `mcr(qa) FE15 movement and camera review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | stopped `/Users/lhs/Desktop/mcr-worktrees/qa-fe-movement` / `codex/mcr-qa-FE15` |
+| BE04 HTTP boundary | `mcr(be) BE04 HTTP identity boundary` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-concert-context` / `codex/mcr-be-http-concert-context` |
+| BE04 owner composition | `mcr(be) BE04 identity owner composition` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-identity-composition` / `codex/mcr-be-identity-composition` |
+| FE19 map, places and help | `mcr(fe) FE19 map places and help` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-places-help` / `codex/mcr-fe-FE19` |
+| FE06 themes, implementation complete; evidence review | `mcr(fe) FE06 atomic themes` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/.codex/worktrees/3c8d/mcr` / `codex/mcr-fe-FE06` |
+| QA FE06 review | `mcr(qa) FE06 theme review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-fe-theme` / `codex/mcr-qa-FE06` |
 
 The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
@@ -404,3 +404,29 @@ unchanged. Parent owns the single CSS import, scoped shell/controller compositio
 and selector mount; existing world, room, camera and avatar identity must survive
 switches. Production texture absence remains explicit; synthetic tests do not
 approve replacement artwork. Focused tests and one native gate precede review.
+
+
+## Current handoffs and next feature — 2026-11-03
+
+The real-email increment is reviewed and integrated as `2f398a3` and `bed5ffa`.
+Its actual goal is COMPLETE; the former checkout is stopped. FE19 starts at
+`bed5ffa8cb52f5dc337bcde7d50a428f9bce74f9` with an actual ACTIVE unbudgeted goal.
+It owns only `frontend/src/features/places/**`, `frontend/src/features/world-help/**`
+and `docs/mcr/frontend/places-help.md`. C03 place catalog revisions remain distinct
+from C06 map revisions. The integrator owns route/port composition. This feature
+uses frozen contracts and fixtures without waiting for matching backend work.
+
+Both new backend checkouts start at `60ca208`. HTTP owns `http/concert_access.rs`,
+its explicitly delegated module/test registration and focused tests, and
+`docs/mcr/backend/http-concert-context.md`. Owner composition owns
+`adapters/out/concert_identity.rs`, its module export, focused composition test/support
+files and `docs/mcr/backend/identity-owner-composition.md`. No production route or
+AppState changes are delegated. The retained Rust target has one explicit owner;
+HTTP released it to composition before further review fixes. Former Profile
+checkouts are stopped. Actual HTTP timeout enforcement remains a review gate.
+
+The second FE chat was explicitly requested by the user and handles FE06 in its
+separate worktree. R1 reentrant texture commit ownership was fixed in `4cb28b5`;
+the parent integrated it as `5710363` after initial `4f4df6d`. Main owns production
+shell wiring and release catalogs. QA owns only its review document. Model and
+reasoning overrides are omitted on every assignment and continuation.
