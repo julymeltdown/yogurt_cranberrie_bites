@@ -340,7 +340,15 @@ impl WorldRepository for PgWorldRepository {
     }
 
     async fn consume(&self, claim: ConsumeClaim) -> Result<ConsumeOutcome, WorldError> {
+        // Serialize competing claims on the same digest before reading the one-use state. This
+        // keeps the outcome stable across concurrent transactions and preserves the row predicate
+        // as a second atomic guard against accidental reintroduction of a reusable update path.
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        sqlx::query("select pg_advisory_xact_lock(hashtextextended('mcr-world-ticket:' || encode($1::bytea,'hex'), 0))")
+            .bind(claim.digest.as_bytes().as_slice())
+            .execute(&mut *tx)
+            .await
+            .map_err(unavailable)?;
         let existing = sqlx::query("select consumed_at,expires_at from public.concert_world_tickets where ticket_digest=$1 for update")
             .bind(claim.digest.as_bytes().as_slice())
             .fetch_optional(&mut *tx)

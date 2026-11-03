@@ -118,7 +118,14 @@ fn record(
     seed: u8,
     now: DateTime<Utc>,
 ) -> (TicketRecord, AdmissionTicket) {
-    let ticket = AdmissionTicket::from_entropy(&[seed; TICKET_BYTES]).unwrap();
+    // The digest is globally unique in the test database even though tests create independent
+    // events. Derive fixture entropy from those event/room identities so a caller's local seed
+    // cannot collide with a ticket issued by another test.
+    let mut entropy = [0_u8; TICKET_BYTES];
+    entropy[..16].copy_from_slice(f.event.uuid().as_bytes());
+    entropy[16..].copy_from_slice(room.uuid().as_bytes());
+    entropy[0] ^= seed;
+    let ticket = AdmissionTicket::from_entropy(&entropy).unwrap();
     let session = session();
     (
         TicketRecord {
@@ -186,7 +193,13 @@ async fn ticket_digest_is_single_use_under_competing_connections() -> anyhow::Re
         admission(&one, ticket.clone(), p.clone(), first_connection),
         admission(&two, ticket.clone(), p.clone(), second_connection)
     );
-    let outcomes = [left?, right?];
+    // A conflict is a real infrastructure/admission failure; never erase it into a retry.
+    let outcomes = match (left, right) {
+        (Ok(one), Ok(two)) => [one, two],
+        (Err(error), _) | (_, Err(error)) => {
+            anyhow::bail!("competing consume failed: {error:?}")
+        }
+    };
     assert_eq!(
         outcomes
             .iter()
@@ -300,13 +313,11 @@ async fn persisted_capacity_and_switch_are_atomic_for_concurrent_users() -> anyh
     .await?;
     assert_eq!(rows, 2);
     // Keep a third slot for the independent switch/takeover probe below.
-    sqlx::query(
-        "update concert_world_rooms set capacity=3 where event_id=$1 and room_id=$2",
-    )
-    .bind(f.event.uuid())
-    .bind(f.room_a.uuid())
-    .execute(&pool)
-    .await?;
+    sqlx::query("update concert_world_rooms set capacity=3 where event_id=$1 and room_id=$2")
+        .bind(f.event.uuid())
+        .bind(f.room_a.uuid())
+        .execute(&pool)
+        .await?;
     repo.claim_owner(
         f.event,
         f.room_b,
@@ -323,8 +334,6 @@ async fn persisted_capacity_and_switch_are_atomic_for_concurrent_users() -> anyh
     .fetch_one(&pool)
     .await?;
     assert_eq!(active, 1);
-    let a_pin = pin(f, f.room_a);
-    let b_pin = pin(f, f.room_b);
     let switch_time = Utc::now();
     let (rec_a, ticket_initial) = record(f, f.room_a, 22, switch_time);
     let (rec_b, ticket_a) = record(f, f.room_b, 20, switch_time);
