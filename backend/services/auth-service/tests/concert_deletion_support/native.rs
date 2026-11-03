@@ -398,7 +398,7 @@ async fn canonical_upgrade_retry_recovery_and_partial_failure() -> anyhow::Resul
         StdDuration::from_millis(50),
     )?;
     let pending = UserDeletionWorker::new(r.clone(), absent, policy(3))
-        .run_once(t + Duration::seconds(8))
+        .run_once(Utc::now() + Duration::seconds(8))
         .await?;
     assert_eq!((pending.succeeded, pending.retried), (4, 4));
     assert_eq!(delete(&p, missing).await?.saga.status, "IN_PROGRESS");

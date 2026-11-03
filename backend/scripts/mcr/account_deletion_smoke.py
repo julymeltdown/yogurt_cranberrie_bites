@@ -17,7 +17,7 @@ def binary(path: Path, digest: str) -> Path:
     if not path.is_absolute() or path.is_symlink():
         raise SmokeError("preflight", "test binary must be an explicit copied absolute regular file")
     resolved = executable(path)
-    if "target" in resolved.parts or hashlib.sha256(resolved.read_bytes()).hexdigest() != digest:
+    if any(part in {"target", "mcr-build"} for part in resolved.parts) or hashlib.sha256(resolved.read_bytes()).hexdigest() != digest:
         raise SmokeError("preflight", "refusing target artifact or mismatched binary digest")
     return resolved
 

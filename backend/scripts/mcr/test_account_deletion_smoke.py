@@ -24,13 +24,14 @@ class RunnerSafety(unittest.TestCase):
             link.symlink_to(file)
             with self.assertRaises(smoke.SmokeError):
                 smoke.binary(link, digest)
-            target = root / "target"
-            target.mkdir()
-            artifact = target / "fixture"
-            artifact.write_bytes(file.read_bytes())
-            artifact.chmod(0o700)
-            with self.assertRaises(smoke.SmokeError):
-                smoke.binary(artifact, digest)
+            for name in ["target", "mcr-build"]:
+                target = root / name
+                target.mkdir()
+                artifact = target / "fixture"
+                artifact.write_bytes(file.read_bytes())
+                artifact.chmod(0o700)
+                with self.assertRaises(smoke.SmokeError):
+                    smoke.binary(artifact, digest)
 
     def test_tests_cannot_report_success_without_exact_inventory(self):
         for stdout in ["", "test result: ok. 0 passed; 0 failed;", "test result: ok. 3 passed; 0 failed;"]:
