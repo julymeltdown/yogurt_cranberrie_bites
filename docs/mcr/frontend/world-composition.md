@@ -156,9 +156,17 @@ Selected native artifacts are under
 `reentry-1280.png`. The report records 280 SHA-256 source/contract inputs, the
 prerequisite HEAD plus working-tree source bytes, browser/runtime versions,
 sanitized request metadata, active/final resource counts and errors. Every
-reported hash must match delivery source bytes; the worker commit's ancestry
-binds those bytes without claiming that its own future SHA existed at run time.
-Superseded preliminary run artifacts are not selected for delivery.
+reported hash was verified against delivery commit
+`17e5d43f3039f85393eff583c29071e9c32be57c`; its ancestry binds those bytes without
+claiming that its own future SHA existed at run time. The subsequent bounded
+review correction changes only ordinary user notice text in composition
+`index.ts` and this documentation. Its authority notice is now “Your position
+in this world does not confirm arrival at the venue.”; paused/disconnected
+messages use plain recovery wording without tickets or input-routing details.
+The unavailable-avatar notice remains. Focused tests and TypeScript were rerun
+for that correction. The native report and screenshots remain evidence for
+`17e5d43`, not the later copy revision; the protocol matrix was not rerun solely
+for text. Superseded preliminary run artifacts are not selected for delivery.
 
 The native fixture verifies real FE15 keyboard intent delivery/acknowledgement,
 one game/socket across shell panels, hide/resume with fresh tickets, full target

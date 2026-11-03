@@ -76,7 +76,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     root.className = 'world-composition'; root.style.cssText = 'height:100%;min-height:0;display:flex;flex-direction:column'
     stage.style.cssText = 'flex:1;min-height:120px;overflow:hidden'; inputs.style.cssText = 'flex:none'; status.setAttribute('role', 'status')
     const authorityNotice = document.createElement('p')
-    authorityNotice.textContent = 'World positions come only from the server. Local routes generate input; they do not prove movement or physical arrival.'
+    authorityNotice.textContent = 'Your position in this world does not confirm arrival at the venue.'
     retry.type = 'button'; retry.hidden = true; retry.textContent = 'Reconnect world'
     status.textContent = 'Opening the world…'; root.append(stage, inputs, status, retry, authorityNotice); host.append(root)
     const cleanup: (() => void)[] = []
@@ -101,8 +101,8 @@ export function createWorldComposition(options: WorldCompositionOptions) {
       if (!current()) return
       refreshControls()
       status.textContent = view.phase === 'live' ? (renderer ? 'World connected.' : 'World connected. Avatar artwork is unavailable.')
-        : view.phase === 'suspended' ? 'World paused while hidden. Reconnecting requires a fresh ticket on return.'
-          : view.phase === 'closed' ? 'World disconnected. Reconnect to obtain a fresh ticket.' : 'Connecting to the world…'
+        : view.phase === 'suspended' ? 'World paused. Return to continue.'
+          : view.phase === 'closed' ? 'World disconnected. Select Reconnect world to continue.' : 'Connecting to the world…'
       retry.hidden = view.phase !== 'closed'
       retry.textContent = 'Reconnect world'
       notify()
