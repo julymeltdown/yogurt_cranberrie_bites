@@ -118,6 +118,13 @@ impl<A: RallyAuthority> PgRally<A> {
         // Reports for removed or newly reapproved membership generations are never restored.
         let mut entries = vec![];
         for row in rows {
+            let deadline: chrono::DateTime<chrono::Utc> =
+                row.try_get("meeting_deadline").map_err(invalid)?;
+            // Forward-upgraded legacy reports have no qualified physical deadline.
+            // Preserve revision metadata but do not restore their arrival state.
+            if deadline.timestamp() <= 0 {
+                continue;
+            }
             let value = entry(&row)?;
             if value.meeting_revision > g.meeting_revision {
                 return Err(MeetingError::InvalidState);
@@ -138,6 +145,7 @@ impl<A: RallyAuthority> PgRally<A> {
         }
         // Expiry is checked after all potentially blocking peer policy checks.
         active_meeting(&mut tx, &g).await?;
+        super::ensure_authority_current(&mut tx).await?;
         tx.commit().await.map_err(storage)?;
         Ok(Rally {
             party_id: q.party,
@@ -289,7 +297,12 @@ pub async fn set_in<A: RallyAuthority>(
             if row
                 .try_get::<i64, _>("membership_revision")
                 .map_err(invalid)?
-                != membership =>
+                != membership
+                || row
+                    .try_get::<chrono::DateTime<chrono::Utc>, _>("meeting_deadline")
+                    .map_err(invalid)?
+                    .timestamp()
+                    <= 0 =>
         {
             0
         }
@@ -300,7 +313,7 @@ pub async fn set_in<A: RallyAuthority>(
     }
     // Recheck DB expiry after advisory/row locks; no waiting command can report against an expired meeting.
     active_meeting(c, &g).await?;
-    let row=sqlx::query("insert into public.concert_meeting_rally_states(event_id,party_id,user_id,state,meeting_revision,membership_revision) values($1,$2,$3,$4,$5,$6) on conflict(event_id,party_id,user_id) do update set state=excluded.state,meeting_revision=excluded.meeting_revision,membership_revision=excluded.membership_revision,revision=concert_meeting_rally_states.revision+1 returning *")
-        .bind(q.actor.event).bind(q.party).bind(q.actor.actor).bind(input.state.as_str()).bind(input.meeting_revision).bind(membership).fetch_one(c).await.map_err(storage)?;
+    let row=sqlx::query("insert into public.concert_meeting_rally_states(event_id,party_id,user_id,state,meeting_revision,membership_revision,meeting_deadline) values($1,$2,$3,$4,$5,$6,$7) on conflict(event_id,party_id,user_id) do update set state=excluded.state,meeting_revision=excluded.meeting_revision,membership_revision=excluded.membership_revision,meeting_deadline=excluded.meeting_deadline,revision=concert_meeting_rally_states.revision+1 returning *")
+        .bind(q.actor.event).bind(q.party).bind(q.actor.actor).bind(input.state.as_str()).bind(input.meeting_revision).bind(membership).bind(g.ends_at).fetch_one(c).await.map_err(storage)?;
     entry(&row)
 }
