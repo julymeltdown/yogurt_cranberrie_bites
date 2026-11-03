@@ -1,0 +1,304 @@
+use async_trait::async_trait;
+use chrono::{DateTime, TimeZone, Utc};
+use concert_application::{feed::*, Clock};
+use concert_domain::feed::*;
+use std::sync::{Arc, Mutex};
+use uuid::Uuid;
+fn id(n: u128) -> Uuid {
+    Uuid::from_u128(n)
+}
+fn now() -> DateTime<Utc> {
+    Utc.timestamp_opt(1793710000, 0).unwrap()
+}
+#[derive(Clone, Copy)]
+struct Fixed;
+impl Clock for Fixed {
+    fn now(&self) -> DateTime<Utc> {
+        now()
+    }
+}
+fn ctx() -> Context {
+    Context {
+        actor: id(1),
+        event: id(2),
+        session_family: id(3),
+        request: id(4),
+        expires_at: now() + chrono::Duration::seconds(2),
+    }
+}
+fn row(n: u128) -> Post {
+    Post {
+        id: id(n),
+        event: id(2),
+        author: id(10),
+        content: Content {
+            text: "Concert post".into(),
+            media_ids: vec![],
+            links: vec![],
+        },
+        state: ContentState::Published,
+        public: true,
+        revision: 1,
+        created_at: now() - chrono::Duration::seconds(1),
+        edited_at: None,
+        comment_count: 0,
+        reaction_count: 0,
+        reacted_by_me: false,
+    }
+}
+#[derive(Default)]
+struct State {
+    rows: Vec<Post>,
+    deny: bool,
+    stale: bool,
+    links: bool,
+    media: bool,
+    hide_on_author: bool,
+    wrong_binding: bool,
+}
+#[derive(Clone)]
+struct Ports(Arc<Mutex<State>>);
+#[async_trait]
+impl FeedPolicy for Ports {
+    async fn observe(&self, c: Context, s: Uuid, a: Action) -> Result<Observation, FeedError> {
+        let state = self.0.lock().unwrap();
+        if state.deny {
+            return Err(FeedError::PermissionDenied);
+        }
+        Ok(Observation {
+            context: if state.wrong_binding {
+                Context {
+                    event: id(999),
+                    ..c
+                }
+            } else {
+                c
+            },
+            subject: s,
+            action: a,
+            event_revision: 1,
+            relationship_revision: 1,
+            auth_actor_revision: 1,
+            auth_subject_revision: 1,
+            friend_revision: 1,
+            valid_until: c.expires_at,
+        })
+    }
+    async fn fence(&self, _: Observation) -> Result<(), FeedError> {
+        if self.0.lock().unwrap().stale {
+            Err(FeedError::PermissionDenied)
+        } else {
+            Ok(())
+        }
+    }
+}
+#[async_trait]
+impl PostReader for Ports {
+    async fn page(&self, _: Context, _: Window, _: Filter, _: u16) -> Result<Vec<Post>, FeedError> {
+        Ok(self.0.lock().unwrap().rows.clone())
+    }
+    async fn post(&self, _: Context, n: Uuid) -> Result<Option<Post>, FeedError> {
+        Ok(self
+            .0
+            .lock()
+            .unwrap()
+            .rows
+            .iter()
+            .find(|p| p.id == n)
+            .cloned())
+    }
+}
+#[async_trait]
+impl FeedResources for Ports {
+    async fn author(&self, _: Context, n: Uuid) -> Result<PublicAuthor, FeedError> {
+        let mut s = self.0.lock().unwrap();
+        if s.hide_on_author {
+            s.rows
+                .iter_mut()
+                .for_each(|r| r.state = ContentState::Hidden)
+        }
+        Ok(PublicAuthor {
+            user_id: n,
+            json: b"{}".to_vec(),
+        })
+    }
+    async fn public_link(&self, _: Context, _: ResourceLink) -> Result<bool, FeedError> {
+        Ok(self.0.lock().unwrap().links)
+    }
+    async fn public_media(&self, _: Context, _: Uuid, _: Uuid) -> Result<bool, FeedError> {
+        Ok(self.0.lock().unwrap().media)
+    }
+}
+fn setup(rows: Vec<Post>) -> (Feed<Ports, Ports, Ports, Fixed>, Ports) {
+    let p = Ports(Arc::new(Mutex::new(State {
+        rows,
+        ..Default::default()
+    })));
+    (
+        Feed {
+            reader: p.clone(),
+            policy: p.clone(),
+            resources: p.clone(),
+            clock: Fixed,
+        },
+        p,
+    )
+}
+fn window() -> Window {
+    Window {
+        upper: now(),
+        after: None,
+    }
+}
+#[tokio::test]
+async fn stable_tie_order_and_strict_cursor_tuple() {
+    let (f, _) = setup(vec![row(12), row(11)]);
+    let page = f.page(ctx(), window(), Filter::All, 2).await.unwrap();
+    assert_eq!(
+        page.items.iter().map(|p| p.post.id).collect::<Vec<_>>(),
+        vec![id(12), id(11)]
+    );
+    assert_eq!(page.next, Some(row(11).position()));
+    let (f, _) = setup(vec![row(10)]);
+    let page = f
+        .page(
+            ctx(),
+            Window {
+                after: Some(row(11).position()),
+                ..window()
+            },
+            Filter::All,
+            2,
+        )
+        .await
+        .unwrap();
+    assert_eq!(page.items.len(), 1);
+    assert!(page.next.is_none());
+}
+#[tokio::test]
+async fn cross_event_or_invalid_order_is_dependency_failure() {
+    for rows in [
+        vec![Post {
+            event: id(999),
+            ..row(12)
+        }],
+        vec![row(11), row(12)],
+        vec![row(12), row(12)],
+    ] {
+        let (f, _) = setup(rows);
+        assert!(matches!(
+            f.page(ctx(), window(), Filter::All, 2).await,
+            Err(FeedError::DependencyUnavailable)
+        ));
+    }
+}
+#[tokio::test]
+async fn private_hidden_deleted_rows_and_revoked_links_do_not_escape() {
+    for mut p in [
+        Post {
+            public: false,
+            ..row(12)
+        },
+        Post {
+            state: ContentState::Hidden,
+            ..row(12)
+        },
+        Post {
+            state: ContentState::Deleted,
+            ..row(12)
+        },
+    ] {
+        p.content.links.push(ResourceLink {
+            target_type: TargetType::Party,
+            target_id: id(20),
+        });
+        let (f, _) = setup(vec![p]);
+        let page = f.page(ctx(), window(), Filter::All, 1).await.unwrap();
+        assert!(page.items.is_empty());
+        assert!(page.next.is_some());
+    }
+    let mut p = row(12);
+    p.content.links.push(ResourceLink {
+        target_type: TargetType::Party,
+        target_id: id(20),
+    });
+    p.content.media_ids.push(id(30));
+    let (f, _) = setup(vec![p]);
+    let page = f.page(ctx(), window(), Filter::All, 1).await.unwrap();
+    assert!(page.items[0].post.content.links.is_empty());
+    assert!(page.items[0].post.content.media_ids.is_empty());
+}
+#[tokio::test]
+async fn filter_cannot_reveal_revoked_private_link() {
+    let mut p = row(12);
+    p.content.links.push(ResourceLink {
+        target_type: TargetType::Party,
+        target_id: id(20),
+    });
+    let (f, _) = setup(vec![p]);
+    let page = f.page(ctx(), window(), Filter::PartyLink, 1).await.unwrap();
+    assert!(page.items.is_empty());
+    assert!(page.next.is_some());
+}
+#[tokio::test]
+async fn block_stale_grant_wrong_binding_and_expiry_fail_closed() {
+    for flag in 0..3 {
+        let (f, p) = setup(vec![row(12)]);
+        {
+            let mut s = p.0.lock().unwrap();
+            match flag {
+                0 => s.deny = true,
+                1 => s.stale = true,
+                _ => s.wrong_binding = true,
+            }
+        }
+        assert!(matches!(
+            f.page(ctx(), window(), Filter::All, 1).await,
+            Err(FeedError::PermissionDenied)
+        ));
+    }
+    let (f, _) = setup(vec![row(12)]);
+    assert!(f
+        .post(
+            Context {
+                expires_at: now(),
+                ..ctx()
+            },
+            id(12)
+        )
+        .await
+        .is_err());
+}
+#[tokio::test]
+async fn hide_during_profile_fetch_fails_closed() {
+    let (f, p) = setup(vec![row(12)]);
+    p.0.lock().unwrap().hide_on_author = true;
+    assert!(matches!(
+        f.post(ctx(), id(12)).await,
+        Err(FeedError::ResourceUnavailable)
+    ));
+}
+#[tokio::test]
+async fn parent_event_is_checked_on_direct_read() {
+    let (f, _) = setup(vec![Post {
+        event: id(999),
+        ..row(12)
+    }]);
+    assert!(matches!(
+        f.post(ctx(), id(12)).await,
+        Err(FeedError::ResourceUnavailable)
+    ));
+}
+#[tokio::test]
+async fn unavailable_defaults_are_not_fixture_posts() {
+    let f = Feed {
+        reader: UnavailableFeed,
+        policy: UnavailableFeed,
+        resources: UnavailableFeed,
+        clock: Fixed,
+    };
+    assert!(matches!(
+        f.page(ctx(), window(), Filter::All, 20).await,
+        Err(FeedError::DependencyUnavailable)
+    ));
+}

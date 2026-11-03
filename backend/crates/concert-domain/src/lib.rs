@@ -264,3 +264,4 @@ pub mod relationship;
 pub mod beacon;
 
 pub mod rally;
+pub mod feed;
