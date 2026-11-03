@@ -243,3 +243,18 @@ Successful `switch_room` removal acknowledges its entry. Adapters must keep
 retrying pending cleanup even after the active slot disconnects. Added regressions
 cover failed expiry cleanup -> cross-owner fresh reconnect -> successful retry,
 and capacity refusal before mutation when pending owner cleanup is full.
+
+Final narrow peer rereview at committed `e787379` reported no actionable findings
+in the displaced-owner cleanup correction. It verified the independent bounded
+map, pre-mutation capacity refusal, persistent failure retries and successful
+switch acknowledgement by static inspection only; no builds/tests were run by
+the reviewer. The four initial/follow-up concrete P2 findings are addressed in
+source and authored regressions. Native execution remains a separate obligation.
+
+`python3 scripts/mcr/check-boundaries.py --base ab4b78e --lane backend
+--allow-doc docs/mcr/backend/world-replication-recovery.md
+--allow-doc docs/mcr/backend/world-simulation.md` exited 0 after final fixes.
+Its 11-path comparison includes the separately authorized BE12 provenance
+prerequisite; feature commit changed paths were also inspected individually
+against the seven-file assignment plus separate four-export registration.
+The frozen C05 schema/policy SHA256 values were rechecked and match the pins.
