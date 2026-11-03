@@ -2,11 +2,37 @@
 
 ## Decision
 
-**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has now been read by the visual implementation owners, and several bounded presentation changes have reached master. Some updated components still lack default application routes, while default shell adoption, approved imagery and visual item choices remain unfinished. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; the follow-through below records what changed.
+**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has been read by the visual implementation owners. Default shell chrome is now integrated at `a1dcf56`, alongside the bounded screen changes below. Default Feed/Map/Wall producers, approved imagery and visual avatar choices remain unfinished. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; dated follow-through records what changed.
 
 The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged copy is [user-reference.jpg](ui-reference-audit-2026-11-04/user-reference.jpg), SHA256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`. This is the current screen-level design handoff. The earlier [approved mobile world sheet](../../source/mcr_v2_en/reference/approved_mobile_world.png) contains five world compositions, not these ten screens. It remains an immutable historical source.
 
 ## Evidence and limits
+
+### Latest default shell checkpoint — `a1dcf56`
+
+The actual `WorldShell` now consumes the shared compact header, three era tabs,
+icon-and-label navigation and panel header, within the original navigation and
+single-world owner. Main verified all 18 assigned paths and 17 hashes from
+author `a7e15fd`; fresh combined strict TypeScript passed. Three actual default
+route tests and native 360/390/430 checks passed in the author's instrumented
+world fixture. See [default shell evidence](../frontend/default-shell-integration.md).
+
+Main inspected the 390px default-world capture. The black/ivory frame, typography
+and six navigation controls are visible, with no decorative left accents.
+The center plainly says it is an instrumented test host; era choices are
+unavailable and the stage, terrain and character illustrations are absent.
+This proves default layout adoption, not a finished match to the ten-screen
+reference or an actual Phaser/multiuser journey. Approved character/venue art,
+world illustration and complete default panel integration remain material gaps.
+
+FE07 continues qualified Map/theme/Wall producers; the resumed social owner
+continues Feed/default-provider composition, and FE13 continues bounded visual
+option previews. Missing mural anchor/write authority must remain unavailable.
+No duplicate renderer, invented authorization or legacy artwork is permitted.
+The former Delivery reservation was released only after a terminal interruption;
+[current ownership and recovery evidence](../ownership-recovery-2026-11-04.md)
+supersedes historical ownership statements below. Earlier route tables remain
+dated baselines until the corresponding producer handoffs are published.
 
 ### Follow-through after the initial audit
 
