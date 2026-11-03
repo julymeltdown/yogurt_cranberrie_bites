@@ -734,11 +734,13 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "async-trait",
+ "auth-service",
  "axum 0.7.9",
  "chrono",
  "concert-application",
  "concert-domain",
  "contracts-build",
+ "friend-service",
  "http-body-util",
  "jsonschema",
  "migration-runtime",

@@ -31,5 +31,7 @@ protoc-bin-vendored = "3.1.0"
 tonic-prost-build.workspace = true
 
 [dev-dependencies]
+auth-service = { path = "../auth-service" }
+friend-service = { path = "../friend-service" }
 tower.workspace = true
 http-body-util.workspace = true
