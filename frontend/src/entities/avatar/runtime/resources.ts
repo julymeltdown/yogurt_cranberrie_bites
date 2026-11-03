@@ -2,7 +2,15 @@ import { characterSourcePack, characterArtSources } from '../source-catalog'
 import { abortable, decodeImage, pngDimensions, type AssetResources } from '../../../world/map/resources'
 import { sha256 } from '../../../world/map/json'
 import { validDateTime } from '../../../world/map/formats'
-import { AvatarError, ensure, type AvatarManifest } from './contract'
+import { AvatarError, ensure, type AvatarConfig, type AvatarManifest } from './contract'
+import { schemaValid } from './schema'
+
+/** A whole-character config cannot enter the layered compositor through a display boundary. */
+export function isLayeredAvatarConfig(value: unknown): value is AvatarConfig {
+  return value !== null && typeof value === 'object' && !Array.isArray(value)
+    && 'contract_version' in value && value.contract_version === '1.0.0'
+    && 'kind' in value && value.kind === 'avatar_config' && schemaValid(value, 'config')
+}
 
 /** Local review receipt, not a new C06 wire DTO. No default binding or approved art ships here. */
 export interface ReviewedAvatarBinding {

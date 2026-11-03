@@ -14,13 +14,14 @@ export type PartyDraft = z.infer<typeof partyDraftSchema>
 export const emptyDraft = (): PartyDraft => ({ title: '', description: '', ticket_section: '', capacity: 2, meeting_starts_at: '', meeting_ends_at: '', requirements: '', public_place_id: '', state: 'OPEN' })
 
 // Interpret only the closed, reachable C04 schemas; reject unknown keywords rather than silently weakening validation.
-type Schema = { $ref?: string; type?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; minimum?: number; maximum?: number; format?: string; pattern?: string }
+type Schema = { $ref?: string; type?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; minimum?: number; maximum?: number; format?: string; pattern?: string }
 const schemas = spec.components.schemas as unknown as Record<string, Schema>
 export function contractValue<T>(name: string, value: unknown): T {
   const match = (v: unknown, s: Schema, depth: number): boolean => {
-    if (depth > 30 || Object.keys(s).some(k => !['$ref','type','const','enum','anyOf','properties','required','additionalProperties','items','minItems','maxItems','minLength','maxLength','minimum','maximum','format','pattern'].includes(k))) return false
+    if (depth > 30 || Object.keys(s).some(k => !['$ref','type','const','enum','anyOf','oneOf','properties','required','additionalProperties','items','minItems','maxItems','minLength','maxLength','minimum','maximum','format','pattern'].includes(k))) return false
     if (s.$ref) { const key = s.$ref.replace('#/components/schemas/', ''); return s.$ref === `#/components/schemas/${key}` && !!schemas[key] && match(v, schemas[key]!, depth + 1) }
     if (s.anyOf) return s.anyOf.some(child => match(v, child, depth + 1))
+    if (s.oneOf) return s.oneOf.filter(child => match(v, child, depth + 1)).length === 1
     if ('const' in s && v !== s.const || s.enum && !s.enum.includes(v)) return false
     if (s.type === 'null') return v === null
     if (s.type === 'object') { if (!v || typeof v !== 'object' || Array.isArray(v) || s.additionalProperties !== false) return false

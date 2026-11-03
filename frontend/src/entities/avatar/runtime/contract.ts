@@ -1,15 +1,17 @@
 import type fixture from '../../../../../contracts/fixtures/assets/avatar-manifest.json'
-import type { AvatarConfig } from '../../../world/network/WorldTransport'
+import type { AvatarConfig as WireAvatarConfig } from '../../../world/network/WorldTransport'
 import { immutable } from '../../../world/entities/replicated'
 import { contentHash, strictJson } from '../../../world/map/json'
 import { schemaValid } from './schema'
 
-export type { AvatarConfig }
+/** The layered compositor must never admit a whole-character configuration. */
+export type AvatarConfig = Extract<WireAvatarConfig, { contract_version: '1.0.0' }>
 export type Layer = 'body' | 'eyes' | 'hair' | 'outfit' | 'accessory'
 export type Direction = 'down' | 'left' | 'right' | 'up'
 export type Pose = Readonly<{ direction: Direction; animation: 'idle' | 'walk'; frame: number }>
 type Texture = { image_state: 'PROVIDED' | 'NOT_PROVIDED'; path: string | null; sha256: string | null; width_px: number; height_px: number }
-export type AvatarManifest = Omit<typeof fixture, 'atlas' | 'provenance' | 'presets'> & {
+export type AvatarManifest = Omit<typeof fixture, 'atlas' | 'provenance' | 'presets' | 'contract_version' | 'kind'> & {
+  contract_version: '1.0.0'; kind: 'avatar_manifest'
   provenance: Omit<typeof fixture.provenance, 'source_uri' | 'reviewed_by' | 'reviewed_at'> & { source_uri: string | null; reviewed_by: string | null; reviewed_at: string | null }
   atlas: Omit<typeof fixture.atlas, 'texture'> & { texture: Texture }
   presets: { preset_id: string; config: AvatarConfig }[]
@@ -20,6 +22,7 @@ export class AvatarError extends Error {
 export function ensure(value: unknown): asserts value { if (!value) throw new AvatarError('invalid') }
 export function validateConfig(value: unknown, manifest: AvatarManifest): AvatarConfig {
   ensure(schemaValid(value, 'config'))
+  if ((value as WireAvatarConfig).contract_version !== '1.0.0') throw new AvatarError('version')
   const config = value as AvatarConfig
   if (config.manifest_id !== manifest.manifest_id || config.manifest_version !== manifest.manifest_version) throw new AvatarError('version')
   ensure(manifest.skin_tones.some(t => t.skin_tone_id === config.skin_tone_id))
@@ -33,6 +36,7 @@ export function validateConfig(value: unknown, manifest: AvatarManifest): Avatar
 export async function validateManifest(text: string, pin: { manifest_id: string; manifest_version: number; content_hash: string }): Promise<AvatarManifest> {
   const value = strictJson(text)
   ensure(schemaValid(value, 'manifest'))
+  if ((value as { contract_version: string }).contract_version !== '1.0.0') throw new AvatarError('version')
   const manifest = value as AvatarManifest, { atlas } = manifest, texture = atlas.texture
   if (manifest.manifest_id !== pin.manifest_id || manifest.manifest_version !== pin.manifest_version) throw new AvatarError('version')
   ensure(manifest.content_hash === pin.content_hash && await contentHash(manifest) === pin.content_hash)

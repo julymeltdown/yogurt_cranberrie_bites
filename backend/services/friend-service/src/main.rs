@@ -31,6 +31,16 @@ async fn main() -> anyhow::Result<()> {
         friend_service::adapters::r#in::grpc::concert_relationship::RelationshipServer::from_pool(
             pool.clone(),
         );
+    let invalidation_service = config
+        .tls_material
+        .as_ref()
+        .map(|_| {
+            friend_service::adapters::r#in::grpc::concert_invalidation::guarded_server(
+                pool.clone(),
+                config.caller_registry.clone(),
+            )
+        })
+        .transpose()?;
     let readiness = readiness(pool.clone()).with_dependencies(vec![Probe::grpc(
         platform::edge::Edge::FriendProfile,
         &config.profile_grpc_endpoint,
@@ -87,6 +97,7 @@ async fn main() -> anyhow::Result<()> {
                         .max_decoding_message_size(4096).max_encoding_message_size(4096),
                     config.caller_registry.clone(), verifier.into_inner(),
                 )).transpose()?)
+                .add_optional_service(invalidation_service)
                 .add_service(platform::grpc_method_policy::guard_with_forwarding(
                     &friend_service::adapters::r#in::grpc::method_policy::FRIEND_METHOD_POLICY,
                     friend_service::adapters::r#in::grpc::method_policy::FRIEND_FORWARDING,

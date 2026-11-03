@@ -35,7 +35,7 @@ export interface Receipt {
 }
 type Rule = { readonly [key: string]: unknown }
 const schemas: Record<string, unknown> = contract.components.schemas
-const keywords = new Set(['type', '$ref', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'uniqueItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'maximum', 'anyOf'])
+const keywords = new Set(['type', '$ref', 'const', 'enum', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'uniqueItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'maximum', 'anyOf', 'oneOf'])
 function record(value: unknown): value is Rule { return value !== null && typeof value === 'object' && !Array.isArray(value) }
 function valid(rule: unknown, value: unknown, depth = 0): boolean {
   if (!record(rule) || depth > 30 || !Object.keys(rule).every(k => keywords.has(k))) return false
@@ -44,6 +44,7 @@ function valid(rule: unknown, value: unknown, depth = 0): boolean {
     return valid(schemas[rule.$ref.split('/').at(-1)!], value, depth + 1)
   }
   if (Array.isArray(rule.anyOf)) return rule.anyOf.some(r => valid(r, value, depth + 1))
+  if (Array.isArray(rule.oneOf)) return rule.oneOf.filter(r => valid(r, value, depth + 1)).length === 1
   if (Object.hasOwn(rule, 'const')) return value === rule.const
   if (Array.isArray(rule.enum)) return rule.enum.includes(value)
   if (rule.type === 'null') return value === null

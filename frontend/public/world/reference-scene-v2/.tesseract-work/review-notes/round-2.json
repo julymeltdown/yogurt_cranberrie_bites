@@ -1,0 +1,19 @@
+{
+  "round": 2,
+  "checkpoint": ".tesseract-work/Versions/round-2",
+  "art_director": {
+    "WORLD": 6.0,
+    "MAP": 5.3
+  },
+  "spatial_specialist": {
+    "WORLD": 6.2,
+    "MAP": 5.5
+  },
+  "panel": 5.3,
+  "feedback": [
+    "Plaza requires a broad green parcel under Main Stage.",
+    "Dense urban venue architecture and planting should enclose coherent paths.",
+    "Reduce fine miniature realism toward chunky outlined pixel illustration."
+  ],
+  "alpha_finding": "Bright atlas fringe RGB exists at alpha1..3, not visible as opaque residue in runtime composite. No original source pixels rewritten."
+}

@@ -1,0 +1,1091 @@
+{
+  "task": "FE-REF-WALL-QA",
+  "phase": "baseline",
+  "status": "PASS",
+  "fixtureOnly": true,
+  "scope": "Native desktop Chrome mobile/touch emulation of actual MuralEditor/MuralSyncPanel with canonical memory session/privacy/HTTP/controllers and frozen C04 deterministic fixtures. No physical device, live login/backend authority, real two-client proof or IN04 acceptance.",
+  "base": "f837bef676cd26869c26c172a699a91b7842d832",
+  "sourceRevision": "f837bef676cd26869c26c172a699a91b7842d832",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "referenceRegion": {
+    "imageWidth": 1536,
+    "imageHeight": 1024,
+    "wall": {
+      "x": 925,
+      "y": 541,
+      "width": 290,
+      "height": 480
+    },
+    "method": "manual region annotation of supplied 10-screen image, bottom row fourth"
+  },
+  "sourceHashes": {
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "8492827741db327607dd24bad88900a60f607cab2a810b24d3bd051e541e6e00",
+    "frontend/src/features/mural/editor/editor.css": "bba609bd9832e5d4e90f1decc51be3c86d21886ee9c332561f120480daff31e3",
+    "frontend/src/features/mural/editor/controller.ts": "0af993f96cbe303a6e920a87faeab32b4e5652ae68ef44809c1a41cbdb9dd26f",
+    "frontend/src/features/mural/editor/input.ts": "6e2744b189e6887f34c477a28a7522f5d76c4c3e16ee25cf1141f1c65cf57b04",
+    "frontend/src/features/mural/editor/contract.ts": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+    "frontend/src/features/mural/editor/__tests__/fixture.ts": "ba6fa5bd95472e078f4c4a5a1c0eebe4b25f6a56c81c4cac74eaf79eb92a2bf4",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "1169f7befd9a096b82656c527de4a1053f0bff43efd032e9d06ce769de382787",
+    "frontend/src/features/mural/sync/controller.ts": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+    "frontend/src/features/mural/sync/contract.ts": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+    "frontend/src/features/mural/sync/projection.ts": "e69dd552120a4f02e3abd7a81e079ec76f7a2cf04014c71dd9618d196aaf79c6",
+    "frontend/src/features/mural/sync/http.ts": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144",
+    "frontend/src/features/mural/sync/__tests__/fixture.ts": "c61d33f5258a19541a8d70989686ebfdfa19a5711a9bcf44d2e22ae9b0d52a56",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/shared/styles/base.css": "63fb6160fa17471c9f40cc58c8d60890390f31af2da2078f50640b5ae7b6b762",
+    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca",
+    "contracts/generated/mcr-domain.openapi.json": "a5fbe73124ed069e6357f5797a264e2d2a1bec93b0179bfc8550bf1122b69fde",
+    "frontend/e2e/wall-reference/index.html": "821135cbf18265d1a67ef0c9b559d8a2186d829aeddfd6ceb16895bf73b78c1f",
+    "frontend/e2e/wall-reference/fixture.tsx": "99aefa4253ce3dd3375b3b25e09c037b08ae842eb1c1e6d579c25c5e4d279210",
+    "frontend/e2e/wall-reference/host.css": "ff96583da3cdc3c49e3927c52fd13bfeed9d1729eed15fcaafe5c6c77dfbe26c",
+    "frontend/e2e/wall-reference/run.mjs": "0a3229fdfd46d98545f31ef53e19462d73808543090279069c75ec50d97757a0"
+  },
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "widths": [
+    {
+      "width": 360,
+      "geometry": {
+        "panel": {
+          "x": 8,
+          "y": 8,
+          "width": 344,
+          "height": 1071.375,
+          "bottom": 1079.375,
+          "right": 352
+        },
+        "surface": {
+          "x": 22,
+          "y": 234.46875,
+          "width": 316,
+          "height": 316,
+          "bottom": 550.46875,
+          "right": 338
+        },
+        "palette": {
+          "x": 22,
+          "y": 582.65625,
+          "width": 316,
+          "height": 140,
+          "bottom": 722.65625,
+          "right": 338
+        },
+        "zoomIn": {
+          "x": 151.328125,
+          "y": 182.46875,
+          "width": 91.328125,
+          "height": 44,
+          "bottom": 226.46875,
+          "right": 242.65625
+        },
+        "status": {
+          "x": 22,
+          "y": 102.1875,
+          "width": 316,
+          "height": 17.546875,
+          "bottom": 119.734375,
+          "right": 338
+        },
+        "paletteRows": 3,
+        "controls": [
+          {
+            "name": "Zoom out",
+            "x": 22,
+            "y": 182.46875,
+            "width": 91.328125,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 113.328125
+          },
+          {
+            "name": "Zoom in",
+            "x": 151.328125,
+            "y": 182.46875,
+            "width": 91.328125,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 242.65625
+          },
+          {
+            "name": "Fit wall",
+            "x": 246.65625,
+            "y": 182.46875,
+            "width": 91.34375,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 338
+          },
+          {
+            "name": "Color 0 #FAF6ED",
+            "x": 22,
+            "y": 582.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 626.65625,
+            "right": 71.328125
+          },
+          {
+            "name": "Color 1 #201D1D",
+            "x": 75.328125,
+            "y": 582.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 626.65625,
+            "right": 124.65625
+          },
+          {
+            "name": "Color 2 #A22635",
+            "x": 128.65625,
+            "y": 582.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 626.65625,
+            "right": 177.984375
+          },
+          {
+            "name": "Color 3 #605952",
+            "x": 181.984375,
+            "y": 582.65625,
+            "width": 49.34375,
+            "height": 44,
+            "bottom": 626.65625,
+            "right": 231.328125
+          },
+          {
+            "name": "Color 4 #E5DFD4",
+            "x": 235.328125,
+            "y": 582.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 626.65625,
+            "right": 284.65625
+          },
+          {
+            "name": "Color 5 #713B70",
+            "x": 288.65625,
+            "y": 582.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 626.65625,
+            "right": 337.984375
+          },
+          {
+            "name": "Color 6 #244C69",
+            "x": 22,
+            "y": 630.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 674.65625,
+            "right": 71.328125
+          },
+          {
+            "name": "Color 7 #42736B",
+            "x": 75.328125,
+            "y": 630.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 674.65625,
+            "right": 124.65625
+          },
+          {
+            "name": "Color 8 #7E8245",
+            "x": 128.65625,
+            "y": 630.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 674.65625,
+            "right": 177.984375
+          },
+          {
+            "name": "Color 9 #BD8E46",
+            "x": 181.984375,
+            "y": 630.65625,
+            "width": 49.34375,
+            "height": 44,
+            "bottom": 674.65625,
+            "right": 231.328125
+          },
+          {
+            "name": "Color 10 #CF6845",
+            "x": 235.328125,
+            "y": 630.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 674.65625,
+            "right": 284.65625
+          },
+          {
+            "name": "Color 11 #D4A2AC",
+            "x": 288.65625,
+            "y": 630.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 674.65625,
+            "right": 337.984375
+          },
+          {
+            "name": "Color 12 #938EB0",
+            "x": 22,
+            "y": 678.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 722.65625,
+            "right": 71.328125
+          },
+          {
+            "name": "Color 13 #8EBDD0",
+            "x": 75.328125,
+            "y": 678.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 722.65625,
+            "right": 124.65625
+          },
+          {
+            "name": "Color 14 #ACCB96",
+            "x": 128.65625,
+            "y": 678.65625,
+            "width": 49.328125,
+            "height": 44,
+            "bottom": 722.65625,
+            "right": 177.984375
+          },
+          {
+            "name": "Color 15 #FFFFFF",
+            "x": 181.984375,
+            "y": 678.65625,
+            "width": 49.34375,
+            "height": 44,
+            "bottom": 722.65625,
+            "right": 231.328125
+          },
+          {
+            "name": "Confirm pixel",
+            "x": 22,
+            "y": 820.625,
+            "width": 155,
+            "height": 44,
+            "bottom": 864.625,
+            "right": 177
+          },
+          {
+            "name": "Cancel preview",
+            "x": 183,
+            "y": 820.625,
+            "width": 155,
+            "height": 44,
+            "bottom": 864.625,
+            "right": 338
+          },
+          {
+            "name": "",
+            "x": 22,
+            "y": 916,
+            "width": 86.84375,
+            "height": 44,
+            "bottom": 960,
+            "right": 108.84375
+          },
+          {
+            "name": "",
+            "x": 114.84375,
+            "y": 916,
+            "width": 86.859375,
+            "height": 44,
+            "bottom": 960,
+            "right": 201.703125
+          },
+          {
+            "name": "Preview pixel",
+            "x": 207.703125,
+            "y": 916,
+            "width": 130.28125,
+            "height": 44,
+            "bottom": 960,
+            "right": 337.984375
+          },
+          {
+            "name": "Refresh confirmed wall",
+            "x": 22,
+            "y": 1021.375,
+            "width": 316,
+            "height": 44,
+            "bottom": 1065.375,
+            "right": 338
+          }
+        ],
+        "documentWidth": 360,
+        "viewportWidth": 360
+      },
+      "visual": {
+        "canvasNearHeader": false,
+        "canvasDominatesWidth": true,
+        "toolsOnCanvasRight": false,
+        "singlePaletteRow": false,
+        "paletteImmediatelyBelow": false,
+        "statusBelowPalette": false,
+        "compactInitialPanel": false
+      },
+      "checks": [
+        "initial actual 128x128 canvas matches every confirmed RGBA pixel",
+        "all visible controls>=44px and no horizontal page overflow",
+        "palette selects real color",
+        "arrow/Enter canvas preview does not POST; Escape cancels; keyboard focus visible",
+        "actual raster changes on pan/zoom and fit restores authoritative pixels without POST",
+        "one explicit keyboard confirm makes exactly one canonical fixture HTTP POST",
+        "truthful 5s fixture cooldown disables new confirmation",
+        "pending: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "unknown: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "PAUSED/FROZEN/read-only fixture state forbids editing and retains truthful status"
+      ],
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "geometry": {
+        "panel": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 1101.375,
+          "bottom": 1109.375,
+          "right": 382
+        },
+        "surface": {
+          "x": 22,
+          "y": 234.46875,
+          "width": 346,
+          "height": 346,
+          "bottom": 580.46875,
+          "right": 368
+        },
+        "palette": {
+          "x": 22,
+          "y": 612.65625,
+          "width": 346,
+          "height": 140,
+          "bottom": 752.65625,
+          "right": 368
+        },
+        "zoomIn": {
+          "x": 161.328125,
+          "y": 182.46875,
+          "width": 101.328125,
+          "height": 44,
+          "bottom": 226.46875,
+          "right": 262.65625
+        },
+        "status": {
+          "x": 22,
+          "y": 102.1875,
+          "width": 346,
+          "height": 17.546875,
+          "bottom": 119.734375,
+          "right": 368
+        },
+        "paletteRows": 3,
+        "controls": [
+          {
+            "name": "Zoom out",
+            "x": 22,
+            "y": 182.46875,
+            "width": 101.328125,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 123.328125
+          },
+          {
+            "name": "Zoom in",
+            "x": 161.328125,
+            "y": 182.46875,
+            "width": 101.328125,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 262.65625
+          },
+          {
+            "name": "Fit wall",
+            "x": 266.65625,
+            "y": 182.46875,
+            "width": 101.34375,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 368
+          },
+          {
+            "name": "Color 0 #FAF6ED",
+            "x": 22,
+            "y": 612.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 656.65625,
+            "right": 68
+          },
+          {
+            "name": "Color 1 #201D1D",
+            "x": 72,
+            "y": 612.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 656.65625,
+            "right": 118
+          },
+          {
+            "name": "Color 2 #A22635",
+            "x": 122,
+            "y": 612.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 656.65625,
+            "right": 168
+          },
+          {
+            "name": "Color 3 #605952",
+            "x": 172,
+            "y": 612.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 656.65625,
+            "right": 218
+          },
+          {
+            "name": "Color 4 #E5DFD4",
+            "x": 222,
+            "y": 612.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 656.65625,
+            "right": 268
+          },
+          {
+            "name": "Color 5 #713B70",
+            "x": 272,
+            "y": 612.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 656.65625,
+            "right": 318
+          },
+          {
+            "name": "Color 6 #244C69",
+            "x": 322,
+            "y": 612.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 656.65625,
+            "right": 368
+          },
+          {
+            "name": "Color 7 #42736B",
+            "x": 22,
+            "y": 660.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 704.65625,
+            "right": 68
+          },
+          {
+            "name": "Color 8 #7E8245",
+            "x": 72,
+            "y": 660.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 704.65625,
+            "right": 118
+          },
+          {
+            "name": "Color 9 #BD8E46",
+            "x": 122,
+            "y": 660.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 704.65625,
+            "right": 168
+          },
+          {
+            "name": "Color 10 #CF6845",
+            "x": 172,
+            "y": 660.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 704.65625,
+            "right": 218
+          },
+          {
+            "name": "Color 11 #D4A2AC",
+            "x": 222,
+            "y": 660.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 704.65625,
+            "right": 268
+          },
+          {
+            "name": "Color 12 #938EB0",
+            "x": 272,
+            "y": 660.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 704.65625,
+            "right": 318
+          },
+          {
+            "name": "Color 13 #8EBDD0",
+            "x": 322,
+            "y": 660.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 704.65625,
+            "right": 368
+          },
+          {
+            "name": "Color 14 #ACCB96",
+            "x": 22,
+            "y": 708.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 752.65625,
+            "right": 68
+          },
+          {
+            "name": "Color 15 #FFFFFF",
+            "x": 72,
+            "y": 708.65625,
+            "width": 46,
+            "height": 44,
+            "bottom": 752.65625,
+            "right": 118
+          },
+          {
+            "name": "Confirm pixel",
+            "x": 22,
+            "y": 850.625,
+            "width": 170,
+            "height": 44,
+            "bottom": 894.625,
+            "right": 192
+          },
+          {
+            "name": "Cancel preview",
+            "x": 198,
+            "y": 850.625,
+            "width": 170,
+            "height": 44,
+            "bottom": 894.625,
+            "right": 368
+          },
+          {
+            "name": "",
+            "x": 22,
+            "y": 946,
+            "width": 95.421875,
+            "height": 44,
+            "bottom": 990,
+            "right": 117.421875
+          },
+          {
+            "name": "",
+            "x": 123.421875,
+            "y": 946,
+            "width": 95.421875,
+            "height": 44,
+            "bottom": 990,
+            "right": 218.84375
+          },
+          {
+            "name": "Preview pixel",
+            "x": 224.84375,
+            "y": 946,
+            "width": 143.15625,
+            "height": 44,
+            "bottom": 990,
+            "right": 368
+          },
+          {
+            "name": "Refresh confirmed wall",
+            "x": 22,
+            "y": 1051.375,
+            "width": 346,
+            "height": 44,
+            "bottom": 1095.375,
+            "right": 368
+          }
+        ],
+        "documentWidth": 390,
+        "viewportWidth": 390
+      },
+      "visual": {
+        "canvasNearHeader": false,
+        "canvasDominatesWidth": true,
+        "toolsOnCanvasRight": false,
+        "singlePaletteRow": false,
+        "paletteImmediatelyBelow": false,
+        "statusBelowPalette": false,
+        "compactInitialPanel": false
+      },
+      "checks": [
+        "initial actual 128x128 canvas matches every confirmed RGBA pixel",
+        "all visible controls>=44px and no horizontal page overflow",
+        "palette selects real color",
+        "arrow/Enter canvas preview does not POST; Escape cancels; keyboard focus visible",
+        "actual raster changes on pan/zoom and fit restores authoritative pixels without POST",
+        "one explicit keyboard confirm makes exactly one canonical fixture HTTP POST",
+        "truthful 5s fixture cooldown disables new confirmation",
+        "pending: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "unknown: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "PAUSED/FROZEN/read-only fixture state forbids editing and retains truthful status"
+      ],
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "geometry": {
+        "panel": {
+          "x": 8,
+          "y": 8,
+          "width": 414,
+          "height": 1077.1875,
+          "bottom": 1085.1875,
+          "right": 422
+        },
+        "surface": {
+          "x": 22,
+          "y": 234.46875,
+          "width": 386,
+          "height": 386,
+          "bottom": 620.46875,
+          "right": 408
+        },
+        "palette": {
+          "x": 22,
+          "y": 652.65625,
+          "width": 386,
+          "height": 92,
+          "bottom": 744.65625,
+          "right": 408
+        },
+        "zoomIn": {
+          "x": 174.65625,
+          "y": 182.46875,
+          "width": 114.671875,
+          "height": 44,
+          "bottom": 226.46875,
+          "right": 289.328125
+        },
+        "status": {
+          "x": 22,
+          "y": 102.1875,
+          "width": 386,
+          "height": 17.546875,
+          "bottom": 119.734375,
+          "right": 408
+        },
+        "paletteRows": 2,
+        "controls": [
+          {
+            "name": "Zoom out",
+            "x": 22,
+            "y": 182.46875,
+            "width": 114.65625,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 136.65625
+          },
+          {
+            "name": "Zoom in",
+            "x": 174.65625,
+            "y": 182.46875,
+            "width": 114.671875,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 289.328125
+          },
+          {
+            "name": "Fit wall",
+            "x": 293.328125,
+            "y": 182.46875,
+            "width": 114.65625,
+            "height": 44,
+            "bottom": 226.46875,
+            "right": 407.984375
+          },
+          {
+            "name": "Color 0 #FAF6ED",
+            "x": 22,
+            "y": 652.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 696.65625,
+            "right": 66.75
+          },
+          {
+            "name": "Color 1 #201D1D",
+            "x": 70.75,
+            "y": 652.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 696.65625,
+            "right": 115.5
+          },
+          {
+            "name": "Color 2 #A22635",
+            "x": 119.5,
+            "y": 652.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 696.65625,
+            "right": 164.25
+          },
+          {
+            "name": "Color 3 #605952",
+            "x": 168.25,
+            "y": 652.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 696.65625,
+            "right": 213
+          },
+          {
+            "name": "Color 4 #E5DFD4",
+            "x": 217,
+            "y": 652.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 696.65625,
+            "right": 261.75
+          },
+          {
+            "name": "Color 5 #713B70",
+            "x": 265.75,
+            "y": 652.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 696.65625,
+            "right": 310.5
+          },
+          {
+            "name": "Color 6 #244C69",
+            "x": 314.5,
+            "y": 652.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 696.65625,
+            "right": 359.25
+          },
+          {
+            "name": "Color 7 #42736B",
+            "x": 363.25,
+            "y": 652.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 696.65625,
+            "right": 408
+          },
+          {
+            "name": "Color 8 #7E8245",
+            "x": 22,
+            "y": 700.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 744.65625,
+            "right": 66.75
+          },
+          {
+            "name": "Color 9 #BD8E46",
+            "x": 70.75,
+            "y": 700.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 744.65625,
+            "right": 115.5
+          },
+          {
+            "name": "Color 10 #CF6845",
+            "x": 119.5,
+            "y": 700.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 744.65625,
+            "right": 164.25
+          },
+          {
+            "name": "Color 11 #D4A2AC",
+            "x": 168.25,
+            "y": 700.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 744.65625,
+            "right": 213
+          },
+          {
+            "name": "Color 12 #938EB0",
+            "x": 217,
+            "y": 700.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 744.65625,
+            "right": 261.75
+          },
+          {
+            "name": "Color 13 #8EBDD0",
+            "x": 265.75,
+            "y": 700.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 744.65625,
+            "right": 310.5
+          },
+          {
+            "name": "Color 14 #ACCB96",
+            "x": 314.5,
+            "y": 700.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 744.65625,
+            "right": 359.25
+          },
+          {
+            "name": "Color 15 #FFFFFF",
+            "x": 363.25,
+            "y": 700.65625,
+            "width": 44.75,
+            "height": 44,
+            "bottom": 744.65625,
+            "right": 408
+          },
+          {
+            "name": "Confirm pixel",
+            "x": 22,
+            "y": 842.625,
+            "width": 190,
+            "height": 44,
+            "bottom": 886.625,
+            "right": 212
+          },
+          {
+            "name": "Cancel preview",
+            "x": 218,
+            "y": 842.625,
+            "width": 190,
+            "height": 44,
+            "bottom": 886.625,
+            "right": 408
+          },
+          {
+            "name": "",
+            "x": 22,
+            "y": 938,
+            "width": 106.84375,
+            "height": 44,
+            "bottom": 982,
+            "right": 128.84375
+          },
+          {
+            "name": "",
+            "x": 134.84375,
+            "y": 938,
+            "width": 106.859375,
+            "height": 44,
+            "bottom": 982,
+            "right": 241.703125
+          },
+          {
+            "name": "Preview pixel",
+            "x": 247.703125,
+            "y": 938,
+            "width": 160.28125,
+            "height": 44,
+            "bottom": 982,
+            "right": 407.984375
+          },
+          {
+            "name": "Refresh confirmed wall",
+            "x": 22,
+            "y": 1027.1875,
+            "width": 386,
+            "height": 44,
+            "bottom": 1071.1875,
+            "right": 408
+          }
+        ],
+        "documentWidth": 430,
+        "viewportWidth": 430
+      },
+      "visual": {
+        "canvasNearHeader": false,
+        "canvasDominatesWidth": true,
+        "toolsOnCanvasRight": false,
+        "singlePaletteRow": false,
+        "paletteImmediatelyBelow": false,
+        "statusBelowPalette": false,
+        "compactInitialPanel": false
+      },
+      "checks": [
+        "initial actual 128x128 canvas matches every confirmed RGBA pixel",
+        "all visible controls>=44px and no horizontal page overflow",
+        "palette selects real color",
+        "arrow/Enter canvas preview does not POST; Escape cancels; keyboard focus visible",
+        "actual raster changes on pan/zoom and fit restores authoritative pixels without POST",
+        "one explicit keyboard confirm makes exactly one canonical fixture HTTP POST",
+        "truthful 5s fixture cooldown disables new confirmation",
+        "pending: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "unknown: snapshot equality cannot ACK; explicit status/original-result GET resolves captured key with no POST replay",
+        "PAUSED/FROZEN/read-only fixture state forbids editing and retains truthful status"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "developmentSockets": 18,
+  "captures": [
+    {
+      "width": 360,
+      "scenario": "loaded",
+      "path": "360-loaded.png",
+      "sha256": "72c63b4fccdade6491190f0dca52861ab30e4525e11434d384d8965ea4c04705"
+    },
+    {
+      "width": 360,
+      "scenario": "preview",
+      "path": "360-preview.png",
+      "sha256": "580de9f15abd195164358813047d659c2a164f231f2b4221c4147235cc67321c"
+    },
+    {
+      "width": 360,
+      "scenario": "cooldown",
+      "path": "360-cooldown.png",
+      "sha256": "712df811119dfff932f0fe4989f8d0cdd6e704a47729f8e4b05eacad8e19ea45"
+    },
+    {
+      "width": 360,
+      "scenario": "pending",
+      "path": "360-pending.png",
+      "sha256": "18830dad18d1a6e89f3ced0d7a5c9caa4017f94fa0868dba789f86911f9a38b3"
+    },
+    {
+      "width": 360,
+      "scenario": "unknown",
+      "path": "360-unknown.png",
+      "sha256": "0db099ef5abb98f302b3096dfb5c77634c953a8d45486b6efbd0cbe97a6ec26c"
+    },
+    {
+      "width": 360,
+      "scenario": "paused",
+      "path": "360-paused.png",
+      "sha256": "58df8cce7bfabbc22add361b4da390d4279ab4066096468bef43a1205408f923"
+    },
+    {
+      "width": 360,
+      "scenario": "frozen",
+      "path": "360-frozen.png",
+      "sha256": "6a0116ad82ae31871f5c5b563e45a92290cc5ea6b76ad987ed8832903f147a31"
+    },
+    {
+      "width": 360,
+      "scenario": "read-only",
+      "path": "360-read-only.png",
+      "sha256": "9f7c6412cbc3e4c0ec213e43458df487f6b0b677c22db9396fd71f2095057458"
+    },
+    {
+      "width": 390,
+      "scenario": "loaded",
+      "path": "390-loaded.png",
+      "sha256": "126e4b23e3a72975cd144562747ec913a34ba3600e7c9bcd6ea56371e0633f64"
+    },
+    {
+      "width": 390,
+      "scenario": "preview",
+      "path": "390-preview.png",
+      "sha256": "7580e276d0798c3cc8376de58caeac6dc8bb2ef440a83515d655e3950ef7a135"
+    },
+    {
+      "width": 390,
+      "scenario": "cooldown",
+      "path": "390-cooldown.png",
+      "sha256": "4b601b5295851998472222d237ef7d2792ded316a619316c5b97745ca2ce9bae"
+    },
+    {
+      "width": 390,
+      "scenario": "pending",
+      "path": "390-pending.png",
+      "sha256": "68b2aef6d153e4ed34ca63866143a1801d90563a832eb95e5632defede1af3ff"
+    },
+    {
+      "width": 390,
+      "scenario": "unknown",
+      "path": "390-unknown.png",
+      "sha256": "658233e7b00c041836013d7f9d8e73617b404acd1aee82f1027cef40c316920b"
+    },
+    {
+      "width": 390,
+      "scenario": "paused",
+      "path": "390-paused.png",
+      "sha256": "793ebbc1ce0915740af1b2f55554173d47c104fd07fbcf8917a6e47ffdeb3f55"
+    },
+    {
+      "width": 390,
+      "scenario": "frozen",
+      "path": "390-frozen.png",
+      "sha256": "51c03a257547d47915726cc4f4bd09752107e195d2cf3be650055b8457ae2b94"
+    },
+    {
+      "width": 390,
+      "scenario": "read-only",
+      "path": "390-read-only.png",
+      "sha256": "f2d838a40906f4bc441f37d787a879f2c7bbc0ff55d5303aab365226a7721eca"
+    },
+    {
+      "width": 430,
+      "scenario": "loaded",
+      "path": "430-loaded.png",
+      "sha256": "a3caf31bf9034fdd59ca6f70634721e5d8408fa421cb30463712e369bbe60a36"
+    },
+    {
+      "width": 430,
+      "scenario": "preview",
+      "path": "430-preview.png",
+      "sha256": "ea6d2c45631803fb85d6237770c8103d15bbb3bde0eded46a56ad8597d777247"
+    },
+    {
+      "width": 430,
+      "scenario": "cooldown",
+      "path": "430-cooldown.png",
+      "sha256": "2a51a2e4ac484769942f023fa75668068ac042c784a823b96c90fb937b01851d"
+    },
+    {
+      "width": 430,
+      "scenario": "pending",
+      "path": "430-pending.png",
+      "sha256": "d4735a3b0a2570b9ead65a6c12591140ab66039a17d79e305bdec8219a74bdbd"
+    },
+    {
+      "width": 430,
+      "scenario": "unknown",
+      "path": "430-unknown.png",
+      "sha256": "9eb582420cf86260ff7bb216ceefcfc4c57cc1ff96fc94460f3fa115a82347d6"
+    },
+    {
+      "width": 430,
+      "scenario": "paused",
+      "path": "430-paused.png",
+      "sha256": "2173deb6520e137635bb61716bfbf6b2f76fa613745179c04a945a29dbc93102"
+    },
+    {
+      "width": 430,
+      "scenario": "frozen",
+      "path": "430-frozen.png",
+      "sha256": "9a296837c05d9f05b6bc57fe0baf793339d93e19799fdc033ec1e1c215de814a"
+    },
+    {
+      "width": 430,
+      "scenario": "read-only",
+      "path": "430-read-only.png",
+      "sha256": "41b59a65e871da0da67872c1524f65442f0dcff6ee1c8fc420f6b44de22b246d"
+    }
+  ],
+  "sourceDependencies": null,
+  "presentation": "REFERENCE_GEOMETRY_MISMATCH"
+}
