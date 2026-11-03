@@ -84,6 +84,24 @@ baseline launch stopped at its disk-floor guard before Vite/Chrome allocation;
 no failed launch is counted as browser evidence. Its isolated fixture strict
 TypeScript and scoped lint now pass; baseline captures are resuming.
 
+QA subsequently completed baseline behavior at 360/390/430 (exit 0), with six
+of seven coarse target-geometry checks failing. At 390px the old panel is
+1101px tall, canvas begins 226px below the panel top, and palette occupies three
+rows. The coordinator viewed that native screenshot and the supplied target.
+The first probe misclassified 18 Vite development sockets; QA corrected its
+same-origin development-endpoint classification while retaining the product
+socket guard and transcribed the initial failed stdout honestly. That failed
+full report had already been overwritten; no retained full-report claim is made.
+
+The author accepted the measured portrait proportion (approximately 274 by
+304 in the supplied image), conditional idle preview, and root-height seam.
+Its local presentation math keeps uniform pixel scale and centered vertical
+offset with matching hit testing; no controller/input ownership expansion was
+needed. Final native raster/corner checks remain pending. QA will serve only the
+three exact author files through a read-only Git-blob loader, recording hashes
+of actually served bytes rather than the old baseline files. Coarse geometry
+success alone will not certify exact imagery, icons, or full visual fidelity.
+
 ## Shared shell seam and production dependencies
 
 Root owner `01a1a153-1227-7e72-801f-a2a6b91981e1` retains exclusive
@@ -105,6 +123,13 @@ An eventual release needs the actual privacy scope, abort signal, room/epoch/
 stream binding, read/subscription authority, write policy, qualified scene
 anchor, and incumbent scene on close. Do not fabricate them or broaden the
 public realtime contract to bypass missing composition.
+
+Main confirmed the exact dependency request: BE34 kernel delivery `505bb8c2`
+has native migration-ledger evidence but does not qualify `MuralEntryRelease`.
+The C05 world consumer and Auth/Friend journal/RPC chain are still being
+qualified by backend owners. Main will provide exact qualified producer/release
+pins; frontend king owns the actual root binding. No extra Operations build or
+review gate was requested.
 
 IN04 separately requires multiple real clients, authoritative server cooldown,
 moderation/pause, restore to a new revision, convergence, final freeze, and denied
