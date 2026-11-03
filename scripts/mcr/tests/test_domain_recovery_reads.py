@@ -22,8 +22,8 @@ class RecoveryReads(unittest.TestCase):
     def check_pixel(self, value=None, **changes):
         args = dict(actor_id=uid(2), event_id=uid(1),
                     request_path=f'/api/concert/events/{uid(1)}/mural/commands/{uid(9)}/result',
-                    idempotency_key=uid(9), expected_resource_id=uid(3),
-                    expected_resource_revision=8,
+                    idempotency_key=uid(9), expected_resource_id=uid(1),
+                    expected_resource_revision=8, expected_receipt_id=uid(8),
                     original_command=dict(expected_revision=7, x=4, y=7, color_index=2))
         args.update(changes)
         self.contract.validate_http(value or domain.read(domain.FIXTURES / 'mural-own-result.json'),
@@ -32,7 +32,8 @@ class RecoveryReads(unittest.TestCase):
     def test_original_pixel_requires_exact_receipt_key_target_and_command(self):
         self.check_pixel()
         for changes in [dict(idempotency_key=uid(10)), dict(expected_resource_id=uid(4)),
-                        dict(expected_resource_revision=9), dict(original_command=None),
+                        dict(expected_resource_revision=9), dict(expected_receipt_id=uid(10)),
+                        dict(original_command=None),
                         dict(original_command=dict(expected_revision=7, x=5, y=7, color_index=2)),
                         dict(event_id=uid(5)), dict(actor_id=None), dict(request_path=None),
                         dict(request_query='actor_id=' + uid(2))]:
@@ -41,9 +42,13 @@ class RecoveryReads(unittest.TestCase):
 
     def test_public_original_result_never_carries_author_or_unregistered_fields(self):
         value = domain.read(domain.FIXTURES / 'mural-own-result.json')
-        for field in ('actor_id', 'idempotency_key', 'request_hash', 'receipt'):
+        for field in ('actor_id', 'request_hash', 'receipt'):
             with self.subTest(field=field), self.assertRaises(domain.ContractError):
                 self.check_pixel({**value, field: uid(2)})
+        for changes in [dict(receipt_id=uid(10)), dict(idempotency_key=uid(10)),
+                        dict(result={**value['result'], 'actor_id': uid(2)})]:
+            with self.subTest(changes=changes), self.assertRaises(domain.ContractError):
+                self.check_pixel({**value, **changes})
 
     def test_total_is_actor_event_bound_and_not_a_page_query(self):
         value = domain.read(domain.FIXTURES / 'notification-unread-total.json')

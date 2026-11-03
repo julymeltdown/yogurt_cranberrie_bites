@@ -6431,7 +6431,7 @@
     "path": "/api/concert/events/{eventId}/mural/commands/{key}/result",
     "request": null,
     "request_location": "query",
-    "response": "mural.PixelOperation",
+    "response": "mural.OwnPixelResult",
     "success_status": 200,
     "pending_response": null,
     "pending_status": null,

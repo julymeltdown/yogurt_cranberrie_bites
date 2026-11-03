@@ -419,7 +419,7 @@ class Contract:
 
     def validate_http(self, value, operation_id, status, *, actor_id=None, event_id=None,
                       request_path=None, request_query='', idempotency_key=None, expected_resource_id=None,
-                      expected_resource_revision=None, original_command=None):
+                      expected_resource_revision=None, expected_receipt_id=None, original_command=None):
         require(type(status) is int, 'HTTP status required')
         matches = [op for op in self.operations if op['operationId'] == operation_id]
         require(len(matches) == 1, 'unknown HTTP operation')
@@ -441,12 +441,16 @@ class Contract:
                     require(target['path']['key'] == idempotency_key, 'foreign original command key')
                     self.validate(expected_resource_id, 'common.Uuid')
                     self.validate(expected_resource_revision, 'common.Revision')
+                    self.validate(expected_receipt_id, 'common.Uuid')
                     self.validate(original_command, 'mural.PlacePixel')
-                    require(value['operation_id'] == expected_resource_id and
-                            value['revision'] == expected_resource_revision,
+                    require(expected_resource_id == event_id and
+                            value['receipt_id'] == expected_receipt_id and
+                            value['idempotency_key'] == idempotency_key and
+                            value['result']['event_id'] == event_id and
+                            value['result']['revision'] == expected_resource_revision,
                             'original result does not match verified receipt')
-                    require(value['revision'] == original_command['expected_revision'] + 1 and
-                            all(value[k] == original_command[k] for k in ('x', 'y', 'color_index')),
+                    require(value['result']['revision'] == original_command['expected_revision'] + 1 and
+                            all(value['result'][k] == original_command[k] for k in ('x', 'y', 'color_index')),
                             'original pixel command mismatch')
                 else:
                     require(value['actor_id'] == actor_id, 'foreign unread count')

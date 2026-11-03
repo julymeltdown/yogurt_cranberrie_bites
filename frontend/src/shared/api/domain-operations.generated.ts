@@ -5,8 +5,8 @@
 // contracts/domain/v1/common.schema.json: 303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35
 // contracts/domain/v1/feed.schema.json: 590cce6afc00c7a869b5a9711104550ba280ffa5875c9dc49a0753d272320801
 // contracts/domain/v1/giveaway.schema.json: 3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d
-// contracts/domain/v1/mural.schema.json: cdff2c08a0d31de702064b8d5532320ccf88fb23d29c24c80b244c6531ba1a15
-// contracts/domain/v1/operations.json: b50df0130db9ec8b57a6f91f1b233b19f1572aa7d3eae8c11d4409741f53aa5e
+// contracts/domain/v1/mural.schema.json: 345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca
+// contracts/domain/v1/operations.json: 411fcee8222db2f5a7938866ac37791033e85682f11d024ceb895c245c708500
 // contracts/domain/v1/party.schema.json: 7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03
 // contracts/domain/v1/social.schema.json: b275b36f2ad8eee90922f7ad27cfcbece943773a94831720b6dfca588d0201d2
 export const DOMAIN_OPERATIONS = {

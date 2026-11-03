@@ -1,14 +1,16 @@
-# C04 recovery reads, version 0.1.1
+# C04 recovery reads, version 0.1.2
 
 This additive interface revision closes required mural result recovery and full inbox unread-count gaps. C04 remains REVIEW_CANDIDATE; generated transport metadata and OpenAPI are contract projections, not evidence of enabled routes or live acceptance. The existing common receipt, notification list and C05 wire shapes are unchanged.
 
 ## Mural original result
 
-`getConcertMuralOwnResult`: authenticated `GET /api/concert/events/{eventId}/mural/commands/{key}/result`, no body or query, returns the existing `mural.PixelOperation` with `Cache-Control: no-store`. Both path identifiers are canonical UUIDs. Actor selection comes only from the canonical session.
+`getConcertMuralOwnResult`: authenticated `GET /api/concert/events/{eventId}/mural/commands/{key}/result`, no body or query, returns closed `mural.OwnPixelResult` `{receipt_id,idempotency_key,result:PixelOperation}` with `Cache-Control: no-store`. Both path identifiers are canonical UUIDs. Actor selection comes only from the canonical session.
 
-The owner must reauthorize current event/mural access and locate the current actor's retained, unexpired `SUCCEEDED` `placeConcertPixel` receipt for exactly the event and key. The durable original operation must match the receipt's actor/event/resource ID/revision. Missing, foreign, expired, retired, pending, failed or inconsistent results all return `404 RESOURCE_UNAVAILABLE`, without proving nonexecution or granting replay. A dependency or policy outage fails closed. This read never spends cooldown or executes a command.
+The owner must reauthorize current event/mural access and locate the current actor's retained, unexpired `SUCCEEDED` `placeConcertPixel` receipt for exactly the event and key. Its resource ID is the event mural aggregate UUID, while `PixelOperation.operation_id` is a separate operation UUID. The durable original operation must match the receipt's actor/event/revision; the envelope copies only that receipt ID and key. Missing, foreign, expired, retired, pending, failed or inconsistent results all return `404 RESOURCE_UNAVAILABLE`, without proving nonexecution or granting replay. A dependency or policy outage fails closed. This read never spends cooldown or executes a command.
 
-The consumer first verifies the original status receipt against captured actor/event/operation/key, then checks the returned operation ID/revision/event against that receipt and its x/y/color against the original command. The original `next_allowed_at` controls cooldown recovery. Public snapshots/deltas cannot establish an own acknowledgement; they gain no author or cooldown fields. HTTP snapshot/delta reads and the existing world epoch observer remain the synchronization interface; this revision adds no socket or C05 message.
+The consumer first verifies the original status receipt against captured actor/event/operation/key, including `resource_id == event_id`, then requires the envelope receipt ID/key and nested result event/revision to match, plus x/y/color from the original command. The original `next_allowed_at` controls cooldown recovery. Public snapshots/deltas cannot establish an own acknowledgement; they gain no author or cooldown fields. HTTP snapshot/delta reads and the existing world epoch observer remain the synchronization interface; this revision adds no socket or C05 message.
+
+Version 0.1.2 supersedes the 0.1.1 assumption equating the receipt aggregate ID with the pixel operation UUID. The BE34 producer review exposed that mismatch before runtime adoption; this envelope preserves existing BE15 target/outbox semantics and explicitly binds the original receipt.
 
 The BE34/35 producer owns result lookup and persistence qualification. FE33 owns its consumer and negative fixtures. The delivery integrator owns authenticated public routing and the shared contract projections. IN04 must use the real qualified producer/consumer and deployed candidate; offline fixtures do not certify that gate.
 

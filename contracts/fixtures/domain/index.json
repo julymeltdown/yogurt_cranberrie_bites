@@ -181,12 +181,12 @@
   },
   {
     "file": "mural-own-result.json",
-    "schema": "mural.PixelOperation",
+    "schema": "mural.OwnPixelResult",
     "expected": "accept"
   },
   {
     "file": "mural-own-result-author-leak.json",
-    "schema": "mural.PixelOperation",
+    "schema": "mural.OwnPixelResult",
     "expected": "reject"
   },
   {

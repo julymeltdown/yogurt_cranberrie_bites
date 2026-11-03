@@ -72,7 +72,7 @@ class DomainBundleTests(unittest.TestCase):
                     self.assertEqual(bundle.resolve(document, references[absolute]),
                                      bundle.rewrite(schema, references, source["$id"]))
                     counts[family] += 1
-        self.assertEqual(counts, {"domain": 163, "realtime": 19})
+        self.assertEqual(counts, {"domain": 164, "realtime": 19})
 
     def test_query_projection_is_exact_closed_and_delete_has_no_body(self):
         for row in self.rows:

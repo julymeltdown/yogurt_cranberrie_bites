@@ -481,6 +481,26 @@
         "cooldown_ms",
         "next_allowed_at"
       ]
+    },
+    "OwnPixelResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "idempotency_key": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "result": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/mural.schema.json#/$defs/PixelOperation"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "idempotency_key",
+        "result"
+      ]
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "state": "REVIEW_CANDIDATE",
   "runtime": "NOT_IMPLEMENTED",
   "common_guards": [
@@ -1135,12 +1135,12 @@
       "preconditions": [
         "Current canonical actor admitted to the path event; current mural read authorization is required on every result read",
         "Path key identifies only this actor/event/placeConcertPixel retained receipt in SUCCEEDED state; receipt must be unexpired and not RETIRED",
-        "Durable original PixelOperation actor, event, operation ID and revision exactly match the receipt; no public delta or snapshot inference"
+        "Receipt resource_id equals the event mural aggregate UUID; durable original operation event, revision and actor exactly match the receipt. PixelOperation.operation_id is a separate operation UUID, not the aggregate resource ID"
       ],
       "result": [
-        "Return the original mural.PixelOperation including its original next_allowed_at without spending cooldown or replaying a command",
+        "Return closed OwnPixelResult {receipt_id,idempotency_key,result:PixelOperation} with original next_allowed_at, without spending cooldown or replaying a command",
         "404 RESOURCE_UNAVAILABLE conflates foreign, missing, expired, retired, pending, failed or inconsistent results; it never authorizes replay",
-        "Client first verifies captured command status actor/event/operation/key then requires result event/operation ID/revision and original x/y/color to match; common receipt remains metadata only",
+        "Client verifies captured receipt actor/event/placeConcertPixel/key, aggregate resource_id==event, and envelope receipt ID/key; nested result event/revision and original x/y/color must match. Common receipt remains metadata only",
         "No author IDs or private cooldowns are added to public snapshot/delta; use the incumbent world epoch observer and HTTP reads, no new C05 socket"
       ]
     },
