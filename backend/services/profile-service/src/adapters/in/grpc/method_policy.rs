@@ -17,6 +17,7 @@ pub static PROFILE_METHOD_POLICY: MethodPolicy = MethodPolicy {
     service: "profile.v1.ProfileService",
     workload: Some(Workload::Profile),
     methods: &[
+        ("ReadConcertSelfProfile", EDGE),
         ("ReplayMutation", EDGE),
         ("GetMutationReceiptStatus", EDGE),
         ("GetProfile", EDGE_POST),
@@ -32,6 +33,7 @@ pub static PROFILE_METHOD_POLICY: MethodPolicy = MethodPolicy {
         ("ApplyUserDeletion", AUTH),
     ],
     actor_fields: &[
+        ("ReadConcertSelfProfile", &[&[1]]),
         ("ReplayMutation", &[&[1, 1], &[1, 2], &[2, 1]]),
         ("UpdateProfile", &[&[1]]),
         ("UpdateProfilePrivacy", &[&[1], &[2]]),
@@ -62,7 +64,7 @@ mod tests {
 
     #[test]
     fn sibling_reachable_writes_are_edge_only() {
-        for method in ["UploadAvatar"] {
+        for method in ["UploadAvatar", "ReadConcertSelfProfile"] {
             assert_eq!(
                 PROFILE_METHOD_POLICY.callers(method),
                 Some(&[Workload::Gateway][..]),
@@ -98,6 +100,10 @@ mod tests {
             .encode_to_vec()
         };
         let samples: Vec<(&str, Vec<u8>)> = vec![
+            (
+                "ReadConcertSelfProfile",
+                ReadConcertSelfProfileRequest { user_id: a() }.encode_to_vec(),
+            ),
             (
                 "UpdateProfile",
                 UpdateProfileRequest {

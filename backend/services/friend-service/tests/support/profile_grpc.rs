@@ -100,6 +100,13 @@ struct FixtureProfileService {
 
 #[tonic::async_trait]
 impl proto::profile_service_server::ProfileService for FixtureProfileService {
+    async fn read_concert_self_profile(
+        &self,
+        _request: Request<proto::ReadConcertSelfProfileRequest>,
+    ) -> Result<Response<proto::ReadConcertSelfProfileResponse>, Status> {
+        Err(Status::unimplemented("Concert self content is not used by the Friend fixture"))
+    }
+
     async fn replay_mutation(
         &self,
         _request: tonic::Request<proto::ReplayMutationRequest>,

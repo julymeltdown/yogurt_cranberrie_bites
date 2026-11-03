@@ -28,6 +28,13 @@ impl ProfileGrpcServer {
 
 #[tonic::async_trait]
 impl proto::profile_service_server::ProfileService for ProfileGrpcServer {
+    async fn read_concert_self_profile(
+        &self,
+        request: Request<proto::ReadConcertSelfProfileRequest>,
+    ) -> Result<Response<proto::ReadConcertSelfProfileResponse>, Status> {
+        super::concert_identity::read(&self.state, request).await
+    }
+
     async fn get_mutation_receipt_status(
         &self,
         request: Request<proto::GetMutationReceiptStatusRequest>,

@@ -36,6 +36,13 @@ fn unused<T>() -> Result<Response<T>, Status> {
 
 #[tonic::async_trait]
 impl proto::profile_service_server::ProfileService for FlakyProfile {
+    async fn read_concert_self_profile(
+        &self,
+        _request: Request<proto::ReadConcertSelfProfileRequest>,
+    ) -> Result<Response<proto::ReadConcertSelfProfileResponse>, Status> {
+        unused()
+    }
+
     async fn replay_mutation(
         &self,
         _request: Request<proto::ReplayMutationRequest>,

@@ -23,6 +23,26 @@ message GetProfileResponse {
   Profile profile = 1;
 }
 
+// Gateway-only, signed actor-bound self read. This selects the exact canonical
+// nonnil user UUID; neither the selector nor returned content grants admission.
+message ReadConcertSelfProfileRequest {
+  string user_id = 1;
+}
+
+// Minimal current owner content. No legacy avatar, handle, counts, visibility,
+// lifecycle or Auth/session/provider/event assertions are carried on this wire.
+message ConcertSelfProfile {
+  string user_id = 1;
+  string display_name = 2; // 1..40 Unicode scalars; nonblank, no controls.
+  optional string bio = 3; // At most 160 scalars, no controls; empty maps to absent.
+  int64 observed_at_unix_micros = 4; // Statement observation, not revision or TTL.
+}
+
+message ReadConcertSelfProfileResponse {
+  // Required on success. Absent/deleted/fenced/invalid owner content is unavailable.
+  ConcertSelfProfile profile = 1;
+}
+
 message GetProfileByUsernameRequest {
   string username = 1;
 }
@@ -163,6 +183,7 @@ message ApplyUserDeletionResponse {
 }
 
 service ProfileService {
+  rpc ReadConcertSelfProfile(ReadConcertSelfProfileRequest) returns (ReadConcertSelfProfileResponse);
   rpc ReplayMutation(ReplayMutationRequest) returns (ReplayMutationResponse);
   rpc GetMutationReceiptStatus(GetMutationReceiptStatusRequest) returns (GetMutationReceiptStatusResponse);
   rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);

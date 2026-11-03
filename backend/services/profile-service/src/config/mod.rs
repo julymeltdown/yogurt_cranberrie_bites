@@ -2,6 +2,7 @@ use crate::adapters::out::runtime::SystemProfileRuntime;
 pub fn load() {}
 use crate::adapters::out::media::image_avatar_processor::ImageAvatarProcessor;
 use crate::adapters::out::persistence::avatar_repository::PgAvatarRepository;
+use crate::adapters::out::persistence::concert_identity::PgConcertProfileRepository;
 use crate::adapters::out::persistence::profile_repository::PgProfileRepository;
 use crate::adapters::r#in::messaging::mutation_receipt_retention_worker::ProfileMutationReceiptRetentionWorker;
 use crate::adapters::r#in::messaging::retention_purge_worker::ProfileRetentionPurgeWorker;
@@ -199,6 +200,7 @@ fn resolve_retention_purge_actor_id(
 
 #[derive(Clone)]
 pub struct AppState {
+    pub concert_self_profile: profile_application::concert_identity::ReadConcertSelfProfile,
     pub apply_user_deletion: ApplyUserDeletionUseCase<Arc<PgProfileRepository>>,
     pub get_profile: GetProfileUseCase<Arc<PgProfileRepository>>,
     pub get_profile_by_username: GetProfileByUsernameUseCase<Arc<PgProfileRepository>>,
@@ -318,6 +320,9 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
     }
 
     let profile_repository = Arc::new(PgProfileRepository::new(pool.clone()));
+    let concert_self_profile = profile_application::concert_identity::ReadConcertSelfProfile::new(
+        Arc::new(PgConcertProfileRepository::new(pool.clone())),
+    );
     let avatar_repository = Arc::new(PgAvatarRepository::new(pool));
     // Decoding is CPU- and memory-intensive, so keep it off Tokio's async
     // workers and isolate its concurrency/queue from other blocking work.
@@ -341,6 +346,7 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
     );
 
     Ok(AppState {
+        concert_self_profile,
         apply_user_deletion: ApplyUserDeletionUseCase::new(profile_repository.clone()),
         get_profile: GetProfileUseCase::new(profile_repository.clone()),
         get_profile_by_username: GetProfileByUsernameUseCase::new(profile_repository.clone()),
