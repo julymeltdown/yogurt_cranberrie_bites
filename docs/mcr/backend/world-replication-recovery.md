@@ -274,3 +274,22 @@ disconnect branch retains its closed slot until owner cleanup succeeds, and
 same-user/different-event connection reuse is separately rejected. This extends
 the cases without adding a new test declaration (26 BE13/14 declarations total).
 Formatting/boundary checks pass; native results remain queued.
+
+## Native validation queue checkpoint
+
+At source/test candidate `4be4397486a2886470f1d1dd60743c12df89124f`,
+the isolated checkout is clean and 26 BE13/14 plus 28 BE12 declarations are ready.
+The final corrected native build/execution is **BLOCKED** on the externally owned
+exclusive Cargo target lease. The worker released that lease to BE34/35, and
+delivery queued subsequent corrected validation behind higher-priority checks.
+No replacement lease has been granted, no Cargo is running in this chat, and
+old un-hashed executables cannot certify the corrected source. This is an
+execution-resource dependency, not a code-review approval requirement.
+
+The goal remains unfinished. The next permitted action after explicit target
+transfer is one pinned Rust 1.88 locked/offline/jobs2/debug0 CargoJSON no-run
+build of `world_simulation`, `world_replication`, and `world_recovery`, followed
+by immediate source/artifact hashing, permitted private copies and lease release.
+Native execution then runs from those selected copies, with any failures fixed
+and revalidated before final evidence/handoff. Public listener, production
+policy authority, real two-account IN01, device and load checks remain NOT_RUN.
