@@ -5,6 +5,9 @@
 .mcr-chrome-identity-visual > .concert-icon { width:21px; height:21px; }
 .mcr-chrome-identity-visual .me-avatar { width:40px; height:40px; min-width:0; margin:0; padding:0; border:0; background:transparent; }
 .mcr-chrome-identity-visual .me-avatar canvas { width:40px; height:40px; object-fit:contain; image-rendering:pixelated; }
+.mcr-chrome-whole-character { display:block; width:40px; height:40px; overflow:hidden; }
+.mcr-chrome-whole-character canvas { max-width:40px; max-height:40px; }
+.mcr-chrome-whole-character > [role='status'] { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
 .mcr-chrome-identity-visual .me-avatar p { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
 .mcr-chrome-identity-copy { display:flex; flex-direction:column; min-width:0; gap:3px; }
 .mcr-chrome-identity-copy strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font:700 15px/1.1 'Arial Narrow',Arial,sans-serif; letter-spacing:.015em; }

@@ -184,12 +184,16 @@ impl CommandProducer for Producer<'_> {
         .fetch_optional(&mut *c)
         .await
         .map_err(unavailable)?;
-        if !matches!(phase.as_deref(), Some("OPEN" | "LIVE")) {
+        if !matches!(phase.as_deref(), Some("OPEN" | "LIVE"))
+            && !(matches!(self.action, Action::Recover(_)) && phase.as_deref() == Some("READ_ONLY"))
+        {
             return Err(CommandError::Denied);
         }
         let value = stored(c, s.event, id).await?;
         let (owner, target) = if let Some(v) = &value {
-            if v.owner != s.actor || v.policy != self.context.policy {
+            if v.owner != s.actor
+                || (!matches!(self.action, Action::Recover(_)) && v.policy != self.context.policy)
+            {
                 return Err(CommandError::Denied);
             }
             live(v)?;
@@ -527,6 +531,59 @@ impl PgMedia {
         tx.commit().await.map_err(unavailable)?;
         Ok(PrivateImage { metadata, bytes })
     }
+    /// Metadata uses the same current authority and expiry checks as content, without
+    /// copying image bytes into a JSON/RPC metadata response.
+    pub async fn metadata(&self, context: Context, id: Uuid) -> Result<Metadata, CommandError> {
+        context.validate()?;
+        let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        limit_sql_in(&mut tx).await?;
+        let v = stored(&mut tx, context.event, id)
+            .await?
+            .ok_or(CommandError::Denied)?;
+        live(&v)?;
+        if v.state != "READY" || (v.owner != context.actor && v.target.is_none()) {
+            return Err(CommandError::Denied);
+        }
+        self.authority
+            .authorize_in(&mut tx, context, Access::Read(v.purpose), v.owner, v.target)
+            .await?;
+        let row = sqlx::query("select width,height from public.concert_media where media_id=$1 and (target_id is not null or orphan_at>clock_timestamp())")
+            .bind(id).fetch_optional(&mut *tx).await.map_err(unavailable)?.ok_or(CommandError::Expired)?;
+        let result = Metadata {
+            media_id: id,
+            event: context.event,
+            purpose: v.purpose,
+            mime: v.mime,
+            revision: v.revision,
+            width: row.try_get::<i32, _>("width").map_err(invalid)? as u32,
+            height: row.try_get::<i32, _>("height").map_err(invalid)? as u32,
+        };
+        tx.commit().await.map_err(unavailable)?;
+        Ok(result)
+    }
+
+    /// Internal canonical command-status resolver. The resource is obtained from the
+    /// actor/event/operation/key receipt scope, never a new public query parameter.
+    /// Current target authorization is repeated by recover before any receipt escapes.
+    pub async fn recover_owned(
+        &self,
+        context: Context,
+        key: Uuid,
+        operation: MediaOperation,
+    ) -> Result<Option<SafeReceipt>, CommandError> {
+        context.validate()?;
+        if key.is_nil() {
+            return Err(CommandError::InvalidInput);
+        }
+        let id: Option<Uuid> = sqlx::query_scalar("select target_id from public.concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id=$3 and idempotency_key=$4")
+            .bind(context.actor).bind(context.event).bind(operation.id()).bind(key)
+            .fetch_optional(&self.pool).await.map_err(unavailable)?;
+        match id {
+            Some(id) => self.recover(context, key, id, operation).await,
+            None => Ok(None),
+        }
+    }
+
     /// Atomic producer port for post/giveaway/report ownership, purpose and current policy.
     /// Caller retains this same Concert connection/transaction through its local commit.
     /// This does not fence a separate Post database publication or read.

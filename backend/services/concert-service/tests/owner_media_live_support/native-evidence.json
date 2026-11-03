@@ -1,0 +1,52 @@
+{
+  "task": "BE-OWNER-MEDIA-LIVE",
+  "status": "IN_PROGRESS",
+  "build_source_revision": "1a7a5c8bdd6b61b4343aac626a099f7a4f2b51df",
+  "build_exit_code": 0,
+  "toolchain": "rustc 1.88.0 (6b00bc388 2025-06-23)",
+  "build_constraints": {
+    "jobs": 2,
+    "debug": "0",
+    "incremental": "0",
+    "locked": true,
+    "offline": true
+  },
+  "artifact_sha256": "040e902a105fd459f9e63ae1ab24078b26d4a654911354d5b4da690edd090dc2",
+  "source_pin_count": 1580,
+  "runtime_tests": {
+    "passed": 9,
+    "failed": 0,
+    "ignored": 0
+  },
+  "runtime_result": "PASS",
+  "runtime_cleanup": "PASS",
+  "retained_producer_tests": {
+    "passed": 17,
+    "failed": 0,
+    "ignored": 1
+  },
+  "restart_tests": {
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0
+  },
+  "restart_persistence": "PASS",
+  "producer_cleanup": "PASS",
+  "schema": "PASS",
+  "sql_timeout_clamp": "PASS",
+  "expiry_source_guards": "PASS",
+  "artifact_boundary_python_tests": {
+    "passed": 6,
+    "exit_code": 0
+  },
+  "canonical_auth_owner": "NOT_RUN",
+  "gateway_concert_http": "NOT_RUN",
+  "authority_fixture_only": true,
+  "sqlx_runtime_migration_ledger": "NOT_RUN",
+  "internal_settlement_resolver": "NATIVE_FIXTURE_PASS",
+  "authenticated_settlement_rpc": "NOT_RUN",
+  "planning_provenance_check": {
+    "result": "PASS",
+    "exit_code": 0
+  }
+}

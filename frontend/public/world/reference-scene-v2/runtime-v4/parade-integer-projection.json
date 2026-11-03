@@ -1,0 +1,826 @@
+{
+  "version": 4,
+  "policy": {
+    "rounding": "nearest integer, ties away from zero",
+    "foot_depth": "runtime depth_y = round(authored depth_y)",
+    "local_foot_anchor": "runtime local foot = round(authored depth_y - authored y); runtime y = runtime depth_y - runtime local foot",
+    "extent": "x, width and height round independently; rectangles are visual only",
+    "ordering": "stable ascending depth_y, source array order breaks equal-depth ties",
+    "geometry": "No changes to footprint polygons, collision/terrain/overdraw, IDs, spawn or interaction cells.",
+    "map": "Overview representations remain MAP-only semantic art; never add them as C06 WORLD objects."
+  },
+  "objects": [
+    {
+      "group": "placements",
+      "index": 0,
+      "id": "main_stage",
+      "authored": {
+        "x": 160,
+        "y": 216,
+        "width": 300,
+        "height": 336,
+        "depth_y": 538.8
+      },
+      "runtime": {
+        "x": 160,
+        "y": 216,
+        "width": 300,
+        "height": 336,
+        "depth_y": 539
+      },
+      "authored_local_foot_y": 322.79999999999995,
+      "runtime_local_foot_y": 323,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0.2
+      },
+      "foot_anchor_delta": 0.2
+    },
+    {
+      "group": "placements",
+      "index": 1,
+      "id": "north_white_food",
+      "authored": {
+        "x": 665,
+        "y": 210,
+        "width": 100,
+        "height": 120,
+        "depth_y": 329.06
+      },
+      "runtime": {
+        "x": 665,
+        "y": 210,
+        "width": 100,
+        "height": 120,
+        "depth_y": 329
+      },
+      "authored_local_foot_y": 119.06,
+      "runtime_local_foot_y": 119,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": -0.06
+      },
+      "foot_anchor_delta": -0.06
+    },
+    {
+      "group": "placements",
+      "index": 2,
+      "id": "west_white_merch",
+      "authored": {
+        "x": 160,
+        "y": 560,
+        "width": 132,
+        "height": 154,
+        "depth_y": 709.3
+      },
+      "runtime": {
+        "x": 160,
+        "y": 560,
+        "width": 132,
+        "height": 154,
+        "depth_y": 709
+      },
+      "authored_local_foot_y": 149.29999999999995,
+      "runtime_local_foot_y": 149,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": -0.3
+      },
+      "foot_anchor_delta": -0.3
+    },
+    {
+      "group": "placements",
+      "index": 3,
+      "id": "culture_park_plaque",
+      "authored": {
+        "x": 585,
+        "y": 498,
+        "width": 156,
+        "height": 96,
+        "depth_y": 590
+      },
+      "runtime": {
+        "x": 585,
+        "y": 498,
+        "width": 156,
+        "height": 96,
+        "depth_y": 590
+      },
+      "authored_local_foot_y": 92,
+      "runtime_local_foot_y": 92,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 4,
+      "id": "cross_banner_east",
+      "authored": {
+        "x": 522,
+        "y": 320,
+        "width": 50,
+        "height": 134,
+        "depth_y": 450
+      },
+      "runtime": {
+        "x": 522,
+        "y": 320,
+        "width": 50,
+        "height": 134,
+        "depth_y": 450
+      },
+      "authored_local_foot_y": 130,
+      "runtime_local_foot_y": 130,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 5,
+      "id": "meeting_pavilion",
+      "authored": {
+        "x": 256,
+        "y": 886,
+        "width": 236,
+        "height": 206,
+        "depth_y": 1092
+      },
+      "runtime": {
+        "x": 256,
+        "y": 886,
+        "width": 236,
+        "height": 206,
+        "depth_y": 1092
+      },
+      "authored_local_foot_y": 206,
+      "runtime_local_foot_y": 206,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 6,
+      "id": "giveaway_pavilion",
+      "authored": {
+        "x": 440,
+        "y": 1060,
+        "width": 236,
+        "height": 206,
+        "depth_y": 1266
+      },
+      "runtime": {
+        "x": 440,
+        "y": 1060,
+        "width": 236,
+        "height": 206,
+        "depth_y": 1266
+      },
+      "authored_local_foot_y": 206,
+      "runtime_local_foot_y": 206,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 7,
+      "id": "rooted_tree_01",
+      "authored": {
+        "x": 146,
+        "y": 157,
+        "width": 166,
+        "height": 159,
+        "depth_y": 316
+      },
+      "runtime": {
+        "x": 146,
+        "y": 157,
+        "width": 166,
+        "height": 159,
+        "depth_y": 316
+      },
+      "authored_local_foot_y": 159,
+      "runtime_local_foot_y": 159,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 8,
+      "id": "rooted_tree_02",
+      "authored": {
+        "x": 328,
+        "y": 154,
+        "width": 166,
+        "height": 162,
+        "depth_y": 316
+      },
+      "runtime": {
+        "x": 328,
+        "y": 154,
+        "width": 166,
+        "height": 162,
+        "depth_y": 316
+      },
+      "authored_local_foot_y": 162,
+      "runtime_local_foot_y": 162,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 9,
+      "id": "rooted_tree_03",
+      "authored": {
+        "x": 558,
+        "y": 151,
+        "width": 166,
+        "height": 165,
+        "depth_y": 316
+      },
+      "runtime": {
+        "x": 558,
+        "y": 151,
+        "width": 166,
+        "height": 165,
+        "depth_y": 316
+      },
+      "authored_local_foot_y": 165,
+      "runtime_local_foot_y": 165,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 10,
+      "id": "rooted_tree_04",
+      "authored": {
+        "x": 2,
+        "y": 399,
+        "width": 166,
+        "height": 162,
+        "depth_y": 561
+      },
+      "runtime": {
+        "x": 2,
+        "y": 399,
+        "width": 166,
+        "height": 162,
+        "depth_y": 561
+      },
+      "authored_local_foot_y": 162,
+      "runtime_local_foot_y": 162,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 11,
+      "id": "rooted_tree_05",
+      "authored": {
+        "x": 634,
+        "y": 398.67,
+        "width": 134,
+        "height": 134,
+        "depth_y": 532.67
+      },
+      "runtime": {
+        "x": 634,
+        "y": 399,
+        "width": 134,
+        "height": 134,
+        "depth_y": 533
+      },
+      "authored_local_foot_y": 133.99999999999994,
+      "runtime_local_foot_y": 134,
+      "delta": {
+        "x": 0,
+        "y": 0.33,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0.33
+      },
+      "foot_anchor_delta": 0.0
+    },
+    {
+      "group": "placements",
+      "index": 12,
+      "id": "rooted_tree_06",
+      "authored": {
+        "x": 640,
+        "y": 634.49,
+        "width": 128,
+        "height": 125,
+        "depth_y": 759.49
+      },
+      "runtime": {
+        "x": 640,
+        "y": 634,
+        "width": 128,
+        "height": 125,
+        "depth_y": 759
+      },
+      "authored_local_foot_y": 125.0,
+      "runtime_local_foot_y": 125,
+      "delta": {
+        "x": 0,
+        "y": -0.49,
+        "width": 0,
+        "height": 0,
+        "depth_y": -0.49
+      },
+      "foot_anchor_delta": 0.0
+    },
+    {
+      "group": "placements",
+      "index": 13,
+      "id": "rooted_tree_07",
+      "authored": {
+        "x": 5,
+        "y": 714,
+        "width": 166,
+        "height": 162,
+        "depth_y": 876
+      },
+      "runtime": {
+        "x": 5,
+        "y": 714,
+        "width": 166,
+        "height": 162,
+        "depth_y": 876
+      },
+      "authored_local_foot_y": 162,
+      "runtime_local_foot_y": 162,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 14,
+      "id": "rooted_tree_08",
+      "authored": {
+        "x": 40,
+        "y": 1034.0,
+        "width": 166,
+        "height": 165,
+        "depth_y": 1199.0
+      },
+      "runtime": {
+        "x": 40,
+        "y": 1034,
+        "width": 166,
+        "height": 165,
+        "depth_y": 1199
+      },
+      "authored_local_foot_y": 165.0,
+      "runtime_local_foot_y": 165,
+      "delta": {
+        "x": 0,
+        "y": 0.0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0.0
+      },
+      "foot_anchor_delta": 0.0
+    },
+    {
+      "group": "placements",
+      "index": 15,
+      "id": "rooted_tree_09",
+      "authored": {
+        "x": 594,
+        "y": 927,
+        "width": 166,
+        "height": 144,
+        "depth_y": 1071
+      },
+      "runtime": {
+        "x": 594,
+        "y": 927,
+        "width": 166,
+        "height": 144,
+        "depth_y": 1071
+      },
+      "authored_local_foot_y": 144,
+      "runtime_local_foot_y": 144,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 16,
+      "id": "rooted_tree_10",
+      "authored": {
+        "x": 8,
+        "y": 1142,
+        "width": 166,
+        "height": 144,
+        "depth_y": 1286
+      },
+      "runtime": {
+        "x": 8,
+        "y": 1142,
+        "width": 166,
+        "height": 144,
+        "depth_y": 1286
+      },
+      "authored_local_foot_y": 144,
+      "runtime_local_foot_y": 144,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 17,
+      "id": "rooted_tree_11",
+      "authored": {
+        "x": 410,
+        "y": 634,
+        "width": 166,
+        "height": 162,
+        "depth_y": 796
+      },
+      "runtime": {
+        "x": 410,
+        "y": 634,
+        "width": 166,
+        "height": 162,
+        "depth_y": 796
+      },
+      "authored_local_foot_y": 162,
+      "runtime_local_foot_y": 162,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 18,
+      "id": "food_counters",
+      "authored": {
+        "x": 568,
+        "y": 790,
+        "width": 190,
+        "height": 164,
+        "depth_y": 954.0
+      },
+      "runtime": {
+        "x": 568,
+        "y": 790,
+        "width": 190,
+        "height": 164,
+        "depth_y": 954
+      },
+      "authored_local_foot_y": 164.0,
+      "runtime_local_foot_y": 164,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0.0
+      },
+      "foot_anchor_delta": 0.0
+    },
+    {
+      "group": "placements",
+      "index": 19,
+      "id": "northern_hall",
+      "authored": {
+        "x": 12,
+        "y": 12,
+        "width": 248,
+        "height": 190,
+        "depth_y": 202
+      },
+      "runtime": {
+        "x": 12,
+        "y": 12,
+        "width": 248,
+        "height": 190,
+        "depth_y": 202
+      },
+      "authored_local_foot_y": 190,
+      "runtime_local_foot_y": 190,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 20,
+      "id": "north_eastern_hall",
+      "authored": {
+        "x": 472,
+        "y": 12,
+        "width": 248,
+        "height": 190,
+        "depth_y": 202
+      },
+      "runtime": {
+        "x": 472,
+        "y": 12,
+        "width": 248,
+        "height": 190,
+        "depth_y": 202
+      },
+      "authored_local_foot_y": 190,
+      "runtime_local_foot_y": 190,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "placements",
+      "index": 21,
+      "id": "merch_venue_hall",
+      "authored": {
+        "x": 8,
+        "y": 730,
+        "width": 212,
+        "height": 180,
+        "depth_y": 910
+      },
+      "runtime": {
+        "x": 8,
+        "y": 730,
+        "width": 212,
+        "height": 180,
+        "depth_y": 910
+      },
+      "authored_local_foot_y": 180,
+      "runtime_local_foot_y": 180,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "overview_representations",
+      "index": 0,
+      "id": "stage_venue_representation",
+      "authored": {
+        "x": 132,
+        "y": 260,
+        "width": 406,
+        "height": 292,
+        "depth_y": 552
+      },
+      "runtime": {
+        "x": 132,
+        "y": 260,
+        "width": 406,
+        "height": 292,
+        "depth_y": 552
+      },
+      "authored_local_foot_y": 292,
+      "runtime_local_foot_y": 292,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "overview_representations",
+      "index": 1,
+      "id": "plaza_seating_representation",
+      "authored": {
+        "x": 292,
+        "y": 630,
+        "width": 144,
+        "height": 94,
+        "depth_y": 724
+      },
+      "runtime": {
+        "x": 292,
+        "y": 630,
+        "width": 144,
+        "height": 94,
+        "depth_y": 724
+      },
+      "authored_local_foot_y": 94,
+      "runtime_local_foot_y": 94,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "overview_representations",
+      "index": 2,
+      "id": "west_edge_venue_illustration",
+      "authored": {
+        "x": -75,
+        "y": 500,
+        "width": 200,
+        "height": 180,
+        "depth_y": 680
+      },
+      "runtime": {
+        "x": -75,
+        "y": 500,
+        "width": 200,
+        "height": 180,
+        "depth_y": 680
+      },
+      "authored_local_foot_y": 180,
+      "runtime_local_foot_y": 180,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "overview_representations",
+      "index": 3,
+      "id": "east_edge_venue_illustration",
+      "authored": {
+        "x": 710,
+        "y": 430,
+        "width": 210,
+        "height": 160,
+        "depth_y": 590
+      },
+      "runtime": {
+        "x": 710,
+        "y": 430,
+        "width": 210,
+        "height": 160,
+        "depth_y": 590
+      },
+      "authored_local_foot_y": 160,
+      "runtime_local_foot_y": 160,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "overview_representations",
+      "index": 4,
+      "id": "south_west_venue_illustration",
+      "authored": {
+        "x": -75,
+        "y": 1050,
+        "width": 240,
+        "height": 220,
+        "depth_y": 1270
+      },
+      "runtime": {
+        "x": -75,
+        "y": 1050,
+        "width": 240,
+        "height": 220,
+        "depth_y": 1270
+      },
+      "authored_local_foot_y": 220,
+      "runtime_local_foot_y": 220,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    },
+    {
+      "group": "overview_representations",
+      "index": 5,
+      "id": "south_east_venue_illustration",
+      "authored": {
+        "x": 700,
+        "y": 1110,
+        "width": 220,
+        "height": 180,
+        "depth_y": 1290
+      },
+      "runtime": {
+        "x": 700,
+        "y": 1110,
+        "width": 220,
+        "height": 180,
+        "depth_y": 1290
+      },
+      "authored_local_foot_y": 180,
+      "runtime_local_foot_y": 180,
+      "delta": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "depth_y": 0
+      },
+      "foot_anchor_delta": 0
+    }
+  ]
+}
