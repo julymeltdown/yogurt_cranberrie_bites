@@ -37,10 +37,10 @@
     "no overflow or browser errors"
   ],
   "sourceHashes": {
-    "model/controller.ts": "86e629eed8ea9bcbb32cb3c3967896fbce8b6aed236bf29aed521a0d470cefe2",
-    "model/runtime.ts": "d1dd6aa9f07e9a44bbe574a9202e6319f1eb88544cf02d2531cbc1af1b9bd416",
+    "model/controller.ts": "a798c5f50cf278a998517c552fc678b818c04ba569e3ff53174560677697e18c",
+    "model/runtime.ts": "999c074719e88f889130fd7726dbccbc969d2cab15c36d0813f1f54001652b53",
     "model/contract.ts": "eba5001637bc1b1cc5fcb98ec764cc5aa1ac4faf171f8fabac519e2f676e5426",
-    "ui/SocialSharing.tsx": "340deb069bf316efb5a5911ba7147c04d1c74fbbfbe1a4ce0bac31d789f603a1",
+    "ui/SocialSharing.tsx": "51b410255fd7a2bc21c34291d7fb091b830bd6b22e44f5016c7dd8415753cfb6",
     "ui/sharing.css": "4213c99408d0feaaf2a8e39b4ad5876bc7fadfc8123bcdd03562f2ab0c47823c",
     "__tests__/fixtures/preview.tsx": "7961330c0c90db780dd427a5b9797e7030b97c0225902c249bec591069b0db76",
     "__tests__/browser-smoke.mjs": "eb463b302f54474728f4616b55c10917e9a35a1a84d9682d530c260794c4793e"
