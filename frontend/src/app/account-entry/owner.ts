@@ -19,6 +19,8 @@ export interface AccountOwnerOptions {
 export function createAccountOwner({ auth, bootstrap, scope, assets, characters = null }: AccountOwnerOptions) {
   if (!auth.privacy.isCurrent(scope) || bootstrap.participant.userId !== scope.userId || bootstrap.participant.eventId !== scope.eventId
     || bootstrap.event.eventId !== scope.eventId) throw new AvatarError('unavailable')
+  if (characters && (!characters.isCurrent() || characters.scope.userId !== scope.userId || characters.scope.eventId !== scope.eventId
+    || characters.scope.generation !== scope.generation || characters.scope.policyGeneration !== scope.policyGeneration || characters.scope.gate !== scope.gate)) throw new AvatarError('unavailable')
   let disposed = false
   const leases = createReviewedAtlasLeases({ isCurrent: () => !disposed && auth.privacy.isCurrent(scope) })
   const source = thumbnailSource(bootstrap, scope, assets, leases), me = createMeController(auth)
