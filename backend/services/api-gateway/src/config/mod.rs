@@ -813,6 +813,7 @@ pub struct AppState {
     /// absent; only the configured concrete clients populate it.
     pub concert_identity: Option<crate::adapters::out::concert_identity::ConcertIdentityReader>,
     pub concert_client: Option<crate::adapters::out::concert_client::GrpcConcertClient>,
+    pub concert_product_client: Option<crate::adapters::out::concert_product::GrpcConcertProductClient>,
     pub concert_world_client: Option<crate::adapters::out::concert_world::GrpcConcertWorldClient>,
     pub auth_service: AuthGatewayService,
     pub profile_service: ProfileGatewayService,
@@ -1675,6 +1676,18 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
             )
         })
         .transpose()?;
+    state.concert_product_client = config
+        .concert_grpc_endpoint
+        .as_ref()
+        .map(|endpoint| {
+            crate::adapters::out::concert_product::GrpcConcertProductClient::connect(
+                endpoint,
+                &config.outbound_identity,
+                config.tls_material.as_ref(),
+                config.actor_delegation_signer.clone(),
+            )
+        })
+        .transpose()?;
     state.auth_service = state
         .auth_service
         .with_verification_client(verification_client);
@@ -1800,6 +1813,7 @@ async fn build_state_with_clients_and_moderation_with_metrics(
     Ok(AppState {
         concert_identity: None,
         concert_client: None,
+        concert_product_client: None,
         concert_world_client: None,
         high_risk_sessions: HighRiskSessionGuard::over_auth_client(
             auth_client.clone(),

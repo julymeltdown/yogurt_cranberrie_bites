@@ -8,6 +8,7 @@ pub mod client_identity;
 pub mod concert_access;
 pub mod concert_world;
 pub mod concert_bootstrap;
+pub mod concert_product;
 
 pub mod friend_routes;
 pub mod moderation_decision_worker;
@@ -237,6 +238,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         ))
         .merge(browser_auth::router(state.clone()))
         .merge(concert_bootstrap::router(state.clone()))
+        .merge(concert_product::router(state.clone()))
         .merge(concert_world::router_with_boundary(state.clone()))
         .merge(profile_routes::router(state.clone()))
         .merge(friend_routes::router(state.clone()))
@@ -274,6 +276,7 @@ pub fn router(state: Arc<AppState>) -> Router {
             browser_auth::boundary,
         ))
         .layer(axum::middleware::from_fn(concert_bootstrap::protect_response))
+        .layer(axum::middleware::from_fn(concert_product::protect_response))
 }
 
 pub fn metrics_router(metrics_state: GatewayMetrics) -> Router {
@@ -973,6 +976,11 @@ async fn audit_http_request(
 ) -> Response {
     let method = request.method().clone();
     let path = request.uri().path().to_owned();
+    // C04 media commands are recovered by Concert. Avoid a second replay owner
+    // and never persist private upload bytes in Gateway's retained journal.
+    if concert_product::owns_receipt(&method, &path) {
+        return next.run(request).await;
+    }
     if path == "/metrics"
         || (!audit_all_methods
             && (!is_mutation_method(method.as_str()) || path.starts_with("/admin")))

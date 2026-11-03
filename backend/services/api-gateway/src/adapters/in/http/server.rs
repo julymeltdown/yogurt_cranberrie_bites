@@ -68,6 +68,7 @@ pub fn with_transport_layers(
             super::browser_auth::boundary,
         ))
         .layer(from_fn(super::concert_bootstrap::protect_response))
+        .layer(from_fn(super::concert_product::protect_response))
 }
 
 // Restrict replay to command results, never read-by-POST profile batches or
@@ -132,6 +133,7 @@ pub(super) fn idempotency_owner(method: &Method, route: &str) -> Option<Mutation
 async fn enforce_idempotency_scope(request: Request<Body>, next: Next) -> Response {
     if request.headers().contains_key("idempotency-key")
         && !supports_idempotency(request.method(), matched_route(&request))
+        && !super::concert_product::owns_receipt(request.method(), request.uri().path())
     {
         let mut response = GatewayError::bad_request(
             "Idempotency-Key is supported only for post, follow/unfollow, profile edits/privacy, and moderation report creation",
