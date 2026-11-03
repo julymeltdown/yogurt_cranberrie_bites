@@ -1,6 +1,6 @@
 # BE24 authorized image pipeline
 
-Status: **IN_PROGRESS** for BE24 as a whole. The scoped internal producer is implemented;
+Status: **IN_PROGRESS** for BE24 as a whole. The scoped internal producer is implemented.
 The focused Concert library check passes; producer runtime qualification remains
 in progress after the first native failure. The shared Cargo lease was released;
 the corrected producer test binary is queued by delivery. HTTP composition, real fenced authority, scheduled cleanup and the real
@@ -86,7 +86,8 @@ Only UPLOADED private raw bytes are staged; none are readable through a content 
 
 Finalize checks UPLOADED/expected revision/current full upload fence, decodes and
 reencodes inside the same BE15 receipt transaction, rechecks lifetime and authority
-after CPU work, replaces raw staging with sanitized bytes, and commits READY plus
+after CPU work, applies expiry predicates in the final SQL publication, replaces raw
+staging with sanitized bytes, and commits READY plus
 safe receipt/outbox together. Failure/cancellation rolls back publication. Same-key
 replay returns the same receipt and never runs another aggregate effect. `recover`
 returns currently authorized receipt status only; absence/expiry is not rollback
@@ -108,7 +109,9 @@ no hidden rebase of stale upload authority. Physical arrival and inventory state
 are never inferred from an image.
 
 Reads serve only sanitized READY bytes and freshly authorize the stored target.
-Unlinked media is owner-only. New current policy stamps can authorize reads of already
+Unlinked media is owner-only. Lifetime predicates are checked again in the final byte read and first-link SQL after
+authority awaits, so expiry during owner latency cannot extend an orphan lifetime.
+New current policy stamps can authorize reads of already
 READY media; the stored creation stamp is not a cache grant. `PrivateImage::headers`
 provides exact MIME, private/no-store, nosniff, inline disposition and same-origin CORP.
 HTTP composition must attach those headers on success and no-store on denied/error
@@ -166,6 +169,13 @@ is content sanitization, not a separate antivirus scanning service.
   without overflow. All three source-query probes and cleanup PASS in
   `tests/media_support/timeout-clamp-evidence.json`. Rust producer rerun remains
   separately NOT_RUN until the explicitly queued correction compile lease.
+- A continuation audit found an expiry-after-authority gap. Final PUT/publication,
+  first linkage, private read and intent SQL now check database wall time after
+  owner awaits. Exact source SQL executed against expired synthetic rows changes
+  zero rows and returns neither private bytes nor intent metadata. All source-query
+  expiry guards and cleanup PASS in `tests/media_support/expiry-query-evidence.json`.
+  Delayed-authority read/link/finalize Rust regressions are authored; their corrected
+  producer binary execution remains queued and is not certified by SQL-only probes.
 
 `tests/media.rs` covers real PostgreSQL effects with a clearly synthetic transaction-
 locked policy fixture, plus retained real raster codecs. Cases include private staging,

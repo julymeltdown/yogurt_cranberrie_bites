@@ -55,6 +55,34 @@ def run(args, report):
             require(expected in cluster.sql(DATABASE, query).splitlines(), f"timeout clamp differs: {label}")
             report["commands"][f"timeout-clamp-{label}"] = 0
         report["timeout_clamp"] = "PASS"
+        # The expiry clauses are the exact producer SQL, not a second implementation.
+        event = "a0240000-0000-0000-0000-00000000ee01"
+        actor = "a0240000-0000-0000-0000-00000000ee02"
+        cluster.sql(DATABASE, f"insert into concert_events(event_id,slug,title,phase) values('{event}','be24-sql-expiry','Owned SQL expiry','OPEN');"
+                    f"insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values('{event}','{actor}','REVENGE',false,false,false);")
+        updates = re.findall(r'sqlx::query\("(update public\.concert_media set [^"\n]+)"\)', media_source)
+        for suffix, state, marker, extra in (
+                ("1", "PENDING", "set staged=$2", ",staged"),
+                ("2", "UPLOADED", "set staged=null,sanitized=$2", ",staged"),
+                ("3", "READY", "set target_id=$2", ",sanitized,width,height")):
+            media = "a0240000-0000-0000-0000-00000000ff0" + suffix
+            payload_columns = extra if state != "PENDING" else ""
+            payload_values = ",decode('00','hex'),1,1" if state == "READY" else ",decode('00','hex')" if state == "UPLOADED" else ""
+            cluster.sql(DATABASE, f"insert into concert_media(media_id,event_id,owner_id,purpose,content_type,declared_bytes,input_sha256,policy_event_revision,policy_relationship_revision,policy_authority_revision,state,created_at,expires_at,orphan_at{payload_columns}) values('{media}','{event}','{actor}','POST','image/png',1,decode(repeat('00',32),'hex'),1,1,1,'{state}',clock_timestamp()-interval '2 days',clock_timestamp()-interval '1 day',clock_timestamp()-interval '1 hour'{payload_values});")
+            candidates = [q for q in updates if marker in q]
+            require(len(candidates) == 1, "expiry source query missing or ambiguous")
+            query = candidates[0].replace("$1", f"'{media}'::uuid")
+            query = query.replace("$2", f"'{actor}'::uuid" if state == "READY" else "decode('00','hex')").replace("$3", "1").replace("$4", "1")
+            require("UPDATE 0" in cluster.sql(DATABASE, query).splitlines(), f"expired source mutation applied: {state}")
+            report["commands"][f"expiry-source-{state}"] = 0
+        reads = re.findall(r'"(select (?:sanitized,width,height|expires_at) from public\.concert_media [^"\n]+)"', media_source)
+        require(len(reads) == 2, "expiry read source missing or ambiguous")
+        for query in reads:
+            read_id = "a0240000-0000-0000-0000-00000000ff03" if "sanitized" in query else "a0240000-0000-0000-0000-00000000ff01"
+            require(cluster.sql(DATABASE, query.replace("$1", f"'{read_id}'::uuid")) == "", "expired source projection returned bytes or intent")
+        report["commands"]["expiry-source-private-read-and-intent"] = 0
+        cluster.sql(DATABASE, f"delete from concert_events where event_id='{event}';")
+        report["expiry_source_guards"] = "PASS"
         if test:
             report["test_binary_sha256"] = digest(test)
             env = {**cluster.env, "CONCERT_TEST_DATABASE_URL": cluster.url(DATABASE), "CONCERT_TEST_OWNER_ROOT": str(cluster.root), "CONCERT_TEST_OWNER_TOKEN": cluster.token, "CONCERT_TEST_OWNER_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}"}

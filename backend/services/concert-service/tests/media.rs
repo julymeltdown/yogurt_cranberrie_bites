@@ -716,3 +716,78 @@ async fn shorter_caller_sql_deadline_is_preserved() -> anyhow::Result<()> {
     cleanup(&p, c).await;
     Ok(())
 }
+struct DelayedAuthority;
+#[async_trait]
+impl MediaAuthority for DelayedAuthority {
+    async fn authorize_in(
+        &self,
+        c: &mut PgConnection,
+        context: Context,
+        access: Access,
+        owner: Uuid,
+        target: Option<Target>,
+    ) -> Result<(), CommandError> {
+        FixtureAuthority
+            .authorize_in(c, context, access, owner, target)
+            .await?;
+        tokio::time::sleep(std::time::Duration::from_millis(180)).await;
+        Ok(())
+    }
+}
+async fn short_lived_ready(p: &PgPool, c: Context) -> anyhow::Result<Uuid> {
+    let id = Uuid::new_v4();
+    let bytes = encode(ImageFormat::Png);
+    // Explicit synthetic READY fixture isolates wall-clock orphan expiry after authority.
+    sqlx::query("insert into concert_media(media_id,event_id,owner_id,purpose,content_type,declared_bytes,input_sha256,policy_event_revision,policy_relationship_revision,policy_authority_revision,state,sanitized,width,height,created_at,expires_at,orphan_at) values($1,$2,$3,'POST','image/png',$4,$5,1,1,1,'READY',$6,4,3,clock_timestamp()-interval '2 days',clock_timestamp()-interval '1 day',clock_timestamp()+interval '120 milliseconds')")
+ .bind(id).bind(c.event).bind(c.actor).bind(bytes.len() as i32).bind(Sha256::digest(&bytes).as_slice()).bind(bytes).execute(p).await?;
+    Ok(id)
+}
+#[tokio::test]
+async fn expiry_during_authority_cannot_read_or_link_orphan_bytes() -> anyhow::Result<()> {
+    let (p, c, _) = fixture().await?;
+    let s = PgMedia::new(p.clone(), Arc::new(DelayedAuthority), sanitizer(), keys());
+    let read = short_lived_ready(&p, c).await?;
+    assert!(matches!(s.read(c, read).await, Err(CommandError::Expired)));
+    let link = short_lived_ready(&p, c).await?;
+    let mut tx = p.begin().await?;
+    assert_eq!(
+        s.link_owned_in(
+            &mut tx,
+            c,
+            link,
+            Target {
+                resource: Uuid::new_v4(),
+                purpose: Purpose::Post
+            }
+        )
+        .await,
+        Err(CommandError::Expired)
+    );
+    tx.rollback().await?;
+    let unchanged: bool = sqlx::query_scalar(
+        "select target_id is null and revision=1 from concert_media where media_id=$1",
+    )
+    .bind(link)
+    .fetch_one(&p)
+    .await?;
+    assert!(unchanged);
+    cleanup(&p, c).await;
+    Ok(())
+}
+#[tokio::test]
+async fn expiry_during_final_authority_cannot_publish_ready() -> anyhow::Result<()> {
+    let (p, c, _) = fixture().await?;
+    let id = Uuid::new_v4();
+    let bytes = encode(ImageFormat::Png);
+    sqlx::query("insert into concert_media(media_id,event_id,owner_id,purpose,content_type,declared_bytes,input_sha256,policy_event_revision,policy_relationship_revision,policy_authority_revision,state,staged,created_at,expires_at) values($1,$2,$3,'POST','image/png',$4,$5,1,1,1,'UPLOADED',$6,clock_timestamp()-interval '1 second',clock_timestamp()+interval '500 milliseconds')")
+ .bind(id).bind(c.event).bind(c.actor).bind(bytes.len() as i32).bind(Sha256::digest(&bytes).as_slice()).bind(bytes).execute(&p).await?;
+    let s = PgMedia::new(p.clone(), Arc::new(DelayedAuthority), sanitizer(), keys());
+    assert_eq!(
+        s.finalize(c, Uuid::new_v4(), id, 1).await,
+        Err(CommandError::Expired)
+    );
+    let unchanged:bool=sqlx::query_scalar("select state='UPLOADED' and sanitized is null and revision=1 from concert_media where media_id=$1").bind(id).fetch_one(&p).await?;
+    assert!(unchanged);
+    cleanup(&p, c).await;
+    Ok(())
+}

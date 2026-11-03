@@ -263,7 +263,10 @@ impl CommandProducer for Producer<'_> {
                 {
                     return Err(CommandError::InvalidInput);
                 }
-                sqlx::query("update public.concert_media set staged=$2,state='UPLOADED',revision=revision+1 where media_id=$1").bind(id).bind(bytes).execute(&mut *c).await.map_err(unavailable)?;
+                let changed=sqlx::query("update public.concert_media set staged=$2,state='UPLOADED',revision=revision+1 where media_id=$1 and expires_at>clock_timestamp() and orphan_at>clock_timestamp()").bind(id).bind(bytes).execute(&mut *c).await.map_err(unavailable)?;
+                if changed.rows_affected() != 1 {
+                    return Err(CommandError::Expired);
+                }
                 v.revision + 1
             }
             Action::Finalize { expected } => {
@@ -298,8 +301,11 @@ impl CommandProducer for Producer<'_> {
                 self.authority
                     .authorize_in(c, self.context, Access::Write(v.purpose), v.owner, v.target)
                     .await?;
-                sqlx::query("update public.concert_media set staged=null,sanitized=$2,width=$3,height=$4,state='READY',revision=revision+1 where media_id=$1")
+                let changed=sqlx::query("update public.concert_media set staged=null,sanitized=$2,width=$3,height=$4,state='READY',revision=revision+1 where media_id=$1 and expires_at>clock_timestamp() and orphan_at>clock_timestamp()")
      .bind(id).bind(clean.bytes).bind(clean.width as i32).bind(clean.height as i32).execute(&mut *c).await.map_err(unavailable)?;
+                if changed.rows_affected() != 1 {
+                    return Err(CommandError::Expired);
+                }
                 v.revision + 1
             }
         };
@@ -502,12 +508,12 @@ impl PgMedia {
             .authorize_in(&mut tx, context, Access::Read(v.purpose), v.owner, v.target)
             .await?;
         let row = sqlx::query(
-            "select sanitized,width,height from public.concert_media where media_id=$1",
+            "select sanitized,width,height from public.concert_media where media_id=$1 and (target_id is not null or orphan_at>clock_timestamp())",
         )
         .bind(id)
-        .fetch_one(&mut *tx)
+        .fetch_optional(&mut *tx)
         .await
-        .map_err(unavailable)?;
+        .map_err(unavailable)?.ok_or(CommandError::Expired)?;
         let bytes: Vec<u8> = row.try_get("sanitized").map_err(invalid)?;
         let metadata = Metadata {
             media_id: id,
@@ -522,7 +528,8 @@ impl PgMedia {
         Ok(PrivateImage { metadata, bytes })
     }
     /// Atomic producer port for post/giveaway/report ownership, purpose and current policy.
-    /// Caller retains this same connection/transaction through its aggregate commit.
+    /// Caller retains this same Concert connection/transaction through its local commit.
+    /// This does not fence a separate Post database publication or read.
     pub async fn link_owned_in(
         &self,
         c: &mut PgConnection,
@@ -557,7 +564,10 @@ impl PgMedia {
             )
             .await?;
         if v.target.is_none() {
-            sqlx::query("update public.concert_media set target_id=$2,revision=revision+1 where media_id=$1").bind(id).bind(target.resource).execute(c).await.map_err(unavailable)?;
+            let changed=sqlx::query("update public.concert_media set target_id=$2,revision=revision+1 where media_id=$1 and orphan_at>clock_timestamp()").bind(id).bind(target.resource).execute(c).await.map_err(unavailable)?;
+            if changed.rows_affected() != 1 {
+                return Err(CommandError::Expired);
+            }
         }
         Ok(SafeReference {
             resource: id,
@@ -606,11 +616,11 @@ impl PgMedia {
             )
             .await?;
         let expires =
-            sqlx::query_scalar("select expires_at from public.concert_media where media_id=$1")
+            sqlx::query_scalar("select expires_at from public.concert_media where media_id=$1 and expires_at>clock_timestamp() and orphan_at>clock_timestamp()")
                 .bind(id)
-                .fetch_one(&mut *tx)
+                .fetch_optional(&mut *tx)
                 .await
-                .map_err(unavailable)?;
+                .map_err(unavailable)?.ok_or(CommandError::Expired)?;
         tx.commit().await.map_err(unavailable)?;
         Ok((v.revision, expires))
     }
