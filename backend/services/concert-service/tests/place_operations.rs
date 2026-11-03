@@ -270,6 +270,11 @@ fn release_bytes(revision: i64, place: &Place) -> anyhow::Result<Vec<u8>> {
         })]),
     );
     object["geometry"]["interactions"][0]["place_id"] = place.id.uuid().to_string().into();
+    let geometry = canonical_json_bytes(&serde_json::to_vec(&object["geometry"])?)?;
+    object.insert(
+        "geometry_hash".into(),
+        format!("sha256:{:x}", sha2::Sha256::digest(&geometry)).into(),
+    );
     let digest = format!(
         "sha256:{}",
         sha2::Sha256::digest(serde_json::to_vec(&serde_json::Value::Object(
@@ -424,6 +429,43 @@ async fn place_current_revision_cas_immediately_fences_selection_and_preserves_r
         SelectionOutcome::Eligible(_)
     ));
     assert_eq!(count(&p, "concert_outbox", a.event).await, 2);
+    let (other_pool, other) = fixture().await?;
+    // Even after reopening, a later event cannot inherit this event's operated
+    // release-local closure/revision. Owner publication itself must refuse it.
+    let bytes = release_bytes(1, &place)?;
+    let original_release = CatalogRelease::new(parse_stored_release(&bytes)?, bytes)?;
+    assert!(owner
+        .publish_release(EventId::from_uuid(other.event), original_release)
+        .await
+        .is_err());
+    let mut closed = place.clone();
+    closed.closure = ClosureState::Closed;
+    let bytes = release_bytes(2, &closed)?;
+    let replacement = CatalogRelease::new(parse_stored_release(&bytes)?, bytes)?;
+    owner
+        .publish_release(EventId::from_uuid(a.event), replacement)
+        .await?;
+    // A delayed OPEN at revision1 from the old release must not match revision1
+    // of a new CLOSED release. Rebound writes fail closed pending monotonic owner.
+    let stale = EventCommand::Place(PlaceChange {
+        place: place.clone(),
+        expected: Revision::initial(),
+        reason: "Stale old release reopen".into(),
+    });
+    assert_eq!(
+        repo.execute(a, Uuid::new_v4(), Some(place.id.uuid()), stale, &keys)
+            .await?
+            .failure,
+        Some(SafeFailure::MapVersionMismatch)
+    );
+    assert_eq!(
+        owner
+            .select_physical(EventId::from_uuid(a.event), place.id, Revision::new(2)?, 2)
+            .await?,
+        SelectionOutcome::Closed
+    );
+    other_pool.close().await;
+
     p.close().await;
     Ok(())
 }

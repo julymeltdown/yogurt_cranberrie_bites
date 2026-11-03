@@ -50,7 +50,7 @@ impl<A: FencedOperationsAuthority> FencedPlaceOperations for PgPlaceOperations<A
             false,
         )
         .await?;
-        let head=sqlx::query("select map_id,map_revision from concert_events_map_releases where event_id=$1 for share").bind(actor.event).fetch_optional(&mut *c).await.map_err(ops::unavailable)?.ok_or(CommandError::Unavailable)?;
+        let head=sqlx::query("select map_id,map_revision,catalog_revision from concert_events_map_releases where event_id=$1 for share").bind(actor.event).fetch_optional(&mut *c).await.map_err(ops::unavailable)?.ok_or(CommandError::Unavailable)?;
         let map: String = head.try_get("map_id").map_err(ops::unavailable)?;
         let revision: i64 = head.try_get("map_revision").map_err(ops::unavailable)?;
         let rows=sqlx::query(&format!("{} where q.map_id=$1 and q.map_revision=$2 and ($3::uuid is null or q.place_id>$3) and ($4::boolean is null or (s.closure_state='CLOSED')=$4) order by q.place_id limit $5 for share of s",select())).bind(map).bind(revision).bind(after).bind(closed).bind(i64::from(limit)).fetch_all(c).await.map_err(ops::unavailable)?;
@@ -107,12 +107,22 @@ impl<A: FencedOperationsAuthority> FencedPlaceOperations for PgPlaceOperations<A
             .execute(&mut *c)
             .await
             .map_err(ops::unavailable)?;
-        let head=sqlx::query("select map_id,map_revision from concert_events_map_releases where event_id=$1 for share").bind(actor.event).fetch_optional(&mut *c).await.map_err(ops::unavailable)?;
+        let head=sqlx::query("select map_id,map_revision,catalog_revision from concert_events_map_releases where event_id=$1 for share").bind(actor.event).fetch_optional(&mut *c).await.map_err(ops::unavailable)?;
         let Some(head) = head else {
             return Ok(Err(SafeFailure::ResourceUnavailable));
         };
         let map: String = head.try_get("map_id").map_err(ops::unavailable)?;
         let map_revision: i64 = head.try_get("map_revision").map_err(ops::unavailable)?;
+        // A replacement release's local revision must never satisfy an old
+        // request. The full monotonic event/place revision owner remains required.
+        if head
+            .try_get::<i64, _>("catalog_revision")
+            .map_err(ops::unavailable)?
+            != 1
+        {
+            return Ok(Err(SafeFailure::MapVersionMismatch));
+        }
+
         if map != candidate_map || map_revision != candidate_revision {
             return Ok(Err(SafeFailure::MapVersionMismatch));
         }
@@ -164,6 +174,11 @@ impl<A: FencedOperationsAuthority> FencedPlaceOperations for PgPlaceOperations<A
             .is_some_and(|at| at > time)
         {
             return Err(CommandError::Unavailable);
+        }
+        sqlx::query("insert into concert_operated_place_releases(map_id,map_revision,event_id) values($1,$2,$3) on conflict(map_id,map_revision) do nothing").bind(&map).bind(map_revision).bind(actor.event).execute(&mut *c).await.map_err(ops::unavailable)?;
+        let owner:Uuid=sqlx::query_scalar("select event_id from concert_operated_place_releases where map_id=$1 and map_revision=$2 for share").bind(&map).bind(map_revision).fetch_one(&mut *c).await.map_err(ops::unavailable)?;
+        if owner != actor.event {
+            return Ok(Err(SafeFailure::MapVersionMismatch));
         }
         let result=sqlx::query("update concert_place_current_state set closure_state=$4,revision=revision+1 where map_id=$1 and map_revision=$2 and place_id=$3 and revision=$5").bind(map).bind(map_revision).bind(change.place.id.uuid()).bind(change.place.closure.as_str()).bind(revision.get()).execute(&mut *c).await.map_err(ops::unavailable)?;
         if result.rows_affected() != 1 {

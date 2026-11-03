@@ -62,3 +62,28 @@ CREATE CONSTRAINT TRIGGER concert_operations_audit_deadline AFTER INSERT ON publ
 CREATE CONSTRAINT TRIGGER concert_operations_receipt_deadline AFTER INSERT OR UPDATE ON public.concert_command_receipts DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.concert_operations_deadline_guard();
 CREATE FUNCTION public.concert_operations_audit_immutable() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'operations audit is append only' USING ERRCODE='23514'; END; $$;
 CREATE TRIGGER concert_operations_audit_immutable BEFORE UPDATE OR DELETE ON public.concert_operations_audit FOR EACH ROW EXECUTE FUNCTION public.concert_operations_audit_immutable();
+
+-- Once BE38 mutates a release-local closure, bind that release durably to one
+-- event. Existing never-operated shared fixtures remain readable, while future
+-- publication cannot inherit another event's administrative closure/revision.
+CREATE TABLE public.concert_operated_place_releases (
+ map_id text NOT NULL,map_revision bigint NOT NULL,event_id uuid NOT NULL REFERENCES public.concert_events(event_id),
+ PRIMARY KEY(map_id,map_revision),FOREIGN KEY(map_id,map_revision) REFERENCES public.concert_map_releases(map_id,map_revision)
+);
+CREATE FUNCTION public.concert_operated_place_binding_guard() RETURNS trigger LANGUAGE plpgsql AS $$
+DECLARE owner_event uuid;
+BEGIN
+ PERFORM pg_advisory_xact_lock(hashtextextended(NEW.map_id::text||':'||NEW.map_revision::text,0));
+ SELECT event_id INTO owner_event FROM public.concert_operated_place_releases WHERE map_id=NEW.map_id AND map_revision=NEW.map_revision;
+ IF owner_event IS NOT NULL AND owner_event<>NEW.event_id THEN
+  RAISE EXCEPTION 'operated release belongs to another event' USING ERRCODE='23514';
+ END IF;
+ RETURN NEW;
+END;
+$$;
+CREATE TRIGGER concert_operated_place_binding_guard BEFORE INSERT OR UPDATE ON public.concert_events_map_releases FOR EACH ROW EXECUTE FUNCTION public.concert_operated_place_binding_guard();
+CREATE CONSTRAINT TRIGGER concert_operated_place_deadline AFTER INSERT OR UPDATE ON public.concert_operated_place_releases DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.concert_operations_deadline_guard();
+CREATE FUNCTION public.concert_operated_place_owner_immutable() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN RAISE EXCEPTION 'operated place ownership is immutable' USING ERRCODE='23514'; END;
+$$;
+CREATE TRIGGER concert_operated_place_owner_immutable BEFORE UPDATE OR DELETE ON public.concert_operated_place_releases FOR EACH ROW EXECUTE FUNCTION public.concert_operated_place_owner_immutable();
