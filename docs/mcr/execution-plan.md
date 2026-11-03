@@ -4,7 +4,7 @@
 
 Intake and assessment are delivered. Foundation implementation is active: reviewed source mapping, pinned frontend installation/build, imported Rust workspace build and source-origin/boundary guards are available. The [execution record](progress.md) separates accepted foundation tasks, implementation in progress and unrun runtime gates. The original planning exports remain unchanged.
 
-The main chat is the integrator. Backend and frontend development run in separate visible Codex chats, as the user explicitly requested. Each uses `gpt-6.1-sol` with `high` reasoning and an isolated worktree. The [chat ownership register](chat-coordination.md) records the current writers and scopes. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
+The main chat is the integrator. Backend and frontend development run in separate visible Codex chats, as the user explicitly requested. Each uses an isolated worktree and preserves the user's selected model and reasoning setting. The user withdrew the earlier fixed-model requirement; coordination and continuation calls omit model and reasoning overrides. The [chat ownership register](chat-coordination.md) records the current writers and scopes. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
 
 Four existing visible chats are reused for ready work. FE14 and its independent
 review completed their bounded goals after three corrections and parent 871-test

@@ -16,8 +16,10 @@ The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
 
 The original four increments started at `376cf21`; FE11 starts at `b39d5e5`
-after the same chat completed FE08. All use `gpt-6.1-sol` with `high` reasoning
-and no token budget. Actual goal tools confirmed FE08 **COMPLETE**, the new FE11
+after the same chat completed FE08. They initially used `gpt-6.1-sol` with `high`
+reasoning and no token budget. The user has now withdrawn that fixed-model
+requirement: preserve each chat's selected model and reasoning setting and omit
+overrides from coordination and continuation calls. Actual goal tools confirmed FE08 **COMPLETE**, the new FE11
 goal **COMPLETE**, BE15 **COMPLETE**, FE16 **COMPLETE**, and the original BE04 goal
 **BLOCKED** on central prerequisites. The completed BE15 chat was then reused at
 `5863f91` for a new Auth-owner read goal, now tool-confirmed **COMPLETE** after parent review. The old

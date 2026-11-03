@@ -42,15 +42,15 @@ startup is verified within BE05; product APIs/identity are not.
 ## Integration and ownership
 
 The main checkout integrates reviewed commits serially and alone publishes master.
-Four existing visible chats are reused with disjoint worktrees and requested
-`gpt-6.1-sol` / high settings. The Profile-owner chat is actively implementing
-seven assigned backend paths; the Auth-owner-client chat retains its goal through
-review, with source/build work stopped after its clean handoff. QA reviews that
-client on a separate report-only checkout. FE14 and its QA goals are COMPLETE;
-the frontend chat has confirmed a new ACTIVE FE15 goal. The Profile chat's old
-compatible goal still reports BLOCKED because the exposed goal API cannot resume
-it, although explicit continuation and implementation are active. No broader
-identity objective was falsely completed to bypass that limitation.
+Four existing visible chats are reused with disjoint worktrees. The user has
+withdrawn the fixed-model requirement; coordination preserves each chat's selected
+model and reasoning setting without overrides. The Profile chat now validates the
+actual Gateway-to-Profile-to-PostgreSQL chain in its four-path integration checkout.
+Its original compatible BE04 goal is tool-confirmed ACTIVE after user resumption;
+earlier BLOCKED snapshots are historical. The Profile-client chat has delivered
+its candidate and a read-only compatibility review. FE15 has delivered its movement
+candidate and bottom-edge correction, with independent QA reviewing the exact
+commits. These bounded increments do not complete broad identity or world tasks.
 The [chat ownership register](chat-coordination.md) records exact scopes.
 
 Reviewed imports through `2b42fd4`: frontend audit/scaffold, backend audit/import,

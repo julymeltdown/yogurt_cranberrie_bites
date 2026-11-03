@@ -13,7 +13,9 @@ successive scopes. The latest allocation is guarded Profile self RPC, its Gatewa
 client, FE15 movement/camera development and independent FE15 QA. Reviewed Auth
 client and Profile owner increments are integrated; FE14 and Auth QA goals are COMPLETE. The Profile chat's historical compatible
 goal now reports ACTIVE after the user resumed it; earlier BLOCKED snapshots
-remain historical. The requested model remains `gpt-6.1-sol` with `high` reasoning. Exact
+remain historical. The user has withdrawn the fixed-model requirement. Preserve
+each chat's user-selected model and reasoning setting; omit overrides in future
+coordination and continuation calls. Exact
 IDs, worktrees, branches and resource ownership are in the
 [coordination register](chat-coordination.md). Later paragraphs retain allocation
 history and do not override that current register.
