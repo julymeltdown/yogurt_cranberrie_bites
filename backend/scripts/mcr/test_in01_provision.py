@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import tempfile
 import threading
+from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 from uuid import uuid4
@@ -227,6 +228,7 @@ class FailureTests(Fixture):
             value = cluster.url(p.DATABASE)
         ownership.assert_called_once()
         self.assertIn("/" + p.DATABASE + "?", value)
+        self.assertTrue(p.DATABASE.startswith("mcr_concert_"))
 
     def test_shutdown_failure_still_calls_stack_cleanup(self):
         run=self.run_dir();stack=Mock();stack.report={"cleanup":"PASS"}
@@ -253,6 +255,131 @@ class FailureTests(Fixture):
         stack.start.assert_not_called()
         self.assertEqual(result["failure"],"INVALID_EVENT_ID")
         self.assertFalse((run.path/"private.json").exists())
+
+
+class ConcertTests(Fixture):
+    def artifact(self):
+        paths = set(p.CONCERT_DRIVER_PATHS) | {"backend/services/concert-service/src/main.rs", "backend/Cargo.lock"}
+        for relative in paths:
+            path = self.root / relative; path.parent.mkdir(parents=True,exist_ok=True); path.write_bytes(b"offline-build-input")
+        binary = self.root / "concert-service"; binary.write_bytes(b"offline-executable"); binary.chmod(0o700)
+        receipt = self.root / "concert-receipt.json"
+        value = {"exit_code":0,"source_revision":"a"*40,"binary_sha256":{"concert-service":p.digest(binary.read_bytes())},
+                 "source_files_sha256":{relative:p.digest((self.root/relative).read_bytes()) for relative in paths}}
+        receipt.write_text(json.dumps(value))
+        return binary,receipt,value,paths
+
+    def test_driver_only_differences_are_named_and_hashed(self):
+        binary,receipt,value,paths = self.artifact()
+        for relative in p.CONCERT_DRIVER_PATHS:
+            (self.root/relative).write_bytes(b"new-driver-only")
+        with patch.object(p,"ROOT",self.root),patch.object(p,"backend_source_paths",return_value=paths):
+            binding=p.validate_concert_binary(binary,receipt)
+        self.assertEqual(binding["source_revision"],"a"*40)
+        self.assertEqual(binding["source_manifest_count"],len(paths))
+        self.assertEqual(binding["qualification_scope"],"RUNTIME_SOURCES_MATCH_BUILD_RECEIPT_DRIVER_DIFFERENCES_RECORDED")
+        self.assertEqual({d["path"] for d in binding["driver_source_differences"]},p.CONCERT_DRIVER_PATHS)
+        self.assertTrue(all(d["build_sha256"]!=d["execution_sha256"] for d in binding["driver_source_differences"]))
+
+    def test_runtime_or_lock_drift_is_not_a_driver_exception(self):
+        binary,receipt,value,paths=self.artifact()
+        for relative in ("backend/services/concert-service/src/main.rs","backend/Cargo.lock"):
+            original=(self.root/relative).read_bytes();(self.root/relative).write_bytes(b"unbuilt-runtime-change")
+            with self.subTest(path=relative),patch.object(p,"ROOT",self.root),patch.object(p,"backend_source_paths",return_value=paths),self.assertRaisesRegex(p.Failure,"CONCERT_RUNTIME_SOURCE_DRIFT"):
+                p.validate_concert_binary(binary,receipt)
+            (self.root/relative).write_bytes(original)
+
+    def test_changed_binary_or_missing_manifest_is_refused(self):
+        binary,receipt,value,paths=self.artifact()
+        with patch.object(p,"ROOT",self.root),patch.object(p,"backend_source_paths",return_value=paths):
+            original=binary.read_bytes();binary.write_bytes(b"changed-artifact")
+            with self.assertRaisesRegex(p.Failure,"CONCERT_BINARY_RECEIPT_MISMATCH"):
+                p.validate_concert_binary(binary,receipt)
+            binary.write_bytes(original)
+            value["source_files_sha256"].pop("backend/Cargo.lock");receipt.write_text(json.dumps(value))
+            with self.assertRaisesRegex(p.Failure,"CONCERT_COMPLETE_BACKEND_SOURCE_MANIFEST_REQUIRED"):
+                p.validate_concert_binary(binary,receipt)
+
+    def test_failed_build_and_unsafe_source_pin_are_refused(self):
+        binary,receipt,value,paths=self.artifact()
+        value["exit_code"]=1;receipt.write_text(json.dumps(value))
+        with self.assertRaisesRegex(p.Failure,"CONCERT_BUILD_RECEIPT_REQUIRED"):
+            p.validate_concert_binary(binary,receipt)
+        value["exit_code"]=0
+        value["source_files_sha256"]["backend/../foreign"]="0"*64
+        receipt.write_text(json.dumps(value))
+        with patch.object(p,"ROOT",self.root),patch.object(p,"backend_source_paths",return_value=set(value["source_files_sha256"])),self.assertRaisesRegex(p.Failure,"CONCERT_SOURCE_PIN_INVALID"):
+            p.validate_concert_binary(binary,receipt)
+
+    def stack(self):
+        cluster=object.__new__(p.dev.migration.Cluster)
+        cluster.root=self.root;cluster.env={}
+        restarted={"value":False}
+        cluster.assert_owned=Mock()
+        cluster.assert_postmaster=Mock(side_effect=lambda:202 if restarted["value"] else 101)
+        cluster.url=Mock(return_value="postgresql://offline-owner@localhost/mcr_concert_in")
+        def sql(database,query):
+            if query=="select pg_postmaster_start_time();":return "after" if restarted["value"] else "before"
+            if query.startswith("select phase||"):return "OPEN:1"
+            return ""
+        cluster.sql=Mock(side_effect=sql)
+        cluster.stop=Mock();cluster.start=Mock(side_effect=lambda:restarted.update(value=True))
+        stack=Mock();stack.cluster=cluster;stack.report={"cleanup":"PASS","result":"PASS"};stack.start.return_value={}
+        return stack
+
+    def test_full_cli_mode_repeats_and_restarts_without_five_file_fallback(self):
+        stack=self.stack();report={}
+        with patch.object(p.dev.migration,"execute",return_value=SimpleNamespace(returncode=0)) as cli,patch.object(p.dev.migration,"check_ledger",return_value=12) as ledger:
+            p.initialize_event(stack,"a"*32,report,concert_binary=self.root/"concert-service")
+        self.assertEqual([call.args[0][-1] for call in cli.call_args_list],["--migrate","--verify-migrations","--migrate","--verify-migrations"])
+        self.assertEqual(ledger.call_count,3)
+        self.assertTrue(all(len(call.args[2])==12 for call in ledger.call_args_list))
+        stack.cluster.stop.assert_called_once();stack.cluster.start.assert_called_once();stack.health.assert_called_once()
+        self.assertEqual(report["concert_migrations"]["mode"],"CURRENT_BINARY_FULL_SQLX")
+        self.assertEqual(report["concert_migrations"]["status"],"PASS")
+        self.assertEqual(len(report["fixture"]["migration_hashes"]),12)
+        self.assertFalse(any("CREATE TABLE" in call.args[1].upper() for call in stack.cluster.sql.call_args_list))
+
+    def test_bounded_mode_never_claims_a_sqlx_ledger_or_calls_cli(self):
+        stack=self.stack();report={}
+        with patch.object(p.dev.migration,"execute") as cli,patch.object(p.dev.migration,"check_ledger") as ledger:
+            p.initialize_event(stack,"a"*32,report)
+        cli.assert_not_called();ledger.assert_not_called();stack.cluster.stop.assert_not_called()
+        self.assertEqual(len(report["fixture"]["migration_hashes"]),5)
+        self.assertEqual(report["concert_migrations"]["mode"],"BOUNDED_DIRECT_SCHEMA_NO_SQLX_LEDGER")
+
+    def test_concert_cli_failure_cleans_stack_and_cannot_fall_back(self):
+        run=self.run_dir();stack=self.stack();args=FailureTests.args(self)
+        args.concert_binary=self.root/"concert-service";args.concert_build_receipt=self.root/"build.json"
+        error=p.dev.SmokeError("concert-migrate","private diagnostic",1)
+        with patch.object(p,"source_receipt",return_value={}),patch.object(p,"validate_concert_binary",return_value={}),patch.object(p,"validate_binaries",return_value={"qualification_scope":"SOURCE_HASHES_MATCH_BUILD_RECEIPT","receipt":{}}),patch.object(p.dev,"Control"),patch.object(p,"provision_accounts",return_value={"accounts":[]}),patch.object(p.dev.migration,"execute",side_effect=error):
+            result=p.execute(args,run,stack)
+        stack.close.assert_called_once()
+        self.assertEqual(result["failure"],"CONCERT_CLI_MIGRATION_FAILED")
+        self.assertEqual(result["concert_migrations"]["status"],"FAIL")
+        self.assertEqual(result["concert_migrations"]["commands"][0]["exit_code"],1)
+        self.assertNotIn("fixture",result)
+        self.assertFalse(any("insert into concert_events" in call.args[1] for call in stack.cluster.sql.call_args_list))
+
+    def test_unqualified_concert_receipt_refuses_before_startup_or_accounts(self):
+        run=self.run_dir();stack=self.stack();args=FailureTests.args(self)
+        args.concert_binary=self.root/"concert-service";args.concert_build_receipt=self.root/"build.json"
+        with patch.object(p,"source_receipt",return_value={}),patch.object(p,"validate_concert_binary",side_effect=p.Failure("CONCERT_RUNTIME_SOURCE_DRIFT")),patch.object(p,"provision_accounts") as accounts:
+            result=p.execute(args,run,stack)
+        stack.start.assert_not_called();accounts.assert_not_called();stack.close.assert_called_once()
+        self.assertEqual(result["result"],"FAIL")
+        self.assertEqual(result["failure"],"CONCERT_RUNTIME_SOURCE_DRIFT")
+
+    def test_full_ledger_mismatch_cleans_stack_without_inserting_event(self):
+        run=self.run_dir();stack=self.stack();args=FailureTests.args(self)
+        args.concert_binary=self.root/"concert-service";args.concert_build_receipt=self.root/"build.json"
+        with patch.object(p,"source_receipt",return_value={}),patch.object(p,"validate_concert_binary",return_value={}),patch.object(p,"validate_binaries",return_value={"qualification_scope":"SOURCE_HASHES_MATCH_BUILD_RECEIPT","receipt":{}}),patch.object(p.dev,"Control"),patch.object(p,"provision_accounts",return_value={"accounts":[]}),patch.object(p.dev.migration,"execute",return_value=SimpleNamespace(returncode=0)),patch.object(p.dev.migration,"check_ledger",side_effect=p.dev.SmokeError("ledger","offline checksum mismatch")):
+            result=p.execute(args,run,stack)
+        stack.close.assert_called_once()
+        self.assertEqual(result["failure"],"CONCERT_FULL_LEDGER_MISMATCH")
+        self.assertEqual(result["concert_migrations"]["status"],"FAIL")
+        self.assertNotIn("fixture",result)
+        self.assertFalse(any("insert into concert_events" in call.args[1] for call in stack.cluster.sql.call_args_list))
 
 
 class WorldReadTests(Fixture):

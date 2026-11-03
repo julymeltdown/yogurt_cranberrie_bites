@@ -111,7 +111,7 @@ UUIDs must differ. Tokens/cookies never substitute for browser login in the
 frontend gate. Origin/intent, no-store, correlation and cookie checks come from
 the unchanged browser-auth helper.
 
-Fresh own mode creates only new `mcr_in_concert`, never reattaches an existing
+Fresh own mode now creates only new `mcr_concert_in`, never reattaches an existing
 store, and applies the exact bounded fixture migrations0001/0002/0003/0004/0005.
 It inserts one OPEN event at revision1. This is explicitly direct native fixture
 schema initialization, **not** a SQLx migration-ledger/runtime qualification.
@@ -185,13 +185,24 @@ A control shutdown failure still invokes database/process cleanup and cannot
 produce a green result.
 
 For a usable full migration ledger, optionally supply BOTH `--concert-binary`
-and `--concert-build-receipt`. The receipt has the same successful source/binary
-binding shape with a `concert-service` entry. Before launch the binary bytes are
-checked. The new Concert database is migrated/verified through the actual CLI
-and its full SQLx ledger compared with current source checksums; only then is
-the event fixture inserted. This path remains NOT_RUN until qualified Concert
-artifacts are supplied. It is distinct from the bounded direct-schema event
-proof above and starts no unconfigured Concert service by itself.
+and `--concert-build-receipt` (alias `--concert-receipt`). The database name now
+meets both the unchanged owned-Cluster guard and the current Concert URL guard.
+Before startup, the successful build receipt must bind the executable and a
+complete tracked backend source hash manifest. Only the two exact provisioning
+driver/test paths may differ; both old and current hashes are recorded. Service,
+migration, helper, dependency and lock drift fail closed, with no seventh-service
+historical bypass. The receipt's build revision remains distinct from the
+execution-driver revision and hashes.
+
+Full mode runs actual migrate/verify/repeat-migrate, compares the complete SQLx
+ledger, inserts the owned event, restarts only the new owned PostgreSQL cluster,
+rechecks the full ledger and event persistence, and requires six-service health
+to recover. It never falls back to five direct SQL files on failure. Default
+bounded mode still applies exactly five schema files with no SQLx claim or
+Concert restart qualification. Neither mode starts an unconfigured Concert
+server. Current optional-path evidence is recorded separately in
+`docs/mcr/backend/in01-concert-provision.md`; older native checkpoints below
+retain their original `mcr_in_concert` names and bounded limitations.
 
 Needed owner seams remain precise: a current qualified copied six-service
 binary/source receipt; optional current Concert migration artifact; actual Gateway→Concert

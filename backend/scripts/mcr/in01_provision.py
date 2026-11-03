@@ -21,7 +21,9 @@ import browser_auth_smoke as auth
 import dev_stack as dev
 
 ROOT = Path(__file__).resolve().parents[3]
-DATABASE = "mcr_in_concert"
+DATABASE = "mcr_concert_in"
+CONCERT_DRIVER_PATHS = frozenset(("backend/scripts/mcr/in01_provision.py",
+                                  "backend/scripts/mcr/test_in01_provision.py"))
 MIGRATIONS = ("0001_concert_core.sql", "0002_command_receipts_outbox.sql",
               "0003_places_map_releases.sql", "0004_bootstrap_admission.sql", "0005_world_admission.sql")
 
@@ -199,6 +201,42 @@ def attached_qualification(descriptor):
     return binding
 
 
+def backend_source_paths():
+    return set(subprocess.check_output(["git", "ls-files", "-z", "backend/"], cwd=ROOT,
+                                      text=True).rstrip("\0").split("\0"))
+
+
+def validate_concert_binary(binary, receipt_path):
+    raw = read_regular(receipt_path)
+    receipt = json.loads(raw)
+    need(type(receipt.get("exit_code")) is int and receipt["exit_code"] == 0
+         and isinstance(receipt.get("source_revision"), str)
+         and re.fullmatch(r"[0-9a-f]{40}", receipt["source_revision"]), "CONCERT_BUILD_RECEIPT_REQUIRED")
+    binary_hash = digest(read_regular(binary, limit=512 * 1024 * 1024))
+    need(os.access(binary, os.X_OK)
+         and receipt.get("binary_sha256", {}).get("concert-service") == binary_hash,
+         "CONCERT_BINARY_RECEIPT_MISMATCH")
+    sources = receipt.get("source_files_sha256")
+    need(isinstance(sources, dict) and sources and set(sources) == backend_source_paths()
+         and CONCERT_DRIVER_PATHS <= set(sources), "CONCERT_COMPLETE_BACKEND_SOURCE_MANIFEST_REQUIRED")
+    differences = []
+    for relative, expected in sources.items():
+        path = Path(relative)
+        need(not path.is_absolute() and ".." not in path.parts and path.parts[0] == "backend"
+             and isinstance(expected, str) and re.fullmatch(r"[0-9a-f]{64}", expected),
+             "CONCERT_SOURCE_PIN_INVALID")
+        current = digest(read_regular(ROOT / path))
+        if current != expected:
+            need(relative in CONCERT_DRIVER_PATHS, "CONCERT_RUNTIME_SOURCE_DRIFT")
+            differences.append({"path": relative, "build_sha256": expected, "execution_sha256": current})
+    need(digest(read_regular(receipt_path)) == digest(raw), "CONCERT_BUILD_RECEIPT_CHANGED")
+    return {"source_revision": receipt["source_revision"], "binary_sha256": binary_hash,
+            "receipt": {"path": str(receipt_path), "sha256": digest(raw)}, "source_manifest_count": len(sources),
+            "driver_source_differences": sorted(differences, key=lambda item: item["path"]),
+            "qualification_scope": ("RUNTIME_SOURCES_MATCH_BUILD_RECEIPT_DRIVER_DIFFERENCES_RECORDED" if differences
+                                    else "SOURCE_HASHES_MATCH_BUILD_RECEIPT")}
+
+
 def wait_mail(inbox, email, *, timeout=20):
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
@@ -283,12 +321,36 @@ def initialize_event(stack, nonce, report, resources=None, concert_binary=None):
     pins = {}
     if concert_binary:
         env = {**cluster.env, "CONCERT_DATABASE_URL": cluster.url(DATABASE)}
-        for flag in ("--migrate", "--verify-migrations"):
-            dev.migration.execute([str(concert_binary), flag], env=env, cwd=cluster.root, phase="concert-schema")
         expected = dev.migration.migration_manifest(ROOT / "backend", "concert-service")
-        dev.migration.check_ledger(cluster, DATABASE, expected)
+        lifecycle = report["concert_migrations"] = {"mode": "CURRENT_BINARY_FULL_SQLX", "status": "IN_PROGRESS",
+                                                   "database": DATABASE, "expected_migrations": len(expected),
+                                                   "commands": [], "restart": "NOT_RUN"}
+        def command(flag, phase):
+            row = {"phase": phase, "flag": flag, "exit_code": None}
+            lifecycle["commands"].append(row)
+            try:
+                result = dev.migration.execute([str(concert_binary), flag], env=env, cwd=cluster.root, phase=phase)
+                row["exit_code"] = result.returncode
+            except dev.SmokeError as error:
+                row["exit_code"] = error.detail.get("exit_code")
+                lifecycle["status"] = "FAIL"
+                lifecycle["failure_phase"] = phase
+                raise Failure("CONCERT_CLI_MIGRATION_FAILED") from None
+        def ledger(key):
+            try:
+                lifecycle[key] = dev.migration.check_ledger(cluster, DATABASE, expected)
+            except dev.SmokeError:
+                lifecycle.update(status="FAIL", failure_phase=key)
+                raise Failure("CONCERT_FULL_LEDGER_MISMATCH") from None
+        command("--migrate", "concert-migrate")
+        ledger("ledger_before")
+        command("--verify-migrations", "concert-verify")
+        command("--migrate", "concert-repeat-migrate")
+        ledger("ledger_after_repeat")
         pins = {str(k): v for k, v in expected.items()}
     else:
+        report["concert_migrations"] = {"mode": "BOUNDED_DIRECT_SCHEMA_NO_SQLX_LEDGER", "database": DATABASE,
+                                        "migration_count": len(MIGRATIONS)}
         for name in MIGRATIONS:
             path = ROOT / "backend/services/concert-service/migrations" / name
             raw = read_regular(path)
@@ -304,6 +366,20 @@ def initialize_event(stack, nonce, report, resources=None, concert_binary=None):
                 f"'{resources['avatar_manifest_id']}',{resources['avatar_manifest_version']},true);")
     cluster.sql(DATABASE, sql + "commit;")
     need(cluster.sql(DATABASE, f"select phase||':'||revision from concert_events where event_id='{event}';") == "OPEN:1", "EVENT_FIXTURE_NOT_PERSISTED")
+    if concert_binary:
+        before_pid = cluster.assert_postmaster()
+        before_time = cluster.sql("postgres", "select pg_postmaster_start_time();")
+        cluster.stop()
+        cluster.start()
+        need(cluster.assert_postmaster() != before_pid
+             and cluster.sql("postgres", "select pg_postmaster_start_time();") != before_time,
+             "CONCERT_POSTGRES_RESTART_NOT_OBSERVED")
+        command("--verify-migrations", "concert-verify-after-restart")
+        ledger("ledger_after_restart")
+        need(cluster.sql(DATABASE, f"select phase||':'||revision from concert_events where event_id='{event}';") == "OPEN:1",
+             "CONCERT_EVENT_RESTART_PERSISTENCE_FAILED")
+        stack.health()
+        lifecycle.update(status="PASS", restart="PASS", event_restart_persistence="PASS", six_service_readiness_after_restart="PASS")
     report["fixture"] = {"event": "PASS", "default_room": "INITIALIZED_NOT_ADMITTED" if resources else "NOT_RUN",
                          "missing": None if resources else "REVIEWED_RESOURCE_PINS_REQUIRED", "migration_hashes": pins,
                          "method": ("qualified Concert migration CLI and exact full SQLx ledger" if concert_binary else
@@ -398,10 +474,12 @@ def gate_config(state, origin, event, revision, service, art):
 
 def source_receipt():
     paths = [Path(__file__), ROOT / "frontend/e2e/real/world-gate/config.ts",
+             ROOT / "backend/scripts/mcr/test_in01_provision.py",
              ROOT / "frontend/src/entities/avatar/character-source-pack.json", ROOT / "contracts/core/v1/operations.json",
              ROOT / "contracts/core/v1/core.schema.json", ROOT / "contracts/realtime/v1/operations.json",
              Path(auth.__file__), Path(dev.__file__), Path(dev.runtime.__file__), Path(dev.migration.__file__)]
-    return {"source_revision": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+    revision = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    return {"source_revision": revision, "execution_driver_source_revision": revision,
             "source_sha256": {str(p.relative_to(ROOT)): digest(read_regular(p)) for p in paths}}
 
 
@@ -445,12 +523,7 @@ def execute(args, run, stack=None):
         need(bool(concert_binary) == bool(concert_receipt), "CONCERT_BINARY_RECEIPT_PAIR_REQUIRED")
         if concert_binary:
             need(stack is not None, "CONCERT_INITIALIZATION_REQUIRES_NEW_OWNED_STACK")
-            binding = json.loads(read_regular(concert_receipt))
-            need(binding.get("exit_code") == 0 and re.fullmatch(r"[0-9a-f]{40}", binding.get("source_revision", ""))
-                 and os.access(concert_binary, os.X_OK)
-                 and binding.get("binary_sha256", {}).get("concert-service") == digest(read_regular(concert_binary, limit=512 * 1024 * 1024)), "CONCERT_BINARY_RECEIPT_MISMATCH")
-            report["concert_binary_binding"] = {"source_revision": binding["source_revision"], "receipt": pinned(concert_receipt),
-                                                "binary_sha256": binding["binary_sha256"]["concert-service"]}
+            report["concert_binary_binding"] = validate_concert_binary(concert_binary, concert_receipt)
         if stack:
             report["binary_bindings"] = validate_binaries(args.bin_dir, args.binary_receipt,
                                                            historical_auth_only=getattr(args, "historical_auth_only", False))
@@ -502,6 +575,8 @@ def execute(args, run, stack=None):
     except (Exception, KeyboardInterrupt) as error:
         report["failure"] = str(error) if isinstance(error, Failure) else type(error).__name__
         report["result"] = "FAIL"
+        if report.get("concert_migrations", {}).get("status") == "IN_PROGRESS":
+            report["concert_migrations"]["status"] = "FAIL"
     finally:
         if stack:
             try:
@@ -543,7 +618,7 @@ def main(argv=None):
             c.add_argument("--binary-receipt", type=Path, required=True)
             c.add_argument("--historical-auth-only", action="store_true")
             c.add_argument("--concert-binary", type=Path)
-            c.add_argument("--concert-build-receipt", type=Path)
+            c.add_argument("--concert-build-receipt", "--concert-receipt", dest="concert_build_receipt", type=Path)
             c.add_argument("--pg-bin-dir", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))
             c.add_argument("--redis-binary", type=Path, default=Path("/opt/homebrew/bin/redis-server"))
             c.add_argument("--openssl-binary", type=Path, default=Path("/opt/homebrew/bin/openssl"))
