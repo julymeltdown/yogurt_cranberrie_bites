@@ -2,3 +2,7 @@
 pub mod adapters;
 pub mod config;
 pub mod health;
+
+pub mod workers {
+    pub mod outbox;
+}

@@ -1,3 +1,6 @@
+pub mod outbox;
+pub mod receipt;
+
 use async_trait::async_trait;
 use concert_application::{CoreRepository, PreferenceUpdate, StoreError};
 use concert_domain::*;

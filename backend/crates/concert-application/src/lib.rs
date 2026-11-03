@@ -1,4 +1,6 @@
 //! Use cases depend only on Concert values and explicit ports, never adapters.
+pub mod commands;
+
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use concert_domain::{
