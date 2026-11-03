@@ -1,0 +1,1813 @@
+{
+  "status": "PASS_ASSET_REVIEW_ONLY",
+  "browser": "156.0.8078.80",
+  "cases": 24,
+  "results": [
+    {
+      "width": 360,
+      "theme": "parade",
+      "finish": "painted",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "parade",
+        "finish": "painted",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 336,
+        "height": 336,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1254,
+          1254
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "theme": "parade",
+      "finish": "painted",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "parade",
+        "finish": "painted",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 336,
+        "height": 567,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1254,
+          1254
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "theme": "parade",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "parade",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 336,
+        "height": 336,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "theme": "parade",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "parade",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 336,
+        "height": 567,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "theme": "revenge",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "revenge",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 336,
+        "height": 336,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "theme": "revenge",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "revenge",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 336,
+        "height": 567,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "theme": "danger",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "danger",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 336,
+        "height": 336,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 360,
+      "theme": "danger",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "danger",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 336,
+        "height": 567,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "theme": "parade",
+      "finish": "painted",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "parade",
+        "finish": "painted",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 366,
+        "height": 366,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1254,
+          1254
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "theme": "parade",
+      "finish": "painted",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "parade",
+        "finish": "painted",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 366,
+        "height": 618,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1254,
+          1254
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "theme": "parade",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "parade",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 366,
+        "height": 366,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "theme": "parade",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "parade",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 366,
+        "height": 618,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "theme": "revenge",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "revenge",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 366,
+        "height": 366,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "theme": "revenge",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "revenge",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 366,
+        "height": 618,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "theme": "danger",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "danger",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 366,
+        "height": 366,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 390,
+      "theme": "danger",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "danger",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 366,
+        "height": 618,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "theme": "parade",
+      "finish": "painted",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "parade",
+        "finish": "painted",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 406,
+        "height": 406,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1254,
+          1254
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "theme": "parade",
+      "finish": "painted",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "parade",
+        "finish": "painted",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 406,
+        "height": 685,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1254,
+          1254
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "theme": "parade",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "parade",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 406,
+        "height": 406,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "theme": "parade",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "parade",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 406,
+        "height": 685,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "theme": "revenge",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "revenge",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 406,
+        "height": 406,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "theme": "revenge",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "revenge",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 406,
+        "height": 685,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "theme": "danger",
+      "finish": "native",
+      "view": "world",
+      "state": {
+        "ready": true,
+        "view": "world",
+        "theme": "danger",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 406,
+        "height": 406,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    },
+    {
+      "width": 430,
+      "theme": "danger",
+      "finish": "native",
+      "view": "map",
+      "state": {
+        "ready": true,
+        "view": "map",
+        "theme": "danger",
+        "finish": "native",
+        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "width": 406,
+        "height": 685,
+        "ground": [
+          768,
+          1296
+        ],
+        "atlas": [
+          1024,
+          1024
+        ]
+      },
+      "occlusion": [
+        {
+          "id": "courtyard_entry",
+          "foot": {
+            "x": 472,
+            "y": 600
+          },
+          "blockers": []
+        },
+        {
+          "id": "community_entry",
+          "foot": {
+            "x": 504,
+            "y": 936
+          },
+          "blockers": []
+        },
+        {
+          "id": "stage_info",
+          "foot": {
+            "x": 440,
+            "y": 536
+          },
+          "blockers": []
+        },
+        {
+          "id": "park_info",
+          "foot": {
+            "x": 616,
+            "y": 616
+          },
+          "blockers": []
+        },
+        {
+          "id": "gifts_info",
+          "foot": {
+            "x": 216,
+            "y": 808
+          },
+          "blockers": []
+        },
+        {
+          "id": "wall_info",
+          "foot": {
+            "x": 168,
+            "y": 1096
+          },
+          "blockers": []
+        }
+      ],
+      "overflow": false,
+      "canvases": 1
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Canvas2D technical review, not current Phaser/app/server integration.",
+    "No characters are rendered; feet alpha checks do not establish full dynamic avatar occlusion.",
+    "Visual target acceptance is a separate review."
+  ]
+}

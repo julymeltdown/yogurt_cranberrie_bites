@@ -1,0 +1,59 @@
+{
+  "format": "MCR_PAINTED_RESOURCE_INPUTS",
+  "version": 2,
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "theme_id": "PARADE",
+  "geometry_hash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+  "worker_base": "1e5022885525ab56f056aa2c24100e18c4bc67ed",
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "panels": [
+      "WORLD (third)",
+      "MAP (fourth)"
+    ]
+  },
+  "resources": [
+    {
+      "path": "parade-source-atlas.png",
+      "sha256": "sha256:61c2a34f7c0c51f09ea669a74ee27581d100c139bafa56ebbec085bc8f0b65d0",
+      "bytes": 2437928
+    },
+    {
+      "path": "surface-source.png",
+      "sha256": "sha256:3bdf5cb959782edd02357775e98a03e5f4bbf9b49a593fa33f3e0b2964322f00",
+      "bytes": 3144066
+    },
+    {
+      "path": "layout.json",
+      "sha256": "sha256:a0af507d6f483ec745179cb479d4e2b5d9d73d4f9a0a6de1758b333c9976965e",
+      "bytes": 15451
+    },
+    {
+      "path": "provenance.json",
+      "sha256": "sha256:9ea3dcdeecf6b00525f3b02b5a484e143c772ac53947b7dbc369cbb2fce9d50e",
+      "bytes": 1888
+    },
+    {
+      "path": "ground-layout.svg",
+      "sha256": "sha256:0675a082ea72e62c48200f8fb97a41d90de6e4a08d7fc98aa01f2da67342f826",
+      "bytes": 4665
+    },
+    {
+      "path": "scene-layout.svg",
+      "sha256": "sha256:d8719bc9f7e31ddb13cbb69b6bc62aeef13178eb1e09b7bad447f0430b525237",
+      "bytes": 4454
+    },
+    {
+      "path": "parade-ground.png",
+      "sha256": "sha256:5a0a076612ddf257795237329f05a179b6cdd8aa433c95381b70808a4c82abb0",
+      "bytes": 1351589
+    }
+  ],
+  "runtime_resources": [
+    "parade-ground.png",
+    "parade-source-atlas.png"
+  ],
+  "runtime_labels": "Not baked; map_labels live in shared geometry proposal.",
+  "adoption": "Scene proposal only; no current MapManifest/C06/backend binding is changed."
+}
