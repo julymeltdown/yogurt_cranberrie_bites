@@ -16,6 +16,15 @@
 - Review at each bounded task handoff and real vertical-flow gate. Reassign or close idle, finished, duplicative, or conflicting agents. Reuse context when a follow-up is closely related.
 - Only the integrator pushes reviewed work to master. Use explicit staged paths, preserve concurrent work, and never force-push.
 
+## Frontend/backend separation
+
+- Give every implementation worker its own Git worktree and task branch, such as `codex/mcr-be-BE03` or `codex/mcr-fe-FE09`. Concurrent workers must not edit the integration worktree or share a writable checkout, including workers within the same lane.
+- Backend workers write only their assigned paths under `backend/`; frontend workers write only their assigned paths under `frontend/`. Lane-specific documentation may be explicitly assigned separately. Reading the other side for compatibility review does not grant permission to modify it.
+- The integrator owns shared HTTP/realtime/asset contracts, generated contract artifacts, central manifests and lockfiles, router composition, root scripts, CI, and infrastructure configuration. Workers report required changes to these paths for integration instead of editing them as a side effect of a feature task. This includes shared contract inputs under `backend/docs/api/` and `backend/proto/`.
+- Frontend code must not import backend implementation files, server configuration, database access, or secrets. Backend code must not depend on frontend rendering, browser state, or frontend mocks. Connect through the agreed HTTP/WebSocket contracts and generated public types. Client validation does not replace server authorization or invariants.
+- Split work spanning both sides into separate backend and frontend patches/commits. QA and art workers receive exact test or asset paths; their assignments do not grant general application-code ownership.
+- Before integrating, compare every changed path against the assignment and inspect cross-directory imports. Return out-of-scope edits to the responsible lane or separate them into an integrator-owned patch. Record the worker's base commit and changed-path list; integrate reviewed worker commits serially, then run the relevant combined checks.
+
 ## Implementation boundaries
 
 - All rendering/UI is newly authored. Only audited headless Bigyeting logic may be reused; keep old rendering and unneeded visual libraries out of the new application.

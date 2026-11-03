@@ -6,6 +6,24 @@ Intake and assessment are complete when the source package, full narrative, repo
 
 The main agent is the integrator. Workers use `gpt-6.1-sol` with `high` reasoning, as requested. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
 
+## Separate code ownership and workspaces
+
+The user explicitly requires frontend and backend changes to stay separate. The repository keeps both products together for integration, with these boundaries:
+
+| Area | Writer | Boundary |
+|---|---|---|
+| `backend/` implementation, migrations, backend tests | Assigned mcr(be) worker | Exact assigned paths only; no frontend edits |
+| `frontend/` implementation, browser mocks, frontend tests | Assigned mcr(fe) worker | Exact assigned paths only; no backend edits |
+| HTTP/proto, realtime, and asset contracts; generated public types | Integrator | Includes inputs under `backend/docs/api/`, `backend/proto/`, and `contracts/`; both lanes submit requirements |
+| Central manifests, locks, root routers, CI, scripts, infrastructure | Integrator | Applies even where these files sit inside a lane's directory |
+| Art, independent QA, and documentation | Explicitly assigned worker | Exact asset/test/document paths; no implicit ownership of application code |
+
+Each implementation worker receives an isolated Git worktree and task branch, including parallel workers within one lane. The integrator retains the master checkout. Example branches are `codex/mcr-be-BE03` and `codex/mcr-fe-FE09`; record the starting commit with each assignment. Do not launch concurrent implementation in a shared writable checkout.
+
+Frontend/backend communication uses the frozen HTTP/WebSocket contracts and generated public types, without source imports across implementation directories. Frontend code must not receive server configuration, secrets, database access, or server policy implementations. Backend code must not depend on rendering, browser state, or browser mocks. Client form checks support UX; server policy remains authoritative.
+
+Cross-stack work is handed off as separate backend and frontend patches/commits. The integrator checks the changed-path list and cross-directory imports against the assignment before serial integration and combined verification. A required change outside a worker's scope becomes a request to its owner, not an incidental edit bundled into that worker's patch.
+
 ## Initial work packages
 
 | Package | Owner | Output and ownership | Readiness / review |
@@ -15,8 +33,8 @@ The main agent is the integrator. Workers use `gpt-6.1-sol` with `high` reasonin
 | C01 consolidation | mcr(pm) | `docs/mcr/source-map.md`, final reuse decision, target path map, and review record | Both inventories reviewed; every proposed reuse has provenance and a test plan |
 | C02 reproducible foundation | mcr(pm) with bounded BE/FE workers | Manifests/locks/toolchains, minimal builds, isolated infra, scoped commands | C01 accepted; integrator serializes all central file changes |
 | C03/C04 HTTP contracts | mcr(pm), assigned contract writer | Exact inherited auth operations, core/domain schemas, permissions, transitions, retry/idempotency and examples | C03 after C01; C04 after C03; inspect original upstream APIs |
-| C05 realtime contracts | mcr(be), isolated contract assignment | Versioned authenticate/snapshot/input/delta/resync/revoke/room-switch schemas and fixtures | C03 frozen; stream and ticket failure probes reviewed |
-| C06 asset contracts | mcr(fe) or mcr(art) | Atlas/map/version contracts, golden assets, anchors/layers/collision/place provenance | C01 accepted; original art remains separate AR work |
+| C05 realtime contracts | mcr(pm), with mcr(be) review | Versioned authenticate/snapshot/input/delta/resync/revoke/room-switch schemas and fixtures | C03 frozen; stream and ticket failure probes reviewed |
+| C06 asset contracts | mcr(pm), with mcr(fe)/mcr(art) review | Atlas/map/version contracts, golden assets, anchors/layers/collision/place provenance | C01 accepted; original art remains separate AR work |
 | C07/C08 harnesses | mcr(qa) with integrator | Contract generation/drift fixtures, source-origin gate, evidence conventions | Honor each task's listed dependencies; C08 can start after C01, C07 after C03–C06 |
 
 Contract preparation and source reconnaissance may overlap; claiming task acceptance still requires its listed dependencies and evidence. In C02, an isolated staging checkout can qualify the chosen Rust baseline before the reviewed BE01 import. This avoids pretending C02 can build a nonexistent target backend while preserving the ledger's C02 → BE01 order. Record the tested source, import mapping, and later target build separately.
@@ -36,7 +54,7 @@ This table is a queue summary, not a waiver of `generated/TASKS_EN.json` depende
 
 ## Handoff and continuation rules
 
-Each worker receives task IDs, pinned source/contract versions, exact writable paths, exclusions, required checks, and an expected handoff. The handoff names changed files, behavior, commands and exit codes, evidence paths, known gaps, and the appropriate status. Workers may commit to isolated task branches when assigned; only the integrator publishes master.
+Each worker receives task IDs, pinned source/contract versions, an isolated worktree/task branch, a base commit, exact writable paths, exclusions, required checks, and an expected handoff. The handoff names changed files, behavior, commands and exit codes, evidence paths, known gaps, and the appropriate status. Implementation workers commit only their assigned side to their task branch; only the integrator publishes master.
 
 At each handoff the integrator reads the diff, checks the contract and ownership boundaries, runs affected checks, and inspects failure paths. Closely related fixes go back to the same worker with concrete findings. Independent verification can run alongside implementation when file ownership is separate. Preserve the unaccepted patch and reassign when work diverges from requirements, duplicates another lane, conflicts in shared files, or cannot progress on its prerequisites. Close finished workers after review. Do not keep an idle lane alive merely to maintain parallelism.
 
