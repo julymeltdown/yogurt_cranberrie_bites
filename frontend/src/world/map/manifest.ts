@@ -2,10 +2,11 @@ import type fixtureMap from '../../../../contracts/fixtures/assets/map-manifest.
 import type fixtureTheme from '../../../../contracts/fixtures/assets/theme-revenge.json'
 import { contentHash, digest, MapError, record, requireMap, strictJson } from './json'
 import { schemaValid } from './schema'
+import { validateScenery, type Scenery } from '../illustrated/model'
 export type Geometry = typeof fixtureMap.geometry
 type Provenance = Omit<typeof fixtureMap.provenance, 'source_uri' | 'reviewed_by' | 'reviewed_at'> & { source_uri: string | null; reviewed_by: string | null; reviewed_at: string | null }
 export type MapManifest = Omit<typeof fixtureMap, 'tilemap' | 'provenance' | 'places'> & { provenance: Provenance; places: (Omit<typeof fixtureMap.places[number], 'provenance'> & { provenance: Provenance })[]; tilemap: { format: string; resource_state: string; path: string | null; sha256: string | null } }
-export type ThemeManifest = Omit<typeof fixtureTheme, 'texture' | 'provenance'> & { provenance: Provenance; texture: { image_state: string; path: string | null; sha256: string | null; width_px: number; height_px: number } }
+export type ThemeManifest = Omit<typeof fixtureTheme, 'texture' | 'provenance'> & { provenance: Provenance; texture: { image_state: string; path: string | null; sha256: string | null; width_px: number; height_px: number }; scenery?: Scenery }
 /** Trusted release identity supplied by future composition; no avatar image/layout consumption. */
 export interface ReleasePin {
   mapHash: string; themeHash: string
@@ -68,6 +69,7 @@ export async function validateManifests(mapText: string, themeText: string, pin:
     && texture.width_px % g.tile_width_px === 0 && texture.height_px % g.tile_height_px === 0)
   const count = texture.width_px / g.tile_width_px * (texture.height_px / g.tile_height_px)
   requireMap([g.terrain_layer, g.overdraw_layer].every(grid => grid.every(row => row.every(id => id <= count))))
+  validateScenery(theme.scenery, g.width_cells * g.tile_width_px, g.height_cells * g.tile_height_px)
   return freeze({ map, theme, spawn: spawns.get(g.default_spawn_id)!, widthPx: g.width_cells * g.tile_width_px, heightPx: g.height_cells * g.tile_height_px })
 }
 export function requireProvided(map: MapManifest, theme: ThemeManifest) {

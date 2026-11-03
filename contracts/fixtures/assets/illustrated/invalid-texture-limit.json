@@ -1,0 +1,83 @@
+{
+  "contract_version": "1.0.0",
+  "kind": "theme_manifest",
+  "theme_id": "REVENGE",
+  "theme_revision": 1,
+  "provenance": {
+    "source_id": "mcr_c06_fixture",
+    "source_kind": "ORIGINAL_FIXTURE",
+    "source_revision": "c06-fixture-v1",
+    "source_uri": null,
+    "author": "MCR C06 contract author",
+    "license": "Synthetic metadata only; no artwork or venue license asserted",
+    "review_state": "UNREVIEWED",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "photo_permission": "NOT_APPLICABLE"
+  },
+  "map_id": "map_fixture",
+  "map_revision": 1,
+  "map_content_hash": "sha256:21b91a4e02b04943100909d7a008f68cafb9e21b284f26b93ba09ddcc39a4dff",
+  "geometry_hash": "sha256:50ef23b282b18f10aaf28d18c9bc1f2ee44ff46504dd81b41df9d7ddca363a94",
+  "collision_id": "collision_fixture",
+  "place_ids": [
+    "00000000-0000-4000-8000-000000000001"
+  ],
+  "interaction_ids": [
+    "inspect_concept"
+  ],
+  "avatar_manifest_id": "avatar_fixture",
+  "avatar_manifest_version": 1,
+  "avatar_content_hash": "sha256:b2fb2a3e746711f4aaddf8ac7a2b8b11da31911ec9c6a9ea5cb6c9cdf2e0c5c3",
+  "texture": {
+    "image_state": "NOT_PROVIDED",
+    "path": null,
+    "sha256": null,
+    "width_px": 32,
+    "height_px": 32
+  },
+  "palette": {
+    "background": "#151019",
+    "terrain": "#302032",
+    "accent": "#D34C66"
+  },
+  "content_hash": "sha256:0f160d8dc5c50b499fe94eeef85dd39ecc247e1c164da2226a747344ad5b889f",
+  "scenery": {
+    "version": 1,
+    "ground": {
+      "id": "ground",
+      "path": "world/illustrated-test/ground.png",
+      "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "width_px": 2049,
+      "height_px": 160,
+      "bytes": 100
+    },
+    "atlases": [
+      {
+        "id": "detail",
+        "path": "world/illustrated-test/detail.png",
+        "sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "width_px": 32,
+        "height_px": 32,
+        "bytes": 100
+      }
+    ],
+    "objects": [
+      {
+        "id": "fixture",
+        "atlas_id": "detail",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 32,
+          "height": 32
+        },
+        "x": 0,
+        "y": 0,
+        "width": 32,
+        "height": 32,
+        "depth_y": 32
+      }
+    ]
+  }
+}
