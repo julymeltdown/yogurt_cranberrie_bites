@@ -1,0 +1,19 @@
+{
+  "frontend/src/app/WorldShell.tsx": "9f783ea15a37217a6d8ac04fac9dd8ac1c8c370472e0e54a2e2a7ad2507aa015",
+  "frontend/src/app/shell.css": "b12ac66307766e8c397dab7cc4674743887a301f81e358498ce5b72bb4189eb7",
+  "frontend/src/app/shell-chrome/index.tsx": "744a9c3791d37b170143055561e65acab8c7c405d11b1e31e2da24645d4dfbf3",
+  "frontend/src/app/__tests__/default-shell/preview.html": "5f65c241e8abcc1ed252d49312b38cd7cdf7111acc2dcf96d88e10c6bbe802b8",
+  "frontend/src/app/__tests__/default-shell/preview.tsx": "80114bc20d1cbc096f5175be3493d2f58e12b6ea477d2df35e5b7a5da484e4c4",
+  "frontend/src/app/__tests__/default-shell/chrome-native.mjs": "8b19b9853d3d7f15a3e4752f0ca7cef6130e4f7a90180aa01650bd515dcb6540",
+  "frontend/src/app/__tests__/default-shell/chrome.test.tsx": "89e92c98399cc2c2c5af0c8d1295e60b4be840fec7fd00d9cdb78c1cf96df159",
+  "frontend/src/app/__tests__/default-shell/evidence/default-settings-360.png": "4507c74e4dbf4cdaffd2e57954970452bcd52e940b1a0fb340a14c0f60a4f9a1",
+  "frontend/src/app/__tests__/default-shell/evidence/chrome-native.json": "25a26d1f3c853b16e7939988647667799435c6813b9565658e53179b657a2373",
+  "frontend/src/app/__tests__/default-shell/evidence/default-world-360.png": "14704050f3f6f0615b8cc5186b6ceace9644468d559bd29131f6d147263a2281",
+  "frontend/src/app/__tests__/default-shell/evidence/chrome.log": "42dc3a786086ef812689f325e9384433921a3fd5da614e6fee3ef5a7b59b810d",
+  "frontend/src/app/__tests__/default-shell/evidence/chrome-native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "frontend/src/app/__tests__/default-shell/evidence/types-chrome.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "frontend/src/app/__tests__/default-shell/evidence/default-world-390.png": "98eb9051bf6a0f813822a3115f5f354ff998290ae024e38850b6d06ef1bbbd3a",
+  "frontend/src/app/__tests__/default-shell/evidence/default-settings-430.png": "f17b2fecdf1e34f8b8f5443c1d461821c199306e76ee7c5cdba4a54f8c9c3784",
+  "frontend/src/app/__tests__/default-shell/evidence/default-world-430.png": "ee94872b47a81e91d6f1c44ba3e1da2683b3c3d2ff755db8fa9ba31d925ed58e",
+  "frontend/src/app/__tests__/default-shell/evidence/default-settings-390.png": "e23fcb8c74907a89666fb6ad5a7b53e00840aaa09ad12bfd2179b7d2e40fff0e"
+}
