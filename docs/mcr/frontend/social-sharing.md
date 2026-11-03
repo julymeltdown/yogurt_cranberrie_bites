@@ -1,6 +1,6 @@
 # FE31 private social sharing
 
-Status: bounded implementation and isolated evidence are **MOCK_READY**, with C04 contract binding **CONTRACT_READY**. Targeted independent review is being assigned by the coordinator; no independent approval is claimed. Root composition, real gateway, multiuser privacy, device, QA04 and IN03 acceptance are **NOT_RUN**. This document does not accept FE31 or the social gate.
+Status: **IN_PROGRESS** through concrete review fixes and independent recheck. C04 contract binding is **CONTRACT_READY**. Independent QA found eight defects in nine probes against `310dd65`; its in-flight access-loss control passed. The fixes below have current local regression evidence, while the independent nine-probe recheck remains pending. Root composition, real gateway, multiuser privacy, device, QA04 and IN03 acceptance are **NOT_RUN**. This document does not accept FE31 or the social gate.
 
 ## Ownership and provenance
 
@@ -44,14 +44,14 @@ No feature commit modifies root routes/composition, shared contracts/manifests, 
 
 ## Validation and delivery
 
-Commands use pinned Node24.22.2 and pnpm11.7.0, with dependencies installed offline from the retained frozen lockfile (exit0).
+The following table is historical evidence for `310dd65`, which subsequently failed independent QA. It does not validate the review fixes. Commands used pinned Node24.22.2 and pnpm11.7.0, with dependencies installed offline from the retained frozen lockfile (exit0).
 
 | Check | Result |
 | --- | --- |
 | `vitest run src/features/social-sharing --maxWorkers 1` | exit0,54 tests:48 controller and6 component |
 | `vitest run src/features/auth/__tests__/sensitive-read.test.ts src/features/auth/__tests__/session.test.ts src/features/auth/__tests__/enrollment.test.ts --maxWorkers 1` | exit0,80 tests after narrow cancellation fixture repair |
-| `vitest run src/features/social-sharing src/features/auth/__tests__/sensitive-read.test.ts src/features/auth/__tests__/domain-request.test.ts src/features/auth/__tests__/session.test.ts src/features/auth/__tests__/enrollment.test.ts src/shared/api/__tests__ src/shared/query/__tests__ --maxWorkers 1` | exit0,384 tests in10 files on final source |
-| `pnpm typecheck` | exit0 on final source |
+| `vitest run src/features/social-sharing src/features/auth/__tests__/sensitive-read.test.ts src/features/auth/__tests__/domain-request.test.ts src/features/auth/__tests__/session.test.ts src/features/auth/__tests__/enrollment.test.ts src/shared/api/__tests__ src/shared/query/__tests__ --maxWorkers 1` | exit0,384 tests in10 files on310dd65 |
+| `pnpm typecheck` | exit0 on310dd65 |
 | `pnpm build` | exit0, parent application build with large-chunk advisory; root does not yet import FE31 |
 | Isolated feature build via `build({build:{outDir:'node_modules/.cache/mcr-fe31-build',emptyOutDir:true,rolldownOptions:{input:'src/features/social-sharing/__tests__/fixtures/preview.html'}}})` from Vite | exit0, includes actual FE31 UI/controller and canonical session; large-chunk advisory; qualification output only |
 | `node src/features/social-sharing/__tests__/browser-smoke.mjs` from `frontend/` | exit0,Chrome156.0.8078.80 at360/390/430; native same-origin HTTP33 requests/7 writes/3 explicit reveals per width |
@@ -69,3 +69,32 @@ Delivery independently reported the original parent sensitive-read/session/enrol
 Committed ancestry: base → `c5a23cb` single-attempt Auth dependency → `b5c7468` cancellation-test repair → `bc65a30` first feature milestone → the direct follow-up carrying this document and native-browser evidence. Changed paths are the feature tree and this document, plus only the three explicitly delegated Auth paths in their separate commits (`session.ts`, `sensitive-read.test.ts`, `enrollment.test.ts`). Cross-directory imports use canonical frontend APIs/types; only test fixtures read the public contract fixture. No frontend production module imports backend implementation or test fixture state. Delivery receives exact commit hashes and changed paths directly and integrates serially; this worker never pushes master.
 
 Remaining product qualification: integrator-owned U04/U05/current-introduction/detail wiring with canonical access, server-authoritative blocked/suspended/unrelated/expired/handle-replaced reciprocal cases, multiuser invalidation, real gateway/DB, mobile device/browser and QA04/IN03 evidence. The isolated build and synthetic two-actor browser flow prove client behavior only.
+
+## Review fixes after 310dd65
+
+The sole independent reader is the same QA chat `01a1a204-c583-7670-965a-4891b8b1289e`. Its original `/tmp/mcr-fe31-qa.a62uiW/probes.test.ts` has nine probes: eight failures and the R4 access-loss control passing on310dd65. No QA report or probe was edited by this implementation owner. The fixed-source recheck is assigned separately; local regression success does not substitute for it.
+
+| QA item | Owned fix and retained regression |
+| --- | --- |
+| R1 FAILED receipt | Preserve the original command/key in a terminal `blocked` phase. No replacement write or consent edit is enabled; current activity reads remain available. |
+| R2 expired receipt | Reject receipt expiry at or before the current clock, retaining uncertainty and the original key. |
+| R3 current authorized resource | Hold `verifying` while rereading. Match requester/recipient, event, introduction/revision, exact per-platform consent versions, permitted resulting state and receipt minimum revision before success. Persist metadata guards against later stale reads; a stale APPROVED projection cannot satisfy a revoked result. Handle rereads also enforce platform/version/configuration. |
+| R4 in-flight access loss | Preserve the passing control; add an owned regression that regains access and resolves the original key through status without a second POST. |
+| R5 reentrant account change | Capture and reserve the command before any observer notification. Fence scope/version after both hide and sending notifications. The runtime carries the required captured scope and rechecks its lease immediately before constructing and dispatching the request. No former draft can be sent using a replacement account. |
+| R6 throwing observer | Notify an independent snapshot of observers with per-observer exception isolation, including privacy clear and dispose, so a mounted private view still scrubs. |
+| R7 final reveal expiry | Recheck both request and private reveal expiry after the qualified sensitive read settles; discard expired data before publication and clear the loading state. |
+| R8 operation failure reason | Match receipt failure reasons against the original operation's registered error reasons, rather than the global reason registry. |
+| R9 confirmation intent | Bind removal and revoke confirmations to canonical scope, access lifetime and resource version. Recheck these bindings at confirmation click. Account/policy/version changes and access loss/restoration require a fresh choice. |
+
+Recovery preserved the five dirty owned files on HEAD310dd65; no reset, install, manifest, contract, backend or root edit occurred. The retained installed tools work directly. The first resumed regression run was72/73PASS: the revision99 revoke fixture incorrectly loaded99 before submitting a synthetic revision3 result. Correcting the fixture to load the original revision first and return99 only after submission made the intended stale-reread assertion meaningful; no rejection assertion was weakened.
+
+Current local receipts use `/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node` and retained `frontend/node_modules`:
+
+| Command from the assigned worktree | Receipt |
+| --- | --- |
+| `node frontend/node_modules/vitest/vitest.mjs run src/features/social-sharing src/features/auth/__tests__/sensitive-read.test.ts src/features/auth/__tests__/domain-request.test.ts src/features/auth/__tests__/session.test.ts src/features/auth/__tests__/enrollment.test.ts src/shared/api/__tests__ src/shared/query/__tests__ --root frontend --maxWorkers 1` | exit0,405/405 tests in10 files, including75 feature tests |
+| `node frontend/node_modules/typescript/bin/tsc -b frontend --pretty false` | exit0 |
+| `frontend/node_modules/.bin/oxlint frontend/src/features/social-sharing` with pinned Node on PATH | exit0, no warnings |
+| `git diff --check` | exit0 |
+
+The source-fix commit is a direct child of310dd65 and changes only the original five feature files plus this existing document. Its exact hash is delivered directly to Main and Social for the same QA's recheck. Updated browser evidence follows separately, pinned to that committed source; the old browser hashes do not certify these fixes. `verifying` and `blocked` are new observable mutation phases for integrator composition. The independent recheck and fixed-source native browser proof remain required before this bounded goal is complete.

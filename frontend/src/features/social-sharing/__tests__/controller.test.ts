@@ -140,7 +140,7 @@ it.each([
   expect(f.controller.read().mutation.phase).toBe('pending'); await f.controller.checkStatus()
   expect(f.controller.read().mutation).toMatchObject({ phase: 'uncertain', key }); expect(await f.controller.saveHandle('INSTAGRAM')).toBe(false); expect(writes).toBe(1)
 })
-it('retired receipts retain uncertainty; definitive failed status releases only that original command', async () => {
+it('retired receipts retain uncertainty; failed receipt preserves the original command and blocks a replacement key', async () => {
   let key = '', retired = true, writes = 0
   const f = fixture(r => {
     if (r.method === 'POST') { writes++; key = r.headers.get('Idempotency-Key')!; return Response.json(receipt(key), { status: 202 }) }
@@ -148,7 +148,7 @@ it('retired receipts retain uncertainty; definitive failed status releases only 
     return Response.json(r.url.endsWith('/social-handles') ? handleStates() : sharingOffer())
   })
   await prepared(f); await f.controller.createRequest(); await f.controller.checkStatus(); expect(f.controller.read().mutation.phase).toBe('uncertain')
-  retired = false; await f.controller.checkStatus(); expect(f.controller.read().mutation.phase).toBe('failed'); expect(writes).toBe(1)
+  retired = false; await f.controller.checkStatus(); expect(f.controller.read().mutation).toMatchObject({ phase: 'blocked', key }); f.controller.setRequesterConsent('INSTAGRAM', true); await f.controller.createRequest(); expect(writes).toBe(1)
 })
 it.each([
   { consents: [{ ...request.consents[0]!, recipient_handle_version: 99 }] }, { recipient_id: id(90) }, { state: 'APPROVED', approved_platforms: ['INSTAGRAM'] }, { handle: 'private-field' },
@@ -182,4 +182,74 @@ it('expiry timer clears plaintext without a new read, while background/foregroun
   const controller = createSocialSharingController({ auth: f.auth, access: f.access, sensitiveRead: f.auth.requestSensitive, now: () => time }); disposals.push(controller.dispose); controller.start()
   await controller.loadRequest(request.request_id); await controller.revealHandle('INSTAGRAM'); expect(controller.read().secret.data).not.toBeNull()
   time += 1000; await vi.advanceTimersByTimeAsync(1000); expect(controller.read().secret.data).toBeNull()
+})
+// Regressions follow the independent FE31 QA probes against 310dd65.
+it.each(['sending', 'hide'] as const)('reentrant identity change during %s notification cannot send the former private draft', async point => {
+  let writes = 0, switched = false
+  const f = fixture(r => { if (r.method === 'PUT') writes++; return Response.json(handleStates()) })
+  await f.controller.loadHandles(); f.controller.setHandleDraft('INSTAGRAM', 'account_a_private')
+  f.controller.subscribe(() => { if (!switched && f.controller.read().mutation.phase === (point === 'sending' ? 'sending' : 'idle')) { switched = true; f.auth.session.replace(f.auth.session.read().generation, { userId: id(99), eventId, accessToken: 'new-user-token' }) } })
+  await f.controller.saveHandle('INSTAGRAM'); expect(switched).toBe(true); expect(writes).toBe(0)
+})
+it.each([
+  { recipient_id: id(99) }, { intro_id: id(98) }, { intro_revision: 99 }, { revision: 1 }, { consents: [{ ...request.consents[0]!, recipient_handle_version: 99 }] },
+])('successful receipt cannot materialize mismatched or lower-revision resource: %j', async patch => {
+  let key = '', writes = 0
+  const f = fixture(r => {
+    if (r.method === 'POST') { writes++; key = r.headers.get('Idempotency-Key')!; return Response.json(receipt(key), { status: 202 }) }
+    if (r.url.includes('/commands')) return Response.json({ ...receipt(key, 'createConcertSocialRequest', 'SUCCEEDED'), resource_revision: 2 })
+    return Response.json(r.url.endsWith('/social-handles') ? handleStates() : r.url.endsWith('/sharing-offer') ? sharingOffer() : { ...pending(), revision: 2, ...patch })
+  })
+  await prepared(f); await f.controller.createRequest(); await f.controller.checkStatus()
+  expect(f.controller.read().detail).toMatchObject({ phase: 'error', data: null }); expect(f.controller.read().mutation).toMatchObject({ phase: 'uncertain', key }); await f.controller.createRequest(); expect(writes).toBe(1)
+})
+it('authorized receipt reread may observe a legal later approval with the original immutable bindings', async () => {
+  let key = ''
+  const f = fixture(r => {
+    if (r.method === 'POST') { key = r.headers.get('Idempotency-Key')!; return Response.json(receipt(key), { status: 202 }) }
+    if (r.url.includes('/commands')) return Response.json(receipt(key, 'createConcertSocialRequest', 'SUCCEEDED'))
+    return Response.json(r.url.endsWith('/social-handles') ? handleStates() : r.url.endsWith('/sharing-offer') ? sharingOffer() : request)
+  })
+  await prepared(f); await f.controller.createRequest(); await f.controller.checkStatus(); expect(f.controller.read().mutation.phase).toBe('succeeded'); expect(f.controller.read().detail.data?.state).toBe('APPROVED')
+})
+it.each(['expired', 'wrong-reason'] as const)('receipt %s cannot unlock an uncertain create', async kind => {
+  let key = '', writes = 0
+  const f = fixture(r => {
+    if (r.method === 'POST') { writes++; key = r.headers.get('Idempotency-Key')!; return Response.json(receipt(key), { status: 202 }) }
+    if (r.url.includes('/commands')) return Response.json(kind === 'expired' ? { ...receipt(key, 'createConcertSocialRequest', 'SUCCEEDED'), created_at: '2026-11-07T08:00:00Z', expires_at: '2026-11-07T08:30:00Z' } : { ...receipt(key, 'createConcertSocialRequest', 'FAILED'), failure_reason: 'MURAL_COOLDOWN' })
+    return Response.json(r.url.endsWith('/social-handles') ? handleStates() : sharingOffer())
+  })
+  await prepared(f); await f.controller.createRequest(); await f.controller.checkStatus(); expect(f.controller.read().mutation).toMatchObject({ phase: 'uncertain', key }); await f.controller.createRequest(); expect(writes).toBe(1)
+})
+it.each([2, 99])('post-revoke stale APPROVED reread at revision%s never becomes verified current state', async revision => {
+  let submitted = false
+  const f = fixture(r => { if (r.method === 'POST') { submitted = true; return Response.json({ ...request, state: 'REVOKED', revision: 3 }) } return Response.json({ ...request, revision: submitted ? revision : request.revision }) })
+  await f.controller.loadRequest(request.request_id); await f.controller.revokeRequest(); expect(f.controller.read().detail.data).toBeNull(); expect(f.controller.read().mutation.phase).toBe('uncertain'); expect(await f.controller.revealHandle('INSTAGRAM')).toBe(false)
+})
+it('confirmed revocation guard rejects subsequent stale detail and list metadata', async () => {
+  let revoked = false, stale = false
+  const f = fixture(r => {
+    if (r.method === 'POST') revoked = true
+    const data = revoked && !stale ? { ...request, state: 'REVOKED', revision: 3 } : request
+    return Response.json(r.url.includes('/me/social-requests') ? { items: [data], next_cursor: null } : data)
+  })
+  await f.controller.loadRequest(request.request_id); await f.controller.revokeRequest(); expect(f.controller.read().mutation.phase).toBe('succeeded')
+  stale = true; await f.controller.loadRequest(request.request_id); expect(f.controller.read().detail.data).toBeNull(); f.controller.setDirection('OUTGOING'); await vi.waitFor(() => expect(f.controller.read().requests.phase).toBe('error'))
+})
+it('private reveal expiry is rechecked after the qualified read settles and before publication', async () => {
+  let time = epoch
+  const f = fixture(r => Response.json(r.url.includes('/reveal') ? { ...privateResult(), expires_at: new Date(epoch + 1000).toISOString() } : request))
+  const controller = createSocialSharingController({ auth: f.auth, access: f.access, now: () => time, sensitiveRead: async input => { const result = await f.auth.requestSensitive(input); time += 1000; return result } }); disposals.push(controller.dispose); controller.start()
+  await controller.loadRequest(request.request_id); await controller.revealHandle('INSTAGRAM'); expect(controller.read().secret).toMatchObject({ phase: 'idle', data: null })
+})
+it('in-flight access loss preserves the original uncertain command and recovers by status without replay', async () => {
+  const late = deferred<Response>(); let key = '', writes = 0
+  const f = fixture(r => {
+    if (r.method === 'POST') { writes++; key = r.headers.get('Idempotency-Key')!; return late.promise }
+    if (r.url.includes('/commands')) return Response.json(receipt(key, 'createConcertSocialRequest', 'SUCCEEDED'))
+    return Response.json(r.url.endsWith('/social-handles') ? handleStates() : r.url.endsWith('/sharing-offer') ? sharingOffer() : pending())
+  })
+  await prepared(f); const send = f.controller.createRequest(); await vi.waitFor(() => expect(key).not.toBe(''))
+  f.setAccess({ available: false, readOnly: true }); await send; late.resolve(Response.json(pending())); f.setAccess({ available: true, readOnly: false })
+  expect(f.controller.read().mutation).toMatchObject({ phase: 'uncertain', key }); await f.controller.checkStatus(); expect(f.controller.read().mutation.phase).toBe('succeeded'); expect(writes).toBe(1)
 })

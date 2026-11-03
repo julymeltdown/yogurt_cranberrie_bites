@@ -42,14 +42,20 @@ export function createRuntime(options: SocialOptions, clear: () => void, changed
     access = { ...nextAccess }; changed()
   }
   return {
-    scope: () => scope, access: () => access, usable, cancel,
+    scope: () => scope, access: () => access, lifetime: () => epoch, usable, cancel,
     start() { if (started || disposed) return; started = true; removers = [options.auth.privacy.registerCleanup(() => { cancel(); scope = null; clear() }), options.auth.privacy.subscribe(sync), options.access.subscribe(sync)]; sync() },
-    async run<T>(lane: string, make: (scope: PrivacyScope) => Omit<HttpRequest<T>, 'refresh'>, sensitive = false): Promise<T> {
+    async run<T>(lane: string, make: (scope: PrivacyScope) => Omit<HttpRequest<T>, 'refresh'>, sensitive = false, requiredScope?: PrivacyScope): Promise<T> {
       if (!usable() || !scope || (sensitive && !options.sensitiveRead)) throw new TransportError('authentication-required')
-      cancel(lane); const captured = scope, version = epoch, controller = new AbortController(); flights.set(lane, controller)
+      const captured = requiredScope ?? scope
+      if (!options.auth.privacy.isCurrent(captured)) throw new TransportError('session-changed')
+      cancel(lane); const version = epoch, controller = new AbortController(); flights.set(lane, controller)
+      const assertLease = () => { if (version !== epoch || flights.get(lane) !== controller || !usable() || !options.auth.privacy.isCurrent(captured)) throw new TransportError('session-changed') }
       try {
-        const result = await options.auth.privacy.run(captured, ({ signal }) => (sensitive ? options.sensitiveRead! : options.auth.request)({ ...make(captured), signal }), controller.signal)
-        if (version !== epoch || flights.get(lane) !== controller || !usable()) throw new TransportError('session-changed')
+        const result = await options.auth.privacy.run(captured, ({ signal }) => {
+          assertLease(); const input = make(captured); assertLease()
+          return (sensitive ? options.sensitiveRead! : options.auth.request)({ ...input, signal })
+        }, controller.signal)
+        assertLease()
         return result.data
       } finally { if (flights.get(lane) === controller) flights.delete(lane) }
     },

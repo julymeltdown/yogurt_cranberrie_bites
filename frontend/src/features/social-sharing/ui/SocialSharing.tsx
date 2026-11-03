@@ -10,14 +10,15 @@ export function ReadStatus({ slot, retry }: { slot: Slot<unknown>; retry: () => 
 }
 function WriteStatus({ controller }: { controller: SocialSharingController }) {
   const { mutation } = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
-  return <div aria-live="polite">{mutation.phase !== 'idle' && <p>{mutation.phase === 'sending' ? 'Sending…' : mutation.phase === 'succeeded' ? 'The server confirmed this change.' : ['uncertain', 'pending'].includes(mutation.phase) ? 'The outcome is not confirmed. Your change may have completed. Check status before submitting again.' : mutation.failure ? messages[mutation.failure] : 'The change was not confirmed.'}</p>}
+  return <div aria-live="polite">{mutation.phase !== 'idle' && <p>{mutation.phase === 'sending' ? 'Sending…' : mutation.phase === 'verifying' ? 'Checking the current authorized result…' : mutation.phase === 'blocked' ? 'The server declined this change. Submitting it again is unavailable. You can inspect your current sharing activity.' : mutation.phase === 'succeeded' ? 'The server confirmed this change.' : ['uncertain', 'pending'].includes(mutation.phase) ? 'The outcome is not confirmed. Your change may have completed. Check status before submitting again.' : mutation.failure ? messages[mutation.failure] : 'The change was not confirmed.'}</p>}
     {['uncertain', 'pending'].includes(mutation.phase) && <button type="button" onClick={() => { void controller.checkStatus() }}>Check change status</button>}
   </div>
 }
 function PrivacyCopy() { return <p className="sharing-note">Sharing lets the other person see your selected account name. It does not follow anyone automatically. Revoking stops future access here; it cannot erase a name someone already saw or copied. Unblocking does not restore previous consent.</p> }
 export function HandleSettings({ controller }: { controller: SocialSharingController }) {
-  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), [remove, setRemove] = useState<Platform | null>(null)
-  const busy = ['sending', 'pending', 'uncertain'].includes(state.mutation.phase)
+  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), [remove, setRemove] = useState<{ platform: Platform; scope: string | null; version: number } | null>(null)
+  const busy = ['sending', 'pending', 'uncertain', 'verifying', 'blocked'].includes(state.mutation.phase)
+  const removing = remove && state.available && remove.scope === state.scopeKey && state.handles.data?.items.some(h => h.platform === remove.platform && h.version === remove.version && h.configured) ? remove : null
   return <section className="social-sharing" aria-label="Private social handles"><header><p>Private by default</p><h1>SOCIAL LINKS</h1><p>Account names are optional and never part of your public profile.</p></header><PrivacyCopy />
     {!state.available && <p role="status">Social settings are unavailable for the current account or event.</p>}{state.readOnly && <p role="status">This event is read-only. You can remove existing handles.</p>}
     <button type="button" disabled={!state.available || busy} onClick={() => { void controller.loadHandles() }}>Reload handle settings</button><ReadStatus slot={state.handles} retry={() => { void controller.loadHandles() }} />
@@ -28,15 +29,15 @@ export function HandleSettings({ controller }: { controller: SocialSharingContro
         <p id={`handle-hint-${handle.platform}`}>Without @. {handle.platform === 'X' ? '1–15 letters, numbers or underscores.' : '1–30 letters, numbers, dots or underscores. No starting, ending or repeated dots.'} Replacing or removing invalidates sharing bound to the previous version.</p>
         {state.handleDrafts[handle.platform] && !validHandle(handle.platform, state.handleDrafts[handle.platform].trim().toLowerCase()) && <p role="status">Enter a valid {labels[handle.platform]} account name using the rules above.</p>}
         <button type="submit" disabled={!state.available || state.readOnly || busy || !validHandle(handle.platform, state.handleDrafts[handle.platform].trim().toLowerCase())}>{handle.configured ? 'Replace privately' : 'Save privately'}</button>
-        {handle.configured && <button type="button" disabled={!state.available || busy} onClick={() => setRemove(handle.platform)}>Remove {labels[handle.platform]}</button>}
+        {handle.configured && <button type="button" disabled={!state.available || busy} onClick={() => setRemove({ platform: handle.platform, scope: state.scopeKey, version: handle.version })}>Remove {labels[handle.platform]}</button>}
       </form>
     </section>)}
-    {remove && state.handles.data?.items.some(h => h.platform === remove && h.configured) && <fieldset><legend>Confirm removal</legend><p>Remove your {labels[remove]} handle and invalidate sharing bound to it?</p><button type="button" disabled={busy} onClick={() => { void controller.removeHandle(remove); setRemove(null) }}>Confirm removal</button><button type="button" onClick={() => setRemove(null)}>Keep handle</button></fieldset>}
+    {removing && <fieldset><legend>Confirm removal</legend><p>Remove your {labels[removing.platform]} handle and invalidate sharing bound to it?</p><button type="button" disabled={busy} onClick={() => { const current = controller.read(); if (current.available && current.scopeKey === removing.scope && current.handles.data?.items.some(h => h.platform === removing.platform && h.version === removing.version && h.configured)) void controller.removeHandle(removing.platform); setRemove(null) }}>Confirm removal</button><button type="button" onClick={() => setRemove(null)}>Keep handle</button></fieldset>}
     <WriteStatus controller={controller} />
   </section>
 }
 export function SharingOffer({ controller, retry }: { controller: SocialSharingController; retry: () => void }) {
-  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), offer = state.offer.data, busy = ['sending', 'pending', 'uncertain'].includes(state.mutation.phase)
+  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), offer = state.offer.data, busy = ['sending', 'pending', 'uncertain', 'verifying', 'blocked'].includes(state.mutation.phase)
   const platforms = offer?.available_handles.filter(h => state.handles.data?.items.some(own => own.platform === h.platform && own.configured)) ?? []
   return <section className="social-sharing" aria-label="Request sharing"><h1>REQUEST SHARING</h1><PrivacyCopy />
     <ReadStatus slot={state.offer} retry={retry} />
@@ -50,7 +51,7 @@ export function SharingOffer({ controller, retry }: { controller: SocialSharingC
   </section>
 }
 export function SharingRequests({ controller, onRequest }: { controller: SocialSharingController; onRequest: (id: string) => void }) {
-  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), busy = ['sending', 'pending', 'uncertain'].includes(state.mutation.phase)
+  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), busy = ['sending', 'pending', 'uncertain', 'verifying'].includes(state.mutation.phase)
   return <section className="social-sharing" aria-label="Sharing requests"><h1>REQUESTS</h1><PrivacyCopy />
     <label>Direction <select value={state.direction} disabled={busy || !state.available} onChange={e => controller.setDirection(e.target.value as 'INCOMING' | 'OUTGOING')}><option value="INCOMING">Incoming</option><option value="OUTGOING">Outgoing</option></select></label>
     <button type="button" disabled={!state.available} onClick={() => { void controller.loadRequests() }}>Refresh requests</button>
@@ -62,9 +63,9 @@ export function SharingRequests({ controller, onRequest }: { controller: SocialS
   </section>
 }
 export function SharingRequest({ controller, retry }: { controller: SocialSharingController; retry: () => void }) {
-  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), [confirmRevoke, setConfirmRevoke] = useState<string | null>(null)
+  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), [confirmRevoke, setConfirmRevoke] = useState<{ id: string; scope: string | null; revision: number } | null>(null)
   useEffect(() => () => controller.hideSecret(), [controller])
-  const request = state.detail.data, busy = ['sending', 'pending', 'uncertain'].includes(state.mutation.phase), expired = !!request && Date.parse(request.expires_at) <= state.now
+  const request = state.detail.data, busy = ['sending', 'pending', 'uncertain', 'verifying', 'blocked'].includes(state.mutation.phase), expired = !!request && Date.parse(request.expires_at) <= state.now
   const recipient = request?.recipient_id === state.userId
   return <section className="social-sharing" aria-label="Sharing request detail"><h1>SHARING REQUEST</h1><PrivacyCopy /><ReadStatus slot={state.detail} retry={retry} />
     {request && <><p role="status">{expired && ['PENDING', 'APPROVED'].includes(request.state) ? 'EXPIRED' : request.state}</p><p>Expires <time dateTime={request.expires_at}>{new Date(request.expires_at).toLocaleString()}</time></p>
@@ -77,8 +78,8 @@ export function SharingRequest({ controller, retry }: { controller: SocialSharin
       {!expired && request.state === 'APPROVED' && <section aria-label="Approved platforms"><h2>Approved exchange</h2><p>Approval is metadata, not a displayed account name. Reveal explicitly when needed.</p>
         {!state.revealAvailable && <p>Protected reveal is currently unavailable.</p>}{request.approved_platforms.map(p => <button key={p} type="button" disabled={busy || !state.revealAvailable} onClick={() => { void controller.revealHandle(p) }}>Reveal {labels[p]}</button>)}
       </section>}
-      {!expired && ['PENDING', 'APPROVED'].includes(request.state) && <button type="button" disabled={busy || !state.available} onClick={() => setConfirmRevoke(request.request_id)}>Revoke sharing</button>}
-      {confirmRevoke === request.request_id && <fieldset><legend>Confirm revocation</legend><p>Stop future access for both people on all approved platforms? Previously seen names cannot be erased.</p><button type="button" disabled={busy} onClick={() => { void controller.revokeRequest(); setConfirmRevoke(null) }}>Confirm revocation</button><button type="button" onClick={() => setConfirmRevoke(null)}>Keep current sharing</button></fieldset>}
+      {!expired && ['PENDING', 'APPROVED'].includes(request.state) && <button type="button" disabled={busy || !state.available} onClick={() => setConfirmRevoke({ id: request.request_id, scope: state.scopeKey, revision: request.revision })}>Revoke sharing</button>}
+      {confirmRevoke?.id === request.request_id && confirmRevoke.scope === state.scopeKey && confirmRevoke.revision === request.revision && state.available && <fieldset><legend>Confirm revocation</legend><p>Stop future access for both people on all approved platforms? Previously seen names cannot be erased.</p><button type="button" disabled={busy} onClick={() => { const current = controller.read(); if (current.available && current.scopeKey === confirmRevoke.scope && current.detail.data?.request_id === confirmRevoke.id && current.detail.data.revision === confirmRevoke.revision) void controller.revokeRequest(); setConfirmRevoke(null) }}>Confirm revocation</button><button type="button" onClick={() => setConfirmRevoke(null)}>Keep current sharing</button></fieldset>}
     </>}
     {state.secret.phase === 'loading' && <p role="status">Fetching the account name…</p>}{state.secret.failure && <p role="alert">{messages[state.secret.failure]} Reveal again only with an explicit platform action.</p>}
     {state.secret.data && <section aria-label="Revealed account name"><h2>{labels[state.secret.data.platform]}</h2><p className="sharing-handle">@{state.secret.data.handle}</p><p>Visible only until <time dateTime={state.secret.data.expires_at}>{new Date(state.secret.data.expires_at).toLocaleString()}</time>. Opening an external service does not follow automatically.</p></section>}
