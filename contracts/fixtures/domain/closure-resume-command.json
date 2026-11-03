@@ -1,0 +1,6 @@
+{
+  "job_id": "00000000-0000-4000-8000-000000000123",
+  "expected_revision": 8,
+  "confirmation": "RESUME_CLOSURE",
+  "reason": "Retry failed export after recovery"
+}

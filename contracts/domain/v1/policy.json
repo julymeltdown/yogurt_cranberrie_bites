@@ -1088,16 +1088,18 @@
     },
     "event_close": {
       "preconditions": [
-        "Server role OPERATOR",
-        "Event OPEN or LIVE",
-        "Revision matches and explicit CLOSE_EVENT confirmation"
+        "Fresh canonical Auth, server role OPERATOR and current event-policy authorization",
+        "CLOSE_EVENT: event OPEN or LIVE, expected_revision matches event revision, nonempty reason",
+        "RESUME_CLOSURE: event READ_ONLY; exact event/job/current initiating actor binding; job PARTIAL_FAILURE; expected_revision matches job revision; nonempty reason",
+        "RESUME_CLOSURE uses a new idempotency key; same-key identical-body transport replay only returns prior command admission"
       ],
       "result": [
-        "Set READ_ONLY immediately",
-        "Start/resume durable closure job",
+        "CLOSE_EVENT sets READ_ONLY and durably starts one closure job with the required local admission barrier atomically",
+        "RESUME_CLOSURE compare-and-swaps only the failed boundary of the same job; successful steps remain completed and stable owner-effect keys prevent duplication",
+        "A committed command admission returns 200 with current authorized ClosureJob; 202 means pending or uncertain command admission, never completed closure",
         "Freeze mural, expire beacons/grants/reservations, cancel active party interactions, revoke world tickets/leases",
-        "Export only permitted content",
-        "ARCHIVED only after all required cleanup succeeds"
+        "Export only permitted content; ARCHIVED only after all required cleanup succeeds",
+        "GET status never mutates or resumes a job; background ticks never silently retry a failed boundary"
       ]
     },
     "archive_read": {

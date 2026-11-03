@@ -171,6 +171,24 @@ class DomainBundleTests(unittest.TestCase):
                 self.validate(bundle.domain_ref(entry["schema"]),
                               json.loads((ROOT / "contracts/fixtures/domain" / entry["file"]).read_text()))
 
+    def test_closure_start_and_resume_remain_closed_after_relocation(self):
+        entries = json.loads((ROOT / "contracts/fixtures/domain/index.json").read_text())
+        for entry in entries:
+            if entry["schema"] != "admin.CloseEvent":
+                continue
+            value = json.loads((ROOT / "contracts/fixtures/domain" / entry["file"]).read_text())
+            with self.subTest(fixture=entry["file"]):
+                if entry["expected"] == "accept":
+                    self.validate(bundle.domain_ref("admin.CloseEvent"), value)
+                else:
+                    with self.assertRaises(ValidationError):
+                        self.validate(bundle.domain_ref("admin.CloseEvent"), value)
+        row = next(row for row in self.rows if row["operationId"] == "closeConcertEvent")
+        operation = self.operation(row)
+        self.assertEqual(operation["x-mcr-command-modes"], row["command_modes"])
+        self.assertEqual(operation["x-mcr-retry"], "STATUS_THEN_IDENTICAL_COMMAND")
+        self.assertEqual(row["command_modes"]["RESUME_CLOSURE"]["revision_subject"], "CLOSURE_JOB")
+
     def test_duplicate_registration_and_equivalent_path_names_fail(self):
         document = copy.deepcopy(self.document)
         first = self.rows[0]

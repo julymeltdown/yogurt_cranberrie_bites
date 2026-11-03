@@ -612,25 +612,56 @@
       ]
     },
     "CloseEvent": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "expected_revision": {
-          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+      "description": "CLOSE_EVENT starts closure using the event revision. RESUME_CLOSURE explicitly retries a failed bound job using its current job revision and a fresh idempotency key. GET status never resumes work.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "expected_revision": {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+            },
+            "confirmation": {
+              "const": "CLOSE_EVENT"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          },
+          "required": [
+            "expected_revision",
+            "confirmation",
+            "reason"
+          ]
         },
-        "confirmation": {
-          "const": "CLOSE_EVENT"
-        },
-        "reason": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 500
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "job_id": {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            "expected_revision": {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+            },
+            "confirmation": {
+              "const": "RESUME_CLOSURE"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          },
+          "required": [
+            "job_id",
+            "expected_revision",
+            "confirmation",
+            "reason"
+          ]
         }
-      },
-      "required": [
-        "expected_revision",
-        "confirmation",
-        "reason"
       ]
     },
     "ClosureJob": {
