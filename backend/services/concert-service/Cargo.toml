@@ -11,8 +11,9 @@ migration-runtime = { path = "../../crates/migration-runtime" }
 platform = { path = "../../crates/platform" }
 anyhow.workspace = true
 async-trait.workspace = true
-axum.workspace = true
+axum = { workspace = true, features = ["ws"] }
 chrono.workspace = true
+futures.workspace = true
 image.workspace = true
 jsonschema = { version = "=0.30.0", default-features = false }
 prost.workspace = true
@@ -36,3 +37,4 @@ auth-service = { path = "../auth-service" }
 friend-service = { path = "../friend-service" }
 tower.workspace = true
 http-body-util.workspace = true
+tokio-tungstenite = "=0.24.0"
