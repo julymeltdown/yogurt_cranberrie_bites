@@ -9,7 +9,7 @@ Evaluated commits:
 - `34d4bb614325b915569489b59e6deefba88a002f`: Define signed Concert bootstrap RPC with bounded Gateway authority
 - `61c3e1fb2057584bf798442359be03a2390c5588`: Dispatch bounded signed bootstrap after current Auth and Profile reads
 
-This report (`/Users/lhs/Desktop/mcr-worktrees/qa-bootstrap-boundary/docs/mcr/qa/bootstrap-boundary-review.md`) is the reviewer's sole tracked write. No application source, proto definitions, manifests, or build scripts were modified by the reviewer. Main checkout was accessed read-only. No git push was performed. Shared Rust target compilation and PostgreSQL execution were preserved for the BE06 bootstrap implementer and integrator.
+This report (`/Users/lhs/Desktop/mcr-worktrees/qa-bootstrap-boundary/docs/mcr/qa/bootstrap-boundary-review.md`) is the reviewer's sole tracked write. No application source, proto definitions, manifests, or build scripts were modified by the reviewer. Main checkout was accessed read-only. No git push was performed. Per review instructions, Cargo compilation and PostgreSQL execution were strictly prohibited in this review worktree to preserve shared native compilation target ownership for the BE06 bootstrap implementer and integrator.
 
 Inspected paths across the candidate:
 - Platform: `backend/crates/platform/src/grpc_auth.rs`, `backend/crates/contracts-build/src/lib.rs`
@@ -56,11 +56,11 @@ Read the BE04/BE06 specification, the frozen C03 bootstrap contract, and the imp
      - `expires.saturating_sub(observed) <= BOOTSTRAP_BUDGET (2s)`.
    - The original received deadline is preserved via `AuthorityRpcDeadline::within_original`.
    - `VerifiedBootstrap::check()` evaluates remaining deadline against the original ceiling and is required after every await and before commit. Later awaits cannot reset or extend an expired budget.
-4. **Stale reply and foreign response protection**:
+4. **Stale reply and response shape/binding validation**:
    - `GrpcConcertClient::bootstrap` verifies the response:
      - Rejects any response without `cache-control: no-store`.
      - Enforces response size limit (non-empty and <= 4MB).
-     - Validates returned C03 JSON: `contract_version == "0.1.0"`, `event.event_id == requested_event`, `participant.event_id == requested_event`, `participant.user_id == actor`, `participant.profile.user_id == actor`.
+     - Validates returned C03 response binding and top-level shape: `contract_version == "0.1.0"`, `event.event_id == requested_event`, `participant.event_id == requested_event`, `participant.user_id == actor`, `participant.profile.user_id == actor`. (Note: this is binding and shape validation against the expected actor/event, not full deep C03 schema validation, which remains with the client/contract layer).
      - Mismatched actor, mismatched event, or cacheable replies throw `BootstrapError::InvalidResponse`.
      - Checks identity and deadline before and after gRPC dispatch, preventing commit of stale replies.
 5. **No retries and privacy metadata hygiene**:
@@ -72,18 +72,26 @@ Read the BE04/BE06 specification, the frozen C03 bootstrap contract, and the imp
 
 ---
 
-## Test evidence verification
+## Command execution vs inspected evidence attribution
 
-1. **Concert Service Authority Tests (`backend/services/concert-service/tests/bootstrap_authority.rs`)**:
-   - `authentic_current_bound_request_reaches_the_producer`: exit code 0, 1 call dispatched.
-   - `invalid_workload_signature_binding_or_budget_never_reaches_the_producer`: 7 rejection cases tested (unsigned, credential, sibling, audience, actor, tampered, no-deadline), 0 calls reach producer.
-   - `signed_but_invalid_owner_assertions_are_refused`: 9 rejection cases tested (event, target, method, name, bio, expired, future, stale, family), 0 calls reach producer.
-2. **Gateway Client Composition Tests (`backend/services/api-gateway/tests/support/concert_bootstrap_client.rs`)**:
-   - `bootstrap_fresh_owner_reads_produce_one_signed_bound_concert_request`: verifies full chain Auth -> Profile -> Concert, 1 call each, no private leaks in request.
-   - `bootstrap_auth_refusal_suppresses_both_profile_and_concert`: refusal at Auth halts execution, 0 Profile calls, 0 Concert calls.
-   - `bootstrap_rejects_foreign_or_cacheable_results_and_preserves_original_deadline`: verifies foreign user ID rejection, cacheable header rejection, and original deadline timeout expiration with zero automatic replays.
-3. **Plan integrity check**:
+To maintain strict attribution between reviewer-executed checks and parent/worker-executed evidence:
+
+1. **Reviewer-executed commands in this worktree**:
    - `python3 scripts/mcr/check-plan.py`: exit 0, PASS (118 tasks, 64 IA entries, planning provenance intact).
+   - Read-only source code inspection of all candidate files and tests listed above.
+   - `git log` and `git show` diff inspections across commits `34d4bb6` and `61c3e1f`.
+   - **No Cargo or PostgreSQL commands were executed by the reviewer**, adhering strictly to the shared target restriction.
+2. **Source-inspected test suites (NOT rerun by reviewer; parent-verified historical evidence)**:
+   - **Concert Service Authority Tests (`backend/services/concert-service/tests/bootstrap_authority.rs`)**:
+     - Inspected source code for `authentic_current_bound_request_reaches_the_producer` (1 call dispatched).
+     - Inspected source code for `invalid_workload_signature_binding_or_budget_never_reaches_the_producer` covering 7 rejection scenarios (unsigned, credential, sibling, audience, actor, tampered, no-deadline).
+     - Inspected source code for `signed_but_invalid_owner_assertions_are_refused` covering 9 rejection scenarios (event, target, method, name, bio, expired, future, stale, family).
+     - Observed evidence source: documented pass in commit `34d4bb6` / `docs/mcr/backend/bootstrap-admission-contract.md` (`cargo test -p concert-service --test bootstrap_authority` reported 3 tests PASS).
+   - **Gateway Client Composition Tests (`backend/services/api-gateway/tests/support/concert_bootstrap_client.rs`)**:
+     - Inspected source code for `bootstrap_fresh_owner_reads_produce_one_signed_bound_concert_request` (verifies Auth -> Profile -> Concert chain, 1 call each, no private leaks).
+     - Inspected source code for `bootstrap_auth_refusal_suppresses_both_profile_and_concert` (auth refusal halts chain before profile/concert).
+     - Inspected source code for `bootstrap_rejects_foreign_or_cacheable_results_and_preserves_original_deadline` (foreign user ID rejection, cacheable header rejection, and original deadline timeout expiration with zero automatic replays).
+     - Observed evidence source: documented pass in commit `61c3e1f` / `docs/mcr/backend/bootstrap-admission-contract.md` (`cargo test -p api-gateway --test concert_identity_composition` reported 11/11 tests PASS following future boxing).
 
 ---
 
