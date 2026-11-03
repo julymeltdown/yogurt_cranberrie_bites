@@ -5,6 +5,16 @@
   "$ref": "#/$defs/AvatarConfig",
   "$defs": {
     "AvatarConfig": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/LayeredAvatarConfig"
+        },
+        {
+          "$ref": "#/$defs/WholeCharacterAvatarConfig"
+        }
+      ]
+    },
+    "LayeredAvatarConfig": {
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -66,6 +76,45 @@
         },
         "skin_tone_id": {
           "$ref": "https://contracts.mcr.invalid/assets/v1/common.schema.json#/$defs/AssetId"
+        }
+      }
+    },
+    "WholeCharacterAvatarConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "kind",
+        "manifest_id",
+        "manifest_version",
+        "representation",
+        "preset_id"
+      ],
+      "properties": {
+        "contract_version": {
+          "const": "1.1.0"
+        },
+        "kind": {
+          "const": "avatar_config"
+        },
+        "manifest_id": {
+          "const": "mcr_selected_static_20261103"
+        },
+        "manifest_version": {
+          "const": 1
+        },
+        "representation": {
+          "const": "whole_character"
+        },
+        "preset_id": {
+          "enum": [
+            "photo01_front_01",
+            "photo01_front_02",
+            "photo01_front_03",
+            "photo01_front_04",
+            "photo01_front_05",
+            "photo01_front_06"
+          ]
         }
       }
     }

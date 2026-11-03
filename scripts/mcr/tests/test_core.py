@@ -98,6 +98,23 @@ class CoreContractTests(unittest.TestCase):
         value["avatar"]["revision"] += 1
         self.reject(value, "Bootstrap")
 
+    def test_bootstrap_selected_static_reuses_canonical_union_and_theme_pins(self):
+        value = self.fixture("bootstrap-open")
+        directory = ROOT / "contracts/fixtures/assets/selected-static"
+        manifest = json.loads((directory / "avatar-manifest.json").read_text())
+        config = json.loads((directory / "photo01_front_06.json").read_text())
+        value["avatar_manifest"] = manifest
+        value["avatar"]["config"] = config
+        value["participant"]["profile"]["avatar"] = copy.deepcopy(value["avatar"])
+        for theme in value["theme_manifests"]:
+            theme.update(avatar_manifest_id=manifest["manifest_id"], avatar_manifest_version=1,
+                         avatar_content_hash=manifest["content_hash"])
+            theme["content_hash"] = core.assets.content_hash(theme)
+        core.validate(value, "Bootstrap", self.document)
+        value["avatar"]["config"]["preset_id"] = "photo01_front_07"
+        value["participant"]["profile"]["avatar"] = copy.deepcopy(value["avatar"])
+        self.reject(value, "Bootstrap")
+
     def test_bootstrap_rejects_unknown_avatar_item_even_with_consistent_projection(self):
         value = self.fixture("bootstrap-open")
         value["avatar"]["config"]["item_ids"]["hair"] = "unknown_hair"

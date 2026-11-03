@@ -124,6 +124,16 @@ class RealtimeContractTests(unittest.TestCase):
         self.reject(lambda: trace.consume('server', delta))
         self.reject(lambda: trace.consume('server', delta | {'streamSeq': 2, 'serverTick': 0}))
 
+    def test_selected_static_player_uses_union_without_changing_protocol(self):
+        value = self.fixture('movement-heartbeat')['messages'][1]['message']
+        directory = ROOT / 'contracts/fixtures/assets/selected-static'
+        value['avatarManifestId'] = 'mcr_selected_static_20261103'
+        for i, player in enumerate(value['players']):
+            player['avatar']['config'] = rt.read(directory / f'photo01_front_{i % 6 + 1:02}.json')
+        self.contract.decode(json.dumps(value), 'server')
+        value['players'][0]['avatar']['config']['item_ids'] = {}
+        self.reject(lambda: self.contract.decode(json.dumps(value), 'server'))
+
     def test_avatar_mismatch_duplicate_players_and_private_fields(self):
         delta = self.fixture('movement-heartbeat')['messages'][3]['message'] | {'ackInputSeq': 0}
         for mutation in ['manifest', 'duplicate', 'private']:
