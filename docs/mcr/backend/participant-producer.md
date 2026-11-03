@@ -141,7 +141,9 @@ Owned paths: new `backend/services/concert-service/src/participant/**`,
 `backend/services/concert-service/tests/participant_producer.rs`, this document,
 new `backend/proto/concert/v1/participant.proto`, service `src/lib.rs` export,
 and the additive service `build.rs` step. The previous avatar checkout remains
-stopped. Only delivery integrates and pushes master.
+stopped. The later user-authorized direct-delivery policy allows this owner to
+non-force publish its qualified exclusive patch; kings and SLs are not review
+queues. Shared-file ownership and physical build leases still apply.
 
 Planning check and whitespace check: exit 0. Scoped Rust formatting: exit 0.
 Exact eight-path/shared-change/import audit: exit 0. The retained vendored
@@ -166,3 +168,38 @@ using an explicit synthetic release and test-only owner/capability ports. It
 exercises the real generated guarded RPC plus the real BE07 store, not live
 Auth/Profile services or a browser network. This does not certify release,
 whole BE07, the real multiuser world, or IN01/IN05.
+
+## Recovery checkpoint — 2026-11-04
+
+The preserved source checkpoints are `a2a60245` (producer), `f9e7323b`
+(deadline/withdrawal probes), and `a4c4169e` (SQL-update rollback proof).
+`dc11fe42` committed the previously dirty standalone-protoc evidence without
+losing it. Merge `567d933f` imports fetched master `ce9e8e6c`; its shared-file
+conflicts were resolved by preserving every upstream byte and adding only the
+participant module export and participant proto compile step. Relative to that
+merge parent, this slice still changes exactly the eight owned paths above.
+The actual persistent Phase A goal remained ACTIVE through chat recovery.
+
+Rechecked after the merge: `python3 scripts/mcr/check-plan.py`, scoped
+Rust 1.88.0 `rustfmt --check --edition 2021`, `git diff --check`, and the exact
+path/shared-content/import audit all exited 0. These do not establish Rust
+compilation or executed RPC behavior. No participant compiler artifact, pinned
+executable, or native result exists yet. The explicit shared-resource hold
+reserves MEDIA for Friend RPC and BACKEND for World closure; no Cargo or private
+PostgreSQL is started here until a named slot is released with at least 8 GiB
+available. A process snapshot being idle does not transfer its lease.
+
+Current C03 `AvatarConfig` is the layered 1.0.0 / whole-character 1.1.0 union.
+The imported BE07 parser still supports only layered configurations at this
+checkpoint. The selected-source owner retains avatar/domain/bootstrap and
+migration 0025; this producer does not modify or duplicate their implementation.
+Its complete current-union compatibility remains unqualified until their API is
+available and the producer's actual guarded tests execute against it. Product
+activation still requires qualified canonical authority and root composition
+after this bounded Phase A assignment; default-unavailable ports do not satisfy
+that remaining product scope.
+
+The focused deadline matrix additionally covers slow mutation-capability awaits
+and requires the exact `DEADLINE_EXCEEDED` reason after slow Auth/Profile calls,
+including a noncooperative blocking Profile implementation. It must prove no
+store dispatch. This source addition is also **NOT_RUN** until compilation.

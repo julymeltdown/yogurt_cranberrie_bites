@@ -145,6 +145,9 @@ impl MutationAuthorityPort for Owners {
         if self.fault == "capability-unavailable" {
             return Err(AvatarError::Unavailable);
         }
+        if self.fault == "slow-capability" {
+            tokio::time::sleep(Duration::from_millis(120)).await;
+        }
         Ok(Box::new(Permit {
             body: if self.fault == "foreign-body" {
                 [0; 32]
@@ -645,9 +648,14 @@ async fn owner_failures_and_missing_or_withdrawn_capability_fail_closed() {
 }
 #[tokio::test]
 async fn original_deadline_cannot_restart_after_owner_waits() {
-    for fault in ["slow-auth", "slow-profile", "blocking-profile"] {
+    for fault in [
+        "slow-auth",
+        "slow-profile",
+        "blocking-profile",
+        "slow-capability",
+    ] {
         let (s, c) = service(fault);
-        let (code, _, _) = invoke(
+        let (code, _, reason) = invoke(
             s,
             message(Operation::SetAvatar),
             Operation::SetAvatar,
@@ -655,8 +663,9 @@ async fn original_deadline_cannot_restart_after_owner_waits() {
             Duration::from_millis(50),
         )
         .await;
-        assert_ne!(code, Code::Ok);
-        assert_eq!(c.store.load(Ordering::SeqCst), 0);
+        assert_eq!(code, Code::DeadlineExceeded, "{fault}");
+        assert_eq!(reason.as_deref(), Some("DEADLINE_EXCEEDED"), "{fault}");
+        assert_eq!(c.store.load(Ordering::SeqCst), 0, "{fault}");
     }
 }
 #[test]
