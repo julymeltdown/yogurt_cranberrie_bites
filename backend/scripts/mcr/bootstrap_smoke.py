@@ -100,6 +100,26 @@ def exercise(cluster, artifacts, report):
     files.update({theme['theme_id'].lower(): theme for theme in document['theme_manifests']})
     for name, value in files.items():
         (release / (name + '.json')).write_text(json.dumps(value))
+    # Exercise the real binary's startup boundary too: local mode cannot select
+    # the synthetic constructor used by the explicit native RPC test below.
+    serving = {**env, 'CONCERT_RUNTIME_MODE': 'local',
+               'CONCERT_METRICS_ADDR': '127.0.0.1:0', 'CONCERT_GRPC_ADDR': '127.0.0.1:0',
+               'CONCERT_BOOTSTRAP_FILE': str(release / 'bootstrap.json'),
+               'CONCERT_AVATAR_MANIFEST_FILE': str(release / 'avatar.json'),
+               'CONCERT_MAP_MANIFEST_FILE': str(release / 'map.json'),
+               'CONCERT_REVENGE_MANIFEST_FILE': str(release / 'revenge.json'),
+               'CONCERT_PARADE_MANIFEST_FILE': str(release / 'parade.json'),
+               'CONCERT_DANGER_MANIFEST_FILE': str(release / 'danger.json')}
+    rejected = migration.execute([str(artifacts['service'])], env=serving,
+                                 phase='synthetic-product-startup-refused', cwd=cluster.root,
+                                 allowed=(1,))
+    require('Concert product release is unavailable' in rejected.stderr,
+            'startup must reject synthetic product release')
+    require('CONCERT_HEALTH_LISTENER=' not in rejected.stdout,
+            'invalid product release opened a listener')
+    require(str(cluster.root) not in rejected.stderr and cluster.password not in rejected.stderr,
+            'startup error leaked private configuration')
+    report['commands']['synthetic-product-startup-refused'] = rejected.returncode
     run_test(cluster, artifacts['tests'], 'native_bootstrap_transactions_and_guarded_response', report)
     schema_gate(cluster, report)
     report['response_sha256'] = hashlib.sha256((cluster.root / 'response.json').read_bytes()).hexdigest()

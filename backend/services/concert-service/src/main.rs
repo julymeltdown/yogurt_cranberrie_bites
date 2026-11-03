@@ -1,4 +1,7 @@
-use concert_service::{config, health};
+use concert_service::{
+    bootstrap::{BootstrapFeatures, BootstrapService, ProductReleaseBundle},
+    config, health, rpc,
+};
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     let command = migration_runtime::parse_command(std::env::args_os().skip(1))?;
@@ -19,6 +22,23 @@ async fn main() -> anyhow::Result<()> {
     }
     platform::shutdown::install_signal_handlers()?;
     let config = config::AppConfig::load()?;
+    // Validate all security and product inputs before opening the database or
+    // listeners. Absence retains the explicit health-only operational mode.
+    let runtime = config::bootstrap_runtime::BootstrapRuntime::load()?;
+    let bootstrap = runtime
+        .as_ref()
+        .map(|runtime| {
+            let files = &runtime.files;
+            ProductReleaseBundle::from_product_files(
+                &files[0],
+                &files[1],
+                &files[2],
+                [&files[3], &files[4], &files[5]],
+                BootstrapFeatures::default(),
+            )
+            .map_err(|_| anyhow::anyhow!("Concert product release is unavailable"))
+        })
+        .transpose()?;
     let pool = config::connect_pool(&config).await?;
     let _application = config::build_application(pool.clone());
     let health = health::router(health::readiness(pool.clone()));
@@ -26,10 +46,44 @@ async fn main() -> anyhow::Result<()> {
         .await
         .map_err(|_| anyhow::anyhow!("Concert health listener bind failed"))?;
     println!("CONCERT_HEALTH_LISTENER={}", listener.local_addr()?);
+    let grpc_pool = pool.clone();
     let result = platform::shutdown::supervise(async move {
-        axum::serve(listener, health)
-            .with_graceful_shutdown(platform::shutdown::global().cancelled())
-            .await?;
+        let http = async move {
+            axum::serve(listener, health)
+                .with_graceful_shutdown(platform::shutdown::global().cancelled())
+                .await?;
+            Ok::<(), anyhow::Error>(())
+        };
+        let grpc = async move {
+            match (runtime, bootstrap) {
+                (Some(runtime), Some(release)) => {
+                    let mut server = tonic::transport::Server::builder()
+                        .layer(platform::correlation::CorrelationLayer)
+                        .layer(platform::call_deadline::CallDeadlineLayer)
+                        .layer(platform::trace_context::TraceContextLayer);
+                    if let Some(tls) = runtime.tls {
+                        server = server.tls_config(tls.server_config()?)?;
+                    }
+                    server
+                        .add_service(platform::grpc_method_policy::guard(
+                            &rpc::POLICY,
+                            rpc::proto::concert_service_server::ConcertServiceServer::new(
+                                BootstrapService::new(grpc_pool, release),
+                            ),
+                            runtime.callers,
+                            runtime.actors,
+                        )?)
+                        .serve_with_shutdown(
+                            runtime.address,
+                            platform::shutdown::global().cancelled(),
+                        )
+                        .await?;
+                }
+                _ => platform::shutdown::idle().await?,
+            }
+            Ok::<(), anyhow::Error>(())
+        };
+        tokio::try_join!(http, grpc)?;
         Ok(())
     })
     .await;
