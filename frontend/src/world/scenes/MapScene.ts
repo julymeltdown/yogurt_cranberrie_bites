@@ -165,35 +165,38 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
         return { zoom: camera.zoom, scrollX: camera.scrollX, scrollY: camera.scrollY, width: camera.width, height: camera.height }
       },
     }
+    const avatarTextureFrames = new WeakMap<AvatarSceneTexture, number>()
+    function createAvatarTexture(canvas: HTMLCanvasElement, frames: 1 | 20): AvatarSceneTexture {
+      if (stopped || !sceneReady || canvas.width !== (frames === 1 ? 64 : 320) || canvas.height !== (frames === 1 ? 64 : 256)) throw new Error('Avatar scene unavailable')
+      const scene = game.scene.getScene('mcr-map'), key = `mcr-avatar-${++avatarRevision}`, ownedCanvas = document.createElement('canvas')
+      ownedCanvas.width = canvas.width; ownedCanvas.height = canvas.height
+      const context = ownedCanvas.getContext('2d'); if (!context) throw new Error('Avatar texture unavailable')
+      context.drawImage(canvas, 0, 0) // Phaser owns this copy; texture removal cannot erase the shared thumbnail/cache pixels.
+      const texture = scene.textures.addCanvas(key, ownedCanvas)
+      if (!texture) throw new Error('Avatar texture unavailable')
+      try {
+        if (stopped || !sceneReady) throw new Error('Avatar scene unavailable')
+        texture.setFilter(Phaser.Textures.FilterMode.NEAREST)
+        for (let frame = 0; frame < frames; frame++) texture.add(frame, 0, frame % 5 * 64, Math.floor(frame / 5) * 64, 64, 64)
+        let removed = false
+        const lease: AvatarSceneTexture = { key, dispose() {
+          if (removed) return; removed = true
+          for (const [sprite, remove] of Array.from(avatarSprites)) if (spriteTextures.get(sprite) === lease) remove()
+          avatarTextures.delete(lease)
+          if (scene.textures.exists(key)) scene.textures.remove(key)
+        } }
+        avatarTextures.set(lease, lease.dispose); avatarTextureFrames.set(lease, frames); return lease
+      } catch (error) { scene.textures.remove(key); throw error }
+    }
     const avatarScene: AvatarScenePort = {
-      texture(canvas) {
-        if (stopped || !sceneReady || canvas.width !== 320 || canvas.height !== 256) throw new Error('Avatar scene unavailable')
-        const scene = game.scene.getScene('mcr-map'), key = `mcr-avatar-${++avatarRevision}`, ownedCanvas = document.createElement('canvas')
-        ownedCanvas.width = 320; ownedCanvas.height = 256
-        const context = ownedCanvas.getContext('2d'); if (!context) throw new Error('Avatar texture unavailable')
-        context.drawImage(canvas, 0, 0) // Phaser owns this copy; texture removal cannot erase the shared thumbnail/cache pixels.
-        const texture = scene.textures.addCanvas(key, ownedCanvas)
-        if (!texture) throw new Error('Avatar texture unavailable')
-        try {
-          if (stopped || !sceneReady) throw new Error('Avatar scene unavailable')
-          texture.setFilter(Phaser.Textures.FilterMode.NEAREST)
-          for (let frame = 0; frame < 20; frame++) texture.add(frame, 0, frame % 5 * 64, Math.floor(frame / 5) * 64, 64, 64)
-          let removed = false
-          const lease: AvatarSceneTexture = { key, dispose() {
-            if (removed) return; removed = true
-            for (const [sprite, remove] of Array.from(avatarSprites)) if (spriteTextures.get(sprite) === lease) remove()
-            avatarTextures.delete(lease)
-            if (scene.textures.exists(key)) scene.textures.remove(key)
-          } }
-          avatarTextures.set(lease, lease.dispose); return lease
-        } catch (error) { scene.textures.remove(key); throw error }
-      },
+      texture: canvas => createAvatarTexture(canvas, 20),
+      staticTexture64: canvas => createAvatarTexture(canvas, 1),
       sprite(texture) {
         if (stopped || !sceneReady || !avatarTextures.has(texture)) throw new Error('Avatar texture unavailable')
         const image = game.scene.getScene('mcr-map').add.sprite(0, 0, texture.key, 0).setOrigin(.5, 60 / 64).setVisible(false)
         let removed = false
         const lease: AvatarSceneSprite = { update(x, y, frame, depth) {
-          if (removed || stopped || !Number.isFinite(x) || !Number.isFinite(y) || !Number.isInteger(frame) || frame < 0 || frame >= 20
+          if (removed || stopped || !Number.isFinite(x) || !Number.isFinite(y) || !Number.isInteger(frame) || frame < 0 || frame >= (avatarTextureFrames.get(texture) ?? 0)
             || !Number.isFinite(depth) || depth < 1 || depth >= 2) throw new Error('Avatar sprite unavailable')
           image.setPosition(x, y).setFrame(frame).setDepth(depth).setVisible(true)
         }, dispose() { if (removed) return; removed = true; avatarSprites.delete(lease); spriteTextures.delete(lease); image.destroy() } }

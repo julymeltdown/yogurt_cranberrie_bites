@@ -1,6 +1,5 @@
 import { z } from 'zod'
-import type { AvatarConfig } from '../../../entities/avatar/runtime'
-import { schemaValid } from '../../../entities/avatar/runtime/schema'
+import { decodeAvatarState } from '../../../entities/avatar/whole-admission'
 import { canonicalUuid } from '../../auth/model/contract'
 import type { SessionScope } from '../../../shared/api/http'
 
@@ -13,7 +12,7 @@ export const preferencesSchema = z.strictObject({ theme: z.enum(['REVENGE', 'PAR
 export type Preferences = z.infer<typeof preferencesSchema>
 const participantSchema = z.strictObject({ event_id: uuid, user_id: uuid, revision: integer,
   profile: z.strictObject({ user_id: uuid, display_name: text(1, 40), bio: text(0, 160).nullable(),
-    avatar: z.strictObject({ revision: integer, config: z.custom<AvatarConfig>(v => schemaValid(v, 'config')) }) }),
+    avatar: z.unknown().transform(decodeAvatarState) }),
   preferences: preferencesSchema, age_status: z.enum(['UNKNOWN', 'VERIFIED', 'EXPIRED', 'PROVIDER_UNAVAILABLE']) })
 export type Participant = z.infer<typeof participantSchema>
 export const profileSchema = z.strictObject({ display_name: text(1, 40), bio: text(0, 160).nullable() })

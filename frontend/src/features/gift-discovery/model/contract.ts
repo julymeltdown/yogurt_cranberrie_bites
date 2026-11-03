@@ -1,16 +1,13 @@
 import { z } from 'zod'
 import browserContract from '../../../../../contracts/generated/mcr-domain.openapi.json'
 import type { DecodeContext, Decoder, SessionScope } from '../../../shared/api/http'
+import type { AvatarState } from '../../../entities/avatar/whole-admission'
 
 export const giftId = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 export type GiftState = 'DRAFT' | 'OPEN' | 'PAUSED' | 'CLOSED' | 'CANCELLED'
 export interface PublicOwner {
   readonly user_id: string; readonly display_name: string; readonly bio: string | null
-  readonly avatar: { readonly revision: number; readonly config: {
-    readonly contract_version: '1.0.0'; readonly kind: 'avatar_config'; readonly manifest_id: string
-    readonly manifest_version: number; readonly skin_tone_id: string
-    readonly item_ids: { readonly body: string; readonly eyes: string; readonly hair: string; readonly outfit: string; readonly accessory: string | null }
-  } }
+  readonly avatar: AvatarState
 }
 export interface Giveaway {
   readonly giveaway_id: string; readonly event_id: string; readonly owner: PublicOwner

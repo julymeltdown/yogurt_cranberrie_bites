@@ -1,0 +1,206 @@
+{
+  "task": "FE-MEDIA-LEASE",
+  "status": "MOCK_READY",
+  "createdAt": "2026-11-03T23:10:45.008492+00:00",
+  "assignmentBase": "335066396502782426c4b86ae8aacb9704def988",
+  "ownedSourceCommit": "d58624d829dfee67dc9303bf643d923d820ca7cf",
+  "qualifiedCombinedParent": "f4b4080897a6b1ad835fa4e5e9372f82d58e489e",
+  "branch": "codex/mcr-fe-media-lease",
+  "runtime": {
+    "node": "24.22.2",
+    "chrome": "156.0.8078.80",
+    "dependencies": "Existing retained node_modules via temporary symlink; no install or lockfile mutation"
+  },
+  "commands": [
+    {
+      "command": "node frontend/node_modules/vitest/vitest.mjs run src/app/media-entry/__tests__/owner.test.ts src/features/media/model/__tests__/read-media.test.ts src/shared/query/__tests__/privacy.test.ts src/features/auth/__tests__/session.test.ts --root frontend --maxWorkers 1",
+      "exitCode": 0,
+      "log": "unit.log"
+    },
+    {
+      "command": "node frontend/src/app/media-entry/__tests__/browser.mjs",
+      "exitCode": 0,
+      "log": "browser.log"
+    },
+    {
+      "command": "node frontend/node_modules/typescript/bin/tsc -p frontend --incremental --tsBuildInfoFile /tmp/mcr-media-lease-types.tsbuildinfo --pretty false",
+      "exitCode": 0,
+      "log": "types.log"
+    },
+    {
+      "command": "frontend/node_modules/.bin/oxlint frontend/src/app/media-entry",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "command": "node frontend/node_modules/vite/bin/vite.js build frontend --configLoader runner --outDir /tmp/mcr-media-lease-build",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "log": "plan.log"
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "docs/mcr/frontend/media-entry-leases.md",
+      "sha256": "6ebb083adb65c6b24cf55180c4d6f7127917c24ca8612718e447948fed5d8532"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/browser.mjs",
+      "sha256": "ed6f843ecd141e612426558b263c89089d7f37f3b31ad49ab5b318fcdfce9505"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/fixtures.ts",
+      "sha256": "e6de08802026b3adf8997c90dffc308dba7690ae00c31358f986d3b35a4dc49f"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/owner.test.ts",
+      "sha256": "918cf582929141fe775aa280afcb7302396d6ec2eef5e7a52a887fd9a2cf91f2"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/preview.html",
+      "sha256": "016bc307df4bf50d0548f3f3addc934fd14bd2ba0c13734069eadb07e57fb4eb"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/preview.tsx",
+      "sha256": "eff0abcdb8c124de47451c10e01f2253d428081e02a383892735732d593def55"
+    },
+    {
+      "path": "frontend/src/app/media-entry/index.ts",
+      "sha256": "fcf4019d22056e7d8c2c148c1fbeab00187e62751ba232c3784a9506924e058a"
+    }
+  ],
+  "dependencyPins": [
+    {
+      "path": "frontend/src/shared/media/read-media.ts",
+      "sha256": "a91aa13d5a3d074985e50ea2252728ef17b526376c798171138f8bd63f802cd8"
+    },
+    {
+      "path": "frontend/src/shared/media/contract.ts",
+      "sha256": "ceb1e41520d1c85ddab35c768cbdc3686e092137b517d4c37008ec8224dd2f27"
+    },
+    {
+      "path": "frontend/src/shared/media/image-policy.ts",
+      "sha256": "7ae571867a1e2d5d54a3bb571eb11f38636676a45920142db76e3593e370cdb1"
+    },
+    {
+      "path": "frontend/src/shared/media/preview.ts",
+      "sha256": "3cab8ce506c6cca2083ff2003c7a406cf30aa77b96ee10cb81a68f3f1b5fc283"
+    },
+    {
+      "path": "frontend/src/shared/media/types.ts",
+      "sha256": "3a962d03a4f33ccca76dc8d8a82be5237b92ac2a60f79b120fc49c7e294e468a"
+    },
+    {
+      "path": "frontend/src/shared/media/transport.ts",
+      "sha256": "8d71000a955dd035263074a3f961589e8b0f7a8f0bfdb3f708b99a75eb2e841c"
+    },
+    {
+      "path": "frontend/src/shared/api/http.ts",
+      "sha256": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1"
+    },
+    {
+      "path": "frontend/src/shared/query/privacy.ts",
+      "sha256": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081"
+    },
+    {
+      "path": "frontend/src/features/auth/model/session.ts",
+      "sha256": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1"
+    },
+    {
+      "path": "frontend/src/features/event-feed/FeedImage.tsx",
+      "sha256": "b648a7e3e46168e28a02c7ac223af0a90502a40a5a568e0590310c2c7d54eebf"
+    },
+    {
+      "path": "frontend/src/features/media/model/__tests__/fixtures.ts",
+      "sha256": "63069daa3f719790d1abdd836edbd561064d24e3ff1b642f6028e7be97def9c3"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": "browser.json",
+      "bytes": 3049,
+      "sha256": "3e8c78458bb28de7ac4c6751dbcb44eab532cb551255c726d96fd082123a571f"
+    },
+    {
+      "path": "browser.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build.log",
+      "bytes": 6239,
+      "sha256": "80f78cd07a4326f5bca13df7c901bf3ce5a3c6fc5b15dcff5722816c160be6b2"
+    },
+    {
+      "path": "lint.log",
+      "bytes": 921,
+      "sha256": "4021ae8c1a83ecdf391db3ad897a885b37f45f66f78554535971343d256e3556"
+    },
+    {
+      "path": "plan.log",
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "path": "revoked-390.png",
+      "bytes": 28044,
+      "sha256": "a337d8153a197826bb54b360183f0cd4f6fd384352b11249516a8a2f87a897c6"
+    },
+    {
+      "path": "synthetic-gift-390.png",
+      "bytes": 28975,
+      "sha256": "55b4f7709f2d700a0d739315b494a13f7e3d917687ca3d9e55beee20a83456aa"
+    },
+    {
+      "path": "types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "unit.log",
+      "bytes": 241,
+      "sha256": "95d1302568419d62f80660edb048d3493877d41f7266dfe04eb980b82c35e653"
+    }
+  ],
+  "tests": {
+    "passed": 74,
+    "files": 4,
+    "browser": "PASS"
+  },
+  "bounds": {
+    "defaultEntries": 8,
+    "hardMaxEntries": 32,
+    "maxBytesPerBlob": 10485760,
+    "defaultResidentBlobCeilingBytes": 83886080,
+    "hardResidentBlobCeilingBytes": 335544320,
+    "defaultConsumerRegistrations": 64,
+    "hardMaxConsumerRegistrations": 256,
+    "excludes": "Transport buffers, temporary inspection ArrayBuffers, JS overhead, browser decoders and GPU surfaces"
+  },
+  "measurementLimits": [
+    "HTTP counts and server/body/browser Resource Timing are separate loopback synthetic-fixture measurements.",
+    "3 explicit img.decode calls do not measure internal decoder-cache hits, decoding work or GPU memory.",
+    "No production HTTP-cache or transferred-byte reduction claim."
+  ],
+  "remainingLimits": [
+    "Actual authorized Feed/Gift root binding and readiness producer remain king-owned NOT_RUN here.",
+    "Live service/media authorization, physical-device and multiuser acceptance NOT_RUN.",
+    "Existing production large-chunk warning remains."
+  ],
+  "exportedTypes": [
+    "MediaOwnerAuth",
+    "RetainedMediaPurpose",
+    "MediaLease",
+    "MediaOwnerOptions",
+    "MediaOwner"
+  ],
+  "publication": "Non-force exact scoped new commits only; prior PUBLIC/shared/art commits preserved as ancestry."
+}
