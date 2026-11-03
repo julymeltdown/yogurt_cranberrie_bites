@@ -1,122 +1,136 @@
-# BE36 / BE38 moderation and event operations
+# BE36 / BE38 report and operations handoff
 
-Status: **IN_PROGRESS**. This bounded patch provides internal typed values and PostgreSQL producers. It does not establish qualified HTTP, real media/evidence review, operator authority, physical venue correctness, or complete-task acceptance.
+BE36 and BE38 remain **IN_PROGRESS** at task/production level. The assigned internal adapter increment is implemented, committed and qualified against isolated PostgreSQL. This document does not certify production Auth/operator/media/source providers, full place operations, feature adoption in every producer, qualified HTTP, or IN05 acceptance.
 
-## Ownership and ancestry
+## Delivery and provenance
 
-- Repository: `julymeltdown/mcr`; delivery branch: `master`; only Delivery integrates/pushes.
-- Writer checkout: `/Users/lhs/Desktop/mcr-worktrees/be-moderation-operations`; branch: `codex/mcr-be-BE36`.
-- Base: `51783cf5651b68ca98faede29d442c4dccc24f6f`.
-- Registration-only commit: `1e05f90d905a40f81b2be51526b4fac43456927b`. Delivery explicitly delegated only `pub mod report` in domain/application roots, `pub mod admin` in the application root, and report/event_operations repository exports. Preserve other owners' exports during integration. `4bb2d7e` corrects only those declarations to follow the preserved crate documentation.
-- Newly authored paths: domain `report/**`; application `report/**`, `admin/{mod,event,notices,places}.rs`; service repository `{report,event_operations}.rs`; service tests `{report,event_operations}.rs`; migration `0015_moderation_operations.sql`; scripts `{operations_smoke,test_operations_smoke}.py`; this document.
-- No source pack, `docs/source/`, frontend, manifests, lockfiles, HTTP/proto contracts, router, or production role assignments changed.
-- Place ownership is a caller-transaction port; this patch does not bypass immutable released place/map rows.
-- BE39 report decisions, BE40 mural control, BE41 closure/archive, and BE42 account export/deletion are excluded. Phase mutation permits only DRAFT → OPEN and OPEN → LIVE.
+- Delivery repository/branch: `julymeltdown/mcr`, `master`; Main integrates/pushes. No worker push occurred.
+- Sole writable checkout: `/Users/lhs/Desktop/mcr-worktrees/be-operations-resume`, branch `codex/mcr-be-operations-resume`.
+- Published parent: `1163b827f9e62390163788bb674d24855816e0ec`.
+- Qualified implementation/test source: `f485420d94bb68ea5bca82a4f88fc239bb831010`. The later handoff commit changes this document only; all backend/contract source hashes must continue matching the artifact receipt.
+- Historical checkout `/Users/lhs/Desktop/mcr-worktrees/be-moderation-operations` is read-only. Its aligned unbudgeted goal remains ACTIVE; unfinished broader requirements are not falsely completed.
 
-## Provenance and dependencies
-
-All product/domain/application logic is newly authored. The native test ownership preflight was adapted from `backend/services/concert-service/tests/command_receipts.rs` at the pinned base. The harness follows `backend/scripts/mcr/command_receipts_smoke.py` and reuses `migration_smoke.py` plus `concert_core_smoke.py` at that base for private-cluster ownership, subprocess redaction, and evidence capture. No legacy rendering/UI logic is reused.
-
-Dependencies are retained workspace resolutions: async-trait, chrono, uuid, serde/serde_json, sha2, SQLx, and the existing BE15 command repository. The application adds no framework/SQL/serialization dependency. No dependency or lock resolution changed.
-
-C04 candidate pins at the base (review candidate, not a claim of whole-contract freeze):
-
-| Source | SHA-256 |
+| Original author commit | Recovered commit |
 | --- | --- |
-| `contracts/domain/v1/admin.schema.json` | `b8a4f8b91440d561bbcf23dc68bc196919a8893cf744ca09ac05ecaabff72cb8` |
-| `contracts/domain/v1/feed.schema.json` | `9c8d991df0bb707d7a7a2d43d4b132e7fadb878a52633e1c1f338afc9407f8ed` |
-| `contracts/domain/v1/operations.json` | `42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223` |
-| `contracts/domain/v1/policy.json` | `508d22af964b718cdcbd5a25b32b9a1e3f7b651a5b8c25c87d56f1f6b68d0ebe` |
-| `contracts/assets/v1/map-manifest.schema.json` | `ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800` |
+| `1e05f90d` | `08f8c4cf` |
+| `14b8d598` | `bdcce967` |
+| `4bb2d7e8` | `f943d47d` |
+| `041dac90` | `6c647e78` |
+| `30b91694` | `ce52dc14` |
+| `8af6d7b` | `92ac5681` |
 
-## Report behavior and privacy
+All six were carried with `cherry-pick -x`. `bca7a9a` recovers the interrupted guard into the forward migration and adds current-ledger qualification. `f485420` adds the direct shared-release acquisition assertion. No unrelated shared commits were imported. Integrate the complete recovered stack/final tree; do not deploy an intermediate historical 0015 tree.
 
-`CreateReport` uses closed target/reason enums, text up to 2,000 Unicode scalar values, and at most four distinct non-nil evidence media UUIDs. The service resolves actor/event independently from wire content. `FencedOperationsAuthority` must be request-bound to canonical Auth and the current event-scoped role owner. `FencedReportEvidence` must verify target access or qualified recent-target evidence, and READY, actor-owned, event-scoped REPORT-purpose attachments. Their positive revision and fresh time window must remain fenced through the transaction. Input digest, actor/event, and expiry mismatches fail closed. Unavailable implementations never grant access.
+The preserved recovery input is `/private/tmp/mcr-operations-recovery-1793741629163453000/0015_moderation_operations.sql`: 8,690 bytes, SHA-256 `01622e9d134c6cb9e9950a450397e6c542af5289a8e372b331bf7ec52a786506`. The same bytes now reside only at **`backend/services/concert-service/migrations/0021_moderation_operations.sql`**. The unpublished 0015 path is absent. All sixteen published migrations (1–12, 16, 18, 19, 20) match parent bytes exactly.
 
-A server-generated report ID is deterministic for actor/event/operation/idempotency key. BE15's HMAC canonical input fingerprint, receipt, domain effect, audit record and invalidation commit together. Same-key retries return the same safe receipt after current actor/report authorization; first-execution submission target/media checks are not repeated for an already committed receipt. Different input conflicts. A new key for the same actor/event/typed active target records only a safe `RESOURCE_UNAVAILABLE` failure. At most ten successfully created reports per actor/event in a rolling hour are admitted; the existing BE15 quotas also apply. SAFETY reporting remains allowed in READ_ONLY and is rejected in DRAFT/ARCHIVED.
+All report/admin product logic is newly authored. The private-cluster preflight derives from the pinned BE15 test/harness pattern; helpers `migration_smoke.py` and `concert_core_smoke.py` are reused without modification. Native place fixture assembly derives from the existing `tests/places.rs`, with geometry hash recomputed before content hash. Synthetic metadata is not production art or a reviewed venue fact. No `docs/source/`, frontend, manifest, lockfile, contract, proto or infrastructure file changed. Retained dependencies are async-trait, chrono, uuid, serde/serde_json, sha2, SQLx and BE15; application/domain boundaries remain free of SQL/transport imports.
 
-Safe create/own/queue projections contain only `report_id,event_id,target_type,target_id,state,revision,created_at`. Reporter identity, private text, reason and evidence IDs are available only from the current MODERATOR/OPERATOR detail method. Every privileged queue/detail read and operator settings/place/notice read appends a minimal audit record before any content is returned. An audit failure rolls back and withholds the response. Ordinary own reads return only the reporter's safe status, never evidence. Target/public APIs receive no private projection. Domain private input/detail types deliberately do not implement Debug.
+## Exact path ownership
 
-Evidence UUIDs are references, not public URLs. Actual evidence download needs an independently authorized media owner provider. No media readiness, target access, or role can be inferred from a participant/profile/bootstrap row or browser boolean.
+The 21 changed paths are limited to domain `report/**`, application `report/**` and `admin/{mod,event,notices,places}.rs`, service repositories `{report,event_operations}.rs` and `place/operations.rs`, tests `{report,event_operations,place_operations}.rs` and `operations_support/mod.rs`, owned smoke/guard scripts, migration 0021 and this document, plus four narrow shared registrations.
 
-## Event operations
+Explicit shared grants add only `pub mod report` to domain; `pub mod report` / `pub mod admin` to application; report/event_operations repository exports; and appended place operations module/public-use exports. Existing exports, crate documentation and all existing place functions are preserved. Current Mural, context and Profile implementations are untouched.
 
-Settings contain explicit input for all five feature flags and contract-bounded timing limits. Settings CAS uses the canonical event revision; each settings/phase mutation advances that event revision once. Initial settings are supplied by a qualified operator command, not fabricated defaults. `require_feature_in` retains event/settings SHARE locks within an already-authorized caller transaction and rejects missing settings, disabled features, non-writable phases or stale revisions. Root integration must wire this into each owning feature producer; exporting the helper alone does not establish global feature enforcement.
+## Current contract pins and drift
 
-Notice storage is owned by BE38 in `concert_operation_notices`. The exact typed content/source/confirmation/state must be reviewed by a qualified owning `FencedNoticeReview` with an actor/event/notice/input-digest/revision/time binding. HTTPS syntax, bounded text and nonfuture confirmation time are validated again before mutation. Publication and withdrawal advance notice revision, audit and invalidate atomically. Public list/detail select only PUBLISHED rows; withdrawn/draft rows remain available only to the operator query. The durable BE15 outbox carries UUID/revision only; Delivery must route private report invalidations to the authorized reporter/operator audience and notice changes to authorized notice consumers. No external side effect is called inside a SQL producer.
-
-The `FencedPlaceOperations` adapter requires local transactional updates by the place/map owner: event/current-map validation, exact CAS, reviewed provenance/confirmation, closure/accessibility handling, and immediate physical-selection fencing. A dependency error or deliberate failed outcome never records the operation applied. The default is unavailable. Existing released map provenance remains immutable. Event isolation of closure and source/map revision evolution require an owning implementation, not direct SQL from this patch.
-
-Mutation lock order is event UPDATE, owner authority fences, BE15 global admission, aggregate. Reads retain event SHARE. This bounded design serializes writes per event; load/throughput qualification is NOT_RUN. Deferred database deadline guards cover receipts and all owned mutations/audited evidence reads, preserving the earliest role/evidence/review deadline through commit. Audit is append-only and does not store report text, media IDs, notice content or operator free-text reasons.
-
-## Validation evidence
-
-| Check | Status / exit |
+| Source | SHA-256 at published parent |
 | --- | --- |
-| `python3 scripts/mcr/check-plan.py` | PASS / 0; planning/provenance only |
-| Scoped Rust 1.88 rustfmt and `git diff --check` | PASS / 0 |
-| `python3 -m unittest discover -s backend/scripts/mcr -p test_operations_smoke.py -v` | PASS / 0; 5 refusal/cleanup tests |
-| All eight base + 0015 SQL files applied transactionally to a new private native PG16.14 cluster | PASS / 0; cluster removed; schema syntax only |
-| Targeted Rust compile/unit tests | NOT_RUN; explicit shared Cargo lease pending |
-| Sixteen authored native PG report/operation/place tests | NOT_RUN; explicit Cargo lease pending |
-| Migration ledger, actual PostgreSQL restart persistence and harness cleanup | NOT_RUN in the full binary-bound harness |
-| Current production Auth/role, media/target/source review, owning place mutation | NOT_COMPOSED / NOT_RUN |
-| Qualified HTTP, real multiuser/operator flow, browser/device, load/release | NOT_RUN |
+| `contracts/domain/v1/admin.schema.json` | `953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640` |
+| `contracts/domain/v1/feed.schema.json` | `590cce6afc00c7a869b5a9711104550ba280ffa5875c9dc49a0753d272320801` |
+| `contracts/domain/v1/operations.json` | `622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839` |
+| `contracts/domain/v1/policy.json` | `81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb` |
 
-Run the full harness only with exact source-bound binaries and a new absolute evidence filename:
+Compared with author base `51783cf5651b68ca98faede29d442c4dccc24f6f`, ten required admin definitions and five notice definitions are structurally identical. All fourteen assigned report/settings/place/notice operation entries are unchanged. Their ten referenced rules (`event_phase`, `notice_create`, `notice_update`, `ops_read`, `place_update`, `public_read`, `report_create`, `report_own`, `report_review`, `settings`) and runtime/common guards/write policies/idempotency/pagination/transitions/error-status policies also match. Whole-file hashes changed outside these inspected surfaces; this does not repin uninspected behavior. The harness requires current hashes.
+
+## Behavior and invariants
+
+Report input has closed target/reason enums, ≤2,000 Unicode scalar values of private text and ≤4 distinct non-nil media IDs. Canonical actor/event come from a request-bound owner authority, never request role claims or participant/profile/bootstrap existence. Current MODERATOR/OPERATOR evidence access binds actor/event/action/target, owner revision, fresh checked time and expiry. The submission evidence owner must verify current target access or qualified recent-target evidence and READY actor-owned event-scoped REPORT attachments. Evidence/review response leases bind exact input digests. Missing, stale, misbound, unavailable or revoked authority fails closed.
+
+Create/own/queue return only safe Report fields: report/event IDs, typed target, state, revision and creation time. Ordinary/target/public paths cannot serialize reporter identity, reason, text or evidence. Only privileged detail returns them, after a metadata-only audit commits. Operator settings/place/notice reads also audit in their transaction. Private input/detail types have no Debug implementation; audit rows contain no report text/media, notice content or free-text reasons. Evidence IDs never become public URLs.
+
+Report IDs are deterministic by actor/event/operation/idempotency key. BE15 canonical HMAC receipts, local effects, immutable audit and UUID/revision invalidations are atomic. Same-key completed retries reauthorize current actor/report access, without requiring removed submission media. Different input/authorized target conflicts. Duplicate active actor/event/typed targets return a safe failure; successful creations are bounded to ten per actor/event/hour plus BE15 quotas. SAFETY reporting works in READ_ONLY and rejects DRAFT/ARCHIVED.
+
+Settings accept every explicit flag/limit, CAS the event revision and increment it once. Phase only permits DRAFT→OPEN or OPEN→LIVE. `require_feature_in` returns a `FeatureGuard` retaining the caller connection borrow; event/settings row locks remain until the original transaction commits. Missing settings are unavailable, disabled/nonwritable features reject server-side and stale revisions conflict. This helper's qualification does not prove adoption by all feature producers.
+
+BE38 owns `concert_operation_notices`. Exact content, HTTPS source, nonfuture confirmation and state require a fenced source-review lease. Publication/update/withdrawal use notice CAS and commit audit/outbox atomically. Public reads select only PUBLISHED rows; withdrawal removes them from that projection. Receipt SUCCEEDED proves a committed local resource revision; clients still need an authorized current reread before presenting the intended action as applied. It does not prove external notification delivery.
+
+The restricted place owner locks the publication identity, event binding and actual current state, and CASes the place-state revision. It preserves immutable released provenance/verification/photo/label/accessibility fields. An operated release gains immutable event ownership; publication and acquisition guards prevent both future cross-event inheritance and acquisition of an already-shared release. Closure excludes concurrent physical selection. Rebound-catalog writes and immutable metadata changes fail closed with MAP_VERSION_MISMATCH until the full monotonic event/place/new-reviewed-release owner is integrated. Closing/reopening alone does not prove stale existing guidance has been invalidated. No physical arrival is inferred.
+
+All command effects remain local SQL under BE15. Dependency errors, expired leases, failed audits, failed CAS or uncertain downstream results do not record applied effects. Deferred guards retain the earliest authority/review/evidence deadline through commit. Expired BE15 receipt retirement clears metadata without a user lease while preserving correlation and shape constraints. Writes serialize per event; load qualification is NOT_RUN.
+
+## Executed qualification
+
+| Check | Result / exit |
+| --- | --- |
+| Rust 1.88 locked/offline domain/application `--lib` | PASS / 0; 6 application + 4 domain tests |
+| Exact three service tests + migrator compilation | PASS / 0 |
+| Direct acquisition-guard assertion recompilation | PASS / 0 |
+| Owned harness guard tests | PASS / 0; five tests |
+| Native report / event operations / place cases | PASS / 0; 6 + 7 + 3 |
+| Explicit published-0020 SQLx helper | PASS / 0; one additional native ledger case |
+| Fresh migrations / verify / reapply | PASS / 0; all 17 current migration receipts |
+| Forward published0020→0021 / verify / reapply | PASS / 0; 16 genuine baseline receipts → 17 |
+| Deliberate late 0021 DDL fault | Expected CLI exit 1; no 0021 receipt or partial operations tables; published state unchanged |
+| Real PostgreSQL restart | PASS; new postmaster, both ledgers and committed state preserved |
+| Private cluster cleanup | PASS; owned directory removed |
+| Plan checker / path scope / cross-directory imports / diff whitespace | PASS / 0 |
+
+The ignored ledger helper is explicitly executed once before upgrade. The ordinary operations suite then reports 7 passed/1 known ignored; the exact-count harness verifies both invocations. Total native executions are **17 passed**, with no weakened expectations or replacement of failed checks. Test-only owner fixtures exercise real SQL row locks, denied/revoked/misbound leases and faults. They do not constitute real Auth/operator/media/source qualification.
+
+After restart: 14 reports, 2 settings rows, 3 notices, 35 receipts, 26 outbox rows, 32 audit rows and 2 operated-release owners remained. Published forward event/receipt hashes also remained identical after failed migration, successful upgrade, reapply and restart.
+
+Builds used only `/Users/lhs/Desktop/mcr-build/backend`, Rust 1.88, jobs 2, locked/offline, dev/test debug 0, incremental 0, with ≥8 GiB available. No install, alternate Cargo target or MEDIA target was used. Exact Cargo JSON artifacts were copied and hashed before all build handles were released; PostgreSQL ran only frozen binaries. The standing reservation covered one bounded place-test recompile. Target handles were released again before final native execution.
+
+## Frozen evidence
+
+- Qualified source: `f485420d94bb68ea5bca82a4f88fc239bb831010`.
+- Artifact/source receipt: `/private/tmp/mcr-operations-native-final/artifacts.json`; SHA-256 `cdd336a5e3f967a5f210b08d9e6cbcc61cdf406af208899c7c3953277dc08ee5`.
+- Final native report: `/private/tmp/mcr-operations-native-final/qualification-01.json`; SHA-256 `c028e086dc25f8a25be60afb96775f24b2ca1a19e5ae191481a452e47818a791`.
+- Earlier successful run: `/private/tmp/mcr-operations-native-bca7a9a/qualification-01.json`; superseded for the direct acquisition assertion.
+- These reports include exact source, contract, binary and migration digests and command exits. They are local artifacts; retain them with the handoff. Historical SQL-only evidence predates this complete qualification and is not used as post-fix native proof.
+
+| Frozen executable | SHA-256 |
+| --- | --- |
+| `concert-service` | `c828deb328a82d26050e948c12832450b7e6a5017aebc2cad72287113ce7db01` |
+| `place_operations` | `6db11c50c3a74b5ed9517cd8c41745b4e1222004282fc586f36866ccac608255` |
+| `report` | `0d85863ffc72b993385ad45073aa84d752772caab183c430ef486e46d5dee9e4` |
+| `event_operations` | `f33d57392ee0705e1eba45166a74c66c097e9adeaa03d340f49cc2d505585fb3` |
+
+Commands, from the assigned checkout:
 
 ```sh
+env RUSTUP_TOOLCHAIN=1.88.0 CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+  CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 \
+  cargo test --manifest-path backend/Cargo.toml --locked --offline \
+  -p concert-domain -p concert-application --lib --message-format=json
+env RUSTUP_TOOLCHAIN=1.88.0 CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+  CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 \
+  cargo test --manifest-path backend/Cargo.toml --locked --offline -p concert-service \
+  --test report --test event_operations --test place_operations --no-run --message-format=json
+env RUSTUP_TOOLCHAIN=1.88.0 CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+  CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 \
+  cargo test --manifest-path backend/Cargo.toml --locked --offline -p concert-service \
+  --test place_operations --no-run --message-format=json
+python3 -m unittest discover -s backend/scripts/mcr -p test_operations_smoke.py -v
 python3 backend/scripts/mcr/operations_smoke.py \
-  --binary /absolute/validated/concert-service \
-  --report-test /absolute/validated/report-tests \
-  --operations-test /absolute/validated/event-operations-tests \
-  --place-test /absolute/validated/place-operations-tests \
+  --binary /private/tmp/mcr-operations-native-final/concert-service \
+  --report-test /private/tmp/mcr-operations-native-final/report \
+  --operations-test /private/tmp/mcr-operations-native-final/event_operations \
+  --place-test /private/tmp/mcr-operations-native-final/place_operations \
   --pg-bin /opt/homebrew/opt/postgresql@16/bin \
-  --report /tmp/new-be36-be38-evidence.json
+  --report /private/tmp/mcr-operations-native-final/qualification-01.json
+python3 scripts/mcr/check-plan.py
 ```
 
-It requires the exact private database `mcr_concert_be_operations`, refuses foreign/replaced cluster ownership, checks test counts, restarts the actual server, verifies committed report/settings/notice/receipt/audit/outbox counts and removes its owned cluster. It never accepts a caller-supplied live database URL. Reports include source, binaries, contracts and migration digests. An incomplete test run or failed cleanup revokes success.
+The evidence report filename must be new for any rerun; the harness never overwrites it or accepts a live caller-provided database URL. Both databases, socket and postmaster live under a new marker/inode-owned private cluster. Failed cleanup revokes success.
 
-## Required integration and remaining qualification
+## Required integration and remaining gates
 
-1. Delivery integrates registration and source in order, preserving newer shared exports, migration ordering and owning-file changes.
-2. Bind canonical request Auth and current event-scoped MODERATOR/OPERATOR authority with real revocation/revision fences. No new role endpoint is proposed.
-3. Bind report target/READY-media evidence and exact sourced notice review providers. Supply real ownership/revocation/fault evidence; synthetic test leases do not qualify these providers.
-4. Implement/qualify the existing place owner's transactional administrative port, preserving map immutability, event isolation, reviewed provenance and physical-selection safety.
-5. Compose current C04 transport/closed-schema DTO validation, no-store responses, command receipt follow-up and opaque pagination in root-owned adapters. This patch's UUID read selectors are internal, not a newly invented wire cursor.
-6. Adopt server feature gates in every owning feature mutation producer and invalidate/recheck subscribers on settings/phase changes. Integrate notice reads with the feed's authorized projection and private report routing with the outbox consumer.
-7. Run combined ownership/import checks and current candidate-bound HTTP/multiuser/operator gates. Keep BE36/BE38 IN_PROGRESS until their remaining task criteria are met; IN05 acceptance remains separate.
+1. Main integrates the complete scoped stack, preserves newer shared exports, and publishes only the final 0021 tree. No additional general review gate is required.
+2. Bind current canonical Auth/event roles, report target and READY-media evidence, and exact notice source review with real owner revision/revocation fences. Defaults remain unavailable.
+3. Complete monotonic event/place revisions, reviewed replacement-release administrative mutation and existing-guidance invalidation. The restricted closure port is not full BE38 place acceptance.
+4. Adopt the feature guard in every owning feature producer; invalidate and reauthorize capabilities/subscribers on changes. Exporting the helper alone does not close this requirement.
+5. Compose the existing C04 HTTP/receipt/opaque-pagination adapters, notice feed read port and private report outbox audiences. No public role endpoint is invented. Frontend ordinary/report-detail boundaries remain distinct.
+6. Run real provider/HTTP/multiuser/operator/venue and release gates against the integrated candidate. BE39 decisions, BE40 control, BE41 lifecycle, real assignments, deployment and live-data migration were not expanded by this patch.
 
-
-## Delegated place-owner increment and source review
-
-Delivery's exact additional grant names `backend/services/concert-service/src/adapters/out/repository/place/operations.rs`, `backend/services/concert-service/tests/place_operations.rs`, and only appended module/public-use exports in the existing `repository/place.rs`. No edits to migration 0003, root manifests, domain place values or existing selection code are granted by that increment. The core registration grant was: “pubmodreport domainlib+applicationlib, pubmodadmin applicationlib; pubmodreport/pubmodevent_operations repository.rs.” These are narrow explicit transfers, not general shared-file ownership.
-
-The new `PgPlaceOperations` repeats current operator authority in the caller transaction, uses the same map publication advisory lock as the owner, locks/rechecks the event map binding then actual current place state, and CASes the place state's own revision. Closure changes preserve all immutable source/review/photo metadata. Concurrent current bindings to the same release cause a safe MAP_VERSION_MISMATCH instead of cross-event writes. Changes to immutable accessibility/label/provenance also require a newly reviewed release and return that safe failure. The three authored native tests cover concurrent CAS, selection exclusion, rollback, existing/future shared bindings, stale reopen after rebinding and immutable metadata; they are not yet executed.
-
-This is a restricted closure adapter, not full place-operation acceptance. Current storage keys closure by global map/revision/place. A durable operated-release owner and binding trigger prevent future events inheriting operated state; writes after a catalog rebind fail closed to prevent local revision reuse matching stale requests. Full event-isolated closure with monotonic event/place revisions, reviewed new-release administrative publication and stale guidance invalidation still require the owning integration extension. No assertion of real physical arrival or reviewed venue facts follows from synthetic fixtures.
-
-A targeted peer source review found five concrete issues, now corrected in source: receipt-only trigger field access, expired receipt retirement, cross-target key replay classification, completed-report replay after media loss, and missing operational-read audits. The reviewer rechecked all five and found no remaining issue within that fix scope. Added regressions remain NOT_RUN pending the explicit Cargo lease. Source review does not establish runtime or task acceptance.
-
-The final feature-port signature returns `FeatureGuard<'_>` rather than a raw settings value. It retains the mutable caller connection borrow and exposes `connection()`, `settings()` and `revision()`; the caller retains the original transaction through the effect and BE15 commit. Owning producer adoption remains required.
-
-
-SQL guard evidence: `/tmp/mcr-operations-ddl-20261104-02.json` records eleven native PostgreSQL 16.14 SQL-only checks passing with owned cleanup. It exercises deferred guards on report/settings/notice/audit rows, missing/expired authority rollback, append-only audit and expired retirement without a user lease. An initial fixture attempt (`...-01.json`) failed because it supplied `clock_timestamp()` later than the notice statement timestamp; the corrected fixture uses `statement_timestamp()`. These direct SQL checks are not compiled-producer qualification and predate the later durable place-ownership constraint increment.
-
-
-Consumer comparison against FE38 base `072ea867`: the ten inspected admin definitions, five feed notice definitions and nine selected BE36/BE38 operation entries are structurally identical to the source base despite whole-file digest changes. This comparison does not repin uninspected source or policy behavior.
-
-
-## Resume and forward migration at published base 1163b827
-
-The sole writable checkout transferred to `/Users/lhs/Desktop/mcr-worktrees/be-operations-resume`, branch `codex/mcr-be-operations-resume`, at `1163b827f9e62390163788bb674d24855816e0ec`. The former checkout is read-only. The aligned persistent goal remains ACTIVE and unbudgeted; its historical checkout wording is superseded by this explicit ownership transfer, not by a claim that unfinished production work was completed.
-
-Author commits were carried with `git cherry-pick -x`: `1e05f90d` → `08f8c4cf`, `14b8d598` → `bdcce967`, `4bb2d7e8` → `f943d47d`, `041dac90` → `6c647e78`, `30b91694` → `ce52dc14`, `8af6d7b` → `92ac5681`. Current unrelated Mural, context, Profile and root exports were preserved. No unrelated shared commits were imported.
-
-The interrupted dirty guard was recovered from `/private/tmp/mcr-operations-recovery-1793741629163453000/0015_moderation_operations.sql`: exactly 8,690 bytes, SHA-256 `01622e9d134c6cb9e9950a450397e6c542af5289a8e372b331bf7ec52a786506`. Its bytes are retained in the newly reserved **0021_moderation_operations.sql**. The unpublished 0015 path is removed. Published migrations 1–12, 16, 18, 19 and 20 remain byte-for-byte unchanged.
-
-Current C04 hashes at 1163b827: admin `953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640`; feed `590cce6afc00c7a869b5a9711104550ba280ffa5875c9dc49a0753d272320801`; operations `622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839`; policy `81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb`. Ten required admin definitions and five notice definitions are structurally identical to the original source candidate. Whole-file drift is not silently ignored; the owned harness pins these current hashes. Operation/rule drift is inspected separately before final handoff.
-
-Resume checks so far: Rust 1.88 locked/offline domain/application library tests PASS (6 application + 4 domain), and exact report/event_operations/place_operations service test executables plus the migrator compile PASS. Shared BACKEND lease limits are jobs ≤2, dev/test debug 0, incremental 0, ≥8 GiB available; no alternate target, dependency install, or MEDIA target is used. Binary artifact freezing precedes release of all Cargo handles and owned PostgreSQL work.
-
-The owned harness now includes an explicitly selected ignored native helper under `tests/operations_support/` that applies the real published SQLx baseline through 0020 to a second private database. Its receipt rows are generated by SQLx, not manufactured. A deliberate late 0021 table collision must leave the baseline ledger/state intact and no partial operations tables; recovery then applies 0021, verifies all 17 current migration receipts, reapplies, and checks both fresh/forward databases across an actual PostgreSQL restart. Adapter qualification remains the 16 authored cases; the separately executed baseline helper adds one native ledger case. These resume native checks are NOT_RUN until the source-bound frozen binaries execute.
+The broader goal and BE36/BE38 task status remain unfinished where these required integrations are missing. Native adapter evidence cannot be promoted into production or whole-project acceptance.
