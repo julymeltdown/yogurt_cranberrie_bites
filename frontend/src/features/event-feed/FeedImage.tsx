@@ -37,7 +37,7 @@ function ImageContent({ controller, scope, privacy, mediaId, eventId, alt }: Mou
     && state.scope.userId === scope.userId && state.scope.eventId === scope.eventId && scope.eventId === eventId
   if (state.phase === 'ready' && scoped && state.media?.media_id === mediaId && state.media.purpose === 'POST'
     && state.media.read_path === `/api/concert/events/${eventId}/media/${mediaId}/content` && state.previewUrl?.startsWith('blob:')) {
-    return <img src={state.previewUrl} alt={alt} width={state.media.width} height={state.media.height} style={{ maxWidth: '100%', height: 'auto' }} />
+    return <img className="feed-image" src={state.previewUrl} alt={alt} width={state.media.width} height={state.media.height} loading="lazy" decoding="async" />
   }
   if (state.phase === 'failed' && privacy.isCurrent(scope)) return <div><p>Image unavailable. Post text is still available.</p><button type="button" onClick={() => { void controller.load().catch(() => controller.cancel()) }}>Retry image read</button></div>
   return <p role="status">{state.phase === 'cancelled' ? 'Image access ended.' : 'Loading image…'}</p>

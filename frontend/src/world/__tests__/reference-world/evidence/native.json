@@ -1,0 +1,729 @@
+{
+  "result": "PASS",
+  "qualification": "Production Phaser/loadMap/scenery/input/runtime with original reviewed scenery and deterministic local intent fixture. Explicit test-only host approximates assigned root seam; no canonical Auth, socket, live self/entity/avatar, device or integrated route acceptance.",
+  "base": "f837bef676cd26869c26c172a699a91b7842d832",
+  "sources": {
+    "src/world/scenes/MapScene.ts": "b78aa32b4680013567edb86cfc7b25c4922a8eb120a0f598439bc6cdbdef5bf7",
+    "src/world/illustrated/phaser.ts": "c602992cba72af1918968ef74b8d96cc2cbc2e5fd23c1e596af08119b19eda8d",
+    "src/world/illustrated/model.ts": "a53157f04d6482f1265b4d37bf08e45d832628fb046c5a5e1a4db2cac56bd29e",
+    "src/world/camera/port.ts": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9",
+    "src/world/runtime.ts": "d6b901a9614a56f418d1f1fa09f430aa493a485bd82f3a5764771117595f5a16",
+    "src/world/input/controller.ts": "48480c4d874284f3b7d6c1236d946ba3622c867e3517e9664f4a1bbab1bdc2cc",
+    "src/world/input/controls.css": "2f6aa57a8a4024e1d6f10900257e9f7e92753a3790c4824b573b3910574f540d",
+    "src/world/input/model.ts": "f1d5a5bcd4358dc6572939482aba2ea72477bc1f072caad08ba9090b67653560",
+    "src/world/input/simulation.ts": "f07ce399ae7dab373c80a97b97b6a5d960d05be38a3d84f31d0c1f60f91f37d3",
+    "src/world/composition/index.ts": "aa43e3e3d7ffaa7752371b666ac8256d3ebb816472cab2a7848505def69be02c",
+    "src/world/map/resources.ts": "af2652ab28d7d43b080c80de7c69b5e7cbd9fc27a2843092b4bd79b155f2767e",
+    "src/world/theme/compatibility.ts": "4be7d0f3806ff612be6cf911b3651ba3098c68377b8d722d87aa1ed44d83b15f",
+    "src/world/__tests__/reference-world/native.ts": "c0c182a6b1c900eac2ddf4d960aa1f7da233e61b78229df190012e10fa6bbb0e",
+    "src/world/__tests__/reference-world/native.html": "15d3749611780aceac09049a1ff879968fc9faeaa455314b7eea2db1dfeec9d5",
+    "src/world/__tests__/reference-world/native.mjs": "b6aeb5a63d4e329702332e485952d89c8f6c6e888799162a0cfadeb1d23c2aea",
+    "src/world/__tests__/illustrated/fixtures.ts": "077bb07d2edd29436677b8f6823ac1fce426786ce52647e0e472676dd0a083fc",
+    "src/world/__tests__/fixtures/movement-data.ts": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f",
+    "public/world/illustrated-runtime/bindings.json": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba",
+    "public/world/maps/geometry.json": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+    "../contracts/assets/v1/theme-manifest.schema.json": "1cd7b7da879f73768b657f8802c7502164ba9b023ea9707519df75a82de3271d",
+    "../contracts/realtime/v1/policy.json": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "initial": {
+        "runtime": {
+          "phase": "ready",
+          "widthPx": 1152,
+          "heightPx": 896,
+          "spawnFoot": {
+            "x": 496,
+            "y": 784
+          }
+        },
+        "movement": {
+          "foot": {
+            "x": 496,
+            "y": 784
+          },
+          "axis": {
+            "x": 0,
+            "y": 0
+          },
+          "path": [],
+          "nearby": [],
+          "selectedId": null
+        },
+        "intents": [],
+        "era": 1,
+        "mounts": 1,
+        "destroys": 0,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 78.39999999999998,
+          "scrollY": 228,
+          "width": 360,
+          "height": 668
+        },
+        "scenery": {
+          "textures": 3,
+          "decodedBytes": 6225920,
+          "objects": 30,
+          "peakTextures": 3,
+          "peakDecodedBytes": 6225920
+        },
+        "mapHash": "sha256:3dfdae398ae57d6d1423139fc6eac17cb99b8f6bc2c02269a3388eddbcda7ad1",
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "themeHash": "sha256:0b06c44ae61520cf0da6b822b48f13c51b6892bfb2ff5b3b5ece4ba2c3f3b305",
+        "canvas": 1
+      },
+      "normal": {
+        "scene": {
+          "x": 0,
+          "y": 88,
+          "width": 360,
+          "height": 668,
+          "visibleHeight": 668
+        },
+        "host": {
+          "width": 360,
+          "height": 668
+        },
+        "targets": [
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "x": 8,
+            "y": 684,
+            "width": 64,
+            "height": 64
+          },
+          {
+            "name": "Interact",
+            "x": 219.578125,
+            "y": 704,
+            "width": 82.421875,
+            "height": 44
+          },
+          {
+            "name": "Recenter",
+            "x": 308,
+            "y": 704,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Controls & help",
+            "x": 308,
+            "y": 96,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out",
+            "x": 318,
+            "y": 258.75,
+            "width": 51.21875,
+            "height": 48.5
+          },
+          {
+            "name": "Zoom in",
+            "x": 318,
+            "y": 315.25,
+            "width": 51.21875,
+            "height": 48.5
+          }
+        ],
+        "overflow": false
+      },
+      "stageFrame": {
+        "top": {
+          "x": 17.600000000000023,
+          "y": 189
+        },
+        "bottom": {
+          "x": 241.60000000000002,
+          "y": 340
+        }
+      },
+      "short": {
+        "scene": {
+          "x": 0,
+          "y": 88,
+          "width": 360,
+          "height": 298,
+          "visibleHeight": 298
+        },
+        "host": {
+          "width": 360,
+          "height": 298
+        },
+        "targets": [
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "x": 4,
+            "y": 326,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "name": "Interact",
+            "x": 223.578125,
+            "y": 338,
+            "width": 82.421875,
+            "height": 44
+          },
+          {
+            "name": "Recenter",
+            "x": 312,
+            "y": 338,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Controls & help",
+            "x": 312,
+            "y": 92,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out",
+            "x": 322,
+            "y": 254.75,
+            "width": 51.21875,
+            "height": 48.5
+          },
+          {
+            "name": "Zoom in",
+            "x": 322,
+            "y": 311.25,
+            "width": 51.21875,
+            "height": 48.5
+          }
+        ],
+        "overflow": false
+      },
+      "eraStates": [
+        {
+          "era": 0,
+          "themeHash": "sha256:3127d21e678853bcd9715de61bfabb8e223b7d11895c9fcbc30f4b036ba94375",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        },
+        {
+          "era": 2,
+          "themeHash": "sha256:5b419968154beeab94f717e50e2ef038d10af76d33923237fc1776ab0e600fbf",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        },
+        {
+          "era": 1,
+          "themeHash": "sha256:0b06c44ae61520cf0da6b822b48f13c51b6892bfb2ff5b3b5ece4ba2c3f3b305",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        }
+      ],
+      "cleanup": {
+        "canvas": 0,
+        "controls": 0,
+        "scenery": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 6,
+          "peakDecodedBytes": 12451840
+        },
+        "destroys": 1
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "runtime": {
+          "phase": "ready",
+          "widthPx": 1152,
+          "heightPx": 896,
+          "spawnFoot": {
+            "x": 496,
+            "y": 784
+          }
+        },
+        "movement": {
+          "foot": {
+            "x": 496,
+            "y": 784
+          },
+          "axis": {
+            "x": 0,
+            "y": 0
+          },
+          "path": [],
+          "nearby": [],
+          "selectedId": null
+        },
+        "intents": [],
+        "era": 1,
+        "mounts": 1,
+        "destroys": 0,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 67.60000000000002,
+          "scrollY": 184,
+          "width": 390,
+          "height": 712
+        },
+        "scenery": {
+          "textures": 3,
+          "decodedBytes": 6225920,
+          "objects": 30,
+          "peakTextures": 3,
+          "peakDecodedBytes": 6225920
+        },
+        "mapHash": "sha256:3dfdae398ae57d6d1423139fc6eac17cb99b8f6bc2c02269a3388eddbcda7ad1",
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "themeHash": "sha256:0b06c44ae61520cf0da6b822b48f13c51b6892bfb2ff5b3b5ece4ba2c3f3b305",
+        "canvas": 1
+      },
+      "normal": {
+        "scene": {
+          "x": 0,
+          "y": 88,
+          "width": 390,
+          "height": 712,
+          "visibleHeight": 712
+        },
+        "host": {
+          "width": 390,
+          "height": 712
+        },
+        "targets": [
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "x": 8,
+            "y": 728,
+            "width": 64,
+            "height": 64
+          },
+          {
+            "name": "Interact",
+            "x": 249.578125,
+            "y": 748,
+            "width": 82.421875,
+            "height": 44
+          },
+          {
+            "name": "Recenter",
+            "x": 338,
+            "y": 748,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Controls & help",
+            "x": 338,
+            "y": 96,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out",
+            "x": 348,
+            "y": 258.75,
+            "width": 51.21875,
+            "height": 48.5
+          },
+          {
+            "name": "Zoom in",
+            "x": 348,
+            "y": 315.25,
+            "width": 51.21875,
+            "height": 48.5
+          }
+        ],
+        "overflow": false
+      },
+      "stageFrame": {
+        "top": {
+          "x": 28.399999999999977,
+          "y": 233
+        },
+        "bottom": {
+          "x": 252.39999999999998,
+          "y": 384
+        }
+      },
+      "short": {
+        "scene": {
+          "x": 0,
+          "y": 88,
+          "width": 390,
+          "height": 298,
+          "visibleHeight": 298
+        },
+        "host": {
+          "width": 390,
+          "height": 298
+        },
+        "targets": [
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "x": 4,
+            "y": 326,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "name": "Interact",
+            "x": 253.578125,
+            "y": 338,
+            "width": 82.421875,
+            "height": 44
+          },
+          {
+            "name": "Recenter",
+            "x": 342,
+            "y": 338,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Controls & help",
+            "x": 342,
+            "y": 92,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out",
+            "x": 352,
+            "y": 254.75,
+            "width": 51.21875,
+            "height": 48.5
+          },
+          {
+            "name": "Zoom in",
+            "x": 352,
+            "y": 311.25,
+            "width": 51.21875,
+            "height": 48.5
+          }
+        ],
+        "overflow": false
+      },
+      "eraStates": [
+        {
+          "era": 0,
+          "themeHash": "sha256:3127d21e678853bcd9715de61bfabb8e223b7d11895c9fcbc30f4b036ba94375",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        },
+        {
+          "era": 2,
+          "themeHash": "sha256:5b419968154beeab94f717e50e2ef038d10af76d33923237fc1776ab0e600fbf",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        },
+        {
+          "era": 1,
+          "themeHash": "sha256:0b06c44ae61520cf0da6b822b48f13c51b6892bfb2ff5b3b5ece4ba2c3f3b305",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        }
+      ],
+      "cleanup": {
+        "canvas": 0,
+        "controls": 0,
+        "scenery": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 6,
+          "peakDecodedBytes": 12451840
+        },
+        "destroys": 1
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "initial": {
+        "runtime": {
+          "phase": "ready",
+          "widthPx": 1152,
+          "heightPx": 896,
+          "spawnFoot": {
+            "x": 496,
+            "y": 784
+          }
+        },
+        "movement": {
+          "foot": {
+            "x": 496,
+            "y": 784
+          },
+          "axis": {
+            "x": 0,
+            "y": 0
+          },
+          "path": [],
+          "nearby": [],
+          "selectedId": null
+        },
+        "intents": [],
+        "era": 1,
+        "mounts": 1,
+        "destroys": 0,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 53.19999999999999,
+          "scrollY": 96,
+          "width": 430,
+          "height": 800
+        },
+        "scenery": {
+          "textures": 3,
+          "decodedBytes": 6225920,
+          "objects": 30,
+          "peakTextures": 3,
+          "peakDecodedBytes": 6225920
+        },
+        "mapHash": "sha256:3dfdae398ae57d6d1423139fc6eac17cb99b8f6bc2c02269a3388eddbcda7ad1",
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "themeHash": "sha256:0b06c44ae61520cf0da6b822b48f13c51b6892bfb2ff5b3b5ece4ba2c3f3b305",
+        "canvas": 1
+      },
+      "normal": {
+        "scene": {
+          "x": 0,
+          "y": 88,
+          "width": 430,
+          "height": 800,
+          "visibleHeight": 800
+        },
+        "host": {
+          "width": 430,
+          "height": 800
+        },
+        "targets": [
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "x": 8,
+            "y": 816,
+            "width": 64,
+            "height": 64
+          },
+          {
+            "name": "Interact",
+            "x": 289.578125,
+            "y": 836,
+            "width": 82.421875,
+            "height": 44
+          },
+          {
+            "name": "Recenter",
+            "x": 378,
+            "y": 836,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Controls & help",
+            "x": 378,
+            "y": 96,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out",
+            "x": 388,
+            "y": 258.75,
+            "width": 51.21875,
+            "height": 48.5
+          },
+          {
+            "name": "Zoom in",
+            "x": 388,
+            "y": 315.25,
+            "width": 51.21875,
+            "height": 48.5
+          }
+        ],
+        "overflow": false
+      },
+      "stageFrame": {
+        "top": {
+          "x": 42.80000000000001,
+          "y": 321
+        },
+        "bottom": {
+          "x": 266.8,
+          "y": 472
+        }
+      },
+      "short": {
+        "scene": {
+          "x": 0,
+          "y": 88,
+          "width": 430,
+          "height": 298,
+          "visibleHeight": 298
+        },
+        "host": {
+          "width": 430,
+          "height": 298
+        },
+        "targets": [
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "x": 4,
+            "y": 326,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "name": "Interact",
+            "x": 293.578125,
+            "y": 338,
+            "width": 82.421875,
+            "height": 44
+          },
+          {
+            "name": "Recenter",
+            "x": 382,
+            "y": 338,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Controls & help",
+            "x": 382,
+            "y": 92,
+            "width": 44,
+            "height": 44
+          },
+          {
+            "name": "Zoom out",
+            "x": 392,
+            "y": 254.75,
+            "width": 51.21875,
+            "height": 48.5
+          },
+          {
+            "name": "Zoom in",
+            "x": 392,
+            "y": 311.25,
+            "width": 51.21875,
+            "height": 48.5
+          }
+        ],
+        "overflow": false
+      },
+      "eraStates": [
+        {
+          "era": 0,
+          "themeHash": "sha256:3127d21e678853bcd9715de61bfabb8e223b7d11895c9fcbc30f4b036ba94375",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        },
+        {
+          "era": 2,
+          "themeHash": "sha256:5b419968154beeab94f717e50e2ef038d10af76d33923237fc1776ab0e600fbf",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        },
+        {
+          "era": 1,
+          "themeHash": "sha256:0b06c44ae61520cf0da6b822b48f13c51b6892bfb2ff5b3b5ece4ba2c3f3b305",
+          "scenery": {
+            "textures": 3,
+            "decodedBytes": 6225920,
+            "objects": 30,
+            "peakTextures": 6,
+            "peakDecodedBytes": 12451840
+          }
+        }
+      ],
+      "cleanup": {
+        "canvas": 0,
+        "controls": 0,
+        "scenery": {
+          "textures": 0,
+          "decodedBytes": 0,
+          "objects": 0,
+          "peakTextures": 6,
+          "peakDecodedBytes": 12451840
+        },
+        "destroys": 1
+      }
+    }
+  ],
+  "artifacts": {
+    "startup-360.jpg": "2a11e97ae3aad307eec9d1c89dd08946a9b0b0f35d1d3f5019cd4205c606fd74",
+    "startup-390.jpg": "72f16a1a5d89ca0ea4c11be47830a7f615411a49d8f20f20fcdacb8a7ed857bb",
+    "era-0-390.jpg": "91fb77293b573dd6d6cfe4fcdebdbc0e86af1a867bfa5f1e05f2c3c496151707",
+    "era-2-390.jpg": "5f3b17db716f523a0f9d7dfe908c14b6744462f5e2167712db1ca5c03f28e7a4",
+    "short-help-390.jpg": "93740cca3f0613cfbde03de764e38bd2860c109dd4cb7c1821e4f66a01eadb7b",
+    "expanded-help-390.jpg": "63e03740f826173ca3b80305978ab9a92f73dbc77582302ffad8309cf495191c",
+    "error-390.jpg": "ff444e0820ca5e65b1d211de8e7c7aa4ce493b55c8ef42202ccffb2b60f473c2",
+    "startup-430.jpg": "a6ed1e45424ddb3b04eb02a88926a5a80a39c95fb26a83746631547faa2781e4"
+  },
+  "errors": [],
+  "referenceHash": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "browser": "156.0.8078.80",
+  "positiveSelection": {
+    "kind": "TEST ONLY synthetic terrain with production input/runtime",
+    "selectedId": "inspect_concept",
+    "oneShot": true,
+    "cleanup": {
+      "canvas": 0,
+      "controls": 0,
+      "scenery": {
+        "textures": 0,
+        "decodedBytes": 0,
+        "objects": 0,
+        "peakTextures": 1,
+        "peakDecodedBytes": 12288
+      },
+      "destroys": 1
+    }
+  }
+}

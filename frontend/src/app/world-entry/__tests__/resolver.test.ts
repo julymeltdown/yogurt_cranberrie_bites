@@ -18,6 +18,18 @@ const assetResponse = (url: string, bytes: Uint8Array) => {
   Object.defineProperty(response, 'url', { value: url }); return response
 }
 describe('production world entry resolver boundaries', () => {
+  it('shares warm and overlapping public art within this release while rechecking privacy on cache hits', async () => {
+    const h = setup(), request = await requestFor(h.auth), assetFetch = vi.fn<typeof fetch>(async (input) => assetResponse(String(input), assetBytes.png))
+    const result = await createWorldEntryResolver({ ...options(h.auth), assetFetch })(request)
+    const texture = (request.bootstrap.document as unknown as Bundle).avatar_manifest.atlas.texture
+    const resource = { path: texture.path!, sha256: texture.sha256!, kind: 'png' as const }
+    await Promise.all([result.resources.read(resource, request.signal), result.resources.read(resource, request.signal)])
+    await result.resources.read(resource, request.signal)
+    expect(assetFetch).toHaveBeenCalledTimes(1)
+    h.auth.privacy.changePolicy(request.privacyScope, 'block')
+    await expect(result.resources.read(resource, request.signal)).rejects.toThrow()
+    expect(assetFetch).toHaveBeenCalledTimes(1)
+  })
   it('uses the exact immutable bootstrap and persisted theme, one canonical protected no-store room read, and validated default', async () => {
     const h = setup(), request = await requestFor(h.auth), resolve = createWorldEntryResolver(options(h.auth))
     const loadBootstrap = vi.spyOn(h.auth, 'loadBootstrap'), result = await resolve(request)

@@ -125,6 +125,20 @@ impl ProductionOwners {
             lease: Mutex::new(None),
         })
     }
+    // Caller holds the bridge native-handoff fence. Unrelated parent authority
+    // is retained; its candidate cache is refreshed without revoking its session.
+    pub(crate) fn forget_invalidated(&self, users: &BTreeSet<Uuid>) -> Result<(), WorldError> {
+        self.plans.lock().map_err(unavailable)?.retain(|_, p| {
+            if users.contains(&p.parent.actor()) {
+                p.parent.cancel();
+                return false;
+            }
+            !p.candidates
+                .iter()
+                .any(|c| users.contains(&c.context.query().subject.uuid()))
+        });
+        Ok(())
+    }
     pub(crate) fn fence(&self) -> Arc<Mutex<()>> {
         self.fence.clone()
     }

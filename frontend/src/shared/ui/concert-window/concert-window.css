@@ -164,3 +164,19 @@
 @media (prefers-reduced-motion: reduce) {
   .concert-kit, .concert-kit * { scroll-behavior: auto; animation: none; transition: none; }
 }
+
+/* Reference-density contract, scoped to this authored shared kit. */
+.concert-kit { --concert-ink:#191817; --concert-paper:#e9e1d4; --concert-red:#a2232b; font-size:14px; line-height:1.35; }
+.concert-window { border-width:3px; }
+.concert-window__titlebar { min-height:44px; padding-inline:6px 0; gap:5px; }
+.concert-window__titlebar h1, .concert-window__titlebar h2, .concert-window__titlebar h3 { font-size:23px; letter-spacing:.015em; }
+.concert-window__body, .concert-window__footer { padding:6px; }
+.concert-action { padding:6px 10px; font-size:14px; }
+.concert-row { gap:6px; padding:7px 0; }
+.concert-row h3 { font-size:16px; }
+.concert-row__metadata { font-size:12px; }
+.concert-row__description { font-size:13px; }
+.concert-window--embedded { border:0; box-shadow:none; background:transparent; }
+.concert-window--embedded::before { display:none; }
+.concert-window--embedded > .concert-window__titlebar { position:absolute; inline-size:1px; block-size:1px; min-height:0; margin:-1px; padding:0; overflow:hidden; clip-path:inset(50%); border:0; }
+.concert-window--embedded > .concert-window__body { padding:0; }
