@@ -2,6 +2,7 @@
 //! fail-closed until a real cross-owner authority fence is qualified.
 mod persistence;
 mod query;
+pub mod read_registry;
 #[cfg(test)]
 mod tests;
 

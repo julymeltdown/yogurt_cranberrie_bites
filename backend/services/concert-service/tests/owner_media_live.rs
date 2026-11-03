@@ -198,6 +198,15 @@ async fn binding_digest_covers_body_session_request_deadline_key_and_target() {
                 .digest()
         );
     }
+    let mut spaced = b.clone();
+    spaced.push(b' ');
+    assert_ne!(
+        a.binding().digest(),
+        request(i, "initConcertUpload", key, None, spaced)
+            .unwrap()
+            .binding()
+            .digest()
+    );
     assert_ne!(
         a.binding().digest(),
         request(i, "initConcertUpload", Uuid::new_v4(), None, b)
@@ -205,6 +214,29 @@ async fn binding_digest_covers_body_session_request_deadline_key_and_target() {
             .binding()
             .digest()
     );
+}
+#[tokio::test]
+async fn expired_original_request_never_acquires_authority_or_database() {
+    let hits = Arc::new(AtomicUsize::new(0));
+    let pool = sqlx::postgres::PgPoolOptions::new()
+        .connect_lazy("postgres://unused:unused@127.0.0.1:1/never_connect")
+        .unwrap();
+    let s = runtime(pool, Arc::new(DeniedFence(hits.clone())));
+    let i = OwnerMediaIdentity {
+        deadline: AuthorityRpcDeadline::new(
+            Utc::now().timestamp_micros() + 50_000,
+            Duration::from_secs(1),
+        )
+        .unwrap(),
+        ..identity()
+    };
+    let r = request(i, "initConcertUpload", Uuid::new_v4(), None, init(&png())).unwrap();
+    tokio::time::sleep(Duration::from_millis(60)).await;
+    assert!(matches!(
+        s.dispatch(r).await,
+        Err(CommandError::Unavailable)
+    ));
+    assert_eq!(hits.load(Ordering::SeqCst), 0);
 }
 struct DeniedFence(Arc<AtomicUsize>);
 #[async_trait]
@@ -333,6 +365,23 @@ async fn fixture() -> (PgPool, OwnerMediaIdentity, OwnerMediaRuntime) {
     let s = runtime(p.clone(), Arc::new(FixtureFence));
     (p, i, s)
 }
+async fn add_actor(p: &PgPool, i: OwnerMediaIdentity) {
+    sqlx::query("insert into owner_media_fixture_auth values($1,$2,true)")
+        .bind(i.actor)
+        .bind(i.session_family)
+        .execute(p)
+        .await
+        .unwrap();
+    sqlx::query(
+        "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
+    )
+    .bind(i.event)
+    .bind(i.actor)
+    .execute(p)
+    .await
+    .unwrap();
+    sqlx::query("insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false)").bind(i.event).bind(i.actor).execute(p).await.unwrap();
+}
 async fn clean(p: PgPool, i: OwnerMediaIdentity) {
     // Durable BE15 receipts intentionally retain event references until this entire
     // owned cluster is removed by the harness. Do not delete the event here.
@@ -421,8 +470,73 @@ async fn native_owner_upload_metadata_content_recovery_and_revocation() {
         assert_eq!(r["operation_id"], op);
         assert_eq!(r["state"], "SUCCEEDED");
     }
+    // A READ_ONLY transition forbids writes while preserving current owner reads
+    // and recovery of the original immutable receipt under a fresh event revision.
+    sqlx::query(
+        "update concert_events set phase='READ_ONLY',revision=revision+1 where event_id=$1",
+    )
+    .bind(i.event)
+    .execute(&p)
+    .await
+    .unwrap();
+    assert_eq!(
+        json(
+            s.dispatch(request(i, "getConcertMedia", Uuid::nil(), Some(id), vec![]).unwrap())
+                .await
+                .unwrap()
+        )["state"],
+        "READY"
+    );
+    let target=format!("/api/concert/events/{}/commands?operation_id=finalizeConcertUpload&idempotency_key={final_key}",i.event);
+    assert_eq!(
+        json(
+            s.dispatch(
+                OwnerMediaRequest::from_verified(
+                    i,
+                    "getConcertCommandStatus",
+                    "GET",
+                    &target,
+                    "",
+                    "",
+                    vec![]
+                )
+                .unwrap()
+            )
+            .await
+            .unwrap()
+        )["resource_id"],
+        id.to_string()
+    );
+    let foreign = OwnerMediaIdentity {
+        actor: Uuid::new_v4(),
+        session_family: Uuid::new_v4(),
+        ..i
+    };
+    add_actor(&p, foreign).await;
+    assert!(matches!(
+        s.dispatch(request(foreign, "readConcertMedia", Uuid::nil(), Some(id), vec![]).unwrap())
+            .await,
+        Err(CommandError::Denied)
+    ));
     sqlx::query("update owner_media_fixture_auth set live=false where actor=$1")
         .bind(i.actor)
+        .execute(&p)
+        .await
+        .unwrap();
+    assert!(matches!(
+        s.dispatch(request(i, "getConcertMedia", Uuid::nil(), Some(id), vec![]).unwrap())
+            .await,
+        Err(CommandError::Denied)
+    ));
+    sqlx::query("update owner_media_fixture_auth set live=true where actor=$1")
+        .bind(i.actor)
+        .execute(&p)
+        .await
+        .unwrap();
+    // Even the uploader loses this private runtime's access after target linkage.
+    sqlx::query("update concert_media set target_id=$2,revision=revision+1 where media_id=$1")
+        .bind(id)
+        .bind(Uuid::new_v4())
         .execute(&p)
         .await
         .unwrap();
@@ -477,6 +591,7 @@ async fn native_wrong_owner_read_only_suspension_and_failed_bytes_leave_no_effec
         session_family: Uuid::new_v4(),
         ..i
     };
+    add_actor(&p, foreign).await;
     assert!(s
         .dispatch(request(foreign, "getConcertMedia", Uuid::nil(), Some(id), vec![]).unwrap())
         .await
@@ -509,4 +624,89 @@ async fn native_wrong_owner_read_only_suspension_and_failed_bytes_leave_no_effec
         Err(CommandError::Denied)
     ));
     clean(p, i).await;
+}
+
+#[tokio::test]
+async fn native_transaction_settlement_proves_terminal_xid_not_backend_absence() {
+    use media_runtime::settlement::*;
+    let p = owner_media_live_support::owned_pool().await.unwrap();
+    let mut tx = p.begin().await.unwrap();
+    let committed = MediaTransactionIdentity::capture_in(&mut tx).await.unwrap();
+    assert_eq!(
+        transaction_state(&p, &committed).await,
+        MediaTransactionState::InProgress
+    );
+    tx.commit().await.unwrap();
+    assert_eq!(
+        transaction_state(&p, &committed).await,
+        MediaTransactionState::Committed
+    );
+    let mut tx = p.begin().await.unwrap();
+    let aborted = MediaTransactionIdentity::capture_in(&mut tx).await.unwrap();
+    tx.rollback().await.unwrap();
+    assert_eq!(
+        transaction_state(&p, &aborted).await,
+        MediaTransactionState::Aborted
+    );
+    assert_ne!(committed.xid(), aborted.xid());
+    p.close().await;
+}
+
+#[tokio::test]
+async fn native_internal_resolver_binds_actual_instance_cluster_request_and_receipt_scope() {
+    use media_runtime::settlement::*;
+    let p = owner_media_live_support::owned_pool().await.unwrap();
+    let i = identity();
+    let r = request(i, "initConcertUpload", Uuid::new_v4(), None, init(&png())).unwrap();
+    let guard_digest = [7; 32];
+    let instance = Uuid::new_v4();
+    let mut tx = p.begin().await.unwrap();
+    let actual = MediaTransactionIdentity::capture_in(&mut tx).await.unwrap();
+    tx.commit().await.unwrap();
+    let mut binding = MediaResolveBinding {
+        actor: i.actor,
+        event: i.event,
+        session_family: i.session_family,
+        request_id: i.request_id,
+        operation: r.binding().operation.into(),
+        guard_digest,
+        body_digest: r.binding().body_sha256,
+        registration_id: Uuid::new_v4(),
+    };
+    let mut transaction = MediaResolveTransaction {
+        system_identifier: actual.system_identifier().into(),
+        database_oid: actual.database_oid(),
+        full_xid: actual.xid().into(),
+        backend_pid: actual.backend_pid(),
+        backend_started_unix_micros: actual.backend_started_at().timestamp_micros(),
+        producer_instance_id: instance,
+        settlement_reference: settlement_reference(r.binding(), guard_digest).unwrap(),
+        effect_binding_digest: guard_digest,
+    };
+    let settled = resolve_transaction(&p, instance, &binding, &transaction)
+        .await
+        .unwrap();
+    assert_eq!(settled.state, MediaTransactionState::Committed);
+    // This committed read-only fixture has no command receipt. Absence never
+    // rewrites its transaction outcome into an asserted rollback.
+    assert!(settled.receipt_evidence.is_empty());
+    binding.request_id = Uuid::new_v4();
+    assert!(matches!(
+        resolve_transaction(&p, instance, &binding, &transaction).await,
+        Err(CommandError::Denied)
+    ));
+    binding.request_id = i.request_id;
+    assert!(matches!(
+        resolve_transaction(&p, Uuid::new_v4(), &binding, &transaction).await,
+        Err(CommandError::InvalidInput)
+    ));
+    transaction.system_identifier = "1".into();
+    assert_eq!(
+        resolve_transaction(&p, instance, &binding, &transaction)
+            .await
+            .unwrap()
+            .state,
+        MediaTransactionState::Unknown
+    );
+    p.close().await;
 }

@@ -1,0 +1,693 @@
+{
+  "result": "PASS",
+  "qualification": "Actual createAppRoutes + default SocialPanel feed/thread + CommunityFeatures GiftsPanel, with RootMediaProvider at fixture shell boundary. Explicit authorized row/identity/bootstrap/availability fixtures; loopback protected media HTTP and instrumented world host. Production WorldShell wrapping remains separate owner work; no live-service/multiuser/device/readiness claim.",
+  "errors": [],
+  "cases": [
+    {
+      "width": 360,
+      "coldPostRequests": 2,
+      "warmPostAdditionalRequests": 0,
+      "threadAdditionalPostRequests": 0,
+      "belowFoldBeforeVisibleRequests": 0,
+      "belowFoldAfterVisibleRequests": 2,
+      "giveawayRequests": 2,
+      "geometryPreservedOnExit": true,
+      "responses": [
+        {
+          "media": "00000000-0000-4000-8000-000000000051",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000200",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000201",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000202",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000051",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000200",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000201",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000202",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000203",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000204",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000205",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000206",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000203",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000204",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000205",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000206",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000052",
+          "purpose": "GIVEAWAY",
+          "kind": "metadata",
+          "responseBodyBytes": 273
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000052",
+          "purpose": "GIVEAWAY",
+          "kind": "content",
+          "responseBodyBytes": 863
+        }
+      ],
+      "resourceTiming": [
+        {
+          "media": "contract.ts",
+          "encodedBodySize": 13469,
+          "transferSize": 13769,
+          "decodedBodySize": 13469
+        },
+        {
+          "media": "image-policy.ts",
+          "encodedBodySize": 13148,
+          "transferSize": 13448,
+          "decodedBodySize": 13148
+        },
+        {
+          "media": "read-media.ts",
+          "encodedBodySize": 14152,
+          "transferSize": 14452,
+          "decodedBodySize": 14152
+        },
+        {
+          "media": "preview.ts",
+          "encodedBodySize": 712,
+          "transferSize": 1012,
+          "decodedBodySize": 712
+        }
+      ],
+      "explicitDecodeCalls": 2,
+      "internalDecoderCacheClaims": "NOT_MEASURED",
+      "before": {
+        "requests": [
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/feed",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/notices",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000202",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000202/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000203",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000203/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/posts/00000000-0000-4000-8000-00000000003c",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052/content"
+        ],
+        "created": [
+          "blob:http://127.0.0.1:5173/e25f4b32-cb33-4ca0-9579-b8a37d034df0",
+          "blob:http://127.0.0.1:5173/cb9b0c41-71eb-44ec-96c7-c371bbf9863f",
+          "blob:http://127.0.0.1:5173/29e4af54-7fa8-4271-953b-bb8eb701b66d",
+          "blob:http://127.0.0.1:5173/93a69576-0099-4c6c-be53-f67bf217dbce",
+          "blob:http://127.0.0.1:5173/94e138a1-9890-47b3-90af-2dfbbed4914e",
+          "blob:http://127.0.0.1:5173/433fedec-8691-418f-896f-2d2c62d9e435",
+          "blob:http://127.0.0.1:5173/23705788-7ab0-4460-9f6d-b610861e8163",
+          "blob:http://127.0.0.1:5173/6b697164-c3af-4bf6-872f-17f13705967f",
+          "blob:http://127.0.0.1:5173/3d720144-2ebf-41ba-98b0-77cf54e846d7"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/94e138a1-9890-47b3-90af-2dfbbed4914e"
+        ],
+        "world": {
+          "mounts": 1,
+          "games": 1,
+          "connections": 1,
+          "peakGames": 1
+        }
+      },
+      "after": {
+        "requests": [
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/feed",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/notices",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000202",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000202/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000203",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000203/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/posts/00000000-0000-4000-8000-00000000003c",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways"
+        ],
+        "created": [
+          "blob:http://127.0.0.1:5173/e25f4b32-cb33-4ca0-9579-b8a37d034df0",
+          "blob:http://127.0.0.1:5173/cb9b0c41-71eb-44ec-96c7-c371bbf9863f",
+          "blob:http://127.0.0.1:5173/29e4af54-7fa8-4271-953b-bb8eb701b66d",
+          "blob:http://127.0.0.1:5173/93a69576-0099-4c6c-be53-f67bf217dbce",
+          "blob:http://127.0.0.1:5173/94e138a1-9890-47b3-90af-2dfbbed4914e",
+          "blob:http://127.0.0.1:5173/433fedec-8691-418f-896f-2d2c62d9e435",
+          "blob:http://127.0.0.1:5173/23705788-7ab0-4460-9f6d-b610861e8163",
+          "blob:http://127.0.0.1:5173/6b697164-c3af-4bf6-872f-17f13705967f",
+          "blob:http://127.0.0.1:5173/3d720144-2ebf-41ba-98b0-77cf54e846d7"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/94e138a1-9890-47b3-90af-2dfbbed4914e",
+          "blob:http://127.0.0.1:5173/e25f4b32-cb33-4ca0-9579-b8a37d034df0",
+          "blob:http://127.0.0.1:5173/cb9b0c41-71eb-44ec-96c7-c371bbf9863f",
+          "blob:http://127.0.0.1:5173/29e4af54-7fa8-4271-953b-bb8eb701b66d",
+          "blob:http://127.0.0.1:5173/93a69576-0099-4c6c-be53-f67bf217dbce",
+          "blob:http://127.0.0.1:5173/433fedec-8691-418f-896f-2d2c62d9e435",
+          "blob:http://127.0.0.1:5173/23705788-7ab0-4460-9f6d-b610861e8163",
+          "blob:http://127.0.0.1:5173/6b697164-c3af-4bf6-872f-17f13705967f",
+          "blob:http://127.0.0.1:5173/3d720144-2ebf-41ba-98b0-77cf54e846d7"
+        ],
+        "world": {
+          "mounts": 2,
+          "games": 1,
+          "connections": 1,
+          "peakGames": 1
+        }
+      }
+    },
+    {
+      "width": 390,
+      "coldPostRequests": 2,
+      "warmPostAdditionalRequests": 0,
+      "threadAdditionalPostRequests": 0,
+      "belowFoldBeforeVisibleRequests": 0,
+      "belowFoldAfterVisibleRequests": 2,
+      "giveawayRequests": 2,
+      "geometryPreservedOnExit": true,
+      "responses": [
+        {
+          "media": "00000000-0000-4000-8000-000000000051",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000200",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000201",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000202",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000051",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000200",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000201",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000202",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000204",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000205",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000206",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000204",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000205",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000206",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000052",
+          "purpose": "GIVEAWAY",
+          "kind": "metadata",
+          "responseBodyBytes": 273
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000052",
+          "purpose": "GIVEAWAY",
+          "kind": "content",
+          "responseBodyBytes": 863
+        }
+      ],
+      "resourceTiming": [
+        {
+          "media": "contract.ts",
+          "encodedBodySize": 13469,
+          "transferSize": 13769,
+          "decodedBodySize": 13469
+        },
+        {
+          "media": "image-policy.ts",
+          "encodedBodySize": 13148,
+          "transferSize": 13448,
+          "decodedBodySize": 13148
+        },
+        {
+          "media": "read-media.ts",
+          "encodedBodySize": 14152,
+          "transferSize": 14452,
+          "decodedBodySize": 14152
+        },
+        {
+          "media": "preview.ts",
+          "encodedBodySize": 712,
+          "transferSize": 1012,
+          "decodedBodySize": 712
+        }
+      ],
+      "explicitDecodeCalls": 2,
+      "internalDecoderCacheClaims": "NOT_MEASURED",
+      "before": {
+        "requests": [
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/feed",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/notices",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000202",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000202/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/posts/00000000-0000-4000-8000-00000000003c",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052/content"
+        ],
+        "created": [
+          "blob:http://127.0.0.1:5173/deb5dc43-7480-4bf2-8027-9cb18565f78e",
+          "blob:http://127.0.0.1:5173/cb46c074-4c07-418e-907a-e245283167b6",
+          "blob:http://127.0.0.1:5173/5ca0c2ac-13f2-43f5-aa8c-26f16b00433d",
+          "blob:http://127.0.0.1:5173/00ef811c-9560-4bb5-8f3e-3309b52db448",
+          "blob:http://127.0.0.1:5173/9d4de361-ec6d-4246-8835-94af61ea5b50",
+          "blob:http://127.0.0.1:5173/17d525bc-75e4-44f8-b9ea-d4537cf58b2f",
+          "blob:http://127.0.0.1:5173/a20bf3f2-180e-43c7-a9cd-396757681f42",
+          "blob:http://127.0.0.1:5173/99a4c9ee-f6f3-4bb6-bf82-1441479ee7cf"
+        ],
+        "revoked": [],
+        "world": {
+          "mounts": 1,
+          "games": 1,
+          "connections": 1,
+          "peakGames": 1
+        }
+      },
+      "after": {
+        "requests": [
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/feed",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/notices",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000202",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000202/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/posts/00000000-0000-4000-8000-00000000003c",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways"
+        ],
+        "created": [
+          "blob:http://127.0.0.1:5173/deb5dc43-7480-4bf2-8027-9cb18565f78e",
+          "blob:http://127.0.0.1:5173/cb46c074-4c07-418e-907a-e245283167b6",
+          "blob:http://127.0.0.1:5173/5ca0c2ac-13f2-43f5-aa8c-26f16b00433d",
+          "blob:http://127.0.0.1:5173/00ef811c-9560-4bb5-8f3e-3309b52db448",
+          "blob:http://127.0.0.1:5173/9d4de361-ec6d-4246-8835-94af61ea5b50",
+          "blob:http://127.0.0.1:5173/17d525bc-75e4-44f8-b9ea-d4537cf58b2f",
+          "blob:http://127.0.0.1:5173/a20bf3f2-180e-43c7-a9cd-396757681f42",
+          "blob:http://127.0.0.1:5173/99a4c9ee-f6f3-4bb6-bf82-1441479ee7cf"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/deb5dc43-7480-4bf2-8027-9cb18565f78e",
+          "blob:http://127.0.0.1:5173/cb46c074-4c07-418e-907a-e245283167b6",
+          "blob:http://127.0.0.1:5173/5ca0c2ac-13f2-43f5-aa8c-26f16b00433d",
+          "blob:http://127.0.0.1:5173/00ef811c-9560-4bb5-8f3e-3309b52db448",
+          "blob:http://127.0.0.1:5173/9d4de361-ec6d-4246-8835-94af61ea5b50",
+          "blob:http://127.0.0.1:5173/17d525bc-75e4-44f8-b9ea-d4537cf58b2f",
+          "blob:http://127.0.0.1:5173/a20bf3f2-180e-43c7-a9cd-396757681f42",
+          "blob:http://127.0.0.1:5173/99a4c9ee-f6f3-4bb6-bf82-1441479ee7cf"
+        ],
+        "world": {
+          "mounts": 2,
+          "games": 1,
+          "connections": 1,
+          "peakGames": 1
+        }
+      }
+    },
+    {
+      "width": 430,
+      "coldPostRequests": 2,
+      "warmPostAdditionalRequests": 0,
+      "threadAdditionalPostRequests": 0,
+      "belowFoldBeforeVisibleRequests": 0,
+      "belowFoldAfterVisibleRequests": 2,
+      "giveawayRequests": 2,
+      "geometryPreservedOnExit": true,
+      "responses": [
+        {
+          "media": "00000000-0000-4000-8000-000000000051",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000200",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000201",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000051",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000200",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000201",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000204",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000205",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000206",
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000204",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000205",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000206",
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 863
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000052",
+          "purpose": "GIVEAWAY",
+          "kind": "metadata",
+          "responseBodyBytes": 273
+        },
+        {
+          "media": "00000000-0000-4000-8000-000000000052",
+          "purpose": "GIVEAWAY",
+          "kind": "content",
+          "responseBodyBytes": 863
+        }
+      ],
+      "resourceTiming": [
+        {
+          "media": "image-policy.ts",
+          "encodedBodySize": 13148,
+          "transferSize": 13448,
+          "decodedBodySize": 13148
+        },
+        {
+          "media": "contract.ts",
+          "encodedBodySize": 13469,
+          "transferSize": 13769,
+          "decodedBodySize": 13469
+        },
+        {
+          "media": "read-media.ts",
+          "encodedBodySize": 14152,
+          "transferSize": 14452,
+          "decodedBodySize": 14152
+        },
+        {
+          "media": "preview.ts",
+          "encodedBodySize": 712,
+          "transferSize": 1012,
+          "decodedBodySize": 712
+        }
+      ],
+      "explicitDecodeCalls": 2,
+      "internalDecoderCacheClaims": "NOT_MEASURED",
+      "before": {
+        "requests": [
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/feed",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/notices",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/posts/00000000-0000-4000-8000-00000000003c",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052/content"
+        ],
+        "created": [
+          "blob:http://127.0.0.1:5173/74d077f9-0cb2-48e3-bfd4-e280e384bd6f",
+          "blob:http://127.0.0.1:5173/e4b77ca9-ecdf-4087-9eb3-19437bbdcf0d",
+          "blob:http://127.0.0.1:5173/6a7cdd4a-8f87-474c-810a-cf56ee9faed8",
+          "blob:http://127.0.0.1:5173/c7ebbb2b-5f9b-49ca-9e9e-8dbc055bcae6",
+          "blob:http://127.0.0.1:5173/0fc2d209-6c43-4dea-b43b-1a6851b4a5f7",
+          "blob:http://127.0.0.1:5173/5c5816b7-9253-43f9-bc35-9bdae2e1e4e5",
+          "blob:http://127.0.0.1:5173/ef8aa66f-7f2f-48d0-b65c-8bf1c918d5ca"
+        ],
+        "revoked": [],
+        "world": {
+          "mounts": 1,
+          "games": 1,
+          "connections": 1,
+          "peakGames": 1
+        }
+      },
+      "after": {
+        "requests": [
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/feed",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/notices",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000051/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000200/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000201/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000204/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000205/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000206/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/posts/00000000-0000-4000-8000-00000000003c",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/media/00000000-0000-4000-8000-000000000052/content",
+          "/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways"
+        ],
+        "created": [
+          "blob:http://127.0.0.1:5173/74d077f9-0cb2-48e3-bfd4-e280e384bd6f",
+          "blob:http://127.0.0.1:5173/e4b77ca9-ecdf-4087-9eb3-19437bbdcf0d",
+          "blob:http://127.0.0.1:5173/6a7cdd4a-8f87-474c-810a-cf56ee9faed8",
+          "blob:http://127.0.0.1:5173/c7ebbb2b-5f9b-49ca-9e9e-8dbc055bcae6",
+          "blob:http://127.0.0.1:5173/0fc2d209-6c43-4dea-b43b-1a6851b4a5f7",
+          "blob:http://127.0.0.1:5173/5c5816b7-9253-43f9-bc35-9bdae2e1e4e5",
+          "blob:http://127.0.0.1:5173/ef8aa66f-7f2f-48d0-b65c-8bf1c918d5ca"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/74d077f9-0cb2-48e3-bfd4-e280e384bd6f",
+          "blob:http://127.0.0.1:5173/e4b77ca9-ecdf-4087-9eb3-19437bbdcf0d",
+          "blob:http://127.0.0.1:5173/6a7cdd4a-8f87-474c-810a-cf56ee9faed8",
+          "blob:http://127.0.0.1:5173/c7ebbb2b-5f9b-49ca-9e9e-8dbc055bcae6",
+          "blob:http://127.0.0.1:5173/0fc2d209-6c43-4dea-b43b-1a6851b4a5f7",
+          "blob:http://127.0.0.1:5173/5c5816b7-9253-43f9-bc35-9bdae2e1e4e5",
+          "blob:http://127.0.0.1:5173/ef8aa66f-7f2f-48d0-b65c-8bf1c918d5ca"
+        ],
+        "world": {
+          "mounts": 2,
+          "games": 1,
+          "connections": 1,
+          "peakGames": 1
+        }
+      }
+    }
+  ]
+}
