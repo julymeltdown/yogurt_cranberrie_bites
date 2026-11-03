@@ -103,11 +103,6 @@ async fn resolve_in(
     {
         return Err(ApplyError::Unbound);
     }
-    let active:bool=sqlx::query_scalar("select exists(select 1 from concert_world_owner_leases where event_id=$1 and owner_process_id=$2 and owner_epoch=$3 and lease_until>clock_timestamp())")
-        .bind(event).bind(consumer.to_string()).bind(epoch).fetch_one(&mut *c).await.map_err(unavailable)?;
-    if !active {
-        return Err(ApplyError::Unbound);
-    }
     let actor: Uuid = row.get("actor_id");
     let operation: String = row.get("operation_id");
     let scope = match operation.as_str() {
@@ -126,8 +121,17 @@ async fn resolve_in(
             }
         }
         "closeConcertEvent" => {
-            let valid:bool=sqlx::query_scalar("select exists(select 1 from concert_closure_jobs j join concert_events e using(event_id) where j.event_id=$1 and j.job_id=$2 and j.revision>=$3 and e.phase in ('READ_ONLY','ARCHIVED') and exists(select 1 from concert_closure_effects f where f.event_id=j.event_id and f.job_id=j.job_id and f.step='READ_ONLY'))")
-                .bind(event).bind(d.reference.resource).bind(d.reference.revision).fetch_one(&mut *c).await.map_err(unavailable)?;
+            // START legally retires owner leases. Qualify this consumer from the
+            // immutable pre-close owner capture, never a revoked live lease or
+            // another owner's local application acknowledgement.
+            let operation = crate::event_lifecycle::EffectKey {
+                event,
+                job: d.reference.resource,
+                step: concert_domain::event_lifecycle::Step::ReadOnly,
+            }
+            .operation_id();
+            let valid:bool=sqlx::query_scalar("select exists(select 1 from concert_closure_jobs j join concert_events e using(event_id) join concert_world_read_only_receipts w on w.event_id=j.event_id and w.job_id=j.job_id where j.event_id=$1 and j.job_id=$2 and j.revision>=$3 and e.phase in ('READ_ONLY','ARCHIVED') and w.operation_id=$4 and w.revision>0 and exists(select 1 from jsonb_array_elements(w.owners) o where o->>'owner'=$5 and o->>'epoch'=$6) and exists(select 1 from concert_closure_effects f where f.event_id=j.event_id and f.job_id=j.job_id and f.step='READ_ONLY'))")
+                .bind(event).bind(d.reference.resource).bind(d.reference.revision).bind(operation).bind(consumer.to_string()).bind(epoch.to_string()).fetch_one(&mut *c).await.map_err(unavailable)?;
             if !valid {
                 return Err(ApplyError::Unbound);
             }
@@ -135,6 +139,13 @@ async fn resolve_in(
         }
         _ => return Err(ApplyError::Unbound),
     };
+    if !matches!(scope, Scope::Event(_)) {
+        let active:bool=sqlx::query_scalar("select exists(select 1 from concert_world_owner_leases where event_id=$1 and owner_process_id=$2 and owner_epoch=$3 and lease_until>clock_timestamp())")
+        .bind(event).bind(consumer.to_string()).bind(epoch).fetch_one(&mut *c).await.map_err(unavailable)?;
+        if !active {
+            return Err(ApplyError::Unbound);
+        }
+    }
     let (kind, a, b) = scope.parts();
     let owner_epoch: Uuid = row.get("owner_epoch");
     let cursor:Option<i64>=sqlx::query_scalar("select revision from concert_world_invalidation_cursors where consumer_id=$1 and event_id=$2 and owner_epoch=$3 and scope_kind=$4 and scope_a=$5 and scope_b=$6")

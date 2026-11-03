@@ -230,6 +230,7 @@ async fn write_membership(
 impl TicketRepository for PgWorldRepository {
     async fn issue(&self, record: TicketRecord) -> Result<IssueOutcome, WorldError> {
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        closure::lock_event_open_in(&mut tx,record.pin.event_id.uuid()).await?;
         let room = sqlx::query("select availability,capacity from public.concert_world_rooms where event_id=$1 and room_id=$2 for update")
             .bind(record.pin.event_id.uuid())
             .bind(record.pin.room_id.uuid())
@@ -341,6 +342,7 @@ impl WorldRepository for PgWorldRepository {
             .checked_add_signed(duration)
             .ok_or(WorldError::Invalid)?;
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        closure::lock_event_open_in(&mut tx,event_id.uuid()).await?;
         let room: Option<Uuid> = sqlx::query_scalar(
             "select room_id from public.concert_world_rooms where event_id=$1 and room_id=$2 for update",
         )
@@ -382,12 +384,16 @@ impl WorldRepository for PgWorldRepository {
         // keeps the outcome stable across concurrent transactions and preserves the row predicate
         // as a second atomic guard against accidental reintroduction of a reusable update path.
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        let actual:Option<Uuid>=sqlx::query_scalar("select event_id from public.concert_world_tickets where ticket_digest=$1").bind(claim.digest.as_bytes().as_slice()).fetch_optional(&mut *tx).await.map_err(unavailable)?;
+        let Some(actual)=actual else {return Ok(ConsumeOutcome::Unknown)};
+        closure::lock_event_open_in(&mut tx,actual).await?;
+
         sqlx::query("select pg_advisory_xact_lock(hashtextextended('mcr-world-ticket:' || encode($1::bytea,'hex'), 0))")
             .bind(claim.digest.as_bytes().as_slice())
             .execute(&mut *tx)
             .await
             .map_err(unavailable)?;
-        let existing = sqlx::query("select consumed_at,expires_at from public.concert_world_tickets where ticket_digest=$1 for update")
+        let existing = sqlx::query("select event_id,consumed_at,expires_at from public.concert_world_tickets where ticket_digest=$1 for update")
             .bind(claim.digest.as_bytes().as_slice())
             .fetch_optional(&mut *tx)
             .await
@@ -396,6 +402,7 @@ impl WorldRepository for PgWorldRepository {
             tx.commit().await.map_err(unavailable)?;
             return Ok(ConsumeOutcome::Unknown);
         };
+        if existing.try_get::<Uuid,_>("event_id").map_err(invalid)?!=actual {return Err(WorldError::CredentialInvalid)}
         if existing
             .try_get::<Option<DateTime<Utc>>, _>("consumed_at")
             .map_err(invalid)?
@@ -460,6 +467,7 @@ impl WorldRepository for PgWorldRepository {
             return Ok(AdmissionOutcome::Denied);
         }
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        closure::lock_event_open_in(&mut tx,record.subject.key.event_id.uuid()).await?;
         lock_event_user(
             &mut tx,
             record.subject.key.event_id,
@@ -535,6 +543,7 @@ impl WorldRepository for PgWorldRepository {
             return Ok(SwitchOutcome::Denied);
         }
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        closure::lock_event_open_in(&mut tx,current.key.event_id.uuid()).await?;
         lock_event_user(&mut tx, current.key.event_id, current.key.user_id).await?;
         let status = lock_room(&mut tx, &record.pin).await?;
         check_owner(&mut tx, record.pin.event_id, record.pin.room_id, owner, now).await?;
@@ -603,6 +612,7 @@ impl WorldRepository for PgWorldRepository {
             .checked_add_signed(duration)
             .ok_or(WorldError::Invalid)?;
         let mut tx = self.pool.begin().await.map_err(unavailable)?;
+        closure::lock_event_open_in(&mut tx,event_id.uuid()).await?;
         let row = sqlx::query("select owner_process_id,owner_epoch,lease_until from public.concert_world_owner_leases where event_id=$1 and room_id=$2 for update")
             .bind(event_id.uuid())
             .bind(room_id.uuid()).fetch_optional(&mut *tx).await.map_err(unavailable)?;
@@ -718,3 +728,5 @@ pub mod mural_subscription;
 pub mod production_owners;
 
 pub mod invalidation;
+
+pub(crate) mod closure;
