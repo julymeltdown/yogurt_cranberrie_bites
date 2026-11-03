@@ -103,7 +103,7 @@ UUIDs must differ. Tokens/cookies never substitute for browser login in the
 frontend gate. Origin/intent, no-store, correlation and cookie checks come from
 the unchanged browser-auth helper.
 
-Fresh own mode creates only new `mcr_in01_concert`, never reattaches an existing
+Fresh own mode creates only new `mcr_in_concert`, never reattaches an existing
 store, and applies the exact bounded fixture migrations0001/0002/0003/0004/0005.
 It inserts one OPEN event at revision1. This is explicitly direct native fixture
 schema initialization, **not** a SQLx migration-ledger/runtime qualification.

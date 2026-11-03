@@ -176,6 +176,15 @@ class FailureTests(Fixture):
         with self.assertRaises(p.Failure):
             p.initialize_event(stack, "a" * 32, {})
 
+    def test_event_database_uses_unchanged_owned_url_namespace(self):
+        cluster = object.__new__(p.dev.migration.Cluster)
+        cluster.password = "offline-only-password"
+        cluster.socket = self.root
+        with patch.object(cluster, "assert_owned") as ownership:
+            value = cluster.url(p.DATABASE)
+        ownership.assert_called_once()
+        self.assertIn("/" + p.DATABASE + "?", value)
+
     def test_shutdown_failure_still_calls_stack_cleanup(self):
         run=self.run_dir();stack=Mock();stack.report={"cleanup":"PASS"}
         control=Mock();control.server_close.side_effect=OSError("private diagnostic")

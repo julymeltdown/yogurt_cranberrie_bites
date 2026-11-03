@@ -20,7 +20,7 @@ import browser_auth_smoke as auth
 import dev_stack as dev
 
 ROOT = Path(__file__).resolve().parents[3]
-DATABASE = "mcr_in01_concert"
+DATABASE = "mcr_in_concert"
 MIGRATIONS = ("0001_concert_core.sql", "0002_command_receipts_outbox.sql",
               "0003_places_map_releases.sql", "0004_bootstrap_admission.sql", "0005_world_admission.sql")
 
