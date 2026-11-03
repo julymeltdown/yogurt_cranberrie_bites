@@ -654,7 +654,8 @@
         "kind": "entry-route",
         "path": "/login"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "login",
@@ -1034,7 +1035,8 @@
         "status": "PASS",
         "kind": "one-canonical-login"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "world",
@@ -1698,7 +1700,8 @@
         "kind": "map-open-back",
         "focus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "map",
@@ -1846,134 +1849,13 @@
             }
           },
           {
-            "name": "Show Virtual Studio landmark on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 118.25,
-              "y": 130.90625,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Culture Park lawn on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 109.40625,
-              "y": 192.734375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual stage on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 56.40625,
-              "y": 183.90625,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual gift corner on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 250.75,
-              "y": 166.234375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual pixel wall on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 250.75,
-              "y": 245.734375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Recenter avatar",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 364.921875,
-              "width": 103.328125,
-              "height": 57.78125
-            }
-          },
-          {
-            "name": "Zoom out",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 128.328125,
-              "y": 371.8125,
-              "width": 103.328125,
-              "height": 44
-            }
-          },
-          {
-            "name": "Zoom in",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 237.65625,
-              "y": 371.8125,
-              "width": 103.34375,
-              "height": 44
-            }
-          },
-          {
-            "name": "Virtual and physical place legend",
-            "tag": "SUMMARY",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 457.890625,
-              "width": 322,
-              "height": 44
-            }
-          },
-          {
-            "name": "",
-            "tag": "INPUT",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 533.78125,
-              "width": 322,
-              "height": 46.78125
-            }
-          },
-          {
             "name": "View Virtual Studio landmark",
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 673.734375,
-              "width": 177.84375,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Studio landmark on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 232.84375,
-              "y": 673.734375,
-              "width": 104.828125,
+              "x": 20,
+              "y": 236.390625,
+              "width": 138,
               "height": 44
             }
           },
@@ -1982,21 +1864,10 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 786.3125,
-              "width": 184.875,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Culture Park lawn on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 49,
-              "y": 836.3125,
-              "width": 104.828125,
-              "height": 44
+              "x": 20,
+              "y": 374.4296875,
+              "width": 138,
+              "height": 52.921875
             }
           },
           {
@@ -2004,20 +1875,9 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 948.890625,
-              "width": 117.890625,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual stage on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 172.890625,
-              "y": 948.890625,
-              "width": 104.828125,
+              "x": -118.140625,
+              "y": 358.53125,
+              "width": 128.90625,
               "height": 44
             }
           },
@@ -2026,20 +1886,9 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 1061.46875,
-              "width": 144.65625,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual gift corner on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 199.65625,
-              "y": 1061.46875,
-              "width": 104.828125,
+              "x": 325.171875,
+              "y": 317.8125,
+              "width": 138,
               "height": 44
             }
           },
@@ -2048,42 +1897,75 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 1174.046875,
-              "width": 138.96875,
+              "x": 325.171875,
+              "y": 501.03125,
+              "width": 138,
               "height": 44
             }
           },
           {
-            "name": "Show Virtual pixel wall on virtual map",
+            "name": "Zoom in map view",
             "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 193.96875,
-              "y": 1174.046875,
-              "width": 104.828125,
+              "x": 289,
+              "y": 486,
+              "width": 44,
               "height": 44
             }
           },
           {
-            "name": "Refresh place information",
+            "name": "Zoom out map view",
             "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 19,
-              "y": 1236.046875,
-              "width": 322,
+              "x": 289,
+              "y": 530,
+              "width": 44,
               "height": 44
             }
           },
           {
-            "name": "Controls and meeting safety",
-            "tag": "A",
+            "name": "Places",
+            "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 19,
-              "y": 1288.046875,
-              "width": 322,
+              "x": 17,
+              "y": 637,
+              "width": 81.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Legend",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 98.5,
+              "y": 637,
+              "width": 81.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Fit map",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 180,
+              "y": 637,
+              "width": 81.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Reset view",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 261.5,
+              "y": 637,
+              "width": 81.5,
               "height": 44
             }
           }
@@ -2106,10 +1988,10 @@
             "tag": "IMG",
             "source": "BLOB",
             "rect": {
-              "x": 21,
-              "y": 69,
-              "width": 318,
-              "height": 247.328125
+              "x": -186,
+              "y": 65,
+              "width": 732.84375,
+              "height": 570
             },
             "complete": true,
             "naturalWidth": 1152
@@ -2122,12 +2004,7 @@
           "rejected": 0
         },
         "headings": [
-          "Map",
-          "Virtual Studio landmark",
-          "Virtual Culture Park lawn",
-          "Virtual stage",
-          "Virtual gift corner",
-          "Virtual pixel wall"
+          "Map"
         ],
         "actions": [
           {
@@ -2139,17 +2016,6 @@
               "y": 595.21875,
               "width": 44,
               "height": 44
-            }
-          },
-          {
-            "name": "Recenter avatar",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 364.921875,
-              "width": 103.328125,
-              "height": 57.78125
             }
           }
         ]
@@ -2188,8 +2054,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 286,
-          "transferredBytes": 38517523,
+          "requests": 290,
+          "transferredBytes": 38599220,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -2217,22 +2083,23 @@
             "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
             "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
             "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
             "/@react-refresh": 1,
             "/@vite/client": 1,
             "/e2e/reference-integrated/data.ts": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/@tanstack_react-query.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/ky.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/phaser.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom_client.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-router-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-dev-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/zod.js": 1,
             "/e2e/reference-integrated/preview.html": 1,
             "/e2e/reference-integrated/preview.tsx": 1,
+            "/favicon.ico": 1,
             "/src/app/CommunityFeatures.tsx": 1,
             "/src/app/WorldHost.tsx": 1,
             "/src/app/WorldShell.tsx": 1,
@@ -2286,6 +2153,7 @@
             "/src/app/world-panels/social.css": 1,
             "/src/app/world-panels/social.tsx": 1,
             "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
             "/src/entities/avatar/runtime/compositor.ts": 1,
             "/src/entities/avatar/runtime/contract.ts": 1,
             "/src/entities/avatar/runtime/index.ts": 1,
@@ -2390,8 +2258,10 @@
             "/src/features/places/index.ts": 1,
             "/src/features/places/model/contract.ts": 1,
             "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
             "/src/features/places/ui/Places.tsx": 1,
             "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
@@ -2481,7 +2351,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 286
+        "recordCount": 290
       },
       "action": {
         "status": "PASS",
@@ -2489,7 +2359,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "5c7c49533f5000ffd129c78f2867c6f4e39fad3f"
     },
     {
       "id": "customize",
@@ -3071,7 +2942,8 @@
         "focus": true,
         "path": "/me"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "feed",
@@ -3722,7 +3594,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "meet",
@@ -4464,7 +4337,8 @@
         "focus": true,
         "backFocus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "gifts",
@@ -5218,7 +5092,8 @@
         "focus": true,
         "backFocus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "wall",
@@ -5739,7 +5614,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "me",
@@ -6445,7 +6321,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "landing",
@@ -6867,7 +6744,8 @@
         "kind": "entry-route",
         "path": "/login"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "login",
@@ -7247,7 +7125,8 @@
         "status": "PASS",
         "kind": "one-canonical-login"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "world",
@@ -7911,7 +7790,8 @@
         "kind": "map-open-back",
         "focus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "map",
@@ -8059,134 +7939,13 @@
             }
           },
           {
-            "name": "Show Virtual Studio landmark on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 129.5,
-              "y": 138.828125,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Culture Park lawn on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 119.828125,
-              "y": 206.484375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual stage on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 61.828125,
-              "y": 196.8125,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual gift corner on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 274.5,
-              "y": 177.484375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual pixel wall on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 274.5,
-              "y": 264.484375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Recenter avatar",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 388.25,
-              "width": 113.328125,
-              "height": 57.78125
-            }
-          },
-          {
-            "name": "Zoom out",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 138.328125,
-              "y": 395.140625,
-              "width": 113.328125,
-              "height": 44
-            }
-          },
-          {
-            "name": "Zoom in",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 257.65625,
-              "y": 395.140625,
-              "width": 113.34375,
-              "height": 44
-            }
-          },
-          {
-            "name": "Virtual and physical place legend",
-            "tag": "SUMMARY",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 481.21875,
-              "width": 352,
-              "height": 44
-            }
-          },
-          {
-            "name": "",
-            "tag": "INPUT",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 557.109375,
-              "width": 352,
-              "height": 46.78125
-            }
-          },
-          {
             "name": "View Virtual Studio landmark",
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 697.0625,
-              "width": 177.84375,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Studio landmark on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 232.84375,
-              "y": 697.0625,
-              "width": 104.828125,
+              "x": 24.78125,
+              "y": 256.0625,
+              "width": 138,
               "height": 44
             }
           },
@@ -8195,21 +7954,10 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 809.640625,
-              "width": 184.875,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Culture Park lawn on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 239.875,
-              "y": 809.640625,
-              "width": 104.828125,
-              "height": 44
+              "x": 20,
+              "y": 408.6015625,
+              "width": 138,
+              "height": 52.921875
             }
           },
           {
@@ -8217,20 +7965,9 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 922.21875,
-              "width": 117.890625,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual stage on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 172.890625,
-              "y": 922.21875,
-              "width": 104.828125,
+              "x": -127.671875,
+              "y": 390.640625,
+              "width": 128.90625,
               "height": 44
             }
           },
@@ -8239,20 +7976,9 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 1034.796875,
-              "width": 144.65625,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual gift corner on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 199.65625,
-              "y": 1034.796875,
-              "width": 104.828125,
+              "x": 361.203125,
+              "y": 345.78125,
+              "width": 138,
               "height": 44
             }
           },
@@ -8261,42 +7987,75 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 1147.375,
-              "width": 138.96875,
+              "x": 361.203125,
+              "y": 547.640625,
+              "width": 138,
               "height": 44
             }
           },
           {
-            "name": "Show Virtual pixel wall on virtual map",
+            "name": "Zoom in map view",
             "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 193.96875,
-              "y": 1147.375,
-              "width": 104.828125,
+              "x": 319,
+              "y": 544,
+              "width": 44,
               "height": 44
             }
           },
           {
-            "name": "Refresh place information",
+            "name": "Zoom out map view",
             "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 19,
-              "y": 1209.375,
-              "width": 352,
+              "x": 319,
+              "y": 588,
+              "width": 44,
               "height": 44
             }
           },
           {
-            "name": "Controls and meeting safety",
-            "tag": "A",
+            "name": "Places",
+            "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 19,
-              "y": 1261.375,
-              "width": 352,
+              "x": 17,
+              "y": 695,
+              "width": 89,
+              "height": 44
+            }
+          },
+          {
+            "name": "Legend",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 106,
+              "y": 695,
+              "width": 89,
+              "height": 44
+            }
+          },
+          {
+            "name": "Fit map",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 195,
+              "y": 695,
+              "width": 89,
+              "height": 44
+            }
+          },
+          {
+            "name": "Reset view",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 284,
+              "y": 695,
+              "width": 89,
               "height": 44
             }
           }
@@ -8319,10 +8078,10 @@
             "tag": "IMG",
             "source": "BLOB",
             "rect": {
-              "x": 21,
-              "y": 69,
-              "width": 348,
-              "height": 270.65625
+              "x": -209,
+              "y": 65,
+              "width": 807.421875,
+              "height": 628
             },
             "complete": true,
             "naturalWidth": 1152
@@ -8335,12 +8094,7 @@
           "rejected": 0
         },
         "headings": [
-          "Map",
-          "Virtual Studio landmark",
-          "Virtual Culture Park lawn",
-          "Virtual stage",
-          "Virtual gift corner",
-          "Virtual pixel wall"
+          "Map"
         ],
         "actions": [
           {
@@ -8352,17 +8106,6 @@
               "y": 653.21875,
               "width": 44,
               "height": 44
-            }
-          },
-          {
-            "name": "Recenter avatar",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 388.25,
-              "width": 113.328125,
-              "height": 57.78125
             }
           }
         ]
@@ -8401,8 +8144,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 286,
-          "transferredBytes": 38517523,
+          "requests": 289,
+          "transferredBytes": 38599077,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -8430,20 +8173,20 @@
             "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
             "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
             "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
             "/@react-refresh": 1,
             "/@vite/client": 1,
             "/e2e/reference-integrated/data.ts": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/@tanstack_react-query.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/ky.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/phaser.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom_client.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-router-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-dev-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/zod.js": 1,
             "/e2e/reference-integrated/preview.html": 1,
             "/e2e/reference-integrated/preview.tsx": 1,
             "/src/app/CommunityFeatures.tsx": 1,
@@ -8499,6 +8242,7 @@
             "/src/app/world-panels/social.css": 1,
             "/src/app/world-panels/social.tsx": 1,
             "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
             "/src/entities/avatar/runtime/compositor.ts": 1,
             "/src/entities/avatar/runtime/contract.ts": 1,
             "/src/entities/avatar/runtime/index.ts": 1,
@@ -8603,8 +8347,10 @@
             "/src/features/places/index.ts": 1,
             "/src/features/places/model/contract.ts": 1,
             "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
             "/src/features/places/ui/Places.tsx": 1,
             "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
@@ -8694,7 +8440,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 286
+        "recordCount": 289
       },
       "action": {
         "status": "PASS",
@@ -8702,7 +8448,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "5c7c49533f5000ffd129c78f2867c6f4e39fad3f"
     },
     {
       "id": "customize",
@@ -9284,7 +9031,8 @@
         "focus": true,
         "path": "/me"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "feed",
@@ -9935,7 +9683,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "meet",
@@ -10677,7 +10426,8 @@
         "focus": true,
         "backFocus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "gifts",
@@ -11431,7 +11181,8 @@
         "focus": true,
         "backFocus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "wall",
@@ -11952,7 +11703,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "me",
@@ -12658,7 +12410,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "landing",
@@ -13080,7 +12833,8 @@
         "kind": "entry-route",
         "path": "/login"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "login",
@@ -13460,7 +13214,8 @@
         "status": "PASS",
         "kind": "one-canonical-login"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "world",
@@ -14124,7 +13879,8 @@
         "kind": "map-open-back",
         "focus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "map",
@@ -14272,134 +14028,13 @@
             }
           },
           {
-            "name": "Show Virtual Studio landmark on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 144.5,
-              "y": 149.375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Culture Park lawn on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 133.71875,
-              "y": 224.8125,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual stage on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 69.046875,
-              "y": 214.046875,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual gift corner on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 306.15625,
-              "y": 192.484375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual pixel wall on illustrated virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 306.15625,
-              "y": 289.484375,
-              "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Recenter avatar",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 419.359375,
-              "width": 126.65625,
-              "height": 57.78125
-            }
-          },
-          {
-            "name": "Zoom out",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 151.65625,
-              "y": 426.25,
-              "width": 126.671875,
-              "height": 44
-            }
-          },
-          {
-            "name": "Zoom in",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 284.328125,
-              "y": 426.25,
-              "width": 126.65625,
-              "height": 44
-            }
-          },
-          {
-            "name": "Virtual and physical place legend",
-            "tag": "SUMMARY",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 512.328125,
-              "width": 392,
-              "height": 44
-            }
-          },
-          {
-            "name": "",
-            "tag": "INPUT",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 588.21875,
-              "width": 392,
-              "height": 46.78125
-            }
-          },
-          {
             "name": "View Virtual Studio landmark",
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 728.171875,
-              "width": 177.84375,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Studio landmark on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 232.84375,
-              "y": 728.171875,
-              "width": 104.828125,
+              "x": 32.390625,
+              "y": 282.53125,
+              "width": 138,
               "height": 44
             }
           },
@@ -14408,21 +14043,10 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 840.75,
-              "width": 184.875,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual Culture Park lawn on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 239.875,
-              "y": 840.75,
-              "width": 104.828125,
-              "height": 44
+              "x": 20,
+              "y": 454.5703125,
+              "width": 138,
+              "height": 52.921875
             }
           },
           {
@@ -14430,20 +14054,9 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 953.328125,
-              "width": 117.890625,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual stage on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 172.890625,
-              "y": 953.328125,
-              "width": 104.828125,
+              "x": -139.5625,
+              "y": 433.8125,
+              "width": 128.90625,
               "height": 44
             }
           },
@@ -14452,20 +14065,9 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 1065.90625,
-              "width": 144.65625,
-              "height": 44
-            }
-          },
-          {
-            "name": "Show Virtual gift corner on virtual map",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 199.65625,
-              "y": 1065.90625,
-              "width": 104.828125,
+              "x": 410.59375,
+              "y": 383.390625,
+              "width": 138,
               "height": 44
             }
           },
@@ -14474,42 +14076,75 @@
             "tag": "A",
             "disabled": false,
             "rect": {
-              "x": 49,
-              "y": 1178.484375,
-              "width": 138.96875,
+              "x": 410.59375,
+              "y": 610.3125,
+              "width": 138,
               "height": 44
             }
           },
           {
-            "name": "Show Virtual pixel wall on virtual map",
+            "name": "Zoom in map view",
             "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 193.96875,
-              "y": 1178.484375,
-              "width": 104.828125,
+              "x": 359,
+              "y": 622,
+              "width": 44,
               "height": 44
             }
           },
           {
-            "name": "Refresh place information",
+            "name": "Zoom out map view",
             "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 19,
-              "y": 1240.484375,
-              "width": 392,
+              "x": 359,
+              "y": 666,
+              "width": 44,
               "height": 44
             }
           },
           {
-            "name": "Controls and meeting safety",
-            "tag": "A",
+            "name": "Places",
+            "tag": "BUTTON",
             "disabled": false,
             "rect": {
-              "x": 19,
-              "y": 1292.484375,
-              "width": 392,
+              "x": 17,
+              "y": 773,
+              "width": 99,
+              "height": 44
+            }
+          },
+          {
+            "name": "Legend",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 116,
+              "y": 773,
+              "width": 99,
+              "height": 44
+            }
+          },
+          {
+            "name": "Fit map",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 215,
+              "y": 773,
+              "width": 99,
+              "height": 44
+            }
+          },
+          {
+            "name": "Reset view",
+            "tag": "BUTTON",
+            "disabled": false,
+            "rect": {
+              "x": 314,
+              "y": 773,
+              "width": 99,
               "height": 44
             }
           }
@@ -14532,10 +14167,10 @@
             "tag": "IMG",
             "source": "BLOB",
             "rect": {
-              "x": 21,
-              "y": 69,
-              "width": 388,
-              "height": 301.765625
+              "x": -239,
+              "y": 65,
+              "width": 907.703125,
+              "height": 706
             },
             "complete": true,
             "naturalWidth": 1152
@@ -14548,12 +14183,7 @@
           "rejected": 0
         },
         "headings": [
-          "Map",
-          "Virtual Studio landmark",
-          "Virtual Culture Park lawn",
-          "Virtual stage",
-          "Virtual gift corner",
-          "Virtual pixel wall"
+          "Map"
         ],
         "actions": [
           {
@@ -14565,17 +14195,6 @@
               "y": 731.21875,
               "width": 44,
               "height": 44
-            }
-          },
-          {
-            "name": "Recenter avatar",
-            "tag": "BUTTON",
-            "disabled": false,
-            "rect": {
-              "x": 19,
-              "y": 419.359375,
-              "width": 126.65625,
-              "height": 57.78125
             }
           }
         ]
@@ -14614,8 +14233,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 286,
-          "transferredBytes": 38517523,
+          "requests": 289,
+          "transferredBytes": 38599077,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -14643,20 +14262,20 @@
             "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
             "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
             "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
             "/@react-refresh": 1,
             "/@vite/client": 1,
             "/e2e/reference-integrated/data.ts": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/@tanstack_react-query.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/ky.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/phaser.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom_client.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-router-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-dev-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/zod.js": 1,
             "/e2e/reference-integrated/preview.html": 1,
             "/e2e/reference-integrated/preview.tsx": 1,
             "/src/app/CommunityFeatures.tsx": 1,
@@ -14712,6 +14331,7 @@
             "/src/app/world-panels/social.css": 1,
             "/src/app/world-panels/social.tsx": 1,
             "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
             "/src/entities/avatar/runtime/compositor.ts": 1,
             "/src/entities/avatar/runtime/contract.ts": 1,
             "/src/entities/avatar/runtime/index.ts": 1,
@@ -14816,8 +14436,10 @@
             "/src/features/places/index.ts": 1,
             "/src/features/places/model/contract.ts": 1,
             "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
             "/src/features/places/ui/Places.tsx": 1,
             "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
@@ -14907,7 +14529,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 286
+        "recordCount": 289
       },
       "action": {
         "status": "PASS",
@@ -14915,7 +14537,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "5c7c49533f5000ffd129c78f2867c6f4e39fad3f"
     },
     {
       "id": "customize",
@@ -15497,7 +15120,8 @@
         "focus": true,
         "path": "/me"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "feed",
@@ -16148,7 +15772,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "meet",
@@ -16890,7 +16515,8 @@
         "focus": true,
         "backFocus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "gifts",
@@ -17644,7 +17270,8 @@
         "focus": true,
         "backFocus": true
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "wall",
@@ -18165,7 +17792,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     },
     {
       "id": "me",
@@ -18871,7 +18499,8 @@
         "focus": true,
         "path": "/world"
       },
-      "errors": []
+      "errors": [],
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b"
     }
   ],
   "warm": [
@@ -27864,5 +27493,205 @@
       "me"
     ],
     "full": true
-  }
+  },
+  "reconciliations": [
+    {
+      "candidate": "5c7c49533f5000ffd129c78f2867c6f4e39fad3f",
+      "productBase": "be629fa0951f047710751d0137c1ec6a6f34a6ea",
+      "replaced": [
+        "map:360",
+        "map:390",
+        "map:430"
+      ],
+      "changedPaths": [
+        "docs/mcr/art/reference-scene-v2.md",
+        "docs/mcr/frontend/avatar-asset-leases.md",
+        "docs/mcr/frontend/reference-map.md",
+        "docs/mcr/king-coordination.md",
+        "docs/mcr/progress.md",
+        "frontend/public/world/reference-scene-v2/.gitignore",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-1/build.py",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-1/geometry-proposal.json",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-1/map-390.png",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-1/parade-ground-editable.json",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-1/parade-scene.png",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-1/parade-scenery-editable.json",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-1/review.mjs",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-1/world-390.png",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/build-painted.py",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/build.py",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/geometry-proposal.json",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/ground-layout.svg",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/layout.json",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/map-390.png",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/parade-ground.png",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/parade-scene.png",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/review.mjs",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/scene-layout.svg",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/Versions/round-2/world-390.png",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/review-notes/round-1.json",
+        "frontend/public/world/reference-scene-v2/.tesseract-work/review-notes/round-2.json",
+        "frontend/public/world/reference-scene-v2/browser-verification.json",
+        "frontend/public/world/reference-scene-v2/build-painted.py",
+        "frontend/public/world/reference-scene-v2/build.py",
+        "frontend/public/world/reference-scene-v2/check-review.mjs",
+        "frontend/public/world/reference-scene-v2/danger-frames.json",
+        "frontend/public/world/reference-scene-v2/danger-ground-editable.json",
+        "frontend/public/world/reference-scene-v2/danger-ground.png",
+        "frontend/public/world/reference-scene-v2/danger-ground.svg",
+        "frontend/public/world/reference-scene-v2/danger-ground.tsrct",
+        "frontend/public/world/reference-scene-v2/danger-scenery-editable.json",
+        "frontend/public/world/reference-scene-v2/danger-scenery.png",
+        "frontend/public/world/reference-scene-v2/danger-scenery.svg",
+        "frontend/public/world/reference-scene-v2/danger-scenery.tsrct",
+        "frontend/public/world/reference-scene-v2/evidence/collision-360.png",
+        "frontend/public/world/reference-scene-v2/evidence/collision-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/collision-430.png",
+        "frontend/public/world/reference-scene-v2/evidence/map-360.png",
+        "frontend/public/world/reference-scene-v2/evidence/map-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/map-430.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-danger-map-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-danger-scene.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-danger-world-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-parade-map-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-parade-scene.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-parade-world-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-revenge-map-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-revenge-scene.png",
+        "frontend/public/world/reference-scene-v2/evidence/native-revenge-world-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/painted-parade-map-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/painted-parade-scene.png",
+        "frontend/public/world/reference-scene-v2/evidence/painted-parade-world-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/parade-scene.png",
+        "frontend/public/world/reference-scene-v2/evidence/world-360.png",
+        "frontend/public/world/reference-scene-v2/evidence/world-390.png",
+        "frontend/public/world/reference-scene-v2/evidence/world-430.png",
+        "frontend/public/world/reference-scene-v2/geometry-proposal.json",
+        "frontend/public/world/reference-scene-v2/painted/ground-layout.svg",
+        "frontend/public/world/reference-scene-v2/painted/layout.json",
+        "frontend/public/world/reference-scene-v2/painted/parade-ground.png",
+        "frontend/public/world/reference-scene-v2/painted/parade-source-atlas.png",
+        "frontend/public/world/reference-scene-v2/painted/provenance.json",
+        "frontend/public/world/reference-scene-v2/painted/resource-inputs.json",
+        "frontend/public/world/reference-scene-v2/painted/scene-layout.svg",
+        "frontend/public/world/reference-scene-v2/painted/surface-source.png",
+        "frontend/public/world/reference-scene-v2/parade-frames.json",
+        "frontend/public/world/reference-scene-v2/parade-ground-editable.json",
+        "frontend/public/world/reference-scene-v2/parade-ground.png",
+        "frontend/public/world/reference-scene-v2/parade-ground.svg",
+        "frontend/public/world/reference-scene-v2/parade-ground.tsrct",
+        "frontend/public/world/reference-scene-v2/parade-scenery-editable.json",
+        "frontend/public/world/reference-scene-v2/parade-scenery.png",
+        "frontend/public/world/reference-scene-v2/parade-scenery.svg",
+        "frontend/public/world/reference-scene-v2/parade-scenery.tsrct",
+        "frontend/public/world/reference-scene-v2/render-evidence.json",
+        "frontend/public/world/reference-scene-v2/render-painted.mjs",
+        "frontend/public/world/reference-scene-v2/render.py",
+        "frontend/public/world/reference-scene-v2/resource-inputs.json",
+        "frontend/public/world/reference-scene-v2/revenge-frames.json",
+        "frontend/public/world/reference-scene-v2/revenge-ground-editable.json",
+        "frontend/public/world/reference-scene-v2/revenge-ground.png",
+        "frontend/public/world/reference-scene-v2/revenge-ground.svg",
+        "frontend/public/world/reference-scene-v2/revenge-ground.tsrct",
+        "frontend/public/world/reference-scene-v2/revenge-scenery-editable.json",
+        "frontend/public/world/reference-scene-v2/revenge-scenery.png",
+        "frontend/public/world/reference-scene-v2/revenge-scenery.svg",
+        "frontend/public/world/reference-scene-v2/revenge-scenery.tsrct",
+        "frontend/public/world/reference-scene-v2/review.html",
+        "frontend/public/world/reference-scene-v2/review.mjs",
+        "frontend/public/world/reference-scene-v2/source-provenance.json",
+        "frontend/public/world/reference-scene-v2/verification.json",
+        "frontend/public/world/reference-scene-v2/verify.py",
+        "frontend/src/app/account-entry/__tests__/asset-leases/catalog.ts",
+        "frontend/src/app/account-entry/__tests__/asset-leases/evidence/qualification.json",
+        "frontend/src/app/account-entry/__tests__/asset-leases/fixture.ts",
+        "frontend/src/app/account-entry/__tests__/asset-leases/leases.test.tsx",
+        "frontend/src/app/account-entry/__tests__/asset-leases/native.mjs",
+        "frontend/src/app/account-entry/__tests__/asset-leases/preview.html",
+        "frontend/src/app/account-entry/__tests__/asset-leases/preview.tsx",
+        "frontend/src/app/account-entry/assets.ts",
+        "frontend/src/app/account-entry/owner.ts",
+        "frontend/src/entities/avatar/runtime/atlas-lease.ts",
+        "frontend/src/entities/avatar/runtime/index.ts",
+        "frontend/src/entities/avatar/runtime/resources.ts",
+        "frontend/src/features/avatar/preview.ts",
+        "frontend/src/features/me/ui/AvatarThumbnail.tsx",
+        "frontend/src/features/places/__tests__/reference-map/evidence/build.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/build.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/delivery-pins.json",
+        "frontend/src/features/places/__tests__/reference-map/evidence/fit-selected-390.jpg",
+        "frontend/src/features/places/__tests__/reference-map/evidence/lint.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/lint.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/native.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/native.json",
+        "frontend/src/features/places/__tests__/reference-map/evidence/native.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/origin.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/origin.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/plan.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/plan.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/portrait-360.jpg",
+        "frontend/src/features/places/__tests__/reference-map/evidence/portrait-390.jpg",
+        "frontend/src/features/places/__tests__/reference-map/evidence/portrait-430.jpg",
+        "frontend/src/features/places/__tests__/reference-map/evidence/preview-manifest.json",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/build.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/build.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/checkpoint.json",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/native.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/native.json",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/native.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/tests.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/tests.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/types.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/reconciliation/types.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/short-390.jpg",
+        "frontend/src/features/places/__tests__/reference-map/evidence/source-pins.json",
+        "frontend/src/features/places/__tests__/reference-map/evidence/tests.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/tests.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/types.exit",
+        "frontend/src/features/places/__tests__/reference-map/evidence/types.log",
+        "frontend/src/features/places/__tests__/reference-map/evidence/validation.json",
+        "frontend/src/features/places/__tests__/reference-map/fixture.html",
+        "frontend/src/features/places/__tests__/reference-map/fixture.ts",
+        "frontend/src/features/places/__tests__/reference-map/native.mjs",
+        "frontend/src/features/places/__tests__/reference-map/plaque-layout.test.ts",
+        "frontend/src/features/places/__tests__/reference-map/view.test.tsx",
+        "frontend/src/features/places/ui/IllustratedMap.tsx",
+        "frontend/src/features/places/ui/Places.tsx",
+        "frontend/src/features/places/ui/places.css",
+        "frontend/src/features/places/ui/plaque-layout.ts",
+        "frontend/src/features/profile/Avatar.tsx"
+      ],
+      "sourceHashes": {
+        "AGENTS.md": "a4dc96fdebfbc86c7184c931657c1c52906e1d33f7b5de18e0d5db457de11796",
+        "frontend/src/app/__tests__/default-shell/qualified-data.ts": "fcc5a4a2c776c56e66b720ba032b33e84de7b4426b6c371e80e8042b37677e0c",
+        "frontend/src/app/world-entry/__tests__/data.ts": "d3034029dc3b78b1531bdbc701b26f9f03a42eb0348a5549d9d3063a9d330549",
+        "contracts/fixtures/core/bootstrap-open.json": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+        "contracts/fixtures/assets/avatar-config.json": "dea02c52183c82094d76c014115c77716ac32c02cc9841d3f1a7ce9aeb54df4d",
+        "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+        "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+        "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+        "frontend/src/app/CommunityFeatures.tsx": "bd1ed8e760835301c7e8005db7bd4b4644eae78f0ea7f64c91f32dac30d24046",
+        "frontend/src/app/WorldShell.tsx": "d6a2a74ef3ae7c66b06f1c53798cacf52a6d5a800f199c9c1743966a1f55f62c",
+        "frontend/src/app/shell.css": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056",
+        "frontend/src/world/scenes/MapScene.ts": "b78aa32b4680013567edb86cfc7b25c4922a8eb120a0f598439bc6cdbdef5bf7",
+        "frontend/src/world/input/controller.ts": "48480c4d874284f3b7d6c1236d946ba3622c867e3517e9664f4a1bbab1bdc2cc",
+        "frontend/src/world/input/controls.css": "2f6aa57a8a4024e1d6f10900257e9f7e92753a3790c4824b573b3910574f540d",
+        "frontend/src/entities/avatar/selected-static/release.ts": "49a642d786650846a5805486b6f9c7ad3968d4a1ee464990975375f31f8fae8e",
+        "frontend/src/world/map/resource-cache.ts": "9bbfaf042ea6f13d52db9dc0bab730314b605c43f19a9a7781a39f747bc230a9",
+        "frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.tsx": "396009efbb1dc6cc8178df6d0884381b858538b9c0509566f2f57d6a3823389f",
+        "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+        "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+        "contracts/generated/mcr-domain.openapi.json": "ef678d3445e5ee5ed3b90594ef1decc1d53b342166b10a91c4d9c9b3f20aa057"
+      },
+      "harnessHashes": {
+        "native.mjs": "e5049c5b462d574e86cd2b9705fa1f9e5222bbb51c0caa9b657e925b4c7f1b3d",
+        "cases.mjs": "42cade307692c1df905152b7f5d2e8c62ad9841c712b9f82e597c15d4ef71b80",
+        "comparison.mjs": "85a72e1d42ffa549e0e271e6a9c1980f8cf9247c98f096e8374e6f2144519d84",
+        "preview.tsx": "15b0626d75bb4af76fa6e32b15c487b10b794d945a52acb89be06e44a049b3bb",
+        "data.ts": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+        "preview.html": "ab725f3216249f3ff75495e54fa8262d53eb05fa983f5002f2fadf14f07179e4",
+        "metrics.test.mjs": "16d608ca2fcb5644270e1da4c57b1e39f7f4cc8f7850add38ac940cc3f90f5da"
+      }
+    }
+  ]
 }

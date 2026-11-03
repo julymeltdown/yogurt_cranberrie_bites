@@ -18,7 +18,7 @@ try{
   const images=await article.locator('img').evaluateAll(async images=>{await Promise.all(images.map(img=>img.decode()));return images.map(img=>({width:img.naturalWidth,height:img.naturalHeight}))})
   assert.equal(images.length,3);assert.deepEqual(images[0],{width:1536,height:1024});assert.deepEqual(images[1],c.viewport)
   const artifact=`comparison-${c.id}-390.png`;await pair.screenshot({path:resolve(output,artifact)})
-  results.push({id:c.id,artifact,actualViewport:c.viewport,targetOriginal:images[0],targetCrop:report.reference.crops.find(x=>x.id===c.id).rect,status:'PASS'})
+  results.push({id:c.id,sourceCandidate:c.sourceCandidate??report.candidate,artifact,actualViewport:c.viewport,targetOriginal:images[0],targetCrop:report.reference.crops.find(x=>x.id===c.id).rect,status:'PASS'})
  }
  await writeFile(resolve(output,'comparison-render.json'),JSON.stringify({kind:'STATIC_ARTIFACT_RENDER_ONLY',candidate:report.candidate,browser:browser.version(),results},null,2)+'\n')
  console.log(JSON.stringify({comparisons:results.length,status:'PASS'}))

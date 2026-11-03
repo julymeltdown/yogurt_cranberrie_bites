@@ -5,6 +5,7 @@
   "results": [
     {
       "id": "landing",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-landing-390.png",
       "actualViewport": {
         "width": 390,
@@ -24,6 +25,7 @@
     },
     {
       "id": "login",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-login-390.png",
       "actualViewport": {
         "width": 390,
@@ -43,6 +45,7 @@
     },
     {
       "id": "world",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-world-390.png",
       "actualViewport": {
         "width": 390,
@@ -62,6 +65,7 @@
     },
     {
       "id": "map",
+      "sourceCandidate": "5c7c49533f5000ffd129c78f2867c6f4e39fad3f",
       "artifact": "comparison-map-390.png",
       "actualViewport": {
         "width": 390,
@@ -81,6 +85,7 @@
     },
     {
       "id": "customize",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-customize-390.png",
       "actualViewport": {
         "width": 390,
@@ -100,6 +105,7 @@
     },
     {
       "id": "feed",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-feed-390.png",
       "actualViewport": {
         "width": 390,
@@ -119,6 +125,7 @@
     },
     {
       "id": "meet",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-meet-390.png",
       "actualViewport": {
         "width": 390,
@@ -138,6 +145,7 @@
     },
     {
       "id": "gifts",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-gifts-390.png",
       "actualViewport": {
         "width": 390,
@@ -157,6 +165,7 @@
     },
     {
       "id": "wall",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-wall-390.png",
       "actualViewport": {
         "width": 390,
@@ -176,6 +185,7 @@
     },
     {
       "id": "me",
+      "sourceCandidate": "12d987b34498fbfb434df468517eb1696b40d76b",
       "artifact": "comparison-me-390.png",
       "actualViewport": {
         "width": 390,
