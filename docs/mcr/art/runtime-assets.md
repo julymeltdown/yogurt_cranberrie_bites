@@ -119,6 +119,74 @@ world/profile parity checks.
 
 ## Reproduction and evidence
 
+### Thirty-two hair reference registrations
+
+The World lead assigned the next source-only slice while the extraction-method
+question remained pending: `photo_04` front hair and `photo_05` back hair.
+[`hair-layout.json`](../../../frontend/src/entities/avatar/derived-assets/hair-layout.json)
+records sixteen shapes from each original, exact source hashes, original-space
+review rectangles, measured principal dark-outline bounds and unverified
+cranium-center estimates. Every front/back pair, composition order and wire
+item ID is explicitly null. Alpha and body fit are unprepared/unverified;
+direction frames are unknown and walking frames are not provided.
+
+The read-only measurement uses four-neighbor connected dark pixels
+(maximum RGB channel 112) and keeps the sixteen principal components above
+5,000 pixels on each sheet. Review windows add eight original pixels around
+those bounds. This is geometry analysis, not background removal, a pixel mask,
+or a claim that every faint/isolated edge pixel is included. The estimated
+attachment is the outline's horizontal center at 45% of its height. It has not
+been fitted to a face, skull, body or C06 cell. The visible attachment marker at
+the center of a 128×128 review window is unrelated to the C06 foot anchor.
+
+The measured outlines cross nominal 320×240 contact-sheet grid boundaries for
+five front-hair references (`row1_col1`, `row1_col4`, `row2_col1`, `row2_col4`,
+`row4_col4`) and three back-hair references (`row3_col3`, `row3_col4`,
+`row4_col2`). That directly confirms the catalog's grid hints cannot be used as
+validated sprite rectangles. Per-choice regions preserve the visible supplied
+shapes in the review fixture; regular grid crops could truncate them.
+
+[`hair-review.html`](../../../frontend/src/entities/avatar/derived-assets/hair-review.html)
+shows each original reference at 64px and 128px review-window sizes. The front
+and back sheets are selectable independently, with a persistent warning that
+same-position references are unpaired. White JPEG background/face openings and
+intentional pale hair and ornaments remain opaque and unchanged. It offers no
+composition, recoloring, layer choices or backend save operation. The six
+complete-character review remains separate and unchanged by this slice.
+
+Native Chrome 156.0.8078.80 checks pass at 360, 390 and 430px: all 32 spatial
+references/64 original-image views decode; each selected sheet shows sixteen
+shapes; all three review surface switches preserve original image URLs and
+geometry; no horizontal overflow or page errors. Original hash checks, source
+bounds, strictly interior estimated attachment points and null pairing/item
+bindings pass. See the [machine report](evidence/hair-registration.json),
+[front 390px capture](evidence/hair-photo_04-390.png) and
+[back 390px capture](evidence/hair-photo_05-390.png). Both full 390px captures
+were visually inspected: all sixteen references on each sheet are present,
+including pale panels and ornaments, with their estimated attachment markers.
+The report is source-only evidence; transparent pixels, actual body fit,
+production rendering, animation and mobile-device acceptance remain NOT_RUN.
+
+Regenerate only the metadata, then validate and capture the review:
+
+```sh
+MCR_ART_PLAYWRIGHT=/absolute/installed/frontend/node_modules/@playwright/test/index.mjs \
+  node frontend/src/entities/avatar/derived-assets/measure-hair.mjs
+MCR_ART_PLAYWRIGHT=/absolute/installed/frontend/node_modules/@playwright/test/index.mjs \
+  node frontend/src/entities/avatar/derived-assets/verify-hair.mjs
+# http://127.0.0.1:4193/src/entities/avatar/derived-assets/hair-review.html
+```
+
+Both commands were executed with pinned Node 24.22.2 and the installed
+Playwright path below and exited 0. Installed Oxlint 1.72.0 on
+`frontend/src/entities/avatar/derived-assets/*.mjs` and `git diff --check` also
+exit 0. This is scoped tooling lint, not application-wide lint/build. The scripts
+write source metadata and browser evidence only; no source or cutout raster is
+edited or generated. The same assigned writable paths and production exclusions
+apply. FE12 runtime handoff `c2149dae63d21324179be3dca7df4bc79a003881` confirms the
+unchanged C06 compositor and reviewed baked-tone binding; this hair registration
+does not satisfy that production entry's missing compatible atlas requirement.
+
 From the assigned repository root, with the project's pinned Node 24.22.2:
 
 ```sh
@@ -148,7 +216,7 @@ and existing `/Users/lhs/Desktop/mcr/frontend/node_modules/@playwright/test/inde
 | `python3 scripts/mcr/check-plan.py` | 0, PASS; planning/source archive checks only | No implementation acceptance inferred |
 | `git diff --check` | 0 | No whitespace errors |
 
-Application build/lint, C06 production composition, transparent-edge acceptance,
+Application-wide build/lint, C06 production composition, transparent-edge acceptance,
 real devices, load, multiuser integration and AR03 acceptance: **NOT_RUN**.
 No backend imports or external network dependencies are added. Exact changed
 paths and commit ancestry are sent directly to delivery after committing; only

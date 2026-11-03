@@ -7,7 +7,11 @@ const base = '/src/entities/avatar/derived-assets/'
 const routes = new Map([
   [`${base}review.html`, ['frontend/src/entities/avatar/derived-assets/review.html', 'text/html']],
   [`${base}source-layout.json`, ['frontend/src/entities/avatar/derived-assets/source-layout.json', 'application/json']],
+  [`${base}hair-review.html`, ['frontend/src/entities/avatar/derived-assets/hair-review.html', 'text/html']],
+  [`${base}hair-layout.json`, ['frontend/src/entities/avatar/derived-assets/hair-layout.json', 'application/json']],
   ['/world/avatars/supplied-v1/photo-01.jpg', ['frontend/public/world/avatars/supplied-v1/photo-01.jpg', 'image/jpeg']],
+  ['/world/avatars/supplied-v1/photo-04.jpg', ['frontend/public/world/avatars/supplied-v1/photo-04.jpg', 'image/jpeg']],
+  ['/world/avatars/supplied-v1/photo-05.jpg', ['frontend/public/world/avatars/supplied-v1/photo-05.jpg', 'image/jpeg']],
   ['/evidence/rejected.png', ['docs/mcr/art/evidence/rejected/imagegen-photo01-r1.png', 'image/png']],
 ])
 

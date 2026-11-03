@@ -1,0 +1,1078 @@
+{
+  "kind": "selected_source_hair_registration_review",
+  "revision": 1,
+  "status": "IN_PROGRESS",
+  "production_eligible": false,
+  "source_pack_id": "mcr_user_characters_20261103",
+  "source_pack_revision": 3,
+  "method": {
+    "dark_outline": "Four-neighbor component of maximum RGB channel <=112; principal components >=5000 pixels; read-only JPEG decode.",
+    "review_window": "Principal outline bounds plus eight original pixels of margin. Not an alpha silhouette or extracted sprite rectangle.",
+    "pairing": "All front/back mappings explicitly unknown; source positions do not imply matching designs.",
+    "image_editing": "NONE. No source pixels or raster outputs are written.",
+    "inventory": "No product IDs reserved or accepted.",
+    "skin": "No recoloring; retain supplied pale panels, highlights and ornaments."
+  },
+  "preview_cell": {
+    "width_px": 128,
+    "height_px": 128
+  },
+  "preview_attachment": {
+    "x": 64,
+    "y": 64
+  },
+  "sources": [
+    {
+      "source_id": "photo_04",
+      "source_path": "/world/avatars/supplied-v1/photo-04.jpg",
+      "source_sha256": "87cdfbff215758c12d7042a7c435a17a6cdccb7637b0542dd9e0508d832e2a63",
+      "width_px": 1280,
+      "height_px": 960,
+      "supplied_view": "front_hair_reference",
+      "notes": "White face openings and pale hair panels are opaque JPEG pixels; transparency intent needs separate review. Accessories can be baked into hair.",
+      "shapes": [
+        {
+          "source_location": "row1_col1",
+          "source_row": 1,
+          "source_column": 1,
+          "rect": {
+            "x": 30,
+            "y": 13,
+            "width": 310,
+            "height": 240
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 38575,
+            "min_x": 38,
+            "min_y": 21,
+            "max_x": 331,
+            "max_y": 244
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 185,
+            "y": 122,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row1_col2",
+          "source_row": 1,
+          "source_column": 2,
+          "rect": {
+            "x": 353,
+            "y": 26,
+            "width": 274,
+            "height": 220
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 33993,
+            "min_x": 361,
+            "min_y": 34,
+            "max_x": 618,
+            "max_y": 237
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 490,
+            "y": 126,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row1_col3",
+          "source_row": 1,
+          "source_column": 3,
+          "rect": {
+            "x": 650,
+            "y": 29,
+            "width": 280,
+            "height": 218
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 23455,
+            "min_x": 658,
+            "min_y": 37,
+            "max_x": 921,
+            "max_y": 238
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 790,
+            "y": 128,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row1_col4",
+          "source_row": 1,
+          "source_column": 4,
+          "rect": {
+            "x": 947,
+            "y": 14,
+            "width": 307,
+            "height": 239
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 38487,
+            "min_x": 955,
+            "min_y": 22,
+            "max_x": 1245,
+            "max_y": 244
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 1100.5,
+            "y": 122,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row2_col1",
+          "source_row": 2,
+          "source_column": 1,
+          "rect": {
+            "x": 17,
+            "y": 264,
+            "width": 326,
+            "height": 223
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 40651,
+            "min_x": 25,
+            "min_y": 272,
+            "max_x": 334,
+            "max_y": 478
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 180,
+            "y": 365,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row2_col2",
+          "source_row": 2,
+          "source_column": 2,
+          "rect": {
+            "x": 354,
+            "y": 267,
+            "width": 278,
+            "height": 214
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 31512,
+            "min_x": 362,
+            "min_y": 275,
+            "max_x": 623,
+            "max_y": 472
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 493,
+            "y": 364,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row2_col3",
+          "source_row": 2,
+          "source_column": 3,
+          "rect": {
+            "x": 657,
+            "y": 268,
+            "width": 273,
+            "height": 211
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 26910,
+            "min_x": 665,
+            "min_y": 276,
+            "max_x": 921,
+            "max_y": 470
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 793.5,
+            "y": 364,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row2_col4",
+          "source_row": 2,
+          "source_column": 4,
+          "rect": {
+            "x": 951,
+            "y": 264,
+            "width": 297,
+            "height": 213
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 9684,
+            "min_x": 959,
+            "min_y": 272,
+            "max_x": 1239,
+            "max_y": 468
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 1099.5,
+            "y": 361,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row3_col1",
+          "source_row": 3,
+          "source_column": 1,
+          "rect": {
+            "x": 28,
+            "y": 494,
+            "width": 295,
+            "height": 212
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 30233,
+            "min_x": 36,
+            "min_y": 502,
+            "max_x": 314,
+            "max_y": 697
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 175.5,
+            "y": 590,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row3_col2",
+          "source_row": 3,
+          "source_column": 2,
+          "rect": {
+            "x": 346,
+            "y": 483,
+            "width": 284,
+            "height": 227
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 33223,
+            "min_x": 354,
+            "min_y": 491,
+            "max_x": 621,
+            "max_y": 701
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 488,
+            "y": 586,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row3_col3",
+          "source_row": 3,
+          "source_column": 3,
+          "rect": {
+            "x": 649,
+            "y": 493,
+            "width": 276,
+            "height": 218
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 32548,
+            "min_x": 657,
+            "min_y": 501,
+            "max_x": 916,
+            "max_y": 702
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 787,
+            "y": 592,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row3_col4",
+          "source_row": 3,
+          "source_column": 4,
+          "rect": {
+            "x": 968,
+            "y": 498,
+            "width": 269,
+            "height": 207
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 27729,
+            "min_x": 976,
+            "min_y": 506,
+            "max_x": 1228,
+            "max_y": 696
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 1102.5,
+            "y": 592,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row4_col1",
+          "source_row": 4,
+          "source_column": 1,
+          "rect": {
+            "x": 30,
+            "y": 720,
+            "width": 292,
+            "height": 229
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 31967,
+            "min_x": 38,
+            "min_y": 728,
+            "max_x": 313,
+            "max_y": 940
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 176,
+            "y": 824,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row4_col2",
+          "source_row": 4,
+          "source_column": 2,
+          "rect": {
+            "x": 339,
+            "y": 715,
+            "width": 292,
+            "height": 224
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 33271,
+            "min_x": 347,
+            "min_y": 723,
+            "max_x": 622,
+            "max_y": 930
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 485,
+            "y": 817,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row4_col3",
+          "source_row": 4,
+          "source_column": 3,
+          "rect": {
+            "x": 641,
+            "y": 721,
+            "width": 291,
+            "height": 219
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 32496,
+            "min_x": 649,
+            "min_y": 729,
+            "max_x": 923,
+            "max_y": 931
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 786.5,
+            "y": 820,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row4_col4",
+          "source_row": 4,
+          "source_column": 4,
+          "rect": {
+            "x": 948,
+            "y": 722,
+            "width": 309,
+            "height": 219
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 36100,
+            "min_x": 956,
+            "min_y": 730,
+            "max_x": 1248,
+            "max_y": 932
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 1102.5,
+            "y": 821,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        }
+      ]
+    },
+    {
+      "source_id": "photo_05",
+      "source_path": "/world/avatars/supplied-v1/photo-05.jpg",
+      "source_sha256": "681f566ab7ef081fa7f8a39ea0c3367cc822ea31f1bcfe3065f2755679950027",
+      "width_px": 1280,
+      "height_px": 960,
+      "supplied_view": "back_hair_reference",
+      "notes": "Back-view hair references do not establish a rear full character, animation, back composition layer or pairing with any front shape.",
+      "shapes": [
+        {
+          "source_location": "row1_col1",
+          "source_row": 1,
+          "source_column": 1,
+          "rect": {
+            "x": 60,
+            "y": 13,
+            "width": 253,
+            "height": 213
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 32409,
+            "min_x": 68,
+            "min_y": 21,
+            "max_x": 304,
+            "max_y": 217
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 186.5,
+            "y": 110,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row1_col2",
+          "source_row": 1,
+          "source_column": 2,
+          "rect": {
+            "x": 367,
+            "y": 17,
+            "width": 239,
+            "height": 206
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 5972,
+            "min_x": 375,
+            "min_y": 25,
+            "max_x": 597,
+            "max_y": 214
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 486.5,
+            "y": 111,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row1_col3",
+          "source_row": 1,
+          "source_column": 3,
+          "rect": {
+            "x": 658,
+            "y": 10,
+            "width": 260,
+            "height": 219
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 33488,
+            "min_x": 666,
+            "min_y": 18,
+            "max_x": 909,
+            "max_y": 220
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 788,
+            "y": 109,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row1_col4",
+          "source_row": 1,
+          "source_column": 4,
+          "rect": {
+            "x": 968,
+            "y": 13,
+            "width": 250,
+            "height": 219
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 10436,
+            "min_x": 976,
+            "min_y": 21,
+            "max_x": 1209,
+            "max_y": 223
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 1093,
+            "y": 112,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row2_col1",
+          "source_row": 2,
+          "source_column": 1,
+          "rect": {
+            "x": 60,
+            "y": 239,
+            "width": 244,
+            "height": 222
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 34112,
+            "min_x": 68,
+            "min_y": 247,
+            "max_x": 295,
+            "max_y": 452
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 182,
+            "y": 340,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row2_col2",
+          "source_row": 2,
+          "source_column": 2,
+          "rect": {
+            "x": 360,
+            "y": 240,
+            "width": 247,
+            "height": 227
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 7363,
+            "min_x": 368,
+            "min_y": 248,
+            "max_x": 598,
+            "max_y": 458
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 483.5,
+            "y": 343,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row2_col3",
+          "source_row": 2,
+          "source_column": 3,
+          "rect": {
+            "x": 670,
+            "y": 238,
+            "width": 222,
+            "height": 241
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 36278,
+            "min_x": 678,
+            "min_y": 246,
+            "max_x": 883,
+            "max_y": 470
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 781,
+            "y": 347,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row2_col4",
+          "source_row": 2,
+          "source_column": 4,
+          "rect": {
+            "x": 974,
+            "y": 238,
+            "width": 226,
+            "height": 241
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 36276,
+            "min_x": 982,
+            "min_y": 246,
+            "max_x": 1191,
+            "max_y": 470
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 1087,
+            "y": 347,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row3_col1",
+          "source_row": 3,
+          "source_column": 1,
+          "rect": {
+            "x": 50,
+            "y": 477,
+            "width": 263,
+            "height": 237
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 38609,
+            "min_x": 58,
+            "min_y": 485,
+            "max_x": 304,
+            "max_y": 705
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 181.5,
+            "y": 584,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row3_col2",
+          "source_row": 3,
+          "source_column": 2,
+          "rect": {
+            "x": 348,
+            "y": 477,
+            "width": 242,
+            "height": 237
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 7837,
+            "min_x": 356,
+            "min_y": 485,
+            "max_x": 581,
+            "max_y": 705
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 469,
+            "y": 584,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row3_col3",
+          "source_row": 3,
+          "source_column": 3,
+          "rect": {
+            "x": 629,
+            "y": 484,
+            "width": 290,
+            "height": 228
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 41068,
+            "min_x": 637,
+            "min_y": 492,
+            "max_x": 910,
+            "max_y": 703
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 774,
+            "y": 587,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row3_col4",
+          "source_row": 3,
+          "source_column": 4,
+          "rect": {
+            "x": 935,
+            "y": 489,
+            "width": 303,
+            "height": 225
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 19733,
+            "min_x": 943,
+            "min_y": 497,
+            "max_x": 1229,
+            "max_y": 705
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 1086.5,
+            "y": 591,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row4_col1",
+          "source_row": 4,
+          "source_column": 1,
+          "rect": {
+            "x": 46,
+            "y": 733,
+            "width": 268,
+            "height": 192
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 32525,
+            "min_x": 54,
+            "min_y": 741,
+            "max_x": 305,
+            "max_y": 916
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 180,
+            "y": 820,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row4_col2",
+          "source_row": 4,
+          "source_column": 2,
+          "rect": {
+            "x": 354,
+            "y": 711,
+            "width": 244,
+            "height": 247
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 34034,
+            "min_x": 362,
+            "min_y": 719,
+            "max_x": 589,
+            "max_y": 949
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 476,
+            "y": 823,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row4_col3",
+          "source_row": 4,
+          "source_column": 3,
+          "rect": {
+            "x": 661,
+            "y": 719,
+            "width": 228,
+            "height": 226
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 9727,
+            "min_x": 669,
+            "min_y": 727,
+            "max_x": 880,
+            "max_y": 936
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 775,
+            "y": 822,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        },
+        {
+          "source_location": "row4_col4",
+          "source_row": 4,
+          "source_column": 4,
+          "rect": {
+            "x": 955,
+            "y": 716,
+            "width": 235,
+            "height": 240
+          },
+          "measured_dark_outline": {
+            "dark_pixels": 30219,
+            "min_x": 963,
+            "min_y": 724,
+            "max_x": 1181,
+            "max_y": 947
+          },
+          "estimated_attachment": {
+            "kind": "cranium_center",
+            "x": 1072.5,
+            "y": 825,
+            "status": "NOT_VERIFIED",
+            "basis": "Geometric centerline at 45% of principal dark-outline height; not fitted to any body, face, skull or C06 cell."
+          },
+          "transparent_cutout": "NOT_PREPARED",
+          "layer_alignment": "NOT_VERIFIED",
+          "direction_frames": "UNKNOWN",
+          "walk_frames": "NOT_PROVIDED",
+          "paired_source_location": null,
+          "composition_order": null,
+          "wire_item_id": null
+        }
+      ]
+    }
+  ],
+  "wire_binding": null,
+  "limitations": [
+    "Attachment estimates are not approved composition anchors.",
+    "No alpha, layer separation, body fit or directional animation established.",
+    "No C06 schema/catalog change, production renderer or product fallback."
+  ]
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Selected hair source registration</title>
+<link rel="icon" href="data:,">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 system-ui,sans-serif; background: #faf8f5; color: #24191d; }
+  main { max-width: 64rem; margin: auto; padding: 24px 16px; }
+  h1 { font-size: 1.7rem; line-height: 1.2; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1rem; }
+  p { max-width: 70ch; }
+  nav { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+  button { min-height: 44px; padding: 6px 12px; font: inherit; background: white; color: #24191d; border: 1px solid #63585b; cursor: pointer; }
+  button[aria-pressed="true"] { outline: 2px solid #24191d; outline-offset: 2px; }
+  [hidden] { display: none !important; }
+  .choices { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,260px),1fr)); gap: 24px; }
+  article { min-width: 0; }
+  .views { padding: 12px; display: flex; gap: 16px; align-items: end; flex-wrap: wrap; background: var(--surface,#eddbd4); }
+  figure { margin: 0; }
+  figcaption { font-size: 12px; color: var(--caption,#24191d); }
+  .cell { position: relative; overflow: hidden; image-rendering: pixelated; }
+  img { position: absolute; max-width: none; image-rendering: pixelated; }
+  .attachment { position: absolute; width: 5px; height: 5px; border: 1px solid #e64f9b; border-radius: 50%; margin: -2px; pointer-events: none; }
+  .coordinates { font-size: 12px; overflow-wrap: anywhere; }
+  #status { font-weight: 600; }
+</style>
+<main>
+  <h1>Selected hair source registration</h1>
+  <p id="status" role="status">Loading original references…</p>
+  <p>Thirty-two supplied shapes, displayed as source windows. White JPEG backgrounds remain opaque. The marker is an unverified geometric head-center estimate, not a fitted attachment or C06 foot anchor.</p>
+  <p>Front and back references are unpaired. Equal row/column labels do not imply a matching hairstyle. Layer separation, transparency, body fit and direction/walk frames remain unknown or unavailable.</p>
+  <p><a href="./review.html">Six complete-character source references</a></p>
+  <nav aria-label="Source reference">
+    <button type="button" data-source="photo_04" aria-pressed="true">Front hair · 16</button>
+    <button type="button" data-source="photo_05" aria-pressed="false">Back hair · 16</button>
+  </nav>
+  <nav aria-label="Review surface">
+    <button type="button" data-theme="REVENGE" aria-pressed="true">REVENGE</button>
+    <button type="button" data-theme="PARADE" aria-pressed="false">PARADE</button>
+    <button type="button" data-theme="DANGER" aria-pressed="false">DANGER</button>
+  </nav>
+  <div id="sheets"></div>
+</main>
+<script type="module">
+  const metadata = await fetch('./hair-layout.json').then(response => { if(!response.ok) throw Error('Missing hair registration'); return response.json() })
+  const root = document.getElementById('sheets')
+  for(const source of metadata.sources) {
+    const image=new Image(); image.src=source.source_path; await image.decode()
+    if(image.naturalWidth!==source.width_px || image.naturalHeight!==source.height_px) throw Error('Original dimensions changed')
+    const section=document.createElement('section'), heading=document.createElement('h2'), note=document.createElement('p'), choices=document.createElement('div')
+    section.dataset.sheet=source.source_id; section.hidden=source.source_id!=='photo_04'
+    heading.textContent=source.source_id==='photo_04'?'Front-hair references':'Back-hair references'
+    note.textContent=`${source.source_id} · ${source.shapes.length} supplied shapes · no approved front/back pairing`
+    choices.className='choices'
+    for(const shape of source.shapes) {
+      const article=document.createElement('article'), title=document.createElement('h3'), views=document.createElement('div'), coordinates=document.createElement('p')
+      article.dataset.location=shape.source_location; title.textContent=shape.source_location; views.className='views'
+      const scale=Math.min(96/shape.rect.width,96/shape.rect.height)
+      for(const size of [64,128]) {
+        const factor=size/128,figure=document.createElement('figure'),cell=document.createElement('div'),img=image.cloneNode(),marker=document.createElement('span'),caption=document.createElement('figcaption')
+        cell.className='cell'; cell.style.width=`${size}px`; cell.style.height=`${size}px`
+        img.alt=`${source.source_id} ${shape.source_location}, supplied hair reference`
+        img.style.width=`${source.width_px*scale*factor}px`
+        img.style.left=`${(64-shape.estimated_attachment.x*scale)*factor}px`; img.style.top=`${(64-shape.estimated_attachment.y*scale)*factor}px`
+        img.style.clipPath=`inset(${shape.rect.y/source.height_px*100}% ${(source.width_px-shape.rect.x-shape.rect.width)/source.width_px*100}% ${(source.height_px-shape.rect.y-shape.rect.height)/source.height_px*100}% ${shape.rect.x/source.width_px*100}%)`
+        marker.className='attachment'; marker.style.left=`${64*factor}px`; marker.style.top=`${64*factor}px`; marker.setAttribute('aria-hidden','true')
+        caption.textContent=`${size}px`; cell.append(img,marker); figure.append(cell,caption); views.append(figure)
+      }
+      coordinates.className='coordinates'
+      coordinates.textContent=`Original ROI ${shape.rect.x},${shape.rect.y} / ${shape.rect.width}×${shape.rect.height}. Head estimate ${shape.estimated_attachment.x},${shape.estimated_attachment.y}. Pairing unknown.`
+      article.append(title,views,coordinates); choices.append(article)
+    }
+    section.append(heading,note,choices); root.append(section)
+  }
+  document.querySelectorAll('button[data-source]').forEach(button=>button.addEventListener('click',()=>{
+    document.querySelectorAll('button[data-source]').forEach(other=>other.setAttribute('aria-pressed',String(other===button)))
+    document.querySelectorAll('[data-sheet]').forEach(section=>{section.hidden=section.dataset.sheet!==button.dataset.source})
+    document.documentElement.dataset.source=button.dataset.source
+  }))
+  const palettes={REVENGE:['#eddbd4','#24191d'],PARADE:['#333239','#f4edda'],DANGER:['#d5e6e1','#152d3b']}
+  document.querySelectorAll('[data-theme]').forEach(button=>button.addEventListener('click',()=>{
+    const [surface,caption]=palettes[button.dataset.theme];root.style.setProperty('--surface',surface);root.style.setProperty('--caption',caption)
+    document.querySelectorAll('[data-theme]').forEach(other=>other.setAttribute('aria-pressed',String(other===button)))
+    document.documentElement.dataset.surface=button.dataset.theme
+  }))
+  await Promise.all([...root.querySelectorAll('img')].map(image=>image.decode()))
+  document.getElementById('status').textContent='IN_PROGRESS · 32 source shapes · no transparent layers or paired directions'
+  window.__MCR_HAIR_REVIEW__={sourcePack:metadata.source_pack_id,revision:metadata.source_pack_revision,shapes:metadata.sources.reduce((total,source)=>total+source.shapes.length,0),productionEligible:false}
+</script>
+</html>
