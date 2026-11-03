@@ -180,7 +180,7 @@ fn packet_flood_cannot_accelerate_and_bucket_refills_at_thirty_per_second() {
         s.submit(&b, input(&b, seq, 1.0, 0.0, false), 0, &a)
             .unwrap();
     }
-    assert_eq!(s.pending_input_count(), 1);
+    assert_eq!(s.pending_input_count(), 60);
     assert_eq!(
         s.submit(&b, input(&b, 61, 1.0, 0.0, false), 0, &a),
         Err(SimulationError::RateLimited)
@@ -526,4 +526,78 @@ fn resync_history_is_bounded_and_new_connection_can_start_fresh() {
     newer.connection_id = id(9001);
     a.grant(&newer, 5000, 12000);
     s.replace_stream(newer, 0, &a).unwrap();
+}
+
+#[test]
+fn accepted_interaction_survives_a_later_motion_packet_and_repeated_buttons_are_explicitly_throttled(
+) {
+    let (mut s, b, a) = fixture(32, 120.0);
+    s.submit(&b, input(&b, 1, 0.0, 0.0, true), 0, &a).unwrap();
+    assert_eq!(
+        s.submit(&b, input(&b, 2, 0.0, 0.0, true), 1, &a),
+        Err(SimulationError::InteractionPending)
+    );
+    s.submit(&b, input(&b, 2, 0.0, 0.0, false), 25, &a).unwrap();
+    let r = s.advance(50, &a).unwrap();
+    assert_eq!(r.interactions.len(), 1);
+    assert_eq!(s.state(b.key.user_id.uuid()).unwrap().ack_input_seq, 2);
+    assert!(s.advance(100, &a).unwrap().interactions.is_empty());
+}
+#[test]
+fn accepted_stop_is_not_erased_by_a_later_input_during_catchup() {
+    let (mut s, b, a) = fixture(32, 120.0);
+    s.submit(&b, input(&b, 1, 1.0, 0.0, false), 0, &a).unwrap();
+    s.advance(50, &a).unwrap();
+    let p = pos(&s, &b);
+    s.submit(&b, input(&b, 2, 0.0, 0.0, false), 60, &a).unwrap();
+    s.submit(&b, input(&b, 3, 0.0, 0.0, false), 140, &a)
+        .unwrap();
+    s.advance(150, &a).unwrap();
+    assert_eq!(pos(&s, &b), p);
+    assert_eq!(s.state(b.key.user_id.uuid()).unwrap().ack_input_seq, 3);
+}
+#[test]
+fn wall_boundary_endpoints_are_symmetric_and_include_all_incident_cells() {
+    let map = WorldMap::from_geometry(&geometry(8)).unwrap();
+    for (from, to) in [
+        (Position { x: 36.0, y: 28.0 }, Position { x: 32.0, y: 24.0 }),
+        (Position { x: 32.0, y: 24.0 }, Position { x: 28.0, y: 28.0 }),
+        (Position { x: 36.0, y: 20.0 }, Position { x: 32.0, y: 20.0 }),
+    ] {
+        assert!(!map.clear_segment(from, to));
+        assert!(!map.clear_segment(to, from));
+    }
+    let mut g = geometry(8);
+    g.spawns[0].x = 4;
+    g.spawns[0].y = 3;
+    let map = WorldMap::from_geometry(&g).unwrap();
+    let p = map.spawn("spawn_test").unwrap();
+    assert_eq!(
+        map.step(
+            p,
+            &input(&binding(20), 1, -0.5, -0.5, false),
+            Limits::new(160.0, 48.0, 250).unwrap()
+        ),
+        p
+    );
+}
+#[test]
+fn movement_history_is_bounded_when_ticks_are_not_serviced() {
+    let (mut s, b, a) = fixture(32, 120.0);
+    for seq in 1..=MAX_PENDING_INPUTS {
+        s.submit(
+            &b,
+            input(&b, seq as u64, 0.0, 0.0, false),
+            (seq as u64) * 34,
+            &a,
+        )
+        .unwrap();
+    }
+    assert_eq!(s.pending_input_count(), MAX_PENDING_INPUTS);
+    assert_eq!(
+        s.submit(&b, input(&b, 129, 0.0, 0.0, false), 4386, &a),
+        Err(SimulationError::InputQueueFull)
+    );
+    s.advance(4400, &a).unwrap();
+    assert_eq!(s.pending_input_count(), 0);
 }

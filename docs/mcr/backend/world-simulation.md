@@ -42,8 +42,11 @@ UTF-8/binary rules and all-message rate limit before decoding; this module is
 not the listener.
 
 The room owner calls `advance` on a monotonic server clock. Logical ticks are
-50 ms (20 Hz); input receipt never advances coordinates. One latest pending
-intent per player bounds memory and coalesces packets. Strictly increasing input
+50 ms (20 Hz); input receipt never advances coordinates. A per-player FIFO holds at most 128 timestamped movement inputs; a full queue
+explicitly rejects the input. Each tick coalesces only eligible axes, preserving
+a stop applicable to an earlier catch-up tick when a later packet arrives.
+The separate one-slot interaction intent cannot be overwritten by axes; another
+button intent is explicitly rejected until it is consumed or expires. Strictly increasing input
 sequence allows gaps, rejects duplicates/decreases and resets only on a fresh
 stream. `ack_input_seq` advances only when a pending input is consumed by a tick;
 held motion does not invent acknowledgements. Inputs received after a tick's
@@ -88,8 +91,10 @@ and a 256-pixel interaction segment even with 1-pixel tiles.
 `interaction_in_range` requires a known interaction, server foot coordinate,
 configured Euclidean virtual range and clear segment. A consumed one-shot intent
 selects the first qualifying interaction by stable ID order. It emits at most once,
-not on subsequent held-input ticks. Latest-intent coalescing can replace an
-unsimulated intent before consumption; this is not a durable command channel.
+not on subsequent held-input ticks. Accepted interactions survive later motion packets and are consumed once or
+expire. A second pending button returns `InteractionPending`; a saturated motion
+history returns `InputQueueFull`. The listener must map these explicit denials
+to bounded recovery/rate-limit behavior. This is not a durable command channel.
 These candidates only open virtual interactions. They never change physical
 arrival, stock, party membership or pickup state, and they do not authorize a
 player-to-player operation. Durable operations and social-policy checks remain
@@ -176,14 +181,26 @@ Executed from the assigned checkout on 2026-11-04 (Asia/Seoul):
 | `git diff --check` | 0 |
 | `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_simulation` | NOT_RUN; queued explicit shared compile lease with delivery |
 
-Twenty-two deterministic test cases cover strict intent decoding/teleport attempts,
+Twenty-six deterministic test cases cover strict intent decoding/teleport attempts,
 invalid axes and safe counters, scalar/diagonal speed, 50ms timing/ack, packet
 flood/rate refill, input gaps/replays, stream/epoch/session/connection/owner/pin
 fencing, takeover reset, access-expiry immutability and bucket preservation,
 revocation/expiry/unavailability without a due tick, held stop/timeout, catch-up
 bounds/non-backdating, high-speed wall tunneling, corner/edge/bounds collision,
 spawn/malformed geometry, interaction distance/occlusion/unknown IDs, one-shot
-behavior, fifty-player bounded workload and the frozen synthetic fixture.
+behavior, movement-history limits, accepted-stop preservation, interaction
+preservation across later motion, symmetric incident-endpoint collision checks,
+fifty-player bounded workload and the frozen synthetic fixture.
 These are authored tests, not executed results until the queued Cargo command
 completes. No native admission, two-account world, actual WebSocket, mobile,
 200-connection load, QA05/QA08 or IN01 acceptance is asserted.
+
+
+Targeted read-only peer review found three concrete P2 issues before native
+execution: interaction overwrite, accepted-stop loss during delayed catch-up,
+and asymmetric wall edge/corner endpoint contact. All three are fixed in the
+subsequent worker patch with direct regressions; source re-review is requested.
+The reviewer ran no Rust commands. Initial source-ready checkpoints are
+`1ea1813` (implementation), `8f649a6` (separate delegated registrations),
+`398bbfd` (maximum interaction sweep) and `4187219` (stream reuse fencing).
+These are ancestry/progress records, not native test acceptance.

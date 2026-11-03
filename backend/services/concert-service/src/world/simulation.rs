@@ -5,7 +5,7 @@ use concert_domain::{
     world::{Input, Limits, Position, WorldMap, STEP_MS},
     AssetId, ParticipantKey, Revision,
 };
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::{BTreeMap, BTreeSet, VecDeque};
 use uuid::Uuid;
 
 pub const ROOM_CAPACITY: usize = 50;
@@ -14,6 +14,7 @@ pub const INPUT_RATE: u64 = 30;
 pub const INPUT_BURST: u64 = 60;
 pub const AUTH_LEASE_MAX_MS: u64 = 5000;
 pub const MAX_STREAMS_PER_CONNECTION: usize = 1024;
+pub const MAX_PENDING_INPUTS: usize = 128;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct ResourcePin {
@@ -78,6 +79,8 @@ pub enum SimulationError {
     Replay,
     RateLimited,
     StreamLimit,
+    InputQueueFull,
+    InteractionPending,
     Clock,
     Spawn,
 }
@@ -91,7 +94,8 @@ struct Player {
     access_expires_at_ms: u64,
     state: PlayerState,
     last_received_seq: u64,
-    pending: Option<(Input, u64)>,
+    pending: VecDeque<(Input, u64)>,
+    pending_interaction: Option<u64>,
     held: Option<(Input, u64)>,
     credits: u64, // Milli-tokens: 1000 per message, 30 per ms.
     rate_updated_ms: u64,
@@ -230,7 +234,8 @@ impl Simulation {
                 access_expires_at_ms,
                 state,
                 last_received_seq: 0,
-                pending: None,
+                pending: VecDeque::new(),
+                pending_interaction: None,
                 held: None,
                 credits: INPUT_BURST * 1000,
                 rate_updated_ms: now,
@@ -284,7 +289,8 @@ impl Simulation {
         player.access_expires_at_ms = expiry;
         player.state.ack_input_seq = 0;
         player.last_received_seq = 0;
-        player.pending = None;
+        player.pending.clear();
+        player.pending_interaction = None;
         player.held = None;
         // Retain the rate bucket across stream resets; resync does not grant a new input burst.
         Ok(())
@@ -328,8 +334,23 @@ impl Simulation {
         if input.seq() <= player.last_received_seq {
             return Err(SimulationError::Replay);
         }
+        if player.pending.len() >= MAX_PENDING_INPUTS {
+            return Err(SimulationError::InputQueueFull);
+        }
+        if player
+            .pending_interaction
+            .is_some_and(|at| now - at > self.limits.input_hold_ms())
+        {
+            player.pending_interaction = None;
+        }
+        if input.interact() {
+            if player.pending_interaction.is_some() {
+                return Err(SimulationError::InteractionPending);
+            }
+            player.pending_interaction = Some(now);
+        }
         player.last_received_seq = input.seq();
-        player.pending = Some((input, now)); // One bounded latest-intent slot, independent of packet count.
+        player.pending.push_back((input, now));
         Ok(())
     }
     /// At most four 50ms steps; discard excess wall time instead of unbounded catch-up/teleport.
@@ -370,20 +391,22 @@ impl Simulation {
         for step in 0..steps {
             let step_at = self.last_step_ms + (due - steps + step + 1) * STEP_MS;
             for (id, player) in &mut self.players {
-                let mut interact = false;
-                if player
-                    .pending
-                    .as_ref()
-                    .is_some_and(|(_, at)| *at <= step_at)
-                {
-                    let (input, at) = player.pending.take().expect("pending checked above");
+                // Retain each timestamp until its due step, then coalesce only eligible axes.
+                // A later packet must not erase a stop that applies to an earlier catch-up step.
+                while player.pending.front().is_some_and(|(_, at)| *at <= step_at) {
+                    let (input, at) = player.pending.pop_front().expect("front checked above");
                     if now - at <= self.limits.input_hold_ms() {
                         player.state.ack_input_seq = input.seq();
-                        interact = input.interact();
                         player.held = Some((input, at));
                     } else {
                         player.held = None;
                     }
+                }
+                let interact = player
+                    .pending_interaction
+                    .is_some_and(|at| at <= step_at && now - at <= self.limits.input_hold_ms());
+                if player.pending_interaction.is_some_and(|at| at <= step_at) {
+                    player.pending_interaction = None;
                 }
                 if let Some((input, at)) = &player.held {
                     if *at <= step_at && now - at <= self.limits.input_hold_ms() {
@@ -419,10 +442,7 @@ impl Simulation {
         self.players.len()
     }
     pub fn pending_input_count(&self) -> usize {
-        self.players
-            .values()
-            .filter(|p| p.pending.is_some())
-            .count()
+        self.players.values().map(|p| p.pending.len()).sum()
     }
     /// Explicit disconnect/removal; obsolete connection cannot remove a newer stream.
     pub fn remove(&mut self, binding: &Binding) -> bool {

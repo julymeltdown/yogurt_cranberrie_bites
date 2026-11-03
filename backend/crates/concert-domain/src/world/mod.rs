@@ -268,11 +268,16 @@ impl WorldMap {
             && self.blocked[y as usize * self.width + x as usize] == 0
     }
     pub fn walkable(&self, p: Position) -> bool {
-        p.x.is_finite()
-            && p.y.is_finite()
-            && p.x >= 0.0
-            && p.y >= 0.0
-            && self.walkable_cell(self.cell(p).0, self.cell(p).1)
+        if !p.x.is_finite() || !p.y.is_finite() || p.x < 0.0 || p.y < 0.0 {
+            return false;
+        }
+        let (x, y) = self.cell(p);
+        let edge_x = p.x % self.tile_width == 0.0;
+        let edge_y = p.y % self.tile_height == 0.0;
+        self.walkable_cell(x, y)
+            && (!edge_x || self.walkable_cell(x - 1, y))
+            && (!edge_y || self.walkable_cell(x, y - 1))
+            && (!(edge_x && edge_y) || self.walkable_cell(x - 1, y - 1))
     }
     pub fn spawn(&self, id: &str) -> Result<Position, WorldError> {
         self.spawns.get(id).copied().ok_or(WorldError::Spawn)
