@@ -256,13 +256,24 @@ fn oracle(v: &Value) {
         String::from_utf8_lossy(&result.stderr)
     );
 }
-/// Synthetic metadata checks the wire variant, not catalog or product-art admission.
+/// Uses selected manifest/preset identities; movement and authority remain fixtures.
 #[test]
 fn whole_character_snapshot_and_delta_preserve_canonical_config() {
     let mut f = Fixture::new();
-    f.identities[1].avatar.appearance = concert_domain::AvatarAppearance::WholeCharacter {
-        preset_id: asset("preset_fixture"),
-    };
+    for (b, identity) in f.bindings.iter_mut().zip(&mut f.identities) {
+        b.resources.avatar_manifest_id = asset("mcr_selected_static_20261103");
+        identity.avatar.manifest_id = b.resources.avatar_manifest_id.clone();
+        identity.avatar.appearance = concert_domain::AvatarAppearance::WholeCharacter {
+            preset_id: asset("photo01_front_01"),
+        };
+    }
+    f.sim = simulation(&f.bindings[0]);
+    for b in &f.bindings {
+        f.authority.grant(b, 5000, 10000);
+        f.sim
+            .admit(b.clone(), "spawn_test", 0, &f.authority)
+            .unwrap();
+    }
     let viewer = &f.bindings[0];
     let mut r = replica(viewer, &f.authority, QueueLimits::default());
     let snapshot = decode(r.next(&f.frame(), 0, &f.authority, &f.policy).unwrap());
@@ -276,15 +287,12 @@ fn whole_character_snapshot_and_delta_preserve_canonical_config() {
     let config = &player["avatar"]["config"];
     assert_eq!(config["contract_version"], "1.1.0");
     assert_eq!(config["representation"], "whole_character");
-    assert_eq!(config["preset_id"], "preset_fixture");
+    assert_eq!(config["preset_id"], "photo01_front_01");
     assert!(config.get("item_ids").is_none());
     assert!(config.get("skin_tone_id").is_none());
-    let layered = &snapshot["players"][0]["avatar"]["config"];
-    assert_eq!(layered["contract_version"], "1.0.0");
-    assert_eq!(layered["item_ids"]["body"], "body_test");
     f.identities[1].avatar_revision = Revision::new(2).unwrap();
     f.identities[1].avatar.appearance = concert_domain::AvatarAppearance::WholeCharacter {
-        preset_id: asset("preset_changed"),
+        preset_id: asset("photo01_front_02"),
     };
     let delta = decode(r.next(&f.frame(), 100, &f.authority, &f.policy).unwrap());
     assert_eq!(delta["upserts"].as_array().unwrap().len(), 1);
@@ -292,7 +300,7 @@ fn whole_character_snapshot_and_delta_preserve_canonical_config() {
     assert_eq!(delta["upserts"][0]["avatar"]["revision"], 2);
     assert_eq!(
         delta["upserts"][0]["avatar"]["config"]["preset_id"],
-        "preset_changed"
+        "photo01_front_02"
     );
     assert!(delta["upserts"][0]["avatar"]["config"]
         .get("item_ids")
