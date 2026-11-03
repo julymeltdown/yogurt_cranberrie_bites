@@ -138,3 +138,12 @@ Direct SQL verification completed before native Cargo validation:
 These checks did not execute Rust adapters or establish migration-ledger,
 production authorization, public HTTP/RPC or IN02 acceptance. Native Rust tests
 are authored and await the serialized build lease.
+
+Follow-up source hardening adds exact party meeting/audience revision fences to
+beacons. Any party audience change invalidates existing party guidance until its
+owner explicitly reconfirms it; venue changes also invalidate it independently of
+beacon revision. The public DTO is unchanged. The database additionally validates
+closed audience shape/unique UUID recipients and forbids guidance edits disguised
+as revocation. Trigger expiry is sampled after settings locks, not before waiting.
+Native restart verification replays the persisted safe receipt and fetches its
+still-authorized original beacon after the PostgreSQL process restart.

@@ -321,3 +321,131 @@ async fn database_guards_ack_cutoff_place_and_removal_fence() -> anyhow::Result<
     pool.close().await;
     Ok(())
 }
+
+#[tokio::test]
+async fn party_beacon_fences_movement_and_audience_changes() -> anyhow::Result<()> {
+    let pool = owned_pool().await?;
+    let f = setup(&pool).await?;
+    let commands = BeaconCommands::new(pool.clone(), SyntheticAuthority);
+    let reads = PgMeetingRepository::new(pool.clone(), SyntheticAuthority);
+    let mut m = f.meeting.clone();
+    m.audience = Audience::PartyMembers { party_id: f.party };
+    let id = Uuid::new_v4();
+    commands
+        .execute(
+            f.actor(f.owner),
+            id,
+            Uuid::new_v4(),
+            BeaconMutation::Create(CreateBeacon {
+                meeting: m.clone(),
+                physical_presence_acknowledged: true,
+            }),
+            &keys(),
+        )
+        .await?;
+    assert_eq!(reads.read(f.actor(f.peer), id).await?.revision, 1);
+    sqlx::query("update meeting_fixture_authority set meeting_revision=2 where event=$1")
+        .bind(f.event)
+        .execute(&pool)
+        .await?;
+    assert_eq!(
+        reads.read(f.actor(f.peer), id).await,
+        Err(MeetingError::ResourceUnavailable)
+    );
+    let fresh = Uuid::new_v4();
+    commands
+        .execute(
+            f.actor(f.owner),
+            fresh,
+            Uuid::new_v4(),
+            BeaconMutation::Create(CreateBeacon {
+                meeting: m,
+                physical_presence_acknowledged: true,
+            }),
+            &keys(),
+        )
+        .await?;
+    sqlx::query("update meeting_fixture_authority set audience_revision=2 where event=$1")
+        .bind(f.event)
+        .execute(&pool)
+        .await?;
+    assert_eq!(
+        reads.read(f.actor(f.peer), fresh).await,
+        Err(MeetingError::ResourceUnavailable)
+    );
+    pool.close().await;
+    Ok(())
+}
+
+#[tokio::test]
+async fn restart_replays_persisted_receipt_and_authorized_projection() -> anyhow::Result<()> {
+    let pool = owned_pool().await?;
+    sqlx::query("create table if not exists meeting_fixture_restart(event uuid not null,owner uuid not null,peer uuid not null,beacon uuid not null,key uuid not null,body jsonb not null,receipt uuid not null)").execute(&pool).await?;
+    if std::env::var("MEETING_RESTART_VERIFY").as_deref() == Ok("1") {
+        use sqlx::Row;
+        let rows = sqlx::query("select * from meeting_fixture_restart")
+            .fetch_all(&pool)
+            .await?;
+        assert!(!rows.is_empty(), "restart must verify earlier effects");
+        let commands = BeaconCommands::new(pool.clone(), SyntheticAuthority);
+        let reads = PgMeetingRepository::new(pool.clone(), SyntheticAuthority);
+        for row in rows {
+            let actor = MeetingActor {
+                event: row.get("event"),
+                actor: row.get("owner"),
+            };
+            let id: Uuid = row.get("beacon");
+            let body: CreateBeacon = serde_json::from_value(row.get("body"))?;
+            let replay = commands
+                .execute(
+                    actor,
+                    id,
+                    row.get("key"),
+                    BeaconMutation::Create(body),
+                    &keys(),
+                )
+                .await?;
+            assert_eq!(replay.id, row.get::<Uuid, _>("receipt"));
+            assert_eq!(
+                reads
+                    .read(
+                        MeetingActor {
+                            event: actor.event,
+                            actor: row.get("peer")
+                        },
+                        id
+                    )
+                    .await?
+                    .revision,
+                1
+            );
+            let count: i64 = sqlx::query_scalar(
+                "select count(*) from concert_command_receipts where receipt_id=$1",
+            )
+            .bind(replay.id)
+            .fetch_one(&pool)
+            .await?;
+            assert_eq!(count, 1);
+        }
+    } else {
+        let f = setup(&pool).await?;
+        let id = Uuid::new_v4();
+        let key = Uuid::new_v4();
+        let body = CreateBeacon {
+            meeting: f.meeting.clone(),
+            physical_presence_acknowledged: true,
+        };
+        let receipt = BeaconCommands::new(pool.clone(), SyntheticAuthority)
+            .execute(
+                f.actor(f.owner),
+                id,
+                key,
+                BeaconMutation::Create(body.clone()),
+                &keys(),
+            )
+            .await?;
+        sqlx::query("insert into meeting_fixture_restart(event,owner,peer,beacon,key,body,receipt) values($1,$2,$3,$4,$5,$6,$7)").bind(f.event).bind(f.owner).bind(f.peer).bind(id).bind(key).bind(serde_json::to_value(body)?).bind(receipt.id).execute(&pool).await?;
+    }
+    pool.close().await;
+    Ok(())
+}

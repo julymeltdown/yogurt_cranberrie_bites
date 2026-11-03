@@ -98,7 +98,10 @@ impl MeetingAuthority for SyntheticAuthority {
             return Err(MeetingError::ResourceUnavailable);
         }
         if q.operation == MeetingOperation::Revoke {
-            return Ok(AudienceGrant { query: q });
+            return Ok(AudienceGrant {
+                query: q,
+                party: None,
+            });
         }
         let blocked: Vec<Uuid> = row.get("blocked");
         if blocked.contains(&q.actor.actor) || blocked.contains(&q.owner) {
@@ -123,7 +126,15 @@ impl MeetingAuthority for SyntheticAuthority {
             }
             _ => return Err(MeetingError::ResourceUnavailable),
         }
-        Ok(AudienceGrant { query: q })
+        let party = match &q.audience {
+            Audience::PartyMembers { party_id } => Some(PartyFence {
+                party: *party_id,
+                meeting_revision: row.get("meeting_revision"),
+                audience_revision: row.get("audience_revision"),
+            }),
+            _ => None,
+        };
+        Ok(AudienceGrant { query: q, party })
     }
 }
 pub struct Fixture {
@@ -148,7 +159,7 @@ pub async fn setup(pool: &PgPool) -> anyhow::Result<Fixture> {
     let party = Uuid::new_v4();
     sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,'Synthetic meeting fixture','OPEN')").bind(event).bind(format!("meeting-{}",event.simple())).execute(pool).await?;
     sqlx::query("insert into concert_meeting_settings(event_id,event_cutoff) values($1,clock_timestamp()+interval '1 day')").bind(event).execute(pool).await?;
-    sqlx::query("create table if not exists meeting_fixture_authority(event uuid primary key,party uuid not null,members uuid[] not null,blocked uuid[] not null default '{}',unavailable boolean not null default false,owner uuid not null,public_place uuid,meeting_revision bigint not null default 1,member_generation bigint not null default 1,ends_at timestamptz not null default clock_timestamp()+interval '1 hour')").execute(pool).await?;
+    sqlx::query("create table if not exists meeting_fixture_authority(event uuid primary key,party uuid not null,members uuid[] not null,blocked uuid[] not null default '{}',unavailable boolean not null default false,owner uuid not null,public_place uuid,meeting_revision bigint not null default 1,audience_revision bigint not null default 1,member_generation bigint not null default 1,ends_at timestamptz not null default clock_timestamp()+interval '1 hour')").execute(pool).await?;
     sqlx::query(
         "insert into meeting_fixture_authority(event,party,members,owner) values($1,$2,$3,$4)",
     )
@@ -254,6 +265,7 @@ impl concert_service::meeting::rally::RallyAuthority for SyntheticAuthority {
         if row.get::<Uuid, _>("party") != q.party
             || !row.get::<Vec<Uuid>, _>("members").contains(&peer)
             || row.get::<Vec<Uuid>, _>("blocked").contains(&peer)
+            || row.get::<Vec<Uuid>, _>("blocked").contains(&q.actor.actor)
         {
             return Err(MeetingError::ResourceUnavailable);
         }

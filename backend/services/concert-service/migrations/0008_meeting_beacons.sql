@@ -5,6 +5,29 @@ CREATE TABLE public.concert_meeting_settings (
     beacon_ttl_seconds integer NOT NULL DEFAULT 900 CHECK (beacon_ttl_seconds BETWEEN 1 AND 900),
     event_cutoff timestamptz NOT NULL
 );
+CREATE FUNCTION public.concert_meeting_audience_valid(value jsonb) RETURNS boolean
+LANGUAGE plpgsql IMMUTABLE STRICT AS $$
+DECLARE item jsonb; seen text[] := '{}';
+BEGIN
+    IF jsonb_typeof(value)<>'object' THEN RETURN false; END IF;
+    IF value->>'kind'='PARTY_MEMBERS' THEN
+        RETURN value ?& ARRAY['kind','party_id'] AND value-ARRAY['kind','party_id']='{}'::jsonb
+            AND jsonb_typeof(value->'party_id')='string'
+            AND (value->>'party_id') ~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$';
+    ELSIF value->>'kind'='EXPLICIT_USERS' THEN
+        IF NOT value ?& ARRAY['kind','user_ids'] OR value-ARRAY['kind','user_ids']<>'{}'::jsonb
+           OR jsonb_typeof(value->'user_ids')<>'array' THEN RETURN false; END IF;
+        IF jsonb_array_length(value->'user_ids') NOT BETWEEN 1 AND 50 THEN RETURN false; END IF;
+        FOR item IN SELECT * FROM jsonb_array_elements(value->'user_ids') LOOP
+            IF jsonb_typeof(item)<>'string' OR (item#>>'{}') !~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+               OR (item#>>'{}')=ANY(seen) THEN RETURN false; END IF;
+            seen := array_append(seen,item#>>'{}');
+        END LOOP;
+        RETURN true;
+    END IF;
+    RETURN false;
+END;
+$$;
 CREATE TABLE public.concert_meeting_beacons (
     beacon_id uuid PRIMARY KEY,
     event_id uuid NOT NULL REFERENCES public.concert_events(event_id) ON DELETE CASCADE,
@@ -13,9 +36,13 @@ CREATE TABLE public.concert_meeting_beacons (
     map_revision bigint NOT NULL CHECK(map_revision BETWEEN 1 AND 9007199254740991),
     place_revision bigint NOT NULL CHECK(place_revision BETWEEN 1 AND 9007199254740991),
     selected_catalog_revision bigint NOT NULL CHECK(selected_catalog_revision BETWEEN 1 AND 60000),
+    selected_party_meeting_revision bigint CHECK(selected_party_meeting_revision BETWEEN 1 AND 9007199254740991),
+    selected_party_audience_revision bigint CHECK(selected_party_audience_revision BETWEEN 1 AND 9007199254740991),
+    CHECK ((audience->>'kind'='PARTY_MEMBERS' AND selected_party_meeting_revision IS NOT NULL AND selected_party_audience_revision IS NOT NULL)
+        OR (audience->>'kind'='EXPLICIT_USERS' AND selected_party_meeting_revision IS NULL AND selected_party_audience_revision IS NULL)),
     instructions text NOT NULL CHECK(char_length(instructions) BETWEEN 1 AND 1000 AND instructions ~ '[^[:space:]]' AND instructions !~ '[[:cntrl:]]'),
     identification text NOT NULL CHECK(char_length(identification) BETWEEN 1 AND 240 AND identification ~ '[^[:space:]]' AND identification !~ '[[:cntrl:]]'),
-    audience jsonb NOT NULL CHECK(jsonb_typeof(audience)='object'),
+    audience jsonb NOT NULL CHECK(public.concert_meeting_audience_valid(audience)),
     expires_at timestamptz NOT NULL,
     state text NOT NULL DEFAULT 'ACTIVE' CHECK(state IN ('ACTIVE','REVOKED')),
     revision bigint NOT NULL DEFAULT 1 CHECK(revision BETWEEN 1 AND 9007199254740991),
@@ -38,6 +65,9 @@ BEGIN
             RAISE EXCEPTION 'invalid beacon scope, terminal state or revision' USING ERRCODE='23514';
         END IF;
         IF NEW.state='REVOKED' THEN
+            IF to_jsonb(NEW)-ARRAY['state','revision','updated_at'] IS DISTINCT FROM to_jsonb(OLD)-ARRAY['state','revision','updated_at'] THEN
+                RAISE EXCEPTION 'revocation cannot alter physical guidance' USING ERRCODE='23514';
+            END IF;
             -- Revocation does not renew the last physical confirmation or TTL.
             NEW.updated_at := OLD.updated_at;
             RETURN NEW;
@@ -52,7 +82,12 @@ BEGIN
         NEW.created_at := db_now;
     END IF;
     SELECT * INTO settings FROM public.concert_meeting_settings WHERE event_id=NEW.event_id FOR SHARE;
-    IF NOT FOUND OR NEW.expires_at<=db_now OR NEW.expires_at>db_now+make_interval(secs=>settings.beacon_ttl_seconds)
+    IF NOT FOUND THEN RAISE EXCEPTION 'meeting settings unavailable' USING ERRCODE='23514'; END IF;
+    -- Settings locks can block: take the effective clock only after acquiring them.
+    db_now := clock_timestamp();
+    IF TG_OP='INSERT' THEN NEW.created_at:=db_now;
+    ELSIF OLD.expires_at<=db_now THEN RAISE EXCEPTION 'expired beacon is terminal' USING ERRCODE='23514'; END IF;
+    IF NEW.expires_at<=db_now OR NEW.expires_at>db_now+make_interval(secs=>settings.beacon_ttl_seconds)
        OR NEW.expires_at>settings.event_cutoff THEN
         RAISE EXCEPTION 'invalid beacon expiry' USING ERRCODE='23514';
     END IF;

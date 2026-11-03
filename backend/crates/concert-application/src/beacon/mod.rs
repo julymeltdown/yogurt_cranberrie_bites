@@ -33,17 +33,25 @@ pub enum MeetingOperation {
     Update,
     Revoke,
 }
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct PartyFence {
+    pub party: Uuid,
+    pub meeting_revision: i64,
+    pub audience_revision: i64,
+}
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct AudienceQuery {
     pub actor: MeetingActor,
     pub owner: Uuid,
     pub audience: Audience,
     pub operation: MeetingOperation,
+    pub expected_party: Option<PartyFence>,
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct AudienceGrant {
     /// Adapters must bind their returned decision to the exact request.
     pub query: AudienceQuery,
+    pub party: Option<PartyFence>,
 }
 #[derive(Clone, Debug)]
 pub enum BeaconMutation {

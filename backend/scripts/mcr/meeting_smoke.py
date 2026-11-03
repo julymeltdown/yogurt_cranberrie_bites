@@ -50,6 +50,12 @@ def main() -> int:
             'production_authority':'NOT_RUN','public_routes':'NOT_EXPOSED','IN02':'NOT_RUN',
             'source_revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'migration_ledger':'NOT_APPLIED','tests':[]}
+    source_paths = [*sorted((ROOT/'backend/services/concert-service/src/meeting').glob('*.rs')),
+        *sorted((ROOT/'backend/services/concert-service/tests').glob('meeting*.rs')),
+        ROOT/'backend/services/concert-service/tests/support/meeting/mod.rs',
+        ROOT/'backend/crates/concert-domain/src/beacon/mod.rs', ROOT/'backend/crates/concert-domain/src/rally/mod.rs',
+        ROOT/'backend/crates/concert-application/src/beacon/mod.rs', ROOT/'backend/crates/concert-application/src/rally/mod.rs',Path(__file__).resolve()]
+    report['source_sha256']={str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest() for path in source_paths}
     cluster=None
     previous=signal.signal(signal.SIGTERM,lambda *_:(_ for _ in ()).throw(KeyboardInterrupt()))
     try:
@@ -89,6 +95,7 @@ def main() -> int:
             raise RuntimeError('restart-persistence')
         report['restart_persistence']='PASS'
         # Rerun adapters on independent event fixtures after an actual process restart.
+        environment['MEETING_RESTART_VERIFY']='1'
         for binary in binaries: native(binary,'after-restart')
         report['result']='PASS'
     except BaseException as error:

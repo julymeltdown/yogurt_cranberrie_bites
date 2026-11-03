@@ -79,6 +79,26 @@ pub(crate) async fn current(c: &mut PgConnection, value: &MeetBeacon) -> Result<
     if value.state != BeaconState::Active || !active {
         return Err(MeetingError::ResourceUnavailable);
     }
+    let settings = sqlx::query(
+        "select event_cutoff from public.concert_meeting_settings where event_id=$1 for share",
+    )
+    .bind(value.event_id)
+    .fetch_optional(&mut *c)
+    .await
+    .map_err(storage)?
+    .ok_or(MeetingError::PolicyUnavailable)?;
+    let before_cutoff: bool = sqlx::query_scalar("select clock_timestamp() < $1")
+        .bind(
+            settings
+                .try_get::<chrono::DateTime<chrono::Utc>, _>("event_cutoff")
+                .map_err(invalid)?,
+        )
+        .fetch_one(&mut *c)
+        .await
+        .map_err(storage)?;
+    if !before_cutoff {
+        return Err(MeetingError::ResourceUnavailable);
+    }
     let catalog = select_place(c, value.event_id, &value.meeting)
         .await
         .map_err(|error| match error {
@@ -126,6 +146,27 @@ async fn select_place(
     savepoint.commit().await.map_err(storage)?;
     Ok(catalog)
 }
+pub(crate) async fn stored_fence(
+    c: &mut PgConnection,
+    event: Uuid,
+    id: Uuid,
+) -> Result<Option<PartyFence>, MeetingError> {
+    let row=sqlx::query("select audience->>'party_id' as party,selected_party_meeting_revision as meeting,selected_party_audience_revision as audience from public.concert_meeting_beacons where event_id=$1 and beacon_id=$2")
+        .bind(event).bind(id).fetch_one(c).await.map_err(storage)?;
+    match (
+        row.try_get::<Option<String>, _>("party").map_err(invalid)?,
+        row.try_get::<Option<i64>, _>("meeting").map_err(invalid)?,
+        row.try_get::<Option<i64>, _>("audience").map_err(invalid)?,
+    ) {
+        (None, None, None) => Ok(None),
+        (Some(party), Some(meeting_revision), Some(audience_revision)) => Ok(Some(PartyFence {
+            party: Uuid::parse_str(&party).map_err(invalid)?,
+            meeting_revision,
+            audience_revision,
+        })),
+        _ => Err(MeetingError::InvalidState),
+    }
+}
 pub async fn read_in<A: MeetingAuthority>(
     c: &mut PgConnection,
     a: &A,
@@ -144,6 +185,7 @@ pub async fn read_in<A: MeetingAuthority>(
     {
         return Err(MeetingError::ResourceUnavailable);
     }
+    let expected_party = stored_fence(c, actor.event, id).await?;
     grant(
         a,
         c,
@@ -152,6 +194,7 @@ pub async fn read_in<A: MeetingAuthority>(
             owner: value.owner_id,
             audience: value.meeting.audience.clone(),
             operation: MeetingOperation::Read,
+            expected_party,
         },
     )
     .await?;
@@ -164,11 +207,9 @@ pub(crate) async fn live_time(
     c: &mut PgConnection,
     value: &MeetBeacon,
 ) -> Result<(), MeetingError> {
-    let active: bool = sqlx::query_scalar("select clock_timestamp() < $1")
-        .bind(value.meeting.expires_at)
-        .fetch_one(c)
-        .await
-        .map_err(storage)?;
+    let active: bool = sqlx::query_scalar("select clock_timestamp() < least($1,event_cutoff) from public.concert_meeting_settings where event_id=$2")
+        .bind(value.meeting.expires_at).bind(value.event_id)
+        .fetch_optional(c).await.map_err(storage)?.unwrap_or(false);
     if active && value.state == BeaconState::Active {
         Ok(())
     } else {
@@ -244,6 +285,7 @@ pub async fn mutate_in<A: MeetingAuthority>(
                 owner: value.owner_id,
                 audience: value.meeting.audience,
                 operation: MeetingOperation::Revoke,
+                expected_party: None,
             },
         )
         .await?;
@@ -264,7 +306,7 @@ pub async fn mutate_in<A: MeetingAuthority>(
         BeaconMutation::Update(v) => (&v.meeting, MeetingOperation::Update),
         _ => unreachable!(),
     };
-    grant(
+    let party_fence = grant(
         a,
         c,
         AudienceQuery {
@@ -272,6 +314,7 @@ pub async fn mutate_in<A: MeetingAuthority>(
             owner: actor.actor,
             audience: meeting.audience.clone(),
             operation: op,
+            expected_party: None,
         },
     )
     .await?;
@@ -282,9 +325,9 @@ pub async fn mutate_in<A: MeetingAuthority>(
     }
     let audience = serde_json::to_value(&meeting.audience).map_err(invalid)?;
     let query = if prior.is_some() {
-        "update public.concert_meeting_beacons set place_id=$4,map_revision=$5,place_revision=$6,instructions=$7,identification=$8,audience=$9,expires_at=$10,selected_catalog_revision=$11,revision=revision+1 where event_id=$2 and beacon_id=$1 and owner_id=$3 returning revision"
+        "update public.concert_meeting_beacons set place_id=$4,map_revision=$5,place_revision=$6,instructions=$7,identification=$8,audience=$9,expires_at=$10,selected_catalog_revision=$11,selected_party_meeting_revision=$12,selected_party_audience_revision=$13,revision=revision+1 where event_id=$2 and beacon_id=$1 and owner_id=$3 returning revision"
     } else {
-        "insert into public.concert_meeting_beacons(beacon_id,event_id,owner_id,place_id,map_revision,place_revision,instructions,identification,audience,expires_at,selected_catalog_revision) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) returning revision"
+        "insert into public.concert_meeting_beacons(beacon_id,event_id,owner_id,place_id,map_revision,place_revision,instructions,identification,audience,expires_at,selected_catalog_revision,selected_party_meeting_revision,selected_party_audience_revision) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13) returning revision"
     };
     let revision: i64 = sqlx::query_scalar(query)
         .bind(id)
@@ -298,6 +341,8 @@ pub async fn mutate_in<A: MeetingAuthority>(
         .bind(audience)
         .bind(meeting.expires_at)
         .bind(catalog)
+        .bind(party_fence.map(|f| f.meeting_revision))
+        .bind(party_fence.map(|f| f.audience_revision))
         .fetch_one(c)
         .await
         .map_err(storage)?;

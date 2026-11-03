@@ -123,6 +123,9 @@ impl<A: MeetingAuthority> CommandProducer for BeaconProducer<'_, A> {
             if value.owner_id != self.actor.actor {
                 return Err(CommandError::Denied);
             }
+            let expected_party = beacon::stored_fence(c, self.actor.event, target)
+                .await
+                .map_err(command_error)?;
             grant(
                 self.authority,
                 c,
@@ -130,6 +133,11 @@ impl<A: MeetingAuthority> CommandProducer for BeaconProducer<'_, A> {
                     actor: self.actor,
                     owner: value.owner_id,
                     audience: value.meeting.audience,
+                    expected_party: if matches!(self.mutation, BeaconMutation::Revoke { .. }) {
+                        None
+                    } else {
+                        expected_party
+                    },
                     operation: if matches!(self.mutation, BeaconMutation::Revoke { .. }) {
                         MeetingOperation::Revoke
                     } else {

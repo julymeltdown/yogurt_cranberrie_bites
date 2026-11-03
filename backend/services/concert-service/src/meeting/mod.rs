@@ -3,7 +3,9 @@ pub mod beacon;
 pub mod commands;
 
 use async_trait::async_trait;
-use concert_application::beacon::{AudienceGrant, AudienceQuery, MeetingActor, MeetingError};
+use concert_application::beacon::{
+    AudienceGrant, AudienceQuery, MeetingActor, MeetingError, MeetingOperation, PartyFence,
+};
 use sqlx::PgConnection;
 
 #[async_trait]
@@ -32,9 +34,28 @@ pub(crate) async fn grant<A: MeetingAuthority>(
     a: &A,
     c: &mut PgConnection,
     q: AudienceQuery,
-) -> Result<(), MeetingError> {
+) -> Result<Option<PartyFence>, MeetingError> {
     match a.authorize_in(c, q.clone()).await {
-        Ok(g) if g.query == q => Ok(()),
+        Ok(g) if g.query == q => {
+            let valid = match (&q.audience, g.party) {
+                (_, None) if q.operation == MeetingOperation::Revoke => true,
+                (concert_domain::beacon::Audience::ExplicitUsers { .. }, None) => {
+                    q.expected_party.is_none()
+                }
+                (concert_domain::beacon::Audience::PartyMembers { party_id }, Some(f)) => {
+                    f.party == *party_id
+                        && (1..=concert_domain::MAX_REVISION).contains(&f.meeting_revision)
+                        && (1..=concert_domain::MAX_REVISION).contains(&f.audience_revision)
+                        && q.expected_party.is_none_or(|expected| expected == f)
+                }
+                _ => false,
+            };
+            if valid {
+                Ok(g.party)
+            } else {
+                Err(MeetingError::ResourceUnavailable)
+            }
+        }
         Ok(_) => Err(MeetingError::ResourceUnavailable),
         Err(MeetingError::ResourceUnavailable) => Err(MeetingError::ResourceUnavailable),
         Err(_) => Err(MeetingError::PolicyUnavailable),
