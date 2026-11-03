@@ -52,3 +52,4 @@ describe('FE22 contract-backed authoring',()=>{
     act(()=>{h.auth.session.replace(h.auth.session.read().generation,null)});expect(screen.queryByRole('textbox',{name:'Party title'})).toBeNull();expect(screen.queryByDisplayValue('My private draft')).toBeNull();h.dispose()
   })
 })
+it('rejects a meeting whose ordered window already ended',async()=>{const h=harness();await h.controller.submit({...draft(),meeting_starts_at:'2026-11-01T00:00:00Z',meeting_ends_at:'2026-11-02T00:00:00Z'});expect(h.requests).toHaveLength(0);h.dispose()})

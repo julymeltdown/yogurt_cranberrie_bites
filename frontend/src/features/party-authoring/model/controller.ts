@@ -60,7 +60,7 @@ export function createPartyAuthoring(options: AuthoringOptions) {
   async function submit(draft: PartyDraft) {
     if (!allowed() || busy() || state.phase === 'conflict' || state.retryAt > now() || partyId && !state.party) return
     const parsed = partyDraftSchema.safeParse(draft)
-    if (!parsed.success || !options.places().some(p=>uuid(p.id) && p.id === draft.public_place_id) || state.party && draft.capacity < state.party.member_count) { emit({ message:'Check the fields, capacity, time window, and available place.' }); return }
+    if (!parsed.success || Date.parse(draft.meeting_ends_at) <= now() || !options.places().some(p=>uuid(p.id) && p.id === draft.public_place_id) || state.party && draft.capacity < state.party.member_count) { emit({ message:'Check the fields, capacity, time window, and available place.' }); return }
     const s=auth.privacy.capture(), operation=partyId ? 'updateConcertParty':'createConcertParty', key=(options.newKey ?? (()=>crypto.randomUUID()))()
     if (!uuid(key)) return
     const { state: lifecycle, ...fields }=parsed.data, json={ ...fields, ticket_section:fields.ticket_section || null, ...(partyId ? {expected_revision:state.party!.revision,state:lifecycle}: {}) }

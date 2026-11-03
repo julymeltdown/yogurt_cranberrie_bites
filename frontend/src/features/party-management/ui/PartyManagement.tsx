@@ -24,7 +24,7 @@ export function PartyRally({controller}:{controller:PartyManagementController}){
  return <section className="party-management"><h1>Rendezvous</h1><p>Meeting revision {s.party?.meeting_revision??'unavailable'}. Previous reports do not prove arrival at a changed meeting.</p>
   {!authority?<p>Current authorized physical meeting details are unavailable or expired.</p>:<p>{authority.description}</p>}
   <button onClick={()=>void controller.loadRally()} disabled={!authority}>Read current rally</button>
-  {s.rally&&<ul>{s.rally.entries.map(e=><li key={e.user_id}>{e.user_id}: {e.state.replaceAll('_',' ')} · self-reported {e.self_reported_at}</li>)}</ul>}
+  {s.rally&&<ul>{s.rally.entries.map(e=><li key={e.user_id}>{e.user_id}: {e.meeting_revision===s.rally!.meeting_revision?e.state.replaceAll('_',' '):'STALE · previous meeting report'} · self-reported {e.self_reported_at}</li>)}</ul>}
   <label><input type="checkbox" checked={ack} disabled={!enabled} onChange={e=>setAck(e.target.checked)}/>I am explicitly reporting my physical meeting status.</label>
   <div className="party-management-actions">{(['ON_MY_WAY','HERE','MET','NEED_HELP','LEFT'] as RallyState[]).map(v=><button key={v} disabled={!enabled||!ack} onClick={()=>{setAck(false);void controller.report(v,true)}}>{v.replaceAll('_',' ')}</button>)}</div><p role="status">{s.message}</p>
  </section>

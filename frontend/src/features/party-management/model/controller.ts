@@ -67,7 +67,7 @@ export function createPartyManagement(o:ManagementOptions){
  const stopAuthority=o.authority?.subscribe(authorityChanged)
  async function loadRally(){if(!readable()||blocked()||!active()||!state.members||state.members.next_cursor||!state.members.items.some(m=>m.user_id===auth.session.read().userId&&m.state==='ACTIVE')||!authority())return
   const s=auth.privacy.capture(),c=new AbortController();flight?.abort();flight=c;const path=`${base(s)}/parties/${partyId}/rally`;emit({phase:'loading',rally:null})
-  try{const r=await request(s,c,{path,method:'GET',access:'protected',errorFamily:'domain',domainOperation:'getConcertRally',decode:decoder<Rally>('Domain_party_Rally',path,v=>{if(v.party_id!==partyId||v.event_id!==s.eventId||v.meeting_revision!==state.party?.meeting_revision||new Set(v.entries.map(e=>e.user_id)).size!==v.entries.length||v.entries.some(e=>e.meeting_revision!==v.meeting_revision||!state.members?.items.some(m=>m.user_id===e.user_id&&m.state==='ACTIVE')))throw new Error('Invalid rally context')})})
+  try{const r=await request(s,c,{path,method:'GET',access:'protected',errorFamily:'domain',domainOperation:'getConcertRally',decode:decoder<Rally>('Domain_party_Rally',path,v=>{if(v.party_id!==partyId||v.event_id!==s.eventId||v.meeting_revision!==state.party?.meeting_revision||new Set(v.entries.map(e=>e.user_id)).size!==v.entries.length||v.entries.some(e=>e.meeting_revision>v.meeting_revision||!state.members?.items.some(m=>m.user_id===e.user_id&&m.state==='ACTIVE')))throw new Error('Invalid rally context')})})
    if(live(s,c)&&authority()){emit({rally:r,phase:'ready'});authorityChanged()}
   }catch(e){if(live(s,c))failure(e)}
  }
@@ -87,7 +87,7 @@ export function createPartyManagement(o:ManagementOptions){
    if(live(s,c)&&found?.state==='REMOVED'&&found.revision>=r.resource_revision!){emit({phase:'succeeded',message:'Member removal confirmed for this party.'});return}
   }
   if(target.kind==='rally'&&authority()&&state.party?.meeting_revision===target.meetingRevision){
-   const path=`${base(s)}/parties/${partyId}/rally`,rally=await request(s,c,{path,method:'GET',access:'protected',errorFamily:'domain',domainOperation:'getConcertRally',decode:decoder<Rally>('Domain_party_Rally',path,v=>{if(v.event_id!==s.eventId||v.party_id!==partyId||v.meeting_revision!==target.meetingRevision||new Set(v.entries.map(e=>e.user_id)).size!==v.entries.length||v.entries.some(e=>e.meeting_revision!==v.meeting_revision))throw new Error('Invalid recovered rally')})})
+   const path=`${base(s)}/parties/${partyId}/rally`,rally=await request(s,c,{path,method:'GET',access:'protected',errorFamily:'domain',domainOperation:'getConcertRally',decode:decoder<Rally>('Domain_party_Rally',path,v=>{if(v.event_id!==s.eventId||v.party_id!==partyId||v.meeting_revision!==target.meetingRevision||new Set(v.entries.map(e=>e.user_id)).size!==v.entries.length||v.entries.some(e=>e.meeting_revision>v.meeting_revision))throw new Error('Invalid recovered rally')})})
    const self=rally.entries.find(e=>e.user_id===s.userId)
    if(live(s,c)&&authority()&&self&&self.state===target.desired&&self.revision>=r.resource_revision!){emit({phase:'succeeded',rally,message:'Your explicit self-report was confirmed for this meeting.'});return}
   }

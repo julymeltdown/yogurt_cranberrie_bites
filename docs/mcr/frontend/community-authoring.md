@@ -159,3 +159,18 @@ producers, real multiuser last-slot races, physical operation/device and IN02
 acceptance remain **NOT_RUN**. This does not establish BE09/BE19 completion.
 FE25/FE26 remain next in the active goal; FE04 owner has published its exact
 READY attachment seam while implementation/qualification continues separately.
+
+### FE22/FE23 semantic follow-up
+
+BE19 clarified that a current Rally can retain entries from an older meeting
+revision. They now render `STALE · previous meeting report`; old HERE/MET is never
+presented as current. A fresh explicitly acknowledged report retains the prior
+self revision (for example 7) while supplying the new meeting revision (2),
+rather than inventing self revision zero. Future entry meeting revisions are
+rejected. A focused regression covers this exact transition. FE22 also rejects
+an already-ended, otherwise ordered meeting window before dispatch.
+
+Both feature suites: **23 passed**, exit 0. Updated native browser receipts and
+source hashes at all four widths: exit 0. Typecheck: exit 0. This follow-up changes
+only the two owned party features and this document; FE25 remains an uncommitted
+separate increment at this checkpoint.

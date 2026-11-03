@@ -17,9 +17,9 @@
     "no horizontal overflow at all widths",
     "no browser errors"
   ],
-  "base": "f0e44bd1bba943b02319f9d9a42433e253e8de6f",
+  "base": "734205841960f22d4394bda69581741cc3b16922",
   "sourceHashes": {
-    "model/controller.ts": "54a0e4a784949696779fb30aa1aa0a8f1d304afbeafdd3a636e0dc82dfe45d75",
+    "model/controller.ts": "2b0e5d119be785226daa92334e916564a3684973ce1075c6386510cf02c5fb66",
     "model/contract.ts": "fcb25b6256249d04469d9400aa3ca41016be1d61e8927066ccd5459fdc3c8e7e",
     "ui/PartyAuthoring.tsx": "e57f2fcb43c09244828382f41bf270054e19d5d6898376b7f177e07b488b289f",
     "ui/authoring.css": "3eeb0acdc8eb64487724f3a7df64d9706672cc575ea7335fe03b5c561621f1d2",

@@ -58,3 +58,12 @@ it('rally receipt uses actor UUID and compares only exact party/meeting self rev
  if(new URL(r.url).pathname.endsWith('/rally'))return Response.json({party_id:ids.party,event_id:ids.event,meeting_revision:1,beacon_id:null,entries:reported?[entry]:[]});return response(r)})
  await h.controller.load();await h.controller.loadRally();await h.controller.report('HERE',true);await h.controller.checkStatus();expect(h.controller.read().phase).toBe('succeeded');expect(h.controller.read().message).toContain('for this meeting');h.dispose()
 })
+it('superseded meeting reports render STALE and retain monotonic self revision for fresh explicit intent',async()=>{
+ const old={user_id:ids.actor,state:'HERE',meeting_revision:1,revision:7,self_reported_at:'2026-11-04T00:00:00Z'}
+ const h=harness(r=>{const p=new URL(r.url).pathname;if(r.method==='PUT')return Response.json({...old,meeting_revision:2,revision:8})
+ if(p.endsWith('/rally'))return Response.json({party_id:ids.party,event_id:ids.event,meeting_revision:2,beacon_id:null,entries:[old]})
+ if(p.endsWith(ids.party))return Response.json(party({owner:profile(ids.actor),meeting_revision:2}));return response(r)})
+ h.updateAuthority({scope:h.auth.privacy.capture(),partyId:ids.party,meetingRevision:2,expiresAt:Date.now()+60000,description:'New qualified meeting fixture'})
+ await h.controller.load();await h.controller.loadRally();render(<PartyRally controller={h.controller}/>);expect(screen.getByText(/STALE · previous meeting report/)).toBeTruthy()
+ await act(()=>h.controller.reportIntent({state:'HERE',meeting_revision:2,physical_presence_acknowledged:true}));expect(await h.requests.find(r=>r.method==='PUT')!.json()).toEqual({state:'HERE',expected_revision:7,meeting_revision:2,physical_presence_acknowledged:true});h.dispose()
+})
