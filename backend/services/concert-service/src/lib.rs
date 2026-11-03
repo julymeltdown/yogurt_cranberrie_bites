@@ -13,4 +13,5 @@ pub mod relationship;
 pub mod meeting;
 pub mod feed;
 pub mod world;
+pub mod world_rpc;
 pub mod community;

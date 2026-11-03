@@ -7,6 +7,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         contracts_build::source_post_proto(),
         contracts_build::source_authority_proto(),
         contracts_build::source_concert_proto(),
+        contracts_build::source_world_proto(),
     ];
     let includes = vec![
         contracts_build::source_auth_include_dir(),

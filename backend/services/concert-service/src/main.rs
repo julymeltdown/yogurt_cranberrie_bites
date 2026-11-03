@@ -1,6 +1,6 @@
 use concert_service::{
     bootstrap::{BootstrapFeatures, BootstrapService, ProductReleaseBundle},
-    config, health, rpc,
+    config, health, rpc, world_rpc,
 };
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -64,15 +64,32 @@ async fn main() -> anyhow::Result<()> {
                     if let Some(tls) = runtime.tls {
                         server = server.tls_config(tls.server_config()?)?;
                     }
+                    let bootstrap =
+                        std::sync::Arc::new(BootstrapService::new(grpc_pool.clone(), release));
+                    let world = world_rpc::WorldRpcService::new(
+                        grpc_pool.clone(),
+                        bootstrap.clone(),
+                        world_rpc::PgWorldCanonicalAuthority::new(
+                            bootstrap.clone(),
+                            grpc_pool.clone(),
+                        ),
+                        std::sync::Arc::new(world_rpc::CsprngTicketEntropy),
+                    );
+                    let bootstrap = platform::grpc_method_policy::guard(
+                        &rpc::POLICY,
+                        rpc::proto::concert_service_server::ConcertServiceServer::new(bootstrap),
+                        runtime.callers.clone(),
+                        runtime.actors.clone(),
+                    )?;
+                    let world = platform::grpc_method_policy::guard(
+                        &world_rpc::POLICY,
+                        world_rpc::proto::world_service_server::WorldServiceServer::new(world),
+                        runtime.callers,
+                        runtime.actors,
+                    )?;
                     server
-                        .add_service(platform::grpc_method_policy::guard(
-                            &rpc::POLICY,
-                            rpc::proto::concert_service_server::ConcertServiceServer::new(
-                                BootstrapService::new(grpc_pool, release),
-                            ),
-                            runtime.callers,
-                            runtime.actors,
-                        )?)
+                        .add_service(bootstrap)
+                        .add_service(world)
                         .serve_with_shutdown(
                             runtime.address,
                             platform::shutdown::global().cancelled(),
