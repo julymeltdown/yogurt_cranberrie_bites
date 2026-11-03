@@ -1,0 +1,162 @@
+{
+  "result": "PASS",
+  "qualification": "Actual default shell/production composition/canonical Auth/Phaser with deterministic HTTP/MockSocket and TEST ONLY geometric resources. Secondary local-runtime fixture uses actual Phaser. No live/multiuser/device/art/prediction qualification.",
+  "phase": "before",
+  "testedParent": "8c0e7d39a1d33073e1a37a537567f10347dd64b4",
+  "sourceHashes": {
+    "src/world/input/controller.ts": "598c4719e73a8f5c8ca99e7cb513aa8c22bfdb70ae46d6548307791d8d718476",
+    "src/world/input/controls.css": "045f475d935a4fc701d452c3ba36e183528c039fb3e4858b3d05f343c3e840d2",
+    "src/world/input/model.ts": "f1d5a5bcd4358dc6572939482aba2ea72477bc1f072caad08ba9090b67653560",
+    "src/world/input/simulation.ts": "f07ce399ae7dab373c80a97b97b6a5d960d05be38a3d84f31d0c1f60f91f37d3",
+    "src/world/runtime.ts": "5e471081a021699d8f09c85102b014036d48e345fb1865b996d3cb8000c32288",
+    "src/world/scenes/MapScene.ts": "558f4cc9fae9f0714cc5008f81d0ef0a8526a2a9123731ff925b233774546635",
+    "src/world/composition/index.ts": "baaeef4a2ce2033ab24ad344e84ab7b5235f817e9299468a4525b9f5005c4ae2",
+    "src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "src/app/WorldShell.tsx": "631896b4ff51044ba204faba77a411b9162944c9bd98d6325e6912f9c681c1ab",
+    "src/app/shell.css": "b12ac66307766e8c397dab7cc4674743887a301f81e358498ce5b72bb4189eb7",
+    "src/app/router.tsx": "7d8f8f692bdf06ebdefca00a7e07aace5d54967ad2583ce0ccde4188d56a7b01",
+    "src/app/__tests__/default-shell/qualified.tsx": "26a35f303aecf6920cf38fd46d71ab453535cd73b69e8dd1fd5ad36090311f16",
+    "src/app/__tests__/default-shell/qualified-data.ts": "fcc5a4a2c776c56e66b720ba032b33e84de7b4426b6c371e80e8042b37677e0c",
+    "src/world/__tests__/fixtures/movement-data.ts": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f",
+    "src/world/__tests__/controls-layout/native.mjs": "9cabd2dddaba2163d5954c5060440ed7fd6d99279a878a744bb785b31339fb75"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "closed": {
+        "controls": {
+          "x": 0,
+          "y": 252.875,
+          "width": 360,
+          "height": 341.953125
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 360,
+          "height": 148
+        },
+        "viewport": {
+          "width": 360,
+          "height": 800
+        },
+        "overflow": false
+      },
+      "short": {
+        "controls": {
+          "x": 0,
+          "y": 224,
+          "width": 360,
+          "height": 341.953125
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 360,
+          "height": 120
+        },
+        "viewport": {
+          "width": 360,
+          "height": 430
+        },
+        "overflow": false
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "closed": {
+        "controls": {
+          "x": 0,
+          "y": 315.265625,
+          "width": 390,
+          "height": 323.5625
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 390,
+          "height": 211
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false
+      },
+      "short": {
+        "controls": {
+          "x": 0,
+          "y": 224,
+          "width": 390,
+          "height": 323.5625
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 390,
+          "height": 120
+        },
+        "viewport": {
+          "width": 390,
+          "height": 430
+        },
+        "overflow": false
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "closed": {
+        "controls": {
+          "x": 0,
+          "y": 403.265625,
+          "width": 430,
+          "height": 323.5625
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 430,
+          "height": 299
+        },
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "overflow": false
+      },
+      "short": {
+        "controls": {
+          "x": 0,
+          "y": 224,
+          "width": 430,
+          "height": 323.5625
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 430,
+          "height": 120
+        },
+        "viewport": {
+          "width": 430,
+          "height": 430
+        },
+        "overflow": false
+      }
+    }
+  ],
+  "artifacts": {
+    "before-world-360.png": "cf59098b64b4222b343b5ff011dd90151f2aa73b12d99bfc22aeba3f16246356",
+    "before-short-360.png": "e4fe35c8594213e6d0a85e5801969b5a8d51f30e83177aecfeba798ad75666e6",
+    "before-world-390.png": "f8e8c6592ca2fb530545a57819180de02724a0f43e67f70d6dc1789bc75e46ad",
+    "before-short-390.png": "85271509ac9f097fd78a69f0d3282e14489b266806101dcd5c3e9497dc692463",
+    "before-world-430.png": "e92345273ae6404a07406dca8dcfb880b52c307576f0c2b11a8bac8892805513",
+    "before-short-430.png": "3c7f1e604881d82403d3efd9bd9efd9a4c529a63df4c2ad88c5b6717bd81808b"
+  },
+  "errors": [],
+  "referenceHash": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "browser": "156.0.8078.80"
+}
