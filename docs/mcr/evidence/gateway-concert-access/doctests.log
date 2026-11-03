@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s
+   Doc-tests api_gateway
+
+running 3 tests
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 37) - compile fail ... ok
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 42) - compile fail ... ok
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 46) - compile fail ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+

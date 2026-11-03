@@ -83,3 +83,14 @@ The integrator commits/pushes each reviewed bounded unit, fetches master, and ve
 IN03 and IN04 proceed alongside the meeting track as their own prerequisites pass. A green unit test or MOCK_READY frontend is useful progress but does not grant INTEGRATED or ACCEPTED. Required scope remains 112 tasks/61 IA entries unless the user explicitly approves and records a cut. Missing real credentials, operator decisions, assets, or device evidence are recorded as bounded blockers while other ready work continues.
 
 Review semantic prerequisites in addition to graph edges: IN01's interactive movement needs FE15, ordinary party authoring in IN02 needs FE22, and BE34's durable mural transaction needs the BE15 outbox/receipt interface. FE06, FE08, FE10, FE11, FE15, FE22, FE34, and FE37 are required even though they are outside IN05's transitive dependency ancestry. The explicit full release checklist preserves them. See the [independent acceptance assessment](../analysis/acceptance-assessment.md).
+
+
+Strict Gateway JWT context checkpoint: worker `ed2f166` is reviewed and integrated
+as `e7d208e`; parent combined 235 tests, three compile-fail doctests and locked
+library/binary checks pass. Its goal is COMPLETE and checkout stopped. FE14 is
+ACTIVE. Independent report-only QA now audits the C06 format environment and
+parent correction; actual checker absence and a pinned-plugin final-LF edge are
+reproduced, with fixes reviewed before publication. The next backend opportunity
+is the narrow current Auth owner client described in the admission decision,
+not an enabled Concert route. Whole project goal remains ACTIVE and accepted
+counts remain 11/112 required, 11/118 total.

@@ -118,3 +118,12 @@ Auth RPC and actual-handler QA have since completed final review with verified
 COMPLETE goals. Its backend chat now owns a new ACTIVE strict Gateway access
 context goal at `b16a679`, in parallel with FE14. The QA chat is stopped. This
 keeps two useful implementation lanes active without a fixed staffing count.
+
+
+The strict Gateway context has since completed its bounded goal after parent
+review and combined 235-test/build qualification. That checkout is stopped; the
+next useful owner-client scope is documented before reassignment. FE14 continues
+its actual Phaser/browser work. The idle QA chat is reused on a fresh report-only
+C06 format audit because it independently reproduces two real tooling issues;
+parent fixes stay in a separate central checkout. No new chats or fixed staffing
+count are needed for this allocation.

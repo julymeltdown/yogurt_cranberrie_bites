@@ -84,16 +84,30 @@ five real RPC and 22 retained owner PostgreSQL cases, migration/reapply/restart
 and cleanup. See [RPC integration evidence](evidence/auth-admission-rpc-integration.md).
 These are Auth-owned facts, not public admission or an accepting Concert adapter.
 
-The next Gateway prerequisite must retain authenticated JWT access expiry as well
-as canonical subject/family. The existing `JwtVerifier::verify_access_token`
-checks the token through configured signing keys but returns legacy
-`VerifiedAccessToken` with only subject, roles and optional session ID; that
-projection does not retain signed expiry. It cannot serve unchanged as the
-multi-await original-deadline context. Preserve existing routes while introducing
-and testing a narrow strict context from the verified decoder: mandatory
-canonical user/family, actual signed expiry, original monotonic stop, redacted
-nonportable state and rechecks after waits. No browser-supplied actor/role may
-construct it. This prerequisite alone grants no owner result or Concert authority.
+The strict Gateway access-context prerequisite is now delivered as worker
+`ed2f166`, integrated unchanged as `e7d208e`. Parent source/ownership review and
+235 combined tests, three compile-fail doctests and the Gateway binary build pass.
+See [integration evidence](evidence/gateway-concert-access-integration.md).
+The legacy verifier preserves its previous behavior; the separate strict context
+requires verified canonical user/family and signed integer expiry, original
+monotonic stop and captured JWT stop. It retains wall bounds and redacted,
+nonserialized state. This is local verified input, not an owner result or Concert
+admission. Its bounded goal is COMPLETE; its checkout is stopped.
+
+The next independently useful backend increment is a narrowly authenticated
+Gateway-to-Auth owner-read client using that strict context and the existing
+`ReadConcertAdmission` wire. It must use the configured client/workload signer,
+bind the canonical actor/family and exact optional binding reference, propagate
+the same original deadline through readiness/signing/response waits, avoid a
+fresh full edge budget or positive cache, and recheck the context after waits.
+Only minimal current flags/binding state/observation metadata may return; unknown
+or inconsistent replies and owner failures cannot grant admission. Database
+observation time is not a proof lifetime, and the client cannot invent a freshness
+or revocation SLO. The eventual final dispatch must still recheck all earlier
+owner/local evidence. Tests must exercise the actual generated client and signed
+caller/actor/deadline transport, rather than constructing a context or accepting
+an unsigned controlled response. This proposed client supplies no HTTP route,
+Profile/event authority, signed Concert result or production policy by itself.
 
 Parent retains proto/platform/Gateway/Concert contracts and composition. The
 next exact assignment must use a fresh worktree/goal, keep the completed Auth

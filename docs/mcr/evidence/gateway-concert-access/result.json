@@ -1,0 +1,131 @@
+{
+  "candidate": "e7d208ec000efccaacb12df1fa9010b104fe007a",
+  "cases": {
+    "compile_fail_doctests": 3,
+    "retained_gateway_unit": 209,
+    "strict": 13,
+    "verification_transport": 13
+  },
+  "completed": true,
+  "delivered_sha256": {
+    "backend/services/api-gateway/src/adapters/out/jwt.rs": "2af280c05c0c5a0b2037bbd404be4af8d446bcd6483ebcb0f4b9e001af5fee98",
+    "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs": "e555eea1117d5d692181cb2bdb95002d451e3a3b46cbebe9d729ce39f572e899",
+    "backend/services/api-gateway/tests/concert_access.rs": "5f9b31a825bc3d09fc55b9be5a26f80eebb17b2a8d89f62ee23cc35416c82d5b",
+    "docs/mcr/backend/gateway-concert-access.md": "077c128b72d94d460f01fe1cdf17d21df662a12ab815f3c3c2710d91be22d41f"
+  },
+  "four_worker_bytes_match": true,
+  "limits": [
+    "No HTTP entry wiring or owner RPC, Profile/event/provider claims, or signed Concert admission",
+    "Held context does not reverify key withdrawal across awaits",
+    "No database/Docker/global services or whole BE04 acceptance",
+    "Separate unchanged Auth Docker-only fixture failure remains unqualified"
+  ],
+  "log_sha256": {
+    "binary-build.log": "4d3ff75453c569a34ade6ffcaa4913459f924537b20953f7b3b4357f89036b63",
+    "doctests.log": "61e5b62e8023f979c906089270c5efd7558253d7e229cdd18f5f7e9988f7b3c0",
+    "library-check.log": "c0948eaa8ec5385a3c10e392fea82bc45e39e18b3c464c2dd684e99d9aedcd16",
+    "tests.log": "f22995c3a77d2adb0f4f29c195f622a7487d1b3a37d8f7dab64142dfcdf221f3",
+    "worker-development-failure.log": "41fa65936351411af95c51b0faf8457eb6d8792ab904e0cce4320794a4d77ef4"
+  },
+  "results": [
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "concert_access",
+        "--test",
+        "unit",
+        "--test",
+        "verification_transport",
+        "--",
+        "--test-threads=2"
+      ],
+      "durable_log": "tests.log",
+      "exit": 0,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gateway-access-parent-kjxdjoiy/check-0.log"
+    },
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--doc"
+      ],
+      "durable_log": "doctests.log",
+      "exit": 0,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gateway-access-parent-kjxdjoiy/check-1.log"
+    },
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--lib"
+      ],
+      "durable_log": "library-check.log",
+      "exit": 0,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gateway-access-parent-kjxdjoiy/check-2.log"
+    },
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--bin",
+        "api-gateway"
+      ],
+      "durable_log": "binary-build.log",
+      "exit": 0,
+      "log": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gateway-access-parent-kjxdjoiy/check-3.log"
+    }
+  ],
+  "root": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-gateway-access-parent-kjxdjoiy",
+  "verified_provenance_sha256": {
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/crates/platform/src/actor_delegation/authority_deadline.rs": "24950336579f899a3af4536a5acdb0b28ea913c7a85a6d0aaa3e5709801013ef",
+    "backend/services/api-gateway/tests/unit/signing_key_support.rs": "dbd1d28988661234f36da0d2ffc7aa751e0f1a26977e083d7a4b3f868ac61066",
+    "backend/services/auth-service/src/config/mod.rs": "2bcbe6909eeacdea2f9ed7f5a67ab8988fa585dd87f7c5ec270e7363405532e1"
+  },
+  "worker_commit": "ed2f166917f17a9d6d488655fdaf98292f6e408f",
+  "worker_final_log_pins_match": true
+}

@@ -221,3 +221,20 @@ No Auth client, HTTP/config, proto/platform/domain, dependency, frontend or art
 writes are delegated. The backend owns the idle retained Rust target with two
 jobs. FE14 proceeds independently on its frontend checkout; QA stays stopped
 until another concrete review is ready. No extra chats were created.
+
+
+## Strict Gateway handoff and asset-format QA
+
+Gateway context worker `ed2f166` is integrated unchanged as `e7d208e`. Parent
+review and 235 tests/three compile-fail checks/library check/binary build pass.
+The worker's bounded persistent goal is COMPLETE and its exact four-path checkout
+is stopped; parent retains the Rust target. FE14 remains independently ACTIVE.
+
+The QA chat `01a1a00c-c94e-74a2-a306-1ff686372881` now has a new actual ACTIVE
+unbudgeted audit goal on `/Users/lhs/Desktop/mcr-worktrees/qa-asset-formats`,
+branch `codex/mcr-qa-asset-formats`, base published `f80b6d1`. Its sole writable
+path is `docs/mcr/qa/asset-format-review.md`; no application/contracts/dependency
+writes or Rust/DB/service work is delegated. Parent owns the separate central
+C06 checker/plugin correction on `contract-format-prereq`, including concrete
+QA review fixes. This reuse serves an independently reproduced tooling defect,
+not a chat-count requirement. Only the parent integrates and pushes.

@@ -1,0 +1,203 @@
+{
+  "scope": "BE04 strict local Gateway JWT identity/time prerequisite; not admission or owner RPC",
+  "base": "b16a679c42ee54c4a3e73575263b390f9334e064",
+  "branch": "codex/mcr-be-gateway-concert-access",
+  "source_revision": "ed2f166917f17a9d6d488655fdaf98292f6e408f",
+  "dirty_files": [],
+  "changed_paths": [
+    "backend/services/api-gateway/src/adapters/out/jwt.rs",
+    "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs",
+    "backend/services/api-gateway/tests/concert_access.rs",
+    "docs/mcr/backend/gateway-concert-access.md"
+  ],
+  "delivered_sha256": {
+    "backend/services/api-gateway/src/adapters/out/jwt.rs": "2af280c05c0c5a0b2037bbd404be4af8d446bcd6483ebcb0f4b9e001af5fee98",
+    "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs": "e555eea1117d5d692181cb2bdb95002d451e3a3b46cbebe9d729ce39f572e899",
+    "backend/services/api-gateway/tests/concert_access.rs": "5f9b31a825bc3d09fc55b9be5a26f80eebb17b2a8d89f62ee23cc35416c82d5b",
+    "docs/mcr/backend/gateway-concert-access.md": "077c128b72d94d460f01fe1cdf17d21df662a12ab815f3c3c2710d91be22d41f"
+  },
+  "provenance_sha256": {
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/services/api-gateway/tests/unit/signing_key_support.rs": "dbd1d28988661234f36da0d2ffc7aa751e0f1a26977e083d7a4b3f868ac61066",
+    "backend/services/auth-service/src/config/mod.rs": "2bcbe6909eeacdea2f9ed7f5a67ab8988fa585dd87f7c5ec270e7363405532e1",
+    "backend/crates/platform/src/actor_delegation/authority_deadline.rs": "24950336579f899a3af4536a5acdb0b28ea913c7a85a6d0aaa3e5709801013ef",
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "docs/mcr/identity-admission-decision.md": "8e98e94e558928ab31c5740b1d7e7bbc6c224c04090572bd623f70033dc07aeb"
+  },
+  "pinned_jwt_library": "jsonwebtoken9.3.1",
+  "jwt_library_source_sha256": {
+    "/Users/lhs/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/jsonwebtoken-9.3.1/src/validation.rs": "367375722d6d7581ae5471d420be41514c41937fe6ff5cb31bf65057ff57e5f1",
+    "/Users/lhs/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/jsonwebtoken-9.3.1/src/decoding.rs": "1d7b799ddd28abb603c4b015e03330f83709be5b11bd7b83343a03c7845c39b4"
+  },
+  "environment": {
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_PROFILE_DEV_DEBUG": "0"
+  },
+  "commands": [
+    {
+      "name": "final-library-check",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--lib"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "combined-tests",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "concert_access",
+        "--test",
+        "unit",
+        "--test",
+        "verification_transport",
+        "--",
+        "--test-threads=2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "doctests",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--doc"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "binary-build",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--bin",
+        "api-gateway"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "format",
+      "argv": [
+        "rustfmt",
+        "+1.88.0",
+        "--edition",
+        "2021",
+        "--check",
+        "backend/services/api-gateway/src/adapters/out/jwt.rs",
+        "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs",
+        "backend/services/api-gateway/tests/concert_access.rs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "planning",
+      "argv": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "boundaries",
+      "argv": [
+        "python3",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "b16a679c42ee54c4a3e73575263b390f9334e064",
+        "--lane",
+        "backend",
+        "--allow-doc",
+        "docs/mcr/backend/gateway-concert-access.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "cases": {
+    "strict": 13,
+    "retained_gateway_unit": 209,
+    "verification_transport": 13,
+    "compile_fail_doctests": 3
+  },
+  "scope_checks": {
+    "exact_four_paths": "PASS",
+    "shared_verifier_validation_unchanged": "PASS",
+    "legacy_projection_unchanged": "PASS",
+    "protected_inputs_unchanged": "PASS",
+    "cross_lane_boundary_cli": "PASS"
+  },
+  "final_logs_sha256": {
+    "/Users/lhs/Desktop/mcr-build/gateway-concert-access-check-final.log": "40d33334a8075c2929021559850b5490646f5a9eab185045207ce6a521574f8f",
+    "/Users/lhs/Desktop/mcr-build/gateway-concert-access-relevant-tests-final.log": "4c18fac446bc111d8db350d1921c6446a40323b34619b354b717a5a117104335",
+    "/Users/lhs/Desktop/mcr-build/gateway-concert-access-doctests.log": "e92cbab63b935595f45de655464c9e45ae12947dbb5cc65c07b35c729576a343",
+    "/Users/lhs/Desktop/mcr-build/gateway-concert-access-build.log": "a44137dbb5bfebb976185b55ee19455ff569ca41f69c67bc90c45acb9417dbd7"
+  },
+  "development_failures": [
+    {
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-concert-access-relevant-tests.log",
+      "exit_code": 101,
+      "reason": "Misplaced nbf field in follow-up; corrected before final combined run"
+    }
+  ],
+  "limitations": [
+    "No HTTP entry wiring or owner RPC, Profile/event/provider claims, or signed Concert admission",
+    "Held context does not reverify key withdrawal across awaits",
+    "No database/Docker/global services or whole BE04 acceptance",
+    "Separate unchanged Auth Docker-only fixture failure remains unqualified"
+  ],
+  "worker_goal": "ACTIVE pending parent review/fixes",
+  "committed_clean_handoff": "PASS",
+  "source_build_lease": "RELEASED after committed handoff; no processes running"
+}
