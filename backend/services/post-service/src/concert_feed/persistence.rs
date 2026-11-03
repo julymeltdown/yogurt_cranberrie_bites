@@ -12,19 +12,11 @@ impl Owner {
         let mut tx = self.pool.begin().await.map_err(storage)?;
         // Two actor/key and operation locks precede the parent lock. Domain-tagged
         // hashes avoid ambiguous identities; collisions only serialize requests.
-        lock(
-            &mut tx,
-            "key",
-            &format!(
-                "{}:{}:{}",
-                command.actor_id, command.event_id, command.idempotency_key
-            ),
-        )
-        .await?;
-        lock(&mut tx, "operation", &command.operation_id.to_string()).await?;
-        lock(&mut tx, "post", &command.post_id.to_string()).await?;
         let fingerprint = digest(command)?;
         let key = digest(&command.idempotency_key)?;
+        lock(&mut tx, "key", &(command.actor_id, command.event_id, key)).await?;
+        lock(&mut tx, "operation", &command.operation_id).await?;
+        lock(&mut tx, "post", &command.post_id).await?;
         let existing=sqlx::query("select operation_id,command_digest,outcome from post_concert_receipts where operation_id=$1 or (actor_id=$2 and event_id=$3 and key_digest=$4)")
             .bind(command.operation_id).bind(command.actor_id).bind(command.event_id).bind(key.as_slice())
             .fetch_all(&mut *tx).await.map_err(storage)?;
@@ -43,6 +35,7 @@ impl Owner {
             } else {
                 None
             };
+            validate_replay(command, parent.as_ref(), comment.as_ref())?;
             let access = Access::Receipt {
                 command: command.clone(),
                 parent,
@@ -193,6 +186,39 @@ impl Owner {
         Ok(outcome)
     }
 }
+pub(super) fn validate_replay(
+    command: &Command,
+    parent: Option<&Post>,
+    comment: Option<&Comment>,
+) -> Result<(), Error> {
+    let p = parent.ok_or(Error::NotFound)?;
+    if matches!(command.mutation, Mutation::DeletePost { .. }) {
+        if p.event_id != command.event_id
+            || p.author_id != command.actor_id
+            || p.state != State::Deleted
+        {
+            return Err(Error::NotFound);
+        }
+    } else {
+        p.visible_in(command.event_id)?;
+    }
+    if command.mutation.comment_id().is_some() {
+        let c = comment.ok_or(Error::NotFound)?;
+        let expected = if matches!(command.mutation, Mutation::DeleteComment { .. }) {
+            State::Deleted
+        } else {
+            State::Published
+        };
+        if c.event_id != command.event_id
+            || c.post_id != command.post_id
+            || c.author_id != command.actor_id
+            || c.state != expected
+        {
+            return Err(Error::NotFound);
+        }
+    }
+    Ok(())
+}
 fn validate_owner(
     command: &Command,
     parent: Option<&Post>,
@@ -246,13 +272,17 @@ fn validate_owner(
     }
     Ok(())
 }
-pub(super) async fn lock(
+async fn lock<T: serde::Serialize>(
     tx: &mut Transaction<'_, Postgres>,
     domain: &str,
-    key: &str,
+    key: &T,
 ) -> Result<(), Error> {
-    sqlx::query("select pg_advisory_xact_lock(hashtextextended($1,0))")
-        .bind(format!("mcr-post-concert:{domain}:{key}"))
+    // Hash locally: raw idempotency keys never become SQL parameters, including
+    // advisory locks that an operator might capture in database diagnostics.
+    let hash = digest(&("mcr-post-concert", domain, key))?;
+    let id = i64::from_be_bytes(hash[..8].try_into().map_err(|_| Error::Unavailable)?);
+    sqlx::query("select pg_advisory_xact_lock($1)")
+        .bind(id)
         .execute(&mut **tx)
         .await
         .map_err(storage)?;

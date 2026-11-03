@@ -532,6 +532,26 @@ async fn postgres_owner_authorization_persistence_and_races() {
         .await
         .links
         .insert(("Party".into(), link.target_id), (a.event_id, true));
+    policy
+        .policy
+        .write()
+        .await
+        .media
+        .insert(media, (a.event_id, b.actor_id, true));
+    assert_eq!(owner.execute(&a, &qualified).await, Err(Error::Forbidden));
+    policy
+        .policy
+        .write()
+        .await
+        .media
+        .insert(media, (Uuid::new_v4(), a.actor_id, true));
+    assert_eq!(owner.execute(&a, &qualified).await, Err(Error::Forbidden));
+    policy
+        .policy
+        .write()
+        .await
+        .media
+        .insert(media, (a.event_id, a.actor_id, true));
     owner.execute(&a, &qualified).await.unwrap();
     policy
         .policy
@@ -580,20 +600,22 @@ async fn postgres_owner_authorization_persistence_and_races() {
             .await,
         Err(Error::NotFound)
     );
+    assert_eq!(owner.execute(&b, &cc).await, Err(Error::NotFound));
+    assert_eq!(owner.receipt(&b, &cc).await, Err(Error::NotFound));
     // Metadata-only lookup never contains old content even for owner delete replay.
-    let deleted = owner
-        .execute(
-            &a,
-            &command(
-                &a,
-                p2,
-                Mutation::DeletePost {
-                    expected_revision: 1,
-                },
-            ),
-        )
-        .await
-        .unwrap();
+    let delete_command = command(
+        &a,
+        p2,
+        Mutation::DeletePost {
+            expected_revision: 1,
+        },
+    );
+    let deleted = owner.execute(&a, &delete_command).await.unwrap();
+    assert_eq!(owner.execute(&a, &delete_command).await.unwrap(), deleted);
+    assert_eq!(
+        owner.receipt(&a, &delete_command).await.unwrap(),
+        Some(deleted.clone())
+    );
     assert!(deleted.deleted);
     assert!(matches!(owner.post(&a, p2).await, Err(Error::NotFound)));
     let json: String =
@@ -690,6 +712,22 @@ async fn postgres_owner_authorization_persistence_and_races() {
     };
     let guard = owner.admit(&a, &access, &mut tx).await.unwrap();
     assert!(policy.policy.try_write().is_err());
+    let mut wrong = a.clone();
+    wrong.request_id = Uuid::new_v4();
+    assert_eq!(
+        guard.0.check(&wrong, &guard.1, Utc::now()),
+        Err(Error::Authority)
+    );
+    let mut wrong = a.clone();
+    wrong.original_authority = [8; 32];
+    assert_eq!(
+        guard.0.check(&wrong, &guard.1, Utc::now()),
+        Err(Error::Authority)
+    );
+    assert_eq!(
+        guard.0.check(&a, &[0; 32], Utc::now()),
+        Err(Error::Authority)
+    );
     checked_commit(tx, &a, &[guard]).await.unwrap();
     assert!(policy.policy.try_write().is_ok());
     // Equal timestamp fixtures prove the UUID tie-break in actual owner SQL.

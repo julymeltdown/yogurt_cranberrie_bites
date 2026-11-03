@@ -40,6 +40,8 @@ reaction does not increase the count; a distinct accepted no-op command still
 gets a revision/receipt/outbox. Revisions are positive JavaScript-safe integers.
 
 An actor/event/key hash and global operation ID identify each durable receipt.
+Replays require the actual parent/comment to remain visible. Exact owner-delete
+replays can return their own metadata-only tombstones; hidden targets fail closed.
 The canonical command fingerprint detects payload/target/revision/key/operation
 changes. Parent advisory locks serialize owner mutations; receipt, content,
 counters, reactions and outbox commit in one PostgreSQL transaction. Original

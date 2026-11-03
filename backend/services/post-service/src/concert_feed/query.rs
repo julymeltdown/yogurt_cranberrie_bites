@@ -1,4 +1,4 @@
-use super::persistence::{comment_row, load_comment, load_post, post_row};
+use super::persistence::{comment_row, load_comment, load_post, post_row, validate_replay};
 use super::*;
 use post_application::concert_feed::{Access, Filter, Page, Position, PostView, Window};
 use post_domain::concert_feed::{Command, Comment, Outcome, State};
@@ -201,8 +201,8 @@ impl Owner {
                 context,
                 &Access::Receipt {
                     command: command.clone(),
-                    parent,
-                    comment,
+                    parent: parent.clone(),
+                    comment: comment.clone(),
                 },
                 &mut tx,
             )
@@ -213,6 +213,7 @@ impl Owner {
             if row.get::<Vec<u8>, _>("command_digest") != digest(command)? {
                 return Err(Error::Idempotency);
             }
+            validate_replay(command, parent.as_ref(), comment.as_ref())?;
             Some(serde_json::from_value(row.get("outcome")).map_err(|_| Error::Unavailable)?)
         } else {
             None

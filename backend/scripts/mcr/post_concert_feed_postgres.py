@@ -7,6 +7,7 @@ No URLs, payloads or credentials are written to evidence output. Owned cluster
 and all test databases are stopped and removed even when the regression fails.
 """
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -26,13 +27,17 @@ def main():
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--test-binary", type=Path)
     mode.add_argument("--sql-only", action="store_true", help="apply all owned Post migrations without Rust build")
+    parser.add_argument("--test-sha256", help="exact compiled/copied unit executable digest")
     args = parser.parse_args()
     binary = None
     if args.test_binary:
         binary = args.test_binary.resolve(strict=True)
-        expected_target = Path("/Users/lhs/Desktop/mcr-build/backend/debug/deps").resolve()
-        if binary.parent != expected_target or not binary.name.startswith("post_service-"):
-            parser.error("use the leased shared target's exact Post unit-test executable")
+        if not binary.name.startswith("post_service-") or not args.test_sha256:
+            parser.error("provide the exact Post unit-test executable and --test-sha256")
+        with binary.open("rb") as stream:
+            actual = hashlib.file_digest(stream, "sha256").hexdigest()
+        if actual != args.test_sha256:
+            parser.error("Post test executable digest differs from the pinned build")
     tools = {t: shutil.which(t) for t in ("initdb", "pg_ctl", "psql")}
     if not all(tools.values()):
         parser.error("native PostgreSQL tools unavailable")
@@ -72,6 +77,8 @@ def main():
             result = subprocess.run([str(binary), "concert_feed::tests::postgres_owner_authorization_persistence_and_races", "--ignored", "--exact", "--nocapture"], env=env, text=True, capture_output=True)
             # Rust assertions never print content/URLs. Do not echo subprocess
             # PostgreSQL diagnostics that could include a private connection URL.
+            if result.returncode == 0 and ("running 1 test" not in result.stdout or "1 passed; 0 failed" not in result.stdout):
+                raise RuntimeError("owner fixture test was not actually executed")
             print(result.stdout, end="")
             if result.returncode:
                 print(result.stderr, end="")
