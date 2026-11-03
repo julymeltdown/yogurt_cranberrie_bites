@@ -155,3 +155,5 @@ impl CoreRepository for PgConcertRepository {
         Ok(PreferenceUpdate::Updated(value))
     }
 }
+
+pub mod avatar;
