@@ -18,7 +18,9 @@ PREFIX = "concert_self_profile::native::native_"
 DB = "mcr_profile_self"
 
 
-def artifacts(receipt):
+def artifacts(receipt, frozen_receipt):
+    frozen = json.loads(frozen_receipt.read_text())
+    require(frozen["cargo_json_sha256"] == digest(receipt), "frozen-build-receipt-mismatch")
     selected = {}
     finished = 0
     manifest = ROOT / "backend/services/profile-service/Cargo.toml"
@@ -38,7 +40,10 @@ def artifacts(receipt):
         if key is None:
             continue
         require(Path(row["manifest_path"]).resolve() == manifest, "foreign-source-artifact")
-        path = migration.executable(Path(row["executable"]))
+        record = frozen["artifacts"][key]
+        require(record["original"] == row["executable"], "frozen-artifact-origin-mismatch")
+        path = migration.executable(Path(record["path"]))
+        require(digest(path) == record["sha256"], "frozen-artifact-digest-mismatch")
         require(key not in selected or selected[key] == path, "ambiguous-artifact")
         selected[key] = path
     require(finished >= 2 and set(selected) == {"test", "profile-bin"}, "successful-artifacts-required")
@@ -102,7 +107,7 @@ def exercise(cluster, pinned, report):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ("cargo-json", "pg-bin", "artifact-dir", "report"):
+    for name in ("cargo-json", "frozen-artifacts", "pg-bin", "artifact-dir", "report"):
         parser.add_argument("--" + name, type=Path, required=True)
     args = parser.parse_args()
     require(all(p.is_absolute() for p in vars(args).values()), "absolute-inputs-required")
@@ -117,7 +122,8 @@ def main():
         for sig in (signal.SIGINT, signal.SIGTERM):
             previous[sig] = signal.signal(sig, interrupt)
         require(shutil.disk_usage(ROOT).free >= 8 * 1024 ** 3, "eight-gibibyte-floor-required")
-        selected = artifacts(args.cargo_json)
+        selected = artifacts(args.cargo_json, args.frozen_artifacts)
+        report["frozen_artifacts_sha256"] = digest(args.frozen_artifacts)
         args.artifact_dir.mkdir(mode=0o700, exist_ok=False)
         pinned = {}
         report["artifact_sha256"] = {key: digest(path) for key, path in selected.items()}
