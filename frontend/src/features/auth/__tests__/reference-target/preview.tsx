@@ -33,7 +33,7 @@ auth.start()
 const router = createMemoryRouter([
   { path: '/login', element: <SignIn /> },
   { path: '*', element: <p role="status">Fixture destination reached</p> },
-], { initialEntries: [`/login?returnTo=${encodeURIComponent(params.get('target') ?? '/feed')}`] })
+], { initialEntries: [params.has('target') ? `/login?returnTo=${encodeURIComponent(params.get('target')!)}` : '/login'] })
 const ports = { auth, session: auth.session, readiness: auth.readiness, bootstrap: { load: auth.loadBootstrap }, admin: { authorize: async () => false } }
 createRoot(document.getElementById('root')!).render(<StrictMode><PortsProvider ports={ports}><RouterProvider router={router} /></PortsProvider></StrictMode>)
 window.__REF_AUTH__ = { auth, calls, count: () => loginCount, settle: () => settle?.(), invalidate: () => cookiePolicy.invalidate(), path: () => router.state.location.pathname, navigate: (path: string) => router.navigate(path), dispose: () => { router.dispose(); auth.dispose() } }

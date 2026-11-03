@@ -24,3 +24,13 @@ it('uses actual fields, disabled provider marks, cemetery scenery and no invente
   expect(screen.getByRole('link', { name: 'Create an account' }).getAttribute('href')).toBe('/signup')
   router.dispose(); auth.dispose()
 })
+it.each([
+  { target:'/gifts/00000000-0000-4000-8000-00000000003c', href:'/gifts/00000000-0000-4000-8000-00000000003c' },
+  { target:'https://foreign.invalid/steal', href:'/world' },
+])('restores anonymous explicit destination navigation safely: $target',async({target,href})=>{
+  const auth=createSessionController({eventId,cookiePolicy:isolatedCookiePolicy(),fetch:async()=>Response.json(capabilities())});auth.start()
+  const router=createMemoryRouter([{path:'/login',element:<SignIn/>},{path:'*',element:<p>Destination fixture</p>}],{initialEntries:[`/login?returnTo=${encodeURIComponent(target)}`]})
+  render(<PortsProvider ports={{auth,session:auth.session,readiness:auth.readiness,bootstrap:{load:auth.loadBootstrap},admin:{authorize:async()=>false}}}><RouterProvider router={router}/></PortsProvider>)
+  expect(screen.getByRole('link',{name:'Back to your destination'}).getAttribute('href')).toBe(href)
+  router.dispose();auth.dispose()
+})

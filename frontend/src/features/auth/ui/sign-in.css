@@ -31,6 +31,7 @@
 .auth-sign-in .auth-message:empty { display: none; }
 .auth-sign-in .auth-message p { margin: 0 0 9px; }
 .auth-sign-in .auth-actions { display: grid; gap: 8px; }
+.auth-sign-in .auth-back { display: flex; justify-content: center; margin: 0; font-size: 12px; text-align: center; }
 .auth-sign-in .auth-paper-content > p:not(.auth-display-heading):not(.auth-create) { font-size: 14px; }
 .auth-sign-in :disabled { cursor: not-allowed; }
 .auth-sign-in input:disabled, .auth-sign-in .auth-submit:disabled { background: #d8cebc; color: #605547; border-color: #867861; opacity: 1; }

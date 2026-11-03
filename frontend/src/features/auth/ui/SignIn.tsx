@@ -81,6 +81,7 @@ export function SignIn() {
       {state.logout === 'unconfirmed' && <button type="button" disabled={busy} onClick={() => { void auth?.logout() }}>Try server sign-out again</button>}
       <p className="auth-create">No account? <Link className="auth-link" to="/signup">Create an account</Link></p>
     </>}
+    {!signedIn && new URLSearchParams(location.search).has('returnTo') && <Link className="auth-link auth-back" to={target}>Back to your destination</Link>}
     </div>
     <Cemetery edge="bottom" />
     </ConcertWindow>

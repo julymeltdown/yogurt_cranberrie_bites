@@ -48,5 +48,18 @@
     "Initial fixture optional eventId typing fixed; initial lease link boundary rejection resolved by removal",
     "Provider expectation additional grant only Apple to Discord; all other assertions retained"
   ],
-  "sourceCommit": "368a3f7e31ef0787ad76a9a646832f50ac8375d4"
+  "sourceCommit": "368a3f7e31ef0787ad76a9a646832f50ac8375d4",
+  "reviewFix": {
+    "issue": "Anonymous explicit deep-link destination navigation was removed by the layout revision",
+    "behavior": "Restored Back to your destination only for explicit returnTo; existing safeReturnTarget binding",
+    "tests": {
+      "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/auth/__tests__/reference-target/runner.ts --configLoader runner --maxWorkers 1",
+      "exit": 0,
+      "passed": 29
+    },
+    "typesExit": 0,
+    "lintExit": 0,
+    "native": "NOT_RUN for fix: disk assertion stopped before output, shared free 7527580KiB below8GiB. Existing report is pinned to prior source.",
+    "initialAttempt": "28/29; 403 mounted-world test hit existing1s lazy-loading timeout; unchanged serial rerun29/29"
+  }
 }
