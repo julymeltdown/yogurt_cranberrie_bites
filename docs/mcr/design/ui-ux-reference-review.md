@@ -2,7 +2,7 @@
 
 ## Decision
 
-**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has now been read by the visual implementation owners, and several bounded presentation changes have reached master. Some updated components still lack default application routes, while shell/customize presentation and approved imagery remain unfinished. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; the follow-through below records what changed.
+**HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has now been read by the visual implementation owners, and several bounded presentation changes have reached master. Some updated components still lack default application routes, while shell presentation, approved imagery and visual item choices remain unfinished. Functional qualification remains valid within its recorded limits; it is not evidence of complete visual fidelity. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; the follow-through below records what changed.
 
 The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged copy is [user-reference.jpg](ui-reference-audit-2026-11-04/user-reference.jpg), SHA256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`. This is the current screen-level design handoff. The earlier [approved mobile world sheet](../../source/mcr_v2_en/reference/approved_mobile_world.png) contains five world compositions, not these ten screens. It remains an immutable historical source.
 
@@ -46,9 +46,12 @@ discloses broader-suite failures separately; [environment follow-up](../qa/contr
 resolves the two missing Python format-checker failures without claiming to fix
 the other three intermittent failures at that checkpoint. Subsequently,
 [QA-WORLD-ASYNC](../qa/world-async-tests.md) corrected the socket/frame test
-readiness races in `4b1f8c4`; the direct-beacon Back failure remains unresolved.
+readiness races in `4b1f8c4`. [Back-readiness diagnosis](../qa/back-navigation-readiness.md),
+published in `fe0c335`, traces the intermittent direct-beacon Back failure to an
+assertion before the visible Meet route commits. The reserved original test is
+still unchanged; its exact readiness correction remains with its owner.
 Approved avatar rendering and live profile
-composition remain unqualified. World/shell and customize adoption remain open.
+composition remain unqualified. World/shell adoption remains open.
 Sending the reference to other leads is still distinct from implementation.
 
 UIV05-WALL is integrated in `45b6f1f` from clean author handoff
@@ -63,7 +66,32 @@ not the default `/wall` route or live collaboration. Main inspected the pinned
 adopt the compact black header, ivory frame and restrained palette while the
 map's outer shell still retains its earlier presentation.
 
-### Default application reachability — source check at `45b6f1f`
+UIV04-AVATAR is integrated in `81991563d1d1b62f0238bd6de79f3197a1415fcd`
+from author `395dd781237a29ac4b92f219874f54312c23f6b2`, whose exact parent is
+`b3889feeed0fa7485a2326cf5bd00ffc4bb4f894`. The clean handoff has 94 assigned
+paths: only AvatarEditor and its CSS change production behavior. Main verified
+all seven source hashes and 85 artifact hashes, exact integrated bytes and fresh
+whole-frontend strict TypeScript (exit 0). The author's 50 focused tests, lint,
+build and 81 native captures remain the bounded evidence; no duplicate general
+review was added. See [Customize evidence](../frontend/avatar-visual.md).
+
+Main inspected the 390px loaded fixture and actual default account-route capture.
+The frame, larger preview, category toolbar and Save/Cancel composition now adopt
+the reference. The fixture preview is explicitly blank test content. The actual
+account route still shows **Preview unavailable**, disabled Save and no canvas
+because approved character resources are not admitted. Item choices retain ID
+labels: the catalog supplies neither thumbnail URLs nor tone colors. The outer
+header, theme link, repeated panel heading and text-only bottom navigation still
+differ visibly from the supplied world screen. This is **MOCK_READY** presentation,
+not a finished character screen or a real world/session/save journey.
+
+The fresh reference-file check again matches the user's attachment byte for byte
+at SHA256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`.
+Freshly inspected sign-in and wall captures also show the compact black title bar,
+ivory frame and deep-red actions. Their missing illustrations and fixture content
+remain visible limitations, not full visual acceptance.
+
+### Default application reachability — source recheck at `8199156`
 
 The source check follows `main.tsx` into `createAppRouter(ports)`, then
 `createAppRoutes(ports)` without a `composition.panels` override. The default
@@ -78,7 +106,7 @@ browser or multiuser pass.
 | --- | --- | --- |
 | Landing / sign in | Public boundary is registered; UIV02 actual routes are published. | Bounded route presentation is delivered; approved poster/character art and real entry remain separate. |
 | Meet / gifts | Party discovery/detail and gift discovery/detail/mine are registered through `CommunityFeatures`. | These browse components reach the default composition; this does not certify every create/manage/reserve route or live workflow. |
-| Me / profile / customize / settings | `AccountPanel` registers `/me`, `/me/profile`, `/me/avatar`, `/me/settings`. | Me/profile styling is delivered; account authorization, avatar art and live save behavior retain their recorded gates. Customize still needs reference adoption. |
+| Me / profile / customize / settings | `AccountPanel` registers `/me`, `/me/profile`, `/me/avatar`, `/me/settings`. | Me/profile and Customize layout adoption are delivered; approved avatar art, visual item metadata and live save behavior retain their recorded gates. |
 | Feed | `/feed` is declared but absent from `featurePanels`; no production `EventFeed` consumer was found in `app/`. | Updated feed component evidence is not default-route delivery. |
 | Map / place detail | `/world/map` and `/world/places/:placeId` are declared but absent from `featurePanels`; no production Places consumer was found in `app/`. | UIV05-MAP screenshots are fixture composition; default map/place entry remains unfinished. |
 | Wall | `/wall` is declared but absent from `featurePanels`; no production `MuralSyncPanel` or `createMuralSync` consumer was found in `app/`. | UIV05-WALL is a component delivery; the default wall remains unfinished. |
@@ -88,6 +116,11 @@ from leads. Delivery's reserved root ownership remains unchanged. Do not silentl
 edit its active checkout or treat visual fixtures as completion of those routes.
 Source hashes and exact inspected paths are recorded in
 [default-route-composition.json](ui-reference-audit-2026-11-04/default-route-composition.json).
+All six route-source pins remain unchanged at `8199156`. FE19-ENTRY is now assigned
+in a separate checkout to build the Places owner/provider and route adapters under
+`app/places-entry/`, with an actual ACTIVE goal. Its map/camera release input and
+default router registration are explicitly separate dependencies; work in progress
+does not make the default map route available.
 
 Integration verified exact assigned paths and source equality with the UIV02
 handoff, all ten tested-source hashes and 51 final screenshot hashes, and fresh
@@ -153,7 +186,7 @@ These are visual-correction work packages within existing product scope, not add
 
 An owner must not silently take over a file another active worker owns. If ownership is unavailable, record the exact path dependency and continue new, disjoint work. Delivery's stalled composer is not permission to edit its dirty checkout.
 
-The audit/reference brief was sent to Delivery and the World, Community, Social and Operations leads. Sending is recorded as a handoff, not proof that all recipients have acted. The UIV01 worker (`01a1a26e-1de2-7b41-a294-c9a79cfded9b`) explicitly confirmed its isolated `codex/mcr-fe-UIV01` branch at audit commit `be85021c1e28f0b0f4a6182c4300a93b16179f5b`, created an actual unbudgeted goal, inspected the exact image and delivered the bounded package. That chat subsequently completed UIV02, UIV04-ME and UIV05-WALL in separate isolated scopes. The current adoption records above supersede the initial assignment status; root composition and remaining visual/asset work stay open.
+The audit/reference brief was sent to Delivery and the World, Community, Social and Operations leads. Sending is recorded as a handoff, not proof that all recipients have acted. The UIV01 worker (`01a1a26e-1de2-7b41-a294-c9a79cfded9b`) explicitly confirmed its isolated `codex/mcr-fe-UIV01` branch at audit commit `be85021c1e28f0b0f4a6182c4300a93b16179f5b`, created an actual unbudgeted goal, inspected the exact image and delivered the bounded package. That chat subsequently delivered UIV02, UIV04-ME, UIV05-WALL and UIV04-AVATAR in separate isolated scopes. The Avatar turn is completed and its writer stopped; a fresh goal read returned null, confirming no unfinished assignment remains. The current adoption records above supersede the initial assignment status; root composition and remaining visual/asset work stay open.
 
 ## Visual completion evidence
 

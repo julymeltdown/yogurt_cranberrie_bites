@@ -1,6 +1,6 @@
 {
   "kind": "MCR_UI_REFERENCE_DEFAULT_ROUTE_COMPOSITION",
-  "source_revision": "45b6f1f4209df070ba19676408eabf7c9afbd25a",
+  "source_revision": "81991563d1d1b62f0238bd6de79f3197a1415fcd",
   "evidence": "STATIC_SOURCE_TRACE_ONLY",
   "live_browser_run": "NOT_RUN",
   "source_sha256": {
