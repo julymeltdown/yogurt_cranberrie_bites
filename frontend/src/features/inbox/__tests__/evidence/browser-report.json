@@ -1,0 +1,32 @@
+{
+  "result": "PASS",
+  "scope": "FE35 production-built isolated React UI; deterministic HTTP fixtures with canonical Auth/privacy. No live BE33, root integration or device acceptance.",
+  "widths": [
+    360,
+    390,
+    430,
+    1280
+  ],
+  "checks": [
+    "production fixture bundle",
+    "44px buttons and keyboard focus",
+    "no horizontal overflow or left accents",
+    "fresh target authorization denied safely without writes",
+    "pending command does not optimistically mark read",
+    "explicit status recovery without mutation replay",
+    "empty and network error",
+    "read-all cutoff leaves new arrival unread",
+    "invalidation/availability/logout clear private rows",
+    "no browser errors"
+  ],
+  "sourceHashes": {
+    "model/controller.ts": "df193ef7e702869d8d8f8521a9d191d56d3507d1b4436cbf97103965cfe428f1",
+    "model/contract.ts": "049c776aa543ea664c8e69d2d2b8bea5595feb8174d0df72906c58adbdba6046",
+    "model/targets.ts": "a29acab3f1b6e2681c4ee678b4221f147d8949f17a0bb404990f86286c4e4a3c",
+    "ui/Inbox.tsx": "e04d1fdf5aac4ffadfb48e920dc84e0560e513cec6652cb48b2659e6d85e2642",
+    "ui/inbox.css": "a1393a5b1c2bc56dd9a1db26bf5b6a184af41224786a930c73567347299131a4",
+    "__tests__/preview.tsx": "66e63ae0764209e65825f0981d7075183d4413107078618f77dfd9c260d8b369",
+    "__tests__/browser-smoke.mjs": "d4e16315270bed6c5d1467cfe8e119a0d4daecda7414ceb594dcf48de45456bb"
+  },
+  "browser": "156.0.8078.80"
+}
