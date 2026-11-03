@@ -1,0 +1,4629 @@
+{
+  "kind": "mcr-reference-integrated-v1",
+  "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d",
+  "clock": "2026-11-07T07:00:00.000Z",
+  "reference": {
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "width": 1536,
+    "height": 1024,
+    "crops": [
+      {
+        "id": "landing",
+        "rect": {
+          "x": 4,
+          "y": 3,
+          "width": 300,
+          "height": 526
+        }
+      },
+      {
+        "id": "login",
+        "rect": {
+          "x": 309,
+          "y": 3,
+          "width": 275,
+          "height": 526
+        }
+      },
+      {
+        "id": "world",
+        "rect": {
+          "x": 589,
+          "y": 3,
+          "width": 370,
+          "height": 526
+        }
+      },
+      {
+        "id": "map",
+        "rect": {
+          "x": 963,
+          "y": 3,
+          "width": 272,
+          "height": 526
+        }
+      },
+      {
+        "id": "customize",
+        "rect": {
+          "x": 1240,
+          "y": 3,
+          "width": 294,
+          "height": 526
+        }
+      },
+      {
+        "id": "feed",
+        "rect": {
+          "x": 3,
+          "y": 539,
+          "width": 298,
+          "height": 482
+        }
+      },
+      {
+        "id": "meet",
+        "rect": {
+          "x": 307,
+          "y": 539,
+          "width": 295,
+          "height": 482
+        }
+      },
+      {
+        "id": "gifts",
+        "rect": {
+          "x": 607,
+          "y": 539,
+          "width": 309,
+          "height": 482
+        }
+      },
+      {
+        "id": "wall",
+        "rect": {
+          "x": 920,
+          "y": 539,
+          "width": 294,
+          "height": 482
+        }
+      },
+      {
+        "id": "me",
+        "rect": {
+          "x": 1218,
+          "y": 539,
+          "width": 316,
+          "height": 482
+        }
+      }
+    ]
+  },
+  "productBase": "677f958e7965e15258f1249287ffe2f442ac1c18",
+  "evidenceStatus": "PARTIAL",
+  "visualAcceptance": "NOT_RUN",
+  "liveServices": "NOT_RUN",
+  "devices": "NOT_RUN",
+  "fixtureMetadataIsApproval": false,
+  "compositionOverride": "TEST_WORLD_LOAD_AND_MOCK_SOCKET",
+  "defaultProductionLoader": "NOT_RUN",
+  "harnessHashes": {
+    "native.mjs": "9dfae912003ffa229353733324b40c6771f59ae20c4925a57316ba2a034743ce",
+    "cases.mjs": "42cade307692c1df905152b7f5d2e8c62ad9841c712b9f82e597c15d4ef71b80",
+    "comparison.mjs": "510b5d9111ecd2404662b136509a38dfc16c1b525c1d06666af10c258ced1ca8",
+    "preview.tsx": "15b0626d75bb4af76fa6e32b15c487b10b794d945a52acb89be06e44a049b3bb",
+    "data.ts": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+    "preview.html": "ab725f3216249f3ff75495e54fa8262d53eb05fa983f5002f2fadf14f07179e4",
+    "metrics.test.mjs": "16d608ca2fcb5644270e1da4c57b1e39f7f4cc8f7850add38ac940cc3f90f5da"
+  },
+  "sourceHashes": {
+    "AGENTS.md": "a4dc96fdebfbc86c7184c931657c1c52906e1d33f7b5de18e0d5db457de11796",
+    "frontend/src/app/__tests__/default-shell/qualified-data.ts": "fcc5a4a2c776c56e66b720ba032b33e84de7b4426b6c371e80e8042b37677e0c",
+    "frontend/src/app/world-entry/__tests__/data.ts": "d3034029dc3b78b1531bdbc701b26f9f03a42eb0348a5549d9d3063a9d330549",
+    "contracts/fixtures/core/bootstrap-open.json": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+    "contracts/fixtures/assets/avatar-config.json": "dea02c52183c82094d76c014115c77716ac32c02cc9841d3f1a7ce9aeb54df4d",
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+    "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+    "frontend/src/app/CommunityFeatures.tsx": "bd1ed8e760835301c7e8005db7bd4b4644eae78f0ea7f64c91f32dac30d24046",
+    "frontend/src/app/WorldShell.tsx": "d6a2a74ef3ae7c66b06f1c53798cacf52a6d5a800f199c9c1743966a1f55f62c",
+    "frontend/src/app/shell.css": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056",
+    "frontend/src/world/scenes/MapScene.ts": "971e8a838d2cebde9d3db86392b4a11167451cf15f8e296e08ab9ac525b90c59",
+    "frontend/src/world/input/controller.ts": "48480c4d874284f3b7d6c1236d946ba3622c867e3517e9664f4a1bbab1bdc2cc",
+    "frontend/src/world/input/controls.css": "2f6aa57a8a4024e1d6f10900257e9f7e92753a3790c4824b573b3910574f540d",
+    "frontend/src/entities/avatar/selected-static/release.ts": "49a642d786650846a5805486b6f9c7ad3968d4a1ee464990975375f31f8fae8e",
+    "frontend/src/world/map/resource-cache.ts": "9bbfaf042ea6f13d52db9dc0bab730314b605c43f19a9a7781a39f747bc230a9",
+    "frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.tsx": "396009efbb1dc6cc8178df6d0884381b858538b9c0509566f2f57d6a3823389f",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+    "contracts/generated/mcr-domain.openapi.json": "ef678d3445e5ee5ed3b90594ef1decc1d53b342166b10a91c4d9c9b3f20aa057"
+  },
+  "approvedBytePins": {
+    "world/avatars/derived-v1/static-release.json": {
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+      "authority": "AR03_REVIEWED_STATIC_RELEASE_NOT_AVATAR_CONFIG"
+    },
+    "world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": {
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030,
+      "authority": "SELECTED_STATIC_ONLY_NOT_IDENTITY_OR_WALKING"
+    },
+    "world/avatars/supplied-v1/photo-01.jpg": {
+      "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+      "bytes": 168045,
+      "authority": "SELECTED_STATIC_ONLY_NOT_IDENTITY_OR_WALKING"
+    },
+    "/world/illustrated-runtime/bindings.json": {
+      "sha256": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/illustrated-runtime/revenge-details.png": {
+      "sha256": "84cd918700d99f1bfabcde38a7d48d43b51bf5ef19d431b50cc9c11e0c0a3bcd",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/illustrated/revenge-ground.png": {
+      "sha256": "aa889f913f8b518409529130fd6710f78f12cb40f28d746ce83c4a01a04aab8e",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/illustrated/revenge-landmarks-atlas.png": {
+      "sha256": "0c2ff90ddf18a61791ca2825a25361c536e5fd8d3a86f927aeea5150db292879",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/maps/binding-inputs.json": {
+      "sha256": "cd37c2e5eb728049b0b4ad866d405c45bf1cb42d50418c806576b72d6f66bdeb",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/maps/courtyard-tiled.json": {
+      "sha256": "a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/maps/geometry.json": {
+      "sha256": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/maps/virtual-places.json": {
+      "sha256": "0edef366bdfa7799d94312f479a539f3fffa9aad1c877c6f07e9fc2818535c83",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/themes/binding-inputs.json": {
+      "sha256": "06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    },
+    "/world/themes/revenge.png": {
+      "sha256": "245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+      "authority": "SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING"
+    }
+  },
+  "cases": [
+    {
+      "id": "world",
+      "route": "/world",
+      "width": 360,
+      "viewport": {
+        "width": 360,
+        "height": 512
+      },
+      "fixture": true,
+      "status": "CAPTURED",
+      "screenshot": "world-360.png",
+      "measurements": {
+        "viewport": {
+          "width": 360,
+          "height": 512
+        },
+        "scroll": {
+          "width": 360,
+          "height": 512
+        },
+        "overflow": false,
+        "bounds": {
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 512
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 512
+          },
+          "header": {
+            "x": 4,
+            "y": 4,
+            "width": 352,
+            "height": 58
+          },
+          "eraTabs": {
+            "x": 4,
+            "y": 62,
+            "width": 352,
+            "height": 47
+          },
+          "title": null,
+          "panel": null,
+          "body": null,
+          "tabs": null,
+          "footer": null,
+          "primaryAction": null,
+          "navigation": {
+            "x": 4,
+            "y": 440,
+            "width": 352,
+            "height": 68
+          },
+          "world": {
+            "x": 6,
+            "y": 109,
+            "width": 348,
+            "height": 283
+          }
+        },
+        "rows": [],
+        "controls": [
+          {
+            "name": "Skip to content",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 12,
+              "y": -76,
+              "width": 141.796875,
+              "height": 44
+            }
+          },
+          {
+            "name": "MCR Concert World",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 10,
+              "y": 11,
+              "width": 248,
+              "height": 44
+            }
+          },
+          {
+            "name": "Inbox",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 262,
+              "y": 11,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Settings",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 306,
+              "y": 11,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Revenge",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 7,
+              "y": 62,
+              "width": 115.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Parade",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 122.328125,
+              "y": 62,
+              "width": 115.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Danger",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 237.65625,
+              "y": 62,
+              "width": 115.34375,
+              "height": 44
+            }
+          },
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 10,
+              "y": 287.21875,
+              "width": 56,
+              "height": 56
+            }
+          },
+          {
+            "name": "Interact",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 217.578125,
+              "y": 299.21875,
+              "width": 82.421875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 306,
+              "y": 299.21875,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Controls & help",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 306,
+              "y": 113,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Map",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 6,
+              "y": 394,
+              "width": 87,
+              "height": 44
+            }
+          },
+          {
+            "name": "Rooms",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 93,
+              "y": 394,
+              "width": 87,
+              "height": 44
+            }
+          },
+          {
+            "name": "Nearby",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 180,
+              "y": 394,
+              "width": 87,
+              "height": 44
+            }
+          },
+          {
+            "name": "Help",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 267,
+              "y": 394,
+              "width": 87,
+              "height": 44
+            }
+          },
+          {
+            "name": "World",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 9,
+              "y": 445,
+              "width": 57,
+              "height": 58
+            }
+          },
+          {
+            "name": "Feed",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 66,
+              "y": 445,
+              "width": 57,
+              "height": 58
+            }
+          },
+          {
+            "name": "Meet",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 123,
+              "y": 445,
+              "width": 57,
+              "height": 58
+            }
+          },
+          {
+            "name": "Gifts",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 180,
+              "y": 445,
+              "width": 57,
+              "height": 58
+            }
+          },
+          {
+            "name": "Wall",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 237,
+              "y": 445,
+              "width": 57,
+              "height": 58
+            }
+          },
+          {
+            "name": "Me",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 294,
+              "y": 445,
+              "width": 57,
+              "height": 58
+            }
+          }
+        ],
+        "smallControls": [],
+        "images": [
+          {
+            "tag": "CANVAS",
+            "source": "CANVAS",
+            "rect": {
+              "x": 6,
+              "y": 109,
+              "width": 348,
+              "height": 238
+            },
+            "complete": null,
+            "naturalWidth": null
+          }
+        ],
+        "cssArtwork": [],
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "headings": [],
+        "actions": [
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 306,
+              "y": 299.21875,
+              "width": 44,
+              "height": 44
+            }
+          }
+        ]
+      },
+      "counters": {
+        "singletons": {
+          "mounts": 1,
+          "games": 1,
+          "peak": 1,
+          "sockets": 1,
+          "socketPeak": 1,
+          "activeSockets": 1,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "outfit": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.0.0",
+              "kind": "avatar_config",
+              "manifest_id": "avatar_fixture",
+              "manifest_version": 1,
+              "item_ids": {
+                "body": "body_fixture",
+                "eyes": "eyes_fixture",
+                "hair": "hair_fixture",
+                "outfit": "outfit_fixture",
+                "accessory": "accessory_fixture"
+              },
+              "skin_tone_id": "tone_fixture"
+            }
+          }
+        },
+        "loaderCalls": 5,
+        "fixtureHttpCalls": 6,
+        "loaderByPath": {
+          "world/illustrated-runtime/revenge-details.png": 1,
+          "world/illustrated/revenge-ground.png": 1,
+          "world/illustrated/revenge-landmarks-atlas.png": 1,
+          "world/maps/courtyard-tiled.json": 1,
+          "world/themes/revenge.png": 1
+        },
+        "fixtureHttpByPath": {
+          "GET /api/auth/capabilities": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/places": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/rooms": 1,
+          "POST /api/auth/login": 1,
+          "POST /api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets": 1
+        },
+        "avatarPuts": 0,
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "network": {
+          "requests": 294,
+          "transferredBytes": 38645548,
+          "cacheHits": 0,
+          "imageRequests": 0,
+          "byPath": {
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-config.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/map-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/theme-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/core/v1/core.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/domain/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/avatar-config.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/map-manifest.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/theme-revenge.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-capabilities-disabled.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-success.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/bootstrap-open.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/giveaway-management.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-intro.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-post.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/movement-heartbeat.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/rooms.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-core.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-domain.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/operations.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
+            "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
+            "/@react-refresh": 1,
+            "/@vite/client": 1,
+            "/e2e/reference-integrated/data.ts": 1,
+            "/e2e/reference-integrated/preview.html": 1,
+            "/e2e/reference-integrated/preview.tsx": 1,
+            "/favicon.ico": 1,
+            "/src/app/CommunityFeatures.tsx": 1,
+            "/src/app/WorldHost.tsx": 1,
+            "/src/app/WorldShell.tsx": 1,
+            "/src/app/__tests__/default-shell/qualified-data.ts": 1,
+            "/src/app/__tests__/fixtures/ports.ts": 1,
+            "/src/app/access.tsx": 1,
+            "/src/app/account-deletion-entry/context.tsx": 1,
+            "/src/app/account-deletion-entry/owner.ts": 1,
+            "/src/app/account-entry/assets.ts": 1,
+            "/src/app/account-entry/owner.ts": 1,
+            "/src/app/account-entry/provider.tsx": 1,
+            "/src/app/capabilities.ts": 1,
+            "/src/app/meeting-entry/bridge.ts": 1,
+            "/src/app/meeting-entry/index.ts": 1,
+            "/src/app/meeting-entry/routes.tsx": 1,
+            "/src/app/mural-entry/index.ts": 1,
+            "/src/app/mural-entry/owner.ts": 1,
+            "/src/app/mural-entry/provider.tsx": 1,
+            "/src/app/navigation.tsx": 1,
+            "/src/app/places-entry/index.ts": 1,
+            "/src/app/places-entry/owner.ts": 1,
+            "/src/app/places-entry/provider.tsx": 1,
+            "/src/app/ports.ts": 1,
+            "/src/app/router.tsx": 1,
+            "/src/app/routes.ts": 1,
+            "/src/app/shell-chrome/identity.tsx": 1,
+            "/src/app/shell-chrome/index.tsx": 1,
+            "/src/app/shell-chrome/parade-footer.tsx": 1,
+            "/src/app/shell-chrome/shell-chrome.css": 1,
+            "/src/app/shell.css": 1,
+            "/src/app/social-composition/__tests__/fixtures.ts": 1,
+            "/src/app/social-composition/composition.css": 1,
+            "/src/app/social-composition/index.ts": 1,
+            "/src/app/social-composition/navigation.tsx": 1,
+            "/src/app/social-composition/owner.ts": 1,
+            "/src/app/social-composition/panels.tsx": 1,
+            "/src/app/social-composition/ports.ts": 1,
+            "/src/app/social-composition/provider.tsx": 1,
+            "/src/app/social-composition/routes.ts": 1,
+            "/src/app/social-composition/sharing.tsx": 1,
+            "/src/app/world-entry/__tests__/data.ts": 1,
+            "/src/app/world-entry/authority.ts": 1,
+            "/src/app/world-entry/bridge.ts": 1,
+            "/src/app/world-entry/configuration.ts": 1,
+            "/src/app/world-entry/production.ts": 1,
+            "/src/app/world-entry/resolver.ts": 1,
+            "/src/app/world-entry/root-features.tsx": 1,
+            "/src/app/world-panels/index.tsx": 1,
+            "/src/app/world-panels/ownership.tsx": 1,
+            "/src/app/world-panels/presentation.css": 1,
+            "/src/app/world-panels/social.css": 1,
+            "/src/app/world-panels/social.tsx": 1,
+            "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
+            "/src/entities/avatar/runtime/compositor.ts": 1,
+            "/src/entities/avatar/runtime/contract.ts": 1,
+            "/src/entities/avatar/runtime/index.ts": 1,
+            "/src/entities/avatar/runtime/resources.ts": 1,
+            "/src/entities/avatar/runtime/schema.ts": 1,
+            "/src/entities/avatar/source-catalog.ts": 1,
+            "/src/features/account/contract.ts": 1,
+            "/src/features/account/controller.ts": 1,
+            "/src/features/age-status/AgeStatus.tsx": 1,
+            "/src/features/age-status/controller.ts": 1,
+            "/src/features/age-status/index.ts": 1,
+            "/src/features/auth/__tests__/fixtures/data.ts": 1,
+            "/src/features/auth/model/account-deletion.ts": 1,
+            "/src/features/auth/model/bootstrap.ts": 1,
+            "/src/features/auth/model/contract.ts": 1,
+            "/src/features/auth/model/cookie-policy.ts": 1,
+            "/src/features/auth/model/enrollment-contract.ts": 1,
+            "/src/features/auth/model/enrollment.ts": 1,
+            "/src/features/auth/model/recovery-contract.ts": 1,
+            "/src/features/auth/model/recovery.ts": 1,
+            "/src/features/auth/model/session.ts": 1,
+            "/src/features/avatar/AvatarEditor.tsx": 1,
+            "/src/features/avatar/OptionStrip.tsx": 1,
+            "/src/features/avatar/avatar-editor.css": 1,
+            "/src/features/avatar/contract.ts": 1,
+            "/src/features/avatar/controller.ts": 1,
+            "/src/features/avatar/index.ts": 1,
+            "/src/features/avatar/preview.ts": 1,
+            "/src/features/avatar/reference-presentation/CategoryRail.tsx": 1,
+            "/src/features/avatar/reference-presentation/TonePalette.tsx": 1,
+            "/src/features/avatar/reference-presentation/actions.ts": 1,
+            "/src/features/event-feed/EventFeed.tsx": 1,
+            "/src/features/event-feed/FeedGlyph.tsx": 1,
+            "/src/features/event-feed/FeedImage.tsx": 1,
+            "/src/features/event-feed/__tests__/fixtures.ts": 1,
+            "/src/features/event-feed/contract.ts": 1,
+            "/src/features/event-feed/controller.ts": 1,
+            "/src/features/event-feed/feed.css": 1,
+            "/src/features/event-feed/index.ts": 1,
+            "/src/features/event-feed/presentation.ts": 1,
+            "/src/features/event-feed/runtime.ts": 1,
+            "/src/features/feed-thread/FeedThread.tsx": 1,
+            "/src/features/feed-thread/controller.ts": 1,
+            "/src/features/feed-thread/index.ts": 1,
+            "/src/features/gift-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/gift-discovery/index.ts": 1,
+            "/src/features/gift-discovery/model/contract.ts": 1,
+            "/src/features/gift-discovery/model/controller.ts": 1,
+            "/src/features/gift-discovery/ui/Gifts.tsx": 1,
+            "/src/features/gift-discovery/ui/gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-presentation.tsx": 1,
+            "/src/features/inbox/index.ts": 1,
+            "/src/features/inbox/model/contract.ts": 1,
+            "/src/features/inbox/model/controller.ts": 1,
+            "/src/features/inbox/model/targets.ts": 1,
+            "/src/features/inbox/ui/Inbox.tsx": 1,
+            "/src/features/inbox/ui/inbox.css": 1,
+            "/src/features/intro/IntroEditor.tsx": 1,
+            "/src/features/intro/command.ts": 1,
+            "/src/features/intro/contract.ts": 1,
+            "/src/features/intro/controller.ts": 1,
+            "/src/features/intro/index.ts": 1,
+            "/src/features/me/__tests__/fixtures.ts": 1,
+            "/src/features/me/index.ts": 1,
+            "/src/features/me/model/contract.ts": 1,
+            "/src/features/me/model/controller.ts": 1,
+            "/src/features/me/ui/AvatarThumbnail.tsx": 1,
+            "/src/features/me/ui/MePages.tsx": 1,
+            "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
+            "/src/features/meet-beacon/index.ts": 1,
+            "/src/features/meet-beacon/model/contract.ts": 1,
+            "/src/features/meet-beacon/model/controller.ts": 1,
+            "/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": 1,
+            "/src/features/meet-beacon/ui/MeetingBeacon.tsx": 1,
+            "/src/features/meet-beacon/ui/meeting-beacon.css": 1,
+            "/src/features/mural/editor/MuralEditor.tsx": 1,
+            "/src/features/mural/editor/contract.ts": 1,
+            "/src/features/mural/editor/controller.ts": 1,
+            "/src/features/mural/editor/editor.css": 1,
+            "/src/features/mural/editor/input.ts": 1,
+            "/src/features/mural/sync/MuralSyncPanel.tsx": 1,
+            "/src/features/mural/sync/contract.ts": 1,
+            "/src/features/mural/sync/controller.ts": 1,
+            "/src/features/mural/sync/http.ts": 1,
+            "/src/features/mural/sync/index.ts": 1,
+            "/src/features/mural/sync/projection.ts": 1,
+            "/src/features/my-gifts/MyGifts.tsx": 1,
+            "/src/features/my-gifts/index.ts": 1,
+            "/src/features/party-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/party-discovery/index.ts": 1,
+            "/src/features/party-discovery/model/contract.ts": 1,
+            "/src/features/party-discovery/model/controller.ts": 1,
+            "/src/features/party-discovery/ui/PartyDiscovery.tsx": 1,
+            "/src/features/party-discovery/ui/party-discovery.css": 1,
+            "/src/features/people/People.tsx": 1,
+            "/src/features/people/contract.ts": 1,
+            "/src/features/people/controller.ts": 1,
+            "/src/features/people/index.ts": 1,
+            "/src/features/people/people.css": 1,
+            "/src/features/people/runtime.ts": 1,
+            "/src/features/places/index.ts": 1,
+            "/src/features/places/model/contract.ts": 1,
+            "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
+            "/src/features/places/ui/Places.tsx": 1,
+            "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
+            "/src/features/profile/Avatar.tsx": 1,
+            "/src/features/profile/PublicProfile.tsx": 1,
+            "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
+            "/src/features/safety/contract.ts": 1,
+            "/src/features/social-sharing/index.ts": 1,
+            "/src/features/social-sharing/model/contract.ts": 1,
+            "/src/features/social-sharing/model/controller.ts": 1,
+            "/src/features/social-sharing/model/runtime.ts": 1,
+            "/src/features/social-sharing/ui/SocialSharing.tsx": 1,
+            "/src/features/social-sharing/ui/sharing.css": 1,
+            "/src/features/theme/model/controller.ts": 1,
+            "/src/features/theme/model/preferences.ts": 1,
+            "/src/features/world-nearby/WorldNearby.tsx": 1,
+            "/src/features/world-nearby/index.ts": 1,
+            "/src/features/world-nearby/projection.ts": 1,
+            "/src/features/world-rooms/index.ts": 1,
+            "/src/features/world-rooms/model/contract.ts": 1,
+            "/src/features/world-rooms/model/controller.ts": 1,
+            "/src/features/world-rooms/ui/WorldRooms.tsx": 1,
+            "/src/features/world-rooms/ui/world-access.css": 1,
+            "/src/shared/api/domain-operations.generated.ts": 1,
+            "/src/shared/api/domain.ts": 1,
+            "/src/shared/api/errors.ts": 1,
+            "/src/shared/api/http.ts": 1,
+            "/src/shared/query/keys.ts": 1,
+            "/src/shared/query/privacy.ts": 1,
+            "/src/shared/styles/base.css": 1,
+            "/src/shared/ui/Dialog.tsx": 1,
+            "/src/shared/ui/Tabs.tsx": 1,
+            "/src/shared/ui/concert-window/concert-window.css": 1,
+            "/src/shared/ui/concert-window/index.tsx": 1,
+            "/src/shared/ui/controls.tsx": 1,
+            "/src/shared/ui/feedback.tsx": 1,
+            "/src/shared/ui/index.ts": 1,
+            "/src/shared/ui/modal-focus.ts": 1,
+            "/src/shared/validation/text.ts": 1,
+            "/src/world/__tests__/fixtures/movement-data.ts": 1,
+            "/src/world/__tests__/fixtures/png.ts": 1,
+            "/src/world/__tests__/fixtures/synthetic.ts": 1,
+            "/src/world/__tests__/illustrated/fixtures.ts": 1,
+            "/src/world/camera/port.ts": 1,
+            "/src/world/composition/__tests__/fixtures/data.ts": 1,
+            "/src/world/composition/index.ts": 1,
+            "/src/world/composition/release.ts": 1,
+            "/src/world/composition/ticket.ts": 1,
+            "/src/world/entities/replicated.ts": 1,
+            "/src/world/illustrated/model.ts": 1,
+            "/src/world/illustrated/overview.ts": 1,
+            "/src/world/illustrated/phaser.ts": 1,
+            "/src/world/input/controller.ts": 1,
+            "/src/world/input/controls.css": 1,
+            "/src/world/input/model.ts": 1,
+            "/src/world/input/simulation.ts": 1,
+            "/src/world/interaction/selection.ts": 1,
+            "/src/world/map/formats.ts": 1,
+            "/src/world/map/json.ts": 1,
+            "/src/world/map/manifest.ts": 1,
+            "/src/world/map/resource-cache.ts": 1,
+            "/src/world/map/resources.ts": 1,
+            "/src/world/map/schema.ts": 1,
+            "/src/world/map/tiled.ts": 1,
+            "/src/world/mural/authority.ts": 1,
+            "/src/world/mural/index.ts": 1,
+            "/src/world/mural/phaser.ts": 1,
+            "/src/world/mural/sink.ts": 1,
+            "/src/world/network/WorldTransport.ts": 1,
+            "/src/world/network/mock.ts": 1,
+            "/src/world/network/replication.ts": 1,
+            "/src/world/network/transport/contract.ts": 1,
+            "/src/world/network/transport/engine.ts": 1,
+            "/src/world/network/websocket.ts": 1,
+            "/src/world/runtime.ts": 1,
+            "/src/world/scenes/MapScene.ts": 1,
+            "/src/world/theme/__tests__/fixtures/png.ts": 1,
+            "/src/world/theme/__tests__/fixtures/releases.ts": 1,
+            "/src/world/theme/compatibility.ts": 1,
+            "/src/world/theme/loader.ts": 1,
+            "/world/illustrated-runtime/bindings.json": 1,
+            "/world/illustrated-runtime/revenge-details.png": 1,
+            "/world/illustrated/revenge-ground.png": 1,
+            "/world/illustrated/revenge-landmarks-atlas.png": 1,
+            "/world/maps/binding-inputs.json": 1,
+            "/world/maps/courtyard-tiled.json": 1,
+            "/world/maps/geometry.json": 1,
+            "/world/maps/virtual-places.json": 1,
+            "/world/themes/binding-inputs.json": 1,
+            "/world/themes/revenge.png": 1
+          }
+        },
+        "recordCount": 294
+      },
+      "action": {
+        "status": "PASS",
+        "kind": "map-open-back",
+        "focus": true
+      },
+      "errors": []
+    },
+    {
+      "id": "me",
+      "route": "/me",
+      "width": 360,
+      "viewport": {
+        "width": 360,
+        "height": 549
+      },
+      "fixture": true,
+      "status": "CAPTURED",
+      "screenshot": "me-360.png",
+      "measurements": {
+        "viewport": {
+          "width": 360,
+          "height": 549
+        },
+        "scroll": {
+          "width": 360,
+          "height": 549
+        },
+        "overflow": false,
+        "bounds": {
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 549
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 549
+          },
+          "header": null,
+          "eraTabs": null,
+          "title": {
+            "x": 9,
+            "y": 7,
+            "width": 342,
+            "height": 46
+          },
+          "panel": {
+            "x": 6,
+            "y": 4,
+            "width": 348,
+            "height": 541
+          },
+          "body": {
+            "x": 9,
+            "y": 53,
+            "width": 342,
+            "height": 427.8125
+          },
+          "tabs": null,
+          "footer": {
+            "x": 9,
+            "y": 480.8125,
+            "width": 342,
+            "height": 61.1875
+          },
+          "primaryAction": null,
+          "navigation": null,
+          "world": {
+            "x": 6,
+            "y": 4,
+            "width": 348,
+            "height": 541
+          }
+        },
+        "rows": [],
+        "controls": [
+          {
+            "name": "Skip to content",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 12,
+              "y": -76,
+              "width": 141.796875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 10,
+              "y": 440.21875,
+              "width": 56,
+              "height": 56
+            }
+          },
+          {
+            "name": "Interact",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 217.578125,
+              "y": 452.21875,
+              "width": 82.421875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 306,
+              "y": 452.21875,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Controls & help",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 306,
+              "y": 8,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Reduce panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 214,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Minimize panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 258,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Back to previous panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 302,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Edit profile",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 66,
+              "y": 194.796875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Dress up",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 126,
+              "y": 194.796875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Manage private social links",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 186,
+              "y": 194.796875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Sharing requests",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 246,
+              "y": 194.796875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Parties and MY PLAN",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 127,
+              "y": 249.796875,
+              "width": 106,
+              "height": 44
+            }
+          },
+          {
+            "name": "My gifts",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 236,
+              "y": 249.796875,
+              "width": 106,
+              "height": 44
+            }
+          },
+          {
+            "name": "Profile options",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 23,
+              "y": 449.796875,
+              "width": 314,
+              "height": 44
+            }
+          },
+          {
+            "name": "Back to world",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 23,
+              "y": 497.796875,
+              "width": 64.53125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Dress up→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 550.796875,
+              "width": 330,
+              "height": 44
+            }
+          },
+          {
+            "name": "Edit profile→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 594.796875,
+              "width": 330,
+              "height": 44
+            }
+          },
+          {
+            "name": "Social links→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 638.796875,
+              "width": 330,
+              "height": 44
+            }
+          },
+          {
+            "name": "Requests→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 682.796875,
+              "width": 330,
+              "height": 44
+            }
+          },
+          {
+            "name": "Age & privacy→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 726.796875,
+              "width": 330,
+              "height": 44
+            }
+          },
+          {
+            "name": "Settings→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 770.796875,
+              "width": 330,
+              "height": 44
+            }
+          },
+          {
+            "name": "Blocked users→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 814.796875,
+              "width": 330,
+              "height": 44
+            }
+          },
+          {
+            "name": "Account→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 858.796875,
+              "width": 330,
+              "height": 44
+            }
+          }
+        ],
+        "smallControls": [],
+        "images": [
+          {
+            "tag": "CANVAS",
+            "source": "CANVAS",
+            "rect": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 496
+            },
+            "complete": null,
+            "naturalWidth": null
+          }
+        ],
+        "cssArtwork": [],
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "headings": [
+          "Me",
+          "Synthetic listener"
+        ],
+        "actions": [
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 306,
+              "y": 452.21875,
+              "width": 44,
+              "height": 44
+            }
+          }
+        ]
+      },
+      "counters": {
+        "singletons": {
+          "mounts": 1,
+          "games": 1,
+          "peak": 1,
+          "sockets": 0,
+          "socketPeak": 0,
+          "activeSockets": 0,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+        },
+        "loaderCalls": 5,
+        "fixtureHttpCalls": 6,
+        "loaderByPath": {
+          "world/illustrated-runtime/revenge-details.png": 1,
+          "world/illustrated/revenge-ground.png": 1,
+          "world/illustrated/revenge-landmarks-atlas.png": 1,
+          "world/maps/courtyard-tiled.json": 1,
+          "world/themes/revenge.png": 1
+        },
+        "fixtureHttpByPath": {
+          "GET /api/auth/capabilities": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/me": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/places": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/rooms": 1,
+          "POST /api/auth/login": 1
+        },
+        "avatarPuts": 0,
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "network": {
+          "requests": 299,
+          "transferredBytes": 38688581,
+          "cacheHits": 0,
+          "imageRequests": 0,
+          "byPath": {
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-config.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/map-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/theme-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/core/v1/core.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/domain/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/avatar-config.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/map-manifest.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/theme-revenge.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-capabilities-disabled.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-success.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/bootstrap-open.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/giveaway-management.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-intro.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-post.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/movement-heartbeat.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/rooms.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-core.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-domain.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/operations.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
+            "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
+            "/@react-refresh": 1,
+            "/@vite/client": 1,
+            "/e2e/reference-integrated/data.ts": 1,
+            "/e2e/reference-integrated/preview.html": 1,
+            "/e2e/reference-integrated/preview.tsx": 1,
+            "/src/app/CommunityFeatures.tsx": 1,
+            "/src/app/WorldHost.tsx": 1,
+            "/src/app/WorldShell.tsx": 1,
+            "/src/app/__tests__/default-shell/qualified-data.ts": 1,
+            "/src/app/__tests__/fixtures/ports.ts": 1,
+            "/src/app/access.tsx": 1,
+            "/src/app/account-deletion-entry/context.tsx": 1,
+            "/src/app/account-deletion-entry/link.tsx": 1,
+            "/src/app/account-deletion-entry/owner.ts": 1,
+            "/src/app/account-entry/assets.ts": 1,
+            "/src/app/account-entry/owner.ts": 1,
+            "/src/app/account-entry/panels.tsx": 1,
+            "/src/app/account-entry/provider.tsx": 1,
+            "/src/app/capabilities.ts": 1,
+            "/src/app/meeting-entry/bridge.ts": 1,
+            "/src/app/meeting-entry/index.ts": 1,
+            "/src/app/meeting-entry/routes.tsx": 1,
+            "/src/app/mural-entry/index.ts": 1,
+            "/src/app/mural-entry/owner.ts": 1,
+            "/src/app/mural-entry/provider.tsx": 1,
+            "/src/app/navigation.tsx": 1,
+            "/src/app/places-entry/index.ts": 1,
+            "/src/app/places-entry/owner.ts": 1,
+            "/src/app/places-entry/provider.tsx": 1,
+            "/src/app/ports.ts": 1,
+            "/src/app/router.tsx": 1,
+            "/src/app/routes.ts": 1,
+            "/src/app/shell-chrome/identity.tsx": 1,
+            "/src/app/shell-chrome/index.tsx": 1,
+            "/src/app/shell-chrome/parade-footer.tsx": 1,
+            "/src/app/shell-chrome/shell-chrome.css": 1,
+            "/src/app/shell.css": 1,
+            "/src/app/social-composition/__tests__/fixtures.ts": 1,
+            "/src/app/social-composition/composition.css": 1,
+            "/src/app/social-composition/index.ts": 1,
+            "/src/app/social-composition/navigation.tsx": 1,
+            "/src/app/social-composition/owner.ts": 1,
+            "/src/app/social-composition/panels.tsx": 1,
+            "/src/app/social-composition/ports.ts": 1,
+            "/src/app/social-composition/provider.tsx": 1,
+            "/src/app/social-composition/routes.ts": 1,
+            "/src/app/social-composition/sharing.tsx": 1,
+            "/src/app/world-entry/__tests__/data.ts": 1,
+            "/src/app/world-entry/authority.ts": 1,
+            "/src/app/world-entry/bridge.ts": 1,
+            "/src/app/world-entry/configuration.ts": 1,
+            "/src/app/world-entry/production.ts": 1,
+            "/src/app/world-entry/resolver.ts": 1,
+            "/src/app/world-entry/root-features.tsx": 1,
+            "/src/app/world-panels/index.tsx": 1,
+            "/src/app/world-panels/ownership.tsx": 1,
+            "/src/app/world-panels/presentation.css": 1,
+            "/src/app/world-panels/social.css": 1,
+            "/src/app/world-panels/social.tsx": 1,
+            "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
+            "/src/entities/avatar/runtime/compositor.ts": 1,
+            "/src/entities/avatar/runtime/contract.ts": 1,
+            "/src/entities/avatar/runtime/index.ts": 1,
+            "/src/entities/avatar/runtime/resources.ts": 1,
+            "/src/entities/avatar/runtime/schema.ts": 1,
+            "/src/entities/avatar/source-catalog.ts": 1,
+            "/src/features/account/contract.ts": 1,
+            "/src/features/account/controller.ts": 1,
+            "/src/features/age-status/AgeStatus.tsx": 1,
+            "/src/features/age-status/controller.ts": 1,
+            "/src/features/age-status/index.ts": 1,
+            "/src/features/auth/__tests__/fixtures/data.ts": 1,
+            "/src/features/auth/model/account-deletion.ts": 1,
+            "/src/features/auth/model/bootstrap.ts": 1,
+            "/src/features/auth/model/contract.ts": 1,
+            "/src/features/auth/model/cookie-policy.ts": 1,
+            "/src/features/auth/model/enrollment-contract.ts": 1,
+            "/src/features/auth/model/enrollment.ts": 1,
+            "/src/features/auth/model/recovery-contract.ts": 1,
+            "/src/features/auth/model/recovery.ts": 1,
+            "/src/features/auth/model/session.ts": 1,
+            "/src/features/avatar/AvatarEditor.tsx": 1,
+            "/src/features/avatar/OptionStrip.tsx": 1,
+            "/src/features/avatar/avatar-editor.css": 1,
+            "/src/features/avatar/contract.ts": 1,
+            "/src/features/avatar/controller.ts": 1,
+            "/src/features/avatar/index.ts": 1,
+            "/src/features/avatar/preview.ts": 1,
+            "/src/features/avatar/reference-presentation/CategoryRail.tsx": 1,
+            "/src/features/avatar/reference-presentation/TonePalette.tsx": 1,
+            "/src/features/avatar/reference-presentation/actions.ts": 1,
+            "/src/features/event-feed/EventFeed.tsx": 1,
+            "/src/features/event-feed/FeedGlyph.tsx": 1,
+            "/src/features/event-feed/FeedImage.tsx": 1,
+            "/src/features/event-feed/__tests__/fixtures.ts": 1,
+            "/src/features/event-feed/contract.ts": 1,
+            "/src/features/event-feed/controller.ts": 1,
+            "/src/features/event-feed/feed.css": 1,
+            "/src/features/event-feed/index.ts": 1,
+            "/src/features/event-feed/presentation.ts": 1,
+            "/src/features/event-feed/runtime.ts": 1,
+            "/src/features/feed-thread/FeedThread.tsx": 1,
+            "/src/features/feed-thread/controller.ts": 1,
+            "/src/features/feed-thread/index.ts": 1,
+            "/src/features/gift-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/gift-discovery/index.ts": 1,
+            "/src/features/gift-discovery/model/contract.ts": 1,
+            "/src/features/gift-discovery/model/controller.ts": 1,
+            "/src/features/gift-discovery/ui/Gifts.tsx": 1,
+            "/src/features/gift-discovery/ui/gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-presentation.tsx": 1,
+            "/src/features/inbox/index.ts": 1,
+            "/src/features/inbox/model/contract.ts": 1,
+            "/src/features/inbox/model/controller.ts": 1,
+            "/src/features/inbox/model/targets.ts": 1,
+            "/src/features/inbox/ui/Inbox.tsx": 1,
+            "/src/features/inbox/ui/inbox.css": 1,
+            "/src/features/intro/IntroEditor.tsx": 1,
+            "/src/features/intro/command.ts": 1,
+            "/src/features/intro/contract.ts": 1,
+            "/src/features/intro/controller.ts": 1,
+            "/src/features/intro/index.ts": 1,
+            "/src/features/me/__tests__/fixtures.ts": 1,
+            "/src/features/me/index.ts": 1,
+            "/src/features/me/model/contract.ts": 1,
+            "/src/features/me/model/controller.ts": 1,
+            "/src/features/me/ui/AvatarThumbnail.tsx": 1,
+            "/src/features/me/ui/MePages.tsx": 1,
+            "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
+            "/src/features/meet-beacon/index.ts": 1,
+            "/src/features/meet-beacon/model/contract.ts": 1,
+            "/src/features/meet-beacon/model/controller.ts": 1,
+            "/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": 1,
+            "/src/features/meet-beacon/ui/MeetingBeacon.tsx": 1,
+            "/src/features/meet-beacon/ui/meeting-beacon.css": 1,
+            "/src/features/mural/editor/MuralEditor.tsx": 1,
+            "/src/features/mural/editor/contract.ts": 1,
+            "/src/features/mural/editor/controller.ts": 1,
+            "/src/features/mural/editor/editor.css": 1,
+            "/src/features/mural/editor/input.ts": 1,
+            "/src/features/mural/sync/MuralSyncPanel.tsx": 1,
+            "/src/features/mural/sync/contract.ts": 1,
+            "/src/features/mural/sync/controller.ts": 1,
+            "/src/features/mural/sync/http.ts": 1,
+            "/src/features/mural/sync/index.ts": 1,
+            "/src/features/mural/sync/projection.ts": 1,
+            "/src/features/my-gifts/MyGifts.tsx": 1,
+            "/src/features/my-gifts/index.ts": 1,
+            "/src/features/party-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/party-discovery/index.ts": 1,
+            "/src/features/party-discovery/model/contract.ts": 1,
+            "/src/features/party-discovery/model/controller.ts": 1,
+            "/src/features/party-discovery/ui/PartyDiscovery.tsx": 1,
+            "/src/features/party-discovery/ui/party-discovery.css": 1,
+            "/src/features/people/People.tsx": 1,
+            "/src/features/people/contract.ts": 1,
+            "/src/features/people/controller.ts": 1,
+            "/src/features/people/index.ts": 1,
+            "/src/features/people/people.css": 1,
+            "/src/features/people/runtime.ts": 1,
+            "/src/features/places/index.ts": 1,
+            "/src/features/places/model/contract.ts": 1,
+            "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
+            "/src/features/places/ui/Places.tsx": 1,
+            "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
+            "/src/features/profile/Avatar.tsx": 1,
+            "/src/features/profile/PublicProfile.tsx": 1,
+            "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
+            "/src/features/safety/contract.ts": 1,
+            "/src/features/settings/SettingsPage.tsx": 1,
+            "/src/features/settings/index.ts": 1,
+            "/src/features/social-sharing/index.ts": 1,
+            "/src/features/social-sharing/model/contract.ts": 1,
+            "/src/features/social-sharing/model/controller.ts": 1,
+            "/src/features/social-sharing/model/runtime.ts": 1,
+            "/src/features/social-sharing/ui/SocialSharing.tsx": 1,
+            "/src/features/social-sharing/ui/sharing.css": 1,
+            "/src/features/theme/model/controller.ts": 1,
+            "/src/features/theme/model/preferences.ts": 1,
+            "/src/features/theme/ui/ThemeSelector.tsx": 1,
+            "/src/features/theme/ui/theme-selector.css": 1,
+            "/src/features/world-nearby/WorldNearby.tsx": 1,
+            "/src/features/world-nearby/index.ts": 1,
+            "/src/features/world-nearby/projection.ts": 1,
+            "/src/features/world-rooms/index.ts": 1,
+            "/src/features/world-rooms/model/contract.ts": 1,
+            "/src/features/world-rooms/model/controller.ts": 1,
+            "/src/features/world-rooms/ui/WorldRooms.tsx": 1,
+            "/src/features/world-rooms/ui/world-access.css": 1,
+            "/src/shared/api/domain-operations.generated.ts": 1,
+            "/src/shared/api/domain.ts": 1,
+            "/src/shared/api/errors.ts": 1,
+            "/src/shared/api/http.ts": 1,
+            "/src/shared/query/keys.ts": 1,
+            "/src/shared/query/privacy.ts": 1,
+            "/src/shared/styles/base.css": 1,
+            "/src/shared/ui/Dialog.tsx": 1,
+            "/src/shared/ui/Tabs.tsx": 1,
+            "/src/shared/ui/concert-window/concert-window.css": 1,
+            "/src/shared/ui/concert-window/index.tsx": 1,
+            "/src/shared/ui/controls.tsx": 1,
+            "/src/shared/ui/feedback.tsx": 1,
+            "/src/shared/ui/index.ts": 1,
+            "/src/shared/ui/modal-focus.ts": 1,
+            "/src/shared/validation/text.ts": 1,
+            "/src/world/__tests__/fixtures/movement-data.ts": 1,
+            "/src/world/__tests__/fixtures/png.ts": 1,
+            "/src/world/__tests__/fixtures/synthetic.ts": 1,
+            "/src/world/__tests__/illustrated/fixtures.ts": 1,
+            "/src/world/camera/port.ts": 1,
+            "/src/world/composition/__tests__/fixtures/data.ts": 1,
+            "/src/world/composition/index.ts": 1,
+            "/src/world/composition/release.ts": 1,
+            "/src/world/composition/ticket.ts": 1,
+            "/src/world/entities/replicated.ts": 1,
+            "/src/world/illustrated/model.ts": 1,
+            "/src/world/illustrated/overview.ts": 1,
+            "/src/world/illustrated/phaser.ts": 1,
+            "/src/world/input/controller.ts": 1,
+            "/src/world/input/controls.css": 1,
+            "/src/world/input/model.ts": 1,
+            "/src/world/input/simulation.ts": 1,
+            "/src/world/interaction/selection.ts": 1,
+            "/src/world/map/formats.ts": 1,
+            "/src/world/map/json.ts": 1,
+            "/src/world/map/manifest.ts": 1,
+            "/src/world/map/resource-cache.ts": 1,
+            "/src/world/map/resources.ts": 1,
+            "/src/world/map/schema.ts": 1,
+            "/src/world/map/tiled.ts": 1,
+            "/src/world/mural/authority.ts": 1,
+            "/src/world/mural/index.ts": 1,
+            "/src/world/mural/phaser.ts": 1,
+            "/src/world/mural/sink.ts": 1,
+            "/src/world/network/WorldTransport.ts": 1,
+            "/src/world/network/mock.ts": 1,
+            "/src/world/network/replication.ts": 1,
+            "/src/world/network/transport/contract.ts": 1,
+            "/src/world/network/transport/engine.ts": 1,
+            "/src/world/network/websocket.ts": 1,
+            "/src/world/runtime.ts": 1,
+            "/src/world/scenes/MapScene.ts": 1,
+            "/src/world/theme/__tests__/fixtures/png.ts": 1,
+            "/src/world/theme/__tests__/fixtures/releases.ts": 1,
+            "/src/world/theme/compatibility.ts": 1,
+            "/src/world/theme/loader.ts": 1,
+            "/world/illustrated-runtime/bindings.json": 1,
+            "/world/illustrated-runtime/revenge-details.png": 1,
+            "/world/illustrated/revenge-ground.png": 1,
+            "/world/illustrated/revenge-landmarks-atlas.png": 1,
+            "/world/maps/binding-inputs.json": 1,
+            "/world/maps/courtyard-tiled.json": 1,
+            "/world/maps/geometry.json": 1,
+            "/world/maps/virtual-places.json": 1,
+            "/world/themes/binding-inputs.json": 1,
+            "/world/themes/revenge.png": 1
+          }
+        },
+        "recordCount": 299
+      },
+      "action": {
+        "status": "PASS",
+        "kind": "native-panel-back",
+        "focus": true,
+        "path": "/world"
+      },
+      "errors": []
+    },
+    {
+      "id": "world",
+      "route": "/world",
+      "width": 390,
+      "viewport": {
+        "width": 390,
+        "height": 554
+      },
+      "fixture": true,
+      "status": "CAPTURED",
+      "screenshot": "world-390.png",
+      "measurements": {
+        "viewport": {
+          "width": 390,
+          "height": 554
+        },
+        "scroll": {
+          "width": 390,
+          "height": 554
+        },
+        "overflow": false,
+        "bounds": {
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 554
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 554
+          },
+          "header": {
+            "x": 4,
+            "y": 4,
+            "width": 382,
+            "height": 58
+          },
+          "eraTabs": {
+            "x": 4,
+            "y": 62,
+            "width": 382,
+            "height": 47
+          },
+          "title": null,
+          "panel": null,
+          "body": null,
+          "tabs": null,
+          "footer": null,
+          "primaryAction": null,
+          "navigation": {
+            "x": 4,
+            "y": 482,
+            "width": 382,
+            "height": 68
+          },
+          "world": {
+            "x": 6,
+            "y": 109,
+            "width": 378,
+            "height": 325
+          }
+        },
+        "rows": [],
+        "controls": [
+          {
+            "name": "Skip to content",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 12,
+              "y": -76,
+              "width": 141.796875,
+              "height": 44
+            }
+          },
+          {
+            "name": "MCR Concert World",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 10,
+              "y": 11,
+              "width": 278,
+              "height": 44
+            }
+          },
+          {
+            "name": "Inbox",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 292,
+              "y": 11,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Settings",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 336,
+              "y": 11,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Revenge",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 7,
+              "y": 62,
+              "width": 125.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Parade",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 132.328125,
+              "y": 62,
+              "width": 125.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Danger",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 257.65625,
+              "y": 62,
+              "width": 125.34375,
+              "height": 44
+            }
+          },
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 14,
+              "y": 317.21875,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "name": "Interact",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 243.578125,
+              "y": 337.21875,
+              "width": 82.421875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 332,
+              "y": 337.21875,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Controls & help",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 332,
+              "y": 117,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Map",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 6,
+              "y": 436,
+              "width": 94.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Rooms",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 100.5,
+              "y": 436,
+              "width": 94.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Nearby",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 195,
+              "y": 436,
+              "width": 94.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Help",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 289.5,
+              "y": 436,
+              "width": 94.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "World",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 9,
+              "y": 487,
+              "width": 62,
+              "height": 58
+            }
+          },
+          {
+            "name": "Feed",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 71,
+              "y": 487,
+              "width": 62,
+              "height": 58
+            }
+          },
+          {
+            "name": "Meet",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 133,
+              "y": 487,
+              "width": 62,
+              "height": 58
+            }
+          },
+          {
+            "name": "Gifts",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 195,
+              "y": 487,
+              "width": 62,
+              "height": 58
+            }
+          },
+          {
+            "name": "Wall",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 257,
+              "y": 487,
+              "width": 62,
+              "height": 58
+            }
+          },
+          {
+            "name": "Me",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 319,
+              "y": 487,
+              "width": 62,
+              "height": 58
+            }
+          }
+        ],
+        "smallControls": [],
+        "images": [
+          {
+            "tag": "CANVAS",
+            "source": "CANVAS",
+            "rect": {
+              "x": 6,
+              "y": 109,
+              "width": 378,
+              "height": 280
+            },
+            "complete": null,
+            "naturalWidth": null
+          }
+        ],
+        "cssArtwork": [],
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "headings": [],
+        "actions": [
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 332,
+              "y": 337.21875,
+              "width": 44,
+              "height": 44
+            }
+          }
+        ]
+      },
+      "counters": {
+        "singletons": {
+          "mounts": 1,
+          "games": 1,
+          "peak": 1,
+          "sockets": 1,
+          "socketPeak": 1,
+          "activeSockets": 1,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "outfit": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.0.0",
+              "kind": "avatar_config",
+              "manifest_id": "avatar_fixture",
+              "manifest_version": 1,
+              "item_ids": {
+                "body": "body_fixture",
+                "eyes": "eyes_fixture",
+                "hair": "hair_fixture",
+                "outfit": "outfit_fixture",
+                "accessory": "accessory_fixture"
+              },
+              "skin_tone_id": "tone_fixture"
+            }
+          }
+        },
+        "loaderCalls": 5,
+        "fixtureHttpCalls": 6,
+        "loaderByPath": {
+          "world/illustrated-runtime/revenge-details.png": 1,
+          "world/illustrated/revenge-ground.png": 1,
+          "world/illustrated/revenge-landmarks-atlas.png": 1,
+          "world/maps/courtyard-tiled.json": 1,
+          "world/themes/revenge.png": 1
+        },
+        "fixtureHttpByPath": {
+          "GET /api/auth/capabilities": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/places": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/rooms": 1,
+          "POST /api/auth/login": 1,
+          "POST /api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets": 1
+        },
+        "avatarPuts": 0,
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "network": {
+          "requests": 293,
+          "transferredBytes": 38645405,
+          "cacheHits": 0,
+          "imageRequests": 0,
+          "byPath": {
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-config.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/map-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/theme-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/core/v1/core.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/domain/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/avatar-config.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/map-manifest.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/theme-revenge.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-capabilities-disabled.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-success.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/bootstrap-open.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/giveaway-management.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-intro.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-post.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/movement-heartbeat.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/rooms.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-core.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-domain.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/operations.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
+            "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
+            "/@react-refresh": 1,
+            "/@vite/client": 1,
+            "/e2e/reference-integrated/data.ts": 1,
+            "/e2e/reference-integrated/preview.html": 1,
+            "/e2e/reference-integrated/preview.tsx": 1,
+            "/src/app/CommunityFeatures.tsx": 1,
+            "/src/app/WorldHost.tsx": 1,
+            "/src/app/WorldShell.tsx": 1,
+            "/src/app/__tests__/default-shell/qualified-data.ts": 1,
+            "/src/app/__tests__/fixtures/ports.ts": 1,
+            "/src/app/access.tsx": 1,
+            "/src/app/account-deletion-entry/context.tsx": 1,
+            "/src/app/account-deletion-entry/owner.ts": 1,
+            "/src/app/account-entry/assets.ts": 1,
+            "/src/app/account-entry/owner.ts": 1,
+            "/src/app/account-entry/provider.tsx": 1,
+            "/src/app/capabilities.ts": 1,
+            "/src/app/meeting-entry/bridge.ts": 1,
+            "/src/app/meeting-entry/index.ts": 1,
+            "/src/app/meeting-entry/routes.tsx": 1,
+            "/src/app/mural-entry/index.ts": 1,
+            "/src/app/mural-entry/owner.ts": 1,
+            "/src/app/mural-entry/provider.tsx": 1,
+            "/src/app/navigation.tsx": 1,
+            "/src/app/places-entry/index.ts": 1,
+            "/src/app/places-entry/owner.ts": 1,
+            "/src/app/places-entry/provider.tsx": 1,
+            "/src/app/ports.ts": 1,
+            "/src/app/router.tsx": 1,
+            "/src/app/routes.ts": 1,
+            "/src/app/shell-chrome/identity.tsx": 1,
+            "/src/app/shell-chrome/index.tsx": 1,
+            "/src/app/shell-chrome/parade-footer.tsx": 1,
+            "/src/app/shell-chrome/shell-chrome.css": 1,
+            "/src/app/shell.css": 1,
+            "/src/app/social-composition/__tests__/fixtures.ts": 1,
+            "/src/app/social-composition/composition.css": 1,
+            "/src/app/social-composition/index.ts": 1,
+            "/src/app/social-composition/navigation.tsx": 1,
+            "/src/app/social-composition/owner.ts": 1,
+            "/src/app/social-composition/panels.tsx": 1,
+            "/src/app/social-composition/ports.ts": 1,
+            "/src/app/social-composition/provider.tsx": 1,
+            "/src/app/social-composition/routes.ts": 1,
+            "/src/app/social-composition/sharing.tsx": 1,
+            "/src/app/world-entry/__tests__/data.ts": 1,
+            "/src/app/world-entry/authority.ts": 1,
+            "/src/app/world-entry/bridge.ts": 1,
+            "/src/app/world-entry/configuration.ts": 1,
+            "/src/app/world-entry/production.ts": 1,
+            "/src/app/world-entry/resolver.ts": 1,
+            "/src/app/world-entry/root-features.tsx": 1,
+            "/src/app/world-panels/index.tsx": 1,
+            "/src/app/world-panels/ownership.tsx": 1,
+            "/src/app/world-panels/presentation.css": 1,
+            "/src/app/world-panels/social.css": 1,
+            "/src/app/world-panels/social.tsx": 1,
+            "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
+            "/src/entities/avatar/runtime/compositor.ts": 1,
+            "/src/entities/avatar/runtime/contract.ts": 1,
+            "/src/entities/avatar/runtime/index.ts": 1,
+            "/src/entities/avatar/runtime/resources.ts": 1,
+            "/src/entities/avatar/runtime/schema.ts": 1,
+            "/src/entities/avatar/source-catalog.ts": 1,
+            "/src/features/account/contract.ts": 1,
+            "/src/features/account/controller.ts": 1,
+            "/src/features/age-status/AgeStatus.tsx": 1,
+            "/src/features/age-status/controller.ts": 1,
+            "/src/features/age-status/index.ts": 1,
+            "/src/features/auth/__tests__/fixtures/data.ts": 1,
+            "/src/features/auth/model/account-deletion.ts": 1,
+            "/src/features/auth/model/bootstrap.ts": 1,
+            "/src/features/auth/model/contract.ts": 1,
+            "/src/features/auth/model/cookie-policy.ts": 1,
+            "/src/features/auth/model/enrollment-contract.ts": 1,
+            "/src/features/auth/model/enrollment.ts": 1,
+            "/src/features/auth/model/recovery-contract.ts": 1,
+            "/src/features/auth/model/recovery.ts": 1,
+            "/src/features/auth/model/session.ts": 1,
+            "/src/features/avatar/AvatarEditor.tsx": 1,
+            "/src/features/avatar/OptionStrip.tsx": 1,
+            "/src/features/avatar/avatar-editor.css": 1,
+            "/src/features/avatar/contract.ts": 1,
+            "/src/features/avatar/controller.ts": 1,
+            "/src/features/avatar/index.ts": 1,
+            "/src/features/avatar/preview.ts": 1,
+            "/src/features/avatar/reference-presentation/CategoryRail.tsx": 1,
+            "/src/features/avatar/reference-presentation/TonePalette.tsx": 1,
+            "/src/features/avatar/reference-presentation/actions.ts": 1,
+            "/src/features/event-feed/EventFeed.tsx": 1,
+            "/src/features/event-feed/FeedGlyph.tsx": 1,
+            "/src/features/event-feed/FeedImage.tsx": 1,
+            "/src/features/event-feed/__tests__/fixtures.ts": 1,
+            "/src/features/event-feed/contract.ts": 1,
+            "/src/features/event-feed/controller.ts": 1,
+            "/src/features/event-feed/feed.css": 1,
+            "/src/features/event-feed/index.ts": 1,
+            "/src/features/event-feed/presentation.ts": 1,
+            "/src/features/event-feed/runtime.ts": 1,
+            "/src/features/feed-thread/FeedThread.tsx": 1,
+            "/src/features/feed-thread/controller.ts": 1,
+            "/src/features/feed-thread/index.ts": 1,
+            "/src/features/gift-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/gift-discovery/index.ts": 1,
+            "/src/features/gift-discovery/model/contract.ts": 1,
+            "/src/features/gift-discovery/model/controller.ts": 1,
+            "/src/features/gift-discovery/ui/Gifts.tsx": 1,
+            "/src/features/gift-discovery/ui/gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-presentation.tsx": 1,
+            "/src/features/inbox/index.ts": 1,
+            "/src/features/inbox/model/contract.ts": 1,
+            "/src/features/inbox/model/controller.ts": 1,
+            "/src/features/inbox/model/targets.ts": 1,
+            "/src/features/inbox/ui/Inbox.tsx": 1,
+            "/src/features/inbox/ui/inbox.css": 1,
+            "/src/features/intro/IntroEditor.tsx": 1,
+            "/src/features/intro/command.ts": 1,
+            "/src/features/intro/contract.ts": 1,
+            "/src/features/intro/controller.ts": 1,
+            "/src/features/intro/index.ts": 1,
+            "/src/features/me/__tests__/fixtures.ts": 1,
+            "/src/features/me/index.ts": 1,
+            "/src/features/me/model/contract.ts": 1,
+            "/src/features/me/model/controller.ts": 1,
+            "/src/features/me/ui/AvatarThumbnail.tsx": 1,
+            "/src/features/me/ui/MePages.tsx": 1,
+            "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
+            "/src/features/meet-beacon/index.ts": 1,
+            "/src/features/meet-beacon/model/contract.ts": 1,
+            "/src/features/meet-beacon/model/controller.ts": 1,
+            "/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": 1,
+            "/src/features/meet-beacon/ui/MeetingBeacon.tsx": 1,
+            "/src/features/meet-beacon/ui/meeting-beacon.css": 1,
+            "/src/features/mural/editor/MuralEditor.tsx": 1,
+            "/src/features/mural/editor/contract.ts": 1,
+            "/src/features/mural/editor/controller.ts": 1,
+            "/src/features/mural/editor/editor.css": 1,
+            "/src/features/mural/editor/input.ts": 1,
+            "/src/features/mural/sync/MuralSyncPanel.tsx": 1,
+            "/src/features/mural/sync/contract.ts": 1,
+            "/src/features/mural/sync/controller.ts": 1,
+            "/src/features/mural/sync/http.ts": 1,
+            "/src/features/mural/sync/index.ts": 1,
+            "/src/features/mural/sync/projection.ts": 1,
+            "/src/features/my-gifts/MyGifts.tsx": 1,
+            "/src/features/my-gifts/index.ts": 1,
+            "/src/features/party-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/party-discovery/index.ts": 1,
+            "/src/features/party-discovery/model/contract.ts": 1,
+            "/src/features/party-discovery/model/controller.ts": 1,
+            "/src/features/party-discovery/ui/PartyDiscovery.tsx": 1,
+            "/src/features/party-discovery/ui/party-discovery.css": 1,
+            "/src/features/people/People.tsx": 1,
+            "/src/features/people/contract.ts": 1,
+            "/src/features/people/controller.ts": 1,
+            "/src/features/people/index.ts": 1,
+            "/src/features/people/people.css": 1,
+            "/src/features/people/runtime.ts": 1,
+            "/src/features/places/index.ts": 1,
+            "/src/features/places/model/contract.ts": 1,
+            "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
+            "/src/features/places/ui/Places.tsx": 1,
+            "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
+            "/src/features/profile/Avatar.tsx": 1,
+            "/src/features/profile/PublicProfile.tsx": 1,
+            "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
+            "/src/features/safety/contract.ts": 1,
+            "/src/features/social-sharing/index.ts": 1,
+            "/src/features/social-sharing/model/contract.ts": 1,
+            "/src/features/social-sharing/model/controller.ts": 1,
+            "/src/features/social-sharing/model/runtime.ts": 1,
+            "/src/features/social-sharing/ui/SocialSharing.tsx": 1,
+            "/src/features/social-sharing/ui/sharing.css": 1,
+            "/src/features/theme/model/controller.ts": 1,
+            "/src/features/theme/model/preferences.ts": 1,
+            "/src/features/world-nearby/WorldNearby.tsx": 1,
+            "/src/features/world-nearby/index.ts": 1,
+            "/src/features/world-nearby/projection.ts": 1,
+            "/src/features/world-rooms/index.ts": 1,
+            "/src/features/world-rooms/model/contract.ts": 1,
+            "/src/features/world-rooms/model/controller.ts": 1,
+            "/src/features/world-rooms/ui/WorldRooms.tsx": 1,
+            "/src/features/world-rooms/ui/world-access.css": 1,
+            "/src/shared/api/domain-operations.generated.ts": 1,
+            "/src/shared/api/domain.ts": 1,
+            "/src/shared/api/errors.ts": 1,
+            "/src/shared/api/http.ts": 1,
+            "/src/shared/query/keys.ts": 1,
+            "/src/shared/query/privacy.ts": 1,
+            "/src/shared/styles/base.css": 1,
+            "/src/shared/ui/Dialog.tsx": 1,
+            "/src/shared/ui/Tabs.tsx": 1,
+            "/src/shared/ui/concert-window/concert-window.css": 1,
+            "/src/shared/ui/concert-window/index.tsx": 1,
+            "/src/shared/ui/controls.tsx": 1,
+            "/src/shared/ui/feedback.tsx": 1,
+            "/src/shared/ui/index.ts": 1,
+            "/src/shared/ui/modal-focus.ts": 1,
+            "/src/shared/validation/text.ts": 1,
+            "/src/world/__tests__/fixtures/movement-data.ts": 1,
+            "/src/world/__tests__/fixtures/png.ts": 1,
+            "/src/world/__tests__/fixtures/synthetic.ts": 1,
+            "/src/world/__tests__/illustrated/fixtures.ts": 1,
+            "/src/world/camera/port.ts": 1,
+            "/src/world/composition/__tests__/fixtures/data.ts": 1,
+            "/src/world/composition/index.ts": 1,
+            "/src/world/composition/release.ts": 1,
+            "/src/world/composition/ticket.ts": 1,
+            "/src/world/entities/replicated.ts": 1,
+            "/src/world/illustrated/model.ts": 1,
+            "/src/world/illustrated/overview.ts": 1,
+            "/src/world/illustrated/phaser.ts": 1,
+            "/src/world/input/controller.ts": 1,
+            "/src/world/input/controls.css": 1,
+            "/src/world/input/model.ts": 1,
+            "/src/world/input/simulation.ts": 1,
+            "/src/world/interaction/selection.ts": 1,
+            "/src/world/map/formats.ts": 1,
+            "/src/world/map/json.ts": 1,
+            "/src/world/map/manifest.ts": 1,
+            "/src/world/map/resource-cache.ts": 1,
+            "/src/world/map/resources.ts": 1,
+            "/src/world/map/schema.ts": 1,
+            "/src/world/map/tiled.ts": 1,
+            "/src/world/mural/authority.ts": 1,
+            "/src/world/mural/index.ts": 1,
+            "/src/world/mural/phaser.ts": 1,
+            "/src/world/mural/sink.ts": 1,
+            "/src/world/network/WorldTransport.ts": 1,
+            "/src/world/network/mock.ts": 1,
+            "/src/world/network/replication.ts": 1,
+            "/src/world/network/transport/contract.ts": 1,
+            "/src/world/network/transport/engine.ts": 1,
+            "/src/world/network/websocket.ts": 1,
+            "/src/world/runtime.ts": 1,
+            "/src/world/scenes/MapScene.ts": 1,
+            "/src/world/theme/__tests__/fixtures/png.ts": 1,
+            "/src/world/theme/__tests__/fixtures/releases.ts": 1,
+            "/src/world/theme/compatibility.ts": 1,
+            "/src/world/theme/loader.ts": 1,
+            "/world/illustrated-runtime/bindings.json": 1,
+            "/world/illustrated-runtime/revenge-details.png": 1,
+            "/world/illustrated/revenge-ground.png": 1,
+            "/world/illustrated/revenge-landmarks-atlas.png": 1,
+            "/world/maps/binding-inputs.json": 1,
+            "/world/maps/courtyard-tiled.json": 1,
+            "/world/maps/geometry.json": 1,
+            "/world/maps/virtual-places.json": 1,
+            "/world/themes/binding-inputs.json": 1,
+            "/world/themes/revenge.png": 1
+          }
+        },
+        "recordCount": 293
+      },
+      "action": {
+        "status": "PASS",
+        "kind": "map-open-back",
+        "focus": true
+      },
+      "errors": []
+    },
+    {
+      "id": "me",
+      "route": "/me",
+      "width": 390,
+      "viewport": {
+        "width": 390,
+        "height": 595
+      },
+      "fixture": true,
+      "status": "CAPTURED",
+      "screenshot": "me-390.png",
+      "measurements": {
+        "viewport": {
+          "width": 390,
+          "height": 595
+        },
+        "scroll": {
+          "width": 390,
+          "height": 595
+        },
+        "overflow": false,
+        "bounds": {
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 595
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 595
+          },
+          "header": null,
+          "eraTabs": null,
+          "title": {
+            "x": 9,
+            "y": 7,
+            "width": 372,
+            "height": 46
+          },
+          "panel": {
+            "x": 6,
+            "y": 4,
+            "width": 378,
+            "height": 587
+          },
+          "body": {
+            "x": 9,
+            "y": 53,
+            "width": 372,
+            "height": 468.703125
+          },
+          "tabs": null,
+          "footer": {
+            "x": 9,
+            "y": 521.703125,
+            "width": 372,
+            "height": 66.296875
+          },
+          "primaryAction": null,
+          "navigation": null,
+          "world": {
+            "x": 6,
+            "y": 4,
+            "width": 378,
+            "height": 587
+          }
+        },
+        "rows": [],
+        "controls": [
+          {
+            "name": "Skip to content",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 12,
+              "y": -76,
+              "width": 141.796875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 14,
+              "y": 474.21875,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "name": "Interact",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 243.578125,
+              "y": 494.21875,
+              "width": 82.421875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 332,
+              "y": 494.21875,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Controls & help",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 332,
+              "y": 12,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Reduce panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 244,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Minimize panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 288,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Back to previous panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 332,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Edit profile",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 81,
+              "y": 204.6875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Dress up",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 141,
+              "y": 204.6875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Manage private social links",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 201,
+              "y": 204.6875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Sharing requests",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 261,
+              "y": 204.6875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Parties and MY PLAN",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 137,
+              "y": 259.6875,
+              "width": 116,
+              "height": 44
+            }
+          },
+          {
+            "name": "My gifts",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 256,
+              "y": 259.6875,
+              "width": 116,
+              "height": 44
+            }
+          },
+          {
+            "name": "Profile options",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 23,
+              "y": 459.6875,
+              "width": 344,
+              "height": 44
+            }
+          },
+          {
+            "name": "Back to world",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 23,
+              "y": 507.6875,
+              "width": 64.53125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Dress up→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 560.6875,
+              "width": 360,
+              "height": 44
+            }
+          },
+          {
+            "name": "Edit profile→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 604.6875,
+              "width": 360,
+              "height": 44
+            }
+          },
+          {
+            "name": "Social links→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 648.6875,
+              "width": 360,
+              "height": 44
+            }
+          },
+          {
+            "name": "Requests→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 692.6875,
+              "width": 360,
+              "height": 44
+            }
+          },
+          {
+            "name": "Age & privacy→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 736.6875,
+              "width": 360,
+              "height": 44
+            }
+          },
+          {
+            "name": "Settings→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 780.6875,
+              "width": 360,
+              "height": 44
+            }
+          },
+          {
+            "name": "Blocked users→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 824.6875,
+              "width": 360,
+              "height": 44
+            }
+          },
+          {
+            "name": "Account→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 868.6875,
+              "width": 360,
+              "height": 44
+            }
+          }
+        ],
+        "smallControls": [],
+        "images": [
+          {
+            "tag": "CANVAS",
+            "source": "CANVAS",
+            "rect": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 542
+            },
+            "complete": null,
+            "naturalWidth": null
+          }
+        ],
+        "cssArtwork": [],
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "headings": [
+          "Me",
+          "Synthetic listener"
+        ],
+        "actions": [
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 332,
+              "y": 494.21875,
+              "width": 44,
+              "height": 44
+            }
+          }
+        ]
+      },
+      "counters": {
+        "singletons": {
+          "mounts": 1,
+          "games": 1,
+          "peak": 1,
+          "sockets": 0,
+          "socketPeak": 0,
+          "activeSockets": 0,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+        },
+        "loaderCalls": 5,
+        "fixtureHttpCalls": 6,
+        "loaderByPath": {
+          "world/illustrated-runtime/revenge-details.png": 1,
+          "world/illustrated/revenge-ground.png": 1,
+          "world/illustrated/revenge-landmarks-atlas.png": 1,
+          "world/maps/courtyard-tiled.json": 1,
+          "world/themes/revenge.png": 1
+        },
+        "fixtureHttpByPath": {
+          "GET /api/auth/capabilities": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/me": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/places": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/rooms": 1,
+          "POST /api/auth/login": 1
+        },
+        "avatarPuts": 0,
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "network": {
+          "requests": 299,
+          "transferredBytes": 38688581,
+          "cacheHits": 0,
+          "imageRequests": 0,
+          "byPath": {
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-config.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/map-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/theme-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/core/v1/core.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/domain/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/avatar-config.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/map-manifest.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/theme-revenge.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-capabilities-disabled.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-success.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/bootstrap-open.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/giveaway-management.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-intro.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-post.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/movement-heartbeat.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/rooms.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-core.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-domain.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/operations.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
+            "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
+            "/@react-refresh": 1,
+            "/@vite/client": 1,
+            "/e2e/reference-integrated/data.ts": 1,
+            "/e2e/reference-integrated/preview.html": 1,
+            "/e2e/reference-integrated/preview.tsx": 1,
+            "/src/app/CommunityFeatures.tsx": 1,
+            "/src/app/WorldHost.tsx": 1,
+            "/src/app/WorldShell.tsx": 1,
+            "/src/app/__tests__/default-shell/qualified-data.ts": 1,
+            "/src/app/__tests__/fixtures/ports.ts": 1,
+            "/src/app/access.tsx": 1,
+            "/src/app/account-deletion-entry/context.tsx": 1,
+            "/src/app/account-deletion-entry/link.tsx": 1,
+            "/src/app/account-deletion-entry/owner.ts": 1,
+            "/src/app/account-entry/assets.ts": 1,
+            "/src/app/account-entry/owner.ts": 1,
+            "/src/app/account-entry/panels.tsx": 1,
+            "/src/app/account-entry/provider.tsx": 1,
+            "/src/app/capabilities.ts": 1,
+            "/src/app/meeting-entry/bridge.ts": 1,
+            "/src/app/meeting-entry/index.ts": 1,
+            "/src/app/meeting-entry/routes.tsx": 1,
+            "/src/app/mural-entry/index.ts": 1,
+            "/src/app/mural-entry/owner.ts": 1,
+            "/src/app/mural-entry/provider.tsx": 1,
+            "/src/app/navigation.tsx": 1,
+            "/src/app/places-entry/index.ts": 1,
+            "/src/app/places-entry/owner.ts": 1,
+            "/src/app/places-entry/provider.tsx": 1,
+            "/src/app/ports.ts": 1,
+            "/src/app/router.tsx": 1,
+            "/src/app/routes.ts": 1,
+            "/src/app/shell-chrome/identity.tsx": 1,
+            "/src/app/shell-chrome/index.tsx": 1,
+            "/src/app/shell-chrome/parade-footer.tsx": 1,
+            "/src/app/shell-chrome/shell-chrome.css": 1,
+            "/src/app/shell.css": 1,
+            "/src/app/social-composition/__tests__/fixtures.ts": 1,
+            "/src/app/social-composition/composition.css": 1,
+            "/src/app/social-composition/index.ts": 1,
+            "/src/app/social-composition/navigation.tsx": 1,
+            "/src/app/social-composition/owner.ts": 1,
+            "/src/app/social-composition/panels.tsx": 1,
+            "/src/app/social-composition/ports.ts": 1,
+            "/src/app/social-composition/provider.tsx": 1,
+            "/src/app/social-composition/routes.ts": 1,
+            "/src/app/social-composition/sharing.tsx": 1,
+            "/src/app/world-entry/__tests__/data.ts": 1,
+            "/src/app/world-entry/authority.ts": 1,
+            "/src/app/world-entry/bridge.ts": 1,
+            "/src/app/world-entry/configuration.ts": 1,
+            "/src/app/world-entry/production.ts": 1,
+            "/src/app/world-entry/resolver.ts": 1,
+            "/src/app/world-entry/root-features.tsx": 1,
+            "/src/app/world-panels/index.tsx": 1,
+            "/src/app/world-panels/ownership.tsx": 1,
+            "/src/app/world-panels/presentation.css": 1,
+            "/src/app/world-panels/social.css": 1,
+            "/src/app/world-panels/social.tsx": 1,
+            "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
+            "/src/entities/avatar/runtime/compositor.ts": 1,
+            "/src/entities/avatar/runtime/contract.ts": 1,
+            "/src/entities/avatar/runtime/index.ts": 1,
+            "/src/entities/avatar/runtime/resources.ts": 1,
+            "/src/entities/avatar/runtime/schema.ts": 1,
+            "/src/entities/avatar/source-catalog.ts": 1,
+            "/src/features/account/contract.ts": 1,
+            "/src/features/account/controller.ts": 1,
+            "/src/features/age-status/AgeStatus.tsx": 1,
+            "/src/features/age-status/controller.ts": 1,
+            "/src/features/age-status/index.ts": 1,
+            "/src/features/auth/__tests__/fixtures/data.ts": 1,
+            "/src/features/auth/model/account-deletion.ts": 1,
+            "/src/features/auth/model/bootstrap.ts": 1,
+            "/src/features/auth/model/contract.ts": 1,
+            "/src/features/auth/model/cookie-policy.ts": 1,
+            "/src/features/auth/model/enrollment-contract.ts": 1,
+            "/src/features/auth/model/enrollment.ts": 1,
+            "/src/features/auth/model/recovery-contract.ts": 1,
+            "/src/features/auth/model/recovery.ts": 1,
+            "/src/features/auth/model/session.ts": 1,
+            "/src/features/avatar/AvatarEditor.tsx": 1,
+            "/src/features/avatar/OptionStrip.tsx": 1,
+            "/src/features/avatar/avatar-editor.css": 1,
+            "/src/features/avatar/contract.ts": 1,
+            "/src/features/avatar/controller.ts": 1,
+            "/src/features/avatar/index.ts": 1,
+            "/src/features/avatar/preview.ts": 1,
+            "/src/features/avatar/reference-presentation/CategoryRail.tsx": 1,
+            "/src/features/avatar/reference-presentation/TonePalette.tsx": 1,
+            "/src/features/avatar/reference-presentation/actions.ts": 1,
+            "/src/features/event-feed/EventFeed.tsx": 1,
+            "/src/features/event-feed/FeedGlyph.tsx": 1,
+            "/src/features/event-feed/FeedImage.tsx": 1,
+            "/src/features/event-feed/__tests__/fixtures.ts": 1,
+            "/src/features/event-feed/contract.ts": 1,
+            "/src/features/event-feed/controller.ts": 1,
+            "/src/features/event-feed/feed.css": 1,
+            "/src/features/event-feed/index.ts": 1,
+            "/src/features/event-feed/presentation.ts": 1,
+            "/src/features/event-feed/runtime.ts": 1,
+            "/src/features/feed-thread/FeedThread.tsx": 1,
+            "/src/features/feed-thread/controller.ts": 1,
+            "/src/features/feed-thread/index.ts": 1,
+            "/src/features/gift-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/gift-discovery/index.ts": 1,
+            "/src/features/gift-discovery/model/contract.ts": 1,
+            "/src/features/gift-discovery/model/controller.ts": 1,
+            "/src/features/gift-discovery/ui/Gifts.tsx": 1,
+            "/src/features/gift-discovery/ui/gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-presentation.tsx": 1,
+            "/src/features/inbox/index.ts": 1,
+            "/src/features/inbox/model/contract.ts": 1,
+            "/src/features/inbox/model/controller.ts": 1,
+            "/src/features/inbox/model/targets.ts": 1,
+            "/src/features/inbox/ui/Inbox.tsx": 1,
+            "/src/features/inbox/ui/inbox.css": 1,
+            "/src/features/intro/IntroEditor.tsx": 1,
+            "/src/features/intro/command.ts": 1,
+            "/src/features/intro/contract.ts": 1,
+            "/src/features/intro/controller.ts": 1,
+            "/src/features/intro/index.ts": 1,
+            "/src/features/me/__tests__/fixtures.ts": 1,
+            "/src/features/me/index.ts": 1,
+            "/src/features/me/model/contract.ts": 1,
+            "/src/features/me/model/controller.ts": 1,
+            "/src/features/me/ui/AvatarThumbnail.tsx": 1,
+            "/src/features/me/ui/MePages.tsx": 1,
+            "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
+            "/src/features/meet-beacon/index.ts": 1,
+            "/src/features/meet-beacon/model/contract.ts": 1,
+            "/src/features/meet-beacon/model/controller.ts": 1,
+            "/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": 1,
+            "/src/features/meet-beacon/ui/MeetingBeacon.tsx": 1,
+            "/src/features/meet-beacon/ui/meeting-beacon.css": 1,
+            "/src/features/mural/editor/MuralEditor.tsx": 1,
+            "/src/features/mural/editor/contract.ts": 1,
+            "/src/features/mural/editor/controller.ts": 1,
+            "/src/features/mural/editor/editor.css": 1,
+            "/src/features/mural/editor/input.ts": 1,
+            "/src/features/mural/sync/MuralSyncPanel.tsx": 1,
+            "/src/features/mural/sync/contract.ts": 1,
+            "/src/features/mural/sync/controller.ts": 1,
+            "/src/features/mural/sync/http.ts": 1,
+            "/src/features/mural/sync/index.ts": 1,
+            "/src/features/mural/sync/projection.ts": 1,
+            "/src/features/my-gifts/MyGifts.tsx": 1,
+            "/src/features/my-gifts/index.ts": 1,
+            "/src/features/party-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/party-discovery/index.ts": 1,
+            "/src/features/party-discovery/model/contract.ts": 1,
+            "/src/features/party-discovery/model/controller.ts": 1,
+            "/src/features/party-discovery/ui/PartyDiscovery.tsx": 1,
+            "/src/features/party-discovery/ui/party-discovery.css": 1,
+            "/src/features/people/People.tsx": 1,
+            "/src/features/people/contract.ts": 1,
+            "/src/features/people/controller.ts": 1,
+            "/src/features/people/index.ts": 1,
+            "/src/features/people/people.css": 1,
+            "/src/features/people/runtime.ts": 1,
+            "/src/features/places/index.ts": 1,
+            "/src/features/places/model/contract.ts": 1,
+            "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
+            "/src/features/places/ui/Places.tsx": 1,
+            "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
+            "/src/features/profile/Avatar.tsx": 1,
+            "/src/features/profile/PublicProfile.tsx": 1,
+            "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
+            "/src/features/safety/contract.ts": 1,
+            "/src/features/settings/SettingsPage.tsx": 1,
+            "/src/features/settings/index.ts": 1,
+            "/src/features/social-sharing/index.ts": 1,
+            "/src/features/social-sharing/model/contract.ts": 1,
+            "/src/features/social-sharing/model/controller.ts": 1,
+            "/src/features/social-sharing/model/runtime.ts": 1,
+            "/src/features/social-sharing/ui/SocialSharing.tsx": 1,
+            "/src/features/social-sharing/ui/sharing.css": 1,
+            "/src/features/theme/model/controller.ts": 1,
+            "/src/features/theme/model/preferences.ts": 1,
+            "/src/features/theme/ui/ThemeSelector.tsx": 1,
+            "/src/features/theme/ui/theme-selector.css": 1,
+            "/src/features/world-nearby/WorldNearby.tsx": 1,
+            "/src/features/world-nearby/index.ts": 1,
+            "/src/features/world-nearby/projection.ts": 1,
+            "/src/features/world-rooms/index.ts": 1,
+            "/src/features/world-rooms/model/contract.ts": 1,
+            "/src/features/world-rooms/model/controller.ts": 1,
+            "/src/features/world-rooms/ui/WorldRooms.tsx": 1,
+            "/src/features/world-rooms/ui/world-access.css": 1,
+            "/src/shared/api/domain-operations.generated.ts": 1,
+            "/src/shared/api/domain.ts": 1,
+            "/src/shared/api/errors.ts": 1,
+            "/src/shared/api/http.ts": 1,
+            "/src/shared/query/keys.ts": 1,
+            "/src/shared/query/privacy.ts": 1,
+            "/src/shared/styles/base.css": 1,
+            "/src/shared/ui/Dialog.tsx": 1,
+            "/src/shared/ui/Tabs.tsx": 1,
+            "/src/shared/ui/concert-window/concert-window.css": 1,
+            "/src/shared/ui/concert-window/index.tsx": 1,
+            "/src/shared/ui/controls.tsx": 1,
+            "/src/shared/ui/feedback.tsx": 1,
+            "/src/shared/ui/index.ts": 1,
+            "/src/shared/ui/modal-focus.ts": 1,
+            "/src/shared/validation/text.ts": 1,
+            "/src/world/__tests__/fixtures/movement-data.ts": 1,
+            "/src/world/__tests__/fixtures/png.ts": 1,
+            "/src/world/__tests__/fixtures/synthetic.ts": 1,
+            "/src/world/__tests__/illustrated/fixtures.ts": 1,
+            "/src/world/camera/port.ts": 1,
+            "/src/world/composition/__tests__/fixtures/data.ts": 1,
+            "/src/world/composition/index.ts": 1,
+            "/src/world/composition/release.ts": 1,
+            "/src/world/composition/ticket.ts": 1,
+            "/src/world/entities/replicated.ts": 1,
+            "/src/world/illustrated/model.ts": 1,
+            "/src/world/illustrated/overview.ts": 1,
+            "/src/world/illustrated/phaser.ts": 1,
+            "/src/world/input/controller.ts": 1,
+            "/src/world/input/controls.css": 1,
+            "/src/world/input/model.ts": 1,
+            "/src/world/input/simulation.ts": 1,
+            "/src/world/interaction/selection.ts": 1,
+            "/src/world/map/formats.ts": 1,
+            "/src/world/map/json.ts": 1,
+            "/src/world/map/manifest.ts": 1,
+            "/src/world/map/resource-cache.ts": 1,
+            "/src/world/map/resources.ts": 1,
+            "/src/world/map/schema.ts": 1,
+            "/src/world/map/tiled.ts": 1,
+            "/src/world/mural/authority.ts": 1,
+            "/src/world/mural/index.ts": 1,
+            "/src/world/mural/phaser.ts": 1,
+            "/src/world/mural/sink.ts": 1,
+            "/src/world/network/WorldTransport.ts": 1,
+            "/src/world/network/mock.ts": 1,
+            "/src/world/network/replication.ts": 1,
+            "/src/world/network/transport/contract.ts": 1,
+            "/src/world/network/transport/engine.ts": 1,
+            "/src/world/network/websocket.ts": 1,
+            "/src/world/runtime.ts": 1,
+            "/src/world/scenes/MapScene.ts": 1,
+            "/src/world/theme/__tests__/fixtures/png.ts": 1,
+            "/src/world/theme/__tests__/fixtures/releases.ts": 1,
+            "/src/world/theme/compatibility.ts": 1,
+            "/src/world/theme/loader.ts": 1,
+            "/world/illustrated-runtime/bindings.json": 1,
+            "/world/illustrated-runtime/revenge-details.png": 1,
+            "/world/illustrated/revenge-ground.png": 1,
+            "/world/illustrated/revenge-landmarks-atlas.png": 1,
+            "/world/maps/binding-inputs.json": 1,
+            "/world/maps/courtyard-tiled.json": 1,
+            "/world/maps/geometry.json": 1,
+            "/world/maps/virtual-places.json": 1,
+            "/world/themes/binding-inputs.json": 1,
+            "/world/themes/revenge.png": 1
+          }
+        },
+        "recordCount": 299
+      },
+      "action": {
+        "status": "PASS",
+        "kind": "native-panel-back",
+        "focus": true,
+        "path": "/world"
+      },
+      "errors": []
+    },
+    {
+      "id": "world",
+      "route": "/world",
+      "width": 430,
+      "viewport": {
+        "width": 430,
+        "height": 611
+      },
+      "fixture": true,
+      "status": "CAPTURED",
+      "screenshot": "world-430.png",
+      "measurements": {
+        "viewport": {
+          "width": 430,
+          "height": 611
+        },
+        "scroll": {
+          "width": 430,
+          "height": 611
+        },
+        "overflow": false,
+        "bounds": {
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 611
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 611
+          },
+          "header": {
+            "x": 4,
+            "y": 4,
+            "width": 422,
+            "height": 58
+          },
+          "eraTabs": {
+            "x": 4,
+            "y": 62,
+            "width": 422,
+            "height": 47
+          },
+          "title": null,
+          "panel": null,
+          "body": null,
+          "tabs": null,
+          "footer": null,
+          "primaryAction": null,
+          "navigation": {
+            "x": 4,
+            "y": 539,
+            "width": 422,
+            "height": 68
+          },
+          "world": {
+            "x": 6,
+            "y": 109,
+            "width": 418,
+            "height": 382
+          }
+        },
+        "rows": [],
+        "controls": [
+          {
+            "name": "Skip to content",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 12,
+              "y": -76,
+              "width": 141.796875,
+              "height": 44
+            }
+          },
+          {
+            "name": "MCR Concert World",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 10,
+              "y": 11,
+              "width": 318,
+              "height": 44
+            }
+          },
+          {
+            "name": "Inbox",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 332,
+              "y": 11,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Settings",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 376,
+              "y": 11,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Revenge",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 7,
+              "y": 62,
+              "width": 138.65625,
+              "height": 44
+            }
+          },
+          {
+            "name": "Parade",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 145.65625,
+              "y": 62,
+              "width": 138.671875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Danger",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 284.328125,
+              "y": 62,
+              "width": 138.671875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 14,
+              "y": 374.21875,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "name": "Interact",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 283.578125,
+              "y": 394.21875,
+              "width": 82.421875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 372,
+              "y": 394.21875,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Controls & help",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 372,
+              "y": 117,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Map",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 6,
+              "y": 493,
+              "width": 104.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Rooms",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 110.5,
+              "y": 493,
+              "width": 104.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Nearby",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 215,
+              "y": 493,
+              "width": 104.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "Help",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 319.5,
+              "y": 493,
+              "width": 104.5,
+              "height": 44
+            }
+          },
+          {
+            "name": "World",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 9,
+              "y": 544,
+              "width": 68.65625,
+              "height": 58
+            }
+          },
+          {
+            "name": "Feed",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 77.65625,
+              "y": 544,
+              "width": 68.671875,
+              "height": 58
+            }
+          },
+          {
+            "name": "Meet",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 146.328125,
+              "y": 544,
+              "width": 68.65625,
+              "height": 58
+            }
+          },
+          {
+            "name": "Gifts",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 214.984375,
+              "y": 544,
+              "width": 68.671875,
+              "height": 58
+            }
+          },
+          {
+            "name": "Wall",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 283.65625,
+              "y": 544,
+              "width": 68.671875,
+              "height": 58
+            }
+          },
+          {
+            "name": "Me",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 352.328125,
+              "y": 544,
+              "width": 68.65625,
+              "height": 58
+            }
+          }
+        ],
+        "smallControls": [],
+        "images": [
+          {
+            "tag": "CANVAS",
+            "source": "CANVAS",
+            "rect": {
+              "x": 6,
+              "y": 109,
+              "width": 418,
+              "height": 337
+            },
+            "complete": null,
+            "naturalWidth": null
+          }
+        ],
+        "cssArtwork": [],
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "headings": [],
+        "actions": [
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 372,
+              "y": 394.21875,
+              "width": 44,
+              "height": 44
+            }
+          }
+        ]
+      },
+      "counters": {
+        "singletons": {
+          "mounts": 1,
+          "games": 1,
+          "peak": 1,
+          "sockets": 1,
+          "socketPeak": 1,
+          "activeSockets": 1,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+          "outfit": {
+            "revision": 1,
+            "config": {
+              "contract_version": "1.0.0",
+              "kind": "avatar_config",
+              "manifest_id": "avatar_fixture",
+              "manifest_version": 1,
+              "item_ids": {
+                "body": "body_fixture",
+                "eyes": "eyes_fixture",
+                "hair": "hair_fixture",
+                "outfit": "outfit_fixture",
+                "accessory": "accessory_fixture"
+              },
+              "skin_tone_id": "tone_fixture"
+            }
+          }
+        },
+        "loaderCalls": 5,
+        "fixtureHttpCalls": 6,
+        "loaderByPath": {
+          "world/illustrated-runtime/revenge-details.png": 1,
+          "world/illustrated/revenge-ground.png": 1,
+          "world/illustrated/revenge-landmarks-atlas.png": 1,
+          "world/maps/courtyard-tiled.json": 1,
+          "world/themes/revenge.png": 1
+        },
+        "fixtureHttpByPath": {
+          "GET /api/auth/capabilities": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/places": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/rooms": 1,
+          "POST /api/auth/login": 1,
+          "POST /api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets": 1
+        },
+        "avatarPuts": 0,
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "network": {
+          "requests": 293,
+          "transferredBytes": 38645405,
+          "cacheHits": 0,
+          "imageRequests": 0,
+          "byPath": {
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-config.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/map-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/theme-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/core/v1/core.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/domain/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/avatar-config.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/map-manifest.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/theme-revenge.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-capabilities-disabled.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-success.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/bootstrap-open.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/giveaway-management.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-intro.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-post.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/movement-heartbeat.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/rooms.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-core.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-domain.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/operations.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
+            "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
+            "/@react-refresh": 1,
+            "/@vite/client": 1,
+            "/e2e/reference-integrated/data.ts": 1,
+            "/e2e/reference-integrated/preview.html": 1,
+            "/e2e/reference-integrated/preview.tsx": 1,
+            "/src/app/CommunityFeatures.tsx": 1,
+            "/src/app/WorldHost.tsx": 1,
+            "/src/app/WorldShell.tsx": 1,
+            "/src/app/__tests__/default-shell/qualified-data.ts": 1,
+            "/src/app/__tests__/fixtures/ports.ts": 1,
+            "/src/app/access.tsx": 1,
+            "/src/app/account-deletion-entry/context.tsx": 1,
+            "/src/app/account-deletion-entry/owner.ts": 1,
+            "/src/app/account-entry/assets.ts": 1,
+            "/src/app/account-entry/owner.ts": 1,
+            "/src/app/account-entry/provider.tsx": 1,
+            "/src/app/capabilities.ts": 1,
+            "/src/app/meeting-entry/bridge.ts": 1,
+            "/src/app/meeting-entry/index.ts": 1,
+            "/src/app/meeting-entry/routes.tsx": 1,
+            "/src/app/mural-entry/index.ts": 1,
+            "/src/app/mural-entry/owner.ts": 1,
+            "/src/app/mural-entry/provider.tsx": 1,
+            "/src/app/navigation.tsx": 1,
+            "/src/app/places-entry/index.ts": 1,
+            "/src/app/places-entry/owner.ts": 1,
+            "/src/app/places-entry/provider.tsx": 1,
+            "/src/app/ports.ts": 1,
+            "/src/app/router.tsx": 1,
+            "/src/app/routes.ts": 1,
+            "/src/app/shell-chrome/identity.tsx": 1,
+            "/src/app/shell-chrome/index.tsx": 1,
+            "/src/app/shell-chrome/parade-footer.tsx": 1,
+            "/src/app/shell-chrome/shell-chrome.css": 1,
+            "/src/app/shell.css": 1,
+            "/src/app/social-composition/__tests__/fixtures.ts": 1,
+            "/src/app/social-composition/composition.css": 1,
+            "/src/app/social-composition/index.ts": 1,
+            "/src/app/social-composition/navigation.tsx": 1,
+            "/src/app/social-composition/owner.ts": 1,
+            "/src/app/social-composition/panels.tsx": 1,
+            "/src/app/social-composition/ports.ts": 1,
+            "/src/app/social-composition/provider.tsx": 1,
+            "/src/app/social-composition/routes.ts": 1,
+            "/src/app/social-composition/sharing.tsx": 1,
+            "/src/app/world-entry/__tests__/data.ts": 1,
+            "/src/app/world-entry/authority.ts": 1,
+            "/src/app/world-entry/bridge.ts": 1,
+            "/src/app/world-entry/configuration.ts": 1,
+            "/src/app/world-entry/production.ts": 1,
+            "/src/app/world-entry/resolver.ts": 1,
+            "/src/app/world-entry/root-features.tsx": 1,
+            "/src/app/world-panels/index.tsx": 1,
+            "/src/app/world-panels/ownership.tsx": 1,
+            "/src/app/world-panels/presentation.css": 1,
+            "/src/app/world-panels/social.css": 1,
+            "/src/app/world-panels/social.tsx": 1,
+            "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
+            "/src/entities/avatar/runtime/compositor.ts": 1,
+            "/src/entities/avatar/runtime/contract.ts": 1,
+            "/src/entities/avatar/runtime/index.ts": 1,
+            "/src/entities/avatar/runtime/resources.ts": 1,
+            "/src/entities/avatar/runtime/schema.ts": 1,
+            "/src/entities/avatar/source-catalog.ts": 1,
+            "/src/features/account/contract.ts": 1,
+            "/src/features/account/controller.ts": 1,
+            "/src/features/age-status/AgeStatus.tsx": 1,
+            "/src/features/age-status/controller.ts": 1,
+            "/src/features/age-status/index.ts": 1,
+            "/src/features/auth/__tests__/fixtures/data.ts": 1,
+            "/src/features/auth/model/account-deletion.ts": 1,
+            "/src/features/auth/model/bootstrap.ts": 1,
+            "/src/features/auth/model/contract.ts": 1,
+            "/src/features/auth/model/cookie-policy.ts": 1,
+            "/src/features/auth/model/enrollment-contract.ts": 1,
+            "/src/features/auth/model/enrollment.ts": 1,
+            "/src/features/auth/model/recovery-contract.ts": 1,
+            "/src/features/auth/model/recovery.ts": 1,
+            "/src/features/auth/model/session.ts": 1,
+            "/src/features/avatar/AvatarEditor.tsx": 1,
+            "/src/features/avatar/OptionStrip.tsx": 1,
+            "/src/features/avatar/avatar-editor.css": 1,
+            "/src/features/avatar/contract.ts": 1,
+            "/src/features/avatar/controller.ts": 1,
+            "/src/features/avatar/index.ts": 1,
+            "/src/features/avatar/preview.ts": 1,
+            "/src/features/avatar/reference-presentation/CategoryRail.tsx": 1,
+            "/src/features/avatar/reference-presentation/TonePalette.tsx": 1,
+            "/src/features/avatar/reference-presentation/actions.ts": 1,
+            "/src/features/event-feed/EventFeed.tsx": 1,
+            "/src/features/event-feed/FeedGlyph.tsx": 1,
+            "/src/features/event-feed/FeedImage.tsx": 1,
+            "/src/features/event-feed/__tests__/fixtures.ts": 1,
+            "/src/features/event-feed/contract.ts": 1,
+            "/src/features/event-feed/controller.ts": 1,
+            "/src/features/event-feed/feed.css": 1,
+            "/src/features/event-feed/index.ts": 1,
+            "/src/features/event-feed/presentation.ts": 1,
+            "/src/features/event-feed/runtime.ts": 1,
+            "/src/features/feed-thread/FeedThread.tsx": 1,
+            "/src/features/feed-thread/controller.ts": 1,
+            "/src/features/feed-thread/index.ts": 1,
+            "/src/features/gift-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/gift-discovery/index.ts": 1,
+            "/src/features/gift-discovery/model/contract.ts": 1,
+            "/src/features/gift-discovery/model/controller.ts": 1,
+            "/src/features/gift-discovery/ui/Gifts.tsx": 1,
+            "/src/features/gift-discovery/ui/gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-presentation.tsx": 1,
+            "/src/features/inbox/index.ts": 1,
+            "/src/features/inbox/model/contract.ts": 1,
+            "/src/features/inbox/model/controller.ts": 1,
+            "/src/features/inbox/model/targets.ts": 1,
+            "/src/features/inbox/ui/Inbox.tsx": 1,
+            "/src/features/inbox/ui/inbox.css": 1,
+            "/src/features/intro/IntroEditor.tsx": 1,
+            "/src/features/intro/command.ts": 1,
+            "/src/features/intro/contract.ts": 1,
+            "/src/features/intro/controller.ts": 1,
+            "/src/features/intro/index.ts": 1,
+            "/src/features/me/__tests__/fixtures.ts": 1,
+            "/src/features/me/index.ts": 1,
+            "/src/features/me/model/contract.ts": 1,
+            "/src/features/me/model/controller.ts": 1,
+            "/src/features/me/ui/AvatarThumbnail.tsx": 1,
+            "/src/features/me/ui/MePages.tsx": 1,
+            "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
+            "/src/features/meet-beacon/index.ts": 1,
+            "/src/features/meet-beacon/model/contract.ts": 1,
+            "/src/features/meet-beacon/model/controller.ts": 1,
+            "/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": 1,
+            "/src/features/meet-beacon/ui/MeetingBeacon.tsx": 1,
+            "/src/features/meet-beacon/ui/meeting-beacon.css": 1,
+            "/src/features/mural/editor/MuralEditor.tsx": 1,
+            "/src/features/mural/editor/contract.ts": 1,
+            "/src/features/mural/editor/controller.ts": 1,
+            "/src/features/mural/editor/editor.css": 1,
+            "/src/features/mural/editor/input.ts": 1,
+            "/src/features/mural/sync/MuralSyncPanel.tsx": 1,
+            "/src/features/mural/sync/contract.ts": 1,
+            "/src/features/mural/sync/controller.ts": 1,
+            "/src/features/mural/sync/http.ts": 1,
+            "/src/features/mural/sync/index.ts": 1,
+            "/src/features/mural/sync/projection.ts": 1,
+            "/src/features/my-gifts/MyGifts.tsx": 1,
+            "/src/features/my-gifts/index.ts": 1,
+            "/src/features/party-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/party-discovery/index.ts": 1,
+            "/src/features/party-discovery/model/contract.ts": 1,
+            "/src/features/party-discovery/model/controller.ts": 1,
+            "/src/features/party-discovery/ui/PartyDiscovery.tsx": 1,
+            "/src/features/party-discovery/ui/party-discovery.css": 1,
+            "/src/features/people/People.tsx": 1,
+            "/src/features/people/contract.ts": 1,
+            "/src/features/people/controller.ts": 1,
+            "/src/features/people/index.ts": 1,
+            "/src/features/people/people.css": 1,
+            "/src/features/people/runtime.ts": 1,
+            "/src/features/places/index.ts": 1,
+            "/src/features/places/model/contract.ts": 1,
+            "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
+            "/src/features/places/ui/Places.tsx": 1,
+            "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
+            "/src/features/profile/Avatar.tsx": 1,
+            "/src/features/profile/PublicProfile.tsx": 1,
+            "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
+            "/src/features/safety/contract.ts": 1,
+            "/src/features/social-sharing/index.ts": 1,
+            "/src/features/social-sharing/model/contract.ts": 1,
+            "/src/features/social-sharing/model/controller.ts": 1,
+            "/src/features/social-sharing/model/runtime.ts": 1,
+            "/src/features/social-sharing/ui/SocialSharing.tsx": 1,
+            "/src/features/social-sharing/ui/sharing.css": 1,
+            "/src/features/theme/model/controller.ts": 1,
+            "/src/features/theme/model/preferences.ts": 1,
+            "/src/features/world-nearby/WorldNearby.tsx": 1,
+            "/src/features/world-nearby/index.ts": 1,
+            "/src/features/world-nearby/projection.ts": 1,
+            "/src/features/world-rooms/index.ts": 1,
+            "/src/features/world-rooms/model/contract.ts": 1,
+            "/src/features/world-rooms/model/controller.ts": 1,
+            "/src/features/world-rooms/ui/WorldRooms.tsx": 1,
+            "/src/features/world-rooms/ui/world-access.css": 1,
+            "/src/shared/api/domain-operations.generated.ts": 1,
+            "/src/shared/api/domain.ts": 1,
+            "/src/shared/api/errors.ts": 1,
+            "/src/shared/api/http.ts": 1,
+            "/src/shared/query/keys.ts": 1,
+            "/src/shared/query/privacy.ts": 1,
+            "/src/shared/styles/base.css": 1,
+            "/src/shared/ui/Dialog.tsx": 1,
+            "/src/shared/ui/Tabs.tsx": 1,
+            "/src/shared/ui/concert-window/concert-window.css": 1,
+            "/src/shared/ui/concert-window/index.tsx": 1,
+            "/src/shared/ui/controls.tsx": 1,
+            "/src/shared/ui/feedback.tsx": 1,
+            "/src/shared/ui/index.ts": 1,
+            "/src/shared/ui/modal-focus.ts": 1,
+            "/src/shared/validation/text.ts": 1,
+            "/src/world/__tests__/fixtures/movement-data.ts": 1,
+            "/src/world/__tests__/fixtures/png.ts": 1,
+            "/src/world/__tests__/fixtures/synthetic.ts": 1,
+            "/src/world/__tests__/illustrated/fixtures.ts": 1,
+            "/src/world/camera/port.ts": 1,
+            "/src/world/composition/__tests__/fixtures/data.ts": 1,
+            "/src/world/composition/index.ts": 1,
+            "/src/world/composition/release.ts": 1,
+            "/src/world/composition/ticket.ts": 1,
+            "/src/world/entities/replicated.ts": 1,
+            "/src/world/illustrated/model.ts": 1,
+            "/src/world/illustrated/overview.ts": 1,
+            "/src/world/illustrated/phaser.ts": 1,
+            "/src/world/input/controller.ts": 1,
+            "/src/world/input/controls.css": 1,
+            "/src/world/input/model.ts": 1,
+            "/src/world/input/simulation.ts": 1,
+            "/src/world/interaction/selection.ts": 1,
+            "/src/world/map/formats.ts": 1,
+            "/src/world/map/json.ts": 1,
+            "/src/world/map/manifest.ts": 1,
+            "/src/world/map/resource-cache.ts": 1,
+            "/src/world/map/resources.ts": 1,
+            "/src/world/map/schema.ts": 1,
+            "/src/world/map/tiled.ts": 1,
+            "/src/world/mural/authority.ts": 1,
+            "/src/world/mural/index.ts": 1,
+            "/src/world/mural/phaser.ts": 1,
+            "/src/world/mural/sink.ts": 1,
+            "/src/world/network/WorldTransport.ts": 1,
+            "/src/world/network/mock.ts": 1,
+            "/src/world/network/replication.ts": 1,
+            "/src/world/network/transport/contract.ts": 1,
+            "/src/world/network/transport/engine.ts": 1,
+            "/src/world/network/websocket.ts": 1,
+            "/src/world/runtime.ts": 1,
+            "/src/world/scenes/MapScene.ts": 1,
+            "/src/world/theme/__tests__/fixtures/png.ts": 1,
+            "/src/world/theme/__tests__/fixtures/releases.ts": 1,
+            "/src/world/theme/compatibility.ts": 1,
+            "/src/world/theme/loader.ts": 1,
+            "/world/illustrated-runtime/bindings.json": 1,
+            "/world/illustrated-runtime/revenge-details.png": 1,
+            "/world/illustrated/revenge-ground.png": 1,
+            "/world/illustrated/revenge-landmarks-atlas.png": 1,
+            "/world/maps/binding-inputs.json": 1,
+            "/world/maps/courtyard-tiled.json": 1,
+            "/world/maps/geometry.json": 1,
+            "/world/maps/virtual-places.json": 1,
+            "/world/themes/binding-inputs.json": 1,
+            "/world/themes/revenge.png": 1
+          }
+        },
+        "recordCount": 293
+      },
+      "action": {
+        "status": "PASS",
+        "kind": "map-open-back",
+        "focus": true
+      },
+      "errors": []
+    },
+    {
+      "id": "me",
+      "route": "/me",
+      "width": 430,
+      "viewport": {
+        "width": 430,
+        "height": 656
+      },
+      "fixture": true,
+      "status": "CAPTURED",
+      "screenshot": "me-430.png",
+      "measurements": {
+        "viewport": {
+          "width": 430,
+          "height": 656
+        },
+        "scroll": {
+          "width": 430,
+          "height": 656
+        },
+        "overflow": false,
+        "bounds": {
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 656
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 656
+          },
+          "header": null,
+          "eraTabs": null,
+          "title": {
+            "x": 9,
+            "y": 7,
+            "width": 412,
+            "height": 46
+          },
+          "panel": {
+            "x": 6,
+            "y": 4,
+            "width": 418,
+            "height": 648
+          },
+          "body": {
+            "x": 9,
+            "y": 53,
+            "width": 412,
+            "height": 522.90625
+          },
+          "tabs": null,
+          "footer": {
+            "x": 9,
+            "y": 575.90625,
+            "width": 412,
+            "height": 73.09375
+          },
+          "primaryAction": null,
+          "navigation": null,
+          "world": {
+            "x": 6,
+            "y": 4,
+            "width": 418,
+            "height": 648
+          }
+        },
+        "rows": [],
+        "controls": [
+          {
+            "name": "Skip to content",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 12,
+              "y": -76,
+              "width": 141.796875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Movement joystick. Arrow keys or W A S D when focused",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 14,
+              "y": 535.21875,
+              "width": 64,
+              "height": 64
+            }
+          },
+          {
+            "name": "Interact",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 283.578125,
+              "y": 555.21875,
+              "width": 82.421875,
+              "height": 44
+            }
+          },
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 372,
+              "y": 555.21875,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Controls & help",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 372,
+              "y": 12,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Reduce panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 284,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Minimize panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 328,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Back to previous panel",
+            "tag": "BUTTON",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 372,
+              "y": 10,
+              "width": 44,
+              "height": 44
+            }
+          },
+          {
+            "name": "Edit profile",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 101,
+              "y": 217.890625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Dress up",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 161,
+              "y": 217.890625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Manage private social links",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 221,
+              "y": 217.890625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Sharing requests",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 281,
+              "y": 217.890625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Parties and MY PLAN",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 150.328125,
+              "y": 272.890625,
+              "width": 129.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "My gifts",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 282.65625,
+              "y": 272.890625,
+              "width": 129.328125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Profile options",
+            "tag": "SUMMARY",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 23,
+              "y": 472.890625,
+              "width": 384,
+              "height": 44
+            }
+          },
+          {
+            "name": "Back to world",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 23,
+              "y": 520.890625,
+              "width": 64.53125,
+              "height": 44
+            }
+          },
+          {
+            "name": "Dress up→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 15,
+              "y": 573.890625,
+              "width": 400,
+              "height": 44
+            }
+          },
+          {
+            "name": "Edit profile→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 617.890625,
+              "width": 400,
+              "height": 44
+            }
+          },
+          {
+            "name": "Social links→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 661.890625,
+              "width": 400,
+              "height": 44
+            }
+          },
+          {
+            "name": "Requests→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 705.890625,
+              "width": 400,
+              "height": 44
+            }
+          },
+          {
+            "name": "Age & privacy→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 749.890625,
+              "width": 400,
+              "height": 44
+            }
+          },
+          {
+            "name": "Settings→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 793.890625,
+              "width": 400,
+              "height": 44
+            }
+          },
+          {
+            "name": "Blocked users→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 837.890625,
+              "width": 400,
+              "height": 44
+            }
+          },
+          {
+            "name": "Account→",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": false,
+            "rect": {
+              "x": 15,
+              "y": 881.890625,
+              "width": 400,
+              "height": 44
+            }
+          }
+        ],
+        "smallControls": [],
+        "images": [
+          {
+            "tag": "CANVAS",
+            "source": "CANVAS",
+            "rect": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 603
+            },
+            "complete": null,
+            "naturalWidth": null
+          }
+        ],
+        "cssArtwork": [],
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "headings": [
+          "Me",
+          "Synthetic listener"
+        ],
+        "actions": [
+          {
+            "name": "Recenter",
+            "tag": "BUTTON",
+            "disabled": true,
+            "withinViewport": true,
+            "rect": {
+              "x": 372,
+              "y": 555.21875,
+              "width": 44,
+              "height": 44
+            }
+          }
+        ]
+      },
+      "counters": {
+        "singletons": {
+          "mounts": 1,
+          "games": 1,
+          "peak": 1,
+          "sockets": 0,
+          "socketPeak": 0,
+          "activeSockets": 0,
+          "sameCamera": true,
+          "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+        },
+        "loaderCalls": 5,
+        "fixtureHttpCalls": 6,
+        "loaderByPath": {
+          "world/illustrated-runtime/revenge-details.png": 1,
+          "world/illustrated/revenge-ground.png": 1,
+          "world/illustrated/revenge-landmarks-atlas.png": 1,
+          "world/maps/courtyard-tiled.json": 1,
+          "world/themes/revenge.png": 1
+        },
+        "fixtureHttpByPath": {
+          "GET /api/auth/capabilities": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/me": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/places": 1,
+          "GET /api/concert/events/00000000-0000-4000-8000-000000000201/rooms": 1,
+          "POST /api/auth/login": 1
+        },
+        "avatarPuts": 0,
+        "decode": {
+          "calls": 4,
+          "resolved": 4,
+          "rejected": 0
+        },
+        "network": {
+          "requests": 299,
+          "transferredBytes": 38688581,
+          "cacheHits": 0,
+          "imageRequests": 0,
+          "byPath": {
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-config.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/avatar-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/map-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/assets/v1/theme-manifest.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/core/v1/core.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/domain/v1/common.schema.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/avatar-config.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/map-manifest.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/assets/theme-revenge.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-capabilities-disabled.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/auth-success.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/core/bootstrap-open.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/giveaway-management.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-intro.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/domain/public-post.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/movement-heartbeat.json": 1,
+            "/@fs$CHECKOUT/contracts/fixtures/realtime/rooms.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-core.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/generated/mcr-domain.openapi.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/operations.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
+            "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
+            "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
+            "/@react-refresh": 1,
+            "/@vite/client": 1,
+            "/e2e/reference-integrated/data.ts": 1,
+            "/e2e/reference-integrated/preview.html": 1,
+            "/e2e/reference-integrated/preview.tsx": 1,
+            "/src/app/CommunityFeatures.tsx": 1,
+            "/src/app/WorldHost.tsx": 1,
+            "/src/app/WorldShell.tsx": 1,
+            "/src/app/__tests__/default-shell/qualified-data.ts": 1,
+            "/src/app/__tests__/fixtures/ports.ts": 1,
+            "/src/app/access.tsx": 1,
+            "/src/app/account-deletion-entry/context.tsx": 1,
+            "/src/app/account-deletion-entry/link.tsx": 1,
+            "/src/app/account-deletion-entry/owner.ts": 1,
+            "/src/app/account-entry/assets.ts": 1,
+            "/src/app/account-entry/owner.ts": 1,
+            "/src/app/account-entry/panels.tsx": 1,
+            "/src/app/account-entry/provider.tsx": 1,
+            "/src/app/capabilities.ts": 1,
+            "/src/app/meeting-entry/bridge.ts": 1,
+            "/src/app/meeting-entry/index.ts": 1,
+            "/src/app/meeting-entry/routes.tsx": 1,
+            "/src/app/mural-entry/index.ts": 1,
+            "/src/app/mural-entry/owner.ts": 1,
+            "/src/app/mural-entry/provider.tsx": 1,
+            "/src/app/navigation.tsx": 1,
+            "/src/app/places-entry/index.ts": 1,
+            "/src/app/places-entry/owner.ts": 1,
+            "/src/app/places-entry/provider.tsx": 1,
+            "/src/app/ports.ts": 1,
+            "/src/app/router.tsx": 1,
+            "/src/app/routes.ts": 1,
+            "/src/app/shell-chrome/identity.tsx": 1,
+            "/src/app/shell-chrome/index.tsx": 1,
+            "/src/app/shell-chrome/parade-footer.tsx": 1,
+            "/src/app/shell-chrome/shell-chrome.css": 1,
+            "/src/app/shell.css": 1,
+            "/src/app/social-composition/__tests__/fixtures.ts": 1,
+            "/src/app/social-composition/composition.css": 1,
+            "/src/app/social-composition/index.ts": 1,
+            "/src/app/social-composition/navigation.tsx": 1,
+            "/src/app/social-composition/owner.ts": 1,
+            "/src/app/social-composition/panels.tsx": 1,
+            "/src/app/social-composition/ports.ts": 1,
+            "/src/app/social-composition/provider.tsx": 1,
+            "/src/app/social-composition/routes.ts": 1,
+            "/src/app/social-composition/sharing.tsx": 1,
+            "/src/app/world-entry/__tests__/data.ts": 1,
+            "/src/app/world-entry/authority.ts": 1,
+            "/src/app/world-entry/bridge.ts": 1,
+            "/src/app/world-entry/configuration.ts": 1,
+            "/src/app/world-entry/production.ts": 1,
+            "/src/app/world-entry/resolver.ts": 1,
+            "/src/app/world-entry/root-features.tsx": 1,
+            "/src/app/world-panels/index.tsx": 1,
+            "/src/app/world-panels/ownership.tsx": 1,
+            "/src/app/world-panels/presentation.css": 1,
+            "/src/app/world-panels/social.css": 1,
+            "/src/app/world-panels/social.tsx": 1,
+            "/src/entities/avatar/character-source-pack.json": 1,
+            "/src/entities/avatar/runtime/atlas-lease.ts": 1,
+            "/src/entities/avatar/runtime/compositor.ts": 1,
+            "/src/entities/avatar/runtime/contract.ts": 1,
+            "/src/entities/avatar/runtime/index.ts": 1,
+            "/src/entities/avatar/runtime/resources.ts": 1,
+            "/src/entities/avatar/runtime/schema.ts": 1,
+            "/src/entities/avatar/source-catalog.ts": 1,
+            "/src/features/account/contract.ts": 1,
+            "/src/features/account/controller.ts": 1,
+            "/src/features/age-status/AgeStatus.tsx": 1,
+            "/src/features/age-status/controller.ts": 1,
+            "/src/features/age-status/index.ts": 1,
+            "/src/features/auth/__tests__/fixtures/data.ts": 1,
+            "/src/features/auth/model/account-deletion.ts": 1,
+            "/src/features/auth/model/bootstrap.ts": 1,
+            "/src/features/auth/model/contract.ts": 1,
+            "/src/features/auth/model/cookie-policy.ts": 1,
+            "/src/features/auth/model/enrollment-contract.ts": 1,
+            "/src/features/auth/model/enrollment.ts": 1,
+            "/src/features/auth/model/recovery-contract.ts": 1,
+            "/src/features/auth/model/recovery.ts": 1,
+            "/src/features/auth/model/session.ts": 1,
+            "/src/features/avatar/AvatarEditor.tsx": 1,
+            "/src/features/avatar/OptionStrip.tsx": 1,
+            "/src/features/avatar/avatar-editor.css": 1,
+            "/src/features/avatar/contract.ts": 1,
+            "/src/features/avatar/controller.ts": 1,
+            "/src/features/avatar/index.ts": 1,
+            "/src/features/avatar/preview.ts": 1,
+            "/src/features/avatar/reference-presentation/CategoryRail.tsx": 1,
+            "/src/features/avatar/reference-presentation/TonePalette.tsx": 1,
+            "/src/features/avatar/reference-presentation/actions.ts": 1,
+            "/src/features/event-feed/EventFeed.tsx": 1,
+            "/src/features/event-feed/FeedGlyph.tsx": 1,
+            "/src/features/event-feed/FeedImage.tsx": 1,
+            "/src/features/event-feed/__tests__/fixtures.ts": 1,
+            "/src/features/event-feed/contract.ts": 1,
+            "/src/features/event-feed/controller.ts": 1,
+            "/src/features/event-feed/feed.css": 1,
+            "/src/features/event-feed/index.ts": 1,
+            "/src/features/event-feed/presentation.ts": 1,
+            "/src/features/event-feed/runtime.ts": 1,
+            "/src/features/feed-thread/FeedThread.tsx": 1,
+            "/src/features/feed-thread/controller.ts": 1,
+            "/src/features/feed-thread/index.ts": 1,
+            "/src/features/gift-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/gift-discovery/index.ts": 1,
+            "/src/features/gift-discovery/model/contract.ts": 1,
+            "/src/features/gift-discovery/model/controller.ts": 1,
+            "/src/features/gift-discovery/ui/Gifts.tsx": 1,
+            "/src/features/gift-discovery/ui/gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-gifts.css": 1,
+            "/src/features/gift-discovery/ui/reference-presentation.tsx": 1,
+            "/src/features/inbox/index.ts": 1,
+            "/src/features/inbox/model/contract.ts": 1,
+            "/src/features/inbox/model/controller.ts": 1,
+            "/src/features/inbox/model/targets.ts": 1,
+            "/src/features/inbox/ui/Inbox.tsx": 1,
+            "/src/features/inbox/ui/inbox.css": 1,
+            "/src/features/intro/IntroEditor.tsx": 1,
+            "/src/features/intro/command.ts": 1,
+            "/src/features/intro/contract.ts": 1,
+            "/src/features/intro/controller.ts": 1,
+            "/src/features/intro/index.ts": 1,
+            "/src/features/me/__tests__/fixtures.ts": 1,
+            "/src/features/me/index.ts": 1,
+            "/src/features/me/model/contract.ts": 1,
+            "/src/features/me/model/controller.ts": 1,
+            "/src/features/me/ui/AvatarThumbnail.tsx": 1,
+            "/src/features/me/ui/MePages.tsx": 1,
+            "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
+            "/src/features/meet-beacon/index.ts": 1,
+            "/src/features/meet-beacon/model/contract.ts": 1,
+            "/src/features/meet-beacon/model/controller.ts": 1,
+            "/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": 1,
+            "/src/features/meet-beacon/ui/MeetingBeacon.tsx": 1,
+            "/src/features/meet-beacon/ui/meeting-beacon.css": 1,
+            "/src/features/mural/editor/MuralEditor.tsx": 1,
+            "/src/features/mural/editor/contract.ts": 1,
+            "/src/features/mural/editor/controller.ts": 1,
+            "/src/features/mural/editor/editor.css": 1,
+            "/src/features/mural/editor/input.ts": 1,
+            "/src/features/mural/sync/MuralSyncPanel.tsx": 1,
+            "/src/features/mural/sync/contract.ts": 1,
+            "/src/features/mural/sync/controller.ts": 1,
+            "/src/features/mural/sync/http.ts": 1,
+            "/src/features/mural/sync/index.ts": 1,
+            "/src/features/mural/sync/projection.ts": 1,
+            "/src/features/my-gifts/MyGifts.tsx": 1,
+            "/src/features/my-gifts/index.ts": 1,
+            "/src/features/party-discovery/__tests__/fixtures/data.ts": 1,
+            "/src/features/party-discovery/index.ts": 1,
+            "/src/features/party-discovery/model/contract.ts": 1,
+            "/src/features/party-discovery/model/controller.ts": 1,
+            "/src/features/party-discovery/ui/PartyDiscovery.tsx": 1,
+            "/src/features/party-discovery/ui/party-discovery.css": 1,
+            "/src/features/people/People.tsx": 1,
+            "/src/features/people/contract.ts": 1,
+            "/src/features/people/controller.ts": 1,
+            "/src/features/people/index.ts": 1,
+            "/src/features/people/people.css": 1,
+            "/src/features/people/runtime.ts": 1,
+            "/src/features/places/index.ts": 1,
+            "/src/features/places/model/contract.ts": 1,
+            "/src/features/places/model/controller.ts": 1,
+            "/src/features/places/ui/IllustratedMap.tsx": 1,
+            "/src/features/places/ui/Places.tsx": 1,
+            "/src/features/places/ui/places.css": 1,
+            "/src/features/places/ui/plaque-layout.ts": 1,
+            "/src/features/profile/Avatar.tsx": 1,
+            "/src/features/profile/PublicProfile.tsx": 1,
+            "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
+            "/src/features/safety/contract.ts": 1,
+            "/src/features/settings/SettingsPage.tsx": 1,
+            "/src/features/settings/index.ts": 1,
+            "/src/features/social-sharing/index.ts": 1,
+            "/src/features/social-sharing/model/contract.ts": 1,
+            "/src/features/social-sharing/model/controller.ts": 1,
+            "/src/features/social-sharing/model/runtime.ts": 1,
+            "/src/features/social-sharing/ui/SocialSharing.tsx": 1,
+            "/src/features/social-sharing/ui/sharing.css": 1,
+            "/src/features/theme/model/controller.ts": 1,
+            "/src/features/theme/model/preferences.ts": 1,
+            "/src/features/theme/ui/ThemeSelector.tsx": 1,
+            "/src/features/theme/ui/theme-selector.css": 1,
+            "/src/features/world-nearby/WorldNearby.tsx": 1,
+            "/src/features/world-nearby/index.ts": 1,
+            "/src/features/world-nearby/projection.ts": 1,
+            "/src/features/world-rooms/index.ts": 1,
+            "/src/features/world-rooms/model/contract.ts": 1,
+            "/src/features/world-rooms/model/controller.ts": 1,
+            "/src/features/world-rooms/ui/WorldRooms.tsx": 1,
+            "/src/features/world-rooms/ui/world-access.css": 1,
+            "/src/shared/api/domain-operations.generated.ts": 1,
+            "/src/shared/api/domain.ts": 1,
+            "/src/shared/api/errors.ts": 1,
+            "/src/shared/api/http.ts": 1,
+            "/src/shared/query/keys.ts": 1,
+            "/src/shared/query/privacy.ts": 1,
+            "/src/shared/styles/base.css": 1,
+            "/src/shared/ui/Dialog.tsx": 1,
+            "/src/shared/ui/Tabs.tsx": 1,
+            "/src/shared/ui/concert-window/concert-window.css": 1,
+            "/src/shared/ui/concert-window/index.tsx": 1,
+            "/src/shared/ui/controls.tsx": 1,
+            "/src/shared/ui/feedback.tsx": 1,
+            "/src/shared/ui/index.ts": 1,
+            "/src/shared/ui/modal-focus.ts": 1,
+            "/src/shared/validation/text.ts": 1,
+            "/src/world/__tests__/fixtures/movement-data.ts": 1,
+            "/src/world/__tests__/fixtures/png.ts": 1,
+            "/src/world/__tests__/fixtures/synthetic.ts": 1,
+            "/src/world/__tests__/illustrated/fixtures.ts": 1,
+            "/src/world/camera/port.ts": 1,
+            "/src/world/composition/__tests__/fixtures/data.ts": 1,
+            "/src/world/composition/index.ts": 1,
+            "/src/world/composition/release.ts": 1,
+            "/src/world/composition/ticket.ts": 1,
+            "/src/world/entities/replicated.ts": 1,
+            "/src/world/illustrated/model.ts": 1,
+            "/src/world/illustrated/overview.ts": 1,
+            "/src/world/illustrated/phaser.ts": 1,
+            "/src/world/input/controller.ts": 1,
+            "/src/world/input/controls.css": 1,
+            "/src/world/input/model.ts": 1,
+            "/src/world/input/simulation.ts": 1,
+            "/src/world/interaction/selection.ts": 1,
+            "/src/world/map/formats.ts": 1,
+            "/src/world/map/json.ts": 1,
+            "/src/world/map/manifest.ts": 1,
+            "/src/world/map/resource-cache.ts": 1,
+            "/src/world/map/resources.ts": 1,
+            "/src/world/map/schema.ts": 1,
+            "/src/world/map/tiled.ts": 1,
+            "/src/world/mural/authority.ts": 1,
+            "/src/world/mural/index.ts": 1,
+            "/src/world/mural/phaser.ts": 1,
+            "/src/world/mural/sink.ts": 1,
+            "/src/world/network/WorldTransport.ts": 1,
+            "/src/world/network/mock.ts": 1,
+            "/src/world/network/replication.ts": 1,
+            "/src/world/network/transport/contract.ts": 1,
+            "/src/world/network/transport/engine.ts": 1,
+            "/src/world/network/websocket.ts": 1,
+            "/src/world/runtime.ts": 1,
+            "/src/world/scenes/MapScene.ts": 1,
+            "/src/world/theme/__tests__/fixtures/png.ts": 1,
+            "/src/world/theme/__tests__/fixtures/releases.ts": 1,
+            "/src/world/theme/compatibility.ts": 1,
+            "/src/world/theme/loader.ts": 1,
+            "/world/illustrated-runtime/bindings.json": 1,
+            "/world/illustrated-runtime/revenge-details.png": 1,
+            "/world/illustrated/revenge-ground.png": 1,
+            "/world/illustrated/revenge-landmarks-atlas.png": 1,
+            "/world/maps/binding-inputs.json": 1,
+            "/world/maps/courtyard-tiled.json": 1,
+            "/world/maps/geometry.json": 1,
+            "/world/maps/virtual-places.json": 1,
+            "/world/themes/binding-inputs.json": 1,
+            "/world/themes/revenge.png": 1
+          }
+        },
+        "recordCount": 299
+      },
+      "action": {
+        "status": "PASS",
+        "kind": "native-panel-back",
+        "focus": true,
+        "path": "/world"
+      },
+      "errors": []
+    }
+  ],
+  "warm": [],
+  "findings": [],
+  "browser": "156.0.8078.80",
+  "selection": {
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "cases": [
+      "world",
+      "me",
+      "world",
+      "me",
+      "world",
+      "me"
+    ],
+    "full": false
+  }
+}

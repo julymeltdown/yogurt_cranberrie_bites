@@ -6,8 +6,7 @@ use chrono::Utc;
 use concert_application::bootstrap::*;
 use concert_application::world_ticket::{AvatarPin, MapPin};
 use concert_domain::{
-    AssetId, AuthUserId, AvatarSelection, EventId, EventPhase, ParticipantKey, Preferences,
-    Revision,
+    AssetId, AuthUserId, AvatarSelection, EventId, EventPhase, ParticipantKey, Preferences, Revision,
 };
 use serde_json::Value;
 use sqlx::{postgres::PgRow, PgPool, Row};
@@ -166,23 +165,7 @@ fn invalid(_: impl fmt::Debug) -> BootstrapError {
     BootstrapError::InvalidResponse
 }
 fn selection(row: &PgRow) -> Result<AvatarSelection, BootstrapError> {
-    let asset = |column| AssetId::new(row.try_get(column).map_err(invalid)?).map_err(invalid);
-    Ok(AvatarSelection {
-        manifest_id: asset("manifest_id")?,
-        manifest_version: Revision::new(row.try_get("manifest_version").map_err(invalid)?)
-            .map_err(invalid)?,
-        body: asset("body_id")?,
-        eyes: asset("eyes_id")?,
-        hair: asset("hair_id")?,
-        outfit: asset("outfit_id")?,
-        accessory: row
-            .try_get::<Option<String>, _>("accessory_id")
-            .map_err(invalid)?
-            .map(AssetId::new)
-            .transpose()
-            .map_err(invalid)?,
-        skin_tone: asset("skin_tone_id")?,
-    })
+    crate::adapters::out::repository::avatar::selection_from_row(row).map_err(invalid)
 }
 
 #[async_trait]
@@ -284,26 +267,30 @@ impl BootstrapPostgresRepository {
         authority()?;
         if writable {
             let selected = defaults.avatar.clone();
+            let columns = crate::adapters::out::repository::avatar::storage_columns(&selected);
             sqlx::query(
-            "insert into public.concert_avatar_settings(event_id,user_id,contract_version,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id) values($1,$2,'1.0.0',$3,$4,$5,$6,$7,$8,$9,$10) on conflict(event_id,user_id) do nothing",
+            "insert into public.concert_avatar_settings(event_id,user_id,contract_version,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id,representation,preset_id) values($1,$2,$11,$3,$4,$5,$6,$7,$8,$9,$10,$12,$13) on conflict(event_id,user_id) do nothing",
         )
         .bind(event)
         .bind(user)
         .bind(selected.manifest_id.as_str())
         .bind(selected.manifest_version.get())
-        .bind(selected.body.as_str())
-        .bind(selected.eyes.as_str())
-        .bind(selected.hair.as_str())
-        .bind(selected.outfit.as_str())
-        .bind(selected.accessory.as_ref().map(AssetId::as_str))
-        .bind(selected.skin_tone.as_str())
+        .bind(columns.body)
+        .bind(columns.eyes)
+        .bind(columns.hair)
+        .bind(columns.outfit)
+        .bind(columns.accessory)
+        .bind(columns.skin_tone)
+        .bind(columns.contract_version)
+        .bind(columns.representation)
+        .bind(columns.preset_id)
         .execute(&mut *tx)
         .await
         .map_err(unavailable)?;
             authority()?;
         }
         let avatar = sqlx::query(
-            "select revision,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id from public.concert_avatar_settings where event_id=$1 and user_id=$2 for update",
+            "select revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id from public.concert_avatar_settings where event_id=$1 and user_id=$2 for update",
         )
         .bind(event)
         .bind(user)
