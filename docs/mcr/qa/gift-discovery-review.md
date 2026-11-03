@@ -54,19 +54,15 @@ All commands executed in `/Users/lhs/Desktop/mcr-worktrees/qa-gift-discovery`:
 - **UI origin checks**:
   - `node scripts/mcr/check-ui-origin.mjs --root /Users/lhs/Desktop/mcr-worktrees/qa-gift-discovery`: exit 0, PASS (246 files scanned, 0 violations).
 - **Linter**:
-  - `pnpm lint` (via `oxlint src vite.config.ts`): exit 0.
-- **Pinned typecheck recheck**:
-  - Initial typecheck ran under host Node 26.7.0.
-  - As flagged during review coordination, a narrow pinned recheck was performed using retained Node 24.22.2 (`/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin`) and pnpm 11.7.0 (`/Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs`):
-    `export PATH="/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin:$PATH" && node /Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs typecheck`: exit 0 (`tsc -b --pretty false`).
-- **Production bundle build**:
-  - `pnpm build` (`tsc -b && vite build`): exit 0 (built in 114ms).
-- **Unit test suite**:
-  - Pinned Node 24.22.2 + pnpm 11.7.0 running `vitest run src/features/gift-discovery`: exit 0 (3 test files passed, 60 tests passed).
-- **Targeted independent verification probe**:
-  - Authored temporary probe exercising positive valid decode, closed schema unknown field rejection, context status rejection, filter interval validation (valid vs equal/reversed bounds), giveaway status, and conservative reservation eligibility checks.
-  - Executed under pinned Node 24.22.2: exit 0 (3 tests passed in 402ms).
-  - Probe file was cleanly removed before handoff; worktree confirmed clean.
+  - `pnpm lint` (via `oxlint src vite.config.ts`, host Node v26.7.0): exit 0.
+- **Runtime environment attribution**:
+  - Broad test suite and production build were initially executed via bare `pnpm` in the review environment, running host Node v26.7.0 (with `[WARN] Unsupported engine: wanted: {"node":"24.22.2"} (current: {"node":"v26.7.0","pnpm":"11.7.0"})`):
+    - `pnpm test src/features/gift-discovery` (host Node v26.7.0): exit 0 (3 test files, 60 tests passed).
+    - `pnpm build` (host Node v26.7.0): exit 0 (`tsc -b && vite build`, built in 114ms).
+  - Pinned runtime checks were executed using retained Node 24.22.2 (`/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin`) and pnpm 11.7.0 (`/Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs`):
+    - Pinned typecheck: `export PATH="/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin:$PATH" && node /Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs typecheck`: exit 0 (`tsc -b --pretty false`, no engine warning).
+    - Targeted independent verification probe: executed under pinned Node 24.22.2 with Vitest: exit 0 (3 tests passed in 402ms). The probe proved positive valid decode, closed schema unknown field rejection, context status rejection, filter interval validation (valid vs equal/reversed bounds), giveaway status, and conservative reservation eligibility. Temporary probe file was cleanly removed before handoff.
+  - Parent coordinator verified 105 affected tests under explicit Node 24.22.2, including all 60 worker tests, alongside worker delivered native/build/lint evidence. Broad test suites were not duplicated.
 
 ## Limitations and boundaries
 
