@@ -30,7 +30,13 @@ unavailable; no synthetic fallback is shipped. `runtime.replaceSkin` keeps the
 current resource until a decoded, bounded and validated replacement commits on
 the existing `EngineLease`. Superseded, aborted, timed-out and late ignored-abort
 loads release decoded resources without replacing the world. Stop/dispose also
-cancels replacements. Injected synchronous engine stop/dispose is fenced.
+cancels replacements. Injected synchronous engine stop/dispose is fenced. Reentrant replacement requests
+wait until the synchronous visual/resource commit finishes; cancellation during a
+successful commit cannot release its displayed image. Independent QA found and
+reproduced that race in the initial handoff; this follow-up corrects it. If the
+newer request fails, controller feedback reconciles to the actual committed skin
+without claiming the obsolete choice was saved. Reusing the active resource lease
+is a no-op and cannot dispose its displayed image.
 
 The compatibility check preserves the entire immutable map manifest, including
 map ID/revision/content hash and tilemap path/hash, geometry, collision, spawns,
@@ -87,9 +93,9 @@ Toolchain: Node `24.22.2` at `/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-
 retained pnpm `11.7.0` at `/Users/lhs/Desktop/mcr-tools/pnpm-11.7.0/package/bin/pnpm.cjs`.
 Run from `frontend/` with that Node first on PATH:
 
-- `MCR_FE14_PYTHON=/tmp/mcr-fe14-format-venv/bin/python pnpm test src/features/theme src/world/theme src/world/__tests__/runtime.test.ts src/world/__tests__/movement.test.ts`: exit 0, **258/258**. The existing Python contract-format environment is required for retained differential tests; plain host Python lacks URI/date-time checkers.
+- `MCR_FE14_PYTHON=/tmp/mcr-fe14-format-venv/bin/python pnpm test src/features/theme src/world/theme src/world/__tests__/runtime.test.ts src/world/__tests__/movement.test.ts`: exit 0, **262/262**. The existing Python contract-format environment is required for retained differential tests; plain host Python lacks URI/date-time checkers.
 - `pnpm build`: exit 0 (retained entry chunk-size warning); `pnpm lint`: exit 0, no warnings.
-- `node src/features/theme/__tests__/browser-smoke.mjs`: exit 0, installed Chrome `156.0.8078.80`, widths **360/390/430**. Actual Phaser pixels, radio keyboard navigation, changed textures, camera/movement/canvas preservation, request failure, partial engine preparation failure, rehashed incompatible geometry/avatar and changed-map-binding rejection, supersession, scoped restore and late disposal pass. One active texture/tilemap/image remains after each swap; zero owned textures/tilemaps/object URLs/RAFs after disposal. No page errors.
+- `node src/features/theme/__tests__/browser-smoke.mjs`: exit 0, installed Chrome `156.0.8078.80`, widths **360/390/430**. Actual Phaser pixels, radio keyboard navigation, changed textures, camera/movement/canvas preservation, request failure, partial engine preparation failure, rehashed incompatible geometry/avatar and changed-map-binding rejection, supersession, scoped restore, texture-callback reentrant switching and late disposal pass. One active texture/tilemap/image remains after each swap; zero owned textures/tilemaps/object URLs/RAFs after disposal. No page errors.
 - Root `python3 scripts/mcr/check-plan.py`: exit 0; planning-only PASS. `git diff --check`: exit 0.
 
 Native report/screenshots: `/tmp/mcr-fe06-evidence/report.json`,

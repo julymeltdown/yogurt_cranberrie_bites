@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { createWorldRuntime, type WorldRuntime } from '../../../world/runtime'
 import { attachMovement, type MovementAttachment } from '../../../world/input/controller'
 import { loadPhaserEngine } from '../../../world/scenes/MapScene'
+import { MapError } from '../../../world/map/json'
 import { createAssetResources } from '../../../world/map/resources'
 import { createThemeLoader, type ThemeRelease } from '../../../world/theme/loader'
 import { rehash } from '../../../world/__tests__/fixtures/synthetic'
@@ -27,7 +28,7 @@ const identity = { room, avatar }
 const initialIdentity = identity
 const Phaser = (await import('phaser')).default
 const addImage = Phaser.Textures.TextureManager.prototype.addImage, removeTexture = Phaser.Textures.TextureManager.prototype.remove
-Phaser.Textures.TextureManager.prototype.addImage = function(key, ...args) { const result = addImage.call(this, key, ...args); if (result && key.startsWith('mcr-reviewed-map-')) textures.add(key); return result }
+Phaser.Textures.TextureManager.prototype.addImage = function(key, ...args) { const result = addImage.call(this, key, ...args); if (result && key.startsWith('mcr-reviewed-map-')) { textures.add(key); if (mode === 'reentrant-switch' || mode === 'reentrant-failure') { mode = mode === 'reentrant-failure' ? 'fail-danger' : 'valid'; void controller?.select('DANGER') } } return result }
 Phaser.Textures.TextureManager.prototype.remove = function(key) { textures.delete(typeof key === 'string' ? key : key.key); return removeTexture.call(this, key) }
 const blank = Phaser.Tilemaps.Tilemap.prototype.createBlankLayer
 const destroyMap = Phaser.Tilemaps.Tilemap.prototype.destroy
@@ -47,6 +48,7 @@ function App() {
     })
     runtime = owner
     const choice = createThemeController({ runtime: owner, initial: 'REVENGE', scope: { userId: 'synthetic-user', eventId: 'synthetic-event' }, preferences: createLocalThemePreferences(localStorage), load: async (id, signal) => {
+      if (mode === 'fail-danger' && id === 'DANGER') throw new MapError('load-failed')
       const candidate = await load(id, signal)
       // Deliberately ignore abort AFTER decoding to test late-resource fencing.
       if (mode === 'slow' && id === 'PARADE') await new Promise(resolve => setTimeout(resolve, 350))

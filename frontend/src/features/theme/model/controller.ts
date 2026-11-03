@@ -55,10 +55,13 @@ export function createThemeController(options: ThemeOptions) {
         message: saved ? `${theme} selected. Saved on this device for this account and event.` : `${theme} selected. Could not save on this device. Choose it again to retry.` })
     } catch (error) {
       if (!current()) return
+      // A superseded request may have finished an indivisible visual commit
+      // before this request began loading. Report that actual fallback skin.
+      const active = options.runtime.readSkin(), selected = isThemeId(active) ? active : state.selected
       const message = error instanceof MapError && error.reason === 'unavailable'
-        ? `${theme} artwork is unavailable. ${state.selected} remains selected.`
-        : `Could not load ${theme}. ${state.selected} remains selected. Try again.`
-      publish({ ...state, pending: null, phase: 'error', message })
+        ? `${theme} artwork is unavailable. ${selected} remains selected.`
+        : `Could not load ${theme}. ${selected} remains selected. Try again.`
+      publish({ ...state, selected, saved: state.saved && selected === state.selected, pending: null, phase: 'error', message })
     } finally { if (flight === controller) flight = null }
   }
   return {

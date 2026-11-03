@@ -47,6 +47,13 @@ it('preserves prior selection and preference on unavailable or failed assets', a
   expect(s.controller.read()).toMatchObject({ selected: 'REVENGE', pending: null, phase: 'error' })
   expect(s.controller.read().message).toContain('artwork is unavailable'); expect(s.preferences.write).not.toHaveBeenCalled()
 })
+it('reports the actual committed fallback after a superseded visual commit and later load failure', async () => {
+  let skin = 'REVENGE'
+  const s = setup({ runtime: { readSkin: () => skin, replaceSkin: async () => { skin = 'PARADE'; throw new MapError('load-failed') } } })
+  await s.controller.select('DANGER')
+  expect(s.controller.read()).toMatchObject({ selected: 'PARADE', phase: 'error', saved: false })
+  expect(s.controller.read().message).toContain('PARADE remains selected'); expect(s.preferences.write).not.toHaveBeenCalled()
+})
 it('rejects a loader returning a different era and releases it', async () => {
   const dispose = vi.fn(), s = setup({ load: async () => ({ theme: { theme_id: 'PARADE' }, dispose }) as unknown as LoadedMap })
   await s.controller.select('DANGER'); expect(dispose).toHaveBeenCalledOnce(); expect(s.preferences.write).not.toHaveBeenCalled()

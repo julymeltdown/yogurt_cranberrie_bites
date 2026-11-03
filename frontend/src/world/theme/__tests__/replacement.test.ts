@@ -96,6 +96,34 @@ it.each(['stop', 'dispose'] as const)('fences reentrant injected engine %s durin
   await o.runtime.settled()
   expect(o.runtime.readSkin()).toBeNull(); expect(next.dispose).toHaveBeenCalledOnce(); expect(o.initial.dispose).toHaveBeenCalledOnce()
 })
+it('finishes visual ownership before a reentrant replacement captures its previous skin', async () => {
+  const o = await owner(), next = await loaded('PARADE'), final = await loaded('DANGER'), gate = deferred<LoadedMap>()
+  let queued: Promise<void> | undefined, displayed = 'REVENGE'
+  o.replace.mockImplementation(map => {
+    displayed = map.theme.theme_id
+    if (displayed === 'PARADE') queued = o.runtime.replaceSkin(() => gate.promise)
+  })
+  await o.runtime.replaceSkin(async () => next.result)
+  expect(displayed).toBe('PARADE'); expect(o.runtime.readSkin()).toBe('PARADE')
+  expect(o.initial.dispose).toHaveBeenCalledOnce(); expect(next.dispose).not.toHaveBeenCalled()
+  gate.resolve(final.result); await queued
+  expect(displayed).toBe('DANGER'); expect(o.runtime.readSkin()).toBe('DANGER')
+  expect(next.dispose).toHaveBeenCalledOnce(); expect(final.dispose).not.toHaveBeenCalled(); expect(o.factory).toHaveBeenCalledOnce()
+})
+it('retains a successful synchronous visual commit when its caller aborts during commit', async () => {
+  const o = await owner(), next = await loaded('PARADE'), controller = new AbortController()
+  o.replace.mockImplementation(() => controller.abort())
+  await o.runtime.replaceSkin(async () => next.result, controller.signal)
+  expect(o.runtime.readSkin()).toBe('PARADE'); expect(next.dispose).not.toHaveBeenCalled(); expect(o.initial.dispose).toHaveBeenCalledOnce()
+})
+it('does not recommit or dispose a reentrant request for the already-owned resource lease', async () => {
+  const o = await owner(), next = await loaded('PARADE')
+  let queued: Promise<void> | undefined
+  o.replace.mockImplementation(() => { queued = o.runtime.replaceSkin(async () => next.result) })
+  await o.runtime.replaceSkin(async () => next.result); await queued
+  expect(o.replace).toHaveBeenCalledOnce(); expect(o.runtime.readSkin()).toBe('PARADE')
+  expect(next.dispose).not.toHaveBeenCalled(); expect(o.initial.dispose).toHaveBeenCalledOnce()
+})
 it('fences superseded ignored-abort loads and releases late candidates', async () => {
   const o = await owner(), stale = await loaded('PARADE'), next = await loaded('DANGER'), late = deferred<LoadedMap>()
   const first = o.runtime.replaceSkin(() => late.promise); const rejected = expect(first).rejects.toMatchObject({ reason: 'cancelled' })

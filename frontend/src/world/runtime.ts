@@ -33,6 +33,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
     observer: ResizeObserver | null; resize: (() => void) | null; frame: number | null; detach: () => void; claim: { owner: object }; creating: boolean; finish: () => void } | null = null
   let flight: Promise<RuntimeState> | null = null, drain = Promise.resolve()
   let skinFlight: AbortController | null = null
+  let skinCommitting = false
   const owner = {}, listeners = new Set<() => void>()
   const publish = (next: RuntimeState) => { state = Object.freeze(next); for (const listener of Array.from(listeners)) { try { listener() } catch { /* Observers cannot strand owned resources. */ } } }
   const importEngine = options.importEngine ?? (() => import('./scenes/MapScene').then(m => m.loadPhaserEngine()))
@@ -138,6 +139,9 @@ export function createWorldRuntime(options: RuntimeOptions) {
     return task
   }
   async function replaceSkin(load: (signal: AbortSignal) => Promise<LoadedMap>, signal?: AbortSignal): Promise<void> {
+    // Texture events may synchronously request another skin. Capture its owner
+    // and supersede only after the current visual/decoded-resource commit ends.
+    if (skinCommitting) { await Promise.resolve(); return replaceSkin(load, signal) }
     skinFlight?.abort()
     const owned = active, engine = owned?.engine, previous = owned?.map
     if (state.phase !== 'ready' || !owned || !engine?.replaceSkin || !previous) throw new MapError('unavailable')
@@ -152,21 +156,30 @@ export function createWorldRuntime(options: RuntimeOptions) {
       if (!current()) throw new MapError('cancelled')
       const pending = Promise.resolve().then(() => load(controller.signal)).then(map => {
         // A loader may ignore abort. Release its eventual decoded image even after timeout.
-        if (!current()) { map.dispose(); throw new MapError('cancelled') }
+        if (!current()) { if (map !== previous) map.dispose(); throw new MapError('cancelled') }
         candidate = map; return map
       })
       const next = await abortable(pending, controller.signal, options.timeoutMs ?? limits.deadlineMs)
+      if (!current()) throw new MapError('cancelled')
+      // A reentrant request can return the already-owned lease. It is a no-op,
+      // never a second resource to commit or dispose.
+      if (next === previous) { committed = true; return }
       await abortable(validateReplacement(previous, next), controller.signal, options.timeoutMs ?? limits.deadlineMs)
       if (!current()) throw new MapError('cancelled')
-      engine.replaceSkin(next)
-      if (!current()) throw new MapError('cancelled')
-      owned.map = next; committed = true
-      previous.dispose()
+      skinCommitting = true
+      try {
+        engine.replaceSkin(next)
+        // Once the synchronous visual commit succeeds, caller cancellation can
+        // no longer roll it back. The next request will inherit this live skin.
+        if (active !== owned || owned.controller.signal.aborted) throw new MapError('cancelled')
+        owned.map = next; committed = true
+        previous.dispose()
+      } finally { skinCommitting = false }
     } finally {
       controller.abort()
       signal?.removeEventListener('abort', abort)
       owned.controller.signal.removeEventListener('abort', abort)
-      if (!committed) (candidate as LoadedMap | null)?.dispose()
+      if (!committed && candidate !== previous) (candidate as LoadedMap | null)?.dispose()
       if (skinFlight === controller) skinFlight = null
     }
   }
