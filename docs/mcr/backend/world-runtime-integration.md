@@ -28,3 +28,36 @@ is inferred from these fixtures.
 The runtime author retains its isolated checkout for source-only switch/bridge
 work, with no Cargo lease. See [the source handoff](world-runtime.md) for exact
 commands, evidence locations, source provenance and remaining limitations.
+
+## Sealed Auth, successful switch and lease correction follow-through
+
+Author `537a440` is integrated as `83aa315`; `a4308b7` as `e15bac3`.
+Their ten distinct owned paths match the final author source exactly. Integration
+verified 1,494 tested-source pins and three frozen executable hashes. The final
+receipt is `7ec01ee2e32ec1d337a2c49d39587b3b5293743bdc5963a12f0f104d9030692d`.
+Six combined contract inputs are intentionally newer from closure amendment
+`911f156`, qualified separately by 98 contract tests; no fresh combined native
+run is claimed for that amended closure contract.
+
+The author passed 62 focused cases: runtime 27, actual WebSocket 16, library 14,
+explicit PostgreSQL bridge 4, and one real signed-Auth/owning-Auth-and-Concert
+composition. Previously ignored relevant database cases ran explicitly. This
+includes delayed successful room switching, one-use admission without a prior
+membership, fresh Auth before renewal, revocation/suspension/outage denial,
+original credential expiry, and cleanup. Profile/recipient fixtures remain
+synthetic; the actual production root still fails closed without their owners.
+
+Native validation exposed a concrete unit error in persistent membership
+creation: `FRESH_AUTHORITY_MILLISECONDS` was applied with `Duration::seconds`.
+The exact authorized line now uses `Duration::milliseconds`. Initial and switch
+leases are bounded to five seconds; fresh Auth caps effective publication to
+two seconds or less. Renewal can extend the bounded persistent lease only after
+fresh authorization, without extending the original credential expiry. Failed
+candidate evidence is preserved alongside the corrected passing regression.
+
+The author explicitly released the shared build target after all handles
+terminated. Integration verified the release hash, absence of all four owned
+fixture roots and no retaining process. The source remains committed and the
+broader runtime goal remains unfinished pending production Profile/recipient
+and invalidation integration. No IN01, real two-user, device or load acceptance
+is advanced by this handoff.
