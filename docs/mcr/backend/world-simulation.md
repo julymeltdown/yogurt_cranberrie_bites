@@ -199,8 +199,15 @@ completes. No native admission, two-account world, actual WebSocket, mobile,
 Targeted read-only peer review found three concrete P2 issues before native
 execution: interaction overwrite, accepted-stop loss during delayed catch-up,
 and asymmetric wall edge/corner endpoint contact. All three are fixed in the
-subsequent worker patch with direct regressions; source re-review is requested.
+worker commit `988ddb3` with four direct regressions. Focused read-only re-review
+of that commit reports no remaining actionable findings in the requested fixes.
 The reviewer ran no Rust commands. Initial source-ready checkpoints are
 `1ea1813` (implementation), `8f649a6` (separate delegated registrations),
 `398bbfd` (maximum interaction sweep) and `4187219` (stream reuse fencing).
 These are ancestry/progress records, not native test acceptance.
+
+The review confirmed that `InteractionPending`/`InputQueueFull` reject an entire
+input before sequence acceptance while consuming rate credit, and that
+`pending_input_count()` is bounded at 6400 for a 50-player room. The source review
+is independent evidence, not a compiled test result. Cargo remains queued until
+an explicit shared-target lease is granted by delivery.
