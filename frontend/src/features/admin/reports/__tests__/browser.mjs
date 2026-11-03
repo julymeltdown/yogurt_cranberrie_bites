@@ -9,8 +9,8 @@ import { chromium, expect } from '@playwright/test';
 const root = resolve(import.meta.dirname, '../../../../../..');
 const frontend = resolve(root, 'frontend'), out = process.env.MCR_FE37_EVIDENCE ?? '/tmp/mcr-fe37-browser';
 await mkdir(out, { recursive: true });
-const paths = (await readdir(resolve(frontend, 'src/features/admin'), { recursive: true, withFileTypes: true })).filter(e => e.isFile()).map(e => resolve(e.parentPath, e.name)).sort();
-const report = { result: 'FAIL', scope: 'FE37 MOCK_READY only: deterministic candidate fetches, canonical Auth/privacy and native desktop Chrome; no real server authorization, moderation, multiuser or physical-device acceptance.', base: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), browser: null, widths: [], checks: [], sourceHashes: Object.fromEntries(await Promise.all(paths.map(async (p) => [relative(root, p), createHash('sha256').update(await readFile(p)).digest('hex')]))) };
+const paths = (await readdir(resolve(frontend, 'src/features/admin'), { recursive: true, withFileTypes: true })).filter(e => e.isFile() && /\.(?:ts|tsx|mjs|html|css)$/.test(e.name)).map(e => resolve(e.parentPath, e.name)).sort();
+const report = { result: 'FAIL', scope: 'FE37 MOCK_READY only: deterministic candidate fetches, canonical Auth/privacy and native desktop Chrome; no real server authorization, moderation, multiuser or physical-device acceptance.', assignmentBase: '98c2c793ba5c380b0cca334f4f8647123c9d30a9', base: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), browser: null, widths: [], checks: [], retainedScreenshots: [], sourceHashes: Object.fromEntries(await Promise.all(paths.map(async (p) => [relative(root, p), createHash('sha256').update(await readFile(p)).digest('hex')]))) };
 let server, browser;
 const actionFor = lane => lane === 'reports' ? 'RESOLVED' : lane === 'members' ? 'SUSPEND' : 'HIDE';
 async function prepare(page, lane, action = actionFor(lane)) {
@@ -57,6 +57,7 @@ try {
             await confirmByKeyboard(page);
             await geometry(page);
             await page.screenshot({ path: resolve(out, `${width}-${lane}-confirmation.png`), fullPage: true });
+            report.retainedScreenshots.push({file:`${width}-${lane}-confirmation.png`,width,lane,state:'confirmation',sha256:createHash('sha256').update(await readFile(resolve(out,`${width}-${lane}-confirmation.png`))).digest('hex')});
             await page.keyboard.press('Tab');
             await expect(page.getByRole('button', { name: 'Cancel confirmation' })).toBeFocused();
             await page.keyboard.press('Enter');
