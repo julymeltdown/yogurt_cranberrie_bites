@@ -364,3 +364,37 @@ public root, browser, or full multiuser product acceptance. This publishing owne
 retained the already qualified canonical source bytes through peer reconciliation;
 the remaining differences from tested `71e9c6d4` are the separately qualified World
 fixture correction and documentation/peer changes.
+
+## Subsequent actual-transaction effect fence (source checkpoint)
+
+The canonical owner retains exclusive ownership of the application avatar API,
+repository/avatar.rs and tests/avatar.rs for this bounded hook, agreed directly
+with Participant209; Authority207 confirms no competing writer. Spatial release
+validation remains the priority. Rust compilation/native qualification of this
+hook is NOT_RUN at this checkpoint, with no target or database held.
+
+`AvatarTransactionIdentity` contains the actual PostgreSQL system identifier,
+database OID, full transaction ID, backend PID and backend start timestamp.
+`AvatarEffectFence` exposes async `register(identity)` and `check()`;
+`AvatarAuthority::effect_fence()` defaults to None for compatibility. The product
+constructor and public `PgAvatarRepository::new` require a fence for writes.
+Only the existing explicit `from_synthetic_test(..., true)` construction permits
+legacy fixture writes without a fence; reads may omit it.
+
+The repository captures identity through the same mutable SQLx transaction
+before protected effects, awaits registration, rechecks synchronous authority,
+and awaits fence checks after protected waits and immediately before commit.
+It never completes/releases a root scope or claims an uncertain commit settled.
+The participant/root adapter must bind the exact operation, request body, CAS,
+actor/event and immutable release, hold the actual Auth/Friend scope through
+commit, and quarantine uncertain results until actual PostgreSQL settlement.
+`pg_control_system()` permission is required; failure remains unavailable.
+The external 207 SDK and participant adapter remain separately unqualified;
+this hook alone is not a live distributed-authority implementation.
+
+The source adds component checks to the existing selected-avatar native case.
+A trigger captures the actual UPDATE transaction identity; it must match the
+registered identity for avatar and preference writes. Missing registration,
+registration rejection and post-effect fence rejection must preserve state and
+roll back the trigger evidence. This is developer-native component evidence,
+not an invented external owner-grant or live multiuser acceptance claim.
