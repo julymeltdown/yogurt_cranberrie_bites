@@ -115,7 +115,10 @@ SCHEMAS: dict[str, Any] = {
     ),
     "UserDeletionStep": obj(
         {
-            "target": string(enum=["PROFILE", "FRIEND", "POST", "NOTIFICATION"]),
+            "target": string(enum=[
+                "PROFILE", "FRIEND", "POST", "NOTIFICATION",
+                "CONCERT_TICKETS", "CONCERT_SESSIONS", "CONCERT_SHARING", "CONCERT_PRIVATE_DATA",
+            ]),
             "status": string(enum=["PENDING", "IN_PROGRESS", "RETRY", "SUCCEEDED", "DEAD_LETTERED"]),
             "attemptCount": integer(minimum=0),
             "nextAttemptAt": string(format="date-time"),

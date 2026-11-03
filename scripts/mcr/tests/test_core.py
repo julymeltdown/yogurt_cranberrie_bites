@@ -218,6 +218,21 @@ class CoreContractTests(unittest.TestCase):
         result = subprocess.run([sys.executable, str(ROOT / "backend/scripts/docs/generate-mcr-core.py"), "--check"], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_deletion_step_accepts_concert_targets_and_rejects_unknown(self):
+        step = {
+            "target": "PROFILE", "status": "PENDING", "attemptCount": 0,
+            "nextAttemptAt": "2026-11-04T00:00:00Z", "lastError": None,
+            "completedAt": None,
+        }
+        targets = ["PROFILE", "FRIEND", "POST", "NOTIFICATION", "CONCERT_TICKETS",
+                   "CONCERT_SESSIONS", "CONCERT_SHARING", "CONCERT_PRIVATE_DATA"]
+        actual = self.document["components"]["schemas"]["UserDeletionStep"]["properties"]["target"]["enum"]
+        self.assertEqual(actual, targets)
+        for target in targets:
+            with self.subTest(target=target):
+                core.validate({**step, "target": target}, "UserDeletionStep", self.document)
+        self.reject({**step, "target": "CONCERT_ALL"}, "UserDeletionStep")
+
 
 if __name__ == "__main__":
     unittest.main()
