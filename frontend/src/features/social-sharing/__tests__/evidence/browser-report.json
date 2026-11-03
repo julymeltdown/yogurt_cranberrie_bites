@@ -1,0 +1,49 @@
+{
+  "result": "PASS",
+  "scope": "FE31 isolated UI + canonical session/privacy + native same-origin deterministic HTTP. No real backend, reciprocal authority, device, QA04 or IN03 acceptance.",
+  "widths": [
+    {
+      "width": 360,
+      "requests": 33,
+      "writes": 7,
+      "reveals": 3
+    },
+    {
+      "width": 390,
+      "requests": 33,
+      "writes": 7,
+      "reveals": 3
+    },
+    {
+      "width": 430,
+      "requests": 33,
+      "writes": 7,
+      "reveals": 3
+    }
+  ],
+  "checks": [
+    "no prechecked consent",
+    "metadata-only create payload",
+    "no automatic reveal",
+    "subset approval with reciprocal consent",
+    "explicit protected reveal by keyboard",
+    "hide clears plaintext",
+    "revoke confirmation and immediate scrub",
+    "uncertain command status without replay",
+    "expiry clears plaintext and disables reveal",
+    "handle normalization/replacement/removal",
+    "policy scrub",
+    "no private Query/storage entries",
+    "no overflow or browser errors"
+  ],
+  "sourceHashes": {
+    "model/controller.ts": "86e629eed8ea9bcbb32cb3c3967896fbce8b6aed236bf29aed521a0d470cefe2",
+    "model/runtime.ts": "d1dd6aa9f07e9a44bbe574a9202e6319f1eb88544cf02d2531cbc1af1b9bd416",
+    "model/contract.ts": "eba5001637bc1b1cc5fcb98ec764cc5aa1ac4faf171f8fabac519e2f676e5426",
+    "ui/SocialSharing.tsx": "340deb069bf316efb5a5911ba7147c04d1c74fbbfbe1a4ce0bac31d789f603a1",
+    "ui/sharing.css": "4213c99408d0feaaf2a8e39b4ad5876bc7fadfc8123bcdd03562f2ab0c47823c",
+    "__tests__/fixtures/preview.tsx": "7961330c0c90db780dd427a5b9797e7030b97c0225902c249bec591069b0db76",
+    "__tests__/browser-smoke.mjs": "eb463b302f54474728f4616b55c10917e9a35a1a84d9682d530c260794c4793e"
+  },
+  "browser": "156.0.8078.80"
+}

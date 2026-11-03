@@ -1,6 +1,6 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import type { SocialSharingController } from '../model/controller'
-import type { Platform } from '../model/contract'
+import { validHandle, type Platform } from '../model/contract'
 import { messages, type Slot } from '../model/runtime'
 import './sharing.css'
 const labels: Record<Platform, string> = { INSTAGRAM: 'Instagram', X: 'X' }
@@ -10,8 +10,8 @@ export function ReadStatus({ slot, retry }: { slot: Slot<unknown>; retry: () => 
 }
 function WriteStatus({ controller }: { controller: SocialSharingController }) {
   const { mutation } = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
-  return <div aria-live="polite">{mutation.phase !== 'idle' && <p>{mutation.phase === 'sending' ? 'Sending…' : mutation.phase === 'succeeded' ? 'The server confirmed this change.' : ['uncertain', 'pending'].includes(mutation.phase) ? 'The outcome is not confirmed. Your command identity is retained. Check status before submitting again.' : mutation.failure ? messages[mutation.failure] : 'The change was not confirmed.'}</p>}
-    {['uncertain', 'pending'].includes(mutation.phase) && <button type="button" onClick={() => { void controller.checkStatus() }}>Check command status</button>}
+  return <div aria-live="polite">{mutation.phase !== 'idle' && <p>{mutation.phase === 'sending' ? 'Sending…' : mutation.phase === 'succeeded' ? 'The server confirmed this change.' : ['uncertain', 'pending'].includes(mutation.phase) ? 'The outcome is not confirmed. Your change may have completed. Check status before submitting again.' : mutation.failure ? messages[mutation.failure] : 'The change was not confirmed.'}</p>}
+    {['uncertain', 'pending'].includes(mutation.phase) && <button type="button" onClick={() => { void controller.checkStatus() }}>Check change status</button>}
   </div>
 }
 function PrivacyCopy() { return <p className="sharing-note">Sharing lets the other person see your selected account name. It does not follow anyone automatically. Revoking stops future access here; it cannot erase a name someone already saw or copied. Unblocking does not restore previous consent.</p> }
@@ -24,9 +24,10 @@ export function HandleSettings({ controller }: { controller: SocialSharingContro
     {state.handles.data?.items.map(handle => <section key={handle.platform} aria-label={`${labels[handle.platform]} settings`}><h2>{labels[handle.platform]}</h2><p>{handle.configured ? 'Configured privately' : 'Not configured'} · Version {handle.version}</p>
       <form onSubmit={e => { e.preventDefault(); void controller.saveHandle(handle.platform) }}>
         <label htmlFor={`handle-${handle.platform}`}>{handle.configured ? 'Replacement' : 'New'} {labels[handle.platform]} account name</label>
-        <input id={`handle-${handle.platform}`} type="text" autoComplete="off" autoCapitalize="none" spellCheck={false} value={state.handleDrafts[handle.platform]} disabled={!state.available || state.readOnly || busy} onChange={e => controller.setHandleDraft(handle.platform, e.target.value)} aria-describedby={`handle-hint-${handle.platform}`} />
+        <input id={`handle-${handle.platform}`} type="text" autoComplete="off" autoCapitalize="none" spellCheck={false} value={state.handleDrafts[handle.platform]} disabled={!state.available || state.readOnly || busy} onChange={e => controller.setHandleDraft(handle.platform, e.target.value)} aria-invalid={!!state.handleDrafts[handle.platform] && !validHandle(handle.platform, state.handleDrafts[handle.platform].trim().toLowerCase())} aria-describedby={`handle-hint-${handle.platform}`} />
         <p id={`handle-hint-${handle.platform}`}>Without @. {handle.platform === 'X' ? '1–15 letters, numbers or underscores.' : '1–30 letters, numbers, dots or underscores. No starting, ending or repeated dots.'} Replacing or removing invalidates sharing bound to the previous version.</p>
-        <button type="submit" disabled={!state.available || state.readOnly || busy || !state.handleDrafts[handle.platform].trim()}>{handle.configured ? 'Replace privately' : 'Save privately'}</button>
+        {state.handleDrafts[handle.platform] && !validHandle(handle.platform, state.handleDrafts[handle.platform].trim().toLowerCase()) && <p role="status">Enter a valid {labels[handle.platform]} account name using the rules above.</p>}
+        <button type="submit" disabled={!state.available || state.readOnly || busy || !validHandle(handle.platform, state.handleDrafts[handle.platform].trim().toLowerCase())}>{handle.configured ? 'Replace privately' : 'Save privately'}</button>
         {handle.configured && <button type="button" disabled={!state.available || busy} onClick={() => setRemove(handle.platform)}>Remove {labels[handle.platform]}</button>}
       </form>
     </section>)}
@@ -49,14 +50,15 @@ export function SharingOffer({ controller, retry }: { controller: SocialSharingC
   </section>
 }
 export function SharingRequests({ controller, onRequest }: { controller: SocialSharingController; onRequest: (id: string) => void }) {
-  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
+  const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), busy = ['sending', 'pending', 'uncertain'].includes(state.mutation.phase)
   return <section className="social-sharing" aria-label="Sharing requests"><h1>REQUESTS</h1><PrivacyCopy />
-    <label>Direction <select value={state.direction} onChange={e => controller.setDirection(e.target.value as 'INCOMING' | 'OUTGOING')}><option value="INCOMING">Incoming</option><option value="OUTGOING">Outgoing</option></select></label>
+    <label>Direction <select value={state.direction} disabled={busy || !state.available} onChange={e => controller.setDirection(e.target.value as 'INCOMING' | 'OUTGOING')}><option value="INCOMING">Incoming</option><option value="OUTGOING">Outgoing</option></select></label>
     <button type="button" disabled={!state.available} onClick={() => { void controller.loadRequests() }}>Refresh requests</button>
     {!state.available && <p role="status">Requests are unavailable for this account or event.</p>}
     <ReadStatus slot={state.requests} retry={() => { void controller.loadRequests() }} />{state.requests.data?.items.length === 0 && <p>No sharing requests.</p>}
-    <ol className="sharing-list">{state.requests.data?.items.map(request => <li key={request.request_id}><p>{request.state === 'PENDING' || request.state === 'APPROVED' ? Date.parse(request.expires_at) <= state.now ? 'EXPIRED' : request.state : request.state} · {request.consents.map(c => labels[c.platform]).join(', ')}</p><p>Expires <time dateTime={request.expires_at}>{new Date(request.expires_at).toLocaleString()}</time></p><button type="button" onClick={() => onRequest(request.request_id)}>Open request</button></li>)}</ol>
+    <ol className="sharing-list">{state.requests.data?.items.map(request => <li key={request.request_id}><p>{request.state === 'PENDING' || request.state === 'APPROVED' ? Date.parse(request.expires_at) <= state.now ? 'EXPIRED' : request.state : request.state} · {request.consents.map(c => labels[c.platform]).join(', ')}</p><p>Expires <time dateTime={request.expires_at}>{new Date(request.expires_at).toLocaleString()}</time></p><button type="button" disabled={busy || !state.available} onClick={() => onRequest(request.request_id)}>Open request</button></li>)}</ol>
     {state.requests.data?.next_cursor && <button type="button" disabled={state.requests.phase === 'loading'} onClick={() => { void controller.loadRequests(true) }}>Load older requests</button>}
+    <WriteStatus controller={controller} />
   </section>
 }
 export function SharingRequest({ controller, retry }: { controller: SocialSharingController; retry: () => void }) {

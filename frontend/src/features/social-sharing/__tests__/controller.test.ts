@@ -4,7 +4,7 @@ import { createSocialSharingController } from '../model/controller'
 import { validHandle } from '../model/contract'
 const disposals: (() => void)[] = []
 beforeEach(() => vi.stubGlobal('location', { origin: 'https://mcr.example' }))
-afterEach(() => { disposals.splice(0).forEach(fn => fn()); vi.unstubAllGlobals() })
+afterEach(() => { disposals.splice(0).forEach(fn => fn()); vi.useRealTimers(); vi.unstubAllGlobals() })
 function fixture(handler: (r: Request) => Response | Promise<Response>, userId = requesterId, qualifiedRefresh = false) {
   const fetch = vi.fn<typeof globalThis.fetch>(async input => handler(input as Request)), f = setup(fetch, userId, qualifiedRefresh); disposals.push(f.dispose); return { ...f, fetch }
 }
@@ -124,4 +124,62 @@ it('same-identity read-only transition keeps unresolved key and forbids new shar
   const f = fixture(r => r.method === 'POST' ? Promise.reject(new Error('lost')) : Response.json(r.url.includes('/social-handles') ? handleStates() : sharingOffer()))
   await prepared(f); await f.controller.createRequest(); const key = f.controller.read().mutation.key
   f.setAccess({ available: true, readOnly: true }); expect(f.controller.read().mutation).toMatchObject({ phase: 'uncertain', key }); expect(await f.controller.createRequest()).toBe(false)
+})
+it.each([
+  { actor_id: id(90) }, { event_id: id(90) }, { operation_id: 'removeConcertHandle' }, { idempotency_key: id(90) },
+  { resource_id: id(90) }, { resource_revision: 2 }, { result_status: 202 }, { failure_reason: 'PERMISSION_DENIED' },
+  { handle: 'private-field' }, { expires_at: '2026-11-06T09:00:00Z' },
+])('rejects mismatched successful handle receipt without releasing command or replay: %j', async patch => {
+  let key = '', writes = 0
+  const f = fixture(r => {
+    if (r.method === 'PUT') { writes++; key = r.headers.get('Idempotency-Key')!; return Response.json(receipt(key, 'setConcertHandle'), { status: 202 }) }
+    if (r.url.includes('/commands')) return Response.json({ ...receipt(key, 'setConcertHandle', 'SUCCEEDED'), resource_id: requesterId, resource_revision: 3, ...patch })
+    return Response.json(handleStates())
+  })
+  await f.controller.loadHandles(); f.controller.setHandleDraft('INSTAGRAM', 'replacement'); await f.controller.saveHandle('INSTAGRAM')
+  expect(f.controller.read().mutation.phase).toBe('pending'); await f.controller.checkStatus()
+  expect(f.controller.read().mutation).toMatchObject({ phase: 'uncertain', key }); expect(await f.controller.saveHandle('INSTAGRAM')).toBe(false); expect(writes).toBe(1)
+})
+it('retired receipts retain uncertainty; definitive failed status releases only that original command', async () => {
+  let key = '', retired = true, writes = 0
+  const f = fixture(r => {
+    if (r.method === 'POST') { writes++; key = r.headers.get('Idempotency-Key')!; return Response.json(receipt(key), { status: 202 }) }
+    if (r.url.includes('/commands')) return Response.json({ ...receipt(key), state: retired ? 'RETIRED' : 'FAILED', failure_reason: retired ? null : 'VERSION_CONFLICT' })
+    return Response.json(r.url.endsWith('/social-handles') ? handleStates() : sharingOffer())
+  })
+  await prepared(f); await f.controller.createRequest(); await f.controller.checkStatus(); expect(f.controller.read().mutation.phase).toBe('uncertain')
+  retired = false; await f.controller.checkStatus(); expect(f.controller.read().mutation.phase).toBe('failed'); expect(writes).toBe(1)
+})
+it.each([
+  { consents: [{ ...request.consents[0]!, recipient_handle_version: 99 }] }, { recipient_id: id(90) }, { state: 'APPROVED', approved_platforms: ['INSTAGRAM'] }, { handle: 'private-field' },
+])('cannot materialize a wrong successful create DTO: %j', async patch => {
+  const f = fixture(r => Response.json(r.method === 'POST' ? { ...pending(), ...patch } : r.url.endsWith('/social-handles') ? handleStates() : sharingOffer()))
+  await prepared(f); await f.controller.createRequest(); expect(f.controller.read().mutation.phase).toBe('uncertain'); expect(f.controller.read().detail.data).toBeNull(); expect(f.controller.read().secret.data).toBeNull()
+})
+it.each([
+  { handle: 'private-field' }, { recipient_id: id(90) }, { event_id: id(90) }, { consents: [...request.consents, ...request.consents] },
+  { created_at: '2026-11-07T18:00:00+09:00' },
+])('rejects metadata DTO outside strict contract and current incoming scope: %j', async patch => {
+  const f = fixture(() => Response.json({ items: [{ ...request, ...patch }], next_cursor: null }), recipientId)
+  await f.controller.loadRequests(); expect(f.controller.read().requests).toMatchObject({ phase: 'error', data: null }); expect(f.controller.read().secret.data).toBeNull()
+})
+it('rejects cyclic cursors and duplicate pagination instead of silently merging', async () => {
+  const f = fixture(r => Response.json({ items: new URL(r.url).searchParams.has('cursor') ? [] : [request], next_cursor: 'repeat' }), recipientId)
+  await f.controller.loadRequests(); expect(f.controller.read().requests.phase).toBe('ready'); await f.controller.loadRequests(true); expect(f.controller.read().requests).toMatchObject({ phase: 'error', data: null })
+})
+it.each(['REJECTED', 'CANCELLED', 'REVOKED', 'EXPIRED'] as const)('terminal %s request cannot reveal or mutate a grant', async state => {
+  const f = fixture(() => Response.json({ ...request, state, approved_platforms: ['REJECTED', 'CANCELLED'].includes(state) ? [] : ['INSTAGRAM'] }))
+  await f.controller.loadRequest(request.request_id); expect(await f.controller.revealHandle('INSTAGRAM')).toBe(false); expect(await f.controller.revokeRequest()).toBe(false); expect(f.fetch).toHaveBeenCalledTimes(1)
+})
+it('permission loss clears visible plaintext and drafts while preserving the original unresolved command key', async () => {
+  const f = fixture(r => r.method === 'POST' ? Promise.reject(new Error('lost')) : Response.json(r.url.includes('/social-handles') ? handleStates() : sharingOffer()))
+  await prepared(f); f.controller.setHandleDraft('INSTAGRAM', 'synthetic_draft'); await f.controller.createRequest(); const key = f.controller.read().mutation.key
+  f.setAccess({ available: false, readOnly: true }); expect(f.controller.read().handleDrafts.INSTAGRAM).toBe(''); expect(f.controller.read().secret.data).toBeNull(); expect(f.controller.read().mutation).toMatchObject({ key, phase: 'uncertain' })
+})
+it('expiry timer clears plaintext without a new read, while background/foreground expiry is rechecked', async () => {
+  vi.useFakeTimers(); let time = epoch
+  const f = fixture(r => Response.json(r.url.includes('/reveal') ? { ...privateResult(), expires_at: new Date(epoch + 1000).toISOString() } : request))
+  const controller = createSocialSharingController({ auth: f.auth, access: f.access, sensitiveRead: f.auth.requestSensitive, now: () => time }); disposals.push(controller.dispose); controller.start()
+  await controller.loadRequest(request.request_id); await controller.revealHandle('INSTAGRAM'); expect(controller.read().secret.data).not.toBeNull()
+  time += 1000; await vi.advanceTimersByTimeAsync(1000); expect(controller.read().secret.data).toBeNull()
 })

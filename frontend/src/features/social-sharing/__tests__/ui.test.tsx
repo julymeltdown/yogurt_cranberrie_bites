@@ -69,3 +69,9 @@ it('policy revocation scrubs a visible account name and the pending input immedi
   await act(async () => { f.auth.privacy.changePolicy(f.auth.privacy.capture(), 'block') })
   expect(screen.queryByText('@synthetic_private_name')).toBeNull(); expect(f.controller.read().handleDrafts.INSTAGRAM).toBe('')
 })
+it('keeps status recovery visible on the request list after navigation from an uncertain offer', async () => {
+  const f = fixture(r => r.method === 'POST' ? Promise.reject(new Error('lost')) : Response.json(r.url.endsWith('/social-handles') ? handleStates() : { intro_id: request.intro_id, intro_revision: 1, recipient_id: recipientId, available_handles: [{ platform: 'INSTAGRAM', version: 3 }] }))
+  await f.controller.loadHandles(); await f.controller.loadOffer(request.intro_id); f.controller.setRequesterConsent('INSTAGRAM', true); await f.controller.createRequest()
+  render(<SharingRequests controller={f.controller} onRequest={vi.fn()} />)
+  expect(screen.getByRole('button', { name: 'Check change status' })).toBeDefined(); expect((screen.getByRole('combobox', { name: 'Direction' }) as HTMLSelectElement).disabled).toBe(true)
+})

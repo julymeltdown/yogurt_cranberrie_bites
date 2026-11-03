@@ -5,7 +5,7 @@ export const platform = z.enum(['INSTAGRAM', 'X'])
 export type Platform = z.infer<typeof platform>
 const revision = z.number().int().min(1).max(Number.MAX_SAFE_INTEGER)
 const creationRevision = z.number().int().min(0).max(Number.MAX_SAFE_INTEGER)
-const timestamp = z.iso.datetime({ offset: true }).refine(value => Number.isFinite(Date.parse(value)))
+const timestamp = z.iso.datetime().refine(value => Number.isFinite(Date.parse(value)))
 const cursor = z.string().min(1).max(1024).regex(/^[A-Za-z0-9_-]+$/).nullable()
 export const handleState = z.strictObject({ user_id: uuid, platform, version: creationRevision, configured: z.boolean() })
   .refine(h => !h.configured || h.version > 0)
