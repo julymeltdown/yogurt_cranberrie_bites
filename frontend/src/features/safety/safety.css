@@ -1,0 +1,15 @@
+.mcr-safety-panel,.mcr-safety-dialog{color:#f5f2ed;background:#191a20;font:inherit;line-height:1.5;padding:1.25rem;box-sizing:border-box;overflow-wrap:anywhere}
+.mcr-safety-panel{max-width:42rem;margin:auto}
+.mcr-safety-dialog{width:min(34rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);overflow:auto;border:1px solid #70717a;border-radius:.5rem}
+.mcr-safety-dialog::backdrop{background:#000a}
+.mcr-safety-panel button,.mcr-safety-dialog button,.mcr-safety-panel input,.mcr-safety-dialog input,.mcr-safety-dialog select,.mcr-safety-dialog textarea{font:inherit;max-width:100%;box-sizing:border-box}
+.mcr-safety-panel button,.mcr-safety-dialog button{min-height:44px;padding:.5rem .8rem;margin:.35rem .4rem .35rem 0;border:1px solid #999;background:#f3eee6;color:#16171b;border-radius:.25rem;cursor:pointer}
+.mcr-safety-panel button:disabled,.mcr-safety-dialog button:disabled{opacity:.6;cursor:default}
+.mcr-safety-panel :focus-visible,.mcr-safety-dialog :focus-visible{outline:3px solid #e8bf68;outline-offset:3px}
+.mcr-safety-dialog label{display:block;margin:1rem 0}
+.mcr-safety-dialog select,.mcr-safety-dialog textarea{display:block;width:100%;background:#fff;color:#111;padding:.6rem;border:1px solid #777;border-radius:.25rem}
+.mcr-safety-dialog textarea{min-height:7rem;resize:vertical}
+.mcr-safety-dialog fieldset{min-width:0;border:1px solid #777;padding:.7rem}
+.mcr-safety-dialog input[type=checkbox]{margin-right:.6rem}
+.mcr-safety-panel li{padding:.6rem 0}
+.mcr-safety-id{font-family:monospace;overflow-wrap:anywhere}

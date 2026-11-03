@@ -1,0 +1,49 @@
+import { useEffect, useState, useSyncExternalStore } from 'react'
+import type { SafetyController } from './controller'
+import { reasons } from './contract'
+import { SafetyDialog } from './Dialog'
+import './safety.css'
+const labels={HARASSMENT:'Harassment',PRIVACY:'Privacy concern',UNSAFE_MEETING:'Unsafe meeting',SPAM:'Spam',OTHER:'Other'}
+export interface EvidenceChoice {readonly id:string;readonly label:string}
+/** Owner supplies only current actor-owned READY REPORT media choices, never moderator detail. */
+export function ReportDialog({controller,search,evidenceChoices=[],onDismiss}:{controller:SafetyController;search:string;evidenceChoices?:readonly EvidenceChoice[];onDismiss:()=>void}){
+ const s=useSyncExternalStore(controller.subscribe,controller.read)
+ useEffect(()=>{void controller.open(search)},[controller,search])
+ const dismiss=()=>{controller.close();onDismiss()}
+ return <SafetyDialog title="Report a concern" onDismiss={dismiss}>
+  <button type="button" data-initial-focus onClick={dismiss}>Close report</button>
+  {s.target&&<p>Target: {s.target.target_type.toLowerCase()} <span className="mcr-safety-id">{s.target.target_id}</span></p>}
+  {s.phase==='ready'&&<form onSubmit={e=>{e.preventDefault();void controller.report()}}>
+   <label>Reason<select value={s.reason} onChange={e=>controller.edit({reason:e.target.value as typeof reasons[number]})}>{reasons.map(reason=><option key={reason} value={reason}>{labels[reason]}</option>)}</select></label>
+   <label>What happened? (optional, up to 2000 characters)<textarea value={s.text} onChange={e=>controller.edit({text:e.target.value})}/></label>
+   {evidenceChoices.length>0&&<fieldset><legend>Evidence (up to four items)</legend>{evidenceChoices.map(item=><label key={item.id}><input type="checkbox" checked={s.evidence.includes(item.id)} disabled={!s.evidence.includes(item.id)&&s.evidence.length>=4} onChange={e=>controller.edit({evidence:e.target.checked?[...s.evidence,item.id]:s.evidence.filter(id=>id!==item.id)})}/>{item.label}</label>)}</fieldset>}
+   <p>Only authorized reviewers can see your identity, explanation and evidence. Submission does not guarantee a moderation outcome.</p>
+   <button type="submit">Submit report</button>
+  </form>}
+  {s.report&&<p>Current report status: {s.report.state.toLowerCase().replace('_',' ')}</p>}
+  <p role="status" aria-live="polite">{s.message||'Checking report availability…'}</p>
+  {['pending','unknown','failed'].includes(s.phase)&&<button type="button" onClick={()=>void controller.checkStatus()}>Check original request status</button>}
+ </SafetyDialog>
+}
+export function BlocksPanel({controller,onBack}:{controller:SafetyController;onBack:()=>void}){
+ const s=useSyncExternalStore(controller.subscribe,controller.read),[confirm,setConfirm]=useState<string|null>(null)
+ useEffect(()=>{void controller.loadBlocks()},[controller])
+ const locked=['submitting','pending','unknown','failed','closed'].includes(s.phase)
+ return <section className="mcr-safety-panel" aria-labelledby="mcr-blocks-title">
+  <button type="button" onClick={onBack}>Back</button><h1 id="mcr-blocks-title">Blocked users</h1>
+  <p>Blocking closes affected private views. Unblocking never restores previous consent or social access.</p>
+  {s.blocksPhase==='loading'&&<p role="status">Loading blocked users…</p>}
+  {s.blocksPhase==='ready'&&s.blocks?.items.length===0&&<p>No blocked users on this page.</p>}
+  <ul>{s.blocks?.items.map(item=><li key={item.target_user_id}><span className="mcr-safety-id">{item.target_user_id}</span> <button type="button" disabled={locked} onClick={()=>setConfirm(item.target_user_id)}>Unblock user</button></li>)}</ul>
+  {s.blocks?.next_cursor&&<button disabled={locked} onClick={()=>void controller.loadBlocks(s.blocks!.next_cursor!)}>Next page</button>}
+  {s.blocksPhase==='error'&&<button type="button" onClick={()=>void controller.loadBlocks()}>Reload blocked users</button>}
+  <p role="status">{s.message}</p>
+  {['pending','unknown','failed'].includes(s.phase)&&<button onClick={()=>void controller.checkStatus()}>Check original request status</button>}
+  {confirm&&!locked&&<SafetyDialog title="Unblock this user?" onDismiss={()=>setConfirm(null)}><p>Previous consent remains revoked. New permission is required before sharing private information again.</p><button data-initial-focus onClick={()=>setConfirm(null)}>Keep blocked</button><button onClick={()=>{const id=confirm;setConfirm(null);void controller.unblock(id)}}>Confirm unblock</button></SafetyDialog>}
+ </section>
+}
+export function BlockUserButton({controller,userId}:{controller:SafetyController;userId:string}){
+ const s=useSyncExternalStore(controller.subscribe,controller.read),[confirm,setConfirm]=useState(false)
+ const locked=['submitting','pending','unknown','failed','closed'].includes(s.phase)
+ return <><button disabled={locked} onClick={()=>setConfirm(true)}>Block user</button>{confirm&&!locked&&<SafetyDialog title="Block this user?" onDismiss={()=>setConfirm(false)}><p>This ends access to affected private interactions. Previous consent will not return if you unblock later.</p><button data-initial-focus onClick={()=>setConfirm(false)}>Cancel block</button><button onClick={()=>{setConfirm(false);void controller.block(userId)}}>Confirm block</button></SafetyDialog>}</>
+}
