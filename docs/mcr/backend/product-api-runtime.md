@@ -72,7 +72,7 @@ The platform actor-buffer change was separately delegated by its current owner:
 only `/concert.product.v1.ProductService/Dispatch` admits 10 MiB plus 16 KiB of
 protobuf metadata and five bytes of gRPC framing. Both signing and verification
 use that bound; all other methods retain the existing 4 MiB ceiling. Local source
-commit `f2c750f9` is **NOT_RUN**, not a published validation claim. Ownership of
+commit `f2c750f9` now has the targeted native verification recorded below. Ownership of
 `actor_delegation.rs` was returned to the authority developer for sealed-parent
 capture; do not overwrite that subsequent work.
 
@@ -122,9 +122,11 @@ New generated Rust clients use the existing Tonic/Prost build and dependencies.
 | Rust 1.88 `rustfmt --edition 2021 --config skip_children=true` on owned new Rust files | Exit 0 | Parsing/formatting only |
 | `git diff --check` | Exit 0 | Whitespace only |
 | `python3 -m unittest discover -s backend/scripts/mcr -p test_product_api_smoke.py -v` | Exit 0, 6 tests | Probe/schema safety, not application execution |
-| Platform maximum signed upload/retained-limit regression | **NOT_RUN** | Requires explicitly released build target |
-| Concert `product_runtime` and media wrapper native tests | **NOT_RUN** | Same resource requirement |
-| Gateway `concert_product_http` actual transport-boundary fixtures | **NOT_RUN** | No real producer authority claim |
+| Platform maximum signed upload/retained-limit regression | Exit 0, 1 test | Actual signer → verifier; no product owner claim |
+| Concert `product_runtime` | Exit 0, 4 tests | Closed routes, caller/actor policy and startup settings; media wrapper compiled |
+| Gateway `concert_product_http` actual transport-boundary fixtures | Exit 0, 4 tests | Three owned HTTP cases plus retained harness check; no real producer authority claim |
+| Gateway exact journal bypass and retained idempotency scope | Exit 0, 2 tests | Unknown paths/methods remain outside bypass; inherited scope preserved |
+| Actual copied Concert process with unsupported Feed/media modes | Exit nonzero as required, 2 cases | Fixed startup error before listener marker or DB connection |
 | Actual multi-service HTTP Feed/media journey | **NOT_RUN** | Qualified producers/configuration required |
 | Actual revocation, rollback, recovery and crash-settlement gates | **NOT_RUN** | Required before acceptance |
 
@@ -137,9 +139,34 @@ denial. `HTTP_SMOKE_PASS` is deliberately separate from owner-fence acceptance;
 revocation ordering, rollback and crash settlement remain explicitly `NOT_RUN`
 unless their native gates have actually executed.
 
-Build targets and private PG clusters remain separately leased. No Cargo build,
-shared target write or PG operation has been performed by this source checkpoint.
-The first native compile will refresh peer source, preserve their module/proto
-registrations, then use Rust 1.88, locked/offline dependencies, at most two jobs,
-debug information disabled and incremental compilation disabled. Only exact
-copied/hash-pinned executables may enter a private socket-only PG test run.
+The native source base was `4e65142e9883a2177364fef709bb2d0b54bf2feb` after
+merging current remote `8f89d190` and preserving participant generation/exports.
+The MEDIA target was explicitly transferred from its previous owner, accepted
+after a fresh 77.77 GiB/zero-handle check, and released after artifact freezing
+and a fresh zero-handle/76.99 GiB check. No BACKEND target was acquired. Commands
+used Rust 1.88, `--locked --offline`, jobs 2, both profile debug settings 0 and
+incremental compilation 0. No PG operation was run by this checkpoint.
+
+The first Concert build exited 101 because the retained `contracts-build` cache
+embedded another worktree's absolute proto path. Under the exclusive MEDIA lease,
+only `contracts-build`, Auth/Profile/Friend service build artifacts and Concert
+were cleaned; the exact retry exited 0. The first Gateway HTTP run found a real
+missing-Origin reason regression. Fix `4e65142e` preserves only the closed
+browser-denial reason, discards arbitrary inherited diagnostics, and passed the
+same affected tests. These failures are resolved, not suppressed.
+
+Exact copied executables and JSON build receipts are frozen outside the target
+in the local `mcr-product-api-native` evidence directory. SHA-256 values:
+
+| Copied artifact | SHA-256 |
+| --- | --- |
+| Platform tests | `493ebefc2d5dbb6930d8d90a51ba9edfa639daf80512d5f76f5befe47b5f0eb9` |
+| Concert product tests | `34ebd374820e3a5f354c120aa93bb8ccd07e0443fdbea4dda7ef0586a423a661` |
+| Concert service | `27a31745d10d9680e35911266bea934f22afbffda0633a4c0fa174c8f1063706` |
+| Gateway product HTTP tests, corrected | `0c3b7e361c204d9e8d4daa8a5fc6c815d54671857779695f4df5de80f92829e7` |
+| Gateway library tests | `6c9aa547dd454e7e607cfc2ac2c14802ce11654d9451a58fee8a78708b1726c0` |
+
+These bounded results qualify the transport and fail-closed startup checkpoint.
+They do not qualify the currently missing production owner constructors, actual
+multi-service HTTP journey or acceptance of the whole assignment. Required work
+continues without holding an idle build lease.
