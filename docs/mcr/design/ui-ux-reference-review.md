@@ -56,13 +56,15 @@ These are visual-correction work packages within existing product scope, not add
 
 | Package | Coordination owner | Writable scope / dependency |
 | --- | --- | --- |
-| UIV01 reusable window presentation | Main; ready frontend assembly worker may take the bounded follow-up | NEW `frontend/src/shared/ui/concert-window/**` and `docs/mcr/frontend/concert-window.md` only. Build reference-derived frame, title/action controls, tabs, icon navigation and compact row examples in an isolated preview. No existing base CSS, root composition, contracts, manifests or other lane edits. |
+| UIV01 reusable window presentation | Main; assigned to `mcr(fe) UIV01 Concert window presentation` | NEW `frontend/src/shared/ui/concert-window/**` and `docs/mcr/frontend/concert-window.md` only. Build reference-derived frame, title/action controls, tabs, icon navigation and compact row examples in an isolated preview. No existing base CSS, root composition, contracts, manifests or other lane edits. |
 | UIV02 public entry and shell adoption | World SL / integrator | Public/auth presentation and shell are separate exact-path assignments. Root/shell/global-token adoption remains explicitly integrator-owned. UIV01 alone is not application adoption. |
 | UIV03 community screens | Community SL | Separate feature UI/CSS ownership for feed, parties and gifts. Preserve existing controllers, server invariants and each current writer's ownership. |
 | UIV04 character/profile presentation | World + Social SLs | Avatar/profile UI paths and approved source-pack derivatives; coordinate existing art owner. Do not make unapproved cutouts or legacy fallbacks to manufacture a screenshot. |
 | UIV05 map and wall presentation | World + Operations SLs | Place/map and mural editor presentation only, separately owned; preserve current lifecycle/archive functional assignments. |
 
 An owner must not silently take over a file another active worker owns. If ownership is unavailable, record the exact path dependency and continue new, disjoint work. Delivery's stalled composer is not permission to edit its dirty checkout.
+
+The audit/reference brief was sent to Delivery and the World, Community, Social and Operations leads. Sending is recorded as a handoff, not proof that all recipients have acted. The UIV01 worker (`01a1a26e-1de2-7b41-a294-c9a79cfded9b`) explicitly confirmed its isolated `codex/mcr-fe-UIV01` branch at audit commit `be85021c1e28f0b0f4a6182c4300a93b16179f5b`, completed previous assembly goal, and newly created **ACTIVE unbudgeted UIV01 goal**. It is inspecting the actual image and implementing only the new paths above. Existing application adoption and the other correction packages remain open.
 
 ## Visual completion evidence
 
