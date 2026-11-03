@@ -111,6 +111,13 @@ read-only resolution under the renewed context. No action is silently replayed.
 Private state is in memory only; no local/session storage, persisted query data,
 analytics payload or production debug global is added.
 
+`Recheck operator access` reads only the injected fresh context and reopens
+eligible controls after the role owner publishes renewed authority. It creates
+no role endpoint or role request. An existing job can then be reloaded by its
+exact ID; missing authority remains visibly unavailable. Throttling honors the
+full server delay up to the shared 24-hour bound, is scoped to canonical privacy
+identity, and is erased on privacy change.
+
 Construct `createAdminTransport` once with the canonical client, privacy and
 qualified context; pass it to `createMuralAdminApi`/`createClosureApi`, then the
 matching controllers. Call `start` after admission, retain controllers through
@@ -119,6 +126,8 @@ privacy change rather than reviving an old scope. Delivery alone mounts the
 components at `/admin/mural` and `/admin/archive` and owns all root registration.
 No route is installed by this patch. Server fresh authorization, audit receipts,
 atomic revisions and actual closure work remain owning-service responsibilities.
+Dispose the shared feature transport after both controllers release it; this
+unregisters its private throttle cleanup.
 
 ## Verification
 
@@ -129,7 +138,7 @@ qualified installation; no install or dependency mutation was performed.
 
 | Command | Exit | Evidence |
 | --- | --- | --- |
-| `NODE frontend/node_modules/vitest/vitest.mjs run frontend/src/features/admin/mural/__tests__ frontend/src/features/admin/closure/__tests__` | 0 | 58 tests / 4 files: contract fixtures/parity, actual canonical HTTP, explicit commands, pending/unknown/no replay, forged receipts/results, exact snapshot, locks, stale revisions, partial closure, server denial, role/privacy eviction, delayed response, timeout and throttling. |
+| `NODE frontend/node_modules/vitest/vitest.mjs run frontend/src/features/admin/mural/__tests__ frontend/src/features/admin/closure/__tests__` | 0 | 60 tests / 4 files: contract fixtures/parity, actual canonical HTTP, explicit commands, pending/unknown/no replay, forged receipts/results, exact snapshot, locks, stale revisions, partial closure, server denial, role/privacy eviction/renewal, delayed response, timeout and identity-scoped full-delay throttling. |
 | `NODE frontend/node_modules/typescript/bin/tsc --project frontend/tsconfig.json --pretty false --incremental false` | 0 | Whole frontend strict types. |
 | `NODE frontend/node_modules/oxlint/bin/oxlint frontend/src/features/admin/mural frontend/src/features/admin/closure` | 0 | Scoped lint, zero warnings/errors. |
 | `NODE frontend/src/features/admin/mural/__tests__/browser-smoke.mjs` | 0 | Actual Chrome 156.0.8078.80, 360/390/430×844 touch/mobile/reduced-motion emulation. |
@@ -146,6 +155,12 @@ pause/resume/freeze, lost-wall-command recovery without replay, visible failed
 closure step, progress reread and cross-panel privacy eviction. The fixture
 global exists only in the test entry point. These are qualified frontend fixture
 checks; they do not certify backend moderation or IN04.
+
+Committed increment ancestry starts at `75856239d273e14a21a17f4c6248af35fe7e7007`
+(parent `cd7192f`). A following correction qualifies renewed operator access and
+full-delay private throttling; its browser report records parent `7585623` and
+the exact tested source hashes. Delivery has the initial committed handoff;
+the required resume amendment remains a separate unfinished increment.
 
 Remaining required work: adopt the committed explicit closure-resume contract,
 add meaningful failed-step retry/ambiguous-resume fixtures and browser checks,

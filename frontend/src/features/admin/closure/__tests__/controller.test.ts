@@ -35,6 +35,11 @@ describe('FE39 event closure', () => {
     await h.closure.refresh(ids.job); h.closure.dispose(); expect(h.closure.read()).toMatchObject({ phase: 'disposed', job: null, jobId: null, command: null })
     h.session.replace(h.session.read().generation, null); await h.closure.refresh(ids.job); expect(h.closure.read().job).toBeNull()
   })
+  it('missing role is visibly unavailable; renewed qualified access can reopen controls without a role endpoint', () => {
+    const previous = h.context(); h.update(null); h.closure.revalidate(); expect(h.closure.read()).toMatchObject({ phase: 'unavailable' }); expect(h.closure.read().message).toContain('authority unavailable')
+    h.update({ ...previous, roleRevision: 2 }); h.closure.revalidate(); expect(h.closure.read().phase).toBe('ready'); expect(h.server.requests).toHaveLength(0)
+    expect(h.closure.prepare('Fresh qualified owner')).toBe(true)
+  })
   it.each(['wrong-event','wrong-job','extra-private','duplicate-step','false-complete','regress'])('rejects %s closure progress', async mode => {
     await h.closure.refresh(ids.job)
     h.server.transform = value => {

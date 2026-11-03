@@ -35,8 +35,9 @@ export function createEventClosure({ privacy, context, api, newKey = () => crypt
       : job.state === 'COMPLETED' ? 'Server reports all closure steps complete.' : 'Closure is in progress. Refresh this job to observe durable progress.' })
   }
   async function refresh(jobId = state.jobId) {
-    if (disposed || !uuid.safeParse(jobId).success || latest && latest.job_id !== jobId) return false
-    const lease = owner.begin(); if (!lease) { if (!owner.capture()) publish({ phase: 'unavailable', job: null }); return false }
+    if (disposed) return false
+    if (!uuid.safeParse(jobId).success || latest && latest.job_id !== jobId) { publish({ message: 'Use the exact authorized closure job ID. Another job cannot replace the observed job.' }); return false }
+    const lease = owner.begin(); if (!lease) { if (!owner.capture()) publish({ phase: 'unavailable', job: null, message: 'Operator authority unavailable. Revalidate access before loading closure progress.' }); return false }
     publish({ phase: 'loading', draft: null, job: null })
     try { const job = await api.read(lease.context, lease.signal, jobId!); if (!owner.valid(lease)) return false; accept(job); return true }
     catch { if (owner.valid(lease)) publish({ phase: 'error', job: null, message: 'Closure progress unavailable. Retry this authorized job read; it does not repeat closure.' }); return false }
@@ -83,8 +84,14 @@ export function createEventClosure({ privacy, context, api, newKey = () => crypt
     } catch { if (owner.valid(lease)) publish({ commandPhase: 'unknown', message: 'Original closure could not be verified. No replay is permitted.' }) }
     finally { owner.finish(lease) }
   }
+  function revalidate() {
+    if (!disposed && state.commandPhase !== 'sending' && state.commandPhase !== 'checking' && state.phase !== 'loading') {
+      const current = owner.capture()
+      publish({ phase: current ? 'ready' : 'unavailable', draft: null, message: current ? 'Operator access checked. Load an existing job or review an eligible event closure.' : 'Operator authority unavailable. Revalidate your event access before continuing.' })
+    }
+  }
   return { read: () => state, subscribe(f: () => void) { listeners.add(f); return () => { listeners.delete(f) } },
-    start() { if (!disposed) { owner.start(); publish({ phase: owner.capture() ? 'ready' : 'unavailable' }) } }, prepare, confirm, check, refresh,
+    start() { if (!disposed) { owner.start(); revalidate() } }, revalidate, prepare, confirm, check, refresh,
     cancel() { publish({ draft: null }) },
     dispose() { if (!disposed) { disposed = true; latest = null; owner.dispose(); publish({ ...empty(), phase: 'disposed' }); listeners.clear() } },
   }

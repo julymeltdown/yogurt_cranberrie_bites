@@ -55,4 +55,13 @@ describe('FE39 canonical HTTP boundary', () => {
     expect(await h.muralApi.send(h.context(), new AbortController().signal, command())).toEqual({ kind: 'unknown' })
     expect(h.posts()).toHaveLength(1)
   })
+  it('preserves a full server retry delay and clears that private throttle on a new canonical actor', async () => {
+    h.server.intercept = () => Promise.resolve(Response.json({ code: 'RATE', message: 'safe fixture', details: { reason: 'RATE_LIMITED', retry_after_ms: 3600000 } }, { status: 429 }))
+    await h.muralApi.send(h.context(), new AbortController().signal, command()); h.advance(300000)
+    await expect(h.muralApi.read(h.context(), new AbortController().signal)).rejects.toThrow(); expect(h.server.requests).toHaveLength(1)
+    h.server.intercept = null
+    h.session.replace(h.session.read().generation, { userId: ids.restore, eventId: ids.event, accessToken: 'new_actor' })
+    h.update({ ...h.context(), scope: h.privacy.capture() })
+    await h.muralApi.read(h.context(), new AbortController().signal); expect(h.server.requests).toHaveLength(2)
+  })
 })

@@ -5,6 +5,7 @@ import { WallControl } from '../WallControl'
 import { EventClosure } from '../../closure/EventClosure'
 import './preview.css'
 const f = fixture()
+const originalContext = f.context()
 await f.mural.start(); f.closure.start()
 function App() {
   const [tab, setTab] = useState('wall')
@@ -18,6 +19,7 @@ const testOnly = {
   mode(value: string) { f.server.mode = value },
   progress(state: 'RUNNING' | 'PARTIAL_FAILURE' | 'COMPLETED') { f.server.job = job(state, f.server.job.revision + 1) },
   revoke() { f.update(null) },
+  renew() { f.update({ ...originalContext, scope: f.privacy.capture(), roleRevision: 2 }) },
   logout() { f.session.replace(f.session.read().generation, null) },
   dispose: f.cleanup,
 }

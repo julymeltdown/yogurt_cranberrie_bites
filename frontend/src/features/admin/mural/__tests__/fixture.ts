@@ -21,7 +21,7 @@ export function fixture() {
   const privacy = createQueryPrivacy({ client: new QueryClient(), session }), listeners = new Set<() => void>()
   let context: OperatorContext | null = { scope: privacy.capture(), role: 'OPERATOR', roleRevision: 1, eventRevision: 8, phase: 'LIVE' }
   const authority = { read: () => context, subscribe(f: () => void) { listeners.add(f); return () => { listeners.delete(f) } } }
-  const server = { wall: wall(), job: job(), mode: 'ack', operator: true, requests: [] as Request[], receipts: new Map<string, Record<string, unknown>>(),
+  const server = { wall: wall(), job: job(), mode: 'ack', operator: true, eventRevision: 8, eventPhase: 'LIVE', requests: [] as Request[], receipts: new Map<string, Record<string, unknown>>(),
     transform: (value: unknown, _request: Request): unknown => value,
     intercept: null as null | ((request: Request) => Promise<Response> | null) }
   const reply = (value: unknown, request: Request, status = 200) => Response.json(server.transform(value, request), { status })
@@ -46,6 +46,11 @@ export function fixture() {
     const body = await request.clone().json(), closure = url.pathname.endsWith('/closure')
     const operation = closure ? 'closeConcertEvent' : url.pathname.endsWith('/control') ? 'controlConcertMural' : url.pathname.endsWith('/locks') ? 'lockConcertMuralRegion' : 'restoreConcertMural'
     if (!closure && body.expected_revision !== server.wall.revision) return error('VERSION_CONFLICT', 409)
+    if (closure) {
+      if (!['OPEN', 'LIVE'].includes(server.eventPhase)) return error('EVENT_READ_ONLY', 409)
+      if (body.expected_revision !== server.eventRevision) return error('VERSION_CONFLICT', 409)
+      server.eventRevision++; server.eventPhase = 'READ_ONLY'
+    }
     if (!closure) {
       server.wall = { ...server.wall, revision: server.wall.revision + 1,
         state: body.action === 'PAUSE' || operation === 'restoreConcertMural' ? 'PAUSED' : body.action === 'RESUME' ? 'EDITABLE' : body.action === 'FREEZE' ? 'FROZEN' : server.wall.state,
@@ -69,6 +74,6 @@ export function fixture() {
     update(next: OperatorContext | null) { context = next; for (const f of Array.from(listeners)) f() },
     context: () => context!,
     posts: () => server.requests.filter(r => r.method === 'POST'),
-    cleanup() { mural.dispose(); closure.dispose(); privacy.dispose() },
+    cleanup() { mural.dispose(); closure.dispose(); transport.dispose(); privacy.dispose() },
   }
 }

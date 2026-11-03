@@ -31,7 +31,7 @@ export function createMuralControl({ privacy, context, api, newKey = () => crypt
   }
   async function load() {
     if (disposed) return
-    const lease = owner.begin(); if (!lease) { if (!owner.capture()) publish({ phase: 'unavailable', mural: null, draft: null }); return }
+    const lease = owner.begin(); if (!lease) { if (!owner.capture()) publish({ phase: 'unavailable', mural: null, draft: null, message: 'Operator authority unavailable. Revalidate access before loading wall controls.' }); return }
     publish({ phase: 'loading', draft: null, mural: null })
     try { const data = await api.read(lease.context, lease.signal); if (owner.valid(lease)) { accept(data); publish({ message: state.command ? 'Original command remains unresolved. Check its status before another action.' : 'Server wall state loaded.' }) } }
     catch { if (owner.valid(lease)) publish({ phase: 'error', mural: null, message: 'Wall controls unavailable. Retry the authorized read.' }) }

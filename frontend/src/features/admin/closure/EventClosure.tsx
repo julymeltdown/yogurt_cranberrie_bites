@@ -30,5 +30,6 @@ export function EventClosure({ controller }: { controller: EventClosureControlle
       <label>Existing closure job ID<input required value={jobId} onChange={e => setJobId(e.target.value)} maxLength={36} autoComplete="off" spellCheck={false} pattern="[0-9a-f-]{36}" /></label>
       <button type="submit" disabled={busy}>Load existing closure job</button>
     </form>}
+    <button disabled={busy || state.phase === 'disposed'} onClick={controller.revalidate}>Recheck operator access</button>
   </section>
 }

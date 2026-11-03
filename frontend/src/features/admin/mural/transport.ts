@@ -13,8 +13,9 @@ export type Outcome<T> = { kind: 'confirmed'; data: T } | { kind: 'pending' | 'u
 export function createAdminTransport({ http, privacy, context, now = Date.now }: {
   http: HttpClient; privacy: PrivacyPort; context: OperatorContextPort; now?: () => number
 }) {
-  let retryAt = 0
-  const current = (lease: OperatorContext, signal: AbortSignal) => { const active = qualifiedContext(privacy, context); return !signal.aborted && !!active && sameContext(active, lease) }
+  let retryAt = 0, retryScope: string | null = null, disposed = false
+  const stopPrivacy = privacy.registerCleanup(() => { retryAt = 0; retryScope = null })
+  const current = (lease: OperatorContext, signal: AbortSignal) => { const active = qualifiedContext(privacy, context); return !disposed && !signal.aborted && !!active && sameContext(active, lease) }
   function receipt(input: unknown, command: AdminCommand) {
     const r = receiptSchema.parse(input), errors: readonly string[] = Object.values(DOMAIN_OPERATIONS[command.operation].errors).flat()
     if (r.actor_id !== command.scope.userId || r.event_id !== command.scope.eventId || r.operation_id !== command.operation || r.idempotency_key !== command.key
@@ -28,14 +29,17 @@ export function createAdminTransport({ http, privacy, context, now = Date.now }:
     return Object.freeze(r)
   }
   async function request<T>(lease: OperatorContext, signal: AbortSignal, input: Omit<HttpRequest<T>, 'access' | 'errorFamily' | 'signal'>) {
-    if (!current(lease, signal) || now() < retryAt) throw new Error('Operator authority or retry window unavailable')
+    if (!current(lease, signal)) throw new Error('Operator authority unavailable')
+    const nextScope = JSON.stringify(lease.scope)
+    if (retryScope !== nextScope) { retryScope = nextScope; retryAt = 0 }
+    if (now() < retryAt) throw new Error('Retry window unavailable')
     const result = await http.request({ ...input, access: 'protected', errorFamily: 'domain', signal,
       decode(value, ctx) {
         if (!current(lease, signal) || ctx.path !== input.path || ctx.scope.userId !== lease.scope.userId || ctx.scope.eventId !== lease.scope.eventId
           || ctx.scope.generation !== lease.scope.generation) throw new Error('Unverified operator response')
         return input.decode(value, ctx)
       } }).catch((error: unknown) => {
-        if (current(lease, signal) && error instanceof TransportError && error.status === 429) retryAt = now() + Math.min(300000, Math.max(1000, error.retryAfterMs ?? 1000))
+        if (current(lease, signal) && error instanceof TransportError && error.status === 429) retryAt = now() + Math.min(86400000, Math.max(1000, error.retryAfterMs ?? 1000))
         throw error
       })
     if (!current(lease, signal)) throw new Error('Operator authority changed')
@@ -57,6 +61,7 @@ export function createAdminTransport({ http, privacy, context, now = Date.now }:
     }
   }
   return { request, post, receipt,
+    dispose() { disposed = true; retryAt = 0; retryScope = null; stopPrivacy() },
     status: (lease: OperatorContext, signal: AbortSignal, command: AdminCommand) => request(lease, signal, { method: 'GET', path: `/api/concert/events/${lease.scope.eventId}/commands`,
       domainOperation: 'getConcertCommandStatus', query: { operation_id: command.operation, idempotency_key: command.key },
       decode(input, ctx) { if (ctx.status !== 200 || !sameScope(command.scope, lease.scope) || command.roleRevision !== lease.roleRevision) throw new Error('Invalid command status'); return receipt(input, command) } }),
