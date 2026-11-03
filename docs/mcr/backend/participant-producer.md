@@ -144,6 +144,10 @@ and the additive service `build.rs` step. The previous avatar checkout remains
 stopped. Only delivery integrates and pushes master.
 
 Planning check and whitespace check: exit 0. Scoped Rust formatting: exit 0.
+Exact eight-path/shared-change/import audit: exit 0. The retained vendored
+`protoc-bin-vendored-macos-aarch_64-3.2.0/bin/protoc` compiled the new proto to a
+descriptor and decoded its package, all eleven request fields and all three
+methods successfully (exit 0), independently of Cargo.
 Compilation, guarded-RPC execution and native probe: **NOT_RUN** while awaiting
 an explicit fair lease of the existing shared Cargo target. Source work has no
 whole-wave barrier. Expected compile command:
