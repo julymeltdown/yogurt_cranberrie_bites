@@ -491,6 +491,63 @@ async fn guarded_get_avatar_preferences_and_conflict_reread_use_frozen_json() {
     assert_eq!(preferences["profile"]["avatar"], saved.unwrap());
 }
 #[tokio::test]
+async fn guarded_whole_character_projection_preserves_each_frozen_preset() {
+    // This fixture store proves RPC/DTO union compatibility, not release
+    // inventory or production-art admission. Native BE07 checks cover those.
+    let selected: Value = serde_json::from_str(include_str!(
+        "../../../../contracts/fixtures/assets/selected-static/photo01_front_01.json"
+    ))
+    .unwrap();
+    for index in 1..=6 {
+        let (s, _) = service("");
+        let mut config = selected.clone();
+        config["preset_id"] = format!("photo01_front_{index:02}").into();
+        let mut m = message(Operation::SetAvatar);
+        m.request_json = serde_json::to_vec(&json!({
+            "expected_revision": 1,
+            "config": config,
+        }))
+        .unwrap();
+        let (code, saved, _) = call(s.clone(), m, Operation::SetAvatar).await;
+        assert_eq!(code, Code::Ok, "preset {index}");
+        let saved = saved.unwrap();
+        assert_eq!(saved["config"], config);
+        assert_eq!(saved["revision"], 2);
+        let (code, current, _) = call(
+            s.clone(),
+            message(Operation::GetParticipant),
+            Operation::GetParticipant,
+        )
+        .await;
+        assert_eq!(code, Code::Ok);
+        assert_eq!(current.unwrap()["profile"]["avatar"], saved);
+        let (code, preferences, _) = call(
+            s,
+            message(Operation::UpdatePreferences),
+            Operation::UpdatePreferences,
+        )
+        .await;
+        assert_eq!(code, Code::Ok);
+        assert_eq!(preferences.unwrap()["profile"]["avatar"], saved);
+    }
+    for field in ["item_ids", "skin_tone_id", "url"] {
+        let (s, calls) = service("");
+        let mut config = selected.clone();
+        config[field] = "forbidden-mixed-field".into();
+        let mut m = message(Operation::SetAvatar);
+        m.request_json = serde_json::to_vec(&json!({
+            "expected_revision": 1,
+            "config": config,
+        }))
+        .unwrap();
+        let (code, _, reason) = call(s, m, Operation::SetAvatar).await;
+        assert_eq!(code, Code::InvalidArgument, "{field}");
+        assert_eq!(reason.as_deref(), Some("INVALID_INPUT"));
+        assert_eq!(calls.auth.load(Ordering::SeqCst), 0);
+        assert_eq!(calls.store.load(Ordering::SeqCst), 0);
+    }
+}
+#[tokio::test]
 async fn invalid_transport_never_calls_owner_or_store_ports() {
     for op in [
         Operation::GetParticipant,

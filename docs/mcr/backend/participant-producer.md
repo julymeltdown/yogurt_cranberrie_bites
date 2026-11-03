@@ -203,3 +203,11 @@ The focused deadline matrix additionally covers slow mutation-capability awaits
 and requires the exact `DEADLINE_EXCEEDED` reason after slow Auth/Profile calls,
 including a noncooperative blocking Profile implementation. It must prove no
 store dispatch. This source addition is also **NOT_RUN** until compilation.
+
+The pending guarded whole-character projection test uses the exact selected
+config golden at `contracts/fixtures/assets/selected-static/photo01_front_01.json`
+and changes only its enumerated preset suffix 01..06. It checks PUT response,
+authorized GET, preference-preserved avatar and structural mixed-field refusal.
+Its in-memory store proves RPC/DTO compatibility only; it does not certify native
+inventory validation or production-art admission. It intentionally depends on
+the selected-source owner's canonical parser rather than a local replacement.
