@@ -8,6 +8,7 @@ import { decodeBootstrap } from './bootstrap'
 import { createBrowserCookiePolicy, type CookiePolicy } from './cookie-policy'
 import { createRecovery } from './recovery'
 import { createEnrollment } from './enrollment'
+import { createAccountDeletionOwner } from './account-deletion'
 
 type Notice = 'invalid-input' | 'credentials' | 'rate-limited' | 'unavailable' | 'expired' | 'changed' | null
 export interface AuthState {
@@ -150,8 +151,12 @@ export function createSessionController(options: SessionOptions) {
     // Calling the ordinary entry point cannot bypass the contract's explicit-secret-read rule.
     return input.domainOperation === 'revealConcertSocialHandle' ? requestSensitive(input) : requestWithPolicy(input, true)
   }
+  const deletion = createAccountDeletionOwner({ http, session, privacy,
+    usable: () => !disposed && state.pending === null && !recovery.pending && !enrollment.pending,
+    credentialExpiry: () => expiresAt, unauthorized: () => clear('expired'),
+  })
   return {
-    session, queryClient, privacy, request, requestSensitive, enrollment,
+    session, queryClient, privacy, request, requestSensitive, enrollment, accountDeletion: deletion.port,
     checkEnrollmentAvailability: () => capabilities(true),
     requestPasswordReset: recovery.request,
     async confirmPasswordReset(token: string, newPassword: string, signal?: AbortSignal) {
@@ -226,7 +231,7 @@ export function createSessionController(options: SessionOptions) {
     },
     dispose() {
       if (disposed) return
-      enrollment.dispose(); recovery.dispose(); clear(); privacy.dispose(); queryClient.clear(); stopPeer(); cookiePolicy.dispose(); disposed = true; listeners.clear()
+      deletion.dispose(); enrollment.dispose(); recovery.dispose(); clear(); privacy.dispose(); queryClient.clear(); stopPeer(); cookiePolicy.dispose(); disposed = true; listeners.clear()
     },
   }
 }

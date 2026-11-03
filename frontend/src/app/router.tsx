@@ -4,6 +4,7 @@ import { createBrowserRouter, Link, Outlet, type RouteObject } from 'react-route
 import { Feedback } from '../shared/ui'
 import { WorldPanelOwnership } from './world-panels/ownership'
 import { PortsProvider } from './access'
+import { AccountDeletionOwnership } from './account-deletion-entry/context'
 import type { ShellPorts } from './ports'
 import { adminPaths, panelRoutes, publicPaths } from './routes'
 import { PanelScreen, WorldBoundary } from './WorldShell'
@@ -15,6 +16,7 @@ const PartiesPanel = lazy(() => import('./CommunityFeatures').then(module => ({ 
 const RoomsPanel = lazy(() => import('./world-entry/root-features').then(module => ({ default: module.ProductionRoomsPanel })))
 const NearbyPanel = lazy(() => import('./world-entry/root-features').then(module => ({ default: module.ProductionNearbyPanel })))
 const AccountPanel = lazy(() => import('./account-entry/panels'))
+const AccountControlsPanel = lazy(() => import('./account-deletion-entry/panel'))
 const MeetingCheckInPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingCheckInPanel })))
 const MeetingBeaconPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingBeaconPanel })))
 const MapPanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionMapPanel })))
@@ -32,6 +34,7 @@ const featurePanels: Readonly<Record<string, ReactNode>> = {
   '/me': <Suspense fallback={<p role="status">Opening your account…</p>}><AccountPanel view="me" /></Suspense>,
   '/me/profile': <Suspense fallback={<p role="status">Opening your profile…</p>}><AccountPanel view="profile" /></Suspense>,
   '/me/avatar': <Suspense fallback={<p role="status">Opening your avatar…</p>}><AccountPanel view="avatar" /></Suspense>,
+  '/me/account': <Suspense fallback={<p role="status">Opening account controls…</p>}><AccountControlsPanel /></Suspense>,
   '/me/settings': <Suspense fallback={<p role="status">Opening settings…</p>}><AccountPanel view="settings" /></Suspense>,
   '/world/rooms': <Suspense fallback={<p role="status">Opening rooms…</p>}><RoomsPanel /></Suspense>,
   '/world/nearby': <Suspense fallback={<p role="status">Opening nearby…</p>}><NearbyPanel /></Suspense>,
@@ -62,7 +65,7 @@ export interface RouteComposition {
   panels?: Readonly<Record<string, ReactNode>>
 }
 export function createAppRoutes(ports: ShellPorts, composition: RouteComposition = {}): RouteObject[] {
-  const outlet = <PortsProvider ports={ports}><Outlet /></PortsProvider>
+  const outlet = <PortsProvider ports={ports}><AccountDeletionOwnership><Outlet /></AccountDeletionOwnership></PortsProvider>
   return [{ element: ports.auth ? <QueryClientProvider client={ports.auth.queryClient}>{outlet}</QueryClientProvider> : outlet, errorElement: <RouteFailure />, children: [
     ...publicPaths.map(path => ({ path, element: <LazyBoundary><PublicBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     ...adminPaths.map(path => ({ path, element: <LazyBoundary><AdminBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
