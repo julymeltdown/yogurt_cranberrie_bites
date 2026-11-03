@@ -63,12 +63,9 @@ async fn published_0008_checksum_fresh_install_and_forward_0016_upgrade() -> any
                     .fetch_one(&pool)
                     .await?;
             assert_eq!(max, 8);
-            let event = Uuid::new_v4();
-            let party = Uuid::new_v4();
-            let user = Uuid::new_v4();
-            sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,'legacy-meeting-upgrade','Synthetic legacy report','OPEN')").bind(event).execute(&pool).await?;
-            sqlx::query("insert into concert_meeting_settings(event_id,event_cutoff) values($1,clock_timestamp()+interval '1 day')").bind(event).execute(&pool).await?;
-            sqlx::query("insert into concert_meeting_rally_states(event_id,party_id,user_id,state,meeting_revision,membership_revision) values($1,$2,$3,'HERE',1,1)").bind(event).bind(party).bind(user).execute(&pool).await?;
+            let fixture = setup(&pool).await?;
+            sqlx::query("insert into concert_meeting_rally_states(event_id,party_id,user_id,state,meeting_revision,membership_revision) values($1,$2,$3,'HERE',1,1)")
+                .bind(fixture.event).bind(fixture.party).bind(fixture.peer).execute(&pool).await?;
             let before: serde_json::Value =
                 sqlx::query_scalar("select to_jsonb(r) from concert_meeting_rally_states r")
                     .fetch_one(&pool)
@@ -85,6 +82,42 @@ async fn published_0008_checksum_fresh_install_and_forward_0016_upgrade() -> any
                     .timestamp(),
                 0,
                 "legacy arrival has no new physical authority"
+            );
+            let rally =
+                concert_service::meeting::rally::PgRally::new(pool.clone(), SyntheticAuthority);
+            let query = concert_application::rally::RallyQuery {
+                actor: fixture.actor(fixture.peer),
+                party: fixture.party,
+            };
+            assert!(
+                rally.read(query).await?.entries.is_empty(),
+                "legacy HERE cannot become current after upgrade"
+            );
+            let keys = concert_application::commands::FingerprintKeys::new(
+                concert_application::commands::SigningKey::new("meeting-upgrade-test", &[71; 32])?,
+                vec![],
+            )?;
+            let report = rally
+                .execute(
+                    query,
+                    Uuid::new_v4(),
+                    concert_domain::rally::SetRally {
+                        expected_revision: 0,
+                        meeting_revision: 1,
+                        state: concert_domain::rally::RallyState::NeedHelp,
+                        physical_presence_acknowledged: true,
+                    },
+                    &keys,
+                )
+                .await?;
+            assert_eq!(
+                report.reference.unwrap().revision,
+                2,
+                "explicit reconfirmation preserves monotonic old revision"
+            );
+            assert_eq!(
+                rally.read(query).await?.entries[0].state,
+                concert_domain::rally::RallyState::NeedHelp
             );
             std::fs::remove_dir_all(baseline_dir)?;
         } else {

@@ -116,10 +116,31 @@ impl<A: MeetingAuthority> CommandProducer for BeaconProducer<'_, A> {
             .actor_in(c, self.actor)
             .await
             .map_err(command_error)?;
-        if !matches!(self.mutation, BeaconMutation::Create(_)) {
-            let value = beacon::load(c, self.actor.event, target, true)
+        let prior = if !matches!(self.mutation, BeaconMutation::Create(_)) {
+            Some(
+                beacon::load(c, self.actor.event, target, true)
+                    .await
+                    .map_err(command_error)?,
+            )
+        } else {
+            None
+        };
+        if !matches!(self.mutation, BeaconMutation::Revoke { .. }) {
+            let mut audiences = prior
+                .iter()
+                .map(|p| p.meeting.audience.clone())
+                .collect::<Vec<_>>();
+            match self.mutation {
+                BeaconMutation::Create(v) => audiences.push(v.meeting.audience.clone()),
+                BeaconMutation::Update(v) => audiences.push(v.meeting.audience.clone()),
+                _ => {}
+            }
+            self.authority
+                .lock_audiences_in(c, self.actor, &audiences)
                 .await
                 .map_err(command_error)?;
+        }
+        if let Some(value) = prior {
             if value.owner_id != self.actor.actor {
                 return Err(CommandError::Denied);
             }
@@ -147,6 +168,29 @@ impl<A: MeetingAuthority> CommandProducer for BeaconProducer<'_, A> {
             )
             .await
             .map_err(command_error)?;
+        }
+        let meeting = match self.mutation {
+            BeaconMutation::Create(v) => Some((&v.meeting, MeetingOperation::Create)),
+            BeaconMutation::Update(v) => Some((&v.meeting, MeetingOperation::Update)),
+            _ => None,
+        };
+        if let Some((meeting, operation)) = meeting {
+            grant(
+                self.authority,
+                c,
+                AudienceQuery {
+                    actor: self.actor,
+                    owner: self.actor.actor,
+                    audience: meeting.audience.clone(),
+                    operation,
+                    expected_party: None,
+                },
+            )
+            .await
+            .map_err(command_error)?;
+            beacon::prelock_destination(c, self.actor.event, meeting)
+                .await
+                .map_err(command_error)?;
         }
         Ok(())
     }

@@ -22,6 +22,16 @@ pub trait MeetingAuthority: Send + Sync {
         connection: &mut PgConnection,
         query: AudienceQuery,
     ) -> Result<AudienceGrant, MeetingError>;
+    /// Lock all referenced party roots in a stable order before any pair or
+    /// command-admission lock. No audience/private permission is granted here.
+    async fn lock_audiences_in(
+        &self,
+        c: &mut PgConnection,
+        actor: MeetingActor,
+        _: &[concert_domain::beacon::Audience],
+    ) -> Result<(), MeetingError> {
+        self.actor_in(c, actor).await
+    }
     /// Receipt lookup/replay is freshly gated even when private guidance expired.
     async fn actor_in(
         &self,

@@ -132,20 +132,45 @@ async fn select_place(
     )
     .await
     .map_err(|_| MeetingError::StorageUnavailable)?;
-    match outcome {
-        SelectionOutcome::Eligible(_) => {}
-        SelectionOutcome::StaleCatalog => return Err(MeetingError::RevisionConflict),
-        SelectionOutcome::MapMismatch => return Err(MeetingError::MapMismatch),
-        _ => return Err(MeetingError::ResourceUnavailable),
-    }
-    let place_revision: i64 = sqlx::query_scalar("select s.revision from public.concert_place_current_state s join public.concert_events_map_releases b on b.map_id=s.map_id and b.map_revision=s.map_revision where b.event_id=$1 and s.place_id=$2 for share of s")
-        .bind(event).bind(m.place_id).fetch_one(&mut *savepoint).await.map_err(storage)?;
-    if place_revision != m.place_revision {
-        return Err(MeetingError::RevisionConflict);
-    }
+    let result = match outcome {
+        SelectionOutcome::Eligible(_) => {
+            let place_revision:i64=sqlx::query_scalar("select s.revision from public.concert_place_current_state s join public.concert_events_map_releases b on b.map_id=s.map_id and b.map_revision=s.map_revision where b.event_id=$1 and s.place_id=$2 for share of s")
+                .bind(event).bind(m.place_id).fetch_one(&mut *savepoint).await.map_err(storage)?;
+            if place_revision == m.place_revision {
+                Ok(catalog)
+            } else {
+                Err(MeetingError::RevisionConflict)
+            }
+        }
+        SelectionOutcome::StaleCatalog => Err(MeetingError::RevisionConflict),
+        SelectionOutcome::MapMismatch => Err(MeetingError::MapMismatch),
+        _ => Err(MeetingError::ResourceUnavailable),
+    };
     savepoint.commit().await.map_err(storage)?;
-    Ok(catalog)
+    result
 }
+
+/// Before BE15 admission, retain destination/settings locks without treating
+/// stale input as an idempotency conflict. Apply emits the typed domain failure.
+pub(crate) async fn prelock_destination(
+    c: &mut PgConnection,
+    event: Uuid,
+    m: &MeetingDescription,
+) -> Result<(), MeetingError> {
+    for result in [
+        write_settings(c, event, m).await,
+        select_place(c, event, m).await.map(|_| ()),
+    ] {
+        if matches!(
+            result,
+            Err(MeetingError::StorageUnavailable | MeetingError::InvalidState)
+        ) {
+            return result;
+        }
+    }
+    Ok(())
+}
+
 pub(crate) async fn stored_fence(
     c: &mut PgConnection,
     event: Uuid,
@@ -263,6 +288,18 @@ pub async fn mutate_in<A: MeetingAuthority>(
         BeaconMutation::Create(_) => None,
         _ => Some(load(c, actor.event, id, true).await?),
     };
+    if !matches!(mutation, BeaconMutation::Revoke { .. }) {
+        let mut audiences = prior
+            .iter()
+            .map(|p| p.meeting.audience.clone())
+            .collect::<Vec<_>>();
+        match mutation {
+            BeaconMutation::Create(v) => audiences.push(v.meeting.audience.clone()),
+            BeaconMutation::Update(v) => audiences.push(v.meeting.audience.clone()),
+            _ => {}
+        }
+        a.lock_audiences_in(c, actor, &audiences).await?;
+    }
     if let Some(prior) = &prior {
         if prior.owner_id != actor.actor {
             return Err(MeetingError::ResourceUnavailable);

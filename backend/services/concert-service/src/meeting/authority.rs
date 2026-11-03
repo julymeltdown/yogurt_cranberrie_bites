@@ -72,6 +72,29 @@ fn membership(error: concert_application::commands::CommandError) -> MeetingErro
 }
 #[async_trait]
 impl<A: FencedRelationshipAuthority> MeetingAuthority for PgMeetingAuthority<A> {
+    async fn lock_audiences_in(
+        &self,
+        c: &mut PgConnection,
+        actor: MeetingActor,
+        audiences: &[Audience],
+    ) -> Result<(), MeetingError> {
+        self.actor_in(c, actor).await?;
+        let mut parties = audiences
+            .iter()
+            .filter_map(|a| match a {
+                Audience::PartyMembers { party_id } => Some(*party_id),
+                _ => None,
+            })
+            .collect::<Vec<_>>();
+        parties.sort_unstable();
+        parties.dedup();
+        for party in parties {
+            party_audience_in(c, actor.event, party, actor.actor, None)
+                .await
+                .map_err(membership)?;
+        }
+        Ok(())
+    }
     async fn actor_in(
         &self,
         c: &mut PgConnection,

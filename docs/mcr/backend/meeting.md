@@ -284,9 +284,10 @@ until a genuine through-commit owner fence exists.
 adapters, with only remote Auth/Friend proof synthetic. It creates/approves a party
 through Community's command API, then holds the party root in a writer transaction.
 A reader passes the actor-only guard and demonstrably waits on that root
-(`pg_blocking_pids` identifies the writer). The writer must acquire the full self
-pair while the reader waits, create a meeting effect and roll back. The reader
-then completes; the rolled-back beacon must not exist. Actual community removal
+(`pg_blocking_pids` identifies the writer). A second beacon command must demonstrably wait on the same root before taking
+the global BE15 admission budget. The writer must acquire both the full self
+pair and budget within 500 ms while both waiters remain blocked, create a meeting
+effect and roll back. Both reader and command then complete; the rolled-back beacon must not exist. Actual community removal
 must immediately deny meeting/rally access and stale the old audience fence.
 This is the shared transaction schedule that the original synthetic-authority
 suite could not establish.
@@ -313,4 +314,21 @@ and require a new explicit report. `tests/meeting_migrations.rs` qualifies actua
 SQLx ledger fresh install, upgrade with a preexisting 0008-era report, exact 0008
 checksum preservation, and replay after restart. The earlier draft `d382f13` must
 not be integrated because its temporary 0008 edit is superseded; clean replacement
-commits will be provided. New native migration/contention checks are pending.
+commits are `c299344` (concrete bridge/actor-root order) and `d78e035`
+(forward 0016/deadline guards). New native migration/contention checks are pending.
+
+
+Beacon admission also prelocks all old/new party roots in sorted order before
+pair decisions and the BE15 budget. Destination/settings locks are retained
+before budget admission, including typed stale-input refusals; apply still emits
+the typed domain outcome. This prevents a beacon holding budget while waiting on
+a party root whose writer needs that budget. Revoke remains actor/owner gated
+without requiring membership in a former audience. No owning policy or shared
+BE15 implementation was changed. The actual common-adapter contention schedule
+covers this budget/root cycle, not only the actor/self-pair cycle.
+
+The forward-upgrade fixture inserts an authentic 0008-era HERE row, verifies that
+all original fields and revision survive 0016, then verifies it is absent from
+current rally output. A new explicit NEED_HELP report with expected revision zero
+must become current at stored revision two. SQLx replays and exact published 0008
+checksum checks run on both fresh and upgraded databases before/after restart.

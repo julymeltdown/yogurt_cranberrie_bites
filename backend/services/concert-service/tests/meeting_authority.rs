@@ -14,6 +14,7 @@ use concert_service::{
     meeting::{
         authority::PgMeetingAuthority,
         beacon::{mutate_in, read_in, PgMeetingRepository},
+        commands::BeaconCommands,
         rally::PgRally,
         MeetingAuthority,
     },
@@ -273,6 +274,40 @@ async fn actual_actor_guard_party_root_pair_order_contends_and_rolls_back() -> a
         Ok::<(), sqlx::Error>(())
     })
     .await??;
+    // A command must wait for the party before taking the shared BE15 budget.
+    // Otherwise the root holder below and beacon admission form a second cycle.
+    let command_pool = pool.clone();
+    let command_meeting = m.clone();
+    let pending_command = tokio::spawn(async move {
+        BeaconCommands::new(command_pool.clone(), bridge(&command_pool, actor))
+            .execute(
+                actor,
+                Uuid::new_v4(),
+                Uuid::new_v4(),
+                BeaconMutation::Create(CreateBeacon {
+                    meeting: command_meeting,
+                    physical_presence_acknowledged: true,
+                }),
+                &keys(),
+            )
+            .await
+    });
+    tokio::time::timeout(Duration::from_secs(2), async {
+        loop {
+            let waiting: bool = sqlx::query_scalar(
+                "select exists(select 1 from pg_stat_activity where datname=current_database() and pid<>$1 and $2=any(pg_blocking_pids(pid)))")
+                .bind(reader_pid).bind(writer_pid).fetch_one(&pool).await?;
+            if waiting { break; }
+            tokio::task::yield_now().await;
+        }
+        Ok::<(), sqlx::Error>(())
+    }).await??;
+    tokio::time::timeout(
+        Duration::from_millis(500),
+        sqlx::query("select singleton from concert_command_budget where singleton for update")
+            .execute(&mut *writer),
+    )
+    .await??;
     let pair = PgRelationshipPolicy::new(pool.clone(), SyntheticOwnerFence);
     tokio::time::timeout(
         Duration::from_millis(500),
@@ -303,6 +338,9 @@ async fn actual_actor_guard_party_root_pair_order_contends_and_rolls_back() -> a
     writer.rollback().await?;
     let got = tokio::time::timeout(Duration::from_secs(2), pending).await???;
     assert_eq!(got.beacon_id, beacon);
+    let command_receipt = tokio::time::timeout(Duration::from_secs(2), pending_command).await???;
+    assert_eq!(command_receipt.state, ReceiptState::Succeeded);
+
     let count: i64 =
         sqlx::query_scalar("select count(*) from concert_meeting_beacons where beacon_id=$1")
             .bind(rolled)
