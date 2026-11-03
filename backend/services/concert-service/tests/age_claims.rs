@@ -56,7 +56,7 @@ impl Verifier for FixtureVerifier {
     async fn verify(&self, ch: &Challenge, _: &ProviderResponse) -> Result<VerifiedProof, Error> {
         self.calls.fetch_add(1, Ordering::SeqCst);
         self.entered.notify_one();
-        if self.mode == 1 {
+        if self.mode == 1 || self.mode == 5 {
             self.release.notified().await;
         }
         if self.mode == 2 {
@@ -79,7 +79,12 @@ impl Verifier for FixtureVerifier {
         Ok(VerifiedProof {
             binding,
             verified_at: at,
-            expires_at: at + Duration::days(90),
+            expires_at: at
+                + if self.mode == 5 {
+                    Duration::milliseconds(200)
+                } else {
+                    Duration::days(90)
+                },
             source_revision: "fixture-v1".into(),
             birthyear,
             birthday,
@@ -592,5 +597,93 @@ async fn expired_claim_details_are_erased_without_losing_canonical_tombstone() -
     assert_eq!(status, "EXPIRED");
     assert!(age.is_none() && next.is_none());
     assert_eq!(f.s.status(f.c).await?.status, AgeStatus::Expired);
+    Ok(())
+}
+
+#[tokio::test]
+async fn proof_expiry_while_waiting_for_owner_lock_preserves_prior_claim() -> anyhow::Result<()> {
+    let mut f = setup(0).await?;
+    let (old, state) = begin(&f).await?;
+    f.s.callback(f.c, Uuid::new_v4(), old, token(&state), response())
+        .await?;
+    f.v = Arc::new(FixtureVerifier {
+        calls: AtomicUsize::new(0),
+        mode: 5,
+        entered: Notify::new(),
+        release: Notify::new(),
+    });
+    f.s = service(&f.p, f.v.clone(), f.clock.clone());
+    let (id, state) = begin(&f).await?;
+    let key = Uuid::new_v4();
+    let s = f.s.clone();
+    let c = f.c;
+    let task = tokio::spawn(async move { s.callback(c, key, id, token(&state), response()).await });
+    f.v.entered.notified().await;
+    let mut locker = f.p.begin().await?;
+    sqlx::query("select user_id from concert_age_owners where user_id=$1 for update")
+        .bind(f.c.actor.uuid())
+        .fetch_one(&mut *locker)
+        .await?;
+    f.v.release.notify_one();
+    // Observe the actual finalization lock wait before letting the proof expire.
+    tokio::time::timeout(std::time::Duration::from_secs(1), async {
+        loop {
+            let waiting: bool = sqlx::query_scalar("select exists(select 1 from pg_stat_activity where datname=current_database() and wait_event_type='Lock' and query like 'select user_id from concert_age_owners%')").fetch_one(&f.p).await?;
+            if waiting { break Ok::<(),sqlx::Error>(()); }
+            tokio::task::yield_now().await;
+        }
+    }).await??;
+    sqlx::query("select pg_sleep(0.4)")
+        .execute(&mut *locker)
+        .await?;
+    locker.commit().await?;
+    assert!(matches!(task.await?, Err(Error::Expired)));
+    assert_eq!(count(&f).await?, 1);
+    let status: String =
+        sqlx::query_scalar("select status from concert_age_claims where claim_id=$1")
+            .bind(old)
+            .fetch_one(&f.p)
+            .await?;
+    assert_eq!(status, "VERIFIED");
+    assert_eq!(
+        f.s.recover(f.c, key, id, true).await?.unwrap().state,
+        ReceiptState::Pending
+    );
+    assert_eq!(f.v.calls.load(Ordering::SeqCst), 1);
+    Ok(())
+}
+
+#[tokio::test]
+async fn closed_event_allows_owner_erasure_without_verification_authority() -> anyhow::Result<()> {
+    let f = setup(0).await?;
+    let (id, state) = begin(&f).await?;
+    f.s.callback(f.c, Uuid::new_v4(), id, token(&state), response())
+        .await?;
+    let (pending, _) = begin(&f).await?;
+    sqlx::query("with n as materialized(select clock_timestamp() t) update concert_age_claims set verified_at=n.t-interval '2 days',expires_at=n.t-interval '1 day' from n where claim_id=$1").bind(id).execute(&f.p).await?;
+    sqlx::query("with n as materialized(select clock_timestamp() t) update concert_age_verifications set created_at=n.t-interval '11 minutes',expires_at=n.t-interval '1 minute' from n where verification_id=$1").bind(pending).execute(&f.p).await?;
+    sqlx::query("update concert_events set phase='CLOSED' where event_id=$1")
+        .bind(f.c.event.uuid())
+        .execute(&f.p)
+        .await?;
+    assert!(f.s.start(f.c, Uuid::new_v4(), RETURN_TARGET).await.is_err());
+    assert_eq!(f.s.expire_states(f.c, 100).await?, 1);
+    let erased: bool = sqlx::query_scalar("select age_at_verification is null and next_birthday_at is null from concert_age_claims where claim_id=$1").bind(id).fetch_one(&f.p).await?;
+    assert!(erased);
+    let digest: Option<Vec<u8>> = sqlx::query_scalar(
+        "select state_digest from concert_age_verifications where verification_id=$1",
+    )
+    .bind(pending)
+    .fetch_one(&f.p)
+    .await?;
+    assert!(digest.is_none());
+    sqlx::query("update be26_fixture_authority set allowed=false where actor=$1")
+        .bind(f.c.actor.uuid())
+        .execute(&f.p)
+        .await?;
+    assert!(matches!(
+        f.s.expire_states(f.c, 100).await,
+        Err(Error::Denied)
+    ));
     Ok(())
 }

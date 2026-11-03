@@ -17,6 +17,9 @@ pub enum Access {
     Read,
     Start,
     Callback,
+    /// Owner/session authorization for erasure; event eligibility/phase must not
+    /// prevent privacy cleanup after an event closes. Not verification authority.
+    Erase,
 }
 /// Resolve current canonical Auth identity/session/event/eligibility and hold the real
 /// owner fence THROUGH this SQL commit. BE04 observations/UUIDs alone are insufficient.
@@ -316,7 +319,7 @@ impl PgAgeClaims {
         {
             return Err(Error::Denied);
         }
-        if self.clock.now() >= ch.expires_at {
+        if self.clock.now() >= ch.expires_at || self.clock.now() >= value.expires_at {
             return Err(Error::Expired);
         }
         let existing:Option<(DateTime<Utc>,DateTime<Utc>,Uuid)>=sqlx::query_as("select verified_at,expires_at,claim_id from concert_age_claims where user_id=$1 order by verified_at desc,expires_at desc,claim_id desc limit 1")
@@ -340,8 +343,9 @@ impl PgAgeClaims {
         }
         sqlx::query("update concert_age_verifications set state='DONE',state_digest=null where verification_id=$1").bind(value.claim_id).execute(&mut *tx).await.map_err(db)?;
         // Recheck wall time after authority/SQL waits; failures roll back claim+receipt together.
-        let alive: bool = sqlx::query_scalar("select clock_timestamp()<$1")
+        let alive: bool = sqlx::query_scalar("select clock_timestamp()<least($1,$2)")
             .bind(ch.expires_at)
+            .bind(value.expires_at)
             .fetch_one(&mut *tx)
             .await
             .map_err(db)?;
@@ -432,7 +436,7 @@ impl PgAgeClaims {
             return Err(Error::Invalid);
         }
         let mut tx = self.pool.begin().await.map_err(db)?;
-        authorize(self, &mut tx, c, Access::Callback)
+        authorize(self, &mut tx, c, Access::Erase)
             .await
             .map_err(command)?;
         let changed=sqlx::query("with expired as(select verification_id from concert_age_verifications where user_id=$1 and expires_at<=clock_timestamp() and state<>'EXPIRED' order by expires_at,verification_id limit $2 for update skip locked) update concert_age_verifications v set state='EXPIRED',state_digest=null from expired e where v.verification_id=e.verification_id")
@@ -559,7 +563,8 @@ async fn authorize(
             .await
             .map_err(unavailable)?;
     if phase.is_none()
-        || (access != Access::Read && !matches!(phase.as_deref(), Some("OPEN" | "LIVE")))
+        || (matches!(access, Access::Start | Access::Callback)
+            && !matches!(phase.as_deref(), Some("OPEN" | "LIVE")))
     {
         return Err(CommandError::Denied);
     }
