@@ -6,7 +6,7 @@ use super::{
 };
 use chrono::SecondsFormat;
 use concert_application::bootstrap::{BootstrapRelease, ValidatedProductRelease};
-use concert_domain::{AssetId, AvatarSelection, Revision, Theme};
+use concert_domain::{AssetId, AvatarSelection, Theme};
 use serde_json::{json, Map, Value};
 use sha2::{Digest, Sha256};
 use std::{collections::BTreeSet, fs, path::Path, sync::Arc};
