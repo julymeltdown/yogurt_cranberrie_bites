@@ -9,7 +9,8 @@ are not claimed by this task.
 - Worktree: `/Users/lhs/Desktop/mcr-worktrees/fe-shell`.
 - Branch: `codex/mcr-fe-FE07`.
 - Base: `69a5624cd153a216f2398cebabf062400dce23eb` (frozen C05 checkpoint).
-- Implementation candidate: `d7c720ce6322515280a302f39c8f9a66c790ffa8`.
+- Initial implementation: `d7c720ce6322515280a302f39c8f9a66c790ffa8`.
+- Reviewed-fix implementation candidate: `18740f2895fce2d2f5fe3be1695bc007a4f3a1d0` (descends from the initial handoff `8ba0081`).
 - Only `frontend/src/app/**`, `frontend/src/main.tsx`, and this exact document
   are assigned. Root router, route composition and main entrypoint edits were
   explicitly delegated by the integrator for FE07.
@@ -49,7 +50,9 @@ route links (`nav`/`aria-current`), not an ARIA tab widget with hidden tab panel
 Keyboard navigation uses native Tab/Shift+Tab/Enter and visible focus. Panels have
 peek/half/full controls, one primary content outlet, safe parent/back actions and
 Escape outside editable fields. Scroll positions survive panel/world navigation
-within the same identity/event shell. POP navigation restores a known opener;
+within the same identity/event shell. The scroll map retains at most 100 recently
+visited destinations, matching the navigation-memory entry limit, and clears on
+identity/event replacement. POP navigation restores a known opener;
 new destinations focus their heading. Panel content scrolls independently, with
 44px minimum primary controls, safe-area padding and VisualViewport resize handling.
 The 70% world-height design target is approximately met by the default mobile
@@ -77,7 +80,10 @@ No bearer, cookie or ticket is copied into view/lifecycle context, DOM, URLs, lo
 
 Unknown/checking/anonymous/unavailable/error readiness cannot start bootstrap or
 world resources. Bootstrap is bounded to 12 seconds, aborts on cleanup or identity
-change, and fences results even if the loader ignores abort. Safe presentation
+change, and fences both initial dispatch and results even if the loader ignores
+abort. An obsolete rendered scope cannot attach to a replacement session or
+dispatch a loader; the invocation microtask checks canonical identity and the
+captured session signal again. Safe presentation
 categories cover 401/403/404/410/429/503-style outcomes through `ShellLoadError`;
 unknown exceptions become generic unavailability. There is no automatic mutation,
 refresh, cookie or bootstrap retry. Explicit retry keeps the direct route intact.
@@ -131,10 +137,10 @@ with `/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin` first on PATH
 | Command | Result |
 |---|---|
 | `corepack pnpm@11.7.0 --dir frontend install --frozen-lockfile` | Exit 0 |
-| `corepack pnpm@11.7.0 --dir frontend test` | Exit 0; 272 tests, including 61 FE07 route/lifecycle/access/focus tests |
+| `corepack pnpm@11.7.0 --dir frontend test` | Exit 0; 276 tests, including 65 FE07 route/lifecycle/access/focus tests |
 | `corepack pnpm@11.7.0 --dir frontend build` | Exit 0; strict TypeScript and Vite production build |
 | `corepack pnpm@11.7.0 --dir frontend lint` | Exit 0; no warnings |
-| `node src/app/__tests__/browser-smoke.mjs` | Exit 0; installed Chrome 156.0.8078.76, four viewports and built-production entry |
+| `node src/app/__tests__/browser-smoke.mjs` | Exit 0; installed Chrome 156.0.8078.80, four viewports and built-production entry |
 | `python3 -B scripts/mcr/check-plan.py` | Exit 0; planning/source archive checks unchanged |
 | `node scripts/mcr/check-ui-origin.mjs --root /Users/lhs/Desktop/mcr-worktrees/fe-shell` | Exit 0; no copied UI or prohibited imports |
 | `git diff --check` | Exit 0 |
@@ -164,7 +170,8 @@ Browser evidence is outside Git at `/tmp/mcr-fe07-evidence`:
 
 Chrome checks cover 360×800, 390×844, 430×932 and 1280×800: native keyboard focus,
 history/opener restoration, six routes without host replacement, deep links,
-panel sizes and scroll, simulated 420px viewport height, 44px controls, no horizontal
+panel sizes, scroll and query-only target navigation, simulated 420px viewport
+height, 44px controls, no horizontal
 overflow, account/event replacement and denied admin exit. Instrumented peak game
 and connection counters are 1; final counters are 0 after exit, with all six
 StrictMode/replacement allocations disposed. Screenshots were visually inspected
@@ -209,20 +216,55 @@ docs/mcr/frontend/world-shell.md
 ```
 
 The code/test file SHA-256 manifest (sorted `path<TAB>sha256<LF>` rows) is
-`42ff7aff27e0e0b9c227c0f7886ac1a34a66c1ca05a8c751cf2f631dbb78c8c5`. Its complete per-file values are in
+`d1db85ff966150d371f2867e9b5eeb7ff6a156500c6f2119e47f970f3ab28766`. Its complete per-file values are in
 `/tmp/mcr-fe07-evidence/candidate-hashes.json`. Key reviewed files:
 
 ```text
 frontend/src/app/router.tsx
 a2162fe86eafdfdc2eca32b52a906ea2fa9d05a8f9519436190a59a56622003d
 frontend/src/app/WorldShell.tsx
-8fd4fe06249470760cabf748ba0845a95d45adab5d25bb611f5fcae5a69160f1
+c708b0b1dcb265b1197af474e2eb37d7f2feb2d2cd1e14276d58b7d39d0248db
 frontend/src/app/WorldHost.tsx
 e1ed8a70849c8c687e850e120c29627557cc2dfd1da8c91b18117fd6af722b10
 frontend/src/app/access.tsx
-a13e5cc22ef7973d153692686411800fb6fd99df90bbec606a2e2deafc8d1b05
+9657e3804c38477dfa28de954d034512854d921c04b581a3d4713299c836ead6
+frontend/src/app/navigation.tsx
+2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc
 frontend/src/app/routes.ts
 e49ceffdc2e6e52bfba8e361b727504268fab264763c124878a556ee7f677829
 frontend/src/main.tsx
 76d64df8e54c8490048f190774ebc7c0769bfa95ee8435489ae0d9360bd5d195
 ```
+
+## Review fixes and regression evidence
+
+The original delivered commits stayed unchanged while the fixes were prepared.
+The fix candidate above and this separate handoff commit are descendants.
+
+1. The render-to-passive-effect race reproduced for both bootstrap and admin.
+   A sibling layout effect replaces the canonical identity after a loader scope
+   renders but before passive setup. The isolated real hook harness deliberately
+   omits a parent session subscription, so a coincidental parent rerender cannot
+   hide a stale dispatch. Before the fix each old-scope loader was called once;
+   after the fix both are called zero times. Early setup and the invocation
+   microtask check canonical scope and the captured abort signal. Existing
+   12-second timeout, cancellation and late-result fences remain covered.
+2. A 101-detail navigation regression reproduced retained old scroll state beyond
+   the intended limit. The map now evicts beyond 100 entries and refreshes recent
+   entries. The real route test verifies the oldest entry is absent, the recent
+   entry restores, identity replacement clears it, and the host stays singular.
+3. Self-review reproduced a minimized panel staying hidden when only a report
+   target query changes. A new location key now reopens it before paint, with
+   heading focus and no host remount; DOM and actual Chrome checks cover this.
+
+The targeted race/scroll command first exited 1 with all three expected failures;
+the query-target regression also first exited 1. The fixed targeted command
+`corepack pnpm@11.7.0 --dir frontend test src/app/__tests__/shell.test.tsx -t "stale.*passive|bounds scroll memory|new query target"` exits 0 (four tests).
+The complete suite exits 0 with 276 tests, including 65 FE07 tests; strict
+build/lint, source-origin scan and the installed-Chrome driver all exit 0.
+The final Chrome run is version 156.0.8078.80 at the same four viewports, with
+refreshed screenshots/results under the existing evidence directory. Owned
+servers and the temporary-profile browser close through the driver finally block.
+
+No additional authorization, feature, server, real-world-runtime or device
+acceptance is claimed. The goal remains active for the integrator recheck.
