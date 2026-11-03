@@ -10,6 +10,7 @@ import { ShellHeader, BottomNavigation, PanelHeader } from './shell-chrome'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
 
+const RootSocialFeatures = lazy(() => import('./world-panels/social').then(module => ({ default: module.RootSocialFeatures })))
 const ProductionEraControls = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionEraControls })))
 const ProductionWorldFeatures = lazy(() => import('./world-entry/root-features'))
 const AccountProvider = lazy(() => import('./account-entry/provider'))
@@ -83,7 +84,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
   return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
-    <NavigationMemory><div className="world-shell" data-mcr-shell="" ref={root}
+    <RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory><div className="world-shell" data-mcr-shell="" ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
     <a className="skip-link" href="#shell-content">Skip to content</a>
@@ -103,7 +104,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
         </main>}
     </div>
     <BottomNavigation />
-  </div></NavigationMemory></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></Suspense>
+  </div></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></Suspense>
 }
 
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {

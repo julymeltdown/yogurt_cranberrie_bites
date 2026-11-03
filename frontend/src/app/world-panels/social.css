@@ -1,0 +1,15 @@
+.mcr-root-social { min-block-size: 0; }
+.mcr-root-social > .social-navigation {
+  position: fixed;
+  z-index: 40;
+  inset-inline: max(12px, env(safe-area-inset-left)) max(12px, env(safe-area-inset-right));
+  inset-block-end: calc(76px + env(safe-area-inset-bottom));
+  max-block-size: min(45dvh, 320px);
+  overflow: auto;
+  color: var(--ink, #201d1d);
+  background: var(--paper, #f5efdf);
+  border: 2px solid currentColor;
+  box-shadow: 0 4px 12px #0003;
+}
+.mcr-root-social > .social-navigation p { margin-block: 0 12px; }
+.mcr-root-social > .social-navigation button { margin-inline-end: 8px; margin-block-end: 4px; }

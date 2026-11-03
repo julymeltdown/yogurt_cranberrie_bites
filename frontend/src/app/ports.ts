@@ -48,6 +48,7 @@ export interface WorldLifecyclePort {
 export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader; readonly presentation?: import('../world/composition').WorldPresentationPort }
 export interface WorldAccessBindingPort { read(): WorldAccessBinding | null; subscribe(listener: () => void): () => void }
 export interface ShellPorts {
+  readonly social?: import('./world-panels/social').SocialProductionPorts
   /** Explicit reviewed local avatar inputs; absent means previews are unavailable. */
   readonly accountAssets?: AccountAssetsPort
   readonly auth?: SessionController
@@ -61,10 +62,10 @@ export interface ShellPorts {
   /** Requires a current server authorization decision. C03 participant data grants no admin role. */
   readonly admin: { authorize(scope: ActiveScope, signal: AbortSignal): Promise<boolean> }
 }
-export function createProductionPorts(auth?: SessionController, worldOptions: Omit<ProductionWorldOptions, 'auth'> = {}): ShellPorts {
+export function createProductionPorts(auth?: SessionController, worldOptions: Omit<ProductionWorldOptions, 'auth'> = {}, social?: ShellPorts['social']): ShellPorts {
   if (auth) {
     const production = createProductionWorld({ ...worldOptions, auth })
-    return { auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access, dispose: production.dispose,
+    return { ...(social ? { social } : {}), auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access, dispose: production.dispose,
       bootstrap: { load: auth.loadBootstrap }, admin: { authorize: () => Promise.resolve(false) } }
   }
   return {

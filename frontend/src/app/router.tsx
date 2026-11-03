@@ -21,7 +21,10 @@ const MapPanel = lazy(() => import('./world-panels').then(module => ({ default: 
 const PlacePanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionPlacePanel })))
 const ThemePanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionThemePanel })))
 const WallPanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionWallPanel })))
+const SocialPanel = lazy(() => import('./social-composition').then(module => ({ default: module.SocialRoutePanel })))
+const socialPaths = ['/feed', '/feed/new', '/feed/:postId', '/feed/:postId/edit', '/notices/:noticeId', '/meet/people', '/people/:userId', '/meet/intro/edit', '/me/age', '/notifications', '/me/requests'] as const
 const featurePanels: Readonly<Record<string, ReactNode>> = {
+  ...Object.fromEntries(socialPaths.map(path => [path, <Suspense fallback={<p role="status">Opening this section…</p>}><SocialPanel /></Suspense>])),
   '/world/map': <Suspense fallback={<p role="status">Opening map…</p>}><MapPanel /></Suspense>,
   '/world/places/:placeId': <Suspense fallback={<p role="status">Opening place…</p>}><PlacePanel /></Suspense>,
   '/world/theme': <Suspense fallback={<p role="status">Opening eras…</p>}><ThemePanel /></Suspense>,
@@ -63,7 +66,7 @@ export function createAppRoutes(ports: ShellPorts, composition: RouteComposition
   return [{ element: ports.auth ? <QueryClientProvider client={ports.auth.queryClient}>{outlet}</QueryClientProvider> : outlet, errorElement: <RouteFailure />, children: [
     ...publicPaths.map(path => ({ path, element: <LazyBoundary><PublicBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     ...adminPaths.map(path => ({ path, element: <LazyBoundary><AdminBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
-    { element: <WorldPanelOwnership places={!composition.panels?.['/world/map'] && !composition.panels?.['/world/places/:placeId']} mural={!composition.panels?.['/wall']}><WorldBoundary /></WorldPanelOwnership>, children: [
+    { element: <WorldPanelOwnership places={!composition.panels?.['/world/map'] && !composition.panels?.['/world/places/:placeId']} mural={!composition.panels?.['/wall']} social={!socialPaths.some(path => composition.panels?.[path])}><WorldBoundary /></WorldPanelOwnership>, children: [
       ...panelRoutes.map(route => ({ path: route.path, element: <PanelScreen route={route}>{composition.panels?.[route.path] ?? featurePanels[route.path]}</PanelScreen>, errorElement: <RouteFailure /> })),
       ...['/world/*', '/feed/*', '/meet/*', '/gifts/*', '/wall/*', '/me/*'].map(path => ({ path, element: <RouteFailure /> })),
     ] },
