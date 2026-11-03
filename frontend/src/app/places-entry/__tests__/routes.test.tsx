@@ -42,13 +42,13 @@ it.each([false, true])('retains one Places owner and world lease through map/det
   h.unmount(); expect(h.stats).toMatchObject({ games: 0, connections: 0, disposals: mounts })
   expect(controller!.read().list.data).toBeNull()
 })
-it('opens direct detail, and preserves the existing root parent rather than overriding navigation', async () => {
+it('opens direct detail, and uses the current Map parent without a foreign history entry', async () => {
   const place = places()[1]!, h = await setup(`/world/places/${place.place_id}`)
   expect(await screen.findByRole('heading', { name: place.label })).toBeVisible()
   expect(screen.getByRole('link', { name: 'Open source reference (new tab)' })).toHaveAttribute('rel', 'noopener noreferrer')
   fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' }))
-  await screen.findByRole('navigation', { name: 'World tools' })
-  expect(h.router.state.location.pathname).toBe('/world'); expect(h.stats.mounts).toBe(1)
+  await screen.findByRole('heading', { name: 'Map', exact: true, level: 1 })
+  expect(h.router.state.location.pathname).toBe('/world/map'); expect(h.stats.mounts).toBe(1)
 })
 it('clears the visible owner on release withdrawal and permits a new explicit qualified binding', async () => {
   const h = await setup(); await screen.findByRole('link', { name: `View ${places()[0]!.label}` })
