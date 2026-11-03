@@ -1,0 +1,74 @@
+{
+  "binary_sha256": "8b92e00016a61ffa53d794d42212b52e60792ed24ae17edef0972e16fcc7dddb",
+  "case_controls": [
+    "real email login healthy chain",
+    "revoked session denies without Profile dispatch",
+    "deleted Profile refused",
+    "inactive account denies without Profile dispatch",
+    "fresh login after status-trigger revocation restores healthy chain",
+    "missing Profile refused",
+    "Profile outage refused",
+    "700ms delayed real Profile refused within original 200ms stop, exact dispatch counted",
+    "Auth outage refused without Profile dispatch"
+  ],
+  "cleanup": {
+    "postmaster_stopped": true,
+    "result": "PASS",
+    "root_absent": true
+  },
+  "commands": [
+    {
+      "command": "cargo +1.88.0 test -p auth-service --test concert_http_owner_chain --no-run --locked --offline --message-format=json",
+      "debug": 0,
+      "exit_code": 0,
+      "jobs": 2
+    },
+    {
+      "command": "python3 backend/scripts/mcr/concert_http_owner_chain_smoke.py --build-metadata <fresh-jsonl> --target-dir <retained-target> --output <private-evidence> --pg-bin <PostgreSQL16-bin>",
+      "exit_code": 0
+    }
+  ],
+  "databases": {
+    "auth": {
+      "database": "mcr_http_owner_auth",
+      "migration_receipts": 13,
+      "schema_probe": true
+    },
+    "gateway": {
+      "database": "mcr_http_owner_gateway",
+      "migration_receipts": 17,
+      "schema_probe": true
+    },
+    "profile": {
+      "database": "mcr_http_owner_profile",
+      "migration_receipts": 7,
+      "schema_probe": true
+    }
+  },
+  "finished_at_utc": "2026-11-03T13:49:23.438708+00:00",
+  "integrated_commit": "e6c629d31d5a5e202a557ce028fb34749159635f",
+  "limitations": [
+    "one Rust scenario with nine sequential controls, not nine independent tests",
+    "HTTP route is test-only and invoked through Axum oneshot",
+    "owner observations stay private; no signed Concert admission or event authority",
+    "no TLS, browser, device, provider binding or production acceptance from this run"
+  ],
+  "native_log_sha256": "ed7556a1400b2617b9640fd73eb4d5c57dd747f769744d50588acab18ff2108f",
+  "original_receipt_sha256": "0a273f79a9b16e2ec85daef8af83357ee0d61951282a44f5f07525e85b604f26",
+  "postgres_tcp_enabled": false,
+  "postgres_version": "16.14 (Homebrew)",
+  "result": "PASS",
+  "scope": "Test-only in-process Axum Router using production HTTP extraction/timeout and configured clients; real guarded Tonic owners and isolated PostgreSQL. No public Concert route.",
+  "sources": {
+    "backend/scripts/mcr/concert_http_owner_chain_smoke.py": "ac667e3b987c78adc2b1a0413b2a586714c6061b1a21b26f0f407dbb5dafda2f",
+    "backend/services/auth-service/tests/concert_http_owner_chain.rs": "ebaf6e0ef0d62813fb3d9924bbf2e2470a243521e9d24cf27dc105d939888a0c"
+  },
+  "started_at_utc": "2026-11-03T13:49:19.599309+00:00",
+  "test": {
+    "distinct": 1,
+    "expected_passed": 1,
+    "passed": 1
+  },
+  "tested_base": "1f6dceb10f8147b5cfbbdc6bf486f994edf24c1e",
+  "worker_commit": "ca26683ce9a86bd100e1635c385631406b2f0dee"
+}

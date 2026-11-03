@@ -1,0 +1,13 @@
+
+running 1 test
+test native_http_real_owner_chain_success_negatives_and_safe_failures ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.71s
+
+owner read diagnostic: NotEligible
+owner read diagnostic: Profile(NotFound)
+owner read diagnostic: NotEligible
+owner read diagnostic: Profile(NotFound)
+owner read diagnostic: Profile(Unavailable)
+owner read diagnostic: AccessExpired
+owner read diagnostic: Auth(Unavailable)

@@ -71,6 +71,29 @@ class BoundariesTest(unittest.TestCase):
         self.write("backend/crates/domain/src/item.rs", "use crate::local;\n")
         self.assert_guard(0, "backend")
 
+    def test_exact_delegated_backend_harness(self):
+        path = "backend/scripts/mcr/places_smoke.py"
+        self.write(path, "print('fixture')\n")
+        self.assert_guard(1, "backend")
+        self.assert_guard(0, "backend", "--allow-harness", path, contains="Explicit harness delegation")
+        self.write("backend/scripts/mcr/other.py", "print('unassigned')\n")
+        self.assert_guard(1, "backend", "--allow-harness", path, contains="other.py")
+
+    def test_harness_exception_cannot_grant_other_central_or_frontend_paths(self):
+        for path in ["scripts/mcr/test.py", "backend/scripts/mcr/*", "backend/scripts/mcr/../x.py",
+                     "backend/Cargo.toml", "backend/proto/test.py", "frontend/scripts/mcr/test.py"]:
+            with self.subTest(path=path):
+                self.assert_guard(2, "backend", "--allow-harness", path, contains="Invalid harness assignment")
+        self.assert_guard(2, "frontend", "--allow-harness", "backend/scripts/mcr/test.py")
+
+    def test_delegated_harness_symlink_still_rejected(self):
+        path = "backend/scripts/mcr/places_smoke.py"
+        self.write("backend/fixture.py", "print('fixture')\n")
+        target = self.root / path
+        target.parent.mkdir(parents=True)
+        target.symlink_to(self.root / "backend/fixture.py")
+        self.assert_guard(1, "backend", "--allow-harness", path, contains="symlink")
+
     def test_opposite_lane_unstaged(self):
         self.write("backend/crates/domain/src/item.rs", "pub const ITEM: u8 = 2;\n")
         self.assert_guard(1, contains="opposite-lane write")

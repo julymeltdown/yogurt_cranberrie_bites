@@ -6,11 +6,11 @@ instruction to preserve them without orchestration overrides.
 
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| BE04 real HTTP owner chain | `mcr(be) BE04 real HTTP owner chain` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-real-owners` / `codex/mcr-be-http-real-owners` |
+| BE04 HTTP fixture delivered by integrator; writer stopped, broad goal unfinished | `mcr(be) BE04 real HTTP owner chain` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-real-owners` / `codex/mcr-be-http-real-owners` |
 | BE08 places and map releases | `mcr(be) BE08 places and map releases` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-places` / `codex/mcr-be-BE08` |
 | FE21 party discovery/applications | `mcr(fe) FE21 party discovery and applications` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-party-discovery` / `codex/mcr-fe-FE21` |
 | FE24 giveaway discovery/own activity | `mcr(fe) FE24 giveaway discovery and own activity` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-gift-discovery` / `codex/mcr-fe-FE24` |
-| FE17 independent review COMPLETE; checkout stopped | `mcr(qa) FE17 replication review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-replication` / `codex/mcr-qa-FE17` |
+| FE24 independent review | `mcr(qa) FE24 giveaway review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-gift-discovery` / `codex/mcr-qa-FE24` |
 
 The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
@@ -536,3 +536,32 @@ BE04 retains exclusive shared Rust target ownership for the real owner-chain
 gate; BE08 continues its isolated source work until that lease is released.
 Only the integrator publishes reviewed changes. Accepted counts remain 11/112
 required and 11/118 total; the full project goal stays ACTIVE.
+
+## Owner-chain delivery and current validation transfer
+
+The HTTP worker explicitly stopped editing/builds and released its checkout and
+target. The integrator took over the preserved fixture, repaired incorrect
+case assertions and session reuse after the owning account-status trigger,
+and delivered `ca26683` as `e6c629d`. The fresh native run and exact cluster cleanup
+pass; see [bounded owner-chain evidence](backend/http-owner-chain.md). The broad
+BE04 goal remains ACTIVE; no signed Concert or event-policy completion is claimed.
+
+BE08 exclusively owns `/Users/lhs/Desktop/mcr-build/backend` from that completed
+run onward. Its candidate `c135bff` received independent source review at
+`64d1b02385c3f058b25c44ff28b3e1703c9a9696` and factual correction
+`c0989d4977bf645187ed9cecb50ba7c0032acbd7`. It now fixes the SQL timestamp conflict
+and adds a caller-held selection transaction with a real concurrent-closure
+test before handing off. Its goal remains ACTIVE.
+
+The boundary checker now supports an exact explicitly assigned
+`--allow-harness backend/scripts/mcr/<name>.py` exception. It is limited to
+that backend path, rejects other central/opposite-lane paths and still rejects
+symlinks.46 checker tests pass (one platform-dependent skip). This accommodates
+the already authorized HTTP and places harnesses; it is not broad script ownership.
+
+FE24 handed off implementation `5f1005d` and receipt `595c07f`; its clean checkout
+is available for review fixes, with its goal ACTIVE. QA has a fresh isolated
+checkout at the latter commit, with sole report ownership
+`docs/mcr/qa/gift-discovery-review.md`. The completed BE08 source-only review goal
+must close before creating the new unbudgeted FE24 review goal. Main owns root
+panel/controller composition and publication; FE21 continues its disjoint feature.

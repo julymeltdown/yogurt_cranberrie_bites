@@ -100,14 +100,15 @@ integrated with bounded real PostgreSQL evidence; see the
 Both preserve the same strict context and original deadline. Owner observations
 remain private current-state facts, not event participation grants.
 
-The next cohesive backend scope composes these two owner reads under that one
-context: require active account and live session, verify any explicitly requested
-binding, bind Profile content to the JWT subject, and recheck prior observations
-after every later await. Refused Auth must prevent Profile dispatch. No cache,
-retry, invented suspension state or new proof lifetime is introduced. Production
-HTTP capture and signed Concert/event-policy composition remain integrator-owned
-until those actual boundaries are implemented and exercised. Separate tests must
-qualify both real owners rather than replacing either with a successful fixture.
+These two owner reads and strict HTTP capture are now composed under one context.
+The [joined owner-chain run](backend/http-owner-chain.md) reaches actual guarded
+Auth/Profile services and isolated PostgreSQL from a test-only Axum route.
+It requires active account/live session, binds Profile to the JWT subject,
+preserves the original request stop and prevents Profile dispatch after refused
+Auth. Email-only admission needs no provider binding. No cache, retry, invented
+suspension state or new proof lifetime is introduced. This is still a private
+Gateway observation: signed Concert admission, current event-policy composition
+and actual public product routes remain to be implemented and exercised.
 
 Required qualification includes foreign actor/family/reference, deleted/unlinked/
 relinked claims, expired/revoked account/session, owner outage, role/epoch changes,
