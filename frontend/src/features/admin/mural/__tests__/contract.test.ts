@@ -11,7 +11,7 @@ import { closeEventSchema, closureJobSchema } from '../../closure/contract'
 describe('pinned C04 FE39 DTO parity', () => {
   it('closed DTO keys match owning definitions; authored schemas add declared policy invariants', () => {
     for (const [schema, definition] of [[controlSchema, mural.$defs.MuralControl], [restoreSchema, mural.$defs.RestoreMural], [lockSchema, mural.$defs.RegionLock],
-      [boundsSchema, mural.$defs.RegionBounds], [muralStateSchema, mural.$defs.MuralAdminState], [closeEventSchema, admin.$defs.CloseEvent], [closureJobSchema, admin.$defs.ClosureJob]] as const) {
+      [boundsSchema, mural.$defs.RegionBounds], [muralStateSchema, mural.$defs.MuralAdminState], [closeEventSchema, admin.$defs.CloseEvent.oneOf[0]!], [closureJobSchema, admin.$defs.ClosureJob]] as const) {
       expect(Object.keys(schema.shape).sort()).toEqual([...definition.required].sort()); expect(definition.additionalProperties).toBe(false)
     }
   })
