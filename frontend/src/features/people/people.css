@@ -1,0 +1,22 @@
+.intro-surface { box-sizing: border-box; max-width: 42rem; width: 100%; margin-inline: auto; padding: 1.25rem; padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); color: var(--mcr-text,#f4f1e8); background: var(--mcr-surface,#201e25); font: 1rem/1.5 system-ui,sans-serif; overflow-wrap: anywhere; }
+.intro-surface * { box-sizing: border-box; }
+.intro-surface h1 { font-size: 1.75rem; margin-block: .5rem; }
+.intro-surface h2 { font-size: 1.15rem; margin-block: .25rem; }
+.intro-surface a { color: inherit; text-underline-offset: .2em; }
+.intro-surface button,.intro-surface input,.intro-surface select,.intro-surface textarea { max-width: 100%; min-height: 44px; padding: .5rem .75rem; color: inherit; background: var(--mcr-background,#131217); border: 1px solid var(--mcr-border,#827e8b); border-radius: .2rem; font: inherit; }
+.intro-surface input,.intro-surface textarea,.intro-surface select { width: 100%; min-width: 0; }
+.intro-surface textarea { min-height: 9rem; resize: vertical; }
+.intro-surface label { display: block; font-weight: 650; margin-top: 1rem; margin-bottom: .35rem; }
+.intro-surface fieldset { margin-block: 1.25rem; padding: 0; border: 0; min-width: 0; }
+.intro-surface button:disabled { opacity: .55; }
+.intro-surface :focus-visible { outline: 3px solid var(--mcr-focus,#f7cd7a); outline-offset: 3px; }
+.intro-actions { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; margin-block: .75rem; }
+.intro-actions input { flex: 1; width: 10rem; }
+.intro-actions a { display: inline-flex; align-items: center; min-height: 44px; }
+.intro-people { list-style: none; padding: 0; margin-block: 1.5rem; }
+.intro-people li { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: .8rem; padding-block: 1.25rem; border-bottom: 1px solid var(--mcr-border,#827e8b); }
+.intro-avatar { display: grid; place-items: center; width: 5rem; min-height: 5rem; font-size: .75rem; text-align: center; }
+.intro-avatar canvas { width: 80px; height: 80px; image-rendering: pixelated; display: block; }
+.intro-surface > .intro-avatar { width: 160px; height: 160px; margin-block: 1rem; }
+.intro-surface > .intro-avatar canvas { width: 160px; height: 160px; }
+.intro-user-text { white-space: pre-wrap; }
