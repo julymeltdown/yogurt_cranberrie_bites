@@ -29,8 +29,19 @@ delivery without coordinator approval. See `../parallel-delivery.md`.
   `fe-social-feed`, branch `codex/mcr-fe-social-feed`, base `f0e44bd`.
   Current source activity is under assigned `frontend/src/features/event-feed/`
   and `frontend/src/features/feed-thread/`; no backend or root/shared ownership.
-  Worker reported creating an unbudgeted goal; actual goal result requested for
-  independent verification. Required FE28 image work remains in scope.
+  Worker reported actual `get_goal` ACTIVE with the unbudgeted FE27/28
+  implementation/validation/documentation/handoff/fix objective. Required FE28
+  image work and browser qualification remain in scope.
+
+- FE04: `01a1a202-375e-7401-bfa1-ff8721e90ed6`, isolated
+  `/Users/lhs/Desktop/mcr-worktrees/fe-media-upload`, branch
+  `codex/mcr-fe-media-upload`, base
+  `48458d597af73bd695c8d5813b123c6a96e55321`. Delivery reserved
+  `frontend/src/shared/media/**`, `frontend/src/features/media/model/**`
+  including local tests, and `docs/mcr/frontend/media-upload.md`. No existing
+  shared API/root/manifests/contracts ownership. Worker reports an active goal;
+  actual result requested at milestone. Typed port already sent directly to FE28
+  and community FE `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`.
 
 ## Assigned delivery
 
@@ -40,8 +51,9 @@ delivery without coordinator approval. See `../parallel-delivery.md`.
 | BE28 | NOT_STARTED | Private encrypted versioned handles remain required; no implementation evidence yet. | None observed. | Same backend writer follows BE37; managed crypto secret/real owner composition cannot be fabricated. |
 | BE29 | NOT_STARTED | Explicit reciprocal, platform-bound decisions, receipt/outbox, expiry/revoke remain required. | None observed. | Same backend writer; reuse BE15 transaction seam and fresh BE37 policy. |
 | BE30 | NOT_STARTED | Current grant/version/expiry/block/suspension recheck and no-store reveal remain required. | None observed. | Same backend writer; delivery owns external route/composition delegation. |
-| FE27 | IN_PROGRESS | Feed schemas/controller source authored against pinned C04; canonical session operations already available. Offline frozen-lockfile install exit 0. Feature tests NOT_RUN. | No feature commit observed; published ancestry NOT_RUN. | Frontend completes chronological list/filter/notices, linked-target reauthorization and privacy invalidation tests. No matching-BE wait. |
-| FE28 | IN_PROGRESS | Thread/composer source preparation; media explicitly unavailable rather than fake success. Feature tests NOT_RUN. | No feature commit observed; published ancestry NOT_RUN. | Frontend continues independent thread/comment/draft flows; FE04 image transport needs a separate writer allocated by main. |
+| FE27 | MOCK_READY | First controller/UI slice: chronological filters/cursors, notices, strict contract/context decoding, withdrawn target eviction, synchronous privacy cleanup. 10 controller tests, typecheck, plan and focused lint/diff checks exit 0 per owner. Browser/live NOT_RUN. | `97ef9fb39d72e4dfdffbc294759e4510aa874653`, nine paths verified via Git metadata; published ancestry NOT_RUN. | Delivery wires shell-scoped controller with existing auth/bootstrap AccessPort and reauthorized target callbacks; FE owner qualifies browser journey. |
+| FE28 | IN_PROGRESS | Thread/composer source preparation; media explicitly unavailable rather than fake success. Feature tests NOT_RUN. | No feature commit observed; published ancestry NOT_RUN. | Frontend continues independent thread/comment/draft flows; FE04 image transport writer is active; consume qualified typed port when committed. |
+| FE04 | IN_PROGRESS | Typed controller API sent directly to FE28 and community FE; contract/transport mismatch explicitly routed to delivery. Feature validation NOT_RUN. | No commit observed. | FE04 implements/validates lane-local adapter, image lifecycle and uncertain-finalize denial; delivery resolves transport semantics. |
 | IN03 | NOT_RUN | No two-account real-service social/privacy journey established. | No candidate-bound gate evidence. | Delivery qualifies HTTP, WS and cache denial/revocation with real owners after required flows exist. |
 
 The policy API is committed at `bcd2cd2`; it is not a frozen public HTTP
@@ -58,13 +70,18 @@ no SL code review is needed to proceed.
 
 ## Concrete dependency routing
 
-1. Delivery confirmed no active FE04/media owner. Main received a ready
-   assignment proposal for `frontend/src/shared/media/**` and
-   `frontend/src/features/media/model/**`, with lane evidence explicitly
-   allocated. Required behavior: image compression, preview cleanup, progress,
-   abort, finalize and retry; credential-free presigned PUT; failed finalize
-   never reported as uploaded. FE25 also consumes this port. FE27 and the
-   independent FE28 text flows continue now.
+1. Main allocated FE04 after delivery confirmed no incumbent. Its typed port is
+   `createImageUploadController` with read/subscribe/select/upload/recover/retry/
+   cancel/dispose and purpose POST/GIVEAWAY/REPORT. Only validated READY Media
+   appears as an attachment. FE28 and community FE receive it directly. The
+   canonical HTTP transport supports JSON/form only, but C04 specifies an
+   authenticated, bounded same-origin byte PUT; its UploadIntent has no external
+   presigned URL/header fields. FE04 proposed lane-local authenticated XHR for
+   that actual contract plus a separate credential-free presigned helper not
+   selected by C04. Delivery decides the implementation boundary; no existing
+   shared API edits were implicitly acquired. Tests must distinguish these
+   transports, reject failed/unknown finalize as READY, fence identity changes
+   and free preview/worker/network resources. Text/thread work continues.
 2. Delivery confirmed no active Friend/Auth relationship-adapter writer.
    Backend supplied exact authority requirements in the committed lane document:
    request-bound current Auth session/account and subject restrictions, both
@@ -106,8 +123,10 @@ production Friend/Auth fencing, image upload, or real multiuser evidence is
 claimed here. Worker results will record commands/exit codes and feature commits
 before publication; delivery verifies the actual master ancestry. Remote-tracking
 master was observed at `920631d64c85355df33163a51cd4d1643f4fa109` while both
-frontend branch remained at `f0e44bd`; backend subsequently advanced to
-`bcd2cd2`. That is not evidence that either feature was published to master.
+frontend branch subsequently advanced to `97ef9fb` and backend to `bcd2cd2`.
+Neither feature commit was an ancestor of the observed remote-tracking ref
+(`git merge-base --is-ancestor` exit 1 for each); this is a bounded local-ref
+observation, not a fresh remote fetch or evidence of live qualification.
 
 ## Tracker verification
 
@@ -116,3 +135,7 @@ frontend branch remained at `f0e44bd`; backend subsequently advanced to
 - `git diff --check`: exit 0 before the tracker checkpoint.
 - Only `docs/mcr/scrum/social.md` is staged for the SL handoff. The delivery
   integrator publishes this branch commit; the SL does not push master.
+
+Tracker handoff: initial commit `22f6063d7d81c66ee8663a5672b40a98b9eeabc1`
+sent directly to delivery. This follow-up records first feature commits and the
+newly allocated FE04 writer without adding any application-code approval gate.
