@@ -697,3 +697,79 @@ fn selected_release_binds_all_six_presets_without_layered_defaults() {
     bundle.write();
     assert!(bundle.load(false, true).is_err());
 }
+
+fn source_spatial_candidate() -> concert_service::bootstrap::spatial::SourceBoundSpatialCandidate {
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../..");
+    concert_service::bootstrap::spatial::load_candidate(
+        &root.join("backend/releases/reference-scene-v2/map-manifest.json"),
+        &root.join("backend/releases/reference-scene-v2/source-binding.json"),
+        &root.join("frontend/public"),
+    )
+    .unwrap()
+}
+const SPATIAL_EVENT: &str = "00000000-0000-4000-8000-000000000831";
+#[tokio::test]
+#[ignore = "requires test_spatial_release.py private PostgreSQL harness"]
+async fn native_spatial_candidate_transactions() {
+    use concert_application::place::{PlaceRepository, SelectionOutcome};
+    use concert_service::adapters::out::repository::place::PgPlaceRepository;
+    let pool = support::pool().await;
+    let event: Uuid = SPATIAL_EVENT.parse().unwrap();
+    support::seed(&pool, event).await;
+    let candidate = source_spatial_candidate();
+    let repo = PgPlaceRepository::new(pool.clone());
+    let event = concert_domain::EventId::from_uuid(event);
+    let first = repo
+        .publish_release(event, candidate.catalog.clone())
+        .await
+        .unwrap();
+    assert_eq!(first.map_revision, 1);
+    assert_eq!(first.map_id, "mcr_reference_scene_r3");
+    let read = repo.catalog(event).await.unwrap().unwrap();
+    assert_eq!(read.release, candidate.catalog);
+    assert_eq!(read.places.len(), 4);
+    let again = repo
+        .publish_release(event, candidate.catalog.clone())
+        .await
+        .unwrap();
+    assert_eq!(again, first);
+    for place in &read.places {
+        assert_eq!(
+            repo.select_physical(event, place.id, first.revision, first.map_revision)
+                .await
+                .unwrap(),
+            SelectionOutcome::ConceptOnly
+        );
+        assert_eq!(
+            repo.select_physical(event, place.id, first.revision, 2)
+                .await
+                .unwrap(),
+            SelectionOutcome::MapMismatch
+        );
+    }
+    let row:(Vec<u8>,String)=sqlx::query_as("select canonical_bytes,geometry_hash from concert_map_releases where map_id=$1 and map_revision=1")
+        .bind(&first.map_id).fetch_one(&pool).await.unwrap();
+    assert_eq!(row.0, candidate.catalog.canonical_bytes);
+    assert_eq!(row.1, candidate.catalog.manifest.geometry_hash);
+    pool.close().await;
+}
+#[tokio::test]
+#[ignore = "requires test_spatial_release.py postmaster restart"]
+async fn native_spatial_candidate_restart() {
+    use concert_application::place::PlaceRepository;
+    let pool = support::pool().await;
+    let repo =
+        concert_service::adapters::out::repository::place::PgPlaceRepository::new(pool.clone());
+    let read = repo
+        .catalog(concert_domain::EventId::from_uuid(
+            SPATIAL_EVENT.parse().unwrap(),
+        ))
+        .await
+        .unwrap()
+        .unwrap();
+    let candidate = source_spatial_candidate();
+    assert_eq!(read.release, candidate.catalog);
+    assert_eq!(read.places.len(), 4);
+    assert!(!candidate.scenery_within_budget);
+    pool.close().await;
+}

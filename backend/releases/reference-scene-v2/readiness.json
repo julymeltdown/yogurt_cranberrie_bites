@@ -1,0 +1,41 @@
+{
+  "blockers": [
+    "MISSING_PAINTED_REVENGE",
+    "MISSING_PAINTED_DANGER",
+    "UNREVIEWED_SOURCE_PROVENANCE",
+    "TILED_RESOURCE_NOT_PROVIDED",
+    "PRODUCT_BOOTSTRAP_NOT_CONFIGURED",
+    "C06_SCENERY_BYTE_BUDGET",
+    "C06_SCENERY_PIXEL_BUDGET",
+    "C06_INTEGER_SCENERY_PROJECTION_REQUIRED"
+  ],
+  "bootstrap": null,
+  "fractional_depth_count": 7,
+  "limits": [
+    "No art fidelity acceptance",
+    "No physical place qualification",
+    "No public URL invented for a missing Tiled resource",
+    "No event-current map publication or production admission"
+  ],
+  "map": {
+    "content_hash": "sha256:d455e77ddeadeaf120fefad4d2eaec6d92d4c0ccc7c091688b5471598776950a",
+    "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 1
+  },
+  "scenery_budget": {
+    "bytes": 3179667,
+    "max_bytes": 2097152,
+    "max_pixels": 2097152,
+    "pixels": 2567844
+  },
+  "skins": {
+    "DANGER": "UNAVAILABLE",
+    "PARADE": "SOURCE_PROPOSAL",
+    "REVENGE": "UNAVAILABLE"
+  },
+  "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497",
+  "state": "NOT_ADMITTED",
+  "task": "BE-SPATIAL-RELEASE",
+  "theme_manifests": null
+}
