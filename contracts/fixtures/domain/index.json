@@ -1,0 +1,177 @@
+[
+  {
+    "file": "party-full.json",
+    "schema": "party.PartyPublic",
+    "expected": "accept"
+  },
+  {
+    "file": "party-over-capacity.json",
+    "schema": "party.PartyPublic",
+    "expected": "reject"
+  },
+  {
+    "file": "party-private-leak.json",
+    "schema": "party.PartyPublic",
+    "expected": "reject"
+  },
+  {
+    "file": "reservation-held.json",
+    "schema": "giveaway.Reservation",
+    "expected": "accept"
+  },
+  {
+    "file": "giveaway-management.json",
+    "schema": "giveaway.GiveawayManagement",
+    "expected": "accept"
+  },
+  {
+    "file": "stock-mismatch.json",
+    "schema": "giveaway.GiveawayManagement",
+    "expected": "reject"
+  },
+  {
+    "file": "claimed-without-receipt.json",
+    "schema": "giveaway.Reservation",
+    "expected": "reject"
+  },
+  {
+    "file": "private-beacon.json",
+    "schema": "beacon.MeetBeacon",
+    "expected": "accept"
+  },
+  {
+    "file": "beacon-world-coordinate.json",
+    "schema": "beacon.MeetBeacon",
+    "expected": "reject"
+  },
+  {
+    "file": "empty-age-bounds.json",
+    "schema": "common.AgeBounds",
+    "expected": "accept"
+  },
+  {
+    "file": "half-open-age-bounds.json",
+    "schema": "common.AgeBounds",
+    "expected": "accept"
+  },
+  {
+    "file": "one-sided-age-bounds.json",
+    "schema": "common.AgeBounds",
+    "expected": "reject"
+  },
+  {
+    "file": "reversed-age-bounds.json",
+    "schema": "common.AgeBounds",
+    "expected": "reject"
+  },
+  {
+    "file": "private-age-claim.json",
+    "schema": "social.PrivateAgeClaim",
+    "expected": "accept"
+  },
+  {
+    "file": "public-intro.json",
+    "schema": "social.IntroPublic",
+    "expected": "accept"
+  },
+  {
+    "file": "intro-age-leak.json",
+    "schema": "social.IntroPublic",
+    "expected": "reject"
+  },
+  {
+    "file": "approved-social-request.json",
+    "schema": "social.SocialRequest",
+    "expected": "accept"
+  },
+  {
+    "file": "duplicate-platform-consent.json",
+    "schema": "social.SocialRequest",
+    "expected": "reject"
+  },
+  {
+    "file": "social-approval.json",
+    "schema": "social.SocialDecision",
+    "expected": "accept"
+  },
+  {
+    "file": "social-unconsented-approval.json",
+    "schema": "social.SocialDecision",
+    "expected": "reject"
+  },
+  {
+    "file": "social-grant.json",
+    "schema": "social.SocialGrant",
+    "expected": "accept"
+  },
+  {
+    "file": "mural-pixel.json",
+    "schema": "mural.PlacePixel",
+    "expected": "accept"
+  },
+  {
+    "file": "mural-out-of-bounds.json",
+    "schema": "mural.PlacePixel",
+    "expected": "reject"
+  },
+  {
+    "file": "empty-mural-region.json",
+    "schema": "mural.RegionBounds",
+    "expected": "reject"
+  },
+  {
+    "file": "mural-delta.json",
+    "schema": "mural.MuralDelta",
+    "expected": "accept"
+  },
+  {
+    "file": "mural-gap.json",
+    "schema": "mural.MuralDelta",
+    "expected": "reject"
+  },
+  {
+    "file": "public-post.json",
+    "schema": "feed.PostPublic",
+    "expected": "accept"
+  },
+  {
+    "file": "feed-private-handle.json",
+    "schema": "feed.PostPublic",
+    "expected": "reject"
+  },
+  {
+    "file": "notification-safe.json",
+    "schema": "feed.Notification",
+    "expected": "accept"
+  },
+  {
+    "file": "notification-raw-payload.json",
+    "schema": "feed.Notification",
+    "expected": "reject"
+  },
+  {
+    "file": "command-pending.json",
+    "schema": "common.CommandReceipt",
+    "expected": "accept"
+  },
+  {
+    "file": "receipt-false-success.json",
+    "schema": "common.CommandReceipt",
+    "expected": "reject"
+  },
+  {
+    "file": "sold-out-error.json",
+    "schema": "common.DomainError",
+    "expected": "accept"
+  },
+  {
+    "file": "closure-complete.json",
+    "schema": "admin.ClosureJob",
+    "expected": "accept"
+  },
+  {
+    "file": "closure-false-success.json",
+    "schema": "admin.ClosureJob",
+    "expected": "reject"
+  }
+]

@@ -1,0 +1,773 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/domain/v1/common.schema.json",
+  "title": "MCR C04 common v0.1.0 review candidate",
+  "$defs": {
+    "Uuid": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "UtcTimestamp": {
+      "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/UtcTimestamp"
+    },
+    "Revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "Cursor": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "Platform": {
+      "enum": [
+        "INSTAGRAM",
+        "X"
+      ]
+    },
+    "AgeBounds": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "minimum_age": {
+              "type": "null"
+            },
+            "maximum_age_exclusive": {
+              "type": "null"
+            }
+          },
+          "required": [
+            "minimum_age",
+            "maximum_age_exclusive"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "minimum_age": {
+              "type": "integer",
+              "minimum": 14,
+              "maximum": 100
+            },
+            "maximum_age_exclusive": {
+              "type": "integer",
+              "minimum": 15,
+              "maximum": 101
+            }
+          },
+          "required": [
+            "minimum_age",
+            "maximum_age_exclusive"
+          ]
+        }
+      ]
+    },
+    "PageQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": []
+    },
+    "RevisionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "expected_revision"
+      ]
+    },
+    "EmptyRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {},
+      "required": []
+    },
+    "CommandReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "actor_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "operation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "idempotency_key": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "request_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "state": {
+          "enum": [
+            "PENDING",
+            "SUCCEEDED",
+            "FAILED",
+            "RETIRED"
+          ]
+        },
+        "resource_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resource_revision": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "failure_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "INVALID_INPUT",
+                "AUTHENTICATION_REQUIRED",
+                "PERMISSION_DENIED",
+                "ORIGIN_NOT_ALLOWED",
+                "BROWSER_INTENT_REQUIRED",
+                "RESOURCE_UNAVAILABLE",
+                "VERSION_CONFLICT",
+                "INVALID_TRANSITION",
+                "IDEMPOTENCY_CONFLICT",
+                "IDEMPOTENCY_EXPIRED",
+                "PARTY_FULL",
+                "GIVEAWAY_SOLD_OUT",
+                "DUPLICATE_ACTIVE_RESERVATION",
+                "EVENT_READ_ONLY",
+                "MURAL_PAUSED",
+                "MURAL_FROZEN",
+                "MAP_VERSION_MISMATCH",
+                "RESERVATION_EXPIRED",
+                "PAYLOAD_TOO_LARGE",
+                "INVALID_MEDIA_TYPE",
+                "RATE_LIMITED",
+                "MURAL_COOLDOWN",
+                "INTERNAL_ERROR",
+                "UPSTREAM_ERROR",
+                "DEPENDENCY_UNAVAILABLE",
+                "FEATURE_UNAVAILABLE",
+                "DEADLINE_EXCEEDED",
+                "CONSENT_REQUIRED",
+                "PICKUP_CODE_INVALID",
+                "DUPLICATE_APPLICATION",
+                "MEDIA_NOT_READY",
+                "MURAL_REGION_LOCKED",
+                "PROVIDER_UNAVAILABLE"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "result_status": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 200,
+              "maximum": 299
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "receipt_id",
+        "event_id",
+        "actor_id",
+        "operation_id",
+        "idempotency_key",
+        "request_hash",
+        "state",
+        "resource_id",
+        "resource_revision",
+        "failure_reason",
+        "created_at",
+        "expires_at",
+        "result_status"
+      ]
+    },
+    "DomainError": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "traceId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "timestamp": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "details": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "INVALID_INPUT"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "AUTHENTICATION_REQUIRED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "PERMISSION_DENIED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "ORIGIN_NOT_ALLOWED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "BROWSER_INTENT_REQUIRED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "RESOURCE_UNAVAILABLE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "VERSION_CONFLICT"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "INVALID_TRANSITION"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "IDEMPOTENCY_CONFLICT"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "IDEMPOTENCY_EXPIRED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "PARTY_FULL"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "GIVEAWAY_SOLD_OUT"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "DUPLICATE_ACTIVE_RESERVATION"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "EVENT_READ_ONLY"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_PAUSED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_FROZEN"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MAP_VERSION_MISMATCH"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "RESERVATION_EXPIRED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "PAYLOAD_TOO_LARGE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "INVALID_MEDIA_TYPE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "RATE_LIMITED"
+                },
+                "retry_after_ms": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 3600000
+                }
+              },
+              "required": [
+                "reason",
+                "retry_after_ms"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_COOLDOWN"
+                },
+                "retry_after_ms": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 3600000
+                }
+              },
+              "required": [
+                "reason",
+                "retry_after_ms"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "INTERNAL_ERROR"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "UPSTREAM_ERROR"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "DEPENDENCY_UNAVAILABLE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "FEATURE_UNAVAILABLE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "DEADLINE_EXCEEDED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "CONSENT_REQUIRED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "PICKUP_CODE_INVALID"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "DUPLICATE_APPLICATION"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MEDIA_NOT_READY"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "MURAL_REGION_LOCKED"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "reason": {
+                  "const": "PROVIDER_UNAVAILABLE"
+                }
+              },
+              "required": [
+                "reason"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "details"
+      ]
+    },
+    "ResourceLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target_type": {
+          "enum": [
+            "PARTY",
+            "GIVEAWAY",
+            "POST",
+            "INTRO",
+            "MURAL",
+            "NOTICE"
+          ]
+        },
+        "target_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "target_type",
+        "target_id"
+      ]
+    },
+    "Deleted": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "resource_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "state": {
+          "enum": [
+            "DELETED"
+          ]
+        }
+      },
+      "required": [
+        "resource_id",
+        "revision",
+        "state"
+      ]
+    },
+    "StatusQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "idempotency_key": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "operation_id",
+        "idempotency_key"
+      ]
+    },
+    "CreationRevision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  }
+}

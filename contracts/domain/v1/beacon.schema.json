@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/domain/v1/beacon.schema.json",
+  "title": "MCR C04 beacon v0.1.0 review candidate",
+  "$defs": {
+    "Audience": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "PARTY_MEMBERS"
+              ]
+            },
+            "party_id": {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            }
+          },
+          "required": [
+            "kind",
+            "party_id"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "EXPLICIT_USERS"
+              ]
+            },
+            "user_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+              },
+              "minItems": 1,
+              "maxItems": 50,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "user_ids"
+          ]
+        }
+      ]
+    },
+    "MeetingDescription": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "place_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "map_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "place_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "identification": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "audience": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/beacon.schema.json#/$defs/Audience"
+        },
+        "expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "place_id",
+        "map_revision",
+        "place_revision",
+        "instructions",
+        "identification",
+        "audience",
+        "expires_at"
+      ]
+    },
+    "CreateBeacon": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "meeting": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/beacon.schema.json#/$defs/MeetingDescription"
+        },
+        "physical_presence_acknowledged": {
+          "const": true
+        }
+      },
+      "required": [
+        "meeting",
+        "physical_presence_acknowledged"
+      ]
+    },
+    "UpdateBeacon": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "meeting": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/beacon.schema.json#/$defs/MeetingDescription"
+        },
+        "physical_presence_acknowledged": {
+          "const": true
+        }
+      },
+      "required": [
+        "expected_revision",
+        "meeting",
+        "physical_presence_acknowledged"
+      ]
+    },
+    "MeetBeacon": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "beacon_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "owner_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "meeting": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/beacon.schema.json#/$defs/MeetingDescription"
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "updated_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "state": {
+          "enum": [
+            "ACTIVE",
+            "EXPIRED",
+            "REVOKED"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "beacon_id",
+        "event_id",
+        "owner_id",
+        "meeting",
+        "created_at",
+        "updated_at",
+        "state",
+        "revision"
+      ]
+    },
+    "BeaconStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "beacon_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "enum": [
+            "ACTIVE",
+            "EXPIRED",
+            "REVOKED"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "beacon_id",
+        "event_id",
+        "revision",
+        "state"
+      ]
+    }
+  }
+}

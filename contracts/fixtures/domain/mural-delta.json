@@ -1,0 +1,17 @@
+{
+  "event_id": "00000000-0000-4000-8000-000000000001",
+  "from_revision": 7,
+  "to_revision": 8,
+  "reset_required": false,
+  "operations": [
+    {
+      "operation_id": "00000000-0000-4000-8000-000000000032",
+      "event_id": "00000000-0000-4000-8000-000000000001",
+      "revision": 8,
+      "x": 0,
+      "y": 0,
+      "color_index": 3,
+      "committed_at": "2026-11-07T08:01:00Z"
+    }
+  ]
+}

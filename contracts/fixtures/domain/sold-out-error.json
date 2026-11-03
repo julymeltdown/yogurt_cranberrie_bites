@@ -1,0 +1,8 @@
+{
+  "code": "CONFLICT",
+  "message": "The action could not be completed.",
+  "traceId": "opaque-example",
+  "details": {
+    "reason": "GIVEAWAY_SOLD_OUT"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "claim_id": "00000000-0000-4000-8000-00000000001e",
+  "user_id": "00000000-0000-4000-8000-000000000002",
+  "verifier_id": "fixture-verifier",
+  "source_revision": "fixture-only",
+  "status": "VERIFIED",
+  "verified_at": "2026-11-01T00:00:00Z",
+  "expires_at": "2027-01-30T00:00:00Z",
+  "age_at_verification": 25,
+  "next_birthday_at": "2026-11-07"
+}

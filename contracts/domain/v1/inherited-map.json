@@ -1,0 +1,221 @@
+{
+  "source_commit": "704f42149d5e8e35e1d578676d8ae2dac4f0f9c2",
+  "generator": "backend/scripts/docs/generate-openapi.py:build_document",
+  "operations": [
+    {
+      "operationId": "createConcertPost",
+      "inherited_operationId": "createPost",
+      "method": "post",
+      "path": "/api/posts",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "getConcertPost",
+      "inherited_operationId": "getPost",
+      "method": "get",
+      "path": "/api/posts/{post_id}",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "deleteConcertPost",
+      "inherited_operationId": "deletePost",
+      "method": "delete",
+      "path": "/api/posts/{post_id}",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "createConcertComment",
+      "inherited_operationId": "createComment",
+      "method": "post",
+      "path": "/api/posts/{post_id}/comments",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "likeConcertPost",
+      "inherited_operationId": "likePost",
+      "method": "post",
+      "path": "/api/posts/{post_id}/likes",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "unlikeConcertPost",
+      "inherited_operationId": "unlikePost",
+      "method": "delete",
+      "path": "/api/posts/{post_id}/likes",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "listConcertNotifications",
+      "inherited_operationId": "listNotifications",
+      "method": "get",
+      "path": "/api/notifications",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "markConcertNotification",
+      "inherited_operationId": "markNotificationRead",
+      "method": "patch",
+      "path": "/api/notifications/{notification_id}/read",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "markAllConcertNotifications",
+      "inherited_operationId": "markAllNotificationsRead",
+      "method": "patch",
+      "path": "/api/notifications/read-all",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "blockConcertUser",
+      "inherited_operationId": "blockUser",
+      "method": "post",
+      "path": "/api/relationships/blocks/{target_user_id}",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "unblockConcertUser",
+      "inherited_operationId": "unblockUser",
+      "method": "delete",
+      "path": "/api/relationships/blocks/{target_user_id}",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "createConcertReport",
+      "inherited_operationId": "createModerationReport",
+      "method": "post",
+      "path": "/api/moderation/reports",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "listOwnConcertReports",
+      "inherited_operationId": "listMyModerationReports",
+      "method": "get",
+      "path": "/api/moderation/reports/me",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "listConcertAdminReports",
+      "inherited_operationId": "listOpenModerationReports",
+      "method": "get",
+      "path": "/admin/moderation/reports",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    },
+    {
+      "operationId": "decideConcertReport",
+      "inherited_operationId": "createModerationDecision",
+      "method": "post",
+      "path": "/admin/moderation/reports/{report_id}/decisions",
+      "state": "ADAPTATION_REQUIRED",
+      "requirements": [
+        "Canonical identity and event authorization",
+        "DTO projection and safe error mapping",
+        "Durable async receipt recovery; never turn upstream202 into success",
+        "No direct cross-service database joins"
+      ]
+    }
+  ],
+  "receipt_queries": [
+    {
+      "operationId": "getOwnOperationStatus",
+      "method": "get",
+      "path": "/api/operations/{operation_id}"
+    },
+    {
+      "operationId": "getOperationStatus",
+      "method": "get",
+      "path": "/admin/operations/{operation_id}"
+    }
+  ],
+  "new_capabilities": [
+    "Event feed ordering and association",
+    "Post editing",
+    "Comment listing/editing/deletion",
+    "Sanitized image pipeline",
+    "Concert-specific safe notifications",
+    "Event-scoped role/evidence policy"
+  ]
+}

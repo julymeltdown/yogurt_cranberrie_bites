@@ -1,0 +1,869 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/domain/v1/feed.schema.json",
+  "title": "MCR C04 feed v0.1.0 review candidate",
+  "$defs": {
+    "PostPublic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "post_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "author": {
+          "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/PublicProfile"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "media_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/ResourceLink"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "edited_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comment_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "reaction_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "reacted_by_me": {
+          "type": "boolean"
+        },
+        "state": {
+          "enum": [
+            "PUBLISHED"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "post_id",
+        "event_id",
+        "author",
+        "text",
+        "media_ids",
+        "links",
+        "created_at",
+        "edited_at",
+        "comment_count",
+        "reaction_count",
+        "reacted_by_me",
+        "state",
+        "revision"
+      ]
+    },
+    "PostDetail": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "post": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/PostPublic"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/CommentPublic"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "post",
+        "comments",
+        "next_cursor"
+      ]
+    },
+    "CreatePost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "media_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/ResourceLink"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "text",
+        "media_ids",
+        "links"
+      ]
+    },
+    "EditPost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "media_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/ResourceLink"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "expected_revision",
+        "text",
+        "media_ids",
+        "links"
+      ]
+    },
+    "CommentPublic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "comment_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "post_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "author": {
+          "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/PublicProfile"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "comment_id",
+        "post_id",
+        "author",
+        "text",
+        "revision",
+        "created_at"
+      ]
+    },
+    "CreateComment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "post_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "text",
+        "post_revision"
+      ]
+    },
+    "ReactionState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "post_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "reacted_by_me": {
+          "type": "boolean"
+        },
+        "reaction_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "post_id",
+        "reacted_by_me",
+        "reaction_count",
+        "revision"
+      ]
+    },
+    "InitUpload": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "purpose": {
+          "enum": [
+            "POST",
+            "GIVEAWAY",
+            "REPORT"
+          ]
+        },
+        "content_type": {
+          "enum": [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+          ]
+        },
+        "byte_length": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10485760
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "purpose",
+        "content_type",
+        "byte_length",
+        "sha256"
+      ]
+    },
+    "UploadIntent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "media_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "enum": [
+            "PENDING"
+          ]
+        },
+        "upload_path": {
+          "type": "string",
+          "pattern": "^/api/concert/events/[0-9a-f-]{36}/media/[0-9a-f-]{36}/bytes$"
+        },
+        "max_bytes": {
+          "const": 10485760
+        },
+        "expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "upload_method": {
+          "const": "PUT"
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "media_id",
+        "state",
+        "upload_path",
+        "max_bytes",
+        "expires_at",
+        "upload_method",
+        "revision"
+      ]
+    },
+    "Media": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "media_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "enum": [
+            "READY"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4096
+        },
+        "content_type": {
+          "enum": [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+          ]
+        },
+        "purpose": {
+          "enum": [
+            "POST",
+            "GIVEAWAY",
+            "REPORT"
+          ]
+        },
+        "read_path": {
+          "type": "string",
+          "pattern": "^/api/concert/events/[0-9a-f-]{36}/media/[0-9a-f-]{36}/content$"
+        }
+      },
+      "required": [
+        "media_id",
+        "state",
+        "revision",
+        "width",
+        "height",
+        "content_type",
+        "purpose",
+        "read_path"
+      ]
+    },
+    "Notification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "notification_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "kind": {
+          "enum": [
+            "PARTY",
+            "GIVEAWAY",
+            "SOCIAL",
+            "MODERATION",
+            "NOTICE",
+            "FEED"
+          ]
+        },
+        "target": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/NotificationTarget"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "read_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "notification_id",
+        "event_id",
+        "kind",
+        "target",
+        "created_at",
+        "read_at",
+        "revision"
+      ]
+    },
+    "ReadAllResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "read_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "read_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "read_count",
+        "read_at"
+      ]
+    },
+    "BlockState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target_user_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "blocked_by_me": {
+          "type": "boolean"
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "target_user_id",
+        "blocked_by_me",
+        "revision"
+      ]
+    },
+    "Notice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "notice_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "source_uri": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "maxLength": 2048
+        },
+        "confirmed_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "state": {
+          "enum": [
+            "DRAFT",
+            "PUBLISHED",
+            "WITHDRAWN"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "notice_id",
+        "event_id",
+        "title",
+        "text",
+        "source_uri",
+        "confirmed_at",
+        "created_at",
+        "state",
+        "revision"
+      ]
+    },
+    "FeedPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/PostPublic"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "CommentList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/CommentPublic"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "NotificationList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/Notification"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "BlockList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/BlockState"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "NoticeList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/Notice"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "UploadBytesResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "media_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "const": "UPLOADED"
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "media_id",
+        "state",
+        "revision"
+      ]
+    },
+    "FinalizeUpload": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "expected_revision"
+      ]
+    },
+    "EditComment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "expected_revision",
+        "text"
+      ]
+    },
+    "ResourceLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target_type": {
+          "enum": [
+            "PARTY",
+            "GIVEAWAY",
+            "POST",
+            "INTRO",
+            "MURAL",
+            "NOTICE"
+          ]
+        },
+        "target_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "target_type",
+        "target_id"
+      ]
+    },
+    "NotificationTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target_type": {
+          "enum": [
+            "PARTY",
+            "APPLICATION",
+            "GIVEAWAY",
+            "RESERVATION",
+            "SOCIAL_REQUEST",
+            "POST",
+            "NOTICE",
+            "REPORT"
+          ]
+        },
+        "target_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "target_type",
+        "target_id"
+      ]
+    },
+    "PublicNoticeList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/PublishedNotice"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "PublishedNotice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "notice_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "source_uri": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "maxLength": 2048
+        },
+        "confirmed_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "state": {
+          "const": "PUBLISHED"
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "notice_id",
+        "event_id",
+        "title",
+        "text",
+        "source_uri",
+        "confirmed_at",
+        "created_at",
+        "state",
+        "revision"
+      ]
+    }
+  }
+}

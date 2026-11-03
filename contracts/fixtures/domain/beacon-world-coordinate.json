@@ -1,0 +1,24 @@
+{
+  "beacon_id": "00000000-0000-4000-8000-000000000015",
+  "event_id": "00000000-0000-4000-8000-000000000001",
+  "owner_id": "00000000-0000-4000-8000-000000000002",
+  "meeting": {
+    "place_id": "00000000-0000-4000-8000-000000000014",
+    "map_revision": 1,
+    "place_revision": 1,
+    "instructions": "Wait by the reviewed meeting marker.",
+    "identification": "Red scarf",
+    "audience": {
+      "kind": "EXPLICIT_USERS",
+      "user_ids": [
+        "00000000-0000-4000-8000-000000000003"
+      ]
+    },
+    "expires_at": "2026-11-07T08:15:00Z"
+  },
+  "created_at": "2026-11-07T08:00:00Z",
+  "updated_at": "2026-11-07T08:00:00Z",
+  "state": "ACTIVE",
+  "revision": 1,
+  "world_x": 32
+}

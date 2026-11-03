@@ -1,0 +1,575 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json",
+  "title": "MCR C04 giveaway v0.1.0 review candidate",
+  "$defs": {
+    "GiveawayPublic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "giveaway_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "owner": {
+          "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/PublicProfile"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        },
+        "image_media_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quantity_total": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "available": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "pickup_starts_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "pickup_ends_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "pickup_grace_seconds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 86400
+        },
+        "public_place_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "state": {
+          "enum": [
+            "DRAFT",
+            "OPEN",
+            "PAUSED",
+            "CLOSED",
+            "CANCELLED"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "giveaway_id",
+        "event_id",
+        "owner",
+        "title",
+        "description",
+        "image_media_id",
+        "quantity_total",
+        "available",
+        "pickup_starts_at",
+        "pickup_ends_at",
+        "pickup_grace_seconds",
+        "public_place_id",
+        "created_at",
+        "state",
+        "revision"
+      ]
+    },
+    "CreateGiveaway": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        },
+        "image_media_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quantity_total": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "pickup_starts_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "pickup_ends_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "public_place_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "image_media_id",
+        "quantity_total",
+        "pickup_starts_at",
+        "pickup_ends_at",
+        "public_place_id"
+      ]
+    },
+    "UpdateGiveaway": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000
+        },
+        "image_media_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quantity_total": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "pickup_starts_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "pickup_ends_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "public_place_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "enum": [
+            "DRAFT",
+            "OPEN",
+            "PAUSED",
+            "CLOSED",
+            "CANCELLED"
+          ]
+        }
+      },
+      "required": [
+        "expected_revision",
+        "title",
+        "description",
+        "image_media_id",
+        "quantity_total",
+        "pickup_starts_at",
+        "pickup_ends_at",
+        "public_place_id",
+        "state"
+      ]
+    },
+    "GiveawayManagement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "giveaway": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/GiveawayPublic"
+        },
+        "reserved_unclaimed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "quantity_claimed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "reservations": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/Reservation"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "giveaway",
+        "reserved_unclaimed",
+        "quantity_claimed",
+        "reservations",
+        "next_cursor"
+      ]
+    },
+    "Reserve": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "giveaway_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "giveaway_revision"
+      ]
+    },
+    "Reservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reservation_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "event_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "giveaway_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "recipient_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "claim_receipt_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state": {
+          "enum": [
+            "HELD",
+            "READY",
+            "CLAIMED",
+            "CANCELLED",
+            "EXPIRED"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "reservation_id",
+        "event_id",
+        "giveaway_id",
+        "recipient_id",
+        "expires_at",
+        "created_at",
+        "claim_receipt_id",
+        "state",
+        "revision"
+      ]
+    },
+    "PickupDetails": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reservation": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/Reservation"
+        },
+        "meeting": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/PickupMeeting"
+        }
+      },
+      "required": [
+        "reservation",
+        "meeting"
+      ]
+    },
+    "ClaimReservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "confirmation_code": {
+          "type": "string",
+          "pattern": "^[0-9]{6}$"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "confirmation_code"
+      ]
+    },
+    "PickupReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "reservation_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "giveaway_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "enum": [
+            "CLAIMED"
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "claimed_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "reservation_id",
+        "giveaway_id",
+        "state",
+        "revision",
+        "claimed_at"
+      ]
+    },
+    "GiveawayList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/GiveawayPublic"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "ReservationList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/Reservation"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "PickupMeeting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "place_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "map_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "place_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "identification": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "place_id",
+        "map_revision",
+        "place_revision",
+        "instructions",
+        "identification",
+        "expires_at"
+      ]
+    },
+    "SetPickupMeeting": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "meeting": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/PickupMeeting"
+        },
+        "physical_presence_acknowledged": {
+          "const": true
+        }
+      },
+      "required": [
+        "expected_revision",
+        "meeting",
+        "physical_presence_acknowledged"
+      ]
+    },
+    "PickupMeetingState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "giveaway_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "meeting": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/PickupMeeting"
+        }
+      },
+      "required": [
+        "giveaway_id",
+        "revision",
+        "meeting"
+      ]
+    },
+    "IssuePickupCode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "expected_revision"
+      ]
+    },
+    "PickupCode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reservation_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "confirmation_code": {
+          "type": "string",
+          "pattern": "^[0-9]{6}$"
+        },
+        "expires_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "reservation_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "reservation_id",
+        "confirmation_code",
+        "expires_at",
+        "reservation_revision"
+      ]
+    },
+    "GiveawayActivity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "giving": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/GiveawayList"
+        },
+        "receiving": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/giveaway.schema.json#/$defs/ReservationList"
+        }
+      },
+      "required": [
+        "giving",
+        "receiving"
+      ]
+    }
+  }
+}

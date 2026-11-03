@@ -1,0 +1,1148 @@
+{
+  "version": "0.1.0",
+  "state": "REVIEW_CANDIDATE",
+  "runtime": "NOT_IMPLEMENTED",
+  "common_guards": [
+    "Exact allowed Origin AND X-MCR-Intent: browser before mutation side effects",
+    "Active canonical Auth user/session; actor is never a request-body authority",
+    "Fresh event role and bidirectional block/suspension checks; unavailable policy fails closed",
+    "Event/target membership bound to canonical path IDs; errors do not reveal private target existence",
+    "Expected revision checked in same transaction as command; no preflight-only authorization",
+    "JSON UTF-8, unique keys, safe finite integers, closed schemas; bounded bodies; no sensitive logging",
+    "Cache-Control: no-store for all personalized/secret/domain responses and errors"
+  ],
+  "write_policies": {
+    "NORMAL": "OPEN or LIVE event and feature enabled",
+    "SAFETY": "Authenticated privacy-restricting/cancellation operations remain possible in READ_ONLY; no new sharing/content",
+    "OPERATIONS": "Fresh server role; per-operation phase rules apply",
+    "READ": "Query authorization and visibility; no implicit mutation"
+  },
+  "idempotency": {
+    "header": "Idempotency-Key",
+    "format": "canonical UUID",
+    "scope": [
+      "actor_id",
+      "event_id_or_null",
+      "operation_id",
+      "key"
+    ],
+    "hash": "SHA256 of method, canonical path, query and canonical JSON/body digest; target included",
+    "result_ttl_seconds": 86400,
+    "tombstone": "Retain key/hash until reviewed event/account cleanup; expired result returns IDEMPOTENCY_EXPIRED, never executes again",
+    "transaction": "Receipt reservation, aggregate guard, mutation, final safe result and outbox are atomic; adapter saga uses downstream same idempotency correlation",
+    "same_key": "Same hash returns safe receipt/result after current authorization; different hash returns409 IDEMPOTENCY_CONFLICT even when target differs",
+    "retry": "No automatic mutation replay; resolve status then explicitly retry identical command/key while retention permits",
+    "secrets": "Never put plaintext pickup code, handle, age proof or token in durable result; a lost one-shot secret response requires explicit rotation/new authorization"
+  },
+  "pagination": {
+    "order": "created_at DESC, id DESC",
+    "max_page": 100,
+    "cursor": "Opaque signed cursor bound to actor,event,query/filter and upper snapshot boundary; reauthorize every row",
+    "invalid_cursor": "400 INVALID_INPUT; never silently change event/user/filter"
+  },
+  "pickup": {
+    "units_per_reservation": 1,
+    "code_digits": 6,
+    "code_ttl_seconds": 300,
+    "max_attempts_per_reservation_per_15_minutes": 5,
+    "additional_throttle": "Owner, recipient and IP limits; no per-process-only counter",
+    "ready": "DB time reaches pickup_starts_at; lazy transition and sweeper use same condition",
+    "expiry": "DB now >= pickup_ends_at+captured_grace; cancellation/expiry/claim use one conditional transition; expiry and code boundaries are exclusive"
+  },
+  "age": {
+    "source_commit": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+    "canonical_order": [
+      "verified_at DESC",
+      "expires_at DESC",
+      "claim_id DESC"
+    ],
+    "select_before_validity": true,
+    "validity_days_max": 90,
+    "timezone": "Asia/Seoul",
+    "minimum_supported_age": 14,
+    "maximum_supported_age": 100,
+    "bounds": "Both null or min <= age < max; both numeric and min < max",
+    "birthday": "next_birthday strictly after verification Seoul date; February29 becomes February28 in non-leap years",
+    "unknown": "Fails closed for restricted discovery/sharing, does not block basic world eligibility"
+  },
+  "transitions": {
+    "event": {
+      "DRAFT": [
+        "OPEN"
+      ],
+      "OPEN": [
+        "LIVE",
+        "READ_ONLY"
+      ],
+      "LIVE": [
+        "READ_ONLY"
+      ],
+      "READ_ONLY": [
+        "ARCHIVED"
+      ],
+      "ARCHIVED": []
+    },
+    "party": {
+      "OPEN": [
+        "CLOSED",
+        "CANCELLED",
+        "COMPLETED"
+      ],
+      "CLOSED": [
+        "OPEN",
+        "CANCELLED",
+        "COMPLETED"
+      ],
+      "CANCELLED": [],
+      "COMPLETED": []
+    },
+    "application": {
+      "PENDING": [
+        "APPROVED",
+        "REJECTED",
+        "CANCELLED"
+      ],
+      "APPROVED": [],
+      "REJECTED": [],
+      "CANCELLED": []
+    },
+    "giveaway": {
+      "DRAFT": [
+        "OPEN",
+        "CANCELLED"
+      ],
+      "OPEN": [
+        "PAUSED",
+        "CLOSED",
+        "CANCELLED"
+      ],
+      "PAUSED": [
+        "OPEN",
+        "CLOSED",
+        "CANCELLED"
+      ],
+      "CLOSED": [],
+      "CANCELLED": []
+    },
+    "reservation": {
+      "HELD": [
+        "READY",
+        "CANCELLED",
+        "EXPIRED"
+      ],
+      "READY": [
+        "CLAIMED",
+        "CANCELLED",
+        "EXPIRED"
+      ],
+      "CLAIMED": [],
+      "CANCELLED": [],
+      "EXPIRED": []
+    },
+    "beacon": {
+      "ACTIVE": [
+        "REVOKED",
+        "EXPIRED"
+      ],
+      "REVOKED": [],
+      "EXPIRED": []
+    },
+    "intro": {
+      "DRAFT": [
+        "PUBLISHED",
+        "CLOSED"
+      ],
+      "PUBLISHED": [
+        "CLOSED"
+      ],
+      "CLOSED": [
+        "DRAFT"
+      ]
+    },
+    "social_request": {
+      "PENDING": [
+        "APPROVED",
+        "REJECTED",
+        "CANCELLED",
+        "REVOKED",
+        "EXPIRED"
+      ],
+      "APPROVED": [
+        "REVOKED",
+        "EXPIRED"
+      ],
+      "REJECTED": [],
+      "CANCELLED": [],
+      "REVOKED": [],
+      "EXPIRED": []
+    },
+    "social_grant": {
+      "ACTIVE": [
+        "REVOKED",
+        "EXPIRED"
+      ],
+      "REVOKED": [],
+      "EXPIRED": []
+    },
+    "mural": {
+      "EDITABLE": [
+        "PAUSED",
+        "FROZEN"
+      ],
+      "PAUSED": [
+        "EDITABLE",
+        "FROZEN"
+      ],
+      "FROZEN": []
+    }
+  },
+  "rules": {
+    "public_read": {
+      "preconditions": [
+        "Event membership is current",
+        "Bidirectional block and content visibility policy allows this viewer",
+        "DRAFT and hidden resources are excluded"
+      ],
+      "result": [
+        "Return only the named public projection",
+        "Reauthorize linked entities and omit unavailable links",
+        "No private audience, exact age, handles or applicant/recipient lists"
+      ]
+    },
+    "owner_read": {
+      "preconditions": [
+        "Actor owns the requested resource in the event",
+        "Current policy authorizes the owner"
+      ],
+      "result": [
+        "Return the named owner projection with no peer secrets"
+      ]
+    },
+    "party_create": {
+      "preconditions": [
+        "Event permits parties",
+        "Capacity is 2..50 including owner",
+        "Start < end and end is future",
+        "Place is published and open"
+      ],
+      "result": [
+        "Create OPEN party revision 1 and owner membership atomically",
+        "Set member_count=1 and meeting_revision=1",
+        "Write outbox and receipt"
+      ]
+    },
+    "party_update": {
+      "preconditions": [
+        "Actor owns active party",
+        "expected_revision matches",
+        "Valid party transition",
+        "Capacity >= active members",
+        "Valid published open place and meeting window"
+      ],
+      "result": [
+        "Increment party revision",
+        "Location/window changes increment meeting_revision and revoke old meeting access",
+        "Closing does not remove approved members",
+        "Completing revokes rally and pending applications"
+      ]
+    },
+    "party_cancel": {
+      "preconditions": [
+        "Actor owns OPEN or CLOSED party",
+        "expected_revision matches"
+      ],
+      "result": [
+        "Atomically set CANCELLED",
+        "Cancel pending applications and revoke all party-specific beacons/subscriptions",
+        "No CANCELLED to COMPLETED edge"
+      ]
+    },
+    "party_transfer": {
+      "preconditions": [
+        "Actor is current owner",
+        "Target is an active permitted member",
+        "Party is OPEN or CLOSED",
+        "expected_revision matches"
+      ],
+      "result": [
+        "Atomically promote target and demote previous owner",
+        "Exactly one active owner remains"
+      ]
+    },
+    "party_apply": {
+      "preconditions": [
+        "Party is OPEN",
+        "Applicant is not owner or active member",
+        "No pending application for actor",
+        "party_revision matches",
+        "Policy allows both users"
+      ],
+      "result": [
+        "Create PENDING application",
+        "No capacity is consumed until approval",
+        "Commit receipt/outbox"
+      ]
+    },
+    "application_decide": {
+      "preconditions": [
+        "Actor owns party",
+        "Application PENDING and expected_revision matches",
+        "party_revision matches",
+        "Both users permitted",
+        "Approvals require OPEN party and a free slot"
+      ],
+      "result": [
+        "APPROVED atomically creates unique active membership and increments party count/revision",
+        "REJECTED consumes no slot",
+        "Capacity lock and application transition share one transaction"
+      ]
+    },
+    "application_cancel": {
+      "preconditions": [
+        "Actor is applicant",
+        "Application PENDING",
+        "expected_revision matches"
+      ],
+      "result": [
+        "Set CANCELLED",
+        "Approved application removal uses membership command instead"
+      ]
+    },
+    "member_remove": {
+      "preconditions": [
+        "Actor is party owner or the target member",
+        "Target has active membership",
+        "Revisions match",
+        "Owner cannot leave or be removed before transfer/cancellation"
+      ],
+      "result": [
+        "Set REMOVED or LEFT and decrement count exactly once",
+        "Immediately revoke removed user party beacons and subscriptions",
+        "Approved application remains historical"
+      ]
+    },
+    "rally_read": {
+      "preconditions": [
+        "Actor is active party member",
+        "Party OPEN or CLOSED",
+        "Current policy permits every returned peer"
+      ],
+      "result": [
+        "Return only currently permitted members and current meeting reference"
+      ]
+    },
+    "rally_set": {
+      "preconditions": [
+        "Actor is active party member",
+        "Party OPEN or CLOSED",
+        "Meeting is active and meeting_revision matches",
+        "Self revision matches (0 if absent)",
+        "User explicitly acknowledges physical self-report"
+      ],
+      "result": [
+        "Set self-reported rally state and server timestamp",
+        "Never infer arrival from world coordinates",
+        "A changed meeting requires a new explicit report"
+      ]
+    },
+    "beacon_read": {
+      "preconditions": [
+        "Actor is owner or an explicitly authorized current audience member",
+        "Beacon ACTIVE and DB now < expiry",
+        "Owner/viewer unblocked and unsuspended",
+        "Place remains reviewed and open"
+      ],
+      "result": [
+        "Return meeting only after all policy checks",
+        "Unauthorized/expired/revoked reads return generic RESOURCE_UNAVAILABLE"
+      ]
+    },
+    "beacon_create": {
+      "preconditions": [
+        "Actor eligible for event",
+        "Place/map revisions current and published/open",
+        "Explicit physical acknowledgement",
+        "DB now < expiry <= now+configured TTL <= event cutoff",
+        "Every audience member currently authorized",
+        "PARTY_MEMBERS actor must belong to that party"
+      ],
+      "result": [
+        "Create ACTIVE revision 1",
+        "No world-position input",
+        "Publish only invalidation metadata to scoped viewers"
+      ]
+    },
+    "beacon_update": {
+      "preconditions": [
+        "Actor owns ACTIVE unexpired beacon",
+        "expected_revision matches",
+        "All create validations repeated"
+      ],
+      "result": [
+        "Increment revision and replace audience/location atomically",
+        "Revoke previous audience and cached descriptions before delivering new state"
+      ]
+    },
+    "beacon_revoke": {
+      "preconditions": [
+        "Actor owns beacon",
+        "expected_revision matches"
+      ],
+      "result": [
+        "Set REVOKED terminal state",
+        "Clear private projection/subscriptions",
+        "Repeated same-key request returns safe receipt"
+      ]
+    },
+    "giveaway_create": {
+      "preconditions": [
+        "Event permits gifts",
+        "Valid open reviewed place",
+        "Pickup start < end and end future",
+        "Quantity 1..10000",
+        "Optional image READY and actor-owned"
+      ],
+      "result": [
+        "Create DRAFT with zero counters",
+        "Capture server-configured grace",
+        "No recipient identity in public projection"
+      ]
+    },
+    "giveaway_update": {
+      "preconditions": [
+        "Actor owns giveaway",
+        "expected_revision matches",
+        "Valid giveaway transition",
+        "Quantity >= reserved_unclaimed+claimed",
+        "With outstanding reservations pickup window/place cannot change",
+        "Publication requires valid pickup instructions"
+      ],
+      "result": [
+        "Increment revision atomically with stock",
+        "PAUSED stops new reservations but permits existing pickup",
+        "CLOSED requires no outstanding reservations and means Completed",
+        "CANCELLED releases all outstanding stock once and revokes codes/access"
+      ]
+    },
+    "pickup_meeting_set": {
+      "preconditions": [
+        "Actor owns active giveaway",
+        "Revision matches",
+        "Place/map revisions and audience-free instructions validated",
+        "Explicit physical acknowledgement",
+        "Expiry covers current pickup window plus grace and cannot exceed event cutoff"
+      ],
+      "result": [
+        "Replace private pickup meeting and increment revision",
+        "Notify existing recipients of moved instructions without leaking the description",
+        "Previous revision no longer current"
+      ]
+    },
+    "reserve": {
+      "preconditions": [
+        "Giveaway OPEN and currently reservable before pickup end",
+        "Actor not owner",
+        "No active reservation for event/giveaway/actor",
+        "giveaway_revision matches",
+        "Policy allows owner and actor"
+      ],
+      "result": [
+        "Lock giveaway and check available >=1",
+        "Reserve one unit atomically",
+        "HELD before pickup start else READY",
+        "Expiry=pickup_end+captured grace",
+        "Commit receipt and outbox"
+      ]
+    },
+    "reservation_read": {
+      "preconditions": [
+        "Actor is recipient or giveaway owner",
+        "Current policy permits access"
+      ],
+      "result": [
+        "Return own/managed reservation only",
+        "Terminal records contain no pickup code or private location"
+      ]
+    },
+    "reservation_cancel": {
+      "preconditions": [
+        "Actor is recipient or giveaway owner",
+        "Reservation HELD or READY",
+        "Revision matches"
+      ],
+      "result": [
+        "Conditional transition to CANCELLED and release stock exactly once",
+        "Revoke code and private pickup access atomically"
+      ]
+    },
+    "pickup_read": {
+      "preconditions": [
+        "Actor is recipient",
+        "Reservation HELD or READY and unexpired",
+        "Owner/viewer permitted",
+        "Current meeting and place valid"
+      ],
+      "result": [
+        "Return audience-free pickup instructions and reservation",
+        "Reading does not generate a code"
+      ]
+    },
+    "pickup_code": {
+      "preconditions": [
+        "Actor is recipient",
+        "Reservation READY and unexpired",
+        "Revision matches",
+        "Owner/viewer permitted"
+      ],
+      "result": [
+        "Generate cryptographic six-digit code valid <=5 minutes and reservation expiry",
+        "Store keyed hash only",
+        "Rotate any prior code",
+        "Return plaintext only in this no-store response, not durable receipt or logs",
+        "Increment reservation revision and return reservation_revision; code issuance is not pickup confirmation"
+      ]
+    },
+    "pickup_claim": {
+      "preconditions": [
+        "Actor is giveaway owner",
+        "Reservation READY",
+        "Revision matches",
+        "DB now < reservation expiry and code expiry",
+        "Constant-time hash match",
+        "Shared attempt throttle passes"
+      ],
+      "result": [
+        "Lock giveaway and reservation",
+        "Transition CLAIMED and reserved-- claimed++ atomically",
+        "Consume code",
+        "Same-key and subsequent authorized duplicate confirmation return same safe pickup receipt without another decrement"
+      ]
+    },
+    "intro_set": {
+      "preconditions": [
+        "Actor owns intro",
+        "Revision matches (0 only if absent)",
+        "Age bounds both null or both present with min < max",
+        "Optional expiry future and within event cutoff"
+      ],
+      "result": [
+        "Create/update DRAFT or current PUBLISHED text",
+        "Empty text allowed only in draft",
+        "Editing policy closes pending requests and revokes associated grants",
+        "Increment revision"
+      ]
+    },
+    "intro_publish": {
+      "preconditions": [
+        "Actor owns nonempty valid intro",
+        "Revision matches",
+        "Feature and eligibility permit publication",
+        "Claim policy passes when bounds set"
+      ],
+      "result": [
+        "Set PUBLISHED",
+        "Discovery applies opaque eligibility filtering, never exposes exact age or private bounds"
+      ]
+    },
+    "intro_close": {
+      "preconditions": [
+        "Actor owns intro",
+        "Revision matches"
+      ],
+      "result": [
+        "Set CLOSED",
+        "Invalidate discovery, cancel pending requests and revoke associated grants"
+      ]
+    },
+    "age_read": {
+      "preconditions": [
+        "Actor queries own canonical user only"
+      ],
+      "result": [
+        "Return safe status, timestamps and provider availability",
+        "Never return provider tokens or exact age in public projection"
+      ]
+    },
+    "age_start": {
+      "preconditions": [
+        "Configured qualified verifier exists",
+        "Actor canonical user/session active",
+        "Explicit verification initiation"
+      ],
+      "result": [
+        "Create one-use session/user-bound state with <=10 minute expiry and fixed return target",
+        "Redirect URL must be allowlisted HTTPS",
+        "Without provider return PROVIDER_UNAVAILABLE, never fabricate verification"
+      ]
+    },
+    "age_callback": {
+      "preconditions": [
+        "One-use state and provider response bind to same canonical user/session and verifier",
+        "State unexpired",
+        "Provider proof independently verified"
+      ],
+      "result": [
+        "Consume state",
+        "Store canonical claim and provenance",
+        "Select canonical row before checking validity",
+        "No client-supplied age accepted"
+      ]
+    },
+    "handle_set": {
+      "preconditions": [
+        "Actor edits own handle",
+        "Revision matches (0 if never configured)",
+        "INSTAGRAM matches 1..30 ASCII letters/digits/dot/underscore, no edge/consecutive dots",
+        "X matches 1..15 ASCII letters/digits/underscore"
+      ],
+      "result": [
+        "Encrypt normalized handle",
+        "Increment platform version even after removal",
+        "Revoke all pending requests/grants bound to old version",
+        "No plaintext in ordinary responses or outbox"
+      ]
+    },
+    "handle_remove": {
+      "preconditions": [
+        "Actor owns configured platform version",
+        "Revision matches"
+      ],
+      "result": [
+        "Erase ciphertext, retain monotone version tombstone",
+        "Revoke old grants and pending requests",
+        "Return configured=false with new version"
+      ]
+    },
+    "sharing_offer": {
+      "preconditions": [
+        "Actor and intro owner currently eligible, unblocked, unsuspended and distinct",
+        "Intro PUBLISHED and valid",
+        "Current claim conditions pass"
+      ],
+      "result": [
+        "Return only platform/version metadata for explicitly offerable handles",
+        "No plaintext handle or exact age",
+        "Cache privately with no-store"
+      ]
+    },
+    "social_create": {
+      "preconditions": [
+        "Current sharing offer and intro revision match",
+        "Recipient equals intro owner",
+        "Unique selected platforms",
+        "Both handle versions match and configured",
+        "Requester explicitly consents for every selected platform"
+      ],
+      "result": [
+        "Create PENDING version-bound request",
+        "Expires within configured TTL, intro expiry and event cutoff",
+        "No handles in request response/notifications"
+      ]
+    },
+    "social_decide": {
+      "preconditions": [
+        "Actor is recipient",
+        "PENDING unexpired request and revision match",
+        "APPROVED platforms nonempty unique subset of original offer",
+        "Explicit reciprocal recipient consent",
+        "Recheck both claims, membership, handles, block and suspension"
+      ],
+      "result": [
+        "Approve selected platforms atomically with two reciprocal ACTIVE grants per platform",
+        "Bind exact handle versions, request, users, event and expiry",
+        "Reject creates no grants"
+      ]
+    },
+    "social_cancel": {
+      "preconditions": [
+        "Actor is requester",
+        "PENDING request and revision match"
+      ],
+      "result": [
+        "Set CANCELLED with no grants"
+      ]
+    },
+    "social_revoke": {
+      "preconditions": [
+        "Actor is either participant",
+        "Revision matches"
+      ],
+      "result": [
+        "Set REVOKED and revoke both reciprocal grants across approved platforms",
+        "Invalidate private caches/streams",
+        "No promise to erase data already seen"
+      ]
+    },
+    "social_read": {
+      "preconditions": [
+        "Actor is one participant",
+        "Current canonical membership and policy permit metadata access"
+      ],
+      "result": [
+        "Return only request/grant metadata for actor",
+        "No handles until explicit reveal"
+      ]
+    },
+    "social_reveal": {
+      "preconditions": [
+        "Actor is requester or recipient",
+        "Request APPROVED and unexpired",
+        "Both reciprocal grants ACTIVE and unexpired for selected platform",
+        "User/event/platform/request/versions agree",
+        "Both handles configured with matching current versions",
+        "Recheck claims, intro, block, suspension and membership"
+      ],
+      "result": [
+        "Return only counterpart handle",
+        "Explicit user-triggered fetch with no automatic retry/prefetch/persistence",
+        "Never restore old consent after unblock or handle replacement"
+      ]
+    },
+    "post_create": {
+      "preconditions": [
+        "Actor can post",
+        "Text nonempty <=4000",
+        "<=4 distinct READY actor-owned POST media",
+        "Every linked entity publicly visible to permitted event audience"
+      ],
+      "result": [
+        "Create event-scoped post",
+        "Private social/recipient/beacon data never auto-published",
+        "Adapt inherited async operation through safe receipt"
+      ]
+    },
+    "post_edit": {
+      "preconditions": [
+        "Actor owns visible post",
+        "Revision matches",
+        "Create validations repeated"
+      ],
+      "result": [
+        "Increment revision",
+        "Reauthorize media/links",
+        "Removed attachment no longer public",
+        "Preserve ordering by original created_at,id"
+      ]
+    },
+    "post_delete": {
+      "preconditions": [
+        "Actor owns post",
+        "Revision matches"
+      ],
+      "result": [
+        "Hide content and linked projections immediately",
+        "Schedule owning-service deletion",
+        "Return DELETED only after operation succeeds"
+      ]
+    },
+    "comment_create": {
+      "preconditions": [
+        "Parent post visible and current revision matches",
+        "Actor can comment",
+        "Nonempty <=1000 chars"
+      ],
+      "result": [
+        "Create comment in owning Post service with event-bound adapter and receipt"
+      ]
+    },
+    "comment_edit": {
+      "preconditions": [
+        "Actor owns comment",
+        "Parent visible",
+        "Revision matches"
+      ],
+      "result": [
+        "Update text and revision in owning Post service"
+      ]
+    },
+    "comment_delete": {
+      "preconditions": [
+        "Actor owns comment",
+        "Revision matches"
+      ],
+      "result": [
+        "Remove projection and delete through owning service",
+        "No foreign comment write"
+      ]
+    },
+    "reaction": {
+      "preconditions": [
+        "Parent post visible",
+        "Actor permitted"
+      ],
+      "result": [
+        "Set actor reaction present/absent idempotently",
+        "Unique actor/post relation and consistent count",
+        "Never expose reactor list implicitly"
+      ]
+    },
+    "upload_init": {
+      "preconditions": [
+        "Actor permitted for purpose",
+        "MIME jpeg/png/webp",
+        "Declared bytes 1..10MiB and SHA256",
+        "REPORT uploads private to reporter/moderators"
+      ],
+      "result": [
+        "Create private PENDING media and bounded same-origin PUT path",
+        "No bearer sent to external host"
+      ]
+    },
+    "upload_bytes": {
+      "preconditions": [
+        "Actor owns unexpired intent",
+        "Bounded streaming bytes",
+        "Actual byte length and SHA256 match",
+        "Purpose and event unchanged"
+      ],
+      "result": [
+        "Stage private bytes and mark UPLOADED",
+        "Identical retry cannot change digest",
+        "Reject oversized/foreign/mismatched payload before publication"
+      ]
+    },
+    "upload_finalize": {
+      "preconditions": [
+        "Actor owns UPLOADED media",
+        "Revision matches",
+        "Decoder validates signature/MIME, single frame, <=4096x4096 and <=16MP"
+      ],
+      "result": [
+        "Decode/reencode and strip metadata",
+        "Malware/decode failures never READY",
+        "Publish only sanitized bytes with purpose-bound authorization",
+        "Async 202 is not readiness"
+      ]
+    },
+    "media_read": {
+      "preconditions": [
+        "Actor owns staged media or can read its currently visible linked target",
+        "REPORT evidence needs reporter/moderator access",
+        "Target policy checked on every read"
+      ],
+      "result": [
+        "Serve sanitized READY bytes with no-store and nosniff",
+        "Never expose guessed upload paths or original metadata"
+      ]
+    },
+    "notification_read": {
+      "preconditions": [
+        "Notification belongs to canonical actor",
+        "Filter by current event and reauthorize target metadata"
+      ],
+      "result": [
+        "Return neutral typed payload, no arbitrary inherited payloadJson",
+        "Stale target may be null"
+      ]
+    },
+    "notification_mark": {
+      "preconditions": [
+        "Notification belongs to actor",
+        "Revision matches for single record"
+      ],
+      "result": [
+        "Mark read idempotently",
+        "No foreign notification changes",
+        "Mark-all captures server cutoff and affects actor/event only"
+      ]
+    },
+    "block": {
+      "preconditions": [
+        "Target is distinct canonical user",
+        "Actor authenticated"
+      ],
+      "result": [
+        "Apply inherited block through Friend owner and wait for acknowledgement",
+        "Invalidate both-direction interactions/presence/grants/caches",
+        "Unblock never revives revoked consent"
+      ]
+    },
+    "report_create": {
+      "preconditions": [
+        "Actor may access target or holds authorized evidence of recent target",
+        "Reason bounded",
+        "Evidence READY and actor-owned REPORT media",
+        "Spam/dedup quota passes"
+      ],
+      "result": [
+        "Create private report via owning moderation adapter",
+        "Reporter identity never returned to target/public feed"
+      ]
+    },
+    "report_own": {
+      "preconditions": [
+        "Actor is reporter"
+      ],
+      "result": [
+        "Return safe own status only, excluding moderation evidence and other reporters"
+      ]
+    },
+    "report_review": {
+      "preconditions": [
+        "Server role MODERATOR or OPERATOR for event",
+        "Access is audited"
+      ],
+      "result": [
+        "Return private report evidence without handles or unrelated claims",
+        "Revalidate role on every read"
+      ]
+    },
+    "report_decide": {
+      "preconditions": [
+        "Server role MODERATOR or OPERATOR",
+        "Report OPEN or IN_REVIEW",
+        "Revision matches",
+        "Reason nonempty"
+      ],
+      "result": [
+        "Resolve/dismiss and create append-only moderation audit/receipt",
+        "Associated content action remains explicit"
+      ]
+    },
+    "moderate_user": {
+      "preconditions": [
+        "Server role MODERATOR or OPERATOR",
+        "Target/revision current",
+        "Suspension expiry if present is future",
+        "Operator peers cannot be modified by lower role"
+      ],
+      "result": [
+        "Apply suspension/release through owning identity/policy service",
+        "On suspension revoke sessions, sockets, tickets and private grants",
+        "UNSUSPEND does not restore consent"
+      ]
+    },
+    "moderate_content": {
+      "preconditions": [
+        "Server role MODERATOR or OPERATOR",
+        "Target/revision current",
+        "Restore target not deleted and underlying eligibility still valid"
+      ],
+      "result": [
+        "Hide/restore safe projections through owning service",
+        "Invalidate all dependent caches and links",
+        "Append audit receipt"
+      ]
+    },
+    "ops_read": {
+      "preconditions": [
+        "Server role OPERATOR for event",
+        "Audit least-privilege access"
+      ],
+      "result": [
+        "Return bounded operational projection without raw secrets/private physical guidance"
+      ]
+    },
+    "settings": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "Revision matches",
+        "Limits within declared bounds"
+      ],
+      "result": [
+        "Update features and limits",
+        "Disabling feature is enforced server-side",
+        "Invalidate capabilities/subscriptions",
+        "Audit exact redacted change"
+      ]
+    },
+    "event_phase": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "Revision matches",
+        "Only DRAFT->OPEN or OPEN->LIVE"
+      ],
+      "result": [
+        "Publish event phase atomically with audit/outbox",
+        "Closing uses resumable closure job instead"
+      ]
+    },
+    "place_update": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "Revision matches",
+        "Place ID belongs to event/map",
+        "VERIFIED publication has required source/review/confirmation",
+        "No claimed venue truth from concept art"
+      ],
+      "result": [
+        "Update place revision and invalidate old beacon/pickup guidance",
+        "Closure takes effect for reads and writes immediately",
+        "Audit provenance"
+      ]
+    },
+    "notice_create": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "HTTPS source and nonfuture confirmation time",
+        "Content and publication state valid"
+      ],
+      "result": [
+        "Create notice revision1",
+        "Published notice delivered through durable notification outbox",
+        "No private meeting content"
+      ]
+    },
+    "notice_update": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "Revision matches",
+        "Source/review/time validation repeated"
+      ],
+      "result": [
+        "Increment revision and publish/withdraw",
+        "Withdrawn notice unavailable on public read",
+        "Audit and invalidate old projections"
+      ]
+    },
+    "mural_read": {
+      "preconditions": [
+        "Actor admitted to event",
+        "Snapshot and operations have a consistent durable baseline"
+      ],
+      "result": [
+        "Return bounded snapshot or contiguous deltas without author IDs",
+        "Gap, restore or lock/control change requires new snapshot",
+        "No stale operations applied across reset"
+      ]
+    },
+    "mural_pixel": {
+      "preconditions": [
+        "Event writable and mural EDITABLE",
+        "expected_revision matches",
+        "Pixel in128x128 and palette0..15",
+        "Region unlocked",
+        "Server cooldown/quota passes"
+      ],
+      "result": [
+        "One atomic durable pixel and revision+1 with receipt/outbox",
+        "Retry same key does not spend cooldown twice",
+        "Client preview never commits"
+      ]
+    },
+    "mural_control": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "Revision matches",
+        "Valid PAUSE/RESUME/FREEZE transition"
+      ],
+      "result": [
+        "Increment revision, enforce state on server and force snapshot reset",
+        "FROZEN is terminal"
+      ]
+    },
+    "mural_lock": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "Mural not FROZEN",
+        "Revision matches",
+        "Nonempty half-open rectangle in bounds"
+      ],
+      "result": [
+        "Set/remove region lock and increment revision",
+        "Overlapping locks form union",
+        "Audit and force reset"
+      ]
+    },
+    "mural_restore": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "Mural PAUSED",
+        "Revision matches",
+        "Snapshot belongs to event and is immutable verified content"
+      ],
+      "result": [
+        "Copy pixels into a new revision greater than current",
+        "Remain PAUSED",
+        "Never rewind operation numbers or cooldowns",
+        "Audit and force reset"
+      ]
+    },
+    "event_close": {
+      "preconditions": [
+        "Server role OPERATOR",
+        "Event OPEN or LIVE",
+        "Revision matches and explicit CLOSE_EVENT confirmation"
+      ],
+      "result": [
+        "Set READ_ONLY immediately",
+        "Start/resume durable closure job",
+        "Freeze mural, expire beacons/grants/reservations, cancel active party interactions, revoke world tickets/leases",
+        "Export only permitted content",
+        "ARCHIVED only after all required cleanup succeeds"
+      ]
+    },
+    "archive_read": {
+      "preconditions": [
+        "Event ARCHIVED",
+        "Only published permitted archive exists",
+        "Recheck deletion/moderation before serving retained content"
+      ],
+      "result": [
+        "Return anonymous archive without live profiles, handles, private meetings, recipient/applicant identity or personal reaction state"
+      ]
+    },
+    "receipt_read": {
+      "preconditions": [
+        "Actor matches receipt actor and event",
+        "Operation/key identify exactly one receipt",
+        "Reauthorize current target before returning any resource result"
+      ],
+      "result": [
+        "Return status metadata only",
+        "No raw body, pickup code, handle or provider token",
+        "RETIRED never reruns command"
+      ]
+    },
+    "application_read": {
+      "preconditions": [
+        "Actor is applicant or party owner",
+        "Current event and block policy permits access"
+      ],
+      "result": [
+        "Return only the authorized application metadata"
+      ]
+    }
+  },
+  "remaining_before_freeze": [
+    "Final inherited OpenAPI assembly and drift proof",
+    "Every operation producer/consumer fixture and response matrix",
+    "Independent backend/frontend contract review",
+    "Global account deletion/recovery, legal publication and retention contracts",
+    "Real provider onboarding remains disabled until separately qualified"
+  ],
+  "http_error_status": {
+    "INVALID_INPUT": 400,
+    "AUTHENTICATION_REQUIRED": 401,
+    "PERMISSION_DENIED": 403,
+    "RESOURCE_UNAVAILABLE": 404,
+    "RATE_LIMITED": 429,
+    "INTERNAL_ERROR": 500,
+    "DEPENDENCY_UNAVAILABLE": 503,
+    "DEADLINE_EXCEEDED": 504,
+    "ORIGIN_NOT_ALLOWED": 403,
+    "BROWSER_INTENT_REQUIRED": 403,
+    "FEATURE_UNAVAILABLE": 503,
+    "VERSION_CONFLICT": 409,
+    "INVALID_TRANSITION": 409,
+    "IDEMPOTENCY_CONFLICT": 409,
+    "IDEMPOTENCY_EXPIRED": 409,
+    "EVENT_READ_ONLY": 409,
+    "PAYLOAD_TOO_LARGE": 413,
+    "INVALID_MEDIA_TYPE": 415,
+    "PARTY_FULL": 409,
+    "DUPLICATE_APPLICATION": 409,
+    "MAP_VERSION_MISMATCH": 409,
+    "MEDIA_NOT_READY": 409,
+    "GIVEAWAY_SOLD_OUT": 409,
+    "DUPLICATE_ACTIVE_RESERVATION": 409,
+    "RESERVATION_EXPIRED": 410,
+    "PICKUP_CODE_INVALID": 403,
+    "PROVIDER_UNAVAILABLE": 503,
+    "CONSENT_REQUIRED": 403,
+    "MURAL_COOLDOWN": 429,
+    "MURAL_PAUSED": 409,
+    "MURAL_FROZEN": 409,
+    "MURAL_REGION_LOCKED": 409
+  }
+}

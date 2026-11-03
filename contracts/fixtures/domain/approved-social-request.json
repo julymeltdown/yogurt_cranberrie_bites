@@ -1,0 +1,23 @@
+{
+  "request_id": "00000000-0000-4000-8000-000000000029",
+  "event_id": "00000000-0000-4000-8000-000000000001",
+  "requester_id": "00000000-0000-4000-8000-000000000002",
+  "recipient_id": "00000000-0000-4000-8000-000000000003",
+  "intro_id": "00000000-0000-4000-8000-000000000028",
+  "intro_revision": 1,
+  "consents": [
+    {
+      "platform": "INSTAGRAM",
+      "requester_handle_version": 2,
+      "recipient_handle_version": 3,
+      "requester_consents": true
+    }
+  ],
+  "approved_platforms": [
+    "INSTAGRAM"
+  ],
+  "expires_at": "2026-11-07T10:00:00Z",
+  "created_at": "2026-11-07T08:00:00Z",
+  "state": "APPROVED",
+  "revision": 2
+}

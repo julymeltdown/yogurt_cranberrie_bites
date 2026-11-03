@@ -1,0 +1,36 @@
+{
+  "job_id": "00000000-0000-4000-8000-000000000050",
+  "event_id": "00000000-0000-4000-8000-000000000001",
+  "state": "COMPLETED",
+  "revision": 9,
+  "steps": [
+    {
+      "name": "READ_ONLY",
+      "state": "SUCCEEDED"
+    },
+    {
+      "name": "FREEZE_MURAL",
+      "state": "SUCCEEDED"
+    },
+    {
+      "name": "SNAPSHOT",
+      "state": "SUCCEEDED"
+    },
+    {
+      "name": "EXPIRE_GRANTS",
+      "state": "FAILED"
+    },
+    {
+      "name": "EXPIRE_BEACONS",
+      "state": "SUCCEEDED"
+    },
+    {
+      "name": "EXPORT",
+      "state": "SUCCEEDED"
+    },
+    {
+      "name": "CLEANUP",
+      "state": "SUCCEEDED"
+    }
+  ]
+}

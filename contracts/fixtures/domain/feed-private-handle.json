@@ -1,0 +1,37 @@
+{
+  "post_id": "00000000-0000-4000-8000-00000000003c",
+  "event_id": "00000000-0000-4000-8000-000000000001",
+  "author": {
+    "user_id": "00000000-0000-4000-8000-000000000002",
+    "display_name": "Fixture fan",
+    "bio": null,
+    "avatar": {
+      "revision": 1,
+      "config": {
+        "contract_version": "1.0.0",
+        "kind": "avatar_config",
+        "manifest_id": "avatar_fixture",
+        "manifest_version": 1,
+        "item_ids": {
+          "body": "body_fixture",
+          "eyes": "eyes_fixture",
+          "hair": "hair_fixture",
+          "outfit": "outfit_fixture",
+          "accessory": "accessory_fixture"
+        },
+        "skin_tone_id": "tone_fixture"
+      }
+    }
+  },
+  "text": "See you at the show",
+  "media_ids": [],
+  "links": [],
+  "created_at": "2026-11-07T08:00:00Z",
+  "edited_at": null,
+  "comment_count": 0,
+  "reaction_count": 0,
+  "reacted_by_me": false,
+  "state": "PUBLISHED",
+  "revision": 1,
+  "social_handle": "private_example"
+}

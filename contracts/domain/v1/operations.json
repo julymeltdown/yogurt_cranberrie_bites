@@ -1,0 +1,5617 @@
+[
+  {
+    "operationId": "listConcertParties",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/parties",
+    "request": null,
+    "request_location": "query",
+    "response": "party.PartyList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertParty",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}",
+    "request": null,
+    "request_location": "query",
+    "response": "party.PartyPublic",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "createConcertParty",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/parties",
+    "request": "party.CreateParty",
+    "request_location": "body",
+    "response": "party.PartyPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "party_create",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "updateConcertParty",
+    "method": "patch",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}",
+    "request": "party.UpdateParty",
+    "request_location": "body",
+    "response": "party.PartyPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "party_update",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "PARTY_FULL"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "cancelConcertParty",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}/cancel",
+    "request": "common.RevisionRequest",
+    "request_location": "body",
+    "response": "party.PartyPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "party_cancel",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "transferConcertParty",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}/owner",
+    "request": "party.TransferOwnership",
+    "request_location": "body",
+    "response": "party.PartyPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "party_transfer",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertPartyApplications",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}/applications",
+    "request": null,
+    "request_location": "query",
+    "response": "party.ApplicationList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OWNER",
+    "rule": "owner_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "applyConcertParty",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}/applications",
+    "request": "party.Apply",
+    "request_location": "body",
+    "response": "party.Application",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "party_apply",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "DUPLICATE_APPLICATION",
+        "PARTY_FULL"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertApplication",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/party-applications/{applicationId}",
+    "request": null,
+    "request_location": "query",
+    "response": "party.Application",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "APPLICANT_OR_OWNER",
+    "rule": "application_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "decideConcertApplication",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/party-applications/{applicationId}/decision",
+    "request": "party.ApplicationDecision",
+    "request_location": "body",
+    "response": "party.Application",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "application_decide",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "PARTY_FULL"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "cancelConcertApplication",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/party-applications/{applicationId}",
+    "request": "common.RevisionRequest",
+    "request_location": "query",
+    "response": "party.Application",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "APPLICANT",
+    "rule": "application_cancel",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertMembers",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}/members",
+    "request": null,
+    "request_location": "query",
+    "response": "party.MemberList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "PARTY_MEMBER",
+    "rule": "rally_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "removeConcertMember",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}/members/{userId}",
+    "request": "party.RemoveMember",
+    "request_location": "query",
+    "response": "party.Member",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER_OR_SELF",
+    "rule": "member_remove",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertRally",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}/rally",
+    "request": null,
+    "request_location": "query",
+    "response": "party.Rally",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "PARTY_MEMBER",
+    "rule": "rally_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "setConcertRally",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/parties/{partyId}/rally/me",
+    "request": "party.SetRally",
+    "request_location": "body",
+    "response": "party.RallyEntry",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "PARTY_MEMBER",
+    "rule": "rally_set",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertPartyActivity",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/parties",
+    "request": null,
+    "request_location": "query",
+    "response": "party.PartyActivity",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "owner_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "createConcertBeacon",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/beacons",
+    "request": "beacon.CreateBeacon",
+    "request_location": "body",
+    "response": "beacon.MeetBeacon",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "beacon_create",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MAP_VERSION_MISMATCH"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertBeacon",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/beacons/{beaconId}",
+    "request": null,
+    "request_location": "query",
+    "response": "beacon.MeetBeacon",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "AUDIENCE",
+    "rule": "beacon_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "updateConcertBeacon",
+    "method": "patch",
+    "path": "/api/concert/events/{eventId}/beacons/{beaconId}",
+    "request": "beacon.UpdateBeacon",
+    "request_location": "body",
+    "response": "beacon.MeetBeacon",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "beacon_update",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MAP_VERSION_MISMATCH"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "revokeConcertBeacon",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/beacons/{beaconId}",
+    "request": "common.RevisionRequest",
+    "request_location": "query",
+    "response": "beacon.BeaconStatus",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "beacon_revoke",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertGiveaways",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/giveaways",
+    "request": null,
+    "request_location": "query",
+    "response": "giveaway.GiveawayList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertGiveaway",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/giveaways/{giveawayId}",
+    "request": null,
+    "request_location": "query",
+    "response": "giveaway.GiveawayPublic",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "createConcertGiveaway",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/giveaways",
+    "request": "giveaway.CreateGiveaway",
+    "request_location": "body",
+    "response": "giveaway.GiveawayPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "giveaway_create",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MEDIA_NOT_READY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "updateConcertGiveaway",
+    "method": "patch",
+    "path": "/api/concert/events/{eventId}/giveaways/{giveawayId}",
+    "request": "giveaway.UpdateGiveaway",
+    "request_location": "body",
+    "response": "giveaway.GiveawayPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "giveaway_update",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MEDIA_NOT_READY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertGiveawayManagement",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/giveaways/{giveawayId}/management",
+    "request": null,
+    "request_location": "query",
+    "response": "giveaway.GiveawayManagement",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OWNER",
+    "rule": "owner_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "setConcertPickupMeeting",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/giveaways/{giveawayId}/pickup-meeting",
+    "request": "giveaway.SetPickupMeeting",
+    "request_location": "body",
+    "response": "giveaway.PickupMeetingState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "pickup_meeting_set",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MAP_VERSION_MISMATCH"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertGiftActivity",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/giveaways",
+    "request": null,
+    "request_location": "query",
+    "response": "giveaway.GiveawayActivity",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "owner_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "reserveConcertGiveaway",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/giveaways/{giveawayId}/reservations",
+    "request": "giveaway.Reserve",
+    "request_location": "body",
+    "response": "giveaway.Reservation",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "reserve",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "GIVEAWAY_SOLD_OUT",
+        "DUPLICATE_ACTIVE_RESERVATION"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertReservation",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/reservations/{reservationId}",
+    "request": null,
+    "request_location": "query",
+    "response": "giveaway.Reservation",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "RECIPIENT_OR_OWNER",
+    "rule": "reservation_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "cancelConcertReservation",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/reservations/{reservationId}",
+    "request": "common.RevisionRequest",
+    "request_location": "query",
+    "response": "giveaway.Reservation",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "RECIPIENT_OR_OWNER",
+    "rule": "reservation_cancel",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ],
+      "410": [
+        "RESERVATION_EXPIRED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertPickup",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/reservations/{reservationId}/pickup",
+    "request": null,
+    "request_location": "query",
+    "response": "giveaway.PickupDetails",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "RECIPIENT",
+    "rule": "pickup_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "410": [
+        "RESERVATION_EXPIRED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "issueConcertPickupCode",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/reservations/{reservationId}/pickup-code",
+    "request": "giveaway.IssuePickupCode",
+    "request_location": "body",
+    "response": "giveaway.PickupCode",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "RECIPIENT",
+    "rule": "pickup_code",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ],
+      "410": [
+        "RESERVATION_EXPIRED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "claimConcertReservation",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/reservations/{reservationId}/claim",
+    "request": "giveaway.ClaimReservation",
+    "request_location": "body",
+    "response": "giveaway.PickupReceipt",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "pickup_claim",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED",
+        "PICKUP_CODE_INVALID"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ],
+      "410": [
+        "RESERVATION_EXPIRED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertIntros",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/intros",
+    "request": null,
+    "request_location": "query",
+    "response": "social.IntroList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getOwnConcertIntro",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/intro",
+    "request": null,
+    "request_location": "query",
+    "response": "social.IntroPrivate",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "owner_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "setConcertIntro",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/me/intro",
+    "request": "social.SetIntro",
+    "request_location": "body",
+    "response": "social.IntroPrivate",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "intro_set",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "publishConcertIntro",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/me/intro/publish",
+    "request": "common.RevisionRequest",
+    "request_location": "body",
+    "response": "social.IntroPrivate",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "intro_publish",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "closeConcertIntro",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/me/intro/close",
+    "request": "common.RevisionRequest",
+    "request_location": "body",
+    "response": "social.IntroPrivate",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "intro_close",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertAgeStatus",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/age-status",
+    "request": null,
+    "request_location": "query",
+    "response": "social.AgeStatus",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "age_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "startConcertAgeVerification",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/me/age-verifications",
+    "request": "social.StartVerification",
+    "request_location": "body",
+    "response": "social.VerificationPending",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "age_start",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "PROVIDER_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "completeConcertAgeVerification",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/me/age-verifications/callback",
+    "request": "social.VerificationCallback",
+    "request_location": "body",
+    "response": "social.AgeStatus",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "age_callback",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "PROVIDER_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listOwnConcertHandles",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/social-handles",
+    "request": null,
+    "request_location": "query",
+    "response": "social.HandleList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "owner_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "setConcertHandle",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/me/social-handles/{platform}",
+    "request": "social.SetHandle",
+    "request_location": "body",
+    "response": "social.HandleState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "handle_set",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "removeConcertHandle",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/me/social-handles/{platform}",
+    "request": "common.RevisionRequest",
+    "request_location": "query",
+    "response": "social.HandleState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "handle_remove",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertSharingOffer",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/intros/{introId}/sharing-offer",
+    "request": null,
+    "request_location": "query",
+    "response": "social.SharingOffer",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "sharing_offer",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "createConcertSocialRequest",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/social-requests",
+    "request": "social.CreateSocialRequest",
+    "request_location": "body",
+    "response": "social.SocialRequest",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "social_create",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED",
+        "CONSENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertSocialRequests",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/social-requests",
+    "request": null,
+    "request_location": "query",
+    "response": "social.SocialRequestList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "social_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertSocialRequest",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/social-requests/{requestId}",
+    "request": null,
+    "request_location": "query",
+    "response": "social.SocialRequest",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "PARTICIPANT",
+    "rule": "social_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "decideConcertSocialRequest",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/social-requests/{requestId}/decision",
+    "request": "social.SocialDecision",
+    "request_location": "body",
+    "response": "social.SocialRequest",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "RECIPIENT",
+    "rule": "social_decide",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED",
+        "CONSENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "cancelConcertSocialRequest",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/social-requests/{requestId}",
+    "request": "common.RevisionRequest",
+    "request_location": "query",
+    "response": "social.SocialRequest",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "REQUESTER",
+    "rule": "social_cancel",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "revokeConcertSocialRequest",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/social-requests/{requestId}/revoke",
+    "request": "common.RevisionRequest",
+    "request_location": "body",
+    "response": "social.SocialRequest",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "PARTICIPANT",
+    "rule": "social_revoke",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "revealConcertSocialHandle",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/social-requests/{requestId}/reveal",
+    "request": "social.RevealQuery",
+    "request_location": "query",
+    "response": "social.PrivateReveal",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "PARTICIPANT",
+    "rule": "social_reveal",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "EXPLICIT_SECRET_READ_ONLY",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "CONSENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertFeed",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/feed",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.FeedPage",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "createConcertPost",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/posts",
+    "request": "feed.CreatePost",
+    "request_location": "body",
+    "response": "feed.PostPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "post_create",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MEDIA_NOT_READY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertPost",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/posts/{postId}",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.PostDetail",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "editConcertPost",
+    "method": "patch",
+    "path": "/api/concert/events/{eventId}/posts/{postId}",
+    "request": "feed.EditPost",
+    "request_location": "body",
+    "response": "feed.PostPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "post_edit",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MEDIA_NOT_READY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "deleteConcertPost",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/posts/{postId}",
+    "request": "common.RevisionRequest",
+    "request_location": "query",
+    "response": "common.Deleted",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "post_delete",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertComments",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/posts/{postId}/comments",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.CommentList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "createConcertComment",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/posts/{postId}/comments",
+    "request": "feed.CreateComment",
+    "request_location": "body",
+    "response": "feed.CommentPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "comment_create",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "editConcertComment",
+    "method": "patch",
+    "path": "/api/concert/events/{eventId}/comments/{commentId}",
+    "request": "feed.EditComment",
+    "request_location": "body",
+    "response": "feed.CommentPublic",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "comment_edit",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "deleteConcertComment",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/comments/{commentId}",
+    "request": "common.RevisionRequest",
+    "request_location": "query",
+    "response": "common.Deleted",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "comment_delete",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "likeConcertPost",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/posts/{postId}/reaction",
+    "request": "common.EmptyRequest",
+    "request_location": "body",
+    "response": "feed.ReactionState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "reaction",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "unlikeConcertPost",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/posts/{postId}/reaction",
+    "request": "common.EmptyRequest",
+    "request_location": "query",
+    "response": "feed.ReactionState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "reaction",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "initConcertUpload",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/media/uploads",
+    "request": "feed.InitUpload",
+    "request_location": "body",
+    "response": "feed.UploadIntent",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "upload_init",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "putConcertUploadBytes",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/media/{mediaId}/bytes",
+    "request": "BINARY",
+    "request_location": "body",
+    "response": "feed.UploadBytesResult",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "upload_bytes",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "finalizeConcertUpload",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/media/{mediaId}/finalize",
+    "request": "feed.FinalizeUpload",
+    "request_location": "body",
+    "response": "feed.Media",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "upload_finalize",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MEDIA_NOT_READY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertMedia",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/media/{mediaId}",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.Media",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "AUTHORIZED_READER",
+    "rule": "media_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "readConcertMedia",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/media/{mediaId}/content",
+    "request": null,
+    "request_location": "query",
+    "response": "BINARY",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "AUTHORIZED_READER",
+    "rule": "media_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertNotifications",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/notifications",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.NotificationList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "notification_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "markConcertNotification",
+    "method": "patch",
+    "path": "/api/concert/events/{eventId}/me/notifications/{notificationId}/read",
+    "request": "common.RevisionRequest",
+    "request_location": "body",
+    "response": "feed.Notification",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "notification_mark",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "markAllConcertNotifications",
+    "method": "patch",
+    "path": "/api/concert/events/{eventId}/me/notifications/read-all",
+    "request": "common.EmptyRequest",
+    "request_location": "body",
+    "response": "feed.ReadAllResult",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "notification_mark",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertBlocks",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/blocks",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.BlockList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "owner_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "blockConcertUser",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/me/blocks/{userId}",
+    "request": "common.EmptyRequest",
+    "request_location": "body",
+    "response": "feed.BlockState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "block",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "unblockConcertUser",
+    "method": "delete",
+    "path": "/api/concert/events/{eventId}/me/blocks/{userId}",
+    "request": "common.EmptyRequest",
+    "request_location": "query",
+    "response": "feed.BlockState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "SELF",
+    "rule": "block",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "createConcertReport",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/reports",
+    "request": "admin.CreateReport",
+    "request_location": "body",
+    "response": "admin.Report",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "report_create",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MEDIA_NOT_READY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listOwnConcertReports",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/reports",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.ReportList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "report_own",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertNotices",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/notices",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.PublicNoticeList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertNotice",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/notices/{noticeId}",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.PublishedNotice",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "public_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertMuralSnapshot",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/mural/snapshot",
+    "request": null,
+    "request_location": "query",
+    "response": "mural.MuralSnapshot",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "mural_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertMuralDelta",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/mural/operations",
+    "request": "mural.RevisionQuery",
+    "request_location": "query",
+    "response": "mural.MuralDelta",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MEMBER",
+    "rule": "mural_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "placeConcertPixel",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/mural/pixels",
+    "request": "mural.PlacePixel",
+    "request_location": "body",
+    "response": "mural.PixelOperation",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "mural_pixel",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED",
+        "MURAL_COOLDOWN"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_PAUSED",
+        "MURAL_FROZEN",
+        "MURAL_REGION_LOCKED"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertCommandStatus",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/commands",
+    "request": "common.StatusQuery",
+    "request_location": "query",
+    "response": "common.CommandReceipt",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "receipt_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertAdminOverview",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/overview",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.Overview",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OPERATOR",
+    "rule": "ops_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertSettings",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/settings",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.EventSettings",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OPERATOR",
+    "rule": "ops_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "setConcertSettings",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/admin/settings",
+    "request": "admin.SetEventSettings",
+    "request_location": "body",
+    "response": "admin.EventSettings",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "settings",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "setConcertEventPhase",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/phase",
+    "request": "admin.SetEventPhase",
+    "request_location": "body",
+    "response": "admin.EventSettings",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "event_phase",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertAdminPlaces",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/places",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.PlaceAdminList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OPERATOR",
+    "rule": "ops_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "setConcertPlace",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/admin/places/{placeId}",
+    "request": "admin.SetPlace",
+    "request_location": "body",
+    "response": "admin.PlaceAdmin",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "place_update",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MAP_VERSION_MISMATCH"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertAdminNotices",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/notices",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.NoticeList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OPERATOR",
+    "rule": "ops_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "createConcertNotice",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/notices",
+    "request": "admin.CreateNotice",
+    "request_location": "body",
+    "response": "feed.Notice",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "notice_create",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "updateConcertNotice",
+    "method": "put",
+    "path": "/api/concert/events/{eventId}/admin/notices/{noticeId}",
+    "request": "admin.PublishNotice",
+    "request_location": "body",
+    "response": "feed.Notice",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "notice_update",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertAdminReports",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/reports",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.ReportList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MODERATOR",
+    "rule": "report_review",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertAdminReport",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/reports/{reportId}",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.ReportDetail",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MODERATOR",
+    "rule": "report_review",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "decideConcertReport",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/reports/{reportId}/decision",
+    "request": "admin.ResolveReport",
+    "request_location": "body",
+    "response": "admin.Report",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MODERATOR",
+    "rule": "report_decide",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertAdminUsers",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/users",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.UserReviewList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MODERATOR",
+    "rule": "report_review",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "moderateConcertUser",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/users/{userId}/moderation",
+    "request": "admin.ModerateUser",
+    "request_location": "body",
+    "response": "admin.UserReview",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MODERATOR",
+    "rule": "moderate_user",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertAdminContent",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/content",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.ContentReviewList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "MODERATOR",
+    "rule": "report_review",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "moderateConcertContent",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/content/moderation",
+    "request": "admin.ModerateContent",
+    "request_location": "body",
+    "response": "admin.ContentReview",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MODERATOR",
+    "rule": "moderate_content",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertAdminMural",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/mural",
+    "request": null,
+    "request_location": "query",
+    "response": "mural.MuralAdminState",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OPERATOR",
+    "rule": "ops_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "controlConcertMural",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/mural/control",
+    "request": "mural.MuralControl",
+    "request_location": "body",
+    "response": "mural.MuralAdminState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "mural_control",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_FROZEN"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "lockConcertMuralRegion",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/mural/locks",
+    "request": "mural.RegionLock",
+    "request_location": "body",
+    "response": "mural.MuralAdminState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "mural_lock",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_FROZEN"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "restoreConcertMural",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/mural/restore",
+    "request": "mural.RestoreMural",
+    "request_location": "body",
+    "response": "mural.MuralAdminState",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "mural_restore",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY",
+        "MURAL_FROZEN"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "listConcertAudit",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/audit",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.AuditList",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OPERATOR",
+    "rule": "ops_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "closeConcertEvent",
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/admin/closure",
+    "request": "admin.CloseEvent",
+    "request_location": "body",
+    "response": "admin.ClosureJob",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OPERATOR",
+    "rule": "event_close",
+    "write_policy": "OPERATIONS",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertClosure",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/admin/closure/{jobId}",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.ClosureJob",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "OPERATOR",
+    "rule": "ops_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  },
+  {
+    "operationId": "getConcertArchive",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/archive",
+    "request": null,
+    "request_location": "query",
+    "response": "admin.Archive",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "PUBLIC",
+    "rule": "archive_read",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED"
+  }
+]
