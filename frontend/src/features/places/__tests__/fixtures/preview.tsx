@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom'
 import { createAppRoutes } from '../../../../app/router'
 import type { ShellPorts } from '../../../../app/ports'
+import { bootstrapFor } from '../../../../app/__tests__/fixtures/ports'
 import { createHttpClient, createMemorySession } from '../../../../shared/api/http'
 import { createWorldRuntime, type WorldRuntime } from '../../../../world/runtime'
 import { attachMovement, type MovementAttachment } from '../../../../world/input/controller'
@@ -46,8 +47,7 @@ const controller = createPlacesController({ session, http,
   map: { read: currentMap, subscribe: listener => { mapListeners.add(listener); return () => { mapListeners.delete(listener) } } },
   camera: { read: () => movement?.camera ?? null } })
 const ports: ShellPorts = { session, readiness: { read: () => 'ready', subscribe: () => () => {} },
-  bootstrap: { load: async scope => ({ contractVersion: '0.1.0', event: { eventId: scope.eventId, title: 'FE19 synthetic event', phase: 'OPEN' },
-    participant: { userId: scope.userId, eventId: scope.eventId }, worldAvailable: true }) }, admin: { authorize: async () => false },
+  bootstrap: { load: async scope => ({ ...bootstrapFor(scope), event: { eventId: scope.eventId, title: 'FE19 synthetic event', phase: 'OPEN' } }) }, admin: { authorize: async () => false },
   world: { mount(host, context) {
     mounts++
     const mountScope = context.scope

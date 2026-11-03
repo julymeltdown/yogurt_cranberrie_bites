@@ -1,4 +1,5 @@
 import { createMemorySession } from '../../../shared/api/http'
+import { CAPABILITIES, projectCapabilities } from '../../capabilities'
 import type { ActiveScope, SessionReadiness, ShellBootstrap, ShellPorts } from '../../ports'
 
 /** Synthetic identities exist ONLY in this explicitly imported test/dev fixture. */
@@ -10,7 +11,8 @@ export const ids = {
 export const giftPath = `/gifts/${ids.gift}`
 export function bootstrapFor(scope: ActiveScope): ShellBootstrap {
   return { contractVersion: '0.1.0', event: { eventId: scope.eventId, title: 'Shell review · test event', phase: 'OPEN' },
-    participant: { userId: scope.userId, eventId: scope.eventId }, worldAvailable: true }
+    participant: { userId: scope.userId, eventId: scope.eventId }, worldAvailable: true,
+    capabilities: projectCapabilities(Object.fromEntries(CAPABILITIES.map(key => [key, { available: true, reason: null }]))) }
 }
 export function createFixturePorts(initial: SessionReadiness = 'ready') {
   const session = createMemorySession()

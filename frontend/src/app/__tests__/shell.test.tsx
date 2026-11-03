@@ -287,7 +287,8 @@ describe('honest access, bootstrap and failure boundaries', () => {
   it('keeps navigation usable while the world capability is unavailable', async () => {
     const fixture = createFixturePorts()
     setup('/gifts', { ...fixture, ports: { ...fixture.ports,
-      bootstrap: { load: async scope => ({ ...bootstrapFor(scope), worldAvailable: false }) } } })
+      bootstrap: { load: async scope => ({ ...bootstrapFor(scope), worldAvailable: false,
+        capabilities: { ...bootstrapFor(scope).capabilities, world: { available: false, reason: 'FEATURE_DISABLED' } } }) } } })
     await open()
     expect(screen.getByRole('heading', { name: 'Gifts', level: 1 })).toBeVisible()
     expect(fixture.stats.mounts).toBe(0)

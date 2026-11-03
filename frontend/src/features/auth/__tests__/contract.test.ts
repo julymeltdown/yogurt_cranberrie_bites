@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { canonicalJson, decodeBootstrap } from '../model/bootstrap'
 import { decodeAuth, decodeCapabilities, decodeContract, validLogin } from '../model/contract'
 import { authResponse, capabilities, eventId, fixture, userId } from './fixtures/data'
+import { validBootstrap } from '../../../app/access'
 const scope = { generation: 1, userId, eventId }
 const body = () => fixture() as unknown as Record<string, any> // test mutation harness only
 async function rehash(document: Record<string, any>) {
@@ -39,9 +40,31 @@ describe('canonical C03 auth boundaries', () => {
   })
 })
 describe('full bootstrap and C06 before shell projection', () => {
+  it('preserves and freezes all seven scoped capability decisions and their reasons', async () => {
+    const b = body()
+    for (const name of Object.keys(b.capabilities)) b.capabilities[name] = { available: true, reason: null }
+    const enabled = await decodeBootstrap(b, scope)
+    for (const name of Object.keys(b.capabilities)) b.capabilities[name] = { available: false, reason: 'FEATURE_DISABLED' }
+    const disabled = await decodeBootstrap(b, scope)
+    expect(enabled.capabilities).not.toEqual(disabled.capabilities)
+    expect(Object.keys(disabled.capabilities)).toHaveLength(7)
+    expect(Object.isFrozen(disabled.capabilities)).toBe(true)
+    expect(Object.values(disabled.capabilities).every(Object.isFrozen)).toBe(true)
+    expect(disabled.capabilities.meet).toEqual({ available: false, reason: 'FEATURE_DISABLED' })
+    expect(disabled.capabilities.gifts).toEqual({ available: false, reason: 'FEATURE_DISABLED' })
+    expect(validBootstrap(disabled, scope)).toBe(true)
+    expect(validBootstrap({ ...disabled, worldAvailable: true }, scope)).toBe(false)
+    expect(validBootstrap({ ...enabled, event: { ...enabled.event, phase: 'READ_ONLY' } }, scope)).toBe(false)
+    const incomplete = { ...disabled, capabilities: { ...disabled.capabilities } } as any
+    delete incomplete.capabilities.meet
+    expect(validBootstrap(incomplete, scope)).toBe(false)
+    b.capabilities.meet.reason = 'DEPENDENCY_UNAVAILABLE'
+    expect(disabled.capabilities.meet.reason).toBe('FEATURE_DISABLED')
+  })
   it('accepts every published field and returns only a non-secret shell projection', async () => {
     expect(await decodeBootstrap(fixture(), scope)).toEqual({ contractVersion: '0.1.0',
-      event: { eventId, title: 'Synthetic contract fixture', phase: 'OPEN' }, participant: { userId, eventId }, worldAvailable: false })
+      event: { eventId, title: 'Synthetic contract fixture', phase: 'OPEN' }, participant: { userId, eventId }, worldAvailable: false,
+      capabilities: fixture().capabilities })
   })
   it.each([
     ['additional private field', (b: ReturnType<typeof body>) => { b.participant.profile.email = 'private@example.com' }],

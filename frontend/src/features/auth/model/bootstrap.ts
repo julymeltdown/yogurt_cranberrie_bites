@@ -1,4 +1,5 @@
 import type { ActiveScope, ShellBootstrap } from '../../../app/ports'
+import { projectCapabilities } from '../../../app/capabilities'
 import { canonicalJson, decodeContract, equal, list, number, object, requireValue, text, type ObjectValue } from './contract'
 
 export { canonicalJson } from './contract'
@@ -88,5 +89,6 @@ export async function decodeBootstrap(value: unknown, scope: ActiveScope): Promi
   await validateBundle(b)
   return Object.freeze({ contractVersion: '0.1.0', event: Object.freeze({ eventId: scope.eventId,
     title: text(event.title), phase: text(event.phase) as ShellBootstrap['event']['phase'] }),
-  participant: Object.freeze({ userId: scope.userId, eventId: scope.eventId }), worldAvailable: object(capabilities.world).available === true })
+  participant: Object.freeze({ userId: scope.userId, eventId: scope.eventId }), worldAvailable: object(capabilities.world).available === true,
+  capabilities: projectCapabilities(capabilities) })
 }

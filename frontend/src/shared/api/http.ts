@@ -1,4 +1,6 @@
 import ky from 'ky'
+import { domainOperation, matchesDomainRequest } from './domain'
+import type { DomainOperationId } from './domain-operations.generated'
 import { parseRetryAfter, parseServerError, TransportError, type ErrorFamily, type JsonValue } from './errors'
 
 export interface SessionScope {
@@ -82,6 +84,10 @@ export interface HttpRequest<T> {
   readonly method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
   readonly access: 'public' | 'protected'
   readonly errorFamily: ErrorFamily
+  /** Explicit candidate C04 registry binding, required for the domain error family. */
+  readonly domainOperation?: DomainOperationId
+  /** Only registered idempotent commands accept this canonical UUID; never generated or replayed here. */
+  readonly idempotencyKey?: string
   readonly decode: Decoder<T>
   /** Explicit frozen-contract permission; never applies to any /api/auth operation. */
   readonly refresh?: 'once'
@@ -118,7 +124,7 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
   // Plain route segments only: no normalization, encoded traversal, query, fragment or old prefix.
   if (!/^\/api\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*$/.test(path)
     || path.split('/').includes('v1') || !['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
-    || !['public', 'protected'].includes(access) || !['auth', 'core'].includes(request.errorFamily)
+    || !['public', 'protected'].includes(access) || !['auth', 'core', 'domain'].includes(request.errorFamily)
     || typeof request.decode !== 'function') throw new TransportError('invalid-request')
   if (path.startsWith('/api/auth/')) {
     const allowed = path === '/api/auth/capabilities' ? method === 'GET' && access === 'public'
@@ -133,11 +139,18 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
   if (access === 'protected' && (!snapshot.userId || !snapshot.accessToken)) throw new TransportError('authentication-required')
   const event = /^\/api\/concert\/events\/([^/]+)(?:\/|$)/.exec(path)?.[1]
   if (event && (access !== 'protected' || !uuid(event) || event !== snapshot.eventId)) throw new TransportError('invalid-request')
+  const operation = domainOperation(request.domainOperation)
+  if (request.errorFamily === 'domain') {
+    if (!operation || access !== 'protected' || !matchesDomainRequest(operation, method, path, request.query)
+      || (operation.idempotency ? !uuid(request.idempotencyKey) : request.idempotencyKey !== undefined)) {
+      throw new TransportError('invalid-request')
+    }
+  } else if (request.domainOperation !== undefined || request.idempotencyKey !== undefined) throw new TransportError('invalid-request')
   const origin = globalThis.location?.origin
   if (!origin || !/^https?:\/\//.test(origin)) throw new TransportError('invalid-request')
   const url = new URL(path, origin)
   for (const [key, value] of Object.entries(request.query ?? {})) {
-    if (/(?:password|token|secret|authorization|^code$|^state$)/i.test(key)
+    if ((/(?:password|token|secret|authorization|^code$|^state$)/i.test(key) && !(operation && key === 'state'))
       || !['string', 'number', 'boolean'].includes(typeof value)
       || (typeof value === 'number' && !Number.isFinite(value))) throw new TransportError('invalid-request')
     url.searchParams.append(key, String(value))
@@ -148,6 +161,7 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
       || value.length > 128 || !/^[\x20-\x7e]+$/.test(value)) throw new TransportError('invalid-request')
   }
   headers.set('Accept', 'application/json')
+  if (operation?.idempotency) headers.set('Idempotency-Key', request.idempotencyKey!)
   if (method !== 'GET') headers.set('X-MCR-Intent', 'browser')
   let body: string | FormData | undefined
   if (request.body) {
@@ -159,7 +173,7 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
     } else if ('form' in request.body && !('json' in request.body) && request.body.form instanceof FormData) body = request.body.form
     else throw new TransportError('invalid-request')
   }
-  return { url, headers, body }
+  return { url, headers, body, operation }
 }
 
 function deadline(milliseconds: number, sessionSignal: AbortSignal, callerSignal?: AbortSignal) {
@@ -279,15 +293,17 @@ export function createHttpClient(options: HttpClientOptions): HttpClient {
       }
       assertCurrent()
       if (!response.ok) {
-        const server = parseServerError(value, request.errorFamily, response.status)
-        const details = server?.core
-        const hint = details && 'retry_after_ms' in details ? details.retry_after_ms ?? null : null
+        let server = parseServerError(value, request.errorFamily, response.status)
+        if (prepared.operation && (!server?.reason || !prepared.operation.errors[String(response.status)]?.includes(server.reason))) server = null
+        const details = request.errorFamily === 'domain' ? server?.envelope.details : server?.core
+        const hint = details && 'retry_after_ms' in details && typeof details.retry_after_ms === 'number' ? details.retry_after_ms : null
         throw new TransportError('http', { status: response.status, server,
           retryAfterMs: parseRetryAfter(response.headers.get('Retry-After')) ?? hint,
           uncertain: mutation && (response.status >= 500 || response.status === 408 || (request.errorFamily === 'auth' && response.status === 409)) })
       }
       let data: T
       try {
+        if (prepared.operation && !prepared.operation.success.includes(response.status)) throw new TransportError('invalid-response')
         data = request.decode(value, { scope: scopeOf(expected), status: response.status, path: request.path })
         if (data && (typeof data === 'object' || typeof data === 'function') && 'then' in data) {
           void Promise.resolve(data).catch(() => undefined)

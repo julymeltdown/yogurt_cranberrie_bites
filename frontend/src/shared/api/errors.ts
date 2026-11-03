@@ -1,4 +1,5 @@
-/** Authored against C03 core v0.1; no backend implementation or generated SDK import. */
+import { DOMAIN_ERROR_RULES, type DomainReason } from './domain-operations.generated'
+/** C03 core and explicitly qualified C04 candidate errors; no backend implementation import. */
 export const CORE_REASONS = [
   'PARTY_FULL', 'GIVEAWAY_SOLD_OUT', 'RESERVATION_EXPIRED', 'VERSION_CONFLICT',
   'CONSENT_REQUIRED', 'RESOURCE_UNAVAILABLE', 'MURAL_COOLDOWN', 'MAP_VERSION_MISMATCH',
@@ -23,9 +24,9 @@ export interface ServerErrorEnvelope {
 export interface ParsedServerError {
   readonly envelope: ServerErrorEnvelope
   readonly core: CoreErrorDetails | null
-  readonly reason: CoreReason | OriginReason | null
+  readonly reason: CoreReason | OriginReason | DomainReason | null
 }
-export type ErrorFamily = 'auth' | 'core'
+export type ErrorFamily = 'auth' | 'core' | 'domain'
 export type TransportErrorKind = 'http' | 'network' | 'aborted' | 'timeout'
   | 'invalid-response' | 'invalid-request' | 'session-changed' | 'authentication-required'
 
@@ -103,20 +104,31 @@ function copyDetails(value: unknown, depth = 0, budget = { nodes: 0 }): JsonValu
 /** Parses the safe envelope, not an operation-specific schema or an English error message. */
 export function parseServerError(value: unknown, family: ErrorFamily, status: number): ParsedServerError | null {
   if (!record(value) || !boundedString(value.code, 64) || !boundedString(value.message, 512)) return null
-  if (family === 'core' && !only(value, ['code', 'message', 'traceId', 'timestamp', 'details'])) return null
+  if (family !== 'auth' && !only(value, ['code', 'message', 'traceId', 'timestamp', 'details'])) return null
   if ('traceId' in value && value.traceId !== null && !boundedString(value.traceId, 128, 0)) return null
   if ('timestamp' in value && value.timestamp !== null
     && (!boundedString(value.timestamp, 64) || !Number.isFinite(Date.parse(value.timestamp)))) return null
   const origin = record(value.details) && (value.details.reason === 'ORIGIN_NOT_ALLOWED'
     || value.details.reason === 'BROWSER_INTENT_REQUIRED')
-  if ((family === 'core' || origin) && (
+  if ((family !== 'auth' || origin) && (
     !only(value, ['code', 'message', 'traceId', 'timestamp', 'details'])
     || (typeof value.timestamp === 'string' && !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/.test(value.timestamp))
   )) return null
+  if (family === 'domain' && typeof value.timestamp === 'string'
+    && new Date(value.timestamp).toISOString().slice(0, 19) !== value.timestamp.slice(0, 19)) return null
   let core: CoreErrorDetails | null = null
-  let reason: CoreReason | OriginReason | null = null
+  let reason: CoreReason | OriginReason | DomainReason | null = null
   let details: Readonly<Record<string, JsonValue>> | null = null
-  if (record(value.details) && (value.details.reason === 'ORIGIN_NOT_ALLOWED' || value.details.reason === 'BROWSER_INTENT_REQUIRED')) {
+  if (family === 'domain') {
+    if (!record(value.details) || typeof value.details.reason !== 'string' || !Object.hasOwn(DOMAIN_ERROR_RULES, value.details.reason)) return null
+    reason = value.details.reason as DomainReason
+    const rule = DOMAIN_ERROR_RULES[reason]
+    if (rule ? !only(value.details, ['reason', 'retry_after_ms']) || !integer(value.details.retry_after_ms, rule.maximum)
+      || value.details.retry_after_ms < rule.minimum
+      : !only(value.details, ['reason'])) return null
+    if ((reason === 'ORIGIN_NOT_ALLOWED' || reason === 'BROWSER_INTENT_REQUIRED') && status !== 403) return null
+    details = Object.freeze({ reason, ...(rule ? { retry_after_ms: value.details.retry_after_ms as number } : {}) })
+  } else if (record(value.details) && (value.details.reason === 'ORIGIN_NOT_ALLOWED' || value.details.reason === 'BROWSER_INTENT_REQUIRED')) {
     if (status !== 403 || !only(value.details, ['reason'])) return null
     reason = value.details.reason
     details = Object.freeze({ reason })

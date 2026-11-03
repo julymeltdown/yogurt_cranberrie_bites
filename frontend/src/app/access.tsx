@@ -5,6 +5,7 @@ import type { SessionScope } from '../shared/api/http'
 import { canonicalId, safeReturnTarget } from './routes'
 import type { ActiveScope, ShellBootstrap, ShellPorts } from './ports'
 import { ShellLoadError, type ShellFailureReason } from './ports'
+import { validCapabilities } from './capabilities'
 
 const PortsContext = createContext<ShellPorts | null>(null)
 export function PortsProvider({ ports, children }: { ports: ShellPorts; children: ReactNode }) {
@@ -110,5 +111,7 @@ export function validBootstrap(value: ShellBootstrap, scope: ActiveScope) {
     && value.participant.eventId === scope.eventId && value.participant.userId === scope.userId
     && value.event.title.length > 0 && value.event.title.length <= 120
     && typeof value.worldAvailable === 'boolean'
+    && validCapabilities(value.capabilities) && value.worldAvailable === value.capabilities.world.available
+    && (!['READ_ONLY', 'ARCHIVED'].includes(value.event.phase) || !value.capabilities.mutations.available)
     && ['DRAFT', 'OPEN', 'LIVE', 'READ_ONLY', 'ARCHIVED'].includes(value.event.phase)
 }

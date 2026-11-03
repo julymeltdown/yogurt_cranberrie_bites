@@ -48,6 +48,12 @@ const errorOf = async (promise: Promise<unknown>): Promise<TransportError> => {
 beforeEach(() => vi.stubGlobal('location', { origin: 'https://mcr.example' }))
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); vi.restoreAllMocks() })
 
+it('does not promote open inherited Auth error details into a trusted retry hint', async () => {
+  const { client } = setup(() => json({ code: 'LIMITED', message: 'Not shown', details: { retry_after_ms: -100 } }, 429))
+  const error = await errorOf(client.request({ path: '/api/auth/login', method: 'POST', access: 'public', errorFamily: 'auth', decode }))
+  expect(error.retryAfterMs).toBeNull()
+})
+
 describe('session scope and stale response protection', () => {
   it('uses atomic generation replacement and token CAS without browser storage', () => {
     const storage = { getItem: vi.fn(), setItem: vi.fn() }

@@ -1,4 +1,5 @@
 import type { SessionController } from '../features/auth/model/session'
+import type { ShellCapabilities } from './capabilities'
 import { createMemorySession, type SessionPort, type SessionScope } from '../shared/api/http'
 
 export type SessionReadiness = 'unknown' | 'checking' | 'ready' | 'anonymous' | 'unavailable' | 'error'
@@ -17,6 +18,7 @@ export interface ShellBootstrap {
     readonly phase: 'DRAFT' | 'OPEN' | 'LIVE' | 'READ_ONLY' | 'ARCHIVED' }
   readonly participant: { readonly userId: string; readonly eventId: string }
   readonly worldAvailable: boolean
+  readonly capabilities: ShellCapabilities
 }
 export type ShellFailureReason = 'unauthenticated' | 'denied' | 'not-found' | 'gone' | 'rate-limited' | 'unavailable'
 /** Safe adapter presentation category; never pass a server error body to the shell. */
