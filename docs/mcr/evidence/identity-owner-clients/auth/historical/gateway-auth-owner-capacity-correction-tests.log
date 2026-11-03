@@ -1,0 +1,78 @@
+   Compiling tokio v1.50.0
+   Compiling recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/recommendation-policy)
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/services/api-gateway)
+   Compiling gateway-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/gateway-domain)
+   Compiling gateway-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/gateway-application)
+   Compiling tokio-util v0.7.18
+   Compiling h2 v0.4.16
+   Compiling tokio-stream v0.1.18
+   Compiling tower v0.5.3
+   Compiling tokio-rustls v0.26.4
+   Compiling axum v0.8.9
+   Compiling hyper v1.8.1
+   Compiling hyper-util v0.1.20
+   Compiling sqlx-core v0.8.6
+   Compiling hyper-timeout v0.5.2
+   Compiling tonic v0.14.6
+   Compiling sqlx-postgres v0.8.6
+   Compiling tonic-prost v0.14.6
+   Compiling opentelemetry-proto v0.33.0
+   Compiling sqlx v0.8.6
+   Compiling tonic-types v0.14.6
+   Compiling opentelemetry-otlp v0.33.0
+   Compiling tonic-health v0.14.6
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/platform)
+   Compiling migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/migration-runtime)
+   Compiling axum v0.7.9
+   Compiling bollard-buildkit-proto v0.7.0
+   Compiling hyper-rustls v0.27.7
+   Compiling hyperlocal v0.9.1
+   Compiling tower-http v0.6.8
+   Compiling astral-tokio-tar v0.6.2
+   Compiling bollard-stubs v1.52.1-rc.29.1.3
+   Compiling combine v4.6.7
+   Compiling redis v0.28.2
+   Compiling bollard v0.20.2
+   Compiling rskafka v0.6.0
+   Compiling testcontainers v0.27.3
+   Compiling post-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/post-domain)
+   Compiling friend-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/friend-domain)
+   Compiling notification-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/services/notification-service)
+   Compiling post-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/services/post-service)
+   Compiling friend-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/services/friend-service)
+   Compiling profile-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/profile-domain)
+   Compiling notification-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/notification-domain)
+   Compiling api-contracts v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/api-contracts)
+   Compiling profile-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/profile-application)
+   Compiling notification-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/notification-application)
+error[E0433]: failed to resolve: use of undeclared type `Status`
+   --> services/api-gateway/src/adapters/out/auth_client/concert_admission.rs:221:28
+    |
+221 |                 return Err(Status::deadline_exceeded("Request timed out"));
+    |                            ^^^^^^ use of undeclared type `Status`
+    |
+help: consider importing this struct
+    |
+2   + use tonic::Status;
+    |
+
+error[E0599]: no method named `map_err` found for struct `tonic::Response` in the current scope
+   --> services/api-gateway/src/adapters/out/auth_client/concert_admission.rs:238:14
+    |
+236 |           let response = result
+    |  ________________________-
+237 | |             .map_err(|_| AdmissionReadError::DeadlineExceeded)?
+238 | |             .map_err(|status| match status.code() {
+    | |             -^^^^^^^ method not found in `Response<ReadConcertAdmissionResponse>`
+    | |_____________|
+    |
+
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/services/profile-service)
+   Compiling friend-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/friend-application)
+   Compiling post-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/crates/post-application)
+   Compiling testcontainers-modules v0.15.0
+   Compiling proptest v1.11.0
+Some errors have detailed explanations: E0433, E0599.
+For more information about an error, try `rustc --explain E0433`.
+error: could not compile `api-gateway` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

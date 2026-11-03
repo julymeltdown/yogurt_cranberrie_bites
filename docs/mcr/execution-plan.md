@@ -9,8 +9,10 @@ The main chat is the integrator. Backend and frontend development run in separat
 Four existing visible chats are reused for ready work. FE14 and its independent
 review completed their bounded goals after three corrections and parent 871-test
 and native-browser qualification. FE15 has a new confirmed ACTIVE goal. The
-previously idle original identity chat now implements the Profile-owner read;
-the other backend chat's Auth client is committed and undergoing independent QA.
+previously idle original identity chat now implements the guarded Profile self
+RPC; the other backend chat implements its Gateway client against the frozen
+wire. The reviewed Profile owner and corrected Auth client are integrated; QA
+has completed Auth review and now reviews FE15.
 The integrator publishes each reviewed checkpoint while these disjoint tasks
 continue. Actual goal state, resource ownership and assignments are recorded in
 the [ownership register](chat-coordination.md). No fixed chat count is imposed.

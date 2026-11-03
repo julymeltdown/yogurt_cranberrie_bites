@@ -1,0 +1,24 @@
+{
+  "base": "3fdb977d6a64798d76ea137099026879a68a67f9",
+  "sha256": {
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "docs/mcr/project-assessment.md": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+    "docs/mcr/execution-plan.md": "9a1cb888b9fa67d1902aaa94641a27fe06fe1710cd2b380d11607c54e0f2eaee",
+    "docs/mcr/core-contract.md": "97a907d3f215701c068bec717a20fdb62d01aa5d2f1d6552571fc098a74edf64",
+    "backend/docs/api/mcr-core.openapi.json": "c8de71d5f3dfc125fd3a5206bc404a76df39367a45fa6c3f67ed6323de91c15d",
+    "backend/crates/concert-application/src/identity/mod.rs": "0d10b78c8308a5557dcec26f7ed3c93c8d22a8587aff1f159133ebb5375a5bd8",
+    "backend/crates/profile-application/Cargo.toml": "870e90e324588b3fcf107540a35d23bb0613998f03cd13598fd18db46cf929df",
+    "backend/services/profile-service/Cargo.toml": "88aacb372f17c09b7b909cd039a3babbd3b84e9ad0c04ca9550573fd9745306c",
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/services/profile-service/src/adapters/out/persistence/profile_repository.rs": "d656f0489c301e5a9ea1ebe08b793fe7545e756f368f180e30a958f12f31cf66",
+    "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+    "backend/services/profile-service/migrations/0001_init_profile.sql": "4c0c0ce757b6971895f5bd1f46e4b2314f4d5abfda76cab9a535142d9053d862",
+    "backend/services/profile-service/migrations/0002_governance.sql": "bbc3f355293924abe5628610a1bdbfb1ceca15f9abcb1070eb2916b2ec6bcc21",
+    "backend/services/profile-service/migrations/0003_account_privacy.sql": "b20fec5d9e20339bd0abfe3363c86b9b6e76b5dcb08d7a873ba5fe13124051a9",
+    "backend/services/profile-service/migrations/0004_search_trigram_index.sql": "8e1bfe023ae99a02c039de9cd69ad713eaeaf69f045c227307863a551d2d0459",
+    "backend/services/profile-service/migrations/0005_owner_mutation_receipts.sql": "3eead515b0032692d67666fcc813615d60e9f33332b34fc90c07de1e688cba58",
+    "backend/services/profile-service/migrations/0006_profile_edit_owner_receipts.sql": "5a8e1d4fcd88582a914dc46e1649003a732d1a081c17d8b599857968407677a7",
+    "backend/services/profile-service/migrations/0007_user_deletion_fences.sql": "050a2239f3efbf14016b36b41d0e50ed22ba408284165418d1a347059b3f2930"
+  }
+}

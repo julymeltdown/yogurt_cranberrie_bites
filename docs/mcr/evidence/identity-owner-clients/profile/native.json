@@ -1,0 +1,76 @@
+{
+  "base": "3fdb977d6a64798d76ea137099026879a68a67f9",
+  "commands": {
+    "migration:0001_init_profile.sql": {
+      "exit_code": 0
+    },
+    "migration:0002_governance.sql": {
+      "exit_code": 0
+    },
+    "migration:0003_account_privacy.sql": {
+      "exit_code": 0
+    },
+    "migration:0004_search_trigram_index.sql": {
+      "exit_code": 0
+    },
+    "migration:0005_owner_mutation_receipts.sql": {
+      "exit_code": 0
+    },
+    "migration:0006_profile_edit_owner_receipts.sql": {
+      "exit_code": 0
+    },
+    "migration:0007_user_deletion_fences.sql": {
+      "exit_code": 0
+    },
+    "owner-pg": {
+      "args": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_identity_owner-4220e15a4b08a441",
+        "--skip",
+        "owner_database_unavailable_is_not_cached_content",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-identity-owner/owner-pg.log"
+    },
+    "owner-outage": {
+      "args": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_identity_owner-4220e15a4b08a441",
+        "--exact",
+        "owner_database_unavailable_is_not_cached_content",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-identity-owner/owner-outage.log"
+    },
+    "owner-recovered": {
+      "args": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_identity_owner-4220e15a4b08a441",
+        "--exact",
+        "active_private_self_is_minimal_and_updates_are_uncached",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-identity-owner/owner-recovered.log"
+    }
+  },
+  "result": "PASS",
+  "mode": "owned-native-PG16; Unix socket only; no Docker/default service",
+  "postgres_version": "16.14 (Homebrew)",
+  "owned_root": "/private/tmp/mcr-pg-kpgd7dxi",
+  "migration_sha256": {
+    "backend/services/profile-service/migrations/0001_init_profile.sql": "4c0c0ce757b6971895f5bd1f46e4b2314f4d5abfda76cab9a535142d9053d862",
+    "backend/services/profile-service/migrations/0002_governance.sql": "bbc3f355293924abe5628610a1bdbfb1ceca15f9abcb1070eb2916b2ec6bcc21",
+    "backend/services/profile-service/migrations/0003_account_privacy.sql": "b20fec5d9e20339bd0abfe3363c86b9b6e76b5dcb08d7a873ba5fe13124051a9",
+    "backend/services/profile-service/migrations/0004_search_trigram_index.sql": "8e1bfe023ae99a02c039de9cd69ad713eaeaf69f045c227307863a551d2d0459",
+    "backend/services/profile-service/migrations/0005_owner_mutation_receipts.sql": "3eead515b0032692d67666fcc813615d60e9f33332b34fc90c07de1e688cba58",
+    "backend/services/profile-service/migrations/0006_profile_edit_owner_receipts.sql": "5a8e1d4fcd88582a914dc46e1649003a732d1a081c17d8b599857968407677a7",
+    "backend/services/profile-service/migrations/0007_user_deletion_fences.sql": "050a2239f3efbf14016b36b41d0e50ed22ba408284165418d1a347059b3f2930"
+  },
+  "fixture_ready": true,
+  "binary_sha256": "a8b582bc6f6a57f85932e5180a92557860b588b39b53c831e4d66fac32e77eec",
+  "stopped_server_outage": true,
+  "cleanup": {
+    "owned_root_absent": true,
+    "stopped_owned_server": true
+  }
+}

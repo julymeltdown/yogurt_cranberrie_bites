@@ -1,0 +1,10 @@
+   Compiling profile-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/profile-application)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/profile-service)
+    Finished `test` profile [unoptimized] target(s) in 4.11s
+     Running tests/architecture.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/architecture-89bbf8829e7d8c40)
+
+running 1 test
+test layering::domain_and_application_are_framework_and_persistence_free ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

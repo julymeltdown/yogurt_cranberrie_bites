@@ -1,0 +1,25 @@
+{
+  "commit": "81665a04b579d8709fa6cbe018c46b01db4edce0",
+  "base": "3fdb977d6a64798d76ea137099026879a68a67f9",
+  "working_tree_clean": true,
+  "changed_paths": [
+    "backend/crates/profile-application/src/concert_identity.rs",
+    "backend/crates/profile-application/src/lib.rs",
+    "backend/crates/profile-application/tests/concert_identity.rs",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs",
+    "backend/services/profile-service/src/adapters/out/persistence/mod.rs",
+    "backend/services/profile-service/tests/concert_identity_owner.rs",
+    "docs/mcr/backend/profile-identity-owner.md"
+  ],
+  "rust_or_selected_test_processes": [],
+  "owned_pg_root": "/private/tmp/mcr-pg-kpgd7dxi",
+  "owned_pg_root_absent": true,
+  "owned_postgres_process_absent": true,
+  "shared_target_released": true,
+  "no_cargo_after_release": true,
+  "receipt": "/Users/lhs/Desktop/mcr-build/profile-identity-owner/handoff.json",
+  "test_counts": {
+    "distinct_passed": 25,
+    "additional_recovery_invocations_passed": 1
+  }
+}

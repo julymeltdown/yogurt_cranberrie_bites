@@ -1,0 +1,284 @@
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/services/api-gateway)
+    Finished `test` profile [unoptimized] target(s) in 3.73s
+     Running tests/concert_access.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_access-33ef37b6bbafc804)
+
+running 13 tests
+test actual_rs256_claims_keep_exact_identity_and_signed_expiry_without_roles_or_foreign_assertions ... ok
+test already_expired_within_legacy_skew_is_never_live_strict_authority ... ok
+test canonical_nonnil_user_and_mandatory_session_are_stricter_than_legacy_projection ... ok
+test captured_jwt_monotonic_expiry_cannot_be_renewed_while_wall_is_live ... ok
+test actual_signed_wall_expiry_fences_an_existing_context_before_original_request_stop ... ok
+test future_nbf_never_inherits_legacy_disabled_validation_or_skew ... ok
+test header_keys_locations_missing_kid_malformed_and_huge_tokens_fail_safely ... ok
+test clones_share_rotation_and_withdrawal_and_only_unknown_key_remains_refreshable ... ok
+test issuer_audience_type_algorithm_and_signature_are_always_verified ... ok
+test live_future_exp_has_no_arbitrary_maximum_lifetime_or_iat_requirement ... ok
+test missing_elapsed_and_zero_original_budgets_fail_before_context_creation ... ok
+test original_stop_survives_preverification_and_owner_waits_while_wall_expiry_is_live ... ok
+test signed_numeric_dates_reject_missing_fractional_string_null_negative_and_overflow_exp ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.72s
+
+     Running tests/concert_admission_transport.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_admission_transport-aa7eaacb0aea4536)
+
+running 17 tests
+test actual_configured_signed_read_is_fresh_email_only_and_keeps_negative_flags ... ok
+test binding_inputs_are_shape_only_closed_canonical_and_bounded ... ok
+test captured_jwt_monotonic_expiry_during_reply_wait_refuses_live_wall_token ... ok
+test channel_readiness_is_bounded_by_original_context_before_any_server_dispatch ... ok
+test dropped_future_releases_controlled_handler_and_next_read_recovers ... ok
+test earlier_waits_and_already_elapsed_context_do_not_receive_fresh_edge_time ... ok
+test exact_requested_binding_shape_and_closed_states_are_preserved ... ok
+
+running 1 test
+test global_gateway_auth_capacity_refuses_before_dispatch_and_releases ... test actual_jwt_wall_expiry_during_reply_wait_refuses_success ... ok
+test guard_rejects_wrong_actor_body_audience_signature_and_missing_original_deadline ... ok
+test malformed_enum_consistency_timestamp_and_size_never_project_success ... ok
+test observation_consumption_rechecks_its_borrowed_context ... ok
+test observation_time_is_representation_checked_without_an_invented_ttl_and_outage_is_safe ... ok
+test read_policy_matches_the_installed_auth_caller_and_actor_contract ... ok
+test slow_and_noncooperative_late_replies_cannot_outlive_original_stop ... ok
+test upstream_private_errors_are_fixed_safe_and_never_retried ... ok
+test wrong_configured_service_caller_and_signing_key_are_denied_before_owner ... ok
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 3.63s
+
+test global_gateway_auth_capacity_refuses_before_dispatch_and_releases ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.07s
+
+     Running tests/unit.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/unit-c2adff1fd41a404a)
+
+running 209 tests
+test admission::admission_latency_metric_exports_bounded_cumulative_buckets ... ok
+test admission::budget_overrides_are_validated_and_the_read_budget_has_one_owner ... ok
+test admission::identity_budget_overrides_only_accept_anonymous_email_classes ... ok
+test admission::keyed_login_budget_follows_normalized_email_across_client_networks ... ok
+test admission::only_reads_may_continue_without_the_store ... ok
+test admission::per_process_in_flight_overrides_are_bounded_for_each_class ... ok
+test admission::postgres_lock_wait_metric_is_bounded_and_scoped ... ok
+test admission::principal_budget_overrides_only_accept_actor_scoped_classes ... ok
+test admission::principal_budget_uses_only_verified_subjects_across_client_networks ... ok
+test admission::routes_are_classified_by_method_and_template ... ok
+test admission::saturated_in_flight_class_returns_503_before_spending_quota ... ok
+test admission::shadow_mode_does_not_pass_requests_when_the_admission_store_is_unavailable ... ok
+test admission::shadow_mode_observes_and_passes_authenticated_principal_refusals ... ok
+test admission::shadow_mode_only_bypasses_quota_and_cardinality_refusals ... ok
+test admission::shadow_mode_records_a_quota_refusal_and_still_runs_the_route ... ok
+test admission::shadow_mode_records_and_passes_identity_budget_refusals ... ok
+test api_docs_routes::developer_docs_index_points_to_swagger_ui_and_raw_contract ... ok
+test api_docs_routes::openapi_contract_is_served_from_the_gateway ... ok
+test api_docs_routes::production_docs_index_contains_no_development_only_links_by_default ... ok
+test api_docs_routes::production_docs_index_displays_configured_external_links_safely ... ok
+test config::anonymous_identity_budgets_require_a_shared_strong_hmac_key ... ok
+test config::async_operation_worker_keyring_is_optional_and_validated_when_enabled ... ok
+test config::authenticated_principal_budgets_require_a_shared_strong_hmac_key ... ok
+test config::authority_exchange_keeps_resource_evidence_keys_separate_from_user_authority ... ok
+test config::browser_origin_allowlist_rejects_non_origins_in_every_runtime_mode ... ok
+test config::developer_portal_links_follow_runtime_defaults_and_overrides ... ok
+test config::developer_portal_links_reject_unsafe_urls ... ok
+test config::parity_config_allows_local_gateway_defaults ... ok
+test config::production_config_accepts_explicit_remote_gateway_settings ... ok
+test config::production_config_rejects_unsafe_gateway_defaults ... ok
+test config::signing_key_refresh_settings_are_bounded ... ok
+test config::signing_keys_may_come_from_the_issuer_instead_of_configuration ... ok
+test extractor_characterization::axum_json_rejection_is_plain_400_when_syntax_is_malformed ... ok
+test extractor_characterization::axum_json_rejection_is_plain_415_when_content_type_is_missing ... ok
+test extractor_characterization::axum_json_rejection_is_plain_415_when_content_type_is_wrong ... ok
+test extractor_characterization::axum_json_rejection_is_plain_422_when_field_type_is_wrong ... ok
+test extractor_characterization::axum_query_rejection_is_plain_400_when_numeric_value_is_invalid ... ok
+test extractor_rejections::outer_layer_normalizes_invalid_numeric_query_as_safe_gateway_400 ... ok
+test extractor_rejections::outer_layer_normalizes_malformed_json_as_safe_gateway_400 ... ok
+test extractor_rejections::outer_layer_normalizes_missing_json_content_type_as_safe_gateway_415 ... ok
+test extractor_rejections::outer_layer_normalizes_wrong_json_content_type_as_safe_gateway_415 ... ok
+test extractor_rejections::outer_layer_normalizes_wrong_json_field_type_as_safe_gateway_422 ... ok
+test extractor_rejections::outer_layer_preserves_existing_json_gateway_error_bytes_and_headers ... ok
+test extractor_rejections::outer_layer_preserves_non_extractor_plain_error_bytes_and_headers ... ok
+test extractor_rejections::outer_layer_preserves_successful_extractor_response_bytes_and_headers ... ok
+test gateway_errors::auth_saturation_is_a_retryable_503_and_an_outage_is_not ... ok
+test gateway_errors::concealed_profile_policy_failures_map_to_not_found ... ok
+test gateway_errors::forwarded_invalid_argument_messages_are_bounded_and_single_line ... ok
+test gateway_errors::gateway_error_response_preserves_client_messages_and_metadata ... ok
+test gateway_errors::internal_gateway_error_response_redacts_source_error ... ok
+test gateway_errors::invalid_search_cursor_maps_to_a_safe_bad_request ... ok
+test gateway_errors::message_bound_is_the_documented_constant ... ok
+test gateway_errors::missing_moderation_target_maps_to_state_conflict ... ok
+test gateway_errors::neutral_post_failures_preserve_http_categories_and_drop_private_context ... ok
+test gateway_errors::post_adapter_classifies_status_and_owner_metadata_without_diagnostic_guessing ... ok
+test gateway_errors::public_grpc_statuses_map_to_stable_http_statuses ... ok
+test gateway_errors::service_error_envelopes_preserve_all_http_meanings_and_only_controlled_sources ... ok
+test gateway_errors::staged_moderation_conflicts_map_to_safe_gateway_conflicts ... ok
+test gateway_errors::stopped_friend_listener_maps_through_the_real_outbound_transport_to_http_503 ... ok
+test gateway_errors::tonic_service_errors_map_to_safe_standard_http_envelopes_before_legacy_fallback ... ok
+test gateway_errors::untyped_service_errors_never_become_client_errors ... ok
+test gateway_services::aggregation_cache_hit_returns_cached_payload_without_repository_lookup ... ok
+test gateway_services::aggregation_cache_miss_builds_payload_from_recipe_and_stores_it ... ok
+test gateway_services::auth_gateway_forwards_core_auth_methods ... ok
+test gateway_services::auth_gateway_forwards_oauth_callback_context ... ok
+test gateway_services::friend_and_notification_gateways_forward_remaining_methods ... ok
+test gateway_services::friend_and_notification_gateways_forward_requests ... ok
+test gateway_services::friend_gateway_forwards_follow_request_and_relationship_operations ... ok
+test gateway_services::governance_services_read_existing_versions_rollouts_and_profiles ... ok
+test gateway_services::governance_services_save_and_return_missing_errors ... ok
+test gateway_services::post_gateway_forwards_delete_metadata_and_returns_client_response ... ok
+test gateway_services::post_gateway_forwards_ranked_feed_context_and_feedback ... ok
+test gateway_services::post_gateway_forwards_read_and_mutation_methods ... ok
+test gateway_services::post_search_cursor_binds_query_and_returns_only_internal_position_to_post_service ... ok
+test gateway_services::post_search_rejects_a_cursor_reused_for_another_query_before_rpc ... ok
+test gateway_services::profile_gateway_batches_post_counts_for_a_profile_list ... ok
+test gateway_services::profile_gateway_does_not_turn_a_missing_count_into_zero ... ok
+test gateway_services::profile_gateway_enforces_private_visibility_and_block_precedence ... ok
+test gateway_services::profile_gateway_fails_closed_on_incomplete_relationships_and_invalid_profile_state ... ok
+test gateway_services::profile_gateway_forwards_remaining_profile_methods_and_merges_single_counts ... ok
+test gateway_services::profile_gateway_hides_blocked_profiles_and_muted_search_results ... ok
+test gateway_services::profile_gateway_merges_batch_counts_and_preserves_missing_count_values ... ok
+test gateway_services::profile_gateway_reports_the_authoritative_post_count ... ok
+test gateway_services::profile_search_bounds_empty_advancing_pages_and_preserves_continuation ... ok
+test gateway_services::profile_search_caps_the_last_batch_at_the_remaining_budget ... ok
+test gateway_services::profile_search_continues_from_the_last_visible_profile_when_a_batch_overflows ... ok
+test gateway_services::profile_search_keeps_scanning_past_blocked_profiles_to_fill_the_page ... ok
+test gateway_services::profile_search_reissues_accepted_legacy_positions_as_signed_cursors ... ok
+test gateway_services::profile_search_rejects_a_cursor_from_another_query_or_caller_before_rpc ... ok
+test gateway_services::profile_search_stops_when_the_upstream_cursor_repeats ... ok
+test gateway_services::telemetry_records_request_fields_and_returns_summary ... ok
+test admission::a_reset_flood_does_not_lock_the_same_network_out_of_login ... ok
+test high_risk_sessions::a_demoted_admin_cannot_inspect_account_deletion_backlog_or_detail ... ok
+test high_risk_sessions::a_live_admin_session_reaches_the_handler_and_is_confirmed_once_per_window ... ok
+test high_risk_sessions::a_live_answer_is_reused_only_within_the_freshness_window ... ok
+test high_risk_sessions::a_demoted_admin_cannot_retry_a_dead_lettered_deletion ... ok
+test high_risk_sessions::a_logged_out_admin_session_is_refused_before_its_token_expires ... ok
+test high_risk_sessions::a_live_session_can_still_delete_its_account ... ok
+test high_risk_sessions::a_removed_admin_role_is_refused_while_the_session_stays_live ... ok
+test high_risk_sessions::a_request_without_a_bearer_token_is_refused_by_its_handler_without_a_check ... ok
+test high_risk_sessions::a_token_that_still_claims_a_removed_admin_role_is_forbidden ... ok
+test high_risk_sessions::a_token_without_a_session_must_sign_in_again_for_high_risk_actions ... ok
+test high_risk_sessions::administration_account_deletion_and_provider_linking_are_high_risk ... ok
+test high_risk_sessions::an_ended_session_is_never_remembered ... ok
+test high_risk_sessions::an_unreachable_issuer_fails_high_risk_requests_closed ... ok
+test high_risk_sessions::an_unreachable_issuer_refuses_and_is_asked_again_next_time ... ok
+test high_risk_sessions::a_logged_out_session_cannot_delete_the_account_or_link_a_provider ... ok
+test high_risk_sessions::only_administration_requires_a_current_role ... ok
+test high_risk_sessions::ordinary_requests_trust_the_token_until_it_expires ... ok
+test high_risk_sessions::the_window_and_the_cache_are_bounded ... ok
+test high_risk_sessions::zero_freshness_asks_the_issuer_every_time ... ok
+test http_auth_routes::account_delete_forwards_authenticated_context_clears_cookie_and_returns_saga ... ok
+test http_auth_routes::account_deletion_admin_detail_looks_up_the_requested_saga_id ... ok
+test http_auth_routes::account_deletion_retry_requires_admin_and_forwards_audited_resolution ... ok
+test http_auth_routes::account_deletion_status_returns_current_authenticated_users_saga ... ok
+test http_auth_routes::dead_lettered_account_deletion_list_requires_admin_and_uses_paired_cursor ... ok
+test http_auth_routes::google_callback_rejects_wrong_provider_state_cookies_without_downstream_call ... ok
+test http_auth_routes::login_sets_cookie_strips_refresh_token_and_forwards_client_context ... ok
+test http_auth_routes::logout_without_refresh_cookie_clears_cookie_without_downstream_call ... ok
+test http_auth_routes::oauth_authorize_accepts_x_provider_and_sets_x_state_cookie ... ok
+test http_auth_routes::oauth_authorize_and_callback_round_trip_each_provider_state_cookie ... ok
+test http_auth_routes::oauth_authorize_rejects_unsupported_provider ... ok
+test http_auth_routes::refresh_reads_and_rotates_the_invariant_refresh_token_cookie ... ok
+test http_auth_routes::refresh_without_cookie_returns_unauthorized_gateway_error ... ok
+test http_friend_routes::follow_request_routes_preserve_actor_cursor_and_default_limit_contracts ... ok
+test http_friend_routes::relationship_and_people_routes_preserve_viewer_and_request_context ... ok
+test http_notification_privacy::delayed_batch_authorization_returns_before_production_outer_timeout_and_redacts_mark_read ... ok
+test http_notification_privacy::inaccessible_inbox_page_keeps_continuation_and_post_owner_outage_fails_closed ... ok
+test http_notification_privacy::inbox_reauthorizes_historical_content_and_preserves_owner_cursor ... ok
+test http_notification_privacy::injected_monotonic_time_bounds_projection_and_keeps_committed_read_redacted ... ok
+test http_notification_privacy::mark_read_reports_success_without_returning_unproven_historical_payload ... ok
+test http_notification_privacy::notification_authorization_is_bounded_and_missing_bearer_never_checks_post ... ok
+test http_protected_routes::feed_event_route_binds_authenticated_viewer_and_request_context ... ok
+test http_protected_routes::malformed_avatar_content_type_maps_to_internal_gateway_error ... ok
+test http_protected_routes::post_delete_forwards_request_context_headers ... ok
+test http_protected_routes::profile_search_rejects_a_cursor_from_another_query_with_http_400 ... ok
+test http_protected_routes::profile_update_for_different_user_returns_forbidden ... ok
+test http_protected_routes::protected_post_route_accepts_case_insensitive_bearer_scheme ... ok
+test http_protected_routes::protected_post_route_without_bearer_returns_unauthorized ... ok
+test http_protected_routes::ranked_feed_route_forwards_request_id_and_returns_rank_metadata ... ok
+test http_protected_routes::relationship_routes_use_the_authenticated_user_as_viewer ... ok
+test http_support::tests::route_harness_reuses_single_jwt_key_material ... ok
+test jwt_verifier::a_key_set_is_refused_whole_when_it_is_oversized_malformed_or_unsafe ... ok
+test jwt_verifier::a_token_that_carries_its_own_key_or_key_location_is_refused ... ok
+test jwt_verifier::a_verifier_without_keys_rejects_every_token_as_naming_an_unknown_key ... ok
+test high_risk_sessions::every_documented_high_risk_operation_is_enforced_by_the_router ... ok
+test jwt_verifier::installing_a_key_set_replaces_it_whole_for_every_clone ... ok
+test jwt_verifier::jwt_verifier_rejects_token_with_wrong_audience ... ok
+test jwt_verifier::rejection_reasons_are_bounded_labels ... ok
+test metrics_listener::address_collision_returns_loud_error_and_releases_partial_bind ... ok
+test metrics_listener::application_router_does_not_serve_metrics ... ok
+test metrics_listener::content_moderation_backlog_metrics_are_bounded_scalar_gauges ... ok
+test metrics_listener::metrics_address_default_is_loopback_port_9080 ... ok
+test metrics_listener::metrics_router_serves_only_metrics ... ok
+test metrics_listener::paired_listeners_serve_and_release_both_addresses_on_shutdown ... ok
+test moderation_routes::administrator_can_audit_dismissal_of_an_unavailable_target ... ok
+test moderation_routes::administrator_can_authorize_an_audited_content_decision_replay ... ok
+test moderation_routes::administrator_can_authorize_an_audited_dead_letter_retry ... ok
+test moderation_routes::administrator_can_hide_reported_content ... ok
+test moderation_routes::administrator_can_page_recoverable_content_decision_status ... ok
+test moderation_routes::authenticated_user_can_create_and_list_own_report ... ok
+test moderation_routes::content_decision_replay_requires_admin_and_valid_evidence ... ok
+test moderation_routes::dead_letter_retry_rejects_invalid_reason_without_calling_post_service ... ok
+test moderation_routes::missing_content_target_returns_conflict_and_keeps_report_open ... ok
+test moderation_routes::moderation_admin_routes_require_admin_role ... ok
+test moderation_routes::neutral_repository_failures_keep_safe_http_categories_without_causes ... ok
+test moderation_routes::non_admin_cannot_authorize_a_dead_letter_retry ... ok
+test moderation_routes::repository_adapter_classifies_concrete_causes_and_never_diagnostic_text ... ok
+test moderation_routes::restricted_user_cannot_create_post ... ok
+test moderation_routes::typed_moderation_inputs_project_safe_messages_and_text_cannot_forge_them ... ok
+test moderation_service::duplicate_report_returns_same_report_without_duplicate_storage ... ok
+test moderation_service::earlier_content_decision_failures_use_backoff_instead_of_dead_lettering ... ok
+test moderation_service::failed_content_decision_is_dead_lettered_at_the_eighth_attempt ... ok
+test moderation_service::hide_content_dispatches_to_post_service_before_immutable_decision_is_recorded ... ok
+test moderation_service::missing_content_target_keeps_report_open_and_does_not_record_decision ... ok
+test moderation_service::restricting_user_is_queryable_from_mutation_gate ... ok
+test moderation_service::retry_after_gateway_decision_store_failure_replays_the_same_content_action ... ok
+test moderation_service::runtime_capability_tests::already_recorded_content_decision_retains_its_existing_owner_sampling ... ok
+test moderation_service::runtime_capability_tests::application_validation_returns_typed_inputs_without_runtime_samples_or_dispatch ... ok
+test moderation_service::runtime_capability_tests::empty_worker_claim_still_samples_one_owner_before_claiming ... ok
+test moderation_service::runtime_capability_tests::rejected_decision_validation_and_missing_report_allocate_no_lease ... ok
+test moderation_service::runtime_capability_tests::rejected_report_validation_consumes_no_clock_or_identity ... ok
+test moderation_service::runtime_capability_tests::report_samples_id_then_time_before_persistence ... ok
+test moderation_service::runtime_capability_tests::restriction_query_samples_exactly_once_after_uuid_validation ... ok
+test moderation_service::runtime_capability_tests::synchronous_content_decision_uses_the_sampled_lease_owner_once ... ok
+test moderation_service::runtime_capability_tests::worker_completion_or_retry_never_resamples_the_claim_owner ... ok
+test moderation_service::self_user_report_is_rejected_before_repository_access ... ok
+test oauth_form_post::completion_requires_exact_unambiguous_apple_cookie_before_auth ... ok
+test jwt_verifier::jwt_verifier_accepts_token_with_expected_audience ... ok
+test oauth_form_post::invalid_forms_and_other_providers_never_reach_auth ... ok
+test oauth_form_post::staging_does_not_exchange_code_or_modify_cookies_and_escapes_attributes ... ok
+test oauth_form_post::transport_rejection_is_protected_before_browser_auth_dispatch ... ok
+test response_cache::response_cache_evicts_payload_after_ttl_expires ... ok
+test response_cache::response_cache_returns_payload_before_ttl_expires ... ok
+test runtime::search_cursor_public_entrypoints_use_injected_time_for_expiry_and_legacy_bounds ... ok
+test signing_key_refresh::a_failed_or_unusable_answer_keeps_the_installed_keys ... ok
+test signing_key_refresh::a_flood_of_unknown_kids_starts_one_fetch_per_interval ... ok
+test signing_key_refresh::a_gateway_without_configured_keys_serves_once_the_issuer_answers ... ok
+test signing_key_refresh::a_gateway_without_keys_retries_a_failed_first_fetch_at_the_short_bound ... ok
+test signing_key_refresh::a_protected_route_accepts_a_key_published_after_startup_without_a_restart ... ok
+test signing_key_refresh::a_scheduled_refresh_counts_against_the_unknown_kid_limit ... ok
+test signing_key_refresh::a_scheduled_refresh_installs_a_key_published_after_startup ... ok
+test signing_key_refresh::a_withdrawn_key_stops_verifying_after_the_next_refresh ... ok
+test signing_key_refresh::an_unknown_kid_refreshes_once_and_the_token_then_verifies ... ok
+test signing_key_refresh::an_unusable_configured_key_set_stops_startup_and_names_the_setting ... ok
+test signing_key_refresh::configured_keys_keep_the_ordinary_schedule_when_a_fetch_fails ... ok
+test signing_key_refresh::made_up_key_ids_cost_one_fetch_however_many_requests_carry_them ... ok
+test signing_key_refresh::the_scheduled_loop_refreshes_at_once_and_then_every_interval ... ok
+test oauth_form_post::composed_browser_auth_quota_saturation_and_deadline_errors_keep_security_headers ... ok
+
+test result: ok. 209 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.31s
+
+     Running tests/verification_transport.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/verification_transport-2507b81621ca799a)
+
+running 13 tests
+test carries_service_auth_and_deadline_and_preserves_the_accepted_contract ... ok
+test an_oversized_signing_key_reply_is_refused_by_the_transport ... ok
+test deletion_admin_queries_use_authenticated_grpc_and_validate_page_cursor ... ok
+test empty_and_oversized_requests_are_rejected_before_rpc ... ok
+test issuer_transfers_preserve_opaque_ids_roles_and_raw_keys_without_exposing_diagnostics ... ok
+test downstream_failures_are_sanitized_and_not_retried ... ok
+test malformed_oauth_authorization_uri_is_refused_at_rpc_adapter ... ok
+test non_accepted_success_payloads_are_protocol_failures ... ok
+test oauth_authorization_neutral_dto_preserves_valid_uri_auth_and_deadline ... ok
+test session_checks_ask_the_issuer_over_the_authenticated_channel ... ok
+test signing_keys_arrive_over_the_authenticated_channel_with_a_deadline ... ok
+test wrong_or_missing_service_token_never_reaches_the_handler ... ok
+test local_deadline_bounds_a_slow_call_without_a_retry ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+

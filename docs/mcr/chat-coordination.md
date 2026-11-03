@@ -1,16 +1,16 @@
 # Active chat ownership
 
 Updated 2026-11-03. Four existing visible chats are reused for concrete disjoint
-work. The Profile-owner and FE15 chats implement features; the Auth-client chat
-has a clean handoff under independent QA. Previous FE14 and QA goals are actually
-COMPLETE. Every command must explicitly target its assigned checkout.
+work. Profile self RPC, its Gateway client and FE15 are being implemented in
+separate worktrees; independent QA reviews FE15. Reviewed Auth-client and Profile
+owner increments are integrated. Every command targets its assigned checkout.
 
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| BE04 Profile owner | `mcr(be) BE04 minimal Profile owner read` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-owner` / `codex/mcr-be-profile-owner` |
-| BE04 Auth client | `mcr(be) BE04 authenticated Auth owner client` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner` / `codex/mcr-be-gateway-auth-owner` |
+| BE04 Profile RPC | `mcr(be) BE04 guarded Profile self RPC` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc` / `codex/mcr-be-profile-self-rpc` |
+| BE04 Profile client | `mcr(be) BE04 Gateway Profile owner client` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner` / `codex/mcr-be-gateway-profile-owner` |
 | FE15 | `mcr(fe) FE15 movement camera and interactions` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-movement` / `codex/mcr-fe-FE15` |
-| QA | `mcr(qa) Gateway Auth owner client review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-gateway-auth-owner` / `codex/mcr-qa-gateway-auth-owner` |
+| QA | `mcr(qa) FE15 movement and camera review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-fe-movement` / `codex/mcr-qa-FE15` |
 
 The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
@@ -258,7 +258,7 @@ The worker owns the retained Rust target, two jobs; prior JWT checkout stopped.
 FE14's clean `a7dcb79`/`a1243ff` fifteen-path handoff retains its ACTIVE goal
 through parent review. Parent serially integrates and alone publishes.
 
-## Latest allocation after FE14 review
+## Historical allocation after FE14 review
 
 FE14 worker `9b9307c` and QA report `5bf0708` completed the exact review scope.
 Both goal update and subsequent goal reads confirm COMPLETE. Their checkouts
@@ -302,3 +302,56 @@ Recheck chat status during work and at every handoff. Assign the next ready task
 when its predecessor's reviewed scope is complete; a message alone does not prove
 execution or an ACTIVE goal. Preserve lane/file/resource boundaries and publish
 reviewed units serially rather than accumulating them behind unrelated work.
+
+
+## Latest allocation after owner/client review
+
+Profile owner worker `81665a04` is integrated byte-identically as `92fb4ef`.
+The parent reviewed all seven files and exact source/evidence pins; the 2 MiB
+transfer-bound correction is covered by real PG tests. Auth worker `77890b9`
+is integrated as `9dceb49`; parent 252 tests, six doctests and binary build pass.
+QA reports `ad4e963` / `f0ed0a2` are integrated as `7594ec7` / `6d91e61`, preserving
+the missed initial limiter finding and the corrected cancellation proof.
+The independent Auth follow-up goal update and subsequent read confirm COMPLETE;
+its new FE15 review goal is confirmed ACTIVE. The Auth implementation goal was
+accepted for completion and a new Profile-client goal assigned; verify its actual
+transition through the worker acknowledgement. No whole BE04 acceptance follows.
+
+The original BE04 chat explicitly stopped the clean owner checkout and is now
+implementing guarded self RPC at base `d63fb2b95d3d8e61406ef71a12ed86a3b0bf15fd`.
+Its historical compatible goal had remained BLOCKED through the API. After the
+user resumed it, the latest worker goal read now confirms ACTIVE with the same
+aligned, unfinished BE04 objective.
+Exact five writable paths: Profile service grpc `concert_identity.rs`, new
+`tests/concert_identity_rpc.rs`, `tests/support/concert_identity_fixture.rs`,
+`tests/support/concert_identity_native.py`, and `docs/mcr/backend/profile-self-rpc.md`.
+Parent owns the unpublished prerequisite proto/policy/state/server/module/fixture
+composition. Its unavailable stub must not be published alone. Required validation
+covers actual signed generated transport, private read authority, original/proof
+budgets, replay/refusal, minimal real owner projection, fresh content/deletion,
+real isolated PG timeout/recovery and exact cleanup.
+
+The other backend chat now implements the minimal Gateway Profile client at
+`d1282c6c5c27099ce7cd2adeed30ee99e5c1896b`, including that frozen wire and the reviewed
+Auth client. Exact four writable paths: Gateway `profile_client/concert_identity.rs`,
+new `tests/concert_profile_transport.rs`, `docs/mcr/backend/gateway-profile-owner-client.md`,
+and only the module export in existing `profile_client.rs`. Borrowed strict
+context, shared real edge capacity/metrics, exact deadline, 1024-byte response
+bound and minimal validated self content are required. No route, broad Profile DTO,
+Auth grant or production artwork is delegated. Controlled fixtures permit parallel
+implementation before the real producer finishes; they do not certify that producer.
+
+FE15 retains its exact prior scope and ACTIVE goal. QA may read its evolving draft
+and run independent temporary probes on its own browser/port, but must pin the final
+committed candidate before disposition. Its sole tracked writable path is
+`docs/mcr/qa/world-movement-review.md`; no worker-browser control or application writes.
+
+Parent's combined Rust process has completed. The Profile RPC worker subsequently
+finished its bounded checks and explicitly released the target after a fresh
+process/owned-cluster audit; its final documentation and handoff remain in progress.
+The Gateway Profile client now exclusively owns `/Users/lhs/Desktop/mcr-build/backend`
+for compiled validation. Rust 1.88.0, locked/offline, two jobs and BOTH dev/test
+debug information zero apply. Only the fixture owner may start/stop its private
+native PG store. Parent, Profile RPC and QA run no concurrent Rust target work.
+Continue compact chat checks, transfer resources promptly, and publish reviewed
+checkpoints serially.

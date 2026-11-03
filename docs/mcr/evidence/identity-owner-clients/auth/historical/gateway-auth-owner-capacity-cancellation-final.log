@@ -1,0 +1,8 @@
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/services/api-gateway)
+    Finished `test` profile [unoptimized] target(s) in 1.58s
+     Running tests/concert_admission_transport.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_admission_transport-aa7eaacb0aea4536)
+
+running 18 tests
+test actual_configured_signed_read_is_fresh_email_only_and_keeps_negative_flags ... ok
+test binding_inputs_are_shape_only_closed_canonical_and_bounded ... ok
+test captured_jwt_monotonic_expiry_during_reply_wait_refuses_live_wall_token ... ok

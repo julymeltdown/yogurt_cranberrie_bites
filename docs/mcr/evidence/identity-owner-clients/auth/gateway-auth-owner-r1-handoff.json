@@ -1,0 +1,273 @@
+{
+  "scope": "BE04 bounded signed Gateway Auth read, parent P2 capacity correction; production composition incomplete",
+  "base": "e6efa4c4d6888415835f732de1b1f8c89aa9d460",
+  "parent_revision": "868d02c98f69b3c04c0b6e61f06a6408b2cdf747",
+  "source_revision": "77890b9acc0edf90a7a9f253eade6a7c0816587d",
+  "branch": "codex/mcr-be-gateway-auth-owner",
+  "dirty_files": [],
+  "changed_paths": [
+    "backend/services/api-gateway/src/adapters/out/auth_client.rs",
+    "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs",
+    "backend/services/api-gateway/tests/concert_admission_transport.rs",
+    "docs/mcr/backend/gateway-auth-owner-client.md"
+  ],
+  "correction_paths": [
+    "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs",
+    "backend/services/api-gateway/tests/concert_admission_transport.rs",
+    "docs/mcr/backend/gateway-auth-owner-client.md"
+  ],
+  "delivered_sha256": {
+    "backend/services/api-gateway/src/adapters/out/auth_client.rs": "dcae79cd9b51699c680f108fe15adbed9b349a3666793959adef7f30793fad5a",
+    "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs": "558f41419c9d7f98cbc87e700c0ebd674446f26044dc0441ce370feb1233c132",
+    "backend/services/api-gateway/tests/concert_admission_transport.rs": "3f3c15f2c086ed34c1cbe9ded0c39476f9b4648993ad11234a1439dd974df418",
+    "docs/mcr/backend/gateway-auth-owner-client.md": "c28ca1023552cae1704d1b33b78e51ab3f364a42cb60fca60c74f5f2841ebf04"
+  },
+  "provenance_sha256": {
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/proto/auth/v1/auth.proto": "807a94ba92b9b7bdaf8fbd4f69d9c16d89906f8487e28249fa2cd36b0bd32235",
+    "backend/services/auth-service/src/adapters/in/grpc/method_policy.rs": "c4640dda67fe00fc0652760d211cddae050cbca5be48b19e8b98c6a033181c63",
+    "backend/services/auth-service/src/adapters/in/grpc/concert_admission.rs": "63682f12ba58dfd25a31594985a17e2753ffa933ea0c2055c6d96dd686d3a63b",
+    "backend/services/auth-service/tests/concert_admission_rpc.rs": "965be7836352976eb85a6d85021feb37f16921cc9a07f501d7a45c2e952f43cc",
+    "backend/services/api-gateway/tests/concert_access.rs": "5f9b31a825bc3d09fc55b9be5a26f80eebb17b2a8d89f62ee23cc35416c82d5b",
+    "backend/services/api-gateway/tests/verification_transport.rs": "61af006230f216eee30234677aae282a3768853d7602aa5ab001da6164a36a8e",
+    "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs": "e555eea1117d5d692181cb2bdb95002d451e3a3b46cbebe9d729ce39f572e899",
+    "backend/crates/platform/src/actor_delegation.rs": "0eba2a8eef09b6f1a365a8fd3a176b9090907abef7b12b33e3a0b6f58eb2eac8",
+    "backend/crates/platform/src/actor_delegation/read_authority.rs": "74d2dc74d0fba60c69c4e6f9b18eeecc862562db169a76151bdc6f4539d95b51",
+    "backend/crates/platform/src/actor_delegation/authority_deadline.rs": "24950336579f899a3af4536a5acdb0b28ea913c7a85a6d0aaa3e5709801013ef",
+    "backend/crates/platform/src/grpc_method_policy.rs": "d4bb67063af62ce5f41d44007cc6c1e9fb55b7bb7341c4b1908238e0fe6234b5",
+    "backend/crates/platform/src/call_deadline.rs": "e6e9a23d6b7805102962fb742c2baba385a332ce0a445cae77b9e20592af4e58",
+    "backend/crates/platform/src/grpc_client_trace.rs": "77541d6d2fb8c47d192b9513e26c9eeba075ee7351657b02066b66fd0f9d4eff",
+    "backend/crates/platform/src/grpc_deadline.rs": "8541e27f357b318aad6b6041f83add22266373ef842b1ff75652887889211db9",
+    "backend/crates/platform/tests/grpc_method_policy_network.rs": "40258bd946f5c47de91bf510444f72d242d6682a2779d56c213e928e50ce11d8",
+    "docs/mcr/identity-admission-decision.md": "39775543feb8f79748c7db6c4a36f50e339d8e95ef4bf3664edfa9589ba104d8",
+    "docs/mcr/evidence/gateway-concert-access-integration.md": "f72ba333a5effeecf786de5cbdc98c1ac0fe8358c7c2e41c4696c32e91c7eb19",
+    "backend/crates/platform/src/edge_concurrency.rs": "97b2da954fd80a8075085f5616e6a250f77578fb1c9de27427e6f67804bfc620",
+    "backend/crates/platform/src/edge_metrics.rs": "dd243a8f35fc81483c4db119850f2d50bb3be333f569188047c331b65ece809d",
+    "backend/services/api-gateway/src/adapters/out/grpc_call.rs": "2a5aa5faa472c47423e305ca316d9e6721688cd724c5ec65076f98234f2b6c99"
+  },
+  "historical_receipt": {
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-handoff.json": "d0d24fa77e7e9982a7bf6e38387216260cf0ebc44f2c431b600c65660c2a06cd"
+  },
+  "commands": [
+    {
+      "name": "combined",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "concert_admission_transport",
+        "--test",
+        "concert_access",
+        "--test",
+        "unit",
+        "--test",
+        "verification_transport",
+        "--",
+        "--test-threads=2"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-combined.log",
+      "seconds": 32.273
+    },
+    {
+      "name": "doctests",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--doc"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-doctests.log",
+      "seconds": 1.139
+    },
+    {
+      "name": "check",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--lib"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-check.log",
+      "seconds": 5.653
+    },
+    {
+      "name": "build",
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--bin",
+        "api-gateway"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-build.log",
+      "seconds": 14.252
+    },
+    {
+      "name": "format",
+      "command": [
+        "rustfmt",
+        "+1.88.0",
+        "--edition",
+        "2021",
+        "--check",
+        "backend/services/api-gateway/src/adapters/out/auth_client.rs",
+        "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs",
+        "backend/services/api-gateway/tests/concert_admission_transport.rs"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-format.log"
+    },
+    {
+      "name": "plan",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-plan.log"
+    },
+    {
+      "name": "boundaries",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "e6efa4c4d6888415835f732de1b1f8c89aa9d460",
+        "--lane",
+        "backend",
+        "--allow-doc",
+        "docs/mcr/backend/gateway-auth-owner-client.md"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-boundaries.log"
+    },
+    {
+      "name": "whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-whitespace.log"
+    }
+  ],
+  "focused_isolated": {
+    "command": "cargo +1.88.0 test --manifest-path backend/Cargo.toml --target-dir /Users/lhs/Desktop/mcr-build/backend --locked --offline -j2 -p api-gateway --test concert_admission_transport global_gateway_auth_capacity_refuses_before_dispatch_and_releases -- --exact --test-threads=1",
+    "exit_code": 0,
+    "parent_pass": 1,
+    "child_pass": 1,
+    "filtered_each": 16
+  },
+  "environment": {
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0"
+  },
+  "cases": {
+    "top_level_total": 252,
+    "transport": 17,
+    "strict_context": 13,
+    "retained_unit": 209,
+    "retained_transport": 13,
+    "isolated_child_execution_of_same_case": 1,
+    "compile_fail_doctests": 6
+  },
+  "log_sha256": {
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-combined.log": "edb2b16a39c7174b7cf771e7657b97e0ebed8fa441651a0284a42dd52a93b4ae",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-doctests.log": "daeaab21cd9e6bc9dfda18b07ff3ef78f6aa06d40b4044ac4bb24ef28717776c",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-check.log": "5efbc58ecb6c5090dca2700c5d866b0464777c2d3a720223e9085e189ebc3cfa",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-build.log": "f803da3d15367de5070bb2810e1df3e69ea40c0d17c1a93ca672208bca963455",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-boundaries.log": "d2ce5d834490b66a4f6e8f42f07e33a7007bb498994e16b1c94022fced34ba6d",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-r1-isolated.log": "393015113f138b2fa580c22d9eedb9ade1942ef3d32502344db2b3233dd12452"
+  },
+  "historical_correction_logs_sha256": {
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-cancellation-final.log": "32068f3067dfbaa2685ca2f2d57ef6645189a838267f0daea7996c72e7310b5d",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-tests-retry.log": "bceaa2e1a10d0377dd69bddf438f0230a1004f06722d24feeab1cdaf1dc6512c",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-doctests.log": "2c1b1fe2ff22e93a951a9f58cbfc5512a4947fe4e17ef580c005401e6a79f9f3",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-final-combined.log": "be1fe2ba5417a0eacc9c2e78e3153a6ef7a51a22e287caf14509122cea0392ef",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-combined.log": "e9ce51fb07d3c7f5313295cb3e5d8a6ec79871a06f4b40298cdd9c3edfa57dc2",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-tests.log": "6fe8e0126c687aef7d02d0c19c0bf15f0116fa221e81e4c9977f3179ecd8feaa",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-build.log": "0c3e9fd0c2a695a679f423b664d9a3eb3bf70d71b46b137d81e6d317afe75a07",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-tests-retry2.log": "b20a984463aa54cbf63e9ea895f9ff700de7ba350d7d6938be2a80443e5e885e",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-tests-retry3.log": "bd164af4b74029f850a6b886956e8a9f09a26403cd1d1b19077685515f03943c",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-capacity-correction-check.log": "fb08fbcc0233ed74ec87e8832ae2d10bd59aee2076a4889d5043fe8f32752698"
+  },
+  "historical_limitations": [
+    "Earlier three compile failures used tee without pipefail: shell zero is not native Cargo success",
+    "Earlier 253 top-level count included a no-op child entry and cancellation proof was vacuous; superseded by this source/run",
+    "Interrupted prior test handle missing; process scan confirmed stopped before fresh execution"
+  ],
+  "assertions": [
+    "global256 permits saturated; CapacityExhausted, zero owner calls, rejection counter exactly1",
+    "capacity fully reusable after success, ownerUnavailable, peerDeadlineExceeded, shorter outer100ms local timeout",
+    "deadline counter0 then1(peer) then2(local), rejection remains1",
+    "fresh cancellation harness calls1 active1 available255 and !task.finished before abort; all256 returned; metrics0; controlled handler cleanup and next signed read pass",
+    "absolute stop remains timeout_at inside shared non-retrying helper accounting; no queue/retry/config/platform edits"
+  ],
+  "scope_checks": {
+    "exact_four_paths": "PASS",
+    "existing_auth_client_exactly_one_export": "PASS",
+    "protected_provenance_unchanged": "PASS",
+    "old_receipt_unchanged": "PASS",
+    "committed_clean": "PASS"
+  },
+  "goal": "ACTIVE pending parent concrete review disposition",
+  "target_quiescence": {
+    "active_cargo_rustc_rustdoc_or_assigned_test_processes": [],
+    "lease": "RELEASED to parent; worker starts no more Cargo until coordinated"
+  },
+  "limitations": [
+    "Controlled owner with actual configured caller/actor/body guard, not DB or production Auth acceptance",
+    "No HTTP entry capture, owner/Profile/event production orchestration, TLS, key withdrawal across awaits, signed Concert admission or invalidation",
+    "No observation TTL/revocation SLO invented; timestamps are representational only",
+    "No DB/Docker/globalservices, unrelated owner reruns or full project/Auth library claim"
+  ]
+}

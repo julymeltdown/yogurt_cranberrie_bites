@@ -1,0 +1,224 @@
+{
+  "scope": "BE04 authenticated Gateway-to-Auth current admission client; guarded controlled transport only",
+  "base": "e6efa4c4d6888415835f732de1b1f8c89aa9d460",
+  "source_revision": "868d02c98f69b3c04c0b6e61f06a6408b2cdf747",
+  "branch": "codex/mcr-be-gateway-auth-owner",
+  "dirty_files": [],
+  "changed_paths": [
+    "backend/services/api-gateway/src/adapters/out/auth_client.rs",
+    "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs",
+    "backend/services/api-gateway/tests/concert_admission_transport.rs",
+    "docs/mcr/backend/gateway-auth-owner-client.md"
+  ],
+  "delivered_sha256": {
+    "backend/services/api-gateway/src/adapters/out/auth_client.rs": "dcae79cd9b51699c680f108fe15adbed9b349a3666793959adef7f30793fad5a",
+    "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs": "ca7c7b73f89b0497ac5a59305131058f4739831c02c75e2d587642a5f35a781a",
+    "backend/services/api-gateway/tests/concert_admission_transport.rs": "0c616aa54d8ce75b4e7c59ef18151b480c57fc7c994c1619d4cfbab163417daf",
+    "docs/mcr/backend/gateway-auth-owner-client.md": "ed7d4e29c44bf19f5cf863f4a3d26c8cf28c637fcb9f9b50ac38885ff7b4a8b0"
+  },
+  "provenance_sha256": {
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/proto/auth/v1/auth.proto": "807a94ba92b9b7bdaf8fbd4f69d9c16d89906f8487e28249fa2cd36b0bd32235",
+    "backend/services/auth-service/src/adapters/in/grpc/method_policy.rs": "c4640dda67fe00fc0652760d211cddae050cbca5be48b19e8b98c6a033181c63",
+    "backend/services/auth-service/src/adapters/in/grpc/concert_admission.rs": "63682f12ba58dfd25a31594985a17e2753ffa933ea0c2055c6d96dd686d3a63b",
+    "backend/services/auth-service/tests/concert_admission_rpc.rs": "965be7836352976eb85a6d85021feb37f16921cc9a07f501d7a45c2e952f43cc",
+    "backend/services/api-gateway/tests/concert_access.rs": "5f9b31a825bc3d09fc55b9be5a26f80eebb17b2a8d89f62ee23cc35416c82d5b",
+    "backend/services/api-gateway/tests/verification_transport.rs": "61af006230f216eee30234677aae282a3768853d7602aa5ab001da6164a36a8e",
+    "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs": "e555eea1117d5d692181cb2bdb95002d451e3a3b46cbebe9d729ce39f572e899",
+    "backend/crates/platform/src/actor_delegation.rs": "0eba2a8eef09b6f1a365a8fd3a176b9090907abef7b12b33e3a0b6f58eb2eac8",
+    "backend/crates/platform/src/actor_delegation/read_authority.rs": "74d2dc74d0fba60c69c4e6f9b18eeecc862562db169a76151bdc6f4539d95b51",
+    "backend/crates/platform/src/actor_delegation/authority_deadline.rs": "24950336579f899a3af4536a5acdb0b28ea913c7a85a6d0aaa3e5709801013ef",
+    "backend/crates/platform/src/grpc_method_policy.rs": "d4bb67063af62ce5f41d44007cc6c1e9fb55b7bb7341c4b1908238e0fe6234b5",
+    "backend/crates/platform/src/call_deadline.rs": "e6e9a23d6b7805102962fb742c2baba385a332ce0a445cae77b9e20592af4e58",
+    "backend/crates/platform/src/grpc_client_trace.rs": "77541d6d2fb8c47d192b9513e26c9eeba075ee7351657b02066b66fd0f9d4eff",
+    "backend/crates/platform/src/grpc_deadline.rs": "8541e27f357b318aad6b6041f83add22266373ef842b1ff75652887889211db9",
+    "backend/crates/platform/tests/grpc_method_policy_network.rs": "40258bd946f5c47de91bf510444f72d242d6682a2779d56c213e928e50ce11d8",
+    "docs/mcr/identity-admission-decision.md": "39775543feb8f79748c7db6c4a36f50e339d8e95ef4bf3664edfa9589ba104d8",
+    "docs/mcr/evidence/gateway-concert-access-integration.md": "f72ba333a5effeecf786de5cbdc98c1ac0fe8358c7c2e41c4696c32e91c7eb19"
+  },
+  "log_sha256": {
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-final-tests.log": "d865a4edc23c7c973854bfef62d42315cf76c7ae1be520308acb53c838eab6ba",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-doctests.log": "b9d45cb2a596f345f5327dd9f22533612babb7395231df1f0a63c69cbe81eb88",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-check.log": "6c31a2e777c5726bacd43e2654e602b724f6426e18821d0bf6cdf529ebc68a40",
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-build.log": "0ed58e3b84c090d86423faa706097db36d592b920ae68ff08a73d79ceea3e353"
+  },
+  "plan_evidence_sha256": {
+    "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-plan.json": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+  },
+  "commands": [
+    {
+      "name": "combined-tests",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "concert_admission_transport",
+        "--test",
+        "concert_access",
+        "--test",
+        "unit",
+        "--test",
+        "verification_transport",
+        "--",
+        "--test-threads=2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "doctests",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--doc"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "check",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--lib"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "build",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--bin",
+        "api-gateway"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "format",
+      "argv": [
+        "rustfmt",
+        "+1.88.0",
+        "--edition",
+        "2021",
+        "--check",
+        "backend/services/api-gateway/src/adapters/out/auth_client.rs",
+        "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs",
+        "backend/services/api-gateway/tests/concert_admission_transport.rs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "plan",
+      "argv": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "boundaries",
+      "argv": [
+        "python3",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "e6efa4c4d6888415835f732de1b1f8c89aa9d460",
+        "--lane",
+        "backend",
+        "--allow-doc",
+        "docs/mcr/backend/gateway-auth-owner-client.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "whitespace",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "environment": {
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_PROFILE_DEV_DEBUG": "0"
+  },
+  "cases": {
+    "new_transport": 16,
+    "strict_context": 13,
+    "retained_gateway_unit": 209,
+    "retained_verification_transport": 13,
+    "compile_fail_doctests": 6
+  },
+  "scope_checks": {
+    "exact_four_paths": "PASS",
+    "existing_auth_client_exactly_one_export": "PASS",
+    "protected_inputs_unchanged": "PASS",
+    "boundary_and_import_scan": "PASS"
+  },
+  "development_failures": [
+    {
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-development.log",
+      "exit_code": 101,
+      "reason": "Test Wire/interceptor response type composition and borrowed client lifetime; corrected before transport execution"
+    },
+    {
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-auth-owner-transport.log",
+      "exit_code": 101,
+      "counts": "14PASS/1FAIL",
+      "reason": "RSA first-use setup consumed short JWT window; warmed before timing phase, no denial retry"
+    }
+  ],
+  "limitations": [
+    "Controlled owner with actual configured caller/actor/body guard, not DB or production Auth acceptance",
+    "No HTTP entry capture, owner/Profile/event production orchestration, TLS, key withdrawal across awaits, signed Concert admission or invalidation",
+    "No observation TTL/revocation SLO invented; timestamps are representational only",
+    "No DB/Docker/globalservices, unrelated owner reruns or full project/Auth library claim"
+  ],
+  "goal": "ACTIVE pending parent review/fixes",
+  "committed_clean_handoff": "PASS",
+  "target_quiescence": {
+    "active_cargo_rustc_rustdoc_or_assigned_target_processes": [],
+    "lease": "RELEASED to parent; no further Cargo until coordinated"
+  }
+}

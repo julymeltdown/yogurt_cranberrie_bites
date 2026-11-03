@@ -1,0 +1,33 @@
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-auth-owner/backend/services/api-gateway)
+   Compiling reqwest v0.12.28
+    Finished `test` profile [unoptimized] target(s) in 13.16s
+     Running tests/concert_admission_transport.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_admission_transport-aa7eaacb0aea4536)
+
+running 18 tests
+test actual_configured_signed_read_is_fresh_email_only_and_keeps_negative_flags ... ok
+test binding_inputs_are_shape_only_closed_canonical_and_bounded ... ok
+test captured_jwt_monotonic_expiry_during_reply_wait_refuses_live_wall_token ... ok
+test channel_readiness_is_bounded_by_original_context_before_any_server_dispatch ... ok
+test dropped_future_releases_controlled_handler_and_next_read_recovers ... ok
+test earlier_waits_and_already_elapsed_context_do_not_receive_fresh_edge_time ... ok
+test exact_requested_binding_shape_and_closed_states_are_preserved ... ok
+
+running 1 test
+test global_gateway_auth_capacity_refuses_before_dispatch_and_releases ... test actual_jwt_wall_expiry_during_reply_wait_refuses_success ... ok
+test global_gateway_auth_capacity_refuses_before_dispatch_and_releases ... ok
+test guard_rejects_wrong_actor_body_audience_signature_and_missing_original_deadline ... ok
+test malformed_enum_consistency_timestamp_and_size_never_project_success ... ok
+test observation_consumption_rechecks_its_borrowed_context ... ok
+test observation_time_is_representation_checked_without_an_invented_ttl_and_outage_is_safe ... ok
+test read_policy_matches_the_installed_auth_caller_and_actor_contract ... ok
+test slow_and_noncooperative_late_replies_cannot_outlive_original_stop ... ok
+test upstream_private_errors_are_fixed_safe_and_never_retried ... ok
+test wrong_configured_service_caller_and_signing_key_are_denied_before_owner ... ok
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 17 filtered out; finished in 7.84s
+
+test global_gateway_auth_capacity_has_an_isolated_process ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 11.05s
+

@@ -1,0 +1,100 @@
+{
+  "status": "REVIEWED_BOUNDED_INCREMENT",
+  "tested_parent_revision": "9dceb49f41853e75b6e86e35daac24d47858ce1b",
+  "integration": {
+    "profile_owner": {
+      "worker": "81665a04b579d8709fa6cbe018c46b01db4edce0",
+      "parent": "92fb4ef459faabbf74fa7cba6eaaa14ad6fba6c8",
+      "source_sha256": {
+        "backend/crates/profile-application/src/concert_identity.rs": "4308b9ae0d5a30f0255f3b559a23618c16f6d6f9b48c879775cab14223879ece",
+        "backend/crates/profile-application/src/lib.rs": "7a408776a4fe668cf81c9dd45221a0813cf039c6aeeed4b58a94167de28cf98f",
+        "backend/crates/profile-application/tests/concert_identity.rs": "2747537e336ad7bc1d4a2275f338201d641d26f5ffbc3b7f9b1907c132137c82",
+        "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs": "cff6784cb6180f29e6b9b4e8f441797f924fe550a2ec2f81c6a8957134491e3d",
+        "backend/services/profile-service/src/adapters/out/persistence/mod.rs": "6715d37503573ccee5d725af76534025b30c78ee6e3492f2fe45a107c20e399f",
+        "backend/services/profile-service/tests/concert_identity_owner.rs": "cfcd00fbca330cc9570889b110a7820fbc4f3a19586ae4a6132ef8e352e0b91e",
+        "docs/mcr/backend/profile-identity-owner.md": "f05c2cf925b8f5d2bdf034095fd9db6fddffa227bf31e07cc6928db00ec1eb51"
+      }
+    },
+    "gateway_auth_client": {
+      "worker_initial": "868d02c98f69b3c04c0b6e61f06a6408b2cdf747",
+      "worker_corrected": "77890b9acc0edf90a7a9f253eade6a7c0816587d",
+      "parent_initial": "7106e76df7a962231b67ea58fd651ce5337b552d",
+      "parent_corrected": "9dceb49f41853e75b6e86e35daac24d47858ce1b",
+      "source_sha256": {
+        "backend/services/api-gateway/src/adapters/out/auth_client.rs": "dcae79cd9b51699c680f108fe15adbed9b349a3666793959adef7f30793fad5a",
+        "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs": "558f41419c9d7f98cbc87e700c0ebd674446f26044dc0441ce370feb1233c132",
+        "backend/services/api-gateway/tests/concert_admission_transport.rs": "3f3c15f2c086ed34c1cbe9ded0c39476f9b4648993ad11234a1439dd974df418",
+        "docs/mcr/backend/gateway-auth-owner-client.md": "c28ca1023552cae1704d1b33b78e51ab3f364a42cb60fca60c74f5f2841ebf04"
+      }
+    },
+    "qa": {
+      "initial": "ad4e96372fb06831926dfa35d17b5ba7fe7703d8",
+      "followup": "f0ed0a24d86883833d4a01330ac2ed233a25aae5",
+      "parent_initial": "7594ec74a862d6ec47aa92ba2b85939ba6c8fd5f",
+      "parent_followup": "6d91e6198469dc28a5239a3bdda5a39a2d38c120"
+    }
+  },
+  "static_parent_checks": [
+    {
+      "name": "plan",
+      "argv": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "boundary_review": {
+    "command": "python3 scripts/mcr/check-boundaries.py --base 3c32eb6 --lane backend --allow-doc docs/mcr/backend/profile-identity-owner.md --allow-doc docs/mcr/backend/gateway-auth-owner-client.md --allow-doc docs/mcr/qa/gateway-auth-owner-client-review.md",
+    "exit_code": 0,
+    "scope": "12 worker implementation/document paths before integrator evidence added; no cross-lane writes or imports; two Profile exports and one Auth export inspected"
+  },
+  "profile_source_compatibility": "All backend inputs unchanged from worker base3fdb977 to published3c32eb6; final7sourcefiles byte-identical. Only execution-plan prose source pin changed. Parent reran18 application/doc/architecture tests and Profile library check; inspected/hash-verified 7realPG tests plus recovery, did not rerun PG.",
+  "remaining": "Broader BE04/HTTP/real authenticated Profile RPC/event/signed Concert composition/TLS/revocation/multiuser/release remain unqualified; no task acceptance added.",
+  "artifacts_sha256": {
+    "parent/result.json": "6e2d89227f204997cb88b6eed56e9da893cae73d5e2ba964f953ca9d7facfdba",
+    "parent/profile-check.log": "36a60127b5bf412f0236e422f1b792e0990b033c83ffcfbbaf07e229c50242e2",
+    "parent/gateway-doc.log": "29fb41825b0e110fb4eb0d4830c7b6b6be9c65ea0a576ce8bb97e67540efb695",
+    "parent/profile-architecture.log": "bb98946cb315361d75a55f4ad8b8e282d3d0231cee608c5f12c97c82dd21ff52",
+    "parent/gateway-build.log": "9acc17d2e1518dd4464e83a9cbaad00f0b6ed9be8cd1b6dd67393cfa8bf6b97d",
+    "parent/profile-app.log": "da605cafd9d7d6269ef958a7a1c46a6f6bcdb89b58bea85afaf35c84e74e196b",
+    "parent/gateway-combined.log": "7d0dfd9c997b6eabd4bd11f5cbfc749d79ac7d99f92650d230687acd9b628ae3",
+    "parent/profile-doc.log": "28cd287ef92ca5c3fbfa17ed8ccff6e6804b70140bc873e474dc57d11e85e38a",
+    "profile/handoff.json": "9521aea5313a67a7e3b4c206354f34342b72e0aa268c0a78b8f88b7186286f76",
+    "profile/native.json": "d65e98b5f13bb40320d28115de350b558c4ff98ffa44163c7324b62d29d39b81",
+    "profile/source-pins.json": "f73f3c86cffb77426192fa9f145aad7faec95dc039ee57abf3022cdcc2aaa5a8",
+    "profile/scope-audit.json": "e15527e17b6d05f538703682544431910b0f9b9c2b03343e853f247b5256b5fe",
+    "profile/release-confirmation.json": "8534c20ccacac5892dd8e973c6b4721dec09dc6ae6e18d71a7ca4783b0334646",
+    "profile/application-debug0.log": "9afda496722215f59e8df5b76f0a2a3254cd43d507b934df10830d003c78d82c",
+    "profile/doc-debug0.log": "14c39f23c873f689b1bfaeba418e38cf3a3c5f1ffb1eb8b71778736d2dfa0cf1",
+    "profile/architecture-debug0.log": "9976ee5f101e9d4ce1b958415fde0eceb617252ea1f4b5deceffd3808669d101",
+    "profile/owner-pg.log": "dfe76a9897d7307d7cfdbb07c7e4bc5404145fe6efb48e43abf7a565e1c62d23",
+    "profile/owner-outage.log": "94138177779e1cc9387371117ba39152cdc1e223f3de894d17da0d8012febe37",
+    "profile/owner-recovered.log": "9cac7d01f558a3f3534ab21802fb1001a8a1626cd54dcdd99efbe25f850b560c",
+    "profile/build-bounded-stderr.log": "f6da4c6cf9e2c1ff1a2067034e4ecc52668ba5e750be180da42c9fde920a9bb3",
+    "profile/verify_owner.py": "93811b98c2401d2df986157e45d8d4a1ac5e0489ad7524b3885635eeb98528b9",
+    "auth/gateway-auth-owner-handoff.json": "d0d24fa77e7e9982a7bf6e38387216260cf0ebc44f2c431b600c65660c2a06cd",
+    "auth/gateway-auth-owner-r1-handoff.json": "fdd24f2f00abada4021ae985baf8918c1c995989a2fe0891c2c6138eecafc45c",
+    "auth/gateway-auth-owner-r1-combined.log": "edb2b16a39c7174b7cf771e7657b97e0ebed8fa441651a0284a42dd52a93b4ae",
+    "auth/gateway-auth-owner-r1-doctests.log": "daeaab21cd9e6bc9dfda18b07ff3ef78f6aa06d40b4044ac4bb24ef28717776c",
+    "auth/gateway-auth-owner-r1-check.log": "5efbc58ecb6c5090dca2700c5d866b0464777c2d3a720223e9085e189ebc3cfa",
+    "auth/gateway-auth-owner-r1-build.log": "f803da3d15367de5070bb2810e1df3e69ea40c0d17c1a93ca672208bca963455",
+    "auth/gateway-auth-owner-r1-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "auth/gateway-auth-owner-r1-plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "auth/gateway-auth-owner-r1-boundaries.log": "d2ce5d834490b66a4f6e8f42f07e33a7007bb498994e16b1c94022fced34ba6d",
+    "auth/gateway-auth-owner-r1-whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "auth/gateway-auth-owner-r1-isolated.log": "393015113f138b2fa580c22d9eedb9ade1942ef3d32502344db2b3233dd12452",
+    "auth/historical/gateway-auth-owner-capacity-cancellation-final.log": "32068f3067dfbaa2685ca2f2d57ef6645189a838267f0daea7996c72e7310b5d",
+    "auth/historical/gateway-auth-owner-capacity-correction-tests-retry.log": "bceaa2e1a10d0377dd69bddf438f0230a1004f06722d24feeab1cdaf1dc6512c",
+    "auth/historical/gateway-auth-owner-capacity-correction-doctests.log": "2c1b1fe2ff22e93a951a9f58cbfc5512a4947fe4e17ef580c005401e6a79f9f3",
+    "auth/historical/gateway-auth-owner-capacity-correction-final-combined.log": "be1fe2ba5417a0eacc9c2e78e3153a6ef7a51a22e287caf14509122cea0392ef",
+    "auth/historical/gateway-auth-owner-capacity-correction-combined.log": "e9ce51fb07d3c7f5313295cb3e5d8a6ec79871a06f4b40298cdd9c3edfa57dc2",
+    "auth/historical/gateway-auth-owner-capacity-correction-tests.log": "6fe8e0126c687aef7d02d0c19c0bf15f0116fa221e81e4c9977f3179ecd8feaa",
+    "auth/historical/gateway-auth-owner-capacity-correction-build.log": "0c3e9fd0c2a695a679f423b664d9a3eb3bf70d71b46b137d81e6d317afe75a07",
+    "auth/historical/gateway-auth-owner-capacity-correction-tests-retry2.log": "b20a984463aa54cbf63e9ea895f9ff700de7ba350d7d6938be2a80443e5e885e",
+    "auth/historical/gateway-auth-owner-capacity-correction-tests-retry3.log": "bd164af4b74029f850a6b886956e8a9f09a26403cd1d1b19077685515f03943c",
+    "auth/historical/gateway-auth-owner-capacity-correction-check.log": "fb08fbcc0233ed74ec87e8832ae2d10bd59aee2076a4889d5043fe8f32752698",
+    "parent/plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "publication-checks.json": "9d2f774eab4d5a45ad0318675b4e190c4170e193ca9f4a40f0f9e48e857058c8"
+  }
+}

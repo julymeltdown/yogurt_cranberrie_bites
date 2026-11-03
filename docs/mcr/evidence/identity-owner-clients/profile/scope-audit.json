@@ -1,0 +1,82 @@
+{
+  "base": "3fdb977d6a64798d76ea137099026879a68a67f9",
+  "branch": "codex/mcr-be-profile-owner",
+  "changed_paths": [
+    "backend/crates/profile-application/src/concert_identity.rs",
+    "backend/crates/profile-application/src/lib.rs",
+    "backend/crates/profile-application/tests/concert_identity.rs",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs",
+    "backend/services/profile-service/src/adapters/out/persistence/mod.rs",
+    "backend/services/profile-service/tests/concert_identity_owner.rs",
+    "docs/mcr/backend/profile-identity-owner.md"
+  ],
+  "export_audit": {
+    "backend/crates/profile-application/src/lib.rs": "exact append only",
+    "backend/services/profile-service/src/adapters/out/persistence/mod.rs": "exact append only"
+  },
+  "unchanged_source_pins": true,
+  "docs_source_diff_empty": true,
+  "imports": {
+    "backend/crates/profile-application/src/concert_identity.rs": [
+      "use async_trait::async_trait;",
+      "use chrono::{DateTime, Datelike, Utc};",
+      "use std::sync::Arc;",
+      "use uuid::Uuid;"
+    ],
+    "backend/crates/profile-application/tests/concert_identity.rs": [
+      "use async_trait::async_trait;",
+      "use chrono::{DateTime, Utc};",
+      "use profile_application::concert_identity::*;",
+      "use std::{",
+      "use uuid::Uuid;"
+    ],
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs": [
+      "use async_trait::async_trait;",
+      "use profile_application::concert_identity::{",
+      "use sqlx::{PgPool, Row};"
+    ],
+    "backend/services/profile-service/tests/concert_identity_owner.rs": [
+      "use chrono::{DateTime, Utc};",
+      "use profile_application::concert_identity::*;",
+      "use profile_service::adapters::out::persistence::concert_identity::PgConcertProfileRepository;",
+      "use sqlx::{",
+      "use std::{os::unix::fs::MetadataExt, path::PathBuf, str::FromStr, sync::Arc, time::Duration};",
+      "use uuid::Uuid;"
+    ]
+  },
+  "commands": [
+    {
+      "name": "final-format",
+      "args": [
+        "rustfmt",
+        "+1.88.0",
+        "--edition",
+        "2021",
+        "--check",
+        "backend/crates/profile-application/src/concert_identity.rs",
+        "backend/crates/profile-application/tests/concert_identity.rs",
+        "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs",
+        "backend/services/profile-service/tests/concert_identity_owner.rs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "final-plan",
+      "args": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "final-diff",
+      "args": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,100 @@
+{
+  "code_and_document_whitespace_exit": 0,
+  "raw_log_byte_preservation_exceptions": [
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-isolated.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-isolated.log:6: trailing whitespace.\n+test global_gateway_auth_capacity_refuses_before_dispatch_and_releases ... \ndocs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-isolated.log:15: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-doctests.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-doctests.log:13: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-combined.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-combined.log:284: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/profile/doc-debug0.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/profile/doc-debug0.log:6: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/profile/owner-recovered.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/profile/owner-recovered.log:6: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/profile/application-debug0.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/profile/application-debug0.log:26: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/profile/owner-outage.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/profile/owner-outage.log:6: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/profile/architecture-debug0.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/profile/architecture-debug0.log:6: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/profile/owner-pg.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/profile/owner-pg.log:11: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/parent/gateway-doc.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/parent/gateway-doc.log:13: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/parent/profile-architecture.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/parent/profile-architecture.log:10: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/parent/profile-app.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/parent/profile-app.log:30: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/parent/gateway-combined.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/parent/gateway-combined.log:289: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/parent/profile-doc.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/parent/profile-doc.log:8: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-doctests.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-doctests.log:13: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-final-combined.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-final-combined.log:285: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-combined.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-combined.log:285: new blank line at EOF.\n"
+    },
+    {
+      "path": "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-tests-retry3.log",
+      "diagnostics": "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-tests-retry3.log:33: new blank line at EOF.\n"
+    }
+  ],
+  "rule": "Exceptions apply only to the exact byte-preserved worker raw logs/controller listed here; application code and engineering documents remain clean.",
+  "staged_artifact_whitespace_exit": 2,
+  "exact_staged_artifact_exceptions": [
+    "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-combined.log",
+    "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-doctests.log",
+    "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-isolated.log",
+    "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-combined.log",
+    "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-doctests.log",
+    "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-final-combined.log",
+    "docs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-tests-retry3.log",
+    "docs/mcr/evidence/identity-owner-clients/parent/gateway-combined.log",
+    "docs/mcr/evidence/identity-owner-clients/parent/gateway-doc.log",
+    "docs/mcr/evidence/identity-owner-clients/parent/profile-app.log",
+    "docs/mcr/evidence/identity-owner-clients/parent/profile-architecture.log",
+    "docs/mcr/evidence/identity-owner-clients/parent/profile-doc.log",
+    "docs/mcr/evidence/identity-owner-clients/profile/application-debug0.log",
+    "docs/mcr/evidence/identity-owner-clients/profile/architecture-debug0.log",
+    "docs/mcr/evidence/identity-owner-clients/profile/doc-debug0.log",
+    "docs/mcr/evidence/identity-owner-clients/profile/owner-outage.log",
+    "docs/mcr/evidence/identity-owner-clients/profile/owner-pg.log",
+    "docs/mcr/evidence/identity-owner-clients/profile/owner-recovered.log"
+  ],
+  "staged_diagnostics": "docs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-combined.log:284: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-doctests.log:13: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-isolated.log:6: trailing whitespace.\n+test global_gateway_auth_capacity_refuses_before_dispatch_and_releases ... \ndocs/mcr/evidence/identity-owner-clients/auth/gateway-auth-owner-r1-isolated.log:15: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-combined.log:285: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-doctests.log:13: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-final-combined.log:285: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/auth/historical/gateway-auth-owner-capacity-correction-tests-retry3.log:33: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/parent/gateway-combined.log:289: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/parent/gateway-doc.log:13: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/parent/profile-app.log:30: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/parent/profile-architecture.log:10: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/parent/profile-doc.log:8: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/profile/application-debug0.log:26: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/profile/architecture-debug0.log:6: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/profile/doc-debug0.log:6: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/profile/owner-outage.log:6: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/profile/owner-pg.log:11: new blank line at EOF.\ndocs/mcr/evidence/identity-owner-clients/profile/owner-recovered.log:6: new blank line at EOF.\n"
+}

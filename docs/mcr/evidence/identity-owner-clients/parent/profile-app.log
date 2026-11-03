@@ -1,0 +1,30 @@
+   Compiling profile-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/profile-application)
+    Finished `test` profile [unoptimized] target(s) in 1.23s
+     Running unittests src/lib.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/profile_application-a83420b07b252aa5)
+
+running 6 tests
+test dto::mutation_dto::secret_debug_tests::mutation_receipt_debug_redacts_operation_and_actor_identifiers ... ok
+test dto::repository_dto::tests::repository_audit_roundtrip_preserves_optional_identity_and_redaction ... ok
+test presentation::tests::neutral_failure_matrix_preserves_operation_modes_and_receipt_reasons ... ok
+test dto::mutation_dto::secret_debug_tests::profile_mutation_debug_redacts_identity_key_and_canonical_profile_data ... ok
+test dto::repository_dto::tests::repository_profile_roundtrip_preserves_domain_and_public_snapshot ... ok
+test dto::profile_dto::secret_debug_tests::profile_and_account_dto_debug_redacts_private_values_without_changing_serde ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/concert_identity.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_identity-7d3d71cfe96ccfe0)
+
+running 10 tests
+test absent_and_deleted_content_share_one_safe_unavailable_result ... ok
+test exact_content_and_observation_are_preserved_without_inventing_identity_authority ... ok
+test only_empty_bio_is_normalized_not_spaces_or_stored_content ... ok
+test repeated_reads_dispatch_again_and_observe_updated_content ... ok
+test persistence_refusal_never_returns_partial_or_cached_content ... ok
+test foreign_nil_subject_and_unrepresentable_observation_fail_closed ... ok
+test selectors_reject_nil_and_noncanonical_subjects_before_repository_dispatch ... ok
+test unicode_character_limits_match_consumer_not_utf8_bytes_or_graphemes ... ok
+test debug_and_errors_contain_no_subject_content_or_private_canaries ... ok
+test blank_control_and_overlong_stored_values_are_refused_without_sanitizing ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

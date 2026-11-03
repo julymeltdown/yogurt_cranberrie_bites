@@ -1,0 +1,178 @@
+{
+  "source_revision": "9dceb49f41853e75b6e86e35daac24d47858ce1b",
+  "status": "PASS",
+  "commands": [
+    {
+      "name": "gateway-combined",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "concert_admission_transport",
+        "--test",
+        "concert_access",
+        "--test",
+        "unit",
+        "--test",
+        "verification_transport",
+        "--",
+        "--test-threads=2"
+      ],
+      "exit_code": 0,
+      "seconds": 44.865,
+      "log": "gateway-combined.log",
+      "sha256": "7d0dfd9c997b6eabd4bd11f5cbfc749d79ac7d99f92650d230687acd9b628ae3"
+    },
+    {
+      "name": "gateway-doc",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--doc"
+      ],
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "gateway-doc.log",
+      "sha256": "29fb41825b0e110fb4eb0d4830c7b6b6be9c65ea0a576ce8bb97e67540efb695"
+    },
+    {
+      "name": "gateway-build",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "api-gateway",
+        "--bin",
+        "api-gateway"
+      ],
+      "exit_code": 0,
+      "seconds": 13.802,
+      "log": "gateway-build.log",
+      "sha256": "9acc17d2e1518dd4464e83a9cbaad00f0b6ed9be8cd1b6dd67393cfa8bf6b97d"
+    },
+    {
+      "name": "profile-app",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "profile-application",
+        "--lib",
+        "--test",
+        "concert_identity"
+      ],
+      "exit_code": 0,
+      "seconds": 1.821,
+      "log": "profile-app.log",
+      "sha256": "da605cafd9d7d6269ef958a7a1c46a6f6bcdb89b58bea85afaf35c84e74e196b"
+    },
+    {
+      "name": "profile-doc",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "profile-application",
+        "--doc"
+      ],
+      "exit_code": 0,
+      "seconds": 0.229,
+      "log": "profile-doc.log",
+      "sha256": "28cd287ef92ca5c3fbfa17ed8ccff6e6804b70140bc873e474dc57d11e85e38a"
+    },
+    {
+      "name": "profile-architecture",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "profile-service",
+        "--test",
+        "architecture"
+      ],
+      "exit_code": 0,
+      "seconds": 4.468,
+      "log": "profile-architecture.log",
+      "sha256": "bb98946cb315361d75a55f4ad8b8e282d3d0231cee608c5f12c97c82dd21ff52"
+    },
+    {
+      "name": "profile-check",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--target-dir",
+        "/Users/lhs/Desktop/mcr-build/backend",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "profile-service",
+        "--lib"
+      ],
+      "exit_code": 0,
+      "seconds": 6.942,
+      "log": "profile-check.log",
+      "sha256": "36a60127b5bf412f0236e422f1b792e0990b033c83ffcfbbaf07e229c50242e2"
+    }
+  ],
+  "environment": {
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0"
+  }
+}

@@ -1,0 +1,38 @@
+    Checking ring v0.17.14
+    Checking simd-adler32 v0.3.10
+    Checking adler2 v2.0.1
+    Checking miniz_oxide v0.8.9
+    Checking crc32fast v1.5.2
+    Checking flate2 v1.1.9
+    Checking fdeflate v0.3.7
+    Checking rustls-webpki v0.103.16
+    Checking zune-core v0.5.3
+    Checking rustls v0.23.46
+    Checking byteorder-lite v0.1.0
+    Checking pxfm v0.1.30
+    Checking color_quant v1.1.0
+    Checking weezl v0.1.12
+    Checking tokio-rustls v0.26.4
+    Checking sqlx-core v0.8.6
+    Checking tonic v0.14.6
+    Checking tonic-prost v0.14.6
+    Checking opentelemetry-proto v0.33.0
+    Checking sqlx-postgres v0.8.6
+    Checking tonic-types v0.14.6
+    Checking quick-error v2.0.1
+    Checking image-webp v0.2.4
+    Checking opentelemetry-otlp v0.33.0
+    Checking tonic-health v0.14.6
+    Checking gif v0.14.2
+    Checking moxcms v0.8.1
+    Checking sqlx v0.8.6
+    Checking zune-jpeg v0.5.15
+    Checking png v0.18.1
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/profile-service)
+    Checking profile-domain v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/profile-domain)
+    Checking bytemuck v1.25.2
+    Checking platform v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/platform)
+    Checking image v0.25.10
+    Checking profile-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/profile-application)
+    Checking migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/migration-runtime)
+    Finished `dev` profile [unoptimized] target(s) in 6.90s

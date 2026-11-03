@@ -1,0 +1,11 @@
+
+running 6 tests
+test active_private_self_is_minimal_and_updates_are_uncached ... ok
+test malformed_stored_content_is_not_truncated_or_cleaned ... ok
+test missing_soft_deleted_and_committed_fence_are_indistinguishable ... ok
+test real_database_permission_failure_and_closed_pool_are_safe ... ok
+test repository_bounds_transfer_without_truncating_large_stored_values ... ok
+test statement_snapshot_preserves_atomic_content_and_deletion_visibility ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.50s
+

@@ -1,0 +1,13 @@
+    Finished `test` profile [unoptimized] target(s) in 0.21s
+   Doc-tests api_gateway
+
+running 6 tests
+test services/api-gateway/src/adapters/out/auth_client/concert_admission.rs - adapters::out::auth_client::concert_admission::AdmissionObservation (line 100) - compile fail ... ok
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 37) - compile fail ... ok
+test services/api-gateway/src/adapters/out/auth_client/concert_admission.rs - adapters::out::auth_client::concert_admission::AdmissionObservation (line 108) - compile fail ... ok
+test services/api-gateway/src/adapters/out/auth_client/concert_admission.rs - adapters::out::auth_client::concert_admission::AdmissionObservation (line 104) - compile fail ... ok
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 46) - compile fail ... ok
+test services/api-gateway/src/adapters/out/jwt/concert_access.rs - adapters::out::jwt::concert_access::ConcertAccessContext (line 42) - compile fail ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
