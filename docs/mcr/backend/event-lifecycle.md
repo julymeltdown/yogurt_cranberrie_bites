@@ -1,6 +1,6 @@
 # BE41 event lifecycle — implementation record
 
-Status: IN_PROGRESS. Base `cd7192febf9c2764169b55d63a70d7e00d13fd08`, branch
+Status: BLOCKED on external owner handoffs; BE41 is not complete. Base `cd7192febf9c2764169b55d63a70d7e00d13fd08`, branch
 `codex/mcr-be-BE41`, isolated checkout `/Users/lhs/Desktop/mcr-worktrees/be-event-lifecycle`.
 Persistent goal is ACTIVE, unbudgeted. Source milestones are not BE41 acceptance.
 
@@ -143,3 +143,35 @@ renewed by a late write. Cleanup verifies no event-owned private rows/ciphertext
 remain; the native test includes an unexpected late handle update. This does not
 authorize cross-event or cross-service cleanup, and composite-owner obligations
 remain required.
+
+
+## Blocked audit — 2026-11-04
+
+The same external blocker was observed across three consecutive goal turns,
+including the implementation handoff turn and two automatic continuations.
+The source checkpoint is `0136e90d1645633432cb0f9e07fa9d31a63326cb`, committed and
+pushed to `origin/codex/mcr-be-BE41`; the checkout was clean on both follow-ups.
+Direct reads confirm that neither the isolated checkout nor Delivery's checkout
+exports the new domain/application/service modules or cleanup worker. Delivery's
+checkout still names base `cd7192f`. Current bounded thread snapshots show no new
+owner interface, build-resource transfer or contract amendment handoff. An active
+chat label is not treated as a live compile process or as a build lease.
+
+The full objective remains unchanged and unachieved. Do not integrate this as an
+accepted/full BE41 implementation. Resume this same writer after Delivery provides:
+
+- Exact shared module exports, canonical forward-only migration assignment/copy,
+  route/worker composition, and the C04 explicit START/RESUME amendment with
+  generated producer/consumer qualification.
+- An explicit Cargo target resource handoff or source-qualified native binaries
+  for both test suites, preserving Rust 1.88.0, locked/offline, two jobs, debug=0.
+- Actual owner interfaces/adapters for fenced Auth/operator/event policy and
+  reviewed retention, canonical relationship fence, mural freeze/snapshot,
+  public Post/deletion/media review, community/world admission invalidation and
+  the remaining composite retention work.
+
+These are ownership/resource/interface dependencies, not an extra main-chat or
+scrum-lead approval gate. No additional user permission is requested. The 23 SQL
+checks apply to the source checkpoint; this audit is documentation only and does
+not rerun unchanged checks or convert them into Rust/integration acceptance.
+The persistent goal is to be marked BLOCKED after this audit, never COMPLETE.
