@@ -21,6 +21,7 @@ use std::str::FromStr;
 use tonic::service::interceptor::InterceptedService;
 use tonic::transport::Channel;
 
+pub mod concert_admission;
 pub mod verification;
 
 pub mod proto {
