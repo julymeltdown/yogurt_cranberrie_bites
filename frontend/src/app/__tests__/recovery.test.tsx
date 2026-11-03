@@ -86,9 +86,16 @@ it('shows safe expired-token feedback without raw details or automatic retry', a
 it('does not claim success or retain secrets when the dispatched mutation has an uncertain outcome', async () => {
   const { fetch } = setup('/reset-password', () => { throw new TypeError(`private ${secret}`) })
   await confirmForm(); fireEvent.submit(screen.getByRole('form', { name: 'Confirm password reset' }))
-  await screen.findByText(/The result could not be confirmed/)
+  await screen.findByText(/we could not confirm the result/)
   expect(screen.queryByText(/Password reset completed/)).toBeNull(); expect(document.body.innerHTML).not.toContain(secret)
   expect(screen.getByLabelText('Reset token')).toHaveValue(''); expect(fetch).toHaveBeenCalledOnce()
+})
+it('keeps uncertain request outcomes neutral about account existence and delivery', async () => {
+  setup('/reset-password', () => { throw new TypeError('raw private request error') })
+  fireEvent.change(await screen.findByLabelText('Email'), { target: { value: 'unknown@example.com' } })
+  fireEvent.submit(screen.getByRole('form', { name: 'Request password reset' }))
+  expect(await screen.findByText('Your request may have been processed, but the result and email delivery are not confirmed. You can try again later.')).toBeVisible()
+  expect(screen.queryByText(/The reset may have completed/)).toBeNull()
 })
 it.each(['logout', 'account-change'] as const)('clears draft and fences pending feedback after %s', async change => {
   const delayed = deferred<Response>(), { auth, fetch } = setup('/reset-password', () => delayed.promise)

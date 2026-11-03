@@ -138,7 +138,7 @@ try {
     mode = 'server-error'; count = calls.confirm
     const dispatches = await page.evaluate(() => window.__FE11_TEST__.dispatches().confirm)
     await page.getByRole('button', { name: 'Reset password' }).click()
-    await expect(page.getByText(/The result could not be confirmed/)).toBeVisible()
+    await expect(page.getByText(/we could not confirm the result/)).toBeVisible()
     assert.equal(calls.confirm, count + 1); await hygiene(page)
     assert.equal(await page.evaluate(() => window.__FE11_TEST__.dispatches().confirm), dispatches + 1)
     const logins = calls.login
@@ -153,7 +153,7 @@ try {
   await probe.goto(`${fixture}#token=${token}`); await probe.getByLabel('New password').fill(password)
   mode = 'network'; const arrivalsBeforeDrop = calls.confirm
   await probe.getByRole('button', { name: 'Reset password' }).click()
-  await expect(probe.getByText(/The result could not be confirmed/)).toBeVisible()
+  await expect(probe.getByText(/we could not confirm the result/)).toBeVisible()
   assert.equal(await probe.evaluate(() => window.__FE11_TEST__.dispatches().confirm), 1)
   await expect.poll(() => calls.active).toBe(0)
   transportDrop = { applicationFetches: 1, serverArrivals: calls.confirm - arrivalsBeforeDrop, outcome: 'uncertain',

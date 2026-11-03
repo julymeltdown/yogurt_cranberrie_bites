@@ -13,7 +13,7 @@ const messages: Record<RecoveryResult | 'invalid-link' | 'changed', string> = {
   'invalid-link': 'This reset link could not be used. Request another reset, or enter the token from your reset instructions.',
   'rate-limited': 'Too many attempts. Wait a while before trying again.',
   unavailable: 'Password recovery could not be completed. Please try again when the service is available.',
-  uncertain: 'The result could not be confirmed. Nothing will be retried automatically. Try signing in, or request another reset if needed.',
+  uncertain: 'The reset may have completed, but we could not confirm the result. Try signing in, or request another reset if needed.',
   cancelled: 'We stopped waiting. The result is not confirmed.',
   busy: 'Another account action is in progress. Wait for it to finish before trying again.',
   changed: 'Your session changed. Reset details have been cleared.',
@@ -95,7 +95,8 @@ export function ResetPassword() {
     {!dirty && <>
       <p className="recovery-intro">{mode === 'request' ? 'Start with the email you use to sign in.' : 'Choose a new password for your account.'}</p>
       <div ref={feedback} className="recovery-feedback" role="status" aria-live="polite" tabIndex={-1}>
-        {pending ? <p>{mode === 'request' ? 'Submitting your request…' : 'Confirming your reset…'}</p> : result && <p>{messages[result]}</p>}
+        {pending ? <p>{mode === 'request' ? 'Submitting your request…' : 'Confirming your reset…'}</p> : result && <p>{result === 'uncertain' && mode === 'request'
+          ? 'Your request may have been processed, but the result and email delivery are not confirmed. You can try again later.' : messages[result]}</p>}
       </div>
       {result !== 'confirmed' && <form onSubmit={submit} aria-label={mode === 'request' ? 'Request password reset' : 'Confirm password reset'} aria-busy={pending} noValidate>
         {mode === 'request' ? <>
