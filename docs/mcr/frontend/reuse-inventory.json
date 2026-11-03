@@ -1,0 +1,4079 @@
+{
+  "schema_version": 1,
+  "task_id": "C01",
+  "status": "IN_PROGRESS",
+  "scope": "Frontend audit proposal; source extraction and acceptance require integrator review. No source code copied.",
+  "worker": {
+    "branch": "codex/mcr-fe-foundation",
+    "base_commit": "69c17cc0e85eb7209e854a56da0f1388072e00b6",
+    "writable_checkout": "/Users/lhs/Desktop/mcr-worktrees/fe-foundation"
+  },
+  "source": {
+    "repository": "julymeltdown/bigyeting",
+    "revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+    "read_only_checkout": "/Users/lhs/Desktop/mcr-sources/bigyeting",
+    "clean_at_audit": true,
+    "hash_algorithm": "SHA-256 of pinned Git blob bytes; git_blob is Git SHA-1 object ID",
+    "tracked_frontend_file_count": 710,
+    "license_notice_paths": [],
+    "license_status": "NOT_ESTABLISHED: no LICENSE/COPYING/NOTICE found in tracked source; package.json is private and has no license field. User authorized audit; this does not establish third-party redistribution rights."
+  },
+  "tooling_files": [
+    {
+      "path": "frontend/package.json",
+      "git_blob": "4e39c17235b645701b6ef240d33eeb5418c9af73",
+      "sha256": "1aa65ac378b3ced3e88ab0da6118a28a5ee12b420ecbaee6f9bd38164fc215bd"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "git_blob": "02f3af5162b7bcf3b0e2dfafa33256da3ad33797",
+      "sha256": "40745bdfd17cecddb6a2e09a6f395931296cdad68bf812e0415132583b10c5e1"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "git_blob": "d6e0b9ef21b56e0b2b42a50ef7ebfbb81989f313",
+      "sha256": "ed8ed891b6fee55f04ebc12195db1ab2c0fa0908719bc1ec95b0e2397c5ff0dd"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "git_blob": "0e042926cf89354973a64827df8cd8f2e4560512",
+      "sha256": "4ae0c6c7d3c4ef562a1e16bdee182fcc1d72e9dcac0d92db67214af154048574"
+    },
+    {
+      "path": "frontend/tsconfig.app.json",
+      "git_blob": "ba7bf6641ff42fb8e45d2464e38c947d443d3a97",
+      "sha256": "7c5a6ec0a0f747d1f1736a7fcf4e8c1167a729fb07803bba906f340370c99557"
+    },
+    {
+      "path": "frontend/tsconfig.node.json",
+      "git_blob": "18ea3b2fe6df55fc00bbe5a7da9b6972bcb03cbb",
+      "sha256": "dc726807f76654bd0c4def2a80a40425a66bce085ad9297915eb6dae179d3013"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "git_blob": "e982eca73088b1c295ec255ef7bf2447f890e8ed",
+      "sha256": "0a36db7bfec0c51652ed6a208636430071ded2a04cbb12349231f247f6092d7a"
+    },
+    {
+      "path": "frontend/playwright.production.config.ts",
+      "git_blob": "d7d9be364ae0ed48e6130c53643f1f2acca32444",
+      "sha256": "470aea22fbab967919fc4c0fe62322ecb5f8855285fd400432896e91cbed47a8"
+    },
+    {
+      "path": "frontend/src/test/setup.ts",
+      "git_blob": "60f6d2c941ada0d6fc9e0bfbfc9284bb663e343d",
+      "sha256": "1e7f8082a7757c9145252b9b09dfce34c93cdffcd1a02e72522c5718253019f3"
+    }
+  ],
+  "source_package": {
+    "package_manager": "pnpm@11.7.0",
+    "lockfile_version": "9.0",
+    "lock_settings": {
+      "autoInstallPeers": true,
+      "excludeLinksFromLockfile": false
+    },
+    "scripts": {
+      "dev": "vite --host 127.0.0.1",
+      "build": "tsc -b && vite build && node ../scripts/check-product-copy.mjs --bundle dist && node ../scripts/check-frontend-bundle.mjs",
+      "brand:generate": "node scripts/generate-brand-assets.mjs",
+      "check:architecture": "node ../scripts/check-fsd-contract.mjs && node ../scripts/check-design-contract.mjs",
+      "copy:source": "node ../scripts/check-product-copy.mjs --source",
+      "copy:bundle": "node ../scripts/check-product-copy.mjs --bundle dist",
+      "copy:database": "node ../scripts/check-product-copy.mjs --database",
+      "lint": "oxlint && node ../scripts/check-product-copy.mjs --source && node ../scripts/check-frontend-exact-age-fixtures.mjs",
+      "typecheck": "tsc -b --pretty false",
+      "test": "vitest run",
+      "e2e": "corepack pnpm@11.7.0 e2e:visual",
+      "e2e:media": "playwright test --project=media-compression-smoke",
+      "e2e:media:production": "pnpm build && playwright test --config=playwright.production.config.ts",
+      "container:smoke": "../scripts/frontend-container-smoke.sh",
+      "e2e:visual": "node ../scripts/run-required-playwright.mjs visual",
+      "e2e:taste-real": "../scripts/local-fullstack-smoke.sh taste-real",
+      "e2e:real-spec": "node ../scripts/run-required-playwright.mjs real",
+      "e2e:real": "../scripts/local-fullstack-smoke.sh",
+      "preview": "vite preview --host 127.0.0.1"
+    },
+    "direct_dependencies": [
+      {
+        "name": "@chenglou/pretext",
+        "section": "dependencies",
+        "declared": "^0.0.8",
+        "resolved": "0.0.8",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@dnd-kit/core",
+        "section": "dependencies",
+        "declared": "^6.3.1",
+        "resolved": "6.3.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@dnd-kit/sortable",
+        "section": "dependencies",
+        "declared": "^10.0.0",
+        "resolved": "10.0.0(@dnd-kit/core@6.3.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@dnd-kit/utilities",
+        "section": "dependencies",
+        "declared": "^3.2.2",
+        "resolved": "3.2.2(react@19.2.7)",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@ffmpeg/core",
+        "section": "dependencies",
+        "declared": "^0.12.10",
+        "resolved": "0.12.10",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@ffmpeg/ffmpeg",
+        "section": "dependencies",
+        "declared": "^0.12.15",
+        "resolved": "0.12.15",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@fiddle-digital/string-tune",
+        "section": "dependencies",
+        "declared": "1.2.1",
+        "resolved": "1.2.1",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@hookform/resolvers",
+        "section": "dependencies",
+        "declared": "^5.4.0",
+        "resolved": "5.4.0(react-hook-form@7.80.0(react@19.2.7))",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@mantine/core",
+        "section": "dependencies",
+        "declared": "^9.4.1",
+        "resolved": "9.4.1(@mantine/hooks@9.4.1(react@19.2.7))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@phosphor-icons/react",
+        "section": "dependencies",
+        "declared": "^2.1.10",
+        "resolved": "2.1.10(react-dom@19.2.7(react@19.2.7))(react@19.2.7)",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@tailwindcss/vite",
+        "section": "dependencies",
+        "declared": "^4.3.2",
+        "resolved": "4.3.2(vite@8.1.3(@types/node@24.13.2)(jiti@2.7.0))",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@tanstack/react-query",
+        "section": "dependencies",
+        "declared": "^5.101.2",
+        "resolved": "5.101.2(react@19.2.7)",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "browser-image-compression",
+        "section": "dependencies",
+        "declared": "^2.0.2",
+        "resolved": "2.0.2",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "clsx",
+        "section": "dependencies",
+        "declared": "^2.1.1",
+        "resolved": "2.1.1",
+        "disposition": "ONLY_IF_NEW_CODE_NEEDS_IT"
+      },
+      {
+        "name": "gsap",
+        "section": "dependencies",
+        "declared": "3.15.0",
+        "resolved": "3.15.0",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "ky",
+        "section": "dependencies",
+        "declared": "^2.0.2",
+        "resolved": "2.0.2",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "motion",
+        "section": "dependencies",
+        "declared": "^12.42.2",
+        "resolved": "12.42.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7)",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "react",
+        "section": "dependencies",
+        "declared": "^19.2.7",
+        "resolved": "19.2.7",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "react-dom",
+        "section": "dependencies",
+        "declared": "^19.2.7",
+        "resolved": "19.2.7(react@19.2.7)",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "react-hook-form",
+        "section": "dependencies",
+        "declared": "^7.80.0",
+        "resolved": "7.80.0(react@19.2.7)",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "react-joyride",
+        "section": "dependencies",
+        "declared": "3.2.0",
+        "resolved": "3.2.0(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "react-router-dom",
+        "section": "dependencies",
+        "declared": "^7.18.1",
+        "resolved": "7.18.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "tailwind-merge",
+        "section": "dependencies",
+        "declared": "^3.6.0",
+        "resolved": "3.6.0",
+        "disposition": "ONLY_IF_NEW_CODE_NEEDS_IT"
+      },
+      {
+        "name": "tailwindcss",
+        "section": "dependencies",
+        "declared": "^4.3.2",
+        "resolved": "4.3.2",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "three",
+        "section": "dependencies",
+        "declared": "0.184.0",
+        "resolved": "0.184.0",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "wasm-webp",
+        "section": "dependencies",
+        "declared": "0.1.0",
+        "resolved": "0.1.0",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "zod",
+        "section": "dependencies",
+        "declared": "^4.4.3",
+        "resolved": "4.4.3",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "zustand",
+        "section": "dependencies",
+        "declared": "^5.0.14",
+        "resolved": "5.0.14(@types/react@19.2.17)(react@19.2.7)(use-sync-external-store@1.6.0(react@19.2.7))",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@playwright/test",
+        "section": "devDependencies",
+        "declared": "^1.61.1",
+        "resolved": "1.61.1",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@testing-library/jest-dom",
+        "section": "devDependencies",
+        "declared": "^6.9.1",
+        "resolved": "6.9.1",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@testing-library/react",
+        "section": "devDependencies",
+        "declared": "^16.3.2",
+        "resolved": "16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@types/node",
+        "section": "devDependencies",
+        "declared": "^24.13.2",
+        "resolved": "24.13.2",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@types/react",
+        "section": "devDependencies",
+        "declared": "^19.2.17",
+        "resolved": "19.2.17",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@types/react-dom",
+        "section": "devDependencies",
+        "declared": "^19.2.3",
+        "resolved": "19.2.3(@types/react@19.2.17)",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "@types/three",
+        "section": "devDependencies",
+        "declared": "0.184.0",
+        "resolved": "0.184.0",
+        "disposition": "EXCLUDE_FROM_FOUNDATION"
+      },
+      {
+        "name": "@vitejs/plugin-react",
+        "section": "devDependencies",
+        "declared": "^6.0.3",
+        "resolved": "6.0.3(vite@8.1.3(@types/node@24.13.2)(jiti@2.7.0))",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "fake-indexeddb",
+        "section": "devDependencies",
+        "declared": "6.2.5",
+        "resolved": "6.2.5",
+        "disposition": "ONLY_IF_NEW_CODE_NEEDS_IT"
+      },
+      {
+        "name": "jsdom",
+        "section": "devDependencies",
+        "declared": "^29.1.1",
+        "resolved": "29.1.1",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "msw",
+        "section": "devDependencies",
+        "declared": "^2.14.6",
+        "resolved": "2.14.6(@types/node@24.13.2)(typescript@6.0.3)",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "oxlint",
+        "section": "devDependencies",
+        "declared": "^1.71.0",
+        "resolved": "1.72.0",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "typescript",
+        "section": "devDependencies",
+        "declared": "~6.0.2",
+        "resolved": "6.0.3",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "vite",
+        "section": "devDependencies",
+        "declared": "^8.1.1",
+        "resolved": "8.1.3(@types/node@24.13.2)(jiti@2.7.0)",
+        "disposition": "RETAIN_PINNED"
+      },
+      {
+        "name": "vitest",
+        "section": "devDependencies",
+        "declared": "^4.1.9",
+        "resolved": "4.1.9(@types/node@24.13.2)(jsdom@29.1.1)(msw@2.14.6(@types/node@24.13.2)(typescript@6.0.3))(vite@8.1.3(@types/node@24.13.2)(jiti@2.7.0))",
+        "disposition": "RETAIN_PINNED"
+      }
+    ],
+    "additional_selected_dependency": {
+      "name": "phaser",
+      "version": "3.90.0",
+      "present_in_source_lockfile": false,
+      "owner": "integrator"
+    }
+  },
+  "reuse_candidates": [
+    {
+      "id": "transport",
+      "task_ids": [
+        "FE01"
+      ],
+      "decision": "ADAPT_SELECTED_SYMBOLS",
+      "implementation_status": "NOT_STARTED",
+      "source_files": [
+        {
+          "path": "frontend/src/lib/api/real/runtime-client.ts",
+          "git_blob": "3964d06a509ee3b012e77428e61e8a20a4fcaf77",
+          "sha256": "48226d35d4c8b32c9290dee635c4dc4342d4dd83a47e52f6dd3658a7d0599197",
+          "imports": [
+            "ky",
+            "@/lib/api/csrf-token-cache",
+            "@/lib/api/security-contract",
+            "./runtime-context",
+            "@/lib/api/api-error",
+            "./runtime-context",
+            "@/lib/api/api-error"
+          ]
+        }
+      ],
+      "extract_only": [
+        "apiFetch/postJson/putJson/deleteNoContent signal forwarding",
+        "normalized/endpoint behavior",
+        "putPresignedFileWithProgress and upload errors"
+      ],
+      "destination_paths": [
+        "frontend/src/shared/api/http.ts",
+        "frontend/src/shared/media/presigned-upload.ts"
+      ],
+      "dependencies_after_adaptation": [
+        "ky@2.0.2",
+        "DOM fetch/AbortSignal/XMLHttpRequest"
+      ],
+      "required_adaptations": [
+        "Use C03-generated paths and same-origin /api; remove localhost:8080 and /v1 assumptions.",
+        "Inject in-memory access-token provider and C03 refresh policy; remove X-account context.",
+        "Set explicit command retry/idempotency policy; do not inherit ky retry defaults for stock, consent, or pickup.",
+        "Do not forward API bearer, cookie, or CSRF headers to a presigned host; validate signed headers against C04 media contract.",
+        "Close the abort-after-precheck/before-listener race; settle and clean up on abort/error/load/timeout."
+      ],
+      "source_regressions": [
+        {
+          "path": "frontend/src/lib/api/real/runtime-api-error.test.ts",
+          "git_blob": "65c299bcfcd4dc02aa43b53cadd25fe71478660b",
+          "sha256": "ca07affbfb8ae4ce24ecfb2f958b74f34e6b47dc74d5178fdc16bba55810ce44"
+        },
+        {
+          "path": "frontend/src/lib/api/real/runtime-client.distinct-host-csrf.test.ts",
+          "git_blob": "7e23d5ef8e84eb77a185e2221a08f67686dfd1cf",
+          "sha256": "dbc93949bc393287b2e2319d9fa9e89af73a0c1edfa35e013e8e13c623e29e04"
+        },
+        {
+          "path": "frontend/src/lib/api/real/canonical-media-upload-client.test.ts",
+          "git_blob": "dfea90feb8e9c0e20fc194bf14048d0f190015f7",
+          "sha256": "2d21a54a1c73f6b5bc8e6445c87fc0a32d6bd06d78b3b6d64a7930b8827a5b8a"
+        }
+      ],
+      "destination_tests": [
+        "frontend/src/shared/api/http.test.ts",
+        "frontend/src/shared/media/presigned-upload.test.ts"
+      ],
+      "required_probes": [
+        "401/409/429 and malformed envelopes",
+        "abort before request and during upload; timeout and listener cleanup",
+        "presigned PUT has withCredentials=false and no API credentials",
+        "failed finalize never reports uploaded; mutation is not blindly retried"
+      ],
+      "regression_execution": "NOT_RUN",
+      "copied": false
+    },
+    {
+      "id": "errors",
+      "task_ids": [
+        "FE01"
+      ],
+      "decision": "EXTRACT_LOGIC_REWRITE_COPY",
+      "implementation_status": "NOT_STARTED",
+      "source_files": [
+        {
+          "path": "frontend/src/lib/api/api-error.ts",
+          "git_blob": "1e7770250e38060ed189e64a9fb320ab6f7c829e",
+          "sha256": "9f86e6df823fb08195c00c7694aa7f523f8c620dc644aac5b77d6a69bcd382a1",
+          "imports": [
+            "zod"
+          ]
+        }
+      ],
+      "extract_only": [
+        "ApiClientError",
+        "normalizeApiError",
+        "apiClientErrorFromResponse",
+        "error envelope parser only after C03 reconciliation"
+      ],
+      "destination_paths": [
+        "frontend/src/shared/api/errors.ts"
+      ],
+      "dependencies_after_adaptation": [
+        "zod@4.4.3",
+        "DOM Response/DOMException"
+      ],
+      "required_adaptations": [
+        "Separate classification from presentations/presentApiError; do not copy Korean presentation text or commercial/account-specific codes.",
+        "Replace strict envelope with frozen C03 error schema and new English UI messages.",
+        "Keep unknown codes forward compatible and raw backend detail out of product copy."
+      ],
+      "source_regressions": [
+        {
+          "path": "frontend/src/lib/api/real/runtime-api-error.test.ts",
+          "git_blob": "65c299bcfcd4dc02aa43b53cadd25fe71478660b",
+          "sha256": "ca07affbfb8ae4ce24ecfb2f958b74f34e6b47dc74d5178fdc16bba55810ce44"
+        },
+        {
+          "path": "frontend/src/lib/api/error-presentation-contract.test.ts",
+          "git_blob": "b6a2ced15c7c4ed8d9e964c4e7632421e3e38429",
+          "sha256": "55e8f2804ea07c3d2131dab30a41c63fafbf119fe5ea1fca2fcd06010a1ef6d0"
+        }
+      ],
+      "destination_tests": [
+        "frontend/src/shared/api/errors.test.ts"
+      ],
+      "required_probes": [
+        "network vs timeout vs abort vs schema failure",
+        "invalid JSON and unknown semantic code",
+        "request ID and bounded field errors preserved"
+      ],
+      "regression_execution": "NOT_RUN",
+      "copied": false
+    },
+    {
+      "id": "auth-security",
+      "task_ids": [
+        "FE01",
+        "FE09",
+        "FE10",
+        "FE11"
+      ],
+      "decision": "REFERENCE_ONLY_REWRITE",
+      "implementation_status": "NOT_STARTED",
+      "source_files": [
+        {
+          "path": "frontend/src/lib/api/real/canonical-auth-client.ts",
+          "git_blob": "8bf8886095258ec368808d4ecfde3f04f3b4f95a",
+          "sha256": "8650d54ed2354f99689b9c64dd13b21f87e7195023370d189eb27ec0a2f3e41b",
+          "imports": [
+            "zod",
+            "@/lib/api/canonical-contract",
+            "@/lib/api/canonical-response-contract",
+            "./runtime-client"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/api/real/client.ts",
+          "git_blob": "b5d046dd42ace710d2e0b669f46f51ffa92fce06",
+          "sha256": "239bc0463e7b04b31c30c8fdb6f3075d7c08f445b2fa561766ea14c70873e081",
+          "imports": [
+            "@/lib/api/types",
+            "zod",
+            "@/lib/api/canonical-contract",
+            "@/lib/api/csrf-token-cache",
+            "./runtime-client",
+            "./canonical-auth-client",
+            "./canonical-intro-client",
+            "./canonical-intro-comment-client",
+            "./canonical-direct-reveal-client",
+            "./canonical-legal-consent-client",
+            "./canonical-legal-consent-client",
+            "./canonical-access-request-client",
+            "./canonical-intro-link-client",
+            "./canonical-owned-intro-client",
+            "./canonical-account-client",
+            "./canonical-category-client",
+            "./canonical-discovery-preference-client",
+            "./canonical-intro-write-client",
+            "./canonical-intro-safety-client",
+            "./canonical-admin-client",
+            "./canonical-admin-taxonomy-client",
+            "./canonical-appeal-client",
+            "./canonical-member-report-client",
+            "./canonical-member-deletion-client",
+            "./canonical-block-client",
+            "./canonical-explicit-taste-client",
+            "./canonical-taste-insight-client",
+            "./canonical-billing-client",
+            "./canonical-billing-client",
+            "./notification-client",
+            "./notification-client",
+            "./canonical-taste-client"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/api/security-contract.ts",
+          "git_blob": "0ea0ef8357d8601650738268d290e7b022a780db",
+          "sha256": "2227efff63e09dd099eba56ef823605d63d93f3782a0a3f204e05d054a1793ab",
+          "imports": [
+            "@/lib/api/csrf-token-cache"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/api/csrf-token-cache.ts",
+          "git_blob": "1c480c82c4ddd03fa5c431bbf628a98884f246fd",
+          "sha256": "b2dc9595bfe5c3828fd6c005afd247b05a4ff3c6739ef41beb9cb8c488981381",
+          "imports": []
+        },
+        {
+          "path": "frontend/src/lib/api/real/runtime-context.ts",
+          "git_blob": "10fff72bfe9f3d1654289a1fd11e96719ffc3993",
+          "sha256": "344bc652290936aa1f9fc435f0a879af3646d9da4f3ce1ab94fdc2f2f06334eb",
+          "imports": []
+        },
+        {
+          "path": "frontend/src/lib/api/canonical-contract.ts",
+          "git_blob": "30b11323e314dbb9713e4e8ed7a9fcf50791c3bb",
+          "sha256": "120ca6f2132be8c204733372c5cf41668ec18b6219b5adb4d77e8de47df3ce53",
+          "imports": [
+            "zod",
+            "./canonical-response-contract",
+            "./canonical-response-contract",
+            "./canonical-admin-contract"
+          ]
+        }
+      ],
+      "extract_only": [
+        "strict parsing and bounded return-target allowlist concepts",
+        "provider unavailable/expiry/recovery assertions",
+        "CSRF/origin failure assertions; no old rule table or cookie names"
+      ],
+      "destination_paths": [
+        "frontend/src/features/auth/model/session-controller.ts",
+        "frontend/src/shared/validation/return-target.ts"
+      ],
+      "dependencies_after_adaptation": [
+        "React@19.2.7 if hook needed",
+        "zod@4.4.3",
+        "new HTTP port"
+      ],
+      "required_adaptations": [
+        "C03 must map actual selected Gateway operations, token shapes, supported providers and callback/return targets.",
+        "Keep one canonical Auth UUID; optional X/Instagram are not identity or entry prerequisites.",
+        "Access token in memory, one refresh promise, Secure HttpOnly refresh cookie and agreed origin/CSRF controls.",
+        "Remove /v1/auth/email, bigyeting_csrf/admin cookies, member/admin CSRF cache assumptions, X-account versions and 43-character completion-token assumption.",
+        "Logout/revoke/deletion clears private queries, drafts and world resources; do not copy session UI store or old router."
+      ],
+      "source_regressions": [
+        {
+          "path": "frontend/src/lib/api/real/canonical-session-client.test.ts",
+          "git_blob": "3f8ef0bac929af93545063b688faf62a3f95411a",
+          "sha256": "0c46c5d9fb53315f484ddee29100e01ead1040f50afe79a740b6354e874cb6dd"
+        },
+        {
+          "path": "frontend/src/lib/api/security-contract.test.ts",
+          "git_blob": "ab8abde1d3fad59adfb05745b2f898948d8f5756",
+          "sha256": "8ecb1180646abd75a6ee8fe9918e90ab2f7ea11a714d714f10a5e29e04497dae"
+        },
+        {
+          "path": "frontend/src/lib/api/canonical-contract.test.ts",
+          "git_blob": "5ccdbf6eb8acc050fcce71504f73788da37fce87",
+          "sha256": "e0294c6d1124660ade36c0fa3f97b2bb50b891f15bdffd74dcaaefee1520b63f"
+        }
+      ],
+      "destination_tests": [
+        "frontend/src/features/auth/model/session-controller.test.ts",
+        "frontend/src/shared/validation/return-target.test.ts"
+      ],
+      "required_probes": [
+        "concurrent 401 => one refresh; refresh failure settles all callers",
+        "unavailable provider/denial/expired state is truthful",
+        "external/protocol-relative/encoded unsafe return target rejected",
+        "logout identity switch rejects late response; token absent from browser storage"
+      ],
+      "regression_execution": "NOT_RUN",
+      "copied": false
+    },
+    {
+      "id": "query-privacy",
+      "task_ids": [
+        "FE02"
+      ],
+      "decision": "ADAPT_SELECTED_SYMBOLS",
+      "implementation_status": "NOT_STARTED",
+      "source_files": [
+        {
+          "path": "frontend/src/lib/query/query-keys.ts",
+          "git_blob": "56970ab8a9b5ff84ed70b6a28e6cd5380b0cdbdc",
+          "sha256": "50fab5c1741cef37e860b71c54965ac99905b575b81304410cd91d4c829df9df",
+          "imports": [
+            "@/lib/api/real/canonical-intro-client"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/query/active-x-account-transition.ts",
+          "git_blob": "66a6b951fa127d7c68ce9cdec63be99dde2621a3",
+          "sha256": "c77c248d0d9822711c55e20a8c12f3752b77df111d1c497f5a97d4d44914a2d0",
+          "imports": [
+            "@tanstack/react-query",
+            "@/lib/api/types",
+            "./query-keys"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/query/direct-reveal-cache.ts",
+          "git_blob": "9bb3564ae814dd3d31ac298102b422c82f125a2e",
+          "sha256": "2706d7ed2c548d6d786679fcf562084915997889d285ef77e88b53fc2bd8e658",
+          "imports": [
+            "@tanstack/react-query",
+            "@/lib/api/canonical-response-contract",
+            "./query-keys"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/query/intro-visibility-cache.ts",
+          "git_blob": "54c3aadcad5223920ac4c9275f7a9c6fd24be948",
+          "sha256": "eb73a927e86df6693f6f25cc07989ab4433670245ff73a20c52252481b154c86",
+          "imports": [
+            "@tanstack/react-query",
+            "@/lib/query/direct-reveal-cache",
+            "@/lib/query/query-keys"
+          ]
+        }
+      ],
+      "extract_only": [
+        "cancel then remove private roots before identity transition",
+        "clearDirectRevealReceipt(s)",
+        "invalidateIntroVisibilityQueries ordering"
+      ],
+      "destination_paths": [
+        "frontend/src/shared/query/keys.ts",
+        "frontend/src/shared/query/privacy.ts"
+      ],
+      "dependencies_after_adaptation": [
+        "@tanstack/react-query@5.101.2",
+        "C03/C04 public generated types"
+      ],
+      "required_adaptations": [
+        "Replace activeXAccountId and fallback none with explicit canonical user_id + event_id scopes.",
+        "Rebuild roots for MCR; old introLink/accessRequestReveal/blocks roots are not uniformly viewer-scoped.",
+        "Use identity/policy generation guards as well as cancellation; never let late results restore a previous identity.",
+        "Evict secrets on revoke/block/expiry/suspension and coordinate world subscriptions.",
+        "Do not import old API types/client barrel, recommendation/taste/billing query roots or persisted private cache."
+      ],
+      "source_regressions": [
+        {
+          "path": "frontend/src/lib/query/active-x-account-transition.test.ts",
+          "git_blob": "6b622d37a775f9a5efe68f85e558efa31969c7dc",
+          "sha256": "89358cd4d5e9aab5f97569c8026de9a97587df79faca0e4d7aedf8b9f760a065"
+        },
+        {
+          "path": "frontend/src/lib/query/direct-reveal-cache.test.ts",
+          "git_blob": "78659b2aa3916579ccd64d96a281e32e83daf027",
+          "sha256": "31648b64555149563de3c278c9b2ed7b853fac4da08cbf219b99a2ebac25b593"
+        },
+        {
+          "path": "frontend/src/lib/query/intro-visibility-cache.test.ts",
+          "git_blob": "bf2ac07152938693ddc2852d52193cdfa09d8cbe",
+          "sha256": "95e99f98449ff22428e2f57ba1072c660af5ce7633f349ba4e2ff69ac1355821"
+        }
+      ],
+      "destination_tests": [
+        "frontend/src/shared/query/keys.test.ts",
+        "frontend/src/shared/query/privacy.test.ts"
+      ],
+      "required_probes": [
+        "A delayed response cannot populate B or event B",
+        "clear receipts before dependent invalidation",
+        "revoke/block expiry removes visible cached handles and stream subscriptions",
+        "anonymous state cannot share private scope"
+      ],
+      "regression_execution": "NOT_RUN",
+      "copied": false
+    },
+    {
+      "id": "validation-policy",
+      "task_ids": [
+        "FE03"
+      ],
+      "decision": "EXTRACT_SELECTED_PURE_SYMBOLS",
+      "implementation_status": "NOT_STARTED",
+      "source_files": [
+        {
+          "path": "frontend/src/lib/api/real/canonical-social-intro-schema-core.ts",
+          "git_blob": "29024dece77ee575b7831b3def7b8d6da712627d",
+          "sha256": "5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165",
+          "imports": [
+            "zod"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/api/real/canonical-social-intro-schema-interactions.ts",
+          "git_blob": "3b45d39692d226cbb88aec697653ee4eb614e94a",
+          "sha256": "60b043c0464f16e9214e59a182c954f351460e67577054aa60fcb11d169bf5d1",
+          "imports": [
+            "zod",
+            "./canonical-social-intro-schema-core",
+            "./canonical-social-intro-schema-discovery"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/api/canonical-contract.ts",
+          "git_blob": "30b11323e314dbb9713e4e8ed7a9fcf50791c3bb",
+          "sha256": "120ca6f2132be8c204733372c5cf41668ec18b6219b5adb4d77e8de47df3ce53",
+          "imports": [
+            "zod",
+            "./canonical-response-contract",
+            "./canonical-response-contract",
+            "./canonical-admin-contract"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/api/canonical-response-contract.ts",
+          "git_blob": "a650f4e47b688a1290f7039aeebf0a4fbe50e761",
+          "sha256": "10f2b051cae44d02e0eba34d674dfc6eccf179722affeb3e570894d6427051d2",
+          "imports": [
+            "zod"
+          ]
+        },
+        {
+          "path": "frontend/src/features/social-intro/social-intro-model.ts",
+          "git_blob": "dab3befb2be9d652065a4a1fabcef365418c21c4",
+          "sha256": "9f83535790e8882a0565330b89296b162fa609bf4c3a67b2128e49816b9f276f",
+          "imports": [
+            "@/lib/api/real/canonical-social-intro-client"
+          ]
+        }
+      ],
+      "extract_only": [
+        "codePointLength/boundedText/tagArray algorithms",
+        "contactBypass normalization as policy candidate, not universal text ban",
+        "socialIntroVisibilitySchema half-open/both-null range checks",
+        "parseTagInput only from social-intro-model.ts",
+        "strict disclosure/provider URL and safe return-target checks after contract review"
+      ],
+      "destination_paths": [
+        "frontend/src/shared/validation/text.ts",
+        "frontend/src/shared/validation/age-range.ts",
+        "frontend/src/entities/intro/model/validation.ts"
+      ],
+      "dependencies_after_adaptation": [
+        "zod@4.4.3",
+        "C04 schemas/policy fixtures"
+      ],
+      "required_adaptations": [
+        "Replace prefixed mem_/sacct_/intro_ identifiers and pinned account fields with canonical contract IDs.",
+        "Retain half-open interval and unknown/null semantics but verify bounds 14..100/15..101 against approved C04/BE25 contract; do not set MCR eligibility from source constants.",
+        "Split pure functions from Korean error/copy tables and provider-specific draft model; author English messages.",
+        "Contact heuristic can reject normal links/9 digits; apply only to consent-protected fields if C04 approves.",
+        "Do not port client age claims as authoritative verification; backend owns verified age/privacy."
+      ],
+      "source_regressions": [
+        {
+          "path": "frontend/src/lib/api/canonical-contract.test.ts",
+          "git_blob": "5ccdbf6eb8acc050fcce71504f73788da37fce87",
+          "sha256": "e0294c6d1124660ade36c0fa3f97b2bb50b891f15bdffd74dcaaefee1520b63f"
+        },
+        {
+          "path": "frontend/src/lib/api/real/social-intro-client-msw.test.ts",
+          "git_blob": "e3a668419106bdc72b2841be13312eac24321de1",
+          "sha256": "4f64070c32634f79a60547dc6968ca9ccc04a200df35a5cfcecd9d4a20596f73"
+        },
+        {
+          "path": "frontend/src/features/write/age-range-authoring.test.tsx",
+          "git_blob": "a194e9a6d88b864de0422fae34f1f8d7eca39352",
+          "sha256": "1ad4cd1af894218570135277030748b4ec14ae5dc34aea67ff4509442d01cf07"
+        }
+      ],
+      "destination_tests": [
+        "frontend/src/shared/validation/text.test.ts",
+        "frontend/src/shared/validation/age-range.test.ts",
+        "frontend/src/entities/intro/model/validation.test.ts"
+      ],
+      "required_probes": [
+        "emoji/code-point length; trim/duplicate/limit tags",
+        "[min,max) equal/reversed/one-null/both-null and boundary values",
+        "no public exact-age/handle fields; disclosure pair invalidation",
+        "fullwidth/zero-width contact normalization fixtures and acceptable prose",
+        "source test fixtures must be synthetic; do not import UI expectations or backend file reads"
+      ],
+      "regression_execution": "NOT_RUN",
+      "copied": false
+    },
+    {
+      "id": "image-preparation",
+      "task_ids": [
+        "FE04"
+      ],
+      "decision": "ADAPT_IMAGE_ONLY",
+      "implementation_status": "NOT_STARTED",
+      "source_files": [
+        {
+          "path": "frontend/src/features/media/static-image-compressor.ts",
+          "git_blob": "8e6d29e814b3c27383f51a68c7fba93189bac279",
+          "sha256": "2467ab58d068e02ee95b3a721f3eb63ebc96849224567adb95f0613a7af13429",
+          "imports": [
+            "browser-image-compression",
+            "browser-image-compression/dist/browser-image-compression.js?url",
+            "./media-preparation"
+          ]
+        },
+        {
+          "path": "frontend/src/features/media/media-policy.ts",
+          "git_blob": "45ae9f21b960653bed149ddeff799b1618db4423",
+          "sha256": "7cb70acaa64bee53fbc318a1fdc67a0a5ca91581f19b809ccd593eea88e56ae3",
+          "imports": []
+        },
+        {
+          "path": "frontend/src/features/media/media-preparation.ts",
+          "git_blob": "f4e111acd27b4d00926f75e39cab2353679cf345",
+          "sha256": "d8db9324d16b8887e190162200639d99c418c283f241bf5eb1a58b66cb8fbf44",
+          "imports": [
+            "./media-policy",
+            "./webp-animation-metadata"
+          ]
+        },
+        {
+          "path": "frontend/src/features/media/webp-animation-metadata.ts",
+          "git_blob": "cd381f367180f8e50fde085afb668b2a78f8a51f",
+          "sha256": "b9838086d79ee69ed348ddfda99c8b9d6501fdb54a4aca31fc3ca4acc8504afc",
+          "imports": []
+        }
+      ],
+      "extract_only": [
+        "compressStaticImage worker and abort plumbing",
+        "image MIME/size planning and final-file checks",
+        "optional pure WebP container inspection"
+      ],
+      "destination_paths": [
+        "frontend/src/shared/media/compress-image.ts",
+        "frontend/src/shared/media/image-policy.ts",
+        "frontend/src/shared/media/prepare-image.ts"
+      ],
+      "dependencies_after_adaptation": [
+        "browser-image-compression@2.0.2",
+        "DOM File/AbortSignal",
+        "bundler ?url for same-origin worker"
+      ],
+      "required_adaptations": [
+        "Extract MediaProgress to image-only types, removing dependency back into mixed media-preparation.",
+        "No media-processors, ffmpeg-compressor or animated-webp-input imports; reject unsupported animation or handle through a separately agreed image-only policy.",
+        "Source 6MiB/6 items/4096px/5.75MB target are not new server policy; use C04 approved limits.",
+        "Keep preserveExif=false; MIME/extension hints are not server validation.",
+        "Do not mark 100 percent preparation as server-finalized upload."
+      ],
+      "source_regressions": [
+        {
+          "path": "frontend/src/features/media/static-image-compressor.test.ts",
+          "git_blob": "b1c0246e26c4b90de527fca124c0af94c64bdd10",
+          "sha256": "e41f892fc0ae7320c1002982b449c59dc19e3c85af756db73ba78e4df9bef8f0"
+        },
+        {
+          "path": "frontend/src/features/media/media-policy.test.ts",
+          "git_blob": "d6b56a20160bdaadbbe0e7b7452bc73fbed3bf46",
+          "sha256": "846905fbea55d0fe1cde4ff7e77bfc4f2952b84bbfa15fd28b37cc4ce80d62bb"
+        },
+        {
+          "path": "frontend/src/features/media/media-preparation.test.ts",
+          "git_blob": "aa51228be6aeb52fbb136319c093c953cda6cc91",
+          "sha256": "69b34d4daa21f36b4b17852b7c28dbbbfbd9e08d24f392ed52a93e6c35de10ce"
+        },
+        {
+          "path": "frontend/src/features/media/webp-animation-metadata.test.ts",
+          "git_blob": "7145659508dbb7745c3452c0393be4ff849f4669",
+          "sha256": "ef2427e4ddf271404cfc507584badf9757879323fd9699ffe0fdfc428681fad9"
+        }
+      ],
+      "destination_tests": [
+        "frontend/src/shared/media/compress-image.test.ts",
+        "frontend/src/shared/media/prepare-image.test.ts"
+      ],
+      "required_probes": [
+        "abort forwarded to worker and cancellation settles",
+        "empty/unsupported/video rejected; final size/type checked",
+        "same-origin worker URL bundled, EXIF disabled",
+        "malformed WebP rejected if metadata helper retained; no FFmpeg network fetch"
+      ],
+      "regression_execution": "NOT_RUN",
+      "copied": false
+    },
+    {
+      "id": "upload-lifecycle",
+      "task_ids": [
+        "FE04"
+      ],
+      "decision": "ADAPT_EXPLICIT_PORTS",
+      "implementation_status": "NOT_STARTED",
+      "source_files": [
+        {
+          "path": "frontend/src/lib/api/real/canonical-social-intro-media-client.ts",
+          "git_blob": "341aec0c545edc6edd16524976576878518fb547",
+          "sha256": "a8a3f0fb04e257af62f38ae66bc55b6a581b40b2514f952791a4fdd92db5ab49",
+          "imports": [
+            "./runtime-client",
+            "./canonical-social-intro-schema-core",
+            "./canonical-social-intro-schema-media"
+          ]
+        },
+        {
+          "path": "frontend/src/lib/api/real/canonical-social-intro-schema-media.ts",
+          "git_blob": "3def3d5a4c6f33443c6536af6f912ad892122d5b",
+          "sha256": "608f23ebc05a229794fbc074b8a1a4dc570fb036d68d00d0b35f16d5cc5dc9a1",
+          "imports": [
+            "zod",
+            "./canonical-social-intro-schema-core"
+          ]
+        },
+        {
+          "path": "frontend/src/features/media/media-attachment.ts",
+          "git_blob": "46ffc9bdaeaa1460e8dc21932cedd0a59bfeef4a",
+          "sha256": "4a83448ef94dad686ff38a4b93350fcb8df1ecb597965b1382c7104127c80954",
+          "imports": [
+            "./media-policy"
+          ]
+        },
+        {
+          "path": "frontend/src/features/write/publish-intro-with-media.ts",
+          "git_blob": "d2275a4c96799fd3af4d5b70d2bbf5a4a526350d",
+          "sha256": "41dda9e04f7742309d96fad4d5309cabafb4782fabc48e3d7571ef8570587883",
+          "imports": [
+            "@/features/media/media-attachment",
+            "@/lib/api/api-error",
+            "@/lib/api/client",
+            "@/lib/api/canonical-contract",
+            "@/lib/api/real/canonical-intro-write-client"
+          ]
+        },
+        {
+          "path": "frontend/src/features/social-intro/use-social-intro-media-state.ts",
+          "git_blob": "fa092644ec9fd6d5dee28a2be10cdf98b8eb87e7",
+          "sha256": "64411cc48adae897ad86006235b4525a4b2b26928e8d49a46c6c8bfb0311a9fc",
+          "imports": [
+            "react",
+            "@/lib/api/real/canonical-social-intro-client",
+            "@/lib/api/api-error",
+            "./social-intro-model"
+          ]
+        }
+      ],
+      "extract_only": [
+        "SHA-256/initiate/presigned PUT/complete sequence",
+        "pending attachment bookkeeping",
+        "failed finalize and unattached-upload cleanup patterns only"
+      ],
+      "destination_paths": [
+        "frontend/src/features/media/model/upload-controller.ts",
+        "frontend/src/shared/media/preview.ts"
+      ],
+      "dependencies_after_adaptation": [
+        "React@19.2.7 only if hook retained",
+        "DOM crypto.subtle/File/URL",
+        "new HTTP and upload ports; C04 generated types"
+      ],
+      "required_adaptations": [
+        "Replace socialAccountId, /v1 endpoints, old client barrel and introductory publishing workflow with injected ports.",
+        "Release object URLs on removal/unmount/identity change; media-attachment currently creates URLs without owning revocation.",
+        "Reconcile uncertain finalize by receipt/status before deleting or retrying; source catch-and-delete is not sufficient proof.",
+        "New upload state machine distinguishes prepared/uploaded/finalizing/complete/failed/cancelled and English errors.",
+        "Exclude IndexedDB/private draft persistence from write-draft-recovery.ts; scope any future draft state by user/event."
+      ],
+      "source_regressions": [
+        {
+          "path": "frontend/src/lib/api/real/canonical-media-upload-client.test.ts",
+          "git_blob": "dfea90feb8e9c0e20fc194bf14048d0f190015f7",
+          "sha256": "2d21a54a1c73f6b5bc8e6445c87fc0a32d6bd06d78b3b6d64a7930b8827a5b8a"
+        },
+        {
+          "path": "frontend/src/features/write/intro-media-save-orchestration.test.ts",
+          "git_blob": "8e5e5617bec754cbcce5c7d1da7c5c092c4d6357",
+          "sha256": "c34cbc6cfc038647654d62f2fd9de73404b5c1f2a623337250298217b2b0a764"
+        },
+        {
+          "path": "frontend/src/features/write/intro-media-account-switch.test.tsx",
+          "git_blob": "611c4dea09afd587608552c5ced3290e30a4298f",
+          "sha256": "a62d817dbae43d4aa0964440d443cafb0a51608dcf08efae886959ab7f2285fa"
+        }
+      ],
+      "destination_tests": [
+        "frontend/src/features/media/model/upload-controller.test.ts",
+        "frontend/src/shared/media/preview.test.ts"
+      ],
+      "required_probes": [
+        "finalize error/timeout never displays success",
+        "retry reuses command identity and reconciles committed result",
+        "blob URLs revoked once and late upload completion ignored after identity change",
+        "presigned PUT receives no bearer/cookie/CSRF and abort removes listener"
+      ],
+      "regression_execution": "NOT_RUN",
+      "copied": false
+    }
+  ],
+  "blanket_copy_allowlist": [],
+  "exclusion_policy": "Deny all old JSX/CSS/assets/layouts/navigation/themes/snapshots even if absent from this conservative path inventory. An audit candidate is not an import allowlist. Old TSX tests may supply semantic ideas only; no markup/screenshots/selectors copied.",
+  "legacy_exclusion_counts": {
+    "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE": 36,
+    "LEGACY_ASSET": 57,
+    "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME": 9,
+    "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY": 316,
+    "EXCLUDED_VIDEO_ANIMATION_RUNTIME": 3,
+    "LEGACY_STYLE": 1
+  },
+  "legacy_exclusions": [
+    {
+      "path": "frontend/e2e/account-experience.spec.ts",
+      "git_blob": "ba9338168fd0001cc9ac84e1806b1b205b94982e",
+      "sha256": "9d6191dbccfa965616cdab7165d46005bf9f8f2b680ff03f26a6a276514d0d5d",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/account-taste-profile-editorial.spec.ts",
+      "git_blob": "8b58e303b20e755ecbb3fa255b1e6c1a5dfd93bf",
+      "sha256": "bc97f6cb760e2f1dec2624ef9de156f16cb6c582715aaa732139d8d13ef6ba52",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/admin-daily-match-surface.spec.ts",
+      "git_blob": "85519c9e68a2282f52451063bc2cf5d299850c96",
+      "sha256": "d03aa59ab9156763aed50f0d76bf0ae6f55836506d74afcdf872c811803536b0",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/admin-fixture-api.ts",
+      "git_blob": "c8b0579d22a9b4f10a159f74de121a06f5cb7c82",
+      "sha256": "d65a4aed810dcbcdecbc86e4059b40b6490967f18c525363c80d8bcebf3e647b",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/age-range-authoring.spec.ts",
+      "git_blob": "e8f01724972a0fa793fb89d20a5e4bd4b34a7c19",
+      "sha256": "1215d3c7b0e2c4b4234c0444fd7e26186449c28b4111856e5906d7d98067f1c2",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/age-range-visual-viewport.ts",
+      "git_blob": "c5b399fb40bd0a0e62fd0cf7899d235bf9ef68e0",
+      "sha256": "4b0a13d58ef7c17faccc34093f15fed54683f105cd0fd9916e47e72977e1f128",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/assets/web/ATTRIBUTION.md",
+      "git_blob": "ce55d3e37b23acf9e2b32833fb6bc5ac31878c07",
+      "sha256": "b7cd4f0c41115c0abca17078ed65f7d1ac04f0c623faabf36ae6f69bfb78421d",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/assets/web/arknights-cosplay.jpg",
+      "git_blob": "86bd70163ef574c784e81290943042735eb33aa0",
+      "sha256": "2df482f6888858c6b02fa1e65181bbbb59394fd883a337f4b5772dd74cc7868d",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/assets/web/bocchi-the-rock-cosplay.jpg",
+      "git_blob": "187ce9286e03f087bfa15d7247722b67889bba07",
+      "sha256": "c0492e894bdbe72af41ec3c4db65cd753335a1f4f67123afb794ad877ccb5e5a",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/assets/web/chainsmoker-cat-key-visual.jpg",
+      "git_blob": "625555b4e4bc4b12c3800b82190403fea19a97a3",
+      "sha256": "4a068d7f81553816a7b291cdc10610e7748f855576095fbd3dd593ed6d9f7f41",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/assets/web/cortis-tiktok-awards.jpg",
+      "git_blob": "d93cf43bde16a014752493c1fc11d9e9468451f6",
+      "sha256": "0f0e811af4a4892834a9914e8ffaf85f2beffb6e7d2fef3eeb375759adafd92c",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/assets/web/jimoto-saiko-official.jpg",
+      "git_blob": "92874ef539b0cc54755a43fa7c26d7dd46f896b8",
+      "sha256": "3b0fe22b0eabee791b9978d402192ad08d82cbd260586b7f64614e9e6cc0a3e1",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/assets/web/pierce-the-veil-live.jpg",
+      "git_blob": "dafb1cecff944b52d72166c48abfec6c86bac835",
+      "sha256": "f2e51cd90732c04ede38a787786386db0aac1c79a8a1ba0848c899f291acd403",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/bigyeting-flow.spec.ts",
+      "git_blob": "90e1a19607b76d259ca3d2155b4a256f5dd1da75",
+      "sha256": "91e4a4a708daf73111cb13b2ceaae42d632a8e9a02bf6d224054fe8e93da2ccd",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/billing-providers.spec.ts",
+      "git_blob": "1a19e39969e7c223840d3c98c7a5cd0fe98b752a",
+      "sha256": "26a43874667cc4cedf76d6cab4adaa887b796a74d7c90c5c38e41a22f7cb2cec",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/capture-product-scenes.spec.ts",
+      "git_blob": "85754bf0f22cf4c80047515e307f72bbec696676",
+      "sha256": "cba1347e266d4d6ca2d717900e535037611a1c9d3de9724ade460e101b740b5d",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/container-runtime-smoke.mjs",
+      "git_blob": "c3a24f8abc4e13264d4e9175b7105094d8071c01",
+      "sha256": "3e8c2d077612ec853d7d3affaea6182ff13e746e17acbb5e9e395853f2d4c046",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/daily-match-surface-fixtures.ts",
+      "git_blob": "44eb5309666ce6bbfae98a438aadcb256166432a",
+      "sha256": "214574ea351f4a336c8f931a456a3f792238515e1cf92fabd71115f98c005227",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/daily-match-surface.spec.ts",
+      "git_blob": "4cdf73d141bf2776b458d93ee52c170ebc1eea4e",
+      "sha256": "039d760eb4192a8c17dda9f99f464316d6b9da892906ec4903f305aa18afadf9",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/exact-age-journeys.spec.ts",
+      "git_blob": "c5ecd9d9c93b8b35dbc13e896413b3493a3a617e",
+      "sha256": "15b0638b1d4d952b72c84df8cd114a80d21c4479f1f77e9b9a38662c9f349823",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/fixture-api.ts",
+      "git_blob": "e9c7f2cafa77fce7385e2c4316de899a77f28754",
+      "sha256": "61830933e8edd2d6f005155a5a704dd7bfc5e7be2c2bf8a70d2804779f359e40",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/fixture-data.ts",
+      "git_blob": "ed816e71f043ebfd6cdfe977557883e903d2f282",
+      "sha256": "1f590c706832d516ff514b2c1a1c39db721f35b1d5b96d8bce71ee222593ca7d",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/instagram-account-experience.spec.ts",
+      "git_blob": "8f1a964e720dec1000f4482730a7bc7663e8088a",
+      "sha256": "8cb5a23cfc5e8ed3edadf1d368e32c1e89417c6427ec22c1c6c70692877886b0",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/intro-authoring-detail-v2.spec.ts",
+      "git_blob": "2e3f0ebbb9567f0d475e92bde48bd525c9535207",
+      "sha256": "0d0096d1b58fe9431abeca3a2e2c2b517b776d2ab3e2854309f5d4e68075f5fd",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/landing-assertions.ts",
+      "git_blob": "89cb4006a90009318e000cdf4dd2e83ed0ecec5c",
+      "sha256": "9aef8bf7bccbc77dfa66ed4de627b0851fb519e74a9de12e16999da0a583d18d",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/media-compression-smoke.spec.ts",
+      "git_blob": "18dfad59b1c1547780d8766ca5016f45443bddb2",
+      "sha256": "59f75062e8d09db8112ca08fbb494b618e18b0bf446d2307d6020c15edfccce3",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/media-fixtures.ts",
+      "git_blob": "375fc9aa49c2c3020007ee0ae964b74616192c21",
+      "sha256": "45d97aac4f69814f675426c3a62a79a1e82537635216c898c57ebe476753acb3",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/mobile-real-api-smoke.spec.ts",
+      "git_blob": "1dae7600abff76cfb99e15427bd486ee428efc62",
+      "sha256": "e46bfb362df23e0e803465754016e893733860dd11bbfd077e8df345059b5b9b",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/naver-age-information.spec.ts",
+      "git_blob": "4fb425c831a5fa531ea4adcd47e4bbd3f1361e4b",
+      "sha256": "f012b64cfb605d5620cc7092ed6554ebcd5d87cb4391eaf7ede6464c38888f8c",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/naver-age-information.support.ts",
+      "git_blob": "e7d10822611e1486bd536815dff3518b90170a77",
+      "sha256": "aeb13aa571e5beb74891236703d0d0d66941bae1012ce94f099dc01a35ea9e4c",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/profile-comments-intro-authoring-detail-v2.spec.ts",
+      "git_blob": "a67958b03f0c1f783bc526457ae46d4b95eef7f4",
+      "sha256": "d0a9c59180f811e97f6b6001587463554962de25c18097caed7166fbc15bb832",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/release-visual-evidence.spec.ts",
+      "git_blob": "ac3e57efbed70243d28d59fa8b8001962569784d",
+      "sha256": "0cf911a2db21696eab9b761bef06d333605f03b5e9f2edd3e3a342412cb8cbe1",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/release-visual-harness.ts",
+      "git_blob": "3903e5a66903133edf1d89462e31d9752f206bb6",
+      "sha256": "1aed1deb7afbd43e3f2696c512b1fdcefe70432f63042a84e07bb6c21a2ae6b5",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/task-11-hierarchy.spec.ts",
+      "git_blob": "c2be088b72bdc07ed70865f9c222e8b5154959d0",
+      "sha256": "345e3edda2398b02d9bf17fcba772a2c9187a5b14b840c98787e1bccc5f4ba86",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/task-14-composer-layout.spec.ts",
+      "git_blob": "4e5a77dc63036647be8ab9be086cd01c6ef8e818",
+      "sha256": "f0c27ffbde8657f194f259a8ef069d7bf04a617af1d3d94ec0f0543be3618bca",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/taste-board-route-editor.spec.ts",
+      "git_blob": "5dd0bec28fc25c07808128b5c2b8921097e74bb2",
+      "sha256": "8fd10b09b35c5c7f2b36888cd4568611e27396233d966e3987fbe606b94e6de4",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/taste-learning-real.spec.ts",
+      "git_blob": "b692b8017742b10d856d712e9acbfd9c69857d62",
+      "sha256": "f20b967f86196ea0db9817d9a79779b5f23a14f2f2402ddff91f779418be8687",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/taste-pair-preference.spec.ts",
+      "git_blob": "7097c1eb9ca0df8631669c1cae337e2aac3d4b26",
+      "sha256": "b8ca985b25b01aff2886086a14682a4bf8d51e870b8ab9aa2807fecca9f8df2c",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/taste-primitive-showcase.spec.ts",
+      "git_blob": "5ac73f93010382b8ccf88ae846b3cf4b4cf7d9a0",
+      "sha256": "edc8b5d5ce7c1cbc74f2e791c1fe234c92247389ba8d97be0d2a9fe451f4223b",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/tsconfig.json",
+      "git_blob": "456f2a44def3754663c216358ad1fcb0ce9abee6",
+      "sha256": "dc5fcef00f8e2844a8d795ead9b0f46d757813b01c60e500af58d895d2291abd",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/visual-evidence.ts",
+      "git_blob": "821f87e40730e2576c0ba5935ccab5e8b197f208",
+      "sha256": "60c68f82164dbdc88a60a0f729b9605a2d3fdfe9906c40bf8828f77b0da7d8c5",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/e2e/visual-media-fixtures.ts",
+      "git_blob": "6517b1c897681b38a3550f85261059da2361e077",
+      "sha256": "e018c3a81e540cea58a978c31ffab8a566dc94309771fa4234d04da54f4a2453",
+      "category": "LEGACY_VISUAL_ROUTE_OR_E2E_FIXTURE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/index.html",
+      "git_blob": "9299f25683d38131d65dd4c001a6215256f97221",
+      "sha256": "8131745ffa8b447f51422e98030cf9b0f72d70f69229f94fad9326360363f854",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/apple-touch-icon.png",
+      "git_blob": "c96911469925546915f6c02b2645c1cf252f78ef",
+      "sha256": "31b82ccccee8d632f0b6264af502658bf313b5b7aa3e1abcaf8bbfae59155903",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/brand-mascot-768.png",
+      "git_blob": "c61bc40b215a971d70fa57aad03d209249a53f58",
+      "sha256": "dbe529752927e2ee362ef8c68f67b768d6e3a0b0d8cdf2c20c4d452960af4823",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/brand-mascot.png",
+      "git_blob": "2c49d0d94cb707d573958ec630156f617de2b40b",
+      "sha256": "b048df02728cc06606bcb1f6f7fa25e503722c76e94a8b173957e1c88a7bbcd1",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/favicon-16x16.png",
+      "git_blob": "268e87754b0424e5494323c1f7cf23156a08a240",
+      "sha256": "caefed3e4f49c1bd04e5c12071b8020a57b8e5d5729222d424b29e83804ca0f4",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/favicon-32x32.png",
+      "git_blob": "8fee7957a164ea3de6a161c51198d7ca95f82938",
+      "sha256": "7060d44799b100aed3d53bf444be4503e9171ff7db31d2df38f45a0f1c6699e2",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/favicon-48x48.png",
+      "git_blob": "0a6126881ed3224d7a4ae1b95a79cfaf364b30e0",
+      "sha256": "0712059ca71532a124181a82f2e3f70087dc4694902188a9327c6707b50bbc4d",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/favicon-64x64.png",
+      "git_blob": "51e95508772b2c081f6c2c7b3bc1a09deeccbf48",
+      "sha256": "26dd02c8574827ca9dbd7c3c2056f13ad1d0036e19aa7b62736c7583fd960dbd",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/favicon.ico",
+      "git_blob": "728ef5671b566d21eb27f235a8eba9afddec83ac",
+      "sha256": "4d27cad4e16eff9d34a364d543ebac8427aaafbb373452a8333ed30508009414",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/icon-192.png",
+      "git_blob": "a7b860438eff74cb59b853d81c1fd6c3fc7eceae",
+      "sha256": "4fde1c2be499fc53f28cd7b432a8ae87a44d618960096ce3f8954172e363872d",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/icon-512.png",
+      "git_blob": "2e1d3f554aaf2609c8c6bfc365381a1782f3ff58",
+      "sha256": "093e3fb460b0109c73b355c47cfe3e69b5576bfdfcf29be635da8dd1f835eb9b",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/logo-lockup-dark.png",
+      "git_blob": "71d639390d15906dd2f613b181ab64f02f59d116",
+      "sha256": "099e70e616a633abcb71b3ff1687d2682910d3d5a541c86b9f288962705f83a1",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/logo-lockup-light.png",
+      "git_blob": "c3e5d5741f5a24bddbd11fadf6548e47abe91f26",
+      "sha256": "8b81f8b01675f7c25cd20dfe1fec029e0e8b8e37143918f5a5cc41c3784768ae",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/brand/og-image.png",
+      "git_blob": "7362adf3fcaa864a21f358f49a8dc6b1b594674c",
+      "sha256": "e2174773918bbd891dc90c5e50a0244bfef77fe1e394b14301f96e16aa80f95b",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/icons.svg",
+      "git_blob": "e9522193d9f796a9748e9ad8c952a5df73c87db9",
+      "sha256": "b45fa506195cfcdef406ba9f0c77b36ddc1a7c224040926ec70abc2fdea7b93a",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/site.webmanifest",
+      "git_blob": "4ea600a9b956b41f95c450d724a5d57f50d731b9",
+      "sha256": "71dc4c40b2d23430704dc6595bc038dcfab8fa693f93343605fc94a54114a764",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/absurd-cat.webp",
+      "git_blob": "d9a0ee13efcb9408cfbe55b813c90c3b45411473",
+      "sha256": "09eb2e0ca4d242de8c20a06579b652d1d4306f0aecfeaa5d8869c1c2fbcb801b",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/black-red-stage.webp",
+      "git_blob": "d038c2aee4da213ad8e2857138bb72f9c264b239",
+      "sha256": "39eb1ba227760065b680d50b970ed6963e6ddee1f8e5e9cea6d5ed0dba809a12",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/cozy-books.webp",
+      "git_blob": "ec60715d4c999927e3aa05c33e43544854047568",
+      "sha256": "3d44b317d07e84ab0b85a10b437f99b393be196cdbc029085992ae7542316985",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/daily-window.webp",
+      "git_blob": "6bcc20980aa9327ed49f09ba371243886058ab25",
+      "sha256": "2b4886ae45217ee28e34fefde278cc55975516625b2eee6515f4984909fd25f3",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/guitar-cables.webp",
+      "git_blob": "46eea6fa804d851bc5657284e25abccc09945d44",
+      "sha256": "e0049ef8df114f9f2b3cbf425112787800468c0a6147c531546ccd1507490a3f",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/idol-stage.webp",
+      "git_blob": "42ee82669f31227def14282454ab2723c45adba6",
+      "sha256": "bf18fe69f01402ef7c9c3d19ee0d6ca96a8cc84da1847f8a6d62d2019645d49e",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/illustrated-practice.webp",
+      "git_blob": "4a409d19657f3b49403c0bd230431c02f1f0d53f",
+      "sha256": "2cebe9023d10b98dc62f34fcd0461f568a31e13d5a094722baec86ea87d032da",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/late-night-cafe.webp",
+      "git_blob": "a2278662c738447c14b6b7595679dfb64f263d01",
+      "sha256": "96ebe578858c771c6e634db08f2d5f8d397fb5b5be7ee1a50cf2c0b074e9b951",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/manifest.json",
+      "git_blob": "350f1d1d702270022a836b233cfa93b7125edeb8",
+      "sha256": "ed64ce27d8dbf2e29b432c5ebcc2e0938d0c0839328018de498df145827098cd",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/monochrome-chat.webp",
+      "git_blob": "7d3d9d04b02e3792f04a87c1d29a388df170c8f7",
+      "sha256": "59847c38cf3841159ba92acc3b8a076dc100f7e1885ec8a4e89ea214aa6e98bb",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/neon-game-ui.webp",
+      "git_blob": "9ce7b0840bc0eb64e6b11a6971d2aff21f9d4771",
+      "sha256": "0bab64771138edd18dd198c8a05130bd504afd25596409998510492a8860f772",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/night-diary.webp",
+      "git_blob": "9c9a78c0713d12fe7ba69be4978318f3fd37fd31",
+      "sha256": "fabee0fac3005bf183c49fde43b576236e63c34b74156d41f90a8f2b39da398a",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/pastel-band-room.webp",
+      "git_blob": "2e71b3aa4bed9af1007b684e2e0e741dff71f125",
+      "sha256": "7e530a6471f2d334e5aa39b5bcc9fa801dc4634d72c849034968545c3c4b125c",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/polished-group.webp",
+      "git_blob": "b0df808a4677316036b63aa9b504a29ce185484d",
+      "sha256": "847347b5844c4142b4865b41c70e87bb9a87c74d63d86b2ea5edf38fb6975304",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/rainy-room.webp",
+      "git_blob": "853476d988bf0d84a3a88fc79c6b7d7da28a2162",
+      "sha256": "9f118659f22683964d0062923cd099260472cc1e5b43bf493edee1fad1453abd",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/sticker-chaos.webp",
+      "git_blob": "7a815554aff721e3454687bb3b033782c96a9275",
+      "sha256": "a94f3af85b7b016ce323875c9891df56598b379ec0145880860b12cbacf48e84",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/public/taste-fixtures/p0/tactical-city.webp",
+      "git_blob": "90c6c1c0b71428bc0537b65d58758f37acf63961",
+      "sha256": "6138b8403126ddc0d3ceca9d7c371d87fd6906e83f5654fd84d380cd76036d02",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/scripts/assets/brand-mascot-f6.png",
+      "git_blob": "baf44bf3f5a746b366fc89cbf0510546b2c0bb2c",
+      "sha256": "a1580cf3d43133a2b12bf38ec1e7cf151c13b36d7630b35eee599b095d8d8aba",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/app/RouteElement.tsx",
+      "git_blob": "a1622ce35f53cc87d043f899caedd4492d049438",
+      "sha256": "873d52037d70fc40d7a86b5fe4bf51dc141045dc99edd91349921619323f5bf6",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/app/providers/AppProviders.tsx",
+      "git_blob": "038f248cfe141968f67b1e93357a248b9fb4a103",
+      "sha256": "aaf24e103d9e2dc302037a5f91e4a84db2f7ab7c696eac85aa47bda51bc3ddcd",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/app/providers/theme-preference-context.ts",
+      "git_blob": "f7539d33beeca060b565e15f19ff97c54b4e913f",
+      "sha256": "d7fc042d2420f3a31cdd8c3bf3fee49a4438fb6081f14313570cc66b7d7c50cb",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/app/providers/theme-preference.test.tsx",
+      "git_blob": "d50421fb4c269f91bf03b9a5b171ca8f6220a7b4",
+      "sha256": "bec72cccd2196e746d94454ada87a5c437ac097cf79fa6746c6260cbe336c496",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/app/providers/theme-preference.tsx",
+      "git_blob": "8871a33a09306c000e9da759c7c5c89344cc5e7b",
+      "sha256": "ee5eee03b41231a36f1f0dd542cc330712b32e7f66cf53092987519b921c6edc",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/app/route-pages.tsx",
+      "git_blob": "39350c401c7af939fb929bb7005ddd965ab92511",
+      "sha256": "3836453be56c0e80d4e1197eed5842b28f71a39ca86cf7abf463acf26b2dfdb9",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "git_blob": "158d18350ec6c71e2a67a35914fd1ff04bcb2819",
+      "sha256": "8018c5442e51409c11c82c57b557ff054a16bae4b1276b7eb72535b65a648942",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/hero.png",
+      "git_blob": "02251f4b956c55af2d76fd0788124d7eee2b45eb",
+      "sha256": "881ffbcaafc212e49addad08846a5b82761355fa20624253af3477ba33262c5c",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing-home.png",
+      "git_blob": "7bc461e06807923485da0800eed7c499e0c1956e",
+      "sha256": "af3c512ed5031287686f2ebe08675d3e00d76035caddf5dd9d1d57dd088ec378",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing-requests.png",
+      "git_blob": "18b89a08616cb568b230624354d2f0f74cf8ab6b",
+      "sha256": "69820e617fc94a1075b7f1041efd26c859abe7ebd072cb3a71af2de387a3d8ce",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing-write.png",
+      "git_blob": "ebed89143cd1e636b7c498611ee3b2c2598603da",
+      "sha256": "1a91d6485c4b35e590df6e4d0f34e39d4c79535493eb688426abe606b9156ee9",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/home-dark.png",
+      "git_blob": "3d54328d638a0e27e1d2d0896238695ac8a089e3",
+      "sha256": "144fefb0f309ecb472cc4c4d6fd715ba9f6ec70f154730ee7c50da4f20333af5",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/home-light.png",
+      "git_blob": "1466ff9871d21a324f71eddc73b3b413538a586c",
+      "sha256": "49e8b701e1d26bef96f84e8b469ade2e5ca3afdcb46630c819c51dfc3bf5e4e7",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/home-mobile-dark.png",
+      "git_blob": "03d8eaf9b5a52953739a521383a4c48ed8b90f11",
+      "sha256": "f22f2df3a9d70d8fea556330d00cfe0d2bd7e314d8d55cd81284630c4a677863",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/home-mobile-light.png",
+      "git_blob": "09842939ffd03369d4dd3166f17b494c7a672ce4",
+      "sha256": "347d3160d1e98e4d6b09f87f6e2f994631122f2a4f04ec3013c8fc99699b2a02",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/requests-dark.png",
+      "git_blob": "b1d852bcff66a0ba39643b241d501217c3bc82e2",
+      "sha256": "eb7a4886ce008ce838e40fd6a4ad6b74a6d389e9ec6e79f583ea4c9b3adb9117",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/requests-light.png",
+      "git_blob": "9f110332665a2dce445e2dfcda43480caa6ea5e4",
+      "sha256": "9b7d58bfd7d408bef28a3097e99a12758b764c980641917c031eddc57eb72b9f",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/requests-mobile-dark.png",
+      "git_blob": "beba99cddb34811c1c8c1c256fff974be0de2cf3",
+      "sha256": "e5bdb5909fcb6bb0ddff49c0e85854d10e9d81a8862a3f2d7aeb9e3d1de6b5c4",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/requests-mobile-light.png",
+      "git_blob": "9154886e160325949635325b999635723801a133",
+      "sha256": "119724064ebd783215b2bcb7a2cc266d8979f99667ac401d72be06e660fcc192",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/write-dark.png",
+      "git_blob": "7dd4717c4fc8128e725739c3b1a31d4e7e59d0f2",
+      "sha256": "e42bc3fd07fc756ec7d8a568e5d3acdb7a16d8d08b0efc1f1ecc4a3cf5ff7618",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/write-light.png",
+      "git_blob": "f9026f31bada44760a7c69d8699b7d0b54cb4ac9",
+      "sha256": "a2718d5f50451aec09d1512aa54893f871079e8c36122178a3df802901c32348",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/write-mobile-dark.png",
+      "git_blob": "0e653ff29da58b34c642044b38095bae1d839d5e",
+      "sha256": "2d70ce10af05b7c9e860366d93b69112fe287a181fe0c00a53754d53dfdcf7b0",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/landing/write-mobile-light.png",
+      "git_blob": "320fc228d85de70a23b11c359363e74b860dda12",
+      "sha256": "53b080c89a77c789d694124df76e497906e6a0888a447afd70423f30d6df2390",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/react.svg",
+      "git_blob": "6c87de9bb3358469122cc991d5cf578927246184",
+      "sha256": "35ef61ed53b323ae94a16a8ec659b3d0af3880698791133f23b084085ab1c2e5",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/assets/vite.svg",
+      "git_blob": "5101b674df391399da71c767aa5c976426c9dc7a",
+      "sha256": "5be21acd42eb7b896e517f4e0f0f11eb5c5d9e54fbbcebe9453f033008fcca6f",
+      "category": "LEGACY_ASSET",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/AccountSwitcher.test.tsx",
+      "git_blob": "723bd797f2df1885777e034e9a54390e161e2697",
+      "sha256": "2b24fb72f753e7564edc49c3c93719bdb601d7776e988be802bd56d471976e41",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/AccountSwitcher.tsx",
+      "git_blob": "1f09edb076afccc2588b6cffbe6e2168b332f339",
+      "sha256": "3b6e1d442e615d279828f37f5f96249812b2fabb6ecde0a84da2ea8d0085cbd2",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/AdminShell.tsx",
+      "git_blob": "693428fc1d7baed89606189ba3b7628d68414198",
+      "sha256": "a016aed09d2ef686cbe33b4d15607100cff71dba30ff516d79d78ebb0a6d6715",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/LegalConsentGateShell.tsx",
+      "git_blob": "0f0672992815ffad629475e01d143ca5f2fbff28",
+      "sha256": "102996ee72ab429f044a7c40c58100f014c7a65ce493ca4f1204894e9dce775f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/MemberAppShell.tsx",
+      "git_blob": "29ff04670a3ce6b3b5d682a12337f13349ec6454",
+      "sha256": "770a4769706046798a0cedceb66cd633d8fbd18bc69bb38c21d1f9e3e1233b60",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/MemberDeletionGateShell.tsx",
+      "git_blob": "2aa5be6b23339b16a98365e2e222659aeb17e7d3",
+      "sha256": "9924f175f3cfce887452164d17a6b4d0a0f2cd07517b1ff6129a01812c825d25",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/MemberSetupShell.tsx",
+      "git_blob": "f08e2c29a2897c8dfb64d86aeb18c8dcab911b4d",
+      "sha256": "9352d885bdc75ce4e8c4931045f90ca0ee88d156527acd6888ca464050229096",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/NaverAuthGateShell.test.tsx",
+      "git_blob": "35dbec4fb801b2b9c8b321dfbfab3b604be25aa9",
+      "sha256": "1eb6a4cbc974768c667b52c8a43dd457be0b8c07917047195d55a1aa8a04e9d1",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/NaverAuthGateShell.tsx",
+      "git_blob": "ef23ba2dc41059f7bbc6b963bbfec6b0582a037b",
+      "sha256": "52cd3d6750e75b0bf6ffc478a813398110b0cc533ab58faaa9845c5909589146",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/OperatorAuthBoundary.test.tsx",
+      "git_blob": "9f0013c2a3aeb004a71959bfda133d8c078905fa",
+      "sha256": "2336479f47b63905a88054eef94ac1727b95063cf6bb397790c78aa62b297be0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/OperatorAuthBoundary.tsx",
+      "git_blob": "dc291fda4f7846a6ca68a5a0403a1cc5d956e825",
+      "sha256": "83b465ed820c8b40662251cde4d78fbf560bad7a3149234af6785add006b2743",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/PublicLandingShell.tsx",
+      "git_blob": "430962119ba8d3e21a2196df045577ea030eaf78",
+      "sha256": "4564010551352a73884146006ec6fc9e7ec05a9103fa46e91d4c6b9f4e4426f8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/RootLayout.recovery.test.tsx",
+      "git_blob": "6a34025fa4af6465caee58798779b0a274dd7410",
+      "sha256": "ea5fffadb290ecb0bc5a845bcadb16e9946c98bf5e21a6389124d02700fd477c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/RootLayout.remediation.test.tsx",
+      "git_blob": "80a1d603396c169bba54e848fcb0f6750eb517dd",
+      "sha256": "aa63f3cc73e0bf248e16753e0fff4e59c71ebda66200efa7bf32992106aa7152",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/RootLayout.test.tsx",
+      "git_blob": "e99472b92b2ddb6e69e0b638ca5e75d6ce5e7db5",
+      "sha256": "c48c57385045745c1463eeb8efeb44a506d143bd9699b7513f94d59618fd2649",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/RootLayout.tsx",
+      "git_blob": "ff6ee0098b9d36901a9a84d4e50cdabefa7c8b09",
+      "sha256": "4320b77adc0406013f5b3e0047ace3f43dce3cde1be53c6e92a17d9ab35aa938",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/ShellContent.tsx",
+      "git_blob": "bd3886c40d96b2dc50f7df692189267937661fa2",
+      "sha256": "17578290dc615df01d2b6e145ebe4b5dbdf679cc9dea209f1947a07f57588869",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/ShellHeader.tsx",
+      "git_blob": "20d6572c61af67050cb80b3089d122ce8f157cb8",
+      "sha256": "46fe53189ca8eb3315fdfa8bdb9e6547070bb9136712b5b65dae5dfa456f7d00",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/ShellNav.tsx",
+      "git_blob": "112bcb0be3a84a9ef763933f30856630bbdecb99",
+      "sha256": "5b4e4c1cf95bb4c3af76ab590363704a38a45ea1aff622bb196cde909faccca8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/ThemeMenu.tsx",
+      "git_blob": "54c2066d6bb9ca6a38185376096ed0a6555e3fe6",
+      "sha256": "9a8870234165a733d9ca2945cd3fb3db9f1a75874d67965c093628864bf611c3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/ToastViewport.tsx",
+      "git_blob": "a4efdf33265eb580df6ff39f6cf3936c81095ec6",
+      "sha256": "caa7d91a65b072a5d167d91780ccc1063498b3c548f52fb124bb132eaf495e83",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/member-auth-callback.test.tsx",
+      "git_blob": "c03f28416ce3a15955c30248a45d0f49a432fc03",
+      "sha256": "615d8eb39072bd79b81310d77e35dd0a5bfa75711d633ccc4a9fadf8ae8e9c29",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/app/naver-callback.test.tsx",
+      "git_blob": "d72ade6bf3388491ab3c3ffdbddf98b27024ca29",
+      "sha256": "7360c42bdfb2cd5fdd8debad369c16c2aa27d6b162a0b93d4f9af72d3fe81ff5",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/react-bits/blur-text.tsx",
+      "git_blob": "c8ad5abb657fd10a75bc81b27fb46b7aaa61f161",
+      "sha256": "38f55c416cce208b0627598bc4058744bf0b1b3c54bb8322248a062578597f77",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/react-bits/landing-reveal.tsx",
+      "git_blob": "ff685f0aef56e4f92a3fd091feed9d128c331f40",
+      "sha256": "f7b19252483437f86bafcead03595671d73251715cd242fcab114f90049bd3fa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/react-bits/subtle-feedback.tsx",
+      "git_blob": "b1adaf514c5c8664c16377bc2a9968980baeef41",
+      "sha256": "ae24d33cce96d3980fd977d46296d6fbda06dc4e90eab342093f624c29feeff9",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/application-hierarchy.test.tsx",
+      "git_blob": "c9d9ef55e73e83aed3bfc9e69169fca520f95064",
+      "sha256": "4b9d751840c79a41f6d5e8ccf6c83c7fab92018f0028428901c6c5d7108222e4",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/badge.tsx",
+      "git_blob": "df9bd52b943df2a4830813cd1799147a4cf11c74",
+      "sha256": "9bd68b2890d35174fd238365e3572d4264401053e8083e4e18582d00da70d558",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/brand-mark.test.tsx",
+      "git_blob": "7d25c2f1cd8f022952787d872a16bc9056526a82",
+      "sha256": "d3e32f61a52599d16adadbdd4da01896487cceffceeb16e73bb480c7a340cac6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/brand-mark.tsx",
+      "git_blob": "3e2c2c665ff38bf3600497d190f6949247395b9c",
+      "sha256": "0b4ae1e86d42a9a497468221d08bbaf6aff1ddd102088c52ef0089362841e049",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/button.tsx",
+      "git_blob": "ba5c9e28e494e46165d385821fb6c1fb85be5cdc",
+      "sha256": "7c09c1da3f06c846522ef89ceae2e8e3a59eb3ef59646a7bf0286fa5b0a604e0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/card.tsx",
+      "git_blob": "09aecf597f60a666aa032b9edcd220e7c2bb1edc",
+      "sha256": "ca0b3b50026631a0bba0a055f9cc1b301dd98c902d4bef0f7cac7b192fc068c3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/dialog.tsx",
+      "git_blob": "9def3ef4199d5069fc31d0ebb3c851d4c6f7275d",
+      "sha256": "9bb7d6429ad4ffff1ebfaeca0bcbdae942bb6294111a0fb1b6131580a14db6fc",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/empty-state.tsx",
+      "git_blob": "96ccb7faf0c8a111bd81b6f5f2f7d39543d404f7",
+      "sha256": "ec06bc258ddc3c6bc0d702d9be52725aa5d788d5d0e67c285b2b777b3f8407cb",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/hierarchy.tsx",
+      "git_blob": "e6a3c1919c4591e363a4650c0e78329a21fbe17c",
+      "sha256": "dfc06b3f56d8caaf590f7e7c249a50223c5c722790ba57b9875f2c4fd20b287f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/input.tsx",
+      "git_blob": "48ed4c21277bc8e278d3986560dcf1fd7aa73671",
+      "sha256": "13a5d603aed8ab0766d541296e233882c06f5190613fa948ba686f781da9124f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/linear-shell.test.tsx",
+      "git_blob": "c8f7fdc5f6c0e8d5b8592e2cfd1b442e6409bbaa",
+      "sha256": "1e14fb7f2a982a82971274c32eca8bf2d801b7105cecedbaf49b2fdeff8d6ecd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/list-row.tsx",
+      "git_blob": "cdb328289609efdeff6a32df9f71f19aee588715",
+      "sha256": "e51191694d85608f5ba9890bb207b572aef67280d673f550a6c0efc21b32d8e9",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/page-header.tsx",
+      "git_blob": "a57f83926a689c7ca6e354e4e509bfac34660f55",
+      "sha256": "0fdf109e754f3c81a229b2bbd5cc3d9d232e7c6701901458f287db9b796bb0c8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/profile-avatar.tsx",
+      "git_blob": "5e7739e01c91a01704d8837bf6dcfb5535454f7d",
+      "sha256": "45b5894a77bd64f575b694e4914f09dadc7721c548f9262ce474c4597ed5bd23",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/sheet.tsx",
+      "git_blob": "200c0bf02fcfff1b1c2f7b9ed8bedf9f16228091",
+      "sha256": "6368a8b26f1efb180989c4ef4cb53baba87764b02629bc7f0e672be3f31145cd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/taste-icons.test.tsx",
+      "git_blob": "74fb6192484d7ebcfdbb0c9fecf5dfd3949af2c8",
+      "sha256": "beca900364964ca2017a61e03da1290a5db9cb7cc84d8fd216b2c37dd2a9ffdc",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/taste-icons.tsx",
+      "git_blob": "3b1102dfd8eb680b7adfc153b56a717722fb75dc",
+      "sha256": "85cede256801e8d358794e3987218b3c604c766ab4c10ca7cbf3b23c5b4a80f8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/components/ui/textarea.tsx",
+      "git_blob": "00f1797c8817aa947d9a6c1afab7cd50c14b7714",
+      "sha256": "7623af3fcbb1061e48a04540b7e96507643de0a6f7bfc218d8d294024a2902a8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/entities/discovery-preference/ui/DiscoveryPreferenceFields.tsx",
+      "git_blob": "f615f5c0d7f0bae2018995c5448928741150f6cb",
+      "sha256": "15aadaa5347ac06efb00768c7f2fe25771b57f0ce972474652812001b7a02c8d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountBlockSection.tsx",
+      "git_blob": "1d2c05e1ac0b1aa32bdbe8021d006bf159f5ccc7",
+      "sha256": "9dc47ac57eed424aabd8052b6ab7bb8a99bddd381a3a65877512d9451aa6f3ba",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountConnectedAccountsSettings.tsx",
+      "git_blob": "5afe655bf58683c847c824644fef354cfaef2180",
+      "sha256": "435e7336d6b26681fb174e5b83d0a89449725a9af069a5ab1646be78b3304955",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountDeletionSection.test.tsx",
+      "git_blob": "aef60d1f1c09acb433d5b990e640cd3cf8c64021",
+      "sha256": "2c9aa06471d0f13951da5d91083a885a43d4f15b9f8d06bc954943f777760b3d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountDeletionSection.tsx",
+      "git_blob": "1683e4f5aec6811ba92a957919389aff12820055",
+      "sha256": "c5b735e2becb1db4fe57b472f9b885bc2018a776a1cea3ec793581eb73007c57",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountDiscoveryPreferenceSection.tsx",
+      "git_blob": "a4aef777d57196784a0d1c80b986b9bfd34585e6",
+      "sha256": "bfb3e0e7112237d4f1c88c93dabe09e91b1a9181c6d34f2fb96f7a5a65c9a127",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountManagementPage.tsx",
+      "git_blob": "3810cb584d218886af5b398270098b38510c2732",
+      "sha256": "ceb1a8d8cf196371eec91ddbbadae36e006c6bb32d9ca30ba15f5e2a15cb4f86",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountMemberVerificationSettings.tsx",
+      "git_blob": "2ce6e52a02ca6a8d45dd39370aa877b659323be7",
+      "sha256": "84591b477047ab4456dc09dc2a80fe9058aa55594a0b75f0803fd7a05755d405",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountMembershipSettings.test.tsx",
+      "git_blob": "9f71c8192d0381774a278f93a61d305b4f33ed01",
+      "sha256": "b9fc2eab94d192f093fe018c44e28d6ddece8037398925118290d51fd30b3508",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountMembershipSettings.tsx",
+      "git_blob": "a0047602d95368249329ea93fb34263736470ddd",
+      "sha256": "2d15a06a80acc754c6c347a6e7d9d1665c3aca46c0a8dc0d9ec4f4457e997750",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountNotificationSettings.tsx",
+      "git_blob": "285c93117e17076b6c384b88e7bdc74f9e963b37",
+      "sha256": "43bcf5b8bdd528c9c0081d13e9cee3063f9a481b50c3c440a83844b070d575f7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountPage.tsx",
+      "git_blob": "243ff6291514dc315ac3388b25937fb4abfea100",
+      "sha256": "de6acf94be850f17f498d703c5ced8a1535b1e1461df7e458988772e2dc4fc61",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountPageParts.tsx",
+      "git_blob": "b2eba28bade0f0e71ec55d914ff62a5da3a02af7",
+      "sha256": "a1ffa7c76f189c0e7b82584e2d65177e83f8cda3aea0425e72ad606b815c1013",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountPendingDraftNotice.test.tsx",
+      "git_blob": "6eba7b404ff657db8cce2277a0a4cf4732eb6381",
+      "sha256": "ab8f65047171692a555d3bcd2727951e3ecbe67412e77aaa343d4a5004b8d579",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountPendingDraftNotice.tsx",
+      "git_blob": "c64cdc386ce05b9f25adf1bcd4bee9e45972edf1",
+      "sha256": "31cba87a783663f2020ac1b43215b985266f785d273ee5961211f28aec4905f0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountPostGallery.tsx",
+      "git_blob": "3a1d7a472dc3975a77f7e2766f99536f370ebfe8",
+      "sha256": "a84701c4978f9d9854352cc47a0e11ba01bfee2a9f8f2de482021b0a428e9ee8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountPreferenceSection.tsx",
+      "git_blob": "ce815555266ffb5d1f818e4dafd12ec4ce7cf8be",
+      "sha256": "5d46fe79b198b17280a083a873e29f2b832de15ad998f3f5eaaa62d9e7f9d92e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountProductGuideSetting.tsx",
+      "git_blob": "e6f430e942385bda0d07b3a8707259ee0c3017b4",
+      "sha256": "7b9b26416f772188efd9de1f85ada98463387dda0d74da47a7ed3a4a4398b9e3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountReportStatusSection.test.tsx",
+      "git_blob": "d8e3f09b89f1ee6278524b1b443baa0bd6ed05c1",
+      "sha256": "f8c337d547caad5ec6b660b26d7f3eb2477b7fb9f266e927c8f2ad82ac13056f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountReportStatusSection.tsx",
+      "git_blob": "adba29f052859f296967cfbee0069e3106e171a1",
+      "sha256": "0f1c1ee245d1d4e29ba662e32cd33e198e44529cb90c3ad710f11ee114ce2766",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountSanctionSection.tsx",
+      "git_blob": "05ca888eac7ba750e8a2dcdf673fadf746904bcb",
+      "sha256": "a9e1661aed2bb6b9f29530517373cf0ac9d91f1b3d0fa3ddc07f220f101d3c34",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountSettingsDetail.tsx",
+      "git_blob": "627f9db981fad92a9b081acde1f3c37d77767cea",
+      "sha256": "094e6a20c22669ea6aac21bd02d125ae39238816e478ae556b3abce5b849059a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountSettingsDirectory.tsx",
+      "git_blob": "c46df7ad0a6fbf81541a94535d594b637c1ff1c7",
+      "sha256": "8068ed24e72a2b058c4e8fc746777a63b296ba030d4249affb44803880029a7b",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountSettingsView.test.tsx",
+      "git_blob": "b7bc6915f514aa5af62a7f40b81e7d53c71beabb",
+      "sha256": "1832efa96bdf4ab23213988b8a542b147ddf4c79b968d538e5a29d3a65f9f117",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountSettingsView.tsx",
+      "git_blob": "cd336db180cfaa5645d03a224d23e5a12240cec0",
+      "sha256": "aaef4921dfaa7d6bcd541a892c7794719413979b2aa23aff50746d6348fb2548",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountUnlinkDialog.tsx",
+      "git_blob": "c97926716f03873e8060616785723b80ef1b20ef",
+      "sha256": "efa4987df93393fad94b2caf66f92569e83b4f9f897f51d60cf420cacf1f6466",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/AccountViewTabs.tsx",
+      "git_blob": "e62355afb4e784040df27a101cff5fca15f0bb48",
+      "sha256": "8987499f7717014854fed663153bf9e1a1e8a36514fd17259849dea27df68a2d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/ConnectedAccountRow.tsx",
+      "git_blob": "9e9fcf7d079f7624ad59e3812e4eaf386210f735",
+      "sha256": "fa698091aee65ba3ac2291475b4fdc3a0d954a229c374a51bffaef7eff0a6721",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/NaverAccountStatus.test.tsx",
+      "git_blob": "a7c626cd00939bef8749f3990eba7a62230476fc",
+      "sha256": "71ba78f4ab35d657005f74a2f1ff2d47e22221463c0688741be49b142564712f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/NaverAccountStatus.tsx",
+      "git_blob": "49bb91e6f8cd399a1b97c02b15287a7f2ad50b69",
+      "sha256": "5bfa4942c9c693be6fd60dc7473a3c5e70c1836ae9841950626ad26d677dd6dd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/NaverDisconnectDialog.tsx",
+      "git_blob": "4b4cd7ebc1e5d80e21b0c91ea377f86da6a24c64",
+      "sha256": "09076ee899b05ce21ce75319c8b63364387c57e45e572262e46cbebf1ca19ebd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/canonical-account-page-mutations.test.tsx",
+      "git_blob": "06aaff94e9180b3ab9b4857077ddcdced9aa5b44",
+      "sha256": "66aed896f6739d296aeff92bf5d1324ccfe55f7ae902faa52a22207cf8e50c4c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/canonical-account-page-test-fixture.tsx",
+      "git_blob": "70ceadffcef4cc37cbb9e0876fc90571f92b9716",
+      "sha256": "7d407f64d3c057db08f50327df672e834501172c6b1756eb50b312a0c6030799",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/canonical-account-page.test.tsx",
+      "git_blob": "b8f9d34d55ae0ed7caa41e5410e60cbb742a78cf",
+      "sha256": "3bfb88df5531830355703d4c1382a1411cc31acfe08deb59ecd23dba812fe8d5",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/canonical-account-preference-section.test.tsx",
+      "git_blob": "18dd9668475bc4894362529b789a48bc6c3c3413",
+      "sha256": "f15d317168ac4388a71fabfd69f95480249df8ae0ba8920a76cf8f8be56c4ca6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/canonical-block-section.test.tsx",
+      "git_blob": "9b5c3606c8232a6ed06fa38c0d3da14d3f9619cf",
+      "sha256": "5a12f009570dd98fc908b82e968700a994142b160a27a0142fb194c065bf955c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/account/naver-disconnect-dialog.test.tsx",
+      "git_blob": "78ab94c2fab680622fcf4901c5209d622a99f29b",
+      "sha256": "a070d8a2ae27b8e350f7d1792c7f7dfa8a3b02c3d63ca14260c7b557674c7d17",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminAppealQueue.tsx",
+      "git_blob": "9e1e7b8f871e3c2eb82f14610adf8a6b539cbe8b",
+      "sha256": "af65d69dd151751bb9ad2bcde009a726db8fedff4e2307391bd70c8d70c47fff",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminAuditReceiptList.test.tsx",
+      "git_blob": "7464a95bcf06277a7146283cf6d9524ea0f09fa3",
+      "sha256": "bc39765e85963280838227419ae649cae995b507cd0c67afc6ab1f57a9bf251c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminAuditReceiptList.tsx",
+      "git_blob": "98e02d9be62028b53cbdeb081b5ea3f7ab5bca55",
+      "sha256": "faec52e9e351d980d922ed75d41ac2d54f0b866265ed13ea4bde972bdb2b5c78",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchCommandDialog.tsx",
+      "git_blob": "f24712c5704944f549cc006609b90eedecd29a61",
+      "sha256": "b4328191b8745ddde9c424a721aec9d47d5e732bd8e38c330b31dd3fb972ab8c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchKillSwitches.tsx",
+      "git_blob": "3077b1f49f5fcfc468293b85888dfa28da37934c",
+      "sha256": "80677ff439141065171afa01cd4061d6d901fd6584c6e79e2845ad65578b80f1",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchLiquidity.tsx",
+      "git_blob": "4425895e899f643c7f59b793a0ae37e4c669aaf4",
+      "sha256": "5d40bb1455ea6ff15f1c6f653a430b44497edc3b4aeb751eb15e3f1c89be526c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchReadAudit.tsx",
+      "git_blob": "f887b5799e4cc2bd1251a4d05fb12f92fb3b0c94",
+      "sha256": "ae8f438bc74d22e3510419d7d0e8c25c1fea9c2e3b4d4ff0d7059d82831e8a6f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchReadPurpose.tsx",
+      "git_blob": "5e214441ff7818e9634f1bad166f93a92c666311",
+      "sha256": "78870e872cbe2b4e4dec4f41487769b4e486871161427cb21b95a90410807371",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchRunDetail.tsx",
+      "git_blob": "27bac452fca236cb893ea8d1851470a582ab7f4b",
+      "sha256": "45d536afe90611521479e2a58c7471d24d3ff71768041d0c392374f87261e5af",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchRuns.tsx",
+      "git_blob": "faf7acf72c576d5acc2771ca931185c44088e375",
+      "sha256": "333e76c8669b3882f6e1a53df56937f28947bd142bd4a036fc35acdc719033e6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchSection.test.tsx",
+      "git_blob": "bc22b772c3dac3c699903c14c9facadd9f7c3bcb",
+      "sha256": "29112e42e5d142f9238ed81b0b235f62ee94d55b8181bfd20b7382bb3a1d46cd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminDailyMatchSection.tsx",
+      "git_blob": "d15532194cac8d5cbd0485c40d5cd116893f934a",
+      "sha256": "68ef6e61cff77e41e6585266f67c9c581689149f1712584e4d53f4cf9e3f55c2",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminMusicTasteEventRewardsSection.tsx",
+      "git_blob": "2de8ffecbe582b572fd10162203731158bb6b0db",
+      "sha256": "2d95632ea244e327a23106627de1ec71367b555dc5bddb8012a4c190f8963d2d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminQueuePage.appeals.test.tsx",
+      "git_blob": "fade91ed66290fc68986bcd3470f45d9a20a9fdc",
+      "sha256": "ccaf9a358557e9da26e954b1b612b4ffb000871f2b34cf8b78639169f22ce1c4",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminQueuePage.report-workflow.test.tsx",
+      "git_blob": "78b8083020bc7cccf336068b2596bafb3041fd38",
+      "sha256": "91222bce87a9ba6f69e10a8044438db8d60499fc7bef92529c4563f1584ab4a7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminQueuePage.taste-games.test.tsx",
+      "git_blob": "a0b826350f1be7779bf29fea9b0becf71191c1e3",
+      "sha256": "c4c016123d4961be0ebfa68c3634b78ecb8b85e56f9985177eefd2a154dcad66",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminQueuePage.taxonomy.test.tsx",
+      "git_blob": "9615fbe5de2223199a832473d593e47695f58d78",
+      "sha256": "84d77d52184c03712e574f8317911e2bec5520d87cf4698a72ed4f620620b088",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminQueuePage.tsx",
+      "git_blob": "d02a2f887e6fb2d407a96b8c8bedda3e8256adeb",
+      "sha256": "829e56e51c1d4b403dfa51ac67c07d4ff07ec62736121a2fae9e251cb4cc24df",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminReportActionDialog.test.tsx",
+      "git_blob": "236f5912cdd2697a7b7eadfcb2c0bc7d76402ee1",
+      "sha256": "64eeab05229e3156b072b7f0f44aa6421ec182ff617bc15c4d97fe98d7e8e7fa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminReportActionDialog.tsx",
+      "git_blob": "7a121684a6bbeb316d5db59cdb0ff164ece69e77",
+      "sha256": "bd41cb175ff5d0894ca089b98cea2c979c26383a274844a27cf27fc55d0a6f29",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminReportEvidence.test.tsx",
+      "git_blob": "f371827fe9404def8f49689d3b124f67e4722ac4",
+      "sha256": "dbe5b54a5fa47da0ffc713636832770fc0d9dd9fc80e6faa368ae5d8a172df5a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminReportEvidence.tsx",
+      "git_blob": "0cc964c1866870a69e6097f07097ba8c2758e9c4",
+      "sha256": "b820bb674d8c1f16f29140838bad18297ca2503dd998d49bb43bbb39a4f57d37",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminSocialIntroMediaReviewPreview.tsx",
+      "git_blob": "d395428920535d87ed7fa744172dd9dd64737314",
+      "sha256": "9bc0dfc2e5f5f4474d1d0a7ce47182ff5c2407b2479953dd0f6d12374e089df1",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminSocialIntroMediaReviewSection.test.tsx",
+      "git_blob": "27a9e0bb1e25920995c447b0820e13fcdacc5cbe",
+      "sha256": "5c26bd757623b5357a9e6b568b4b93b6a65f405512e8c5597f7c9700c68876f6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminSocialIntroMediaReviewSection.tsx",
+      "git_blob": "c47d6bfecf9473da7d1241be8222ffab56b204c7",
+      "sha256": "ed43ac7e2c167c27407b3e7a674af33a5fbe27ef130b736be6a3be818829c44e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminTasteGameDialog.tsx",
+      "git_blob": "6defe82ad6614440874adf9f412e381d203254b2",
+      "sha256": "cba814316c2890313854b678ac4819aa4e894bb326f0de556f6ab8710b0e72d5",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminTasteGameSection.tsx",
+      "git_blob": "57e9e45113c5c11c6b04b91b73a7ecaabfeee76e",
+      "sha256": "3fdfa52c6a9c08dcecc2a05e03a2c37108d0e6bedd3d444a43e0e206429cfb5c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminTaxonomyDialog.tsx",
+      "git_blob": "4223e8c6d37d18c354cf6649916fceb58219fa0f",
+      "sha256": "76b0b0252ef0e883a93e73da97e8048acbed7942d9176b55add90ce1fd8d9981",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/admin/AdminTaxonomySection.tsx",
+      "git_blob": "bbd159614f117589d2b36fc9214bb81f21f83b5e",
+      "sha256": "4814461e9f685e745329343c8bb4c9a87186a8e17bea66cd698a74548128d600",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/analytics/AnalyticsSinkPage.test.tsx",
+      "git_blob": "d7a78a42bb776a3c75e3c1334f271a61cec56fb1",
+      "sha256": "0048fb788ab9969c403c466a2be1cc122ba39281ed431854f44e32f8f790be9f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingConnectionStory.tsx",
+      "git_blob": "18c0e150198de3a9cff1091269ca15a8f4d84c94",
+      "sha256": "9a0e7a0218f383ba66d09d16f5c7ff8264eb14741bf5b6f3fdaf433eda48348d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingHero.test.tsx",
+      "git_blob": "0daf4b03c73aaaa99fd1fceaa7d8af89f16f6b10",
+      "sha256": "4ceaeb5fb5ff66792a33da389f1b310bdabd202727ecb4724e0a1e0bab60c014",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingHero.tsx",
+      "git_blob": "1f9a166743b5be397a78d4052ec28ed5176b81b5",
+      "sha256": "79f34ec202026d0b98fa9d6ba27928fee732254825ec4ead5a40602f94d83aa7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingPage.test.tsx",
+      "git_blob": "ec64eb6337ddacf9d10e8965eb77e4e719d5ef93",
+      "sha256": "4f3c7e5aa7b256f551ae006b58f0ffd8685ce88e66d9b36de046577b7d547713",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingPage.tsx",
+      "git_blob": "7bbab2cb28d639dc5afcae280d2920ffdfe48371",
+      "sha256": "8cce0640bea26256ce45f2c5fd04eac986ed0166f6de63565da83201b3efd0f8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingProductJourney.tsx",
+      "git_blob": "7ddb140e7b75b8d066cd95ee3badf22eca4c91f3",
+      "sha256": "c04837fef7a9e94057ca45ef0ae56fd2e59fd44ff996f3398a2c5d972b9145f9",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingProductScene.tsx",
+      "git_blob": "cbd5e36d82e044a99c7cb7e83ad94c6cff7f4d53",
+      "sha256": "071dabd39f6482a034f78aab0e54587e1ffe0d15a0e13d6fe7955058fb1e6ea0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingStory.tsx",
+      "git_blob": "7263801a6841e78ebe750e69682947916b2ca0e7",
+      "sha256": "b5e7a2587e3e83821ca1a3c36a9101785a3afcdc7d5b86d8781d4dfb61240d89",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LandingThreadField.tsx",
+      "git_blob": "3b7a27dc491187f2c2b5cf6c1ebfb482c49a938f",
+      "sha256": "e40c66c48f7448b9967322635fff9a7154fbc3fa18ed981146c0ff3ef55de520",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LoginPage.test.tsx",
+      "git_blob": "c55ac5bd8a8b928afd1eb2c2bf7910944b9c89b2",
+      "sha256": "2a792a0c15c6154d032b6521d7cffe5c408e69458c8497a43905fe4769189895",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/LoginPage.tsx",
+      "git_blob": "1524e7a188b16e2392dcda8c4ca33c924ab9a6be",
+      "sha256": "a21aa60967f3a0d423bd57c0b0afb1f85ff7e44cc19a2909f62df3d50aa46c1b",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/auth/login-page-parts.tsx",
+      "git_blob": "c23196c4775da69406cd90d8e06d7829f93dfe62",
+      "sha256": "5b74fee17afdaacf41b58b69ab94b8c9f0772d85550c3673d8f963974a188fe1",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/billing/BillingCheckoutConsentDialog.tsx",
+      "git_blob": "bc7c86a774dfb85958c704f42cb62a01ef0a481e",
+      "sha256": "7f1274371ddba8c54c40563c154e0e9ec0220224c06ea0df7c41f93399e3abaf",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/billing/BillingCheckoutHandoff.test.tsx",
+      "git_blob": "242705a77ac04d7869633be72a535f848cc01b79",
+      "sha256": "bc9d230a7984bfad11be2524d5cc2b5654f105273eaddf4831e816543fcfb719",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/billing/BillingPage.races.test.tsx",
+      "git_blob": "336288bc1d9b580728293ca4541f0716947b99ae",
+      "sha256": "d7fd03912f2262d08c709c453fce778479368fe033d1a17efc7ecf0b65a69a17",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/billing/BillingPage.test.tsx",
+      "git_blob": "faedb295be7a3c68a909e2074b0b481f9eaa710e",
+      "sha256": "2a8275f416c9cfada7b2f8d3bb49930477cb476ef2118b5bb8e328dff7f0d6d7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/billing/BillingPage.tsx",
+      "git_blob": "9b662c455d8c75658c9b4e74b75c4203b12f0009",
+      "sha256": "f14faaf3af2542c524fca6a998ea5d52f1c35b8ee5855b812258cd1b33eef3e4",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/billing/BillingSummaryPanel.tsx",
+      "git_blob": "4689814c279bb73cf64825e98f7811b202791f78",
+      "sha256": "5c4217323a7f852b661eb875c487f090234476d3670e7c43ca189c85f06202ef",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/creator/CreatorRequestRows.tsx",
+      "git_blob": "411e8c26ee10d14761705aea7a386ec224df365e",
+      "sha256": "969ec0f88c6dcbf213284d4310e6e919a9d693c2445fe52f93c9d58783232e38",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/creator/CreatorReviewPage.tsx",
+      "git_blob": "9eac91b7111aab724b2b7763cc6f90ecdee3756c",
+      "sha256": "71d2fa9d9e4814fc12e2d7ccd98b8e51be237c5fe4c9d136e1d57091c3e11cd5",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/creator/canonical-creator-review.test.tsx",
+      "git_blob": "2b7e153fefbe182a2d188cc8bdfe2304e020a339",
+      "sha256": "68296738653279c225a92b7a1703fc36011aafaee9b2b7e877d234b796fddf52",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchCapacityHeader.tsx",
+      "git_blob": "a6255ef402a7af9339baa2572332b0ec7e904f29",
+      "sha256": "56e489cd5fa1e1358df64a50562ae65cd5ffc038f97f9aaa221113eedb9ec897",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchConnectionFollowUp.tsx",
+      "git_blob": "14231c787b0689d3eec7201cbca7da852d415a70",
+      "sha256": "a91619fec1382d0131eaecf8d76e12f86159c4eed1d5a8ce1fa4a5c768968ffe",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchConnectionsPage.tsx",
+      "git_blob": "86e533aac41651e7157bf48c8023bbb44b038543",
+      "sha256": "e5eb7181a4e57d732adf88c80592fa2e445151191d1050e2e155726c3e6745ed",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchEnrollmentFields.tsx",
+      "git_blob": "5a484a53202b054ad803823bc3f6882e87745862",
+      "sha256": "2e941d80988ed37b38555577f88ab7f104042f8328baed4cb58fb66d1e1efdfa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchEnrollmentSettings.tsx",
+      "git_blob": "eba89ab75d06f9d7aaf6380ebdf395662dc9db48",
+      "sha256": "63f97fa12af40881078d7f1e6738fd565cdffee1b323ffb150cbda0c79f5acf9",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchFutureRecommendationControl.tsx",
+      "git_blob": "4413c7d75de22b9fdae07aec89cd354c1da9b446",
+      "sha256": "22ae62a082a07230adf62c2c114ab0b70efe6a780e887d1796d2627ac4873858",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchMedia.tsx",
+      "git_blob": "8a4d3695ed8a5327f82632401245cdd0abff6183",
+      "sha256": "0d4cf710d912bf8af004ea0a24fe5647eaed582767e657af55e8904d3ac61426",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchPairSurface.tsx",
+      "git_blob": "a1f631b4a200c12eed86b425c4a012d768919469",
+      "sha256": "b064ad1ccc35df0de10099326d64fcc2b0c7909ac1e49d74732525cb081bd819",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchReadinessNotice.tsx",
+      "git_blob": "9766219c47e74c84898c870d212668b5d75df668",
+      "sha256": "c6ee1dd21ed4d6ac22d662dc41403836aaa29a58ff9960dcac4c049d36ee271e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchResponseForm.tsx",
+      "git_blob": "12cf8e4e7d7e47f8f2bfb8f93dd0172825468815",
+      "sha256": "ae443b021eeed2cd956191d1d9bb47cfaa98d6e2fd34e3ddca011b78340e3cf4",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchRevealPanel.tsx",
+      "git_blob": "3a35202ab3271232d4a86a48533e9001f2eedc21",
+      "sha256": "24d24c0fac3e6656d20ce5fd661c154ba430e89e6d6302d82b7129501a1ed917",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchSafetyActions.tsx",
+      "git_blob": "481b7d8e756b1e54fcdbeac8456ed6d1d89847f2",
+      "sha256": "ce46ad7e3064b591aebe09229dcd90da9694d64b77d9b90b241799deacdae75a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchStatusSurface.tsx",
+      "git_blob": "13e455c6749d297c470d62b204124014fc74f085",
+      "sha256": "934b291d4ac88f3db89115b79e0468137f6c6fa460e7403021f19484ec234a32",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchTodayContent.tsx",
+      "git_blob": "977d989657bc8e71da1a844187c5968e339366ee",
+      "sha256": "ce8d9d363a4b499cf7a068b7aaa9580b8ca7202f98de53d649ccaf9c3cf14334",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/DailyMatchTodayPage.tsx",
+      "git_blob": "fe83e41714dcb9be298f4d92ae7e68bf972573ee",
+      "sha256": "2487f4599f04683ac649bc8aea0c9a88b682c12e2cb125d9f8b42d6aec7b7f6c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/daily-match-connections.test.tsx",
+      "git_blob": "4ac474471451592234567c6ee6b627f51c8675b0",
+      "sha256": "3e29b36bc60de263d1a0f202d77aba0d89430890b36e2eb3081bc5c02b4e3e2a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/daily-match-enrollment.test.tsx",
+      "git_blob": "bcb8392d5f8e53dce60bc23159495e4330653f18",
+      "sha256": "a7867d93d577939d55ad3d8ee298be03e120baf7b77283b0b6d0e59107153592",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/daily-match-today.test-support.tsx",
+      "git_blob": "bd139506335bf8cf531449119a3fb7fe21d55f85",
+      "sha256": "e747703fb86c0dff3fba9ceecd2c75a68e3fb98d64d4dbd0694d9ee503f7424f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/daily-match/daily-match-today.test.tsx",
+      "git_blob": "395bf69f1ba8974932f9a8577b7d9dd42b761f7d",
+      "sha256": "4463cb7918b945c96c0adedd78d8107fe9ad652330036b3607c6172ec28557cf",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/event/MusicTasteEventAlert.test.tsx",
+      "git_blob": "39e6885b1eea6f30c7c145465eabc87e759abbd5",
+      "sha256": "b8cb650a1f975a76addc726c1092785f67d5369af57f750a07976b1892c024f0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/event/MusicTasteEventAlert.tsx",
+      "git_blob": "9d4dce1c0c2aa50b78b9a4f7f5438ad7af06b061",
+      "sha256": "7dacd49cd6a34afe8b0c034fab5c19f7095550ad3711fc1dbe91f67033f7aa02",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/event/MusicTasteEventPage.tsx",
+      "git_blob": "b6bc61403f3d6a48524e28ef8966e95bf8660eb5",
+      "sha256": "61194b64b6fc35331ffcdcbc6929c16edbd93ce2bef83a450b39c1b5b001989d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/feed/ExploreFilters.tsx",
+      "git_blob": "e8e2e59e881fe847744cf55d4f84fa1ce44c7b64",
+      "sha256": "c53fc0c574e468d7ed2a0b4a38173edb4801b2b590b3e31439e00ef79f73dfc3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/feed/ExplorePage.test.tsx",
+      "git_blob": "3e26b36c12737babc01460b2bdca8514a4a2f2ee",
+      "sha256": "10cea6625f13153cfe66c5f71356f0c52e310bd3760322e97089041b2b719aaa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/feed/FeedSurface.test.tsx",
+      "git_blob": "38fdd97ff860047ed487d51e0f1f7f697b22c532",
+      "sha256": "7ffe3bf451c88d7a5f78fa3db443f05135127b2c08791437610860ac696f89fb",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/feed/IntroTasteFeedback.tsx",
+      "git_blob": "9fa91e6f201ce11375f86ae2bfce945f3ccb9a97",
+      "sha256": "287b29e0fa2d0edb7fda022608d8ff8707800c148eef9d2988608adc5df64aaa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/feed/IntroTimelineItem.feedback.test.tsx",
+      "git_blob": "b623de53dcff469cbb30deb969394b61665aefba",
+      "sha256": "c0677a9335bf1a5973a3f88c816b1690f44315a30c1d872439229a981a567529",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/feed/IntroTimelineItem.tsx",
+      "git_blob": "9942f70833dd5f996105c001e1372c1f3db917d5",
+      "sha256": "b9dc4f13cbeafa31e6e7c82c3c0f395914100d9128314e45c4f59bc673e5dbfd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/gate/ApplicationComposer.tsx",
+      "git_blob": "500fc4cba8b4fdfdd5f60dbb7dd3fa58fd0c3837",
+      "sha256": "7fc2ad2244b2466dee7d90c448c48eb440f954eb048f5deb5a26dafd77ad4542",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/gate/ApplicationPhotoPicker.test.tsx",
+      "git_blob": "e5516a4cb3a68239193e51a0bace2d83f82acf27",
+      "sha256": "e777946613c490f492b5279f5f0c109ec13d9dbd267e28369c9d874c6c8b7fa4",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/gate/ApplicationPhotoPicker.tsx",
+      "git_blob": "1e74367f8d3cd8f14446d4bfdb3e884dcf918c30",
+      "sha256": "479ae0756b429e91d7956e478f9aa4fb77d0bf39d8346dd4ad4282bdf1c0d9a9",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/gate/ApplicationTagGroup.tsx",
+      "git_blob": "596517cdf01e7ed1a5c4d396884cd7265d6b43a4",
+      "sha256": "fe7bd7b951884dec50d94b2530e64513e9b50fa9f80203752dbff6ec32ada1db",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/gate/ExternalGatePage.tsx",
+      "git_blob": "522bfcbf8b4788ac62104f155a4a437f946fd16d",
+      "sha256": "47166a727a06291e04c5064f42b2cadb104e5cb3bc901a0322e264a758bb46e8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/gate/canonical-external-gate.test.tsx",
+      "git_blob": "62763e9c6835801ffd02d19e1322e469c7fc4250",
+      "sha256": "ac2fec4a7397fce8febe75a2a57ba28ea3c86e85ccbe94eb3a19890c1ce7652d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/legal/CreditsPage.test.tsx",
+      "git_blob": "14f3a7ee3c69f27a26e51b1ff79ac72c4caaff34",
+      "sha256": "bcad1b72c99ee536e2023c1f995b7ec58b724e7bf22de39b6f77427d9e123c8e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/legal/CreditsPage.tsx",
+      "git_blob": "a5e9e6cc30a0d860670962f7bad64e52af1765a3",
+      "sha256": "455d793f967606a5affe3fa4c949cbe08d90d692722710ed5f1a0fdf59b81db1",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/legal/LegalDocumentPage.test.tsx",
+      "git_blob": "b99bd63166867dc98382144475fd562d0f0a5d46",
+      "sha256": "34d3a0c0c9e4f220292d05511b179a906b43c2a9c0b99fc1e69aa8c30b66c90f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/legal/LegalDocumentPage.tsx",
+      "git_blob": "21b3689e1f9871dd4f9ac0a9d8ff8d1ff78078d3",
+      "sha256": "9a687126bad3a489892c8e824393bc4185860e1d6aee4ea4402a09e70f2c904b",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/media/SortableMediaTile.tsx",
+      "git_blob": "4e5f1d00e404ef61dde608ab978b67214b75a71e",
+      "sha256": "dcd35279507036ae56eea390092815a98b12e4b20d6d902b035ed94e9fb5f5e1",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/media/animated-webp-input.ts",
+      "git_blob": "b48b79093e6284761d5f07b60810ea58aecd59cc",
+      "sha256": "d9945b56bf78ccf888fd350e33380a6e4d375f7fca1fe0a7b66d9ccba7d0d1e2",
+      "category": "EXCLUDED_VIDEO_ANIMATION_RUNTIME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/media/ffmpeg-compressor.ts",
+      "git_blob": "08ee68f6eeb343336f4b426505345459f663607e",
+      "sha256": "e19e0f9ddf862ae930da34fd937e2e82ce51875040d0c55ba3153e818cc7d201",
+      "category": "EXCLUDED_VIDEO_ANIMATION_RUNTIME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/media/media-processors.ts",
+      "git_blob": "315840e73c22de5e0ca5ce437be8728af04a84ee",
+      "sha256": "218bece08e224488ff5fecc4e85e99afb4ac480016a6ee8c544fae683983f4b6",
+      "category": "EXCLUDED_VIDEO_ANIMATION_RUNTIME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/owned/MyIntrosPage.test.tsx",
+      "git_blob": "e23ef67b02f93b7954c699049005e5ae81874aee",
+      "sha256": "227fa1a7311536ce9d912c0833806c437a770f348ccd097ec0151853af40180c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/owned/MyIntrosPage.tsx",
+      "git_blob": "ae4287132cee6abc378196303d3cfc08f4900290",
+      "sha256": "7274aa3562636b7022970d59cf53cfa455a6f59600e5e91ae130f923c3bc73d7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/IntroCommentsSection.test.tsx",
+      "git_blob": "18691af0801bda1485e48093400362442384db5c",
+      "sha256": "f75432b792a32c030f9e7e771fcc129893c25c9199b4d03b2fdda92b77fc16b7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/IntroCommentsSection.tsx",
+      "git_blob": "76389b5e65d907a1d1ae08de24eaa99af472cb36",
+      "sha256": "bb8699a0248f84b29890f9ef0ff681c1af696294ec727987c486bd4dd5e00d63",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/IntroDetailContent.test.tsx",
+      "git_blob": "2849a7d761d379b4bdd0d956af3ca2eb8e66e61b",
+      "sha256": "12bcf481ec4b59832b9d4326a61469664291e73c5c342996b4f8fee0048fd075",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/IntroDetailContent.tsx",
+      "git_blob": "7a5694a9a188dcacb69d57bc425406d3f3948dae",
+      "sha256": "a2d9f2c5fc70b9b7235b7dfaa856111db143302db302cbd75a630b67cc7179d3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/IntroReportBlockSection.tsx",
+      "git_blob": "3ad7e4655fef226a570a6b5c68ad71aa576fa952",
+      "sha256": "675affe650ecd3bc1fe754c86e9784820640a327810915b8559f644a8e0e4629",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/IntroTasteProfile.tsx",
+      "git_blob": "4d11d3898591b953675d273d9c66731d135f46f9",
+      "sha256": "ff2760cd26892d80a636ad8774b6308589fe9f161a81e0bd8b6bc0fc76ea40bf",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/PostDetailHeader.tsx",
+      "git_blob": "492935576372c299f9f5421c5410dc2a47ee8973",
+      "sha256": "01d0983cc15eb3b63c85a9c1d0ffebd3bcb58a72f4b01ad6d9bc2cd37bd32671",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/PostDetailPage.tsx",
+      "git_blob": "b8304a65633b4f801375d359b4559d0778c1534b",
+      "sha256": "96e1d067dbc69b51434edd327bdb323c31a4d5fc9d4623782d17d929192b256a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/PostMediaGrid.test.tsx",
+      "git_blob": "66fde1aac63d66e01a5c12a06d6727594c04d4c6",
+      "sha256": "0dd5037b0e64f469177bffe9c6c6bcda4a6c803fe76413795b2e8e5f01f4d8d2",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/PostMediaGrid.tsx",
+      "git_blob": "78c3febf67f30f3a3abae59741999231e6bbead5",
+      "sha256": "449252e41788a86f59152c3687384d4e6e776c333fb3016dfe86fc0082278ba6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/post/canonical-post-detail.test.tsx",
+      "git_blob": "205df671658380bc815e588bffe338f19549b20e",
+      "sha256": "ce6cadab92daa6274e550ef780720dabd7a97998eb488dd98d722f7994c7a78e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/InstagramAnonymousOnboarding.test.tsx",
+      "git_blob": "dbc5352cece1665fa79212efbe715c2437735d98",
+      "sha256": "77c147c56632f228fbe4fe5659e2c3b9bd6456f2cfb3653973d600ed8bf15349",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/InstagramAnonymousOnboarding.tsx",
+      "git_blob": "8b478b185b61218dfbe4965799c222d016cfbdfb",
+      "sha256": "4fd754c7ade6bfcad6f91a482e87f44aa530215e741fea322267706ac0395f86",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/InstagramAnonymousOnboardingStates.tsx",
+      "git_blob": "0aa951188441277b4e22cd6d60d5924002dddff5",
+      "sha256": "10fa3e793f53ba023d3143f4e086a40bf3c0ec55bc2d2ca5c92046b1c5488021",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/InstagramDmChallenge.tsx",
+      "git_blob": "f53c1781deb6d1cb262646c8ba9990d38e33472c",
+      "sha256": "4d2924261be986e1da3fd96845f898178c9d6393efad945030216813fa427c1c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/InstagramDmChallengeSetupStates.tsx",
+      "git_blob": "9bca76163f7f8a1f813f35ab4f9fed17f26ec58c",
+      "sha256": "c12da2cb5170676d0063d2f762391467a27de1c005a901b28227633db77aa6b3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/InstagramDmChallengeVerifiedState.tsx",
+      "git_blob": "3fd502aaafd24650b55eba5a82f60111c8808ece",
+      "sha256": "fe1d7430e9f12a9ed6934d153b47f375c1b94f2d464e64f88186d369431c85a5",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/SocialAccountLifecycle.test.tsx",
+      "git_blob": "e354e9c9fc7597e6c1670603c5a9a62b4fd561b1",
+      "sha256": "6f427f8418231bcf99ffffad87db93c679a03690d93ecf19f0c2da792c785231",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/SocialAccountManager.instagram.test.tsx",
+      "git_blob": "d8b98d9db68f6f9230d84e93951247eb1d48fa1f",
+      "sha256": "d44bd91befafd8e40292531aa4d268c4164a20252b03ece79b47c143eee3089c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/SocialAccountManager.test-support.tsx",
+      "git_blob": "24297bddae4490adfebbab130c8dd73f8d29bd25",
+      "sha256": "d79f076c37000e213953dc1eaa546f896e205678ec034cbed53eb4e1085a8dbd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/SocialAccountManager.test.tsx",
+      "git_blob": "b75353ef7525d2796cf2b1ea199179a3149c02bb",
+      "sha256": "6b80ac5cbe44e87299fe5c0c4ed327700792f26ff2f24308a2bcc3a59273a35a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/SocialAccountManager.tsx",
+      "git_blob": "922e08169de1f068e1ed2030723448453be0daf0",
+      "sha256": "5c0050ce487582442fff2450ddf53090feea4435ab3fd3196757439158240561",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/SocialAccountRow.tsx",
+      "git_blob": "4e6d79aafa1384416919da4a3db6c8dc59332272",
+      "sha256": "5e158be3ce2b018cf69bc0838e09c205a6796b51dcc1c0a56c6613d67b1083ec",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/SocialAccountUnlinkDialog.tsx",
+      "git_blob": "0f504476a11cd3eb2f0c125b481363a00c038b2d",
+      "sha256": "ee8009fdfb923198930ead3f876cf047e09eba56ac49e8e490f1616dae6e721f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-accounts/SocialProfileSetup.tsx",
+      "git_blob": "f8fcee98b654c6db4ef732e109773955f0f72a2f",
+      "sha256": "a4a2c98d94100d67054bbc6d877230b17fbca7bcc24f1795bed3f8d9188b7469",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroAccessSurface.test.tsx",
+      "git_blob": "a61c15c7aeb67a24e42457d533b8cff5c7af049e",
+      "sha256": "62182262c88e796be0c51b286e4e65cb96e573a13ad31c375e372c404cdbe292",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroAudienceFields.tsx",
+      "git_blob": "9167124a578590894e70d05ee07744c00a37bb6e",
+      "sha256": "d6f6c42cdb74020a46ac1361fe3ac4b913f16767ad83340b3b1f9f9ab6e6daa7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroBlockAction.tsx",
+      "git_blob": "9ddcd2f958673f817af6f86d39280710df3369b2",
+      "sha256": "22f5e491740e8a871923e9fa149a0c2e9e91aaef0d03916d7d5f7b98bf166227",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroComposer.tsx",
+      "git_blob": "1fb82d62784aeb434f7365f93a6fc271f8c246fc",
+      "sha256": "fb95b7d552020371edc1a5b2bd188bd2ccdce40c72c3e5a15b6c69633c4dbba8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroComposerExitGuard.tsx",
+      "git_blob": "4ba0adcd8a9daa1fa216153894338ccf00d3ef78",
+      "sha256": "28c8487384737a2b05e778a97698f3431adb2f72338ef848486cd5bb605baba0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroComposerSafety.test.tsx",
+      "git_blob": "7eec6d0f3b726d4605a0122714ab1d47cd9cc1c0",
+      "sha256": "d5c2ebccf86a92025d8e6a844fae93d3c9e1687a986015959be7358c590c2c1d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroComposerView.tsx",
+      "git_blob": "2dee73d7de14024608bcfa896030df036e81aac6",
+      "sha256": "dba75282fc334ed58dcd9c8f227077e7aaf21b2501a6cd84e22bd2b6e91761d4",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroContentFields.tsx",
+      "git_blob": "8f5e4a731587455a40dd6ca130c7842a33d56ddc",
+      "sha256": "f95c7080a002643659d177e3d1d0a850d75ece64da479329a2d04b20711d175b",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroDetail.tsx",
+      "git_blob": "3a14848fdb1d4422a0a65b9bb63646855f83da31",
+      "sha256": "7e0f9e41e3ea8158e7ab83d68b48e692d052b9dc7022a0f1c7ed56bbf2db4977",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroExternalGatePage.tsx",
+      "git_blob": "b129e593a4a93bbbcede3d3a53a2da03fc5350cd",
+      "sha256": "60163b19bea2dd8cab9f281f004b4446bed5f6b12ffccbea5d56b3e385f2e910",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroFeed.tsx",
+      "git_blob": "5eabdfeec4d0c0ed85a8ea1a79f81677f2c5cd93",
+      "sha256": "b6147ee4f0ac87d5d7964c1ca42ad32a6d2ec84438357be64352d2cb8d62d137",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroInteractionFields.tsx",
+      "git_blob": "1633ced37f2090c860bcac1e93850e3f7c68774f",
+      "sha256": "a4da63ba98ed2b56e809d0a0a96ddf473ff81264a9dda1e13e35bec4276f0fab",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroMediaGrid.tsx",
+      "git_blob": "778b08372dffc5ae3bf153fb255f1514e82fd77b",
+      "sha256": "15ced5d5f811f49aef27dd0f2b2ef31fec8ed15ea6720e0e40d3de4096b71f9e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroMediaReviewStatus.tsx",
+      "git_blob": "d704221b13b02be32dee9fa6894a64cf136ac5ff",
+      "sha256": "23878006becb4e65eda8ff3d8ed96ca6aea73c91e960a4fbbeec933433c80e37",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroOwned.tsx",
+      "git_blob": "663aff9eb0fb44f8a1121c10c149731d446315e8",
+      "sha256": "15b86d36d92b69bde465915d4459ea09fa804f5e9a39f91a5f235ff879f04250",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroPages.tsx",
+      "git_blob": "c28b695db39b433ade3d60d408fda10e6cc1f027",
+      "sha256": "9a004d0839252862b1dc3b27f745b0ba5d5d53e915d7e7d4ce2696ea3074ce8c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroPendingAudienceFields.tsx",
+      "git_blob": "acca75db532cb05e647a6149152cbfaa0647be21",
+      "sha256": "fd532113414000d5748064142561856e871f7cf88b3366a1161e97cc09c7cc3d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroPendingDraftActions.tsx",
+      "git_blob": "db1ee7bbf62a0414ad6a0c3e65a1ee322a08d97a",
+      "sha256": "606d6a6c28019a72698b8e3222584eb2162a36c85588f146be4734c02ec080f0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroPendingDraftForm.tsx",
+      "git_blob": "242169dec9916cee10aa4d6f878c004fb2c95c5c",
+      "sha256": "ef47e5bed5c29b955aa4824d7ab8605718e99a3056e71f919c26383369c6d5d9",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroPendingDraftPage.test.tsx",
+      "git_blob": "13a64c58ae3ea1e31f1e249bb23a5111f24f6f13",
+      "sha256": "f06930a72aa7c19411d3395a7b5581f773b2766b6b5a90d957bba9434c9f3689",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroPendingDraftPage.tsx",
+      "git_blob": "5d2552c0b9ffb64bb825d2d93e9cc85969eaa701",
+      "sha256": "aba7e3cb1e0bc0bf4d9719884490cdcb4e3ebbe8bfcc458b55599c172601e836",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroPreview.tsx",
+      "git_blob": "80e46248334229453fed81f0d9f31bf183ee909a",
+      "sha256": "89d8b0359c93f16944709ee28d43635a4f1c6560ff7c9bb01567fc0545bfdae3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroReportAction.tsx",
+      "git_blob": "131f5821282cd5336a28907940218db3540b4fb7",
+      "sha256": "60f99da418208a8a8eabdb8521c80a9c274eed345666c576b5a78b9b6beb4096",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroRequestPanel.tsx",
+      "git_blob": "00fc12418f2f362d98a1834b24bebc32351d9124",
+      "sha256": "c89ff1c2b62df5f8e27244579571a60b432cf1dd1f541e110d5407d98f9c1b6b",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroRequests.tsx",
+      "git_blob": "217cff4d99abe2cdb8c7432cd9b069ccd481f850",
+      "sha256": "a09d470d17f8042b8751d075494f81da0da830fcc51cf141eb2d9a7cdc067ffa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroShareAction.tsx",
+      "git_blob": "daf111332568a21a20b718c8277c98d9b677a43e",
+      "sha256": "536f931d35f1da9868a0c3e8214caa9d93862d17e0b700d97f1a53232631f173",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroSurface.test.tsx",
+      "git_blob": "e3a9dec145b5a72007f583bf5ea6a75159552e76",
+      "sha256": "01816e0a2d0827347050b8cbb726010b4fce6d9c8b95b434b6c6375da64638fa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroTagField.tsx",
+      "git_blob": "c48e5f83517967e068144a8b15c30abcab34bea0",
+      "sha256": "afb59bfc4c3a3b8ca13e9b6440dd74377d98908ab4e378e477263c04d5a6386c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/SocialIntroVerificationGate.test.tsx",
+      "git_blob": "658f22542958d267dda519c55dc16bd78fe77063",
+      "sha256": "93bc04dd8506447ce42eadc641f5ddc047bb910e09dca5b99dfe616f2cb06c0f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/social-intro/social-intro-test-fixtures.tsx",
+      "git_blob": "7da33d3beef2866da3fbc04f023c383c9b414eae",
+      "sha256": "691308dd6f21bf7bac9d0862c14d8efb4711ab66ff1e60ee616a37347bfcdf8d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/AccountTasteInsightReport.tsx",
+      "git_blob": "37d0b0aafd52e4494fabda8134d7a24a5eb18acd",
+      "sha256": "deb767fb5ce941e668d651a4c47dec25870ee6dd50daa96a1436cd7babfeb8fd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/AccountTasteProfileSection.tsx",
+      "git_blob": "c9e64c6d08448a8754871832455c7fc9c2235003",
+      "sha256": "cb040d4f03976d7bc09f192d10660833518e18aa9f9b3fe159f64c55ad90ab6a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteCatalogSearchPanel.tsx",
+      "git_blob": "42afb2c76dc7bfd92425a67733015d734a83b057",
+      "sha256": "0854be0a821aff2562c2e0da62eff592f94ebbd79181fc6bea79a62a4470ed60",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteDomainEditor.test.tsx",
+      "git_blob": "23b84a0c24a7ede129ec065343f3662e324cbb99",
+      "sha256": "fa02df3db0013ec072c71a0e5495d9445e18a44f16bfb953608b3d043af182f6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteDomainEditor.tsx",
+      "git_blob": "571baefa2f1b28bfb64ef5b6f3e1daa56195ff3e",
+      "sha256": "d3290fb3de7eb534df9efb982c96410fce35c4dce7d6cdf8300008a92ab37bc4",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteDomainReportList.test.tsx",
+      "git_blob": "356075626fe14213198ca6a1bb783377f77023a6",
+      "sha256": "4274aeed36f28b92244b03f28a74a1205a6c905711c41788cd638479489c24d3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteDomainReportList.tsx",
+      "git_blob": "4377398670c50826bc80b12f65b837d1b44ae301",
+      "sha256": "e799d304e195b5308b62ca8584a2fd8a37f5841cf06254104875ab80706410c5",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteEntryEditorList.tsx",
+      "git_blob": "b9032d1e58be7df52d69e5aa49207a21ee23db61",
+      "sha256": "3fb165725f0deed201d0c1439c418875825eb668c16c13cbd57a426da786e4bc",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteFirstCollection.tsx",
+      "git_blob": "eccc191dc0643cbd4424362ec1d219a4bb1bdd10",
+      "sha256": "5e9adceca6c460bbac41b0d3a9625f2d60ac10cc02f2d9ffc309dfb33eae4d37",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteInterestsPage.tsx",
+      "git_blob": "a15d39bb78617102ef9272e9974fb11b87e85091",
+      "sha256": "02b11924c5f2011983758472feb6f5f75a39ce6b026773c4924301905f8ecc47",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteLearningBridge.tsx",
+      "git_blob": "426f1b19dfc81ecd3fe3aeed18b47fb224de5016",
+      "sha256": "2597cd888fe55bb535f9456b87b7ac8315a414bdb01684dd7f4ac9bfa5b4febb",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteManualEntryPanel.tsx",
+      "git_blob": "1c964b38bcfff759e310164cca69f6ad2566bdd6",
+      "sha256": "55808f975fedaa0a1153b64b3b5508b3955ff0f99d87f03dc949dac12b78a321",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteMatchesPanel.test.tsx",
+      "git_blob": "58c394177aaaac27178ccad9ba4ed0312dd6bbc9",
+      "sha256": "dd9a7aec1f1a089d66f3556ad93a49ac215656249069769440c25d9abbf33730",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteMatchesPanel.tsx",
+      "git_blob": "ec400cc3caf6a8873bd6cc30d865097277021e70",
+      "sha256": "50a84622742a70b62e58b80f1a77fb3cb60396b42d46eaa209e2bfe41b40c2d6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteMatchmakingPanel.tsx",
+      "git_blob": "7efb034008ada22314ae892150bc1eb3a9ae3487",
+      "sha256": "ffc8d9732155a6d25f6817a8f31ede264bce2a6d45075c15b4cfe98a1682d856",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteProfileReport.test.tsx",
+      "git_blob": "6777bc8a45c8342ad2d6086d3d8b67c20a2ea5ac",
+      "sha256": "3d7197a85850a904a467a103639639dfef286717806ee89fa7d256c76b322182",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteProfileReport.tsx",
+      "git_blob": "091c1225ae9da8d2403836bd6cffdb6268fcf7bd",
+      "sha256": "7071ac516d2af69deeeae7afbfe83190d730096534eb7195d05b93b4e873ca58",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteProfileSurface.test.tsx",
+      "git_blob": "511814400e643e362e4817549e80940106a26d3a",
+      "sha256": "136ff90338f812761a83a9644c4999dec469b2a0cf4e4cfd7cb9cdada1325387",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteProfileSurface.tsx",
+      "git_blob": "523c5a29f345546ae8e889a5a448dabae8349822",
+      "sha256": "d637aea6cec7e6623fd8cc8a57833e565cee178878a000243f5514a5a2e40e98",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TasteProfileVisualHarness.tsx",
+      "git_blob": "e2bd2f7b4d0d5efba48e608952b43791ff510979",
+      "sha256": "cc186d51283beffe00ca06653f4edf75d904a0df7883d885d8d65d35bc8e908b",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TastePublicBoard.test.tsx",
+      "git_blob": "67816d27e50d7dc2816e925e83587fe8154496f9",
+      "sha256": "961cf981061127a9b6b39fee6f849fefffdb7721cef9cbbb99c2b27d973a4daa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/TastePublicBoard.tsx",
+      "git_blob": "4ec5ba821b11c0c1d090b05d6e9c7d2d02d0503e",
+      "sha256": "64de14ba39a55ed34a4ccf141a438ea9f5d055deac890e4859e087e4d8d86c71",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardCell.tsx",
+      "git_blob": "b9e61ae6ef652ddf19b65cbfc0b775b8ef22a2db",
+      "sha256": "473732e2dd6da04ceb1c8f564f63d41b2e031e5ba1723cb7ae5f7537388608f9",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardEditorHeader.tsx",
+      "git_blob": "8958bf0e71cc8b5d7b1a51d1e98927e915b88355",
+      "sha256": "391297ff1a86b5edcd516b7d9bea0bce4c5bc145e8a930134800dcf357a47aed",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardEditorPage.tsx",
+      "git_blob": "ab2265043a24e7697cdaa351218f6ff9838165ec",
+      "sha256": "adea7236292fff2de2c299f65a577b914f861c8030cb06e55551d77eee2082d7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardEditorStage.tsx",
+      "git_blob": "f04fa4735ad839ad11b60319f634b0b334034dbb",
+      "sha256": "6137a6d42c02d7a5fb97b650d1cee1aaabfe1124e57c3801dda0d1e4d5281498",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardExitDialog.tsx",
+      "git_blob": "b459ed6770ae09eeb10f32b1ea1f4138efd02321",
+      "sha256": "bfc48be30933374a3aab26f0c6df7033fe45dd3fb72dd7f9d7a7852994628014",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardGrid.tsx",
+      "git_blob": "522d7fd5ddd564294836f90bd3032e710927a7bc",
+      "sha256": "4223967d8d9ffea29e140f359b79d4dda92a0282a19c19e4fefb908d9d825537",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardInspector.tsx",
+      "git_blob": "f69c91bcf1ac46452ce17e88a54cbbc35ae158a2",
+      "sha256": "0a9e0b094e613635bca18e86c99a51d5bf99f64cdfbfdb4be51057f0f0b68d1d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardLegend.tsx",
+      "git_blob": "57a881f02b6379778e6913c18016e48c42fdd737",
+      "sha256": "ba408493aae09b5c51b5a0deb3f33e2d2180044ffafc846c980d6fdfd417f5c6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteBoardRecoveryPrompt.tsx",
+      "git_blob": "297103822ea45e03a0dc51b24858f2f65bbef32b",
+      "sha256": "d2e105be6bdb17c755c2a2ac9d5215781bd0a91a5c32c7dd1ed6c8676aabdc1e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteCatalogCellEditor.test.tsx",
+      "git_blob": "530fa8323551302d282609dca9aff9403dc8447a",
+      "sha256": "77e06a72d4a21d6187d3cae84e1adc83e6a918b4be172f70b44600031b3bf91a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/TasteCatalogCellEditor.tsx",
+      "git_blob": "87bbac9e8f67fdc76d47fb7818a7a499151909c0",
+      "sha256": "e61db48a9f68ceb1aaf84a9e0e3f0250cee675823bb6dab52fb4897cc45bc921",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste-profile/editor/use-taste-board-controller.test.tsx",
+      "git_blob": "821eedea434f264366f6a4ea0c83eb7cd3dd8204",
+      "sha256": "193ebd7de22aca7d740f5bc6c0d30dc8fbe77e3675076a6d0ffce7986923ebb6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/InteractionStyleRunner.accessibility.test.tsx",
+      "git_blob": "de78fcc4cad2a69a632694ae3b4e40168b08613c",
+      "sha256": "b62aa8116377dd8d0d62f4eef6404bc30e73bcf431f713a33cd84aaa66d31faa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/InteractionStyleRunner.test.tsx",
+      "git_blob": "b7e2428145fa72fb8eb2d38490a78063676067f7",
+      "sha256": "bb3f4773ae0c382fe9bac4f40baffa12e93bc4b312300b2ab78da1a496f4d84d",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/InteractionStyleRunner.tsx",
+      "git_blob": "8906ae15aec2706aa024c957eb47f5ef256efb67",
+      "sha256": "10ec104d97d614a6879858842135adc77d4697fbf321c866036f3f72a430a7d2",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/PairPreferenceRunner.test.tsx",
+      "git_blob": "23df7c15b7923bceb106962898137dbc3ac21033",
+      "sha256": "3e9bf0b93c48841d54e868b1ae52b496adb78f9bf4b1ea71404f63884942eeea",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/PairPreferenceRunner.tsx",
+      "git_blob": "5fca16fa2da08edce3e43cda0bb4ff65f42f814a",
+      "sha256": "699160d026aff1a693fb7abbb0794a42e303ca7fa844c372640d4f42e27cf275",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/PairPreferenceStage.tsx",
+      "git_blob": "63a5dd6e9f8ddfcbdc4b40e51322fcc41f3a2775",
+      "sha256": "de621ccea5b1f5755a8703f67be9a2157fa0d84d25eb4db4c462b6e9304d88b3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteCompletionPreview.test.tsx",
+      "git_blob": "05d9064ea98808c94005b53c74189d1ad39a095f",
+      "sha256": "5d9e90851f2031f1bfd7cd777b8afbaa6b9d72cf15fdf799dcec771fb7752853",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteCompletionPreview.tsx",
+      "git_blob": "cd0e3d85fe3500eace05e12bb4bf591664790db0",
+      "sha256": "dd30cd535edc3792608e551076a0b01789f111436fd435ed4273aaeb8de93bd9",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteHubStateShowcase.tsx",
+      "git_blob": "e9d4cdb6a6eddd8e698033016283894ad8675593",
+      "sha256": "aed1b45543b5fb0af48b2ecfcbbdbe4bad32434f6250c500379b1db6f26ea502",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteIntroPairPage.test.tsx",
+      "git_blob": "eefaee1ff423f188bc13de7242a41a863500f685",
+      "sha256": "3245f1d8d2b88504ba1914cd5133fa62aa02440411168dd3b907c5e403a64d56",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteIntroPairPage.tsx",
+      "git_blob": "9147ec98773f59029a41cb6d707d569bdff714db",
+      "sha256": "585ffe0518eaef9a5f57c33903642a2a7b6f041459ac96b1caf4790d4c9096d8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteIntroTrainerPage.test.tsx",
+      "git_blob": "cad35d3826af03bfe2e892f76340379453c5707e",
+      "sha256": "e5f6adce5fff2942eaef93bc213a415122dd98d1a7dd43dd524f09eb04c3fd8b",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteIntroTrainerPage.tsx",
+      "git_blob": "9e0cfb32e9e7b56b57a08b56ab075ead1477d606",
+      "sha256": "933f4f2b6f6239fa4d0e1a86a4e79abb68fb9c21b2f4005cc2717c4fde36631b",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteLearningPage.branches.test.tsx",
+      "git_blob": "3738620c2c679de9bcc58e751bd3da704a7696d0",
+      "sha256": "c7835319f515c996ef0f701f9879074e0e0b131d1f556c723c9f0bfb04556541",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteLearningPage.test.tsx",
+      "git_blob": "00e588544f352badc4f23a216257f3629ea978dc",
+      "sha256": "dc4a8ede64ce7d58a82b7fcb08c0da10624cf37caaf6c1d8d2ee90fb22cb94a0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteLearningPage.tsx",
+      "git_blob": "ca3bdfffa2fe3f33dc84f168a2ed05887969b704",
+      "sha256": "d826bb98fc5d5c3dc229a9e94606dbd91a17a67417eb641a41f116aeff4f2e03",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteLearningRunPage.tsx",
+      "git_blob": "9c0743cd6ed72b26f54bfece93f04e1b3d8cf137",
+      "sha256": "2581e356ea7937e103574058929b84bede5c6665ba943ed7571dfd94754fc547",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteMatchDiscoverySection.tsx",
+      "git_blob": "f071ce5accb7903155a364b8ea30c561fdb4f3cc",
+      "sha256": "c334637f0d3314d4fa242fcaa92df34c935538146dde23ee76468bf12abeb038",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TastePairPreferenceVisualHarness.tsx",
+      "git_blob": "63e71f1e7592ccf21c98b7ca382b12e5c89309b3",
+      "sha256": "d8555fb8424c907e8d27909005febb47a14486f210c08b0830557876e2d1791e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TastePrimitiveShowcase.tsx",
+      "git_blob": "66f03096184e1e6e735a28916107ccf9ed4e024b",
+      "sha256": "43bfcac888f0a182d5905fef0fc93563de11fcde8acd77d084d5fa5afa30138e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/TasteWorkspaceTabs.tsx",
+      "git_blob": "1a23fb39cad854323744beaabe71bf230981545a",
+      "sha256": "4d067a4aa1a31967534715a44e643a869a1e0a8666cee22e05c1baf22b19e9e0",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/taste-learning-primitives.tsx",
+      "git_blob": "c6257a929390fb9cb1e16ac2ea59b558a80b0edd",
+      "sha256": "b6243ac1bd2ce3989bce2af18ef8af12a7f6279239c460bbbc22a7210c24758f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/taste/taste-learning-ui.tsx",
+      "git_blob": "2e4c369a1c7e2e5d2a1b1f360b51175773ddf2cb",
+      "sha256": "b69785c0fd1f8809efbad66aaa707eedd463e1d3041034af35e36e43082de79e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/AudienceStep.tsx",
+      "git_blob": "4cc7027df1be13aab07d984f3fad1c738b6449e6",
+      "sha256": "e782df215f006f988bf8b2a77078d3660672d96fb0ebe7c16d71a07861082f8f",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/ContentStep.tsx",
+      "git_blob": "df643c8bd935c65f3d6d650f7f0da5928407f6bb",
+      "sha256": "c066326efbcda1d938fd21c8cf1bc5d64d4edb6b32774c39ca6496c3e6dc0cc8",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/IntroComposerShell.tsx",
+      "git_blob": "6f49fdb2037317d58e6dbcbf915727dcb85745cb",
+      "sha256": "f72874870c4096b20cda159f1176ccd53a2219cccb1e22581a158eb1a09a551e",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/ReviewStep.tsx",
+      "git_blob": "b3495f6bb6538f7ff9dd9df713cce6a7173e9f74",
+      "sha256": "cfa63a83fc4741b6ee30e9131355d3a00cdee52b60b44143f6244b72c47bcafa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/WritePostAdvancedSettings.tsx",
+      "git_blob": "e1e0f4b65ca1171269fc400d2653714b322637a8",
+      "sha256": "ffc229ec8eaf0f5fbed3d20eed55e9fb8973c5a32c968a7a786e0e7b1d9060b3",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/WritePostAgeRangeControl.tsx",
+      "git_blob": "7fd87a02b6e4dd40e680a19c6853f05a4ed0f197",
+      "sha256": "321837680a01a0967b1f2f3bf60c5ccf7cc123e80cb039cdb36a0e3a3402f265",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/WritePostFormSections.tsx",
+      "git_blob": "67dca5b142384eb700cd4e3c8893e336dd94408d",
+      "sha256": "abdaf9eac579e339d5b187b4ba18c5055196ef665166daec620edfa6186c68f1",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/WritePostPage.test.tsx",
+      "git_blob": "0065df33edac668242fc32293d996f7ec33b696d",
+      "sha256": "0a67ace7dac4b8b4e9a49a44651330778256eef59d5344c0957905e517c676bd",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/WritePostPreview.tsx",
+      "git_blob": "16f848d3c402972a666186cea47243148c81369f",
+      "sha256": "da647ac80605b9fb1e7cbccb67b420bf980def19b5e11d6a8be2467b5c0d9055",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/age-range-authoring.test.tsx",
+      "git_blob": "a194e9a6d88b864de0422fae34f1f8d7eca39352",
+      "sha256": "1ad4cd1af894218570135277030748b4ec14ae5dc34aea67ff4509442d01cf07",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/canonical-write-flow.test.tsx",
+      "git_blob": "8356c09b742aa5b6479da852e4104a9f0ee1257c",
+      "sha256": "7e031de1c9c68d281beb85cbbe5fdfebcbf8d29fc62f1d9b842d1b84382a6242",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/intro-composer-history.test.tsx",
+      "git_blob": "3994c6dc482e7eeeb85cec7cdba1f9b71dacc8df",
+      "sha256": "feda6e0de738aa991270012d64ab2e480cf4167fd030e375e7d67cd09c9c3c25",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/intro-media-account-switch.test.tsx",
+      "git_blob": "611c4dea09afd587608552c5ced3290e30a4298f",
+      "sha256": "a62d817dbae43d4aa0964440d443cafb0a51608dcf08efae886959ab7f2285fa",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/write-post-preflight.test.tsx",
+      "git_blob": "8b6caf5950c2e110d00a3e40c603f15d834ef918",
+      "sha256": "83df8d9bff26f5ab56350df6d024a1b71d86e8a7b2b8d76d50b04860d876ce40",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/features/write/write-post-ui.tsx",
+      "git_blob": "41300490b5cd4ec9290c791522ce086825c00d3e",
+      "sha256": "e848a8e0a225ab5a0ffbc8a2b6987d566609219b3125ad007060cb3e7f323b9c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/hooks/use-pretext-layout.test.tsx",
+      "git_blob": "47cccd568bcf32cda1fb9bf62812899f0a875ed9",
+      "sha256": "9a71d10ab452591b0764067a0922f1897df5ad5d726ef2b91ba1d3dccffbb57c",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "git_blob": "c7480d929bd01115873cfa7bd08798bd40c47bf1",
+      "sha256": "d037f8d6ea1480e8e345774d869100ebffe0132060e09904680347199cdc85df",
+      "category": "LEGACY_ENTRY_ROUTER_PROVIDER_OR_THEME",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/explore/ExplorePage.tsx",
+      "git_blob": "dd4e4d4c1bfc574eb4b6d00e4baa6ef1ac829c5b",
+      "sha256": "d48300bbc002b6e55c51616cbcea4319c17e8cc91326357bd8ba1e0db50fbbd7",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/home/HomePage.tsx",
+      "git_blob": "b78ac228074e0bc35812c92583aff7e9fae3df21",
+      "sha256": "531976504a6b676becedb020a16a02745015d8f5a489a16deaff51c8fbcc9750",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/notifications/NotificationsPage.test.tsx",
+      "git_blob": "7422a36ca8090049cc1c5f24a88ca628f0adb9ca",
+      "sha256": "9e25ac2d63f181d89cd0b0e4cd3321f45b97a9f8fc1a5aeea665a932c73519ee",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/notifications/NotificationsPage.tsx",
+      "git_blob": "137d2666024f48d4ed659dd67b18c6111ecf52cd",
+      "sha256": "1566c72a27d0296ddab0e049146dbb58776ddce7cfc8ac1879c88fbe782d0008",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/onboarding/AccountConnectionOnboardingPage.test.tsx",
+      "git_blob": "30647c88c218d0ac8bf3243856961048e4d06c16",
+      "sha256": "37b1b7fd1e73ac3cb7d5f63aa4cdde70118e079d26c8adc27a59ff8fe35b4304",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/onboarding/AccountConnectionOnboardingPage.tsx",
+      "git_blob": "b7141d5801ff0811e7bc0cc58ab1bcb338174ae7",
+      "sha256": "3caafcca8426bc3d6a3b2050a0cd9e48d694aa4ce347d44fe2a9bfb955988ca1",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/onboarding/EmailOnboardingPage.tsx",
+      "git_blob": "4ec712f8dd3dc8ccd0751530f4c70f2c0cc63aa1",
+      "sha256": "38e375261f992859e3cefa2f812771c2e82ba269ad077f2a8ece4997851a2998",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/onboarding/EmailOnboardingReturn.test.tsx",
+      "git_blob": "1b7cb8d645e74c4628ff2d59885048aa694f4f88",
+      "sha256": "6b0516e96f1ba404a629ae24df64cf11d7a005244b637c4ceef3887768339388",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/onboarding/EmailVerificationPage.tsx",
+      "git_blob": "4054b493cd3574cf871ea0b5e0832a83ca3c127f",
+      "sha256": "043126f9b5e09a7fce94e6e5b3dcb27787088790ce94fbd39f714ed4482d310a",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/onboarding/ProfileOnboardingPage.tsx",
+      "git_blob": "3304aa42b29a2147595472cd4dd6e77768404ea9",
+      "sha256": "56dca60ff0e57091ceba98177de1632679019a8ecc9bf2b09c1bbedcad8cae42",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/write-intro/WriteDraftEntryNotice.tsx",
+      "git_blob": "16cf24da6dcbfbf65afd9d10ee1b9127970f2652",
+      "sha256": "1eebda9e62b8ae0c7c9671567514b6ee0041faafab95a8af717823a26cd8d504",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/pages/write-intro/WritePostPage.tsx",
+      "git_blob": "80efc1233cdb25c4949cf8c859817dd0804fc969",
+      "sha256": "ebbc61c403297bbfeaa924fac2cb2ca49c92fe49a6b24e01f19360f33d6d1806",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/styles/globals.css",
+      "git_blob": "614f778b28d15f7ce6aafb747a5a2eee78054772",
+      "sha256": "b71d33d2e0e4e168ddd6b73f92bd3956042b8f83661c712a3d455b5815ad9585",
+      "category": "LEGACY_STYLE",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/widgets/feed/HomeFeed.tsx",
+      "git_blob": "a9c27be616dc1eb77e8a196c2bf8b51e4f9e80d2",
+      "sha256": "d35bd13563ce9ca39595a425c7c0cdf32e9ddd9bade067531cf7f0926676d0d6",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/widgets/feed/HomeFeedRows.tsx",
+      "git_blob": "4305e8424927288038841c797b3fc5006501b50c",
+      "sha256": "8b80b48f35bf1b893c60763706e60365a4bfe00459abce6c9568b4234e56f380",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    },
+    {
+      "path": "frontend/src/widgets/product-guide/ProductGuideOrchestrator.tsx",
+      "git_blob": "58eeb0089f1df1b35991d1da99e484d69abf09c8",
+      "sha256": "de70ea4b192ad2f6e47572915f1706a09d85943184ba5e9f31472b7361e332d2",
+      "category": "LEGACY_JSX_OR_MARKUP_TEST_NO_WHOLE_FILE_COPY",
+      "decision": "DO_NOT_COPY"
+    }
+  ],
+  "evidence": {
+    "source_inspection": "Pinned tracked blob hashes verified against clean checkout",
+    "source_tests": "NOT_RUN",
+    "mcr_extraction_tests": "NOT_RUN",
+    "install": "NOT_RUN: parent owns environment/manifests",
+    "build": "NOT_RUN at audit commit",
+    "browser": "NOT_RUN",
+    "device": "NOT_RUN",
+    "real_multiuser": "NOT_RUN"
+  },
+  "integration_requirements": [
+    "Review candidates and consolidate C01 source-map; backend audit remains separate.",
+    "Implement C08 allowlist/hash/import gate using reviewed candidate symbols and manual visual review; never approve an entire mixed file from this list.",
+    "Pin exact Node 24 patch/digest; parent selected isolated Node 24.22.2 and pnpm 11.7.0, installation not verified here.",
+    "Retain exact lock resolutions including TypeScript 6.0.3, Vite 8.1.3 and Oxlint 1.72.0; replace Bigyeting-specific scripts.",
+    "Freeze C03/C04/C07 before extracting auth/domain adapters; add regression evidence and ancestry at each extraction."
+  ]
+}
