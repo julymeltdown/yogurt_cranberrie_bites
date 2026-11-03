@@ -33,6 +33,16 @@ async fn main() -> anyhow::Result<()> {
         auth_service::adapters::r#in::grpc::concert_relationship::RelationshipServer::from_pool(
             pool.clone(),
         );
+    let invalidation_service = config
+        .tls_material
+        .as_ref()
+        .map(|_| {
+            auth_service::adapters::r#in::grpc::concert_invalidation::guarded_server(
+                pool.clone(),
+                config.caller_registry.clone(),
+            )
+        })
+        .transpose()?;
     let readiness = readiness(pool.clone()).with_dependencies(vec![
         Probe::grpc(
             platform::edge::Edge::AuthProfile,
@@ -103,6 +113,7 @@ async fn main() -> anyhow::Result<()> {
                         .max_decoding_message_size(4096).max_encoding_message_size(4096),
                     config.caller_registry.clone(), verifier.into_inner(),
                 )).transpose()?)
+                .add_optional_service(invalidation_service)
                 .add_service(platform::grpc_method_policy::guard(
                     &auth_service::adapters::r#in::grpc::method_policy::AUTH_METHOD_POLICY,
                     AuthServiceServer::new(grpc_service),
