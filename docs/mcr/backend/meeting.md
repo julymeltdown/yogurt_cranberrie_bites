@@ -263,7 +263,7 @@ Candidate-bound native report:
 }
 ```
 
-## Root-aware authority correction (source checkpoint)
+## Root-aware authority correction (qualified native handoff)
 
 The lock-order finding now has one owning fix rather than documentation-only
 closure. BE37's original `f5e5d44` and `49ce464` add/strengthen
@@ -299,10 +299,10 @@ Reads check proof freshness after blocking work. A separate native regression
 lets either beacon or proof expire after apply and requires commit failure with
 no remaining beacon. The direct SQL fixture applies successfully before the forward-only correction (`/tmp/mcr-meeting-sql-20261104-f.json`, exit 0, restart/cleanup PASS).
 
-The correction source and new common-adapter/commit-deadline tests are NOT_RUN
-until a new explicit bounded shared Cargo lease and the owned native run. The
-six-test historical report above does not certify these later changes. The
-existing production-unavailable adapter behavior and IN02 limits remain in force.
+The corrected source and common-adapter/deadline/migration tests passed the new
+owned native run below. The six-test historical report above remains evidence
+only for its earlier source revision. Production-unavailable authority behavior
+and IN02 limits remain in force.
 
 
 Published migration 0008 was restored byte for byte from `c7b0b59` after delivery
@@ -315,7 +315,7 @@ SQLx ledger fresh install, upgrade with a preexisting 0008-era report, exact 000
 checksum preservation, and replay after restart. The earlier draft `d382f13` must
 not be integrated because its temporary 0008 edit is superseded; clean replacement
 commits are `c299344` (concrete bridge/actor-root order) and `d78e035`
-(forward 0016/deadline guards). New native migration/contention checks are pending.
+(forward 0016/deadline guards). New native migration/contention checks passed as recorded below.
 
 
 Beacon admission also prelocks all old/new party roots in sorted order before
@@ -337,3 +337,168 @@ Rally admission likewise retains event, party/pair, current destination and cuto
 locks before the BE15 budget; apply preserves existing typed failure semantics.
 The report records every SQLx ledger migration source checksum separately from
 the direct-SQL fixture subset.
+
+
+## Corrected native qualification at 96779ca
+
+Correction commits, in order: `c299344`, `d78e035`, `b66a028`, `96779ca`.
+The receiving integration branch must already contain the authorized Community,
+BE15 and BE37 prerequisites described above, including BE37 originals `f5e5d44`
+and `49ce464`; do not cherry-pick the local dependency duplicates or superseded
+`d382f13`. All eleven correction paths are within the assigned meeting tree,
+meeting tests/harness, reserved migration 0016 and this documentation.
+
+The bounded build exited 0 in 6.93 seconds using Rust 1.88.0, jobs 2, debug 0,
+locked/offline dependencies and the serialized shared target. Cargo JSON selected
+four executables, copied into a private directory before releasing the target to
+the named liveauthority owner. Warnings concern unused fields in the shared test
+fixture only. No Cargo target access was held during PostgreSQL qualification.
+
+```sh
+env RUSTUP_TOOLCHAIN=1.88.0 CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo test --manifest-path backend/Cargo.toml --locked --offline -j 2 -p concert-service --test meeting_beacons --test meeting_rally --test meeting_authority --test meeting_migrations --no-run --message-format=json
+```
+
+The runner was `python3 backend/scripts/mcr/meeting_smoke.py` with four absolute
+`--binary` paths selected by Cargo JSON, and
+`--report /tmp/mcr-meeting-native-20261104-b.json`; exit 0. The report below retains
+their SHA-256 fingerprints. Build-time meeting service source pins were compared
+with the runner's pins and matched. The source worktree was clean at `96779ca`.
+
+Nine native tests passed before and after an actual PostgreSQL 16.14 process
+restart (18 test executions). The new common-adapter test demonstrated both
+root/pair and root/budget progress, successful command/reader completion after
+release, rollback absence and actual Community removal invalidation. The SQLx
+ledger test passed fresh install, upgrade preserving an old 0008 report and
+revision, suppression until explicit reconfirmation, exact published checksum,
+and replay against both databases after restart. Deferred beacon/proof expiry
+commit rejection and all earlier beacon/rally race/privacy/replay tests passed.
+
+Planning provenance check, Python syntax, Rust formatting and whitespace checks
+also exited 0. This qualifies the assigned internal adapters and correction;
+production remote-owner fencing, public routes, real client subscriptions, load,
+through-device flows and IN02 remain separate unrun delivery obligations. It is
+not whole-task ACCEPTED or a release decision.
+
+```json
+{
+  "scope": "BE09/BE19 synthetic native meeting adapters",
+  "result": "PASS",
+  "cleanup": "PASS",
+  "production_authority": "NOT_RUN",
+  "public_routes": "NOT_EXPOSED",
+  "IN02": "NOT_RUN",
+  "source_revision": "96779ca69d3583f0a23f5a8dd563d5988ede5f81",
+  "migration_ledger": "PASS_FRESH_UPGRADE_REPLAY",
+  "tests": [
+    {
+      "phase": "before-restart",
+      "binary": "meeting_beacons",
+      "binary_sha256": "97982274beb300d74b10f1397c8e7efd968a18104595be7b36bae12916178d08",
+      "exit_code": 0,
+      "output_sha256": "6e4fec718d405636ae35ea6eca64164b2a82d58e78b65cc32792171feaf66b26",
+      "test_result": "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.28s"
+    },
+    {
+      "phase": "before-restart",
+      "binary": "meeting_rally",
+      "binary_sha256": "fe9bf2034ed8c46683449e8516417628cee361f0604d23ae23b3bc5abb9e6832",
+      "exit_code": 0,
+      "output_sha256": "318405f727b6eff5f266ddabae7670a687e3fd45978269f9bd8f447bb6dee2a1",
+      "test_result": "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s"
+    },
+    {
+      "phase": "before-restart",
+      "binary": "meeting_authority",
+      "binary_sha256": "87fb3ab6a47c6390be153432af4af678b08c9d061f0b218dd5c88b62dcf5e60b",
+      "exit_code": 0,
+      "output_sha256": "5ceebcef66d2cb9f5eeb23713e2cd6780910cd6c082df69383848cfa99af2965",
+      "test_result": "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s"
+    },
+    {
+      "phase": "before-restart",
+      "binary": "meeting_migrations",
+      "binary_sha256": "18358ecd9bc7f153bf3169745a751a707edc011ba1473ebefb2df17baf901fdf",
+      "exit_code": 0,
+      "output_sha256": "313fa8631484b0bbce6bb85630d8d0d3ca20852837a99b227b38d1520723b200",
+      "test_result": "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.30s"
+    },
+    {
+      "phase": "after-restart",
+      "binary": "meeting_beacons",
+      "binary_sha256": "97982274beb300d74b10f1397c8e7efd968a18104595be7b36bae12916178d08",
+      "exit_code": 0,
+      "output_sha256": "329976d148149ba15bfd3d0fa903403089551aba4c24536121e809b3a18196a4",
+      "test_result": "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.26s"
+    },
+    {
+      "phase": "after-restart",
+      "binary": "meeting_rally",
+      "binary_sha256": "fe9bf2034ed8c46683449e8516417628cee361f0604d23ae23b3bc5abb9e6832",
+      "exit_code": 0,
+      "output_sha256": "8b1f5db0d19475ddd94e136c04a278d91c7c60fbee31f0e5ec6dde8952ebf393",
+      "test_result": "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s"
+    },
+    {
+      "phase": "after-restart",
+      "binary": "meeting_authority",
+      "binary_sha256": "87fb3ab6a47c6390be153432af4af678b08c9d061f0b218dd5c88b62dcf5e60b",
+      "exit_code": 0,
+      "output_sha256": "5ceebcef66d2cb9f5eeb23713e2cd6780910cd6c082df69383848cfa99af2965",
+      "test_result": "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s"
+    },
+    {
+      "phase": "after-restart",
+      "binary": "meeting_migrations",
+      "binary_sha256": "18358ecd9bc7f153bf3169745a751a707edc011ba1473ebefb2df17baf901fdf",
+      "exit_code": 0,
+      "output_sha256": "b51bf1f4f762ac04b902a869727261d160ad7a8e437034477c9511a19d118031",
+      "test_result": "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s"
+    }
+  ],
+  "source_sha256": {
+    "backend/services/concert-service/src/meeting/authority.rs": "5c4ae886b1bda0de735f548cfd2f41d4fdb084207e61a89c8888ec7809637416",
+    "backend/services/concert-service/src/meeting/beacon.rs": "34e77287f7f764ff4d9f18703ca6285702a44330cf82cb13b1ce7e34610976c4",
+    "backend/services/concert-service/src/meeting/commands.rs": "d57e17ab45927b4ad131039b9eaa391af44d06e382a2ab8742c035ab6ac2b93e",
+    "backend/services/concert-service/src/meeting/mod.rs": "fbf303bb9652c1c6ba1132339f280c931cb1cde1685712de01e88446bc37d9be",
+    "backend/services/concert-service/src/meeting/rally.rs": "25ceda8fe123e91ce2493a1841b560002c7df23e3a2a0fa0197d6ddf204f6281",
+    "backend/services/concert-service/tests/meeting_authority.rs": "02059516316bcc7897e2d49b55e065eeec4c658b57df10837c1c8f4fe8dd78a6",
+    "backend/services/concert-service/tests/meeting_beacons.rs": "166151555e0e240de157f3cb7ee4b0a65d6695103c6d1cf0fc549589ec3aac75",
+    "backend/services/concert-service/tests/meeting_migrations.rs": "567754aed352b7091ebff6f6998e1ea0768788ca02c7b3e3cb43aff75575df16",
+    "backend/services/concert-service/tests/meeting_rally.rs": "748f256fffd9b7ca582044cfb2d3f79c3f02a8a41db032a1cf34e068c2fc5d18",
+    "backend/services/concert-service/tests/support/meeting/mod.rs": "171156836f7ef59bff64ead2ef7bc86ebb12a29b509d0880ed4bed67960890b4",
+    "backend/crates/concert-domain/src/beacon/mod.rs": "ae848b599b5ee3d3cecea2d73ecf633ff2ac27d609241b2724500578f6ce7252",
+    "backend/crates/concert-domain/src/rally/mod.rs": "426dba776f1e86fb0207c3de60589b72c6879131e6cb938f520517fa0c63e17f",
+    "backend/crates/concert-application/src/beacon/mod.rs": "9b7bc5b64a37d2bde09552b7547160536999ea64a098411f1eeef4ebaaf0cd3b",
+    "backend/crates/concert-application/src/rally/mod.rs": "0586f26e58cfcfdab9720b5532f0e16e8ac9167a757bf8e74fa4f22d4d3e2e41",
+    "backend/scripts/mcr/meeting_smoke.py": "fa61929b592fd8bcbf71948527b356cf9e9143a3da37d1ce6bee8cf4ff2161f3"
+  },
+  "owned_directory": "/private/tmp/mcr-pg-uwc_vi52",
+  "migration_sha256": {
+    "0001_concert_core.sql": "9978e75e569c1ba25cb191ddf5b02bbdffcd5e64f3385173f05a885370d9215a",
+    "0002_command_receipts_outbox.sql": "5f5760dfe6384cb2ab5162bcc27fbc0ed75bdca6bb85229012f6389269ee442f",
+    "0003_places_map_releases.sql": "b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a",
+    "0006_relationship_policy.sql": "0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3",
+    "0007_community.sql": "52ec25acd4ceb8cdcf6949a8b4401b67367bc125a99d052ed01c7a90ac8dbf7f",
+    "0008_meeting_beacons.sql": "b8259eb000c15059ddcba60db64518562d2cede7d2d68c42de3df8a85b44c655",
+    "0009_receipt_domain_failures.sql": "e357529103bb998f337508a30b03bddc372fe387b7e587dcb7f96a8b295fa4c6",
+    "0011_outbox_maintenance.sql": "8971093dee1293dfd160920c773d663866dcb5cb688fb7cabf6746eaca2eb61b",
+    "0016_meeting_deadline_guards.sql": "4375673c48b46096cf20dcbac807eace37d96136e347ac9da3b95a884135ff7d"
+  },
+  "ledger_source_sha256": {
+    "0001_concert_core.sql": "9978e75e569c1ba25cb191ddf5b02bbdffcd5e64f3385173f05a885370d9215a",
+    "0002_command_receipts_outbox.sql": "5f5760dfe6384cb2ab5162bcc27fbc0ed75bdca6bb85229012f6389269ee442f",
+    "0003_places_map_releases.sql": "b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a",
+    "0004_bootstrap_admission.sql": "cb1c0093eeaef79dbe783052447c34c78aad5c6daebdc2f6f3dc7f4b17112ac9",
+    "0006_relationship_policy.sql": "0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3",
+    "0007_community.sql": "52ec25acd4ceb8cdcf6949a8b4401b67367bc125a99d052ed01c7a90ac8dbf7f",
+    "0008_meeting_beacons.sql": "b8259eb000c15059ddcba60db64518562d2cede7d2d68c42de3df8a85b44c655",
+    "0009_receipt_domain_failures.sql": "e357529103bb998f337508a30b03bddc372fe387b7e587dcb7f96a8b295fa4c6",
+    "0011_outbox_maintenance.sql": "8971093dee1293dfd160920c773d663866dcb5cb688fb7cabf6746eaca2eb61b",
+    "0016_meeting_deadline_guards.sql": "4375673c48b46096cf20dcbac807eace37d96136e347ac9da3b95a884135ff7d"
+  },
+  "postgres_version": "16.14 (Homebrew)",
+  "direct_sql_guards": "PASS",
+  "native_adapters": "RUN",
+  "restart_persistence": "PASS"
+}
+```
