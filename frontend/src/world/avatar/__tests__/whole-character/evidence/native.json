@@ -1,0 +1,435 @@
+{
+  "result": "PASS",
+  "qualification": "Genuine frozen canonical whole-character configs/source PNG bytes and published shared runtime in incumbent production Phaser/map/renderer. Actual C05 decoder exercised; deterministic isolated roster/privacy owner, no live socket/Auth server, devices or multiuser acceptance.",
+  "testedParent": "8430cd57ebb628fc093cb43f5ab547f042440830",
+  "sources": {
+    "src/world/avatar/whole-character.ts": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85",
+    "src/world/avatar/scene.ts": "0c8e155683d0e50a4cdd17604843b79d24d5401e699e5830927afc926408e55f",
+    "src/world/scenes/MapScene.ts": "971e8a838d2cebde9d3db86392b4a11167451cf15f8e296e08ab9ac525b90c59",
+    "src/world/runtime.ts": "d6b901a9614a56f418d1f1fa09f430aa493a485bd82f3a5764771117595f5a16",
+    "src/world/network/transport/contract.ts": "1b642a0e1bba8c5c45b39fc38d107af39ff3c83c25955295e49edc03b8402b08",
+    "src/world/network/transport/wire-types.ts": "c154c86f488ca681a0379087828ada028c8ecb54fd75c7bb8cb49f712be56618",
+    "src/entities/avatar/whole-character/runtime.ts": "46aa13d5ec97b9c956ce8fc99957450818b99aa0c7704167e7939f0013b49420",
+    "src/entities/avatar/whole-character/contract.ts": "5d60fa0bd3eb89f750646a4e75ad33670d8ca1d09b4d2af7eba1a6d3a0990a0d",
+    "src/entities/avatar/whole-character/index.ts": "9aa451c0fc7a75db299f5a0604ad14d42e26d5560a98bd5528937092d6ffa731",
+    "src/world/avatar/__tests__/whole-character/native.ts": "7e54ad527b21f7c20d24277ed71ecf8f453e47fd417a5a203de7bf0af7f48fb9",
+    "src/world/avatar/__tests__/whole-character/native.html": "fc0bfd3c4ced662e9e9ab3a4b8be8a9424234219f9d5cbdf97944e7698175609",
+    "src/world/avatar/__tests__/whole-character/native.mjs": "d4d82a774f31fc164447eda12d85ea20b02807dc549df9fa44357014303fddac",
+    "../contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+    "../contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "../contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+    "public/world/avatars/derived-v1/static-release.json": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+    "public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "initial": {
+        "status": "ready",
+        "scene": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 40,
+          "scrollY": 195,
+          "width": 360,
+          "height": 701
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "art": {
+        "images": 1,
+        "hashes": [
+          "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5",
+          "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219",
+          "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f",
+          "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8",
+          "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7",
+          "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+        ],
+        "sources": [
+          0,
+          64,
+          128,
+          192,
+          256,
+          320
+        ]
+      },
+      "contract": {
+        "rejected": 7,
+        "pixelHash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+      },
+      "hidden": {
+        "status": "unavailable",
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 40,
+          "scrollY": 195,
+          "width": 360,
+          "height": 701
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "revoked": {
+        "status": "unavailable",
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 40,
+          "scrollY": 195,
+          "width": 360,
+          "height": 701
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "cleanup": {
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "canvases": 0,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "mounts": 1,
+        "destroys": 1
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "status": "ready",
+        "scene": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 25,
+          "scrollY": 137,
+          "width": 390,
+          "height": 759
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "art": {
+        "images": 1,
+        "hashes": [
+          "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5",
+          "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219",
+          "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f",
+          "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8",
+          "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7",
+          "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+        ],
+        "sources": [
+          0,
+          64,
+          128,
+          192,
+          256,
+          320
+        ]
+      },
+      "contract": {
+        "rejected": 7,
+        "pixelHash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+      },
+      "hidden": {
+        "status": "unavailable",
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 25,
+          "scrollY": 137,
+          "width": 390,
+          "height": 759
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "revoked": {
+        "status": "unavailable",
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 25,
+          "scrollY": 137,
+          "width": 390,
+          "height": 759
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "cleanup": {
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "canvases": 0,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "mounts": 1,
+        "destroys": 1
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "initial": {
+        "status": "ready",
+        "scene": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 5,
+          "scrollY": 49,
+          "width": 430,
+          "height": 847
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "art": {
+        "images": 1,
+        "hashes": [
+          "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5",
+          "sha256:e2b474308916cc8b303110fcfc0d4e269ef7dbf48f97ac854682a3fe39f33219",
+          "sha256:7dfbd854577e0fc9ed69c1b70d91233e821b7ef0de4bb50657c1641196be4c3f",
+          "sha256:310be05370c18b8f8e525f85cd6fed2449f90140e08530e26f71ce2d769b76e8",
+          "sha256:29bfdf98a12ef22ec26e0fe7d6ba3160c897b30b5372c731927fb2e780d0d5f7",
+          "sha256:cf5a5d0795af35c637ab4fdfb1709c3e137d54e5a1c4fd7dfefa95cf48d1e6b7"
+        ],
+        "sources": [
+          0,
+          64,
+          128,
+          192,
+          256,
+          320
+        ]
+      },
+      "contract": {
+        "rejected": 7,
+        "pixelHash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+      },
+      "hidden": {
+        "status": "unavailable",
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 5,
+          "scrollY": 49,
+          "width": 430,
+          "height": 847
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "revoked": {
+        "status": "unavailable",
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 5,
+          "scrollY": 49,
+          "width": 430,
+          "height": 847
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "cleanup": {
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "canvases": 0,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "mounts": 1,
+        "destroys": 1
+      }
+    }
+  ],
+  "artifacts": {
+    "six-front-idle-360.jpg": "8d884308a59f1772768bf0adb2858e21af55ab85592e54f4f41c507b2ecc9346",
+    "six-front-idle-390.jpg": "c3554845777d443714406e35a734e60f620d3c391a732917bccdfce4c7890a82",
+    "six-front-idle-430.jpg": "df8933b13f32cbad51f5e73f29cfdee1b7fafed5004f47ba6ef7aa5f6e82de09"
+  },
+  "errors": [],
+  "browser": "156.0.8078.80"
+}

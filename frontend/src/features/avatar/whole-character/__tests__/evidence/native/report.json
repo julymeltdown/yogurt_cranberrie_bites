@@ -1,0 +1,219 @@
+{
+  "result": "PASS",
+  "browser": "156.0.8078.80",
+  "canonicalContract": "3398d8331863775ecc0180e5eccebddd179fedd5",
+  "sourceHashes": {
+    "src/features/avatar/whole-character/controller.ts": "9e34de46c857062892d5b64347876fe2485f7117c6c11e2af438775bb402a353",
+    "src/features/avatar/whole-character/model.ts": "ce1a8a3c3e5035983265c5f22a7ae163eb2cd511881ffae4c26e74b0f4ad385d",
+    "src/features/avatar/whole-character/WholeCharacterEditor.tsx": "115b1912ddf6d70ee6a5ace175b8c69da0b02199a3dc6b27857b63eeb0d91d6f",
+    "src/features/avatar/whole-character/whole-character.css": "ded58eb5d0666c7e5fbd92384d74a15cc0739a4b3860081b5fceb898ff343a96",
+    "src/features/avatar/whole-character/__tests__/preview.tsx": "267d164b3ee185e1e5e345f272f49ba834c89f29375dba1e581c0bd938d266cb",
+    "src/features/avatar/whole-character/__tests__/native.mjs": "42fdfd89ec520e19c742bd984030c98b5308c97f73019041791d55b431c8b144",
+    "src/entities/avatar/whole-character/contract.ts": "5d60fa0bd3eb89f750646a4e75ad33670d8ca1d09b4d2af7eba1a6d3a0990a0d",
+    "src/entities/avatar/whole-character/runtime.ts": "46aa13d5ec97b9c956ce8fc99957450818b99aa0c7704167e7939f0013b49420",
+    "src/entities/avatar/whole-character/view.tsx": "209ade8b11f93e4f711ffc83b7a663c59f69a54c51c7eff7fb3280ab29e1c324"
+  },
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "manifestPin": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b",
+  "art": "Genuine reviewed selected-source photo_01 six whole front-idle figures",
+  "http": "Deterministic HTTP, not live backend",
+  "checks": [
+    {
+      "width": 360,
+      "geometry": {
+        "preview": {
+          "x": 8,
+          "y": 90,
+          "width": 344,
+          "height": 324
+        },
+        "choices": {
+          "x": 8,
+          "y": 419,
+          "width": 344,
+          "height": 107.5
+        },
+        "actions": {
+          "x": 8,
+          "y": 537.5,
+          "width": 344,
+          "height": 44
+        }
+      },
+      "genuineRGBA": true,
+      "sixChoicesPaged": true,
+      "keyboardTouch": true,
+      "draftOnlyRandomReset": true,
+      "revisionSave": true,
+      "noLayerControls": true,
+      "oneMetadataOneAtlas": true,
+      "boundedPaging": true,
+      "borrowedOwnerSurvivesStop": true,
+      "privacyCleanup": true
+    },
+    {
+      "width": 390,
+      "geometry": {
+        "preview": {
+          "x": 8,
+          "y": 90,
+          "width": 374,
+          "height": 324
+        },
+        "choices": {
+          "x": 8,
+          "y": 419,
+          "width": 374,
+          "height": 107.5
+        },
+        "actions": {
+          "x": 8,
+          "y": 537.5,
+          "width": 374,
+          "height": 44
+        }
+      },
+      "genuineRGBA": true,
+      "sixChoicesPaged": true,
+      "keyboardTouch": true,
+      "draftOnlyRandomReset": true,
+      "revisionSave": true,
+      "noLayerControls": true,
+      "oneMetadataOneAtlas": true,
+      "boundedPaging": true,
+      "borrowedOwnerSurvivesStop": true,
+      "privacyCleanup": true
+    },
+    {
+      "width": 430,
+      "geometry": {
+        "preview": {
+          "x": 8,
+          "y": 90,
+          "width": 414,
+          "height": 324
+        },
+        "choices": {
+          "x": 8,
+          "y": 419,
+          "width": 414,
+          "height": 107.5
+        },
+        "actions": {
+          "x": 8,
+          "y": 537.5,
+          "width": 414,
+          "height": 44
+        }
+      },
+      "genuineRGBA": true,
+      "sixChoicesPaged": true,
+      "keyboardTouch": true,
+      "draftOnlyRandomReset": true,
+      "revisionSave": true,
+      "noLayerControls": true,
+      "oneMetadataOneAtlas": true,
+      "boundedPaging": true,
+      "borrowedOwnerSurvivesStop": true,
+      "privacyCleanup": true
+    }
+  ],
+  "assets": [
+    {
+      "path": "/world/avatars/derived-v1/static-release.json",
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "path": "/world/avatars/derived-v1/static-release.json",
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "path": "/world/avatars/derived-v1/static-release.json",
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "path": "/world/avatars/derived-v1/static-release.json",
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    }
+  ],
+  "writes": [
+    {
+      "expected_revision": 1,
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "preset_id": "photo01_front_04",
+        "representation": "whole_character"
+      }
+    },
+    {
+      "expected_revision": 1,
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "preset_id": "photo01_front_02",
+        "representation": "whole_character"
+      }
+    },
+    {
+      "expected_revision": 2,
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "preset_id": "photo01_front_04",
+        "representation": "whole_character"
+      }
+    },
+    {
+      "expected_revision": 1,
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "preset_id": "photo01_front_02",
+        "representation": "whole_character"
+      }
+    }
+  ],
+  "errors": [],
+  "temporaryDirectory": "/private/tmp/mcr-whole-native-7PHm4N"
+}

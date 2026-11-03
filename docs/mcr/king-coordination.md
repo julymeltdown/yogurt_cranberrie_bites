@@ -19,10 +19,17 @@ remote ancestry. Report delivered SHA, paths, evidence and remaining limits.
 Cross-lane contract changes keep one explicit writer; needing a shared file does
 not grant ownership. Escalate actual scope conflicts, not routine publication.
 
-Kings track major feature outcomes and periodically inspect commit history.
-SLs manage feature context, dependencies and resources. Neither role routinely
-re-reads every diff, repeats completed reviews or requires every worker to wait
-for its next review. Use targeted review only for a concrete unresolved risk.
+The human's latest 2026-11-04 instruction assigns all implementation validation
+to developers: code, queries, tests, runtime evidence and fixes. Implementation
+owners choose and run the necessary checks, resolve technical interfaces directly
+with relevant implementation owners and publish their exclusive validated scope.
+Kings and SLs must not inspect, review or validate implementation or queries, rerun
+tests, or impose a separate QA, review or approval stage. Kings track project
+priorities, staffing, major milestones and periodic commit/push progress. SLs track
+the broad feature picture, dependencies and staffing. Required product scope,
+validation evidence and truthful persistent goals remain unchanged.
+
+A king receiving a review or verification request must decline: "I don't perform reviews. The responsible developer owns validation; please resolve this with the implementation owner." SLs likewise do not review code, queries or tests. No work waits for king or SL review. Staffing, priority, ownership conflicts and missing product decisions may still be escalated.
 
 ## SL dispatch lanes
 
