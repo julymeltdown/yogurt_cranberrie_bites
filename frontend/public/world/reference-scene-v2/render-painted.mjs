@@ -9,13 +9,13 @@ const browser=await chromium.launch({executablePath:process.env.MCR_BROWSER_EXEC
 try{
  const page=await browser.newPage()
  let svg=fs.readFileSync(path.join(out,'ground-layout.svg'),'utf8')
- const source='data:image/png;base64,'+fs.readFileSync(path.join(out,'surface-source.png')).toString('base64')
- svg=svg.replaceAll('href="surface-source.png"',`href="${source}"`)
+ const source='data:image/png;base64,'+fs.readFileSync(path.join(out,'surface-source-v3.png')).toString('base64')
+ svg=svg.replaceAll('href="surface-source-v3.png"',`href="${source}"`)
  const data=await page.evaluate(async svg=>{
   const image=new Image();image.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);await image.decode()
   const canvas=document.createElement('canvas');canvas.width=768;canvas.height=1296;canvas.getContext('2d').drawImage(image,0,0)
   return canvas.toDataURL('image/png')
  },svg)
  fs.writeFileSync(path.join(out,'parade-ground.png'),Buffer.from(data.split(',')[1],'base64'))
- console.log(JSON.stringify({status:'PASS',output:'painted/parade-ground.png',dimensions:[768,1296],source:'ground-layout.svg, unchanged surface-source.png',browser:browser.version()}))
+ console.log(JSON.stringify({status:'PASS',output:'painted/parade-ground.png',dimensions:[768,1296],source:'ground-layout.svg, unchanged surface-source-v3.png',browser:browser.version()}))
 }finally{await browser.close()}

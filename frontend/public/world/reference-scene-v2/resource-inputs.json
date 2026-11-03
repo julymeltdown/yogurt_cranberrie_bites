@@ -2,11 +2,11 @@
   "format": "MCR_REFERENCE_SCENE_RESOURCE_INPUTS",
   "version": 2,
   "status": "PROPOSAL_NOT_RELEASE_BOUND",
-  "geometry_hash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
   "geometry": {
     "path": "geometry-proposal.json",
-    "sha256": "sha256:6f1a338a848cdf517ec44638132090bef8da331a97f662e0f05e7b872015e62e",
-    "bytes": 154709
+    "sha256": "sha256:d2650b06842b577eb8a8a455446a10e8f69ef5f9c6cfa2dd2d6008fcc7b89542",
+    "bytes": 176405
   },
   "worker_base": "1e5022885525ab56f056aa2c24100e18c4bc67ed",
   "target": {
@@ -22,8 +22,8 @@
       "theme_id": "PARADE",
       "ground": {
         "path": "parade-ground.png",
-        "sha256": "sha256:9adeee682cad005cd8e0407234dc2fe675a35880723cd83c1f8fa8cdfd439277",
-        "bytes": 534309,
+        "sha256": "sha256:538b0ff435ee8735a3146d4bdbd00953f594b47bb26efafedf34bded98963128",
+        "bytes": 616546,
         "width": 768,
         "height": 1296
       },
@@ -42,18 +42,18 @@
       "editable_sources": [
         {
           "path": "parade-ground.svg",
-          "sha256": "sha256:dbdd7f49ea6df15b9dc31badc8e670ed649b9ebd04f4d3844eeae17c513e1819",
-          "bytes": 1329533
+          "sha256": "sha256:ca3bfa8e2d710d83801010585ba8ae9af4d7b397b2a9ea8d285e302beb351fe0",
+          "bytes": 1453688
         },
         {
           "path": "parade-ground.tsrct",
-          "sha256": "sha256:94f038611770a91ae0158961bb58a97cb7e781cb4e8878e91d1c2f8d9d6fb2dc",
-          "bytes": 3261931
+          "sha256": "sha256:48d03f339e967b269df191a6fa7507cbd65aaf6b20a651c97141e142de077336",
+          "bytes": 3586290
         },
         {
           "path": "parade-ground-editable.json",
-          "sha256": "sha256:b1ac870066559642d103e2163865087ba77c7f626252056a8cd1818ac8f344d3",
-          "bytes": 3260862
+          "sha256": "sha256:230b03bb52ce607f30ddf306d72f16c5c64c25336e3b02adc54dfcd94db8afd3",
+          "bytes": 3585221
         },
         {
           "path": "parade-scenery.svg",
@@ -62,7 +62,7 @@
         },
         {
           "path": "parade-scenery.tsrct",
-          "sha256": "sha256:6deceb1a5120b7b65bc0ddd09104df98742507ebaa2dfb8741dd90c4e86e405f",
+          "sha256": "sha256:4f298824645f73999c0c1e109a45ea339db00d803d446753f19b7e5a5ba9a479",
           "bytes": 1319332
         },
         {
@@ -76,8 +76,8 @@
       "theme_id": "REVENGE",
       "ground": {
         "path": "revenge-ground.png",
-        "sha256": "sha256:9adeee682cad005cd8e0407234dc2fe675a35880723cd83c1f8fa8cdfd439277",
-        "bytes": 534309,
+        "sha256": "sha256:538b0ff435ee8735a3146d4bdbd00953f594b47bb26efafedf34bded98963128",
+        "bytes": 616546,
         "width": 768,
         "height": 1296
       },
@@ -96,18 +96,18 @@
       "editable_sources": [
         {
           "path": "revenge-ground.svg",
-          "sha256": "sha256:9308f6a4f3e01ea809ab067b262ad9f5c801229357b7a55b3d0c6f7dd438c206",
-          "bytes": 1329534
+          "sha256": "sha256:c0093c7c1b47c07859e2120d1a01a07068c355e8215275e4bf768eecb7ca2aee",
+          "bytes": 1453689
         },
         {
           "path": "revenge-ground.tsrct",
-          "sha256": "sha256:814db8c2ad3ee06809232f17dcec251e99b822fbd95958d6058a406b01fc4e99",
-          "bytes": 3261932
+          "sha256": "sha256:66e0d9300f8e066b688b64df2a54c871e479f4514d63cf298dc3a6e0514df2b7",
+          "bytes": 3586291
         },
         {
           "path": "revenge-ground-editable.json",
-          "sha256": "sha256:b74f30dbc53de997fe040c809518ce6d3c13ff53bd18c7cffe6c48efa8674048",
-          "bytes": 3260863
+          "sha256": "sha256:520da417ccca28bbb80d509a186ce5a71f538c241e8bb2e32f4c090dcfddc8ec",
+          "bytes": 3585222
         },
         {
           "path": "revenge-scenery.svg",
@@ -116,7 +116,7 @@
         },
         {
           "path": "revenge-scenery.tsrct",
-          "sha256": "sha256:d7ffd383833a125068d0cc71456340a1b3a87765a61cbccd94cea0bb518f54de",
+          "sha256": "sha256:6599223c3a8f39f355e59434b21f33ce5df3cb18f1e2c3bcf8eca91a13b4f78f",
           "bytes": 1319333
         },
         {
@@ -130,8 +130,8 @@
       "theme_id": "DANGER",
       "ground": {
         "path": "danger-ground.png",
-        "sha256": "sha256:9adeee682cad005cd8e0407234dc2fe675a35880723cd83c1f8fa8cdfd439277",
-        "bytes": 534309,
+        "sha256": "sha256:538b0ff435ee8735a3146d4bdbd00953f594b47bb26efafedf34bded98963128",
+        "bytes": 616546,
         "width": 768,
         "height": 1296
       },
@@ -150,18 +150,18 @@
       "editable_sources": [
         {
           "path": "danger-ground.svg",
-          "sha256": "sha256:bcc8eea676f8423e7c001e9a342f4675184810ab92a02d6109250bcb2ac20f30",
-          "bytes": 1329533
+          "sha256": "sha256:6d0934ac7ea46665366ab40b06d64b0a73062e00f2bd48f379fc89e921712c36",
+          "bytes": 1453688
         },
         {
           "path": "danger-ground.tsrct",
-          "sha256": "sha256:b807825e97803630f2bc6b8c716ad47a537ef1a66f4db4838c5ff13f8834ce87",
-          "bytes": 3261931
+          "sha256": "sha256:8be61918e48d615ad4e2e05cc2a17051f00ab3e8f7df6cc3c9a1a542b46c031d",
+          "bytes": 3586290
         },
         {
           "path": "danger-ground-editable.json",
-          "sha256": "sha256:530f83599f8383592c594b1febefca67dbfefe64fe416126b281949858936d9f",
-          "bytes": 3260862
+          "sha256": "sha256:f95195ba0ed259e040c701dda6e130415a044a86731fb2a0a288aaddd499e281",
+          "bytes": 3585221
         },
         {
           "path": "danger-scenery.svg",
@@ -170,7 +170,7 @@
         },
         {
           "path": "danger-scenery.tsrct",
-          "sha256": "sha256:2d22689390eea0de5d6db782873e131e9dc89fa8b02fa19089550fd1c65f888b",
+          "sha256": "sha256:6dc6df4d6240c9ff2ab6864f0bef900282fd9a7b79b6ba20f03446b9fc113347",
           "bytes": 1319332
         },
         {
