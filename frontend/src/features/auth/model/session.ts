@@ -6,6 +6,7 @@ import { ShellLoadError, type ActiveScope, type SessionReadiness } from '../../.
 import { canonicalUuid, decodeAuth, decodeCapabilities, decodeContract, validLogin } from './contract'
 import { decodeBootstrap } from './bootstrap'
 import { createBrowserCookiePolicy, type CookiePolicy } from './cookie-policy'
+import { createRecovery } from './recovery'
 
 type Notice = 'invalid-input' | 'credentials' | 'rate-limited' | 'unavailable' | 'expired' | 'changed' | null
 export interface AuthState {
@@ -46,6 +47,8 @@ export function createSessionController(options: SessionOptions) {
     session.replace(session.read().generation, null)
     publish({ readiness: eventId ? 'anonymous' : 'unavailable', pending: null, notice })
   }
+  const recovery = createRecovery({ session, http, privacy, cookiePolicy,
+    canStart: () => !disposed && state.pending === null, beforeConfirm: () => clear() })
   const stopPeer = cookiePolicy.onInvalidate(() => {
     const interruptedLogout = state.pending === 'logout'
     clear('changed')
@@ -122,13 +125,20 @@ export function createSessionController(options: SessionOptions) {
   }
   return {
     session, queryClient, privacy, request,
+    requestPasswordReset: recovery.request,
+    async confirmPasswordReset(token: string, newPassword: string, signal?: AbortSignal) {
+      const result = await recovery.confirm(token, newPassword, signal)
+      if (!cookiePolicy.available) publish({ emailEnabled: false })
+      return result
+    },
+    cancelRecovery: recovery.cancel,
     read: () => state,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } },
     readiness: { read: () => state.readiness, subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } } },
     start() { if (!started && !disposed) { started = true; void capabilities() } },
     retryCapabilities() { if (state.capabilities !== 'loading') void capabilities() },
     async login(email: string, password: string): Promise<boolean> {
-      if (disposed || state.pending || !eventId || !state.emailEnabled) return false
+      if (disposed || state.pending || recovery.pending || !eventId || !state.emailEnabled) return false
       if (!validLogin(email, password)) { publish({ notice: 'invalid-input', logout: 'none' }); return false }
       clear(); const attempt = intent
       publish({ pending: 'login', logout: 'none' })
@@ -188,7 +198,7 @@ export function createSessionController(options: SessionOptions) {
     },
     dispose() {
       if (disposed) return
-      clear(); privacy.dispose(); queryClient.clear(); stopPeer(); cookiePolicy.dispose(); disposed = true; listeners.clear()
+      recovery.dispose(); clear(); privacy.dispose(); queryClient.clear(); stopPeer(); cookiePolicy.dispose(); disposed = true; listeners.clear()
     },
   }
 }

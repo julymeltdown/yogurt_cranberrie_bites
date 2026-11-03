@@ -3,7 +3,7 @@ import { TransportError } from '../../../shared/api/errors'
 export interface CookiePolicy {
   readonly available: boolean
   onInvalidate(listener: () => void): () => void
-  run<T>(kind: 'login' | 'logout' | 'refresh', work: () => Promise<T>): Promise<T>
+  run<T>(kind: 'login' | 'logout' | 'refresh' | 'recovery', work: () => Promise<T>, signal?: AbortSignal): Promise<T>
   dispose(): void
 }
 /** No credentials, identities or URLs are persisted or sent across tabs.
@@ -34,12 +34,16 @@ export function createBrowserCookiePolicy(): CookiePolicy {
   return {
     get available() { return Boolean(locks && channel && !closed && !uncertain) },
     onInvalidate(listener) { listeners.add(listener); return () => { listeners.delete(listener) } },
-    async run(kind, work) {
+    async run(kind, work, signal) {
       if (closed || !locks || !channel || (uncertain && kind !== 'logout')) throw new TransportError('invalid-request')
       const waiting = new AbortController(), timeout = setTimeout(() => waiting.abort(), 5000)
+      const cancelWaiting = () => waiting.abort()
+      signal?.addEventListener('abort', cancelWaiting, { once: true })
+      if (signal?.aborted) cancelWaiting()
       try {
         return await locks.request('mcr-auth-cookie-v1', { mode: 'exclusive', signal: waiting.signal }, async () => {
           clearTimeout(timeout)
+          if (signal?.aborted) throw new TransportError('aborted')
           if (closed || (uncertain && kind !== 'logout')) throw new TransportError('invalid-request')
           send('revoke'); ++active
           try { return await work() }
@@ -51,7 +55,7 @@ export function createBrowserCookiePolicy(): CookiePolicy {
       } catch (error) {
         if (error instanceof TransportError) throw error
         throw new TransportError('aborted')
-      } finally { clearTimeout(timeout) }
+      } finally { clearTimeout(timeout); signal?.removeEventListener('abort', cancelWaiting) }
     },
     dispose() { if (active) send('uncertain'); closed = true; channel?.close(); listeners.clear() },
   }

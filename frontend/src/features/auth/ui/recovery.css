@@ -1,0 +1,21 @@
+.auth-recovery { width: min(100% - 2.5rem, 29rem); margin-inline: auto; padding: 2rem 0 max(2rem, env(safe-area-inset-bottom)); color: var(--mcr-ink); overflow-wrap: anywhere; }
+.auth-recovery h1 { font-size: clamp(2.25rem, 8vw, 3.5rem); line-height: 1.05; letter-spacing: -.045em; margin: .5rem 0 1.25rem; }
+.auth-recovery :focus-visible { outline: 3px solid var(--mcr-red); outline-offset: 4px; }
+.recovery-home, .recovery-link { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; color: inherit; text-underline-offset: .25em; }
+.recovery-home { font-weight: 650; }
+.recovery-eyebrow { margin: 2.5rem 0 .75rem; color: var(--mcr-muted); font-size: .75rem; letter-spacing: .08em; }
+.recovery-intro { color: var(--mcr-muted); margin-bottom: 1.5rem; }
+.auth-recovery form { display: grid; gap: .6rem; margin: 1.5rem 0 .75rem; }
+.auth-recovery label { font-weight: 650; margin-top: .5rem; }
+.auth-recovery input, .auth-recovery button, .auth-recovery .recovery-submit { box-sizing: border-box; min-width: 44px; min-height: 48px; padding: .75rem .9rem; border: 1px solid #8a8178; border-radius: 6px; font: inherit; }
+.auth-recovery input { width: 100%; background: var(--mcr-paper); color: var(--mcr-ink); }
+.auth-recovery button { cursor: pointer; color: inherit; background: transparent; }
+.auth-recovery .recovery-submit { display: flex; justify-content: center; align-items: center; background: var(--mcr-ink); color: var(--mcr-paper); text-decoration: none; font-weight: 650; margin-top: .75rem; }
+.auth-recovery :disabled { cursor: not-allowed; opacity: .5; }
+.auth-recovery .recovery-help { margin: 0 0 .5rem; font-size: .85rem; color: var(--mcr-muted); }
+.recovery-feedback { color: #7d2430; }
+.recovery-feedback:empty { display: none; }
+.recovery-feedback p { margin: 1rem 0; }
+.recovery-switch { display: block; margin: .75rem 0; text-decoration: underline; text-underline-offset: .25em; }
+.recovery-link { margin-top: .75rem; margin-right: 1rem; }
+@media (prefers-reduced-motion: reduce) { .auth-recovery * { scroll-behavior: auto; } }
