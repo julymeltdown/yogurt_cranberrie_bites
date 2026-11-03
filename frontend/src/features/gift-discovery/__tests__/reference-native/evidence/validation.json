@@ -1,0 +1,42 @@
+{
+  "scope": "Recorded actual local execution results; not live backend/device acceptance",
+  "node": "24.22.2",
+  "browser": "156.0.8078.80",
+  "commands": [
+    {
+      "command": "vitest run --root frontend src/features/gift-discovery src/features/my-gifts src/app/community-entry/__tests__/routes.test.tsx",
+      "exit_code": 0,
+      "result": "77 tests in 6 files passed"
+    },
+    {
+      "command": "node frontend/node_modules/typescript/bin/tsc -p frontend/tsconfig.json --pretty false --incremental false",
+      "exit_code": 0,
+      "result": "Full configured source scope; exact tracked sparse fixtures restored"
+    },
+    {
+      "command": "oxlint frontend/src frontend/vite.config.ts",
+      "exit_code": 0,
+      "result": "Final source-only lint after disposable build cleanup"
+    },
+    {
+      "command": "node frontend/node_modules/vite/bin/vite.js build frontend --outDir src/features/gift-discovery/__tests__/reference-native/build",
+      "exit_code": 0,
+      "result": "408 modules; Vite8.1.3; >500kB chunk warning retained; disposable output removed"
+    },
+    {
+      "command": "node frontend/src/features/gift-discovery/__tests__/reference-native/native.mjs",
+      "exit_code": 0,
+      "result": "18 scenario captures plus reference comparison; see report.json"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit_code": 0,
+      "result": "Planning provenance only"
+    },
+    {
+      "command": "node --check frontend/src/features/gift-discovery/__tests__/reference-native/native.mjs",
+      "exit_code": 0,
+      "result": "Final harness source-pin addition parses; production/capture inputs unchanged"
+    }
+  ]
+}

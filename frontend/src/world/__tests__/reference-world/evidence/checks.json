@@ -1,0 +1,51 @@
+{
+  "base": "f837bef676cd26869c26c172a699a91b7842d832",
+  "status": "MOCK_READY",
+  "checks": [
+    {
+      "name": "native",
+      "exitCode": 0
+    },
+    {
+      "name": "vitest101",
+      "exitCode": 0
+    },
+    {
+      "name": "typescript",
+      "exitCode": 0
+    },
+    {
+      "name": "oxlint",
+      "exitCode": 0
+    },
+    {
+      "name": "vite-production-build",
+      "exitCode": 0
+    },
+    {
+      "name": "ui-origin",
+      "exitCode": 0
+    },
+    {
+      "name": "plan",
+      "exitCode": 0
+    },
+    {
+      "name": "diff-check",
+      "exitCode": 0
+    }
+  ],
+  "testFiles": 4,
+  "testsPassed": 101,
+  "productionPaths": [
+    "frontend/src/world/input/controller.ts",
+    "frontend/src/world/input/controls.css",
+    "frontend/src/world/scenes/MapScene.ts"
+  ],
+  "unitTestHash": "e25ede0aff537bfe146194972a401382046ba65e0ddd75596e6dcf97e8a2827a",
+  "limitations": [
+    "Root-combined and remote ancestry pending frontend king",
+    "Fixture proof is not live/device/multiuser or avatar acceptance",
+    "Orthogonal/sparse source art differs from target diagonal/dense art"
+  ]
+}

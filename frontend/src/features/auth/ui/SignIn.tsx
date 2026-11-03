@@ -4,6 +4,8 @@ import { usePorts } from '../../../app/access'
 import { safeReturnTarget } from '../../../app/routes'
 import type { AuthState } from '../model/session'
 import { ConcertAction, ConcertWindow } from '../../../shared/ui/concert-window'
+import { Cemetery } from './reference-sign-in/Cemetery'
+import { ProviderMark } from './reference-sign-in/ProviderMark'
 import './sign-in.css'
 
 const unavailable: AuthState = { readiness: 'unavailable', pending: null, capabilities: 'error', emailEnabled: false, notice: null, logout: 'none' }
@@ -39,11 +41,11 @@ export function SignIn() {
   }
   const busy = state.pending !== null, signedIn = state.readiness === 'ready'
   return <main className="auth-sign-in auth-sign-in--concert" id="main" tabIndex={-1}>
-    <Link className="auth-home" to="/">MCR Concert World</Link>
     <ConcertWindow title={signedIn ? 'You’re signed in' : 'Sign in'} headingLevel={1}
       onClose={() => { void navigate('/') }} closeLabel="Close sign-in and return home">
-    <p className="auth-eyebrow">THE NEXT SHOW STARTS HERE</p>
-    <p className="auth-intro">Keep your place in the crowd.</p>
+    <Cemetery edge="top" />
+    <div className="auth-paper-content">
+    <p className="auth-display-heading" aria-hidden="true">{signedIn ? 'You’re signed in' : 'SIGN IN'}</p>
     <div role="status" aria-live="polite" className="auth-message">
       {state.pending === 'login' && <p>Signing you in…</p>}
       {state.pending === 'logout' && <p>Local access cleared. Signing out…</p>}
@@ -67,20 +69,21 @@ export function SignIn() {
           <label htmlFor="sign-in-password">Password</label>
           <input ref={passwordInput} id="sign-in-password" name="password" type="password" autoComplete="current-password"
             required maxLength={128} disabled={busy || !state.emailEnabled} value={password} onChange={event => setPassword(event.target.value)} />
-          <ConcertAction className="auth-submit" type="submit" pending={state.pending === 'login'} disabled={busy || !state.emailEnabled}>{state.pending === 'login' ? 'Signing in…' : 'Sign in with email'}</ConcertAction>
+          <ConcertAction className="auth-submit" type="submit" aria-label={state.pending === 'login' ? 'Signing in…' : 'Sign in with email'} pending={state.pending === 'login'} disabled={busy || !state.emailEnabled}>{state.pending === 'login' ? 'Signing in…' : 'SIGN IN'}</ConcertAction>
         </form>
-        <Link className="auth-link" to="/reset-password">Forgot password?</Link>
+        <Link className="auth-link auth-forgot" to="/reset-password">Forgot password?</Link>
         <div className="auth-providers" aria-label="Other sign-in options">
-          <p>Other sign-in options</p>
-          <div className="auth-provider-buttons">{['Google', 'Apple', 'X'].map(provider => <button key={provider} type="button" disabled aria-label={`Continue with ${provider}`} aria-describedby="provider-unavailable">{provider}</button>)}</div>
+          <p className="auth-or">Or continue with</p>
+          <div className="auth-provider-buttons">{(['X', 'Discord', 'Google'] as const).map(provider => <button key={provider} type="button" disabled aria-label={`Continue with ${provider}`} aria-describedby="provider-unavailable"><ProviderMark provider={provider} /></button>)}</div>
           <p id="provider-unavailable">Provider sign-in is not available yet.</p>
         </div>
       </>}
       {state.logout === 'unconfirmed' && <button type="button" disabled={busy} onClick={() => { void auth?.logout() }}>Try server sign-out again</button>}
-      <p>New here? <Link className="auth-link" to="/signup">Create an account</Link></p>
+      <p className="auth-create">No account? <Link className="auth-link" to="/signup">Create an account</Link></p>
     </>}
-    {!signedIn && <Link className="auth-link auth-back" to={target}>Back to your destination</Link>}
-    <Link className="auth-link auth-back" to="/">Back to home</Link>
+    {!signedIn && new URLSearchParams(location.search).has('returnTo') && <Link className="auth-link auth-back" to={target}>Back to your destination</Link>}
+    </div>
+    <Cemetery edge="bottom" />
     </ConcertWindow>
   </main>
 }

@@ -6,6 +6,7 @@ import { characterSourcePack } from '../../entities/avatar/source-catalog'
 import { immutable } from '../../world/entities/replicated'
 import { validatePolicy, type SimulationPolicy } from '../../world/input/simulation'
 import { createAssetResources, type AssetResources, type Resource } from '../../world/map/resources'
+import { createResourceByteCache } from '../../world/map/resource-cache'
 import { validateManifests } from '../../world/map/manifest'
 import { canonicalJson } from '../../features/auth/model/bootstrap'
 import type { Geometry } from '../../world/map/manifest'
@@ -90,7 +91,9 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
           merge(entries); availableThemeIds.push(candidate.theme_id)
         } catch { /* An unqualified optional skin remains unavailable; selected release checks above stay mandatory. */ }
       }
-      const assets = createAssetResources({ origin, allow, ...(assetFetch ? { fetch: assetFetch } : {}) })
+      const resourceOptions = { origin, allow, ...(assetFetch ? { fetch: assetFetch } : {}) }
+      // Keep invalid/duplicate resource rejection before any rooms request. No bytes are read here.
+      createAssetResources(resourceOptions)
       validatePolicy(object(map.geometry) as unknown as Geometry, configuration.movementPolicy)
       requireValue(Number.isFinite(configuration.zoom) && configuration.zoom >= 1 && configuration.zoom <= 8)
       // No resource pin is guessed; C03 validated the hashes and cross-manifest bindings locally above.
@@ -100,6 +103,14 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
       assertEntry(auth, captured)
       requireValue(auth.session.isCurrent(response.scope))
       const rooms = response.data
+      // Public immutable bytes share this release only. Every read still passes the original privacy and allowlist fences.
+      const cache = createResourceByteCache({ signal: captured.signal })
+      let stopCache = () => {}
+      const stop = () => { cache.dispose(); stopCache(); captured.signal.removeEventListener('abort', stop) }
+      stopCache = auth.privacy.registerCleanup(stop)
+      captured.signal.addEventListener('abort', stop, { once: true })
+      if (captured.signal.aborted || !auth.privacy.isCurrent(captured.privacyScope)) { stop(); throw new Error('World authority unavailable') }
+      const assets = createAssetResources({ ...resourceOptions, cache })
       // The default is a catalog choice only. The canonical ticket/snapshot still decides admission, including full rooms.
       const resources: AssetResources = Object.freeze({ read(resource: Resource, readSignal: AbortSignal) {
         const pinned = Object.freeze({ path: resource.path, sha256: resource.sha256, kind: resource.kind })
