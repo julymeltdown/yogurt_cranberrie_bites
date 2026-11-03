@@ -174,3 +174,78 @@ and Main. Final delivery contains only this report, with staged path/whitespace
 checks and clean checkout confirmed in the handoff. QA native fix validation and
 full BE27 acceptance remain **NOT_RUN**. No build/database resources or source
 ownership are retained by this QA assignment.
+
+## Separate follow-up: fixture identity, authority and revision accounting
+
+Main assigned this follow-up after the timestamp diagnosis goal was actually
+COMPLETE. A new unbudgeted goal was created and returned ACTIVE. This section
+addresses the remaining fixture; it does not reopen the confirmed timestamp
+finding or add a native-acceptance gate. Source remains read-only for QA.
+
+Observed native receipt 83 has SHA256
+`2beb307ab4dcefd7f92ed387204f40184294837687f8d457dbddcaf4dd09abd4`:
+three tests PASS, one FAIL, exit 101. The remaining empty/publish/close test
+reports **Introduction authorization denied**, rather than the earlier Invalid
+input. That receipt alone does not identify a close statement.
+
+The initial follow-up test snapshot was the previously recorded `62386a...`.
+It used `f.foreign_actor` with **`f.event`** for the cutoff draft, despite that
+identity's command authority belonging to **`f.foreign_event`**. Its main-event
+public profile does not grant command authority. The accepted-draft call is
+therefore the first unhandled denied operation in that source path, before the
+post-cutoff close assertions. Changing the denial expectation or bypassing
+authorization would invalidate the intended cutoff test.
+
+During this read the author introduced a dedicated `cutoff_actor`. A single
+atomic read pinned the revised test to SHA256
+`27c553ab116553759b7152f1fab46cbc4a0c07e20e5f8a3fd30918a96b3edbdb`.
+Its relevant bindings and outcomes are:
+
+| Identity / operation | Exact binding and expected state |
+| --- | --- |
+| `f.actor` | Main event owner: empty set creates DRAFT 1; failed empty publish leaves 1; valid set becomes DRAFT 2; publish becomes PUBLISHED 3; the earlier successful close becomes CLOSED 4. |
+| `f.other` | Separate main-event owner of the raw-SQL expired fixture; not either command row being closed. |
+| `f.foreign_actor` | Command grants in `f.foreign_event`; a main-event profile also exists, but there is no main-event command grant. |
+| `f.cutoff_actor` | Newly distinct UUID with profile and set/publish/close/list/own-read grants in `f.event`; its row is separate from `f.actor` and the foreign-event row. |
+| Accepted cutoff set | Lines 562–574: cutoff actor, main event, expected 0, expiry `cutoff - 1s`; creates DRAFT revision **1**. |
+| Beyond-cutoff set | Lines 579–594: same row, expected 1, expiry `cutoff + 1s`; Invalid before insert, leaving DRAFT **1**. |
+| Event cutoff moved to current DB clock | Lines 595–600; changes event settings, not any introduction revision. |
+| Set after cutoff | Lines 601–612: same row, expected 1; Denied before mutation, leaving DRAFT **1**. |
+| Close after cutoff | Lines 613–620 incorrectly pass expected **2** in this pinned snapshot. Correct expected revision is **1**, preferably `accepted.owner.revision`; successful close yields CLOSED **2**. |
+
+This follows the actual implementation, not a revised expectation chosen to fit
+a test exit. `IntroCommand::close` derives its target from the supplied
+**event and actor**, not the command key (`intro/mod.rs:218–224`, `295–305`).
+The repository selects the row by event/owner, increments only successful writes,
+rejects mismatched revisions before mutation, and propagates producer errors
+through transaction rollback. Its close branch requires current revision and a
+non-CLOSED row (`repository/intro.rs:330–342`). Close deliberately skips the event
+cutoff restriction while retaining command authorization; a cutoff does not
+authorize an unrelated owner or revive an already CLOSED row.
+
+The original late `Close(f.actor, expected 3)` cannot succeed because that row is
+already CLOSED 4. A new idempotency key does not reset its revision. Even changing
+that argument to 4 would still hit the CLOSED-state rejection. Reordering the
+old closes cannot fix this. To test a successful safety close after cutoff, use
+the separately authorized cutoff actor's still-open row and its actual revision
+1. Retain the original owner's earlier close/direct-not-found assertions.
+
+QA executed an in-memory standard-library model, exit 0: deterministic synthetic
+UUIDs plus the source's SHA256-based intro-ID derivation produce distinct keys
+for `(main, owner)`, `(main, cutoff)`, `(foreign, foreign actor)` and
+`(main, foreign actor)`. A transition ledger verifies owner CLOSED 4, missing
+main-event foreign authority, unchanged cutoff DRAFT 1 after Invalid/Denied,
+Conflict for cutoff close expected 2, and success/CLOSED 2 for expected 1.
+No native process, production/test edit or dependency was used.
+
+Repository hash remained `02c039f2...` at this review; the test changed from
+`62386a...` to the atomic `27c553...` snapshot above. Both exact findings were
+sent directly to the BE owner and Main. The author owns the fixture correction
+and native proof; this source/state diagnosis makes no full BE27 acceptance
+claim and does not delay integration of the earlier committed diagnosis.
+
+A final read detected the author's correction to `Revision::initial()` for the
+cutoff actor's close. That later test hash is
+`c1974e3c85d1aa47b8acada9acdb6b468775b9b7256fe2a019d54d2b362f26e2`;
+the repository hash remained unchanged. The correction matches the revision-1
+ledger above. It is source evidence only; QA did not run the revised native test.
