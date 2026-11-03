@@ -41,7 +41,13 @@ export function createFeedRuntime(options: FeedOptions, clear: () => void, chang
   function usable() { return started && !disposed && scope !== null && options.auth.privacy.isCurrent(scope) && !!scope.eventId && uuid.test(scope.eventId) && access.available }
   function sync() {
     if (!started || disposed) return
-    cancel(); scope = options.auth.privacy.capture(); access = freeze({ ...options.access.read() }); clear(); changed()
+    const nextScope = options.auth.privacy.capture(), nextAccess = freeze({ ...options.access.read() })
+    if (JSON.stringify(scope) === JSON.stringify(nextScope)) {
+      if (access.available === nextAccess.available && access.readOnly === nextAccess.readOnly) return
+      if (!nextAccess.available) cancel()
+      access = nextAccess; changed(); return
+    }
+    cancel(); scope = nextScope; access = nextAccess; clear(); changed()
   }
   return {
     scope: () => scope, access: () => access, usable, writable: () => usable() && !access.readOnly,

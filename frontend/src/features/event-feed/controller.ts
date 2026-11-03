@@ -12,7 +12,7 @@ export function createEventFeedController(options: FeedOptions) {
   function publish(patch: Partial<FeedState>) { state = freeze({ ...state, ...patch }); listeners.forEach(fn => fn()) }
   const runtime = createFeedRuntime(options, () => {
     feedVersion++; noticesVersion++; noticeVersion++; seenCursors.feed.clear(); seenCursors.notices.clear(); state = freeze(initial()); listeners.forEach(fn => fn())
-  }, () => { publish({ available: runtime.usable(), readOnly: runtime.access().readOnly }); if (runtime.usable()) { void loadFeed(); void loadNotices() } })
+  }, () => { publish({ available: runtime.usable(), readOnly: runtime.access().readOnly }); if (runtime.usable()) { void loadFeed(); void loadNotices() } else publish({ feed: blank(), notices: blank(), notice: blank() }) })
   async function loadFeed(more = false) {
     if (!runtime.usable() || state.feed.phase === 'loading') return
     const previous = more ? state.feed.data : null, cursor = previous?.next_cursor

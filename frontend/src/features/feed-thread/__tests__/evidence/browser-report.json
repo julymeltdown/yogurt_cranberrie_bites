@@ -1,0 +1,38 @@
+{
+  "scope": "Test-only native HTTP fixtures; no live backend/device acceptance",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "uncertainWriteStatusRecovery": "PASS",
+      "comments": "PASS",
+      "reaction": "PASS",
+      "privacyEviction": "PASS",
+      "readOnly": "PASS",
+      "horizontalOverflow": false,
+      "writes": 3
+    },
+    {
+      "width": 390,
+      "uncertainWriteStatusRecovery": "PASS",
+      "comments": "PASS",
+      "reaction": "PASS",
+      "privacyEviction": "PASS",
+      "readOnly": "PASS",
+      "horizontalOverflow": false,
+      "writes": 3
+    },
+    {
+      "width": 430,
+      "uncertainWriteStatusRecovery": "PASS",
+      "comments": "PASS",
+      "reaction": "PASS",
+      "privacyEviction": "PASS",
+      "readOnly": "PASS",
+      "horizontalOverflow": false,
+      "writes": 3
+    }
+  ],
+  "errors": [],
+  "requests": 42
+}
