@@ -1,6 +1,7 @@
 pub mod auth_runtime;
 pub mod auth_transactions;
 pub mod concert_identity;
+pub mod concert_deletion;
 pub mod dto;
 pub mod errors;
 pub mod onboarding;
