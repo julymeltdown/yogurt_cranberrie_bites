@@ -1,0 +1,13 @@
+# Release-scoped resource byte cache
+
+Status: IN_PROGRESS until committed integration and publication. This frontend-only change addresses repeated public immutable asset reads. Existing browser `force-cache` requests and local avatar drafts predate this change and are not claimed as new optimizations.
+
+The frontend king owns `world/map/resource-cache.ts`, the optional cache seam in `world/map/resources.ts`, the production resolver binding in `app/world-entry/resolver.ts`, focused cache tests and the resolver's cache regression. No feature worker, backend, contract, source artwork, dependency or lockfile is changed here.
+
+The production world resolver creates one bounded cache after its canonical room read and original release validation. The same release resources already serve world and era loaders. The cache key includes origin, path, hash and kind; only the existing hash-verified, bounded, same-origin asset reader can populate it. Every read still checks its own immutable allowlist and the original privacy lease before the cache, including hits. Invalid release descriptors continue to fail before any room or asset request.
+
+Concurrent consumers share one underlying resource load. Cancelling a consumer rejects that consumer without cancelling other consumers' work. Release abort or privacy cleanup aborts the owner, clears resident bytes, rejects late results and unregisters its cleanup. Failed loads are not cached; an explicit retry can succeed. A copy on return prevents one decoder from changing another consumer's resident bytes. Default limits are 8 MiB and 32 entries, with least-recently-used successful entries evicted as necessary. No private API response or composed personal avatar is cached here.
+
+Counters distinguish underlying loader starts, resident hits, concurrent joins and resident bytes. They do not claim measured HTTP transfers or image decodes. Browser HTTP cache behavior and retained decoded-avatar leases are separate concerns. The separate selected-static public illustration consumer already shares its single atlas across mounts; it does not map an authenticated AvatarConfig to those frames.
+
+Focused resource, production resolver/world-owner, era replacement and illustrated-loader checks passed at the implementation checkpoint; strict whole-frontend TypeScript and lint passed. A regression initially caught resource prevalidation moving after the room read; validation was restored before I/O and the existing negative test preserved. Native warm-route and era request/transfer/decode accounting will be recorded by the integrated reference harness. Actual services, devices, multiuser behavior and release acceptance are not established by these tests.
