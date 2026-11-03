@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "command": "python3 frontend/public/world/maps/build.py",
+  "exit_code": 0,
+  "files": {
+    "frontend/public/world/maps/courtyard-tiled.json": "a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d",
+    "frontend/public/world/maps/geometry.json": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+    "frontend/public/world/maps/virtual-places.json": "0edef366bdfa7799d94312f479a539f3fffa9aad1c877c6f07e9fc2818535c83",
+    "frontend/public/world/maps/landmarks.json": "b62008d8e52b52e749cc15b7ad2e6f28474ab222f84e75a25ddf810f02bd39c4",
+    "frontend/public/world/maps/binding-inputs.json": "cd37c2e5eb728049b0b4ad866d405c45bf1cb42d50418c806576b72d6f66bdeb"
+  }
+}

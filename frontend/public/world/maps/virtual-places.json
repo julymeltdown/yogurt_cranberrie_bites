@@ -1,0 +1,102 @@
+[
+  {
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000001",
+    "label": "Virtual Studio landmark",
+    "place_kind": "VIRTUAL_CONCEPT",
+    "verification_state": "CONCEPT_ONLY",
+    "closure_state": "OPEN",
+    "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+    "provenance": {
+      "source_id": "ar02_original_courtyard",
+      "source_kind": "ORIGINAL_ART",
+      "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+      "source_uri": null,
+      "author": "MCR AR02 map author",
+      "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+      "review_state": "UNREVIEWED",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "photo_permission": "NOT_APPLICABLE"
+    }
+  },
+  {
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+    "label": "Virtual Culture Park lawn",
+    "place_kind": "VIRTUAL_CONCEPT",
+    "verification_state": "CONCEPT_ONLY",
+    "closure_state": "OPEN",
+    "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+    "provenance": {
+      "source_id": "ar02_original_courtyard",
+      "source_kind": "ORIGINAL_ART",
+      "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+      "source_uri": null,
+      "author": "MCR AR02 map author",
+      "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+      "review_state": "UNREVIEWED",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "photo_permission": "NOT_APPLICABLE"
+    }
+  },
+  {
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+    "label": "Virtual stage",
+    "place_kind": "VIRTUAL_CONCEPT",
+    "verification_state": "CONCEPT_ONLY",
+    "closure_state": "OPEN",
+    "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+    "provenance": {
+      "source_id": "ar02_original_courtyard",
+      "source_kind": "ORIGINAL_ART",
+      "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+      "source_uri": null,
+      "author": "MCR AR02 map author",
+      "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+      "review_state": "UNREVIEWED",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "photo_permission": "NOT_APPLICABLE"
+    }
+  },
+  {
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+    "label": "Virtual gift corner",
+    "place_kind": "VIRTUAL_CONCEPT",
+    "verification_state": "CONCEPT_ONLY",
+    "closure_state": "OPEN",
+    "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+    "provenance": {
+      "source_id": "ar02_original_courtyard",
+      "source_kind": "ORIGINAL_ART",
+      "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+      "source_uri": null,
+      "author": "MCR AR02 map author",
+      "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+      "review_state": "UNREVIEWED",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "photo_permission": "NOT_APPLICABLE"
+    }
+  },
+  {
+    "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+    "label": "Virtual pixel wall",
+    "place_kind": "VIRTUAL_CONCEPT",
+    "verification_state": "CONCEPT_ONLY",
+    "closure_state": "OPEN",
+    "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+    "provenance": {
+      "source_id": "ar02_original_courtyard",
+      "source_kind": "ORIGINAL_ART",
+      "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+      "source_uri": null,
+      "author": "MCR AR02 map author",
+      "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+      "review_state": "UNREVIEWED",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "photo_permission": "NOT_APPLICABLE"
+    }
+  }
+]

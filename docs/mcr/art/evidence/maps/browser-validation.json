@@ -1,0 +1,261 @@
+{
+  "status": "MOCK_READY",
+  "scope": "Original AR02 virtual geometry with actual AR04 texture bytes in native Canvas; asset review only",
+  "browser": "156.0.8078.80",
+  "node": "v26.7.0",
+  "playwright": "1.61.1",
+  "themeSourceCheckout": "/Users/lhs/.codex/worktrees/1ff9/mcr/frontend/public/world/themes",
+  "resourceHashes": {
+    "revenge": "sha256:245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+    "parade": "sha256:3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+    "danger": "sha256:1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21"
+  },
+  "results": [
+    {
+      "width": 360,
+      "theme": "revenge",
+      "metrics": {
+        "pageWidth": 360,
+        "viewportWidth": 360,
+        "canvasWidth": 328,
+        "canvasCssWidth": 328,
+        "colors": 74,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 328
+          },
+          {
+            "height": 44,
+            "width": 328
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-360-revenge.png"
+    },
+    {
+      "width": 360,
+      "theme": "parade",
+      "metrics": {
+        "pageWidth": 360,
+        "viewportWidth": 360,
+        "canvasWidth": 328,
+        "canvasCssWidth": 328,
+        "colors": 74,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 328
+          },
+          {
+            "height": 44,
+            "width": 328
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-360-parade.png"
+    },
+    {
+      "width": 360,
+      "theme": "danger",
+      "metrics": {
+        "pageWidth": 360,
+        "viewportWidth": 360,
+        "canvasWidth": 328,
+        "canvasCssWidth": 328,
+        "colors": 186,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 328
+          },
+          {
+            "height": 44,
+            "width": 328
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-360-danger.png"
+    },
+    {
+      "width": 390,
+      "theme": "revenge",
+      "metrics": {
+        "pageWidth": 390,
+        "viewportWidth": 390,
+        "canvasWidth": 358,
+        "canvasCssWidth": 358,
+        "colors": 75,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 358
+          },
+          {
+            "height": 44,
+            "width": 358
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-390-revenge.png"
+    },
+    {
+      "width": 390,
+      "theme": "parade",
+      "metrics": {
+        "pageWidth": 390,
+        "viewportWidth": 390,
+        "canvasWidth": 358,
+        "canvasCssWidth": 358,
+        "colors": 74,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 358
+          },
+          {
+            "height": 44,
+            "width": 358
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-390-parade.png"
+    },
+    {
+      "width": 390,
+      "theme": "danger",
+      "metrics": {
+        "pageWidth": 390,
+        "viewportWidth": 390,
+        "canvasWidth": 358,
+        "canvasCssWidth": 358,
+        "colors": 194,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 358
+          },
+          {
+            "height": 44,
+            "width": 358
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-390-danger.png"
+    },
+    {
+      "width": 430,
+      "theme": "revenge",
+      "metrics": {
+        "pageWidth": 430,
+        "viewportWidth": 430,
+        "canvasWidth": 398,
+        "canvasCssWidth": 398,
+        "colors": 108,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 398
+          },
+          {
+            "height": 44,
+            "width": 398
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-430-revenge.png"
+    },
+    {
+      "width": 430,
+      "theme": "parade",
+      "metrics": {
+        "pageWidth": 430,
+        "viewportWidth": 430,
+        "canvasWidth": 398,
+        "canvasCssWidth": 398,
+        "colors": 107,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 398
+          },
+          {
+            "height": 44,
+            "width": 398
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-430-parade.png"
+    },
+    {
+      "width": 430,
+      "theme": "danger",
+      "metrics": {
+        "pageWidth": 430,
+        "viewportWidth": 430,
+        "canvasWidth": 398,
+        "canvasCssWidth": 398,
+        "colors": 231,
+        "fontSize": 16,
+        "selects": [
+          {
+            "height": 44,
+            "width": 398
+          },
+          {
+            "height": 44,
+            "width": 398
+          }
+        ],
+        "imageSmoothing": false,
+        "labels": 5
+      },
+      "fiveLandmarkSelections": "PASS",
+      "screenshot": "review-430-danger.png"
+    }
+  ],
+  "pageErrors": [],
+  "limits": [
+    "Native Canvas review harness, not application Phaser composition",
+    "No character artwork or avatar readability claim",
+    "No actual iOS/Android hardware or QA06 acceptance",
+    "No real server/multiuser/IN01 acceptance",
+    "No operational venue map or physical destinations",
+    "No final release manifest binding"
+  ],
+  "themeCheckoutHeadAtCapture": "a3bdb38a83f5f220f6b934139da7cb0ad6bb9fae",
+  "themeResourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+  "resourceCommitVerification": "PASS: git-show committed PNG bytes match all captured resource hashes; no rerender needed."
+}
