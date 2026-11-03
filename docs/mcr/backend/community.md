@@ -277,3 +277,8 @@ Focused pickup review fixes (latest candidate still pending native rebuild):
 Regressions cover grace admission, capped fractional expiry, concurrent and
 repeated failed-claim replay, changed-body conflict, distinct-guess limits and
 successful claim recovery in READ_ONLY without a fresh IP context.
+
+The native guess regression also injects the precise committed-admission/no-result
+crash gap in its owned test database, then proves retry does not debit twice.
+The gift restart harness additionally verifies admission-row durability across an
+actual PostgreSQL stop/start. Neither fixture touches external data.

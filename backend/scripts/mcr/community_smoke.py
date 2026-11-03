@@ -60,6 +60,8 @@ def run(args, report):
         report["binary_sha256"] = digest(binary)
         native([])
         query = "select (select count(*) from " + ("concert_maintenance_invalidations" if args.maintenance else ("concert_community_giveaways" if args.giveaway else "concert_community_parties")) + ")||':'||(select count(*) from concert_command_receipts)||':'||(select count(*) from concert_outbox);"
+        if args.giveaway:
+            query = query.removesuffix(";") + "||':'||(select count(*) from concert_community_pickup_admissions);"
         before = cluster.sql(DATABASE, query)
         pid = cluster.assert_postmaster()
         cluster.stop()
@@ -70,7 +72,7 @@ def run(args, report):
         after = cluster.sql(DATABASE, query)
         if args.giveaway:
             old, new = list(map(int, before.split(":"))), list(map(int, after.split(":")))
-            require(new[:2] == old[:2] and new[2] == old[2] + 1, "restart expiry has exactly one atomic maintenance invalidation")
+            require(new[:2] == old[:2] and new[2] == old[2] + 1 and new[3:] == old[3:], "restart expiry has exactly one atomic maintenance invalidation")
             report["restart_expiry"] = "PASS"
         else:
             require(after == before, "restart replay did not repeat effects")

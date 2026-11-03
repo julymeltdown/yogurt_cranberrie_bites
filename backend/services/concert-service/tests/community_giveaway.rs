@@ -480,7 +480,34 @@ async fn community_gift_guesses_persist_and_expiry_cancel_race_release_once() ->
             .await,
         Err(GiftServiceError::Command(CommandError::Conflict))
     ));
-    for _ in 0..4 {
+    // Test-only crash-gap fixture: counters/admission committed, BE15 result absent.
+    failed.key = Uuid::new_v4();
+    failed.code = Some(PickupCode::parse(wrong.into()).unwrap());
+    let hash = keys.sign(&failed.request().unwrap()).unwrap();
+    let mut gap = pool.begin().await?;
+    sqlx::query("select singleton from concert_command_budget where singleton for update")
+        .execute(&mut *gap)
+        .await?;
+    sqlx::query(
+        "update concert_community_pickup_attempts set attempts=attempts+1 where event_id=$1",
+    )
+    .bind(event)
+    .execute(&mut *gap)
+    .await?;
+    sqlx::query("insert into concert_community_pickup_admissions(actor_id,event_id,idempotency_key,reservation_id,request_hash,created_at,expires_at) select $1,$2,$3,$4,$5,t,t+interval '86400 seconds' from (select clock_timestamp() t) q").bind(owner).bind(event).bind(failed.key).bind(reservation).bind(hash.as_storage()).execute(&mut *gap).await?;
+    gap.commit().await?;
+    assert!(matches!(
+        service.execute(&failed, &keys, &codes, None).await,
+        Err(GiftServiceError::Gift(GiftError::CodeInvalid))
+    ));
+    let attempts: i32 = sqlx::query_scalar(
+        "select max(attempts) from concert_community_pickup_attempts where event_id=$1",
+    )
+    .bind(event)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(attempts, 2);
+    for _ in 0..3 {
         failed.key = Uuid::new_v4();
         failed.code = Some(PickupCode::parse(wrong.into()).unwrap());
         assert!(matches!(
