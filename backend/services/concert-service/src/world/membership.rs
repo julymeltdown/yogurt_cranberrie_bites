@@ -54,6 +54,9 @@ pub trait CanonicalAuthorityPort: Send + Sync + 'static {
     fn install_pending(&self, _binding: &Binding, _now_ms: u64) -> Result<(), AuthorityError> {
         Ok(())
     }
+    fn publication_ready(&self, _binding: &Binding) -> bool {
+        true
+    }
     fn current(
         &self,
         expected: &Binding,
@@ -120,6 +123,9 @@ impl<P: CanonicalAuthorityPort> MembershipAdapter<P> {
             captured: BTreeMap::new(),
             capacity,
         })
+    }
+    pub fn publication_ready(&self, b: &Binding) -> bool {
+        self.port.publication_ready(b)
     }
     pub fn publication_fence(&self) -> Arc<Mutex<()>> {
         self.port.publication_fence()

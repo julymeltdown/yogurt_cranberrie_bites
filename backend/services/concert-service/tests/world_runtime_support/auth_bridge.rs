@@ -347,7 +347,7 @@ async fn native_database_auth_bridge_admit_switch_renew_and_revocation() -> anyh
         utc: Utc::now(),
     };
     let started = Instant::now();
-    let bridge = AdmissionBridge::new_production(
+    let bridge = AdmissionBridge::new_auth_fixture(
         concert.clone(),
         Arc::new(BootstrapService::new(concert.clone(), release)),
         Arc::new(ProfileFixture {

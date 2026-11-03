@@ -1,13 +1,21 @@
 //! Strict opt-in for actual World serving. Product files retain the bootstrap
 //! validator; synthetic metadata is never promoted by this configuration path.
 use crate::{
-    adapters::out::relationship_authority::world_auth::WorldAuthRead,
+    adapters::out::{
+        relationship_authority::{
+            grpc::GrpcRelationshipAuthority,
+            world_auth::{GrpcWorldAuthReader, WorldAuthRead},
+        },
+        world_profile::GrpcWorldProfileReader,
+    },
     adapters::r#in::world_ws::{self, SocketTransport, WorldSocketState},
     bootstrap::{BootstrapFeatures, BootstrapService, ProductReleaseBundle},
     world::{
-        admission_bridge::{AdmissionBridge, LiveWorldOwners},
+        admission_bridge::AdmissionBridge,
         ingress::OriginPolicy,
         membership::ClockAnchor,
+        production_owners::ProductionOwners,
+        recipient_owners::WorldRecipientReader,
         runtime::{RoomSpec, WorldRuntime},
         simulation::ResourcePin,
     },
@@ -35,7 +43,8 @@ struct ConfiguredRoom {
 /// Opaque production dependencies keep the sealed Auth port inside this crate.
 /// No fixture or public subject constructor can manufacture these startup ports.
 pub struct WorldProductionPorts {
-    owners: Arc<dyn LiveWorldOwners>,
+    profile: GrpcWorldProfileReader,
+    relationship: GrpcRelationshipAuthority,
     auth: Arc<dyn WorldAuthRead>,
 }
 pub struct WorldRuntimeSettings {
@@ -170,6 +179,7 @@ impl WorldRuntimeSettings {
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
     ) -> anyhow::Result<()> {
+        ports.require_publication_qualification()?;
         let template: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())?;
         anyhow::ensure!(
@@ -219,10 +229,17 @@ impl WorldRuntimeSettings {
         };
         let started = Instant::now();
         let bootstrap = Arc::new(BootstrapService::new(pool.clone(), self.release));
+        let owners = ProductionOwners::new(
+            pool.clone(),
+            ports.profile,
+            WorldRecipientReader::new(pool.clone(), ports.relationship),
+            concert_domain::avatar::AvatarCatalog::from_validated_manifest(avatar)
+                .map_err(|_| anyhow::anyhow!("World avatar catalog is invalid"))?,
+        );
         let bridge = AdmissionBridge::new_production(
             pool,
             bootstrap,
-            ports.owners,
+            owners,
             ports.auth,
             OwnerIdentity::new(self.owner.to_string(), Uuid::new_v4())?,
             self.event,
@@ -283,9 +300,101 @@ impl WorldRuntimeSettings {
         result
     }
 }
-/// Production transport is intentionally not synthesized from configuration flags.
-/// Until the actual owner producer is linked, explicit opt-in reports this exact
-/// unavailable dependency before it opens any world socket.
+/// Current owner reads are concrete; none of these ports supplies a distributed
+/// known-invalidation delivery and acknowledgment before further sends. This is a qualification
+/// failure, not a missing-client placeholder, and cannot be bypassed by a flag.
+const PUBLICATION_GAP: &str = "World production publication unavailable: bounded owner reads are configured, but reliable known-invalidation delivery and local publication acknowledgment for Auth, Friend and Profile are unavailable";
+impl WorldProductionPorts {
+    fn require_publication_qualification(&self) -> anyhow::Result<()> {
+        anyhow::bail!(PUBLICATION_GAP)
+    }
+}
+fn endpoint(name: &str, value: &str, production: bool) -> anyhow::Result<()> {
+    let uri: tonic::codegen::http::Uri = value
+        .parse()
+        .map_err(|_| anyhow::anyhow!("{name} is invalid"))?;
+    anyhow::ensure!(
+        matches!(uri.scheme_str(), Some("http" | "https"))
+            && uri.authority().is_some_and(|a| !a.as_str().contains('@'))
+            && uri.host().is_some_and(|h| !h.is_empty())
+            && matches!(uri.path_and_query().map(|p| p.as_str()), None | Some("/")),
+        "{name} must be an internal gRPC origin"
+    );
+    platform::config::require_production_https_url(production, name, value)?;
+    Ok(())
+}
+/// Validate explicit typed owner configuration before any DB or listener opens.
+/// Even correctly configured clients remain unavailable for production sends
+/// until their owning services provide the missing publication contract.
 pub fn production_owners() -> anyhow::Result<WorldProductionPorts> {
-    anyhow::bail!("World qualified Profile and fenced recipient authority transport is unavailable")
+    use platform::{
+        actor_delegation::{relationship_read::RelationshipReadSigner, ActorDelegationVerifier},
+        grpc_auth::Workload,
+    };
+    let production = match read("CONCERT_RUNTIME_MODE")?.as_deref() {
+        Some("local") => false,
+        None | Some("production") => true,
+        _ => anyhow::bail!("CONCERT_RUNTIME_MODE is invalid"),
+    };
+    let required = |name| {
+        read(name)?
+            .filter(|v| !v.trim().is_empty())
+            .ok_or_else(|| anyhow::anyhow!("{name} is required for World owner composition"))
+    };
+    let auth_endpoint = required("CONCERT_AUTH_GRPC_ENDPOINT")?;
+    let friend_endpoint = required("CONCERT_FRIEND_GRPC_ENDPOINT")?;
+    let profile_endpoint = required("CONCERT_PROFILE_GRPC_ENDPOINT")?;
+    for (name, value) in [
+        ("CONCERT_AUTH_GRPC_ENDPOINT", &auth_endpoint),
+        ("CONCERT_FRIEND_GRPC_ENDPOINT", &friend_endpoint),
+        ("CONCERT_PROFILE_GRPC_ENDPOINT", &profile_endpoint),
+    ] {
+        endpoint(name, value, production)?;
+    }
+    // No development fallback credential is accepted by this composition.
+    let credential = required("CONCERT_SERVICE_CREDENTIAL")?;
+    let tls = platform::config::resolve_tls_material(production, "concert")?;
+    let gateway = ActorDelegationVerifier::from_env(production, Workload::Concert)?;
+    let signer = RelationshipReadSigner::from_env(&gateway)?;
+    let ports = WorldProductionPorts {
+        auth: Arc::new(GrpcWorldAuthReader::connect(
+            &auth_endpoint,
+            &credential,
+            tls.as_ref(),
+            signer.clone(),
+        )?),
+        profile: GrpcWorldProfileReader::connect(
+            &profile_endpoint,
+            &credential,
+            tls.as_ref(),
+            signer.clone(),
+        )?,
+        relationship: GrpcRelationshipAuthority::connect(
+            &auth_endpoint,
+            &friend_endpoint,
+            &credential,
+            tls.as_ref(),
+            signer,
+        )?,
+    };
+    ports.require_publication_qualification()?;
+    Ok(ports)
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn owner_endpoints_reject_non_origins_and_unsafe_production_hosts() {
+        for value in [
+            "http://user@owner.internal",
+            "http://owner.internal/path",
+            "http://owner.internal/?token=x",
+            "ftp://owner.internal",
+            "http://localhost:9000",
+        ] {
+            assert!(endpoint("owner", value, true).is_err());
+        }
+        assert!(endpoint("owner", "https://auth.mcr.internal:443", true).is_ok());
+        assert!(endpoint("owner", "http://127.0.0.1:9000", false).is_ok());
+    }
 }

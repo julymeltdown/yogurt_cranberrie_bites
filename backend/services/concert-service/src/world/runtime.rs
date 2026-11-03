@@ -689,7 +689,9 @@ where
             .ok_or(RuntimeError::Binding)?;
         let mut roster = Vec::new();
         for b in self.members.values().filter(|b| b.room_id == scope.room_id) {
-            if self.transitions.contains_key(&member_key(b)) {
+            if self.transitions.contains_key(&member_key(b))
+                || !self.membership.publication_ready(b)
+            {
                 continue;
             }
             if room.simulation.replication_state(b).is_none() {
@@ -736,6 +738,9 @@ where
         {
             let reason = self.authority_reason(b, now);
             self.close_member(b, reason);
+            return Ok(());
+        }
+        if !self.membership.publication_ready(b) {
             return Ok(());
         }
         let frame = match self.frame(b, now) {

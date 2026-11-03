@@ -96,6 +96,7 @@ struct AuthorityState {
     records: BTreeMap<(Uuid, Uuid), CanonicalMembership>,
     fail_release: bool,
     unavailable: bool,
+    publication_paused: bool,
 }
 #[derive(Clone, Default)]
 struct Authority(Arc<Mutex<AuthorityState>>, Arc<Mutex<()>>);
@@ -114,6 +115,9 @@ impl Authority {
     }
 }
 impl CanonicalAuthorityPort for Authority {
+    fn publication_ready(&self, _: &Binding) -> bool {
+        !self.0.lock().unwrap().publication_paused
+    }
     fn publication_fence(&self) -> Arc<Mutex<()>> {
         self.1.clone()
     }
@@ -948,4 +952,23 @@ fn abandoned_switch_expires_with_a_bounded_deadline_without_other_room_stalling(
         .iter()
         .any(|(who, frame, _)| who == &other
             && frame["serverTick"].as_u64().is_some_and(|tick| tick > 0)));
+}
+
+#[test]
+fn publication_pause_defers_native_send_and_preserves_authority_expiry() {
+    let mut f = fixture(2, 1);
+    let b = binding(&f, 1, 0);
+    enter(&mut f, &b);
+    f.authority.0.lock().unwrap().publication_paused = true;
+    f.owner.publish(&b, 0, true).unwrap();
+    assert!(f.socket.0.lock().unwrap().frames.is_empty());
+    assert_eq!(f.owner.active_count(), 1);
+    f.authority.0.lock().unwrap().publication_paused = false;
+    f.owner.publish(&b, 1, true).unwrap();
+    assert_eq!(f.socket.0.lock().unwrap().frames.len(), 1);
+    f.authority.0.lock().unwrap().publication_paused = true;
+    f.owner.maintain(5000).unwrap();
+    assert_eq!(f.owner.active_count(), 0);
+    assert_eq!(f.socket.0.lock().unwrap().frames.len(), 1);
+    assert!(!f.socket.0.lock().unwrap().closes.is_empty());
 }
