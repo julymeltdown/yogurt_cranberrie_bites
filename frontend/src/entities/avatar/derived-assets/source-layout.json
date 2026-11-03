@@ -1,0 +1,31 @@
+{
+  "kind": "selected_source_static_review",
+  "revision": 1,
+  "status": "IN_PROGRESS",
+  "production_eligible": false,
+  "source_pack_id": "mcr_user_characters_20261103",
+  "source_pack_revision": 3,
+  "source_id": "photo_01",
+  "source_path": "/world/avatars/supplied-v1/photo-01.jpg",
+  "source_sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+  "coordinate_system": "Original 1280x853 source pixels; regions are review windows, not sprite frames. Foot is an initial visual estimate, pending transparent-boundary registration.",
+  "cell": { "width_px": 64, "height_px": 64 },
+  "anchor": { "x": 32, "y": 60 },
+  "pose": "front_idle_only",
+  "skin_policy": "Source-baked face and hands; no tint, skin selection or layer mixing is approved.",
+  "theme_policy": "Same source pixels in all themes. Source column labels describe designs, not theme-to-avatar assignments.",
+  "regions": [
+    { "source_location": "row1_col1", "label": "Black hair / red tie", "rect": { "x": 40, "y": 80, "width": 380, "height": 390 }, "foot": { "x": 240, "y": 455 } },
+    { "source_location": "row1_col2", "label": "Pale hair / parade jacket", "rect": { "x": 440, "y": 80, "width": 390, "height": 390 }, "foot": { "x": 638, "y": 458 } },
+    { "source_location": "row1_col3", "label": "Red hair / goggles", "rect": { "x": 850, "y": 80, "width": 395, "height": 390 }, "foot": { "x": 1049, "y": 458 } },
+    { "source_location": "row2_col1", "label": "Black bob / striped top", "rect": { "x": 40, "y": 475, "width": 380, "height": 360 }, "foot": { "x": 239, "y": 828 } },
+    { "source_location": "row2_col2", "label": "Brown hair / dark jacket", "rect": { "x": 440, "y": 475, "width": 390, "height": 360 }, "foot": { "x": 637, "y": 828 } },
+    { "source_location": "row2_col3", "label": "Black hair / teal jacket", "rect": { "x": 850, "y": 475, "width": 395, "height": 360 }, "foot": { "x": 1049, "y": 828 } }
+  ],
+  "available_frames": ["front/idle"],
+  "unavailable_frames": ["left/idle", "right/idle", "up/idle", "down/walk/0..3", "left/walk/0..3", "right/walk/0..3", "up/walk/0..3"],
+  "wire_binding": null,
+  "inventory_ids": null,
+  "transparent_derivatives": [],
+  "limitations": ["Original JPEG background remains visible in source-region review.", "No isolated body/eyes/hair/outfit/accessory layers.", "Not an AvatarManifest or AvatarConfig; do not send these spatial labels to the backend.", "Not an AR03, FE12, mobile-device or multiuser acceptance receipt."]
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Selected character registration review</title>
+<link rel="icon" href="data:,">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 system-ui, sans-serif; background: #faf8f5; color: #24191d; }
+  main { max-width: 64rem; margin: auto; padding: 24px 16px; }
+  h1 { font-size: 1.7rem; line-height: 1.2; }
+  h2 { font-size: 1.1rem; }
+  p { max-width: 70ch; }
+  button { font: inherit; min-height: 44px; padding: 6px 12px; background: white; color: #24191d; border: 1px solid #63585b; cursor: pointer; }
+  button[aria-pressed="true"] { outline: 2px solid #24191d; outline-offset: 2px; }
+  nav { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+  #regions { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,260px),1fr)); gap: 24px; }
+  article { min-width: 0; }
+  .scale { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; padding: 16px; background: var(--surface,#eddbd4); }
+  figure { margin: 0; }
+  figcaption { font-size: 12px; color: var(--caption,#24191d); }
+  .cell { position: relative; overflow: hidden; image-rendering: pixelated; }
+  .cell img { position: absolute; max-width: none; image-rendering: pixelated; }
+  .anchor { position: absolute; width: 5px; height: 5px; margin: -2px; border: 1px solid #e64f9b; border-radius: 50%; pointer-events: none; }
+  .source-region { width: 100%; margin-top: 12px; }
+  code { overflow-wrap: anywhere; }
+  #status { font-weight: 600; }
+</style>
+<main>
+  <h1>Selected character registration review</h1>
+  <p id="status" role="status">Loading original source…</p>
+  <p>Source-region display only. The beige JPEG background is still present. These are front-idle designs with estimated foot registration; transparent layers and directional walking frames are unavailable.</p>
+  <p>Spatial labels identify positions on the source sheet. They are not saved avatar item IDs. Changing the surface below keeps the same character pixels and pose.</p>
+  <nav aria-label="Review surface">
+    <button type="button" data-theme="REVENGE" aria-pressed="true">REVENGE</button>
+    <button type="button" data-theme="PARADE" aria-pressed="false">PARADE</button>
+    <button type="button" data-theme="DANGER" aria-pressed="false">DANGER</button>
+  </nav>
+  <div id="regions"></div>
+</main>
+<script type="module">
+  const layout = await fetch('./source-layout.json').then(r => { if (!r.ok) throw Error('Missing review geometry'); return r.json() })
+  const image = new Image(); image.src = layout.source_path; await image.decode()
+  if (image.naturalWidth !== 1280 || image.naturalHeight !== 853) throw Error('Unexpected source dimensions')
+  const root = document.getElementById('regions')
+  for (const entry of layout.regions) {
+    const article = document.createElement('article'), heading = document.createElement('h2'), scales = document.createElement('div')
+    heading.textContent = `${entry.source_location} · ${entry.label}`; scales.className = 'scale'
+    // CSS viewports render original source bytes; no cutout or new raster is produced.
+    const scale = Math.min(56 / Math.max(entry.rect.width, entry.rect.height), 56 / (entry.foot.y - entry.rect.y))
+    for (const size of [64, 72, 192]) {
+      const factor = size / 64, figure = document.createElement('figure'), cell = document.createElement('div'), img = image.cloneNode(), anchor = document.createElement('span'), caption = document.createElement('figcaption')
+      cell.className = 'cell'; cell.style.width = `${size}px`; cell.style.height = `${size}px`
+      img.alt = `${entry.label}, front idle source review`; img.style.width = `${1280 * scale * factor}px`
+      img.style.left = `${(32 - entry.foot.x * scale) * factor}px`; img.style.top = `${(60 - entry.foot.y * scale) * factor}px`
+      // Clip to the isolated contact-sheet review window so neighboring characters cannot leak in.
+      img.style.clipPath = `inset(${entry.rect.y / 853 * 100}% ${(1280 - entry.rect.x - entry.rect.width) / 1280 * 100}% ${(853 - entry.rect.y - entry.rect.height) / 853 * 100}% ${entry.rect.x / 1280 * 100}%)`
+      anchor.className = 'anchor'; anchor.style.left = `${32 * factor}px`; anchor.style.top = `${60 * factor}px`; anchor.setAttribute('aria-hidden','true')
+      caption.textContent = `${size === 192 ? '3× inspection' : `${size}px cell`} · foot 32,60`
+      cell.append(img, anchor); figure.append(cell, caption); scales.append(figure)
+    }
+    article.append(heading, scales); root.append(article)
+  }
+  const palettes = { REVENGE: ['#eddbd4','#24191d'], PARADE: ['#333239','#f4edda'], DANGER: ['#d5e6e1','#152d3b'] }
+  document.querySelectorAll('[data-theme]').forEach(button => button.addEventListener('click', () => {
+    const [surface, caption] = palettes[button.dataset.theme]
+    root.style.setProperty('--surface',surface); root.style.setProperty('--caption',caption)
+    document.querySelectorAll('[data-theme]').forEach(other => other.setAttribute('aria-pressed',String(other === button)))
+    document.documentElement.dataset.surface = button.dataset.theme
+  }))
+  document.getElementById('status').textContent = 'IN_PROGRESS · six original source regions · no production atlas'
+  window.__MCR_ART_REVIEW__ = { sourceId: layout.source_id, sourceHash: layout.source_sha256, regions: layout.regions.length, productionEligible: false, pose: layout.pose }
+</script>
+</html>

@@ -1,0 +1,185 @@
+{
+  "status": "IN_PROGRESS",
+  "task": "AR03",
+  "sourceBase": "f0e44bd1bba943b02319f9d9a42433e253e8de6f",
+  "sourcePack": {
+    "id": "mcr_user_characters_20261103",
+    "revision": 3
+  },
+  "sourceChecks": [
+    {
+      "sourceId": "photo_01",
+      "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+      "bytes": 168045,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_02",
+      "sha256": "cb66e99ef86893e542728864933a694663cc4bdee9440df52de64a9323a46489",
+      "bytes": 166375,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_04",
+      "sha256": "87cdfbff215758c12d7042a7c435a17a6cdccb7637b0542dd9e0508d832e2a63",
+      "bytes": 189238,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_05",
+      "sha256": "681f566ab7ef081fa7f8a39ea0c3367cc822ea31f1bcfe3065f2755679950027",
+      "bytes": 185536,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_06",
+      "sha256": "a5fa9ecebf1ce7f36d1cb3eb50c5a21d75fe817797d9f1cd330d252b3677845f",
+      "bytes": 193901,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_07",
+      "sha256": "5ff980e6268beb3162c23f1d8d0478d09d2180ce45f5df9c4303eac80b9c82ce",
+      "bytes": 172536,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_08",
+      "sha256": "9b9e5ba41b8f286ecf73ca2e859a03eefa294ff3750c013f75310189343445d9",
+      "bytes": 111594,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_09",
+      "sha256": "e4e857fb1a7f98d1a52538f47738b8fe01f0e352be0cd71e7b2f9e36ae4008c8",
+      "bytes": 142915,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_10",
+      "sha256": "397ffa665515ebe8c573f1a5164358c5cb698633a1680f545994404026ecc96d",
+      "bytes": 98841,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_11",
+      "sha256": "528bc065159be519e076c84648561845eb97d08c1fa090345e80489f5d69821f",
+      "bytes": 242601,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_12",
+      "sha256": "ac2d1aa9153aa1217afa0817679fba0c00d09f3290f191d4706ad5a22833db94",
+      "bytes": 273737,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_13",
+      "sha256": "292a1080e08ac42474222ea1c1cda2d063885b7da72f2f9ea8c606b25c5217b3",
+      "bytes": 263938,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_14",
+      "sha256": "6bceb582fc1301589c968a40335ad7dc183f01c60b47ad45f223a375d3c49d95",
+      "bytes": 288728,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_15",
+      "sha256": "d0a17abd38eb55e46db985c168d0183073b5d703478d00e8d49ca8e14d4af825",
+      "bytes": 293533,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_16",
+      "sha256": "48200de941ebc7b9474752b0475c7c0fe4983fd16442afce83fbe56a1d474507",
+      "bytes": 248204,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_17",
+      "sha256": "21c7dbe159570072cb7406d6d1bf3521ba44da4bd392dd9f058f4e2bb026750c",
+      "bytes": 175218,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_18",
+      "sha256": "419a2b2527dab6b63bf2cee251651eefeb6792a546bcd4737a99d6f5678aa514",
+      "bytes": 222649,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_19",
+      "sha256": "856135f8c8b970f711b1ccdf1c071151a54037e07827bae6b518465e18d6c1ad",
+      "bytes": 240144,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_20",
+      "sha256": "1b741978ef59714c6ecd7f906abf6f909ee77d2dc1906c97cc95b958aa98243a",
+      "bytes": 193103,
+      "status": "PASS"
+    },
+    {
+      "sourceId": "photo_21",
+      "sha256": "3f0d763f18913cdd4e6af8830404ef7163315cd30a275054c76e63c6fa09831d",
+      "bytes": 255136,
+      "status": "PASS"
+    }
+  ],
+  "rejectedImage": {
+    "path": "docs/mcr/art/evidence/rejected/imagegen-photo01-r1.png",
+    "sha256": "4a39230e6aa0caa6b2da6fe0d66b4aa85abe2f3334a811b51fd6b1497d96b1e2",
+    "bytes": 673249,
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 6,
+    "productEligible": false,
+    "reason": "Imagegen redrew source pixel contours and interior layout, including fringe/eye arrangement and collar. Extraction identity fidelity rejected.",
+    "pixelInspection": {
+      "transparent": 909228,
+      "semitransparent": 661520,
+      "opaqueWhite": 0,
+      "alphaBounds": {
+        "minX": 0,
+        "minY": 69,
+        "maxX": 1223,
+        "maxY": 1239
+      },
+      "note": "Read-only decode of rejected candidate; alpha presence does not establish identity fidelity."
+    }
+  },
+  "runtimeC06": "NOT_RUN",
+  "transparentDerivatives": "NOT_RUN",
+  "directionalWalkAtlas": "NOT_RUN",
+  "productionAcceptance": "NOT_RUN",
+  "browser": {
+    "version": "156.0.8078.80",
+    "results": [
+      {
+        "width": 360,
+        "originalRegionCount": 6,
+        "sourceViews": 18,
+        "overflow": false,
+        "themeImageAndGeometryUnchanged": true
+      },
+      {
+        "width": 390,
+        "originalRegionCount": 6,
+        "sourceViews": 18,
+        "overflow": false,
+        "themeImageAndGeometryUnchanged": true
+      },
+      {
+        "width": 430,
+        "originalRegionCount": 6,
+        "sourceViews": 18,
+        "overflow": false,
+        "themeImageAndGeometryUnchanged": true
+      }
+    ],
+    "pageErrors": [],
+    "actualMobileDevice": "NOT_RUN"
+  }
+}

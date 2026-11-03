@@ -1,0 +1,6 @@
+Built-in imagegen, transparent_background=true.
+Edit target: frontend/public/world/avatars/supplied-v1/photo-01.jpg
+
+Use case: background-extraction. Edit target: supplied photo-01.jpg only. Extract ONLY the upper-left complete black-haired character with black suit and red tie (REVENGE first preset), exactly preserving its supplied pixel design, hairstyle silhouette, asymmetrical fringe covering one eye, visible eye white highlight, skin color, mouth, white collar, red tie, black jacket, hands and both shoes. Remove the beige contact sheet background and all text and all other characters. Real transparent alpha background. Do not redraw, restyle, smooth, invent detail, recolor, relight, change proportions or add shadows. Preserve intentional white inside eyes/collar. Output a single full-body front-facing static cutout centered on a transparent square canvas, both feet visible with generous clear margin. This is identity-preserving extraction of the exact selected original, not a new character.
+
+Disposition: REJECTED. Do not register this file as selected product art or use it as fallback art.
