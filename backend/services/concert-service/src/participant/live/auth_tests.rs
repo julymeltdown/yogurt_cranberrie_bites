@@ -112,7 +112,7 @@ impl auth_proto::auth_concert_relationship_service_server::AuthConcertRelationsh
         Ok(response)
     }
 }
-async fn owner(fault: &'static str) -> (Running, Arc<AtomicUsize>) {
+async fn start_owner(fault: &'static str) -> (Running, Arc<AtomicUsize>) {
     let calls = Arc::new(AtomicUsize::new(0));
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
     let endpoint = format!("http://{}", listener.local_addr().unwrap());
@@ -260,7 +260,7 @@ async fn actual_read_client_requires_current_exact_no_store_owner_reply() {
         "cacheable",
         "owner-unavailable",
     ] {
-        let (owner, calls) = owner(fault).await;
+        let (owner, calls) = start_owner(fault).await;
         let auth = GrpcCanonicalAuth::connect(&owner.endpoint, TOKEN, None, read_signer()).unwrap();
         let entry = entry(auth).await;
         let message = message(Duration::from_millis(1500));
@@ -295,7 +295,7 @@ async fn actual_read_client_requires_current_exact_no_store_owner_reply() {
 }
 #[tokio::test]
 async fn original_deadline_and_real_credentials_bound_auth_call() {
-    let (owner, calls) = owner("valid").await;
+    let (owner, calls) = start_owner("valid").await;
     let auth = GrpcCanonicalAuth::connect(&owner.endpoint, "wrong-credential", None, read_signer())
         .unwrap();
     let server = entry(auth).await;
@@ -307,7 +307,7 @@ async fn original_deadline_and_real_credentials_bound_auth_call() {
     .await
     .is_err());
     assert_eq!(calls.load(Ordering::SeqCst), 0);
-    let (owner, calls) = owner("slow").await;
+    let (owner, calls) = start_owner("slow").await;
     let auth = GrpcCanonicalAuth::connect(&owner.endpoint, TOKEN, None, read_signer()).unwrap();
     let server = entry(auth).await;
     let started = std::time::Instant::now();
