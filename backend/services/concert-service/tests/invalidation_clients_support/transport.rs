@@ -181,7 +181,7 @@ impl Running {
         Ok(())
     }
 }
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug)]
 pub(super) enum Case {
     Query,
     Epoch,
@@ -305,7 +305,6 @@ impl Service<http::Request<Body>> for RawPeer {
         Box::pin(async move {
             Ok(http::Response::builder()
                 .header("content-type", "application/grpc")
-                .header("grpc-status", "0")
                 .body(body)
                 .unwrap())
         })
@@ -326,7 +325,8 @@ async fn authenticated_malicious_peers_cannot_mint_verified_observations() -> an
         let source = server.source(InvalidationOwner::Auth)?;
         assert_eq!(
             source.read_head(consumer, &budget()).await.unwrap_err(),
-            error
+            error,
+            "{case:?}"
         );
         drop(source);
         server.close().await?;
