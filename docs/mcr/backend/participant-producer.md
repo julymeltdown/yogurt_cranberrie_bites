@@ -360,3 +360,14 @@ config. Its helper remains owned by the selected-source author; this slice adds
 no alternate parser, release validator, migration or bootstrap implementation.
 The first executed qualification above covers only source `08afce6c`; it does
 not qualify this later source addition.
+
+Local merge `b1d22a36` consumes the canonical selected-source checkpoint
+`86123961a1640839a0e50063433e07a181942094`. Its AvatarAppearance variant,
+parser/catalog, native decoder, bootstrap fixture helper and migration remain
+peer-authored dependency commits, not additions to this writer's ownership.
+No participant caller requires flat layered fields. The native driver is
+prepared to call canonical `avatar_smoke.write_selected_release(cluster.root,
+doc)` and then execute both distinct participant native tests. This merged
+candidate has not yet compiled or run; dependency service/native qualification
+and the named MEDIA return are pending. No unqualified dependency is published
+through this branch.
