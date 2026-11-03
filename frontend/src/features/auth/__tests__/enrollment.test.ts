@@ -7,18 +7,21 @@ const ack = { eligibility: true, consent: true }, controllers: SessionController
 beforeEach(() => vi.stubGlobal('location', { origin: 'https://mcr.example' }))
 afterEach(() => { controllers.splice(0).forEach(c => c.dispose()); vi.unstubAllGlobals() })
 async function setup(handler: (r: Request) => Response | Promise<Response> = r => Response.json(r.url.endsWith('/verify') ? { userId, status: 'VERIFIED' } : r.url.endsWith('/resend') ? { status: 'ACCEPTED' } : { userId, status: 'PENDING_VERIFICATION' }, { status: r.url.endsWith('/resend') ? 202 : 200 }), preview = true, timeoutMs = 1000, emailEnabled = true) {
-  const requests: Request[] = [], cookiePolicy = isolatedCookiePolicy(), cookieRun = vi.spyOn(cookiePolicy, 'run')
+  const requests: Request[] = [], inflightRequests: Request[] = [], cookiePolicy = isolatedCookiePolicy(), cookieRun = vi.spyOn(cookiePolicy, 'run')
   const fetch = vi.fn<typeof globalThis.fetch>(async input => {
     const r = input as Request
     if (r.url.endsWith('/capabilities')) return Response.json(emailEnabled ? capabilities() : { ...capabilities(), providers: capabilities().providers.map(p => ({ ...p, enabled: false, disabled_reason: 'NOT_CONFIGURED' })) })
-    requests.push(r.clone())
+    // Inspect cancellation on the actual fetch input. Node 24's Request.clone()
+    // follows via a weak controller reference that GC can collect before abort;
+    // a body-inspection clone is not an authoritative transport signal.
+    inflightRequests.push(r); requests.push(r.clone())
     if (r.url.endsWith('/login')) return Response.json(authResponse())
     if (r.url.endsWith('/logout')) return new Response(null, { status: 204 })
     return handler(r)
   })
   const auth = createSessionController({ eventId, fetch, cookiePolicy, syntheticEnrollment: preview, timeoutMs }); controllers.push(auth)
   auth.start(); await vi.waitFor(() => expect(auth.read().capabilities).toBe('ready'))
-  return { auth, requests, fetch, cookieRun }
+  return { auth, requests, inflightRequests, fetch, cookieRun }
 }
 it.each(['12345678', ' '.repeat(8), '가'.repeat(42) + 'aa', 'a'.repeat(128)])('accepts raw UTF8 password boundary %j', value => expect(validEnrollmentPassword(value)).toBe(true))
 it.each(['short', '가'.repeat(43), 'a'.repeat(129), '\ud80012345678'])('rejects invalid UTF8 password %j', value => expect(validEnrollmentPassword(value)).toBe(false))
@@ -64,15 +67,17 @@ it('blocks enrollment during recovery and login, using the same operation owner'
   expect(await auth.enrollment.verify(email, code)).toEqual({ kind: 'unavailable' })
 })
 it.each(['privacy', 'account', 'cancel', 'dispose'] as const)('aborts and fences late successful enrollment after %s', async action => {
-  const late = deferred<Response>(), { auth, requests } = await setup(() => late.promise)
+  const late = deferred<Response>(), { auth, requests, inflightRequests } = await setup(() => late.promise)
   const op = auth.enrollment.verify(email, code)
   await vi.waitFor(() => expect(requests).toHaveLength(1))
   if (action === 'privacy') auth.privacy.changePolicy(auth.privacy.capture(), 'consent-revoked')
   else if (action === 'account') auth.session.replace(auth.session.read().generation, { userId, eventId, accessToken: 'other-user-token' })
   else if (action === 'cancel') auth.enrollment.cancel()
   else auth.dispose()
-  expect(requests[0]!.signal.aborted).toBe(true)
+  expect(inflightRequests[0]!.signal.aborted).toBe(true)
+  const fencedSession = auth.session.read()
   late.resolve(Response.json({ userId, status: 'VERIFIED' })); expect(await op).toEqual({ kind: 'cancelled' })
+  expect(auth.session.read()).toBe(fencedSession); expect(auth.queryClient.getQueryCache().getAll()).toHaveLength(0)
 })
 it('bounds a signal-ignoring transport and reports uncertainty after dispatch', async () => {
   const { auth, requests } = await setup(() => new Promise(() => {}), true, 30)
@@ -124,12 +129,13 @@ it('never dispatches with a disabled provider, invalid input, or preaborted sign
 })
 
 it('logout locally invalidates a pending enrollment before its late completion', async () => {
-  const late = deferred<Response>(), { auth, requests } = await setup(() => late.promise)
+  const late = deferred<Response>(), { auth, requests, inflightRequests } = await setup(() => late.promise)
   const op = auth.enrollment.verify(email, code)
   await vi.waitFor(() => expect(requests).toHaveLength(1))
   expect(await auth.logout()).toBe(true)
-  expect(requests[0]!.signal.aborted).toBe(true)
+  expect(inflightRequests[0]!.signal.aborted).toBe(true)
   late.resolve(Response.json({ userId, status: 'VERIFIED' })); expect(await op).toEqual({ kind: 'cancelled' })
+  expect(auth.session.read().accessToken).toBeNull(); expect(auth.queryClient.getQueryCache().getAll()).toHaveLength(0)
 })
 
 it.each([null, 'malformed-event'])('discovers anonymous verification/resend availability without event %j and preserves FE09 readiness', async event => {
