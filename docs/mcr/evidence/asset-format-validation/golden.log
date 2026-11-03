@@ -1,0 +1,14 @@
+{
+  "atlas_image_coverage": "NOT_RUN",
+  "atlas_image_state": "NOT_PROVIDED",
+  "contract_version": "1.0.0",
+  "documents_validated": 6,
+  "limits": "Metadata and geometry only. No PNG/Tiled file bytes, pixel coverage, clipping, contrast, license truth, physical venue truth, AR03 or mobile acceptance validated. Integrator review/freeze pending.",
+  "resource_bytes_and_hashes": "NOT_RUN",
+  "status": "CONTRACT_READY",
+  "themes": [
+    "DANGER",
+    "PARADE",
+    "REVENGE"
+  ]
+}

@@ -117,7 +117,9 @@ This contract, validator, tests, and all fixtures are newly authored for C06; no
 
 The destination paths are exactly the five schemas under `contracts/assets/v1/`, six fixtures under `contracts/fixtures/assets/`, `scripts/mcr/validate-assets.py`, `scripts/mcr/tests/test_assets.py`, `scripts/mcr/requirements-contracts.txt`, and this document. No frontend/backend source, central manifest, lockfile, contract registry, CI, or infrastructure file is part of this patch. There are no migrations.
 
-Dependencies are the already installed Python packages `jsonschema==4.26.0` and its referenced registry library `referencing==0.37.0`, pinned at their installed versions in `scripts/mcr/requirements-contracts.txt`. The recorded Python runtime is 3.14.3. No package installation or frontend dependency change was required. This requirements file pins the directly used libraries, not every transitive dependency.
+The original handoff used installed `jsonschema==4.26.0` and `referencing==0.37.0` on Python 3.14.3. A later parent review found that this environment lacked optional URI and date-time checkers: `FormatChecker` silently accepts an unregistered format. Those historical metadata checks did not prove either format assertion.
+
+The [format-validation correction](evidence/asset-format-validation.md) pins `rfc3339-validator==0.1.4`, `rfc3986-validator==0.1.1` and their `six==1.17.0` dependency alongside the original tools. C06 now refuses to validate when any schema-declared format has no registered checker. Install `scripts/mcr/requirements-contracts.txt` in an isolated environment and use its Python for validation and tests; installing only `jsonschema` is insufficient. These are explicit tool/plugin pins, not a complete transitive lock. Schema/fixture bytes and C06 acceptance status are unchanged.
 
 Executed checks on this worktree:
 

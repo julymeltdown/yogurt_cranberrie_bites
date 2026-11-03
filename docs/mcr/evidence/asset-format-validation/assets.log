@@ -1,0 +1,30 @@
+test_canonical_hash_and_rejection_of_ambiguous_json (test_assets.AssetContractsTest.test_canonical_hash_and_rejection_of_ambiguous_json) ... ok
+test_cli_success_and_nonempty_fail_closed (test_assets.AssetContractsTest.test_cli_success_and_nonempty_fail_closed) ... ok
+test_collision_barrier_blocks_reachability (test_assets.AssetContractsTest.test_collision_barrier_blocks_reachability) ... ok
+test_duplicate_ids_and_missing_layer (test_assets.AssetContractsTest.test_duplicate_ids_and_missing_layer) ... ok
+test_golden_bundle_and_explicit_image_limit (test_assets.AssetContractsTest.test_golden_bundle_and_explicit_image_limit) ... ok
+test_grid_dimensions_and_unknown_tile (test_assets.AssetContractsTest.test_grid_dimensions_and_unknown_tile) ... ok
+test_missing_format_plugins_refuse_validation (test_assets.AssetContractsTest.test_missing_format_plugins_refuse_validation) ... ok
+test_no_client_asset_url (test_assets.AssetContractsTest.test_no_client_asset_url) ... ok
+test_nullable_accessory_and_valid_fallback (test_assets.AssetContractsTest.test_nullable_accessory_and_valid_fallback) ... ok
+test_provenance_requires_absolute_uri_syntax (test_assets.AssetContractsTest.test_provenance_requires_absolute_uri_syntax) ... ok
+test_public_definition_names (test_assets.AssetContractsTest.test_public_definition_names) ... ok
+test_reviewed_provenance_requires_real_datetime_format (test_assets.AssetContractsTest.test_reviewed_provenance_requires_real_datetime_format) ... ok
+test_spawn_and_interaction_ids_resolve (test_assets.AssetContractsTest.test_spawn_and_interaction_ids_resolve) ... ok
+test_spawn_and_interaction_must_be_walkable_and_in_bounds (test_assets.AssetContractsTest.test_spawn_and_interaction_must_be_walkable_and_in_bounds) ... ok
+test_stale_manifest_geometry_and_theme_hashes (test_assets.AssetContractsTest.test_stale_manifest_geometry_and_theme_hashes) ... ok
+test_texture_bounds_overlap_and_cell_alignment (test_assets.AssetContractsTest.test_texture_bounds_overlap_and_cell_alignment) ... ok
+test_texture_presence_needs_metadata_without_claiming_pixel_coverage (test_assets.AssetContractsTest.test_texture_presence_needs_metadata_without_claiming_pixel_coverage) ... ok
+test_theme_identity_and_reference_mismatches (test_assets.AssetContractsTest.test_theme_identity_and_reference_mismatches) ... ok
+test_unknown_item_and_wrong_layer (test_assets.AssetContractsTest.test_unknown_item_and_wrong_layer) ... ok
+test_unknown_skin_tone_preset_and_manifest_version (test_assets.AssetContractsTest.test_unknown_skin_tone_preset_and_manifest_version) ... ok
+test_unknown_theme_missing_theme_and_forbidden_geometry_override (test_assets.AssetContractsTest.test_unknown_theme_missing_theme_and_forbidden_geometry_override) ... ok
+test_unreviewed_and_virtual_places_cannot_claim_verified (test_assets.AssetContractsTest.test_unreviewed_and_virtual_places_cannot_claim_verified) ... ok
+test_unsupported_contract_and_unknown_fields (test_assets.AssetContractsTest.test_unsupported_contract_and_unknown_fields) ... ok
+test_valid_formats_do_not_add_uuid_version_or_timestamp_case_policy (test_assets.AssetContractsTest.test_valid_formats_do_not_add_uuid_version_or_timestamp_case_policy) ... ok
+test_wrong_anchor_and_frame_layout (test_assets.AssetContractsTest.test_wrong_anchor_and_frame_layout) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.737s
+
+OK

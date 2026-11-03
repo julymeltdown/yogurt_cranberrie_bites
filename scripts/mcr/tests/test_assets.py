@@ -7,6 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 SCRIPT = Path(__file__).resolve().parents[1] / "validate-assets.py"
 SPEC = importlib.util.spec_from_file_location("mcr_assets", SCRIPT)
@@ -61,6 +62,50 @@ class AssetContractsTest(unittest.TestCase):
             schema = assets.read_json(assets.SCHEMAS / file)
             self.assertIn(name, schema["$defs"])
             self.assertEqual(schema["$schema"], "https://json-schema.org/draft/2020-12/schema")
+
+    def test_missing_format_plugins_refuse_validation(self):
+        # A dependency-minimal environment must never report a passing bundle
+        # by silently ignoring the optional date-time and URI assertions.
+        incomplete = assets.FormatChecker(formats=["uuid"])
+        with patch.object(assets, "FormatChecker", return_value=incomplete):
+            with self.assertRaisesRegex(assets.AssetError, "date-time, uri"):
+                assets.validators()
+
+    def test_reviewed_provenance_requires_real_datetime_format(self):
+        for timestamp in ("not-a-date", "2026-02-30T00:00:00Z", "2026-11-03",
+                          "2026-11-03T00:00:00"):
+            with self.subTest(timestamp=timestamp):
+                self.setUp()
+                self.map["provenance"].update(review_state="REVIEWED",
+                                               reviewed_by="format-fixture-review",
+                                               reviewed_at=timestamp)
+                self.rejected("schema")
+
+    def test_provenance_requires_absolute_uri_syntax(self):
+        for uri in ("relative/path", "https://example.invalid/a b",
+                    "https://example.invalid/%zz"):
+            with self.subTest(uri=uri):
+                self.setUp()
+                self.map["provenance"]["source_uri"] = uri
+                self.rejected("schema")
+
+    def test_valid_formats_do_not_add_uuid_version_or_timestamp_case_policy(self):
+        for place_id in ("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                         "11111111-1111-0111-1111-111111111111"):
+            with self.subTest(place_id=place_id):
+                self.setUp()
+                self.map["places"][0]["place_id"] = place_id
+                self.map["geometry"]["interactions"][0]["place_id"] = place_id
+                self.map["provenance"].update(review_state="REVIEWED",
+                                               reviewed_by="format-fixture-review",
+                                               reviewed_at="2026-11-03t00:00:00z",
+                                               source_uri="urn:mcr:format-fixture")
+                for document in self.docs.values():
+                    if document["kind"] == "theme_manifest":
+                        document["place_ids"] = [place_id]
+                self.seal()
+                self.assertEqual(assets.validate_bundle(self.docs, self.checks)["status"],
+                                 "CONTRACT_READY")
 
     def test_wrong_anchor_and_frame_layout(self):
         mutations = (

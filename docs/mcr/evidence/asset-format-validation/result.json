@@ -1,0 +1,74 @@
+{
+  "base": "f80b6d1fd6b9d86c3012cc12cea6de2b278065c5",
+  "limits": [
+    "requirements pins direct tools and required format plugins plus six, not the complete transitive environment",
+    "Other format-using validators receive installed plugins but do not gain explicit registry-refusal guards in this patch"
+  ],
+  "log_sha256": {
+    "assets.log": "1b450f47621534aa309705c224d64d57d6833e408c82b37ba4537e289abdaf74",
+    "golden.log": "19fa348abd240f607b8a66ea254de4dfd46a65965ce6ae721976eb664fd9afd2",
+    "missing-plugins.log": "9cc7b25faa0752c54abf231c43efb11da7026931c12a2d497a447a61c4a3e3b8",
+    "plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "retained-contracts.log": "31846a6e18428a44b6509ca09bafbc13b2af0786034570ba39724795ea9bdecc"
+  },
+  "python": "3.14.3",
+  "registered_formats": [
+    "date",
+    "date-time",
+    "email",
+    "idn-email",
+    "ipv4",
+    "ipv6",
+    "regex",
+    "time",
+    "uri",
+    "uri-reference",
+    "uuid"
+  ],
+  "result": {
+    "assets": {
+      "exit": 0,
+      "tests": 25
+    },
+    "golden": {
+      "documents": 6,
+      "exit": 0
+    },
+    "missing_plugins": {
+      "exit": 1,
+      "expected_refusal": true,
+      "missing": [
+        "date-time",
+        "uri"
+      ]
+    },
+    "planning": {
+      "exit": 0
+    },
+    "retained_contracts": {
+      "exit": 0,
+      "tests": 117
+    }
+  },
+  "scope": "C06 tooling only; schema and golden bundle bytes unchanged; no art/runtime/venue/acceptance claim",
+  "source_sha256": {
+    "scripts/mcr/requirements-contracts.txt": "fc6c67bbfd66de4a6fa8e5521823a733cedff5ea56657cbd49ca03a619504782",
+    "scripts/mcr/tests/test_assets.py": "7cf4a68b9f38933436ed293faf452e123d1c9f18de598be605e0964227f0aa4c",
+    "scripts/mcr/validate-assets.py": "d1601a01d9cc551e55ae304d6e22d67ab8fccf3a183c0daf117b44eac1d6ad00"
+  },
+  "unchanged_fixture_sha256": {
+    "contracts/fixtures/assets/avatar-config.json": "dea02c52183c82094d76c014115c77716ac32c02cc9841d3f1a7ce9aeb54df4d",
+    "contracts/fixtures/assets/avatar-manifest.json": "375527f8e8228a1c1025813dd9b441e6bad6ce84b603e321d4eca0d7a4e16c48",
+    "contracts/fixtures/assets/map-manifest.json": "0cccde2c009a44cc2355dfa15ef2d030bc7b85be6f58bec7470108dba46562f7",
+    "contracts/fixtures/assets/theme-danger.json": "58df8efb622ddd1a6c344ae5b0fd2f89ae825dedafefcd947d8c411bcd80133b",
+    "contracts/fixtures/assets/theme-parade.json": "e356e97a66ed7b0c9bd288781821a542b5dd0d12d7d44ec15b85949477afe1a4",
+    "contracts/fixtures/assets/theme-revenge.json": "29c7021569309b741936645b1350c9789c213fc6b729a8650257561b278c892c"
+  },
+  "versions": {
+    "jsonschema": "4.26.0",
+    "referencing": "0.37.0",
+    "rfc3339-validator": "0.1.4",
+    "rfc3986-validator": "0.1.1",
+    "six": "1.17.0"
+  }
+}

@@ -88,9 +88,28 @@ def validators(schema_dir=SCHEMAS):
     require(len({uri for uri, _ in resources}) == len(resources), "duplicate schema $id")
     registry = Registry(retrieve=offline_only).with_resources(resources)
     by_id = dict((schema["$id"], schema) for schema in schemas)
+    checker = FormatChecker()
+    declared_formats = set()
+
+    def inspect_formats(node):
+        if isinstance(node, dict):
+            if isinstance(node.get("format"), str):
+                declared_formats.add(node["format"])
+            for child in node.values():
+                inspect_formats(child)
+        elif isinstance(node, list):
+            for child in node:
+                inspect_formats(child)
+
+    for schema in schemas:
+        inspect_formats(schema)
+    missing = sorted(declared_formats - checker.checkers.keys())
+    require(not missing,
+            "required asset format checkers unavailable: " + ", ".join(missing) +
+            "; install scripts/mcr/requirements-contracts.txt in the validation environment")
     return {
         kind: Draft202012Validator(by_id[BASE + filename], registry=registry,
-                                    format_checker=FormatChecker())
+                                    format_checker=checker)
         for kind, filename in KINDS.items()
     }
 
