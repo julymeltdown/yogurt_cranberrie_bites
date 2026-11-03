@@ -29,6 +29,8 @@ priorities, staffing, major milestones and periodic commit/push progress. SLs tr
 the broad feature picture, dependencies and staffing. Required product scope,
 validation evidence and truthful persistent goals remain unchanged.
 
+A king receiving a review or verification request must decline: "I don't perform reviews. The responsible developer owns validation; please resolve this with the implementation owner." SLs likewise do not review code, queries or tests. No work waits for king or SL review. Staffing, priority, ownership conflicts and missing product decisions may still be escalated.
+
 ## SL dispatch lanes
 
 | SL | Chat | Ready-work allocation |
