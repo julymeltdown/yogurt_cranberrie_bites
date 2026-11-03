@@ -1,0 +1,34 @@
+{
+  "scope": "BE24 owned native producer and raster codec only",
+  "result": "FAIL",
+  "commands": {},
+  "real_authority": "NOT_COMPOSED",
+  "http_e2e": "NOT_RUN",
+  "sqlx_runtime_migration_ledger": "NOT_RUN",
+  "restart_persistence": "NOT_RUN",
+  "cleanup": "NOT_RUN",
+  "source_revision": "04ab8511e6c55958478056363468972ddbea6908",
+  "dirty_paths": [
+    " M backend/scripts/mcr/media_upload_smoke.py",
+    "?? backend/services/concert-service/tests/media_support/stale-artifact-refusal.json"
+  ],
+  "script_sha256": "3e2b2b66cb2b8a7e806f95eea9954575ce3fdc99fa0fb7068d8c9227d4c0d613",
+  "helper_sha256": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+  "contracts": {
+    "feed.schema.json": "9c8d991df0bb707d7a7a2d43d4b132e7fadb878a52633e1c1f338afc9407f8ed",
+    "operations.json": "42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223",
+    "policy.json": "508d22af964b718cdcbd5a25b32b9a1e3f7b651a5b8c25c87d56f1f6b68d0ebe"
+  },
+  "source_sha256": {
+    "backend/Cargo.lock": "208bd6ae3e1657ee5cc6128241bf7fbc39c122efc467efa8deba30b98f2a1dc4",
+    "backend/crates/concert-application/src/media/mod.rs": "cedd1fbd677c28bb4cc2ff64638935238cf0fc8bcf6967e5df9387cdd9333618",
+    "backend/services/concert-service/Cargo.toml": "4d5267c08a16fc58db65372526368388eca81949c275beb322c6c99c49eaf14b",
+    "backend/services/concert-service/src/adapters/out/media/body.rs": "3c50d22df399c712aed08ed9ad5dcca4ecc74840e9bbb0aa07ef1aa566cab8df",
+    "backend/services/concert-service/src/adapters/out/media/codec.rs": "6888a021fcee24ea8a4a8e27121b199496a95b9618f4f69f56a7bda90e4de052",
+    "backend/services/concert-service/src/adapters/out/media/mod.rs": "e579de7fe0496c8fe3e54ab0fb29af957d8a9e94306055d3bb0ba82c9e3717d0",
+    "backend/services/concert-service/tests/media.rs": "579a106e949bb217dbf001648775e94ac91b3a572bde994d374df00afc77f2d1",
+    "backend/services/concert-service/tests/media_support/mod.rs": "9056f421f97966fcec6bca87390cd510e784018132bde19de36feb0e06fdf14f"
+  },
+  "failure": "RuntimeError",
+  "failure_detail": "artifact source changed: backend/services/concert-service/tests/media.rs"
+}

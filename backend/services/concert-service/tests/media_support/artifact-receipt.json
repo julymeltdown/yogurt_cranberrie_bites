@@ -1,0 +1,17 @@
+{
+  "source_revision": "a881c6e00a91c1d001219dfd998deef4daf8cd19",
+  "source_test_sha256": "04d767de2c76514e4f835ca838511321617a87118f7a974e823edb2ade0c61f3",
+  "source_media_sha256": "85e3b888930ea5998c271fd89ed470cce135bfcb5e252c5244a6dd42904ccab6",
+  "source_artifact": "/Users/lhs/Desktop/mcr-build/backend/debug/deps/media-3c63a013d105ab66",
+  "private_artifact": "/Users/lhs/Desktop/mcr-worktrees/be-media-upload/backend/services/concert-service/tests/media_support/artifacts/media-tests",
+  "artifact_sha256": "c76fdcd685288bbd40f4bea49b9df8cfe60bd70d62f23d0856351edba19faa02",
+  "artifact_size": 17529216,
+  "uid": 501,
+  "toolchain": "Rust1.88.0",
+  "build": "locked/offline/jobs2/dev+testdebug0",
+  "test_compile_exit": 0,
+  "library_check_exit": 0,
+  "codec_output_test_exit": 0,
+  "initial_test_compile_exit": 101,
+  "initial_failure": "stale cross-worktree contracts-build proto include shadow; authorized mtime-only rebuild, no content/cache deletion"
+}
