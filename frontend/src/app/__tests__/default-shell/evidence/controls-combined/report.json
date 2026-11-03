@@ -1,0 +1,264 @@
+{
+  "result": "PASS",
+  "revision": "a36551fb0c8df521e87a94303f016c084d76c93c",
+  "pins": {
+    "src/app/WorldShell.tsx": "1fd72bb91d667d87924e71ad1e832049cef73fe99c5eb2b9a262b119667a0f41",
+    "src/app/shell.css": "e4656156376d82d752c78cb0bcfa1b039f008e43f4337fa766c64e1d20cb63f6",
+    "src/app/world-panels/index.tsx": "0ef269e32726257bcf139d07bb1921887be115f841c11bccd51d5639434989e7",
+    "src/app/world-panels/presentation.css": "a554c436ab7ac0169faef4c65d22ff5ee08f08ea4d11e9087d6c4b353f5f27e7",
+    "src/world/composition/index.ts": "ac3d52def1392f90420e612c6ce6649fdd2a6c6f3c79e6bc73227ce8a6f1c997",
+    "src/world/input/controller.ts": "10ee84de4f0fafd976baf604b7727d023efc302d0ba8653a5169ed8af65da36f",
+    "src/world/input/controls.css": "77f6355ccdc56f9d5f8bbe0a549ea05c0675639a77f0abce8f97e8d2d6305d69",
+    "src/world/runtime.ts": "5e471081a021699d8f09c85102b014036d48e345fb1865b996d3cb8000c32288",
+    "src/world/scenes/MapScene.ts": "558f4cc9fae9f0714cc5008f81d0ef0a8526a2a9123731ff925b233774546635"
+  },
+  "qualification": "Actual default canonical Auth/HTTP/production resolver/Phaser, deterministic C04/C05 MockSocket/geometric resources. Combined clean root+compact controls. Visible intersection measured against every clipping ancestor; native scroll may move scene out while viewing help, which remains reversible. No live service/approved art/two-user/device/load acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "normal": {
+        "intrinsicHeight": 384,
+        "visibleHeight": 384,
+        "visibleWidth": 360,
+        "scrollTop": 0,
+        "clientHeight": 570,
+        "scrollHeight": 570,
+        "focus": {
+          "tag": "BODY",
+          "name": "Skip to contentMCR Concert WorldSynthetic contract fixtureREVENGEPARADEDANGERRev",
+          "top": 0,
+          "bottom": 800
+        }
+      },
+      "closed": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 120,
+        "visibleWidth": 360,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 306,
+        "focus": {
+          "tag": "BODY",
+          "name": "Skip to contentMCR Concert WorldSynthetic contract fixtureREVENGEPARADEDANGERRev",
+          "top": 0,
+          "bottom": 430
+        }
+      },
+      "expanded": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 120,
+        "visibleWidth": 360,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 482,
+        "focus": {
+          "tag": "SUMMARY",
+          "name": "Controls & help",
+          "top": 308,
+          "bottom": 352
+        }
+      },
+      "helpFocus": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 0,
+        "visibleWidth": 360,
+        "scrollTop": 256,
+        "clientHeight": 200,
+        "scrollHeight": 482,
+        "focus": {
+          "tag": "BUTTON",
+          "name": "Zoom in",
+          "top": 182,
+          "bottom": 226
+        }
+      },
+      "restored": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 120,
+        "visibleWidth": 360,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 306,
+        "focus": {
+          "tag": "SUMMARY",
+          "name": "Controls & help",
+          "top": 308,
+          "bottom": 352
+        }
+      },
+      "oneMount": 1,
+      "disposed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "normal": {
+        "intrinsicHeight": 428,
+        "visibleHeight": 428,
+        "visibleWidth": 390,
+        "scrollTop": 0,
+        "clientHeight": 614,
+        "scrollHeight": 614,
+        "focus": {
+          "tag": "BODY",
+          "name": "Skip to contentMCR Concert WorldSynthetic contract fixtureREVENGEPARADEDANGERRev",
+          "top": 0,
+          "bottom": 844
+        }
+      },
+      "closed": {
+        "intrinsicHeight": 428,
+        "visibleHeight": 120,
+        "visibleWidth": 390,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 306,
+        "focus": {
+          "tag": "BODY",
+          "name": "Skip to contentMCR Concert WorldSynthetic contract fixtureREVENGEPARADEDANGERRev",
+          "top": 0,
+          "bottom": 430
+        }
+      },
+      "expanded": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 120,
+        "visibleWidth": 390,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 482,
+        "focus": {
+          "tag": "SUMMARY",
+          "name": "Controls & help",
+          "top": 308,
+          "bottom": 352
+        }
+      },
+      "helpFocus": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 0,
+        "visibleWidth": 390,
+        "scrollTop": 256,
+        "clientHeight": 200,
+        "scrollHeight": 482,
+        "focus": {
+          "tag": "BUTTON",
+          "name": "Zoom in",
+          "top": 182,
+          "bottom": 226
+        }
+      },
+      "restored": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 120,
+        "visibleWidth": 390,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 306,
+        "focus": {
+          "tag": "SUMMARY",
+          "name": "Controls & help",
+          "top": 308,
+          "bottom": 352
+        }
+      },
+      "oneMount": 1,
+      "disposed": 1
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "normal": {
+        "intrinsicHeight": 516,
+        "visibleHeight": 516,
+        "visibleWidth": 430,
+        "scrollTop": 0,
+        "clientHeight": 702,
+        "scrollHeight": 702,
+        "focus": {
+          "tag": "BODY",
+          "name": "Skip to contentMCR Concert WorldSynthetic contract fixtureREVENGEPARADEDANGERRev",
+          "top": 0,
+          "bottom": 932
+        }
+      },
+      "closed": {
+        "intrinsicHeight": 516,
+        "visibleHeight": 120,
+        "visibleWidth": 430,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 306,
+        "focus": {
+          "tag": "BODY",
+          "name": "Skip to contentMCR Concert WorldSynthetic contract fixtureREVENGEPARADEDANGERRev",
+          "top": 0,
+          "bottom": 430
+        }
+      },
+      "expanded": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 120,
+        "visibleWidth": 430,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 482,
+        "focus": {
+          "tag": "SUMMARY",
+          "name": "Controls & help",
+          "top": 308,
+          "bottom": 352
+        }
+      },
+      "helpFocus": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 0,
+        "visibleWidth": 430,
+        "scrollTop": 256,
+        "clientHeight": 200,
+        "scrollHeight": 482,
+        "focus": {
+          "tag": "BUTTON",
+          "name": "Zoom in",
+          "top": 182,
+          "bottom": 226
+        }
+      },
+      "restored": {
+        "intrinsicHeight": 120,
+        "visibleHeight": 120,
+        "visibleWidth": 430,
+        "scrollTop": 0,
+        "clientHeight": 200,
+        "scrollHeight": 306,
+        "focus": {
+          "tag": "SUMMARY",
+          "name": "Controls & help",
+          "top": 308,
+          "bottom": 352
+        }
+      },
+      "oneMount": 1,
+      "disposed": 1
+    }
+  ],
+  "screenshots": [
+    "normal-360.png",
+    "short-closed-360.png",
+    "short-expanded-scene-360.png",
+    "short-expanded-focus-360.png",
+    "short-keyboard-map-360.png",
+    "normal-390.png",
+    "short-closed-390.png",
+    "short-expanded-scene-390.png",
+    "short-expanded-focus-390.png",
+    "short-keyboard-map-390.png",
+    "normal-430.png",
+    "short-closed-430.png",
+    "short-expanded-scene-430.png",
+    "short-expanded-focus-430.png",
+    "short-keyboard-map-430.png"
+  ],
+  "errors": []
+}
