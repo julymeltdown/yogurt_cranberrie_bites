@@ -11,9 +11,9 @@ use tonic::{service::interceptor::InterceptedService, transport::Channel};
 pub mod proto {
     tonic::include_proto!("relationship.v1");
 }
-type Transport =
+pub(super) type Transport =
     InterceptedService<ActorDelegationClient<Channel>, ServiceIdentityClientInterceptor>;
-const EDGE: EdgeBudget = EdgeBudget {
+pub(super) const EDGE: EdgeBudget = EdgeBudget {
     edge: "concert.relationship.owner_read",
     expected_latency: Duration::from_millis(100),
     deadline: BUDGET,
@@ -72,7 +72,7 @@ fn timestamp(micros: i64) -> Result<DateTime<Utc>, RelationshipError> {
         .filter(|v| v.timestamp_micros() > 0)
         .ok_or(RelationshipError::Unavailable)
 }
-fn revision(epoch: &str, revision: i64) -> Result<OwnerRevision, RelationshipError> {
+pub(super) fn revision(epoch: &str, revision: i64) -> Result<OwnerRevision, RelationshipError> {
     let id = Uuid::parse_str(epoch).map_err(|_| RelationshipError::Unavailable)?;
     if id.to_string() != epoch {
         return Err(RelationshipError::Unavailable);
@@ -83,7 +83,7 @@ fn revision(epoch: &str, revision: i64) -> Result<OwnerRevision, RelationshipErr
     }
     .validate()
 }
-fn window(
+pub(super) fn window(
     query: &Option<proto::RelationshipRead>,
     expected: &proto::RelationshipRead,
     observed: i64,
@@ -103,7 +103,7 @@ fn window(
     }
     Ok((at, expires))
 }
-fn reply<T>(response: tonic::Response<T>) -> Result<T, RelationshipError> {
+pub(super) fn reply<T>(response: tonic::Response<T>) -> Result<T, RelationshipError> {
     if response
         .metadata()
         .get("cache-control")

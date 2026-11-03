@@ -6,6 +6,7 @@ use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
 use std::{fmt, time::Duration};
 use uuid::Uuid;
 pub mod grpc;
+pub(crate) mod world_auth;
 pub const BUDGET: Duration = Duration::from_secs(2);
 pub const MAX_REVISION: i64 = 9_007_199_254_740_991;
 #[derive(Clone, Copy, PartialEq, Eq)]
