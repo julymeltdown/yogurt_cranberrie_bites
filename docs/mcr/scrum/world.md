@@ -1,0 +1,47 @@
+# World delivery tracker
+
+Checkpoint: 2026-11-04 KST. Progress coordination only; this document is not a code-review approval gate or an acceptance waiver. Authority: `AGENTS.md` and `docs/mcr/parallel-delivery.md` at `f0e44bd1bba943b02319f9d9a42433e253e8de6f`. Specification/task acceptance remains unchanged.
+
+World SL: `01a1a1fe-c276-7eb3-a36e-2f383c0e81b8`, isolated `/Users/lhs/Desktop/mcr-worktrees/sl-world`, branch `codex/mcr-sl-world`, base `f0e44bd`. Sole writable path: this document. Delivery/master/shared-file owner: `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08`. Workers send commits directly to delivery and notify this SL. No main/SL review wait.
+
+## Live assignments
+
+| Task / scope | Writer and exact scope authority | Concrete deliverable / validation | Commit and publication | Next action / blocking owner |
+| --- | --- | --- | --- | --- |
+| BE06 bootstrap producer — IN_PROGRESS whole task | `01a19f83-12cc-7f21-8ad3-55749f012d9b`, `be-bootstrap`, base `34d4bb6`; dedicated bootstrap modules/tests/harness, migration 0004, two delegated one-line library exports, `docs/mcr/backend/bootstrap.md` | Idempotent persisted defaults; guarded generated RPC; fail-closed C03/C06 product validation. Committed evidence records 6 application, 4 service, 2 library, 3 authority and 3 Python tests; 2 explicitly executed PostgreSQL 16.14 native tests; all commands exit 0. Source-bound receipt includes restart/cleanup. | Worker `2cb878b0fb98bb763df7f8a55a9cc54807e287bc`; 14 changed paths confirmed by Git. Integrated as `48458d5` per completed worker/delivery disposition; publication of this integration is not yet independently checked. Dependency `0977dff` duplicates original `236f29c` and must not be replayed. | Writer stopped and Cargo explicitly released directly to admission. Delivery owns combined migration ledger 1/2/3/4/5, guarded TCP startup and Gateway wiring. Native worker ledger was only 1/2/4. Broader BE04 goal remains BLOCKED; bounded BE06 delivery does not complete it. |
+| BE10/BE11 tickets and room leases — IN_PROGRESS | `01a1a00c-2690-7bc0-94fc-52609655ea83`, isolated `be-world-admission`; existing exact application/service admission and migration 0005 assignment | Implementation reported ready for focused Cargo/native PG qualification; gate not yet received. | No committed feature handoff verified at this checkpoint. | Admission now owns exclusive `/Users/lhs/Desktop/mcr-build/backend` lease. Rust 1.88.0, locked/offline, jobs 2, debug 0; no duplicate target. Return lease directly to delivery after committed gate. |
+| Production world entry / FE18 root wiring — IN_PROGRESS | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c`, isolated `fe-world-entry`; delivery explicitly transferred five root files plus entry configuration/glue/tests/documentation; excludes runtime/avatar/composition | Bounded entry resolved canonical bootstrap/ticket/rooms through existing owner. Delivery reports 99 combined entry/rooms/lifecycle tests pass. New root wiring underway; source tree merged to master `22042dd`. | Worker `9c3e9f2` integrated as `b7a05b5`; delivery reports remote `920631d` verified. Root follow-up not yet delivered. | Continue owned production wiring, fail-closed configuration, lazy public entry and one owner/socket/privacy checks. Delivery owns backend availability and shared startup. |
+| FE12 shared avatar compositor — IN_PROGRESS | `01a1a153-1227-7e72-801f-a2a6b91981e1`, isolated `fe-avatar-runtime`, base `5356679`; avatar runtime plus explicitly assigned scene/status hooks and exact existing runtime/composition tests | Owner reports 186 affected tests and native Phaser fixture at 390/1280 pixels: two sprites/one shared texture; all 20 frame/profile pixels agree; removal/privacy clear sprites/textures/listeners/cache. Synthetic fixture evidence only. | Final source/evidence commit pending. | Finish bounded handoff directly to delivery. FE12 and AR03 coordinate asset requirements; current C06 is five layers, 64x64 cells, foot (32,60), four directions x five frames. Product resources remain unavailable without compatible reviewed selected-source derivatives. |
+| AR03 selected-source derivatives — IN_PROGRESS | `01a1a1fe-1eed-7d12-a247-879cd521e0ec`, isolated `art-runtime`, base `f0e44bd`; exact assigned derivatives/asset evidence; originals preserved | Inspecting selected pack revision 3. First bounded deliverable is source ROI/foot geometry, hashes and source-only review fixture. Imagegen extraction changed hair/collar/face pixels and was rejected for product use; evidence will be retained. A human clarification for deterministic extraction is pending in the art chat; independent source evidence continues. No atlas qualification yet. | No derivative handoff commit verified. | Direct FE12 contact established. Static cutout cannot satisfy existing five-layer/four-direction atlas. Delivery owns any explicit shared-contract adaptation; required directions/customization stay open. Never fake layers, duplicate frames as animation, or use synthetic/legacy fallback. |
+
+Scope details remain in worker assignments and their committed handoff documents; a row grants no new write ownership. Backend and frontend patches remain separate. Shared contracts, registries, manifests, locks, root wiring and migrations require delivery's explicit single-writer allocation.
+
+## Goal evidence
+
+SL goal was created and actually returned ACTIVE with no token budget. Worker goal claims below are reports of actual inspected tool state, not deductions from active UI labels. Latest worker activity and committed artifacts are checked separately.
+
+| Chat | Actual goal evidence available | Follow-up |
+| --- | --- | --- |
+| Bootstrap | Owner explicitly reports pre-existing broader BE04 goal BLOCKED; did not falsely complete it or create over unfinished goal. | Delivery/main reconcile remaining BE04 identity work separately from committed BE06 increment. |
+| Admission | Goal inspection requested; current actual goal result not yet received. | Verify reported state with next meaningful native milestone. |
+| Entry | Owner explicitly reports old bounded entry goal COMPLETE and newly created unbudgeted root-wiring goal ACTIVE. | Continue assigned root scope; no coordinator acknowledgement gate. |
+| FE12 | Latest assignment evidence states newly created unbudgeted FE12 goal ACTIVE; current inspection requested. | Verify at final committed handoff and concrete fixes. |
+| AR03 | Owner reports inspected ACTIVE/unbudgeted. | Keep extraction-evidence handoff active; production atlas remains open. |
+
+## IN01 qualification and remaining ownership
+
+IN01: **NOT_RUN**. No two-account real-service acceptance is claimed. Required gate is two independent real accounts in one live room observing authorized movement/avatars, customization, theme changes, persistent panel navigation and reconnect; exactly one game and world connection per active shell. Required task ancestry includes BE06, BE07, BE14, FE09, FE13, FE17, FE18, AR02, AR03 and AR04. Interactive movement additionally requires FE15. Unit/native fixture checks cannot certify this gate.
+
+- Delivery confirms real rooms/tickets/WebSocket and authoritative physics are missing; BE12–BE14 have no separate assigned writer yet. Admission has been asked for exact BE12 seam/readiness and whether an independent disjoint worker is safe. No ownership is transferred before a former writer stops.
+- BE13 requires BE37 relationship policy. Use an explicitly owned fail-closed policy port for independent implementation; authorized multiuser privacy qualification still needs the real policy. Do not block frontend fixtures on backend completion or impose a global freeze.
+- AR03 static extraction is independent productive work. Compatible production atlas, approved map AR02 and theme packs AR04 remain qualification dependencies. Existing synthetic C06 fixtures are metadata/runtime tests only.
+- BE07 persistence/FE13 customization ownership and AR02/AR04 ownership requested from delivery before proposing duplicate staff.
+- QA `01a1a00c-c94e-74a2-a306-1ff686372881` is closing its bounded bootstrap report and is potentially available for the real IN01 gate once actual prerequisites exist; delivery has not assigned it prematurely.
+
+## Evidence and publication discipline
+
+Sources inspected: frozen task definitions in `generated/TASKS_EN.json` (read only), specification sections 5.1–5.3, current delivery messages, compact worker snapshots and concrete handoff messages; BE06 committed evidence at `2cb878b:docs/mcr/backend/bootstrap.md` and exact changed paths via `git diff-tree`. No source archive, selected original or application code was modified by this SL.
+
+At this checkpoint local Git refs `master` and `origin/master` both resolve to `920631d64c85355df33163a51cd4d1643f4fa109`; delivery separately reports its remote SHA check. This is publication evidence for the entry checkpoint, not a remote claim for pending bootstrap/admission/avatar/art commits.
+
+`python3 scripts/mcr/check-plan.py` passed, exit 0, on this tracker worktree; this checks planning provenance/routing only. `git diff --check` passed, exit 0. Tracker handoff is documentation only; no application tests rerun by SL. No release counts or IA acceptance are changed. Wait for meaningful worker completion/blocker events; do not repeat unchanged polling or require main/SL approvals.
