@@ -8,8 +8,11 @@ export function PublicFrame({ children, current, appearance }: { children: React
   return <div className={`public-entry${appearance === 'poster' ? ' public-entry--poster' : ''}`}>
     <a className="public-skip" href="#public-main">Skip to content</a>
     <header className="public-header">
-      <Link className="public-brand" to="/" aria-label="MCR Concert World home">{appearance === 'poster' && <ConcertIcon name="star" />}MCR <span>Concert World</span></Link>
-      <Link className="public-text-link" to="/login">Sign in</Link>
+      <Link className="public-brand" to="/" aria-label="MCR Concert World home">{appearance === 'poster'
+        ? <span className="landing-window-stars" aria-hidden="true"><ConcertIcon name="star" /><ConcertIcon name="star" /><ConcertIcon name="star" /></span>
+        : <>MCR <span>Concert World</span></>}</Link>
+      <Link className="public-text-link" to="/login" aria-label={appearance === 'poster' ? 'Sign in' : undefined}>{appearance === 'poster'
+        ? <span className="landing-window-entry" aria-hidden="true">↪</span> : 'Sign in'}</Link>
     </header>
     <main id="public-main" tabIndex={-1}>{children}</main>
     <footer className="public-footer">

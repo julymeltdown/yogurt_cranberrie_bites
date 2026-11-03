@@ -84,7 +84,8 @@ paths. Concrete findings go directly to the author and are rechecked; QA is not
 an additional generic approval gate. Real devices and live IN04 are not implied.
 
 Author task-local work is MOCK_READY and committed; independent QA is
-IN_PROGRESS. Integration is verified below; remote publication remains pending.
+IN_PROGRESS. Wall implementation/evidence and root publication are verified
+below; independent QA report publication is pending.
 
 The author reports the three presentation files implemented and 126 existing
 editor/synchronization tests across seven files passing (exit 0). This is an
@@ -175,6 +176,25 @@ GET-only resolution, and paused/frozen/read-only states. Native imagery remains
 deterministic test content; exact full-photo fidelity, combined root route,
 real devices and IN04 are not certified. QA is finishing its committed report
 and qualified publication receipt; its original broader IN04 goal stays BLOCKED.
+
+Published frontend checkpoint:
+`e9ce93daf2c0d6aa453d055efad271d1de34349c`. A fresh origin fetch and
+`git merge-base --is-ancestor` independently verified `7b567acb`, `fe9cbb2d`,
+and `deb5865d` are all contained in published master (all exit 0).
+`docs/mcr/frontend/reference-checkpoint-2026-11-04.json` records the king-run
+combined candidate: 617 tests / 38 files, strict types, lint, build, UI origin,
+planning and three-width default-root native checks pass. Its actual Phaser
+uses synthetic HTTP/socket; approved authenticated character binding, live
+services and full reference acceptance are explicitly NOT_RUN. This is not
+new real-IN04 proof. The coordinator also viewed QA's final 390px capture and
+verified all three actually served source hashes against committed `832c7de9`.
+
+The coordinator reconciled published history in its own checkout. The sole
+add/add conflict was this originally absent ledger: king's published first
+version versus this same owner's later execution updates. The complete updated
+ledger is retained; no application, source-pack, or peer changes are resolved
+away. This docs-only follow-up uses direct non-force publication under the new
+policy, rather than waiting for a coordinator approval queue.
 
 ## Shared shell seam and production dependencies
 

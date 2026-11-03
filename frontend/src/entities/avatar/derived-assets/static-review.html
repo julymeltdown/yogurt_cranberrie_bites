@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Selected six static character review</title>
+<link rel="icon" href="data:,">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.5 system-ui,sans-serif; background: #faf8f5; color: #24191d; }
+  main { max-width: 64rem; margin: auto; padding: 24px 16px; }
+  h1 { font-size: 1.7rem; line-height: 1.2; } h2 { font-size: 1rem; }
+  nav { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+  button { min-height: 44px; padding: 6px 12px; font: inherit; background: white; color: #24191d; border: 1px solid #63585b; cursor: pointer; }
+  button[aria-pressed="true"] { outline: 2px solid #24191d; outline-offset: 2px; }
+  #characters { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,280px),1fr)); gap: 24px; }
+  article { min-width: 0; }
+  .views { padding: 12px; display: flex; gap: 16px; align-items: end; flex-wrap: wrap; background: var(--surface,#eddbd4); }
+  .views[data-checker="true"] { background-color: #ddd; background-image: conic-gradient(#bbb 25%,transparent 0 50%,#bbb 0 75%,transparent 0); background-size: 16px 16px; }
+  figure { margin: 0; } figcaption { font-size: 12px; color: var(--caption,#24191d); }
+  .sprite { image-rendering: pixelated; background-repeat: no-repeat; position: relative; }
+  .foot { position: absolute; width: 5px; height: 5px; border: 1px solid #e64f9b; border-radius: 50%; margin: -2px; pointer-events: none; }
+  .note { overflow-wrap: anywhere; font-size: 12px; }
+</style>
+<main>
+  <h1>Six selected static characters</h1>
+  <p id="status" role="status">Loading verified shared texture…</p>
+  <p>Actual source-pixel cutouts. Complete front-idle figures only; no side/back/walking frames, layer mixing or skin recoloring. The same atlas serves every figure and review size.</p>
+  <nav aria-label="Review surface">
+    <button type="button" data-theme="REVENGE" aria-pressed="true">REVENGE</button>
+    <button type="button" data-theme="PARADE" aria-pressed="false">PARADE</button>
+    <button type="button" data-theme="DANGER" aria-pressed="false">DANGER</button>
+    <button type="button" data-theme="CHECKER" aria-pressed="false">CHECKER</button>
+  </nav>
+  <nav aria-label="Display review">
+    <button type="button" data-display="compact" aria-pressed="true">Compact</button>
+    <button type="button" data-display="large" aria-pressed="false">Large</button>
+  </nav>
+  <div id="characters"></div>
+</main>
+<script type="module">
+  const release=await fetch('/world/avatars/derived-v1/static-release.json').then(response=>{if(!response.ok)throw Error('Missing release');return response.json()})
+  const response=await fetch(`/${release.atlas.path}`),bytes=await response.arrayBuffer()
+  if(!response.ok)throw Error('Missing selected texture')
+  const hex=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(value=>value.toString(16).padStart(2,'0')).join('')
+  if(`sha256:${hex}`!==release.atlas.sha256)throw Error('Texture hash mismatch')
+  const url=URL.createObjectURL(new Blob([bytes],{type:'image/png'})),image=new Image();image.src=url;await image.decode()
+  if(image.naturalWidth!==384||image.naturalHeight!==64)throw Error('Unexpected atlas dimensions')
+  const root=document.getElementById('characters')
+  for(const character of release.characters) {
+    const article=document.createElement('article'),title=document.createElement('h2'),views=document.createElement('div'),note=document.createElement('p')
+    article.dataset.character=character.id;title.textContent=character.label;views.className='views'
+    for(const size of [64,72,192]) {
+      const figure=document.createElement('figure'),sprite=document.createElement('div'),foot=document.createElement('span'),caption=document.createElement('figcaption'),scale=size/64
+      figure.dataset.size=String(size);sprite.className='sprite';sprite.setAttribute('role','img');sprite.setAttribute('aria-label',`${character.label}, front idle`)
+      sprite.style.width=`${size}px`;sprite.style.height=`${size}px`;sprite.style.backgroundImage=`url("${url}")`
+      sprite.style.backgroundSize=`${384*scale}px ${64*scale}px`;sprite.style.backgroundPosition=`${-character.frame.x*scale}px 0px`
+      foot.className='foot';foot.style.left=`${32*scale}px`;foot.style.top=`${60*scale}px`;foot.setAttribute('aria-hidden','true')
+      caption.textContent=`${size}px`;sprite.append(foot);figure.append(sprite,caption);views.append(figure)
+    }
+    note.className='note';note.textContent=`${character.id} · source photo_01 · static illustration ID, not a saved avatar item`
+    article.append(title,views,note);root.append(article)
+  }
+  const palettes={REVENGE:['#eddbd4','#24191d'],PARADE:['#1b1b20','#f4edda'],DANGER:['#d5e6e1','#152d3b'],CHECKER:['#ddd','#24191d']}
+  document.querySelectorAll('button[data-theme]').forEach(button=>button.addEventListener('click',()=>{
+    const [surface,caption]=palettes[button.dataset.theme];root.style.setProperty('--surface',surface);root.style.setProperty('--caption',caption)
+    document.querySelectorAll('.views').forEach(views=>views.dataset.checker=String(button.dataset.theme==='CHECKER'))
+    document.querySelectorAll('button[data-theme]').forEach(other=>other.setAttribute('aria-pressed',String(other===button)))
+  }))
+  document.querySelectorAll('button[data-display]').forEach(button=>button.addEventListener('click',()=>{
+    root.style.gridTemplateColumns=button.dataset.display==='large'?'1fr':''
+    document.querySelectorAll('button[data-display]').forEach(other=>other.setAttribute('aria-pressed',String(other===button)))
+  }))
+  window.addEventListener('pagehide',()=>URL.revokeObjectURL(url),{once:true})
+  document.getElementById('status').textContent='Six source-faithful front-idle figures · one verified atlas'
+  window.__MCR_STATIC_REVIEW__={release,atlasBytes:bytes.byteLength,atlasUrl:url,figures:6}
+</script>
+</html>

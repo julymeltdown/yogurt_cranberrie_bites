@@ -1,0 +1,355 @@
+{
+  "kind": "selected_source_static_art_package",
+  "status": "IN_PROGRESS",
+  "sourceBase": "37e0e0369443c3365c94d8dcaef99eaec06a4038",
+  "descriptor": {
+    "path": "/world/avatars/derived-v1/static-release.json",
+    "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+    "byte_length": 1898
+  },
+  "texture": {
+    "path": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+    "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+    "byte_length": 36030,
+    "width_px": 384,
+    "height_px": 64
+  },
+  "detailTexture": {
+    "path": "/world/avatars/derived-v1/photo01-front-idle-256-6258b9f9ee51aed7.png",
+    "sha256": "6258b9f9ee51aed7a04b0690dfb6fc20592ed8347d72fcaaf8037b4c19e7b099",
+    "byte_length": 368812,
+    "width_px": 1536,
+    "height_px": 256
+  },
+  "provenance": [
+    {
+      "sourceLocation": "row1_col1",
+      "label": "Black hair / red tie",
+      "sourceRect": {
+        "x": 40,
+        "y": 80,
+        "width": 380,
+        "height": 390
+      },
+      "native": {
+        "path": "/world/avatars/derived-v1/photo01-row1_col1-c9404b79d1aebd8e.png",
+        "sha256": "c9404b79d1aebd8e1801a5d97417fa612afb20821cc2070af7a5e0f7b58faae3",
+        "byte_length": 109913,
+        "width_px": 359,
+        "height_px": 364,
+        "sourceOrigin": {
+          "x": 54,
+          "y": 91
+        },
+        "foot": {
+          "x": 189.5,
+          "y": 362
+        }
+      },
+      "transform": {
+        "sourceFoot": {
+          "x": 243.5,
+          "y": 453
+        },
+        "scale64": 0.15466666666666667,
+        "foot64": {
+          "x": 32,
+          "y": 60
+        }
+      },
+      "evidence": {
+        "retainedPixels": 87766,
+        "retainedWhitePixels": 538,
+        "retainedDarkPixels": 77062,
+        "sourceDarkPixels": 77062,
+        "removedDarkPixels": 0,
+        "removedBorderConnectedBackground": 60434,
+        "discardedDetachedComponents": [],
+        "retainedRgbMismatches": 0,
+        "registeredRgbMismatches": 0,
+        "registered64Pixels": 2101,
+        "registered256Pixels": 33595
+      }
+    },
+    {
+      "sourceLocation": "row1_col2",
+      "label": "Pale hair / parade jacket",
+      "sourceRect": {
+        "x": 440,
+        "y": 80,
+        "width": 390,
+        "height": 390
+      },
+      "native": {
+        "path": "/world/avatars/derived-v1/photo01-row1_col2-f04b1d537ec47622.png",
+        "sha256": "f04b1d537ec4762241a657fca52292d747315ac45d1ea624552594ca7d1f08f7",
+        "byte_length": 133620,
+        "width_px": 367,
+        "height_px": 365,
+        "sourceOrigin": {
+          "x": 455,
+          "y": 94
+        },
+        "foot": {
+          "x": 185,
+          "y": 363
+        }
+      },
+      "transform": {
+        "sourceFoot": {
+          "x": 640,
+          "y": 457
+        },
+        "scale64": 0.15512465373961218,
+        "foot64": {
+          "x": 32,
+          "y": 60
+        }
+      },
+      "evidence": {
+        "retainedPixels": 89808,
+        "retainedWhitePixels": 389,
+        "retainedDarkPixels": 32127,
+        "sourceDarkPixels": 32127,
+        "removedDarkPixels": 0,
+        "removedBorderConnectedBackground": 62292,
+        "discardedDetachedComponents": [],
+        "retainedRgbMismatches": 0,
+        "registeredRgbMismatches": 0,
+        "registered64Pixels": 2158,
+        "registered256Pixels": 34579
+      }
+    },
+    {
+      "sourceLocation": "row1_col3",
+      "label": "Red hair / goggles",
+      "sourceRect": {
+        "x": 850,
+        "y": 80,
+        "width": 395,
+        "height": 390
+      },
+      "native": {
+        "path": "/world/avatars/derived-v1/photo01-row1_col3-68bbf8d121627aec.png",
+        "sha256": "68bbf8d121627aec17bdd4ff11d7a5171b408503f346d881da24725576820096",
+        "byte_length": 163081,
+        "width_px": 371,
+        "height_px": 372,
+        "sourceOrigin": {
+          "x": 862,
+          "y": 86
+        },
+        "foot": {
+          "x": 186.5,
+          "y": 370
+        }
+      },
+      "transform": {
+        "sourceFoot": {
+          "x": 1048.5,
+          "y": 456
+        },
+        "scale64": 0.15217391304347827,
+        "foot64": {
+          "x": 32,
+          "y": 60
+        }
+      },
+      "evidence": {
+        "retainedPixels": 91471,
+        "retainedWhitePixels": 194,
+        "retainedDarkPixels": 56566,
+        "sourceDarkPixels": 56566,
+        "removedDarkPixels": 0,
+        "removedBorderConnectedBackground": 62571,
+        "discardedDetachedComponents": [
+          5,
+          2,
+          1
+        ],
+        "retainedRgbMismatches": 0,
+        "registeredRgbMismatches": 0,
+        "registered64Pixels": 2110,
+        "registered256Pixels": 33933
+      }
+    },
+    {
+      "sourceLocation": "row2_col1",
+      "label": "Black bob / striped top",
+      "sourceRect": {
+        "x": 40,
+        "y": 475,
+        "width": 380,
+        "height": 360
+      },
+      "native": {
+        "path": "/world/avatars/derived-v1/photo01-row2_col1-a00b172a1aac7370.png",
+        "sha256": "a00b172a1aac7370fb648dff1e93a6981bacc0fd455fb26d6951d23f43a5c990",
+        "byte_length": 108074,
+        "width_px": 331,
+        "height_px": 329,
+        "sourceOrigin": {
+          "x": 71,
+          "y": 500
+        },
+        "foot": {
+          "x": 173,
+          "y": 327
+        }
+      },
+      "transform": {
+        "sourceFoot": {
+          "x": 244,
+          "y": 827
+        },
+        "scale64": 0.1695906432748538,
+        "foot64": {
+          "x": 32,
+          "y": 60
+        }
+      },
+      "evidence": {
+        "retainedPixels": 80108,
+        "retainedWhitePixels": 286,
+        "retainedDarkPixels": 65082,
+        "sourceDarkPixels": 65082,
+        "removedDarkPixels": 0,
+        "removedBorderConnectedBackground": 56690,
+        "discardedDetachedComponents": [
+          2
+        ],
+        "retainedRgbMismatches": 0,
+        "registeredRgbMismatches": 0,
+        "registered64Pixels": 2304,
+        "registered256Pixels": 36845
+      }
+    },
+    {
+      "sourceLocation": "row2_col2",
+      "label": "Brown hair / dark jacket",
+      "sourceRect": {
+        "x": 440,
+        "y": 475,
+        "width": 390,
+        "height": 360
+      },
+      "native": {
+        "path": "/world/avatars/derived-v1/photo01-row2_col2-d2f3c7db9fb2958d.png",
+        "sha256": "d2f3c7db9fb2958da88947d966e661e1ed15518df4ae7ad8e155cd82d9006534",
+        "byte_length": 128538,
+        "width_px": 367,
+        "height_px": 345,
+        "sourceOrigin": {
+          "x": 455,
+          "y": 483
+        },
+        "foot": {
+          "x": 184.5,
+          "y": 343
+        }
+      },
+      "transform": {
+        "sourceFoot": {
+          "x": 639.5,
+          "y": 826
+        },
+        "scale64": 0.1589041095890411,
+        "foot64": {
+          "x": 32,
+          "y": 60
+        }
+      },
+      "evidence": {
+        "retainedPixels": 81647,
+        "retainedWhitePixels": 251,
+        "retainedDarkPixels": 69461,
+        "sourceDarkPixels": 69461,
+        "removedDarkPixels": 0,
+        "removedBorderConnectedBackground": 58753,
+        "discardedDetachedComponents": [],
+        "retainedRgbMismatches": 0,
+        "registeredRgbMismatches": 0,
+        "registered64Pixels": 2058,
+        "registered256Pixels": 32959
+      }
+    },
+    {
+      "sourceLocation": "row2_col3",
+      "label": "Black hair / teal jacket",
+      "sourceRect": {
+        "x": 850,
+        "y": 475,
+        "width": 395,
+        "height": 360
+      },
+      "native": {
+        "path": "/world/avatars/derived-v1/photo01-row2_col3-55d33a62944f7f33.png",
+        "sha256": "55d33a62944f7f33e81f6a9d3dfa7ffd2e6647035892ab31de09d153504df8ff",
+        "byte_length": 118043,
+        "width_px": 338,
+        "height_px": 347,
+        "sourceOrigin": {
+          "x": 878,
+          "y": 483
+        },
+        "foot": {
+          "x": 172,
+          "y": 345
+        }
+      },
+      "transform": {
+        "sourceFoot": {
+          "x": 1050,
+          "y": 828
+        },
+        "scale64": 0.16326530612244897,
+        "foot64": {
+          "x": 32,
+          "y": 60
+        }
+      },
+      "evidence": {
+        "retainedPixels": 83906,
+        "retainedWhitePixels": 130,
+        "retainedDarkPixels": 65454,
+        "sourceDarkPixels": 65454,
+        "removedDarkPixels": 0,
+        "removedBorderConnectedBackground": 58294,
+        "discardedDetachedComponents": [],
+        "retainedRgbMismatches": 0,
+        "registeredRgbMismatches": 0,
+        "registered64Pixels": 2249,
+        "registered256Pixels": 35755
+      }
+    }
+  ],
+  "method": {
+    "authorization": "Human source-preserving reconstruction answer relayed by Main on 2026-11-04; no redraw or substitutions.",
+    "masking": "Exterior-connected near-neutral pixels minRGB>=118/channelSpread<=18; keep largest connected foreground; alpha binary. No RGB edits or all-white key.",
+    "registration": "Explicit uniform nearest-neighbor source sampling into64x64 at32,60; optional4x atlas. Native crops retain source-resolution colors.",
+    "consumer": "Choose one static atlas for all surfaces/eras and cache its immutable content URL; compact genuine server config IDs only."
+  },
+  "sourcePackId": "mcr_user_characters_20261103",
+  "sourcePackRevision": 3,
+  "sourceId": "photo_01",
+  "sourceSha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+  "supportedPose": "front_idle_only",
+  "logicalCell": {
+    "width": 64,
+    "height": 64
+  },
+  "anchor": {
+    "x": 32,
+    "y": 60
+  },
+  "c06Compatible": false,
+  "wireBinding": null,
+  "browser": "156.0.8078.80",
+  "visualReview": {
+    "reviewedBy": "Codex AR03 selected-source asset owner",
+    "reviewedAt": "2026-11-03T22:38:33Z",
+    "scope": "Supplied identities, full figures, pale hair, whites and outlines inspected in native cutout/atlas; mobile fixture qualification recorded separately."
+  },
+  "productionBinding": "NOT_RUN",
+  "fullAr03Acceptance": "NOT_RUN"
+}

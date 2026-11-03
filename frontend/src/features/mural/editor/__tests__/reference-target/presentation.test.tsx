@@ -1,0 +1,67 @@
+// @vitest-environment jsdom
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, beforeEach, expect, it, vi } from 'vitest'
+import { MuralEditor } from '../../MuralEditor'
+import { fixture, snapshot } from '../fixture'
+
+let f: ReturnType<typeof fixture>
+beforeEach(() => {
+  vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null)
+  vi.stubGlobal('ResizeObserver', class { observe() {} disconnect() {} })
+  f = fixture()
+})
+afterEach(() => { cleanup(); f.dispose(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
+it('keeps the real canvas first, all server colors and secondary keyboard coordinates collapsed', () => {
+  const { container } = render(<MuralEditor controller={f.controller} />)
+  expect(container.querySelector('canvas')?.width).toBe(512)
+  expect(screen.getByRole('heading', { name: '128 × 128 PIXEL WALL' })).toBeTruthy()
+  expect(screen.getAllByRole('button', { name: /^Color \d+ #/ })).toHaveLength(16)
+  expect(container.querySelector('details')?.open).toBe(false)
+  expect(screen.getByLabelText('X').closest('details')?.open).toBe(false)
+  expect(screen.getByRole('button', { name: 'Pan wall' })).toBeTruthy()
+  expect(screen.queryByRole('button', { name: /undo|bucket|erase/i })).toBeNull()
+  expect(container.textContent).not.toContain('4096')
+  expect(container.textContent).not.toContain('1248')
+})
+it('pencil and pan are local tools; keyboard preview and coordinate submit require separate confirmation', () => {
+  const { container } = render(<MuralEditor controller={f.controller} />)
+  const surface = screen.getByRole('group', { name: 'Mural pixel preview' })
+  fireEvent.click(screen.getByRole('button', { name: 'Pan wall' }))
+  fireEvent.keyDown(surface, { key: 'ArrowRight' }); expect(f.controller.read().selection).toBeNull()
+  fireEvent.click(screen.getByRole('button', { name: 'Pencil preview' }))
+  fireEvent.keyDown(surface, { key: 'ArrowRight' }); fireEvent.keyDown(surface, { key: 'Enter' })
+  expect(f.controller.read().selection?.x).toBe(1); expect(f.places).toHaveLength(0)
+  fireEvent.keyDown(surface, { key: 'Escape' }); expect(f.controller.read().selection).toBeNull()
+  fireEvent.click(screen.getByText('Coordinates & help'))
+  expect(container.querySelector('details')?.open).toBe(true)
+  fireEvent.change(screen.getByRole('spinbutton', { name: 'X' }), { target: { value: '127' } })
+  fireEvent.change(screen.getByRole('spinbutton', { name: 'Y' }), { target: { value: '0' } })
+  fireEvent.submit(screen.getByRole('button', { name: 'Preview pixel' }).closest('form')!)
+  expect(f.controller.read().selection).toMatchObject({ x: 127, y: 0 }); expect(f.places).toHaveLength(0)
+  fireEvent.click(screen.getByRole('button', { name: 'Cancel preview' })); expect(f.controller.read().selection).toBeNull()
+})
+it('frozen and read-only snapshots retain viewing tools without enabling placement or colors', () => {
+  f.controller.acceptSnapshot(f.controller.scope, snapshot({ state: 'FROZEN' }))
+  render(<MuralEditor controller={f.controller} />)
+  expect((screen.getByRole('button', { name: 'Pencil preview' }) as HTMLButtonElement).disabled).toBe(true)
+  expect((screen.getByRole('button', { name: 'Pan wall' }) as HTMLButtonElement).disabled).toBe(false)
+  expect((screen.getByRole('button', { name: 'Zoom in' }) as HTMLButtonElement).disabled).toBe(false)
+  expect(screen.queryByRole('button', { name: 'Confirm pixel' })).toBeNull()
+  for (const b of screen.getAllByRole('button', { name: /^Color \d+ #/ })) expect(b.closest('fieldset')?.disabled).toBe(true)
+  act(() => f.controller.setAvailability(f.controller.scope, 'read-only'))
+  expect(screen.getByRole('status', { name: 'Wall command status' }).textContent).toContain('read-only')
+})
+it('unknown command recovery remains visible outside collapsed help and privacy removes canvas and previews', async () => {
+  f.dispose(); f = fixture({ place: async () => ({ kind: 'unknown' }) })
+  f.controller.select(2, 3)
+  const { container } = render(<MuralEditor controller={f.controller} />)
+  await act(async () => f.controller.confirm())
+  const check = screen.getByRole('button', { name: 'Check original command' })
+  expect(check.closest('details')).toBeNull()
+  expect((screen.getByRole('button', { name: 'Confirm pixel' }) as HTMLButtonElement).disabled).toBe(true)
+  expect(f.places).toHaveLength(1)
+  act(() => f.session.replace(f.session.read().generation, null))
+  expect(container.querySelector('canvas')).toBeNull()
+  expect(screen.queryByLabelText('Selection preview')).toBeNull()
+  expect(screen.queryByRole('button', { name: 'Check original command' })).toBeNull()
+})

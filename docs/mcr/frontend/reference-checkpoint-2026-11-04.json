@@ -1,0 +1,1464 @@
+{
+  "status": "INTEGRATED",
+  "candidate": "0188d54913930578b6e85952dab1a56d67faf82b",
+  "validation": {
+    "selectedTests": {
+      "files": 38,
+      "passed": 617,
+      "exit": 0
+    },
+    "typescript": 0,
+    "lint": 0,
+    "viteBuild": {
+      "exit": 0,
+      "modules": 434,
+      "publicDirCopied": false,
+      "warning": "Existing large chunks"
+    },
+    "planning": 0,
+    "uiOrigin": 0
+  },
+  "native": {
+    "result": "PASS",
+    "referenceSHA256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "actualDefaultRoutes": true,
+    "actualPhaser": true,
+    "syntheticHTTPandSocket": true,
+    "approvedCharacters": false,
+    "liveServices": "NOT_RUN",
+    "fullReferenceAcceptance": "NOT_RUN",
+    "cases": [
+      {
+        "width": 360,
+        "height": 800,
+        "world": {
+          "viewport": {
+            "width": 360,
+            "height": 800
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "world": {
+            "x": 6,
+            "y": 109,
+            "width": 348,
+            "height": 571
+          },
+          "canvas": {
+            "x": 6,
+            "y": 109,
+            "width": 348,
+            "height": 526
+          },
+          "panel": null,
+          "body": null,
+          "header": {
+            "x": 4,
+            "y": 4,
+            "width": 352,
+            "height": 58
+          },
+          "era": {
+            "x": 4,
+            "y": 62,
+            "width": 352,
+            "height": 47
+          },
+          "nav": {
+            "x": 4,
+            "y": 728,
+            "width": 352,
+            "height": 68
+          },
+          "overflow": false,
+          "mode": "closed",
+          "small": []
+        },
+        "feed": {
+          "viewport": {
+            "width": 360,
+            "height": 800
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 800
+          },
+          "world": {
+            "x": 6,
+            "y": 4,
+            "width": 348,
+            "height": 792
+          },
+          "canvas": {
+            "x": 6,
+            "y": 4,
+            "width": 348,
+            "height": 747
+          },
+          "panel": {
+            "x": 6,
+            "y": 4,
+            "width": 348,
+            "height": 792
+          },
+          "body": {
+            "x": 9,
+            "y": 57,
+            "width": 342,
+            "height": 736
+          },
+          "header": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "era": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "nav": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "overflow": false,
+          "mode": "full",
+          "small": []
+        },
+        "routes": [
+          {
+            "path": "/world/map",
+            "name": "map",
+            "viewport": {
+              "width": 360,
+              "height": 800
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 360,
+              "height": 800
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 747
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 342,
+              "height": 736
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/meet",
+            "name": "meet",
+            "viewport": {
+              "width": 360,
+              "height": 800
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 360,
+              "height": 800
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 747
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 342,
+              "height": 674.8125
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/gifts",
+            "name": "gifts",
+            "viewport": {
+              "width": 360,
+              "height": 800
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 360,
+              "height": 800
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 747
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 342,
+              "height": 674.8125
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/wall",
+            "name": "wall",
+            "viewport": {
+              "width": 360,
+              "height": 800
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 360,
+              "height": 800
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 747
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 342,
+              "height": 736
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/me/avatar",
+            "name": "customize",
+            "viewport": {
+              "width": 360,
+              "height": 800
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 360,
+              "height": 800
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 747
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 342,
+              "height": 736
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/me",
+            "name": "profile",
+            "viewport": {
+              "width": 360,
+              "height": 800
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 360,
+              "height": 800
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 747
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 348,
+              "height": 792
+            },
+            "body": {
+              "x": 9,
+              "y": 53,
+              "width": 342,
+              "height": 678.8125
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          }
+        ],
+        "sizing": true,
+        "keyboardBackFocus": true,
+        "singleGameSocketCamera": true,
+        "cleanup": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "world": {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 844
+          },
+          "world": {
+            "x": 6,
+            "y": 109,
+            "width": 378,
+            "height": 615
+          },
+          "canvas": {
+            "x": 6,
+            "y": 109,
+            "width": 378,
+            "height": 570
+          },
+          "panel": null,
+          "body": null,
+          "header": {
+            "x": 4,
+            "y": 4,
+            "width": 382,
+            "height": 58
+          },
+          "era": {
+            "x": 4,
+            "y": 62,
+            "width": 382,
+            "height": 47
+          },
+          "nav": {
+            "x": 4,
+            "y": 772,
+            "width": 382,
+            "height": 68
+          },
+          "overflow": false,
+          "mode": "closed",
+          "small": []
+        },
+        "feed": {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 844
+          },
+          "world": {
+            "x": 6,
+            "y": 4,
+            "width": 378,
+            "height": 836
+          },
+          "canvas": {
+            "x": 6,
+            "y": 4,
+            "width": 378,
+            "height": 791
+          },
+          "panel": {
+            "x": 6,
+            "y": 4,
+            "width": 378,
+            "height": 836
+          },
+          "body": {
+            "x": 9,
+            "y": 57,
+            "width": 372,
+            "height": 780
+          },
+          "header": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "era": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "nav": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "overflow": false,
+          "mode": "full",
+          "small": []
+        },
+        "routes": [
+          {
+            "path": "/world/map",
+            "name": "map",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 791
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 372,
+              "height": 780
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/meet",
+            "name": "meet",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 791
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 372,
+              "height": 713.703125
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/gifts",
+            "name": "gifts",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 791
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 372,
+              "height": 713.703125
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/wall",
+            "name": "wall",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 791
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 372,
+              "height": 780
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/me/avatar",
+            "name": "customize",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 791
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 372,
+              "height": 780
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/me",
+            "name": "profile",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 791
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 378,
+              "height": 836
+            },
+            "body": {
+              "x": 9,
+              "y": 54.09375,
+              "width": 372,
+              "height": 716.609375
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          }
+        ],
+        "sizing": true,
+        "keyboardBackFocus": true,
+        "singleGameSocketCamera": true,
+        "cleanup": true
+      },
+      {
+        "width": 430,
+        "height": 932,
+        "world": {
+          "viewport": {
+            "width": 430,
+            "height": 932
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 932
+          },
+          "world": {
+            "x": 6,
+            "y": 109,
+            "width": 418,
+            "height": 703
+          },
+          "canvas": {
+            "x": 6,
+            "y": 109,
+            "width": 418,
+            "height": 658
+          },
+          "panel": null,
+          "body": null,
+          "header": {
+            "x": 4,
+            "y": 4,
+            "width": 422,
+            "height": 58
+          },
+          "era": {
+            "x": 4,
+            "y": 62,
+            "width": 422,
+            "height": 47
+          },
+          "nav": {
+            "x": 4,
+            "y": 860,
+            "width": 422,
+            "height": 68
+          },
+          "overflow": false,
+          "mode": "closed",
+          "small": []
+        },
+        "feed": {
+          "viewport": {
+            "width": 430,
+            "height": 932
+          },
+          "shell": {
+            "x": 0,
+            "y": 0,
+            "width": 430,
+            "height": 932
+          },
+          "world": {
+            "x": 6,
+            "y": 4,
+            "width": 418,
+            "height": 924
+          },
+          "canvas": {
+            "x": 6,
+            "y": 4,
+            "width": 418,
+            "height": 879
+          },
+          "panel": {
+            "x": 6,
+            "y": 4,
+            "width": 418,
+            "height": 924
+          },
+          "body": {
+            "x": 9,
+            "y": 57,
+            "width": 412,
+            "height": 868
+          },
+          "header": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "era": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "nav": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "overflow": false,
+          "mode": "full",
+          "small": []
+        },
+        "routes": [
+          {
+            "path": "/world/map",
+            "name": "map",
+            "viewport": {
+              "width": 430,
+              "height": 932
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 430,
+              "height": 932
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 879
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 412,
+              "height": 868
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/meet",
+            "name": "meet",
+            "viewport": {
+              "width": 430,
+              "height": 932
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 430,
+              "height": 932
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 879
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 412,
+              "height": 794.90625
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/gifts",
+            "name": "gifts",
+            "viewport": {
+              "width": 430,
+              "height": 932
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 430,
+              "height": 932
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 879
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 412,
+              "height": 794.90625
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/wall",
+            "name": "wall",
+            "viewport": {
+              "width": 430,
+              "height": 932
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 430,
+              "height": 932
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 879
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 412,
+              "height": 868
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/me/avatar",
+            "name": "customize",
+            "viewport": {
+              "width": 430,
+              "height": 932
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 430,
+              "height": 932
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 879
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 412,
+              "height": 868
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          },
+          {
+            "path": "/me",
+            "name": "profile",
+            "viewport": {
+              "width": 430,
+              "height": 932
+            },
+            "shell": {
+              "x": 0,
+              "y": 0,
+              "width": 430,
+              "height": 932
+            },
+            "world": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "canvas": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 879
+            },
+            "panel": {
+              "x": 6,
+              "y": 4,
+              "width": 418,
+              "height": 924
+            },
+            "body": {
+              "x": 9,
+              "y": 57,
+              "width": 412,
+              "height": 794.90625
+            },
+            "header": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "era": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "nav": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            },
+            "overflow": false,
+            "mode": "full",
+            "small": []
+          }
+        ],
+        "sizing": true,
+        "keyboardBackFocus": true,
+        "singleGameSocketCamera": true,
+        "cleanup": true
+      }
+    ],
+    "errors": [],
+    "hashes": {
+      "src/app/WorldShell.tsx": "d6a2a74ef3ae7c66b06f1c53798cacf52a6d5a800f199c9c1743966a1f55f62c",
+      "src/app/shell.css": "278b80dde0775161a8a15e3b6c95b05c06d5fd00ff3b085dcdb44f9a88f8a898",
+      "src/app/shell-chrome/index.tsx": "00deddbac5415012836b8efbafa7d5acfe586c6002076eb6f4cf3b91d817eded",
+      "src/app/shell-chrome/identity.tsx": "07d56ece8f9c1bc4e94c53bcae44d6e430f73f1d851998df60c36a6ad0bb1b98",
+      "src/app/shell-chrome/parade-footer.tsx": "7ccff5284eeb2a7851584694f9690835fa13e37746d9d68f0b2b10b8882afc2d",
+      "src/app/shell-chrome/shell-chrome.css": "fd5dc0e76c2d9a522b8e9ee95aacbf639610228fb187c382a9dc15c6c113ba19",
+      "src/shared/styles/base.css": "b360af38fefb8651262d2cfccc91e5a71d5691da8831d5dda6349a88ab9a8d42",
+      "src/shared/ui/concert-window/index.tsx": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
+      "src/shared/ui/concert-window/concert-window.css": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032",
+      "src/app/__tests__/reference-root/native.mjs": "05edfa3edaa73e7eaa77addd2afaf3de0439b585c2545818d5c3c356e7d3d217",
+      "src/app/__tests__/reference-root/preview.tsx": "ce68c22a153e155b8ab72191b3719d8cf2f0d09d15142a6113f02796a1f84d7f"
+    },
+    "additionalIntegratedSourceHashes": {
+      "frontend/src/world/input/controller.ts": "48480c4d874284f3b7d6c1236d946ba3622c867e3517e9664f4a1bbab1bdc2cc",
+      "frontend/src/world/input/controls.css": "2f6aa57a8a4024e1d6f10900257e9f7e92753a3790c4824b573b3910574f540d",
+      "frontend/src/world/scenes/MapScene.ts": "b78aa32b4680013567edb86cfc7b25c4922a8eb120a0f598439bc6cdbdef5bf7"
+    },
+    "candidateCommit": "0188d54913930578b6e85952dab1a56d67faf82b",
+    "scope": "Actual default app root, synthetic HTTP/socket and deterministic C05; selected public art package integrated but authenticated whole-character binding is NOT_RUN."
+  },
+  "limitations": [
+    "Synthetic HTTP/socket only; live backend/device/multiuser NOT_RUN.",
+    "Reference visual acceptance NOT_RUN. Map and Profile followups pending.",
+    "Selected characters are public static illustrations until canonical1.1.0 runtime/root consumers ship.",
+    "Media and genuine authenticated portrait binding remain open."
+  ]
+}

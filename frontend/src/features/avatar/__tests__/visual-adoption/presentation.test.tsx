@@ -9,7 +9,7 @@ const owned: ReturnType<typeof harness>[] = []
 afterEach(() => { cleanup(); owned.splice(0).forEach(f => f.dispose()) })
 async function setup() {
   const f = harness(); owned.push(f); render(<AvatarEditor controller={f.controller} />)
-  await screen.findByRole('img', { name: 'Draft outfit preview' }); return f
+  await screen.findByRole('img', { name: 'Draft outfit preview' }); fireEvent.click(screen.getByRole('tab', { name: 'Presets' })); return f
 }
 const tab = (name: string) => screen.getByRole('tab', { name })
 const writes = (f: ReturnType<typeof harness>) => f.requests.filter(r => r.method === 'PUT')
@@ -17,16 +17,19 @@ const writes = (f: ReturnType<typeof harness>) => f.requests.filter(r => r.metho
 describe('UIV04 avatar category presentation', () => {
   it('keeps every layer and tone available through keyboard categories with bounded option previews and no draft change or save', async () => {
     const f = await setup(), main = f.controller.read().preview.canvas
-    for (const [index, name] of ['Presets', 'Body', 'Eyes', 'Hair', 'Outfit', 'Accessory', 'Tones'].entries()) {
-      if (index) fireEvent.keyDown(tab(['Presets', 'Body', 'Eyes', 'Hair', 'Outfit', 'Accessory', 'Tones'][index - 1]!), { key: 'ArrowDown' })
+    fireEvent.click(tab('Hair'))
+    for (const [index, name] of ['Hair', 'Outfit', 'Accessory', 'Tones', 'Presets', 'Body', 'Eyes'].entries()) {
+      if (index) fireEvent.keyDown(tab(['Hair', 'Outfit', 'Accessory', 'Tones', 'Presets', 'Body', 'Eyes'][index - 1]!), { key: 'ArrowDown' })
       expect(tab(name)).toHaveAttribute('aria-selected', 'true')
       const details = screen.getByRole('tabpanel').querySelector('details')!
       if (!details.open) fireEvent.click(details.querySelector('summary')!)
-      if (index) expect(screen.getByRole('combobox', { name: name === 'Tones' ? 'Skin tone' : name.toLowerCase() })).toBeVisible()
+      if (name !== 'Presets') expect(screen.getByRole('combobox', { name: name === 'Tones' ? 'Skin tone' : name.toLowerCase() })).toBeVisible()
     }
+    fireEvent.click(tab('Tones'))
     expect(screen.getByRole('option', { name: 'tone unsupported' })).toBeDisabled()
     fireEvent.keyDown(tab('Tones'), { key: 'Home' })
-    expect(tab('Presets')).toHaveFocus()
+    expect(tab('Hair')).toHaveFocus()
+    fireEvent.click(tab('Presets'))
     expect(screen.getByRole('button', { name: 'fixture unsupported' })).toBeDisabled()
     expect(f.controller.read().preview.canvas).toBe(main)
     expect(main?.isConnected).toBe(true)
@@ -39,7 +42,7 @@ describe('UIV04 avatar category presentation', () => {
     fireEvent.change(screen.getByRole('combobox', { name: 'accessory' }), { target: { value: '' } })
     await waitFor(() => expect(f.controller.read().preview.phase).toBe('ready'))
     expect(f.controller.read().draft?.item_ids.accessory).toBeNull()
-    fireEvent.click(screen.getByRole('button', { name: 'Cancel changes' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Reset draft' }))
     expect(f.controller.read().draft).toEqual(original); expect(writes(f)).toHaveLength(0)
   })
 
@@ -73,7 +76,7 @@ describe('UIV04 avatar category presentation', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Save outfit' }))
     await waitFor(() => expect(writes(f)).toHaveLength(1))
     expect(screen.getByRole('button', { name: 'Save outfit' })).toHaveAttribute('aria-busy', 'true')
-    expect(screen.getByRole('button', { name: 'Cancel changes' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Reset draft' })).toBeDisabled()
     act(() => f.pendingSave.resolve(Response.json({ revision: 2, config: f.controller.read().draft })))
     await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('Outfit saved.'))
   })
