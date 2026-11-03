@@ -3,6 +3,13 @@ import { projectCapabilities } from '../../../app/capabilities'
 import { canonicalJson, decodeContract, equal, list, number, object, requireValue, text, type ObjectValue } from './contract'
 
 export { canonicalJson } from './contract'
+function freezeDocument<T>(value: T): T {
+  if (value !== null && typeof value === 'object') {
+    for (const child of Object.values(value)) freezeDocument(child)
+    Object.freeze(value)
+  }
+  return value
+}
 async function digest(value: unknown) {
   const result = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(canonicalJson(value)))
   return `sha256:${Array.from(new Uint8Array(result), b => b.toString(16).padStart(2, '0')).join('')}`
@@ -81,7 +88,9 @@ async function validateBundle(bootstrap: ObjectValue) {
   }
 }
 export async function decodeBootstrap(value: unknown, scope: ActiveScope): Promise<ShellBootstrap> {
-  const b = decodeContract('Bootstrap', value), event = object(b.event), participant = object(b.participant)
+  // Own the exact validated bytes before asynchronous hash checks. A caller
+  // cannot mutate an asset/default after validation or during its awaits.
+  const b = freezeDocument(decodeContract('Bootstrap', structuredClone(value))), event = object(b.event), participant = object(b.participant)
   const profile = object(participant.profile), capabilities = object(b.capabilities)
   requireValue(event.event_id === scope.eventId && participant.event_id === scope.eventId
     && participant.user_id === scope.userId && profile.user_id === scope.userId && equal(profile.avatar, b.avatar))
@@ -90,5 +99,5 @@ export async function decodeBootstrap(value: unknown, scope: ActiveScope): Promi
   return Object.freeze({ contractVersion: '0.1.0', event: Object.freeze({ eventId: scope.eventId,
     title: text(event.title), phase: text(event.phase) as ShellBootstrap['event']['phase'] }),
   participant: Object.freeze({ userId: scope.userId, eventId: scope.eventId }), worldAvailable: object(capabilities.world).available === true,
-  capabilities: projectCapabilities(capabilities) })
+  capabilities: projectCapabilities(capabilities), document: b })
 }

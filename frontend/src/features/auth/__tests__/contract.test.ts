@@ -61,10 +61,22 @@ describe('full bootstrap and C06 before shell projection', () => {
     b.capabilities.meet.reason = 'DEPENDENCY_UNAVAILABLE'
     expect(disabled.capabilities.meet.reason).toBe('FEATURE_DISABLED')
   })
-  it('accepts every published field and returns only a non-secret shell projection', async () => {
+  it('accepts published fields and retains the validated resource document for the shell lease', async () => {
     expect(await decodeBootstrap(fixture(), scope)).toEqual({ contractVersion: '0.1.0',
       event: { eventId, title: 'Synthetic contract fixture', phase: 'OPEN' }, participant: { userId, eventId }, worldAvailable: false,
-      capabilities: fixture().capabilities })
+      capabilities: fixture().capabilities, document: fixture() })
+  })
+  it('owns asset bytes before asynchronous validation and prevents later release mutation', async () => {
+    const input = body(), original = structuredClone(input)
+    const pending = decodeBootstrap(input, scope)
+    input.map_manifest.geometry.default_spawn_id = 'unreviewed_spawn'
+    input.avatar.config.item_ids.hair = 'unreviewed_hair'
+    const result = await pending
+    expect(result.document).toEqual(original)
+    const document = result.document as ReturnType<typeof body>
+    expect(() => { document.map_manifest.geometry.default_spawn_id = 'replacement' }).toThrow()
+    expect(() => { document.theme_manifests.push({}) }).toThrow()
+    expect(result.document).toEqual(original)
   })
   it.each([
     ['additional private field', (b: ReturnType<typeof body>) => { b.participant.profile.email = 'private@example.com' }],

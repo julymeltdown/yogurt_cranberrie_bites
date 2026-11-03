@@ -20,6 +20,8 @@ export interface ShellBootstrap {
   readonly participant: { readonly userId: string; readonly eventId: string }
   readonly worldAvailable: boolean
   readonly capabilities: ShellCapabilities
+  /** Validated immutable C03 response, usable only with this bootstrap's privacy lease. */
+  readonly document?: Readonly<Record<string, unknown>>
 }
 export type ShellFailureReason = 'unauthenticated' | 'denied' | 'not-found' | 'gone' | 'rate-limited' | 'unavailable'
 /** Safe adapter presentation category; never pass a server error body to the shell. */
