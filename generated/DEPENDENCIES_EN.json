@@ -1,0 +1,1530 @@
+{
+  "metadata": {
+    "schema_version": "2.0",
+    "language": "en",
+    "repository": "julymeltdown/mcr",
+    "branch": "master",
+    "source_file": "MCR_IMPLEMENTATION_PLAN_V2_EN.md",
+    "source_sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "execution_state": "PLANNING_ONLY",
+    "priority_note": "P0 is launch-required, P1 is optional; phase is a separate integer.",
+    "release_gate_note": "Dependencies are scheduling prerequisites, not the complete release checklist. IN05 must review every launch-required task and IA entry. Any scope cut must be explicitly recorded; removing a dependency does not waive acceptance."
+  },
+  "edges": [
+    {
+      "from": "C01",
+      "to": "C02"
+    },
+    {
+      "from": "C01",
+      "to": "C03"
+    },
+    {
+      "from": "C03",
+      "to": "C04"
+    },
+    {
+      "from": "C03",
+      "to": "C05"
+    },
+    {
+      "from": "C01",
+      "to": "C06"
+    },
+    {
+      "from": "C03",
+      "to": "C07"
+    },
+    {
+      "from": "C04",
+      "to": "C07"
+    },
+    {
+      "from": "C05",
+      "to": "C07"
+    },
+    {
+      "from": "C06",
+      "to": "C07"
+    },
+    {
+      "from": "C01",
+      "to": "C08"
+    },
+    {
+      "from": "C06",
+      "to": "AR01"
+    },
+    {
+      "from": "AR01",
+      "to": "AR02"
+    },
+    {
+      "from": "C06",
+      "to": "AR02"
+    },
+    {
+      "from": "C06",
+      "to": "AR03"
+    },
+    {
+      "from": "C06",
+      "to": "AR04"
+    },
+    {
+      "from": "C01",
+      "to": "BE01"
+    },
+    {
+      "from": "C02",
+      "to": "BE01"
+    },
+    {
+      "from": "BE01",
+      "to": "BE02"
+    },
+    {
+      "from": "BE02",
+      "to": "BE03"
+    },
+    {
+      "from": "C03",
+      "to": "BE03"
+    },
+    {
+      "from": "BE03",
+      "to": "BE04"
+    },
+    {
+      "from": "C03",
+      "to": "BE04"
+    },
+    {
+      "from": "BE01",
+      "to": "BE05"
+    },
+    {
+      "from": "C03",
+      "to": "BE05"
+    },
+    {
+      "from": "BE04",
+      "to": "BE06"
+    },
+    {
+      "from": "BE05",
+      "to": "BE06"
+    },
+    {
+      "from": "BE05",
+      "to": "BE07"
+    },
+    {
+      "from": "C06",
+      "to": "BE07"
+    },
+    {
+      "from": "BE05",
+      "to": "BE08"
+    },
+    {
+      "from": "C06",
+      "to": "BE08"
+    },
+    {
+      "from": "BE08",
+      "to": "BE09"
+    },
+    {
+      "from": "BE37",
+      "to": "BE09"
+    },
+    {
+      "from": "C04",
+      "to": "BE09"
+    },
+    {
+      "from": "BE04",
+      "to": "BE10"
+    },
+    {
+      "from": "BE05",
+      "to": "BE10"
+    },
+    {
+      "from": "C05",
+      "to": "BE10"
+    },
+    {
+      "from": "BE10",
+      "to": "BE11"
+    },
+    {
+      "from": "BE11",
+      "to": "BE12"
+    },
+    {
+      "from": "C06",
+      "to": "BE12"
+    },
+    {
+      "from": "BE12",
+      "to": "BE13"
+    },
+    {
+      "from": "BE37",
+      "to": "BE13"
+    },
+    {
+      "from": "BE13",
+      "to": "BE14"
+    },
+    {
+      "from": "BE05",
+      "to": "BE15"
+    },
+    {
+      "from": "BE05",
+      "to": "BE16"
+    },
+    {
+      "from": "BE37",
+      "to": "BE16"
+    },
+    {
+      "from": "C04",
+      "to": "BE16"
+    },
+    {
+      "from": "BE16",
+      "to": "BE17"
+    },
+    {
+      "from": "BE15",
+      "to": "BE17"
+    },
+    {
+      "from": "BE17",
+      "to": "BE18"
+    },
+    {
+      "from": "BE18",
+      "to": "BE19"
+    },
+    {
+      "from": "BE09",
+      "to": "BE19"
+    },
+    {
+      "from": "BE05",
+      "to": "BE20"
+    },
+    {
+      "from": "BE37",
+      "to": "BE20"
+    },
+    {
+      "from": "C04",
+      "to": "BE20"
+    },
+    {
+      "from": "BE20",
+      "to": "BE21"
+    },
+    {
+      "from": "BE15",
+      "to": "BE21"
+    },
+    {
+      "from": "BE21",
+      "to": "BE22"
+    },
+    {
+      "from": "BE22",
+      "to": "BE23"
+    },
+    {
+      "from": "BE05",
+      "to": "BE24"
+    },
+    {
+      "from": "BE37",
+      "to": "BE24"
+    },
+    {
+      "from": "C04",
+      "to": "BE24"
+    },
+    {
+      "from": "C01",
+      "to": "BE25"
+    },
+    {
+      "from": "C04",
+      "to": "BE25"
+    },
+    {
+      "from": "BE25",
+      "to": "BE26"
+    },
+    {
+      "from": "BE04",
+      "to": "BE26"
+    },
+    {
+      "from": "BE05",
+      "to": "BE26"
+    },
+    {
+      "from": "BE26",
+      "to": "BE27"
+    },
+    {
+      "from": "BE37",
+      "to": "BE27"
+    },
+    {
+      "from": "BE05",
+      "to": "BE28"
+    },
+    {
+      "from": "BE37",
+      "to": "BE28"
+    },
+    {
+      "from": "C04",
+      "to": "BE28"
+    },
+    {
+      "from": "BE28",
+      "to": "BE29"
+    },
+    {
+      "from": "BE15",
+      "to": "BE29"
+    },
+    {
+      "from": "BE29",
+      "to": "BE30"
+    },
+    {
+      "from": "BE04",
+      "to": "BE31"
+    },
+    {
+      "from": "BE15",
+      "to": "BE31"
+    },
+    {
+      "from": "BE37",
+      "to": "BE31"
+    },
+    {
+      "from": "C04",
+      "to": "BE31"
+    },
+    {
+      "from": "BE31",
+      "to": "BE32"
+    },
+    {
+      "from": "BE15",
+      "to": "BE33"
+    },
+    {
+      "from": "BE04",
+      "to": "BE33"
+    },
+    {
+      "from": "BE05",
+      "to": "BE34"
+    },
+    {
+      "from": "BE37",
+      "to": "BE34"
+    },
+    {
+      "from": "C04",
+      "to": "BE34"
+    },
+    {
+      "from": "BE34",
+      "to": "BE35"
+    },
+    {
+      "from": "BE15",
+      "to": "BE35"
+    },
+    {
+      "from": "BE05",
+      "to": "BE36"
+    },
+    {
+      "from": "BE37",
+      "to": "BE36"
+    },
+    {
+      "from": "C04",
+      "to": "BE36"
+    },
+    {
+      "from": "BE04",
+      "to": "BE37"
+    },
+    {
+      "from": "BE05",
+      "to": "BE37"
+    },
+    {
+      "from": "C04",
+      "to": "BE37"
+    },
+    {
+      "from": "BE08",
+      "to": "BE38"
+    },
+    {
+      "from": "BE05",
+      "to": "BE38"
+    },
+    {
+      "from": "C04",
+      "to": "BE38"
+    },
+    {
+      "from": "BE36",
+      "to": "BE39"
+    },
+    {
+      "from": "BE38",
+      "to": "BE39"
+    },
+    {
+      "from": "BE35",
+      "to": "BE40"
+    },
+    {
+      "from": "BE38",
+      "to": "BE40"
+    },
+    {
+      "from": "BE15",
+      "to": "BE41"
+    },
+    {
+      "from": "BE30",
+      "to": "BE41"
+    },
+    {
+      "from": "BE35",
+      "to": "BE41"
+    },
+    {
+      "from": "BE38",
+      "to": "BE41"
+    },
+    {
+      "from": "BE14",
+      "to": "BE42"
+    },
+    {
+      "from": "BE30",
+      "to": "BE42"
+    },
+    {
+      "from": "BE41",
+      "to": "BE42"
+    },
+    {
+      "from": "BE03",
+      "to": "BE43"
+    },
+    {
+      "from": "BE10",
+      "to": "BE43"
+    },
+    {
+      "from": "BE24",
+      "to": "BE43"
+    },
+    {
+      "from": "BE30",
+      "to": "BE43"
+    },
+    {
+      "from": "BE02",
+      "to": "BE44"
+    },
+    {
+      "from": "BE38",
+      "to": "BE44"
+    },
+    {
+      "from": "BE41",
+      "to": "BE44"
+    },
+    {
+      "from": "BE43",
+      "to": "BE44"
+    },
+    {
+      "from": "C02",
+      "to": "FE01"
+    },
+    {
+      "from": "C03",
+      "to": "FE01"
+    },
+    {
+      "from": "FE01",
+      "to": "FE02"
+    },
+    {
+      "from": "C03",
+      "to": "FE02"
+    },
+    {
+      "from": "C04",
+      "to": "FE03"
+    },
+    {
+      "from": "C08",
+      "to": "FE03"
+    },
+    {
+      "from": "FE01",
+      "to": "FE04"
+    },
+    {
+      "from": "C04",
+      "to": "FE04"
+    },
+    {
+      "from": "C02",
+      "to": "FE05"
+    },
+    {
+      "from": "C08",
+      "to": "FE05"
+    },
+    {
+      "from": "FE05",
+      "to": "FE06"
+    },
+    {
+      "from": "C06",
+      "to": "FE06"
+    },
+    {
+      "from": "FE05",
+      "to": "FE07"
+    },
+    {
+      "from": "C03",
+      "to": "FE07"
+    },
+    {
+      "from": "FE05",
+      "to": "FE08"
+    },
+    {
+      "from": "FE07",
+      "to": "FE08"
+    },
+    {
+      "from": "FE01",
+      "to": "FE09"
+    },
+    {
+      "from": "FE02",
+      "to": "FE09"
+    },
+    {
+      "from": "FE07",
+      "to": "FE09"
+    },
+    {
+      "from": "C03",
+      "to": "FE09"
+    },
+    {
+      "from": "FE09",
+      "to": "FE10"
+    },
+    {
+      "from": "FE09",
+      "to": "FE11"
+    },
+    {
+      "from": "C06",
+      "to": "FE12"
+    },
+    {
+      "from": "C02",
+      "to": "FE12"
+    },
+    {
+      "from": "FE12",
+      "to": "FE13"
+    },
+    {
+      "from": "FE05",
+      "to": "FE13"
+    },
+    {
+      "from": "C03",
+      "to": "FE13"
+    },
+    {
+      "from": "C06",
+      "to": "FE14"
+    },
+    {
+      "from": "C02",
+      "to": "FE14"
+    },
+    {
+      "from": "FE14",
+      "to": "FE15"
+    },
+    {
+      "from": "C05",
+      "to": "FE16"
+    },
+    {
+      "from": "FE01",
+      "to": "FE16"
+    },
+    {
+      "from": "FE16",
+      "to": "FE17"
+    },
+    {
+      "from": "FE14",
+      "to": "FE17"
+    },
+    {
+      "from": "FE12",
+      "to": "FE17"
+    },
+    {
+      "from": "FE17",
+      "to": "FE18"
+    },
+    {
+      "from": "FE05",
+      "to": "FE18"
+    },
+    {
+      "from": "FE07",
+      "to": "FE19"
+    },
+    {
+      "from": "FE14",
+      "to": "FE19"
+    },
+    {
+      "from": "C03",
+      "to": "FE19"
+    },
+    {
+      "from": "FE19",
+      "to": "FE20"
+    },
+    {
+      "from": "FE02",
+      "to": "FE20"
+    },
+    {
+      "from": "C04",
+      "to": "FE20"
+    },
+    {
+      "from": "FE07",
+      "to": "FE21"
+    },
+    {
+      "from": "FE02",
+      "to": "FE21"
+    },
+    {
+      "from": "C04",
+      "to": "FE21"
+    },
+    {
+      "from": "FE05",
+      "to": "FE22"
+    },
+    {
+      "from": "FE03",
+      "to": "FE22"
+    },
+    {
+      "from": "C04",
+      "to": "FE22"
+    },
+    {
+      "from": "FE21",
+      "to": "FE23"
+    },
+    {
+      "from": "FE20",
+      "to": "FE23"
+    },
+    {
+      "from": "FE07",
+      "to": "FE24"
+    },
+    {
+      "from": "FE02",
+      "to": "FE24"
+    },
+    {
+      "from": "C04",
+      "to": "FE24"
+    },
+    {
+      "from": "FE24",
+      "to": "FE25"
+    },
+    {
+      "from": "FE04",
+      "to": "FE25"
+    },
+    {
+      "from": "FE03",
+      "to": "FE25"
+    },
+    {
+      "from": "FE24",
+      "to": "FE26"
+    },
+    {
+      "from": "FE20",
+      "to": "FE26"
+    },
+    {
+      "from": "FE07",
+      "to": "FE27"
+    },
+    {
+      "from": "FE02",
+      "to": "FE27"
+    },
+    {
+      "from": "C04",
+      "to": "FE27"
+    },
+    {
+      "from": "FE27",
+      "to": "FE28"
+    },
+    {
+      "from": "FE04",
+      "to": "FE28"
+    },
+    {
+      "from": "FE07",
+      "to": "FE29"
+    },
+    {
+      "from": "FE03",
+      "to": "FE29"
+    },
+    {
+      "from": "C04",
+      "to": "FE29"
+    },
+    {
+      "from": "FE29",
+      "to": "FE30"
+    },
+    {
+      "from": "FE12",
+      "to": "FE30"
+    },
+    {
+      "from": "FE02",
+      "to": "FE31"
+    },
+    {
+      "from": "FE05",
+      "to": "FE31"
+    },
+    {
+      "from": "C04",
+      "to": "FE31"
+    },
+    {
+      "from": "FE05",
+      "to": "FE32"
+    },
+    {
+      "from": "C04",
+      "to": "FE32"
+    },
+    {
+      "from": "FE32",
+      "to": "FE33"
+    },
+    {
+      "from": "FE16",
+      "to": "FE33"
+    },
+    {
+      "from": "FE07",
+      "to": "FE34"
+    },
+    {
+      "from": "FE12",
+      "to": "FE34"
+    },
+    {
+      "from": "FE02",
+      "to": "FE34"
+    },
+    {
+      "from": "FE02",
+      "to": "FE35"
+    },
+    {
+      "from": "FE07",
+      "to": "FE35"
+    },
+    {
+      "from": "C04",
+      "to": "FE35"
+    },
+    {
+      "from": "FE02",
+      "to": "FE36"
+    },
+    {
+      "from": "FE05",
+      "to": "FE36"
+    },
+    {
+      "from": "C04",
+      "to": "FE36"
+    },
+    {
+      "from": "FE07",
+      "to": "FE37"
+    },
+    {
+      "from": "FE05",
+      "to": "FE37"
+    },
+    {
+      "from": "C04",
+      "to": "FE37"
+    },
+    {
+      "from": "FE07",
+      "to": "FE38"
+    },
+    {
+      "from": "FE05",
+      "to": "FE38"
+    },
+    {
+      "from": "C04",
+      "to": "FE38"
+    },
+    {
+      "from": "FE38",
+      "to": "FE39"
+    },
+    {
+      "from": "FE33",
+      "to": "FE39"
+    },
+    {
+      "from": "FE27",
+      "to": "FE40"
+    },
+    {
+      "from": "FE33",
+      "to": "FE40"
+    },
+    {
+      "from": "C04",
+      "to": "FE40"
+    },
+    {
+      "from": "FE07",
+      "to": "FE41"
+    },
+    {
+      "from": "FE17",
+      "to": "FE41"
+    },
+    {
+      "from": "C07",
+      "to": "QA01"
+    },
+    {
+      "from": "C08",
+      "to": "QA02"
+    },
+    {
+      "from": "FE05",
+      "to": "QA02"
+    },
+    {
+      "from": "FE07",
+      "to": "QA02"
+    },
+    {
+      "from": "BE17",
+      "to": "QA03"
+    },
+    {
+      "from": "BE22",
+      "to": "QA03"
+    },
+    {
+      "from": "BE23",
+      "to": "QA03"
+    },
+    {
+      "from": "BE34",
+      "to": "QA03"
+    },
+    {
+      "from": "BE30",
+      "to": "QA04"
+    },
+    {
+      "from": "BE37",
+      "to": "QA04"
+    },
+    {
+      "from": "BE39",
+      "to": "QA04"
+    },
+    {
+      "from": "FE31",
+      "to": "QA04"
+    },
+    {
+      "from": "FE36",
+      "to": "QA04"
+    },
+    {
+      "from": "BE14",
+      "to": "QA05"
+    },
+    {
+      "from": "BE35",
+      "to": "QA05"
+    },
+    {
+      "from": "FE17",
+      "to": "QA05"
+    },
+    {
+      "from": "FE33",
+      "to": "QA05"
+    },
+    {
+      "from": "AR02",
+      "to": "QA06"
+    },
+    {
+      "from": "AR03",
+      "to": "QA06"
+    },
+    {
+      "from": "AR04",
+      "to": "QA06"
+    },
+    {
+      "from": "FE13",
+      "to": "QA06"
+    },
+    {
+      "from": "FE23",
+      "to": "QA06"
+    },
+    {
+      "from": "FE26",
+      "to": "QA06"
+    },
+    {
+      "from": "FE30",
+      "to": "QA06"
+    },
+    {
+      "from": "FE33",
+      "to": "QA06"
+    },
+    {
+      "from": "FE18",
+      "to": "QA07"
+    },
+    {
+      "from": "FE19",
+      "to": "QA07"
+    },
+    {
+      "from": "FE32",
+      "to": "QA07"
+    },
+    {
+      "from": "FE36",
+      "to": "QA07"
+    },
+    {
+      "from": "BE44",
+      "to": "QA08"
+    },
+    {
+      "from": "FE41",
+      "to": "QA08"
+    },
+    {
+      "from": "BE44",
+      "to": "QA09"
+    },
+    {
+      "from": "BE42",
+      "to": "QA09"
+    },
+    {
+      "from": "FE39",
+      "to": "QA09"
+    },
+    {
+      "from": "BE43",
+      "to": "QA10"
+    },
+    {
+      "from": "QA01",
+      "to": "QA10"
+    },
+    {
+      "from": "QA02",
+      "to": "QA10"
+    },
+    {
+      "from": "BE06",
+      "to": "IN01"
+    },
+    {
+      "from": "BE07",
+      "to": "IN01"
+    },
+    {
+      "from": "BE14",
+      "to": "IN01"
+    },
+    {
+      "from": "FE09",
+      "to": "IN01"
+    },
+    {
+      "from": "FE13",
+      "to": "IN01"
+    },
+    {
+      "from": "FE17",
+      "to": "IN01"
+    },
+    {
+      "from": "FE18",
+      "to": "IN01"
+    },
+    {
+      "from": "AR02",
+      "to": "IN01"
+    },
+    {
+      "from": "AR03",
+      "to": "IN01"
+    },
+    {
+      "from": "AR04",
+      "to": "IN01"
+    },
+    {
+      "from": "IN01",
+      "to": "IN02"
+    },
+    {
+      "from": "BE19",
+      "to": "IN02"
+    },
+    {
+      "from": "BE23",
+      "to": "IN02"
+    },
+    {
+      "from": "BE24",
+      "to": "IN02"
+    },
+    {
+      "from": "FE23",
+      "to": "IN02"
+    },
+    {
+      "from": "FE25",
+      "to": "IN02"
+    },
+    {
+      "from": "FE26",
+      "to": "IN02"
+    },
+    {
+      "from": "BE27",
+      "to": "IN03"
+    },
+    {
+      "from": "BE30",
+      "to": "IN03"
+    },
+    {
+      "from": "BE32",
+      "to": "IN03"
+    },
+    {
+      "from": "BE33",
+      "to": "IN03"
+    },
+    {
+      "from": "BE37",
+      "to": "IN03"
+    },
+    {
+      "from": "FE28",
+      "to": "IN03"
+    },
+    {
+      "from": "FE30",
+      "to": "IN03"
+    },
+    {
+      "from": "FE31",
+      "to": "IN03"
+    },
+    {
+      "from": "FE35",
+      "to": "IN03"
+    },
+    {
+      "from": "FE36",
+      "to": "IN03"
+    },
+    {
+      "from": "BE40",
+      "to": "IN04"
+    },
+    {
+      "from": "FE33",
+      "to": "IN04"
+    },
+    {
+      "from": "FE39",
+      "to": "IN04"
+    },
+    {
+      "from": "IN02",
+      "to": "IN05"
+    },
+    {
+      "from": "IN03",
+      "to": "IN05"
+    },
+    {
+      "from": "IN04",
+      "to": "IN05"
+    },
+    {
+      "from": "FE40",
+      "to": "IN05"
+    },
+    {
+      "from": "QA03",
+      "to": "IN05"
+    },
+    {
+      "from": "QA04",
+      "to": "IN05"
+    },
+    {
+      "from": "QA05",
+      "to": "IN05"
+    },
+    {
+      "from": "QA06",
+      "to": "IN05"
+    },
+    {
+      "from": "QA07",
+      "to": "IN05"
+    },
+    {
+      "from": "QA08",
+      "to": "IN05"
+    },
+    {
+      "from": "QA09",
+      "to": "IN05"
+    },
+    {
+      "from": "QA10",
+      "to": "IN05"
+    },
+    {
+      "from": "IN05",
+      "to": "EX01"
+    },
+    {
+      "from": "IN05",
+      "to": "EX02"
+    },
+    {
+      "from": "IN05",
+      "to": "EX03"
+    },
+    {
+      "from": "IN05",
+      "to": "EX04"
+    },
+    {
+      "from": "IN05",
+      "to": "EX05"
+    },
+    {
+      "from": "IN05",
+      "to": "EX06"
+    }
+  ],
+  "topological_waves": [
+    [
+      "C01"
+    ],
+    [
+      "C02",
+      "C03",
+      "C06",
+      "C08"
+    ],
+    [
+      "AR01",
+      "AR03",
+      "AR04",
+      "BE01",
+      "C04",
+      "C05",
+      "FE01",
+      "FE05",
+      "FE12",
+      "FE14"
+    ],
+    [
+      "AR02",
+      "BE02",
+      "BE05",
+      "BE25",
+      "C07",
+      "FE02",
+      "FE03",
+      "FE04",
+      "FE06",
+      "FE07",
+      "FE13",
+      "FE15",
+      "FE16",
+      "FE32"
+    ],
+    [
+      "BE03",
+      "BE07",
+      "BE08",
+      "BE15",
+      "FE08",
+      "FE09",
+      "FE17",
+      "FE19",
+      "FE21",
+      "FE22",
+      "FE24",
+      "FE27",
+      "FE29",
+      "FE31",
+      "FE33",
+      "FE34",
+      "FE35",
+      "FE36",
+      "FE37",
+      "FE38",
+      "QA01",
+      "QA02"
+    ],
+    [
+      "BE04",
+      "BE38",
+      "FE10",
+      "FE11",
+      "FE18",
+      "FE20",
+      "FE25",
+      "FE28",
+      "FE30",
+      "FE39",
+      "FE40",
+      "FE41"
+    ],
+    [
+      "BE06",
+      "BE10",
+      "BE26",
+      "BE33",
+      "BE37",
+      "FE23",
+      "FE26",
+      "QA07"
+    ],
+    [
+      "BE09",
+      "BE11",
+      "BE16",
+      "BE20",
+      "BE24",
+      "BE27",
+      "BE28",
+      "BE31",
+      "BE34",
+      "BE36",
+      "QA06"
+    ],
+    [
+      "BE12",
+      "BE17",
+      "BE21",
+      "BE29",
+      "BE32",
+      "BE35",
+      "BE39"
+    ],
+    [
+      "BE13",
+      "BE18",
+      "BE22",
+      "BE30",
+      "BE40"
+    ],
+    [
+      "BE14",
+      "BE19",
+      "BE23",
+      "BE41",
+      "BE43",
+      "IN03",
+      "IN04",
+      "QA04"
+    ],
+    [
+      "BE42",
+      "BE44",
+      "IN01",
+      "QA03",
+      "QA05",
+      "QA10"
+    ],
+    [
+      "IN02",
+      "QA08",
+      "QA09"
+    ],
+    [
+      "IN05"
+    ],
+    [
+      "EX01",
+      "EX02",
+      "EX03",
+      "EX04",
+      "EX05",
+      "EX06"
+    ]
+  ],
+  "waves_note": "Do not impose wave barriers; a task starts as soon as its own prerequisites pass.",
+  "release_required_tasks_before_IN05": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "AR01",
+    "AR02",
+    "AR03",
+    "AR04",
+    "BE01",
+    "BE02",
+    "BE03",
+    "BE04",
+    "BE05",
+    "BE06",
+    "BE07",
+    "BE08",
+    "BE09",
+    "BE10",
+    "BE11",
+    "BE12",
+    "BE13",
+    "BE14",
+    "BE15",
+    "BE16",
+    "BE17",
+    "BE18",
+    "BE19",
+    "BE20",
+    "BE21",
+    "BE22",
+    "BE23",
+    "BE24",
+    "BE25",
+    "BE26",
+    "BE27",
+    "BE28",
+    "BE29",
+    "BE30",
+    "BE31",
+    "BE32",
+    "BE33",
+    "BE34",
+    "BE35",
+    "BE36",
+    "BE37",
+    "BE38",
+    "BE39",
+    "BE40",
+    "BE41",
+    "BE42",
+    "BE43",
+    "BE44",
+    "FE01",
+    "FE02",
+    "FE03",
+    "FE04",
+    "FE05",
+    "FE06",
+    "FE07",
+    "FE08",
+    "FE09",
+    "FE10",
+    "FE11",
+    "FE12",
+    "FE13",
+    "FE14",
+    "FE15",
+    "FE16",
+    "FE17",
+    "FE18",
+    "FE19",
+    "FE20",
+    "FE21",
+    "FE22",
+    "FE23",
+    "FE24",
+    "FE25",
+    "FE26",
+    "FE27",
+    "FE28",
+    "FE29",
+    "FE30",
+    "FE31",
+    "FE32",
+    "FE33",
+    "FE34",
+    "FE35",
+    "FE36",
+    "FE37",
+    "FE38",
+    "FE39",
+    "FE40",
+    "FE41",
+    "QA01",
+    "QA02",
+    "QA03",
+    "QA04",
+    "QA05",
+    "QA06",
+    "QA07",
+    "QA08",
+    "QA09",
+    "QA10",
+    "IN01",
+    "IN02",
+    "IN03",
+    "IN04"
+  ],
+  "release_required_ia": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "W05",
+    "W06",
+    "W07",
+    "W08",
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "M01",
+    "M02",
+    "M03",
+    "M04",
+    "M05",
+    "M06",
+    "M07",
+    "M08",
+    "M09",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "R01",
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "X01",
+    "S01",
+    "S02",
+    "S03",
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O05",
+    "O06",
+    "O07",
+    "O08",
+    "O09"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "validation_scope": "Planning structure only; application tests were not run.",
+  "result": "PASS",
+  "task_count": 118,
+  "ia_count": 64,
+  "task_counts_by_prefix": {
+    "AR": 4,
+    "BE": 44,
+    "C": 8,
+    "EX": 6,
+    "FE": 41,
+    "IN": 5,
+    "QA": 10
+  },
+  "task_counts_by_priority": {
+    "P0": 112,
+    "P1": 6
+  },
+  "ia_counts_by_priority": {
+    "P0": 61,
+    "P1": 3
+  },
+  "dependency_edges": 297,
+  "topological_wave_count": 15,
+  "checks": [
+    "nonempty_expected_counts",
+    "unique_ids",
+    "resolved_dependencies",
+    "acyclic_graph",
+    "all_ia_references_resolved",
+    "all_ia_covered",
+    "frontend_not_blocked_by_backend",
+    "implementation_paths_and_acceptance_present",
+    "english_source_no_hangul"
+  ],
+  "source_sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36"
+}

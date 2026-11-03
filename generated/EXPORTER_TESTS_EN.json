@@ -1,0 +1,51 @@
+{
+  "scope": "Planning-exporter regression probes only; no application test executed.",
+  "result": "PASS",
+  "test_count": 9,
+  "tests": [
+    {
+      "test": "duplicate_task_id",
+      "result": "PASS",
+      "expected_failure_detected": "Duplicate task IDs: ['C01']"
+    },
+    {
+      "test": "missing_dependency",
+      "result": "PASS",
+      "expected_failure_detected": "C01: unknown dependency BE99"
+    },
+    {
+      "test": "dependency_cycle",
+      "result": "PASS",
+      "expected_failure_detected": "Dependency cycle among: AR01, AR02, AR03, AR04, BE01, BE02, BE03, BE04, BE05, BE06, BE07, BE08, BE09, BE10, BE11, BE12, BE13, BE14, BE15, BE16, BE17, BE18, BE19, BE20, BE21, BE22, BE23, BE24, BE25, BE26, BE27, BE28, BE29, BE30, BE31, BE32, BE33, BE34, BE35, BE36, BE37, BE38, BE39, BE40, BE41, BE42, BE43, BE44, C01, C02, C03, C04, C05, C06, C07, C08, EX01, EX02, EX03, EX04, EX05, EX06, FE01, FE02, FE03, FE04, FE05, FE06, FE07, FE08, FE09, FE10, FE11, FE12, FE13, FE14, FE15, FE16, FE17, FE18, FE19, FE20, FE21, FE22, FE23, FE24, FE25, FE26, FE27, FE28, FE29, FE30, FE31, FE32, FE33, FE34, FE35, FE36, FE37, FE38, FE39, FE40, FE41, IN01, IN02, IN03, IN04, IN05, QA01, QA02, QA03, QA04, QA05, QA06, QA07, QA08, QA09, QA10"
+    },
+    {
+      "test": "unknown_ia_task",
+      "result": "PASS",
+      "expected_failure_detected": "A01: unknown task FE99"
+    },
+    {
+      "test": "uncovered_ia",
+      "result": "PASS",
+      "expected_failure_detected": "A01: no implementation coverage"
+    },
+    {
+      "test": "frontend_backend_coupling",
+      "result": "PASS",
+      "expected_failure_detected": "FE01: frontend waits on backend BE01"
+    },
+    {
+      "test": "zero_task_false_green",
+      "result": "PASS",
+      "expected_failure_detected": "Expected 118 tasks/64 IA entries; found 0/64"
+    },
+    {
+      "test": "non_english_source",
+      "result": "PASS",
+      "expected_failure_detected": "English planning source contains Hangul characters"
+    },
+    {
+      "test": "deterministic_export",
+      "result": "PASS"
+    }
+  ]
+}

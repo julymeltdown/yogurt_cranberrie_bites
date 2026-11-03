@@ -1,0 +1,741 @@
+{
+  "metadata": {
+    "schema_version": "2.0",
+    "language": "en",
+    "repository": "julymeltdown/bigyeting",
+    "branch": "master",
+    "source_file": "PLAN_TABLES_EN.md",
+    "source_sha256": "163b94365746cfba3b31b4093fe5885440bce7a1e2c3f7ac0c593708b7b5589d",
+    "execution_state": "PLANNING_ONLY",
+    "priority_note": "P0 is launch-required, P1 is optional; phase is a separate integer.",
+    "release_gate_note": "Dependencies are scheduling prerequisites, not the complete release checklist. IN05 must review every launch-required task and IA entry. Any scope cut must be explicitly recorded; removing a dependency does not waive acceptance."
+  },
+  "screens": [
+    {
+      "id": "A01",
+      "route": "/",
+      "label": "ENTER THE WORLD",
+      "behavior_and_states": "New landing; signed-in redirect; no old homepage.",
+      "task_ids": [
+        "FE08",
+        "FE09"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "A02",
+      "route": "/login",
+      "label": "SIGN IN",
+      "behavior_and_states": "Email/provider entry; invalid credentials, throttling, provider unavailable.",
+      "task_ids": [
+        "FE09",
+        "BE03"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "A03",
+      "route": "/signup",
+      "label": "CREATE ACCOUNT",
+      "behavior_and_states": "Eligibility/consent, signup; duplicate and throttled outcomes without unsafe enumeration.",
+      "task_ids": [
+        "FE10",
+        "BE03"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "A04",
+      "route": "/verify-email",
+      "label": "VERIFY EMAIL",
+      "behavior_and_states": "Verify and resend; expiry and resend cooldown.",
+      "task_ids": [
+        "FE10",
+        "BE03"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "A05",
+      "route": "/reset-password",
+      "label": "RESET PASSWORD",
+      "behavior_and_states": "Request and complete reset; expired link and neutral account-existence response.",
+      "task_ids": [
+        "FE11",
+        "BE03"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "A06",
+      "route": "/auth/callback",
+      "label": "CONNECTING",
+      "behavior_and_states": "Callback completion, denial, invalid state, safe return target.",
+      "task_ids": [
+        "FE11",
+        "BE03"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "A07",
+      "route": "/legal/:document",
+      "label": "TERMS / PRIVACY / SAFETY",
+      "behavior_and_states": "Versioned notices, operator contact, independent fan-service disclosure.",
+      "task_ids": [
+        "FE08",
+        "BE38"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "A08",
+      "route": "/account/deleted",
+      "label": "ACCOUNT DELETED",
+      "behavior_and_states": "Completion or pending deletion; clear private client state.",
+      "task_ids": [
+        "FE36",
+        "BE42"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "W01",
+      "route": "/world",
+      "label": "WORLD",
+      "behavior_and_states": "Movement, camera, interaction; loading, live, reconnecting, low power, full room.",
+      "task_ids": [
+        "FE07",
+        "FE12",
+        "FE14",
+        "FE15",
+        "FE16",
+        "FE17",
+        "BE10",
+        "BE11",
+        "BE12",
+        "BE13",
+        "BE14"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "W02",
+      "route": "/world/map",
+      "label": "MAP",
+      "behavior_and_states": "Overview, camera and place legend; incompatible map version.",
+      "task_ids": [
+        "FE19",
+        "AR02",
+        "BE08"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "W03",
+      "route": "/world/places/:placeId",
+      "label": "PLACE",
+      "behavior_and_states": "Photo and instructions; verified, concept-only, closed, removed.",
+      "task_ids": [
+        "FE19",
+        "BE08"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "W04",
+      "route": "/world/rooms",
+      "label": "ROOMS",
+      "behavior_and_states": "Capacity, room switch, party invitation; full and denied.",
+      "task_ids": [
+        "FE18",
+        "BE11"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "W05",
+      "route": "/world/nearby",
+      "label": "NEARBY IN WORLD",
+      "behavior_and_states": "Accessible nearby-user list; block-filtered presence.",
+      "task_ids": [
+        "FE18",
+        "BE13",
+        "BE37"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "W06",
+      "route": "/world/theme",
+      "label": "CHOOSE AN ERA",
+      "behavior_and_states": "Skin selection; loading, fallback, persisted selection.",
+      "task_ids": [
+        "FE06",
+        "BE07",
+        "AR04"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "W07",
+      "route": "/world/check-in",
+      "label": "REAL-WORLD CHECK-IN",
+      "behavior_and_states": "Explicit place/audience/expiry selection; active, expired, revoked.",
+      "task_ids": [
+        "FE20",
+        "BE09"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "W08",
+      "route": "/world/help",
+      "label": "HOW TO PLAY",
+      "behavior_and_states": "Controls, virtual/physical distinction, meeting safety.",
+      "task_ids": [
+        "FE15",
+        "FE19"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "F01",
+      "route": "/feed",
+      "label": "FEED",
+      "behavior_and_states": "Latest-first event feed, filters, cursor loading; stale and read-only.",
+      "task_ids": [
+        "FE27",
+        "BE31"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "F02",
+      "route": "/feed/new",
+      "label": "NEW POST",
+      "behavior_and_states": "Text and image draft; upload failure, retry, published receipt.",
+      "task_ids": [
+        "FE28",
+        "FE04",
+        "BE24",
+        "BE31"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "F03",
+      "route": "/feed/:postId",
+      "label": "THREAD",
+      "behavior_and_states": "Post, comments, reaction, report, linked entity; deleted/unavailable.",
+      "task_ids": [
+        "FE28",
+        "BE32"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "F04",
+      "route": "/feed/:postId/edit",
+      "label": "EDIT POST",
+      "behavior_and_states": "Owner editing and deletion; version conflict.",
+      "task_ids": [
+        "FE28",
+        "BE31"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "F05",
+      "route": "/notices/:noticeId",
+      "label": "NOTICE",
+      "behavior_and_states": "Source and confirmation time; superseded or withdrawn.",
+      "task_ids": [
+        "FE27",
+        "BE38"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M01",
+      "route": "/meet",
+      "label": "MEET",
+      "behavior_and_states": "PARTIES / PEOPLE / MY PLAN; filters and restricted states.",
+      "task_ids": [
+        "FE21",
+        "FE29"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M02",
+      "route": "/meet/parties/new",
+      "label": "CREATE PARTY",
+      "behavior_and_states": "Capacity, ticket section, time, place, requirements; validation.",
+      "task_ids": [
+        "FE22",
+        "BE16"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M03",
+      "route": "/meet/parties/:partyId",
+      "label": "PARTY",
+      "behavior_and_states": "Apply/cancel; requested, accepted, full, cancelled, closed.",
+      "task_ids": [
+        "FE21",
+        "BE17"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M04",
+      "route": "/meet/parties/:partyId/manage",
+      "label": "MANAGE PARTY",
+      "behavior_and_states": "Review applications, remove member, edit meeting, close/cancel.",
+      "task_ids": [
+        "FE23",
+        "BE18"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M05",
+      "route": "/meet/parties/:partyId/rally",
+      "label": "RENDEZVOUS",
+      "behavior_and_states": "Approved-members-only gathering state; moved, expired, cancelled.",
+      "task_ids": [
+        "FE23",
+        "BE19"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M06",
+      "route": "/meet/beacons/:beaconId",
+      "label": "FIND EACH OTHER",
+      "behavior_and_states": "Physical meeting description, identification, status; stale/revoked.",
+      "task_ids": [
+        "FE20",
+        "BE09"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M07",
+      "route": "/meet/people",
+      "label": "PEOPLE",
+      "behavior_and_states": "Introduction discovery; no results and verification-required.",
+      "task_ids": [
+        "FE29",
+        "BE27"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M08",
+      "route": "/meet/intro/edit",
+      "label": "YOUR INTRO",
+      "behavior_and_states": "Intro draft, private eligibility conditions, publish/close.",
+      "task_ids": [
+        "FE30",
+        "BE27"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M09",
+      "route": "/people/:userId",
+      "label": "PROFILE",
+      "behavior_and_states": "Large avatar, public profile, request sharing, report/block; private/unavailable.",
+      "task_ids": [
+        "FE30",
+        "BE04",
+        "BE30"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "M10",
+      "route": "/meet/parties/:partyId/chat",
+      "label": "PARTY CHAT",
+      "behavior_and_states": "P1: party-scoped messages; removed-member and reconnect states.",
+      "task_ids": [
+        "EX01"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "G01",
+      "route": "/gifts",
+      "label": "GIFTS",
+      "behavior_and_states": "Discover by time/place; remaining count and no-stock state.",
+      "task_ids": [
+        "FE24",
+        "BE20"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "G02",
+      "route": "/gifts/new",
+      "label": "CREATE GIVEAWAY",
+      "behavior_and_states": "Item, photo, quantity, pickup window, place; invalid/upload-failed.",
+      "task_ids": [
+        "FE25",
+        "BE20",
+        "BE24"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "G03",
+      "route": "/gifts/:giveawayId",
+      "label": "GIVEAWAY",
+      "behavior_and_states": "Owner and public details; open, paused, sold-out, completed, cancelled.",
+      "task_ids": [
+        "FE24",
+        "BE20"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "G04",
+      "route": "/gifts/:giveawayId/manage",
+      "label": "MANAGE GIVEAWAY",
+      "behavior_and_states": "Owner reservations and stock, pause, confirm pickup; version conflict.",
+      "task_ids": [
+        "FE25",
+        "BE20",
+        "BE23"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "G05",
+      "route": "/gifts/:giveawayId/reservation",
+      "label": "RESERVE",
+      "behavior_and_states": "Atomic reservation confirmation; held, exhausted, duplicate, expired.",
+      "task_ids": [
+        "FE26",
+        "BE21"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "G06",
+      "route": "/gifts/pickups/:reservationId",
+      "label": "MY PICKUP",
+      "behavior_and_states": "Authorized place, time, confirmation code, status; claimed/expired/cancelled.",
+      "task_ids": [
+        "FE26",
+        "BE22",
+        "BE23"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "G07",
+      "route": "/gifts/mine",
+      "label": "MY GIFTS",
+      "behavior_and_states": "GIVING / RECEIVING and history.",
+      "task_ids": [
+        "FE24",
+        "BE20",
+        "BE21"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "R01",
+      "route": "/wall",
+      "label": "WALL",
+      "behavior_and_states": "Pan/zoom, pixel preview, palette, explicit commit; cooldown/paused/frozen.",
+      "task_ids": [
+        "FE32",
+        "FE33",
+        "BE34",
+        "BE35"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "R02",
+      "route": "/wall/history",
+      "label": "WALL HISTORY",
+      "behavior_and_states": "P1: snapshots and time-lapse.",
+      "task_ids": [
+        "EX02"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "U01",
+      "route": "/me",
+      "label": "ME",
+      "behavior_and_states": "Avatar, profile completion, party and giveaway activity.",
+      "task_ids": [
+        "FE34",
+        "BE06"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U02",
+      "route": "/me/avatar",
+      "label": "DRESS UP",
+      "behavior_and_states": "Layer selections, presets, preview and save; invalid/version-conflict.",
+      "task_ids": [
+        "FE12",
+        "FE13",
+        "BE07"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U03",
+      "route": "/me/profile",
+      "label": "EDIT PROFILE",
+      "behavior_and_states": "Nickname, bio, optional ticket section, visibility; validation.",
+      "task_ids": [
+        "FE34",
+        "BE04"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U04",
+      "route": "/me/social",
+      "label": "SOCIAL LINKS",
+      "behavior_and_states": "Private-by-default handles; configure, replace, remove.",
+      "task_ids": [
+        "FE31",
+        "BE28"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U05",
+      "route": "/me/requests",
+      "label": "REQUESTS",
+      "behavior_and_states": "Sharing requests; pending, approved, rejected, revoked, expired.",
+      "task_ids": [
+        "FE31",
+        "BE29",
+        "BE30"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U06",
+      "route": "/me/age",
+      "label": "AGE & PRIVACY",
+      "behavior_and_states": "Unknown, verified, expired, unsupported, provider unavailable.",
+      "task_ids": [
+        "FE30",
+        "BE26"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U07",
+      "route": "/me/settings",
+      "label": "SETTINGS",
+      "behavior_and_states": "Theme, reduced motion, low power, sound off by default.",
+      "task_ids": [
+        "FE34",
+        "FE06"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U08",
+      "route": "/me/blocks",
+      "label": "BLOCKED USERS",
+      "behavior_and_states": "List and unblock; prior sharing grants do not return automatically.",
+      "task_ids": [
+        "FE36",
+        "BE37"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U09",
+      "route": "/me/account",
+      "label": "ACCOUNT",
+      "behavior_and_states": "Logout, deletion request and status, failure recovery.",
+      "task_ids": [
+        "FE36",
+        "BE42"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "U10",
+      "route": "/notifications",
+      "label": "INBOX",
+      "behavior_and_states": "Read state and authorized deep links; stale target.",
+      "task_ids": [
+        "FE35",
+        "BE33"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "X01",
+      "route": "/archive",
+      "label": "AFTER THE SHOW",
+      "behavior_and_states": "Read-only permitted posts and final wall; no private locations or handles.",
+      "task_ids": [
+        "FE40",
+        "BE41"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "X02",
+      "route": "/archive/souvenir",
+      "label": "OUR PARADE",
+      "behavior_and_states": "P1: opt-in avatar souvenir export.",
+      "task_ids": [
+        "EX02"
+      ],
+      "priority": "P1"
+    },
+    {
+      "id": "S01",
+      "route": "/report?targetType=:type&targetId=:id",
+      "label": "REPORT",
+      "behavior_and_states": "Reason, evidence, receipt; reporter identity hidden from target.",
+      "task_ids": [
+        "FE36",
+        "BE36"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "S02",
+      "route": "route-error-boundary",
+      "label": "UNAVAILABLE",
+      "behavior_and_states": "Safe 401/403/404/410/429/503 states; return to world.",
+      "task_ids": [
+        "FE07",
+        "FE41"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "S03",
+      "route": "connection-and-maintenance-overlay",
+      "label": "RECONNECTING / MAINTENANCE",
+      "behavior_and_states": "Offline/stale/version mismatch; no silent offline reservation replay.",
+      "task_ids": [
+        "FE17",
+        "FE41"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O01",
+      "route": "/admin",
+      "label": "CONTROL ROOM",
+      "behavior_and_states": "Operational summary and kill switches; degraded state.",
+      "task_ids": [
+        "FE38",
+        "BE38"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O02",
+      "route": "/admin/event",
+      "label": "EVENT SETTINGS",
+      "behavior_and_states": "Event phase, feature flags, notices; publish confirmation.",
+      "task_ids": [
+        "FE38",
+        "BE38"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O03",
+      "route": "/admin/places",
+      "label": "VENUE & PLACES",
+      "behavior_and_states": "Source review, verification, closure, accessibility notes, map version.",
+      "task_ids": [
+        "FE38",
+        "BE08",
+        "AR01"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O04",
+      "route": "/admin/reports",
+      "label": "REPORT QUEUE",
+      "behavior_and_states": "Review, action, status; moderator access only.",
+      "task_ids": [
+        "FE37",
+        "BE36",
+        "BE39"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O05",
+      "route": "/admin/users/:userId",
+      "label": "MEMBER REVIEW",
+      "behavior_and_states": "Minimal necessary data, suspension, connection termination.",
+      "task_ids": [
+        "FE37",
+        "BE39"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O06",
+      "route": "/admin/content",
+      "label": "CONTENT REVIEW",
+      "behavior_and_states": "Hide/restore posts, parties, giveaways, and comments.",
+      "task_ids": [
+        "FE37",
+        "BE39"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O07",
+      "route": "/admin/mural",
+      "label": "WALL CONTROL",
+      "behavior_and_states": "Pause, region lock, restore, freeze; revision reset.",
+      "task_ids": [
+        "FE39",
+        "BE40"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O08",
+      "route": "/admin/audit",
+      "label": "AUDIT LOG",
+      "behavior_and_states": "Search actions and outcomes; redact sensitive contents.",
+      "task_ids": [
+        "FE38",
+        "BE39"
+      ],
+      "priority": "P0"
+    },
+    {
+      "id": "O09",
+      "route": "/admin/archive",
+      "label": "CLOSE THE EVENT",
+      "behavior_and_states": "Freeze, export, expire grants, cleanup; partial-failure recovery.",
+      "task_ids": [
+        "FE39",
+        "BE41"
+      ],
+      "priority": "P0"
+    }
+  ]
+}

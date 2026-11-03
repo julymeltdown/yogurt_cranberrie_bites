@@ -1,0 +1,33 @@
+# MCR working agreement
+
+## Authority and delivery
+
+- The user's delivery repository is `julymeltdown/mcr`, branch `master`. Old references to delivery into Bigyeting in `docs/source/` are historical, not instructions for this repository.
+- Read `MCR_IMPLEMENTATION_PLAN_V2_EN.md`, `docs/mcr/project-assessment.md`, and `docs/mcr/execution-plan.md` before implementation. Product scope and acceptance come from the specification; analysis documents do not silently amend them.
+- Preserve `docs/source/` byte for byte. Record provenance for copied code, source revisions, destination paths, dependencies, and regression evidence.
+- Use English for product navigation and engineering artifacts. Respond to the user in their requested language.
+
+## Parallel work and review
+
+- The main agent owns orchestration, contract decisions, integration review, and publishing to master.
+- The user requested parallel agents on `gpt-6.1-sol` with `high` reasoning. Prefix their chat titles with `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, or `mcr(pm)` as appropriate; title failure must not block work.
+- Give each worker explicit task IDs and disjoint file ownership. Workers do not change central manifests, lockfiles, contract registries, root routers, or CI composition without coordination with the integrator.
+- Start a task when its actual prerequisites are satisfied. Do not impose full-wave barriers or make FE feature implementation depend on matching BE feature completion; use frozen contracts and deterministic fixtures.
+- Review at each bounded task handoff and real vertical-flow gate. Reassign or close idle, finished, duplicative, or conflicting agents. Reuse context when a follow-up is closely related.
+- Only the integrator pushes reviewed work to master. Use explicit staged paths, preserve concurrent work, and never force-push.
+
+## Implementation boundaries
+
+- All rendering/UI is newly authored. Only audited headless Bigyeting logic may be reused; keep old rendering and unneeded visual libraries out of the new application.
+- Use the fixed frontend stack and preserve retained lockfile resolutions. Import the selected port-rust backend foundation with its source history/provenance and add one concert service.
+- One canonical Auth identity, one persistent Phaser instance, and one world connection per active shell. Access tokens stay in memory; private caches are scoped by user and event.
+- Virtual coordinates never imply physical arrival. Real meeting descriptions require explicit audience, revision, expiry, and reviewed place provenance.
+- Enforce capacity, inventory, privacy, authorization, and idempotency on the server. Use isolated MCR databases and volumes; live-data migration is outside this task.
+
+## Evidence
+
+- `generated/` is a planning baseline; regenerating it is not an implementation status update. Keep execution evidence in `docs/mcr/`.
+- Use `NOT_STARTED`, `IN_PROGRESS`, `MOCK_READY`, `CONTRACT_READY`, `INTEGRATED`, `ACCEPTED`, `BLOCKED`, and `NOT_RUN` accurately. A mock or unit test cannot certify a real multiuser flow.
+- Each accepted task records source/contract revisions, paths, behavior, commands and exit codes, evidence, limitations, and delivered commit ancestry.
+- IN05 reviews all 112 required tasks (including its own decision) and all 61 required IA entries. Scope cuts require an explicit recorded user decision.
+- Initial planning check: `python3 scripts/mcr/check-plan.py`. Application build, database, browser, device, load, and release checks are separate obligations.

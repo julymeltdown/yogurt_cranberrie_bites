@@ -1,0 +1,2785 @@
+{
+  "metadata": {
+    "schema_version": "2.0",
+    "language": "en",
+    "repository": "julymeltdown/mcr",
+    "branch": "master",
+    "source_file": "MCR_IMPLEMENTATION_PLAN_V2_EN.md",
+    "source_sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "execution_state": "PLANNING_ONLY",
+    "priority_note": "P0 is launch-required, P1 is optional; phase is a separate integer.",
+    "release_gate_note": "Dependencies are scheduling prerequisites, not the complete release checklist. IN05 must review every launch-required task and IA entry. Any scope cut must be explicitly recorded; removing a dependency does not waive acceptance."
+  },
+  "tasks": [
+    {
+      "id": "C01",
+      "title": "Source and rewrite inventory",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "LEAD",
+      "depends_on": [],
+      "owned_paths": [
+        "docs/mcr/source-map.md"
+      ],
+      "implementation": "Record source commits, copied logic, old entrypoints to retire, actual proto paths, and data-environment separation.",
+      "acceptance_evidence_required": "Every reuse entry names source/destination/test; no production-data deletion in cutover plan.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "C02",
+      "title": "Reproducible workspace and toolchain",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "LEAD",
+      "depends_on": [
+        "C01"
+      ],
+      "owned_paths": [
+        "frontend/package.json",
+        "frontend/pnpm-lock.yaml",
+        "infra/mcr/",
+        "scripts/mcr/check.sh"
+      ],
+      "implementation": "Freeze retained package resolutions, add Phaser 3.90.0, pin Node patch/image, map backend lockfile, and create scoped checks.",
+      "acceptance_evidence_required": "Clean frozen-lockfile install and minimal frontend/backend build; record versions and commands.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "C03",
+      "title": "Core HTTP and identity contract",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "LEAD",
+      "depends_on": [
+        "C01"
+      ],
+      "owned_paths": [
+        "backend/docs/api/",
+        "contracts/fixtures/core/"
+      ],
+      "implementation": "Map actual auth operation IDs and tokens; define Bootstrap, public/private profile, avatar, places, errors, and capabilities.",
+      "acceptance_evidence_required": "Schema-valid success/failure examples; exact frontend/backend auth mapping reviewed.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "C04",
+      "title": "Domain HTTP and transition contracts",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "LEAD",
+      "depends_on": [
+        "C03"
+      ],
+      "owned_paths": [
+        "backend/docs/api/",
+        "contracts/fixtures/domain/"
+      ],
+      "implementation": "Define party, reservation, social, age, feed, mural, admin commands; actor permissions, idempotency, and versions.",
+      "acceptance_evidence_required": "Every command has actor, precondition, resulting state, error reason, and retry rule.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "C05",
+      "title": "Realtime wire protocol",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "LEAD",
+      "depends_on": [
+        "C03"
+      ],
+      "owned_paths": [
+        "contracts/realtime/",
+        "contracts/fixtures/realtime/"
+      ],
+      "implementation": "Define authenticate, snapshot, input, delta, resync, revoke, room switch, and stream sequence rules.",
+      "acceptance_evidence_required": "Reject unknown/oversized messages; filtered streams have no false sequence gaps.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "C06",
+      "title": "Map and avatar interfaces",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "LEAD",
+      "depends_on": [
+        "C01"
+      ],
+      "owned_paths": [
+        "contracts/assets/",
+        "docs/mcr/assets.md"
+      ],
+      "implementation": "Define atlas frames/anchor, layer IDs, map version, collisions, interactions, and place-source metadata.",
+      "acceptance_evidence_required": "Small golden asset fixtures validate and align across all themes.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "C07",
+      "title": "Generated clients and fixture harness",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "LEAD",
+      "depends_on": [
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ],
+      "owned_paths": [
+        "scripts/mcr/contracts/",
+        "contracts/generated/",
+        "contracts/fixtures/"
+      ],
+      "implementation": "Generate TS API types, validate Zod compatibility, deterministic clock/seed, mock scenarios, and drift checks.",
+      "acceptance_evidence_required": "Generated output is reproducible; a deliberate schema mismatch fails CI.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "C08",
+      "title": "New-UI and source-boundary gate",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "LEAD",
+      "depends_on": [
+        "C01"
+      ],
+      "owned_paths": [
+        "scripts/mcr/check-ui-origin.mjs",
+        "docs/mcr/reuse-allowlist.json"
+      ],
+      "implementation": "Inventory legacy rendering files and hashes; allow only reviewed headless extracts; prohibit legacy styles and visual imports.",
+      "acceptance_evidence_required": "Gate detects an imported or copied legacy control; manual visual review remains required.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "AR01",
+      "title": "Venue source and landmark pack",
+      "phase": 0,
+      "priority": "P0",
+      "lane": "ART",
+      "depends_on": [
+        "C06"
+      ],
+      "owned_paths": [
+        "frontend/public/world/places/",
+        "docs/mcr/venue-provenance.md"
+      ],
+      "implementation": "Verify relative buildings/paths from authorized references; distinguish temporary unverified gates and public meeting places.",
+      "acceptance_evidence_required": "Every physical place has source, review state, photo permission, and closure handling.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "O03"
+      ]
+    },
+    {
+      "id": "AR02",
+      "title": "Walkable venue tilemap",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "ART",
+      "depends_on": [
+        "AR01",
+        "C06"
+      ],
+      "owned_paths": [
+        "frontend/public/world/maps/"
+      ],
+      "implementation": "Build terrain, collision, overdraw, interaction, spawn, and landmark layers from the reviewed source pack.",
+      "acceptance_evidence_required": "All spawn points are walkable; interaction IDs resolve; blocked routes cannot be traversed.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W02"
+      ]
+    },
+    {
+      "id": "AR03",
+      "title": "Original avatar atlases",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "ART",
+      "depends_on": [
+        "C06"
+      ],
+      "owned_paths": [
+        "frontend/public/world/avatars/"
+      ],
+      "implementation": "Deliver six presets and agreed layered assets using the fixed anchor and direction/frame layout.",
+      "acceptance_evidence_required": "No clipping, missing frames, or theme-dependent identity changes at actual mobile scale.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "AR04",
+      "title": "Three world skin packs",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "ART",
+      "depends_on": [
+        "C06"
+      ],
+      "owned_paths": [
+        "frontend/public/world/themes/"
+      ],
+      "implementation": "Produce Revenge/Parade/Danger decorations and palettes without changing geometry or collision IDs.",
+      "acceptance_evidence_required": "Pixel readability and contrast pass for all skins; manifest hashes and licenses recorded.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W06"
+      ]
+    },
+    {
+      "id": "BE01",
+      "title": "Import port-rust foundations",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "C01",
+        "C02"
+      ],
+      "owned_paths": [
+        "backend/Cargo.toml",
+        "backend/Cargo.lock",
+        "backend/crates/",
+        "backend/services/"
+      ],
+      "implementation": "Import the selected workspace with provenance; retire old competing executable entrypoints; preserve required service boundaries.",
+      "acceptance_evidence_required": "Workspace resolves and builds; one documented process/port map; no accidental old DB target.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "BE02",
+      "title": "Relocate build and migration tooling",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE01"
+      ],
+      "owned_paths": [
+        "backend/scripts/",
+        "infra/mcr/backend/"
+      ],
+      "implementation": "Repair relative paths, protobuf generation, SQLx migrations, health checks, image contexts, and isolated DB credentials.",
+      "acceptance_evidence_required": "Fresh isolated database migrates; services restart and persist a smoke record.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "BE03",
+      "title": "Browser auth contract adapter",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE02",
+        "C03"
+      ],
+      "owned_paths": [
+        "backend/services/api-gateway/src/adapters/in/http/",
+        "backend/services/auth-service/"
+      ],
+      "implementation": "Wire signup/verify/login/reset/refresh/logout/provider discovery to the mapped contract; enforce safe redirects and cookie protections.",
+      "acceptance_evidence_required": "Real isolated signup/login/refresh/logout; expired/reused credentials and invalid OAuth state rejected.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06"
+      ]
+    },
+    {
+      "id": "BE04",
+      "title": "Canonical participant identity adapter",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE03",
+        "C03"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/identity/",
+        "backend/services/concert-service/src/adapters/out/identity/"
+      ],
+      "implementation": "Resolve Auth UUID, basic Profile projection, suspension state, and explicit provider-to-user binding; remove X-account prerequisite.",
+      "acceptance_evidence_required": "Email-only user participates; foreign identity cannot attach claims; private profile fields never leak.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M09",
+        "U03"
+      ]
+    },
+    {
+      "id": "BE05",
+      "title": "Concert service and core schema",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE01",
+        "C03"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/",
+        "backend/crates/concert-application/",
+        "backend/services/concert-service/"
+      ],
+      "implementation": "Add hexagonal modules, typed errors, migrations for events/participants/avatar settings, clock and policy ports.",
+      "acceptance_evidence_required": "Migration uniqueness checks and dependency-boundary tests; service health and isolated startup.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "BE06",
+      "title": "Bootstrap and participant defaults",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE04",
+        "BE05"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/bootstrap/",
+        "backend/services/concert-service/src/adapters/in/grpc/bootstrap.rs",
+        "backend/services/concert-service/tests/bootstrap.rs"
+      ],
+      "implementation": "Implement idempotent participant creation, preset avatar, event capabilities, manifests, and server clock aggregation.",
+      "acceptance_evidence_required": "Repeated bootstrap creates one participant; degraded optional dependencies do not fabricate data.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U01"
+      ]
+    },
+    {
+      "id": "BE07",
+      "title": "Avatar and preference persistence",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE05",
+        "C06"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/avatar/",
+        "backend/crates/concert-application/src/avatar/",
+        "backend/services/concert-service/src/adapters/out/repository/avatar.rs"
+      ],
+      "implementation": "Validate asset IDs/layers/version; update avatar and theme with optimistic concurrency and bounded payloads.",
+      "acceptance_evidence_required": "Invalid URL/item rejected; stale version conflicts; other users' outfits remain unchanged.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W06",
+        "U02"
+      ]
+    },
+    {
+      "id": "BE08",
+      "title": "Places and map-release reads",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE05",
+        "C06"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/place/",
+        "backend/crates/concert-application/src/place/",
+        "backend/services/concert-service/src/adapters/out/repository/place.rs"
+      ],
+      "implementation": "Store reviewed landmarks and immutable map manifests; expose closure and verification; separate concept-only objects.",
+      "acceptance_evidence_required": "Unknown/closed place cannot be selected for a new physical beacon; manifest mismatch has a typed error.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W02",
+        "W03",
+        "O03"
+      ]
+    },
+    {
+      "id": "BE09",
+      "title": "Physical beacon lifecycle",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE08",
+        "BE37",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/beacon/",
+        "backend/crates/concert-application/src/beacon/",
+        "backend/services/concert-service/src/adapters/out/repository/beacon.rs"
+      ],
+      "implementation": "Create/read/update/revoke scoped beacons; DB-time TTL; revision changes; audience authorization through policy ports.",
+      "acceptance_evidence_required": "Expired, revoked, blocked, and unrelated viewers receive no private meeting details.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W07",
+        "M06"
+      ]
+    },
+    {
+      "id": "BE10",
+      "title": "One-use world admission tickets",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE04",
+        "BE05",
+        "C05"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/world_ticket/",
+        "backend/services/api-gateway/src/adapters/in/http/concert_world.rs"
+      ],
+      "implementation": "Issue user/session/event/room-bound 30-second tickets; atomic consumption; no credential in URLs/logs.",
+      "acceptance_evidence_required": "Reuse, wrong room, expired ticket, wrong origin, and unauthenticated frames rejected.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01"
+      ]
+    },
+    {
+      "id": "BE11",
+      "title": "Room registry and membership leases",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE10"
+      ],
+      "owned_paths": [
+        "backend/services/concert-service/src/world/rooms.rs",
+        "backend/services/concert-service/src/world/admission.rs"
+      ],
+      "implementation": "One owner process per room; bounded capacity, session membership, join/switch/leave, and disconnect grace lease.",
+      "acceptance_evidence_required": "Concurrent joins never exceed cap; switching cannot duplicate membership; ghost leases expire.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01",
+        "W04"
+      ]
+    },
+    {
+      "id": "BE12",
+      "title": "Authoritative movement loop",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE11",
+        "C06"
+      ],
+      "owned_paths": [
+        "backend/services/concert-service/src/world/simulation.rs",
+        "backend/crates/concert-domain/src/world/"
+      ],
+      "implementation": "Fixed-step movement from normalized input; speed limits, collision grid, valid spawn, and interaction range.",
+      "acceptance_evidence_required": "Teleport, excessive speed, invalid axis, sequence replay, and wall penetration tests.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01"
+      ]
+    },
+    {
+      "id": "BE13",
+      "title": "Recipient-specific snapshots and deltas",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE12",
+        "BE37"
+      ],
+      "owned_paths": [
+        "backend/services/concert-service/src/world/replication.rs",
+        "backend/services/concert-service/src/world/interest.rs"
+      ],
+      "implementation": "Project authorized players, stable snapshot baseline, per-stream sequence, avatar versions, bounded/coalesced queues.",
+      "acceptance_evidence_required": "Two viewers with different block filters resynchronize correctly; slow receiver cannot grow memory unboundedly.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01",
+        "W05"
+      ]
+    },
+    {
+      "id": "BE14",
+      "title": "Reconnect and authorization revocation",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE13"
+      ],
+      "owned_paths": [
+        "backend/services/concert-service/src/world/session.rs",
+        "backend/services/concert-service/src/world/recovery.rs"
+      ],
+      "implementation": "Handle epoch changes, expired session, suspension, close codes, resync, and app foregrounding without motion replay.",
+      "acceptance_evidence_required": "New snapshot after server restart; removed/expired session cannot recover its old subscriptions.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01"
+      ]
+    },
+    {
+      "id": "BE15",
+      "title": "Domain outbox and command receipts",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE05"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/commands/",
+        "backend/services/concert-service/src/adapters/out/repository/outbox.rs",
+        "backend/services/concert-service/src/workers/outbox.rs"
+      ],
+      "implementation": "Transactional event enqueue; idempotency-body hashes; bounded retries and delivery deduplication.",
+      "acceptance_evidence_required": "Crash after commit does not lose event; duplicate event consumed once; changed payload/key conflicts.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "BE16",
+      "title": "Party aggregate and CRUD",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE05",
+        "BE37",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/party/",
+        "backend/crates/concert-application/src/party/create.rs",
+        "backend/crates/concert-application/src/party/update.rs"
+      ],
+      "implementation": "Event/ticket section, owner, capacity, rendezvous, lifecycle and version constraints; public projection excludes applicants.",
+      "acceptance_evidence_required": "Non-owner edits fail; invalid capacity/window rejected; cancelled party is not joinable.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M02"
+      ]
+    },
+    {
+      "id": "BE17",
+      "title": "Applications and atomic approval",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE16",
+        "BE15"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/party/apply.rs",
+        "backend/crates/concert-application/src/party/decide.rs",
+        "backend/services/concert-service/tests/party_capacity.rs"
+      ],
+      "implementation": "Unique application, owner decision, transaction-guarded member count, idempotent response and outbox notification.",
+      "acceptance_evidence_required": "Two approvals for last slot produce one membership; duplicate apply does not create extra rows.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M03"
+      ]
+    },
+    {
+      "id": "BE18",
+      "title": "Leave, remove, and cancel party",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE17"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/party/membership.rs",
+        "backend/services/concert-service/tests/party_removal.rs"
+      ],
+      "implementation": "Enforce actor permissions, leader cancellation/transfer rule, capacity release and immediate audience revocation.",
+      "acceptance_evidence_required": "Removed member loses rally/beacon access; owner cannot orphan an active party.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M04"
+      ]
+    },
+    {
+      "id": "BE19",
+      "title": "Rally and real-arrival commands",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE18",
+        "BE09"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/rally/",
+        "backend/crates/concert-application/src/rally/",
+        "backend/services/concert-service/tests/rally.rs"
+      ],
+      "implementation": "Member-only state and meeting revision; explicit ON_MY_WAY/HERE/MET/NEED_HELP; no virtual-position inference.",
+      "acceptance_evidence_required": "Nonmember rejected; venue change invalidates stale rally instructions; self-state actor checked.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M05"
+      ]
+    },
+    {
+      "id": "BE20",
+      "title": "Giveaway aggregate and catalog",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE05",
+        "BE37",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/giveaway/",
+        "backend/crates/concert-application/src/giveaway/",
+        "backend/services/concert-service/tests/giveaway_catalog.rs"
+      ],
+      "implementation": "Owner CRUD, public filters, quantity and pickup-window validation, pause/cancel and optimistic stock edits.",
+      "acceptance_evidence_required": "Quantity cannot drop below committed units; recipients absent from public lists and details.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G07"
+      ]
+    },
+    {
+      "id": "BE21",
+      "title": "Atomic reservation command",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE20",
+        "BE15"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/reservation/reserve.rs",
+        "backend/services/concert-service/src/adapters/out/repository/reservation.rs"
+      ],
+      "implementation": "Guarded stock decrement/hold, unique active user reservation, request receipt, and pickup-window expiry.",
+      "acceptance_evidence_required": "One unit with five simultaneous buyers yields exactly one hold; retry returns original receipt.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "G05",
+        "G07"
+      ]
+    },
+    {
+      "id": "BE22",
+      "title": "Cancellation and expiry worker",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE21"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/reservation/release.rs",
+        "backend/services/concert-service/src/workers/reservation_expiry.rs"
+      ],
+      "implementation": "Conditional terminal transition and stock release in one transaction; DB clock, bounded batches, restart-safe scans.",
+      "acceptance_evidence_required": "Cancellation/expiry/claim races do not double-release stock; restart resumes pending expiry.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "G06"
+      ]
+    },
+    {
+      "id": "BE23",
+      "title": "Pickup confirmation and receipts",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE22"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/reservation/claim.rs",
+        "backend/services/concert-service/tests/pickup.rs"
+      ],
+      "implementation": "Bind confirmation to reservation/authorized actors; hashed expiring code, guess limits, terminal claim receipt.",
+      "acceptance_evidence_required": "Duplicate claim consumes no extra stock; wrong owner/code/expired hold is rejected.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "G04",
+        "G06"
+      ]
+    },
+    {
+      "id": "BE24",
+      "title": "Authorized image upload pipeline",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE05",
+        "BE37",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/media/",
+        "backend/services/concert-service/src/adapters/out/media/",
+        "backend/services/concert-service/tests/media.rs"
+      ],
+      "implementation": "Initialize/finalize upload; byte/MIME/dimension limits, decode/reencode, metadata removal, ownership and private read control.",
+      "acceptance_evidence_required": "Forged MIME, oversized image, foreign upload ID, and unauthorized private media read fail.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "F02",
+        "G02"
+      ]
+    },
+    {
+      "id": "BE25",
+      "title": "Extract introduction and age policy",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "C01",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/intro_policy/",
+        "backend/crates/concert-domain/src/age_policy/"
+      ],
+      "implementation": "Port pure rule semantics and fixtures; replace source identity types and database-bound helpers with explicit ports.",
+      "acceptance_evidence_required": "Half-open range, null bounds, unknown claims, supported limits, and no public policy leakage.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "BE26",
+      "title": "Verified-age claim persistence",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE25",
+        "BE04",
+        "BE05"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/age_verification/",
+        "backend/services/concert-service/src/adapters/out/age_provider/",
+        "backend/services/concert-service/tests/age_claims.rs"
+      ],
+      "implementation": "Port claim expiry, next-birthday and canonical replacement; verified callback-to-user binding; provider availability capability.",
+      "acceptance_evidence_required": "Seoul birthday boundary, expired/replaced claims, callback replay, and missing provider fail closed.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U06"
+      ]
+    },
+    {
+      "id": "BE27",
+      "title": "Introduction authoring and discovery",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE26",
+        "BE37"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/intro/",
+        "backend/services/concert-service/src/adapters/out/repository/intro.rs"
+      ],
+      "implementation": "Owner draft/publish/close, eligibility-aware discovery/detail, approved public profile projection, pagination.",
+      "acceptance_evidence_required": "Direct ID and list paths enforce the same eligibility; unknown verification cannot bypass a restriction.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M07",
+        "M08"
+      ]
+    },
+    {
+      "id": "BE28",
+      "title": "Private social-handle storage",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE05",
+        "BE37",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/social_handle/",
+        "backend/crates/concert-application/src/social_handle/",
+        "backend/services/concert-service/src/adapters/out/crypto/"
+      ],
+      "implementation": "Normalize platform handle, encrypt at rest with managed secret, version changes, removal, and no plaintext logging.",
+      "acceptance_evidence_required": "Public DTO serialization rejects handles; replacement invalidates old-version grant bindings.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U04"
+      ]
+    },
+    {
+      "id": "BE29",
+      "title": "Mutual social-sharing decisions",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE28",
+        "BE15"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/social_request/",
+        "backend/services/concert-service/tests/social_consent.rs"
+      ],
+      "implementation": "Requester's explicit consent, recipient approval/rejection, per-platform reciprocal grants, expiry and revocation.",
+      "acceptance_evidence_required": "No grant before both relevant consents; duplicate decision is idempotent; blocked pair rejected.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U05"
+      ]
+    },
+    {
+      "id": "BE30",
+      "title": "Authorized reveal endpoint",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE29"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/social_reveal/",
+        "backend/services/api-gateway/src/adapters/in/http/social_reveal.rs"
+      ],
+      "implementation": "Recheck grant versions, platform, expiry, block, suspension and actor; no-store response and privacy invalidation event.",
+      "acceptance_evidence_required": "Approved, unrelated, expired, revoked, changed-handle and blocked scenarios; no leaked error metadata.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M09",
+        "U05"
+      ]
+    },
+    {
+      "id": "BE31",
+      "title": "Event feed and post adapter",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE04",
+        "BE15",
+        "BE37",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/feed/",
+        "backend/services/api-gateway/src/adapters/in/http/concert_feed.rs",
+        "backend/services/post-service/"
+      ],
+      "implementation": "Add event scoping, latest cursor feed, public party/giveaway references and ordinary post CRUD through the owner service.",
+      "acceptance_evidence_required": "Cross-event/private references excluded; stable cursor order; linked entity is reauthorized.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "F01",
+        "F02",
+        "F04"
+      ]
+    },
+    {
+      "id": "BE32",
+      "title": "Comments, reactions, and content controls",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE31"
+      ],
+      "owned_paths": [
+        "backend/services/api-gateway/src/adapters/in/http/concert_comments.rs",
+        "backend/services/post-service/"
+      ],
+      "implementation": "Map comments/reactions, owner edit/delete, visibility filtering and moderation receipts to inherited contracts.",
+      "acceptance_evidence_required": "Blocked reply paths fail; deleted/hidden post cannot be recovered through a comment route.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "F03"
+      ]
+    },
+    {
+      "id": "BE33",
+      "title": "Concert notification adapter",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE15",
+        "BE04"
+      ],
+      "owned_paths": [
+        "backend/services/concert-service/src/adapters/out/notification/",
+        "backend/services/notification-service/"
+      ],
+      "implementation": "Deduplicate domain event delivery, safe summary text, own inbox/read state and authorized target links.",
+      "acceptance_evidence_required": "No handle/location secret in payload; repeated delivery creates one notification; stale target handled.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U10"
+      ]
+    },
+    {
+      "id": "BE34",
+      "title": "Mural writes and cooldown",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE05",
+        "BE37",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-domain/src/mural/",
+        "backend/crates/concert-application/src/mural/place_pixel.rs",
+        "backend/services/concert-service/tests/mural_concurrency.rs"
+      ],
+      "implementation": "Grid/palette bounds, server-time per-user cooldown, atomic operation/revision/outbox update, write freeze check.",
+      "acceptance_evidence_required": "Parallel requests cannot bypass cooldown; invalid coordinates/colors rejected; DB failure produces no false commit.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "R01"
+      ]
+    },
+    {
+      "id": "BE35",
+      "title": "Mural snapshot and realtime changes",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE34",
+        "BE15"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/mural/snapshot.rs",
+        "backend/services/concert-service/src/world/mural_subscription.rs"
+      ],
+      "implementation": "Produce consistent snapshot revision and ordered deltas; resume or full-resync on missed retention window.",
+      "acceptance_evidence_required": "New subscriber and reconnecting subscriber converge to the same pixels and revision.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "R01"
+      ]
+    },
+    {
+      "id": "BE36",
+      "title": "Reports and evidence access",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE05",
+        "BE37",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/report/",
+        "backend/services/concert-service/src/adapters/out/repository/report.rs"
+      ],
+      "implementation": "Typed targets, reason limits, duplicate/spam handling, reporter privacy and role-scoped evidence retrieval.",
+      "acceptance_evidence_required": "Target never sees reporter identity; ordinary member cannot inspect moderator evidence.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "S01",
+        "O04"
+      ]
+    },
+    {
+      "id": "BE37",
+      "title": "Shared relationship policy port",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE04",
+        "BE05",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/ports/relationship_policy.rs",
+        "backend/services/concert-service/src/adapters/out/friend_policy.rs"
+      ],
+      "implementation": "Adapt inherited blocks/suspensions to canonical users; common authorization and invalidation hook for HTTP/WS/projections.",
+      "acceptance_evidence_required": "Bidirectional block and unblocking semantics; unavailable policy cannot reveal private data.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W05",
+        "U08"
+      ]
+    },
+    {
+      "id": "BE38",
+      "title": "Event settings, notices, and flags",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE08",
+        "BE05",
+        "C04"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/admin/event.rs",
+        "backend/crates/concert-application/src/admin/places.rs",
+        "backend/crates/concert-application/src/admin/notices.rs"
+      ],
+      "implementation": "Operator roles, reviewed publication, source timestamps, place closure, feature availability and read-only gates.",
+      "acceptance_evidence_required": "Client-hidden feature still rejected server-side; nonoperator writes forbidden.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "A07",
+        "F05",
+        "O01",
+        "O02"
+      ]
+    },
+    {
+      "id": "BE39",
+      "title": "Moderation commands and audit trail",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE36",
+        "BE38"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/admin/moderation.rs",
+        "backend/services/concert-service/src/adapters/out/repository/audit.rs"
+      ],
+      "implementation": "Suspend/hide/restore with reason and immutable receipt; invoke owner services and terminate affected sessions.",
+      "acceptance_evidence_required": "Action/result tied to actor; failed downstream action is not recorded as successfully applied.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "O04",
+        "O05",
+        "O06",
+        "O08"
+      ]
+    },
+    {
+      "id": "BE40",
+      "title": "Mural pause, lock, and restore",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE35",
+        "BE38"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/admin/mural.rs",
+        "backend/services/concert-service/tests/mural_restore.rs"
+      ],
+      "implementation": "Region locks, global pause/freeze, restore from authorized snapshot into a new revision; force client resync.",
+      "acceptance_evidence_required": "Writes during freeze rejected; restore never reuses old sequence numbers; audit receipt exists.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "O07"
+      ]
+    },
+    {
+      "id": "BE41",
+      "title": "Event closure and archive jobs",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "BE-CONCERT",
+      "depends_on": [
+        "BE15",
+        "BE30",
+        "BE35",
+        "BE38"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/event_lifecycle/",
+        "backend/services/concert-service/src/workers/cleanup.rs"
+      ],
+      "implementation": "Idempotent read-only transition, permitted archive projection, grant/beacon expiry and resumable retention jobs.",
+      "acceptance_evidence_required": "Partial failure resumes; public archive excludes private locations, recipients, and handles.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "X01",
+        "O09"
+      ]
+    },
+    {
+      "id": "BE42",
+      "title": "Account-deletion integration",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE14",
+        "BE30",
+        "BE41"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/account_deletion/",
+        "backend/services/auth-service/"
+      ],
+      "implementation": "Extend deletion orchestration to Concert; revoke sessions/tickets/grants, scrub retained personal fields, retry durable steps.",
+      "acceptance_evidence_required": "Repeated deletion safe; removed user cannot reconnect or reveal; failed step remains visible for retry.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "A08",
+        "U09"
+      ]
+    },
+    {
+      "id": "BE43",
+      "title": "Boundary and abuse hardening",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE03",
+        "BE10",
+        "BE24",
+        "BE30"
+      ],
+      "owned_paths": [
+        "backend/services/api-gateway/src/",
+        "backend/services/concert-service/src/adapters/in/",
+        "infra/mcr/security/"
+      ],
+      "implementation": "Scope-specific rate limits, content bounds, header/origin rules, redacted logs, no-store private responses, dependency audit.",
+      "acceptance_evidence_required": "Negative tests for auth/CSRF/origin/replay/upload/oversized WS; no secrets in captured logs.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "BE44",
+      "title": "Reproducible real-stack startup",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "BE02",
+        "BE38",
+        "BE41",
+        "BE43"
+      ],
+      "owned_paths": [
+        "infra/mcr/compose.yml",
+        "scripts/mcr/backend-smoke.sh"
+      ],
+      "implementation": "Wire all inherited services and Concert, persistent volumes, real/mock provider separation, health and shutdown ordering.",
+      "acceptance_evidence_required": "Fresh startup and restart smoke; disabled provider is honestly unavailable, not simulated success.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "FE01",
+      "title": "Extract and adapt HTTP transport",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "C02",
+        "C03"
+      ],
+      "owned_paths": [
+        "frontend/src/shared/api/http.ts",
+        "frontend/src/shared/api/errors.ts"
+      ],
+      "implementation": "Port cancellation, error normalization and safe upload helpers; replace endpoint/auth assumptions with typed client ports.",
+      "acceptance_evidence_required": "Mock 401/409/429/network abort; no old `/v1` calls or token persistence.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "FE02",
+      "title": "Identity-neutral queries and invalidation",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE01",
+        "C03"
+      ],
+      "owned_paths": [
+        "frontend/src/shared/query/keys.ts",
+        "frontend/src/shared/query/privacy.ts"
+      ],
+      "implementation": "Replace activeXAccountId with user/event scope; cancellation and private-cache eviction on auth/policy changes.",
+      "acceptance_evidence_required": "Account A's delayed response cannot populate account B; no retained reveal after revoke.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "FE03",
+      "title": "Extract pure form and policy helpers",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "C04",
+        "C08"
+      ],
+      "owned_paths": [
+        "frontend/src/shared/validation/",
+        "frontend/src/entities/intro/model/"
+      ],
+      "implementation": "Port required Zod/pure logic only; separate mixed TSX logic from rendering; adapt canonical IDs and error enums.",
+      "acceptance_evidence_required": "Existing semantic fixtures pass; no import from old pages/components/styles.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "FE04",
+      "title": "Headless image upload controller",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE01",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/shared/media/",
+        "frontend/src/features/media/model/"
+      ],
+      "implementation": "Extract image compression, preview cleanup, progress, abort, finalize and retry state; exclude video/FFmpeg.",
+      "acceptance_evidence_required": "Abort frees resources; failed finalize is not shown as uploaded; no credential on presigned PUT.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "F02"
+      ]
+    },
+    {
+      "id": "FE05",
+      "title": "New accessible UI primitives",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "C02",
+        "C08"
+      ],
+      "owned_paths": [
+        "frontend/src/shared/ui/",
+        "frontend/src/shared/styles/base.css"
+      ],
+      "implementation": "Author buttons, fields, dialogs, sheet, tabs, status, toast, skeleton and error panels from new markup/styles.",
+      "acceptance_evidence_required": "Keyboard/focus/dialog dismissal tests; 44px targets; no legacy visual imports.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "FE06",
+      "title": "Three-theme token system",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE05",
+        "C06"
+      ],
+      "owned_paths": [
+        "frontend/src/shared/styles/themes/",
+        "frontend/src/features/theme/"
+      ],
+      "implementation": "New Revenge/Parade/Danger tokens, selection persistence, asset-loading fallback, reduced-motion transitions.",
+      "acceptance_evidence_required": "Theme switch preserves geometry, room and avatar identity; failed asset load restores previous skin.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W06",
+        "U07"
+      ]
+    },
+    {
+      "id": "FE07",
+      "title": "Persistent world shell and routes",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE05",
+        "C03"
+      ],
+      "owned_paths": [
+        "frontend/src/app/router.tsx",
+        "frontend/src/app/WorldShell.tsx"
+      ],
+      "implementation": "Build header, six tabs, nested panels, history/back semantics, safe return paths, lazy public/admin route boundaries.",
+      "acceptance_evidence_required": "Panel navigation creates no duplicate world/socket; direct gift link initializes shell correctly.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01",
+        "S02"
+      ]
+    },
+    {
+      "id": "FE08",
+      "title": "New public landing and legal views",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE05",
+        "FE07"
+      ],
+      "owned_paths": [
+        "frontend/src/features/public/"
+      ],
+      "implementation": "New world-first landing, entry CTA, versioned legal/safety/contact pages; signed-in redirect.",
+      "acceptance_evidence_required": "Anonymous pages load without Phaser; signed-in home resolves to world; no old homepage markup.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "A01",
+        "A07"
+      ]
+    },
+    {
+      "id": "FE09",
+      "title": "Session controller and sign-in",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE01",
+        "FE02",
+        "FE07",
+        "C03"
+      ],
+      "owned_paths": [
+        "frontend/src/features/auth/model/",
+        "frontend/src/features/auth/ui/SignIn.tsx"
+      ],
+      "implementation": "In-memory token, single-flight refresh, safe bootstrap, login/logout, provider availability, complete private-state cleanup.",
+      "acceptance_evidence_required": "Concurrent 401s perform one refresh; failed login and unavailable provider have truthful states.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "A01",
+        "A02"
+      ]
+    },
+    {
+      "id": "FE10",
+      "title": "Signup and verification views",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE09"
+      ],
+      "owned_paths": [
+        "frontend/src/features/auth/ui/SignUp.tsx",
+        "frontend/src/features/auth/ui/VerifyEmail.tsx"
+      ],
+      "implementation": "New forms using mapped server flow, validation, consent, challenge expiry and server resend countdown.",
+      "acceptance_evidence_required": "Expired verification cannot complete; double submit does not create extra requests.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "A03",
+        "A04"
+      ]
+    },
+    {
+      "id": "FE11",
+      "title": "Reset-password and callback views",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE09"
+      ],
+      "owned_paths": [
+        "frontend/src/features/auth/ui/ResetPassword.tsx",
+        "frontend/src/features/auth/model/callback.ts"
+      ],
+      "implementation": "New request/confirm reset views and OAuth callback error/return-target handling; sanitize local redirects.",
+      "acceptance_evidence_required": "Unknown email uses neutral response; hostile return URL rejected; denial returns safely.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "A05",
+        "A06"
+      ]
+    },
+    {
+      "id": "FE12",
+      "title": "Shared avatar compositor",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "C06",
+        "C02"
+      ],
+      "owned_paths": [
+        "frontend/src/world/avatar/",
+        "frontend/src/entities/avatar/"
+      ],
+      "implementation": "Deterministic layer composition, frame/anchor mapping, texture cache, and shared profile-thumbnail export.",
+      "acceptance_evidence_required": "Golden-config render aligns across world/profile; missing asset uses documented fallback.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01",
+        "U02"
+      ]
+    },
+    {
+      "id": "FE13",
+      "title": "New avatar editor",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "FE12",
+        "FE05",
+        "C03"
+      ],
+      "owned_paths": [
+        "frontend/src/features/avatar/"
+      ],
+      "implementation": "New large preview, presets and item selectors; draft/save/cancel; optimistic-version conflict without losing draft.",
+      "acceptance_evidence_required": "Save changes world and profile consistently; cancelling retains persisted outfit.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U02"
+      ]
+    },
+    {
+      "id": "FE14",
+      "title": "Phaser runtime and map loader",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "C06",
+        "C02"
+      ],
+      "owned_paths": [
+        "frontend/src/world/runtime.ts",
+        "frontend/src/world/scenes/",
+        "frontend/src/world/map/"
+      ],
+      "implementation": "Single lifecycle-managed game, manifest version/hash, layers, nearest-neighbor textures and resize/cleanup.",
+      "acceptance_evidence_required": "Repeated React mount cleanup leaks no canvas/listeners; invalid map fails visibly.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01"
+      ]
+    },
+    {
+      "id": "FE15",
+      "title": "Mobile movement, camera, and interactions",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "FE14"
+      ],
+      "owned_paths": [
+        "frontend/src/world/input/",
+        "frontend/src/world/camera/",
+        "frontend/src/world/interaction/"
+      ],
+      "implementation": "Pointer-safe joystick/tap movement, keyboard control, collision prediction, recenter, selection and blocking-panel pause.",
+      "acceptance_evidence_required": "Pointercancel/blur stops movement; keyboard opening and panel input never move the avatar accidentally.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01",
+        "W08"
+      ]
+    },
+    {
+      "id": "FE16",
+      "title": "Realtime transport implementations",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "C05",
+        "FE01"
+      ],
+      "owned_paths": [
+        "frontend/src/world/network/WorldTransport.ts",
+        "frontend/src/world/network/mock.ts",
+        "frontend/src/world/network/websocket.ts"
+      ],
+      "implementation": "Same interface for mock and real transport; ticket/authenticate, typed messages, sequence and close handling.",
+      "acceptance_evidence_required": "Identical scenario suite runs with both transports; mock code excluded from production mode.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01"
+      ]
+    },
+    {
+      "id": "FE17",
+      "title": "Replication and reconnect controller",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "FE16",
+        "FE14",
+        "FE12"
+      ],
+      "owned_paths": [
+        "frontend/src/world/network/replication.ts",
+        "frontend/src/world/entities/"
+      ],
+      "implementation": "Snapshot baseline, interpolation, bounded prediction/reconciliation, epoch reset and visibility-driven reconnect.",
+      "acceptance_evidence_required": "Missing delta requests resync; restart removes ghosts; no replay of old pickup/reservation commands.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W01",
+        "S03"
+      ]
+    },
+    {
+      "id": "FE18",
+      "title": "Rooms and accessible nearby list",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "FE17",
+        "FE05"
+      ],
+      "owned_paths": [
+        "frontend/src/features/world-rooms/",
+        "frontend/src/features/world-nearby/"
+      ],
+      "implementation": "New channel chooser, switch feedback, room cap states and DOM list of authorized nearby avatars.",
+      "acceptance_evidence_required": "Full room handled without losing current membership; blocked character disappears from both representations.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W04",
+        "W05"
+      ]
+    },
+    {
+      "id": "FE19",
+      "title": "Map, place details, and help",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE14",
+        "C03"
+      ],
+      "owned_paths": [
+        "frontend/src/features/places/",
+        "frontend/src/features/world-help/"
+      ],
+      "implementation": "New overview and place sheet, source/closed states, physical/virtual legend, accessible actions and controls help.",
+      "acceptance_evidence_required": "Concept-only place never offered as verified physical destination; map mismatch produces recovery UI.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W02",
+        "W03",
+        "W08"
+      ]
+    },
+    {
+      "id": "FE20",
+      "title": "Physical check-in and meeting beacon",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE19",
+        "FE02",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/beacon/"
+      ],
+      "implementation": "New audience/TTL form, last-confirmed time, photo/identification, moved/stale/revoked views and explicit arrival actions.",
+      "acceptance_evidence_required": "Virtual avatar motion does not change physical check-in; expired beacon cannot masquerade as current.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "W07",
+        "M06"
+      ]
+    },
+    {
+      "id": "FE21",
+      "title": "Party discovery and application",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE02",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/party-discovery/"
+      ],
+      "implementation": "New filters/list/detail, apply/cancel mutation state and capability-driven actions, MY PLAN link.",
+      "acceptance_evidence_required": "Empty/full/private/cancelled states; uncertain request reconciles by receipt instead of duplicate application.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M01",
+        "M03"
+      ]
+    },
+    {
+      "id": "FE22",
+      "title": "Party authoring form",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE05",
+        "FE03",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/party-authoring/"
+      ],
+      "implementation": "New create/edit form for capacity, ticket section, time, place, and intro; RHF validation and safe draft restore.",
+      "acceptance_evidence_required": "Invalid time/capacity rejected locally and server errors mapped; version conflict keeps draft.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M02"
+      ]
+    },
+    {
+      "id": "FE23",
+      "title": "Party management and rally",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE21",
+        "FE20"
+      ],
+      "owned_paths": [
+        "frontend/src/features/party-management/",
+        "frontend/src/features/rally/"
+      ],
+      "implementation": "New application decisions/member list and explicit ON_MY_WAY/HERE/MET/NEED_HELP controls; remove/cancel confirmations.",
+      "acceptance_evidence_required": "Last-slot conflict updates UI; removed member loses panel access; moved meeting visibly supersedes old card.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M04",
+        "M05"
+      ]
+    },
+    {
+      "id": "FE24",
+      "title": "Giveaway discovery and own activity",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE02",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/gift-discovery/",
+        "frontend/src/features/my-gifts/"
+      ],
+      "implementation": "New list/detail and GIVING/RECEIVING views, remaining-stock/time filters and current action eligibility.",
+      "acceptance_evidence_required": "No recipient identities in public view; paused/sold-out/ended states prevent invalid actions.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "G01",
+        "G03",
+        "G07"
+      ]
+    },
+    {
+      "id": "FE25",
+      "title": "Giveaway authoring and owner tools",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE24",
+        "FE04",
+        "FE03"
+      ],
+      "owned_paths": [
+        "frontend/src/features/gift-authoring/",
+        "frontend/src/features/gift-management/"
+      ],
+      "implementation": "New item/photo/quantity/window/place form and owner reservation inventory table; pause/cancel/edit flows.",
+      "acceptance_evidence_required": "Stock-edit conflict preserves form; unauthorized owner-tools route is unavailable.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "G02",
+        "G04"
+      ]
+    },
+    {
+      "id": "FE26",
+      "title": "Reservation and pickup journey",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE24",
+        "FE20"
+      ],
+      "owned_paths": [
+        "frontend/src/features/pickup/"
+      ],
+      "implementation": "Idempotency-key lifecycle, hold receipt, expiry, meeting detail, confirmation code, owner claim and cancellation.",
+      "acceptance_evidence_required": "Timeout/reload reconciles with server; expired/sold-out/repeated pickup never shows fake success.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "G05",
+        "G06"
+      ]
+    },
+    {
+      "id": "FE27",
+      "title": "Event timeline and notices",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE02",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/feed/"
+      ],
+      "implementation": "New compact chronological feed, filters, cursor loading, linked party/gift references and source-stamped notices.",
+      "acceptance_evidence_required": "Stable ordering; revoked linked target safely disappears; no private activity projection.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "F01",
+        "F05"
+      ]
+    },
+    {
+      "id": "FE28",
+      "title": "Thread, composer, and comments",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE27",
+        "FE04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/thread/",
+        "frontend/src/features/post-authoring/"
+      ],
+      "implementation": "New post/comment/reaction views, edit/delete, image upload, draft handling and report entry.",
+      "acceptance_evidence_required": "Deleted/hidden/conflicting content handled; double submission and failed upload recover cleanly.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "F02",
+        "F03",
+        "F04"
+      ]
+    },
+    {
+      "id": "FE29",
+      "title": "People and introduction discovery",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE03",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/people/"
+      ],
+      "implementation": "New people list and filters, avatar-focused items, opaque eligibility/unavailable states and profile entry.",
+      "acceptance_evidence_required": "User without X account can browse allowed content; exact age and secret handles absent.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M01",
+        "M07"
+      ]
+    },
+    {
+      "id": "FE30",
+      "title": "Introduction editor, profile, age status",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE29",
+        "FE12"
+      ],
+      "owned_paths": [
+        "frontend/src/features/intro/",
+        "frontend/src/features/profile/",
+        "frontend/src/features/age-status/"
+      ],
+      "implementation": "New intro/profile rendering, private condition form and verified/unknown/expired/provider-unavailable flow.",
+      "acceptance_evidence_required": "Half-open boundary fixtures; policy detail visible only to owner; no self-declared verified badge.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M08",
+        "M09",
+        "U06"
+      ]
+    },
+    {
+      "id": "FE31",
+      "title": "Private social-sharing UI",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE02",
+        "FE05",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/social-sharing/"
+      ],
+      "implementation": "New handle settings, explicit request consent, decisions, reveal, revoke and expiry views; no-store sensitive fetch.",
+      "acceptance_evidence_required": "Network payload before approval contains no handle; revocation clears UI/cache; no auto-follow claim.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U04",
+        "U05"
+      ]
+    },
+    {
+      "id": "FE32",
+      "title": "Mural editing surface",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "FE05",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/mural/editor/"
+      ],
+      "implementation": "New grid/palette, pan/zoom and pixel preview; confirm action; touch disambiguation and DOM controls.",
+      "acceptance_evidence_required": "Dragging does not place pixels; bounds/color/cooldown states correct on 360px screen.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "R01"
+      ]
+    },
+    {
+      "id": "FE33",
+      "title": "Mural synchronization and world object",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-WORLD",
+      "depends_on": [
+        "FE32",
+        "FE16"
+      ],
+      "owned_paths": [
+        "frontend/src/features/mural/model/",
+        "frontend/src/world/interaction/mural.ts"
+      ],
+      "implementation": "Snapshot/delta reconciliation, commit receipts, pause/freeze/restore reset and world-wall texture update.",
+      "acceptance_evidence_required": "Two clients converge; rejected local preview rolls back; restore discards obsolete deltas.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "R01"
+      ]
+    },
+    {
+      "id": "FE34",
+      "title": "Personal profile and preferences",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE12",
+        "FE02"
+      ],
+      "owned_paths": [
+        "frontend/src/features/me/",
+        "frontend/src/features/settings/"
+      ],
+      "implementation": "New ME hub, profile form and low-power/motion/sound/theme preferences; links to party and gift activity.",
+      "acceptance_evidence_required": "Optional profile fields do not block world entry; private settings remain identity-scoped.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U01",
+        "U03",
+        "U07"
+      ]
+    },
+    {
+      "id": "FE35",
+      "title": "Notification inbox",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE02",
+        "FE07",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/inbox/"
+      ],
+      "implementation": "New unread count/list, mark-read/all-read and safe deep-link routing with stale-target handling.",
+      "acceptance_evidence_required": "Duplicate notification event does not duplicate UI; inaccessible target never exposes cached details.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "U10"
+      ]
+    },
+    {
+      "id": "FE36",
+      "title": "Report, block, and deletion controls",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE02",
+        "FE05",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/safety/",
+        "frontend/src/features/account/"
+      ],
+      "implementation": "New report dialog, block list/unblock, logout/delete confirmation and progress views; clear private state.",
+      "acceptance_evidence_required": "Blocking closes affected panels; unblock does not restore old consent; failed deletion is not displayed as complete.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "A08",
+        "U08",
+        "U09",
+        "S01"
+      ]
+    },
+    {
+      "id": "FE37",
+      "title": "Moderator review screens",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE05",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/admin/reports/",
+        "frontend/src/features/admin/members/",
+        "frontend/src/features/admin/content/"
+      ],
+      "implementation": "New plain tables/forms for report evidence, suspension, hide/restore and action reasons; server-role-aware entry.",
+      "acceptance_evidence_required": "Nonmoderator direct route blocked; failed action remains pending/failed rather than successful.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "O04",
+        "O05",
+        "O06"
+      ]
+    },
+    {
+      "id": "FE38",
+      "title": "Event operations screens",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE05",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/admin/event/",
+        "frontend/src/features/admin/places/",
+        "frontend/src/features/admin/audit/"
+      ],
+      "implementation": "New settings, place review/closure, notice publication, capability flags and audit views.",
+      "acceptance_evidence_required": "Confirm risky changes; stale versions conflict; source and review state remain visible.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "O01",
+        "O02",
+        "O03",
+        "O08"
+      ]
+    },
+    {
+      "id": "FE39",
+      "title": "Wall control and event closure UI",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE38",
+        "FE33"
+      ],
+      "owned_paths": [
+        "frontend/src/features/admin/mural/",
+        "frontend/src/features/admin/closure/"
+      ],
+      "implementation": "New pause/region lock/restore controls and closure step-progress/retry presentation.",
+      "acceptance_evidence_required": "Restore confirmation names snapshot; partial closure failure is visible and recoverable.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "O07",
+        "O09"
+      ]
+    },
+    {
+      "id": "FE40",
+      "title": "Read-only archive views",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE27",
+        "FE33",
+        "C04"
+      ],
+      "owned_paths": [
+        "frontend/src/features/archive/"
+      ],
+      "implementation": "New end-of-event page and permitted final mural/feed views; remove all write controls and private activity.",
+      "acceptance_evidence_required": "Archive does not contain handles or physical beacons; deleted content stays inaccessible.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "X01"
+      ]
+    },
+    {
+      "id": "FE41",
+      "title": "Global degraded and lifecycle states",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "FE-APP",
+      "depends_on": [
+        "FE07",
+        "FE17"
+      ],
+      "owned_paths": [
+        "frontend/src/app/errors/",
+        "frontend/src/features/connection-status/"
+      ],
+      "implementation": "New offline/reconnect/maintenance/version/404 states; stale-data labels, foreground resync and render throttling.",
+      "acceptance_evidence_required": "No endless spinner; offline pickup is not queued silently; keyboard and reconnect preserve usable navigation.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "id": "QA01",
+      "title": "Contract and fixture coverage",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "C07"
+      ],
+      "owned_paths": [
+        "scripts/mcr/contracts/",
+        "docs/mcr/evidence/contracts/"
+      ],
+      "implementation": "Validate every fixture and generated response shape; run drift and missing-operation probes.",
+      "acceptance_evidence_required": "Broken schema and unknown enum cause failure; no empty-test success.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA02",
+      "title": "Zero legacy-UI audit",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "C08",
+        "FE05",
+        "FE07"
+      ],
+      "owned_paths": [
+        "docs/mcr/evidence/ui-origin/"
+      ],
+      "implementation": "Static import/hash check plus manual comparison of all routes against old rendering and approved MCR direction.",
+      "acceptance_evidence_required": "No reused old control/layout/theme; new visual snapshots are reviewed, not blindly accepted.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA03",
+      "title": "Database race suite",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "BE17",
+        "BE22",
+        "BE23",
+        "BE34"
+      ],
+      "owned_paths": [
+        "backend/services/concert-service/tests/concurrency/"
+      ],
+      "implementation": "Run parallel capacity, reservation, cancellation, expiry, claim, idempotency and mural-cooldown scenarios against PostgreSQL.",
+      "acceptance_evidence_required": "Invariants hold with forced transaction interleavings and worker restarts.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA04",
+      "title": "Privacy and authorization matrix",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "BE30",
+        "BE37",
+        "BE39",
+        "FE31",
+        "FE36"
+      ],
+      "owned_paths": [
+        "backend/services/concert-service/tests/authorization/",
+        "frontend/e2e/privacy/"
+      ],
+      "implementation": "Test owner/member/stranger/blocked/suspended/expired/admin across list/detail/mutation/WS/cache.",
+      "acceptance_evidence_required": "No unauthorized handle, claim, evidence, beacon or recipient data in responses or cached UI.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA05",
+      "title": "Realtime failure suite",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "BE14",
+        "BE35",
+        "FE17",
+        "FE33"
+      ],
+      "owned_paths": [
+        "frontend/e2e/realtime/",
+        "backend/services/concert-service/tests/realtime/"
+      ],
+      "implementation": "Packet delay/gap, slow client, background/foreground, ticket replay, server restart and room switch.",
+      "acceptance_evidence_required": "Bounded queues, no ghost player or duplicated room membership, eventual state convergence.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA06",
+      "title": "Mobile visual acceptance",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "AR02",
+        "AR03",
+        "AR04",
+        "FE13",
+        "FE23",
+        "FE26",
+        "FE30",
+        "FE33"
+      ],
+      "owned_paths": [
+        "frontend/e2e/visual-mcr/",
+        "docs/mcr/evidence/mobile/"
+      ],
+      "implementation": "Test widths 360/390/430, actual iOS Safari and Android Chrome, keyboard, safe area and all three skins.",
+      "acceptance_evidence_required": "Avatars remain legible, controls reachable, no panel clipping or old UI; record device/browser versions.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA07",
+      "title": "Accessibility and input suite",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "FE18",
+        "FE19",
+        "FE32",
+        "FE36"
+      ],
+      "owned_paths": [
+        "frontend/e2e/accessibility/"
+      ],
+      "implementation": "Keyboard/focus/screen-reader labels, DOM alternatives, reduced motion and pointer cancellation.",
+      "acceptance_evidence_required": "Essential social/pickup tasks work without precise canvas interaction; focus returns on sheet close.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA08",
+      "title": "Capacity and performance qualification",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "BE44",
+        "FE41"
+      ],
+      "owned_paths": [
+        "scripts/mcr/load/",
+        "docs/mcr/evidence/performance/"
+      ],
+      "implementation": "Initial 200 sockets/four rooms scenario, mobile rendering/bundle/memory measurements, slow-network and reconnect storms.",
+      "acceptance_evidence_required": "Publish measured ceilings and chosen caps; no claim of 200-user support without results.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA09",
+      "title": "Recovery and lifecycle rehearsal",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "BE44",
+        "BE42",
+        "FE39"
+      ],
+      "owned_paths": [
+        "scripts/mcr/recovery/",
+        "docs/mcr/evidence/recovery/"
+      ],
+      "implementation": "Database restart/backup restoration, outbox replay, pending pickup, deletion and partial event closure.",
+      "acceptance_evidence_required": "Restored state is consistent; no lost committed pickup; shutdown and cleanup are resumable.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "QA10",
+      "title": "Candidate provenance and release checks",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "QA",
+      "depends_on": [
+        "BE43",
+        "QA01",
+        "QA02"
+      ],
+      "owned_paths": [
+        "scripts/mcr/release-check.sh",
+        "docs/mcr/evidence/release/"
+      ],
+      "implementation": "Verify same-candidate versions, genuine tests, no production mocks/secrets and task-to-commit traceability.",
+      "acceptance_evidence_required": "Missing evidence is NOT_RUN/BLOCKED, not PASS; no stale revision substituted for current candidate.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "IN01",
+      "title": "Two-user world gate",
+      "phase": 1,
+      "priority": "P0",
+      "lane": "INTEGRATOR",
+      "depends_on": [
+        "BE06",
+        "BE07",
+        "BE14",
+        "FE09",
+        "FE13",
+        "FE17",
+        "FE18",
+        "AR02",
+        "AR03",
+        "AR04"
+      ],
+      "owned_paths": [
+        "frontend/e2e/real/world.spec.ts"
+      ],
+      "implementation": "Two independent accounts enter the same live backend world, move, customize, change skin, navigate panels and reconnect.",
+      "acceptance_evidence_required": "Both observe authorized movement; no duplicate game/socket; actual art passes visual check.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "IN02",
+      "title": "Real meetup and pickup gate",
+      "phase": 2,
+      "priority": "P0",
+      "lane": "INTEGRATOR",
+      "depends_on": [
+        "IN01",
+        "BE19",
+        "BE23",
+        "BE24",
+        "FE23",
+        "FE25",
+        "FE26"
+      ],
+      "owned_paths": [
+        "frontend/e2e/real/meetup-pickup.spec.ts"
+      ],
+      "implementation": "Party request/approval, physical beacon/rally, giveaway reservation and confirmed pickup on two clients.",
+      "acceptance_evidence_required": "Full journey against real services; virtual walking never changes physical arrival.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "IN03",
+      "title": "Social and privacy gate",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "INTEGRATOR",
+      "depends_on": [
+        "BE27",
+        "BE30",
+        "BE32",
+        "BE33",
+        "BE37",
+        "FE28",
+        "FE30",
+        "FE31",
+        "FE35",
+        "FE36"
+      ],
+      "owned_paths": [
+        "frontend/e2e/real/social.spec.ts"
+      ],
+      "implementation": "Intro discovery, feed/comment, consent/reveal/revoke, notifications and block propagation.",
+      "acceptance_evidence_required": "Restricted age and revoked/blocked cases fail closed on HTTP, WS and client cache.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "IN04",
+      "title": "Shared mural and moderation gate",
+      "phase": 3,
+      "priority": "P0",
+      "lane": "INTEGRATOR",
+      "depends_on": [
+        "BE40",
+        "FE33",
+        "FE39"
+      ],
+      "owned_paths": [
+        "frontend/e2e/real/mural.spec.ts"
+      ],
+      "implementation": "Multiple clients paint, hit cooldown, experience pause, restore and final freeze.",
+      "acceptance_evidence_required": "All clients converge to authoritative revision; unauthorized moderation fails.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "IN05",
+      "title": "Release decision",
+      "phase": 4,
+      "priority": "P0",
+      "lane": "INTEGRATOR",
+      "depends_on": [
+        "IN02",
+        "IN03",
+        "IN04",
+        "FE40",
+        "QA03",
+        "QA04",
+        "QA05",
+        "QA06",
+        "QA07",
+        "QA08",
+        "QA09",
+        "QA10"
+      ],
+      "owned_paths": [
+        "docs/mcr/release-decision.md"
+      ],
+      "implementation": "Review same-candidate evidence, scope cuts, operator settings and known limitations; publish pass/block decision.",
+      "acceptance_evidence_required": "All required gates executed; master contains tested code and evidence; no false implementation claims.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "EX01",
+      "title": "Party-only free-text chat",
+      "phase": 5,
+      "priority": "P1",
+      "lane": "FULLSTACK",
+      "depends_on": [
+        "IN05"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/party_chat/",
+        "frontend/src/features/party-chat/"
+      ],
+      "implementation": "Add authorized history/send/reconnect, spam limits, report support, and member-removal revocation.",
+      "acceptance_evidence_required": "Removed or blocked user cannot read/send; persisted ordering survives reconnect.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "M10"
+      ]
+    },
+    {
+      "id": "EX02",
+      "title": "Mural history and souvenir export",
+      "phase": 5,
+      "priority": "P1",
+      "lane": "FULLSTACK",
+      "depends_on": [
+        "IN05"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/archive_export/",
+        "frontend/src/features/souvenir/"
+      ],
+      "implementation": "Snapshot history/time-lapse and opt-in avatar keepsake; rights and consent-aware export.",
+      "acceptance_evidence_required": "Private handles/locations excluded; opted-out/deleted avatars handled correctly.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": [
+        "R02",
+        "X02"
+      ]
+    },
+    {
+      "id": "EX03",
+      "title": "PWA and offline read mode",
+      "phase": 5,
+      "priority": "P1",
+      "lane": "FE-APP",
+      "depends_on": [
+        "IN05"
+      ],
+      "owned_paths": [
+        "frontend/service-worker/",
+        "frontend/src/features/offline/"
+      ],
+      "implementation": "Cache public static assets and permitted read-only material; never cache private reveal responses.",
+      "acceptance_evidence_required": "Offline mode labels staleness and cannot silently queue stock or consent mutations.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "EX04",
+      "title": "Additional identity providers",
+      "phase": 5,
+      "priority": "P1",
+      "lane": "BE-CORE",
+      "depends_on": [
+        "IN05"
+      ],
+      "owned_paths": [
+        "backend/services/auth-service/",
+        "frontend/src/features/auth/"
+      ],
+      "implementation": "Add only configured/verified providers and explicit account-linking conflict handling.",
+      "acceptance_evidence_required": "Real provider acceptance and takeover-prevention tests; unavailable provider not advertised as working.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "EX05",
+      "title": "Additional cosmetics and scenery",
+      "phase": 5,
+      "priority": "P1",
+      "lane": "ART",
+      "depends_on": [
+        "IN05"
+      ],
+      "owned_paths": [
+        "frontend/public/world/"
+      ],
+      "implementation": "More outfits, decorations and optional day/night variants on unchanged map geometry.",
+      "acceptance_evidence_required": "New assets obey atlas contract and performance budget; identity remains readable.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    },
+    {
+      "id": "EX06",
+      "title": "Advanced discovery and saved items",
+      "phase": 5,
+      "priority": "P1",
+      "lane": "FULLSTACK",
+      "depends_on": [
+        "IN05"
+      ],
+      "owned_paths": [
+        "backend/crates/concert-application/src/discovery/",
+        "frontend/src/features/discovery/"
+      ],
+      "implementation": "Add bookmarks and deeper filtering after event-specific demand is demonstrated.",
+      "acceptance_evidence_required": "Visibility changes remove cached/private saved-item previews; no unintended recommendation exposure.",
+      "status": "NOT_STARTED",
+      "target_repository": "julymeltdown/mcr",
+      "target_branch": "master",
+      "ia_ids": []
+    }
+  ]
+}

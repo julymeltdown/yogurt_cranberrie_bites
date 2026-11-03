@@ -1,0 +1,38 @@
+{
+  "scope": "English specification and planning tooling only; no application rewrite performed",
+  "repository": "julymeltdown/bigyeting",
+  "branch": "master",
+  "baseline_commit": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+  "commits": [
+    {
+      "sha": "5cf4620cb7802f8ea74cfec7117fd6c2dfec78cf",
+      "path": "MCR_IMPLEMENTATION_PLAN_V2_EN.md"
+    },
+    {
+      "sha": "c9c688190bfb7d2b037f1abd645dd70393740c52",
+      "path": "MCR_EXPORT_PLAN_EN.py"
+    },
+    {
+      "sha": "dd47ed502edd5d4f9bc4b726e9088b1ee0f0547b",
+      "path": "MCR_DELIVERY_README_EN.md"
+    }
+  ],
+  "remote_verification": {
+    "head_ref": "master",
+    "ahead_by": 3,
+    "behind_by": 0,
+    "changed_files": [
+      "MCR_DELIVERY_README_EN.md",
+      "MCR_EXPORT_PLAN_EN.py",
+      "MCR_IMPLEMENTATION_PLAN_V2_EN.md"
+    ],
+    "application_files_changed": false
+  },
+  "package_scope": "Portable IA/task ledger, execution guide, deterministic exports, exporter tests, and approved visual reference. The full narrative specification is in the repository.",
+  "application_build": "NOT_RUN",
+  "application_tests": "NOT_RUN",
+  "deployment": "NOT_RUN",
+  "planning_validation": "PASS",
+  "planning_exporter_regression_tests_passed": 9,
+  "approved_reference_included": true
+}

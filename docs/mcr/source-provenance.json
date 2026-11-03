@@ -1,0 +1,75 @@
+{
+  "recorded_date": "2026-11-03",
+  "timezone": "Asia/Seoul",
+  "destination": {
+    "repository": "julymeltdown/mcr",
+    "branch": "master",
+    "authority": "Explicit user instruction; overrides historical destination in the supplied archive",
+    "initial_state": "No remote refs; local workspace empty"
+  },
+  "attachment": {
+    "filename": "MCR_Developer_Delivery_v2_EN.zip",
+    "sha256": "4bf19451105a350acc7bc2f3255aee9514001fe8df904f71cb300c7c6f213964",
+    "preserved_directory": "docs/source/mcr_v2_en",
+    "file_count": 14,
+    "checksummed_files": 13
+  },
+  "narrative": {
+    "repository": "julymeltdown/bigyeting",
+    "revision": "dd47ed502edd5d4f9bc4b726e9088b1ee0f0547b",
+    "source_path": "MCR_IMPLEMENTATION_PLAN_V2_EN.md",
+    "preserved_path": "docs/source/MCR_IMPLEMENTATION_PLAN_V2_EN.md",
+    "sha256": "3a13312998ee97458f19bbb8d0e67951644f7fc8fc637afe54c1ff3769335e11",
+    "retrieval": "GitHub contents API at pinned revision",
+    "active_path": "MCR_IMPLEMENTATION_PLAN_V2_EN.md",
+    "adaptation": "Delivery repository, root directory label, backend delivery instruction, and explicit adaptation notice only"
+  },
+  "reuse_sources": [
+    {
+      "repository": "julymeltdown/bigyeting",
+      "planned_code_baseline": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "observed_master": "dd47ed502edd5d4f9bc4b726e9088b1ee0f0547b",
+      "inspected_now": [
+        "Git tree at planned baseline",
+        "frontend/package.json"
+      ],
+      "confirmed_paths": [
+        "frontend/pnpm-lock.yaml"
+      ],
+      "code_imported": false,
+      "reuse_audit": "NOT_COMPLETE"
+    },
+    {
+      "repository": "julymeltdown/port-rust",
+      "planned_code_baseline": "704f42149d5e8e35e1d578676d8ae2dac4f0f9c2",
+      "observed_master": "704f42149d5e8e35e1d578676d8ae2dac4f0f9c2",
+      "inspected_now": [
+        "Git tree at planned baseline",
+        "boilerplate-grpc-rust/Cargo.toml"
+      ],
+      "confirmed_paths": [
+        "boilerplate-grpc-rust/Cargo.lock",
+        "boilerplate-grpc-rust/proto/",
+        "boilerplate-grpc-rust/docs/api/openapi.json",
+        "boilerplate-grpc-rust/services/api-gateway/src/adapters/in/http/auth_routes.rs"
+      ],
+      "proposed_mapping": {
+        "boilerplate-grpc-rust/": "backend/"
+      },
+      "code_imported": false,
+      "reuse_audit": "NOT_COMPLETE"
+    }
+  ],
+  "planning_tool_adaptation": {
+    "MCR_EXPORT_PLAN_EN.py": "Target repository changed to mcr; task-card destination derives from repository/branch constants",
+    "PLAN_TABLES_EN.md": "Canonical specification destination changed to mcr; task/IA rows unchanged",
+    "TEST_PLAN_EXPORT_EN.py": "Unmodified original regression probes"
+  },
+  "qualification": {
+    "C01": "NOT_STARTED",
+    "application_build": "NOT_RUN",
+    "application_tests": "NOT_RUN",
+    "venue_operational_recheck": "NOT_RUN",
+    "deployment": "NOT_RUN"
+  }
+}
