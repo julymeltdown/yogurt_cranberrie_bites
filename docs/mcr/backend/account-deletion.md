@@ -1,7 +1,8 @@
 # BE42 — canonical Auth deletion and Concert cleanup
 
-Status: **IN_PROGRESS**. Source work extends the inherited durable Auth saga;
-real Concert owner integration and whole-task acceptance remain unproven.
+Parent BE42 status: **IN_PROGRESS**. The assigned canonical Auth orchestration,
+typed owner adapters and native qualification are delivered and verified. Real
+Concert owner composition and whole-task acceptance remain unproven.
 
 ## Source and ownership
 
@@ -148,10 +149,12 @@ Cargo-JSON-selected copies pass 15 Auth domain tests, 23 Auth application tests
 and all 124 Auth unit tests (all exit 0). Python runner safety tests: 2/2 pass.
 The new five adapter tests and owned native upgrade/retry/restart checks pass
 against PG 16.14 with all 15 migration checksums, including unchanged 0014.
-The first expanded inherited durability run passed four tests and exposed an
-obsolete two-saga claim batch limit in the operator-retry fixture; this is a
-qualification failure pending its narrow test correction and rerun. No green
-overall gate is claimed for that failed first report. Owned cleanup passed.
+All five inherited durability tests pass after the narrowly granted fixture
+correction in `389060b9`: the two-saga initial claim limit is now
+`2 * UserDeletionTarget::ALL.len()` so both profiles are actually claimed. All
+original atomicity, idempotency, operator-resolution, generation and lease
+assertions remain. The first failed run is retained separately. Owned cleanup
+passes after both runs.
 
 The native runner accepts only a copied absolute regular executable outside
 `target/` matching an explicit SHA256. It creates a fresh Unix-socket-only PG16
@@ -175,12 +178,69 @@ flows, BE41 owners, deployment, retention-policy approval and IN05 remain
 
 Source checkpoint: repository safeguards `e040cb1a`, owned implementation and
 qualification `e593ad79`. Main owns integration/push; no master push is performed
-by this worker. Native validation results and final candidate ancestry follow
-after the explicit Cargo lease transfer.
+by this worker. Source-bound final native qualification ran on clean
+`389060b90703be7bc1e8e9645c4b0bd926fb0ed9`; only this results document changes
+after that run.
 
 First native evidence: `/private/tmp/mcr-be42-qualified-8rznj9aq/` contains
 `binaries.json`, `pure-regression.json`, and the preserved
 `native-report-inherited-batch-failure.json`. The failed inherited fixture
 claims only ten of sixteen steps across two canonical sagas; its later PROFILE
-claim is missing. The correction must preserve the original operator, retry
-receipt, generation, lease and atomicity assertions.
+claim was missing. The corrected new source-bound frozen executable passes all
+five inherited cases; no production assertion was relaxed.
+
+
+## Committed handoff and reproducible evidence
+
+The resume commit chain is `67f99768` (root exports), `a16802f5` (canonical
+inventory/default fail-closed dispatch), `e040cb1a` (repository completion guards),
+`e593ad79` (typed ports/dispatcher/migration/qualification), `57e23860` (exact
+import of main's contract `d3b7c382`), `711d5215`, `2bedae5f`, `370076be`,
+`c8c22ebf`, `562c3bb2`, `a616f540`, and `389060b9`. Main should integrate the
+worker commits serially while omitting `57e23860` if its original contract commit
+is already present. Review conflict handling against current root exports and
+contracts; do not copy entire older files over newer owners.
+
+Routine inherited test alignment is limited to two inventory counts, two
+one-failed-target success counts and the corresponding eight-target test name in
+`tests/unit/user_deletion_saga.rs`, plus the single two-saga claim limit in
+`tests/user_deletion_saga_durable.rs`. These paths were explicitly granted.
+
+All Cargo commands used Rust 1.88.0 with `--locked --offline -j 2`,
+`CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend`, dev/test debug 0 and
+incremental 0. No manifest, lockfile, dependency install or third target changed.
+
+| Command / gate | Exit | Result |
+|---|---:|---|
+| `cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 -p auth-service --test concert_deletion --test unit --test user_deletion_saga_durable --no-run --message-format=json` | 0 | Focused build; final log 2.80 s. |
+| Same no-run command for `-p auth-domain -p auth-application --lib` | 0 | Domain/application test build, 1.18 s. |
+| Same no-run command for `-p auth-service --test user_deletion_saga_durable` after fixture fix | 0 | Source-bound affected binary, 2.85 s. |
+| Copied `auth_domain`, `auth_application`, `unit` with `--test-threads=2` | 0 each | 15 + 23 + 124 pass. |
+| `account_deletion_smoke.py` with explicit copied test paths, SHA256s, PG16 path and report path | 0 | 5 adapter + native upgrade/retry case + postrestart case + 5 inherited native cases pass. |
+| `python3 -m unittest discover -s backend/scripts/mcr -p test_account_deletion_smoke.py` | 0 | 2 runner safety tests pass. |
+| `python3 scripts/mcr/check-plan.py` | 0 | Planning provenance and exporter checks pass; no application acceptance inferred. |
+| Rust 1.88 `rustfmt --check`, staged whitespace and assigned-path audit | 0 | Exact scope includes only granted paths plus the imported contract patch; published Auth 0001–0014 and `docs/source/` unchanged. |
+
+Evidence directory: `/private/tmp/mcr-be42-qualified-8rznj9aq/`.
+`binaries-final.json` records exact Cargo-JSON-selected copied executable paths,
+SHA256s and sizes. The other four binaries are unchanged from their earlier
+successful build; only the inherited durability executable required rebuilding.
+`pure-regression.json` and individual stdout/stderr files retain those results.
+`native-report-final.json` is PASS at clean source `389060b9`, SHA256
+`626f1e2b25c69d8ea1c56b227e98f39e8582028c7b6f1b560632e947caffd23a`.
+The ledger contains exactly versions 1–15 with source-matching SHA384 receipts.
+
+The actual owned postmaster changed from PID 70890 to 70925. Both are absent
+and `/private/tmp/mcr-pg-imvmdhmz` is absent after cleanup.
+`final-release.json` records unconditional BACKEND reservation release; no
+further Cargo or PostgreSQL work runs after release. The MEDIA reservation
+remains outside this worker's ownership.
+
+Remaining integration belongs to the real Concert ticket/session/sharing/private
+cleanup owners and main's production composition. The default production
+branch deliberately retains required Concert steps as failed/retriable rather
+than reporting cleanup success. FE36's separately owned eight-target consumer,
+real reconnect/reveal denial, retained-field erasure, browser flow and deployment
+must be qualified on a combined candidate before BE42/IN05 acceptance.
+
+Auth0015 SHA256: `6b5ad5b41e145dab76b41569f225d0f38f3db304e9b9c8e7e649af87a465f751`.
