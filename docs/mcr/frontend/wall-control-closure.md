@@ -1,8 +1,9 @@
 # FE39 wall control and event closure
 
-Date: 2026-11-04, Asia/Seoul. Task **IN_PROGRESS**; the wall controls and closure
-progress/recovery have **MOCK_READY** evidence. The persistent unbudgeted goal is
-**ACTIVE**. Required explicit partial-failure job retry awaits the delivery-owned
+Date: 2026-11-04, Asia/Seoul. Task **BLOCKED** on the remaining retry contract;
+the wall controls and closure progress/recovery have **MOCK_READY** evidence.
+The persistent unbudgeted goal is **BLOCKED**, with its full scope unchanged.
+Required explicit partial-failure job retry awaits the delivery-owned
 C04 amendment being coordinated with BE41. Progress refresh is a read, never a
 substitute for that required mutation. No scope reduction is claimed.
 
@@ -162,9 +163,28 @@ full-delay private throttling; its browser report records parent `7585623` and
 the exact tested source hashes. Delivery has the initial committed handoff;
 the required resume amendment remains a separate unfinished increment.
 
+## Remaining dependency and blocked audit
+
+Three consecutive goal turns encountered the same external dependency. Fresh
+repository inspection at clean `680915dc382927591084d881f75fc94966ae43db` confirms
+that `CloseEvent` is still closed to `{expected_revision, confirmation:
+CLOSE_EVENT, reason}`. Its policy permits initiation only in OPEN/LIVE; a
+partial closure has already made the event READ_ONLY. The status-recovery policy
+explicitly says that status alone does not authorize manual replay. No committed
+START/RESUME amendment exists in the inspected local contract history.
+
+BE41 has proposed an explicit resume shape on the existing POST route and keeps
+its HTTP schema gate closed pending Delivery's pin. Delivery owns the shared
+contract/schema/registry changes; this worker is not authorized to invent that
+wire capability or modify shared paths. All independent assigned work is
+committed in `7585623` and `680915d`; the temporary dependency symlink has been
+removed and the checkout is clean. No extra approval, live-backend or whole-task
+barrier is being imposed. A committed, coordinated resume amendment is the
+external change needed to resume this assignment.
+
 Remaining required work: adopt the committed explicit closure-resume contract,
 add meaningful failed-step retry/ambiguous-resume fixtures and browser checks,
 update this record, commit final handoff and resolve concrete findings. The goal
-stays ACTIVE. Production root composition, real multiuser moderation/restore,
+stays unfinished while blocked. Production root composition, real multiuser moderation/restore,
 durable backend closure, IN04/QA09, native devices, assistive hardware and load
 remain **NOT_RUN**, separate from task-local fixture criteria.
