@@ -23,6 +23,7 @@ serde_json.workspace = true
 sha2.workspace = true
 sqlx.workspace = true
 tokio.workspace = true
+tokio-tungstenite = "=0.24.0"
 tonic.workspace = true
 tonic-prost.workspace = true
 uuid.workspace = true
@@ -37,4 +38,3 @@ auth-service = { path = "../auth-service" }
 friend-service = { path = "../friend-service" }
 tower.workspace = true
 http-body-util.workspace = true
-tokio-tungstenite = "=0.24.0"
