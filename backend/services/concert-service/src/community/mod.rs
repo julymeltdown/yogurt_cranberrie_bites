@@ -1,4 +1,5 @@
 pub mod audience;
+pub mod closure;
 // Internal transactional community adapter. Public transport and runtime composition are separate.
 use crate::adapters::out::repository::receipt::{CommandProducer, PgCommandRepository};
 use async_trait::async_trait;

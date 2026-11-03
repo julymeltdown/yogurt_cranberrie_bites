@@ -21,12 +21,61 @@ KEY = '41414141-4141-4141-8141-414141414144'
 STEPS = ['READ_ONLY','FREEZE_MURAL','SNAPSHOT','EXPIRE_GRANTS','EXPIRE_BEACONS','EXPORT','CLEANUP']
 
 def run(args, **kw):
-    return subprocess.run(args, check=True, capture_output=True, text=True, timeout=40, **kw)
+    try:
+        return subprocess.run(args, check=True, capture_output=True, text=True, timeout=40, **kw)
+    except subprocess.CalledProcessError as failure:
+        # Fixture-only diagnostics; do not lose the native assertion behind check=True.
+        raise RuntimeError(f'Owned command failed ({failure.returncode}):\n{failure.stdout[-12000:]}\n{failure.stderr[-4000:]}') from None
+
+def driver_suite(binary, pin):
+    # Reuse the World-owned private-cluster marker protocol, not its test selection.
+    # Four actual guarded services; operator role and avatar metadata are fixtures.
+    import migration_smoke as migration
+    tools={name:migration.executable(Path(shutil.which(name) or '')) for name in migration.PG_TOOLS}
+    if shutil.disk_usage(ROOT).free < 8*1024**3: raise RuntimeError('8 GiB floor required')
+    binary=migration.executable(binary)
+    names=['event_lifecycle::read_only::tests::native_driver_rollback_recovery_commit_and_replay',
+           'event_lifecycle::read_only::tests::native_driver_drains_inflight_socket_before_composite_commit',
+           'event_lifecycle::read_only::tests::native_driver_revocation_while_delivery_wait_keeps_world_views',
+           'event_lifecycle::read_only::tests::native_driver_expiry_while_native_wait_keeps_world_views']
+    listing=run([str(binary),'--list']).stdout
+    if any(name+': test' not in listing for name in names): raise AssertionError('Driver tests absent')
+    cluster=migration.Cluster(tools)
+    evidence={'scope':'actual four-owner driver/composite/native socket; synthetic operator-role and avatar metadata; not root wiring or full BE41 acceptance',
+              'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'owned_source_pin':pin,'runs':[], 'source_hashes':{}}
+    try:
+        cluster.init(); cluster.start()
+        urls={}
+        for owner in ['auth','friend','profile','concert']:
+            db=f'mcr_{owner}_world_read_only'
+            cluster.sql('postgres',f'create database {db} template template0;')
+            for path in sorted((ROOT/f'backend/services/{owner}-service/migrations').glob('*.sql')):
+                cluster.sql(db,path.read_text())
+                evidence['source_hashes'][str(path.relative_to(ROOT))]=hashlib.sha256(path.read_bytes()).hexdigest()
+            urls[owner]=cluster.url(db)
+        env={**cluster.env,'MCR_WORLD_READ_ONLY_ROOT':str(cluster.root),'MCR_WORLD_READ_ONLY_TOKEN':cluster.token,
+             'MCR_WORLD_READ_ONLY_IDENTITY':f'{cluster.identity[0]}:{cluster.identity[1]}',
+             **{f'MCR_WORLD_READ_ONLY_{owner.upper()}_URL':url for owner,url in urls.items()}}
+        for name in names:
+            result=subprocess.run([str(binary),'--ignored','--exact',name,'--nocapture','--test-threads=1'],env=env,cwd=cluster.root,capture_output=True,text=True,timeout=45)
+            raw=result.stdout+result.stderr
+            if any(secret and secret in raw for secret in [cluster.password,cluster.token,*urls.values()]): raise RuntimeError('Native output requires redaction')
+            if result.returncode or 'test result: ok. 1 passed; 0 failed; 0 ignored;' not in result.stdout:
+                raise RuntimeError(f'Driver test failed ({result.returncode}): {raw[-12000:]}')
+            if set(re.findall(r'BE41_SOURCE_PIN=([a-f0-9]{64})',raw))!={pin}: raise AssertionError('Driver compiled source mismatch')
+            evidence['runs'].append({'test':name,'exit_code':0,'output':raw})
+        evidence['result']='PASS'
+    finally:
+        cluster.cleanup()
+        if cluster.root.exists(): raise RuntimeError('Owned driver cluster remains')
+        evidence['cleanup']='PASS'
+    return evidence
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--native-binary', type=Path, action='append', default=[])
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--native-driver-binary', type=Path)
     args = parser.parse_args()
     for binary in ['initdb','pg_ctl','psql']:
         if not shutil.which(binary): raise SystemExit(f'{binary} is required')
@@ -123,8 +172,10 @@ def main():
             check('audit_append_only',f"BEGIN;{proof()}INSERT INTO concert_closure_audit VALUES(gen_random_uuid(),'{EVENT}','{JOB}','{ACTOR}',NULL,'SNAPSHOT','FAILED',4,clock_timestamp());COMMIT;DELETE FROM concert_closure_audit;",fails=True)
             evidence['native_adapter_suite']='NOT_RUN'
             if args.native_binary:
-                if len(args.native_binary)!=2:raise AssertionError('Provide both event_lifecycle and event_lifecycle_archive native binaries')
+                if len(args.native_binary)!=3:raise AssertionError('Provide event_lifecycle, event_lifecycle_archive and event_lifecycle_read_only native binaries')
                 expected={'event_lifecycle_full_migration_ledger_and_reapply','event_lifecycle_idempotent_start_receipt_is_admission_only','event_lifecycle_partial_failure_rolls_back_and_explicit_resume_skips_success','event_lifecycle_retention_wait_and_current_authority_fail_closed','event_lifecycle_concurrent_workers_and_wrong_receipt','event_lifecycle_archive_deletion_invalidates_cursor_and_never_reintroduces_content','event_lifecycle_restart_seed','event_lifecycle_restart_resume','event_lifecycle_actual_privacy_sql_expires_and_cleans_only_owned_event'}
+                expected.update({'event_lifecycle_read_only_actual_components_replay_and_foreign_isolation', 'event_lifecycle_read_only_concurrent_start_single_component_receipt', 'event_lifecycle_read_only_owner_failure_rolls_back_every_sql_effect', 'event_lifecycle_read_only_preconsumed_claim_and_new_lease_are_denied', 'event_lifecycle_read_only_publication_share_lock_blocks_start', 'event_lifecycle_read_only_restart_resume', 'event_lifecycle_read_only_invalid_scope_and_receipt_immutability', 'event_lifecycle_read_only_restart_seed'})
+                expected.update({'event_lifecycle_read_only_community_failure_rolls_back_world','event_lifecycle_read_only_commit_deadline_rolls_back_components'})
                 sources=[ROOT/p for p in [
                     'backend/crates/concert-domain/src/event_lifecycle/mod.rs',
                     'backend/crates/concert-application/src/event_lifecycle/mod.rs',
@@ -137,7 +188,23 @@ def main():
                     'backend/services/concert-service/tests/event_lifecycle.rs',
                     'backend/services/concert-service/tests/event_lifecycle_archive.rs',
                     'backend/services/concert-service/tests/support/event_lifecycle/mod.rs',
-                    'backend/services/concert-service/tests/event_lifecycle_support/migrations.rs']]
+                    'backend/services/concert-service/tests/event_lifecycle_support/migrations.rs',
+                    'backend/services/concert-service/src/event_lifecycle/read_only.rs',
+                    'backend/services/concert-service/src/community/closure.rs',
+                    'backend/services/concert-service/src/community/mod.rs',
+                    'backend/services/concert-service/src/community/giveaway.rs',
+                    'backend/services/concert-service/migrations/0024_event_read_only_barrier.sql',
+                    'backend/services/concert-service/tests/event_lifecycle_read_only.rs',
+                    'backend/services/concert-service/tests/event_lifecycle_support/read_only.rs',
+                    'backend/services/concert-service/src/world/closure.rs',
+                    'backend/services/concert-service/src/world/mod.rs',
+                    'backend/services/concert-service/src/world/production_owners.rs',
+                    'backend/services/concert-service/src/world/admission_bridge.rs',
+                    'backend/services/concert-service/src/world/invalidation/mod.rs',
+                    'backend/services/concert-service/src/world/invalidation/store.rs',
+                    'backend/services/concert-service/tests/world_read_only_support/qualified.rs',
+                    'backend/services/concert-service/tests/world_read_only_support/owned.rs',
+                    'backend/services/concert-service/tests/world_read_only_support/geometry.rs']]
                 source_pin=hashlib.sha256()
                 for source in sources:
                     source_pin.update(str(source.relative_to(ROOT)).encode()+b'\0'+source.read_bytes()+b'\0')
@@ -151,16 +218,20 @@ def main():
                     actual={line.split(': test')[0] for line in listing.splitlines() if line.endswith(': test')}
                     if not actual or not actual<=expected or found&actual:raise AssertionError('Native test suite missing, unexpected or duplicated')
                     found|=actual
-                    restart={'event_lifecycle_restart_seed','event_lifecycle_restart_resume'}
+                    pairs=[('event_lifecycle_restart_seed','event_lifecycle_restart_resume'),
+                           ('event_lifecycle_read_only_restart_seed','event_lifecycle_read_only_restart_resume')]
+                    restart={name for pair in pairs for name in pair}
                     normal=actual-restart
-                    result=run([str(binary),'--ignored','--nocapture','--test-threads=1','--skip','event_lifecycle_restart_seed','--skip','event_lifecycle_restart_resume'],env=env)
+                    skips=[arg for name in sorted(restart) for arg in ['--skip',name]]
+                    result=run([str(binary),'--ignored','--nocapture','--test-threads=1',*skips],env=env)
                     if not re.search(rf'test result: ok\. {len(normal)} passed; 0 failed;',result.stdout):raise AssertionError('Native tests did not execute successfully')
-                    if actual&restart:
-                        if not restart<=actual:raise AssertionError('Restart test phases must share one binary')
-                        before=run([str(binary),'--ignored','--nocapture','--exact','event_lifecycle_restart_seed'],env=env)
+                    for seed,recover in pairs:
+                        if not actual & {seed,recover}: continue
+                        if not {seed,recover}<=actual:raise AssertionError('Restart test phases must share one binary')
+                        before=run([str(binary),'--ignored','--nocapture','--exact',seed],env=env)
                         if 'test result: ok. 1 passed; 0 failed;' not in before.stdout:raise AssertionError('Native restart seed did not execute')
                         stop();start()
-                        after=run([str(binary),'--ignored','--nocapture','--exact','event_lifecycle_restart_resume'],env=env)
+                        after=run([str(binary),'--ignored','--nocapture','--exact',recover],env=env)
                         if 'test result: ok. 1 passed; 0 failed;' not in after.stdout:raise AssertionError('Native restart recovery did not execute')
                         result.stdout+=before.stdout+after.stdout
                     pins=set(re.findall(r'BE41_SOURCE_PIN=([a-f0-9]{64})',result.stdout))
@@ -168,6 +239,9 @@ def main():
                     native.append({'exit_code':0,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'owned_source_pin':pin,'output':result.stdout})
                 if found!=expected:raise AssertionError('Incomplete native test suite')
                 evidence['native_adapter_suite']=native
+            if args.native_driver_binary:
+                if not args.native_binary: raise AssertionError('Driver qualification requires all three lifecycle binaries')
+                evidence['native_driver_suite']=driver_suite(args.native_driver_binary, pin)
             evidence['result']='PASS'
         finally:
             stop()

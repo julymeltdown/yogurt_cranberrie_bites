@@ -3,12 +3,21 @@ const proposal=await read('geometry-proposal.json'),painted=await read('painted/
 let view='world',theme='parade',finish='painted',debug=false,imageSet
 const imageCache=new Map()
 const decode=async path=>{const image=new Image();image.src=path;await image.decode();return image}
-async function images(){const key=finish+theme;if(!imageCache.has(key))imageCache.set(key,finish==='painted'?Promise.all([decode('./painted/parade-ground.png'),decode('./painted/parade-source-atlas.png')]).then(([ground,atlas])=>({ground,atlas,frames:painted.frames,placements:painted.placements})):Promise.all([decode(`./${theme}-ground.png`),decode(`./${theme}-scenery.png`),read(theme+'-frames.json')]).then(([ground,atlas,frames])=>({ground,atlas,frames,placements:proposal.placements})));return imageCache.get(key)}
+async function images(){const key=finish+theme;if(!imageCache.has(key))imageCache.set(key,finish==='painted'?Promise.all([decode('./painted/'+painted.ground),decode('./painted/'+painted.atlas)]).then(([ground,atlas])=>({ground,atlas,frames:painted.frames,placements:painted.placements})):Promise.all([decode(`./${theme}-ground.png`),decode(`./${theme}-scenery.png`),read(theme+'-frames.json')]).then(([ground,atlas,frames])=>({ground,atlas,frames,placements:proposal.placements})));return imageCache.get(key)}
 function paint(targetCanvas,camera,labels=false){
  const c=targetCanvas.getContext('2d');c.imageSmoothingEnabled=false;c.clearRect(0,0,targetCanvas.width,targetCanvas.height)
  const sx=targetCanvas.width/camera.width,sy=targetCanvas.height/camera.height
  c.save();c.scale(sx,sy);c.translate(-camera.x,-camera.y);c.drawImage(imageSet.ground,0,0)
- for(const object of [...imageSet.placements].sort((a,b)=>a.depth_y-b.depth_y)){
+ const mapMode=labels
+ const representations=mapMode?proposal.overview_representations:[]
+ const omitted=new Set(representations.map(r=>r.replaces_prop_id).filter(Boolean))
+ const props=imageSet.placements.filter(o=>!omitted.has(o.id)).concat(representations)
+ if(mapMode){
+  const zone=proposal.plaza_parcel;c.beginPath();zone.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath()
+  const tile=document.createElement('canvas');tile.width=48;tile.height=48;tile.getContext('2d').drawImage(imageSet.ground,0,0,48,48,0,0,48,48)
+  c.fillStyle=c.createPattern(tile,'repeat');c.fill();c.strokeStyle='#b4a27d';c.lineWidth=6;c.stroke()
+ }
+ for(const object of [...props].sort((a,b)=>a.depth_y-b.depth_y)){
   const frame=imageSet.frames[object.frame];c.drawImage(imageSet.atlas,frame.x,frame.y,frame.width,frame.height,object.x,object.y,object.width??frame.width,object.height??frame.height)
  }
  if(debug){
