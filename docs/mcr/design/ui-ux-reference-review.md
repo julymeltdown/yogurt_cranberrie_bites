@@ -2,6 +2,14 @@
 
 ## Decision
 
+**Superseding user direction:** the current frontend was explicitly rejected.
+The new [PNG target](reference-target-2026-11-04.png), SHA-256
+`d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617`,
+requires matching the ten screens' components and design, not loose visual
+inspiration. The following partial-adoption records are historical evidence,
+not acceptance of the current design. The two-king and active-SL execution model
+is recorded in [king coordination](../king-coordination.md).
+
 **HANDOFF CONFIRMED; PARTIAL APPLICATION ADOPTION; VISUAL IMPLEMENTATION NOT ACCEPTED.** The exact reference has been read by the visual implementation owners. Default shell chrome, illustrated World scenery, illustrated Map overview, Social route composition and visual outfit choices are integrated. Approved character rendering, populated avatar/item-media rows, distinctive landing artwork and live Wall composition remain unfinished. Map also retains orthogonal geography, numbered markers and a split-sheet default composition instead of the reference's large labeled map. The illustrated scenery source is delivered; its remaining production release binding must not be confused with missing source artwork. Social services require explicit readiness; Wall still lacks qualified write inputs. This audit does not change the 112-task acceptance ledger or certify a live product flow. The initial audit verdict was **PARTIALLY CONVEYED**; dated follow-through records what changed.
 
 At published `9204e1e5`, Main freshly rehashed the original attachment and its
