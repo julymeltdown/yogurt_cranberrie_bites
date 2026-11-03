@@ -25,6 +25,9 @@ verification, documentation, committed handoff, and integration-review fixes.
 Dispatch alone does not establish that a goal was created; actual goal status
 must be confirmed. Future assignments carry this requirement without resetting
 aligned active goals or changing file ownership. No token budget was requested.
+Both chats subsequently confirmed their BE03/FE07 goals active. The frontend
+delivered `d7c720c` / `8ba0081` for review and retains ownership of scoped review
+fixes; no next task or completion has yet been assigned.
 The former worktrees are preserved but have no current writer. Earlier delivery
 ancestry and checks are in the [foundation review](evidence/core-foundation-integration.md)
 and [privacy/tooling review](evidence/privacy-local-stack-integration.md).
@@ -62,8 +65,11 @@ Local transfer records are preserved outside Git at
 `/Users/lhs/Desktop/mcr-build/handoff-be-runtime.md`,
 `/Users/lhs/Desktop/mcr-build/handoff-fe-transport.md`, and
 `/Users/lhs/Desktop/mcr-build/handoff-contracts-C04.md`.
-The stopped C04 writer's eight untested schema drafts remain under
-`/Users/lhs/Desktop/mcr-worktrees/contracts-C04/contracts/domain/v1/` for the
-integrator to continue; they are not a frozen contract. C05 realtime v1 is now
+The integrator resumed the stopped C04 writer's preserved drafts in
+`/Users/lhs/Desktop/mcr-worktrees/contracts-C04`, advanced that worktree to
+`c654507`, and integrated the qualified review candidate `b615e35`. It now has
+schema/operation/policy registers, fixtures and an offline validator; the
+[remaining C04 requirements](domain-contract.md) still prevent a freeze.
+C05 realtime v1 is now
 frozen after [both independent reviews](qa/realtime-contract-review.md); the
 integrator retains ownership of shared contract changes and C04 continuation.
