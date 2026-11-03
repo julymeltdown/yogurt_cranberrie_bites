@@ -35,7 +35,8 @@
         title.textContent = source.label
         const caption = document.createElement('p')
         caption.className = 'source'
-        caption.textContent = `${source.original_name} · ${source.visible_choice_count} choices`
+        const upload = characterSourcePack.uploads.find(batch => batch.upload_id === source.upload_id)
+        caption.textContent = `${upload.label} / ${source.original_name} · ${source.visible_choice_count} reference groups`
         const image = document.createElement('img')
         image.src = getCharacterSourceUrl(source.source_id)
         image.alt = source.label

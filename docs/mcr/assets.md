@@ -1,7 +1,7 @@
 # C06 asset contracts v1.0.0
 
-Current character-art decision (2026-11-03): use the user's ten supplied images
-and their reviewed derivatives exclusively. See [selected artwork](character-art.md)
+Current character-art decision (2026-11-03): use the user's selected base images,
+additional supplied sheets and their reviewed derivatives exclusively. See [selected artwork](character-art.md)
 for the preserved source pack, frontend lookup, duplicate handling and required
 layer-contract follow-up. The synthetic fixtures below remain metadata tests;
 they are not product art or fallback images. Source registration does not turn

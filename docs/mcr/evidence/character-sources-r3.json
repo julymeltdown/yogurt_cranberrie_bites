@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-03",
+  "source_pack_id": "mcr_user_characters_20261103",
+  "revision": 3,
+  "selected_upload_ids": [
+    "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD",
+    "5F80E458-192D-42D9-9860-BCF6F22F013C"
+  ],
+  "scope": "Additive user source selection; not a production atlas",
+  "catalog_sha256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+  "originals_byte_identical": 20,
+  "base_entries_and_ids_preserved": 10,
+  "added_sources": 10,
+  "unique_source_count": 20,
+  "visible_reference_groups": 314,
+  "counting_unit": "VISIBLE_REFERENCE_GROUPS_NOT_INDIVIDUAL_RUNTIME_ITEMS",
+  "production_build_copies_byte_identical": 20,
+  "source_hash_size_dimensions_decode": "PASS",
+  "build_exit_code": 0,
+  "lint_exit_code": 0,
+  "browser": "156.0.8078.76",
+  "viewport": {
+    "width": 390,
+    "height": 850
+  },
+  "images_loaded": 20,
+  "batch_labels": {
+    "base": 10,
+    "additional": 10
+  },
+  "unknown_and_archived_sources_rejected": true,
+  "no_horizontal_overflow": true,
+  "page_and_network_errors": [],
+  "screenshot": "docs/mcr/evidence/character-sources-r3-props-390.png",
+  "screenshot_sha256": "31b5ba9c570b21629b46fdcf207ddfc0b78a5392ecac7ae9667d4002e16d6281",
+  "not_run": [
+    "transparent layer preparation",
+    "cross-sheet fit and composition",
+    "directional animation",
+    "runtime atlas/compositor",
+    "physical devices"
+  ],
+  "visually_reviewed": true
+}

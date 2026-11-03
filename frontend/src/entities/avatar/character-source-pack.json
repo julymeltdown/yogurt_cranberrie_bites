@@ -2,14 +2,14 @@
   "schema_version": 1,
   "kind": "avatar_source_pack",
   "source_pack_id": "mcr_user_characters_20261103",
-  "revision": 2,
+  "revision": 3,
   "selected_for": "ALL_MCR_CHARACTER_ART",
   "status": "SOURCE_REGISTERED",
-  "source_authority": "The user selected a corrected ten-image batch on 2026-11-03: nine byte-identical retained sheets and a new accessory sheet replace the earlier batch with a duplicate body sheet.",
+  "source_authority": "The user selected a corrected base batch and then explicitly added ten more images on 2026-11-03. Both batches remain selected; the addition does not replace the base designs.",
   "base_url": "/world/avatars/supplied-v1/",
   "allow_legacy_character_fallback": false,
-  "unique_source_count": 10,
-  "unique_visible_choice_count": 152,
+  "unique_source_count": 20,
+  "unique_visible_choice_count": 314,
   "production_atlas": {
     "status": "NOT_PREPARED",
     "transparent_cutouts": "NOT_PREPARED",
@@ -40,7 +40,8 @@
       "notes": "Front-facing complete characters; columns are Revenge, Parade and Danger.",
       "first_registered_name": "Photo 1.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 1
+      "attachment_number": 1,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_02",
@@ -64,7 +65,8 @@
       "notes": "Bodies already include eyes, mouths and base clothing; separate them before layer composition.",
       "first_registered_name": "Photo 2.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 2
+      "attachment_number": 2,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_04",
@@ -88,7 +90,8 @@
       "notes": "Front hair choices; item-by-item alignment remains required.",
       "first_registered_name": "Photo 4.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 3
+      "attachment_number": 3,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_05",
@@ -112,7 +115,8 @@
       "notes": "Back-hair artwork; not a complete set of directional walking frames and not automatically paired with the front-hair sheet.",
       "first_registered_name": "Photo 5.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 4
+      "attachment_number": 4,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_06",
@@ -136,7 +140,8 @@
       "notes": "Includes visible hands, lower hems and some leg elements; prepare masks and decide skin-tone treatment.",
       "first_registered_name": "Photo 6.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 5
+      "attachment_number": 5,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_07",
@@ -160,7 +165,8 @@
       "notes": "Separate bottoms and shoes; the current five-slot contract has no separate bottom slot.",
       "first_registered_name": "Photo 7.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 6
+      "attachment_number": 6,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_08",
@@ -184,7 +190,8 @@
       "notes": "Eighteen eyewear/accessory choices.",
       "first_registered_name": "Photo 8.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 7
+      "attachment_number": 7,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_09",
@@ -208,7 +215,8 @@
       "notes": "Eighteen eye pairs, including expressions; each pair is one choice.",
       "first_registered_name": "Photo 9.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 8
+      "attachment_number": 8,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_10",
@@ -232,7 +240,8 @@
       "notes": "Twenty face treatments, including eyes and mouths; not isolated overlays yet.",
       "first_registered_name": "Photo 10.jpg",
       "first_registered_revision": 1,
-      "attachment_number": 9
+      "attachment_number": 9,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
     },
     {
       "source_id": "photo_11",
@@ -256,10 +265,260 @@
       },
       "duplicate_of": null,
       "notes": "Eighteen accessory examples on full busts: bandages, face marks, hair clip, piercings, earrings, headphones, scarf, chokers, masks and glasses. Body, eyes, mouths and base clothes are baked in; these are not isolated transparent overlays.",
-      "attachment_number": 10
+      "attachment_number": 10,
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD"
+    },
+    {
+      "source_id": "photo_12",
+      "original_name": "Photo 1.jpg",
+      "first_registered_name": "Photo 1.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 1,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-12.jpg",
+      "sha256": "ac2d1aa9153aa1217afa0817679fba0c00d09f3290f191d4706ad5a22833db94",
+      "byte_length": 273737,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "headwear_examples",
+      "label": "Headwear on characters",
+      "visible_choice_count": 18,
+      "layout": {
+        "columns": 6,
+        "rows": 3,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Eighteen full-character headwear examples, including bows, rose, crowns, cat ears, headphones, goggles, hats, veil, horns, halo and clips. Body and face pixels are included."
+    },
+    {
+      "source_id": "photo_13",
+      "original_name": "Photo 2.jpg",
+      "first_registered_name": "Photo 2.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 2,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-13.jpg",
+      "sha256": "292a1080e08ac42474222ea1c1cda2d063885b7da72f2f9ea8c606b25c5217b3",
+      "byte_length": 263938,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "hair_portraits",
+      "label": "Hair portraits",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen hair portraits with faces and some decorations included. Different proportions/detail from the base sheets; not isolated hair layers."
+    },
+    {
+      "source_id": "photo_14",
+      "original_name": "Photo 3.jpg",
+      "first_registered_name": "Photo 3.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 3,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-14.jpg",
+      "sha256": "6bceb582fc1301589c968a40335ad7dc183f01c60b47ad45f223a375d3c49d95",
+      "byte_length": 288728,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "hair_silhouettes",
+      "label": "Additional hairstyles",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen hairstyles around blank face regions, including long hair, ponytails, buns and braids. Visible grid lines and opaque white face regions need deliberate preparation."
+    },
+    {
+      "source_id": "photo_15",
+      "original_name": "Photo 4.jpg",
+      "first_registered_name": "Photo 4.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 4,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-15.jpg",
+      "sha256": "d0a17abd38eb55e46db985c168d0183073b5d703478d00e8d49ca8e14d4af825",
+      "byte_length": 293533,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "tops_detailed",
+      "label": "Additional tops and outfits",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen more detailed tops and outfits, with cuffs/hands and some attached accessories. Fit and skin-tone treatment require review."
+    },
+    {
+      "source_id": "photo_16",
+      "original_name": "Photo 5.jpg",
+      "first_registered_name": "Photo 5.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 5,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-16.jpg",
+      "sha256": "48200de941ebc7b9474752b0475c7c0fe4983fd16442afce83fbe56a1d474507",
+      "byte_length": 248204,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "bottoms_detailed",
+      "label": "Additional bottoms and footwear",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen lower-body combinations with shoes, socks, skirts, trousers and belts. Skin and fabric proportions need alignment with the chosen body."
+    },
+    {
+      "source_id": "photo_17",
+      "original_name": "Photo 6.jpg",
+      "first_registered_name": "Photo 6.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 6,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-17.jpg",
+      "sha256": "21c7dbe159570072cb7406d6d1bf3521ba44da4bd392dd9f058f4e2bb026750c",
+      "byte_length": 175218,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "eyes_detailed",
+      "label": "Additional eyes and expressions",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen eye-pair groups including brows, lashes, makeup and expressions; pair groups are counted once, not per eye."
+    },
+    {
+      "source_id": "photo_18",
+      "original_name": "Photo 7.jpg",
+      "first_registered_name": "Photo 7.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 7,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-18.jpg",
+      "sha256": "419a2b2527dab6b63bf2cee251651eefeb6792a546bcd4737a99d6f5678aa514",
+      "byte_length": 222649,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "makeup_portraits",
+      "label": "Makeup and face treatments",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen complete face examples with makeup, marks, bandages and lip styles. Full head/skin/eyes remain baked into the sheet."
+    },
+    {
+      "source_id": "photo_19",
+      "original_name": "Photo 8.jpg",
+      "first_registered_name": "Photo 8.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 8,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-19.jpg",
+      "sha256": "856135f8c8b970f711b1ccdf1c071151a54037e07827bae6b518465e18d6c1ad",
+      "byte_length": 240144,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "headwear_parts",
+      "label": "Headwear and hair decorations",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen visual groups of headwear/decorations. The final group contains four separate clip designs; paired bows count as one group. Counts are reference groups, not individual runtime items."
+    },
+    {
+      "source_id": "photo_20",
+      "original_name": "Photo 9.jpg",
+      "first_registered_name": "Photo 9.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 9,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-20.jpg",
+      "sha256": "1b741978ef59714c6ecd7f906abf6f909ee77d2dc1906c97cc95b958aa98243a",
+      "byte_length": 193103,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "accessory_parts",
+      "label": "Jewelry and wearable accessories",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen visual groups including paired earrings, neckwear, headphones, harness, bag, lanyard and piercings. The final group contains two piercing designs; pair/group counts are not individual runtime-item counts."
+    },
+    {
+      "source_id": "photo_21",
+      "original_name": "Photo 10.jpg",
+      "first_registered_name": "Photo 10.jpg",
+      "first_registered_revision": 3,
+      "attachment_number": 10,
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "file": "photo-21.jpg",
+      "sha256": "3f0d763f18913cdd4e6af8830404ef7163315cd30a275054c76e63c6fa09831d",
+      "byte_length": 255136,
+      "width_px": 1280,
+      "height_px": 960,
+      "mime_type": "image/jpeg",
+      "has_alpha": false,
+      "category": "handheld_props",
+      "label": "Handheld items and props",
+      "visible_choice_count": 16,
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "usage": "CONTACT_SHEET_GUIDE_ONLY_NOT_FRAME_COORDINATES"
+      },
+      "duplicate_of": null,
+      "notes": "Sixteen prop groups: microphone, camera, photo, bouquet, shopping bag, gift, phone, ticket, tote, drink, plush, poster tube, wristbands, note, candle and light stick. Some groups contain multiple objects; these are visual references, not inventory/entitlement or real-ticket proof."
     }
   ],
-  "selected_upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD",
   "previous_upload_id": "BF978581-4770-4CD2-A9E0-AE96505D6089",
   "archived_files": [
     {
@@ -284,5 +543,47 @@
       "notes": "Byte-identical to Photo 2; preserve attachment provenance, do not create extra choices."
     }
   ],
-  "archive_note": "photo_03 is the first batch duplicate body sheet, preserved byte-for-byte for provenance and excluded from the current selected sources. Storage filenames and source IDs stay stable when attachment ordering changes."
+  "archive_note": "photo_03 is the first batch duplicate body sheet, preserved byte-for-byte for provenance and excluded from the current selected sources. Storage filenames and source IDs stay stable when attachment ordering changes.",
+  "selected_upload_ids": [
+    "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD",
+    "5F80E458-192D-42D9-9860-BCF6F22F013C"
+  ],
+  "uploads": [
+    {
+      "upload_id": "2CFE2FDF-BB17-4FFD-A0EF-8E9B8AD671CD",
+      "label": "Base selection",
+      "selection": "REPLACE_INITIAL_DUPLICATE_BATCH",
+      "source_ids": [
+        "photo_01",
+        "photo_02",
+        "photo_04",
+        "photo_05",
+        "photo_06",
+        "photo_07",
+        "photo_08",
+        "photo_09",
+        "photo_10",
+        "photo_11"
+      ]
+    },
+    {
+      "upload_id": "5F80E458-192D-42D9-9860-BCF6F22F013C",
+      "label": "Additional selection",
+      "selection": "ADD_TO_BASE",
+      "source_ids": [
+        "photo_12",
+        "photo_13",
+        "photo_14",
+        "photo_15",
+        "photo_16",
+        "photo_17",
+        "photo_18",
+        "photo_19",
+        "photo_20",
+        "photo_21"
+      ]
+    }
+  ],
+  "counting_unit": "VISIBLE_REFERENCE_GROUPS_NOT_INDIVIDUAL_RUNTIME_ITEMS",
+  "counting_notes": "Choice-count fields count visual reference groups. An eye/earring pair or a group containing several clips, piercings or bracelets is counted once; similar designs across sheets are not deduplicated into runtime items."
 }
