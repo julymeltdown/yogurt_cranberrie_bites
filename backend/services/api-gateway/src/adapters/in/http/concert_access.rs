@@ -48,6 +48,11 @@ impl HttpConcertAccess {
             .remaining(ceiling)
             .map_err(|_| GatewayError::unauthorized("Invalid bearer token"))
     }
+
+    #[allow(dead_code)]
+    pub(crate) fn borrowed(&self) -> &ConcertAccessContext {
+        &self.0
+    }
 }
 
 #[async_trait]

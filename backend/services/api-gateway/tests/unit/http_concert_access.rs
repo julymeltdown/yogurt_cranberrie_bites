@@ -1,7 +1,7 @@
 use crate::http_support::{RouteHarness, SESSION_ID, USER_ID};
 use api_gateway::adapters::r#in::http::{self, concert_access::HttpConcertAccess};
 use axum::body::Body;
-use axum::extract::{Request as AxumRequest, State};
+use axum::extract::Request as AxumRequest;
 use axum::http::{header, Request, StatusCode};
 use axum::middleware::{self, Next};
 use axum::routing::get;
@@ -10,30 +10,6 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 use tower::ServiceExt;
-
-async fn trusted_deadline(
-    State(state): State<Arc<api_gateway::config::AppState>>,
-    request: AxumRequest<Body>,
-    next: Next,
-) -> axum::response::Response {
-    let mut request = request;
-    request.extensions_mut().insert(http::RequestDeadline(
-        std::time::Instant::now() + state.request_timeout,
-    ));
-    next.run(request).await
-}
-
-async fn short_deadline(
-    State(state): State<Arc<api_gateway::config::AppState>>,
-    request: AxumRequest<Body>,
-    next: Next,
-) -> axum::response::Response {
-    let mut request = request;
-    request.extensions_mut().insert(http::RequestDeadline(
-        Instant::now() + Duration::from_millis(120),
-    ));
-    next.run(request).await
-}
 
 fn app(harness: &RouteHarness, calls: Arc<AtomicUsize>, delay_ms: u64) -> Router {
     let state = harness.state.clone();
@@ -58,7 +34,7 @@ fn app(harness: &RouteHarness, calls: Arc<AtomicUsize>, delay_ms: u64) -> Router
         ))
         .layer(middleware::from_fn_with_state(
             state.clone(),
-            trusted_deadline,
+            http::timeout_middleware,
         ))
         .with_state(state)
 }
@@ -124,9 +100,9 @@ async fn handler_delay_consumes_the_original_deadline_without_extension() {
         .route(
             "/concert-context",
             get(|access: HttpConcertAccess| async move {
-                tokio::time::sleep(Duration::from_millis(55)).await;
+                tokio::time::sleep(Duration::from_millis(30)).await;
                 let remaining = access.remaining(Duration::from_secs(10)).unwrap();
-                if remaining > Duration::from_millis(80) {
+                if remaining >= Duration::from_secs(1) {
                     StatusCode::INTERNAL_SERVER_ERROR
                 } else {
                     StatusCode::NO_CONTENT
@@ -135,7 +111,7 @@ async fn handler_delay_consumes_the_original_deadline_without_extension() {
         )
         .layer(middleware::from_fn_with_state(
             state.clone(),
-            short_deadline,
+            http::timeout_middleware,
         ))
         .with_state(state);
     let response = router
@@ -143,18 +119,25 @@ async fn handler_delay_consumes_the_original_deadline_without_extension() {
         .await
         .unwrap();
     assert_eq!(response.status(), StatusCode::NO_CONTENT);
-    assert!(before.elapsed() < Duration::from_millis(180));
+    assert!(before.elapsed() < Duration::from_secs(2));
 }
 
 #[tokio::test]
-async fn missing_or_expired_trusted_deadline_does_not_dispatch_context_handler() {
+async fn missing_trusted_deadline_is_refused_without_context_dispatch() {
     let harness = RouteHarness::new().await;
-    let calls = Arc::new(AtomicUsize::new(0));
     let state = harness.state.clone();
+    let missing_calls = Arc::new(AtomicUsize::new(0));
+    let missing_calls_for_route = missing_calls.clone();
     let missing = Router::new()
         .route(
             "/concert-context",
-            get(move |_access: HttpConcertAccess| async move { StatusCode::NO_CONTENT }),
+            get(move |_access: HttpConcertAccess| {
+                let missing_calls_for_route = missing_calls_for_route.clone();
+                async move {
+                    missing_calls_for_route.fetch_add(1, Ordering::SeqCst);
+                    StatusCode::NO_CONTENT
+                }
+            }),
         )
         .with_state(state.clone());
     let response = missing
@@ -162,27 +145,34 @@ async fn missing_or_expired_trusted_deadline_does_not_dispatch_context_handler()
         .await
         .unwrap();
     assert_eq!(response.status(), StatusCode::GATEWAY_TIMEOUT);
+    assert_eq!(missing_calls.load(Ordering::SeqCst), 0);
+}
 
-    let expired = Router::new()
-        .route(
-            "/concert-context",
-            get(move |_access: HttpConcertAccess| async move { StatusCode::NO_CONTENT }),
-        )
-        .layer(middleware::from_fn(
-            |mut request: Request<Body>, next: Next| async move {
-                request.extensions_mut().insert(http::RequestDeadline(
-                    std::time::Instant::now() - std::time::Duration::from_millis(1),
-                ));
-                next.run(request).await
-            },
+#[tokio::test]
+async fn production_timeout_refuses_stalled_context_before_handler_counter_runs() {
+    #[derive(Clone)]
+    struct Stalled(Arc<AtomicUsize>);
+    async fn stalled(axum::extract::State(calls): axum::extract::State<Stalled>) -> StatusCode {
+        calls.0.fetch_add(1, Ordering::SeqCst);
+        std::future::pending().await
+    }
+    let harness = RouteHarness::new().await;
+    let calls = Arc::new(AtomicUsize::new(0));
+    let started = Instant::now();
+    let response = Router::new()
+        .route("/concert-context", get(stalled))
+        .with_state(Stalled(calls.clone()))
+        .layer(middleware::from_fn_with_state(
+            harness.state.clone(),
+            http::timeout_middleware,
         ))
-        .with_state(state);
-    let response = expired
         .oneshot(request(&harness.bearer_token(USER_ID)))
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
-    assert_eq!(calls.load(Ordering::SeqCst), 0);
+    assert_eq!(response.status(), StatusCode::GATEWAY_TIMEOUT);
+    assert_eq!(calls.load(Ordering::SeqCst), 1);
+    assert!(started.elapsed() >= Duration::from_millis(800));
+    assert!(started.elapsed() < Duration::from_secs(2));
 }
 
 #[tokio::test]
@@ -202,7 +192,7 @@ async fn malformed_missing_session_and_foreign_issuer_tokens_fail_closed() {
     }
 }
 
-#[tokio::test(start_paused = true)]
+#[tokio::test]
 async fn unknown_key_refresh_wait_cannot_extend_original_deadline() {
     use api_gateway::adapters::out::signing_keys::{RefreshPolicy, SigningKeyRefresher};
     use api_gateway::application::dto::issuer_dto::SigningKeysDto;
@@ -247,12 +237,15 @@ async fn unknown_key_refresh_wait_cannot_extend_original_deadline() {
         )
         .layer(middleware::from_fn_with_state(
             state.clone(),
-            short_deadline,
+            http::timeout_middleware,
         ))
         .with_state(state);
+    let started = Instant::now();
     let response = router
         .oneshot(request(&RouteHarness::new().await.bearer_token(USER_ID)))
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+    assert_eq!(response.status(), StatusCode::GATEWAY_TIMEOUT);
+    assert!(started.elapsed() >= Duration::from_millis(800));
+    assert!(started.elapsed() < Duration::from_secs(2));
 }

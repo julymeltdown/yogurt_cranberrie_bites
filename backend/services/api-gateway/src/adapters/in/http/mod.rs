@@ -858,7 +858,7 @@ pub(crate) async fn admit_anonymous_identity(
     Ok(())
 }
 
-async fn timeout_middleware(
+pub async fn timeout_middleware(
     State(state): State<Arc<AppState>>,
     mut request: Request<axum::body::Body>,
     next: Next,
