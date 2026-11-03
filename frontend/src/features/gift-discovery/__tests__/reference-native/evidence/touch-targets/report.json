@@ -1,0 +1,1562 @@
+{
+  "result": "PASS",
+  "base": "677f958e7965e15258f1249287ffe2f442ac1c18",
+  "qaSource": "12d987b34498fbfb434df468517eb1696b40d76b",
+  "scope": "Actual default root/Auth/Phaser with explicit test-only C04 HTTP dependency injection; no panel override, live services or accepted avatar identity",
+  "cases": [
+    {
+      "width": 360,
+      "height": 608,
+      "hasTouch": true,
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 59,
+          "width": 97.015625,
+          "height": 44,
+          "right": 112.015625,
+          "bottom": 103
+        },
+        {
+          "name": "My giving",
+          "x": 118.015625,
+          "y": 59,
+          "width": 107.796875,
+          "height": 44,
+          "right": 225.8125,
+          "bottom": 103
+        },
+        {
+          "name": "My pickups",
+          "x": 231.8125,
+          "y": 59,
+          "width": 113.1875,
+          "height": 44,
+          "right": 345,
+          "bottom": 103
+        },
+        {
+          "name": "Sticker pack",
+          "x": 113.109375,
+          "y": 118,
+          "width": 73.421875,
+          "height": 44,
+          "right": 186.53125,
+          "bottom": 162
+        },
+        {
+          "name": "Review reservation for Sticker pack",
+          "x": 260,
+          "y": 185,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 229
+        },
+        {
+          "name": "Hand banner",
+          "x": 113.109375,
+          "y": 249,
+          "width": 76.75,
+          "height": 44,
+          "right": 189.859375,
+          "bottom": 293
+        },
+        {
+          "name": "Review reservation for Hand banner",
+          "x": 260,
+          "y": 316,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 360
+        },
+        {
+          "name": "Custom button",
+          "x": 113.109375,
+          "y": 380,
+          "width": 89.1875,
+          "height": 44,
+          "right": 202.296875,
+          "bottom": 424
+        },
+        {
+          "name": "Review reservation for Custom button",
+          "x": 260,
+          "y": 447,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 491
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 506,
+          "width": 330,
+          "height": 44,
+          "right": 345,
+          "bottom": 550
+        },
+        {
+          "name": "My gifts →",
+          "x": 300.40625,
+          "y": 556,
+          "width": 44.59375,
+          "height": 44,
+          "right": 345,
+          "bottom": 600
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 111,
+          "width": 330,
+          "height": 125,
+          "right": 345,
+          "bottom": 236,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 242,
+          "width": 330,
+          "height": 125,
+          "right": 345,
+          "bottom": 367,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 373,
+          "width": 330,
+          "height": 125,
+          "right": 345,
+          "bottom": 498,
+          "overlap": false
+        }
+      ],
+      "reserveReachableAfterScroll": [
+        "/gifts/00000000-0000-4000-8000-000000000064/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000063/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000062/reservation"
+      ],
+      "keyboardDetailBackFocus": true,
+      "filterKeyboard": true,
+      "noBusinessMutation": true,
+      "singleWorld": true,
+      "file": "root-360-608-touch.png",
+      "sha256": "b54b3e2ea9905f343004320401dca539f810d466106adb658355983b19ed3316"
+    },
+    {
+      "width": 390,
+      "height": 608,
+      "hasTouch": true,
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 59,
+          "width": 106.15625,
+          "height": 44,
+          "right": 121.15625,
+          "bottom": 103
+        },
+        {
+          "name": "My giving",
+          "x": 127.15625,
+          "y": 59,
+          "width": 117.96875,
+          "height": 44,
+          "right": 245.125,
+          "bottom": 103
+        },
+        {
+          "name": "My pickups",
+          "x": 251.125,
+          "y": 59,
+          "width": 123.875,
+          "height": 44,
+          "right": 375,
+          "bottom": 103
+        },
+        {
+          "name": "Sticker pack",
+          "x": 120.90625,
+          "y": 118,
+          "width": 79.5,
+          "height": 44,
+          "right": 200.40625,
+          "bottom": 162
+        },
+        {
+          "name": "Review reservation for Sticker pack",
+          "x": 290,
+          "y": 185,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 229
+        },
+        {
+          "name": "Hand banner",
+          "x": 120.90625,
+          "y": 249,
+          "width": 83.09375,
+          "height": 44,
+          "right": 204,
+          "bottom": 293
+        },
+        {
+          "name": "Review reservation for Hand banner",
+          "x": 290,
+          "y": 316,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 360
+        },
+        {
+          "name": "Custom button",
+          "x": 120.90625,
+          "y": 380,
+          "width": 96.5625,
+          "height": 44,
+          "right": 217.46875,
+          "bottom": 424
+        },
+        {
+          "name": "Review reservation for Custom button",
+          "x": 290,
+          "y": 447,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 491
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 506,
+          "width": 360,
+          "height": 44,
+          "right": 375,
+          "bottom": 550
+        },
+        {
+          "name": "My gifts →",
+          "x": 330.40625,
+          "y": 556,
+          "width": 44.59375,
+          "height": 44,
+          "right": 375,
+          "bottom": 600
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 111,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 236,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 242,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 367,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 373,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 498,
+          "overlap": false
+        }
+      ],
+      "reserveReachableAfterScroll": [
+        "/gifts/00000000-0000-4000-8000-000000000064/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000063/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000062/reservation"
+      ],
+      "keyboardDetailBackFocus": true,
+      "filterKeyboard": true,
+      "noBusinessMutation": true,
+      "singleWorld": true,
+      "file": "root-390-608-touch.png",
+      "sha256": "2ceddc68c385ad055a46ffe48b351e53b22761bf01e1742a2669104379db91d9"
+    },
+    {
+      "width": 430,
+      "height": 608,
+      "hasTouch": true,
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 59,
+          "width": 118.359375,
+          "height": 44,
+          "right": 133.359375,
+          "bottom": 103
+        },
+        {
+          "name": "My giving",
+          "x": 139.359375,
+          "y": 59,
+          "width": 131.53125,
+          "height": 44,
+          "right": 270.890625,
+          "bottom": 103
+        },
+        {
+          "name": "My pickups",
+          "x": 276.890625,
+          "y": 59,
+          "width": 138.109375,
+          "height": 44,
+          "right": 415,
+          "bottom": 103
+        },
+        {
+          "name": "Sticker pack",
+          "x": 131.3125,
+          "y": 118,
+          "width": 87.703125,
+          "height": 44,
+          "right": 219.015625,
+          "bottom": 162
+        },
+        {
+          "name": "Review reservation for Sticker pack",
+          "x": 330,
+          "y": 185,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 229
+        },
+        {
+          "name": "Hand banner",
+          "x": 131.3125,
+          "y": 249,
+          "width": 91.65625,
+          "height": 44,
+          "right": 222.96875,
+          "bottom": 293
+        },
+        {
+          "name": "Review reservation for Hand banner",
+          "x": 330,
+          "y": 316,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 360
+        },
+        {
+          "name": "Custom button",
+          "x": 131.3125,
+          "y": 380,
+          "width": 106.515625,
+          "height": 44,
+          "right": 237.828125,
+          "bottom": 424
+        },
+        {
+          "name": "Review reservation for Custom button",
+          "x": 330,
+          "y": 447,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 491
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 506,
+          "width": 400,
+          "height": 44,
+          "right": 415,
+          "bottom": 550
+        },
+        {
+          "name": "My gifts →",
+          "x": 370.40625,
+          "y": 556,
+          "width": 44.59375,
+          "height": 44,
+          "right": 415,
+          "bottom": 600
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 111,
+          "width": 400,
+          "height": 125,
+          "right": 415,
+          "bottom": 236,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 242,
+          "width": 400,
+          "height": 125,
+          "right": 415,
+          "bottom": 367,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 373,
+          "width": 400,
+          "height": 125,
+          "right": 415,
+          "bottom": 498,
+          "overlap": false
+        }
+      ],
+      "reserveReachableAfterScroll": [
+        "/gifts/00000000-0000-4000-8000-000000000064/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000063/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000062/reservation"
+      ],
+      "keyboardDetailBackFocus": true,
+      "filterKeyboard": true,
+      "noBusinessMutation": true,
+      "singleWorld": true,
+      "file": "root-430-608-touch.png",
+      "sha256": "b05c811070d0c5dd439b341939cab6736e4f2c6e37050bc695b7daa20bea65cc"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "hasTouch": true,
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 63,
+          "width": 106.15625,
+          "height": 44,
+          "right": 121.15625,
+          "bottom": 107
+        },
+        {
+          "name": "My giving",
+          "x": 127.15625,
+          "y": 63,
+          "width": 117.96875,
+          "height": 44,
+          "right": 245.125,
+          "bottom": 107
+        },
+        {
+          "name": "My pickups",
+          "x": 251.125,
+          "y": 63,
+          "width": 123.875,
+          "height": 44,
+          "right": 375,
+          "bottom": 107
+        },
+        {
+          "name": "Sticker pack",
+          "x": 120.90625,
+          "y": 122,
+          "width": 79.5,
+          "height": 44,
+          "right": 200.40625,
+          "bottom": 166
+        },
+        {
+          "name": "Review reservation for Sticker pack",
+          "x": 290,
+          "y": 189,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 233
+        },
+        {
+          "name": "Hand banner",
+          "x": 120.90625,
+          "y": 253,
+          "width": 83.09375,
+          "height": 44,
+          "right": 204,
+          "bottom": 297
+        },
+        {
+          "name": "Review reservation for Hand banner",
+          "x": 290,
+          "y": 320,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 364
+        },
+        {
+          "name": "Custom button",
+          "x": 120.90625,
+          "y": 384,
+          "width": 96.5625,
+          "height": 44,
+          "right": 217.46875,
+          "bottom": 428
+        },
+        {
+          "name": "Review reservation for Custom button",
+          "x": 290,
+          "y": 451,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 495
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 510,
+          "width": 360,
+          "height": 44,
+          "right": 375,
+          "bottom": 554
+        },
+        {
+          "name": "My gifts →",
+          "x": 330.40625,
+          "y": 560,
+          "width": 44.59375,
+          "height": 44,
+          "right": 375,
+          "bottom": 604
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 115,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 240,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 246,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 371,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 377,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 502,
+          "overlap": false
+        }
+      ],
+      "reserveReachableAfterScroll": [
+        "/gifts/00000000-0000-4000-8000-000000000064/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000063/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000062/reservation"
+      ],
+      "keyboardDetailBackFocus": true,
+      "filterKeyboard": true,
+      "noBusinessMutation": true,
+      "singleWorld": true,
+      "file": "root-390-844-touch.png",
+      "sha256": "d56be883c9cf8ba3177f0d447b0002ed32feadaafa91f1f448ef2ff3ab71797e"
+    },
+    {
+      "width": 390,
+      "height": 608,
+      "hasTouch": false,
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 59,
+          "width": 106.15625,
+          "height": 44,
+          "right": 121.15625,
+          "bottom": 103
+        },
+        {
+          "name": "My giving",
+          "x": 127.15625,
+          "y": 59,
+          "width": 117.96875,
+          "height": 44,
+          "right": 245.125,
+          "bottom": 103
+        },
+        {
+          "name": "My pickups",
+          "x": 251.125,
+          "y": 59,
+          "width": 123.875,
+          "height": 44,
+          "right": 375,
+          "bottom": 103
+        },
+        {
+          "name": "Sticker pack",
+          "x": 120.90625,
+          "y": 118,
+          "width": 79.5,
+          "height": 44,
+          "right": 200.40625,
+          "bottom": 162
+        },
+        {
+          "name": "Review reservation for Sticker pack",
+          "x": 290,
+          "y": 185,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 229
+        },
+        {
+          "name": "Hand banner",
+          "x": 120.90625,
+          "y": 249,
+          "width": 83.09375,
+          "height": 44,
+          "right": 204,
+          "bottom": 293
+        },
+        {
+          "name": "Review reservation for Hand banner",
+          "x": 290,
+          "y": 316,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 360
+        },
+        {
+          "name": "Custom button",
+          "x": 120.90625,
+          "y": 380,
+          "width": 96.5625,
+          "height": 44,
+          "right": 217.46875,
+          "bottom": 424
+        },
+        {
+          "name": "Review reservation for Custom button",
+          "x": 290,
+          "y": 447,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 491
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 506,
+          "width": 360,
+          "height": 44,
+          "right": 375,
+          "bottom": 550
+        },
+        {
+          "name": "My gifts →",
+          "x": 330.40625,
+          "y": 556,
+          "width": 44.59375,
+          "height": 44,
+          "right": 375,
+          "bottom": 600
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 111,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 236,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 242,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 367,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 373,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 498,
+          "overlap": false
+        }
+      ],
+      "reserveReachableAfterScroll": [
+        "/gifts/00000000-0000-4000-8000-000000000064/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000063/reservation",
+        "/gifts/00000000-0000-4000-8000-000000000062/reservation"
+      ],
+      "keyboardDetailBackFocus": true,
+      "filterKeyboard": true,
+      "noBusinessMutation": true,
+      "singleWorld": true,
+      "file": "root-390-608-mouse.png",
+      "sha256": "2ceddc68c385ad055a46ffe48b351e53b22761bf01e1742a2669104379db91d9"
+    }
+  ],
+  "stress": [
+    {
+      "width": 360,
+      "scenario": "long",
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 66,
+          "width": 97.015625,
+          "height": 44,
+          "right": 112.015625,
+          "bottom": 110
+        },
+        {
+          "name": "My giving",
+          "x": 118.015625,
+          "y": 66,
+          "width": 107.796875,
+          "height": 44,
+          "right": 225.8125,
+          "bottom": 110
+        },
+        {
+          "name": "My pickups",
+          "x": 231.8125,
+          "y": 66,
+          "width": 113.1875,
+          "height": 44,
+          "right": 345,
+          "bottom": 110
+        },
+        {
+          "name": "Fixture fan badges — a longer descriptive item title",
+          "x": 113.109375,
+          "y": 125,
+          "width": 222.890625,
+          "height": 44,
+          "right": 336,
+          "bottom": 169
+        },
+        {
+          "name": "Review reservation for Fixture fan badges — a longer descriptive item title",
+          "x": 260,
+          "y": 192,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 236
+        },
+        {
+          "name": "Fixture ribbon keepsake — a longer descriptive item title",
+          "x": 113.109375,
+          "y": 256,
+          "width": 222.890625,
+          "height": 44,
+          "right": 336,
+          "bottom": 300
+        },
+        {
+          "name": "Review reservation for Fixture ribbon keepsake — a longer descriptive item title",
+          "x": 260,
+          "y": 323,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 367
+        },
+        {
+          "name": "Fixture printed zine — a longer descriptive item title",
+          "x": 113.109375,
+          "y": 387,
+          "width": 222.890625,
+          "height": 44,
+          "right": 336,
+          "bottom": 431
+        },
+        {
+          "name": "Review reservation for Fixture printed zine — a longer descriptive item title",
+          "x": 260,
+          "y": 454,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 498
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 513,
+          "width": 330,
+          "height": 44,
+          "right": 345,
+          "bottom": 557
+        },
+        {
+          "name": "My gifts →",
+          "x": 300.40625,
+          "y": 563,
+          "width": 44.59375,
+          "height": 44,
+          "right": 345,
+          "bottom": 607
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 118,
+          "width": 330,
+          "height": 125,
+          "right": 345,
+          "bottom": 243,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 249,
+          "width": 330,
+          "height": 125,
+          "right": 345,
+          "bottom": 374,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 380,
+          "width": 330,
+          "height": 125,
+          "right": 345,
+          "bottom": 505,
+          "overlap": false
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "scenario": "unavailable",
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 66,
+          "width": 97.015625,
+          "height": 44,
+          "right": 112.015625,
+          "bottom": 110
+        },
+        {
+          "name": "My giving",
+          "x": 118.015625,
+          "y": 66,
+          "width": 107.796875,
+          "height": 44,
+          "right": 225.8125,
+          "bottom": 110
+        },
+        {
+          "name": "My pickups",
+          "x": 231.8125,
+          "y": 66,
+          "width": 113.1875,
+          "height": 44,
+          "right": 345,
+          "bottom": 110
+        },
+        {
+          "name": "Fixture fan badges",
+          "x": 113.109375,
+          "y": 125,
+          "width": 110.828125,
+          "height": 44,
+          "right": 223.9375,
+          "bottom": 169
+        },
+        {
+          "name": "Reservations unavailable for Fixture fan badges",
+          "x": 260,
+          "y": 188.671875,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 232.671875
+        },
+        {
+          "name": "Fixture ribbon keepsake",
+          "x": 113.109375,
+          "y": 273.0625,
+          "width": 143.53125,
+          "height": 44,
+          "right": 256.640625,
+          "bottom": 317.0625
+        },
+        {
+          "name": "Reservations unavailable for Fixture ribbon keepsake",
+          "x": 260,
+          "y": 336.734375,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 380.734375
+        },
+        {
+          "name": "Fixture printed zine",
+          "x": 113.109375,
+          "y": 421.125,
+          "width": 114.4375,
+          "height": 44,
+          "right": 227.546875,
+          "bottom": 465.125
+        },
+        {
+          "name": "Reservations unavailable for Fixture printed zine",
+          "x": 260,
+          "y": 484.796875,
+          "width": 76,
+          "height": 44,
+          "right": 336,
+          "bottom": 528.796875
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 564.1875,
+          "width": 330,
+          "height": 44,
+          "right": 345,
+          "bottom": 608.1875
+        },
+        {
+          "name": "My gifts →",
+          "x": 300.40625,
+          "y": 614.1875,
+          "width": 44.59375,
+          "height": 44,
+          "right": 345,
+          "bottom": 658.1875
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 118,
+          "width": 330,
+          "height": 142.0625,
+          "right": 345,
+          "bottom": 260.0625,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 266.0625,
+          "width": 330,
+          "height": 142.0625,
+          "right": 345,
+          "bottom": 408.125,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 414.125,
+          "width": 330,
+          "height": 142.0625,
+          "right": 345,
+          "bottom": 556.1875,
+          "overlap": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "scenario": "long",
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 66,
+          "width": 106.15625,
+          "height": 44,
+          "right": 121.15625,
+          "bottom": 110
+        },
+        {
+          "name": "My giving",
+          "x": 127.15625,
+          "y": 66,
+          "width": 117.96875,
+          "height": 44,
+          "right": 245.125,
+          "bottom": 110
+        },
+        {
+          "name": "My pickups",
+          "x": 251.125,
+          "y": 66,
+          "width": 123.875,
+          "height": 44,
+          "right": 375,
+          "bottom": 110
+        },
+        {
+          "name": "Fixture fan badges — a longer descriptive item title",
+          "x": 120.90625,
+          "y": 125,
+          "width": 245.09375,
+          "height": 44,
+          "right": 366,
+          "bottom": 169
+        },
+        {
+          "name": "Review reservation for Fixture fan badges — a longer descriptive item title",
+          "x": 290,
+          "y": 192,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 236
+        },
+        {
+          "name": "Fixture ribbon keepsake — a longer descriptive item title",
+          "x": 120.90625,
+          "y": 256,
+          "width": 245.09375,
+          "height": 44,
+          "right": 366,
+          "bottom": 300
+        },
+        {
+          "name": "Review reservation for Fixture ribbon keepsake — a longer descriptive item title",
+          "x": 290,
+          "y": 323,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 367
+        },
+        {
+          "name": "Fixture printed zine — a longer descriptive item title",
+          "x": 120.90625,
+          "y": 387,
+          "width": 245.09375,
+          "height": 44,
+          "right": 366,
+          "bottom": 431
+        },
+        {
+          "name": "Review reservation for Fixture printed zine — a longer descriptive item title",
+          "x": 290,
+          "y": 454,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 498
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 513,
+          "width": 360,
+          "height": 44,
+          "right": 375,
+          "bottom": 557
+        },
+        {
+          "name": "My gifts →",
+          "x": 330.40625,
+          "y": 563,
+          "width": 44.59375,
+          "height": 44,
+          "right": 375,
+          "bottom": 607
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 118,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 243,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 249,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 374,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 380,
+          "width": 360,
+          "height": 125,
+          "right": 375,
+          "bottom": 505,
+          "overlap": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "scenario": "unavailable",
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 66,
+          "width": 106.15625,
+          "height": 44,
+          "right": 121.15625,
+          "bottom": 110
+        },
+        {
+          "name": "My giving",
+          "x": 127.15625,
+          "y": 66,
+          "width": 117.96875,
+          "height": 44,
+          "right": 245.125,
+          "bottom": 110
+        },
+        {
+          "name": "My pickups",
+          "x": 251.125,
+          "y": 66,
+          "width": 123.875,
+          "height": 44,
+          "right": 375,
+          "bottom": 110
+        },
+        {
+          "name": "Fixture fan badges",
+          "x": 120.90625,
+          "y": 125,
+          "width": 120,
+          "height": 44,
+          "right": 240.90625,
+          "bottom": 169
+        },
+        {
+          "name": "Reservations unavailable for Fixture fan badges",
+          "x": 290,
+          "y": 189.96875,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 233.96875
+        },
+        {
+          "name": "Fixture ribbon keepsake",
+          "x": 120.90625,
+          "y": 274.359375,
+          "width": 155.390625,
+          "height": 44,
+          "right": 276.296875,
+          "bottom": 318.359375
+        },
+        {
+          "name": "Reservations unavailable for Fixture ribbon keepsake",
+          "x": 290,
+          "y": 339.328125,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 383.328125
+        },
+        {
+          "name": "Fixture printed zine",
+          "x": 120.90625,
+          "y": 423.71875,
+          "width": 123.90625,
+          "height": 44,
+          "right": 244.8125,
+          "bottom": 467.71875
+        },
+        {
+          "name": "Reservations unavailable for Fixture printed zine",
+          "x": 290,
+          "y": 488.6875,
+          "width": 76,
+          "height": 44,
+          "right": 366,
+          "bottom": 532.6875
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 568.078125,
+          "width": 360,
+          "height": 44,
+          "right": 375,
+          "bottom": 612.078125
+        },
+        {
+          "name": "My gifts →",
+          "x": 330.40625,
+          "y": 618.078125,
+          "width": 44.59375,
+          "height": 44,
+          "right": 375,
+          "bottom": 662.078125
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 118,
+          "width": 360,
+          "height": 143.359375,
+          "right": 375,
+          "bottom": 261.359375,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 267.359375,
+          "width": 360,
+          "height": 143.359375,
+          "right": 375,
+          "bottom": 410.71875,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 416.71875,
+          "width": 360,
+          "height": 143.359375,
+          "right": 375,
+          "bottom": 560.078125,
+          "overlap": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "scenario": "long",
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 66,
+          "width": 118.359375,
+          "height": 44,
+          "right": 133.359375,
+          "bottom": 110
+        },
+        {
+          "name": "My giving",
+          "x": 139.359375,
+          "y": 66,
+          "width": 131.53125,
+          "height": 44,
+          "right": 270.890625,
+          "bottom": 110
+        },
+        {
+          "name": "My pickups",
+          "x": 276.890625,
+          "y": 66,
+          "width": 138.109375,
+          "height": 44,
+          "right": 415,
+          "bottom": 110
+        },
+        {
+          "name": "Fixture fan badges — a longer descriptive item title",
+          "x": 131.3125,
+          "y": 125,
+          "width": 274.6875,
+          "height": 44,
+          "right": 406,
+          "bottom": 169
+        },
+        {
+          "name": "Review reservation for Fixture fan badges — a longer descriptive item title",
+          "x": 330,
+          "y": 192,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 236
+        },
+        {
+          "name": "Fixture ribbon keepsake — a longer descriptive item title",
+          "x": 131.3125,
+          "y": 256,
+          "width": 274.6875,
+          "height": 44,
+          "right": 406,
+          "bottom": 300
+        },
+        {
+          "name": "Review reservation for Fixture ribbon keepsake — a longer descriptive item title",
+          "x": 330,
+          "y": 323,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 367
+        },
+        {
+          "name": "Fixture printed zine — a longer descriptive item title",
+          "x": 131.3125,
+          "y": 387,
+          "width": 274.6875,
+          "height": 44,
+          "right": 406,
+          "bottom": 431
+        },
+        {
+          "name": "Review reservation for Fixture printed zine — a longer descriptive item title",
+          "x": 330,
+          "y": 454,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 498
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 513,
+          "width": 400,
+          "height": 44,
+          "right": 415,
+          "bottom": 557
+        },
+        {
+          "name": "My gifts →",
+          "x": 370.40625,
+          "y": 563,
+          "width": 44.59375,
+          "height": 44,
+          "right": 415,
+          "bottom": 607
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 118,
+          "width": 400,
+          "height": 125,
+          "right": 415,
+          "bottom": 243,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 249,
+          "width": 400,
+          "height": 125,
+          "right": 415,
+          "bottom": 374,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 380,
+          "width": 400,
+          "height": 125,
+          "right": 415,
+          "bottom": 505,
+          "overlap": false
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "scenario": "unavailable",
+      "overflow": false,
+      "targets": [
+        {
+          "name": "Browse",
+          "x": 15,
+          "y": 66,
+          "width": 118.359375,
+          "height": 44,
+          "right": 133.359375,
+          "bottom": 110
+        },
+        {
+          "name": "My giving",
+          "x": 139.359375,
+          "y": 66,
+          "width": 131.53125,
+          "height": 44,
+          "right": 270.890625,
+          "bottom": 110
+        },
+        {
+          "name": "My pickups",
+          "x": 276.890625,
+          "y": 66,
+          "width": 138.109375,
+          "height": 44,
+          "right": 415,
+          "bottom": 110
+        },
+        {
+          "name": "Fixture fan badges",
+          "x": 131.3125,
+          "y": 125,
+          "width": 132.375,
+          "height": 44,
+          "right": 263.6875,
+          "bottom": 169
+        },
+        {
+          "name": "Reservations unavailable for Fixture fan badges",
+          "x": 330,
+          "y": 191.1875,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 235.1875
+        },
+        {
+          "name": "Fixture ribbon keepsake",
+          "x": 131.3125,
+          "y": 275.578125,
+          "width": 171.4375,
+          "height": 44,
+          "right": 302.75,
+          "bottom": 319.578125
+        },
+        {
+          "name": "Reservations unavailable for Fixture ribbon keepsake",
+          "x": 330,
+          "y": 341.765625,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 385.765625
+        },
+        {
+          "name": "Fixture printed zine",
+          "x": 131.3125,
+          "y": 426.15625,
+          "width": 136.703125,
+          "height": 44,
+          "right": 268.015625,
+          "bottom": 470.15625
+        },
+        {
+          "name": "Reservations unavailable for Fixture printed zine",
+          "x": 330,
+          "y": 492.34375,
+          "width": 76,
+          "height": 44,
+          "right": 406,
+          "bottom": 536.34375
+        },
+        {
+          "name": "Filter giveaways",
+          "x": 15,
+          "y": 571.734375,
+          "width": 400,
+          "height": 44,
+          "right": 415,
+          "bottom": 615.734375
+        },
+        {
+          "name": "My gifts →",
+          "x": 370.40625,
+          "y": 621.734375,
+          "width": 44.59375,
+          "height": 44,
+          "right": 415,
+          "bottom": 665.734375
+        }
+      ],
+      "rows": [
+        {
+          "x": 15,
+          "y": 118,
+          "width": 400,
+          "height": 144.578125,
+          "right": 415,
+          "bottom": 262.578125,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 268.578125,
+          "width": 400,
+          "height": 144.578125,
+          "right": 415,
+          "bottom": 413.15625,
+          "overlap": false
+        },
+        {
+          "x": 15,
+          "y": 419.15625,
+          "width": 400,
+          "height": 144.578125,
+          "right": 415,
+          "bottom": 563.734375,
+          "overlap": false
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "sourcePins": {
+    "ui/reference-gifts.css": "c11d23a14cf241e763f8c07b8f4c4595923aa1aac6e4c25cad1ccebfa0745040",
+    "ui/reference-presentation.tsx": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754",
+    "__tests__/reference-native/root-touch-data.ts": "a9bcb50b15a3a78598e63b518b3d19f33890ceb701a21bc2f01e58301e5e7523"
+  }
+}
