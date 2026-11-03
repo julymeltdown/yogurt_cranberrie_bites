@@ -269,5 +269,22 @@
     "Actual World renderer atlas sharing NOT_RUN",
     "Live services and multiuser flows NOT_RUN",
     "Separate canonical whole-character union admission followup remains owned by its author"
-  ]
+  ],
+  "publicationReconciliation": {
+    "sourceHead": "b69738f4f6fca691dcf9126ff39e93c3d5080fcc",
+    "peerMaster": "f4b4080897a6b1ad835fa4e5e9372f82d58e489e",
+    "affectedTests": {
+      "exitCode": 0,
+      "tests": 265,
+      "files": 25
+    },
+    "additionalMapTests": {
+      "exitCode": 0,
+      "tests": 88,
+      "files": 7
+    },
+    "typesExit": 0,
+    "lintExit": 0,
+    "buildExit": 0
+  }
 }
