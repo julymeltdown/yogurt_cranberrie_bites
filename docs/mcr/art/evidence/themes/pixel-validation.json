@@ -1,0 +1,96 @@
+{
+  "scope": "AR04 original source texture validation only",
+  "result": "PASS",
+  "python": "3.14.3",
+  "pillow": "12.2.0",
+  "themes": [
+    {
+      "theme": "REVENGE",
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/revenge.png",
+        "sha256": "sha256:245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "bytes": 4975,
+      "decoded_rgba_bytes": 131072,
+      "unique_rgba_colors": 20,
+      "tile_seams": "PASS: opposing boundary pixels identical on all eight terrain cells",
+      "source_render_pixel_parity": "PASS: all authored pixels exact",
+      "contrast": {
+        "ink_on_grass": 3.586,
+        "ink_on_pave": 6.574,
+        "ink_on_paper": 12.724,
+        "ink_on_accent": 3.209,
+        "ink_on_light": 8.954
+      },
+      "alpha_mask_sha256": "sha256:efaad4cc17c37192b04edaa12ab3091b87573242fa22c472acb13dc769efd69c"
+    },
+    {
+      "theme": "PARADE",
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/parade.png",
+        "sha256": "sha256:3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "bytes": 5017,
+      "decoded_rgba_bytes": 131072,
+      "unique_rgba_colors": 20,
+      "tile_seams": "PASS: opposing boundary pixels identical on all eight terrain cells",
+      "source_render_pixel_parity": "PASS: all authored pixels exact",
+      "contrast": {
+        "ink_on_grass": 3.807,
+        "ink_on_pave": 7.298,
+        "ink_on_paper": 12.338,
+        "ink_on_accent": 10.104,
+        "ink_on_light": 8.464
+      },
+      "alpha_mask_sha256": "sha256:efaad4cc17c37192b04edaa12ab3091b87573242fa22c472acb13dc769efd69c"
+    },
+    {
+      "theme": "DANGER",
+      "texture": {
+        "image_state": "PROVIDED",
+        "path": "world/themes/danger.png",
+        "sha256": "sha256:1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+        "width_px": 256,
+        "height_px": 128
+      },
+      "bytes": 4909,
+      "decoded_rgba_bytes": 131072,
+      "unique_rgba_colors": 20,
+      "tile_seams": "PASS: opposing boundary pixels identical on all eight terrain cells",
+      "source_render_pixel_parity": "PASS: all authored pixels exact",
+      "contrast": {
+        "ink_on_grass": 4.97,
+        "ink_on_pave": 6.824,
+        "ink_on_paper": 11.837,
+        "ink_on_accent": 8.93,
+        "ink_on_light": 7.692
+      },
+      "alpha_mask_sha256": "sha256:efaad4cc17c37192b04edaa12ab3091b87573242fa22c472acb13dc769efd69c"
+    }
+  ],
+  "checks": [
+    "fixed row-major shared tile semantics",
+    "three distinct source PNGs",
+    "all authored integer pixels equal native rendered pixels",
+    "no terrain edge seam mismatch",
+    "opaque terrain, identical cross-theme alpha masks, reserved GIDs empty",
+    "16KiB PNG budget per theme / 48KiB total, 128KiB decoded RGBA per theme",
+    "ink/paper contrast >=4.5; ink/grass/paving/accent/light contrast >=3"
+  ],
+  "negative_probes": [
+    "wrong resource byte hash rejected",
+    "wrong declared dimensions rejected",
+    "reserved-cell paint rejected even with fresh byte hash",
+    "antialiasing alpha rejected even with fresh byte hash"
+  ],
+  "product_manifest_binding": "NOT_RUN",
+  "selected_avatar_compatibility": "NOT_RUN",
+  "real_device_qa06": "NOT_RUN",
+  "two_account_in01": "NOT_RUN"
+}
