@@ -1,0 +1,185 @@
+{
+  "result": "PASS",
+  "qualification": "Actual default shell/production composition/canonical Auth/Phaser with deterministic HTTP/MockSocket and TEST ONLY geometric resources. Secondary local-runtime fixture uses actual Phaser. No live/multiuser/device/art/prediction qualification.",
+  "phase": "after",
+  "testedParent": "a58fa90f4fe31b4d1ceef5229361fd91d8f52558",
+  "sourceHashes": {
+    "src/world/input/controller.ts": "10ee84de4f0fafd976baf604b7727d023efc302d0ba8653a5169ed8af65da36f",
+    "src/world/input/controls.css": "77f6355ccdc56f9d5f8bbe0a549ea05c0675639a77f0abce8f97e8d2d6305d69",
+    "src/world/input/model.ts": "f1d5a5bcd4358dc6572939482aba2ea72477bc1f072caad08ba9090b67653560",
+    "src/world/input/simulation.ts": "f07ce399ae7dab373c80a97b97b6a5d960d05be38a3d84f31d0c1f60f91f37d3",
+    "src/world/runtime.ts": "5e471081a021699d8f09c85102b014036d48e345fb1865b996d3cb8000c32288",
+    "src/world/scenes/MapScene.ts": "558f4cc9fae9f0714cc5008f81d0ef0a8526a2a9123731ff925b233774546635",
+    "src/world/composition/index.ts": "baaeef4a2ce2033ab24ad344e84ab7b5235f817e9299468a4525b9f5005c4ae2",
+    "src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "src/app/WorldShell.tsx": "631896b4ff51044ba204faba77a411b9162944c9bd98d6325e6912f9c681c1ab",
+    "src/app/shell.css": "b12ac66307766e8c397dab7cc4674743887a301f81e358498ce5b72bb4189eb7",
+    "src/app/router.tsx": "7d8f8f692bdf06ebdefca00a7e07aace5d54967ad2583ce0ccde4188d56a7b01",
+    "src/app/__tests__/default-shell/qualified.tsx": "26a35f303aecf6920cf38fd46d71ab453535cd73b69e8dd1fd5ad36090311f16",
+    "src/app/__tests__/default-shell/qualified-data.ts": "fcc5a4a2c776c56e66b720ba032b33e84de7b4426b6c371e80e8042b37677e0c",
+    "src/world/__tests__/fixtures/movement-data.ts": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f",
+    "src/world/__tests__/controls-layout/native.mjs": "3674456edd8f06ccd646c9c53e5928283dff8c3b0547935abf26cb33d57b8dde",
+    "src/world/__tests__/controls-layout/preview.ts": "9f7cb0327e311fb04dd73e6597f6989372ede55a1c84916b8d4e8becff8ce754",
+    "src/world/__tests__/controls-layout/preview.html": "a42825b2e0b1436bb296a2c28c5171acf60ddf6156e8c4129f5b3ec1bcf00bd2"
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "closed": {
+        "controls": {
+          "x": 0,
+          "y": 458.828125,
+          "width": 360,
+          "height": 136
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 360,
+          "height": 354
+        },
+        "viewport": {
+          "width": 360,
+          "height": 800
+        },
+        "visibleSceneHeight": 354,
+        "overflow": false
+      },
+      "short": {
+        "controls": {
+          "x": 0,
+          "y": 98,
+          "width": 360,
+          "height": 136
+        },
+        "scene": {
+          "x": 0,
+          "y": -22,
+          "width": 360,
+          "height": 120
+        },
+        "viewport": {
+          "width": 360,
+          "height": 430
+        },
+        "visibleSceneHeight": 0,
+        "overflow": false
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "closed": {
+        "controls": {
+          "x": 0,
+          "y": 502.828125,
+          "width": 390,
+          "height": 136
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 390,
+          "height": 398
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleSceneHeight": 398,
+        "overflow": false
+      },
+      "short": {
+        "controls": {
+          "x": 0,
+          "y": 98,
+          "width": 390,
+          "height": 136
+        },
+        "scene": {
+          "x": 0,
+          "y": -22,
+          "width": 390,
+          "height": 120
+        },
+        "viewport": {
+          "width": 390,
+          "height": 430
+        },
+        "visibleSceneHeight": 0,
+        "overflow": false
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "closed": {
+        "controls": {
+          "x": 0,
+          "y": 590.828125,
+          "width": 430,
+          "height": 136
+        },
+        "scene": {
+          "x": 0,
+          "y": 104,
+          "width": 430,
+          "height": 486
+        },
+        "viewport": {
+          "width": 430,
+          "height": 932
+        },
+        "visibleSceneHeight": 486,
+        "overflow": false
+      },
+      "short": {
+        "controls": {
+          "x": 0,
+          "y": 98,
+          "width": 430,
+          "height": 136
+        },
+        "scene": {
+          "x": 0,
+          "y": -22,
+          "width": 430,
+          "height": 120
+        },
+        "viewport": {
+          "width": 430,
+          "height": 430
+        },
+        "visibleSceneHeight": 0,
+        "overflow": false
+      }
+    }
+  ],
+  "artifacts": {
+    "after-world-360.png": "e1d5b52d0f7fdedc93d7588cb1b1096bbd718a1bd1fdcb20521fe936c8677a5d",
+    "after-closed-help-360.png": "d15168d7d825511f6c91f613ab0ecc711826430106c841f41df3c97a2d01943b",
+    "after-help-360.png": "bf21a09d3ea20b5decec74cb575b7b2ff809ba186961b15f94143ce34f125def",
+    "after-short-help-360.png": "1c7e885e6639817a425deaa60f558700fd6ed9e1bb7542eade78a5f5bab56c0d",
+    "after-short-360.png": "ef306c4da76bb929c60d40350fe7d51ca35cf9ada7aefef688bc30a079432bd2",
+    "after-world-390.png": "7e0f5ccbe32de814bfe93801a028df62c2da4a6ad2b0cdb1bab818bed27dc28a",
+    "after-closed-help-390.png": "6a30f5e82db620e9dd5685ceb3cd0b8ac0fb3f7e6288d497b3c0f3e1db01942b",
+    "after-help-390.png": "b0d2f71b0dd1fb038baef5c4a1fdfdf279ea461c6af4c2b2dd8ef78967b1bac6",
+    "after-short-help-390.png": "dd53590b0c20885910b0a499da50cd1eb17ca903046d2b5de4d7ddb4970063e0",
+    "after-short-390.png": "518d96809a62f685e844560180aabba2824279f325e6b3b85b6b084c2bcc30b9",
+    "after-world-430.png": "1bca3e4a315e276f0dd3e74f43df939b803c086bc4d0159fa578adc842983a2a",
+    "after-closed-help-430.png": "e475135d1a43a639294ea90cbe5f2c5f11583ea0a1fe90e2131d19e7087c6124",
+    "after-help-430.png": "94bd02d14658f2fe8b58fbed48a966e62af90f632a76597f1432d963be129e16",
+    "after-short-help-430.png": "968d215373a6fdcc037b81e74607281a71fe6e5b6c3fd19e4c190198de1ca58d",
+    "after-short-430.png": "f7dc6b4b37b0e3d636741e3180921ac82a5e30c92d5e5aae0993a20eb9b3412f",
+    "after-local-short-help-390.png": "70272bfaf01a3dd097f162a1642f709da18f548650350d182a4ab011ba18acd5",
+    "after-failure-390.png": "5fa9c522ae03a1c439937f7893fadcc6d1ae2bad026a96995f676d9c82776931"
+  },
+  "errors": [],
+  "referenceHash": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+  "browser": "156.0.8078.80",
+  "limitations": [
+    "Default-shell short height430 clips actual scene to0 visible pixels at this pinned root; intrinsic120pxcanvas is not visible-scene evidence. Root owner notified; not full short-viewport world acceptance.",
+    "Test-only terrain, HTTP and MockSocket; no approved art/live/device/multiuser qualification."
+  ]
+}

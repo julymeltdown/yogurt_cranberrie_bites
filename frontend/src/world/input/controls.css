@@ -1,10 +1,18 @@
-.world-controls{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;color:inherit;font:inherit;padding:12px 0;max-width:100%}
-.world-controls button,.world-controls select{font:inherit;color:inherit;background:var(--world-control-bg,#fffaf0);border:1px solid currentColor;border-radius:4px;min-width:44px;min-height:44px;padding:8px 10px}
+.world-controls{display:grid;gap:4px;color:inherit;font:inherit;padding:8px 0;max-width:100%;min-width:0}
+.world-controls button,.world-controls select,.world-controls summary{box-sizing:border-box;font:inherit;color:inherit;background:var(--world-control-bg,#fffaf0);border:1px solid currentColor;border-radius:4px;min-width:44px;min-height:44px;padding:8px 10px}
 .world-controls :focus-visible,canvas.world-keyboard:focus-visible{outline:3px solid #873342;outline-offset:3px}
-.world-controls .world-joystick{width:104px;height:104px;border-radius:50%;touch-action:none;position:relative;padding:0;overflow:hidden;background:#e5dfd2}
-.world-joystick span{display:block;position:absolute;width:36px;height:36px;border:1px solid currentColor;border-radius:50%;background:#fffaf0;left:33px;top:33px;pointer-events:none;transform:translate(var(--stick-x,0px),var(--stick-y,0px))}
-.world-controls .world-actions{display:flex;gap:8px;flex-wrap:wrap;min-width:0;align-items:center}
-.world-controls label{display:grid;gap:4px;min-width:0;flex-basis:100%}
-.world-controls select{width:100%;max-width:100%}.world-controls p{grid-column:1/-1;margin:0;overflow-wrap:anywhere}.world-controls button:disabled{opacity:.6}
+.world-controls .world-controls-primary{display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px;align-items:center}
+.world-controls .world-joystick{width:72px;height:72px;border-radius:50%;touch-action:none;position:relative;padding:0;overflow:hidden;background:#e5dfd2}
+.world-controls .world-joystick span{display:block;position:absolute;width:28px;height:28px;box-sizing:border-box;border:1px solid currentColor;border-radius:50%;background:#fffaf0;left:21px;top:21px;pointer-events:none;transform:translate(var(--stick-x,0px),var(--stick-y,0px))}
+.world-controls .world-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;min-width:0;align-items:center}
+.world-controls .world-actions button{overflow-wrap:anywhere}
+.world-controls .world-controls-help{min-width:0}
+.world-controls summary{width:100%;cursor:pointer;align-content:center;padding-inline:12px}
+.world-controls .world-control-details{display:grid;gap:8px;max-height:min(14rem,40dvh);overflow:auto;overscroll-behavior:contain;padding:8px 4px;margin-top:4px;scroll-padding:4px}
+.world-controls label{display:grid;gap:4px;min-width:0}
+.world-controls .world-control-zoom{display:flex;gap:8px;flex-wrap:wrap}
+.world-controls select{width:100%;max-width:100%}
+.world-controls p{margin:0;overflow-wrap:anywhere}
+.world-controls button:disabled{opacity:.6}
+.world-controls .world-control-status:not([data-prominent="true"]){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 canvas.world-keyboard{touch-action:none}
-@media(max-width:380px){.world-controls{gap:8px}.world-controls .world-joystick{width:96px;height:96px}.world-joystick span{left:29px;top:29px}}
