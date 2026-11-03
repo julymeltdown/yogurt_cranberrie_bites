@@ -14,12 +14,13 @@ const mode = new URLSearchParams(location.search).get('mode') ?? 'whole'
 const config = selected.presets[3]!.config, hostConfig = selected.presets[1]!.config
 const original = publicIntro().author
 const profile = { ...original, display_name: 'Authorized portrait subject', avatar: mode === 'layered' ? original.avatar : { revision: 7, config } }
-const ownPosts = [0, 1, 2].map(n => ({ ...post, post_id: id(500 + n), text: `Authorized subject post ${n + 1}`, created_at: new Date(Date.parse(post.created_at) - n * 60_000).toISOString(), media_ids: [] }))
+const ownPosts = [0, 1, 2].map(n => ({ ...post, author: { ...post.author, avatar: profile.avatar, display_name: 'Authorized feed author' }, post_id: id(500 + n), text: `Authorized subject post ${n + 1}`, created_at: new Date(Date.parse(post.created_at) - n * 60_000).toISOString(), media_ids: [] }))
 const otherPost = { ...post, post_id: id(509), author: { ...post.author, user_id: id(999) }, text: 'Other profile only', created_at: new Date(Date.parse(post.created_at) - 4 * 60_000).toISOString(), media_ids: [] }
 const f = fixture(request => {
   const path = new URL(request.url).pathname
   if (path.includes('/people/')) return Response.json({ ...profile, user_id: path.split('/').at(-1)! })
   if (path.endsWith('/feed')) return Response.json({ items: [...ownPosts, otherPost], next_cursor: null })
+  if (path.includes('/posts/')) return Response.json({ post: ownPosts.find(p => path.endsWith(`/${p.post_id}`)) ?? post, comments: [], next_cursor: null })
   if (path.endsWith('/parties')) return Response.json({ items: [
     party({ event_id: event, owner: { ...profile, display_name: 'Authorized party host', avatar: { revision: 2, config: hostConfig } } }),
     party({ party_id: id(700), event_id: event, owner: { ...original, display_name: 'Layered party host' } }),
@@ -53,7 +54,7 @@ async function expected(which: 'profile' | 'host') {
   const hash = await sha256(new Uint8Array(ctx.getImageData(0, 0, 64, 64).data.buffer)); lease.dispose(); canvas.width = canvas.height = 0; return hash
 }
 const api = { user, other: id(999), mode, config, hostConfig, pixels, expected, navigate: (path: string) => router.navigate(path),
-  state: () => ({ requests: f.requests.map(r => ({ path: new URL(r.url).pathname, method: r.method })), current: !!runtime(), sameRuntime: runtime() === retained, diagnostics: retained?.diagnostics(), world: { ...f.stats, signals: undefined } }),
+  state: () => ({ path: router.state.location.pathname, requests: f.requests.map(r => ({ path: new URL(r.url).pathname, method: r.method })), current: !!runtime(), sameRuntime: runtime() === retained, diagnostics: retained?.diagnostics(), world: { ...f.stats, signals: undefined } }),
   revoke: () => f.auth.privacy.changePolicy(f.scope, 'suspended'),
   dispose() { root.unmount(); router.dispose(); characters.dispose(); f.dispose() },
 }
