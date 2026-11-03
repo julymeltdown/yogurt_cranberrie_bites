@@ -39,7 +39,7 @@ remains NOT_RUN until its separate live journey is executed.
 | Task | Owner and isolated branch | Exact write grant | Actual goal state |
 | --- | --- | --- | --- |
 | FE-REF-WALL, presentation follow-up to FE32/FE33 | `01a1a213-61d6-7a20-a8e7-476649312f8c`; `codex/mcr-fe-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target` | `frontend/src/features/mural/editor/MuralEditor.tsx`, `frontend/src/features/mural/editor/editor.css`, `frontend/src/features/mural/sync/MuralSyncPanel.tsx`, new `frontend/src/features/mural/editor/__tests__/reference-target/**`, new `frontend/src/features/mural/sync/__tests__/reference-target/**`, `docs/mcr/frontend/wall-reference-target.md` | Owner verified unbudgeted goal COMPLETE after committed handoff; fresh get_goal now null. Writer STOPPED. |
-| FE-REF-WALL-QA, bounded presentation and interaction qualification | `01a1a20f-e2a9-7ca2-a21e-f2bd3a9703be`; `codex/mcr-qa-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/qa-wall-reference-target` | New `frontend/e2e/wall-reference/**`, `docs/mcr/qa/wall-reference-target.md` only | Broader unfinished real-IN04 goal remains BLOCKED; related preparation continues manually. No competing goal or false completion. |
+| FE-REF-WALL-QA, bounded presentation and interaction qualification | `01a1a20f-e2a9-7ca2-a21e-f2bd3a9703be`; `codex/mcr-qa-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/qa-wall-reference-target` | New `frontend/e2e/wall-reference/**`, `docs/mcr/qa/wall-reference-target.md` only | Bounded handoff published; writer STOPPED/clean. Broader unfinished real-IN04 goal freshly verified BLOCKED; not falsely completed. |
 | Lane coordination and committed evidence handoff | Operations SL above | This document only | Original broad goal verified BLOCKED; explicit new authorization permits useful work manually. No tool capability is claimed to resume it. |
 
 Previous writers were terminal and their old checkouts clean before transfer.
@@ -83,9 +83,9 @@ Author paths consumed as dependencies are identified separately from QA-authored
 paths. Concrete findings go directly to the author and are rechecked; QA is not
 an additional generic approval gate. Real devices and live IN04 are not implied.
 
-Author task-local work is MOCK_READY and committed; independent QA is
-IN_PROGRESS. Wall implementation/evidence and root publication are verified
-below; independent QA report publication is pending.
+The bounded author implementation and independent fixture qualification are
+delivered and published. Both writers are stopped; Wall/root/source/evidence
+ancestry is verified below. Full visual acceptance and live IN04 remain open.
 
 The author reports the three presentation files implemented and 126 existing
 editor/synchronization tests across seven files passing (exit 0). This is an
@@ -195,6 +195,30 @@ version versus this same owner's later execution updates. The complete updated
 ledger is retained; no application, source-pack, or peer changes are resolved
 away. This docs-only follow-up uses direct non-force publication under the new
 policy, rather than waiting for a coordinator approval queue.
+
+Final QA publication is
+`ce9e8e6c3705e38f9541c40472e758183aa0ffa2`, parent `3842354b56ed15a961e23b1cc4d31b52f46cec48`.
+The coordinator fetched origin and verified both this QA commit and its own
+earlier `8efe0b00` ledger publication are ancestors of current master (exit 0).
+All 63 QA-authored paths were programmatically checked against the exact two
+grants. Published candidate report SHA-256 independently matches
+`0cf6cd9f7abcc4677f0949347d6114b139d62bf587fb7015bc039fca38081144`;
+status PASS, errors empty. QA reports 24 candidate and 24 baseline capture
+hashes verified, strict source-pinned noEmit TypeScript, scoped lint, JavaScript
+syntax, planning, and an intentional missing-pin refusal all as expected.
+Its non-force publication initially lost a race; it fetched/rebased only the
+new QA commit and preserved peers before successfully retrying. No original
+Wall author or already-published QA commit is to be cherry-published again.
+
+Final QA document: `docs/mcr/qa/wall-reference-target.md`. Historical captures
+qualify `f837bef` shared presentation plus three served `832c7de9` feature blobs;
+they do not qualify newer shared/root bytes merely because the report is now
+published on a newer master. Reproduction requires the documented disposable
+historical base and QA directory. King combined-root evidence stays separate.
+The QA checkout is clean, its temporary link/cache removed, no browser/server
+remains, and its original IN04 goal remains BLOCKED. Frontend king safely
+archived the completed, clean Wall author while preserving branch/worktree and
+evidence. No product finding or immediate follow-up task is pending.
 
 ## Shared shell seam and production dependencies
 

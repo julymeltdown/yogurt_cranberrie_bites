@@ -37,7 +37,7 @@ const schemas: Record<string, unknown> = contract.components.schemas
 const metadata = new Set(['description', 'example', 'readOnly'])
 const supported = new Set(['$ref', 'type', 'const', 'enum', 'properties', 'required', 'additionalProperties',
   'items', 'minItems', 'maxItems', 'uniqueItems', 'minLength', 'maxLength', 'pattern', 'format',
-  'minimum', 'maximum', 'anyOf', 'allOf', 'if', 'then', 'else'])
+  'minimum', 'maximum', 'anyOf', 'oneOf', 'allOf', 'if', 'then', 'else'])
 type Check = (value: unknown, budget: { remaining: number }, depth: number) => boolean
 const compiled = new Map<string, Check>()
 const compiling = new Set<string>()
@@ -50,6 +50,7 @@ function compile(input: unknown): Check {
   if (ref) requireValue(/^#\/components\/schemas\/[A-Za-z0-9]+$/.test(ref) && Object.hasOwn(schemas, ref.split('/').at(-1)!))
   const referenced = ref ? compileName(ref.split('/').at(-1)!) : null
   const alternatives = schema.anyOf ? list(schema.anyOf).map(compile) : null
+  const exclusive = schema.oneOf ? list(schema.oneOf).map(compile) : null
   const intersections = schema.allOf ? list(schema.allOf).map(compile) : []
   const conditional = schema.if ? compile(schema.if) : null
   const yes = schema.then ? compile(schema.then) : null, no = schema.else ? compile(schema.else) : null
@@ -99,6 +100,7 @@ function compile(input: unknown): Check {
       if (schema.uniqueItems === true && new Set(value.map(canonicalJson)).size !== value.length) return false
     }
     if (alternatives && !alternatives.some(apply)) return false
+    if (exclusive && exclusive.filter(apply).length !== 1) return false
     if (!intersections.every(apply)) return false
     if (conditional) { const branch = apply(conditional) ? yes : no; if (branch && !apply(branch)) return false }
     return budget.remaining >= 0
