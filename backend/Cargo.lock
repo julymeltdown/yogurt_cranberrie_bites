@@ -679,7 +679,11 @@ name = "concert-domain"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "serde",
+ "serde_json",
+ "sha2",
  "thiserror 2.0.18",
+ "url",
  "uuid",
 ]
 
