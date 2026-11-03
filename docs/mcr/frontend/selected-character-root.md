@@ -29,3 +29,15 @@ Each width retains exactly one observed game, camera, character runtime and Worl
 Terminal `suspended` privacy invalidation disposes the original character runtime, with zero leases, pending requests, decoded atlases, cleanup failures, private queries, active sockets and World canvases. An earlier diagnostic using `block` correctly cleared the old runtime but reopened a fresh generation: block and consent revocation are invalidation/revalidation events, not terminal gates. That diagnostic is not counted as a complete-teardown PASS.
 
 Captures under the receipt directory include saved World at all three widths, selected draft and saved Me. The developer inspected actual World, Customize and Me captures. These are deterministic Auth/C05 fixture receipts, **MOCK_READY**, not signed-in live-service, physical-device, real-multiuser, complete animation, IN01/IN05 or full visual acceptance. Round3 scene proposals remain unadmitted and are not activated by this task.
+
+## Reproduction commands
+
+Use retained dependencies and pinned Node 24.22.2. No installation or lockfile change was performed. From `frontend/`, each command exited 0:
+
+```sh
+node node_modules/vitest/vitest.mjs run src/app/character-entry/__tests__ src/app/account-entry/__tests__ src/app/world-entry/__tests__ src/app/media-entry/__tests__ src/app/social-composition/__tests__ src/app/shell-chrome/__tests__ src/app/__tests__/reference-root.test.tsx
+node node_modules/typescript/bin/tsc -b --pretty false
+node node_modules/vite/bin/vite.js build
+```
+
+From the repository root, `python3 scripts/mcr/check-plan.py`, `node scripts/mcr/check-ui-origin.mjs`, and `git diff --check` exited 0. Scoped frontend boundaries passed against the fresh peer master with exact documentation grants for this file and `docs/mcr/frontend/character-runtime-ownership.md`; the published delta contains only assigned root frontend paths, tests/captures and those documents. Fixture source was published separately by its assigned owner. Native consumer/source hashes were checked unchanged after reconciliation. A concurrent backend publication caused one ordinary non-fast-forward rejection; its disjoint paths were fetched and merged before the successful non-force push. No unrelated work was overwritten.
