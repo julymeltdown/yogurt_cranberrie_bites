@@ -145,3 +145,19 @@ message. Follow-up exact-fraction ordering test: 11 FE27 controller tests exit 0
 total focused controller/UI cases now 24. Typecheck and focused oxlint exit 0.
 `node scripts/mcr/check-ui-origin.mjs`: exit 0, 311 files scanned, zero static
 origin/import violations. This guard does not replace QA02 manual visual review.
+
+Protected image display consumer: `FeedImage` and `MediaPreviewPort` are exported
+from event-feed. Within `renderMedia`, create one FE04
+`createMediaPreviewController({ session, request: auth.request, mediaId, purpose: 'POST' })`
+per mounted image lifetime. Pass a stable `createPreview(mediaId)` factory to `FeedImage`, alongside canonical
+`auth.privacy`, the media/event IDs and suitable alt text. It loads protected
+metadata/bytes through the qualified port, displays only a READY POST blob URL
+matching current canonical scope and exact read path, cancels on privacy cleanup,
+and disposes on unmount. A failed image never hides post text. The component constructs and disposes inside its effect, so StrictMode setup/cleanup creates a fresh lifetime. Keep the factory callback stable across parent renders. FE04 owns byte validation and URL revocation.
+
+Protected display consumer checks: five actual UI tests pass (exit 0), including
+blob eviction on privacy invalidation and a fresh disposable preview controller
+after StrictMode's setup-cleanup-setup. The UI fixture explicitly enables React's
+act environment; the previous qualification warning is removed. The media
+factory is stable per root composition; the component owns individual controller
+lifetimes. Total focused cases: 26. Real FE04 controller composition still pending.

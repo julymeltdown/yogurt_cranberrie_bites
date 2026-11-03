@@ -2,3 +2,4 @@ export { createEventFeedController, type EventFeedController, type FeedState } f
 export { EventFeed, EventNotice, type RenderPostMedia } from './EventFeed'
 export type { FeedOptions, FeedAuth, FeedAccess, AccessPort } from './runtime'
 export type { Post, Notice, ResourceLink, Filter } from './contract'
+export { FeedImage, type MediaPreviewPort } from './FeedImage'
