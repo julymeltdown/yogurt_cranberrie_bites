@@ -1,0 +1,27 @@
+{
+  "kind": "MCR_UI_REFERENCE_DEFAULT_ROUTE_COMPOSITION",
+  "source_revision": "45b6f1f4209df070ba19676408eabf7c9afbd25a",
+  "evidence": "STATIC_SOURCE_TRACE_ONLY",
+  "live_browser_run": "NOT_RUN",
+  "source_sha256": {
+    "frontend/src/main.tsx": "2bdb48c30b305e7540d005a8c1c316d8ae27a38baeaf659013c0722765f09f5a",
+    "frontend/src/app/router.tsx": "6626b51bd8bfa3589dff42ab0166ec05bd07438b83cb83e5bffe21b7d32d1eb2",
+    "frontend/src/app/routes.ts": "e49ceffdc2e6e52bfba8e361b727504268fab264763c124878a556ee7f677829",
+    "frontend/src/app/WorldShell.tsx": "9418ecaa41689bcdf2d1a15872097bb2672d29786602a14e5251fa308f4ed27b",
+    "frontend/src/app/CommunityFeatures.tsx": "bd1ed8e760835301c7e8005db7bd4b4644eae78f0ea7f64c91f32dac30d24046",
+    "frontend/src/app/account-entry/panels.tsx": "2998df96ff61a0fdc3ca8857b9a17d78d6cfe2e163e07455ddc602c047bd189b"
+  },
+  "entry": "main.tsx -> createAppRouter(ports) -> createAppRoutes(ports); no panel override",
+  "declared_without_default_feature": [
+    "/feed",
+    "/world/map",
+    "/world/places/:placeId",
+    "/wall"
+  ],
+  "fallback": "PanelScreen: Still taking shape / is not available yet; auth/bootstrap gates may precede this",
+  "limitations": [
+    "Feature fixture evidence is not default route delivery.",
+    "No production source, contract or ownership changed.",
+    "No task or IA acceptance count advanced."
+  ]
+}
