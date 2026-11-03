@@ -23,9 +23,13 @@ impl From<auth_domain::user_deletion::UserDeletionTarget> for AuthUserDeletionTa
             auth_domain::user_deletion::UserDeletionTarget::Post => Self::Post,
             auth_domain::user_deletion::UserDeletionTarget::Notification => Self::Notification,
             auth_domain::user_deletion::UserDeletionTarget::ConcertTickets => Self::ConcertTickets,
-            auth_domain::user_deletion::UserDeletionTarget::ConcertSessions => Self::ConcertSessions,
+            auth_domain::user_deletion::UserDeletionTarget::ConcertSessions => {
+                Self::ConcertSessions
+            }
             auth_domain::user_deletion::UserDeletionTarget::ConcertSharing => Self::ConcertSharing,
-            auth_domain::user_deletion::UserDeletionTarget::ConcertPrivateData => Self::ConcertPrivateData,
+            auth_domain::user_deletion::UserDeletionTarget::ConcertPrivateData => {
+                Self::ConcertPrivateData
+            }
         }
     }
 }
