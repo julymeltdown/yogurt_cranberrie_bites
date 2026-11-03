@@ -1,0 +1,14 @@
+.party-authoring { max-width: 44rem; margin: 0 auto; padding: 1.25rem; padding-bottom: max(2rem, env(safe-area-inset-bottom)); color: #eae6df; background: #191b20; font: 1rem/1.5 system-ui, sans-serif; overflow-wrap: anywhere; }
+.party-authoring h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.15; margin: .5rem 0 1rem; }
+.party-authoring header > p:first-child { font-size: .75rem; letter-spacing: .12em; }
+.party-authoring fieldset { border: 0; padding: 0; margin: 1.5rem 0; display: grid; gap: 1.25rem; min-width: 0; }
+.party-authoring legend { font-weight: 700; margin-bottom: 1rem; }
+.party-authoring label { display: grid; gap: .4rem; }
+.party-authoring input, .party-authoring select, .party-authoring button { font: inherit; min-height: 44px; border: 1px solid #85878c; border-radius: .35rem; padding: .65rem; color: inherit; background: #25282f; max-width: 100%; box-sizing: border-box; }
+.party-authoring button { cursor: pointer; }
+.party-authoring button[type=submit] { background: #eae6df; color: #191b20; font-weight: 700; }
+.party-authoring :focus-visible { outline: 3px solid #f0c969; outline-offset: 3px; }
+.party-authoring :disabled { opacity: .6; cursor: default; }
+.party-authoring [role=alert] { color: #ffc4bd; }
+.party-authoring-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+@media (max-width: 430px) { .party-authoring { padding: 1rem; } .party-authoring-actions { display: grid; } }
