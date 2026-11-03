@@ -86,10 +86,31 @@ def run(metadata, pg_bin, pinned_binaries=None):
         cluster.sql('postgres', 'create database mcr_concert_bootstrap template template0;')
         # Exercise the real service schema without changing production ledgers.
         report['migration_sha384'] = migration.migration_manifest(ROOT / 'backend', 'concert-service')
+        upgrade_event = '00000000-0000-4000-8000-000000000719'
+        upgrade_user = '00000000-0000-4000-8000-000000000720'
+        upgrade_before = None
         for path in sorted((ROOT / 'backend/services/concert-service/migrations').glob('*.sql')):
             if not path.name.endswith('.down.sql'):
+                if path.name == '0025_whole_character_avatar.sql':
+                    cluster.sql(DATABASE, f"""
+                        insert into concert_events(event_id,slug,title,phase)
+                        values('{upgrade_event}','avatar-upgrade-proof','Avatar upgrade proof','OPEN');
+                        insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled)
+                        values('{upgrade_event}','{upgrade_user}','REVENGE',false,false,false);
+                        insert into concert_avatar_settings(event_id,user_id,contract_version,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id)
+                        values('{upgrade_event}','{upgrade_user}','1.0.0','avatar_fixture',1,'body_fixture','eyes_fixture','hair_fixture','outfit_fixture','accessory_fixture','tone_fixture');
+                    """)
+                    upgrade_before = json.loads(cluster.sql(DATABASE, f"select to_jsonb(a) from concert_avatar_settings a where event_id='{upgrade_event}';"))
                 cluster.sql(DATABASE, path.read_text())
                 report['commands'][path.name] = 0
+                if path.name == '0025_whole_character_avatar.sql':
+                    upgrade_after = json.loads(cluster.sql(DATABASE, f"select to_jsonb(a) from concert_avatar_settings a where event_id='{upgrade_event}';"))
+                    bootstrap.require(upgrade_after.pop('representation') == 'layered'
+                                      and upgrade_after.pop('preset_id') is None
+                                      and upgrade_after == upgrade_before,
+                                      '0025 changed existing layered state or revision')
+                    report['existing_layered_upgrade'] = 'PASS'
+                    cluster.sql(DATABASE, f"delete from concert_events where event_id='{upgrade_event}';")
         release = cluster.root / 'release'; release.mkdir(mode=0o700)
         document = json.loads((ROOT / 'contracts/fixtures/core/bootstrap-open.json').read_text())
         files = {'bootstrap': document, 'avatar': document['avatar_manifest'], 'map': document['map_manifest']}
