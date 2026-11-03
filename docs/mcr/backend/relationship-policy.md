@@ -153,8 +153,8 @@ visibility. This test-helper reuse is the only copied implementation in this sli
 The ring manifest/lock dependency edge is delivery-owned source commit 0c161d7,
 cherry-picked as 5eb6598, with no new resolved package/version.
 
-Pending at this documentation checkpoint: shared-target Cargo validation, the
-real PG Rust producer suite, committed final evidence and handoff. Gateway route,
+At the source checkpoint, Cargo and the real PG Rust producer suite were pending.
+The final qualification below resolves those local validation items. Gateway route,
 RPC/startup composition, real Auth/Friend fencing, real intro/claim authority,
 real users/browser privacy flows, PostgreSQL17, mobile devices and load gates are
 NOT_RUN. Full BE37/BE28–30 and IN03 acceptance remain IN_PROGRESS.
@@ -168,3 +168,80 @@ a final database-time check after decryption. Direct administrative writes requi
 separately reviewed authority; test fixture writes explicitly inject test deadlines.
 The additional preliminary SQL/deadline migration and restart run passed with
 cleanup at `/tmp/mcr-relationship-sql-deadline.json`; Rust tests remain pending.
+
+
+## Qualified local handoff — 2026-11-04
+
+Implementation source is `b71ae36`, descended from initial typed API `bcd2cd2`
+and delivery-owned dependency edge `5eb6598` (original `0c161d7`). Final evidence
+and harness correction follow in a separate commit. The application Rust sources
+and migration were unchanged between source commit and qualified binary copies.
+Shared-target lease was transferred community → this lane → meeting; no Cargo
+was run during the independent PostgreSQL fixtures.
+
+| Check | Result |
+| --- | --- |
+| Rust 1.88.0, jobs=2, dev/test debug=0, locked/offline focused compile | exit 0, 3.83s, no warnings |
+| Pure domain policy/normalization binary | exit 0, 6 passed, 0 failed |
+| Filtered service crypto unit binary | exit 0, 2 passed, 0 failed; 1 unrelated test filtered |
+| Owned PG16.14 Rust producer binary | exit 0, all 20 named tests passed, none skipped |
+| Runtime SQLx migrate, verify, reapply | exit 0; exact versions 1,2,3,6 and 4 checksum receipts |
+| Empty ledger, deliberate 0006 DDL collision and checksum damage | expected exit 1 for each refusal |
+| 0006 atomic failure and forward recovery | no partial pair table/false receipt; recovery and verification exit 0 |
+| Real postmaster restart, persisted block, runtime verify and exact ledger | PASS; verification exit 0 |
+| Owned fixture cleanup | PASS; private marker/inode-owned root removed |
+| Owned rustfmt check, Python compile, diff whitespace and assigned-path guard | exit 0; 20 paths including 2 delivery-owned dependency files |
+
+Build command from the assigned checkout:
+
+```sh
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 /Users/lhs/.cargo/bin/rustup run 1.88.0 cargo test --manifest-path backend/Cargo.toml --locked --offline -p concert-domain -p concert-service --lib --test relationship_policy --no-run --message-format=json
+```
+
+Executables were copied before lease release to
+`/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-relationship-native-20261104-pgqearm7/`.
+Its `manifest.json` pins every executable. Domain test SHA256:
+`6afe7deb8ea7fb115a39552a03703add6aca92aa4446397f0d79efa9f78a9c2d`.
+Service library-test SHA256:
+`703cb390e90cf8c10e9fc8568ace10baef5ed7b58f90fadea1257edce63a89a7`.
+Real producer-test SHA256:
+`66e363e3dd325732aafac78b8e104b1d16b3989e451947ee0379429afff619f5`.
+Service runtime SHA256:
+`b60f63fa11cee938aefb860acaae61b7d19d07616648287037899583af8c48e2`.
+
+Final native command:
+
+```sh
+python3 backend/scripts/mcr/relationship_smoke.py --pg-bin /opt/homebrew/opt/postgresql@16/bin --repository-test /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-relationship-native-20261104-pgqearm7/concert-service-relationship_policy --binary /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-relationship-native-20261104-pgqearm7/concert-service-concert-service --report /tmp/mcr-relationship-runtime-final.json
+```
+
+The final report SHA256 is
+`1d18e7370f5f57546f9d5905ad86848651b17a65f848f9a7bca40b4d285e3f6a`.
+It records source hashes, the dirty harness-only extension, exact executable
+hashes, migration SHA256/SHA384, every CLI exit, all named producer tests,
+restart and cleanup. Migration 0006 SHA256:
+`0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3`.
+The earlier runtime-harness extension run had a local variable-name collision in
+its final ledger assertion after all producer tests passed; the runner correction
+uses distinct expected-test and expected-migration names. Its FAIL record remains
+at `/tmp/mcr-relationship-runtime-b71ae36.json`; the complete corrected run above
+passed. No application or migration change was needed.
+
+The 20 real producer tests cover both block directions, independent reverse block,
+idempotent commands, READ_ONLY safety, self-pairs, unavailable/unknown/suspended
+and inherited restrictions, cross-event and missing membership denial, stale
+stamps, transaction locking, reciprocal grants/reveal, wrong actors/platforms,
+private response allowlisting/no-store, expiry, changed handles, tombstones,
+block/unblock non-restoration, concurrent approval/block and grant/revoke races,
+outbox rollback, key rotation/AAD/tampering, terminal-state protection, and trusted
+authority expiry between apply and commit. All authority/intro fixtures are
+explicitly test-only rows in the owned database; these are real PostgreSQL
+persistence tests with injected policy, not real Auth/Friend/intro integrations.
+
+Remaining delivery dependencies are real fenced owner and intro/claim authority,
+Gateway/root/RPC composition, current-snapshot stream invalidation consumption and
+real two-account IN03 checks. The adapter is fail-closed until those are bound.
+The dedicated reveal response adapter is qualified in process; no public route
+or live provider configuration is enabled. Full task acceptance, real users,
+browsers/devices, PostgreSQL17, load and release remain NOT_RUN/IN_PROGRESS.
+Only the delivery integrator publishes master; this lane does not push master.

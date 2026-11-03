@@ -9,11 +9,11 @@ from pathlib import Path
 import signal
 import subprocess
 import migration_smoke as migration
-from concert_core_smoke import require, digest, ROOT
+from concert_core_smoke import require, digest, command, ROOT
 
 DATABASE = "mcr_concert_relationship"
 
-def exercise(cluster, test, report):
+def exercise(cluster, test, binary, report):
     cluster.init()
     cluster.start()
     report["postgres_version"] = cluster.sql("postgres", "show server_version;")
@@ -23,11 +23,39 @@ def exercise(cluster, test, report):
     report["migration_sha256"] = {}
     # This slice owns 0006; 0004/5 belong to concurrent workers. Qualify exact
     # prerequisite 0001/2/3 and owned 0006, not unintegrated foreign migrations.
-    for name in ("0001_concert_core.sql", "0002_command_receipts_outbox.sql", "0003_places_map_releases.sql", "0006_relationship_policy.sql"):
-        path = migrations / name
-        cluster.sql(DATABASE, "begin;\n" + path.read_text() + "\ncommit;")
-        report["migration_sha256"][name] = digest(path)
-    report["commands"]["transactional-sql-migrations"] = 0
+    names = ("0001_concert_core.sql", "0002_command_receipts_outbox.sql", "0003_places_map_releases.sql", "0006_relationship_policy.sql")
+    report["migration_sha256"] = {name:digest(migrations/name) for name in names}
+    def cli(label, flag, database=DATABASE, success=True):
+        return command(report,label,[binary,flag],{**cluster.env,"CONCERT_DATABASE_URL":cluster.url(database)},ROOT,
+                       success=success,secrets=(cluster.password,cluster.url(database)))
+    if binary is not None:
+        cli("empty-ledger-refused","--verify-migrations",success=False)
+        cli("runtime-migrate","--migrate")
+        cli("runtime-verify","--verify-migrations")
+        cli("runtime-reapply","--migrate")
+        expected = migration.migration_manifest(ROOT/"backend","concert-service")
+        require(set(expected)=={1,2,3,6},"exact-bounded-migration-set")
+        report["migration_sha384"] = expected
+        report["migration_ledger_rows"] = migration.check_ledger(cluster,DATABASE,expected)
+        failure_db = DATABASE+"_failure"
+        cluster.sql("postgres", f"create database {failure_db} template template0;")
+        cluster.sql(failure_db,"create table concert_social_handles(test_only boolean);")
+        cli("0006-collision-refused","--migrate",failure_db,False)
+        require(cluster.sql(failure_db,"select count(*) from pg_tables where schemaname='public' and tablename='concert_relationship_pairs';")=="0","0006-no-partial-ddl")
+        require(cluster.sql(failure_db,"select count(*) from _sqlx_migrations where version=6;")=="0","0006-no-false-receipt")
+        cluster.sql(failure_db,"drop table concert_social_handles;")
+        cli("0006-forward-recovery","--migrate",failure_db)
+        cli("0006-recovered-verify","--verify-migrations",failure_db)
+        original=cluster.sql(DATABASE,"select encode(checksum,'hex') from _sqlx_migrations where version=6;")
+        cluster.sql(DATABASE,"update _sqlx_migrations set checksum=decode(repeat('00',48),'hex') where version=6;")
+        cli("0006-checksum-drift-refused","--verify-migrations",success=False)
+        cluster.sql(DATABASE,f"update _sqlx_migrations set checksum=decode('{original}','hex') where version=6;")
+        report["runtime_migration_qualification"]="PASS"
+    else:
+        for name in names:
+            cluster.sql(DATABASE, "begin;\n" + (migrations/name).read_text() + "\ncommit;")
+        report["commands"]["transactional-sql-migrations"] = 0
+        report["runtime_migration_qualification"]="NOT_RUN"
     cluster.sql(DATABASE, "create table relationship_test_authority(event_id uuid,user_id uuid,allowed boolean not null,inherited_block boolean not null,revision bigint not null,primary key(event_id,user_id));")
     cluster.sql(DATABASE, "create table relationship_test_intro(event_id uuid,intro_id uuid,requester_id uuid,recipient_id uuid,revision bigint,allowed boolean,expires_at timestamptz,primary key(event_id,intro_id)); create table relationship_test_outbox_fail(event_id uuid primary key); create table relationship_test_outbox_delay(event_id uuid primary key); create function relationship_test_reject_outbox() returns trigger language plpgsql as $$ begin if exists(select 1 from relationship_test_outbox_fail where event_id=NEW.event_id) then raise exception 'test-only outbox failure'; end if; if exists(select 1 from relationship_test_outbox_delay where event_id=NEW.event_id) then perform pg_sleep(0.2); end if; return NEW; end; $$; create trigger relationship_test_reject_outbox before insert on concert_outbox for each row execute function relationship_test_reject_outbox();")
     if test is not None:
@@ -43,9 +71,9 @@ def exercise(cluster, test, report):
         report["test_diagnostics"] = migration.redact(output, secrets)
         require(result.returncode == 0, "real-repository-tests:exit")
         require("0 failed" in output and "0 ignored" in output and "running 0 tests" not in output, "tests-not-skipped")
-        expected = re.findall(r"#\[tokio::test\]\s*async fn (\w+)", (ROOT/"backend/services/concert-service/tests/relationship_policy.rs").read_text())
-        require(len(expected) >= 18 and all(f"test {name} ... ok" in output for name in expected), "all-owned-tests-required")
-        report["real_postgres_test_count"] = len(expected)
+        expected_tests = re.findall(r"#\[tokio::test\]\s*async fn (\w+)", (ROOT/"backend/services/concert-service/tests/relationship_policy.rs").read_text())
+        require(len(expected_tests) == 20 and all(f"test {name} ... ok" in output for name in expected_tests), "all-owned-tests-required")
+        report["real_postgres_test_count"] = len(expected_tests)
         report["repository_tests"] = "PASS"
     else:
         report["repository_tests"] = "NOT_RUN"
@@ -59,12 +87,16 @@ def exercise(cluster, test, report):
     cluster.start()
     require(previous != cluster.assert_postmaster(), "new-postmaster-required")
     require(cluster.sql(DATABASE, f"select low_blocks_high::text||':'||revision from concert_relationship_pairs where event_id='{event}';") == "true:1", "block-restart-persistence")
+    if binary is not None:
+        cli("runtime-verify-after-restart","--verify-migrations")
+        require(migration.check_ledger(cluster,DATABASE,expected)==report["migration_ledger_rows"],"stable-ledger-after-restart")
     report["restart_persistence"] = "PASS"
     report["result"] = "PASS"
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-test", type=Path)
+    parser.add_argument("--binary", type=Path)
     parser.add_argument("--pg-bin", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args()
@@ -90,9 +122,13 @@ def main():
         if test:
             require(args.repository_test.is_absolute(), "absolute-test-path-required")
             report["test_binary_sha256"] = digest(test)
+        binary = None if args.binary is None else migration.executable(args.binary)
+        if binary:
+            require(args.binary.is_absolute(),"absolute-binary-path-required")
+            report["service_binary_sha256"] = digest(binary)
         tools = {name:migration.executable(args.pg_bin/name) for name in migration.PG_TOOLS}
         cluster = migration.Cluster(tools)
-        exercise(cluster,test,report)
+        exercise(cluster,test,binary,report)
     except (Exception,KeyboardInterrupt) as error:
         report["failure"] = str(error) if type(error).__name__ == "CheckFailure" else type(error).__name__
     finally:
