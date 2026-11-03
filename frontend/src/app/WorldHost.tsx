@@ -54,9 +54,9 @@ export function WorldHost({ scope, bootstrap, privacyScope = null, blocked, cove
       setFailed(true)
     }
     return () => { removePrivacyCleanup(); sessionSignal.removeEventListener('abort', dispose); dispose() }
-    // Scope generation owns the lifetime; panel navigation and bearer refresh do not.
+    // Captured bootstrap and privacy generation own the lifetime; panel navigation and bearer refresh do not.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ports, key, attempt, available, privacyScope])
+  }, [ports, key, attempt, available, privacyScope, bootstrap])
   useEffect(() => {
     const update = () => {
       lease.current?.setInputBlocked(blocked || document.hidden)

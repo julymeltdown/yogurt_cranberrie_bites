@@ -1,5 +1,8 @@
 import type { SessionController } from '../features/auth/model/session'
 import type { ShellCapabilities } from './capabilities'
+import { createProductionWorld, type ProductionWorldOptions } from './world-entry/production'
+import type { ReplicationReader } from '../features/world-rooms'
+import type { WorldEntryRequest } from './world-entry/authority'
 import type { PrivacyScope } from '../shared/query/privacy'
 import { createMemorySession, type SessionPort, type SessionScope } from '../shared/api/http'
 
@@ -41,18 +44,26 @@ export interface WorldLifecyclePort {
    */
   mount(host: HTMLElement, context: { scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal; privacyScope?: PrivacyScope | null }): WorldLease
 }
+export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader }
+export interface WorldAccessBindingPort { read(): WorldAccessBinding | null; subscribe(listener: () => void): () => void }
 export interface ShellPorts {
   readonly auth?: SessionController
   readonly session: SessionPort
   readonly readiness: ReadinessPort
   readonly bootstrap: { load(scope: ActiveScope, signal: AbortSignal): Promise<ShellBootstrap> }
   readonly world?: WorldLifecyclePort
+  readonly worldAccess?: WorldAccessBindingPort
+  /** Application teardown; does not replace the canonical Auth owner. */
+  readonly dispose?: () => void
   /** Requires a current server authorization decision. C03 participant data grants no admin role. */
   readonly admin: { authorize(scope: ActiveScope, signal: AbortSignal): Promise<boolean> }
 }
-export function createProductionPorts(auth?: SessionController): ShellPorts {
-  if (auth) return { auth, session: auth.session, readiness: auth.readiness,
-    bootstrap: { load: auth.loadBootstrap }, admin: { authorize: () => Promise.resolve(false) } }
+export function createProductionPorts(auth?: SessionController, worldOptions: Omit<ProductionWorldOptions, 'auth'> = {}): ShellPorts {
+  if (auth) {
+    const production = createProductionWorld({ ...worldOptions, auth })
+    return { auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access, dispose: production.dispose,
+      bootstrap: { load: auth.loadBootstrap }, admin: { authorize: () => Promise.resolve(false) } }
+  }
   return {
     session: createMemorySession(),
     readiness: { read: () => 'unavailable', subscribe: () => () => undefined },

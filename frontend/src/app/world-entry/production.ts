@@ -1,0 +1,96 @@
+import type { WorldLifecyclePort, WorldLease, WorldAccessBinding, WorldAccessBindingPort } from '../ports'
+import type { SessionController } from '../../features/auth/model/session'
+import type { ReplicationReader } from '../../features/world-rooms'
+import type { WorldComposition } from '../../world/composition'
+import type { LocalInputConfiguration } from './resolver'
+import { validateLocalInputConfiguration } from './configuration'
+
+export interface ProductionWorldOptions {
+  readonly auth: SessionController
+  readonly localInput?: LocalInputConfiguration | null
+  readonly origin?: string
+  /** Test seam. The default loads the actual production composition and resolver only on mount. */
+  readonly load?: (options: { auth: SessionController; origin: string; localInput: LocalInputConfiguration }) => Promise<WorldComposition>
+}
+async function loadProduction({ auth, origin, localInput }: { auth: SessionController; origin: string; localInput: LocalInputConfiguration }) {
+  const [{ createWorldComposition }, { createWorldEntryResolver }] = await Promise.all([import('../../world/composition'), import('./resolver')])
+  return createWorldComposition({ auth, resolveRelease: createWorldEntryResolver({ auth, origin, localInput }) })
+}
+/** One lazy composition per canonical application Auth; no resource defaults or renderer fallback. */
+export function createProductionWorld(options: ProductionWorldOptions) {
+  const { auth } = options, configuration = validateLocalInputConfiguration(options.localInput)
+  const listeners = new Set<() => void>(), observers = new Set<() => void>()
+  let binding: WorldAccessBinding | null = null, owner: { dispose(): void } | null = null, composition: WorldComposition | null = null
+  let loading: Promise<WorldComposition> | null = null, closed = false, stopComposition = () => {}
+  const notify = (set: Set<() => void>) => { for (const fn of Array.from(set)) { try { fn() } catch { /* Independent lease observers. */ } } }
+  const stopForwarding = () => { const stop = stopComposition; stopComposition = () => {}; try { stop() } catch { /* Finish independent cleanup. */ } }
+  const current = () => !closed && binding && !binding.release.signal.aborted && auth.session.isCurrent(binding.release.scope) && auth.privacy.isCurrent(binding.release.privacyScope)
+  const access: WorldAccessBindingPort = { read: () => current() ? binding : null,
+    subscribe(fn) { if (closed) return () => {}; listeners.add(fn); return () => { listeners.delete(fn) } } }
+  const world: WorldLifecyclePort = { mount(host, context): WorldLease {
+    const privacy = context.privacyScope
+    if (closed || owner || !privacy || context.signal.aborted || !auth.session.isCurrent(context.scope) || !auth.privacy.isCurrent(privacy)
+      || privacy.userId !== context.scope.userId || privacy.eventId !== context.scope.eventId || privacy.generation !== context.scope.generation) throw new Error('World authority unavailable')
+    const lifetime = new AbortController()
+    const release = Object.freeze({ scope: Object.freeze({ userId: context.scope.userId, eventId: context.scope.eventId, generation: context.scope.generation }), privacyScope: Object.freeze({ userId: privacy.userId, eventId: privacy.eventId, generation: privacy.generation, policyGeneration: privacy.policyGeneration, gate: privacy.gate }), bootstrap: context.bootstrap, signal: lifetime.signal })
+    let disposed = false, lease: WorldLease | null = null, blocked = true, visible = true, stopPrivacy = () => {}
+    const notice = document.createElement('p'); notice.setAttribute('role', 'status'); notice.textContent = 'Opening the world…'; host.append(notice)
+    const owned = { dispose() {
+      if (disposed) return
+      disposed = true; lifetime.abort();
+      try { stopPrivacy() } catch { /* Finish independent cleanup. */ }
+      context.signal.removeEventListener('abort', owned.dispose)
+      if (owner === owned) { owner = null; binding = null; stopForwarding() }
+      try { lease?.dispose() } catch { /* Always finish privacy and DOM withdrawal. */ }
+      notice.remove(); notify(listeners); notify(observers); observers.clear()
+    } }
+    const live = () => !disposed && owner === owned && binding?.release === release && !!current()
+    const replication: ReplicationReader = {
+      read() {
+        if (!live()) return null
+        const value = composition?.replication.read() ?? null
+        return live() ? value : null
+      },
+      subscribe(fn) { if (!live()) return () => {}; observers.add(fn); return () => { observers.delete(fn) } },
+      async switchRoom(id) {
+        if (!live()) return false
+        const sent = await (composition?.replication.switchRoom(id) ?? Promise.resolve(false))
+        return live() && sent
+      },
+    }
+    owner = owned; binding = Object.freeze({ release, replication })
+    context.signal.addEventListener('abort', owned.dispose, { once: true })
+    try { stopPrivacy = auth.privacy.registerCleanup(owned.dispose) } catch { owned.dispose(); throw new Error('World authority unavailable') }
+    notify(listeners)
+    if (live() && !configuration) notice.textContent = 'The world is unavailable. You can keep browsing.'
+    if (live() && configuration) {
+      if (!loading) loading = Promise.resolve().then(() => (options.load ?? loadProduction)({ auth, origin: options.origin ?? location.origin, localInput: configuration })).then(value => {
+        if (closed) { value.dispose(); throw new Error('World owner closed') }
+        composition = value; return value
+      }).catch(error => { loading = null; throw error })
+      void loading.then(value => {
+        if (!live()) return
+        stopForwarding()
+        stopComposition = value.replication.subscribe(() => notify(observers))
+        notice.remove()
+        const created = value.mount(host, { ...context, signal: lifetime.signal, privacyScope: release.privacyScope })
+        if (!live()) { created.dispose(); return }
+        lease = created; lease.setInputBlocked(blocked); lease.setVisible(visible); notify(observers)
+      }).catch(() => {
+        if (!live()) return
+        try { lease?.dispose() } catch { /* Safe unavailable presentation still owns this host. */ }
+        lease = null; stopForwarding()
+        notice.textContent = 'The world is unavailable. You can keep browsing.'
+        host.replaceChildren(notice)
+        notify(observers)
+      })
+    }
+    return { dispose: owned.dispose, setInputBlocked(value) { blocked = value; if (live()) lease?.setInputBlocked(value) }, setVisible(value) { visible = value; if (live()) lease?.setVisible(value) } }
+  } }
+  return { world, access, dispose() {
+    if (closed) return
+    closed = true; owner?.dispose(); stopForwarding()
+    try { composition?.dispose() } catch { /* Complete independent application cleanup. */ }
+    composition = null; notify(listeners); notify(observers); listeners.clear(); observers.clear()
+  } }
+}

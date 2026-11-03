@@ -9,6 +9,7 @@ import { WorldHost } from './WorldHost'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
 
+const ProductionWorldFeatures = lazy(() => import('./world-entry/root-features'))
 const CommunityFeatures = lazy(() => import('./CommunityFeatures'))
 
 export function WorldBoundary() {
@@ -77,7 +78,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     window.addEventListener('resize', update)
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
-  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}>
+  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures>
     <NavigationMemory><div className="world-shell" data-mcr-shell="" ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
@@ -104,7 +105,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
       {tabs.map(tab => <ShellLink key={tab.path} id={`tab-${tab.label.toLowerCase()}`} to={tab.path}
         aria-current={route?.route.tab === tab.path ? 'page' : undefined}>{tab.label}</ShellLink>)}
     </nav>
-  </div></NavigationMemory></CommunityFeatures></Suspense>
+  </div></NavigationMemory></ProductionWorldFeatures></CommunityFeatures></Suspense>
 }
 
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {
