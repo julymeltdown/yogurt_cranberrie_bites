@@ -52,8 +52,9 @@ def read(path):
 def inspect_json(value, depth=0):
     require(depth <= 16, 'JSON nesting limit')
     require(type(value) in (dict, list, str, int, float, bool, type(None)), 'invalid JSON value')
-    if isinstance(value, float):
+    if type(value) in (int, float):
         require(math.isfinite(value), 'non-finite JSON number')
+        require(abs(value) <= 9007199254740991, 'number exceeds safe wire range')
     elif isinstance(value, str):
         try:
             value.encode('utf-8')
@@ -269,23 +270,33 @@ class Trace:
                     self.pending['requestId'] == message['requestId'], 'uncorrelated switch rejection')
             self.pending = None
         elif kind == 'resyncRequired':
+            if message['reason'] in ('MAP_VERSION_MISMATCH', 'BACKPRESSURE'):
+                self.close()
+                return
             require(self.pending is None or self.pending['type'] == 'resync', 'conflicting control transition')
             self.suspended = True
         elif kind == 'revoke':
-            self.closed = True
-            self.players.clear()
-            self.snapshot = self.authenticate = None
-            self.pending = self.heartbeat = None
-            self.used_streams.clear()
-            self.used_requests.clear()
+            self.close()
         elif kind == 'ping':
             require(self.heartbeat is None, 'previous heartbeat unanswered')
             self.heartbeat = message['heartbeatId']
+
+    def close(self):
+        self.closed = True
+        self.players.clear()
+        self.snapshot = self.authenticate = None
+        self.pending = self.heartbeat = None
+        self.used_streams.clear()
+        self.used_requests.clear()
 
     def accept_snapshot(self, message):
         require(message['selfUserId'] == self.actor, 'self identity mismatch')
         require(message['streamId'] not in self.used_streams, 'snapshot reused stream ID')
         require(message['ackInputSeq'] == 0, 'new stream must reset input acknowledgement')
+        if self.snapshot is not None:
+            require(datetime.fromisoformat(message['accessExpiresAt']) ==
+                    datetime.fromisoformat(self.snapshot['accessExpiresAt']),
+                    'snapshot changes connection access deadline')
         if self.snapshot is None:
             require(message['cause'] == 'INITIAL', 'initial snapshot cause mismatch')
             expected = self.authenticate

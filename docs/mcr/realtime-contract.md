@@ -105,6 +105,8 @@ response field. Access expiration requires a new authorized ticket/connection
 using the refreshed memory bearer. The separate five-second live check detects
 earlier session logout, refresh-family expiry or revocation; a valid JWT alone
 never preserves a revoked session.
+Replacement snapshots on the same connection preserve its captured access
+deadline exactly, including resync, room switches and epoch replacement.
 Revoke removes membership and subscription, emits at most one sanitized `revoke`
 when possible, clears client world/private state, then closes. Losing the revoke
 frame does not retain authority. Never leave an expired connection merely frozen
@@ -172,6 +174,10 @@ control requests during such a reset fail the connection rather than guessing
 which request won. Map/manifest changes require closing 4409, refetching assets
 and obtaining a fresh ticket, rather than interpreting old coordinates with new
 geometry. Obsolete stream frames never update current state.
+MAP_VERSION_MISMATCH and BACKPRESSURE resyncRequired hints are terminal for the
+current connection: clear its state and reconnect through fresh authorization
+(and refetched assets for mismatch). They cannot be satisfied by an in-place
+RESYNC snapshot with the stale resource versions.
 
 For `switchRoom`, first issue a fresh ticket for a different room in the same
 event with identical map ID/revision and avatar manifest ID/version. Asset changes

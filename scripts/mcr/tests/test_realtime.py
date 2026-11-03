@@ -207,6 +207,34 @@ class RealtimeContractTests(unittest.TestCase):
         trace.consume('server', delta | {'ackInputSeq': 0, 'upserts': [], 'removes': [removed]})
         self.assertNotIn(removed, trace.players)
 
+    def test_all_replacement_causes_preserve_the_connection_access_deadline(self):
+        for name in ('resync', 'room-switch', 'epoch-replacement'):
+            trace = self.started()
+            fixture = self.fixture(name)
+            for row in fixture['messages'][2:-1]:
+                trace.consume(row['direction'], row['message'])
+            value = fixture['messages'][-1]['message']
+            for deadline in ('2099-11-07T12:00:00Z', '2025-11-07T12:00:00Z'):
+                self.reject(lambda: trace.consume('server', value | {'accessExpiresAt': deadline}))
+            trace.consume('server', value)
+
+    def test_imported_avatar_revision_is_bounded_without_duplicating_its_schema(self):
+        snapshot = self.fixture('movement-heartbeat')['messages'][1]['message']
+        for revision in (9007199254740992, 10 ** 100):
+            snapshot['players'][0]['avatar']['revision'] = revision
+            self.reject(lambda: self.contract.decode(json.dumps(snapshot), 'server'))
+
+    def test_asset_mismatch_and_backpressure_require_a_new_connection(self):
+        for reason in ('MAP_VERSION_MISMATCH', 'BACKPRESSURE'):
+            trace = self.started()
+            value = self.fixture('resync')['messages'][2]['message'] | {'reason': reason}
+            trace.consume('server', value)
+            self.assertTrue(trace.closed)
+            self.assertFalse(trace.players)
+            self.assertIsNone(trace.snapshot)
+            self.reject(lambda: trace.consume('client', self.fixture('resync')['messages'][3]['message']))
+            self.reject(lambda: trace.consume('server', self.fixture('resync')['messages'][4]['message']))
+
     def test_epoch_replacement_requires_new_epoch(self):
         trace = self.started()
         value = self.fixture('epoch-replacement')['messages'][2]['message']
