@@ -92,3 +92,11 @@ The four copied executables also ran with `--test-threads=1`: library **30 passe
 | `native_database_outage_never_acknowledges_and_expires_live_views` | `41de493a7f966a2822073c8a070f9e46bbb03bee2ddd4d1afb805eec092da8fd` |
 
 Logs, Cargo JSON, executable copies, source pins, native controller reports and the failed diagnostic reports are retained in the task-local evidence directory, outside the build target. The checkpoint's source ancestry is the base above plus the implementation commit containing this document; the publication integration ancestry is recorded separately after merging current master. This is a local consumer checkpoint, not overall C05/BE41 acceptance.
+
+### Publication integration
+
+Implementation commit: `55061be42e9b9a87d10dc6f5e3d67dcebd685e8d`, parent `18d4af0284a556cc98394e3622dcc3710e1f1a8f`. Reconciled current remote `d8f9f9ac0b2aa60c7c861a2701bb62c37f9a0b8c` in merge `3d54b104ab0951d77d0dcb209ce5c6f8644d8072`; no conflicts and exactly the 13 assigned paths differ from that remote parent. Peer Auth/Friend journals, proto, frontend and policy changes were preserved unchanged.
+
+The same build and native commands reran at the merged source: build exit **0**, **75** selected regression tests passed, **six** native tests passed, owned cleanup **PASS**, planning check exit **0**, and `git diff --check` exit **0**. Source freeze: `6350d3c0f24290dc30ed7fceb76918f8ed0ba10047d67234fb5728479a848adc` (1624 backend/contract files); native executable: `ac62583c42353f0e0a514d045ec5d81a7e71da55f994c24f609d6807270a1c02`; native report: `b23a1384209c50de2f552f6326d6734747ea793c68fd93c67044afae89c8b703`. All target handles ended before this private PostgreSQL run. This documentation commit preserves both source parents and the integrated validation without changing application code.
+
+Direct non-force publication is authorized by the current working agreement; no coordinator review queue is required. Remote delivery SHA/ancestry verification is reported in the chat handoff. The standing BACKEND reservation remains assigned to the separately queued READ_ONLY increment; this completed checkpoint leaves no build-target handles or owned PostgreSQL process running.
