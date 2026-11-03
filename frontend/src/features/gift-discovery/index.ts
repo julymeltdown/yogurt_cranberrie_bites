@@ -2,4 +2,4 @@ export { createGiftDiscoveryController, giveawayStatus, reservationEligibility }
 export type { GiftAuth, GiftContext, GiftContextPort, GiftDiscoveryController, GiftDiscoveryState } from './model/controller'
 export type { Giveaway, GiftFilters, Reservation } from './model/contract'
 export { GiftDiscovery, GiftDetail } from './ui/Gifts'
-export type { GiftPlaceOption } from './ui/Gifts'
+export type { GiftPlaceOption, GiftDiscoveryProps, GiftImageRequest, RenderGiftImage } from './ui/Gifts'

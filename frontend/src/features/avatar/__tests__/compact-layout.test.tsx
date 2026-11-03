@@ -13,6 +13,7 @@ const puts = (h: { requests: { method: string; body: unknown }[] }) => h.request
 const disclosure = () => screen.getByRole('tabpanel').querySelector('summary')!
 async function setup() {
   const h = harness(); owned.push(h); const view = render(<StrictMode><AvatarEditor controller={h.controller} /></StrictMode>)
+  await screen.findByRole('tab', { name: 'Presets' }); fireEvent.click(screen.getByRole('tab', { name: 'Presets' }))
   await waitFor(() => expect(screen.getByRole('button', { name: 'Try fixture alternate · full outfit' })).toBeEnabled())
   return { ...h, ...view }
 }
@@ -27,17 +28,18 @@ describe('compact Customize presentation', () => {
     fireEvent.click(screen.getByRole('button', { name: 'fixture alternate' }))
     expect(h.controller.read().draft?.item_ids.hair).toBe('hair_second'); expect(puts(h)).toHaveLength(0)
     fireEvent.click(summary); expect(summary.parentElement).not.toHaveAttribute('open')
-    fireEvent.click(screen.getByRole('button', { name: 'Cancel changes' })); expect(h.controller.read().draft).toEqual(original)
+    fireEvent.click(screen.getByRole('button', { name: 'Reset draft' })); expect(h.controller.read().draft).toEqual(original)
   })
   it('retains category keyboard navigation and disclosed native selections without changing the main preview merely by browsing', async () => {
     const h = await setup(), main = h.controller.read().preview.canvas
-    for (const [previous, next] of [['Presets','Body'],['Body','Eyes'],['Eyes','Hair'],['Hair','Outfit'],['Outfit','Accessory'],['Accessory','Tones']] as const) {
+    fireEvent.click(screen.getByRole('tab', { name: 'Hair' })); expect(screen.getByRole('combobox')).not.toBeVisible()
+    for (const [previous, next] of [['Hair','Outfit'],['Outfit','Accessory'],['Accessory','Tones'],['Tones','Presets'],['Presets','Body'],['Body','Eyes']] as const) {
       fireEvent.keyDown(screen.getByRole('tab', { name: previous }), { key: 'ArrowDown' })
       expect(screen.getByRole('tab', { name: next })).toHaveAttribute('aria-selected', 'true')
-      expect(screen.getByRole('combobox')).not.toBeVisible()
+      if (next !== 'Presets') expect(screen.getByRole('combobox')).not.toBeVisible()
     }
     expect(h.controller.read().preview.canvas).toBe(main); expect(h.controller.read().draft).toEqual(original)
-    fireEvent.click(disclosure()); expect(screen.getByRole('combobox', { name: 'Skin tone' })).toHaveValue('tone_fixture')
+    fireEvent.click(screen.getByRole('tab', { name: 'Tones' })); fireEvent.click(disclosure()); expect(screen.getByRole('combobox', { name: 'Skin tone' })).toHaveValue('tone_fixture')
     expect(screen.getByRole('option', { name: 'tone unsupported' })).toBeDisabled()
     fireEvent.click(screen.getByRole('tab', { name: 'Accessory' })); fireEvent.click(disclosure())
     fireEvent.change(screen.getByRole('combobox', { name: 'accessory' }), { target: { value: '' } })
@@ -45,6 +47,7 @@ describe('compact Customize presentation', () => {
   })
   it('retains paged option leases, keyboard focus and synchronous privacy/unmount cleanup', async () => {
     const h = optionHarness(); owned.push(h); const view = render(<AvatarEditor controller={h.controller} />)
+    await screen.findByRole('tab', { name: 'Presets' }); fireEvent.click(screen.getByRole('tab', { name: 'Presets' }))
     await waitFor(() => expect(view.container.querySelectorAll('.mcr-avatar-option canvas')).toHaveLength(3))
     const main = h.controller.read().preview.canvas, stale = [...view.container.querySelectorAll<HTMLCanvasElement>('.mcr-avatar-option canvas')]
     const next = screen.getByRole('button', { name: 'Next outfit choices' }); next.focus(); fireEvent.click(next)

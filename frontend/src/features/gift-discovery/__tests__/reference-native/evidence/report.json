@@ -1,0 +1,215 @@
+{
+  "result": "PASS",
+  "scope": "Production GiftDiscovery with frozen-contract fixture data; no actual backend or gift photographs; root chrome surrogate only",
+  "checks": [
+    {
+      "width": 360,
+      "rows": [
+        {
+          "width": 328,
+          "height": 145.859375,
+          "image": 80.59375,
+          "right": 344
+        },
+        {
+          "width": 328,
+          "height": 145.859375,
+          "image": 80.59375,
+          "right": 344
+        },
+        {
+          "width": 328,
+          "height": 145.859375,
+          "image": 80.59375,
+          "right": 344
+        }
+      ],
+      "native_scale": 1,
+      "touch_targets": ">=44px",
+      "tabs_arrow_home_end": "PASS",
+      "tab_refetch": "NONE",
+      "reservation_entry": "REAL_ROUTE_GET_ONLY",
+      "privacy_eviction": "PASS",
+      "unavailable_states": "PASS",
+      "overflow": "NONE"
+    },
+    {
+      "width": 390,
+      "rows": [
+        {
+          "width": 358,
+          "height": 147.515625,
+          "image": 88.390625,
+          "right": 374
+        },
+        {
+          "width": 358,
+          "height": 147.515625,
+          "image": 88.390625,
+          "right": 374
+        },
+        {
+          "width": 358,
+          "height": 147.515625,
+          "image": 88.390625,
+          "right": 374
+        }
+      ],
+      "native_scale": 1,
+      "touch_targets": ">=44px",
+      "tabs_arrow_home_end": "PASS",
+      "tab_refetch": "NONE",
+      "reservation_entry": "REAL_ROUTE_GET_ONLY",
+      "privacy_eviction": "PASS",
+      "unavailable_states": "PASS",
+      "overflow": "NONE"
+    },
+    {
+      "width": 430,
+      "rows": [
+        {
+          "width": 398,
+          "height": 149.765625,
+          "image": 98.796875,
+          "right": 414
+        },
+        {
+          "width": 398,
+          "height": 149.765625,
+          "image": 98.796875,
+          "right": 414
+        },
+        {
+          "width": 398,
+          "height": 149.765625,
+          "image": 98.796875,
+          "right": 414
+        }
+      ],
+      "native_scale": 1,
+      "touch_targets": ">=44px",
+      "tabs_arrow_home_end": "PASS",
+      "tab_refetch": "NONE",
+      "reservation_entry": "REAL_ROUTE_GET_ONLY",
+      "privacy_eviction": "PASS",
+      "unavailable_states": "PASS",
+      "overflow": "NONE"
+    }
+  ],
+  "captures": [
+    {
+      "file": "browse-360.png",
+      "width": 360,
+      "sha256": "d15add078e8e6985a4cb6984db5f046a5da35913020a739c9c5b270dc53b4359"
+    },
+    {
+      "file": "unavailable-360.png",
+      "width": 360,
+      "sha256": "59dd1877bcd76b3b53277b6cbc6a18b5ae9d83bc97f9f7037107d4ef3f168a17"
+    },
+    {
+      "file": "read-only-360.png",
+      "width": 360,
+      "sha256": "eb88086363c3b4c98780b64135178fce842e11f3acb814cbdcf6870ad715a2f5"
+    },
+    {
+      "file": "long-360.png",
+      "width": 360,
+      "sha256": "ee9faf1438fbcc1f95adbfa062e3e305844497f6deac04d894cc483e5b029ce8"
+    },
+    {
+      "file": "empty-360.png",
+      "width": 360,
+      "sha256": "562bb67f67b1b1ef15e08943b2b8fee69ee7542db52a9690b55c03f69f059d27"
+    },
+    {
+      "file": "error-360.png",
+      "width": 360,
+      "sha256": "567799cf250ebf2d1a64e02113cb0b5ababc45e45162385dfbc3aa12df1510c3"
+    },
+    {
+      "file": "browse-390.png",
+      "width": 390,
+      "sha256": "1964271f8a8a1c13b930c0558a03d55a71bfcf802c39e95b39715c1503808190"
+    },
+    {
+      "file": "unavailable-390.png",
+      "width": 390,
+      "sha256": "d8327f6df6b08201eeffe8e34017e792472edb216d73e734d689ce23dd3d34e6"
+    },
+    {
+      "file": "read-only-390.png",
+      "width": 390,
+      "sha256": "762c35af306579dbddeca2a247ea9f622e72e2bff87765528c3a74b69d001631"
+    },
+    {
+      "file": "long-390.png",
+      "width": 390,
+      "sha256": "f86b8f078fc77efaf0e0e58ce4357a1470cb53706942276c5aaf3fb8921380ad"
+    },
+    {
+      "file": "empty-390.png",
+      "width": 390,
+      "sha256": "09e67f22b8c57d1cd80a53321b3849c3688da83a27534fecad4642aa3228bfc9"
+    },
+    {
+      "file": "error-390.png",
+      "width": 390,
+      "sha256": "07ab8be34c82ae5cccd6b29f4b9b00869d4c8546bbb6760c1e8a0fb899708d6d"
+    },
+    {
+      "file": "browse-430.png",
+      "width": 430,
+      "sha256": "a314d37168cc89d942d487f5dad1c78766b35abc67d7ccb98d90d0d84ab916df"
+    },
+    {
+      "file": "unavailable-430.png",
+      "width": 430,
+      "sha256": "d565b08859b7dd803e22d6ff52fdf1dd560fb4f16a1150f6f4b69fda89c5ccef"
+    },
+    {
+      "file": "read-only-430.png",
+      "width": 430,
+      "sha256": "466e5675cbeff6273b58cd9093e5ea0e21a0434f828e2a8ab58a83e70b626e49"
+    },
+    {
+      "file": "long-430.png",
+      "width": 430,
+      "sha256": "cbdc7d86c4f34e60a17f228042610b70784f3ec520141e79a697bdfe1d4a3eca"
+    },
+    {
+      "file": "empty-430.png",
+      "width": 430,
+      "sha256": "44fd77920bad07a24dda8f9b7f8a1de8787df17c1c772a6884427d1cb19a44ba"
+    },
+    {
+      "file": "error-430.png",
+      "width": 430,
+      "sha256": "4f50f7cb7758aab4b1aad803c2e814d079d9fb1b83eeb49ebc862e8cd6b4d833"
+    }
+  ],
+  "limits": [
+    "Authorized real gift imagery/root cache integration pending",
+    "Shared root marching footer pending",
+    "No physical device or live reservation acceptance"
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "comparison": {
+    "file": "reference-comparison-390.png",
+    "reference_sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "sha256": "65d4ef718a9d6e1ba1012a409c895e6e1494c70e62fd5191e3dd0825916ed3dc"
+  },
+  "source_pins": {
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx": "62bb4f761996733443a95bffa3de57f30095cf3ac822c7e9f96d0ef30f0d9f25",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx": "ac9ff189ef1bb8ba3aa64f9b8dc228f5b25dfeb1b38a34af950de27cb235a3eb",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css": "7b99b04cb72aeef0580d0c65208cab75ad204ee0b4f882ebf2fc2f5512ed11dc",
+    "frontend/src/features/gift-discovery/ui/gifts.css": "f10d645469ba821be72bbecf88ce97f9229ee16b6d57e8a95e112c75970f8f2d",
+    "frontend/src/features/gift-discovery/model/controller.ts": "fcc6af9ad3f78ccfb3ccdea1c0a623e96dbaea5bf3c736252a0726946b9eb470",
+    "frontend/src/features/gift-discovery/model/contract.ts": "a4a5acaeec497fc8936905df3955194eb0993a306906c5f0d8b7e52197966f82",
+    "contracts/generated/mcr-domain.openapi.json": "a5fbe73124ed069e6357f5797a264e2d2a1bec93b0179bfc8550bf1122b69fde",
+    "contracts/domain/v1/giveaway.schema.json": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d",
+    "docs/mcr/party-gift-consumer-contract.md": "5999292d00fc62220e0fad533b2079d83ceba87e078a226a55c947fab24cc056"
+  },
+  "base": "f837bef676cd26869c26c172a699a91b7842d832"
+}

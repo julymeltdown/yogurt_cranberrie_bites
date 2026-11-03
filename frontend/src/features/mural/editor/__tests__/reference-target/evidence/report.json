@@ -1,0 +1,116 @@
+{
+  "result": "PASS",
+  "base": "f837bef676cd26869c26c172a699a91b7842d832",
+  "reference": {
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "crop": "bottom row fourth WALL; approx canvas274x304, frame293x474",
+    "canvasAspect": 1.1094890510948905
+  },
+  "scope": "Production MuralSyncPanel/MuralEditor actual raster and canonical HTTP, frozen deterministic fixture; no production-root, liveBE, physical-device or IN04 claim.",
+  "sourceHashes": {
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "a5bbb147d4e56c1039428234ae9b02cf36da529b96d658cff217c503b37ec762",
+    "frontend/src/features/mural/editor/editor.css": "079b5441ce3a16e0757b688289f388ad50cc156f93903e4ac78f43098e9e694b",
+    "frontend/src/features/mural/editor/controller.ts": "0af993f96cbe303a6e920a87faeab32b4e5652ae68ef44809c1a41cbdb9dd26f",
+    "frontend/src/features/mural/editor/input.ts": "6e2744b189e6887f34c477a28a7522f5d76c4c3e16ee25cf1141f1c65cf57b04",
+    "frontend/src/features/mural/editor/contract.ts": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "70c86e0b4804e6ad9e560aad31e7de73eaa58098941b716fd070018a7aaeaebe",
+    "frontend/src/features/mural/sync/controller.ts": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+    "frontend/src/features/mural/sync/http.ts": "b2ef84266763e9deebc8470def87c976168ba427f9cadf11cfd8b3eb036db144",
+    "frontend/src/features/mural/sync/contract.ts": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+    "frontend/src/features/mural/sync/__tests__/fixture.ts": "c61d33f5258a19541a8d70989686ebfdfa19a5711a9bcf44d2e22ae9b0d52a56",
+    "frontend/src/features/mural/editor/__tests__/fixture.ts": "ba6fa5bd95472e078f4c4a5a1c0eebe4b25f6a56c81c4cac74eaf79eb92a2bf4",
+    "frontend/src/features/mural/editor/__tests__/reference-target/preview.tsx": "92e33845c1a9e36166c88cb901b50c6a81f36d2d2f3451c8dc38c300d3cfdecb",
+    "frontend/src/features/mural/editor/__tests__/reference-target/preview.css": "503a39493cda91ae8dff6e05332de42224e03f322e0815eb5bf4d0c973ac5bc2",
+    "frontend/src/features/mural/editor/__tests__/reference-target/preview.html": "2d18d859f2d7811700ac683fa05916e2bf817fc4c890ecd223192adafcd693be",
+    "frontend/src/features/mural/editor/__tests__/reference-target/browser.mjs": "90e47c678bee5620142a2fafc333f5ba2373b0b2c07bc9af553d0a207aba2b08",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca"
+  },
+  "widths": [
+    {
+      "width": 360,
+      "geometry": {
+        "panel": {
+          "width": 348,
+          "height": 635.53125
+        },
+        "canvas": {
+          "top": 72,
+          "width": 340,
+          "height": 374
+        },
+        "tools": {
+          "right": 10,
+          "top": 78,
+          "width": 44
+        },
+        "palette": {
+          "top": 450,
+          "height": 62
+        },
+        "ratio": 0.5884840438609431
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "geometry": {
+        "panel": {
+          "width": 378,
+          "height": 668.53125
+        },
+        "canvas": {
+          "top": 72,
+          "width": 370,
+          "height": 407
+        },
+        "tools": {
+          "right": 10,
+          "top": 78,
+          "width": 44
+        },
+        "palette": {
+          "top": 483,
+          "height": 62
+        },
+        "ratio": 0.6087972701350909
+      },
+      "errors": []
+    },
+    {
+      "width": 430,
+      "geometry": {
+        "panel": {
+          "width": 418,
+          "height": 712.53125
+        },
+        "canvas": {
+          "top": 72,
+          "width": 410,
+          "height": 451
+        },
+        "tools": {
+          "right": 10,
+          "top": 78,
+          "width": 44
+        },
+        "palette": {
+          "top": 527,
+          "height": 62
+        },
+        "ratio": 0.6329546949695188
+      },
+      "errors": []
+    }
+  ],
+  "checks": [
+    "portrait actualcanvas dominant >=55% of idle panel; top<=75px; right44pxtools; one framed palette row",
+    "all16384 RGBA cells match frozen server snapshot; uniform squarepixel scale, fit corner and zoomcenter pointer mapping",
+    "all16 server colors reachable by horizontal scroll/keyboard; selected state retained; no page overflow; >=44px controls",
+    "pencil/pan/zoom/fit and pointerdrag never place; keyboard Escape cancels; coordinates expandable; explicit confirmation onePOST",
+    "real servercooldown60s; unknown command retained across snapshotGET; status/resultGET recovery no replay; pending202 remains blocked then recovers original",
+    "frozen/paused/read-only keep viewingtools; privacy clears raster/palette/selection; 420px height and rootheightvariable retain fit-grid and reachable recovery; no page errors"
+  ],
+  "browser": "156.0.8078.80"
+}

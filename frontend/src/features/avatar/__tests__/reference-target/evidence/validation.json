@@ -1,0 +1,127 @@
+{
+  "status": "MOCK_READY",
+  "baseCommit": "f837bef676cd26869c26c172a699a91b7842d832",
+  "sourceCommit": "d7c4577b995cfe4b2b85d07d62defce41973f2c8",
+  "followup": "native harness waits for loaded Keep my draft before checking candidate; evidence/docs direct descendant",
+  "nodeVersion": "24.22.2",
+  "sourceHashes": {
+    "frontend/src/features/avatar/AvatarEditor.tsx": "37d30c4a71f0c669100d1ee84f5932c3b22eb42c49e7c833ff2209d37ea77fb6",
+    "frontend/src/features/avatar/OptionStrip.tsx": "f162f9e5ee96c44b4b2e10ec059a09ee0e9272accf82954d68b4dcf48d6e7c7b",
+    "frontend/src/features/avatar/__tests__/compact-layout.test.tsx": "18fdbd0fca59efba68e08721c6f0bd75dac3e79ab077a92c76aad25056c52cc7",
+    "frontend/src/features/avatar/__tests__/option-previews.test.tsx": "1b9771c2afadbf197962629f99861faec19a74f0753d7cf35da76b5e5a718cca",
+    "frontend/src/features/avatar/__tests__/reference-target/initial-failures.json": "1e14fbc7e7c93cf159a5f4d04fa040b6f4e91de0bdbe3e204578572337937d99",
+    "frontend/src/features/avatar/__tests__/reference-target/native.mjs": "dff8dbe37e7f5847f4bf6bd4bd40b40b99c36a7d333ef779f7b374f68b64c327",
+    "frontend/src/features/avatar/__tests__/reference-target/presentation.test.tsx": "1178be94aeae388e96d889b673ac5809bbfdddc943e2409e824e6ab2342184ac",
+    "frontend/src/features/avatar/__tests__/reference-target/preview.html": "db854d7ff8b711306b64b076e569e7e014be7d60e7bec3e7f6912d641f246bc7",
+    "frontend/src/features/avatar/__tests__/reference-target/preview.tsx": "604e9f4efe2b7f914ea0343c38cef91c4a3ea8dd829da29e6fd7aa35fbf9e53c",
+    "frontend/src/features/avatar/__tests__/ui.test.tsx": "cee2ac8a7e6053d869e9501d7327bfa8bb7de947907c535723f93afc162c4c3f",
+    "frontend/src/features/avatar/__tests__/visual-adoption/presentation.test.tsx": "8011f6a71b2c93e2e3fbfc660f88832b341f1adc4a8794fd47caf0881c60f9d8",
+    "frontend/src/features/avatar/avatar-editor.css": "3a0c5b842ffd8dc66452805db3c8a88de233d3970f60bc0a45a6f8c6cdcbdc17",
+    "frontend/src/features/avatar/reference-presentation/CategoryRail.tsx": "ba2bdfd52a03203aa4e21967f4bd3ef1d584cab9465523f92e134430b7bd78fe",
+    "frontend/src/features/avatar/reference-presentation/TonePalette.tsx": "fb5b4a236ca8ef5c7b05ad0f424c2bfa2db61c9a5537c759d9120bfaa0f8b6dc",
+    "frontend/src/features/avatar/reference-presentation/actions.ts": "79667a9fd35281b5b6d27da3dcea7e621d49bba53ca2731447bc784cca5a7383",
+    "frontend/src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "frontend/src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "frontend/src/features/avatar/preview.ts": "77c304050d0fb324a6d8b236a6e65eb2655bff83e488bdfe9b768df9e740b981",
+    "frontend/src/features/avatar/__tests__/fixtures/harness.ts": "e4c8bf64a4a0106aa0817b4ef71e605340b650c9bc184e5cacb96f44d923937d",
+    "frontend/src/features/avatar/__tests__/option-previews/data.ts": "1f51fdb7f1289cafd6da116decf0f86c297c1f4aa2f567f3712888609b1256b2",
+    "frontend/src/features/avatar/__tests__/compact-layout/preview.tsx": "a79e896b317df6d8e5841f9b21dd6cf8b339f7c86623f2bee9cf0e198732e3fd",
+    "frontend/src/features/avatar/__tests__/compact-layout/native.mjs": "6cb98866d52e37f7d21a56ceed7b40e89353d38e9da37cc21bceef74bff96004",
+    "frontend/src/features/avatar/__tests__/compact-layout/preview.html": "a0226b7d62a183fe62c0b9edde17b64ba146d1bc0e4e1f23153cdb8f81883c4e",
+    "frontend/src/world/avatar/__tests__/fixtures/png.mjs": "661960ae8958bd4453fb30dea0da205d676f902d15d9ab4a964275a5f7a9b642",
+    "frontend/src/entities/avatar/runtime/compositor.ts": "fac22cf5948afd10420ad53bc408590657291ccb44e38defb61f2e96ee595740",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "contracts/fixtures/core/private-participant.json": "c1c7373656cde682a4fd706d7b1d6f8e0c97192e093fbaee0862e9c6802e11db",
+    "contracts/fixtures/core/error-version-conflict.json": "ac1b2cc68b41d199002d31c57a3fec47551e1497dc8f748db5782710e1fdf99c"
+  },
+  "evidenceHashes": {
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/focused-tests.txt": "53224a9546373e8dadfab037b77af709767eba17ed674ea64ce0da87197345f0",
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/native/comparison-390.png": "49b8f97ce869e885e039e8918e4db85578fc27621ae916f1fe4391c70225ff18",
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/native/production-unavailable-390.png": "6441f17bec1c6d12af99a606e022d2db1b36b53ff3e33cdad7cdf5b18f5260e1",
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/native/report.json": "5381630becfbc9b2d7aa6404c692753af83c73cec5510fbcf7dabef02f1545fd",
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/native/target-360.png": "ded99836bb9f31e1a5714c25f4853be4199a363c0e34a499df43839ea7e61df0",
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/native/target-390.png": "404a870962e0109794959d23efbd6c3f6bb09cb36f2437c63d82100457a188ff",
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/native/target-430.png": "2d378c8136c285e0bf42c56dfd2949248d7652541542a355d6bb0af7492864f8",
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/native/uncertain-reset-390.png": "bd5b01530582f6d83a1f53fd5915dce269d186f54ed1a6e6a06b090b8af1dc30",
+    "frontend/src/features/avatar/__tests__/reference-target/evidence/production-build.txt": "0ad695133b80ea9c740b7eec129ddfa4ff0351bde5b7ea9d4befbd8cd9d7e15c"
+  },
+  "documentHash": "ca68f0612cfd554f3ddf3a9a3c2e18b4bc21513d33066c73d17311ca2391e750",
+  "checks": [
+    {
+      "name": "focused-tests",
+      "exitCode": 0,
+      "files": 7,
+      "tests": 54,
+      "cwd": "frontend",
+      "command": "node node_modules/vitest/vitest.mjs run src/features/avatar/__tests__/ui.test.tsx src/features/avatar/__tests__/compact-layout.test.tsx src/features/avatar/__tests__/visual-adoption/presentation.test.tsx src/features/avatar/__tests__/controller.test.ts src/features/avatar/__tests__/preview.test.ts src/features/avatar/__tests__/option-previews.test.tsx src/features/avatar/__tests__/reference-target/presentation.test.tsx --configLoader runner --no-cache"
+    },
+    {
+      "name": "strict-types",
+      "exitCode": 0,
+      "cwd": "frontend",
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false"
+    },
+    {
+      "name": "scoped-lint",
+      "exitCode": 0,
+      "cwd": "frontend",
+      "command": "node node_modules/oxlint/bin/oxlint src/features/avatar/AvatarEditor.tsx src/features/avatar/OptionStrip.tsx src/features/avatar/reference-presentation src/features/avatar/__tests__/reference-target src/features/avatar/__tests__/ui.test.tsx src/features/avatar/__tests__/compact-layout.test.tsx src/features/avatar/__tests__/visual-adoption/presentation.test.tsx src/features/avatar/__tests__/option-previews.test.tsx"
+    },
+    {
+      "name": "production-build",
+      "exitCode": 0,
+      "cwd": "frontend",
+      "command": "Vite build({configLoader:runner,build:{outDir:own mkdtemp,emptyOutDir:true}}), rm own temporary output in finally"
+    },
+    {
+      "name": "native-chrome",
+      "exitCode": 0,
+      "cwd": ".",
+      "command": "node frontend/src/features/avatar/__tests__/reference-target/native.mjs",
+      "widths": [
+        360,
+        390,
+        430
+      ]
+    }
+  ],
+  "peerReview": {
+    "finding": "P2 Reset could accept loaded reconciliation candidate through cancel",
+    "resolution": "Reset disabled for loaded candidate; explicit decision required; parameterized tests and native candidate gate",
+    "recheck": "resolved by static peer inspection"
+  },
+  "limits": [
+    "Approved AvatarConfig artwork binding missing at base; synthetic test geometry is not product art",
+    "Root manifest palette producer wiring is integrator owned",
+    "Root embedding 7201b875f9ed6a07a0a77b9ae4aeac2f3f2fbd57 communicated but not in this checkout",
+    "Real backend/multiuser/embedded-root proof NOT_RUN"
+  ],
+  "cleanup": {
+    "nodeModulesSymlinkRemoved": true,
+    "nativeTempRemoved": true,
+    "ownBuildOutputRemoved": true,
+    "freeDiskBytes": 8098127872,
+    "freeDiskGiB": 7.542,
+    "diskFloorAtFinalAudit": "BELOW_FLOOR; stopped all build/browser/capture work and notified Frontendking/Social; no unowned cleanup"
+  },
+  "changedSourcePaths": [
+    "frontend/src/features/avatar/AvatarEditor.tsx",
+    "frontend/src/features/avatar/OptionStrip.tsx",
+    "frontend/src/features/avatar/__tests__/compact-layout.test.tsx",
+    "frontend/src/features/avatar/__tests__/option-previews.test.tsx",
+    "frontend/src/features/avatar/__tests__/reference-target/initial-failures.json",
+    "frontend/src/features/avatar/__tests__/reference-target/native.mjs",
+    "frontend/src/features/avatar/__tests__/reference-target/presentation.test.tsx",
+    "frontend/src/features/avatar/__tests__/reference-target/preview.html",
+    "frontend/src/features/avatar/__tests__/reference-target/preview.tsx",
+    "frontend/src/features/avatar/__tests__/ui.test.tsx",
+    "frontend/src/features/avatar/__tests__/visual-adoption/presentation.test.tsx",
+    "frontend/src/features/avatar/avatar-editor.css",
+    "frontend/src/features/avatar/reference-presentation/CategoryRail.tsx",
+    "frontend/src/features/avatar/reference-presentation/TonePalette.tsx",
+    "frontend/src/features/avatar/reference-presentation/actions.ts"
+  ],
+  "logNormalization": "Trailing whitespace and blank EOF lines removed; command results unchanged."
+}

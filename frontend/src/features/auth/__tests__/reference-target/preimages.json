@@ -1,0 +1,5 @@
+{
+  "frontend/src/features/auth/ui/SignIn.tsx": "57aa4d7a60eb8d40f77278bc2b0f879c973fef087053ee7be38d9b98cd2b3065",
+  "frontend/src/features/auth/ui/sign-in.css": "5c93592c26a164ee2fadf27ef37356e129780de6e404efd37a5d13c0e43dcfd0",
+  "frontend/src/features/auth/__tests__/sign-in.test.tsx": "c582c9b7fca4de7bfba2301b93fb7afd122a61081e1177c227d15913f693649c"
+}

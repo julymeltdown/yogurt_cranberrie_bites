@@ -28,7 +28,7 @@ it('keeps frozen OAuth disabled and provides labelled autofill fields', async ()
   setup(() => new Response(null, { status: 401 }), '/feed', advertised); await fill()
   expect(screen.getByLabelText('Email', { exact: true })).toHaveAttribute('autocomplete', 'username')
   expect(screen.getByLabelText('Password', { exact: true })).toHaveAttribute('autocomplete', 'current-password')
-  for (const provider of ['Google', 'Apple', 'X']) expect(screen.getByRole('button', { name: `Continue with ${provider}` })).toBeDisabled()
+  for (const provider of ['Google', 'Discord', 'X']) expect(screen.getByRole('button', { name: `Continue with ${provider}` })).toBeDisabled()
   expect(screen.getByText('Provider sign-in is not available yet.')).toBeVisible()
 })
 it('disables double submit, clears password, and shows a neutral credential failure', async () => {

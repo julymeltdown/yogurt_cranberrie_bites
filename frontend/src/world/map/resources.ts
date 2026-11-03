@@ -2,6 +2,7 @@ import { MapError, requireMap, sha256 } from './json'
 import { limits, requireProvided, validateManifests, type ReleasePin } from './manifest'
 import { validateTiled } from './tiled'
 import { sceneryDescriptors, type LoadedScenery } from '../illustrated/model'
+import type { ResourceByteCache } from './resource-cache'
 export interface Resource { readonly path: string; readonly sha256: string; readonly kind: 'json' | 'png' }
 export interface AssetResources { read(resource: Resource, signal: AbortSignal): Promise<Uint8Array<ArrayBuffer>> }
 export function abortable<T>(work: Promise<T>, signal: AbortSignal, timeoutMs: number = limits.deadlineMs): Promise<T> {
@@ -18,7 +19,7 @@ export function abortable<T>(work: Promise<T>, signal: AbortSignal, timeoutMs: n
     work.then(value => finish(value), error => finish(undefined, error))
   })
 }
-export function createAssetResources(options: { origin: string; allow: readonly Resource[]; fetch?: typeof fetch }): AssetResources {
+export function createAssetResources(options: { origin: string; allow: readonly Resource[]; fetch?: typeof fetch; cache?: ResourceByteCache }): AssetResources {
   const origin = new URL(options.origin).origin
   requireMap(origin === options.origin && /^https?:$/.test(new URL(origin).protocol))
   const allowed = new Map<string, Resource>()
@@ -32,6 +33,7 @@ export function createAssetResources(options: { origin: string; allow: readonly 
     const approved = allowed.get(resource.path)
     requireMap(approved && approved.sha256 === resource.sha256 && approved.kind === resource.kind)
     if (signal.aborted) throw new MapError('cancelled')
+    const load = async (signal: AbortSignal) => {
     const controller = new AbortController(), abort = () => controller.abort()
     signal.addEventListener('abort', abort, { once: true })
     const max = resource.kind === 'png' ? limits.pngBytes : limits.tiledBytes, url = `${origin}/${resource.path}`
@@ -59,6 +61,8 @@ export function createAssetResources(options: { origin: string; allow: readonly 
     }
     try { return await abortable(operation(), signal) }
     finally { signal.removeEventListener('abort', abort); controller.abort() }
+    }
+    return options.cache ? options.cache.read(JSON.stringify([origin, resource.path, resource.sha256, resource.kind]), signal, load) : load(signal)
   } }
 }
 export function pngDimensions(bytes: Uint8Array<ArrayBuffer>, width: number, height: number) {

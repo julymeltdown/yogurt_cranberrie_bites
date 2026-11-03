@@ -1,137 +1,406 @@
 # Community delivery tracker
 
-Updated 2026-11-04 KST. Progress coordinator: `01a1a1fe-c5f1-7e60-87c2-43785b07f941`.
-Authority: [parallel delivery](../parallel-delivery.md) at source base
-`f0e44bd1bba943b02319f9d9a42433e253e8de6f`. This chat adds no code-review or
-approval gate. Implementation owners send validated commits directly to delivery
-`01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08`; main owns staffing.
+Updated 2026-11-04 KST. Progress coordinator:
+`01a1a1fe-c5f1-7e60-87c2-43785b07f941`; sole write path is this document in
+`/Users/lhs/Desktop/mcr-worktrees/sl-community`, publication branch
+`codex/mcr-sl-community-publish` from fetched
+`e9ce93daf2c0d6aa453d055efad271d1de34349c`. Earlier tracker work remains on
+`codex/mcr-sl-community` through `c2b8044b`; this scoped snapshot reconciles it
+with remote master without replaying already integrated feature commits. The
+remote tracker matched the previously integrated own checkpoint byte for byte;
+no independent peer tracker edits were displaced.
 
-## Live delivery
+## Current authority and reference-screen delivery
 
-| Task | State and implemented deliverable | Assigned writer / scope | Validation and commit | Next action / blocking owner |
-|---|---|---|---|---|
-| BE16–18 | IN_PROGRESS: party aggregate rules authored; service transaction slice underway. Capacity includes owner; removal changes audience revision. | BE `01a1a1fd-6b5d-75b0-8d42-01ade79b9393`, isolated `be-community`, base `f0e44bd`; assigned community modules/tests, migration `0007_community.sql`, minimal named exports and backend evidence only. | Source checkpoint `4bf2bd4c4ec30bc2ce536a2120d86372173ef6e2` committed; planning/rustfmt/py_compile exit 0. Cargo/native PG NOT_RUN pending lease; not a validated handoff or published feature. | Deliver party slice first. Delivery owns Cargo lease/composition; BE37 owns common relationship policy. |
-| BE20–23 | IN_PROGRESS: giveaway domain source proceeding alongside party validation queue; stock/reservation/release/expiry/pickup remains required. | Same BE writer; no ownership expansion. | NOT_RUN; no new commit. | Start domain/atomic commands with retained BE15 receipt/outbox; qualify five-way last-unit race, restart-safe expiry and one-time pickup. |
-| FE22 | MOCK_READY: scoped RHF authoring form/controller committed with conflict preservation, explicit draft restore and receipt recovery. | FE `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`, isolated `fe-community-authoring`, base `f0e44bd`; `frontend/src/features/party-authoring/**` first. | Worker `1c38ad459bf133411f9a11e9e836410642fca3fa`, parent `f0e44bd`; eight focused tests, typecheck/build/lint and Chromium 360/390/430/1280 checks exit 0. Delivery integrated as `e82a220`, parent eight focused tests PASS; combined build running at report time. Remote publication not yet verified. | Direct delivery handoff sent; delivery owns shell integration and affected checks. Owner continues FE23 without waiting. |
-| FE23 | IN_PROGRESS: owner management/rally started after FE22 commit. | Same FE writer; assigned party-management/rally feature paths. | NOT_RUN; no new commit. | Use pinned contracts/fixtures. FE20 and BE09/19 are separate physical-flow dependencies, not an FE22 barrier. |
-| FE24 | MOCK_READY: existing discovery/detail/own-activity delivery. | Existing scoped delivery; no new discovery writer assigned here. | Progress ledger records worker `595c07f`, integrated `3cb3f9c`/`8c33ba3`; browser fixture/affected checks available. No real reservation acceptance. | Retain consumer compatibility for FE25/26; delivery owns root composition. |
-| FE25–26 | NOT_STARTED: giveaway owner tools and reservation/pickup follow party authoring/management. | Same FE authoring writer; assigned gift-authoring/gift-management/pickup paths only. | NOT_RUN; no new commit. | Deterministic fixtures permit independent implementation; later real stock/pickup qualification is mandatory. |
-| BE09/19 | IN_PROGRESS: separate physical meeting owner is coding beacon TTL/audience/revision invariants before rally. | BE `01a1a202-3b96-7822-ab54-2f7d29aa42e5`, isolated `be-physical-meeting`, base `48458d5`; domain/application `beacon/**` + `rally/**`, service `meeting/**`, assigned tests/scripts/evidence. | NOT_RUN. BE08 typed place repository and checked-current selection already available. | Deliver beacon slice first using transaction-aware place/policy/member ports. Migration `0008_meeting_beacons.sql` reserved. Delivery owns public adapters. |
-| FE20 | IN_PROGRESS: separate scoped beacon form/detail/explicit-arrival owner implementing against pinned fixtures. | FE `01a1a202-3ff2-7a93-95c3-374c6df97281`, isolated `fe-physical-meeting`, base `48458d5`; `frontend/src/features/meet-beacon/**`, `docs/mcr/frontend/meeting-beacon.md`. | NOT_RUN. | Deliver route-ready controller/form/detail and explicit-arrival controls; FE23 owns actual rally orchestration. Qualified photo attachment lacks a contract field. |
-| IN02 | NOT_STARTED: two-client real party, physical rally, reservation and pickup journey not run. | Delivery owns combined qualification/composition. | Real public community routes, policy composition, physical provenance and multiuser gate NOT_RUN. | Keep IN01, BE09/19, BE23/24, FE20/22/23/25/26 evidence distinct. No unit/mock result certifies this gate. |
+The human's current two-king operating model supersedes the historical staffing
+and retired delivery references below. Frontend king
+`01a1a385-9f32-73c2-8715-ff54bd1e0497` integrates frontend/shared-root work;
+backend king `01a19e5c-e9c6-7973-a53b-a6d19141620f` owns backend/contracts.
+Community SL actively allocates ready disjoint frontend work and routes concrete
+fixes, without adding an approval gate. Workers send committed handoffs directly
+to the frontend king. Latest direct human publication policy, relayed by the
+frontend king, permits existing exclusive scoped owners to validate, commit and
+non-force publish qualified **new** checkpoints to master after reconciling
+current remote history and preserving peer work. There is no mandatory king/SL
+per-commit review or central publishing queue. Shared contracts remain backend
+king-owned; frontend root remains frontend king-owned. The three already
+handed-off commits below are integrated/published once by frontend king; owners
+must not duplicate or cherry-publish them. No new backend allocation or implicit
+application-path transfer is authorized by this tracker update.
 
-## Dependencies and ownership
+All three reference assignments start from
+`f837bef676cd26869c26c172a699a91b7842d832`, use isolated worktrees and preserve
+the existing model/reasoning settings. Their new unbudgeted goals were verified
+ACTIVE at dispatch. Production components, rather than screenshot-only pages,
+are the required output. Exact reference source SHA256:
+`d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617`.
 
-- Direct BE↔FE and worker→delivery contacts established. FE reported actual `get_goal` ACTIVE for FE22/23/25/26 implementation,
-  validation, documentation, committed handoffs and fixes; BE likewise confirmed
-  actual ACTIVE unbudgeted BE16–18→BE20–23 goal. New BE09/19 and FE20 workers
-  were asked for actual goal proof at a natural checkpoint. Worker active UI labels are not goal proof. This SL's own unbudgeted goal is ACTIVE,
-  verified with `get_goal` before creation and the returned `create_goal` result.
-- BE37 owner `01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c` sent the BE worker a planned
-  typed event/actor/subject/field query, bounded decision and transaction-aware
-  authorization API. Committed compatibility and actual authority composition
-  remain to be verified. No duplicate permanent policy engine is authorized.
-- Delivery confirms retained BE15 ports unchanged from `f0e44bd`. Cargo lease
-  order: admission → delivery Gateway/startup combined → community party → BE37.
-  Serialize expensive builds only; no duplicate Rust target. Worker coding and
-  lightweight frontend checks continue independently.
-- BE08 exposes `PlaceRepository::select_physical` and
-  `PgPlaceRepository::select_physical_in_transaction`. A separate BE09/19 owner
-  can implement audience/revision/DB-time TTL and explicit self-reported rally
-  invariants against typed place/policy/membership ports. Community BE retains
-  party membership writes. Real place provenance is still a publication/runtime
-  requirement, never supplied by virtual coordinates or fixtures.
-- C04 remains a review candidate. Source-base domain history ends at
-  `ca9f955cd22f7e4c1da029d034c1923f1e98bb9d`; FE pins the C04 artifact at `f0e44bd`, operations SHA256
-  `42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223`; BE must name
-  its exact pinned contract revision in the handoff. The full C04 freeze is not a blanket work barrier.
-- Main staffed the proposed disjoint BE09/19 and FE20 owners. Delivery reserved
-  `0008_meeting_beacons.sql`; the exact assignment permits domain/application
-  `pub mod beacon` / `pub mod rally` and service `pub mod meeting` lines. This
-  supersedes the earlier unified-module proposal; no competing writer exists.
-  No writer receives root routers, RPC/proto or manifests implicitly. Delivery alone integrates/publishes master serially.
+| Assignment | Owner / isolated checkout | Verified delivery and limitations | Next owner/action |
+|---|---|---|---|
+| FE-REF-MEET | `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`; `fe-ref-meet`, `codex/mcr-fe-ref-meet` | MOCK_READY, committed `f745827358f1276b6606518b12b936955cee6023`, parent is assignment base. Git confirms 17 assigned paths and clean HEAD. Worker supplied actual goal COMPLETE followed by null, dependency-link removal and clean STOP. 71 tests/5 files, typecheck/scoped lint and native Chrome 360/390/430 PASS. SL viewed 390px capture; no independent full-route acceptance claimed | Frontend king integrating serially. Genuine owner/member portraits, capability/place bindings and composed-root proof remain distinct |
+| FE-REF-FEED | `01a1a204-c583-7670-965a-4891b8b1289e`; `fe-ref-feed`, `codex/mcr-fe-ref-feed` | MOCK_READY, committed `eff8940a13baeae9c89efe92b071b30f20f4a0bb`; exact base parent, 25 assigned paths and clean HEAD independently verified. 38 feed/thread tests, strict TypeScript, scoped lint, isolated production build and native 360/390/430 PASS; final comparison and documentation delivered. Actual update_goal COMPLETE followed by get_goal null; clean STOP | Direct committed handoff sent to king; concrete owned fixes retain priority. Root author/media consumers and composed fidelity remain king-owned |
+| FE-REF-GIFTS | `01a1a230-6acc-7e82-9e4b-92506decc745`; `fe-ref-gifts`, `codex/mcr-fe-ref-gifts` | MOCK_READY, committed `5d1bf1b070989a006d51e0f4270216db8fc44d8d`; exact base parent, 36 assigned paths and clean HEAD independently verified. 77 tests/6 files, full configured typecheck/source lint, production build, 18 native cases plus reference comparison and planning PASS. SL viewed 390px browse. Actual update_goal and subsequent get_goal both COMPLETE; clean STOP. Authorized gift photography explicitly unavailable | Direct committed handoff sent to king; concrete owned fixes retain priority. King owns typed private image consumer and shared root |
 
-## Evidence and limitations
+Feature ownership is restricted to each assigned feature's presentation exports,
+UI/helpers/tests/evidence and its one reference document. Controllers/contracts,
+central manifests, root/router/shared styles and asset originals are excluded.
+MEET's optional portrait/place/capability ports, FEED's typed author renderer and
+GIFTS' typed image renderer were explicitly coordinated with the frontend king.
+Static decorative character galleries are never identity fallback. No guessed
+member portraits, fabricated actions, stock, places, provider state or authority.
+The root owns the one marching footer; features must not duplicate it.
 
-Source: required specification/task cards, project assessment, execution plan,
-progress ledger and actual worker command snapshots. BE authored community
-aggregate files; FE authored party-authoring controller files and completed the
-pinned install. These observations are implementation progress, not test results.
-Existing FE21 is MOCK_READY at integrated `78cfb7c`; its party-discovery controller
-is a consumer prerequisite already available to FE23, with real-server acceptance
-still open. BE24 image handling is a separate IN02 dependency, not notifications.
+The frontend king dispatched the completed MEET author to
+**FE-REF-INTEGRATED-QA**: NEW `frontend/e2e/reference-integrated/**` and
+`docs/mcr/qa/reference-integrated.md`, ten composed routes at 360/390/430 with
+deterministic fixtures and network counts, no application edits. Author reported
+actual get_goal null, then new unbudgeted create_goal ACTIVE, with clean own
+checkout switched to NEW `codex/mcr-qa-reference-integrated` at
+`e6b55d57e0155016bd81e9cf3ad45887362b55b8`. This reuses its stopped isolated
+`fe-ref-meet` checkout; it does not modify the committed MEET handoff. Exact
+reference was viewed/hash-verified again. Source scaffolding proceeds; no
+server/build/native/capture started below the disk floor. Canonical approved
+atlas bindings and final root composition remain king-owned. No duplicate
+allocation or stale fixture metadata represented as approved product art.
 
-Delivery reported bootstrap integrated at `48458d5` and published checkpoint
-`920631d64c85355df33163a51cd4d1643f4fa109`. At this snapshot `git ls-remote origin
-refs/heads/master` independently returned that SHA (exit 0). This does not imply
-any new community feature commit is published. Each feature handoff must record
-its source base, changed paths, commit, validation commands/exit codes and actual
-master ancestry independently.
+FEED/GIFTS sparse provisioning initially omitted two genuinely imported tracked
+JSON fixtures. Each current writer was explicitly authorized to restore exact
+HEAD bytes in its own checkout; checks must not be weakened. Shared dependency
+links are temporary and must be removed at clean handoff. No dependency install,
+backend build or extra target is part of these assignments. Disk floor remains
+8 GiB; latest worker measurement was 8,061,012 KiB (about 7.69 GiB), below the
+floor. Earlier feature builds/captures completed above the floor; further large
+outputs are held. Source, documentation and serial Git work remain independent.
+No unrelated cleanup is authorized. Shared-root handoff `7201b875` was reported
+by its author and forwarded; it was not cherry-picked or tested in these feature
+checkouts.
 
-Tracker validation: `python3 scripts/mcr/check-plan.py` exit 0, PASS (planning
-provenance/structure/exporter/routing only). Application build/database/browser/
-device/load/release checks were not run by this documentation-only coordinator.
-No generated planning files, source archives, application code or other checkout
-were modified. No acceptance counts are changed.
+The SL's fresh `get_goal` result is **usageLimited**, not ACTIVE or COMPLETE.
+It was not reset or replaced; explicit authorized coordination tools continue to
+respond. Worker goal status is established by raw tool results, not chat badges.
+This tracker does not certify ten-screen reference fidelity, real services,
+physical arrival, devices, IN02, or overall task/IA acceptance.
 
-## FE22 first committed milestone
+## Published checkpoint and current runtime transfer
 
-Read the committed `docs/mcr/frontend/community-authoring.md` at `1c38ad4` and
-its changed-path list: only the assigned party-authoring feature and lane
-evidence. Worker validation includes eight meaningful failure/privacy/receipt
-tests and native-browser unknown-outcome recovery without a second POST. No
-coordinator code review is required. `git merge-base --is-ancestor 1c38ad4
-origin/master` returned 1 at this checkpoint, so this tracker does not claim
-publication. FE22 root wiring, real services and devices remain open.
+Fetched remote master was exactly
+`e9ce93daf2c0d6aa453d055efad271d1de34349c`. Git independently verifies these
+integration commits are its ancestors:
 
-FE04 owner `01a1a202-375e-7401-bfa1-ff8721e90ed6` is a shared media dependency
-for FE25/20. FE20 reports the pinned beacon description has no photo attachment
-field: display is optional/qualified, upload attachment unavailable pending an
-integrator-owned contract amendment. This is routed to delivery, not a reason
-to stop the text-based physical beacon. Actual party membership writes stay
-with community BE; meeting owner requested its fresh transactional authority
-and audience-revision seam directly.
-
-## Next ready work and concrete blockers
-
-The human requires continuous team follow-through. Bounded handoffs go directly
-to delivery; owners continue their next assigned slice and required fixes. A
-scope transfer requires the former writer to stop first. Current queues:
-
-| Writer | Current deliverable | Next ready scope |
+| Owned feature source | Published integration commit | Disposition |
 |---|---|---|
-| Community BE | Party source `4bf2bd4`, Cargo/native proof pending | Giveaway/reservation domain and transactions; then expiry/pickup qualification |
-| Community FE | FE22 `1c38ad4` handed off/integrated `e82a220`; FE23 coding | FE25 owner tools then FE26 pickup; concrete FE22/23 fixes remain owned |
-| Physical BE | BE09 beacon TTL/audience/receipt-backed adapter | BE19 explicit member-only rally and native authorization/restart proof |
-| Physical FE | FE20 form/detail/arrival controls, validation | Required fixes; proposed exact production meeting-entry adapter/test, only after delivery grants shared-path ownership |
+| MEET `f7458273` | `995b5cc19c490ebbefe9b4dc2b28d96e247f4b20` | INTEGRATED; original must not be published again |
+| FEED `eff8940a` | `10978fab7b341afd2b3c36cdbe2e448af249c69a` | INTEGRATED; original must not be published again |
+| GIFTS `5d1bf1b` | `8bc81abc180a935fc0ac7137b853d3864a160f44` | INTEGRATED; original must not be published again |
 
-FE20's proposed follow-on adapter is a ready staffing request, not permission to
-edit root/shared composition now. Existing root ownership stays with delivery.
-No completed worker is kept active merely to satisfy a staffing count.
+Frontend king's published receipt is
+`docs/mcr/frontend/reference-checkpoint-2026-11-04.json`: 617 tests/38 files,
+types/lint/build/origin/planning and default synthetic-root native three-width
+checks PASS. Those are integrator-reported results; SL verified remote ancestry,
+not a separate rerun of application checks. Live/device/multiuser and complete
+visual acceptance remain NOT_RUN.
 
-- **Receipt convention:** delivery qualified member references as `user_id` plus
-  revision, bound to the exact canonical party/user HMAC target. Outbox
-  `RESOURCE_INVALIDATED` invalidates event community queries; member revisions
-  are never compared across parties. FE23 was sent this convention. Rally schema
-  identity still needs the actual BE09/19 owner's proposal; uncertain outcomes
-  remain locked until receipt and current resource validate.
-- **Place revisions:** FE19 supplies catalog revision while the beacon command
-  requires a distinct place revision. FE20 requires qualified per-place
-  revisions and disables publishing without them. Delivery owns public BE08
-  projection/root exposure; catalog revision cannot substitute.
-- **Photo binding:** delivery explicitly keeps text-based C04 now. Qualified
-  optional display is permitted; photo attachment remains unavailable pending
-  an exact contract amendment and privacy/upload-binding consumer checks.
-- **Maintenance outbox:** delivery reports an explicit 00:31 KST shared-scope
-  grant to community BE: `0011_outbox_maintenance.sql`, application
+The former GIFTS owner `01a1a230-6acc-7e82-9e4b-92506decc745` is now the sole
+**FE-STATIC-AVATAR-RUNTIME** writer. Actual prior get_goal null, new unbudgeted
+create_goal and subsequent get_goal **ACTIVE** were supplied. Clean reused
+`/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts` switched to
+`codex/mcr-fe-static-avatar-runtime` at exact base/HEAD `e9ce93daf2c0d6aa453d055efad271d1de34349c`.
+Exclusive NEW paths: `frontend/src/entities/avatar/whole-character/**` and
+`docs/mcr/frontend/whole-character-runtime.md`. No old GIFTS writes, existing
+avatar index/controller/types, root/shared, WorldTransport, contract or original
+art ownership is transferred. No new chat or parallel owner was assigned.
+
+Goal covers strict final whole_character AvatarConfig 1.1.0/manifest/art-hash
+validation, bounded owner-scoped resources, cancellation/render leases,
+canonical privacy checks, public React APIs, adversarial tests and relevant
+native/source/build checks, documentation, committed non-force direct publication
+after remote reconciliation, and concrete fixes. Exactly front_idle; no layer,
+walk, direction, color or arbitrary identity fallback. Contract authority is
+`01a19f83-12cc-7f21-8ad3-55749f012d9b`; the writer contacted it directly for
+published schemas/manifest hashes. Scaffolding may proceed, but final contract
+qualification is pending those actual artifacts. FEED remains stopped and
+available only for related concrete fixes pending integrated-QA findings.
+
+Resource floor recovered: SL measured 10,017,428 KiB (about 9.55 GiB); runtime
+owner startup measured 9,918,356 KiB (about 9.46 GiB). Integrated QA independently
+reported 9.57 GiB and passing crop-bound/network-count unit checks, then began
+composed-root runner wiring. Recheck before builds/captures; hold output growth
+if below 8 GiB. Earlier low-disk receipts below are historical, not a current
+capacity claim. No unrelated cleanup or duplicate build target is authorized.
+
+## Historical delivery record
+
+The remainder preserves earlier checkpoints. Statements describing old current
+owners, ACTIVE goals, pending publication and integration are historical and
+must not override the current authority and verified delivery table above.
+
+## Current delivery and next actions
+
+| Task | State / concrete deliverable | Assigned writer / source | Validation and ancestry | Next action / blocking owner |
+|---|---|---|---|---|
+| BE16–18 | IN_PROGRESS overall; bounded corrected party handoff `eac0b6a` delivered | BE `01a1a1fd-6b5d-75b0-8d42-01ade79b9393`; old `be-community` clean STOPPED; raw COMPLETE then null verified | Latest native party5 + policy4 and actual restart probes/cleanup PASS at `9c4e900`; 15 pure domain/application PASS; four report hashes and source pins independently verified | Delivery serial integration/remote ancestry and public composition; no required internal review fix remains |
+| BE20–23 | IN_PROGRESS overall; bounded corrected giveaway/pickup handoff `eac0b6a` delivered | Same released BE writer; exact manifest45 paths (own/delegated) | Corrected gift6/6 + actual restart expiry/cleanup PASS at `8628a56`; maintenance2 + restart PASS at `9c4e900`; first fixture failure retained, corrected rerun green | Delivery publication/current public owner/resource fences and code-replay wire amendment are separate from bounded internal completion |
+| FE22 | INTEGRATED locally; task-local fixture criteria satisfied: scoped RHF create/edit, drafts/conflicts, receipt recovery | FE `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`; `fe-community-authoring`, base `f0e44bd` | Worker `1c38ad4`, integrated `e82a220`; eight tests/type/build/lint/four-width Chromium exit 0. Integrated SHA is ancestor of published `54900ec` (exit 0) | Retain concrete fixes; root/live authoring remains delivery qualification |
+| FE23 | INTEGRATED locally; task-local fixture criteria satisfied: owner decisions/removal/cancel/explicit rally | Same FE writer; party-management/rally scope | `7342058`, semantic fix `58e18ab`; 13 focused/type/build/lint/four-width browser PASS at bounded handoff; real producer/authority NOT_RUN | Authoring and pickup handoffs delivered; moved-meeting reports retain original meeting and monotonic self revisions |
+| FE24 | MOCK_READY: existing gift discovery/detail/own activity | Existing scoped delivery, no new writer allocated | Workers `5f1005d`/`595c07f`, integrated `3cb3f9c`/`8c33ba3` per ledger | Consume retained public controller; not real reservation acceptance |
+| FE25 | INTEGRATED locally; task-local fixture criteria satisfied: validated giveaway authoring/owner inventory `dee1392` | Same FE authoring writer; coordinated `giveaway-authoring/**` scope | Committed lane evidence read: eight focused tests, type/build/lint and native four-width exit 0; integrated `95d9f37` locally; real upload/authority/root NOT_RUN | Pickup and community-entry handoffs delivered; qualified READY attachment remains explicit dependency |
+| FE26 | INTEGRATED locally; task-local fixture criteria satisfied: consumer/journal/owner claim committed `d127b74`, after KST fix `30c7ad5` | Same FE authoring writer; pickup scope | Committed evidence read: 17 focused/213 affected in 12 files, all four native scripts at four widths/type/build/lint/source guards exit0; real service NOT_RUN | Bounded authoring and next community-entry goals COMPLETE; both tracked sources clean/STOPPED; real root/service qualification delivery-owned |
+| BE09/19 | IN_PROGRESS overall; bounded corrected backend handoff `91e9e59` delivered | BE `01a1a202-3b96-7822-ab54-2f7d29aa42e5`; clean STOPPED `be-physical-meeting`, base `48458d5`; actual goal COMPLETE then null | Native report binds `96779ca`: 9 tests before + 9 after PG restart PASS; 15 source/9 migration hashes independently checked; final handoff differs only in documentation. Forward0016/fresh/upgrade/replay/expiry/contention/cleanup PASS | Delivery integrates serially; independent exact two-path QA remains active; public routes/remote authority/IN02 NOT_RUN |
+| FE20 | INTEGRATED; photo attachment task-local gap: scoped form/detail/arrival controller/UI `4c7837423135416d8412d63e5073deb8fcc5f6be` | FE `01a1a202-3ff2-7a93-95c3-374c6df97281`; `fe-physical-meeting`, parent `48458d5`; 20 exact feature/doc paths | 36 feature/325 combined tests, browser360/390/430, type/build/lint/plan/boundaries/origin exit 0. Clean committed handoff direct to delivery | Feature, adapter and exact root follow-ons delivered; old writers STOPPED; Ops/delivery evaluating uncovered FE38 next |
+| Meeting entry | MOCK_READY: shell-scoped lifecycle/route adapter committed `a59fb3b` | Same FE20 chat, new isolated `fe-meeting-entry`, base `ee41a3b`; exact app/meeting-entry scope | 22 adapter/369 combined tests, native360/390/430 and build/type/lint/source guards PASS; bounded adapter goal COMPLETE, clean checkout | Exact W07/M06 root follow-on delivered `de2f6a5`, 604 combined/default-router native three-width PASS, actual goal COMPLETE/clean STOPPED; release null pending qualified authority |
+| Lock-order QA | IN_PROGRESS: fresh sole writer repairing inherited `66a6c5c` | `01a1a232-b91d-78f1-a13a-1361788ba51c`, `/Users/lhs/.codex/worktrees/d5a6/mcr`, base `072ea867`, branch `codex/mcr-qa-community-policy-lock-order-transfer` | Actual new unbudgeted ACTIVE goal verified; old owner clean STOPPED, goal honestly BLOCKED. Exactly test/report paths; compile/native NOT_RUN | Correct missing outbox/non-vacuous receipt/timeout assertions; delivery supplies corrected dependency pins and fair lease; no native proof before execution |
+| IN02 harness | IN_PROGRESS: real-service two-client harness authoring; gate NOT_RUN | Reused FE community owner `01a1a1fd-6ec9-71e2-a2c6-b5dddca7542e`; new `fe-qa-meetup-pickup`, branch `codex/mcr-qa-IN02`, base `edc460943496011873f90f9d60a5931a9570042a` | Actual raw create_goal ACTIVE and checkout/head/status verified; only untracked supplied dependency link. Exact spec/helper/doc grant, no incumbent | Implement real owner/recipient journey with physical/virtual separation, inventory, recovery and privacy; strict nonzero NOT_RUN on missing real prerequisites; helper validation/documentation/committed handoff/fixes |
+| IN02 | NOT_STARTED: real two-client party→physical rally→reservation→pickup gate | Delivery owns actual composition/qualification | No real multiuser public community journey or device gate run | Keep IN01, BE09/19/23/24 and FE20/22/23/25/26 evidence distinct; no mock/schema acceptance |
+
+## Ownership and continuous follow-through
+
+Community BE and fresh independent QA have actual ACTIVE unbudgeted goals.
+Physical BE, community authoring/entry and FE20 feature/entry/root bounded goals
+are COMPLETE, with clean stopped tracked source and direct committed handoffs;
+these are not whole-task or live acceptance. FE community-entry `cc8e3b2` adds
+20 tests/217 affected and native Chrome156 at 360/390/430/1280, all PASS. Its
+supplied untracked dependency symlink is preserved. The SL goal remains ACTIVE.
+Goal tool results, rather than UI labels or sent instructions, establish status.
+
+Current useful queues: BE community latest regression/native qualification;
+independent QA corrected actual shared transactions; delivery serial integration
+and root/public authority qualification. Ops confirms FE38 is uncovered and its
+actual FE07/FE05/C04 prerequisites are ready. Ops/delivery are coordinating an
+exact new scope/checkout for the released FE20 owner, without a FE37 barrier.
+FE36 and FE37 have incumbents; no duplicate writer was assigned.
+
+Delivery directly granted FE20's follow-on scope:
+`frontend/src/app/meeting-entry/**` and `docs/mcr/frontend/meeting-entry.md`, in a
+NEW isolated `/Users/lhs/Desktop/mcr-worktrees/fe-meeting-entry` checkout, branch
+`codex/mcr-fe-meeting-entry`, base `ee41a3b61183a224a784d303210fcf2ef55737a5`. Transfer was confirmed by
+delivery and `git worktree list`; the adapter is now committed as `a59fb3b`, its
+bounded goal COMPLETE and checkout clean/stopped. Root/router/shared contracts
+remain excluded; no uncommitted worker imports.
+
+Shared grants and exclusions:
+
+- Community owns migration `0007_community.sql`; physical meeting owns exact
+  `0008_meeting_beacons.sql`; BE37 owns0006. Delivery reconciles only named module
+  exports (`community`; domain/app `beacon`/`rally`; service `meeting`).
+- Delivery explicitly delegated maintenance outbox to community BE: committed
+  `7dcf5bb`, migration `0011_outbox_maintenance.sql`, app
   `commands/maintenance.rs`, repository `outbox_maintenance.rs`, exact
-  `outbox.rs` delivery optional-receipt/typed-origin changes, and dedicated
-  tests/script/doc. Use existing leases/dedup; stable transaction-local metadata
-  UUIDs, no recipient impersonation or receipt reuse. Delivery-owned
-  `command_receipts.rs` / `0009` / tests remain excluded during pending work.
-  This is a recorded grant, not a new coordinator request.
+  `outbox.rs` typed-origin/optional-receipt and named registration/tests/docs.
+  Existing leases/dedup and transaction-local stable metadata IDs; no user
+  impersonation or recipient receipt reuse. Delivery's pending0009 SafeFailure/
+  `command_receipts.rs`/tests remain excluded unless separately transferred.
+- Shared Rust target `/Users/lhs/Desktop/mcr-build/backend` stays single-owner.
+  Meeting corrective validation completed and released the lease. Community and
+  independent QA require their own fair short slots; delivery transfers ownership.
+  Expensive phases only are serialized, not independent source work.
 
-Tracker commits `7a1ed34`, `f29a82a`, `181878b` were handed directly to delivery;
-master now contains the corresponding documentation history (observed local
-master `54900ec`). At the last remote check, `refs/heads/master` was still
-`920631d`; FE22 integration and latest tracker publication were not yet proven.
+## Concrete integration dependencies
+
+| Dependency | Exact requirement / owner | State |
+|---|---|---|
+| Member/rally receipt identity | Delivery-qualified member `user_id`+Member.revision, rally actor `user_id`+entry revision, exact event/party/user/meeting HMAC target; fresh authorized reread. Outbox invalidates event community queries, not cross-party user cursors | Qualified and sent directly to FE23; semantic stale-report correction committed |
+| Place revision | Compare current place-state revision, preserve catalog binding separately; FE19 catalog revision cannot substitute for required per-place revision | Internal rule agreed; qualified public mapping/projection and root wiring delivery-owned, FE20 fails closed without it |
+| Live meeting authority | Current user/event scope, audience/member/block authorization, operator TTL1–900, event cutoff, server-time estimate, revocation lifecycle | Root/public source not qualified; optional ports do not fabricate permission or physical truth |
+| Physical party/beacon association | Party meeting-reference/membership seam under caller transaction; no latest-beacon guess or revision alias | `a336a25` concrete seam; rally returns null beacon until explicit association exists |
+| Relationship policy | BE37 typed transaction-aware `authorize_in` and actual fenced owner authority, fail closed on denied/unavailable/stale | Social owner `01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c`; committed API adoption/native/public composition still required |
+| Pickup code replay | Plaintext issued once; safe receipt only on replay, unknown result locked; exact response/rotation convention needs C04 qualification | Delivery qualified lost-response issuance-status recovery only, explicit fresh-read rotation for a new code; same-key one-shot response wire gap remains explicit, never secret replay |
+| Photo/media | FE04 owner `01a1a202-375e-7401-bfa1-ff8721e90ed6` provides READY attachment. Beacon C04 is text-only | Delivery permits qualified optional display; actual beacon attachment requires separate exact contract+privacy/upload-binding checks, remains required gap where applicable |
+| Reload recovery | FE20 command key lives only in current shell; FE26 explicitly owns qualified minimal key/target journal, private code memory-only | No automatic write replay; reload cannot be claimed recovered without actual journal/server evidence |
+
+## Evidence, pins and limits
+
+Required specification, assessment, execution/parallel policy and exact task cards
+were read. C04 is a candidate; bounded discovery is separately frozen at
+`ca9f955`. FE authoring pins source `f0e44bd`, operations SHA256
+`42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223`.
+Detailed pins, exact paths and command exits live in committed lane evidence:
+[community backend](../backend/community.md), [maintenance](../backend/community-maintenance.md),
+[meeting backend](../backend/meeting.md), [community authoring](../frontend/community-authoring.md),
+[meeting frontend](../frontend/meeting-beacon.md). Read these from each named
+worker commit until integrated; links may not exist on the SL's older base.
+
+Physical meeting native report `/tmp/mcr-meeting-native-20261104-b.json` binds
+source `96779ca69d3583f0a23f5a8dd563d5988ede5f81`, eight binary runs and 18
+passing test executions across restart, with cleanup PASS. Its 15 source and
+nine migration hashes were independently matched to Git (exit0). Handoff
+`91e9e59ee10de5c77e171ed6e37f00ca2ae74b96` changes only the evidence document
+after that source. Public routes are NOT_EXPOSED; production authority/IN02
+NOT_RUN. Community native receipts
+were inspected at `/tmp/mcr-community-native-20261104-5ujru236`: three JSON
+reports bind source `5d8efe7d2108b59579696ab10cd8800f270e8701`, copied binary
+SHA256s, five party/two maintenance/four gift tests and restart reruns, all exit0
+with cleanup PASS. They explicitly label public routes and real policy NOT_RUN.
+Thirteen domain/application tests also passed per worker evidence; shared-policy/
+durable-error adoption still needs affected checks/final committed evidence. FE fixture tests establish
+MOCK_READY behavior, not real authorization or multiuser acceptance. Virtual
+positions never prove arrival; place/photo provenance and devices remain open.
+BE24 is image/media handling, a separate IN02 dependency, not notifications.
+
+Published checkpoint independently checked with `git ls-remote`:
+`47911e7c4d57e7902ace3318b362c959bc50e215`. FE20 `ee41a3b` and FE25
+`95d9f37` are ancestors (both exit0); FE22 ancestry was verified at earlier
+`54900ec`. Later corrective handoffs need their own remote proof.
+Only delivery pushes master; SL tracker commits are sent directly for serial
+integration, not published from this checkout.
+
+Tracker validation: `python3 scripts/mcr/check-plan.py` exit0 PASS (planning
+provenance/structure/exporter/routing only), `git diff --check` exit0. This SL
+runs no application build/database/browser/device/load gate and changes no
+application, generated planning or `docs/source/` files. Accepted task/IA counts
+are unchanged; IN02 remains unaccepted.
+
+Concrete compatibility correction is now owned: naive meeting actor self-pair
+UPDATE→party SHARE competes with community PartyProducer root UPDATE→self-pair
+UPDATE. BE37 owns `authorize_actor_in` (event/own-member/real-owner fence without
+self-pair); meeting owner consumes actor guard→community party root→full pairs.
+BE37 authored two real PG actor regressions; short rebuild/committed correction
+and meeting adoption remain required. Six independent meeting adapter tests
+before/after restart are useful but do not prove this shared composition.
+
+Delivery reserved exclusive QA fixture
+`backend/services/concert-service/tests/qa_community_policy_lock_order.rs` and
+`docs/mcr/qa/community-policy-lock-order.md`, no production edits. Main identified already terminal admission QA
+`01a1a00c-c94e-74a2-a306-1ff686372881`; its final factual report correction
+`38ad2d9` returned actual COMPLETE/IDLE and clean STOPPED, independently checked
+by main and released by World. It is now sole lock QA owner. Social future
+media-QA allocation was definitively CANCELED; no second checkout/goal was made.
+New isolated setup base `51783cf5651b68ca98faede29d442c4dccc24f6f` permits read-only
+source/design and two-path test/report work, not qualification against an old
+candidate. Delivery must supply actual integrated corrective sync plus fair
+Cargo/PG resources before native proof. No extra target or blanket review gate. Required proof is deterministic actual shared transaction contention
+and rollback, without claiming synthetic owner authority as real remote policy.
+
+After FE26 committed handoff/fixes, delivery reserved the authoring owner's next
+scope in NEW `fe-community-entry`: `frontend/src/app/community-entry/**` plus
+`docs/mcr/frontend/community-entry.md`. Root/router/CommunityFeatures remain
+with delivery. New goal/base follow integrated FE26; no early writes and no
+duplicate FE21/24 controllers. FE26 final browser evidence was refreshed
+after KST entry/display correction with UTC wire conversion and committed; new
+community-entry source has not started before its integrated-base transfer.
+
+Current follow-through: new `fe-community-entry` at `dc8dee7` is now provisioned
+and executing its ACTIVE goal, borrowing existing FE21/24 controllers; tracked
+source was clean at setup while untracked node_modules was preserved. FE20's
+root-only assignment in `fe-meeting-root` at `892ca4d` is delivered as
+`de2f6a5b99a2d52494a9d1db8fd4cba823c907e9`: actual goal COMPLETE, clean
+STOPPED. Seven default-router tests and 604/604 combined checks pass; Chrome156
+direct W07/M06 default-router fixtures pass at 360/390/430 with canonical Auth,
+a fake world and peak one persistent host. Release stays null pending qualified
+place revision/audience/expiry/server clock authority; MOCK_READY, not live
+acceptance. Exact grant excludes all unrelated routes/owners.
+
+Community backend remains IN_PROGRESS through latest fixes at `15b4f09` and
+new review findings: reject new reservation after pickup end even during grace;
+check claim receipt before spending another guess budget; normalize pickup-code
+time precision to PostgreSQL. Owner is writing regressions before current native
+requalification. Old `5d8efe7` native results are historical, not proof of those
+new changes. Physical meeting corrections `c299344`/`d78e035` retain published
+0008 bytes and add forward migration0016 with fresh/replay/upgrade checks;
+corrective contention/expiry/upgrade execution remains pending.
+
+QA `a788a99` is not validated preparation: it never invokes actual shared adapters,
+invents schema fields/tables, accepts arbitrary database URL fallback, and claims
+receipt/outbox and reauthorization checks absent from the fixture. Exact source
+fixes/resume sent to QA and delivery; no native execution is authorized for that
+unguarded version. Source correction is independently possible before candidate
+integration. No P0/P1 risk is closed by placeholder/raw-SQL fixture counts.
+
+QA repair `66a6c5c` is committed source preparation only. It now imports actual
+meeting/community/relationship adapters and checks an owned PostgreSQL fixture,
+but compile/schema binding and native contention/rollback remain NOT_RUN. Source
+inspection still finds no outbox assertion and a receipt count using a beacon
+UUID without staging a receipt-producing command; writer policy/mutation lacks
+a bounded timeout. These concrete gaps were sent to delivery for correction.
+The worker forwarded exact get_goal JSON: its persistent goal remains BLOCKED,
+not ACTIVE. Main was asked for a supported resume or clean single-writer
+transfer of remaining qualification to a fresh goal-bearing visible QA chat.
+Old owner was instructed to stop writes cleanly; no false completion or unsafe
+fixture execution.
+
+FE community-entry owner reports 20 adapter tests and Chrome fixtures at
+360/390/430/1280 PASS; final commit/goal closure is still pending. The supplied
+untracked dependency symlink is preserved; boundary checks use staged task
+paths. FE36 is already assigned to the former account-root owner in
+`fe-safety-account` with an actual ACTIVE goal; community made no duplicate
+assignment. Main was notified that the released FE20 owner is available for a
+new exact useful scope after incumbent/delivery ownership checks.
+
+Fresh sole lock QA `01a1a232-b91d-78f1-a13a-1361788ba51c` now owns the two
+reserved paths in a managed isolated checkout at `072ea867`. Actual create_goal
+returned ACTIVE with implementation, compile/native rollback validation, evidence,
+committed handoff and fixes in scope. Old `66a6c5c` owner stopped cleanly and its
+BLOCKED goal remains untouched. The new owner independently identified the
+vacuous receipt/missing outbox assertions and is replacing them with staged
+positive-before/absent-after transaction checks; native qualification is pending.
+
+Delivery explicitly reserved the real IN02 harness to the completed community
+entry owner: only `frontend/e2e/real/meetup-pickup.spec.ts`,
+`frontend/e2e/real/meetup-pickup-helpers.ts` and
+`docs/mcr/qa/meetup-pickup-in02.md`. New checkout/branch at `edc4609` was
+provisioned before dispatch; the qualified dependency symlink is untracked.
+The worker forwarded raw ACTIVE goal JSON plus exact cwd/HEAD/branch/status.
+Authoring is independent of running services, but missing configuration/services
+must yield nonzero NOT_RUN, with no mock PASS fallback. Bounded harness delivery
+and actual IN02 acceptance are separate. Ops independently verified the released
+FE20 owner's new ACTIVE FE38 goal in `fe-event-operations` at `072ea86`; no
+community-entry cross-assignment. A precise new public producer composition
+scope for the stopped meeting BE owner was requested from delivery; none is
+implicitly acquired.
+
+## Frontend task disposition against specification section 12
+
+Section 12 expressly permits contract fixtures and makes corresponding backend
+implementation **not a prerequisite**. Earlier MOCK_READY labels describe the
+fixture evidence environment, not a reason to withhold a completed FE task for
+future backend/device/IN02 gates. Task-card conventions still require relevant
+format/type/build/source checks, a task-linked commit and verified remote master
+ancestry; unit success alone is not integration acceptance. No full gate is
+weakened by this correction.
+
+| Task | Exact implementation/acceptance disposition | Existing evidence and source → integration ancestry | Task-local gap / delivery evidence |
+|---|---|---|---|
+| FE22 | SATISFIED: capacity/ticket section/time/place/intro create-edit, RHF validation, safe draft restore; invalid time/capacity, mapped server errors and conflict draft retention | `1c38ad4` → `e82a220`, semantic `58e18ab` → `48bb3e8`, KST `30c7ad5` → `d8778b8`; 8 initial focused tests, final 213 affected, type/build/lint and 360/390/430/1280 browser PASS | No identified task-local implementation gap. Publish/verify final KST correction ancestry. Live backend/devices/IN02 are separate |
+| FE23 | SATISFIED: applications/member list, explicit ON_MY_WAY/HERE/MET/NEED_HELP, remove/cancel confirmation; last-slot refresh, removed-member eviction, moved meeting supersedes old card | `7342058`/`58e18ab` → `aa103a8`/`48bb3e8`; 13 focused, final 213 affected, type/build/lint and four-width browser PASS | No identified task-local gap; final KST display correction publication remains delivery evidence |
+| FE25 | SATISFIED: item/photo/quantity/window/place form, owner inventory/pause/cancel/edit; stock-conflict form retained, unauthorized tools unavailable | `dee1392`/`30c7ad5` → `95d9f37`/`d8778b8`; 8 focused, final 213 affected, type/build/lint and four-width browser PASS. Actual file picker/select/upload/recover UI consumes the qualified FE04 port | No identified task-local implementation gap. Fixture-injected upload is permitted; real BE24 upload is a separate integration check. Verify final KST publication |
+| FE26 | SATISFIED: intent lifecycle/hold/expiry/meeting/code/owner claim/cancel; timeout and real browser sessionStorage reload recover original status without POST replay; expired/sold-out/repeated pickup never fake success | `d127b74` → `941d36c`; 17 focused, 213 affected, type/build/lint and four-width native browser PASS; private codes not persisted | No identified task-local implementation gap. Final feature commit publication/ancestry pending; no plaintext replay requirement invented |
+| FE20 | SATISFIED for audience/TTL/last-confirmed/identification/moved-stale-revoked/explicit arrival and expiry/currentness tests; PARTIAL for photo attachment behavior | `4c78374` → `ee41a3b`; 36 focused/325 combined, type/build/lint/native360/390/430 PASS. Optional qualified photo display exists | Exact task-local gap: photo upload attachment/persistence is absent from text-only C04; display-only optional port is not attachment. No generic backend/device gate substituted |
+
+Current remote `47911e7` independently contains `e82a220`, `aa103a8`,
+`48bb3e8`, `95d9f37` and `ee41a3b` (ancestor exit0). It does not contain final
+`d8778b8` or `941d36c` (exit1), though both are on local master. Delivery has
+the compact disposition directly and can publish validated work without a new
+SL approval. Community root-ready entry `cc8e3b2` → `edc4609` and meeting root
+`de2f6a5` → `d80631e` also exist on local master with existing 217/604 combined
+fixture evidence; no completed feature is withheld solely for live qualification.
+
+## Concrete photo completion allocation
+
+Main requires the genuine FE20 photo attachment gap to be completed. Delivery
+retains shared C04/BE24-purpose/forward-migration ownership and delegated only
+new `backend/services/concert-service/src/meeting/photo.rs`,
+`backend/services/concert-service/tests/meeting_photo.rs` and
+`docs/mcr/backend/beacon-photo.md` to the released meeting BE owner. New isolated
+`be-beacon-photo`, branch `codex/mcr-be-beacon-photo`, base `64b25dc` was
+provisioned; raw actual new unbudgeted ACTIVE goal plus cwd/HEAD/empty status
+were verified. Contract/typed-port proposal comes first. Existing meeting hooks
+remain proposal-only until delivery grants exact paths. Current BE24 purposes
+are POST/GIVEAWAY/REPORT; explicit BEACON purpose and authorized READY media
+attachment/read binding are required, never another purpose reused. Published
+migrations remain immutable; physical/photo provenance, audience, revision,
+expiry, revocation and cleanup remain required.
+
+A new visible FE writer will receive exact beacon-photo paths after the typed
+contract is ready. FE20 former owner stays on Ops FE38; the IN02 harness owner
+keeps its three paths. Contract-fixture FE implementation need not await live
+BE24 composition. This is implementation work, not another full review loop.
+
+Community internal qualification is now complete at
+`eac0b6ae0c48a8673f19c41ac50aa57d060cffdd`; actual goal COMPLETE then null and
+clean STOPPED proof were forwarded. Handoff manifest has **45** own/delegated
+paths; separately owned prerequisites are excluded from integration picks.
+All four report hashes match committed handoff metadata, and every report's 41
+source hashes matches its tested Git revision. Three reports differ at final
+handoff only in the unrelated corrected gift test; gift report has no final
+source mismatch. Delivery was informed that this released owner is available
+for a precise additive authorized-context/public producer scope in a new
+checkout, if unowned. No implicit new scope or backend acceptance is claimed.
