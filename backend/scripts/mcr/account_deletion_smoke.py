@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+from urllib.parse import quote
 
 from migration_smoke import (BACKEND, Cluster, PG_TOOLS, SmokeError, check_ledger,
                              executable, execute, migration_manifest)
@@ -34,7 +35,7 @@ def run_tests(path: Path, env: dict, phase: str, report: dict, exact: str | None
     report[phase] = {"status": "PASS", "exit_code": result.returncode, "passed": count}
 
 
-def qualify(path: Path, pg: Path, report: dict) -> None:
+def qualify(path: Path, pg: Path, report: dict, legacy: Path | None = None) -> None:
     tools = {name: executable(pg / name) for name in PG_TOOLS}
     cluster = Cluster(tools)
     root = cluster.root
@@ -66,6 +67,15 @@ def qualify(path: Path, pg: Path, report: dict) -> None:
         run_tests(path, env, "after_restart", report,
                   "native::restart_keeps_required_failures_and_success_receipts")
         check_ledger(cluster, "mcr_account_deletion", expected)
+        if legacy is not None:
+            # The inherited fixture replaces the URL's final database segment.
+            # Encode our owned Unix socket in the authority so that replacement
+            # cannot lose a query-string host override or fall back to TCP.
+            authority_url = (f"postgresql://mcr_owner:{cluster.password}@"
+                             f"{quote(str(cluster.socket), safe='')}:5432/postgres")
+            legacy_env = {**cluster.env, "AUTH_RUNTIME_TEST_DATABASE_URL": authority_url,
+                          "AUTH_RUNTIME_TEST_INITDB_SYSTEM_IDENTIFIER": lineage}
+            run_tests(legacy, legacy_env, "inherited_durable", report)
     finally:
         cluster.cleanup()
         report["cleanup"] = {"status": "PASS" if not root.exists() else "FAIL", "owned_root_absent": not root.exists()}
@@ -77,12 +87,19 @@ def main() -> int:
     parser.add_argument("--sha256", required=True)
     parser.add_argument("--pg-bin-dir", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
+    parser.add_argument("--inherited-test-binary", type=Path)
+    parser.add_argument("--inherited-sha256")
     args = parser.parse_args()
     report = {"status": "FAIL", "binary_sha256": args.sha256,
               "limitations": ["Typed owner fixtures do not certify real Concert owner integration or reconnect/reveal fencing.",
                               "No HTTP/Gateway, browser, deployment or whole-task acceptance claimed."]}
     try:
         path = binary(args.test_binary, args.sha256)
+        if bool(args.inherited_test_binary) != bool(args.inherited_sha256):
+            raise SmokeError("preflight", "inherited binary and digest must be supplied together")
+        legacy = binary(args.inherited_test_binary, args.inherited_sha256) if args.inherited_test_binary else None
+        if legacy is not None:
+            report["inherited_binary_sha256"] = args.inherited_sha256
         if not args.pg_bin_dir.is_absolute():
             raise SmokeError("preflight", "PG binaries must use an explicit absolute path")
         report["source_commit"] = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=BACKEND, text=True).strip()
@@ -98,7 +115,7 @@ def main() -> int:
                       BACKEND / "services/auth-service/src/adapters/out/grpc/user_deletion_dispatcher.rs",
                       BACKEND / "services/auth-service/src/adapters/out/persistence/user_deletion_saga_repository.rs"]
         }
-        qualify(path, args.pg_bin_dir, report)
+        qualify(path, args.pg_bin_dir, report, legacy)
         report["status"] = "PASS"
     except SmokeError as error:
         report["failure"] = error.detail
