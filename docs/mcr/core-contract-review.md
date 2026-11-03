@@ -75,3 +75,55 @@ Commands executed with `PYTHONDONTWRITEBYTECODE=1` to prevent import-cache write
 | `contracts/fixtures/core/index.json` | `862aca8983894f31978bab2881801a8402f2fdbf01e924bd8a3e21b8fe4188c4` |
 
 These are findings against this content snapshot. The parent may resolve them in later edits; recheck the owning source before applying them to another candidate. The only delivery for this follow-up is `docs/mcr/core-contract-review.md`, committed locally on the isolated worker branch. Parent integration/publication and all formal acceptance decisions remain with the integrator.
+
+## Follow-up: completed draft and negative-coverage check
+
+The parent's completed draft was rechecked after upstream-schema reachability pruning and its `Current validation` section were added. Core schema, operations, validator, tests and fixture-index hashes remain identical to the snapshot above. The updated generator hash is `60b1b0e4f6786df5e073bf6873f3b0557f07a5d23a5040f1ac85c306eda2792d`; updated `docs/mcr/core-contract.md` hash is `b819c380ec59c12b500f345febadb5b937aaf34a605bd5faffd4bc2917f46234`. Reachability pruning preserves the C06 definitions and the required inherited Auth schemas; the four findings above remain applicable.
+
+Re-executed in main with `PYTHONDONTWRITEBYTECODE=1`: the 15-method `test_core.py` suite returns **exit 0**, and `python3 scripts/mcr/validate-core.py` returns **exit 0**, reporting 23 indexed fixtures, `DRAFT_VALIDATED`, producer runtime `NOT_RUN` and freeze `PENDING`. No output-generating entrypoint, application build, or runtime route execution was invoked.
+
+The negative coverage actually present in those tests is:
+
+| Boundary | Negative behavior checked | Evidence limit |
+|---|---|---|
+| Public profile privacy | Reject email, exact age, age claims, social handles, preferences, meeting and access-token extra properties | Schema allowlist; not real HTTP/WS/cache privacy |
+| Private identity | Reject wrong actor, wrong event and nested profile/participant user mismatch | Context checks for PrivateParticipant, also used by Bootstrap; not yet place-response binding under R02 |
+| Bootstrap consistency | Reject participant/event mismatch and divergent avatar revision/projection | In-memory response relationship validation |
+| Avatar catalog membership | Reject an unknown hair item even when both Bootstrap avatar copies agree | Real C06 manifest lookup used by the validator; not a server mutation test |
+| Read-only lifecycle | Reject mutation capability enabled on the read-only Bootstrap fixture | Contract consistency; not server write authorization |
+| Provider capabilities | Reject duplicate/missing provider identities and enabled flag with a non-null disabled reason | Does not prove provider configuration or browser handoff; OAuth stays disabled pending decision |
+| Credential/resource boundaries | Reject arbitrary avatar asset URL field and non-empty public `refreshToken` | Does not inspect actual cookies, logs, responses or browser persistence |
+| Password policy | Reject too-short and oversized UTF-8 byte sequences, including multibyte overflow | Custom keyword enforces bytes in this Python validator; generated consumer parity still needs qualification |
+| Update requests | Reject missing/zero expected revision and an update containing only its revision | Does not exercise stale-version conflicts or concurrent persistence |
+| Clock/place shape | Reject non-UTC Bootstrap timestamp and duplicate place IDs | Does not establish venue truth, source rights or requested-place identity |
+
+Positive checks additionally validate all 23 indexed fixtures, exact inherited auth operation mapping, local schema references, unique operation IDs, deterministic/current generated output, and explicit unimplemented/adaptation-required target states. Deliberate unimplemented runtime routes and disabled OAuth handoffs are **not bugs in this review**. The remaining findings concern the defined contract, metadata or fixture gate itself.
+
+## Resolution recheck: C03-R01 through C03-R04 closed for the inspected patch
+
+**All four findings are resolved in the inspected pending main patch.** This resolution supersedes the earlier statements that four findings remain. The original findings and prior snapshots above are retained as review history. Main HEAD observed at the start of this recheck was `ea0c55771880dc483435f46bfb05a626e2c1b136`; the content hashes below identify the pending draft actually inspected.
+
+| Finding | Resolution verified | Re-executed counterexample evidence |
+|---|---|---|
+| R01: core error reasons/private details | New strict `CoreErrorResponse` and per-reason closed `CoreErrorDetails` preserve the inherited envelope field names while constraining MCR errors. Generated core response schemas additionally restrict reasons by status; fixture context validates the actual operation/status response. Generic inherited Auth `ErrorResponse` remains separate. | Reject null/empty details, array reason, unknown reason, and a valid reason accompanied by `private_handle`. Reject VERSION_CONFLICT at the avatar operation's 404 response. Passing generic `ErrorResponse` as the initial schema cannot bypass the stricter core operation's 409 response. A genuine inherited login 401 error still validates. |
+| R02: requested identity binding | `PlaceResponse`/`PlaceList` now enforce requested `event_id`; detail enforces requested `place_id`; `PublicProfile` supports separate `target_user_id`. The fixture index carries the relevant expected identities. | Both wrong-event place counterexamples reject, as do wrong requested place and wrong target user. A public profile remains valid when its target differs from the authenticated caller, avoiding accidental caller/target conflation. |
+| R03: theme delivery and consistency | Bootstrap now requires exactly three `theme_manifests`, using the existing C06 definition. Core semantic validation delegates the full config/avatar/map/theme bundle to C06's validator. | Rehashed theme mismatches for map ID, map revision, collision ID, place IDs and avatar content hash all reject. Missing third theme and duplicate ThemeId reject. Rehashing before these checks confirms semantic binding rather than merely detecting a stale digest. |
+| R04: public capability refresh policy | Public discovery has `security: []` and `PUBLIC_READ_NO_AUTH_REFRESH`. Authenticated Bootstrap reads retain `READ_ONCE_AFTER_REFRESH`. | Direct generated-operation assertions confirm both public and authenticated policies. No runtime credential rotation is inferred from this metadata check. |
+
+The updated `scripts/mcr/tests/test_core.py` was read in full. Its five added methods cover public discovery retry separation; requested place/event/target-user identities; required reason and safe details; operation/status response validation; and three delivered, consistent theme manifests. Existing privacy, Bootstrap identity/avatar, read-only event, provider identity, revision, UTC, reference-resolution and deterministic-generation checks remain. Password tests now also reject invalid Unicode without escaping as an encoding exception.
+
+Executed read-only in main with `PYTHONDONTWRITEBYTECODE=1`:
+
+- `python3 -m unittest discover -s scripts/mcr/tests -p test_core.py -v`: **exit 0; 20 test methods pass**, including generated-artifact determinism/currentness.
+- `python3 scripts/mcr/validate-core.py`: **exit 0; 25 indexed fixtures**, state `DRAFT_VALIDATED`, producer runtime `NOT_RUN`, contract freeze `PENDING`.
+- Additional in-memory replays: **exit 0; all 18 negative counterexample probes reject**. Positive controls preserve generic Auth errors and caller/target separation. Generated target still has 24 operations. These probes write no executable, fixture, schema, or generated output.
+
+| Rechecked input relative to main | SHA-256 |
+|---|---|
+| `contracts/core/v1/core.schema.json` | `f7f0ef7ce4554301a21775eab80df817420794ebb3494f0d18346f612070f079` |
+| `backend/scripts/docs/generate-mcr-core.py` | `12d0ea30ccc3e7599eec5f9148db682d1c90eab84a6f4da8f1cd9d0431617cd5` |
+| `scripts/mcr/validate-core.py` | `916508b720cc072a0a7a00069171b1ce10a826a53aaaea41f24b64397687b4b6` |
+| `scripts/mcr/tests/test_core.py` | `5d7b1c2c9061884955ae08f60d855d785c7ace5752496660bbd9c455e84d3e45` |
+| `contracts/fixtures/core/index.json` | `e178cbc42ed02bc81d3780ddab1373463b74dbf0783d645f9c636afa3d291777` |
+
+No additional open finding arose from this bounded resolution recheck. This closes the four contract-review findings for this snapshot only. Parent freeze/integration decisions remain separate. OAuth stays deliberately disabled pending its recorded handoff decision; real HTTP, cookies, authorization, persistence/concurrency, browser/device, production artwork and release acceptance remain untested here. Only this review document changes in the separate resolution commit.
