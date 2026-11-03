@@ -1,7 +1,8 @@
 # Authenticated Auth admission RPC review
 
-Date: 2026-11-03. Status: **IN_PROGRESS — R1 correction and final disposition
-pending**. Independent source review found one P2 test-timing defect. No introduced
+Date: 2026-11-03. Status: **IN_PROGRESS — R1 source correction verified;
+parent combined evidence and final disposition pending**. Independent source
+review found one P2 test-timing defect. No introduced
 production authorization defect was identified in the inspected handler. This is
 a bounded review of the Auth-owned read RPC, not whole BE04 or release acceptance.
 
@@ -64,8 +65,26 @@ Bounded requested correction: establish robust live authority at dispatch in the
 intended test, preserve exactly one owner call, and still prove that actual proof
 expiry wins over the longer five-second original deadline and two-second
 resource ceiling. Do not weaken the assertions or retry until green. The
-integrator accepted R1 and returned it to the handler worker. Corrected source
-and the parent's focused run remain to be verified here.
+integrator accepted R1 and returned it to the handler worker.
+
+The source correction is verified at worker commit
+`5c59f1fe8b3ce96aea7cd825d1176ebbc7ecf9f6`, parent `9bf3233`. Only the test and
+its documentation change. It completes server/key/channel setup, bounds phase
+alignment before issuing one proof with 1.25–1.5 seconds of live authority,
+and confirms one owner entry through a fresh `Notify` within 750ms while the
+proof is still live. The owner remains pending until cancellation. Early denial
+fails without retry; final assertions preserve DeadlineExceeded, response at or
+after signed expiry but before two seconds, exactly one call and cancelled
+budget. The misplaced wait in the already-expired test is removed. No remaining
+actionable timing defect was identified in that correction; production code,
+platform, proto and dependencies are unchanged.
+
+Worker focused run `/Users/lhs/Desktop/mcr-build/auth-admission-rpc-R1-controlled.log`
+has verified SHA-256
+`c34854c87438c2548ca7a25292a0d3f969aa1268e99061c0391b11dbdc0868e3` and records
+11 controlled cases PASS, zero failed/ignored and five native cases filtered.
+The parent's clean combined-candidate focused/native evidence remains pending;
+R1 is source-cleared, not yet credited as fully qualified at that candidate.
 
 ## Handler, owner and composition review
 
@@ -150,9 +169,13 @@ The parent's initial combined helper run is **96 passed / one failed**: BE15's
 contract registry pins predate the event-scope correction. The preserved
 `/tmp/mcr-rpc-parent/helpers.log` shows that exact pin mismatch, not a handler
 failure. The integrator reports a separate central pin correction `d197379` and
-follow-up checks; those are not presumed final or credited here before completed
-evidence is inspected. Worker-only 97 helper PASS does not certify that combined
-candidate. This review changes neither the central helper nor its contracts.
+follow-up checks. Subsequent inspection of the completed
+`/tmp/mcr-rpc-parent/contract-followup.json` binds the correction run to
+`d1973796ca6a2310c8d46041ef0de81cc6710dc0`: corrected helpers, contracts and plan
+all exit 0. Its completed helper log records 98 tests PASS. This is retained
+parent evidence, not an independent QA rerun or a claim that the original
+97-case combined run passed. This review changes neither the central helper nor
+its contracts and does not expand into a separate BE15 implementation review.
 
 ## Remaining limits and handoff
 
@@ -172,6 +195,7 @@ separate obligations. No whole BE04, C04, integration-gate or release acceptance
 is granted by this document.
 
 The new unbudgeted persistent review goal was actually created and returned
-ACTIVE. R1 is accepted for correction; this goal stays active through source/focused
-evidence verification and parent disposition. The integrator alone publishes the
+ACTIVE. R1's source correction and worker focused log are verified; this goal
+stays active through parent combined evidence verification and disposition.
+The integrator alone publishes the
 committed review document. No implementation fix or push is made by QA.
