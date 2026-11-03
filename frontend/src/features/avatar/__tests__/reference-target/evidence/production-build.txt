@@ -1,0 +1,57 @@
+vite v8.1.3 building client environment for production...
+[2K
+transforming...✓ 409 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/index.html                                   1.27 kB │ gzip:   0.54 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/panels-BN_4I1Xa.css                   0.87 kB │ gzip:   0.39 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/root-features-nb6jl9cq.css            1.55 kB │ gzip:   0.65 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/meeting-entry-jVy7UCgi.css            1.58 kB │ gzip:   0.66 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/social-BMiG3aQa.css                   1.71 kB │ gzip:   0.71 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/composition-DBiQD18i.css              2.00 kB │ gzip:   0.75 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/world-panels-D4dblEjn.css             7.40 kB │ gzip:   2.19 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/social-composition-C4IEVqix.css       7.42 kB │ gzip:   2.09 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/CommunityFeatures-DGIz2iOG.css        9.32 kB │ gzip:   2.20 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/provider-Ppp0uXok.css                11.00 kB │ gzip:   2.74 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/PublicBoundary-DO3B2XUN.css          15.51 kB │ gzip:   3.38 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/index-CLQfOVeh.css                   21.31 kB │ gzip:   4.99 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/rolldown-runtime-Bh1tDfsg.js          0.56 kB │ gzip:   0.36 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/compatibility-Ca7viN0U.js             0.84 kB │ gzip:   0.40 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/phaser-C-L-RzyC.js                    1.19 kB │ gzip:   0.62 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/preload-helper-CZgWQFsJ.js            1.25 kB │ gzip:   0.70 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/AdminBoundary-CMlSe_HP.js             1.34 kB │ gzip:   0.67 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/Tabs-DuKw1W9G.js                      1.40 kB │ gzip:   0.68 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/avatar-config.schema-BEz1Qm5v.js      2.08 kB │ gzip:   0.77 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/authority-BHcd8T9s.js                 2.73 kB │ gzip:   1.19 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/resolver-CVpk5P9K.js                  2.79 kB │ gzip:   1.36 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/contract-vlkfjKCn.js                  2.98 kB │ gzip:   1.33 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/simulation-sCcriVKG.js                3.15 kB │ gzip:   1.27 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/panels-C2QzdJbl.js                    4.98 kB │ gzip:   1.86 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/MapScene-CS5friAw.js                  9.14 kB │ gzip:   3.65 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/resources-CY-D6_-v.js                10.66 kB │ gzip:   4.24 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/runtime-7d_FEgtu.js                  11.84 kB │ gzip:   4.14 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/root-features-Cvc6DzIQ.js            14.81 kB │ gzip:   4.91 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/source-catalog-B2GN78SH.js           15.97 kB │ gzip:   4.30 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/schema-CNo_YYjJ.js                   17.45 kB │ gzip:   4.77 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/contract-DLAZrJP9.js                 28.08 kB │ gzip:   6.21 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/PublicBoundary-ix82ePpk.js           32.53 kB │ gzip:   8.88 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/provider-CIGbysoU.js                 34.80 kB │ gzip:  10.87 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/social-DeKlnzL4.js                   34.92 kB │ gzip:  10.19 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/meeting-entry-CN8zlvO0.js            37.36 kB │ gzip:  10.43 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/composition-DdEYyx7L.js              49.38 kB │ gzip:  16.67 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/CommunityFeatures-kQ3X_B1D.js        58.52 kB │ gzip:  16.45 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/world-panels-BKF5WNhW.js             59.02 kB │ gzip:  19.18 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/schemas-B9zUvP7H.js                  66.99 kB │ gzip:  17.93 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/social-composition-BFnz84be.js       92.94 kB │ gzip:  26.34 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/routes-esT69xcs.js                  105.47 kB │ gzip:  34.82 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/mcr-core.openapi-BijjQJMA.js        120.90 kB │ gzip:  11.72 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/index-B5Qv1tXU.js                   385.71 kB │ gzip: 100.12 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/mcr-domain.openapi-DQQCaJ9L.js      755.45 kB │ gzip:  48.47 kB
+../../../../../../private/tmp/mcr-ref-customize-build-wEObqp/assets/phaser-DVTuvjT6.js                1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 587ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
