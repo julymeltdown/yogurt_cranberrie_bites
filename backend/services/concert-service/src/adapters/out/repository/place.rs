@@ -513,3 +513,7 @@ impl PlaceRepository for PgPlaceRepository {
         Ok(outcome)
     }
 }
+
+// BE38 delegated append-only administrative owner port registration.
+pub mod operations;
+pub use operations::PgPlaceOperations;
