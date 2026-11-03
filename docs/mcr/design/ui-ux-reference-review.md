@@ -8,6 +8,18 @@ The user supplied a ten-screen mobile reference on 2026-11-04. Its unchanged cop
 
 ## Evidence and limits
 
+### Sharing entry and event operations delivered
+
+The qualified sharing module now has actual default `/me/social` and
+`/me/requests` entry composition (`21e157f`, `abaf9fd`). Explicit trusted
+service readiness and the existing capability remain mandatory. FE38's event,
+place and audit screens are delivered as `86d547b`, with production operator
+authority and route composition still unavailable. Both authors viewed this
+exact reference and retained its shared concert-window styling. Current combined
+TypeScript and 490 tests pass. See
+[integration evidence](../frontend/sharing-and-operations-integration.md).
+This source delivery does not change the full-visual-adoption verdict.
+
 ### Illustrated scenery source delivered — `bc60edb`
 
 The illustrated-world source handoff from `19d7085` is now integrated, with all
