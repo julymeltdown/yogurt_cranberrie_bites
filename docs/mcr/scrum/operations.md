@@ -30,7 +30,7 @@ remains NOT_RUN until its separate live journey is executed.
 
 | Task | Owner and isolated branch | Exact write grant | Actual goal state |
 | --- | --- | --- | --- |
-| FE-REF-WALL, presentation follow-up to FE32/FE33 | `01a1a213-61d6-7a20-a8e7-476649312f8c`; `codex/mcr-fe-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target` | `frontend/src/features/mural/editor/MuralEditor.tsx`, `frontend/src/features/mural/editor/editor.css`, `frontend/src/features/mural/sync/MuralSyncPanel.tsx`, new `frontend/src/features/mural/editor/__tests__/reference-target/**`, new `frontend/src/features/mural/sync/__tests__/reference-target/**`, `docs/mcr/frontend/wall-reference-target.md` | Owner verified no unfinished goal, created unbudgeted concrete goal; ACTIVE. |
+| FE-REF-WALL, presentation follow-up to FE32/FE33 | `01a1a213-61d6-7a20-a8e7-476649312f8c`; `codex/mcr-fe-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target` | `frontend/src/features/mural/editor/MuralEditor.tsx`, `frontend/src/features/mural/editor/editor.css`, `frontend/src/features/mural/sync/MuralSyncPanel.tsx`, new `frontend/src/features/mural/editor/__tests__/reference-target/**`, new `frontend/src/features/mural/sync/__tests__/reference-target/**`, `docs/mcr/frontend/wall-reference-target.md` | Owner verified unbudgeted goal COMPLETE after committed handoff; fresh get_goal now null. Writer STOPPED. |
 | FE-REF-WALL-QA, bounded presentation and interaction qualification | `01a1a20f-e2a9-7ca2-a21e-f2bd3a9703be`; `codex/mcr-qa-ref-wall`; `/Users/lhs/Desktop/mcr-worktrees/qa-wall-reference-target` | New `frontend/e2e/wall-reference/**`, `docs/mcr/qa/wall-reference-target.md` only | Broader unfinished real-IN04 goal remains BLOCKED; related preparation continues manually. No competing goal or false completion. |
 | Lane coordination and committed evidence handoff | Operations SL above | This document only | Original broad goal verified BLOCKED; explicit new authorization permits useful work manually. No tool capability is claimed to resume it. |
 
@@ -74,8 +74,8 @@ Author paths consumed as dependencies are identified separately from QA-authored
 paths. Concrete findings go directly to the author and are rechecked; QA is not
 an additional generic approval gate. Real devices and live IN04 are not implied.
 
-At this snapshot both assignments are IN_PROGRESS. The final product source is
-committed; author evidence/documentation and independent QA handoffs follow.
+Author task-local work is MOCK_READY and committed; independent QA is
+IN_PROGRESS. Integration and publication ancestry remain to be verified.
 
 The author reports the three presentation files implemented and 126 existing
 editor/synchronization tests across seven files passing (exit 0). This is an
@@ -123,6 +123,18 @@ using the root height variable. No uncommitted root implementation was consumed.
 The pixel pattern is deterministic fixture data, not a claim that product mural
 imagery matches the supplied drawing. Final independent QA is still pending.
 
+Author evidence/documentation commit:
+`4eb2d25290eeb6915c85c24a3d030b181b17fa9c` atop the source pin. All 26 changed
+paths were checked against the assignment; no path drift was found. The new
+tests, 15 PNGs and source-bound report, and
+`docs/mcr/frontend/wall-reference-target.md` are delivered. Evidence totals
+about 736 KiB. Own 36 MiB build output, cache, and dependency link were removed;
+the checkout is clean. Owner reported update_goal COMPLETE and an immediate
+COMPLETE get_goal, then corrected its subsequent observation to a fresh null
+goal. The terminal completed turn and idle writer were verified. No broad
+release or real-IN04 goal was falsely completed. This writer is available for
+concrete Wall QA fixes; a new assignment needs an explicit ownership transfer.
+
 ## Shared shell seam and production dependencies
 
 Root owner `01a1a153-1227-7e72-801f-a2a6b91981e1` retains exclusive
@@ -134,7 +146,13 @@ full mobile panels, uses a flex body with min-height zero, overflow auto and
 areas. Automatic `ConcertWindowEmbedding` suppresses the first embedded
 feature's duplicate frame/title while retaining a semantic heading; standalone,
 nested, or explicitly closable windows retain their own frame/title. No feature
-opt-in edit is needed. Root native evidence and its committed pin are pending.
+opt-in edit is needed. Root owner subsequently delivered committed pin
+`7201b875f9ed6a07a0a77b9ae4aeac2f3f2fbd57` atop `b756e9d9`, reported clean and
+STOPPED. Its document is `docs/mcr/frontend/reference-root.md`; it reports 600
+tests, types/lint/build and native default-Auth/Phaser checks for eight surfaces
+at three widths. Those are root-owner reports, not coordinator reruns or a
+combined Wall candidate. Frontend king owns serial integration and combined
+route evidence. Standalone Wall source does not import the new shared export.
 
 At base `f837bef`, `frontend/src/app/world-panels/index.tsx` still passes
 `release={null}` into `MuralEntryProvider`. Backend kernel qualification alone
