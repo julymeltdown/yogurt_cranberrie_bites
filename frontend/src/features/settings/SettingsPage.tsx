@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from 'react'
 import { ShellLink } from '../../app/navigation'
+import { AccountControlsLink } from '../../app/account-deletion-entry/link'
 import type { SessionController } from '../auth/model/session'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import { useMe, MeStatus } from '../me/ui/MePages'
@@ -39,6 +40,7 @@ export function SettingsPage({ controller, auth, runtime, theme }: { controller:
     </fieldset></form>
     {runtime ? <><button type="button" disabled={disabled || applying || s.blocked || controller.dirty('preferences')} onClick={() => void apply()}>Apply saved preferences in this session</button><p role="status">{application}</p></> : <p>Live preference controls are unavailable in this connection. Saving values does not change the active world or start audio.</p>}
     {theme && !disabled && <ThemeSelector controller={theme} />}
+    <AccountControlsLink />
     <ShellLink id="settings-back-world" to="/world">Back to world</ShellLink>
   </section>
 }
