@@ -651,3 +651,62 @@ async fn native_transaction_settlement_proves_terminal_xid_not_backend_absence()
     assert_ne!(committed.xid(), aborted.xid());
     p.close().await;
 }
+
+#[tokio::test]
+async fn native_internal_resolver_binds_actual_instance_cluster_request_and_receipt_scope() {
+    use media_runtime::settlement::*;
+    let p = owner_media_live_support::owned_pool().await.unwrap();
+    let i = identity();
+    let r = request(i, "initConcertUpload", Uuid::new_v4(), None, init(&png())).unwrap();
+    let guard_digest = [7; 32];
+    let instance = Uuid::new_v4();
+    let mut tx = p.begin().await.unwrap();
+    let actual = MediaTransactionIdentity::capture_in(&mut tx).await.unwrap();
+    tx.commit().await.unwrap();
+    let mut binding = MediaResolveBinding {
+        actor: i.actor,
+        event: i.event,
+        session_family: i.session_family,
+        request_id: i.request_id,
+        operation: r.binding().operation.into(),
+        guard_digest,
+        body_digest: r.binding().body_sha256,
+        registration_id: Uuid::new_v4(),
+    };
+    let mut transaction = MediaResolveTransaction {
+        system_identifier: actual.system_identifier().into(),
+        database_oid: actual.database_oid(),
+        full_xid: actual.xid().into(),
+        backend_pid: actual.backend_pid(),
+        backend_started_unix_micros: actual.backend_started_at().timestamp_micros(),
+        producer_instance_id: instance,
+        settlement_reference: settlement_reference(r.binding(), guard_digest).unwrap(),
+        effect_binding_digest: guard_digest,
+    };
+    let settled = resolve_transaction(&p, instance, &binding, &transaction)
+        .await
+        .unwrap();
+    assert_eq!(settled.state, MediaTransactionState::Committed);
+    // This committed read-only fixture has no command receipt. Absence never
+    // rewrites its transaction outcome into an asserted rollback.
+    assert!(settled.receipt_evidence.is_empty());
+    binding.request_id = Uuid::new_v4();
+    assert!(matches!(
+        resolve_transaction(&p, instance, &binding, &transaction).await,
+        Err(CommandError::Denied)
+    ));
+    binding.request_id = i.request_id;
+    assert!(matches!(
+        resolve_transaction(&p, Uuid::new_v4(), &binding, &transaction).await,
+        Err(CommandError::InvalidInput)
+    ));
+    transaction.system_identifier = "1".into();
+    assert_eq!(
+        resolve_transaction(&p, instance, &binding, &transaction)
+            .await
+            .unwrap()
+            .state,
+        MediaTransactionState::Unknown
+    );
+    p.close().await;
+}
