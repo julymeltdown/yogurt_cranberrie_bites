@@ -164,10 +164,30 @@ pub async fn protect_response(request: Request, next: axum::middleware::Next) ->
         .is_none()
         && (response.status().is_client_error() || response.status().is_server_error())
     {
-        let (status, reason) = match response.status().as_u16() {
+        // The shared browser boundary can reject before the product handler.
+        // Retain only its closed semantic reason, never its arbitrary message,
+        // diagnostic fields, headers or response body.
+        let status = response.status();
+        let forbidden_reason = if status == StatusCode::FORBIDDEN {
+            to_bytes(response.into_body(), 4096)
+                .await
+                .ok()
+                .and_then(|body| serde_json::from_slice::<serde_json::Value>(&body).ok())
+                .and_then(|value| match value["details"]["reason"].as_str() {
+                    Some("ORIGIN_NOT_ALLOWED") => Some("ORIGIN_NOT_ALLOWED"),
+                    Some("BROWSER_INTENT_REQUIRED") => Some("BROWSER_INTENT_REQUIRED"),
+                    _ => None,
+                })
+        } else {
+            None
+        };
+        let (status, reason) = match status.as_u16() {
             400 | 405 | 422 => (StatusCode::BAD_REQUEST, "INVALID_INPUT"),
             401 => (StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED"),
-            403 => (StatusCode::FORBIDDEN, "PERMISSION_DENIED"),
+            403 => (
+                StatusCode::FORBIDDEN,
+                forbidden_reason.unwrap_or("PERMISSION_DENIED"),
+            ),
             404 => (StatusCode::NOT_FOUND, "RESOURCE_UNAVAILABLE"),
             413 => (StatusCode::PAYLOAD_TOO_LARGE, "PAYLOAD_TOO_LARGE"),
             415 => (StatusCode::UNSUPPORTED_MEDIA_TYPE, "INVALID_MEDIA_TYPE"),
