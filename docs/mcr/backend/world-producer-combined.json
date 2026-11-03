@@ -1,0 +1,137 @@
+{
+  "result": "PASS",
+  "combined_source": "5baf5bf1c5d90b358cde8ac5732377b4970c92ad",
+  "source_pin_count": 1454,
+  "commands": [
+    {
+      "label": "concert_identity_composition-tests",
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "concert_identity_composition",
+        "--",
+        "--test-threads=1"
+      ],
+      "exit": 0,
+      "seconds": 28.211,
+      "log": "/private/tmp/mcr-world-producer-combined-3a9ba86-20261104/concert_identity_composition-tests.log",
+      "sha256": "3deb744ca8347f0f6718affea0b9aa010e448ad9eebfd16ab46ef005f1620e7f"
+    },
+    {
+      "label": "concert_identity_composition-artifacts",
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "-p",
+        "api-gateway",
+        "--test",
+        "concert_identity_composition",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "exit": 0,
+      "seconds": 1.014,
+      "log": "/private/tmp/mcr-world-producer-combined-3a9ba86-20261104/concert_identity_composition-artifacts.log",
+      "sha256": "6fd3120ac0f1926df8d0e2782cd296dba5e85f2c77b2f9b8fa8e467c1e55f8c7"
+    },
+    {
+      "label": "world_rpc_authority-tests",
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "-p",
+        "concert-service",
+        "--test",
+        "world_rpc_authority",
+        "--",
+        "--test-threads=1"
+      ],
+      "exit": 0,
+      "seconds": 12.092,
+      "log": "/private/tmp/mcr-world-producer-combined-3a9ba86-20261104/world_rpc_authority-tests.log",
+      "sha256": "a07879189c6dfdb4d896e19dbbba0885261dd9cb53ee335693de724735f31053"
+    },
+    {
+      "label": "world_rpc_authority-artifacts",
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "-p",
+        "concert-service",
+        "--test",
+        "world_rpc_authority",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "exit": 0,
+      "seconds": 1.007,
+      "log": "/private/tmp/mcr-world-producer-combined-3a9ba86-20261104/world_rpc_authority-artifacts.log",
+      "sha256": "9d039dd4dd19a1f4f60276aa034ca34a43e6ccd9e1ae476e042fd2e654467275"
+    }
+  ],
+  "scope": "Combined focused Gateway and RPC tests; author PostgreSQL proof preserved separately; no live multiuser or WebSocket qualification.",
+  "author_head": "3a9ba8615290ca3d3f135b85dda0c4280af52aa6",
+  "author_base": "cc3bb84046cc96388c4e34186b4eae399ec02642",
+  "changed_paths": 24,
+  "unchanged_migration_prerequisite": "backend/services/concert-service/migrations/0005_world_admission.sql",
+  "source_pins_sha256": "28494df1f5aa68aba60d566bbba8ff90061a78afe01158cffe658bead1ddc63a",
+  "qualification_receipt_sha256": "575dde338c7d9de235c36b90e744b42e0340289584b8351f471b797fef927371",
+  "author_native_receipt_sha256": "f25ca6a36a5837ce955de85a2d0341b6f5aaa7fe3128e0dbb7c60f0034ddea71",
+  "combined_executables": {
+    "concert_identity_composition": [
+      {
+        "path": "/private/tmp/mcr-world-producer-combined-3a9ba86-20261104/concert_identity_composition-combined",
+        "sha256": "510cca1419336e2bce9c915a84649d9e99e9df0137cefae21d16de735ac77db1",
+        "target": "concert_identity_composition",
+        "fresh": true
+      }
+    ],
+    "world_rpc_authority": [
+      {
+        "path": "/private/tmp/mcr-world-producer-combined-3a9ba86-20261104/world_rpc_authority-combined",
+        "sha256": "8b6a672f64944d8730df82e72acf779f28cb555457265f38a14527e4fef35d41",
+        "target": "world_rpc_authority",
+        "fresh": true
+      }
+    ]
+  },
+  "native_scope": "Author source-bound PostgreSQL16.14 admission proof:4tests,restart,reapply refusal,cleanup; not rerun in this combined checkpoint.",
+  "not_run": [
+    "public WebSocket handshake",
+    "deployed Gateway-to-Concert-to-PostgreSQL journey",
+    "two-account World",
+    "BE12 simulation",
+    "BE13 privacy projection",
+    "full SQLx migration ledger/startup",
+    "load",
+    "IN01",
+    "release"
+  ]
+}
