@@ -153,6 +153,24 @@ async fn parallel_cooldown_receipt_recovery_and_private_projection() -> anyhow::
     assert_eq!(snapshot.pixels[0], 3);
     assert_eq!(snapshot.next_allowed_at, None);
     let own = repo.snapshot(actor).await?;
+    let checkpoint = sqlx::query(
+        "select revision,pixels from concert_mural_snapshots where snapshot_id=$1 and event_id=$2",
+    )
+    .bind(own.snapshot_id)
+    .bind(actor.event)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(checkpoint.get::<i64, _>("revision"), own.revision);
+    assert_eq!(checkpoint.get::<Vec<u8>, _>("pixels"), own.pixels);
+    assert!(
+        sqlx::query("update concert_mural_snapshots set pixels=$2 where snapshot_id=$1")
+            .bind(own.snapshot_id)
+            .bind(vec![0u8; PIXELS])
+            .execute(&pool)
+            .await
+            .is_err()
+    );
+
     assert_eq!(own.next_allowed_at, Some(first.next_allowed_at));
     let public = serde_json::to_value(repo.delta(peer, 1).await?)?;
     assert!(!public.to_string().contains("actor"));
