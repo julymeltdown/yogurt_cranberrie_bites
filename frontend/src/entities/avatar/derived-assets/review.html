@@ -68,6 +68,7 @@
     document.querySelectorAll('[data-theme]').forEach(other => other.setAttribute('aria-pressed',String(other === button)))
     document.documentElement.dataset.surface = button.dataset.theme
   }))
+  await Promise.all([...root.querySelectorAll('img')].map(img => img.decode()))
   document.getElementById('status').textContent = 'IN_PROGRESS · six original source regions · no production atlas'
   window.__MCR_ART_REVIEW__ = { sourceId: layout.source_id, sourceHash: layout.source_sha256, regions: layout.regions.length, productionEligible: false, pose: layout.pose }
 </script>

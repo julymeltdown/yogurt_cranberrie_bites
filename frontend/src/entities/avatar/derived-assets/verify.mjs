@@ -63,6 +63,30 @@ if (playwright) {
       await page.screenshot({ path: `${root}docs/mcr/art/evidence/source-registration-${width}.png`, fullPage: true })
       results.push({ width, originalRegionCount: 6, sourceViews: 18, overflow: false, themeImageAndGeometryUnchanged: true })
       if (width === 390) {
+        report.sourceRegistrationAnalysis = await page.evaluate(async regions => {
+          // Read-only source measurements, deliberately not an alpha mask or extracted bitmap.
+          const source = new Image(); source.src = '/world/avatars/supplied-v1/photo-01.jpg'; await source.decode()
+          const canvas = document.createElement('canvas'); canvas.width = source.naturalWidth; canvas.height = source.naturalHeight
+          const ctx = canvas.getContext('2d'); ctx.drawImage(source,0,0)
+          const rgba = ctx.getImageData(0,0,canvas.width,canvas.height).data
+          const threshold = 112
+          const dark = (x,y) => { const i = (y*canvas.width+x)*4; return Math.max(rgba[i],rgba[i+1],rgba[i+2]) <= threshold }
+          return { method: 'Maximum RGB channel <=112, inside reviewed source windows. Measures dark outlines only; not an alpha silhouette or skin mask.',
+            regions: regions.map(({ source_location, rect, foot }) => {
+              let minX=1280,minY=853,maxX=-1,maxY=-1,darkPixels=0
+              for(let y=rect.y;y<rect.y+rect.height;y++) for(let x=rect.x;x<rect.x+rect.width;x++) if(dark(x,y)) {
+                minX=Math.min(minX,x); minY=Math.min(minY,y); maxX=Math.max(maxX,x); maxY=Math.max(maxY,y); darkPixels++
+              }
+              let shoeMinX=1280,shoeMaxX=-1
+              for(let y=maxY-7;y<=maxY;y++) for(let x=minX;x<=maxX;x++) if(dark(x,y)) { shoeMinX=Math.min(shoeMinX,x); shoeMaxX=Math.max(shoeMaxX,x) }
+              const estimatedShoeFoot={ x:(shoeMinX+shoeMaxX+1)/2,y:maxY+1 }
+              return { source_location, darkPixels, darkOutlineBounds:{minX,minY,maxX,maxY}, bottomEightRows:{minX:shoeMinX,maxX:shoeMaxX},
+                estimatedShoeFoot, descriptorFoot:foot,
+                descriptorDelta:{x:foot.x-estimatedShoeFoot.x,y:foot.y-estimatedShoeFoot.y},
+                darkOutlineTouchesReviewBoundary:minX===rect.x||minY===rect.y||maxX===rect.x+rect.width-1||maxY===rect.y+rect.height-1 }
+            }) }
+        },layout.regions)
+        assert(report.sourceRegistrationAnalysis.regions.every(region => region.darkPixels > 1000 && !region.darkOutlineTouchesReviewBoundary), 'Source outline clipped by review window')
         report.rejectedImage.pixelInspection = await page.evaluate(async () => {
           const image = new Image(); image.src = '/evidence/rejected.png'; await image.decode()
           const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight

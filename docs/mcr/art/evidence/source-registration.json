@@ -154,6 +154,173 @@
   "transparentDerivatives": "NOT_RUN",
   "directionalWalkAtlas": "NOT_RUN",
   "productionAcceptance": "NOT_RUN",
+  "sourceRegistrationAnalysis": {
+    "method": "Maximum RGB channel <=112, inside reviewed source windows. Measures dark outlines only; not an alpha silhouette or skin mask.",
+    "regions": [
+      {
+        "source_location": "row1_col1",
+        "darkPixels": 77060,
+        "darkOutlineBounds": {
+          "minX": 57,
+          "minY": 93,
+          "maxX": 410,
+          "maxY": 452
+        },
+        "bottomEightRows": {
+          "minX": 180,
+          "maxX": 306
+        },
+        "estimatedShoeFoot": {
+          "x": 243.5,
+          "y": 453
+        },
+        "descriptorFoot": {
+          "x": 240,
+          "y": 455
+        },
+        "descriptorDelta": {
+          "x": -3.5,
+          "y": 2
+        },
+        "darkOutlineTouchesReviewBoundary": false
+      },
+      {
+        "source_location": "row1_col2",
+        "darkPixels": 32123,
+        "darkOutlineBounds": {
+          "minX": 457,
+          "minY": 96,
+          "maxX": 819,
+          "maxY": 456
+        },
+        "bottomEightRows": {
+          "minX": 569,
+          "maxX": 710
+        },
+        "estimatedShoeFoot": {
+          "x": 640,
+          "y": 457
+        },
+        "descriptorFoot": {
+          "x": 638,
+          "y": 458
+        },
+        "descriptorDelta": {
+          "x": -2,
+          "y": 1
+        },
+        "darkOutlineTouchesReviewBoundary": false
+      },
+      {
+        "source_location": "row1_col3",
+        "darkPixels": 56561,
+        "darkOutlineBounds": {
+          "minX": 864,
+          "minY": 88,
+          "maxX": 1230,
+          "maxY": 455
+        },
+        "bottomEightRows": {
+          "minX": 980,
+          "maxX": 1116
+        },
+        "estimatedShoeFoot": {
+          "x": 1048.5,
+          "y": 456
+        },
+        "descriptorFoot": {
+          "x": 1049,
+          "y": 458
+        },
+        "descriptorDelta": {
+          "x": 0.5,
+          "y": 2
+        },
+        "darkOutlineTouchesReviewBoundary": false
+      },
+      {
+        "source_location": "row2_col1",
+        "darkPixels": 65083,
+        "darkOutlineBounds": {
+          "minX": 73,
+          "minY": 502,
+          "maxX": 399,
+          "maxY": 826
+        },
+        "bottomEightRows": {
+          "minX": 178,
+          "maxX": 309
+        },
+        "estimatedShoeFoot": {
+          "x": 244,
+          "y": 827
+        },
+        "descriptorFoot": {
+          "x": 239,
+          "y": 828
+        },
+        "descriptorDelta": {
+          "x": -5,
+          "y": 1
+        },
+        "darkOutlineTouchesReviewBoundary": false
+      },
+      {
+        "source_location": "row2_col2",
+        "darkPixels": 69464,
+        "darkOutlineBounds": {
+          "minX": 457,
+          "minY": 485,
+          "maxX": 819,
+          "maxY": 825
+        },
+        "bottomEightRows": {
+          "minX": 572,
+          "maxX": 707
+        },
+        "estimatedShoeFoot": {
+          "x": 640,
+          "y": 826
+        },
+        "descriptorFoot": {
+          "x": 637,
+          "y": 828
+        },
+        "descriptorDelta": {
+          "x": -3,
+          "y": 2
+        },
+        "darkOutlineTouchesReviewBoundary": false
+      },
+      {
+        "source_location": "row2_col3",
+        "darkPixels": 65451,
+        "darkOutlineBounds": {
+          "minX": 880,
+          "minY": 485,
+          "maxX": 1212,
+          "maxY": 827
+        },
+        "bottomEightRows": {
+          "minX": 981,
+          "maxX": 1117
+        },
+        "estimatedShoeFoot": {
+          "x": 1049.5,
+          "y": 828
+        },
+        "descriptorFoot": {
+          "x": 1049,
+          "y": 828
+        },
+        "descriptorDelta": {
+          "x": -0.5,
+          "y": 0
+        },
+        "darkOutlineTouchesReviewBoundary": false
+      }
+    ]
+  },
   "browser": {
     "version": "156.0.8078.80",
     "results": [
