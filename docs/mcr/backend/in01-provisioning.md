@@ -1,10 +1,12 @@
 # IN01 canonical account and owned-event provisioning
 
-Status: **IN_PROGRESS**. This is a provisioning tool, not IN01 acceptance.
-Current offline ownership/failure/config checks pass19/19. Actual two-account
-provisioning is NOT_RUN pending a current qualified runtime artifact binding;
-owned PostgreSQL event fixture execution passed at9ad192c. No art receipt or world result is
-invented to turn those prerequisites green.
+Status: **IN_PROGRESS; bounded tooling candidate, IN01 NOT_RUN**. The provisioning
+run passed at `c6e86fe`: two independent canonical Auth accounts completed actual
+signup, email delivery, verification and login against the immutable historical
+`600582d` six-service build. A new owned OPEN event persisted and cleanup passed.
+Offline ownership/failure/config checks pass 20/20. The historical Gateway has no
+Concert bootstrap route (observed HTTP 404); no default room, art approval, World
+admission, WebSocket or movement result is inferred. No gate config was emitted.
 
 ## Assignment and provenance
 
@@ -19,8 +21,9 @@ Worktree `/Users/lhs/Desktop/mcr-worktrees/be-in01-provision`, branch
 The previous Community checkout/writer remains stopped. No frontend, central
 contract, manifest, lock, root service, CI or source-archive changes are included.
 Only Delivery publishes master; bounded delivery does not wait for main/SL review.
-The persistent goal stays active through meaningful native qualification,
-committed handoff and concrete fixes.
+The bounded goal covers implementation, available native qualification,
+documentation, committed handoff and concrete review fixes. Full IN01 acceptance
+remains an integration responsibility after current World and art prerequisites.
 
 New tooling is authored here using Python's standard library. It imports the
 unchanged `browser_auth_smoke.Browser`/cookie checker and unchanged `dev_stack`
@@ -57,8 +60,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 backend/scripts/mcr/in01_provision.py owned \
   --hold-seconds 3600
 ```
 
-The binary receipt must contain a successful `exit_code:0`,40-hex
-`source_revision` and exact `binary_sha256` entries for all six retained services.
+The binary receipt must contain a successful `exit_code:0`, 40-hex
+`source_revision`, nonempty `source_files_sha256` matching current source and exact
+`binary_sha256` entries for all six retained services.
 It binds actual bytes; it does not assert that a different current checkout was
 compiled. The unchanged launcher verifies each migration ledger against current
 source. A stale binary/migration mismatch fails closed and runs owned cleanup.
@@ -145,18 +149,17 @@ remain separate IN01 obligations. A bounded provisioning PASS always retains
 
 ## Verification checkpoint
 
-- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py -v`: exit0,19 offline checks.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py -v`: exit 0, 20 offline checks.
 - `python3 -B -m py_compile backend/scripts/mcr/in01_provision.py`: exit0.
 - `git diff --check`: exit0.
 
 Initial offline run rejected macOS's symlinked `/var` temp ancestor; test fixtures
 now use canonical paths while retaining explicit arbitrary-symlink refusal.
-No permission check was relaxed. Historical build receipt600582d6 does not match
-current shared-target Gateway/Auth/Friend bytes; those stale pins were rejected
-before any launch. Current qualified copied binary/receipt paths are requested
-from Delivery/World SL. Native Auth/event/config execution is not inferred from
-these offline checks. Exact final commands, evidence hashes and handoff ancestry
-will be appended after qualification.
+No permission check was relaxed. Historical build receipt `600582d6` does not
+match current shared-target Gateway/Auth/Friend bytes; those stale pins were
+rejected before launch. The producer subsequently supplied the immutable copied
+bundle below, whose exact six hashes match that receipt. Native Auth evidence
+comes from the actual run below, separately from offline checks.
 
 
 ## Owned fixture execution and runtime preparation follow-up
@@ -186,13 +189,14 @@ the event fixture inserted. This path remains NOT_RUN until qualified Concert
 artifacts are supplied. It is distinct from the bounded direct-schema event
 proof above and starts no unconfigured Concert service by itself.
 
-Needed owner seams remain precise: a qualified copied six-service binary/source
-receipt; optional current Concert migration artifact; actual Gateway→Concert
+Needed owner seams remain precise: a current qualified copied six-service
+binary/source receipt; optional current Concert migration artifact; actual Gateway→Concert
 bootstrap/rooms/ticket and WS routing; qualified service eligibility/current
 owner adapters; reviewed selected-source-pack avatar runtime plus map/skin
 release and genuine art receipt. The provisioner does not acquire any of those
-owners' writable paths.18 offline tests now additionally verify inherited-secret
-scrubbing, invalid-event preflight with zero allocation, and control-error cleanup.
+owners' writable paths. Offline checks include inherited-secret scrubbing,
+invalid-event preflight with zero allocation, the unchanged database URL namespace,
+and control-error cleanup.
 
 
 Offline compatibility was additionally executed through the unchanged frontend
@@ -228,3 +232,60 @@ isolated Auth server without pretending current runtime code or world integratio
 was executed. The unchanged launcher's current migration ledger verification
 still applies; a schema mismatch is a real failure with owned cleanup. Current
 world-ready artifacts remain unavailable according to the producer.
+
+## Actual two-account run and retained failure evidence
+
+Executed from the assigned worktree at clean source
+`c6e86fe802a1083ba798c55e8f0af0dbe5a979f3`:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 backend/scripts/mcr/in01_provision.py owned \
+  --bin-dir /Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/bin \
+  --binary-receipt /Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/receipt.json \
+  --historical-auth-only \
+  --release-revision 600582d6b5deda6037c190c303f80752ba4a6bb3 \
+  --output-dir /private/tmp/mcr-in01-auth-proof-c6e86fe-20261104 \
+  --hold-seconds 0
+```
+
+Exit 0. Sanitized receipt:
+`/private/tmp/mcr-in01-auth-proof-c6e86fe-20261104/receipt.json`, SHA256
+`68e5c517e4dbbd51ebb2c9636b97723c3c5eecc17991509d7daa417f44257672`.
+It records exact tool/helper/contract hashes, six build hashes, all 32 current
+source drift paths, migration hashes, actual HTTP statuses and cleanup results.
+
+- Both accounts: signup 200, verification 200, login 200. Exact generated email
+  matches in the actual private mail sink; canonical UUIDs matched across all
+  three operations and differed between accounts. Both private stages reached
+  AUTHENTICATED. No role or identity response was synthesized.
+- Six service migration ledgers, non-degraded readiness and native restart
+  persistence checks passed under PostgreSQL 16.14. These are the preserved
+  six-service build's observations, not current Concert or World qualification.
+- The new owned `mcr_in_concert` database received the exact five bounded schema
+  migrations and one generated OPEN revision-1 event. No participants, roles,
+  tickets, admissions, memberships or owner leases were seeded. No default room
+  was inserted because reviewed selected-source-pack runtime pins are missing.
+- The actual authenticated bootstrap GET returned 404. World prerequisites and
+  IN01 remain NOT_RUN; `config.json` is absent. No rooms, tickets, sockets,
+  snapshots, mutual visibility, movement or art evidence is claimed.
+- Final cleanup PASS; the owned root no longer exists. All output files remain
+  0600 in a 0700 directory, and a generated-secret scan found none in the receipt.
+  The private credentials are retained as evidence only: their accounts and event
+  were removed with this invocation's cluster, so these are not live gate inputs.
+
+The first actual attempt at `192c409c472d6757df8e8cebf0d6d1bedefae318` also
+completed both real Auth flows and initialized an event, then exited 1 because
+the tool's original `mcr_in01_concert` database name violated the unchanged
+launcher's letter/underscore-only URL namespace. Cleanup PASS. Its unchanged
+sanitized receipt is retained at
+`/private/tmp/mcr-in01-auth-proof-192c409-20261104/receipt.json`, SHA256
+`bb683ad6b2cafef3045880cd983c2943afae5c0181c4a9431cd178be52d42cbb`.
+Commit `c6e86fe` corrected only the assigned tool/test/docs and added a regression
+against the actual URL helper. The passing rerun above used a new namespace;
+the failed receipt was not rewritten.
+
+Delivery ancestry from `cd7192febf9c2764169b55d63a70d7e00d13fd08`:
+`9ad192c` → `a2b813a` → `e15d7d6` → `192c409` → `c6e86fe`, followed by the
+documentation/evidence handoff commit. Every changed path is one of the three
+assigned files. No Cargo invocation, shared target write, dependency change,
+frontend modification or source-archive modification occurred.
