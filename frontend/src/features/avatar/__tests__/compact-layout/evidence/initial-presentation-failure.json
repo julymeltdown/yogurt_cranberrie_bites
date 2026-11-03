@@ -1,0 +1,19 @@
+{
+  "base": "215da400385c400f059913c826105ca4ec5f134b",
+  "run": "Initial four-file affected run",
+  "tests": 26,
+  "passed": 23,
+  "failed": 3,
+  "failures": [
+    {
+      "path": "visual-adoption/presentation.test.tsx:23",
+      "reason": "Expects native combobox immediately visible without opening the newly required disclosure.",
+      "resolution": "Main authorized first category loop only: open active details if closed, retain original visibility and all semantic assertions."
+    },
+    {
+      "path": "compact-layout.test.tsx",
+      "count": 2,
+      "reason": "New test assumed jsdom getByRole excluded descendants of a closed details; switched to explicit not.toBeVisible assertions."
+    }
+  ]
+}

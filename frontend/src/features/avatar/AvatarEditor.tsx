@@ -52,8 +52,10 @@ export function AvatarEditor({ controller }: { readonly controller: AvatarEditor
       <div ref={host} />
       {state.preview.phase !== 'ready' && <p>{state.preview.phase === 'loading' ? 'Loading preview…' : 'Preview unavailable'}</p>}
     </div>
-    {state.catalog && <ConcertTabs label="Avatar categories" orientation="vertical" items={categories} value={category} onValueChange={setCategory} />}
-    {state.catalog && state.draft && <OptionStrip key={category} controller={controller} category={category} />}
+    {state.catalog && <ConcertTabs label="Avatar categories" orientation="vertical" items={categories.map(item => ({ ...item, content:
+      <>{item.value === category && state.draft && <OptionStrip key={category} controller={controller} category={category} />}
+      <details className="mcr-avatar-id-options"><summary>Choose by ID</summary>{item.content}</details></>,
+    }))} value={category} onValueChange={setCategory} />}
     </div>
     <div className="mcr-avatar-status">
     <p role="status" aria-live="polite">{state.phase === 'saving' ? 'Saving outfit…' : state.phase === 'reconciling' ? 'Checking latest saved outfit…'

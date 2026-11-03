@@ -47,9 +47,11 @@ export function OptionStrip({ controller, category }: { readonly controller: Ava
   }, [controller, visible, editable])
   if (!choices.length) return null
   return <section className="mcr-avatar-option-strip" aria-labelledby={`${id}-title`}>
-    <h2 id={`${id}-title`}>{category === 'tone' ? 'Tones' : label(category)} · outfit previews</h2>
-    <p id={`${id}-description`}>Full outfit with each choice. Nothing is saved until you save your outfit.</p>
-    <div className="mcr-avatar-option-grid" role="group" aria-label={`${label(category)} outfit choices`} aria-describedby={`${id}-description`}>
+    <div className="mcr-avatar-option-heading"><h2 id={`${id}-title`}>{category === 'tone' ? 'Tones' : label(category)} · full outfits</h2>
+      <span aria-live="polite">{currentPage * OPTION_PREVIEW_LIMIT + 1}–{Math.min((currentPage + 1) * OPTION_PREVIEW_LIMIT, choices.length)} / {choices.length}</span></div>
+    <div className={`mcr-avatar-choice-row${choices.length > OPTION_PREVIEW_LIMIT ? ' mcr-avatar-choice-row--pages' : ''}`}>
+    {choices.length > OPTION_PREVIEW_LIMIT && <button type="button" disabled={currentPage === 0} onClick={() => setPage(currentPage - 1)} aria-label="Previous outfit choices">‹</button>}
+    <div className="mcr-avatar-option-grid" role="group" aria-label={`${label(category)} full-outfit choices`}>
       {visible.map((choice, index) => {
         const result = editable && previews.source === visible ? previews.items[index] : undefined
         return <button key={choice.id} className="mcr-avatar-option" type="button" aria-label={`Try ${choice.text} · full outfit`} aria-pressed={choice.selected}
@@ -59,10 +61,7 @@ export function OptionStrip({ controller, category }: { readonly controller: Ava
         </button>
       })}
     </div>
-    {choices.length > OPTION_PREVIEW_LIMIT && <div className="mcr-avatar-option-pages" role="group" aria-label="Outfit choice pages">
-      <button type="button" disabled={currentPage === 0} onClick={() => setPage(currentPage - 1)} aria-label="Previous outfit choices">‹</button>
-      <span aria-live="polite">{currentPage * OPTION_PREVIEW_LIMIT + 1}–{Math.min((currentPage + 1) * OPTION_PREVIEW_LIMIT, choices.length)} of {choices.length}</span>
-      <button type="button" disabled={currentPage === last} onClick={() => setPage(currentPage + 1)} aria-label="Next outfit choices">›</button>
-    </div>}
+    {choices.length > OPTION_PREVIEW_LIMIT && <button type="button" disabled={currentPage === last} onClick={() => setPage(currentPage + 1)} aria-label="Next outfit choices">›</button>}
+    </div>
   </section>
 }

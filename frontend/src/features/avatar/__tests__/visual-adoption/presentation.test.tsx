@@ -20,6 +20,8 @@ describe('UIV04 avatar category presentation', () => {
     for (const [index, name] of ['Presets', 'Body', 'Eyes', 'Hair', 'Outfit', 'Accessory', 'Tones'].entries()) {
       if (index) fireEvent.keyDown(tab(['Presets', 'Body', 'Eyes', 'Hair', 'Outfit', 'Accessory', 'Tones'][index - 1]!), { key: 'ArrowDown' })
       expect(tab(name)).toHaveAttribute('aria-selected', 'true')
+      const details = screen.getByRole('tabpanel').querySelector('details')!
+      if (!details.open) fireEvent.click(details.querySelector('summary')!)
       if (index) expect(screen.getByRole('combobox', { name: name === 'Tones' ? 'Skin tone' : name.toLowerCase() })).toBeVisible()
     }
     expect(screen.getByRole('option', { name: 'tone unsupported' })).toBeDisabled()
