@@ -1,0 +1,844 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.mcr.invalid/realtime/v1/world.schema.json",
+  "title": "MCR realtime wire protocol v1 (draft)",
+  "$defs": {
+    "WorldPosition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1048576
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1048576
+        }
+      }
+    },
+    "WorldPlayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "userId",
+        "displayName",
+        "position",
+        "facing",
+        "moving",
+        "avatar"
+      ],
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "position": {
+          "$ref": "#/$defs/WorldPosition"
+        },
+        "facing": {
+          "enum": [
+            "down",
+            "left",
+            "right",
+            "up"
+          ]
+        },
+        "moving": {
+          "type": "boolean"
+        },
+        "avatar": {
+          "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/AvatarState"
+        }
+      }
+    },
+    "Authenticate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "ticket",
+        "eventId",
+        "roomId",
+        "mapId",
+        "mapRevision",
+        "avatarManifestId",
+        "avatarManifestVersion"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "authenticate"
+        },
+        "ticket": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "eventId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "roomId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "mapId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "mapRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "avatarManifestId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "avatarManifestVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "Input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "streamId",
+        "roomEpoch",
+        "seq",
+        "axisX",
+        "axisY",
+        "buttons"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "input"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "roomEpoch": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "axisX": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "axisY": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "buttons": {
+          "type": "array",
+          "maxItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "interact"
+            ]
+          }
+        }
+      }
+    },
+    "Resync": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "streamId",
+        "lastStreamSeq",
+        "roomEpoch",
+        "reason"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "resync"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "lastStreamSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "roomEpoch": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "reason": {
+          "enum": [
+            "GAP",
+            "EPOCH_CHANGED",
+            "FOREGROUND",
+            "PROTOCOL_RECOVERY"
+          ]
+        }
+      }
+    },
+    "SwitchRoom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "streamId",
+        "ticket",
+        "eventId",
+        "roomId",
+        "mapId",
+        "mapRevision",
+        "avatarManifestId",
+        "avatarManifestVersion"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "switchRoom"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "ticket": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "eventId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "roomId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "mapId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "mapRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "avatarManifestId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "avatarManifestVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "ClientPong": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "heartbeatId"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "pong"
+        },
+        "heartbeatId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        }
+      }
+    },
+    "Snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "streamId",
+        "streamSeq",
+        "roomEpoch",
+        "serverTick",
+        "eventId",
+        "roomId",
+        "mapId",
+        "mapRevision",
+        "avatarManifestId",
+        "avatarManifestVersion",
+        "cause",
+        "requestId",
+        "selfUserId",
+        "ackInputSeq",
+        "accessExpiresAt",
+        "players"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "snapshot"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "streamSeq": {
+          "const": 0
+        },
+        "roomEpoch": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "serverTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "eventId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "roomId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "mapId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "mapRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "avatarManifestId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "avatarManifestVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "cause": {
+          "enum": [
+            "INITIAL",
+            "RESYNC",
+            "ROOM_SWITCH",
+            "EPOCH_CHANGED"
+          ]
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "selfUserId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "ackInputSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "accessExpiresAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "players": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/WorldPlayer"
+          }
+        }
+      }
+    },
+    "Delta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "streamId",
+        "streamSeq",
+        "roomEpoch",
+        "serverTick",
+        "ackInputSeq",
+        "upserts",
+        "removes"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "delta"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "streamSeq": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "roomEpoch": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "serverTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ackInputSeq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "upserts": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/WorldPlayer"
+          }
+        },
+        "removes": {
+          "type": "array",
+          "maxItems": 50,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          }
+        }
+      }
+    },
+    "SwitchRejected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "requestId",
+        "streamId",
+        "reason"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "switchRejected"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "reason": {
+          "enum": [
+            "ROOM_FULL",
+            "RESOURCE_UNAVAILABLE",
+            "TICKET_INVALID",
+            "MAP_VERSION_MISMATCH"
+          ]
+        }
+      }
+    },
+    "ResyncRequired": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "streamId",
+        "reason"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "resyncRequired"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "reason": {
+          "enum": [
+            "GAP",
+            "EPOCH_CHANGED",
+            "MAP_VERSION_MISMATCH",
+            "BACKPRESSURE"
+          ]
+        }
+      }
+    },
+    "Revoke": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "streamId",
+        "reason"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "revoke"
+        },
+        "streamId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "reason": {
+          "enum": [
+            "SESSION_EXPIRED",
+            "SESSION_REVOKED",
+            "SUSPENDED",
+            "EVENT_CLOSED",
+            "POLICY_UNAVAILABLE",
+            "CONNECTION_REPLACED"
+          ]
+        }
+      }
+    },
+    "ServerPing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "type",
+        "heartbeatId"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "1.0.0"
+        },
+        "type": {
+          "const": "ping"
+        },
+        "heartbeatId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        }
+      }
+    },
+    "ClientMessage": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Authenticate"
+        },
+        {
+          "$ref": "#/$defs/Input"
+        },
+        {
+          "$ref": "#/$defs/Resync"
+        },
+        {
+          "$ref": "#/$defs/SwitchRoom"
+        },
+        {
+          "$ref": "#/$defs/ClientPong"
+        }
+      ]
+    },
+    "ServerMessage": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Snapshot"
+        },
+        {
+          "$ref": "#/$defs/Delta"
+        },
+        {
+          "$ref": "#/$defs/SwitchRejected"
+        },
+        {
+          "$ref": "#/$defs/ResyncRequired"
+        },
+        {
+          "$ref": "#/$defs/Revoke"
+        },
+        {
+          "$ref": "#/$defs/ServerPing"
+        }
+      ]
+    },
+    "WorldTicketRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "room_id",
+        "map_id",
+        "map_revision",
+        "avatar_manifest_id",
+        "avatar_manifest_version"
+      ],
+      "properties": {
+        "room_id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "map_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "map_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "avatar_manifest_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "avatar_manifest_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "WorldTicketResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol_version",
+        "ticket",
+        "event_id",
+        "room_id",
+        "map_id",
+        "map_revision",
+        "avatar_manifest_id",
+        "avatar_manifest_version",
+        "server_time",
+        "expires_at",
+        "ws_path",
+        "auth_timeout_ms"
+      ],
+      "properties": {
+        "protocol_version": {
+          "const": "1.0.0"
+        },
+        "ticket": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "event_id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "room_id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "map_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "map_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "avatar_manifest_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "avatar_manifest_version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "server_time": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "ws_path": {
+          "const": "/world-ws"
+        },
+        "auth_timeout_ms": {
+          "const": 3000
+        }
+      }
+    },
+    "WorldRoom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "room_id",
+        "label",
+        "capacity",
+        "availability"
+      ],
+      "properties": {
+        "room_id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 48
+        },
+        "capacity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "availability": {
+          "enum": [
+            "AVAILABLE",
+            "FULL",
+            "UNAVAILABLE"
+          ]
+        }
+      }
+    },
+    "WorldRooms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "default_room_id",
+        "items",
+        "server_time"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "default_room_id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/$defs/WorldRoom"
+          }
+        },
+        "server_time": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        }
+      }
+    }
+  }
+}

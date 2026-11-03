@@ -1,0 +1,19 @@
+{
+  "event_id": "00000000-0000-4000-8000-000000000010",
+  "default_room_id": "00000000-0000-4000-8000-000000000011",
+  "items": [
+    {
+      "room_id": "00000000-0000-4000-8000-000000000011",
+      "label": "MAIN STAGE",
+      "capacity": 50,
+      "availability": "AVAILABLE"
+    },
+    {
+      "room_id": "00000000-0000-4000-8000-000000000012",
+      "label": "SECOND ROOM",
+      "capacity": 50,
+      "availability": "FULL"
+    }
+  ],
+  "server_time": "2026-11-07T10:00:00Z"
+}

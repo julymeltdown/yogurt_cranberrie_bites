@@ -1,0 +1,7 @@
+{
+  "code": "403",
+  "message": "Request could not be completed.",
+  "details": {
+    "reason": "PERMISSION_DENIED"
+  }
+}

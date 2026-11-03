@@ -1,0 +1,7 @@
+{
+  "code": "404",
+  "message": "Request could not be completed.",
+  "details": {
+    "reason": "RESOURCE_UNAVAILABLE"
+  }
+}

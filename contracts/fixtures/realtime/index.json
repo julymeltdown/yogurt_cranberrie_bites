@@ -1,0 +1,122 @@
+[
+  {
+    "file": "movement-heartbeat.json",
+    "kind": "trace"
+  },
+  {
+    "file": "resync.json",
+    "kind": "trace"
+  },
+  {
+    "file": "room-switch.json",
+    "kind": "trace"
+  },
+  {
+    "file": "epoch-replacement.json",
+    "kind": "trace"
+  },
+  {
+    "file": "revoke.json",
+    "kind": "trace"
+  },
+  {
+    "file": "filtered-viewers.json",
+    "kind": "projection"
+  },
+  {
+    "file": "ticket-request.json",
+    "kind": "http",
+    "schema": "WorldTicketRequest"
+  },
+  {
+    "file": "ticket-response.json",
+    "kind": "http-response",
+    "status": 200,
+    "event_id": "00000000-0000-4000-8000-000000000010",
+    "operation_id": "issueWorldTicket",
+    "request_file": "ticket-request.json"
+  },
+  {
+    "file": "rooms.json",
+    "kind": "http-response",
+    "status": 200,
+    "event_id": "00000000-0000-4000-8000-000000000010",
+    "operation_id": "listConcertRooms"
+  },
+  {
+    "file": "unknown-message.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "duplicate-key.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "oversized-client.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "binary-message.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "non-finite.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "unknown-field.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "wrong-version.json",
+    "kind": "wire-rejection"
+  },
+  {
+    "file": "auth-required.json",
+    "kind": "http-response",
+    "operation_id": "issueWorldTicket",
+    "status": 401
+  },
+  {
+    "file": "forbidden.json",
+    "kind": "http-response",
+    "operation_id": "issueWorldTicket",
+    "status": 403
+  },
+  {
+    "file": "map-conflict.json",
+    "kind": "http-response",
+    "operation_id": "issueWorldTicket",
+    "status": 409
+  },
+  {
+    "file": "event-closed.json",
+    "kind": "http-response",
+    "operation_id": "issueWorldTicket",
+    "status": 410
+  },
+  {
+    "file": "throttled.json",
+    "kind": "http-response",
+    "operation_id": "issueWorldTicket",
+    "status": 429
+  },
+  {
+    "file": "unavailable.json",
+    "kind": "http-response",
+    "operation_id": "issueWorldTicket",
+    "status": 503
+  },
+  {
+    "file": "origin-denied.json",
+    "kind": "http-response",
+    "operation_id": "issueWorldTicket",
+    "status": 403
+  },
+  {
+    "file": "rooms-unavailable.json",
+    "kind": "http-response",
+    "operation_id": "listConcertRooms",
+    "status": 404
+  }
+]

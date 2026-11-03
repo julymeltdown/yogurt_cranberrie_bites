@@ -42,8 +42,10 @@ check_contracts() {
   python3 "$mcr_root/backend/scripts/docs/generate-mcr-core.py" --check
   python3 "$mcr_root/scripts/mcr/validate-assets.py"
   python3 "$mcr_root/scripts/mcr/validate-core.py"
+  python3 "$mcr_root/scripts/mcr/validate-realtime.py"
   python3 -B -m unittest discover -s "$mcr_root/scripts/mcr/tests" -p 'test_assets.py'
   python3 -B -m unittest discover -s "$mcr_root/scripts/mcr/tests" -p 'test_core.py'
+  python3 -B -m unittest discover -s "$mcr_root/scripts/mcr/tests" -p 'test_realtime.py'
 }
 
 case "$mcr_scope" in

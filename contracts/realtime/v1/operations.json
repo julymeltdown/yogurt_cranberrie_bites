@@ -1,0 +1,95 @@
+[
+  {
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/rooms",
+    "operationId": "listConcertRooms",
+    "authenticated": true,
+    "response": "WorldRooms",
+    "retry": "READ_ONCE_AFTER_REFRESH",
+    "cache": "NO_STORE",
+    "runtime_status": "NOT_IMPLEMENTED",
+    "request": null,
+    "response_status": 200,
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "error_schema": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/CoreErrorResponse"
+  },
+  {
+    "method": "post",
+    "path": "/api/concert/events/{eventId}/world-tickets",
+    "operationId": "issueWorldTicket",
+    "authenticated": true,
+    "request": "WorldTicketRequest",
+    "response": "WorldTicketResponse",
+    "retry": "NO_AUTOMATIC_REPLAY",
+    "cache": "NO_STORE",
+    "origin_policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+    "runtime_status": "NOT_IMPLEMENTED",
+    "response_status": 200,
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "MAP_VERSION_MISMATCH",
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "410": [
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "origin_error_schema": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/OriginErrorResponse",
+    "error_schema": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/CoreErrorResponse"
+  }
+]

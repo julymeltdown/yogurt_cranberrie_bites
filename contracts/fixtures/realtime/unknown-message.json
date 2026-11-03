@@ -1,0 +1,6 @@
+{
+  "direction": "client",
+  "payload": "{\"protocolVersion\":\"1.0.0\",\"type\":\"chat\",\"text\":\"no\"}",
+  "close_code": 4400,
+  "binary": false
+}

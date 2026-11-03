@@ -1,0 +1,14 @@
+{
+  "protocol_version": "1.0.0",
+  "ticket": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "event_id": "00000000-0000-4000-8000-000000000010",
+  "room_id": "00000000-0000-4000-8000-000000000011",
+  "map_id": "map_fixture",
+  "map_revision": 1,
+  "avatar_manifest_id": "avatar_fixture",
+  "avatar_manifest_version": 1,
+  "server_time": "2026-11-07T10:00:00Z",
+  "expires_at": "2026-11-07T10:00:30Z",
+  "ws_path": "/world-ws",
+  "auth_timeout_ms": 3000
+}

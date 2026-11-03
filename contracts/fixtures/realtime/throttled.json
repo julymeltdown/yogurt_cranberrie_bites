@@ -1,0 +1,8 @@
+{
+  "code": "429",
+  "message": "Request could not be completed.",
+  "details": {
+    "reason": "RATE_LIMITED",
+    "retry_after_ms": 1000
+  }
+}

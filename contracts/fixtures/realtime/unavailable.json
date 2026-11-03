@@ -1,0 +1,7 @@
+{
+  "code": "503",
+  "message": "Request could not be completed.",
+  "details": {
+    "reason": "DEPENDENCY_UNAVAILABLE"
+  }
+}

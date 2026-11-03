@@ -1,0 +1,7 @@
+{
+  "code": "409",
+  "message": "Request could not be completed.",
+  "details": {
+    "reason": "MAP_VERSION_MISMATCH"
+  }
+}

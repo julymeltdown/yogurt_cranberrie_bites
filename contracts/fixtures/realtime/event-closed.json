@@ -1,0 +1,7 @@
+{
+  "code": "410",
+  "message": "Request could not be completed.",
+  "details": {
+    "reason": "EVENT_READ_ONLY"
+  }
+}

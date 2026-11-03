@@ -1,0 +1,7 @@
+{
+  "code": "401",
+  "message": "Request could not be completed.",
+  "details": {
+    "reason": "AUTHENTICATION_REQUIRED"
+  }
+}

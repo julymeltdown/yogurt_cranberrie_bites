@@ -1,0 +1,134 @@
+{
+  "actor_id": "00000000-0000-4000-8000-000000000001",
+  "messages": [
+    {
+      "direction": "client",
+      "message": {
+        "protocolVersion": "1.0.0",
+        "type": "authenticate",
+        "ticket": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "eventId": "00000000-0000-4000-8000-000000000010",
+        "roomId": "00000000-0000-4000-8000-000000000011",
+        "mapId": "map_fixture",
+        "mapRevision": 1,
+        "avatarManifestId": "avatar_fixture",
+        "avatarManifestVersion": 1
+      }
+    },
+    {
+      "direction": "server",
+      "message": {
+        "protocolVersion": "1.0.0",
+        "type": "snapshot",
+        "streamId": "00000000-0000-4000-8000-000000000020",
+        "streamSeq": 0,
+        "roomEpoch": "00000000-0000-4000-8000-000000000030",
+        "serverTick": 0,
+        "eventId": "00000000-0000-4000-8000-000000000010",
+        "roomId": "00000000-0000-4000-8000-000000000011",
+        "mapId": "map_fixture",
+        "mapRevision": 1,
+        "avatarManifestId": "avatar_fixture",
+        "avatarManifestVersion": 1,
+        "cause": "INITIAL",
+        "requestId": null,
+        "selfUserId": "00000000-0000-4000-8000-000000000001",
+        "ackInputSeq": 0,
+        "accessExpiresAt": "2026-11-07T12:00:00Z",
+        "players": [
+          {
+            "userId": "00000000-0000-4000-8000-000000000001",
+            "displayName": "Raven",
+            "position": {
+              "x": 32,
+              "y": 60
+            },
+            "facing": "down",
+            "moving": false,
+            "avatar": {
+              "revision": 1,
+              "config": {
+                "contract_version": "1.0.0",
+                "kind": "avatar_config",
+                "manifest_id": "avatar_fixture",
+                "manifest_version": 1,
+                "item_ids": {
+                  "body": "body_fixture",
+                  "eyes": "eyes_fixture",
+                  "hair": "hair_fixture",
+                  "outfit": "outfit_fixture",
+                  "accessory": "accessory_fixture"
+                },
+                "skin_tone_id": "tone_fixture"
+              }
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000002",
+            "displayName": "Ghost",
+            "position": {
+              "x": 32,
+              "y": 60
+            },
+            "facing": "down",
+            "moving": false,
+            "avatar": {
+              "revision": 1,
+              "config": {
+                "contract_version": "1.0.0",
+                "kind": "avatar_config",
+                "manifest_id": "avatar_fixture",
+                "manifest_version": 1,
+                "item_ids": {
+                  "body": "body_fixture",
+                  "eyes": "eyes_fixture",
+                  "hair": "hair_fixture",
+                  "outfit": "outfit_fixture",
+                  "accessory": "accessory_fixture"
+                },
+                "skin_tone_id": "tone_fixture"
+              }
+            }
+          },
+          {
+            "userId": "00000000-0000-4000-8000-000000000003",
+            "displayName": "Jet",
+            "position": {
+              "x": 32,
+              "y": 60
+            },
+            "facing": "down",
+            "moving": false,
+            "avatar": {
+              "revision": 1,
+              "config": {
+                "contract_version": "1.0.0",
+                "kind": "avatar_config",
+                "manifest_id": "avatar_fixture",
+                "manifest_version": 1,
+                "item_ids": {
+                  "body": "body_fixture",
+                  "eyes": "eyes_fixture",
+                  "hair": "hair_fixture",
+                  "outfit": "outfit_fixture",
+                  "accessory": "accessory_fixture"
+                },
+                "skin_tone_id": "tone_fixture"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "direction": "server",
+      "message": {
+        "protocolVersion": "1.0.0",
+        "type": "revoke",
+        "streamId": "00000000-0000-4000-8000-000000000020",
+        "reason": "SESSION_REVOKED"
+      }
+    }
+  ],
+  "expected_players": []
+}
