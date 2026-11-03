@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useSyncExternalStore } from 'react'
 import { useLocation } from 'react-router-dom'
-import { EventFeed, EventNotice, FeedImage } from '../../features/event-feed'
+import { EventFeed, EventNotice } from '../../features/event-feed'
+import { RootPostImage } from '../media-entry/RootMediaView'
 import { FeedThread, PostComposer } from '../../features/feed-thread'
 import { Inbox } from '../../features/inbox'
 import { People } from '../../features/people'
@@ -40,7 +41,7 @@ function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly p
     if (!thread.draft.edit && !thread.draft.text) owner.thread.beginPostEdit()
   }, [owner, path, thread.selectedId, thread.detail, thread.draft])
   if (!route || !service || !owner.available(service)) return <Unavailable />
-  const media = owner.media ? (id: string, post: { event_id: string }) => <FeedImage createPreview={owner.media!.createPreview} privacy={owner.auth.privacy} mediaId={id} eventId={post.event_id} alt="Post attachment" /> : undefined
+  const media = (id: string, post: { event_id: string }) => <RootPostImage auth={owner.auth} scope={owner.scope} createPreview={owner.media?.createPreview} mediaId={id} eventId={post.event_id} alt="Post attachment" />
   switch (route.kind) {
     case 'feed': return <EventFeed controller={owner.feed} onPost={id => owner.navigate(`/feed/${id}`)} onCompose={() => owner.navigate('/feed/new')} onLink={link => { void owner.openResource(link) }} renderMedia={media} />
     case 'compose': return <PostComposer controller={owner.thread} onPost={id => owner.navigate(`/feed/${id}`)} />
