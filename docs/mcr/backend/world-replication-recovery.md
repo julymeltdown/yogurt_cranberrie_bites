@@ -1,8 +1,10 @@
 # BE13/BE14 recipient replication and recovery
 
 Status: **IN_PROGRESS**. The bounded owner components and deterministic tests
-are authored; native execution is **NOT_RUN** pending the explicitly queued
-shared Cargo target lease. No public HTTP/WebSocket listener or qualified
+are implemented. Corrected source `0467e1a` passed 28/28 BE12 simulation and
+11/11 replication native tests; recovery passed 14/15, with one stale expected
+error assertion now corrected for the explicit fail-closed branch. A recovery-only
+rebuild/run is queued; no complete native PASS is claimed yet. No public HTTP/WebSocket listener or qualified
 production policy adapter is supplied by this patch. IN01 is **NOT_RUN**.
 
 ## Scope and ancestry
@@ -293,3 +295,37 @@ by immediate source/artifact hashing, permitted private copies and lease release
 Native execution then runs from those selected copies, with any failures fixed
 and revalidated before final evidence/handoff. Public listener, production
 policy authority, real two-account IN01, device and load checks remain NOT_RUN.
+
+## Corrected native execution (source 0467e1a)
+
+The delivery/BE24 owner explicitly transferred the target to BE13/14. The first
+JSON no-run command reused an old `concert-domain` without the committed `world`
+export (exit 101). Scoped Cargo clean of only `concert-domain` and
+`concert-application` removed 33.3 MiB (exit 0). The identical Rust 1.88
+locked/offline/jobs2/debug0 command then compiled the actual domain/application/
+service plus three test executables (exit 0, 6.32 seconds). No source bytes or
+unowned file mtimes changed. CargoJSON selected all three executable paths;
+binaries were copied privately and verified against SHA256 before the target
+was explicitly released to the community owner. No native test needed a held
+compile lease or database fixture.
+
+| Native suite | SHA256 before release | Actual result |
+| --- | --- | --- |
+| `world_simulation` | `a883c9fe7cf12286d8a08528b396edc4cde4d6d17e5db13e3c3713c06ae53143` | 28 passed / 0 failed, exit 0 |
+| `world_replication` | `103826afa640e54c2e5bd6d1aba0199d7e27f9a75a8fc9c059eca14ca94e5fbc` | 11 passed / 0 failed, exit 0 |
+| `world_recovery` | `a026417006c9926cc537bee81d2e2b58692c3e3c43e9f132dcddeb1ca787d475` | 14 passed / 1 failed, exit 101 |
+
+The recovery failure was an expected-error fixture left from before the explicit
+same-connection/missing-player recovery guard: actual `ReconnectRequired` versus
+expected generic `Motion`. The correction preserves that trigger and asserts the
+specific safe denial, then separately populates a foreign-owner simulation to
+exercise the actual BE12 replacement failure (`Motion`). Both branches must
+preserve the original subscription; the foreign owner must also retain its
+state. This is a test-only correction with no production Rust changes. It needs
+its own source-pinned rebuild/run; the failing native result is not relabeled.
+
+Receipt and per-suite logs are retained at
+`/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-be13-14-native-0467e1a-o9ta0apf/receipt.json`.
+The full compile source is `0467e1a4c336174d1ea551cb502f4d5dea0c1323`.
+Commands for private copies use `--test-threads=2` from the assigned checkout;
+actual server/WebSocket/two-account/device/load qualification remains NOT_RUN.

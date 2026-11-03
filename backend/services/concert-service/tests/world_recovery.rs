@@ -657,7 +657,7 @@ fn capacity_and_failed_motion_reset_do_not_replace_existing_subscription() {
     let mut wrong = simulation(&binding(12));
     assert_eq!(
         book.activate(
-            next,
+            next.clone(),
             deadline(),
             SnapshotCause::Resync(id(800)),
             "spawn_test",
@@ -665,9 +665,36 @@ fn capacity_and_failed_motion_reset_do_not_replace_existing_subscription() {
             &a,
             &mut wrong
         ),
+        Err(RecoveryError::ReconnectRequired)
+    );
+    assert!(book.stream_mut(&b).is_ok());
+    // Distinct case: a populated foreign owner must fail the actual BE12
+    // replacement fence, without replacing the original subscription.
+    let mut foreign = b.clone();
+    foreign.room_id = id(700);
+    foreign.room_epoch = id(701);
+    foreign.stream_id = id(702);
+    let mut foreign_sim = simulation(&foreign);
+    a.grant(&foreign, 5000, 10000);
+    foreign_sim
+        .admit(foreign.clone(), "spawn_test", 0, &a)
+        .unwrap();
+    a.grant(&next, 5000, 10000);
+    assert_eq!(
+        book.activate(
+            next,
+            deadline(),
+            SnapshotCause::Resync(id(801)),
+            "spawn_test",
+            1000,
+            &a,
+            &mut foreign_sim
+        ),
         Err(RecoveryError::Motion)
     );
     assert!(book.stream_mut(&b).is_ok());
+    assert!(sim.replication_state(&b).is_some());
+    assert!(foreign_sim.replication_state(&foreign).is_some());
     assert!(Recovery::new(0, QueueLimits::default()).is_err());
     assert!(Recovery::new(10001, QueueLimits::default()).is_err());
 }
