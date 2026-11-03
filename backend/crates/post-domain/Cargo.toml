@@ -1,0 +1,15 @@
+[package]
+name = "post-domain"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+recommendation-policy = { path = "../recommendation-policy" }
+anyhow.workspace = true
+base64ct.workspace = true
+chrono.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+uuid.workspace = true

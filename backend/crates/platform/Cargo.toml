@@ -1,0 +1,46 @@
+[package]
+name = "platform"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+recommendation-policy = { path = "../recommendation-policy" }
+search-policy = { path = "../search-policy" }
+base64ct.workspace = true
+chrono.workspace = true
+http.workspace = true
+http-body.workspace = true
+http-body-util.workspace = true
+ring = "0.17.14"
+serde_json.workspace = true
+sha2.workspace = true
+uuid.workspace = true
+anyhow.workspace = true
+percent-encoding = "2.3.2"
+url = "2.5.8"
+opentelemetry.workspace = true
+opentelemetry-otlp.workspace = true
+opentelemetry_sdk.workspace = true
+serde.workspace = true
+tonic.workspace = true
+tonic-health.workspace = true
+tokio-stream.workspace = true
+futures.workspace = true
+tokio.workspace = true
+tower.workspace = true
+tracing.workspace = true
+tracing-opentelemetry.workspace = true
+tracing-subscriber.workspace = true
+x509-parser.workspace = true
+
+[dev-dependencies]
+tonic-prost.workspace = true
+prost.workspace = true
+rcgen.workspace = true
+time.workspace = true
+tokio-stream = { workspace = true, features = ["net"] }
+uuid.workspace = true
+proptest.workspace = true
+opentelemetry_sdk = { workspace = true, features = ["testing"] }
+opentelemetry-proto.workspace = true

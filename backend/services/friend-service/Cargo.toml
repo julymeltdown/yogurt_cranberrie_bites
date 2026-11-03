@@ -1,0 +1,51 @@
+[package]
+name = "friend-service"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[features]
+process-stack-test-hooks = []
+
+[lib]
+name = "friend_service"
+path = "src/lib.rs"
+
+[[bin]]
+name = "friend-service"
+path = "src/main.rs"
+
+[dependencies]
+migration-runtime = { path = "../../crates/migration-runtime" }
+friend-domain = { path = "../../crates/friend-domain" }
+friend-application = { path = "../../crates/friend-application" }
+axum.workspace = true
+base64ct.workspace = true
+anyhow.workspace = true
+async-trait.workspace = true
+chrono.workspace = true
+platform = { path = "../../crates/platform" }
+prost.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sqlx.workspace = true
+tonic.workspace = true
+tonic-prost.workspace = true
+tokio.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+
+[build-dependencies]
+contracts-build = { path = "../../crates/contracts-build" }
+protoc-bin-vendored = "3.1.0"
+tonic-prost-build.workspace = true
+
+[dev-dependencies]
+http-body-util.workspace = true
+tokio-stream = { workspace = true, features = ["net"] }
+tower.workspace = true
+testcontainers.workspace = true
+testcontainers-modules.workspace = true
+test-support = { path = "../../crates/test-support" }
+proptest.workspace = true

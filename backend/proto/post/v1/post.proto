@@ -1,0 +1,317 @@
+syntax = "proto3";
+
+package post.v1;
+
+// Gateway-only, delegated read authorization. No post/comment content is
+// returned. Missing/deleted/moderated/inaccessible resources are false.
+message AuthorizeNotificationPostsRequest {
+  string viewer_id = 1; // UUID authenticated by actor delegation
+  repeated string post_ids = 2; // At most 100 distinct UUIDs
+}
+
+message AuthorizeNotificationPostsResponse {
+  repeated string visible_post_ids = 1; // Authorized subset of requested IDs
+}
+
+message Post {
+  string id = 1; // UUID
+  string author_id = 2; // UUID
+  string content = 3;
+  string visibility = 4; // PUBLIC, FRIENDS, PRIVATE
+  string created_at = 5; // RFC3339
+  int64 comment_count = 6;
+  int64 like_count = 7;
+  bool liked_by_me = 8;
+}
+
+message Comment {
+  string id = 1; // UUID
+  string post_id = 2; // UUID
+  string author_id = 3; // UUID
+  string content = 4;
+  string created_at = 5; // RFC3339
+}
+
+message CreatePostRequest {
+  string author_id = 1; // UUID
+  string content = 2;
+  string visibility = 3;
+}
+
+message CreatePostResponse {
+  Post post = 1;
+}
+
+message DeletePostRequest {
+  string post_id = 1; // UUID
+  string actor_id = 2; // UUID
+  string request_id = 3;
+  string ip_address = 4;
+  string user_agent = 5;
+}
+
+message DeletePostResponse {
+  string post_id = 1; // UUID
+  bool deleted = 2;
+}
+
+message DeleteCommentRequest {
+  string comment_id = 1; // UUID
+  string actor_id = 2; // UUID
+  string request_id = 3;
+  string ip_address = 4;
+  string user_agent = 5;
+}
+
+message DeleteCommentResponse {
+  string comment_id = 1; // UUID
+  string post_id = 2; // UUID
+  bool deleted = 3;
+}
+
+message CreateCommentRequest {
+  string post_id = 1; // UUID
+  string author_id = 2; // UUID
+  string content = 3;
+}
+
+message CreateCommentResponse {
+  Comment comment = 1;
+}
+
+message FeedRequest {
+  string user_id = 1; // UUID
+  string cursor = 2;
+  int32 limit = 3;
+  string request_id = 4;
+  string session_id = 5;
+}
+
+message AuthorPostsRequest {
+  string author_id = 1; // UUID
+  string cursor = 2;
+  int32 limit = 3;
+  string viewer_id = 4; // UUID
+}
+
+// Batched post counts for a set of authors.
+//
+// Counts are answered from an indexed aggregate rather than a stored counter, so
+// the value reflects the posts that currently exist rather than a number that was
+// incremented at some point and may have drifted.
+message AuthorPostCountsRequest {
+  // UUIDs. Duplicate IDs are deduplicated by first occurrence.
+  repeated string author_ids = 1;
+}
+
+message AuthorPostCount {
+  string author_id = 1; // UUID
+  // Posts visible to any viewer of the author's own profile, which is the
+  // definition the profile contract uses. Callers must not present this as a
+  // viewer-specific count.
+  int64 post_count = 2;
+}
+
+message AuthorPostCountsResponse {
+  // One entry per requested author that exists, in first-occurrence request
+  // order. An author with no posts is present with a count of 0, which is a real
+  // observation rather than a missing value; an unknown author is omitted
+  // instead of being reported as zero.
+  repeated AuthorPostCount counts = 1;
+}
+
+message SearchPostsRequest {
+  string query = 1;
+  string cursor = 2;
+  int32 limit = 3;
+  string viewer_id = 4; // UUID
+}
+
+message GetPostRequest {
+  string post_id = 1; // UUID
+  string viewer_id = 2; // UUID
+}
+
+message GetPostResponse {
+  Post post = 1;
+  repeated Comment comments = 2;
+}
+
+message FeedItemMetadata {
+  string post_id = 1;
+  string source = 2;
+  string reason_code = 3;
+  int64 score_micros = 4;
+  uint32 position = 5;
+  string impression_id = 6;
+  uint32 propensity_micros = 7;
+  bool exploration = 8;
+}
+
+message FeedResponse {
+  repeated Post posts = 1;
+  string next_cursor = 2;
+  string request_id = 3;
+  string snapshot_id = 4;
+  string rank_version = 5;
+  bool fallback_used = 6;
+  repeated FeedItemMetadata items = 7;
+  repeated string failed_sources = 8;
+}
+
+message LikePostRequest {
+  string post_id = 1; // UUID
+  string user_id = 2; // UUID
+}
+
+message LikePostResponse {
+  string post_id = 1; // UUID
+  int64 like_count = 2;
+  bool liked = 3;
+}
+
+message UnlikePostRequest {
+  string post_id = 1; // UUID
+  string user_id = 2; // UUID
+}
+
+message UnlikePostResponse {
+  string post_id = 1; // UUID
+  int64 like_count = 2;
+  bool liked = 3;
+}
+
+message TrendingRequest {
+  string viewer_id = 1; // UUID
+  string cursor = 2;
+  int32 limit = 3;
+}
+
+message RecordFeedRecommendationEventRequest {
+  string event_id = 1;
+  uint32 schema_version = 2;
+  string occurred_at = 3;
+  string viewer_id = 4;
+  string post_id = 5;
+  string actor_id = 6;
+  optional int32 position = 7;
+  string request_id = 8;
+  string session_id = 9;
+  string action = 10;
+  string source = 11;
+  string model_version = 12;
+  string impression_id = 13;
+  optional uint32 propensity_micros = 14;
+  optional uint32 dwell_ms = 15;
+  string metadata_json = 16;
+}
+
+message RecordFeedRecommendationEventResponse {
+  bool accepted = 1;
+}
+
+message ApplyUserDeletionRequest {
+  string saga_id = 1;
+  string user_id = 2;
+  string actor_id = 3;
+  string retention_until = 4;
+}
+
+message ApplyUserDeletionResponse {
+  bool applied = 1;
+}
+
+message ApplyContentModerationRequest {
+  string report_id = 1;
+  string target_type = 2;
+  string target_id = 3;
+  string actor_id = 4;
+  string action = 5;
+}
+
+message ApplyContentModerationResponse {
+  bool applied = 1;
+}
+
+// Audited, idempotent release of one unpublished dead-lettered aggregate head.
+// The operator identity is supplied only by the authenticated Gateway.
+message ResolveDeadLetterReplayRequest {
+  string event_id = 1; // UUID
+  string resolution_id = 2; // UUID; client-generated idempotency identity
+  string actor_id = 3; // UUID
+  string reason = 4;
+  string evidence_reference = 5; // protected ticket or incident identifier
+}
+
+message ResolveDeadLetterReplayResponse {
+  string event_id = 1; // UUID
+  string resolution_id = 2; // UUID
+  bool created = 3; // false when the same request was already accepted
+}
+
+// Lookup only: no branch of this RPC may execute a missing mutation. This is
+// deliberately separate from the write RPCs to keep mixed-version retries safe.
+message ReplayMutationRequest {
+  oneof command {
+    CreatePostRequest create_post = 1;
+    CreateCommentRequest create_comment = 2;
+    DeletePostRequest delete_post = 3;
+    LikePostRequest like_post = 4;
+    UnlikePostRequest unlike_post = 5;
+  }
+}
+
+message ReplayMutationResponse {
+  oneof outcome {
+    CreatePostResponse create_post = 1;
+    CreateCommentResponse create_comment = 2;
+    DeletePostResponse delete_post = 3;
+    LikePostResponse like_post = 4;
+    UnlikePostResponse unlike_post = 5;
+  }
+}
+
+// An operation ID is an identifier, not an authorization token. This
+// read-only lookup exposes receipt metadata only to the trusted Gateway; it
+// never returns the original command, idempotency key, fingerprint, or body.
+// NOT_FOUND is not proof that a mutation did not commit.
+message GetMutationReceiptStatusRequest {
+  string operation_id = 1; // UUID
+}
+
+message GetMutationReceiptStatusResponse {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    REPLAYABLE = 1; // The outcome is retained and the 24-hour window is live.
+    EXPIRED = 2; // A tombstone exists, but replay is no longer permitted.
+    INCOMPLETE = 3; // The live receipt lacks its outcome; investigate, do not retry.
+  }
+  string operation_id = 1; // UUID
+  string actor_id = 2; // UUID
+  string scope = 3; // Versioned RPC method
+  string committed_at = 4; // RFC3339
+  string replay_until = 5; // RFC3339
+  State state = 6;
+}
+
+service PostService {
+  rpc AuthorizeNotificationPosts(AuthorizeNotificationPostsRequest) returns (AuthorizeNotificationPostsResponse);
+  rpc ReplayMutation(ReplayMutationRequest) returns (ReplayMutationResponse);
+  rpc GetMutationReceiptStatus(GetMutationReceiptStatusRequest) returns (GetMutationReceiptStatusResponse);
+  rpc CreatePost(CreatePostRequest) returns (CreatePostResponse);
+  rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+  rpc CreateComment(CreateCommentRequest) returns (CreateCommentResponse);
+  rpc DeleteComment(DeleteCommentRequest) returns (DeleteCommentResponse);
+  rpc GetFeed(FeedRequest) returns (FeedResponse);
+  rpc RecordFeedRecommendationEvent(RecordFeedRecommendationEventRequest) returns (RecordFeedRecommendationEventResponse);
+  rpc GetAuthorPosts(AuthorPostsRequest) returns (FeedResponse);
+  rpc GetAuthorPostCounts(AuthorPostCountsRequest) returns (AuthorPostCountsResponse);
+  rpc SearchPosts(SearchPostsRequest) returns (FeedResponse);
+  rpc GetPost(GetPostRequest) returns (GetPostResponse);
+  rpc LikePost(LikePostRequest) returns (LikePostResponse);
+  rpc UnlikePost(UnlikePostRequest) returns (UnlikePostResponse);
+  rpc GetTrending(TrendingRequest) returns (FeedResponse);
+  rpc ApplyUserDeletion(ApplyUserDeletionRequest) returns (ApplyUserDeletionResponse);
+  rpc ApplyContentModeration(ApplyContentModerationRequest) returns (ApplyContentModerationResponse);
+  rpc ResolveDeadLetterReplay(ResolveDeadLetterReplayRequest) returns (ResolveDeadLetterReplayResponse);
+}

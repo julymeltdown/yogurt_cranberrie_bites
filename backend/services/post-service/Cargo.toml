@@ -1,0 +1,55 @@
+[package]
+name = "post-service"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "post_service"
+path = "src/lib.rs"
+
+[[bin]]
+name = "post-service"
+path = "src/main.rs"
+
+[dependencies]
+migration-runtime = { path = "../../crates/migration-runtime" }
+post-domain = { path = "../../crates/post-domain" }
+post-application = { path = "../../crates/post-application" }
+anyhow.workspace = true
+async-trait.workspace = true
+axum.workspace = true
+chrono.workspace = true
+http.workspace = true
+http-body-util.workspace = true
+platform = { path = "../../crates/platform" }
+prost.workspace = true
+redis.workspace = true
+rskafka.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+sqlx.workspace = true
+thiserror.workspace = true
+tonic.workspace = true
+tonic-prost.workspace = true
+tokio.workspace = true
+tower.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+
+[build-dependencies]
+contracts-build = { path = "../../crates/contracts-build" }
+protoc-bin-vendored = "3.1.0"
+tonic-prost-build.workspace = true
+
+[dev-dependencies]
+opentelemetry.workspace = true
+opentelemetry_sdk = { workspace = true, features = ["testing"] }
+testcontainers.workspace = true
+testcontainers-modules.workspace = true
+test-support = { path = "../../crates/test-support" }
+proptest.workspace = true
+tokio-stream.workspace = true
+tracing-opentelemetry.workspace = true
+tracing-subscriber.workspace = true

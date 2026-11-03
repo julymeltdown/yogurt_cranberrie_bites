@@ -1,0 +1,273 @@
+syntax = "proto3";
+
+package friend.v1;
+
+message FollowEdge {
+  string follower_id = 1; // UUID
+  string followee_id = 2; // UUID
+  string created_at = 3; // ISO-8601
+}
+
+message FollowUserRequest {
+  string follower_id = 1; // UUID
+  string followee_id = 2; // UUID
+}
+
+message FollowUserResponse {
+  FollowEdge edge = 1;
+  bool following = 2;
+  string status = 3;
+  string request_id = 4;
+}
+
+message FollowRequest {
+  string id = 1;
+  string follower_id = 2;
+  string followee_id = 3;
+  string status = 4;
+  string created_at = 5;
+  string decided_at = 6;
+}
+
+message FollowRequestActionRequest {
+  string request_id = 1;
+  string actor_id = 2;
+}
+
+message FollowRequestActionResponse {
+  FollowRequest request = 1;
+  FollowEdge edge = 2;
+  bool following = 3;
+  string status = 4;
+}
+
+message ListFollowRequestsRequest {
+  string user_id = 1;
+  string cursor = 2;
+  int32 limit = 3;
+}
+
+message ListFollowRequestsResponse {
+  repeated FollowRequest requests = 1;
+  string next_cursor = 2;
+}
+
+message RelationshipRequest {
+  string viewer_id = 1;
+  string target_id = 2;
+}
+
+message RelationshipPolicy {
+  bool blocked_by_viewer = 1;
+  bool blocked_viewer = 2;
+  bool muted_by_viewer = 3;
+  bool following = 4;
+}
+
+message BatchRelationshipRequest {
+  string viewer_id = 1;
+  repeated string target_ids = 2;
+}
+
+message RelationshipPolicyEntry {
+  string target_id = 1;
+  RelationshipPolicy policy = 2;
+}
+
+message BatchRelationshipResponse {
+  repeated RelationshipPolicyEntry policies = 1;
+}
+
+message UnfollowUserRequest {
+  string follower_id = 1; // UUID
+  string followee_id = 2; // UUID
+}
+
+message UnfollowUserResponse {
+  bool following = 1;
+}
+
+// Lookup only: no branch of this RPC may execute a missing mutation.
+message ReplayMutationRequest {
+  oneof command {
+    FollowUserRequest follow_user = 1;
+    UnfollowUserRequest unfollow_user = 2;
+  }
+}
+
+message ReplayMutationResponse {
+  oneof outcome {
+    FollowUserResponse follow_user = 1;
+    UnfollowUserResponse unfollow_user = 2;
+  }
+}
+
+// Owner receipt metadata only. Operation IDs are identifiers, not credentials;
+// a missing receipt does not prove that a mutation did not commit.
+message GetMutationReceiptStatusRequest {
+  string operation_id = 1; // UUID
+}
+
+message GetMutationReceiptStatusResponse {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    REPLAYABLE = 1;
+    EXPIRED = 2;
+    INCOMPLETE = 3;
+  }
+  string operation_id = 1; // UUID
+  string actor_id = 2; // UUID
+  string scope = 3; // Versioned RPC method
+  string committed_at = 4; // RFC3339
+  string replay_until = 5; // RFC3339
+  State state = 6;
+}
+
+message ListFollowersRequest {
+  string user_id = 1; // UUID
+  string cursor = 2;
+  int32 limit = 3;
+}
+
+message ListFollowersResponse {
+  repeated FollowEdge edges = 1;
+  string next_cursor = 2;
+  int64 total_count = 3;
+}
+
+message ListFollowingRequest {
+  string user_id = 1; // UUID
+  string cursor = 2;
+  int32 limit = 3;
+}
+
+message ListFollowingResponse {
+  repeated FollowEdge edges = 1;
+  string next_cursor = 2;
+  int64 total_count = 3;
+}
+
+message GetFollowCountsRequest {
+  string user_id = 1; // UUID
+}
+
+message GetFollowCountsResponse {
+  int64 follower_count = 1;
+  int64 following_count = 2;
+}
+
+message FollowStats {
+  string user_id = 1; // UUID
+  int64 follower_count = 2;
+  int64 following_count = 3;
+}
+
+message GetFollowStatsRequest {
+  repeated string user_ids = 1; // UUID
+}
+
+message GetFollowStatsResponse {
+  repeated FollowStats stats = 1;
+}
+
+message CheckFollowRequest {
+  string follower_id = 1; // UUID
+  string followee_id = 2; // UUID
+}
+
+message CheckFollowResponse {
+  bool following = 1;
+}
+
+
+message GetPeopleRecommendationsRequest {
+  string viewer_id = 1;
+  string cursor = 2;
+  int32 limit = 3;
+  string request_id = 4;
+  string session_id = 5;
+}
+
+message PeopleRecommendation {
+  string user_id = 1;
+  string username = 2;
+  string nickname = 3;
+  string bio = 4;
+  string avatar_url = 5;
+  string source = 6;
+  string reason_code = 7;
+  int64 score_micros = 8;
+  string rank_version = 9;
+  string impression_id = 10;
+}
+
+message GetPeopleRecommendationsResponse {
+  repeated PeopleRecommendation items = 1;
+  string next_cursor = 2;
+  string snapshot_id = 3;
+  string rank_version = 4;
+  string request_id = 5;
+  bool fallback_used = 6;
+}
+
+message RecordRecommendationEventRequest {
+  string event_id = 1;
+  int32 schema_version = 2;
+  string occurred_at = 3;
+  string viewer_id = 4;
+  string subject_type = 5;
+  string subject_id = 6;
+  string actor_id = 7;
+  string surface = 8;
+  int32 position = 9;
+  string request_id = 10;
+  string session_id = 11;
+  string action = 12;
+  string source = 13;
+  string model_version = 14;
+  string impression_id = 15;
+  int32 propensity_micros = 16;
+  int32 dwell_ms = 17;
+  string metadata_json = 18;
+}
+
+message RecordRecommendationEventResponse {
+  bool accepted = 1;
+}
+
+message ApplyUserDeletionRequest {
+  string saga_id = 1;
+  string user_id = 2;
+  string actor_id = 3;
+  string retention_until = 4;
+}
+
+message ApplyUserDeletionResponse {
+  bool applied = 1;
+}
+
+service FriendService {
+  rpc ReplayMutation(ReplayMutationRequest) returns (ReplayMutationResponse);
+  rpc GetMutationReceiptStatus(GetMutationReceiptStatusRequest) returns (GetMutationReceiptStatusResponse);
+  rpc FollowUser(FollowUserRequest) returns (FollowUserResponse);
+  rpc UnfollowUser(UnfollowUserRequest) returns (UnfollowUserResponse);
+  rpc ListFollowers(ListFollowersRequest) returns (ListFollowersResponse);
+  rpc ListFollowing(ListFollowingRequest) returns (ListFollowingResponse);
+  rpc GetFollowCounts(GetFollowCountsRequest) returns (GetFollowCountsResponse);
+  rpc GetFollowStats(GetFollowStatsRequest) returns (GetFollowStatsResponse);
+  rpc CheckFollow(CheckFollowRequest) returns (CheckFollowResponse);
+  rpc AcceptFollowRequest(FollowRequestActionRequest) returns (FollowRequestActionResponse);
+  rpc RejectFollowRequest(FollowRequestActionRequest) returns (FollowRequestActionResponse);
+  rpc CancelFollowRequest(FollowRequestActionRequest) returns (FollowRequestActionResponse);
+  rpc ListIncomingFollowRequests(ListFollowRequestsRequest) returns (ListFollowRequestsResponse);
+  rpc ListOutgoingFollowRequests(ListFollowRequestsRequest) returns (ListFollowRequestsResponse);
+  rpc BlockUser(RelationshipRequest) returns (RelationshipPolicy);
+  rpc UnblockUser(RelationshipRequest) returns (RelationshipPolicy);
+  rpc MuteUser(RelationshipRequest) returns (RelationshipPolicy);
+  rpc UnmuteUser(RelationshipRequest) returns (RelationshipPolicy);
+  rpc GetRelationship(RelationshipRequest) returns (RelationshipPolicy);
+  rpc BatchGetRelationships(BatchRelationshipRequest) returns (BatchRelationshipResponse);
+  rpc GetPeopleRecommendations(GetPeopleRecommendationsRequest) returns (GetPeopleRecommendationsResponse);
+  rpc RecordPeopleRecommendationEvent(RecordRecommendationEventRequest) returns (RecordRecommendationEventResponse);
+  rpc ApplyUserDeletion(ApplyUserDeletionRequest) returns (ApplyUserDeletionResponse);
+}

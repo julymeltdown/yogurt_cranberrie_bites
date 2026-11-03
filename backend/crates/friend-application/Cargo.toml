@@ -1,0 +1,16 @@
+[package]
+name = "friend-application"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+friend-domain = { path = "../friend-domain" }
+recommendation-policy = { path = "../recommendation-policy" }
+anyhow.workspace = true
+async-trait.workspace = true
+chrono.workspace = true
+serde.workspace = true
+uuid.workspace = true
+serde_json.workspace = true
+tracing.workspace = true

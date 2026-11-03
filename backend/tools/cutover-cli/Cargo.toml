@@ -1,0 +1,20 @@
+[package]
+name = "cutover-cli"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "cutover_cli"
+path = "src/lib.rs"
+
+[[bin]]
+name = "cutover-cli"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+

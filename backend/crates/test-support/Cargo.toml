@@ -1,0 +1,15 @@
+[package]
+name = "test-support"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+anyhow.workspace = true
+rcgen.workspace = true
+redis.workspace = true
+rskafka.workspace = true
+sqlx.workspace = true
+testcontainers.workspace = true
+testcontainers-modules.workspace = true
+tokio = { workspace = true, features = ["io-util"] }

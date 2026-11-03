@@ -1,0 +1,179 @@
+syntax = "proto3";
+
+package profile.v1;
+
+message Profile {
+  string user_id = 1; // UUID
+  string nickname = 2;
+  string avatar_url = 3;
+  string bio = 4;
+  int64 follower_count = 5;
+  int64 post_count = 6;
+  string username = 7;
+  int64 following_count = 8;
+  string account_visibility = 9;
+  string lifecycle_status = 10;
+}
+
+message GetProfileRequest {
+  string user_id = 1; // UUID
+}
+
+message GetProfileResponse {
+  Profile profile = 1;
+}
+
+message GetProfileByUsernameRequest {
+  string username = 1;
+}
+
+message GetProfilesRequest {
+  // UUIDs. Duplicate IDs are deduplicated by first occurrence.
+  repeated string user_ids = 1;
+}
+
+message GetProfilesResponse {
+  // Existing, non-deleted profiles only, in first-occurrence request order.
+  // IDs without an active profile are omitted; no placeholder Profile is synthesized.
+  repeated Profile profiles = 1;
+}
+
+message UpdateProfileRequest {
+  string user_id = 1; // UUID
+  string nickname = 2;
+  string avatar_url = 3;
+  string bio = 4;
+  string username = 5;
+}
+
+message UpdateProfileResponse {
+  Profile profile = 1;
+}
+
+message UpdateProfilePrivacyRequest {
+  string user_id = 1;
+  string actor_id = 2;
+  string account_visibility = 3;
+}
+
+message UpdateProfilePrivacyResponse {
+  Profile profile = 1;
+}
+
+// Lookup only: no branch of this RPC may execute a missing mutation.
+message ReplayMutationRequest {
+  oneof command {
+    UpdateProfilePrivacyRequest update_profile_privacy = 1;
+    UpdateProfileRequest update_profile = 2;
+  }
+}
+
+message ReplayMutationResponse {
+  oneof outcome {
+    UpdateProfilePrivacyResponse update_profile_privacy = 1;
+    UpdateProfileResponse update_profile = 2;
+  }
+}
+
+// Status is metadata-only and does not return the key, fingerprint, or outcome.
+// A missing receipt does not prove that a mutation did not commit.
+message GetMutationReceiptStatusRequest {
+  string operation_id = 1; // UUID
+}
+
+message GetMutationReceiptStatusResponse {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    REPLAYABLE = 1;
+    EXPIRED = 2;
+    INCOMPLETE = 3;
+  }
+  string operation_id = 1; // UUID
+  string actor_id = 2; // UUID
+  string scope = 3; // Versioned RPC method
+  string committed_at = 4; // RFC3339
+  string replay_until = 5; // RFC3339
+  State state = 6;
+}
+
+message GetProfilePrivacyRequest {
+  string user_id = 1;
+}
+
+message GetProfilePrivacyResponse {
+  string user_id = 1;
+  string account_visibility = 2;
+  string lifecycle_status = 3;
+}
+
+message DeleteProfileRequest {
+  string user_id = 1; // UUID
+  string actor_id = 2; // UUID
+  string request_id = 3;
+  string ip_address = 4;
+  string user_agent = 5;
+}
+
+message DeleteProfileResponse {
+  string user_id = 1; // UUID
+  bool deleted = 2;
+  bool account_deleted = 3; // Always false: this only hides the profile.
+}
+
+message SearchProfilesRequest {
+  string query = 1;
+  string cursor = 2;
+  int32 limit = 3;
+}
+
+message SearchProfilesResponse {
+  repeated Profile profiles = 1;
+  string next_cursor = 2;
+}
+
+message UploadAvatarRequest {
+  string user_id = 1;
+  bytes content = 2;
+  string content_type = 3;
+  string filename = 4;
+}
+
+message UploadAvatarResponse {
+  string avatar_path = 1;
+}
+
+message GetAvatarRequest {
+  string user_id = 1;
+}
+
+message GetAvatarResponse {
+  bytes content = 1;
+  string content_type = 2;
+}
+
+message ApplyUserDeletionRequest {
+  string saga_id = 1;
+  string user_id = 2;
+  string actor_id = 3;
+  string retention_until = 4;
+}
+
+message ApplyUserDeletionResponse {
+  bool applied = 1;
+}
+
+service ProfileService {
+  rpc ReplayMutation(ReplayMutationRequest) returns (ReplayMutationResponse);
+  rpc GetMutationReceiptStatus(GetMutationReceiptStatusRequest) returns (GetMutationReceiptStatusResponse);
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+  rpc GetProfileByUsername(GetProfileByUsernameRequest) returns (GetProfileResponse);
+  rpc GetProfiles(GetProfilesRequest) returns (GetProfilesResponse);
+  rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
+  rpc UpdateProfilePrivacy(UpdateProfilePrivacyRequest) returns (UpdateProfilePrivacyResponse);
+  rpc GetProfilePrivacy(GetProfilePrivacyRequest) returns (GetProfilePrivacyResponse);
+  rpc DeleteProfile(DeleteProfileRequest) returns (DeleteProfileResponse);
+  rpc SearchProfiles(SearchProfilesRequest) returns (SearchProfilesResponse);
+  rpc UploadAvatar(UploadAvatarRequest) returns (UploadAvatarResponse);
+  rpc GetAvatar(GetAvatarRequest) returns (GetAvatarResponse);
+  rpc ApplyUserDeletion(ApplyUserDeletionRequest) returns (ApplyUserDeletionResponse);
+}

@@ -1,0 +1,243 @@
+syntax = "proto3";
+
+package auth.v1;
+
+enum IdentityProvider {
+  IDENTITY_PROVIDER_UNSPECIFIED = 0;
+  EMAIL = 1;
+  GOOGLE = 2;
+  APPLE = 3;
+  X = 4;
+}
+
+message SignupEmailRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message VerifyEmailRequest {
+  string email = 1;
+  string code = 2;
+}
+
+message CheckEmailRequest {
+  string email = 1;
+}
+
+message LoginEmailRequest {
+  string email = 1;
+  string password = 2;
+  string ip_address = 3;
+  string user_agent = 4;
+}
+
+message RefreshTokensRequest {
+  string refresh_token = 1;
+}
+
+message LogoutRequest {
+  string refresh_token = 1;
+}
+
+message RequestPasswordResetRequest {
+  string email = 1;
+}
+
+message ConfirmPasswordResetRequest {
+  string token = 1;
+  string new_password = 2;
+}
+
+message AuthorizeOAuthRequest {
+  IdentityProvider provider = 1;
+}
+
+message OAuthCallbackRequest {
+  IdentityProvider provider = 1;
+  string code = 2;
+  string state = 3;
+  string ip_address = 4;
+  string user_agent = 5;
+}
+
+message LinkOAuthProviderRequest {
+  IdentityProvider provider = 1;
+  string user_id = 2;
+  string code = 3;
+  string state = 4;
+}
+
+message SignupResponse {
+  string user_id = 1;
+  string status = 2;
+}
+
+message EmailAvailabilityResponse {
+  string email = 1;
+  bool available = 2;
+  string status = 3;
+}
+
+message AuthResponse {
+  string user_id = 1;
+  string access_token = 2;
+  string refresh_token = 3;
+  string token_type = 4;
+  int64 expires_in_seconds = 5;
+  repeated IdentityProvider linked_providers = 6;
+}
+
+message PasswordResetResponse {
+  string status = 1;
+}
+
+message OAuthAuthorizeResponse {
+  string authorization_uri = 1;
+}
+
+message LinkedProvidersResponse {
+  string user_id = 1;
+  repeated IdentityProvider providers = 2;
+}
+
+message DeleteUserRequest {
+  string user_id = 1; // UUID
+  string actor_id = 2; // UUID
+  string request_id = 3;
+  string ip_address = 4;
+  string user_agent = 5;
+}
+
+message UserDeletionStep {
+  string target = 1;
+  string status = 2;
+  int32 attempt_count = 3;
+  string next_attempt_at = 4; // RFC3339
+  string last_error = 5;
+  string completed_at = 6; // RFC3339 or empty
+}
+
+message UserDeletionSaga {
+  string id = 1; // UUID
+  string user_id = 2; // UUID
+  string status = 3;
+  string retention_until = 4; // RFC3339
+  string created_at = 5; // RFC3339
+  string updated_at = 6; // RFC3339
+  string completed_at = 7; // RFC3339 or empty
+  repeated UserDeletionStep steps = 8;
+}
+
+message DeleteUserResponse {
+  string user_id = 1; // UUID
+  bool deleted = 2;
+  string saga_id = 3; // UUID
+  UserDeletionSaga saga = 4;
+}
+
+message GetUserDeletionRequest {
+  string user_id = 1; // UUID
+}
+
+message GetUserDeletionResponse {
+  UserDeletionSaga saga = 1;
+  bool found = 2;
+}
+
+message GetUserDeletionBySagaIdRequest {
+  string saga_id = 1; // UUID
+}
+
+message GetUserDeletionBySagaIdResponse {
+  UserDeletionSaga saga = 1;
+  bool found = 2;
+}
+
+message ListDeadLetteredUserDeletionsRequest {
+  int32 limit = 1;
+  string after_updated_at = 2; // RFC3339; paired with after_saga_id
+  string after_saga_id = 3; // UUID; paired with after_updated_at
+}
+
+message ListDeadLetteredUserDeletionsResponse {
+  repeated UserDeletionSaga sagas = 1;
+  bool has_more = 2;
+  string next_updated_at = 3; // RFC3339; empty when there is no next page
+  string next_saga_id = 4; // UUID; empty when there is no next page
+}
+
+message RetryUserDeletionRequest {
+  string saga_id = 1; // UUID
+  string actor_id = 2; // UUID of the authenticated Gateway administrator
+  string resolution_id = 3; // UUID; reused unchanged after an uncertain response
+  string reason = 4;
+  string evidence_reference = 5;
+}
+
+message RetryUserDeletionResponse {
+  UserDeletionSaga saga = 1;
+  string resolution_id = 2;
+  bool accepted = 3;
+}
+
+// This status is deliberately independent of account existence and delivery.
+message ResendVerificationRequest {
+  string email = 1;
+}
+
+message ResendVerificationResponse {
+  string status = 1; // Always ACCEPTED on success; never a delivery receipt.
+}
+
+// Verifiers fetch the issuer's public keys over this authenticated channel, so
+// the keys a Gateway trusts arrive the same way as every other internal call.
+message GetSigningKeysRequest {}
+
+message GetSigningKeysResponse {
+  // RFC 7517 JWK Set: the document served at /.well-known/jwks.json. It lists
+  // the signing key first, then any keys published for a rotation.
+  string jwks_json = 1;
+}
+
+// Asks whether one login session may still perform a high-risk action.
+// An access token remains valid until it expires; this answers from the
+// issuer's current state instead.
+message CheckSessionRequest {
+  // Subject (`sub`) of the access token.
+  string user_id = 1;
+  // Session family (`sid`) of the access token.
+  string session_id = 2;
+}
+
+message CheckSessionResponse {
+  // True while the account is active and the session still holds a live
+  // refresh token. False after logout, revocation, expiry, or deactivation.
+  bool active = 1;
+  // The account's current roles. Empty when `active` is false.
+  repeated string roles = 2;
+}
+
+service AuthService {
+  rpc SignupEmail(SignupEmailRequest) returns (SignupResponse);
+  rpc VerifyEmail(VerifyEmailRequest) returns (SignupResponse);
+  rpc CheckEmail(CheckEmailRequest) returns (EmailAvailabilityResponse);
+  rpc ResendVerification(ResendVerificationRequest) returns (ResendVerificationResponse);
+
+  rpc LoginEmail(LoginEmailRequest) returns (AuthResponse);
+  rpc RefreshTokens(RefreshTokensRequest) returns (AuthResponse);
+  rpc Logout(LogoutRequest) returns (PasswordResetResponse);
+
+  rpc RequestPasswordReset(RequestPasswordResetRequest) returns (PasswordResetResponse);
+  rpc ConfirmPasswordReset(ConfirmPasswordResetRequest) returns (PasswordResetResponse);
+
+  rpc AuthorizeOAuth(AuthorizeOAuthRequest) returns (OAuthAuthorizeResponse);
+  rpc OAuthCallback(OAuthCallbackRequest) returns (AuthResponse);
+  rpc LinkOAuthProvider(LinkOAuthProviderRequest) returns (LinkedProvidersResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+  rpc GetUserDeletion(GetUserDeletionRequest) returns (GetUserDeletionResponse);
+  rpc GetUserDeletionBySagaId(GetUserDeletionBySagaIdRequest) returns (GetUserDeletionBySagaIdResponse);
+  rpc ListDeadLetteredUserDeletions(ListDeadLetteredUserDeletionsRequest) returns (ListDeadLetteredUserDeletionsResponse);
+  rpc RetryUserDeletion(RetryUserDeletionRequest) returns (RetryUserDeletionResponse);
+  rpc GetSigningKeys(GetSigningKeysRequest) returns (GetSigningKeysResponse);
+  rpc CheckSession(CheckSessionRequest) returns (CheckSessionResponse);
+}

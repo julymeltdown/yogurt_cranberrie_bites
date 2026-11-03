@@ -1,0 +1,311 @@
+syntax = "proto3";
+
+package authority.v1;
+
+// Original Gateway-signed unary request. Possession alone is not admission or
+// membership: owner lookup requires a previously published immutable stage.
+message ParentAuthority {
+  string token = 1;
+  string method = 2;
+  bytes framed_body = 3;
+  optional string operation_id = 4;
+}
+
+message ExchangeActorRequest {
+  ParentAuthority parent = 1;
+  string audience = 2;
+  string method = 3;
+  bytes framed_body = 4;
+  optional string operation_id = 5;
+  optional string witness_id = 6;
+}
+
+message ExchangeActorResponse {
+  string token = 1;
+  int64 expires_at = 2;
+}
+
+message ResolvePostResourcesRequest {
+  ParentAuthority parent = 1;
+  string witness_id = 2;
+  // Discovery: at most100 distinct authors from the exact recorded stage.
+  // Fixed roots: lookup uses the root's signed post IDs and validates targets.
+  repeated string target_author_ids = 3;
+}
+
+message ResolvePostResourcesResponse {
+  // Distinct Post resource signature, never a Gateway actor token.
+  string evidence = 1;
+}
+
+// Gateway owns issuance. Authenticated Post presents a parent and exact child;
+// no caller-supplied rows, owner evidence, issuer or presenter are accepted.
+service AuthorizationExchangeService {
+  rpc ExchangeActor(ExchangeActorRequest) returns (ExchangeActorResponse);
+}
+
+// Post owns membership and current lifecycle/author verification. Only Gateway
+// calls this independently; it cannot insert witnesses or execute a root.
+service PostResourceAuthorityService {
+  rpc ResolvePostResources(ResolvePostResourcesRequest) returns (ResolvePostResourcesResponse);
+}
+
+// Existence only: private profiles exist; soft-deleted/missing profiles do not.
+// No profile content, privacy setting or account eligibility decision is returned.
+message CheckAuthorProfileRequest {
+  string user_id = 1;
+}
+
+message CheckAuthorProfileResponse {
+  string user_id = 1;
+}
+
+service ProfileAuthorAuthorityService {
+  // Authenticated Post requires a Gateway-issued child for this exact author.
+  rpc CheckAuthorProfile(CheckAuthorProfileRequest) returns (CheckAuthorProfileResponse);
+}
+
+// Exact persisted claim reference. Credentials and lease tokens must never be
+// rendered in diagnostics. Possession of these fields is not admission.
+message FanoutClaim {
+  string job_id = 1;
+  string event_id = 2;
+  string post_id = 3;
+  string author_id = 4;
+  string lease_token = 5;
+  int64 post_created_micros = 6;
+  int64 lease_expires_micros = 7;
+  int32 attempt = 8;
+  int32 page_attempt = 9;
+  int32 max_page_attempts = 10;
+  optional string cursor = 11;
+}
+
+message ListFanoutFollowersRequest {
+  FanoutClaim claim = 1;
+  int32 limit = 2;
+}
+
+message ListFanoutFollowersResponse {
+  string author_id = 1;
+  repeated string follower_ids = 2;
+  optional string next_cursor = 3;
+  // Effective independently refreshed authority expiry; never entry retention.
+  int64 expires_micros = 4;
+}
+
+message ResolveFanoutPageRequest {
+  // Exact uncompressed unary ListFanoutFollowersRequest frame.
+  bytes framed_body = 1;
+  // Fresh Gateway-generated challenge; not presenter-supplied evidence.
+  string challenge = 2;
+}
+
+message ResolveFanoutPageResponse {
+  string evidence = 1;
+}
+
+message IssueFanoutGrantRequest {
+  bytes framed_body = 1;
+  // Original operation bound, before local reads and channel readiness.
+  int64 deadline_micros = 2;
+}
+
+message IssueFanoutGrantResponse {
+  string token = 1;
+  int64 expires_micros = 2;
+}
+
+message ValidateFanoutGrantRequest {
+  bytes framed_body = 1;
+  string token = 2;
+}
+
+message ValidateFanoutGrantResponse {
+  int64 expires_micros = 1;
+}
+
+// Post validates current source and the complete live claim without modifying
+// its lease or budget. Only independently authenticated Gateway may call.
+service FanoutOwnerAuthorityService {
+  rpc ResolveFanoutPage(ResolveFanoutPageRequest) returns (ResolveFanoutPageResponse);
+}
+
+service FanoutGrantService {
+  // Post-only issuance, always preceded by an independent owner lookup.
+  rpc IssueFanoutGrant(IssueFanoutGrantRequest) returns (IssueFanoutGrantResponse);
+  // Friend-only admission refresh, with a second fresh owner lookup. Does not
+  // issue another grant, reset attempts, or consume Friend's replay entry.
+  rpc ValidateFanoutGrant(ValidateFanoutGrantRequest) returns (ValidateFanoutGrantResponse);
+}
+
+// Separate system purpose; actor proofs and workload identity alone cannot
+// admit this method. Current Friend filtering/order/cursor semantics apply.
+service FanoutProjectionService {
+  rpc ListFanoutFollowers(ListFanoutFollowersRequest) returns (ListFanoutFollowersResponse);
+}
+
+// CACHE-only reference. No event payload, attributes or trace is exposed to Friend.
+message CacheClaim {
+  string event_id = 1;
+  string post_id = 2;
+  bytes event_digest = 3;
+  string lease_token = 4;
+  string attempt_id = 5;
+  int32 attempt = 6;
+  int64 lease_expires_micros = 7;
+  bytes attempt_digest = 8;
+}
+message ListCacheFollowersRequest {
+  CacheClaim claim = 1;
+  string author_id = 2;
+  optional string cursor = 3;
+  int32 limit = 4;
+}
+message ListCacheFollowersResponse {
+  string author_id = 1;
+  repeated string follower_ids = 2;
+  optional string next_cursor = 3;
+  // Effective independently refreshed authority expiry; never entry retention.
+  int64 expires_micros = 4;
+}
+message ResolveCachePageRequest {
+  bytes framed_body = 1;
+  string challenge = 2;
+}
+message ResolveCachePageResponse {
+  string evidence = 1;
+}
+message IssueCacheGrantRequest {
+  bytes framed_body = 1;
+  // Original operation bound, before local reads and channel readiness.
+  int64 deadline_micros = 2;
+}
+message IssueCacheGrantResponse {
+  string token = 1;
+  int64 expires_micros = 2;
+}
+message ValidateCacheGrantRequest {
+  bytes framed_body = 1;
+  string token = 2;
+}
+message ValidateCacheGrantResponse {
+  int64 expires_micros = 1;
+}
+service CacheOwnerAuthorityService {
+  // Gateway only; derive author from owning stored event and exact live CACHE claim.
+  rpc ResolveCachePage(ResolveCachePageRequest) returns (ResolveCachePageResponse);
+}
+service CacheGrantService {
+  rpc IssueCacheGrant(IssueCacheGrantRequest) returns (IssueCacheGrantResponse);
+  rpc ValidateCacheGrant(ValidateCacheGrantRequest) returns (ValidateCacheGrantResponse);
+}
+service CacheProjectionService {
+  // Post only, mandatory separate CACHE grant and fresh owner admission.
+  rpc ListCacheFollowers(ListCacheFollowersRequest) returns (ListCacheFollowersResponse);
+}
+
+// INTERNAL notification references carry only the lease digest. Owning Post
+// resolves and validates the actual stored lease and attempt provenance.
+message NotificationClaim {
+  string event_id = 1;
+  string aggregate_id = 2;
+  bytes event_digest = 3;
+  bytes attempt_digest = 4;
+  bytes lease_digest = 5;
+  string attempt_id = 6;
+  int32 attempt = 7;
+  int64 lease_expires_micros = 8;
+}
+message ListNotificationFollowersRequest {
+  NotificationClaim claim = 1;
+  string author_id = 2;
+  optional string cursor = 3;
+  int32 limit = 4;
+}
+message ResolveNotificationSourceRequest {
+  // Canonical closed NotificationBinding; not a caller-selected RPC method.
+  bytes binding = 1;
+  bytes framed_body = 2;
+  string challenge = 3;
+}
+message ResolveNotificationSourceResponse {
+  // Signed exact-binding observation, including bounded created suppression.
+  string evidence = 1;
+}
+service NotificationOwnerAuthorityService {
+  // Gateway only; a failed dependency is never successful source suppression.
+  rpc ResolveNotificationSource(ResolveNotificationSourceRequest) returns (ResolveNotificationSourceResponse);
+}
+
+enum NotificationVisibility {
+  NOTIFICATION_VISIBILITY_UNSPECIFIED = 0; // Direct intent only.
+  NOTIFICATION_VISIBILITY_PUBLIC = 1;
+  NOTIFICATION_VISIBILITY_FRIENDS = 2;
+}
+message NotificationGranted {
+  string token = 1;
+  int64 expires_micros = 2;
+}
+message NotificationSuppressed {
+  int64 expires_micros = 1;
+}
+message IssueNotificationGrantRequest {
+  bytes binding = 1;
+  bytes framed_body = 2;
+  int64 deadline_micros = 3; // Original effect deadline, never a renewed budget.
+}
+message IssueNotificationGrantResponse {
+  oneof result {
+    NotificationGranted granted = 1;
+    NotificationSuppressed suppressed = 2;
+  }
+}
+message ValidateNotificationGrantRequest {
+  bytes binding = 1;
+  bytes framed_body = 2;
+  string token = 3;
+  int64 deadline_micros = 4;
+}
+message NotificationAllowed {
+  NotificationVisibility visibility = 1;
+  int64 expires_micros = 2;
+}
+message ValidateNotificationGrantResponse {
+  oneof result {
+    NotificationAllowed allowed = 1;
+    NotificationSuppressed suppressed = 2;
+  }
+}
+message CheckNotificationRecipientRequest {
+  string query = 1; // Gateway-signed exact recipient/actor/purpose query.
+}
+message CheckNotificationRecipientResponse {
+  string evidence = 1;
+}
+message NotificationFollowerPage {
+  string author_id = 1;
+  repeated string follower_ids = 2;
+  optional string next_cursor = 3;
+  string membership = 4;
+  int64 expires_micros = 5;
+}
+message ListNotificationFollowersResponse {
+  oneof result {
+    NotificationFollowerPage page = 1;
+    NotificationSuppressed suppressed = 2;
+  }
+}
+service NotificationGrantService {
+  // Issue: Post only. Validate: Friend for pages, Notification for writes.
+  rpc IssueNotificationGrant(IssueNotificationGrantRequest) returns (IssueNotificationGrantResponse);
+  rpc ValidateNotificationGrant(ValidateNotificationGrantRequest) returns (ValidateNotificationGrantResponse);
+}
+service NotificationPolicyService {
+  // Gateway only; subjects come exclusively from the verified signed query.
+  rpc CheckNotificationRecipient(CheckNotificationRecipientRequest) returns (CheckNotificationRecipientResponse);
+}
+service NotificationProjectionService {
+  // Post only; selected-page proof plus independent fresh Gateway admission.
+  rpc ListNotificationFollowers(ListNotificationFollowersRequest) returns (ListNotificationFollowersResponse);
+}

@@ -1,0 +1,66 @@
+[package]
+name = "auth-service"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "auth_service"
+path = "src/lib.rs"
+
+[features]
+fuzzing = []
+
+[[bin]]
+name = "auth-service"
+path = "src/main.rs"
+
+[dependencies]
+migration-runtime = { path = "../../crates/migration-runtime" }
+auth-domain = { path = "../../crates/auth-domain" }
+auth-application = { path = "../../crates/auth-application" }
+anyhow.workspace = true
+argon2.workspace = true
+async-trait.workspace = true
+axum.workspace = true
+base64ct.workspace = true
+chrono.workspace = true
+http.workspace = true
+jsonwebtoken.workspace = true
+platform = { path = "../../crates/platform" }
+prost.workspace = true
+rand.workspace = true
+reqwest.workspace = true
+rsa.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+sqlx.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tokio-stream.workspace = true
+tonic.workspace = true
+tonic-prost.workspace = true
+tower-http.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+
+[build-dependencies]
+contracts-build = { path = "../../crates/contracts-build" }
+protoc-bin-vendored = "3.1.0"
+tonic-prost-build.workspace = true
+
+[dev-dependencies]
+test-support = { path = "../../crates/test-support" }
+# The signing-key rotation drill runs the Gateway's own client, refresher and
+# verifier against this service's real gRPC handler.
+api-gateway = { path = "../api-gateway" }
+http-body-util.workspace = true
+opentelemetry.workspace = true
+opentelemetry_sdk = { workspace = true, features = ["testing"] }
+p256.workspace = true
+testcontainers.workspace = true
+testcontainers-modules.workspace = true
+tower.workspace = true
+tracing-subscriber.workspace = true
+tracing-opentelemetry.workspace = true

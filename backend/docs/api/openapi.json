@@ -1,0 +1,954 @@
+{
+  "openapi": "3.1.0",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "info": {
+    "title": "Port Rust API Gateway",
+    "version": "0.5.0",
+    "summary": "REST edge for the Port Rust social backend",
+    "description": "Complete checked-in REST contract for the Axum gateway. Every operation documents its request body, path/query/header inputs, authentication mechanism, success body, common error envelope, correlation response header, and special cookie/redirect/binary responses. Authorization is represented by security schemes rather than a duplicate Authorization header parameter. User-Agent is supplied automatically by the client, and X-Forwarded-For is infrastructure-owned and must only be injected by a trusted reverse proxy. Internal service-to-service APIs use protobuf/gRPC and are documented in proto-reference.md.",
+    "license": {
+      "name": "Private repository"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local runtime"
+    },
+    {
+      "url": "https://api.example.com",
+      "description": "Production placeholder"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Developer"
+    },
+    {
+      "name": "Operations"
+    },
+    {
+      "name": "Authentication"
+    },
+    {
+      "name": "OAuth"
+    },
+    {
+      "name": "Account lifecycle"
+    },
+    {
+      "name": "Profiles"
+    },
+    {
+      "name": "Social graph"
+    },
+    {
+      "name": "Follow requests"
+    },
+    {
+      "name": "Relationship safety"
+    },
+    {
+      "name": "Recommendations"
+    },
+    {
+      "name": "Feed"
+    },
+    {
+      "name": "Posts"
+    },
+    {
+      "name": "Comments"
+    },
+    {
+      "name": "Notifications"
+    },
+    {
+      "name": "Moderation"
+    },
+    {
+      "name": "Admin moderation"
+    },
+    {
+      "name": "Gateway aggregation"
+    },
+    {
+      "name": "Admin governance"
+    },
+    {
+      "name": "Parity"
+    }
+  ],
+  "paths": {
+    "/admin/account-deletions": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1account-deletions"
+    },
+    "/admin/account-deletions/{saga_id}": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1account-deletions~1{saga_id}"
+    },
+    "/admin/account-deletions/{saga_id}/retry": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1account-deletions~1{saga_id}~1retry"
+    },
+    "/admin/clients": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1clients"
+    },
+    "/admin/clients/{client_id}": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1clients~1{client_id}"
+    },
+    "/admin/contracts": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1contracts"
+    },
+    "/admin/contracts/{contract_id}": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1contracts~1{contract_id}"
+    },
+    "/admin/contracts/{contract_id}/versions": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1contracts~1{contract_id}~1versions"
+    },
+    "/admin/contracts/{contract_id}/versions/{version}": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1contracts~1{contract_id}~1versions~1{version}"
+    },
+    "/admin/moderation/content-decisions": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1moderation~1content-decisions"
+    },
+    "/admin/moderation/content-decisions/{report_id}/replay": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1moderation~1content-decisions~1{report_id}~1replay"
+    },
+    "/admin/moderation/reports": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1moderation~1reports"
+    },
+    "/admin/moderation/reports/{report_id}/decisions": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1moderation~1reports~1{report_id}~1decisions"
+    },
+    "/admin/operations/{operation_id}": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1operations~1{operation_id}"
+    },
+    "/admin/operations/{operation_id}/reconciliation": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1operations~1{operation_id}~1reconciliation"
+    },
+    "/admin/policies": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1policies"
+    },
+    "/admin/policies/{policy_id}": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1policies~1{policy_id}"
+    },
+    "/admin/post-events/dead-letters/{event_id}/replay": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1post-events~1dead-letters~1{event_id}~1replay"
+    },
+    "/admin/rollouts": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1rollouts"
+    },
+    "/admin/rollouts/{rollout_id}": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1rollouts~1{rollout_id}"
+    },
+    "/admin/telemetry/summary": {
+      "$ref": "./openapi-core.json#/paths/~1admin~1telemetry~1summary"
+    },
+    "/api/aggregate/{route_key}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1aggregate~1{route_key}"
+    },
+    "/api/feed": {
+      "$ref": "./openapi-core.json#/paths/~1api~1feed"
+    },
+    "/api/feed/events": {
+      "$ref": "./openapi-core.json#/paths/~1api~1feed~1events"
+    },
+    "/api/follows": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows"
+    },
+    "/api/follows/counts": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1counts"
+    },
+    "/api/follows/followers": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1followers"
+    },
+    "/api/follows/following": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1following"
+    },
+    "/api/follows/requests/incoming": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1requests~1incoming"
+    },
+    "/api/follows/requests/outgoing": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1requests~1outgoing"
+    },
+    "/api/follows/requests/{request_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1requests~1{request_id}"
+    },
+    "/api/follows/requests/{request_id}/accept": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1requests~1{request_id}~1accept"
+    },
+    "/api/follows/requests/{request_id}/reject": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1requests~1{request_id}~1reject"
+    },
+    "/api/follows/status": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1status"
+    },
+    "/api/follows/{target_user_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1follows~1{target_user_id}"
+    },
+    "/api/moderation/reports": {
+      "$ref": "./openapi-core.json#/paths/~1api~1moderation~1reports"
+    },
+    "/api/moderation/reports/me": {
+      "$ref": "./openapi-core.json#/paths/~1api~1moderation~1reports~1me"
+    },
+    "/api/notifications": {
+      "$ref": "./openapi-core.json#/paths/~1api~1notifications"
+    },
+    "/api/notifications/read-all": {
+      "$ref": "./openapi-core.json#/paths/~1api~1notifications~1read-all"
+    },
+    "/api/notifications/{notification_id}/read": {
+      "$ref": "./openapi-core.json#/paths/~1api~1notifications~1{notification_id}~1read"
+    },
+    "/api/operations/{operation_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1operations~1{operation_id}"
+    },
+    "/api/posts": {
+      "$ref": "./openapi-core.json#/paths/~1api~1posts"
+    },
+    "/api/posts/author/{author_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1posts~1author~1{author_id}"
+    },
+    "/api/posts/search": {
+      "$ref": "./openapi-core.json#/paths/~1api~1posts~1search"
+    },
+    "/api/posts/trending": {
+      "$ref": "./openapi-core.json#/paths/~1api~1posts~1trending"
+    },
+    "/api/posts/{post_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1posts~1{post_id}"
+    },
+    "/api/posts/{post_id}/comments": {
+      "$ref": "./openapi-core.json#/paths/~1api~1posts~1{post_id}~1comments"
+    },
+    "/api/posts/{post_id}/likes": {
+      "$ref": "./openapi-core.json#/paths/~1api~1posts~1{post_id}~1likes"
+    },
+    "/api/profile/avatar": {
+      "$ref": "./openapi-core.json#/paths/~1api~1profile~1avatar"
+    },
+    "/api/profile/avatar/{user_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1profile~1avatar~1{user_id}"
+    },
+    "/api/profile/batch": {
+      "$ref": "./openapi-core.json#/paths/~1api~1profile~1batch"
+    },
+    "/api/profile/privacy": {
+      "$ref": "./openapi-core.json#/paths/~1api~1profile~1privacy"
+    },
+    "/api/profile/search": {
+      "$ref": "./openapi-core.json#/paths/~1api~1profile~1search"
+    },
+    "/api/profile/username/{username}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1profile~1username~1{username}"
+    },
+    "/api/profile/{user_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1profile~1{user_id}"
+    },
+    "/api/recommendations/people": {
+      "$ref": "./openapi-core.json#/paths/~1api~1recommendations~1people"
+    },
+    "/api/recommendations/people/events": {
+      "$ref": "./openapi-core.json#/paths/~1api~1recommendations~1people~1events"
+    },
+    "/api/relationships/blocks/{target_user_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1relationships~1blocks~1{target_user_id}"
+    },
+    "/api/relationships/mutes/{target_user_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1relationships~1mutes~1{target_user_id}"
+    },
+    "/api/relationships/{target_user_id}": {
+      "$ref": "./openapi-core.json#/paths/~1api~1relationships~1{target_user_id}"
+    },
+    "/auth/account": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1account"
+    },
+    "/auth/account/deletion": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1account~1deletion"
+    },
+    "/auth/email/check": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1email~1check"
+    },
+    "/auth/email/resend": {
+      "post": {
+        "operationId": "resendVerificationEmail",
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Request a new email verification challenge",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XCorrelationId"
+          },
+          {
+            "$ref": "#/components/parameters/XRequestId"
+          },
+          {
+            "$ref": "#/components/parameters/XClientId"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Request handled; does not confirm account existence or delivery",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResendVerificationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON Content-Type required",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "JSON body does not match the request schema",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Downstream service unavailable, or busy when Retry-After is present",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Retry-After": {
+                "$ref": "#/components/headers/RetryAfter"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Downstream request timed out",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request body exceeds 4096 bytes",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Invalid verification service response",
+            "headers": {
+              "X-Correlation-Id": {
+                "$ref": "#/components/headers/XCorrelationId"
+              },
+              "Cache-Control": {
+                "description": "Verification responses must not be stored by caches.",
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "no-store"
+                  ]
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Public Gateway endpoint. Uses authenticated internal gRPC; no browser service token, Bearer token or cookie is required. JSON body is limited to 4096 bytes. Pending, unknown, active, deleted and account-quota-limited emails have the same 202 body. Auth permits one verification intent per minute and at most 20 per rolling day, including signup. Edge quota can return 429 independently. ACCEPTED is not proof of delivery. No automatic retry or Idempotency-Key replay is supported. Timeout can occur after the downstream request was accepted.",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResendVerificationRequest"
+              }
+            }
+          }
+        },
+        "x-max-body-bytes": 4096
+      }
+    },
+    "/auth/email/signup": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1email~1signup"
+    },
+    "/auth/email/verify": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1email~1verify"
+    },
+    "/auth/login": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1login"
+    },
+    "/auth/logout": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1logout"
+    },
+    "/auth/oauth/{provider}/authorize": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1oauth~1{provider}~1authorize"
+    },
+    "/auth/oauth/{provider}/callback": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1oauth~1{provider}~1callback"
+    },
+    "/auth/oauth/{provider}/callback/complete": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1oauth~1{provider}~1callback~1complete"
+    },
+    "/auth/oauth/{provider}/link": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1oauth~1{provider}~1link"
+    },
+    "/auth/password/reset/confirm": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1password~1reset~1confirm"
+    },
+    "/auth/password/reset/request": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1password~1reset~1request"
+    },
+    "/auth/refresh": {
+      "$ref": "./openapi-core.json#/paths/~1auth~1refresh"
+    },
+    "/docs": {
+      "$ref": "./openapi-core.json#/paths/~1docs"
+    },
+    "/openapi.json": {
+      "$ref": "./openapi-core.json#/paths/~1openapi.json"
+    },
+    "/shadow/auth/login": {
+      "$ref": "./openapi-core.json#/paths/~1shadow~1auth~1login"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "$ref": "./openapi-core.json#/components/securitySchemes/BearerAuth"
+      },
+      "RefreshCookie": {
+        "$ref": "./openapi-core.json#/components/securitySchemes/RefreshCookie"
+      },
+      "OAuthStateCookie": {
+        "$ref": "./openapi-core.json#/components/securitySchemes/OAuthStateCookie"
+      }
+    },
+    "parameters": {
+      "XCorrelationId": {
+        "$ref": "./openapi-core.json#/components/parameters/XCorrelationId"
+      },
+      "XRequestId": {
+        "$ref": "./openapi-core.json#/components/parameters/XRequestId"
+      },
+      "XClientId": {
+        "$ref": "./openapi-core.json#/components/parameters/XClientId"
+      },
+      "IdempotencyKey": {
+        "$ref": "./openapi-core.json#/components/parameters/IdempotencyKey"
+      }
+    },
+    "headers": {
+      "XCorrelationId": {
+        "$ref": "./openapi-core.json#/components/headers/XCorrelationId"
+      },
+      "SetCookie": {
+        "$ref": "./openapi-core.json#/components/headers/SetCookie"
+      },
+      "Location": {
+        "$ref": "./openapi-core.json#/components/headers/Location"
+      },
+      "CacheControl": {
+        "$ref": "./openapi-core.json#/components/headers/CacheControl"
+      },
+      "ContentType": {
+        "$ref": "./openapi-core.json#/components/headers/ContentType"
+      },
+      "RetryAfter": {
+        "$ref": "./openapi-core.json#/components/headers/RetryAfter"
+      },
+      "OperationId": {
+        "$ref": "./openapi-core.json#/components/headers/OperationId"
+      },
+      "IdempotencyReplayed": {
+        "$ref": "./openapi-core.json#/components/headers/IdempotencyReplayed"
+      }
+    },
+    "schemas": {
+      "OpenApiDocument": {
+        "$ref": "./openapi-core.json#/components/schemas/OpenApiDocument"
+      },
+      "ErrorResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/ErrorResponse"
+      },
+      "EmailSignupRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/EmailSignupRequest"
+      },
+      "EmailVerifyRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/EmailVerifyRequest"
+      },
+      "EmailCheckRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/EmailCheckRequest"
+      },
+      "LoginRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/LoginRequest"
+      },
+      "SignupResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/SignupResponse"
+      },
+      "EmailAvailabilityResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/EmailAvailabilityResponse"
+      },
+      "PasswordResetRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/PasswordResetRequest"
+      },
+      "PasswordResetConfirmRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/PasswordResetConfirmRequest"
+      },
+      "PasswordResetResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/PasswordResetResponse"
+      },
+      "AuthResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/AuthResponse"
+      },
+      "OAuthLinkRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/OAuthLinkRequest"
+      },
+      "LinkedProvidersResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/LinkedProvidersResponse"
+      },
+      "ShadowComparisonResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/ShadowComparisonResponse"
+      },
+      "UserDeletionStep": {
+        "$ref": "./openapi-core.json#/components/schemas/UserDeletionStep"
+      },
+      "UserDeletionSaga": {
+        "$ref": "./openapi-core.json#/components/schemas/UserDeletionSaga"
+      },
+      "DeadLetteredUserDeletionCursor": {
+        "$ref": "./openapi-core.json#/components/schemas/DeadLetteredUserDeletionCursor"
+      },
+      "DeadLetteredUserDeletionListResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/DeadLetteredUserDeletionListResponse"
+      },
+      "DeleteAccountResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/DeleteAccountResponse"
+      },
+      "RetryUserDeletionRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/RetryUserDeletionRequest"
+      },
+      "UserDeletionRetryAcceptedResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/UserDeletionRetryAcceptedResponse"
+      },
+      "ProfileUpdateRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/ProfileUpdateRequest"
+      },
+      "ProfilePrivacyUpdateRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/ProfilePrivacyUpdateRequest"
+      },
+      "ProfileBatchRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/ProfileBatchRequest"
+      },
+      "Profile": {
+        "$ref": "./openapi-core.json#/components/schemas/Profile"
+      },
+      "ProfileBatchResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/ProfileBatchResponse"
+      },
+      "ProfileSearchResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/ProfileSearchResponse"
+      },
+      "AvatarUploadResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/AvatarUploadResponse"
+      },
+      "DeleteProfileResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/DeleteProfileResponse"
+      },
+      "FollowRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/FollowRequest"
+      },
+      "FollowActionResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/FollowActionResponse"
+      },
+      "FollowEdge": {
+        "$ref": "./openapi-core.json#/components/schemas/FollowEdge"
+      },
+      "FollowListResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/FollowListResponse"
+      },
+      "FollowCountsResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/FollowCountsResponse"
+      },
+      "FollowStatusResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/FollowStatusResponse"
+      },
+      "FollowRequestResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/FollowRequestResponse"
+      },
+      "FollowRequestPageResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/FollowRequestPageResponse"
+      },
+      "RelationshipPolicyResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/RelationshipPolicyResponse"
+      },
+      "PeopleRecommendation": {
+        "$ref": "./openapi-core.json#/components/schemas/PeopleRecommendation"
+      },
+      "PeopleRecommendationEventRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/PeopleRecommendationEventRequest"
+      },
+      "RecommendationEventResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/RecommendationEventResponse"
+      },
+      "PeopleRecommendationPageResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/PeopleRecommendationPageResponse"
+      },
+      "PostCreateRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/PostCreateRequest"
+      },
+      "CommentCreateRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/CommentCreateRequest"
+      },
+      "Post": {
+        "$ref": "./openapi-core.json#/components/schemas/Post"
+      },
+      "Comment": {
+        "$ref": "./openapi-core.json#/components/schemas/Comment"
+      },
+      "FeedRecommendationMetadata": {
+        "$ref": "./openapi-core.json#/components/schemas/FeedRecommendationMetadata"
+      },
+      "FeedResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/FeedResponse"
+      },
+      "RankedFeedResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/RankedFeedResponse"
+      },
+      "FeedRecommendationEventRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/FeedRecommendationEventRequest"
+      },
+      "FeedRecommendationEventResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/FeedRecommendationEventResponse"
+      },
+      "PostDetailResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/PostDetailResponse"
+      },
+      "DeletePostResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/DeletePostResponse"
+      },
+      "PostLikeResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/PostLikeResponse"
+      },
+      "Notification": {
+        "$ref": "./openapi-core.json#/components/schemas/Notification"
+      },
+      "NotificationFeedResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/NotificationFeedResponse"
+      },
+      "NotificationMarkAllReadResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/NotificationMarkAllReadResponse"
+      },
+      "CreateReportRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/CreateReportRequest"
+      },
+      "CreateModerationDecisionRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/CreateModerationDecisionRequest"
+      },
+      "ResolveDeadLetterReplayRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/ResolveDeadLetterReplayRequest"
+      },
+      "DeadLetterReplayAcceptedResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/DeadLetterReplayAcceptedResponse"
+      },
+      "ReplayContentDecisionRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/ReplayContentDecisionRequest"
+      },
+      "ContentDecisionReplayAcceptedResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/ContentDecisionReplayAcceptedResponse"
+      },
+      "ModerationReport": {
+        "$ref": "./openapi-core.json#/components/schemas/ModerationReport"
+      },
+      "ModerationDecisionRecord": {
+        "$ref": "./openapi-core.json#/components/schemas/ModerationDecisionRecord"
+      },
+      "ModerationDecisionResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/ModerationDecisionResponse"
+      },
+      "ModerationReportListResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/ModerationReportListResponse"
+      },
+      "ModerationContentDecisionStatus": {
+        "$ref": "./openapi-core.json#/components/schemas/ModerationContentDecisionStatus"
+      },
+      "ModerationContentDecisionCursor": {
+        "$ref": "./openapi-core.json#/components/schemas/ModerationContentDecisionCursor"
+      },
+      "ModerationContentDecisionListResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/ModerationContentDecisionListResponse"
+      },
+      "RouteContractVersion": {
+        "$ref": "./openapi-core.json#/components/schemas/RouteContractVersion"
+      },
+      "RouteContract": {
+        "$ref": "./openapi-core.json#/components/schemas/RouteContract"
+      },
+      "RouteContractCreateRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/RouteContractCreateRequest"
+      },
+      "RouteContractVersionCreateRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/RouteContractVersionCreateRequest"
+      },
+      "RouteContractVersionUpdateRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/RouteContractVersionUpdateRequest"
+      },
+      "PolicySet": {
+        "$ref": "./openapi-core.json#/components/schemas/PolicySet"
+      },
+      "PolicySetRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/PolicySetRequest"
+      },
+      "ClientProfile": {
+        "$ref": "./openapi-core.json#/components/schemas/ClientProfile"
+      },
+      "ClientProfileRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/ClientProfileRequest"
+      },
+      "RolloutPolicy": {
+        "$ref": "./openapi-core.json#/components/schemas/RolloutPolicy"
+      },
+      "RolloutCreateRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/RolloutCreateRequest"
+      },
+      "TelemetrySummary": {
+        "$ref": "./openapi-core.json#/components/schemas/TelemetrySummary"
+      },
+      "OperationStatus": {
+        "$ref": "./openapi-core.json#/components/schemas/OperationStatus"
+      },
+      "CallerOperationStatus": {
+        "$ref": "./openapi-core.json#/components/schemas/CallerOperationStatus"
+      },
+      "AsyncOperationAccepted": {
+        "$ref": "./openapi-core.json#/components/schemas/AsyncOperationAccepted"
+      },
+      "ManualOperationResolutionRequest": {
+        "$ref": "./openapi-core.json#/components/schemas/ManualOperationResolutionRequest"
+      },
+      "ManualOperationResolution": {
+        "$ref": "./openapi-core.json#/components/schemas/ManualOperationResolution"
+      },
+      "OwnerReceiptStatus": {
+        "$ref": "./openapi-core.json#/components/schemas/OwnerReceiptStatus"
+      },
+      "DownstreamCall": {
+        "$ref": "./openapi-core.json#/components/schemas/DownstreamCall"
+      },
+      "AggregationPayload": {
+        "$ref": "./openapi-core.json#/components/schemas/AggregationPayload"
+      },
+      "AggregationResponse": {
+        "$ref": "./openapi-core.json#/components/schemas/AggregationResponse"
+      },
+      "ResendVerificationRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "minLength": 1,
+            "maxLength": 254
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "email"
+        ]
+      },
+      "ResendVerificationResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCEPTED"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "status"
+        ]
+      }
+    }
+  }
+}

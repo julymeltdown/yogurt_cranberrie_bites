@@ -1,0 +1,36 @@
+[package]
+name = "full-stack-e2e"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+anyhow.workspace = true
+api-gateway = { path = "../../services/api-gateway" }
+auth-service = { path = "../../services/auth-service" }
+axum.workspace = true
+chrono.workspace = true
+friend-service = { path = "../../services/friend-service" }
+futures.workspace = true
+image.workspace = true
+notification-service = { path = "../../services/notification-service" }
+platform = { path = "../../crates/platform" }
+post-service = { path = "../../services/post-service" }
+profile-service = { path = "../../services/profile-service" }
+redis.workspace = true
+reqwest = { workspace = true, features = ["multipart"] }
+rskafka.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+sqlx = { workspace = true, features = ["json"] }
+test-support = { path = "../../crates/test-support" }
+testcontainers.workspace = true
+tokio = { workspace = true, features = ["process"] }
+tokio-stream = { workspace = true, features = ["net"] }
+tonic.workspace = true
+tracing-subscriber.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+async-trait.workspace = true
+testcontainers-modules.workspace = true

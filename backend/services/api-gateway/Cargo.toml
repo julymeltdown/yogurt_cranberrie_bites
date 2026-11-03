@@ -1,0 +1,75 @@
+[package]
+name = "api-gateway"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "api_gateway"
+path = "src/lib.rs"
+
+[features]
+admission-bench = []
+fuzzing = []
+
+[[example]]
+name = "admission-benchmark"
+path = "examples/admission_benchmark.rs"
+required-features = ["admission-bench"]
+
+[[bin]]
+name = "api-gateway"
+path = "src/main.rs"
+
+[dependencies]
+migration-runtime = { path = "../../crates/migration-runtime" }
+gateway-domain = { path = "../../crates/gateway-domain" }
+gateway-application = { path = "../../crates/gateway-application" }
+api-contracts = { path = "../../crates/api-contracts" }
+anyhow.workspace = true
+async-trait.workspace = true
+axum.workspace = true
+base64ct.workspace = true
+chrono.workspace = true
+http.workspace = true
+http-body-util.workspace = true
+hmac.workspace = true
+jsonwebtoken.workspace = true
+platform = { path = "../../crates/platform" }
+prost.workspace = true
+ring = "0.17.14"
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+sqlx.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tonic.workspace = true
+tonic-prost.workspace = true
+tower.workspace = true
+tower-http.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+notification-service = { path = "../notification-service" }
+friend-service = { path = "../friend-service" }
+image.workspace = true
+profile-service = { path = "../profile-service" }
+post-service = { path = "../post-service" }
+redis.workspace = true
+tokio-stream = { workspace = true, features = ["net"] }
+rand.workspace = true
+reqwest.workspace = true
+rsa.workspace = true
+testcontainers.workspace = true
+testcontainers-modules.workspace = true
+test-support = { path = "../../crates/test-support" }
+proptest.workspace = true
+# Paused time makes the signing-key refresh rate limit testable without sleeping.
+tokio = { workspace = true, features = ["test-util"] }
+
+[build-dependencies]
+contracts-build = { path = "../../crates/contracts-build" }
+protoc-bin-vendored = "3.1.0"
+tonic-prost-build.workspace = true

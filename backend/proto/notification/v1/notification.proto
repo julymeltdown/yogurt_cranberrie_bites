@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package notification.v1;
+
+message Notification {
+  string id = 1; // UUID
+  string user_id = 2; // UUID
+  string type = 3; // COMMENT, FRIEND_REQUEST, FRIEND_ACCEPTED, SYSTEM
+  string payload_json = 4; // serialized JSON
+  string created_at = 5; // RFC3339
+  string read_at = 6; // RFC3339 or empty
+  string event_id = 7; // UUID
+  string actor_id = 8; // UUID or empty
+  string occurred_at = 9; // RFC3339
+}
+
+message CreateNotificationRequest {
+  string user_id = 1; // UUID
+  string type = 2;
+  string payload_json = 3;
+  string event_id = 4; // UUID
+  string actor_id = 5; // UUID
+  string occurred_at = 6; // RFC3339
+}
+
+message CreateNotificationResponse {
+  Notification notification = 1;
+  bool suppressed = 2;
+}
+
+message ListNotificationsRequest {
+  string user_id = 1; // UUID
+  string cursor = 2;
+  int32 limit = 3;
+}
+
+message ListNotificationsResponse {
+  repeated Notification items = 1;
+  string next_cursor = 2;
+}
+
+message MarkNotificationReadRequest {
+  string user_id = 1; // UUID
+  string notification_id = 2; // UUID
+}
+
+message MarkNotificationReadResponse {
+  Notification notification = 1;
+  bool updated = 2;
+}
+
+message MarkAllNotificationsReadRequest {
+  string user_id = 1; // UUID
+}
+
+message MarkAllNotificationsReadResponse {
+  int64 updated_count = 1;
+}
+
+message DeleteNotificationRequest {
+  string user_id = 1; // UUID
+  string notification_id = 2; // UUID
+  string actor_id = 3; // UUID
+  string request_id = 4;
+  string ip_address = 5;
+  string user_agent = 6;
+}
+
+message DeleteNotificationResponse {
+  string notification_id = 1; // UUID
+  bool deleted = 2;
+}
+
+message ApplyUserDeletionRequest {
+  string saga_id = 1; // UUID
+  string user_id = 2; // UUID
+  string actor_id = 3; // UUID
+  string retention_until = 4; // RFC3339
+}
+
+message ApplyUserDeletionResponse {
+  bool applied = 1;
+}
+
+service NotificationService {
+  rpc CreateNotification(CreateNotificationRequest) returns (CreateNotificationResponse);
+  rpc ListNotifications(ListNotificationsRequest) returns (ListNotificationsResponse);
+  rpc MarkNotificationRead(MarkNotificationReadRequest) returns (MarkNotificationReadResponse);
+  rpc MarkAllNotificationsRead(MarkAllNotificationsReadRequest) returns (MarkAllNotificationsReadResponse);
+  rpc DeleteNotification(DeleteNotificationRequest) returns (DeleteNotificationResponse);
+  rpc ApplyUserDeletion(ApplyUserDeletionRequest) returns (ApplyUserDeletionResponse);
+}

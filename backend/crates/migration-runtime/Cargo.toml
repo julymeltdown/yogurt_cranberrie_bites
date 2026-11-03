@@ -1,0 +1,13 @@
+[package]
+name = "migration-runtime"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+anyhow.workspace = true
+sqlx.workspace = true
+tokio = { workspace = true, features = ["process"] }
+
+[dev-dependencies]
+test-support = { path = "../test-support" }

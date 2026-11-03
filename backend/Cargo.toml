@@ -1,0 +1,97 @@
+[package]
+name = "port-rust-workspace"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[workspace]
+members = [
+    "crates/post-domain",
+    "crates/post-application",
+  "crates/gateway-domain",
+  "crates/gateway-application",
+  "crates/friend-domain",
+  "crates/friend-application",
+  "crates/recommendation-policy",
+  "crates/notification-domain",
+  "crates/notification-application",
+  "crates/profile-domain",
+  "crates/profile-application",
+  "crates/search-policy",
+  "crates/auth-domain",
+  "crates/auth-application",
+  "crates/api-contracts",
+  "crates/contracts-build",
+  "crates/platform",
+  "crates/test-support",
+  "crates/migration-runtime",
+  "services/api-gateway",
+  "services/auth-service",
+  "services/profile-service",
+  "services/friend-service",
+  "services/notification-service",
+  "services/post-service",
+  "tools/cutover-cli",
+  "tools/parity-report",
+  "tools/gate-report",
+  "tools/full-stack-e2e",
+]
+resolver = "2"
+
+[workspace.dependencies]
+anyhow = "1.0.95"
+opentelemetry = { version = "0.33.0", default-features = false, features = ["trace"] }
+opentelemetry-otlp = { version = "0.33.0", default-features = false, features = ["grpc-tonic", "tls-ring", "tls-roots", "trace"] }
+opentelemetry-proto = { version = "0.33.0", default-features = false, features = ["gen-tonic", "trace"] }
+opentelemetry_sdk = { version = "0.33.0", default-features = false, features = ["trace"] }
+argon2 = "0.5.3"
+async-trait = "0.1.86"
+axum = { version = "0.7.9", features = ["http1", "json", "macros", "multipart"] }
+base64ct = { version = "1.6.0", features = ["alloc"] }
+chrono = { version = "0.4.39", features = ["serde"] }
+futures = "0.3.31"
+hmac = "0.12.1"
+http = "1.2.0"
+http-body = "1.0.1"
+image = { version = "0.25.10", default-features = false, features = ["gif", "jpeg", "png", "webp"] }
+http-body-util = "0.1.2"
+jsonwebtoken = "9.3.0"
+prost = "0.14.4"
+prost-types = "0.14.4"
+p256 = { version = "0.13.2", default-features = false, features = ["ecdsa", "pem"] }
+proptest = { version = "1.11.0", default-features = false, features = ["std"] }
+rand = "0.8.5"
+rcgen = { version = "0.14.9", default-features = false, features = ["pem", "ring"] }
+redis = { version = "0.28.2", features = ["aio", "tokio-comp", "connection-manager"] }
+reqwest = { version = "0.12.12", default-features = false, features = ["json", "rustls-tls"] }
+rsa = { version = "0.9.7", features = ["pem"] }
+rskafka = { version = "0.6.0", default-features = false, features = ["compression-gzip"] }
+serde = { version = "1.0.217", features = ["derive"] }
+serde_json = "1.0.138"
+sha2 = "0.10.8"
+sqlx = { version = "0.8.3", default-features = false, features = ["chrono", "migrate", "postgres", "runtime-tokio-rustls", "uuid"] }
+testcontainers = "0.27.3"
+testcontainers-modules = { version = "0.15.0", features = ["kafka", "postgres", "redis"] }
+thiserror = "2.0.11"
+time = "0.3.47"
+tokio = { version = "1.43.0", features = ["macros", "rt-multi-thread", "signal", "sync", "time"] }
+tokio-stream = "0.1.17"
+tonic = { version = "0.14.6", features = ["tls-ring", "transport"] }
+tonic-health = "0.14.6"
+tonic-prost = "0.14.6"
+tonic-prost-build = "0.14.6"
+tower = { version = "0.5.2", features = ["util"] }
+tower-http = { version = "0.6.2", features = ["cors", "trace"] }
+tracing = "0.1.41"
+tracing-opentelemetry = "0.34.0"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter", "fmt", "json"] }
+uuid = { version = "1.12.1", features = ["serde", "v4"] }
+x509-parser = "0.18.1"
+
+[dependencies]
+api-contracts = { path = "crates/api-contracts" }
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+cutover-cli = { path = "tools/cutover-cli" }
+parity-report = { path = "tools/parity-report" }
