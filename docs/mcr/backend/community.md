@@ -56,9 +56,9 @@ membership. Simultaneous approvals at the same revision can yield one success
 and VERSION_CONFLICT; a current-revision approval at capacity yields PARTY_FULL.
 A same-key replay returns the original safe receipt without repeating effects.
 Different input conflicts. A newly keyed duplicate pending application is denied.
-Business errors currently roll back the receipt transaction; delivery is adding
-the exact durable BE15 domain-failure variants and migration0009. Adopting that
-extension remains required work.
+Declared business errors persist precise safe FAILED receipts through the owning
+BE15 domain-failure variants and migration0009. Denied/missing authority and
+invalid input still roll back without disclosing a target.
 
 The internal root stores a typed aggregate JSON document plus checked indexed
 columns. Private application/member indexes enforce pending uniqueness and one
@@ -119,7 +119,7 @@ chat, 2026-11-04; FE23 and BE09/19 owners were notified.
 Giveaway implementation is authored under the same owned community roots.
 Status remains IN_PROGRESS pending compilation/native proof and public/policy
 composition. Giveaway states are DRAFT/OPEN/PAUSED/CLOSED/CANCELLED. Public
-catalogue excludes DRAFT; authorized owner detail may read it. Public summaries
+catalogue and public detail exclude DRAFT; authorized owner management may read it. Public summaries
 contain no reservations, recipients, private instructions or code fields.
 
 The root row serializes reservations, cancellation, stock edits and claims.
@@ -156,7 +156,8 @@ Wrong-code attempts commit durable budget consumption independently from the
 BE15 command's rollback savepoint. Sorted DB buckets enforce reservation5,
 recipient10, owner25 and trusted keyed-IP25 attempts per15minutes. IP context
 must come from trusted authenticated runtime composition; browsers cannot choose
-it and no raw IP is retained. Missing context fails closed. Code rotation does
+it and no raw IP is retained. Fresh guess admission requires this context;
+existing correlated retry/result recovery does not debit another guess. Code rotation does
 not reset budgets. Claim reauthorizes/locks owner+recipient, verifies the current
 reservation-bound code, then moves reserved--/claimed++ once. The stored pickup
 receipt ID/revision survives later authorized duplicate claim commands. It is
