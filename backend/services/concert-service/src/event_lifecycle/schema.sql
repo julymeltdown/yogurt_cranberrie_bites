@@ -64,13 +64,14 @@ BEGIN
   item:=NEW.progress->'steps'->i;
   IF NOT item ?& ARRAY['name','state'] OR item-ARRAY['name','state']<>'{}'::jsonb OR item->>'name'<>names[i+1] OR item->>'state' NOT IN ('PENDING','SUCCEEDED','FAILED') THEN RAISE EXCEPTION 'invalid closure step'; END IF;
   IF i=0 AND item->>'state'<>'SUCCEEDED' THEN RAISE EXCEPTION 'read-only is required'; END IF;
-  IF unfinished AND item->>'state'='SUCCEEDED' THEN RAISE EXCEPTION 'out of order closure success'; END IF;
+  IF unfinished AND item->>'state' IN ('SUCCEEDED','FAILED') THEN RAISE EXCEPTION 'out of order closure success'; END IF;
   IF failed AND item->>'state'='FAILED' THEN RAISE EXCEPTION 'multiple failed boundaries'; END IF;
   unfinished:=unfinished OR item->>'state'<>'SUCCEEDED';failed:=failed OR item->>'state'='FAILED';
   IF TG_OP='INSERT' THEN
    IF i>0 AND item->>'state'<>'PENDING' THEN RAISE EXCEPTION 'unapplied initial step'; END IF;
   ELSE
    old_item:=OLD.progress->'steps'->i;
+   IF OLD.progress->>'state'='PARTIAL_FAILURE' AND old_item IS DISTINCT FROM item AND NOT (old_item->>'state'='FAILED' AND item->>'state'='PENDING' AND NEW.progress->>'state'='PENDING') THEN RAISE EXCEPTION 'failure requires explicit resume admission'; END IF;
    IF old_item->>'state'='SUCCEEDED' AND item->>'state'<>'SUCCEEDED' THEN RAISE EXCEPTION 'completed step is immutable'; END IF;
    IF old_item IS DISTINCT FROM item THEN changed:=changed+1; END IF;
   END IF;
@@ -105,3 +106,12 @@ BEGIN
  RETURN NEW;
 END; $$;
 CREATE TRIGGER concert_closure_archive_guard BEFORE INSERT OR UPDATE ON public.concert_closure_archives FOR EACH ROW EXECUTE FUNCTION public.concert_closure_archive_guard();
+-- Component receipts are actual local SQL effects, not remote success assertions.
+CREATE TABLE public.concert_closure_privacy_effects (
+ event_id uuid NOT NULL,job_id uuid NOT NULL,operation_id uuid PRIMARY KEY,
+ component text NOT NULL CHECK(component IN ('SOCIAL_EXPIRY','BEACON_EXPIRY','PRIVACY_RETENTION')),
+ affected bigint NOT NULL CHECK(affected>=0),created_at timestamptz NOT NULL DEFAULT clock_timestamp(),
+ FOREIGN KEY(event_id,job_id) REFERENCES public.concert_closure_jobs(event_id,job_id),UNIQUE(job_id,component)
+);
+CREATE TRIGGER concert_closure_privacy_effects_immutable BEFORE UPDATE OR DELETE ON public.concert_closure_privacy_effects FOR EACH ROW EXECUTE FUNCTION public.concert_closure_immutable();
+CREATE CONSTRAINT TRIGGER concert_closure_privacy_effects_deadline AFTER INSERT ON public.concert_closure_privacy_effects DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.concert_closure_deadline();

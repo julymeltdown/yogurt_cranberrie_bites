@@ -63,20 +63,20 @@ rejected there until Delivery freezes/regenerates the proposed amendment.
 - `python3 -m py_compile backend/scripts/mcr/event_lifecycle_pg.py`: exit 0.
 - `python3 scripts/mcr/check-plan.py`: exit 0; planning/provenance only.
 - `python3 backend/scripts/mcr/event_lifecycle_pg.py --output /tmp/mcr-be41-sql-evidence.json`:
-  exit 0, 16 actual isolated PostgreSQL SQL checks. Fixture uses a uniquely owned
+  exit 0, 23 actual isolated PostgreSQL SQL checks. Fixture uses a uniquely owned
   data directory and Unix socket, no TCP listener or existing database. It tests
   phase/job atomicity, unique job, false completion and missing receipt denial,
   authority deadlines, rollback, actual backend-process death before commit,
   successful effect/progress commit, partial failure, PostgreSQL restart,
-  completed-step immutability, resume and append-only evidence/audit.
+  completed-step immutability, resume, actor/retention binding, immutable final mural, archive/source revision advancement, actual social/grant/beacon expiry SQL with foreign-event isolation, and append-only evidence/audit.
   The temporary cluster is stopped and removed. The JSON identifies source hashes.
   This is SQL persistence/restart evidence, NOT execution of the Rust adapters or
   production owner integrations. Earlier fixture iterations caught/corrected
   PL/pgSQL CASE parsing and generic-trigger field access before this green run.
 
-Four ignored native adapter tests are authored in `tests/event_lifecycle.rs` with
+Eight ignored native adapter tests are authored in `tests/event_lifecycle.rs` and `tests/event_lifecycle_archive.rs` with
 explicitly fixture-only authority/effects under `tests/support/event_lifecycle/`.
-The runner refuses an empty/incomplete supplied native suite. Native build/run is
+The runner refuses empty/incomplete/duplicated suites and requires both binaries. It compares an owned-source SHA-256 compiled into each binary with the current sources; the restart seed and recovery tests run in separate processes with a PostgreSQL restart between them. Native build/run is
 NOT_RUN pending root exports and an explicit shared Cargo resource handoff.
 
 ## Required remaining implementation and evidence
@@ -91,3 +91,39 @@ Rust 1.88.0 locked/offline, jobs=2, debug=0. Shared target is Delivery-owned;
 no Cargo command run. Domain/application roots not exported yet. Unit compilation,
 real owned PostgreSQL persistence/restart/partial-failure, HTTP integration and
 acceptance are NOT_RUN at this source milestone.
+
+
+## Privacy components and remaining owner integration
+
+`privacy.rs` contains actual Concert SQL to revoke ACTIVE grants, PENDING/APPROVED
+social requests and ACTIVE beacons, plus due-only event-owned privacy retention.
+Retention deletes terminal Concert requests/bindings/grants and revoked beacons,
+scrubs retained handle ciphertext, preserves command/audit tombstones, and checks
+pinned policy revision and exact timestamps. These functions do not touch Auth or
+Post tables. SOCIAL_EXPIRY has a durable applied receipt; BEACON_EXPIRY and
+PRIVACY_RETENTION return deliberately narrower component receipts which cannot
+certify world/community or whole cleanup success.
+
+Full-base migration execution exposed the BE37 relationship deadline guard. The
+production component requires BOTH an actual lifecycle authority fence and the
+canonical relationship owner's independently pinned authority deadline; it never
+manufactures the BE37 fence. Native fixtures pin synthetic authority only inside
+test-owned adapters/seed transactions. The successful SQL command explicitly
+qualifies raw SQL and foreign-event isolation, not the uncompiled Rust adapter.
+
+Concrete unresolved owners: canonical Auth/operator/event-role policy plus
+reviewed retention configuration; BE37 owner fence; final mural freeze/snapshot;
+public Post/deletion/moderation/semantic review + independently public media;
+community party/reservation cancellation; world admission/lease invalidation;
+remaining owner retention. No production default/mock implementation supplies
+these. Required module exports, canonical migration number, C04 RESUME amendment
+and generated producer/consumer checks, Gateway mounting and cleanup-loop wiring
+remain Delivery-owned. Shared Cargo target still belongs to Delivery; no Cargo
+command or duplicate full target has been used by BE41.
+
+Native compile request (after exact exports and resource transfer), backend cwd:
+`CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --locked --offline -p concert-service --test event_lifecycle --test event_lifecycle_archive --no-run`.
+Then run the owned PG script with both explicitly qualified native binaries.
+Domain/application unit tests and service archive-cursor unit tests are also
+NOT_RUN until this handoff. Full BE41 goal remains ACTIVE and required acceptance
+is not claimed. Commits 077f01cf and 2a8bfb4 are source milestones sent to Delivery.

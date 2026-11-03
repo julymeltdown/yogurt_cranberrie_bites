@@ -4,7 +4,7 @@ use concert_application::commands::CommandError;
 #[derive(Default, Debug)]
 pub struct CleanupTick {
     pub considered: usize,
-    pub advanced: usize,
+    pub successful_calls: usize,
     pub unavailable: usize,
 }
 pub async fn cleanup_tick<A: FencedLifecycleAuthority, O: LifecycleOwners>(
@@ -18,7 +18,7 @@ pub async fn cleanup_tick<A: FencedLifecycleAuthority, O: LifecycleOwners>(
     };
     for (actor, job) in jobs {
         match service.run_next(actor, job).await {
-            Ok(_) => result.advanced += 1,
+            Ok(_) => result.successful_calls += 1,
             Err(_) => result.unavailable += 1,
         }
     }

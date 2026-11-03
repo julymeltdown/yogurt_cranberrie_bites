@@ -14,7 +14,67 @@ use uuid::Uuid;
 
 pub mod archive;
 pub mod http;
+pub mod privacy;
 pub const SCHEMA: &str = include_str!("schema.sql");
+/// Binds runner execution to the exact owned source compiled into this binary.
+/// Dependencies/roots still need the integrator's candidate-bound build receipt.
+pub fn owned_source_pin() -> String {
+    let sources: &[(&str, &str)] = &[
+        (
+            "backend/crates/concert-domain/src/event_lifecycle/mod.rs",
+            include_str!("../../../../crates/concert-domain/src/event_lifecycle/mod.rs"),
+        ),
+        (
+            "backend/crates/concert-application/src/event_lifecycle/mod.rs",
+            include_str!("../../../../crates/concert-application/src/event_lifecycle/mod.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/event_lifecycle/mod.rs",
+            include_str!("mod.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/event_lifecycle/archive.rs",
+            include_str!("archive.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/event_lifecycle/http.rs",
+            include_str!("http.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/event_lifecycle/privacy.rs",
+            include_str!("privacy.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/event_lifecycle/schema.sql",
+            include_str!("schema.sql"),
+        ),
+        (
+            "backend/services/concert-service/src/workers/cleanup.rs",
+            include_str!("../workers/cleanup.rs"),
+        ),
+        (
+            "backend/services/concert-service/tests/event_lifecycle.rs",
+            include_str!("../../tests/event_lifecycle.rs"),
+        ),
+        (
+            "backend/services/concert-service/tests/event_lifecycle_archive.rs",
+            include_str!("../../tests/event_lifecycle_archive.rs"),
+        ),
+        (
+            "backend/services/concert-service/tests/support/event_lifecycle/mod.rs",
+            include_str!("../../tests/support/event_lifecycle/mod.rs"),
+        ),
+    ];
+    let mut hash = Sha256::new();
+    for (path, source) in sources {
+        hash.update(path.as_bytes());
+        hash.update([0]);
+        hash.update(source.as_bytes());
+        hash.update([0]);
+    }
+    hash.finalize().iter().map(|b| format!("{b:02x}")).collect()
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Access {
     Start,

@@ -322,3 +322,43 @@ impl<P: PublicArchiveOwner> PgPublicArchive<P> {
         })
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn archive_cursor_rejects_tampering_foreign_event_limit_and_expiry() {
+        let codec = ArchiveCursor::new(&[0x41; 32]).unwrap();
+        let at = Utc::now();
+        let event = Uuid::new_v4();
+        let token = codec
+            .seal(Cursor {
+                event,
+                revision: 7,
+                upper: at,
+                after: Position {
+                    created_at: at,
+                    post_id: Uuid::new_v4(),
+                },
+                limit: 20,
+                expires: at + Duration::minutes(15),
+            })
+            .unwrap();
+        assert_eq!(codec.open(&token, event, 20, at).unwrap().revision, 7);
+        assert!(codec.open(&token, Uuid::new_v4(), 20, at).is_err());
+        assert!(codec.open(&token, event, 21, at).is_err());
+        assert!(codec
+            .open(&token, event, 20, at + Duration::minutes(15))
+            .is_err());
+        let mut changed = token.into_bytes();
+        changed[30] = if changed[30] == b'a' { b'b' } else { b'a' };
+        assert!(codec
+            .open(std::str::from_utf8(&changed).unwrap(), event, 20, at)
+            .is_err());
+    }
+    #[test]
+    fn mural_projection_rejects_nonfrozen_or_private_unknown_fields() {
+        let value = serde_json::json!({"snapshot_id":Uuid::new_v4(),"event_id":Uuid::new_v4(),"revision":1,"state":"FROZEN","width":128,"height":128,"palette":vec!["#000000";16],"pixels":vec![0;16384],"created_at":Utc::now(),"server_time":Utc::now(),"cooldown_ms":0,"next_allowed_at":null,"author_id":Uuid::new_v4()});
+        assert!(serde_json::from_value::<ArchiveMural>(value).is_err());
+    }
+}

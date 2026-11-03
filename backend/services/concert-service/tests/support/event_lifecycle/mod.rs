@@ -14,6 +14,7 @@ fn db(_: sqlx::Error) -> CommandError {
     CommandError::Unavailable
 }
 pub async fn pool() -> PgPool {
+    println!("BE41_SOURCE_PIN={}", owned_source_pin());
     let url = std::env::var("MCR_BE41_DATABASE_URL")
         .expect("run owned event_lifecycle_pg.py --native-binary");
     assert!(url.starts_with("postgresql:///mcr_be41_fixture?host=/"));
@@ -60,10 +61,13 @@ impl FencedLifecycleAuthority for Authority {
         q: AuthorityQuery,
         now: DateTime<Utc>,
     ) -> Result<AuthorityFence, CommandError> {
-        let row=sqlx::query("select allowed,revision from be41_fixture_authority where event_id=$1 and actor_id=$2 for share").bind(q.actor.event).bind(q.actor.actor).fetch_optional(c).await.map_err(db)?.ok_or(CommandError::Denied)?;
+        let row=sqlx::query("select allowed,revision from be41_fixture_authority where event_id=$1 and actor_id=$2 for share").bind(q.actor.event).bind(q.actor.actor).fetch_optional(&mut *c).await.map_err(db)?.ok_or(CommandError::Denied)?;
         if !row.get::<bool, _>("allowed") {
             return Err(CommandError::Denied);
         }
+        // Explicit synthetic owner fence, confined to this owned fixture adapter.
+        sqlx::query("select set_config('mcr.relationship_authority_until',least(coalesce(nullif(current_setting('mcr.relationship_authority_until',true),'')::timestamptz,'infinity'::timestamptz),$1::timestamptz)::text,true)")
+            .bind(now+Duration::seconds(10)).execute(c).await.map_err(db)?;
         Ok(AuthorityFence {
             query: q,
             auth_revision: row.get("revision"),

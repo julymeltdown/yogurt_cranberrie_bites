@@ -118,7 +118,7 @@ impl Job {
         }
         let mut unfinished = false;
         for p in &self.steps {
-            if unfinished && p.state == StepState::Succeeded {
+            if unfinished && matches!(p.state, StepState::Succeeded | StepState::Failed) {
                 return Err(LifecycleError::Invalid);
             }
             unfinished |= p.state != StepState::Succeeded;
