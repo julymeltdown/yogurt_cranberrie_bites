@@ -1,6 +1,8 @@
 # C05 authenticated invalidation clients
 
-Status: `IN_PROGRESS`; native qualification `NOT_RUN` at this source checkpoint.
+Status: `INTEGRATED` for the authenticated client adapter and native owner-read
+path. World effects, durable consumer checkpoints and product C05 acceptance
+remain outside this assignment and are not certified here.
 
 ## Contract and provenance
 
@@ -98,7 +100,55 @@ deployed credentials or release gate is certified by these tests.
 
 ## Execution evidence
 
-Python runner safety: 3 tests passed, exit 0. Rust formatting: exit 0.
-Cargo, native TLS transport, databases and restart: `NOT_RUN` pending the shared
-resource lease. Source/delivered commits and actual native report hashes will be
-recorded after qualification, without reclassifying a mock as an integrated flow.
+Qualified source: `998cf7284e4ce86be6ce0d9f7ab672fdaf640899`, clean, incorporating
+published participant/master `0313afa594d6894f46343e018982da929302b437`.
+Own source ancestry: `62c83599` (implementation), `590a0ebc` (ambient stop and
+caller-drop coverage), `5f63ed7f` (linked source pins), `7505f52d` (hostile frame
+fixture correction), `7411044f` (Friend summary query), with serial peer merges.
+No production client correction was needed after initial implementation.
+
+Evidence root: `/private/tmp/mcr-invalidation-clients-ob7q0g2p`.
+Final `native-report-4.json` SHA-256:
+`bfb384d311b7525b03f490f40fe1d191f82f1c0c513bba2eefd9a07364e56317`.
+Frozen `binaries-4.json` SHA-256:
+`3b754a27b61b61cb30cffc744418d1ee0f18f2fe525b21fc91688110b5a511f6`.
+These receipts include exact copied executable hashes and linked source pins.
+
+| Command / phase | Result |
+| --- | --- |
+| `cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 -p concert-service --lib --test invalidation_clients --test relationship_authority --no-run --message-format=json` | Exit 0; final `build-4.jsonl`, `build-result-4.json`; existing MEDIA target, debug 0, incremental 0, fresh free-space/zero-handle checks. |
+| `python3 -B -m unittest test_invalidation_clients_smoke.py` | Exit 0; 3 safety tests. |
+| `rustfmt --check --edition 2021` on owned client/test module roots | Exit 0. |
+| `python3 scripts/mcr/check-plan.py` | Exit 0; planning/provenance only. |
+| Frozen library filter for invalidation validation/budget tests | Exit 0; 4 tests. |
+| Frozen client configuration / retained authority regression executables | Exit 0; 1 + 3 tests. Retained controlled-wire regressions are not native owner proof. |
+| Authenticated hostile frame/query/epoch/gap/scope/identity responses | Exit 0; 1 test, multiple real mTLS cases. |
+| Original deadline, shorter ambient stop, body/handler stall, TLS readiness, explicit cancellation and caller-future drop | Exit 0; 1 test. |
+| Actual Auth/Friend mutations through both retained guarded mTLS RPCs and new clients | Exit 0; 1 test, separate owner databases. |
+| Replay after physical PG16.14 restart | Exit 0; 1 test. Postmaster changed `48848` to `49071`; epochs/positions/identities/reasons/scopes remained exact. |
+
+Total: **12 Rust tests + 3 Python safety tests passed**. The Auth head and journal
+count were both 269; Friend's were both 264. Actual repository logout/family
+revoke/password change, direct suspension/deletion, Friend block/unblock/deletion,
+uncommitted visibility, rollback, pages beyond 256 and exact redelivery were
+exercised. Wrong credential, certificate/metadata mismatch, Gateway-only methods,
+no client certificate and wrong serving TLS workload could not mint verified
+observations. Both owners' 16 migration receipts were checked before/after restart.
+
+The first run exposed a test fixture bug: `grpc-status: 0` in response headers
+made Tonic treat a hostile frame as trailers-only. `7505f52d` removes that header
+so malformed/truncated/oversized bodies actually exercise the decoder. The second
+run passed all pre-restart Rust gates but the runner used an incorrect Friend
+summary table name. `7411044f` fixes only that reporting query. Its third report
+reuses identical compiled inputs with an explicitly recorded runner-only metadata
+rebind. The fourth/final report uses newly compiled artifacts from the combined
+published participant source; it supersedes those earlier qualification attempts.
+All reports and binary inventories remain available without rewriting failures.
+
+All four owned roots were removed, final postmasters and frozen test processes
+were absent, and source pins matched the final qualified inputs before the
+documentation commit (`qualification-audit.json`). MEDIA was unconditionally
+released after exact artifact copy/hash and zero target handles; no BACKEND target
+was used. Direct publication preserves peer ancestry, with no force push or
+separate king/SL approval stage. Durable World effects, polling/readiness wiring,
+multiuser acceptance and deployed credentials remain separate obligations.
