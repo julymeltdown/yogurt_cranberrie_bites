@@ -1,11 +1,12 @@
 import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from 'react'
-import type { KeyboardEvent, PointerEvent } from 'react'
+import type { KeyboardEvent, PointerEvent, ReactNode } from 'react'
 import type { MuralEditorController } from './controller'
 import { boundView, createPointerInput, fitView, pixelAt, zoomView } from './input'
 import type { View } from './input'
+import { ConcertAction, ConcertWindow } from '../../../shared/ui/concert-window'
 import './editor.css'
 
-export function MuralEditor({ controller, onRefresh }: { controller: MuralEditorController; onRefresh?: () => void }) {
+export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { controller: MuralEditorController; onRefresh?: () => void; synchronizationStatus?: ReactNode }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
   const { snapshot, selection } = state
   const id = useId(), canvas = useRef<HTMLCanvasElement>(null), surface = useRef<HTMLDivElement>(null)
@@ -110,11 +111,11 @@ export function MuralEditor({ controller, onRefresh }: { controller: MuralEditor
   }
   const cooldown = Math.ceil(controller.remaining() / 1000)
   const busy = state.phase === 'sending' || state.phase === 'checking'
-  return <section className="mcr-mural" aria-labelledby={`${id}-title`}>
-    <header className="mcr-mural__heading"><div><p className="mcr-mural__kicker">One pixel at a time</p><h2 id={`${id}-title`}>WALL</h2></div>
-      <span>{snapshot ? `Confirmed revision ${snapshot.revision}` : 'No confirmed wall'}</span></header>
-    <p id={`${id}-help`}>Tap to preview. Drag to pan. Use zoom for detail. Only Confirm pixel sends a placement.</p>
-    <p role="status" aria-label="Wall command status" aria-live="polite">{state.message}</p>
+  return <section className="mcr-mural" aria-label="Wall editor"><ConcertWindow title="Wall" icon="wall">
+    <div className="mcr-mural__meta"><span>{snapshot ? `Confirmed revision ${snapshot.revision}` : 'No confirmed wall'}</span>
+      <span>{state.command ? 'Placement unresolved' : state.availability !== 'writable' ? state.availability : cooldown > 0 ? `Cooldown: ${cooldown}s` : snapshot?.state}</span></div>
+    <div className="mcr-mural__status"><p role="status" aria-label="Wall command status" aria-live="polite">{state.message}</p>{synchronizationStatus}</div>
+    <p id={`${id}-help`} className="mcr-mural__help">Tap to preview. Drag to pan. Only Confirm pixel sends a placement.</p>
     {snapshot && <>
       <div className="mcr-mural__toolbar" aria-label="Wall view controls">
         <button type="button" onClick={() => { input.cancel(); updateView(zoomView(view, view.zoom / 2, size)) }} disabled={view.zoom <= 1}>Zoom out</button>
@@ -129,7 +130,19 @@ export function MuralEditor({ controller, onRefresh }: { controller: MuralEditor
         onPointerCancel={() => input.cancel()} onLostPointerCapture={e => input.lost(e.pointerId)}>
         <canvas ref={canvas} width={512} height={512} aria-hidden="true" />
       </div>
-      <p id={`${id}-keyboard`}>Arrow keys select a pixel; Escape cancels. Coordinates below work without the canvas.</p>
+      <fieldset disabled={!controller.canEdit()}><legend>Palette · color {state.color}</legend>
+        <div className="mcr-mural__palette">{snapshot.palette.map((hex, color) => <button key={color} type="button" aria-label={`Color ${color} ${hex}`}
+          aria-pressed={state.color === color} onClick={() => controller.chooseColor(color)}><span className="mcr-mural__swatch" style={{ backgroundColor: hex }} aria-hidden="true" /><span>{color}{state.color === color ? ' ✓' : ''}</span></button>)}</div>
+      </fieldset>
+      <div className="mcr-mural__preview" aria-label="Selection preview">
+        <strong>PREVIEW ONLY</strong>
+        <p>{selection ? `Pixel (${selection.x}, ${selection.y}) · color ${selection.color_index}. Confirmed color: ${snapshot.pixels[selection.y * 128 + selection.x]}.` : 'No pixel selected.'}</p>
+        <p>{cooldown > 0 ? `Cooldown: ${cooldown}s remaining. The server decides when you can place.` : 'Server cooldown and region permissions apply.'}</p>
+      </div>
+      <div className="mcr-mural__actions">
+        <ConcertAction className="mcr-mural__confirm" pending={state.phase === 'sending'} disabled={!controller.canConfirm()} onClick={() => void controller.confirm()}>Confirm pixel</ConcertAction>
+        <button type="button" disabled={!selection || busy} onClick={() => controller.cancelSelection()}>Cancel preview</button>
+      </div>
       <fieldset disabled={!controller.canEdit()}><legend>Pixel coordinates · 0–127</legend>
         <form className="mcr-mural__coordinates" onSubmit={e => { e.preventDefault();
           const valid = /^\d{1,3}$/.test(x) && /^\d{1,3}$/.test(y) && Number(x) <= 127 && Number(y) <= 127
@@ -141,21 +154,10 @@ export function MuralEditor({ controller, onRefresh }: { controller: MuralEditor
         </form>
         {invalid && <p role="alert">Use whole coordinates from 0 to 127.</p>}
       </fieldset>
-      <fieldset disabled={!controller.canEdit()}><legend>Palette · color {state.color}</legend>
-        <div className="mcr-mural__palette">{snapshot.palette.map((hex, color) => <button key={color} type="button" aria-label={`Color ${color} ${hex}`}
-          aria-pressed={state.color === color} onClick={() => controller.chooseColor(color)}><span className="mcr-mural__swatch" style={{ backgroundColor: hex }} aria-hidden="true" />{color}{state.color === color ? ' ✓' : ''}</button>)}</div>
-      </fieldset>
-      <div className="mcr-mural__preview" aria-label="Selection preview">
-        <strong>PREVIEW ONLY</strong>
-        <p>{selection ? `Pixel (${selection.x}, ${selection.y}) · color ${selection.color_index}. Confirmed color: ${snapshot.pixels[selection.y * 128 + selection.x]}.` : 'No pixel selected.'}</p>
-        <p>{cooldown > 0 ? `Cooldown: ${cooldown}s remaining. The server decides when you can place.` : 'The server checks cooldown and region permissions when you confirm.'}</p>
-      </div>
-      <div className="mcr-mural__actions">
-        <button type="button" className="mcr-mural__confirm" disabled={!controller.canConfirm()} onClick={() => void controller.confirm()}>Confirm pixel</button>
-        <button type="button" disabled={!selection || busy} onClick={() => controller.cancelSelection()}>Cancel preview</button>
-      </div>
+      <p id={`${id}-keyboard`} className="mcr-mural__help">Arrow keys select a pixel; Escape cancels. Coordinates work without the canvas.</p>
     </>}
-    {state.command && <button type="button" disabled={busy} onClick={() => void controller.check()}>Check original command</button>}
-    {onRefresh && <button type="button" disabled={busy} onClick={onRefresh}>Refresh confirmed wall</button>}
+    <div className="mcr-mural__recovery">{state.command && <button type="button" disabled={busy} onClick={() => void controller.check()}>Check original command</button>}
+    {onRefresh && <button type="button" disabled={busy} onClick={onRefresh}>Refresh confirmed wall</button>}</div>
+  </ConcertWindow>
   </section>
 }

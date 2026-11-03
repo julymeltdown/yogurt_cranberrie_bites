@@ -1,0 +1,161 @@
+{
+  "status": "PASS",
+  "phase": "before",
+  "base": "3e3b54a3aa6052536cc48b5afadc0992e7482084",
+  "fixtureOnly": true,
+  "browser": "156.0.8078.80",
+  "sources": {
+    "frontend/src/features/mural/editor/MuralEditor.tsx": "8861cd1b24b73c69b040eee4253a9adb3a2b1a8101b4c27a8685c3730f55b523",
+    "frontend/src/features/mural/editor/editor.css": "68f563a56ced256512f877be6af0fcb3ab01675f79624350d32459601a31df94",
+    "frontend/src/features/mural/editor/controller.ts": "0af993f96cbe303a6e920a87faeab32b4e5652ae68ef44809c1a41cbdb9dd26f",
+    "frontend/src/features/mural/editor/input.ts": "6e2744b189e6887f34c477a28a7522f5d76c4c3e16ee25cf1141f1c65cf57b04",
+    "frontend/src/features/mural/editor/contract.ts": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+    "frontend/src/features/mural/editor/__tests__/fixture.ts": "ba6fa5bd95472e078f4c4a5a1c0eebe4b25f6a56c81c4cac74eaf79eb92a2bf4",
+    "frontend/src/features/mural/editor/__tests__/visual-adoption/preview.tsx": "d2a9aff5f7c0be856bb76da4e66c3440ba06bc314b3d1d925b4c206c6e665e6a",
+    "frontend/src/features/mural/editor/__tests__/visual-adoption/browser.mjs": "0742773c0af841f0473779c80e920a5c3c231cfeab1ba9b88798c2730f6a246e",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "1a31c8eb6fb36a1737afcdf37542f95f75635df45de0b9df122a11711721d274",
+    "frontend/src/features/mural/sync/controller.ts": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+    "frontend/src/features/mural/sync/projection.ts": "e69dd552120a4f02e3abd7a81e079ec76f7a2cf04014c71dd9618d196aaf79c6",
+    "frontend/src/features/mural/sync/contract.ts": "9edeb0eb0560f643371ebb522d461c3f75d6f60c3db344d5aeec29fbefab0400",
+    "frontend/src/features/mural/sync/__tests__/fixture.ts": "c61d33f5258a19541a8d70989686ebfdfa19a5711a9bcf44d2e22ae9b0d52a56",
+    "frontend/src/features/mural/sync/__tests__/visual-adoption/preview.tsx": "ab02fcd7c0f2b2adc5b5a60cc04426394e78bc0af47e5c5e7376f4785479c8e0",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/shared/styles/base.css": "63fb6160fa17471c9f40cc58c8d60890390f31af2da2078f50640b5ae7b6b762",
+    "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "contracts/domain/v1/mural.schema.json": "345871ce89fabff02f06087fcd3e8907651a5712b34ccbd53091158af123b6ca"
+  },
+  "results": [
+    {
+      "route": "editor",
+      "state": "loaded",
+      "width": 360,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": null,
+      "snapshot": true,
+      "canConfirm": false,
+      "png": "editor-loaded-360.png",
+      "sha256": "3ea723fc16a43b97a5936c400a8a3a0da2178804a19c96c55b9950a500759f58",
+      "controls": 25
+    },
+    {
+      "route": "editor",
+      "state": "preview",
+      "width": 360,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": {
+        "x": 64,
+        "y": 64,
+        "color_index": 2
+      },
+      "snapshot": true,
+      "canConfirm": true,
+      "png": "editor-preview-360.png",
+      "sha256": "b9ed1aeaf1943c490ccd9d7adbab356db42be881fa206894e19ce39bdb6c0478",
+      "controls": 25
+    },
+    {
+      "route": "sync",
+      "state": "loaded",
+      "width": 360,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": null,
+      "snapshot": true,
+      "canConfirm": false,
+      "png": "sync-loaded-360.png",
+      "sha256": "903da79ec299e34052df7b4c5675f2480861eab3ff384c65cf80935746502798",
+      "controls": 25
+    },
+    {
+      "route": "editor",
+      "state": "loaded",
+      "width": 390,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": null,
+      "snapshot": true,
+      "canConfirm": false,
+      "png": "editor-loaded-390.png",
+      "sha256": "55ea650e6c0e6287dd9275647ec424b3c336d4d895e6038c8311c83705cc20c0",
+      "controls": 25
+    },
+    {
+      "route": "editor",
+      "state": "preview",
+      "width": 390,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": {
+        "x": 64,
+        "y": 64,
+        "color_index": 2
+      },
+      "snapshot": true,
+      "canConfirm": true,
+      "png": "editor-preview-390.png",
+      "sha256": "96d228669d8a949369bf4b0c9447a7432aa1c2c09a711c754365c8789c2dc908",
+      "controls": 25
+    },
+    {
+      "route": "sync",
+      "state": "loaded",
+      "width": 390,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": null,
+      "snapshot": true,
+      "canConfirm": false,
+      "png": "sync-loaded-390.png",
+      "sha256": "b51fb5ad8aedb93ff80cf4d76c98848252c516901874c609c27522490e4b2087",
+      "controls": 25
+    },
+    {
+      "route": "editor",
+      "state": "loaded",
+      "width": 430,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": null,
+      "snapshot": true,
+      "canConfirm": false,
+      "png": "editor-loaded-430.png",
+      "sha256": "e715647e557cfb1819e7f62584767fa34068014c0ad2aa844196757665826c8a",
+      "controls": 25
+    },
+    {
+      "route": "editor",
+      "state": "preview",
+      "width": 430,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": {
+        "x": 64,
+        "y": 64,
+        "color_index": 2
+      },
+      "snapshot": true,
+      "canConfirm": true,
+      "png": "editor-preview-430.png",
+      "sha256": "b179da7e827f8aa39f7201b5ddd721e7d6fad5935eb8f437a8ca2da6e7138db1",
+      "controls": 25
+    },
+    {
+      "route": "sync",
+      "state": "loaded",
+      "width": 430,
+      "phase": "idle",
+      "availability": "writable",
+      "selection": null,
+      "snapshot": true,
+      "canConfirm": false,
+      "png": "sync-loaded-430.png",
+      "sha256": "8a32ba5ae6750be55e9a4f46cbb96cf0c51acb89d72e823a18015c17d0c658d7",
+      "controls": 25
+    }
+  ],
+  "flows": [],
+  "errors": []
+}
