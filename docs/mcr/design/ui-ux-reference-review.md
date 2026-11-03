@@ -91,7 +91,7 @@ Freshly inspected sign-in and wall captures also show the compact black title ba
 ivory frame and deep-red actions. Their missing illustrations and fixture content
 remain visible limitations, not full visual acceptance.
 
-### Default application reachability — source recheck at `8199156`
+### Default application reachability — source recheck at `3810016`
 
 The source check follows `main.tsx` into `createAppRouter(ports)`, then
 `createAppRoutes(ports)` without a `composition.panels` override. The default
@@ -108,7 +108,7 @@ browser or multiuser pass.
 | Meet / gifts | Party discovery/detail and gift discovery/detail/mine are registered through `CommunityFeatures`. | These browse components reach the default composition; this does not certify every create/manage/reserve route or live workflow. |
 | Me / profile / customize / settings | `AccountPanel` registers `/me`, `/me/profile`, `/me/avatar`, `/me/settings`. | Me/profile and Customize layout adoption are delivered; approved avatar art, visual item metadata and live save behavior retain their recorded gates. |
 | Feed | `/feed` is declared but absent from `featurePanels`; no production `EventFeed` consumer was found in `app/`. | Updated feed component evidence is not default-route delivery. |
-| Map / place detail | `/world/map` and `/world/places/:placeId` are declared but absent from `featurePanels`; no production Places consumer was found in `app/`. | UIV05-MAP screenshots are fixture composition; default map/place entry remains unfinished. |
+| Map / place detail | `/world/map` and `/world/places/:placeId` are declared but absent from `featurePanels`. Production owner/provider/route adapters now exist in `app/places-entry/`, delivered in `6c018d6`. | The adapters have bounded native composition evidence; the default map/place entry still needs qualified map/camera exposure and root registration. |
 | Wall | `/wall` is declared but absent from `featurePanels`; no production `MuralSyncPanel` or `createMuralSync` consumer was found in `app/`. | UIV05-WALL is a component delivery; the default wall remains unfinished. |
 
 These are concrete root-composition dependencies, not missing acknowledgements
@@ -116,11 +116,20 @@ from leads. Delivery's reserved root ownership remains unchanged. Do not silentl
 edit its active checkout or treat visual fixtures as completion of those routes.
 Source hashes and exact inspected paths are recorded in
 [default-route-composition.json](ui-reference-audit-2026-11-04/default-route-composition.json).
-All six route-source pins remain unchanged at `8199156`. FE19-ENTRY is now assigned
-in a separate checkout to build the Places owner/provider and route adapters under
-`app/places-entry/`, with an actual ACTIVE goal. Its map/camera release input and
-default router registration are explicitly separate dependencies; work in progress
-does not make the default map route available.
+All six root route-source pins remain unchanged at `3810016`. FE19-ENTRY is now
+published in `6c018d6` from author `4809fad`: 150 focused tests, 18 native captures
+at 360/390/430, actual FE14 loader/Phaser and FE15 camera, real document recovery
+and one feature owner across navigation. Main verified the exact 38 new paths,
+73 author hashes and fresh combined strict types. See
+[Places entry evidence](../frontend/places-entry.md). The existing world owner
+must still expose its qualified map and camera under one abortable privacy
+release, and the root must mount/register these adapters. An undisclosed camera
+disposal cannot be detected through its read-only public port; the producer must
+withdraw the release before disposal. The detail header Back parent correction
+also remains with the root owner. These are explicit integration requirements,
+not acceptance of the default map route. The completed Places chat has moved to
+the separate FE41 degraded-state scope; the Wall entry chat is implementing its
+own isolated adapter and has not yet delivered it.
 
 Integration verified exact assigned paths and source equality with the UIV02
 handoff, all ten tested-source hashes and 51 final screenshot hashes, and fresh
