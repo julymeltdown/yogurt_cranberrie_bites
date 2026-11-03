@@ -158,9 +158,82 @@ server source, schema, lockfile, root or release registry is changed here.
 Operator verification, physical route/closure/accessibility qualification, photo
 rights, final release binding, actual mobile hardware, QA06, load/real multiuser
 and IN01 remain NOT_RUN. These are bounded honest gaps, not scope cuts. This
-asset increment does not accept AR01, AR02 or an integration parent. The goal
-stays active while required external inputs and concrete delivery fixes remain.
+asset increment does not accept AR01, AR02 or an integration parent. External
+operational inputs remain Delivery/operator-owned. Concrete findings in this
+source/map handoff remain the assigned implementation owner's responsibility.
 
 Only Delivery integrates/pushes master. The containing commit's ancestry and
 exact changed-path list are sent directly to Delivery and World SL; this branch
 does not push or alter acceptance registries.
+
+## Actual FE14 resource and Phaser follow-up
+
+The interrupted three-file terrain-review work was preserved and completed as
+scoped evidence rather than discarded. The follow-up adds
+`phaser-review.html`, `phaser-review.mjs`, `serve-phaser-review.mjs` and
+`phaser-check.mjs` under the same assigned map path. It changes no application
+source, root configuration, dependency, contract, release registry or artwork.
+
+The harness runs the unchanged FE14 `loadMap`, `createAssetResources`, strict
+JSON/canonical hashing, C06 manifest/Tiled checks, actual browser PNG decode and
+unchanged `MapScene` using the installed Phaser3.90.0 distribution. It reads
+AR04 PNGs and source metadata directly from immutable source commit
+`f711c6a4d15e794504026bd39dc77d20c5d21273`. Map and theme candidates are composed
+only in memory for this terrain consumer check; no MapManifest/ThemeManifest
+release file or product pin is emitted. The v1-required avatar identity fields
+use an explicit `ar02_terrain_only_unbound_avatar` sentinel. No avatar manifest,
+character sprite, outfit, fallback or production avatar binding is loaded.
+
+The server resolves Phaser to its existing UMD browser distribution through the
+Vite optimizer. The interrupted exploratory configurations first selected the
+package's Node source entry (unavailable debug dependency), then its ESM build
+(no default export, incompatible with this consumer's `.default` import).
+Those were harness resolution failures, not defects in the exported map. The
+final existing browser distribution passes. No package installation, dependency
+upgrade or application import rewrite was used. Vite caches are temporary and
+the isolated server does not edit another writer's checkout.
+
+```sh
+node frontend/public/world/maps/serve-phaser-review.mjs
+node frontend/public/world/maps/phaser-check.mjs
+```
+
+The server is a bounded foreground process; the check exits0. Results in
+[Phaser evidence](evidence/maps/phaser-validation.json) cover:
+
+- Nine real Phaser renders:360/390/430px by Revenge/Parade/Danger.
+- Forty-five landmark camera views compared byte-for-byte with the expected
+  normalized terrain/overdraw at1:1 source-pixel scale: **zero differing channels**.
+- Same single Phaser canvas across all three skins; identical geometry hash and
+  changed skin pixel signatures.
+- Four invalid resource variants at each width: corrupted Tiled digest,
+  corrupted PNG digest, wrong PNG dimensions with a recomputed digest, and
+  altered Tiled collision with a recomputed digest. All12 attempts reject as
+  `invalid` in the actual consumer.
+- No inert `mcr-theme.png` request, product API request or world socket.
+- No horizontal overflow,16px DOM labels,44px controls, five resolved landmarks,
+  and zero page errors. Three engine teardowns leave zero canvases.
+
+Nine actual Phaser screenshots are retained beside the report. Visual inspection
+of360px Revenge,390px Parade and430px Danger confirms readable labels/controls
+and distinguishable terrain/structures in the actual engine. The report pins
+the consumer source hashes, engine distribution hash, geometry/export hashes,
+texture hashes, browser and available execution tools. Its dimensions and
+pixel comparisons are actual executions, not status inferred from a script.
+
+This closes the earlier native-Canvas-only terrain consumer limitation. Actual
+authenticated product composition, real server collision execution, final
+map/avatar/theme pins, physical devices, QA06, IN01 and operator qualification
+remain external unrun gates; none is claimed by this follow-up.
+
+## Assigned closeout audit
+
+The source qualification pack, explicit license/photo/closure/operational gaps,
+source-to-original-geometry trace, Tiled/normalized terrain and collision,
+overdraw, resolved spawns/interactions/landmarks, C06/hash/resource checks,
+reachability/blocking negatives, actual mobile-width terrain readability and
+committed exact-path handoff are all present. The original ready commits remain
+`03e5f1b` and `e394b58`; the follow-up containing this section supplies its own
+exact commit and path list directly to Delivery/main/World. No concrete review
+finding is left unresolved in the authored package at this closeout. This
+bounded delivery statement does not change any task acceptance or operator gate.

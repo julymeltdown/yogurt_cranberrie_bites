@@ -1,0 +1,1081 @@
+{
+  "status": "MOCK_READY",
+  "scope": "Actual FE14 loadMap/resource hashes/PNG decode/MapScene Phaser3.90.0 on original AR02 map and committed AR04 textures; terrain-only candidate manifests in memory",
+  "browser": "156.0.8078.80",
+  "node": "v26.7.0",
+  "playwright": "1.61.1",
+  "vite": "8.1.3",
+  "phaser": {
+    "version": "3.90.0",
+    "distribution": "phaser/dist/phaser.js",
+    "sha256": "sha256:d6e0eb3b99525f01af5adea38747c311a0a48f8af157e6d1f5aa93159bdd0858",
+    "harnessResolution": "Existing UMD browser build through Vite optimizer; app source and dependencies unchanged"
+  },
+  "sourceHashes": {
+    "frontend/src/world/map/resources.ts": "sha256:829e8e8c901223307e5ba8bcf4a306e01e12f7d09f7b08bc9c4f884c0d0ead4a",
+    "frontend/src/world/map/manifest.ts": "sha256:575b89163952959bdc20760a9ab19cafe6c950e7ffeb48e3a00bf3305ac8b4a2",
+    "frontend/src/world/map/tiled.ts": "sha256:65af544bfb262f5d266b5986b43dc05dc03b7179e55b061095d032a623e83a00",
+    "frontend/src/world/map/json.ts": "sha256:74ef16106a6bf7c72ba22d155baca8de75ac52881fd1f2095f964908042a15bd",
+    "frontend/src/world/scenes/MapScene.ts": "sha256:8fcc8142f04ec44e19992be9029eda4eb2cd78d723881644fe455b842684745e",
+    "frontend/src/world/theme/compatibility.ts": "sha256:ee062ad956d2e4bbda88ee96024e32f49f7780a735a337d4495b82eb61db2aeb",
+    "frontend/public/world/maps/geometry.json": "sha256:fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+    "frontend/public/world/maps/courtyard-tiled.json": "sha256:a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d"
+  },
+  "results": [
+    {
+      "width": 360,
+      "theme": "REVENGE",
+      "state": {
+        "ready": true,
+        "theme": "REVENGE",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 328,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:203bda221ceb41255ebfd4dab3337d04fba9ec7cb0d5e88c495a8b9763553c0d"
+      },
+      "metrics": {
+        "width": 360,
+        "pageWidth": 360,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 328
+          },
+          {
+            "height": 44,
+            "width": 328
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 268,
+            "scrollY": 144,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 236,
+            "scrollY": 368,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 44,
+            "scrollY": 336,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 748,
+            "scrollY": 272,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 748,
+            "scrollY": 560,
+            "width": 328,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-360-revenge.png",
+      "persistentCanvas": "PASS"
+    },
+    {
+      "width": 360,
+      "theme": "PARADE",
+      "state": {
+        "ready": true,
+        "theme": "PARADE",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 328,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:314334b38847f51a32a8ae9fa978809b8e70a82f53c5afa5622561b8742c8099"
+      },
+      "metrics": {
+        "width": 360,
+        "pageWidth": 360,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 328
+          },
+          {
+            "height": 44,
+            "width": 328
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 268,
+            "scrollY": 144,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 236,
+            "scrollY": 368,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 44,
+            "scrollY": 336,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 748,
+            "scrollY": 272,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 748,
+            "scrollY": 560,
+            "width": 328,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-360-parade.png",
+      "persistentCanvas": "PASS"
+    },
+    {
+      "width": 360,
+      "theme": "DANGER",
+      "state": {
+        "ready": true,
+        "theme": "DANGER",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 328,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:8f1b581f1c37b2b76eb0e0b898a8698a3e86b5967525de9b3c2ddac6cbb422cc"
+      },
+      "metrics": {
+        "width": 360,
+        "pageWidth": 360,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 328
+          },
+          {
+            "height": 44,
+            "width": 328
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 268,
+            "scrollY": 144,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 236,
+            "scrollY": 368,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 44,
+            "scrollY": 336,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 748,
+            "scrollY": 272,
+            "width": 328,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 419840,
+          "width": 328,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 748,
+            "scrollY": 560,
+            "width": 328,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-360-danger.png",
+      "persistentCanvas": "PASS"
+    },
+    {
+      "width": 390,
+      "theme": "REVENGE",
+      "state": {
+        "ready": true,
+        "theme": "REVENGE",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 358,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:3dc1401985dc8aa8ea4313b56707fcd95e9495641a8537fa298a2af9b9d848bb"
+      },
+      "metrics": {
+        "width": 390,
+        "pageWidth": 390,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 358
+          },
+          {
+            "height": 44,
+            "width": 358
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 253,
+            "scrollY": 144,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 221,
+            "scrollY": 368,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 29,
+            "scrollY": 336,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 733,
+            "scrollY": 272,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 733,
+            "scrollY": 560,
+            "width": 358,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-390-revenge.png",
+      "persistentCanvas": "PASS"
+    },
+    {
+      "width": 390,
+      "theme": "PARADE",
+      "state": {
+        "ready": true,
+        "theme": "PARADE",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 358,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:a96a2f2be38ccd833dc84e637396b8c9f888421a4075adcb9413dac464235ba1"
+      },
+      "metrics": {
+        "width": 390,
+        "pageWidth": 390,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 358
+          },
+          {
+            "height": 44,
+            "width": 358
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 253,
+            "scrollY": 144,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 221,
+            "scrollY": 368,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 29,
+            "scrollY": 336,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 733,
+            "scrollY": 272,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 733,
+            "scrollY": 560,
+            "width": 358,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-390-parade.png",
+      "persistentCanvas": "PASS"
+    },
+    {
+      "width": 390,
+      "theme": "DANGER",
+      "state": {
+        "ready": true,
+        "theme": "DANGER",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 358,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:70c45bd72b01207c22f0399b9f6cc1e02a012b61395832d39229fbbf1af07465"
+      },
+      "metrics": {
+        "width": 390,
+        "pageWidth": 390,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 358
+          },
+          {
+            "height": 44,
+            "width": 358
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 253,
+            "scrollY": 144,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 221,
+            "scrollY": 368,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 29,
+            "scrollY": 336,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 733,
+            "scrollY": 272,
+            "width": 358,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 458240,
+          "width": 358,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 733,
+            "scrollY": 560,
+            "width": 358,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-390-danger.png",
+      "persistentCanvas": "PASS"
+    },
+    {
+      "width": 430,
+      "theme": "REVENGE",
+      "state": {
+        "ready": true,
+        "theme": "REVENGE",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 398,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:7fec91818675cfe398545ebcd9a1cde1ba808874846e276f4470ce0f91954533"
+      },
+      "metrics": {
+        "width": 430,
+        "pageWidth": 430,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 398
+          },
+          {
+            "height": 44,
+            "width": 398
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 233,
+            "scrollY": 144,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 201,
+            "scrollY": 368,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 9,
+            "scrollY": 336,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 713,
+            "scrollY": 272,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 713,
+            "scrollY": 560,
+            "width": 398,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-430-revenge.png",
+      "persistentCanvas": "PASS"
+    },
+    {
+      "width": 430,
+      "theme": "PARADE",
+      "state": {
+        "ready": true,
+        "theme": "PARADE",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 398,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:514632c1c37461a77a15d36ec931aa5d34dddf9d2276cf655e5b90fd965e556d"
+      },
+      "metrics": {
+        "width": 430,
+        "pageWidth": 430,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 398
+          },
+          {
+            "height": 44,
+            "width": 398
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 233,
+            "scrollY": 144,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 201,
+            "scrollY": 368,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 9,
+            "scrollY": 336,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 713,
+            "scrollY": 272,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 713,
+            "scrollY": 560,
+            "width": 398,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-430-parade.png",
+      "persistentCanvas": "PASS"
+    },
+    {
+      "width": 430,
+      "theme": "DANGER",
+      "state": {
+        "ready": true,
+        "theme": "DANGER",
+        "point": "park_info",
+        "gameCanvases": 1,
+        "width": 398,
+        "height": 320,
+        "geometryHash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+        "textureHash": "sha256:1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+        "sourceCommit": "f711c6a4d15e794504026bd39dc77d20c5d21273",
+        "avatarStatus": "UNBOUND_TERRAIN_REVIEW_ONLY",
+        "pixelSignature": "sha256:a7883f39bf3159ad181f9915319ee064e2c4a279d99741d6ddb7bf7883ab8772"
+      },
+      "metrics": {
+        "width": 430,
+        "pageWidth": 430,
+        "fontSize": 16,
+        "controls": [
+          {
+            "height": 44,
+            "width": 398
+          },
+          {
+            "height": 44,
+            "width": 398
+          }
+        ],
+        "labels": 5
+      },
+      "points": [
+        {
+          "interaction_id": "studio_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 233,
+            "scrollY": 144,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "park_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 201,
+            "scrollY": 368,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "stage_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 9,
+            "scrollY": 336,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "gifts_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 713,
+            "scrollY": 272,
+            "width": 398,
+            "height": 320
+          }
+        },
+        {
+          "interaction_id": "wall_info",
+          "differentChannels": 0,
+          "totalChannels": 509440,
+          "width": 398,
+          "height": 320,
+          "camera": {
+            "zoom": 1,
+            "scrollX": 713,
+            "scrollY": 560,
+            "width": 398,
+            "height": 320
+          }
+        }
+      ],
+      "screenshot": "phaser-430-danger.png",
+      "persistentCanvas": "PASS"
+    }
+  ],
+  "teardown": [
+    {
+      "width": 360,
+      "negative": [
+        {
+          "kind": "tiled-digest",
+          "reason": "invalid"
+        },
+        {
+          "kind": "png-digest",
+          "reason": "invalid"
+        },
+        {
+          "kind": "png-dimensions",
+          "reason": "invalid"
+        },
+        {
+          "kind": "tiled-grid",
+          "reason": "invalid"
+        }
+      ],
+      "disposed": {
+        "canvases": 0
+      }
+    },
+    {
+      "width": 390,
+      "negative": [
+        {
+          "kind": "tiled-digest",
+          "reason": "invalid"
+        },
+        {
+          "kind": "png-digest",
+          "reason": "invalid"
+        },
+        {
+          "kind": "png-dimensions",
+          "reason": "invalid"
+        },
+        {
+          "kind": "tiled-grid",
+          "reason": "invalid"
+        }
+      ],
+      "disposed": {
+        "canvases": 0
+      }
+    },
+    {
+      "width": 430,
+      "negative": [
+        {
+          "kind": "tiled-digest",
+          "reason": "invalid"
+        },
+        {
+          "kind": "png-digest",
+          "reason": "invalid"
+        },
+        {
+          "kind": "png-dimensions",
+          "reason": "invalid"
+        },
+        {
+          "kind": "tiled-grid",
+          "reason": "invalid"
+        }
+      ],
+      "disposed": {
+        "canvases": 0
+      }
+    }
+  ],
+  "pageErrors": [],
+  "inertMarkerFetch": "NONE",
+  "productApiOrSocket": "NONE",
+  "summary": {
+    "renderCases": 9,
+    "landmarkPixelComparisons": 45,
+    "differentChannels": 0,
+    "persistentCanvasAcrossSkins": "PASS",
+    "corruptResourceRejections": 12,
+    "canvasCleanup": "PASS"
+  },
+  "limits": [
+    "In-memory review candidate pins only; required avatar identity is explicit unbound sentinel, no avatar art/manifest loaded",
+    "No authenticated product shell or final release manifests",
+    "No Rust runtime/server collision execution",
+    "No physical venue operational qualification",
+    "No real device/QA06, multiuser/IN01 or release acceptance"
+  ]
+}

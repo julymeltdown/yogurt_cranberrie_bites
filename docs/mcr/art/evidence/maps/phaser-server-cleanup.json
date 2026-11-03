@@ -1,0 +1,11 @@
+{
+  "old_recovery_pid": 54520,
+  "old_recovery_pid_state": "MISSING before new start (ps/lsof exit1); untouched",
+  "owned_review_pid": 69716,
+  "verified_command": "node frontend/public/world/maps/serve-phaser-review.mjs",
+  "verified_cwd": "/Users/lhs/.codex/worktrees/a519/mcr",
+  "port": 8874,
+  "cleanup": "SIGTERM to verified owned PID only; process exited and no port listener remains",
+  "server_cache": "Temporary cache removed by server shutdown handler",
+  "result": "PASS"
+}

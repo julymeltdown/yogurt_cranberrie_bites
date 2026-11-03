@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AR02 Phaser terrain review</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#151719;color:#f5f2e8;font:16px/1.45 system-ui,sans-serif}main{padding:16px;max-width:680px;margin:auto}h1{font-size:24px;margin:0 0 8px}p{margin:8px 0 16px}label{display:block;margin:12px 0 6px;font-weight:600}select{width:100%;min-height:44px;border:1px solid #a4aaad;border-radius:4px;background:#25292b;color:inherit;font:inherit;padding:8px}#world{width:100%;height:320px;overflow:hidden}canvas{display:block;image-rendering:pixelated}#current{min-height:48px}ol{padding-left:26px}li{padding:5px 0}.warning{color:#e6d7aa}</style>
+</head><body><main><h1>Virtual courtyard</h1>
+<p class="warning">AR02 terrain review with the actual Phaser renderer. Original virtual paths only. Not physical venue guidance.</p>
+<label for="theme">World skin</label><select id="theme"><option value="REVENGE">Revenge</option><option value="PARADE">Parade</option><option value="DANGER">Danger</option></select>
+<label for="target">Inspect landmark</label><select id="target"></select>
+<p id="current" aria-live="polite">Loading verified map resources…</p><div id="world" role="img" aria-label="Phaser virtual map terrain with camera centered on the selected landmark"></div>
+<ol id="legend"></ol><p>Landmarks and paths are virtual. No physical meeting destination, arrival, character artwork or multiplayer connection is included.</p>
+</main><script type="module" src="/world/maps/phaser-review.mjs"></script></body></html>
