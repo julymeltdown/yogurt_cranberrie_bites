@@ -23,6 +23,13 @@ impl MuralAuthority for UnavailableMuralAuthority {
         Err(MuralError::PolicyUnavailable)
     }
 }
+/// Closed own-result adapter envelope, bound to one verified durable receipt.
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize)]
+pub struct OwnPixelResult {
+    pub receipt_id: Uuid,
+    pub idempotency_key: Uuid,
+    pub result: PixelOperation,
+}
 pub struct PgMuralRepository<A> {
     pool: PgPool,
     authority: A,
@@ -92,51 +99,66 @@ impl<A: MuralAuthority> PgMuralRepository<A> {
         if receipt.state != ReceiptState::Succeeded {
             return Err(MuralError::InvalidState);
         }
-        self.recover(actor, key)
-            .await?
-            .ok_or(MuralError::InvalidState)
+        Ok(self.recover(actor, key).await?.result)
     }
-    /// Read-only uncertain-outcome recovery. A missing/pending/retired/expired receipt
-    /// never implies failure and must not cause the caller to replay automatically.
-    /// A success requires original persisted operation + actor/event/revision proof.
+    /// Read-only uncertain-outcome recovery. Missing, expired, retired, pending,
+    /// failed and inconsistent records are indistinguishable ResourceUnavailable.
+    /// One fresh authorized transaction binds the exact receipt/key to the original
+    /// actor/event/revision operation; neither status nor pixel equality is proof.
     pub async fn recover(
         &self,
         actor: MuralActor,
         key: Uuid,
-    ) -> Result<Option<PixelOperation>, MuralError> {
+    ) -> Result<OwnPixelResult, MuralError> {
         if !actor.valid() || key.is_nil() {
             return Err(MuralError::InvalidInput);
         }
-        let producer = Producer {
-            authority: &self.authority,
-            actor,
-            input: None,
-            error: Mutex::new(None),
-        };
-        let receipt = PgCommandRepository::new(self.pool.clone())
-            .lookup(scope(actor, key)?, actor.event, &producer)
-            .await?;
-        let Some(receipt) = receipt else {
-            return Ok(None);
-        };
-        if receipt.state != ReceiptState::Succeeded {
-            return Ok(None);
-        }
-        let reference = receipt.reference.ok_or(MuralError::InvalidState)?;
         let mut tx = self.pool.begin().await.map_err(storage)?;
         gate(&self.authority, &mut tx, actor).await?;
-        let row=sqlx::query("select operation_id,event_id,revision,x,y,color_index,committed_at,next_allowed_at from public.concert_mural_operations where event_id=$1 and revision=$2 and actor_id=$3")
-            .bind(actor.event).bind(reference.revision).bind(actor.actor).fetch_optional(&mut *tx).await.map_err(storage)?;
-        let result = row
-            .map(|row| {
-                Ok::<PixelOperation, MuralError>(PixelOperation {
-                    public: public_operation(&row)?,
-                    next_allowed_at: row.try_get("next_allowed_at").map_err(invalid)?,
-                })
+        let present: Option<Uuid> = sqlx::query_scalar(
+            "select event_id from public.concert_mural_state where event_id=$1 for share",
+        )
+        .bind(actor.event)
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(storage)?;
+        if present.is_none() {
+            return Err(MuralError::Denied);
+        }
+        let row=sqlx::query("select r.receipt_id,r.idempotency_key,o.operation_id,o.event_id,o.revision,o.x,o.y,o.color_index,o.committed_at,o.next_allowed_at from public.concert_command_receipts r join public.concert_mural_operations o on o.event_id=r.event_id and o.revision=r.resource_revision and o.actor_id=r.actor_id where r.actor_id=$1 and r.event_id=$2 and r.idempotency_key=$3 and r.operation_id='placeConcertPixel' and r.state='SUCCEEDED' and r.expires_at>clock_timestamp() and r.resource_id=r.event_id and r.target_id=r.event_id and r.result_status=200 and r.failure_reason is null for share of r,o")
+            .bind(actor.actor).bind(actor.event).bind(key).fetch_optional(&mut *tx).await.map_err(storage)?.ok_or(MuralError::Denied)?;
+        let result = PixelOperation {
+            public: public_operation(&row).map_err(|_| MuralError::Denied)?,
+            next_allowed_at: row
+                .try_get("next_allowed_at")
+                .map_err(|_| MuralError::Denied)?,
+        };
+        if result.public.operation_id.is_nil()
+            || result.public.event_id != actor.event
+            || result.public.revision < 2
+            || !(PlacePixel {
+                expected_revision: result.public.revision,
+                x: result.public.x,
+                y: result.public.y,
+                color_index: result.public.color_index,
             })
-            .transpose()?;
+            .valid()
+            || result.next_allowed_at < result.public.committed_at
+        {
+            return Err(MuralError::Denied);
+        }
+        let value = OwnPixelResult {
+            receipt_id: row.try_get("receipt_id").map_err(|_| MuralError::Denied)?,
+            idempotency_key: row
+                .try_get("idempotency_key")
+                .map_err(|_| MuralError::Denied)?,
+            result,
+        };
+        if value.receipt_id.is_nil() || value.idempotency_key != key {
+            return Err(MuralError::Denied);
+        }
         tx.commit().await.map_err(storage)?;
-        Ok(result)
+        Ok(value)
     }
 }
 fn scope(actor: MuralActor, key: Uuid) -> Result<Scope, CommandError> {

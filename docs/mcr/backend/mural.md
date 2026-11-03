@@ -18,6 +18,9 @@ Pinned inputs at the base:
   SHA256 `e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36`.
 - C04 mural schema/operations/policy candidate:
   `b615e35bb07fb5797e6d7445a93aa6e1eeab7152`.
+- Required own-result envelope amendment: upstream `a25b855` then correction
+  `bff7e53` (C04 v0.1.2), imported exactly as `71effa2`/`05e70a5`.
+  These Delivery-owned shared dependencies are not worker-authored contract edits.
 - BE15 transaction, receipt and outbox seam:
   `c2a2c3020121c7385680eaae7cfa6ba027fe5e01`;
   `backend/services/concert-service/src/adapters/out/repository/receipt.rs`.
@@ -62,10 +65,14 @@ all effects and receipt budget consumption. Retry uses the original key.
 Exact key/body replay returns the original operation, even after pause/freeze;
 changed canonical body conflicts. The original operation is retained separately
 from delta visibility. `recover(actor,key)` only reads: freshly authorize the
-receipt and original operation, require a successful receipt and matching
-actor/event/revision, then return the original PixelOperation including its
-next_allowed_at. Missing/pending/failed/expired status is never inferred from a
-matching pixel color and never triggers automatic replay.
+receipt and original operation in one transaction. It requires an unexpired,
+retained SUCCEEDED placeConcertPixel receipt with result_status200 and aggregate
+resource_id/target_id==event_id; joins the durable operation by event/revision/actor;
+returns closed OwnPixelResult {receipt_id,idempotency_key,result:PixelOperation}.
+The original operation UUID remains separate from the event aggregate reference.
+Original next_allowed_at is preserved. Missing/foreign/expired/retired/pending/
+failed/inconsistent evidence returns ResourceUnavailable uniformly, never replay.
+The caller cannot infer execution from public pixel equality.
 
 Paused/frozen/cooldown/locked-region outcomes persist FAILED receipts with the
 exact C04 reason and no outbox or aggregate effects. A cooldown replay has no
@@ -81,7 +88,7 @@ stable snapshot ID; updates to stored checkpoints are rejected. A checkpoint
 contains no author, moderation or caller cooldown fields. Operator provisioning
 must supply palette and cooldown; the migration has no product defaults.
 
-Public deltas select an explicit seven-field projection and contiguous revision
+Public deltas select an explicit eight-field projection and contiguous revision
 order, bounded to 512 operations. Equal revision returns an empty delta. Future
 revision, retained_from_revision floor, reset_revision barrier, a larger gap or
 missing operation produces reset_required=true and no operations. Original
@@ -104,9 +111,11 @@ a revision high-water mark across epoch changes and fails closed on DB rewind.
 Transport must invalidate after send failure rather than treating dequeue as
 client acknowledgment. New process connections begin with fresh snapshots.
 
-C05 v1 currently has no mural message and C04 exposes no original-result GET.
+C05 v1 currently has no mural message. C04 v0.1.2 now defines the required
+GET /api/concert/events/{eventId}/mural/commands/{key}/result envelope.
 FE33 owner `01a1a213-61d6-7a20-a8e7-476649312f8c` is using typed incumbent-connection
-and verified-result ports; public wiring requires Delivery-owned contract work.
+and verified-result ports; authenticated public wiring remains required
+Delivery-owned routing work.
 Unknown commands remain blocked until independently verified original result
 is available. This implementation adds no unallocated wire operation.
 

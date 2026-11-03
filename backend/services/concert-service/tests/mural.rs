@@ -125,9 +125,16 @@ async fn parallel_cooldown_receipt_recovery_and_private_projection() -> anyhow::
     let first = a?;
     assert_eq!(first, b?);
     assert_eq!(first.public.revision, 2);
-    assert_eq!(repo.recover(actor, key).await?, Some(first.clone()));
-    assert_eq!(repo.recover(peer, key).await?, None);
-    assert_eq!(repo.recover(actor, Uuid::new_v4()).await?, None);
+    let recovered = repo.recover(actor, key).await?;
+    assert_eq!(recovered.result, first);
+    assert_eq!(recovered.idempotency_key, key);
+    let stored:Uuid=sqlx::query_scalar("select receipt_id from concert_command_receipts where actor_id=$1 and event_id=$2 and idempotency_key=$3").bind(actor.actor).bind(actor.event).bind(key).fetch_one(&pool).await?;
+    assert_eq!(recovered.receipt_id, stored);
+    assert_eq!(repo.recover(peer, key).await, Err(MuralError::Denied));
+    assert_eq!(
+        repo.recover(actor, Uuid::new_v4()).await,
+        Err(MuralError::Denied)
+    );
     assert_eq!(
         repo.place(actor, key, pixel(1, 0, 4), &keys).await,
         Err(MuralError::Command(CommandError::Conflict))
@@ -263,7 +270,7 @@ async fn invalid_inputs_and_persisted_failures_never_mutate_or_emit_outbox() -> 
         Err(MuralError::Cooldown(None)),
         "replay never fabricates original retry timestamp"
     );
-    assert_eq!(repo.recover(a, key).await?, None);
+    assert_eq!(repo.recover(a, key).await, Err(MuralError::Denied));
     for (state, reason, error) in [
         ("PAUSED", "MURAL_PAUSED", MuralError::Paused),
         ("FROZEN", "MURAL_FROZEN", MuralError::Frozen),
@@ -357,7 +364,7 @@ async fn forced_outbox_failure_rolls_back_pixel_revision_cooldown_receipt_and_bu
     sqlx::query("alter table concert_outbox drop constraint mural_fixture_failure")
         .execute(&pool)
         .await?;
-    assert_eq!(repo.recover(a, key).await?, None);
+    assert_eq!(repo.recover(a, key).await, Err(MuralError::Denied));
     repo.place(a, key, pixel(1, 0, 8), &keys).await?;
     assert_eq!(counts(&pool, a.event).await?, (1, 1, 1, 1));
     Ok(())
@@ -458,10 +465,7 @@ async fn restart_reopens_durable_operation_and_read_only_receipt_result() -> any
             event: row.get("event_id"),
             actor: row.get("actor_id"),
         };
-        let result = repo
-            .recover(actor, row.get("key"))
-            .await?
-            .expect("persisted original result");
+        let result = repo.recover(actor, row.get("key")).await?.result;
         assert_eq!(
             serde_json::to_value(&result)?,
             row.get::<serde_json::Value, _>("result")
@@ -493,11 +497,8 @@ async fn pending_expired_and_dependency_failed_receipt_reads_never_reexecute() -
         sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,created_at,expires_at) select $1,$2,$3,'placeConcertPixel',$4,$5,$3,'PENDING',t,t+interval '86400 seconds' from (select clock_timestamp()-case when $6 then interval '2 days' else interval '0 days' end t) stamp")
             .bind(Uuid::new_v4()).bind(actor.actor).bind(actor.event).bind(key).bind(format!("hmac-sha256:v1:mural-native:{}","00".repeat(32))).bind(old).execute(&pool).await?;
     }
-    assert_eq!(repo.recover(actor, pending).await?, None);
-    assert_eq!(
-        repo.recover(actor, expired).await,
-        Err(MuralError::Command(CommandError::Expired))
-    );
+    assert_eq!(repo.recover(actor, pending).await, Err(MuralError::Denied));
+    assert_eq!(repo.recover(actor, expired).await, Err(MuralError::Denied));
     assert_eq!(counts(&pool, actor.event).await?, (0, 0, 2, 0));
     sqlx::query("update mural_fixture_authority set unavailable=true where event_id=$1")
         .bind(actor.event)
@@ -505,5 +506,102 @@ async fn pending_expired_and_dependency_failed_receipt_reads_never_reexecute() -
         .await?;
     assert!(repo.recover(actor, pending).await.is_err());
     assert_eq!(counts(&pool, actor.event).await?, (0, 0, 2, 0));
+    Ok(())
+}
+
+#[tokio::test]
+async fn own_result_envelope_rejects_foreign_expired_retired_failed_and_inconsistent_receipts(
+) -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let (actor, peer) = setup(&pool, 3600000).await?;
+    let repo = PgMuralRepository::new(pool.clone(), SyntheticAuthority);
+    let key = Uuid::new_v4();
+    let original = repo.place(actor, key, pixel(1, 3, 9), &keys()).await?;
+    let before = counts(&pool, actor.event).await?;
+    let recovered = repo.recover(actor, key).await?;
+    assert_eq!(recovered.result, original);
+    assert_eq!(recovered.idempotency_key, key);
+    let envelope = serde_json::to_value(&recovered)?;
+    assert_eq!(envelope.as_object().unwrap().len(), 3);
+    assert_eq!(envelope["result"].as_object().unwrap().len(), 8);
+    assert_eq!(
+        counts(&pool, actor.event).await?,
+        before,
+        "read cannot create a receipt/outbox/operation/cooldown"
+    );
+    assert_eq!(repo.recover(peer, key).await, Err(MuralError::Denied));
+    assert_eq!(
+        repo.recover(
+            MuralActor {
+                event: Uuid::new_v4(),
+                ..actor
+            },
+            key
+        )
+        .await,
+        Err(MuralError::Denied)
+    );
+    // Valid storage rows with incompatible command/result evidence are all unavailable.
+    for case in [
+        "foreign-operation",
+        "wrong-resource",
+        "missing-revision",
+        "wrong-status",
+        "expired-success",
+        "pending",
+        "failed",
+        "retired",
+    ] {
+        let key = Uuid::new_v4();
+        let success = !matches!(case, "pending" | "failed" | "retired");
+        let state = match case {
+            "pending" => "PENDING",
+            "failed" => "FAILED",
+            "retired" => "RETIRED",
+            _ => "SUCCEEDED",
+        };
+        let operation = if case == "foreign-operation" {
+            "createConcertPost"
+        } else {
+            "placeConcertPixel"
+        };
+        let target = if case == "wrong-resource" {
+            Uuid::new_v4()
+        } else {
+            actor.event
+        };
+        let revision = if case == "missing-revision" { 3i64 } else { 2 };
+        sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,resource_id,resource_revision,result_status,failure_reason,created_at,expires_at) select $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,t,t+interval '86400 seconds' from (select clock_timestamp()-case when $13 then interval '2 days' else interval '0 days' end t) stamp")
+            .bind(Uuid::new_v4()).bind(actor.actor).bind(actor.event).bind(operation).bind(key)
+            .bind(format!("hmac-sha256:v1:mural-native:{}","00".repeat(32))).bind(target).bind(state)
+            .bind(if success {Some(target)}else{None}).bind(if success {Some(revision)}else{None})
+            .bind(if success {Some(if case=="wrong-status" {201i16}else{200})}else{None})
+            .bind(if case=="failed" {Some("INVALID_TRANSITION")}else{None}).bind(case=="expired-success").execute(&pool).await?;
+        assert_eq!(
+            repo.recover(actor, key).await,
+            Err(MuralError::Denied),
+            "{case}"
+        );
+    }
+    sqlx::query("update concert_mural_operations set actor_id=$2 where event_id=$1")
+        .bind(actor.event)
+        .bind(peer.actor)
+        .execute(&pool)
+        .await?;
+    assert_eq!(
+        repo.recover(actor, key).await,
+        Err(MuralError::Denied),
+        "durable author must match receipt actor"
+    );
+    sqlx::query("update concert_mural_operations set actor_id=$2 where event_id=$1")
+        .bind(actor.event)
+        .bind(actor.actor)
+        .execute(&pool)
+        .await?;
+    assert_eq!(repo.recover(actor, key).await?, recovered);
+    assert_eq!(
+        repo.snapshot(actor).await?.next_allowed_at,
+        Some(original.next_allowed_at)
+    );
     Ok(())
 }
