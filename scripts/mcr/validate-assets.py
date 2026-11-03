@@ -149,9 +149,16 @@ def index_unique(entries, field, label):
     return result
 
 
-def validate_config(config, avatar, items, tones):
+def validate_config(config, avatar, items=None, tones=None):
     require((config["manifest_id"], config["manifest_version"]) ==
             (avatar["manifest_id"], avatar["manifest_version"]), "avatar manifest identity/version mismatch")
+    if config.get("representation") == "whole_character":
+        require(avatar.get("representation") == "whole_character", "avatar representation mismatch")
+        presets = index_unique(avatar["presets"], "preset_id", "avatar")
+        require(config["preset_id"] in presets, "unknown whole-character preset")
+        require(config == presets[config["preset_id"]]["config"], "whole-character preset config mismatch")
+        return
+    require(avatar.get("representation") != "whole_character", "avatar representation mismatch")
     for layer, item_id in config["item_ids"].items():
         if layer == "accessory" and item_id is None:
             continue
@@ -161,6 +168,12 @@ def validate_config(config, avatar, items, tones):
 
 
 def validate_avatar(avatar, configs):
+    if avatar.get("representation") == "whole_character":
+        presets = index_unique(avatar["presets"], "preset_id", "avatar")
+        require(avatar["default_preset_id"] in presets, "unknown default_preset_id")
+        for config in [*configs, *(preset["config"] for preset in presets.values())]:
+            validate_config(config, avatar)
+        return
     atlas = avatar["atlas"]
     items = index_unique(atlas["items"], "item_id", "atlas")
     tones = index_unique(avatar["skin_tones"], "skin_tone_id", "avatar")
@@ -261,6 +274,20 @@ def validate_bundle(documents, checks=None):
     for label, document in sorted(documents.items()):
         validate_document(document, checks, label)
         groups[document["kind"]].append(document)
+    if (len(groups["avatar_manifest"]) == 1
+            and groups["avatar_manifest"][0].get("representation") == "whole_character"
+            and groups["avatar_config"] and not groups["map_manifest"] and not groups["theme_manifest"]):
+        avatar = groups["avatar_manifest"][0]
+        validate_avatar(avatar, groups["avatar_config"])
+        return {"status": "CONTRACT_READY", "contract_version": "1.1.0",
+                "scope": "selected whole-character avatar component release only",
+                "documents_validated": len(documents),
+                "manifest_pin": {key: avatar[key] for key in ("manifest_id", "manifest_version", "content_hash")},
+                "capabilities": avatar["capabilities"],
+                "atlas_image_state": avatar["atlas"]["texture"]["image_state"],
+                "atlas_image_coverage": "NOT_RUN", "resource_bytes_and_hashes": "NOT_RUN",
+                "limits": "Schema, canonical hash and preset mapping only. No animation, layered customization, "
+                          "rendering, mobile, backend persistence or World acceptance implied."}
     for kind in ("avatar_manifest", "map_manifest", "avatar_config"):
         require(len(groups[kind]) == 1, f"bundle requires exactly one {kind}")
     avatar, map_ = groups["avatar_manifest"][0], groups["map_manifest"][0]
@@ -292,7 +319,7 @@ def validate_bundle(documents, checks=None):
             validate_scenery(theme["scenery"], geometry)
     return {
         "status": "CONTRACT_READY", "documents_validated": len(documents),
-        "themes": sorted(themes), "contract_version": "1.0.0",
+        "themes": sorted(themes), "contract_version": avatar["contract_version"],
         "atlas_image_coverage": "NOT_RUN",
         "atlas_image_state": avatar["atlas"]["texture"]["image_state"],
         "resource_bytes_and_hashes": "NOT_RUN",

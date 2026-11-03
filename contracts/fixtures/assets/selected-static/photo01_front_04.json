@@ -1,0 +1,8 @@
+{
+  "contract_version": "1.1.0",
+  "kind": "avatar_config",
+  "manifest_id": "mcr_selected_static_20261103",
+  "manifest_version": 1,
+  "representation": "whole_character",
+  "preset_id": "photo01_front_04"
+}

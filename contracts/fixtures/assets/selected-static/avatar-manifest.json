@@ -1,0 +1,153 @@
+{
+  "contract_version": "1.1.0",
+  "kind": "avatar_manifest",
+  "manifest_id": "mcr_selected_static_20261103",
+  "manifest_version": 1,
+  "representation": "whole_character",
+  "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b",
+  "source": {
+    "source_pack_id": "mcr_user_characters_20261103",
+    "source_pack_revision": 3,
+    "source_id": "photo_01",
+    "source_sha256": "sha256:67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311",
+    "release_path": "world/avatars/derived-v1/static-release.json",
+    "release_sha256": "sha256:cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+    "source_commit": "7e07f7328f079991a9aedb7ad83a4b682decb543"
+  },
+  "atlas": {
+    "atlas_id": "mcr_selected_static_front_idle_64",
+    "cell": {
+      "width_px": 64,
+      "height_px": 64
+    },
+    "anchor": {
+      "x": 32,
+      "y": 60
+    },
+    "texture": {
+      "image_state": "PROVIDED",
+      "path": "world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "sha256": "sha256:e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "width_px": 384,
+      "height_px": 64
+    }
+  },
+  "capabilities": {
+    "poses": [
+      "front_idle"
+    ],
+    "layer_customization": false,
+    "skin_tone_customization": false
+  },
+  "presets": [
+    {
+      "preset_id": "photo01_front_01",
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "representation": "whole_character",
+        "preset_id": "photo01_front_01"
+      },
+      "art_id": "photo01-front-01",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width_px": 64,
+        "height_px": 64
+      }
+    },
+    {
+      "preset_id": "photo01_front_02",
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "representation": "whole_character",
+        "preset_id": "photo01_front_02"
+      },
+      "art_id": "photo01-front-02",
+      "frame": {
+        "x": 64,
+        "y": 0,
+        "width_px": 64,
+        "height_px": 64
+      }
+    },
+    {
+      "preset_id": "photo01_front_03",
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "representation": "whole_character",
+        "preset_id": "photo01_front_03"
+      },
+      "art_id": "photo01-front-03",
+      "frame": {
+        "x": 128,
+        "y": 0,
+        "width_px": 64,
+        "height_px": 64
+      }
+    },
+    {
+      "preset_id": "photo01_front_04",
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "representation": "whole_character",
+        "preset_id": "photo01_front_04"
+      },
+      "art_id": "photo01-front-04",
+      "frame": {
+        "x": 192,
+        "y": 0,
+        "width_px": 64,
+        "height_px": 64
+      }
+    },
+    {
+      "preset_id": "photo01_front_05",
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "representation": "whole_character",
+        "preset_id": "photo01_front_05"
+      },
+      "art_id": "photo01-front-05",
+      "frame": {
+        "x": 256,
+        "y": 0,
+        "width_px": 64,
+        "height_px": 64
+      }
+    },
+    {
+      "preset_id": "photo01_front_06",
+      "config": {
+        "contract_version": "1.1.0",
+        "kind": "avatar_config",
+        "manifest_id": "mcr_selected_static_20261103",
+        "manifest_version": 1,
+        "representation": "whole_character",
+        "preset_id": "photo01_front_06"
+      },
+      "art_id": "photo01-front-06",
+      "frame": {
+        "x": 320,
+        "y": 0,
+        "width_px": 64,
+        "height_px": 64
+      }
+    }
+  ],
+  "default_preset_id": "photo01_front_01"
+}
