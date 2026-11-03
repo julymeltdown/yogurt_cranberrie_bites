@@ -1,6 +1,6 @@
+//! Use cases depend only on Concert values and explicit ports, never adapters.
 pub mod report;
 pub mod admin;
-//! Use cases depend only on Concert values and explicit ports, never adapters.
 pub mod commands;
 
 use async_trait::async_trait;
