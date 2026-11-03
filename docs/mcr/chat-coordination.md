@@ -18,6 +18,13 @@ handoffs and final answers. Both development chats received this instruction
 directly; all future assignments must carry it. Preserve source text and
 identifiers where exact fidelity is needed.
 Both current worktrees start at `69a5624cd153a216f2398cebabf062400dce23eb`.
+The user also explicitly requires persistent goals in every development chat.
+Both chats have received instructions to inspect/create their own goals and
+continue their current BE03/FE07 assignments through implementation, meaningful
+verification, documentation, committed handoff, and integration-review fixes.
+Dispatch alone does not establish that a goal was created; actual goal status
+must be confirmed. Future assignments carry this requirement without resetting
+aligned active goals or changing file ownership. No token budget was requested.
 The former worktrees are preserved but have no current writer. Earlier delivery
 ancestry and checks are in the [foundation review](evidence/core-foundation-integration.md)
 and [privacy/tooling review](evidence/privacy-local-stack-integration.md).
