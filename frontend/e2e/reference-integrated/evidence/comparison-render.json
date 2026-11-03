@@ -45,7 +45,7 @@
     },
     {
       "id": "world",
-      "sourceCandidate": "0c98ca85cf76b50c03e387424fee03e36c5da4f6",
+      "sourceCandidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d",
       "artifact": "comparison-world-390.png",
       "actualViewport": {
         "width": 390,
@@ -185,7 +185,7 @@
     },
     {
       "id": "me",
-      "sourceCandidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6",
+      "sourceCandidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d",
       "artifact": "comparison-me-390.png",
       "actualViewport": {
         "width": 390,

@@ -1524,8 +1524,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 290,
-          "transferredBytes": 38599204,
+          "requests": 294,
+          "transferredBytes": 38645548,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -1694,6 +1694,7 @@
             "/src/features/me/ui/AvatarThumbnail.tsx": 1,
             "/src/features/me/ui/MePages.tsx": 1,
             "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
             "/src/features/meet-beacon/index.ts": 1,
             "/src/features/meet-beacon/model/contract.ts": 1,
             "/src/features/meet-beacon/model/controller.ts": 1,
@@ -1735,6 +1736,9 @@
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
             "/src/features/safety/contract.ts": 1,
             "/src/features/social-sharing/index.ts": 1,
             "/src/features/social-sharing/model/contract.ts": 1,
@@ -1821,7 +1825,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 290
+        "recordCount": 294
       },
       "action": {
         "status": "PASS",
@@ -1829,7 +1833,7 @@
         "focus": true
       },
       "errors": [],
-      "sourceCandidate": "0c98ca85cf76b50c03e387424fee03e36c5da4f6"
+      "sourceCandidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
     },
     {
       "id": "map",
@@ -6135,10 +6139,10 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 267.953125,
-              "width": 96.65625,
-              "height": 64.890625
+              "x": 66,
+              "y": 194.796875,
+              "width": 48,
+              "height": 44
             }
           },
           {
@@ -6147,22 +6151,34 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 131.65625,
-              "y": 267.953125,
-              "width": 96.671875,
-              "height": 64.890625
+              "x": 126,
+              "y": 194.796875,
+              "width": 48,
+              "height": 44
             }
           },
           {
-            "name": "Settings",
+            "name": "Manage private social links",
             "tag": "A",
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 234.328125,
-              "y": 267.953125,
-              "width": 96.65625,
-              "height": 64.890625
+              "x": 186,
+              "y": 194.796875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Sharing requests",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 246,
+              "y": 194.796875,
+              "width": 48,
+              "height": 44
             }
           },
           {
@@ -6171,9 +6187,9 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 381.78125,
-              "width": 177.59375,
+              "x": 127,
+              "y": 249.796875,
+              "width": 106,
               "height": 44
             }
           },
@@ -6183,21 +6199,21 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 212.59375,
-              "y": 381.78125,
-              "width": 118.40625,
+              "x": 236,
+              "y": 249.796875,
+              "width": 106,
               "height": 44
             }
           },
           {
-            "name": "Discard drafts and reload saved version",
-            "tag": "BUTTON",
+            "name": "Profile options",
+            "tag": "SUMMARY",
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 474.96875,
-              "width": 302,
+              "x": 23,
+              "y": 449.796875,
+              "width": 314,
               "height": 44
             }
           },
@@ -6205,11 +6221,11 @@
             "name": "Back to world",
             "tag": "A",
             "disabled": false,
-            "withinViewport": false,
+            "withinViewport": true,
             "rect": {
-              "x": 21,
-              "y": 539.96875,
-              "width": 91.28125,
+              "x": 23,
+              "y": 497.796875,
+              "width": 64.53125,
               "height": 44
             }
           },
@@ -6220,7 +6236,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 595.96875,
+              "y": 550.796875,
               "width": 330,
               "height": 44
             }
@@ -6232,7 +6248,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 639.96875,
+              "y": 594.796875,
               "width": 330,
               "height": 44
             }
@@ -6244,7 +6260,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 683.96875,
+              "y": 638.796875,
               "width": 330,
               "height": 44
             }
@@ -6256,7 +6272,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 727.96875,
+              "y": 682.796875,
               "width": 330,
               "height": 44
             }
@@ -6268,7 +6284,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 771.96875,
+              "y": 726.796875,
               "width": 330,
               "height": 44
             }
@@ -6280,7 +6296,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 815.96875,
+              "y": 770.796875,
               "width": 330,
               "height": 44
             }
@@ -6292,7 +6308,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 859.96875,
+              "y": 814.796875,
               "width": 330,
               "height": 44
             }
@@ -6304,7 +6320,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 903.96875,
+              "y": 858.796875,
               "width": 330,
               "height": 44
             }
@@ -6333,8 +6349,7 @@
         },
         "headings": [
           "Me",
-          "Synthetic listener",
-          "Your activity"
+          "Synthetic listener"
         ],
         "actions": [
           {
@@ -6346,18 +6361,6 @@
               "x": 306,
               "y": 452.21875,
               "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Discard drafts and reload saved version",
-            "tag": "BUTTON",
-            "disabled": false,
-            "withinViewport": true,
-            "rect": {
-              "x": 29,
-              "y": 474.96875,
-              "width": 302,
               "height": 44
             }
           }
@@ -6398,8 +6401,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 295,
-          "transferredBytes": 38637113,
+          "requests": 299,
+          "transferredBytes": 38688581,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -6427,20 +6430,20 @@
             "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
             "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
             "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
             "/@react-refresh": 1,
             "/@vite/client": 1,
             "/e2e/reference-integrated/data.ts": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/@tanstack_react-query.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/ky.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/phaser.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom_client.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-router-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-dev-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/zod.js": 1,
             "/e2e/reference-integrated/preview.html": 1,
             "/e2e/reference-integrated/preview.tsx": 1,
             "/src/app/CommunityFeatures.tsx": 1,
@@ -6569,6 +6572,7 @@
             "/src/features/me/ui/AvatarThumbnail.tsx": 1,
             "/src/features/me/ui/MePages.tsx": 1,
             "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
             "/src/features/meet-beacon/index.ts": 1,
             "/src/features/meet-beacon/model/contract.ts": 1,
             "/src/features/meet-beacon/model/controller.ts": 1,
@@ -6610,6 +6614,9 @@
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
             "/src/features/safety/contract.ts": 1,
             "/src/features/settings/SettingsPage.tsx": 1,
             "/src/features/settings/index.ts": 1,
@@ -6700,7 +6707,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 295
+        "recordCount": 299
       },
       "action": {
         "status": "PASS",
@@ -6709,7 +6716,7 @@
         "path": "/world"
       },
       "errors": [],
-      "sourceCandidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+      "sourceCandidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
     },
     {
       "id": "landing",
@@ -8001,8 +8008,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 289,
-          "transferredBytes": 38599061,
+          "requests": 293,
+          "transferredBytes": 38645405,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -8170,6 +8177,7 @@
             "/src/features/me/ui/AvatarThumbnail.tsx": 1,
             "/src/features/me/ui/MePages.tsx": 1,
             "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
             "/src/features/meet-beacon/index.ts": 1,
             "/src/features/meet-beacon/model/contract.ts": 1,
             "/src/features/meet-beacon/model/controller.ts": 1,
@@ -8211,6 +8219,9 @@
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
             "/src/features/safety/contract.ts": 1,
             "/src/features/social-sharing/index.ts": 1,
             "/src/features/social-sharing/model/contract.ts": 1,
@@ -8297,7 +8308,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 289
+        "recordCount": 293
       },
       "action": {
         "status": "PASS",
@@ -8305,7 +8316,7 @@
         "focus": true
       },
       "errors": [],
-      "sourceCandidate": "0c98ca85cf76b50c03e387424fee03e36c5da4f6"
+      "sourceCandidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
     },
     {
       "id": "map",
@@ -12611,10 +12622,10 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 261.375,
-              "width": 106.65625,
-              "height": 64.890625
+              "x": 81,
+              "y": 204.6875,
+              "width": 48,
+              "height": 44
             }
           },
           {
@@ -12623,22 +12634,34 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 141.65625,
-              "y": 261.375,
-              "width": 106.671875,
-              "height": 64.890625
+              "x": 141,
+              "y": 204.6875,
+              "width": 48,
+              "height": 44
             }
           },
           {
-            "name": "Settings",
+            "name": "Manage private social links",
             "tag": "A",
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 254.328125,
-              "y": 261.375,
-              "width": 106.65625,
-              "height": 64.890625
+              "x": 201,
+              "y": 204.6875,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Sharing requests",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 261,
+              "y": 204.6875,
+              "width": 48,
+              "height": 44
             }
           },
           {
@@ -12647,9 +12670,9 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 375.203125,
-              "width": 195.59375,
+              "x": 137,
+              "y": 259.6875,
+              "width": 116,
               "height": 44
             }
           },
@@ -12659,21 +12682,21 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 230.59375,
-              "y": 375.203125,
-              "width": 130.390625,
+              "x": 256,
+              "y": 259.6875,
+              "width": 116,
               "height": 44
             }
           },
           {
-            "name": "Discard drafts and reload saved version",
-            "tag": "BUTTON",
+            "name": "Profile options",
+            "tag": "SUMMARY",
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 468.390625,
-              "width": 332,
+              "x": 23,
+              "y": 459.6875,
+              "width": 344,
               "height": 44
             }
           },
@@ -12683,9 +12706,9 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 21,
-              "y": 533.390625,
-              "width": 91.28125,
+              "x": 23,
+              "y": 507.6875,
+              "width": 64.53125,
               "height": 44
             }
           },
@@ -12696,7 +12719,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 589.390625,
+              "y": 560.6875,
               "width": 360,
               "height": 44
             }
@@ -12708,7 +12731,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 633.390625,
+              "y": 604.6875,
               "width": 360,
               "height": 44
             }
@@ -12720,7 +12743,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 677.390625,
+              "y": 648.6875,
               "width": 360,
               "height": 44
             }
@@ -12732,7 +12755,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 721.390625,
+              "y": 692.6875,
               "width": 360,
               "height": 44
             }
@@ -12744,7 +12767,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 765.390625,
+              "y": 736.6875,
               "width": 360,
               "height": 44
             }
@@ -12756,7 +12779,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 809.390625,
+              "y": 780.6875,
               "width": 360,
               "height": 44
             }
@@ -12768,7 +12791,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 853.390625,
+              "y": 824.6875,
               "width": 360,
               "height": 44
             }
@@ -12780,7 +12803,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 897.390625,
+              "y": 868.6875,
               "width": 360,
               "height": 44
             }
@@ -12809,8 +12832,7 @@
         },
         "headings": [
           "Me",
-          "Synthetic listener",
-          "Your activity"
+          "Synthetic listener"
         ],
         "actions": [
           {
@@ -12822,18 +12844,6 @@
               "x": 332,
               "y": 494.21875,
               "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Discard drafts and reload saved version",
-            "tag": "BUTTON",
-            "disabled": false,
-            "withinViewport": true,
-            "rect": {
-              "x": 29,
-              "y": 468.390625,
-              "width": 332,
               "height": 44
             }
           }
@@ -12874,8 +12884,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 295,
-          "transferredBytes": 38637113,
+          "requests": 299,
+          "transferredBytes": 38688581,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -12903,20 +12913,20 @@
             "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
             "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
             "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
             "/@react-refresh": 1,
             "/@vite/client": 1,
             "/e2e/reference-integrated/data.ts": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/@tanstack_react-query.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/ky.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/phaser.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom_client.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-router-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-dev-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/zod.js": 1,
             "/e2e/reference-integrated/preview.html": 1,
             "/e2e/reference-integrated/preview.tsx": 1,
             "/src/app/CommunityFeatures.tsx": 1,
@@ -13045,6 +13055,7 @@
             "/src/features/me/ui/AvatarThumbnail.tsx": 1,
             "/src/features/me/ui/MePages.tsx": 1,
             "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
             "/src/features/meet-beacon/index.ts": 1,
             "/src/features/meet-beacon/model/contract.ts": 1,
             "/src/features/meet-beacon/model/controller.ts": 1,
@@ -13086,6 +13097,9 @@
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
             "/src/features/safety/contract.ts": 1,
             "/src/features/settings/SettingsPage.tsx": 1,
             "/src/features/settings/index.ts": 1,
@@ -13176,7 +13190,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 295
+        "recordCount": 299
       },
       "action": {
         "status": "PASS",
@@ -13185,7 +13199,7 @@
         "path": "/world"
       },
       "errors": [],
-      "sourceCandidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+      "sourceCandidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
     },
     {
       "id": "landing",
@@ -14477,8 +14491,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 289,
-          "transferredBytes": 38599061,
+          "requests": 293,
+          "transferredBytes": 38645405,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -14646,6 +14660,7 @@
             "/src/features/me/ui/AvatarThumbnail.tsx": 1,
             "/src/features/me/ui/MePages.tsx": 1,
             "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
             "/src/features/meet-beacon/index.ts": 1,
             "/src/features/meet-beacon/model/contract.ts": 1,
             "/src/features/meet-beacon/model/controller.ts": 1,
@@ -14687,6 +14702,9 @@
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
             "/src/features/safety/contract.ts": 1,
             "/src/features/social-sharing/index.ts": 1,
             "/src/features/social-sharing/model/contract.ts": 1,
@@ -14773,7 +14791,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 289
+        "recordCount": 293
       },
       "action": {
         "status": "PASS",
@@ -14781,7 +14799,7 @@
         "focus": true
       },
       "errors": [],
-      "sourceCandidate": "0c98ca85cf76b50c03e387424fee03e36c5da4f6"
+      "sourceCandidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
     },
     {
       "id": "map",
@@ -19087,10 +19105,10 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 243.1875,
-              "width": 120,
-              "height": 64.890625
+              "x": 101,
+              "y": 217.890625,
+              "width": 48,
+              "height": 44
             }
           },
           {
@@ -19099,22 +19117,34 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 155,
-              "y": 243.1875,
-              "width": 120,
-              "height": 64.890625
+              "x": 161,
+              "y": 217.890625,
+              "width": 48,
+              "height": 44
             }
           },
           {
-            "name": "Settings",
+            "name": "Manage private social links",
+            "tag": "A",
+            "disabled": false,
+            "withinViewport": true,
+            "rect": {
+              "x": 221,
+              "y": 217.890625,
+              "width": 48,
+              "height": 44
+            }
+          },
+          {
+            "name": "Sharing requests",
             "tag": "A",
             "disabled": false,
             "withinViewport": true,
             "rect": {
               "x": 281,
-              "y": 243.1875,
-              "width": 120,
-              "height": 64.890625
+              "y": 217.890625,
+              "width": 48,
+              "height": 44
             }
           },
           {
@@ -19123,9 +19153,9 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 357.015625,
-              "width": 219.59375,
+              "x": 150.328125,
+              "y": 272.890625,
+              "width": 129.328125,
               "height": 44
             }
           },
@@ -19135,21 +19165,21 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 254.59375,
-              "y": 357.015625,
-              "width": 146.390625,
+              "x": 282.65625,
+              "y": 272.890625,
+              "width": 129.328125,
               "height": 44
             }
           },
           {
-            "name": "Discard drafts and reload saved version",
-            "tag": "BUTTON",
+            "name": "Profile options",
+            "tag": "SUMMARY",
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 29,
-              "y": 450.203125,
-              "width": 372,
+              "x": 23,
+              "y": 472.890625,
+              "width": 384,
               "height": 44
             }
           },
@@ -19159,9 +19189,9 @@
             "disabled": false,
             "withinViewport": true,
             "rect": {
-              "x": 21,
-              "y": 515.203125,
-              "width": 91.28125,
+              "x": 23,
+              "y": 520.890625,
+              "width": 64.53125,
               "height": 44
             }
           },
@@ -19172,7 +19202,7 @@
             "withinViewport": true,
             "rect": {
               "x": 15,
-              "y": 571.203125,
+              "y": 573.890625,
               "width": 400,
               "height": 44
             }
@@ -19184,7 +19214,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 615.203125,
+              "y": 617.890625,
               "width": 400,
               "height": 44
             }
@@ -19196,7 +19226,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 659.203125,
+              "y": 661.890625,
               "width": 400,
               "height": 44
             }
@@ -19208,7 +19238,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 703.203125,
+              "y": 705.890625,
               "width": 400,
               "height": 44
             }
@@ -19220,7 +19250,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 747.203125,
+              "y": 749.890625,
               "width": 400,
               "height": 44
             }
@@ -19232,7 +19262,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 791.203125,
+              "y": 793.890625,
               "width": 400,
               "height": 44
             }
@@ -19244,7 +19274,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 835.203125,
+              "y": 837.890625,
               "width": 400,
               "height": 44
             }
@@ -19256,7 +19286,7 @@
             "withinViewport": false,
             "rect": {
               "x": 15,
-              "y": 879.203125,
+              "y": 881.890625,
               "width": 400,
               "height": 44
             }
@@ -19285,8 +19315,7 @@
         },
         "headings": [
           "Me",
-          "Synthetic listener",
-          "Your activity"
+          "Synthetic listener"
         ],
         "actions": [
           {
@@ -19298,18 +19327,6 @@
               "x": 372,
               "y": 555.21875,
               "width": 44,
-              "height": 44
-            }
-          },
-          {
-            "name": "Discard drafts and reload saved version",
-            "tag": "BUTTON",
-            "disabled": false,
-            "withinViewport": true,
-            "rect": {
-              "x": 29,
-              "y": 450.203125,
-              "width": 372,
               "height": 44
             }
           }
@@ -19350,8 +19367,8 @@
           "rejected": 0
         },
         "network": {
-          "requests": 295,
-          "transferredBytes": 38637113,
+          "requests": 299,
+          "transferredBytes": 38688581,
           "cacheHits": 0,
           "imageRequests": 0,
           "byPath": {
@@ -19379,20 +19396,20 @@
             "/@fs$CHECKOUT/contracts/realtime/v1/policy.json": 1,
             "/@fs$CHECKOUT/contracts/realtime/v1/world.schema.json": 1,
             "/@fs$DEPENDENCIES/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/client/env.mjs": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/@tanstack_react-query.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/ky.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/phaser.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-dom_client.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react-router-dom.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-dev-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/react_jsx-runtime.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
+            "/@fs$EVIDENCE/vite-cache/deps/zod.js": 1,
             "/@react-refresh": 1,
             "/@vite/client": 1,
             "/e2e/reference-integrated/data.ts": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/@tanstack_react-query.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/ky.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/phaser.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-dom_client.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react-router-dom.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-dev-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/react_jsx-runtime.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/rolldown-runtime-B-1-B7_t.js": 1,
-            "/e2e/reference-integrated/evidence/vite-cache/deps/zod.js": 1,
             "/e2e/reference-integrated/preview.html": 1,
             "/e2e/reference-integrated/preview.tsx": 1,
             "/src/app/CommunityFeatures.tsx": 1,
@@ -19521,6 +19538,7 @@
             "/src/features/me/ui/AvatarThumbnail.tsx": 1,
             "/src/features/me/ui/MePages.tsx": 1,
             "/src/features/me/ui/me.css": 1,
+            "/src/features/me/ui/reference-profile/ProfileActivity.tsx": 1,
             "/src/features/meet-beacon/index.ts": 1,
             "/src/features/meet-beacon/model/contract.ts": 1,
             "/src/features/meet-beacon/model/controller.ts": 1,
@@ -19562,6 +19580,9 @@
             "/src/features/profile/Avatar.tsx": 1,
             "/src/features/profile/PublicProfile.tsx": 1,
             "/src/features/profile/index.ts": 1,
+            "/src/features/profile/profile.css": 1,
+            "/src/features/profile/reference-presentation/ProfileIcon.tsx": 1,
+            "/src/features/profile/reference-presentation/activity.css": 1,
             "/src/features/safety/contract.ts": 1,
             "/src/features/settings/SettingsPage.tsx": 1,
             "/src/features/settings/index.ts": 1,
@@ -19652,7 +19673,7 @@
             "/world/themes/revenge.png": 1
           }
         },
-        "recordCount": 295
+        "recordCount": 299
       },
       "action": {
         "status": "PASS",
@@ -19661,7 +19682,7 @@
         "path": "/world"
       },
       "errors": [],
-      "sourceCandidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+      "sourceCandidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
     }
   ],
   "warm": [
@@ -28778,6 +28799,111 @@
         "native.mjs": "1b56aa3129a2f30455a0893b3e4d3ead21423ed7fa6cd8f58ffaccb0941b67f5",
         "cases.mjs": "42cade307692c1df905152b7f5d2e8c62ad9841c712b9f82e597c15d4ef71b80",
         "comparison.mjs": "7d81ddd0b4495a6b3ca0d12b7d4c32f3c49d41fa97af4ae965fe53117fcab77b",
+        "preview.tsx": "15b0626d75bb4af76fa6e32b15c487b10b794d945a52acb89be06e44a049b3bb",
+        "data.ts": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+        "preview.html": "ab725f3216249f3ff75495e54fa8262d53eb05fa983f5002f2fadf14f07179e4",
+        "metrics.test.mjs": "16d608ca2fcb5644270e1da4c57b1e39f7f4cc8f7850add38ac940cc3f90f5da"
+      }
+    },
+    {
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d",
+      "productBase": "677f958e7965e15258f1249287ffe2f442ac1c18",
+      "replaced": [
+        "world:360",
+        "me:360",
+        "world:390",
+        "me:390",
+        "world:430",
+        "me:430"
+      ],
+      "changedPaths": [
+        "docs/mcr/frontend/reference-auth.md",
+        "docs/mcr/frontend/reference-profile.md",
+        "docs/mcr/frontend/world-whole-character.md",
+        "docs/mcr/king-coordination.md",
+        "docs/mcr/progress.md",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/build.log",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/checks.json",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/credentials-error-390.png",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/pending-390.png",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/ready-360.png",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/ready-390.png",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/ready-430.png",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/report.json",
+        "frontend/src/features/auth/__tests__/reference-target/evidence/unavailable-390.png",
+        "frontend/src/features/me/__tests__/reference-target/browser.mjs",
+        "frontend/src/features/me/__tests__/reference-target/build.mjs",
+        "frontend/src/features/me/__tests__/reference-target/combined-runner.ts",
+        "frontend/src/features/me/__tests__/reference-target/data.ts",
+        "frontend/src/features/me/__tests__/reference-target/evidence/build.log",
+        "frontend/src/features/me/__tests__/reference-target/evidence/checks.json",
+        "frontend/src/features/me/__tests__/reference-target/evidence/combined-tests.log",
+        "frontend/src/features/me/__tests__/reference-target/evidence/edit-conflict-390.png",
+        "frontend/src/features/me/__tests__/reference-target/evidence/me-partial-activity-360.png",
+        "frontend/src/features/me/__tests__/reference-target/evidence/me-partial-activity-390.png",
+        "frontend/src/features/me/__tests__/reference-target/evidence/me-partial-activity-430.png",
+        "frontend/src/features/me/__tests__/reference-target/evidence/me-shared-embedding-390.png",
+        "frontend/src/features/me/__tests__/reference-target/evidence/me-unavailable-activity-390.png",
+        "frontend/src/features/me/__tests__/reference-target/evidence/origin.json",
+        "frontend/src/features/me/__tests__/reference-target/evidence/planning.json",
+        "frontend/src/features/me/__tests__/reference-target/evidence/public-partial-activity-390.png",
+        "frontend/src/features/me/__tests__/reference-target/evidence/report.json",
+        "frontend/src/features/me/__tests__/reference-target/evidence/tests.log",
+        "frontend/src/features/me/__tests__/reference-target/evidence/union-regression.txt",
+        "frontend/src/features/me/__tests__/reference-target/preimages.json",
+        "frontend/src/features/me/__tests__/reference-target/presentation.test.tsx",
+        "frontend/src/features/me/__tests__/reference-target/preview.css",
+        "frontend/src/features/me/__tests__/reference-target/preview.html",
+        "frontend/src/features/me/__tests__/reference-target/preview.tsx",
+        "frontend/src/features/me/__tests__/reference-target/runner.ts",
+        "frontend/src/features/me/__tests__/visual-adoption/presentation.test.tsx",
+        "frontend/src/features/me/ui/MePages.tsx",
+        "frontend/src/features/me/ui/me.css",
+        "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx",
+        "frontend/src/features/profile/PublicProfile.tsx",
+        "frontend/src/features/profile/__tests__/reference-target/presentation.test.tsx",
+        "frontend/src/features/profile/profile.css",
+        "frontend/src/features/profile/reference-presentation/ProfileIcon.tsx",
+        "frontend/src/features/profile/reference-presentation/activity.css",
+        "frontend/src/world/avatar/__tests__/whole-character/evidence/native.json",
+        "frontend/src/world/avatar/__tests__/whole-character/evidence/six-front-idle-360.jpg",
+        "frontend/src/world/avatar/__tests__/whole-character/evidence/six-front-idle-390.jpg",
+        "frontend/src/world/avatar/__tests__/whole-character/evidence/six-front-idle-430.jpg",
+        "frontend/src/world/avatar/__tests__/whole-character/evidence/validation.json",
+        "frontend/src/world/avatar/__tests__/whole-character/native.html",
+        "frontend/src/world/avatar/__tests__/whole-character/native.mjs",
+        "frontend/src/world/avatar/__tests__/whole-character/native.ts",
+        "frontend/src/world/avatar/__tests__/whole-character/renderer.test.ts",
+        "frontend/src/world/avatar/scene.ts",
+        "frontend/src/world/avatar/whole-character.ts",
+        "frontend/src/world/scenes/MapScene.ts"
+      ],
+      "sourceHashes": {
+        "AGENTS.md": "a4dc96fdebfbc86c7184c931657c1c52906e1d33f7b5de18e0d5db457de11796",
+        "frontend/src/app/__tests__/default-shell/qualified-data.ts": "fcc5a4a2c776c56e66b720ba032b33e84de7b4426b6c371e80e8042b37677e0c",
+        "frontend/src/app/world-entry/__tests__/data.ts": "d3034029dc3b78b1531bdbc701b26f9f03a42eb0348a5549d9d3063a9d330549",
+        "contracts/fixtures/core/bootstrap-open.json": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+        "contracts/fixtures/assets/avatar-config.json": "dea02c52183c82094d76c014115c77716ac32c02cc9841d3f1a7ce9aeb54df4d",
+        "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+        "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+        "frontend/src/app/router.tsx": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+        "frontend/src/app/CommunityFeatures.tsx": "bd1ed8e760835301c7e8005db7bd4b4644eae78f0ea7f64c91f32dac30d24046",
+        "frontend/src/app/WorldShell.tsx": "d6a2a74ef3ae7c66b06f1c53798cacf52a6d5a800f199c9c1743966a1f55f62c",
+        "frontend/src/app/shell.css": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056",
+        "frontend/src/world/scenes/MapScene.ts": "971e8a838d2cebde9d3db86392b4a11167451cf15f8e296e08ab9ac525b90c59",
+        "frontend/src/world/input/controller.ts": "48480c4d874284f3b7d6c1236d946ba3622c867e3517e9664f4a1bbab1bdc2cc",
+        "frontend/src/world/input/controls.css": "2f6aa57a8a4024e1d6f10900257e9f7e92753a3790c4824b573b3910574f540d",
+        "frontend/src/entities/avatar/selected-static/release.ts": "49a642d786650846a5805486b6f9c7ad3968d4a1ee464990975375f31f8fae8e",
+        "frontend/src/world/map/resource-cache.ts": "9bbfaf042ea6f13d52db9dc0bab730314b605c43f19a9a7781a39f747bc230a9",
+        "frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.tsx": "396009efbb1dc6cc8178df6d0884381b858538b9c0509566f2f57d6a3823389f",
+        "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+        "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+        "contracts/generated/mcr-domain.openapi.json": "ef678d3445e5ee5ed3b90594ef1decc1d53b342166b10a91c4d9c9b3f20aa057"
+      },
+      "harnessHashes": {
+        "native.mjs": "9dfae912003ffa229353733324b40c6771f59ae20c4925a57316ba2a034743ce",
+        "cases.mjs": "42cade307692c1df905152b7f5d2e8c62ad9841c712b9f82e597c15d4ef71b80",
+        "comparison.mjs": "510b5d9111ecd2404662b136509a38dfc16c1b525c1d06666af10c258ced1ca8",
         "preview.tsx": "15b0626d75bb4af76fa6e32b15c487b10b794d945a52acb89be06e44a049b3bb",
         "data.ts": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
         "preview.html": "ab725f3216249f3ff75495e54fa8262d53eb05fa983f5002f2fadf14f07179e4",
