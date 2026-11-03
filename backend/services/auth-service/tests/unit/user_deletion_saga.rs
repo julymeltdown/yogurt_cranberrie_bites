@@ -512,9 +512,12 @@ async fn worker_retries_only_failed_steps_and_completes_after_all_targets_succee
     );
 
     let first = worker.run_once(Utc::now()).await.expect("first run");
-    assert_eq!(first.succeeded, 3);
+    assert_eq!(first.succeeded, (UserDeletionTarget::ALL.len() - 1) as i64);
     assert_eq!(first.retried, 1);
-    assert_eq!(repository.succeeded.lock().unwrap().len(), 3);
+    assert_eq!(
+        repository.succeeded.lock().unwrap().len(),
+        UserDeletionTarget::ALL.len() - 1
+    );
     assert_eq!(repository.failed.lock().unwrap().len(), 1);
 
     let mut retry = model
