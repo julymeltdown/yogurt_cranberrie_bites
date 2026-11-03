@@ -333,6 +333,23 @@ async fn fixture() -> (PgPool, OwnerMediaIdentity, OwnerMediaRuntime) {
     let s = runtime(p.clone(), Arc::new(FixtureFence));
     (p, i, s)
 }
+async fn add_actor(p: &PgPool, i: OwnerMediaIdentity) {
+    sqlx::query("insert into owner_media_fixture_auth values($1,$2,true)")
+        .bind(i.actor)
+        .bind(i.session_family)
+        .execute(p)
+        .await
+        .unwrap();
+    sqlx::query(
+        "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
+    )
+    .bind(i.event)
+    .bind(i.actor)
+    .execute(p)
+    .await
+    .unwrap();
+    sqlx::query("insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false)").bind(i.event).bind(i.actor).execute(p).await.unwrap();
+}
 async fn clean(p: PgPool, i: OwnerMediaIdentity) {
     // Durable BE15 receipts intentionally retain event references until this entire
     // owned cluster is removed by the harness. Do not delete the event here.
@@ -421,8 +438,73 @@ async fn native_owner_upload_metadata_content_recovery_and_revocation() {
         assert_eq!(r["operation_id"], op);
         assert_eq!(r["state"], "SUCCEEDED");
     }
+    // A READ_ONLY transition forbids writes while preserving current owner reads
+    // and recovery of the original immutable receipt under a fresh event revision.
+    sqlx::query(
+        "update concert_events set phase='READ_ONLY',revision=revision+1 where event_id=$1",
+    )
+    .bind(i.event)
+    .execute(&p)
+    .await
+    .unwrap();
+    assert_eq!(
+        json(
+            s.dispatch(request(i, "getConcertMedia", Uuid::nil(), Some(id), vec![]).unwrap())
+                .await
+                .unwrap()
+        )["state"],
+        "READY"
+    );
+    let target=format!("/api/concert/events/{}/commands?operation_id=finalizeConcertUpload&idempotency_key={final_key}",i.event);
+    assert_eq!(
+        json(
+            s.dispatch(
+                OwnerMediaRequest::from_verified(
+                    i,
+                    "getConcertCommandStatus",
+                    "GET",
+                    &target,
+                    "",
+                    "",
+                    vec![]
+                )
+                .unwrap()
+            )
+            .await
+            .unwrap()
+        )["resource_id"],
+        id.to_string()
+    );
+    let foreign = OwnerMediaIdentity {
+        actor: Uuid::new_v4(),
+        session_family: Uuid::new_v4(),
+        ..i
+    };
+    add_actor(&p, foreign).await;
+    assert!(matches!(
+        s.dispatch(request(foreign, "readConcertMedia", Uuid::nil(), Some(id), vec![]).unwrap())
+            .await,
+        Err(CommandError::Denied)
+    ));
     sqlx::query("update owner_media_fixture_auth set live=false where actor=$1")
         .bind(i.actor)
+        .execute(&p)
+        .await
+        .unwrap();
+    assert!(matches!(
+        s.dispatch(request(i, "getConcertMedia", Uuid::nil(), Some(id), vec![]).unwrap())
+            .await,
+        Err(CommandError::Denied)
+    ));
+    sqlx::query("update owner_media_fixture_auth set live=true where actor=$1")
+        .bind(i.actor)
+        .execute(&p)
+        .await
+        .unwrap();
+    // Even the uploader loses this private runtime's access after target linkage.
+    sqlx::query("update concert_media set target_id=$2,revision=revision+1 where media_id=$1")
+        .bind(id)
+        .bind(Uuid::new_v4())
         .execute(&p)
         .await
         .unwrap();
@@ -477,6 +559,7 @@ async fn native_wrong_owner_read_only_suspension_and_failed_bytes_leave_no_effec
         session_family: Uuid::new_v4(),
         ..i
     };
+    add_actor(&p, foreign).await;
     assert!(s
         .dispatch(request(foreign, "getConcertMedia", Uuid::nil(), Some(id), vec![]).unwrap())
         .await
