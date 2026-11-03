@@ -358,4 +358,356 @@ mod tests {
         drop(prepared);
         assert_eq!(*state.lock().unwrap(), None);
     }
+    // Reuses the World-owned four-service fixture at dd002448/1f6b0c7a.
+    // Operator role and artwork metadata remain synthetic; production owners,
+    // World runtime, native transport and composite effects are actual adapters.
+    use crate::adapters::r#in::world_ws::AdmissionPort;
+    use crate::world::closure::tests as qualified;
+    use crate::world::membership::CanonicalAuthorityPort;
+    struct LaterUnavailable;
+    #[async_trait]
+    impl LifecycleOwners for LaterUnavailable {
+        async fn apply_in(
+            &self,
+            _: &mut PgConnection,
+            _: EffectKey,
+            _: Retention,
+        ) -> Result<Applied, CommandError> {
+            Err(CommandError::Unavailable)
+        }
+    }
+    async fn seed_party(s: &qualified::Stack) -> anyhow::Result<Uuid> {
+        use concert_domain::community::party::{Party, PartyFields};
+        let party = Party::create(
+            Uuid::new_v4(),
+            s.event.uuid(),
+            qualified::actor(s).actor,
+            PartyFields {
+                title: "Driver closure fixture".into(),
+                description: "".into(),
+                ticket_section: None,
+                capacity: 4,
+                meeting_starts_at: Utc::now() + chrono::TimeDelta::minutes(5),
+                meeting_ends_at: Utc::now() + chrono::TimeDelta::hours(1),
+                requirements: "".into(),
+                public_place_id: Uuid::new_v4(),
+            },
+            Utc::now(),
+        )?;
+        sqlx::query("insert into concert_community_parties(event_id,party_id,owner_id,revision,state,member_count,capacity,meeting_revision,audience_revision,aggregate) values($1,$2,$3,1,'OPEN',1,4,$4,$5,$6)")
+            .bind(s.event.uuid()).bind(party.id).bind(party.owner).bind(party.meeting_revision)
+            .bind(party.audience_revision).bind(serde_json::to_value(&party)?).execute(&s.concert).await?;
+        sqlx::query("insert into concert_community_members(event_id,party_id,user_id,is_owner,state,revision) values($1,$2,$3,true,'ACTIVE',1)")
+            .bind(s.event.uuid()).bind(party.id).bind(party.owner).execute(&s.concert).await?;
+        Ok(party.id)
+    }
+    #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+    #[ignore = "requires marker-owned four-owner driver controller"]
+    async fn native_driver_rollback_recovery_commit_and_replay() -> anyhow::Result<()> {
+        Box::pin(driver_rollback()).await
+    }
+    async fn driver_rollback() -> anyhow::Result<()> {
+        println!("BE41_SOURCE_PIN={}", owned_source_pin());
+        let s = qualified::Stack::new().await?;
+        let party = seed_party(&s).await?;
+        let intent = qualified::ticket(
+            &s.repo(),
+            &s.subject,
+            s.room,
+            s.anchor.utc + chrono::TimeDelta::seconds(60),
+            141,
+        )
+        .await?;
+        let old = s
+            .bridge
+            .admit(intent, Uuid::new_v4())
+            .await
+            .map_err(|_| anyhow::anyhow!("four-owner admission"))?;
+        CanonicalAuthorityPort::install_pending(&s.bridge, &old, s.now()).unwrap();
+        assert!(CanonicalAuthorityPort::publication_ready(&s.bridge, &old));
+        let driver = ReadOnlyCommandDriver::new(
+            qualified::OperatorFixture,
+            LaterUnavailable,
+            s.bridge.clone(),
+        )
+        .unwrap();
+        let actor = qualified::actor(&s);
+        let key = Uuid::new_v4();
+        let operation = EffectKey {
+            event: actor.event,
+            job: start_job_id(actor, key),
+            step: Step::ReadOnly,
+        }
+        .operation_id();
+        // Fail AFTER actual World/community work, at composite receipt insertion.
+        // Private disposable database only; no production helper is substituted.
+        sqlx::raw_sql("create function be41_driver_fail() returns trigger language plpgsql as $$ begin raise exception 'owned composite rollback'; end $$; create trigger be41_driver_failure before insert on concert_closure_read_only_barriers for each row execute function be41_driver_fail();")
+            .execute(&s.concert).await?;
+        assert!(matches!(
+            driver
+                .command(actor, key, qualified::start(), &qualified::keys())
+                .await,
+            Err(CommandError::Unavailable)
+        ));
+        let phase: String =
+            sqlx::query_scalar("select phase from concert_events where event_id=$1")
+                .bind(actor.event)
+                .fetch_one(&s.concert)
+                .await?;
+        assert_eq!(phase, "OPEN");
+        let state: String = sqlx::query_scalar(
+            "select state from concert_community_parties where event_id=$1 and party_id=$2",
+        )
+        .bind(actor.event)
+        .bind(party)
+        .fetch_one(&s.concert)
+        .await?;
+        assert_eq!(state, "OPEN");
+        let effects:i64=sqlx::query_scalar("select (select count(*) from concert_closure_jobs where event_id=$1)+(select count(*) from concert_world_read_only_receipts where event_id=$1)+(select count(*) from concert_closure_community_barriers where event_id=$1)+(select count(*) from concert_closure_read_only_barriers where event_id=$1)").bind(actor.event).fetch_one(&s.concert).await?;
+        assert_eq!(effects, 0);
+        assert!(
+            CanonicalAuthorityPort::current(&s.bridge, &old, s.now()).is_err(),
+            "rollback must not restore cached grants"
+        );
+        let blocked = qualified::ticket(
+            &s.repo(),
+            &s.subject,
+            s.room,
+            s.anchor.utc + chrono::TimeDelta::seconds(60),
+            142,
+        )
+        .await?;
+        assert!(
+            s.bridge.admit(blocked, Uuid::new_v4()).await.is_err(),
+            "failed command keeps native pending removal"
+        );
+        sqlx::raw_sql("drop trigger be41_driver_failure on concert_closure_read_only_barriers; drop function be41_driver_fail();").execute(&s.concert).await?;
+        // Explicit fixture recovery: committed OPEN was re-read above; old views
+        // stay invalid. A fresh admission rechecks all four real source services.
+        s.bridge.cleanup().await?;
+        s.bridge.finish_invalidation(operation)?;
+        let fresh = qualified::ticket(
+            &s.repo(),
+            &s.subject,
+            s.room,
+            s.anchor.utc + chrono::TimeDelta::seconds(60),
+            143,
+        )
+        .await?;
+        let fresh = s
+            .bridge
+            .admit(fresh, Uuid::new_v4())
+            .await
+            .map_err(|_| anyhow::anyhow!("fresh qualified recovery"))?;
+        CanonicalAuthorityPort::install_pending(&s.bridge, &fresh, s.now()).unwrap();
+        assert!(CanonicalAuthorityPort::publication_ready(&s.bridge, &fresh));
+        assert!(CanonicalAuthorityPort::current(&s.bridge, &old, s.now()).is_err());
+        let receipt = driver
+            .command(actor, key, qualified::start(), &qualified::keys())
+            .await?;
+        assert_eq!(receipt.state, ReceiptState::Succeeded);
+        let replay = driver
+            .command(actor, key, qualified::start(), &qualified::keys())
+            .await?;
+        assert_eq!(replay.id, receipt.id);
+        let binding_count:i64=sqlx::query_scalar("select count(*) from concert_closure_read_only_barriers b join concert_world_read_only_receipts w on (w.event_id,w.job_id,w.operation_id,w.receipt_id,w.revision)=(b.event_id,b.job_id,b.operation_id,b.world_receipt_id,b.world_revision) join concert_closure_community_barriers c on (c.event_id,c.job_id,c.operation_id,c.receipt_id,c.revision)=(b.event_id,b.job_id,b.operation_id,b.community_receipt_id,b.community_revision) where b.event_id=$1").bind(actor.event).fetch_one(&s.concert).await?;
+        assert_eq!(binding_count, 1);
+        let state: String = sqlx::query_scalar(
+            "select state from concert_community_parties where event_id=$1 and party_id=$2",
+        )
+        .bind(actor.event)
+        .bind(party)
+        .fetch_one(&s.concert)
+        .await?;
+        assert_eq!(state, "CANCELLED");
+        assert!(!CanonicalAuthorityPort::publication_ready(
+            &s.bridge, &fresh
+        ));
+        s.finish().await
+    }
+
+    #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+    #[ignore = "requires marker-owned four-owner native driver controller"]
+    async fn native_driver_drains_inflight_socket_before_composite_commit() -> anyhow::Result<()> {
+        Box::pin(driver_socket()).await
+    }
+    async fn driver_socket() -> anyhow::Result<()> {
+        use crate::adapters::r#in::world_ws::{router, SocketTransport, WorldSocketState};
+        use crate::world::{
+            ingress::{OriginPolicy, SafeClose},
+            runtime::WorldRuntime,
+        };
+        use futures::{SinkExt, StreamExt};
+        use serde_json::{json, Value};
+        use std::{
+            sync::atomic::{AtomicBool, AtomicUsize, Ordering},
+            time::{Duration, Instant},
+        };
+        use tokio_tungstenite::{
+            connect_async,
+            tungstenite::{client::IntoClientRequest, Message},
+        };
+        println!("BE41_SOURCE_PIN={}", owned_source_pin());
+        let s = qualified::Stack::new().await?;
+        let _party = seed_party(&s).await?;
+        let transport = SocketTransport::default();
+        let trace = qualified::Trace {
+            native: transport.clone(),
+            paused: Arc::new(AtomicBool::new(false)),
+            waits: Arc::new(AtomicUsize::new(0)),
+            sent: Arc::new(Mutex::new(vec![])),
+            hold_user: Arc::new(Mutex::new(None)),
+            held: Arc::new(AtomicBool::new(false)),
+            release: Arc::new(AtomicBool::new(false)),
+        };
+        let (_, owner, _, _) = s.bridge.invalidation_context();
+        let mut target = qualified::geometry::spec(s.target, 2);
+        target.room_epoch = Uuid::from_u128(7);
+        let runtime = WorldRuntime::new(
+            s.event,
+            owner,
+            s.anchor.clone(),
+            vec![qualified::geometry::spec(s.room, 2), target],
+            s.bridge.clone(),
+            s.bridge.clone(),
+            trace.clone(),
+        )
+        .unwrap();
+        let (started, origin) = runtime.clock_origin();
+        let (handle, task) = runtime.spawn();
+        let handle = Arc::new(handle);
+        let state = WorldSocketState::new(
+            OriginPolicy::new(vec!["http://localhost:9000".into()], true).unwrap(),
+            transport.clone(),
+            s.bridge.clone(),
+            handle.clone(),
+            started,
+            origin,
+        );
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
+        let address = listener.local_addr()?;
+        let (stop, stopped) = tokio::sync::oneshot::channel();
+        let server = tokio::spawn(async move {
+            axum::serve(listener, router(state))
+                .with_graceful_shutdown(async {
+                    let _ = stopped.await;
+                })
+                .await
+                .unwrap()
+        });
+        let mut request = format!("ws://{address}/world-ws").into_client_request()?;
+        request
+            .headers_mut()
+            .insert("origin", "http://localhost:9000".parse()?);
+        let (mut socket, _) = connect_async(request).await?;
+        let intent = qualified::ticket(
+            &s.repo(),
+            &s.subject,
+            s.room,
+            s.anchor.utc + chrono::TimeDelta::seconds(60),
+            144,
+        )
+        .await?;
+        socket.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"authenticate","ticket":intent.ticket.expose_for_consumption(),"eventId":s.event.uuid(),"roomId":s.room,"mapId":"map_fixture","mapRevision":1,"avatarManifestId":"avatar_fixture","avatarManifestVersion":1}).to_string())).await?;
+        let first = loop {
+            let msg = tokio::time::timeout(Duration::from_secs(2), socket.next())
+                .await?
+                .ok_or_else(|| anyhow::anyhow!("snapshot missing"))??;
+            if let Message::Text(raw) = msg {
+                let v: Value = serde_json::from_str(&raw)?;
+                if v["type"] == "snapshot" {
+                    break v;
+                }
+            }
+        };
+        let binding = trace.sent.lock().unwrap()[0].0.clone();
+        assert!(CanonicalAuthorityPort::publication_ready(
+            &s.bridge, &binding
+        ));
+        *trace.hold_user.lock().unwrap() = Some(qualified::actor(&s).actor);
+        let done = Arc::new(AtomicBool::new(false));
+        let entered = Arc::new(AtomicBool::new(false));
+        let driver = ReadOnlyCommandDriver::new(
+            qualified::OperatorFixture,
+            LaterUnavailable,
+            s.bridge.clone(),
+        )
+        .unwrap();
+        let actor = qualified::actor(&s);
+        let close = {
+            let held = trace.held.clone();
+            let entered = entered.clone();
+            let done = done.clone();
+            tokio::spawn(async move {
+                let began = Instant::now();
+                while !held.load(Ordering::Acquire) {
+                    anyhow::ensure!(
+                        began.elapsed() < Duration::from_secs(1),
+                        "native handoff not reached"
+                    );
+                    tokio::time::sleep(Duration::from_millis(1)).await;
+                }
+                entered.store(true, Ordering::Release);
+                let receipt = driver
+                    .command(
+                        actor,
+                        Uuid::new_v4(),
+                        qualified::start(),
+                        &qualified::keys(),
+                    )
+                    .await;
+                done.store(true, Ordering::Release);
+                Ok::<_, anyhow::Error>(receipt?)
+            })
+        };
+        // A real native send runs under World's publication mutex. The driver
+        // must wait for that send before dropping views or starting its SQL close.
+        let release = {
+            let held = trace.held.clone();
+            let entered = entered.clone();
+            let done = done.clone();
+            let release = trace.release.clone();
+            std::thread::spawn(move || {
+                let began = Instant::now();
+                while !(held.load(Ordering::Acquire) && entered.load(Ordering::Acquire)) {
+                    assert!(began.elapsed() < Duration::from_secs(1));
+                    std::thread::sleep(Duration::from_millis(1));
+                }
+                std::thread::sleep(Duration::from_millis(60));
+                let blocked = !done.load(Ordering::Acquire);
+                release.store(true, Ordering::Release);
+                blocked
+            })
+        };
+        socket.send(Message::Text(json!({"protocolVersion":"1.0.0","type":"input","streamId":first["streamId"],"roomEpoch":first["roomEpoch"],"seq":1,"axisX":1,"axisY":0,"buttons":[]}).to_string())).await?;
+        let receipt = tokio::time::timeout(Duration::from_secs(3), close).await???;
+        assert!(
+            release.join().unwrap(),
+            "driver passed an in-flight native socket handoff"
+        );
+        assert_eq!(receipt.state, ReceiptState::Succeeded);
+        let committed = Instant::now();
+        assert!(!CanonicalAuthorityPort::publication_ready(
+            &s.bridge, &binding
+        ));
+        let before = trace.sent.lock().unwrap().len();
+        tokio::time::sleep(Duration::from_millis(120)).await;
+        assert!(trace
+            .sent
+            .lock()
+            .unwrap()
+            .iter()
+            .skip(before)
+            .all(|(_, v, at)| *at < committed
+                || !matches!(v["type"].as_str(), Some("snapshot" | "delta"))));
+        let counts:(String,i64,i64,i64)=sqlx::query_as("select phase,(select count(*) from concert_world_owner_leases where event_id=$1),(select count(*) from concert_closure_read_only_barriers where event_id=$1),(select count(*) from concert_community_parties where event_id=$1 and state='CANCELLED') from concert_events where event_id=$1").bind(actor.event).fetch_one(&s.concert).await?;
+        assert_eq!(counts, ("READ_ONLY".into(), 0, 1, 1));
+        let _ = socket.close(None).await;
+        transport.close_all(SafeClose::UNAVAILABLE);
+        handle.request_stop();
+        tokio::time::timeout(Duration::from_secs(2), task).await??;
+        let _ = stop.send(());
+        tokio::time::timeout(Duration::from_secs(2), server).await??;
+        s.finish().await
+    }
 }

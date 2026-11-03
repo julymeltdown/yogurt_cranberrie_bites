@@ -27,10 +27,53 @@ def run(args, **kw):
         # Fixture-only diagnostics; do not lose the native assertion behind check=True.
         raise RuntimeError(f'Owned command failed ({failure.returncode}):\n{failure.stdout[-12000:]}\n{failure.stderr[-4000:]}') from None
 
+def driver_suite(binary, pin):
+    # Reuse the World-owned private-cluster marker protocol, not its test selection.
+    # Four actual guarded services; operator role and avatar metadata are fixtures.
+    import migration_smoke as migration
+    tools={name:migration.executable(Path(shutil.which(name) or '')) for name in migration.PG_TOOLS}
+    if shutil.disk_usage(ROOT).free < 8*1024**3: raise RuntimeError('8 GiB floor required')
+    binary=migration.executable(binary)
+    names=['event_lifecycle::read_only::tests::native_driver_rollback_recovery_commit_and_replay',
+           'event_lifecycle::read_only::tests::native_driver_drains_inflight_socket_before_composite_commit']
+    listing=run([str(binary),'--list']).stdout
+    if any(name+': test' not in listing for name in names): raise AssertionError('Driver tests absent')
+    cluster=migration.Cluster(tools)
+    evidence={'scope':'actual four-owner driver/composite/native socket; synthetic operator-role and avatar metadata; not root wiring or full BE41 acceptance',
+              'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'owned_source_pin':pin,'runs':[], 'source_hashes':{}}
+    try:
+        cluster.init(); cluster.start()
+        urls={}
+        for owner in ['auth','friend','profile','concert']:
+            db=f'mcr_{owner}_world_read_only'
+            cluster.sql('postgres',f'create database {db} template template0;')
+            for path in sorted((ROOT/f'backend/services/{owner}-service/migrations').glob('*.sql')):
+                cluster.sql(db,path.read_text())
+                evidence['source_hashes'][str(path.relative_to(ROOT))]=hashlib.sha256(path.read_bytes()).hexdigest()
+            urls[owner]=cluster.url(db)
+        env={**cluster.env,'MCR_WORLD_READ_ONLY_ROOT':str(cluster.root),'MCR_WORLD_READ_ONLY_TOKEN':cluster.token,
+             'MCR_WORLD_READ_ONLY_IDENTITY':f'{cluster.identity[0]}:{cluster.identity[1]}',
+             **{f'MCR_WORLD_READ_ONLY_{owner.upper()}_URL':url for owner,url in urls.items()}}
+        for name in names:
+            result=subprocess.run([str(binary),'--ignored','--exact',name,'--nocapture','--test-threads=1'],env=env,cwd=cluster.root,capture_output=True,text=True,timeout=45)
+            raw=result.stdout+result.stderr
+            if any(secret and secret in raw for secret in [cluster.password,cluster.token,*urls.values()]): raise RuntimeError('Native output requires redaction')
+            if result.returncode or 'test result: ok. 1 passed; 0 failed; 0 ignored;' not in result.stdout:
+                raise RuntimeError(f'Driver test failed ({result.returncode}): {raw[-12000:]}')
+            if set(re.findall(r'BE41_SOURCE_PIN=([a-f0-9]{64})',raw))!={pin}: raise AssertionError('Driver compiled source mismatch')
+            evidence['runs'].append({'test':name,'exit_code':0,'output':raw})
+        evidence['result']='PASS'
+    finally:
+        cluster.cleanup()
+        if cluster.root.exists(): raise RuntimeError('Owned driver cluster remains')
+        evidence['cleanup']='PASS'
+    return evidence
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--native-binary', type=Path, action='append', default=[])
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--native-driver-binary', type=Path)
     args = parser.parse_args()
     for binary in ['initdb','pg_ctl','psql']:
         if not shutil.which(binary): raise SystemExit(f'{binary} is required')
@@ -156,7 +199,10 @@ def main():
                     'backend/services/concert-service/src/world/production_owners.rs',
                     'backend/services/concert-service/src/world/admission_bridge.rs',
                     'backend/services/concert-service/src/world/invalidation/mod.rs',
-                    'backend/services/concert-service/src/world/invalidation/store.rs']]
+                    'backend/services/concert-service/src/world/invalidation/store.rs',
+                    'backend/services/concert-service/tests/world_read_only_support/qualified.rs',
+                    'backend/services/concert-service/tests/world_read_only_support/owned.rs',
+                    'backend/services/concert-service/tests/world_read_only_support/geometry.rs']]
                 source_pin=hashlib.sha256()
                 for source in sources:
                     source_pin.update(str(source.relative_to(ROOT)).encode()+b'\0'+source.read_bytes()+b'\0')
@@ -191,6 +237,9 @@ def main():
                     native.append({'exit_code':0,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'owned_source_pin':pin,'output':result.stdout})
                 if found!=expected:raise AssertionError('Incomplete native test suite')
                 evidence['native_adapter_suite']=native
+            if args.native_driver_binary:
+                if not args.native_binary: raise AssertionError('Driver qualification requires all three lifecycle binaries')
+                evidence['native_driver_suite']=driver_suite(args.native_driver_binary, pin)
             evidence['result']='PASS'
         finally:
             stop()

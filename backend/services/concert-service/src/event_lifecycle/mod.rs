@@ -121,6 +121,18 @@ pub fn owned_source_pin() -> String {
             "backend/services/concert-service/src/world/invalidation/store.rs",
             include_str!("../world/invalidation/store.rs"),
         ),
+        (
+            "backend/services/concert-service/tests/world_read_only_support/qualified.rs",
+            include_str!("../../tests/world_read_only_support/qualified.rs"),
+        ),
+        (
+            "backend/services/concert-service/tests/world_read_only_support/owned.rs",
+            include_str!("../../tests/world_read_only_support/owned.rs"),
+        ),
+        (
+            "backend/services/concert-service/tests/world_read_only_support/geometry.rs",
+            include_str!("../../tests/world_read_only_support/geometry.rs"),
+        ),
     ];
     let mut hash = Sha256::new();
     for (path, source) in sources {
