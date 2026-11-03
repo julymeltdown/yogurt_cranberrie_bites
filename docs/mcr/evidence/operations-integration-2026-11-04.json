@@ -1,0 +1,65 @@
+{
+  "author": "a93a04135a0ba44da3993a5df187e63da51ec75a",
+  "author_base": "1163b827f9e62390163788bb674d24855816e0ec",
+  "integration_base": "d3b7c38268924d2db6bcdefce7bb84b86dafe329",
+  "paths": [
+    "backend/crates/concert-application/src/admin/event.rs",
+    "backend/crates/concert-application/src/admin/mod.rs",
+    "backend/crates/concert-application/src/admin/notices.rs",
+    "backend/crates/concert-application/src/admin/places.rs",
+    "backend/crates/concert-application/src/lib.rs",
+    "backend/crates/concert-application/src/report/mod.rs",
+    "backend/crates/concert-domain/src/lib.rs",
+    "backend/crates/concert-domain/src/report/mod.rs",
+    "backend/scripts/mcr/operations_smoke.py",
+    "backend/scripts/mcr/test_operations_smoke.py",
+    "backend/services/concert-service/migrations/0021_moderation_operations.sql",
+    "backend/services/concert-service/src/adapters/out/repository.rs",
+    "backend/services/concert-service/src/adapters/out/repository/event_operations.rs",
+    "backend/services/concert-service/src/adapters/out/repository/place.rs",
+    "backend/services/concert-service/src/adapters/out/repository/place/operations.rs",
+    "backend/services/concert-service/src/adapters/out/repository/report.rs",
+    "backend/services/concert-service/tests/event_operations.rs",
+    "backend/services/concert-service/tests/operations_support/mod.rs",
+    "backend/services/concert-service/tests/place_operations.rs",
+    "backend/services/concert-service/tests/report.rs",
+    "docs/mcr/backend/moderation-operations.md"
+  ],
+  "source_pins": 229,
+  "contract_pins": {
+    "admin.schema.json": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+    "feed.schema.json": "590cce6afc00c7a869b5a9711104550ba280ffa5875c9dc49a0753d272320801",
+    "operations.json": "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839",
+    "policy.json": "81b0da4c007543765f120c4ea58163cc1eadea41e10d24db54e1d177ef4e5fbb"
+  },
+  "native_report_sha256": "c028e086dc25f8a25be60afb96775f24b2ca1a19e5ae191481a452e47818a791",
+  "native_unique_cases": 17,
+  "shared_file_changes": "Only existing intro module exports differ; preserve them. World recipient export also retained.",
+  "checks": [
+    {
+      "command": "current concert-service report/event_operations/place_operations --no-run --locked --offline",
+      "first_exit_code": 101,
+      "first_failure": "retained build-script protoc paths referenced prior worktree",
+      "remediation": "clean33workspace-localpackages only;385files629MiB;third-partydepspreserved",
+      "final_exit_code": 0,
+      "final_build_seconds": 15.95
+    }
+  ],
+  "delivered_source": "b99e0929dff7f33bb3e496ff605614cdacddf5b1",
+  "compiled_test_executables": {
+    "event_operations": {
+      "sha256": "9ebca62648b827155b419efd9a73ff6d8c0cf4b2b17dfffe836d596c769db2ca",
+      "path": "/private/tmp/mcr-operations-current-compile/event_operations"
+    },
+    "report": {
+      "sha256": "de0e99c184215e510055197f4fd9cf0ac3cc838c53e9fdca60b8ce41bf157631",
+      "path": "/private/tmp/mcr-operations-current-compile/report"
+    },
+    "place_operations": {
+      "sha256": "ae3d5f3c19636fb7e84dd1ec1a13f6f416277d3b77855d83901a7936287f5af1",
+      "path": "/private/tmp/mcr-operations-current-compile/place_operations"
+    }
+  },
+  "delivered_bytes": "19exactauthorpaths+2sharedfileswithpreservedintroexport",
+  "native_validation": "author-source-bound17cases retained; Main current combined compilation PASS; no second native run"
+}
