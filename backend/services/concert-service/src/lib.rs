@@ -8,3 +8,5 @@ pub mod bootstrap;
 pub mod workers {
     pub mod outbox;
 }
+
+pub mod relationship;

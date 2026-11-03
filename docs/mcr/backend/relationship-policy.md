@@ -68,3 +68,103 @@ internal assertions as request-body fields or infer them from caller roles.
 Deliver only assigned relationship directories/tests/scripts, three exact module
 exports, reserved migration 0006 and this document. Integration, real authority
 wiring, transports and remote master publication belong to delivery.
+
+## Persisted implementation
+
+`concert-service/src/relationship` provides `PgRelationshipPolicy::authorize_in`,
+`FencedRelationshipAuthority`, a BE15 `BlockCommand`, managed-key crypto,
+`SocialService`, and the dedicated reveal response adapter. `SafetyInteraction`
+permits READ_ONLY cross-user privacy-restricting commands after the producer
+checks its own resource ownership; ordinary Interaction still requires OPEN/LIVE.
+The generic safety field retains block and restriction checks. Block/revoke/remove
+producers additionally permit actor-owned safety actions against a now restricted
+counterpart without restoring any authority to that counterpart.
+
+Migration `0006_relationship_policy.sql` is exclusively owned by this lane. It
+adds normalized directional event-local block pairs, versioned encrypted handles,
+requests, unique platform consent bindings and reciprocal grants. SQL guards check
+initial revisions, immutable scope, monotone tombstones, state transitions and
+grant-to-request/version bindings. An inherited Friend block remains a separate
+owning-service decision. Local unblock advances the pair revision and never
+reactivates requests/grants. A genuinely fenced owner revision is also captured
+at request creation so an inherited block/unblock cannot revive old consent.
+
+Normal policy lock order is event/share, normalized pair/update, sorted
+participants/share, then fenced authority. Social mutations and block mutations
+first take event/update, then their pair/request/handle locks. This intentionally
+serializes event social writes and closure for correctness. It is not measured
+capacity or a claim that this coarse lock strategy meets the load target. Reveal
+holds event/pair/request/grant/handle locks through secret materialization and
+commit. External owners must independently fence their authority; Concert locks
+cannot protect another service's database.
+
+`SocialService` builds its own canonical BE15 request from typed command input;
+callers cannot provide an unrelated hash/body. Creation derives a stable request
+UUID from event, actor and idempotency key so uncertain identical retries refer to
+one target. Explicit requester consent, selected unique platforms, current handle
+versions, current intro/claim eligibility and reciprocal recipient approval are
+checked before grants. Every mutation and safe outbox reference commits in the
+same BE15 transaction; failed outbox insertion rolls back effects and receipts.
+
+Handles normalize to lower-case under platform-specific frozen rules. AES-256-GCM
+uses ring 0.17.14, random 96-bit nonces and framed associated data containing event,
+owner, platform, version and key ID. `ManagedHandleKey`/`HandleKeys` accept trusted
+managed key material; no default key, environment reader or plaintext logging is
+provided. Retained keys permit rotation; missing keys and tampering fail closed.
+Key IDs must never be reused for different material. Key provisioning, rotation
+operations and production secret configuration require composition qualification.
+Replacement/removal revoke pending requests and active grants, retain monotonically
+increasing versions, and erase ciphertext on removal. Ordinary receipts and owner
+metadata contain no handles or cipher/key material. `PrivateHandle` and
+`PrivateReveal` do not implement ordinary serialization and Debug redacts secrets.
+
+Reveal rechecks exact actor/event/request/platform, both current memberships and
+restrictions, current intro/claim eligibility, current pair and fenced owner
+revisions, request approval/expiry, two reciprocal ACTIVE grants, exact owner and
+peer versions, configured handles and current event state. It returns only the
+counterpart handle. The response adapter explicitly allowlists the C04 reveal
+fields and sets `Cache-Control: no-store` for success and errors; errors disclose
+no counterpart/request/handle metadata. A private reveal is not a public profile.
+Revoke cannot erase information another person previously saw or copied.
+
+`SocialEligibility::check_in` is a separate transaction-fenced current intro and
+claim port; caller assertions never establish a sharing offer or verified age.
+`UnavailableSocialEligibility` is the default. The upstream authority worker is
+implementing bounded owner observations with a revision vector; those observations
+are explicitly NOT the fenced mutation/reveal contract and are not converted to
+its scalar revision. No distributed guarantee is invented here.
+
+## Verification and delivery limits
+
+Native preliminary SQL runs used a fresh marker/inode-owned PG16 cluster, applied
+exact migrations 0001/2/3 and owned 0006 transactionally, restarted a real
+postmaster, verified a retained block and cleaned up the owned root. They passed
+with repository Rust tests explicitly NOT_RUN; records are
+`/tmp/mcr-relationship-sql-first.json`, `-sql-social.json` and `-sql-guards.json`.
+The first record predates the appended private-social tables; later records pin
+individual migration/source hashes. These are preliminary evidence, not the final
+producer qualification or an SQLx runtime migration-ledger claim.
+
+The native runner reuses the existing ownership-safe `migration_smoke.Cluster`
+and `concert_core_smoke` helpers without editing them. The Rust owned-pool fixture
+is adapted from `concert-service/tests/command_receipts.rs` at base f0e44bd into
+`tests/support/relationship/mod.rs`, changing only the fixture database name and
+visibility. This test-helper reuse is the only copied implementation in this slice.
+The ring manifest/lock dependency edge is delivery-owned source commit 0c161d7,
+cherry-picked as 5eb6598, with no new resolved package/version.
+
+Pending at this documentation checkpoint: shared-target Cargo validation, the
+real PG Rust producer suite, committed final evidence and handoff. Gateway route,
+RPC/startup composition, real Auth/Friend fencing, real intro/claim authority,
+real users/browser privacy flows, PostgreSQL17, mobile devices and load gates are
+NOT_RUN. Full BE37/BE28–30 and IN03 acceptance remain IN_PROGRESS.
+
+The final authored migration also installs deferred transaction-end guards on
+pair/handle/request/grant writes. The adapter pins the earliest trusted authority
+and sharing-eligibility deadline in a transaction-local setting; deferred guards
+reject expiry after apply but before receipt/outbox commit. The setting itself is
+not authentication and is set only after qualified port checks. Reveal performs
+a final database-time check after decryption. Direct administrative writes require
+separately reviewed authority; test fixture writes explicitly inject test deadlines.
+The additional preliminary SQL/deadline migration and restart run passed with
+cleanup at `/tmp/mcr-relationship-sql-deadline.json`; Rust tests remain pending.

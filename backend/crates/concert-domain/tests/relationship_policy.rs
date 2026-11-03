@@ -103,3 +103,40 @@ fn own_safety_and_readonly_public_projection() {
     s.authority.query = s.query;
     assert!(decide(s).is_ok());
 }
+
+#[test]
+fn platform_normalization_and_invalid_inputs() {
+    use concert_domain::relationship::social::*;
+    assert_eq!(
+        PrivateHandle::normalize(Platform::Instagram, "Some.Name")
+            .unwrap()
+            .expose_for_reveal(),
+        "some.name"
+    );
+    for bad in [
+        "", "@name", ".name", "name.", "a..b", "a b", "a/b", "한글", "a\nb",
+    ] {
+        assert!(
+            PrivateHandle::normalize(Platform::Instagram, bad).is_err(),
+            "{bad}"
+        );
+    }
+    assert!(PrivateHandle::normalize(Platform::X, "dot.name").is_err());
+    assert!(PrivateHandle::normalize(Platform::X, "sixteenlettersxx").is_err());
+    assert!(!format!(
+        "{:?}",
+        PrivateHandle::normalize(Platform::Instagram, "private.name").unwrap()
+    )
+    .contains("private.name"));
+}
+
+#[test]
+fn cross_user_safety_in_readonly_still_checks_blocks() {
+    let mut s = snapshot();
+    s.phase = EventPhase::ReadOnly;
+    s.query.field = Field::SafetyInteraction;
+    s.authority.query = s.query;
+    assert!(decide(s).is_ok());
+    s.blocked = true;
+    assert_eq!(decide(s), Err(RelationshipError::Denied));
+}

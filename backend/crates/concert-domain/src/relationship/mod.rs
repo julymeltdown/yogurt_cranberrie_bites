@@ -9,6 +9,8 @@ pub enum Field {
     Interaction,
     /// Own safety operations only; target ownership/lifecycle stays with the producer.
     SafetySelf,
+    /// Privacy-restricting cross-user operations; producer proves target ownership.
+    SafetyInteraction,
     /// A generic relationship decision can never grant handle access. Use the
     /// reciprocal, platform/version-bound reveal use case in its own transaction.
     PrivateHandle,
@@ -125,3 +127,5 @@ pub fn decide(s: PolicySnapshot) -> Result<PolicyDecision, RelationshipError> {
         valid_until: a.valid_until,
     })
 }
+
+pub mod social;
