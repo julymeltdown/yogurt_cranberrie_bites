@@ -38,7 +38,10 @@ it('uses actual FE13 verified PUT callback to refresh ME from the canonical GET,
   await owner.me.load();owner.avatar.start();await vi.waitFor(()=>expect(owner.avatar.read().phase).toBe('ready'))
   expect(owner.avatar.selectItem('accessory',null)).toBe(true);expect(await owner.avatar.save()).toBe(true)
   await vi.waitFor(()=>expect(owner.me.read().participant?.profile.avatar.revision).toBe(2))
-  expect(owner.me.read().participant?.profile.avatar.config.item_ids.accessory).toBeNull()
+  const config=owner.me.read().participant?.profile.avatar.config
+  expect(config?.contract_version).toBe('1.0.0')
+  if(config?.contract_version!=='1.0.0')throw new Error('Expected the retained layered fixture')
+  expect(config.item_ids.accessory).toBeNull()
   expect(f.fetcher.mock.calls.every(([input])=>!(input as Request).url.includes('/bootstrap'))).toBe(true)
   expect(createReviewedAvatarPreview).toHaveBeenCalledWith(expect.objectContaining({document:manifest,pin:expect.objectContaining({content_hash:manifest.content_hash}),binding:assets.binding}))
   owner.dispose();f.dispose()

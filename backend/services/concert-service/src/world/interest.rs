@@ -2,7 +2,7 @@
 use super::simulation::{
     Binding, MembershipPort, PlayerState, Simulation, AUTH_LEASE_MAX_MS, ROOM_CAPACITY,
 };
-use concert_domain::{world::MAX_SEQUENCE, AvatarSelection, Revision};
+use concert_domain::{avatar::config_value, world::MAX_SEQUENCE, AvatarSelection, Revision};
 use serde_json::{json, Value};
 use std::collections::{BTreeMap, BTreeSet};
 use uuid::Uuid;
@@ -46,16 +46,11 @@ pub struct ProjectedPlayer {
 }
 impl ProjectedPlayer {
     pub fn wire(&self, user: Uuid) -> Value {
-        let a = &self.identity.avatar;
         json!({"userId":user,"displayName":self.identity.display_name,
             "position":{"x":self.state.position.x,"y":self.state.position.y},
             "facing":self.identity.facing.wire(),"moving":self.identity.moving,
-            "avatar":{"revision":self.identity.avatar_revision.get(),"config":{
-                "contract_version":"1.0.0","kind":"avatar_config",
-                "manifest_id":a.manifest_id.as_str(),"manifest_version":a.manifest_version.get(),
-                "item_ids":{"body":a.body.as_str(),"eyes":a.eyes.as_str(),"hair":a.hair.as_str(),
-                "outfit":a.outfit.as_str(),"accessory":a.accessory.as_ref().map(|x|x.as_str())},
-                "skin_tone_id":a.skin_tone.as_str()}}})
+            "avatar":{"revision":self.identity.avatar_revision.get(),
+                "config":config_value(&self.identity.avatar)}})
     }
 }
 /// Immutable snapshot of a single serialized BE12 advance. This is not a public roster.

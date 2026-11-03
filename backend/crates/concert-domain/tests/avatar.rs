@@ -96,3 +96,71 @@ fn bounded_unambiguous_input_without_urls_or_extra_fields() {
     c["item_ids"]["extra"] = "hidden".into();
     assert!(SetAvatar::parse(&request(c)).is_err());
 }
+
+fn selected_manifest() -> Value {
+    serde_json::from_str(include_str!(
+        "../../../../contracts/fixtures/assets/selected-static/avatar-manifest.json"
+    ))
+    .unwrap()
+}
+#[test]
+fn selected_six_roundtrip_and_strict_exclusive_union() {
+    let manifest = selected_manifest();
+    let selected = AvatarCatalog::from_validated_manifest(&manifest).unwrap();
+    for preset in manifest["presets"].as_array().unwrap() {
+        let config = &preset["config"];
+        let command = SetAvatar::parse(&request(config.clone())).unwrap();
+        selected.validate(&command.selection).unwrap();
+        assert_eq!(config_value(&command.selection), *config);
+        assert!(catalog().validate(&command.selection).is_err());
+        for (key, value) in [
+            ("item_ids", json!({})),
+            ("skin_tone_id", json!("tone_fixture")),
+            ("url", json!("https://evil.invalid/a.png")),
+            ("frame", json!(0)),
+            ("extra", json!(null)),
+            ("preset_id", json!("photo01_front_07")),
+            ("manifest_id", json!("other")),
+            ("manifest_version", json!(2)),
+            ("representation", json!("layered")),
+            ("contract_version", json!("1.0.0")),
+        ] {
+            let mut invalid = config.clone();
+            invalid[key] = value;
+            assert!(SetAvatar::parse(&request(invalid)).is_err(), "{key}");
+        }
+        for key in [
+            "kind",
+            "contract_version",
+            "manifest_id",
+            "manifest_version",
+            "representation",
+            "preset_id",
+        ] {
+            let mut invalid = config.clone();
+            invalid.as_object_mut().unwrap().remove(key);
+            assert!(
+                SetAvatar::parse(&request(invalid)).is_err(),
+                "missing {key}"
+            );
+        }
+        let bytes = String::from_utf8(request(config.clone())).unwrap();
+        for key in ["contract_version", "preset_id", "representation"] {
+            let needle = format!("\"{key}\":");
+            let duplicate = bytes.replacen(&needle, &format!("\"{key}\":null,{needle}"), 1);
+            assert!(
+                SetAvatar::parse(duplicate.as_bytes()).is_err(),
+                "duplicate {key}"
+            );
+        }
+    }
+    assert!(selected
+        .validate(&SetAvatar::parse(&request(config())).unwrap().selection)
+        .is_err());
+    let mut invalid = manifest.clone();
+    invalid["presets"][5] = invalid["presets"][0].clone();
+    assert!(AvatarCatalog::from_validated_manifest(&invalid).is_err());
+    invalid = manifest.clone();
+    invalid["default_preset_id"] = json!("missing");
+    assert!(AvatarCatalog::from_validated_manifest(&invalid).is_err());
+}

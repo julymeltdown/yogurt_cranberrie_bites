@@ -1,5 +1,6 @@
 import type { ActiveScope, ShellBootstrap } from '../../../app/ports'
 import { projectCapabilities } from '../../../app/capabilities'
+import { validateManifest as validateAvatarManifest, validateConfig as validateAvatarConfig } from '../../../entities/avatar/whole-admission'
 import { canonicalJson, decodeContract, equal, list, number, object, requireValue, text, type ObjectValue } from './contract'
 
 export { canonicalJson } from './contract'
@@ -28,26 +29,35 @@ async function validateBundle(bootstrap: ObjectValue) {
     const { content_hash, ...body } = document
     requireValue(content_hash === await digest(body))
   }))
-  const atlas = object(avatar.atlas), texture = object(atlas.texture)
-  const items = unique(atlas.items, 'item_id'), tones = unique(avatar.skin_tones, 'skin_tone_id'), presets = unique(avatar.presets, 'preset_id')
-  const layers = ['body', 'eyes', 'hair', 'outfit', 'accessory']
-  requireValue(presets.has(text(avatar.fallback_preset_id))
-    && sameSet([...new Set([...items.values()].map(item => item.layer_id))], layers))
-  requireValue(number(texture.width_px) % 64 === 0 && number(texture.height_px) % 64 === 0)
-  const occupied = new Set<string>()
-  for (const item of items.values()) {
-    const r = object(item.region), x = number(r.x), y = number(r.y), w = number(r.width_px), h = number(r.height_px)
-    requireValue(x % 64 === 0 && y % 64 === 0 && x + w <= number(texture.width_px) && y + h <= number(texture.height_px))
-    for (let row = y / 64; row < (y + h) / 64; row++) for (let col = x / 64; col < (x + w) / 64; col++) {
-      const cell = `${col},${row}`; requireValue(!occupied.has(cell)); occupied.add(cell)
+  if (avatar.contract_version === '1.1.0') {
+    const checked = await validateAvatarManifest(canonicalJson(avatar), {
+      manifest_id: text(avatar.manifest_id), manifest_version: number(avatar.manifest_version), content_hash: text(avatar.content_hash),
+    })
+    requireValue(checked.contract_version === '1.1.0')
+    validateAvatarConfig(object(bootstrap.avatar).config, checked)
+  } else {
+    requireValue(avatar.contract_version === '1.0.0')
+    const atlas = object(avatar.atlas), texture = object(atlas.texture)
+    const items = unique(atlas.items, 'item_id'), tones = unique(avatar.skin_tones, 'skin_tone_id'), presets = unique(avatar.presets, 'preset_id')
+    const layers = ['body', 'eyes', 'hair', 'outfit', 'accessory']
+    requireValue(presets.has(text(avatar.fallback_preset_id))
+      && sameSet([...new Set([...items.values()].map(item => item.layer_id))], layers))
+    requireValue(number(texture.width_px) % 64 === 0 && number(texture.height_px) % 64 === 0)
+    const occupied = new Set<string>()
+    for (const item of items.values()) {
+      const r = object(item.region), x = number(r.x), y = number(r.y), w = number(r.width_px), h = number(r.height_px)
+      requireValue(x % 64 === 0 && y % 64 === 0 && x + w <= number(texture.width_px) && y + h <= number(texture.height_px))
+      for (let row = y / 64; row < (y + h) / 64; row++) for (let col = x / 64; col < (x + w) / 64; col++) {
+        const cell = `${col},${row}`; requireValue(!occupied.has(cell)); occupied.add(cell)
+      }
     }
-  }
-  for (const config of [object(object(bootstrap.avatar).config), ...[...presets.values()].map(p => object(p.config))]) {
-    requireValue(config.manifest_id === avatar.manifest_id && config.manifest_version === avatar.manifest_version
-      && tones.has(text(config.skin_tone_id)))
-    for (const [layer, id] of Object.entries(object(config.item_ids))) {
-      if (layer === 'accessory' && id === null) continue
-      requireValue(items.get(text(id))?.layer_id === layer)
+    for (const config of [object(object(bootstrap.avatar).config), ...[...presets.values()].map(p => object(p.config))]) {
+      requireValue(config.manifest_id === avatar.manifest_id && config.manifest_version === avatar.manifest_version
+        && tones.has(text(config.skin_tone_id)))
+      for (const [layer, id] of Object.entries(object(config.item_ids))) {
+        if (layer === 'accessory' && id === null) continue
+        requireValue(items.get(text(id))?.layer_id === layer)
+      }
     }
   }
   const geometry = object(map.geometry), width = number(geometry.width_cells), height = number(geometry.height_cells)

@@ -6,7 +6,20 @@ use uuid::Uuid;
 pub async fn qualify(server: &PgPool) -> anyhow::Result<()> {
     let directory = Path::new(env!("CARGO_MANIFEST_DIR")).join("migrations");
     let full = Migrator::new(directory.clone()).await?;
-    assert_eq!(full.iter().last().unwrap().version, 18);
+    assert_eq!(
+        full.iter().map(|m| m.version).collect::<Vec<_>>(),
+        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 18, 19, 20, 21, 22, 23, 24, 25],
+        "every assigned migration must be present exactly once and ordered"
+    );
+    use sha2::{Digest, Sha256};
+    assert_eq!(
+        format!(
+            "{:x}",
+            Sha256::digest(std::fs::read(directory.join("0018_event_lifecycle.sql"))?)
+        ),
+        "8a93ed7e1b02345c3071cb0583384d61bb1e0b509e8939daf568f9ea352e2cb0",
+        "published 0018 cannot change during forward qualification"
+    );
     let baseline = Migrator {
         migrations: Cow::Owned(full.iter().filter(|m| m.version < 18).cloned().collect()),
         ..Migrator::DEFAULT

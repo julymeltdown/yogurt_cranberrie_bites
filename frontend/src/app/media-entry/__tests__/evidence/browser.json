@@ -1,0 +1,108 @@
+{
+  "result": "PASS",
+  "qualification": "Isolated loopback HTTP fixture with synthetic authorized parent rows/identity/photos; actual canonical SessionController + privacy + shared reader and production FeedImage. Gift rendering here is a fixture, root GiftImage binding remains owner work. No live services/readiness/device claim.",
+  "errors": [],
+  "cases": [
+    {
+      "initialRequestsBeforeConsumer": 0,
+      "coldPostRequests": 2,
+      "warmPostAdditionalRequests": 0,
+      "giveawayAdditionalRequests": 2,
+      "serverResponses": [
+        {
+          "purpose": "POST",
+          "kind": "metadata",
+          "responseBodyBytes": 269
+        },
+        {
+          "purpose": "POST",
+          "kind": "content",
+          "responseBodyBytes": 4453
+        },
+        {
+          "purpose": "GIVEAWAY",
+          "kind": "metadata",
+          "responseBodyBytes": 273
+        },
+        {
+          "purpose": "GIVEAWAY",
+          "kind": "content",
+          "responseBodyBytes": 4453
+        }
+      ],
+      "serverPhotoBytes": 4453,
+      "resourceTiming": [
+        {
+          "encodedBodySize": 269,
+          "transferSize": 569,
+          "decodedBodySize": 269
+        },
+        {
+          "encodedBodySize": 4453,
+          "transferSize": 4753,
+          "decodedBodySize": 4453
+        },
+        {
+          "encodedBodySize": 273,
+          "transferSize": 573,
+          "decodedBodySize": 273
+        },
+        {
+          "encodedBodySize": 4453,
+          "transferSize": 4753,
+          "decodedBodySize": 4453
+        }
+      ],
+      "explicitImageDecodeCalls": 3,
+      "decoderCacheOrGPUClaims": "NOT_MEASURED",
+      "before": {
+        "pool": {
+          "disposed": false,
+          "entries": 2,
+          "consumers": 1,
+          "activeEntries": 1,
+          "maxEntries": 2,
+          "maxConsumers": 64,
+          "maxResidentBlobBytes": 20971520
+        },
+        "created": [
+          {
+            "url": "blob:http://127.0.0.1:5173/a677dc05-1f65-4847-94c9-d08dea673446",
+            "bytes": 4453
+          },
+          {
+            "url": "blob:http://127.0.0.1:5173/90cc7009-c966-4ecf-b218-eb9795d17e54",
+            "bytes": 4453
+          }
+        ],
+        "revoked": []
+      },
+      "after": {
+        "pool": {
+          "disposed": true,
+          "entries": 0,
+          "consumers": 0,
+          "activeEntries": 0,
+          "maxEntries": 2,
+          "maxConsumers": 64,
+          "maxResidentBlobBytes": 20971520
+        },
+        "created": [
+          {
+            "url": "blob:http://127.0.0.1:5173/a677dc05-1f65-4847-94c9-d08dea673446",
+            "bytes": 4453
+          },
+          {
+            "url": "blob:http://127.0.0.1:5173/90cc7009-c966-4ecf-b218-eb9795d17e54",
+            "bytes": 4453
+          }
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:5173/a677dc05-1f65-4847-94c9-d08dea673446",
+          "blob:http://127.0.0.1:5173/90cc7009-c966-4ecf-b218-eb9795d17e54"
+        ]
+      },
+      "revokedBlobFetchDenied": true
+    }
+  ]
+}

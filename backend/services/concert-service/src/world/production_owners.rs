@@ -12,7 +12,7 @@ use crate::adapters::out::{
 };
 use chrono::{DateTime, Utc};
 use concert_application::world_ticket::WorldError;
-use concert_domain::{avatar::AvatarCatalog, AssetId, AvatarSelection, Revision};
+use concert_domain::{avatar::AvatarCatalog, AvatarSelection, Revision};
 use sqlx::{postgres::PgRow, PgPool, Postgres, Row, Transaction};
 use std::{
     collections::{BTreeMap, BTreeSet},
@@ -29,30 +29,12 @@ fn unavailable(_: impl std::fmt::Debug) -> WorldError {
     WorldError::Unavailable
 }
 fn avatar(row: &PgRow) -> Result<(Revision, AvatarSelection), WorldError> {
-    let asset = |name| -> Result<AssetId, WorldError> {
-        AssetId::new(row.try_get::<String, _>(name).map_err(unavailable)?).map_err(unavailable)
-    };
     Ok((
         Revision::new(row.try_get("revision").map_err(unavailable)?).map_err(unavailable)?,
-        AvatarSelection {
-            manifest_id: asset("manifest_id")?,
-            manifest_version: Revision::new(row.try_get("manifest_version").map_err(unavailable)?)
-                .map_err(unavailable)?,
-            body: asset("body_id")?,
-            eyes: asset("eyes_id")?,
-            hair: asset("hair_id")?,
-            outfit: asset("outfit_id")?,
-            accessory: row
-                .try_get::<Option<String>, _>("accessory_id")
-                .map_err(unavailable)?
-                .map(AssetId::new)
-                .transpose()
-                .map_err(unavailable)?,
-            skin_tone: asset("skin_tone_id")?,
-        },
+        crate::adapters::out::repository::avatar::selection_from_row(row).map_err(unavailable)?,
     ))
 }
-const AVATAR:&str="select revision,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id from public.concert_avatar_settings where event_id=$1 and user_id=$2";
+const AVATAR:&str="select revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id from public.concert_avatar_settings where event_id=$1 and user_id=$2";
 struct Candidate {
     context: WorldPresenceProjection,
     observation: RecipientObservation,

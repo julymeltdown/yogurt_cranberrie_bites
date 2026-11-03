@@ -148,7 +148,7 @@ async fn postgres_constraints_reject_invalid_identity_relationships_values_and_r
     let repository = PgConcertRepository::new(pool.clone());
     let avatar = repository.avatar(key).await?.unwrap();
     assert_eq!(avatar.key, key);
-    assert!(avatar.selection.accessory.is_none());
+    assert!(matches!(&avatar.selection.appearance, concert_domain::AvatarAppearance::Layered { accessory: None, .. }));
     let foreign = ParticipantKey {
         event_id: EventId::from_uuid(Uuid::new_v4()),
         user_id: key.user_id,

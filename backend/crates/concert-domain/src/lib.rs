@@ -230,17 +230,26 @@ pub struct Participant {
 }
 
 /// Structural references only. Catalog compatibility/provenance is BE07 policy.
-/// No preset, URL, texture, atlas geometry, age, email or provider claim is invented.
+/// The representation is exclusive; no synthetic component IDs or URLs are invented.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct AvatarSelection {
     pub manifest_id: AssetId,
     pub manifest_version: Revision,
-    pub body: AssetId,
-    pub eyes: AssetId,
-    pub hair: AssetId,
-    pub outfit: AssetId,
-    pub accessory: Option<AssetId>,
-    pub skin_tone: AssetId,
+    pub appearance: AvatarAppearance,
+}
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum AvatarAppearance {
+    Layered {
+        body: AssetId,
+        eyes: AssetId,
+        hair: AssetId,
+        outfit: AssetId,
+        accessory: Option<AssetId>,
+        skin_tone: AssetId,
+    },
+    WholeCharacter {
+        preset_id: AssetId,
+    },
 }
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct AvatarSettings {
