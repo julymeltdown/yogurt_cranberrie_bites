@@ -248,7 +248,7 @@ async fn profile_server(pool: PgPool) -> Running {
     }
 }
 
-async fn ticket(
+pub(crate) async fn ticket(
     repo: &PgWorldRepository,
     subject: &WorldSubject,
     room: Uuid,
@@ -291,11 +291,11 @@ pub(crate) struct Stack {
     profile_server: Running,
     pub(crate) event: EventId,
     pub(crate) subject: WorldSubject,
-    room: Uuid,
-    target: Uuid,
+    pub(crate) room: Uuid,
+    pub(crate) target: Uuid,
     pub(crate) owners: Arc<ProductionOwners>,
     pub(crate) bridge: Arc<AdmissionBridge>,
-    anchor: ClockAnchor,
+    pub(crate) anchor: ClockAnchor,
     started: Instant,
 }
 impl Stack {
@@ -415,7 +415,7 @@ impl Stack {
             started,
         })
     }
-    fn repo(&self) -> PgWorldRepository {
+    pub(crate) fn repo(&self) -> PgWorldRepository {
         PgWorldRepository::new(self.concert.clone())
     }
     pub(crate) fn now(&self) -> u64 {
@@ -724,16 +724,16 @@ use tokio_tungstenite::{
     tungstenite::{client::IntoClientRequest, Message},
 };
 #[path = "geometry.rs"]
-mod geometry;
+pub(crate) mod geometry;
 #[derive(Clone)]
-struct Trace {
-    native: SocketTransport,
-    paused: Arc<AtomicBool>,
-    waits: Arc<AtomicUsize>,
-    sent: Arc<Mutex<Vec<(Binding, Value, Instant)>>>,
-    hold_user: Arc<Mutex<Option<Uuid>>>,
-    held: Arc<AtomicBool>,
-    release: Arc<AtomicBool>,
+pub(crate) struct Trace {
+    pub(crate) native: SocketTransport,
+    pub(crate) paused: Arc<AtomicBool>,
+    pub(crate) waits: Arc<AtomicUsize>,
+    pub(crate) sent: Arc<Mutex<Vec<(Binding, Value, Instant)>>>,
+    pub(crate) hold_user: Arc<Mutex<Option<Uuid>>>,
+    pub(crate) held: Arc<AtomicBool>,
+    pub(crate) release: Arc<AtomicBool>,
 }
 impl TransportPort for Trace {
     fn installed(&mut self, b: &Binding, n: u64) -> Result<(), WriteError> {
