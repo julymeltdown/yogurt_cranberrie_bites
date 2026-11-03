@@ -1,0 +1,7 @@
+{
+  "resyncDeltaSuppression": "PASS",
+  "queueSaturationProtocolRecovery": "PASS",
+  "throwingSinkTermination": "PASS",
+  "roomSwitchSnapshotOrdering": "PASS",
+  "visibilityTeardownAndZeroReplay": "PASS"
+}

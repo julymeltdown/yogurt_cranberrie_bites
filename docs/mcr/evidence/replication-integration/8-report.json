@@ -1,0 +1,27 @@
+{
+  "result": "PASS",
+  "revision": "4dc3bb3dd8015abcf26839c34954f7ca91870ceb",
+  "sourceHashes": {
+    "src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "src/world/entities/replicated.ts": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700",
+    "src/world/network/__tests__/fixtures/replication-browser.ts": "f33a6363787eafe8086eaa52be9a2373cbeedecc5f108b5e674d15932ab6e96b",
+    "src/world/network/__tests__/fixtures/replication-browser.html": "7c9d194dc4b25d07b01af84131f03ae96f4ae2e889c3f2e58e9af8a980075c8e",
+    "src/world/network/__tests__/replication-browser.mjs": "5176e98a8ff930e2e8344bed479af91559f0bd0a6874d0dab38fb47417e4d255",
+    "src/world/network/WorldTransport.ts": "f5d2397f61b5425f3638e81ec282b11017d2b336861860259437f2b1bcf51a8e",
+    "src/world/network/websocket.ts": "f7c9a89e7545f9459f2d71eab8b0f5ea696db620d3685b0cc27c092b5ae75226",
+    "src/world/network/transport/engine.ts": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac",
+    "src/world/network/transport/contract.ts": "1b642a0e1bba8c5c45b39fc38d107af39ff3c83c25955295e49edc03b8402b08",
+    "src/world/network/transport/wire-types.ts": "c154c86f488ca681a0379087828ada028c8ecb54fd75c7bb8cb49f712be56618",
+    "src/shared/api/http.ts": "e658f8da8e97c5e6801762c5fc552732c2e84a058d4deebdd7b08a1d6b2b57bb"
+  },
+  "scope": "FE17 headless synthetic C05 projection and native WS lifecycle only; no renderer/art/backend acceptance",
+  "checks": [
+    "Native socket admission, public roster projection, ping response and input acknowledgement",
+    "Gap drives one actual resync; replacement snapshot removes ghosts",
+    "Visibility boundary gets one fresh ticket/connection, with no old interaction or movement replay",
+    "Canonical owner cancellation and disposal leave no timers, retries or later sink commits"
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "cleanup": "PASS"
+}

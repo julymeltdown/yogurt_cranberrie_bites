@@ -1,0 +1,923 @@
+test_202_cannot_be_completed_failed_or_retired (baseline_consumer_tests.DomainConsumerTests.test_202_cannot_be_completed_failed_or_retired) ... ok
+test_detail_identity_is_bound_to_requested_id (baseline_consumer_tests.DomainConsumerTests.test_detail_identity_is_bound_to_requested_id) ... 
+  test_detail_identity_is_bound_to_requested_id (baseline_consumer_tests.DomainConsumerTests.test_detail_identity_is_bound_to_requested_id) (operation='getConcertParty') ... FAIL
+  test_detail_identity_is_bound_to_requested_id (baseline_consumer_tests.DomainConsumerTests.test_detail_identity_is_bound_to_requested_id) (operation='getConcertGiveaway') ... FAIL
+test_direct_pending_receipt_requires_captured_canonical_key (baseline_consumer_tests.DomainConsumerTests.test_direct_pending_receipt_requires_captured_canonical_key) ... 
+  test_direct_pending_receipt_requires_captured_canonical_key (baseline_consumer_tests.DomainConsumerTests.test_direct_pending_receipt_requires_captured_canonical_key) (key=None) ... FAIL
+  test_direct_pending_receipt_requires_captured_canonical_key (baseline_consumer_tests.DomainConsumerTests.test_direct_pending_receipt_requires_captured_canonical_key) (key='invalid') ... FAIL
+  test_direct_pending_receipt_requires_captured_canonical_key (baseline_consumer_tests.DomainConsumerTests.test_direct_pending_receipt_requires_captured_canonical_key) (key='00000000-0000-4000-8000-000000000048') ... FAIL
+test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) ... 
+  test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) (operation='listConcertParties', collection=None) ... FAIL
+  test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) (operation='listConcertGiveaways', collection=None) ... FAIL
+  test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) (operation='getConcertGiftActivity', collection='giving') ... FAIL
+  test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) (operation='getConcertGiftActivity', collection='receiving') ... FAIL
+test_every_private_collection_row_is_event_bound (baseline_consumer_tests.DomainConsumerTests.test_every_private_collection_row_is_event_bound) ... 
+  test_every_private_collection_row_is_event_bound (baseline_consumer_tests.DomainConsumerTests.test_every_private_collection_row_is_event_bound) (operation='getConcertGiftActivity', collection='giving') ... FAIL
+  test_every_private_collection_row_is_event_bound (baseline_consumer_tests.DomainConsumerTests.test_every_private_collection_row_is_event_bound) (operation='getConcertGiftActivity', collection='receiving') ... FAIL
+test_independent_activity_cursors_and_empty_continuations_are_preserved (baseline_consumer_tests.DomainConsumerTests.test_independent_activity_cursors_and_empty_continuations_are_preserved) ... ok
+test_known_nonnull_result_target_must_match_expected_resource (baseline_consumer_tests.DomainConsumerTests.test_known_nonnull_result_target_must_match_expected_resource) ... 
+  test_known_nonnull_result_target_must_match_expected_resource (baseline_consumer_tests.DomainConsumerTests.test_known_nonnull_result_target_must_match_expected_resource) (resource='00000000-0000-4000-8000-000000000063') ... FAIL
+  test_known_nonnull_result_target_must_match_expected_resource (baseline_consumer_tests.DomainConsumerTests.test_known_nonnull_result_target_must_match_expected_resource) (resource='invalid') ... FAIL
+test_multiple_memberships_for_same_actor_in_distinct_parties_are_valid (baseline_consumer_tests.DomainConsumerTests.test_multiple_memberships_for_same_actor_in_distinct_parties_are_valid) ... ERROR
+test_new_membership_wire_field_is_required_and_canonical (baseline_consumer_tests.DomainConsumerTests.test_new_membership_wire_field_is_required_and_canonical) ... ERROR
+test_own_application_applicant_and_membership_are_actor_bound (baseline_consumer_tests.DomainConsumerTests.test_own_application_applicant_and_membership_are_actor_bound) ... ok
+test_own_receiving_recipient_is_actor_bound (baseline_consumer_tests.DomainConsumerTests.test_own_receiving_recipient_is_actor_bound) ... FAIL
+test_private_owned_party_and_giving_owner_are_actor_bound (baseline_consumer_tests.DomainConsumerTests.test_private_owned_party_and_giving_owner_are_actor_bound) ... 
+  test_private_owned_party_and_giving_owner_are_actor_bound (baseline_consumer_tests.DomainConsumerTests.test_private_owned_party_and_giving_owner_are_actor_bound) (operation='getConcertGiftActivity') ... FAIL
+test_public_gift_drafts_are_rejected_but_owned_drafts_remain_valid (baseline_consumer_tests.DomainConsumerTests.test_public_gift_drafts_are_rejected_but_owned_drafts_remain_valid) ... FAIL
+test_public_list_and_detail_rows_are_event_bound (baseline_consumer_tests.DomainConsumerTests.test_public_list_and_detail_rows_are_event_bound) ... 
+  test_public_list_and_detail_rows_are_event_bound (baseline_consumer_tests.DomainConsumerTests.test_public_list_and_detail_rows_are_event_bound) (operation='listConcertParties') ... FAIL
+  test_public_list_and_detail_rows_are_event_bound (baseline_consumer_tests.DomainConsumerTests.test_public_list_and_detail_rows_are_event_bound) (operation='listConcertGiveaways') ... FAIL
+test_public_projections_reject_private_peer_lists_and_meeting_instructions (baseline_consumer_tests.DomainConsumerTests.test_public_projections_reject_private_peer_lists_and_meeting_instructions) ... ok
+test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) ... 
+  test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertParties', path='/api/concert/events/00000000-0000-4000-8000-000000000063/parties') ... FAIL
+  test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertParties', path='/api/concert/events/00000000-0000-4000-8000-000000000001/parties/unknown') ... FAIL
+  test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertParties', path='/api/concert/events/%300000000-0000-4000-8000-000000000001/parties') ... FAIL
+  test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertGiveaways', path='/api/concert/events/00000000-0000-4000-8000-000000000063/giveaways') ... FAIL
+  test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertGiveaways', path='/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways/unknown') ... FAIL
+  test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertGiveaways', path='/api/concert/events/%300000000-0000-4000-8000-000000000001/giveaways') ... FAIL
+test_receipt_actor_event_operation_and_key_must_match_lookup (baseline_consumer_tests.DomainConsumerTests.test_receipt_actor_event_operation_and_key_must_match_lookup) ... 
+  test_receipt_actor_event_operation_and_key_must_match_lookup (baseline_consumer_tests.DomainConsumerTests.test_receipt_actor_event_operation_and_key_must_match_lookup) (field='operation_id', value='reserveConcertGiveaway') ... FAIL
+  test_receipt_actor_event_operation_and_key_must_match_lookup (baseline_consumer_tests.DomainConsumerTests.test_receipt_actor_event_operation_and_key_must_match_lookup) (field='idempotency_key', value='00000000-0000-4000-8000-000000000048') ... FAIL
+test_receipt_lookup_accepts_all_documented_states_with_correct_binding (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_accepts_all_documented_states_with_correct_binding) ... ok
+test_receipt_lookup_rejects_duplicate_or_unknown_query_fields (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_rejects_duplicate_or_unknown_query_fields) ... FAIL
+test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) ... 
+  test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'event': None}) ... FAIL
+  test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'path': None}) ... FAIL
+  test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'query': ''}) ... FAIL
+  test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'query': 'operation_id=applyConcertParty'}) ... FAIL
+  test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'path': '/api/concert/events/00000000-0000-4000-8000-000000000001/commands/unknown'}) ... FAIL
+test_retired_receipt_cannot_smuggle_completed_result_or_failure (baseline_consumer_tests.DomainConsumerTests.test_retired_receipt_cannot_smuggle_completed_result_or_failure) ... ok
+test_six_valid_reads_preserve_payload (baseline_consumer_tests.DomainConsumerTests.test_six_valid_reads_preserve_payload) ... 
+  test_six_valid_reads_preserve_payload (baseline_consumer_tests.DomainConsumerTests.test_six_valid_reads_preserve_payload) (operation='getConcertPartyActivity') ... ERROR
+test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) ... 
+  test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) (status=201) ... FAIL
+  test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) (status=202) ... FAIL
+  test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) (status=204) ... FAIL
+  test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) (status=299) ... FAIL
+test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) ... 
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'actor': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'event': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'actor': 'not-a-uuid'}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'event': 'not-a-uuid'}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'path': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertParty', context={'actor': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertParty', context={'event': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertParty', context={'actor': 'not-a-uuid'}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertParty', context={'path': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'actor': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'event': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'actor': 'not-a-uuid'}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'event': 'not-a-uuid'}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'path': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiveaway', context={'actor': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiveaway', context={'event': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiveaway', context={'actor': 'not-a-uuid'}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiveaway', context={'path': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'actor': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'event': None}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'actor': 'not-a-uuid'}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'event': 'not-a-uuid'}) ... FAIL
+  test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'path': None}) ... FAIL
+test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) ... 
+  test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='unknown=value') ... FAIL
+  test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='limit=01') ... FAIL
+  test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='limit=1&limit=2') ... FAIL
+  test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='cursor=%FF') ... FAIL
+  test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='state=DRAFT') ... FAIL
+test_unavailable_lookup_is_an_error_projection_not_unknown_success (baseline_consumer_tests.DomainConsumerTests.test_unavailable_lookup_is_an_error_projection_not_unknown_success) ... ok
+
+======================================================================
+ERROR: test_multiple_memberships_for_same_actor_in_distinct_parties_are_valid (baseline_consumer_tests.DomainConsumerTests.test_multiple_memberships_for_same_actor_in_distinct_parties_are_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 194, in test_multiple_memberships_for_same_actor_in_distinct_parties_are_valid
+    self.check_http(payload, 'getConcertPartyActivity')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 74, in check_http
+    self.contract.validate_http(value, operation, status, actor_id=actor, event_id=event,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                request_path=self.target(operation) if path is ABSENT else path,
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                request_query=query, idempotency_key=key,
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                expected_resource_id=resource)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mcr-c04-context/legacy-probe.py", line 10, in legacy
+    return original(self,*args,**{k:v for k,v in kwargs.items() if k in allowed})
+  File "<review-checkout>/scripts/mcr/validate-domain.py", line 395, in validate_http
+    self.validate(value, name)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/validate-domain.py", line 305, in validate
+    raise ContractError('schema mismatch: ' + name) from None
+mcr_domain_consumer_oracle.ContractError: schema mismatch: party.PartyActivity
+
+======================================================================
+ERROR: test_new_membership_wire_field_is_required_and_canonical (baseline_consumer_tests.DomainConsumerTests.test_new_membership_wire_field_is_required_and_canonical)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 172, in test_new_membership_wire_field_is_required_and_canonical
+    self.contract.validate(member, 'party.Member')
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/validate-domain.py", line 305, in validate
+    raise ContractError('schema mismatch: ' + name) from None
+mcr_domain_consumer_oracle.ContractError: schema mismatch: party.Member
+
+======================================================================
+ERROR: test_six_valid_reads_preserve_payload (baseline_consumer_tests.DomainConsumerTests.test_six_valid_reads_preserve_payload) (operation='getConcertPartyActivity')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 101, in test_six_valid_reads_preserve_payload
+    self.check_http(payload, operation)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 74, in check_http
+    self.contract.validate_http(value, operation, status, actor_id=actor, event_id=event,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                request_path=self.target(operation) if path is ABSENT else path,
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                request_query=query, idempotency_key=key,
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                expected_resource_id=resource)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mcr-c04-context/legacy-probe.py", line 10, in legacy
+    return original(self,*args,**{k:v for k,v in kwargs.items() if k in allowed})
+  File "<review-checkout>/scripts/mcr/validate-domain.py", line 395, in validate_http
+    self.validate(value, name)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/validate-domain.py", line 305, in validate
+    raise ContractError('schema mismatch: ' + name) from None
+mcr_domain_consumer_oracle.ContractError: schema mismatch: party.PartyActivity
+
+======================================================================
+FAIL: test_detail_identity_is_bound_to_requested_id (baseline_consumer_tests.DomainConsumerTests.test_detail_identity_is_bound_to_requested_id) (operation='getConcertParty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 129, in test_detail_identity_is_bound_to_requested_id
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_detail_identity_is_bound_to_requested_id (baseline_consumer_tests.DomainConsumerTests.test_detail_identity_is_bound_to_requested_id) (operation='getConcertGiveaway')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 129, in test_detail_identity_is_bound_to_requested_id
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_direct_pending_receipt_requires_captured_canonical_key (baseline_consumer_tests.DomainConsumerTests.test_direct_pending_receipt_requires_captured_canonical_key) (key=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 255, in test_direct_pending_receipt_requires_captured_canonical_key
+    self.rejected(lambda: self.check_http(self.receipt(), 'applyConcertParty', 202, key=key))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_direct_pending_receipt_requires_captured_canonical_key (baseline_consumer_tests.DomainConsumerTests.test_direct_pending_receipt_requires_captured_canonical_key) (key='invalid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 255, in test_direct_pending_receipt_requires_captured_canonical_key
+    self.rejected(lambda: self.check_http(self.receipt(), 'applyConcertParty', 202, key=key))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_direct_pending_receipt_requires_captured_canonical_key (baseline_consumer_tests.DomainConsumerTests.test_direct_pending_receipt_requires_captured_canonical_key) (key='00000000-0000-4000-8000-000000000048')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 255, in test_direct_pending_receipt_requires_captured_canonical_key
+    self.rejected(lambda: self.check_http(self.receipt(), 'applyConcertParty', 202, key=key))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) (operation='listConcertParties', collection=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 188, in test_duplicate_ids_are_rejected_per_collection
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) (operation='listConcertGiveaways', collection=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 188, in test_duplicate_ids_are_rejected_per_collection
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) (operation='getConcertGiftActivity', collection='giving')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 188, in test_duplicate_ids_are_rejected_per_collection
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_duplicate_ids_are_rejected_per_collection (baseline_consumer_tests.DomainConsumerTests.test_duplicate_ids_are_rejected_per_collection) (operation='getConcertGiftActivity', collection='receiving')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 188, in test_duplicate_ids_are_rejected_per_collection
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_private_collection_row_is_event_bound (baseline_consumer_tests.DomainConsumerTests.test_every_private_collection_row_is_event_bound) (operation='getConcertGiftActivity', collection='giving')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 145, in test_every_private_collection_row_is_event_bound
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_every_private_collection_row_is_event_bound (baseline_consumer_tests.DomainConsumerTests.test_every_private_collection_row_is_event_bound) (operation='getConcertGiftActivity', collection='receiving')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 145, in test_every_private_collection_row_is_event_bound
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_known_nonnull_result_target_must_match_expected_resource (baseline_consumer_tests.DomainConsumerTests.test_known_nonnull_result_target_must_match_expected_resource) (resource='00000000-0000-4000-8000-000000000063')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 274, in test_known_nonnull_result_target_must_match_expected_resource
+    self.rejected(lambda: self.lookup(self.receipt('SUCCEEDED'), resource=resource))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_known_nonnull_result_target_must_match_expected_resource (baseline_consumer_tests.DomainConsumerTests.test_known_nonnull_result_target_must_match_expected_resource) (resource='invalid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 274, in test_known_nonnull_result_target_must_match_expected_resource
+    self.rejected(lambda: self.lookup(self.receipt('SUCCEEDED'), resource=resource))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_own_receiving_recipient_is_actor_bound (baseline_consumer_tests.DomainConsumerTests.test_own_receiving_recipient_is_actor_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 168, in test_own_receiving_recipient_is_actor_bound
+    self.rejected(lambda: self.check_http(payload, 'getConcertGiftActivity'))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_private_owned_party_and_giving_owner_are_actor_bound (baseline_consumer_tests.DomainConsumerTests.test_private_owned_party_and_giving_owner_are_actor_bound) (operation='getConcertGiftActivity')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 152, in test_private_owned_party_and_giving_owner_are_actor_bound
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_public_gift_drafts_are_rejected_but_owned_drafts_remain_valid (baseline_consumer_tests.DomainConsumerTests.test_public_gift_drafts_are_rejected_but_owned_drafts_remain_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 199, in test_public_gift_drafts_are_rejected_but_owned_drafts_remain_valid
+    self.rejected(lambda: self.check_http(draft, 'getConcertGiveaway'))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_public_list_and_detail_rows_are_event_bound (baseline_consumer_tests.DomainConsumerTests.test_public_list_and_detail_rows_are_event_bound) (operation='listConcertParties')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 136, in test_public_list_and_detail_rows_are_event_bound
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_public_list_and_detail_rows_are_event_bound (baseline_consumer_tests.DomainConsumerTests.test_public_list_and_detail_rows_are_event_bound) (operation='listConcertGiveaways')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 136, in test_public_list_and_detail_rows_are_event_bound
+    self.rejected(lambda: self.check_http(payload, operation))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertParties', path='/api/concert/events/00000000-0000-4000-8000-000000000063/parties')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 117, in test_reads_validate_actual_path_even_for_empty_pages
+    self.rejected(lambda: self.check_http(page(), operation, path=path))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertParties', path='/api/concert/events/00000000-0000-4000-8000-000000000001/parties/unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 117, in test_reads_validate_actual_path_even_for_empty_pages
+    self.rejected(lambda: self.check_http(page(), operation, path=path))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertParties', path='/api/concert/events/%300000000-0000-4000-8000-000000000001/parties')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 117, in test_reads_validate_actual_path_even_for_empty_pages
+    self.rejected(lambda: self.check_http(page(), operation, path=path))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertGiveaways', path='/api/concert/events/00000000-0000-4000-8000-000000000063/giveaways')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 117, in test_reads_validate_actual_path_even_for_empty_pages
+    self.rejected(lambda: self.check_http(page(), operation, path=path))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertGiveaways', path='/api/concert/events/00000000-0000-4000-8000-000000000001/giveaways/unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 117, in test_reads_validate_actual_path_even_for_empty_pages
+    self.rejected(lambda: self.check_http(page(), operation, path=path))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_reads_validate_actual_path_even_for_empty_pages (baseline_consumer_tests.DomainConsumerTests.test_reads_validate_actual_path_even_for_empty_pages) (operation='listConcertGiveaways', path='/api/concert/events/%300000000-0000-4000-8000-000000000001/giveaways')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 117, in test_reads_validate_actual_path_even_for_empty_pages
+    self.rejected(lambda: self.check_http(page(), operation, path=path))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_receipt_actor_event_operation_and_key_must_match_lookup (baseline_consumer_tests.DomainConsumerTests.test_receipt_actor_event_operation_and_key_must_match_lookup) (field='operation_id', value='reserveConcertGiveaway')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 244, in test_receipt_actor_event_operation_and_key_must_match_lookup
+    self.rejected(lambda: self.lookup(payload))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_receipt_actor_event_operation_and_key_must_match_lookup (baseline_consumer_tests.DomainConsumerTests.test_receipt_actor_event_operation_and_key_must_match_lookup) (field='idempotency_key', value='00000000-0000-4000-8000-000000000048')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 244, in test_receipt_actor_event_operation_and_key_must_match_lookup
+    self.rejected(lambda: self.lookup(payload))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_receipt_lookup_rejects_duplicate_or_unknown_query_fields (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_rejects_duplicate_or_unknown_query_fields)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 249, in test_receipt_lookup_rejects_duplicate_or_unknown_query_fields
+    self.rejected(lambda: self.lookup(self.receipt(), query=query + suffix))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'event': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 236, in test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query
+    self.rejected(lambda: self.lookup(self.receipt(), **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'path': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 236, in test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query
+    self.rejected(lambda: self.lookup(self.receipt(), **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'query': ''})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 236, in test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query
+    self.rejected(lambda: self.lookup(self.receipt(), **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'query': 'operation_id=applyConcertParty'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 236, in test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query
+    self.rejected(lambda: self.lookup(self.receipt(), **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query (baseline_consumer_tests.DomainConsumerTests.test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query) (context={'path': '/api/concert/events/00000000-0000-4000-8000-000000000001/commands/unknown'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 236, in test_receipt_lookup_requires_canonical_actor_event_path_and_exact_query
+    self.rejected(lambda: self.lookup(self.receipt(), **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) (status=201)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 268, in test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx
+    self.rejected(lambda: self.lookup(payload))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) (status=202)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 268, in test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx
+    self.rejected(lambda: self.lookup(payload))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) (status=204)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 268, in test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx
+    self.rejected(lambda: self.lookup(payload))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx (baseline_consumer_tests.DomainConsumerTests.test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx) (status=299)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 268, in test_succeeded_receipt_uses_registered_final_status_never_pending_or_other_2xx
+    self.rejected(lambda: self.lookup(payload))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'actor': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'event': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'actor': 'not-a-uuid'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'event': 'not-a-uuid'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertParties', context={'path': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertParty', context={'actor': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertParty', context={'event': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertParty', context={'actor': 'not-a-uuid'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertParty', context={'path': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'actor': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'event': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'actor': 'not-a-uuid'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'event': 'not-a-uuid'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='listConcertGiveaways', context={'path': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiveaway', context={'actor': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiveaway', context={'event': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiveaway', context={'actor': 'not-a-uuid'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiveaway', context={'path': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'actor': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'event': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'actor': 'not-a-uuid'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'event': 'not-a-uuid'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_require_canonical_actor_event_and_path (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_require_canonical_actor_event_and_path) (operation='getConcertGiftActivity', context={'path': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 109, in test_successful_reads_require_canonical_actor_event_and_path
+    self.rejected(lambda: self.check_http(read_payload(operation), operation, **context))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='unknown=value')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 122, in test_successful_reads_validate_actual_query
+    self.rejected(lambda: self.check_http(page(), 'listConcertGiveaways', query=query))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='limit=01')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 122, in test_successful_reads_validate_actual_query
+    self.rejected(lambda: self.check_http(page(), 'listConcertGiveaways', query=query))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='limit=1&limit=2')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 122, in test_successful_reads_validate_actual_query
+    self.rejected(lambda: self.check_http(page(), 'listConcertGiveaways', query=query))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='cursor=%FF')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 122, in test_successful_reads_validate_actual_query
+    self.rejected(lambda: self.check_http(page(), 'listConcertGiveaways', query=query))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_successful_reads_validate_actual_query (baseline_consumer_tests.DomainConsumerTests.test_successful_reads_validate_actual_query) (query='state=DRAFT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 122, in test_successful_reads_validate_actual_query
+    self.rejected(lambda: self.check_http(page(), 'listConcertGiveaways', query=query))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<review-checkout>/scripts/mcr/tests/test_domain_consumers.py", line 80, in rejected
+    with self.assertRaises(domain.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.248s
+
+FAILED (failures=64, errors=3)
+{"tests": 26, "passed": 7, "failedSubtests": 64, "errors": 3}

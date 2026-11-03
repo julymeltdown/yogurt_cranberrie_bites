@@ -1,0 +1,34 @@
+{
+  "base": "5e829d0d681c047d9414042dc5c570f2bfad0a9f",
+  "candidate": "8c9e1a53fe7393e503d93fd2e1602c71da8b4fab",
+  "parentCandidate": "ca9f955cd22f7e4c1da029d034c1923f1e98bb9d",
+  "result": "PASS30focusedmethods; offline contextual contract qualification only",
+  "pins": {
+    "scripts/mcr/validate-domain.py": "212e205966d594599091a37263eac864de5c1aebdc1163c72cbb84220a7c0049",
+    "contracts/domain/v1/operations.json": "42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223",
+    "contracts/domain/v1/policy.json": "508d22af964b718cdcbd5a25b32b9a1e3f7b651a5b8c25c87d56f1f6b68d0ebe",
+    "contracts/domain/v1/party.schema.json": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
+    "contracts/domain/v1/common.schema.json": "303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35",
+    "contracts/domain/v1/giveaway.schema.json": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d",
+    "contracts/generated/mcr-domain.openapi.json": "c47e767505e660d8f5eb69bb9759eae1f0aaee6472e4fb963edc82e060385f51",
+    "frontend/src/shared/api/domain-operations.generated.ts": "8708d572eb22e38aa92626b248ad54ff13d56dfde183520b567acbc6445a5132",
+    "contracts/fixtures/domain/party-full.json": "55887e502d2e12ef3aeb74f70a1579128cd97f497121a084e46d21d1f8066d74",
+    "contracts/fixtures/domain/giveaway-management.json": "b2b74d4fa5070458e0e0f52798c6ba55fc39184f4b31c2825a19317b2993f7e3",
+    "contracts/fixtures/domain/reservation-held.json": "503a97ea15c378276c593db9bb050780ba9957f3864c4ec3b2d50452057294a1",
+    "contracts/fixtures/domain/command-pending.json": "48aea3d27255829aecfed8035386d7541cb6a9e921f582470ea1b340688a16d1",
+    "scripts/mcr/tests/test_domain_consumers.py": "1d25bcefe72f4474dd10474fe98cddb2ed8b9ece84e535db45199d05c6764203"
+  },
+  "evidenceFiles": {
+    "legacy.log": "dde1749b191d42a039145b9805240e3dc1d249aeb53742ce5ff43394e8a812ec",
+    "candidate-final.log": "7889cfafb49bbfe95861fc7af70e115dc0ec8ac30ccfb278713679c514e85c89",
+    "legacy-probe.py": "6bcfadb973ff284fed46df6c78955ea61f5ce42c1cc46d8f5957c636a489d404",
+    "baseline-api.log": "f323680269447439792cc8a6a45683db9899bd53ba71f767931ef413944e0475",
+    "candidate-first.log": "9f39912fe1a2b371652aac00ca42b2a6d0a10168fd05e1c198e1a21f5ab18288",
+    "legacy-result.json": "4c8c5e73328ed98638482e738edecda66355a4f59766dd13a4186bca263f4200"
+  },
+  "limits": [
+    "No real-server authorization/replay/durable retention proof",
+    "No whole C04 freeze or FE21/FE24 acceptance",
+    "No broad existing domain/browser/build reruns"
+  ]
+}

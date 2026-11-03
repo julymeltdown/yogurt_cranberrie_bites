@@ -30,10 +30,12 @@ disabled for EVENT_READ_ONLY must not become a blanket prohibition on safety
 actions. Apply the reviewed operation policy and current server authorization;
 unknown eligibility and other disable reasons fail closed.
 
-Independent review R4/R5 remain open: receipt recovery after 404/retention,
-requested command/key/final status/target binding, and operation-context predicates
-for discovery/detail/own activity. No read-subset or command freeze is claimed.
-Shared query-key expansion and actual feature composition remain separate work.
+The subsequent context patch `ca9f955` and independent review `88fd8f3` address
+R4/R5 for the selected party/gift operations: receipt recovery after 404/retention,
+requested command/key/final status/target binding, and read-context predicates.
+The integrator's [consumer subset decision](../party-gift-consumer-contract.md)
+now permits FE21/FE24 development. Whole C04 remains a candidate. Shared query-key
+expansion and actual feature composition remain separate work.
 
 Validation uses retained Node 24.22.2 / pnpm 11.7.0. The focused canonical HTTP,
 Auth contract/session/domain-request and shell tests, strict production build,

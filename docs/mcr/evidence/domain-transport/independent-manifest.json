@@ -1,0 +1,61 @@
+{
+  "candidate": "6630324a5ed2f20d235afe2393d4f2095626ab81",
+  "parentCommit": "2645b6f4cc639837932fb9f8480046533987a3de",
+  "caseCount": 26,
+  "sources": {
+    "<review-checkout>/frontend/src/features/auth/model/session.ts": "a2f380d2062e136302ed803f9a98c45ff1d84d300d56f31e0540758be3bb24e3",
+    "<review-checkout>/frontend/src/shared/api/http.ts": "f214c64de92a14f49d23c764e1c950d87dfc8e43e9a2e79cd5d4ac56915d1f3f",
+    "<review-checkout>/frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "<review-checkout>/frontend/src/shared/api/domain-operations.generated.ts": "8ce476f66c04bb129c9d14f268d26e39dbd39127236f37bb291642e52146dafb",
+    "<review-checkout>/frontend/src/shared/api/errors.ts": "68cebdf90d7b9b3fbb1fcd4ab328651ce68208787f3de59045b3d53dd2941483",
+    "<review-checkout>/frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "<review-checkout>/frontend/src/shared/query/keys.ts": "3a82ee13efc4162e04e2a3348508c5d12b897d93c8b40554d370578e25e0daef",
+    "<review-checkout>/frontend/src/app/ports.ts": "7b4d33d6ae2753cee156dfab7b856409a04b76b35de335d61c9f3141981c1842",
+    "<review-checkout>/frontend/src/features/auth/model/contract.ts": "49f3380515a722b10d9e58df241ecc7dad47e2a4792ec47e20b24680466939ff",
+    "<review-checkout>/contracts/generated/mcr-core.openapi.json": "c8de71d5f3dfc125fd3a5206bc404a76df39367a45fa6c3f67ed6323de91c15d",
+    "<review-checkout>/frontend/src/features/auth/model/bootstrap.ts": "e2b08cde5816eace173115064db2e2dd2429f4c250ac75a50c395539367d1091",
+    "<review-checkout>/frontend/src/app/capabilities.ts": "82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4",
+    "<review-checkout>/frontend/src/features/auth/model/cookie-policy.ts": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+    "<review-checkout>/frontend/src/features/auth/model/recovery.ts": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d",
+    "<review-checkout>/frontend/src/features/auth/model/recovery-contract.ts": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd",
+    "<review-checkout>/frontend/src/features/auth/model/enrollment.ts": "f74c325a21e9d8e246fa104ddfeef3c35b7fd4a4c4f22820b9aec8bd05bd2e4e",
+    "<review-checkout>/frontend/src/features/auth/model/enrollment-contract.ts": "2e900351b139058f1f47f03ae6cb0577fb3b8ad5dbed59a1035e7a6539d5dc22"
+  },
+  "newPins": {
+    "scripts/mcr/generate-domain-transport.py": "bfee134b146488384c8aae2c2d65c4fd3bd59d726314053b0445d20798e55938",
+    "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "frontend/src/shared/api/domain-operations.generated.ts": "8ce476f66c04bb129c9d14f268d26e39dbd39127236f37bb291642e52146dafb",
+    "frontend/src/app/capabilities.ts": "82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4"
+  },
+  "files": {
+    "qualification-initial-pass.log": "7f36e90f0e985f26ee0c31d7dc9c6569df6a5a6ab42b8f0bd32ab33ab6edad8e",
+    "result.json": "b26f334b2f206730deee918811290db55d6c14bf2d3cd04a2e2bcfb9dd137d50",
+    "qualify.mjs": "1c377e753cb540cfa080b0caef261a5600be1b14f9375ec453c7f0eea9c70cdf",
+    "qualification.log": "b26f334b2f206730deee918811290db55d6c14bf2d3cd04a2e2bcfb9dd137d50",
+    "receipt-semantics.json": "95b6243d54134da5a3b983ad5b01bcf4831ada9a064e47ba1d036ee2857865d8",
+    "receipt-semantics.log": "95b6243d54134da5a3b983ad5b01bcf4831ada9a064e47ba1d036ee2857865d8",
+    "loader.mjs": "f373897b060a9826b16fa1e517e7699cf0fd940855408d6cfec9edd6bdfc00c2",
+    "receipt-semantics.py": "8fa42dc0462dc4609ec08144a10cff9d4db2b577a0908919c020903116bf23f2",
+    "modules/6.mjs": "dc863b875fde71ba738e7227634df2ea9a03dcb5eb265b2bb62f4a3f6dedbd18",
+    "modules/7.mjs": "1ea9bcf07d2cca0507bfdf88ee0c013411884086de56cdffa67b6e39e7a42e0a",
+    "modules/5.mjs": "44aaf1219316311765b69363c5fa8de3a06dbf49154bda1174e700157a76cbc1",
+    "modules/4.mjs": "aae4c19af2b6f87ddd4ae05d0b0397678b86b116fbf7942fd9a2f77d70f2c798",
+    "modules/0.mjs": "831f3f5ea911a0bfa8e296b22eefefb3485400822ed953c201e9e1c873f6956c",
+    "modules/1.mjs": "c778906d2fea3d0e476e64fcb094945b107208402d8a5fa5d7f1f93115e80750",
+    "modules/3.mjs": "e94fef1d44bc44cc96ea1b682fe132c6792c5500609cea77595eb440632b28f4",
+    "modules/2.mjs": "c48247ed531dafdd575da3f612cad3c50edcc43d9ecbcde5541430ed5fa95be5",
+    "modules/9.mjs": "79124e551ab25c48102cc4e65afa5d5d8e8fd2aa4db98dca866603d91784f757",
+    "modules/8.mjs": "72af6e7e5f27844f18f645fe88a8b59f796e3a96ebba649e344ada70334ec11f",
+    "modules/16.mjs": "a92f6739fa2907503ced4796d7e8f725881dd48b78b8f2214130aa01cf3a9f9e",
+    "modules/15.mjs": "0c89eb67ac425810c16ab6d7143cd5159d09b9c000de6742609e4ba85f17d1d9",
+    "modules/14.mjs": "d249805acdc3c1895ad9f930056dcca77913e1324a669894df0f5acd53e3bc05",
+    "modules/10.mjs": "faffd6dc3ace3d116c50187ffad7e0852a3cccb1c2c94eaadcd4565cc4ec4678",
+    "modules/11.mjs": "93e9c506f83089a36d3e5d57390bbae3cf682c2d4f63defb1235f55d94806515",
+    "modules/13.mjs": "ae678c30a8b49af23d6da1d8793316da7414261adc96dd12147806067260aa2b",
+    "modules/12.mjs": "97b877db36809532e217409ab52b1a4212539aaa48c3a00df9aee9e436b63579"
+  },
+  "result": "R1-R3 scoped PASS; R4/R5 remain open; no C04 freeze",
+  "semanticInputs": {
+    "scripts/mcr/validate-domain.py": "68d3167e50bc337175248e97735daa2918cb66c29d92dd87f549d044e7cc6b1e"
+  }
+}

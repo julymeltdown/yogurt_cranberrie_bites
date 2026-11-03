@@ -1,0 +1,57 @@
+{
+  "contract_candidate": "ca9f955cd22f7e4c1da029d034c1923f1e98bb9d",
+  "independent_commit": "db8170a5021dc7941b105f0e669a2eef84730a3f",
+  "integration_commit": "88fd8f3",
+  "decision_commit": "5f884ed",
+  "checks": {
+    "independent_methods": 30,
+    "combined_domain_tests": 93,
+    "combined_exit": 0,
+    "receipt_helper_tests": 7,
+    "receipt_helper_exit": 0,
+    "domain_openapi_drift_exit": 0,
+    "transport_metadata_drift_exit": 0
+  },
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/domain-context/manifest.json",
+      "original_sha256": "cca8d2386ecefa6a01148b4977c7aa71a6ece801d7784a312e68a32df583d7e0",
+      "archived_sha256": "cca8d2386ecefa6a01148b4977c7aa71a6ece801d7784a312e68a32df583d7e0"
+    },
+    {
+      "path": "docs/mcr/evidence/domain-context/handoff.json",
+      "original_sha256": "8b9c97fb0775be334e0135a3bd5156d7aff526353bfd27098c014de8c767b401",
+      "archived_sha256": "8b9c97fb0775be334e0135a3bd5156d7aff526353bfd27098c014de8c767b401"
+    },
+    {
+      "path": "docs/mcr/evidence/domain-context/candidate-final.log",
+      "original_sha256": "7889cfafb49bbfe95861fc7af70e115dc0ec8ac30ccfb278713679c514e85c89",
+      "archived_sha256": "7889cfafb49bbfe95861fc7af70e115dc0ec8ac30ccfb278713679c514e85c89"
+    },
+    {
+      "path": "docs/mcr/evidence/domain-context/legacy-result.json",
+      "original_sha256": "4c8c5e73328ed98638482e738edecda66355a4f59766dd13a4186bca263f4200",
+      "archived_sha256": "86df60e7b3fbc5e35a546e2462007874645f114222402332c98231024cc26055"
+    },
+    {
+      "path": "docs/mcr/evidence/domain-context/legacy.log",
+      "original_sha256": "dde1749b191d42a039145b9805240e3dc1d249aeb53742ce5ff43394e8a812ec",
+      "archived_sha256": "d324f233e19389947728f83ce72c59f2a6557d8d64aa94de1afeddbf053c60fb"
+    },
+    {
+      "path": "docs/mcr/evidence/domain-context/domain-context-combined.log",
+      "original_sha256": "962cb369c5ec5c226aa63f69332e6f4e9b4bda04e6cd91088a86156c62b1cc4b",
+      "archived_sha256": "962cb369c5ec5c226aa63f69332e6f4e9b4bda04e6cd91088a86156c62b1cc4b"
+    },
+    {
+      "path": "docs/mcr/evidence/domain-context/receipt-policy-pin.log",
+      "original_sha256": "0797a603f79e55a5612211749887a547eca16fda33260dc9b3baf57657cc4f17",
+      "archived_sha256": "0797a603f79e55a5612211749887a547eca16fda33260dc9b3baf57657cc4f17"
+    }
+  ],
+  "limits": [
+    "Only specified party/gift consumer operations CONTRACT_READY; whole C04 remains REVIEW_CANDIDATE",
+    "Schema/oracle policy qualification is not producer/database/replay/runtime proof",
+    "FE21/FE24 assigned separately; full required task count unchanged"
+  ]
+}

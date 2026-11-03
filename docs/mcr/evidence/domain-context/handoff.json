@@ -1,0 +1,16 @@
+{
+  "commit": "db8170a5021dc7941b105f0e669a2eef84730a3f",
+  "candidate": "8c9e1a53fe7393e503d93fd2e1602c71da8b4fab",
+  "parentCandidate": "ca9f955cd22f7e4c1da029d034c1923f1e98bb9d",
+  "paths": {
+    "docs/mcr/qa/domain-context-review.md": "af51196c5fc4227d88f2593907115b077741a52fd8d20c785573930ddcd2f28e",
+    "scripts/mcr/tests/test_domain_consumers.py": "1d25bcefe72f4474dd10474fe98cddb2ed8b9ece84e535db45199d05c6764203"
+  },
+  "manifestSha256": "cca8d2386ecefa6a01148b4977c7aa71a6ece801d7784a312e68a32df583d7e0",
+  "sourcePins": 13,
+  "tests": "30focusedmethods exit0",
+  "result": "Scoped PASS; C04_REVIEW_CANDIDATE; no freeze/feature/runtime acceptance",
+  "goal": "ACTIVE through parent review",
+  "cleanCheckout": true,
+  "pushed": false
+}

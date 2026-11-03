@@ -1,0 +1,89 @@
+{
+  "worker_commit": "bd202adb4888ef0f92fec915ec2226a6c9ec6334",
+  "integration_commit": "79e4556",
+  "review_commit": "f266b76bb8c0ad9b428db5471e814f92c4b14667",
+  "review_integration_commit": "1fa598c",
+  "parent_checks": {
+    "combined_FE16_FE17_tests": 181,
+    "tests_exit": 0,
+    "build_exit": 0,
+    "lint_exit": 0
+  },
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/replication-integration/worker-receipt.json",
+      "original_sha256": "dd0bd78fe8896cfb95377443ed2f902dff25ebd65c0bd16742fac870a3d4e851",
+      "archived_sha256": "454eece36097771467df737355e1f86f7d3166656a5cde13fb640eb8cb215261"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/0-mcr-fe17-install.log",
+      "original_sha256": "16f745ab6415a38045171a3aa02599dd18772b81ebdef53d0727325d66b45e49",
+      "archived_sha256": "16f745ab6415a38045171a3aa02599dd18772b81ebdef53d0727325d66b45e49"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/1-mcr-fe17-tests-delivery.log",
+      "original_sha256": "656dd150c6ae73d5b915c94b7c569b735ca3d78eff0d5620b48b2d1e0387ce1a",
+      "archived_sha256": "6be48a10e2eebcc968c3ad109f1902f80d1e8b2b4e43ebf9551784a8d9ad5a74"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/2-mcr-fe17-build-delivery.log",
+      "original_sha256": "157cbfd2863db26f31f82eece79b4a28cac93f90a2797e81106bef7496bfef77",
+      "archived_sha256": "157cbfd2863db26f31f82eece79b4a28cac93f90a2797e81106bef7496bfef77"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/3-mcr-fe17-lint-delivery.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archived_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/4-mcr-fe17-native-delivery.log",
+      "original_sha256": "c06b2a86811106eae178a38319af363f042aa430fb5479edd2361f0a461cbc66",
+      "archived_sha256": "c06b2a86811106eae178a38319af363f042aa430fb5479edd2361f0a461cbc66"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/5-mcr-fe17-plan.log",
+      "original_sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+      "archived_sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/6-mcr-fe17-origin.log",
+      "original_sha256": "b63ca291ec815adf3ae69ce5aca678403ece8799b8e12b1e712f70dd91cb669f",
+      "archived_sha256": "b63ca291ec815adf3ae69ce5aca678403ece8799b8e12b1e712f70dd91cb669f"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/7-mcr-fe17-boundaries-delivery.log",
+      "original_sha256": "c43312e52cb922b14e96a677e1c7b5a2b06996c44966f872fd9bcbb0c1f24c36",
+      "archived_sha256": "c43312e52cb922b14e96a677e1c7b5a2b06996c44966f872fd9bcbb0c1f24c36"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/8-report.json",
+      "original_sha256": "4b479e595ae73fad67d631036c027aac868b68ec79ee16a7dcd83ae335ab8356",
+      "archived_sha256": "4b479e595ae73fad67d631036c027aac868b68ec79ee16a7dcd83ae335ab8356"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/independent-result.json",
+      "original_sha256": "f5b9bacd80c3427acc02efd99876331e1aec8ac6ed9593efbdeedd0d5eb287c1",
+      "archived_sha256": "f5b9bacd80c3427acc02efd99876331e1aec8ac6ed9593efbdeedd0d5eb287c1"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/parent-replication-combined.log",
+      "original_sha256": "635923fb119697111c7a4b0ef7db187aa7af4f671a6bfa5e1535896f3e851aaa",
+      "archived_sha256": "e5d35eb37f9cd4f39938c99af2b78294d61f9ffd12481a8cc8bd21e1843cfa8e"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/parent-replication-build.log",
+      "original_sha256": "99558ef8b13537c44e61cc8367a2eb8b253b64086c84b218744b61becadd8714",
+      "archived_sha256": "99558ef8b13537c44e61cc8367a2eb8b253b64086c84b218744b61becadd8714"
+    },
+    {
+      "path": "docs/mcr/evidence/replication-integration/parent-replication-lint.log",
+      "original_sha256": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372",
+      "archived_sha256": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372"
+    }
+  ],
+  "limits": [
+    "MOCK_READY headless increment only; no whole FE17 or IN01 acceptance",
+    "Worker native loopback uses prior shared HTTP source; parent current shared HTTP covered by combined tests/build, not a new native run",
+    "Spatial prediction, FE12/approved avatar rendering, actual backend multiuser/devices remain open"
+  ]
+}

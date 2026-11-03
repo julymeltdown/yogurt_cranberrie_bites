@@ -1,0 +1,130 @@
+{
+  "result": "PASS",
+  "candidate": "6630324a5ed2f20d235afe2393d4f2095626ab81",
+  "scope": "Actual canonical frontend sources; synthetic request transport only",
+  "cases": [
+    {
+      "name": "typed-key-exact-header-intent-and-single-dispatch",
+      "dispatches": 1
+    },
+    {
+      "name": "registered-state-parties",
+      "dispatches": 1
+    },
+    {
+      "name": "registered-state-giveaways",
+      "dispatches": 1
+    },
+    {
+      "name": "reject-raw-header",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-malformed-key",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-uppercase-key",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-wrong-operation",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-wrong-method",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-auth-family",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-unknown-operation",
+      "dispatches": 0
+    },
+    {
+      "name": "auth-secret-state-query-still-forbidden",
+      "dispatches": 0
+    },
+    {
+      "name": "domain-reason-retained",
+      "dispatches": 1
+    },
+    {
+      "name": "202-is-still-pending-with-one-dispatch",
+      "dispatches": 1
+    },
+    {
+      "name": "all-seven-canonical-capabilities-retained",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-unknown-query",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-invalid-state-enum",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-string-boolean",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-oversized-limit",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-read-idempotency-key",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-missing-command-key",
+      "dispatches": 0
+    },
+    {
+      "name": "reject-foreign-event",
+      "dispatches": 0
+    },
+    {
+      "name": "valid-typed-query",
+      "dispatches": 1
+    },
+    {
+      "name": "operation-specific-error-status-binding",
+      "dispatches": 1
+    },
+    {
+      "name": "domain-rate-limit-hint",
+      "dispatches": 1
+    },
+    {
+      "name": "unregistered-success-is-uncertain-for-dispatched-command",
+      "dispatches": 1
+    },
+    {
+      "name": "nine-selected-generated-bindings-match-C04",
+      "dispatches": 0
+    }
+  ],
+  "sourceHashes": {
+    "<review-checkout>/frontend/src/features/auth/model/session.ts": "a2f380d2062e136302ed803f9a98c45ff1d84d300d56f31e0540758be3bb24e3",
+    "<review-checkout>/frontend/src/shared/api/http.ts": "f214c64de92a14f49d23c764e1c950d87dfc8e43e9a2e79cd5d4ac56915d1f3f",
+    "<review-checkout>/frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "<review-checkout>/frontend/src/shared/api/domain-operations.generated.ts": "8ce476f66c04bb129c9d14f268d26e39dbd39127236f37bb291642e52146dafb",
+    "<review-checkout>/frontend/src/shared/api/errors.ts": "68cebdf90d7b9b3fbb1fcd4ab328651ce68208787f3de59045b3d53dd2941483",
+    "<review-checkout>/frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "<review-checkout>/frontend/src/shared/query/keys.ts": "3a82ee13efc4162e04e2a3348508c5d12b897d93c8b40554d370578e25e0daef",
+    "<review-checkout>/frontend/src/app/ports.ts": "7b4d33d6ae2753cee156dfab7b856409a04b76b35de335d61c9f3141981c1842",
+    "<review-checkout>/frontend/src/features/auth/model/contract.ts": "49f3380515a722b10d9e58df241ecc7dad47e2a4792ec47e20b24680466939ff",
+    "<review-checkout>/contracts/generated/mcr-core.openapi.json": "c8de71d5f3dfc125fd3a5206bc404a76df39367a45fa6c3f67ed6323de91c15d",
+    "<review-checkout>/frontend/src/features/auth/model/bootstrap.ts": "e2b08cde5816eace173115064db2e2dd2429f4c250ac75a50c395539367d1091",
+    "<review-checkout>/frontend/src/app/capabilities.ts": "82de5740e6380edb0b6b9397d8f79afe6b50e83e74b5983d1e79a8954d9fdae4",
+    "<review-checkout>/frontend/src/features/auth/model/cookie-policy.ts": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd",
+    "<review-checkout>/frontend/src/features/auth/model/recovery.ts": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d",
+    "<review-checkout>/frontend/src/features/auth/model/recovery-contract.ts": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd",
+    "<review-checkout>/frontend/src/features/auth/model/enrollment.ts": "f74c325a21e9d8e246fa104ddfeef3c35b7fd4a4c4f22820b9aec8bd05bd2e4e",
+    "<review-checkout>/frontend/src/features/auth/model/enrollment-contract.ts": "2e900351b139058f1f47f03ae6cb0577fb3b8ad5dbed59a1035e7a6539d5dc22"
+  }
+}

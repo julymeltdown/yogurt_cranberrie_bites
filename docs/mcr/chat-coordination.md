@@ -8,9 +8,9 @@ instruction to preserve them without orchestration overrides.
 |---|---|---|---|
 | BE04 real HTTP owner chain | `mcr(be) BE04 real HTTP owner chain` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-real-owners` / `codex/mcr-be-http-real-owners` |
 | BE08 places and map releases | `mcr(be) BE08 places and map releases` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-places` / `codex/mcr-be-BE08` |
-| C04 frontend party/gift consumer review | `mcr(fe) C04 party and gift consumer review` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-domain-consumer` / `codex/mcr-fe-C04-consumer` |
-| FE17 replication and reconnect | `mcr(fe) FE17 replication and reconnect` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-replication` / `codex/mcr-fe-FE17` |
-| C04 readiness audit COMPLETE; checkout stopped | `mcr(qa) C04 feature readiness review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-domain-readiness` / `codex/mcr-qa-C04-readiness` |
+| FE21 party discovery/applications | `mcr(fe) FE21 party discovery and applications` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-party-discovery` / `codex/mcr-fe-FE21` |
+| FE24 giveaway discovery/own activity | `mcr(fe) FE24 giveaway discovery and own activity` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-gift-discovery` / `codex/mcr-fe-FE24` |
+| FE17 independent review COMPLETE; checkout stopped | `mcr(qa) FE17 replication review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-replication` / `codex/mcr-qa-FE17` |
 
 The entries below retain earlier assignment history; this table and the latest
 allocation section at the end supersede their historical active/idle wording.
@@ -502,3 +502,37 @@ QA readiness audit disposition: the corrected report chain is integrated through
 returned COMPLETE and a subsequent read returned null; its clean checkout is
 stopped. Four development/review chats remain active. No duplicate audit is
 assigned while the independent frontend consumer review is already running.
+
+
+## FE21 and FE24 implementation after consumer qualification
+
+The parent integrated FE17 as `79e4556`, independent review as `1fa598c`, and
+passed 181 combined transport/replication tests plus build/lint. Both bounded
+worker and QA goals are tool-confirmed COMPLETE and their former checkouts stopped.
+The independent consumer/context goals are also COMPLETE. The shared request and
+capability fixes passed 287 focused tests and 26 independent consumer cases;
+context qualification passed 30 new independent methods and 93 combined contract
+tests. [The bounded consumer contract](party-gift-consumer-contract.md) is frozen
+at `5f884ed`; whole C04 and full task acceptance remain open.
+
+Two frontend implementation chats now use distinct worktrees from full base
+`5f884edfe636a3a9a8f8b08fb33044c5d57cd0aa`:
+
+- FE21 owns only `frontend/src/features/party-discovery/**` and
+  `docs/mcr/frontend/party-discovery.md`. Its new unbudgeted persistent goal is
+  tool-confirmed ACTIVE through full implementation, focused/native validation,
+  documentation, committed handoff and review fixes.
+- FE24 owns only `frontend/src/features/gift-discovery/**`,
+  `frontend/src/features/my-gifts/**` and `docs/mcr/frontend/gift-discovery.md`.
+  Its new concrete unbudgeted goal is tool-confirmed ACTIVE. It uses the existing
+  scoped privacy.run/cleanup seam and remains active through delivery/review fixes.
+
+Neither worker may modify shared clients, contracts, root routers, manifests,
+locks, the other feature lane or backend. Parent owns actual panel composition.
+Both must use absolute worktree paths, preserve the selected model, use English,
+avoid decorative left accents and use only approved character derivatives.
+There is no automatic mutation replay or invented production feature readiness.
+BE04 retains exclusive shared Rust target ownership for the real owner-chain
+gate; BE08 continues its isolated source work until that lease is released.
+Only the integrator publishes reviewed changes. Accepted counts remain 11/112
+required and 11/118 total; the full project goal stays ACTIVE.

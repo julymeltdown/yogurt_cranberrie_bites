@@ -1,0 +1,22 @@
+$ tsc -b && vite build
+src/features/auth/__tests__/domain-request.test.ts(47,60): error TS2375: Type '{ domainOperation: undefined; }' is not assignable to type 'Partial<HttpRequest<unknown>>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'domainOperation' are incompatible.
+    Type 'undefined' is not assignable to type '"listConcertParties" | "getConcertParty" | "createConcertParty" | "updateConcertParty" | "cancelConcertParty" | "transferConcertParty" | "listConcertPartyApplications" | ... 98 more ... | "getConcertArchive"'.
+src/features/auth/__tests__/domain-request.test.ts(51,34): error TS2345: Argument of type '{ query: { state: string; token?: never; unknown?: never; limit?: never; cursor?: never; starts_after?: never; }; path?: never; method?: never; access?: never; domainOperation?: never; errorFamily?: never; idempotencyKey?: never; } | ... 12 more ... | { ...; }' is not assignable to parameter of type 'Partial<HttpRequest<unknown>> | undefined'.
+  Type '{ domainOperation: undefined; query?: never; path?: never; method?: never; access?: never; errorFamily?: never; idempotencyKey?: never; }' is not assignable to type 'Partial<HttpRequest<unknown>>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Types of property 'domainOperation' are incompatible.
+      Type 'undefined' is not assignable to type '"listConcertParties" | "getConcertParty" | "createConcertParty" | "updateConcertParty" | "cancelConcertParty" | "transferConcertParty" | "listConcertPartyApplications" | ... 98 more ... | "getConcertArchive"'.
+src/features/auth/__tests__/domain-request.test.ts(56,34): error TS2379: Argument of type '{ domainOperation: undefined; errorFamily: "core"; query: { state: string; }; }' is not assignable to parameter of type 'Partial<HttpRequest<unknown>>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'domainOperation' are incompatible.
+    Type 'undefined' is not assignable to type '"listConcertParties" | "getConcertParty" | "createConcertParty" | "updateConcertParty" | "cancelConcertParty" | "transferConcertParty" | "listConcertPartyApplications" | ... 98 more ... | "getConcertArchive"'.
+src/features/auth/__tests__/domain-request.test.ts(58,34): error TS2379: Argument of type '{ domainOperation: undefined; errorFamily: "core"; access: "public"; path: string; query: { state: string; }; }' is not assignable to parameter of type 'Partial<HttpRequest<unknown>>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'domainOperation' are incompatible.
+    Type 'undefined' is not assignable to type '"listConcertParties" | "getConcertParty" | "createConcertParty" | "updateConcertParty" | "cancelConcertParty" | "transferConcertParty" | "listConcertPartyApplications" | ... 98 more ... | "getConcertArchive"'.
+src/features/auth/__tests__/domain-request.test.ts(71,3): error TS2375: Type '{ idempotencyKey: undefined; }' is not assignable to type 'Partial<HttpRequest<unknown>>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'idempotencyKey' are incompatible.
+    Type 'undefined' is not assignable to type 'string'.
+src/features/auth/__tests__/domain-request.test.ts(77,35): error TS2345: Argument of type '{ idempotencyKey: undefined; headers?: never; errorFamily?: never; domainOperation?: never; path?: never; } | { idempotencyKey: string; headers?: never; errorFamily?: never; domainOperation?: never; path?: never; } | ... 4 more ... | { ...; }' is not assignable to parameter of type 'Partial<HttpRequest<unknown>> | undefined'.
+  Type '{ idempotencyKey: undefined; headers?: never; errorFamily?: never; domainOperation?: never; path?: never; }' is not assignable to type 'Partial<HttpRequest<unknown>>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Types of property 'idempotencyKey' are incompatible.
+      Type 'undefined' is not assignable to type 'string'.
+[ELIFECYCLE] Command failed with exit code 1.

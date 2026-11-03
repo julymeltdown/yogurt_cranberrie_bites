@@ -1,7 +1,7 @@
 # FE17 headless replication independent review
 
-Date: 2026-11-03. **Bounded review complete: Headless FE17 implementation in
-commit `bd202ad` satisfies contract, lifecycle, and ordering invariants. All 7
+Date: 2026-11-03. **Bounded review complete: no actionable defect found in the checked
+headless FE17 contract, lifecycle, and ordering cases at `bd202ad`. All 7
 delivered files match sealed receipt `dd0bd78f`. Independent adversarial probe
 confirms delta suppression during resync, 64-input queue saturation recovery,
 throwing sink termination, room-switch snapshot ordering, and zero-replay
@@ -11,7 +11,8 @@ remains MOCK_READY.
 ## Scope and authority
 
 QA worktree: `/Users/lhs/Desktop/mcr-worktrees/qa-replication`, branch
-`codex/mcr-qa-FE17`, base commit `4dc3bb3dd8015abcf26839c34954f7ca91870ceb`.
+`codex/mcr-qa-FE17`, assigned base `bd202adb4888ef0f92fec915ec2226a6c9ec6334`;
+worker comparison base `4dc3bb3dd8015abcf26839c34954f7ca91870ceb`.
 Evaluated worker commit: `bd202adb4888ef0f92fec915ec2226a6c9ec6334`.
 Sole tracked writable file is this report at its absolute path:
 `/Users/lhs/Desktop/mcr-worktrees/qa-replication/docs/mcr/qa/replication-review.md`.
@@ -92,12 +93,12 @@ Probe output saved to `/tmp/mcr-qa-fe17-agy8u3i5/adversarial-result.json`
 
 ## Disposition and limitations
 
-The headless FE17 replication engine is clean, robust, and contract-compliant.
+The checked headless FE17 cases passed; this is not proof of all possible interleavings.
 The persistent goal remains **ACTIVE** awaiting parent review and disposition.
 
 Limitations:
 - Headless replication only; FE12 character animation, sprite compositing, and visual rendering are NOT_RUN.
 - Spatial prediction remains unavailable pending authoritative BE12 physics/collision integration.
-- Real network, backend WebSocket cluster, load, and IN01 two-user gates are NOT_RUN.
+- Production network/backend WebSocket cluster, load, and IN01 two-user gates are NOT_RUN. Worker native evidence uses an actual loopback socket with synthetic server frames.
 - Implementation status is **MOCK_READY**.
 

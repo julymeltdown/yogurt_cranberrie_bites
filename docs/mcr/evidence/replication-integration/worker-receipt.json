@@ -1,0 +1,297 @@
+{
+  "task": "FE17 headless scope",
+  "status": "MOCK_READY for parent review; not full FE17 acceptance",
+  "base": "4dc3bb3dd8015abcf26839c34954f7ca91870ceb",
+  "branch": "codex/mcr-fe-FE17",
+  "deliveryCommits": [
+    "bd202adb4888ef0f92fec915ec2226a6c9ec6334"
+  ],
+  "changedPaths": [
+    "docs/mcr/frontend/world-replication.md",
+    "frontend/src/world/entities/replicated.ts",
+    "frontend/src/world/network/__tests__/fixtures/replication-browser.html",
+    "frontend/src/world/network/__tests__/fixtures/replication-browser.ts",
+    "frontend/src/world/network/__tests__/replication-browser.mjs",
+    "frontend/src/world/network/__tests__/replication.test.ts",
+    "frontend/src/world/network/replication.ts"
+  ],
+  "delivered": [
+    {
+      "path": "<worker-checkout>/docs/mcr/frontend/world-replication.md",
+      "bytes": 11214,
+      "sha256": "32d6bcce22cc87edc884c076c1de47e5dda378ca78d58a6177a0cea6e16d90a8"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/entities/replicated.ts",
+      "bytes": 2435,
+      "sha256": "05a3222c8ae68be52a7118f3c04c0d0bce686916328422b50134d535e5f26700"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/__tests__/fixtures/replication-browser.html",
+      "bytes": 297,
+      "sha256": "7c9d194dc4b25d07b01af84131f03ae96f4ae2e889c3f2e58e9af8a980075c8e"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/__tests__/fixtures/replication-browser.ts",
+      "bytes": 2509,
+      "sha256": "f33a6363787eafe8086eaa52be9a2373cbeedecc5f108b5e674d15932ab6e96b"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/__tests__/replication-browser.mjs",
+      "bytes": 8476,
+      "sha256": "5176e98a8ff930e2e8344bed479af91559f0bd0a6874d0dab38fb47417e4d255"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/__tests__/replication.test.ts",
+      "bytes": 17029,
+      "sha256": "7c9f18e2e0dc5c8d7f991b8fe39493dfe3dff4ecdcbd398bac1d476e593e25e5"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/replication.ts",
+      "bytes": 13389,
+      "sha256": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2"
+    }
+  ],
+  "checks": [
+    {
+      "check": "install",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-install.log",
+      "bytes": 1103,
+      "sha256": "16f745ab6415a38045171a3aa02599dd18772b81ebdef53d0727325d66b45e49"
+    },
+    {
+      "check": "23 focused tests",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-tests-delivery.log",
+      "bytes": 241,
+      "sha256": "656dd150c6ae73d5b915c94b7c569b735ca3d78eff0d5620b48b2d1e0387ce1a"
+    },
+    {
+      "check": "strict TS and production build",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-build-delivery.log",
+      "bytes": 979,
+      "sha256": "157cbfd2863db26f31f82eece79b4a28cac93f90a2797e81106bef7496bfef77"
+    },
+    {
+      "check": "lint",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-lint-delivery.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "native Chrome lifecycle",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-native-delivery.log",
+      "bytes": 29,
+      "sha256": "c06b2a86811106eae178a38319af363f042aa430fb5479edd2361f0a461cbc66"
+    },
+    {
+      "check": "plan",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-plan.log",
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "check": "C08",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-origin.log",
+      "bytes": 393,
+      "sha256": "b63ca291ec815adf3ae69ce5aca678403ece8799b8e12b1e712f70dd91cb669f"
+    },
+    {
+      "check": "working/staged lane ownership",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-boundaries-delivery.log",
+      "bytes": 123,
+      "sha256": "c43312e52cb922b14e96a677e1c7b5a2b06996c44966f872fd9bcbb0c1f24c36"
+    }
+  ],
+  "readOnlyInputs": [
+    {
+      "path": "<worker-checkout>/contracts/realtime/v1/world.schema.json",
+      "bytes": 20625,
+      "sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36"
+    },
+    {
+      "path": "<worker-checkout>/contracts/realtime/v1/policy.json",
+      "bytes": 1080,
+      "sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b"
+    },
+    {
+      "path": "<worker-checkout>/contracts/realtime/v1/operations.json",
+      "bytes": 2200,
+      "sha256": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0"
+    },
+    {
+      "path": "<worker-checkout>/contracts/core/v1/core.schema.json",
+      "bytes": 18901,
+      "sha256": "9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88"
+    },
+    {
+      "path": "<worker-checkout>/contracts/assets/v1/avatar-config.schema.json",
+      "bytes": 2114,
+      "sha256": "37b9be22cff7cbde882ab144aec3b75b5edc24f70653f97c9dcec14e87c652bd"
+    },
+    {
+      "path": "<worker-checkout>/contracts/assets/v1/common.schema.json",
+      "bytes": 5744,
+      "sha256": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4"
+    },
+    {
+      "path": "<worker-checkout>/contracts/fixtures/realtime/movement-heartbeat.json",
+      "bytes": 6083,
+      "sha256": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd"
+    },
+    {
+      "path": "<worker-checkout>/contracts/fixtures/realtime/ticket-response.json",
+      "bytes": 456,
+      "sha256": "8162f1ac19b4caf28ca810d9c565386cf8f532b7e282b356999e06fcec4c1c54"
+    },
+    {
+      "path": "<worker-checkout>/contracts/fixtures/realtime/filtered-viewers.json",
+      "bytes": 25447,
+      "sha256": "c29bbe1808dca4030ad9efc49192c671ba6ff2afaacc1a42aae368de3745dd36"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/WorldTransport.ts",
+      "bytes": 2114,
+      "sha256": "f5d2397f61b5425f3638e81ec282b11017d2b336861860259437f2b1bcf51a8e"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/transport/engine.ts",
+      "bytes": 23853,
+      "sha256": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/transport/contract.ts",
+      "bytes": 9184,
+      "sha256": "1b642a0e1bba8c5c45b39fc38d107af39ff3c83c25955295e49edc03b8402b08"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/transport/wire-types.ts",
+      "bytes": 5765,
+      "sha256": "c154c86f488ca681a0379087828ada028c8ecb54fd75c7bb8cb49f712be56618"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/mock.ts",
+      "bytes": 2639,
+      "sha256": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/network/websocket.ts",
+      "bytes": 437,
+      "sha256": "f7c9a89e7545f9459f2d71eab8b0f5ea696db620d3685b0cc27c092b5ae75226"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/shared/api/http.ts",
+      "bytes": 19135,
+      "sha256": "e658f8da8e97c5e6801762c5fc552732c2e84a058d4deebdd7b08a1d6b2b57bb"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/runtime.ts",
+      "bytes": 12181,
+      "sha256": "6863c88da903f0bca72bbe44f0b1ab9eb9484eb38050af908dd8f54c069f4c24"
+    },
+    {
+      "path": "<worker-checkout>/frontend/src/world/input/controller.ts",
+      "bytes": 13734,
+      "sha256": "598c4719e73a8f5c8ca99e7cb513aa8c22bfdb70ae46d6548307791d8d718476"
+    },
+    {
+      "path": "<worker-checkout>/frontend/pnpm-lock.yaml",
+      "bytes": 80328,
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "/tmp/mcr-fe17-handoff/native-delivery/report.json",
+      "bytes": 1954,
+      "sha256": "4b479e595ae73fad67d631036c027aac868b68ec79ee16a7dcd83ae335ab8356"
+    }
+  ],
+  "historicalEvidence": [
+    {
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-tests-first.log",
+      "bytes": 241,
+      "sha256": "d1775812963bd904deb1308cdf0aafa1bf8ddaa0d422a512f63bbe18e6c2e8ce"
+    },
+    {
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-tests-second.log",
+      "bytes": 241,
+      "sha256": "8df24f7ada87315028cd9586dd12924960dbd78404893e667debd053b915fcb1"
+    },
+    {
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-tests-final.log",
+      "bytes": 241,
+      "sha256": "2b1fe775fc8e6d3722cbb1eb9f1c6381d312f078acb94274641bd3d0b51293fa"
+    },
+    {
+      "exitCode": 1,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-build-first.log",
+      "bytes": 173,
+      "sha256": "9088076068947c2f17e882a7f25d2df4b4a8a6a32f238e12d1748bf1c001483f"
+    },
+    {
+      "exitCode": 1,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-room-publication-red.log",
+      "bytes": 1422,
+      "sha256": "6530d901db767d19e95686e05c6e4c4e67250df743edcbc3af5a70bc97238d17"
+    },
+    {
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-native-first.log",
+      "bytes": 29,
+      "sha256": "c06b2a86811106eae178a38319af363f042aa430fb5479edd2361f0a461cbc66"
+    },
+    {
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe17-handoff/mcr-fe17-native-final.log",
+      "bytes": 29,
+      "sha256": "c06b2a86811106eae178a38319af363f042aa430fb5479edd2361f0a461cbc66"
+    }
+  ],
+  "nativeBinding": {
+    "recordedRevision": "4dc3bb3dd8015abcf26839c34954f7ca91870ceb",
+    "all11SourceHashesMatchDeliveryCommit": true,
+    "browser": "156.0.8078.80",
+    "scope": "FE17 headless synthetic C05 projection and native WS lifecycle only; no renderer/art/backend acceptance"
+  },
+  "commands": {
+    "node": "<integration-checkout>-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "pnpm": "<integration-checkout>-tools/pnpm-11.7.0/package/bin/pnpm.cjs",
+    "focused": "exec vitest run src/world/network/__tests__/replication.test.ts",
+    "build": "build",
+    "lint": "exec oxlint src vite.config.ts",
+    "native": "MCR_FE17_EVIDENCE=/tmp/mcr-fe17-native-delivery node src/world/network/__tests__/replication-browser.mjs",
+    "root": [
+      "python3 scripts/mcr/check-plan.py",
+      "node scripts/mcr/check-ui-origin.mjs",
+      "python3 scripts/mcr/check-boundaries.py --base 4dc3bb3dd8015abcf26839c34954f7ca91870ceb --lane frontend --allow-doc docs/mcr/frontend/world-replication.md",
+      "git diff --cached --check"
+    ]
+  },
+  "scope": [
+    "Authoritative immutable public roster, snapshot/delta/remove/epoch reset",
+    "Bounded remote interpolation without extrapolation",
+    "Bounded coalesced input ledger and ack reconciliation; no spatial simulation",
+    "One injected FE16 owner, explicit resync/ping response/room switching/visibility recovery",
+    "Canonical owner and reentrant sink teardown with no stale commits"
+  ],
+  "limits": [
+    "Spatial prediction unavailable: frozen C05 lacks authoritative speed/collision/duration model",
+    "FE12 renderer/compositor/approved character derivatives and actual shell/runtime/input composition NOT_RUN",
+    "BE12/13/14 and actual server/two-user/device/load/IN01/whole FE17 gates NOT_RUN",
+    "Synthetic native fixture is text projection and loopback test server only",
+    "No transport/engine/contracts/central edits, new dependencies, art, Cargo/PG or push",
+    "Goal ACTIVE through parent review fixes"
+  ],
+  "worktreeClean": true
+}
