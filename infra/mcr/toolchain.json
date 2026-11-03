@@ -1,0 +1,54 @@
+{
+  "node": {
+    "version": "24.22.2",
+    "archive": "node-v24.22.2-darwin-arm64.tar.gz",
+    "sha256": "aa9549349e47dffaa42dcf95d6e06ade8c4bdafc980979883b88767670df385a",
+    "source": "https://nodejs.org/dist/v24.22.2/node-v24.22.2-darwin-arm64.tar.gz"
+  },
+  "pnpm": {
+    "version": "11.7.0",
+    "integrity": "sha512-GcyFLBIMcSV2DyRD7mvgyltA+fUFmN4aCaHxd1A+AQ5Xwjx3ZG4B52HeWb+HT7IqM5jDOrlpH8E+uUa28PTWIA==",
+    "source": "https://registry.npmjs.org/pnpm/-/pnpm-11.7.0.tgz"
+  },
+  "frontend_ci_image": {
+    "image": "node:24.22.2-bookworm-slim",
+    "digest": "sha256:c86ecead9e55a5210ac1727de38a4ca840bf03dcaf34dc9749addbf383b1920c",
+    "platforms": [
+      {
+        "platform": {
+          "architecture": "amd64",
+          "os": "linux"
+        },
+        "digest": "sha256:a43f7fc3e52e87d12a905f46eea0275def84ca8f2981a5b53fed44d7fb398ee0"
+      },
+      {
+        "platform": {
+          "architecture": "arm64",
+          "os": "linux",
+          "variant": "v8"
+        },
+        "digest": "sha256:e80dee4ed3709cf1f8004e34ecfb90df71b7eac8ba0d7d6222ba238a823d1eea"
+      },
+      {
+        "platform": {
+          "architecture": "ppc64le",
+          "os": "linux"
+        },
+        "digest": "sha256:6baef4d2f00c27c530d270dc1a4b76d04113c378a4fc3bd3b242bd35d6ac7f18"
+      }
+    ]
+  },
+  "rust": {
+    "channel": "1.88.0",
+    "components": [
+      "clippy",
+      "rustfmt"
+    ],
+    "source": "port-rust/boilerplate-grpc-rust/rust-toolchain.toml at 704f42149d5e8e35e1d578676d8ae2dac4f0f9c2"
+  },
+  "qualification": {
+    "frontend_image_execution": "NOT_RUN",
+    "backend_database": "NOT_RUN",
+    "production_deployment": "NOT_RUN"
+  }
+}

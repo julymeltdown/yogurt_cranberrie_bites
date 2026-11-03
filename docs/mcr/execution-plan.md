@@ -2,7 +2,7 @@
 
 ## Current checkpoint
 
-Intake and assessment are complete when the source package, full narrative, repository adaptation, parallel analyses, planning checks, and reviewed master commit are delivered. Application implementation has not started at this checkpoint. The next implementation unit is C01; do not treat intake as its source/reuse acceptance.
+Intake and assessment are delivered. Foundation implementation is active: reviewed source mapping, pinned frontend installation/build, imported Rust workspace build and source-origin/boundary guards are available. The [execution record](progress.md) separates accepted foundation tasks, implementation in progress and unrun runtime gates. The original planning exports remain unchanged.
 
 The main agent is the integrator. Workers use `gpt-6.1-sol` with `high` reasoning, as requested. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
 

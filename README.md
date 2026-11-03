@@ -4,7 +4,7 @@ A mobile-first fan community centered on a persistent multiplayer pixel world. F
 
 **Delivery:** [`julymeltdown/mcr`, `master`](https://github.com/julymeltdown/mcr/tree/master). The user's repository choice supersedes the old Bigyeting delivery destination in the original package. Bigyeting and port-rust are source foundations.
 
-**Current checkpoint (2026-11-03): project intake and parallel assessment.** This repository contains the specification, approved visual reference, planning exporter, validation evidence, and orchestration plan. Application implementation and acceptance remain outstanding; there is no runnable frontend or backend here yet.
+**Current checkpoint (2026-11-03): foundation implementation.** The original React foundation installs/builds and the imported six-service Rust workspace builds. Frontend/backend workers use separate worktrees and file ownership, with reviewed integration into `master`. Core contracts, isolated database qualification and accessible UI primitives are in progress. The multiplayer product and real-user acceptance remain outstanding. See the [execution record](docs/mcr/progress.md).
 
 ## Start here
 
@@ -39,3 +39,22 @@ python3 scripts/mcr/check-plan.py --report docs/mcr/evidence/planning-validation
 ```
 
 The check verifies preserved source hashes, narrative/table agreement, both original and adapted regression probes, deterministic committed exports, delivery routing, and the full required release checklist. It is **not an application build, security, integration, device, capacity, or release certification**. Generated task statuses describe the original planning baseline; execution progress must be tracked separately.
+
+## Run the foundation
+
+Install Node **24.22.2**, pnpm **11.7.0** via Corepack, and Rust **1.88.0**.
+The [toolchain record](infra/mcr/toolchain.json) pins archive/image provenance.
+
+```sh
+scripts/mcr/check.sh frontend
+scripts/mcr/check.sh backend
+scripts/mcr/check.sh guards
+cd frontend
+corepack pnpm@11.7.0 dev
+```
+
+The browser opens a minimal original foundation screen, not a working concert
+world. The backend command builds only: do not launch imported services with their
+source-default database addresses. Isolated MCR launch and migration commands are
+being qualified separately. `infra/mcr/Dockerfile.frontend-check` is a build-only
+image definition; Docker execution and production serving are not yet qualified.
