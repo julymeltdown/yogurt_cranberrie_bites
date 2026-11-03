@@ -170,3 +170,19 @@ controller tests and native preview/smoke; account contract/controller/index/pan
 controller tests; this document. Initial safety commit `009d833` is a direct child of
 the recorded base. The account/native/review-fix slice and final handoff ancestry are
 recorded below after committing. Only Delivery may publish reviewed work to master.
+
+Final source ancestry:
+
+1. Base `892ca4de7580eb36c82b54efe44f03941ca68c41`.
+2. Safety slice `009d833477e424bed9e152e4e0c87a75e17b2f7d`.
+3. Account, native validation and review fixes `cc586d7b8be8d9fdca7e64c9ea8130a54aa0b659`.
+4. This documentation-only handoff record follows the code commit above.
+
+All 17 changed paths match the exact assignment; final native JSON source hashes
+were compared to the delivered files and match. Native result JSON SHA256:
+`efc3b55c48acb4917edb0e352a20c9f6603de4166047c2f5e5f85f2ce61a367b`.
+
+Delivery and Social receive the committed handoff directly. Any approved eight-target
+Auth schema revision is a precise subsequent decoder/test patch against its explicit
+contract pin, not permission to accept arbitrary unknown steps or four-of-eight
+completion. The current assigned frontend slice does not wait for live BE41/BE42.
