@@ -1,0 +1,130 @@
+{
+  "kind": "mcr-fe-ref-meet-v1",
+  "status": "PASS",
+  "scope": "Frozen fixtures, actual production PartyDiscovery and native Chrome; no live services/approved portrait/physical arrival acceptance",
+  "widths": [
+    {
+      "width": 360,
+      "rows": [
+        {
+          "x": 9,
+          "y": 109,
+          "width": 342,
+          "height": 110
+        },
+        {
+          "x": 9,
+          "y": 224,
+          "width": 342,
+          "height": 110
+        },
+        {
+          "x": 9,
+          "y": 339,
+          "width": 342,
+          "height": 110
+        }
+      ],
+      "checks": [
+        "navigation",
+        "no-fake-art",
+        "density",
+        "44px-targets",
+        "no-overflow",
+        "visible-focus",
+        "join-read-only",
+        "back-focus",
+        "people-route",
+        "create-route",
+        "my-plan",
+        "full",
+        "empty",
+        "privacy-withdrawal"
+      ]
+    },
+    {
+      "width": 390,
+      "rows": [
+        {
+          "x": 9,
+          "y": 109,
+          "width": 372,
+          "height": 110
+        },
+        {
+          "x": 9,
+          "y": 224,
+          "width": 372,
+          "height": 110
+        },
+        {
+          "x": 9,
+          "y": 339,
+          "width": 372,
+          "height": 110
+        }
+      ],
+      "checks": [
+        "navigation",
+        "no-fake-art",
+        "density",
+        "44px-targets",
+        "no-overflow",
+        "visible-focus",
+        "join-read-only",
+        "back-focus",
+        "people-route",
+        "create-route",
+        "my-plan",
+        "full",
+        "empty",
+        "privacy-withdrawal"
+      ]
+    },
+    {
+      "width": 430,
+      "rows": [
+        {
+          "x": 9,
+          "y": 109,
+          "width": 412,
+          "height": 110
+        },
+        {
+          "x": 9,
+          "y": 224,
+          "width": 412,
+          "height": 110
+        },
+        {
+          "x": 9,
+          "y": 339,
+          "width": 412,
+          "height": 110
+        }
+      ],
+      "checks": [
+        "navigation",
+        "no-fake-art",
+        "density",
+        "44px-targets",
+        "no-overflow",
+        "visible-focus",
+        "join-read-only",
+        "back-focus",
+        "people-route",
+        "create-route",
+        "my-plan",
+        "full",
+        "empty",
+        "privacy-withdrawal"
+      ]
+    }
+  ],
+  "sources": {
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "56adebbc5aa174b62c229e91377ed92065fd7c823078a281be176b64875949fd",
+    "contracts/domain/v1/party.schema.json": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03"
+  },
+  "browser": "156.0.8078.80"
+}
