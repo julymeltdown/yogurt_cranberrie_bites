@@ -141,8 +141,44 @@ fn query(field: Field) -> PolicyQuery {
 fn signer() -> ActorDelegationSigner {
     ActorDelegationSigner::from_seed(Workload::Concert, &[37; 32]).unwrap()
 }
+fn dedicated(audience: Workload) -> ActorDelegationVerifier {
+    platform::actor_delegation::relationship_read::RelationshipReadVerifier::new(
+        audience,
+        &[signer().public_key()],
+        &ActorDelegationVerifier::new(
+            audience,
+            &[
+                ActorDelegationSigner::from_seed(Workload::Gateway, &[41; 32])
+                    .unwrap()
+                    .public_key(),
+            ],
+        )
+        .unwrap(),
+    )
+    .unwrap()
+    .into_inner()
+}
 fn client(auth: &str, friend: &str) -> GrpcRelationshipAuthority {
-    GrpcRelationshipAuthority::connect(auth, friend, "concert", None, signer()).unwrap()
+    GrpcRelationshipAuthority::connect(
+        auth,
+        friend,
+        "concert",
+        None,
+        platform::actor_delegation::relationship_read::RelationshipReadSigner::from_seed(
+            &[37; 32],
+            &ActorDelegationVerifier::new(
+                Workload::Concert,
+                &[
+                    ActorDelegationSigner::from_seed(Workload::Gateway, &[41; 32])
+                        .unwrap()
+                        .public_key(),
+                ],
+            )
+            .unwrap(),
+        )
+        .unwrap(),
+    )
+    .unwrap()
 }
 const AUTH_POLICY: MethodPolicy = MethodPolicy {
     service: "relationship.v1.AuthConcertRelationshipService",
@@ -270,7 +306,7 @@ async fn controlled_auth(kind: &'static str) -> Running {
         CallerRegistry::new()
             .register(Workload::Concert, "concert")
             .unwrap(),
-        ActorDelegationVerifier::new(Workload::Auth, &[signer().public_key()]).unwrap(),
+        dedicated(Workload::Auth),
     )
     .unwrap();
     let task = tokio::spawn(async move {
@@ -288,7 +324,7 @@ async fn controlled_auth(kind: &'static str) -> Running {
 async fn controlled_friend(kind: &'static str) -> Running {
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
     let endpoint = format!("http://{}", listener.local_addr().unwrap());
-    let service=guard(&FRIEND_POLICY,wire::friend_concert_relationship_service_server::FriendConcertRelationshipServiceServer::new(Controlled(kind)),CallerRegistry::new().register(Workload::Concert,"concert").unwrap(),ActorDelegationVerifier::new(Workload::Friend,&[signer().public_key()]).unwrap()).unwrap();
+    let service=guard(&FRIEND_POLICY,wire::friend_concert_relationship_service_server::FriendConcertRelationshipServiceServer::new(Controlled(kind)),CallerRegistry::new().register(Workload::Concert,"concert").unwrap(),dedicated(Workload::Friend)).unwrap();
     let task = tokio::spawn(async move {
         tonic::transport::Server::builder()
             .layer(CallDeadlineLayer)
@@ -499,7 +535,7 @@ async fn native_auth(pool: sqlx::PgPool) -> Running {
     use auth_service::adapters::r#in::grpc::concert_relationship as owner;
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
     let endpoint = format!("http://{}", listener.local_addr().unwrap());
-    let service=guard(&owner::POLICY,owner::proto::auth_concert_relationship_service_server::AuthConcertRelationshipServiceServer::new(owner::RelationshipServer::from_pool(pool)),CallerRegistry::new().register(Workload::Concert,"concert").unwrap(),ActorDelegationVerifier::new(Workload::Auth,&[signer().public_key()]).unwrap()).unwrap();
+    let service=guard(&owner::POLICY,owner::proto::auth_concert_relationship_service_server::AuthConcertRelationshipServiceServer::new(owner::RelationshipServer::from_pool(pool)),CallerRegistry::new().register(Workload::Concert,"concert").unwrap(),dedicated(Workload::Auth)).unwrap();
     let task = tokio::spawn(async move {
         tonic::transport::Server::builder()
             .layer(CallDeadlineLayer)
@@ -516,7 +552,7 @@ async fn native_friend(pool: sqlx::PgPool) -> Running {
     use friend_service::adapters::r#in::grpc::concert_relationship as owner;
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
     let endpoint = format!("http://{}", listener.local_addr().unwrap());
-    let service=guard(&owner::POLICY,owner::proto::friend_concert_relationship_service_server::FriendConcertRelationshipServiceServer::new(owner::RelationshipServer::from_pool(pool)),CallerRegistry::new().register(Workload::Concert,"concert").unwrap(),ActorDelegationVerifier::new(Workload::Friend,&[signer().public_key()]).unwrap()).unwrap();
+    let service=guard(&owner::POLICY,owner::proto::friend_concert_relationship_service_server::FriendConcertRelationshipServiceServer::new(owner::RelationshipServer::from_pool(pool)),CallerRegistry::new().register(Workload::Concert,"concert").unwrap(),dedicated(Workload::Friend)).unwrap();
     let task = tokio::spawn(async move {
         tonic::transport::Server::builder()
             .layer(CallDeadlineLayer)

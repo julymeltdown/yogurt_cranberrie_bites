@@ -1,7 +1,9 @@
 //! Real signed owner clients. No retries, cache, fallback or cross-owner DB access.
 use super::*;
 use platform::{
-    actor_delegation::{request_for, ActorDelegationClient, ActorDelegationSigner},
+    actor_delegation::{
+        relationship_read::RelationshipReadSigner, request_for, ActorDelegationClient,
+    },
     edge::{EdgeBudget, FailurePolicy, RetryClass},
     grpc_auth::{ServiceIdentityClientInterceptor, Workload},
 };
@@ -35,7 +37,7 @@ impl GrpcRelationshipAuthority {
         friend_endpoint: &str,
         service_token: &str,
         tls: Option<&platform::grpc_tls::TlsMaterial>,
-        signer: ActorDelegationSigner,
+        signer: RelationshipReadSigner,
     ) -> anyhow::Result<Self> {
         let auth = platform::grpc_tls::lazy_channel_for_edge_with_optional_tls(
             tls,
@@ -50,8 +52,8 @@ impl GrpcRelationshipAuthority {
             EDGE.validate()?,
         )?;
         Ok(Self{
-            auth:proto::auth_concert_relationship_service_client::AuthConcertRelationshipServiceClient::with_interceptor(ActorDelegationClient::new(auth,signer.clone(),Workload::Auth),ServiceIdentityClientInterceptor::new(Workload::Concert,service_token)?).max_decoding_message_size(4096).max_encoding_message_size(4096),
-            friend:proto::friend_concert_relationship_service_client::FriendConcertRelationshipServiceClient::with_interceptor(ActorDelegationClient::new(friend,signer,Workload::Friend),ServiceIdentityClientInterceptor::new(Workload::Concert,service_token)?).max_decoding_message_size(4096).max_encoding_message_size(4096),
+            auth:proto::auth_concert_relationship_service_client::AuthConcertRelationshipServiceClient::with_interceptor(signer.client(auth,Workload::Auth)?,ServiceIdentityClientInterceptor::new(Workload::Concert,service_token)?).max_decoding_message_size(4096).max_encoding_message_size(4096),
+            friend:proto::friend_concert_relationship_service_client::FriendConcertRelationshipServiceClient::with_interceptor(signer.client(friend,Workload::Friend)?,ServiceIdentityClientInterceptor::new(Workload::Concert,service_token)?).max_decoding_message_size(4096).max_encoding_message_size(4096),
         })
     }
 }

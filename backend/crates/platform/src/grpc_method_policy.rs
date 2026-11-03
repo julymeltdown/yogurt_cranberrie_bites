@@ -243,9 +243,23 @@ impl MethodPolicy {
             "method policy for {} declares actor fields twice",
             self.service
         );
+        // These two reserved observation services alone accept a dedicated
+        // Concert issuer. All other actor-bound methods remain Gateway-only.
+        let reserved_relationship = matches!(self.service,
+            "relationship.v1.AuthConcertRelationshipService" |
+            "relationship.v1.FriendConcertRelationshipService");
+        let relationship_read = matches!((self.service,self.workload),
+            ("relationship.v1.AuthConcertRelationshipService",Some(Workload::Auth)) |
+            ("relationship.v1.FriendConcertRelationshipService",Some(Workload::Friend)))
+            && self.methods.len()==1 && self.methods[0].0=="ReadCurrent"
+            && self.methods[0].1==[Workload::Concert]
+            && self.actor_fields.len()==1 && self.actor_fields[0].0=="ReadCurrent"
+            && self.actor_fields[0].1.len()==1 && self.actor_fields[0].1[0]==[1];
+        anyhow::ensure!(!reserved_relationship || relationship_read,
+            "reserved relationship read policy must match its exact owner, method, caller and actor field");
         for (method, fields) in self.actor_fields {
             anyhow::ensure!(
-                self.callers(method) == Some(&[Workload::Gateway][..]),
+                self.callers(method) == Some(&[Workload::Gateway][..]) || relationship_read,
                 "{}/{method} acts for a user and must accept only the Gateway",
                 self.service
             );
@@ -718,3 +732,6 @@ mod tests {
         assert_eq!(proto_rpc_names(proto), vec!["Read", "Write"]);
     }
 }
+
+#[cfg(test)]
+mod relationship_read_tests;

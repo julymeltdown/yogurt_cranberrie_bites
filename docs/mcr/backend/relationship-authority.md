@@ -182,3 +182,35 @@ modified without a grant. The lease was released immediately after collecting
 the failure; the next worker can proceed while this prerequisite is corrected.
 The harness now copies all selected binaries, verifies SHA-256, and uses only its
 private copies during native execution so it can release the shared target first.
+
+## Dedicated read-proof correction (source checkpoint)
+
+Delivery granted the exact additional paths
+`backend/crates/platform/src/grpc_method_policy.rs`, its new dedicated
+`grpc_method_policy/relationship_read_tests.rs` and exact test module line,
+`actor_delegation/relationship_read.rs`, and one export in `actor_delegation.rs`.
+The reserved registration exception requires the exact Auth/Friend read service,
+matching owning workload, only `ReadCurrent`, only Concert, and only actor field 1.
+All other actor-bound registrations remain Gateway-only; reserved names reject
+extra methods, wrong workloads/callers/fields and missing actor declarations.
+
+`RelationshipReadSigner` loads `CONCERT_RELATIONSHIP_SIGNING_SEED` with no
+fallback and refuses Gateway signing-seed reuse or any key trusted by the supplied
+Gateway verifier. `RelationshipReadVerifier` loads the separate
+`CONCERT_RELATIONSHIP_VERIFYING_KEYS` ring and rejects overlap with the existing
+Gateway ring, including rotated keys. Both refuse the shared parity key. Environment
+keys use standard Base64, matching the existing platform's key encoding.
+The owner startup composition uses the dedicated verifier **only** for the new
+read service. If the dedicated verification variable is absent, the new route is
+not registered; malformed/empty/overlapping configured keys fail startup. Existing
+Gateway service registration and verification remain unchanged.
+
+The Concert client constructor now requires the typed dedicated signer; explicit
+fixtures use separate read seed 37 and Gateway seed 41. New tests attempt to forge
+the other issuer string using each key, so a string-only issuer check cannot pass
+cross-domain tests. Other tests cover missing/wrong/tampered/actor/audience/method,
+replayed and expired proofs, strict registration, and dedicated environment loads.
+These are source-authored expectations pending the next bounded Cargo lease.
+This remains trusted Concert-signed observation, not forwarded Gateway child
+proof and not a remote database fence. The sealed bootstrap binding and current
+owner session check remain required. No platform runtime claim is made yet.

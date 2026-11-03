@@ -73,7 +73,7 @@ async fn invoke(m: proto::RelationshipRead, kind: &str) -> (i32, usize) {
     use tower::ServiceExt;
     let calls = Arc::new(AtomicUsize::new(0));
     let signer = ActorDelegationSigner::from_seed(Workload::Concert, &[37; 32]).unwrap();
-    let svc=guard(&POLICY,proto::friend_concert_relationship_service_server::FriendConcertRelationshipServiceServer::new(RelationshipServer::new(Arc::new(Owner(calls.clone(),kind=="foreign-reply")))),CallerRegistry::new().register(Workload::Concert,"concert").unwrap().register(Workload::Gateway,"gateway").unwrap(),ActorDelegationVerifier::new(Workload::Friend,&[signer.public_key()]).unwrap()).unwrap();
+    let svc=guard(&POLICY,proto::friend_concert_relationship_service_server::FriendConcertRelationshipServiceServer::new(RelationshipServer::new(Arc::new(Owner(calls.clone(),kind=="foreign-reply")))),CallerRegistry::new().register(Workload::Concert,"concert").unwrap().register(Workload::Gateway,"gateway").unwrap(),platform::actor_delegation::relationship_read::RelationshipReadVerifier::new(Workload::Friend, &[signer.public_key()], &ActorDelegationVerifier::new(Workload::Friend, &[ActorDelegationSigner::from_seed(Workload::Gateway, &[41;32]).unwrap().public_key()]).unwrap()).unwrap().into_inner()).unwrap();
     let body = framed(&m);
     let signed = if kind == "body" {
         framed(&message())

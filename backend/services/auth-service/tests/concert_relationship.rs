@@ -82,7 +82,21 @@ async fn invoke(m: proto::RelationshipRead, kind: &str) -> (i32, usize) {
             .unwrap()
             .register(Workload::Gateway, "gateway")
             .unwrap(),
-        ActorDelegationVerifier::new(Workload::Auth, &[signer.public_key()]).unwrap(),
+        platform::actor_delegation::relationship_read::RelationshipReadVerifier::new(
+            Workload::Auth,
+            &[signer.public_key()],
+            &ActorDelegationVerifier::new(
+                Workload::Auth,
+                &[
+                    ActorDelegationSigner::from_seed(Workload::Gateway, &[41; 32])
+                        .unwrap()
+                        .public_key(),
+                ],
+            )
+            .unwrap(),
+        )
+        .unwrap()
+        .into_inner(),
     )
     .unwrap();
     let body = framed(&m);
