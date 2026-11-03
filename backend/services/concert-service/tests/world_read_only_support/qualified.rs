@@ -281,25 +281,25 @@ async fn ticket(
     Ok(intent)
 }
 
-struct Stack {
+pub(crate) struct Stack {
     auth: PgPool,
-    concert: PgPool,
+    pub(crate) concert: PgPool,
     friend: PgPool,
     profile: PgPool,
     auth_server: Running,
     friend_server: Running,
     profile_server: Running,
-    event: EventId,
-    subject: WorldSubject,
+    pub(crate) event: EventId,
+    pub(crate) subject: WorldSubject,
     room: Uuid,
     target: Uuid,
-    owners: Arc<ProductionOwners>,
-    bridge: Arc<AdmissionBridge>,
+    pub(crate) owners: Arc<ProductionOwners>,
+    pub(crate) bridge: Arc<AdmissionBridge>,
     anchor: ClockAnchor,
     started: Instant,
 }
 impl Stack {
-    async fn new() -> anyhow::Result<Self> {
+    pub(crate) async fn new() -> anyhow::Result<Self> {
         let auth = owned::pool("auth").await?;
         let concert = owned::pool("concert").await?;
         let friend_pool = owned::pool("friend").await?;
@@ -418,10 +418,10 @@ impl Stack {
     fn repo(&self) -> PgWorldRepository {
         PgWorldRepository::new(self.concert.clone())
     }
-    fn now(&self) -> u64 {
+    pub(crate) fn now(&self) -> u64 {
         self.started.elapsed().as_millis() as u64
     }
-    async fn finish(self) -> anyhow::Result<()> {
+    pub(crate) async fn finish(self) -> anyhow::Result<()> {
         self.owners.pause().await?;
         drop(self.bridge);
         drop(self.owners);
@@ -447,7 +447,7 @@ use concert_application::{
 };
 use concert_domain::event_lifecycle::{Retention, Step};
 use sqlx::PgConnection;
-struct OperatorFixture;
+pub(crate) struct OperatorFixture;
 #[async_trait]
 impl FencedLifecycleAuthority for OperatorFixture {
     async fn check_in(
@@ -516,20 +516,20 @@ impl LifecycleOwners for WorldComponent {
         })
     }
 }
-fn keys() -> FingerprintKeys {
+pub(crate) fn keys() -> FingerprintKeys {
     FingerprintKeys::new(
         SigningKey::new("world-read-only-fixture", &[93; 32]).unwrap(),
         vec![],
     )
     .unwrap()
 }
-fn start() -> CloseCommand {
+pub(crate) fn start() -> CloseCommand {
     CloseCommand::Start {
         expected_revision: 1,
         reason: "Owned World component validation".into(),
     }
 }
-fn actor(s: &Stack) -> Actor {
+pub(crate) fn actor(s: &Stack) -> Actor {
     Actor {
         actor: s.subject.key.user_id.uuid(),
         event: s.event.uuid(),

@@ -26,19 +26,20 @@ export interface Receipt {
   readonly created_at: string; readonly expires_at: string; readonly result_status: number | null
 }
 export interface CommandBinding { readonly scope: SessionScope; readonly operation: CommandOperation; readonly key: string; readonly partyId: string; readonly applicationId?: string }
-type Schema = { $ref?: string; type?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean
+type Schema = { $ref?: string; type?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean
   items?: Schema; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; pattern?: string; format?: string; minimum?: number; maximum?: number }
 const schemas = contract.components.schemas as unknown as Record<string, Schema>
 const fail = (): never => { throw new Error('Invalid party response') }
 /** Restricted interpreter for the reachable frozen C04/C03 response schemas. No permissive fallback. */
 function conforms(value: unknown, schema: Schema, depth = 0): boolean {
-  if (depth > 24 || Object.keys(schema).some(k => !['$ref', 'type', 'const', 'enum', 'anyOf', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'maximum'].includes(k))) return false
+  if (depth > 24 || Object.keys(schema).some(k => !['$ref', 'type', 'const', 'enum', 'anyOf', 'oneOf', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'minLength', 'maxLength', 'pattern', 'format', 'minimum', 'maximum'].includes(k))) return false
   if (schema.$ref) {
     if (!/^#\/components\/schemas\/[A-Za-z0-9_]+$/.test(schema.$ref)) return false
     const next = schemas[schema.$ref.split('/').at(-1)!]
     return !!next && conforms(value, next, depth + 1)
   }
   if (schema.anyOf) return schema.anyOf.some(s => conforms(value, s, depth + 1))
+  if (schema.oneOf) return schema.oneOf.filter(s => conforms(value, s, depth + 1)).length === 1
   if ('const' in schema && value !== schema.const) return false
   if (schema.enum && !schema.enum.includes(value)) return false
   if (schema.type === 'null') return value === null

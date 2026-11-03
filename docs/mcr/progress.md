@@ -1,40 +1,58 @@
 # Execution record
 
-Updated 2026-11-04. This record supersedes intake-only status statements in the
-historical assessments. `generated/` remains the original planning baseline.
-Acceptance below applies only to the stated task criteria and candidate paths;
-it is not feature integration or release acceptance.
+Updated 2026-11-04 from published history through `f4b40808` and current owner
+handoffs. The snapshot below reports major feature outcomes and open delivery
+boundaries. Earlier task receipts remain historical evidence; neither their
+accepted-task count nor `generated/` is a current project-completion percentage.
+All **112 required tasks and 61 required IA entries** remain in scope.
 
-The published ancestry was verified through `d68eef5`; the bounded
-checkpoint includes root world entry `8bb878c`, FE12 compositor `1db1680`,
-FE04 binary/media `a56f043`/`0952149`, FE13 `371ff01`/`1fdf411`, FE20
-`ee41a3b`, FE25 `95d9f37`, feed/thread `5bc0055`/`5a81f08`, and cache-race
-fix `cf7836a`. Final publication is verified against the remote after commit;
-local integration alone is not publication evidence.
+## Current major feature snapshot
 
-[Current delivery evidence](evidence/delivery-2026-11-04/checkpoint.md) records
-857 combined frontend tests, then 8 giveaway, 24 avatar and 15 feed-fix tests,
-plus build/typecheck/lint and unchanged source-origin/planning checks. Independent
-QA executed both original feed/notice cache resurrection reproductions against
-worker fix `7fecec0`: 32/32 checks passed. These are bounded fixture checks,
-not real backend or multiuser acceptance.
+| Feature | Delivered evidence | Current boundary and next owner |
+| --- | --- | --- |
+| Reference frontend | [Checkpoint](frontend/reference-checkpoint-2026-11-04.json) `e9ce93da`: 617 tests, typecheck/lint/build and native default-shell comparisons at 360/390/430px. Later World alignment `fb0bfcaa`, approved Public characters `5008a2ed` and Wall native QA `ce9e8e6c` are published. | **IN_PROGRESS.** These passes apply to their recorded revisions. Contract `3398d833` subsequently exposed frontend decoders that reject `oneOf`, including layered-avatar entry. The exclusive consumer owner published the repair through `90f44fd9` with 413 affected tests; Map recovery is published through `f4b40808`. Integrated-screen qualification continues, so the older 617-test result is not claimed for every later revision. Near-identical ten-screen design, full live flows and devices remain unaccepted. |
+| Selected character artwork | [Source guidance](character-art.md), derivative integration `26a8eb61`: six source-preserving front-idle presets, transparent cutouts, a shared 384x64 atlas and source/hash evidence. The user's source-preserving reconstruction authorization is resolved. | **IN_PROGRESS.** Client composition and resource caching retain the supplied designs and avoid repeated asset requests. Canonical save/reload and World consumption are being connected. Directional/walk artwork and full layered customization remain unfinished; a historical tool-BLOCKED art goal is not an unresolved permission request. |
+| Canonical avatar identity | [Selected-static contract](contracts/selected-static-avatar.md), `3398d833`: disjoint existing layered 1.0.0 and selected whole-character 1.1.0 contracts, six strict preset fixtures and manifest pin. | **CONTRACT_READY.** Backend avatar owner implements persistence/bootstrap/GET; World owner adapts its projection/serializer; frontend owns strict union admission/runtime. Actual new-variant database and end-to-end qualification remain **NOT_RUN**. |
+| Auth and Friend revocation replay | [Auth RPC](backend/auth-invalidation-rpc.md), published through `dad5282c`, records 134 Rust and 2 harness tests. [Friend RPC](backend/friend-invalidation-rpc.md), published through `391bc215`, records 98 Rust and 5 harness tests, actual guarded TLS, owner mutations, replay, deadline/cancellation and PostgreSQL restart/cleanup. [Friend journal](backend/friend-invalidation.md) is published through `493958c4`. | **INTEGRATED** for these bounded owner components. Actual deployment and combined World revocation are **NOT_RUN**. The reused Auth chat now owns sealed Concert replay clients; it does not duplicate World code. |
+| World revocation and event closure | [World invalidation](backend/world-invalidation.md), published through `a4ae8555`: local durable receipts, native publication fencing, scoped SQL removal and replay/dedup, with 75 pure and 6 native tests. | **IN_PROGRESS.** World owner implements the READ_ONLY transaction barrier and permit drain. Lifecycle owner has a separately committed closure/composite-receipt candidate awaiting that API and its native build turn. Remote replay/checkpoint/readiness and the real multiplayer gate remain unfinished. |
+| Participant authority | Isolated participant producer source checkpoints are preserved; its existing chat was recovered and resumed with an actual ACTIVE goal. Static format/proto/ownership checks pass. | **IN_PROGRESS.** Compilation, guarded RPC and native qualification are **NOT_RUN**; its initial layered compile/native checks passed, while the whole-character case correctly exposed the old parser dependency. MEDIA was explicitly transferred to the canonical avatar owner; participant awaits its return for the combined variant proof. Current avatar union compatibility is coordinated with the canonical avatar owner. |
+| Product Feed/media APIs | [Current backend owners](king-coordination.md#current-backend-feature-ownership) now implement media authority, event Feed reads and Gateway/Concert runtime composition in three reused chats. | **IN_PROGRESS.** Event Feed/media routes are not yet mounted with production authority. Library/native fixture success and inherited `/api/feed` are not live event API readiness. Real owner authorization and HTTP recovery are required. |
+| Product release | Bounded source, unit, browser-fixture and private native receipts are recorded in the lane documents. | No new whole-task/IA or IN01-IN05 acceptance is claimed by this snapshot. Real product startup, multiuser authorization/recovery, complete visual fidelity, physical devices, load and deployment require their own evidence. |
 
-Concert product bootstrap startup `e6fef53` and domain-failure receipts
-`204e09a` passed fresh PostgreSQL 16.14 qualification: exact combined ledger
-1/2/3/4/9, 17 receipt tests, two in-process guarded bootstrap tests, restart and
-owned cleanup. The real executable rejects synthetic product releases before
-opening a listener. A positive approved-product startup remains NOT_RUN. Gateway
-HTTP changes are separately pending; no live product path is implied.
+## Coordination and resource policy
 
-Admission corrected source `91569e7` remains queued for compile/native rerun
-after its earlier two failures; it is not green. Community and meeting have
-bounded copied-binary native reports; their concrete policy adoption and final
-handoffs remain active. BE37 `a5e84da` passed eight pure/crypto and 20 native producer tests, then
-integrated through `914843e`; a newly discovered actor-only lock-order
-correction remains assigned and unqualified. Live owner authority,
-feed, Post, avatar persistence, simulation and media producers each retain
-isolated ownership and explicit shared-build turns. Source implementation
-continues independently of that resource queue.
+[Current ownership](king-coordination.md) and `AGENTS.md` implement the user's
+latest direction: kings manage major features and periodic commit logs; SLs manage
+feature context, dependencies and staffing. Neither role approves or re-reviews
+every commit. Exact-scope owners validate and non-force publish directly to
+`julymeltdown/mcr` `master`, reconcile peer history and report remote ancestry.
+Frontend and backend writers keep separate isolated checkouts and explicit paths.
+
+Reuse existing chats for ready related work. Finished chats without a next task
+are stopped/archived after preserving their work; a stale active flag does not
+count as progress. The participant chat was recovered through supported chat
+lifecycle controls, preserving its branch and documentation. Three superseded or
+finished backend/QA chats were archived; frontend staffing remains with its king
+and SLs. No additional chat quota is imposed.
+
+Two existing backend build targets remain exclusive physical resource leases.
+Source implementation proceeds independently. A lease moves only after actual
+handle/process cleanup and a fresh free-space check; no third target is created.
+The Auth RPC owner released MEDIA to Friend; Friend has now unconditionally
+released it to participant. Participant and the canonical avatar owner may
+sequence their real dependency with explicit exclusive lease handoffs. World retains BACKEND for closure qualification, followed
+by the dependent lifecycle candidate when that API is delivered. These resource
+and dependency waits are not review/approval queues.
+
+## Historical task acceptance ledger
+
+The following task-level receipts preserve earlier criteria and candidate
+revisions. The historical tally was **11/112 required tasks** and **11/118 total**;
+this is not a freshly audited completion count and must not be reported as an
+unchanging project percentage. This major-feature update does not silently grant
+new acceptance, reduce scope, or turn fixture/native component tests into live
+multiuser or release proof. Current lane reports and the snapshot above take
+precedence over stale pending-work descriptions in these earlier receipts.
 
 | Task | State | Evidence and remaining scope |
 |---|---|---|
@@ -44,7 +62,7 @@ continues independently of that resource queue.
 | C04 | IN_PROGRESS | [Domain review candidate](domain-contract.md), [target/query follow-up](evidence/domain-targets.md), [combined assembly](evidence/domain-assembly.md) and [internal keyed fingerprint correction](evidence/receipt-fingerprint-review.md) `9044417`: 162 definitions, 106 operations, 25 closed query schemas, 75 semantic rules, 15 inherited mappings, 36 payload fixtures, 47 domain and 15 assembly tests. Final/core pipeline emits 132 HTTP operations without changing frozen C03. [Readiness audit](qa/domain-readiness-review.md) identifies missing operation fixtures and actual frontend idempotency/error prerequisites. Full context coverage, deletion/legal/retention, client qualification and independent BE/FE reviews remain; not frozen or runtime-qualified. |
 | C05 | ACCEPTED | [Frozen realtime v1.0.0](realtime-contract.md): strict frame/HTTP schemas and admission/stream rules, 24 fixtures and 31 regressions. [BE/FE rechecks](qa/realtime-contract-review.md) find no remaining scoped issues after corrections. Runtime ticket, socket, queue, capacity and race tests are NOT_RUN. |
 | C06 | CONTRACT_READY | Five asset schemas and six golden fixtures preserve shared geometry/avatar identity. [Format correction](evidence/asset-format-validation.md) and [independent review](qa/asset-format-review.md) close missing checker and final-LF gaps; 27 C06 and 144 combined regressions pass. No schema/fixture bytes changed. Pixel alignment/art/venue truth remain NOT_RUN. |
-| AR03 | BLOCKED | [User-selected character source pack](character-art.md), revision 3: twenty unique JPEGs (ten base sheets plus ten additions); the first batch's duplicate stays archived. Source catalog and frontend lookup preserve both selected batches. Previous character art is prohibited. Transparent cutouts and direction/walk atlas remain. The actual art goal is BLOCKED on the existing source-preserving edit-method authorization question; preview/source registration through `e7fe93b` is not product art. |
+| AR03 | IN_PROGRESS | [Selected source pack](character-art.md) preserves twenty unique JPEGs. Source-preserving reconstruction is authorized; six front-idle derivatives/atlas are published through `26a8eb61`. Full directional/walk art and layered customization remain. Historical tool-BLOCKED goal state is not a pending user permission request. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
 | BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
@@ -81,32 +99,12 @@ continues independently of that resource queue.
 | FE21 | MOCK_READY | Worker `0497d86` integrated as `78cfb7c`; scoped independent review and parent72affected tests/build/lint pass. Default `/meet` and detail routes now use one shell-owned controller, retain pending commands across tabs and enforce fresh READ_ONLY cancellation decisions. [Composition evidence](evidence/community-shell-integration.md) records worker actual-Phaser fixture and parent default-router native runs. Real backend/SQL/multiuser and whole-task gates remain open. |
 | FE24 | MOCK_READY | Worker `5f1005d`/`595c07f` integrated as `3cb3f9c`/`8c33ba3`; scoped QA clear, parent105affected tests/build/lint pass. [Composition evidence](evidence/community-shell-integration.md) connects list/detail/own activity to default routes with policy-bound bootstrap, lifecycle cleanup and390px/wide Chrome checks. No actual backend or reservation-command qualification. |
 
-Unlisted task states are tracked in the active lane reports and isolated handoffs; generated planning baselines do not report implementation progress. Accepted required tasks: **11/112**;
-accepted total: **11/118**. No required IA entry or IN01–IN05 integration gate has
-been accepted. Real identity/provider flows, Concert product APIs, multiplayer, transactions,
-privacy/revocation, physical place verification, original production assets, real
-devices, load/recovery and deployment remain outstanding. Concert foundation
-startup is verified within BE05; product APIs/identity are not.
+## Historical delivery notes
 
-## Integration and ownership
-
-The main checkout integrates reviewed commits serially and alone publishes master.
-Current parallel work includes the assigned world, community, social, media and mural slices. Each writer has its own checkout; current grants and direct handoffs supersede the earlier wave summary. FE21/FE24 feature reviews and the independent
-[community-shell review](qa/community-shell-review.md) are clear; both features
-are composed in the default router. The original
-BE04 goal is tool-confirmed BLOCKED awaiting an isolated assignment/shared
-admission contract; its writer is stopped after an ownership violation was
-caught, reviewed and corrected. Each active writer has its own exact checkout
-and paths. Coordination preserves the user's selected model/reasoning. Bounded
-FE21 and FE24 delivery and FE21 QA goals are confirmed COMPLETE; FE18 is confirmed
-ACTIVE. The shell review is accepted at `fc8c5d9`, with goal closure requested.
-BE08 released Rust/PostgreSQL ownership after its clean handoff; the integrator
-now owns shared native validation. QA's next BE08 goal has been dispatched and
-awaits actual tool confirmation.
-The [chat ownership register](chat-coordination.md) records exact scopes.
-
-Historical delivery notes below retain their original checkpoint states. Current
-status is the table and ownership paragraph above.
+The notes below retain their original checkpoint states, review practices and
+counts. They are not current staffing instructions, publishing gates or project
+progress percentages. The current snapshot and coordination policy above
+supersede them.
 
 Reviewed imports through `2b42fd4`: frontend audit/scaffold, backend audit/import,
 frontend lock/toolchain configuration, exact auth review, boundary guard and C08
