@@ -75,9 +75,10 @@ export function createReviewedAtlasLeases(options: { isCurrent(): boolean; maxEn
         let released = false
         const release = () => {
           if (released) return
-          released = true; signal.removeEventListener('abort', release); retained.refs--
+          released = true; signal.removeEventListener('abort', release); lifetime.signal.removeEventListener('abort', release); retained.refs--
         }
         signal.addEventListener('abort', release, { once: true })
+        lifetime.signal.addEventListener('abort', release, { once: true })
         return { manifest: retained.manifest, ...retained.policy, image: atlas.image, dispose: release }
       } finally { retained.pending-- }
     },

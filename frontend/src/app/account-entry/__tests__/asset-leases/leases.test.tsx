@@ -112,6 +112,14 @@ it('rejects pre-aborted consumers and disposed owners before any read or decode'
   leases.dispose(); await expect(leases.acquire(source, signal())).rejects.toMatchObject({ reason: 'cancelled' })
   expect(source.resources.read).not.toHaveBeenCalled(); expect(decodeImage).not.toHaveBeenCalled()
 })
+it('removes acquired raw-lease caller listeners when the owner disposes before the consumer', async () => {
+  const source = await input(), leases = createReviewedAtlasLeases({ isCurrent: () => true }), caller = new AbortController()
+  const remove = vi.spyOn(caller.signal, 'removeEventListener'), live = await leases.acquire(source, caller.signal)
+  remove.mockClear(); leases.dispose()
+  expect(remove).toHaveBeenCalledWith('abort', expect.any(Function))
+  const count = remove.mock.calls.length; live.dispose(); caller.abort(); expect(remove).toHaveBeenCalledTimes(count)
+  expect(disposed[0]).toHaveBeenCalledOnce()
+})
 it('keeps one bounded owner load warm after every waiting caller aborts', async () => {
   const source = await input(), leases = createReviewedAtlasLeases({ isCurrent: () => true }), caller = new AbortController()
   let finish!: (value: Uint8Array<ArrayBuffer>) => void
