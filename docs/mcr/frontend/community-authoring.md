@@ -247,3 +247,107 @@ pass at 360/390/430/1280; typed date controls use normalized minute input in the
 browser harness. Combined feature/discovery/domain-consumer checks **213/213**,
 strict build/typecheck, four-feature Oxlint and source-origin/boundary checks all
 exit **0**. FE26's separately staged consumer uses the same owned helper.
+
+## FE26 bounded handoff — 2026-11-04
+
+Status **MOCK_READY**, parent `30c7ad5`, original C04 candidate base `f0e44bd`.
+Exact increment paths: `frontend/src/features/gift-pickup/**` and this document.
+C04 giveaway schema SHA256:
+`3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d`.
+Newly authored UI, controller and journal; existing canonical Auth/privacy,
+FE24 public types, owned FE25 contextual validation and FE22 time/receipt/schema
+helpers are imported directly. No new dependency, server, root route, contract,
+shared media or transport modification.
+
+Exports: `createGiftPickup`, `GiftPickup`, `createSessionIntentJournal`, and
+`GiftPickupOptions` / `PickupPlaceAuthority` / `IntentJournal`. Compose recipient
+routes with an exact giveaway ID and optional reservation ID. An owner must use
+the giveaway-bound management route to resolve an owner reservation; a naked
+reservation-only route authorizes only its recipient. Supply the current gift
+capability context, canonical auth, a qualified advancing server clock estimate,
+and the reviewed current place/map authority read/subscribe projection. Missing
+or expired authority hides private instructions before they are ever published
+to observers and disables recipient code issuance. No virtual location evidence
+or invented physical arrival is used. UI dates use English KST; requests use UTC.
+
+The default browser session journal stores only version, actor/event IDs,
+operation, original idempotency key, giveaway/reservation IDs and expected
+revision. A strict closed schema rejects unknown fields. Storage is scoped by
+actor/event; new writes fail closed when the journal is unavailable/invalid.
+It is written before dispatch, restored before reads/new intents, and blocks
+concurrent/new operations until the original outcome is resolved. Route disposal
+clears in-memory private UI while retaining an unfinished minimal journal for
+navigation/reload recovery. Active privacy/logout cleanup removes the previous
+scope's journal and private state. No token, plaintext code, instruction, form,
+HTTP request body or raw server error is stored. No automatic command replay or
+receipt polling exists; backoff/expiry timers update UI only.
+
+Commands: `reserveConcertGiveaway`, `cancelConcertReservation`,
+`issueConcertPickupCode`, `claimConcertReservation`; reads:
+`getConcertGiveaway`, `getConcertReservation`, `getConcertPickup`,
+`getConcertCommandStatus`. Cancellation requires explicit confirmation and
+honors the safety-policy READ_ONLY exception. HELD is not READY, code issuance
+is not collection, and expired/sold-out/duplicate outcomes do not show a fake
+active hold or collection. Owner code rejection is a failure, never success.
+Successful owner collection additionally rereads the exact CLAIMED reservation
+and its matching durable pickup receipt ID; repeated UI confirmation is blocked.
+
+Delivery qualified all four reservation command references as reservation UUID
+plus post-action Reservation.revision; the separate first-claim
+PickupReceipt.receipt_id is not the BE15 command receipt UUID. Status recovery
+binds actor/event/key/operation, exact reservation/giveaway and same-context
+revision. A code/cancel/claim receipt must advance beyond the captured expected
+revision. Successful reserve recovery that finds a subsequently expired/terminal
+resource reports current unavailability instead of an active success.
+
+Codes are memory-only, validate exact reservation/revision, and are cleared on
+expiry, authority loss, reload and privacy changes. A lost code response can
+recover **issuance only** through safe receipt metadata plus authorized
+reservation reread. It shows code unavailable; a new explicit rotation requires
+fresh pickup details, revision and key. The C04 same-key code replay wire variant
+remains an explicit contract gap, unused by this consumer. No fabricated 202,
+plaintext recovery or retry of that mutation is implemented.
+
+### Final qualification
+
+All commands below exited **0** using the pinned runtime. Final source hashes
+and native screenshots are retained in each feature's `__tests__/evidence/browser`.
+The final 390px party form and pickup-code fixture were visually inspected.
+Synthetic displayed codes are test fixtures, not real attendee credentials.
+
+- FE26 focused suite: **17 passed** (reservation duplicate/unknown/reload,
+  404/retired status, sold-out/duplicate/expired/foreign projection, journal
+  denial/corruption, physical authority, private-code expiry/loss/rotation,
+  one-time owner claim, invalid code, explicit cancellation, identity/policy
+  cleanup, strict storage schema, stale receipt revision and terminal recovery).
+- Combined `pnpm --dir frontend test src/features/party-authoring
+  src/features/party-management src/features/giveaway-authoring
+  src/features/gift-pickup src/features/party-discovery src/features/gift-discovery
+  src/features/auth/__tests__/domain-request.test.ts`: **213 passed in 12 files**.
+  This is the affected consumer set, not a full-repository acceptance claim.
+- `pnpm --dir frontend build` / strict typecheck: passed; the existing bundle
+  >500 kB warning remains. Root application does not yet bundle these new routes.
+- Oxlint over all four owned feature directories: passed, no warnings.
+- All four feature native-browser scripts: Chrome **156.0.8078.80**, widths
+  **360/390/430/1280**, passed after the KST correction. FE26 uses real browser
+  sessionStorage and actual reload with a synthetic server fixture. It verifies
+  no write replay, current authorized hold reconciliation, private pickup and
+  one-time owner collection, no persisted plaintext, missing plaintext after
+  reload, logout eviction, and no horizontal overflow or browser error.
+- `python3 scripts/mcr/check-boundaries.py --base f0e44bd --lane frontend
+  --allow-doc docs/mcr/frontend/community-authoring.md`: passed. Manual changed
+  path/import review confirms the four assigned folders plus this document only.
+- `node scripts/mcr/check-ui-origin.mjs`: passed, no source-origin violations.
+- `git diff --check`: passed. Initial planning/protected-source check passed;
+  no source archive path is changed anywhere in this branch.
+
+Root composition, production FE04/BE24 integration, live qualified physical
+place/meeting authority, real HTTP producers, real multiuser races, actual iOS
+Safari/Android Chrome and IN02 are **NOT_RUN** and remain delivery/qualification
+work. These limitations do not block this expressly assigned fixture-backed
+consumer handoff. No task or IA entry is promoted to ACCEPTED by these tests.
+
+Final bounded worker sequence (each commit descends from the prior one):
+`f0e44bd` → `1c38ad4` FE22 → `7342058` FE23 → `58e18ab` semantic fixes →
+`dee1392` FE25 → `30c7ad5` KST correction → FE26 handoff commit supplied directly
+to delivery. Only the designated delivery integrator publishes master.

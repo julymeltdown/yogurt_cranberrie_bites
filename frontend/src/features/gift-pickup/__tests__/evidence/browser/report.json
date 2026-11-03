@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "scope": "FE26 deterministic C04 native UI through canonical Auth/privacy and real sessionStorage/reload; synthetic server state only. No live backend/device/multiuser/IN02 acceptance.",
+  "widths": [
+    360,
+    390,
+    430,
+    1280
+  ],
+  "sourceHashes": {
+    "../party-authoring/model/time.ts": "28cae1b6670072da03c9640ec7c808b4fbe94a2d49a0e7047f6bc9bf9a5a2b51",
+    "model/controller.ts": "d25ddec12bf16994ec63d689ea3fb021e04d0b0bae3c5e8a0ca9188d4c7237d3",
+    "model/journal.ts": "94b3b854d3413784740fb20f736894fe147cbe1cfc3bf28c0b8c9e139d483264",
+    "ui/GiftPickup.tsx": "496faaea6d6d69d306da452b80e976c6cf95fbca6620334f9c99253017575dd7",
+    "ui/pickup.css": "a8cdf20921d8b4133d1ff300003100c670cc232006a14c1472893ab1c75be791",
+    "__tests__/harness.ts": "7686fe2f8afbeb54aed782d05292f7c328eec2866fd595a6db35410b2f4570f1",
+    "__tests__/preview.tsx": "3bf00ce9fcaeba111718626429404d58f7a322c5707a49835953500ccc2fd39b"
+  },
+  "browser": "156.0.8078.80",
+  "checks": [
+    "unknown reserve journal contains identity metadata only",
+    "real reload does not replay command",
+    "original-key recovery confirms held resource",
+    "private pickup requires reviewed map/place fixture",
+    "plaintext code appears only for successful response",
+    "reload does not recover lost plaintext",
+    "owner confirms one-time pickup and repeat action disappears",
+    "logout removes private view",
+    "no page overflow/browser errors"
+  ]
+}
