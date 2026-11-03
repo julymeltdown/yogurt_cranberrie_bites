@@ -1,0 +1,598 @@
+{
+  "kind": "ILLUSTRATED_WORLD_SOURCE_BINDING_PROPOSAL_NOT_RELEASE_MANIFEST",
+  "version": 1,
+  "width_px": 1152,
+  "height_px": 896,
+  "tile_width_px": 32,
+  "tile_height_px": 32,
+  "map_id": "paradise_virtual_courtyard",
+  "map_revision": 1,
+  "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+  "geometry_semantics": "AR02 remains byte-for-byte immutable. Illustrations do not grant collision, physical location or arrival authority.",
+  "sources": [
+    {
+      "path": "frontend/public/world/maps/geometry.json",
+      "sha256": "sha256:fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713"
+    },
+    {
+      "path": "frontend/public/world/maps/courtyard-tiled.json",
+      "sha256": "sha256:a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d"
+    },
+    {
+      "path": "frontend/public/world/maps/landmarks.json",
+      "sha256": "sha256:b62008d8e52b52e749cc15b7ad2e6f28474ab222f84e75a25ddf810f02bd39c4"
+    },
+    {
+      "path": "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg",
+      "sha256": "sha256:2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+    }
+  ],
+  "depth": "Ground at depth -1. Each landmark image is a separate y-sorted object at its depth_y; player foot depth shares the same y ordering. Composite scene PNG is preview/static overview only; do not place the entire landmarks PNG above all players.",
+  "compositing": {
+    "ground": "{era}-ground.png at(0,0)",
+    "landmark_objects": "Use individual source rectangles from {era}-landmarks-atlas.png (768x512) with exact placements below",
+    "landmark_composite": "{era}-landmarks.png for static map/preview only; contains native banners, lamps and labels",
+    "scene": "{era}-scene.png static comparison/overview only"
+  },
+  "terrain_tiles": {
+    "resource": "{era}-terrain-tiles.png",
+    "width_px": 256,
+    "height_px": 128,
+    "cell_width_px": 32,
+    "cell_height_px": 32,
+    "positive_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "purpose": "Reusable terrain art only; IDs9..32 blank. NOT a complete replacement C06 theme texture; illustrated landmark objects replace decorative scenery through separately owned composition."
+  },
+  "native_details": {
+    "labels": "Native SVG label-* groups attach to corresponding landmark object, sharing its depth. PLAZA label is a ground/DOM label.",
+    "banners": "Native banner-x-y groups at(324,365),(809,316),(799,645), base depth=y+76; instance original groups from SVG.",
+    "lamps": "Native lamp-x-y groups at(400,608),(592,576),(784,544),(1040,544), base depth=y+3. Source groups remain editable."
+  },
+  "placements": [
+    {
+      "id": "studio",
+      "source": "studio-original.png",
+      "x": 256,
+      "y": 69,
+      "width": 352,
+      "height": 219,
+      "depth_y": 288,
+      "footprint": [
+        8,
+        3,
+        11,
+        6
+      ],
+      "interaction": "studio_info",
+      "atlas_frame": [
+        0,
+        0,
+        352,
+        219
+      ]
+    },
+    {
+      "id": "stage",
+      "source": "stage-original.png",
+      "x": 96,
+      "y": 329,
+      "width": 224,
+      "height": 151,
+      "depth_y": 480,
+      "footprint": [
+        3,
+        11,
+        7,
+        4
+      ],
+      "interaction": "stage_info",
+      "atlas_frame": [
+        352,
+        0,
+        224,
+        151
+      ]
+    },
+    {
+      "id": "merch_gifts",
+      "source": "booth-original.png",
+      "x": 864,
+      "y": 267,
+      "width": 160,
+      "height": 117,
+      "depth_y": 384,
+      "footprint": [
+        27,
+        10,
+        5,
+        2
+      ],
+      "interaction": "gifts_info",
+      "atlas_frame": [
+        576,
+        0,
+        160,
+        117
+      ]
+    },
+    {
+      "id": "mural",
+      "source": "mural-original.png",
+      "x": 832,
+      "y": 609,
+      "width": 192,
+      "height": 95,
+      "depth_y": 704,
+      "footprint": [
+        26,
+        20,
+        6,
+        2
+      ],
+      "interaction": "wall_info",
+      "atlas_frame": [
+        352,
+        160,
+        192,
+        95
+      ]
+    },
+    {
+      "id": "greenery_west",
+      "source": "greenery-original.png",
+      "x": 92,
+      "y": 107,
+      "width": 104,
+      "height": 149,
+      "depth_y": 256,
+      "footprint": [
+        3,
+        4,
+        3,
+        4
+      ],
+      "atlas_frame": [
+        0,
+        224,
+        104,
+        149
+      ]
+    },
+    {
+      "id": "greenery_north",
+      "source": "greenery-original.png",
+      "x": 668,
+      "y": 57,
+      "width": 104,
+      "height": 167,
+      "depth_y": 224,
+      "footprint": [
+        21,
+        3,
+        3,
+        4
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ]
+    },
+    {
+      "id": "greenery_east",
+      "source": "greenery-original.png",
+      "x": 988,
+      "y": 57,
+      "width": 104,
+      "height": 167,
+      "depth_y": 224,
+      "footprint": [
+        31,
+        3,
+        3,
+        4
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ]
+    },
+    {
+      "id": "greenery_southwest",
+      "source": "greenery-original.png",
+      "x": 92,
+      "y": 653,
+      "width": 168,
+      "height": 115,
+      "depth_y": 768,
+      "footprint": [
+        3,
+        22,
+        5,
+        2
+      ],
+      "atlas_frame": [
+        224,
+        272,
+        168,
+        115
+      ]
+    },
+    {
+      "id": "greenery_south",
+      "source": "greenery-original.png",
+      "x": 604,
+      "y": 650,
+      "width": 104,
+      "height": 150,
+      "depth_y": 800,
+      "footprint": [
+        19,
+        22,
+        3,
+        3
+      ],
+      "atlas_frame": [
+        400,
+        272,
+        104,
+        150
+      ]
+    },
+    {
+      "id": "perimeter_west_a",
+      "source": "greenery-original.png",
+      "x": -31,
+      "y": 42,
+      "width": 88,
+      "height": 150,
+      "depth_y": 192,
+      "footprint": [
+        0,
+        5,
+        1,
+        1
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ],
+      "role": "canopy-overhang; roots remain on immutable blocked perimeter"
+    },
+    {
+      "id": "perimeter_west_b",
+      "source": "greenery-original.png",
+      "x": -31,
+      "y": 232,
+      "width": 88,
+      "height": 150,
+      "depth_y": 382,
+      "footprint": [
+        0,
+        11,
+        1,
+        1
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ],
+      "role": "canopy-overhang; roots remain on immutable blocked perimeter"
+    },
+    {
+      "id": "perimeter_west_c",
+      "source": "greenery-original.png",
+      "x": -31,
+      "y": 444,
+      "width": 88,
+      "height": 150,
+      "depth_y": 594,
+      "footprint": [
+        0,
+        17,
+        1,
+        1
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ],
+      "role": "canopy-overhang; roots remain on immutable blocked perimeter"
+    },
+    {
+      "id": "perimeter_west_d",
+      "source": "greenery-original.png",
+      "x": -31,
+      "y": 658,
+      "width": 88,
+      "height": 150,
+      "depth_y": 808,
+      "footprint": [
+        0,
+        24,
+        1,
+        1
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ],
+      "role": "canopy-overhang; roots remain on immutable blocked perimeter"
+    },
+    {
+      "id": "perimeter_east_a",
+      "source": "greenery-original.png",
+      "x": 1095,
+      "y": 28,
+      "width": 88,
+      "height": 150,
+      "depth_y": 178,
+      "footprint": [
+        35,
+        4,
+        1,
+        1
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ],
+      "role": "canopy-overhang; roots remain on immutable blocked perimeter"
+    },
+    {
+      "id": "perimeter_east_b",
+      "source": "greenery-original.png",
+      "x": 1095,
+      "y": 235,
+      "width": 88,
+      "height": 150,
+      "depth_y": 385,
+      "footprint": [
+        35,
+        11,
+        1,
+        1
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ],
+      "role": "canopy-overhang; roots remain on immutable blocked perimeter"
+    },
+    {
+      "id": "perimeter_east_c",
+      "source": "greenery-original.png",
+      "x": 1095,
+      "y": 466,
+      "width": 88,
+      "height": 150,
+      "depth_y": 616,
+      "footprint": [
+        35,
+        18,
+        1,
+        1
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ],
+      "role": "canopy-overhang; roots remain on immutable blocked perimeter"
+    },
+    {
+      "id": "perimeter_east_d",
+      "source": "greenery-original.png",
+      "x": 1095,
+      "y": 663,
+      "width": 88,
+      "height": 150,
+      "depth_y": 813,
+      "footprint": [
+        35,
+        24,
+        1,
+        1
+      ],
+      "atlas_frame": [
+        112,
+        224,
+        104,
+        167
+      ],
+      "role": "canopy-overhang; roots remain on immutable blocked perimeter"
+    }
+  ],
+  "interactions": [
+    {
+      "interaction_id": "studio_info",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000001",
+      "cell_x": 13,
+      "cell_y": 9
+    },
+    {
+      "interaction_id": "park_info",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+      "cell_x": 12,
+      "cell_y": 16
+    },
+    {
+      "interaction_id": "stage_info",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+      "cell_x": 6,
+      "cell_y": 15
+    },
+    {
+      "interaction_id": "gifts_info",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+      "cell_x": 28,
+      "cell_y": 13
+    },
+    {
+      "interaction_id": "wall_info",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+      "cell_x": 28,
+      "cell_y": 22
+    }
+  ],
+  "spawns": [
+    {
+      "spawn_id": "courtyard_entry",
+      "cell_x": 15,
+      "cell_y": 24
+    },
+    {
+      "spawn_id": "lawn_entry",
+      "cell_x": 6,
+      "cell_y": 20
+    },
+    {
+      "spawn_id": "community_entry",
+      "cell_x": 30,
+      "cell_y": 18
+    }
+  ],
+  "palette": {
+    "REVENGE": {
+      "grass": [
+        "#7b8854",
+        "#87945e",
+        "#657849",
+        "#a2a970"
+      ],
+      "stone": [
+        "#c7bba4",
+        "#d8ccb4",
+        "#bdb29c",
+        "#a59c89"
+      ],
+      "accent": "#b33248",
+      "paper": "#f2e5cb",
+      "ink": "#252329",
+      "metal": "#8b8584",
+      "flower": "#e3b4aa"
+    },
+    "PARADE": {
+      "grass": [
+        "#77816c",
+        "#8d9580",
+        "#626f5e",
+        "#a5aa91"
+      ],
+      "stone": [
+        "#bfc1b5",
+        "#d3d4c5",
+        "#aeb5ab",
+        "#909e95"
+      ],
+      "accent": "#dfd3b2",
+      "paper": "#f2ead6",
+      "ink": "#282a30",
+      "metal": "#a1a5a3",
+      "flower": "#ece9d7"
+    },
+    "DANGER": {
+      "grass": [
+        "#8ca451",
+        "#a4b45d",
+        "#708c46",
+        "#bfca7a"
+      ],
+      "stone": [
+        "#cfbda0",
+        "#dfcfad",
+        "#c4b596",
+        "#a99b7b"
+      ],
+      "accent": "#f2d142",
+      "paper": "#fff1cb",
+      "ink": "#243842",
+      "metal": "#67b1ba",
+      "flower": "#efb85d"
+    }
+  },
+  "landmarks": [
+    {
+      "landmark_id": "studio",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000001",
+      "interaction_id": "studio_info",
+      "cell_x": 13,
+      "cell_y": 9,
+      "source_reference": "venue_diagram",
+      "qualification": "Broad diagram-relative position above park; original virtual footprint.",
+      "physical_candidate_alias": null
+    },
+    {
+      "landmark_id": "park",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+      "interaction_id": "park_info",
+      "cell_x": 12,
+      "cell_y": 16,
+      "source_reference": "venue_overview",
+      "qualification": "Lawn character and broad relation only; no real paths or scale.",
+      "physical_candidate_alias": null
+    },
+    {
+      "landmark_id": "stage",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+      "interaction_id": "stage_info",
+      "cell_x": 6,
+      "cell_y": 15,
+      "source_reference": "concept_reference",
+      "qualification": "Original activity landmark; no physical stage location asserted.",
+      "physical_candidate_alias": null
+    },
+    {
+      "landmark_id": "gifts",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+      "interaction_id": "gifts_info",
+      "cell_x": 28,
+      "cell_y": 13,
+      "source_reference": "concept_reference",
+      "qualification": "Original virtual activity destination; not a pickup location.",
+      "physical_candidate_alias": null
+    },
+    {
+      "landmark_id": "wall",
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+      "interaction_id": "wall_info",
+      "cell_x": 28,
+      "cell_y": 22,
+      "source_reference": "concept_reference",
+      "qualification": "Original virtual mural destination; no physical wall claimed.",
+      "physical_candidate_alias": null
+    }
+  ],
+  "exclusions": [
+    "No character art or avatar fallback",
+    "No operational venue or walking-route claim",
+    "No existing theme/map/contract/manifest/root edits",
+    "No live collaborative mural state in scenery illustration"
+  ],
+  "status": "UNBOUND source art; final runtime release registry/manifests owned by integrator"
+}

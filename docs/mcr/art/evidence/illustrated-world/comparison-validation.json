@@ -1,0 +1,55 @@
+{
+  "result": "PASS",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "current_native_canvas": [
+        332,
+        448
+      ],
+      "reference_css_crop": [
+        494,
+        0,
+        302,
+        438
+      ],
+      "reference_image_unchanged": true,
+      "screenshot": "reference-comparison-360.png",
+      "sha256": "sha256:6b42471f82e2b5de879ab902b339e1d3652c33ed5d88a9ba7e862f78994224fa"
+    },
+    {
+      "width": 390,
+      "current_native_canvas": [
+        362,
+        448
+      ],
+      "reference_css_crop": [
+        494,
+        0,
+        302,
+        438
+      ],
+      "reference_image_unchanged": true,
+      "screenshot": "reference-comparison-390.png",
+      "sha256": "sha256:c548fcd15feeabe7f8b91beb235e0f0a25a03431762a50c10ecbf047e1c4d3b1"
+    },
+    {
+      "width": 430,
+      "current_native_canvas": [
+        402,
+        448
+      ],
+      "reference_css_crop": [
+        494,
+        0,
+        302,
+        438
+      ],
+      "reference_image_unchanged": true,
+      "screenshot": "reference-comparison-430.png",
+      "sha256": "sha256:bc540d76cddd4a9d6c67c6cd1ea99268ff92ad5d177965faafe8f63c5f9b9b8b"
+    }
+  ],
+  "limit": "Source review only; neither reference replication nor product/device acceptance"
+}

@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Illustrated world · native source review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eee6d5;color:#232126;font:14px/1.35 system-ui,sans-serif}main{max-width:760px;margin:auto;padding:12px}h1{font:900 23px/1.1 system-ui;margin:6px 0}p{margin:8px 0}.eyebrow{font:700 10px/1.4 monospace;letter-spacing:.06em}
+nav{display:flex;gap:5px;margin:12px 0}button,select{min-height:44px;border:1px solid #28252b;color:#252329;background:#f8f0dd;font:700 13px system-ui;padding:8px}nav button{flex:1}button[aria-pressed=true]{background:#27242b;color:#f9eed8}button:focus-visible,select:focus-visible{outline:3px solid #b63349;outline-offset:2px}select{width:100%;font-size:16px;margin-bottom:10px}
+.scene{position:relative;margin:0;background:#84905c;border:2px solid #28252b}canvas{display:block;width:100%;height:448px;image-rendering:pixelated}.access{position:absolute;min-width:44px;width:44px;height:44px;border:2px solid #fff4dd;border-radius:50%;background:#27242bcc;color:#fff4dd;font-size:18px;transform:translate(-50%,-50%);padding:0}.access:focus-visible{outline:3px solid #e45e68;outline-offset:3px}
+figcaption,.note{font-size:12px}figcaption{padding:8px 0}#status{min-height:36px;font-size:13px}h2{font-size:16px;margin:16px 0 8px}.ref{width:100%;height:auto;display:block}#overview{height:auto;aspect-ratio:1152/896}details{margin:12px 0}summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700}ul{padding-left:20px;font-size:12px}a{color:inherit}
+</style>
+<main><p class="eyebrow">ILLUSTRATED WORLD / ORIGINAL SCENERY / SOURCE REVIEW</p><h1>AFTER THE SOUND CHECK</h1><p class="note">Fictional virtual courtyard. Fixed AR02 geometry. No characters or real-site directions.</p>
+<nav aria-label="Scenery era"><button data-era="REVENGE" aria-pressed="true">REVENGE</button><button data-era="PARADE" aria-pressed="false">PARADE</button><button data-era="DANGER" aria-pressed="false">DANGER</button></nav>
+<label for="landmark" class="eyebrow">VIRTUAL LANDMARK / CAMERA AT 1:1 PIXELS</label><select id="landmark"><option value="stage">Live stage</option><option value="studio">Studio pavilion</option><option value="park">Plaza and lawn</option><option value="gifts">Merch / gifts</option><option value="wall">Community mural landmark</option></select>
+<figure class="scene"><canvas id="world" aria-label="Original illustrated virtual courtyard at native scene scale"></canvas><button class="access" aria-label="Inspect virtual stage interaction">◎</button></figure><figcaption id="caption"></figcaption><p id="status" role="status">Interaction access review only; no server action.</p>
+<h2>Same world · illustrated overview</h2><canvas id="overview" aria-label="Scaled illustrated overview; use landmark selector for 1:1 detail"></canvas>
+<details><summary>Source and remaining qualification</summary><ul><li>The generated stage, studio, booth, trees and mural are original scenery. Editable SVG layers retain their placement, native details and era filters.</li><li>All collision, spawn, place and interaction identities remain byte-identical to AR02. No atlas or scenery pixel grants physical location authority.</li><li>This is a native source-art review, not product integration. Avatars, actual mobile hardware and live two-user flows are NOT_RUN.</li></ul></details>
+<h2>Exact ten-screen reference · evidence only</h2><p class="note">Unchanged supplied reference for hierarchy/detail comparison. Its characters, brands and controls are not extracted or shipped as product scenery.</p><img class="ref" src="/docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg" alt="Exact user supplied ten-screen design reference, evidence only">
+</main>
+<script type="module">
+const binding=await(await fetch('binding-proposal.json')).json();const g=await(await fetch('../maps/geometry.json')).json();
+const positions=Object.fromEntries(binding.landmarks.map(o=>[o.landmark_id,o]));let era='REVENGE',landmark='stage',scene;const images={};
+for(const e of ['REVENGE','PARADE','DANGER']){const image=new Image();image.src=`${e.toLowerCase()}-scene.png`;await image.decode();images[e]=image}
+const world=document.querySelector('#world'),action=document.querySelector('.access'),overview=document.querySelector('#overview');
+function render(){const rect=world.getBoundingClientRect();world.width=Math.round(rect.width);world.height=448;const c=world.getContext('2d');c.imageSmoothingEnabled=false;
+ const target=positions[landmark],px=(target.cell_x+.5)*32,py=(target.cell_y+.5)*32;
+ const camera={x:Math.max(0,Math.min(1152-world.width,Math.round(px-world.width/2))),y:Math.max(0,Math.min(896-448,Math.round(py-330)))};
+ c.drawImage(images[era],camera.x,camera.y,world.width,448,0,0,world.width,448);
+ action.style.left=`${px-camera.x}px`;action.style.top=`${py-camera.y}px`;action.setAttribute('aria-label',`Inspect virtual ${landmark} interaction`);
+ overview.width=1152;overview.height=896;const o=overview.getContext('2d');o.imageSmoothingEnabled=false;o.drawImage(images[era],0,0);
+ document.querySelector('#caption').textContent=`${era} · ${landmark.toUpperCase()} · 32px cells · camera ${camera.x},${camera.y} · 1 image pixel = 1 CSS pixel`;
+ window.illustratedReview={ready:true,era,landmark,camera,target:{x:px-camera.x,y:py-camera.y,world_x:px,world_y:py},geometry:JSON.stringify(g),canvas:[world.width,world.height],scene:[images[era].naturalWidth,images[era].naturalHeight],interaction:target.interaction_id};
+}
+document.querySelectorAll('[data-era]').forEach(b=>b.onclick=()=>{era=b.dataset.era;document.querySelectorAll('[data-era]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()});
+document.querySelector('#landmark').onchange=e=>{landmark=e.target.value;document.querySelector('#status').textContent='Interaction access review only; no server action.';render()};
+action.onclick=()=>document.querySelector('#status').textContent=`Reached ${positions[landmark].interaction_id}: exact original walkable interaction cell. Source review; no product mutation.`;
+addEventListener('resize',render);render();
+</script></html>

@@ -1,0 +1,1456 @@
+{
+  "result": "PASS",
+  "scope": "45 native source-art CSS-width/era/landmark cases; exact reference retained alongside in every capture",
+  "browser": "156.0.8078.80",
+  "playwright": "1.61.1",
+  "node": "v26.7.0",
+  "results": [
+    {
+      "era": "REVENGE",
+      "landmark": "stage",
+      "width": 360,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 42,
+        "y": 166
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-stage-360.png",
+      "sha256": "sha256:6992a42c3612200f2da5d847f7bb350062c5321c47822a7dfcb9195de1cdb708"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "studio",
+      "width": 360,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 266,
+        "y": 0
+      },
+      "target": {
+        "x": 166,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 546.5625,
+        "right": 202,
+        "bottom": 590.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-studio-360.png",
+      "sha256": "sha256:d0e9355beb0268405b5cd06f667334fb02aa576b1ccc2f09c0a0a06bb0ba014b"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "park",
+      "width": 360,
+      "interaction": "park_info",
+      "camera": {
+        "x": 234,
+        "y": 198
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-park-360.png",
+      "sha256": "sha256:4e61c6ea9a297d5402a1385b0712a2c66607f784351402d01ea0c15941173da1"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "gifts",
+      "width": 360,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 746,
+        "y": 102
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-gifts-360.png",
+      "sha256": "sha256:50b2acd2b7df1fa3a18db9487e22d04b765831a6b50e93551ba971586b802226"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "wall",
+      "width": 360,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 746,
+        "y": 390
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-wall-360.png",
+      "sha256": "sha256:e6ebf9c8140e1fb6719d925f3326271b6be6326ee702851ab6d24ab091d8483b"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "stage",
+      "width": 360,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 42,
+        "y": 166
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-stage-360.png",
+      "sha256": "sha256:fc7f4a01f8045e907544ee568b45161b24e2d75856b23244ced94586732af650"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "studio",
+      "width": 360,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 266,
+        "y": 0
+      },
+      "target": {
+        "x": 166,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 546.5625,
+        "right": 202,
+        "bottom": 590.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-studio-360.png",
+      "sha256": "sha256:95e6c94128888ac10a46472955e972b4eb2abff3c4ec77f63ef9319370a8a738"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "park",
+      "width": 360,
+      "interaction": "park_info",
+      "camera": {
+        "x": 234,
+        "y": 198
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-park-360.png",
+      "sha256": "sha256:331e789ee3f24e85e1b4543d136cd4d3d882ca9059d9db38a812c8486d8876a6"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "gifts",
+      "width": 360,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 746,
+        "y": 102
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-gifts-360.png",
+      "sha256": "sha256:819b3a6177a740c02f18a602930fbe275dfe6cfa64fb36134ca657ac284718a9"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "wall",
+      "width": 360,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 746,
+        "y": 390
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-wall-360.png",
+      "sha256": "sha256:807598ac703c74f0e8a0d6b147eeb720d68141cecc4fd665363e213f22cef8d0"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "stage",
+      "width": 360,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 42,
+        "y": 166
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-stage-360.png",
+      "sha256": "sha256:57a7203222ce29bbb3fdb562d90d10b23a6ed6fc35f20ed2066a4becd7bbb95b"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "studio",
+      "width": 360,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 266,
+        "y": 0
+      },
+      "target": {
+        "x": 166,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 546.5625,
+        "right": 202,
+        "bottom": 590.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-studio-360.png",
+      "sha256": "sha256:9bb1d9bdaedd706f40a00004e1fb1def4bc499e3faeff7cd7272ea3d24e9bd64"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "park",
+      "width": 360,
+      "interaction": "park_info",
+      "camera": {
+        "x": 234,
+        "y": 198
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-park-360.png",
+      "sha256": "sha256:f136add377a3e447a2063bc1268ea9de35cd959e65b66d74045540d5bc68affe"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "gifts",
+      "width": 360,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 746,
+        "y": 102
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-gifts-360.png",
+      "sha256": "sha256:46e5e423fef978794dc52998eaf4d24d35998b871442071c95cf3105f69df595"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "wall",
+      "width": 360,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 746,
+        "y": 390
+      },
+      "target": {
+        "x": 166,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        332,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 158,
+        "top": 572.5625,
+        "right": 202,
+        "bottom": 616.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-wall-360.png",
+      "sha256": "sha256:c6441b332f1208dd90353ac727023d94833ce1bb6da881375fb3791fcdc2c9be"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "stage",
+      "width": 390,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 27,
+        "y": 166
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-stage-390.png",
+      "sha256": "sha256:15ada4addbc58ea3b945074c814443aa2d9b4328f87659e373c846aa621b0163"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "studio",
+      "width": 390,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 251,
+        "y": 0
+      },
+      "target": {
+        "x": 181,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 532.5625,
+        "right": 217,
+        "bottom": 576.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-studio-390.png",
+      "sha256": "sha256:358c2cfc0ff91fa13c3aab8b62e3969d507602d078b4457d57d1832948f65132"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "park",
+      "width": 390,
+      "interaction": "park_info",
+      "camera": {
+        "x": 219,
+        "y": 198
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-park-390.png",
+      "sha256": "sha256:f9b476e40d3fe6798329bef9f8c64f6babd37d7f014fce0dade036583b3be777"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "gifts",
+      "width": 390,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 731,
+        "y": 102
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-gifts-390.png",
+      "sha256": "sha256:ed9aaa6a9f9dde5cc4cfdaf8904a77ef9c5a07ff8b88670e98b2d78f9fb5331c"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "wall",
+      "width": 390,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 731,
+        "y": 390
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-wall-390.png",
+      "sha256": "sha256:251fdcac3b866eaff23939efa745d98fcb8e314d7bc308fe5c81e894d132ff3c"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "stage",
+      "width": 390,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 27,
+        "y": 166
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-stage-390.png",
+      "sha256": "sha256:208d3b160edc1c73cff018674c10baf5371604d538bdd26eecf21275141c3b9f"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "studio",
+      "width": 390,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 251,
+        "y": 0
+      },
+      "target": {
+        "x": 181,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 532.5625,
+        "right": 217,
+        "bottom": 576.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-studio-390.png",
+      "sha256": "sha256:57c2d0fd8ff683e5205d300cc8235cdec3a5ba6bd859561500c134ca4f33d8ef"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "park",
+      "width": 390,
+      "interaction": "park_info",
+      "camera": {
+        "x": 219,
+        "y": 198
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-park-390.png",
+      "sha256": "sha256:ac2ce5db837109725f0b1f64a1c9a81d9278032e00e3c56ba89fb30ec50742ca"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "gifts",
+      "width": 390,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 731,
+        "y": 102
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-gifts-390.png",
+      "sha256": "sha256:06147b8cf7889555d3c37b75b9148856a6d1610ee93970d31aedacad1b88b7e7"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "wall",
+      "width": 390,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 731,
+        "y": 390
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-wall-390.png",
+      "sha256": "sha256:c3845b0bf5d1992f1dea19d997f4e5822db1bad7fb4846b46ace9e474ec8d5b0"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "stage",
+      "width": 390,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 27,
+        "y": 166
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-stage-390.png",
+      "sha256": "sha256:ebedf4f85c550071594b99330a019cddd0cd5a6f3ff9d55a391dae4008fa022d"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "studio",
+      "width": 390,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 251,
+        "y": 0
+      },
+      "target": {
+        "x": 181,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 532.5625,
+        "right": 217,
+        "bottom": 576.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-studio-390.png",
+      "sha256": "sha256:b53b78fe138781b4e5c8a22bd7a9d3268a792d3daff550d534be2b7153ee3d24"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "park",
+      "width": 390,
+      "interaction": "park_info",
+      "camera": {
+        "x": 219,
+        "y": 198
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-park-390.png",
+      "sha256": "sha256:4d4bda448812b7a3e94f2c7642827d7de55f48d7f60b4bc4ba55bcc1e1307a79"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "gifts",
+      "width": 390,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 731,
+        "y": 102
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-gifts-390.png",
+      "sha256": "sha256:413eb96e94567fd21f2e263e7137c8b6e7494bfc16508694682e5d9fb1cbac15"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "wall",
+      "width": 390,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 731,
+        "y": 390
+      },
+      "target": {
+        "x": 181,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        362,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 173,
+        "top": 558.5625,
+        "right": 217,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-wall-390.png",
+      "sha256": "sha256:b7b45235d2b33037d481a8b41ef1c25f9dc30cd44a13af4fed7a4d382d78f75c"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "stage",
+      "width": 430,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 7,
+        "y": 166
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-stage-430.png",
+      "sha256": "sha256:24a516200615df7328db70d28c33915d757a5d3cf4aa13574cf791e5574e7f06"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "studio",
+      "width": 430,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 231,
+        "y": 0
+      },
+      "target": {
+        "x": 201,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 532.5625,
+        "right": 237,
+        "bottom": 576.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-studio-430.png",
+      "sha256": "sha256:a75afb909dfa6e7ea84a029a4e4fe00a4159287e84e84a799e663869cea20be7"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "park",
+      "width": 430,
+      "interaction": "park_info",
+      "camera": {
+        "x": 199,
+        "y": 198
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-park-430.png",
+      "sha256": "sha256:7fd62f0eef8437b252adb98c6c8605809a7d091d9d1a38651a646c9e95f43d27"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "gifts",
+      "width": 430,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 711,
+        "y": 102
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-gifts-430.png",
+      "sha256": "sha256:d9355312b8cb86e8190b7bc4b5b4b62a4450acce64de11d5a37e05880165ab75"
+    },
+    {
+      "era": "REVENGE",
+      "landmark": "wall",
+      "width": 430,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 711,
+        "y": 390
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "revenge-wall-430.png",
+      "sha256": "sha256:7ec1ce9620b22c6e62453e3ed7a5b9a1dcd26130fcd0c658e865d7091eef6a45"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "stage",
+      "width": 430,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 7,
+        "y": 166
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-stage-430.png",
+      "sha256": "sha256:ce3b62eb77cd224f3d0aa08b7ec031992fea726ac98821a57cfe615a6774b3f6"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "studio",
+      "width": 430,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 231,
+        "y": 0
+      },
+      "target": {
+        "x": 201,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 532.5625,
+        "right": 237,
+        "bottom": 576.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-studio-430.png",
+      "sha256": "sha256:990d3d51fab1d322c1af2c1e8e9fcf9b829728540b1b71cf4faaab049a2eedd5"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "park",
+      "width": 430,
+      "interaction": "park_info",
+      "camera": {
+        "x": 199,
+        "y": 198
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-park-430.png",
+      "sha256": "sha256:d5cef5a731aeacd5a872cf0d502b6833e64b7dac1bb33151d471993d02d008ee"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "gifts",
+      "width": 430,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 711,
+        "y": 102
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-gifts-430.png",
+      "sha256": "sha256:bb7b816fc6c64b85a98975caf257f59d5812d3516be42011c10343407ba0508d"
+    },
+    {
+      "era": "PARADE",
+      "landmark": "wall",
+      "width": 430,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 711,
+        "y": 390
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "parade-wall-430.png",
+      "sha256": "sha256:0cc7dd32faa5812a1e860884204950ad030e569df2a45b0b3f62144dd355e9e1"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "stage",
+      "width": 430,
+      "interaction": "stage_info",
+      "camera": {
+        "x": 7,
+        "y": 166
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 208,
+        "world_y": 496
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-stage-430.png",
+      "sha256": "sha256:0999aa62f63fd0e8ab18916eedde97b5ffca935703016ae7a8427a682f4d3a00"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "studio",
+      "width": 430,
+      "interaction": "studio_info",
+      "camera": {
+        "x": 231,
+        "y": 0
+      },
+      "target": {
+        "x": 201,
+        "y": 304,
+        "world_x": 432,
+        "world_y": 304
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 532.5625,
+        "right": 237,
+        "bottom": 576.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-studio-430.png",
+      "sha256": "sha256:4b6e2e9e5da45e24eb0690983ed9deb1ae2983369f12681c91186f0e5a45d02d"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "park",
+      "width": 430,
+      "interaction": "park_info",
+      "camera": {
+        "x": 199,
+        "y": 198
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 400,
+        "world_y": 528
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-park-430.png",
+      "sha256": "sha256:27c70d9d677cd3670db47a03a22ea76d2c158837720f42243bb08ac65b171fb7"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "gifts",
+      "width": 430,
+      "interaction": "gifts_info",
+      "camera": {
+        "x": 711,
+        "y": 102
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 432
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-gifts-430.png",
+      "sha256": "sha256:104f6d76be1dd1e1f231288e7e624aa9ef3b95a0326db0a18f43c8b3d47fbc1d"
+    },
+    {
+      "era": "DANGER",
+      "landmark": "wall",
+      "width": 430,
+      "interaction": "wall_info",
+      "camera": {
+        "x": 711,
+        "y": 390
+      },
+      "target": {
+        "x": 201,
+        "y": 330,
+        "world_x": 912,
+        "world_y": 720
+      },
+      "canvas": [
+        402,
+        448
+      ],
+      "button": {
+        "width": 44,
+        "height": 44,
+        "left": 193,
+        "top": 558.5625,
+        "right": 237,
+        "bottom": 602.5625
+      },
+      "geometry_hash": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27",
+      "click_and_keyboard": "PASS",
+      "screenshot": "danger-wall-430.png",
+      "sha256": "sha256:f0c292d132be21bdc3cc658f71b6767655415225e35ad09285448a1d76742cae"
+    }
+  ],
+  "page_errors": [],
+  "limits": [
+    "No avatar art",
+    "No actual iOS/Android hardware",
+    "No product Phaser or real backend integration",
+    "No final release acceptance"
+  ]
+}
