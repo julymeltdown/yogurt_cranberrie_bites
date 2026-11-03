@@ -77,6 +77,9 @@ impl CanonicalProfilePort for Owners {
         if self.fault == "profile-unavailable" {
             return Err(AvatarError::Unavailable);
         }
+        if self.fault == "blocking-profile" {
+            std::thread::sleep(Duration::from_millis(120));
+        }
         if self.fault == "slow-profile" {
             tokio::time::sleep(Duration::from_millis(120)).await;
         }
@@ -156,6 +159,8 @@ impl MutationAuthorityPort for Owners {
             calls: AtomicUsize::new(0),
             expire_after: if self.fault == "withdraw-permit" {
                 2
+            } else if self.fault == "withdraw-after-update" {
+                9
             } else {
                 usize::MAX
             },
@@ -640,7 +645,7 @@ async fn owner_failures_and_missing_or_withdrawn_capability_fail_closed() {
 }
 #[tokio::test]
 async fn original_deadline_cannot_restart_after_owner_waits() {
-    for fault in ["slow-auth", "slow-profile"] {
+    for fault in ["slow-auth", "slow-profile", "blocking-profile"] {
         let (s, c) = service(fault);
         let (code, _, _) = invoke(
             s,
@@ -717,13 +722,37 @@ async fn native_guarded_participant_persistence_and_reread() {
         m.release_digest = digest.clone();
         m
     };
-    let denied =
-        ParticipantService::new(persistence, owners.clone(), owners, Arc::new(Unavailable));
+    let denied = ParticipantService::new(
+        persistence.clone(),
+        owners.clone(),
+        owners,
+        Arc::new(Unavailable),
+    );
     assert_eq!(
         call(denied, make(Operation::SetAvatar), Operation::SetAvatar)
             .await
             .0,
         Code::Unavailable
+    );
+    let withdrawing = Arc::new(Owners {
+        calls: Arc::new(Counters::default()),
+        fault: "withdraw-after-update",
+    });
+    let withdrawing_service = ParticipantService::new(
+        persistence,
+        withdrawing.clone(),
+        withdrawing.clone(),
+        withdrawing,
+    );
+    assert_eq!(
+        call(
+            withdrawing_service,
+            make(Operation::SetAvatar),
+            Operation::SetAvatar
+        )
+        .await
+        .0,
+        Code::PermissionDenied
     );
     let (code, initial, _) = call(
         service.clone(),
@@ -733,6 +762,7 @@ async fn native_guarded_participant_persistence_and_reread() {
     .await;
     assert_eq!(code, Code::Ok);
     let initial = initial.unwrap();
+    assert_eq!(initial["profile"]["avatar"]["revision"], 1);
     let mut avatar = make(Operation::SetAvatar);
     let mut wire: Value = serde_json::from_slice(&avatar.request_json).unwrap();
     wire["config"]["item_ids"]["accessory"] = Value::Null;
