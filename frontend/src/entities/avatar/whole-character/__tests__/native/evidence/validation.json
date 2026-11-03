@@ -1,0 +1,45 @@
+{
+  "task": "FE-STATIC-AVATAR-RUNTIME",
+  "validated_base": "f4b4080897a6b1ad835fa4e5e9372f82d58e489e",
+  "status": "INTEGRATED_PRODUCER",
+  "live_product_acceptance": "NOT_RUN",
+  "source_hashes": {
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+    "contracts/assets/v1/common.schema.json": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e"
+  },
+  "checks": {
+    "targeted_tests": {
+      "exit": 0,
+      "files": 4,
+      "tests": 36,
+      "producer_tests": 26
+    },
+    "types": 0,
+    "scoped_lint": 0,
+    "production_bundle": 0,
+    "native": {
+      "exit": 0,
+      "report": "report.json",
+      "screenshots": 9
+    },
+    "canonical_asset_metadata": 0,
+    "planning_provenance": 0
+  },
+  "supplementary_contract_unittest": "NOT_RUN: sparse checkout lacks backend docs generator",
+  "owned_paths": [
+    "frontend/src/entities/avatar/whole-character/**",
+    "docs/mcr/frontend/whole-character-runtime.md"
+  ],
+  "publication_parent": "be629fa0951f047710751d0137c1ec6a6f34a6ea",
+  "reconciliation": {
+    "targeted_tests": {
+      "exit": 0,
+      "tests": 36,
+      "files": 4
+    },
+    "types": 0,
+    "peer_changes": "Legacy asset leases and coordination documents; new producer files disjoint"
+  }
+}

@@ -1,0 +1,50 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toHaveCount(expected) failed
+
+Locator:  locator('.places-map-plaque')
+Expected: 5
+Received: 0
+Timeout:  5000ms
+
+Call log:
+  - Expect "to.have.count" with timeout 5000ms
+  - waiting for locator('.places-map-plaque')
+    14 × locator resolved to 0 elements
+       - unexpected value "0"
+
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toHaveCount (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at <checkout>/frontend/src/features/places/__tests__/reference-map/native.mjs:37:52 {
+  matcherResult: {
+    actual: 0,
+    expected: 5,
+    message: 'expect(locator).toHaveCount(expected) failed\n' +
+      '\n' +
+      "Locator:  locator('.places-map-plaque')\n" +
+      'Expected: 5\n' +
+      'Received: 0\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "to.have.count" with timeout 5000ms\n' +
+      "  - waiting for locator('.places-map-plaque')\n" +
+      '    14 × locator resolved to 0 elements\n' +
+      '       - unexpected value "0"\n',
+    name: 'toHaveCount',
+    pass: false,
+    log: [
+      '  - Expect "to.have.count" with timeout 5000ms',
+      "  - waiting for locator('.places-map-plaque')",
+      '    14 × locator resolved to 0 elements',
+      '       - unexpected value "0"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: undefined
+  }
+}
+
+Node.js v24.22.2

@@ -926,9 +926,12 @@ impl AdmissionBridge {
                 // Repository renew is a current read, not an expiry extension. Extend
                 // only after fresh Auth/event/restriction checks and exact owner fencing.
                 let lease=Utc::now().checked_add_signed(TimeDelta::milliseconds(5000)).ok_or(WorldError::Invalid)?.min(m.access_expires_at);
+                let mut tx=self.pool.begin().await.map_err(|_|WorldError::Unavailable)?;
+                super::closure::lock_event_open_in(&mut tx,b.key.event_id.uuid()).await?;
                 let changed=sqlx::query("update public.concert_world_memberships m set lease_until=$6 where event_id=$1 and user_id=$2 and room_id=$3 and session_id=$4 and connection_id=$5 and access_expires_at=$7 and lease_until>clock_timestamp() and not disconnected and exists(select 1 from public.concert_world_owner_leases l where l.event_id=m.event_id and l.room_id=m.room_id and l.owner_process_id=$8 and l.owner_epoch=$9 and l.lease_until>clock_timestamp())")
-                    .bind(b.key.event_id.uuid()).bind(b.key.user_id.uuid()).bind(b.room_id).bind(b.session_id).bind(b.connection_id).bind(lease).bind(m.access_expires_at).bind(&self.owner.process_id).bind(self.owner.epoch).execute(&self.pool).await.map_err(|_|WorldError::Unavailable)?.rows_affected();
+                    .bind(b.key.event_id.uuid()).bind(b.key.user_id.uuid()).bind(b.room_id).bind(b.session_id).bind(b.connection_id).bind(lease).bind(m.access_expires_at).bind(&self.owner.process_id).bind(self.owner.epoch).execute(&mut *tx).await.map_err(|_|WorldError::Unavailable)?.rows_affected();
                 if changed!=1 { return Err(WorldError::OwnerFenced); }
+                tx.commit().await.map_err(|_|WorldError::Unavailable)?;
                 let mut m=m; m.lease_until=lease; self.publish(m,b.connection_id,b.stream_id,auth).await.map(|_|())
             }.await;
             if result.is_err() {
