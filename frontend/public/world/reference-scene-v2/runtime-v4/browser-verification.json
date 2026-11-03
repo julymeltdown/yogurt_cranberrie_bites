@@ -1,0 +1,510 @@
+{
+  "status": "PASS_RUNTIME_DERIVATIVE_ASSET_REVIEW_ONLY",
+  "browser": "156.0.8078.80",
+  "cases": [
+    {
+      "width": 360,
+      "view": "world",
+      "overflow": false,
+      "results": [
+        {
+          "name": "Frozen source v3",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1254,
+            1254
+          ],
+          "objects": 22,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        },
+        {
+          "name": "Compact integer v4",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1024,
+            1024
+          ],
+          "objects": 22,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "view": "map",
+      "overflow": false,
+      "results": [
+        {
+          "name": "Frozen source v3",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1254,
+            1254
+          ],
+          "objects": 27,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        },
+        {
+          "name": "Compact integer v4",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1024,
+            1024
+          ],
+          "objects": 27,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "view": "world",
+      "overflow": false,
+      "results": [
+        {
+          "name": "Frozen source v3",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1254,
+            1254
+          ],
+          "objects": 22,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        },
+        {
+          "name": "Compact integer v4",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1024,
+            1024
+          ],
+          "objects": 22,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "view": "map",
+      "overflow": false,
+      "results": [
+        {
+          "name": "Frozen source v3",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1254,
+            1254
+          ],
+          "objects": 27,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        },
+        {
+          "name": "Compact integer v4",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1024,
+            1024
+          ],
+          "objects": 27,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "view": "world",
+      "overflow": false,
+      "results": [
+        {
+          "name": "Frozen source v3",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1254,
+            1254
+          ],
+          "objects": 22,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        },
+        {
+          "name": "Compact integer v4",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1024,
+            1024
+          ],
+          "objects": 22,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "view": "map",
+      "overflow": false,
+      "results": [
+        {
+          "name": "Frozen source v3",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1254,
+            1254
+          ],
+          "objects": 27,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        },
+        {
+          "name": "Compact integer v4",
+          "ground": [
+            768,
+            1296
+          ],
+          "atlas": [
+            1024,
+            1024
+          ],
+          "objects": 27,
+          "feet": [
+            {
+              "id": "courtyard_entry",
+              "blockers": []
+            },
+            {
+              "id": "community_entry",
+              "blockers": []
+            },
+            {
+              "id": "stage_info",
+              "blockers": []
+            },
+            {
+              "id": "park_info",
+              "blockers": []
+            },
+            {
+              "id": "gifts_info",
+              "blockers": []
+            },
+            {
+              "id": "wall_info",
+              "blockers": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Source/compact Canvas2D comparison; not Phaser or app/server admission.",
+    "No moving avatars or new fidelity panel; frozen source scores remain unchanged.",
+    "Both MAP panels use the approved native solid semantic-zone fill for a controlled packing comparison."
+  ]
+}

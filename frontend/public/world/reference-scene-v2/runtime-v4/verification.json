@@ -1,0 +1,19 @@
+{
+  "status": "PASS_COMPACT_C06_ART_INPUTS_ONLY",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "pixels": 2043904,
+  "bytes": 1947817,
+  "closed_C06_schema": "PASS",
+  "physical_objects": 22,
+  "map_only_representations": 6,
+  "ground_pixels_identical": true,
+  "max_depth_delta": 0.49,
+  "max_y_delta": 0.49,
+  "max_local_foot_delta": 0.3,
+  "stable_depth_order": true,
+  "original_sources_unchanged": true,
+  "limitations": [
+    "PARADE proposal only; REVENGE/DANGER painted skins unavailable.",
+    "Not release admission, application/multiuser proof, moving-avatar occlusion or target acceptance."
+  ]
+}

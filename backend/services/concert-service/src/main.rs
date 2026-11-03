@@ -25,6 +25,8 @@ async fn main() -> anyhow::Result<()> {
     // Validate all security and product inputs before opening the database or
     // listeners. Absence retains the explicit health-only operational mode.
     let runtime = config::bootstrap_runtime::BootstrapRuntime::load()?;
+    let product_settings = config::product_runtime::ProductSettings::load(runtime.is_some())?;
+    let product_owner = config::product_runtime::production_owners(product_settings)?;
     let bootstrap = runtime
         .as_ref()
         .map(|runtime| {
@@ -92,12 +94,25 @@ async fn main() -> anyhow::Result<()> {
                     let world = platform::grpc_method_policy::guard(
                         &world_rpc::POLICY,
                         world_rpc::proto::world_service_server::WorldServiceServer::new(world),
-                        runtime.callers,
-                        runtime.actors,
+                        runtime.callers.clone(),
+                        runtime.actors.clone(),
                     )?;
+                    let product = product_owner.map(|owner| {
+                        platform::grpc_method_policy::guard(
+                            &concert_service::product_rpc::POLICY,
+                            concert_service::product_rpc::proto::product_service_server::ProductServiceServer::new(
+                                concert_service::product_rpc::ProductRpcService::new(owner),
+                            )
+                            .max_decoding_message_size(concert_service::product_rpc::MAX_FRAME)
+                            .max_encoding_message_size(concert_service::product_rpc::MAX_FRAME),
+                            runtime.callers.clone(),
+                            runtime.actors.clone(),
+                        )
+                    }).transpose()?;
                     server
                         .add_service(bootstrap)
                         .add_service(world)
+                        .add_optional_service(product)
                         .serve_with_shutdown(
                             runtime.address,
                             platform::shutdown::global().cancelled(),

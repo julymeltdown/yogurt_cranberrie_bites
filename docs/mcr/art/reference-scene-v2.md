@@ -205,3 +205,15 @@ assigned paths are authored here; peer history is reconciled before publication.
 The persistent FE-REF-SCENE
 goal remains active through concrete visual fixes, handoff and publication
 verification; an art checkpoint is not task acceptance.
+
+## Runtime derivative v4: bounded C06 adoption
+
+A new versioned sibling `runtime-v4/` resolves two concrete implementation findings without changing the frozen source checkpoint `8f89d1905a86143d34ff77d2951fc60651ab2497`: combined source texture size exceeded the existing C06 budgets, and fractional authored depths did not satisfy closed C06 integer fields. All prior source, geometry and editable project bytes remain unchanged.
+
+The exact `runtime-v4/parade-scenery.json` uses the existing Scenery v1 schema and ordinary two-texture loader. Combined resources are **2,043,904 pixels / 1,947,817 bytes**, below both existing 2,097,152 limits. Ground remains 768x1296 with pixel-identical RGB; the 1024x1024 atlas is an explicit 0.75 nearest-neighbor source derivative with no palette quantization. One banner crop excludes neighboring source-cell furniture. Hashes, transformations and consumer guidance are in `runtime-v4/ADOPTION.md` and `parade-resource-inputs.json`.
+
+Artist-owned integer projection is explicit for 22 WORLD props and six MAP-only representations: nearest integer, ties away from zero; rounded absolute depth minus rounded local foot anchor determines Y. Actual maximum absolute depth/Y error is 0.49 virtual px, local foot-anchor error 0.30px. Stable depth order and all original footprint polygons, collision, terrain, IDs, spawns, interaction cells and geometry hash are unchanged. MAP's semantic zone uses the authorized native solid #7a8742 with #b4a27d/6px outline; an optional pattern can sample the already loaded ground. No third source texture is needed.
+
+`pack-runtime.py` and `verify-runtime.py` exited 0. Closed current C06 schema validation, source/PNG hashes, exact nearest-neighbor crops, ground pixel equality, frame bounds/nonoverlap, unchanged footprint metadata, stable object order and explicit projection all pass. `check-runtime.mjs` exited 0: six WORLD/MAP cases at 360/390/430px, 72 clear-foot samples across source and derivative, no page errors/overflow. Actual 390px WORLD and MAP comparisons were visually inspected. These are asset checks; application/Phaser/server, moving-avatar and multiuser acceptance remain separate.
+
+This derivative is CONTRACT_READY art input, still PROPOSAL_NOT_RELEASE_BOUND. The third/final scored panel applies to frozen v3; the packing comparison is not a fourth fidelity score. Painted REVENGE and DANGER and further reference-fidelity work remain required in the active goal. PARADE-first publication neither cuts those eras nor authorizes their aliasing or polygon fallback.

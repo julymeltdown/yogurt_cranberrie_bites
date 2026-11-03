@@ -4,6 +4,7 @@ pub mod cache_authority;
 pub mod client_error;
 pub mod concert_identity;
 pub mod concert_client;
+pub mod concert_product;
 pub mod concert_world;
 pub mod friend_client;
 pub(crate) mod grpc_call;
