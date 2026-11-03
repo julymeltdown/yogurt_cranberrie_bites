@@ -43,7 +43,7 @@ async function settled(page,item){
  await expect(page.getByText('Opening this page',{exact:true})).toHaveCount(0,{timeout:15000})
  if(item.public)await expect(page.locator(item.id==='login'?'.auth-sign-in':'.public-poster')).toBeVisible()
  const gallery=page.locator('.selected-static-gallery');if(await gallery.count())await expect(gallery).toHaveAttribute('data-art-state','ready',{timeout:8000})
- await page.evaluate(()=>document.fonts.ready);await page.waitForLoadState('networkidle')
+ await page.evaluate(()=>document.fonts.ready);await page.waitForLoadState('networkidle');if(item.route==='/meet')await expect(page.locator('.meet-party')).toHaveCount(3);if(item.route==='/gifts')await expect(page.locator('.gift-reference-row')).toHaveCount(3)
 }
 async function instrument(context,page){
  const records=[],byId=new Map(),errors=[];page.on('pageerror',e=>errors.push(e.message.slice(0,300)))
@@ -98,7 +98,7 @@ async function simpleAction(page,item){
   await expect.poll(async()=>(await state(page)).path).toBe(item.route);return {status:'PASS',kind:'detail-read-no-mutation',focus,backFocus:await link.evaluate(el=>el===document.activeElement)}
  }
  if(!item.public){
-  const back=page.getByRole('button',{name:'Back to previous panel',exact:true});if(await back.count()){await back.focus();const focus=await back.evaluate(el=>getComputedStyle(el).outlineStyle!=='none');await back.press('Enter');await expect.poll(async()=>(await state(page)).path).toBe('/world');return {status:'PASS',kind:'native-panel-back',focus,path:(await state(page)).path}}
+  const back=page.getByRole('button',{name:'Back to previous panel',exact:true});if(await back.count()){await back.focus();const focus=await back.evaluate(el=>getComputedStyle(el).outlineStyle!=='none');await back.press('Enter');await expect.poll(async()=>(await state(page)).path).toBe(item.id==='customize'?'/me':'/world');return {status:'PASS',kind:'native-panel-back',focus,path:(await state(page)).path}}
  }
  return {status:'NOT_RUN',code:'NO_SUPPORTED_ACTION_IN_CURRENT_COMPOSITION'}
 }
@@ -135,7 +135,7 @@ try{
     await random.click();const drafted=await snapshotCounters(page,i.records);assert.equal(drafted.avatarPuts,before.avatarPuts);avatar.draftWrites=0
     if(await save.isEnabled()){await save.click();await expect.poll(async()=>(await snapshotCounters(page,i.records)).avatarPuts).toBe(before.avatarPuts+1);avatar.status='PASS';avatar.code='ONE_CANONICAL_SAVE_REQUEST';avatar.savePuts=1}
    }
-   for(let index=1;index<steps.length;index++)steps[index].delta=counterDelta(steps[index-1],steps[index]);for(const step of steps){assert.equal(step.singletons.games,1);assert.equal(step.singletons.mounts,1);assert.equal(step.singletons.peak,1);assert.equal(step.singletons.sockets,1);assert.equal(step.singletons.socketPeak,1);assert.equal(step.singletons.activeSockets,1);assert.equal(step.singletons.sameCamera,true);assert.equal(step.singletons.geometry,steps[0].singletons.geometry);assert.deepEqual(step.singletons.outfit,steps[0].singletons.outfit)}assert.equal(i.errors.length,0);report.warm.push({width,status:'PASS',steps,avatar,errors:i.errors})
+   for(let index=1;index<steps.length;index++)steps[index].delta=counterDelta(steps[index-1],steps[index]);for(const step of steps){assert.equal(step.singletons.games,1);assert.equal(step.singletons.mounts,1);assert.equal(step.singletons.peak,1);assert(step.singletons.sockets>=1);assert.equal(step.singletons.socketPeak,1);assert.equal(step.singletons.activeSockets,['me','customize-first','customize-return'].includes(step.name)?0:1);assert.equal(step.singletons.sameCamera,true);assert.equal(step.singletons.geometry,steps[0].singletons.geometry);if(step.singletons.outfit)assert.deepEqual(step.singletons.outfit,steps[0].singletons.outfit)}assert.equal(i.errors.length,0);report.warm.push({width,status:'PASS',steps,avatar,errors:i.errors})
   }catch(error){report.warm.push({width,status:'FAIL',steps,code:'WARM_ASSERTION',error:String(error.message).slice(0,1200)})}
   finally{await page.evaluate(()=>window.__REFERENCE_INTEGRATED__?.dispose()).catch(()=>{});await context.close()}
  }

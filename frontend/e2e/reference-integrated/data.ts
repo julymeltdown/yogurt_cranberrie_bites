@@ -4,6 +4,7 @@ import { giveaway } from '../../src/features/gift-discovery/__tests__/fixtures/d
 import { participant } from '../../src/features/me/__tests__/fixtures'
 export const fixtureClock = '2026-11-07T07:00:00.000Z'
 export function domainResponse(request: Request, eventId: string, actorId: string, placeId: string): Response | null {
+  if(request.method!=='GET')return null
   const path = new URL(request.url).pathname
   const bind = <T extends object>(value:T) => ({...value,event_id:eventId})
   if(path.endsWith('/me') && request.method==='GET'){
@@ -18,8 +19,8 @@ export function domainResponse(request: Request, eventId: string, actorId: strin
   if(path.endsWith('/me/giveaways'))return Response.json({giving:{items:[],next_cursor:null},receiving:{items:[],next_cursor:null}})
   if(path.endsWith('/giveaways'))return Response.json({items:[
     bind(giveaway({title:'Sticker pack · fixture',public_place_id:placeId})),
-    bind(giveaway({giveaway_id:'00000000-0000-4000-8000-000000000062',title:'Hand banner · fixture',public_place_id:placeId})),
-    bind(giveaway({giveaway_id:'00000000-0000-4000-8000-000000000063',title:'Custom button · fixture',public_place_id:placeId})),
+    bind(giveaway({giveaway_id:'00000000-0000-4000-8000-000000000062',title:'Hand banner · fixture',public_place_id:placeId,created_at:'2026-11-02T01:00:00Z'})),
+    bind(giveaway({giveaway_id:'00000000-0000-4000-8000-000000000063',title:'Custom button · fixture',public_place_id:placeId,created_at:'2026-11-01T01:00:00Z'})),
   ],next_cursor:null})
   return null
 }
