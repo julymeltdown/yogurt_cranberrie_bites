@@ -83,7 +83,15 @@ def exercise(cluster, pinned, report):
     fixture_env = {**env, "MCR_WORLD_AUTH_ROOT": str(cluster.root), "MCR_WORLD_AUTH_TOKEN": cluster.token,
                    "MCR_WORLD_AUTH_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}",
                    **{f"MCR_WORLD_AUTH_{owner.upper()}_URL": url for owner, url in urls.items()}}
-    result = command(report, "native-auth-world", [pinned["test"], PREFIX, "--ignored", "--test-threads=1"], fixture_env, cluster.root, secrets=secrets)
+    # Preserve redacted native failure evidence before asserting success; the
+    # shared command helper intentionally records only exit codes.
+    argv = [str(pinned["test"]), PREFIX, "--ignored", "--test-threads=1"]
+    result = subprocess.run(argv, env=fixture_env, cwd=cluster.root, capture_output=True, timeout=30)
+    report["commands"]["native-auth-world"] = result.returncode
+    raw = result.stdout + result.stderr
+    require(all(value.encode() not in raw for value in secrets if value), "native-output-redaction")
+    report["native_diagnostics"] = migration.redact(raw.decode(errors="replace"), secrets)
+    require(result.returncode == 0, "native-auth-world:exit")
     summary(result.stdout, len(names))
     report.update(native_test_names=names, native_tests=len(names))
     state_sql = {

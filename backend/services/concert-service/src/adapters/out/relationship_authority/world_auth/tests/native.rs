@@ -217,6 +217,9 @@ async fn native_consumed_ticket_and_current_membership_use_fresh_signed_auth() -
     .bind(user)
     .execute(&auth)
     .await?;
+    let refreshed = reader.observe(&next()).await?;
+    assert_eq!(refreshed.revision().epoch, initial_revision.epoch);
+    assert!(refreshed.revision().revision > initial_revision.revision);
     for status in ["PENDING_VERIFICATION", "SUSPENDED", "DELETED"] {
         sqlx::query("update users set status=$2 where id=$1")
             .bind(user)
@@ -232,9 +235,12 @@ async fn native_consumed_ticket_and_current_membership_use_fresh_signed_auth() -
         .bind(user)
         .execute(&auth)
         .await?;
-    let refreshed = reader.observe(&next()).await?;
-    assert_eq!(refreshed.revision().epoch, initial_revision.epoch);
-    assert!(refreshed.revision().revision > initial_revision.revision);
+    // Retained Auth credential-change triggers revoke sessions on status changes.
+    // Restoring ACTIVE alone must not resurrect the previously revoked family.
+    assert_eq!(
+        reader.observe(&next()).await.unwrap_err(),
+        WorldError::Denied
+    );
     let mut wrong = current.clone();
     wrong.membership.session_id = SessionId::new(Uuid::new_v4().to_string())?;
     let wrong_subject = WorldSubject {
