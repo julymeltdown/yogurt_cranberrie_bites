@@ -240,7 +240,7 @@ def validate_resource_binding(resources):
              (type(value) is int and 1 <= value <= 9007199254740991), "INVALID_RESOURCE_BINDING")
 
 
-def initialize_event(stack, nonce, report, resources=None):
+def initialize_event(stack, nonce, report, resources=None, concert_binary=None):
     """Native-fixture initialization allowed only on this invocation's fresh Cluster object."""
     if resources is not None:
         validate_resource_binding(resources)
@@ -250,11 +250,19 @@ def initialize_event(stack, nonce, report, resources=None):
     cluster.assert_postmaster()
     cluster.sql("postgres", f"create database {DATABASE} template template0;")  # No IF NOT EXISTS/reattach.
     pins = {}
-    for name in MIGRATIONS:
-        path = ROOT / "backend/services/concert-service/migrations" / name
-        raw = read_regular(path)
-        cluster.sql(DATABASE, raw.decode())
-        pins[name] = digest(raw)
+    if concert_binary:
+        env = {**cluster.env, "CONCERT_DATABASE_URL": cluster.url(DATABASE)}
+        for flag in ("--migrate", "--verify-migrations"):
+            dev.migration.execute([str(concert_binary), flag], env=env, cwd=cluster.root, phase="concert-schema")
+        expected = dev.migration.migration_manifest(ROOT / "backend", "concert-service")
+        dev.migration.check_ledger(cluster, DATABASE, expected)
+        pins = {str(k): v for k, v in expected.items()}
+    else:
+        for name in MIGRATIONS:
+            path = ROOT / "backend/services/concert-service/migrations" / name
+            raw = read_regular(path)
+            cluster.sql(DATABASE, raw.decode())
+            pins[name] = digest(raw)
     event = str(uuid5(UUID(nonce), "in01-event"))
     room = str(uuid5(UUID(nonce), "in01-default-room"))
     # All interpolated values are generated UUIDs or strictly validated resource identifiers/integers.
@@ -266,8 +274,9 @@ def initialize_event(stack, nonce, report, resources=None):
     cluster.sql(DATABASE, sql + "commit;")
     need(cluster.sql(DATABASE, f"select phase||':'||revision from concert_events where event_id='{event}';") == "OPEN:1", "EVENT_FIXTURE_NOT_PERSISTED")
     report["fixture"] = {"event": "PASS", "default_room": "INITIALIZED_NOT_ADMITTED" if resources else "NOT_RUN",
-                         "missing": None if resources else "REVIEWED_RESOURCE_PINS_REQUIRED", "migration_sha256": pins,
-                         "method": "new owned database, exact bounded native migration schema, generated OPEN event; no SQLx runtime ledger claim",
+                         "missing": None if resources else "REVIEWED_RESOURCE_PINS_REQUIRED", "migration_hashes": pins,
+                         "method": ("qualified Concert migration CLI and exact full SQLx ledger" if concert_binary else
+                                    "exact bounded native migration schema; no SQLx runtime ledger claim") + "; new owned DB, generated OPEN event",
                          "roles_admissions_participants_tickets_seeded": False}
     return event
 
@@ -366,6 +375,7 @@ def execute(args, run, stack=None):
     report = {"kind": "mcr-in01-provision-receipt-v1", "result": "FAIL", "IN01": "NOT_RUN", "statuses": {},
               "canonical_accounts": "NOT_RUN", "world_prerequisites": {"status": "NOT_RUN"},
               "cleanup": "NOT_RUN", "secrets_recorded": False, **source_receipt()}
+    control = None
     try:
         need(canonical_id(args.event_id) if args.event_id else True, "INVALID_EVENT_ID")
         need(not (stack and args.event_id), "NEW_STACK_GENERATES_OWN_EVENT")
@@ -374,19 +384,33 @@ def execute(args, run, stack=None):
             resources, report["resource_declarations"] = resource_pins(args.map_manifest, args.avatar_manifest, args.art_review)
         if args.art_review:
             pinned(args.art_review)
+        concert_binary = getattr(args, "concert_binary", None)
+        concert_receipt = getattr(args, "concert_build_receipt", None)
+        need(bool(concert_binary) == bool(concert_receipt), "CONCERT_BINARY_RECEIPT_PAIR_REQUIRED")
+        if concert_binary:
+            need(stack is not None, "CONCERT_INITIALIZATION_REQUIRES_NEW_OWNED_STACK")
+            binding = json.loads(read_regular(concert_receipt))
+            need(binding.get("exit_code") == 0 and re.fullmatch(r"[0-9a-f]{40}", binding.get("source_revision", ""))
+                 and os.access(concert_binary, os.X_OK)
+                 and binding.get("binary_sha256", {}).get("concert-service") == digest(read_regular(concert_binary, limit=512 * 1024 * 1024)), "CONCERT_BINARY_RECEIPT_MISMATCH")
+            report["concert_binary_binding"] = {"source_revision": binding["source_revision"], "receipt": pinned(concert_receipt),
+                                                "binary_sha256": binding["binary_sha256"]["concert-service"]}
         if stack:
             report["binary_bindings"] = validate_binaries(args.bin_dir, args.binary_receipt)
             descriptor = stack.start()
+            control = dev.Control(stack)
+            run.write("ready.json", descriptor)
             descriptor_hash = digest(dev.encode(descriptor))
         else:
             descriptor, descriptor_hash = owned_descriptor(args.ready_file)
         report["owned_stack_descriptor_sha256"] = descriptor_hash
-        run.write("binding.json", {"ready_file": str(args.ready_file) if not stack else None,
+        run.write("binding.json", {"ready_file": str(args.ready_file) if not stack else str(run.path / "ready.json"),
                                    "descriptor_sha256": descriptor_hash})
         state = provision_accounts(run, descriptor, report, args.browser_origin)
         event = args.event_id
         if stack:
-            event = initialize_event(stack, run.nonce, report, resources)
+            event = initialize_event(stack, run.nonce, report, resources, getattr(args, "concert_binary", None))
+            state["concert_database_url"] = stack.cluster.url(DATABASE)
         if not event:
             report["world_prerequisites"] = {"status": "NOT_RUN", "code": "OWNED_EVENT_ID_REQUIRED"}
         else:
@@ -407,16 +431,23 @@ def execute(args, run, stack=None):
         save_receipt(run, report)
         print(json.dumps({"result": "PASS", "canonical_accounts": "PASS", "IN01": "NOT_RUN", "output": str(run.path)}), flush=True)
         deadline = time.monotonic() + args.hold_seconds
-        while stack and time.monotonic() < deadline:
-            stack.health()
-            time.sleep(min(1, max(0, deadline - time.monotonic())))
+        next_health = 0
+        while stack and time.monotonic() < deadline and not control.stopping:
+            control.handle_request()
+            if time.monotonic() >= next_health:
+                stack.health()
+                next_health = time.monotonic() + 2
     except (Exception, KeyboardInterrupt) as error:
         report["failure"] = str(error) if isinstance(error, Failure) else type(error).__name__
         report["result"] = "FAIL"
     finally:
         if stack:
             try:
-                stack.close()
+                try:
+                    if control is not None:
+                        control.server_close()
+                finally:
+                    stack.close()
                 report["owned_stack"] = stack.report
                 report["cleanup"] = stack.report.get("cleanup", "FAIL")
                 report["lifetime"] = "ENDED_ACCOUNTS_AND_EVENT_REMOVED_WITH_OWNED_CLUSTER"
@@ -446,6 +477,8 @@ def main(argv=None):
         if kind == "owned":
             c.add_argument("--bin-dir", type=Path, required=True)
             c.add_argument("--binary-receipt", type=Path, required=True)
+            c.add_argument("--concert-binary", type=Path)
+            c.add_argument("--concert-build-receipt", type=Path)
             c.add_argument("--pg-bin-dir", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))
             c.add_argument("--redis-binary", type=Path, default=Path("/opt/homebrew/bin/redis-server"))
             c.add_argument("--openssl-binary", type=Path, default=Path("/opt/homebrew/bin/openssl"))

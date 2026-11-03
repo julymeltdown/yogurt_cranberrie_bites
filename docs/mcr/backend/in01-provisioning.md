@@ -1,9 +1,9 @@
 # IN01 canonical account and owned-event provisioning
 
 Status: **IN_PROGRESS**. This is a provisioning tool, not IN01 acceptance.
-Current offline ownership/failure/config checks pass15/15. Actual two-account
+Current offline ownership/failure/config checks pass18/18. Actual two-account
 provisioning is NOT_RUN pending a current qualified runtime artifact binding;
-owned event fixture execution is pending. No art receipt or world result is
+owned PostgreSQL event fixture execution passed at9ad192c. No art receipt or world result is
 invented to turn those prerequisites green.
 
 ## Assignment and provenance
@@ -145,7 +145,7 @@ remain separate IN01 obligations. A bounded provisioning PASS always retains
 
 ## Verification checkpoint
 
-- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py -v`: exit0,15 offline checks.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s backend/scripts/mcr -p test_in01_provision.py -v`: exit0,18 offline checks.
 - `python3 -B -m py_compile backend/scripts/mcr/in01_provision.py`: exit0.
 - `git diff --check`: exit0.
 
@@ -157,3 +157,39 @@ before any launch. Current qualified copied binary/receipt paths are requested
 from Delivery/World SL. Native Auth/event/config execution is not inferred from
 these offline checks. Exact final commands, evidence hashes and handoff ancestry
 will be appended after qualification.
+
+
+## Owned fixture execution and runtime preparation follow-up
+
+At clean9ad192c, fresh PostgreSQL16.14 initialization passed with all five exact
+fixture migrations, OPEN revision1 event, no synthetic participants/admissions/
+rooms/tickets/memberships/leases, an actually rejected revision-invalid update,
+existing-database reattachment refusal and validated owned cleanup. Sanitized
+receipt `/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-in01-event-proof-3dz8axz9/receipt.json`,
+SHA256`f053c1a38bed8785e59ceb6d42736ac639ae4d649358ae99e4c2d45c144aca5f`.
+This executes event initialization only; Auth remained NOT_RUN in that fixture.
+
+Owned foreground mode now also exposes the unchanged launcher's private Control
+protocol via `ready.json`, allowing actual owner status/stop while holding the
+provisioned accounts. `private.json` includes the freshly owned Concert database
+URL for explicitly coordinated runtime ownership, never in the sanitized receipt.
+After stack close the old ready descriptor is stale and must be rejected.
+A control shutdown failure still invokes database/process cleanup and cannot
+produce a green result.
+
+For a usable full migration ledger, optionally supply BOTH `--concert-binary`
+and `--concert-build-receipt`. The receipt has the same successful source/binary
+binding shape with a `concert-service` entry. Before launch the binary bytes are
+checked. The new Concert database is migrated/verified through the actual CLI
+and its full SQLx ledger compared with current source checksums; only then is
+the event fixture inserted. This path remains NOT_RUN until qualified Concert
+artifacts are supplied. It is distinct from the bounded direct-schema event
+proof above and starts no unconfigured Concert service by itself.
+
+Needed owner seams remain precise: a qualified copied six-service binary/source
+receipt; optional current Concert migration artifact; actual Gateway→Concert
+bootstrap/rooms/ticket and WS routing; qualified service eligibility/current
+owner adapters; reviewed selected-source-pack avatar runtime plus map/skin
+release and genuine art receipt. The provisioner does not acquire any of those
+owners' writable paths.18 offline tests now additionally verify inherited-secret
+scrubbing, invalid-event preflight with zero allocation, and control-error cleanup.

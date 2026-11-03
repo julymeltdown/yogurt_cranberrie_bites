@@ -132,7 +132,7 @@ class FailureTests(Fixture):
     def test_mid_provision_failure_closes_owned_stack_and_sanitizes_error(self):
         run = self.run_dir(); stack = Mock(); stack.report = {"cleanup": "PASS"}
         stack.start.return_value = {"gateway_url": "http://127.0.0.1:12345"}
-        with patch.object(p, "source_receipt", return_value={}), patch.object(p, "validate_binaries", return_value={}), patch.object(p, "provision_accounts", side_effect=RuntimeError("PRIVATE_PASSWORD_MUST_NOT_LEAK")), contextlib.redirect_stdout(io.StringIO()):
+        with patch.object(p, "source_receipt", return_value={}), patch.object(p, "validate_binaries", return_value={}), patch.object(p.dev, "Control"), patch.object(p, "provision_accounts", side_effect=RuntimeError("PRIVATE_PASSWORD_MUST_NOT_LEAK")), contextlib.redirect_stdout(io.StringIO()):
             result = p.execute(self.args(), run, stack)
         stack.close.assert_called_once()
         self.assertEqual(result["result"], "FAIL");self.assertEqual(result["cleanup"], "PASS")
@@ -161,6 +161,31 @@ class FailureTests(Fixture):
         stack = Mock();stack.cluster = object()
         with self.assertRaises(p.Failure):
             p.initialize_event(stack, "a" * 32, {})
+
+    def test_shutdown_failure_still_calls_stack_cleanup(self):
+        run=self.run_dir();stack=Mock();stack.report={"cleanup":"PASS"}
+        control=Mock();control.server_close.side_effect=OSError("private diagnostic")
+        with patch.object(p,"source_receipt",return_value={}), patch.object(p,"validate_binaries",return_value={}), patch.object(p.dev,"Control",return_value=control), patch.object(p,"provision_accounts",side_effect=p.Failure("SIGNUP_UNAVAILABLE")):
+            result=p.execute(self.args(),run,stack)
+        stack.close.assert_called_once()
+        self.assertEqual(result["cleanup"],"FAIL")
+
+    def test_receipt_scrubs_inherited_private_diagnostics(self):
+        run=self.run_dir()
+        run.write("private.json",{"accounts":[{"email":"private@example.test","password":"secret-password","accessToken":"private-access","cookie":"private-cookie"}]})
+        report={"log":["private@example.test secret-password private-access private-cookie"],"result":"FAIL"}
+        sanitized=p.save_receipt(run,report)
+        self.assertEqual(sanitized["log"],["[private] [private] [private] [private]"])
+        self.assertNotIn("secret-password",(run.path/"receipt.json").read_text())
+
+    def test_invalid_event_preflight_allocates_no_stack_or_accounts(self):
+        run=self.run_dir();stack=Mock();stack.report={"cleanup":"PASS"}
+        args=self.args();args.event_id="invalid"
+        with patch.object(p,"source_receipt",return_value={}):
+            result=p.execute(args,run,stack)
+        stack.start.assert_not_called()
+        self.assertEqual(result["failure"],"INVALID_EVENT_ID")
+        self.assertFalse((run.path/"private.json").exists())
 
 
 if __name__ == "__main__":
