@@ -5,17 +5,22 @@ import type { SessionController } from '../../features/auth/model/session'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import type { ShellBootstrap } from '../ports'
 import { thumbnailSource, type AccountAssetsPort } from './assets'
+import type { WholeCharacterRuntime } from '../../entities/avatar/whole-character'
+import { createWholeCharacterEditorController } from '../../features/avatar/whole-character/controller'
 
 export interface AccountOwnerOptions {
   readonly auth: SessionController
   readonly bootstrap: ShellBootstrap
   readonly scope: PrivacyScope
   readonly assets?: AccountAssetsPort | undefined
+  readonly characters?: WholeCharacterRuntime | null
 }
 /** Own controllers only. Neither creates a session, QueryClient, Phaser game nor world connection. */
-export function createAccountOwner({ auth, bootstrap, scope, assets }: AccountOwnerOptions) {
+export function createAccountOwner({ auth, bootstrap, scope, assets, characters = null }: AccountOwnerOptions) {
   if (!auth.privacy.isCurrent(scope) || bootstrap.participant.userId !== scope.userId || bootstrap.participant.eventId !== scope.eventId
     || bootstrap.event.eventId !== scope.eventId) throw new AvatarError('unavailable')
+  if (characters && (!characters.isCurrent() || characters.scope.userId !== scope.userId || characters.scope.eventId !== scope.eventId
+    || characters.scope.generation !== scope.generation || characters.scope.policyGeneration !== scope.policyGeneration || characters.scope.gate !== scope.gate)) throw new AvatarError('unavailable')
   let disposed = false
   const leases = createReviewedAtlasLeases({ isCurrent: () => !disposed && auth.privacy.isCurrent(scope) })
   const source = thumbnailSource(bootstrap, scope, assets, leases), me = createMeController(auth)
@@ -30,9 +35,14 @@ export function createAccountOwner({ auth, bootstrap, scope, assets }: AccountOw
       // Authoritative world appearance arrives through existing server replication, never an optimistic local patch.
     },
   })
+  const wholeAvatar = characters?.isCurrent() ? createWholeCharacterEditorController({ auth, scope, runtime: characters,
+    onCommitted(verifiedAvatar, expected) {
+      if (!disposed && auth.privacy.isCurrent(scope) && auth.privacy.isCurrent(expected)) void me.refreshAfterAvatar(expected, verifiedAvatar.revision)
+    },
+  }) : null
   let unregister = () => {}
-  const dispose = () => { if (disposed) return; disposed = true; unregister(); avatar.dispose(); me.dispose(); leases.dispose() }
+  const dispose = () => { if (disposed) return; disposed = true; unregister(); wholeAvatar?.dispose(); avatar.dispose(); me.dispose(); leases.dispose() }
   unregister = auth.privacy.registerCleanup(dispose)
-  return Object.freeze({ auth, bootstrap, scope, assets, me, avatar, source, dispose, isDisposed: () => disposed })
+  return Object.freeze({ auth, bootstrap, scope, assets, characters, me, avatar, wholeAvatar, source, dispose, isDisposed: () => disposed })
 }
 export type AccountOwner = ReturnType<typeof createAccountOwner>
