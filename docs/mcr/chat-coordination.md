@@ -12,6 +12,11 @@ so every shell command and edit must target the assigned worktree explicitly.
 | Frontend | `mcr(fe) FE01 HTTP transport` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-transport` / `codex/mcr-fe-transport` |
 
 Both assignments were dispatched with model `gpt-6.1-sol` and reasoning `high`.
+The user's standing language instruction is **English only in every chat**, even
+when the user writes in Korean. It covers replies, progress, questions, reviews,
+handoffs and final answers. Both development chats received this instruction
+directly; all future assignments must carry it. Preserve source text and
+identifiers where exact fidelity is needed.
 Both start from `2d9198a684ec363c476ae75835ddf4289e47762c`. They read the current
 integration working agreements in addition to their branch-local instructions.
 No subagent continues writing either worktree.

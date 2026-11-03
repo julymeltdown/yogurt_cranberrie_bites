@@ -5,7 +5,7 @@
 - The user's delivery repository is `julymeltdown/mcr`, branch `master`. Old references to delivery into Bigyeting in `docs/source/` are historical, not instructions for this repository.
 - Read `MCR_IMPLEMENTATION_PLAN_V2_EN.md`, `docs/mcr/project-assessment.md`, and `docs/mcr/execution-plan.md` before implementation. Product scope and acceptance come from the specification; analysis documents do not silently amend them.
 - Preserve `docs/source/` byte for byte. Record provenance for copied code, source revisions, destination paths, dependencies, and regression evidence.
-- Use English for product navigation and engineering artifacts. Respond to the user in their requested language.
+- Use English only in every chat/session, including other development chats: replies, progress updates, questions, reviews, handoffs and final answers, even when the user writes in Korean. Carry this explicit user instruction into delegated or continued chats. Use English for new chat titles, product navigation and engineering artifacts. Preserve exact source text, filenames, identifiers and quoted evidence where fidelity requires it.
 
 ## Parallel work and review
 
