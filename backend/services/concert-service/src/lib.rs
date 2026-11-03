@@ -3,6 +3,7 @@ pub mod adapters;
 pub mod config;
 pub mod health;
 pub mod rpc;
+pub mod bootstrap;
 
 pub mod workers {
     pub mod outbox;

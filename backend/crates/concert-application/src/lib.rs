@@ -165,3 +165,4 @@ impl<R: CoreRepository, C: Clock, P: ParticipationPolicy> ConcertCore<R, C, P> {
 
 pub mod identity;
 pub mod place;
+pub mod bootstrap;
