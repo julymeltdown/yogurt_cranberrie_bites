@@ -21,7 +21,7 @@ it is not feature integration or release acceptance.
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
 | FE01 | ACCEPTED | [Integrated review](evidence/core-foundation-integration.md): 144 transport/error tests plus 22 existing UI tests, strict build/lint; memory-only session, bounded read refresh, cancellation, safe error/upload ports and stale-identity isolation. Real cookies and auth journeys remain BE03/FE09 work. |
 | FE02 | ACCEPTED | [Integrated privacy review](evidence/privacy-local-stack-integration.md): actual QueryClient/observers, canonical private keys, cancellation plus eviction, commit fencing and cleanup ports; 45 new tests and combined 189-test transport/privacy run pass. UI/event/real-server owner wiring remains. |
-| FE07 | IN_PROGRESS | Worker candidate `d7c720c` / handoff `8ba0081` reports 272 tests, build/lint and four installed-Chrome viewports; parent review requested stale-scope dispatch and bounded scroll-memory checks. Not integrated or accepted; instrumented lifecycle counters do not certify real Phaser/socket operation. |
+| FE07 | MOCK_READY | [Integrated shell review](evidence/world-shell-integration.md), candidate `d7909c0`: 276 tests, frozen build/lint/origin scan, four installed-Chrome viewports and production-entry isolation pass. Review fixes block obsolete initial loader dispatch and bound scroll history. Actual Phaser/socket/camera preservation and device qualification remain; no real-world or IA acceptance. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **10/112**;
 accepted total: **10/118**. No required IA entry or IN01–IN05 integration gate has
@@ -53,7 +53,7 @@ no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
 The next implementation queue is BE03 auth hardening against the frozen C03
-email/core surface and FE07 persistent shell composition. C04 domain and C06 asset
+email/core surface and FE09 session/sign-in composition on the integrated FE07 shell. C04 domain and C06 asset
 freeze remain required; C05 producer/consumer implementation follows its frozen
 wire contract. No runtime, OAuth or
 release acceptance follows from the completed component/contract checks.

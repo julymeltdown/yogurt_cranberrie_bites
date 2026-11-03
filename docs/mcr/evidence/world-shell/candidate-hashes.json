@@ -1,0 +1,24 @@
+{
+  "integration_candidate": "d7909c0fe80794179f347ca6fc2d981d29f7d968",
+  "worker_candidate": "18740f2895fce2d2f5fe3be1695bc007a4f3a1d0",
+  "files": {
+    "frontend/src/app/AdminBoundary.tsx": "e37ab281a58f8c57d844ea4e81d1f87b47b6dadafd7b53e21e09b0264ae6e4bb",
+    "frontend/src/app/PublicBoundary.tsx": "4907393639fe042cc18d8e3a2c169fd345aefc29f25e7473d75e7a9e1feeccb9",
+    "frontend/src/app/WorldHost.tsx": "e1ed8a70849c8c687e850e120c29627557cc2dfd1da8c91b18117fd6af722b10",
+    "frontend/src/app/WorldShell.tsx": "c708b0b1dcb265b1197af474e2eb37d7f2feb2d2cd1e14276d58b7d39d0248db",
+    "frontend/src/app/__tests__/browser-smoke.mjs": "105595498bdb98e4214c5303f8a74df2b21ac8dd3c5bc7de301d9cbe3fc885ad",
+    "frontend/src/app/__tests__/fixtures/ports.ts": "e4e9f0c8be8f01e54785ab0fe017de1194d869bbd1d4285cadc818ba2ebe6695",
+    "frontend/src/app/__tests__/fixtures/preview.html": "baf0f15ea55bd2051dc50a042cdf334bec2e5ce0e9f226b86187927b0975e955",
+    "frontend/src/app/__tests__/fixtures/preview.tsx": "194315865c8574cfdb47926acfb2e380150ada26d39bdd3f027f39e43ea65c27",
+    "frontend/src/app/__tests__/routes.test.ts": "5ca28a98aa0964eb53903c5c0e0abd7df3f87e813b4e43d742ec61c8b8588ead",
+    "frontend/src/app/__tests__/shell.test.tsx": "5762fafe36d234efb9f192b5ae79471c837c7433596e45cf6b56b158a22e66a6",
+    "frontend/src/app/access.tsx": "9657e3804c38477dfa28de954d034512854d921c04b581a3d4713299c836ead6",
+    "frontend/src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "frontend/src/app/ports.ts": "d9fb8bec738522b06ada98d6cda2767271546a4e5fa2e23421808e10e64e0a7b",
+    "frontend/src/app/router.tsx": "a2162fe86eafdfdc2eca32b52a906ea2fa9d05a8f9519436190a59a56622003d",
+    "frontend/src/app/routes.ts": "e49ceffdc2e6e52bfba8e361b727504268fab264763c124878a556ee7f677829",
+    "frontend/src/app/shell.css": "75b74f145de44da52657f3743cc93cdfd6744af39509c596b21639f61ca7b10d",
+    "frontend/src/main.tsx": "76d64df8e54c8490048f190774ebc7c0769bfa95ee8435489ae0d9360bd5d195"
+  },
+  "manifest_sha256": "d1db85ff966150d371f2867e9b5eeb7ff6a156500c6f2119e47f970f3ab28766"
+}
