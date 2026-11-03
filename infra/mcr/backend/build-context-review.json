@@ -1,0 +1,59 @@
+{
+  "scope": "static MCR container build context and relative-path review",
+  "result": "PASS",
+  "container_build": "NOT_RUN",
+  "source_revision": "0fb22af06fbc139a8f9b6740d8cf780eaa55557a",
+  "upstream_revision": "704f42149d5e8e35e1d578676d8ae2dac4f0f9c2",
+  "inherited_docker_files_imported": false,
+  "workspace_members": 29,
+  "services": [
+    {
+      "service": "api-gateway",
+      "migration_files": 17,
+      "proto_root": "backend/proto",
+      "runtime_migration_directory": "/mcr/backend/services/api-gateway/migrations"
+    },
+    {
+      "service": "auth-service",
+      "migration_files": 12,
+      "proto_root": "backend/proto",
+      "runtime_migration_directory": "/mcr/backend/services/auth-service/migrations"
+    },
+    {
+      "service": "profile-service",
+      "migration_files": 7,
+      "proto_root": "backend/proto",
+      "runtime_migration_directory": "/mcr/backend/services/profile-service/migrations"
+    },
+    {
+      "service": "friend-service",
+      "migration_files": 14,
+      "proto_root": "backend/proto",
+      "runtime_migration_directory": "/mcr/backend/services/friend-service/migrations"
+    },
+    {
+      "service": "post-service",
+      "migration_files": 30,
+      "proto_root": "backend/proto",
+      "runtime_migration_directory": "/mcr/backend/services/post-service/migrations"
+    },
+    {
+      "service": "notification-service",
+      "migration_files": 4,
+      "proto_root": "backend/proto",
+      "runtime_migration_directory": "/mcr/backend/services/notification-service/migrations"
+    }
+  ],
+  "upstream_hashes": {
+    "Dockerfile": "7a400df8ed099fa7461850ab3be86fa0dc75d4fd78e9f57f26029e0f886e7ef3",
+    ".dockerignore": "bf8182e2b52db95ad1ba38aa2eded3dfb374b1b828c62e0d23ff9f8ec67add25",
+    "docker-compose.app.yml": "46a7879ccabd0db057b0d964e4a280c4f88ccabd5422eeb62e20eb5fd3aed98d"
+  },
+  "candidate_hashes": {
+    "infra/mcr/backend/Dockerfile": "3771a89ac9a9f119cdb98c24a7c5fce1a48ec24223114684a271c11678a3f8a2",
+    "infra/mcr/backend/Dockerfile.dockerignore": "d5e83fc2758b664ec04e458d3320ba4e80c88aac6d7f91b0a7e79769bcc90744"
+  },
+  "runtime_sql_loading": "Migrator::new(CARGO_MANIFEST_DIR/migrations); exact absolute path must be packaged",
+  "compile_time_queries": "no SQLx checked query macros found; source uses runtime query APIs",
+  "source_pack_revision_read": 3
+}
