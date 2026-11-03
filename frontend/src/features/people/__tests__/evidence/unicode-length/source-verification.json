@@ -1,0 +1,37 @@
+{
+  "checkpoint_base": "0faaf8b4c4cfc999db8e8976bb96dfd4527eace2",
+  "former_writer": "3477041257187806392119a25a8c15218d2a84e5",
+  "probe_source": "00ecd45999dacf29addf8ede9532060112eb9a03",
+  "baseline_file_preserved_byte_for_byte": true,
+  "production_paths": [
+    {
+      "path": "frontend/src/features/people/contract.ts",
+      "base_sha256": "cbd09f66f41f02b33a3e10408400bba78c2b39de54e24ff5ecdebb38ade5bdb3",
+      "base_blob": "9ba080e257a67b5bfd645a10d681621836604ce6",
+      "matches_stopped_writer": true,
+      "matches_probe_revision": true,
+      "delivered_sha256": "067a94397097071304cc334787faeffd75dcef7ec5b224e4d0cf92e92d830b0d"
+    },
+    {
+      "path": "frontend/src/features/people/controller.ts",
+      "base_sha256": "0dcf1a7626a0c097319be8ac9f2f104b91b7f15f55a9e3cf7fe233470d3443be",
+      "base_blob": "5d133bfb18bfb4d2ddac1398f9e56bec32272710",
+      "matches_stopped_writer": true,
+      "matches_probe_revision": true,
+      "delivered_sha256": "cb490a4469782f82489fd06e1be0636f32693644a5d5f6fcc5cdf647edd8a087"
+    },
+    {
+      "path": "frontend/src/features/people/People.tsx",
+      "base_sha256": "bd131f09d1792b4c0b869d22700c415f79fbdbe6937362b51f2084991e28c74c",
+      "base_blob": "bf32743c1d1c88b54dbd89669bc84e9f478dc006",
+      "matches_stopped_writer": true,
+      "matches_probe_revision": true,
+      "delivered_sha256": "6d95f84a9dfb985292af4d1caaa3f87670ca18e99974b114b50797a5649d62b9"
+    }
+  ],
+  "read_only_dependencies": {
+    "frontend/src/shared/validation/text.ts": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61",
+    "contracts/domain/v1/social.schema.json": "b275b36f2ad8eee90922f7ad27cfcbece943773a94831720b6dfca588d0201d2",
+    "contracts/core/v1/core.schema.json": "9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88"
+  }
+}

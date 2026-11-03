@@ -42,7 +42,7 @@ export function createPeopleController(options: SocialOptions) {
     }
   }
   return { read: () => state, subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } }, start: runtime.start, dispose: runtime.dispose, load, openProfile,
-    setSearch(value: string) { if (value.length <= 100 && runtime.usable()) publish({ input: value }) },
+    setSearch(value: string) { if (runtime.usable()) publish({ input: value }) },
     setQuery(query: string) { const value = querySchema.safeParse(query); if (!value.success || !runtime.usable()) return false
       pageVersion++; runtime.cancel('people'); cursors.clear(); publish({ query: value.data, input: value.data, page: blank() }); void load(); return true },
     closeProfile() { profileVersion++; runtime.cancel('profile'); publish({ profile: blank(), target: null }) },
