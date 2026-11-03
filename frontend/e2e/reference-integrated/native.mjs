@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { createServer as createNetServer } from 'node:net'
-import { mkdir, readFile, writeFile, statfs } from 'node:fs/promises'
+import { mkdir, readFile, writeFile, statfs, rm } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { createServer } from 'vite'
@@ -154,7 +154,7 @@ try{
  }
  report.selection={widths:process.env.QA_WIDTH?[Number(process.env.QA_WIDTH)]:WIDTHS,cases:report.cases.map(c=>c.id),full:!process.env.QA_WIDTH&&!process.env.QA_CASE};if(!report.selection.full)report.evidenceStatus='PARTIAL';await writeComparison(output,report)
 }finally{
- await browser?.close();await server.close();await writeFile(resolve(output,'report.json'),JSON.stringify(report,null,2)+'\n',{mode:0o600})
+ await browser?.close();await server.close();await rm(resolve(output,'vite-cache'),{recursive:true,force:true});await rm(resolve(output,'report.partial.json'),{force:true});await writeFile(resolve(output,'report.json'),JSON.stringify(report,null,2)+'\n',{mode:0o600})
 }
 console.log(JSON.stringify({evidenceStatus:report.evidenceStatus,cases:report.cases.length,warm:report.warm.length,findings:report.findings.length,output}))
 if(report.evidenceStatus!=='CAPTURED')process.exitCode=1

@@ -149,8 +149,11 @@
     },
     {
       "screen": "gifts",
-      "code": "UNDERSIZED_TARGETS_AND_DENSITY",
-      "historicalUntilPublishedRepairQualified": true
+      "code": "TOUCH_TARGETS_RESOLVED_MEDIA_AND_VISUAL_GAP_REMAIN",
+      "historicalUntilPublishedRepairQualified": false,
+      "repair": "9055af1e03a5418457e32b1a8d125c5d0e49d823",
+      "qaCandidate": "44e13ac9d156f77386c49d40c65a761b59bf519a",
+      "reserveTargets": "ALL_NINE_76x44_FULLY_SCROLL_VISIBLE_CENTER_HIT"
     },
     {
       "screen": "wall",
@@ -159,6 +162,158 @@
     {
       "screen": "me",
       "code": "PROFILE_ART_AND_ACTIVITY_DIFFER"
+    }
+  ],
+  "perCaseSources": [
+    {
+      "id": "landing",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "login",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "world",
+      "width": 360,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "map",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "customize",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "feed",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "meet",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "gifts",
+      "width": 360,
+      "candidate": "44e13ac9d156f77386c49d40c65a761b59bf519a"
+    },
+    {
+      "id": "wall",
+      "width": 360,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "me",
+      "width": 360,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "landing",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "login",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "world",
+      "width": 390,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "map",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "customize",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "feed",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "meet",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "gifts",
+      "width": 390,
+      "candidate": "44e13ac9d156f77386c49d40c65a761b59bf519a"
+    },
+    {
+      "id": "wall",
+      "width": 390,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "me",
+      "width": 390,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "landing",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "login",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "world",
+      "width": 430,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
+    },
+    {
+      "id": "map",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "customize",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "feed",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "meet",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "gifts",
+      "width": 430,
+      "candidate": "44e13ac9d156f77386c49d40c65a761b59bf519a"
+    },
+    {
+      "id": "wall",
+      "width": 430,
+      "candidate": "e5a578e9028fa5a4c5bc8feb083087a111d3d7e6"
+    },
+    {
+      "id": "me",
+      "width": 430,
+      "candidate": "0569a9b10fd7070ce1c8c7759f52a28727cfdf6d"
     }
   ]
 }
