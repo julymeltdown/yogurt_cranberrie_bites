@@ -107,8 +107,8 @@ receipt/checksum, existing-row upgrade and unchanged-reapply checks.
 **Not run:** Cargo compilation, PostgreSQL install/reapply, all new tests, actual
 native pending/active publication drain and gate-order/recovery tests, process
 kill in the new component, current full migration runtime and production multiuser
-flow. Main has not transferred a physical Cargo/PG slot; the World-owned API and
-0023 must first be delivered/merged. No stub was added to make this compile early.
+flow. Main has not transferred a physical Cargo/PG slot. The World-owned API and
+0023 were subsequently merged as recorded below; no stub was added to compile early.
 The existing HTTP helper accepts the older service type; the actual transport/root
 must be explicitly wired through this new driver under separate ownership. Actual
 Auth/operator/retention and later owner steps remain required. No unqualified
@@ -128,9 +128,27 @@ Executed non-native checks for this source checkpoint (all exit 0):
 
 Before merging World publication, the explicitly absent compile dependencies were
 `world/closure.rs` and `world/invalidation/{mod,store}.rs`. The latter two are in
-World's published `55061be4`/master `a4ae8555`; the closure API/0023 is still pending.
+World's published `55061be4`/master `a4ae8555`; the closure API/0023 was still pending at that source checkpoint.
 Source commits may be shared for coordination; master publication requires the
 real API merge plus relevant native qualification under a transferred slot.
+
+### Committed World API dependency consumed
+
+Merged the World owner's local source/API commit
+`06874327af5252c65ee2a665f387f641520db241` without copying any untracked tests or
+editing its six paths. Merge commit: `892b68ac6671d0f4222f4f7a6597d80a25bf3b39`.
+The declared `WorldReadOnlyReceipt` fields, crate-local function, transaction-depth
+check and `concert_world_read_only_receipts(receipt_id)` identity match this
+component's API/0024 binding. This is dependency integration, not an independent
+World runtime qualification or an extra review gate.
+
+Source-level checks after merge: all 25 ordered compiled-pin inputs exist and
+match the runner registry; the actual migration filenames exactly match
+`1..12,16,18,19,20,21,22,23,24`; Python source parses. Those checks exited 0 and do
+not execute SQL or compile Rust. The World author reports its own library check
+exit 0; that result does not compile the BE41 composition. World native tests and
+all BE41 native/PG checks remain NOT_RUN here, pending the explicitly transferred
+physical slot. No Cargo/PG command or target access was performed by BE41.
 
 ## Historical native-qualified continuation at c2a09dcc
 
