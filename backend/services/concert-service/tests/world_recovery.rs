@@ -216,8 +216,8 @@ fn setup() -> (Recovery, Simulation, Binding, Authority, Policy) {
         Policy::default(),
     )
 }
-fn frame(sim: &Simulation, b: &Binding, tick: u64) -> RoomFrame {
-    RoomFrame::capture(sim, b.clone(), tick, vec![(b.clone(), identity(10))]).unwrap()
+fn frame(sim: &Simulation, b: &Binding) -> RoomFrame {
+    RoomFrame::capture(sim, b.clone(), vec![(b.clone(), identity(10))]).unwrap()
 }
 fn snapshot(
     book: &mut Recovery,
@@ -230,7 +230,7 @@ fn snapshot(
     decode(
         book.stream_mut(b)
             .unwrap()
-            .next(&frame(sim, b, 0), now, a, p)
+            .next(&frame(sim, b), now, a, p)
             .unwrap(),
     )
 }
@@ -429,7 +429,7 @@ fn expired_revoked_suspended_and_unavailable_accounts_cannot_restore_subscriptio
         )
         .unwrap();
         snapshot(&mut book, &sim, &b, 0, &a, &p);
-        let frozen = frame(&sim, &b, 0);
+        let frozen = frame(&sim, &b);
         book.revoke(&b, reason, &mut sim).unwrap();
         assert_eq!(sim.player_count(), 0);
         let wire = book
@@ -485,7 +485,7 @@ fn access_expiry_and_owner_mismatch_revoke_without_a_due_tick() {
         &mut sim,
     )
     .unwrap();
-    let f = frame(&sim, &b, 0);
+    let f = frame(&sim, &b);
     let d = book
         .stream_mut(&b)
         .unwrap()
@@ -506,7 +506,7 @@ fn access_expiry_and_owner_mismatch_revoke_without_a_due_tick() {
         &mut sim,
     )
     .unwrap();
-    let f = frame(&sim, &b, 0);
+    let f = frame(&sim, &b);
     let mut newer = b.clone();
     newer.owner_id = id(900);
     a.grant(&newer, 5000, 10000);

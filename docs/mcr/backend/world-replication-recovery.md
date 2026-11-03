@@ -26,6 +26,7 @@ Authorized BE12 prerequisites were cherry-picked serially, without source edits:
 | `398bbfd` | `aefd9c7` | Interaction traversal bound |
 | `4187219` | `7583564` | Stream reuse fence/history |
 | `988ddb3` | `ab4b78e` | Bounded movement history/one-shot/collision corrections |
+| `40b3192` | `b9df641` | Full-binding simulation provenance/actual tick |
 
 Delivery must skip duplicated prerequisite commits and integrate only the
 feature and registration commits after its equivalent BE12 ancestry. The BE12
@@ -65,7 +66,7 @@ BE37 authority stamp.
 ## Projection and bounded publication
 
 `RoomFrame::capture` captures a complete, immutable BE12 owner-local state frame
-with the supplied same-lock roster. It checks room/owner/epoch/resource scope,
+with the supplied same-lock roster through `Simulation::replication_state`. It obtains the actual simulation tick and validates each full stored binding rather than accepting a caller tick or user-only state lookup. It checks room/owner/epoch/resource scope,
 capacity, complete/unique players, safe tick/ack/coordinates, bounded public
 display names and avatar manifest versions. The only identity output is canonical
 user ID, display name and approved public avatar selection/revision, with virtual
@@ -165,7 +166,7 @@ No durable HTTP domain commands are replayed by recovery.
 `revoke` clears the subscription and simulation; `sweep` can revoke against live
 authority without any room frame/tick and returns exact bindings for their owning
 simulation cleanup and socket close. `take_terminal` drains controls without a
-frame. `expire` deterministically removes expired slots/simulation state. The
+frame. `expire` revokes expired slots and routes cleanup through a caller-supplied owner callback. Successful cleanup removes the slot; failed cleanup retains a closed, discoverable slot for deterministic retry, so another room cannot be orphaned. The
 integration adapter schedules these promptly and handles async policy
 invalidation before publication. No remote query executes in the BE12 tick.
 
@@ -189,8 +190,8 @@ Executed in the assigned isolated checkout (2026-11-04 Asia/Seoul):
 | --- | --- |
 | `python3 scripts/mcr/check-plan.py` | 0, planning/archive checks only |
 | `python3 scripts/mcr/validate-realtime.py` | 0, 24 contract fixtures, websocket/capacity NOT_RUN |
-| `rustfmt +1.88.0 --edition 2021 --check` on exact four owner modules and two tests | Pending final recorded check |
-| `git diff --check` | 0 before final handoff |
+| `rustfmt +1.88.0 --edition 2021 --check` on exact four owner modules and two tests | 0, exact four modules/two test files |
+| `git diff --check` | 0 at source checkpoint e582c6b |
 | `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_replication --test world_recovery` | NOT_RUN, shared-target slot queued after BE24 |
 
 Tests use fixed clocks, canonical bindings and deterministic fixtures, with actual
@@ -210,3 +211,24 @@ accept BE13, BE14, QA05, QA08 or IN01 as a whole. Actual services/database,
 two real independent accounts, approved product art, device, load and release
 qualification remain **NOT_RUN**. Final commit/remote ancestry is reported to
 the delivery integrator; only that chat publishes to master.
+
+Targeted read-only peer review found three P2 defects during source development.
+The initial committed feature checkpoint `e582c6b` includes fixes and regressions
+for fresh rejoin after simulation removal and multiroom expiry cleanup. The third
+is fixed by committed prerequisite `40b3192` and the feature follow-up consuming
+its full-binding read/actual tick; regressions reject older simulation frames
+relabeled as current owner/room/epoch/connection/stream.
+The independent registration-only commit is `66c7fff`. These are worker commits,
+not proof of published master ancestry.
+
+The first native `--no-run` invocation exited 101 because the retained shared
+Cargo target reused an older `concert-domain` artifact without `world` exports.
+Under the exclusive lease, a scoped `cargo +1.88.0 clean --manifest-path
+backend/Cargo.toml --locked --offline -p concert-domain -p concert-application`
+removed 73.8 MiB of those package artifacts (exit 0). The identical focused
+`--no-run` command then compiled the actual domain/application/service and both
+test executables at `e582c6b` + `66c7fff` (exit 0, 4.58 seconds). Those are build
+results for the earlier source only; tests were not executed. Delivery requested
+lease release at that point; it was explicitly released to BE34/35 with no
+running Cargo. The provenance source correction is now ready for a later
+explicit slot; no compiled result is reused for its changed bytes.

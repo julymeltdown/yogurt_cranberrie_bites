@@ -203,11 +203,10 @@ impl Fixture {
             policy: Policy::default(),
         }
     }
-    fn frame(&self, tick: u64) -> RoomFrame {
+    fn frame(&self) -> RoomFrame {
         RoomFrame::capture(
             &self.sim,
             self.bindings[0].clone(),
-            tick,
             self.bindings.iter().cloned().zip(self.identities.clone()),
         )
         .unwrap()
@@ -266,18 +265,18 @@ fn two_filtered_viewers_have_no_false_gaps_and_avatar_versions_upsert() {
         .insert((a.key.user_id.uuid(), id(12)));
     let mut ra = replica(&a, &f.authority, QueueLimits::default());
     let mut rb = replica(&b, &f.authority, QueueLimits::default());
-    let sa = decode(ra.next(&f.frame(0), 0, &f.authority, &f.policy).unwrap());
-    let sb = decode(rb.next(&f.frame(0), 0, &f.authority, &f.policy).unwrap());
+    let sa = decode(ra.next(&f.frame(), 0, &f.authority, &f.policy).unwrap());
+    let sb = decode(rb.next(&f.frame(), 0, &f.authority, &f.policy).unwrap());
     assert_eq!(sa["players"].as_array().unwrap().len(), 2);
     assert_eq!(sb["players"].as_array().unwrap().len(), 3);
     f.motion(2, 1, 0);
-    assert!(ra.next(&f.frame(1), 100, &f.authority, &f.policy).is_none());
-    let db = decode(rb.next(&f.frame(1), 100, &f.authority, &f.policy).unwrap());
+    assert!(ra.next(&f.frame(), 100, &f.authority, &f.policy).is_none());
+    let db = decode(rb.next(&f.frame(), 100, &f.authority, &f.policy).unwrap());
     assert_eq!(db["streamSeq"], 1);
     f.identities[1].avatar_revision = Revision::new(2).unwrap();
     f.identities[1].avatar.hair = asset("hair_changed");
-    let da = decode(ra.next(&f.frame(2), 200, &f.authority, &f.policy).unwrap());
-    let db = decode(rb.next(&f.frame(2), 200, &f.authority, &f.policy).unwrap());
+    let da = decode(ra.next(&f.frame(), 200, &f.authority, &f.policy).unwrap());
+    let db = decode(rb.next(&f.frame(), 200, &f.authority, &f.policy).unwrap());
     assert_eq!(da["streamSeq"], 1);
     assert_eq!(db["streamSeq"], 2);
     assert_eq!(da["upserts"][0]["avatar"]["revision"], 2);
@@ -287,19 +286,17 @@ fn two_filtered_viewers_have_no_false_gaps_and_avatar_versions_upsert() {
 fn coalescing_uses_delivered_baseline_and_fresh_snapshot_baseline() {
     let mut f = Fixture::new();
     let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
-    r.refresh(&f.frame(0), 0, &f.authority, &f.policy).unwrap();
+    r.refresh(&f.frame(), 0, &f.authority, &f.policy).unwrap();
     f.motion(1, 1, 0);
-    let snapshot = decode(r.next(&f.frame(1), 50, &f.authority, &f.policy).unwrap());
+    let snapshot = decode(r.next(&f.frame(), 50, &f.authority, &f.policy).unwrap());
     assert_eq!(snapshot["streamSeq"], 0);
     assert_eq!(snapshot["players"][1]["position"]["x"], 54.0);
     f.motion(1, 2, 50);
-    r.refresh(&f.frame(2), 100, &f.authority, &f.policy)
-        .unwrap();
+    r.refresh(&f.frame(), 100, &f.authority, &f.policy).unwrap();
     f.motion(1, 3, 100);
-    r.refresh(&f.frame(3), 150, &f.authority, &f.policy)
-        .unwrap();
+    r.refresh(&f.frame(), 150, &f.authority, &f.policy).unwrap();
     assert_eq!(r.queued_frames(), 1);
-    let delta = decode(r.next(&f.frame(3), 150, &f.authority, &f.policy).unwrap());
+    let delta = decode(r.next(&f.frame(), 150, &f.authority, &f.policy).unwrap());
     assert_eq!(delta["streamSeq"], 1);
     assert_eq!(delta["upserts"][0]["position"]["x"], 66.0);
 }
@@ -307,25 +304,25 @@ fn coalescing_uses_delivered_baseline_and_fresh_snapshot_baseline() {
 fn policy_change_purges_queued_identity_before_publication_and_requires_new_baseline() {
     let f = Fixture::new();
     let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
-    decode(r.next(&f.frame(0), 0, &f.authority, &f.policy).unwrap());
-    r.refresh(&f.frame(0), 10, &f.authority, &f.policy).unwrap();
+    decode(r.next(&f.frame(), 0, &f.authority, &f.policy).unwrap());
+    r.refresh(&f.frame(), 10, &f.authority, &f.policy).unwrap();
     f.policy.blocked.borrow_mut().insert((id(12), id(10)));
     f.policy.generation.set(id(1000));
-    let d = r.next(&f.frame(0), 100, &f.authority, &f.policy).unwrap();
+    let d = r.next(&f.frame(), 100, &f.authority, &f.policy).unwrap();
     assert_eq!(d.close_code, Some(4409));
     let wire = decode(d);
     assert_eq!(wire["type"], "resyncRequired");
     assert!(wire.get("players").is_none());
     assert!(!r.accepts_input());
     assert_eq!(r.queued_bytes(), 0);
-    assert!(r.next(&f.frame(0), 200, &f.authority, &f.policy).is_none());
+    assert!(r.next(&f.frame(), 200, &f.authority, &f.policy).is_none());
 }
 #[test]
 fn stale_unavailable_and_missing_self_policy_fail_closed_even_with_pending_snapshot() {
     for mode in 0..4 {
         let f = Fixture::new();
         let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
-        r.refresh(&f.frame(0), 0, &f.authority, &f.policy).unwrap();
+        r.refresh(&f.frame(), 0, &f.authority, &f.policy).unwrap();
         match mode {
             0 => f.policy.failed.set(true),
             1 => f.policy.stale.set(true),
@@ -334,7 +331,7 @@ fn stale_unavailable_and_missing_self_policy_fail_closed_even_with_pending_snaps
             }
             _ => f.authority.failed.set(true),
         };
-        let d = r.next(&f.frame(0), 1, &f.authority, &f.policy).unwrap();
+        let d = r.next(&f.frame(), 1, &f.authority, &f.policy).unwrap();
         assert_eq!(d.close_code, Some(4500));
         assert_eq!(decode(d)["reason"], "POLICY_UNAVAILABLE");
         assert!(!r.accepts_input());
@@ -344,9 +341,9 @@ fn stale_unavailable_and_missing_self_policy_fail_closed_even_with_pending_snaps
 fn queued_subject_revocation_removes_private_data_before_send() {
     let f = Fixture::new();
     let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
-    r.refresh(&f.frame(0), 0, &f.authority, &f.policy).unwrap();
+    r.refresh(&f.frame(), 0, &f.authority, &f.policy).unwrap();
     f.authority.leases.borrow_mut().remove(&id(12));
-    let d = decode(r.next(&f.frame(0), 1, &f.authority, &f.policy).unwrap());
+    let d = decode(r.next(&f.frame(), 1, &f.authority, &f.policy).unwrap());
     assert_eq!(d["type"], "revoke");
 }
 #[test]
@@ -358,12 +355,12 @@ fn frame_and_byte_bounds_and_slow_consumer_close_truthfully() {
     ] {
         let mut r = replica(&f.bindings[0], &f.authority, limits);
         assert_eq!(
-            r.refresh(&f.frame(0), 0, &f.authority, &f.policy),
+            r.refresh(&f.frame(), 0, &f.authority, &f.policy),
             Err(StreamError::Backpressure)
         );
         assert!(r.queued_frames() <= 1);
         assert!(r.queued_bytes() <= 256);
-        let d = r.next(&f.frame(0), 1, &f.authority, &f.policy).unwrap();
+        let d = r.next(&f.frame(), 1, &f.authority, &f.policy).unwrap();
         assert_eq!(d.close_code, Some(4409));
         assert_eq!(decode(d)["reason"], "BACKPRESSURE");
     }
@@ -373,13 +370,12 @@ fn frame_and_byte_bounds_and_slow_consumer_close_truthfully() {
         QueueLimits::new(65536, 262144, 1, 1000).unwrap(),
     );
     for now in 0..1000 {
-        r.refresh(&f.frame(0), now, &f.authority, &f.policy)
-            .unwrap();
+        r.refresh(&f.frame(), now, &f.authority, &f.policy).unwrap();
         assert_eq!(r.queued_frames(), 1);
         assert!(r.queued_bytes() <= 65536);
     }
     assert_eq!(
-        decode(r.next(&f.frame(0), 1000, &f.authority, &f.policy).unwrap())["reason"],
+        decode(r.next(&f.frame(), 1000, &f.authority, &f.policy).unwrap())["reason"],
         "BACKPRESSURE"
     );
     assert!(QueueLimits::new(65537, 262144, 64, 1000).is_none());
@@ -390,32 +386,33 @@ fn frame_and_byte_bounds_and_slow_consumer_close_truthfully() {
 fn delta_rate_ack_only_changes_and_removed_players_follow_baseline() {
     let mut f = Fixture::new();
     let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
-    decode(r.next(&f.frame(0), 0, &f.authority, &f.policy).unwrap());
+    decode(r.next(&f.frame(), 0, &f.authority, &f.policy).unwrap());
     f.motion(0, 1, 0);
-    assert!(r.next(&f.frame(1), 50, &f.authority, &f.policy).is_none());
-    let d = decode(r.next(&f.frame(1), 100, &f.authority, &f.policy).unwrap());
+    assert!(r.next(&f.frame(), 50, &f.authority, &f.policy).is_none());
+    let d = decode(r.next(&f.frame(), 100, &f.authority, &f.policy).unwrap());
     assert_eq!(d["ackInputSeq"], 1);
     let removed = f.bindings.pop().unwrap();
     f.identities.pop();
     f.sim.remove(&removed);
-    let d = decode(r.next(&f.frame(2), 200, &f.authority, &f.policy).unwrap());
+    let d = decode(r.next(&f.frame(), 200, &f.authority, &f.policy).unwrap());
     assert_eq!(d["streamSeq"], 2);
     assert_eq!(d["removes"][0], id(12).to_string());
 }
 #[test]
 fn stale_clock_tick_epoch_and_resource_changes_are_terminal() {
-    let f = Fixture::new();
+    let mut f = Fixture::new();
+    let stale = f.frame();
+    f.sim.advance(250, &f.authority).unwrap();
     let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
-    decode(r.next(&f.frame(5), 100, &f.authority, &f.policy).unwrap());
+    decode(r.next(&f.frame(), 300, &f.authority, &f.policy).unwrap());
     assert_eq!(
-        decode(r.next(&f.frame(4), 200, &f.authority, &f.policy).unwrap())["reason"],
+        decode(r.next(&stale, 400, &f.authority, &f.policy).unwrap())["reason"],
         "GAP"
     );
     let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
-    r.refresh(&f.frame(0), 100, &f.authority, &f.policy)
-        .unwrap();
+    r.refresh(&f.frame(), 100, &f.authority, &f.policy).unwrap();
     assert_eq!(
-        decode(r.next(&f.frame(0), 99, &f.authority, &f.policy).unwrap())["reason"],
+        decode(r.next(&f.frame(), 99, &f.authority, &f.policy).unwrap())["reason"],
         "POLICY_UNAVAILABLE"
     );
     for resource in [false, true] {
@@ -437,7 +434,6 @@ fn stale_clock_tick_epoch_and_resource_changes_are_terminal() {
         let frame = RoomFrame::capture(
             &sim,
             bs[0].clone(),
-            0,
             bs.into_iter().zip(f.identities.clone()),
         )
         .unwrap();
@@ -460,7 +456,6 @@ fn public_frame_rejects_duplicate_roster_invalid_name_and_wrong_avatar_pin() {
     assert!(RoomFrame::capture(
         &f.sim,
         b.clone(),
-        0,
         vec![(b.clone(), identity(10)), (b.clone(), identity(10))]
     )
     .is_err());
@@ -470,7 +465,6 @@ fn public_frame_rejects_duplicate_roster_invalid_name_and_wrong_avatar_pin() {
         assert!(RoomFrame::capture(
             &f.sim,
             b.clone(),
-            0,
             f.bindings.clone().into_iter().zip(roster)
         )
         .is_err());
@@ -480,7 +474,6 @@ fn public_frame_rejects_duplicate_roster_invalid_name_and_wrong_avatar_pin() {
     assert!(RoomFrame::capture(
         &f.sim,
         b.clone(),
-        0,
         f.bindings.clone().into_iter().zip(roster)
     )
     .is_err());
@@ -491,7 +484,7 @@ fn default_policy_is_unavailable_and_auth_expiry_cannot_be_renewed_by_activity()
     let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
     assert_eq!(
         decode(
-            r.next(&f.frame(0), 0, &f.authority, &UnavailableRecipientPolicy)
+            r.next(&f.frame(), 0, &f.authority, &UnavailableRecipientPolicy)
                 .unwrap()
         )["reason"],
         "POLICY_UNAVAILABLE"
@@ -499,7 +492,29 @@ fn default_policy_is_unavailable_and_auth_expiry_cannot_be_renewed_by_activity()
     let mut r = replica(&f.bindings[0], &f.authority, QueueLimits::default());
     f.authority.grant(&f.bindings[0], 5000, 20000);
     assert_eq!(
-        decode(r.next(&f.frame(0), 1, &f.authority, &f.policy).unwrap())["reason"],
+        decode(r.next(&f.frame(), 1, &f.authority, &f.policy).unwrap())["reason"],
         "POLICY_UNAVAILABLE"
     );
+}
+#[test]
+fn capture_rejects_old_simulation_relabeled_as_current_room_epoch_or_connection() {
+    let f = Fixture::new();
+    for component in 0..5 {
+        let mut roster = f.bindings.clone();
+        for b in &mut roster {
+            match component {
+                0 => b.room_epoch = id(900),
+                1 => b.room_id = id(901),
+                2 => b.owner_id = id(902),
+                3 => b.connection_id = id(903),
+                _ => b.stream_id = id(904),
+            }
+        }
+        assert!(RoomFrame::capture(
+            &f.sim,
+            roster[0].clone(),
+            roster.into_iter().zip(f.identities.clone())
+        )
+        .is_err());
+    }
 }

@@ -70,10 +70,10 @@ impl RoomFrame {
     pub fn capture(
         simulation: &Simulation,
         scope: Binding,
-        tick: u64,
         roster: impl IntoIterator<Item = (Binding, PublicIdentity)>,
     ) -> Result<Self, ProjectionError> {
         let mut players = BTreeMap::new();
+        let mut captured_tick = None;
         for (b, identity) in roster {
             if players.len() >= ROOM_CAPACITY
                 || !same_room(&scope, &b)
@@ -86,9 +86,13 @@ impl RoomFrame {
                 return Err(ProjectionError::InvalidFrame);
             }
             let user = b.key.user_id.uuid();
-            let state = simulation
-                .state(user)
+            let (tick, state) = simulation
+                .replication_state(&b)
                 .ok_or(ProjectionError::InvalidFrame)?;
+            if captured_tick.is_some_and(|t| t != tick) {
+                return Err(ProjectionError::InvalidFrame);
+            }
+            captured_tick = Some(tick);
             if !state.position.x.is_finite()
                 || !state.position.y.is_finite()
                 || !(0.0..=1048576.0).contains(&state.position.x)
@@ -101,7 +105,8 @@ impl RoomFrame {
                 return Err(ProjectionError::InvalidFrame);
             }
         }
-        if players.is_empty() || players.len() != simulation.player_count() || tick > MAX_SEQUENCE {
+        let tick = captured_tick.ok_or(ProjectionError::InvalidFrame)?;
+        if players.len() != simulation.player_count() || tick > MAX_SEQUENCE {
             return Err(ProjectionError::InvalidFrame);
         }
         Ok(Self {
