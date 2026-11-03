@@ -1,0 +1,61 @@
+vite v8.1.3 building client environment for production...
+
+transforming...✓ 436 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../tmp/mcr-ref-map-production/index.html                                   1.34 kB │ gzip:   0.55 kB
+../../../../../../tmp/mcr-ref-map-production/assets/panels-BN_4I1Xa.css                   0.87 kB │ gzip:   0.39 kB
+../../../../../../tmp/mcr-ref-map-production/assets/safety-BViJNTBJ.css                   1.51 kB │ gzip:   0.56 kB
+../../../../../../tmp/mcr-ref-map-production/assets/root-features-nb6jl9cq.css            1.55 kB │ gzip:   0.65 kB
+../../../../../../tmp/mcr-ref-map-production/assets/meeting-entry-jVy7UCgi.css            1.58 kB │ gzip:   0.66 kB
+../../../../../../tmp/mcr-ref-map-production/assets/social-BMiG3aQa.css                   1.71 kB │ gzip:   0.71 kB
+../../../../../../tmp/mcr-ref-map-production/assets/composition-C7uV5nlu.css              3.55 kB │ gzip:   1.13 kB
+../../../../../../tmp/mcr-ref-map-production/assets/provider-Ppp0uXok.css                11.00 kB │ gzip:   2.74 kB
+../../../../../../tmp/mcr-ref-map-production/assets/social-composition-BYINaITs.css      11.32 kB │ gzip:   3.06 kB
+../../../../../../tmp/mcr-ref-map-production/assets/world-panels-CH3wTtvz.css            13.47 kB │ gzip:   3.51 kB
+../../../../../../tmp/mcr-ref-map-production/assets/CommunityFeatures-pE9czQdk.css       17.23 kB │ gzip:   3.89 kB
+../../../../../../tmp/mcr-ref-map-production/assets/PublicBoundary-BF4QcP9_.css          17.99 kB │ gzip:   4.21 kB
+../../../../../../tmp/mcr-ref-map-production/assets/index-eaX7IuoL.css                   27.29 kB │ gzip:   5.94 kB
+../../../../../../tmp/mcr-ref-map-production/assets/rolldown-runtime-Bh1tDfsg.js          0.56 kB │ gzip:   0.36 kB
+../../../../../../tmp/mcr-ref-map-production/assets/identity-584wDGSR.js                  0.70 kB │ gzip:   0.45 kB
+../../../../../../tmp/mcr-ref-map-production/assets/compatibility-0_X1aSa9.js             0.84 kB │ gzip:   0.40 kB
+../../../../../../tmp/mcr-ref-map-production/assets/phaser-C-L-RzyC.js                    1.19 kB │ gzip:   0.62 kB
+../../../../../../tmp/mcr-ref-map-production/assets/preload-helper-CZgWQFsJ.js            1.25 kB │ gzip:   0.70 kB
+../../../../../../tmp/mcr-ref-map-production/assets/AdminBoundary-BgUHPpwj.js             1.34 kB │ gzip:   0.67 kB
+../../../../../../tmp/mcr-ref-map-production/assets/Tabs-DuKw1W9G.js                      1.40 kB │ gzip:   0.68 kB
+../../../../../../tmp/mcr-ref-map-production/assets/avatar-config.schema-BEz1Qm5v.js      2.08 kB │ gzip:   0.77 kB
+../../../../../../tmp/mcr-ref-map-production/assets/authority-D6GUpTqF.js                 2.73 kB │ gzip:   1.19 kB
+../../../../../../tmp/mcr-ref-map-production/assets/contract-vlkfjKCn.js                  2.98 kB │ gzip:   1.33 kB
+../../../../../../tmp/mcr-ref-map-production/assets/simulation-sCcriVKG.js                3.15 kB │ gzip:   1.27 kB
+../../../../../../tmp/mcr-ref-map-production/assets/resolver-CsVSqN4C.js                  4.39 kB │ gzip:   2.07 kB
+../../../../../../tmp/mcr-ref-map-production/assets/panel-YKOlKr1W.js                     4.67 kB │ gzip:   1.91 kB
+../../../../../../tmp/mcr-ref-map-production/assets/panels-BKORZeA1.js                    5.29 kB │ gzip:   1.99 kB
+../../../../../../tmp/mcr-ref-map-production/assets/MapScene-DtmyZWov.js                  9.37 kB │ gzip:   3.74 kB
+../../../../../../tmp/mcr-ref-map-production/assets/resources-Q7iob_ec.js                10.76 kB │ gzip:   4.28 kB
+../../../../../../tmp/mcr-ref-map-production/assets/runtime-B3dL-PUK.js                  11.84 kB │ gzip:   4.13 kB
+../../../../../../tmp/mcr-ref-map-production/assets/root-features-DPUcBpOm.js            14.84 kB │ gzip:   4.93 kB
+../../../../../../tmp/mcr-ref-map-production/assets/source-catalog-B2GN78SH.js           15.97 kB │ gzip:   4.30 kB
+../../../../../../tmp/mcr-ref-map-production/assets/schema-CNo_YYjJ.js                   17.45 kB │ gzip:   4.77 kB
+../../../../../../tmp/mcr-ref-map-production/assets/contract-DLAZrJP9.js                 28.08 kB │ gzip:   6.21 kB
+../../../../../../tmp/mcr-ref-map-production/assets/provider-DcntRMw6.js                 34.84 kB │ gzip:  10.90 kB
+../../../../../../tmp/mcr-ref-map-production/assets/social-8eNSpP_I.js                   34.95 kB │ gzip:  10.20 kB
+../../../../../../tmp/mcr-ref-map-production/assets/meeting-entry-Dg0e2oCL.js            37.36 kB │ gzip:  10.43 kB
+../../../../../../tmp/mcr-ref-map-production/assets/PublicBoundary-Dc22aq89.js           45.50 kB │ gzip:  14.15 kB
+../../../../../../tmp/mcr-ref-map-production/assets/composition-GzJ3p8k5.js              50.04 kB │ gzip:  16.85 kB
+../../../../../../tmp/mcr-ref-map-production/assets/schemas-B9zUvP7H.js                  66.99 kB │ gzip:  17.93 kB
+../../../../../../tmp/mcr-ref-map-production/assets/CommunityFeatures-yhM8Psgv.js        67.94 kB │ gzip:  18.65 kB
+../../../../../../tmp/mcr-ref-map-production/assets/world-panels-DvK2Etwz.js             70.25 kB │ gzip:  22.79 kB
+../../../../../../tmp/mcr-ref-map-production/assets/errors-BMGg8byu.js                   85.41 kB │ gzip:   5.95 kB
+../../../../../../tmp/mcr-ref-map-production/assets/social-composition-W0a9zqdH.js       96.54 kB │ gzip:  27.44 kB
+../../../../../../tmp/mcr-ref-map-production/assets/routes-esT69xcs.js                  105.47 kB │ gzip:  34.82 kB
+../../../../../../tmp/mcr-ref-map-production/assets/mcr-core.openapi-BijjQJMA.js        120.90 kB │ gzip:  11.72 kB
+../../../../../../tmp/mcr-ref-map-production/assets/index-CKbba5p3.js                   314.22 kB │ gzip:  98.46 kB
+../../../../../../tmp/mcr-ref-map-production/assets/mcr-domain.openapi-DQQCaJ9L.js      755.45 kB │ gzip:  48.47 kB
+../../../../../../tmp/mcr-ref-map-production/assets/phaser-DVTuvjT6.js                1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 724ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

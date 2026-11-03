@@ -1,0 +1,43 @@
+{
+  "task": "FE-REF-MAP",
+  "status": "MOCK_READY",
+  "entry": "frontend/src/features/places/__tests__/reference-map/fixture.html",
+  "productionComponents": true,
+  "layoutOverrides": false,
+  "viewportCases": [
+    [
+      360,
+      844
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      430,
+      844
+    ],
+    [
+      390,
+      430
+    ]
+  ],
+  "sourcePins": "source-pins.json",
+  "validation": "validation.json",
+  "gestureHTTPRequests": 0,
+  "worldCameraWrites": 0,
+  "sourceArt": "Original orthogonal1152x896; not diagonal reference fidelity",
+  "cases": [
+    "portrait cover",
+    "fit source composition",
+    "selected authorized target",
+    "Back and source review",
+    "dialog search Escape focus",
+    "root close reopen",
+    "broken pending theme replacement",
+    "closed removed mismatch",
+    "late account replacement",
+    "one game and socket lifetime",
+    "URL create revoke balance"
+  ]
+}
