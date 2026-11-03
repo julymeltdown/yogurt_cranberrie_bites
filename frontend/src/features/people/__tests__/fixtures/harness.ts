@@ -13,7 +13,7 @@ export function harness() {
   let available = true, readOnly = false
   const requests: Request[] = []
   let respond: (request: Request) => Promise<Response> = async request => Response.json(new URL(request.url).pathname.endsWith('/intros') ? { items: [publicIntro()], next_cursor: null } : source.author)
-  const http = createHttpClient({ session, fetch: async input => { const request = input as Request; requests.push(request); return respond(request) } })
+  const http = createHttpClient({ session, fetch: async input => { const request = input as Request; requests.push(request.clone()); return respond(request) } })
   const options: SocialOptions = { auth: { privacy, request: http.request }, access: { read: () => ({ available, readOnly }), subscribe(listener) { listeners.add(listener); return () => { listeners.delete(listener) } } } }
   const controller = createPeopleController(options)
   return { options, session, privacy, requests, controller, respond(value: typeof respond) { respond = value }, access(value: { available?: boolean; readOnly?: boolean }) { available = value.available ?? available; readOnly = value.readOnly ?? readOnly; listeners.forEach(fn => fn()) }, dispose() { controller.dispose(); privacy.dispose(); query.clear() } }

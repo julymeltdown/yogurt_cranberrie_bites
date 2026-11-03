@@ -35,6 +35,18 @@ describe('FE29 public discovery boundary', () => {
     pending.resolve(Response.json(publicIntro().author)); await response; expect(h.controller.read().profile.data).toBeNull()
     h.privacy.changePolicy(h.privacy.capture(), 'suspended'); expect(h.controller.read().page.data).toBeNull()
   })
+  it('does not let an older in-flight list restore a denied direct-ID author', async () => {
+    const h = await setup(), pending = deferred<Response>(), id = publicIntro().author.user_id
+    h.respond(async request => new URL(request.url).pathname.endsWith('/intros') ? pending.promise : Response.json({ code: 'GATEWAY', message: 'opaque', details: { reason: 'RESOURCE_UNAVAILABLE' } }, { status: 404 }))
+    const load = h.controller.load(); await h.controller.openProfile(id); pending.resolve(Response.json({ items: [publicIntro()], next_cursor: null })); await load
+    expect(h.controller.read().page.data?.items ?? []).toHaveLength(0)
+    h.respond(async () => Response.json({ items: [publicIntro()], next_cursor: null })); await h.controller.load(); expect(h.controller.read().page.data?.items).toHaveLength(0)
+  })
+  it('rejects unordered results including page boundaries', async () => {
+    const h = await setup(), older = publicIntro(), newer = { ...publicIntro(), intro_id: '00000000-0000-4000-8000-000000000099', created_at: '2026-11-08T08:00:00Z' }
+    expect(() => decodePage({ items: [older, newer], next_cursor: null }, h.privacy.capture())).toThrow()
+    h.respond(async request => Response.json({ items: [new URL(request.url).searchParams.has('cursor') ? newer : older], next_cursor: new URL(request.url).searchParams.has('cursor') ? null : 'cursor1' })); await h.controller.load(); await h.controller.load(true); expect(h.controller.read().page.phase).toBe('error')
+  })
   it('rejects repeated cursor/duplicates and never auto-paginates an empty page', async () => {
     const h = await setup(); h.respond(async () => Response.json({ items: [], next_cursor: 'next_cursor' }))
     await h.controller.load(); expect(h.controller.read().page.data?.items).toEqual([])

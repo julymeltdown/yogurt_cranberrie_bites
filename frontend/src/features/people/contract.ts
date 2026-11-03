@@ -11,10 +11,11 @@ export type PublicProfile = z.infer<typeof profileSchema>
 export type PublicIntro = z.infer<typeof introSchema>
 export type IntroPage = z.infer<typeof pageSchema>
 export function freeze<T>(value: T): T { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value) }; return value }
+export function ordered(items: PublicIntro[]) { return items.every((row, index) => { const previous = items[index - 1]; return !previous || Date.parse(previous.created_at) > Date.parse(row.created_at) || Date.parse(previous.created_at) === Date.parse(row.created_at) && previous.intro_id > row.intro_id }) }
 export function decodePage(value: unknown, scope: PrivacyScope): IntroPage {
   const page = pageSchema.parse(value)
-  if (page.items.some(row => row.event_id !== scope.eventId) || new Set(page.items.map(row => row.intro_id)).size !== page.items.length) throw new Error('Invalid intro context')
+  if (!ordered(page.items) || page.items.some(row => row.event_id !== scope.eventId) || new Set(page.items.map(row => row.intro_id)).size !== page.items.length) throw new Error('Invalid intro context')
   return freeze(page)
 }
 export function decodeProfile(value: unknown, id: string): PublicProfile { const profile = profileSchema.parse(value); if (profile.user_id !== id) throw new Error('Invalid profile context'); return freeze(profile) }
-export const querySchema = z.string().trim().max(100).regex(/^[^\u0000-\u001f\u007f]*$/)
+export const querySchema = z.string().trim().max(100).refine(value => [...value].every(char => char.charCodeAt(0) >= 32 && char.charCodeAt(0) !== 127))
