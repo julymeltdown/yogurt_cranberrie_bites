@@ -1,0 +1,27 @@
+{
+  "scope": "BE08 owned places and immutable map releases",
+  "result": "PASS",
+  "cleanup": "PASS",
+  "production": "NOT_RUN",
+  "public_routes": "NOT_EXPOSED",
+  "migration_ledger": "NOT_APPLIED",
+  "source_revision": "a91ed08668aa8aca53200f94d3c25ae0162c2a85",
+  "source_sha256": {
+    "backend/crates/concert-domain/src/place/mod.rs": "ee505aa435265ebade6e105d1126e2f059c43c658957dc0e52cee37156507584",
+    "backend/crates/concert-application/src/place/mod.rs": "af26f6af39d3170cb96dfc524c353daa918468e5108f32b35813bea170c4ba05",
+    "backend/services/concert-service/src/adapters/out/repository/place.rs": "9a6e004fb6d7a54ba43381fef7e13a65da05709ee82edcb6939b7aeff788b660",
+    "backend/services/concert-service/migrations/0003_places_map_releases.sql": "b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a"
+  },
+  "script_sha256": "ab0d26ef2274a8d2c39622f83645dab80ac14b4926cc26a21ce647d9f37e684f",
+  "owned_directory": "/private/tmp/mcr-pg-d35vm4fk",
+  "binary_sha256": "555b435db1d595f8131d08bfbff511403b474d1494ba614cb7ec6fd138203429",
+  "postgres_version": "16.14 (Homebrew)",
+  "direct_sql_migrations": "PASS",
+  "fixture_place_id": "00000000-0000-4000-8000-000000000001",
+  "immutable_release": "PASS",
+  "closure_independent": "PASS",
+  "direct_sql_reapply": "EXPECTED_REFUSED",
+  "native_test_exit": 0,
+  "native_test_output_sha256": "d16a4918888cc6975a8c8cdc577f17b5f9b4c24d3e13909b0540393aaf2009d5",
+  "restart_persistence": "PASS"
+}
