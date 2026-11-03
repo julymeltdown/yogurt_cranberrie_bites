@@ -1,6 +1,8 @@
 import type { Geometry, ThemeManifest } from './manifest'
 import { canonicalJson, record, requireMap, strictJson } from './json'
 const only = (value: Record<string, unknown>, keys: string[]) => requireMap(Object.keys(value).every(k => keys.includes(k)))
+/** Inert logical binding for one immutable C06 map and three independently pinned textures. Never fetched. */
+export const THEME_IMAGE_MARKER = 'mcr-theme.png'
 /** Deliberately finite orthogonal subset. No Tiled loader/plugin may discover other resources. */
 export function validateTiled(text: string, geometry: Geometry, texture: ThemeManifest['texture']) {
   const map = record(strictJson(text))
@@ -22,7 +24,7 @@ export function validateTiled(text: string, geometry: Geometry, texture: ThemeMa
   requireMap(Array.isArray(map.tilesets) && map.tilesets.length === 1)
   const set = record(map.tilesets[0])
   only(set, ['firstgid', 'name', 'image', 'imagewidth', 'imageheight', 'tilewidth', 'tileheight', 'tilecount', 'columns', 'margin', 'spacing'])
-  requireMap(set.firstgid === 1 && set.name === 'theme' && set.image === texture.path && set.imagewidth === texture.width_px && set.imageheight === texture.height_px
+  requireMap(set.firstgid === 1 && set.name === 'theme' && (set.image === THEME_IMAGE_MARKER || set.image === texture.path) && set.imagewidth === texture.width_px && set.imageheight === texture.height_px
     && set.tilewidth === map.tilewidth && set.tileheight === map.tileheight && set.columns === texture.width_px / geometry.tile_width_px
     && set.tilecount === texture.width_px / geometry.tile_width_px * (texture.height_px / geometry.tile_height_px) && set.margin === 0 && set.spacing === 0)
 }

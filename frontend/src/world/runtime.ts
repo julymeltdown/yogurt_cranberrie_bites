@@ -2,6 +2,7 @@ import type { WorldCamera } from './camera/port'
 import { MapError } from './map/json'
 import { limits } from './map/manifest'
 import { abortable, type LoadedMap } from './map/resources'
+import { validateReplacement } from './theme/compatibility'
 export type RuntimeState = Readonly<{ phase: 'stopped' | 'loading' | 'ready' | 'unavailable' | 'error' | 'disposed';
   reason?: 'invalid' | 'load-failed' | 'timeout' | 'engine-failed' | 'host-busy'; widthPx?: number; heightPx?: number; spawnFoot?: Readonly<{ x: number; y: number }> }>
 export interface EngineLease {
@@ -9,6 +10,8 @@ export interface EngineLease {
   resize(width: number, height: number): void
   setVisible(visible: boolean): void
   destroy(): void
+  /** Synchronous atomic visual commit. Throws with the old skin intact. */
+  replaceSkin?(map: LoadedMap): void
   readonly camera?: WorldCamera
 }
 export interface ControlAttachment { setEnabled(value: boolean): void; dispose(): void }
@@ -29,12 +32,14 @@ export function createWorldRuntime(options: RuntimeOptions) {
   let active: { controller: AbortController; mount: HTMLDivElement; engine: EngineLease | null; map: LoadedMap | null; controls: ControlAttachment | null;
     observer: ResizeObserver | null; resize: (() => void) | null; frame: number | null; detach: () => void; claim: { owner: object }; creating: boolean; finish: () => void } | null = null
   let flight: Promise<RuntimeState> | null = null, drain = Promise.resolve()
+  let skinFlight: AbortController | null = null
   const owner = {}, listeners = new Set<() => void>()
   const publish = (next: RuntimeState) => { state = Object.freeze(next); for (const listener of Array.from(listeners)) { try { listener() } catch { /* Observers cannot strand owned resources. */ } } }
   const importEngine = options.importEngine ?? (() => import('./scenes/MapScene').then(m => m.loadPhaserEngine()))
   function stop() {
     const old = active
     if (!old) return
+    skinFlight?.abort(); skinFlight = null
     ++generation; active = null; flight = null; old.controller.abort(); old.detach()
     old.observer?.disconnect()
     if (old.resize) window.removeEventListener('resize', old.resize)
@@ -132,8 +137,42 @@ export function createWorldRuntime(options: RuntimeOptions) {
     publish({ phase: 'loading' })
     return task
   }
+  async function replaceSkin(load: (signal: AbortSignal) => Promise<LoadedMap>, signal?: AbortSignal): Promise<void> {
+    skinFlight?.abort()
+    const owned = active, engine = owned?.engine, previous = owned?.map
+    if (state.phase !== 'ready' || !owned || !engine?.replaceSkin || !previous) throw new MapError('unavailable')
+    const controller = new AbortController(); skinFlight = controller
+    const abort = () => controller.abort()
+    signal?.addEventListener('abort', abort, { once: true })
+    owned.controller.signal.addEventListener('abort', abort, { once: true })
+    if (signal?.aborted) controller.abort()
+    const current = () => active === owned && skinFlight === controller && !controller.signal.aborted
+    let candidate: LoadedMap | null = null, committed = false
+    try {
+      if (!current()) throw new MapError('cancelled')
+      const pending = Promise.resolve().then(() => load(controller.signal)).then(map => {
+        // A loader may ignore abort. Release its eventual decoded image even after timeout.
+        if (!current()) { map.dispose(); throw new MapError('cancelled') }
+        candidate = map; return map
+      })
+      const next = await abortable(pending, controller.signal, options.timeoutMs ?? limits.deadlineMs)
+      await abortable(validateReplacement(previous, next), controller.signal, options.timeoutMs ?? limits.deadlineMs)
+      if (!current()) throw new MapError('cancelled')
+      engine.replaceSkin(next)
+      if (!current()) throw new MapError('cancelled')
+      owned.map = next; committed = true
+      previous.dispose()
+    } finally {
+      controller.abort()
+      signal?.removeEventListener('abort', abort)
+      owned.controller.signal.removeEventListener('abort', abort)
+      if (!committed) (candidate as LoadedMap | null)?.dispose()
+      if (skinFlight === controller) skinFlight = null
+    }
+  }
   return {
-    start, stop,
+    start, stop, replaceSkin,
+    readSkin: () => active?.map?.theme.theme_id ?? null,
     read: () => state,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } },
     setVisible(value: boolean) {

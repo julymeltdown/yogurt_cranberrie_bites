@@ -1,0 +1,55 @@
+/* Authored FE06 semantic palettes; independent of C06 world texture palette and avatar colors. */
+[data-mcr-theme="REVENGE"] {
+  color-scheme: light;
+  --mcr-ink: #24191d;
+  --mcr-paper: #fff5ef;
+  --mcr-cream: #eddbd4;
+  --mcr-red: #98233c;
+  --mcr-muted: #66505a;
+  --mcr-focus: #98233c;
+  --mcr-success: #285c40;
+  --mcr-warning: #775000;
+}
+[data-mcr-theme="PARADE"] {
+  color-scheme: dark;
+  --mcr-ink: #f4edda;
+  --mcr-paper: #1b1b20;
+  --mcr-cream: #333239;
+  --mcr-red: #f2c4cd;
+  --mcr-muted: #bdb6ad;
+  --mcr-focus: #f3d789;
+  --mcr-success: #9ad2aa;
+  --mcr-warning: #f3d789;
+}
+[data-mcr-theme="DANGER"] {
+  color-scheme: light;
+  --mcr-ink: #152d3b;
+  --mcr-paper: #f5fbf5;
+  --mcr-cream: #d5e6e1;
+  --mcr-red: #9a3412;
+  --mcr-muted: #46636c;
+  --mcr-focus: #005e79;
+  --mcr-success: #255e40;
+  --mcr-warning: #775000;
+}
+.mcr-theme-scope {
+  color: var(--mcr-ink);
+  background-color: var(--mcr-cream);
+  transition: color 120ms linear, background-color 120ms linear;
+}
+[data-mcr-reduced-motion="true"],
+[data-mcr-reduced-motion="true"] * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mcr-theme-scope, .mcr-theme-scope * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (forced-colors: active) {
+  .mcr-theme-selector input:checked + span { outline: 1px solid Highlight; outline-offset: 2px; }
+}

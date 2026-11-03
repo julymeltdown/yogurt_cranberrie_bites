@@ -1,6 +1,8 @@
 import type { Point, WorldCamera } from '../camera/port'
 import type PhaserType from 'phaser'
 import type { EngineFactory } from '../runtime'
+import type { LoadedMap } from '../map/resources'
+import { assertSameWorld } from '../theme/compatibility'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
 export async function loadPhaserEngine(): Promise<EngineFactory> {
   const Phaser = (await import('phaser')).default
@@ -9,7 +11,10 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     let resolveReady!: () => void, rejectReady!: (reason: unknown) => void, resolveClosed!: () => void
     const ready = new Promise<void>((resolve, reject) => { resolveReady = resolve; rejectReady = reject })
     const closed = new Promise<void>(resolve => { resolveClosed = resolve })
-    const textureKey = 'mcr-reviewed-map', g = loaded.map.geometry
+    const g = loaded.map.geometry
+    let skinRevision = 0
+    type Skin = { show(): void; remove(): void }
+    let skin: Skin | null = null
     let sceneReady = false, cameraFoot: Point | null = null, cameraZoom: number | null = null
     class MapScene extends Phaser.Scene {
       constructor() { super('mcr-map') }
@@ -17,25 +22,41 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
         try {
           if (stopped) return
           sceneReady = true
-          const texture = this.textures.addImage(textureKey, loaded.image)
-          if (!texture) throw new Error('Map texture unavailable')
-          texture.setFilter(Phaser.Textures.FilterMode.NEAREST)
-          const tilemap = this.make.tilemap({ tileWidth: g.tile_width_px, tileHeight: g.tile_height_px, width: g.width_cells, height: g.height_cells })
-          const tiles = tilemap.addTilesetImage('theme', textureKey, g.tile_width_px, g.tile_height_px, 0, 0, 0)
-          if (!tiles) throw new Error('Map tiles unavailable')
-          for (const [name, grid, depth] of [['terrain', g.terrain_layer, 0], ['overdraw', g.overdraw_layer, 2]] as const) {
-            const layer = tilemap.createBlankLayer(name, tiles)
-            if (!layer) throw new Error('Map layer unavailable')
-            layer.putTilesAt(grid.map(row => row.map(id => id === 0 ? -1 : id - 1)), 0, 0).setDepth(depth)
-          }
-          let removed = false
-          const remove = () => { if (!removed) { removed = true; tilemap.destroy() } }
+          skin = this.prepareSkin(loaded)
+          skin.show()
+          const remove = () => { skin?.remove(); skin = null }
           this.events.once(Phaser.Scenes.Events.SHUTDOWN, remove)
           this.events.once(Phaser.Scenes.Events.DESTROY, remove)
           this.cameras.main.setBounds(0, 0, loaded.widthPx, loaded.heightPx).setRoundPixels(true)
           this.cameras.main.setBackgroundColor(loaded.theme.palette.background)
           resolveReady()
         } catch (error) { rejectReady(error) }
+      }
+      /** Prepare hidden layers before touching the active renderer. No camera/input/network mutation. */
+      prepareSkin(next: LoadedMap): Skin {
+        const textureKey = `mcr-reviewed-map-${++skinRevision}`
+        let tilemap: PhaserType.Tilemaps.Tilemap | null = null, removed = false
+        const layers: PhaserType.Tilemaps.TilemapLayer[] = []
+        const remove = () => {
+          if (removed) return; removed = true
+          tilemap?.destroy()
+          if (this.textures.exists(textureKey)) this.textures.remove(textureKey)
+        }
+        try {
+          const texture = this.textures.addImage(textureKey, next.image)
+          if (!texture) throw new Error('Map texture unavailable')
+          texture.setFilter(Phaser.Textures.FilterMode.NEAREST)
+          tilemap = this.make.tilemap({ tileWidth: g.tile_width_px, tileHeight: g.tile_height_px, width: g.width_cells, height: g.height_cells })
+          const tiles = tilemap.addTilesetImage('theme', textureKey, g.tile_width_px, g.tile_height_px, 0, 0, 0)
+          if (!tiles) throw new Error('Map tiles unavailable')
+          for (const [name, grid, depth] of [['terrain', g.terrain_layer, 0], ['overdraw', g.overdraw_layer, 2]] as const) {
+            const layer = tilemap.createBlankLayer(name, tiles)
+            if (!layer) throw new Error('Map layer unavailable')
+            layers.push(layer)
+            layer.setVisible(false).putTilesAt(grid.map(row => row.map(id => id === 0 ? -1 : id - 1)), 0, 0).setDepth(depth)
+          }
+          return { show: () => { for (const layer of layers) layer.setVisible(true) }, remove }
+        } catch (error) { remove(); throw error }
       }
     }
     // 3.90.0 VisibilityHandler has no teardown and assigns window properties. Scope its
@@ -112,6 +133,16 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       },
     }
     return { ready, closed, camera: cameraView,
+      replaceSkin(next) {
+        if (stopped || !sceneReady) throw new Error('Map scene unavailable')
+        assertSameWorld(loaded, next)
+        const scene = game.scene.getScene('mcr-map') as MapScene
+        const prepared = scene.prepareSkin(next), previous = skin
+        prepared.show()
+        scene.cameras.main.setBackgroundColor(next.theme.palette.background)
+        skin = prepared; previous?.remove()
+        if (!visible) game.loop.tick()
+      },
       resize(width, height) {
         if (stopped || !sceneReady) return
         game.scale.resize(width, height)

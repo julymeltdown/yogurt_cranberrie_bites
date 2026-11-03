@@ -1,0 +1,11 @@
+.mcr-theme-selector { padding: 1rem; color: var(--mcr-ink); background: var(--mcr-paper); }
+.mcr-theme-selector h2 { margin: 0 0 .5rem; font-size: 1.125rem; }
+.mcr-theme-selector p { line-height: 1.5; margin: .5rem 0; }
+.mcr-theme-selector fieldset { padding: 0; margin: 1rem 0; border: 0; min-inline-size: 0; }
+.mcr-theme-selector__legend { font-weight: 650; margin-bottom: .5rem; }
+.mcr-theme-selector__choices { display: flex; flex-wrap: wrap; gap: .5rem; }
+.mcr-theme-selector label { display: flex; align-items: center; gap: .4rem; min-height: 44px; padding: .5rem; cursor: pointer; }
+.mcr-theme-selector input { inline-size: 1.25rem; block-size: 1.25rem; margin: 0; accent-color: var(--mcr-red); }
+.mcr-theme-selector input:checked + span { font-weight: 800; text-decoration: underline; text-underline-offset: .25em; }
+.mcr-theme-selector input:focus-visible { outline: 3px solid var(--mcr-focus); outline-offset: 4px; }
+.mcr-theme-selector [role="status"] { min-height: 3em; }
