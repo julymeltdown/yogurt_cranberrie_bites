@@ -150,14 +150,15 @@ Exact eight-path/shared-change/import audit: exit 0. The retained vendored
 `protoc-bin-vendored-macos-aarch_64-3.2.0/bin/protoc` compiled the new proto to a
 descriptor and decoded its package, all eleven request fields and all three
 methods successfully (exit 0), independently of Cargo.
-Compilation, guarded-RPC execution and native probe: **NOT_RUN** while awaiting
-an explicit fair lease of the existing shared Cargo target. Source work has no
-whole-wave barrier. Expected compile command:
+At the original source checkpoint, compilation, guarded-RPC execution and the
+native probe were **NOT_RUN**, pending the shared Cargo lease. The recovery
+qualification below supersedes that historical state. Actual compile command:
 
 ```sh
 env RUSTUP_TOOLCHAIN=1.88.0 \
-  CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+  CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target \
   CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+  CARGO_INCREMENTAL=0 \
   cargo test --manifest-path backend/Cargo.toml --locked --offline -j 2 \
     -p concert-service --test participant_producer --no-run --message-format=json
 ```
@@ -211,3 +212,137 @@ authorized GET, preference-preserved avatar and structural mixed-field refusal.
 Its in-memory store proves RPC/DTO compatibility only; it does not certify native
 inventory validation or production-art admission. It intentionally depends on
 the selected-source owner's canonical parser rather than a local replacement.
+
+## First executed qualification
+
+Source `08afce6c9a0b453d9c8748c3c7730fe099b4c445` compiled with the command above,
+exit 0. The named MEDIA target was transferred by the Friend RPC owner and
+confirmed by Backend king. Preflight found 32.64 GiB available, no target handles,
+and no Cargo/rustc process. The exact `participant_producer` test executable was
+selected from Cargo's `compiler-artifact` records, checking its target kind and
+this checkout's service manifest path; `build-finished.success` was true. It was
+copied before native execution and SHA-256 verified:
+
+- Snapshot: `/tmp/mcr-participant-a2a6024/participant-producer-tests-08afce6c`.
+- SHA-256: `332986c43ec7b68e63096bfe1cd6e5d10f24d1a524c4768e79b70803ab498dd3`.
+- Artifact/pin receipts: `/tmp/mcr-participant-a2a6024/compiler-artifacts.jsonl`
+  and `/tmp/mcr-participant-a2a6024/binary.json`.
+
+| Executed command | Exit / result | Scope and limit |
+|---|---|---|
+| Copied test executable `--test-threads=1` | 101: 7 passed, 1 failed, 1 ignored | Seven existing guarded producer tests passed, including exact deadline/reason and slow capability checks. The whole-character matrix failed on preset 1 with INVALID_ARGUMENT because the canonical parser still accepts only layered input. No six-case success is claimed. |
+| `python3 /tmp/mcr-participant-a2a6024/native_probe.py` | 0: native test PASS; cleanup PASS | Actual generated/guarded RPC with BE07 native persistence on PostgreSQL 16.14; synthetic release and explicit test owner/capability ports. |
+
+The native test observed a nontransactional SQL sequence called by an AFTER
+UPDATE trigger, then proved the avatar row remained revision 1 after permit
+withdrawal. This demonstrates an executed update rolled back before commit.
+It also passed saved revision 2, conflict -> authorized reread, preference-only
+revision 2 with preserved avatar/current Profile, read-only write refusal with
+read success, and suspended-admission read refusal. All current source SQL
+migrations applied to a fresh private database; this driver does not qualify the
+migration-runner ledger. The fixture used marker/inode ownership, Unix sockets
+and no TCP. Cleanup removed its owned root; no participant PG process remained.
+
+The complete result and migration hashes are preserved here:
+
+```json
+{
+  "binary_sha256": "332986c43ec7b68e63096bfe1cd6e5d10f24d1a524c4768e79b70803ab498dd3",
+  "cleanup": "PASS",
+  "commands": {
+    "0001_concert_core.sql": 0,
+    "0002_command_receipts_outbox.sql": 0,
+    "0003_places_map_releases.sql": 0,
+    "0004_bootstrap_admission.sql": 0,
+    "0005_world_admission.sql": 0,
+    "0006_relationship_policy.sql": 0,
+    "0007_community.sql": 0,
+    "0008_meeting_beacons.sql": 0,
+    "0009_receipt_domain_failures.sql": 0,
+    "0010_feed.sql": 0,
+    "0011_outbox_maintenance.sql": 0,
+    "0012_media.sql": 0,
+    "0016_meeting_deadline_guards.sql": 0,
+    "0018_event_lifecycle.sql": 0,
+    "0019_mural.sql": 0,
+    "0020_mural_receipt_failures.sql": 0,
+    "0021_moderation_operations.sql": 0,
+    "0022_world_invalidation_receipts.sql": 0,
+    "native_guarded_participant_persistence_and_reread": 0
+  },
+  "migration_sha384": {
+    "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+    "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+    "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+    "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+    "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+    "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+    "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+    "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+    "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+    "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+    "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+    "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+    "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+    "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+    "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+    "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+    "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+    "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7"
+  },
+  "postgres_version": "16.14 (Homebrew)",
+  "source_commit": "08afce6c9a0b453d9c8748c3c7730fe099b4c445",
+  "state": "PASS"
+}
+```
+
+After that terminal probe, a fresh handle/process check passed and MEDIA was
+unconditionally transferred to the canonical selected-source owner
+`01a19f83-12cc-7f21-8ad3-55749f012d9b`. This writer makes no Cargo/target/PG use
+until their explicit release. The persistent goal remains ACTIVE: the complete
+current union and the eventual merged candidate require qualification before
+publication. Live authority/root activation and whole BE07/IN01/IN05 remain open.
+
+For reproduction, the following standalone driver was used after pinning the
+exact Cargo executable in sibling `binary.json`. It imports the retained owned
+cluster helpers without changing them; it must run only with a named native slot.
+
+```python
+import sys, json, hashlib, signal
+from pathlib import Path
+root=Path('/Users/lhs/Desktop/mcr-worktrees/be-participant-producer')
+sys.path.insert(0,str(root/'backend/scripts/mcr'))
+import migration_smoke as migration
+import bootstrap_smoke as bootstrap
+work=Path(__file__).resolve().parent
+pin=json.loads((work/'binary.json').read_text())
+binary=migration.executable(Path(pin['snapshot']))
+bootstrap.require(hashlib.sha256(binary.read_bytes()).hexdigest()==pin['sha256'],'snapshot checksum mismatch')
+cluster=migration.Cluster({name:migration.executable(Path('/opt/homebrew/opt/postgresql@16/bin')/name) for name in migration.PG_TOOLS})
+report={'state':'FAIL','commands':{},'source_commit':pin['source_commit'],'binary_sha256':pin['sha256']}
+def interrupted(number,frame): raise migration.SmokeError('signal',str(number))
+previous={number:signal.signal(number,interrupted) for number in [signal.SIGINT,signal.SIGTERM]}
+try:
+ cluster.init();cluster.start()
+ report['postgres_version']=cluster.sql('postgres','show server_version;')
+ bootstrap.require(report['postgres_version'].startswith('16.14'),'PG16.14 required')
+ cluster.sql('postgres','create database mcr_concert_bootstrap template template0;')
+ report['migration_sha384']=migration.migration_manifest(root/'backend','concert-service')
+ for path in sorted((root/'backend/services/concert-service/migrations').glob('*.sql')):
+  if not path.name.endswith('.down.sql'): cluster.sql(bootstrap.DATABASE,path.read_text());report['commands'][path.name]=0
+ release=cluster.root/'release';release.mkdir(mode=0o700)
+ doc=json.loads((root/'contracts/fixtures/core/bootstrap-open.json').read_text())
+ files={'bootstrap':doc,'avatar':doc['avatar_manifest'],'map':doc['map_manifest']}
+ files.update({t['theme_id'].lower():t for t in doc['theme_manifests']})
+ for name,value in files.items():(release/(name+'.json')).write_text(json.dumps(value))
+ bootstrap.run_test(cluster,binary,'native_guarded_participant_persistence_and_reread',report)
+ report['state']='PASS'
+except (migration.SmokeError,OSError,ValueError) as error:
+ report['error']=error.detail if isinstance(error,migration.SmokeError) else str(error)
+finally:
+ try:cluster.cleanup();bootstrap.require(not cluster.root.exists(),'owned root remains');report['cleanup']='PASS'
+ except (migration.SmokeError,OSError) as error:report['state']='FAIL';report['cleanup']='FAIL';report['cleanup_error']=str(error)
+ for number,handler in previous.items():signal.signal(number,handler)
+print(json.dumps(report,sort_keys=True))
+sys.exit(0 if report['state']=='PASS' else 1)
+```
