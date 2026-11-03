@@ -111,13 +111,6 @@ impl GrpcConcertWorldClient {
         }
         context.check().map_err(|_| WorldClientError::Expired)?;
         identity.check().map_err(|_| WorldClientError::Expired)?;
-        let original = context
-            .rpc_deadline()
-            .map_err(|_| WorldClientError::Expired)?;
-        let mut stop = original.stop();
-        if let Some(outer) = platform::call_deadline::current() {
-            stop = stop.min(outer.into());
-        }
         let work = async {
             if context.access_expires_micros() <= chrono::Utc::now().timestamp_micros() {
                 return Err(WorldClientError::Expired);
@@ -132,13 +125,20 @@ impl GrpcConcertWorldClient {
                 .map_err(|_| WorldClientError::Expired)?
                 .timestamp_micros();
             let now = chrono::Utc::now().timestamp_micros();
+            let original = context
+                .rpc_deadline()
+                .map_err(|_| WorldClientError::Expired)?;
+            let mut stop = original.stop();
+            if let Some(outer) = platform::call_deadline::current() {
+                stop = stop.min(outer.into());
+            }
             let remaining = context
                 .remaining(BUDGET)
                 .map_err(|_| WorldClientError::Expired)?
                 .min(stop.saturating_duration_since(tokio::time::Instant::now()));
-            let expires = original
-                .expires_micros()
-                .min(context.access_expires_micros())
+            let expires = context
+                .access_expires_micros()
+                .min(original.expires_micros())
                 .min(now.saturating_add(remaining.as_micros() as i64))
                 .min(auth_at.saturating_add(BUDGET.as_micros() as i64))
                 .min(profile_at.saturating_add(BUDGET.as_micros() as i64));
@@ -169,7 +169,6 @@ impl GrpcConcertWorldClient {
                 auth_observed_at_unix_micros: auth_at,
                 profile_observed_at_unix_micros: profile_at,
                 access_expires_unix_micros: access_expires,
-                access_expires_unix_micros: context.access_expires_micros(),
             };
             let mut request =
                 request_for(message, &actor.to_string()).map_err(|_| WorldClientError::Denied)?;
@@ -177,25 +176,21 @@ impl GrpcConcertWorldClient {
             request.set_timeout(remaining.min(Duration::from_micros((expires - now) as u64)));
             identity.check().map_err(|_| WorldClientError::Expired)?;
             let mut client = self.client.clone();
-            let response = platform::call_deadline::scope(dispatch_stop.into_std(), async {
+            let call = async {
                 match rpc {
-                    "ListRooms" => {
-                        tokio::time::timeout_at(dispatch_stop, client.list_rooms(request))
-                            .await
-                            .map_err(|_| WorldClientError::Expired)
-                    }
-                    "IssueTicket" => {
-                        tokio::time::timeout_at(dispatch_stop, client.issue_ticket(request))
-                            .await
-                            .map_err(|_| WorldClientError::Expired)
-                    }
-                    _ => return Err(WorldClientError::Denied),
+                    "ListRooms" => client.list_rooms(request).await,
+                    "IssueTicket" => client.issue_ticket(request).await,
+                    _ => Err(tonic::Status::permission_denied("Invalid world RPC")),
                 }
-            })
+            };
+            let response = tokio::time::timeout_at(
+                dispatch_stop,
+                platform::call_deadline::scope(dispatch_stop.into_std(), call),
+            )
             .await
-            .map_err(|_| WorldClientError::Expired)??;
+            .map_err(|_| WorldClientError::Expired)?
+            .map_err(classify)?;
             identity.check().map_err(|_| WorldClientError::Expired)?;
-            let response = response.map_err(classify)?;
             if response
                 .metadata()
                 .get("cache-control")
@@ -210,15 +205,14 @@ impl GrpcConcertWorldClient {
             }
             let value: Value =
                 serde_json::from_slice(&bytes).map_err(|_| WorldClientError::InvalidResponse)?;
+            let event_text = event.to_string();
+            if value.get("event_id").and_then(Value::as_str) != Some(event_text.as_str()) {
+                return Err(WorldClientError::InvalidResponse);
+            }
             identity.check().map_err(|_| WorldClientError::Expired)?;
             Ok(value)
         };
-        platform::call_deadline::scope(stop.into_std(), async {
-            tokio::time::timeout_at(stop, Box::pin(work))
-                .await
-                .map_err(|_| WorldClientError::Expired)?
-        })
-        .await
+        work.await
     }
 }
 

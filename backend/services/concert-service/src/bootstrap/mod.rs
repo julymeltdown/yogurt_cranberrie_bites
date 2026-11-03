@@ -4,6 +4,7 @@ use crate::rpc::{self, proto, VerifiedBootstrap};
 use async_trait::async_trait;
 use chrono::Utc;
 use concert_application::bootstrap::*;
+use concert_application::world_ticket::{AvatarPin, MapPin};
 use concert_domain::{
     AssetId, AuthUserId, AvatarSelection, EventId, EventPhase, ParticipantKey, Preferences,
     Revision,
@@ -12,6 +13,7 @@ use serde_json::Value;
 use sqlx::{postgres::PgRow, PgPool, Row};
 use std::{fmt, path::Path, sync::Arc};
 use tonic::{Request, Response, Status};
+use uuid::Uuid;
 
 mod json;
 pub mod release;
@@ -423,7 +425,7 @@ impl BootstrapService {
                 asset(avatar.get("manifest_id"))?,
                 revision(avatar.get("manifest_version"))?,
             ),
-            checked_at: Utc::now(),
+            captured_at: Utc::now(),
         })
     }
 

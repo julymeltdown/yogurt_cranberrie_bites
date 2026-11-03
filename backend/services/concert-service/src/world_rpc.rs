@@ -1,7 +1,7 @@
 //! Additive C05 rooms/ticket producer. Composition supplies a typed checked
 //! canonical subject; no browser actor, role, map or session is trusted here.
 use crate::bootstrap::BootstrapService;
-use crate::world::rpc::{authorize_current_membership, authorize_world, proto};
+use crate::world::rpc::{authorize_current_membership, authorize_world};
 use crate::world::{CurrentOwnedMembership, PgWorldRepository};
 use chrono::{DateTime, SecondsFormat, Utc};
 use concert_application::world_ticket::*;
@@ -12,10 +12,17 @@ use std::sync::Arc;
 use tonic::{Request, Response, Status};
 use uuid::Uuid;
 
-pub use crate::world::rpc::{POLICY, WORLD_BUDGET};
+pub use crate::world::rpc::{proto, POLICY, WORLD_BUDGET};
 
 #[tonic::async_trait]
 pub trait WorldCanonicalAuthority: Send + Sync {
+    async fn rooms_subject(
+        &self,
+        actor: AuthUserId,
+        event_id: EventId,
+        session_family_id: Uuid,
+    ) -> Result<(), WorldError>;
+
     async fn subject(
         &self,
         actor: AuthUserId,
@@ -23,7 +30,7 @@ pub trait WorldCanonicalAuthority: Send + Sync {
         session_family_id: Uuid,
         release: &ReleasePins,
         access_expires_at: DateTime<Utc>,
-        observed_at: DateTime<Utc>,
+        _observed_at: DateTime<Utc>,
     ) -> Result<VerifiedTicketSubject, WorldError>;
 }
 
@@ -41,6 +48,19 @@ impl PgWorldCanonicalAuthority {
 }
 #[tonic::async_trait]
 impl WorldCanonicalAuthority for PgWorldCanonicalAuthority {
+    async fn rooms_subject(
+        &self,
+        actor: AuthUserId,
+        event_id: EventId,
+        session_family_id: Uuid,
+    ) -> Result<(), WorldError> {
+        self.bootstrap
+            .world_admission(actor, event_id, session_family_id, Uuid::new_v4())
+            .await
+            .map(|_| ())
+            .map_err(admission_error)
+    }
+
     async fn subject(
         &self,
         actor: AuthUserId,
@@ -48,7 +68,7 @@ impl WorldCanonicalAuthority for PgWorldCanonicalAuthority {
         session_family_id: Uuid,
         release: &ReleasePins,
         access_expires_at: DateTime<Utc>,
-        observed_at: DateTime<Utc>,
+        _observed_at: DateTime<Utc>,
     ) -> Result<VerifiedTicketSubject, WorldError> {
         if release.event_id != event_id {
             return Err(WorldError::MapVersionMismatch);
@@ -57,15 +77,7 @@ impl WorldCanonicalAuthority for PgWorldCanonicalAuthority {
             .bootstrap
             .world_admission(actor, event_id, session_family_id, Uuid::new_v4())
             .await
-            .map_err(|error| match error {
-                concert_application::bootstrap::BootstrapError::Denied
-                | concert_application::bootstrap::BootstrapError::Unauthenticated
-                | concert_application::bootstrap::BootstrapError::EventNotFound
-                | concert_application::bootstrap::BootstrapError::EventNotOpen => {
-                    WorldError::Denied
-                }
-                _ => WorldError::Unavailable,
-            })?;
+            .map_err(admission_error)?;
         if admission.key.user_id != actor || admission.key.event_id != event_id {
             return Err(WorldError::Denied);
         }
@@ -96,6 +108,16 @@ impl WorldCanonicalAuthority for PgWorldCanonicalAuthority {
     }
 }
 
+fn admission_error(error: concert_application::bootstrap::BootstrapError) -> WorldError {
+    match error {
+        concert_application::bootstrap::BootstrapError::Denied
+        | concert_application::bootstrap::BootstrapError::Unauthenticated
+        | concert_application::bootstrap::BootstrapError::EventNotFound
+        | concert_application::bootstrap::BootstrapError::EventNotOpen => WorldError::Denied,
+        _ => WorldError::Unavailable,
+    }
+}
+
 pub trait WorldTicketEntropy: Send + Sync {
     fn generate(&self) -> Result<AdmissionTicket, WorldError>;
 }
@@ -114,10 +136,10 @@ impl WorldTicketEntropy for CsprngTicketEntropy {
 }
 
 pub struct WorldRpcService<A> {
-    pool: PgPool,
-    bootstrap: Arc<BootstrapService>,
-    authority: A,
-    generator: Arc<dyn WorldTicketEntropy>,
+    pub(crate) pool: PgPool,
+    pub(crate) bootstrap: Arc<BootstrapService>,
+    pub(crate) authority: A,
+    pub(crate) generator: Arc<dyn WorldTicketEntropy>,
 }
 impl<A: WorldCanonicalAuthority> WorldRpcService<A> {
     pub fn new(
@@ -140,6 +162,17 @@ impl<A: WorldCanonicalAuthority> WorldRpcService<A> {
         self.bootstrap
             .canonical_pins(event)
             .map_err(|_| Status::unavailable("World release unavailable"))
+    }
+}
+
+impl<A: Clone> Clone for WorldRpcService<A> {
+    fn clone(&self) -> Self {
+        Self {
+            pool: self.pool.clone(),
+            bootstrap: self.bootstrap.clone(),
+            authority: self.authority.clone(),
+            generator: self.generator.clone(),
+        }
     }
 }
 
@@ -264,11 +297,17 @@ impl<A: WorldCanonicalAuthority + 'static> proto::world_service_server::WorldSer
     ) -> Result<Response<proto::WorldResponse>, Status> {
         let verified = authorize_world(&request, "ListRooms")?;
         verified.check()?;
-        let result = self
-            .repo()
-            .room_catalog(EventId::from_uuid(verified.event_id()))
+        let event = EventId::from_uuid(verified.event_id());
+        self.authority
+            .rooms_subject(
+                AuthUserId::from_uuid(verified.actor()),
+                event,
+                verified.session_family_id(),
+            )
             .await
             .map_err(status)?;
+        verified.check()?;
+        let result = self.repo().room_catalog(event).await.map_err(status)?;
         verified.check()?;
         envelope(catalog(&result))
     }
@@ -350,7 +389,14 @@ impl<A: WorldCanonicalAuthority + 'static> proto::world_service_server::WorldSer
         {
             return Err(Status::unavailable("World membership authority mismatch"));
         }
-        Ok(Response::new(current))
+        let mut response = Response::new(current);
+        response.metadata_mut().insert(
+            "cache-control",
+            "no-store"
+                .parse()
+                .map_err(|_| Status::internal("Response metadata unavailable"))?,
+        );
+        Ok(response)
     }
 }
 

@@ -791,3 +791,6 @@ async fn profile_hold_cannot_outlive_same_original_context_after_auth_pass() {
 
 #[path = "support/concert_bootstrap_client.rs"]
 mod bootstrap_dispatch;
+
+#[path = "support/concert_world_client.rs"]
+mod world_dispatch;

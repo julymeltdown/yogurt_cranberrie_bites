@@ -31,6 +31,17 @@ class GuardChecks(unittest.TestCase):
                 smoke.run(Path("relative"), report)
         executable.assert_not_called()
 
+    def test_receipt_hashes_current_gateway_http_sources(self):
+        bridge = [
+            "backend/services/api-gateway/tests/support/concert_world_client.rs",
+            "backend/services/api-gateway/tests/support/concert_world_http.rs",
+        ]
+        self.assertTrue(all(path in smoke.GATEWAY_SOURCES for path in bridge))
+        self.assertNotIn(
+            "backend/services/concert-service/src/world/mod.rs",
+            smoke.GATEWAY_SOURCES,
+        )
+
     def test_existing_report_is_never_overwritten(self):
         with tempfile.TemporaryDirectory() as directory:
             report = Path(directory) / "existing.json"

@@ -77,7 +77,9 @@ async fn main() -> anyhow::Result<()> {
                     );
                     let bootstrap = platform::grpc_method_policy::guard(
                         &rpc::POLICY,
-                        rpc::proto::concert_service_server::ConcertServiceServer::new(bootstrap),
+                        rpc::proto::concert_service_server::ConcertServiceServer::new(
+                            BootstrapService::new(grpc_pool.clone(), bootstrap.release().clone()),
+                        ),
                         runtime.callers.clone(),
                         runtime.actors.clone(),
                     )?;

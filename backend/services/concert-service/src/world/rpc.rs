@@ -83,7 +83,7 @@ impl VerifiedWorld {
 fn uuid(value: &str, label: &str) -> Result<Uuid, Status> {
     Uuid::parse_str(value)
         .ok()
-        .filter(|value| !value.is_nil() && value.to_string() == value)
+        .filter(|id| !id.is_nil() && id.to_string() == value)
         .ok_or_else(|| Status::invalid_argument(format!("Invalid {label}")))
 }
 
@@ -166,7 +166,7 @@ pub fn authorize_world(
         ],
     )?;
     if message.access_expires_unix_micros <= chrono::Utc::now().timestamp_micros()
-        || message.access_expires_unix_micros < message.authority_expires_unix_micros
+        || message.authority_expires_unix_micros > message.access_expires_unix_micros
     {
         return Err(Status::permission_denied("Invalid world access expiry"));
     }
@@ -206,7 +206,7 @@ pub fn authorize_current_membership(
         ],
     )?;
     if message.access_expires_unix_micros <= chrono::Utc::now().timestamp_micros()
-        || message.access_expires_unix_micros < message.authority_expires_unix_micros
+        || message.authority_expires_unix_micros > message.access_expires_unix_micros
     {
         return Err(Status::permission_denied("Invalid world access expiry"));
     }

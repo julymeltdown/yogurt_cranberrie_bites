@@ -27,6 +27,23 @@ TABLES = (
     "concert_world_tickets",
     "concert_world_memberships",
 )
+ADMISSION_SOURCES = (
+    "backend/crates/concert-application/src/world_ticket/mod.rs",
+    "backend/services/concert-service/src/world/mod.rs",
+    "backend/services/concert-service/migrations/0005_world_admission.sql",
+)
+GATEWAY_SOURCES = (
+    "backend/services/api-gateway/src/adapters/in/http/concert_world.rs",
+    "backend/services/api-gateway/src/adapters/out/concert_world.rs",
+    "backend/services/api-gateway/tests/concert_identity_composition.rs",
+    "backend/services/api-gateway/tests/support/concert_world_client.rs",
+    "backend/services/api-gateway/tests/support/concert_world_http.rs",
+    "backend/services/concert-service/src/bootstrap/mod.rs",
+    "backend/services/concert-service/src/main.rs",
+    "backend/services/concert-service/src/world/rpc.rs",
+    "backend/services/concert-service/src/world_rpc.rs",
+    "backend/services/concert-service/tests/world_rpc_authority.rs",
+)
 
 
 class Failure(Exception):
@@ -255,11 +272,7 @@ def main(argv: list[str] | None = None) -> int:
         fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     except OSError:
         parser.error("report must be a new writable file")
-    sources = [
-        ROOT / "backend/crates/concert-application/src/world_ticket/mod.rs",
-        ROOT / "backend/services/concert-service/src/world/mod.rs",
-        ROOT / "backend/services/concert-service/migrations/0005_world_admission.sql",
-    ]
+    sources = [ROOT / path for path in ADMISSION_SOURCES]
     report = {
         "scope": "BE10/BE11 application contracts and durable PostgreSQL admission",
         "result": "FAIL",
@@ -274,6 +287,9 @@ def main(argv: list[str] | None = None) -> int:
         ).strip(),
         "source_sha256": {
             str(path.relative_to(ROOT)): digest(path) for path in sources
+        },
+        "gateway_http_source_sha256": {
+            path: digest(ROOT / path) for path in GATEWAY_SOURCES
         },
     }
     previous = signal.signal(

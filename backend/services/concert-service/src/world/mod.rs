@@ -1,4 +1,5 @@
 //! Durable BE10/BE11 PostgreSQL adapter. No HTTP, WebSocket or public DTO is exposed here.
+pub mod rpc;
 pub mod simulation;
 use async_trait::async_trait;
 use chrono::{DateTime, Duration, Utc};
