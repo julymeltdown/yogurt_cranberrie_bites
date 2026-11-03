@@ -711,3 +711,5 @@ pub mod ingress;
 pub mod membership;
 pub mod runtime;
 pub mod admission_bridge;
+
+pub mod mural_subscription;

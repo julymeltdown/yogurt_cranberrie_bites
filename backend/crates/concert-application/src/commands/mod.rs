@@ -440,6 +440,10 @@ pub enum SafeFailure {
     InvalidInput,
     EventReadOnly,
     MapVersionMismatch,
+    MuralPaused,
+    MuralFrozen,
+    MuralCooldown,
+    MuralRegionLocked,
 }
 impl SafeFailure {
     pub fn as_str(self) -> &'static str {
@@ -458,6 +462,10 @@ impl SafeFailure {
             Self::InvalidInput => "INVALID_INPUT",
             Self::EventReadOnly => "EVENT_READ_ONLY",
             Self::MapVersionMismatch => "MAP_VERSION_MISMATCH",
+            Self::MuralPaused => "MURAL_PAUSED",
+            Self::MuralFrozen => "MURAL_FROZEN",
+            Self::MuralCooldown => "MURAL_COOLDOWN",
+            Self::MuralRegionLocked => "MURAL_REGION_LOCKED",
         }
     }
     pub fn parse(v: &str) -> Result<Self, CommandError> {
@@ -476,6 +484,10 @@ impl SafeFailure {
             "INVALID_INPUT" => Ok(Self::InvalidInput),
             "EVENT_READ_ONLY" => Ok(Self::EventReadOnly),
             "MAP_VERSION_MISMATCH" => Ok(Self::MapVersionMismatch),
+            "MURAL_PAUSED" => Ok(Self::MuralPaused),
+            "MURAL_FROZEN" => Ok(Self::MuralFrozen),
+            "MURAL_COOLDOWN" => Ok(Self::MuralCooldown),
+            "MURAL_REGION_LOCKED" => Ok(Self::MuralRegionLocked),
             _ => Err(CommandError::InvalidState),
         }
     }

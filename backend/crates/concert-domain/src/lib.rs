@@ -273,3 +273,5 @@ pub mod intro_policy;
 pub mod age_policy;
 
 pub mod event_lifecycle;
+
+pub mod mural;

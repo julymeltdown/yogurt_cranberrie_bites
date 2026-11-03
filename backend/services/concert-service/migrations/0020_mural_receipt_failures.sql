@@ -1,0 +1,11 @@
+-- Delivery-authorized extension; preserves all deployed BE15/0009 reasons.
+ALTER TABLE public.concert_command_receipts
+ DROP CONSTRAINT concert_command_receipts_failure_reason_check;
+ALTER TABLE public.concert_command_receipts
+ ADD CONSTRAINT concert_command_receipts_failure_reason_check
+ CHECK(failure_reason IN (
+ 'INVALID_TRANSITION','VERSION_CONFLICT','DEPENDENCY_UNAVAILABLE','INTERNAL_ERROR',
+ 'PARTY_FULL','DUPLICATE_APPLICATION','GIVEAWAY_SOLD_OUT',
+ 'DUPLICATE_ACTIVE_RESERVATION','RESERVATION_EXPIRED','PICKUP_CODE_INVALID',
+ 'RESOURCE_UNAVAILABLE','INVALID_INPUT','EVENT_READ_ONLY','MAP_VERSION_MISMATCH',
+ 'MURAL_PAUSED','MURAL_FROZEN','MURAL_COOLDOWN','MURAL_REGION_LOCKED'));
