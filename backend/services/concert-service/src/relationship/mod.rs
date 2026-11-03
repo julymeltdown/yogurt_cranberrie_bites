@@ -42,6 +42,65 @@ impl<A: FencedRelationshipAuthority> PgRelationshipPolicy<A> {
     pub fn new(pool: PgPool, authority: A) -> Self {
         Self { pool, authority }
     }
+    /// Current actor/session/member only; NO relationship-pair acquisition.
+    /// Use before a consumer root lock, then take full pair authorization AFTER that root.
+    /// Success never authorizes a target, audience, private field or later mutation.
+    pub async fn authorize_actor_in(
+        &self,
+        c: &mut PgConnection,
+        key: concert_domain::ParticipantKey,
+    ) -> Result<ActorDecision, RelationshipError> {
+        let event =
+            sqlx::query("select phase,revision from concert_events where event_id=$1 for share")
+                .bind(key.event_id.uuid())
+                .fetch_optional(&mut *c)
+                .await
+                .map_err(unavailable)?
+                .ok_or(RelationshipError::Denied)?;
+        let member = sqlx::query(
+            "select user_id from concert_participants where event_id=$1 and user_id=$2 for share",
+        )
+        .bind(key.event_id.uuid())
+        .bind(key.user_id.uuid())
+        .fetch_optional(&mut *c)
+        .await
+        .map_err(unavailable)?
+        .is_some();
+        let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
+            .fetch_one(&mut *c)
+            .await
+            .map_err(unavailable)?;
+        let query = PolicyQuery {
+            event: key.event_id,
+            actor: key.user_id,
+            subject: key.user_id,
+            field: Field::SafetySelf,
+        };
+        let authority = self.authority.check_in(c, query, now).await?;
+        let decision = decide_actor(ActorSnapshot {
+            key,
+            phase: EventPhase::from_str(
+                &event
+                    .try_get::<String, _>("phase")
+                    .map_err(unavailable_data)?,
+            )
+            .map_err(|_| RelationshipError::Unavailable)?,
+            event_revision: Revision::new(event.try_get("revision").map_err(unavailable_data)?)
+                .map_err(|_| RelationshipError::Unavailable)?,
+            member,
+            now,
+            authority,
+        })?;
+        let finished: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
+            .fetch_one(&mut *c)
+            .await
+            .map_err(unavailable)?;
+        if finished >= decision.valid_until() {
+            return Err(RelationshipError::Unavailable);
+        }
+        pin_deadline(c, decision.valid_until()).await?;
+        Ok(decision)
+    }
     /// Caller MUST supply an open transaction and retain it through the protected effect.
     /// Lock order: event, normalized pair, sorted participants, owner authority.
     pub async fn authorize_in(

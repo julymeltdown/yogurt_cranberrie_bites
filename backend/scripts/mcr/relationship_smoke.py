@@ -57,7 +57,7 @@ def exercise(cluster, test, binary, report):
         report["commands"]["transactional-sql-migrations"] = 0
         report["runtime_migration_qualification"]="NOT_RUN"
     cluster.sql(DATABASE, "create table relationship_test_authority(event_id uuid,user_id uuid,allowed boolean not null,inherited_block boolean not null,revision bigint not null,primary key(event_id,user_id));")
-    cluster.sql(DATABASE, "create table relationship_test_intro(event_id uuid,intro_id uuid,requester_id uuid,recipient_id uuid,revision bigint,allowed boolean,expires_at timestamptz,primary key(event_id,intro_id)); create table relationship_test_outbox_fail(event_id uuid primary key); create table relationship_test_outbox_delay(event_id uuid primary key); create function relationship_test_reject_outbox() returns trigger language plpgsql as $$ begin if exists(select 1 from relationship_test_outbox_fail where event_id=NEW.event_id) then raise exception 'test-only outbox failure'; end if; if exists(select 1 from relationship_test_outbox_delay where event_id=NEW.event_id) then perform pg_sleep(0.2); end if; return NEW; end; $$; create trigger relationship_test_reject_outbox before insert on concert_outbox for each row execute function relationship_test_reject_outbox();")
+    cluster.sql(DATABASE, "create table relationship_test_intro(event_id uuid,intro_id uuid,requester_id uuid,recipient_id uuid,revision bigint,allowed boolean,expires_at timestamptz,primary key(event_id,intro_id)); create table relationship_test_outbox_fail(event_id uuid primary key); create table relationship_test_outbox_delay(event_id uuid primary key); create table relationship_test_roots(event_id uuid primary key); create function relationship_test_reject_outbox() returns trigger language plpgsql as $$ begin if exists(select 1 from relationship_test_outbox_fail where event_id=NEW.event_id) then raise exception 'test-only outbox failure'; end if; if exists(select 1 from relationship_test_outbox_delay where event_id=NEW.event_id) then perform pg_sleep(0.2); end if; return NEW; end; $$; create trigger relationship_test_reject_outbox before insert on concert_outbox for each row execute function relationship_test_reject_outbox();")
     if test is not None:
         env = {**cluster.env, "CONCERT_TEST_DATABASE_URL": cluster.url(DATABASE),
                "CONCERT_TEST_OWNER_ROOT": str(cluster.root),
@@ -72,7 +72,7 @@ def exercise(cluster, test, binary, report):
         require(result.returncode == 0, "real-repository-tests:exit")
         require("0 failed" in output and "0 ignored" in output and "running 0 tests" not in output, "tests-not-skipped")
         expected_tests = re.findall(r"#\[tokio::test\]\s*async fn (\w+)", (ROOT/"backend/services/concert-service/tests/relationship_policy.rs").read_text())
-        require(len(expected_tests) == 20 and all(f"test {name} ... ok" in output for name in expected_tests), "all-owned-tests-required")
+        require(len(expected_tests) == 22 and all(f"test {name} ... ok" in output for name in expected_tests), "all-owned-tests-required")
         report["real_postgres_test_count"] = len(expected_tests)
         report["repository_tests"] = "PASS"
     else:

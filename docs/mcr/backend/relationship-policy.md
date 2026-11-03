@@ -245,3 +245,24 @@ The dedicated reveal response adapter is qualified in process; no public route
 or live provider configuration is enabled. Full task acceptance, real users,
 browsers/devices, PostgreSQL17, load and release remain NOT_RUN/IN_PROGRESS.
 Only the delivery integrator publishes master; this lane does not push master.
+
+## Actor-only consumer lock-order correction
+
+Meeting/community consumers identified a concrete cycle: preflight took an
+actor self-pair before the party root, while a command took that root before the
+self-pair. The follow-up adds `PgRelationshipPolicy::authorize_actor_in(c,key)`
+returning `ActorDecision`, with exact key, current event/owner revisions and proof
+window but no relationship revision, target, field permission or mutation grant.
+It takes only event/share, own participant/share and fresh fenced actor authority;
+it neither reads, inserts nor locks a relationship pair. Consumers may preflight
+actor eligibility, lock roots in deterministic order, then acquire sorted canonical
+user pairs and run full target authorization. Pair checks must remain after roots.
+READ_ONLY actor checks do not become Interaction permission. A blocked counterpart
+does not remove actor-only safety eligibility or give that counterpart any access.
+
+The required follow-up includes a real PostgreSQL schedule where a root writer
+waits for self-pair authorization while an actor-preflight reader waits for the
+root, plus a regression proving the actor-only guard leaves no pair row. It also
+adds pure actor binding/eligibility checks. Follow-up Cargo/native qualification
+is pending the next shared-target lease; the prior 20-test evidence remains pinned
+to its unchanged a5e84da/b71ae36 source.
