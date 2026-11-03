@@ -13,8 +13,7 @@ import migration_smoke as migration
 
 ROOT = Path(__file__).resolve().parents[3]
 DATABASE = 'mcr_mural'
-MIGRATIONS = ('0001_concert_core.sql','0002_command_receipts_outbox.sql',
-              '0009_receipt_domain_failures.sql','0013_mural.sql','0014_mural_receipt_failures.sql')
+MIGRATIONS = tuple(path.name for path in sorted((ROOT/'backend/services/concert-service/migrations').glob('*.sql')))
 
 def source_paths():
     paths = [ROOT/'backend/crates/concert-domain/src/mural/mod.rs',
@@ -22,6 +21,8 @@ def source_paths():
              ROOT/'backend/services/concert-service/src/adapters/out/repository/mural.rs',
              ROOT/'backend/services/concert-service/src/world/mural_subscription.rs',
              ROOT/'backend/services/concert-service/tests/mural.rs',
+             ROOT/'backend/services/concert-service/tests/mural_support/mod.rs',
+             ROOT/'backend/crates/migration-runtime/src/lib.rs',
              ROOT/'backend/services/concert-service/tests/mural_subscription.rs',
              ROOT/'backend/services/concert-service/src/adapters/out/repository/receipt.rs',
              ROOT/'backend/crates/concert-application/src/commands/mod.rs',
@@ -96,10 +97,8 @@ def main() -> int:
         for name in MIGRATIONS:
             path=ROOT/'backend/services/concert-service/migrations'/name
             report['migration_sha256'][name]=hashlib.sha256(path.read_bytes()).hexdigest()
-            cluster.sql(DATABASE,path.read_text())
+            if args.sql_only: cluster.sql(DATABASE,path.read_text())
         report['postgres_version']=cluster.sql(DATABASE,'show server_version;')
-        sql_guards(cluster)
-        report['direct_sql_guards']='PASS'
         report['native_adapters']='NOT_RUN' if not binaries else 'RUN'
         environment={**cluster.env,'MURAL_TEST_DATABASE_URL':cluster.url(DATABASE),
             'MURAL_TEST_OWNER_ROOT':str(cluster.root),'MURAL_TEST_OWNER_TOKEN':cluster.token,
@@ -117,6 +116,22 @@ def main() -> int:
             report['tests'].append(row)
             if result.returncode: raise RuntimeError('native-mural-test')
         for binary in binaries: native(binary,'before-restart')
+        sql_guards(cluster)
+        report['direct_sql_guards']='PASS'
+        def ledgers():
+            values={}
+            for database in (DATABASE,'mcr_mural_fresh','mcr_mural_upgrade'):
+                rows=json.loads(cluster.sql(database,"select json_agg(json_build_object('version',version,'checksum',encode(checksum,'hex'),'success',success) order by version) from public._sqlx_migrations;"))
+                expected={int(name.split('_')[0]):hashlib.sha384((ROOT/'backend/services/concert-service/migrations'/name).read_bytes()).hexdigest() for name in MIGRATIONS}
+                if {row['version']:row['checksum'] for row in rows}!=expected or not all(row['success'] for row in rows): raise RuntimeError('migration-ledger-mismatch')
+                values[database]=rows
+            return values
+        ledger_before=ledgers() if binaries else None
+        if binaries:
+            report['migration_ledger']='PASS'
+            report['migration_receipts']=ledger_before
+            report['forward_upgrade_preserved_event_receipt']='PASS'
+            report['reapply']='PASS'
         query="select md5(string_agg(row_to_json(b)::text,',' order by event_id)) from concert_mural_state b;"
         before=cluster.sql(DATABASE,query)
         if not before: raise RuntimeError('missing-persisted-mural')
@@ -124,6 +139,7 @@ def main() -> int:
         if cluster.assert_postmaster()==pid or cluster.sql(DATABASE,query)!=before:
             raise RuntimeError('restart-persistence')
         report['restart_persistence']='PASS'
+        if binaries and ledgers()!=ledger_before: raise RuntimeError('restart-ledger-mismatch')
         # Rerun adapters on independent event fixtures after an actual process restart.
         environment['MURAL_RESTART_VERIFY']='1'
         for binary in binaries: native(binary,'after-restart')

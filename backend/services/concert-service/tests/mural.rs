@@ -1,4 +1,6 @@
 //! Native adapter qualification. Always requires a marker-owned isolated MCR database.
+#[path = "mural_support/mod.rs"]
+mod migration_support;
 use async_trait::async_trait;
 use concert_application::{commands::*, mural::*};
 use concert_domain::mural::*;
@@ -51,6 +53,7 @@ async fn pool() -> anyhow::Result<PgPool> {
         actual == root.join("data").to_string_lossy(),
         "foreign data directory"
     );
+    migration_support::prepare(&pool).await?;
     Ok(pool)
 }
 struct SyntheticAuthority;
