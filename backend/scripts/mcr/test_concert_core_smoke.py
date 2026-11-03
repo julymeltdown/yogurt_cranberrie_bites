@@ -70,7 +70,7 @@ class HarnessTests(unittest.TestCase):
 
 class BoundaryTests(unittest.TestCase):
     def test_runtime_domain_application_dependencies_have_no_framework_or_persistence_edges(self):
-        allowed={"concert-domain":{"chrono","uuid","thiserror","serde","serde_json","sha2","url"},"concert-application":{"concert-domain","async-trait","chrono","thiserror","uuid","sha2","hmac"}}
+        allowed={"concert-domain":{"chrono","uuid","thiserror","serde","serde_json","sha2","iri-string"},"concert-application":{"concert-domain","async-trait","chrono","thiserror","uuid","sha2","hmac"}}
         for name,edges in allowed.items():
             manifest=tomllib.loads((smoke.ROOT/"backend/crates"/name/"Cargo.toml").read_text())
             self.assertLessEqual(set(manifest["dependencies"]),edges)
