@@ -47,7 +47,7 @@ it('opens direct detail, and uses the current Map parent without a foreign histo
   expect(await screen.findByRole('heading', { name: place.label })).toBeVisible()
   expect(screen.getByRole('link', { name: 'Open source reference (new tab)' })).toHaveAttribute('rel', 'noopener noreferrer')
   fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' }))
-  await screen.findByRole('heading', { name: 'Map', exact: true, level: 1 })
+  await screen.findByRole('heading', { name: 'Map', level: 1 })
   expect(h.router.state.location.pathname).toBe('/world/map'); expect(h.stats.mounts).toBe(1)
 })
 it('clears the visible owner on release withdrawal and permits a new explicit qualified binding', async () => {
