@@ -124,11 +124,11 @@ Observed on the latest pinned run:
 - `check-plan.py`: PASS, exit 0.
 - Application lib: 3/3 PASS, exit 0.
 - Application `world_ticket` integration target: 5/5 PASS, exit 0.
-- Service `world_admission`: compiled, exit 0; direct PostgreSQL tests 2/4 PASS.
+- Service `world_admission`: compiled, exit 0; latest copied-binary PostgreSQL run 3/4 PASS.
 - Owned PostgreSQL 16.14 direct migration/schema constraints: PASS.
-- Native run result: **FAIL**; `ticket_digest_is_single_use_under_competing_connections`
-  reached `WorldError::Conflict` and `persisted_capacity_and_switch_are_atomic_for_concurrent_users`
-  failed to consume its switch fixture. The latest assertion was `requested digest missing`
-  before later fixture-only corrections. The corrected source has not been rerun.
+- Native run result: **FAIL**; capacity/switch and owner-fencing/prune pass, while
+  `ticket_digest_is_single_use_under_competing_connections` still reaches
+  `WorldError::Conflict`. The source under diagnosis adds a digest advisory lock
+  ahead of the one-use row claim; that correction is not yet compiled or proven.
 - Owned cluster cleanup: PASS. No native success or restart-persistence claim is
   made for the corrected source.
