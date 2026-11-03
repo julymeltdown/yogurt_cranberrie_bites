@@ -46,9 +46,10 @@ def redact(text: str, passwords: tuple[str, ...] = ()) -> str:
 
 
 def execute(argv: list[str], *, env: dict[str, str], phase: str,
-            timeout: int = 60, allowed: tuple[int, ...] = (0,)) -> subprocess.CompletedProcess:
+            timeout: int = 60, allowed: tuple[int, ...] = (0,),
+            cwd: Path | None = None) -> subprocess.CompletedProcess:
     try:
-        result = subprocess.run(argv, env=env, capture_output=True, text=True, timeout=timeout)
+        result = subprocess.run(argv, env=env, cwd=cwd, capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired:
         raise SmokeError(phase, "command timed out") from None
     except OSError as error:
@@ -123,7 +124,7 @@ class Cluster:
         self.started = False
         # No HOME/PG*/DATABASE_URL/provider credentials are inherited.
         self.env = {"PATH": "/usr/bin:/bin:/opt/homebrew/bin", "LC_ALL": "C",
-                    "HOME": str(self.root), "TMPDIR": str(self.root),
+                    "TMPDIR": str(self.root),
                     "PGPASSFILE": "/dev/null", "PGCONNECT_TIMEOUT": "5"}
 
     def assert_owned(self) -> None:
@@ -154,7 +155,7 @@ class Cluster:
         try:
             execute([str(self.tools["initdb"]), "-D", str(self.data), "-U", OWNER,
                      "--auth=scram-sha-256", "--encoding=UTF8", "--no-locale",
-                     f"--pwfile={password_file}"], env=self.env, phase="initdb")
+                     f"--pwfile={password_file}"], env=self.env, phase="initdb", cwd=self.root)
         finally:
             password_file.unlink(missing_ok=True)
 
@@ -180,7 +181,8 @@ class Cluster:
         options = (f"-c listen_addresses='' -c unix_socket_directories='{self.socket}' "
                    f"-c unix_socket_permissions=0700 -c fsync=on -p {PORT}")
         execute([str(self.tools["pg_ctl"]), "-D", str(self.data), "-l", str(self.root / "postgres.log"),
-                 "-o", options, "-w", "-t", "20", "start"], env=self.env, phase="start", timeout=30)
+                 "-o", options, "-w", "-t", "20", "start"], env=self.env, phase="start", timeout=30,
+                cwd=self.root)
         self.started = True
         self.assert_postmaster()
         if self.sql("postgres", "show data_directory;") != str(self.data):
@@ -198,7 +200,7 @@ class Cluster:
         for mode in ("fast", "immediate"):
             try:
                 execute([str(self.tools["pg_ctl"]), "-D", str(self.data), "-w", "-t", "20",
-                         "-m", mode, "stop"], env=self.env, phase="stop", timeout=30)
+                         "-m", mode, "stop"], env=self.env, phase="stop", timeout=30, cwd=self.root)
                 if (self.data / "postmaster.pid").exists():
                     raise SmokeError("stop", "postmaster pid file remains")
                 self.started = False
@@ -222,7 +224,7 @@ class Cluster:
         self.assert_postmaster()
         return execute([str(self.tools["psql"]), "-X", "--no-password", "-A", "-t",
                         "-v", "ON_ERROR_STOP=1", "-c", query], env=self.client_env(database),
-                       phase="sql").stdout.strip()
+                       phase="sql", cwd=self.root).stdout.strip()
 
     def url(self, database: str) -> str:
         if not re.fullmatch(r"mcr_[a-z_]+", database):
@@ -277,12 +279,13 @@ def qualify(cluster: Cluster, binaries: dict, manifests: dict, report: dict) -> 
                "verify_after_restart": "NOT_RUN"}
         report["services"].append(row)
         execute([str(cluster.tools["createdb"]), "--no-password", "--maintenance-db=postgres", database],
-                env=cluster.client_env("postgres"), phase=f"{service}:createdb")
+                env=cluster.client_env("postgres"), phase=f"{service}:createdb", cwd=cluster.root)
         url = cluster.url(database)
         env = {**cluster.env, variable: url}
         for flag, key in [("--migrate", "migrate"), ("--verify-migrations", "verify")]:
             try:
-                execute([str(binaries[service]), flag], env=env, phase=f"{service}:{flag}")
+                execute([str(binaries[service]), flag], env=env, phase=f"{service}:{flag}",
+                        cwd=cluster.root)
             except SmokeError as error:
                 row[key] = "FAIL"
                 row[key + "_exit_code"] = error.detail["exit_code"]
@@ -311,7 +314,7 @@ def qualify(cluster: Cluster, binaries: dict, manifests: dict, report: dict) -> 
         try:
             execute([str(binaries[service]), "--verify-migrations"],
                     env={**cluster.env, SERVICES[service]: cluster.url(database)},
-                    phase=f"{service}:verify-after-restart")
+                    phase=f"{service}:verify-after-restart", cwd=cluster.root)
         except SmokeError as error:
             row["verify_after_restart"] = "FAIL"
             row["verify_after_restart_exit_code"] = error.detail["exit_code"]
@@ -331,7 +334,7 @@ def run(bin_dir: Path, pg_bin_dir: Path) -> dict:
     try:
         binaries, tools, manifests = preflight(bin_dir, pg_bin_dir)
         revision = execute(["/usr/bin/git", "-C", str(BACKEND), "rev-parse", "HEAD"],
-                           env={"PATH": "/usr/bin:/bin"}, phase="source-revision").stdout.strip()
+                           env={"PATH": "/usr/bin:/bin"}, phase="source-revision", cwd=BACKEND).stdout.strip()
         report["source_revision"] = revision
         report["binary_directory"] = str(bin_dir)
         report["postgres_tools"] = {name: str(path) for name, path in tools.items()}

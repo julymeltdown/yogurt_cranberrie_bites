@@ -9,6 +9,9 @@ and invokes the six prebuilt services with their database-only CLI flags.
 
 - Worker: `codex/mcr-be-foundation`, based on
   `909e2bf4e1c5bdf752954c94bf71a3b64871732d` (imported foundation).
+- The separate environment/cwd correction is based on the first smoke commit
+  `a0174ece47d169f5b79bfac81a5e9661a09a8b08`. The latest report records that
+  predecessor plus the exact revised harness hash; migration sources are unchanged.
 - Inherited source: port-rust
   `704f42149d5e8e35e1d578676d8ae2dac4f0f9c2`, preserved by the parent import.
 - Only authored paths: `backend/scripts/mcr/migration_smoke.py`,
@@ -46,7 +49,12 @@ without this binding, foreign/default database names, foreign credentials and
 ambiguous host parameters are rejected. The native run verifies this SQLx
 socket connection path works.
 
-The subprocess environment is constructed from scratch. Existing PG settings,
+The subprocess environment is constructed from scratch. `HOME` is omitted
+entirely; `TMPDIR` remains the private temporary root. Every service and native
+PostgreSQL command has an explicit working directory of that owned root, so it
+cannot discover a checkout `.env` through its inherited working directory. The
+read-only Git revision command explicitly uses the backend source directory.
+Existing PG settings,
 database URLs, provider/email configuration and service environment values are
 not inherited. PostgreSQL clients use the generated socket/credential settings;
 psql ignores startup files (`-X`), stops on SQL errors, and cannot prompt for a
@@ -75,7 +83,7 @@ cluster. SIGKILL or host power loss cannot execute Python cleanup.
 
 ## Executed evidence
 
-Final execution: **2026-11-03 03:07:51–03:07:54 UTC**. Native PostgreSQL was
+Latest corrected execution: **2026-11-03 03:14:45–03:14:48 UTC**. Native PostgreSQL was
 **16.14 (Homebrew)**. The supplied tool symlinks resolved into
 `/opt/homebrew/Cellar/postgresql@16/16.14/bin/`.
 
@@ -88,15 +96,17 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover \
 PYTHONDONTWRITEBYTECODE=1 python3 backend/scripts/mcr/migration_smoke.py \
   --bin-dir /Users/lhs/Desktop/mcr-build/backend/debug \
   --pg-bin-dir /opt/homebrew/bin \
-  --report /Users/lhs/Desktop/mcr-build/be02-migration-smoke.json
+  --report /Users/lhs/Desktop/mcr-build/be02-migration-smoke-cwd-fix.json
 ```
 
-Both commands exited **0**. The fixture suite passed **23 tests** covering
+Both commands exited **0**. The fixture suite passed **24 tests** covering
 foreign/existing directories, altered ownership/pidfiles, symlink refusal,
 constructor/initdb/stop failures, ambient environment isolation, foreign/default
 URLs, missing binaries, empty/duplicate migration sets, bad ledger rows,
 timeouts, redaction, command failure status/exit codes, unexpected exceptions,
 cleanup overriding a success and refusal to overwrite an existing report.
+The corrected fixtures also assert `HOME` omission, explicit helper cwd
+forwarding, and owned-root cwd for initdb, createdb and service execution.
 Fixture tests do not certify a real database; the separate native run does.
 
 | Owner | Database | Migrations / receipts before and after | Migrate | Verify before/after | Record after restart |
@@ -109,18 +119,18 @@ Fixture tests do not certify a real database; the separate native run does.
 | Notification | `mcr_notification` | 4 / 4 | PASS (0) | PASS (0/0) | PASS |
 | **Total** | **Six private databases** | **84 / 84** | **PASS** | **PASS** | **Six records survived** |
 
-Postmaster PID changed from **14168** to **14484**. Final cleanup was **PASS**:
+Postmaster PID changed from **23625** to **23705**. Final cleanup was **PASS**:
 the owned PostgreSQL process stopped and the owned temporary directory was
 removed. This is database process restart persistence, not application service
 restart or a backup restore exercise.
 
 Full redact-safe report:
-`/Users/lhs/Desktop/mcr-build/be02-migration-smoke.json`.
+`/Users/lhs/Desktop/mcr-build/be02-migration-smoke-cwd-fix.json`.
 
 - Report SHA-256:
-  `6dcc259213fe0f4f38b86652ae87e27b2afa05db0f0a4f742f004604b18a2a80`
+  `5850c4ff08a0f00e4df3367f95bd3fce1244ce4b830952c3316c968893e611e0`
 - Harness SHA-256 used:
-  `b986f518b63a38360fa893f46ee1504d750a1f22819bb469d34e5c8af2cec792`
+  `a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8`
 - Each service row includes its binary hash, migration-manifest fingerprint,
   actual receipt counts and command exit codes. No credentials or synthetic
   record tokens are retained in the report.
@@ -129,7 +139,7 @@ The JSON report is outside the repository because this assignment authorizes
 only the three paths above. This document records its result and digest; the
 integrator may archive that exact report in an assigned evidence path.
 
-An actual negative CLI invocation used the same harness with
+The earlier first-handoff negative CLI invocation used the preceding harness with
 `--bin-dir /Users/lhs/Desktop/mcr-build/missing-binaries` and report path
 `/Users/lhs/Desktop/mcr-build/be02-migration-smoke-negative.json`. It exited
 **1** and truthfully reported FAIL / preflight / missing `api-gateway`, with

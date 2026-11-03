@@ -105,15 +105,16 @@ class IsolationGuards(unittest.TestCase):
                                      "AUTH_DATABASE_URL": "foreign", "AUTH_GOOGLE_SECRET": "secret"}):
             cluster = smoke.Cluster({}, self.parent / "other")
         self.assertFalse(any(k in cluster.env for k in ["PGHOST", "DATABASE_URL",
-                                                       "AUTH_DATABASE_URL", "AUTH_GOOGLE_SECRET"]))
+                                                       "AUTH_DATABASE_URL", "AUTH_GOOGLE_SECRET", "HOME"]))
         self.assertEqual(cluster.client_env("mcr_auth")["PGHOST"], str(cluster.socket))
         cluster.cleanup()
 
     def test_initdb_failure_removes_password_file(self):
         self.cluster.tools = {"initdb": Path("/fake/initdb")}
-        with patch.object(smoke, "execute", side_effect=smoke.SmokeError("initdb", "failed")):
+        with patch.object(smoke, "execute", side_effect=smoke.SmokeError("initdb", "failed")) as command:
             with self.assertRaises(smoke.SmokeError):
                 self.cluster.init()
+            self.assertEqual(command.call_args.kwargs["cwd"], self.cluster.root)
         self.assertFalse((self.cluster.root / "init-password").exists())
         self.cluster.cleanup()
         self.assertFalse(self.cluster.root.exists())
@@ -167,6 +168,11 @@ class FailureReporting(unittest.TestCase):
         self.assertNotIn("a:b", text)
         self.assertEqual(failure.exception.detail["exit_code"], 9)
 
+    def test_execute_forwards_explicit_working_directory(self):
+        with patch.object(subprocess, "run", return_value=subprocess.CompletedProcess([], 0, "", "")) as command:
+            smoke.execute(["/fake"], env={}, phase="fixture", cwd=Path("/owned-fixture"))
+        self.assertEqual(command.call_args.kwargs["cwd"], Path("/owned-fixture"))
+
     def test_timeout_is_an_explicit_failure(self):
         with patch.object(subprocess, "run", side_effect=subprocess.TimeoutExpired("fake", 1)):
             with self.assertRaises(smoke.SmokeError) as failure:
@@ -189,15 +195,17 @@ class FailureReporting(unittest.TestCase):
         cluster.assert_postmaster.return_value = 12345
         cluster.sql.return_value = "fixture"
         cluster.env = {}
+        cluster.root = Path("/owned-fixture")
         cluster.tools = {"createdb": Path("/fake/createdb")}
         cluster.url.return_value = "postgresql://mcr_owner:secret@localhost/mcr_api_gateway"
         with tempfile.TemporaryDirectory() as directory:
             binary = Path(directory) / "fixture-service"
             binary.write_bytes(b"fixture")
             report = {"services": []}
-            with patch.object(smoke, "execute", side_effect=[None, smoke.SmokeError("migrate", "fixture", 7)]):
+            with patch.object(smoke, "execute", side_effect=[None, smoke.SmokeError("migrate", "fixture", 7)]) as command:
                 with self.assertRaises(smoke.SmokeError):
                     smoke.qualify(cluster, {"api-gateway": binary}, {"api-gateway": {1: "abc"}}, report)
+            self.assertTrue(all(call.kwargs["cwd"] == cluster.root for call in command.call_args_list))
         self.assertEqual(report["services"][0]["migrate"], "FAIL")
         self.assertEqual(report["services"][0]["migrate_exit_code"], 7)
         self.assertEqual(report["services"][0]["verify"], "NOT_RUN")
