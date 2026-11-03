@@ -18,12 +18,14 @@ try{
   const stable=async()=>{const s=await state();assert.equal(s.mounts,before.mounts);assert.equal(s.games,1);assert.equal(s.peak,1);assert(s.activeSockets<=1);assert(s.socketPeak<=1);assert(s.sameCamera);if(s.outfit)assert.deepEqual(s.outfit,before.outfit);assert.equal(s.canvases,1)}
   const measure=()=>page.evaluate(()=>{
    const rect=s=>{const r=document.querySelector(s)?.getBoundingClientRect();return r?{x:r.x,y:r.y,width:r.width,height:r.height}:null}
-   return {viewport:{width:innerWidth,height:innerHeight},shell:rect('.world-shell'),world:rect('.shell-world'),canvas:rect('.shell-world canvas'),panel:rect('.shell-panel'),body:rect('.shell-panel-body'),header:rect('.mcr-chrome-header'),era:rect('.shell-era-region'),nav:rect('.mcr-chrome-bottom'),overflow:document.documentElement.scrollWidth>innerWidth,mode:document.querySelector('.world-shell').dataset.panelSize,
+   return {viewport:{width:innerWidth,height:innerHeight},shell:rect('.world-shell'),world:rect('.shell-world'),canvas:rect('.shell-world canvas'),controls:rect('.world-controls-host'),summary:rect('.world-composition-summary'),panel:rect('.shell-panel'),body:rect('.shell-panel-body'),header:rect('.mcr-chrome-header'),era:rect('.shell-era-region'),nav:rect('.mcr-chrome-bottom'),overflow:document.documentElement.scrollWidth>innerWidth,mode:document.querySelector('.world-shell').dataset.panelSize,
     small:[...document.querySelectorAll('.mcr-chrome-header a,.mcr-chrome-eras button,.mcr-chrome-bottom a,.mcr-chrome-panel-header button')].filter(e=>e.checkVisibility()).map(e=>({name:e.getAttribute('aria-label')??e.textContent,w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height})).filter(r=>r.w<43.9||r.h<43.9)}
   })
   const shot=async name=>{await expect(page.getByText(/^Opening (this section|your account|your profile|your avatar|settings|map|wall|parties|gifts|account controls)…$/)).toHaveCount(0);const m=await measure();assert(!m.overflow);assert.deepEqual(m.small,[]);await page.screenshot({path:`${evidence}/${name}-${width}.png`});return m}
   const nav=page.getByRole('navigation',{name:'Main navigation'})
   await expect(nav).toBeVisible();const world=await shot('world');assert(world.world.height/height>=.70);assert.equal(world.mode,'closed')
+  assert(Math.abs(world.controls.y-world.canvas.y)<1);assert(Math.abs(world.controls.height-world.canvas.height)<1,JSON.stringify({controls:world.controls,canvas:world.canvas,summary:world.summary}))
+  assert(world.controls.y+world.controls.height<=world.summary.y+.5,'Controls must stay above the live summary')
   stage=`${width}/feed`;await nav.getByRole('link',{name:'Feed',exact:true}).focus();await page.keyboard.press('Enter')
   await expect(page.getByRole('heading',{name:'Feed',level:1,exact:true})).toBeFocused();await expect(nav).toBeHidden();const feed=await shot('feed');assert.equal(feed.mode,'full');assert(feed.panel.height/height>=.95);await stable()
   await page.getByRole('button',{name:'Reduce panel',exact:true}).tap();await expect(nav).toBeVisible();assert.equal((await measure()).mode,'half');await stable()

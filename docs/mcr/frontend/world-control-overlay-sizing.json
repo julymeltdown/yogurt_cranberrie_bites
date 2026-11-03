@@ -1,0 +1,91 @@
+{
+  "status": "INTEGRATED",
+  "problem": "The fixed34px bottom inset exceeded the actual stage when the live summary wrapped to44.78px.",
+  "change": "Scene and controls share an explicit grid row; the live summary owns the next automatic row.",
+  "validation": {
+    "command": "MCR_REFERENCE_ROOT_EVIDENCE=/tmp/mcr-fe-reference-root-grid-overlay node src/app/__tests__/reference-root/native.mjs",
+    "exit": 0,
+    "cases": [
+      {
+        "width": 360,
+        "canvas": {
+          "x": 6,
+          "y": 109,
+          "width": 348,
+          "height": 526
+        },
+        "controls": {
+          "x": 6,
+          "y": 109,
+          "width": 348,
+          "height": 526.21875
+        },
+        "summary": {
+          "x": 6,
+          "y": 635.21875,
+          "width": 348,
+          "height": 44.78125
+        }
+      },
+      {
+        "width": 390,
+        "canvas": {
+          "x": 6,
+          "y": 109,
+          "width": 378,
+          "height": 570
+        },
+        "controls": {
+          "x": 6,
+          "y": 109,
+          "width": 378,
+          "height": 570.21875
+        },
+        "summary": {
+          "x": 6,
+          "y": 679.21875,
+          "width": 378,
+          "height": 44.78125
+        }
+      },
+      {
+        "width": 430,
+        "canvas": {
+          "x": 6,
+          "y": 109,
+          "width": 418,
+          "height": 658
+        },
+        "controls": {
+          "x": 6,
+          "y": 109,
+          "width": 418,
+          "height": 658.21875
+        },
+        "summary": {
+          "x": 6,
+          "y": 767.21875,
+          "width": 418,
+          "height": 44.78125
+        }
+      }
+    ],
+    "errors": [],
+    "rootSourceHashes": {
+      "src/app/WorldShell.tsx": "d6a2a74ef3ae7c66b06f1c53798cacf52a6d5a800f199c9c1743966a1f55f62c",
+      "src/app/shell.css": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056",
+      "src/app/shell-chrome/index.tsx": "00deddbac5415012836b8efbafa7d5acfe586c6002076eb6f4cf3b91d817eded",
+      "src/app/shell-chrome/identity.tsx": "07d56ece8f9c1bc4e94c53bcae44d6e430f73f1d851998df60c36a6ad0bb1b98",
+      "src/app/shell-chrome/parade-footer.tsx": "7ccff5284eeb2a7851584694f9690835fa13e37746d9d68f0b2b10b8882afc2d",
+      "src/app/shell-chrome/shell-chrome.css": "fd5dc0e76c2d9a522b8e9ee95aacbf639610228fb187c382a9dc15c6c113ba19",
+      "src/shared/styles/base.css": "b360af38fefb8651262d2cfccc91e5a71d5691da8831d5dda6349a88ab9a8d42",
+      "src/shared/ui/concert-window/index.tsx": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
+      "src/shared/ui/concert-window/concert-window.css": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032",
+      "src/app/__tests__/reference-root/native.mjs": "eeadc86e6e08c0fb5571fa096756a10fd1765290e08a5ceeea296ad8f82d2cdd",
+      "src/app/__tests__/reference-root/preview.tsx": "ce68c22a153e155b8ab72191b3719d8cf2f0d09d15142a6113f02796a1f84d7f"
+    }
+  },
+  "limitations": [
+    "Synthetic HTTP/socket and C05; actual services/devices/multiuser and full reference acceptance NOT_RUN."
+  ]
+}

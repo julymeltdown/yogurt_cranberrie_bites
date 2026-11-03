@@ -1,0 +1,222 @@
+{
+  "task": "FE-REF-PUBLIC",
+  "status": "MOCK_READY",
+  "createdAt": "2026-11-03T22:57:01.647597+00:00",
+  "assignmentBase": "f837bef676cd26869c26c172a699a91b7842d832",
+  "initialOwnedSource": "3dc37b17d815e6bd13135b9633610d0c156ee797",
+  "publishedInitialSource": "ec9f8ca5",
+  "finalOwnedSource": "4e780c31bdeeaa5e43054c488d128d2cf44d9840",
+  "qualifiedCombinedParent": "a4ae8555af8d43b1cddf8b07d71f48d14ad20940",
+  "externalDependencies": {
+    "consumerUpstream": "1e5022885525ab56f056aa2c24100e18c4bc67ed",
+    "artUpstream": "7e07f7328f079991a9aedb7ad83a4b682decb543",
+    "artPublished": "26a8eb61"
+  },
+  "canonicalLandingGuardByteIdenticalToAssignmentBase": true,
+  "runtime": {
+    "node": "24.22.2",
+    "browser": "Installed Google Chrome headless",
+    "fixtures": "MemorySession/public documents; actual production unavailable route also checked",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "nativeResult": "PASS",
+    "tests": 63,
+    "sameDocumentRemountDescriptorAndAtlasRequests": 1,
+    "perCharacterRequests": 0,
+    "sourceOriginalUnchanged": true
+  },
+  "commands": [
+    {
+      "command": "MCR_REF_REQUIRE_ART=1 node frontend/src/features/public/__tests__/reference-target/capture.mjs",
+      "exitCode": 0,
+      "log": "native.log"
+    },
+    {
+      "command": "node frontend/node_modules/vitest/vitest.mjs run src/features/public/__tests__/reference-target/presentation.test.tsx src/app/__tests__/public-entry.test.tsx src/features/public/__tests__/documents.test.ts src/entities/avatar/selected-static --root frontend --maxWorkers 1",
+      "exitCode": 0,
+      "log": "behavior.log"
+    },
+    {
+      "command": "node frontend/node_modules/typescript/bin/tsc -p frontend --incremental --tsBuildInfoFile /tmp/mcr-ref-public-types.tsbuildinfo --pretty false",
+      "exitCode": 0,
+      "log": "types.log"
+    },
+    {
+      "command": "frontend/node_modules/.bin/oxlint frontend/src/features/public/ui/Landing.tsx frontend/src/features/public/ui/PublicFrame.tsx frontend/src/features/public/ui/landing-reference frontend/src/features/public/__tests__/reference-target",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "command": "node frontend/node_modules/vite/bin/vite.js build frontend --configLoader runner --outDir /tmp/mcr-ref-public-build",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "log": "plan.log"
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "docs/mcr/frontend/reference-public.md",
+      "sha256": "c062b2be3e6c424b9bebb520b158eebdb9125f8594d061eb216c720ffacf1510"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/capture.mjs",
+      "sha256": "88ebeb392d174a725441e1fd38f0078413a9ecc6bcd06ea8833b597e040aa055"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/comparison.html",
+      "sha256": "745531010c918fab926f6587aa1f77f6b3b2e4d5c8111efa2ea48174696e3ff7"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/presentation.test.tsx",
+      "sha256": "043da6f3ca80366b00d1beb3b67913c3595841362e7819405c42b34770ad37ef"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/preview.html",
+      "sha256": "9a6b9bf7f47e103173aa9beb81a3e1139a118d5c45cc6b61a8a04eb8d129f960"
+    },
+    {
+      "path": "frontend/src/features/public/__tests__/reference-target/preview.tsx",
+      "sha256": "f4710cbe2a080ed76662a68f18de80a49ed639b6b200eaf0ec19d49eb075e7ff"
+    },
+    {
+      "path": "frontend/src/features/public/ui/Landing.tsx",
+      "sha256": "8399a1798ec0c37362438df97b2fb37fee0dd5b655bb6f5eb9a9cc8d6015a9aa"
+    },
+    {
+      "path": "frontend/src/features/public/ui/PublicFrame.tsx",
+      "sha256": "f8d4086d54d09c3901d2cbbb66d61167e6e629e121636351e1744a84b4f6f807"
+    },
+    {
+      "path": "frontend/src/features/public/ui/landing-reference/PosterArtwork.tsx",
+      "sha256": "8c3d01eb63376c76c0cdcd332678acd68d19333137af4008877b00dbe7b858d4"
+    },
+    {
+      "path": "frontend/src/features/public/ui/public.css",
+      "sha256": "05fa8e8285a1a19f6ccd2ef8c4088d9c207962447da94646027512b023e10bd7"
+    }
+  ],
+  "approvedAssetPins": [
+    {
+      "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+    },
+    {
+      "path": "frontend/public/world/avatars/supplied-v1/photo-01.jpg",
+      "sha256": "67448360482a0dd68172d6089378a002190142bb8bd804818c89a86370154311"
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": "behavior.log",
+      "bytes": 243,
+      "sha256": "b0cc322a37967a13f527f7d1760a2e07f4413e75b45f5895f6b51ccade62d975"
+    },
+    {
+      "path": "build.log",
+      "bytes": 6189,
+      "sha256": "87b7c4c32ad38df396eb1d2808b8dff681afad78e8cbde7d36148b9c6a0304c9"
+    },
+    {
+      "path": "comparison-390.png",
+      "bytes": 513308,
+      "sha256": "cfa9a96e529e95f4a96de8b675d1b8ab9e6b86fcd4a06b7474656d1c8e36a75e"
+    },
+    {
+      "path": "landing-360.png",
+      "bytes": 94677,
+      "sha256": "84d7e781b9c2ccf5900ccd0496dc6c8148916d2e92369a456c0a167d307f5d41"
+    },
+    {
+      "path": "landing-390.png",
+      "bytes": 103122,
+      "sha256": "79527d77cc9771de278fb23cf25a3ee845ff41cc65f106ed207f0fb829d57d4a"
+    },
+    {
+      "path": "landing-430.png",
+      "bytes": 114927,
+      "sha256": "600465adc7de878f7224e20a5795e7a0982bf68c8917daaa065b056a567c34a9"
+    },
+    {
+      "path": "lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native.json",
+      "bytes": 5400,
+      "sha256": "3944970239f41d0d33900c0d0fbbc7be0bc5f63cf0a8e8a35cc78e4d503c5731"
+    },
+    {
+      "path": "native.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "plan.log",
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "path": "poster-360.png",
+      "bytes": 80968,
+      "sha256": "edc17d64869bf964e62d45a6d80589eea38d300699f703d0344f68ac4d2d1ac4"
+    },
+    {
+      "path": "poster-390.png",
+      "bytes": 89655,
+      "sha256": "7ef46558d2ea5636681d8673a24cf3d682c96d7f51f65ae0abf95bdb554828ce"
+    },
+    {
+      "path": "poster-430.png",
+      "bytes": 100127,
+      "sha256": "4ab2ba034ede89909c0973ffc7d72a59dcd7f49b62bf053ab011676b021823dd"
+    },
+    {
+      "path": "production-unavailable-360.png",
+      "bytes": 94280,
+      "sha256": "27ea09b6aa31c4d9d2e9421ca8491e2058276e1192c1ebb3e0a42e27c126bd08"
+    },
+    {
+      "path": "production-unavailable-390.png",
+      "bytes": 102846,
+      "sha256": "c187f8158f3d163ff6ebebc7227c884e3174a54a409f77797a04d02e36070a98"
+    },
+    {
+      "path": "production-unavailable-430.png",
+      "bytes": 114594,
+      "sha256": "b37b93ea8d36bb7f3c28050e64c6c3cca949eb1fe477037a74207c652279ce5c"
+    },
+    {
+      "path": "source-checkpoint.json",
+      "bytes": 2808,
+      "sha256": "1d874886357ea77ecad203037e1dbd6893cc4a524741d263ca2c0a5b9031e501"
+    },
+    {
+      "path": "target-full.png",
+      "bytes": 2967126,
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    {
+      "path": "types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "remainingLimits": [
+    "Exact visual acceptance open: authored lettering/ornament detail and selected-source costumes differ.",
+    "Live provider authentication, physical device, multiuser and all-ten-route qualification NOT_RUN here.",
+    "Existing production chunk-size warning remains."
+  ],
+  "publication": "Fresh remote reconciliation; publish only new scoped followup and evidence without duplicate prior source/shared/art commits."
+}

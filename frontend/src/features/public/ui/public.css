@@ -97,15 +97,18 @@
 }
 .landing-accessible-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .landing-web { position: absolute; z-index: 2; inset: 0 auto auto 0; width: 40%; color: var(--poster-paper); opacity: .85; }
-.landing-wordmark { position: absolute; z-index: 3; width: 94%; top: 2%; left: 3%; height: auto; overflow: visible; }
-.landing-scene { position: absolute; z-index: 1; width: 100%; height: auto; left: 0; top: 28%; }
-.landing-crowd { position: absolute; z-index: 3; top: 55%; left: 5%; width: 90%; height: 18%; }
-.landing-poster-copy { position: absolute; inset: auto 4% 12%; }
+.landing-wordmark { position: absolute; z-index: 3; width: 90%; top: 6%; left: 6%; height: auto; overflow: visible; }
+.landing-scene { position: absolute; z-index: 1; width: 100%; height: auto; left: 0; top: 21%; }
+.landing-crowd { position: absolute; z-index: 3; top: 44%; left: 1%; width: 98%; height: 26%; }
+.landing-crowd > span { flex: 0 0 32%; max-inline-size: none; margin-inline: -3.5%; }
+.landing-crowd > span:nth-child(3) { order: 2; }
+.landing-crowd > span:nth-child(4) { order: 1; }
+.landing-poster-copy { position: absolute; inset: auto 4% 15%; }
 .public-entry--poster .public-poster-motto { font-size: clamp(19px, 5.6vw, 27px); line-height: 1.03; letter-spacing: .015em; text-transform: uppercase; font-weight: 500; margin: 0; }
 .public-poster-invitation { font-size: clamp(9px, 2.4vw, 11px); line-height: 1.5; text-transform: uppercase; letter-spacing: .19em; margin-top: 7px; }
 .public-poster-invitation span { padding-inline: 7px; }
 .public-poster-show { font-size: clamp(11px, 2.9vw, 13px); line-height: 1.2; text-transform: uppercase; letter-spacing: .09em; margin-top: 1px; }
-.public-entry--poster .public-entry-action { position: absolute; bottom: 3%; inset-inline: 8%; margin: 0; }
+.public-entry--poster .public-entry-action { position: absolute; bottom: 6%; inset-inline: 8%; margin: 0; }
 .public-entry--poster .public-primary { display: flex; justify-content: center; gap: 14px; width: 100%; min-height: 44px; padding: 6px 8px; border: 3px double #ebdcc4; border-radius: 0; background: #a42a33; color: #fff6e7; box-shadow: 0 0 0 1px #2f1515, inset 0 0 0 1px #53191d; font: 800 clamp(16px, 4.6vw, 21px)/1.2 "Arial Narrow", Arial, sans-serif; text-transform: uppercase; text-decoration: none; }
 .public-entry--poster .public-primary span { font-size: 24px; font-weight: 400; line-height: .8; }
 .public-entry--poster .public-primary:disabled { background: #593338; color: #dfd0ba; border-color: #b9a78c; cursor: not-allowed; box-shadow: none; }

@@ -118,8 +118,9 @@ after remote reconciliation, and concrete fixes. Exactly front_idle; no layer,
 walk, direction, color or arbitrary identity fallback. Contract authority is
 `01a19f83-12cc-7f21-8ad3-55749f012d9b`; the writer contacted it directly for
 published schemas/manifest hashes. Scaffolding may proceed, but final contract
-qualification is pending those actual artifacts. FEED remains stopped and
-available only for related concrete fixes pending integrated-QA findings.
+qualification is pending those actual artifacts. The former FEED owner was
+subsequently transferred by frontend king to the exact union-admission scope
+below; its earlier ready-only disposition is superseded.
 
 Resource floor recovered: SL measured 10,017,428 KiB (about 9.55 GiB); runtime
 owner startup measured 9,918,356 KiB (about 9.46 GiB). Integrated QA independently
@@ -127,6 +128,45 @@ reported 9.57 GiB and passing crop-bound/network-count unit checks, then began
 composed-root runner wiring. Recheck before builds/captures; hold output growth
 if below 8 GiB. Earlier low-disk receipts below are historical, not a current
 capacity claim. No unrelated cleanup or duplicate build target is authorized.
+
+## Active avatar union admission transfer
+
+Frontend king reused former FEED writer
+`01a1a204-c583-7670-965a-4891b8b1289e` for **FE-AVATAR-UNION-ADMISSION**.
+Actual prior get_goal returned null; new unbudgeted create_goal returned ACTIVE
+with implementation, relevant validation, documentation, committed direct
+non-force publication and concrete fixes. No model/reasoning override or new chat.
+Independent Git check confirms clean reused
+`/Users/lhs/Desktop/mcr-worktrees/fe-ref-feed`, branch
+`codex/mcr-fe-avatar-union`, exact fetched master base
+`a4ae8555af8d43b1cddf8b07d71f48d14ad20940`.
+
+Exact writable scope:
+
+- `frontend/src/world/network/transport/wire-types.ts`, generated only through
+  existing `frontend/src/world/network/__tests__/generate-types.mjs`; invocation
+  does not grant edits to the generator itself.
+- `frontend/src/entities/avatar/runtime/contract.ts` and
+  `frontend/src/entities/avatar/runtime/schema.ts`.
+- NEW `frontend/src/entities/avatar/whole-admission/**`.
+- `docs/mcr/frontend/avatar-union-admission.md`.
+
+Preserve layered runtime `Extract` admission for version 1.0.0 while accepting
+the actual published C06 union in the new boundary. Final generated union/schema
+validation depends on the contract owner's published checkpoint; it does not
+depend on running backend services. Independent scaffolding/adversarial test
+structure can proceed without claiming provisional schema acceptance. Contract
+and whole-character runtime owners were contacted directly for exports/artifacts.
+
+Explicit exclusions: `whole-character/**`, runtime index/resources, existing
+avatar feature contract/controller, Me/profile, World rendering/root, shared
+contracts/manifests/lockfiles and backend. No overlapping lease or implicit
+ownership expansion. Old FEED source is already published as `10978fab` and must
+not be duplicated. No second writer or additional checkout was allocated.
+
+Latest SL disk snapshot: 13,668,212 KiB (about 13.03 GiB), above 8 GiB floor.
+Recheck before output growth; no new dependency install, extra backend target or
+unrelated cleanup. This tracker's preceding resource snapshots remain historical.
 
 ## Historical delivery record
 
