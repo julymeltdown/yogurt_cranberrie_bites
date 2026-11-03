@@ -106,3 +106,74 @@ Rust target is created. No database persistence is introduced in this first slic
 so native SQL, restart and cleanup checks are NOT_RUN/not applicable here. Real
 Post/Auth/Friend/media/link owner composition, HTTP, two-account social flows,
 browser/device/load/release checks are **NOT_RUN**.
+
+## BE31 command / BE32 content slice
+
+`feed::content` adds parent-protected comment pagination/thread reads and validated
+`PreparedCommand` intents for all eight C04 create/edit/delete/comment/reaction
+operations. Normal edit/delete is author-only; moderator operations remain the
+separate BE39 owner contract. A direct comment-ID mutation resolves the actual
+current parent, checks its event/public/published state and checks the comment's
+owner/revision. Creating a comment checks `post_revision`; edits/deletions check
+`expected_revision`. Reactions cannot supply another actor. Parent revision for
+an owner reaction CAS is captured on the server and adds no browser parameter.
+
+Prepared commands are private immutable intents, never grants. Canonical BE15
+requests use exact registered paths, original query/body shapes, current actor,
+event and original key. Create resources use a stable UUIDv8 derived from
+SHA-256 of a version marker, actor, event, original key and operation; changed
+input with the same key reaches fingerprint conflict, not a second target.
+The exact original authority digest and expiry stay in Context; a digest is a
+binding, not an authority capability. The owner independently reauthorizes.
+
+`concert_service::feed::queue` implements BE15 `CommandProducer` with protected
+owner work in reserved `0010_feed.sql`. A receipt and durable command intent
+commit together as PENDING. No Post mutation happens within the Concert
+transaction and no publication invalidation is emitted before actual owner
+success. An authenticated owner-commit acknowledgement must bind exact original
+scope/target/intent and actual revision. It completes the receipt and emits only
+resource UUID/revision invalidation in one transaction; repeated acknowledgement
+does not duplicate outbox effects. There is no automatic dispatcher or retry.
+Uncertain outcomes stay PENDING until verified reconciliation.
+
+`FencedFeedAuthority::check_in` must hold current policy, owner/CAS, membership,
+phase, media and linked-target fences through commit. The only shipped production
+implementation is `UnavailableFeedAuthority`. Bounded Auth/Friend observations
+cannot implement this contract. There is no production mutation enablement,
+trusted fake success or fixture authority. Work payloads are protected internal
+content; receipt/outbox contain metadata only. Reviewed expired-job payload
+retention/account-deletion cleanup remains an integration obligation; no arbitrary
+retention interval or destructive automatic cleanup is introduced.
+
+Post owner has accepted a caller-assigned stable create target and additive
+`post.concert.v1.PostConcertFeedService` API. Its requested GetComment endpoint
+must resolve current parent authority; comments must use the same C04 descending
+order and upper timestamp ceiling. Internal receipts must echo actor/event/
+operation/key/target; receipt metadata never substitutes for a current authorized
+reread. The owner also reports that Concert actor forwarding is not yet qualified
+by the inherited platform. All root RPC composition remains hard unavailable
+until qualified forwarding and a real authority protocol are supplied.
+
+Additional checks:
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `python3 -B backend/scripts/mcr/feed_smoke.py --sql-only --report /tmp/mcr-feed-sql-20261104-01.json` | 0 | SQL_ONLY_PASS; PostgreSQL 16.14; migrations 0001/0002/0010; empty work/index; actual restart; owned cluster removed |
+| Python AST parse of `feed_smoke.py` | 0 | Syntax only |
+
+The SQL-only report hashes migration 0010 as
+`df722616b0a673e7ba14e4ea93d7599558a8f1c71b5e7fd7c550f8d4b0c3ada7`.
+It does **not** run the Rust native transaction test. The harness imports the
+existing marker/inode fixture helper `backend/scripts/mcr/migration_smoke.py`
+(base SHA-256 `a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8`)
+without changing it. The dedicated Rust fixture guard follows the existing
+Concert command test ownership checks at the base, with a distinct feed database
+and environment namespace. No application implementation is copied.
+
+Authored additional tests cover every comment route under hidden/deleted parent,
+foreign writes, parent/event/revision binding, stale reaction authority, all eight
+canonical operation shapes, stable create targets/fingerprint conflicts and
+unready media/private links. The native `feed_postgres` test exercises real SQL
+Pending/replay/conflict, default unavailable authority, current denial after
+queueing, bound owner acknowledgement, outbox deduplication and late-insert
+rollback. These Rust tests remain NOT_RUN until the shared Cargo lease.

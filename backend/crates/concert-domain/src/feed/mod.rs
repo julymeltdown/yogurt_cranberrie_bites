@@ -165,3 +165,140 @@ impl Window {
         p.created_at <= self.upper && self.after.is_none_or(|last| p < last)
     }
 }
+
+/// The owning Post service must bind every comment to its actual parent and event.
+#[derive(Clone, PartialEq, Eq)]
+pub struct Comment {
+    pub id: Uuid,
+    pub post: Uuid,
+    pub event: Uuid,
+    pub author: Uuid,
+    pub text: String,
+    pub state: ContentState,
+    pub revision: i64,
+    pub created_at: DateTime<Utc>,
+}
+impl Comment {
+    pub fn position(&self) -> Position {
+        Position {
+            created_at: self.created_at,
+            id: self.id,
+        }
+    }
+    pub fn validate(&self) -> Result<(), FeedError> {
+        text(&self.text, 1000)?;
+        revision(self.revision)?;
+        if [self.id, self.post, self.event, self.author]
+            .iter()
+            .any(Uuid::is_nil)
+        {
+            return Err(FeedError::InvalidInput);
+        }
+        Ok(())
+    }
+}
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(tag = "kind", deny_unknown_fields)]
+pub enum FeedCommand {
+    CreatePost {
+        content: Content,
+    },
+    EditPost {
+        post: Uuid,
+        expected_revision: i64,
+        content: Content,
+    },
+    DeletePost {
+        post: Uuid,
+        expected_revision: i64,
+    },
+    CreateComment {
+        post: Uuid,
+        post_revision: i64,
+        text: String,
+    },
+    EditComment {
+        comment: Uuid,
+        expected_revision: i64,
+        text: String,
+    },
+    DeleteComment {
+        comment: Uuid,
+        expected_revision: i64,
+    },
+    SetReaction {
+        post: Uuid,
+        present: bool,
+    },
+}
+impl FeedCommand {
+    pub fn validate(&self) -> Result<(), FeedError> {
+        match self {
+            Self::CreatePost { content } => content.validate(),
+            Self::EditPost {
+                post,
+                expected_revision,
+                content,
+            } => {
+                non_nil(*post)?;
+                revision(*expected_revision)?;
+                content.validate()
+            }
+            Self::DeletePost {
+                post,
+                expected_revision,
+            } => {
+                non_nil(*post)?;
+                revision(*expected_revision).map(|_| ())
+            }
+            Self::CreateComment {
+                post,
+                post_revision,
+                text: value,
+            } => {
+                non_nil(*post)?;
+                revision(*post_revision)?;
+                text(value, 1000)
+            }
+            Self::EditComment {
+                comment,
+                expected_revision,
+                text: value,
+            } => {
+                non_nil(*comment)?;
+                revision(*expected_revision)?;
+                text(value, 1000)
+            }
+            Self::DeleteComment {
+                comment,
+                expected_revision,
+            } => {
+                non_nil(*comment)?;
+                revision(*expected_revision).map(|_| ())
+            }
+            Self::SetReaction { post, .. } => non_nil(*post),
+        }
+    }
+    pub fn operation(&self) -> &'static str {
+        match self {
+            Self::CreatePost { .. } => "createConcertPost",
+            Self::EditPost { .. } => "editConcertPost",
+            Self::DeletePost { .. } => "deleteConcertPost",
+            Self::CreateComment { .. } => "createConcertComment",
+            Self::EditComment { .. } => "editConcertComment",
+            Self::DeleteComment { .. } => "deleteConcertComment",
+            Self::SetReaction { present: true, .. } => "likeConcertPost",
+            Self::SetReaction { present: false, .. } => "unlikeConcertPost",
+        }
+    }
+    pub fn is_safety(&self) -> bool {
+        matches!(self, Self::DeletePost { .. } | Self::DeleteComment { .. })
+    }
+}
+fn non_nil(id: Uuid) -> Result<(), FeedError> {
+    if id.is_nil() {
+        Err(FeedError::InvalidInput)
+    } else {
+        Ok(())
+    }
+}

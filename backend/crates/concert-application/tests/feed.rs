@@ -23,6 +23,7 @@ fn ctx() -> Context {
         event: id(2),
         session_family: id(3),
         request: id(4),
+        authority_digest: [9; 32],
         expires_at: now() + chrono::Duration::seconds(2),
     }
 }
@@ -55,6 +56,7 @@ struct State {
     media: bool,
     hide_on_author: bool,
     wrong_binding: bool,
+    comments: Vec<Comment>,
 }
 #[derive(Clone)]
 struct Ports(Arc<Mutex<State>>);
@@ -261,6 +263,7 @@ async fn block_stale_grant_wrong_binding_and_expiry_fail_closed() {
     assert!(f
         .post(
             Context {
+                authority_digest: [9; 32],
                 expires_at: now(),
                 ..ctx()
             },
@@ -301,4 +304,267 @@ async fn unavailable_defaults_are_not_fixture_posts() {
         f.page(ctx(), window(), Filter::All, 20).await,
         Err(FeedError::DependencyUnavailable)
     ));
+}
+
+#[async_trait]
+impl CommentReader for Ports {
+    async fn comment(&self, _: Context, n: Uuid) -> Result<Option<Comment>, FeedError> {
+        Ok(self
+            .0
+            .lock()
+            .unwrap()
+            .comments
+            .iter()
+            .find(|c| c.id == n)
+            .cloned())
+    }
+    async fn comments(
+        &self,
+        _: Context,
+        _: Uuid,
+        _: Window,
+        _: u16,
+    ) -> Result<Vec<Comment>, FeedError> {
+        Ok(self.0.lock().unwrap().comments.clone())
+    }
+}
+fn comment(n: u128) -> Comment {
+    Comment {
+        id: id(n),
+        post: id(12),
+        event: id(2),
+        author: id(1),
+        text: "Reply".into(),
+        state: ContentState::Published,
+        revision: 1,
+        created_at: now() - chrono::Duration::seconds(1),
+    }
+}
+#[tokio::test]
+async fn every_comment_route_rechecks_hidden_deleted_parent() {
+    for state in [ContentState::Hidden, ContentState::Deleted] {
+        let (f, p) = setup(vec![Post { state, ..row(12) }]);
+        p.0.lock().unwrap().comments.push(comment(20));
+        assert!(matches!(
+            f.comments(ctx(), id(12), window(), 20).await,
+            Err(FeedError::ResourceUnavailable)
+        ));
+        for cmd in [
+            FeedCommand::EditComment {
+                comment: id(20),
+                expected_revision: 1,
+                text: "Edit".into(),
+            },
+            FeedCommand::DeleteComment {
+                comment: id(20),
+                expected_revision: 1,
+            },
+            FeedCommand::CreateComment {
+                post: id(12),
+                post_revision: 1,
+                text: "New".into(),
+            },
+            FeedCommand::SetReaction {
+                post: id(12),
+                present: true,
+            },
+        ] {
+            assert!(matches!(
+                f.prepare(ctx(), id(50), cmd).await,
+                Err(FeedError::ResourceUnavailable)
+            ));
+        }
+    }
+}
+#[tokio::test]
+async fn foreign_post_and_comment_mutations_are_denied() {
+    let (f, p) = setup(vec![row(12)]);
+    p.0.lock().unwrap().comments.push(Comment {
+        author: id(10),
+        ..comment(20)
+    });
+    for cmd in [
+        FeedCommand::EditPost {
+            post: id(12),
+            expected_revision: 1,
+            content: row(12).content,
+        },
+        FeedCommand::DeletePost {
+            post: id(12),
+            expected_revision: 1,
+        },
+        FeedCommand::EditComment {
+            comment: id(20),
+            expected_revision: 1,
+            text: "Edit".into(),
+        },
+        FeedCommand::DeleteComment {
+            comment: id(20),
+            expected_revision: 1,
+        },
+    ] {
+        assert!(matches!(
+            f.prepare(ctx(), id(50), cmd).await,
+            Err(FeedError::PermissionDenied)
+        ));
+    }
+}
+#[tokio::test]
+async fn comment_parent_and_revision_guard_and_order_are_enforced() {
+    let (f, p) = setup(vec![row(12)]);
+    p.0.lock().unwrap().comments.push(comment(20));
+    let page = f.comments(ctx(), id(12), window(), 20).await.unwrap();
+    assert_eq!(page.items.len(), 1);
+    assert!(matches!(
+        f.prepare(
+            ctx(),
+            id(50),
+            FeedCommand::CreateComment {
+                post: id(12),
+                post_revision: 2,
+                text: "New".into()
+            }
+        )
+        .await,
+        Err(FeedError::VersionConflict)
+    ));
+    p.0.lock().unwrap().comments[0].event = id(999);
+    assert!(matches!(
+        f.comments(ctx(), id(12), window(), 20).await,
+        Err(FeedError::DependencyUnavailable)
+    ));
+}
+#[tokio::test]
+async fn new_reaction_uses_current_parent_and_cannot_choose_another_actor() {
+    let (f, p) = setup(vec![row(12)]);
+    let prepared = f
+        .prepare(
+            ctx(),
+            id(50),
+            FeedCommand::SetReaction {
+                post: id(12),
+                present: true,
+            },
+        )
+        .await
+        .unwrap();
+    assert_eq!(prepared.scope().unwrap().actor, ctx().actor);
+    assert_eq!(prepared.parent(), Some(id(12)));
+    assert_eq!(prepared.parent_revision(), Some(1));
+    p.0.lock().unwrap().stale = true;
+    assert!(f
+        .prepare(
+            ctx(),
+            id(50),
+            FeedCommand::SetReaction {
+                post: id(12),
+                present: false
+            }
+        )
+        .await
+        .is_err());
+}
+#[tokio::test]
+async fn create_targets_and_canonical_fingerprints_are_stable_and_input_bound() {
+    use concert_application::commands::*;
+    let (f, _) = setup(vec![]);
+    let c = FeedCommand::CreatePost {
+        content: row(12).content,
+    };
+    let a = f.prepare(ctx(), id(50), c.clone()).await.unwrap();
+    let b = f.prepare(ctx(), id(50), c).await.unwrap();
+    assert_eq!(a.target(), b.target());
+    let k = FingerprintKeys::new(SigningKey::new("test", &[17; 32]).unwrap(), vec![]).unwrap();
+    let hash = k.sign(&a.canonical().unwrap()).unwrap();
+    assert!(k.verify(&b.canonical().unwrap(), &hash).unwrap());
+    let changed = f
+        .prepare(
+            ctx(),
+            id(50),
+            FeedCommand::CreatePost {
+                content: Content {
+                    text: "Different".into(),
+                    ..row(12).content
+                },
+            },
+        )
+        .await
+        .unwrap();
+    assert_eq!(a.target(), changed.target());
+    assert!(!k.verify(&changed.canonical().unwrap(), &hash).unwrap());
+}
+#[tokio::test]
+async fn all_commands_generate_the_registered_exact_canonical_path() {
+    let (f, p) = setup(vec![Post {
+        author: ctx().actor,
+        ..row(12)
+    }]);
+    p.0.lock().unwrap().comments.push(comment(20));
+    for (n, cmd) in [
+        FeedCommand::CreatePost {
+            content: row(12).content,
+        },
+        FeedCommand::EditPost {
+            post: id(12),
+            expected_revision: 1,
+            content: row(12).content,
+        },
+        FeedCommand::DeletePost {
+            post: id(12),
+            expected_revision: 1,
+        },
+        FeedCommand::CreateComment {
+            post: id(12),
+            post_revision: 1,
+            text: "New".into(),
+        },
+        FeedCommand::EditComment {
+            comment: id(20),
+            expected_revision: 1,
+            text: "Edit".into(),
+        },
+        FeedCommand::DeleteComment {
+            comment: id(20),
+            expected_revision: 1,
+        },
+        FeedCommand::SetReaction {
+            post: id(12),
+            present: true,
+        },
+        FeedCommand::SetReaction {
+            post: id(12),
+            present: false,
+        },
+    ]
+    .into_iter()
+    .enumerate()
+    {
+        let prepared = f.prepare(ctx(), id(50 + n as u128), cmd).await.unwrap();
+        assert_eq!(
+            prepared.canonical().unwrap().scope(),
+            prepared.scope().unwrap()
+        );
+    }
+}
+#[tokio::test]
+async fn create_rejects_unready_media_or_nonpublic_link() {
+    for content in [
+        Content {
+            media_ids: vec![id(80)],
+            ..row(12).content
+        },
+        Content {
+            links: vec![ResourceLink {
+                target_type: TargetType::Party,
+                target_id: id(90),
+            }],
+            ..row(12).content
+        },
+    ] {
+        let (f, _) = setup(vec![]);
+        assert!(f
+            .prepare(ctx(), id(50), FeedCommand::CreatePost { content })
+            .await
+            .is_err());
+    }
 }

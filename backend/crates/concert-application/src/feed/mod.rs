@@ -12,12 +12,14 @@ pub struct Context {
     pub session_family: Uuid,
     pub request: Uuid,
     pub expires_at: DateTime<Utc>,
+    pub authority_digest: [u8; 32],
 }
 impl Context {
     pub fn check(self, now: DateTime<Utc>) -> Result<(), FeedError> {
         if [self.actor, self.event, self.session_family, self.request]
             .iter()
             .any(Uuid::is_nil)
+            || self.authority_digest == [0; 32]
             || now >= self.expires_at
         {
             return Err(FeedError::PermissionDenied);
@@ -329,3 +331,6 @@ impl FeedResources for UnavailableFeed {
         Err(FeedError::DependencyUnavailable)
     }
 }
+
+pub mod content;
+pub use content::{CommentPage, CommentReader, PreparedCommand, ProjectedComment, Thread};

@@ -2,7 +2,10 @@
 use concert_application::feed::{FeedPage, ProjectedPost};
 use concert_domain::feed::{Content, FeedError};
 use serde_json::{json, Value};
-use std::sync::OnceLock;
+use std::{
+    collections::HashMap,
+    sync::{Arc, Mutex, OnceLock},
+};
 
 fn schema() -> Result<&'static Value, FeedError> {
     static SOURCE: OnceLock<Result<Value, FeedError>> = OnceLock::new();
@@ -36,11 +39,26 @@ pub fn validate(name: &str, value: &Value) -> Result<(), FeedError> {
     ) {
         return Err(FeedError::InvalidInput);
     }
-    let wrapper = json!({"$schema":"https://json-schema.org/draft/2020-12/schema","$ref":format!("#/components/schemas/{name}"),"components":schema()?["components"]});
-    let validator = jsonschema::options()
-        .should_validate_formats(true)
-        .build(&wrapper)
+    static VALIDATORS: OnceLock<Mutex<HashMap<String, Arc<jsonschema::Validator>>>> =
+        OnceLock::new();
+    let mut cache = VALIDATORS
+        .get_or_init(Default::default)
+        .lock()
         .map_err(|_| FeedError::DependencyUnavailable)?;
+    let validator = if let Some(validator) = cache.get(name) {
+        validator.clone()
+    } else {
+        let wrapper = json!({"$schema":"https://json-schema.org/draft/2020-12/schema","$ref":format!("#/components/schemas/{name}"),"components":schema()?["components"]});
+        let validator = Arc::new(
+            jsonschema::options()
+                .should_validate_formats(true)
+                .build(&wrapper)
+                .map_err(|_| FeedError::DependencyUnavailable)?,
+        );
+        cache.insert(name.into(), validator.clone());
+        validator
+    };
+    drop(cache);
     if validator.is_valid(value) {
         Ok(())
     } else {
@@ -88,4 +106,168 @@ pub fn create_post(bytes: &[u8]) -> Result<Content, FeedError> {
     validate("Domain_feed_CreatePost", &value)?;
     content.validate()?;
     Ok(content)
+}
+
+#[derive(serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+struct EditPostInput {
+    expected_revision: i64,
+    text: String,
+    media_ids: Vec<uuid::Uuid>,
+    links: Vec<concert_domain::feed::ResourceLink>,
+}
+#[derive(serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+struct CreateCommentInput {
+    text: String,
+    post_revision: i64,
+}
+#[derive(serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+struct EditCommentInput {
+    text: String,
+    expected_revision: i64,
+}
+#[derive(serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+struct RevisionRequest {
+    expected_revision: i64,
+}
+#[derive(serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+struct Empty {}
+fn decode<T: serde::de::DeserializeOwned>(name: &str, bytes: &[u8]) -> Result<T, FeedError> {
+    if bytes.len() > 65536 {
+        return Err(FeedError::InvalidInput);
+    }
+    let typed: T = serde_json::from_slice(bytes).map_err(|_| FeedError::InvalidInput)?;
+    let value: Value = serde_json::from_slice(bytes).map_err(|_| FeedError::InvalidInput)?;
+    validate(name, &value)?;
+    Ok(typed)
+}
+/// Path ID and operation come from the verified root route. For DELETE revision
+/// requests, bytes are the closed validated query object, not a DELETE body.
+pub fn command(
+    operation: &str,
+    target: Option<uuid::Uuid>,
+    bytes: &[u8],
+) -> Result<concert_domain::feed::FeedCommand, FeedError> {
+    use concert_domain::feed::FeedCommand::*;
+    let id = || {
+        target
+            .filter(|id| !id.is_nil())
+            .ok_or(FeedError::InvalidInput)
+    };
+    let result = match operation {
+        "createConcertPost" => {
+            if target.is_some() {
+                return Err(FeedError::InvalidInput);
+            }
+            CreatePost {
+                content: create_post(bytes)?,
+            }
+        }
+        "editConcertPost" => {
+            let r: EditPostInput = decode("Domain_feed_EditPost", bytes)?;
+            EditPost {
+                post: id()?,
+                expected_revision: r.expected_revision,
+                content: Content {
+                    text: r.text,
+                    media_ids: r.media_ids,
+                    links: r.links,
+                },
+            }
+        }
+        "deleteConcertPost" => {
+            let r: RevisionRequest = decode("Domain_common_RevisionRequest", bytes)?;
+            DeletePost {
+                post: id()?,
+                expected_revision: r.expected_revision,
+            }
+        }
+        "createConcertComment" => {
+            let r: CreateCommentInput = decode("Domain_feed_CreateComment", bytes)?;
+            CreateComment {
+                post: id()?,
+                post_revision: r.post_revision,
+                text: r.text,
+            }
+        }
+        "editConcertComment" => {
+            let r: EditCommentInput = decode("Domain_feed_EditComment", bytes)?;
+            EditComment {
+                comment: id()?,
+                expected_revision: r.expected_revision,
+                text: r.text,
+            }
+        }
+        "deleteConcertComment" => {
+            let r: RevisionRequest = decode("Domain_common_RevisionRequest", bytes)?;
+            DeleteComment {
+                comment: id()?,
+                expected_revision: r.expected_revision,
+            }
+        }
+        "likeConcertPost" | "unlikeConcertPost" => {
+            let _: Empty = decode("Domain_common_EmptyRequest", bytes)?;
+            SetReaction {
+                post: id()?,
+                present: operation == "likeConcertPost",
+            }
+        }
+        _ => return Err(FeedError::InvalidInput),
+    };
+    result.validate()?;
+    Ok(result)
+}
+pub fn comment(value: concert_application::feed::ProjectedComment) -> Result<Value, FeedError> {
+    let c = value.comment;
+    let author: Value =
+        serde_json::from_slice(&value.author.json).map_err(|_| FeedError::DependencyUnavailable)?;
+    if c.state != concert_domain::feed::ContentState::Published
+        || value.author.user_id != c.author
+        || author["user_id"] != c.author.to_string()
+    {
+        return Err(FeedError::DependencyUnavailable);
+    }
+    let dto = json!({"comment_id":c.id,"post_id":c.post,"author":author,"text":c.text,"revision":c.revision,"created_at":c.created_at});
+    validate("Domain_feed_CommentPublic", &dto).map_err(|_| FeedError::DependencyUnavailable)?;
+    Ok(dto)
+}
+pub fn comments(
+    page: concert_application::feed::CommentPage,
+    next_cursor: Option<String>,
+) -> Result<Value, FeedError> {
+    if page.next.is_some() != next_cursor.is_some() {
+        return Err(FeedError::DependencyUnavailable);
+    }
+    let items = page
+        .items
+        .into_iter()
+        .map(comment)
+        .collect::<Result<Vec<_>, _>>()?;
+    let dto = json!({"items":items,"next_cursor":next_cursor});
+    validate("Domain_feed_CommentList", &dto).map_err(|_| FeedError::DependencyUnavailable)?;
+    Ok(dto)
+}
+pub fn thread(
+    value: concert_application::feed::Thread,
+    next_cursor: Option<String>,
+) -> Result<Value, FeedError> {
+    let comments = comments(value.comments, next_cursor)?;
+    let dto = json!({"post":post(value.post)?,"comments":comments["items"],"next_cursor":comments["next_cursor"]});
+    validate("Domain_feed_PostDetail", &dto).map_err(|_| FeedError::DependencyUnavailable)?;
+    Ok(dto)
+}
+pub fn error(error: FeedError) -> (u16, &'static str) {
+    match error {
+        FeedError::InvalidInput => (400, "INVALID_INPUT"),
+        FeedError::ResourceUnavailable => (404, "RESOURCE_UNAVAILABLE"),
+        FeedError::PermissionDenied => (403, "PERMISSION_DENIED"),
+        FeedError::DependencyUnavailable => (503, "DEPENDENCY_UNAVAILABLE"),
+        FeedError::VersionConflict => (409, "VERSION_CONFLICT"),
+        FeedError::EventReadOnly => (409, "EVENT_READ_ONLY"),
+        FeedError::MediaNotReady => (409, "MEDIA_NOT_READY"),
+    }
 }
