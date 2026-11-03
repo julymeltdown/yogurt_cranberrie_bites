@@ -650,7 +650,7 @@ fn selected_release_binds_all_six_presets_without_layered_defaults() {
             event_title: "Selected event".into(),
             event_timezone: "Asia/Seoul".into(),
             phase: concert_domain::EventPhase::Open,
-            restriction_revision: 0,
+            restriction_revision: 1,
             active: true,
             participant_revision: 1,
             preferences: concert_domain::Preferences {
