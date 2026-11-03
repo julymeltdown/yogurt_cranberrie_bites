@@ -1,0 +1,127 @@
+{
+  "status": "MOCK_READY",
+  "genuineArtRuntime": "INTEGRATED",
+  "canonicalContract": "3398d8331863775ecc0180e5eccebddd179fedd5",
+  "runtimeProducer": "9fbc89426c6d0781c6f7a1f1a78ef722656407e5",
+  "reviewedArt": "7e07f7328f079991a9aedb7ad83a4b682decb543",
+  "assignmentBase": "3842354b56ed15a961e23b1cc4d31b52f46cec48",
+  "validationBase": "a3a6f5835f19bd556c71a046e60160297e1b9560",
+  "sourceCommit": "3c4dc76ffc0c336b5aeb76504554353bfb6e672b",
+  "sourceHashes": {
+    "frontend/src/features/avatar/whole-character/WholeCharacterEditor.tsx": "115b1912ddf6d70ee6a5ace175b8c69da0b02199a3dc6b27857b63eeb0d91d6f",
+    "frontend/src/features/avatar/whole-character/__tests__/controller.test.ts": "a6aaf32bcafd8d8500e500efc89dbb6cf33df14aa4e0b3f5cd1530b69e500ce2",
+    "frontend/src/features/avatar/whole-character/__tests__/fixtures.ts": "53592306906c2ecd1921bad6b60b467f7416c8bdf9a86c1f6d4633d0ea553e8d",
+    "frontend/src/features/avatar/whole-character/__tests__/native.mjs": "42fdfd89ec520e19c742bd984030c98b5308c97f73019041791d55b431c8b144",
+    "frontend/src/features/avatar/whole-character/__tests__/preview.html": "c51e8d20b2d076a6f107def63ba6196c052799daa559ef99819c35b6c9a2abc1",
+    "frontend/src/features/avatar/whole-character/__tests__/preview.tsx": "267d164b3ee185e1e5e345f272f49ba834c89f29375dba1e581c0bd938d266cb",
+    "frontend/src/features/avatar/whole-character/controller.ts": "9e34de46c857062892d5b64347876fe2485f7117c6c11e2af438775bb402a353",
+    "frontend/src/features/avatar/whole-character/model.ts": "ce1a8a3c3e5035983265c5f22a7ae163eb2cd511881ffae4c26e74b0f4ad385d",
+    "frontend/src/features/avatar/whole-character/whole-character.css": "ded58eb5d0666c7e5fbd92384d74a15cc0739a4b3860081b5fceb898ff343a96",
+    "frontend/src/entities/avatar/whole-character/index.ts": "9aa451c0fc7a75db299f5a0604ad14d42e26d5560a98bd5528937092d6ffa731",
+    "frontend/src/entities/avatar/whole-character/contract.ts": "5d60fa0bd3eb89f750646a4e75ad33670d8ca1d09b4d2af7eba1a6d3a0990a0d",
+    "frontend/src/entities/avatar/whole-character/runtime.ts": "46aa13d5ec97b9c956ce8fc99957450818b99aa0c7704167e7939f0013b49420",
+    "frontend/src/entities/avatar/whole-character/view.tsx": "209ade8b11f93e4f711ffc83b7a663c59f69a54c51c7eff7fb3280ab29e1c324",
+    "frontend/src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "frontend/src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "frontend/src/features/avatar/__tests__/fixtures/harness.ts": "e4c8bf64a4a0106aa0817b4ef71e605340b650c9bc184e5cacb96f44d923937d",
+    "frontend/src/features/avatar/__tests__/reference-target/native.mjs": "dff8dbe37e7f5847f4bf6bd4bd40b40b99c36a7d333ef779f7b374f68b64c327",
+    "frontend/src/features/avatar/__tests__/reference-target/preview.tsx": "604e9f4efe2b7f914ea0343c38cef91c4a3ea8dd829da29e6fd7aa35fbf9e53c",
+    "frontend/src/features/me/model/contract.ts": "c25f344aee392ed78d659a330dbcaa088acf8c7560fd3d7767a27e1423886d0c",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/shared/api/http.ts": "441983a9e40cea38ad2f93a5a7101ee22a0d10dc3f50ec9b6ecf878dcd4c70a1",
+    "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/assets/v1/avatar-manifest.schema.json": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+    "contracts/generated/mcr-core.openapi.json": "4ea617a4ccf96c72b2e5db99e64666f676048f5baf215a2a05d540ef3bdde542",
+    "contracts/fixtures/core/private-participant.json": "c1c7373656cde682a4fd706d7b1d6f8e0c97192e093fbaee0862e9c6802e11db",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+    "frontend/public/world/avatars/derived-v1/static-release.json": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+    "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+    "docs/mcr/design/reference-target-2026-11-04.png": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "evidenceHashes": {
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/build.txt": "a885d34d6b5bb2186afbaf93a66dcb16531d057994a18710d540e5d2361e756a",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/native/characters-360.png": "e29a09fa3bea1f5a889e1e3db6227f1e730955d2962fe4bb715343c0dff7725a",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/native/characters-390.png": "2b11412bcf992b5b0fdd4cfc99d402d8a783a0886319fab82c7281d50796d17a",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/native/characters-430.png": "1078801c5a016d60c758f6f488db5eb4ad214dd0fd0c12ad67236b939021ac04",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/native/comparison-390.png": "788d6a47aa7753d14a1795b1bd9ea081c0fb848faf8e7fc5ee82ad30d864ff24",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/native/report.json": "d28aa0736a9e9fad6792277650ab0b5c97c5b24604492b34dc21eb3e48d95bb9",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/native/sixth-character-390.png": "e7552909ec77fce9a353114c74432366da0493ca03420e13bae8e836a4546eb5",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/native/uncertain-reset-390.png": "cf7a59f6ab40ac1ecc9542af3f8c9a317df9336b676f8c110b4001aa3f106205",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/plan.json": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "frontend/src/features/avatar/whole-character/__tests__/evidence/tests.txt": "e85b282911ddeae411add6735eb74fe554448cb036c5157ecdcf20e0afde54e0"
+  },
+  "documentHash": "069c498c1dc792644129001f574ee5a9f2408e90ef037d10fc1daafe0082cde8",
+  "checks": [
+    {
+      "name": "affected-avatar-tests",
+      "command": "node node_modules/vitest/vitest.mjs run src/features/avatar --configLoader runner --no-cache",
+      "cwd": "frontend",
+      "exitCode": 0,
+      "files": 8,
+      "tests": 67,
+      "newWholeTests": 13
+    },
+    {
+      "name": "strict-types",
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+      "cwd": "frontend",
+      "exitCode": 0
+    },
+    {
+      "name": "scoped-lint",
+      "command": "node node_modules/oxlint/bin/oxlint src/features/avatar/whole-character",
+      "cwd": "frontend",
+      "exitCode": 0
+    },
+    {
+      "name": "application-production-build",
+      "command": "Vite build default app private outDir; removed in finally",
+      "exitCode": 0
+    },
+    {
+      "name": "whole-editor-production-build",
+      "command": "Vite build with explicit rolldownOptions.input=owned preview.html; private outDir removed in finally",
+      "exitCode": 0
+    },
+    {
+      "name": "genuine-art-native",
+      "command": "node frontend/src/features/avatar/whole-character/__tests__/native.mjs",
+      "exitCode": 0,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "captures": 6
+    },
+    {
+      "name": "plan",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0
+    }
+  ],
+  "cleanup": {
+    "nativeTempRemoved": true,
+    "ownBuildOutputRemoved": true,
+    "ownDependencyLinkRemoved": true,
+    "freeDiskBytes": 81507819520,
+    "freeDiskGiB": 75.91
+  },
+  "limits": [
+    "Deterministic HTTP only; real BE native NOT_RUN",
+    "Actual root whole dispatch/World propagation separate owner NOT_RUN",
+    "Physical iOS/Android and multiuser NOT_RUN",
+    "Whole front-idle variant does not certify full layered or ten-screen visual acceptance"
+  ],
+  "peerFixes": [
+    "Retry cannot discard conflict/unknown draft",
+    "Highest verified candidate revision/config retained across reload/stop/start",
+    "Warm exact baseline resumes editing without needless candidate; failures remain fenced",
+    "Complete C03 self projection rejects extra fields and separates participant/avatar revision",
+    "Keyboard pager boundary retains focus with aria-disabled and guarded actions"
+  ],
+  "logNormalization": "ANSI/trailing whitespace/blank EOF removed; command outcomes unchanged"
+}
