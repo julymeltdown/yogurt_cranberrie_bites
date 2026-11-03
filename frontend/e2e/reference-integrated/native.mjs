@@ -19,7 +19,7 @@ const report={kind:'mcr-reference-integrated-v1',candidate:execFileSync('git',['
  reference:{sha256:REFERENCE_SHA256,width:1536,height:1024,crops:CASES.map(({id,rect})=>({id,rect}))},
  evidenceStatus:'IN_PROGRESS',visualAcceptance:'NOT_RUN',liveServices:'NOT_RUN',devices:'NOT_RUN',fixtureMetadataIsApproval:false,
  sourceHashes:{},approvedBytePins:{},cases:[],warm:[],findings:[],browser:''}
-for(const path of ['AGENTS.md','frontend/src/app/router.tsx','frontend/src/app/CommunityFeatures.tsx','frontend/src/app/WorldShell.tsx','frontend/src/app/shell.css','frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.tsx','frontend/src/entities/avatar/character-source-pack.json','contracts/generated/mcr-core.openapi.json','contracts/generated/mcr-domain.openapi.json']){
+for(const path of ['AGENTS.md','frontend/src/app/router.tsx','frontend/src/app/CommunityFeatures.tsx','frontend/src/app/WorldShell.tsx','frontend/src/app/shell.css','frontend/src/world/scenes/MapScene.ts','frontend/src/world/input/controller.ts','frontend/src/world/input/controls.css','frontend/src/app/__tests__/default-shell/illustrated-overview/fixture.tsx','frontend/src/entities/avatar/character-source-pack.json','contracts/generated/mcr-core.openapi.json','contracts/generated/mcr-domain.openapi.json']){
  report.sourceHashes[path]=hash(await readFile(resolve(root,path)))
 }
 const reservation=createNetServer();await new Promise(done=>reservation.listen(0,'127.0.0.1',done));const port=reservation.address().port;await new Promise(done=>reservation.close(done))
@@ -31,8 +31,11 @@ const navigate=(page,path)=>page.evaluate(p=>window.__REFERENCE_INTEGRATED__.nav
 async function settled(page,item){
  await expect.poll(()=>state(page)).toBeTruthy()
  await expect.poll(async()=>(await state(page)).path).toBe(item.route)
- if(!item.public){await expect.poll(async()=>(await state(page)).published,{timeout:20000}).toBe(true);await expect.poll(async()=>(await state(page)).room).toBeTruthy()}
+ if(!item.public){await expect.poll(async()=>(await state(page)).published,{timeout:20000}).toBe(true);if(item.id==='world')await expect.poll(async()=>(await state(page)).room).toBeTruthy()}
  await expect(page.getByText(/^Opening (this section|your account|your profile|your avatar|settings|map|wall|parties|gifts|account controls)…$/)).toHaveCount(0,{timeout:12000})
+ await expect(page.getByText('Opening this page',{exact:true})).toHaveCount(0,{timeout:15000})
+ if(item.public)await expect(page.locator(item.id==='login'?'.auth-sign-in':'.public-poster')).toBeVisible()
+ const gallery=page.locator('.selected-static-gallery');if(await gallery.count())await expect(gallery).toHaveAttribute('data-art-state','ready',{timeout:8000})
  await page.evaluate(()=>document.fonts.ready)
 }
 async function instrument(context,page){
@@ -42,6 +45,9 @@ async function instrument(context,page){
   const decode=HTMLImageElement.prototype.decode,metrics={calls:0,resolved:0,rejected:0}
   HTMLImageElement.prototype.decode=function(...args){metrics.calls++;return decode.apply(this,args).then(v=>{metrics.resolved++;return v},e=>{metrics.rejected++;throw e})}
   Object.defineProperty(window,'__QA_IMAGE_DECODE__',{value:metrics})
+  const original=URL.createObjectURL,blobs=[],jobs=[]
+  URL.createObjectURL=function(blob){const url=original.call(this,blob);if(blob instanceof Blob&&blob.type.startsWith('image/'))jobs.push(blob.arrayBuffer().then(bytes=>crypto.subtle.digest('SHA-256',bytes)).then(value=>blobs.push({url,sha256:[...new Uint8Array(value)].map(v=>v.toString(16).padStart(2,'0')).join(''),bytes:blob.size,type:blob.type})));return url}
+  Object.defineProperty(window,'__QA_IMAGE_BLOBS__',{value:blobs});Object.defineProperty(window,'__QA_IMAGE_BLOB_JOBS__',{value:jobs})
  })
  const cdp=await context.newCDPSession(page);await cdp.send('Network.enable');await cdp.send('Network.setCacheDisabled',{cacheDisabled:false})
  cdp.on('Network.requestWillBeSent',e=>{if(!/^https?:/.test(e.request.url))return;const row={path:new URL(e.request.url).pathname,type:e.type,encodedBytes:0,fromDiskCache:false,fromMemoryCache:false,fromServiceWorker:false};records.push(row);byId.set(e.requestId,row)})
@@ -50,7 +56,8 @@ async function instrument(context,page){
  cdp.on('Network.loadingFinished',e=>{const r=byId.get(e.requestId);if(r)r.encodedBytes=e.encodedDataLength})
  return {records,errors,cdp}
 }
-async function measures(page){return page.evaluate(()=>{
+async function measures(page){return page.evaluate(async()=>{
+ await Promise.all(window.__QA_IMAGE_BLOB_JOBS__)
  const box=el=>{if(!el)return null;const r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}}
  const visible=el=>el.checkVisibility()&&el.getBoundingClientRect().width>1&&el.getBoundingClientRect().height>1
  const controls=[...document.querySelectorAll('button,a,input,select,textarea,summary')].filter(visible).map(el=>{
@@ -61,11 +68,12 @@ async function measures(page){return page.evaluate(()=>{
  return {viewport:{width:innerWidth,height:innerHeight},scroll:{width:document.documentElement.scrollWidth,height:document.documentElement.scrollHeight},overflow:document.documentElement.scrollWidth>innerWidth,
  bounds:{shell:select('.world-shell'),title:select('.mcr-chrome-panel-header,.auth-titlebar,.public-entry-title'),panel:select('.shell-panel'),body:select('.shell-panel-body'),tabs:select('.party-tabs,.gift-tabs,.mcr-profile-tabs'),footer:select('.mcr-parade-footer,.meet-create,.gift-create'),world:select('.shell-world')},
  rows:[...document.querySelectorAll('.meet-party,.gift-discovery-row,.gift-row,.feed-post,.concert-row')].filter(visible).map(box),controls,smallControls:controls.filter(c=>c.rect.width<43.9||c.rect.height<43.9),images,
+ cssArtwork:[...document.querySelectorAll('.selected-static-gallery span')].filter(visible).map(el=>{const bg=getComputedStyle(el).backgroundImage,blob=window.__QA_IMAGE_BLOBS__.find(b=>bg.includes(b.url));return {rect:box(el),bytes:blob?.bytes??null,sha256:blob?.sha256??null}}),
  decode:{...window.__QA_IMAGE_DECODE__},headings:[...document.querySelectorAll('h1,h2,h3')].filter(visible).map(el=>el.textContent),actions:controls.filter(c=>/join|create|reserve|save|enter|sign in/i.test(c.name))}
  })}
 async function simpleAction(page,item){
  if(item.id==='landing'){
-  const enter=page.getByRole('link',{name:/Enter the world/i});if(await enter.count()){await enter.click();return {status:'PASS',kind:'entry-route',path:(await state(page)).path}}return {status:'NOT_RUN',code:'ENTRY_CONTROL_NOT_FOUND'}
+  const enter=page.getByRole('link',{name:'Sign in to enter',exact:true});if(await enter.count()){await enter.click();return {status:'PASS',kind:'entry-route',path:(await state(page)).path}}return {status:'NOT_RUN',code:'ENTRY_CONTROL_NOT_FOUND'}
  }
  if(item.id==='login'){
   await page.getByLabel('Email',{exact:true}).fill('fixture@example.test');await page.getByLabel('Password',{exact:true}).fill('fixture-password')
@@ -102,7 +110,7 @@ try{
    if(i.errors.length)report.findings.push({id:item.id,width,code:'PAGE_ERRORS',errors:i.errors})
    entry.status='CAPTURED'
   }catch(error){entry.status='FAIL';entry.code='HARNESS_OR_COMPOSITION_ASSERTION';entry.error=String(error.message).slice(0,1200)}
-  finally{report.cases.push(entry);await page.evaluate(()=>window.__REFERENCE_INTEGRATED__?.dispose()).catch(()=>{});await context.close()}
+  finally{console.log(JSON.stringify({route:item.route,width,status:entry.status,code:entry.code}));report.cases.push(entry);await writeFile(resolve(output,'report.partial.json'),JSON.stringify(report,null,2)+'\n',{mode:0o600});await page.evaluate(()=>window.__REFERENCE_INTEGRATED__?.dispose()).catch(()=>{});await context.close()}
  }
  // Separate warm-navigation/era/cache experiment; never infer decode reuse from HTTP cache alone.
  for(const width of WIDTHS){
@@ -125,7 +133,7 @@ try{
  }
  report.evidenceStatus=report.cases.every(c=>c.status==='CAPTURED')&&report.warm.every(c=>c.status==='PASS')?'CAPTURED':'PARTIAL'
  // Pin actual immutable public scenery/selected-art files that were requested; never synthetic bytes as approved art.
- for(const path of [...new Set(report.cases.flatMap(c=>c.measurements?.images??[]).map(x=>x.source).filter(p=>p.startsWith('/world/'))) ]){
+ for(const path of new Set(report.cases.flatMap(c=>c.measurements?.images??[]).map(x=>x.source).filter(p=>p.startsWith('/world/')))){
   try{report.approvedBytePins[path]={sha256:hash(await readFile(resolve(frontend,'public',path.slice(1)))),authority:'SOURCE_BYTES_ONLY_NOT_IDENTITY_MAPPING'}}catch{report.approvedBytePins[path]={status:'UNREADABLE'}}
  }
  await writeComparison(output,report)
