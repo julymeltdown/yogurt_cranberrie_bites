@@ -82,8 +82,8 @@ cells are checked with supercover grid traversal, including both neighbors at a
 diagonal corner and the adjacent cell when traveling exactly along a grid edge.
 Outside cells are blocked. A blocked segment rejects the whole step (no wall
 slide); a clear endpoint beyond a wall cannot tunnel through it. Traversal fails
-closed at 128 visited cells, sufficient for a 50-pixel max movement step even with
-1-pixel tiles; long interactions can also fail closed at this ceiling.
+closed at 512 visited cells, covering both a 50-pixel maximum movement step
+and a 256-pixel interaction segment even with 1-pixel tiles.
 
 `interaction_in_range` requires a known interaction, server foot coordinate,
 configured Euclidean virtual range and clear segment. A consumed one-shot intent
@@ -174,7 +174,7 @@ Executed from the assigned checkout on 2026-11-04 (Asia/Seoul):
 | `git diff --check` | 0 |
 | `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend CARGO_BUILD_JOBS=2 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -p concert-service --test world_simulation` | NOT_RUN; queued explicit shared compile lease with delivery |
 
-Nineteen deterministic test cases cover strict intent decoding/teleport attempts,
+Twenty deterministic test cases cover strict intent decoding/teleport attempts,
 invalid axes and safe counters, scalar/diagonal speed, 50ms timing/ack, packet
 flood/rate refill, input gaps/replays, stream/epoch/session/connection/owner/pin
 fencing, takeover reset, access-expiry immutability and bucket preservation,

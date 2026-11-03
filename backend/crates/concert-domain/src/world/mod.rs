@@ -7,7 +7,7 @@ use uuid::Uuid;
 pub const STEP_MS: u64 = 50;
 pub const MAX_SEQUENCE: u64 = 9_007_199_254_740_991;
 pub const MAX_GRID_CELLS: usize = crate::place::MAX_GRID_CELLS;
-pub const MAX_SWEEP_CELLS: usize = 128;
+pub const MAX_SWEEP_CELLS: usize = 512;
 pub const MAX_INTERACTIONS: usize = 256;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, thiserror::Error)]

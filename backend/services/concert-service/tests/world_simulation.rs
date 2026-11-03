@@ -456,3 +456,36 @@ fn frozen_c06_synthetic_geometry_has_expected_spawn_and_collision() {
         Position { x: 112.0, y: 80.0 }
     ));
 }
+
+#[test]
+fn maximum_range_interaction_on_one_pixel_grid_is_not_truncated() {
+    let g = Geometry::new(
+        300,
+        1,
+        1,
+        1,
+        "collision_long".into(),
+        vec![vec![0; 300]],
+        vec![vec![1; 300]],
+        vec![vec![0; 300]],
+        vec![Spawn {
+            id: "spawn_long".into(),
+            x: 0,
+            y: 0,
+        }],
+        vec![Interaction {
+            id: "inspect_long".into(),
+            place_id: PlaceId::from_str("00000000-0000-4000-8000-000000000090").unwrap(),
+            x: 256,
+            y: 0,
+        }],
+        "spawn_long".into(),
+    )
+    .unwrap();
+    let map = WorldMap::from_geometry(&g).unwrap();
+    assert!(map.interaction_in_range(
+        map.spawn("spawn_long").unwrap(),
+        "inspect_long",
+        Limits::new(120.0, 256.0, 250).unwrap()
+    ));
+}
