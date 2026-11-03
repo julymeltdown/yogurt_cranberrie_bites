@@ -28,7 +28,11 @@ python3 /absolute/path/to/check-boundaries.py \
 ```
 
 `--allow-doc` is repeatable and grants only an exact repository-relative file with
-suffix `.md`, `.rst`, or `.txt` under `docs/mcr/` or the selected lane. It grants
+suffix `.md`, `.rst`, or `.txt` under `docs/mcr/` or the selected lane. Exact
+`.json` audit documentation paths are also allowed under `docs/mcr/` only, such
+as `docs/mcr/frontend/reuse-inventory.json` and
+`docs/mcr/backend/source-inventory.json`. Reserved `contracts/` and `generated/`
+segments remain denied. It grants
 neither a directory nor a glob. Traversal, absolute paths, backslashes, opposite
 lane files, original source documents, and reserved files cannot be exceptions.
 Lane documentation also requires this explicit assignment. CLI inputs express

@@ -145,6 +145,13 @@ class BoundariesTest(unittest.TestCase):
         self.write("frontend/docs/unassigned.md", "Notes\n")
         self.assert_guard(1, contains="documentation requires an exact")
 
+    def test_exact_json_audit_documents_allowed_only_under_docs_mcr(self):
+        for path in ("docs/mcr/frontend/reuse-inventory.json", "docs/mcr/backend/source-inventory.json"):
+            self.write(path, '{"scope": "audit"}\n')
+        self.assert_guard(1, contains="outside frontend/")
+        self.assert_guard(0, "frontend", "--allow-doc", "docs/mcr/frontend/reuse-inventory.json",
+                          "--allow-doc", "docs/mcr/backend/source-inventory.json")
+
     def test_doc_assignment_is_not_a_prefix(self):
         self.write("docs/mcr/qa/assigned.md", "Notes\n")
         self.write("docs/mcr/qa/assigned.md.extra", "Notes\n")
@@ -154,7 +161,9 @@ class BoundariesTest(unittest.TestCase):
     def test_invalid_docs_cannot_override_boundaries(self):
         for path in ("backend/docs/notes.md", "docs/source/fixture.md", "frontend/package.json",
                      "frontend/src/generated/notes.md", "frontend/AGENTS.md", "docs/mcr/",
-                     "docs/mcr/*.md", "docs/mcr/../secret.md", "/tmp/notes.md"):
+                     "docs/mcr/*.md", "docs/mcr/../secret.md", "/tmp/notes.md",
+                     "frontend/docs/audit.json", "backend/docs/audit.json",
+                     "docs/mcr/contracts/audit.json", "docs/mcr/generated/audit.json"):
             with self.subTest(path=path):
                 self.assert_guard(2, "frontend", "--allow-doc", path)
 

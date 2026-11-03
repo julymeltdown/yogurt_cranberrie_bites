@@ -116,6 +116,7 @@ def central_reason(path: str) -> str | None:
 def valid_doc(path: str, lane: str) -> bool:
     return safe_path(path) and not any(c in path for c in "*?[]") and (
         PurePosixPath(path).suffix in DOC_SUFFIXES
+        or (path.startswith("docs/mcr/") and PurePosixPath(path).suffix == ".json")
     ) and (
         path.startswith("docs/mcr/") or path.startswith(lane + "/")
     ) and central_reason(path) is None
@@ -237,7 +238,7 @@ def main() -> int:
     parser.add_argument("--lane", choices=("backend", "frontend"), required=True)
     parser.add_argument(
         "--allow-doc", action="append", default=[], metavar="PATH",
-        help="repeat for each exact assigned .md/.rst/.txt path; no directories/globs",
+        help="exact assigned .md/.rst/.txt path, or .json under docs/mcr/; no directories/globs",
     )
     args = parser.parse_args()
     try:
