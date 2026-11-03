@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { usePorts } from '../../../app/access'
 import { safeReturnTarget } from '../../../app/routes'
 import type { AuthState } from '../model/session'
+import { ConcertAction, ConcertWindow } from '../../../shared/ui/concert-window'
 import './sign-in.css'
 
 const unavailable: AuthState = { readiness: 'unavailable', pending: null, capabilities: 'error', emailEnabled: false, notice: null, logout: 'none' }
@@ -37,10 +38,11 @@ export function SignIn() {
     if (accepted && alive.current && auth.read().readiness === 'ready') void navigate(target, { replace: true })
   }
   const busy = state.pending !== null, signedIn = state.readiness === 'ready'
-  return <main className="auth-sign-in" id="main" tabIndex={-1}>
+  return <main className="auth-sign-in auth-sign-in--concert" id="main" tabIndex={-1}>
     <Link className="auth-home" to="/">MCR Concert World</Link>
+    <ConcertWindow title={signedIn ? 'You’re signed in' : 'Sign in'} headingLevel={1}
+      onClose={() => { void navigate('/') }} closeLabel="Close sign-in and return home">
     <p className="auth-eyebrow">THE NEXT SHOW STARTS HERE</p>
-    <h1>{signedIn ? 'You’re signed in' : 'Sign in'}</h1>
     <p className="auth-intro">Keep your place in the crowd.</p>
     <div role="status" aria-live="polite" className="auth-message">
       {state.pending === 'login' && <p>Signing you in…</p>}
@@ -65,12 +67,12 @@ export function SignIn() {
           <label htmlFor="sign-in-password">Password</label>
           <input ref={passwordInput} id="sign-in-password" name="password" type="password" autoComplete="current-password"
             required maxLength={128} disabled={busy || !state.emailEnabled} value={password} onChange={event => setPassword(event.target.value)} />
-          <button className="auth-submit" type="submit" disabled={busy || !state.emailEnabled}>{state.pending === 'login' ? 'Signing in…' : 'Sign in with email'}</button>
+          <ConcertAction className="auth-submit" type="submit" pending={state.pending === 'login'} disabled={busy || !state.emailEnabled}>{state.pending === 'login' ? 'Signing in…' : 'Sign in with email'}</ConcertAction>
         </form>
         <Link className="auth-link" to="/reset-password">Forgot password?</Link>
         <div className="auth-providers" aria-label="Other sign-in options">
           <p>Other sign-in options</p>
-          {['Google', 'Apple', 'X'].map(provider => <button key={provider} type="button" disabled aria-describedby="provider-unavailable">Continue with {provider}</button>)}
+          <div className="auth-provider-buttons">{['Google', 'Apple', 'X'].map(provider => <button key={provider} type="button" disabled aria-label={`Continue with ${provider}`} aria-describedby="provider-unavailable">{provider}</button>)}</div>
           <p id="provider-unavailable">Provider sign-in is not available yet.</p>
         </div>
       </>}
@@ -79,5 +81,6 @@ export function SignIn() {
     </>}
     {!signedIn && <Link className="auth-link auth-back" to={target}>Back to your destination</Link>}
     <Link className="auth-link auth-back" to="/">Back to home</Link>
+    </ConcertWindow>
   </main>
 }

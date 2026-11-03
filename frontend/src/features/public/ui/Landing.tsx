@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAccess, usePorts } from '../../../app/access'
 import { PublicFrame } from './PublicFrame'
+import { ConcertAction, ConcertIcon, ConcertWindow } from '../../../shared/ui/concert-window'
 
 export function Landing() {
   const ports = usePorts(), { readiness, scope, session } = useAccess(), navigate = useNavigate()
@@ -21,27 +22,32 @@ export function Landing() {
   const status = opening ? 'Opening the world…' : checking ? 'Checking your session…'
     : readiness === 'unavailable' ? 'World entry is not open yet.'
       : anonymous ? 'Sign in to check entry to the world.' : 'We could not confirm entry. You can check sign-in again.'
-  return <PublicFrame>
-    <section className="public-hero" aria-labelledby="public-title">
+  return <PublicFrame appearance="poster">
+    <div className="public-hero">
+      <ConcertWindow title="One world. Every era." headingLevel={1} icon="star">
+      <div className="public-poster">
       <p className="public-eyebrow">An online world for My Chemical Romance fans</p>
-      <h1 id="public-title">One world.<br />{' '}Every era.</h1>
-      <p className="public-lead">The music brought us here. A shared 2D world is being built for the crowd around it.</p>
+      <p className="public-poster-wordmark" aria-hidden="true"><span>My Chemical</span><strong>Romance</strong></p>
+      <div className="public-poster-mark" aria-hidden="true"><span>REVENGE</span><ConcertIcon name="star" /><span>PARADE</span><ConcertIcon name="star" /><span>DANGER</span></div>
+      <p className="public-poster-motto">The fan<br /><em>social world.</em></p>
+      <p className="public-lead">Meet the crowd. Share the night. Leave a mark.</p>
       <div className="public-entry-action">
         {anonymous ? <Link className="public-primary" to="/login?returnTo=%2Fworld" aria-describedby="public-entry-status">Sign in to enter</Link>
-          : <button className="public-primary" type="button" disabled aria-describedby="public-entry-status">{opening ? 'Opening the world…' : checking ? 'Checking entry…' : 'Enter the world'}</button>}
+          : <ConcertAction className="public-primary" type="button" disabled aria-describedby="public-entry-status">{opening ? 'Opening the world…' : checking ? 'Checking entry…' : 'Enter the world'}</ConcertAction>}
         <p id="public-entry-status" role="status" aria-live="polite">{status}</p>
         {ports.readiness.retry && !checking && !opening && !anonymous && <button className="public-text-link" type="button" onClick={() => ports.readiness.retry?.()}>Check entry again</button>}
       </div>
       <a className="public-text-link" href="#public-about">About this space</a>
-    </section>
+      </div>
+      </ConcertWindow>
+    </div>
     <section className="public-about" id="public-about" tabIndex={-1} aria-labelledby="public-about-title">
-      <p className="public-eyebrow">Built around a shared space</p>
       <h2 id="public-about-title">A place for the crowd.</h2>
-      <p>Meet other fans in the world, follow the event conversation, and leave a mark together. These community features are still being prepared.</p>
+      <p>A shared world, event conversation and pixel wall. Community features are still being prepared.</p>
       <dl className="public-features">
-        <div><dt>Find your people</dt><dd>A world and community for meeting fellow fans.</dd></div>
-        <div><dt>Share the night</dt><dd>Event stories, plans, and fan giveaways.</dd></div>
-        <div><dt>Make something together</dt><dd>A shared pixel wall, one mark at a time.</dd></div>
+        <div><dt>Meet</dt><dd>Find fellow fans.</dd></div>
+        <div><dt>Share</dt><dd>Stories and plans.</dd></div>
+        <div><dt>Create</dt><dd>One pixel at a time.</dd></div>
       </dl>
       <Link className="public-text-link" to="/legal/safety">Read the safety information</Link>
     </section>

@@ -1,0 +1,58 @@
+{
+  "base": "453312121ae7539c027b9deb19009f9f569d4040",
+  "browser": "156.0.8078.80",
+  "records": [
+    {
+      "filename": "before-home-360.png",
+      "width": 360,
+      "sha256": "b75ae76757714874137e766ee4eeb9c0c3c8fa076c3b54f932838579394e0122"
+    },
+    {
+      "filename": "before-login-360.png",
+      "width": 360,
+      "sha256": "c3d186e2511855eab92378d0932257d90bf0e092f04436b89245876a87a3c024"
+    },
+    {
+      "filename": "before-populated-360.png",
+      "width": 360,
+      "sha256": "50b56e8a3e26a22b18ea48a0f5dd4035f53035d275a24f3a81f2d4b226516d54"
+    },
+    {
+      "filename": "before-home-390.png",
+      "width": 390,
+      "sha256": "8580c234f1fc88d8a57310a50b4bae5d8600698489a499ea7d2953c6eb09faf0"
+    },
+    {
+      "filename": "before-login-390.png",
+      "width": 390,
+      "sha256": "f73535c98f910bc2292cc952dd2d7b276ad20362b42fb47ccedb0fd2861c9c59"
+    },
+    {
+      "filename": "before-populated-390.png",
+      "width": 390,
+      "sha256": "aad1518f8a90c86ff09f964ad8b0944ba6e67c85ee0886651ea3578708972f17"
+    },
+    {
+      "filename": "before-home-430.png",
+      "width": 430,
+      "sha256": "53f87977f74aab7a445f6c458e8c9fe33baa0805b765dbc9b3108273159acbf7"
+    },
+    {
+      "filename": "before-login-430.png",
+      "width": 430,
+      "sha256": "c31dbbb51b20bf3ca08696eb40ea65b07e2483535b197432969381133e5a2bcc"
+    },
+    {
+      "filename": "before-populated-430.png",
+      "width": 430,
+      "sha256": "d5f04f67a466c624caf1d845859210fb7d199d0571da7690c9d18b61bb2c1d9b"
+    }
+  ],
+  "sourceHashes": {
+    "frontend/src/features/public/ui/Landing.tsx": "f3e210391468888e881c2099636617788643e9ea3164501f39c6a57f7468e605",
+    "frontend/src/features/public/ui/PublicFrame.tsx": "aab856068c7a1da42137c02c20fac52d930d2b3ecad028c057a31dca964635bd",
+    "frontend/src/features/public/ui/public.css": "dbdcd7cc78001f1d71b9d500556650121031063a27e1417e9747ec1a175f4fb5",
+    "frontend/src/features/auth/ui/SignIn.tsx": "a548da9e96dab311e79494ed88dce362c9014b0bf4292a85bcd1782c6d40c621",
+    "frontend/src/features/auth/ui/sign-in.css": "1f728a8dbfb86db2108efbcd6cb09fcbce6510ca2c4e27f8cb30ed90f0d90326"
+  }
+}

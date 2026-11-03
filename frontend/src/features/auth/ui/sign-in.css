@@ -21,3 +21,29 @@
 .auth-actions { display: grid; gap: .75rem; }
 .auth-back { margin-top: 1rem; margin-right: 1rem; }
 @media (prefers-reduced-motion: reduce) { .auth-sign-in * { scroll-behavior: auto; } }
+
+/* UIV02 overrides are exclusive to SignIn; other account pages keep their styles. */
+.auth-sign-in--concert { width: min(100%, 27rem); padding: 0 0 max(12px, env(safe-area-inset-bottom, 0px)); font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif; }
+.auth-sign-in--concert > .auth-home { min-height: 44px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+.auth-sign-in--concert .concert-window__body { padding: 14px 14px 10px; }
+.auth-sign-in--concert .concert-window__titlebar h1 { font: 700 24px/1.15 Impact, "Arial Narrow", sans-serif; letter-spacing: .045em; margin: 0; }
+.auth-sign-in--concert .concert-window__close { width: 44px; height: 44px; min-height: 44px; padding: 0; border: 2px solid #eadbc4; border-radius: 0; background: #921f28; color: #fff9ed; opacity: 1; }
+.auth-sign-in--concert .auth-eyebrow { color: #62503c; margin: 1px 0 3px; font-size: 10px; letter-spacing: .13em; }
+.auth-sign-in--concert .auth-intro { color: #514637; margin: 0 0 8px; font-size: 14px; }
+.auth-sign-in--concert .auth-message { color: #7b1824; font-size: 14px; font-weight: 650; }
+.auth-sign-in--concert .auth-message p { margin: 7px 0; line-height: 1.45; }
+.auth-sign-in--concert form { gap: 6px; margin: 12px 0 2px; }
+.auth-sign-in--concert label { margin: 3px 0 0; font-size: 13px; font-weight: 800; text-transform: uppercase; }
+.auth-sign-in--concert input { min-height: 46px; border: 1px solid #635440; border-radius: 0; background: #faf3e4; color: #1d1a17; padding: 8px 10px; font-size: 16px; }
+.auth-sign-in--concert button { border-radius: 0; min-width: 44px; }
+.auth-sign-in--concert .auth-submit { min-height: 48px; border: 2px solid #4d181e; border-radius: 0; background: #921f28; color: #fff6e7; font: 800 17px/1.2 "Arial Narrow", Arial, sans-serif; text-transform: uppercase; margin-top: 8px; }
+.auth-sign-in--concert :disabled { opacity: 1; color: #625542; background: #ded4c0; border-color: #87755d; cursor: not-allowed; }
+.auth-sign-in--concert .auth-providers { margin: 8px 0 10px; gap: 5px; padding-top: 9px; border-top: 1px solid #ab987a; }
+.auth-sign-in--concert .auth-providers > p { color: #514637; font-size: 12px; margin: 0; }
+.auth-sign-in--concert .auth-provider-buttons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.auth-sign-in--concert .auth-provider-buttons button { padding: 8px 4px; min-height: 44px; font-size: 14px; font-weight: 750; }
+.auth-sign-in--concert .auth-link { min-width: 44px; min-height: 44px; font-size: 13px; }
+.auth-sign-in--concert .auth-back { margin-top: 0; margin-right: 10px; }
+.auth-sign-in--concert .concert-window__body > p { font-size: 14px; line-height: 1.5; }
+.auth-sign-in--concert :focus-visible { outline: 3px solid #921f28; outline-offset: 3px; }
+.auth-sign-in--concert .concert-window__titlebar :focus-visible { outline-color: #fff1cf; outline-offset: -5px; }

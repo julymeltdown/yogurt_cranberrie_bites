@@ -43,3 +43,54 @@
 .public-back { margin-top: 2rem; }
 @media (max-width: 430px) { .public-brand { gap: .45rem; font-size: 1.3rem; } .public-brand span { font-size: .72rem; } }
 @media (prefers-reduced-motion: reduce) { .public-entry * { scroll-behavior: auto; } }
+
+/* UIV02 landing-only treatment. DocumentPage keeps the public-paper rules above. */
+.public-entry--poster {
+  max-width: 30rem;
+  padding: 0 5px;
+  background: #1b1917;
+  color: #f3e8d3;
+  font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+}
+.public-entry--poster .public-header { padding: 4px 7px; gap: 8px; border-bottom: 1px solid #9d8e74; }
+.public-entry--poster .public-brand { gap: 6px; font-size: 20px; letter-spacing: 0; }
+.public-entry--poster .public-brand .concert-icon { color: #e9666d; width: 18px; height: 18px; }
+.public-entry--poster .public-brand span { font-size: 11px; text-transform: uppercase; }
+.public-entry--poster .public-header > .public-text-link { font-size: 13px; }
+.public-entry--poster .public-hero { padding: 5px 0 0; max-width: none; }
+.public-entry--poster .concert-window__body { padding: 0; }
+.public-entry--poster .concert-window__titlebar h1 { font-size: 19px; margin: 0; line-height: 1.15; letter-spacing: .045em; }
+.public-poster {
+  padding: 18px 14px 8px;
+  background-color: #171615;
+  background-image: radial-gradient(#e8d9bc18 .5px, transparent .7px), linear-gradient(130deg, #33221f33, transparent 50%);
+  background-size: 7px 9px, auto;
+  color: #f3e8d3;
+  text-align: center;
+}
+.public-entry--poster .public-eyebrow { font-size: 11px; letter-spacing: .11em; color: #d6c5a6; margin: 0 auto; max-width: 30ch; line-height: 1.4; }
+.public-poster-wordmark { margin: 17px 0 16px; text-transform: uppercase; font-family: Impact, "Arial Narrow", sans-serif; line-height: .92; letter-spacing: .01em; transform: rotate(-3deg); }
+.public-poster-wordmark span { display: block; font-size: clamp(28px, 8.4vw, 42px); }
+.public-poster-wordmark strong { display: block; margin-top: 2px; font-size: clamp(46px, 13.6vw, 68px); font-weight: 900; }
+.public-poster-mark { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 12px 0; border-block: 1px solid #77654f; font-size: 10px; letter-spacing: .08em; color: #e4d0ad; }
+.public-poster-mark .concert-icon { width: 13px; height: 13px; color: #e9666d; }
+.public-poster-motto { margin: 16px 0 7px; font-family: Georgia, serif; font-size: 27px; line-height: 1.08; text-transform: uppercase; letter-spacing: .025em; }
+.public-poster-motto em { font-size: 32px; text-transform: none; }
+.public-entry--poster .public-lead { font-size: 12px; color: #d6c5a6; line-height: 1.4; }
+.public-entry--poster .public-entry-action { margin: 18px 0 0; }
+.public-entry--poster .public-primary { width: 100%; min-height: 48px; padding: 10px; border: 2px solid #dcc6a6; border-radius: 0; background: #921f28; color: #fff6e7; font: 800 17px/1.3 "Arial Narrow", Arial, sans-serif; text-transform: uppercase; }
+.public-entry--poster .public-primary:disabled { background: #573237; color: #f0dfcf; border-color: #967c6e; cursor: not-allowed; }
+.public-entry--poster .public-entry-action p { color: #e5d4b9; font-size: 12px; margin-top: 8px; line-height: 1.4; }
+.public-entry--poster .public-text-link { font-size: 13px; }
+.public-entry--poster .public-about { padding: 16px 9px 10px; border-top: 0; }
+.public-entry--poster .public-about h2 { font-family: Impact, "Arial Narrow", sans-serif; text-transform: uppercase; font-size: 21px; letter-spacing: .035em; margin: 0 0 6px; }
+.public-entry--poster .public-about > p { font-size: 13px; color: #d6c5a6; line-height: 1.5; }
+.public-entry--poster .public-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 12px 0 2px; }
+.public-entry--poster .public-features > div { margin: 0; }
+.public-entry--poster .public-features dt { font-size: 14px; text-transform: uppercase; }
+.public-entry--poster .public-features dd { font-size: 11px; color: #d6c5a6; line-height: 1.4; }
+.public-entry--poster .public-footer { padding: 10px 9px max(10px, env(safe-area-inset-bottom, 0px)); border-color: #77654f; }
+.public-entry--poster .public-footer > p { color: #d6c5a6; font-size: 11px; line-height: 1.45; }
+.public-entry--poster .public-footer nav { justify-content: space-between; gap: 0 8px; margin: 2px 0; font-size: 12px; }
+.public-entry--poster .public-footer-signature { text-transform: uppercase; letter-spacing: .06em; }
+.public-entry--poster :focus-visible { outline-color: #edbd69; }

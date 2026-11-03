@@ -1,0 +1,96 @@
+vite v8.1.3 building client environment for production...
+
+transforming...✓ 319 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/index.html                                   1.03 kB │ gzip:   0.49 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/panels-BN_4I1Xa.css                   0.87 kB │ gzip:   0.39 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/composition-CKDRkAfr.css              1.36 kB │ gzip:   0.58 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/root-features-DHpECeai.css            1.54 kB │ gzip:   0.65 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/meeting-entry-jVy7UCgi.css            1.58 kB │ gzip:   0.66 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/provider-BwtfYezs.css                 3.25 kB │ gzip:   1.09 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/CommunityFeatures-D5mfZD5D.css        5.61 kB │ gzip:   1.53 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/index-DyzztuTy.css                   12.15 kB │ gzip:   3.07 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/PublicBoundary-DLS7K8pd.css          20.87 kB │ gzip:   4.60 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/preferences-Cnu2hU-d.js               0.07 kB │ gzip:   0.09 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/rolldown-runtime-Bh1tDfsg.js          0.56 kB │ gzip:   0.36 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/compatibility-BrlAsxRz.js             0.71 kB │ gzip:   0.35 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/AdminBoundary-DSKFYgJA.js             1.30 kB │ gzip:   0.66 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/resolver-B_kd0z0u.js                  2.07 kB │ gzip:   1.10 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/authority-DyJhNMAd.js                 2.73 kB │ gzip:   1.19 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/simulation-sCcriVKG.js                3.15 kB │ gzip:   1.27 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/avatar-config.schema-Cn7p3_iO.js      4.60 kB │ gzip:   1.44 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/panels-DWPAwdaT.js                    4.98 kB │ gzip:   1.86 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/MapScene-BDPw1e8U.js                  6.72 kB │ gzip:   2.77 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/root-features-joyjoqZz.js            14.64 kB │ gzip:   4.83 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/source-catalog-B2GN78SH.js           15.97 kB │ gzip:   4.30 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/resources-B5WAnOdi.js                20.90 kB │ gzip:   6.84 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/contract-C0GYm7ox.js                 28.05 kB │ gzip:   6.20 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/PublicBoundary-BKCefbVV.js           34.55 kB │ gzip:   9.58 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/provider-DRQX3AUi.js                 36.91 kB │ gzip:  11.54 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/meeting-entry-BmgJs5aq.js            39.43 kB │ gzip:  11.11 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/composition-BhnbigKQ.js              43.03 kB │ gzip:  14.49 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/schemas-B9zUvP7H.js                  66.99 kB │ gzip:  17.93 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/mcr-core.openapi-C8Ltq9-m.js        118.71 kB │ gzip:  11.28 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/index-C_cHzKk9.js                   482.18 kB │ gzip: 131.19 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/CommunityFeatures-BXoxcBEe.js       809.36 kB │ gzip:  63.30 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/production/assets/phaser-DVTuvjT6.js                1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 452ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+vite v8.1.3 building client environment for production...
+
+transforming...✓ 327 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/src/features/public/__tests__/visual-adoption/preview.html      0.93 kB │ gzip:   0.48 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/src/features/auth/__tests__/visual-adoption/preview.html        1.08 kB │ gzip:   0.51 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/panels-BN_4I1Xa.css                                      0.87 kB │ gzip:   0.39 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/composition-CKDRkAfr.css                                 1.36 kB │ gzip:   0.58 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/root-features-DHpECeai.css                               1.54 kB │ gzip:   0.65 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/meeting-entry-jVy7UCgi.css                               1.58 kB │ gzip:   0.66 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/provider-BwtfYezs.css                                    3.25 kB │ gzip:   1.09 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/CommunityFeatures-D5mfZD5D.css                           5.61 kB │ gzip:   1.53 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/shell-DyzztuTy.css                                      12.15 kB │ gzip:   3.07 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/PublicBoundary-DLS7K8pd.css                             20.87 kB │ gzip:   4.60 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/preferences-Cnu2hU-d.js                                  0.07 kB │ gzip:   0.09 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/rolldown-runtime-Bh1tDfsg.js                             0.56 kB │ gzip:   0.36 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/compatibility-BrlAsxRz.js                                0.71 kB │ gzip:   0.35 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/preload-helper-CZgWQFsJ.js                               1.25 kB │ gzip:   0.70 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/AdminBoundary-BVM2Eu7j.js                                1.34 kB │ gzip:   0.67 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/resolver-C9xIar13.js                                     2.08 kB │ gzip:   1.10 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/document-provider-C9JZ-yQY.js                            2.72 kB │ gzip:   1.23 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/authority-WK4TrDH6.js                                    2.80 kB │ gzip:   1.22 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/simulation-sCcriVKG.js                                   3.15 kB │ gzip:   1.27 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/preview-sbvCdC4L.js                                      3.20 kB │ gzip:   1.66 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/bootstrap-DH6BWcIt.js                                    3.92 kB │ gzip:   1.84 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/avatar-config.schema-Cn7p3_iO.js                         4.60 kB │ gzip:   1.44 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/contract-D_aGB8wK.js                                     5.01 kB │ gzip:   2.13 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/panels-BOiEnpW7.js                                       5.02 kB │ gzip:   1.88 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/MapScene-D2nCz1iE.js                                     6.72 kB │ gzip:   2.78 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/root-features-pDVDCGFU.js                               14.67 kB │ gzip:   4.86 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/source-catalog-B2GN78SH.js                              15.97 kB │ gzip:   4.30 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/resources-B5WAnOdi.js                                   20.90 kB │ gzip:   6.84 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/contract-CMox66qu.js                                    28.05 kB │ gzip:   6.20 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/PublicBoundary-BXAqOJaP.js                              32.19 kB │ gzip:   8.73 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/provider-DBK5fD93.js                                    36.94 kB │ gzip:  11.53 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/meeting-entry-D2kqY6xX.js                               39.43 kB │ gzip:  11.12 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/composition-zgb-YknK.js                                 43.06 kB │ gzip:  14.50 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/preview-BDZteHIi.js                                     50.34 kB │ gzip:  14.80 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/routes-WIENPp3t.js                                     104.86 kB │ gzip:  34.63 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/mcr-core.openapi-C8Ltq9-m.js                           118.71 kB │ gzip:  11.28 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/shell-DAuSnHqo.js                                      393.13 kB │ gzip:  99.63 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/CommunityFeatures-BQu36-Zl.js                          809.37 kB │ gzip:  63.31 kB
+../../../../../../var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-uiv02-gLfqEs/fixtures/assets/phaser-DVTuvjT6.js                                   1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 398ms
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+PASS UIV02: actual production + labeled fixture at 360/390/430; 51 captures; keyboard, 44px, solid contrast, back, states, documents/auth consumers, no world/external/production fixture leaks.
