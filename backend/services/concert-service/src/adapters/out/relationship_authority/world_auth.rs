@@ -1,5 +1,9 @@
 //! Sealed runtime-owned self observations. No event admission or publication fence.
-use super::{grpc, OwnerRevision, BUDGET};
+use super::{
+    grpc,
+    world_projection::{ProjectionSource, ProjectionState, WorldProjectionParent},
+    OwnerRevision, BUDGET,
+};
 use crate::world::CurrentOwnedMembership;
 use chrono::{DateTime, Utc};
 use concert_application::world_ticket::{
@@ -14,7 +18,10 @@ use platform::{
 };
 use std::{
     fmt,
-    sync::atomic::{AtomicBool, Ordering},
+    sync::{
+        atomic::{AtomicBool, Ordering},
+        Arc,
+    },
     time::Duration,
 };
 use uuid::Uuid;
@@ -22,15 +29,17 @@ use uuid::Uuid;
 /// Only the server runtime constructs this after a real consume/current-owner read.
 /// Neither public WorldSubject nor browser identity strings can construct one.
 pub(crate) struct WorldOwnerRequest {
-    subject: WorldSubject,
-    family: Uuid,
-    request_id: Uuid,
-    credential_expires_at: DateTime<Utc>,
-    source_expires_at: DateTime<Utc>,
+    pub(super) subject: WorldSubject,
+    pub(super) family: Uuid,
+    pub(super) request_id: Uuid,
+    pub(super) credential_expires_at: DateTime<Utc>,
+    pub(super) source_expires_at: DateTime<Utc>,
     created_at_micros: i64,
-    deadline: AuthorityRpcDeadline,
+    pub(super) deadline: AuthorityRpcDeadline,
     attempted: AtomicBool,
-    cancelled: AtomicBool,
+    pub(super) state: Arc<ProjectionState>,
+    pub(super) source: ProjectionSource,
+    pub(super) original_deadline: AuthorityRpcDeadline,
 }
 impl fmt::Debug for WorldOwnerRequest {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -64,6 +73,7 @@ impl WorldOwnerRequest {
             r.access_expires_at,
             r.expires_at,
             deadline,
+            ProjectionSource::Consumed(claim.clone()),
         )
     }
 
@@ -77,6 +87,29 @@ impl WorldOwnerRequest {
         request_id: Uuid,
         deadline: AuthorityRpcDeadline,
     ) -> Result<Self, WorldError> {
+        Self::validate_current(
+            current,
+            expected_owner,
+            expected_subject,
+            expected_connection,
+        )?;
+        let m = &current.membership;
+        Self::bind(
+            expected_subject,
+            request_id,
+            m.access_expires_at,
+            m.lease_until,
+            deadline,
+            ProjectionSource::Current(current.clone()),
+        )
+    }
+
+    pub(super) fn validate_current(
+        current: &CurrentOwnedMembership,
+        expected_owner: &OwnerIdentity,
+        expected_subject: &WorldSubject,
+        expected_connection: ConnectionId,
+    ) -> Result<(), WorldError> {
         let m = &current.membership;
         if &current.owner != expected_owner
             || OwnerIdentity::new(current.owner.process_id.clone(), current.owner.epoch).is_err()
@@ -95,13 +128,11 @@ impl WorldOwnerRequest {
         {
             return Err(WorldError::Conflict);
         }
-        Self::bind(
-            expected_subject,
-            request_id,
-            m.access_expires_at,
-            m.lease_until,
-            deadline,
-        )
+        Self::validate_subject(expected_subject)?;
+        if m.access_expires_at <= Utc::now() || m.lease_until <= Utc::now() {
+            return Err(WorldError::CredentialExpired);
+        }
+        Ok(())
     }
 
     fn bind(
@@ -110,18 +141,12 @@ impl WorldOwnerRequest {
         credential_expires_at: DateTime<Utc>,
         source_expires_at: DateTime<Utc>,
         original: AuthorityRpcDeadline,
+        source: ProjectionSource,
     ) -> Result<Self, WorldError> {
-        if request_id.is_nil()
-            || subject.key.user_id.uuid().is_nil()
-            || subject.event_id.uuid().is_nil()
-            || subject.key.event_id != subject.event_id
-        {
+        if request_id.is_nil() {
             return Err(WorldError::Invalid);
         }
-        let family = Uuid::parse_str(subject.session_id.as_str())
-            .ok()
-            .filter(|id| !id.is_nil() && id.to_string() == subject.session_id.as_str())
-            .ok_or(WorldError::Invalid)?;
+        let family = Self::validate_subject(subject)?;
         let now = Utc::now();
         if credential_expires_at <= now || source_expires_at <= now {
             return Err(WorldError::CredentialExpired);
@@ -144,10 +169,32 @@ impl WorldOwnerRequest {
             created_at_micros: now.timestamp_micros(),
             deadline,
             attempted: AtomicBool::new(false),
-            cancelled: AtomicBool::new(false),
+            state: Arc::new(ProjectionState::default()),
+            source,
+            original_deadline: original,
         };
         result.check()?;
         Ok(result)
+    }
+    pub(super) fn validate_subject(subject: &WorldSubject) -> Result<Uuid, WorldError> {
+        if subject.key.user_id.uuid().is_nil()
+            || subject.event_id.uuid().is_nil()
+            || subject.key.event_id != subject.event_id
+        {
+            return Err(WorldError::Invalid);
+        }
+        let family = Uuid::parse_str(subject.session_id.as_str())
+            .ok()
+            .filter(|id| !id.is_nil() && id.to_string() == subject.session_id.as_str())
+            .ok_or(WorldError::Invalid)?;
+        Ok(family)
+    }
+    pub(crate) fn projection_parent(
+        &self,
+        auth: &WorldAuthObservation,
+    ) -> Result<WorldProjectionParent, WorldError> {
+        auth.check(self)?;
+        WorldProjectionParent::capture(self, auth)
     }
     pub(crate) fn subject(&self) -> &WorldSubject {
         &self.subject
@@ -159,10 +206,10 @@ impl WorldOwnerRequest {
         self.request_id
     }
     pub(crate) fn cancel(&self) {
-        self.cancelled.store(true, Ordering::Release);
+        self.state.cancel();
     }
     pub(crate) fn check(&self) -> Result<(), WorldError> {
-        if self.cancelled.load(Ordering::Acquire) {
+        if self.state.cancelled() {
             return Err(WorldError::Unavailable);
         }
         let now = Utc::now();

@@ -330,3 +330,6 @@ async fn native_locked_statement_cancel_and_owner_outage_never_fabricate_facts(
     drop(server);
     Ok(())
 }
+
+#[path = "projection.rs"]
+mod projection;

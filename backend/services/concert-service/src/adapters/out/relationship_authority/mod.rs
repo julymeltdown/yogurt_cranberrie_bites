@@ -7,6 +7,7 @@ use std::{fmt, time::Duration};
 use uuid::Uuid;
 pub mod grpc;
 pub(crate) mod world_auth;
+pub(crate) mod world_projection;
 pub const BUDGET: Duration = Duration::from_secs(2);
 pub const MAX_REVISION: i64 = 9_007_199_254_740_991;
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -48,6 +49,21 @@ pub struct RequestBinding {
     deadline: AuthorityRpcDeadline,
 }
 impl RequestBinding {
+    /// The caller must reserve and run both owner attempts around I/O. This
+    /// conversion preserves wire scope; the legacy binding alone has no cancel gate.
+    pub(crate) fn from_world(
+        context: &world_projection::WorldPresenceProjection,
+    ) -> Result<Self, RelationshipError> {
+        context
+            .check()
+            .map_err(|_| RelationshipError::Unavailable)?;
+        Ok(Self {
+            query: context.query(),
+            family: context.session_family_id(),
+            request: context.request_id(),
+            deadline: context.deadline(),
+        })
+    }
     pub fn from_verified(
         authority: &crate::rpc::VerifiedBootstrap,
         query: PolicyQuery,
