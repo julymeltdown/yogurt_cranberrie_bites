@@ -17,6 +17,7 @@ const RootSocialFeatures = lazy(() => import('./world-panels/social').then(modul
 const ProductionEraControls = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionEraControls })))
 const ProductionWorldFeatures = lazy(() => import('./world-entry/root-features'))
 const AccountProvider = lazy(() => import('./account-entry/provider'))
+const CharacterProvider = lazy(() => import('./character-entry/provider'))
 const CommunityFeatures = lazy(() => import('./CommunityFeatures'))
 const MeetingEntryFeatures = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingEntryFeatures })))
 
@@ -86,7 +87,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     window.addEventListener('resize', update)
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
-  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
+  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures privacyScope={privacyScope}><CharacterProvider bootstrap={bootstrap} scope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
     <RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory><div className="world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
@@ -107,7 +108,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
         </main>}
     </div>
     <BottomNavigation />
-  </div></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></Suspense>
+  </div></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></CharacterProvider></ProductionWorldFeatures></CommunityFeatures></Suspense>
 }
 
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {
