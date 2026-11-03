@@ -152,6 +152,7 @@ async fn durable_lifecycle_metadata_removal_receipt_replay_and_headers() -> anyh
     );
     assert!(s.read(c, id).await.is_err());
     assert_eq!(s.intent(c, id).await?.0, 1);
+    assert_eq!(first.result_status, Some(200));
     let put_key = Uuid::new_v4();
     let put = s.put(c, put_key, id, Mime::Png, bytes.clone()).await?;
     assert_eq!(put.reference.unwrap().revision, 2);
@@ -672,6 +673,43 @@ async fn competing_finalize_same_key_converges_on_one_durable_receipt() -> anyho
     assert_eq!(revision, 3);
     let receipts:i64=sqlx::query_scalar("select count(*) from concert_command_receipts where target_id=$1 and operation_id='finalizeConcertUpload'").bind(id).fetch_one(&p).await?;
     assert_eq!(receipts, 1);
+    cleanup(&p, c).await;
+    Ok(())
+}
+#[tokio::test]
+async fn shorter_caller_sql_deadline_is_preserved() -> anyhow::Result<()> {
+    let (p, c, s) = fixture().await?;
+    let id = upload(
+        &s,
+        c,
+        encode(ImageFormat::Png),
+        Mime::Png,
+        Purpose::Giveaway,
+    )
+    .await?;
+    let mut tx = p.begin().await?;
+    sqlx::query("set local lock_timeout='100ms';set local statement_timeout='200ms'")
+        .execute(&mut *tx)
+        .await?;
+    s.link_owned_in(
+        &mut tx,
+        c,
+        id,
+        Target {
+            resource: Uuid::new_v4(),
+            purpose: Purpose::Giveaway,
+        },
+    )
+    .await?;
+    let lock: String = sqlx::query_scalar("show lock_timeout")
+        .fetch_one(&mut *tx)
+        .await?;
+    let statement: String = sqlx::query_scalar("show statement_timeout")
+        .fetch_one(&mut *tx)
+        .await?;
+    assert_eq!(lock, "100ms");
+    assert_eq!(statement, "200ms");
+    tx.rollback().await?;
     cleanup(&p, c).await;
     Ok(())
 }

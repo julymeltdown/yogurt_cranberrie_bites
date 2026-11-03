@@ -1,8 +1,8 @@
 # BE24 authorized image pipeline
 
 Status: **IN_PROGRESS** for BE24 as a whole. The scoped internal producer is implemented;
-Rust compilation and producer runtime validation remain pending the explicit shared
-Cargo lease. HTTP composition, real fenced authority, scheduled cleanup and the real
+The focused Concert library check passes; producer runtime qualification remains
+in progress under the explicitly granted Cargo lease. HTTP composition, real fenced authority, scheduled cleanup and the real
 FE04/Post/Giveaway/Report journeys are **NOT_RUN**. This is not an IN02/IN03 acceptance.
 
 ## Scope and provenance
@@ -147,7 +147,18 @@ is content sanitization, not a separate antivirus scanning service.
 - Owned PG16 schema runner: all five SQL migrations exit 0 and cleanup PASS.
   First run failed a harness-only wrong column-count assertion (23 instead of 21),
   after successful DDL. Corrected rerun passes schema; producer/restart NOT_RUN there.
-- Rust compile, codec/producer tests and restart: pending explicit Cargo slot.
+- `cargo +1.88.0 check --manifest-path backend/Cargo.toml --locked --offline -p concert-service --lib`
+  with the shared target/jobs2/debug0: exit 0. Initial test compile exited 101 in
+  retained Auth build before media tests: cached cross-worktree `contracts-build`
+  mixed old proto includes with current inputs. Delivery authorized mtime-only
+  invalidation of current helper and Auth/Friend/Concert build scripts; no bytes,
+  cache directories or resolutions changed. Corrected test compile exits 0; codec output-bound test passes 1/1. Private binary
+  was copied and SHA-bound before releasing the target to BE13/14. The first native
+  run passes two pure raster/body tests but fails twelve PG producers because the
+  SQL timeout clamp supplied interval text instead of PostgreSQL's required numeric
+  unit string. A separate owned PG cluster reproduces that exact parameter error and
+  verifies the explicit `1500ms` correction. Failed run and cleanup are preserved in
+  `tests/media_support/native-evidence.json`; corrected binary/native run pending.
 
 `tests/media.rs` covers real PostgreSQL effects with a clearly synthetic transaction-
 locked policy fixture, plus retained real raster codecs. Cases include private staging,

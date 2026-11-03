@@ -310,11 +310,7 @@ impl CommandProducer for Producer<'_> {
         Ok((
             Completion::Succeeded {
                 reference,
-                status: if matches!(self.action, Action::Initialize(_)) {
-                    201
-                } else {
-                    200
-                },
+                status: 200,
             },
             Some(Invalidation { reference }),
         ))
@@ -630,7 +626,7 @@ fn invalid(_: sqlx::Error) -> CommandError {
 
 async fn limit_sql_in(c: &mut PgConnection) -> Result<(), CommandError> {
     // Clamp existing owner limits; never lengthen a caller's shorter SQL deadline.
-    sqlx::query("select set_config('lock_timeout',least(coalesce(nullif(current_setting('lock_timeout')::interval,interval '0'),interval '1500 milliseconds'),interval '1500 milliseconds')::text,true),set_config('statement_timeout',least(coalesce(nullif(current_setting('statement_timeout')::interval,interval '0'),interval '5 seconds'),interval '5 seconds')::text,true)")
+    sqlx::query("select set_config('lock_timeout',(extract(epoch from least(coalesce(nullif(current_setting('lock_timeout')::interval,interval '0'),interval '1500 milliseconds'),interval '1500 milliseconds'))*1000)::bigint::text||'ms',true),set_config('statement_timeout',(extract(epoch from least(coalesce(nullif(current_setting('statement_timeout')::interval,interval '0'),interval '5 seconds'),interval '5 seconds'))*1000)::bigint::text||'ms',true)")
  .execute(c).await.map_err(unavailable)?;
     Ok(())
 }
