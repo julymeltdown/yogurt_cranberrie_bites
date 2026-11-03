@@ -701,6 +701,7 @@ dependencies = [
  "migration-runtime",
  "platform",
  "serde_json",
+ "sha2",
  "sqlx",
  "tokio",
  "tower",
