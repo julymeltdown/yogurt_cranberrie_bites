@@ -70,3 +70,5 @@ Final reconciled source mappings (earlier IDs above are historical pre-rebase ch
 - `3ff07c18181f84efee4ebedce9d4d65642a76141`: docs(frontend): record bounded profile reference evidence
 - `2e1885d8060a9a5ebe94a24f04adf1276b993e77`: feat(frontend): implement reference profile presentation and scoped activity
 - `8f6f423937a6e31e1d82430d798c84ac595baab1`: docs(frontend): qualify sign-in destination fix in native Chrome
+
+Final peer-preserving reconciliation base: `8430cd57ebb628fc093cb43f5ab547f042440830` (actual remote equality checked before publication). It includes repaired decoding, new legacy avatar asset leases and published whole-character runtime `9fbc89426c6d0781c6f7a1f1a78ef722656407e5`. The relevant **99 tests**, strict types, authored lint, both fixture builds and both native 360/390/430 matrices pass again on this tree; current feature/shared/capture hashes match. The published runtime is preserved without consumer reimplementation; whole1.1 model admission and actual root identity binding remain separate open gates.

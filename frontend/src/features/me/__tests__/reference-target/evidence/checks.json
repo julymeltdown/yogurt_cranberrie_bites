@@ -58,7 +58,7 @@
   ],
   "sourceCommit": "6191f740ca53c6f476e951ad75ecbc0e90bf16a5",
   "publicationReconciliation": {
-    "base": "f4b4080897a6b1ad835fa4e5e9372f82d58e489e",
+    "base": "8430cd57ebb628fc093cb43f5ab547f042440830",
     "branch": "codex/mcr-fe-ref-auth-profile-publish",
     "preservedPeerHistory": true,
     "combinedTests": {
@@ -80,19 +80,30 @@
     "sourceSharedCaptureHashComparison": "PASS after final native reruns",
     "temporaryDependencyAndCaches": "removed before final guards",
     "authAlreadyPublishedSourceMapping": "51d89f71",
-    "onlyNewAuthEvidenceMapping": "8f6f423937a6e31e1d82430d798c84ac595baab1",
-    "newProfileSourceMapping": "2e1885d8060a9a5ebe94a24f04adf1276b993e77",
-    "newProfileEvidenceMapping": "3ff07c18181f84efee4ebedce9d4d65642a76141",
+    "onlyNewAuthEvidenceMapping": "911bd6e8511a4c5488e8964d2ed29d78f511b154",
+    "newProfileSourceMapping": "3c1ac29103ce2a56b9612ebefaae0057636da625",
+    "newProfileEvidenceMapping": "193702fcff29b76807b3b0c090b28ae7df520078",
     "boundaryExit": 0,
     "planningExit": 0,
     "originExit": 0,
     "scopeReview": "PASS exact authorized paths and presentation-only imports",
     "decoderRepairAncestor": "90f44fd99fdfe17f3ee3e596ceff0583f6db2c47",
     "exactBlockedChecksRerun": "PASS after actual decoder repair; original48/99 failure retained in union-regression.txt",
-    "wholeCharacterRootIdentityGate": "NOT_RUN: separate canonical1.1 admission/runtime/root binding",
-    "portraitPortMapping": "6869aadb14ad52d7683528956d78677356acfe33",
-    "portraitNativeProbesMapping": "a16083bdfa658012c5ceaa7485ad84433cc22901",
-    "boundaryCommand": "python3 scripts/mcr/check-boundaries.py --base f4b4080897a6b1ad835fa4e5e9372f82d58e489e --lane frontend --allow-doc docs/mcr/frontend/reference-auth.md --allow-doc docs/mcr/frontend/reference-profile.md --allow-doc frontend/src/features/me/__tests__/reference-target/evidence/union-regression.txt"
+    "wholeCharacterRootIdentityGate": "NOT_RUN: canonical1.1 admission/root identity binding remain separately owned; published runtime alone is not that proof",
+    "portraitPortMapping": "8c188a9445850005ba525434bc92873d204707cc",
+    "portraitNativeProbesMapping": "4c729e10f9de96838801485b65632cbd6fcd68d3",
+    "boundaryCommand": "python3 scripts/mcr/check-boundaries.py --base 8430cd57ebb628fc093cb43f5ab547f042440830 --lane frontend --allow-doc docs/mcr/frontend/reference-auth.md --allow-doc docs/mcr/frontend/reference-profile.md --allow-doc frontend/src/features/me/__tests__/reference-target/evidence/union-regression.txt",
+    "testedPeerLeaseAndRuntimeContext": true,
+    "publishedWholeRuntime": "9fbc89426c6d0781c6f7a1f1a78ef722656407e5",
+    "ownReconciledCommitMap": {
+      "test(frontend): qualify profile ports after decoder repair": "817659a7e14dbe2af73835c8efb69f16daa16afb",
+      "test(frontend): prepare portrait port probes and retain union failure receipt": "4c729e10f9de96838801485b65632cbd6fcd68d3",
+      "feat(frontend): expose authorized profile portrait presentation ports": "8c188a9445850005ba525434bc92873d204707cc",
+      "test(frontend): qualify auth and profile against current shared frame": "a5616612637521da07636b03a9c7c7fa010c2903",
+      "docs(frontend): record bounded profile reference evidence": "193702fcff29b76807b3b0c090b28ae7df520078",
+      "feat(frontend): implement reference profile presentation and scoped activity": "3c1ac29103ce2a56b9612ebefaae0057636da625",
+      "docs(frontend): qualify sign-in destination fix in native Chrome": "911bd6e8511a4c5488e8964d2ed29d78f511b154"
+    }
   },
   "originalInputHashes": {
     "contracts/generated/mcr-domain.openapi.json": "a5fbe73124ed069e6357f5797a264e2d2a1bec93b0179bfc8550bf1122b69fde",

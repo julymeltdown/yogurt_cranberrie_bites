@@ -7,7 +7,7 @@ src/features/auth/__tests__/reference-target/.cache/build/src/features/auth/__te
 src/features/auth/__tests__/reference-target/.cache/build/assets/preview-BFBW_twE.css                                 10.85 kB │ gzip:   2.86 kB
 src/features/auth/__tests__/reference-target/.cache/build/assets/preview-DvYUo5iZ.js                                 644.30 kB │ gzip: 153.87 kB
 
-✓ built in 398ms
+✓ built in 286ms
 [plugin builtin:vite-reporter]
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application

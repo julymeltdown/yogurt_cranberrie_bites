@@ -204,8 +204,8 @@
     "frontend/src/features/profile/PublicProfile.tsx": "5cf3b391b78c54b2d79907d02c62d6cebfbdd022b2752aad3258e518497fa0cd",
     "frontend/src/features/profile/profile.css": "7e545afdf5622611a2feb57c146eb15278727841843a43218930652dd74136b6",
     "frontend/src/features/me/__tests__/visual-adoption/presentation.test.tsx": "69726098559a181058d123cdf01656744a00dd671caa396b0e5e2b5ffb6f514a",
-    "frontend/src/features/me/ui/AvatarThumbnail.tsx": "b133db946b1c9f7f8f3d546e85092bf9609ecbac85145e97e052a972625cc0c4",
-    "frontend/src/features/profile/Avatar.tsx": "021551ceae705f680a7b4e99515b9d18cae511eb8f7af5c193656ccbe8b124e4",
+    "frontend/src/features/me/ui/AvatarThumbnail.tsx": "829748940d147959bf8656e9448d00b7f9ba49305a9d5e8ac17acb0de72cfdd0",
+    "frontend/src/features/profile/Avatar.tsx": "cae62acf82fd44db50cd5549dbffd1b1d93f6a4374d2034a07f7f6b31fcfee5b",
     "frontend/src/shared/ui/concert-window/index.tsx": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
     "frontend/src/shared/ui/concert-window/concert-window.css": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032",
     "frontend/src/features/event-feed/contract.ts": "f6218649e357755c1e68fc2dda08474f2dac6cad820de1f14eecadf9aea2ddd9"
