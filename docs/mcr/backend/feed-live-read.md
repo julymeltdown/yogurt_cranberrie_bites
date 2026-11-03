@@ -104,3 +104,28 @@ Post qualified read admission/transaction settlement, actual public author
 producer integration and root HTTP composition remain required. Post/comment/
 reaction writes remain later required scope. This checkpoint is not C04 live
 feed acceptance, BE31/BE32 completion or IN01 acceptance.
+
+## Unpublished follow-up source
+
+The task branch additionally preserves unexported, uncompiled drafts:
+`feed/policy.rs`, `feed/resources.rs`, `feed/author_filter.rs` and
+`post-service/src/concert_feed/read_transaction.rs`. They target the real sealed
+OwnerGuardScope and PublicProfileReader::policy/read APIs, share one local guard
+per request binding and subject, and never open a second pair transaction.
+The comment adapter validates the complete owner batch before filtering currently
+unavailable authors, preserving the original internal scan boundary. The Post
+transaction draft captures identity on the actual SQLx transaction and queries
+its owning PostgreSQL store; its terminal status alone cannot release authority.
+The producer role requires explicit permission to read pg_control_system.
+
+The dedicated Post read service will use four signed request envelopes, each
+wrapping the unchanged legacy query and ReadAuthority. Shared lease producer
+settlement handles outcome lookup. ReadAuthority additionally needs the canonical
+root scope capability and deferred Post-to-Concert subject callback; those are
+not yet frozen or implemented here. Auth/Friend views or a root actor assertion
+cannot attest local relationship restrictions for unknown scan authors. The
+qualified protocol remains pending outside the published adapter checkpoint.
+
+These drafts are not part of the 19 passing Rust cases or the live acceptance
+claim. Export, combined compilation, guarded/native/HTTP qualification and final
+publication remain required after the real producer implementations land.
