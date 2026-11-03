@@ -1,0 +1,71 @@
+{"freeBytes":81168400384,"publicDirCopied":false}
+vite v8.1.3 building client environment for production...
+[2Ktransforming...✓ 463 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../../../tmp/mcr-public-fidelity-build/index.html                                          1.78 kB │ gzip:   0.64 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/RootMediaView-BdfnIHbK.css                   0.55 kB │ gzip:   0.25 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/ProfileIcon-C5jlMgdD.css                     1.36 kB │ gzip:   0.59 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/safety-BViJNTBJ.css                          1.51 kB │ gzip:   0.56 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/root-features-nb6jl9cq.css                   1.55 kB │ gzip:   0.65 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/meeting-entry-jVy7UCgi.css                   1.58 kB │ gzip:   0.66 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/social-BMiG3aQa.css                          1.71 kB │ gzip:   0.71 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/composition-C7uV5nlu.css                     3.55 kB │ gzip:   1.13 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/panels-BMt8WHkR.css                          4.19 kB │ gzip:   1.38 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/social-composition-BD3_6jZW.css              5.21 kB │ gzip:   1.45 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/provider-CSOKqWtj.css                        9.90 kB │ gzip:   2.79 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/world-panels-CH3wTtvz.css                   13.47 kB │ gzip:   3.51 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/provider-DprRFUma.css                       14.46 kB │ gzip:   3.38 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/CommunityFeatures-CtYOQD37.css              17.33 kB │ gzip:   3.90 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/PublicBoundary-DbDm6fa3.css                 18.98 kB │ gzip:   4.65 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/index-CgHiC7As.css                          27.70 kB │ gzip:   6.03 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/rolldown-runtime-QTnfLwEv.js                 0.69 kB │ gzip:   0.42 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/compatibility-BGkcp1nM.js                    0.84 kB │ gzip:   0.40 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/provider-CLprqDbz.js                         0.94 kB │ gzip:   0.53 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/identity-Bo1uHBTC.js                         1.00 kB │ gzip:   0.58 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/phaser-C-L-RzyC.js                           1.19 kB │ gzip:   0.62 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/preload-helper-CZgWQFsJ.js                   1.25 kB │ gzip:   0.70 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/AdminBoundary-Czf6TQxw.js                    1.37 kB │ gzip:   0.69 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/operations-ClTv-duQ.js                       1.45 kB │ gzip:   0.61 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/avatar-config.schema-D-59TwV9.js             1.86 kB │ gzip:   0.54 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/domain-C3AxivTK.js                           2.57 kB │ gzip:   1.21 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/authority-wS-9DLIz.js                        2.75 kB │ gzip:   1.19 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/contract-DcaKwr0K.js                         2.98 kB │ gzip:   1.33 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/simulation-sCcriVKG.js                       3.15 kB │ gzip:   1.27 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/RootMediaView-CWSS0PbR.js                    3.47 kB │ gzip:   1.48 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/resolver-iPsd_cdu.js                         4.52 kB │ gzip:   2.09 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/panel-Dsij3dK4.js                            4.71 kB │ gzip:   1.92 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/whole-character-uuRj4mhS.js                  5.65 kB │ gzip:   2.20 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/model-a0gp53af.js                            6.41 kB │ gzip:   2.60 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/social-composition-CCJplfb0.js               7.48 kB │ gzip:   2.59 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/jsx-runtime-CIxEorsV.js                      7.89 kB │ gzip:   2.98 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/provider-COR3poJQ.js                         9.25 kB │ gzip:   4.07 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/MapScene-dkrccb97.js                         9.49 kB │ gzip:   3.80 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/panels-C8gaDt37.js                          11.26 kB │ gzip:   3.73 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/ProfileIcon-w-m_dCh_.js                     11.91 kB │ gzip:   4.73 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/root-features-C1f4iqvZ.js                   14.80 kB │ gzip:   4.90 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/manifest-BovhGGz9.js                        15.78 kB │ gzip:   4.49 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/capabilities-Dzat_4h8.js                    19.35 kB │ gzip:   6.11 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/contract-Bcu83lns.js                        26.64 kB │ gzip:   5.81 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/social-BJYnVWFn.js                          35.05 kB │ gzip:  10.25 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/meeting-entry-BtS4Ptj_.js                   37.45 kB │ gzip:  10.47 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/provider-Dx-y0KTN.js                        43.16 kB │ gzip:  13.08 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/PublicBoundary-wSJxGT1D.js                  47.26 kB │ gzip:  14.99 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/composition-BXkfB3AH.js                     50.04 kB │ gzip:  16.89 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/schemas-B9zUvP7H.js                         66.99 kB │ gzip:  17.93 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/CommunityFeatures-BREzeyYR.js               68.39 kB │ gzip:  18.77 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/world-panels-DHqMxqM1.js                    70.34 kB │ gzip:  22.81 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/domain-operations.generated-Ck-JZXyo.js     81.08 kB │ gzip:   4.34 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/provider-BMm8PAwB.js                        87.03 kB │ gzip:  24.61 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/routes-DD6e3a7i.js                          97.67 kB │ gzip:  32.09 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/mcr-core.openapi-BTwes0QT.js               126.29 kB │ gzip:  12.56 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/index-D7kHAzq0.js                          351.26 kB │ gzip: 109.52 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/mcr-domain.openapi-CbO9FwOW.js             760.84 kB │ gzip:  49.27 kB
+../../../../../../tmp/mcr-public-fidelity-build/assets/phaser-DuGV5HTt.js                       1,198.04 kB │ gzip: 319.11 kB
+
+✓ built in 460ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
