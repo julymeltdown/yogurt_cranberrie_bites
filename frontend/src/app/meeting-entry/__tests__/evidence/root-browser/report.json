@@ -1,0 +1,78 @@
+{
+  "result": "PASS",
+  "scope": "Actual default createAppRoutes/WorldShell with canonical Auth and instrumented fake world. release=null; no live server, authority, venue, real Phaser/socket, device or IN02 acceptance.",
+  "baseCommit": "892ca4de7580eb36c82b54efe44f03941ca68c41",
+  "sourceHashes": {
+    "frontend/src/app/meeting-entry/__tests__/bridge.test.ts": "49c770ed0831cca1bf2d56f1ce50b8660926491cba5cc82ceb8cb0f2483b0d16",
+    "frontend/src/app/meeting-entry/__tests__/browser.mjs": "ba7f785bcf5198da1b7334bbef0e7e54b597d77c094213fad8188afb5476c215",
+    "frontend/src/app/meeting-entry/__tests__/fixtures.ts": "13520b5f11832a158a58e379fd7574b1a55b25ab046730024633102dc5fa3f50",
+    "frontend/src/app/meeting-entry/__tests__/preview.html": "78c680fc225b02ea38ad45c968c32bce1ab777ffb62fb9fc0a3bed2e71ce1011",
+    "frontend/src/app/meeting-entry/__tests__/preview.tsx": "796c819a674cfb781ae0c18e57f175c0c4f410bf1fc4ce614b52da69f63f90a8",
+    "frontend/src/app/meeting-entry/__tests__/root-browser.mjs": "eead37ba337393382c56472365b38c4493bdaa63ba90eac6544abfd224353ca1",
+    "frontend/src/app/meeting-entry/__tests__/root-preview.html": "00fbd9515162773ff178ae5cf458e43fb0d858981056f80cc3fa5bc175b29cba",
+    "frontend/src/app/meeting-entry/__tests__/root-preview.tsx": "e10de41b53ab62d0bcc2a622d7c94ab3c991029eea4f647675a86af6c02beac9",
+    "frontend/src/app/meeting-entry/__tests__/root-registration.test.tsx": "1321636a31ff4e4e6730374fb029cbfd6ef0c45de966ef97619970c4db66457b",
+    "frontend/src/app/meeting-entry/__tests__/routes.test.tsx": "0f6aa8692e42b800698d9f6ed5a1231ef7b37818be439ec852ae4545c1ce8788",
+    "frontend/src/app/meeting-entry/bridge.ts": "ecb3adf14cac50f11457f8a6868b84753c967ae7c60fe38c25e43b813f4befdb",
+    "frontend/src/app/meeting-entry/index.ts": "0fd0a1f4709f3dab9815c2abb4ee43ecbc3a38f5e11fb182055a78b47ae1a245",
+    "frontend/src/app/meeting-entry/ports.ts": "5dbdd2b26085277d9e6fe03edef8370179a1e1299c70c73e8788a9c7759b5dd8",
+    "frontend/src/app/meeting-entry/routes.tsx": "6d1972f2fab6536e1ae5a0eb7d39247ed1adf19d527f551fcc2b29b6c65cc2a9",
+    "frontend/src/app/WorldShell.tsx": "9418ecaa41689bcdf2d1a15872097bb2672d29786602a14e5251fa308f4ed27b",
+    "frontend/src/app/router.tsx": "6626b51bd8bfa3589dff42ab0166ec05bd07438b83cb83e5bffe21b7d32d1eb2",
+    "frontend/src/app/ports.ts": "71741772296f3590ef3d8e04b7c5e462d4410f7e18f575e44cf0775c379b2be7",
+    "frontend/src/app/shell.css": "75b74f145de44da52657f3743cc93cdfd6744af39509c596b21639f61ca7b10d",
+    "frontend/src/shared/styles/base.css": "63fb6160fa17471c9f40cc58c8d60890390f31af2da2078f50640b5ae7b6b762",
+    "frontend/src/app/__tests__/fixtures/ports.ts": "ff8b01aa247d6c8ca3afc3e5ed92fa7d1fecabab2dadc79e586e4ce14f3daf10",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts": "79993cf295f0f398a508ca6b3f70a3d10cbd1b992b9ac72a98db14d8730a35be"
+  },
+  "widths": [
+    {
+      "width": 360,
+      "directEntries": [
+        "W07",
+        "M06"
+      ],
+      "result": "PASS",
+      "strictMode": true,
+      "navigationWorldHostStable": true,
+      "peakGames": 1,
+      "peakConnections": 1,
+      "meetingRequests": 0,
+      "writes": 0,
+      "cleanup": "PASS"
+    },
+    {
+      "width": 390,
+      "directEntries": [
+        "W07",
+        "M06"
+      ],
+      "result": "PASS",
+      "strictMode": true,
+      "navigationWorldHostStable": true,
+      "peakGames": 1,
+      "peakConnections": 1,
+      "meetingRequests": 0,
+      "writes": 0,
+      "cleanup": "PASS"
+    },
+    {
+      "width": 430,
+      "directEntries": [
+        "W07",
+        "M06"
+      ],
+      "result": "PASS",
+      "strictMode": true,
+      "navigationWorldHostStable": true,
+      "peakGames": 1,
+      "peakConnections": 1,
+      "meetingRequests": 0,
+      "writes": 0,
+      "cleanup": "PASS"
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "cleanup": "PASS"
+}

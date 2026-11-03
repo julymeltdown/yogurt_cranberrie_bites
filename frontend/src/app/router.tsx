@@ -14,6 +14,8 @@ const PartiesPanel = lazy(() => import('./CommunityFeatures').then(module => ({ 
 const RoomsPanel = lazy(() => import('./world-entry/root-features').then(module => ({ default: module.ProductionRoomsPanel })))
 const NearbyPanel = lazy(() => import('./world-entry/root-features').then(module => ({ default: module.ProductionNearbyPanel })))
 const AccountPanel = lazy(() => import('./account-entry/panels'))
+const MeetingCheckInPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingCheckInPanel })))
+const MeetingBeaconPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingBeaconPanel })))
 const featurePanels: Readonly<Record<string, ReactNode>> = {
   '/me': <Suspense fallback={<p role="status">Opening your account…</p>}><AccountPanel view="me" /></Suspense>,
   '/me/profile': <Suspense fallback={<p role="status">Opening your profile…</p>}><AccountPanel view="profile" /></Suspense>,
@@ -21,6 +23,8 @@ const featurePanels: Readonly<Record<string, ReactNode>> = {
   '/me/settings': <Suspense fallback={<p role="status">Opening settings…</p>}><AccountPanel view="settings" /></Suspense>,
   '/world/rooms': <Suspense fallback={<p role="status">Opening rooms…</p>}><RoomsPanel /></Suspense>,
   '/world/nearby': <Suspense fallback={<p role="status">Opening nearby…</p>}><NearbyPanel /></Suspense>,
+  '/world/check-in': <Suspense fallback={<p role="status">Opening check-in…</p>}><MeetingCheckInPanel /></Suspense>,
+  '/meet/beacons/:beaconId': <Suspense fallback={<p role="status">Opening meeting…</p>}><MeetingBeaconPanel /></Suspense>,
   '/meet': <Suspense fallback={<p role="status">Opening parties…</p>}><PartiesPanel /></Suspense>,
   '/meet/parties/:partyId': <Suspense fallback={<p role="status">Opening parties…</p>}><PartiesPanel detail /></Suspense>,
   '/gifts': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="list" /></Suspense>,
