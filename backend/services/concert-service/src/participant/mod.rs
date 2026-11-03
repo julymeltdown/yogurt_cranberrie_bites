@@ -1,5 +1,6 @@
 //! Isolated Phase A producer. Not registered by product startup or Gateway.
 pub mod context;
+pub mod live;
 pub mod ports;
 use concert_application::avatar::{AvatarAuthority, AvatarError, AvatarGrant, AvatarOperation};
 use context::VerifiedParticipantRequest;
