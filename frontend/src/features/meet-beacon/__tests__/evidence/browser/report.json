@@ -1,0 +1,57 @@
+{
+  "scope": "FE20 synthetic fixtures using canonical HTTP/privacy and actual FE19 controller; no real venue, server, device or multiplayer acceptance",
+  "result": "PASS",
+  "widths": [
+    {
+      "width": 360,
+      "result": "PASS",
+      "minimumTouchTarget": 44,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "result": "PASS",
+      "minimumTouchTarget": 44,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 430,
+      "result": "PASS",
+      "minimumTouchTarget": 44,
+      "horizontalOverflow": false
+    }
+  ],
+  "checks": [
+    "Keyboard acknowledgement and explicit self-report only",
+    "Moved revision confirmation",
+    "Expiry/revocation/denied scrubbing",
+    "Unknown write status check without mutation replay",
+    "Canonical privacy draft cleanup",
+    "360/390/430 widths, >=44px controls, no page errors, owner disposal"
+  ],
+  "errors": [],
+  "baseCommit": "48458d597af73bd695c8d5813b123c6a96e55321",
+  "sourceHashes": {
+    "frontend/src/features/meet-beacon/__tests__/browser-smoke.mjs": "4272866cff1e78768150bda40d45424f312230c3ea5795d91458a3f44ab17493",
+    "frontend/src/features/meet-beacon/__tests__/controller.test.ts": "22a10cb33e11b1705d3d162351bde04c304def0a2e48242a278421f8a0d6000d",
+    "frontend/src/features/meet-beacon/__tests__/fixtures/harness.ts": "89ffa88cddff5cabc18141169a58d56944667c7765210430dce7973629425e7a",
+    "frontend/src/features/meet-beacon/__tests__/fixtures/preview.html": "ae3476470fdda8cd62d0d125c0725f26bf2f651c61b1017f8750985f835dd9d7",
+    "frontend/src/features/meet-beacon/__tests__/fixtures/preview.tsx": "3014278a68dba451cb8561abe62e193308e8a91be17d2e316e23438186367b84",
+    "frontend/src/features/meet-beacon/__tests__/ui.test.tsx": "e8d5e155859df501c336adc67971974997b09bf4090dca56e90597b17aaa91bc",
+    "frontend/src/features/meet-beacon/index.ts": "99758c4652fcd879f530ad16fee9eb952d93c92e3d26493deb1e8b239e635043",
+    "frontend/src/features/meet-beacon/model/contract.ts": "ea7f68f6d1eb8dfd974ec6fb5742ec74c78dcdbb8bd45015ea8eb24132d3870c",
+    "frontend/src/features/meet-beacon/model/controller.ts": "b68044ce327242b3270c934101f0109c1641c7c84e0b9ea219537c69827adceb",
+    "frontend/src/features/meet-beacon/model/ports.ts": "9b31fab798877898bef66186b0a893b9e9b65082945f614a519a77bdbd56e03b",
+    "frontend/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": "c5b17f78054462929ed558dbb0aaf7b519c840c281627e121f90dff2ab7df93b",
+    "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx": "5afabc362924eb7220d54adc72b47f7f39cdb08c343eb92a7f20042a589edf7d",
+    "frontend/src/features/meet-beacon/ui/meeting-beacon.css": "f8f5c020a1945b2e3141af56dab5d7fbdc53ce607fcdbecc188df202bc760794"
+  },
+  "browser": "156.0.8078.80",
+  "contractHashes": {
+    "contracts/domain/v1/beacon.schema.json": "68e9249c79644f7f3c137c7eddf3bd1977a33223de5e9dbd7d2c236e20dbf486",
+    "contracts/domain/v1/common.schema.json": "303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35",
+    "contracts/domain/v1/party.schema.json": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
+    "frontend/src/shared/api/domain-operations.generated.ts": "8708d572eb22e38aa92626b248ad54ff13d56dfde183520b567acbc6445a5132"
+  },
+  "cleanup": "PASS"
+}

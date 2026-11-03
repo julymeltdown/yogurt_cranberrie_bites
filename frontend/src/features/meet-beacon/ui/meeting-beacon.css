@@ -1,0 +1,18 @@
+.meeting-beacon { color: var(--text, #eee8df); background: var(--surface, #201e24); padding: 1rem; font: 1rem/1.5 system-ui, sans-serif; overflow-wrap: anywhere; }
+.meeting-beacon h2, .meeting-beacon h3 { line-height: 1.2; margin: .5rem 0 1rem; }
+.meeting-beacon fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: .6rem; min-width: 0; }
+.meeting-beacon legend { font-weight: 700; margin-bottom: 1rem; }
+.meeting-beacon input, .meeting-beacon select, .meeting-beacon textarea, .meeting-beacon button { box-sizing: border-box; font: inherit; color: inherit; background: var(--surface-raised, #302d36); border: 1px solid var(--border, #a49ca8); border-radius: .25rem; min-height: 44px; min-width: 44px; padding: .6rem; max-width: 100%; }
+.meeting-beacon input:not([type=checkbox]), .meeting-beacon select, .meeting-beacon textarea { width: 100%; }
+.meeting-beacon button { cursor: pointer; }
+.meeting-beacon button:disabled, .meeting-beacon fieldset:disabled { opacity: .65; cursor: default; }
+.meeting-beacon a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration: underline; }
+.meeting-beacon :focus-visible { outline: 3px solid var(--focus-ring, #f7dc81); outline-offset: 3px; }
+.meeting-check { display: flex; align-items: center; gap: .65rem; min-height: 44px; }
+.meeting-check input { flex: 0 0 44px; width: 44px; height: 44px; margin: 0; }
+.meeting-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+.meeting-beacon dt { font-weight: 700; margin-top: .75rem; }
+.meeting-beacon dd { margin: .2rem 0; }
+.meeting-beacon figure { margin: 1rem 0; }
+.meeting-beacon img { display: block; max-width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) { .meeting-beacon * { scroll-behavior: auto; } }
