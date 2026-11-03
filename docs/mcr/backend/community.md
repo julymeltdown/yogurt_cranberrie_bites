@@ -283,3 +283,13 @@ The native guess regression also injects the precise committed-admission/no-resu
 crash gap in its owned test database, then proves retry does not debit twice.
 The gift restart harness additionally verifies admission-row durability across an
 actual PostgreSQL stop/start. Neither fixture touches external data.
+
+
+The9c4e900 current-source native run passed party5/5, maintenance2/2 and
+shared-policy4/4 plus each actual restart probe and owned cleanup. Gift5/6
+passed; its new READ_ONLY fixture directly changed event phase without the
+mandatory revision increment and was correctly rejected by the core trigger.
+The failed report is retained as
+`community-evidence/review-fix-first-giveaway-failed.json`. The fixture now
+increments revision on each phase update. Gift requalification remains NOT_RUN
+until its corrected executable is rebuilt; no production code changed in this fix.

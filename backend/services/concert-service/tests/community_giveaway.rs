@@ -354,10 +354,12 @@ async fn community_gift_code_rotation_throttle_and_one_time_pickup() -> anyhow::
             .receipt,
         receipt
     );
-    sqlx::query("update concert_events set phase='READ_ONLY' where event_id=$1")
-        .bind(event)
-        .execute(&pool)
-        .await?;
+    sqlx::query(
+        "update concert_events set phase='READ_ONLY',revision=revision+1 where event_id=$1",
+    )
+    .bind(event)
+    .execute(&pool)
+    .await?;
     // Recovery requires fresh read authority rather than a new write or guess admission.
     assert_eq!(
         service
@@ -367,7 +369,7 @@ async fn community_gift_code_rotation_throttle_and_one_time_pickup() -> anyhow::
             .receipt,
         receipt
     );
-    sqlx::query("update concert_events set phase='OPEN' where event_id=$1")
+    sqlx::query("update concert_events set phase='OPEN',revision=revision+1 where event_id=$1")
         .bind(event)
         .execute(&pool)
         .await?;
