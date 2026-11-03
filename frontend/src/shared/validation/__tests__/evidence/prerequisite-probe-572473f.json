@@ -1,0 +1,62 @@
+{
+  "source": "572473fe344fe0f2a933f352cc6a409fd70aceaa",
+  "module": "frontend/src/features/intro/contract.ts",
+  "cases": [
+    {
+      "codePoints": 500,
+      "utf16Units": 1000,
+      "accepted": true,
+      "issues": [],
+      "c04_text_accepted": true
+    },
+    {
+      "codePoints": 501,
+      "utf16Units": 1002,
+      "accepted": false,
+      "issues": [
+        {
+          "path": [
+            "text"
+          ],
+          "code": "too_big",
+          "maximum": 1000
+        }
+      ],
+      "c04_text_accepted": true
+    },
+    {
+      "codePoints": 1000,
+      "utf16Units": 2000,
+      "accepted": false,
+      "issues": [
+        {
+          "path": [
+            "text"
+          ],
+          "code": "too_big",
+          "maximum": 1000
+        }
+      ],
+      "c04_text_accepted": true
+    },
+    {
+      "codePoints": 1001,
+      "utf16Units": 2002,
+      "accepted": false,
+      "issues": [
+        {
+          "path": [
+            "text"
+          ],
+          "code": "too_big",
+          "maximum": 1000
+        }
+      ],
+      "c04_text_accepted": false
+    }
+  ],
+  "mismatching_code_points": [
+    501,
+    1000
+  ]
+}

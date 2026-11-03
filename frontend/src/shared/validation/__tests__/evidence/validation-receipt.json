@@ -1,0 +1,57 @@
+{
+  "base": "aedbb020e637993fe9ef1831e31bd6ae5316ae0c",
+  "result": "PASS",
+  "focused_before_peer_fix": {
+    "files": 4,
+    "tests": 70,
+    "exit_code": 0
+  },
+  "final_policy_after_peer_fix": {
+    "files": 1,
+    "tests": 41,
+    "new_cases": 3,
+    "exit_code": 0
+  },
+  "distinct_focused_tests": 73,
+  "whole_strict_types": {
+    "exit_code": 0,
+    "incremental": false
+  },
+  "affected_lint": {
+    "exit_code": 0,
+    "warnings": 0
+  },
+  "production_entries": {
+    "exit_code": 0,
+    "report": "frontend/src/features/intro/__tests__/evidence/unicode-length/build-report.json"
+  },
+  "native": {
+    "exit_code": 0,
+    "widths": [
+      360,
+      390,
+      430,
+      768,
+      1280,
+      1440
+    ],
+    "report": "frontend/src/features/intro/__tests__/evidence/unicode-length/report.json"
+  },
+  "scope": "Bounded helper/consumer validation only; no root-shell, backend, live or release acceptance",
+  "source_sha256": {
+    "frontend/src/entities/intro/model/__tests__/contract-oracle.py": "ffece1d83ad29e4852f8d8ebe6fb3ff487bf81c2aa72dc9738d634e013d1495b",
+    "frontend/src/entities/intro/model/__tests__/policy.test.ts": "4bafb8595119f10d663bf1cbe52fd94a43a4cffd8abde78a850b88a17a31efe9",
+    "frontend/src/entities/intro/model/age.ts": "1d1f762dcc6baed4297216c83f380ef7ccbbf29643e512b7abad742c465206b5",
+    "frontend/src/entities/intro/model/contract.ts": "8e19d17047d2ed6594d156acf12d3f0f539bafe08e6ee31288f94f31ff0bcaef",
+    "frontend/src/entities/intro/model/errors.ts": "d3eb60792e3a10591bdea9214f8d9bbb9fee6900116bfdb338971c5e060934a1",
+    "frontend/src/entities/intro/model/policy.ts": "489864e7a0f808707d708e5d818f3694a24f32b713b587483c0f39a3f36f794f",
+    "frontend/src/entities/intro/model/publication-contact.ts": "31aefa77596f710eebe311018de07a88ce1e2ceeb888c968ab4580b96254b6c4",
+    "frontend/src/features/intro/IntroEditor.tsx": "fdd45a21f21f3e4e4e20393a22de1d715142738832271cb9da1b6074c0045511",
+    "frontend/src/features/intro/__tests__/unicode-length.test.tsx": "74f3211c29f0385dfae3529836ff773ac20558c490a15f610b653c973d400d09",
+    "frontend/src/features/intro/contract.ts": "ca1a009b9f6666da8fe8e0985932196b5120adfa49f8949373bac7cff917502e",
+    "frontend/src/shared/validation/__tests__/text.test.ts": "2bb28b3c956ae807b2fa0da7b947a39ee7993e57992cb20f4bff0b9bb135a20e",
+    "frontend/src/shared/validation/tags.ts": "187eb5c650db584d64a9d3b5d98d8450363e0582b7278b069412a07a8b6d3a6e",
+    "frontend/src/shared/validation/text.ts": "f8034db3685e555779c96c59f18055c65309cbfeb84392448ca70a4636af2f61"
+  },
+  "post_run_nonsemantic_change": "Removed one trailing blank line from shared/validation/text.ts; exact tested/delivered hashes preserved in browser/build reports. No executable change."
+}

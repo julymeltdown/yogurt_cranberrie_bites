@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "scripts/mcr/check-ui-origin.mjs"
+  ],
+  "exit_code": 0,
+  "report": {
+    "task": "C08",
+    "result": "PASS",
+    "source_revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+    "inventory_sha256": "9d1202211cd136948a7afeb5588238ba9de13613980dab42616011f47762a079",
+    "files_scanned": 1452,
+    "content_files": 1444,
+    "reviewed_extracts": 0,
+    "violations": [],
+    "scope": "Exact bytes and static imports only; manual source/visual review and QA02 remain required"
+  }
+}

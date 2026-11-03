@@ -1,0 +1,99 @@
+{
+  "upstream_repository": "julymeltdown/bigyeting",
+  "revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+  "sources": [
+    {
+      "path": "frontend/src/lib/api/real/canonical-social-intro-schema-core.ts",
+      "git_blob": "29024dece77ee575b7831b3def7b8d6da712627d",
+      "sha256": "5fb90ab6ea58bd78b1250efd857f2f06ee1c70e6da300d6e30862596521c9165",
+      "imports": [
+        "zod"
+      ],
+      "verified_disk_git_inventory": true
+    },
+    {
+      "path": "frontend/src/lib/api/real/canonical-social-intro-schema-interactions.ts",
+      "git_blob": "3b45d39692d226cbb88aec697653ee4eb614e94a",
+      "sha256": "60b043c0464f16e9214e59a182c954f351460e67577054aa60fcb11d169bf5d1",
+      "imports": [
+        "zod",
+        "./canonical-social-intro-schema-core",
+        "./canonical-social-intro-schema-discovery"
+      ],
+      "verified_disk_git_inventory": true
+    },
+    {
+      "path": "frontend/src/lib/api/canonical-contract.ts",
+      "git_blob": "30b11323e314dbb9713e4e8ed7a9fcf50791c3bb",
+      "sha256": "120ca6f2132be8c204733372c5cf41668ec18b6219b5adb4d77e8de47df3ce53",
+      "imports": [
+        "zod",
+        "./canonical-response-contract",
+        "./canonical-response-contract",
+        "./canonical-admin-contract"
+      ],
+      "verified_disk_git_inventory": true
+    },
+    {
+      "path": "frontend/src/lib/api/canonical-response-contract.ts",
+      "git_blob": "a650f4e47b688a1290f7039aeebf0a4fbe50e761",
+      "sha256": "10f2b051cae44d02e0eba34d674dfc6eccf179722affeb3e570894d6427051d2",
+      "imports": [
+        "zod"
+      ],
+      "verified_disk_git_inventory": true
+    },
+    {
+      "path": "frontend/src/features/social-intro/social-intro-model.ts",
+      "git_blob": "dab3befb2be9d652065a4a1fabcef365418c21c4",
+      "sha256": "9f83535790e8882a0565330b89296b162fa609bf4c3a67b2128e49816b9f276f",
+      "imports": [
+        "@/lib/api/real/canonical-social-intro-client"
+      ],
+      "verified_disk_git_inventory": true
+    },
+    {
+      "path": "frontend/src/lib/api/canonical-contract.test.ts",
+      "git_blob": "5ccdbf6eb8acc050fcce71504f73788da37fce87",
+      "sha256": "e0294c6d1124660ade36c0fa3f97b2bb50b891f15bdffd74dcaaefee1520b63f",
+      "verified_disk_git_inventory": true
+    },
+    {
+      "path": "frontend/src/lib/api/real/social-intro-client-msw.test.ts",
+      "git_blob": "e3a668419106bdc72b2841be13312eac24321de1",
+      "sha256": "4f64070c32634f79a60547dc6968ca9ccc04a200df35a5cfcecd9d4a20596f73",
+      "verified_disk_git_inventory": true
+    },
+    {
+      "path": "frontend/src/features/write/age-range-authoring.test.tsx",
+      "git_blob": "a194e9a6d88b864de0422fae34f1f8d7eca39352",
+      "sha256": "1ad4cd1af894218570135277030748b4ec14ae5dc34aea67ff4509442d01cf07",
+      "verified_disk_git_inventory": true
+    }
+  ],
+  "consumer_baseline": [
+    {
+      "path": "frontend/src/features/intro/contract.ts",
+      "base_sha256": "d21fd785818cf65604ed9e47a44222460a3c70475b603d32f97e499bab0d4299",
+      "matches_previous_writer": true,
+      "matches_probe_revision": true
+    },
+    {
+      "path": "frontend/src/features/intro/IntroEditor.tsx",
+      "base_sha256": "190a55986e4b1126f3855325c17230507ceec6843fd0e51aa05c54e71acb3ad1",
+      "matches_previous_writer": true,
+      "matches_probe_revision": true
+    }
+  ],
+  "python_jsonschema": "4.26.0",
+  "compatibility_inputs": {
+    "contracts/domain/v1/common.schema.json": "303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35",
+    "contracts/domain/v1/social.schema.json": "b275b36f2ad8eee90922f7ad27cfcbece943773a94831720b6dfca588d0201d2",
+    "contracts/core/v1/core.schema.json": "9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88",
+    "contracts/assets/v1/avatar-config.schema.json": "37b9be22cff7cbde882ab144aec3b75b5edc24f70653f97c9dcec14e87c652bd",
+    "backend/crates/concert-domain/src/intro_policy/mod.rs": "2923cc4547e57a89daadc49993bf4a5f778bff04738fe3389abf7007ad1e356b",
+    "backend/crates/concert-domain/src/intro_policy/contact.rs": "fd1543cea3204ca9a88f4965a6b7b43704f51a35f81c8eeea6b76f53882c1462",
+    "backend/crates/concert-domain/src/age_policy/mod.rs": "8e0c8a2dba17a90075a52ab1a77d62f14a0aacd142e42a46a6c334802dd5f2f3",
+    "docs/mcr/backend/intro-age-policy.md": "a8d36208918a600d8c6d28b9a04ee9dbf0c0064793c9eb75201ef6093561847e"
+  }
+}
