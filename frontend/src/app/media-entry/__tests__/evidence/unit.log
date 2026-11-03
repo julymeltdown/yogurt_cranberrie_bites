@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-ref-public/frontend
+
+
+ Test Files  4 passed (4)
+      Tests  74 passed (74)
+   Start at  08:09:01
+   Duration  4.24s (transform 229ms, setup 0ms, import 553ms, tests 3.34s, environment 0ms)
+

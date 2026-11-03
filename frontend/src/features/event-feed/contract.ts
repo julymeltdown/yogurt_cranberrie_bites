@@ -1,15 +1,12 @@
 import contract from '../../../../contracts/generated/mcr-domain.openapi.json'
 import type { Decoder } from '../../shared/api/http'
+import type { AvatarState } from '../../entities/avatar/whole-admission'
 
 export const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 export type Filter = 'ALL' | 'WITH_MEDIA' | 'PARTY_LINK' | 'GIVEAWAY_LINK'
 export interface Author {
   readonly user_id: string; readonly display_name: string; readonly bio: string | null
-  readonly avatar: { readonly revision: number; readonly config: {
-    readonly contract_version: '1.0.0'; readonly kind: 'avatar_config'; readonly manifest_id: string
-    readonly manifest_version: number; readonly skin_tone_id: string
-    readonly item_ids: Readonly<{ body: string; eyes: string; hair: string; outfit: string; accessory: string | null }>
-  } }
+  readonly avatar: AvatarState
 }
 export interface ResourceLink { readonly target_type: 'PARTY' | 'GIVEAWAY' | 'POST' | 'INTRO' | 'MURAL' | 'NOTICE'; readonly target_id: string }
 export interface Post {

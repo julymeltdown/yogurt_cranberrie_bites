@@ -20,7 +20,6 @@ it.each([layered, selected.presets[0]!.config])('public contract compilers admit
   expect(parse('AvatarConfig', config)).toEqual(config)
   expect(contractValue('AvatarConfig', config)).toEqual(config)
   const value = structuredClone(bootstrap)
-  Object.assign(value.avatar.config, config)
   // Replace rather than merge branches: strict schemas must never strip mixed fields.
   const avatar = { revision: value.avatar.revision, config }
   expect(decodeContract('Bootstrap', { ...value, avatar, participant: { ...value.participant, profile: { ...value.participant.profile, avatar } } }).avatar).toEqual(avatar)

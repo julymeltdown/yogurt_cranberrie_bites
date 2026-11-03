@@ -67,6 +67,8 @@ assignment; narrow existing root exports preserve the other owner's additions.
 | Production owner media | `01a1a213-03de-72d3-9ecf-2f72b574cf82` | `be-media-upload`: existing media producer plus new media runtime/authority; exact tests/harness. Root exports, configuration, Gateway and proto belong to the composer. |
 | Production event Feed reads | `01a1a21a-a088-7c31-83e3-19de119ba873` | `be-world-recipient-producer`: Concert Feed adapters, Post event-content read authority/RPC and necessary Post read-authority proto extension; no root/media/World edits. Former Friend RPC work is published and preserved. |
 | Product API composition | `01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08` | `be-media-combined`: new Concert product RPC/config/proto, Gateway product routes/client, public notice-read wiring and narrow root registrations. Consumes the media/Feed implementations; does not approve their commits. Its former main-checkout ownership is revoked. |
+| Canonical owner authority | `01a1a207-f012-7343-a24b-12b9c544973f` | `be-intro-age-policy`: real Auth/Friend owner-held guards, new authority protocol, Concert guarded consumer and narrow shared authorization-policy/exchange registration; no observation-to-authority substitution. |
+| Canonical public-profile projection | `01a1a205-3f89-78c3-aa67-719c4bb40b8d` | `be-operations-resume`: Profile-owned public projection/RPC/proto and Concert public-profile adapter; coordinates shared authorization registration with the authority owner, not World-specific display authority. |
 
 All checkout names above are under `/Users/lhs/Desktop/mcr-worktrees/`. A chat's
 old app cwd is not write permission. The original `/Users/lhs/Desktop/mcr`
@@ -89,13 +91,14 @@ for their actual dependencies. A worker uses copied executables for its own
 socket-only PostgreSQL cluster; distinct owned native clusters may run alongside
 another worker's compilation. No native test reads a mutable shared executable.
 
-Stale old turns for BE25, BE33 and beacon-photo work were interrupted and archived
-with branches/WIP preserved; unfinished requirements are not marked complete.
-They remain later reuse/backlog candidates, rather than falsely active workers.
-The completed bounded moderation/operations writer was archived after its
-qualified handoff had already been integrated. Existing historical goal states
-are reported honestly when the goal API cannot replace an unfinished objective;
-that administrative limitation does not prevent the authorized new assignment.
+Stale old turns were interrupted with branches/WIP preserved. The BE25 chat
+is now reused for canonical owner authority; the completed bounded moderation
+chat is reused for public-profile projection after its prior handoff was already
+integrated. BE33 notifications and beacon-photo chats remain archived backlog
+candidates, not completed requirements or falsely active workers. Existing
+historical goal states are reported honestly when the goal API cannot replace an
+unfinished objective; that administrative limitation does not prevent the
+authorized new assignment.
 
 ## Exact visual target
 
