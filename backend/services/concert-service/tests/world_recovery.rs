@@ -918,8 +918,8 @@ fn failed_expiry_cleanup_survives_fresh_cross_owner_reconnect_and_retry() {
 }
 #[test]
 fn displaced_owner_cleanup_history_is_bounded_before_destination_admission() {
-    let (mut book, mut first, b, a, _) = setup();
-    book = Recovery::new(1, QueueLimits::default()).unwrap();
+    let (_, mut first, b, a, _) = setup();
+    let mut book = Recovery::new(1, QueueLimits::default()).unwrap();
     book.activate(
         b.clone(),
         deadline(),
@@ -970,6 +970,17 @@ fn displaced_owner_cleanup_history_is_bounded_before_destination_admission() {
     assert_eq!(third_sim.player_count(), 0);
     assert_eq!(book.pending_cleanup_count(), 1);
     assert!(book.stream_mut(&second).is_ok());
+    // The failed third admission did not free the cleanup budget. Wrong-owner
+    // disconnect must retain the second subscription closed until its owner can remove it.
+    assert!(!book.disconnect(&second, &mut third_sim));
+    assert_eq!(book.len(), 1);
+    assert!(book.stream_mut(&second).unwrap().is_closed());
+    assert_eq!(second_sim.player_count(), 1);
+    assert_eq!(book.retry_cleanup(|old| first.remove(old)), vec![b]);
+    assert!(book.disconnect(&second, &mut second_sim));
+    assert!(book.is_empty());
+    assert_eq!(book.pending_cleanup_count(), 0);
+    assert_eq!(second_sim.player_count(), 0);
 }
 #[test]
 fn disconnect_with_wrong_owner_retains_cleanup_and_cannot_orphan_membership() {
@@ -1013,6 +1024,7 @@ fn one_transport_connection_cannot_acquire_subscriptions_for_multiple_principals
         let mut second = binding(11);
         second.connection_id = b.connection_id;
         if event_change {
+            second.key.user_id = b.key.user_id;
             second.key.event_id = EventId::from_uuid(id(900));
         }
         a.grant(&second, 5000, 10000);

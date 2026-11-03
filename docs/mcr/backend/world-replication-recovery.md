@@ -267,3 +267,10 @@ checking the actual owner. Activation additionally rejects reuse of one transpor
 connection across different canonical event/user subscriptions. Two regressions
 cover wrong-owner disconnect and cross-principal/event connection reuse. Native
 validation is still queued; these changes are not claimed executed.
+
+Narrow static rereview of `c0c88ba` found no actionable defects. Two noted
+coverage limits were filled in the existing regressions: the full cleanup-budget
+disconnect branch retains its closed slot until owner cleanup succeeds, and
+same-user/different-event connection reuse is separately rejected. This extends
+the cases without adding a new test declaration (26 BE13/14 declarations total).
+Formatting/boundary checks pass; native results remain queued.
