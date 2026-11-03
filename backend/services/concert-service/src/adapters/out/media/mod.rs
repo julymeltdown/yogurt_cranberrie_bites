@@ -531,6 +531,7 @@ impl PgMedia {
         target: Target,
     ) -> Result<SafeReference, CommandError> {
         context.validate()?;
+        limit_sql_in(c).await?;
         if target.resource.is_nil() {
             return Err(CommandError::InvalidInput);
         }
