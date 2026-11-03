@@ -51,7 +51,7 @@ Tabs use roving focus, Left/Right (horizontal) or Up/Down (vertical), wrap, disa
 
 Toast insertion does not take focus. Dismissing a focused notification restores focus to the next/previous dismiss button or the labelled region. Delayed controlled removal does not reclaim focus after the user has moved elsewhere. Place interactive notifications inside an open modal if they must remain usable while the rest of the page is inert; do not use a toast as the sole record of a critical outcome.
 
-Cream surfaces, ink typography/borders, restrained red errors/actions, and non-color selected/error cues form the base style. Native controls have 44px minimum height and buttons/tabs also have 44px minimum width. Visible keyboard focus, 16px input text, wrapping content, scrollable tablists/dialog bodies, safe-area sheet padding, reduced-motion transition removal and forced-color selection outlines are included. This is a base palette, not FE06's three-theme system.
+Cream surfaces, ink typography/borders, restrained red errors/actions, and non-color selected/error cues form the base style. Decorative left accents and offset shadows were removed after the user's explicit correction; left bars, colored left borders and pseudo-element substitutes are prohibited. Native controls have 44px minimum height and buttons/tabs also have 44px minimum width. Visible keyboard focus, 16px input text, wrapping content, scrollable tablists/dialog bodies, safe-area sheet padding, reduced-motion transition removal and forced-color selection outlines are included. This is a base palette, not FE06's three-theme system.
 
 The behavioral reference is the WAI-ARIA APG [modal dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) and [tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/). These references guide implementation; they do not constitute an accessibility certification.
 
@@ -80,6 +80,14 @@ DOM tests cover native button/ref/submit/busy behavior; field associations and r
 Chrome tests exercise native keyboard events and rendered components at **360×800, 390×844, 430×932 and 1280×800**, checking tab traversal, actual modal focus cycles/restoration, nested/simultaneous modal stacking and clickable top layer, inert background, sheet bottom alignment and drag-out/backdrop behavior, toast keyboard dismissal, measured 44px targets, page overflow, unclipped modal bounds, and reduced-motion computed styles. No browser page errors were observed. A 390px fixture screenshot was visually inspected; the generated review image is not part of the patch. The fixture bundles the UI through Vite independently of root app composition.
 
 ## Limits and remaining acceptance
+
+Integrator follow-up: the original component handoff above was accepted as the
+bounded FE05 increment in the [execution record](../progress.md). The later
+[style correction evidence](../evidence/ui-style-correction.json) records a
+fresh strict build/lint and four-viewport Chrome run. Its
+[390px screenshot](../evidence/ui-primitives-no-left-accent-390.png) is the
+current visual reference. Earlier screenshots remain historical evidence of
+the pre-correction candidate and must not be used as a styling reference.
 
 Physical iOS/Android, Safari/Firefox, on-screen keyboard/visual-viewport behavior, screen-reader announcement delivery, forced-colors rendering and touch hardware: **NOT_RUN**. The tested narrow Chrome viewports are browser layout evidence, not physical-mobile acceptance. No live API, authentication, world connection, hardware, source user data or database was accessed.
 

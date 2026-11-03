@@ -131,8 +131,6 @@ h1 {
 
 .margin-note {
   margin-top: 2rem;
-  border-left: 4px solid #a22635;
-  padding-left: 0.75rem;
 }
 
 .availability {
@@ -311,7 +309,6 @@ h2 {
   background: var(--mcr-paper);
   color: var(--mcr-ink);
   overflow-wrap: anywhere;
-  box-shadow: 6px 6px 0 var(--mcr-ink);
 }
 
 .mcr-dialog__header {
@@ -345,7 +342,6 @@ h2 {
   inline-size: min(100%, 42rem);
   padding-bottom: max(1rem, env(safe-area-inset-bottom));
   border-bottom: 0;
-  box-shadow: 4px -4px 0 var(--mcr-ink);
 }
 
 .mcr-tablist {
@@ -390,10 +386,6 @@ h2 {
   overflow-wrap: anywhere;
 }
 
-.mcr-feedback--error {
-  border-left: 6px solid var(--mcr-red);
-}
-
 .mcr-feedback--empty {
   border-style: dashed;
 }
@@ -415,7 +407,6 @@ h2 {
   block-size: 1rem;
   margin-block: 0.5rem;
   background: var(--mcr-cream);
-  border-left: 3px solid var(--mcr-muted);
 }
 
 .mcr-skeleton__line:last-child {
@@ -454,10 +445,6 @@ h2 {
 .mcr-toast p {
   flex: 1 1 12rem;
   min-inline-size: 0;
-}
-
-.mcr-toast--error {
-  border-left: 6px solid var(--mcr-red);
 }
 
 @media (prefers-reduced-motion: reduce) {

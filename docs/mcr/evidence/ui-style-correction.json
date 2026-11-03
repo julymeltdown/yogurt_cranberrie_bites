@@ -1,0 +1,59 @@
+{
+  "task": "FE05",
+  "date": "2026-11-03",
+  "base_commit": "d151a99fbfd2c5ca84dda85cf6e6767a80a73da9",
+  "scope": "Remove prohibited decorative left accents and offset shadows from the existing isolated primitives and foundation notice.",
+  "source_sha256": {
+    "frontend/src/shared/styles/base.css": "63fb6160fa17471c9f40cc58c8d60890390f31af2da2078f50640b5ae7b6b762",
+    "frontend/src/shared/ui/__tests__/browser-smoke.mjs": "618ec9ce4aeb3529fbb7e14cf6f23f50d1b9ac4d4319da2726f5060b6474a80c",
+    "docs/mcr/evidence/ui-primitives-no-left-accent-390.png": "65776464ed0cea6bf332f068d0350c6fa7362e0bb2e9702c4a0c7a5b8999856c"
+  },
+  "executed": [
+    {
+      "command": "corepack pnpm@11.7.0 run build",
+      "cwd": "frontend",
+      "exit_code": 0
+    },
+    {
+      "command": "corepack pnpm@11.7.0 run lint",
+      "cwd": "frontend",
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_CHROME_EXECUTABLE=<local Chrome> MCR_UI_SCREENSHOT=<new evidence path> node src/shared/ui/__tests__/browser-smoke.mjs",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "viewports": [
+        [
+          360,
+          800
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          430,
+          932
+        ],
+        [
+          1280,
+          800
+        ]
+      ],
+      "page_errors": 0
+    },
+    {
+      "check": "Manual CSS diff and rendered 390px fixture review",
+      "result": "PASS",
+      "visually_reviewed": true
+    }
+  ],
+  "screenshot": "docs/mcr/evidence/ui-primitives-no-left-accent-390.png",
+  "historical_evidence": "ui-primitives.json and its old screenshot retain their original candidate; this correction supersedes that visual reference.",
+  "limits": [
+    "Isolated UI fixture only",
+    "No new DOM unit-test run needed for this CSS-only correction",
+    "Physical devices, screen readers and application flows NOT_RUN"
+  ]
+}
