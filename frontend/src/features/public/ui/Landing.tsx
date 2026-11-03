@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAccess, usePorts } from '../../../app/access'
 import { PublicFrame } from './PublicFrame'
 import { ConcertAction } from '../../../shared/ui/concert-window'
-import { PosterScene, PosterWeb, PosterWordmark } from './landing-reference/PosterArtwork'
+import { PosterScene, PosterWeb, PosterWordmark, PosterWear } from './landing-reference/PosterArtwork'
 import { SelectedStaticGallery } from '../../../entities/avatar/selected-static'
 
 export function Landing() {
@@ -28,6 +28,7 @@ export function Landing() {
     <div className="public-hero">
       <div className="public-poster" aria-labelledby="landing-title">
       <h1 className="landing-accessible-title" id="landing-title">One world. Every era.</h1>
+      <PosterWear />
       <PosterWeb />
       <PosterWordmark />
       <PosterScene />

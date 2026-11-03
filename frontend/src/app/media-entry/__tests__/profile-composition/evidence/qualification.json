@@ -1,0 +1,73 @@
+{
+  "status": "MOCK_READY",
+  "base_commit": "bab08298855000a430b7fa4f56938ea6b7864d4a",
+  "root_provider_dependency": "9fc3a2994705f1eb3c879397c0f49f5e694fbc62",
+  "node": "24.22.2",
+  "checks": [
+    {
+      "check": "53 focused regressions",
+      "command": "node node_modules/vitest/vitest.mjs run src/app/social-composition/__tests__/provider.test.tsx src/app/social-composition/__tests__/owner.test.ts src/app/character-entry/__tests__/provider.test.tsx src/app/character-entry/__tests__/activity.test.tsx src/features/profile/__tests__/reference-target/presentation.test.tsx src/features/party-discovery/__tests__/ui.test.tsx",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "unit.log"
+    },
+    {
+      "check": "1 layered passthrough regression",
+      "command": "node node_modules/vitest/vitest.mjs run src/app/media-entry/__tests__/profile-composition/layered-fallback.test.tsx",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "layered.log"
+    },
+    {
+      "check": "native Chrome 5 cases",
+      "command": "node src/app/media-entry/__tests__/profile-composition/browser.mjs",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "browser.log"
+    },
+    {
+      "check": "types",
+      "command": "node node_modules/typescript/bin/tsc -p tsconfig.json --incremental --tsBuildInfoFile /tmp/mcr-profile-composition-types.tsbuildinfo --pretty false",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "types.log"
+    },
+    {
+      "check": "scoped lint",
+      "command": "node node_modules/oxlint/bin/oxlint src/app/CommunityFeatures.tsx src/app/social-composition/panels.tsx src/app/media-entry/__tests__/profile-composition",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "lint.log"
+    },
+    {
+      "check": "production build",
+      "command": "node node_modules/vite/bin/vite.js build --outDir /tmp/mcr-profile-composition-build",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "build.log"
+    },
+    {
+      "check": "planning provenance only",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": "repository",
+      "exit_code": 0,
+      "log": "plan.log"
+    }
+  ],
+  "pins": {
+    "frontend/src/app/CommunityFeatures.tsx": "362c3f8a3b3f3187d9310013d0351c60d55c7771f6024b6afdbff3f5422d6e4b",
+    "frontend/src/app/social-composition/panels.tsx": "6772cd55288c68752c398aca0bb6973b80ac17c53510652b21e8dd8083a5dbfb",
+    "frontend/src/app/character-entry/provider.tsx": "b038adf79200e1d56ecb11c534801f2103a1d4b8c36eea9f6df1fc86dd1629e9",
+    "frontend/src/app/character-entry/activity.ts": "bdde34c4bd8bda70baad74b98d8e58200e2f8cf926fe590fa88be039cb98756b",
+    "frontend/src/features/profile/PublicProfile.tsx": "5cf3b391b78c54b2d79907d02c62d6cebfbdd022b2752aad3258e518497fa0cd",
+    "frontend/src/features/profile/Avatar.tsx": "cae62acf82fd44db50cd5549dbffd1b1d93f6a4374d2034a07f7f6b31fcfee5b",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+    "contracts/assets/v1/avatar-config.schema.json": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e"
+  },
+  "limitations": [
+    "Deterministic authorized HTTP identity/rows/bootstrap/availability and instrumented world host",
+    "Layered resolver passthrough/unavailable fallback only; no layered art decode claim",
+    "Live producer, real Phaser, multiuser and device acceptance NOT_RUN"
+  ]
+}

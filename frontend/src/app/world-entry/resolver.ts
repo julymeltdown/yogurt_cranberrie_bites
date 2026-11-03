@@ -3,6 +3,7 @@ import { list, object, requireValue, text } from '../../features/auth/model/cont
 import { isThemeId, type ThemeId } from '../../features/theme/model/preferences'
 import { validateWorldRooms } from '../../features/world-rooms/model/contract'
 import { characterSourcePack } from '../../entities/avatar/source-catalog'
+import { validateWholeCharacterManifest } from '../../entities/avatar/whole-character/contract'
 import { immutable } from '../../world/entities/replicated'
 import { validatePolicy, type SimulationPolicy } from '../../world/input/simulation'
 import { createAssetResources, type AssetResources, type Resource } from '../../world/map/resources'
@@ -57,8 +58,14 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
       const theme = list(document.theme_manifests).map(object).find(t => t.theme_id === themeId)
       requireValue(theme)
       reviewedArt(map); reviewedArt(theme)
-      const provenance = reviewedArt(avatar)
-      requireValue(provenance.source_id === characterSourcePack.source_pack_id)
+      if (avatar.contract_version === '1.1.0' && avatar.representation === 'whole_character') {
+        // This reviewed release binds source/texture/frame hashes directly, without layered provenance.
+        await validateWholeCharacterManifest(avatar, { manifest_id: text(avatar.manifest_id),
+          manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) })
+      } else {
+        const provenance = reviewedArt(avatar)
+        requireValue(provenance.source_id === characterSourcePack.source_pack_id)
+      }
       // Never carry C06 synthetic place metadata into a production map release.
       requireValue(list(map.places).map(object).every(place => object(place.provenance).source_kind !== 'ORIGINAL_FIXTURE'))
       const metadata = await validateManifests(canonicalJson(map), canonicalJson(theme), {

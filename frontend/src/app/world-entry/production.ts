@@ -4,17 +4,32 @@ import type { ReplicationReader } from '../../features/world-rooms'
 import type { WorldComposition } from '../../world/composition'
 import type { LocalInputConfiguration } from './resolver'
 import { validateLocalInputConfiguration } from './configuration'
+import type { RootCharacterRegistry } from '../character-entry/runtime'
 
 export interface ProductionWorldOptions {
   readonly auth: SessionController
   readonly localInput?: LocalInputConfiguration | null
   readonly origin?: string
+  /** Borrow the application owner; a World lease never destroys it. */
+  readonly characters?: RootCharacterRegistry
   /** Test seam. The default loads the actual production composition and resolver only on mount. */
-  readonly load?: (options: { auth: SessionController; origin: string; localInput: LocalInputConfiguration }) => Promise<WorldComposition>
+  readonly load?: (options: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry }) => Promise<WorldComposition>
 }
-async function loadProduction({ auth, origin, localInput }: { auth: SessionController; origin: string; localInput: LocalInputConfiguration }) {
-  const [{ createWorldComposition }, { createWorldEntryResolver }] = await Promise.all([import('../../world/composition'), import('./resolver')])
-  return createWorldComposition({ auth, resolveRelease: createWorldEntryResolver({ auth, origin, localInput }) })
+async function loadProduction({ auth, origin, localInput, characters }: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry }) {
+  const [{ createWorldComposition }, { createWorldEntryResolver }, { createWholeCharacterWorldRenderer }] = await Promise.all([
+    import('../../world/composition'), import('./resolver'), import('../../world/avatar/whole-character'),
+  ])
+  return createWorldComposition({ auth, resolveRelease: createWorldEntryResolver({ auth, origin, localInput }),
+    ...(characters ? { renderer: createWholeCharacterWorldRenderer({ resolveRuntime(context) {
+      const manifest = context.release.avatarManifest
+      if (manifest.representation !== 'whole_character' || typeof manifest.manifest_id !== 'string'
+        || typeof manifest.manifest_version !== 'number' || typeof manifest.content_hash !== 'string') throw new Error('Character release unavailable')
+      const runtime = characters.read(auth.privacy.capture(), { manifest_id: manifest.manifest_id,
+        manifest_version: manifest.manifest_version, content_hash: manifest.content_hash })
+      if (!runtime) throw new Error('Character authority unavailable')
+      return runtime
+    } }) } : {}),
+  })
 }
 /** One lazy composition per canonical application Auth; no resource defaults or renderer fallback. */
 export function createProductionWorld(options: ProductionWorldOptions) {
@@ -68,7 +83,8 @@ export function createProductionWorld(options: ProductionWorldOptions) {
     notify(listeners)
     if (live() && !configuration) notice.textContent = 'The world is unavailable. You can keep browsing.'
     if (live() && configuration) {
-      if (!loading) loading = Promise.resolve().then(() => (options.load ?? loadProduction)({ auth, origin: options.origin ?? location.origin, localInput: configuration })).then(value => {
+      if (!loading) loading = Promise.resolve().then(() => (options.load ?? loadProduction)({ auth, origin: options.origin ?? location.origin, localInput: configuration,
+        ...(options.characters ? { characters: options.characters } : {}) })).then(value => {
         if (closed) { value.dispose(); throw new Error('World owner closed') }
         composition = value; return value
       }).catch(error => { loading = null; throw error })

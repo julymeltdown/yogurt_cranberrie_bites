@@ -11,6 +11,7 @@ export interface CharacterRuntimeInput {
 const same = (a: PrivacyScope, b: PrivacyScope) => a.generation === b.generation && a.userId === b.userId
   && a.eventId === b.eventId && a.policyGeneration === b.policyGeneration && a.gate === b.gate
 const record = (value: unknown): value is Record<string, unknown> => value !== null && typeof value === 'object' && !Array.isArray(value)
+const pinKey = (pin: CharacterRuntimeInput['pin']) => JSON.stringify([pin.manifest_id, pin.manifest_version, pin.content_hash])
 
 /** The application owns this registry; views and World borrow its runtime.
  * The factory remains responsible for reviewed manifest/hash/art validation.
@@ -30,6 +31,11 @@ export function createCharacterRuntimeRegistry<T extends CharacterRuntimeLifetim
   const current = (scope: PrivacyScope) => !closed && auth.session.isCurrent(scope) && auth.privacy.isCurrent(scope)
     && same(scope, auth.privacy.capture())
   return {
+    /** World may borrow only a runtime already admitted by the shell bootstrap. */
+    read(scope: PrivacyScope, pin: CharacterRuntimeInput['pin']): T | null {
+      return current(scope) && active && same(active.scope, scope) && active.key === pinKey(pin)
+        && active.runtime.isCurrent() ? active.runtime : null
+    },
     get(scope: PrivacyScope, bootstrap: ShellBootstrap): T | null {
       if (!current(scope) || bootstrap.event.eventId !== scope.eventId || bootstrap.participant.eventId !== scope.eventId
         || bootstrap.participant.userId !== scope.userId) return null
@@ -38,7 +44,7 @@ export function createCharacterRuntimeRegistry<T extends CharacterRuntimeLifetim
         || typeof manifest.manifest_id !== 'string' || !Number.isSafeInteger(manifest.manifest_version) || Number(manifest.manifest_version) < 1
         || typeof manifest.content_hash !== 'string' || !/^sha256:[a-f0-9]{64}$/.test(manifest.content_hash)) return null
       const pin = Object.freeze({ manifest_id: manifest.manifest_id, manifest_version: Number(manifest.manifest_version), content_hash: manifest.content_hash })
-      const key = JSON.stringify(pin)
+      const key = pinKey(pin)
       if (active && same(active.scope, scope) && active.key === key && active.runtime.isCurrent()) return active.runtime
       clear()
       let runtime: T
