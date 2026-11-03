@@ -126,12 +126,14 @@ mod tests {
     async fn captured_proof_monotonic_expiry_survives_a_later_live_wall_interval() {
         let start = Instant::now();
         let mut context = capture(Some(start + Duration::from_secs(20)), start);
-        context.proof = AuthorityRpcDeadline::new(
+        context.proof = AuthorityRpcDeadline::within_original(
             chrono::Utc::now().timestamp_micros() + 20_000_000,
-            Duration::from_millis(10),
+            start + Duration::from_millis(10),
+            Duration::from_secs(20),
         )
         .unwrap();
         tokio::time::sleep(Duration::from_millis(20)).await;
+        assert!(context.proof.expires_micros() > chrono::Utc::now().timestamp_micros());
         assert!(matches!(context.deadline(Duration::from_secs(2)), Err(e)
             if e.code() == tonic::Code::DeadlineExceeded));
     }
