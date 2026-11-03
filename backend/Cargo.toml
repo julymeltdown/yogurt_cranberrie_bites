@@ -6,6 +6,9 @@ publish = false
 
 [workspace]
 members = [
+  "crates/concert-domain",
+  "crates/concert-application",
+  "services/concert-service",
     "crates/post-domain",
     "crates/post-application",
   "crates/gateway-domain",

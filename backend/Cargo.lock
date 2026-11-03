@@ -660,6 +660,47 @@ dependencies = [
 ]
 
 [[package]]
+name = "concert-application"
+version = "0.1.0"
+dependencies = [
+ "async-trait",
+ "chrono",
+ "concert-domain",
+ "thiserror 2.0.18",
+ "tokio",
+ "uuid",
+]
+
+[[package]]
+name = "concert-domain"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "thiserror 2.0.18",
+ "uuid",
+]
+
+[[package]]
+name = "concert-service"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "axum 0.7.9",
+ "chrono",
+ "concert-application",
+ "concert-domain",
+ "http-body-util",
+ "migration-runtime",
+ "platform",
+ "serde_json",
+ "sqlx",
+ "tokio",
+ "tower",
+ "uuid",
+]
+
+[[package]]
 name = "const-oid"
 version = "0.9.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
