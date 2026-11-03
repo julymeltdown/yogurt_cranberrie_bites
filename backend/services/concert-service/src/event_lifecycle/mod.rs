@@ -15,6 +15,7 @@ use uuid::Uuid;
 pub mod archive;
 pub mod http;
 pub mod privacy;
+pub mod read_only;
 pub const SCHEMA: &str = include_str!("schema.sql");
 /// Binds runner execution to the exact owned source compiled into this binary.
 /// Dependencies/roots still need the integrator's candidate-bound build receipt.
@@ -67,6 +68,58 @@ pub fn owned_source_pin() -> String {
         (
             "backend/services/concert-service/tests/event_lifecycle_support/migrations.rs",
             include_str!("../../tests/event_lifecycle_support/migrations.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/event_lifecycle/read_only.rs",
+            include_str!("read_only.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/community/closure.rs",
+            include_str!("../community/closure.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/community/mod.rs",
+            include_str!("../community/mod.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/community/giveaway.rs",
+            include_str!("../community/giveaway.rs"),
+        ),
+        (
+            "backend/services/concert-service/migrations/0024_event_read_only_barrier.sql",
+            include_str!("../../migrations/0024_event_read_only_barrier.sql"),
+        ),
+        (
+            "backend/services/concert-service/tests/event_lifecycle_read_only.rs",
+            include_str!("../../tests/event_lifecycle_read_only.rs"),
+        ),
+        (
+            "backend/services/concert-service/tests/event_lifecycle_support/read_only.rs",
+            include_str!("../../tests/event_lifecycle_support/read_only.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/world/closure.rs",
+            include_str!("../world/closure.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/world/mod.rs",
+            include_str!("../world/mod.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/world/production_owners.rs",
+            include_str!("../world/production_owners.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/world/admission_bridge.rs",
+            include_str!("../world/admission_bridge.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/world/invalidation/mod.rs",
+            include_str!("../world/invalidation/mod.rs"),
+        ),
+        (
+            "backend/services/concert-service/src/world/invalidation/store.rs",
+            include_str!("../world/invalidation/store.rs"),
         ),
     ];
     let mut hash = Sha256::new();

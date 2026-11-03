@@ -1,5 +1,140 @@
 # BE41 event lifecycle — implementation and qualification record
 
+## READ_ONLY owner increment — source authoring, native NOT_RUN
+
+Current branch: `codex/mcr-be-read-only-barrier`, reused isolated checkout
+`/Users/lhs/Desktop/mcr-worktrees/be-lifecycle-resume`, base
+`1e5022885525ab56f056aa2c24100e18c4bc67ed`. Former `c2a09dcc` branch/commits
+remain intact. This increment is **IN_PROGRESS**, not native-qualified or accepted.
+The aligned broader persistent goal still reports **BLOCKED**; Main explicitly
+assigned manual continuation without reset or false completion.
+
+The exact original ten-path grant covers service
+`src/event_lifecycle/{read_only,mod}.rs`, `src/community/{closure,mod,giveaway}.rs`,
+`migrations/0024_event_read_only_barrier.sql`, `tests/event_lifecycle_read_only.rs`,
+`tests/event_lifecycle_support/read_only.rs`, the backend lifecycle Python runner,
+and this record. Main separately granted the eleventh path
+`tests/event_lifecycle_support/migrations.rs` for exact forward-ledger adaptation.
+All abbreviated paths are under `backend/services/concert-service/`. World owns
+0023 and its entire implementation/invalidation/runtime/outbox scope. No World,
+frontend, contract, manifest, lockfile, root composition, previous migration or
+source archive is changed here.
+
+### Real owner and native ordering
+
+`read_only.rs` calls the frozen actual owning API
+`world::closure::fence_event_read_only_in(&mut PgConnection,event,job,operation)`;
+no default, fixture, boolean result or separately committing consumer replaces it.
+Its returned `WorldReadOnlyReceipt` must match exact event/job/operation, a nonnil
+receipt identity and positive bounded revision. Community cancellation and both
+community/composite receipt insertions use that same caller connection. The
+World-owned 0023 schema stores its own lease/victim snapshots; 0024 does not
+invent or duplicate that schema. The composite records only World receipt ID and
+revision plus a same-scope community FK, not copied World identities or content.
+
+`ReadOnlyCommandDriver` obtains its pool/event from the actual `AdmissionBridge`.
+It validates input and performs actual current operator/policy preflight before
+any native invalidation; unauthorized/stale/new-event callers cannot install a
+process-wide removal fence. Exact-key replay, conflicts and RESUME remain BE15
+operations. Fresh START follows delivery gate -> short native fence via
+`begin_invalidation(stable operation, Event scope)` -> admission gate ->
+`pause_invalidation().await` -> existing BE15 transaction/event FOR UPDATE.
+No SQL transaction is held while acquiring the owner gates, and no native mutex
+spans an await. Current authority/revision is rechecked by the actual producer
+inside SQL; preflight is not a durable permission grant.
+
+The existing production publication lease retains event FOR SHARE and checks
+OPEN/LIVE/revision. Its task disables native sends under the exact shared fence
+before SQL rollback. Event FOR UPDATE therefore also drains qualifying permits
+in other processes. The local early native fence prevents delayed pending views
+from reappearing while SQL waits. A single local bridge does not claim synchronous
+foreign-process cache removal; actual cross-process permit behavior remains a
+native qualification obligation.
+
+SQL failure/cancellation/process death rolls back the event/job, owning World
+mutations, community root/children, receipts and outbox together. Removed native
+views are **never restored** by rollback. The driver drops only its private
+operation-bound preparation token; native pending removal remains on failure or
+cancellation. Recovery requires fresh qualified World authority and a committed
+phase reread before clearing that marker. Confirmed durable success may finish
+the marker; finish failure cannot rewrite a committed admission as a rollback.
+Later six steps still require an explicitly supplied actual owning adapter.
+
+`community/closure.rs` locks all event roots in stable ID order, invokes existing
+checked Party Cancel and Giveaway Cancelled transitions and persists through the
+canonical root/child serializers. The aggregate owner parameter is used only for
+internal domain invariant checks, never as a forged operator session or a user
+command receipt. Pending party applications cancel; terminal party root/audience
+fences deny membership access; held/ready reservations cancel and release reserved
+inventory; pickup secrets and meeting/code state are removed. Claimed/completed
+history remains. Residual active roots/children/counters/secrets abort the entire
+transaction; no truncated successful batch exists. Ordinary concurrent producers
+already hold event SHARE; READ_ONLY denies reopening while limited safety actions
+remain subject to current authority.
+
+0024 has immutable event/job/operation-bound community/composite receipts,
+positive revisions, lifecycle commit-deadline guards and same-scope FK/unique
+constraints. New mutations require the initial PENDING revision-1 job in
+READ_ONLY; a stored same-operation receipt can be verified later without repeating
+effects. Wrong bindings, non-READ_ONLY steps and missing/expired transaction
+fences fail closed. Existing published migrations remain unchanged.
+
+### Authored validation and pending resource/API gates
+
+Ten new ignored owned-PostgreSQL tests exercise actual World/community SQL:
+root/child cleanup and foreign-event isolation, exact admission replay,
+post-component and between-owner injected-failure rollback, expired-commit rollback, preconsumed-ticket/lease denial,
+concurrent START, component scope and immutability, event SHARE serialization,
+and two-process restart/replay. They use synthetic test-only Auth/role authority;
+they do not certify production Auth, native send revocation or root mounting.
+The SQL SHARE test specifically does not masquerade as a ProductionOwners native
+permit test. Two focused units cover receipt-binding rejection and cancellation
+of the private preparation token; they also remain NOT_RUN.
+
+The runner now requires exactly three source-qualified binaries and all **19**
+expected native tests (historical 9 plus new 10), validates no missing/duplicated
+suite, and restarts both recovery pairs separately. Its compiled pin includes the
+19 lifecycle/community/schema/test files and six read-only World dependencies,
+so stale World binaries cannot qualify this composition. Raw evidence for this
+increment must be written after actual execution, not copied from historical JSON.
+The ledger test now requires the exact version sequence
+`1..12,16,18,19,20,21,22,23,24`, pins published 0018 SHA256, and retains exact
+receipt/checksum, existing-row upgrade and unchanged-reapply checks.
+
+**Not run:** Cargo compilation, PostgreSQL install/reapply, all new tests, actual
+native pending/active publication drain and gate-order/recovery tests, process
+kill in the new component, current full migration runtime and production multiuser
+flow. Main has not transferred a physical Cargo/PG slot; the World-owned API and
+0023 must first be delivered/merged. No stub was added to make this compile early.
+The existing HTTP helper accepts the older service type; the actual transport/root
+must be explicitly wired through this new driver under separate ownership. Actual
+Auth/operator/retention and later owner steps remain required. No unqualified
+master publication or BE41 acceptance is claimed.
+
+Executed non-native checks for this source checkpoint (all exit 0):
+
+- `rustfmt +1.88.0 --edition 2021 --check` on the six assigned Rust roots (module,
+  read-only component, community adapter, new suite, new support and ledger support).
+- Python AST/`compile` of the runner, exact ordered 25-file Rust/Python pin parity,
+  exact 19-test registry parity against all three Rust suites, no duplicate pins.
+- Programmatic exact eleven-path ownership comparison; giveaway diff contains
+  only two sibling `load`/`save` visibility changes.
+- `git diff --check` and `python3 scripts/mcr/check-plan.py`: PASS. The planning
+  checker separately verified all 13 original archive hashes and is not an
+  application/native test. No Cargo, PostgreSQL or build-target command ran.
+
+Before merging World publication, the explicitly absent compile dependencies were
+`world/closure.rs` and `world/invalidation/{mod,store}.rs`. The latter two are in
+World's published `55061be4`/master `a4ae8555`; the closure API/0023 is still pending.
+Source commits may be shared for coordination; master publication requires the
+real API merge plus relevant native qualification under a transferred slot.
+
+## Historical native-qualified continuation at c2a09dcc
+
+The following section describes the earlier isolated `f5af234` continuation only;
+its 9/23/6 results and raw JSON do not qualify this READ_ONLY increment.
+
+
 BE41 remains **IN_PROGRESS**, with full acceptance **BLOCKED** on production owner
 composition and delivery wiring. The bounded native/migration continuation is
 validated. The persistent goal tool still reports **BLOCKED**: Main authorized
