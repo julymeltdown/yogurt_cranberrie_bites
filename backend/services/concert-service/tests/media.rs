@@ -129,8 +129,12 @@ async fn upload(
     Ok(id)
 }
 async fn cleanup(p: &PgPool, ctx: Context) {
-    sqlx::query("delete from concert_events where event_id=$1")
+    // BE15 deliberately retains receipts and restricts deleting their event. Remove
+    // only this fixture participant/media; the entire owned cluster is removed by
+    // the harness after restart evidence, including event and receipt tombstones.
+    sqlx::query("delete from concert_participants where event_id=$1 and user_id=$2")
         .bind(ctx.event)
+        .bind(ctx.actor)
         .execute(p)
         .await
         .unwrap();

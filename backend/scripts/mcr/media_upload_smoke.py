@@ -24,6 +24,21 @@ def require(value, message):
 def run(args, report):
     tools = {name: migration.executable(args.pg_bin / name) for name in migration.PG_TOOLS}
     test = migration.executable(args.repository_test) if args.repository_test else None
+    if test:
+        require(args.artifact_receipt is not None, "compiled artifact receipt required")
+        receipt = json.loads(args.artifact_receipt.read_text())
+        require(receipt.get("exit_code") == 0, "artifact build did not succeed")
+        require(Path(receipt["private_artifact"]).resolve() == test, "artifact receipt path mismatch")
+        require(receipt["artifact_sha256"] == digest(test), "artifact receipt digest mismatch")
+        require(receipt["source_sha256"], "artifact source pins missing")
+        for name, expected in receipt["source_sha256"].items():
+            source = (ROOT / name).resolve()
+            source.relative_to(ROOT)
+            require(digest(source) == expected, f"artifact source changed: {name}")
+        require(subprocess.run(["git", "merge-base", "--is-ancestor", receipt["source_revision"], "HEAD"], cwd=ROOT, capture_output=True).returncode == 0, "artifact source ancestry differs")
+        report["artifact_receipt_sha256"] = digest(args.artifact_receipt)
+        report["artifact_source_revision"] = receipt["source_revision"]
+        report["artifact_source_pins"] = "PASS"
     cluster = migration.Cluster(tools)
     try:
         cluster.init()
@@ -93,7 +108,12 @@ def run(args, report):
                 secrets = (cluster.password, cluster.url(DATABASE), cluster.token)
                 text = (result.stdout + result.stderr).decode(errors="replace")
                 require(all(v not in text for v in secrets), "test diagnostic secret leak")
-                report[label] = migration.redact(text, secrets)
+                # Keep enough diagnostics to distinguish assertion failures from fixture
+                # cleanup failures. Never truncate before checking exact secret values.
+                report[label] = re.sub(r"(?:postgres(?:ql)?|redis)://[^\s]+", "[redacted-url]", text)[-64000:]
+                summary = re.search(r"test result: (?:ok|FAILED)\. (\d+) passed; (\d+) failed; (\d+) ignored", text)
+                if summary:
+                    report[label + "-summary"] = dict(zip(("passed", "failed", "ignored"), map(int, summary.groups())))
                 require(result.returncode == 0, f"tests failed: {label}")
                 require(digest(test) == report["test_binary_sha256"], "test binary changed")
             tests("producer-tests", ["--test-threads=1"])
@@ -112,6 +132,7 @@ def run(args, report):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-test", type=Path)
+    parser.add_argument("--artifact-receipt", type=Path)
     parser.add_argument("--pg-bin", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args(argv)
@@ -121,7 +142,7 @@ def main(argv=None):
         fd = os.open(args.report, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
     except OSError:
         parser.error("report must be a new writable file")
-    report = {"scope": "BE24 owned native producer and raster codec only", "result": "FAIL", "commands": {}, "real_authority": "NOT_COMPOSED", "http_e2e": "NOT_RUN", "sqlx_runtime_migration_ledger": "NOT_RUN", "cleanup": "NOT_RUN"}
+    report = {"scope": "BE24 owned native producer and raster codec only", "result": "FAIL", "commands": {}, "real_authority": "NOT_COMPOSED", "http_e2e": "NOT_RUN", "sqlx_runtime_migration_ledger": "NOT_RUN", "restart_persistence": "NOT_RUN", "cleanup": "NOT_RUN"}
     handlers = {}
     def interrupted(*_):
         raise KeyboardInterrupt

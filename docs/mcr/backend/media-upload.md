@@ -169,6 +169,18 @@ is content sanitization, not a separate antivirus scanning service.
   without overflow. All three source-query probes and cleanup PASS in
   `tests/media_support/timeout-clamp-evidence.json`. Rust producer rerun remains
   separately NOT_RUN until the explicitly queued correction compile lease.
+- Corrected source `b099411` compiled successfully and was privately pinned as
+  `d32fd9fb3192edb066014e29a8670cbb8e9df60c252c11504fc8fd3508a60b26` before
+  Cargo release. Native suite: 7 passed, 10 failed, 1 restart-only test ignored.
+  Full redacted diagnostics confirm all ten failures reached the same fixture
+  cleanup DELETE, which violates BE15's deliberate receipt/event restrictive FK.
+  No receipt/event retention invariant was weakened. Fixture cleanup now removes
+  only its participant/media, retaining receipts/events until owned cluster teardown.
+  Failed native receipts remain in `native-corrected-evidence.json` and
+  `native-corrected-diagnostics.json`; fixture-corrected binary and restart pending.
+  The native harness now requires exact build receipt/binary SHA/current source
+  hashes and source ancestry, preventing a stale executable from certifying newer
+  source. Detailed diagnostics and machine-readable test summaries are retained.
 - A continuation audit found an expiry-after-authority gap. Final PUT/publication,
   first linkage, private read and intent SQL now check database wall time after
   owner awaits. Exact source SQL executed against expired synthetic rows changes
