@@ -45,7 +45,7 @@ export interface WorldLifecyclePort {
    */
   mount(host: HTMLElement, context: { scope: ActiveScope; bootstrap: ShellBootstrap; signal: AbortSignal; privacyScope?: PrivacyScope | null }): WorldLease
 }
-export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader }
+export interface WorldAccessBinding { readonly release: WorldEntryRequest; readonly replication: ReplicationReader; readonly presentation?: import('../world/composition').WorldPresentationPort }
 export interface WorldAccessBindingPort { read(): WorldAccessBinding | null; subscribe(listener: () => void): () => void }
 export interface ShellPorts {
   /** Explicit reviewed local avatar inputs; absent means previews are unavailable. */

@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState, useSyncExternalStore, type ReactNode } from 'react'
 import { usePorts } from '../access'
+import { WorldPanels } from '../world-panels'
+import type { PrivacyScope } from '../../shared/query/privacy'
 import type { WorldAccessBinding } from '../ports'
 import { WorldRooms } from '../../features/world-rooms'
 import { WorldNearby } from '../../features/world-nearby'
@@ -8,7 +10,7 @@ import { createWorldAccessBridge, type WorldAccessBridge } from './bridge'
 const Context = createContext<WorldAccessBridge | null>(null)
 const empty = () => null, noop = () => () => {}
 /** Keep this provider's tree shape stable while WorldHost publishes/revokes its actual mount lease. */
-export default function ProductionWorldFeatures({ children }: { children: ReactNode }) {
+export default function ProductionWorldFeatures({ children, privacyScope = null }: { children: ReactNode; privacyScope?: PrivacyScope | null }) {
   const ports = usePorts(), source = ports.worldAccess
   const binding = useSyncExternalStore(source?.subscribe ?? noop, source?.read ?? empty, empty)
   const [owner, setOwner] = useState<{ auth: typeof ports.auth; binding: WorldAccessBinding; bridge: WorldAccessBridge } | null>(null)
@@ -20,7 +22,7 @@ export default function ProductionWorldFeatures({ children }: { children: ReactN
     return () => bridge.dispose()
   }, [ports.auth, binding])
   const current = owner?.auth === ports.auth && owner?.binding === binding && binding && !binding.release.signal.aborted && ports.auth?.privacy.isCurrent(binding.release.privacyScope) ? owner.bridge : null
-  return <Context value={current}>{children}</Context>
+  return <Context value={current}><WorldPanels source={binding?.presentation ?? null} scope={privacyScope}>{children}</WorldPanels></Context>
 }
 export function ProductionRoomsPanel() {
   const bridge = useContext(Context)

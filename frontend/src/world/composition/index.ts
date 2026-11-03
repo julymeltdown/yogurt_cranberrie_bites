@@ -2,7 +2,7 @@ import type { WorldLease, WorldLifecyclePort } from '../../app/ports'
 import type { SessionController } from '../../features/auth/model/session'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import type { WorldCamera, Point } from '../camera/port'
-import { attachMovement } from '../input/controller'
+import { attachMovement, type MovementAttachment } from '../input/controller'
 import { abortable, loadMap, type LoadedMap } from '../map/resources'
 import { createWorldRuntime, type EngineFactory, type RuntimeState, type WorldRuntime } from '../runtime'
 import { createWorldReplication, type ReplicationView, type WorldReplication } from '../network/replication'
@@ -10,6 +10,11 @@ import { WebSocketWorldTransport } from '../network/websocket'
 import { immutable } from '../entities/replicated'
 import { createTicketAcquirer } from './ticket'
 import { prepareRelease, samePrivacy, type PreparedWorldRelease, type WorldReleaseResolver } from './release'
+import { createThemeController, type ThemeController } from '../../features/theme/model/controller'
+import { createLocalThemePreferences, type ThemePreferences } from '../../features/theme/model/preferences'
+import { MapError } from '../map/json'
+import { createThemeLoader } from '../theme/loader'
+import type { PlaceMapRelease } from '../../features/places/model/controller'
 import type { AvatarScenePort } from '../avatar/scene'
 
 export type { WorldReleaseResolver, ResolvedWorldRelease, WorldReleaseRequest } from './release'
@@ -40,10 +45,19 @@ export interface WorldReplicationRelease {
   switchRoom(roomId: string): Promise<boolean>
   reconnect(): Promise<boolean>
 }
+/** Read-only capabilities of this exact live engine/release, withdrawn before any resource cleanup. */
+export interface WorldPresentationRelease {
+  readonly request: import('./release').WorldReleaseRequest
+  readonly map: PlaceMapRelease
+  readonly camera: Pick<MovementAttachment['camera'], 'lookAt' | 'recenter' | 'setZoom' | 'read'>
+  readonly theme: Pick<ThemeController, 'read' | 'subscribe' | 'select'>
+}
+export interface WorldPresentationPort { read(): WorldPresentationRelease | null; subscribe(listener: () => void): () => void }
 export interface WorldCompositionOptions {
   readonly auth: SessionController
   readonly resolveRelease: WorldReleaseResolver
   readonly renderer?: WorldRendererPort
+  readonly themePreferences?: ThemePreferences
   /** Existing FE14 engine seam. Omit in production to dynamically load actual Phaser. */
   readonly importEngine?: () => Promise<EngineFactory>
   readonly timeoutMs?: number
@@ -58,6 +72,8 @@ export function createWorldComposition(options: WorldCompositionOptions) {
   sessionOwners.set(auth, authority)
   let owner: { dispose(): void; replication: WorldReplication | null; rooms: ReadonlySet<string> } | null = null
   let state: WorldCompositionState = Object.freeze({ phase: 'idle', runtime: null, renderer: 'unavailable', problem: null })
+  let presented: WorldPresentationRelease | null = null
+  const presentation: WorldPresentationPort = { read: () => presented && !presented.request.signal.aborted && auth.privacy.isCurrent(presented.request.privacyScope) && auth.session.isCurrent(presented.request.scope) ? presented : null, subscribe: listener => release.subscribe(listener) }
   let closed = false, drain = Promise.resolve()
   const notify = () => { for (const listener of Array.from(listeners)) { try { listener() } catch { /* Isolated FE18 observers. */ } } }
   const release: WorldReplicationRelease = {
@@ -77,6 +93,8 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     let disposed = false, failed = false, blocked = true, visible = true
     let runtime: WorldRuntime | null = null
     let renderer: WorldRendererLease | null = null, camera: WorldCamera | null = null, foot: Point | null = null, zoom = 1, inputPaused: boolean | null = null
+    let themeController: ThemeController | null = null
+    let movement: MovementAttachment | null = null, presentationAbort: AbortController | null = null
     let removeRendererStatus = () => {}
     let controller = new AbortController(), bootRevision = 0
     const waiting = Promise.all([drain, authority.drain]).then(() => {})
@@ -116,7 +134,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
       if (view.problem === 'map-version') { fail('release'); return }
       const self = view.entities.find(entity => entity.self)
       foot = self?.player.position ?? null
-      if (foot) camera?.center(foot, zoom)
+      if (foot && movement?.camera.read().following !== false) camera?.center(foot, zoom)
       renderer?.replace(view)
       if (!current()) return
       refreshControls()
@@ -125,6 +143,11 @@ export function createWorldComposition(options: WorldCompositionOptions) {
     }
     function stopResources() {
       ++bootRevision
+      presented = null
+      presentationAbort?.abort(); presentationAbort = null
+      themeController?.dispose(); themeController = null
+      notify() // Synchronous withdrawal precedes replication, camera and engine destruction.
+      movement = null
       const removeStatus = removeRendererStatus; removeRendererStatus = () => {}
       try { removeStatus() } catch { /* A broken observer must not strand privacy teardown. */ }
       // Withdraw socket authority and roster before releasing visual ownership.
@@ -205,12 +228,13 @@ export function createWorldComposition(options: WorldCompositionOptions) {
           attachControls: control => {
             if (!isBootCurrent()) throw new Error('World authority unavailable')
             camera = control.camera
-            // FE15 may simulate a local intent route. Only C05 self position may move the real camera.
+            // FE15 may simulate a local intent route. Only C05 self position or explicit look-at may move the real camera.
             const authoritativeCamera: WorldCamera = { ...control.camera,
-              center: (_predicted, nextZoom) => { zoom = nextZoom; if (foot && isBootCurrent()) camera?.center(foot, zoom) } }
+              center: (predicted, nextZoom) => { zoom = nextZoom; const target = movement?.camera.read().following === false ? predicted : foot; if (target && isBootCurrent()) camera?.center(target, zoom) } }
             const attachment = attachMovement({ ...control, camera: authoritativeCamera }, { controls: inputs,
               policy: prepared.movementPolicy, zoom: prepared.zoom,
               consume: intent => { if (isBootCurrent() && !blocked && visible && !document.hidden) owned.replication?.setIntent(intent) } })
+            movement = attachment
             try {
               if (options.renderer) {
                 step = 'renderer'
@@ -234,6 +258,29 @@ export function createWorldComposition(options: WorldCompositionOptions) {
         const mounted = await runtime.start(attempt.signal)
         if (!isBootCurrent()) return
         if (mounted.phase !== 'ready') { fail(step); return }
+        if (!movement || !runtime) { fail('runtime'); return }
+        const preferences = options.themePreferences ?? {
+          read: (scope: Parameters<ThemePreferences['read']>[0]) => createLocalThemePreferences(localStorage).read(scope),
+          write: (scope: Parameters<ThemePreferences['write']>[0], theme: Parameters<ThemePreferences['write']>[1]) => createLocalThemePreferences(localStorage).write(scope, theme),
+        }
+        const loadTheme = createThemeLoader(prepared.themeInputs)
+        const theme = createThemeController({ scope: { userId: context.scope.userId, eventId: context.scope.eventId }, preferences, runtime, initial: prepared.themeId, load: (id, signal) => prepared.availableThemeIds.includes(id) ? loadTheme(id, signal) : Promise.reject(new MapError('unavailable')) })
+        themeController = theme
+        const attachment = movement as MovementAttachment
+        presentationAbort = new AbortController()
+        const presentationSignal = presentationAbort.signal
+        const livePresentation = () => isBootCurrent() && !presentationSignal.aborted
+        const publicCamera = Object.freeze({
+          lookAt: (point: Point) => { if (livePresentation()) attachment.camera.lookAt(point) },
+          recenter: () => { if (livePresentation()) attachment.camera.recenter() },
+          setZoom: (value: number) => livePresentation() && attachment.camera.setZoom(value),
+          read: () => livePresentation() ? attachment.camera.read() : { following: true, camera: null },
+        })
+        presented = Object.freeze({ request: Object.freeze({ ...request, signal: presentationAbort.signal }),
+          map: Object.freeze({ scope: context.scope, manifest: prepared.map,
+            expected: Object.freeze({ mapId: prepared.resources.mapId, revision: prepared.resources.mapRevision, contentHash: prepared.mapInput.pin.mapHash, geometryHash: prepared.map.geometry_hash }) }),
+          camera: publicCamera, theme: Object.freeze({ read: theme.read, subscribe: theme.subscribe, select: theme.select }) })
+        void theme.restore()
         publish({ phase: 'ready', runtime: mounted, renderer: renderer ? renderer.readStatus?.() ?? 'ready' : 'unavailable' })
         if (!isBootCurrent()) return
         owned.replication.setVisible(visible && !document.hidden)
@@ -251,10 +298,10 @@ export function createWorldComposition(options: WorldCompositionOptions) {
       setVisible(value) { if (disposed) return; visible = value; setVisible() },
     }
   }
-  return { mount, replication: release, read: () => state, subscribe: release.subscribe,
+  return { mount, replication: release, presentation, read: () => state, subscribe: release.subscribe,
     dispose() { if (closed) return; closed = true; owner?.dispose(); listeners.clear() },
     /** Admission of a replacement game waits for the previous FE14 engine's closed promise. */
     settled: () => drain,
   }
 }
-export type WorldComposition = ReturnType<typeof createWorldComposition>
+export type WorldComposition = Omit<ReturnType<typeof createWorldComposition>, 'presentation'> & { readonly presentation?: WorldPresentationPort }

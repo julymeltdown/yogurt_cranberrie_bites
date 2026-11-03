@@ -6,10 +6,11 @@ import { MAX_SHELL_LOCATIONS, NavigationMemory, ShellLink, usePanelBack } from '
 import type { ActiveScope, ShellBootstrap } from './ports'
 import { resolvePanel, type PanelRoute } from './routes'
 import { WorldHost } from './WorldHost'
-import { ShellHeader, EraControls, BottomNavigation, PanelHeader } from './shell-chrome'
+import { ShellHeader, BottomNavigation, PanelHeader } from './shell-chrome'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
 
+const ProductionEraControls = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionEraControls })))
 const ProductionWorldFeatures = lazy(() => import('./world-entry/root-features'))
 const AccountProvider = lazy(() => import('./account-entry/provider'))
 const CommunityFeatures = lazy(() => import('./CommunityFeatures'))
@@ -81,13 +82,13 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     window.addEventListener('resize', update)
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
-  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
+  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
     <NavigationMemory><div className="world-shell" data-mcr-shell="" ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
     <a className="skip-link" href="#shell-content">Skip to content</a>
     <ShellHeader eventTitle={bootstrap.event.title} />
-    <div className="shell-era-region"><EraControls />
+    <div className="shell-era-region"><ProductionEraControls />
       {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <p className="shell-mode" role="status">Read only</p>}
     </div>
     <div className="shell-stage" data-panel-size={panelOpen ? size : 'closed'}>

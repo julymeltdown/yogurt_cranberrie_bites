@@ -22,7 +22,7 @@ export const panelRoutes: readonly PanelRoute[] = [
     ['map', 'Map'], ['places/:placeId', 'Place'], ['rooms', 'Rooms'],
     ['nearby', 'Nearby in world'], ['theme', 'Choose an era'],
     ['check-in', 'Real-world check-in'], ['help', 'How to play'],
-  ].map(([path, title]) => ({ path: `/world/${path}`, title: title!, tab: '/world' as const, parent: '/world' })),
+  ].map(([path, title]) => ({ path: `/world/${path}`, title: title!, tab: '/world' as const, parent: path === 'places/:placeId' ? '/world/map' : '/world' })),
   { path: '/feed', title: 'Feed', tab: '/feed', parent: '/world', links: links(['/feed/new', 'New post']) },
   { path: '/feed/new', title: 'New post', tab: '/feed', parent: '/feed' },
   { path: '/feed/:postId', title: 'Thread', tab: '/feed', parent: '/feed' },

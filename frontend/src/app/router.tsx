@@ -2,6 +2,7 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { lazy, Suspense, type ReactNode } from 'react'
 import { createBrowserRouter, Link, Outlet, type RouteObject } from 'react-router-dom'
 import { Feedback } from '../shared/ui'
+import { WorldPanelOwnership } from './world-panels/ownership'
 import { PortsProvider } from './access'
 import type { ShellPorts } from './ports'
 import { adminPaths, panelRoutes, publicPaths } from './routes'
@@ -16,7 +17,15 @@ const NearbyPanel = lazy(() => import('./world-entry/root-features').then(module
 const AccountPanel = lazy(() => import('./account-entry/panels'))
 const MeetingCheckInPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingCheckInPanel })))
 const MeetingBeaconPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingBeaconPanel })))
+const MapPanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionMapPanel })))
+const PlacePanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionPlacePanel })))
+const ThemePanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionThemePanel })))
+const WallPanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionWallPanel })))
 const featurePanels: Readonly<Record<string, ReactNode>> = {
+  '/world/map': <Suspense fallback={<p role="status">Opening map…</p>}><MapPanel /></Suspense>,
+  '/world/places/:placeId': <Suspense fallback={<p role="status">Opening place…</p>}><PlacePanel /></Suspense>,
+  '/world/theme': <Suspense fallback={<p role="status">Opening eras…</p>}><ThemePanel /></Suspense>,
+  '/wall': <Suspense fallback={<p role="status">Opening wall…</p>}><WallPanel /></Suspense>,
   '/me': <Suspense fallback={<p role="status">Opening your account…</p>}><AccountPanel view="me" /></Suspense>,
   '/me/profile': <Suspense fallback={<p role="status">Opening your profile…</p>}><AccountPanel view="profile" /></Suspense>,
   '/me/avatar': <Suspense fallback={<p role="status">Opening your avatar…</p>}><AccountPanel view="avatar" /></Suspense>,
@@ -54,7 +63,7 @@ export function createAppRoutes(ports: ShellPorts, composition: RouteComposition
   return [{ element: ports.auth ? <QueryClientProvider client={ports.auth.queryClient}>{outlet}</QueryClientProvider> : outlet, errorElement: <RouteFailure />, children: [
     ...publicPaths.map(path => ({ path, element: <LazyBoundary><PublicBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     ...adminPaths.map(path => ({ path, element: <LazyBoundary><AdminBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
-    { element: <WorldBoundary />, children: [
+    { element: <WorldPanelOwnership places={!composition.panels?.['/world/map'] && !composition.panels?.['/world/places/:placeId']} mural={!composition.panels?.['/wall']}><WorldBoundary /></WorldPanelOwnership>, children: [
       ...panelRoutes.map(route => ({ path: route.path, element: <PanelScreen route={route}>{composition.panels?.[route.path] ?? featurePanels[route.path]}</PanelScreen>, errorElement: <RouteFailure /> })),
       ...['/world/*', '/feed/*', '/meet/*', '/gifts/*', '/wall/*', '/me/*'].map(path => ({ path, element: <RouteFailure /> })),
     ] },

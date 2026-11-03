@@ -1,3 +1,6 @@
+import { createPhaserMuralScene } from '../mural/phaser'
+import type { MuralSceneTexture } from '../mural/sink'
+import type { IncumbentMuralScene } from '../runtime'
 import type { Point, WorldCamera } from '../camera/port'
 import type PhaserType from 'phaser'
 import type { EngineFactory } from '../runtime'
@@ -13,6 +16,8 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     const ready = new Promise<void>((resolve, reject) => { resolveReady = resolve; rejectReady = reject })
     const closed = new Promise<void>(resolve => { resolveClosed = resolve })
     const g = loaded.map.geometry
+    const muralClose = new Set<() => void>()
+    const closeMural = () => { for (const close of Array.from(muralClose)) { try { close() } catch { /* Continue scene teardown. */ } }; muralClose.clear() }
     let skinRevision = 0
     type Skin = { show(): void; remove(): void }
     let skin: Skin | null = null
@@ -32,7 +37,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
           sceneReady = true
           skin = this.prepareSkin(loaded)
           skin.show()
-          const remove = () => { clearAvatars(); skin?.remove(); skin = null }
+          const remove = () => { sceneReady = false; closeMural(); clearAvatars(); skin?.remove(); skin = null }
           this.events.once(Phaser.Scenes.Events.SHUTDOWN, remove)
           this.events.once(Phaser.Scenes.Events.DESTROY, remove)
           this.cameras.main.setBounds(0, 0, loaded.widthPx, loaded.heightPx).setRoundPixels(true)
@@ -183,8 +188,31 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       },
       read: () => ({ textures: avatarTextures.size, sprites: avatarSprites.size, listeners: avatarListeners.size }),
     }
+    const muralScene: IncumbentMuralScene = (anchor, key) => {
+      if (stopped || !sceneReady) throw new Error('Mural scene unavailable')
+      const port = createPhaserMuralScene(game.scene.getScene('mcr-map'), anchor, key)
+      const textures = new WeakMap<MuralSceneTexture, MuralSceneTexture>()
+      const live = () => { if (stopped || !sceneReady) throw new Error('Mural scene unavailable') }
+      return {
+        texture() {
+          live(); const owned = port.texture()
+          const lease: MuralSceneTexture = { replace(rgba) { live(); owned.replace(rgba) }, dispose() { textures.delete(lease); owned.dispose() } }
+          textures.set(lease, owned); return lease
+        },
+        object(texture) { live(); const owned = textures.get(texture); if (!owned) throw new Error('Unowned mural texture'); return port.object(owned) },
+        onFrame(listener) { live(); return port.onFrame(() => { if (!stopped && sceneReady) listener() }) },
+        onClose(listener) {
+          if (stopped || !sceneReady) { listener(); return () => {} }
+          let active = true
+          const close = () => { if (!active) return; active = false; muralClose.delete(close); removeScene(); listener() }
+          const removeScene = port.onClose?.(close) ?? (() => {})
+          muralClose.add(close)
+          return () => { active = false; muralClose.delete(close); removeScene() }
+        },
+      }
+    }
     const spriteTextures = new Map<AvatarSceneSprite, AvatarSceneTexture>()
-    return { ready, closed, camera: cameraView, avatarScene,
+    return { ready, closed, camera: cameraView, avatarScene, muralScene,
       replaceSkin(next) {
         if (stopped || !sceneReady) throw new Error('Map scene unavailable')
         assertSameWorld(loaded, next)
@@ -204,7 +232,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       setVisible(value) { visible = value; if (!stopped && game.isRunning) { if (value) game.loop.wake(); else game.loop.sleep() } },
       destroy() {
         if (stopped) return
-        stopped = true; clearAvatars(); game.canvas?.remove()
+        stopped = true; closeMural(); clearAvatars(); game.canvas?.remove()
         flushDestroy() // Boot in progress is fenced by postBoot; its mount has already been detached.
       },
     }

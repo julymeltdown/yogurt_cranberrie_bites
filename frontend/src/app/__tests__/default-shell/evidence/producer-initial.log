@@ -1,0 +1,76 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-default-shell/frontend
+
+ ❯ src/app/world-entry/__tests__/resolver.test.ts (33 tests | 1 failed) 1621ms
+     × derives only the selected theme, map and selected-source atlas hash/path allowlist through the existing resource reader 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/world-entry/__tests__/resolver.test.ts > production world entry resolver boundaries > derives only the selected theme, map and selected-source atlas hash/path allowlist through the existing resource reader
+AssertionError: promise resolved "Uint8Array[ 84, 69, 83, 84, 32, …(-33) ]" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
+- }
++ Uint8Array [
++   84,
++   69,
++   83,
++   84,
++   32,
++   79,
++   78,
++   76,
++   89,
++   32,
++   72,
++   65,
++   83,
++   72,
++   32,
++   82,
++   69,
++   65,
++   68,
++   69,
++   82,
++   32,
++   66,
++   89,
++   84,
++   69,
++   83,
++   59,
++   32,
++   110,
++   111,
++   32,
++   99,
++   104,
++   97,
++   114,
++   97,
++   99,
++   116,
++   101,
++   114,
++   32,
++   97,
++   114,
++   116,
++ ]
+
+ ❯ src/app/world-entry/__tests__/resolver.test.ts:48:272
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 111 passed (112)
+   Start at  04:49:00
+   Duration  3.06s (transform 1.30s, setup 0ms, import 1.70s, tests 5.55s, environment 2.17s)
+

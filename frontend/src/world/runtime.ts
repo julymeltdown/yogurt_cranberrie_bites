@@ -1,4 +1,6 @@
 import type { WorldCamera } from './camera/port'
+import type { createPhaserMuralScene } from './mural/phaser'
+import type { MuralScenePort } from './mural/sink'
 import type { AvatarScenePort } from './avatar/scene'
 import { MapError } from './map/json'
 import { limits } from './map/manifest'
@@ -6,6 +8,7 @@ import { abortable, type LoadedMap } from './map/resources'
 import { validateReplacement } from './theme/compatibility'
 export type RuntimeState = Readonly<{ phase: 'stopped' | 'loading' | 'ready' | 'unavailable' | 'error' | 'disposed';
   reason?: 'invalid' | 'load-failed' | 'timeout' | 'engine-failed' | 'host-busy'; widthPx?: number; heightPx?: number; spawnFoot?: Readonly<{ x: number; y: number }> }>
+export type IncumbentMuralScene = (anchor: Parameters<typeof createPhaserMuralScene>[1], key?: string) => MuralScenePort & Required<Pick<MuralScenePort, 'onClose'>>
 export interface EngineLease {
   ready: Promise<void>; closed: Promise<void>
   resize(width: number, height: number): void
@@ -15,9 +18,11 @@ export interface EngineLease {
   replaceSkin?(map: LoadedMap): void
   readonly camera?: WorldCamera
   readonly avatarScene?: AvatarScenePort
+  /** Existing scene only. Caller must independently qualify the anchor and C04 policy. */
+  readonly muralScene?: IncumbentMuralScene
 }
 export interface ControlAttachment { setEnabled(value: boolean): void; dispose(): void }
-export interface ControlContext { readonly host: HTMLElement; readonly map: LoadedMap; readonly camera: WorldCamera; readonly signal: AbortSignal; readonly avatarScene?: AvatarScenePort }
+export interface ControlContext { readonly host: HTMLElement; readonly map: LoadedMap; readonly camera: WorldCamera; readonly signal: AbortSignal; readonly avatarScene?: AvatarScenePort; readonly muralScene?: IncumbentMuralScene }
 export type AttachControls = (context: ControlContext) => ControlAttachment
 export type EngineFactory = (host: HTMLElement, map: LoadedMap) => EngineLease
 export interface RuntimeOptions {
@@ -117,7 +122,8 @@ export function createWorldRuntime(options: RuntimeOptions) {
           if (!owned.engine.camera) throw new MapError('invalid')
           owned.creating = true
           try { owned.controls = options.attachControls({ host: options.host, map, camera: owned.engine.camera, signal: controller.signal,
-            ...(owned.engine.avatarScene ? { avatarScene: owned.engine.avatarScene } : {}) }) }
+            ...(owned.engine.avatarScene ? { avatarScene: owned.engine.avatarScene } : {}),
+            ...(owned.engine.muralScene ? { muralScene: owned.engine.muralScene } : {}) }) }
           finally { owned.creating = false; if (!current()) owned.finish() }
           if (!current()) return state
           owned.controls.setEnabled(visible && !inputBlocked)

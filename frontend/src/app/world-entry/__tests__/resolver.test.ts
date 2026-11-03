@@ -33,7 +33,7 @@ describe('production world entry resolver boundaries', () => {
     const prepared = await prepareRelease(result, request)
     expect(prepared.resources.roomId).toBe(result.roomId); expect(prepared.mapInput.resources).toBe(result.resources)
   })
-  it('derives only the selected theme, map and selected-source atlas hash/path allowlist through the existing resource reader', async () => {
+  it('derives reviewed compatible original themes, map and selected-source atlas hash/path allowlist through the existing resource reader', async () => {
     const h = setup(), request = await requestFor(h.auth), calls: { url: string; init: RequestInit }[] = []
     const assetFetch: typeof fetch = async (input, init) => { const url = String(input); calls.push({ url, init: init! }); return assetResponse(url, url.endsWith('.json') ? assetBytes.json : assetBytes.png) }
     const result = await createWorldEntryResolver({ ...options(h.auth), assetFetch })(request)
@@ -44,10 +44,12 @@ describe('production world entry resolver boundaries', () => {
       const data = await result.resources.read(resource, request.signal); expect(Array.from(data)).toEqual(Array.from(kind === 'json' ? assetBytes.json : assetBytes.png))
     }
     expect(calls).toHaveLength(3); expect(calls[0]!.init).toMatchObject({ credentials: 'omit', mode: 'same-origin', redirect: 'error', referrerPolicy: 'no-referrer' })
+    const optional = doc.theme_manifests.find(t => t.theme_id === 'REVENGE')!.texture
+    expect(Array.from(await result.resources.read({ path: optional.path!, sha256: optional.sha256!, kind: 'png' }, request.signal))).toEqual(Array.from(assetBytes.png))
     const base = { path: selected.texture.path!, sha256: selected.texture.sha256!, kind: 'png' as const }
-    for (const resource of [{ ...base, path: 'https://evil.test/a.png' }, { ...base, path: 'world/test-only/revenge.png' }, { ...base, path: '../avatar.png' }, { ...base, sha256: 'sha256:' + '0'.repeat(64) }]) await expect(result.resources.read(resource, request.signal)).rejects.toThrow()
-    expect(calls).toHaveLength(3)
-    h.auth.privacy.changePolicy(request.privacyScope, 'block'); await expect(result.resources.read(base, request.signal)).rejects.toThrow(); expect(calls).toHaveLength(3)
+    for (const resource of [{ ...base, path: 'https://evil.test/a.png' }, { ...base, path: 'world/test-only/unlisted.png' }, { ...base, path: '../avatar.png' }, { ...base, sha256: 'sha256:' + '0'.repeat(64) }]) await expect(result.resources.read(resource, request.signal)).rejects.toThrow()
+    expect(calls).toHaveLength(4)
+    h.auth.privacy.changePolicy(request.privacyScope, 'block'); await expect(result.resources.read(base, request.signal)).rejects.toThrow(); expect(calls).toHaveLength(4)
   })
   it('pins a caller resource before async work so mutation cannot replace the authorized hash', async () => {
     const h = setup(), request = await requestFor(h.auth)

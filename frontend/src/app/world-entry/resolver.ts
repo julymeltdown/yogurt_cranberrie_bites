@@ -1,11 +1,13 @@
 import type { SessionController } from '../../features/auth/model/session'
 import { list, object, requireValue, text } from '../../features/auth/model/contract'
-import { isThemeId } from '../../features/theme/model/preferences'
+import { isThemeId, type ThemeId } from '../../features/theme/model/preferences'
 import { validateWorldRooms } from '../../features/world-rooms/model/contract'
 import { characterSourcePack } from '../../entities/avatar/source-catalog'
 import { immutable } from '../../world/entities/replicated'
 import { validatePolicy, type SimulationPolicy } from '../../world/input/simulation'
 import { createAssetResources, type AssetResources, type Resource } from '../../world/map/resources'
+import { validateManifests } from '../../world/map/manifest'
+import { canonicalJson } from '../../features/auth/model/bootstrap'
 import type { Geometry } from '../../world/map/manifest'
 import type { ResolvedWorldRelease, WorldReleaseResolver } from '../../world/composition'
 import { assertEntry, captureEntry, validateEntry, type WorldEntryRequest } from './authority'
@@ -58,6 +60,21 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
       // Never carry C06 synthetic place metadata into a production map release.
       requireValue(list(map.places).map(object).every(place => object(place.provenance).source_kind !== 'ORIGINAL_FIXTURE'))
       const allow = [provided(map.tilemap, 'json'), provided(theme.texture, 'png'), provided(object(avatar.atlas).texture, 'png')]
+      const availableThemeIds: ThemeId[] = [themeId]
+      for (const candidate of list(document.theme_manifests).map(object)) {
+        if (candidate === theme) continue
+        // Optional skins gain only their original C03 descriptor, never a caller URL or art fallback.
+        try {
+          reviewedArt(candidate)
+          const resource = provided(candidate.texture, 'png')
+          await validateManifests(canonicalJson(map), canonicalJson(candidate), { mapHash: text(map.content_hash), themeHash: text(candidate.content_hash),
+            avatar: { manifest_id: text(avatar.manifest_id), manifest_version: Number(avatar.manifest_version), content_hash: text(avatar.content_hash) } })
+          const existing = allow.find(item => item.path === resource.path)
+          requireValue(!existing || existing.sha256 === resource.sha256 && existing.kind === resource.kind)
+          if (!existing) allow.push(resource)
+          requireValue(isThemeId(candidate.theme_id)); availableThemeIds.push(candidate.theme_id)
+        } catch { /* An unqualified optional skin remains unavailable; selected release checks above stay mandatory. */ }
+      }
       const assets = createAssetResources({ origin, allow, ...(assetFetch ? { fetch: assetFetch } : {}) })
       validatePolicy(object(map.geometry) as unknown as Geometry, configuration.movementPolicy)
       requireValue(Number.isFinite(configuration.zoom) && configuration.zoom >= 1 && configuration.zoom <= 8)
@@ -76,7 +93,7 @@ export function createWorldEntryResolver(options: WorldEntryResolverOptions): Wo
           assertEntry(auth, captured); return assets.read(pinned, leaseSignal)
         }, combined)
       } })
-      return Object.freeze({ privacyScope: captured.privacyScope, bootstrap: captured.bootstrap.document!, themeId,
+      return Object.freeze({ availableThemeIds: Object.freeze(availableThemeIds), privacyScope: captured.privacyScope, bootstrap: captured.bootstrap.document!, themeId,
         roomId: rooms.default_room_id, rooms, resources, movementPolicy: configuration.movementPolicy, zoom: configuration.zoom })
     }, captured.signal)
   }

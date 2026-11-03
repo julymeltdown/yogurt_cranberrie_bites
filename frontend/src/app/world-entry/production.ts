@@ -58,7 +58,11 @@ export function createProductionWorld(options: ProductionWorldOptions) {
         return live() && sent
       },
     }
-    owner = owned; binding = Object.freeze({ release, replication })
+    const presentation = {
+      read() { return live() ? composition?.presentation?.read() ?? null : null },
+      subscribe(fn: () => void) { if (!live()) return () => {}; observers.add(fn); return () => { observers.delete(fn) } },
+    }
+    owner = owned; binding = Object.freeze({ release, replication, presentation })
     context.signal.addEventListener('abort', owned.dispose, { once: true })
     try { stopPrivacy = auth.privacy.registerCleanup(owned.dispose) } catch { owned.dispose(); throw new Error('World authority unavailable') }
     notify(listeners)
@@ -71,7 +75,8 @@ export function createProductionWorld(options: ProductionWorldOptions) {
       void loading.then(value => {
         if (!live()) return
         stopForwarding()
-        stopComposition = value.replication.subscribe(() => notify(observers))
+        const stops = [value.replication.subscribe(() => notify(observers)), value.presentation?.subscribe(() => notify(observers))]
+        stopComposition = () => stops.forEach(stop => stop?.())
         notice.remove()
         const created = value.mount(host, { ...context, signal: lifetime.signal, privacyScope: release.privacyScope })
         if (!live()) { created.dispose(); return }
