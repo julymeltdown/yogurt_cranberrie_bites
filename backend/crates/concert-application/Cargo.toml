@@ -8,6 +8,7 @@ publish = false
 concert-domain = { path = "../concert-domain" }
 async-trait.workspace = true
 chrono.workspace = true
+hmac.workspace = true
 sha2.workspace = true
 thiserror.workspace = true
 uuid.workspace = true

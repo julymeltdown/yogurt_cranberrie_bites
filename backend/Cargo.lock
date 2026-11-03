@@ -666,6 +666,7 @@ dependencies = [
  "async-trait",
  "chrono",
  "concert-domain",
+ "hmac",
  "sha2",
  "thiserror 2.0.18",
  "tokio",
