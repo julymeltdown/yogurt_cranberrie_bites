@@ -91,6 +91,53 @@ class DevTests(unittest.TestCase):
         value = json.loads(next(sink.directory.glob("*.json")).read_text())
         self.assertEqual(value["kind"], "PASSWORD_RESET")
 
+    def assert_incomplete_mail_request_has_bounded_shutdown(self, payload):
+        sink = self.sink()
+        dispatched = threading.Event()
+        stopped = threading.Event()
+        errors = []
+        finish_request = sink.server.finish_request
+
+        def dispatch(*args):
+            dispatched.set()
+            return finish_request(*args)
+
+        def close():
+            try:
+                sink.close()
+            except BaseException as error:
+                errors.append(error)
+            finally:
+                stopped.set()
+
+        # Wait for actual acceptance so shutdown cannot race ahead of HTTP parsing.
+        with patch.object(sink.server, "finish_request", side_effect=dispatch):
+            client = socket.create_connection(("127.0.0.1", self.ports.ports["mail"]), timeout=3)
+            closer = None
+            try:
+                if payload:
+                    client.sendall(payload)
+                self.assertTrue(dispatched.wait(2), "mail server did not accept client")
+                closer = threading.Thread(target=close, daemon=True)
+                closer.start()
+                bounded = stopped.wait(4)
+            finally:
+                # A failed regression must release the blocked parser before test cleanup.
+                client.close()
+                if closer is not None:
+                    closer.join(timeout=3)
+        self.assertTrue(bounded, "mail shutdown blocked on incomplete HTTP request")
+        self.assertEqual(errors, [])
+        self.assertFalse(sink.thread.is_alive())
+        self.assertEqual(list(sink.directory.iterdir()), [])
+
+    def test_mail_idle_client_cannot_block_owned_shutdown(self):
+        self.assert_incomplete_mail_request_has_bounded_shutdown(b"")
+
+    def test_mail_partial_headers_cannot_block_owned_shutdown(self):
+        self.assert_incomplete_mail_request_has_bounded_shutdown(
+            b"POST /verify HTTP/1.1\r\nContent-Len")
+
     def test_origin_rejects_external_credentials_path_query_or_implicit_ports(self):
         for value in ("https://example.com", "http://localhost", "http://127.0.0.1:5/", "http://user@localhost:5",
                       "http://localhost:5?secret=x", "http://[", "http://0.0.0.0:8080", "http://127.0.0.1:70000"):

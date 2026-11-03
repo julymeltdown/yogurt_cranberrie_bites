@@ -59,11 +59,15 @@ class MailSink:
         sink = self
 
         class Handler(http.server.BaseHTTPRequestHandler):
+            def setup(self):
+                # Bound reads before BaseHTTPRequestHandler parses the request line/headers.
+                self.request.settimeout(2)
+                super().setup()
+
             def log_message(self, *_args):
                 pass
 
             def do_POST(self):
-                self.connection.settimeout(2)
                 status_code = 400
                 try:
                     if self.headers.get("Authorization") != "Bearer " + sink.token:

@@ -238,3 +238,30 @@ role qualification, backup restore, external providers/mail/Kafka, Concert,
 frontend/device/multiuser/release acceptance or production deployment. The fixture
 uses a disposable owner role. The main integrator owns BE02 acceptance, BE03
 producer work, central progress/evidence updates, serial integration and push.
+
+## Review correction: incomplete HTTP request shutdown
+
+Parent review of `e3492ab` found that the mail socket timeout was set inside
+`do_POST`, after request-line/header parsing. An accepted idle client or incomplete
+header could therefore block the single HTTP server thread and synchronous owned
+shutdown indefinitely. The handler now sets the two-second socket timeout in
+`setup`, before the base handler creates streams or parses any HTTP bytes.
+
+`python3 -m unittest discover -s backend/scripts/mcr -p test_dev_stack.py -v`
+now reports **16 PASS, exit 0**. Two added regressions connect actual loopback
+sockets, wait for server acceptance, keep an idle or partial-header client open,
+and require shutdown within four seconds with no surviving server thread or mail
+capture. A read-only in-memory mutation removing the preparse timeout made both
+regressions fail at the shutdown bound; closing each client then allowed test
+cleanup to finish. The mutation-control driver asserted those two failures and
+exited **0**. No tracked source was changed for the mutation control.
+
+Corrected source hashes:
+
+- `dev_stack.py`: `dbfb13b6b9b8beef70c02b2c814590ecdbfcfa41dc8c2d3ea4597efe47672aa0`
+- `test_dev_stack.py`: `0f2a8a964296c5b2f7d9435e4cccf53d6d6b862b05c9fc82df8e1a80115ec652`
+
+`git diff --check` passed, exit 0. Earlier native reports and hashes above remain
+historical evidence for `6645639`; no full native service session was repeated
+for this correction. The new proof covers the changed HTTP parsing/shutdown path
+directly. Runtime and migration helpers, image recipe, and auth seam are unchanged.
