@@ -34,10 +34,7 @@ use std::{
     },
     time::Duration,
 };
-use tokio::{
-    sync::oneshot,
-    task::JoinHandle,
-};
+use tokio::{sync::oneshot, task::JoinHandle};
 use tonic::{transport::Server, Code, Request, Response, Status};
 
 const USER: &str = "7e023b36-5ca9-4a40-850d-d01dc16874a8";
