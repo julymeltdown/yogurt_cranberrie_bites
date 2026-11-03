@@ -57343,10 +57343,6 @@
           "idempotency_key": {
             "$ref": "#/components/schemas/Domain_common_Uuid"
           },
-          "request_hash": {
-            "type": "string",
-            "pattern": "^sha256:[0-9a-f]{64}$"
-          },
           "state": {
             "enum": [
               "PENDING",
@@ -57444,7 +57440,6 @@
           "actor_id",
           "operation_id",
           "idempotency_key",
-          "request_hash",
           "state",
           "resource_id",
           "resource_revision",
@@ -63884,13 +63879,22 @@
         "operation_id",
         "key"
       ],
-      "hash": "SHA256 of method, canonical path, query and canonical JSON/body digest; target included",
+      "hash": "Server-only HMAC-SHA256 of versioned unambiguous framing: canonical actor/event/operation/idempotency-key scope, method, canonical path, validated default-resolved query, and typed canonical JSON/ABSENT or binary bytes length+digest. Never persist an unkeyed verifier of secret-bearing inputs. The browser neither computes nor receives this fingerprint.",
       "result_ttl_seconds": 86400,
       "tombstone": "Retain key/hash until reviewed event/account cleanup; expired result returns IDEMPOTENCY_EXPIRED, never executes again",
       "transaction": "Receipt reservation, aggregate guard, mutation, final safe result and outbox are atomic; adapter saga uses downstream same idempotency correlation",
-      "same_key": "Same hash returns safe receipt/result after current authorization; different hash returns409 IDEMPOTENCY_CONFLICT even when target differs",
+      "same_key": "Same keyed fingerprint returns only the currently authorized safe receipt/result; changed canonical input conflicts after authorization. Active signing-key rotation alone is not a conflict.",
       "retry": "No automatic mutation replay; resolve status then explicitly retry identical command/key while retention permits",
-      "secrets": "Never put plaintext pickup code, handle, age proof or token in durable result; a lost one-shot secret response requires explicit rotation/new authorization"
+      "secrets": "Never put plaintext pickup code, handle, age proof or token in durable results, outbox or logs. Generic idempotency correlation also uses a server-keyed fingerprint so low-entropy secret input does not become a public/durable unkeyed guessing oracle. A lost one-shot secret response requires explicit rotation/new authorization.",
+      "fingerprint": {
+        "format": "hmac-sha256:v1:<key_id>:<64 lowercase hex>",
+        "key_id_pattern": "^[A-Za-z0-9_-]{1,32}$",
+        "key_source": "Trusted injected secret keyring; >=32 random bytes per key. Never from request, database, frontend, source default or log. Keys have immutable identifiers.",
+        "rotation": "New commands use the active key. Authorized replay verifies against the stored key identifier using retained verification material, never re-signs with the new active key. Retain old verification keys through surviving receipt/tombstone lifetime or explicitly retire those keys without reexecution.",
+        "unavailable_key": "An unexpired receipt whose verification key is unavailable fails closed DEPENDENCY_UNAVAILABLE; an expired or retired key/receipt never executes again. Lost verification capability does not imply changed input or permission to reuse a key.",
+        "comparison": "Verify the full MAC using the library constant-time verification API only after current authority checks. No unkeyed or legacy format fallback.",
+        "privacy": "Fingerprint/key IDs are server-internal and absent from CommandReceipt, outbox invalidations and client errors. Public schema rejects request_hash and fingerprint fields. One-shot secret response loss still requires explicit authorized rotation."
+      }
     },
     "pagination": {
       "order": "created_at DESC, id DESC",

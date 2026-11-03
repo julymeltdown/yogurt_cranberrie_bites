@@ -173,5 +173,10 @@
     "file": "closure-false-success.json",
     "schema": "admin.ClosureJob",
     "expected": "reject"
+  },
+  {
+    "file": "receipt-fingerprint-leak.json",
+    "schema": "common.CommandReceipt",
+    "expected": "reject"
   }
 ]

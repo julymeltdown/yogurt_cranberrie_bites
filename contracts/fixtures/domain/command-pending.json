@@ -4,7 +4,6 @@
   "actor_id": "00000000-0000-4000-8000-000000000002",
   "operation_id": "reserveConcertGiveaway",
   "idempotency_key": "00000000-0000-4000-8000-000000000047",
-  "request_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "state": "PENDING",
   "resource_id": null,
   "resource_revision": null,

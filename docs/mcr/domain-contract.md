@@ -69,8 +69,12 @@ converted into an already-completed action.
 ## Decisions under review
 
 - New commands use canonical UUID idempotency keys scoped by actor/event/operation.
-  Method, canonical target and body/query digest belong to the request hash, so
-  reusing a key for another target conflicts. A 24-hour result window is a
+  Canonical scope, method, target and body/query belong to a server-keyed
+  fingerprint, so reusing a key for another input conflicts after authorization.
+  The [fingerprint review](evidence/receipt-fingerprint-review.md) replaces the
+  initial unkeyed digest and removes `request_hash` from public receipts. Keys
+  and fingerprints are server-internal; authorized replay verifies the stored
+  key version after rotation, and missing verification keys never permit rerun. A 24-hour result window is a
   candidate default; retained key tombstones prevent expired commands running
   again. Final operational retention still needs the closure/deletion policy.
   Current authorization is rechecked before reading a saved result. Receipts
@@ -148,8 +152,8 @@ Commands from the isolated contract worktree:
 
 | Command | Result |
 |---|---|
-| `python3 scripts/mcr/validate-domain.py` | Exit 0; 162 definitions, 106 operations, 35 indexed positive/negative fixtures; exact inherited map resolves |
-| `python3 -m unittest discover -s scripts/mcr/tests -p test_domain.py -v` | Exit 0; 46 tests, including target checks across all 106 operations |
+| `python3 scripts/mcr/validate-domain.py` | Exit 0; 162 definitions, 106 operations, 36 indexed positive/negative fixtures; exact inherited map resolves |
+| `python3 -m unittest discover -s scripts/mcr/tests -p test_domain.py -v` | Exit 0; 47 tests, including target checks across all 106 operations |
 
 Regressions cover canonical claim replacement/ties, no fallback, supported age
 limits, birthdays/Seoul year boundary/leap-day behavior, expiry boundaries,
@@ -175,7 +179,7 @@ only for the assembly call and restores the search path afterward.
 1. Complete per-operation request/success/error fixture coverage and contextual
    producer/consumer compatibility, including cursor authenticity/authorization.
    All path/query schemas are registered, but their target tests and the current
-   35 payload examples are not complete 106-operation HTTP coverage.
+   36 payload examples are not complete 106-operation HTTP coverage.
 2. Complete global account deletion, safe recovery after auth revocation, public
    legal/document publication and retention/closure policies. The preserved
    draft deletion DTOs are not registered as a pretend working flow. Align the

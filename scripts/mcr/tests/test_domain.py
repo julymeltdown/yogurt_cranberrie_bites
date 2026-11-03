@@ -30,7 +30,7 @@ class DomainTests(unittest.TestCase):
             action()
 
     def test_golden_and_negative_fixture_index(self):
-        self.assertEqual(domain.validate_fixtures(self.contract), 35)
+        self.assertEqual(domain.validate_fixtures(self.contract), 36)
 
     def test_all_refs_and_exact_inherited_paths_resolve(self):
         self.contract.check_inherited()
@@ -177,6 +177,17 @@ class DomainTests(unittest.TestCase):
                                        ('reserveConcertGiveaway', uid(2), uid(99))]:
             self.rejected(lambda: self.contract.validate_http(receipt, operation, 202,
                                                                actor_id=actor, event_id=event))
+
+    def test_receipt_fingerprints_and_key_material_stay_server_only(self):
+        receipt = fixture('command-pending')
+        self.contract.validate(receipt, 'common.CommandReceipt')
+        for key, value in [('request_hash', 'sha256:' + 'a' * 64),
+                           ('fingerprint', 'hmac-sha256:v1:test:' + 'a' * 64),
+                           ('key_id', 'test'), ('mac_secret', 'synthetic-secret'),
+                           ('canonical_body', {'code': '123456'})]:
+            with self.subTest(key=key):
+                self.rejected(lambda: self.contract.validate(
+                    {**receipt, key: value}, 'common.CommandReceipt'))
 
     def test_status_query_returns_original_command_metadata(self):
         self.contract.validate_http(fixture('command-pending'), 'getConcertCommandStatus', 200,

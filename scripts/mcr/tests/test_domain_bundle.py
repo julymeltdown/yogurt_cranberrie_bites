@@ -134,6 +134,17 @@ class DomainBundleTests(unittest.TestCase):
         self.assertEqual(set(success["content"]), expected)
         self.assertEqual(success["headers"]["X-Content-Type-Options"]["schema"]["const"], "nosniff")
 
+    def test_receipt_projection_rejects_fingerprints_on_every_pending_command(self):
+        receipt = json.loads((ROOT / 'contracts/fixtures/domain/command-pending.json').read_text())
+        for row in self.rows:
+            if row['pending_response'] != 'common.CommandReceipt':
+                continue
+            schema = self.operation(row)['responses'][str(row['pending_status'])]['content']['application/json']['schema']
+            self.validate(schema, receipt)
+            for field in ('request_hash', 'fingerprint', 'key_id', 'mac_secret', 'canonical_body'):
+                with self.subTest(operation=row['operationId'], field=field), self.assertRaises(ValidationError):
+                    self.validate(schema, {**receipt, field: 'synthetic-forbidden'})
+
     def test_world_ticket_stays_single_use_nonreplayable_without_command_receipt(self):
         for row in self.world:
             target = self.operation(row)

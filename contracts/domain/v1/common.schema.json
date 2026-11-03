@@ -130,10 +130,6 @@
         "idempotency_key": {
           "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
         },
-        "request_hash": {
-          "type": "string",
-          "pattern": "^sha256:[0-9a-f]{64}$"
-        },
         "state": {
           "enum": [
             "PENDING",
@@ -231,7 +227,6 @@
         "actor_id",
         "operation_id",
         "idempotency_key",
-        "request_hash",
         "state",
         "resource_id",
         "resource_revision",
