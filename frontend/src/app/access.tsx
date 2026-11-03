@@ -67,10 +67,10 @@ export type LoadState<T> = { status: 'loading' } | { status: 'ready'; value: T }
  * The key includes FE01 generation; refreshed bearer versions do not rebuild the shell.
  */
 export function useScopedLoad<T>(scope: ActiveScope, load: (signal: AbortSignal) => Promise<T>,
-  attempt: number, timeoutMs = 12_000): LoadState<T> {
+  attempt: number | string, timeoutMs = 12_000): LoadState<T> {
   const ports = usePorts()
   const key = scopeKey(scope)
-  const [state, setState] = useState<{ source: ShellPorts; key: string; attempt: number; result: LoadState<T> }>(
+  const [state, setState] = useState<{ source: ShellPorts; key: string; attempt: number | string; result: LoadState<T> }>(
     { source: ports, key, attempt, result: { status: 'loading' } })
   useEffect(() => {
     const controller = new AbortController()

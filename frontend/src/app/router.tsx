@@ -9,6 +9,12 @@ import { PanelScreen, WorldBoundary } from './WorldShell'
 
 const PublicBoundary = lazy(() => import('./PublicBoundary'))
 const AdminBoundary = lazy(() => import('./AdminBoundary'))
+const GiftsPanel = lazy(() => import('./CommunityFeatures').then(module => ({ default: module.GiftsPanel })))
+const featurePanels: Readonly<Record<string, ReactNode>> = {
+  '/gifts': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="list" /></Suspense>,
+  '/gifts/:giveawayId': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="detail" /></Suspense>,
+  '/gifts/mine': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="mine" /></Suspense>,
+}
 function LazyBoundary({ children }: { children: ReactNode }) {
   return <Suspense fallback={<main className="shell-gate"><Feedback kind="status" title="Opening this page" />
     <Link className="shell-link" to="/">Back to home</Link></main>}>{children}</Suspense>
@@ -33,7 +39,7 @@ export function createAppRoutes(ports: ShellPorts, composition: RouteComposition
     ...publicPaths.map(path => ({ path, element: <LazyBoundary><PublicBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     ...adminPaths.map(path => ({ path, element: <LazyBoundary><AdminBoundary /></LazyBoundary>, errorElement: <RouteFailure /> })),
     { element: <WorldBoundary />, children: [
-      ...panelRoutes.map(route => ({ path: route.path, element: <PanelScreen route={route}>{composition.panels?.[route.path]}</PanelScreen>, errorElement: <RouteFailure /> })),
+      ...panelRoutes.map(route => ({ path: route.path, element: <PanelScreen route={route}>{composition.panels?.[route.path] ?? featurePanels[route.path]}</PanelScreen>, errorElement: <RouteFailure /> })),
       ...['/world/*', '/feed/*', '/meet/*', '/gifts/*', '/wall/*', '/me/*'].map(path => ({ path, element: <RouteFailure /> })),
     ] },
     { path: '*', element: <LazyBoundary><PublicBoundary /></LazyBoundary> },

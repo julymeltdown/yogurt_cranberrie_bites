@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
 import { Link, Outlet, useLocation, useNavigationType } from 'react-router-dom'
 import { Button, Feedback } from '../shared/ui'
 import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad, validBootstrap } from './access'
@@ -6,6 +6,10 @@ import { MAX_SHELL_LOCATIONS, NavigationMemory, ShellLink, usePanelBack } from '
 import type { ActiveScope, ShellBootstrap } from './ports'
 import { resolvePanel, tabs, type PanelRoute } from './routes'
 import { WorldHost } from './WorldHost'
+import { projectCapabilities } from './capabilities'
+import type { PrivacyScope } from '../shared/query/privacy'
+
+const CommunityFeatures = lazy(() => import('./CommunityFeatures'))
 
 export function WorldBoundary() {
   const { scope } = useAccess()
@@ -15,11 +19,25 @@ export function WorldBoundary() {
 function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
   const ports = usePorts()
   const [attempt, setAttempt] = useState(0)
+  const privacy = ports.auth?.privacy
+  const policyGeneration = useSyncExternalStore(
+    listener => privacy ? privacy.subscribe(listener) : () => {},
+    () => privacy?.capture().policyGeneration ?? -1,
+  )
+  const captured = privacy?.capture() ?? null
   const result = useScopedLoad(scope, async signal => {
-    const value = await ports.bootstrap.load(scope, signal)
+    const value = privacy && captured
+      ? await privacy.run(captured, context => ports.bootstrap.load(scope, context.signal), signal)
+      : await ports.bootstrap.load(scope, signal)
     if (!validBootstrap(value, scope)) throw new Error('Invalid bootstrap binding')
-    return value
-  }, attempt)
+    // Keep capabilities attached to the lease that authorized their read. Never
+    // relabel an old decision with a newly captured policy generation.
+    const bootstrap: ShellBootstrap = Object.freeze({ ...value,
+      event: Object.freeze({ ...value.event }), participant: Object.freeze({ ...value.participant }),
+      capabilities: projectCapabilities(value.capabilities),
+    })
+    return { bootstrap, privacyScope: captured }
+  }, `${attempt}:${policyGeneration}`)
   if (result.status !== 'ready') return <div className="shell-gate">
     <Link className="shell-link" to="/">MCR Concert World</Link>
     <h1 tabIndex={-1}>{result.status === 'loading' ? 'Opening your event' : {
@@ -34,13 +52,15 @@ function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
       <Link className="shell-link" to="/">Back to home</Link>
     </div>
   </div>
-  return <WorldShell scope={scope} bootstrap={result.value} />
+  return <WorldShell scope={scope} bootstrap={result.value.bootstrap} privacyScope={result.value.privacyScope} />
 }
 
 function typingTarget(target: EventTarget | null) {
   return target instanceof HTMLElement && Boolean(target.closest('input,textarea,select,[contenteditable="true"]'))
 }
-export function WorldShell({ scope, bootstrap }: { scope: ActiveScope; bootstrap: ShellBootstrap }) {
+export function WorldShell({ scope, bootstrap, privacyScope = null }: {
+  scope: ActiveScope; bootstrap: ShellBootstrap; privacyScope?: PrivacyScope | null
+}) {
   const location = useLocation()
   const route = resolvePanel(location.pathname)
   const panelOpen = location.pathname !== '/world'
@@ -57,7 +77,8 @@ export function WorldShell({ scope, bootstrap }: { scope: ActiveScope; bootstrap
     window.addEventListener('resize', update)
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
-  return <NavigationMemory><div className="world-shell" data-mcr-shell="" ref={root}
+  return <Suspense fallback={<p role="status">Opening your event…</p>}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope}>
+    <NavigationMemory><div className="world-shell" data-mcr-shell="" ref={root}
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
     <a className="skip-link" href="#shell-content">Skip to content</a>
@@ -69,7 +90,7 @@ export function WorldShell({ scope, bootstrap }: { scope: ActiveScope; bootstrap
     <div className="shell-era"><ShellLink to="/world/theme" id="shell-era">Revenge / Parade / Danger <span aria-hidden="true">↗</span></ShellLink>
       {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <span>Read only</span>}</div>
     <div className="shell-stage" data-panel-size={panelOpen ? size : 'closed'}>
-      <WorldHost key={key} scope={scope} bootstrap={bootstrap} blocked={panelOpen || typing} covered={panelOpen && size === 'full'} />
+      <WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full'} />
       {panelOpen ? <PanelFrame size={size} onSize={setSize} positions={positions.current}><Outlet /></PanelFrame>
         : <main id="shell-content" className="shell-world-tools" tabIndex={-1}>
           <h1 className="mcr-visually-hidden">World</h1>
@@ -83,7 +104,7 @@ export function WorldShell({ scope, bootstrap }: { scope: ActiveScope; bootstrap
       {tabs.map(tab => <ShellLink key={tab.path} id={`tab-${tab.label.toLowerCase()}`} to={tab.path}
         aria-current={route?.route.tab === tab.path ? 'page' : undefined}>{tab.label}</ShellLink>)}
     </nav>
-  </div></NavigationMemory>
+  </div></NavigationMemory></CommunityFeatures></Suspense>
 }
 
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {

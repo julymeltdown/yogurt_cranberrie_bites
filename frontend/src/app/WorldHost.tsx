@@ -2,9 +2,10 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Button } from '../shared/ui'
 import { scopeKey, usePorts } from './access'
 import type { ActiveScope, ShellBootstrap, WorldLease } from './ports'
+import type { PrivacyScope } from '../shared/query/privacy'
 
-export function WorldHost({ scope, bootstrap, blocked, covered }: {
-  scope: ActiveScope; bootstrap: ShellBootstrap; blocked: boolean; covered: boolean
+export function WorldHost({ scope, bootstrap, privacyScope = null, blocked, covered }: {
+  scope: ActiveScope; bootstrap: ShellBootstrap; privacyScope?: PrivacyScope | null; blocked: boolean; covered: boolean
 }) {
   const ports = usePorts()
   const host = useRef<HTMLDivElement>(null)
@@ -33,8 +34,11 @@ export function WorldHost({ scope, bootstrap, blocked, covered }: {
       element.replaceChildren()
     }
     sessionSignal.addEventListener('abort', dispose, { once: true })
+    let removePrivacyCleanup = () => {}
     try {
-      if (!ports.session.isCurrent(scope) || sessionSignal.aborted) dispose()
+      if (ports.auth) removePrivacyCleanup = ports.auth.privacy.registerCleanup(dispose)
+      if (!ports.session.isCurrent(scope) || sessionSignal.aborted
+        || (ports.auth && (!privacyScope || !ports.auth.privacy.isCurrent(privacyScope)))) dispose()
       else {
         owned = ports.world.mount(element, { scope, bootstrap, signal: controller.signal })
         // A port may synchronously trigger session invalidation during allocation.
@@ -49,10 +53,10 @@ export function WorldHost({ scope, bootstrap, blocked, covered }: {
       dispose()
       setFailed(true)
     }
-    return () => { sessionSignal.removeEventListener('abort', dispose); dispose() }
+    return () => { removePrivacyCleanup(); sessionSignal.removeEventListener('abort', dispose); dispose() }
     // Scope generation owns the lifetime; panel navigation and bearer refresh do not.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ports, key, attempt, available])
+  }, [ports, key, attempt, available, privacyScope])
   useEffect(() => {
     const update = () => {
       lease.current?.setInputBlocked(blocked || document.hidden)
