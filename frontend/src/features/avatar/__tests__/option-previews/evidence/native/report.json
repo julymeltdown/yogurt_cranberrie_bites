@@ -1,0 +1,69 @@
+{
+  "result": "PASS",
+  "base": "e869480395b70b4aae6cfcf50e904b079a59a0e7",
+  "browser": "156.0.8078.80",
+  "syntheticOnly": true,
+  "pngSha256": "0c6dfb3695843ab5da8eb2b0e3208675a63cea9fa0b3572f6740128d031c0636",
+  "hashes": {
+    "src/features/avatar/AvatarEditor.tsx": "e2d8a719c43915c2fc0b4031d11f42536f687fde0b6f6d141b70b9c7d2592b71",
+    "src/features/avatar/OptionStrip.tsx": "9c21607e6117c54b563baa3b8415055593d1314d2e0bf704adf88b258a95ce54",
+    "src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "src/features/avatar/avatar-editor.css": "88b89f83274c5642f5bb03a8d4953376cde15aa2765c0bb9c2f6ac6556433d99",
+    "src/features/avatar/preview.ts": "77c304050d0fb324a6d8b236a6e65eb2655bff83e488bdfe9b768df9e740b981",
+    "src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "src/entities/avatar/runtime/compositor.ts": "fac22cf5948afd10420ad53bc408590657291ccb44e38defb61f2e96ee595740"
+  },
+  "checks": [
+    {
+      "width": 360,
+      "pixelsMatchSharedCompositor": true,
+      "noMainLeaseTheft": true,
+      "oneOwnerOneAtlasRead": true,
+      "keyboardTouchNoImplicitPut": true,
+      "explicitSave": true,
+      "boundedIgnoredAbort": true,
+      "scopeCleanup": true,
+      "unavailableNoReads": true
+    },
+    {
+      "width": 390,
+      "pixelsMatchSharedCompositor": true,
+      "noMainLeaseTheft": true,
+      "oneOwnerOneAtlasRead": true,
+      "keyboardTouchNoImplicitPut": true,
+      "explicitSave": true,
+      "boundedIgnoredAbort": true,
+      "scopeCleanup": true,
+      "unavailableNoReads": true
+    },
+    {
+      "width": 430,
+      "pixelsMatchSharedCompositor": true,
+      "noMainLeaseTheft": true,
+      "oneOwnerOneAtlasRead": true,
+      "keyboardTouchNoImplicitPut": true,
+      "explicitSave": true,
+      "boundedIgnoredAbort": true,
+      "scopeCleanup": true,
+      "unavailableNoReads": true
+    }
+  ],
+  "errors": [],
+  "assetRequests": [
+    {
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    },
+    {
+      "authorization": null,
+      "cookie": null,
+      "referer": null
+    }
+  ]
+}

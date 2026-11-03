@@ -1,0 +1,28 @@
+{
+  "result": "PASS",
+  "base": "e869480395b70b4aae6cfcf50e904b079a59a0e7",
+  "syntheticEntryOnly": true,
+  "output": "/private/tmp/mcr-fe13-options-production-a3ZAO4",
+  "hashes": {
+    "src/features/avatar/AvatarEditor.tsx": "e2d8a719c43915c2fc0b4031d11f42536f687fde0b6f6d141b70b9c7d2592b71",
+    "src/features/avatar/OptionStrip.tsx": "9c21607e6117c54b563baa3b8415055593d1314d2e0bf704adf88b258a95ce54",
+    "src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35",
+    "src/features/avatar/avatar-editor.css": "88b89f83274c5642f5bb03a8d4953376cde15aa2765c0bb9c2f6ac6556433d99",
+    "src/features/avatar/__tests__/option-previews/preview.tsx": "80df553abcb7a1326b2ca2c99bac21b06f00283f89351e247fe1d7c751d23918",
+    "src/features/avatar/__tests__/option-previews/data.ts": "1f51fdb7f1289cafd6da116decf0f86c297c1f4aa2f567f3712888609b1256b2"
+  },
+  "bundles": [
+    {
+      "file": "assets/preview-ALCmz1fc.js",
+      "sha256": "21ed6268c25ec66efac5162f8d64484f25da5f8f83cbdeef33c82469547c453d"
+    },
+    {
+      "file": "assets/preview-CppdLU1U.css",
+      "sha256": "2731f2545c4687278b1bf13fa3ffd8406eee6c82a53641165733a34d73651743"
+    },
+    {
+      "file": "src/features/avatar/__tests__/option-previews/preview.html",
+      "sha256": "6869bedd86137d4406efdfcd5ab9e67421d084d41a0db0484275d13ce0a2f0ad"
+    }
+  ]
+}

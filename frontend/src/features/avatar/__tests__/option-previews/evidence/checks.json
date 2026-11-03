@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-04",
+  "base": "e869480395b70b4aae6cfcf50e904b079a59a0e7",
+  "scope": "FE13-OPTIONS / UIV04 bounded frontend increment",
+  "status": "MOCK_READY",
+  "checks": [
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/vitest/vitest.mjs run src/features/avatar/__tests__/option-previews.test.tsx src/features/avatar/__tests__/visual-adoption/presentation.test.tsx --configLoader runner --no-cache",
+      "exitCode": 0,
+      "result": "17/17 PASS",
+      "output": "\n RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-avatar-options/frontend\n\n\n Test Files  2 passed (2)\n      Tests  17 passed (17)\n   Start at  04:51:58\n   Duration  2.07s (transform 182ms, setup 0ms, import 400ms, tests 1.92s, environment 538ms)\n\n"
+    },
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "cwd": "frontend",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node node_modules/oxlint/bin/oxlint src/features/avatar/AvatarEditor.tsx src/features/avatar/OptionStrip.tsx src/features/avatar/controller.ts src/features/avatar/__tests__/option-previews.test.tsx src/features/avatar/__tests__/option-previews src/features/avatar/__tests__/visual-adoption/presentation.test.tsx",
+      "exitCode": 0
+    },
+    {
+      "cwd": ".",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/src/features/avatar/__tests__/option-previews/native.mjs",
+      "exitCode": 0,
+      "report": "native/report.json"
+    },
+    {
+      "cwd": ".",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/src/features/avatar/__tests__/option-previews/production.mjs",
+      "exitCode": 0,
+      "report": "production.json"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "output": {
+        "scope": "Planning provenance, structure, exporter regression, and delivery routing only",
+        "result": "PASS",
+        "python_version": "3.14.3",
+        "checks": [
+          "13 original archive checksums match",
+          "pinned upstream narrative checksum matches",
+          "active and original narrative/table task and IA content match",
+          "original: nine regression probes pass and all committed exports reproduce",
+          "active: nine regression probes pass and all committed exports reproduce",
+          "all active metadata and 118 task destinations use mcr/master; baseline remains NOT_STARTED",
+          "release checklist contains 111 prerequisites plus IN05 and 61 required IA entries"
+        ],
+        "task_count": 118,
+        "ia_count": 64,
+        "application_build": "NOT_RUN",
+        "application_tests": "NOT_RUN",
+        "deployment": "NOT_RUN",
+        "input_sha256": {
+          "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+          "PLAN_TABLES_EN.md": "7e81683fcc05f8441b473f673b282a1010931721ffabf15aeef6548811ec8ba5",
+          "MCR_EXPORT_PLAN_EN.py": "57cdba6af51feb45bef5b74a0ed2755b448d475b0ceb1ad2c9ff16b72060e348",
+          "TEST_PLAN_EXPORT_EN.py": "cd7b1cb49636db9468041d8bf87e7dacfeb483b0679facf50638d0f181557b8e",
+          "scripts/mcr/check-plan.py": "a172af72eb033dcc3e9461d8a16c58ac7704702a4ced39801a67b3b3edcc3cd3",
+          "docs/mcr/source-provenance.json": "bf249c1e414928d5946803243ca1857f8d6e4435fa0fe49fb2185bc778d54fd8"
+        }
+      }
+    },
+    {
+      "cwd": ".",
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "peerReview": {
+    "agent": "01a1a2f7-cac9-7e73-8728-e1e12bc045f0",
+    "readOnly": true,
+    "actionableFindings": 0,
+    "scope": "stale/privacy/owner/stop, reentrancy, queue bounds, main lease, save invariants, accessibility",
+    "focusProbe": "Chrome selection keeps focus and Tab advances"
+  },
+  "limits": {
+    "approvedArt": "NOT_RUN",
+    "rootShellMeWorldIntegration": "NOT_RUN",
+    "liveMultiuser": "NOT_RUN",
+    "physicalDevices": "NOT_RUN",
+    "releaseAcceptance": "NOT_RUN"
+  },
+  "sha256": {
+    "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "docs/mcr/frontend/avatar-option-previews.md": "0aaeeeaa4456bc706c05c22f938ba0b7ff5f58de5db97ecfd5a4bd87812c52bf",
+    "frontend/src/features/avatar/AvatarEditor.tsx": "e2d8a719c43915c2fc0b4031d11f42536f687fde0b6f6d141b70b9c7d2592b71",
+    "frontend/src/features/avatar/OptionStrip.tsx": "9c21607e6117c54b563baa3b8415055593d1314d2e0bf704adf88b258a95ce54",
+    "frontend/src/features/avatar/__tests__/option-previews.test.tsx": "d2f7a6f03663d9e6ec0492b9dd106d561972cba7f0a21d70a67b811f0220c901",
+    "frontend/src/features/avatar/__tests__/option-previews/data.ts": "1f51fdb7f1289cafd6da116decf0f86c297c1f4aa2f567f3712888609b1256b2",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/initial-presentation-failure.json": "6ffe68c01f689cd8f574e3b2c43ca448229414d3a4c7b4e2c1e5b079314391d0",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/hair-360.png": "51e44db6c97d95893955a3c1ee4ee51e1ee064af26d94bcb2e233c5d03cde93d",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/hair-390.png": "d17a19847b10ef6d1ad9d18bcd7e98ca7f1a77fe43e3067a3246ce70097d36c8",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/hair-430.png": "f84b0e248f6e74133d339ca44eaabc4e83ab8d58eb6bca28946a6d79fc816281",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/loaded-360.png": "0caf90dff51f2f00432bf2a3224675466444598ae009ef5c3d880e9ce65c028b",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/loaded-390.png": "2395a8201bdd744a8ba75a8b91006ebabd41ac386631e4f79eac9886ec0c743e",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/loaded-430.png": "95cb7d6ed998336eafd2042cadb51fa8ee2e4c8357baea48a09001d2b11b1629",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/report.json": "1070477b01fc9eaaf9ded7cd0f40212edd1eb08f675a2b24631c5612efaee2f1",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/unavailable-360.png": "74784b64d5a660dbf21d5d5a49b188ca8b39aace89b8adb080832d53c0314ee7",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/unavailable-390.png": "a5cc2b4e2c9fb50d4938fe66cb3aaed620bb30cab5e08f2f063f14d178b22fec",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/native/unavailable-430.png": "d2153341ce9913026ab2f092933c17c83262f0485f7b67831f75032482e696c3",
+    "frontend/src/features/avatar/__tests__/option-previews/evidence/production.json": "6559efc06aae1e2fcd05eff1add2da2a325fb08c081919520581713bb855c396",
+    "frontend/src/features/avatar/__tests__/option-previews/harness.ts": "fd411f9aab1a1e794a22b6f5bea511a375e82a4397e5f177b87c1e5bbda94146",
+    "frontend/src/features/avatar/__tests__/option-previews/native.mjs": "7ba08fd4e9f647b9f176615fb8e04bde34ed4ed23cbfd55957a685c948b56874",
+    "frontend/src/features/avatar/__tests__/option-previews/preview.html": "4d968f6830807eb81657e4a11ab90751ecdeb55081336de86c0bfb20e063ba47",
+    "frontend/src/features/avatar/__tests__/option-previews/preview.tsx": "80df553abcb7a1326b2ca2c99bac21b06f00283f89351e247fe1d7c751d23918",
+    "frontend/src/features/avatar/__tests__/option-previews/production.mjs": "7ab1263c957547584c7f87bdb1f158e767de0b67542c09449cecfefa23a2f507",
+    "frontend/src/features/avatar/__tests__/visual-adoption/presentation.test.tsx": "6637a1a0a846c1fd7a0193cd4fc766ffaefced17f222e92d84502a24d07defbc",
+    "frontend/src/features/avatar/avatar-editor.css": "88b89f83274c5642f5bb03a8d4953376cde15aa2765c0bb9c2f6ac6556433d99",
+    "frontend/src/features/avatar/controller.ts": "20e084fcf140738aa5042cb6bb6eb3d541109391756eb3d641e3933436545f35"
+  }
+}
