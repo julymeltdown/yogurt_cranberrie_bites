@@ -89,6 +89,27 @@ class AssetContractsTest(unittest.TestCase):
                 self.map["provenance"]["source_uri"] = uri
                 self.rejected("schema")
 
+    def test_uri_format_rejects_raw_whitespace_controls_and_nonascii(self):
+        for suffix in ("\n", "\r\n", "\t", "\x00", "\x7f", "é"):
+            with self.subTest(suffix=repr(suffix)):
+                self.setUp()
+                self.map["provenance"]["source_uri"] = "https://example.invalid/ref" + suffix
+                self.rejected("schema")
+        self.setUp()
+        self.map["provenance"]["source_uri"] = "https://example.invalid/encoded%20space"
+        self.seal()
+        self.assertEqual(assets.validate_bundle(self.docs, self.checks)["status"],
+                         "CONTRACT_READY")
+
+    def test_datetime_format_rejects_raw_whitespace_controls_and_nonascii(self):
+        for suffix in ("\n", "\r\n", "\t", "\x00", "\x7f", "é"):
+            with self.subTest(suffix=repr(suffix)):
+                self.setUp()
+                self.map["provenance"].update(review_state="REVIEWED",
+                                               reviewed_by="format-fixture-review",
+                                               reviewed_at="2026-11-03T00:00:00Z" + suffix)
+                self.rejected("schema")
+
     def test_valid_formats_do_not_add_uuid_version_or_timestamp_case_policy(self):
         for place_id in ("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
                          "11111111-1111-0111-1111-111111111111"):

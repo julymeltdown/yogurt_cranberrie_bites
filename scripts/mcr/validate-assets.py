@@ -107,6 +107,18 @@ def validators(schema_dir=SCHEMAS):
     require(not missing,
             "required asset format checkers unavailable: " + ", ".join(missing) +
             "; install scripts/mcr/requirements-contracts.txt in the validation environment")
+    for name in ("uri", "date-time"):
+        predicate, raises = checker.checkers[name]
+
+        def full_wire_string(value, predicate=predicate):
+            # Both wire formats use printable ASCII without raw whitespace.
+            # The pinned plugins use `$` with match(), which otherwise permits
+            # a final LF. Percent-encoded URI whitespace remains valid syntax.
+            if isinstance(value, str) and not all("!" <= char <= "~" for char in value):
+                return False
+            return predicate(value)
+
+        checker.checks(name, raises=raises)(full_wire_string)
     return {
         kind: Draft202012Validator(by_id[BASE + filename], registry=registry,
                                     format_checker=checker)

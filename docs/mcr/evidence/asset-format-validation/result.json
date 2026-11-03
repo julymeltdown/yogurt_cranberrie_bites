@@ -1,15 +1,16 @@
 {
   "base": "f80b6d1fd6b9d86c3012cc12cea6de2b278065c5",
+  "full_string_fence": "URI/date-time use instance-only printable-ASCII/no-raw-whitespace fence before the registered plugin; closes final-LF match edge; encoded URI whitespace allowed",
   "limits": [
     "requirements pins direct tools and required format plugins plus six, not the complete transitive environment",
     "Other format-using validators receive installed plugins but do not gain explicit registry-refusal guards in this patch"
   ],
   "log_sha256": {
-    "assets.log": "1b450f47621534aa309705c224d64d57d6833e408c82b37ba4537e289abdaf74",
+    "assets.log": "8112d02e132724c23d27aacd9258dcb0bdbf72254ee593c234d9053bcbba871a",
     "golden.log": "19fa348abd240f607b8a66ea254de4dfd46a65965ce6ae721976eb664fd9afd2",
     "missing-plugins.log": "9cc7b25faa0752c54abf231c43efb11da7026931c12a2d497a447a61c4a3e3b8",
     "plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
-    "retained-contracts.log": "31846a6e18428a44b6509ca09bafbc13b2af0786034570ba39724795ea9bdecc"
+    "retained-contracts.log": "630d6306a7bd02253fecbe69202edd406b6287ff469e012039c737d16b96aeb9"
   },
   "python": "3.14.3",
   "registered_formats": [
@@ -28,7 +29,7 @@
   "result": {
     "assets": {
       "exit": 0,
-      "tests": 25
+      "tests": 27
     },
     "golden": {
       "documents": 6,
@@ -53,8 +54,8 @@
   "scope": "C06 tooling only; schema and golden bundle bytes unchanged; no art/runtime/venue/acceptance claim",
   "source_sha256": {
     "scripts/mcr/requirements-contracts.txt": "fc6c67bbfd66de4a6fa8e5521823a733cedff5ea56657cbd49ca03a619504782",
-    "scripts/mcr/tests/test_assets.py": "7cf4a68b9f38933436ed293faf452e123d1c9f18de598be605e0964227f0aa4c",
-    "scripts/mcr/validate-assets.py": "d1601a01d9cc551e55ae304d6e22d67ab8fccf3a183c0daf117b44eac1d6ad00"
+    "scripts/mcr/tests/test_assets.py": "dede7e23b7f7c0ba88e26ec6b7dfdbf6b1ec2343374cc9f9112794839ca4c30a",
+    "scripts/mcr/validate-assets.py": "94cb9f3eae7b184794fefa626b4d00e4ff690c80975f0c140072f2d094ff8cf0"
   },
   "unchanged_fixture_sha256": {
     "contracts/fixtures/assets/avatar-config.json": "dea02c52183c82094d76c014115c77716ac32c02cc9841d3f1a7ce9aeb54df4d",
