@@ -68,7 +68,7 @@ async fn owned_pool() -> anyhow::Result<PgPool> {
 enum Mode {
     Success,
     Abort,
-    Failed,
+    Failed(SafeFailure),
     Pending,
     WrongReference,
     WrongRevision,
@@ -105,7 +105,7 @@ impl CommandProducer for TestProducer {
         };
         match self.mode {
             Mode::Abort => Err(CommandError::InvalidState),
-            Mode::Failed => Ok((Completion::Failed(SafeFailure::VersionConflict), None)),
+            Mode::Failed(failure) => Ok((Completion::Failed(failure), None)),
             Mode::Pending => Ok((Completion::Pending, Some(Invalidation { reference }))),
             Mode::WrongRevision => Ok((
                 Completion::Succeeded {
@@ -262,36 +262,57 @@ async fn simultaneous_changed_body_conflicts_without_double_effect() -> anyhow::
 }
 #[tokio::test]
 async fn rollback_has_no_orphan_and_failed_receipt_rolls_back_effects() -> anyhow::Result<()> {
-    let (p, s, t, h) = fixture().await?;
-    let repo = PgCommandRepository::new(p.clone());
-    assert_eq!(
-        repo.execute(&h, t, keys(), &TestProducer { mode: Mode::Abort })
-            .await,
-        Err(CommandError::InvalidState)
-    );
-    assert_eq!(revision(&p, s, t).await, 0);
-    assert_eq!(count(&p, "concert_command_receipts", s).await, 0);
-    assert_eq!(count(&p, "concert_outbox", s).await, 0);
-    let r = repo
-        .execute(&h, t, keys(), &TestProducer { mode: Mode::Failed })
-        .await?;
-    assert_eq!(r.state, ReceiptState::Failed);
-    assert_eq!(r.failure, Some(SafeFailure::VersionConflict));
-    assert_eq!(revision(&p, s, t).await, 0);
-    assert_eq!(count(&p, "concert_outbox", s).await, 0);
-    assert_eq!(
-        repo.execute(
-            &h,
-            t,
-            keys(),
-            &TestProducer {
-                mode: Mode::Success
-            }
-        )
-        .await?,
-        r
-    );
-    p.close().await;
+    for failure in [
+        SafeFailure::VersionConflict,
+        SafeFailure::PartyFull,
+        SafeFailure::DuplicateApplication,
+        SafeFailure::GiveawaySoldOut,
+        SafeFailure::DuplicateActiveReservation,
+        SafeFailure::ReservationExpired,
+        SafeFailure::PickupCodeInvalid,
+        SafeFailure::ResourceUnavailable,
+        SafeFailure::InvalidInput,
+        SafeFailure::EventReadOnly,
+        SafeFailure::MapVersionMismatch,
+    ] {
+        let (p, s, t, h) = fixture().await?;
+        let repo = PgCommandRepository::new(p.clone());
+        assert_eq!(
+            repo.execute(&h, t, keys(), &TestProducer { mode: Mode::Abort })
+                .await,
+            Err(CommandError::InvalidState)
+        );
+        assert_eq!(revision(&p, s, t).await, 0);
+        assert_eq!(count(&p, "concert_command_receipts", s).await, 0);
+        assert_eq!(count(&p, "concert_outbox", s).await, 0);
+        let r = repo
+            .execute(
+                &h,
+                t,
+                keys(),
+                &TestProducer {
+                    mode: Mode::Failed(failure),
+                },
+            )
+            .await?;
+        assert_eq!(r.state, ReceiptState::Failed);
+        assert_eq!(r.failure, Some(failure));
+        assert_eq!(revision(&p, s, t).await, 0);
+        assert_eq!(count(&p, "concert_outbox", s).await, 0);
+        assert_eq!(
+            repo.execute(
+                &h,
+                t,
+                keys(),
+                &TestProducer {
+                    mode: Mode::Success
+                }
+            )
+            .await?,
+            r
+        );
+        p.close().await;
+    }
     Ok(())
 }
 #[tokio::test]
@@ -574,7 +595,14 @@ async fn lifetime_exhaustion_rolls_back_and_storage_has_no_secret_payload_column
     );
     // Closed safe failure enum is enforced in the database as well as Rust.
     let receipt = repo
-        .execute(&h, t, keys(), &TestProducer { mode: Mode::Failed })
+        .execute(
+            &h,
+            t,
+            keys(),
+            &TestProducer {
+                mode: Mode::Failed(SafeFailure::VersionConflict),
+            },
+        )
         .await?;
     let error = sqlx::query(
         "update concert_command_receipts set failure_reason='private-handle' where receipt_id=$1",

@@ -430,6 +430,16 @@ pub enum SafeFailure {
     VersionConflict,
     DependencyUnavailable,
     InternalError,
+    PartyFull,
+    DuplicateApplication,
+    GiveawaySoldOut,
+    DuplicateActiveReservation,
+    ReservationExpired,
+    PickupCodeInvalid,
+    ResourceUnavailable,
+    InvalidInput,
+    EventReadOnly,
+    MapVersionMismatch,
 }
 impl SafeFailure {
     pub fn as_str(self) -> &'static str {
@@ -438,6 +448,16 @@ impl SafeFailure {
             Self::VersionConflict => "VERSION_CONFLICT",
             Self::DependencyUnavailable => "DEPENDENCY_UNAVAILABLE",
             Self::InternalError => "INTERNAL_ERROR",
+            Self::PartyFull => "PARTY_FULL",
+            Self::DuplicateApplication => "DUPLICATE_APPLICATION",
+            Self::GiveawaySoldOut => "GIVEAWAY_SOLD_OUT",
+            Self::DuplicateActiveReservation => "DUPLICATE_ACTIVE_RESERVATION",
+            Self::ReservationExpired => "RESERVATION_EXPIRED",
+            Self::PickupCodeInvalid => "PICKUP_CODE_INVALID",
+            Self::ResourceUnavailable => "RESOURCE_UNAVAILABLE",
+            Self::InvalidInput => "INVALID_INPUT",
+            Self::EventReadOnly => "EVENT_READ_ONLY",
+            Self::MapVersionMismatch => "MAP_VERSION_MISMATCH",
         }
     }
     pub fn parse(v: &str) -> Result<Self, CommandError> {
@@ -446,6 +466,16 @@ impl SafeFailure {
             "VERSION_CONFLICT" => Ok(Self::VersionConflict),
             "DEPENDENCY_UNAVAILABLE" => Ok(Self::DependencyUnavailable),
             "INTERNAL_ERROR" => Ok(Self::InternalError),
+            "PARTY_FULL" => Ok(Self::PartyFull),
+            "DUPLICATE_APPLICATION" => Ok(Self::DuplicateApplication),
+            "GIVEAWAY_SOLD_OUT" => Ok(Self::GiveawaySoldOut),
+            "DUPLICATE_ACTIVE_RESERVATION" => Ok(Self::DuplicateActiveReservation),
+            "RESERVATION_EXPIRED" => Ok(Self::ReservationExpired),
+            "PICKUP_CODE_INVALID" => Ok(Self::PickupCodeInvalid),
+            "RESOURCE_UNAVAILABLE" => Ok(Self::ResourceUnavailable),
+            "INVALID_INPUT" => Ok(Self::InvalidInput),
+            "EVENT_READ_ONLY" => Ok(Self::EventReadOnly),
+            "MAP_VERSION_MISMATCH" => Ok(Self::MapVersionMismatch),
             _ => Err(CommandError::InvalidState),
         }
     }

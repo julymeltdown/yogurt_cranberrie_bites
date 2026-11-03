@@ -47,12 +47,12 @@ def exercise(cluster, binary, test, report):
     cli("migrate", "--migrate")
     cli("verify", "--verify-migrations")
     manifest = migration.migration_manifest(ROOT / "backend", "concert-service")
-    require(set(manifest) == {1, 2}, "exact-migration-set")
+    require({1, 2, 9}.issubset(manifest), "required-migration-set")
     report["migration_sha384"] = manifest
     report["migration_ledger"] = migration.check_ledger(cluster, DATABASE, manifest)
     cli("reapply", "--migrate")
     cli("verify-reapply", "--verify-migrations")
-    require(migration.check_ledger(cluster, DATABASE, manifest) == 2, "stable-ledger")
+    require(migration.check_ledger(cluster, DATABASE, manifest) == len(manifest), "stable-ledger")
     # Missing/changed checksum is rejected, then restore only our own fixture row.
     original = cluster.sql(DATABASE, "select encode(checksum,'hex') from _sqlx_migrations where version=2;")
     cluster.sql(DATABASE, "update _sqlx_migrations set checksum=decode(repeat('00',48),'hex') where version=2;")
