@@ -28,7 +28,7 @@ the scoped presentation styles; symmetric borders and focus outlines remain.
 
 | Surface | Current delivery | Remaining gap |
 | --- | --- | --- |
-| World | Root short-viewport fix `dd86095`; compact controls `22b45fb`, both pushed and remote-verified. Controls occupy 136px; normal scene space increases substantially. Secondary help uses an accessible disclosure. | Captures still use synthetic terrain and unavailable character art. FE07 owns the single combined short-height/expanded-help proof; separate author captures alone do not prove the combined layout. |
+| World | Root short-viewport fix `dd86095`; compact controls `22b45fb`, both pushed and remote-verified. Controls occupy 136px. FE07's combined native proof passes: normal scene 384/428/516px at widths 360/390/430; 120px at height 430 with help closed or expanded at scroll-top. | Captures still use synthetic terrain and unavailable character art. Scrolling to keyboard-focused Zoom intentionally moves the scene out of view; collapsing help and returning to the top restores it. This is reversible native scrolling, not a persistent visible-scene guarantee during every interaction. |
 | Map | The default route mounts Places; `dd86095` removes the redundant inner title/frame while preserving the outer Map heading, Back, actions and region. | The geometry is a schema-derived schematic, not the illustrated venue in the reference. Physical routes remain unverified. |
 | Customize | `f790a98` integrates author `11e2cc6`: one visual outfit chooser, compact category rail, disclosed ID alternatives, explicit Save/Cancel and usable short-panel scrolling. | The visual examples are labeled TEST ONLY geometry. Approved character layers, real product previews and actual root/save flow remain unqualified. |
 | Feed / Meet / Gifts / My Profile | Reference-derived feature presentation is delivered; root registration exists. | Authorized imagery/avatars and rich populated identity/activity rows remain visibly incomplete. A registered route does not guarantee a qualified live producer. |
@@ -44,8 +44,15 @@ reported 16px nested editor body is corrected to 192px in the three tested
 half-panel widths. The independent root and control authors' validation remains
 bound to their own documented source revisions.
 
-Main forwarded published `22b45fb` and the exact reference pin to FE07, which
-started the combined check. The World lead received the outstanding approved-art
+Main forwarded published `22b45fb` and the exact reference pin to FE07. Its final
+combined evidence from author `538e2bd` is integrated: 25 owned test/document
+paths and 53 hashes matched, with no additional product changes. Fifteen native
+captures, 273 focused tests without skips, full types, lint and production build
+pass. The initial missing Python-validator environment failure is retained;
+the same tests passed with the already-installed pinned environment. One game,
+socket and camera, unchanged geometry/room, Map keyboard navigation and disposal
+are covered. See [the combined report](../../../frontend/src/app/__tests__/default-shell/evidence/controls-combined/report.json).
+The World lead received the outstanding approved-art
 and visual-fidelity gaps within its existing assignment. Layout writers retain
 disjoint ownership; this check neither assigns backend work to frontend authors
 nor changes the 112-task/61-IA acceptance counts.
