@@ -1,0 +1,118 @@
+syntax = "proto3";
+package post.concert.v1;
+
+// Additive event-content owner. Existing post.v1 data is never assigned a fake
+// event or revision. Only authenticated Concert workload; actor context is
+// untrusted until separately qualified owner authority admission.
+// Context fields/digest are bindings, not authorization capabilities. All
+// production methods fail UNAVAILABLE until a real owner authority fence exists.
+message Context {
+  string actor_id = 1;
+  string event_id = 2;
+  string session_family_id = 3;
+  string request_id = 4;
+  bytes original_authority_digest = 5; // exactly32 bytes; no bearer credentials
+  string expires_at = 6; // original RFC3339 deadline; never extended by owner
+}
+message Link { string target_type = 1; string target_id = 2; }
+message Content { string text = 1; repeated string media_ids = 2; repeated Link links = 3; }
+message Position { string created_at = 1; string id = 2; }
+message PostRecord {
+  string post_id = 1;
+  string event_id = 2;
+  string author_id = 3;
+  Content content = 4;
+  int64 revision = 5;
+  string state = 6;
+  string created_at = 7;
+  optional string edited_at = 8;
+  int64 comment_count = 9;
+  int64 reaction_count = 10;
+  bool reacted_by_me = 11;
+  bool is_public = 12; // canonical MCR posts are event-public, never legacy private
+}
+message CommentRecord {
+  string comment_id = 1;
+  string event_id = 2;
+  string post_id = 3;
+  string author_id = 4;
+  string text = 5;
+  int64 revision = 6;
+  string state = 7;
+  string created_at = 8;
+  optional string edited_at = 9;
+}
+message CreatePost { Content content = 1; }
+message EditPost { int64 expected_revision = 1; Content content = 2; }
+message DeletePost { int64 expected_revision = 1; }
+message CreateComment { string comment_id = 1; int64 post_revision = 2; string text = 3; }
+message EditComment { string comment_id = 1; int64 expected_revision = 2; string text = 3; }
+message DeleteComment { string comment_id = 1; int64 expected_revision = 2; }
+message SetReaction { int64 expected_revision = 1; bool active = 2; }
+message Command {
+  string operation_id = 1;
+  string actor_id = 2;
+  string event_id = 3;
+  string post_id = 4; // caller-assigned stable target also for create; retries reuse
+  string idempotency_key = 5;
+  oneof mutation {
+    CreatePost create_post = 6;
+    EditPost edit_post = 7;
+    DeletePost delete_post = 8;
+    CreateComment create_comment = 9;
+    EditComment edit_comment = 10;
+    DeleteComment delete_comment = 11;
+    SetReaction set_reaction = 12;
+  }
+}
+message ExecuteCommandRequest { Context context = 1; Command command = 2; }
+// Metadata only. Never replay historical text/media/private payloads. Re-read
+// current resources via their authorized methods to build C04 public views.
+message Receipt {
+  string operation_id = 1;
+  string event_id = 2;
+  string post_id = 3;
+  optional string comment_id = 4;
+  int64 revision = 5;
+  int64 post_revision = 6;
+  bool deleted = 7;
+  bool reacted_by_me = 8;
+  int64 reaction_count = 9;
+  string committed_at = 10;
+  string actor_id = 11;
+  string idempotency_key = 12; // internal echo only after exact command match; never browser
+}
+message GetReceiptRequest { Context context = 1; Command command = 2; }
+message GetReceiptResponse { Receipt receipt = 1; } // absent != proof of no commit
+message GetPostRequest { Context context = 1; string post_id = 2; }
+message GetPostResponse { PostRecord post = 1; }
+message ListPostsRequest {
+  Context context = 1;
+  string upper = 2; // inclusive immutable timestamp ceiling
+  Position after = 3; // exclusive DESC keyset
+  string filter = 4; // ALL, WITH_MEDIA, PARTY_LINK, GIVEAWAY_LINK
+  uint32 limit = 5; // 1..100
+}
+message ListPostsResponse {
+  repeated PostRecord posts = 1;
+  Position scanned_through = 2; // INTERNAL scan boundary; Concert signs public cursor
+  bool has_more = 3;
+}
+message ListCommentsRequest {
+  Context context = 1;
+  string post_id = 2;
+  Position after = 3; // exclusive DESC keyset
+  uint32 limit = 4; //1..100
+  string upper = 5; // inclusive immutable timestamp ceiling
+}
+message GetCommentRequest { Context context = 1; string comment_id = 2; }
+message GetCommentResponse { CommentRecord comment = 1; } // current visible parent required
+message ListCommentsResponse { repeated CommentRecord comments = 1; Position scanned_through = 2; bool has_more = 3; }
+service PostConcertFeedService {
+  rpc ExecuteCommand(ExecuteCommandRequest) returns (Receipt);
+  rpc GetReceipt(GetReceiptRequest) returns (GetReceiptResponse);
+  rpc GetPost(GetPostRequest) returns (GetPostResponse);
+  rpc ListPosts(ListPostsRequest) returns (ListPostsResponse);
+  rpc ListComments(ListCommentsRequest) returns (ListCommentsResponse);
+  rpc GetComment(GetCommentRequest) returns (GetCommentResponse);
+}

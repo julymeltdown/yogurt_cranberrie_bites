@@ -2,6 +2,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let post_include = contracts_build::source_post_include_dir();
     let protos = vec![
         post_include.join("post/v1/post.proto"),
+        post_include.join("post/v1/concert_feed.proto"),
         contracts_build::source_authority_proto(),
         post_include.join("friend/v1/friend.proto"),
         post_include.join("notification/v1/notification.proto"),

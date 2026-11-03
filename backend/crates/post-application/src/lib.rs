@@ -13,3 +13,5 @@ pub mod use_cases;
 pub mod query_witness;
 
 pub mod claimed_notification;
+
+pub mod concert_feed;
