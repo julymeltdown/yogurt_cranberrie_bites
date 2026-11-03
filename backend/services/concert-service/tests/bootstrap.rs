@@ -732,16 +732,26 @@ async fn native_spatial_candidate_transactions() {
         .publish_release(event, candidate.catalog.clone())
         .await
         .unwrap();
-    assert_eq!(again, first);
+    // The existing administrative API advances event catalog state on every
+    // publication; immutable map identity and canonical bytes stay unchanged.
+    assert_eq!(again.revision.get(), first.revision.get() + 1);
+    assert_eq!(
+        (again.map_id.as_str(), again.map_revision),
+        (first.map_id.as_str(), first.map_revision)
+    );
+    assert_eq!(
+        repo.catalog(event).await.unwrap().unwrap().release,
+        candidate.catalog
+    );
     for place in &read.places {
         assert_eq!(
-            repo.select_physical(event, place.id, first.revision, first.map_revision)
+            repo.select_physical(event, place.id, again.revision, again.map_revision)
                 .await
                 .unwrap(),
             SelectionOutcome::ConceptOnly
         );
         assert_eq!(
-            repo.select_physical(event, place.id, first.revision, 2)
+            repo.select_physical(event, place.id, again.revision, 2)
                 .await
                 .unwrap(),
             SelectionOutcome::MapMismatch
