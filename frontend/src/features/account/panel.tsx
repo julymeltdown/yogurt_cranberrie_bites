@@ -1,8 +1,14 @@
 import { useState,useSyncExternalStore } from 'react'
 import type { SessionController } from '../auth/model/session'
 import type { AccountController } from './controller'
+import type { DeletionProgress } from './contract'
 import { SafetyDialog } from '../safety/Dialog'
 import '../safety/safety.css'
+const deletionLabels: Record<DeletionProgress['steps'][number]['target'], string> = {
+ PROFILE:'Profile', FRIEND:'Friends', POST:'Posts', NOTIFICATION:'Notifications',
+ CONCERT_TICKETS:'Concert tickets', CONCERT_SESSIONS:'Concert sessions',
+ CONCERT_SHARING:'Concert sharing', CONCERT_PRIVATE_DATA:'Concert private data',
+}
 export function AccountPanel({controller,auth,onBack}:{controller:AccountController;auth:SessionController;onBack:()=>void}){
  const s=useSyncExternalStore(controller.subscribe,controller.read),session=useSyncExternalStore(auth.subscribe,auth.read),[confirm,setConfirm]=useState<'logout'|'delete'|null>(null)
  const canDelete=controller.canRequestDeletion(),signedIn=auth.session.read().userId!==null
@@ -16,7 +22,7 @@ export function AccountPanel({controller,auth,onBack}:{controller:AccountControl
   {!controller.deletionAvailable&&<p>Account deletion is unavailable until the canonical Auth deletion service is connected.</p>}
   <button disabled={!canDelete||!signedIn} onClick={()=>setConfirm('delete')}>Request account deletion</button>
   <p role="status">{s.message}</p>
-  {s.progress&&<ul aria-label="Deletion progress">{s.progress.steps.map(step=><li key={step.target}>{step.target.toLowerCase()}: {step.state.toLowerCase().replaceAll('_',' ')}</li>)}</ul>}
+  {s.progress&&<ul aria-label="Deletion progress">{s.progress.steps.map(step=><li key={step.target}>{deletionLabels[step.target]}: {step.state.toLowerCase().replaceAll('_',' ')}</li>)}</ul>}
   {controller.deletionAvailable&&signedIn&&['ready','unknown','pending','partial-failure'].includes(s.phase)&&<button onClick={()=>void controller.checkDeletion()}>Check deletion progress</button>}
   {confirm==='logout'&&signedIn&&s.phase!=='closed'&&<SafetyDialog title="Sign out?" onDismiss={()=>setConfirm(null)}><p>Unsaved private drafts will be cleared.</p><button data-initial-focus onClick={()=>setConfirm(null)}>Stay signed in</button><button onClick={()=>{setConfirm(null);void controller.logout()}}>Confirm sign out</button></SafetyDialog>}
   {confirm==='delete'&&canDelete&&signedIn&&<SafetyDialog title="Request account deletion?" onDismiss={()=>{controller.editConfirmation('');setConfirm(null)}}><p>This request cannot be undone here. Type DELETE_MY_ACCOUNT to confirm.</p><label>Deletion confirmation<input value={s.confirmation} onChange={e=>controller.editConfirmation(e.target.value)} autoComplete="off"/></label><button data-initial-focus onClick={()=>{controller.editConfirmation('');setConfirm(null)}}>Keep account</button><button disabled={s.confirmation!=='DELETE_MY_ACCOUNT'} onClick={()=>{setConfirm(null);void controller.requestDeletion()}}>Confirm deletion request</button></SafetyDialog>}

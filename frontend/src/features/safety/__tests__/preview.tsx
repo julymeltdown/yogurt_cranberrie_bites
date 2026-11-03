@@ -6,13 +6,14 @@ import {createSafetyController} from '../controller'
 import {ReportDialog,BlocksPanel,BlockUserButton} from '../panels'
 import {createAccountController,type AccountDeletionPort} from '../../account/controller'
 import {AccountPanel} from '../../account/panel'
+import {deletionTargets} from '../../account/contract'
 import {ids,link} from './fixtures'
 const auth=createSessionController({eventId:ids.event,cookiePolicy:isolatedCookiePolicy()})
 auth.session.replace(0,{userId:ids.actor,eventId:ids.event,accessToken:'SYNTHETIC_ONLY'})
 let mode:'pending'|'failure'|'complete'|'slow'='pending',release:(()=>void)|null=null
 let calls=0
 const date='2026-11-04T00:59:00Z'
-function saga(){const complete=mode==='complete';return{id:ids.receipt,userId:ids.actor,status:complete?'COMPLETED':mode==='failure'?'DEAD_LETTERED':'IN_PROGRESS',retentionUntil:'2027-11-04T00:59:00Z',createdAt:date,updatedAt:date,completedAt:complete?date:null,steps:['PROFILE','FRIEND','POST','NOTIFICATION'].map(target=>({target,status:complete?'SUCCEEDED':mode==='failure'?'DEAD_LETTERED':'PENDING',attemptCount:1,nextAttemptAt:date,lastError:mode==='failure'?'SECRET synthetic provider':null,completedAt:complete?date:null}))}}
+function saga(){const complete=mode==='complete';return{id:ids.receipt,userId:ids.actor,status:complete?'COMPLETED':mode==='failure'?'DEAD_LETTERED':'IN_PROGRESS',retentionUntil:'2027-11-04T00:59:00Z',createdAt:date,updatedAt:date,completedAt:complete?date:null,steps:deletionTargets.map(target=>({target,status:complete?'SUCCEEDED':mode==='failure'?'DEAD_LETTERED':'PENDING',attemptCount:1,nextAttemptAt:date,lastError:mode==='failure'?'SECRET synthetic provider':null,completedAt:complete?date:null}))}}
 const deletion:AccountDeletionPort={async request(scope){calls++;if(mode==='slow')await new Promise<void>(yes=>{release=yes});return{scope,status:202,data:{userId:ids.actor,deleted:true,sagaId:ids.receipt,saga:saga()}}},async status(scope){return{scope,status:200,data:saga()}}}
 const safety=createSafetyController({auth,blocksAvailable:true,reportsAvailable:true,authorization:{async check(target,evidenceMediaIds,scope){return{scope,target,evidenceMediaIds,expiresAt:Date.now()+10000,allowed:!new URLSearchParams(location.search).has('denied')}}}})
 const account=createAccountController({auth,now:()=>Date.parse('2026-11-04T01:00:00Z'),...(new URLSearchParams(location.search).has('unavailable')?{}:{deletion})})

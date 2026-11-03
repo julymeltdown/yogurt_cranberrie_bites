@@ -6,7 +6,7 @@ import {harness,ids,now,deferred} from '../../safety/__tests__/fixtures'
 import type {PrivacyScope} from '../../../shared/query/privacy'
 const sagaId='88888888-8888-4888-8888-888888888888'
 const date='2026-11-04T00:59:00Z'
-function saga(complete=false){return{id:sagaId,userId:ids.actor,status:complete?'COMPLETED':'IN_PROGRESS',retentionUntil:'2026-12-04T00:59:00Z',createdAt:date,updatedAt:date,completedAt:complete?date:null,steps:['PROFILE','FRIEND','POST','NOTIFICATION'].map(target=>({target,status:complete?'SUCCEEDED':'PENDING',attemptCount:complete?1:0,nextAttemptAt:date,lastError:null,completedAt:complete?date:null}))}}
+function saga(complete=false){return{id:sagaId,userId:ids.actor,status:complete?'COMPLETED':'IN_PROGRESS',retentionUntil:'2026-12-04T00:59:00Z',createdAt:date,updatedAt:date,completedAt:complete?date:null,steps:['PROFILE','FRIEND','POST','NOTIFICATION','CONCERT_TICKETS','CONCERT_SESSIONS','CONCERT_SHARING','CONCERT_PRIVATE_DATA'].map(target=>({target,status:complete?'SUCCEEDED':'PENDING',attemptCount:complete?1:0,nextAttemptAt:date,lastError:null,completedAt:complete?date:null}))}}
 function accepted(s=saga()){return{userId:ids.actor,deleted:true,sagaId,saga:s}}
 const owned:{dispose:()=>void}[]=[]
 function setup(port?:AccountDeletionPort,handle:Parameters<typeof harness>[0]=()=>new Response(null,{status:204}),callbacks:Partial<Parameters<typeof createAccountController>[0]>={}){const h=harness(handle),controller=createAccountController({auth:h.auth,now:()=>now,...(port?{deletion:port}:{}),...callbacks});owned.push({dispose(){controller.dispose();h.dispose()}});return{...h,account:controller}}
