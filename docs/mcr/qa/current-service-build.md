@@ -1,6 +1,6 @@
 # Current service build receipt and qualification report
 
-Status: **QUALIFIED_AND_VERIFIED**. The six retained MCR services have been successfully compiled from exact published base `683484baaf78792292337ad0c197a5d574536db3`, copied into an immutable permission-guarded bundle, and bound to an exact build receipt satisfying `in01_provision.py` constructor validation.
+Status: **BUILD_VERIFIED; CURRENT RUNTIME NOT_RUN**. The six retained MCR services have been successfully compiled from exact published base `683484baaf78792292337ad0c197a5d574536db3`, copied into a permission-guarded bundle, and bound to an exact build receipt satisfying `in01_provision.py` constructor validation. The recorded checks cover compilation, byte/source binding and executable help. They do not establish startup, migrations, readiness, current authentication or World behavior; those require the separately assigned current-runtime execution.
 
 ## 1. Scope and checkout boundary
 
