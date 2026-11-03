@@ -1,6 +1,6 @@
 # BE04 canonical identity adapter increment
 
-Status: **IN_PROGRESS** overall; pure application and deterministic adapter/consumer behavior **MOCK_READY** after the checks below. Real interservice identity, email-only participation, suspension and provider-binding acceptance are **NOT_RUN**. This increment does not certify BE04 acceptance.
+Status: **IN_PROGRESS** overall; pure application and deterministic adapter/consumer behavior **MOCK_READY**. Real guarded Auth and Profile owner reads and the joined HTTP owner chain are now **INTEGRATED** as bounded prerequisites. Email-only participation through a deployed Concert route, signed Gateway-to-Concert admission, event restriction authority and whole-task acceptance remain **NOT_RUN**. This increment does not certify BE04 acceptance.
 
 Base: `376cf2127b5ae5b81fa8743293ec9cc0079f6bfd`, task branch `codex/mcr-be-BE04`, isolated worktree `be-identity`. Only the integrator publishes reviewed work. Commit ancestry is supplied in the handoff and external receipt; this document does not embed its own commit hash.
 
@@ -29,18 +29,57 @@ BasicProfile is internal allowlisted content with no serialization implementatio
 
 `concert-service/src/adapters/out/identity/` maps typed owner-boundary records to those ports, validates canonical identifiers and profile/lifecycle data, and keeps failure categories separate. Owner records are internal testable boundary values, not invented RPC payloads. They require independently verified proof metadata; copying input context into an owner reply does not qualify an implementation. A bearer JWT alone does not establish event/operation delegation. An internal caller credential rejection, timeout or malformed dependency reply becomes unavailable authority. Authenticated permission rejection remains denial. Only explicit access credential rejection at authentication becomes `Unauthenticated`.
 
-No transport client is registered. The original BE05 production `UnavailablePolicy` and composition remain unchanged. `UnavailableOwner` is another explicit fail-closed placeholder, never an accepting demo identity.
+No Concert transport client is registered. The original BE05 production
+`UnavailablePolicy` and composition remain unchanged. `UnavailableOwner` is
+another explicit fail-closed placeholder, never an accepting demo identity.
+
+The separately integrated Auth/Profile clients and owner servers now supply:
+
+- One current Auth account/session/provider-fact snapshot through
+  `ReadConcertAdmission`, behind the generated server, registered Gateway
+  credential, exact actor/body/replay proof and original deadline.
+- One current self-only minimal Profile content read through
+  `ReadConcertSelfProfile`, with the same workload/actor/body proof, bounded
+  response and cancellation/deadline semantics.
+- Gateway-local strict JWT user/session/access-expiry extraction and a
+  request-bound reader that checks Auth, rechecks it after the Profile await and
+  excludes private wire fields.
+- A joined native HTTP test that reaches both guarded generated servers and
+  three isolated PostgreSQL databases from the production Router/timeout path.
+
+Those integrations are prerequisites, not a signed grant. The reader's
+observation has no constructor, Clone, serialization or conversion to
+admission. `ProfileState::Active` is content lifecycle, not account or event
+eligibility. Production still fails closed until a Concert verifier and current
+local event policy are actually composed. See the
+[joined HTTP owner evidence](../backend/http-owner-chain.md),
+[Auth admission evidence](../evidence/auth-admission-rpc-integration.md),
+[owner client evidence](../evidence/identity-owner-clients-integration.md) and
+[selected admission direction](../identity-admission-decision.md).
 
 ## Required shared prerequisites
 
 The integrator received the early source-grounded proposal and confirmed central ownership. Required before production qualification:
 
-1. A real owning suspension/eligibility primitive, with current actor/session/context binding; no inference from Profile lifecycle or roles.
-2. An owner-backed provider-to-canonical-user claim binding read, exact provider/reference/context/time binding and revocation behavior; no X prerequisite.
-3. A reviewed Gateway-to-Concert actor/event/operation authority contract, and request/response proof mapping for exact Auth/Profile reads. Existing replies lack the complete proof model used here.
-4. Concert workload/caller identity and isolated credentials/TLS; explicit method policies, edge budgets, propagated deadlines, bounded admission/retry behavior and producer/consumer negative tests. Adding Concert to generic allowlists alone is insufficient.
+1. Concert-owned event restriction/role/policy-revision authority with current
+   event scoping; no inference from Profile lifecycle or Auth roles. This remains
+   BE37/BE38/BE39 and is required for operations whose policy needs it.
+2. Exact provider/reference/context binding through the current owner RPC is
+   integrated. Real provider login and revocation/relink qualification remain
+   separate; ordinary email-only participation must not require an X row.
+3. The Gateway fresh-owner-read to signed Concert-admission contract selected in
+   the [admission decision](../identity-admission-decision.md). The bounded owner
+   reads are integrated; the portable assertion and Concert verifier are not.
+4. Concert workload/caller identity and isolated credentials/TLS; explicit
+   method policies, edge budgets, propagated deadlines, bounded admission/retry
+   behavior and producer/consumer negative tests. Adding Concert to generic
+   allowlists alone is insufficient.
 5. Centrally reviewed existing-version Cargo dependencies/generated contract artifacts and service configuration if real RPC clients are assigned. No dependency or lock resolution changed here.
-6. Real isolated Auth/Profile/Concert service evidence: email-only identity, current-session revocation/deactivation/deletion, suspension, malformed and foreign proofs, provider wrong-user/replay/expiry, dependency outage and authenticated denial. This increment has no browser, database mutation, provider seed or product endpoint.
+6. Real isolated end-to-end admission evidence: signed request, email-only
+   identity, current-session revocation/deactivation/deletion, event restriction,
+   malformed and foreign proofs, provider wrong-user/replay/expiry, dependency
+   outage and authenticated denial. Owner-only real evidence exists; no browser,
+   authenticated Concert request or product endpoint has passed this gate.
 
 ## Owned paths and validation
 
@@ -59,7 +98,12 @@ Remaining status: overall goal stays active for shared production prerequisites,
 
 ## Proposed shared contracts for integrator decision
 
-This section is a **proposal**, not an approved contract or implemented authority. It is grounded in source at `376cf21` and the inspected C04 policy. No central file was changed. The existing mock proof records do not establish any of the production guarantees below.
+This section began as a proposal grounded in source at `376cf21` and the
+inspected C04 policy. The integrator later selected the Gateway-read path in
+[the admission decision](../identity-admission-decision.md). The selected path
+and implemented owner RPCs supersede the earlier Concert-to-owner exchange
+suggestion below; remaining alternatives stay historical design evidence. The
+existing mock proof records do not establish any production guarantee.
 
 ### Suspension ownership and the unresolved scope decision
 
@@ -67,9 +111,18 @@ Auth owns global canonical account/session admission. Concert should own event s
 
 **Decision required:** `operations.json` routes `moderateConcertUser` under `/api/concert/events/{eventId}/admin/users/{userId}/moderation`, while `policy.json` `moderate_user` explicitly requires revocation of sessions, sockets, tickets and private grants. An event ban alone does not revoke an Auth-wide refresh family. The integrator must define whether this action deliberately invokes Auth-wide revocation, or introduce and approve distinct event/global actions and session semantics. Do not silently weaken revocation, turn an event moderator into a global administrator, restore consent on UNSUSPEND, or report a partially failed owner action as applied. BE38/BE39 must enforce current event moderator/operator authority and an immutable reason/expected revision/receipt. Event read-only state, age restrictions, venue admission and global suspension remain distinct policies.
 
-Proposed Auth ownership changes: an explicit global restriction model/port/store with revision, nullable expiry and audit; a real owner read must combine it with current account/session state. Do not add a `Suspended` enum variant alone: existing account/session/repository/database guard semantics require a coordinated migration and tests. Event restrictions belong in Concert policy persistence and invalidation, composed into BE04/BE37; this worker has no assignment to implement either store. Session revocation/expiry and ban expiry must invalidate prior authority, sockets/tickets and private grants; release never revives old grants automatically.
+The integrator resolved this event/global separation in
+[the admission decision](../identity-admission-decision.md): event moderation,
+roles, restriction revisions and grants stay event-local; Auth-wide restriction,
+if introduced, is a separate Auth operation. Event release never revives an old
+grant. The earlier proposal of a global suspension field remains optional future
+scope: unchanged Auth account states and a healthy authoritative no-restriction
+result do not become a fake `Suspended` enum. The event restriction store,
+Concert-local role/revision reads, operator checks and revocation propagation
+remain BE37/BE38/BE39 work, not BE04. Their absence keeps production Concert
+authority unavailable for operations requiring them.
 
-### Narrow internal RPC proposal
+### Narrow internal RPC proposal (historical)
 
 Prefer new, separately guarded services in `backend/proto/authority/v1/authority.proto`, leaving generic Auth/Profile method allowlists and the Post child protocol unchanged. Proposed names/fields below require central review; none exists today:
 
@@ -83,24 +136,81 @@ Proposed context field layout, if approved: `user_id=1`, `session_id=2`, `event_
 
 Auth already has `user_identities.id`, `provider_type`, `provider_subject`, `email_verified` and `deleted_at`. `linked_providers` filters `deleted_at is null` but proves only a provider set, not an exact binding. `find_by_provider_subject` currently lacks the deletion filter and exposes subject/email; do not reuse it as a qualified minimal binding read. Add a dedicated owner query constrained by canonical user, exact row reference/provider, `deleted_at is null`, active account/session and applicable verification state. An owner binding revision/epoch must change on unlink/relink/deletion so old authority cannot revive a transferred or replaced claim. Provider names remain EMAIL/GOOGLE/APPLE/X; enum presence is not availability, and EMAIL must not require an X row. Auth provider binding does not verify an age-provider proof, Instagram handle, reveal consent or audience: BE26/BE29 retain those separate owners and one-use callback contracts.
 
-### Gateway → Concert → owner authority
+### Gateway fresh reads → signed Concert admission (selected)
 
-Preferred chain: Gateway verifies the browser access token using its existing trusted JWKS path, obtains canonical `sub`, nonempty `sid` and access expiry, and derives context from the authenticated request/route, never a body actor assertion. It signs the exact proposed Concert root RPC body/method with `sub`, purpose/event/session in that body, optional operation ID, fresh token ID and expiry capped by access expiry. Concert authenticates the actual Gateway workload and verifies that signed root before constructing a sealed per-request authority. Workload identity alone is insufficient; no service receives Gateway signing keys or impersonates Gateway/Post.
+The selected first path is recorded in
+`docs/mcr/identity-admission-decision.md`. Gateway verifies
+the browser JWT, performs fresh request-bound Auth and minimal Profile reads,
+binds them to canonical `sub`/`sid`/operation/event/access expiry, rechecks the
+borrowed context after every owner await, and signs a short-lived assertion.
+Concert authenticates Gateway, verifies the exact assertion and method/body,
+checks current local event policy and revision, then constructs one sealed
+per-request identity policy. It does not call back to Auth/Profile from that
+same admitted root. The implemented Gateway reader is the read/join portion;
+it still produces a private observation, not a grant.
 
-A proposed `GatewayConcertAuthorizationExchangeService.ExchangeConcertActor` accepts only registered Concert and the sealed original root plus exact requested child method/body/operation. Its Gateway issuer independently verifies the original root signature/body/actor/session/event/purpose/expiry and an exact allowlisted root→child relationship. It derives child scope from that verified root; it rejects caller-supplied owner evidence, arbitrary audiences/methods/targets, root/child operation mismatch and foreign provider references. Profile target is self only for BE04; foreign/public projections need a separate explicit relationship/read contract. Use a distinct Concert child token context/version and sealed extension, binding presenter Concert, audience Auth/Profile, actor/session/event/purpose, child method/body digest, parent digest, operation, issue/expiry and fresh ID. Never turn Post's current child v2 into a generic presenter switch. Owner guards verify the actual Concert workload and the exact child before invoking a handler; handler uses the sealed actor/context and performs its own authoritative lookup. No owner result may be fabricated by the exchange. Existing process-local replay protection is not a global exactly-once guarantee; later mutations require owner idempotency.
+Raw JWT/session/authority values stay out of URLs, logs and public DTOs. The
+signature covers actor/session, event, semantic purpose, exact method/body,
+request/command correlation, the owner results used, and bounded validity.
+Concert's check must remain live through policy creation and must fail if its
+access, request stop or local policy is unavailable or expired. Gateway
+credential rejection is dependency unavailability; invalid browser credentials
+are 401, authenticated denial 403 and missing required authority 503. No retry,
+cache or invented success fallback may convert a failed read.
 
-Raw JWT/session/authority values stay out of URLs, logs and public DTOs. A future adapter may consume the verified Gateway root as its opaque access credential; its documented verification must prove the Gateway-derived JWT subject/session/access-expiry binding and subsequent owner checks, rather than imply that a raw bearer alone proves event authority. Internal caller credential rejection/misconfiguration is dependency unavailability; invalid browser credentials are 401, authenticated owner denial 403, and missing required authority 503. Do not refresh on every 403.
+Email-only participation requires no provider or X relation. An optional exact
+provider row/provider/generation check remains email-independent and fails
+closed when requested. Foreign/deleted/unlinked claims cannot attach.
 
-Alternative A: Gateway directly performs the Auth/Profile owner reads and signs a root-bound, short-lived composite admission assertion for Concert. This avoids Concert→owner exchange edges, but explicitly makes Gateway the assertion owner and requires request-bound results, current revocation semantics, revision/expiry clamping and the same real service tests. It is not permission to fabricate successful owner replies. Alternative B: extend existing `CheckSession`/`GetProfile` with a separately reviewed Concert child policy, preserving exact source semantics; this saves RPC definitions but retains the overbroad Profile response and still needs a new suspension/provider primitive. Preferred narrow services reduce exposure and leave inherited contracts intact.
+The following earlier Concert-to-owner exchange proposal remains historical
+design evidence and is not the selected first increment:
 
-### Exact central change map and qualification
+> The superseded proposal used Gateway to establish a signed root, then Concert
+> to exchange that root for narrowly scoped Auth/Profile child authority. A
+> `GatewayConcertAuthorizationExchangeService` would bind presenter, audience,
+> method/body digest, root digest, operation and expiry. That architecture is
+> retained only for a future explicit decision; it would require new methods,
+> policies, issuer code, owner guards, revocation and real transport evidence.
+> Existing Post child v2 is not a generic Concert switch.
 
-All following paths remain integrator/owner assignments:
+### Remaining change map and qualification
 
-- Proto/generation: `backend/proto/authority/v1/authority.proto`; new `backend/proto/concert/v1/concert.proto` for the exact root if approved; `backend/crates/contracts-build/src/lib.rs`; `backend/services/{auth-service,profile-service,api-gateway}/build.rs`; new Concert build input/dependencies only through central manifests/retained lockfile. Existing Auth build does not compile authority.proto. No nonexistent api-contracts crate is assumed.
-- Platform: `backend/crates/platform/src/grpc_auth.rs` for registered Concert identity; `edge.rs` for GatewayConcert, ConcertGateway, ConcertAuth, ConcertProfile budgets; `grpc_method_policy.rs` and a dedicated new `actor_delegation/concert.rs` plus module export/tests for explicit Concert proofs. Preserve old Gateway-only actor field and Post forwarding invariants. Exact new owner method policies use Concert plus mandatory child proof, not generic caller-list relaxation.
-- Gateway issuer/composition: new `backend/services/api-gateway/src/adapters/in/grpc/concert_authority_exchange.rs`, corresponding application/out adapter, explicit module/main/config registration and verified HTTP→root mapping. Existing `adapters/in/grpc/authority_exchange.rs` and `adapters/out/authority_exchange.rs` demonstrate Post-only issuance and must keep that policy. Do not reuse their hardcoded Post presenter for Concert.
-- Owner code: new Auth/Profile `src/adapters/in/grpc/concert_authority.rs` with local method/forwarding tables and guarded registration in each `src/main.rs`/config; Auth application port/use cases and its own dedicated restriction/binding repository/migration. `backend/crates/auth-application/src/ports.rs` is the actual port file; `backend/services/auth-service/src/adapters/out/persistence/user_repository.rs` is the existing identity SQL source. Event restriction storage/role/invalidation belongs to Concert BE37/BE38/BE39, separately assigned.
-- Isolation/deadlines: central Concert credentials, caller registry/TLS, addresses, readiness and service composition in existing config/infra. Every nested call uses `min(remaining parent budget, edge budget)` for admission/connect/request/owner work. Synchronous identity reads must not retry after ambiguous dispatch; any approved pre-dispatch retry stays inside the same authority/deadline. Proposed aggregate root budget and per-edge values require load-backed central approval; no numeric SLO is invented here.
+All paths remain integrator/owner assignments. This is a change map, not a
+transferred writable set. The selected first path adds a portable assertion and
+Concert verifier; it does not add a second owner-read edge.
 
-Required negative qualification: unregistered/spoofed workload; missing/wrong signature/kid/audience/presenter/method/body; foreign user/session/event/purpose/command ID; direct Concert calls without a child; Post token presented as Concert and vice versa; token replay/expiry during exchange and owner call; caller-supplied owner timestamps; inactive/deleted/revoked/expired user/session; suspended globally vs event A while event B remains correctly scoped; role downgrade/operator-peer protections; suspension expiry and failed downstream revocation; unlink/relink/deleted identity/wrong provider/reference with no existence oracle; email-only/no X; malformed/unknown lifecycle and private field canaries; timeout/outage/caller credential failure vs user 401/403; zero persistence effects on refusal; real isolated two-user producer/consumer tests and unchanged imported Post authority tests. Production stays unavailable until approved contracts, owner stores and those real flows qualify.
+- Assertion contract/generation: a new versioned, domain-separated signed
+  protobuf message containing actor/session/event/purpose, exact method/body
+  digest, request/command correlation, owner-result digests, issue/expiry and
+  fresh nonce. Update `backend/crates/contracts-build/src/lib.rs`, the selected
+  service build inputs and central manifests/lockfile only after review.
+- Platform: register `Workload::Concert`, exact Gateway-to-Concert and
+  Concert-to-owner policies as needed, `GatewayConcert` edge budgets, and a
+  dedicated verifier/issuer module with replay, tamper, expiry and deadline
+  tests. A verified caller credential alone never creates event authority.
+- Gateway: bind the existing strict HTTP context and checked Auth/Profile
+  observations to the exact request, then sign only after final context and
+  event-purpose rechecks. Keep raw claim values private. No owner observation
+  becomes a grant before the final await recheck.
+- Concert: authenticate actual Gateway transport, verify signature and exact
+  method/body/actor/session/event/purpose/operation, then evaluate current local
+  event policy/revision. Only the composed result becomes `IdentityPolicy`;
+  absent verifier/config remains `UnavailablePolicy`.
+- Event authority: restriction storage, roles, policy revision and operator
+  semantics remain BE37/BE38/BE39. BE04 may consume reviewed event-policy ports
+  but must not invent a second identity store or allow an event moderator to
+  revoke unrelated Auth families.
+- Isolation/deadlines: central Concert credentials, caller registry/TLS,
+  addresses, readiness and service composition. Every nested call uses
+  `min(remaining parent budget, edge budget)`. Identity reads do not retry after
+  ambiguous dispatch. Aggregate/per-edge values require load-backed approval.
+
+Required negative qualification: unregistered/spoofed workload; missing/wrong
+signature/kid/audience/method/body/purpose; foreign user/session/event/command;
+caller-supplied owner timestamps; assertion replay/expiry during signing or
+use; current inactive/deleted/revoked/expired account/session; event A restriction
+without crossing to B; provider wrong-user/replay/expiry; email-only/no X;
+malformed lifecycle/private-field canaries; timeout/outage/credential failure
+versus 401/403; zero repository effects on refusal; real two-user producer and
+consumer tests. Production stays unavailable until the approved assertion,
+current event policy and those real flows qualify.
