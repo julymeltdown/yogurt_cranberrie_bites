@@ -1,0 +1,349 @@
+{
+  "format": "MCR_RUNTIME_SCENE_DERIVATIVE",
+  "version": 4,
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "theme_id": "PARADE",
+  "geometry_url": "../geometry-proposal.json",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "layout": "parade-layout.json",
+  "scenery": "parade-scenery.json",
+  "integer_projection": "parade-integer-projection.json",
+  "map_metadata": "parade-map-metadata.json",
+  "projection_policy": {
+    "rounding": "nearest integer, ties away from zero",
+    "foot_depth": "runtime depth_y = round(authored depth_y)",
+    "local_foot_anchor": "runtime local foot = round(authored depth_y - authored y); runtime y = runtime depth_y - runtime local foot",
+    "extent": "x, width and height round independently; rectangles are visual only",
+    "ordering": "stable ascending depth_y, source array order breaks equal-depth ties",
+    "geometry": "No changes to footprint polygons, collision/terrain/overdraw, IDs, spawn or interaction cells.",
+    "map": "Overview representations remain MAP-only semantic art; never add them as C06 WORLD objects."
+  },
+  "source_revision": "8f89d1905a86143d34ff77d2951fc60651ab2497",
+  "sources": [
+    {
+      "path": "../painted/parade-source-atlas-v3.png",
+      "sha256": "sha256:4a93f18cd55b66f3c09853f01e7fc78b88da8593298e4758738ff73e1e73ea2c"
+    },
+    {
+      "path": "../painted/parade-ground.png",
+      "sha256": "sha256:a6677d717766b585221b3c30ad058592eb9fae7e793ea14298fb30c914b6de2d"
+    }
+  ],
+  "resources": [
+    {
+      "path": "parade-ground.png",
+      "width": 768,
+      "height": 1296,
+      "pixels": 995328,
+      "bytes": 693939,
+      "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5"
+    },
+    {
+      "path": "parade-atlas.png",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "bytes": 1253878,
+      "sha256": "sha256:ff68a358fad4e03ceaaf5fd610a9e6cdad9a167963e3ec00545c909ba6bb0dfe"
+    }
+  ],
+  "transforms": [
+    {
+      "frame": "stage",
+      "source_rect": {
+        "x": 4,
+        "y": 10,
+        "width": 320,
+        "height": 318
+      },
+      "packed_rect": {
+        "x": 8,
+        "y": 8,
+        "width": 240,
+        "height": 239
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "white_merch_booth",
+      "source_rect": {
+        "x": 328,
+        "y": 25,
+        "width": 294,
+        "height": 298
+      },
+      "packed_rect": {
+        "x": 273,
+        "y": 16,
+        "width": 221,
+        "height": 224
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "white_food_booth",
+      "source_rect": {
+        "x": 631,
+        "y": 25,
+        "width": 313,
+        "height": 294
+      },
+      "packed_rect": {
+        "x": 522,
+        "y": 17,
+        "width": 235,
+        "height": 221
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "park_plaque",
+      "source_rect": {
+        "x": 944,
+        "y": 53,
+        "width": 305,
+        "height": 266
+      },
+      "packed_rect": {
+        "x": 781,
+        "y": 28,
+        "width": 229,
+        "height": 200
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "tree_green",
+      "source_rect": {
+        "x": 5,
+        "y": 328,
+        "width": 310,
+        "height": 302
+      },
+      "packed_rect": {
+        "x": 11,
+        "y": 270,
+        "width": 233,
+        "height": 227
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "tree_yellow",
+      "source_rect": {
+        "x": 326,
+        "y": 328,
+        "width": 302,
+        "height": 301
+      },
+      "packed_rect": {
+        "x": 270,
+        "y": 271,
+        "width": 227,
+        "height": 226
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "tree_dark",
+      "source_rect": {
+        "x": 628,
+        "y": 365,
+        "width": 305,
+        "height": 264
+      },
+      "packed_rect": {
+        "x": 525,
+        "y": 285,
+        "width": 229,
+        "height": 198
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "tree_red",
+      "source_rect": {
+        "x": 958,
+        "y": 357,
+        "width": 284,
+        "height": 272
+      },
+      "packed_rect": {
+        "x": 789,
+        "y": 282,
+        "width": 213,
+        "height": 204
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "meeting_pavilion",
+      "source_rect": {
+        "x": 2,
+        "y": 664,
+        "width": 322,
+        "height": 261
+      },
+      "packed_rect": {
+        "x": 7,
+        "y": 542,
+        "width": 242,
+        "height": 196
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "giveaway_pavilion",
+      "source_rect": {
+        "x": 324,
+        "y": 663,
+        "width": 304,
+        "height": 262
+      },
+      "packed_rect": {
+        "x": 270,
+        "y": 541,
+        "width": 228,
+        "height": 197
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "north_hall",
+      "source_rect": {
+        "x": 628,
+        "y": 681,
+        "width": 316,
+        "height": 227
+      },
+      "packed_rect": {
+        "x": 521,
+        "y": 555,
+        "width": 237,
+        "height": 170
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "west_hall",
+      "source_rect": {
+        "x": 944,
+        "y": 673,
+        "width": 310,
+        "height": 251
+      },
+      "packed_rect": {
+        "x": 779,
+        "y": 546,
+        "width": 233,
+        "height": 188
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "food_counter",
+      "source_rect": {
+        "x": 5,
+        "y": 983,
+        "width": 319,
+        "height": 251
+      },
+      "packed_rect": {
+        "x": 8,
+        "y": 802,
+        "width": 239,
+        "height": 188
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "plaza_furniture",
+      "source_rect": {
+        "x": 324,
+        "y": 1017,
+        "width": 299,
+        "height": 215
+      },
+      "packed_rect": {
+        "x": 272,
+        "y": 815,
+        "width": 224,
+        "height": 161
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    },
+    {
+      "frame": "cross_banner",
+      "source_rect": {
+        "x": 695,
+        "y": 934,
+        "width": 170,
+        "height": 320
+      },
+      "packed_rect": {
+        "x": 576,
+        "y": 776,
+        "width": 128,
+        "height": 240
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": "Tighter source-only banner crop excludes neighboring furniture spill."
+    },
+    {
+      "frame": "shrub_bed",
+      "source_rect": {
+        "x": 944,
+        "y": 1017,
+        "width": 307,
+        "height": 214
+      },
+      "packed_rect": {
+        "x": 781,
+        "y": 815,
+        "width": 230,
+        "height": 161
+      },
+      "scale": 0.75,
+      "resampling": "nearest",
+      "correction": null
+    }
+  ],
+  "total_pixels": 2043904,
+  "total_bytes": 1947817,
+  "limits": {
+    "combined_scenery_pixels": 2097152,
+    "combined_scenery_bytes": 2097152
+  },
+  "budget_pass": true,
+  "other_skins": "Painted REVENGE/DANGER unavailable; never alias to PARADE.",
+  "review_limit": "Original third-round scores apply to frozen v3; runtime packing has separate comparison evidence, not a fourth critic score."
+}
