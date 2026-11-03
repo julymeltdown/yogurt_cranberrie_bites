@@ -52,5 +52,36 @@
     "Root7201b875 embedding/footer context outside isolated base",
     "No real server/native device/root ten-route/full visual acceptance"
   ],
-  "sourceCommit": "6191f740ca53c6f476e951ad75ecbc0e90bf16a5"
+  "sourceCommit": "6191f740ca53c6f476e951ad75ecbc0e90bf16a5",
+  "publicationReconciliation": {
+    "base": "fb0bfcaa6939d18f6fd4bd7d87d93412d7a7dafe",
+    "branch": "codex/mcr-fe-ref-auth-profile-publish",
+    "preservedPeerHistory": true,
+    "combinedTests": {
+      "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/me/__tests__/reference-target/combined-runner.ts --configLoader runner",
+      "exit": 0,
+      "passed": 97,
+      "files": 10,
+      "includes": "actual root shell direct-link regression; auth and profile owned/baseline suites"
+    },
+    "strictTypesExit": 0,
+    "scopedAuthProfileLintExit": 0,
+    "buildsExit": 0,
+    "nativeWidths": [
+      360,
+      390,
+      430
+    ],
+    "nativeExit": 0,
+    "sourceSharedCaptureHashComparison": "PASS",
+    "temporaryDependencyAndCaches": "removed before final guards",
+    "authAlreadyPublishedSourceMapping": "51d89f71",
+    "onlyNewAuthEvidenceMapping": "5b98a58874ce5e8bf9c5fd300ea6971ae3d15c09",
+    "newProfileSourceMapping": "0a855bfad9012bb5834a10b240ed6c2cf3291eb9",
+    "newProfileEvidenceMapping": "18c73422aa4dd321f488c4380e337074d074caf2",
+    "boundaryExit": 0,
+    "planningExit": 0,
+    "originExit": 0,
+    "scopeReview": "PASS exact authorized paths and presentation-only imports"
+  }
 }

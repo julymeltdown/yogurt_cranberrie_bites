@@ -11,42 +11,42 @@
           "x": 6,
           "y": 26,
           "width": 348,
-          "height": 690.96875
+          "height": 688.96875
         },
         "heading": {
-          "x": 45.703125,
-          "y": 181,
-          "width": 268.59375,
+          "x": 44.90625,
+          "y": 180,
+          "width": 270.171875,
           "height": 31.890625
         },
         "email": {
-          "x": 45.703125,
-          "y": 253.6875,
-          "width": 268.59375,
+          "x": 44.90625,
+          "y": 252.6875,
+          "width": 270.171875,
           "height": 44
         },
         "password": {
-          "x": 45.703125,
-          "y": 331.484375,
-          "width": 268.59375,
+          "x": 44.90625,
+          "y": 330.484375,
+          "width": 270.171875,
           "height": 44
         },
         "submit": {
-          "x": 45.703125,
-          "y": 397.484375,
-          "width": 268.59375,
+          "x": 44.90625,
+          "y": 396.484375,
+          "width": 270.171875,
           "height": 44
         },
         "providers": {
-          "x": 45.703125,
-          "y": 509.671875,
-          "width": 268.59375,
+          "x": 44.90625,
+          "y": 508.671875,
+          "width": 270.171875,
           "height": 44
         },
         "footer": {
-          "x": 35.703125,
-          "y": 579.96875,
-          "width": 288.59375,
+          "x": 34.90625,
+          "y": 578.96875,
+          "width": 290.171875,
           "height": 44
         },
         "overflow": false
@@ -64,42 +64,42 @@
           "x": 6,
           "y": 26,
           "width": 378,
-          "height": 734
+          "height": 732
         },
         "heading": {
-          "x": 48.84375,
-          "y": 191,
-          "width": 292.296875,
+          "x": 48.0625,
+          "y": 190,
+          "width": 293.875,
           "height": 31.890625
         },
         "email": {
-          "x": 48.84375,
-          "y": 263.6875,
-          "width": 292.296875,
+          "x": 48.0625,
+          "y": 262.6875,
+          "width": 293.875,
           "height": 44
         },
         "password": {
-          "x": 48.84375,
-          "y": 341.484375,
-          "width": 292.296875,
+          "x": 48.0625,
+          "y": 340.484375,
+          "width": 293.875,
           "height": 44
         },
         "submit": {
-          "x": 48.84375,
-          "y": 407.484375,
-          "width": 292.296875,
+          "x": 48.0625,
+          "y": 406.484375,
+          "width": 293.875,
           "height": 44
         },
         "providers": {
-          "x": 48.84375,
-          "y": 519.671875,
-          "width": 292.296875,
+          "x": 48.0625,
+          "y": 518.671875,
+          "width": 293.875,
           "height": 44
         },
         "footer": {
-          "x": 38.84375,
-          "y": 589.96875,
-          "width": 312.296875,
+          "x": 38.0625,
+          "y": 588.96875,
+          "width": 313.875,
           "height": 44
         },
         "overflow": false
@@ -117,42 +117,42 @@
           "x": 6,
           "y": 26,
           "width": 418,
-          "height": 804.390625
+          "height": 802.390625
         },
         "heading": {
-          "x": 53.046875,
-          "y": 191,
-          "width": 323.890625,
+          "x": 52.265625,
+          "y": 190,
+          "width": 325.46875,
           "height": 31.890625
         },
         "email": {
-          "x": 53.046875,
-          "y": 263.6875,
-          "width": 323.890625,
+          "x": 52.265625,
+          "y": 262.6875,
+          "width": 325.46875,
           "height": 44
         },
         "password": {
-          "x": 53.046875,
-          "y": 341.484375,
-          "width": 323.890625,
+          "x": 52.265625,
+          "y": 340.484375,
+          "width": 325.46875,
           "height": 44
         },
         "submit": {
-          "x": 53.046875,
-          "y": 407.484375,
-          "width": 323.890625,
+          "x": 52.265625,
+          "y": 406.484375,
+          "width": 325.46875,
           "height": 44
         },
         "providers": {
-          "x": 53.046875,
-          "y": 519.671875,
-          "width": 323.890625,
+          "x": 52.265625,
+          "y": 518.671875,
+          "width": 325.46875,
           "height": 44
         },
         "footer": {
-          "x": 43.046875,
-          "y": 589.96875,
-          "width": 343.890625,
+          "x": 42.265625,
+          "y": 588.96875,
+          "width": 345.46875,
           "height": 44
         },
         "overflow": false
@@ -177,18 +177,18 @@
     "frontend/src/features/auth/__tests__/reference-target/runner.ts": "6e2ed1e020a6c1addd81730ffbea28bf3dbfcb1416cbca37da7fb73e446fbf3c",
     "frontend/src/features/auth/ui/SignIn.tsx": "cb1d6a52d8cec34f8b149d2037212996a6e1627eaf06f2cbcb432d5f297ab7ea",
     "frontend/src/features/auth/ui/sign-in.css": "a874f4d77cd3bd3a291a7c1073233594f844e772e64431dc2f908be689d10c68",
-    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
-    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
-    "frontend/src/features/auth/model/session.ts": "dae6680d1f4a0600b6d3012639fd82c9317d63d1a55eb856e5c4dc81f9a5dc53",
+    "frontend/src/shared/ui/concert-window/index.tsx": "30568e75d61b31644ef105b2ef25fc150de19f7d604bad43615b97d1506efc10",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "54bc2ca1737e48c589d2456530c529af39a50e6413aace8dec1bfa5ae5564032",
+    "frontend/src/features/auth/model/session.ts": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
     "frontend/src/features/auth/__tests__/sign-in.test.tsx": "b877c4337a2e1914a2c9914a25cfb7e30891fa91250d28e0f144dabeaaa779cf"
   },
   "captures": {
-    "frontend/src/features/auth/__tests__/reference-target/evidence/ready-360.png": "76cf4cc0355b89688dbdd82131a9f7d2d5a04eec24e1d25c5831a30e2e4bfdbf",
-    "frontend/src/features/auth/__tests__/reference-target/evidence/ready-390.png": "0c69f46efbf600215d7fc495a18e92f3cead2548eeb169bd8db619bbffce804d",
-    "frontend/src/features/auth/__tests__/reference-target/evidence/credentials-error-390.png": "f5ffb6a6e77b2f979427b7ae58471ef549815b26a2984b48bb0c58762e408f46",
-    "frontend/src/features/auth/__tests__/reference-target/evidence/pending-390.png": "2244af0fa0dda242b0e87d36cb74d3f12dc03d105390effa29acdda16221e3d8",
-    "frontend/src/features/auth/__tests__/reference-target/evidence/unavailable-390.png": "8a714a5c0415f0786f1e7480d25b6f5754e953de552341358b15eddd5d4c93d9",
-    "frontend/src/features/auth/__tests__/reference-target/evidence/ready-430.png": "688b86888cd269a37f7fec6bd7356600fde97adeaaf9f1eca2c5af40b95d4b39"
+    "frontend/src/features/auth/__tests__/reference-target/evidence/ready-360.png": "1733b9954a4eb2227bfb18be44e337a6c4d0b30f85f19d333b4022ef490cac1b",
+    "frontend/src/features/auth/__tests__/reference-target/evidence/ready-390.png": "caad8492f77f6a2494f10876301865087c7206b83528f5158678d410b0f50e71",
+    "frontend/src/features/auth/__tests__/reference-target/evidence/credentials-error-390.png": "8d1977f7c3c28679d669ca8a94c57a0b9a06f0f6e51243abb83ac2d1941e751d",
+    "frontend/src/features/auth/__tests__/reference-target/evidence/pending-390.png": "c7afddc074af6ba2130fc15e6074a93545ed84d3c27158d96ae96d866cc2497d",
+    "frontend/src/features/auth/__tests__/reference-target/evidence/unavailable-390.png": "45d5ac06bd132e8964324904df65fccbffc067e9345887d8c9da869eaa36a68d",
+    "frontend/src/features/auth/__tests__/reference-target/evidence/ready-430.png": "67904bb714dd57dc151609d40d7fdfef1e6caf09e8c35329b13cccaf61f1eb25"
   },
   "limitations": "Production SignIn with canonical Auth and deterministic synthetic fetch/cookie policy. No actual backend/provider/mobile device/root ten-route acceptance."
 }
