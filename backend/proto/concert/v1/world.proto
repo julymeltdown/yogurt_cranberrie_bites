@@ -15,6 +15,9 @@ message WorldRequest {
   int64 authority_expires_unix_micros = 8;
   int64 auth_observed_at_unix_micros = 9;
   int64 profile_observed_at_unix_micros = 10;
+  // Exact verified access-JWT expiry supplied by the trusted Gateway edge.
+  // It may exceed the shorter request/RPC deadline but never extends the JWT.
+  int64 access_expires_unix_micros = 11;
 }
 
 message WorldResponse {
@@ -30,6 +33,7 @@ message CurrentMembershipRequest {
   int64 authority_expires_unix_micros = 5;
   int64 auth_observed_at_unix_micros = 6;
   int64 profile_observed_at_unix_micros = 7;
+  int64 access_expires_unix_micros = 8;
 }
 
 message CurrentMembershipResponse {

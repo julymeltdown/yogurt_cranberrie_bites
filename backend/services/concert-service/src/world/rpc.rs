@@ -37,6 +37,7 @@ pub struct VerifiedWorld {
     http_method: String,
     http_target: String,
     http_body: Vec<u8>,
+    access_expires_unix_micros: i64,
     deadline: AuthorityRpcDeadline,
 }
 impl std::fmt::Debug for VerifiedWorld {
@@ -65,6 +66,9 @@ impl VerifiedWorld {
     }
     pub fn http_body(&self) -> &[u8] {
         &self.http_body
+    }
+    pub fn access_expires_unix_micros(&self) -> i64 {
+        self.access_expires_unix_micros
     }
     pub fn deadline(&self) -> AuthorityRpcDeadline {
         self.deadline
@@ -161,6 +165,11 @@ pub fn authorize_world(
             message.profile_observed_at_unix_micros,
         ],
     )?;
+    if message.access_expires_unix_micros <= chrono::Utc::now().timestamp_micros()
+        || message.access_expires_unix_micros < message.authority_expires_unix_micros
+    {
+        return Err(Status::permission_denied("Invalid world access expiry"));
+    }
     let verified = VerifiedWorld {
         actor,
         event,
@@ -169,6 +178,7 @@ pub fn authorize_world(
         http_method: message.http_method.clone(),
         http_target: message.http_target.clone(),
         http_body: message.http_body.clone(),
+        access_expires_unix_micros: message.access_expires_unix_micros,
         deadline,
     };
     verified.check()?;
@@ -195,6 +205,11 @@ pub fn authorize_current_membership(
             message.profile_observed_at_unix_micros,
         ],
     )?;
+    if message.access_expires_unix_micros <= chrono::Utc::now().timestamp_micros()
+        || message.access_expires_unix_micros < message.authority_expires_unix_micros
+    {
+        return Err(Status::permission_denied("Invalid world access expiry"));
+    }
     let verified = VerifiedWorld {
         actor,
         event,
@@ -203,6 +218,7 @@ pub fn authorize_current_membership(
         http_method: String::new(),
         http_target: String::new(),
         http_body: Vec::new(),
+        access_expires_unix_micros: message.access_expires_unix_micros,
         deadline,
     };
     verified.check()?;

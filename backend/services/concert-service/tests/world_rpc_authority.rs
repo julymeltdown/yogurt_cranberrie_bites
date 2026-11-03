@@ -60,6 +60,7 @@ fn message() -> proto::WorldRequest {
         authority_expires_unix_micros: now + 1_000_000,
         auth_observed_at_unix_micros: now,
         profile_observed_at_unix_micros: now,
+        access_expires_unix_micros: now + 60_000_000,
     }
 }
 
@@ -153,7 +154,15 @@ async fn invalid_actor_audience_or_missing_proof_is_refused() {
 #[tokio::test]
 async fn invalid_target_body_and_time_bounds_are_refused() {
     for kind in [
-        "event", "target", "body", "method", "expired", "future", "stale",
+        "event",
+        "target",
+        "body",
+        "method",
+        "expired",
+        "future",
+        "stale",
+        "access-expired",
+        "access-before-authority",
     ] {
         let mut value = message();
         match kind {
@@ -166,6 +175,10 @@ async fn invalid_target_body_and_time_bounds_are_refused() {
             }
             "future" => value.auth_observed_at_unix_micros += 3_000_000,
             "stale" => value.auth_observed_at_unix_micros -= 3_000_000,
+            "access-expired" => value.access_expires_unix_micros = 0,
+            "access-before-authority" => {
+                value.access_expires_unix_micros = value.authority_expires_unix_micros - 1
+            }
             _ => unreachable!(),
         }
         assert_ne!(invoke(value, "valid").await, 0, "{kind}");

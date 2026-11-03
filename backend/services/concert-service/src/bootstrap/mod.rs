@@ -383,6 +383,10 @@ impl BootstrapService {
         &self,
         event: EventId,
     ) -> Result<WorldReleasePins, BootstrapServiceError> {
+        let (release_event, _) = self.release_scope()?;
+        if event != release_event {
+            return Err(BootstrapServiceError::ReleaseUnavailable);
+        }
         let document: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())
                 .map_err(|_| BootstrapServiceError::ReleaseUnavailable)?;

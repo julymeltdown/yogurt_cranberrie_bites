@@ -119,6 +119,9 @@ impl GrpcConcertWorldClient {
             stop = stop.min(outer.into());
         }
         let work = async {
+            if context.access_expires_micros() <= chrono::Utc::now().timestamp_micros() {
+                return Err(WorldClientError::Expired);
+            }
             let actor = identity.user_id().map_err(|_| WorldClientError::Expired)?;
             let auth_at = identity
                 .admission_observed_at()
@@ -139,6 +142,7 @@ impl GrpcConcertWorldClient {
                 .min(now.saturating_add(remaining.as_micros() as i64))
                 .min(auth_at.saturating_add(BUDGET.as_micros() as i64))
                 .min(profile_at.saturating_add(BUDGET.as_micros() as i64));
+            let access_expires = context.access_expires_micros();
             if remaining.is_zero() || expires <= now {
                 return Err(WorldClientError::Expired);
             }
@@ -164,6 +168,8 @@ impl GrpcConcertWorldClient {
                 authority_expires_unix_micros: expires,
                 auth_observed_at_unix_micros: auth_at,
                 profile_observed_at_unix_micros: profile_at,
+                access_expires_unix_micros: access_expires,
+                access_expires_unix_micros: context.access_expires_micros(),
             };
             let mut request =
                 request_for(message, &actor.to_string()).map_err(|_| WorldClientError::Denied)?;

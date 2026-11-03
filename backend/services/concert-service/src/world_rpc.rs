@@ -104,9 +104,11 @@ pub trait WorldTicketEntropy: Send + Sync {
 pub struct CsprngTicketEntropy;
 impl WorldTicketEntropy for CsprngTicketEntropy {
     fn generate(&self) -> Result<AdmissionTicket, WorldError> {
-        use rand::RngCore;
+        use ring::rand::SecureRandom;
         let mut bytes = [0_u8; TICKET_BYTES];
-        rand::rngs::OsRng.fill_bytes(&mut bytes);
+        ring::rand::SystemRandom::new()
+            .fill(&mut bytes)
+            .map_err(|_| WorldError::Unavailable)?;
         AdmissionTicket::from_entropy(&bytes)
     }
 }
@@ -288,7 +290,7 @@ impl<A: WorldCanonicalAuthority + 'static> proto::world_service_server::WorldSer
             return Err(Status::not_found("World room unavailable"));
         }
         let observed = chrono::Utc::now();
-        let access_expires = DateTime::from_timestamp_micros(verified.deadline().expires_micros())
+        let access_expires = DateTime::from_timestamp_micros(verified.access_expires_unix_micros())
             .ok_or_else(|| Status::permission_denied("World authority expired"))?;
         let subject = self
             .authority
