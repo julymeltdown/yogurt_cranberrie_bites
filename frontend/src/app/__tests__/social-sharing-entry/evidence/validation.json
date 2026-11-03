@@ -1,0 +1,84 @@
+{
+  "sourceCommit": "37290091a7a0cec03084af58b8ffbd390ffbd916",
+  "base": "3f7be971e64d9c6ae422f8c85184e0ec464c07d4",
+  "recordedAt": "2026-11-03T21:07:54.155717+00:00",
+  "cwd": "assigned isolated checkout",
+  "nodeVersion": "v24.22.2",
+  "chromeVersion": "156.0.8078.80",
+  "commands": [
+    {
+      "name": "combined-tests",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/node_modules/vitest/vitest.mjs run src/app/__tests__/social-sharing-entry/entry.test.tsx src/app/social-composition src/app/__tests__/default-shell src/features/social-sharing src/features/auth --root frontend --maxWorkers 1",
+      "exitCode": 0,
+      "result": "17 files / 406 tests passed, including 20 new actual-default tests",
+      "log": "combined-tests.log"
+    },
+    {
+      "name": "types",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/node_modules/typescript/bin/tsc -b frontend --pretty false",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "types.log"
+    },
+    {
+      "name": "lint",
+      "command": "frontend/node_modules/.bin/oxlint frontend/src/app/social-composition frontend/src/app/__tests__/social-sharing-entry frontend/src/app/router.tsx frontend/src/app/world-panels/social.tsx",
+      "exitCode": 0,
+      "result": "PASS",
+      "log": "lint.log"
+    },
+    {
+      "name": "build",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/node_modules/vite/bin/vite.js build frontend --outDir /tmp/mcr-social-sharing-entry-build --emptyOutDir",
+      "exitCode": 0,
+      "result": "PASS; retained Phaser chunk exceeds 500kB warning threshold",
+      "log": "build.log"
+    },
+    {
+      "name": "plan",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "result": "PASS; planning/provenance only",
+      "log": "plan.log"
+    },
+    {
+      "name": "native",
+      "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/src/app/__tests__/social-sharing-entry/native.mjs",
+      "exitCode": 0,
+      "result": "PASS; 360/390/430, 27 captures, uncertain handle PUT and request receipt recovery, four uncertain withdrawals and seven reveal cleanup/401 cases per width",
+      "log": "native.log"
+    }
+  ],
+  "unchangedGitObjects": {
+    "frontend/src/features/social-sharing": "0921ce3c135869e43170f2b8a1ca117f479a4a60",
+    "frontend/package.json": "d3c1adc42639ce34c38c62de7b02d40d55fa9b42",
+    "frontend/pnpm-lock.yaml": "7717408b8c7e5dca744e85aa55ea792e09ab5c5c",
+    "frontend/src/app/WorldShell.tsx": "11ac5bf9044c12adfa344df8aa426e6745a7855a",
+    "frontend/src/app/ports.ts": "acaa7508614732276045763a54011743436516d5",
+    "contracts": "318969bbf7d2f43e77be2e2e3a07b439f1aabbb9",
+    "docs/source": "6a0c3f08c5b3f4d8f56168be1e9f71250bc55659",
+    "backend": "2b35e9f423693dba47443439c3775235c83832c9"
+  },
+  "review": {
+    "kind": "bounded read-only source review of adapter and exact integration diff",
+    "reviewer": "01a1a335-1fa0-7da0-9115-51545e8572ec",
+    "result": "No actionable findings; qualified feature unchanged",
+    "limits": "No independent test execution or live multiuser validation",
+    "reviewerClosed": true
+  },
+  "qualification": {
+    "clientAndDefaultFixture": "MOCK_READY",
+    "C03_C04": "CONTRACT_READY",
+    "liveGatewayDatabaseProvider": "NOT_RUN",
+    "physicalDevice": "NOT_RUN",
+    "twoUser_IN03_QA04": "NOT_RUN",
+    "load": "NOT_RUN"
+  },
+  "limits": [
+    "Synthetic C04 authority and geometric terrain, no product character art",
+    "Full-panel coverage intentionally suspends the retained socket",
+    "Successful handle edit withdraws old privacy lease; native fixture denies unreviewed reentry",
+    "Profile introduction offer entry unchanged and outside this assignment"
+  ],
+  "logNormalization": "Trailing whitespace and empty EOF lines removed; command messages and results unchanged."
+}

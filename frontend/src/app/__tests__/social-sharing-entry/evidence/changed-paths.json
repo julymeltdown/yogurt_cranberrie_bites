@@ -1,0 +1,76 @@
+{
+  "base": "3f7be971e64d9c6ae422f8c85184e0ec464c07d4",
+  "sourceCommit": "37290091a7a0cec03084af58b8ffbd390ffbd916",
+  "paths": [
+    {
+      "path": "docs/mcr/frontend/social-sharing-entry.md",
+      "baseSHA256": null,
+      "sourceSHA256": "fde52a71155dae51251b73f150dabf4892e3ab0461e19e74b1734481b1960060"
+    },
+    {
+      "path": "frontend/src/app/__tests__/social-sharing-entry/entry.test.tsx",
+      "baseSHA256": null,
+      "sourceSHA256": "8bfa670a8c8164befc2f7a667d160bc04f2b74b048ee8f20e44fce88531b19cb"
+    },
+    {
+      "path": "frontend/src/app/__tests__/social-sharing-entry/native.html",
+      "baseSHA256": null,
+      "sourceSHA256": "00cd1cfeeb29227eca0970d59a28cf0775feeb70e31ba5dea364a8fb4c89822c"
+    },
+    {
+      "path": "frontend/src/app/__tests__/social-sharing-entry/native.mjs",
+      "baseSHA256": null,
+      "sourceSHA256": "39ef7402948492d3c8cc70ab014686f59649218002fe5bca9a4d727888354d54"
+    },
+    {
+      "path": "frontend/src/app/__tests__/social-sharing-entry/native.tsx",
+      "baseSHA256": null,
+      "sourceSHA256": "0b6464871da0d47304766482c014f98fc9f80bc3492225ab5014568476df30a3"
+    },
+    {
+      "path": "frontend/src/app/__tests__/social-sharing-entry/service.ts",
+      "baseSHA256": null,
+      "sourceSHA256": "cf22c3854139a586f607bfe42203dc6a3995efd4a0ac000bc26692c87fd693e8"
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "baseSHA256": "c2c5e605b275be98af1ca618aacba77d95491b6539ab00b4b41f155c28a6aa46",
+      "sourceSHA256": "3ff74e4af2b41b0ce19f6f66145dc125d85af22c0feb480c371b78f02ae8dbb9"
+    },
+    {
+      "path": "frontend/src/app/social-composition/composition.css",
+      "baseSHA256": "b4869aae8a49818965a5f6b1c6fa3fd4b79526b5a45fbbd099786c5bf2bc918c",
+      "sourceSHA256": "a251f219c05c6490532b9811fa44ecb2168313f2116bfc51eadcd007e6fe696f"
+    },
+    {
+      "path": "frontend/src/app/social-composition/owner.ts",
+      "baseSHA256": "b0c13edeb117de750ed8a30e76e72808ccf031d00010363582f21de502a527d4",
+      "sourceSHA256": "7c259917bf995c3d3d1e07b7b199bc645ecc17030666adbb616e2f09b3902e42"
+    },
+    {
+      "path": "frontend/src/app/social-composition/panels.tsx",
+      "baseSHA256": "49bff496ac81f6aef4ed8798d636132c8298071b6c878b66e8950529f5f37446",
+      "sourceSHA256": "da010fe3274015ef5fd0bb4c9e9ec383675a260131bc34c52e0700b7cc948cad"
+    },
+    {
+      "path": "frontend/src/app/social-composition/ports.ts",
+      "baseSHA256": "348aa542f7e6ae7032c9e0f1195d67700881077870986a88af6b88822deee1e9",
+      "sourceSHA256": "ae55d5bccd8e39ea3c6f0e3067187de4cbd3dc20b6bc4bce7c38bb7c7e0dc67a"
+    },
+    {
+      "path": "frontend/src/app/social-composition/routes.ts",
+      "baseSHA256": "069f2f60387a785d6607d25e86fddd0c10b41e7192fa829227a5ea9537826554",
+      "sourceSHA256": "46daf04ced13f096fa9f6f9563552b6e96bca63ed161633bcbf2321bb3898ce4"
+    },
+    {
+      "path": "frontend/src/app/social-composition/sharing.tsx",
+      "baseSHA256": null,
+      "sourceSHA256": "e9d5e63919a7d83e37d1d7494923b022bde9e4f8f2cf82a93939bb53f8456abc"
+    },
+    {
+      "path": "frontend/src/app/world-panels/social.tsx",
+      "baseSHA256": "5e8ac73c9d4b3015ad3b20026d103252deff304a7bc20d838a23d2251e5b4031",
+      "sourceSHA256": "d6b5d8a6f10ce392145cf67e0c092458a600ecac900af1cf34e2a9aa2b2cb317"
+    }
+  ]
+}
