@@ -576,47 +576,129 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "owned": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/party.schema.json#/$defs/PartyList"
+        },
         "memberships": {
-          "type": "array",
-          "items": {
-            "$ref": "https://contracts.mcr.invalid/domain/v1/party.schema.json#/$defs/Member"
-          },
-          "minItems": 0,
-          "maxItems": 100
+          "$ref": "https://contracts.mcr.invalid/domain/v1/party.schema.json#/$defs/MemberList"
         },
         "applications": {
-          "type": "array",
-          "items": {
-            "$ref": "https://contracts.mcr.invalid/domain/v1/party.schema.json#/$defs/Application"
-          },
-          "minItems": 0,
-          "maxItems": 100
-        },
-        "next_cursor": {
-          "anyOf": [
-            {
-              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "owned": {
-          "type": "array",
-          "items": {
-            "$ref": "https://contracts.mcr.invalid/domain/v1/party.schema.json#/$defs/PartyPublic"
-          },
-          "minItems": 0,
-          "maxItems": 100
+          "$ref": "https://contracts.mcr.invalid/domain/v1/party.schema.json#/$defs/ApplicationList"
         }
       },
       "required": [
         "owned",
         "memberships",
-        "applications",
-        "next_cursor"
+        "applications"
       ]
+    },
+    "PartyQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "ticket_section": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "state": {
+          "enum": [
+            "OPEN",
+            "CLOSED",
+            "CANCELLED",
+            "COMPLETED"
+          ]
+        },
+        "has_space": {
+          "type": "boolean"
+        },
+        "starts_after": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "starts_before": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": []
+    },
+    "ApplicationQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "state": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "CANCELLED"
+          ]
+        }
+      },
+      "required": []
+    },
+    "MemberQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "state": {
+          "enum": [
+            "ACTIVE",
+            "REMOVED",
+            "LEFT"
+          ]
+        }
+      },
+      "required": []
+    },
+    "ActivityQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "owned_cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "membership_cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "application_cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        }
+      },
+      "required": []
     }
   }
 }

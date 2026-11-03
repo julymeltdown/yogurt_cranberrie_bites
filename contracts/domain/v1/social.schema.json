@@ -792,6 +792,60 @@
       "required": [
         "items"
       ]
+    },
+    "IntroQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "q": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        }
+      },
+      "required": []
+    },
+    "RequestQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "direction": {
+          "enum": [
+            "INCOMING",
+            "OUTGOING"
+          ]
+        },
+        "state": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "CANCELLED",
+            "REVOKED",
+            "EXPIRED"
+          ]
+        }
+      },
+      "required": []
     }
   }
 }

@@ -1020,6 +1020,180 @@
         "items",
         "next_cursor"
       ]
+    },
+    "OwnReportQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "state": {
+          "enum": [
+            "OPEN",
+            "IN_REVIEW",
+            "RESOLVED",
+            "DISMISSED"
+          ]
+        }
+      },
+      "required": []
+    },
+    "PlaceQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "closed": {
+          "type": "boolean"
+        }
+      },
+      "required": []
+    },
+    "ReportQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "state": {
+          "enum": [
+            "OPEN",
+            "IN_REVIEW",
+            "RESOLVED",
+            "DISMISSED"
+          ]
+        },
+        "target_type": {
+          "enum": [
+            "USER",
+            "POST",
+            "COMMENT",
+            "PARTY",
+            "GIVEAWAY",
+            "MURAL"
+          ]
+        }
+      },
+      "required": []
+    },
+    "UserQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "user_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "enum": [
+            "ACTIVE",
+            "SUSPENDED",
+            "DELETION_PENDING",
+            "DELETED"
+          ]
+        }
+      },
+      "required": []
+    },
+    "ContentQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "target_type": {
+          "enum": [
+            "POST",
+            "COMMENT",
+            "PARTY",
+            "GIVEAWAY",
+            "INTRO"
+          ]
+        },
+        "state": {
+          "enum": [
+            "VISIBLE",
+            "HIDDEN",
+            "DELETED"
+          ]
+        }
+      },
+      "required": []
+    },
+    "AuditQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "actor_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "operation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "outcome": {
+          "enum": [
+            "PENDING",
+            "SUCCEEDED",
+            "FAILED"
+          ]
+        },
+        "from": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "until": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": []
     }
   }
 }

@@ -4,6 +4,7 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+from urllib.parse import urlencode
 
 PATH = Path(__file__).resolve().parents[1] / 'validate-domain.py'
 SPEC = importlib.util.spec_from_file_location('mcr_domain_oracle', PATH)
@@ -45,6 +46,92 @@ class DomainTests(unittest.TestCase):
         altered = copy.deepcopy(self.contract)
         altered.operations.append(copy.deepcopy(altered.operations[0]))
         self.rejected(altered.check_register)
+
+    def target(self, operation, query='', event=None):
+        row = next(op for op in self.contract.operations if op['operationId'] == operation)
+        path = row['path']
+        for name in row['path_parameters']:
+            path = path.replace('{' + name + '}', 'X' if name == 'platform' else event or uid(1))
+        return self.contract.validate_target(operation, path, query, event_id=event or uid(1))
+
+    def test_all_operation_targets_have_typed_closed_paths_and_queries(self):
+        required = {'expected_revision': 1, 'party_revision': 2, 'after_revision': 1,
+                    'platform': 'X', 'operation_id': 'reserveConcertGiveaway',
+                    'idempotency_key': uid(9)}
+        for row in self.contract.operations:
+            with self.subTest(operation=row['operationId']):
+                fields = self.contract._definition(row['query_schema'])['required']
+                query = urlencode({name: required[name] for name in fields})
+                result = self.target(row['operationId'], query)
+                self.assertEqual(result['path']['eventId'], uid(1))
+                self.rejected(lambda: self.target(row['operationId'], query + ('&' if query else '') + 'token=hidden'))
+
+    def test_missing_unknown_or_wrong_path_parameter_metadata_fails(self):
+        for mutate in [lambda row: row.pop('path_parameters'),
+                       lambda row: row['path_parameters'].update(other={'type': 'string'}),
+                       lambda row: row['path_parameters'].update(eventId={'type': 'string'}),
+                       lambda row: row.update(query_schema='not.registered'),
+                       lambda row: row.update(request_location='body')]:
+            altered = copy.deepcopy(self.contract)
+            mutate(altered.operations[0])
+            self.rejected(altered.check_register)
+
+    def test_path_identifiers_are_canonical_and_event_bound(self):
+        path = '/api/concert/events/' + uid(1) + '/giveaways/'
+        for value in [uid(10).upper(), '%30' + uid(2)[1:], '..', 'bad', uid(2) + '/', uid(2) + '?q=x']:
+            self.rejected(lambda: self.contract.validate_target('getConcertGiveaway', path + value, event_id=uid(1)))
+        self.rejected(lambda: self.contract.validate_target('getConcertGiveaway', path + uid(2), event_id=uid(3)))
+        self.rejected(lambda: self.contract.validate_target('removeConcertHandle',
+            '/api/concert/events/' + uid(1) + '/me/social-handles/x', 'expected_revision=1'))
+
+    def test_query_scalars_are_bounded_without_coercion(self):
+        self.assertEqual(self.target('listConcertGiveaways', 'limit=100&in_stock=false')['query'],
+                         {'limit': 100, 'in_stock': False})
+        for query in ['limit=0', 'limit=101', 'limit=01', 'limit=+1', 'limit=1.0',
+                      'limit=1e2', 'limit=-1', 'limit=9007199254740992', 'limit=null',
+                      'limit=1&limit=2', 'limit=1&%6cimit=2', 'in_stock=1',
+                      'in_stock=False', 'cursor=', 'cursor=null=', 'cursor=abc%2Fdef',
+                      'cursor=' + 'A' * 1025, 'state=DRAFT']:
+            with self.subTest(query=query[:80]):
+                self.rejected(lambda: self.target('listConcertGiveaways', query))
+
+    def test_query_utf8_is_decoded_once_and_malformed_input_rejected(self):
+        self.assertEqual(self.target('listConcertIntros', 'q=%C3%A9+fan')['query'], {'q': 'é fan'})
+        self.assertEqual(self.target('listConcertIntros', 'q=%252F')['query'], {'q': '%2F'})
+        for query in ['q=%', 'q=%0', 'q=%GG', 'q=%FF', 'q=%ED%A0%80', 'q=é', 'q=a b',
+                      'q=a#b', 'q=%00', 'q=%0a', 'q=%7F', 'q', '=x', 'q=x&',
+                      'q=' + 'a' * 8192, '&'.join('q=x' for _ in range(33))]:
+            with self.subTest(query=query[:80]):
+                self.rejected(lambda: self.target('listConcertIntros', query))
+
+    def test_filter_time_windows_are_nonempty_utc_ranges(self):
+        query = urlencode({'pickup_after': '2026-11-03T00:00:00Z', 'pickup_before': '2026-11-03T01:00:00Z'})
+        self.target('listConcertGiveaways', query)
+        for upper in ['2026-11-03T00:00:00Z', '2026-11-02T00:00:00Z', '2026-11-03T12:00:00+09:00']:
+            self.rejected(lambda: self.target('listConcertGiveaways', urlencode({
+                'pickup_after': '2026-11-03T00:00:00Z', 'pickup_before': upper})))
+
+    def test_private_activity_collections_have_independent_cursors(self):
+        self.target('getConcertPartyActivity', 'owned_cursor=a&membership_cursor=b&application_cursor=c&limit=20')
+        self.target('getConcertGiftActivity', 'giving_cursor=a&receiving_cursor=b&limit=20')
+        self.rejected(lambda: self.target('getConcertPartyActivity', 'cursor=ambiguous'))
+        empty = {'items': [], 'next_cursor': None}
+        self.contract.validate({'owned': empty, 'memberships': empty, 'applications': empty}, 'party.PartyActivity')
+        self.rejected(lambda: self.contract.validate({'owned': [], 'memberships': [], 'applications': [],
+                                                      'next_cursor': None}, 'party.PartyActivity'))
+
+    def test_delete_requires_revision_query_and_body_routes_reject_queries(self):
+        self.target('cancelConcertReservation', 'expected_revision=1')
+        self.rejected(lambda: self.target('cancelConcertReservation'))
+        self.rejected(lambda: self.target('removeConcertMember', 'expected_revision=1'))
+        self.target('removeConcertMember', 'expected_revision=1&party_revision=3')
+        self.rejected(lambda: self.target('reserveConcertGiveaway', 'expected_revision=1'))
+
+    def test_receipt_and_audit_query_operation_is_a_registered_command(self):
+        for operation in ['unknown', 'listConcertParties']:
+            query = urlencode({'operation_id': operation, 'idempotency_key': uid(2)})
+            self.rejected(lambda: self.target('getConcertCommandStatus', query))
+            self.rejected(lambda: self.target('listConcertAudit', urlencode({'operation_id': operation})))
 
     def test_no_browser_guard_bypass_in_command_register(self):
         for operation in self.contract.operations:

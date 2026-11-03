@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import sys
 from uuid import UUID
+from urllib.parse import parse_qsl
 from zoneinfo import ZoneInfo
 
 from jsonschema import Draft202012Validator, FormatChecker, ValidationError
@@ -119,6 +120,10 @@ def semantic(value):
         lower, upper = value['minimum_age'], value['maximum_age_exclusive']
         require((lower is None) == (upper is None), 'partially specified age bounds')
         require(lower is None or lower < upper, 'empty age range')
+    for lower, upper in [('starts_after', 'starts_before'), ('pickup_after', 'pickup_before'),
+                         ('from', 'until')]:
+        if lower in value and upper in value:
+            require(timestamp(value[lower]) < timestamp(value[upper]), 'empty filter time range')
     if 'capacity' in value and 'member_count' in value:
         require(value['member_count'] <= value['capacity'], 'party exceeds capacity')
     if 'quantity_total' in value and 'available' in value:
@@ -234,6 +239,25 @@ class Contract:
             for key in ('request', 'response', 'pending_response'):
                 name = op[key]
                 require(name in (None, 'BINARY') or name in self.validators, 'unknown operation schema')
+            parameters = re.findall(r'\{(\w+)\}', op['path'])
+            require(len(parameters) == len(set(parameters)) and
+                    set(op.get('path_parameters', {})) == set(parameters),
+                    'path parameter register mismatch')
+            for parameter, schema in op['path_parameters'].items():
+                expected = 'Platform' if parameter == 'platform' else 'Uuid'
+                require(schema == {'$ref': 'https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/' + expected},
+                        'path parameter type mismatch')
+            query = op.get('query_schema')
+            require(query in self.validators, 'missing query schema')
+            query_definition = self._definition(query)
+            require(query_definition.get('type') == 'object' and
+                    query_definition.get('additionalProperties') is False, 'query must be closed')
+            for scalar in query_definition['properties'].values():
+                self._scalar_schema(scalar)
+            expected_query = op['request'] if op['request_location'] == 'query' and op['request'] else 'common.EmptyRequest'
+            require(query == expected_query, 'query/request register mismatch')
+            require(op['request_location'] == ('query' if op['method'] in ('get', 'delete') else 'body'),
+                    'request location mismatch')
             require(op['write_policy'] in self.policy['write_policies'], 'unknown write policy')
             require(op['cache_control'] == 'no-store', 'personalized cache leak')
             require(all(r in known_reasons for rs in op['errors'].values() for r in rs),
@@ -290,6 +314,75 @@ class Contract:
             require({row['platform'] for row in value['items']} == {'INSTAGRAM', 'X'},
                     'incomplete handle platform states')
         return value
+
+    def _definition(self, name):
+        group, definition = name.split('.')
+        return next(doc['$defs'][definition] for doc in self.documents
+                    if doc['$id'].endswith('/domain/v1/' + group + '.schema.json'))
+
+    def _scalar_schema(self, schema):
+        # The target query contract intentionally supports scalars only.
+        seen = set()
+        resolver = self.registry.resolver()
+        while '$ref' in schema:
+            require(set(schema) == {'$ref'}, 'ambiguous scalar reference')
+            require(schema['$ref'] not in seen and len(seen) < 16, 'cyclic scalar reference')
+            seen.add(schema['$ref'])
+            resolved = resolver.lookup(schema['$ref'])
+            schema, resolver = resolved.contents, resolved.resolver
+        require(schema.get('type') in ('string', 'integer', 'boolean') or
+                isinstance(schema.get('enum'), list) and
+                all(isinstance(value, str) for value in schema['enum']), 'non-scalar query schema')
+        return schema
+
+    def validate_target(self, operation_id, path, raw_query='', *, event_id=None):
+        """Offline target parsing oracle, not an HTTP router or authorization decision."""
+        matches = [op for op in self.operations if op['operationId'] == operation_id]
+        require(len(matches) == 1, 'unknown HTTP operation')
+        op = matches[0]
+        require(isinstance(path, str), 'path required')
+        pattern = re.sub(r'\\\{\w+\\\}', r'([^/]+)', re.escape(op['path']))
+        match = re.fullmatch(pattern, path)
+        require(match is not None, 'route path mismatch')
+        parameters = dict(zip(re.findall(r'\{(\w+)\}', op['path']), match.groups()))
+        for name, value in parameters.items():
+            self.validate(value, 'common.Platform' if name == 'platform' else 'common.Uuid')
+        if event_id is not None:
+            self.validate(event_id, 'common.Uuid')
+            require(parameters['eventId'] == event_id, 'request event mismatch')
+        policy = self.policy['request_targets']
+        require(isinstance(raw_query, str) and raw_query.isascii() and
+                len(raw_query) <= policy['query_max_encoded_bytes'], 'invalid query encoding or length')
+        require(re.search(r'%(?![0-9a-fA-F]{2})', raw_query) is None and '#' not in raw_query and
+                not any(ord(char) <= 32 or ord(char) == 127 for char in raw_query),
+                'malformed query encoding')
+        try:
+            pairs = parse_qsl(raw_query, keep_blank_values=True, strict_parsing=True,
+                              encoding='utf-8', errors='strict',
+                              max_num_fields=policy['query_max_fields'])
+        except (ValueError, UnicodeError):
+            raise ContractError('malformed query') from None
+        schema = self._definition(op['query_schema'])
+        require(schema.get('type') == 'object' and schema.get('additionalProperties') is False,
+                'query must be closed')
+        query = {}
+        for name, value in pairs:
+            require(name not in query and name in schema['properties'], 'duplicate or unknown query parameter')
+            require(not any(ord(char) < 32 or ord(char) == 127 for char in value), 'query contains control')
+            scalar = self._scalar_schema(schema['properties'][name])
+            kind = scalar.get('type', 'string')
+            if kind == 'integer':
+                require(re.fullmatch(r'0|[1-9][0-9]{0,15}', value) is not None, 'noncanonical query integer')
+                value = int(value)
+            elif kind == 'boolean':
+                require(value in ('true', 'false'), 'noncanonical query boolean')
+                value = value == 'true'
+            query[name] = value
+        self.validate(query, op['query_schema'])
+        if 'operation_id' in query:
+            require(any(row['operationId'] == query['operation_id'] and row['method'] != 'get'
+                        for row in self.operations), 'query references unknown command')
+        return {'path': parameters, 'query': query}
 
     def validate_http(self, value, operation_id, status, *, actor_id=None, event_id=None):
         require(type(status) is int, 'HTTP status required')

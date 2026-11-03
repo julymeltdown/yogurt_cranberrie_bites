@@ -3,7 +3,7 @@
     "operationId": "listConcertParties",
     "method": "get",
     "path": "/api/concert/events/{eventId}/parties",
-    "request": null,
+    "request": "party.PartyQuery",
     "request_location": "query",
     "response": "party.PartyList",
     "success_status": 200,
@@ -41,7 +41,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "party.PartyQuery"
   },
   {
     "operationId": "getConcertParty",
@@ -85,7 +91,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "createConcertParty",
@@ -145,7 +160,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "updateConcertParty",
@@ -206,7 +227,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "cancelConcertParty",
@@ -265,7 +295,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "transferConcertParty",
@@ -325,13 +364,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertPartyApplications",
     "method": "get",
     "path": "/api/concert/events/{eventId}/parties/{partyId}/applications",
-    "request": null,
+    "request": "party.ApplicationQuery",
     "request_location": "query",
     "response": "party.ApplicationList",
     "success_status": 200,
@@ -369,7 +417,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "party.ApplicationQuery"
   },
   {
     "operationId": "applyConcertParty",
@@ -431,7 +488,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertApplication",
@@ -475,7 +541,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "applicationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "decideConcertApplication",
@@ -536,7 +611,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "applicationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "cancelConcertApplication",
@@ -595,13 +679,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "applicationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.RevisionRequest"
   },
   {
     "operationId": "listConcertMembers",
     "method": "get",
     "path": "/api/concert/events/{eventId}/parties/{partyId}/members",
-    "request": null,
+    "request": "party.MemberQuery",
     "request_location": "query",
     "response": "party.MemberList",
     "success_status": 200,
@@ -639,7 +732,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "party.MemberQuery"
   },
   {
     "operationId": "removeConcertMember",
@@ -698,7 +800,19 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "userId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "party.RemoveMember"
   },
   {
     "operationId": "getConcertRally",
@@ -742,7 +856,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "setConcertRally",
@@ -802,13 +925,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "partyId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertPartyActivity",
     "method": "get",
     "path": "/api/concert/events/{eventId}/me/parties",
-    "request": null,
+    "request": "party.ActivityQuery",
     "request_location": "query",
     "response": "party.PartyActivity",
     "success_status": 200,
@@ -846,7 +978,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "party.ActivityQuery"
   },
   {
     "operationId": "createConcertBeacon",
@@ -907,7 +1045,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertBeacon",
@@ -951,7 +1095,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "beaconId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "updateConcertBeacon",
@@ -1012,7 +1165,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "beaconId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "revokeConcertBeacon",
@@ -1071,13 +1233,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "beaconId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.RevisionRequest"
   },
   {
     "operationId": "listConcertGiveaways",
     "method": "get",
     "path": "/api/concert/events/{eventId}/giveaways",
-    "request": null,
+    "request": "giveaway.GiveawayQuery",
     "request_location": "query",
     "response": "giveaway.GiveawayList",
     "success_status": 200,
@@ -1115,7 +1286,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "giveaway.GiveawayQuery"
   },
   {
     "operationId": "getConcertGiveaway",
@@ -1159,7 +1336,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "giveawayId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "createConcertGiveaway",
@@ -1220,7 +1406,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "updateConcertGiveaway",
@@ -1281,13 +1473,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "giveawayId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertGiveawayManagement",
     "method": "get",
     "path": "/api/concert/events/{eventId}/giveaways/{giveawayId}/management",
-    "request": null,
+    "request": "giveaway.ManagementQuery",
     "request_location": "query",
     "response": "giveaway.GiveawayManagement",
     "success_status": 200,
@@ -1325,7 +1526,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "giveawayId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "giveaway.ManagementQuery"
   },
   {
     "operationId": "setConcertPickupMeeting",
@@ -1386,13 +1596,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "giveawayId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertGiftActivity",
     "method": "get",
     "path": "/api/concert/events/{eventId}/me/giveaways",
-    "request": null,
+    "request": "giveaway.ActivityQuery",
     "request_location": "query",
     "response": "giveaway.GiveawayActivity",
     "success_status": 200,
@@ -1430,7 +1649,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "giveaway.ActivityQuery"
   },
   {
     "operationId": "reserveConcertGiveaway",
@@ -1492,7 +1717,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "giveawayId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertReservation",
@@ -1536,7 +1770,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "reservationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "cancelConcertReservation",
@@ -1598,7 +1841,16 @@
         "RESERVATION_EXPIRED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "reservationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.RevisionRequest"
   },
   {
     "operationId": "getConcertPickup",
@@ -1645,7 +1897,16 @@
         "RESERVATION_EXPIRED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "reservationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "issueConcertPickupCode",
@@ -1708,7 +1969,16 @@
         "RESERVATION_EXPIRED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "reservationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "claimConcertReservation",
@@ -1772,13 +2042,22 @@
         "RESERVATION_EXPIRED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "reservationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertIntros",
     "method": "get",
     "path": "/api/concert/events/{eventId}/intros",
-    "request": null,
+    "request": "social.IntroQuery",
     "request_location": "query",
     "response": "social.IntroList",
     "success_status": 200,
@@ -1816,7 +2095,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "social.IntroQuery"
   },
   {
     "operationId": "getOwnConcertIntro",
@@ -1860,7 +2145,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "setConcertIntro",
@@ -1920,7 +2211,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "publishConcertIntro",
@@ -1980,7 +2277,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "closeConcertIntro",
@@ -2039,7 +2342,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertAgeStatus",
@@ -2083,7 +2392,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "startConcertAgeVerification",
@@ -2144,7 +2459,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "completeConcertAgeVerification",
@@ -2205,7 +2526,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listOwnConcertHandles",
@@ -2249,7 +2576,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "setConcertHandle",
@@ -2309,7 +2642,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "platform": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Platform"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "removeConcertHandle",
@@ -2368,7 +2710,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "platform": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Platform"
+      }
+    },
+    "query_schema": "common.RevisionRequest"
   },
   {
     "operationId": "getConcertSharingOffer",
@@ -2412,7 +2763,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "introId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "createConcertSocialRequest",
@@ -2473,13 +2833,19 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertSocialRequests",
     "method": "get",
     "path": "/api/concert/events/{eventId}/me/social-requests",
-    "request": null,
+    "request": "social.RequestQuery",
     "request_location": "query",
     "response": "social.SocialRequestList",
     "success_status": 200,
@@ -2517,7 +2883,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "social.RequestQuery"
   },
   {
     "operationId": "getConcertSocialRequest",
@@ -2561,7 +2933,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "requestId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "decideConcertSocialRequest",
@@ -2622,7 +3003,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "requestId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "cancelConcertSocialRequest",
@@ -2681,7 +3071,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "requestId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.RevisionRequest"
   },
   {
     "operationId": "revokeConcertSocialRequest",
@@ -2740,7 +3139,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "requestId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "revealConcertSocialHandle",
@@ -2785,13 +3193,22 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "requestId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "social.RevealQuery"
   },
   {
     "operationId": "listConcertFeed",
     "method": "get",
     "path": "/api/concert/events/{eventId}/feed",
-    "request": null,
+    "request": "feed.FeedQuery",
     "request_location": "query",
     "response": "feed.FeedPage",
     "success_status": 200,
@@ -2829,7 +3246,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "feed.FeedQuery"
   },
   {
     "operationId": "createConcertPost",
@@ -2890,7 +3313,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertPost",
@@ -2934,7 +3363,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "postId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "editConcertPost",
@@ -2995,7 +3433,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "postId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "deleteConcertPost",
@@ -3054,13 +3501,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "postId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.RevisionRequest"
   },
   {
     "operationId": "listConcertComments",
     "method": "get",
     "path": "/api/concert/events/{eventId}/posts/{postId}/comments",
-    "request": null,
+    "request": "common.PageQuery",
     "request_location": "query",
     "response": "feed.CommentList",
     "success_status": 200,
@@ -3098,7 +3554,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "postId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.PageQuery"
   },
   {
     "operationId": "createConcertComment",
@@ -3158,7 +3623,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "postId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "editConcertComment",
@@ -3218,7 +3692,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "commentId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "deleteConcertComment",
@@ -3277,7 +3760,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "commentId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.RevisionRequest"
   },
   {
     "operationId": "likeConcertPost",
@@ -3337,7 +3829,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "postId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "unlikeConcertPost",
@@ -3397,7 +3898,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "postId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "initConcertUpload",
@@ -3457,7 +3967,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "putConcertUploadBytes",
@@ -3517,7 +4033,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "mediaId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "finalizeConcertUpload",
@@ -3578,7 +4103,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "mediaId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertMedia",
@@ -3622,7 +4156,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "mediaId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "readConcertMedia",
@@ -3666,13 +4209,22 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "mediaId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertNotifications",
     "method": "get",
     "path": "/api/concert/events/{eventId}/me/notifications",
-    "request": null,
+    "request": "feed.NotificationQuery",
     "request_location": "query",
     "response": "feed.NotificationList",
     "success_status": 200,
@@ -3710,7 +4262,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "feed.NotificationQuery"
   },
   {
     "operationId": "markConcertNotification",
@@ -3769,7 +4327,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "notificationId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "markAllConcertNotifications",
@@ -3828,13 +4395,19 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertBlocks",
     "method": "get",
     "path": "/api/concert/events/{eventId}/me/blocks",
-    "request": null,
+    "request": "common.PageQuery",
     "request_location": "query",
     "response": "feed.BlockList",
     "success_status": 200,
@@ -3872,7 +4445,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.PageQuery"
   },
   {
     "operationId": "blockConcertUser",
@@ -3931,7 +4510,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "userId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "unblockConcertUser",
@@ -3990,7 +4578,16 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "userId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "createConcertReport",
@@ -4050,13 +4647,19 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listOwnConcertReports",
     "method": "get",
     "path": "/api/concert/events/{eventId}/me/reports",
-    "request": null,
+    "request": "admin.OwnReportQuery",
     "request_location": "query",
     "response": "admin.ReportList",
     "success_status": 200,
@@ -4094,13 +4697,19 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "admin.OwnReportQuery"
   },
   {
     "operationId": "listConcertNotices",
     "method": "get",
     "path": "/api/concert/events/{eventId}/notices",
-    "request": null,
+    "request": "common.PageQuery",
     "request_location": "query",
     "response": "feed.PublicNoticeList",
     "success_status": 200,
@@ -4138,7 +4747,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.PageQuery"
   },
   {
     "operationId": "getConcertNotice",
@@ -4182,7 +4797,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "noticeId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertMuralSnapshot",
@@ -4226,7 +4850,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertMuralDelta",
@@ -4270,7 +4900,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "mural.RevisionQuery"
   },
   {
     "operationId": "placeConcertPixel",
@@ -4334,7 +4970,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertCommandStatus",
@@ -4378,7 +5020,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.StatusQuery"
   },
   {
     "operationId": "getConcertAdminOverview",
@@ -4422,7 +5070,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertSettings",
@@ -4466,7 +5120,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "setConcertSettings",
@@ -4525,7 +5185,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "setConcertEventPhase",
@@ -4584,13 +5250,19 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertAdminPlaces",
     "method": "get",
     "path": "/api/concert/events/{eventId}/admin/places",
-    "request": null,
+    "request": "admin.PlaceQuery",
     "request_location": "query",
     "response": "admin.PlaceAdminList",
     "success_status": 200,
@@ -4628,7 +5300,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "admin.PlaceQuery"
   },
   {
     "operationId": "setConcertPlace",
@@ -4688,13 +5366,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "placeId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertAdminNotices",
     "method": "get",
     "path": "/api/concert/events/{eventId}/admin/notices",
-    "request": null,
+    "request": "feed.NoticeQuery",
     "request_location": "query",
     "response": "feed.NoticeList",
     "success_status": 200,
@@ -4732,7 +5419,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "feed.NoticeQuery"
   },
   {
     "operationId": "createConcertNotice",
@@ -4791,7 +5484,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "updateConcertNotice",
@@ -4850,13 +5549,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "noticeId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertAdminReports",
     "method": "get",
     "path": "/api/concert/events/{eventId}/admin/reports",
-    "request": null,
+    "request": "admin.ReportQuery",
     "request_location": "query",
     "response": "admin.ReportList",
     "success_status": 200,
@@ -4894,7 +5602,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "admin.ReportQuery"
   },
   {
     "operationId": "getConcertAdminReport",
@@ -4938,7 +5652,16 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "reportId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "decideConcertReport",
@@ -4997,13 +5720,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "reportId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertAdminUsers",
     "method": "get",
     "path": "/api/concert/events/{eventId}/admin/users",
-    "request": null,
+    "request": "admin.UserQuery",
     "request_location": "query",
     "response": "admin.UserReviewList",
     "success_status": 200,
@@ -5041,7 +5773,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "admin.UserQuery"
   },
   {
     "operationId": "moderateConcertUser",
@@ -5100,13 +5838,22 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "userId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertAdminContent",
     "method": "get",
     "path": "/api/concert/events/{eventId}/admin/content",
-    "request": null,
+    "request": "admin.ContentQuery",
     "request_location": "query",
     "response": "admin.ContentReviewList",
     "success_status": 200,
@@ -5144,7 +5891,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "admin.ContentQuery"
   },
   {
     "operationId": "moderateConcertContent",
@@ -5203,7 +5956,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertAdminMural",
@@ -5247,7 +6006,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "controlConcertMural",
@@ -5307,7 +6072,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "lockConcertMuralRegion",
@@ -5367,7 +6138,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "restoreConcertMural",
@@ -5427,13 +6204,19 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "listConcertAudit",
     "method": "get",
     "path": "/api/concert/events/{eventId}/admin/audit",
-    "request": null,
+    "request": "admin.AuditQuery",
     "request_location": "query",
     "response": "admin.AuditList",
     "success_status": 200,
@@ -5471,7 +6254,13 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "admin.AuditQuery"
   },
   {
     "operationId": "closeConcertEvent",
@@ -5530,7 +6319,13 @@
         "INVALID_MEDIA_TYPE"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertClosure",
@@ -5574,13 +6369,22 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "jobId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   },
   {
     "operationId": "getConcertArchive",
     "method": "get",
     "path": "/api/concert/events/{eventId}/archive",
-    "request": null,
+    "request": "common.PageQuery",
     "request_location": "query",
     "response": "admin.Archive",
     "success_status": 200,
@@ -5612,6 +6416,12 @@
         "DEADLINE_EXCEEDED"
       ]
     },
-    "implementation": "NOT_IMPLEMENTED"
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.PageQuery"
   }
 ]

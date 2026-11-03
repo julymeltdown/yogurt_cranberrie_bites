@@ -570,6 +570,86 @@
         "giving",
         "receiving"
       ]
+    },
+    "GiveawayQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "state": {
+          "enum": [
+            "OPEN",
+            "PAUSED",
+            "CLOSED",
+            "CANCELLED"
+          ]
+        },
+        "in_stock": {
+          "type": "boolean"
+        },
+        "pickup_after": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "pickup_before": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "public_place_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        }
+      },
+      "required": []
+    },
+    "ManagementQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "state": {
+          "enum": [
+            "HELD",
+            "READY",
+            "CLAIMED",
+            "CANCELLED",
+            "EXPIRED"
+          ]
+        }
+      },
+      "required": []
+    },
+    "ActivityQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "giving_cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "receiving_cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        }
+      },
+      "required": []
     }
   }
 }

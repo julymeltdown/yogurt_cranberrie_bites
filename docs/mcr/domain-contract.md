@@ -9,7 +9,7 @@ No backend or frontend implementation is changed by this candidate.
 
 ## Delivered contract surface
 
-Eight Draft 2020-12 schema documents contain 144 definitions across common
+Eight Draft 2020-12 schema documents contain 162 definitions across common
 receipts/errors, parties/applications/membership/rally, physical beacons,
 giveaways/reservations/pickup, introductions/age/private social sharing,
 feed/media/notifications/blocks, mural and operations. Objects are closed. Core
@@ -22,6 +22,24 @@ actor, a named precondition/result rule, write policy, idempotency/retry behavio
 no-store policy, and status/reason matrix. GET/DELETE structured arguments use
 query parameters; POST/PUT/PATCH use JSON except the explicitly bounded image
 byte PUT. The register is a target interface, not runtime route coverage.
+
+All 106 operations now declare exact path parameter types and a closed query
+schema, including an empty query for body operations. Public discovery has bounded
+ticket-section, capacity/stock, time and feed filters; own/admin lists use explicit
+state filters. Pagination defaults to 20 and is capped at 100 per collection.
+Party activity now returns three independently paged collections; giveaway
+activity uses distinct giving/receiving cursors. No ambiguous shared cursor can
+silently skip one of those collections. Cursors are opaque authenticated encrypted
+or server-stored random tokens bound to actor/event/operation/collection/filter;
+their authenticity and current authorization remain producer obligations.
+
+The target parsing oracle accepts percent-encoded UTF-8 exactly once, rejects
+duplicate/unknown fields, malformed encoding, noncanonical integers/booleans,
+unsafe identifiers and mismatched events, and enforces query bounds. It does not
+implement an HTTP router, database filtering, authorization or cursor signing.
+DELETE revision arguments are query fields; GET and DELETE have no JSON body.
+Filter ranges are lower-inclusive/upper-exclusive UTC intervals. Details live
+in `policy.json.request_targets` and the per-operation query schemas.
 
 `policy.json` carries 75 reusable operation rules, common authorization and
 browser guards, phase-aware write categories, state transitions, paging,
@@ -120,8 +138,8 @@ Commands from the isolated contract worktree:
 
 | Command | Result |
 |---|---|
-| `python3 scripts/mcr/validate-domain.py` | Exit 0; 144 definitions, 106 operations, 35 indexed positive/negative fixtures; exact inherited map resolves |
-| `python3 -m unittest discover -s scripts/mcr/tests -p test_domain.py -v` | Exit 0; 37 tests |
+| `python3 scripts/mcr/validate-domain.py` | Exit 0; 162 definitions, 106 operations, 35 indexed positive/negative fixtures; exact inherited map resolves |
+| `python3 -m unittest discover -s scripts/mcr/tests -p test_domain.py -v` | Exit 0; 46 tests, including target checks across all 106 operations |
 
 Regressions cover canonical claim replacement/ties, no fallback, supported age
 limits, birthdays/Seoul year boundary/leap-day behavior, expiry boundaries,
@@ -129,6 +147,11 @@ reciprocal consent and handle replacement, foreign actor/event/platform denial,
 private-field leaks, capacity/stock equations, reservation timing, terminal-state
 rules, mural gaps/resets, unsafe numeric/Unicode data, duplicate JSON keys,
 receipt identity/status fences and browser-guard/error-registry drift.
+Target regressions additionally cover path metadata drift, strict scalar decoding,
+invalid/double UTF-8 percent encoding, duplicate encoded keys, event isolation,
+independent activity cursors, revision-bearing DELETE queries and command-only
+receipt/audit filters. The first target pass exposed a chained timestamp schema
+reference and a test using forbidden mural revision zero; both were corrected.
 
 These are schema and semantic examples. They do not prove locks, concurrent stock
 or capacity correctness, durable receipts/outbox, provider authenticity, request
@@ -139,9 +162,10 @@ only for the assembly call and restores the search path afterward.
 
 ## Remaining before C04 freeze
 
-1. Complete every query/filter/cursor and path parameter schema, per-operation
-   request/success/error fixture coverage and producer/consumer compatibility.
-   The current 35 examples are deliberately not called 106-operation coverage.
+1. Complete per-operation request/success/error fixture coverage and contextual
+   producer/consumer compatibility, including cursor authenticity/authorization.
+   All path/query schemas are registered, but their target tests and the current
+   35 payload examples are not complete 106-operation HTTP coverage.
 2. Complete global account deletion, safe recovery after auth revocation, public
    legal/document publication and retention/closure policies. The preserved
    draft deletion DTOs are not registered as a pretend working flow. Align the
@@ -149,7 +173,7 @@ only for the assembly call and restores the search path afterward.
    an event-only delete cannot certify global erasure.
 3. Tighten aggregate-aware response context checks, explicit terminal tombstones,
    media failure/pending DTOs, owner/public draft distinctions, private activity
-   pagination and public archive eligibility. Source-derived semantics take
+   ownership and public archive eligibility. Source-derived semantics take
    precedence over convenience in this candidate.
 4. Assemble the target through the retained final OpenAPI pipeline, with C03/C05
    operation collision checks and reproducible generated output; no parallel SDK.

@@ -37,8 +37,17 @@
   "pagination": {
     "order": "created_at DESC, id DESC",
     "max_page": 100,
-    "cursor": "Opaque signed cursor bound to actor,event,query/filter and upper snapshot boundary; reauthorize every row",
-    "invalid_cursor": "400 INVALID_INPUT; never silently change event/user/filter"
+    "cursor": "Opaque authenticated encrypted or server-stored random unpadded base64url token; bind actor,event,operation,collection,canonical filters and upper snapshot boundary. No raw user/private field payload in cursors. Reauthorize each row.",
+    "invalid_cursor": "400 INVALID_INPUT; never silently change event/user/filter",
+    "default_limit": 20,
+    "independent_collections": "Party activity has owned/membership/application cursors and independent page responses; giveaway activity has giving/receiving cursors. Limit applies to each collection.",
+    "order_overrides": {
+      "listConcertMembers": "joined_at DESC, user_id DESC",
+      "listConcertAdminPlaces": "place_id ASC",
+      "listConcertAdminUsers": "user_id ASC",
+      "listConcertAdminContent": "target_type ASC, target_id ASC"
+    },
+    "policy_change": "Re-evaluate every row at fetch time; a policy change may shorten or invalidate a page. Cursor is never authorization. Empty pages can have a next_cursor; consumers follow bounded explicit pagination, not automatic loops."
   },
   "pickup": {
     "units_per_reservation": 1,
@@ -1144,5 +1153,15 @@
     "MURAL_PAUSED": 409,
     "MURAL_FROZEN": 409,
     "MURAL_REGION_LOCKED": 409
+  },
+  "request_targets": {
+    "query_max_encoded_bytes": 8192,
+    "query_max_fields": 32,
+    "scalars": "Decode percent-encoded UTF-8 exactly once. Reject malformed escapes, duplicate/unknown keys, controls, arrays and invalid UTF-8. Integers use unsigned canonical decimal; booleans exactly true/false; omit absent optional fields. JSON null is not a query scalar and the literal string null never means absence. No JSON body on GET or DELETE.",
+    "paths": "Every path parameter is declared. UUIDs canonical lower-case; platform exactly INSTAGRAM or X. Do not normalize encoded slashes/traversal or coerce invalid identifiers.",
+    "time_filters": "starts_after/starts_before constrain meeting start; pickup_after/pickup_before constrain pickup start. Lower inclusive, upper exclusive; paired bounds require lower < upper. Feed before excludes rows created at or after the given instant. Audit from inclusive/until exclusive. All UTC Z.",
+    "discovery": "Ticket section exact match; has_space means member_count < capacity, in_stock means available > 0; neither overrides current actor eligibility. Giveaway public discovery excludes drafts. Intro q is a bounded case-insensitive literal substring of authorized public introduction text/display name, never SQL wildcard/regex/private handle or age search. Feed filters select actual ready media/typed linked resource categories; linked target eligibility is rechecked.",
+    "audit_operation_filter": "operation_id must name a registered domain command; no arbitrary unbounded log query.",
+    "transport_errors": "Malformed targets return 400 INVALID_INPUT; they cause no downstream mutation. Idempotency hashing uses decoded, validated query fields with defaults resolved deterministically, not input parameter ordering."
   }
 }

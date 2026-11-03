@@ -19,7 +19,8 @@
     "Cursor": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 1024
+      "maxLength": 1024,
+      "pattern": "^[A-Za-z0-9_-]+$"
     },
     "Platform": {
       "enum": [
@@ -74,17 +75,11 @@
         "limit": {
           "type": "integer",
           "minimum": 1,
-          "maximum": 100
+          "maximum": 100,
+          "default": 20
         },
         "cursor": {
-          "anyOf": [
-            {
-              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
         }
       },
       "required": []
