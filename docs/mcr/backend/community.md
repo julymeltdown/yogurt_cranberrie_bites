@@ -236,3 +236,13 @@ The persistent goal remains active until that validation, documentation,
 committed handoff and concrete fixes are delivered. Live Auth/Friend mutation
 fencing, operator/place/media decisions, public code-replay wire amendment,
 HTTP/WS composition and real IN02 remain external gates, not inferred acceptance.
+
+The current guard migration was additionally exercised directly on PostgreSQL16.14:
+both a100ms authority proof and a100ms effect deadline expired during a200ms
+transaction delay; actual COMMIT refused both and the root state rolled back.
+All six slice migrations applied; owned cleanup PASS. This is independent SQL
+evidence in `community-evidence/deferred-deadline-sql.json`, not a substitute
+for the pending current-candidate Rust/native rerun. All aggregate loaders also
+lock their event before their root, including public/private reads, so event
+closure cannot invert the root/event order. Code issuance additionally pins its
+new code expiry at commit.

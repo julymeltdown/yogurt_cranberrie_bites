@@ -405,6 +405,17 @@ async fn load(
     id: Uuid,
     write: bool,
 ) -> Result<Option<Party>, CommandError> {
+    // Every caller, including public/private readers, keeps event→root ordering.
+    let event_exists: Option<Uuid> =
+        sqlx::query_scalar("select event_id from concert_events where event_id=$1 for share")
+            .bind(event)
+            .fetch_optional(&mut *c)
+            .await
+            .map_err(db)?;
+    if event_exists.is_none() {
+        return Ok(None);
+    }
+
     let sql = if write {
         "select aggregate from concert_community_parties where event_id=$1 and party_id=$2 for update"
     } else {

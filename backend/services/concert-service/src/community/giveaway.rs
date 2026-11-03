@@ -534,6 +534,18 @@ impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
                 }
             }
         }
+        if matches!(cmd.action, GiftAction::IssueCode { .. }) {
+            let r = gift
+                .reservations
+                .iter()
+                .find(|r| r.id == target)
+                .ok_or(CommandError::InvalidState)?;
+            super::policy::pin_effect_until(
+                c,
+                r.code_expires_at.ok_or(CommandError::InvalidState)?,
+            )
+            .await?;
+        }
         save(c, &gift).await?;
         if let GiftAction::IssueCode { reservation, .. } = cmd.action {
             let r = gift
@@ -624,6 +636,17 @@ async fn load(
     write: bool,
     skip: bool,
 ) -> Result<Option<Giveaway>, CommandError> {
+    // Every caller, including public/private readers, keeps event→root ordering.
+    let event_exists: Option<Uuid> =
+        sqlx::query_scalar("select event_id from concert_events where event_id=$1 for share")
+            .bind(event)
+            .fetch_optional(&mut *c)
+            .await
+            .map_err(db)?;
+    if event_exists.is_none() {
+        return Ok(None);
+    }
+
     let sql = if !write {
         "select aggregate from concert_community_giveaways where event_id=$1 and giveaway_id=$2 for share"
     } else if skip {
