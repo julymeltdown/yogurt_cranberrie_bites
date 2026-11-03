@@ -20,6 +20,8 @@ export interface RequestsModule {
   read(): { readonly locked: boolean }
   subscribe(listener: () => void): () => void
   start(): void
+  /** Existing shell destinations only; detail stays inside the requests panel. */
+  enter?(path: '/me/social' | '/me/requests'): void
   dispose(): void
   readonly Panel: ComponentType
 }

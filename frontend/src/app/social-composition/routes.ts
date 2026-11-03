@@ -1,7 +1,7 @@
 import { canonicalId, safeReturnTarget } from '../routes'
-export type SocialRoute = { readonly kind: 'feed' | 'compose' | 'people' | 'intro' | 'age' | 'inbox' | 'requests' }
+export type SocialRoute = { readonly kind: 'feed' | 'compose' | 'people' | 'intro' | 'age' | 'inbox' | 'handles' | 'requests' }
   | { readonly kind: 'thread' | 'edit' | 'notice' | 'profile'; readonly id: string }
-const fixed: Readonly<Record<string, SocialRoute['kind']>> = { '/feed': 'feed', '/feed/new': 'compose', '/meet/people': 'people', '/meet/intro/edit': 'intro', '/me/age': 'age', '/notifications': 'inbox', '/me/requests': 'requests' }
+const fixed: Readonly<Record<string, SocialRoute['kind']>> = { '/feed': 'feed', '/feed/new': 'compose', '/meet/people': 'people', '/meet/intro/edit': 'intro', '/me/age': 'age', '/notifications': 'inbox', '/me/social': 'handles', '/me/requests': 'requests' }
 export function socialRoute(path: string): SocialRoute | null {
   if (safeReturnTarget(path, '') !== path || !path || path.includes('?')) return null
   const kind = fixed[path]

@@ -29,7 +29,7 @@ export function SocialPanel({ path }: { readonly path: string }) {
 function Unavailable() { return <p role="status">This section is unavailable for the current account or event.</p> }
 function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly path: string }) {
   const route = socialRoute(path)
-  const service: SocialService | null = route ? ['feed', 'compose', 'thread', 'edit', 'notice'].includes(route.kind) ? 'feed' : route.kind === 'profile' ? 'people' : route.kind as SocialService : null
+  const service: SocialService | null = route ? ['feed', 'compose', 'thread', 'edit', 'notice'].includes(route.kind) ? 'feed' : route.kind === 'profile' ? 'people' : route.kind === 'handles' ? 'requests' : route.kind as SocialService : null
   const thread = owner.thread.read(), editEntry = useRef<{ owner: SocialOwner; path: string } | null>(null)
   useLayoutEffect(() => {
     if (route?.kind !== 'edit') { editEntry.current = null; return }
@@ -52,7 +52,7 @@ function CurrentPanel({ owner, path }: { readonly owner: SocialOwner; readonly p
     case 'intro': return <IntroEditor controller={owner.intro} />
     case 'age': return <AgeStatus controller={owner.age} />
     case 'inbox': return <Inbox controller={owner.inbox} />
-    case 'requests': { const module = owner.requests(); return module ? <module.Panel /> : <Unavailable /> }
+    case 'handles': case 'requests': { const module = owner.requests(); return module ? <module.Panel /> : <Unavailable /> }
   }
 }
 /** Canonical observation only. Unavailable or stale count is null, never loaded-row arithmetic. */

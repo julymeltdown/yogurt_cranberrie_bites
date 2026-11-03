@@ -1,6 +1,7 @@
 import { useCallback, useMemo, type ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SocialFeatures, SocialNavigationBoundary } from '../social-composition'
+import { canonicalSharingRequests } from '../social-composition/sharing'
 import type { SocialAvailabilityPort, SocialContext, SocialDestination, SocialOptions } from '../social-composition/ports'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import type { ShellBootstrap } from '../ports'
@@ -31,7 +32,7 @@ export function RootSocialFeatures({ bootstrap, scope, children }: { bootstrap: 
   }, [auth, scope, navigate])
   if (!ownership.social || !auth || !scope) return children
   return <div className="mcr-root-social"><SocialFeatures auth={auth} bootstrap={bootstrap} scope={scope} availability={availability} navigate={navigateSocial}
-    {...(social?.requests ? { requests: social.requests } : {})} {...(social?.media ? { media: social.media } : {})}
+    requests={social?.requests ?? canonicalSharingRequests} {...(social?.media ? { media: social.media } : {})}
     {...(social?.avatars ? { avatars: social.avatars } : {})} {...(social?.verification ? { verification: social.verification } : {})}>
     <SocialNavigationBoundary>{children}</SocialNavigationBoundary>
   </SocialFeatures></div>

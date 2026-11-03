@@ -22,7 +22,7 @@ const PlacePanel = lazy(() => import('./world-panels').then(module => ({ default
 const ThemePanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionThemePanel })))
 const WallPanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionWallPanel })))
 const SocialPanel = lazy(() => import('./social-composition').then(module => ({ default: module.SocialRoutePanel })))
-const socialPaths = ['/feed', '/feed/new', '/feed/:postId', '/feed/:postId/edit', '/notices/:noticeId', '/meet/people', '/people/:userId', '/meet/intro/edit', '/me/age', '/notifications', '/me/requests'] as const
+const socialPaths = ['/feed', '/feed/new', '/feed/:postId', '/feed/:postId/edit', '/notices/:noticeId', '/meet/people', '/people/:userId', '/meet/intro/edit', '/me/age', '/notifications', '/me/social', '/me/requests'] as const
 const featurePanels: Readonly<Record<string, ReactNode>> = {
   ...Object.fromEntries(socialPaths.map(path => [path, <Suspense fallback={<p role="status">Opening this section…</p>}><SocialPanel /></Suspense>])),
   '/world/map': <Suspense fallback={<p role="status">Opening map…</p>}><MapPanel /></Suspense>,

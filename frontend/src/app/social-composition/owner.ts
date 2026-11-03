@@ -28,6 +28,7 @@ export function createSocialOwner(options: SocialOptions) {
       const lease = availability.read()
       return !!lease && lease.bootstrap === bootstrap && sameScope(lease.scope, scope) && Object.keys(lease.services).every(k => (services as readonly string[]).includes(k) && typeof lease.services[k as SocialService] === 'boolean')
         && lease.services[service] === true && (service !== 'feed' || bootstrap.capabilities.feed.available)
+        && (service !== 'requests' || bootstrap.capabilities.social_sharing.available)
     } catch { return false }
   }
   const access = (service: SocialService) => ({ read: () => ({ available: available(service), readOnly: bootstrap.event.phase === 'READ_ONLY' || !bootstrap.capabilities.mutations.available }),
@@ -79,7 +80,13 @@ export function createSocialOwner(options: SocialOptions) {
     // Register parent first, before starting child lifetimes. Auth belongs to the shell.
     register(() => auth.privacy.registerCleanup(dispose))
     for (const child of children) register(() => child.subscribe(() => { if (live()) notify() }))
-    register(() => availability.subscribe(() => { if (live()) { cancelTargets(); notify() } }))
+    register(() => availability.subscribe(() => {
+      if (!live()) return
+      cancelTargets(); notify()
+      // A producer may qualify after the route opened. Start the same lazy
+      // module when that exact lease becomes ready, without replacing owners.
+      if (!requests && (view.path === '/me/social' || view.path === '/me/requests') && available('requests')) enter(view.path)
+    }))
     if (!live()) throw new Error('Social lease unavailable')
   } catch { dispose(); throw new Error('Social lease unavailable') }
   const avatars = options.avatars ? { auth, scope, resolve: (expected: PrivacyScope, signal: AbortSignal) => {
@@ -106,7 +113,7 @@ export function createSocialOwner(options: SocialOptions) {
       case 'intro': { const wasStarted = started.has('intro'); start('intro', intro); if (wasStarted && previous !== path) void intro.load(); break }
       case 'age': { const wasStarted = started.has('age'); start('age', age); if (wasStarted && previous !== path) void age.load(); break }
       case 'inbox': start('inbox', inbox); if (previous && previous !== path) void inbox.load(); break
-      case 'requests':
+      case 'handles': case 'requests':
         if (available('requests') && options.requests && !requests) {
           try {
             const module = options.requests.create({ auth, bootstrap, scope, access: access('requests') })
@@ -114,6 +121,7 @@ export function createSocialOwner(options: SocialOptions) {
             requests = module; register(() => module.subscribe(() => { if (live()) notify() })); if (live()) module.start()
           } catch { requests?.dispose(); requests = null }
         }
+        requests?.enter?.(route.kind === 'handles' ? '/me/social' : '/me/requests')
         break
     }
     return live()
