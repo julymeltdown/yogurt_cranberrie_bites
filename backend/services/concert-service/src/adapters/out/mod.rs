@@ -27,3 +27,5 @@ impl ParticipationPolicy for UnavailablePolicy {
 pub mod identity;
 
 pub mod media;
+
+pub mod relationship_authority;

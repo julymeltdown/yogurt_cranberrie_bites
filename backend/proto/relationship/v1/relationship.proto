@@ -1,0 +1,40 @@
+syntax = "proto3";
+package relationship.v1;
+// Internal bounded observations only; never mutation/reveal authority or leases.
+message RelationshipRead {
+  string actor_id = 1;
+  string event_id = 2;
+  string subject_id = 3;
+  string session_family_id = 4;
+  string request_id = 5;
+  // PUBLIC_PROFILE, PRESENCE, INTERACTION, SAFETY_SELF, SAFETY_INTERACTION, PRIVATE_HANDLE.
+  string purpose = 6;
+  int64 expires_unix_micros = 7;
+}
+message AuthRelationshipObservation {
+  RelationshipRead query = 1;
+  int64 observed_at_unix_micros = 2;
+  int64 valid_until_unix_micros = 3;
+  string owner_epoch = 4;
+  int64 revision = 5;
+  bool actor_active = 6;
+  bool session_live = 7;
+  bool subject_active = 8;
+}
+message FriendRelationshipObservation {
+  RelationshipRead query = 1;
+  int64 observed_at_unix_micros = 2;
+  int64 valid_until_unix_micros = 3;
+  string owner_epoch = 4;
+  int64 revision = 5;
+  bool actor_blocks_subject = 6;
+  bool subject_blocks_actor = 7;
+  bool actor_deleted = 8;
+  bool subject_deleted = 9;
+}
+service AuthConcertRelationshipService {
+  rpc ReadCurrent(RelationshipRead) returns (AuthRelationshipObservation);
+}
+service FriendConcertRelationshipService {
+  rpc ReadCurrent(RelationshipRead) returns (FriendRelationshipObservation);
+}

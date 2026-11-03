@@ -28,6 +28,10 @@ async fn main() -> anyhow::Result<()> {
     platform::shutdown::install_signal_handlers()?;
     let config = AppConfig::load()?;
     let pool = connect_pool(&config).await?;
+    let relationship_service =
+        auth_service::adapters::r#in::grpc::concert_relationship::RelationshipServer::from_pool(
+            pool.clone(),
+        );
     let readiness = readiness(pool.clone()).with_dependencies(vec![
         Probe::grpc(
             platform::edge::Edge::AuthProfile,
@@ -92,6 +96,12 @@ async fn main() -> anyhow::Result<()> {
             }
             builder
                 .add_service(readiness.grpc_service(config.caller_registry.clone())?)
+                .add_service(platform::grpc_method_policy::guard(
+                    &auth_service::adapters::r#in::grpc::concert_relationship::POLICY,
+                    auth_service::adapters::r#in::grpc::concert_relationship::proto::auth_concert_relationship_service_server::AuthConcertRelationshipServiceServer::new(relationship_service)
+                        .max_decoding_message_size(4096).max_encoding_message_size(4096),
+                    config.caller_registry.clone(), config.actor_delegation.clone(),
+                )?)
                 .add_service(platform::grpc_method_policy::guard(
                     &auth_service::adapters::r#in::grpc::method_policy::AUTH_METHOD_POLICY,
                     AuthServiceServer::new(grpc_service),

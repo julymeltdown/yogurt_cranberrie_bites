@@ -112,6 +112,7 @@ impl AppConfig {
         let caller_registry = platform::config::build_caller_registry(
             production_mode,
             &[
+                platform::grpc_auth::Workload::Concert,
                 platform::grpc_auth::Workload::Gateway,
                 platform::grpc_auth::Workload::Post,
                 platform::grpc_auth::Workload::Auth,

@@ -1,5 +1,8 @@
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let relationship = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../../proto/relationship/v1/relationship.proto");
     let protos = vec![
+        relationship,
         contracts_build::source_auth_proto(),
         contracts_build::source_profile_proto(),
         contracts_build::source_friend_proto(),
@@ -7,6 +10,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         contracts_build::source_notification_proto(),
     ];
     let includes = vec![
+        std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../proto"),
         contracts_build::source_auth_include_dir(),
         contracts_build::source_profile_include_dir(),
         contracts_build::source_friend_include_dir(),
