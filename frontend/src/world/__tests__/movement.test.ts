@@ -3,7 +3,7 @@ import { webcrypto } from 'node:crypto'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { movementData } from './fixtures/movement-data'
 import { loadMap } from '../map/resources'
-import { createCollision, normalized, type SimulationPolicy } from '../input/simulation'
+import { createCollision, normalized, reconstructCells, type SimulationPolicy } from '../input/simulation'
 import { createMovementModel, STEP_MS, type MovementIntent } from '../input/model'
 import { nearbyTargets } from '../interaction/selection'
 import { attachMovement } from '../input/controller'
@@ -284,4 +284,42 @@ it.each([true, false])('honors the latest same-owner visibility update ending in
   expect(enabled).toHaveBeenLastCalledWith(finalVisible)
   expect(visible.mock.calls.map(call => call[0])).toEqual([finalVisible])
   expect(runtime.read().phase).toBe('ready')
+})
+
+it('routes exact-bottom world-edge feet through valid occupied cells on an open border', async () => {
+  const { map } = await mapData(), g = structuredClone(map.map.geometry)
+  g.collision_grid = g.collision_grid.map(row => row.map(() => 0))
+  const c = createCollision(g, policy), bottom = { x: 48, y: 448 }
+  const same = c.route(bottom, bottom)
+  expect(same).not.toBeNull(); expect(same!.every(c.walkable)).toBe(true)
+  const arriving = c.route({ x: 80, y: 432 }, bottom)
+  expect(arriving).not.toBeNull(); expect(arriving!.at(-1)).toEqual(bottom); expect(arriving!.every(c.walkable)).toBe(true)
+  const leaving = c.route(bottom, { x: 80, y: 432 })
+  expect(leaving).not.toBeNull(); expect(leaving!.at(-1)).toEqual({ x: 80, y: 432 }); expect(leaving!.every(c.walkable)).toBe(true)
+})
+
+it.each([
+  [{ x: 4, y: 448 }, { x: 764, y: 448 }],
+  [{ x: 764, y: 448 }, { x: 4, y: 448 }],
+  [{ x: 764, y: 448 }, { x: 752, y: 432 }],
+  [{ x: 752, y: 432 }, { x: 764, y: 448 }],
+  [{ x: 4, y: 448 }, { x: 16, y: 432 }],
+  [{ x: 16, y: 432 }, { x: 4, y: 448 }],
+])('preserves legal exact-bottom corner route from %j to %j', async (from, to) => {
+  const { map } = await mapData(), g = structuredClone(map.map.geometry)
+  g.collision_grid = g.collision_grid.map(row => row.map(() => 0))
+  const c = createCollision(g, policy), path = c.route(from, to)
+  expect(c.walkable(from)).toBe(true); expect(c.walkable(to)).toBe(true)
+  expect(path).not.toBeNull(); expect(path!.at(-1)).toEqual(to); expect(path!.every(c.walkable)).toBe(true)
+  expect(path!.length).toBeLessThanOrEqual(g.width_cells * g.height_cells + 1)
+})
+it('reconstructs only a valid bounded parent chain', () => {
+  expect(reconstructCells(new Int32Array([0, 0, 1]), 0, 2)).toEqual([0, 1, 2])
+  expect(reconstructCells(new Int32Array([0]), 0, 0)).toEqual([0])
+})
+it.each([
+  [[], 0, 0], [[0, -1], 0, 1], [[0, 8], 0, 1], [[0, 1], 0, 1], [[0, 2, 1], 0, 2],
+  [[2, 0, 1], 0, 2], [[0, 0], -1, 1], [[0, 0], 0, 2], [[0, 0], 0, NaN], [[0, 0], 0, .5],
+] as const)('rejects corrupt/unbounded parent chain %j start=%s target=%s', (parents, start, target) => {
+  expect(reconstructCells(new Int32Array(parents), start, target)).toBeNull()
 })

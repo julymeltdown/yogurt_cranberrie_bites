@@ -12,6 +12,19 @@ export function normalized(x: number, y: number): Point {
   const length = Math.hypot(x, y), divisor = Math.max(1, length)
   return { x: x / divisor, y: y / divisor }
 }
+/** Bound and validate the complete parent chain before producing any route. */
+export function reconstructCells(parents: Int32Array, start: number, target: number): number[] | null {
+  const size = parents.length
+  const valid = (cell: number) => Number.isSafeInteger(cell) && cell >= 0 && cell < size
+  if (size < 1 || size > 128 * 128 || !valid(start) || !valid(target) || parents[start] !== start) return null
+  const cells = [target]
+  for (let remaining = size; cells.at(-1) !== start && remaining > 0; remaining--) {
+    const current = cells.at(-1)!, parent = parents[current]!
+    if (!valid(parent) || parent === current) return null
+    cells.push(parent)
+  }
+  return cells.at(-1) === start ? cells.reverse() : null
+}
 /** Foot is bottom-center of a deliberately injected local collision rectangle; not an avatar sprite. */
 export function createCollision(g: Geometry, policy: SimulationPolicy) {
   if (![g.width_cells, g.height_cells, g.tile_width_px, g.tile_height_px].every(n => Number.isSafeInteger(n) && n >= 1 && n <= 128)
@@ -51,7 +64,8 @@ export function createCollision(g: Geometry, policy: SimulationPolicy) {
   /** Bounded four-neighbor BFS. No diagonal corner cutting; every edge checks the whole foot sweep. */
   function route(from: Point, to: Point): Point[] | null {
     if (!walkable(from) || !walkable(to)) return null
-    const sx = Math.floor(from.x / g.tile_width_px), sy = Math.floor(from.y / g.tile_height_px), tx = Math.floor(to.x / g.tile_width_px), ty = Math.floor(to.y / g.tile_height_px)
+    // Bottom-center y may equal the world height while its entire foot occupies the last row.
+    const sx = Math.min(g.width_cells - 1, Math.floor(from.x / g.tile_width_px)), sy = Math.min(g.height_cells - 1, Math.floor(from.y / g.tile_height_px)), tx = Math.min(g.width_cells - 1, Math.floor(to.x / g.tile_width_px)), ty = Math.min(g.height_cells - 1, Math.floor(to.y / g.tile_height_px))
     const start = sy * g.width_cells + sx, target = ty * g.width_cells + tx
     const parents = new Int32Array(g.width_cells * g.height_cells).fill(-1), queue = [start]; parents[start] = start
     if (!line(from, center(sx, sy)) || !line(center(tx, ty), to)) return null
@@ -63,8 +77,9 @@ export function createCollision(g: Geometry, policy: SimulationPolicy) {
       }
     }
     if (parents[target] === -1) return null
-    const cells = [target]; while (cells.at(-1) !== start) cells.push(parents[cells.at(-1)!]!)
-    const points = cells.reverse().map(cell => center(cell % g.width_cells, Math.floor(cell / g.width_cells)))
+    const cells = reconstructCells(parents, start, target)
+    if (!cells) return null
+    const points = cells.map(cell => center(cell % g.width_cells, Math.floor(cell / g.width_cells)))
     points.push(to)
     return points.filter((point, index) => Math.hypot(point.x - (index === 0 ? from.x : points[index - 1]!.x), point.y - (index === 0 ? from.y : points[index - 1]!.y)) > epsilon)
   }
