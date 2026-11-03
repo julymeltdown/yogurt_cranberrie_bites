@@ -25,10 +25,11 @@ export function createFeedThreadController(options: ThreadOptions) {
   const emptyMutation = (): MutationState => ({ phase: 'idle', key: null, operation: null, failure: null, resourceId: null })
   const initial = (): ThreadState => ({ available: false, readOnly: true, userId: null, selectedId: null, detail: blank(), comments: blank(), draft: emptyDraft(), reply: { text: '', edit: null }, mutation: emptyMutation() })
   let state = freeze(initial()), detailVersion = 0, commentVersion = 0, writeVersion = 0, command: Command | null = null
+  const revokedLinks = new Set<string>()
   const listeners = new Set<() => void>(), cursors = new Set<string>()
   const publish = (patch: Partial<ThreadState>) => { state = freeze({ ...state, ...patch }); listeners.forEach(fn => fn()) }
   const runtime = createFeedRuntime(options, () => {
-    detailVersion++; commentVersion++; writeVersion++; command = null; options.media?.cancel(); cursors.clear(); state = freeze(initial()); listeners.forEach(fn => fn())
+    detailVersion++; commentVersion++; writeVersion++; command = null; options.media?.cancel(); cursors.clear(); revokedLinks.clear(); state = freeze(initial()); listeners.forEach(fn => fn())
   }, () => {
     publish({ available: runtime.usable(), readOnly: runtime.access().readOnly, userId: runtime.scope()?.userId ?? null,
       ...(!runtime.usable() ? { detail: blank<PostDetail>(), comments: blank<Page<Comment>>() } : {}) })
@@ -45,7 +46,8 @@ export function createFeedThreadController(options: ThreadOptions) {
       const detail = await runtime.run('detail', s => ({ method: 'GET', path: `/api/concert/events/${s.eventId}/posts/${id}`, access: 'protected', errorFamily: 'domain', domainOperation: 'getConcertPost',
         decode: decoder<PostDetail>('Domain_feed_PostDetail', d => d.post.post_id === id && d.post.event_id === s.eventId && d.comments.every(c => c.post_id === id) && new Set(d.comments.map(c => c.comment_id)).size === d.comments.length) }))
       if (version !== detailVersion || !options.auth.privacy.isCurrent(scope)) return
-      publish({ detail: { phase: 'ready', data: detail, failure: null }, comments: { phase: 'ready', data: { items: detail.comments, next_cursor: detail.next_cursor }, failure: null } })
+      const permitted = { ...detail, post: { ...detail.post, links: detail.post.links.filter(link => !revokedLinks.has(`${link.target_type}:${link.target_id}`)) } }
+      publish({ detail: { phase: 'ready', data: permitted, failure: null }, comments: { phase: 'ready', data: { items: detail.comments, next_cursor: detail.next_cursor }, failure: null } })
     } catch (error) {
       if (version === detailVersion && options.auth.privacy.isCurrent(scope)) publish({ detail: { phase: 'error', data: null, failure: failure(error) }, comments: blank(), reply: { text: '', edit: null } })
     }
@@ -139,6 +141,11 @@ export function createFeedThreadController(options: ThreadOptions) {
       detailVersion++; commentVersion++; runtime.cancel('detail'); runtime.cancel('comments'); cursors.clear()
       publish({ selectedId: id, detail: blank(), comments: blank(), reply: { text: '', edit: null }, ...(state.draft.edit ? { draft: emptyDraft() } : {}), mutation: emptyMutation() })
       if (id) void loadPost(); return true
+    },
+    removeLink(target: { target_type: string; target_id: string }) {
+      revokedLinks.add(`${target.target_type}:${target.target_id}`)
+      const data = state.detail.data
+      if (data) publish({ detail: { ...state.detail, data: { ...data, post: { ...data.post, links: data.post.links.filter(link => !revokedLinks.has(`${link.target_type}:${link.target_id}`)) } } } })
     },
     setPostText(text: string) { if (writable()) publish({ draft: { ...state.draft, text } }) },
     setReplyText(text: string) { if (writable()) publish({ reply: { ...state.reply, text } }) },

@@ -115,3 +115,12 @@ it('retains an uncertain key across same-identity read-only changes', async () =
   expect(s.controller.read().draft.text).toBe('Preserve through closure'); expect(s.controller.read().mutation).toMatchObject({ phase: 'uncertain', key })
   expect(await s.controller.submitPost()).toBe(false); expect(writes).toBe(1)
 })
+
+it('destination denial remains evicted from a delayed thread refresh', async () => {
+  const target = { target_type: 'PARTY' as const, target_id: id(80) }, linked = { ...detail(), post: { ...post, links: [target] } }, late = deferred<Response>(); let calls = 0
+  const s = fixture(() => ++calls === 1 ? Response.json(linked) : late.promise)
+  await opened(s); expect(s.controller.read().detail.data?.post.links).toEqual([target])
+  const flight = s.controller.loadPost(); await vi.waitFor(() => expect(calls).toBe(2)); s.controller.removeLink(target)
+  late.resolve(Response.json(linked)); await flight
+  expect(s.controller.read().detail.data?.post.links).toEqual([])
+})

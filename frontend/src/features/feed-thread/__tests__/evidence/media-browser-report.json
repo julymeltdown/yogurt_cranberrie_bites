@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "scope": "Actual FE04/FE28 browser controllers, test-only native HTTP backend, StrictMode; BE24/live/devices NOT_RUN",
+  "browser": "156.0.8078.80",
+  "width": 390,
+  "writes": {
+    "init": 1,
+    "bytes": 1,
+    "finalize": 1,
+    "post": 1
+  },
+  "reads": {
+    "metadata": 1,
+    "content": 1
+  },
+  "compressedType": "image/webp",
+  "uploadedBytes": 562,
+  "bytesHashVerified": true,
+  "privacyBlobRevoked": true,
+  "errors": []
+}

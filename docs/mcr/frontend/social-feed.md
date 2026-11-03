@@ -177,3 +177,57 @@ at settlement, and clears these records only when that scope is replaced. This
 covers delayed pagination and refresh without aborting unrelated safe reads or
 replaying writes. Four real nonempty regression cases cover both races and both
 read paths. FE27 controller tests: 15/15 pass, exit 0; typecheck exit 0.
+
+## Actual FE04 consumer qualification
+
+Synced the isolated worker branch onto delivery's `ee41a3b`, skipping already
+integrated duplicate worker commits. This combined baseline contains FE04
+`795f46b` as `0952149`, binary HTTP `4d65ed4` as `a56f043`, and the FE27/FE28
+consumer commits. No other lane's source was edited by this worker.
+
+`node src/features/feed-thread/__tests__/media-browser.mjs` (frontend cwd):
+exit 0 on Chrome `156.0.8078.80`, width 390, StrictMode. Uses the actual FE04
+image preparation worker, upload controller, canonical `auth.request` binary
+transport, protected preview controller, and FE28 composer/thread/FeedImage.
+Only its same-origin backend is test-only middleware. A synthetic test image
+was prepared as WebP (562 bytes), SHA-256 matched the binary request, and exactly
+one init, byte upload, finalization and post write occurred. Exactly one
+metadata and one protected content GET completed. Only after validated READY
+and explicit attachment confirmation did the composer send the media ID. The
+thread displayed a 64px image from an ephemeral blob URL; privacy invalidation
+removed it and a fetch of that blob URL failed, proving revocation. No page
+errors or horizontal overflow were observed. Evidence:
+
+- `frontend/src/features/feed-thread/__tests__/evidence/media-browser-report.json`
+- `frontend/src/features/feed-thread/__tests__/evidence/media-thread-390.png`
+- Reproducible harness: `__tests__/media-browser.mjs` and
+  `__tests__/fixtures/media-preview.{html,tsx}` under feed-thread.
+
+FE28 bounded implementation and fixture qualification are `MOCK_READY`, including
+actual media consumer composition; this is not live BE24/31/32 or two-user IN03
+acceptance. Actual devices, release acceptance, report submission integration
+and root route composition remain with their assigned owners and are `NOT_RUN`
+for this worker. The prior pending-controller-source limitation is resolved.
+Concrete cache review fixes are in `7fecec0`; exact independent verification is
+being performed by QA, with any further findings retained in this goal.
+
+The thread controller also exposes `removeLink(target)` with the same current
+privacy-scope revocation record, applied on every detail refresh. Destination
+callbacks must notify both feed and thread controllers when access is denied;
+an in-flight detail read cannot restore the related button. A real nonempty-link
+regression covers that delayed refresh. This extends the QA fix to detail parity.
+
+Independent targeted QA executed the exact `7fecec0c69e6a0ce9012070782aebecd93f7aa91`
+archive snapshot (not an uncommitted approximation): 32/32 tests across three
+files pass, exit 0. Both originally failing canonical cache-race probes are
+green; the archived controller SHA-256 matches git-show
+`0d528342c21b6d1e3c9a7038c6a243d2fb4d32e9f2e00beda6ac7c3091d83c5b`.
+No further application fix was requested by that bounded report. Delivery
+reported integration as `cf7836a`; this worker does not claim a master push.
+
+Final affected validation: FE27 15 cases, thread controller 11 cases, UI 5 cases,
+all exit 0 (31 total); canonical TypeScript check exit 0; focused oxlint exit 0;
+source-origin guard exit 0 (432 files, no static violations); diff check exit 0.
+The text browser evidence and actual-media browser evidence are committed with
+reproducible test-only HTTP harnesses. The worker's bounded assignment is ready
+for committed delivery handoff and stoppage, distinct from whole-task acceptance.
