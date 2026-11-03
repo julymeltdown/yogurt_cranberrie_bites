@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "state": "REVIEW_CANDIDATE",
   "runtime": "NOT_IMPLEMENTED",
   "common_guards": [
@@ -1129,6 +1129,31 @@
       ],
       "result": [
         "Return only the authorized application metadata"
+      ]
+    },
+    "mural_own_result": {
+      "preconditions": [
+        "Current canonical actor admitted to the path event; current mural read authorization is required on every result read",
+        "Path key identifies only this actor/event/placeConcertPixel retained receipt in SUCCEEDED state; receipt must be unexpired and not RETIRED",
+        "Durable original PixelOperation actor, event, operation ID and revision exactly match the receipt; no public delta or snapshot inference"
+      ],
+      "result": [
+        "Return the original mural.PixelOperation including its original next_allowed_at without spending cooldown or replaying a command",
+        "404 RESOURCE_UNAVAILABLE conflates foreign, missing, expired, retired, pending, failed or inconsistent results; it never authorizes replay",
+        "Client first verifies captured command status actor/event/operation/key then requires result event/operation ID/revision and original x/y/color to match; common receipt remains metadata only",
+        "No author IDs or private cooldowns are added to public snapshot/delta; use the incumbent world epoch observer and HTTP reads, no new C05 socket"
+      ]
+    },
+    "notification_unread_count": {
+      "preconditions": [
+        "Current canonical actor owns the event inbox and is currently authorized to read it",
+        "Count only retained unread notifications currently visible under owning target, deletion, block and moderation policy; policy unavailable fails closed",
+        "Count across the complete inbox, independent of page cursor, page size and list filter, in one consistent owner snapshot"
+      ],
+      "result": [
+        "Return actor_id, event_id, unread_total and server as_of; no target summaries or private payload",
+        "Fresh reauthorization is required after read/read-all, invalidation or identity/policy changes; count is an observation and never target authority",
+        "Unavailable count remains unavailable; loaded unread rows never substitute for total"
       ]
     }
   },

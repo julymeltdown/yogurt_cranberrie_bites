@@ -418,7 +418,8 @@ class Contract:
             rows(value['receiving'], 'reservation_id', 'recipient_id')
 
     def validate_http(self, value, operation_id, status, *, actor_id=None, event_id=None,
-                      request_path=None, request_query='', idempotency_key=None, expected_resource_id=None):
+                      request_path=None, request_query='', idempotency_key=None, expected_resource_id=None,
+                      expected_resource_revision=None, original_command=None):
         require(type(status) is int, 'HTTP status required')
         matches = [op for op in self.operations if op['operationId'] == operation_id]
         require(len(matches) == 1, 'unknown HTTP operation')
@@ -430,6 +431,25 @@ class Contract:
             reads = {'listConcertParties', 'getConcertParty', 'getConcertPartyActivity',
                      'listConcertGiveaways', 'getConcertGiveaway', 'getConcertGiftActivity'}
             target = None
+            if operation_id in {'getConcertMuralOwnResult', 'getConcertNotificationUnreadCount'}:
+                self.validate(actor_id, 'common.Uuid')
+                self.validate(event_id, 'common.Uuid')
+                require(request_path is not None, 'captured request target required')
+                target = self.validate_target(operation_id, request_path, request_query, event_id=event_id)
+                if operation_id == 'getConcertMuralOwnResult':
+                    self.validate(idempotency_key, 'common.Uuid')
+                    require(target['path']['key'] == idempotency_key, 'foreign original command key')
+                    self.validate(expected_resource_id, 'common.Uuid')
+                    self.validate(expected_resource_revision, 'common.Revision')
+                    self.validate(original_command, 'mural.PlacePixel')
+                    require(value['operation_id'] == expected_resource_id and
+                            value['revision'] == expected_resource_revision,
+                            'original result does not match verified receipt')
+                    require(value['revision'] == original_command['expected_revision'] + 1 and
+                            all(value[k] == original_command[k] for k in ('x', 'y', 'color_index')),
+                            'original pixel command mismatch')
+                else:
+                    require(value['actor_id'] == actor_id, 'foreign unread count')
             if operation_id in reads or name == 'common.CommandReceipt':
                 self.validate(actor_id, 'common.Uuid')
                 self.validate(event_id, 'common.Uuid')

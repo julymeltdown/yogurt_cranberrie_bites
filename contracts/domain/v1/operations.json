@@ -6424,5 +6424,108 @@
       }
     },
     "query_schema": "common.PageQuery"
+  },
+  {
+    "operationId": "getConcertMuralOwnResult",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/mural/commands/{key}/result",
+    "request": null,
+    "request_location": "query",
+    "response": "mural.PixelOperation",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "mural_own_result",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "key": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
+  },
+  {
+    "operationId": "getConcertNotificationUnreadCount",
+    "method": "get",
+    "path": "/api/concert/events/{eventId}/me/notifications/unread-count",
+    "request": null,
+    "request_location": "query",
+    "response": "feed.NotificationUnreadCount",
+    "success_status": 200,
+    "pending_response": null,
+    "pending_status": null,
+    "actor": "SELF",
+    "rule": "notification_unread_count",
+    "write_policy": "READ",
+    "idempotency_key": false,
+    "retry": "SAFE_READ_AFTER_REAUTH_ONCE",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "eventId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
   }
 ]
