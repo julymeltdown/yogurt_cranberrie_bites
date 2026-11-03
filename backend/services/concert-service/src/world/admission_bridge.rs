@@ -335,7 +335,20 @@ impl AdmissionBridge {
         id: Uuid,
         removal: super::invalidation::Removal,
     ) -> Result<(), WorldError> {
+        self.begin_invalidation_if(id, removal, || true)
+    }
+    /// Recheck an owning authorization budget after waiting for the actual
+    /// native-handoff fence and before removing any active or pending view.
+    pub(crate) fn begin_invalidation_if(
+        &self,
+        id: Uuid,
+        removal: super::invalidation::Removal,
+        authorized: impl FnOnce() -> bool,
+    ) -> Result<(), WorldError> {
         let _f = self.fence.lock().map_err(|_| WorldError::Unavailable)?;
+        if !authorized() {
+            return Err(WorldError::Unavailable);
+        }
         let mut views = self.views.lock().map_err(|_| WorldError::Unavailable)?;
         if views.invalidations.len() >= 1000 && !views.invalidations.contains_key(&id) {
             return Err(WorldError::Unavailable);
