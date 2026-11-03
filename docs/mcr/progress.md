@@ -5,7 +5,7 @@ historical assessments. `generated/` remains the original planning baseline.
 Acceptance below applies only to the stated task criteria and candidate paths;
 it is not feature integration or release acceptance.
 
-The published ancestry was verified through `54900ec`; the next bounded
+The published ancestry was verified through `d68eef5`; the bounded
 checkpoint includes root world entry `8bb878c`, FE12 compositor `1db1680`,
 FE04 binary/media `a56f043`/`0952149`, FE13 `371ff01`/`1fdf411`, FE20
 `ee41a3b`, FE25 `95d9f37`, feed/thread `5bc0055`/`5a81f08`, and cache-race
@@ -29,8 +29,9 @@ HTTP changes are separately pending; no live product path is implied.
 Admission corrected source `91569e7` remains queued for compile/native rerun
 after its earlier two failures; it is not green. Community and meeting have
 bounded copied-binary native reports; their concrete policy adoption and final
-handoffs remain active. BE37 compiled and passed eight pure/crypto tests while
-its 20 native tests were still pending at this record. Live owner authority,
+handoffs remain active. BE37 `a5e84da` passed eight pure/crypto and 20 native producer tests, then
+integrated through `914843e`; a newly discovered actor-only lock-order
+correction remains assigned and unqualified. Live owner authority,
 feed, Post, avatar persistence, simulation and media producers each retain
 isolated ownership and explicit shared-build turns. Source implementation
 continues independently of that resource queue.
@@ -52,10 +53,10 @@ continues independently of that resource queue.
 | BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
 | BE06 | IN_PROGRESS | Transactional producer integrated `48458d5`; [source-bound native receipt](backend/bootstrap.md) passes in the isolated worker ledger. Combined ledger and guarded startup checks now pass [bounded runtime evidence](evidence/delivery-2026-11-04/bootstrap-runtime.md); actual product release and public live-route qualification remain separate. |
 | BE08 | IN_PROGRESS | Bounded implementation and fixes integrated through `5f7eb1c`, independent review through `4d6fc85`, and [retained evidence](evidence/backend-places-integration.md) published `920631d`. Nine focused tests pass. Worker PostgreSQL evidence used direct SQL, not the migration ledger; public routes and whole-task qualification remain open. |
-| BE09 / BE19 | IN_PROGRESS | Separate `be-physical-meeting` owner implements typed beacon/rally commands using caller-held reviewed-place locks; migration 0008 reserved. No real venue guidance or arrival inferred from world movement. |
+| BE09 / BE19 | IN_PROGRESS | Bounded beacon/rally native stack integrated through `51783cf`, six tests before/after restart and cleanup PASS. Concrete root-aware policy adapter, place projection, public routes and real IN02 remain; no arrival inferred from world movement. |
 | BE10 / BE11 | IN_PROGRESS | Isolated admission owner implements one-use tickets and room membership, migration 0005. Native failures are under correction; no public ticket/room/WebSocket or capacity acceptance is claimed. |
 | BE16–18 / BE20–23 | IN_PROGRESS | Separate community backend owner; party/gift/maintenance source through `5d8efe7` has bounded compiled/copied-binary native proof; durable-error/current-policy follow-up remains active before final handoff. Migration 0007 reserved; no public command acceptance. |
-| BE37 / BE28–30 | IN_PROGRESS | Typed relationship source `b71ae36` compiled and passed eight pure/crypto checks; native qualification is pending at this checkpoint. Migration 0006 reserved. A separate Auth/Friend authority owner is assigned; a fresh RPC read alone does not establish revocation fencing through a Concert transaction. |
+| BE37 / BE28–30 | IN_PROGRESS | Typed relationship source `b71ae36` compiled and passed eight pure/crypto checks; 20 native producer tests/restart/ledger/cleanup passed and integrated through `914843e`; actor-only lock-order follow-up remains active. Migration 0006 reserved. A separate Auth/Friend authority owner is assigned; a fresh RPC read alone does not establish revocation fencing through a Concert transaction. |
 | BE15 | IN_PROGRESS | [Reviewed internal receipt/outbox foundation](evidence/command-receipts-integration.md), `7cbb97e`/`c2a2c30`: 33 combined deterministic Rust, 82 Python helper and 17 real PostgreSQL tests pass; owned migration failure/recovery, restart persistence and cleanup pass. Review fixes cover keyed private fingerprints, post-authorization expiry and result/outbox revision equality. Bounded goal COMPLETE; production producer/Auth/public API/key configuration/runtime/load gates remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
 | FE04 | IN_PROGRESS | Separate media owner also has exact shared `api/http.ts` and HTTP-test ownership for canonical authenticated binary transport. Current C04 same-origin authenticated PUT and credential-free presigned upload semantics remain distinct; no presigned endpoint is invented. |

@@ -1,0 +1,9 @@
+$ vitest run src/features/me src/features/feed-thread --maxWorkers=1
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr/frontend
+
+
+ Test Files  12 passed (12)
+      Tests  146 passed (146)
+   Start at  00:48:53
+   Duration  6.03s (transform 645ms, setup 0ms, import 1.63s, tests 2.37s, environment 1.18s)

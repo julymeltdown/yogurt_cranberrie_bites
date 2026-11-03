@@ -1,0 +1,9 @@
+$ vitest run e2e/real/world-gate/helpers.test.ts --maxWorkers=1
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  19 passed (19)
+   Start at  00:54:54
+   Duration  172ms (transform 41ms, setup 0ms, import 83ms, tests 13ms, environment 0ms)
