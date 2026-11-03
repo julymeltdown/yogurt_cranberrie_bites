@@ -20,5 +20,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("cargo:rerun-if-changed={}", post_concert_proto.display());
     println!("cargo:rerun-if-changed={}", relationship.display());
     println!("cargo:rerun-if-changed={}", profile.display());
+    let participant_proto = contracts_build::proto_root().join("concert/v1/participant.proto");
+    tonic_prost_build::configure()
+        .build_server(true)
+        .build_client(true)
+        .compile_protos(&[participant_proto.clone()], &[contracts_build::proto_root()])?;
+    println!("cargo:rerun-if-changed={}", participant_proto.display());
     Ok(())
 }
