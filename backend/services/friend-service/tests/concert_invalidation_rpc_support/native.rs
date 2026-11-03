@@ -113,8 +113,68 @@ fn tls(w: Workload) -> anyhow::Result<TlsMaterial> {
     let leaf = test_support::tls::issue(w.as_str())?;
     TlsMaterial::load(&leaf.cert, &leaf.key, &leaf.ca)
 }
+// Harness-only observation: a dropped pending service future proves HTTP/2
+// cancellation independently of SQL's eventual original statement timeout.
+#[derive(Clone)]
+struct Observe<S> {
+    inner: S,
+    dropped: Arc<tokio::sync::Notify>,
+}
+impl<S: tonic::server::NamedService> tonic::server::NamedService for Observe<S> {
+    const NAME: &'static str = S::NAME;
+}
+impl<S> tonic::codegen::Service<http::Request<tonic::body::Body>> for Observe<S>
+where
+    S: tonic::codegen::Service<http::Request<tonic::body::Body>>,
+    S::Future: Send + 'static,
+{
+    type Response = S::Response;
+    type Error = S::Error;
+    type Future = DropAware<S::Future>;
+    fn poll_ready(
+        &mut self,
+        cx: &mut std::task::Context<'_>,
+    ) -> std::task::Poll<Result<(), Self::Error>> {
+        self.inner.poll_ready(cx)
+    }
+    fn call(&mut self, r: http::Request<tonic::body::Body>) -> Self::Future {
+        DropAware {
+            future: Some(Box::pin(self.inner.call(r))),
+            dropped: self.dropped.clone(),
+            pending: true,
+        }
+    }
+}
+struct DropAware<F> {
+    future: Option<std::pin::Pin<Box<F>>>,
+    dropped: Arc<tokio::sync::Notify>,
+    pending: bool,
+}
+impl<F: std::future::Future> std::future::Future for DropAware<F> {
+    type Output = F::Output;
+    fn poll(
+        self: std::pin::Pin<&mut Self>,
+        cx: &mut std::task::Context<'_>,
+    ) -> std::task::Poll<Self::Output> {
+        let this = self.get_mut();
+        let result = this.future.as_mut().unwrap().as_mut().poll(cx);
+        if result.is_ready() {
+            this.pending = false;
+        }
+        result
+    }
+}
+impl<F> Drop for DropAware<F> {
+    fn drop(&mut self) {
+        drop(self.future.take());
+        if self.pending {
+            self.dropped.notify_one();
+        }
+    }
+}
 struct Running {
     endpoint: String,
+    dropped: Arc<tokio::sync::Notify>,
     stop: Option<tokio::sync::oneshot::Sender<()>>,
     task: tokio::task::JoinHandle<Result<(), tonic::transport::Error>>,
 }
@@ -128,10 +188,14 @@ impl Running {
         let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
         let endpoint = format!("https://{}", listener.local_addr()?);
         let (stop, rx) = tokio::sync::oneshot::channel();
+        let dropped = Arc::new(tokio::sync::Notify::new());
         let server = tonic::transport::Server::builder()
             .tls_config(tls(Workload::Friend)?.server_config()?)?
             .layer(platform::call_deadline::CallDeadlineLayer)
-            .add_service(guarded_server(p, registry())?);
+            .add_service(Observe {
+                inner: guarded_server(p, registry())?,
+                dropped: dropped.clone(),
+            });
         let task = tokio::spawn(server.serve_with_incoming_shutdown(
             TcpListenerStream::new(listener),
             async {
@@ -140,6 +204,7 @@ impl Running {
         ));
         Ok(Self {
             endpoint,
+            dropped,
             stop: Some(stop),
             task,
         })
@@ -526,6 +591,9 @@ async fn deadline_includes_pool_sql_and_cancellation_releases_work() -> anyhow::
     );
     assert!(start.elapsed() < Duration::from_millis(1400));
     drained(&observer).await?;
+    let dropped = server.dropped.clone();
+    let notification = dropped.notified();
+    let original_stop = Instant::now() + Duration::from_millis(900);
     let mut cancel = c.clone();
     let call = tokio::spawn(async move {
         cancel
@@ -533,9 +601,12 @@ async fn deadline_includes_pool_sql_and_cancellation_releases_work() -> anyhow::
             .await
     });
     let blocked_pid = wait_locked(&observer).await?;
+    assert!(Instant::now() + Duration::from_millis(300) < original_stop);
     let cancel_start = Instant::now();
     call.abort();
     assert!(call.await.unwrap_err().is_cancelled());
+    tokio::time::timeout(Duration::from_millis(200), notification).await?;
+    assert!(Instant::now() < original_stop - Duration::from_millis(100));
     // Keep the blocker held until the exact cancelled reader backend vanishes;
     // an active wait or idle transaction must not hide behind releasing the lock.
     loop {
