@@ -1,0 +1,42 @@
+{
+  "status": "CONTRACT_READY",
+  "baseline": "18d4af0284a556cc98394e3622dcc3710e1f1a8f",
+  "protocVersion": "libprotoc 31.1",
+  "descriptorCompilationExit": 0,
+  "unchangedExistingDescriptors": {
+    "message_type": [
+      "RelationshipRead",
+      "AuthRelationshipObservation",
+      "FriendRelationshipObservation"
+    ],
+    "service": [
+      "AuthConcertRelationshipService",
+      "FriendConcertRelationshipService"
+    ],
+    "enum_type": []
+  },
+  "newServices": [
+    "AuthConcertInvalidationService",
+    "FriendConcertInvalidationService"
+  ],
+  "newMessages": [
+    "InvalidationCursor",
+    "ReadInvalidationHeadRequest",
+    "ReadInvalidationHeadResponse",
+    "ReadInvalidationsRequest",
+    "InvalidationUserScope",
+    "InvalidationFamilyScope",
+    "InvalidationPairScope",
+    "InvalidationSignal",
+    "ReadInvalidationsResponse"
+  ],
+  "sourceSha256": "0fbb19ba65da38cb01393a36b69e0982cd61084a4a2f3e8e0c8644e657b362a3",
+  "descriptorSha256": "916be0ff3ab1263f800e7e715e7678e7f28ba7135f4378bd3c808796fd083ba2",
+  "existingDescriptorEquality": "PASS",
+  "newServiceShape": "PASS",
+  "exclusiveScopeOneof": "PASS",
+  "credentialFieldsAbsent": "PASS",
+  "rustBuild": "NOT_RUN; existing reserved targets remain with implementation owners",
+  "endpointExposure": "NOT_IMPLEMENTED_BY_THIS_PATCH",
+  "runtimeAcceptance": "NOT_RUN"
+}
