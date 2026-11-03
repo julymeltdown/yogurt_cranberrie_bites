@@ -5,7 +5,8 @@ C03/C06 immutable map release parsing, closed provenance validation, and event-s
 place catalog/detail projection. Three actionable findings/limitations were identified:
 (1) SQL migration check constraint self-conflict rejecting later updates,
 (2) lack of a transaction seam in `select_physical` preventing atomic beacon creation, and
-(3) inclusion of integrator-owned `backend/scripts/` in the worker patch.
+(3) boundary checker rejection of assigned script `backend/scripts/mcr/places_smoke.py`
+as an integrator registration prerequisite.
 Native Rust build, unit tests, and PostgreSQL execution remain NOT_RUN.**
 Implementation status remains UNVALIDATED_CANDIDATE / IN_PROGRESS.
 
@@ -90,19 +91,27 @@ All 12 candidate paths relative to parent `097651c` were reviewed:
   (b) Enforce atomic verification in the downstream beacon insertion query by joining
       `concert_place_current_state` with `WHERE closure_state = 'OPEN'`.
 
-### Finding 3: Worker candidate touches integrator-owned `backend/scripts/` directory
+### Finding 3: Boundary checker rejects explicitly assigned test script as integrator registration prerequisite
 - **Location**: `backend/scripts/mcr/places_smoke.py`.
-- **Severity**: P3 (Boundary rule violation).
+- **Severity**: P3 (Boundary checker registration prerequisite; NOT a worker scope breach).
 - **Analysis**:
-  - `scripts/mcr/check-boundaries.py` classifies any path containing a `scripts` segment
-    as `integrator-owned contracts/generated output/CI/scripts/infrastructure`.
-  - Candidate `c135bff` introduces `backend/scripts/mcr/places_smoke.py` (408 lines).
-  - Running `check-boundaries.py --base 097651c... --lane backend` fails with exit code 1
-    on this file. Workers do not own central or scripts hierarchy paths without explicit
-    delegation.
+  - `backend/scripts/mcr/places_smoke.py` was explicitly assigned as one of the 12 writable paths
+    in the BE08 worker's authorized scope and ownership register. Its inclusion in the worker
+    patch is fully authorized and does not represent an out-of-scope breach.
+  - When `scripts/mcr/check-boundaries.py` is invoked with:
+    `python3 scripts/mcr/check-boundaries.py --base 097651c24b741ce0d179ea9b7b8e8a761806d249 --lane backend --allow-doc docs/mcr/backend/places.md --allow-doc docs/mcr/qa/places-review.md`
+    the tool fails with exit code 1:
+    ```
+    BOUNDARIES FAIL
+    - 'backend/scripts/mcr/places_smoke.py' (index, A): integrator-owned contracts/generated output/CI/scripts/infrastructure
+    - 'backend/scripts/mcr/places_smoke.py' (working tree, A): integrator-owned contracts/generated output/CI/scripts/infrastructure
+    ```
+  - This occurs because `check-boundaries.py` automatically flags any path containing a `scripts`
+    segment as central/integrator-owned by default unless explicitly accommodated.
 - **Recommendation**:
-  The integrator should either pass explicit delegation for `backend/scripts/mcr/places_smoke.py`
-  during boundary auditing or separate test harnesses under scripts into an integrator-owned commit.
+  The integrator owns reconciling this tool-level registration prerequisite (e.g. updating
+  `check-boundaries.py` rules or passing appropriate delegation options during integration
+  auditing). The worker's delivery is conformant with its explicit assignment.
 
 ---
 
