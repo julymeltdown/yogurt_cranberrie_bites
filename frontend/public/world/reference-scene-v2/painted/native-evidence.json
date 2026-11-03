@@ -1,0 +1,123 @@
+{
+  "commands": [
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "painted/parade-world.tsrct",
+        "--output",
+        "painted/parade-world-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "painted/parade-world.tsrct",
+        "--file",
+        "painted/parade-world-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "painted/parade-world.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "painted/parade-world-native.png"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "create",
+        "--project",
+        "painted/parade-map.tsrct"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "import-asset",
+        "--project",
+        "painted/parade-map.tsrct",
+        "--file",
+        "painted/parade-source-atlas-v3.png",
+        "--asset-id",
+        "scenery-4a93f18cd55b66f3",
+        "--kind",
+        "image"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "import-asset",
+        "--project",
+        "painted/parade-map.tsrct",
+        "--file",
+        "painted/parade-ground.png",
+        "--asset-id",
+        "ground-a6677d717766b585",
+        "--kind",
+        "image"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "painted/parade-map.tsrct",
+        "--output",
+        "painted/parade-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "painted/parade-map.tsrct",
+        "--file",
+        "painted/parade-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "painted/parade-map.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "painted/parade-map-native.png"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "map_limit": "Native editable overview zone is a solid semantic green fill; browser/SVG overview uses sampled lawn texture. Physical geometry is identical.",
+  "assets": "Exactly two packaged original image sources per project; named independently editable image layers with explicit rectangular crop masks. Source pixels unchanged.",
+  "renderer_workaround": "InstalledCLI0.4 accepted sourceRect but neighboring atlas pixels remained visible; explicit mask/full-source transform renders the intended crop. Asset IDs are content hashes to prevent stale imports."
+}

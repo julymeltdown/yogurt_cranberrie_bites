@@ -34,6 +34,13 @@ def main():
     assert {i['place_id'] for i in g['interactions']}=={i['place_id'] for i in p['places']}
     assert all(o['interaction_id'] is None or o['interaction_id'] in existing for o in p['placements'])
     assert all(o['interaction_id'] is None or o['interaction_id'] in existing for o in p['map_labels'])
+    physical_ids={o['id'] for o in p['placements']}
+    for representation in p['overview_representations']:
+        assert 'footprint' not in representation and 'cell_x' not in representation
+        assert representation['interaction_id'] is None or representation['interaction_id'] in existing
+        assert representation.get('replaces_prop_id') is None or representation['replaces_prop_id'] in physical_ids
+        assert representation['width']>0 and representation['height']>0
+        assert representation['x']<w*16 and representation['y']<h*16 and representation['x']+representation['width']>0 and representation['y']+representation['height']>0
     for o in p['placements']:
         assert len(o['footprint'])>=3
         assert all(0<=x<=w*16 and 0<=y<=h*16 for x,y in o['footprint']),o['id']
