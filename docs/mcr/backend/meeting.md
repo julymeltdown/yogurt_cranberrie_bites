@@ -332,3 +332,8 @@ all original fields and revision survive 0016, then verifies it is absent from
 current rally output. A new explicit NEED_HELP report with expected revision zero
 must become current at stored revision two. SQLx replays and exact published 0008
 checksum checks run on both fresh and upgraded databases before/after restart.
+
+Rally admission likewise retains event, party/pair, current destination and cutoff
+locks before the BE15 budget; apply preserves existing typed failure semantics.
+The report records every SQLx ledger migration source checksum separately from
+the direct-SQL fixture subset.

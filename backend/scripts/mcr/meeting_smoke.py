@@ -66,6 +66,7 @@ def main() -> int:
         cluster.init();cluster.start()
         cluster.sql('postgres',f'create database {DATABASE} template template0;')
         report['migration_sha256']={}
+        report['ledger_source_sha256']={path.name:hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted((ROOT/'backend/services/concert-service/migrations').glob('*.sql'))}
         for name in MIGRATIONS:
             path=ROOT/'backend/services/concert-service/migrations'/name
             report['migration_sha256'][name]=hashlib.sha256(path.read_bytes()).hexdigest()

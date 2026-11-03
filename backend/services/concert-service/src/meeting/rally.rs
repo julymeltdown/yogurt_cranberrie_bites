@@ -58,9 +58,7 @@ async fn active_meeting(c: &mut PgConnection, g: &PartyMeeting) -> Result<(), Me
     )
     .await
     .map_err(|_| MeetingError::StorageUnavailable)?;
-    if !matches!(selected, SelectionOutcome::Eligible(_)) {
-        return Err(MeetingError::ResourceUnavailable);
-    }
+    let eligible = matches!(selected, SelectionOutcome::Eligible(_));
     let cutoff = sqlx::query(
         "select event_cutoff from public.concert_meeting_settings where event_id=$1 for share",
     )
@@ -79,10 +77,13 @@ async fn active_meeting(c: &mut PgConnection, g: &PartyMeeting) -> Result<(), Me
         .fetch_one(&mut *tx)
         .await
         .map_err(storage)?;
-    if !live {
-        return Err(MeetingError::ResourceUnavailable);
+    // Retain venue/settings locks even for a typed refusal during pre-admission.
+    tx.commit().await.map_err(storage)?;
+    if live && eligible {
+        Ok(())
+    } else {
+        Err(MeetingError::ResourceUnavailable)
     }
-    tx.commit().await.map_err(storage)
 }
 fn entry(row: &PgRow) -> Result<RallyEntry, MeetingError> {
     let state = match row.try_get::<String, _>("state").map_err(invalid)?.as_str() {
@@ -215,9 +216,21 @@ impl<A: RallyAuthority> CommandProducer for RallyProducer<'_, A> {
         {
             return Err(CommandError::Denied);
         }
-        party(c, self.authority, self.q)
+        // Event/root/pair/destination locks all precede BE15's global budget.
+        sqlx::query("select phase from public.concert_events where event_id=$1 for share")
+            .bind(self.q.actor.event)
+            .fetch_optional(&mut *c)
+            .await
+            .map_err(|_| CommandError::Unavailable)?;
+        let g = party(c, self.authority, self.q)
             .await
             .map_err(command_error)?;
+        match active_meeting(c, &g).await {
+            Err(MeetingError::StorageUnavailable | MeetingError::InvalidState) => {
+                return Err(CommandError::Unavailable)
+            }
+            _ => {} // Apply retains the existing typed domain failure semantics.
+        }
         Ok(())
     }
     async fn apply(
