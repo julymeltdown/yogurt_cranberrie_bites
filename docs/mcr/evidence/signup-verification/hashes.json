@@ -1,0 +1,59 @@
+{
+  "candidate": "7bfea962136df4c35be43571c657d140d2982079",
+  "worker": "e45e87de3681421a4cb9db2c550dd61ffc3cddd7",
+  "worker_delta_base": "e725ae4e1c511b299619de8c0f5e343e3daf640e",
+  "paths": [
+    {
+      "path": "docs/mcr/frontend/signup-verification.md",
+      "sha256": "29c2af7a0414e9f6e1ac772a9309e6cc1112570c3648a0c1227442e9a3e95fa9"
+    },
+    {
+      "path": "frontend/src/app/PublicBoundary.tsx",
+      "sha256": "a61bea26379f30c1e80484da32a06744973177e8843ff403b779ade4246e38ed"
+    },
+    {
+      "path": "frontend/src/app/__tests__/enrollment.test.tsx",
+      "sha256": "1343483bbb4e3ca9bd8cdffd643546ef807ef422163b48e3d4d310137efd31e1"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/enrollment-browser-smoke.mjs",
+      "sha256": "4c6b3e648b80f04d4b6d0c61a03daec553ef417677344cad6bf4c38f959bde83"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/enrollment.test.ts",
+      "sha256": "b6b3f9d92d2912df39744091e87b41ca035dd65ed11aad8e7b5ec40052ad3742"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/fixtures/enrollment-preview.html",
+      "sha256": "e761c48a715e4d38ffb95023d2c53601325e2240cc703738edb68002f9cb8fd6"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/fixtures/enrollment-preview.tsx",
+      "sha256": "d3ca92ac9b9355c96949485288a0eaa607c0ffdb94dff1d6e4516b572f34f22f"
+    },
+    {
+      "path": "frontend/src/features/auth/model/enrollment-contract.ts",
+      "sha256": "2e900351b139058f1f47f03ae6cb0577fb3b8ad5dbed59a1035e7a6539d5dc22"
+    },
+    {
+      "path": "frontend/src/features/auth/model/enrollment.ts",
+      "sha256": "f74c325a21e9d8e246fa104ddfeef3c35b7fd4a4c4f22820b9aec8bd05bd2e4e"
+    },
+    {
+      "path": "frontend/src/features/auth/model/session.ts",
+      "sha256": "a2f380d2062e136302ed803f9a98c45ff1d84d300d56f31e0540758be3bb24e3"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/SignUp.tsx",
+      "sha256": "2179fbdc10809f87d0c1000e7ad754750a236e6e7ec5044b251f549a637d4354"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/VerifyEmail.tsx",
+      "sha256": "6d856d9dc04ef34b4209d43077d8cf0a3f4789228d9e7a2132fe836a04d8376c"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/enrollment.css",
+      "sha256": "71bcc85bf4f2b5358376c24c3024540798e920dc35a945414a83293fd9263800"
+    }
+  ]
+}

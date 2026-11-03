@@ -1,0 +1,64 @@
+5:01:09 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+{
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "height": 800,
+      "forms": "PASS",
+      "duplicateAndUncertainty": "PASS",
+      "expiryAndServerCooldown": "PASS",
+      "privacyAndHygiene": "PASS",
+      "focusTargetsContrast": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "forms": "PASS",
+      "duplicateAndUncertainty": "PASS",
+      "expiryAndServerCooldown": "PASS",
+      "privacyAndHygiene": "PASS",
+      "focusTargetsContrast": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "forms": "PASS",
+      "duplicateAndUncertainty": "PASS",
+      "expiryAndServerCooldown": "PASS",
+      "privacyAndHygiene": "PASS",
+      "focusTargetsContrast": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "forms": "PASS",
+      "duplicateAndUncertainty": "PASS",
+      "expiryAndServerCooldown": "PASS",
+      "privacyAndHygiene": "PASS",
+      "focusTargetsContrast": "PASS",
+      "reducedHeight": "PASS"
+    }
+  ],
+  "production": "PASS: cold signup/verify no API; explicit verify capability discovery and anonymous resend/verify work without event; no world/fixture entry",
+  "eventIndependentDiscovery": "PASS: null, malformed and production no-event",
+  "publicCalls": [
+    "/api/auth/capabilities",
+    "/api/auth/email/resend",
+    "/api/auth/email/verify"
+  ],
+  "calls": {
+    "signup": 8,
+    "verify": 22,
+    "resend": 14
+  },
+  "pageErrors": [],
+  "limits": [
+    "Synthetic HTTP only; no real account, mail, eligibility or consent persistence.",
+    "Application dispatch count is not physical TCP arrival proof.",
+    "No response challenge expiry/cooldown metadata; countdown uses Retry-After only."
+  ]
+}

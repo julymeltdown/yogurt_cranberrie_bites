@@ -27,7 +27,7 @@ it is not feature integration or release acceptance.
 | FE07 | MOCK_READY | [Integrated shell review](evidence/world-shell-integration.md), candidate `d7909c0`: 276 tests, frozen build/lint/origin scan, four installed-Chrome viewports and production-entry isolation pass. Review fixes block obsolete initial loader dispatch and bound scroll history. Actual Phaser/socket/camera preservation and device qualification remain; no real-world or IA acceptance. |
 | FE08 | MOCK_READY | [Integrated public-entry review](evidence/public-entry-integration.md), `e7de0f3`: 410 parent tests, build/lint/origin/boundary, four-width Chrome/reduced-height and production isolation pass. Canonical redirect and safe synthetic document presentation delivered. Approved publication/legal/contact/retention inputs and real-service/device/IN01 gates remain open. |
 | FE09 | MOCK_READY | [Integrated review](evidence/session-sign-in-integration.md), candidate `a9e130e`: 354 tests including 78 FE09, strict build/lint/origin/boundary checks and four-width native Chrome/cross-tab/production-isolation checks pass. Review fixes preserve valid session on 403 while 401 clears. Production automatic restore/refresh stays disabled; real BE03 Secure-cookie/revocation/rotation, event/world and IN01 gates remain open. Delivered increment goal completed; task not accepted. |
-| FE10 | IN_PROGRESS | New tool-confirmed ACTIVE bounded goal on isolated `fe-signup`, base `e725ae4`. Source-mapped signup/verification/resend views and canonical coordination assigned; production signup stays unavailable pending approved eligibility/consent/publication inputs. No invented challenge timer or verified session. |
+| FE10 | MOCK_READY | [Integrated review](evidence/signup-verification-integration.md), `f825b31`/`f498194`/`7bfea96`: 737 combined frontend tests, build/lint/C03/C08/boundary/plan and four-width enrollment/sign-in/recovery browser suites pass. Three concrete review fixes delivered; bounded goal COMPLETE. Anonymous verification is event-independent; production signup/eligibility/consent/live mail/device/vertical gates remain unqualified. |
 | FE11 | MOCK_READY | [Integrated recovery review](evidence/password-recovery-integration.md), `d290391`/`4360d58`/`4550029`: 669 combined tests, strict build/lint/C03/origin/boundary/plan and four-width native recovery plus retained sign-in suites pass. Source fragment intake, canonical confirmation fencing and safe callback presentation delivered; bounded goal COMPLETE. Real mail/BASE_URL/Secure cookies/OAuth/device/IN01 remain NOT_RUN. |
 | FE16 | MOCK_READY | [Reviewed transport integration](evidence/world-transport-integration.md), `e3a4d84`/`5863f91`: 568 combined frontend tests (158 transport), build/lint/type-drift/origin/plan and installed-Chrome five canonical traces pass. Gap recovery and pre-send room-switch failure findings corrected. Bounded goal COMPLETE; production lifecycle, replication and real-server/IN01 remain NOT_RUN. |
 
@@ -43,9 +43,10 @@ startup is verified within BE05; product APIs/identity are not.
 The main checkout integrates reviewed commits serially. Two user-supplied chats and two newly created
 visible Codex chats use disjoint backend/frontend worktrees and requested
 `gpt-6.1-sol` / high settings. Chat count does not imply four active writers:
-FE10 and the authenticated Auth RPC are current writers after completed FE11 and owner-read review; the original BE04 chat is
-blocked on shared contracts, and all finished checkouts are stopped. The
-BE15 chat was reused for the Auth-owner increment on a separate checkout.
+the authenticated Auth RPC has a clean committed handoff under parent review.
+FE10 and the independent event/RPC-prerequisite QA review have tool-confirmed
+COMPLETE bounded goals and stopped checkouts. The original BE04 chat is blocked
+on shared contracts. Completed chats are reused only for useful, disjoint work.
 Previous subagents were stopped
 before ownership transferred; their unfinished work was preserved. The
 [chat ownership register](chat-coordination.md) gives exact paths and handoffs.
@@ -65,12 +66,15 @@ review reproduced and rechecked the preliminary nested-modal defect, then found
 no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
-FE11 and the actual Auth-owned read finished review with COMPLETE goals and stopped
-clean checkouts. New tool-confirmed ACTIVE goals now cover FE10 signup/verification
-and the authenticated Auth-owner RPC in fresh disjoint worktrees. The original
-BE04 goal remains BLOCKED. Parent owns the shared RPC/platform prerequisite
-`a44f8fa` (isolated, not published as working admission), remaining Gateway/Concert
-composition and the [admission direction](identity-admission-decision.md).
+FE11, the Auth-owned read and FE10 finished bounded review with COMPLETE goals
+and stopped clean checkouts. The authenticated Auth RPC handoff `9bf3233` remains
+under parent integration review with its goal ACTIVE. Independent QA review
+`e0b37cc`, integrated as `e103da2`, found no actionable defect in the event-scope
+correction or Auth prerequisites; its goal is COMPLETE. The actual handler was
+outside that review. The original BE04 goal remains BLOCKED. Parent owns the
+shared RPC/platform prerequisite `a44f8fa`/`e79fd177` (not published as working
+admission), remaining Gateway/Concert composition and the
+[admission direction](identity-admission-decision.md).
 The user removed any fixed backend/frontend quota; the
 [capacity assessment](parallel-capacity.md) records allocation decisions.
 BE03 browser/provider gates remain open.
