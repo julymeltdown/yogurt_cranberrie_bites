@@ -1,8 +1,8 @@
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { Link, Outlet, useLocation, useNavigationType } from 'react-router-dom'
 import { Button, Feedback } from '../shared/ui'
 import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad, validBootstrap } from './access'
-import { NavigationMemory, ShellLink, usePanelBack } from './navigation'
+import { MAX_SHELL_LOCATIONS, NavigationMemory, ShellLink, usePanelBack } from './navigation'
 import type { ActiveScope, ShellBootstrap } from './ports'
 import { resolvePanel, tabs, type PanelRoute } from './routes'
 import { WorldHost } from './WorldHost'
@@ -98,9 +98,16 @@ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'hal
     if (element) element.scrollTop = positions.get(location.pathname + location.search) ?? 0
     // On POP NavigationMemory restores a known opener; otherwise focus the destination heading.
     heading.current?.focus({ preventScroll: true })
-    return () => { if (element) positions.set(location.pathname + location.search, element.scrollTop) }
+    return () => {
+      if (!element) return
+      const path = location.pathname + location.search
+      positions.delete(path)
+      positions.set(path, element.scrollTop)
+      if (positions.size > MAX_SHELL_LOCATIONS) positions.delete(positions.keys().next().value!)
+    }
   }, [location.key, location.pathname, location.search, navigation])
-  useEffect(() => { if (size === 'peek') onSize('half') }, [location.pathname]) // New destinations must expose their content.
+  // A destination includes its query target. Reopen on navigation, not on a user size change.
+  useLayoutEffect(() => { if (size === 'peek') onSize('half') }, [location.key])
   return <main id="shell-content" tabIndex={-1} className="shell-panel" aria-labelledby="panel-title"
     onKeyDown={event => {
       if (event.key === 'Escape' && !event.defaultPrevented && !typingTarget(event.target)) { event.preventDefault(); back() }

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate, useNavigationType } from 'react-router-
 import { parentPath, safeReturnTarget } from './routes'
 
 interface Visit { path: string; focusId: string | null }
+export const MAX_SHELL_LOCATIONS = 100
 const Visits = createContext<Map<string, Visit> | null>(null)
 export function NavigationMemory({ children }: { children: ReactNode }) {
   const visits = useRef(new Map<string, Visit>())
@@ -13,7 +14,7 @@ export function NavigationMemory({ children }: { children: ReactNode }) {
     if (navigation === 'POP' && visit?.focusId) document.getElementById(visit.focusId)?.focus({ preventScroll: true })
     visits.current.set(location.key, { path: location.pathname + location.search, focusId: visit?.focusId ?? null })
     // Bound memory without storing content/drafts or private metadata.
-    if (visits.current.size > 100) visits.current.delete(visits.current.keys().next().value!)
+    if (visits.current.size > MAX_SHELL_LOCATIONS) visits.current.delete(visits.current.keys().next().value!)
   }, [location, navigation])
   return <Visits value={visits.current}>{children}</Visits>
 }

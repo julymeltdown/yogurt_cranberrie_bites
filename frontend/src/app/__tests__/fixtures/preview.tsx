@@ -31,6 +31,8 @@ createRoot(controls).render(<details><summary>FE07 test controls</summary>
   <Button onClick={() => fixture.setReadiness('anonymous')}>Anonymous fixture</Button>
   <Button onClick={() => fixture.replace()}>Switch account</Button>
   <Button onClick={() => fixture.replace(ids.other, ids.nextEvent)}>Switch event</Button>
+  <Button onClick={() => void router.navigate(`/report?targetType=USER&targetId=${ids.user}`)}>Open report fixture</Button>
+  <Button onClick={() => void router.navigate(`/report?targetType=USER&targetId=${ids.other}`)}>Next report fixture</Button>
   <Button onClick={() => void router.navigate('/admin')}>Admin exit</Button>
   <Button onClick={() => void router.navigate('/')}>Public exit</Button>
 </details>)

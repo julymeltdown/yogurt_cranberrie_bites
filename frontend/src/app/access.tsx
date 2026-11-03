@@ -74,6 +74,9 @@ export function useScopedLoad<T>(scope: ActiveScope, load: (signal: AbortSignal)
   useEffect(() => {
     const controller = new AbortController()
     const signal = ports.session.read().signal
+    // The rendered scope can already be obsolete before passive setup runs.
+    // Do not subscribe to the replacement identity or allocate a timer for it.
+    if (signal.aborted || !ports.session.isCurrent(scope)) { controller.abort(); return }
     const abort = () => controller.abort()
     signal.addEventListener('abort', abort, { once: true })
     const timer = setTimeout(() => {
@@ -82,7 +85,12 @@ export function useScopedLoad<T>(scope: ActiveScope, load: (signal: AbortSignal)
       }
     }, timeoutMs)
     Promise.resolve().then(() => {
-      if (controller.signal.aborted) throw new Error('Aborted')
+      // Fence dispatch as well as commit: a replacement can occur after setup
+      // but before this microtask. Never pair an old scope with new credentials.
+      if (controller.signal.aborted || signal.aborted || !ports.session.isCurrent(scope)) {
+        controller.abort()
+        throw new Error('Aborted')
+      }
       return load(controller.signal)
     }).then(value => {
       if (!controller.signal.aborted && ports.session.isCurrent(scope)) setState({ source: ports, key, attempt, result: { status: 'ready', value } })

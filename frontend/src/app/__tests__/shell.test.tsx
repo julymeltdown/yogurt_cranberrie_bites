@@ -1,12 +1,14 @@
 // @vitest-environment jsdom
 import '@testing-library/jest-dom/vitest'
-import { StrictMode } from 'react'
+import { StrictMode, useLayoutEffect } from 'react'
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { createAppRoutes } from '../router'
 import { ShellLink } from '../navigation'
 import { createProductionPorts, ShellLoadError } from '../ports'
+import { PortsProvider, useScopedLoad } from '../access'
+import type { ActiveScope } from '../ports'
 import { bootstrapFor, createFixturePorts, giftPath, ids } from './fixtures/ports'
 
 afterEach(cleanup)
@@ -125,6 +127,31 @@ describe('persistent world ownership', () => {
 })
 
 describe('honest access, bootstrap and failure boundaries', () => {
+  it.each(['bootstrap', 'admin'] as const)('never dispatches stale %s after identity changes between render and passive setup', async kind => {
+    const fixture = createFixturePorts()
+    const snapshot = fixture.ports.session.read()
+    const scope: ActiveScope = { generation: snapshot.generation, userId: ids.user, eventId: ids.event }
+    const bootstrap = vi.fn(fixture.ports.bootstrap.load)
+    const authorize = vi.fn(fixture.ports.admin.authorize)
+    const ports = { ...fixture.ports, bootstrap: { load: bootstrap }, admin: { authorize } }
+    // Isolate the captured-scope hook so no parent subscription can accidentally mask
+    // the race by rerendering/cleaning it up before the queued invocation executes.
+    function Probe() {
+      const result = useScopedLoad<unknown>(scope, signal => kind === 'bootstrap'
+        ? ports.bootstrap.load(scope, signal) : ports.admin.authorize(scope, signal), 0)
+      return <output>{result.status}</output>
+    }
+    function ReplaceBeforePassiveEffects() {
+      useLayoutEffect(() => { fixture.replace() }, [])
+      return null
+    }
+    render(<PortsProvider ports={ports}><Probe /><ReplaceBeforePassiveEffects /></PortsProvider>)
+    await act(async () => { await Promise.resolve() })
+    expect(snapshot.signal.aborted).toBe(true)
+    expect(ports.session.isCurrent(scope)).toBe(false)
+    expect(bootstrap).not.toHaveBeenCalled()
+    expect(authorize).not.toHaveBeenCalled()
+  })
   it('keeps production credentials empty and deep links unavailable without a bypass', async () => {
     const ports = createProductionPorts()
     const router = createMemoryRouter(createAppRoutes(ports), { initialEntries: [giftPath] }); routers.push(router)
@@ -257,6 +284,28 @@ describe('honest access, bootstrap and failure boundaries', () => {
 })
 
 describe('panel input, focus and scrolling', () => {
+  it('bounds scroll memory across more than 100 detail routes and clears it for a new identity', async () => {
+    const { stats, router, replace } = setup(giftPath)
+    await open()
+    document.querySelector('.shell-panel-body')!.scrollTop = 600
+    let last = giftPath
+    for (let index = 0; index < 101; index++) {
+      last = `/gifts/00000000-0000-4000-8000-${(1000 + index).toString(16).padStart(12, '0')}`
+      await act(() => router.navigate(last))
+      document.querySelector('.shell-panel-body')!.scrollTop = index + 1
+    }
+    click('World')
+    await act(() => router.navigate(giftPath))
+    expect(document.querySelector('.shell-panel-body')!.scrollTop).toBe(0)
+    await act(() => router.navigate(last))
+    expect(document.querySelector('.shell-panel-body')!.scrollTop).toBe(101)
+    expect(stats.mounts).toBe(1)
+    act(() => replace())
+    await open()
+    expect(document.querySelector('.shell-panel-body')!.scrollTop).toBe(0)
+    expect(stats.peakGames).toBe(1)
+    expect(stats.peakConnections).toBe(1)
+  })
   it('blocks input and pauses presentation while hidden, without assuming persistent networking', async () => {
     const { stats } = setup()
     await open()
@@ -311,6 +360,18 @@ describe('panel input, focus and scrolling', () => {
     expect(body).toBeVisible()
     click('World'); click('Gifts')
     expect(document.querySelector('.shell-panel-body')!.scrollTop).toBe(220)
+    expect(stats.mounts).toBe(1)
+  })
+  it('reveals a minimized panel when a new query target opens on the same path', async () => {
+    const first = `/report?targetType=USER&targetId=${ids.user}`
+    const second = `/report?targetType=USER&targetId=${ids.other}`
+    const { stats, router } = setup(first)
+    await open()
+    fireEvent.click(screen.getByRole('button', { name: 'Minimize panel' }))
+    expect(document.querySelector('.shell-panel-body')).not.toBeVisible()
+    await act(() => router.navigate(second))
+    expect(document.querySelector('.shell-panel-body')).toBeVisible()
+    expect(screen.getByRole('heading', { name: 'Report', level: 1 })).toHaveFocus()
     expect(stats.mounts).toBe(1)
   })
 })
