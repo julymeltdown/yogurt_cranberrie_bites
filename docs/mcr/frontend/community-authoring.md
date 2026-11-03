@@ -93,3 +93,69 @@ port and does not block FE22.
 Changed paths: only `frontend/src/features/party-authoring/**` and this document.
 The implementation commit is a direct descendant of the recorded base; the
 exact commit is supplied in the delivery message (no self-referential SHA).
+
+## FE23 bounded handoff — 2026-11-04
+
+Status: **MOCK_READY** for owner/member/rally consumer behavior. Parent source is
+FE22 commit `1c38ad4`; candidate C04 inputs remain pinned to `f0e44bd` above.
+Changed paths for this increment: `frontend/src/features/party-management/**`
+and this document only. Newly authored; dependencies are existing React,
+canonical Auth/privacy, the FE21 public-party decoder and owned FE22 closed-schema
+interpreter. No backend/shared/root/contracts changes or old rendering copied.
+
+Exports: `createPartyManagement`, `PartyManagement`, `PartyRally`, and typed
+`ManagementOptions`/`MeetingAuthority`. Owner decisions use captured application
+and party revisions, applicant/party/event identity and expected target state.
+Member removal and party cancellation require explicit confirmations. Paginated
+applications and members have independent cursors and contextual duplicate/limit
+checks. A last-slot/version conflict rereads current counts and revisions; no
+optimistic approval or fabricated capacity. Non-owner tools stay unavailable;
+403, policy/access changes and logout scrub private rows and meeting views.
+
+Rally requires complete authorized membership reads, current active party,
+explicit physical acknowledgement and a scoped expiring authority input. Meeting
+revision changes supersede old rally; expired/missing authority hides physical
+description and disables reports. No world/GPS/arrival inference exists. The
+`reportIntent({state, meeting_revision, physical_presence_acknowledged:true})`
+method is directly compatible with FE20 `ExplicitArrivalControls.onIntent`.
+The delivery composer can use FE20 controls with this controller instead of the
+standalone fixture UI. Production MeetingAuthority must be projected from FE20's
+qualified server beacon/audience authorization, never from public place labels.
+The authority read/subscribe port does not itself mint a server grant.
+
+Receipt conventions explicitly qualified by delivery and communicated by the BE
+owners on 2026-11-04: Member result `resource_id=user_id`, `Member.revision`, bound
+to exact event/party/user canonical command path; Rally result `resource_id=actor
+user_id`, `RallyEntry.revision`, additionally bound to the captured meeting
+revision and report. Never compare either revision across parties. Recovery
+rereads the exact authorized result; membership recovery scans up to ten
+additional pages and remains uncertain if it cannot verify the target. Event
+outbox invalidation is coarse community-query invalidation, not a global
+per-user/member cursor. No wire field or new resource UUID is invented.
+
+Pending, uncertain, missing/retired/expired receipts remain locked; status reads
+use the original command/key and never replay writes. Approval recovery binds
+application ID/applicant/state/revision, cancellation requires actual CANCELLED
+party, removal requires REMOVED membership in this party, and rally requires the
+same actor/party/meeting/state. Safety removal/cancel honors the C04 READ_ONLY
+exception when mutations are disabled specifically for EVENT_READ_ONLY.
+
+Validation (Node/pnpm paths above), all exit **0**:
+
+- Focused `test src/features/party-management`: **13 passed**. Prior combined
+  FE22/FE23 run: **20 passed** before the additional qualified-rally regression.
+- `typecheck` and `build`: passed; existing bundle-size warning unchanged.
+- Scoped `oxlint frontend/src/features/party-management`: no warnings.
+- `node frontend/src/features/party-management/__tests__/browser-smoke.mjs`:
+  Chromium 156.0.8078.80 at 360/390/430/1280; confirmation without write,
+  acknowledgement, last-slot refresh, superseded authority, unknown-command
+  lock, logout eviction, overflow/error checks passed. Source hashes and images
+  reside under `party-management/__tests__/evidence/browser/`. 390px owner/rally
+  image visually inspected.
+- `git diff --check`: passed.
+
+Routed shell composition, FE20 verified live authority adapter, public HTTP
+producers, real multiuser last-slot races, physical operation/device and IN02
+acceptance remain **NOT_RUN**. This does not establish BE09/BE19 completion.
+FE25/FE26 remain next in the active goal; FE04 owner has published its exact
+READY attachment seam while implementation/qualification continues separately.

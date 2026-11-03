@@ -1,0 +1,11 @@
+.party-management { max-width: 46rem; margin: 0 auto; padding: 1rem; padding-bottom: max(2rem,env(safe-area-inset-bottom)); background: #191b20; color: #eae6df; font: 1rem/1.5 system-ui,sans-serif; overflow-wrap: anywhere; }
+.party-management h1 { font-size: clamp(1.8rem,5vw,2.5rem); line-height: 1.15; }
+.party-management section { margin-top: 2rem; }
+.party-management ul { list-style: none; padding: 0; }
+.party-management li { padding: 1rem 0; border-bottom: 1px solid #45474d; }
+.party-management button { min-height: 44px; font: inherit; color: inherit; background: #25282f; border: 1px solid #85878c; border-radius: .35rem; padding: .65rem; cursor: pointer; max-width: 100%; }
+.party-management label { display: flex; gap: .75rem; align-items: center; min-height: 44px; }
+.party-management input { width: 24px; height: 24px; flex-shrink: 0; }
+.party-management :focus-visible { outline: 3px solid #f0c969; outline-offset: 3px; }
+.party-management :disabled { opacity: .6; cursor: default; }
+.party-management-actions { display: flex; flex-wrap: wrap; gap: .75rem; }

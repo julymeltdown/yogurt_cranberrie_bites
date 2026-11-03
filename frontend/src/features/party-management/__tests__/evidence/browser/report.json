@@ -1,0 +1,28 @@
+{
+  "result": "PASS",
+  "scope": "FE23 isolated native UI against deterministic C04 fetch fixture and canonical Auth/privacy; no real backend/world/device/physical authority acceptance.",
+  "widths": [
+    360,
+    390,
+    430,
+    1280
+  ],
+  "checks": [
+    "confirmation cancel makes no write",
+    "explicit rally acknowledgement required",
+    "last-slot conflict refreshes full count",
+    "moved meeting removes old authority",
+    "unknown cancellation locks all mutations",
+    "logout clears private rows",
+    "no horizontal overflow",
+    "no browser errors"
+  ],
+  "sourceHashes": {
+    "model/controller.ts": "2a5f813e301fcb538f12c2ce61ad3511a62b42cf07809ed726501eb3285a8852",
+    "ui/PartyManagement.tsx": "12a41dc663a900701c53593cfbd0116c6aff2aeaeaff09e739523ec9f0561bca",
+    "ui/management.css": "47c20e172adcd3e71ebd348155242677b3d234cab278f13bf25f5c23111ebb40",
+    "__tests__/harness.ts": "09eff75203a758b08f104af549d1c5e86f7a6a647577b1308e82d869735ed338",
+    "__tests__/preview.tsx": "7a5d4fdfbf8c77265217ffba528eb48557222f3f796a309b8955b665c0ac470c"
+  },
+  "browser": "156.0.8078.80"
+}
