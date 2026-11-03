@@ -1,0 +1,331 @@
+{
+  "result": "PASS",
+  "scope": "FE-REF-FEED actual production EventFeed/FeedImage/canonical privacy; deterministic fixture transport and venue test imagery. Caller portrait mapping, real service/device/IN03 NOT_RUN.",
+  "browser": "156.0.8078.80",
+  "widths": [
+    {
+      "width": 360,
+      "scrollWidth": 360,
+      "rows": [
+        {
+          "top": 109,
+          "bottom": 327.296875,
+          "height": 218.296875
+        },
+        {
+          "top": 332.296875,
+          "bottom": 550.59375,
+          "height": 218.296875
+        }
+      ],
+      "controls": [
+        {
+          "label": "ALL",
+          "width": 60.71875,
+          "height": 44
+        },
+        {
+          "label": "MEETUP",
+          "width": 79.6875,
+          "height": 44
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 98.6875,
+          "height": 44
+        },
+        {
+          "label": "NOTICE",
+          "width": 75.90625,
+          "height": 44
+        },
+        {
+          "label": "View 42 reactions in thread",
+          "width": 46.953125,
+          "height": 44
+        },
+        {
+          "label": "Open thread · 7 comments",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View post sharing in thread",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View 27 reactions in thread",
+          "width": 46.953125,
+          "height": 44
+        },
+        {
+          "label": "Open thread · 5 comments",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View post sharing in thread",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Feed options",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Write a post",
+          "width": 218,
+          "height": 44
+        },
+        {
+          "label": "Refresh feed",
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "footerBottom": 616.59375,
+      "checks": [
+        "two articles/media",
+        "four tabs and keyboard",
+        "notice source",
+        "thread/compose callbacks",
+        "44px targets",
+        "no overflow",
+        "privacy removes images/revokes blobs",
+        "empty/read-only/unavailable/pending/error"
+      ],
+      "calls": [
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=ALL",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/notices?limit=20",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=PARTY_LINK",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/notices/00000000-0000-4000-8000-000000000060",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=ALL"
+      ]
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "rows": [
+        {
+          "top": 109,
+          "bottom": 338.625,
+          "height": 229.625
+        },
+        {
+          "top": 343.625,
+          "bottom": 573.25,
+          "height": 229.625
+        }
+      ],
+      "controls": [
+        {
+          "label": "ALL",
+          "width": 66.5,
+          "height": 44
+        },
+        {
+          "label": "MEETUP",
+          "width": 87.28125,
+          "height": 44
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 108.078125,
+          "height": 44
+        },
+        {
+          "label": "NOTICE",
+          "width": 83.140625,
+          "height": 44
+        },
+        {
+          "label": "View 42 reactions in thread",
+          "width": 46.953125,
+          "height": 44
+        },
+        {
+          "label": "Open thread · 7 comments",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View post sharing in thread",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View 27 reactions in thread",
+          "width": 46.953125,
+          "height": 44
+        },
+        {
+          "label": "Open thread · 5 comments",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View post sharing in thread",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Feed options",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Write a post",
+          "width": 248,
+          "height": 44
+        },
+        {
+          "label": "Refresh feed",
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "footerBottom": 639.25,
+      "checks": [
+        "two articles/media",
+        "four tabs and keyboard",
+        "notice source",
+        "thread/compose callbacks",
+        "44px targets",
+        "no overflow",
+        "privacy removes images/revokes blobs",
+        "empty/read-only/unavailable/pending/error"
+      ],
+      "calls": [
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=ALL",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/notices?limit=20",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=PARTY_LINK",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/notices/00000000-0000-4000-8000-000000000060",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=ALL"
+      ]
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430,
+      "rows": [
+        {
+          "top": 109,
+          "bottom": 353.71875,
+          "height": 244.71875
+        },
+        {
+          "top": 358.71875,
+          "bottom": 603.4375,
+          "height": 244.71875
+        }
+      ],
+      "controls": [
+        {
+          "label": "ALL",
+          "width": 74.203125,
+          "height": 44
+        },
+        {
+          "label": "MEETUP",
+          "width": 97.421875,
+          "height": 44
+        },
+        {
+          "label": "GIVEAWAY",
+          "width": 120.59375,
+          "height": 44
+        },
+        {
+          "label": "NOTICE",
+          "width": 92.78125,
+          "height": 44
+        },
+        {
+          "label": "View 42 reactions in thread",
+          "width": 46.953125,
+          "height": 44
+        },
+        {
+          "label": "Open thread · 7 comments",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View post sharing in thread",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View 27 reactions in thread",
+          "width": 46.953125,
+          "height": 44
+        },
+        {
+          "label": "Open thread · 5 comments",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "View post sharing in thread",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Feed options",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Write a post",
+          "width": 288,
+          "height": 44
+        },
+        {
+          "label": "Refresh feed",
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "footerBottom": 669.4375,
+      "checks": [
+        "two articles/media",
+        "four tabs and keyboard",
+        "notice source",
+        "thread/compose callbacks",
+        "44px targets",
+        "no overflow",
+        "privacy removes images/revokes blobs",
+        "empty/read-only/unavailable/pending/error"
+      ],
+      "calls": [
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=ALL",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/notices?limit=20",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=PARTY_LINK",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/notices/00000000-0000-4000-8000-000000000060",
+        "/api/concert/events/00000000-0000-4000-8000-000000000001/feed?limit=20&filter=ALL"
+      ]
+    }
+  ],
+  "errors": [],
+  "sourceHashes": {
+    "EventFeed.tsx": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae",
+    "FeedImage.tsx": "b648a7e3e46168e28a02c7ac223af0a90502a40a5a568e0590310c2c7d54eebf",
+    "FeedGlyph.tsx": "80cfebc22cc438245a7316b8424257ecbcf36272602cf6a6a25553e69fb3c9dc",
+    "presentation.ts": "3ae5f3a71a2ff0e355c16638aea678539b15ceabd3803e88a621b813ee7799d1",
+    "feed.css": "d310ea2abe043a0a79e570f826b0cafd15a541162431fedb082bdf97879e7880",
+    "controller.ts": "0d528342c21b6d1e3c9a7038c6a243d2fb4d32e9f2e00beda6ac7c3091d83c5b",
+    "contract.ts": "3752e9f21488cd149af6d4d4e5baa0c09f34502dd7366cad1d14491b574ba860",
+    "runtime.ts": "b06fd89a3f9fbbb923329b7be01b9d7193f0b9c8e8c06e1de16e8cf4f6f9ce66"
+  },
+  "fixtureMedia": [
+    {
+      "path": "frontend/public/world/illustrated/parade-scene.png",
+      "sha256": "db0b712ae4026b51729122a7dd992866793872fb7373f7cf76a6aad5e252d798"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-scene.png",
+      "sha256": "584bb7de9a3e032d9ec6c90cae4c6751fce65d5943475f9e7e4498f38372236e"
+    }
+  ]
+}
