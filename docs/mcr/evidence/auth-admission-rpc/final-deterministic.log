@@ -1,0 +1,16 @@
+
+running 11 tests
+test deterministic_exact_proof_replay_does_not_redispatch ... ok
+test deterministic_legacy_skew_valid_but_expired_proof_has_no_strict_authority ... ok
+test deterministic_malformed_canonical_ids_and_binding_never_dispatch ... ok
+test deterministic_missing_invalid_elapsed_original_deadline_never_dispatch ... ok
+test deterministic_missing_wrong_and_sibling_callers_never_dispatch ... ok
+test deterministic_owner_errors_keep_fixed_safe_statuses ... ok
+test deterministic_proof_expiry_bounds_a_longer_original_transport_deadline ... ok
+test deterministic_registered_gateway_reaches_actual_generated_handler ... ok
+test deterministic_requested_binding_cannot_be_replaced_by_not_requested_facts ... ok
+test deterministic_signature_audience_method_body_actor_and_bare_metadata_deny ... ok
+test deterministic_whole_owner_await_and_late_noncooperative_completion_are_fenced ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 5 filtered out; finished in 4.28s
+

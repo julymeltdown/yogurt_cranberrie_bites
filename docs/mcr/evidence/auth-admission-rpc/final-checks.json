@@ -1,0 +1,69 @@
+{
+  "candidate": "97a698a43e502a73ff00a489b3155b370cb9d681",
+  "dirty_files": [],
+  "commands": [
+    {
+      "name": "build",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--locked",
+        "--offline",
+        "-p",
+        "auth-service",
+        "--bin",
+        "auth-service",
+        "--message-format=json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "test-build",
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "auth-service",
+        "--test",
+        "concert_admission_rpc",
+        "--test",
+        "concert_identity_owner",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "deterministic",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_admission_rpc-a103461207cc823e",
+        "deterministic_",
+        "--test-threads=1"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "native",
+      "argv": [
+        "python3",
+        "backend/scripts/mcr/auth_admission_rpc_smoke.py",
+        "--binary",
+        "/Users/lhs/Desktop/mcr-build/backend/debug/auth-service",
+        "--rpc-test",
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_admission_rpc-a103461207cc823e",
+        "--owner-test",
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_identity_owner-74bbc6b164f59f91",
+        "--pg-bin",
+        "/opt/homebrew/opt/postgresql@16/bin",
+        "--report",
+        "/tmp/mcr-rpc-parent/final-native.json"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "completed": true
+}

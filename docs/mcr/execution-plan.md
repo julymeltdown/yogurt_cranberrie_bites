@@ -8,10 +8,10 @@ The main chat is the integrator. Backend and frontend development run in separat
 
 Four visible chats are available; no fixed lane count is required. FE10, FE11,
 the Auth-owner read and independent event/RPC-prerequisite review have
-COMPLETE bounded goals and stopped checkouts. The authenticated Auth RPC has a
-clean committed handoff under parent review; its goal remains ACTIVE. The
+COMPLETE bounded goals and stopped checkouts. The authenticated Auth RPC and its actual-handler QA review now have COMPLETE
+bounded goals after final native qualification. The
 original BE04 goal is BLOCKED on central composition. FE14 runtime/resource
-consumption and final actual-handler QA now have separate new ACTIVE goals. Actual goal state and
+consumption has a separate new ACTIVE goal. Actual goal state and
 assignments are recorded in the [ownership register](chat-coordination.md) and
 [capacity assessment](parallel-capacity.md).
 

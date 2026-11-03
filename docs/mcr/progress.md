@@ -18,7 +18,7 @@ it is not feature integration or release acceptance.
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
 | BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
 | BE03 | INTEGRATED | [Email ingress review](evidence/browser-auth-integration.md), candidate `689e4d2`: parent reran 221 Gateway tests, nine harness tests and 53 real native HTTP checks with three mail deliveries and cleanup PASS. Frozen email/account mapping, browser guards and invalid-credential handling delivered. Real browser cookie policy, configured OAuth and complete BE03 acceptance remain open. |
-| BE04 | IN_PROGRESS | [Identity foundation](evidence/identity-integration.md) and [real Auth-owner read](evidence/auth-identity-owner-integration.md), `c300a23`: parent verified 8 value/23 retained application/89 helper/22 real PostgreSQL tests, all 13 SQLx migrations, restart and cleanup. Bounded Auth-owner goal COMPLETE; original identity goal remains BLOCKED. Authenticated RPC/Gateway/Concert composition and event policy remain; production authority stays unavailable. |
+| BE04 | IN_PROGRESS | [Identity foundation](evidence/identity-integration.md), [Auth-owner read](evidence/auth-identity-owner-integration.md) and [authenticated RPC review](evidence/auth-admission-rpc-integration.md): final `97a698a` passes 11 controlled, five actual RPC and 22 retained PostgreSQL cases, migrations/reapply/restart/cleanup. Independent QA closed R1; both bounded goals COMPLETE. Gateway JWT/Profile/event/signed Concert composition and production policy remain unqualified; original identity goal BLOCKED. |
 | BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
 | BE15 | IN_PROGRESS | [Reviewed internal receipt/outbox foundation](evidence/command-receipts-integration.md), `7cbb97e`/`c2a2c30`: 33 combined deterministic Rust, 82 Python helper and 17 real PostgreSQL tests pass; owned migration failure/recovery, restart persistence and cleanup pass. Review fixes cover keyed private fingerprints, post-authorization expiry and result/outbox revision equality. Bounded goal COMPLETE; production producer/Auth/public API/key configuration/runtime/load gates remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
@@ -44,9 +44,9 @@ startup is verified within BE05; product APIs/identity are not.
 The main checkout integrates reviewed commits serially. Two user-supplied chats and two newly created
 visible Codex chats use disjoint backend/frontend worktrees and requested
 `gpt-6.1-sol` / high settings. Chat count does not imply four active writers:
-the authenticated Auth RPC has a clean committed handoff under parent review.
-FE10 and the independent event/RPC-prerequisite QA review have tool-confirmed
-COMPLETE bounded goals and stopped checkouts. The original BE04 chat is blocked
+FE14 has an ACTIVE goal on a separate runtime checkout. Auth RPC, FE10 and
+both independent QA reviews have tool-confirmed COMPLETE bounded goals and
+stopped checkouts. The original BE04 chat is blocked
 on shared contracts. Completed chats are reused only for useful, disjoint work.
 Previous subagents were stopped
 before ownership transferred; their unfinished work was preserved. The
@@ -68,8 +68,8 @@ no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
 FE11, the Auth-owned read and FE10 finished bounded review with COMPLETE goals
-and stopped clean checkouts. The authenticated Auth RPC handoff `9bf3233` remains
-under parent integration review with its goal ACTIVE. Independent QA review
+and stopped clean checkouts. The authenticated Auth RPC handoff and R1 correction completed parent review
+with actual COMPLETE goals. Independent QA review
 `e0b37cc`, integrated as `e103da2`, found no actionable defect in the event-scope
 correction or Auth prerequisites; its goal is COMPLETE. The actual handler was
 outside that review. The original BE04 goal remains BLOCKED. Parent owns the
@@ -84,11 +84,11 @@ BE06/bootstrap follows qualified authority. No runtime, OAuth or release
 acceptance follows from completed component/contract checks.
 
 
-FE14 runtime/resource work and actual-handler QA now have new tool-confirmed
-ACTIVE goals on fresh frontend and QA worktrees. Auth RPC R1 was a test setup
-race; its test-only fix is integrated for final parent qualification. The initial
-combined RPC candidate passes five real RPC and 22 retained PostgreSQL cases;
-final corrected-source evidence and independent review disposition remain open.
+FE14 runtime/resource work has a new tool-confirmed ACTIVE goal on a fresh
+frontend worktree. Auth RPC and actual-handler QA goals are now COMPLETE: R1
+was a test setup race, its correction is integrated, and final clean `97a698a`
+passes eleven controlled cases plus five real RPC and 22 retained PostgreSQL
+cases. All source pins, restart/cleanup and independent disposition are verified.
 The parent also corrected the BE15 harness's stale candidate pins after `5c02a31`;
 all 98 helper tests, 138 contract regressions and planning checks pass at `d197379`.
 No production moderation, identity admission or release gate is thereby enabled.

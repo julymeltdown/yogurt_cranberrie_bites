@@ -75,16 +75,29 @@ qualified invalidation protocol, failing closed on a gap.
 - Concert is absent from the retained Workload enum and has no product RPC adapter.
   Adding its name to an allowlist alone does not establish actor/request authority.
 
-The actual Auth application/persistence read is integrated as `c300a23`, with
-22 parent real PostgreSQL cases and complete SQLx migration/restart/cleanup
-evidence. The next isolated backend goal composes the authenticated internal RPC.
-Parent prerequisite `a44f8fa` defines its minimal proto, Gateway-only actor-field
-policy and verified request-local expiry/original-deadline context; it remains
-unpublished until the real handler is reviewed. The worker has exact bounded
-Auth state/server exceptions; proto/platform/Gateway/Concert, signed admission
-and production composition stay with the parent. See the
-[ownership register](chat-coordination.md). A new query or internal RPC is not
-a public API or accepting Concert adapter.
+The Auth application/persistence read and authenticated internal RPC are now
+integrated with candidate-bound native evidence. Owner read `c300a23` supplies
+the minimal snapshot; prerequisites `a44f8fa`/`e79fd177`, implementation `9bf3233`
+and test correction `5c59f1f` are integrated and reviewed together. The final
+combined candidate `97a698a` passes eleven controlled generated-server cases,
+five real RPC and 22 retained owner PostgreSQL cases, migration/reapply/restart
+and cleanup. See [RPC integration evidence](evidence/auth-admission-rpc-integration.md).
+These are Auth-owned facts, not public admission or an accepting Concert adapter.
+
+The next Gateway prerequisite must retain authenticated JWT access expiry as well
+as canonical subject/family. The existing `JwtVerifier::verify_access_token`
+checks the token through configured signing keys but returns legacy
+`VerifiedAccessToken` with only subject, roles and optional session ID; that
+projection does not retain signed expiry. It cannot serve unchanged as the
+multi-await original-deadline context. Preserve existing routes while introducing
+and testing a narrow strict context from the verified decoder: mandatory
+canonical user/family, actual signed expiry, original monotonic stop, redacted
+nonportable state and rechecks after waits. No browser-supplied actor/role may
+construct it. This prerequisite alone grants no owner result or Concert authority.
+
+Parent retains proto/platform/Gateway/Concert contracts and composition. The
+next exact assignment must use a fresh worktree/goal, keep the completed Auth
+checkout stopped and preserve [ownership boundaries](chat-coordination.md).
 
 Required qualification includes foreign actor/family/reference, deleted/unlinked/
 relinked claims, expired/revoked account/session, owner outage, role/epoch changes,
