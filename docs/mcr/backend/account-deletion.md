@@ -143,9 +143,15 @@ another person's memory.
 
 ## Validation record
 
-Before Cargo lease: Rust 1.88 formatting passes; the Python runner's two safety
-tests pass (exit 0). Cargo compilation, pure Rust tests and runner-owned native
-PostgreSQL tests are **NOT_RUN** until the shared target lease is granted.
+Rust 1.88 compilation passes under the explicit BACKEND reservation. Frozen
+Cargo-JSON-selected copies pass 15 Auth domain tests, 23 Auth application tests
+and all 124 Auth unit tests (all exit 0). Python runner safety tests: 2/2 pass.
+The new five adapter tests and owned native upgrade/retry/restart checks pass
+against PG 16.14 with all 15 migration checksums, including unchanged 0014.
+The first expanded inherited durability run passed four tests and exposed an
+obsolete two-saga claim batch limit in the operator-retry fixture; this is a
+qualification failure pending its narrow test correction and rerun. No green
+overall gate is claimed for that failed first report. Owned cleanup passed.
 
 The native runner accepts only a copied absolute regular executable outside
 `target/` matching an explicit SHA256. It creates a fresh Unix-socket-only PG16
@@ -155,7 +161,7 @@ migration checksum ledger, restarts its actual postmaster, checks persisted
 failed/successful steps, then stops and removes only its owned root. It never
 attaches a configured/default application database or starts Cargo.
 
-Planned executable checks cover five pure adapter tests plus native migration
+Implemented executable checks cover five pure adapter tests plus native migration
 failure/forward recovery, legacy completed/pending/dead-letter upgrades, repeated
 deletion/refresh revocation, seven-success/one-failure visibility, dead letter,
 deduplicated operator retry, same-attempt cross-generation stale-result fencing,
@@ -171,3 +177,10 @@ Source checkpoint: repository safeguards `e040cb1a`, owned implementation and
 qualification `e593ad79`. Main owns integration/push; no master push is performed
 by this worker. Native validation results and final candidate ancestry follow
 after the explicit Cargo lease transfer.
+
+First native evidence: `/private/tmp/mcr-be42-qualified-8rznj9aq/` contains
+`binaries.json`, `pure-regression.json`, and the preserved
+`native-report-inherited-batch-failure.json`. The failed inherited fixture
+claims only ten of sixteen steps across two canonical sagas; its later PROFILE
+claim is missing. The correction must preserve the original operator, retry
+receipt, generation, lease and atomicity assertions.

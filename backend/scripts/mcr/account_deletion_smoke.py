@@ -39,6 +39,7 @@ def qualify(path: Path, pg: Path, report: dict, legacy: Path | None = None) -> N
     tools = {name: executable(pg / name) for name in PG_TOOLS}
     cluster = Cluster(tools)
     root = cluster.root
+    report["owned_cluster_root"] = str(root)
     report["cleanup"] = {"status": "NOT_RUN"}
     try:
         cluster.init()
@@ -63,7 +64,8 @@ def qualify(path: Path, pg: Path, report: dict, legacy: Path | None = None) -> N
         after = cluster.assert_postmaster()
         if before == after:
             raise SmokeError("restart", "postmaster did not change")
-        report["restart"] = {"status": "PASS", "different_postmaster": True}
+        report["restart"] = {"status": "PASS", "different_postmaster": True,
+                             "before_pid": before, "after_pid": after}
         run_tests(path, env, "after_restart", report,
                   "native::restart_keeps_required_failures_and_success_receipts")
         check_ledger(cluster, "mcr_account_deletion", expected)
