@@ -1,0 +1,134 @@
+{
+  "assignment_base": "f0e44bd1bba943b02319f9d9a42433e253e8de6f",
+  "worker_branch": "codex/mcr-be-community",
+  "compiled_production_revision": "9c4e90071a41ba59ec9679c86484f058bdcf8ba4",
+  "corrected_gift_test_revision": "8628a56c5e2c704ca3b3935bf2bfc6bc8c08480f",
+  "worker_commits_before_final_evidence": [
+    "4bf2bd4",
+    "7dcf5bb",
+    "a336a25",
+    "5d8efe7",
+    "8c434a5",
+    "3a1679f",
+    "15b4f09",
+    "1423da8",
+    "f6e09b7",
+    "790c349",
+    "ce396e7",
+    "8628a56"
+  ],
+  "owning_prerequisites_excluded": [
+    "204e09a -> c716097",
+    "0c161d7 -> a1a6b76",
+    "bcd2cd2 -> d44b436",
+    "b71ae36 -> 5af7e50",
+    "a5e84da -> 1678b30",
+    "f5e5d44 -> b03b881",
+    "49ce464 -> 9c4e900"
+  ],
+  "changed_paths": [
+    "backend/crates/concert-application/src/commands/maintenance.rs",
+    "backend/crates/concert-application/src/commands/mod.rs",
+    "backend/crates/concert-application/src/community/giveaway.rs",
+    "backend/crates/concert-application/src/community/mod.rs",
+    "backend/crates/concert-application/src/lib.rs",
+    "backend/crates/concert-application/tests/community_command.rs",
+    "backend/crates/concert-domain/src/community/giveaway.rs",
+    "backend/crates/concert-domain/src/community/mod.rs",
+    "backend/crates/concert-domain/src/community/party.rs",
+    "backend/crates/concert-domain/src/lib.rs",
+    "backend/crates/concert-domain/tests/community_giveaway.rs",
+    "backend/crates/concert-domain/tests/community_party.rs",
+    "backend/scripts/mcr/community_smoke.py",
+    "backend/services/concert-service/migrations/0007_community.sql",
+    "backend/services/concert-service/migrations/0011_outbox_maintenance.sql",
+    "backend/services/concert-service/src/adapters/out/repository.rs",
+    "backend/services/concert-service/src/adapters/out/repository/outbox.rs",
+    "backend/services/concert-service/src/adapters/out/repository/outbox_maintenance.rs",
+    "backend/services/concert-service/src/community/audience.rs",
+    "backend/services/concert-service/src/community/catalog.rs",
+    "backend/services/concert-service/src/community/giveaway.rs",
+    "backend/services/concert-service/src/community/mod.rs",
+    "backend/services/concert-service/src/community/policy.rs",
+    "backend/services/concert-service/src/lib.rs",
+    "backend/services/concert-service/tests/community_giveaway.rs",
+    "backend/services/concert-service/tests/community_party.rs",
+    "backend/services/concert-service/tests/community_policy.rs",
+    "backend/services/concert-service/tests/maintenance_outbox.rs",
+    "backend/services/concert-service/tests/support/community/owned.rs",
+    "docs/mcr/backend/community-evidence/deferred-deadline-sql.json",
+    "docs/mcr/backend/community-evidence/handoff.json",
+    "docs/mcr/backend/community-evidence/initial-binaries.json",
+    "docs/mcr/backend/community-evidence/initial-community_giveaway.json",
+    "docs/mcr/backend/community-evidence/initial-community_party.json",
+    "docs/mcr/backend/community-evidence/initial-maintenance_outbox.json",
+    "docs/mcr/backend/community-evidence/qualified-community_giveaway.json",
+    "docs/mcr/backend/community-evidence/qualified-community_party.json",
+    "docs/mcr/backend/community-evidence/qualified-community_policy.json",
+    "docs/mcr/backend/community-evidence/qualified-domain-application.txt",
+    "docs/mcr/backend/community-evidence/qualified-first-binaries.json",
+    "docs/mcr/backend/community-evidence/qualified-giveaway-binary.json",
+    "docs/mcr/backend/community-evidence/qualified-maintenance_outbox.json",
+    "docs/mcr/backend/community-evidence/review-fix-first-giveaway-failed.json",
+    "docs/mcr/backend/community-maintenance.md",
+    "docs/mcr/backend/community.md"
+  ],
+  "path_count": 45,
+  "focused_domain_application_passed": 15,
+  "native_first_pass_tests": 17,
+  "actual_restart_exact_test_runs": 4,
+  "reports": {
+    "community_party": {
+      "report": "docs/mcr/backend/community-evidence/qualified-community_party.json",
+      "sha256": "00ed6a3c87f1e6d4bf23930e1e5e096a1fea058de7ae1e67305bb4e5ebc5d286",
+      "source_revision": "9c4e90071a41ba59ec9679c86484f058bdcf8ba4",
+      "source_differences_at_final_handoff": [
+        "backend/services/concert-service/tests/community_giveaway.rs"
+      ],
+      "result": "PASS",
+      "cleanup": "PASS",
+      "restart": "PASS"
+    },
+    "maintenance_outbox": {
+      "report": "docs/mcr/backend/community-evidence/qualified-maintenance_outbox.json",
+      "sha256": "3694cf4d2ba8adfb1a198db46a332d2ac97f5069a1aec389f46d0c6bec6fe8fe",
+      "source_revision": "9c4e90071a41ba59ec9679c86484f058bdcf8ba4",
+      "source_differences_at_final_handoff": [
+        "backend/services/concert-service/tests/community_giveaway.rs"
+      ],
+      "result": "PASS",
+      "cleanup": "PASS",
+      "restart": "PASS"
+    },
+    "community_policy": {
+      "report": "docs/mcr/backend/community-evidence/qualified-community_policy.json",
+      "sha256": "55ced415bd0b5a4916859b7d5fa2c538333612e3dd30650ff7975fd2cd770076",
+      "source_revision": "9c4e90071a41ba59ec9679c86484f058bdcf8ba4",
+      "source_differences_at_final_handoff": [
+        "backend/services/concert-service/tests/community_giveaway.rs"
+      ],
+      "result": "PASS",
+      "cleanup": "PASS",
+      "restart": "PASS"
+    },
+    "community_giveaway": {
+      "report": "docs/mcr/backend/community-evidence/qualified-community_giveaway.json",
+      "sha256": "140bba5fbaa920416bb5c3890d77fa401e19cc0cae350173d40f21b77ca35108",
+      "source_revision": "8628a56c5e2c704ca3b3935bf2bfc6bc8c08480f",
+      "source_differences_at_final_handoff": [],
+      "result": "PASS",
+      "cleanup": "PASS",
+      "restart": "PASS"
+    }
+  },
+  "public_http_ws_real_multiuser_device_load_release": "NOT_RUN",
+  "source_archive_changed": false,
+  "frontend_changed": false,
+  "pushed": false,
+  "limitations": [
+    "Real Auth/Friend mutation fencing and current owner/resource adapters are not composed here.",
+    "Public C04 code-issuance replay response needs owning contract amendment; safe internal receipt never reproduces plaintext.",
+    "Parent integration must preserve central composition/export changes and validate migration ledger plus combined consumers.",
+    "This is internal transaction qualification, not BE-task or IN02/IN05 acceptance."
+  ]
+}

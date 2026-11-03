@@ -1,8 +1,10 @@
 # Community backend implementation
 
-Status: **IN_PROGRESS**. Internal BE16–BE18 slice; public HTTP/RPC composition,
-real Auth/Friend authority, BE09/BE19 physical flows and IN02 are **NOT_RUN**.
-The persistent goal remains active through BE20–BE23 and concrete review fixes.
+Task status: **IN_PROGRESS** pending public integration and acceptance. The bounded
+BE16–BE18/BE20–BE23 internal implementation, delegated BE15 maintenance extension
+and current native qualification are complete and prepared for committed delivery.
+Public HTTP/RPC composition, live Auth/Friend authority, physical flows and IN02
+remain **NOT_RUN**. See the final qualification below for exact source ancestry.
 
 Assignment base: `f0e44bd1bba943b02319f9d9a42433e253e8de6f`.
 Worktree: `/Users/lhs/Desktop/mcr-worktrees/be-community`, branch
@@ -91,13 +93,14 @@ Auth/Friend integration. Public routes/startup are not added here.
 - `python3 scripts/mcr/check-plan.py`: exit 0, planning provenance only.
 - Rust 1.88.0 `rustfmt --edition 2021` on owned Rust paths: exit 0.
 - `python3 -m py_compile backend/scripts/mcr/community_smoke.py`: exit 0.
-- Focused Cargo domain/application/native tests: **NOT_RUN**, awaiting shared
-  `/Users/lhs/Desktop/mcr-build/backend` lease (bootstrap → admission → delivery
-  combined → community). No duplicate Rust target is created.
-- Owned native harness: **NOT_RUN** until the test executable is compiled.
-  It exercises last-slot approval, exact replay/input conflict, duplicate apply,
-  actor/event isolation, denied/outage authority, removal before outbox delivery,
-  READ_ONLY safety, owner/place checks, restart replay and owned cleanup.
+- Focused Cargo domain/application tests: **PASS**,15/15; exact logs and commands
+  are committed under `community-evidence/qualified-*`.
+- Owned native harness: **PASS**,17 tests across four suites plus four actual
+  PostgreSQL restart probes and validated cleanup. Exact source/binary pins and
+  the retained first failed gift fixture are recorded in the final section.
+- Only the leased `/Users/lhs/Desktop/mcr-build/backend` target was used; exact
+  Cargo-selected executables were copied/hashed and the target released before
+  native runs. No duplicate Rust target was created.
 - Real multiuser HTTP/WS, provider policy fences, runtime subscriptions, database
   migration ledger composition, physical arrival, browser/device/load/release:
   **NOT_RUN**. Mock/unit/native synthetic authority is not end-to-end acceptance.
@@ -117,8 +120,8 @@ chat, 2026-11-04; FE23 and BE09/19 owners were notified.
 ## BE20–BE23 source checkpoint
 
 Giveaway implementation is authored under the same owned community roots.
-Status remains IN_PROGRESS pending compilation/native proof and public/policy
-composition. Giveaway states are DRAFT/OPEN/PAUSED/CLOSED/CANCELLED. Public
+Task status remains IN_PROGRESS pending public/policy composition and acceptance;
+internal compilation/native qualification is complete as recorded below. Giveaway states are DRAFT/OPEN/PAUSED/CLOSED/CANCELLED. Public
 catalogue and public detail exclude DRAFT; authorized owner management may read it. Public summaries
 contain no reservations, recipients, private instructions or code fields.
 
@@ -174,7 +177,7 @@ binding, shared persisted guessing limits, claim duplicates, expiry/cancel race,
 one-time stock release, terminal private-access denial, restart expiry and
 coarse metadata invalidation. Native command:
 `python3 -B backend/scripts/mcr/community_smoke.py --giveaway --repository-test <absolute-native-test> --report <new-absolute-json>`.
-Compilation/native test execution is still NOT_RUN until the shared lease.
+Current compilation/native results are in the final qualification section below.
 
 A separate lightweight owned PostgreSQL16.14 fixture successfully applied
 0001/0002/0007/0011 and checked both new origin constraints; exit0 and validated
@@ -293,3 +296,53 @@ The failed report is retained as
 `community-evidence/review-fix-first-giveaway-failed.json`. The fixture now
 increments revision on each phase update. Gift requalification remains NOT_RUN
 until its corrected executable is rebuilt; no production code changed in this fix.
+
+
+## Final bounded qualification and delivery
+
+All implementation and concrete pickup-review fixes are committed. Whole-task
+and release acceptance remain separate from this internal handoff.
+
+| Check | Tested revision | Result |
+| --- | --- | --- |
+| Party domain5 + gift domain7 + canonical/HMAC application3 |9c4e900 |15/15 PASS |
+| Native party transactions |9c4e900 |5/5 + actual restart replay PASS |
+| Native BE15 maintenance origin |9c4e900 |2/2 + actual restart deduplication PASS |
+| Native concrete BE37 community adapter |9c4e900 |4/4 + actual restart receipt PASS |
+| Corrected native gift transactions |8628a56 |6/6 + actual restart expiry PASS |
+| Each fixture cleanup | Respective source above |4/4 PASS |
+
+Native PostgreSQL is16.14. All commands exited0. Cargo used Rust1.88.0,
+`--locked --offline -j2`, TEST/DEV debug0, and the single leased shared target.
+First bounded compile hit another worktree's cached build script referencing
+`concert_feed.proto`; refreshing current source/build-script mtimes without
+changing bytes forced the correct rebuild, which passed with no diagnostics.
+The first gift native run's revision-invalid fixture failure is retained; the
+corrected full6-test run passed, including READ_ONLY claim receipt recovery.
+
+Reports/binary hashes, contract/migration/source digests, exact commands and
+source ancestry are in [handoff.json](community-evidence/handoff.json),
+[qualified-first-binaries.json](community-evidence/qualified-first-binaries.json)
+and [qualified-giveaway-binary.json](community-evidence/qualified-giveaway-binary.json).
+Each native report includes full outputs and actual stop/start/cleanup evidence.
+The three9c4e900 native reports' production, migration, harness and own-test hashes
+still match; their only later source-hash difference is the unrelated corrected
+gift test. The8628a56 gift report matches all current runtime/test bytes. Later
+handoff/documentation commits do not change those qualified bytes. Historical
+initial5d8efe7 and first failed reports remain explicitly historical.
+
+Additional owning prerequisite49ce464→local9c4e900 fixes actor self-eligibility;
+it is excluded from community worker integration picks just like the other
+listed BE37/BE15/ring prerequisites. The final worker path manifest records no
+source-archive/frontend writes and only explicitly assigned/delegated shared
+exports, outbox files and migrations0007/0011. The integrator applies the worker
+series serially over its owning prerequisites and validates combined composition.
+
+Internal party/gift producers and transaction-bound party audience/meeting seams
+are stable at this handoff. A later additive available-meeting producer requires
+explicit single-writer allocation; recipient-only `PgGifts::pickup` does not
+authorize a generic context list. Operator/place/media adapters must retain their
+own current fences and full revision bindings. Real Auth/Friend revocation,
+public routing, subscription consumers, real multiuser/physical/device/load and
+release checks remain NOT_RUN here. No public end-to-end or parent acceptance
+is inferred, and this worker does not push master.

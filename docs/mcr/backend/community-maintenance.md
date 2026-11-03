@@ -1,8 +1,9 @@
 # BE15 maintenance invalidation origin
 
-Status: IN_PROGRESS; source checkpoint, compilation/native validation NOT_RUN
-until the shared Cargo lease reaches community. Public startup/consumption is
-NOT_RUN. Explicit scope delegated by delivery chat on 2026-11-04.
+Task status: IN_PROGRESS pending public composition/acceptance. The bounded
+maintenance-origin extension compiled and passed2/2 native tests, actual restart
+deduplication and owned cleanup at9c4e900. Public startup/consumption is NOT_RUN.
+Exact source/binary/report pins are in `community-evidence/handoff.json`. Explicit scope delegated by delivery chat on 2026-11-04.
 
 Migration0011 is forward-only. It permits exactly two typed origins on the
 retained outbox: RESOURCE_INVALIDATED with a real receipt and

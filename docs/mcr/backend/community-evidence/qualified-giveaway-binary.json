@@ -1,0 +1,30 @@
+{
+  "source_revision": "8628a56c5e2c704ca3b3935bf2bfc6bc8c08480f",
+  "command": [
+    "cargo",
+    "+1.88.0",
+    "test",
+    "--locked",
+    "--offline",
+    "-j",
+    "2",
+    "-p",
+    "concert-service",
+    "--test",
+    "community_giveaway",
+    "--no-run",
+    "--message-format=json"
+  ],
+  "exit_code": 0,
+  "rust": "1.88.0",
+  "jobs": 2,
+  "debug": 0,
+  "log_sha256": "36e12e405c99b528ed4868196af389f31fac462544bab8881ac3b842a982a35a",
+  "binaries": {
+    "community_giveaway": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-community-gift-final-e9jnw_90/community_giveaway",
+      "sha256": "447d2447bd7a004b578f96753ebb467bb6e78b75932582f653696d37c9ee1a55"
+    }
+  },
+  "diagnostics": []
+}
