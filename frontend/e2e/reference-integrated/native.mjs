@@ -18,6 +18,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex'),target=await readFile
 assert.equal(hash(target),REFERENCE_SHA256)
 const report={kind:'mcr-reference-integrated-v1',candidate:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),clock:CLOCK,
  reference:{sha256:REFERENCE_SHA256,width:1536,height:1024,crops:CASES.map(({id,rect})=>({id,rect}))},
+ productBase:execFileSync('git',['merge-base','HEAD','origin/master'],{cwd:root,encoding:'utf8'}).trim(),
  evidenceStatus:'IN_PROGRESS',visualAcceptance:'NOT_RUN',liveServices:'NOT_RUN',devices:'NOT_RUN',fixtureMetadataIsApproval:false,
  harnessHashes:{},sourceHashes:{},approvedBytePins:{},cases:[],warm:[],findings:[],browser:''}
 for(const file of harnessFiles)report.harnessHashes[file]=hash(await readFile(resolve(import.meta.dirname,file)))
