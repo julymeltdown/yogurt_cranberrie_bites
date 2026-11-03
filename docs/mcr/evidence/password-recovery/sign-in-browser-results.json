@@ -1,0 +1,55 @@
+{
+  "status": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "height": 800,
+      "signIn": "PASS",
+      "invalidCredentials": "PASS",
+      "throttling": "PASS",
+      "logoutFailureAndRetry": "PASS",
+      "peakWorldLease": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "signIn": "PASS",
+      "invalidCredentials": "PASS",
+      "throttling": "PASS",
+      "logoutFailureAndRetry": "PASS",
+      "peakWorldLease": 1
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "signIn": "PASS",
+      "invalidCredentials": "PASS",
+      "throttling": "PASS",
+      "logoutFailureAndRetry": "PASS",
+      "peakWorldLease": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "signIn": "PASS",
+      "invalidCredentials": "PASS",
+      "throttling": "PASS",
+      "logoutFailureAndRetry": "PASS",
+      "peakWorldLease": 1
+    }
+  ],
+  "crossTab": {
+    "nativeLocks": "PASS",
+    "nativeBroadcast": "PASS",
+    "httpOnlyFixtureCookie": "PASS",
+    "peakCookieWriters": 1,
+    "automaticRefreshes": 0
+  },
+  "production": {
+    "noDefaultEvent": "PASS",
+    "noRequestsWithoutEvent": "PASS",
+    "fixtureExclusion": "PASS"
+  },
+  "limitations": "Synthetic same-origin HTTP server. Secure production cookie/domain, BE03, revoked sessions, resource bytes, real Phaser/socket and two-user flow NOT_RUN."
+}

@@ -18,7 +18,7 @@ it is not feature integration or release acceptance.
 | BE01 | ACCEPTED | [Integrated foundation review](evidence/core-foundation-integration.md): 1,071 pinned files imported, full workspace builds, six separate services and exact owned process/port/database map exercised without source-default DB targets. |
 | BE02 | ACCEPTED | [Integrated tooling review](evidence/privacy-local-stack-integration.md): native migration/restart persistence, owned foreground stack and private mail, 55 helper and 16 development tests, reviewed image/protobuf/SQL paths. Docker execution and production roles remain NOT_RUN and must be qualified before packaging/BE44. |
 | BE03 | INTEGRATED | [Email ingress review](evidence/browser-auth-integration.md), candidate `689e4d2`: parent reran 221 Gateway tests, nine harness tests and 53 real native HTTP checks with three mail deliveries and cleanup PASS. Frozen email/account mapping, browser guards and invalid-credential handling delivered. Real browser cookie policy, configured OAuth and complete BE03 acceptance remain open. |
-| BE04 | IN_PROGRESS | [Reviewed identity foundation](evidence/identity-integration.md), `eba858f`: 30 deterministic parent tests pass, including 18 new identity cases. Original worker goal BLOCKED on shared authority. Parent selected [admission direction](identity-admission-decision.md), supplied [binding epochs](evidence/auth-binding-epoch.md) `607a903` with owned PostgreSQL migration probe, and assigned a new ACTIVE actual Auth-owner read goal in another isolated checkout. Auth adapter/SQLx/real-service qualification remains; production policy stays unavailable. |
+| BE04 | IN_PROGRESS | [Identity foundation](evidence/identity-integration.md) and [real Auth-owner read](evidence/auth-identity-owner-integration.md), `c300a23`: parent verified 8 value/23 retained application/89 helper/22 real PostgreSQL tests, all 13 SQLx migrations, restart and cleanup. Bounded Auth-owner goal COMPLETE; original identity goal remains BLOCKED. Authenticated RPC/Gateway/Concert composition and event policy remain; production authority stays unavailable. |
 | BE05 | ACCEPTED | [Integrated foundation review](evidence/concert-core-integration.md), source/workspace/doc `6a08701`/`f5b188b`/`376cf21`: typed hexagonal values/clock/policy ports, constrained event/participant/avatar schema, 12 Rust + 12 Python tests and three real PostgreSQL tests. Parent reran owned migration/reapply/schema-damage refusal, health/outage/restart/graceful cleanup. No product API or invented authority; BE04/bootstrap/production remain separate. |
 | BE15 | IN_PROGRESS | [Reviewed internal receipt/outbox foundation](evidence/command-receipts-integration.md), `7cbb97e`/`c2a2c30`: 33 combined deterministic Rust, 82 Python helper and 17 real PostgreSQL tests pass; owned migration failure/recovery, restart persistence and cleanup pass. Review fixes cover keyed private fingerprints, post-authorization expiry and result/outbox revision equality. Bounded goal COMPLETE; production producer/Auth/public API/key configuration/runtime/load gates remain NOT_RUN. |
 | FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. [Style correction](evidence/ui-style-correction.json) removes prohibited left accents and offset shadows; build/lint and all four Chrome viewports pass again. Physical devices and screen readers remain separate QA work. |
@@ -27,7 +27,7 @@ it is not feature integration or release acceptance.
 | FE07 | MOCK_READY | [Integrated shell review](evidence/world-shell-integration.md), candidate `d7909c0`: 276 tests, frozen build/lint/origin scan, four installed-Chrome viewports and production-entry isolation pass. Review fixes block obsolete initial loader dispatch and bound scroll history. Actual Phaser/socket/camera preservation and device qualification remain; no real-world or IA acceptance. |
 | FE08 | MOCK_READY | [Integrated public-entry review](evidence/public-entry-integration.md), `e7de0f3`: 410 parent tests, build/lint/origin/boundary, four-width Chrome/reduced-height and production isolation pass. Canonical redirect and safe synthetic document presentation delivered. Approved publication/legal/contact/retention inputs and real-service/device/IN01 gates remain open. |
 | FE09 | MOCK_READY | [Integrated review](evidence/session-sign-in-integration.md), candidate `a9e130e`: 354 tests including 78 FE09, strict build/lint/origin/boundary checks and four-width native Chrome/cross-tab/production-isolation checks pass. Review fixes preserve valid session on 403 while 401 clears. Production automatic restore/refresh stays disabled; real BE03 Secure-cookie/revocation/rotation, event/world and IN01 gates remain open. Delivered increment goal completed; task not accepted. |
-| FE11 | IN_PROGRESS | Reused completed FE08 chat on isolated `fe-recovery` / `codex/mcr-fe-FE11`, base `b39d5e5`; new actual unbudgeted goal ACTIVE. Exact recovery/callback paths and minimal canonical-session/cookie-policy exceptions assigned. Frozen reset contract and actual fragment-token mail handoff are source inputs; OAuth success handoff remains disabled. No implementation acceptance yet. |
+| FE11 | MOCK_READY | [Integrated recovery review](evidence/password-recovery-integration.md), `d290391`/`4360d58`/`4550029`: 669 combined tests, strict build/lint/C03/origin/boundary/plan and four-width native recovery plus retained sign-in suites pass. Source fragment intake, canonical confirmation fencing and safe callback presentation delivered; bounded goal COMPLETE. Real mail/BASE_URL/Secure cookies/OAuth/device/IN01 remain NOT_RUN. |
 | FE16 | MOCK_READY | [Reviewed transport integration](evidence/world-transport-integration.md), `e3a4d84`/`5863f91`: 568 combined frontend tests (158 transport), build/lint/type-drift/origin/plan and installed-Chrome five canonical traces pass. Gap recovery and pre-send room-switch failure findings corrected. Bounded goal COMPLETE; production lifecycle, replication and real-server/IN01 remain NOT_RUN. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **11/112**;
@@ -42,8 +42,8 @@ startup is verified within BE05; product APIs/identity are not.
 The main checkout integrates reviewed commits serially. Two user-supplied chats and two newly created
 visible Codex chats use disjoint backend/frontend worktrees and requested
 `gpt-6.1-sol` / high settings. Chat count does not imply four active writers:
-FE11 and a newly assigned Auth-owner read are active; the original BE04 chat is
-blocked on shared contracts, and completed BE15/FE16 checkouts are stopped. The
+FE11 and the Auth-owner read have completed their reviewed bounded goals; the original BE04 chat is
+blocked on shared contracts, and all finished checkouts are stopped. The
 BE15 chat was reused for the Auth-owner increment on a separate checkout.
 Previous subagents were stopped
 before ownership transferred; their unfinished work was preserved. The
@@ -64,12 +64,13 @@ review reproduced and rechecked the preliminary nested-modal defect, then found
 no remaining actionable issue on that candidate. Parent reran all 22 component
 tests, strict build/lint and the four-viewport Chrome driver after integration.
 
-Current writers are FE11 recovery and the actual Auth-owned admission read, reusing
-completed FE08/BE15 chats with new tool-confirmed active goals and separate checkouts.
-BE15 and FE16 finished their bounded handoffs; the original BE04 goal is blocked
-on shared contracts. The parent owns the [admission direction](identity-admission-decision.md),
-binding-epoch migration and remaining authenticated composition. The user removed any fixed backend/frontend quota;
-the [capacity assessment](parallel-capacity.md) records the current allocation.
+FE11 and the actual Auth-owned read finished review, with tool-confirmed COMPLETE
+goals and stopped clean checkouts. The original BE04 goal remains BLOCKED. The
+parent owns the [admission direction](identity-admission-decision.md), binding
+epochs and remaining authenticated composition. FE10 is the next auth UI
+increment to scope from the frozen contract; a ready assignment will get a fresh
+goal and worktree. The user removed any fixed backend/frontend quota; the
+[capacity assessment](parallel-capacity.md) records allocation decisions.
 BE03 browser/provider gates remain open.
 The integrator retains shared Auth/Profile authority and C04/C06 contracts;
 BE06/bootstrap follows qualified authority. No runtime, OAuth or release

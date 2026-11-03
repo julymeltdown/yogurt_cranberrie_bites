@@ -10,10 +10,10 @@ tracking of separate user-visible chats. Two existing chats were reassigned
 after reviewed delivery; two additional project chats were successfully created.
 All four initially acknowledged actual active persistent goals. Current status
 has changed: FE08, BE15 and FE16 bounded goals are COMPLETE; BE04's goal is BLOCKED
-on shared owning contracts. The completed FE08 chat now owns a newly confirmed
-ACTIVE FE11 goal in the recovery worktree. The BE15 chat was subsequently reused
-for a new tool-confirmed ACTIVE Auth-owner read goal in `be-auth-authority`, base
-`5863f91`. The requested model is
+on shared owning contracts. FE11 and the Auth-owner read subsequently completed parent review and their actual
+bounded goals; both clean checkouts are stopped. The original BE04 goal remains
+BLOCKED on shared composition. No writer is kept active just to meet a quota.
+The requested model is
 `gpt-6.1-sol` with `high` reasoning. Exact IDs, worktrees, branches and ownership
 are in the [coordination register](chat-coordination.md).
 
@@ -82,3 +82,13 @@ the no-left-accent UI rule and the selected-art-only rule. Continue useful work
 without waiting for matching backend/frontend completion, but reduce or reassign
 idle/conflicting writers. Completion requires a committed handoff and review
 fixes, not simply a chat reporting that its implementation is done.
+
+## Reviewed continuation checkpoint
+
+Parent combined candidate `c300a23` passes 669 frontend tests, both native auth
+browser suites and 22 real PostgreSQL Auth-owner cases. FE11 remains MOCK_READY;
+BE04 remains IN_PROGRESS. The next frontend opportunity is FE10 mapped signup and
+verification with explicit eligibility/publication gaps. The next backend work is
+authenticated fresh-read RPC composition, owned centrally until exact prerequisites
+and write exceptions are supplied. FE17 is not started merely to occupy a chat: its
+avatar/runtime inputs still need qualification.

@@ -1,0 +1,43 @@
+{
+  "candidate": "c300a231506cfcd08b25697234e2e427c426fca9",
+  "worker": "6630fc4",
+  "worker_delta_base": "f3c42d2",
+  "paths": [
+    {
+      "path": "backend/crates/auth-application/src/concert_identity.rs",
+      "sha256": "afafdb9c6b1e591dfa90bc36fe3b570fc27fc4cb43161fe70438ab8a3b13e4e1"
+    },
+    {
+      "path": "backend/crates/auth-application/src/lib.rs",
+      "sha256": "9b6ce2fdc6df568b06f08c2f46d8fc01a85f23f570994840fee336928948e002"
+    },
+    {
+      "path": "backend/crates/auth-application/tests/concert_identity.rs",
+      "sha256": "4b652fb329a1a2e128c02ae51e445e5e787b7b8911a7ee91623238f872536a57"
+    },
+    {
+      "path": "backend/scripts/mcr/auth_identity_smoke.py",
+      "sha256": "ac982b03de1f97ff9db45a041369bdffd7fad207851713549fdf82bdb126945f"
+    },
+    {
+      "path": "backend/scripts/mcr/test_auth_identity_smoke.py",
+      "sha256": "7f85575b9d284c11ffe29af595353e2603610cc482c4bd751138a808803f8f88"
+    },
+    {
+      "path": "backend/services/auth-service/src/adapters/out/persistence/concert_identity.rs",
+      "sha256": "cc7d95999d1bba494e2a58d8ee48138ac89665cd7f8bef22cbcf3692038cc651"
+    },
+    {
+      "path": "backend/services/auth-service/src/adapters/out/persistence/mod.rs",
+      "sha256": "6486eac87842421046a7c747006877ad6f44f03d446bc097e6e6354c92eb5384"
+    },
+    {
+      "path": "backend/services/auth-service/tests/concert_identity_owner.rs",
+      "sha256": "53de56afd5b3d104134c4b1d9c8727cf471aa9eca0827be9fad604602987b77d"
+    },
+    {
+      "path": "docs/mcr/backend/auth-identity-owner.md",
+      "sha256": "4fa155ff668a3413c24835c2628d2960259ab1b9dd94db964c272c1f955b9448"
+    }
+  ]
+}

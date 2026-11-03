@@ -1,0 +1,71 @@
+{
+  "candidate": "c300a231506cfcd08b25697234e2e427c426fca9",
+  "worker": "852848b",
+  "worker_delta_base": "99dbe78",
+  "paths": [
+    {
+      "path": "docs/mcr/frontend/password-recovery.md",
+      "sha256": "fabccf40628568a5a09c54f41a6a1030798d9491885784807adff135acb3572c"
+    },
+    {
+      "path": "frontend/src/app/PublicBoundary.tsx",
+      "sha256": "c78d59f97d96aca542b2f56ea06932d1d25d9eb7cf77d63bdc67f971f32db7fe"
+    },
+    {
+      "path": "frontend/src/app/__tests__/recovery.test.tsx",
+      "sha256": "b796042456a2bac705649850cb88e70c7ff924817463faec599b87e4d1cc512a"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/callback.test.ts",
+      "sha256": "4d655e336b7e1370b83be2b15fef34a6734f176076e099e31b3ceb47cfe4de4f"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/fixtures/recovery-preview.html",
+      "sha256": "1f7a14d167438ea086e2e58d41e0b4072d819cad15e6e06acf60f2888fde21f0"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/fixtures/recovery-preview.tsx",
+      "sha256": "25d6e85cad41cf4d18aca005ff78c88ce879e3c94567429269063ad12014b3d1"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/recovery-browser-smoke.mjs",
+      "sha256": "084f6fd5e870679a0b44c7445ede6dd15e88f6723db2b988989711fb7d58b6a1"
+    },
+    {
+      "path": "frontend/src/features/auth/__tests__/recovery.test.ts",
+      "sha256": "e1fe04a3a7c47e3500545b2c375d8c5e755cb5238706c5c0d68808d7dcc941ca"
+    },
+    {
+      "path": "frontend/src/features/auth/model/callback.ts",
+      "sha256": "54ca5e3655239227e60128767cad0814d0e590cba709abeb1da6c2ef6f244aa9"
+    },
+    {
+      "path": "frontend/src/features/auth/model/cookie-policy.ts",
+      "sha256": "852325e7b5e5697f39ae1c14e5de11c6c03581472274c51d3f41aff7469121dd"
+    },
+    {
+      "path": "frontend/src/features/auth/model/recovery-contract.ts",
+      "sha256": "de6e7c5207d9917763eaa2f6aa63014076ccde21f4fcecd9affc3c0583732dfd"
+    },
+    {
+      "path": "frontend/src/features/auth/model/recovery.ts",
+      "sha256": "53b0b93b7dd996fda260b8a0c3202a9964adf35a23b077f4583172246c44900d"
+    },
+    {
+      "path": "frontend/src/features/auth/model/session.ts",
+      "sha256": "0aaea678ef51be2e169ddc14e4eb078c26022bc027a440f9810aab33635fd6c5"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/Callback.tsx",
+      "sha256": "6ad24e56d44cfc2c2bb590e9ef8c1cf5c9357d9d7ad612eafdf794143663575e"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/ResetPassword.tsx",
+      "sha256": "347c58317d605c6152d5d7ff818478aa54efde4a69800cbfde503ef4681260b5"
+    },
+    {
+      "path": "frontend/src/features/auth/ui/recovery.css",
+      "sha256": "de4fd45cd2764815cc6347c09164c6a79e8dd2e0c7c2ab13818f144d81aba630"
+    }
+  ]
+}

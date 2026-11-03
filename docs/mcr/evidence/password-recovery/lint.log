@@ -1,0 +1,1 @@
+$ oxlint src vite.config.ts

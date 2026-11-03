@@ -1,0 +1,97 @@
+{
+  "status": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "height": 800,
+      "forms": "PASS",
+      "neutralAndUncertain": "PASS",
+      "sourceFragmentAndHygiene": "PASS",
+      "callback": "PASS",
+      "focusTargetsContrast": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "forms": "PASS",
+      "neutralAndUncertain": "PASS",
+      "sourceFragmentAndHygiene": "PASS",
+      "callback": "PASS",
+      "focusTargetsContrast": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "forms": "PASS",
+      "neutralAndUncertain": "PASS",
+      "sourceFragmentAndHygiene": "PASS",
+      "callback": "PASS",
+      "focusTargetsContrast": "PASS",
+      "reducedHeight": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "forms": "PASS",
+      "neutralAndUncertain": "PASS",
+      "sourceFragmentAndHygiene": "PASS",
+      "callback": "PASS",
+      "focusTargetsContrast": "PASS",
+      "reducedHeight": "PASS"
+    }
+  ],
+  "crossTab": {
+    "peakWriters": 1,
+    "automaticRefresh": 0,
+    "peerRevoked": "PASS",
+    "queuedLockCancellation": "PASS"
+  },
+  "transportDrop": {
+    "applicationFetches": 1,
+    "serverArrivals": 5,
+    "outcome": "uncertain",
+    "limitation": "Chrome may retransmit a POST after a connection drops before response headers. No application fetch retry occurs; server one-time-token enforcement remains authoritative."
+  },
+  "productionIsolation": "PASS",
+  "preBootReferrer": {
+    "status": "PASS",
+    "assetReferrers": [
+      {
+        "path": "/assets/index-VUFbgUEg.js",
+        "referer": ""
+      },
+      {
+        "path": "/assets/index-DrDW9HEH.css",
+        "referer": ""
+      },
+      {
+        "path": "/assets/PublicBoundary-BT9OFNbR.js",
+        "referer": ""
+      },
+      {
+        "path": "/assets/PublicBoundary-B6tGseMU.css",
+        "referer": ""
+      },
+      {
+        "path": "/assets/index-VUFbgUEg.js",
+        "referer": ""
+      },
+      {
+        "path": "/assets/index-DrDW9HEH.css",
+        "referer": ""
+      },
+      {
+        "path": "/assets/PublicBoundary-BT9OFNbR.js",
+        "referer": ""
+      },
+      {
+        "path": "/assets/PublicBoundary-B6tGseMU.css",
+        "referer": ""
+      }
+    ]
+  },
+  "limitations": "Synthetic HTTP/status/mail inputs and non-Secure test cookie. Real Auth/mail/reset-link BASE deployment, OAuth/cookie handoff, actual devices and release gates NOT_RUN."
+}

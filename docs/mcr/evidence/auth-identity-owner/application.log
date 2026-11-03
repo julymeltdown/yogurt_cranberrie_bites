@@ -1,0 +1,31 @@
+   Compiling auth-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/auth-application)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.81s
+     Running unittests src/lib.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/auth_application-f29f8980ccdc3b14)
+
+running 23 tests
+test dto::repository_dto::session_audit_transfer_tests::session_and_audit_debug_redacts_identifiers_metadata_and_context ... ok
+test dto::repository_dto::session_audit_transfer_tests::refresh_state_preserves_rotation_identity_time_and_revocation_reason ... ok
+test dto::repository_dto::tests::account_and_provider_snapshots_preserve_admission_fields_without_normalization ... ok
+test dto::repository_dto::oauth_transfer_tests::oauth_transfer_preserves_identity_binding_single_use_material_and_exact_expiry ... ok
+test dto::token_dto::tests::debug_redacts_every_credential_claim_and_family_identifier ... ok
+test dto::repository_dto::oauth_transfer_tests::oauth_transfer_debug_redacts_subject_email_state_redirect_pkce_and_nonce ... ok
+test dto::auth_dto::secret_debug_tests::auth_dto_debug_does_not_render_credentials_or_oauth_state ... ok
+test errors::tests::credential_families_share_no_distinguishing_code ... ok
+test errors::tests::opaque_port_errors_cannot_hold_a_library_cause ... ok
+test errors::tests::server_faults_are_distinguished_from_client_errors ... ok
+test dto::repository_dto::tests::atomic_transfer_preserves_family_expiry_audit_credit_and_rotation_race_evidence ... ok
+test dto::deletion_dto::tests::debug_redacts_nested_identity_trace_audit_rationale_and_dependency_data ... ok
+test dto::repository_dto::tests::transfer_debug_never_renders_credentials_personal_data_or_rotation_identifiers ... ok
+test dto::token_dto::tests::transfers_preserve_credentials_expiry_family_optional_session_and_role_order ... ok
+test dto::auth_dto::user_deletion_debug_tests::user_deletion_dto_debug_redacts_identity_reasons_and_worker_errors ... ok
+test dto::deletion_dto::tests::saga_and_requests_preserve_nested_order_retention_operator_resolution_and_audit ... ok
+test onboarding::secret_debug_tests::resend_verification_request_debug_redacts_email ... ok
+test password_work::tests::default_limits_reserve_login_workers ... ok
+test password_work::tests::invalid_limits_are_rejected ... ok
+test dto::repository_dto::session_audit_transfer_tests::audit_transfer_preserves_absent_context_and_exact_metadata_without_parsing ... ok
+test presentation::tests::all_known_provider_failures_have_a_controlled_neutral_projection ... ok
+test presentation::tests::complete_neutral_auth_failure_projection_preserves_codes_and_safe_messages ... ok
+test dto::deletion_dto::tests::step_transfer_preserves_every_target_state_claim_generation_and_optional_context ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

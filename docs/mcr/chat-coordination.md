@@ -2,7 +2,7 @@
 
 Updated 2026-11-03. The user authorized additional visible Codex chats, then
 clarified that a fixed backend/frontend count is unnecessary. Four visible chats
-are available; FE11 and the new Auth-owner increment are active. Each assigned writer has
+are available; FE11 and the Auth-owner increment have completed bounded review. Each assigned writer has
 its own worktree and branch; every shell command
 and edit must explicitly target that worktree because app-level project context
 can still point to the integration checkout.
@@ -17,9 +17,9 @@ can still point to the integration checkout.
 The original four increments started at `376cf21`; FE11 starts at `b39d5e5`
 after the same chat completed FE08. All use `gpt-6.1-sol` with `high` reasoning
 and no token budget. Actual goal tools confirmed FE08 **COMPLETE**, the new FE11
-goal **ACTIVE**, BE15 **COMPLETE**, FE16 **COMPLETE**, and the original BE04 goal
+goal **COMPLETE**, BE15 **COMPLETE**, FE16 **COMPLETE**, and the original BE04 goal
 **BLOCKED** on central prerequisites. The completed BE15 chat was then reused at
-`5863f91` for a new tool-confirmed **ACTIVE** Auth-owner read goal. The old
+`5863f91` for a new Auth-owner read goal, now tool-confirmed **COMPLETE** after parent review. The old
 BE15/FE16/FE08 checkouts have no writer. Dispatch alone is not proof. Each bounded goal covers implementation, relevant tests,
 documentation, committed handoff and concrete integration-review fixes. An
 increment goal can complete after delivery while unqualified task gates remain
@@ -104,14 +104,12 @@ The previous BE05 and FE09 increments are integrated and reviewed:
 worktrees are also preserved; no subagent writes current chat worktrees. FE09
 remains MOCK_READY despite its delivered increment goal completing.
 
-The recovery checkout is now exclusively assigned to the reused FE08 chat, with
-a newly confirmed active FE11 goal. BE04 has stopped writes after its source-grounded
-proposal and blocked goal. The parent selected [Gateway fresh owner reads plus
-signed Concert admission](identity-admission-decision.md) and assigned the actual
-Auth persistence/application read to the completed BE15 chat. This backend writer
-runs independently of FE11. The parent owns the shared protocol/composition and
-the provider binding-epoch prerequisite; timestamps are not accepted as generations.
-Repeated blocked audits do not count as progress.
+FE11 and the Auth-owner read are integrated with parent candidate-bound evidence,
+and both actual bounded goals are COMPLETE. Their clean checkouts are stopped.
+The original BE04 goal remains BLOCKED; the parent owns authenticated composition
+and the selected [Gateway fresh reads and signed admission](identity-admission-decision.md)
+direction. Binding timestamps are not generations. New assignments must transfer
+ownership to separate worktrees and establish actual new goals.
 The [capacity assessment](parallel-capacity.md) records why another writer is not
 forced. Scale from ready disjoint work and review capacity, not a chat quota.
 

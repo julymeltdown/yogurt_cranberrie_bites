@@ -1,0 +1,13 @@
+
+running 8 tests
+test cancellation_is_shared_and_never_reset ... ok
+test cloning_budget_preserves_absolute_deadline ... ok
+test canonical_ids_must_be_present ... ok
+test diagnostics_do_not_include_ids_reference_epoch_or_owner_facts ... ok
+test eligibility_fails_closed_for_every_account_session_binding_combination ... ok
+test exact_binding_has_only_owner_reference_provider_and_positive_epoch ... ok
+test expired_budget_and_unbounded_budget_are_rejected ... ok
+test exact_binding_rejects_malformed_foreign_shapes_without_echo ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
