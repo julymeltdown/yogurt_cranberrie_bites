@@ -4,12 +4,40 @@ Updated 2026-11-03. Current allocation prioritizes completing real service flows
 Model and reasoning choices belong to the user; all five chats received the
 instruction to preserve them without orchestration overrides.
 
+Current 2026-11-03 integration checkpoint: `34d4bb6` supplies the signed internal
+Concert admission boundary; `61c3e1f` adds the configured Gateway owner-read and
+Concert client. These are tested components, not a running product route.
+`9919b79` and `b3ffa13` supply the exact captured privacy lease and immutable C03
+document to the world worker; only those prerequisite cherry-picks are allowed
+outside its new composition directory. Production startup/root wiring remains
+with the integrator. FE18 bounded review is accepted in
+[the integration record](evidence/world-access-integration.md); actual goal
+closure must still be observed after the acceptance message.
+
+Bootstrap worker base is `34d4bb6`. Its writes are application `src/bootstrap/**`
+and `tests/bootstrap.rs`; Concert service `src/bootstrap/**`, `tests/bootstrap.rs`,
+`tests/support/bootstrap/**`, reserved `0004_bootstrap_admission.sql`; the assigned
+`scripts/mcr/bootstrap_smoke.py` and `test_bootstrap_smoke.py`; and
+`docs/mcr/backend/bootstrap.md`. Exact `pub mod bootstrap` exports in its two
+library roots are the only composition exceptions. It owns the shared Rust
+target after the parent's 23:46 grant; the parent runs no competing Cargo or
+native gate until explicit release. Actual resumed goal status is awaiting the
+worker's tool report. Its former checkout remains stopped.
+
+The world worker's base is `73d9b49` plus the two parent prerequisites above.
+It writes only `frontend/src/world/composition/**` and
+`docs/mcr/frontend/world-composition.md`. Its unbudgeted goal is confirmed ACTIVE;
+native Phaser lifecycle qualification is in progress, using deterministic
+HTTP/WebSocket fixtures and no claim of approved product avatars. BE08's final
+candidate is `caee1a7`; QA's final correction report is `4ca13ad7`. Their bounded
+delivery does not imply public-route or main-branch integration.
+
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
-| BE04 HTTP fixture delivered; writer stopped, broad goal BLOCKED | `mcr(be) BE04 real HTTP owner chain` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-http-real-owners` / `codex/mcr-be-http-real-owners` |
+| Authorized bootstrap implementation; shared native target granted | `mcr(be) Authorized bootstrap and participant creation` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-bootstrap` / `codex/mcr-be-bootstrap` |
 | BE08 places and map releases | `mcr(be) BE08 places and map releases` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-places` / `codex/mcr-be-BE08` |
-| FE18 rooms and nearby | `mcr(fe) FE18 rooms and nearby people` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-world-access` / `codex/mcr-fe-FE18` |
-| Community shell review accepted; writer stopped, goal closure requested | `mcr(fe) Community shell integration review` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-community-review` / `codex/mcr-fe-community-review` |
+| FE18 bounded handoff accepted; review wait released, goal closure requested | `mcr(fe) FE18 rooms and nearby people` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-world-access` / `codex/mcr-fe-FE18` |
+| Actual Phaser/transport/replication lifecycle composition | `mcr(fe) Production world lifecycle composition` | `01a1a153-1227-7e72-801f-a2a6b91981e1` | `/Users/lhs/Desktop/mcr-worktrees/fe-world-composition` / `codex/mcr-fe-world-composition` |
 | BE08 correction review dispatched | `mcr(qa) BE08 places correction review` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/qa-places-fixes` / `codex/mcr-qa-BE08-fixes` |
 
 The entries below retain earlier assignment history; this table and the latest

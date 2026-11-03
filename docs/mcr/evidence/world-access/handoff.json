@@ -1,0 +1,62 @@
+{
+  "task": "FE18/W04/W05 scoped frontend",
+  "status": "MOCK_READY_REVIEW_PENDING",
+  "base": "366cf8bb808d8a0d55124e0a73429a2f742d0fe1",
+  "commit": "4bf04131696992010aa673389200f745601c4367",
+  "parent": "366cf8bb808d8a0d55124e0a73429a2f742d0fe1",
+  "paths": [
+    "docs/mcr/frontend/world-access.md",
+    "frontend/src/features/world-nearby/WorldNearby.tsx",
+    "frontend/src/features/world-nearby/index.ts",
+    "frontend/src/features/world-nearby/projection.ts",
+    "frontend/src/features/world-rooms/__tests__/browser-smoke.mjs",
+    "frontend/src/features/world-rooms/__tests__/fixtures/harness.ts",
+    "frontend/src/features/world-rooms/__tests__/fixtures/preview.html",
+    "frontend/src/features/world-rooms/__tests__/fixtures/preview.tsx",
+    "frontend/src/features/world-rooms/__tests__/ui.test.tsx",
+    "frontend/src/features/world-rooms/__tests__/world-access.test.ts",
+    "frontend/src/features/world-rooms/index.ts",
+    "frontend/src/features/world-rooms/model/contract.ts",
+    "frontend/src/features/world-rooms/model/controller.ts",
+    "frontend/src/features/world-rooms/ui/WorldRooms.tsx",
+    "frontend/src/features/world-rooms/ui/world-access.css"
+  ],
+  "sha256": {
+    "docs/mcr/frontend/world-access.md": "eeaf1350925638fa91aaa17208bafa1323fdc7b4950939cb7d3698666b964743",
+    "frontend/src/features/world-nearby/WorldNearby.tsx": "df945b1f789c61ebd743e997a09ed0866d1a158fdc78a8d148c842514c7c1c5a",
+    "frontend/src/features/world-nearby/index.ts": "046a850dbb590d0671c76bc67bea2111a4bc73e23fcefa5c6fb805a203203d38",
+    "frontend/src/features/world-nearby/projection.ts": "d6f8f83482196eb46acdb7d5c9a9fc91b9df052e2c71e88244e104682ad49a27",
+    "frontend/src/features/world-rooms/__tests__/browser-smoke.mjs": "ac9a83ef916da7997a6499f3d7f4b16ae34a82d0b670135661c8f5b9b249d0f1",
+    "frontend/src/features/world-rooms/__tests__/fixtures/harness.ts": "d65bef0c9abdedc00fedeb6cab5055d96b674ca081f9545d85a74cdadf4b8a77",
+    "frontend/src/features/world-rooms/__tests__/fixtures/preview.html": "21499beea9d9e9c0daa1cec43df9d55b54f710117fe3e8d69ba249794839dfe0",
+    "frontend/src/features/world-rooms/__tests__/fixtures/preview.tsx": "b53606009d9987c3a8cfe0fd89a3821d22c870b5f4a853d9d87dbcf30304312e",
+    "frontend/src/features/world-rooms/__tests__/ui.test.tsx": "6188674a2c8b83d50c047f08e2263c7d4e04c1fe067698d251625088827c94fa",
+    "frontend/src/features/world-rooms/__tests__/world-access.test.ts": "a4130e1e19e08e4d1b2234c12204170c9762427ed2aa50df32c4cb8970cf648a",
+    "frontend/src/features/world-rooms/index.ts": "6822da877cf4d0eef2fc4288fffaba386d047b7109a52aa94e80bd353ba83965",
+    "frontend/src/features/world-rooms/model/contract.ts": "d3e19484a27d801d3f9b00d9c7ef37bbda00400338f70decf7f6e05c436c57d3",
+    "frontend/src/features/world-rooms/model/controller.ts": "a2e676f2623ef7cf6c07420312a0bd76adcd02108ad4348f262ead8520358ebc",
+    "frontend/src/features/world-rooms/ui/WorldRooms.tsx": "0d9a6c5749f425d49dfc3d84071abdd3318c0bb1ee8fabdf327ade04ed0acd5f",
+    "frontend/src/features/world-rooms/ui/world-access.css": "8de15f87168c6509e310fbff61b74e90950bfd86a2052021ce1d75d6b04b484e"
+  },
+  "nativeReport": "/tmp/mcr-fe18-browser-20261103-06/report.json",
+  "nativeReportSha256": "ba596da983e2fb98413d25cb9401cec377c182d0428c7eeb90ca12299ff9dbec",
+  "nativeResult": "PASS",
+  "checks": {
+    "focusedAndFE17": "48 tests; exit 0",
+    "build": "exit 0; existing chunk-size warning",
+    "lint": "exit 0",
+    "typecheck": "exit 0",
+    "plan": "exit 0",
+    "C08": "exit 0",
+    "boundaries": "exit 0;15 assigned paths",
+    "sourceHashes": "all 14 frontend changed files match native source manifest",
+    "whitespace": "exit 0"
+  },
+  "limitations": [
+    "party invitation contract absent; existing /meet navigation only",
+    "no real BE11/BE13/BE37/two-account gate",
+    "actual renderer/approved-art sink not run",
+    "no production route composition in worker patch"
+  ],
+  "writer": "STOPPED pending parent review; no push"
+}
