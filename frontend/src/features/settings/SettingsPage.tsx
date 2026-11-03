@@ -7,7 +7,8 @@ import type { MeController } from '../me/model/controller'
 import type { Preferences } from '../me/model/contract'
 import { ThemeSelector } from '../theme/ui/ThemeSelector'
 import type { ThemeController } from '../theme/model/controller'
-/** Supplied by the existing shell owner; never allocate a second runtime or identity. */
+/** Existing shell adapter: honor signal for the entire applied lifetime, stop audio/release effects on abort.
+ * Begin with sound off; apply is only invoked by an explicit click after a saved value. Never allocate a second runtime. */
 export interface RuntimePreferencesPort { apply(preferences: Readonly<Preferences>, scope: PrivacyScope, signal: AbortSignal): Promise<void> }
 export function SettingsPage({ controller, auth, runtime, theme }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; runtime?: RuntimePreferencesPort; theme?: ThemeController }) {
   const s = useMe(controller), [application, setApplication] = useState(''), [applying, setApplying] = useState(false)
@@ -23,13 +24,13 @@ export function SettingsPage({ controller, auth, runtime, theme }: { controller:
     const signal = lifetime.current.signal, preferences = s.participant.preferences
     setApplying(true); setApplication('Applying saved preferences…')
     try {
-      await auth.privacy.run(controller.scope, context => runtime!.apply(preferences, controller.scope, context.signal), signal)
+      await auth.privacy.run(controller.scope, () => runtime!.apply(preferences, controller.scope, signal), signal)
       if (!signal.aborted) setApplication('Saved preferences applied in this session.')
     } catch { if (!signal.aborted && auth.privacy.isCurrent(controller.scope)) setApplication('Could not apply preferences. Saved values are unchanged. Try again.') }
     finally { if (!signal.aborted) setApplying(false) }
   }
   return <section className="me-view" aria-label="Settings"><h2>SETTINGS</h2><p>Saved for your account and this event. Sound stays off until you explicitly apply it in this session.</p><MeStatus controller={controller} />
-    <form onSubmit={e => { e.preventDefault(); void controller.save('preferences') }}><fieldset disabled={disabled}><legend>Saved preferences</legend>
+    <form onSubmit={e => { e.preventDefault(); void controller.save('preferences') }}><fieldset disabled={disabled || applying}><legend>Saved preferences</legend>
       <label>Preferred era<select value={s.draft.preferences.theme} onChange={e => controller.editPreferences({ theme: e.target.value as Preferences['theme'] })}>{['REVENGE', 'PARADE', 'DANGER'].map(t => <option key={t}>{t}</option>)}</select></label>
       <label className="me-check"><input type="checkbox" checked={s.draft.preferences.low_power} onChange={e => controller.editPreferences({ low_power: e.target.checked })} />Low power</label>
       <label className="me-check"><input type="checkbox" checked={s.draft.preferences.reduced_motion} onChange={e => controller.editPreferences({ reduced_motion: e.target.checked })} />Reduced motion</label>

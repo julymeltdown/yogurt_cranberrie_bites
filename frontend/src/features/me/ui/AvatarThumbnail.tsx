@@ -12,6 +12,7 @@ export function AvatarThumbnail({ auth, config, source }: { auth: Pick<SessionCo
   useLayoutEffect(() => {
     let active = true, compositor: AvatarCompositor | null = null, thumbnail: ReturnType<AvatarCompositor['thumbnail']> | null = null
     const lifetime = new AbortController()
+    setMessage('Avatar preview unavailable. Your saved outfit is unchanged.')
     const clear = () => { lifetime.abort(); thumbnail?.dispose(); compositor?.dispose(); host.current?.replaceChildren(); if (active) setMessage('Avatar preview unavailable. Your saved outfit is unchanged.') }
     const remove = auth.privacy.registerCleanup(clear)
     if (source && auth.privacy.isCurrent(source.scope)) {

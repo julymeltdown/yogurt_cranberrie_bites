@@ -35,8 +35,8 @@ describe('FE34 canonical own profile', () => {
     expect(controller.read().blocked).toBe(true); expect(controller.read().draft.preferences.sound_enabled).toBe(true); expect(controller.read().participant?.preferences.sound_enabled).toBe(false); dispose()
   })
   it('clears drafts immediately on policy change and fences an ignored-abort late read', async () => {
-    const late = deferred<Response>(), { controller, auth, dispose } = setup(vi.fn(() => late.promise))
-    const load = controller.load(); await vi.waitFor(() => expect(controller.read().phase).toBe('loading'))
+    const late = deferred<Response>(), fetcher = vi.fn(() => late.promise), { controller, auth, dispose } = setup(fetcher)
+    const load = controller.load(); await vi.waitFor(() => expect(fetcher).toHaveBeenCalledTimes(1))
     auth.privacy.changePolicy(auth.privacy.capture(), 'block'); expect(controller.read().participant).toBeNull(); expect(controller.read().draft.display_name).toBe('')
     late.resolve(response(participant())); await load; expect(controller.read().phase).toBe('expired'); expect(controller.read().participant).toBeNull(); dispose()
   })
@@ -46,4 +46,53 @@ describe('FE34 canonical own profile', () => {
     await controller.load(); controller.editProfile({ display_name: 'a'.repeat(41) }); await controller.save('profile'); expect(writes).toBe(0)
     controller.editProfile({ display_name: '🎵'.repeat(40) }); await controller.save('profile'); expect(writes).toBe(1); dispose()
   })
+})
+
+it('serializes saves and sends the exact preference-only BE07 subset', async () => {
+  const pending=deferred<Response>(), calls:unknown[]=[], fetcher=vi.fn(async input=>{const r=input as Request;if(r.method==='GET')return response(participant());calls.push(await r.json());return pending.promise})
+  const {controller,dispose}=setup(fetcher);await controller.load();controller.editPreferences({low_power:true,sound_enabled:true})
+  const save=controller.save('preferences');await vi.waitFor(()=>expect(calls).toHaveLength(1));await controller.save('preferences');controller.cancel('preferences');controller.editPreferences({low_power:false})
+  expect(calls).toEqual([{expected_revision:1,preferences:{theme:'REVENGE',low_power:true,reduced_motion:false,sound_enabled:true}}])
+  pending.resolve(response({...participant(),revision:2,preferences:{...participant().preferences,low_power:true,sound_enabled:true}}));await save
+  expect(controller.read().participant?.profile.avatar).toEqual(participant().profile.avatar);expect(controller.dirty('preferences')).toBe(false);dispose()
+})
+it.each(['read','write'] as const)('fences a late %s after canonical event/identity change',async kind=>{
+  const pending=deferred<Response>(),fetcher=vi.fn(async input=>{const r=input as Request;return kind==='read'||r.method==='PATCH'?pending.promise:response(participant())})
+  const {controller,auth,dispose}=setup(fetcher)
+  if(kind==='write')await controller.load()
+  controller.editProfile({bio:'private draft'});const flight=kind==='read'?controller.load():controller.save('profile')
+  await vi.waitFor(()=>expect(fetcher).toHaveBeenCalledTimes(kind==='read'?1:2))
+  auth.session.replace(auth.session.read().generation,{userId:eventId,eventId,accessToken:'DIFFERENT_SYNTHETIC'})
+  expect(controller.read().draft.display_name).toBe('');expect(controller.read().participant).toBeNull()
+  pending.resolve(response({...participant(),revision:2}));await flight;expect(controller.read().phase).toBe('expired');dispose()
+})
+it('rejects stale read and mutation revisions without presenting false save success',async()=>{
+  let p=participant(),method='GET';const {controller,dispose}=setup(vi.fn(async input=>{method=(input as Request).method;return response(p)}))
+  await controller.load();controller.editProfile({bio:'Draft'});await controller.save('profile');expect(method).toBe('PATCH');expect(controller.read().blocked).toBe(true);expect(controller.read().message).toContain('unknown')
+  p={...participant(),revision:3};await controller.load();p=participant();await controller.load();expect(controller.read().phase).toBe('error');expect(controller.read().participant?.revision).toBe(3);dispose()
+})
+it('does not silently rebase drafts when FE13 notifies of a verified avatar commit',async()=>{
+  const {controller,dispose}=setup(vi.fn(async()=>response(participant())));await controller.load();controller.editProfile({bio:'Keep this'})
+  await controller.refreshAfterAvatar(controller.scope, 2);expect(controller.read().blocked).toBe(true);expect(controller.read().draft.bio).toBe('Keep this');dispose()
+})
+it('clears displayed own data on forbidden responses, without rendering server error contents',async()=>{
+  let forbidden=false;const {controller,dispose}=setup(vi.fn(async()=>forbidden?response({code:'DENIED',message:'private detail',details:{reason:'PERMISSION_DENIED'}},403):response(participant())))
+  await controller.load();forbidden=true;await controller.load();expect(controller.read().participant).toBeNull();expect(controller.read().phase).toBe('expired');expect(controller.read().message).not.toContain('private detail');dispose()
+})
+it('does not lose a verified avatar notification while a profile save is pending',async()=>{
+  const pending=deferred<Response>(),fetcher=vi.fn(async input=>(input as Request).method==='GET'?response(participant()):pending.promise)
+  const {controller,dispose}=setup(fetcher);await controller.load();controller.editProfile({bio:'Saving draft'});const save=controller.save('profile')
+  await vi.waitFor(()=>expect(fetcher).toHaveBeenCalledTimes(2));await controller.refreshAfterAvatar(controller.scope, 2)
+  pending.resolve(response({...participant(),revision:2}));await save;expect(controller.read().blocked).toBe(true);expect(controller.read().message).toContain('avatar changed');dispose()
+})
+it('ignores stale-scope and duplicate-avatar notifications',async()=>{
+  const fetcher=vi.fn(async()=>response(participant())),{controller,dispose}=setup(fetcher);await controller.load();controller.editProfile({bio:'Keep this'})
+  await controller.refreshAfterAvatar({...controller.scope,policyGeneration:controller.scope.policyGeneration+1},2)
+  await controller.refreshAfterAvatar(controller.scope,1)
+  expect(controller.read().blocked).toBe(false);expect(controller.read().draft.bio).toBe('Keep this');expect(fetcher).toHaveBeenCalledTimes(1);dispose()
+})
+it('rejects a stale avatar GET after a newer verified FE13 commit',async()=>{
+  const {controller,dispose}=setup(vi.fn(async()=>response(participant())));await controller.load()
+  await controller.refreshAfterAvatar(controller.scope,2)
+  expect(controller.read().phase).toBe('error');expect(controller.read().blocked).toBe(true);expect(controller.read().message).toContain('Could not load');dispose()
 })
