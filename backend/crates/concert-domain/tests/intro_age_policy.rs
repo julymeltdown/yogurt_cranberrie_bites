@@ -267,8 +267,13 @@ fn draft_publication_expiry_state_and_event_rules() {
     let cutoff = now() + Duration::days(1);
     assert!(i.validate(now(), cutoff, true).is_ok());
     i.text.clear();
+    assert!(i.validate(now(), cutoff, false).is_err());
+    i.state = IntroState::Draft;
     assert!(i.validate(now(), cutoff, false).is_ok());
     assert!(i.validate(now(), cutoff, true).is_err());
+    i.state = IntroState::Published;
+    i.text = "@handle".into();
+    assert!(i.validate(now(), cutoff, false).is_err());
     i.text = "Hello".into();
     i.expires_at = Some(now());
     assert!(i.validate(now(), cutoff, true).is_err());

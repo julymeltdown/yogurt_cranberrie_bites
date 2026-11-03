@@ -50,7 +50,9 @@ impl IntroRecord {
             || self
                 .expires_at
                 .is_some_and(|e| e <= now || e > event_cutoff)
-            || publishing && (self.text.trim().is_empty() || contact::contact_bypass(&self.text))
+            || (publishing || self.state != IntroState::Draft) && self.text.trim().is_empty()
+            || (publishing || self.state == IntroState::Published)
+                && contact::contact_bypass(&self.text)
         {
             return Err(IntroError::Invalid);
         }
