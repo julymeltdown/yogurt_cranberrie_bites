@@ -84,6 +84,7 @@ export function createSessionController(options: SessionOptions) {
     if (!eventId && !forEnrollment) { publish({ capabilities: 'error' }); return }
     // Reserve before notifying observers: public enrollment discovery and FE09 share one flight.
     const flight = Promise.resolve().then(async () => {
+      if (disposed) return
       try {
         const result = await http.request({ path: '/api/auth/capabilities', method: 'GET', access: 'public', errorFamily: 'core', decode: decodeCapabilities })
         if (!disposed) {

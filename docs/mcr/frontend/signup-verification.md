@@ -52,7 +52,7 @@ Node24.22.2 and pnpm11.7.0; installed Chrome156.0.8078.80; commands run from the
 | Command | Evidence |
 | --- | --- |
 | `corepack pnpm@11.7.0 --dir frontend install --frozen-lockfile --offline` | 199 packages reused; no lock change |
-| `corepack pnpm@11.7.0 --dir frontend test` | **734/734**, 20 files; **65** new enrollment controller/route cases |
+| `corepack pnpm@11.7.0 --dir frontend test` | **737/737**, 20 files; **68** new enrollment controller/route cases |
 | `corepack pnpm@11.7.0 --dir frontend build` | Strict TypeScript and production build PASS; retained >500kB advisory, root ~544.82kB /144.67kB gzip, public lazy JS ~31.80kB /8.69kB gzip |
 | `corepack pnpm@11.7.0 --dir frontend lint` | PASS |
 | `node src/features/auth/__tests__/enrollment-browser-smoke.mjs` | Four widths 360/390/430/1280 and reduced 420px height; exact payloads, pending/double-submit, neutral duplicate, expired/consumed code recovery, server-only cooldown, opaque resend, uncertainty, privacy/route cancellation and late response fences, event-independent explicit discovery (null/malformed event and production public route), keyboard/heading/feedback focus, 44px targets, enabled text contrast, overflow, URL/DOM/storage hygiene and no auth installation |
@@ -77,3 +77,5 @@ The isolated implementation starts from the exact base above. Implementation/tes
 R1 identified that an expired Retry-After interval continued polling until unmount. The interval now clears itself at the deadline, with deterministic clock coverage proving no interval timers after expiry, no replay, and cleanup on exit from enrollment.
 
 R2 identified that initial enrollment availability inherited the unrelated concert-event discovery gate. Explicit canonical enrollment capability discovery now works with null/malformed event IDs and is shared as one flight with FE09 capability discovery. Only signup's synthetic policy fixture can qualify its form; production signup stays blocked. Existing-account verification/resend are anonymous and event-independent after discovery. FE09 login still requires a valid configured event, `emailEnabled` stays false without it, and no world authority is created. Unit/route tests and installed Chrome cover both no-event variants and production public verification with an explicit availability action. The cold-entry zero-API statement is deliberately limited to signup and verification before that action.
+
+R3 fences a capability flight disposed synchronously before its reserved microtask dispatch, while preserving reservation before loading publication. Regressions cover start(), explicit discovery and synchronous loading-listener disposal: zero fetch calls and no late state/observer publication, preserving discovery ownership during controller teardown.

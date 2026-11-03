@@ -163,3 +163,18 @@ it('allows explicit enrollment discovery retry after failed no-event provider di
   await auth.checkEnrollmentAvailability(); expect(auth.enrollment.available()).toBe(true)
   expect(auth.read().readiness).toBe('unavailable'); expect(fetch).toHaveBeenCalledTimes(2)
 })
+
+it.each(['start', 'explicit', 'listener'] as const)('does not dispatch or republish reserved capability discovery after %s synchronous disposal', async mode => {
+  const fetch = vi.fn<typeof globalThis.fetch>(async () => Response.json(capabilities()))
+  const auth = createSessionController({ eventId: mode === 'start' ? eventId : null, fetch, cookiePolicy: isolatedCookiePolicy() }); controllers.push(auth)
+  const observer = vi.fn(); auth.subscribe(observer)
+  if (mode === 'listener') {
+    const unsubscribe = auth.subscribe(() => { unsubscribe(); auth.dispose() })
+  }
+  const discovery = mode === 'start' ? auth.start() : auth.checkEnrollmentAvailability()
+  if (mode !== 'listener') auth.dispose()
+  const state = auth.read(), publications = observer.mock.calls.length
+  await discovery; await Promise.resolve()
+  expect(fetch).not.toHaveBeenCalled(); expect(auth.read()).toBe(state)
+  expect(observer).toHaveBeenCalledTimes(publications)
+})
