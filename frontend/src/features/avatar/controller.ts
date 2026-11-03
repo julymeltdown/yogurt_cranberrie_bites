@@ -28,10 +28,11 @@ const empty = (phase: EditorPhase): EditorState => ({ phase, persisted: null, dr
 export function createAvatarEditorController(options: AvatarEditorOptions) {
   let state: EditorState = empty('idle'), scope: PrivacyScope | null = null, started = false, disposed = false, epoch = 0
   let lifetime = new AbortController(), previewFlight = new AbortController(), preview: AvatarPreviewPort | null = null, lease: PreviewLease | null = null
-  let operation: AbortController | null = null, removers: (() => void)[] = []
+  let operation: AbortController | null = null, unsubscribe: (() => void) | null = null, cleanup: (() => void) | null = null
+  let retained: { scope: PrivacyScope; persisted: AvatarState; draft: AvatarConfig; uncertain: boolean; notice: EditorNotice } | null = null
   const listeners = new Set<() => void>()
   const publish = (patch: Partial<EditorState>) => { state = Object.freeze({ ...state, ...patch }); [...listeners].forEach(listener => listener()) }
-  const current = (captured: PrivacyScope, version = epoch) => !disposed && version === epoch && options.auth.privacy.isCurrent(captured)
+  const current = (captured: PrivacyScope, version = epoch) => started && !disposed && scope === captured && version === epoch && options.auth.privacy.isCurrent(captured)
   function clear(next: EditorPhase) {
     epoch++; lifetime.abort(); lifetime = new AbortController(); operation?.abort(); operation = null
     previewFlight.abort(); lease?.dispose(); lease = null; preview?.dispose(); preview = null; scope = null
@@ -59,7 +60,7 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
       }), flight.signal)
       if (!current(captured, version) || flight.signal.aborted) return
       const avatar = response.data
-      if (state.persisted && avatar.revision < state.persisted.revision) throw new TransportError('invalid-response')
+      if (state.persisted && (avatar.revision < state.persisted.revision || (avatar.revision === state.persisted.revision && !sameConfig(avatar.config, state.persisted.config)))) throw new TransportError('invalid-response')
       if (reconcile) publish({ phase: 'ready', candidate: avatar, notice: 'review-server' })
       else {
         publish({ phase: 'ready', persisted: avatar, draft: avatar.config, notice: null, needsReconciliation: false })
@@ -68,7 +69,14 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
     } catch { if (current(captured, version) && !flight.signal.aborted) publish({ phase: 'ready', notice: 'load-failed' }) }
     finally { if (operation === flight) operation = null }
   }
+  function retainDraft() {
+    if (scope && current(scope) && state.persisted && state.draft) retained = { scope, persisted: state.persisted, draft: state.draft,
+      uncertain: state.needsReconciliation || state.phase === 'saving' || state.phase === 'reconciling', notice: state.phase === 'saving' ? 'uncertain' : state.notice }
+  }
   async function initialize() {
+    if (!started || disposed) return
+    retainDraft()
+    const saved = retained && options.auth.privacy.isCurrent(retained.scope) ? retained : null
     clear('loading'); const captured = options.auth.privacy.capture(); scope = captured; const version = epoch
     if (!captured.eventId || !current(captured)) { publish({ phase: 'unavailable' }); return }
     publish({ phase: 'loading' })
@@ -79,7 +87,14 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
       const catalog = immutable(structuredClone(owner.catalog))
       publish({ catalog })
     } catch { if (current(captured, version)) publish({ phase: 'unavailable', notice: 'preview-unavailable' }); return }
-    if (current(captured, version)) await readServer(false)
+    if (current(captured, version)) {
+      retained = null
+      if (saved) {
+        publish({ persisted: saved.persisted, draft: saved.draft, needsReconciliation: true, notice: saved.uncertain ? saved.notice : null })
+        void show(saved.draft)
+      }
+      await readServer(saved !== null)
+    }
   }
   function choose(config: AvatarConfig) {
     if (!scope || !current(scope) || !preview || !state.draft || ['saving', 'loading', 'reconciling'].includes(state.phase)) return false
@@ -90,6 +105,7 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
     } catch { publish({ notice: 'invalid-selection' }); return false }
   }
   function commit(avatar: AvatarState, captured: PrivacyScope) {
+    if (!current(captured)) return
     try { options.onCommitted?.(avatar, captured) } catch { if (current(captured)) publish({ notice: 'saved-refresh-needed' }) }
   }
   return {
@@ -98,9 +114,11 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
     start() {
       if (started || disposed) return
       started = true
-      removers = [options.auth.privacy.registerCleanup(() => { clear('unavailable'); publish({}) }), options.auth.privacy.subscribe(() => { void initialize() })]
+      cleanup ??= options.auth.privacy.registerCleanup(() => { retained = null; clear('unavailable'); publish({}) })
+      unsubscribe = options.auth.privacy.subscribe(() => { void initialize() })
       void initialize()
     },
+    retryPreview() { if (!disposed && started && !operation) return initialize(); return Promise.resolve() },
     reload() { if (scope && current(scope) && !operation) return readServer(state.needsReconciliation || state.draft !== null); return Promise.resolve() },
     selectPreset(id: string) { const preset = state.catalog?.presets.find(p => p.id === id); if (!preset) { publish({ notice: 'invalid-selection' }); return false }; return choose(preset.config) },
     selectItem(layer: Layer, id: string | null) {
@@ -116,17 +134,17 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
     canSelect(config: AvatarConfig) { try { return preview?.supports(copyConfig(config)) === true } catch { return false } },
     cancel() {
       if (state.phase === 'saving' || state.phase === 'reconciling' || !state.persisted || !scope || !current(scope)) return false
-      const avatar = state.candidate ?? state.persisted
+      const captured = scope, candidate = state.candidate, avatar = candidate ?? state.persisted
       publish({ persisted: avatar, draft: avatar.config, candidate: null, needsReconciliation: state.needsReconciliation && !state.candidate,
         notice: state.needsReconciliation && !state.candidate ? state.notice : null })
-      if (state.needsReconciliation === false) commit(avatar, scope)
+      if (candidate) commit(avatar, captured)
       void show(avatar.config); return true
     },
     resolveConflict(choice: 'keep-draft' | 'use-server') {
       if (!state.candidate || !scope || !current(scope) || operation) return false
-      const avatar = state.candidate, draft = choice === 'use-server' ? avatar.config : state.draft
+      const captured = scope, avatar = state.candidate, draft = choice === 'use-server' ? avatar.config : state.draft
       publish({ persisted: avatar, draft, candidate: null, needsReconciliation: false, notice: null })
-      commit(avatar, scope); if (draft) void show(draft); return true
+      commit(avatar, captured); if (draft) void show(draft); return true
     },
     async save() {
       if (!scope || !current(scope) || state.phase !== 'ready' || operation || state.needsReconciliation || !state.persisted || !state.draft
@@ -151,8 +169,8 @@ export function createAvatarEditorController(options: AvatarEditorOptions) {
         return false
       } finally { if (operation === flight) operation = null }
     },
-    stop() { if (!started || disposed) return; started = false; removers.forEach(remove => remove()); removers = []; clear('idle'); publish({}) },
-    dispose() { if (disposed) return; disposed = true; removers.forEach(remove => remove()); removers = []; clear('disposed'); publish({}); listeners.clear() },
+    stop() { if (!started || disposed) return; retainDraft(); started = false; unsubscribe?.(); unsubscribe = null; clear('idle'); publish({}) },
+    dispose() { if (disposed) return; disposed = true; retained = null; unsubscribe?.(); cleanup?.(); unsubscribe = cleanup = null; clear('disposed'); publish({}); listeners.clear() },
   }
 }
 export type AvatarEditorController = ReturnType<typeof createAvatarEditorController>

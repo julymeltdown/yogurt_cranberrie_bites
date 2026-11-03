@@ -1,0 +1,67 @@
+{
+  "status": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "revision": "c321279eab2c3f904bba3fc859436c6b4bbeb23a",
+  "dependency": "c2149dae63d21324179be3dca7df4bc79a003881 (local duplicate c321279)",
+  "results": [
+    {
+      "width": 360,
+      "canonicalAuthHttp": "PASS",
+      "sharedCompositorRgba": "PASS",
+      "keyboardTouchAndClipping": "PASS",
+      "draftSaveCancelAndPanelResume": "PASS",
+      "conflictAndUncertainReconciliation": "PASS",
+      "churnAndTeardown": "PASS",
+      "productEntryUnavailable": "PASS"
+    },
+    {
+      "width": 390,
+      "canonicalAuthHttp": "PASS",
+      "sharedCompositorRgba": "PASS",
+      "keyboardTouchAndClipping": "PASS",
+      "draftSaveCancelAndPanelResume": "PASS",
+      "conflictAndUncertainReconciliation": "PASS",
+      "churnAndTeardown": "PASS",
+      "productEntryUnavailable": "PASS"
+    },
+    {
+      "width": 430,
+      "canonicalAuthHttp": "PASS",
+      "sharedCompositorRgba": "PASS",
+      "keyboardTouchAndClipping": "PASS",
+      "draftSaveCancelAndPanelResume": "PASS",
+      "conflictAndUncertainReconciliation": "PASS",
+      "churnAndTeardown": "PASS",
+      "productEntryUnavailable": "PASS"
+    }
+  ],
+  "pageErrors": [],
+  "assetRequests": 9,
+  "sourceHashes": {
+    "src/entities/avatar/runtime/compositor.ts": "fac22cf5948afd10420ad53bc408590657291ccb44e38defb61f2e96ee595740",
+    "src/entities/avatar/runtime/contract.ts": "b226237d2e8b5a0c65e2c1e6f4c3727589e4c2b865d56637575cf3dca133ba57",
+    "src/entities/avatar/runtime/index.ts": "d29f6491afc483e4f797ba82fffa1f928d6e6ac69489f831926bb2edb0d8faa2",
+    "src/entities/avatar/runtime/resources.ts": "f09e9d081b0108417910f87abbf97a34b57bbdaac0988c2c4cbc1330e290aad2",
+    "src/entities/avatar/runtime/schema.ts": "d458151451cf06b21d1c23ce3e87cbb532d49e3d9b77df67eb0093351ac31df1",
+    "src/features/avatar/AvatarEditor.tsx": "bfd55693ca9ff942dd603612c79de523f77b3604a689fe0078a2b1a6183521a6",
+    "src/features/avatar/__tests__/browser-smoke.mjs": "e4cf15a24092569b027fcd376a3fd36504d1660debf87941408401a60e0570e7",
+    "src/features/avatar/__tests__/controller.test.ts": "8fedced3d16b29b6a8cea4b11a875d038ba7eede7c8c1275f66cf0da52a943df",
+    "src/features/avatar/__tests__/fixtures/data.ts": "022603032913726a4e0fac65058f0f5a7bac5370a889981192eccb293c4456a4",
+    "src/features/avatar/__tests__/fixtures/harness.ts": "e4c8bf64a4a0106aa0817b4ef71e605340b650c9bc184e5cacb96f44d923937d",
+    "src/features/avatar/__tests__/fixtures/preview.html": "dd8109a5c284e572a2397b11261267238f0efb216e15a302e93bd6595162dd31",
+    "src/features/avatar/__tests__/fixtures/preview.tsx": "9a33e871d25274403e3312b3547827dbcdaebe370f4510f0f7af9fe7ed803c4e",
+    "src/features/avatar/__tests__/preview.test.ts": "c4acfff57d16bf42f26d45c7374880a9a2996a5eed7c3b413e929d5744bfbcff",
+    "src/features/avatar/__tests__/ui.test.tsx": "c86081d63f41235750ee97e74a446b1526a66ecf859d23a9ceb9c70982dfd816",
+    "src/features/avatar/avatar-editor.css": "e3ef3c8168545493ae67e897cb6a70d37a49ecb2dc11dc79779919ead4416619",
+    "src/features/avatar/contract.ts": "a6c416969bcad6013ea733a1a09a57d22764063ba96fb8c8212f658dd9a25552",
+    "src/features/avatar/controller.ts": "bc2a1bac34961e720b434a3ee2fe1bae23d4e93d27c6b763b6cbe1f0ae552780",
+    "src/features/avatar/index.ts": "5d8847b625bf3ba9ec70fd544f7b87fd87f932691dcee150d2364b361e3467bb",
+    "src/features/avatar/preview.ts": "77c304050d0fb324a6d8b236a6e65eb2655bff83e488bdfe9b768df9e740b981"
+  },
+  "limits": [
+    "Synthetic geometric atlas/test HTTP only; no production review receipt or character art.",
+    "Callback observes shared verified saved state; real world/profile root wiring and two-account propagation NOT_RUN.",
+    "Actual iOS/Android, backend persistence, AR03 and IN01 NOT_RUN."
+  ]
+}

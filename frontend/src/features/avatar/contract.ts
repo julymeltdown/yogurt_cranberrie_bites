@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import type { AvatarConfig as WireAvatarConfig } from '../../world/network/transport/wire-types'
+import type { AvatarConfig as WireAvatarConfig } from '../../entities/avatar/runtime'
 import type { PrivacyScope } from '../../shared/query/privacy'
 
 export type AvatarConfig = WireAvatarConfig

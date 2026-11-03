@@ -8,7 +8,8 @@
 .mcr-avatar-editor fieldset { min-width: 0; margin: 1.25rem 0; padding: 0; border: 0; }
 .mcr-avatar-editor legend { margin-bottom: .5rem; font-weight: 650; }
 .mcr-avatar-options, .mcr-avatar-editor footer { display: flex; flex-wrap: wrap; gap: .65rem; }
-.mcr-avatar-editor label { display: grid; gap: .35rem; margin-block: 1rem; text-transform: capitalize; font-weight: 650; }
+.mcr-avatar-editor .mcr-avatar-field { display: grid; gap: .35rem; margin-block: 1rem; }
+.mcr-avatar-editor label { text-transform: capitalize; font-weight: 650; }
 .mcr-avatar-editor button, .mcr-avatar-editor select { min-height: 44px; max-width: 100%; border: 1px solid var(--mcr-border, #827e8b); border-radius: .2rem; background: var(--mcr-background, #131217); color: inherit; font: inherit; padding: .5rem .75rem; }
 .mcr-avatar-editor select { width: 100%; }
 .mcr-avatar-editor button[aria-pressed="true"] { background: var(--mcr-text, #f4f1e8); color: var(--mcr-background, #131217); }

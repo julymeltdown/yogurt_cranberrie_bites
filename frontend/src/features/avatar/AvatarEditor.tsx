@@ -1,4 +1,4 @@
-import { useEffect, useRef, useSyncExternalStore } from 'react'
+import { useEffect, useId, useRef, useSyncExternalStore } from 'react'
 import { layers, sameConfig, type AvatarConfig } from './contract'
 import type { AvatarEditorController, EditorNotice } from './controller'
 import './avatar-editor.css'
@@ -14,6 +14,7 @@ const messages: Record<Exclude<EditorNotice, null>, string> = {
 }
 const name = (id: string) => id.replaceAll('_', ' ')
 export function AvatarEditor({ controller }: { readonly controller: AvatarEditorController }) {
+  const id = useId()
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), host = useRef<HTMLDivElement>(null)
   useEffect(() => { controller.start(); return () => controller.stop() }, [controller])
   useEffect(() => { const element = host.current, canvas = state.preview.canvas; if (!element || !canvas) return
@@ -31,6 +32,7 @@ export function AvatarEditor({ controller }: { readonly controller: AvatarEditor
     <p role="status" aria-live="polite">{state.phase === 'saving' ? 'Saving outfit…' : state.phase === 'reconciling' ? 'Checking latest saved outfit…'
       : state.phase === 'loading' ? 'Loading your outfit…' : state.notice ? messages[state.notice]
         : state.phase === 'unavailable' || state.phase === 'disposed' ? 'Avatar editing is unavailable for this session.' : 'Changes are a draft until you save.'}</p>
+    {state.notice === 'preview-unavailable' && <button type="button" disabled={busy} onClick={() => void controller.retryPreview()}>Reload avatar collection</button>}
     {state.phase !== 'unavailable' && state.phase !== 'disposed' && state.notice === 'load-failed' && <button type="button" disabled={busy} onClick={() => void controller.reload()}>Reload saved outfit</button>}
     {state.needsReconciliation && !state.candidate && <button type="button" disabled={busy} onClick={() => void controller.reload()}>Check latest saved outfit</button>}
     {state.candidate && <section aria-label="Saved outfit reconciliation"><h2>Saved outfit · revision {state.candidate.revision}</h2>
@@ -43,19 +45,19 @@ export function AvatarEditor({ controller }: { readonly controller: AvatarEditor
         {state.catalog.presets.map(preset => <button key={preset.id} type="button" disabled={!available(preset.config)}
           aria-pressed={!!state.draft && sameConfig(state.draft, preset.config)} onClick={() => controller.selectPreset(preset.id)}>{name(preset.id)}</button>)}
       </div></fieldset>
-      {layers.map(layer => <label key={layer}>{name(layer)}<select value={state.draft?.item_ids[layer] ?? ''} disabled={!editable} onChange={event => controller.selectItem(layer, event.target.value || null)}>
+      {layers.map(layer => <div className="mcr-avatar-field" key={layer}><label htmlFor={`${id}-${layer}`}>{name(layer)}</label><select id={`${id}-${layer}`} value={state.draft?.item_ids[layer] ?? ''} disabled={!editable} onChange={event => controller.selectItem(layer, event.target.value || null)}>
         {!state.draft && <option value="">Choose {layer}</option>}
         {layer === 'accessory' && <option value="" disabled={!!state.draft && !available({ ...state.draft, item_ids: { ...state.draft.item_ids, accessory: null } })}>None</option>}
         {state.draft && state.draft.item_ids[layer] !== null && !state.catalog?.items.some(item => item.id === state.draft?.item_ids[layer] && item.layer === layer)
           && <option value={state.draft.item_ids[layer]!} disabled>Saved item unavailable</option>}
         {state.catalog!.items.filter(item => item.layer === layer).map(item => <option key={item.id} value={item.id}
           disabled={!state.draft || !available({ ...state.draft, item_ids: { ...state.draft.item_ids, [layer]: item.id } })}>{name(item.id)}</option>)}
-      </select></label>)}
-      <label>Skin tone<select value={state.draft?.skin_tone_id ?? ''} disabled={!editable} onChange={event => controller.selectTone(event.target.value)}>
+      </select></div>)}
+      <div className="mcr-avatar-field"><label htmlFor={`${id}-tone`}>Skin tone</label><select id={`${id}-tone`} value={state.draft?.skin_tone_id ?? ''} disabled={!editable} onChange={event => controller.selectTone(event.target.value)}>
         {!state.draft && <option value="">Choose skin tone</option>}
         {state.draft && !state.catalog.tones.includes(state.draft.skin_tone_id) && <option value={state.draft.skin_tone_id} disabled>Saved skin tone unavailable</option>}
         {state.catalog.tones.map(tone => <option key={tone} value={tone} disabled={!state.draft || !available({ ...state.draft, skin_tone_id: tone })}>{name(tone)}</option>)}
-      </select></label>
+      </select></div>
     </>}
     <footer><button type="button" disabled={!editable || state.needsReconciliation || !state.draft || !state.persisted || !available(state.draft) || sameConfig(state.draft, state.persisted.config)} onClick={() => void controller.save()}>Save outfit</button>
       <button type="button" disabled={!editable} onClick={() => controller.cancel()}>Cancel changes</button></footer>
