@@ -43,4 +43,3 @@ Candidate author (`01a1a232-b91d-78f1-a13a-1361788ba51c`) owns source correction
 - Removing `after_connect` from `PgPoolOptions` and configuring session timeouts directly on test connection acquisition.
 
 Only a clean recompilation by the author will establish the verified remedy. As the current QA assignment is strictly read-only on candidate source, this fix cannot be applied in this worktree and must be delivered by the author.
-
