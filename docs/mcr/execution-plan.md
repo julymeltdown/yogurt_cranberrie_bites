@@ -4,7 +4,7 @@
 
 Intake and assessment are delivered. Foundation implementation is active: reviewed source mapping, pinned frontend installation/build, imported Rust workspace build and source-origin/boundary guards are available. The [execution record](progress.md) separates accepted foundation tasks, implementation in progress and unrun runtime gates. The original planning exports remain unchanged.
 
-The main agent is the integrator. Workers use `gpt-6.1-sol` with `high` reasoning, as requested. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
+The main chat is the integrator. Backend and frontend development run in separate visible Codex chats, as the user explicitly requested. Each uses `gpt-6.1-sol` with `high` reasoning and an isolated worktree. The [chat ownership register](chat-coordination.md) records the current writers and scopes. Title prefixes are `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, and `mcr(pm)`; a title failure is non-blocking. Create workers only for useful independent work and retire them after their handoff or when no ready work remains.
 
 ## Separate code ownership and workspaces
 

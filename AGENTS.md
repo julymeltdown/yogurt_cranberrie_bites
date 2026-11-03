@@ -10,6 +10,7 @@
 ## Parallel work and review
 
 - The main agent owns orchestration, contract decisions, integration review, and publishing to master.
+- The user explicitly requires separate visible Codex chats for backend and frontend development, not a subagent-only arrangement. Use the authorized chat-management tools, keep each chat on its assigned isolated worktree, and stop the former writer before transferring ownership. The main chat reviews and integrates their work.
 - The user requested parallel agents on `gpt-6.1-sol` with `high` reasoning. Prefix their chat titles with `mcr(be)`, `mcr(fe)`, `mcr(qa)`, `mcr(art)`, or `mcr(pm)` as appropriate; title failure must not block work.
 - Give each worker explicit task IDs and disjoint file ownership. Workers do not change central manifests, lockfiles, contract registries, root routers, or CI composition without coordination with the integrator.
 - Start a task when its actual prerequisites are satisfied. Do not impose full-wave barriers or make FE feature implementation depend on matching BE feature completion; use frozen contracts and deterministic fixtures.
@@ -28,6 +29,7 @@
 ## Implementation boundaries
 
 - All rendering/UI is newly authored. Only audited headless Bigyeting logic may be reused; keep old rendering and unneeded visual libraries out of the new application.
+- Never use decorative left accent lines, colored left borders, inset left rails or pseudo-element left bars in product UI, notices, error panels, toasts, skeletons or documentation-style panels. The user explicitly prohibits this pattern. Avoid generic AI-styled decoration and repetitive accented cards; use spacing, typography, clear labels and restrained semantic styling instead. Preserve necessary keyboard focus outlines and ordinary symmetric control borders.
 - Use the fixed frontend stack and preserve retained lockfile resolutions. Import the selected port-rust backend foundation with its source history/provenance and add one concert service.
 - One canonical Auth identity, one persistent Phaser instance, and one world connection per active shell. Access tokens stay in memory; private caches are scoped by user and event.
 - Virtual coordinates never imply physical arrival. Real meeting descriptions require explicit audience, revision, expiry, and reviewed place provenance.
