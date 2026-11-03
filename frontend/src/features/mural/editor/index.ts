@@ -1,0 +1,5 @@
+export { MuralEditor } from './MuralEditor'
+export { createMuralEditor } from './controller'
+export type { MuralEditorController, EditorState, Selection } from './controller'
+export type { MuralCommandPort, PixelCommand, CommandResult, MuralSnapshot, PixelOperation, PlacePixel, PrivacyPort, Availability } from './contract'
+export { snapshotSchema, pixelOperationSchema, placePixelSchema } from './contract'

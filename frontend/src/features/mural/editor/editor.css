@@ -1,0 +1,29 @@
+.mcr-mural { max-inline-size: 40rem; margin-inline: auto; padding: 1rem; color: var(--mcr-ink, #201d1d); background: var(--mcr-paper, #faf6ed); overflow-wrap: anywhere; }
+.mcr-mural * { box-sizing: border-box; }
+.mcr-mural__heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: .5rem; border-bottom: 2px solid currentColor; padding-bottom: .75rem; }
+.mcr-mural__heading h2 { font-size: 2.25rem; line-height: 1; margin: .3rem 0 0; letter-spacing: -.04em; }
+.mcr-mural__heading span, .mcr-mural__kicker { font-family: ui-monospace, monospace; font-size: .8rem; }
+.mcr-mural p { margin: .7rem 0; font-size: .9rem; line-height: 1.5; }
+.mcr-mural [role="status"] { min-block-size: 2.7rem; font-weight: 650; }
+.mcr-mural button, .mcr-mural input { min-inline-size: 44px; min-block-size: 44px; border: 2px solid currentColor; border-radius: 0; padding: .5rem; color: inherit; background: var(--mcr-paper, #faf6ed); font: inherit; font-size: .9rem; }
+.mcr-mural button { cursor: pointer; font-weight: 650; }
+.mcr-mural button:disabled { cursor: not-allowed; color: #605952; background: #e5dfd4; }
+.mcr-mural :focus-visible { outline: 3px solid var(--mcr-red, #a22635); outline-offset: 3px; }
+.mcr-mural__toolbar, .mcr-mural__actions { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin-block: .75rem; }
+.mcr-mural__toolbar output { min-inline-size: 1.5rem; text-align: center; }
+.mcr-mural__surface { inline-size: 100%; aspect-ratio: 1; overflow: hidden; touch-action: none; cursor: crosshair; background: #e5dfd4; outline: 1px solid currentColor; }
+.mcr-mural__surface canvas { display: block; inline-size: 100%; block-size: 100%; image-rendering: pixelated; }
+.mcr-mural fieldset { border: 0; border-top: 1px solid currentColor; margin: 1rem 0; padding: .5rem 0 0; min-inline-size: 0; }
+.mcr-mural legend { font-weight: 700; padding-inline-end: .75rem; }
+.mcr-mural__coordinates { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; align-items: end; }
+.mcr-mural__coordinates label { display: grid; gap: .25rem; min-inline-size: 0; }
+.mcr-mural__coordinates input { inline-size: 100%; min-inline-size: 44px; }
+.mcr-mural__coordinates button { grid-column: 1 / -1; }
+.mcr-mural__palette { display: grid; grid-template-columns: repeat(4, minmax(44px, 1fr)); gap: .5rem; }
+.mcr-mural__palette button { display: flex; gap: .25rem; align-items: center; justify-content: center; }
+.mcr-mural__palette [aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: 1px; }
+.mcr-mural__swatch { display: inline-block; inline-size: 18px; block-size: 18px; border: 1px solid #605952; }
+.mcr-mural__preview { border-block: 1px dashed currentColor; padding-block: .75rem; }
+.mcr-mural .mcr-mural__confirm:not(:disabled) { color: #faf6ed; background: #201d1d; }
+@media (min-width: 600px) { .mcr-mural__palette { grid-template-columns: repeat(8, minmax(44px, 1fr)); } .mcr-mural__coordinates { grid-template-columns: 1fr 1fr 2fr; } .mcr-mural__coordinates button { grid-column: auto; } }
+@media (forced-colors: active) { .mcr-mural__swatch { forced-color-adjust: none; } }

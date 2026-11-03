@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "scope": "FE32 deterministic typed command-port fixture and canonical FE05 privacy. No HTTP/backend, multiuser, native phone, or IN04 acceptance.",
+  "base": "20503f4b698a28105e718c36e38cfa8fd8fb4a44",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "checks": [
+    "drag out-and-back does not preview or place",
+    "Chromium multitouch cancels selection",
+    "pointercancel does not preview or place",
+    "tap survives automatic capture release",
+    "Escape cancels preview",
+    "arrow keys preview, Enter on canvas never places",
+    "explicit keyboard confirm places once",
+    "all button/input targets >=44px; no horizontal overflow",
+    "bounded DOM under130 nodes",
+    "127,127 DOM coordinate alternative",
+    "acknowledgement advances confirmed revision; cooldown disables placement",
+    "server cooldown and terminal failure rollback",
+    "unknown outcome blocks new placement across refresh",
+    "read-only status recovery never replays placement",
+    "paused/frozen/read-only states",
+    "logout scrubs DOM/command",
+    "no browser runtime errors"
+  ],
+  "sourceHashes": {
+    "contract.ts": "bbcdf46b244e8b8434cb496cd3fe09d9a3b385323b97d0c89dfaf91dec8ff22c",
+    "controller.ts": "0af993f96cbe303a6e920a87faeab32b4e5652ae68ef44809c1a41cbdb9dd26f",
+    "input.ts": "6e2744b189e6887f34c477a28a7522f5d76c4c3e16ee25cf1141f1c65cf57b04",
+    "MuralEditor.tsx": "8861cd1b24b73c69b040eee4253a9adb3a2b1a8101b4c27a8685c3730f55b523",
+    "editor.css": "68f563a56ced256512f877be6af0fcb3ab01675f79624350d32459601a31df94",
+    "__tests__/fixture.ts": "ba6fa5bd95472e078f4c4a5a1c0eebe4b25f6a56c81c4cac74eaf79eb92a2bf4",
+    "__tests__/preview.tsx": "9a9c1cc485012b7179796964ee01fb4218e132e05dbba9ffb66dfca81bbf7cd1",
+    "__tests__/browser-smoke.mjs": "7074d05a38451a8c35c1fa248bf9c43dd30c21d03dab1470c342f0910fc617fe"
+  },
+  "browser": "156.0.8078.80"
+}
