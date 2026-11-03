@@ -234,3 +234,133 @@ preference revisions across postmaster restart. These are real native database
 checks over synthetic metadata, not production Auth, artwork or multiuser-world
 acceptance. No live HTTP/RPC mutation, current mutation-authority adapter,
 real-provider/device/load flow, approved art or IN01/IN05 gate is certified.
+
+## Selected whole-character canonical increment (2026-11-04)
+
+Contract source `3398d8331863775ecc0180e5eccebddd179fedd5`
+adds the exact C06 `1.1.0` whole-character branch; layered `1.0.0` remains supported.
+The new domain `AvatarAppearance` representation is exclusive. `SetAvatar::parse`,
+`config_value` and `AvatarCatalog` retain their call signatures; `parse_config`
+provides the same strict decoder to release projection. Six selected presets have
+no component IDs, skin tones, URLs or frame choices. Manifest pin:
+`mcr_selected_static_20261103` / `1` /
+`sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b`.
+
+Additive migration `0025_whole_character_avatar.sql` retains old migration bytes,
+keys, revision/timestamp triggers and participant foreign keys. It adds
+`representation` and `preset_id` to `public.concert_avatar_settings`, relaxes
+component-column nullability, and enforces mutually exclusive variant checks.
+Layered rows retain required components; whole rows require the six-preset
+whitelist and all component columns NULL. Canonical avatar/bootstrap/core reads
+share `selection_from_row`; writes/default insertion project only the selected
+variant. Unknown or corrupt persisted values fail closed.
+
+The explicitly granted scope extension is only `CoreRepository::avatar` in
+`src/adapters/out/repository.rs`, necessary to decode saved variants. World
+serialization/SQL and associated tests belong to the World owner; this owner
+must not modify those files. Participant producer uses the unchanged parser and
+serializer interfaces. `tests/support/bootstrap::selected_release()` reads
+`release-selected` inside the private native harness; Python
+`avatar_smoke.write_selected_release(root, document)` creates its fixture map/theme
+bindings without changing the golden inputs. This is metadata/native evidence,
+not full approved product scenery or a public multiuser acceptance claim.
+
+Initial focused Rust 1.88 validation passed: domain avatar 3, application avatar
+and bootstrap tests (see `/tmp/mcr-selected-domain-application.log`). Locked,
+offline, two build jobs, debug 0, incremental 0, existing MEDIA target only.
+Initial service builds exposed stale shared-target build scripts/helper artifacts
+pointing at the previous participant checkout. Refreshing current checkout mtimes
+(no source byte changes) rebuilt those inputs. The World owner supplied the
+representation compatibility patch and affected test adaptations separately.
+No default database was touched.
+
+The goal API still reports the historical incompatible BE04 goal as `BLOCKED`;
+no new goal was created or the old goal falsely completed. The concrete new
+objective/completion criteria remain in `docs/mcr/contracts/selected-static-avatar.md`.
+
+### Fresh canonical component qualification
+
+Tested source: `71e9c6d4242329f1f6d9e3588ce2316e83964331`, including canonical
+implementation `86123961`, import correction `3621c04a`, upgrade proof `b297b9a6`,
+bootstrap binding tests `7dbd8d5b`/fixture correction `61b42bd2`, and mechanically
+adapted PostgreSQL assertion `4bd9a7de`. World production patch `d9e9a00a`
+was supplied by its owner and incorporated as `b6a6a210`; nine World test/helper
+adaptations `e28549a3` were incorporated as `71e9c6d4`. Their new whole-character
+oracle fixture initially used invalid synthetic preset IDs; the owner corrected
+it in `48335f67` (incorporated as `b37ae80a`) to canonical preset IDs and matching
+room/simulation pins. The contract whitelist was retained.
+
+Validation commands and actual exits:
+
+- Rust 1.88, `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/media-combined-fa4b4b3/target`,
+  `CARGO_BUILD_JOBS=2`, `CARGO_INCREMENTAL=0`, dev/test debug 0:
+  `cargo +1.88.0 test --locked --offline -p concert-domain --test avatar -p concert-application --test bootstrap`:
+  exit 0; domain avatar 3, application avatar 2 and bootstrap 6 passed.
+- `cargo +1.88.0 test --locked --offline -p concert-service --test avatar --test bootstrap --test postgres --lib --no-run --message-format=json`:
+  exit 0. Five affected World integration targets also compiled, exit 0.
+- Copied service avatar executable: 2 nonnative passed, 4 native ignored until the
+  private harness. Copied bootstrap executable: 5 nonnative passed, 2 native
+  ignored. Copied service library with `bootstrap::` filter: 2 passed.
+- `python3 backend/scripts/mcr/avatar_smoke.py --build-metadata /tmp/mcr-selected-71e9c6d4-eqrqg2cu/compiler-artifacts.jsonl --pinned-binaries /tmp/mcr-selected-71e9c6d4-eqrqg2cu/binary.json --pg-bin /opt/homebrew/opt/postgresql@16/bin`:
+  exit 0; PostgreSQL 16.14, 4 native cases passed, existing-layered upgrade passed,
+  restart passed and cleanup passed.
+- Pinned contract environment `/tmp/mcr-fe14-format-venv/bin/python` selected-static
+  contract tests: 7 passed, exit 0. The generated selected native bootstrap also
+  passed authoritative Bootstrap/C06 validation. Core/domain generator checks,
+  planning check and `git diff --check`: exit 0.
+
+Exact copied avatar executable SHA256:
+`6c7dca5c5d8118db3dda581273a6553eb46276c94100ea3ab8c04f4b8ea83697`.
+Bootstrap executable SHA256:
+`8fa1269a3251b788ea999c36418a7b0687f606c50939766259e4b6a8132b1f56`.
+Compiler receipts, frozen executables and native report are under
+`/tmp/mcr-selected-71e9c6d4-eqrqg2cu/` (local evidence, not a deployment artifact).
+
+The real native checks execute the service persistence and bootstrap repositories,
+not only SQL fixtures. They prove all six canonical selections, reload and repeated
+bootstrap preservation; unknown presets, wrong manifests/versions, mixed fields,
+foreign actor/event/release grants and stale revisions fail closed. An authority
+withdrawal after SQL UPDATE rolls back. Sixteen competing same-revision writes
+produce one winner. Preference updates preserve the avatar. A write waiting on
+event closure returns read-only without changing state. Database constraints
+independently reject mixed/unknown representations. Postmaster restart preserves
+both layered and whole-character state. Migration 0025 preserves the preexisting
+layered row including revision, timestamps and every old column.
+
+The private cluster was removed; postmasters 98340 and 98799 were gone after
+cleanup. Exact compiler binaries were copied and hashed before native execution,
+with no open handles on the MEDIA target. MEDIA was unconditionally returned to
+the participant owner afterwards; this chat holds no target or PostgreSQL resource.
+
+Limits: authority/admission are explicit test adapters, and map/themes remain
+synthetic metadata fixtures. This does not certify real Auth/participant RPC,
+public root HTTP, browser rendering, or a real multiuser World flow. Those owner
+journeys remain `NOT_RUN` here. Full AR03 directional animation and layered
+customization are unfinished; front-idle selected art is the only new capability.
+There is no live-data migration or replacement of stale persisted manifests with
+a guessed default. Layered and whole-character releases both retain strict
+catalog binding.
+
+Exact additional mechanical test scope was granted for
+`backend/services/concert-service/tests/postgres.rs`: only the old nullable
+accessory assertion now explicitly matches the layered variant. Other active
+feature tests remain with their owners. `docs/source/` and existing layered golden
+fixture bytes were verified unchanged. No frontend, Cargo manifest/lockfile,
+proto, root router or infrastructure changes were authored in this increment.
+
+### World owner compatibility qualification
+
+The implementation owner subsequently qualified corrected source `48335f67`
+(equivalent to the incorporated fixture correction `b37ae80a`): affected build
+exit 0, 102 pure tests passed (library 30, runtime 28, WebSocket 16, recovery 15,
+replication 12 and invalidation 1). The selected snapshot/delta test passed the
+actual pinned C05 oracle. Exact World replication executable SHA256:
+`4bfe08e80d6ba652c8b2683073b435dd5742cd2c204eb3c7af5a6384d089014f`.
+Their copied-binary native reruns also passed 3 READ_ONLY and 6 invalidation cases,
+with cleanup passing. Owner evidence:
+`/private/tmp/mcr-world-invalidation-20261104/avatar-world-build2-frozen/world_replication-pure.log`.
+These are the World owner's compatibility/component results, not a new claim of
+public root, browser, or full multiuser product acceptance. This publishing owner
+retained the already qualified canonical source bytes through peer reconciliation;
+the remaining differences from tested `71e9c6d4` are the separately qualified World
+fixture correction and documentation/peer changes.

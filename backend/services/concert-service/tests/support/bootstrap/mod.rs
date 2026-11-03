@@ -63,6 +63,14 @@ pub async fn pool() -> PgPool {
 
 pub fn release() -> Arc<ValidatedProductRelease> {
     let root = PathBuf::from(std::env::var("MCR_BOOTSTRAP_ROOT").unwrap()).join("release");
+    release_from_directory(root)
+}
+/// Metadata/native fixture only: uses the selected canonical config with fixture map/themes.
+pub fn selected_release() -> Arc<ValidatedProductRelease> {
+    let root = PathBuf::from(std::env::var("MCR_BOOTSTRAP_ROOT").unwrap()).join("release-selected");
+    release_from_directory(root)
+}
+fn release_from_directory(root: PathBuf) -> Arc<ValidatedProductRelease> {
     ProductReleaseBundle::from_synthetic_files(
         &root.join("bootstrap.json"),
         &root.join("avatar.json"),
