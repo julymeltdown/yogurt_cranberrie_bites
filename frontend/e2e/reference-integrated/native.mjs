@@ -90,12 +90,20 @@ async function simpleAction(page,item){
   assert.equal((await state(page)).requests.filter(r=>r.path==='/api/auth/login').length,before+1);return {status:'PASS',kind:'one-canonical-login'}
  }
  if(item.id==='meet'||item.id==='gifts'){
+  const reachability=[]
+  if(item.id==='gifts'){
+   const reserves=page.getByRole('link',{name:/^Review reservation for /});await expect(reserves).toHaveCount(3)
+   for(const reserve of await reserves.all()){
+    await reserve.scrollIntoViewIfNeeded();const reached=await reserve.evaluate(el=>{const r=el.getBoundingClientRect(),body=el.closest('.shell-panel-body').getBoundingClientRect(),hit=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return {name:el.getAttribute('aria-label'),width:r.width,height:r.height,fullyInScrollViewport:r.top>=body.top-1&&r.bottom<=body.bottom+1&&r.top>=0&&r.bottom<=innerHeight,centerHit:hit===el||el.contains(hit)}});assert(reached.fullyInScrollViewport&&reached.centerHit);assert(reached.width>=44&&reached.height>=44);reachability.push(reached)
+   }
+   const summary=page.getByText('Filter giveaways',{exact:true});await summary.focus();await summary.press('Enter');await expect(summary.locator('..')).toHaveAttribute('open','');await summary.press('Enter');await expect(summary.locator('..')).not.toHaveAttribute('open','')
+  }
   const link=page.getByRole('link',{name:item.id==='meet'?/^View details for /:/^Review reservation for |^View pickup for /}).first()
   if(!await link.count())return {status:'NOT_RUN',code:'DETAIL_CONTROL_NOT_FOUND'}
   await link.focus();const focus=await link.evaluate(el=>getComputedStyle(el).outlineStyle!=='none');const before=(await state(page)).requests.filter(r=>r.method!=='GET').length
   await link.press('Enter');await expect.poll(async()=>(await state(page)).path!==item.route).toBe(true)
   assert.equal((await state(page)).requests.filter(r=>r.method!=='GET').length,before);await page.evaluate(()=>window.__REFERENCE_INTEGRATED__.back())
-  await expect.poll(async()=>(await state(page)).path).toBe(item.route);return {status:'PASS',kind:'detail-read-no-mutation',focus,backFocus:await link.evaluate(el=>el===document.activeElement)}
+  await expect.poll(async()=>(await state(page)).path).toBe(item.route);return {status:'PASS',kind:'detail-read-no-mutation',reachability,focus,backFocus:await link.evaluate(el=>el===document.activeElement)}
  }
  if(!item.public){
   const back=page.getByRole('button',{name:'Back to previous panel',exact:true});if(await back.count()){await back.focus();const focus=await back.evaluate(el=>getComputedStyle(el).outlineStyle!=='none');await back.press('Enter');await expect.poll(async()=>(await state(page)).path).toBe(item.id==='customize'?'/me':'/world');return {status:'PASS',kind:'native-panel-back',focus,path:(await state(page)).path}}

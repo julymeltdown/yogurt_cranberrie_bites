@@ -54,9 +54,9 @@ All ten 390px side-by-side comparisons were inspected, with the original phone a
 | Customize | Preview unavailable; category/item/tone editing and Random/Reset/Save gated | Authority gap; draft/save NOT_RUN |
 | Feed | One fixture post, initials and no media vs target's illustrated multi-post layout; compose/footer position differs | Fixture coverage and visual gap, not evidence of server data loss |
 | Meet | Three rows/capacity counts render, JOIN opens details without applying; portraits/member strip missing, Create disabled | Authority/composition gap; no physical arrival claim |
-| Gifts | Three rows with honest No photo; title/filter/My gifts targets under 44px; third Reserve below initial viewport | Touch-target finding plus target-density difference; below-fold alone is not a functional failure |
+| Gifts | Three rows with honest No photo; original undersized controls/density finding retained historically and checked against published repair below | Touch-target finding plus target-density difference; below-fold alone is not a functional failure |
 | Wall | Unavailable message, no qualified anchor, grid, palette or editing toolbar | Authority gap; mural edit/sync NOT_RUN |
-| Me | Saved fixture profile and route controls, missing approved avatar, target social links/activity-tab layout absent | Authority and visual gap |
+| Me | Refreshed dark profile header and activity tabs render; approved avatar and recent activity remain unavailable, with remaining spacing/social identity differences | Authority and visual gap |
 
 Gifts touch targets were handed to the existing Gifts owner through the frontend coordinator. QA owns no application fixes. JOIN and RESERVE remain navigation into the actual detail/reservation journey and do not create application/reservation writes. Detail data/authorization and real command outcomes are outside these fixture assertions; a successful route transition is not server-flow acceptance.
 
@@ -79,3 +79,9 @@ Comparison artifact rendering is a separate static-file browser check: 30 HTML c
 ## Next assigned checkpoint
 
 The frontend root owner is integrating the published selected whole-character producer, canonical registry/provider, default production World adapter and whole-character editor. Keep this QA goal active for the exact published root/union/editor/World pins and configured fixture. Exercise the **default production loader** (or explicitly disclose any remaining override), then prove canonical Save → World → Me → Customize propagation, no draft PUTs, one Save PUT and actual approved bytes without synthetic C06 approval or ID fabrication. Preserve this bounded baseline; do not replace it with a claim of genuine whole integration. No full visual/live/device acceptance follows from the baseline.
+
+## Affected-source followups
+
+Published profile changes through `6ccb4e8f` and World adapter `677f958e` were reconciled without repeating unrelated screens. Candidate `0569a9b10fd7070ce1c8c7759f52a28727cfdf6d` captured World and Me at all three widths (6/6, zero automated findings). Me now has the dark header and activity tabs; its avatar preview/recent activity remain unavailable. Whole World rendering is not certified here because the fixture still selects legacy metadata and overrides the production loader.
+
+Gifts owner published the exact touch/density repair `9055af1e03a5418457e32b1a8d125c5d0e49d823`. QA refresh uses the same owned three-row fixture and actual root routes, not the author's separate native harness. Historical 26px/36px measurements stay in `history/initial-report.json` and the original comparison. New per-case candidates and raw `refresh-gifts.json` distinguish the repaired source. Product photos, canonical identity and live reservation outcomes remain unqualified.
