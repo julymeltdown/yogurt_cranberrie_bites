@@ -1,7 +1,7 @@
 # Canonical Auth and Profile owner composition
 
-Status: **IN_PROGRESS**, cohesive composition delivered and runtime verified;
-pending parent review and the separate HTTP/native-owner join. Base
+Status: **IN_PROGRESS**, parent review fix applied in source; focused regression
+rerun pending shared target transfer. Base
 `60ca208d23e67b2372f6a27db7e7cecc4ff7cdc6`, branch
 `codex/mcr-be-identity-composition`. This is the cohesive BE04 owner-composition
 feature, not a public admission or whole-product claim.
@@ -39,10 +39,13 @@ exactly bounded minimal projection. No retry, cache, TTL, diagnostics, broad DTO
 suspension policy or event rule is introduced.
 
 `ConcertIdentityObservation<'a>` privately contains the borrowed context and both
-borrowed child observations. Every accessor calls the combined `check`, which
-rechecks all three. It has no public constructor, Clone, serde, rebind or
-portable-grant conversion. Debug is fixed and redacted. Its observation times are
-current owner statement observations, not freshness leases or revisions.
+borrowed child observations plus the exact captured stop for that call. Every
+accessor calls the combined `check`, which first enforces that captured
+monotonic stop, then rechecks all three borrowed authorities. A shorter active
+task deadline therefore remains enforced after the task-local scope ends while
+the outer JWT context is still live. It has no public constructor, Clone, serde,
+rebind or portable-grant conversion. Debug is fixed and redacted. Its observation
+times are current owner statement observations, not freshness leases or revisions.
 
 ## Validation boundary and provenance
 

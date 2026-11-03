@@ -731,6 +731,30 @@ async fn both_observations_are_borrowed_checked_and_cannot_survive_context_expir
 }
 
 #[tokio::test]
+async fn shorter_outer_stop_remains_bound_after_task_scope_and_context_are_live() {
+    let h = Running::start().await;
+    let ctx = context(Duration::from_secs(4));
+    let observation = platform::call_deadline::scope(
+        std::time::Instant::now() + Duration::from_millis(140),
+        h.reader.read(&ctx, None),
+    )
+    .await
+    .unwrap();
+    assert!(observation.check().is_ok());
+    tokio::time::sleep(Duration::from_millis(160)).await;
+    assert!(ctx.check().is_ok());
+    assert_eq!(
+        observation.check().unwrap_err(),
+        ConcertIdentityReadError::DeadlineExceeded
+    );
+    assert_eq!(
+        observation.user_id().unwrap_err(),
+        ConcertIdentityReadError::DeadlineExceeded
+    );
+    h.close().await;
+}
+
+#[tokio::test]
 async fn auth_hold_consumes_one_original_stop_and_delivers_no_profile_result() {
     let h = Running::start().await;
     let ctx = context(Duration::from_millis(120));

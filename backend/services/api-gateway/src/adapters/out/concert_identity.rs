@@ -116,6 +116,7 @@ impl ConcertIdentityReader {
             }
             let observation = ConcertIdentityObservation {
                 context,
+                stop,
                 admission,
                 profile,
                 user_id: actor,
@@ -157,6 +158,7 @@ impl ConcertIdentityReader {
 /// ```
 pub struct ConcertIdentityObservation<'a> {
     context: &'a ConcertAccessContext,
+    stop: tokio::time::Instant,
     admission: AdmissionObservation<'a>,
     profile: ConcertProfileObservation<'a>,
     user_id: Uuid,
@@ -171,6 +173,9 @@ impl ConcertIdentityObservation<'_> {
         self.context
             .check()
             .map_err(|_| ConcertIdentityReadError::AccessExpired)?;
+        if tokio::time::Instant::now() >= self.stop {
+            return Err(ConcertIdentityReadError::DeadlineExceeded);
+        }
         self.admission.check()?;
         self.profile.user_id()?;
         self.profile.display_name()?;
