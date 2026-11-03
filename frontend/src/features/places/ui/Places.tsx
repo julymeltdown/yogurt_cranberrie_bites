@@ -1,6 +1,7 @@
 import { useEffect, useId, useState, useSyncExternalStore } from 'react'
 import { ShellLink } from '../../../app/navigation'
-import { Button, Feedback, Field } from '../../../shared/ui'
+import { Feedback, Field } from '../../../shared/ui'
+import { ConcertAction, ConcertWindow } from '../../../shared/ui/concert-window'
 import { physicalStatus, sourceLink, type Place } from '../model/contract'
 import type { PlaceFailure, PlacesController, PlacesState } from '../model/controller'
 import './places.css'
@@ -24,8 +25,8 @@ function Failure({ reason, controller }: { reason: PlaceFailure; controller: Pla
   const message = failures[reason]
   return <Feedback kind="error" title={message.title}><p>{message.text}</p>
     <div className="places-actions">
-      {reason === 'map-mismatch' ? <Button onClick={() => window.location.reload()}>Reload event</Button>
-        : !['signed-out', 'denied'].includes(reason) && <Button onClick={() => void controller.refresh()}>Reload places</Button>}
+      {reason === 'map-mismatch' ? <ConcertAction onClick={() => window.location.reload()}>Reload event</ConcertAction>
+        : !['signed-out', 'denied'].includes(reason) && <ConcertAction onClick={() => void controller.refresh()}>Reload places</ConcertAction>}
       <ShellLink id="places-recovery-world" className="places-link" to="/world">Return to world</ShellLink>
     </div>
   </Feedback>
@@ -58,7 +59,7 @@ function OverviewDiagram({ state }: { state: PlacesState }) {
         </g>
       })}
     </svg>
-    <figcaption>Virtual layout · map revision {map.map_revision}. Numbers match the place list; × means closed.</figcaption>
+    <figcaption>Schema-derived virtual schematic · map revision {map.map_revision}. Numbers match the place list; × means closed. Not venue artwork or a physical route.</figcaption>
   </figure>
 }
 export function PlacesOverview({ controller }: { controller: PlacesController }) {
@@ -66,22 +67,21 @@ export function PlacesOverview({ controller }: { controller: PlacesController })
   useEffect(() => { controller.select(null) }, [controller])
   const items = state.list.data?.items ?? [], shown = items.map((place, index) => ({ place, index }))
     .filter(({ place }) => place.label.toLowerCase().includes(search.trim().toLowerCase()))
-  return <section className="places-view" aria-label="Map overview">
-    <header className="places-intro"><p className="places-kicker">Get your bearings</p><h2>Places in the world</h2>
-      <p>Explore the layout, then open a landmark for its source and status.</p></header>
+  return <section className="places-view places-overview" aria-label="Map overview"><ConcertWindow title="MAP" icon="world">
     {['idle', 'loading'].includes(state.list.phase) && <p role="status">Loading places…</p>}
     {state.list.phase === 'error' && <Failure reason={state.list.reason!} controller={controller} />}
     {['ready', 'empty'].includes(state.list.phase) && <>
       {state.mapMismatch && <Failure reason="map-mismatch" controller={controller} />}
       <OverviewDiagram state={state} />
-      <p>Virtual movement never confirms real arrival.</p>
-      <details className="places-legend-disclosure"><summary>Virtual and physical place legend</summary><PlaceLegend /></details>
       {!state.mapMismatch && <div className="places-actions" aria-label="Virtual camera controls">
-        <Button variant="secondary" disabled={!controller.cameraAvailable()} onClick={() => controller.recenter()}>Recenter avatar</Button>
-        <Button variant="secondary" disabled={!controller.cameraAvailable()} onClick={() => controller.zoom(-1)}>Zoom out</Button>
-        <Button variant="secondary" disabled={!controller.cameraAvailable()} onClick={() => controller.zoom(1)}>Zoom in</Button>
+        <ConcertAction tone="paper" disabled={!controller.cameraAvailable()} onClick={() => controller.recenter()}>Recenter avatar</ConcertAction>
+        <ConcertAction tone="paper" disabled={!controller.cameraAvailable()} onClick={() => controller.zoom(-1)}>Zoom out</ConcertAction>
+        <ConcertAction tone="paper" disabled={!controller.cameraAvailable()} onClick={() => controller.zoom(1)}>Zoom in</ConcertAction>
       </div>}
+      <p className="places-camera-notice" role="status">{state.notice}</p>
       {!controller.cameraAvailable() && !state.mapMismatch && <p>Live camera controls are unavailable. All listed places can still be read.</p>}
+      <p className="places-virtual-note">Virtual movement never confirms real arrival.</p>
+      <details className="places-legend-disclosure"><summary>Virtual and physical place legend</summary><PlaceLegend /></details>
       {state.list.phase === 'empty' ? <p role="status">No places are published for this event yet.</p> : <>
         <Field label="Find a place" type="search" value={search} maxLength={512} onChange={e => setSearch(e.target.value)} />
         <p role="status">{shown.length} {shown.length === 1 ? 'place' : 'places'} shown</p>
@@ -92,18 +92,17 @@ export function PlacesOverview({ controller }: { controller: PlacesController })
               ? 'Currently unavailable — open details to check again' : physicalStatus(place)}</p>
               <div className="places-actions">
                 <ShellLink id={`place-${place.place_id}`} className="places-link" to={`/world/places/${place.place_id}`}>View {place.label}</ShellLink>
-                <Button variant="quiet" disabled={!controller.canShow(place.place_id)} onClick={() => controller.showOnMap(place.place_id)} aria-label={`Show ${place.label} on virtual map`}>Show on map</Button>
+                <ConcertAction tone="paper" disabled={!controller.canShow(place.place_id)} onClick={() => controller.showOnMap(place.place_id)} aria-label={`Show ${place.label} on virtual map`}>Show on map</ConcertAction>
               </div>
             </div>
           </li>)}
         </ol>
         {!shown.length && <p>No places match. Try a different name.</p>}
       </>}
-      <Button variant="quiet" onClick={() => void controller.refresh()}>Refresh place information</Button>
+      <ConcertAction tone="paper" onClick={() => void controller.refresh()}>Refresh place information</ConcertAction>
     </>}
-    <p role="status">{state.notice}</p>
     <ShellLink id="places-help" className="places-link" to="/world/help">Controls and meeting safety</ShellLink>
-  </section>
+  </ConcertWindow></section>
 }
 function Provenance({ place }: { place: Place }) {
   const p = place.provenance, href = sourceLink(p.source_uri)
@@ -126,13 +125,13 @@ export function PlaceDetail({ controller, placeId }: { controller: PlacesControl
   const state = usePlaces(controller)
   useEffect(() => { controller.select(placeId); return () => { if (controller.read().selectedId === placeId) controller.select(null) } }, [controller, placeId])
   const detail = state.selectedId === placeId ? state.detail : null, place = detail?.data?.place
-  return <section className="places-view" aria-label="Place information">
+  return <section className="places-view places-detail" aria-label="Place information"><ConcertWindow title={place?.label ?? 'PLACE'} icon="world">
     <ShellLink id="place-back-map" className="places-link" to="/world/map">All places</ShellLink>
     {state.list.phase === 'error' ? <Failure reason={state.list.reason!} controller={controller} />
       : detail?.phase === 'error' ? <Failure reason={detail.reason!} controller={controller} />
         : !place ? <p role="status">Loading place information…</p> : <>
           <header className="places-intro"><p className="places-kicker">Place information · revision {detail!.data!.revision}</p>
-            <h2>{place.label}</h2><p className="places-status">{physicalStatus(place)}</p></header>
+            <p className="places-status">{physicalStatus(place)}</p></header>
           {state.mapMismatch && <Failure reason="map-mismatch" controller={controller} />}
           <section><h3>Before you go</h3><p>{place.accessibility_notes}</p>
             <p>{place.place_kind === 'VIRTUAL_CONCEPT' ? 'This landmark exists in the virtual world only. Do not use it as a physical meeting destination.'
@@ -141,12 +140,12 @@ export function PlaceDetail({ controller, placeId }: { controller: PlacesControl
                   : 'A reviewed reference is not a live safety or access guarantee. Follow current venue instructions and check closures.'}</p>
           </section>
           <Provenance place={place} />
-          <div className="places-actions"><Button disabled={!controller.canShow(placeId)} onClick={() => controller.showOnMap(placeId)}>Show on virtual map</Button>
-            <Button variant="quiet" onClick={() => void controller.refresh()}>Refresh place information</Button></div>
+          <div className="places-actions"><ConcertAction disabled={!controller.canShow(placeId)} onClick={() => controller.showOnMap(placeId)}>Show on virtual map</ConcertAction>
+            <ConcertAction tone="paper" onClick={() => void controller.refresh()}>Refresh place information</ConcertAction></div>
           {!controller.canShow(placeId) && <p>Virtual map targeting is unavailable for this place or release.</p>}
           <p role="status">{state.notice}</p>
           <PlaceLegend />
         </>}
     <ShellLink id="place-detail-help" className="places-link" to="/world/help">Read controls and meeting safety</ShellLink>
-  </section>
+  </ConcertWindow></section>
 }

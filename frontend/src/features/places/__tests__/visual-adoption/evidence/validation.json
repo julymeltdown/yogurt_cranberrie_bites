@@ -1,0 +1,54 @@
+{
+  "node": "24.22.2",
+  "dependencyPolicy": "Retained installed dependencies reused read-only by temporary removable symlink; no install/re-resolution. Build output /tmp/mcr-uiv05-map-build; Vitest --no-cache; tsc --incremental false.",
+  "checks": [
+    {
+      "name": "tests",
+      "command": "vitest run --root frontend --no-cache src/features/places/__tests__",
+      "exitCode": 0,
+      "result": "61 tests / 2 files passed"
+    },
+    {
+      "name": "types",
+      "command": "tsc --noEmit --incremental false --project frontend/tsconfig.json",
+      "exitCode": 0,
+      "result": "combined frontend strict types passed"
+    },
+    {
+      "name": "lint",
+      "command": "oxlint frontend/src frontend/vite.config.ts",
+      "exitCode": 0,
+      "result": "passed"
+    },
+    {
+      "name": "plan",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "result": "planning consistency passed"
+    },
+    {
+      "name": "origin",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0,
+      "result": "passed"
+    },
+    {
+      "name": "baseline",
+      "command": "node frontend/src/features/places/__tests__/visual-adoption/baseline.mjs",
+      "exitCode": 0,
+      "result": "three exact-base native before screenshots captured before production edits; guard prevents relabeling current UI as before"
+    },
+    {
+      "name": "browser",
+      "command": "node frontend/src/features/places/__tests__/visual-adoption/browser.mjs",
+      "exitCode": 0,
+      "result": "app + fixture production bundles; three widths;54 screenshots;camera/lifetime/focus/recovery matrix passed"
+    },
+    {
+      "name": "boundaries",
+      "command": "python3 scripts/mcr/check-boundaries.py --base bea2e72f4d6f0e42be32700b5546c266bb157231 --lane frontend --allow-doc docs/mcr/frontend/map-visual.md",
+      "exitCode": 0,
+      "result": "PASS after dependency symlink removal; exact assignment/protected bytes/SVG geometry logic/import checks also passed"
+    }
+  ]
+}

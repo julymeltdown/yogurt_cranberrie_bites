@@ -1,0 +1,14 @@
+{
+  "browser": "156.0.8078.80",
+  "scope": "UIV05 before: exact base Places presentation; FE19-derived synthetic native shell fixture",
+  "sourceHashes": {
+    "../../ui/Places.tsx": "cc2712b2a21f1e33957e7cbd53e85696244088bcd46e4502c5d66b2784ca5d56",
+    "../../ui/places.css": "c36d79424ba5011007870bea0ea88b26418cf15261595ba0c95b620462e98221",
+    "../../../../../../docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "screenshots": [
+    "before-overview-360.png",
+    "before-overview-390.png",
+    "before-overview-430.png"
+  ]
+}
