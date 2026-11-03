@@ -52,7 +52,7 @@ unprefixed expiry getters retain the actor's original values.
 A ticket parent cannot be promoted by attaching arbitrary membership. After real
 DB admission, the runtime must perform a separate exact current-owner Auth read
 bounded by the SAME original operation deadline, without another ticket consume
-or a fresh timeout. That read creates the current parent for initial visibility.
+or a fresh timeout. Pass the earlier effective `ticket_parent.deadline()` (or a tighter stop) to this new read; `original_deadline()` is provenance and does not undo a shorter effective/Auth expiry. That read creates the current parent for initial visibility.
 A current operation retains its request and checked Auth result rather than
 reducing them to raw IDs or an AuthWindow. Runtime composition is a later patch.
 

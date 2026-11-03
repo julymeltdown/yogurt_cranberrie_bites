@@ -251,10 +251,11 @@ async fn cancellation_and_drop_burn_slots_and_reject_noncooperative_late_results
     let (c, subject) = candidate(&p);
     let child = presence(&p, &c, &subject);
     let auth = child.begin_auth_read().unwrap();
-    let future = auth.run(std::future::pending::<Result<(), WorldError>>());
-    tokio::pin!(future);
-    tokio::select! { _ = &mut future => panic!("unexpected completion"), _ = tokio::time::sleep(Duration::from_millis(10)) => {} }
-    drop(future);
+    {
+        let future = auth.run(std::future::pending::<Result<(), WorldError>>());
+        tokio::pin!(future);
+        tokio::select! { _ = &mut future => panic!("unexpected completion"), _ = tokio::time::sleep(Duration::from_millis(10)) => {} }
+    } // Drop the actual running future, not just its pinned reference.
     assert_eq!(
         child.begin_auth_read().unwrap_err(),
         WorldError::CredentialConsumed
@@ -282,7 +283,7 @@ async fn cancellation_and_drop_burn_slots_and_reject_noncooperative_late_results
     // A blocking poll that returns success beyond the original stop is refused.
     let original = AuthorityRpcDeadline::within_original(
         Utc::now().timestamp_micros() + 60_000_000,
-        (std::time::Instant::now() + Duration::from_millis(25)),
+        std::time::Instant::now() + Duration::from_millis(25),
         Duration::from_secs(60),
     )
     .unwrap();
@@ -298,6 +299,40 @@ async fn cancellation_and_drop_burn_slots_and_reject_noncooperative_late_results
         })
         .await;
     assert_eq!(result.unwrap_err(), WorldError::Unavailable);
+}
+
+#[tokio::test]
+async fn fanout_bound_and_execution_ambient_stop_cannot_restore_owner_slots() {
+    let (request, p) = parent(&claim(), deadline());
+    for _ in 0..800 {
+        let (c, subject) = candidate(&p);
+        presence(&p, &c, &subject);
+    }
+    let (extra, subject) = candidate(&p);
+    assert!(p
+        .presence_projection(
+            &extra,
+            &extra.owner,
+            &subject,
+            extra.membership.connection_id
+        )
+        .is_err());
+    let profile = p.profile_projection().unwrap();
+    let token = profile.begin_read().unwrap();
+    let stop = std::time::Instant::now() + Duration::from_millis(20);
+    let result = platform::call_deadline::scope(
+        stop,
+        token.run(std::future::pending::<Result<(), WorldError>>()),
+    )
+    .await;
+    assert_eq!(result.unwrap_err(), WorldError::Unavailable);
+    assert_eq!(
+        profile.begin_read().unwrap_err(),
+        WorldError::CredentialConsumed
+    );
+    // Cancellation from a derivative propagates to its original Auth parent too.
+    profile.cancel();
+    assert!(request.check().is_err());
 }
 
 #[tokio::test]
