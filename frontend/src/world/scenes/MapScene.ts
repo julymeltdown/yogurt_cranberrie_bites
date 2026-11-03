@@ -1,3 +1,4 @@
+import type { Point, WorldCamera } from '../camera/port'
 import type PhaserType from 'phaser'
 import type { EngineFactory } from '../runtime'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
@@ -9,7 +10,7 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
     const ready = new Promise<void>((resolve, reject) => { resolveReady = resolve; rejectReady = reject })
     const closed = new Promise<void>(resolve => { resolveClosed = resolve })
     const textureKey = 'mcr-reviewed-map', g = loaded.map.geometry
-    let sceneReady = false
+    let sceneReady = false, cameraFoot: Point | null = null, cameraZoom: number | null = null
     class MapScene extends Phaser.Scene {
       constructor() { super('mcr-map') }
       create() {
@@ -74,14 +75,47 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       // This avoids private runDestroy(), a stranded RAF, or overlap with the next owned game.
       game.destroy(true, false); game.step(performance.now(), 0)
     }
-    return { ready, closed,
+    function refreshCamera() {
+      if (stopped || !sceneReady) return
+      const camera = game.scene.getScene('mcr-map').cameras.main
+      camera.setSize(game.scale.width, game.scale.height).setZoom(cameraZoom ?? Math.max(1, Math.floor(Math.min(game.scale.width / loaded.widthPx, game.scale.height / loaded.heightPx))))
+      const foot = cameraFoot ?? { x: (loaded.spawn.cell_x + .5) * g.tile_width_px, y: (loaded.spawn.cell_y + .5) * g.tile_height_px }
+      camera.centerOn(foot.x, foot.y)
+      camera.preRender() // Updates bounded scroll and the matrix used by public getWorldPoint().
+    }
+    const cameraView: WorldCamera = {
+      surface: () => stopped ? null : game.canvas,
+      center(foot, zoom) {
+        if (stopped || !sceneReady || !Number.isFinite(foot.x) || !Number.isFinite(foot.y) || !Number.isFinite(zoom) || zoom < 1 || zoom > 8) return
+        cameraFoot = { x: Math.max(0, Math.min(loaded.widthPx, foot.x)), y: Math.max(0, Math.min(loaded.heightPx, foot.y)) }; cameraZoom = zoom; refreshCamera()
+      },
+      project(client) {
+        if (stopped || !sceneReady || !Number.isFinite(client.x) || !Number.isFinite(client.y)) return null
+        const rect = game.canvas.getBoundingClientRect()
+        if (rect.width <= 0 || rect.height <= 0 || client.x < rect.left || client.y < rect.top || client.x >= rect.right || client.y >= rect.bottom) return null
+        refreshCamera()
+        const point = game.scene.getScene('mcr-map').cameras.main.getWorldPoint((client.x - rect.left) * game.canvas.width / rect.width, (client.y - rect.top) * game.canvas.height / rect.height)
+        return point.x < 0 || point.y < 0 || point.x > loaded.widthPx || point.y > loaded.heightPx ? null : { x: point.x, y: point.y }
+      },
+      unproject(world) {
+        if (stopped || !sceneReady || !Number.isFinite(world.x) || !Number.isFinite(world.y)) return null
+        refreshCamera()
+        const camera = game.scene.getScene('mcr-map').cameras.main, origin = camera.getWorldPoint(0, 0), end = camera.getWorldPoint(game.canvas.width, game.canvas.height), rect = game.canvas.getBoundingClientRect()
+        if (rect.width <= 0 || rect.height <= 0) return null
+        return { x: rect.left + (world.x - origin.x) / (end.x - origin.x) * rect.width, y: rect.top + (world.y - origin.y) / (end.y - origin.y) * rect.height }
+      },
+      read() {
+        if (stopped || !sceneReady) return null
+        refreshCamera()
+        const camera = game.scene.getScene('mcr-map').cameras.main
+        return { zoom: camera.zoom, scrollX: camera.scrollX, scrollY: camera.scrollY, width: camera.width, height: camera.height }
+      },
+    }
+    return { ready, closed, camera: cameraView,
       resize(width, height) {
         if (stopped || !sceneReady) return
-        const scene = game.scene.getScene('mcr-map')
         game.scale.resize(width, height)
-        const camera = scene.cameras.main
-        camera.setSize(width, height).setZoom(Math.max(1, Math.floor(Math.min(width / loaded.widthPx, height / loaded.heightPx))))
-        camera.centerOn((loaded.spawn.cell_x + .5) * g.tile_width_px, (loaded.spawn.cell_y + .5) * g.tile_height_px)
+        refreshCamera()
         if (!visible) game.loop.tick()
       },
       setVisible(value) { visible = value; if (!stopped && game.isRunning) { if (value) game.loop.wake(); else game.loop.sleep() } },
