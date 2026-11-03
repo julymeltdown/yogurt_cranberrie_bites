@@ -59,7 +59,9 @@
     },
     "typesExit": 0,
     "lintExit": 0,
-    "native": "NOT_RUN for fix: disk assertion stopped before output, shared free 7527580KiB below8GiB. Existing report is pinned to prior source.",
-    "initialAttempt": "28/29; 403 mounted-world test hit existing1s lazy-loading timeout; unchanged serial rerun29/29"
+    "native": "PASS after disk recovery:360/390/430 includes actual anonymous destination click and foreign fallback, zero page errors, final source/screenshot hashes match",
+    "initialAttempt": "28/29; 403 mounted-world test hit existing1s lazy-loading timeout; unchanged serial rerun29/29",
+    "sourceCommit": "cfd4894f9ac3b3c16a4cf988fd3e9dcd743e53c3",
+    "buildExit": 0
   }
 }
