@@ -35,12 +35,15 @@ use tonic::Status;
 use uuid::Uuid;
 
 pub mod authority_deadline;
-pub mod relationship_read;
 pub mod cache;
+pub mod concert_read;
 pub mod exchange;
 pub mod fanout;
 pub mod notification;
+pub mod owner_binding;
 pub mod read_authority;
+pub mod relationship_read;
+pub mod response_scope;
 
 /// Metadata header carrying the signed delegation.
 pub const HEADER: &str = "x-actor-delegation";
@@ -57,6 +60,16 @@ pub const MAX_LIFETIME_SECONDS: i64 = 60;
 pub const CLOCK_SKEW_SECONDS: i64 = 5;
 /// Largest delegated request body, equal to tonic's default decode limit.
 pub const MAX_BODY_BYTES: usize = 4 * 1024 * 1024;
+// Frozen C04 upload bytes plus bounded protobuf metadata and one unary frame.
+// This applies only to the closed product dispatcher, never other methods.
+const PRODUCT_BODY_BYTES: usize = 10 * 1024 * 1024 + 16 * 1024 + 5;
+fn request_body_limit(method: &str) -> usize {
+    if method == "/concert.product.v1.ProductService/Dispatch" {
+        PRODUCT_BODY_BYTES
+    } else {
+        MAX_BODY_BYTES
+    }
+}
 const REPLAY_CACHE_CAPACITY: usize = 65_536;
 const SIGNATURE_CONTEXT: &[u8] = b"port-rust actor delegation v1\n";
 const VERSION: u8 = 1;
@@ -663,6 +676,9 @@ where
     parts
         .extensions
         .remove::<read_authority::VerifiedReadAuthority>();
+    parts
+        .extensions
+        .remove::<exchange::VerifiedParentAuthority>();
     let single = |name: &str| -> Result<Option<String>, Denial> {
         let mut values = parts.headers.get_all(name).iter();
         let value = values.next();
@@ -685,7 +701,7 @@ where
     let operation = single(OPERATION_HEADER)?
         .map(|value| Uuid::parse_str(&value).map_err(|_| Denial::Malformed))
         .transpose()?;
-    let bytes = Limited::new(body, MAX_BODY_BYTES)
+    let bytes = Limited::new(body, request_body_limit(parts.uri.path()))
         .collect()
         .await
         .map_err(|_| Denial::BodyTooLarge)?
@@ -719,7 +735,22 @@ where
     ) {
         parts.extensions.insert(authority);
     }
-    if !forwarded && verifier.audience() == Workload::Post {
+    let product_parent = verifier.audience() == Workload::Concert
+        && matches!(
+            parts.uri.path(),
+            "/concert.product.v1.ProductService/Dispatch"
+                | "/concert.participant.v1.ConcertParticipantService/GetParticipant"
+                | "/concert.participant.v1.ConcertParticipantService/SetAvatar"
+                | "/concert.participant.v1.ConcertParticipantService/UpdatePreferences"
+        )
+        && parts
+            .extensions
+            .get::<read_authority::VerifiedReadAuthority>()
+            .is_some();
+    if !forwarded
+        && caller == Workload::Gateway
+        && (verifier.audience() == Workload::Post || product_parent)
+    {
         parts
             .extensions
             .insert(exchange::VerifiedParentAuthority::new(
@@ -792,7 +823,10 @@ where
                 .get(OPERATION_HEADER)
                 .and_then(|value| value.to_str().ok())
                 .and_then(|value| Uuid::parse_str(value).ok());
-            let Ok(collected) = Limited::new(body, MAX_BODY_BYTES).collect().await else {
+            let Ok(collected) = Limited::new(body, request_body_limit(parts.uri.path()))
+                .collect()
+                .await
+            else {
                 return Ok(Status::internal("delegated request could not be signed").into_http());
             };
             let bytes = collected.to_bytes();
@@ -823,6 +857,167 @@ mod tests {
     use super::*;
 
     const METHOD: &str = "/post.v1.PostService/CreatePost";
+
+    #[tokio::test]
+    async fn product_upload_limit_is_shared_by_signer_and_verifier_without_widening_other_methods()
+    {
+        use std::sync::atomic::{AtomicBool, Ordering};
+        use tower::ServiceExt;
+        let signer = ActorDelegationSigner::from_seed(Workload::Gateway, &[7; 32]).unwrap();
+        let actor = Uuid::new_v4();
+        // One real maximum C04 upload in a unary protobuf, with a field-one actor.
+        let mut message = uuid_field(1, actor);
+        message.push((7 << 3) | 2);
+        let mut size = 10 * 1024 * 1024usize;
+        while size >= 128 {
+            message.push((size as u8 & 127) | 128);
+            size >>= 7;
+        }
+        message.push(size as u8);
+        message.resize(message.len() + 10 * 1024 * 1024, 0);
+        let body = frame(&message);
+        for (method, accepted) in [
+            ("/concert.product.v1.ProductService/Dispatch", true),
+            ("/concert.product.v1.ProductService/DispatchOther", false),
+            ("/concert.world.v1.WorldService/IssueTicket", false),
+            (METHOD, false),
+        ] {
+            let called = Arc::new(AtomicBool::new(false));
+            let observed = called.clone();
+            let verifier =
+                ActorDelegationVerifier::new(Workload::Concert, &[signer.public_key()]).unwrap();
+            let expected_len = body.len();
+            let inner = tower::service_fn(move |request: http::Request<Body>| {
+                let verifier = verifier.clone();
+                let observed = observed.clone();
+                async move {
+                    let verified = verify_request(request, Workload::Gateway, &[&[1]], &verifier)
+                        .await
+                        .unwrap();
+                    assert_eq!(
+                        verified.extensions().get::<VerifiedActor>().unwrap().0,
+                        actor
+                    );
+                    assert_eq!(
+                        verified
+                            .into_body()
+                            .collect()
+                            .await
+                            .unwrap()
+                            .to_bytes()
+                            .len(),
+                        expected_len
+                    );
+                    observed.store(true, Ordering::SeqCst);
+                    Ok::<_, std::convert::Infallible>(http::Response::new(Body::empty()))
+                }
+            });
+            let client = ActorDelegationClient::new(inner, signer.clone(), Workload::Concert);
+            let mut request = http::Request::builder()
+                .uri(method)
+                .body(Body::new(Full::new(tonic::codegen::Bytes::from(
+                    body.clone(),
+                ))))
+                .unwrap();
+            request.extensions_mut().insert(DelegatedActor { actor });
+            let response = client.oneshot(request).await.unwrap();
+            assert_eq!(called.load(Ordering::SeqCst), accepted, "{method}");
+            if !accepted {
+                assert_eq!(response.headers().get("grpc-status").unwrap(), "13");
+            }
+        }
+        let oversized = vec![0; PRODUCT_BODY_BYTES + 1];
+        let request = http::Request::builder()
+            .uri("/concert.product.v1.ProductService/Dispatch")
+            .header(HEADER, "bounded-invalid-token")
+            .body(Full::new(tonic::codegen::Bytes::from(oversized)))
+            .unwrap();
+        let verifier =
+            ActorDelegationVerifier::new(Workload::Concert, &[signer.public_key()]).unwrap();
+        assert!(matches!(
+            verify_request(request, Workload::Gateway, &[&[1]], &verifier).await,
+            Err(Denial::BodyTooLarge)
+        ));
+    }
+
+    #[tokio::test]
+    async fn concert_parent_binds_original_header_and_body_without_relabeling() {
+        use owner_binding::OwnerBinding;
+        let actor = Uuid::new_v4();
+        let event = Uuid::new_v4();
+        let family = Uuid::new_v4();
+        let request_id = Uuid::new_v4();
+        let target = format!("/api/concert/events/{event}/feed");
+        let mut message = Vec::new();
+        for (i, v) in [
+            actor.to_string(),
+            event.to_string(),
+            family.to_string(),
+            request_id.to_string(),
+            "GET".into(),
+            target.clone(),
+        ]
+        .iter()
+        .enumerate()
+        {
+            message.extend(string_field(i as u32 + 1, v.as_bytes()));
+        }
+        message.extend(string_field(7, b"{}"));
+        let signer = ActorDelegationSigner::from_seed(Workload::Gateway, &[7; 32]).unwrap();
+        for method in [
+            "/concert.product.v1.ProductService/Dispatch",
+            "/concert.participant.v1.ConcertParticipantService/GetParticipant",
+            "/concert.world.v1.WorldService/IssueTicket",
+        ] {
+            let body = frame(&message);
+            let verifier =
+                ActorDelegationVerifier::new(Workload::Concert, &[signer.public_key()]).unwrap();
+            let token = signer.issue(Workload::Concert, method, actor, None, &body, now());
+            let request = http::Request::builder()
+                .uri(method)
+                .header(HEADER, token)
+                .body(Full::new(tonic::codegen::Bytes::from(body)))
+                .unwrap();
+            let verified = verify_request(request, Workload::Gateway, &[&[1]], &verifier)
+                .await
+                .unwrap();
+            let parent = verified
+                .extensions()
+                .get::<exchange::VerifiedParentAuthority>();
+            if method.contains("WorldService") {
+                assert!(parent.is_none());
+                continue;
+            }
+            let parent = parent.unwrap();
+            let b = OwnerBinding {
+                actor_id: actor,
+                event_id: event,
+                session_family_id: family,
+                request_id,
+                operation: "FEED_LIST".into(),
+                expires_unix_micros: parent.expires_at() * 1_000_000,
+                parent_digest: parent.parent_digest(),
+                parent_body_digest: parent.request_digest(),
+                parent_method: method.into(),
+                http_method: "GET".into(),
+                http_target: target.clone(),
+                body_digest: Sha256::digest(b"{}").into(),
+            };
+            b.matches_parent(parent).unwrap();
+            for change in 0..6 {
+                let mut wrong = b.clone();
+                match change {
+                    0 => wrong.actor_id = Uuid::new_v4(),
+                    1 => wrong.session_family_id = Uuid::new_v4(),
+                    2 => wrong.request_id = Uuid::new_v4(),
+                    3 => wrong.http_target.push('x'),
+                    4 => wrong.body_digest = [8; 32],
+                    _ => wrong.http_method = "POST".into(),
+                };
+                assert!(wrong.matches_parent(parent).is_err());
+            }
+        }
+    }
 
     #[tokio::test]
     async fn strict_read_context_is_installed_only_after_real_actor_verification() {

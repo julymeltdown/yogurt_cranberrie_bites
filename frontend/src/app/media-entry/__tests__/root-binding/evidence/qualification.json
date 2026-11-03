@@ -1,0 +1,248 @@
+{
+  "task": "FE-ROOT-MEDIA-BINDING",
+  "status": "MOCK_READY",
+  "createdAt": "2026-11-03T23:30:04.834728+00:00",
+  "assignmentBase": "b8b5a939318bf39465fad44663eb272cb71868dc",
+  "qualifiedSourceCommit": "dd062879341ba05b3e9cdcb5bc009168e92801eb",
+  "combinedParent": "e1fecc4e52463b4b8cbb64add32add687ed1c08d",
+  "exportedProvider": {
+    "import": "app/media-entry/provider",
+    "name": "RootMediaProvider",
+    "props": "{auth: MediaOwnerAuth | null | undefined, scope: PrivacyScope | null, children: ReactNode}",
+    "hook": "useRootMediaOwner(): RootMediaBinding | null",
+    "limits": {
+      "entries": 8,
+      "consumers": 32,
+      "residentBlobCeilingBytes": 83886080
+    }
+  },
+  "sourcePins": [
+    {
+      "path": "docs/mcr/frontend/media-entry-leases.md",
+      "sha256": "4ce77a1ea2bfc135047e6226e4cf5d7c312906f2330706a1ef9bbce70e762fe5"
+    },
+    {
+      "path": "frontend/src/app/CommunityFeatures.tsx",
+      "sha256": "59dfa82055374f900daecc2c1c6f4d82ce7976804f9da4aaf06c2c6a7422ac04"
+    },
+    {
+      "path": "frontend/src/app/media-entry/RootMediaView.tsx",
+      "sha256": "7905f2174cfe5a687f69619c2940fe34fe7d8e040bf732546def0cd0ac3bfbc6"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/root-binding/browser.mjs",
+      "sha256": "a81e31fc5e14df3d528f604d5c27ef7cfb7948de543309b71eafbd7ef53c6214"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/root-binding/preview.html",
+      "sha256": "43f12c3f3880e7c649e5bfeb6475bfb7e880ee5f228f03adac506e0a17c217b0"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/root-binding/preview.tsx",
+      "sha256": "01368510dcd3ca3909fe0f5b8c5e0a234eebaf89df26d96c5a3a22117d40a4d8"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/root-binding/provider.test.tsx",
+      "sha256": "08b0f70c601c0e0e228c3bae707adfaef6b0f3f3fec81ce0b7d4d0b961cdf6b8"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/root-binding/rows-fixture.ts",
+      "sha256": "59dba32ff671689142885910e9945338ffa0cd853e12817c62db57b406368884"
+    },
+    {
+      "path": "frontend/src/app/media-entry/__tests__/root-binding/rows.test.tsx",
+      "sha256": "1b9ff1db2d302724b92fc2cda6c44424697172cc122128d38e26c0aabe9d66c3"
+    },
+    {
+      "path": "frontend/src/app/media-entry/provider.tsx",
+      "sha256": "eaa72a2ee28cdd84fbddd8a10a5cd555763843907597955f5a283b0f9bf6a14a"
+    },
+    {
+      "path": "frontend/src/app/media-entry/root-media.css",
+      "sha256": "fa2e352398f3baf98a85be0892e807d0fb84d9c913f4698dc392809981a34b31"
+    },
+    {
+      "path": "frontend/src/app/social-composition/panels.tsx",
+      "sha256": "9ca4427f274e9a2a17a405b8234d73207c4d85cf67da16fe7badf4b4d5a1ffb5"
+    }
+  ],
+  "dependencyPins": [
+    {
+      "path": "frontend/src/app/media-entry/index.ts",
+      "sha256": "fcf4019d22056e7d8c2c148c1fbeab00187e62751ba232c3784a9506924e058a"
+    },
+    {
+      "path": "frontend/src/shared/media/read-media.ts",
+      "sha256": "a91aa13d5a3d074985e50ea2252728ef17b526376c798171138f8bd63f802cd8"
+    },
+    {
+      "path": "frontend/src/shared/media/contract.ts",
+      "sha256": "ceb1e41520d1c85ddab35c768cbdc3686e092137b517d4c37008ec8224dd2f27"
+    },
+    {
+      "path": "frontend/src/shared/media/image-policy.ts",
+      "sha256": "7ae571867a1e2d5d54a3bb571eb11f38636676a45920142db76e3593e370cdb1"
+    },
+    {
+      "path": "frontend/src/shared/query/privacy.ts",
+      "sha256": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081"
+    },
+    {
+      "path": "frontend/src/features/auth/model/session.ts",
+      "sha256": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1"
+    },
+    {
+      "path": "frontend/src/features/event-feed/FeedImage.tsx",
+      "sha256": "b648a7e3e46168e28a02c7ac223af0a90502a40a5a568e0590310c2c7d54eebf"
+    },
+    {
+      "path": "frontend/src/features/event-feed/EventFeed.tsx",
+      "sha256": "7966aaf91af0894a8aca181b2e7385b0e56788032116dad22e266d6b34eb20ae"
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+      "sha256": "2c71518ba195f9e50f0e9888ab0ef6fe0b2e0d02d969d4e1f4cf1f3165612754"
+    },
+    {
+      "path": "frontend/src/app/ports.ts",
+      "sha256": "2e6beaeb753d0fcbeac0d34c88b5ba2acef569d3454c51396689eab0caeb6de4"
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "sha256": "d6a2a74ef3ae7c66b06f1c53798cacf52a6d5a800f199c9c1743966a1f55f62c"
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": "browser.json",
+      "bytes": 32673,
+      "sha256": "07d19ebec16a6a5731967d369a6e8362a1568df39c04f01f4abef52f63ca454b"
+    },
+    {
+      "path": "browser.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build.log",
+      "bytes": 6364,
+      "sha256": "e13d1319a2d7640aa6fa2cf04a4da7582fcd1e8d5ccc6defc2a5cf1532ce2018"
+    },
+    {
+      "path": "feed-360.png",
+      "bytes": 72944,
+      "sha256": "7a3bff10acb424c82c08dbde1b494f6ad0cf1e1f5a4e3924a36d129253903f5a"
+    },
+    {
+      "path": "feed-390.png",
+      "bytes": 71793,
+      "sha256": "224c588308d31508c797a1bd52458113c5aec8309c6c0e278f2e66e7f717798c"
+    },
+    {
+      "path": "feed-430.png",
+      "bytes": 74269,
+      "sha256": "07db86535dc6806521c4d42b444f142a3cc4d7abcb14cc08f3ce64b5ef7a5bfc"
+    },
+    {
+      "path": "gifts-360.png",
+      "bytes": 73813,
+      "sha256": "2b749bbc7b8c3f129b03bec93f527c5a95a3720b6c295b6b64e67b8006553105"
+    },
+    {
+      "path": "gifts-390.png",
+      "bytes": 77660,
+      "sha256": "f9ec83b160bef6a6c195b0dcdcdb9e210a03e7122c81bc1e9a021ad057182566"
+    },
+    {
+      "path": "gifts-430.png",
+      "bytes": 83098,
+      "sha256": "7cd2ae89ce050f52894d166ec16ce54c72eaf408d3e03367714965350dfabf69"
+    },
+    {
+      "path": "lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "plan.log",
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "path": "types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "unit.log",
+      "bytes": 243,
+      "sha256": "d12b217b6993dde77dc89a502994a95253ec13b0add204491874a868a002ecc1"
+    }
+  ],
+  "runtime": {
+    "node": "24.22.2",
+    "browser": "Installed Chrome headless",
+    "dependencies": "Retained node_modules temporary symlink; no installs"
+  },
+  "checks": [
+    {
+      "command": "node frontend/node_modules/vitest/vitest.mjs run src/app/media-entry/__tests__/root-binding/provider.test.tsx src/app/media-entry/__tests__/root-binding/rows.test.tsx src/app/media-entry/__tests__/owner.test.ts src/app/__tests__/community.test.tsx src/app/__tests__/default-shell/social.test.tsx src/app/social-composition/__tests__/provider.test.tsx --root frontend --maxWorkers 1",
+      "exitCode": 0,
+      "log": "unit.log"
+    },
+    {
+      "command": "node frontend/src/app/media-entry/__tests__/root-binding/browser.mjs",
+      "exitCode": 0,
+      "log": "browser.log"
+    },
+    {
+      "command": "node frontend/node_modules/typescript/bin/tsc -p frontend --incremental --tsBuildInfoFile /tmp/mcr-root-media-types.tsbuildinfo --pretty false",
+      "exitCode": 0,
+      "log": "types.log"
+    },
+    {
+      "command": "frontend/node_modules/.bin/oxlint frontend/src/app/media-entry/provider.tsx frontend/src/app/media-entry/RootMediaView.tsx frontend/src/app/media-entry/__tests__/root-binding frontend/src/app/CommunityFeatures.tsx frontend/src/app/social-composition/panels.tsx",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "command": "node frontend/node_modules/vite/bin/vite.js build frontend --configLoader runner --outDir /tmp/mcr-root-media-build",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "log": "plan.log"
+    }
+  ],
+  "tests": {
+    "passed": 53,
+    "files": 6
+  },
+  "browser": {
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "defaultActualRowBindings": true,
+    "providerBoundary": "Explicit validated fixture shell boundary; production WorldShell wrapper delegated to root integration implementation owner",
+    "coldPostRequests": 2,
+    "warmAndThreadAdditionalRequests": 0,
+    "lastBelowFoldRequestsBeforeNear": 0,
+    "lastBelowFoldRequestsAfterNear": 2,
+    "giveawayRequests": 2,
+    "geometryOnExit": "Preserved",
+    "explicitDecodeCallsPerWidth": 2,
+    "internalDecodeAndProductionTransferClaims": "NOT_MEASURED",
+    "worldMountsPerJourney": 1,
+    "urlRevocation": "All synthetic created URLs revoked on privacy loss; old Blob fetch denied"
+  },
+  "limits": [
+    "No live service, participant, production transfer, device or multiuser proof.",
+    "Production WorldShell wrapper and selected-character runtime-context/portrait callback follow-up remain separate implementation-owner dependencies.",
+    "Existing Vite large-chunk warning remains."
+  ],
+  "validationOwner": "Assigned implementation developer; no king/SL review or verification stage."
+}

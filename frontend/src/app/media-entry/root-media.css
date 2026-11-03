@@ -1,0 +1,6 @@
+.root-media-view { inline-size:100%; max-inline-size:100%; aspect-ratio:3 / 2; min-block-size:88px; display:grid; place-items:center; overflow:hidden; }
+.root-media-view--giveaway { block-size:100%; aspect-ratio:1; min-block-size:0; }
+.root-media-view .root-media-image { display:block; inline-size:100%; block-size:100%; max-inline-size:100%; max-block-size:100%; object-fit:cover; margin:0; }
+.root-media-placeholder { font-size:12px; opacity:.75; }
+.root-media-view p { font-size:12px; margin:4px; }
+.root-media-view button { min-block-size:44px; max-inline-size:100%; font:inherit; cursor:pointer; }

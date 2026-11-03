@@ -1,6 +1,6 @@
 {
   "status": "PASS_PROPOSAL_ONLY",
-  "geometry_hash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
   "dimensions": [
     48,
     81
@@ -24,7 +24,7 @@
     {
       "from": "courtyard_entry",
       "to": "stage_info",
-      "steps": 6
+      "steps": 3
     },
     {
       "from": "courtyard_entry",
@@ -34,12 +34,12 @@
     {
       "from": "courtyard_entry",
       "to": "gifts_info",
-      "steps": 33
+      "steps": 38
     },
     {
       "from": "courtyard_entry",
       "to": "wall_info",
-      "steps": 50
+      "steps": 46
     },
     {
       "from": "community_entry",
@@ -54,7 +54,7 @@
     {
       "from": "community_entry",
       "to": "stage_info",
-      "steps": 29
+      "steps": 28
     },
     {
       "from": "community_entry",
@@ -64,12 +64,12 @@
     {
       "from": "community_entry",
       "to": "gifts_info",
-      "steps": 26
+      "steps": 19
     },
     {
       "from": "community_entry",
       "to": "wall_info",
-      "steps": 31
+      "steps": 27
     }
   ],
   "pngs": 6,

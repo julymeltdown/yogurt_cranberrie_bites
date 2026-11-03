@@ -1,0 +1,28 @@
+{
+  "status": "PASS_PAINTED_PROPOSAL_ONLY",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "source_atlas": {
+    "path": "parade-source-atlas-v3.png",
+    "sha256": "sha256:4a93f18cd55b66f3c09853f01e7fc78b88da8593298e4758738ff73e1e73ea2c",
+    "dimensions": [
+      1254,
+      1254
+    ]
+  },
+  "source_surfaces": {
+    "path": "surface-source-v3.png",
+    "sha256": "sha256:51442d17a179cd138caf6d82d2826e1f4a988e417fdd31227258eedb2b59532a",
+    "dimensions": [
+      1254,
+      1254
+    ]
+  },
+  "original_source_sheets_unchanged": true,
+  "physical_placements": 22,
+  "overview_illustrations": 6,
+  "frames": 16,
+  "native_editable_projects": 2,
+  "runtime_textures": 2,
+  "map_authority": "Non-collidable illustration/semantic zone; physical collision only from canonical geometry.",
+  "limit": "Hash/dimension/layer/placement validation is not reference acceptance or production integration."
+}

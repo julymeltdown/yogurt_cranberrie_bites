@@ -24,6 +24,7 @@ pub fn validate(name: &str, value: &Value) -> Result<(), FeedError> {
     if !matches!(
         name,
         "Domain_feed_PostPublic"
+            | "PublicProfile"
             | "Domain_feed_FeedPage"
             | "Domain_feed_CreatePost"
             | "Domain_feed_EditPost"
@@ -65,14 +66,24 @@ pub fn validate(name: &str, value: &Value) -> Result<(), FeedError> {
         Err(FeedError::InvalidInput)
     }
 }
+/// Validate the exact C03 allowlist and subject before any enclosing feed DTO.
+/// A syntactically valid profile for another subject is not a safe author.
+pub fn author(
+    value: concert_application::feed::PublicAuthor,
+    expected: uuid::Uuid,
+) -> Result<Value, FeedError> {
+    let author: Value =
+        serde_json::from_slice(&value.json).map_err(|_| FeedError::DependencyUnavailable)?;
+    if expected.is_nil() || value.user_id != expected || author["user_id"] != expected.to_string() {
+        return Err(FeedError::DependencyUnavailable);
+    }
+    validate("PublicProfile", &author).map_err(|_| FeedError::DependencyUnavailable)?;
+    Ok(author)
+}
 pub fn post(value: ProjectedPost) -> Result<Value, FeedError> {
     let p = value.post;
-    let author: Value =
-        serde_json::from_slice(&value.author.json).map_err(|_| FeedError::DependencyUnavailable)?;
-    if value.author.user_id != p.author
-        || author["user_id"] != p.author.to_string()
-        || !p.visible_in(p.event)
-    {
+    let author = author(value.author, p.author)?;
+    if !p.visible_in(p.event) {
         return Err(FeedError::DependencyUnavailable);
     }
     let dto = json!({"post_id":p.id,"event_id":p.event,"author":author,"text":p.content.text,
@@ -223,12 +234,8 @@ pub fn command(
 }
 pub fn comment(value: concert_application::feed::ProjectedComment) -> Result<Value, FeedError> {
     let c = value.comment;
-    let author: Value =
-        serde_json::from_slice(&value.author.json).map_err(|_| FeedError::DependencyUnavailable)?;
-    if c.state != concert_domain::feed::ContentState::Published
-        || value.author.user_id != c.author
-        || author["user_id"] != c.author.to_string()
-    {
+    let author = author(value.author, c.author)?;
+    if c.state != concert_domain::feed::ContentState::Published {
         return Err(FeedError::DependencyUnavailable);
     }
     let dto = json!({"comment_id":c.id,"post_id":c.post,"author":author,"text":c.text,"revision":c.revision,"created_at":c.created_at});

@@ -13,7 +13,7 @@
         "view": "world",
         "theme": "parade",
         "finish": "painted",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 336,
         "height": 336,
         "ground": [
@@ -45,8 +45,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -62,14 +62,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -88,7 +88,7 @@
         "view": "map",
         "theme": "parade",
         "finish": "painted",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 336,
         "height": 567,
         "ground": [
@@ -120,8 +120,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -137,14 +137,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -163,7 +163,7 @@
         "view": "world",
         "theme": "parade",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 336,
         "height": 336,
         "ground": [
@@ -195,8 +195,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -212,14 +212,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -238,7 +238,7 @@
         "view": "map",
         "theme": "parade",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 336,
         "height": 567,
         "ground": [
@@ -270,8 +270,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -287,14 +287,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -313,7 +313,7 @@
         "view": "world",
         "theme": "revenge",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 336,
         "height": 336,
         "ground": [
@@ -345,8 +345,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -362,14 +362,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -388,7 +388,7 @@
         "view": "map",
         "theme": "revenge",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 336,
         "height": 567,
         "ground": [
@@ -420,8 +420,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -437,14 +437,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -463,7 +463,7 @@
         "view": "world",
         "theme": "danger",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 336,
         "height": 336,
         "ground": [
@@ -495,8 +495,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -512,14 +512,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -538,7 +538,7 @@
         "view": "map",
         "theme": "danger",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 336,
         "height": 567,
         "ground": [
@@ -570,8 +570,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -587,14 +587,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -613,7 +613,7 @@
         "view": "world",
         "theme": "parade",
         "finish": "painted",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 366,
         "height": 366,
         "ground": [
@@ -645,8 +645,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -662,14 +662,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -688,7 +688,7 @@
         "view": "map",
         "theme": "parade",
         "finish": "painted",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 366,
         "height": 618,
         "ground": [
@@ -720,8 +720,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -737,14 +737,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -763,7 +763,7 @@
         "view": "world",
         "theme": "parade",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 366,
         "height": 366,
         "ground": [
@@ -795,8 +795,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -812,14 +812,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -838,7 +838,7 @@
         "view": "map",
         "theme": "parade",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 366,
         "height": 618,
         "ground": [
@@ -870,8 +870,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -887,14 +887,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -913,7 +913,7 @@
         "view": "world",
         "theme": "revenge",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 366,
         "height": 366,
         "ground": [
@@ -945,8 +945,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -962,14 +962,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -988,7 +988,7 @@
         "view": "map",
         "theme": "revenge",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 366,
         "height": 618,
         "ground": [
@@ -1020,8 +1020,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1037,14 +1037,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1063,7 +1063,7 @@
         "view": "world",
         "theme": "danger",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 366,
         "height": 366,
         "ground": [
@@ -1095,8 +1095,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1112,14 +1112,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1138,7 +1138,7 @@
         "view": "map",
         "theme": "danger",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 366,
         "height": 618,
         "ground": [
@@ -1170,8 +1170,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1187,14 +1187,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1213,7 +1213,7 @@
         "view": "world",
         "theme": "parade",
         "finish": "painted",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 406,
         "height": 406,
         "ground": [
@@ -1245,8 +1245,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1262,14 +1262,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1288,7 +1288,7 @@
         "view": "map",
         "theme": "parade",
         "finish": "painted",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 406,
         "height": 685,
         "ground": [
@@ -1320,8 +1320,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1337,14 +1337,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1363,7 +1363,7 @@
         "view": "world",
         "theme": "parade",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 406,
         "height": 406,
         "ground": [
@@ -1395,8 +1395,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1412,14 +1412,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1438,7 +1438,7 @@
         "view": "map",
         "theme": "parade",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 406,
         "height": 685,
         "ground": [
@@ -1470,8 +1470,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1487,14 +1487,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1513,7 +1513,7 @@
         "view": "world",
         "theme": "revenge",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 406,
         "height": 406,
         "ground": [
@@ -1545,8 +1545,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1562,14 +1562,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1588,7 +1588,7 @@
         "view": "map",
         "theme": "revenge",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 406,
         "height": 685,
         "ground": [
@@ -1620,8 +1620,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1637,14 +1637,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1663,7 +1663,7 @@
         "view": "world",
         "theme": "danger",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 406,
         "height": 406,
         "ground": [
@@ -1695,8 +1695,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1712,14 +1712,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
@@ -1738,7 +1738,7 @@
         "view": "map",
         "theme": "danger",
         "finish": "native",
-        "geometryHash": "sha256:3781b9d9306e6d251dc4dda759ad69e27ca63e0af220a0820af2469a5f6cb14a",
+        "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
         "width": 406,
         "height": 685,
         "ground": [
@@ -1770,8 +1770,8 @@
         {
           "id": "stage_info",
           "foot": {
-            "x": 440,
-            "y": 536
+            "x": 488,
+            "y": 568
           },
           "blockers": []
         },
@@ -1787,14 +1787,14 @@
           "id": "gifts_info",
           "foot": {
             "x": 216,
-            "y": 808
+            "y": 952
           },
           "blockers": []
         },
         {
           "id": "wall_info",
           "foot": {
-            "x": 168,
+            "x": 232,
             "y": 1096
           },
           "blockers": []
