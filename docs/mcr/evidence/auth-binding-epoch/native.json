@@ -1,0 +1,32 @@
+{
+  "scope": "Auth binding epoch migration only; direct psql, not SQLx ledger or application qualification",
+  "result": "PASS",
+  "checks": [
+    "retained migrations and existing-row backfill",
+    "same-transaction equal-timestamp relink advances",
+    "caller epoch overwritten",
+    "deleted row UUID reinsert receives fresh epoch",
+    "rollback preserves row and consumes non-reusable sequence gap",
+    "exhaustion refuses write atomically without cycling"
+  ],
+  "postgres_version": "16.14 (Homebrew)",
+  "source_revision": "e9433c0",
+  "migration_sha384": {
+    "0001_init_auth.sql": "d015e5bebb4fe89b2e1b03511577839e1b8c044380580bc0a53329fde815b4bcdce34c6eb794ccdb3549ab882f6ffb13",
+    "0002_oauth_identities.sql": "7b62a676367d3bea2835884225049766f40b3943c7d58608a0f8081ea1049db2b215ae1176927eb130458455b130f1a5",
+    "0003_governance.sql": "c7fb94a1b69109ff2525853a2b6e03e47f9c6ced518c533be1aff67f0be2b7dfd4b351fefda327151123e4a4c713553b",
+    "0004_oauth_authorizations.sql": "099822444bd75b3cd72f61a86450f4a222611d2586e31bc4699567a7fac2b83804eeb7bde39dcff1c87863d3f00a544e",
+    "0005_user_deletion_sagas.sql": "6ab2825646d0bfdd8766db9effd8e8c233838a68dd892b65721f538ade59d411025629152a33be961ea5b87a528d2a7e",
+    "0006_atomic_auth_and_delivery.sql": "bc611f08bf859fa08ad2c03e7e8743c3f6333c5cd33caa28a46d4415bac8b2b1362b59dcd9cee1fde87bd2440c551bf4",
+    "0007_login_attempt_classification.sql": "96c76d66dcd1ce52ccc3c04c7e5c80b2aa01495974367ebe8037d27f04d9418b4ebf4058cae22d2544d0040b25390bb2",
+    "0008_refresh_token_families.sql": "96627f801a3a5bb4a5438c95e551a57a1dc57708f263468e17218d12bc26e185dc65ca965ad1dbdb225737d382485b27",
+    "0009_user_deletion_operator_retries.sql": "a20fd39beb1539fd12eaaaabfc4a52169c50eaab6fe7ff20867fa169ae58ee557a6fa00e9bd233d2b5c1ef0e240ce19f",
+    "0010_user_deletion_dead_letter_cursor.sql": "4d1648116cf4fde2f72a4f4b9dcaa1ac8a817022a4be4789a870d4d6fafafd835efc74f123c4cff3e113e57a1d63864e",
+    "0011_user_deletion_trace_context.sql": "30b622ecc304d75bb8cb4201f02bf3c962347889c1ed9d336a16cb997651ec8754ea111f9c0fbe5d653dc331b6a3ac7c",
+    "0012_mail_outbox_trace_context.sql": "3ff9cd841186a5418d1c8c6d2fb11ecae9da77d572117d1b5e7938102f73d4bc62dfd8f8647d3f33d3ea72851ab9c842",
+    "0013_identity_binding_epoch.sql": "d9e7b97458ee05ba8e821c6b44bf79e2848db53ff6cafecfe6c929e3ab3377d078f486d096d9522e4b98eaaf2988068f"
+  },
+  "cleanup": "PASS",
+  "owned_directory": "/private/tmp/mcr-pg-uf0dgb_c",
+  "directory_absent": true
+}

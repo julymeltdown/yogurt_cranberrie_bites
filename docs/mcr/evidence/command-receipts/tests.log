@@ -1,0 +1,72 @@
+   Compiling concert-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/concert-application)
+   Compiling concert-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/concert-service)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.28s
+     Running tests/commands.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/commands-e38b5a0d2a422731)
+
+running 8 tests
+test registry_rejects_arbitrary_reads_and_operations ... ok
+test no_pending_success_or_invalid_safe_reference ... ok
+test hmac_sha256_known_answer_and_low_entropy_guess_cannot_match_unkeyed_digest ... ok
+test binary_body_is_bound_and_cannot_use_json_or_unkeyed_fallback ... ok
+test keys_are_injected_bounded_unambiguous_and_rotation_verifies_stored_version ... ok
+test canonical_rejects_duplicate_oversized_unsafe_or_mismatched_scope_input ... ok
+test mac_binds_actor_event_operation_key_and_path ... ok
+test canonical_values_and_queries_are_ordered_but_arrays_and_types_are_distinct ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/identity.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/identity-2020dbd85122b3f9)
+
+running 11 tests
+test profile_is_allowlisted_bounded_and_diagnostics_hide_content ... ok
+test email_only_policy_dispatches_repository_after_all_authorities_approve ... ok
+test email_only_user_needs_no_x_or_profile_for_participation ... ok
+test core_never_dispatches_persistence_when_identity_is_denied_or_unavailable ... ok
+test ended_unknown_and_empty_or_unrecognized_roles_fail_closed ... ok
+test profile_cannot_supply_auth_or_foreign_content_and_unknown_lifecycle_is_unavailable ... ok
+test provider_claim_must_match_owner_provider_reference_and_binding ... ok
+test expiration_during_dependency_call_invalidates_earlier_proofs ... ok
+test stale_future_expired_and_boundary_proofs_are_rejected ... ok
+test dependency_errors_remain_distinct_and_stop_further_dispatch ... ok
+test wrong_actor_event_operation_or_session_never_authorizes ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/policy.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/policy-445412c57931a02c)
+
+running 4 tests
+test scoped_reads_reject_wrong_identity_and_classify_absence_and_failure ... ok
+test mutation_outcomes_and_returned_revision_are_typed ... ok
+test denied_writes_and_avatar_reads_have_zero_store_effect ... ok
+test denied_unavailable_foreign_subject_or_wrong_operation_policy_never_reaches_store ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/config.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/config-a82bfe2e684ff4f0)
+
+running 2 tests
+test production_does_not_apply_schema_and_local_startup_requires_an_explicit_setting ... ok
+test settings_are_explicit_and_never_default_to_a_source_database ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/health.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/health-c4100973f936fdff)
+
+running 1 test
+test operational_health_keeps_liveness_while_draining_and_exposes_no_product_route ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/identity.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/identity-a70731367a24e07b)
+
+running 7 tests
+test unsupported_production_authority_remains_explicitly_unavailable ... ok
+test email_only_adapter_maps_minimal_profile_without_legacy_avatar_or_x_lookup ... ok
+test suspension_unknown_authority_and_provider_mismatch_never_attach_claims ... ok
+test malformed_cross_actor_deleted_unknown_or_oversized_profile_cannot_project ... ok
+test malformed_owner_identifiers_and_windows_are_dependency_failures ... ok
+test current_session_denial_is_not_authenticated_permission_or_transport_outage ... ok
+test owner_proofs_cannot_substitute_other_users_events_operations_sessions_or_times ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

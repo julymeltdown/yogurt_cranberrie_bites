@@ -1,0 +1,10 @@
+$ vitest run
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr/frontend
+
+
+ Test Files  15 passed (15)
+      Tests  568 passed (568)
+   Start at  15:50:26
+   Duration  2.52s (transform 1.31s, setup 0ms, import 2.46s, tests 8.17s, environment 1.66s)
+

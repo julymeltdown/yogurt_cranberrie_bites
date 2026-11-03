@@ -1,0 +1,28 @@
+{
+  "state": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "connections": 10,
+  "nativeTraces": [
+    "movement-heartbeat",
+    "resync",
+    "room-switch",
+    "epoch-replacement",
+    "revoke"
+  ],
+  "scenarios": [
+    "native open/authenticate/snapshot/input/ping-pong",
+    "detected gap freezes input/queued delta discard/explicit resync",
+    "native handshake timeout",
+    "target ticket denial preserves old socket/input; explicit fresh-ticket retry; post-send timeout terminal",
+    "unknown frame closes",
+    "fresh-ticket explicit reconnect",
+    "revoke disables reconnect",
+    "canonical session cancellation",
+    "owned socket cleanup",
+    "no credential URL/storage/log",
+    "production no test entry/mock/socket"
+  ],
+  "real_backend": "NOT_RUN",
+  "multiuser": "NOT_RUN",
+  "BE10_BE11_IN01": "NOT_RUN"
+}

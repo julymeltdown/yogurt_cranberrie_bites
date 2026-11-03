@@ -1,0 +1,36 @@
+{
+  "integrated_source": "5863f915eae1526786859876d22a781b48ca5f7c",
+  "worker_commits": [
+    "11a7448",
+    "780c265"
+  ],
+  "changed_paths": [
+    "backend/crates/concert-application/src/commands/mod.rs",
+    "backend/crates/concert-application/src/commands/registry.rs",
+    "backend/crates/concert-application/tests/commands.rs",
+    "backend/scripts/mcr/command_receipts_smoke.py",
+    "backend/scripts/mcr/test_command_receipts_smoke.py",
+    "backend/services/concert-service/migrations/0002_command_receipts_outbox.sql",
+    "backend/services/concert-service/src/adapters/out/repository/outbox.rs",
+    "backend/services/concert-service/src/adapters/out/repository/receipt.rs",
+    "backend/services/concert-service/src/workers/outbox.rs",
+    "backend/services/concert-service/tests/command_receipts.rs",
+    "docs/mcr/backend/command-receipts.md"
+  ],
+  "sha256": {
+    "backend/crates/concert-application/src/commands/mod.rs": "5a0663af0cc701d1b7f055cd07c51b540f867c18873b37e175352d87031aec4c",
+    "backend/crates/concert-application/src/commands/registry.rs": "dbb9d659bd710d7603d97464783e2237023112435d4344a70390bd3d4de8cbce",
+    "backend/crates/concert-application/tests/commands.rs": "634a03d470a98f2c7c9b745806aed2feb4b345203b7304521db851df513db2d1",
+    "backend/scripts/mcr/command_receipts_smoke.py": "4a5ca4215b0c60e3f2526953a0e9191605caa402df40eb6be38179ca1e630dbf",
+    "backend/scripts/mcr/test_command_receipts_smoke.py": "30a377dd5efa5ceff3bf367a767044d77aafb2eb3938301a69d596d356ce0147",
+    "backend/services/concert-service/migrations/0002_command_receipts_outbox.sql": "5f5760dfe6384cb2ab5162bcc27fbc0ed75bdca6bb85229012f6389269ee442f",
+    "backend/services/concert-service/src/adapters/out/repository/outbox.rs": "9739bea1e7e6db63d6faa33f538ccccfde22074e4eb81fb83ef2ff7e60cda76f",
+    "backend/services/concert-service/src/adapters/out/repository/receipt.rs": "01012f034b30aa5f53f43402feae9ca72048cbb526e727794dbed3dd5ca4355f",
+    "backend/services/concert-service/src/workers/outbox.rs": "311b4f12abe852465c5246a1761825ea8eed2703d09e2bf17e44e152ffe17cb4",
+    "backend/services/concert-service/tests/command_receipts.rs": "5969b1888cf25d7ef2b982e7b5ee71979aaf03d088d858dcb9af3ffcd33a2d8d",
+    "docs/mcr/backend/command-receipts.md": "7f81c221751b27e4176c5e089aa4ba389d19d58fd68c160856b09c468cd2acb1"
+  },
+  "lane_boundary": "PASS",
+  "worker_bytes_match": "PASS",
+  "whole_task_acceptance": "NOT_CLAIMED"
+}

@@ -36,7 +36,9 @@ Parent verification on integrated source:
 
 No further actionable finding remains for this bounded foundation. Overall BE04
 stays **IN_PROGRESS**, with these deterministic consumers **MOCK_READY**. Its
-persistent goal remains active. Real owning suspension/provider proof, authenticated
+persistent goal was subsequently tool-confirmed **BLOCKED** on the shared owning
+contracts; the worker has stopped writes while the parent advances those prerequisites.
+Real owning suspension/provider proof, authenticated
 Gateway/Concert/Auth/Profile context, credential/deadline policies and real
 email-only/revocation/suspension/provider flows are **NOT_RUN**. This does not
 accept BE04, authorize a real participant or advance an IA/IN gate.

@@ -1,22 +1,26 @@
 # Active chat ownership
 
 Updated 2026-11-03. The user authorized additional visible Codex chats, then
-clarified that a fixed backend/frontend count is unnecessary. Four independent
-assignments are active. Each has its own worktree and branch; every shell command
+clarified that a fixed backend/frontend count is unnecessary. Four visible chats
+are available; FE11 and the new Auth-owner increment are active. Each assigned writer has
+its own worktree and branch; every shell command
 and edit must explicitly target that worktree because app-level project context
 can still point to the integration checkout.
 
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
 | BE04 | `mcr(be) BE04 canonical identity adapter` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-identity` / `codex/mcr-be-BE04` |
-| BE15 | `mcr(be) BE15 command receipts and outbox` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-commands` / `codex/mcr-be-BE15` |
-| FE08 | `mcr(fe) FE08 public entry and documents` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-public` / `codex/mcr-fe-FE08` |
+| BE04 Auth owner | `mcr(be) BE04 Auth owner admission read` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-auth-authority` / `codex/mcr-be-auth-authority` |
+| FE11 | `mcr(fe) FE11 password recovery and callback` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-recovery` / `codex/mcr-fe-FE11` |
 | FE16 | `mcr(fe) FE16 world transport` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/fe-world-transport` / `codex/mcr-fe-FE16` |
 
-All four assignments start at `376cf2127b5ae5b81fa8743293ec9cc0079f6bfd`,
-use requested model `gpt-6.1-sol` with `high` reasoning, and have confirmed actual
-**ACTIVE persistent goals**, with no requested token budget. Dispatch alone was
-not counted as proof. Each goal covers bounded implementation, relevant tests,
+The original four increments started at `376cf21`; FE11 starts at `b39d5e5`
+after the same chat completed FE08. All use `gpt-6.1-sol` with `high` reasoning
+and no token budget. Actual goal tools confirmed FE08 **COMPLETE**, the new FE11
+goal **ACTIVE**, BE15 **COMPLETE**, FE16 **COMPLETE**, and the original BE04 goal
+**BLOCKED** on central prerequisites. The completed BE15 chat was then reused at
+`5863f91` for a new tool-confirmed **ACTIVE** Auth-owner read goal. The old
+BE15/FE16/FE08 checkouts have no writer. Dispatch alone is not proof. Each bounded goal covers implementation, relevant tests,
 documentation, committed handoff and concrete integration-review fixes. An
 increment goal can complete after delivery while unqualified task gates remain
 open; do not silently turn that into whole-task or release acceptance.
@@ -36,12 +40,14 @@ All central changes outside the listed exceptions remain with the integrator.
 |---|---|
 | BE04 | `backend/crates/concert-application/src/identity/**`, application `tests/identity.rs`; `backend/services/concert-service/src/adapters/out/identity/**`, service `tests/identity.rs`; `docs/mcr/backend/identity.md`. Exact composition exceptions: application `src/lib.rs` identity export and service `src/adapters/out/mod.rs` identity export only. |
 | BE15 | Application `src/commands/**` and `tests/commands.rs`; service `src/adapters/out/repository/{receipt,outbox}.rs`, `src/workers/outbox.rs`, `tests/command_receipts.rs`, exclusively reserved `migrations/0002_command_receipts_outbox.sql`; `backend/scripts/mcr/command_receipts_smoke.py`, `test_command_receipts_smoke.py`; `docs/mcr/backend/command-receipts.md`. No implicit ownership of surrounding repository/composition files. |
-| FE08 | `frontend/src/features/public/**`; exact app `PublicBoundary.tsx`, public replacement in `FoundationApp.tsx`, new `__tests__/public-entry.test.tsx`; `docs/mcr/frontend/public-entry.md`. Separately committed compatibility allowance: app `__tests__/shell.test.tsx` obsolete home assertions and app `__tests__/browser-smoke.mjs` obsolete landing selector only. |
+| BE04 Auth owner | Application `auth-application/src/concert_identity.rs`, `tests/concert_identity.rs`; Auth service persistence `concert_identity.rs`, `tests/concert_identity_owner.rs`; backend smoke scripts `auth_identity_smoke.py`, `test_auth_identity_smoke.py`; `docs/mcr/backend/auth-identity-owner.md`. Exact application/persistence `mod` exports only. Parent owns migration `0013`, all manifests/locks/proto, method policies, RPC/state/config/Gateway/platform composition. No writes to the stopped BE15 checkout. |
+| FE11 | Auth UI `ResetPassword.tsx`, `Callback.tsx`, `recovery.css`; auth model `recovery.ts`, `recovery-contract.ts`, `callback.ts`; new auth tests `recovery.test.ts`, `callback.test.ts`, `recovery-browser-smoke.mjs`, fixtures `recovery-*`; new app `__tests__/recovery.test.tsx`; `docs/mcr/frontend/password-recovery.md`. Exact composition exceptions: `PublicBoundary.tsx` dispatch for existing two routes only; `session.ts` recovery methods/cleanup through its single canonical session/client; `cookie-policy.ts` minimal typed recovery-confirm coordination. No other existing test, root routes, shared utility or dependency ownership. |
 | FE16 | `frontend/src/world/network/WorldTransport.ts`, `mock.ts`, `websocket.ts`, `__tests__/**`, optional feature-local `transport/**` helpers; `docs/mcr/frontend/world-transport.md`. Excludes FE17 `replication.ts`, world runtime/scenes/entities and application composition. |
 
 BE04 prepares pure identity/authority ports and deterministic adapter tests.
 Canonical Auth session checks, explicit provider binding and suspension authority
-need shared owning-service contracts. Profile existence does not prove session,
+need shared owning-service contracts. The original writer is stopped with a
+blocked goal; the Auth-owner increment is separately assigned below. Profile existence does not prove session,
 suspension or binding. The production Concert policy stays unavailable until
 real authenticated authority is qualified. Auth/Profile/Gateway, platform,
 proto, manifest and credential changes remain integrator-owned.
@@ -51,23 +57,31 @@ expose a new public command wire. Aggregate mutation, safe receipt and outbox
 must share one database transaction; replay reauthorizes, retired keys never
 rerun and lease completion is fenced. It must qualify crash/retry/deduplication
 with a real owned PostgreSQL cluster. Production producers and worker startup
-remain disabled. Integrator prerequisite `f74fb66` on isolated branch
-`codex/mcr-be15-composition` supplies exact dependency/module exports for the
-worker to cherry-pick; it requires the worker's modules and must not be published
-alone. Locked offline metadata and unchanged resolved versions were verified;
-that is not a standalone compilation claim.
+remain disabled. Integrator prerequisites `f74fb66` and `852d414` supplied retained
+dependency/module exports, integrated with the implementation as `d76215c` and
+`5874c81`. They were not published alone with missing modules. Combined compilation,
+layer checks and real PostgreSQL verification now pass; earlier metadata checks
+alone were never a compilation claim.
 
-FE08 builds newly authored public entry and a safe versioned-document presenter.
-Production publication is unavailable until approved legal/safety/contact copy
-and its authoritative contract exist. Synthetic documents are test-only. A ready
-canonical session redirects home to `/world`; anonymous entry loads no world
-runtime or socket. Root routing/main/shared auth are outside this assignment.
+FE08's reviewed public entry is integrated and its goal complete. Its former
+`fe-public` checkout is stopped. FE11 now implements anonymous reset request/confirm
+and honest callback error/return presentation on its separate recovery checkout.
+Source reset mail emits `BASE#token=...`; deployment base/mail delivery remain
+unqualified. Secrets stay transient, fragment material is removed before rendered
+actions, reset confirmation clears/fences local access and uses existing cohort
+coordination. OAuth success/session import remains unavailable pending a reviewed
+handoff; no provider is enabled. Production legal publication remains unavailable.
 
-FE16 consumes frozen C05 read-only, with shared mock/native transport semantics,
+FE16 delivered frozen C05 consumers, with shared mock/native transport semantics,
 strict frame validation, injected ticket acquisition and owned Chrome WebSocket
 fixtures. Tickets stay out of URLs, storage and logs. No production lifecycle
 wiring, independent auth store, replication controller or new wire contract is
-delegated. Mock/native parity does not prove a real BE10/IN01 world.
+delegated. Its reviewed goal is complete and writes stopped. Mock/native parity
+does not prove a real BE10/IN01 world. BE15 likewise completed its bounded internal
+foundation after parent PostgreSQL/restart/cleanup review; production producers,
+Auth policy and runtime startup remain unqualified. See the integration evidence
+for [BE15](evidence/command-receipts-integration.md) and
+[FE16](evidence/world-transport-integration.md).
 
 Build/evidence roots are separate: `/Users/lhs/Desktop/mcr-build/be04`, `be15`
 and `fe16`; FE08 records its own evidence root. Rust uses retained 1.88.0 and two
@@ -90,12 +104,16 @@ The previous BE05 and FE09 increments are integrated and reviewed:
 worktrees are also preserved; no subagent writes current chat worktrees. FE09
 remains MOCK_READY despite its delivered increment goal completing.
 
-The prepared `/Users/lhs/Desktop/mcr-worktrees/fe-recovery` /
-`codex/mcr-fe-FE11` has **no chat and no active writer**. Password reset/callback
-work is queued until its shared auth integration can be assigned usefully.
-The [capacity assessment](parallel-capacity.md) explains why four lanes are
-useful now and why a fifth is not forced. Scale from ready disjoint work and
-review capacity, not a fixed chat quota.
+The recovery checkout is now exclusively assigned to the reused FE08 chat, with
+a newly confirmed active FE11 goal. BE04 has stopped writes after its source-grounded
+proposal and blocked goal. The parent selected [Gateway fresh owner reads plus
+signed Concert admission](identity-admission-decision.md) and assigned the actual
+Auth persistence/application read to the completed BE15 chat. This backend writer
+runs independently of FE11. The parent owns the shared protocol/composition and
+the provider binding-epoch prerequisite; timestamps are not accepted as generations.
+Repeated blocked audits do not count as progress.
+The [capacity assessment](parallel-capacity.md) records why another writer is not
+forced. Scale from ready disjoint work and review capacity, not a chat quota.
 
 No decorative left accent lines, colored left borders or equivalent inset/pseudo
 bars are permitted. Only the user-selected revision-3 character source pack and

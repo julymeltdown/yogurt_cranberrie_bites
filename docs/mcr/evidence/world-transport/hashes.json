@@ -1,0 +1,38 @@
+{
+  "integrated_source": "5863f915eae1526786859876d22a781b48ca5f7c",
+  "worker_commits": [
+    "77ba4e0",
+    "bb8de4f"
+  ],
+  "changed_paths": [
+    "docs/mcr/frontend/world-transport.md",
+    "frontend/src/world/network/WorldTransport.ts",
+    "frontend/src/world/network/__tests__/browser-smoke.mjs",
+    "frontend/src/world/network/__tests__/fixtures/browser.html",
+    "frontend/src/world/network/__tests__/fixtures/browser.ts",
+    "frontend/src/world/network/__tests__/generate-types.mjs",
+    "frontend/src/world/network/__tests__/transport.test.ts",
+    "frontend/src/world/network/mock.ts",
+    "frontend/src/world/network/transport/contract.ts",
+    "frontend/src/world/network/transport/engine.ts",
+    "frontend/src/world/network/transport/wire-types.ts",
+    "frontend/src/world/network/websocket.ts"
+  ],
+  "sha256": {
+    "docs/mcr/frontend/world-transport.md": "0fad53c7b37a48d78839811a53854c8b7cda760d9af0948e49be69d67bd44678",
+    "frontend/src/world/network/WorldTransport.ts": "f5d2397f61b5425f3638e81ec282b11017d2b336861860259437f2b1bcf51a8e",
+    "frontend/src/world/network/__tests__/browser-smoke.mjs": "d80ebc55a8ebada890bea4efaaeda217b4d9add0df9042a7ba9ae7540808a44d",
+    "frontend/src/world/network/__tests__/fixtures/browser.html": "ab3414ce55cc04f6332fb5833e974cdfb90b8c62b580d95d170f7ca5df3f45b5",
+    "frontend/src/world/network/__tests__/fixtures/browser.ts": "13205d1ecb35d341a175dfdac6873dbfd317738a6268f18f37e8bdac9bcbbc80",
+    "frontend/src/world/network/__tests__/generate-types.mjs": "95f2d701bcf0b02b5eeca3db179a1a213cd71fad5dcd1db8d2f76d2e66b1a8d0",
+    "frontend/src/world/network/__tests__/transport.test.ts": "2475980d0e2419a864c6e18c7a89214dd54654e5cc286bacb36c8f926a64de69",
+    "frontend/src/world/network/mock.ts": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+    "frontend/src/world/network/transport/contract.ts": "1b642a0e1bba8c5c45b39fc38d107af39ff3c83c25955295e49edc03b8402b08",
+    "frontend/src/world/network/transport/engine.ts": "0ec4c5f8132cfa1c86838ea6c0eabb6005736750f2e1e5870579fb098ddfbbac",
+    "frontend/src/world/network/transport/wire-types.ts": "c154c86f488ca681a0379087828ada028c8ecb54fd75c7bb8cb49f712be56618",
+    "frontend/src/world/network/websocket.ts": "f7c9a89e7545f9459f2d71eab8b0f5ea696db620d3685b0cc27c092b5ae75226"
+  },
+  "lane_boundary": "PASS",
+  "worker_bytes_match": "PASS",
+  "whole_task_acceptance": "NOT_CLAIMED"
+}

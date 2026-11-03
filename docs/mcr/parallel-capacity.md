@@ -8,11 +8,16 @@ backend plus three frontend chats need not be forced.
 The desktop tools support creation, messaging, renaming and compact status
 tracking of separate user-visible chats. Two existing chats were reassigned
 after reviewed delivery; two additional project chats were successfully created.
-All four acknowledged actual active persistent goals. The requested model is
+All four initially acknowledged actual active persistent goals. Current status
+has changed: FE08, BE15 and FE16 bounded goals are COMPLETE; BE04's goal is BLOCKED
+on shared owning contracts. The completed FE08 chat now owns a newly confirmed
+ACTIVE FE11 goal in the recovery worktree. The BE15 chat was subsequently reused
+for a new tool-confirmed ACTIVE Auth-owner read goal in `be-auth-authority`, base
+`5863f91`. The requested model is
 `gpt-6.1-sol` with `high` reasoning. Exact IDs, worktrees, branches and ownership
 are in the [coordination register](chat-coordination.md).
 
-## Four useful assignments now
+## Delivered allocation and current capacity
 
 | Assignment | Why it can progress independently | Qualification boundary |
 |---|---|---|
@@ -21,18 +26,28 @@ are in the [coordination register](chat-coordination.md).
 | FE08 public entry/documents | FE05 is accepted and the delivered FE07 shell is MOCK_READY. Landing/redirect behavior and safe document presentation can use existing session ports and deterministic fixtures. | Real world lifetime remains unqualified. Approved publication content/version/retention policy and a production document contract are missing, so production documents remain unavailable. |
 | FE16 mock/native transport | Its graph prerequisites C05 and FE01 are accepted. A real browser WebSocket fixture can qualify transport parity, validation and cleanup before the Concert realtime server exists. | No FE17 replication ownership, production lifecycle registration, avatar dependency or real two-user world claim. |
 
-The worktrees start at `376cf21`. This is two backend and two frontend writers,
-plus the main integrator. FE08/BE04 are explicitly bounded implementations while
+The initial worktrees start at `376cf21`. This was two backend and two frontend writers,
+plus the main integrator. FE08/BE04 were explicitly bounded implementations while
 their remaining semantic prerequisites are resolved; the table does not waive
 task acceptance dependencies. Recheck the graph and these boundaries before
 advancing to real feature composition.
 
 ## Why not add a fifth immediately
 
-FE11 password reset/callback is a plausible next lane after the delivered FE09
-increment, but shared session-model and application registration work needs a
-single clear owner. Its checkout is prepared without an active writer. It can
-be assigned when it adds independent throughput or when a current chat finishes.
+FE11 password reset/callback is now assigned to the completed FE08 chat, on
+`fe-recovery` / `codex/mcr-fe-FE11` at `b39d5e5`. Minimal existing-session,
+cookie-coordination and public-boundary exceptions have one explicit owner.
+BE15 and FE16 checkouts are clean and stopped after reviewed delivery. The BE15
+chat now implements the actual Auth-owned admission read on its separate checkout,
+while the original BE04 goal remains blocked on shared authority. The parent owns
+the binding-epoch migration and authenticated protocol/composition; FE11 proceeds
+independently. No fifth chat, or replacement just to maintain four
+writers, is needed.
+
+FE17 still has FE12/FE14 asset/geometry prerequisites in addition to the delivered
+transport. A replication assignment must identify those actual inputs and any
+bounded fixture-only limitation before starting; transport delivery alone does
+not make the whole world ready.
 
 FE10 signup needs consent/legal publication decisions. Avatar/rendering lanes
 need a reviewed C06 revision and production-ready derivatives from the user's
@@ -49,11 +64,12 @@ uncoordinated migration. Root routers, contract inputs, service registration,
 manifests, lockfiles and CI remain integrator-owned. Tiny explicitly delegated
 module exports are reconciled during integration. No worker pushes master.
 
-The first BE15 central dependency/export patch is isolated as `f74fb66` on
-`codex/mcr-be15-composition`, to be cherry-picked by that worker and integrated
-with its implementation. Its locked offline metadata check and lock comparison
-preserve every resolved version. It cannot compile independently until the new
-modules arrive and must not be published alone.
+BE15 central dependency/export prerequisites `f74fb66` and `852d414` were integrated
+with the implementation and review fixes; retained resolutions, combined builds
+and real PostgreSQL tests pass. Missing-module prerequisites were not published
+alone. The new Auth-owner increment has only two delegated exports; its binding
+epoch migration is a separate parent-owned prerequisite, with an isolated SQL
+probe and a required later production-adapter/SQLx qualification.
 
 The local capacity check found 48 GiB RAM, 16 logical CPUs and about 38 GiB free
 on the data volume. Four chats are feasible; these facts do not establish safe
