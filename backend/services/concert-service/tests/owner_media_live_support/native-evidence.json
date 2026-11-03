@@ -1,7 +1,7 @@
 {
   "task": "BE-OWNER-MEDIA-LIVE",
   "status": "IN_PROGRESS",
-  "build_source_revision": "4a8221186c15c68497710827fa6db786d4570da5",
+  "build_source_revision": "1a7a5c8bdd6b61b4343aac626a099f7a4f2b51df",
   "build_exit_code": 0,
   "toolchain": "rustc 1.88.0 (6b00bc388 2025-06-23)",
   "build_constraints": {
@@ -11,10 +11,10 @@
     "locked": true,
     "offline": true
   },
-  "artifact_sha256": "6bb0c0ca38828396edc6fd0d3b9449cfc4efa7c9d92d94481d7e6aeb1ce7896a",
-  "source_pin_count": 1570,
+  "artifact_sha256": "040e902a105fd459f9e63ae1ab24078b26d4a654911354d5b4da690edd090dc2",
+  "source_pin_count": 1580,
   "runtime_tests": {
-    "passed": 8,
+    "passed": 9,
     "failed": 0,
     "ignored": 0
   },
@@ -42,5 +42,11 @@
   "canonical_auth_owner": "NOT_RUN",
   "gateway_concert_http": "NOT_RUN",
   "authority_fixture_only": true,
-  "sqlx_runtime_migration_ledger": "NOT_RUN"
+  "sqlx_runtime_migration_ledger": "NOT_RUN",
+  "internal_settlement_resolver": "NATIVE_FIXTURE_PASS",
+  "authenticated_settlement_rpc": "NOT_RUN",
+  "planning_provenance_check": {
+    "result": "PASS",
+    "exit_code": 0
+  }
 }
