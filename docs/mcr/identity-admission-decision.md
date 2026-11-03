@@ -74,11 +74,16 @@ qualified invalidation protocol, failing closed on a gap.
 - Concert is absent from the retained Workload enum and has no product RPC adapter.
   Adding its name to an allowlist alone does not establish actor/request authority.
 
-The next backend chat increment owns the actual Auth application/persistence read
-and real isolated PostgreSQL tests. It may add only its two explicitly delegated
-module exports. The parent retains proto, signed admission, method/actor policy,
-workload credentials/TLS, routing, deadlines and production composition. A new
-internal DTO/query is not a public API or accepting production adapter.
+The actual Auth application/persistence read is integrated as `c300a23`, with
+22 parent real PostgreSQL cases and complete SQLx migration/restart/cleanup
+evidence. The next isolated backend goal composes the authenticated internal RPC.
+Parent prerequisite `a44f8fa` defines its minimal proto, Gateway-only actor-field
+policy and verified request-local expiry/original-deadline context; it remains
+unpublished until the real handler is reviewed. The worker has exact bounded
+Auth state/server exceptions; proto/platform/Gateway/Concert, signed admission
+and production composition stay with the parent. See the
+[ownership register](chat-coordination.md). A new query or internal RPC is not
+a public API or accepting Concert adapter.
 
 Required qualification includes foreign actor/family/reference, deleted/unlinked/
 relinked claims, expired/revoked account/session, owner outage, role/epoch changes,

@@ -92,3 +92,10 @@ verification with explicit eligibility/publication gaps. The next backend work i
 authenticated fresh-read RPC composition, owned centrally until exact prerequisites
 and write exceptions are supplied. FE17 is not started merely to occupy a chat: its
 avatar/runtime inputs still need qualification.
+
+FE10 and Auth RPC have since received separate fresh worktrees and actual new
+ACTIVE goals. Their auth UI and owning-service handler scopes are disjoint.
+The FE16 chat remains idle and the original BE04 chat blocked; no extra chat is
+created merely to reach a count. The Auth RPC's shared prerequisite is prepared
+and tested on the parent branch, while the worker implements/qualifies the real
+handler. The parent alone will publish the combined reviewed result.

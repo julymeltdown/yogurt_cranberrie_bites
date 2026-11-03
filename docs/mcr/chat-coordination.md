@@ -2,7 +2,8 @@
 
 Updated 2026-11-03. The user authorized additional visible Codex chats, then
 clarified that a fixed backend/frontend count is unnecessary. Four visible chats
-are available; FE11 and the Auth-owner increment have completed bounded review. Each assigned writer has
+are available; FE10 and the authenticated Auth RPC are current writers after
+FE11 and the Auth-owner read completed bounded review. Each assigned writer has
 its own worktree and branch; every shell command
 and edit must explicitly target that worktree because app-level project context
 can still point to the integration checkout.
@@ -10,8 +11,8 @@ can still point to the integration checkout.
 | Task | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
 | BE04 | `mcr(be) BE04 canonical identity adapter` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-identity` / `codex/mcr-be-BE04` |
-| BE04 Auth owner | `mcr(be) BE04 Auth owner admission read` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-auth-authority` / `codex/mcr-be-auth-authority` |
-| FE11 | `mcr(fe) FE11 password recovery and callback` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-recovery` / `codex/mcr-fe-FE11` |
+| BE04 Auth RPC | `mcr(be) BE04 authenticated Auth admission RPC` | `01a1a00c-2690-7bc0-94fc-52609655ea83` | `/Users/lhs/Desktop/mcr-worktrees/be-auth-admission-rpc` / `codex/mcr-be-auth-admission-rpc` |
+| FE10 | `mcr(fe) FE10 signup and email verification` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-signup` / `codex/mcr-fe-FE10` |
 | FE16 | `mcr(fe) FE16 world transport` | `01a1a00c-c94e-74a2-a306-1ff686372881` | `/Users/lhs/Desktop/mcr-worktrees/fe-world-transport` / `codex/mcr-fe-FE16` |
 
 The original four increments started at `376cf21`; FE11 starts at `b39d5e5`
@@ -117,3 +118,37 @@ No decorative left accent lines, colored left borders or equivalent inset/pseudo
 bars are permitted. Only the user-selected revision-3 character source pack and
 reviewed derivatives are authorized; registered source sheets are not a qualified
 production avatar atlas. These constraints apply to every new chat.
+
+## Current continuation ownership
+
+Both newly assigned unbudgeted goals are tool-confirmed **ACTIVE**. FE10 starts
+at published `e725ae4`; the Auth RPC starts at integrator prerequisite
+`a44f8fa711b1ac73ce97d9e18d13dfc2eeee2382`, on top of `e725ae4`. The prerequisite
+is on its isolated branch and is not published as a functioning RPC: the method
+still returns fixed unavailable until the real handler is reviewed. Parent ran
+103 platform authority, two live guard, two Auth policy and thirteen retained
+Gateway verification-transport tests. Parent retains shared proto/platform and
+will integrate the prerequisite with the worker's completed real handler.
+
+- FE10 owns new auth UI `SignUp.tsx`, `VerifyEmail.tsx`, `enrollment.css`; model
+  `enrollment.ts`, `enrollment-contract.ts`; auth tests `enrollment.test.ts`,
+  `enrollment-browser-smoke.mjs`, fixtures `enrollment-preview.{html,tsx}`; new
+  app `__tests__/enrollment.test.tsx`; `docs/mcr/frontend/signup-verification.md`.
+  Exact existing exceptions are `PublicBoundary.tsx` dispatch/imports for the
+  existing two routes and minimal canonical enrollment methods/coordination in
+  `session.ts`. No cookie-policy/shared utility/manifest/contract ownership.
+- Auth RPC owns new service gRPC `concert_admission.rs`, service test
+  `concert_admission_rpc.rs`, backend smoke/helper scripts
+  `auth_admission_rpc_smoke.py`, `test_auth_admission_rpc_smoke.py`, and
+  `docs/mcr/backend/auth-admission-rpc.md`. Exact existing exceptions are one
+  AppState owner-port field and real adapter injection in config, one gRPC module
+  export, replacement of only the new server stub, and new-method-only policy
+  tests. No proto/platform/Gateway/Concert/frontend ownership.
+
+Production signup remains unavailable without approved eligibility, consent and
+publication authority; synthetic policy fixtures may qualify the forms. Existing
+account verification/resend are separate source-backed operations. No invented
+challenge expiry, age policy, recorded-checkbox consent or delivery proof.
+The RPC increment must qualify the actual generated Auth server behind production
+guard/deadline layers and real owned PostgreSQL. Neither increment enables
+production Concert authority or accepts an integration/release gate.
