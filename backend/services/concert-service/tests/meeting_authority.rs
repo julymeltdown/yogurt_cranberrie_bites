@@ -10,7 +10,7 @@ use concert_domain::{
 };
 use concert_service::{
     adapters::out::repository::place::PgPlaceRepository,
-    community::{CommunityAuthority, PgCommunity},
+    community::{CommunityAccess, CommunityAuthority, PgCommunity},
     meeting::{
         authority::PgMeetingAuthority,
         beacon::{mutate_in, read_in, PgMeetingRepository},
@@ -63,13 +63,35 @@ struct ActualCommunityPolicy {
 }
 #[async_trait]
 impl CommunityAuthority for ActualCommunityPolicy {
+    async fn actor_in(
+        &self,
+        c: &mut PgConnection,
+        actor: Uuid,
+        event: Uuid,
+        _access: CommunityAccess,
+    ) -> Result<(), CommandError> {
+        self.policy
+            .authorize_actor_in(
+                c,
+                concert_domain::ParticipantKey {
+                    event_id: EventId::from_uuid(event),
+                    user_id: AuthUserId::from_uuid(actor),
+                },
+            )
+            .await
+            .map_err(|error| match error {
+                RelationshipError::Denied => CommandError::Denied,
+                _ => CommandError::Unavailable,
+            })?;
+        Ok(())
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
         actor: Uuid,
         event: Uuid,
         subject: Uuid,
-        safety: bool,
+        access: CommunityAccess,
     ) -> Result<(), CommandError> {
         self.policy
             .authorize_in(
@@ -78,10 +100,15 @@ impl CommunityAuthority for ActualCommunityPolicy {
                     event: EventId::from_uuid(event),
                     actor: AuthUserId::from_uuid(actor),
                     subject: AuthUserId::from_uuid(subject),
-                    field: if safety {
-                        Field::SafetyInteraction
-                    } else {
-                        Field::Interaction
+                    field: match access {
+                        CommunityAccess::ReadParties | CommunityAccess::ReadGifts => {
+                            Field::PublicProfile
+                        }
+                        CommunityAccess::WriteParties | CommunityAccess::WriteGifts => {
+                            Field::Interaction
+                        }
+                        _ if actor == subject => Field::SafetySelf,
+                        _ => Field::SafetyInteraction,
                     },
                 },
                 None,
