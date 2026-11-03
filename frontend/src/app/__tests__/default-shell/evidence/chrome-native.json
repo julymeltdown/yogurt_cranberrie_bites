@@ -1,0 +1,37 @@
+{
+  "result": "PASS",
+  "qualification": "Actual createAppRoutes defaults/WorldShell. Instrumented world fixture only, no Phaser/Auth/C04/C05 or product art qualification.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "layout": {
+        "overflow": false,
+        "chrome": 2
+      },
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "layout": {
+        "overflow": false,
+        "chrome": 2
+      },
+      "mounts": 1,
+      "disposals": 1
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "layout": {
+        "overflow": false,
+        "chrome": 2
+      },
+      "mounts": 1,
+      "disposals": 1
+    }
+  ],
+  "errors": []
+}

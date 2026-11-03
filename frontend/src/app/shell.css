@@ -76,3 +76,6 @@ body:has([data-mcr-shell]) { padding: 0; }
 @media (forced-colors: active) {
   .shell-tabs a[aria-current="page"] { outline: 2px solid Highlight; outline-offset: -4px; }
 }
+
+.shell-era-region { min-inline-size: 0; }
+.shell-mode { margin: 0; padding: 3px 8px; font-size: .75rem; font-weight: 700; }

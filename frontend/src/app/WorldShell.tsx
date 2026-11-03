@@ -4,8 +4,9 @@ import { Button, Feedback } from '../shared/ui'
 import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad, validBootstrap } from './access'
 import { MAX_SHELL_LOCATIONS, NavigationMemory, ShellLink, usePanelBack } from './navigation'
 import type { ActiveScope, ShellBootstrap } from './ports'
-import { resolvePanel, tabs, type PanelRoute } from './routes'
+import { resolvePanel, type PanelRoute } from './routes'
 import { WorldHost } from './WorldHost'
+import { ShellHeader, EraControls, BottomNavigation, PanelHeader } from './shell-chrome'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
 
@@ -66,7 +67,6 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
 }) {
   const { auth, accountAssets } = usePorts()
   const location = useLocation()
-  const route = resolvePanel(location.pathname)
   const panelOpen = location.pathname !== '/world'
   const [size, setSize] = useState<'peek' | 'half' | 'full'>('half')
   const [typing, setTyping] = useState(false)
@@ -86,13 +86,10 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
     onFocusCapture={event => setTyping(typingTarget(event.target))}
     onBlurCapture={event => setTyping(typingTarget(event.relatedTarget))}>
     <a className="skip-link" href="#shell-content">Skip to content</a>
-    <header className="shell-header">
-      <div><Link to="/" className="shell-brand" aria-label="MCR Concert World home">MCR <span>Concert World</span></Link>
-        <p className="shell-event">{bootstrap.event.title}</p></div>
-      <ShellLink to="/notifications" className="shell-link" id="shell-inbox">Inbox</ShellLink>
-    </header>
-    <div className="shell-era"><ShellLink to="/world/theme" id="shell-era">Revenge / Parade / Danger <span aria-hidden="true">↗</span></ShellLink>
-      {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <span>Read only</span>}</div>
+    <ShellHeader eventTitle={bootstrap.event.title} />
+    <div className="shell-era-region"><EraControls />
+      {['READ_ONLY', 'ARCHIVED'].includes(bootstrap.event.phase) && <p className="shell-mode" role="status">Read only</p>}
+    </div>
     <div className="shell-stage" data-panel-size={panelOpen ? size : 'closed'}>
       <WorldHost key={key} scope={scope} bootstrap={bootstrap} privacyScope={privacyScope} blocked={panelOpen || typing} covered={panelOpen && size === 'full'} />
       {panelOpen ? <PanelFrame size={size} onSize={setSize} positions={positions.current}><Outlet /></PanelFrame>
@@ -104,10 +101,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null }: {
             <ShellLink id="world-help" to="/world/help">Help</ShellLink></nav>
         </main>}
     </div>
-    <nav className="shell-tabs" aria-label="Main navigation">
-      {tabs.map(tab => <ShellLink key={tab.path} id={`tab-${tab.label.toLowerCase()}`} to={tab.path}
-        aria-current={route?.route.tab === tab.path ? 'page' : undefined}>{tab.label}</ShellLink>)}
-    </nav>
+    <BottomNavigation />
   </div></NavigationMemory></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></Suspense>
 }
 
@@ -137,14 +131,9 @@ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'hal
     onKeyDown={event => {
       if (event.key === 'Escape' && !event.defaultPrevented && !typingTarget(event.target)) { event.preventDefault(); back() }
     }}>
-    <header className="shell-panel-header">
-      <Button variant="quiet" onClick={back} aria-label="Back to previous panel">← Back</Button>
-      <h1 id="panel-title" ref={heading} tabIndex={-1}>{title}</h1>
-      <Button variant="quiet" onClick={() => onSize(size === 'full' ? 'half' : 'full')}
-        aria-label={size === 'full' ? 'Reduce panel' : 'Expand panel'} aria-expanded={size === 'full'}>{size === 'full' ? 'Reduce' : 'Expand'}</Button>
-      <Button variant="quiet" onClick={() => onSize(size === 'peek' ? 'half' : 'peek')}
-        aria-label={size === 'peek' ? 'Show panel content' : 'Minimize panel'} aria-expanded={size !== 'peek'}>{size === 'peek' ? 'Show' : 'Hide'}</Button>
-    </header>
+    <PanelHeader title={title} headingRef={heading} size={size} back={back}
+      toggleSize={() => onSize(size === 'full' ? 'half' : 'full')}
+      toggleContent={() => onSize(size === 'peek' ? 'half' : 'peek')} />
     <div className="shell-panel-body" ref={scroll} hidden={size === 'peek'}>{children}</div>
   </main>
 }
