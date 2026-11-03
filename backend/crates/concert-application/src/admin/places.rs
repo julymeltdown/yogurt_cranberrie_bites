@@ -35,9 +35,6 @@ impl PlaceChange {
             provenance,
         )
         .map_err(|_| CommandError::InvalidInput)?;
-        self.expected
-            .next()
-            .map_err(|_| CommandError::InvalidInput)?;
         Ok(())
     }
 }

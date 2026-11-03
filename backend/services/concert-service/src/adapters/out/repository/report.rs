@@ -272,14 +272,6 @@ impl<A: FencedOperationsAuthority, E: FencedReportEvidence> CommandProducer
             true,
         )
         .await?;
-        let started = ops::now(c).await?;
-        let lease = self
-            .repository
-            .evidence
-            .check_in(c, self.actor, &self.input, started)
-            .await?;
-        lease.validate(self.actor, &self.input, started, ops::now(c).await?)?;
-        ops::pin(c, lease.expires_at).await?;
         Ok(())
     }
     async fn apply(
@@ -288,6 +280,14 @@ impl<A: FencedOperationsAuthority, E: FencedReportEvidence> CommandProducer
         s: Scope,
         target: Uuid,
     ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        let started = ops::now(c).await?;
+        let lease = self
+            .repository
+            .evidence
+            .check_in(c, self.actor, &self.input, started)
+            .await?;
+        lease.validate(self.actor, &self.input, started, ops::now(c).await?)?;
+        ops::pin(c, lease.expires_at).await?;
         let phase: String =
             sqlx::query_scalar("select phase from concert_events where event_id=$1")
                 .bind(s.event)

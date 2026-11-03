@@ -67,16 +67,16 @@ def exercise(cluster, binary, tests, report):
     report["restart_persistence"] = "PASS"
     report["result"] = "PASS"
 
-def run(binary, report_test, operations_test, pg_bin, report):
+def run(binary, report_test, operations_test, place_test, pg_bin, report):
     cluster = None
     try:
-        require(all(p.is_absolute() for p in (binary, report_test, operations_test, pg_bin)), "explicit-absolute-paths")
-        paths = tuple(migration.executable(p) for p in (binary, report_test, operations_test))
-        report["binary_sha256"] = {name: digest(p) for name, p in zip(("service", "report", "operations"), paths)}
+        require(all(p.is_absolute() for p in (binary, report_test, operations_test, place_test, pg_bin)), "explicit-absolute-paths")
+        paths = tuple(migration.executable(p) for p in (binary, report_test, operations_test, place_test))
+        report["binary_sha256"] = {name: digest(p) for name, p in zip(("service", "report", "operations", "places"), paths)}
         tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
         cluster = migration.Cluster(tools)
         report["owned_directory"] = str(cluster.root)
-        exercise(cluster, paths[0], (("report-tests", paths[1], 5), ("operations-tests", paths[2], 5)), report)
+        exercise(cluster, paths[0], (("report-tests", paths[1], 6), ("operations-tests", paths[2], 7), ("place-tests",paths[3],3)), report)
     except (Exception, KeyboardInterrupt) as error:
         report["result"] = "FAIL"
         report["failure"] = str(error) if type(error).__name__ == "CheckFailure" else type(error).__name__
@@ -91,7 +91,7 @@ def run(binary, report_test, operations_test, pg_bin, report):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ("binary", "report-test", "operations-test", "pg-bin", "report"):
+    for name in ("binary", "report-test", "operations-test", "place-test", "pg-bin", "report"):
         parser.add_argument("--" + name, type=Path, required=True)
     args = parser.parse_args(argv)
     if not args.report.is_absolute():
@@ -118,7 +118,7 @@ def main(argv=None):
         require(tuple(report["contract_sha256"].values()) == PINNED, "contract-candidate-drift")
         report["source_revision"] = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
         report["dirty_files"] = subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True).splitlines()
-        run(args.binary, args.report_test, args.operations_test, args.pg_bin, report)
+        run(args.binary, args.report_test, args.operations_test, args.place_test, args.pg_bin, report)
     except (Exception, KeyboardInterrupt) as error:
         report.update(result="FAIL", failure=type(error).__name__, cleanup="NOT_RUN")
     finally:

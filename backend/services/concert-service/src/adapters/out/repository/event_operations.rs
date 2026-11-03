@@ -425,6 +425,15 @@ impl<A: FencedOperationsAuthority, R: FencedNoticeReview, P: FencedPlaceOperatio
         .await?;
         let event = read_event(&mut tx, actor.event).await?;
         let settings = read_settings(&mut tx, actor.event).await?;
+        audit(
+            &mut tx,
+            actor,
+            Action::SettingsRead,
+            actor.event,
+            None,
+            json!({}),
+        )
+        .await?;
         finish_read(&mut tx).await?;
         tx.commit().await.map_err(unavailable)?;
         Ok(SettingsSnapshot { event, settings })
@@ -458,6 +467,15 @@ impl<A: FencedOperationsAuthority, R: FencedNoticeReview, P: FencedPlaceOperatio
         if result.len() > limit as usize {
             return Err(CommandError::InvalidState);
         }
+        audit(
+            &mut tx,
+            actor,
+            Action::PlacesRead,
+            actor.event,
+            None,
+            json!({}),
+        )
+        .await?;
         finish_read(&mut tx).await?;
         tx.commit().await.map_err(unavailable)?;
         Ok(result)
@@ -486,6 +504,15 @@ impl<A: FencedOperationsAuthority, R: FencedNoticeReview, P: FencedPlaceOperatio
         .await?;
         let rows=sqlx::query("select * from concert_operation_notices where event_id=$1 and ($2::uuid is null or notice_id>$2) and ($3::text is null or state=$3) order by notice_id limit $4").bind(actor.event).bind(after).bind(state.map(NoticeState::as_str)).bind(i64::from(limit)).fetch_all(&mut *tx).await.map_err(unavailable)?;
         let result = rows.iter().map(notice).collect::<Result<_, _>>()?;
+        audit(
+            &mut tx,
+            actor,
+            Action::NoticeAdminRead,
+            actor.event,
+            None,
+            json!({}),
+        )
+        .await?;
         finish_read(&mut tx).await?;
         tx.commit().await.map_err(unavailable)?;
         Ok(result)
@@ -566,7 +593,6 @@ impl<A: FencedOperationsAuthority, R: FencedNoticeReview, P: FencedPlaceOperatio
         if s.actor != self.actor.actor
             || s.event != self.actor.event
             || s.operation.id() != self.command.action().operation()
-            || target != self.target
         {
             return Err(CommandError::Denied);
         }
@@ -589,6 +615,9 @@ impl<A: FencedOperationsAuthority, R: FencedNoticeReview, P: FencedPlaceOperatio
         s: Scope,
         target: Uuid,
     ) -> Result<(Completion, Option<Invalidation>), CommandError> {
+        if target != self.target {
+            return Err(CommandError::InvalidState);
+        }
         let row = sqlx::query("select phase,revision from concert_events where event_id=$1")
             .bind(s.event)
             .fetch_one(&mut *c)
@@ -603,7 +632,7 @@ impl<A: FencedOperationsAuthority, R: FencedNoticeReview, P: FencedPlaceOperatio
         if matches!(phase, EventPhase::ReadOnly | EventPhase::Archived) {
             return Ok(failure(SafeFailure::EventReadOnly));
         }
-        let mut change = json!({});
+        let change;
         let next = match &self.command {
             EventCommand::Settings {
                 expected, settings, ..
@@ -769,12 +798,35 @@ async fn read_event(c: &mut PgConnection, id: Uuid) -> Result<Event, CommandErro
 }
 /// Every feature mutation producer must call this in its existing authority transaction
 /// before applying effects. Missing settings are unavailable; hidden UI never grants access.
+pub struct FeatureGuard<'a> {
+    connection: &'a mut PgConnection,
+    settings: Settings,
+    revision: Revision,
+}
+impl std::fmt::Debug for FeatureGuard<'_> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("FeatureGuard")
+            .field("revision", &self.revision)
+            .finish_non_exhaustive()
+    }
+}
+impl FeatureGuard<'_> {
+    pub fn connection(&mut self) -> &mut PgConnection {
+        self.connection
+    }
+    pub fn settings(&self) -> Settings {
+        self.settings
+    }
+    pub fn revision(&self) -> Revision {
+        self.revision
+    }
+}
 pub async fn require_feature_in(
     c: &mut PgConnection,
     event: Uuid,
     feature: Feature,
     expected: Option<Revision>,
-) -> Result<Result<Settings, SafeFailure>, CommandError> {
+) -> Result<Result<FeatureGuard<'_>, SafeFailure>, CommandError> {
     let r = sqlx::query("select phase,revision from concert_events where event_id=$1 for share")
         .bind(event)
         .fetch_optional(&mut *c)
@@ -793,7 +845,11 @@ pub async fn require_feature_in(
     if !settings.features.enabled(feature) {
         return Ok(Err(SafeFailure::EventReadOnly));
     }
-    Ok(Ok(settings))
+    Ok(Ok(FeatureGuard {
+        connection: c,
+        settings,
+        revision: Revision::new(revision).map_err(|_| CommandError::InvalidState)?,
+    }))
 }
 #[derive(Clone, Serialize)]
 pub struct Notice {

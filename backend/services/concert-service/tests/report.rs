@@ -455,3 +455,25 @@ async fn safety_readonly_allowed_archive_denied() -> anyhow::Result<()> {
     p.close().await;
     Ok(())
 }
+#[tokio::test]
+async fn completed_receipt_survives_submission_media_loss_but_privileged_audit_failure_withholds_data(
+) -> anyhow::Result<()> {
+    let (p, a) = fixture().await?;
+    let key = Uuid::new_v4();
+    let body = input();
+    let keys = keys();
+    let repo = PgReports::new(p.clone(), authority(Role::Member), Evidence { mode: 0 });
+    let receipt = repo.create(a, key, body.clone(), &keys).await?;
+    let unavailable = PgReports::new(p.clone(), authority(Role::Member), UnavailableEvidence);
+    assert_eq!(unavailable.create(a, key, body, &keys).await?, receipt);
+    fail_audit(&p, a).await?;
+    let privileged = PgReports::new(p.clone(), authority(Role::Moderator), Evidence { mode: 0 });
+    assert!(privileged
+        .detail(a, receipt.reference.unwrap().resource)
+        .await
+        .is_err());
+    assert!(privileged.queue(a, filter()).await.is_err());
+    assert_eq!(count(&p, "concert_operations_audit", a.event).await, 1);
+    p.close().await;
+    Ok(())
+}

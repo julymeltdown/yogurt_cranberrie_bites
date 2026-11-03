@@ -40,7 +40,16 @@ CREATE TABLE public.concert_operations_audit (
 CREATE FUNCTION public.concert_operations_deadline_guard() RETURNS trigger LANGUAGE plpgsql AS $$
 DECLARE deadline timestamptz;
 BEGIN
- IF TG_TABLE_NAME='concert_command_receipts' AND NEW.operation_id NOT IN ('createConcertReport','setConcertSettings','setConcertEventPhase','setConcertPlace','createConcertNotice','updateConcertNotice') THEN RETURN NULL; END IF;
+ IF TG_TABLE_NAME='concert_command_receipts' THEN
+  IF NEW.operation_id NOT IN ('createConcertReport','setConcertSettings','setConcertEventPhase','setConcertPlace','createConcertNotice','updateConcertNotice') THEN RETURN NULL; END IF;
+  -- BE15 immutable correlation and shape guards still apply. Expired retirement
+  -- clears result metadata and executes no protected user/domain effect.
+  IF TG_OP='UPDATE' THEN
+   IF NEW.state='RETIRED' AND OLD.expires_at<=clock_timestamp()
+      AND NEW.resource_id IS NULL AND NEW.resource_revision IS NULL
+      AND NEW.failure_reason IS NULL AND NEW.result_status IS NULL THEN RETURN NULL; END IF;
+  END IF;
+ END IF;
  deadline:=nullif(current_setting('mcr.operations_authority_until',true),'')::timestamptz;
  IF deadline IS NULL OR clock_timestamp()>=deadline THEN RAISE EXCEPTION 'operations authority expired' USING ERRCODE='23514'; END IF;
  RETURN NULL;

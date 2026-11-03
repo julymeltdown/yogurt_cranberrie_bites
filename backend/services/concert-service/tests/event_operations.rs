@@ -281,13 +281,13 @@ async fn settings_concurrent_cas_receipts_and_disabled_server_gate() -> anyhow::
         1
     );
     let mut tx = p.begin().await?;
-    assert_eq!(
+    assert!(matches!(
         require_feature_in(&mut tx, a.event, Feature::Parties, None).await?,
         Err(SafeFailure::EventReadOnly)
-    );
+    ));
     tx.rollback().await?;
     assert_eq!(count(&p, "concert_outbox", a.event).await, 2);
-    assert_eq!(count(&p, "concert_operations_audit", a.event).await, 2);
+    assert_eq!(count(&p, "concert_operations_audit", a.event).await, 3);
     assert_eq!(repo.settings(a).await?.event.revision.get(), 3);
     assert_eq!(
         repo.execute(a, key, None, command(1, false), &keys)
@@ -556,6 +556,94 @@ async fn expired_authority_at_commit_rolls_back_every_effect() -> anyhow::Result
         .fetch_one(&p)
         .await?;
     assert_eq!(revision, 1);
+    p.close().await;
+    Ok(())
+}
+#[tokio::test]
+async fn authorized_cross_target_key_change_conflicts_and_operator_read_audit_failure_withholds_data(
+) -> anyhow::Result<()> {
+    let (p, a) = fixture().await?;
+    let repo = PgEventOperations::new(
+        p.clone(),
+        authority(Role::Operator),
+        Review { mode: 0 },
+        UnavailablePlaces,
+    );
+    let keys = keys();
+    let body = notice_input();
+    let first = repo
+        .execute(
+            a,
+            Uuid::new_v4(),
+            None,
+            EventCommand::NoticeCreate(body.clone()),
+            &keys,
+        )
+        .await?
+        .reference
+        .unwrap()
+        .resource;
+    let second = repo
+        .execute(
+            a,
+            Uuid::new_v4(),
+            None,
+            EventCommand::NoticeCreate(body.clone()),
+            &keys,
+        )
+        .await?
+        .reference
+        .unwrap()
+        .resource;
+    let key = Uuid::new_v4();
+    let update = EventCommand::NoticeUpdate {
+        expected: Revision::initial(),
+        input: body.clone(),
+    };
+    repo.execute(a, key, Some(first), update.clone(), &keys)
+        .await?;
+    assert_eq!(
+        repo.execute(a, key, Some(second), update, &keys)
+            .await
+            .unwrap_err(),
+        CommandError::Conflict
+    );
+    assert_eq!(
+        repo.admin_notices(a, None, Some(NoticeState::Published), 100)
+            .await?
+            .len(),
+        2
+    );
+    repo.execute(a, Uuid::new_v4(), None, command(1, true), &keys)
+        .await?;
+    fail_audit(&p, a).await?;
+    assert!(repo.settings(a).await.is_err());
+    assert!(repo.admin_notices(a, None, None, 20).await.is_err());
+    p.close().await;
+    Ok(())
+}
+#[tokio::test]
+async fn expired_receipt_retirement_needs_no_user_role_lease() -> anyhow::Result<()> {
+    use concert_service::adapters::out::repository::receipt::PgCommandRepository;
+    let (p, a) = fixture().await?;
+    let id = Uuid::new_v4();
+    let mut tx = p.begin().await?;
+    sqlx::query("select set_config('mcr.operations_authority_until',(clock_timestamp()+interval '1 minute')::text,true)").execute(&mut *tx).await?;
+    sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,resource_id,resource_revision,result_status,created_at,expires_at) values($1,$2,$3,'setConcertSettings',$4,$5,$3,'SUCCEEDED',$3,1,200,statement_timestamp()-interval '2 days',statement_timestamp()-interval '1 day')").bind(id).bind(a.actor).bind(a.event).bind(Uuid::new_v4()).bind(format!("hmac-sha256:v1:test:{}","0".repeat(64))).execute(&mut *tx).await?;
+    tx.commit().await?;
+    assert!(
+        PgCommandRepository::new(p.clone())
+            .retire_expired(100)
+            .await?
+            >= 1
+    );
+    let row =
+        sqlx::query("select state,resource_id from concert_command_receipts where receipt_id=$1")
+            .bind(id)
+            .fetch_one(&p)
+            .await?;
+    assert_eq!(row.try_get::<String, _>("state")?, "RETIRED");
+    assert_eq!(row.try_get::<Option<Uuid>, _>("resource_id")?, None);
     p.close().await;
     Ok(())
 }
