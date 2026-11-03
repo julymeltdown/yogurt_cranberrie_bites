@@ -200,8 +200,10 @@ unfinished; this journal increment does not complete it.
 Implementation and initial native evidence: `414d0c2a`, directly descended from
 base `f837bef676cd26869c26c172a699a91b7842d832`. The follow-up test/documentation checkpoint addresses all three concrete
 qualification findings and records lease release. Source hashes in `native-3.json`
-match every final runtime source, contract, manifest and lockfile. Delivery integrates these owned commits serially; only the delivery
-integrator may push to `julymeltdown/mcr:master`.
+match every final runtime source, contract, manifest and lockfile. The latest explicit human delivery policy authorizes this implementation owner
+to publish the qualified handoff directly to `julymeltdown/mcr:master`, after
+merging current remote history and verifying affected integration checks. No
+mandatory king/SL per-commit review or centralized push queue applies.
 
 ### Concrete qualification review fixes
 
@@ -228,3 +230,21 @@ journal/reader code remains identical to `414d0c2a`.
 The final build exited 0; final native command exited 0 with 8 journal tests and
 1 unchanged owner test, restart PASS and cleanup PASS. No general second review
 or Main approval was imposed as a delivery gate.
+
+### Direct publication integration — 2026-11-04
+
+The isolated owner branch merged peer master
+`1e5022885525ab56f056aa2c24100e18c4bc67ed` without conflicts or history rewrite.
+Before this publication receipt, the merge's delta from that peer master was
+exactly the twelve granted paths, byte-identical to qualified handoff `9efe5fe6`.
+The existing `src/lib.rs` preimage matched the assignment base; all eleven new
+paths were absent from peer master. Peer Auth and frontend commits were retained.
+
+Every runtime source/contract/manifest/lockfile hash from final native report
+`native-3.json` remained unchanged. There was no native rerun or build-target
+access. Focused harness refusal/cleanup checks passed again (5 tests, exit 0).
+The original migration/source archives and shared/backend/frontend boundaries
+were verified unchanged by this handoff. Publication uses a non-force push and
+remote ancestry verification; its delivered SHA is reported to the coordinating
+chat after verification. Owner-local native qualification and existing Docker,
+RPC/consumer/IN01 limitations above remain unchanged.
