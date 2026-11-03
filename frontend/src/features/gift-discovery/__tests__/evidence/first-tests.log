@@ -1,0 +1,36 @@
+$ vitest run src/features/gift-discovery/__tests__
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-gift-discovery/frontend
+
+ ❯ src/features/gift-discovery/__tests__/controller.test.ts (0 test)
+ ❯ src/features/gift-discovery/__tests__/contract.test.ts (0 test)
+ ❯ src/features/gift-discovery/__tests__/ui.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/gift-discovery/__tests__/contract.test.ts [ src/features/gift-discovery/__tests__/contract.test.ts ]
+ FAIL  src/features/gift-discovery/__tests__/controller.test.ts [ src/features/gift-discovery/__tests__/controller.test.ts ]
+ FAIL  src/features/gift-discovery/__tests__/ui.test.tsx [ src/features/gift-discovery/__tests__/ui.test.tsx ]
+Error: Invalid giveaway response
+ ❯ assert src/features/gift-discovery/model/contract.ts:36:68
+     34| export type GiftQuery = Readonly<Record<string, string | number | bool…
+     35|
+     36| function assert(value: unknown): asserts value { if (!value) throw new…
+       |                                                                    ^
+     37| const record = (value: unknown): Record<string, unknown> => {
+     38|   assert(value !== null && typeof value === 'object' && !Array.isArray…
+ ❯ compile src/features/gift-discovery/model/contract.ts:49:3
+ ❯ src/features/gift-discovery/model/contract.ts:65:21
+ ❯ compile src/features/gift-discovery/model/contract.ts:64:73
+ ❯ named src/features/gift-discovery/model/contract.ts:87:24
+ ❯ src/features/gift-discovery/model/contract.ts:92:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  no tests
+   Start at  22:40:49
+   Duration  928ms (transform 331ms, setup 0ms, import 0ms, tests 0ms, environment 509ms)
+
+[ELIFECYCLE] Test failed. See above for more details.
