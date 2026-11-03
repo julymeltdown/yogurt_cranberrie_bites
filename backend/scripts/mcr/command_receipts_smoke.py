@@ -15,7 +15,7 @@ FAILURE_DATABASE = "mcr_concert_be_commands_failure"
 CONTRACTS = ("common.schema.json", "operations.json", "policy.json")
 PINNED = ("303f3019611c636679282d6c29106deab83d7c0c9717bd8b9ba526d2ff865a35",
           "42ed48ee0cad846b94f9f7a5d39a38beeeb5f5b41e0129f157e51ff31c635223",
-          "0e04fe478d757d9d6ab434d3aa25aade523d35d2d2a2a0574f17a04f7f395339")
+          "508d22af964b718cdcbd5a25b32b9a1e3f7b651a5b8c25c87d56f1f6b68d0ebe")
 
 def exercise(cluster, binary, test, report):
     cluster.init()
