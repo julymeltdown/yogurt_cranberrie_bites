@@ -109,9 +109,9 @@ fn real_spatial_candidate_preserves_canonical_geometry_without_product_admission
     assert_eq!(geometry.interactions.len(), 4);
     assert_eq!(
         (candidate.scenery_bytes, candidate.scenery_pixels),
-        (3_179_667, 2_567_844)
+        (1_947_817, 2_043_904)
     );
-    assert!(!candidate.scenery_within_budget);
+    assert!(candidate.scenery_within_budget);
     assert!(candidate
         .catalog
         .manifest

@@ -12,7 +12,9 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_COMMIT = '8f89d1905a86143d34ff77d2951fc60651ab2497'
+ART_COMMIT = 'e3af146ae4757794ca153363fd1408300ffde29e'
 BASE = 'world/reference-scene-v2/'
+RUNTIME = BASE + 'runtime-v4/'
 GEOMETRY_HASH = 'sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5'
 MAP_ID = 'mcr_reference_scene_r3'
 MAX_SCENERY = 2_097_152
@@ -30,10 +32,10 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def published_input(path):
+def published_input(path, revision=SOURCE_COMMIT):
     """Freeze exact published artist bytes and reject checkout drift."""
     relative = 'frontend/public/' + path
-    data = subprocess.check_output(['git', 'show', SOURCE_COMMIT + ':' + relative], cwd=ROOT)
+    data = subprocess.check_output(['git', 'show', revision + ':' + relative], cwd=ROOT)
     actual = (ROOT / relative).read_bytes()
     require(data == actual, 'artist source changed from pinned revision: ' + path)
     return data
@@ -85,33 +87,54 @@ def candidate_map(proposal):
 
 
 def build():
-    names = ['geometry-proposal.json', 'painted/layout.json',
-             'painted/resource-inputs.json', 'painted/provenance.json']
-    data = {BASE + name: published_input(BASE + name) for name in names}
-    proposal = assets.read_json(ROOT / 'frontend/public' / BASE / names[0])
-    layout = json.loads(data[BASE + 'painted/layout.json'])
-    resources = json.loads(data[BASE + 'painted/resource-inputs.json'])
-    require(layout['version'] == resources['version'] == 3
+    geometry_path = BASE + 'geometry-proposal.json'
+    geometry_data = published_input(geometry_path)
+    names = ['parade-layout.json', 'parade-resource-inputs.json',
+             'parade-scenery.json', 'parade-integer-projection.json',
+             'parade-map-metadata.json']
+    data = {RUNTIME + name: published_input(RUNTIME + name, ART_COMMIT) for name in names}
+    proposal = json.loads(geometry_data)
+    layout = json.loads(data[RUNTIME + 'parade-layout.json'])
+    resources = json.loads(data[RUNTIME + 'parade-resource-inputs.json'])
+    scenery = json.loads(data[RUNTIME + 'parade-scenery.json'])
+    require(layout['version'] == resources['version'] == 4
             and layout['geometry_hash'] == resources['geometry_hash'] == GEOMETRY_HASH,
             'scene/geometry version mismatch')
+    require(resources['source_revision'] == SOURCE_COMMIT
+            and resources['theme_id'] == 'PARADE'
+            and resources['status'] == 'PROPOSAL_NOT_RELEASE_BOUND', 'runtime source mismatch')
+    # Validate the exact closed public Scenery definition without manufacturing
+    # a theme manifest or upgrading the source's review state.
+    api = assets.read_json(ROOT / 'backend/docs/api/mcr-core.openapi.json')
+    assets.Draft202012Validator({'$ref': '#/components/schemas/Scenery',
+                                'components': api['components']}).validate(scenery)
+    assets.validate_scenery(scenery, proposal['geometry'])
+    require(len(scenery['objects']) == 22, 'unexpected WORLD object projection')
     manifest = candidate_map(proposal)
     runtime = []
-    for name in resources['runtime_resources']:
-        path = BASE + 'painted/' + name
-        raw = published_input(path)
-        declared = next(r for r in resources['resources'] if r['path'] == name)
+    for declared in resources['resources']:
+        path = RUNTIME + declared['path']
+        raw = published_input(path, ART_COMMIT)
         require(sha(raw) == declared['sha256'] and len(raw) == declared['bytes'],
                 'artist runtime resource pin mismatch: ' + path)
         width, height = png_size(raw)
+        require((width, height) == (declared['width'], declared['height']), 'runtime dimensions mismatch')
         runtime.append({**file_pin(path, raw), 'width_px': width, 'height_px': height})
+    require([r['path'] for r in runtime] == [scenery['ground']['path']]
+            + [a['path'] for a in scenery['atlases']], 'scenery/resource path mismatch')
+    for pin, descriptor in zip(runtime, [scenery['ground']] + scenery['atlases']):
+        require(all(pin[k] == descriptor[k] for k in ['path', 'sha256', 'bytes', 'width_px', 'height_px']),
+                'scenery/resource pin mismatch')
     byte_count = sum(r['bytes'] for r in runtime)
     pixels = sum(r['width_px'] * r['height_px'] for r in runtime)
     binding = {
         'format': 'MCR_SOURCE_BOUND_SPATIAL_RELEASE', 'version': 1,
-        'source_commit': SOURCE_COMMIT, 'map_id': MAP_ID, 'map_revision': 1,
+        'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'map_id': MAP_ID, 'map_revision': 1,
         'map_content_hash': manifest['content_hash'], 'geometry_hash': GEOMETRY_HASH,
-        'geometry_source': file_pin(BASE + names[0], data[BASE + names[0]]),
-        'scene_sources': [file_pin(BASE + name, data[BASE + name]) for name in names[1:]],
+        'geometry_source': file_pin(geometry_path, geometry_data),
+        'scenery_source': file_pin(RUNTIME + 'parade-scenery.json', data[RUNTIME + 'parade-scenery.json']),
+        'scene_sources': [file_pin(RUNTIME + name, data[RUNTIME + name]) for name in names
+                          if name != 'parade-scenery.json'],
         'runtime_resources': runtime,
     }
     blockers = ['MISSING_PAINTED_REVENGE', 'MISSING_PAINTED_DANGER',
@@ -126,7 +149,7 @@ def build():
         blockers.append('C06_INTEGER_SCENERY_PROJECTION_REQUIRED')
     readiness = {
         'task': 'BE-SPATIAL-RELEASE', 'state': 'NOT_ADMITTED',
-        'source_commit': SOURCE_COMMIT, 'map': {key: manifest[key] for key in
+        'source_commit': SOURCE_COMMIT, 'art_commit': ART_COMMIT, 'map': {key: manifest[key] for key in
             ['map_id', 'map_revision', 'content_hash', 'geometry_hash']},
         'skins': {'PARADE': 'SOURCE_PROPOSAL', 'REVENGE': 'UNAVAILABLE', 'DANGER': 'UNAVAILABLE'},
         'blockers': blockers,

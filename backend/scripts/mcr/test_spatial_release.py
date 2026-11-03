@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Developer-owned spatial source/candidate regression tests; no production admission."""
 import copy
+import argparse
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
 import unittest
+import signal
+import subprocess
+import sys
 from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('spatial_builder', Path(__file__).with_name('build_spatial_release.py'))
@@ -51,13 +56,13 @@ class SpatialReleaseTests(unittest.TestCase):
         binding = self.outputs['source-binding.json']
         resources = binding['runtime_resources']
         for pin in resources:
-            raw = builder.published_input(pin['path'])
+            raw = builder.published_input(pin['path'], builder.ART_COMMIT)
             self.assertEqual((builder.sha(raw), len(raw)), (pin['sha256'], pin['bytes']))
             self.assertEqual(builder.png_size(raw), (pin['width_px'], pin['height_px']))
         budget = self.outputs['readiness.json']['scenery_budget']
-        self.assertEqual((budget['bytes'], budget['pixels']), (3179667, 2567844))
-        self.assertGreater(budget['bytes'], budget['max_bytes'])
-        self.assertGreater(budget['pixels'], budget['max_pixels'])
+        self.assertEqual((budget['bytes'], budget['pixels']), (1947817, 2043904))
+        self.assertLessEqual(budget['bytes'], budget['max_bytes'])
+        self.assertLessEqual(budget['pixels'], budget['max_pixels'])
         with self.assertRaises(ValueError):
             builder.png_size(b'not a PNG')
 
@@ -70,8 +75,11 @@ class SpatialReleaseTests(unittest.TestCase):
         report = self.outputs['readiness.json']
         self.assertEqual(report['state'], 'NOT_ADMITTED')
         self.assertEqual(report['skins'], {'PARADE': 'SOURCE_PROPOSAL', 'REVENGE': 'UNAVAILABLE', 'DANGER': 'UNAVAILABLE'})
-        for reason in ['MISSING_PAINTED_REVENGE', 'MISSING_PAINTED_DANGER', 'UNREVIEWED_SOURCE_PROVENANCE', 'TILED_RESOURCE_NOT_PROVIDED', 'C06_INTEGER_SCENERY_PROJECTION_REQUIRED']:
+        for reason in ['MISSING_PAINTED_REVENGE', 'MISSING_PAINTED_DANGER', 'UNREVIEWED_SOURCE_PROVENANCE', 'TILED_RESOURCE_NOT_PROVIDED']:
             self.assertIn(reason, report['blockers'])
+        self.assertEqual(report['fractional_depth_count'], 0)
+        self.assertFalse(any(b.startswith('C06_') for b in report['blockers']))
+        self.assertEqual(report['art_commit'], builder.ART_COMMIT)
         self.assertIsNone(report['bootstrap'])
         self.assertIsNone(report['theme_manifests'])
         for name, expected in self.outputs.items():
@@ -79,5 +87,82 @@ class SpatialReleaseTests(unittest.TestCase):
             self.assertEqual(actual, expected)
 
 
+def run_native(metadata, pg_bin, pinned_binaries):
+    # Reuse the existing marker/inode-owned cluster and exact native-test runner.
+    # No install, Docker, external URL or service-default database is involved.
+    import bootstrap_smoke as bootstrap
+    import migration_smoke as migration
+    selected = []
+    finished = False
+    for line in metadata.read_text().splitlines():
+        row = json.loads(line)
+        if row.get('reason') == 'build-finished':
+            bootstrap.require(row.get('success') is True, 'Cargo build failed')
+            finished = True
+        if (row.get('reason') == 'compiler-artifact' and row.get('executable')
+                and row['target']['name'] == 'bootstrap' and 'test' in row['target']['kind']
+                and Path(row['manifest_path']).resolve() == builder.ROOT / 'backend/services/concert-service/Cargo.toml'):
+            selected.append(Path(row['executable']).resolve())
+    bootstrap.require(finished and len(set(selected)) == 1, 'exact service bootstrap artifact required')
+    receipt = json.loads(pinned_binaries.read_text())
+    matches = [row for row in receipt['artifacts']
+               if row['package'] == 'concert-service'
+               and Path(row['manifest_path']).resolve() == builder.ROOT / 'backend/services/concert-service/Cargo.toml'
+               and Path(row['compiler_executable']).resolve() == selected[0]]
+    bootstrap.require(len(matches) == 1, 'exact frozen compiler artifact required')
+    row = matches[0]
+    binary = migration.executable(Path(row['snapshot']))
+    bootstrap.require(hashlib.sha256(binary.read_bytes()).hexdigest() == row['sha256'], 'frozen checksum mismatch')
+    tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
+    cluster = migration.Cluster(tools)
+    report = {'state': 'FAIL', 'commands': {}, 'source_commit': receipt['source_commit'],
+              'binary_sha256': row['sha256'], 'geometry_hash': builder.GEOMETRY_HASH,
+              'art_commit': builder.ART_COMMIT, 'admission': 'NOT_ADMITTED'}
+    def interrupted(number, _frame):
+        raise migration.SmokeError('signal', f'interrupted by signal {number}')
+    previous = {number: signal.signal(number, interrupted) for number in (signal.SIGINT, signal.SIGTERM)}
+    try:
+        cluster.init(); cluster.start()
+        report['postgres_version'] = cluster.sql('postgres', 'show server_version;')
+        bootstrap.require(report['postgres_version'].startswith('16.14'), 'PostgreSQL16.14 required')
+        cluster.sql('postgres', 'create database mcr_concert_bootstrap template template0;')
+        report['migration_sha384'] = migration.migration_manifest(builder.ROOT / 'backend', 'concert-service')
+        for path in sorted((builder.ROOT / 'backend/services/concert-service/migrations').glob('*.sql')):
+            if not path.name.endswith('.down.sql'):
+                cluster.sql(bootstrap.DATABASE, path.read_text())
+                report['commands'][path.name] = 0
+        bootstrap.run_test(cluster, binary, 'native_spatial_candidate_transactions', report)
+        before = cluster.assert_postmaster(); cluster.stop(); cluster.start()
+        after = cluster.assert_postmaster()
+        bootstrap.require(before != after, 'postmaster did not restart')
+        report['restart'] = {'before_pid': before, 'after_pid': after}
+        bootstrap.run_test(cluster, binary, 'native_spatial_candidate_restart', report)
+        report['native_tests'] = 2
+        report['state'] = 'PASS'
+    except (migration.SmokeError, OSError, ValueError, subprocess.SubprocessError) as error:
+        report['error'] = error.detail if isinstance(error, migration.SmokeError) else type(error).__name__
+    finally:
+        try:
+            cluster.cleanup()
+            bootstrap.require(not cluster.root.exists(), 'owned cluster remains')
+            report['cleanup'] = 'PASS'
+        except (migration.SmokeError, OSError) as error:
+            report['state'] = 'FAIL'; report['cleanup'] = 'FAIL'
+            report['cleanup_error'] = error.detail if isinstance(error, migration.SmokeError) else type(error).__name__
+        for number, handler in previous.items():
+            signal.signal(number, handler)
+    return report
+
+
 if __name__ == '__main__':
+    if '--native' in sys.argv:
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument('--native', action='store_true')
+        parser.add_argument('--build-metadata', type=Path, required=True)
+        parser.add_argument('--pg-bin', type=Path, required=True)
+        parser.add_argument('--pinned-binaries', type=Path, required=True)
+        args = parser.parse_args()
+        report = run_native(args.build_metadata, args.pg_bin, args.pinned_binaries)
+        print(json.dumps(report, sort_keys=True))
+        raise SystemExit(0 if report['state'] == 'PASS' else 1)
     unittest.main()

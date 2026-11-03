@@ -1,4 +1,5 @@
 {
+  "art_commit": "e3af146ae4757794ca153363fd1408300ffde29e",
   "format": "MCR_SOURCE_BOUND_SPATIAL_RELEASE",
   "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
   "geometry_source": {
@@ -11,37 +12,47 @@
   "map_revision": 1,
   "runtime_resources": [
     {
-      "bytes": 1020224,
+      "bytes": 693939,
       "height_px": 1296,
-      "path": "world/reference-scene-v2/painted/parade-ground.png",
-      "sha256": "sha256:a6677d717766b585221b3c30ad058592eb9fae7e793ea14298fb30c914b6de2d",
+      "path": "world/reference-scene-v2/runtime-v4/parade-ground.png",
+      "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
       "width_px": 768
     },
     {
-      "bytes": 2159443,
-      "height_px": 1254,
-      "path": "world/reference-scene-v2/painted/parade-source-atlas-v3.png",
-      "sha256": "sha256:4a93f18cd55b66f3c09853f01e7fc78b88da8593298e4758738ff73e1e73ea2c",
-      "width_px": 1254
+      "bytes": 1253878,
+      "height_px": 1024,
+      "path": "world/reference-scene-v2/runtime-v4/parade-atlas.png",
+      "sha256": "sha256:ff68a358fad4e03ceaaf5fd610a9e6cdad9a167963e3ec00545c909ba6bb0dfe",
+      "width_px": 1024
     }
   ],
   "scene_sources": [
     {
-      "bytes": 17653,
-      "path": "world/reference-scene-v2/painted/layout.json",
-      "sha256": "sha256:29d5e131d6ad342265d937571d3ed7c5591a900984f7e81bde2e2dbd5df939e1"
+      "bytes": 16795,
+      "path": "world/reference-scene-v2/runtime-v4/parade-layout.json",
+      "sha256": "sha256:99bb3318fbfed6f82b88f05d0c501c9dd7667b8426bbf6ec661765b5cfc72985"
     },
     {
-      "bytes": 2240,
-      "path": "world/reference-scene-v2/painted/resource-inputs.json",
-      "sha256": "sha256:8aac2992b9fea5d8ae209cdd9d10aa3aa081614e24680b085f40225b4a0efb48"
+      "bytes": 7969,
+      "path": "world/reference-scene-v2/runtime-v4/parade-resource-inputs.json",
+      "sha256": "sha256:e75180cd99cca6ac3b32592188061aee32a8dd71994e40141d981f80821549ae"
     },
     {
-      "bytes": 2266,
-      "path": "world/reference-scene-v2/painted/provenance.json",
-      "sha256": "sha256:68313f98fed95fe0d428e0e1401f4ac8d8980d0f02ec1a5e0f4870434a5b5b21"
+      "bytes": 17116,
+      "path": "world/reference-scene-v2/runtime-v4/parade-integer-projection.json",
+      "sha256": "sha256:0fcdae9b173e2dfcc7c5b1f852b8f93bbeca025951c5d27a9a174a740f662fde"
+    },
+    {
+      "bytes": 7419,
+      "path": "world/reference-scene-v2/runtime-v4/parade-map-metadata.json",
+      "sha256": "sha256:0c02f23d572b521ca19d06c168aa77a09377eaf4b2825435dcf9d4e21a25c184"
     }
   ],
+  "scenery_source": {
+    "bytes": 6952,
+    "path": "world/reference-scene-v2/runtime-v4/parade-scenery.json",
+    "sha256": "sha256:53d4b4cf6e580de724053cd1d6ff11b87ef77b56fa4d5399f294a63c0a4b4594"
+  },
   "source_commit": "8f89d1905a86143d34ff77d2951fc60651ab2497",
   "version": 1
 }

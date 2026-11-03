@@ -37,11 +37,13 @@ struct Binding {
     format: String,
     version: u32,
     source_commit: String,
+    art_commit: String,
     map_id: String,
     map_revision: i64,
     map_content_hash: String,
     geometry_hash: String,
     geometry_source: FilePin,
+    scenery_source: FilePin,
     scene_sources: Vec<FilePin>,
     runtime_resources: Vec<ImagePin>,
 }
@@ -55,6 +57,7 @@ struct ProposalGeometry {
 pub struct SourceBoundSpatialCandidate {
     pub catalog: CatalogRelease,
     pub source_commit: String,
+    pub art_commit: String,
     pub scenery_bytes: u64,
     pub scenery_pixels: u64,
     pub scenery_within_budget: bool,
@@ -71,6 +74,12 @@ fn invalid(_: impl std::fmt::Debug) -> Error {
 }
 fn digest(bytes: &[u8]) -> String {
     format!("sha256:{:x}", Sha256::digest(bytes))
+}
+fn revision(value: &str) -> bool {
+    value.len() == 40
+        && value
+            .bytes()
+            .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
 }
 fn read(path: &Path) -> Result<Vec<u8>, Error> {
     let file = fs::File::open(path).map_err(invalid)?;
@@ -137,11 +146,8 @@ fn load(
     ensure(
         binding.format == "MCR_SOURCE_BOUND_SPATIAL_RELEASE"
             && binding.version == 1
-            && binding.source_commit.len() == 40
-            && binding
-                .source_commit
-                .bytes()
-                .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
+            && revision(&binding.source_commit)
+            && revision(&binding.art_commit)
             && !binding.scene_sources.is_empty()
             && !binding.runtime_resources.is_empty()
             && binding.scene_sources.len() <= 32
@@ -176,12 +182,38 @@ fn load(
         binding.geometry_source.path.clone(),
         binding.geometry_source.sha256.clone(),
     );
+    let scenery =
+        super::json::parse(&verify_file(root, &binding.scenery_source)?).map_err(invalid)?;
+    ensure(
+        paths
+            .insert(
+                binding.scenery_source.path.clone(),
+                binding.scenery_source.sha256.clone(),
+            )
+            .is_none(),
+    )?;
+    let descriptors = std::iter::once(&scenery["ground"])
+        .chain(
+            scenery["atlases"]
+                .as_array()
+                .ok_or(Error::ReleaseUnavailable)?
+                .iter(),
+        )
+        .collect::<Vec<_>>();
+    ensure(descriptors.len() == binding.runtime_resources.len())?;
     for pin in &binding.scene_sources {
         ensure(paths.insert(pin.path.clone(), pin.sha256.clone()).is_none())?;
         verify_file(root, pin)?;
     }
     let (mut bytes, mut pixels) = (0u64, 0u64);
-    for pin in &binding.runtime_resources {
+    for (pin, descriptor) in binding.runtime_resources.iter().zip(descriptors) {
+        ensure(
+            descriptor["path"] == pin.path
+                && descriptor["sha256"] == pin.sha256
+                && descriptor["bytes"] == pin.bytes
+                && descriptor["width_px"] == pin.width_px
+                && descriptor["height_px"] == pin.height_px,
+        )?;
         ensure(paths.insert(pin.path.clone(), pin.sha256.clone()).is_none())?;
         let raw = verify_file(
             root,
@@ -206,6 +238,7 @@ fn load(
     let candidate = SourceBoundSpatialCandidate {
         catalog,
         source_commit: binding.source_commit.clone(),
+        art_commit: binding.art_commit.clone(),
         scenery_bytes: bytes,
         scenery_pixels: pixels,
         scenery_within_budget: bytes <= SCENERY_BUDGET && pixels <= SCENERY_BUDGET,
@@ -240,6 +273,13 @@ pub(super) fn validate_product(
     let themes = doc["theme_manifests"]
         .as_array()
         .ok_or(Error::ReleaseUnavailable)?;
+    let supplied_scenery =
+        super::json::parse(&verify_file(root, &binding.scenery_source)?).map_err(invalid)?;
+    let parade = themes
+        .iter()
+        .find(|t| t["theme_id"] == "PARADE")
+        .ok_or(Error::ReleaseUnavailable)?;
+    ensure(parade["scenery"] == supplied_scenery)?;
     let mut scenery_resources = BTreeMap::new();
     for theme in themes {
         textures.push(&theme["texture"]);
@@ -446,4 +486,86 @@ fn validate_tiled(tiled: &Value, geometry: &Value, themes: &[Value]) -> Result<(
         )?;
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json::json;
+
+    fn tiled_fixture() -> (Value, Value, Vec<Value>) {
+        let geometry = json!({"width_cells":2,"height_cells":1,"tile_width_px":16,"tile_height_px":16,
+            "terrain_layer":[[1,2]],"collision_grid":[[0,1]],"overdraw_layer":[[0,0]]});
+        let layers = [
+            ("terrain", vec![1, 2]),
+            ("collision", vec![0, 1]),
+            ("overdraw", vec![0, 0]),
+        ]
+        .into_iter()
+        .enumerate()
+        .map(|(i, (name, data))| {
+            json!({"id":i+1,"name":name,
+                "type":"tilelayer","width":2,"height":1,"x":0,"y":0,"opacity":1,
+                "visible":true,"data":data})
+        })
+        .collect::<Vec<_>>();
+        let tiled = json!({"type":"map","orientation":"orthogonal","renderorder":"right-down",
+            "infinite":false,"version":"1.10","tiledversion":"1.10.2","width":2,"height":1,
+            "tilewidth":16,"tileheight":16,"layers":layers,"tilesets":[{"firstgid":1,
+            "name":"theme","image":"mcr-theme.png","imagewidth":32,"imageheight":16,
+            "tilewidth":16,"tileheight":16,"tilecount":2,"columns":2,"margin":0,"spacing":0}]});
+        let themes = ["PARADE","REVENGE","DANGER"].into_iter().map(|id|
+            json!({"theme_id":id,"texture":{"path":format!("themes/{id}.png"),"width_px":32,"height_px":16}})).collect();
+        (tiled, geometry, themes)
+    }
+    #[test]
+    fn finite_tiled_preserves_all_three_canonical_grids_and_theme_marker() {
+        let (tiled, geometry, themes) = tiled_fixture();
+        validate_tiled(&tiled, &geometry, &themes).unwrap();
+        for (pointer, value) in [
+            ("/layers/0/data/0", json!(2)),
+            ("/layers/1/data/1", json!(0)),
+            ("/layers/2/data/0", json!(1)),
+            ("/layers/1/id", json!(1)),
+            ("/layers/0/name", json!("objects")),
+            ("/layers/0/x", json!(1)),
+            ("/infinite", json!(true)),
+            ("/width", json!(3)),
+            (
+                "/tilesets/0/image",
+                json!("https://remote.invalid/tile.png"),
+            ),
+            ("/tilesets/0/columns", json!(1)),
+            ("/tilesets/0/tilecount", json!(3)),
+            ("/tilesets/0/spacing", json!(1)),
+        ] {
+            let mut invalid = tiled.clone();
+            *invalid.pointer_mut(pointer).unwrap() = value;
+            assert!(
+                validate_tiled(&invalid, &geometry, &themes).is_err(),
+                "{pointer}"
+            );
+        }
+        let mut invalid = tiled.clone();
+        invalid["properties"] = json!([]);
+        assert!(validate_tiled(&invalid, &geometry, &themes).is_err());
+        let mut invalid = themes.clone();
+        invalid[2]["texture"]["width_px"] = json!(48);
+        assert!(validate_tiled(&tiled, &geometry, &invalid).is_err());
+    }
+    #[test]
+    fn image_header_and_actual_hash_dimensions_are_required() {
+        let mut png = vec![0; 33];
+        png[..16].copy_from_slice(b"\x89PNG\r\n\x1a\n\0\0\0\rIHDR");
+        png[16..20].copy_from_slice(&16u32.to_be_bytes());
+        png[20..24].copy_from_slice(&32u32.to_be_bytes());
+        let texture = json!({"sha256":digest(&png),"width_px":16,"height_px":32});
+        verify_texture(&texture, &png).unwrap();
+        let mut changed = png.clone();
+        changed[32] = 1;
+        assert!(verify_texture(&texture, &changed).is_err());
+        assert!(dimensions(&png[..24]).is_err());
+        png[16..20].copy_from_slice(&0u32.to_be_bytes());
+        assert!(dimensions(&png).is_err());
+    }
 }

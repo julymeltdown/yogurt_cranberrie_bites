@@ -31,13 +31,15 @@ Product API root confirmed the exact scope directly; World confirmed no overlap:
 
 No World/config/0026, frontend, art originals, shared schemas/contracts/protos,
 manifests/lockfiles, migrations, root bindings or static URL mapping is owned here.
-No build slot or native database is currently held. The separate bounded avatar
+BACKEND was explicitly granted and accepted for the source-ready compile/freeze slice;
+no native database has started. No MEDIA or third target is used. The separate bounded avatar
 transaction hook is coordinated with participant and authority owners, not granted
 implicitly by this spatial scope.
 
 Artist source: `8f89d1905a86143d34ff77d2951fc60651ab2497`,
 `frontend/public/world/reference-scene-v2/ADOPTION.md`, geometry proposal v2,
-painted layout/resources v3. One geometry: 48×81 cells, 16×16 pixels,
+painted layout/resources v3. The compact runtime derivative is separately pinned to
+`e3af146ae4757794ca153363fd1408300ffde29e`, under `runtime-v4/`; frozen sources remain unchanged. One geometry: 48×81 cells, 16×16 pixels,
 768×1296 virtual pixels, top-left origin. Canonical geometry hash:
 `sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5`.
 The four existing interaction/place UUID pairs and place qualification are copied
@@ -59,9 +61,19 @@ NOT_PROVIDED with null path/hash. No frontend URL is fabricated for backend outp
 
 Readiness is NOT_ADMITTED: painted REVENGE and DANGER are unavailable; PARADE is
 only a source proposal; source provenance is unreviewed; the Tiled resource and
-product bootstrap/operator configuration are missing. Actual PARADE runtime input
-is 3,179,667 bytes and 2,567,844 pixels, above existing C06 per-scene limits of
-2,097,152 bytes/pixels. Authored fractional depth coordinates also need an explicit
-artist-owned integer C06 projection. The artist is preparing a versioned bounded
-runtime derivative while preserving frozen originals. No schema budget was widened.
+product bootstrap/operator configuration are missing. The compact PARADE runtime input
+is 1,947,817 bytes and 2,043,904 pixels, below existing C06 per-scene limits of
+2,097,152 bytes/pixels. The exact artist-owned integer projection and all 22 WORLD
+objects are pinned through the closed C06 scenery file. Six MAP representations
+remain noncolliding metadata. No schema budget was widened.
 Full fidelity and application/server multiuser acceptance remain open.
+
+## Validation checkpoint
+
+Six source/candidate Python tests, exact builder `--check`, Rust 1.88 formatting
+and `git diff --check` passed. Rust compilation and native PostgreSQL tests are
+NOT_RUN at this checkpoint. The scoped harness requires an exact frozen Cargo
+artifact/receipt, creates its own marker/inode-owned PG16.14 cluster over private
+Unix sockets, applies real migrations, runs canonical-byte/virtual-eligibility
+checks, restarts the postmaster, verifies persistence, then removes its own cluster.
+This is component evidence; it does not activate an operator release.

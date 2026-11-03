@@ -770,6 +770,6 @@ async fn native_spatial_candidate_restart() {
     let candidate = source_spatial_candidate();
     assert_eq!(read.release, candidate.catalog);
     assert_eq!(read.places.len(), 4);
-    assert!(!candidate.scenery_within_budget);
+    assert!(candidate.scenery_within_budget);
     pool.close().await;
 }
