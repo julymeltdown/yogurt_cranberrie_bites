@@ -175,3 +175,4 @@ pub mod rally;
 pub mod feed;
 
 pub mod avatar;
+pub mod world_ticket;
