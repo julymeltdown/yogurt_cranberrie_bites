@@ -1,4 +1,5 @@
 pub mod outbox;
+pub mod place;
 pub mod receipt;
 
 use async_trait::async_trait;

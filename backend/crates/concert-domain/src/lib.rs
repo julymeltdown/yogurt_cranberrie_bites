@@ -1,4 +1,5 @@
 //! Pure Concert values. Auth UUIDs are references, never a second identity store.
+pub mod place;
 use chrono::{DateTime, Utc};
 use std::str::FromStr;
 use uuid::Uuid;
