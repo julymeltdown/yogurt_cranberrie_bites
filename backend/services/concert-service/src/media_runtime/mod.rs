@@ -1,5 +1,6 @@
 //! Request-bound uploader-only media runtime. No public/link authority is implied.
 //! Production composition must supply a qualified canonical Auth owner fence.
+pub mod settlement;
 mod wire;
 use crate::adapters::out::media::{MediaAuthority, PgMedia, PrivateImage};
 use async_trait::async_trait;
@@ -111,6 +112,9 @@ pub trait OwnerMediaGuard: Send + Sync {
     fn binding_digest(&self) -> [u8; 32];
     /// Stable owner security revision, not a newly minted observation counter.
     fn authority_revision(&self) -> i64;
+    /// Before returning success, durably register the actual connection transaction
+    /// identity with the canonical scope (see settlement::MediaTransactionIdentity).
+    /// Registration/quarantine must survive cancellation; never release on absence.
     async fn authorize_in(
         &self,
         connection: &mut PgConnection,

@@ -198,6 +198,15 @@ async fn binding_digest_covers_body_session_request_deadline_key_and_target() {
                 .digest()
         );
     }
+    let mut spaced = b.clone();
+    spaced.push(b' ');
+    assert_ne!(
+        a.binding().digest(),
+        request(i, "initConcertUpload", key, None, spaced)
+            .unwrap()
+            .binding()
+            .digest()
+    );
     assert_ne!(
         a.binding().digest(),
         request(i, "initConcertUpload", Uuid::new_v4(), None, b)
@@ -205,6 +214,29 @@ async fn binding_digest_covers_body_session_request_deadline_key_and_target() {
             .binding()
             .digest()
     );
+}
+#[tokio::test]
+async fn expired_original_request_never_acquires_authority_or_database() {
+    let hits = Arc::new(AtomicUsize::new(0));
+    let pool = sqlx::postgres::PgPoolOptions::new()
+        .connect_lazy("postgres://unused:unused@127.0.0.1:1/never_connect")
+        .unwrap();
+    let s = runtime(pool, Arc::new(DeniedFence(hits.clone())));
+    let i = OwnerMediaIdentity {
+        deadline: AuthorityRpcDeadline::new(
+            Utc::now().timestamp_micros() + 50_000,
+            Duration::from_secs(1),
+        )
+        .unwrap(),
+        ..identity()
+    };
+    let r = request(i, "initConcertUpload", Uuid::new_v4(), None, init(&png())).unwrap();
+    tokio::time::sleep(Duration::from_millis(60)).await;
+    assert!(matches!(
+        s.dispatch(r).await,
+        Err(CommandError::Unavailable)
+    ));
+    assert_eq!(hits.load(Ordering::SeqCst), 0);
 }
 struct DeniedFence(Arc<AtomicUsize>);
 #[async_trait]
@@ -592,4 +624,30 @@ async fn native_wrong_owner_read_only_suspension_and_failed_bytes_leave_no_effec
         Err(CommandError::Denied)
     ));
     clean(p, i).await;
+}
+
+#[tokio::test]
+async fn native_transaction_settlement_proves_terminal_xid_not_backend_absence() {
+    use media_runtime::settlement::*;
+    let p = owner_media_live_support::owned_pool().await.unwrap();
+    let mut tx = p.begin().await.unwrap();
+    let committed = MediaTransactionIdentity::capture_in(&mut tx).await.unwrap();
+    assert_eq!(
+        transaction_state(&p, &committed).await,
+        MediaTransactionState::InProgress
+    );
+    tx.commit().await.unwrap();
+    assert_eq!(
+        transaction_state(&p, &committed).await,
+        MediaTransactionState::Committed
+    );
+    let mut tx = p.begin().await.unwrap();
+    let aborted = MediaTransactionIdentity::capture_in(&mut tx).await.unwrap();
+    tx.rollback().await.unwrap();
+    assert_eq!(
+        transaction_state(&p, &aborted).await,
+        MediaTransactionState::Aborted
+    );
+    assert_ne!(committed.xid(), aborted.xid());
+    p.close().await;
 }
