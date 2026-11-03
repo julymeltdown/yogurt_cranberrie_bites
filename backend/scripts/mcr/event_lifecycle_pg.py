@@ -35,7 +35,9 @@ def driver_suite(binary, pin):
     if shutil.disk_usage(ROOT).free < 8*1024**3: raise RuntimeError('8 GiB floor required')
     binary=migration.executable(binary)
     names=['event_lifecycle::read_only::tests::native_driver_rollback_recovery_commit_and_replay',
-           'event_lifecycle::read_only::tests::native_driver_drains_inflight_socket_before_composite_commit']
+           'event_lifecycle::read_only::tests::native_driver_drains_inflight_socket_before_composite_commit',
+           'event_lifecycle::read_only::tests::native_driver_revocation_while_delivery_wait_keeps_world_views',
+           'event_lifecycle::read_only::tests::native_driver_expiry_while_native_wait_keeps_world_views']
     listing=run([str(binary),'--list']).stdout
     if any(name+': test' not in listing for name in names): raise AssertionError('Driver tests absent')
     cluster=migration.Cluster(tools)

@@ -211,20 +211,26 @@ impl<A: FencedLifecycleAuthority, N: LifecycleOwners> ReadOnlyCommandDriver<A, N
             prepared,
         })
     }
-    /// Preflight cannot authorize durable effects. It only prevents an unauthorized
-    /// or already-stale caller from installing a process-wide removal fence.
-    /// The BE15 producer repeats current authorization/revision checks under SQL.
-    async fn needs_preparation(
+    /// Called only AFTER the delivery gate. Retain actual event/authority locks
+    /// until the guarded native fence mutates views; expiry is checked inside
+    /// that same native critical section. The BE15 producer reauthorizes later.
+    async fn preparation_authority(
         &self,
         actor: Actor,
         key: Uuid,
         command: &CloseCommand,
-    ) -> Result<bool, CommandError> {
+    ) -> Result<
+        Option<(
+            sqlx::Transaction<'static, sqlx::Postgres>,
+            std::time::Instant,
+        )>,
+        CommandError,
+    > {
         let CloseCommand::Start {
             expected_revision, ..
         } = command
         else {
-            return Ok(false);
+            return Ok(None);
         };
         let target = start_job_id(actor, key);
         let mut tx = self.service.pool.begin().await.map_err(unavailable)?;
@@ -241,9 +247,24 @@ impl<A: FencedLifecycleAuthority, N: LifecycleOwners> ReadOnlyCommandDriver<A, N
         .await?;
         let exists: bool = sqlx::query_scalar("select exists(select 1 from concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id='closeConcertEvent' and idempotency_key=$3)")
             .bind(actor.actor).bind(actor.event).bind(key).fetch_one(&mut *tx).await.map_err(unavailable)?;
-        finish(&mut tx).await?;
-        tx.commit().await.map_err(unavailable)?;
-        Ok(!exists && matches!(phase.as_str(), "OPEN" | "LIVE") && revision == *expected_revision)
+        if exists || !matches!(phase.as_str(), "OPEN" | "LIVE") || revision != *expected_revision {
+            tx.rollback().await.map_err(unavailable)?;
+            return Ok(None);
+        }
+        // Anchor BEFORE the DB query: subtracting its server clock from the
+        // server deadline then adding to this earlier monotonic instant cannot
+        // extend authority by network/SQL scheduling latency or local UTC skew.
+        let observed = std::time::Instant::now();
+        let (at, until): (DateTime<Utc>, DateTime<Utc>) = sqlx::query_as(
+            "select clock_timestamp(),nullif(current_setting('mcr.lifecycle_authority_until',true),'')::timestamptz"
+        ).fetch_one(&mut *tx).await.map_err(unavailable)?;
+        let remaining = (until - at)
+            .to_std()
+            .map_err(|_| CommandError::Unavailable)?;
+        let deadline = observed
+            .checked_add(remaining)
+            .ok_or(CommandError::Unavailable)?;
+        Ok(Some((tx, deadline)))
     }
     pub async fn command(
         &self,
@@ -256,23 +277,29 @@ impl<A: FencedLifecycleAuthority, N: LifecycleOwners> ReadOnlyCommandDriver<A, N
         if actor.event != self.event {
             return Err(CommandError::Denied);
         }
-        if !self.needs_preparation(actor, key, &command).await? {
+        let _delivery = self.bridge.invalidation_delivery_gate().lock().await;
+        let Some((tx, deadline)) = self.preparation_authority(actor, key, &command).await? else {
             // Exact replay/conflicts and RESUME retain canonical BE15 behavior.
             // A new START racing back to OPEN without preparation fails closed.
             return self.service.command(actor, key, command, keys).await;
-        }
+        };
         let effect = EffectKey {
             event: actor.event,
             job: start_job_id(actor, key),
             step: Step::ReadOnly,
         };
         let operation = effect.operation_id();
-        // Order shared with World invalidation. Absolutely no SQL transaction is
-        // held while entering these gates, and no native mutex spans an await.
-        let _delivery = self.bridge.invalidation_delivery_gate().lock().await;
-        self.bridge
-            .begin_invalidation(operation, Removal::Scope(RemovalScope::Event(actor.event)))
-            .map_err(|_| CommandError::Unavailable)?;
+        // Authority locks remain held during the synchronous native mutation.
+        // No SQL transaction is held when entering either asynchronous gate.
+        // World checks the monotonic deadline AFTER acquiring its native/views
+        // locks, so expiration while waiting cannot evict any view or add a marker.
+        let prepared = self.bridge.begin_invalidation_if(
+            operation,
+            Removal::Scope(RemovalScope::Event(actor.event)),
+            || std::time::Instant::now() < deadline,
+        );
+        tx.rollback().await.map_err(unavailable)?;
+        prepared.map_err(|_| CommandError::Unavailable)?;
         let _admission = self.bridge.invalidation_admission_gate().lock().await;
         self.bridge
             .pause_invalidation()
@@ -708,6 +735,192 @@ mod tests {
         tokio::time::timeout(Duration::from_secs(2), task).await??;
         let _ = stop.send(());
         tokio::time::timeout(Duration::from_secs(2), server).await??;
+        s.finish().await
+    }
+    struct RaceAuthority {
+        allowed: Arc<std::sync::atomic::AtomicBool>,
+        checks: Arc<std::sync::atomic::AtomicUsize>,
+        short: bool,
+    }
+    #[async_trait]
+    impl FencedLifecycleAuthority for RaceAuthority {
+        async fn check_in(
+            &self,
+            c: &mut PgConnection,
+            q: AuthorityQuery,
+            now: DateTime<Utc>,
+        ) -> Result<AuthorityFence, CommandError> {
+            use std::sync::atomic::Ordering;
+            self.checks.fetch_add(1, Ordering::Release);
+            if !self.allowed.load(Ordering::Acquire) {
+                return Err(CommandError::Denied);
+            }
+            let mut fence = qualified::OperatorFixture.check_in(c, q, now).await?;
+            if self.short {
+                fence.expires_at = now + chrono::TimeDelta::milliseconds(60);
+            }
+            Ok(fence)
+        }
+        async fn retention_in(
+            &self,
+            c: &mut PgConnection,
+            a: Actor,
+            at: DateTime<Utc>,
+        ) -> Result<Retention, CommandError> {
+            qualified::OperatorFixture.retention_in(c, a, at).await
+        }
+    }
+    async fn race_view(
+        s: &qualified::Stack,
+        seed: u8,
+    ) -> anyhow::Result<crate::world::simulation::Binding> {
+        let intent = qualified::ticket(
+            &s.repo(),
+            &s.subject,
+            s.room,
+            s.anchor.utc + chrono::TimeDelta::seconds(60),
+            seed,
+        )
+        .await?;
+        let binding = s
+            .bridge
+            .admit(intent, Uuid::new_v4())
+            .await
+            .map_err(|_| anyhow::anyhow!("qualified race admission"))?;
+        CanonicalAuthorityPort::install_pending(&s.bridge, &binding, s.now()).unwrap();
+        assert!(CanonicalAuthorityPort::publication_ready(
+            &s.bridge, &binding
+        ));
+        Ok(binding)
+    }
+    #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+    #[ignore = "requires marker-owned four-owner authorization-race controller"]
+    async fn native_driver_revocation_while_delivery_wait_keeps_world_views() -> anyhow::Result<()>
+    {
+        Box::pin(revoked_delivery()).await
+    }
+    async fn revoked_delivery() -> anyhow::Result<()> {
+        use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+        use std::time::Duration;
+        println!("BE41_SOURCE_PIN={}", owned_source_pin());
+        let s = qualified::Stack::new().await?;
+        let binding = race_view(&s, 145).await?;
+        let allowed = Arc::new(AtomicBool::new(true));
+        let checks = Arc::new(AtomicUsize::new(0));
+        let driver = ReadOnlyCommandDriver::new(
+            RaceAuthority {
+                allowed: allowed.clone(),
+                checks: checks.clone(),
+                short: false,
+            },
+            LaterUnavailable,
+            s.bridge.clone(),
+        )
+        .unwrap();
+        let gate = s.bridge.invalidation_delivery_gate().lock().await;
+        let actor = qualified::actor(&s);
+        let began = Arc::new(AtomicBool::new(false));
+        let command = {
+            let began = began.clone();
+            tokio::spawn(async move {
+                began.store(true, Ordering::Release);
+                driver
+                    .command(
+                        actor,
+                        Uuid::new_v4(),
+                        qualified::start(),
+                        &qualified::keys(),
+                    )
+                    .await
+            })
+        };
+        while !began.load(Ordering::Acquire) {
+            tokio::task::yield_now().await;
+        }
+        tokio::time::sleep(Duration::from_millis(25)).await;
+        assert_eq!(
+            checks.load(Ordering::Acquire),
+            0,
+            "authority must be read after waiting for delivery gate"
+        );
+        allowed.store(false, Ordering::Release);
+        drop(gate);
+        assert!(matches!(
+            tokio::time::timeout(Duration::from_secs(2), command).await??,
+            Err(CommandError::Denied)
+        ));
+        assert!(CanonicalAuthorityPort::publication_ready(
+            &s.bridge, &binding
+        ));
+        assert!(CanonicalAuthorityPort::current(&s.bridge, &binding, s.now()).is_ok());
+        let phase: String =
+            sqlx::query_scalar("select phase from concert_events where event_id=$1")
+                .bind(actor.event)
+                .fetch_one(&s.concert)
+                .await?;
+        assert_eq!(phase, "OPEN");
+        s.finish().await
+    }
+    #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+    #[ignore = "requires marker-owned four-owner authorization-race controller"]
+    async fn native_driver_expiry_while_native_wait_keeps_world_views() -> anyhow::Result<()> {
+        Box::pin(expired_native()).await
+    }
+    async fn expired_native() -> anyhow::Result<()> {
+        use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+        use std::time::{Duration, Instant};
+        println!("BE41_SOURCE_PIN={}", owned_source_pin());
+        let s = qualified::Stack::new().await?;
+        let binding = race_view(&s, 146).await?;
+        let allowed = Arc::new(AtomicBool::new(true));
+        let checks = Arc::new(AtomicUsize::new(0));
+        let driver = ReadOnlyCommandDriver::new(
+            RaceAuthority {
+                allowed,
+                checks: checks.clone(),
+                short: true,
+            },
+            LaterUnavailable,
+            s.bridge.clone(),
+        )
+        .unwrap();
+        let fence = s.owners.fence();
+        let (held, holding) = std::sync::mpsc::channel();
+        let blocker = {
+            let checks = checks.clone();
+            std::thread::spawn(move || {
+                let _fence = fence.lock().unwrap();
+                held.send(()).unwrap();
+                let began = Instant::now();
+                while checks.load(Ordering::Acquire) == 0 {
+                    assert!(began.elapsed() < Duration::from_secs(1));
+                    std::thread::sleep(Duration::from_millis(1));
+                }
+                std::thread::sleep(Duration::from_millis(160));
+            })
+        };
+        holding.recv_timeout(Duration::from_secs(1))?;
+        let result = driver
+            .command(
+                qualified::actor(&s),
+                Uuid::new_v4(),
+                qualified::start(),
+                &qualified::keys(),
+            )
+            .await;
+        blocker.join().unwrap();
+        assert!(matches!(result, Err(CommandError::Unavailable)));
+        assert!(
+            CanonicalAuthorityPort::publication_ready(&s.bridge, &binding),
+            "expired native wait cannot remove views or add a pending marker"
+        );
+        assert!(CanonicalAuthorityPort::current(&s.bridge, &binding, s.now()).is_ok());
+        let phase: String =
+            sqlx::query_scalar("select phase from concert_events where event_id=$1")
+                .bind(s.event.uuid())
+                .fetch_one(&s.concert)
+                .await?;
+        assert_eq!(phase, "OPEN");
         s.finish().await
     }
 }

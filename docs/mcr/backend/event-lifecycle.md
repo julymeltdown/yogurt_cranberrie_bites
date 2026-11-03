@@ -1,6 +1,13 @@
 # BE41 event lifecycle — implementation and qualification record
 
-## READ_ONLY increment — native-qualified, full BE41 still IN_PROGRESS
+## READ_ONLY increment — authorization-race fix awaiting native qualification
+
+The earlier 21-native/23-SQL/6-pure run below is historical for source `3d65e251`.
+A subsequent owner-found authorization race is being fixed: retain actual authority
+SQL locks after the delivery wait, check conservative monotonic expiry under both
+World native/views mutexes before any mutation, then release SQL before admission
+gate/drain. World API source `e4685896` + `98235424` is consumed. Two deterministic
+race tests are authored; this revised source is NOT_RUN until recompilation.
 
 The bounded READ_ONLY increment implements actual World/community closure in one
 transaction and qualifies the native command driver. It is **INTEGRATED** within
