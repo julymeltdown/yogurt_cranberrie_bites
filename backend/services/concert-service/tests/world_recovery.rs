@@ -971,3 +971,66 @@ fn displaced_owner_cleanup_history_is_bounded_before_destination_admission() {
     assert_eq!(book.pending_cleanup_count(), 1);
     assert!(book.stream_mut(&second).is_ok());
 }
+#[test]
+fn disconnect_with_wrong_owner_retains_cleanup_and_cannot_orphan_membership() {
+    let (mut book, mut actual, b, a, _) = setup();
+    book.activate(
+        b.clone(),
+        deadline(),
+        SnapshotCause::Initial,
+        "spawn_test",
+        0,
+        &a,
+        &mut actual,
+    )
+    .unwrap();
+    let mut wrong = simulation(&binding(12));
+    assert!(book.disconnect(&b, &mut wrong));
+    assert_eq!(book.len(), 0);
+    assert_eq!(book.pending_cleanup_count(), 1);
+    assert_eq!(actual.player_count(), 1);
+    assert_eq!(
+        book.retry_cleanup(|binding| actual.remove(binding)),
+        vec![b]
+    );
+    assert_eq!(book.pending_cleanup_count(), 0);
+    assert_eq!(actual.player_count(), 0);
+}
+#[test]
+fn one_transport_connection_cannot_acquire_subscriptions_for_multiple_principals_or_events() {
+    let (mut book, mut first, b, a, _) = setup();
+    book.activate(
+        b.clone(),
+        deadline(),
+        SnapshotCause::Initial,
+        "spawn_test",
+        0,
+        &a,
+        &mut first,
+    )
+    .unwrap();
+    for event_change in [false, true] {
+        let mut second = binding(11);
+        second.connection_id = b.connection_id;
+        if event_change {
+            second.key.event_id = EventId::from_uuid(id(900));
+        }
+        a.grant(&second, 5000, 10000);
+        let mut destination = simulation(&second);
+        assert_eq!(
+            book.activate(
+                second,
+                deadline(),
+                SnapshotCause::Initial,
+                "spawn_test",
+                0,
+                &a,
+                &mut destination
+            ),
+            Err(RecoveryError::Binding)
+        );
+        assert_eq!(destination.player_count(), 0);
+    }
+    assert_eq!(book.len(), 1);
+    assert_eq!(first.player_count(), 1);
+}

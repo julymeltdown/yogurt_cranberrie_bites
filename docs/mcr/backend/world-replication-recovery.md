@@ -258,3 +258,12 @@ Its 11-path comparison includes the separately authorized BE12 provenance
 prerequisite; feature commit changed paths were also inspected individually
 against the seven-file assignment plus separate four-export registration.
 The frozen C05 schema/policy SHA256 values were rechecked and match the pins.
+
+The final cleanup audit also routes a failed `disconnect` removal into the
+bounded cleanup map; a wrong-owner simulation cannot discard the last binding.
+If that map is full, the closed active slot remains discoverable and disconnect
+returns false. Owner callbacks can acknowledge idempotent absence only after
+checking the actual owner. Activation additionally rejects reuse of one transport
+connection across different canonical event/user subscriptions. Two regressions
+cover wrong-owner disconnect and cross-principal/event connection reuse. Native
+validation is still queued; these changes are not claimed executed.

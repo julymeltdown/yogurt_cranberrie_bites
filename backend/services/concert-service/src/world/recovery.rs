@@ -93,6 +93,12 @@ impl Recovery {
             .map_err(|_| RecoveryError::Authority)?;
         let candidate =
             Replication::new(session, cause, self.limits).map_err(|_| RecoveryError::Binding)?;
+        if self.slots.values().any(|s| {
+            s.stream.binding().connection_id == binding.connection_id
+                && key(s.stream.binding()) != key(&binding)
+        }) {
+            return Err(RecoveryError::Binding);
+        }
         let previous = self.slots.get(&key(&binding));
         let replaced = previous.map(|p| p.stream.binding().clone());
         if previous.is_none() && self.slots.len() >= self.capacity {
@@ -272,17 +278,30 @@ impl Recovery {
         Ok(())
     }
     pub fn disconnect(&mut self, expected: &Binding, simulation: &mut Simulation) -> bool {
-        if self
+        if !self
             .slots
             .get(&key(expected))
             .is_some_and(|s| s.stream.binding() == expected)
         {
-            self.slots.remove(&key(expected));
-            simulation.remove(expected);
-            true
-        } else {
-            false
+            return false;
         }
+        self.slots
+            .get_mut(&key(expected))
+            .expect("matched")
+            .stream
+            .revoke(RevokeReason::SessionRevoked);
+        if !simulation.remove(expected) {
+            // A wrong room or an already-swept simulation cannot erase the last cleanup
+            // identity. The owner-routed callback may acknowledge idempotent absence.
+            let k = cleanup_key(expected);
+            if self.pending_cleanup.len() >= self.capacity && !self.pending_cleanup.contains_key(&k)
+            {
+                return false;
+            }
+            self.pending_cleanup.insert(k, expected.clone());
+        }
+        self.slots.remove(&key(expected));
+        true
     }
     /// Sweep independently of frames/ticks, including suspension/revocation/outage. Caller
     /// routes removed bindings to their owning simulations and sends terminal controls/closes.
