@@ -8,6 +8,7 @@ use crate::{
         invalidation::{Removal, Scope as RemovalScope},
     },
 };
+use sqlx::{postgres::PgTransactionManager, TransactionManager};
 use std::sync::{Arc, Mutex};
 
 /// Actual owner fences must already be retained by this connection's caller.
@@ -16,7 +17,11 @@ pub(crate) async fn require_scope_in(
     c: &mut PgConnection,
     key: EffectKey,
 ) -> Result<(), CommandError> {
-    if key.step != Step::ReadOnly || key.event.is_nil() || key.job.is_nil() {
+    if key.step != Step::ReadOnly
+        || key.event.is_nil()
+        || key.job.is_nil()
+        || PgTransactionManager::get_transaction_depth(c) == 0
+    {
         return Err(CommandError::InvalidInput);
     }
     let phase: Option<String> =

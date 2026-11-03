@@ -264,13 +264,25 @@ async fn event_lifecycle_read_only_invalid_scope_and_receipt_immutability() -> a
         .command(actor, Uuid::new_v4(), start(), &keys())
         .await?;
     let job = admission.reference.unwrap().resource;
-    let mut tx = pool.begin().await?;
-    sqlx::query("select set_config('mcr.lifecycle_authority_until',(clock_timestamp()+interval '5 seconds')::text,true)").execute(&mut *tx).await?;
     let key = EffectKey {
         event: actor.event,
         job,
         step: Step::ReadOnly,
     };
+    let mut autocommit = pool.acquire().await?;
+    assert_eq!(
+        apply_read_only_in(&mut autocommit, key).await.unwrap_err(),
+        CommandError::InvalidInput
+    );
+    assert_eq!(
+        concert_service::community::closure::fence_event_read_only_in(&mut autocommit, key)
+            .await
+            .unwrap_err(),
+        CommandError::InvalidInput
+    );
+    drop(autocommit);
+    let mut tx = pool.begin().await?;
+    sqlx::query("select set_config('mcr.lifecycle_authority_until',(clock_timestamp()+interval '5 seconds')::text,true)").execute(&mut *tx).await?;
     let first = apply_read_only_in(&mut tx, key).await?;
     let second = apply_read_only_in(&mut tx, key).await?;
     assert_eq!(first.receipt, second.receipt);

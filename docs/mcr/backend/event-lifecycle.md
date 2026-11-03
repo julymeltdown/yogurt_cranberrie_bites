@@ -31,6 +31,8 @@ community/composite receipt insertions use that same caller connection. The
 World-owned 0023 schema stores its own lease/victim snapshots; 0024 does not
 invent or duplicate that schema. The composite records only World receipt ID and
 revision plus a same-scope community FK, not copied World identities or content.
+A World receipt FK and binding trigger enforce exact event/job/operation/revision
+against World-owned 0023, without changing that schema.
 
 `ReadOnlyCommandDriver` obtains its pool/event from the actual `AdmissionBridge`.
 It validates input and performs actual current operator/policy preflight before
@@ -77,7 +79,8 @@ positive revisions, lifecycle commit-deadline guards and same-scope FK/unique
 constraints. New mutations require the initial PENDING revision-1 job in
 READ_ONLY; a stored same-operation receipt can be verified later without repeating
 effects. Wrong bindings, non-READ_ONLY steps and missing/expired transaction
-fences fail closed. Existing published migrations remain unchanged.
+fences fail closed. Both component entry points refuse an SQLx connection with
+transaction depth zero before any mutation. Existing published migrations remain unchanged.
 
 ### Authored validation and pending resource/API gates
 
