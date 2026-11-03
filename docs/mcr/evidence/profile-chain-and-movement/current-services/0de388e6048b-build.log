@@ -1,0 +1,33 @@
+   Compiling recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/recommendation-policy)
+   Compiling sqlx-core v0.8.6
+   Compiling tracing-subscriber v0.3.22
+   Compiling sqlx-postgres v0.8.6
+   Compiling tracing-opentelemetry v0.34.0
+   Compiling axum v0.7.9
+   Compiling sqlx v0.8.6
+   Compiling migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/migration-runtime)
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/platform)
+   Compiling jsonwebtoken v9.3.1
+   Compiling png v0.18.1
+   Compiling friend-domain v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/friend-domain)
+   Compiling post-domain v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/post-domain)
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/api-gateway)
+   Compiling friend-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/friend-service)
+   Compiling notification-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/notification-service)
+   Compiling post-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/post-service)
+   Compiling auth-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/auth-service)
+   Compiling gateway-domain v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/gateway-domain)
+   Compiling notification-domain v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/notification-domain)
+   Compiling profile-domain v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/profile-domain)
+   Compiling redis v0.28.2
+   Compiling gateway-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/gateway-application)
+   Compiling rskafka v0.6.0
+   Compiling image v0.25.10
+   Compiling auth-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/auth-application)
+   Compiling profile-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/profile-application)
+   Compiling notification-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/notification-application)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr/backend/services/profile-service)
+   Compiling reqwest v0.12.28
+   Compiling post-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/post-application)
+   Compiling friend-application v0.1.0 (/Users/lhs/Desktop/mcr/backend/crates/friend-application)
+    Finished `dev` profile [unoptimized] target(s) in 37.24s

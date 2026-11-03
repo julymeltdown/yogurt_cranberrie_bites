@@ -1,0 +1,11 @@
+{
+  "timestamp_utc": "2026-11-03T11:51:44.280502+00:00",
+  "shared_target": "/Users/lhs/Desktop/mcr-build/backend",
+  "process_matches": [],
+  "owned_pg_started": false,
+  "docker_used": false,
+  "exclusive_lease_released": true,
+  "no_more_cargo_without_explicit_transfer": true,
+  "head": "e132899776cae2644ddd0283cd31c18d5f6c5601",
+  "git_status": ""
+}

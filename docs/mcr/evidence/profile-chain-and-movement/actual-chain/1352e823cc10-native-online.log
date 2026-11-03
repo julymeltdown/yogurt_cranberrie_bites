@@ -1,0 +1,13 @@
+
+running 5 tests
+test native_cancelled_in_flight_read_releases_gateway_capacity_and_owner_recovers ... cancellation cleanup: gateway_available=256, gateway_capacity=256, owner_lock_waiters=0, elapsed_ms=734, single_connection_reusable_while_locked=true
+ok
+test native_fresh_updates_empty_bio_and_unavailable_content_use_fixed_results ... ok
+test native_lock_timeout_expires_context_then_same_client_and_pool_recover ... local-ceiling result: error=DeadlineExceeded, elapsed_us=701995
+original-short result: error=AccessExpired, elapsed_us=152072
+ok
+test native_permission_failure_is_fixed_unavailable ... ok
+test native_self_content_is_minimal_four_byte_exact_and_jwt_subject_bound ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 4 filtered out; finished in 4.17s
+

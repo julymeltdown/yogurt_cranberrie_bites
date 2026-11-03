@@ -1,0 +1,33 @@
+{
+  "base": "c6404c33e2d284b776652b416d0b96ed45856a28",
+  "input_sha256": {
+    "backend/services/api-gateway/src/adapters/out/profile_client.rs": "55a4889cda730d695205853672ffbaecff56e3a3c590250f4c181f0cef3455bf",
+    "backend/services/api-gateway/src/adapters/out/profile_client/concert_identity.rs": "4529bc8a95dfce7a34584eb0d9bb782a5d436cb234b8b9eed3b9de285baa1758",
+    "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs": "e555eea1117d5d692181cb2bdb95002d451e3a3b46cbebe9d729ce39f572e899",
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": "86b5f9b8c3ff50422e6e1dd29f1a4984d07992e32445e90c1ecc46753c85feee",
+    "backend/services/profile-service/src/adapters/in/grpc/method_policy.rs": "08c2a07bdfeb3bc5fdb85129435155c16d78ebfcf3f561ecdb7ef9237daa0b02",
+    "backend/services/profile-service/src/adapters/in/grpc/server.rs": "2394ed4648748f175234f4c8f6776cf573ca1f73840457c5f503df75202c4aba",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs": "cff6784cb6180f29e6b9b4e8f441797f924fe550a2ec2f81c6a8957134491e3d",
+    "backend/services/profile-service/src/config/mod.rs": "d4d0bf582239bef8d76ed73ecd5614af3ab30e2d8a0f74734717b301d7254723",
+    "backend/crates/profile-application/src/concert_identity.rs": "4308b9ae0d5a30f0255f3b559a23618c16f6d6f9b48c879775cab14223879ece",
+    "backend/proto/profile/v1/profile.proto": "1ac74dfaed797919c333829aeaa3aa039c5dc08ea19b97b0a55d2a85fff79485",
+    "backend/crates/platform/src/actor_delegation.rs": "0eba2a8eef09b6f1a365a8fd3a176b9090907abef7b12b33e3a0b6f58eb2eac8",
+    "backend/crates/platform/src/actor_delegation/read_authority.rs": "74d2dc74d0fba60c69c4e6f9b18eeecc862562db169a76151bdc6f4539d95b51",
+    "backend/crates/platform/src/call_deadline.rs": "e6e9a23d6b7805102962fb742c2baba385a332ce0a445cae77b9e20592af4e58",
+    "backend/crates/platform/src/grpc_method_policy.rs": "d4bb67063af62ce5f41d44007cc6c1e9fb55b7bb7341c4b1908238e0fe6234b5",
+    "backend/crates/platform/src/edge.rs": "6e2b60369167b138e8e4ec442db332dbc8df4fd5ac995cddb137afd0db0d5fd0",
+    "backend/crates/platform/src/grpc_deadline.rs": "8541e27f357b318aad6b6041f83add22266373ef842b1ff75652887889211db9",
+    "backend/crates/platform/src/edge_concurrency.rs": "97b2da954fd80a8075085f5616e6a250f77578fb1c9de27427e6f67804bfc620",
+    "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/services/api-gateway/Cargo.toml": "41e0b55bcf0b3ca6bd8ee04390c4db0c06b078744e57245fd09d92f6f590d17f"
+  },
+  "scope": [
+    "backend/services/api-gateway/tests/concert_profile_owner_integration.rs",
+    "backend/services/api-gateway/tests/support/concert_profile_owner_fixture.rs",
+    "backend/services/api-gateway/tests/support/concert_profile_owner_native.py",
+    "docs/mcr/backend/gateway-profile-owner-integration.md"
+  ],
+  "time_ns": 1793706984860412000
+}

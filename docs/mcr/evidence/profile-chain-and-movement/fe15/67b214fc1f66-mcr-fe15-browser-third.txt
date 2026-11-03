@@ -1,0 +1,30 @@
+8:31:20 PM [vite] (client) dependency optimized: phaser
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(received).toBeGreaterThan(expected)
+
+Expected: > 114
+Received:   112
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+    at captureRawStack (/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toBeGreaterThan (/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/movement-browser-smoke.mjs:100:57 {
+  matcherResult: {
+    pass: false,
+    message: 'expect(received).toBeGreaterThan(expected)\n' +
+      '\n' +
+      'Expected: > 114\n' +
+      'Received:   112\n' +
+      '\n' +
+      'Call Log:\n' +
+      '- Timeout 5000ms exceeded while waiting on the predicate',
+    name: 'toBeGreaterThan'
+  }
+}
+
+Node.js v24.22.2

@@ -1,0 +1,10 @@
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/crates/platform)
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/services/api-gateway)
+   Compiling gateway-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/crates/gateway-application)
+   Compiling friend-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/services/friend-service)
+   Compiling post-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/services/post-service)
+   Compiling notification-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/services/notification-service)
+   Compiling profile-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/crates/profile-application)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/services/profile-service)
+   Compiling post-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-client-integration/backend/crates/post-application)
+    Finished `test` profile [unoptimized] target(s) in 23.15s

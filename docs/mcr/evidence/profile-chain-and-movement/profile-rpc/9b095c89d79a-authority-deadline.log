@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized] target(s) in 0.12s
+     Running unittests src/lib.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/platform-7926b4b3670d1075)
+
+running 3 tests
+test actor_delegation::authority_deadline::tests::imported_effect_stop_cannot_be_reset_after_local_owning_waits ... ok
+test actor_delegation::authority_deadline::tests::original_monotonic_stop_survives_new_edge_budgets_and_live_wall_expiry ... ok
+test actor_delegation::authority_deadline::tests::effective_budget_clips_wall_monotonic_evidence_and_edge_limits ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 177 filtered out; finished in 0.00s
+

@@ -1,0 +1,7 @@
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/services/api-gateway)
+    Checking gateway-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/gateway-domain)
+    Checking platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/platform)
+    Checking gateway-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/gateway-application)
+    Checking migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/migration-runtime)
+    Checking api-contracts v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/api-contracts)
+    Finished `dev` profile [unoptimized] target(s) in 7.36s

@@ -1,0 +1,4 @@
+Earlier invocation: python3 scripts/mcr/check-boundaries.py --base d1282c6c5c27099ce7cd2adeed30ee99e5c1896b --lane backend --allow-doc docs/mcr/backend/gateway-profile-owner-client.md --allow-composition backend/services/api-gateway/src/adapters/out/profile_client.rs
+Exit: 1
+Observed tool output: BOUNDARIES ERROR: Invalid composition assignment: backend/services/api-gateway/src/adapters/out/profile_client.rs
+This excerpt records a command-usage failure, not passing evidence. The unneeded exception was removed.

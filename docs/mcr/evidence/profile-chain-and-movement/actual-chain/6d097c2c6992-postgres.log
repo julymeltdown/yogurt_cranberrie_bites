@@ -1,0 +1,11 @@
+own request
+2026-11-03 21:12:17.818 KST [98789] LOG:  aborting any active transactions
+2026-11-03 21:12:17.819 KST [98789] LOG:  background worker "logical replication launcher" (PID 98795) exited with exit code 1
+2026-11-03 21:12:17.819 KST [98790] LOG:  shutting down
+2026-11-03 21:12:17.819 KST [98790] LOG:  checkpoint starting: shutdown immediate
+2026-11-03 21:12:17.872 KST [98790] LOG:  checkpoint complete: wrote 1002 buffers (6.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.042 s, sync=0.010 s, total=0.053 s; sync files=336, longest=0.001 s, average=0.001 s; distance=4679 kB, estimate=4679 kB; lsn=0/19B0298, redo lsn=0/19B0298
+2026-11-03 21:12:17.874 KST [98789] LOG:  database system is shut down
+2026-11-03 21:12:21.171 KST [461] LOG:  starting PostgreSQL 16.14 (Homebrew) on aarch64-apple-darwin25.4.0, compiled by Apple clang version 21.0.0 (clang-2100.0.123.102), 64-bit
+2026-11-03 21:12:21.171 KST [461] LOG:  listening on Unix socket "/private/tmp/mcr-pg-0n_9hy8e/socket/.s.PGSQL.5432"
+2026-11-03 21:12:21.175 KST [473] LOG:  database system was shut down at 2026-11-03 21:12:17 KST
+2026-11-03 21:12:21.179 KST [461] LOG:  database system is ready to accept connections

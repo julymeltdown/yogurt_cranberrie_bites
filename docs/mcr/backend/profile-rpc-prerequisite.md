@@ -1,6 +1,6 @@
 # BE04 guarded Profile self RPC prerequisite
 
-Status: IN_PROGRESS. This integrator-owned candidate freezes the internal wire and composition required by the next Profile implementation increment. It is not a working endpoint or an accepted task. The temporary unavailable handler must be replaced, independently reviewed and tested before this candidate is published to master.
+Status: INTEGRATED as a prerequisite. The temporary stub described in this historical prerequisite was replaced by reviewed handler `af8b458` before publication. Gateway client `c6404c3`, query correction `600582d` and real-chain gate `3d6a518` now qualify the bounded Profile read. See [combined evidence](../evidence/profile-chain-and-movement-integration.md). Whole BE04 remains IN_PROGRESS; later paragraphs describe the prerequisite commit, not current runtime status.
 
 The base is published master `3c32eb6c933876a4669654269adba53a41689cec`. It includes the seven-path Profile owner candidate `81665a04b579d8709fa6cbe018c46b01db4edce0` as `b3262e2`; that owner is separately subject to integration review. Its exact source bytes are retained.
 

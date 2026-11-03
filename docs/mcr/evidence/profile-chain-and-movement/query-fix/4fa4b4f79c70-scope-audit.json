@@ -1,0 +1,20 @@
+{
+  "result": "PASS",
+  "base": "c6404c33e2d284b776652b416d0b96ed45856a28",
+  "exact_paths": [
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs",
+    "docs/mcr/backend/profile-query-deadline.md"
+  ],
+  "content_query_identical": true,
+  "retained_inputs_sha256": {
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/services/profile-service/Cargo.toml": "88aacb372f17c09b7b909cd039a3babbd3b84e9ad0c04ca9550573fd9745306c",
+    "backend/crates/profile-application/src/concert_identity.rs": "4308b9ae0d5a30f0255f3b559a23618c16f6d6f9b48c879775cab14223879ece",
+    "backend/proto/profile/v1/profile.proto": "1ac74dfaed797919c333829aeaa3aa039c5dc08ea19b97b0a55d2a85fff79485",
+    "backend/crates/platform/src/call_deadline.rs": "e6e9a23d6b7805102962fb742c2baba385a332ce0a445cae77b9e20592af4e58",
+    "backend/services/profile-service/src/adapters/in/grpc/method_policy.rs": "08c2a07bdfeb3bc5fdb85129435155c16d78ebfcf3f561ecdb7ef9237daa0b02",
+    "backend/services/auth-service/src/adapters/out/persistence/concert_identity.rs": "cc7d95999d1bba494e2a58d8ee48138ac89665cd7f8bef22cbcf3692038cc651"
+  },
+  "no_frontend_imports": true
+}

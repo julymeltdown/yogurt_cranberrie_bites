@@ -1,0 +1,16 @@
+ient connection with an open transaction
+2026-11-03 20:58:19.830 KST [84288] LOG:  could not send data to client: Broken pipe
+2026-11-03 20:58:19.830 KST [84288] FATAL:  connection to client lost
+2026-11-03 20:58:21.066 KST [84336] ERROR:  permission denied for table profiles
+2026-11-03 20:58:21.066 KST [84336] STATEMENT:  select p.user_id, p.nickname, p.bio, statement_timestamp() as observed_at
+	             from profiles p
+	             where p.user_id = $1 and p.deleted_at is null
+	               and octet_length(p.nickname) <= 160 and char_length(p.nickname) <= 40
+	               and octet_length(p.bio) <= 640 and char_length(p.bio) <= 160
+	               and not exists (
+	                   select 1 from profile_user_deletion_tombstones d where d.user_id = p.user_id
+	               )
+2026-11-03 20:58:21.150 KST [84343] ERROR:  permission denied for table profiles
+2026-11-03 20:58:21.150 KST [84343] STATEMENT:  select username,avatar_url,delete_reason from profiles where user_id=$1
+2026-11-03 20:58:21.150 KST [84343] ERROR:  cannot execute UPDATE in a read-only transaction
+2026-11-03 20:58:21.150 KST [84343] STATEMENT:  update profiles set nickname='forbidden' where user_id=$1

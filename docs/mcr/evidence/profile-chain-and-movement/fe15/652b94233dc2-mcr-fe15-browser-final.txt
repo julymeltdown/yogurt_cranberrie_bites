@@ -1,0 +1,55 @@
+8:45:07 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+8:45:08 PM [vite] (client) dependency optimized: phaser
+{
+  "status": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "height": 800,
+      "status": "PASS",
+      "nativeTouchCancelAndMultitouch": "PASS",
+      "focusedKeyboardAndPanelPause": "PASS",
+      "routedCollisionAndOneShotInteraction": "PASS",
+      "actualCameraAndResize": "PASS",
+      "repeatedMountCleanup": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "nativeTouchCancelAndMultitouch": "PASS",
+      "focusedKeyboardAndPanelPause": "PASS",
+      "routedCollisionAndOneShotInteraction": "PASS",
+      "actualCameraAndResize": "PASS",
+      "repeatedMountCleanup": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "status": "PASS",
+      "nativeTouchCancelAndMultitouch": "PASS",
+      "focusedKeyboardAndPanelPause": "PASS",
+      "routedCollisionAndOneShotInteraction": "PASS",
+      "actualCameraAndResize": "PASS",
+      "repeatedMountCleanup": "PASS"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "status": "PASS",
+      "nativeTouchCancelAndMultitouch": "PASS",
+      "focusedKeyboardAndPanelPause": "PASS",
+      "routedCollisionAndOneShotInteraction": "PASS",
+      "actualCameraAndResize": "PASS",
+      "repeatedMountCleanup": "PASS"
+    }
+  ],
+  "productionIsolation": "PASS",
+  "errors": [],
+  "limits": [
+    "Synthetic terrain and geometric foot marker only; no selected character artwork consumed.",
+    "Injected local120px/s,8x6px foot,42px interaction radius; not BE12 authority.",
+    "No transport, stream reconciliation, physical device, real server/world or arrival acceptance."
+  ]
+}

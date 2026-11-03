@@ -1,0 +1,10 @@
+$ vitest run src/world/__tests__/movement.test.ts src/world/__tests__/runtime.test.ts
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr/frontend
+
+
+ Test Files  2 passed (2)
+      Tests  221 passed (221)
+   Start at  21:04:16
+   Duration  3.91s (transform 173ms, setup 0ms, import 247ms, tests 3.54s, environment 991ms)
+

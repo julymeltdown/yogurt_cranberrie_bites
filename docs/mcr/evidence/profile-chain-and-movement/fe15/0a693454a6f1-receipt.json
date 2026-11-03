@@ -1,0 +1,450 @@
+{
+  "task": "FE15",
+  "status": "MOCK_READY",
+  "recordedAt": "2026-11-03T11:54:51.594274+00:00",
+  "base": "b1a19c425a30641410d71986714d72b7101f43e8",
+  "commit": "80a171db2663f407825659aa2d0b32de213e0fb8",
+  "branch": "codex/mcr-fe-FE15",
+  "changedPaths": [
+    "docs/mcr/frontend/world-movement.md",
+    "frontend/src/world/__tests__/fixtures/movement-data.ts",
+    "frontend/src/world/__tests__/fixtures/movement-preview.html",
+    "frontend/src/world/__tests__/fixtures/movement-preview.ts",
+    "frontend/src/world/__tests__/movement-browser-smoke.mjs",
+    "frontend/src/world/__tests__/movement.test.ts",
+    "frontend/src/world/camera/port.ts",
+    "frontend/src/world/input/controller.ts",
+    "frontend/src/world/input/controls.css",
+    "frontend/src/world/input/model.ts",
+    "frontend/src/world/input/simulation.ts",
+    "frontend/src/world/interaction/selection.ts",
+    "frontend/src/world/runtime.ts",
+    "frontend/src/world/scenes/MapScene.ts"
+  ],
+  "delivered": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/docs/mcr/frontend/world-movement.md",
+      "bytes": 13450,
+      "sha256": "551561e628476b6b8d3ddf6219b8ba6e09e19e4b0122cbcbf99009ca4e2e5741"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/fixtures/movement-data.ts",
+      "bytes": 1953,
+      "sha256": "f063805f4c99da206890c181c23e988385c4d7ef2640e7909bd7946c0204787f"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/fixtures/movement-preview.html",
+      "bytes": 296,
+      "sha256": "93fcb9756fc0d7ea17ab5e198b82ef9ffa945663ab3b463a60e52fd4b66e7b00"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/fixtures/movement-preview.ts",
+      "bytes": 8664,
+      "sha256": "622f0542b7956a2eb71c4587ae6684988d618a2e7a07dae096c834745247bd0a"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/movement-browser-smoke.mjs",
+      "bytes": 22798,
+      "sha256": "3396fda707046c1b52fe11d161e86614460930336da47ac8bcdce27a819143b9"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/movement.test.ts",
+      "bytes": 27508,
+      "sha256": "86f3f6fd645728f037c7f11a58f34e7939d08bae391f1e00184a7c5e8a741d94"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/camera/port.ts",
+      "bytes": 1782,
+      "sha256": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/input/controller.ts",
+      "bytes": 13734,
+      "sha256": "598c4719e73a8f5c8ca99e7cb513aa8c22bfdb70ae46d6548307791d8d718476"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/input/controls.css",
+      "bytes": 1398,
+      "sha256": "045f475d935a4fc701d452c3ba36e183528c039fb3e4858b3d05f343c3e840d2"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/input/model.ts",
+      "bytes": 3829,
+      "sha256": "f1d5a5bcd4358dc6572939482aba2ea72477bc1f072caad08ba9090b67653560"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/input/simulation.ts",
+      "bytes": 6258,
+      "sha256": "f07ce399ae7dab373c80a97b97b6a5d960d05be38a3d84f31d0c1f60f91f37d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/interaction/selection.ts",
+      "bytes": 1179,
+      "sha256": "bb1e330b398016dfffd6a8da79f7b4eabfd2f9de81ef96592fea7332e8fcdd85"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/runtime.ts",
+      "bytes": 9115,
+      "sha256": "062d3e4272ebefc85e8c5505b2305ab5bd2d8fb21db1024f2d5843a899d8ffee"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/scenes/MapScene.ts",
+      "bytes": 8487,
+      "sha256": "04061aa690705faca2c9a28c829329096256292c8e3496f25895b631cb11b88f"
+    }
+  ],
+  "readOnlyProvenance": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/contracts/realtime/v1/policy.json",
+      "bytes": 1080,
+      "sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/contracts/realtime/v1/world.schema.json",
+      "bytes": 20625,
+      "sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/contracts/assets/v1/map-manifest.schema.json",
+      "bytes": 10295,
+      "sha256": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/contracts/assets/v1/theme-manifest.schema.json",
+      "bytes": 3653,
+      "sha256": "7e4b0d9a8e2e21ffe76172870ea5ef44b5282e8f7852671862889c492f38b1d5"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/map/manifest.ts",
+      "bytes": 6288,
+      "sha256": "575b89163952959bdc20760a9ab19cafe6c950e7ffeb48e3a00bf3305ac8b4a2"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/map/resources.ts",
+      "bytes": 6819,
+      "sha256": "829e8e8c901223307e5ba8bcf4a306e01e12f7d09f7b08bc9c4f884c0d0ead4a"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/fixtures/synthetic.ts",
+      "bytes": 2799,
+      "sha256": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/runtime-browser-smoke.mjs",
+      "bytes": 18337,
+      "sha256": "98e9e1b329004c5f38c457d66b6b959239fc577915d04609ec11c901c3ed26e4"
+    }
+  ],
+  "checks": [
+    {
+      "check": "install",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-install.txt",
+      "bytes": 1102,
+      "sha256": "67725d797a7da89c2496e751aaaedcdfe84c41b27ebbe57a64a44037f3d58e01"
+    },
+    {
+      "check": "full frontend tests 958 /22",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-full-tests-boundary.txt",
+      "bytes": 259,
+      "sha256": "ac154808959eb436d544fb3a4ddd49acdf2a3003e15a79ef6c59e54b39dec9ec"
+    },
+    {
+      "check": "strict build",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-build-boundary.txt",
+      "bytes": 979,
+      "sha256": "acdf618c9fa87d2f47752771ea3ca41390e45df00f04979548ffc2891ffaa3f4"
+    },
+    {
+      "check": "lint",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-lint-boundary.txt",
+      "bytes": 28,
+      "sha256": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372"
+    },
+    {
+      "check": "FE15 native",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-browser-boundary-final.txt",
+      "bytes": 1638,
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3"
+    },
+    {
+      "check": "retained FE14 native",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-retained-runtime.txt",
+      "bytes": 3341,
+      "sha256": "753ff065cac27621f752270a00fd04dd593ff24f127e2f97e9bc6d0d3e9bc0a7"
+    },
+    {
+      "check": "C03 generation",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-core-generation.txt",
+      "bytes": 33,
+      "sha256": "ab0ac16503eb1f7b4ba226deb28d7f17a0db67712698c41480ccdad4653fffa6"
+    },
+    {
+      "check": "C03 validation",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-core-validation.txt",
+      "bytes": 107,
+      "sha256": "dfcf37a714e89da5afbc1427019a11a304c9935fde300fdd516e54edfe561cbd"
+    },
+    {
+      "check": "C06 metadata",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-assets-final.txt",
+      "bytes": 483,
+      "sha256": "19fa348abd240f607b8a66ea254de4dfd46a65965ce6ae721976eb664fd9afd2"
+    },
+    {
+      "check": "C06 regressions 27",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-assets-regressions.txt",
+      "bytes": 126,
+      "sha256": "304b503e8e9a309f89caa84572cfbcb567e731da878a49d6cffe952a508995ce"
+    },
+    {
+      "check": "C08",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-origin-boundary.txt",
+      "bytes": 393,
+      "sha256": "dfe2099ba8bf29136e24e43e21dc3bc2ca638e178915cbff2783dca2d12a722c"
+    },
+    {
+      "check": "plan",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-plan-boundary.json",
+      "bytes": 1435,
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+    },
+    {
+      "check": "boundary index+worktree",
+      "exitCode": 0,
+      "path": "/tmp/mcr-fe15-boundaries-boundary.txt",
+      "bytes": 124,
+      "sha256": "462c612f71253fc17349eb832229aecb2394228428360e076b2701c359f5dabe"
+    },
+    {
+      "check": "visibility regression red 67pass2fail",
+      "exitCode": 1,
+      "path": "/tmp/mcr-fe15-visibility-regression-red.txt",
+      "bytes": 1891,
+      "sha256": "d68b3eeff89c13638573fbe6e4500c582548bf4c1d56a8e862265f9c26f356fc"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/movement-1280.png",
+      "bytes": 70759,
+      "sha256": "36578e13b0dec8f02fa48d4d93bf3c807b49fb5bb5e1724488a77b22e4488523"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/movement-360.png",
+      "bytes": 68802,
+      "sha256": "4d6aff708dfe1440f680ed5812227bf0299b707ef99bd4f947b8649e999f8cdf"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/movement-390.png",
+      "bytes": 69589,
+      "sha256": "08d3ffa15b2e9027d823c519122d8d2e6d5f7cd8de20fabb731fa07ec821645a"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/movement-430.png",
+      "bytes": 68790,
+      "sha256": "08f81b7f77c4468098f69ec7b792abcc19865544c6d2f3d09967958f6897d96a"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/report.json",
+      "bytes": 1637,
+      "sha256": "f62b565166b12b263b779e843d60a7c3bffd3616442b12b01fe6be81ee652a1e"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/short-controls-1280.png",
+      "bytes": 40181,
+      "sha256": "e3eb87d30b5f7c2aa5fc0eeb69bcde1fdfcc80cc5d09f84b2a32f55bb50f1500"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/short-controls-360.png",
+      "bytes": 32055,
+      "sha256": "839ec7a77dce42d9e17fbd1b9b406a4cd9a0b3451e11a4bb6790cf17253fcfb9"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/short-controls-390.png",
+      "bytes": 32490,
+      "sha256": "6690282d083adc0e70fda6bd98b428a02eaca1f84862679a88008e178222f118"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/boundary-final/short-controls-430.png",
+      "bytes": 35393,
+      "sha256": "1021f1b9eaa1969f98ee516613c452f8506d2bbacca81fe6c4412a08f4b0e872"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/final/resource-pins.json",
+      "bytes": 13366,
+      "sha256": "b6fbe7fc0863d176cc25802a51c5367437045057ed74076284e0fff176c9c93a"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/failure-390.png",
+      "bytes": 37204,
+      "sha256": "21a768b6cbd2a70d63295c334f4b96a03486ee3236f5eac2ec5041a81dde2188"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/hash-390.png",
+      "bytes": 36580,
+      "sha256": "f2829794c5a6a02e15b4b639c76f2b216d74118dba450789364efea80165f0f4"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/invalid-1280.png",
+      "bytes": 38224,
+      "sha256": "f7b8e50b6b5178539ebbf2951e12f4bad03227c9f2ccb4f9d25714b38f467cd3"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/invalid-360.png",
+      "bytes": 36562,
+      "sha256": "7e16333976b4569ce04f0e1395f9a737d55bfe512233c520d8b40338c303cb07"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/invalid-390.png",
+      "bytes": 36580,
+      "sha256": "f2829794c5a6a02e15b4b639c76f2b216d74118dba450789364efea80165f0f4"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/invalid-430.png",
+      "bytes": 36489,
+      "sha256": "7eb1502878781b9da1592f9db5d4b3c637e8c4fd9e12c6e1a472fe490770c82d"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/map-1280.png",
+      "bytes": 38243,
+      "sha256": "2c19d031abe6560d83f8ae723cabcc3e6acc194f29f359910b33a6aeb182eaa7"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/map-360.png",
+      "bytes": 36559,
+      "sha256": "111c70dffb02438d29b6e236e29fb61e0b9e437d3fc991a162c7e1456f977b38"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/map-390.png",
+      "bytes": 36591,
+      "sha256": "5f70da25c62ae5572c6df3396777c161a7b5b3a845383e79a626097337a10b15"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/map-430.png",
+      "bytes": 36502,
+      "sha256": "f3b5dc4f9385e5085dcdf0d23c4961267ad707a1f0f024873dca164feffa23d6"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/production-public-390.png",
+      "bytes": 30264,
+      "sha256": "903ee5886a63322a478f088e3fd8d3ab4a03b3876f28c632286a56fb4ef7b970"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/report.json",
+      "bytes": 1850,
+      "sha256": "5f012373b0be81c1f27f654f9adab3b80b12f490337c80d02e92aa729277d1db"
+    },
+    {
+      "path": "/tmp/mcr-fe15-evidence/retained-fe14/slow-390.png",
+      "bytes": 36502,
+      "sha256": "397c45eef98a978ca9710762da9cd89d445737eafcc68f235cd3a81f73ea722b"
+    }
+  ],
+  "historicalLogs": [
+    {
+      "path": "/tmp/mcr-fe15-browser-edge-final.txt",
+      "bytes": 1638,
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-eighth.txt",
+      "bytes": 1638,
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-fifth.txt",
+      "bytes": 1638,
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-final.txt",
+      "bytes": 1780,
+      "sha256": "652b94233dc21aa31ad012ffdf184c2fd70145449b1714a3481936340173cccc"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-first.txt",
+      "bytes": 806,
+      "sha256": "0ed155caaaf53fdf9a54a6a0bf69553c5c05ca67bda5bfae46ecb2d773cc429f"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-fourth.txt",
+      "bytes": 421,
+      "sha256": "45864f0b11b0d995e912d64c124a5971921b03d52a3bb97e278a1ff5258530d4"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-second.txt",
+      "bytes": 1018,
+      "sha256": "6e616a2a1a91da2034c3ea619841c09ea1c945d397ff6f1971a01792b4220af5"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-seventh.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-sixth.txt",
+      "bytes": 1638,
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3"
+    },
+    {
+      "path": "/tmp/mcr-fe15-browser-third.txt",
+      "bytes": 1251,
+      "sha256": "67b214fc1f66f5c69245dbde83d8e865cd6c82f616a2c1e3d1a68e9961770261"
+    }
+  ],
+  "manualReview": {
+    "assignmentPaths": "PASS:14 exact delegated paths",
+    "crossImports": "PASS:world-local/C05 public type and read-only contract JSON; no BE implementation imports",
+    "docsSource": "unchanged vs assignment base",
+    "productionArtwork": "none consumed or modified",
+    "visuals": [
+      "boundary-final/movement-390.png",
+      "boundary-final/short-controls-390.png",
+      "eighth/movement-360.png",
+      "eighth/movement-1280.png"
+    ],
+    "diffWhitespace": "PASS:working and staged checks exit0",
+    "worktree": "clean after commit",
+    "push": "not performed"
+  },
+  "limits": [
+    "No BE12 authoritative tuning or collision agreement",
+    "No FE17 wire sequencing/reconciliation or real network/server",
+    "No actual character art/arrival/device/product acceptance",
+    "Goal ACTIVE until parent review disposition"
+  ],
+  "previousCandidateCommit": "0511aeab7916967e65bb4cd41508d9a213d26b4e",
+  "commitChain": [
+    "b1a19c425a30641410d71986714d72b7101f43e8",
+    "0511aeab7916967e65bb4cd41508d9a213d26b4e",
+    "80a171db2663f407825659aa2d0b32de213e0fb8"
+  ],
+  "previousReceipt": {
+    "path": "/tmp/mcr-fe15-evidence/final/receipt.json",
+    "bytes": 15520,
+    "sha256": "760fe5d60c238dbd1720ff23c79c8927910ff558e5e8369672c093a77bfa5755"
+  },
+  "boundaryCorrection": {
+    "defect": "Valid exact-bottom whole-foot targets/starts were refused because cell anchor exceeded grid; no hang reproduced and early line guard prevents claimed old reconstruction entry.",
+    "implementation": "Clamp occupied cell while preserving exact legal target and whole-foot checks. Validate parent chain indices/root and bound traversal to grid length.",
+    "regressions": "87 FE15 tests incl exact-bottom arrival/departure/samepoint,left/right corner+adjacent and10 corrupt-chain negatives;958 full frontend tests.",
+    "parentPinnedOriginalEvidence": {
+      "path": "/tmp/mcr-fe15-parent-initial-route-result.json",
+      "bytes": 305,
+      "sha256": "fa94808a71021d568fffb99d9acf980c6aa7a6d56203042997012720fd6ee445"
+    },
+    "retainedRuntimeEvidence": "runtime.ts/MapScene.ts and retained test scripts unchanged by follow-up; prior real Phaser R1/R3/native evidence remains applicable."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "args": [
+    "cargo",
+    "+1.88.0",
+    "test",
+    "--manifest-path",
+    "backend/Cargo.toml",
+    "--locked",
+    "--offline",
+    "-p",
+    "profile-service",
+    "--test",
+    "concert_identity_rpc",
+    "--no-run",
+    "--message-format=json"
+  ],
+  "exit_code": 101,
+  "code_sha256": {
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": "86b5f9b8c3ff50422e6e1dd29f1a4984d07992e32445e90c1ecc46753c85feee",
+    "backend/services/profile-service/tests/concert_identity_rpc.rs": "fe7aaa1b836dad1957898f30066661919d69ebf8c48c4f58028815948860deac",
+    "backend/services/profile-service/tests/support/concert_identity_fixture.rs": "757de2fd8d43b884fb526ea6dd1318e2056d818f5fd60dfe67179d30b0649205",
+    "backend/services/profile-service/tests/support/concert_identity_native.py": "ca490dde8ed47736d10892461c1fcb71f5a687f1277a391d1a22d6fb9d90b818"
+  },
+  "target": "/Users/lhs/Desktop/mcr-build/backend",
+  "jobs": 2,
+  "dev_debug": 0,
+  "test_debug": 0
+}

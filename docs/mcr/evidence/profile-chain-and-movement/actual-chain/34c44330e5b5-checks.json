@@ -1,0 +1,60 @@
+{
+  "rustfmt": {
+    "command": [
+      "rustfmt",
+      "+1.88.0",
+      "--edition",
+      "2021",
+      "--check",
+      "backend/services/api-gateway/tests/concert_profile_owner_integration.rs",
+      "backend/services/api-gateway/tests/support/concert_profile_owner_fixture.rs"
+    ],
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "plan": {
+    "command": [
+      "python3",
+      "scripts/mcr/check-plan.py"
+    ],
+    "exit_code": 0,
+    "log_sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+  },
+  "boundaries": {
+    "command": [
+      "python3",
+      "scripts/mcr/check-boundaries.py",
+      "--base",
+      "953bddffb2de7dd6c41869b923f71855a7d19f50",
+      "--lane",
+      "backend",
+      "--allow-doc",
+      "docs/mcr/backend/gateway-profile-owner-integration.md"
+    ],
+    "exit_code": 0,
+    "log_sha256": "6197a33273bc8ba548342b098fe5d0563f755ecf0d82fac7fef49781fe6162cb"
+  },
+  "whitespace": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "python_ast": {
+    "exit_code": 0
+  },
+  "exact_scope": {
+    "paths": [
+      "backend/services/api-gateway/tests/concert_profile_owner_integration.rs",
+      "backend/services/api-gateway/tests/support/concert_profile_owner_fixture.rs",
+      "backend/services/api-gateway/tests/support/concert_profile_owner_native.py",
+      "docs/mcr/backend/gateway-profile-owner-integration.md"
+    ],
+    "no_unstaged_or_untracked": true,
+    "cross_directory_imports": "no frontend imports"
+  }
+}

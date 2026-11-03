@@ -1,0 +1,10 @@
+$ vitest run
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend
+
+
+ Test Files  22 passed (22)
+      Tests  958 passed (958)
+   Start at  20:52:19
+   Duration  3.99s (transform 1.59s, setup 0ms, import 3.41s, tests 17.54s, environment 3.56s)
+

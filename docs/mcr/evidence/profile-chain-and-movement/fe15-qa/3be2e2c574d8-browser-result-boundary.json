@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "browser": "156.0.8078.80",
+  "origin": "http://127.0.0.1:45837",
+  "source": "exact FE15 80a171db2663f407825659aa2d0b32de213e0fb8; bounded native QA",
+  "startFoot": {
+    "x": 80,
+    "y": 112
+  },
+  "afterKeyboard": {
+    "x": 92,
+    "y": 112
+  },
+  "cancelled": {
+    "x": 96.24263942271406,
+    "y": 116.24264195152412
+  },
+  "camera": [
+    {
+      "client": {
+        "x": 180,
+        "y": 519.1875
+      },
+      "round": {
+        "x": 400,
+        "y": 224
+      },
+      "camera": {
+        "zoom": 1,
+        "scrollX": 236,
+        "scrollY": 48,
+        "width": 328,
+        "height": 352
+      }
+    },
+    {
+      "client": {
+        "x": 180,
+        "y": 39.1875
+      },
+      "round": {
+        "x": 400,
+        "y": 224
+      },
+      "camera": {
+        "zoom": 2,
+        "scrollX": 236,
+        "scrollY": 132,
+        "width": 328,
+        "height": 184
+      }
+    },
+    {
+      "client": {
+        "x": 180.00000000000009,
+        "y": 184.18750000000009
+      },
+      "round": {
+        "x": 400,
+        "y": 224.00000000000003
+      },
+      "camera": {
+        "zoom": 3,
+        "scrollX": 236,
+        "scrollY": 48,
+        "width": 328,
+        "height": 352
+      }
+    }
+  ],
+  "controls": [
+    {
+      "label": "Movement joystick. Arrow keys or W A S D when focused",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "label": "Recenter",
+      "width": 87.21875,
+      "height": 44
+    },
+    {
+      "label": "Zoom +",
+      "width": 77.890625,
+      "height": 44
+    },
+    {
+      "label": "Zoom −",
+      "width": 77.890625,
+      "height": 44
+    },
+    {
+      "label": "Interact",
+      "width": 77.796875,
+      "height": 44
+    },
+    {
+      "label": "Nearby interaction",
+      "width": 224,
+      "height": 44
+    }
+  ],
+  "visibility": [
+    {
+      "finalVisible": true,
+      "pendingFrames": 1
+    },
+    {
+      "finalVisible": false,
+      "pendingFrames": 0
+    }
+  ],
+  "resources": [
+    "/world/fe15/movement-map.json",
+    "/world/fe15/movement-tiles.png"
+  ],
+  "errors": []
+}

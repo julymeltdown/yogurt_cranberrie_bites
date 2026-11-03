@@ -1,0 +1,8 @@
+   Compiling recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/recommendation-policy)
+   Compiling gateway-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/gateway-domain)
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/platform)
+   Compiling gateway-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/gateway-application)
+   Compiling migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/migration-runtime)
+   Compiling api-contracts v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/crates/api-contracts)
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/services/api-gateway)
+    Finished `dev` profile [unoptimized] target(s) in 15.77s

@@ -94,24 +94,20 @@ monotonic stop and captured JWT stop. It retains wall bounds and redacted,
 nonserialized state. This is local verified input, not an owner result or Concert
 admission. Its bounded goal is COMPLETE; its checkout is stopped.
 
-The next independently useful backend increment is a narrowly authenticated
-Gateway-to-Auth owner-read client using that strict context and the existing
-`ReadConcertAdmission` wire. It must use the configured client/workload signer,
-bind the canonical actor/family and exact optional binding reference, propagate
-the same original deadline through readiness/signing/response waits, avoid a
-fresh full edge budget or positive cache, and recheck the context after waits.
-Only minimal current flags/binding state/observation metadata may return; unknown
-or inconsistent replies and owner failures cannot grant admission. Database
-observation time is not a proof lifetime, and the client cannot invent a freshness
-or revocation SLO. The eventual final dispatch must still recheck all earlier
-owner/local evidence. Tests must exercise the actual generated client and signed
-caller/actor/deadline transport, rather than constructing a context or accepting
-an unsigned controlled response. This proposed client supplies no HTTP route,
-Profile/event authority, signed Concert result or production policy by itself.
+The configured Gateway Auth client and guarded Profile owner/client chain are now
+integrated with bounded real PostgreSQL evidence; see the
+[combined checkpoint](evidence/profile-chain-and-movement-integration.md).
+Both preserve the same strict context and original deadline. Owner observations
+remain private current-state facts, not event participation grants.
 
-Parent retains proto/platform/Gateway/Concert contracts and composition. The
-next exact assignment must use a fresh worktree/goal, keep the completed Auth
-checkout stopped and preserve [ownership boundaries](chat-coordination.md).
+The next cohesive backend scope composes these two owner reads under that one
+context: require active account and live session, verify any explicitly requested
+binding, bind Profile content to the JWT subject, and recheck prior observations
+after every later await. Refused Auth must prevent Profile dispatch. No cache,
+retry, invented suspension state or new proof lifetime is introduced. Production
+HTTP capture and signed Concert/event-policy composition remain integrator-owned
+until those actual boundaries are implemented and exercised. Separate tests must
+qualify both real owners rather than replacing either with a successful fixture.
 
 Required qualification includes foreign actor/family/reference, deleted/unlinked/
 relinked claims, expired/revoked account/session, owner outage, role/epoch changes,

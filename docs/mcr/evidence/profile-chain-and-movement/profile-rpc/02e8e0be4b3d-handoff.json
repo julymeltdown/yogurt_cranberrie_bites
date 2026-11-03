@@ -1,0 +1,335 @@
+{
+  "task": "BE04 guarded Profile self RPC bounded handoff; broader BE04 unfinished",
+  "base": "d63fb2b95d3d8e61406ef71a12ed86a3b0bf15fd",
+  "commit": "4b9d054bafeff170470fc06ab0844427d8106d96",
+  "immediate_parent": "d63fb2b95d3d8e61406ef71a12ed86a3b0bf15fd",
+  "branch": "codex/mcr-be-profile-self-rpc",
+  "changed_paths": [
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs",
+    "backend/services/profile-service/tests/concert_identity_rpc.rs",
+    "backend/services/profile-service/tests/support/concert_identity_fixture.rs",
+    "backend/services/profile-service/tests/support/concert_identity_native.py",
+    "docs/mcr/backend/profile-self-rpc.md"
+  ],
+  "working_tree_clean": true,
+  "source_sha256": {
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": "86b5f9b8c3ff50422e6e1dd29f1a4984d07992e32445e90c1ecc46753c85feee",
+    "backend/services/profile-service/tests/concert_identity_rpc.rs": "60ed44316e54f72236f181ad754c25c6f1d1d0d334fe9f0fb068c9a972f8fe62",
+    "backend/services/profile-service/tests/support/concert_identity_fixture.rs": "4adf23d35feb07e88f753c7f6cc2e1d2bb9c7c5b4fc6dcc5ecca916e0ab2b6b1",
+    "backend/services/profile-service/tests/support/concert_identity_native.py": "ca490dde8ed47736d10892461c1fcb71f5a687f1277a391d1a22d6fb9d90b818",
+    "docs/mcr/backend/profile-self-rpc.md": "e3bf672762906a03b1ef3cf985d8246541e6156fca384a42dde9cbae39bb61b9"
+  },
+  "native_receipt": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/attempt-1793705860403297000-c6e61a0d/receipt.json",
+  "native_receipt_sha256": "ead55f3e33708f91294adc4e10fb2eb00949ff98620c36d1f7bbecbde91a2353",
+  "native_source_sha256": {
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": "86b5f9b8c3ff50422e6e1dd29f1a4984d07992e32445e90c1ecc46753c85feee",
+    "backend/services/profile-service/tests/concert_identity_rpc.rs": "60ed44316e54f72236f181ad754c25c6f1d1d0d334fe9f0fb068c9a972f8fe62",
+    "backend/services/profile-service/tests/support/concert_identity_fixture.rs": "4adf23d35feb07e88f753c7f6cc2e1d2bb9c7c5b4fc6dcc5ecca916e0ab2b6b1",
+    "backend/services/profile-service/tests/support/concert_identity_native.py": "ca490dde8ed47736d10892461c1fcb71f5a687f1277a391d1a22d6fb9d90b818",
+    "backend/proto/profile/v1/profile.proto": "1ac74dfaed797919c333829aeaa3aa039c5dc08ea19b97b0a55d2a85fff79485",
+    "backend/services/profile-service/src/adapters/in/grpc/method_policy.rs": "08c2a07bdfeb3bc5fdb85129435155c16d78ebfcf3f561ecdb7ef9237daa0b02",
+    "backend/services/profile-service/src/adapters/in/grpc/server.rs": "2394ed4648748f175234f4c8f6776cf573ca1f73840457c5f503df75202c4aba",
+    "backend/services/profile-service/src/adapters/in/grpc/mod.rs": "01c4393bf78ea7f54d1e2aab2f0b27f5acef9d9f1c62b021d8c02ab4ca2c4b42",
+    "backend/services/profile-service/src/config/mod.rs": "d4d0bf582239bef8d76ed73ecd5614af3ab30e2d8a0f74734717b301d7254723",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs": "cff6784cb6180f29e6b9b4e8f441797f924fe550a2ec2f81c6a8957134491e3d",
+    "backend/crates/profile-application/src/concert_identity.rs": "4308b9ae0d5a30f0255f3b559a23618c16f6d6f9b48c879775cab14223879ece",
+    "backend/crates/platform/src/actor_delegation.rs": "0eba2a8eef09b6f1a365a8fd3a176b9090907abef7b12b33e3a0b6f58eb2eac8",
+    "backend/crates/platform/src/actor_delegation/read_authority.rs": "74d2dc74d0fba60c69c4e6f9b18eeecc862562db169a76151bdc6f4539d95b51",
+    "backend/crates/platform/src/actor_delegation/authority_deadline.rs": "24950336579f899a3af4536a5acdb0b28ea913c7a85a6d0aaa3e5709801013ef",
+    "backend/crates/platform/src/grpc_method_policy.rs": "d4bb67063af62ce5f41d44007cc6c1e9fb55b7bb7341c4b1908238e0fe6234b5",
+    "backend/crates/platform/src/grpc_auth.rs": "0d9048566587adae8671b12b2bed4121da6058bc3a731864b88c82f0e9492b2a",
+    "backend/crates/platform/src/call_deadline.rs": "e6e9a23d6b7805102962fb742c2baba385a332ce0a445cae77b9e20592af4e58",
+    "backend/crates/platform/src/edge.rs": "6e2b60369167b138e8e4ec442db332dbc8df4fd5ac995cddb137afd0db0d5fd0",
+    "backend/crates/platform/src/grpc_deadline.rs": "8541e27f357b318aad6b6041f83add22266373ef842b1ff75652887889211db9",
+    "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/services/profile-service/Cargo.toml": "88aacb372f17c09b7b909cd039a3babbd3b84e9ad0c04ca9550573fd9745306c",
+    "docs/mcr/backend/profile-rpc-prerequisite.md": "36cec021373b503c881074b180a0e597f5864e9ec92c03273cac838d9c2c3bb8",
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "docs/mcr/project-assessment.md": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+    "docs/mcr/execution-plan.md": "547e3ada9fdc64cc293d220c4ec42272492d0d1fb17ccf983420e4148089e6a9",
+    "backend/services/profile-service/migrations/0001_init_profile.sql": "4c0c0ce757b6971895f5bd1f46e4b2314f4d5abfda76cab9a535142d9053d862",
+    "backend/services/profile-service/migrations/0002_governance.sql": "bbc3f355293924abe5628610a1bdbfb1ceca15f9abcb1070eb2916b2ec6bcc21",
+    "backend/services/profile-service/migrations/0003_account_privacy.sql": "b20fec5d9e20339bd0abfe3363c86b9b6e76b5dcb08d7a873ba5fe13124051a9",
+    "backend/services/profile-service/migrations/0004_search_trigram_index.sql": "8e1bfe023ae99a02c039de9cd69ad713eaeaf69f045c227307863a551d2d0459",
+    "backend/services/profile-service/migrations/0005_owner_mutation_receipts.sql": "3eead515b0032692d67666fcc813615d60e9f33332b34fc90c07de1e688cba58",
+    "backend/services/profile-service/migrations/0006_profile_edit_owner_receipts.sql": "5a8e1d4fcd88582a914dc46e1649003a732d1a081c17d8b599857968407677a7",
+    "backend/services/profile-service/migrations/0007_user_deletion_fences.sql": "050a2239f3efbf14016b36b41d0e50ed22ba408284165418d1a347059b3f2930"
+  },
+  "binary_sha256": "e4905e4bfd24ca6087fda9ecc7945406456ac59ce3fe2835eaf62115387129ec",
+  "artifact_profile": {
+    "opt_level": "0",
+    "debuginfo": 0,
+    "debug_assertions": true,
+    "overflow_checks": true,
+    "test": true
+  },
+  "build": {
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "profile-service",
+      "--test",
+      "concert_identity_rpc",
+      "--no-run",
+      "--message-format=json"
+    ],
+    "exit_code": 0,
+    "code_sha256": {
+      "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": "86b5f9b8c3ff50422e6e1dd29f1a4984d07992e32445e90c1ecc46753c85feee",
+      "backend/services/profile-service/tests/concert_identity_rpc.rs": "60ed44316e54f72236f181ad754c25c6f1d1d0d334fe9f0fb068c9a972f8fe62",
+      "backend/services/profile-service/tests/support/concert_identity_fixture.rs": "4adf23d35feb07e88f753c7f6cc2e1d2bb9c7c5b4fc6dcc5ecca916e0ab2b6b1",
+      "backend/services/profile-service/tests/support/concert_identity_native.py": "ca490dde8ed47736d10892461c1fcb71f5a687f1277a391d1a22d6fb9d90b818"
+    },
+    "target": "/Users/lhs/Desktop/mcr-build/backend",
+    "jobs": 2,
+    "dev_debug": 0,
+    "test_debug": 0
+  },
+  "retained_checks": [
+    {
+      "name": "profile-lib-db-free",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "profile-service",
+        "--lib",
+        "--",
+        "--skip",
+        "config::tests::external_migration_mode_rejects_schema_damage_without_owner_privileges"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-lib-db-free.log"
+    },
+    {
+      "name": "profile-architecture",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "profile-service",
+        "--test",
+        "architecture"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-architecture.log"
+    },
+    {
+      "name": "post-author-contract",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "profile-service",
+        "--test",
+        "contract",
+        "profile_author_authority_contract"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/post-author-contract.log"
+    },
+    {
+      "name": "profile-config",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "profile-service",
+        "--test",
+        "unit",
+        "config::"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-config.log"
+    },
+    {
+      "name": "private-read-context",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "platform",
+        "--lib",
+        "actor_delegation::read_authority"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/private-read-context.log"
+    },
+    {
+      "name": "authority-deadline",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "platform",
+        "--lib",
+        "actor_delegation::authority_deadline"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/authority-deadline.log"
+    },
+    {
+      "name": "retained-method-policy",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "platform",
+        "--lib",
+        "grpc_method_policy"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/retained-method-policy.log"
+    },
+    {
+      "name": "gateway-generated-fixture",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "api-gateway",
+        "--test",
+        "read_retry_transport"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/gateway-generated-fixture.log"
+    },
+    {
+      "name": "friend-generated-fixtures",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "friend-service",
+        "--test",
+        "contract",
+        "--no-run"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/friend-generated-fixtures.log"
+    },
+    {
+      "name": "profile-bin-check",
+      "args": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-p",
+        "profile-service",
+        "--lib",
+        "--bins"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-bin-check.log"
+    }
+  ],
+  "distinct_passed": {
+    "new_rpc": 18,
+    "retained": 59,
+    "total": 77
+  },
+  "additional_recovery_invocations_passed": 1,
+  "full_profile_lib_attempt": "FAIL exit101; 21 passed/1 failed fixture acquisition; exact retained external migration case NOT_RUN; bounded rerun explicitly excludes it",
+  "release": {
+    "base": "d63fb2b95d3d8e61406ef71a12ed86a3b0bf15fd",
+    "shared_target": "/Users/lhs/Desktop/mcr-build/backend",
+    "exclusive_lease_released": true,
+    "process_recheck": "no cargo/rustc/rustdoc/RPC-test or owned PG process",
+    "owned_pg_root": "/private/tmp/mcr-pg-zn_30gmv",
+    "owned_pg_root_absent": true,
+    "native_receipt": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/attempt-1793705860403297000-c6e61a0d/receipt.json",
+    "retained_commands_passed": 10,
+    "no_more_cargo_without_coordination": true
+  },
+  "persistent_goal_actual_status": "ACTIVE after explicit user resume, same aligned objective, not completed",
+  "review": "pending integrator review and concrete fixes; no push",
+  "limitations": [
+    "plaintext controlled loopback, not deployed TLS",
+    "direct exact SQL migrations, not SQLx ledger or service startup",
+    "no Gateway consumption/HTTP/browser/event/session/provider/admission or broader BE04 acceptance",
+    "no further Cargo/test binaries/PG after target release without coordinated transfer"
+  ],
+  "evidence_sha256": {
+    "authority-deadline.log": "9b095c89d79af36f3090bc4aba7bf6f24e27d9064aee07ecf1d6bb538660063d",
+    "build-attempt-1.jsonl": "b0f24fbb6474d8a73c0ff131cd56f2faedcde8d30c97e77dab8d0667199cebda",
+    "build-attempt-1.receipt.json": "ca9e641975cf63838733e47856438b1ce5dcd7d7ff5aba8b41f19de46e39f4ca",
+    "build-attempt-1.stderr.log": "33c7b8313f67b0da3c9b4b9c4143035b845139d14a397c2f49b28dcadae41f98",
+    "build-attempt-2.jsonl": "4fb818263775f2aba613cc02edfac90e3524af90943dc9e35a2ac449e2aec0f5",
+    "build-attempt-2.receipt.json": "61d781d2511a2d9d82a254ff6cdcbe0a0f9b8ae66f6a776e2777e350ee5612cc",
+    "build-attempt-2.stderr.log": "d1a82540b311298611a71af3d74638378dcbfbaba50d2d2d96b4972e59e1fb85",
+    "controller-attempt-1.log": "ec2ba29847960805bcd3cfca23a4939c8c88b24b7086c329f5f99ef4169cab54",
+    "friend-generated-fixtures.log": "904657bb127340af2752305c1225b7e9f22e75e8d79ec17c26df7fcef73dffa5",
+    "gateway-generated-fixture.log": "25e922bc2790d7d9586b80db852f7e706838dab8ab0b297bc483604bbd4143c8",
+    "post-author-contract.log": "370888c75fa80b173c571bd948d1906c4ef490d15c60e584ca918810771266e5",
+    "preparatory-boundary-usage-failure.json": "9386a090f9a1db6c86171e47a4a471cb726e4eb45b89ac6889c6c1da2fc59ad5",
+    "private-read-context.log": "5ad6e0b8bfc4620eda741e4ec5e486bbfcaf650aacde2337f20e387cb95c7243",
+    "profile-architecture.log": "de795ef13a60aa426b0903b4812cf27b9ea1a22b24760501c680c0d5e2f7662b",
+    "profile-bin-check.log": "f8be1a4bfd4d139887f05216924fdf935fcf6f94c4fa9f9cfdd395bd5498fd96",
+    "profile-config.log": "037a80084d782e9fc8cd126f1a1cc81b572704187ac89fb71a3aa4e05f05f161",
+    "profile-lib-db-free.log": "3dd8c189dcef13f149bd7a51cce94742b7e482b5ab342783833e988021df5d31",
+    "profile-lib-with-unconfigured-db-failure.log": "00fb12652c677e0226150757bd2a7bdab879e0dd508c8ac0f4b0ec8560dba35c",
+    "release-confirmation.json": "16671d9219f28d9f6d23f3ccaa6b679847148f2151ac201442396be8b47cc2f0",
+    "retained-checks.json": "aa3054334cc8d9f69991bbafa2d6ce2d651d6b326a88c03d86a2ee2a1d7d3184",
+    "retained-failed-docker-dependent-lib.json": "6778957d4f8e6f0adf8f8459c7fa2137c593d7d010939678a58bd7bb6bcbca7d",
+    "retained-method-policy.log": "c5786ce41c15237aeb1b594a03b478f14c81c14a544fd5620c3915afae542705",
+    "scope-audit.json": "2ba93ea63301a8f4eadb5c6e56529aa2b90e6a023f45636c3b242b8919a47f40",
+    "static-checks.json": "d343399859ac541d23e5ca55739c9efe8b8d64fe5feeea4e1784a4c8492eeb47"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "case": "same-generation reentrant visibility",
+  "seen": [
+    true
+  ],
+  "expectedLast": true,
+  "actualLast": true,
+  "phase": "ready"
+}

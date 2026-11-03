@@ -1,0 +1,8 @@
+    Checking search-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/search-policy)
+    Checking recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/recommendation-policy)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/services/profile-service)
+    Checking profile-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/profile-domain)
+    Checking platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/platform)
+    Checking profile-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/profile-application)
+    Checking migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/migration-runtime)
+    Finished `dev` profile [unoptimized] target(s) in 2.79s

@@ -1,0 +1,89 @@
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-gateway-profile-owner/backend/services/api-gateway)
+    Finished `test` profile [unoptimized] target(s) in 18.32s
+     Running tests/concert_access.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_access-33ef37b6bbafc804)
+
+running 13 tests
+test live_future_exp_has_no_arbitrary_maximum_lifetime_or_iat_requirement ... ok
+test actual_rs256_claims_keep_exact_identity_and_signed_expiry_without_roles_or_foreign_assertions ... ok
+test already_expired_within_legacy_skew_is_never_live_strict_authority ... ok
+test missing_elapsed_and_zero_original_budgets_fail_before_context_creation ... ok
+test captured_jwt_monotonic_expiry_cannot_be_renewed_while_wall_is_live ... ok
+test original_stop_survives_preverification_and_owner_waits_while_wall_expiry_is_live ... ok
+test header_keys_locations_missing_kid_malformed_and_huge_tokens_fail_safely ... ok
+test future_nbf_never_inherits_legacy_disabled_validation_or_skew ... ok
+test signed_numeric_dates_reject_missing_fractional_string_null_negative_and_overflow_exp ... ok
+test canonical_nonnil_user_and_mandatory_session_are_stricter_than_legacy_projection ... ok
+test clones_share_rotation_and_withdrawal_and_only_unknown_key_remains_refreshable ... ok
+test issuer_audience_type_algorithm_and_signature_are_always_verified ... ok
+test actual_signed_wall_expiry_fences_an_existing_context_before_original_request_stop ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.21s
+
+     Running tests/concert_admission_transport.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_admission_transport-aa7eaacb0aea4536)
+
+running 17 tests
+test read_policy_matches_the_installed_auth_caller_and_actor_contract ... ok
+test binding_inputs_are_shape_only_closed_canonical_and_bounded ... ok
+
+running 1 test
+test global_gateway_auth_capacity_refuses_before_dispatch_and_releases ... test guard_rejects_wrong_actor_body_audience_signature_and_missing_original_deadline ... ok
+test captured_jwt_monotonic_expiry_during_reply_wait_refuses_live_wall_token ... ok
+test observation_time_is_representation_checked_without_an_invented_ttl_and_outage_is_safe ... ok
+test actual_configured_signed_read_is_fresh_email_only_and_keeps_negative_flags ... ok
+test exact_requested_binding_shape_and_closed_states_are_preserved ... ok
+test wrong_configured_service_caller_and_signing_key_are_denied_before_owner ... ok
+test upstream_private_errors_are_fixed_safe_and_never_retried ... ok
+test dropped_future_releases_controlled_handler_and_next_read_recovers ... ok
+test malformed_enum_consistency_timestamp_and_size_never_project_success ... ok
+test channel_readiness_is_bounded_by_original_context_before_any_server_dispatch ... ok
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 2.14s
+
+test global_gateway_auth_capacity_refuses_before_dispatch_and_releases ... ok
+test earlier_waits_and_already_elapsed_context_do_not_receive_fresh_edge_time ... ok
+test observation_consumption_rechecks_its_borrowed_context ... ok
+test slow_and_noncooperative_late_replies_cannot_outlive_original_stop ... ok
+test actual_jwt_wall_expiry_during_reply_wait_refuses_success ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.52s
+
+     Running tests/concert_profile_transport.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_profile_transport-4cd74b2ca6850e78)
+
+running 15 tests
+test read_policy_matches_installed_gateway_actor_contract ... ok
+
+running 1 test
+test global_gateway_profile_capacity_refuses_before_dispatch_and_releases ... test guard_rejects_wrong_actor_body_audience_signature_and_missing_original_deadline ... ok
+GatewayProfile cancellation: calls=2 rejected=0 deadlines=0 available=256/256
+GatewayProfile lifecycle: calls=5 rejected=1 deadlines=2 available=256/256
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 14 filtered out; finished in 1.59s
+
+test global_gateway_profile_capacity_refuses_before_dispatch_and_releases ... ok
+
+thread 'decode_limit_counts_valid_unknown_fields_at_exact_boundary' panicked at services/api-gateway/tests/concert_profile_transport.rs:1082:33:
+called `Result::unwrap()` on an `Err` value: Unavailable
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test captured_jwt_monotonic_expiry_during_reply_wait_refuses_live_wall_token ... ok
+test decode_limit_counts_valid_unknown_fields_at_exact_boundary ... FAILED
+test signed_self_reads_validate_minimal_content_and_fresh_changes ... ok
+test wrong_caller_token_and_signature_never_reach_owner ... ok
+test missing_misbound_malformed_and_oversized_replies_are_denied ... ok
+test dependency_statuses_are_fixed_safe_and_not_retried ... ok
+test profile_content_limits_controls_empty_bio_and_calendar_are_exact ... ok
+test already_elapsed_context_never_dispatches_and_values_are_not_trimmed ... ok
+test channel_readiness_is_bounded_by_original_context_before_any_server_dispatch ... ok
+test consumed_observation_stops_after_borrowed_context_expiry ... ok
+test awaited_delayed_and_noncooperative_results_cannot_outlive_context ... ok
+test actual_jwt_wall_expiry_during_reply_wait_refuses_success ... ok
+
+failures:
+
+failures:
+    decode_limit_counts_valid_unknown_fields_at_exact_boundary
+
+test result: FAILED. 14 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.58s
+
+error: test failed, to rerun pass `-p api-gateway --test concert_profile_transport`

@@ -1,0 +1,147 @@
+{
+  "result": "PASS",
+  "candidate_head": "953bddffb2de7dd6c41869b923f71855a7d19f50",
+  "source_sha256": {
+    "backend/services/api-gateway/tests/concert_profile_owner_integration.rs": "ba0238ef6ef89cb4e79d34213a6b19f2528a8591d9904335fdaea464236cec2b",
+    "backend/services/api-gateway/tests/support/concert_profile_owner_fixture.rs": "f91608732d86e66a586763faa852d928ad772d7646d0dd04f767c0d33d8e0224",
+    "backend/services/api-gateway/tests/support/concert_profile_owner_native.py": "5a3898f95ffc3c1a329443c17ef733efa8cb085ecc48100019e91530aca837e7",
+    "docs/mcr/backend/gateway-profile-owner-integration.md": "0c7aed7882c53b815147016b57837edf5914ef9d203fa1fcd9299375bf621e1b",
+    "backend/services/api-gateway/src/adapters/out/profile_client.rs": "55a4889cda730d695205853672ffbaecff56e3a3c590250f4c181f0cef3455bf",
+    "backend/services/api-gateway/src/adapters/out/profile_client/concert_identity.rs": "4529bc8a95dfce7a34584eb0d9bb782a5d436cb234b8b9eed3b9de285baa1758",
+    "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs": "e555eea1117d5d692181cb2bdb95002d451e3a3b46cbebe9d729ce39f572e899",
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": "7ea95e3561548373fbbabf66764841289667ca3d2a58c86b01bd7611a6e38e23",
+    "backend/services/profile-service/src/adapters/in/grpc/method_policy.rs": "08c2a07bdfeb3bc5fdb85129435155c16d78ebfcf3f561ecdb7ef9237daa0b02",
+    "backend/services/profile-service/src/adapters/in/grpc/server.rs": "2394ed4648748f175234f4c8f6776cf573ca1f73840457c5f503df75202c4aba",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs": "62ae02b2184a2ddd4d056c0a6c7db6c40111ee6c6e86812f92c4572153921ff0",
+    "backend/services/profile-service/src/config/mod.rs": "d4d0bf582239bef8d76ed73ecd5614af3ab30e2d8a0f74734717b301d7254723",
+    "backend/crates/profile-application/src/concert_identity.rs": "4308b9ae0d5a30f0255f3b559a23618c16f6d6f9b48c879775cab14223879ece",
+    "backend/proto/profile/v1/profile.proto": "1ac74dfaed797919c333829aeaa3aa039c5dc08ea19b97b0a55d2a85fff79485",
+    "backend/crates/platform/src/actor_delegation.rs": "0eba2a8eef09b6f1a365a8fd3a176b9090907abef7b12b33e3a0b6f58eb2eac8",
+    "backend/crates/platform/src/actor_delegation/read_authority.rs": "74d2dc74d0fba60c69c4e6f9b18eeecc862562db169a76151bdc6f4539d95b51",
+    "backend/crates/platform/src/call_deadline.rs": "e6e9a23d6b7805102962fb742c2baba385a332ce0a445cae77b9e20592af4e58",
+    "backend/crates/platform/src/grpc_method_policy.rs": "d4bb67063af62ce5f41d44007cc6c1e9fb55b7bb7341c4b1908238e0fe6234b5",
+    "backend/crates/platform/src/edge.rs": "6e2b60369167b138e8e4ec442db332dbc8df4fd5ac995cddb137afd0db0d5fd0",
+    "backend/crates/platform/src/grpc_deadline.rs": "8541e27f357b318aad6b6041f83add22266373ef842b1ff75652887889211db9",
+    "backend/crates/platform/src/edge_concurrency.rs": "97b2da954fd80a8075085f5616e6a250f77578fb1c9de27427e6f67804bfc620",
+    "backend/scripts/mcr/migration_smoke.py": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+    "backend/Cargo.toml": "b7f5fa7c2de9fd1f9a939ca69c6f1fa6ff27fcaf11475055c97e83bfa837ba8b",
+    "backend/services/api-gateway/Cargo.toml": "41e0b55bcf0b3ca6bd8ee04390c4db0c06b078744e57245fd09d92f6f590d17f",
+    "backend/services/profile-service/migrations/0001_init_profile.sql": "4c0c0ce757b6971895f5bd1f46e4b2314f4d5abfda76cab9a535142d9053d862",
+    "backend/services/profile-service/migrations/0002_governance.sql": "bbc3f355293924abe5628610a1bdbfb1ceca15f9abcb1070eb2916b2ec6bcc21",
+    "backend/services/profile-service/migrations/0003_account_privacy.sql": "b20fec5d9e20339bd0abfe3363c86b9b6e76b5dcb08d7a873ba5fe13124051a9",
+    "backend/services/profile-service/migrations/0004_search_trigram_index.sql": "8e1bfe023ae99a02c039de9cd69ad713eaeaf69f045c227307863a551d2d0459",
+    "backend/services/profile-service/migrations/0005_owner_mutation_receipts.sql": "3eead515b0032692d67666fcc813615d60e9f33332b34fc90c07de1e688cba58",
+    "backend/services/profile-service/migrations/0006_profile_edit_owner_receipts.sql": "5a8e1d4fcd88582a914dc46e1649003a732d1a081c17d8b599857968407677a7",
+    "backend/services/profile-service/migrations/0007_user_deletion_fences.sql": "050a2239f3efbf14016b36b41d0e50ed22ba408284165418d1a347059b3f2930"
+  },
+  "binary": "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_profile_owner_integration-9562e919c2615559",
+  "binary_sha256": "41bda743d21aea5b45508dadd3b80bcf98b3a26f1865aee1e397c6e58b7c1ac1",
+  "build_metadata_sha256": "d1aebc55bb422d3e9f2f217b5aff2ce194610aafec211f52112875d358c92991",
+  "artifact_profile": {
+    "opt_level": "0",
+    "debuginfo": 0,
+    "debug_assertions": true,
+    "overflow_checks": true,
+    "test": true
+  },
+  "target_dir": "/Users/lhs/Desktop/mcr-build/backend",
+  "transport": "configured Gateway Profile client to generated Profile server with production guard; plaintext loopback, not TLS, HTTP or Concert acceptance",
+  "migration_mode": "direct exact retained SQL in order, not SQLx ledger or Profile startup qualification",
+  "commands": {
+    "no-database-guard": {
+      "args": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_profile_owner_integration-9562e919c2615559",
+        "--skip",
+        "native_",
+        "--test-threads=1",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "seconds": 4.614775499998359,
+      "log_sha256": "7631413f648792e09264c730585fd4e35e65bb59bc5745dff9023630b0b933ac"
+    },
+    "migration:0001_init_profile.sql": {
+      "exit_code": 0
+    },
+    "migration:0002_governance.sql": {
+      "exit_code": 0
+    },
+    "migration:0003_account_privacy.sql": {
+      "exit_code": 0
+    },
+    "migration:0004_search_trigram_index.sql": {
+      "exit_code": 0
+    },
+    "migration:0005_owner_mutation_receipts.sql": {
+      "exit_code": 0
+    },
+    "migration:0006_profile_edit_owner_receipts.sql": {
+      "exit_code": 0
+    },
+    "migration:0007_user_deletion_fences.sql": {
+      "exit_code": 0
+    },
+    "native-online": {
+      "args": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_profile_owner_integration-9562e919c2615559",
+        "native_",
+        "--skip",
+        "native_stopped_database_is_fixed_unavailable",
+        "--skip",
+        "native_restarted_database_serves_a_fresh_read",
+        "--test-threads=1",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "seconds": 4.218724791004206,
+      "log_sha256": "1352e823cc107c9e672fd391cb775ec61b0ffbad01cd39c9705a265025083cb2"
+    },
+    "native-outage": {
+      "args": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_profile_owner_integration-9562e919c2615559",
+        "--exact",
+        "native_stopped_database_is_fixed_unavailable",
+        "--test-threads=1",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "seconds": 3.2007159580025473,
+      "log_sha256": "e64052e174828f288b7a8ba921852f3a0d980bb8223301e0b206988ba1cb5a15"
+    },
+    "native-restarted": {
+      "args": [
+        "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_profile_owner_integration-9562e919c2615559",
+        "--exact",
+        "native_restarted_database_serves_a_fresh_read",
+        "--test-threads=1",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "seconds": 2.071792375005316,
+      "log_sha256": "d3e544685e8025f3dc6e71f98cf44c4a481ffd3202ef9ae00c76889ddf7445f1"
+    }
+  },
+  "attempt": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256",
+  "owned_root": "/private/tmp/mcr-pg-0n_9hy8e",
+  "owner_identity": [
+    16777229,
+    537866257
+  ],
+  "postgres_version": "16.14 (Homebrew)",
+  "migration_sha256": {
+    "backend/services/profile-service/migrations/0001_init_profile.sql": "4c0c0ce757b6971895f5bd1f46e4b2314f4d5abfda76cab9a535142d9053d862",
+    "backend/services/profile-service/migrations/0002_governance.sql": "bbc3f355293924abe5628610a1bdbfb1ceca15f9abcb1070eb2916b2ec6bcc21",
+    "backend/services/profile-service/migrations/0003_account_privacy.sql": "b20fec5d9e20339bd0abfe3363c86b9b6e76b5dcb08d7a873ba5fe13124051a9",
+    "backend/services/profile-service/migrations/0004_search_trigram_index.sql": "8e1bfe023ae99a02c039de9cd69ad713eaeaf69f045c227307863a551d2d0459",
+    "backend/services/profile-service/migrations/0005_owner_mutation_receipts.sql": "3eead515b0032692d67666fcc813615d60e9f33332b34fc90c07de1e688cba58",
+    "backend/services/profile-service/migrations/0006_profile_edit_owner_receipts.sql": "5a8e1d4fcd88582a914dc46e1649003a732d1a081c17d8b599857968407677a7",
+    "backend/services/profile-service/migrations/0007_user_deletion_fences.sql": "050a2239f3efbf14016b36b41d0e50ed22ba408284165418d1a347059b3f2930"
+  },
+  "owned_server_stopped_for_outage": true,
+  "postgres_log_sha256": "6d097c2c6992cd60022f8597c12cbba86c8fea65611a9b7ee55e3579b8981030",
+  "cleanup": {
+    "exact_owned_root_absent": true,
+    "owned_server_stopped": true
+  }
+}

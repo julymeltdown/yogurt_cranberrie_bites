@@ -1,0 +1,17 @@
+    Finished `test` profile [unoptimized] target(s) in 0.11s
+     Running unittests src/lib.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/platform-7926b4b3670d1075)
+
+running 10 tests
+test grpc_method_policy::tests::proto_rpc_names_reads_service_methods ... ok
+test grpc_method_policy::tests::listed_caller_reaches_the_handler ... ok
+test grpc_method_policy::tests::a_request_without_a_verified_caller_is_unauthenticated ... ok
+test grpc_method_policy::tests::a_service_outside_the_workload_set_registers_without_delegation ... ok
+test grpc_method_policy::forwarding_tests::registration_rejects_unknown_unlisted_duplicate_and_unsupported_presenters ... ok
+test grpc_method_policy::tests::wrapping_rejects_inconsistent_policies ... ok
+test grpc_method_policy::tests::unlisted_callers_and_methods_are_denied_before_the_handler ... ok
+test grpc_method_policy::forwarding_tests::admitted_post_handlers_keep_their_sealed_parent_during_every_poll ... ok
+test grpc_method_policy::tests::actor_bound_methods_require_a_matching_delegation ... ok
+test grpc_method_policy::forwarding_tests::proof_requirement_is_independent_of_actor_fields_and_has_no_fallback ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 170 filtered out; finished in 0.01s
+

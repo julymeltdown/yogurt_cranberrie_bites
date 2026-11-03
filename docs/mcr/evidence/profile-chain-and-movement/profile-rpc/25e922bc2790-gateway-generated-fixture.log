@@ -1,0 +1,28 @@
+   Compiling recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/recommendation-policy)
+   Compiling migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/migration-runtime)
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/platform)
+   Compiling api-gateway v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/api-gateway)
+   Compiling gateway-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/gateway-domain)
+   Compiling gateway-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/gateway-application)
+   Compiling friend-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/friend-domain)
+   Compiling post-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/post-domain)
+   Compiling notification-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/notification-service)
+   Compiling post-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/post-service)
+   Compiling friend-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/friend-service)
+   Compiling notification-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/notification-domain)
+   Compiling profile-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/profile-domain)
+   Compiling api-contracts v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/api-contracts)
+   Compiling profile-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/profile-application)
+   Compiling notification-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/notification-application)
+   Compiling post-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/post-application)
+   Compiling friend-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/friend-application)
+   Compiling test-support v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/test-support)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/profile-service)
+    Finished `test` profile [unoptimized] target(s) in 21.08s
+     Running tests/read_retry_transport.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/read_retry_transport-3815a547f459794c)
+
+running 1 test
+test gateway_profile_reads_retry_once_and_mutations_run_once ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+

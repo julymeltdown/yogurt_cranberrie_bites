@@ -1,0 +1,12 @@
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/profile-service)
+    Finished `test` profile [unoptimized] target(s) in 1.74s
+     Running tests/contract.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/contract-25a19e26cc5c62cd)
+
+running 4 tests
+test profile_author_authority_contract::check_author_profile_reports_absence_and_a_malformed_id_without_content ... ok
+test profile_author_authority_contract::check_author_profile_rejects_a_caller_that_is_not_an_authenticated_post ... ok
+test profile_author_authority_contract::check_author_profile_refuses_an_owner_that_answers_for_another_user ... ok
+test profile_author_authority_contract::check_author_profile_binds_the_requested_author_to_the_verified_actor ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.00s
+

@@ -1,0 +1,63 @@
+   Compiling serde_core v1.0.228
+   Compiling tokio v1.50.0
+   Compiling smallvec v1.15.1
+   Compiling tracing v0.1.44
+   Compiling futures-io v0.3.32
+   Compiling futures-util v0.3.32
+   Compiling tokio-util v0.7.18
+   Compiling getrandom v0.2.17
+   Compiling ring v0.17.14
+   Compiling h2 v0.4.16
+   Compiling rustls-webpki v0.103.16
+   Compiling hyper v1.8.1
+   Compiling rustls v0.23.46
+   Compiling hyper-util v0.1.20
+   Compiling tower v0.5.3
+   Compiling axum v0.8.9
+   Compiling tokio-rustls v0.26.4
+   Compiling hyper-timeout v0.5.2
+   Compiling tokio-stream v0.1.18
+   Compiling serde v1.0.228
+   Compiling tonic v0.14.6
+   Compiling opentelemetry v0.33.0
+   Compiling futures-executor v0.3.32
+   Compiling icu_normalizer v2.1.1
+   Compiling tonic-prost v0.14.6
+   Compiling serde_json v1.0.149
+   Compiling regex-automata v0.4.14
+   Compiling idna_adapter v1.2.1
+   Compiling opentelemetry_sdk v0.33.0
+   Compiling matchers v0.2.0
+   Compiling tracing-serde v0.2.0
+   Compiling idna v1.1.0
+   Compiling tracing-subscriber v0.3.22
+   Compiling chrono v0.4.44
+   Compiling tonic-types v0.14.6
+   Compiling digest v0.10.7
+   Compiling opentelemetry-proto v0.33.0
+   Compiling uuid v1.22.0
+   Compiling yasna v0.6.0
+   Compiling form_urlencoded v1.2.2
+   Compiling proptest v1.11.0
+   Compiling rcgen v0.14.10
+   Compiling recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/recommendation-policy)
+   Compiling sha2 v0.10.9
+   Compiling url v2.5.8
+   Compiling opentelemetry-otlp v0.33.0
+   Compiling tracing-opentelemetry v0.34.0
+   Compiling tonic-health v0.14.6
+   Compiling futures v0.3.32
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/platform)
+    Finished `test` profile [unoptimized] target(s) in 15.00s
+     Running unittests src/lib.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/platform-7926b4b3670d1075)
+
+running 6 tests
+test actor_delegation::read_authority::tests::debug_does_not_export_the_actor_or_expiry ... ok
+test actor_delegation::read_authority::tests::buffering_and_dispatch_waits_consume_the_same_resource_ceiling ... ok
+test actor_delegation::read_authority::tests::original_transport_and_captured_proof_stops_only_shorten ... ok
+test actor_delegation::read_authority::tests::missing_original_deadline_is_not_replaced_with_a_fresh_budget ... ok
+test actor_delegation::read_authority::tests::expired_and_overflowed_proof_cannot_install_context ... ok
+test actor_delegation::read_authority::tests::captured_proof_monotonic_expiry_survives_a_later_live_wall_interval ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 174 filtered out; finished in 0.03s
+

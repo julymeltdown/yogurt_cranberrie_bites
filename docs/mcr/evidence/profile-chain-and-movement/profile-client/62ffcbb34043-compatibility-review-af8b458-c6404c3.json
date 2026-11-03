@@ -1,0 +1,42 @@
+{
+  "status": "STATIC_REVIEW_COMPLETE_NO_ACTIONABLE_FINDINGS",
+  "timestamp": "2026-11-03T11:59:14.642063+00:00",
+  "producer_revision": "af8b45893b8e979371bc5fccaff071770dfd98a4",
+  "consumer_revision": "c6404c33e2d284b776652b416d0b96ed45856a28",
+  "reviewed_current_head": "c6404c33e2d284b776652b416d0b96ed45856a28",
+  "exact_producer_consumer_blobs_verified": true,
+  "sha256": {
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": "86b5f9b8c3ff50422e6e1dd29f1a4984d07992e32445e90c1ecc46753c85feee",
+    "backend/services/api-gateway/src/adapters/out/profile_client/concert_identity.rs": "4529bc8a95dfce7a34584eb0d9bb782a5d436cb234b8b9eed3b9de285baa1758",
+    "backend/crates/profile-application/src/concert_identity.rs": "4308b9ae0d5a30f0255f3b559a23618c16f6d6f9b48c879775cab14223879ece",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs": "cff6784cb6180f29e6b9b4e8f441797f924fe550a2ec2f81c6a8957134491e3d",
+    "backend/proto/profile/v1/profile.proto": "1ac74dfaed797919c333829aeaa3aa039c5dc08ea19b97b0a55d2a85fff79485"
+  },
+  "content_bound": {
+    "uuid_bytes": 36,
+    "display_name_utf8_bytes_max": 160,
+    "bio_utf8_bytes_max": 640,
+    "worst_int64_timestamp_varint_bytes": 10,
+    "inner_protobuf_bytes": 855,
+    "outer_protobuf_bytes": 858,
+    "grpc_framed_bytes": 863,
+    "client_decoding_payload_cap": 1024,
+    "calculation": "independent Python protobuf framing using year 1 negative microsecond timestamp; no generated client or service executed"
+  },
+  "review": {
+    "authority": "Client configured Gateway identity and Profile audience actor signer match actual method policy; owner requires guard-inserted caller/actor/private VerifiedReadAuthority and exact canonical subject.",
+    "deadline": "Client retains original context/request/JWT/task stop and 700ms edge ceiling; trace propagates remaining duration; owner authority clips original/proof/resource clocks and checks before await, after await and before return.",
+    "mappings": "Owner ContentUnavailable->NotFound and dependency->Unavailable; client preserves NotFound vs Denied/DeadlineExceeded/CapacityExhausted/InvalidResponse/Unavailable and fences elapsed context first; no diagnostic parsing.",
+    "minimal_content": "Both validate same canonical UUID, Unicode scalar limits/control rules, exact-empty bio absence, UTC years1..9999; consumer double-checks returned subject.",
+    "freshness": "No positive cache/retry in either new method; repository single parameterized statement reads current profile plus deletion fence and statement_timestamp. Observation is not TTL/revision/admission.",
+    "cancellation_capacity": "Consumer process-global nonwaiting limiter held over entire generated future; RAII releases on drop/return/error/timeout. Owner await timeout bounded; database cancellation completion is not implied."
+  },
+  "findings": [],
+  "limitations": [
+    "Static producer/consumer compatibility review only; no new Cargo/rustc/test/PG or Docker execution",
+    "Prior controlled-client and producer evidence is not a fresh native combined run",
+    "Real-chain worker owns actual PG end-to-end, lock/cancellation/recovery evidence",
+    "Production TLS/key/configuration, HTTP entry/admission/session/provider/event authority and whole BE04 remain outside this review"
+  ],
+  "paths_modified_in_git": []
+}

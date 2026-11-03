@@ -1,0 +1,11 @@
+   Compiling contracts-build v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/contracts-build)
+   Compiling search-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/search-policy)
+   Compiling recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/recommendation-policy)
+   Compiling profile-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/profile-domain)
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/platform)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/profile-service)
+   Compiling profile-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/profile-application)
+   Compiling migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/migration-runtime)
+   Compiling test-support v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/test-support)
+error: could not compile `profile-service` (test "concert_identity_rpc") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

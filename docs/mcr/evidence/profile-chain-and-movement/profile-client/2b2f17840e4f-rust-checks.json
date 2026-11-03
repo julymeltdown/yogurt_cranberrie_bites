@@ -1,0 +1,51 @@
+[
+  {
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--doc",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "-p",
+      "api-gateway"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/06-doctests.log"
+  },
+  {
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "--lib",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "-p",
+      "api-gateway"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/07-check.log"
+  },
+  {
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "build",
+      "--bin",
+      "api-gateway",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "-p",
+      "api-gateway"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/08-build.log"
+  }
+]

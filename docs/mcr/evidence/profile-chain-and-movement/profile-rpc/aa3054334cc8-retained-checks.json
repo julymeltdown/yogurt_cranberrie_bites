@@ -1,0 +1,187 @@
+[
+  {
+    "name": "profile-lib-db-free",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "profile-service",
+      "--lib",
+      "--",
+      "--skip",
+      "config::tests::external_migration_mode_rejects_schema_damage_without_owner_privileges"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-lib-db-free.log"
+  },
+  {
+    "name": "profile-architecture",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "profile-service",
+      "--test",
+      "architecture"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-architecture.log"
+  },
+  {
+    "name": "post-author-contract",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "profile-service",
+      "--test",
+      "contract",
+      "profile_author_authority_contract"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/post-author-contract.log"
+  },
+  {
+    "name": "profile-config",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "profile-service",
+      "--test",
+      "unit",
+      "config::"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-config.log"
+  },
+  {
+    "name": "private-read-context",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "platform",
+      "--lib",
+      "actor_delegation::read_authority"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/private-read-context.log"
+  },
+  {
+    "name": "authority-deadline",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "platform",
+      "--lib",
+      "actor_delegation::authority_deadline"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/authority-deadline.log"
+  },
+  {
+    "name": "retained-method-policy",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "platform",
+      "--lib",
+      "grpc_method_policy"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/retained-method-policy.log"
+  },
+  {
+    "name": "gateway-generated-fixture",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "api-gateway",
+      "--test",
+      "read_retry_transport"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/gateway-generated-fixture.log"
+  },
+  {
+    "name": "friend-generated-fixtures",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "friend-service",
+      "--test",
+      "contract",
+      "--no-run"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/friend-generated-fixtures.log"
+  },
+  {
+    "name": "profile-bin-check",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "check",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "profile-service",
+      "--lib",
+      "--bins"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-bin-check.log"
+  }
+]

@@ -1,0 +1,117 @@
+{
+  "candidate": "80a171db2663f407825659aa2d0b32de213e0fb8",
+  "qa_cherry": "339b250e018b113ad9fb9915b2871a9972a71272",
+  "checks": [
+    {
+      "name": "plan-final",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "boundary-final",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "b1a19c425a30641410d71986714d72b7101f43e8",
+        "--lane",
+        "frontend",
+        "--allow-doc",
+        "docs/mcr/frontend/world-movement.md",
+        "--allow-doc",
+        "docs/mcr/qa/world-movement-review.md"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "candidate-whitespace-final",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "b1a19c425a30641410d71986714d72b7101f43e8",
+        "HEAD"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "listener-final",
+      "command": [
+        "lsof",
+        "-nP",
+        "-iTCP:45837",
+        "-sTCP:LISTEN"
+      ],
+      "exit_code": 1
+    },
+    {
+      "name": "qa-staged-whitespace-final",
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "artifacts": {
+    "source-probe-fixed.mjs": {
+      "sha256": "be6ddab07a119eaab9cb65d7db57256ab4f18f2adb85326286dad9900f0754cd",
+      "bytes": 2109
+    },
+    "source-result-fixed.json": {
+      "sha256": "698620808852df1e5fe59071924b938c76b1b9949d52dbe4a052b5a0db36f47a",
+      "bytes": 145
+    },
+    "bottom-edge-fixed.mjs": {
+      "sha256": "a53d8250b4b208fdd30818a325b269f8313bc4f22e334957533105c4a46b62e6",
+      "bytes": 1689
+    },
+    "bottom-edge-fixed.json": {
+      "sha256": "68c30acc4c44ffbf3f5cc8af9428b408966c0c2dae2047012a3306becf49fb05",
+      "bytes": 3713
+    },
+    "browser-probe-boundary.mjs": {
+      "sha256": "04cdfb60abfc5ca9b78d25883c7df486e7239ce088bd8481190bc17ae307b62f",
+      "bytes": 6198
+    },
+    "browser-result-boundary.json": {
+      "sha256": "3be2e2c574d809947c942eee72be4d7246868c943be0ebb2d3bacec757adb213",
+      "bytes": 2080
+    },
+    "native-360-boundary.png": {
+      "sha256": "def2086e67e34d3f04821f75a5fc55bdf74a2a423d44a8d752185d8337cb2f0b",
+      "bytes": 62692
+    },
+    "boundary-receipt-verification.json": {
+      "sha256": "8bcc15825d2b5acce987c4a74c3fdfadf3278faef62ed992a3490ae96b43fabd",
+      "bytes": 6816
+    },
+    "plan-final.log": {
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+      "bytes": 1435
+    },
+    "boundary-final.log": {
+      "sha256": "81692bd84377d63af8eb55218332ab4bfacae71f81b53b71b485238bd429a4ea",
+      "bytes": 124
+    },
+    "candidate-whitespace-final.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "listener-final.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "qa-staged-whitespace-final.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

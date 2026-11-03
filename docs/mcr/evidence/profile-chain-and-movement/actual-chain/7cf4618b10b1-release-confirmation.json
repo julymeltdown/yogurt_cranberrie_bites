@@ -1,0 +1,26 @@
+{
+  "released": true,
+  "time_ns": 1793707296961227000,
+  "target": "/Users/lhs/Desktop/mcr-build/backend",
+  "active_rust_test_or_owned_pg": [],
+  "owned_fixtures": [
+    {
+      "receipt": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707087959036000-7a565b98/receipt.json",
+      "owned_root": "/private/tmp/mcr-pg-6jhch8jz",
+      "absent": true,
+      "cleanup": {
+        "exact_owned_root_absent": true,
+        "owned_server_stopped": true
+      }
+    },
+    {
+      "receipt": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707174758436000-f017b49b/receipt.json",
+      "owned_root": "/private/tmp/mcr-pg-g50wn3yi",
+      "absent": true,
+      "cleanup": {
+        "exact_owned_root_absent": true,
+        "owned_server_stopped": true
+      }
+    }
+  ]
+}

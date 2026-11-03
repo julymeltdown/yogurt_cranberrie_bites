@@ -1,0 +1,16 @@
+L.5432"
+2026-11-03 20:59:37.483 KST [85435] LOG:  database system was shut down at 2026-11-03 20:59:37 KST
+2026-11-03 20:59:37.485 KST [85432] LOG:  database system is ready to accept connections
+2026-11-03 20:59:47.457 KST [85525] ERROR:  permission denied for table profiles
+2026-11-03 20:59:47.457 KST [85525] STATEMENT:  select p.user_id, p.nickname, p.bio, statement_timestamp() as observed_at
+	             from profiles p
+	             where p.user_id = $1 and p.deleted_at is null
+	               and octet_length(p.nickname) <= 160 and char_length(p.nickname) <= 40
+	               and octet_length(p.bio) <= 640 and char_length(p.bio) <= 160
+	               and not exists (
+	                   select 1 from profile_user_deletion_tombstones d where d.user_id = p.user_id
+	               )
+2026-11-03 20:59:47.539 KST [85528] ERROR:  permission denied for table profiles
+2026-11-03 20:59:47.539 KST [85528] STATEMENT:  select username,avatar_url,delete_reason from profiles where user_id=$1
+2026-11-03 20:59:47.539 KST [85528] ERROR:  cannot execute UPDATE in a read-only transaction
+2026-11-03 20:59:47.539 KST [85528] STATEMENT:  update profiles set nickname='forbidden' where user_id=$1

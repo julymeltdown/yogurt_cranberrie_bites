@@ -1,0 +1,59 @@
+{
+  "base": "d63fb2b95d3d8e61406ef71a12ed86a3b0bf15fd",
+  "branch": "codex/mcr-be-profile-self-rpc",
+  "paths": [
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs",
+    "backend/services/profile-service/tests/concert_identity_rpc.rs",
+    "backend/services/profile-service/tests/support/concert_identity_fixture.rs",
+    "backend/services/profile-service/tests/support/concert_identity_native.py",
+    "docs/mcr/backend/profile-self-rpc.md"
+  ],
+  "changed_paths": [
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs",
+    "backend/services/profile-service/tests/concert_identity_rpc.rs",
+    "backend/services/profile-service/tests/support/concert_identity_fixture.rs",
+    "backend/services/profile-service/tests/support/concert_identity_native.py",
+    "docs/mcr/backend/profile-self-rpc.md"
+  ],
+  "unchanged_native_input_pins": true,
+  "owner_and_docs_source_unchanged": true,
+  "former_owner_worktree_clean_at_exact_handoff": true,
+  "imports": {
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": [
+      "use super::server::proto;",
+      "use crate::config::AppState;",
+      "use platform::actor_delegation::{read_authority::VerifiedReadAuthority, VerifiedActor};",
+      "use platform::edge::Edge;",
+      "use platform::grpc_auth::{VerifiedCaller, Workload};",
+      "use profile_application::concert_identity::{ConcertProfileError, ConcertProfileQuery};",
+      "use tonic::{Request, Response, Status};"
+    ],
+    "backend/services/profile-service/tests/concert_identity_rpc.rs": [
+      "use fixture::*;",
+      "use platform::actor_delegation::{ActorDelegationSigner, VerifiedActor, LIFETIME_SECONDS};",
+      "use platform::grpc_auth::{VerifiedCaller, Workload};",
+      "use profile_service::adapters::r#in::grpc::server::{proto, ProfileGrpcServer};",
+      "use prost::Message;",
+      "use proto::profile_service_server::ProfileService;",
+      "use std::{",
+      "use tonic::{Code, Request};",
+      "use uuid::Uuid;"
+    ],
+    "backend/services/profile-service/tests/support/concert_identity_fixture.rs": [
+      "use platform::actor_delegation::{ActorDelegationSigner, ActorDelegationVerifier, HEADER};",
+      "use platform::call_deadline::{CallDeadlineLayer, REMAINING_HEADER};",
+      "use platform::grpc_auth::{CallerRegistry, Workload};",
+      "use profile_application::concert_identity::*;",
+      "use profile_service::adapters::r#in::grpc::{",
+      "use profile_service::config::{build_state, AppConfig, AppState};",
+      "use prost::Message;",
+      "use sqlx::{",
+      "use std::{",
+      "use tokio::{net::TcpListener, sync::oneshot, task::JoinHandle};",
+      "use tonic::codegen::tokio_stream::wrappers::TcpListenerStream;",
+      "use tonic::{",
+      "use uuid::Uuid;"
+    ]
+  },
+  "result": "PASS"
+}

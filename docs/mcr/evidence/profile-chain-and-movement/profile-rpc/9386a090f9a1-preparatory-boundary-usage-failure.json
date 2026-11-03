@@ -1,0 +1,16 @@
+{
+  "source": "transcribed actual tool invocation/output",
+  "args": [
+    "python3",
+    "scripts/mcr/check-boundaries.py",
+    "--base",
+    "d63fb2b95d3d8e61406ef71a12ed86a3b0bf15fd",
+    "--lane",
+    "backend",
+    "--doc",
+    "docs/mcr/backend/profile-self-rpc.md"
+  ],
+  "exit_code": 2,
+  "error": "unrecognized arguments: --doc docs/mcr/backend/profile-self-rpc.md",
+  "not_a_pass": true
+}

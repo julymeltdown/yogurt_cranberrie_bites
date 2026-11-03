@@ -1,0 +1,1 @@
+{"state": "CONTRACT_READY", "fixtures": 33, "producer_runtime": "NOT_RUN", "contract_freeze": "CORE_V0_1"}

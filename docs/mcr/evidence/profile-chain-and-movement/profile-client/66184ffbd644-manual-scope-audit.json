@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "base": "d1282c6c5c27099ce7cd2adeed30ee99e5c1896b",
+  "exact_paths": [
+    "backend/services/api-gateway/src/adapters/out/profile_client.rs",
+    "backend/services/api-gateway/src/adapters/out/profile_client/concert_identity.rs",
+    "backend/services/api-gateway/tests/concert_profile_transport.rs",
+    "docs/mcr/backend/gateway-profile-owner-client.md"
+  ],
+  "module_export_only": true,
+  "retained_source_hashes_match_base": true,
+  "no_frontend_imports": true,
+  "docs_source_unchanged": true,
+  "manual_review": "Production/context/signing/decode/limiter/deadline and response accessors reviewed; tests require actual guarded authority and genuinely active cancellation before abort."
+}

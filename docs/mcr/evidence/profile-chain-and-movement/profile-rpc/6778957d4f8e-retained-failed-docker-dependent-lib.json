@@ -1,0 +1,19 @@
+[
+  {
+    "name": "profile-lib",
+    "args": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-p",
+      "profile-service",
+      "--lib"
+    ],
+    "exit_code": 101,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-lib.log"
+  }
+]

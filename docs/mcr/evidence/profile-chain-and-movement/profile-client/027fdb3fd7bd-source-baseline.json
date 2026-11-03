@@ -1,0 +1,64 @@
+{
+  "base": "d1282c6c5c27099ce7cd2adeed30ee99e5c1896b",
+  "sources": {
+    "backend/proto/profile/v1/profile.proto": "1ac74dfaed797919c333829aeaa3aa039c5dc08ea19b97b0a55d2a85fff79485",
+    "backend/services/profile-service/src/adapters/in/grpc/method_policy.rs": "08c2a07bdfeb3bc5fdb85129435155c16d78ebfcf3f561ecdb7ef9237daa0b02",
+    "backend/services/api-gateway/src/adapters/out/auth_client/concert_admission.rs": "558f41419c9d7f98cbc87e700c0ebd674446f26044dc0441ce370feb1233c132",
+    "backend/services/api-gateway/tests/concert_admission_transport.rs": "3f3c15f2c086ed34c1cbe9ded0c39476f9b4648993ad11234a1439dd974df418",
+    "backend/services/api-gateway/tests/concert_access.rs": "5f9b31a825bc3d09fc55b9be5a26f80eebb17b2a8d89f62ee23cc35416c82d5b",
+    "backend/services/api-gateway/tests/read_retry_transport.rs": "50d3a9043ee7e4051c4c31e01b6f82f7f02899cd56767517bb0c3e98ee72a168",
+    "backend/services/api-gateway/src/adapters/out/jwt/concert_access.rs": "e555eea1117d5d692181cb2bdb95002d451e3a3b46cbebe9d729ce39f572e899",
+    "backend/crates/platform/src/grpc_deadline.rs": "8541e27f357b318aad6b6041f83add22266373ef842b1ff75652887889211db9",
+    "backend/crates/platform/src/actor_delegation.rs": "0eba2a8eef09b6f1a365a8fd3a176b9090907abef7b12b33e3a0b6f58eb2eac8",
+    "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7"
+  },
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/static-1.log"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "d1282c6c5c27099ce7cd2adeed30ee99e5c1896b",
+        "--lane",
+        "backend",
+        "--allow-doc",
+        "docs/mcr/backend/gateway-profile-owner-client.md"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/static-2.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/static-3.log"
+    },
+    {
+      "command": [
+        "rustup",
+        "run",
+        "1.88.0",
+        "rustfmt",
+        "--edition",
+        "2021",
+        "--check",
+        "backend/services/api-gateway/src/adapters/out/profile_client/concert_identity.rs",
+        "backend/services/api-gateway/tests/concert_profile_transport.rs",
+        "backend/services/api-gateway/src/adapters/out/profile_client.rs"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/static-4.log"
+    }
+  ]
+}

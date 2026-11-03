@@ -1,0 +1,10 @@
+   Compiling simd-adler32 v0.3.10
+   Compiling friend-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/friend-domain)
+   Compiling miniz_oxide v0.8.9
+   Compiling flate2 v1.1.9
+   Compiling friend-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/friend-application)
+   Compiling rskafka v0.6.0
+   Compiling friend-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/friend-service)
+   Compiling test-support v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/test-support)
+    Finished `test` profile [unoptimized] target(s) in 6.48s
+  Executable tests/contract.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/contract-a0f92af7d05f8618)

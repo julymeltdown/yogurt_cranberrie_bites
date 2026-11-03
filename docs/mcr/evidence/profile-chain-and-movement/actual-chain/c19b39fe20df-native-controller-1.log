@@ -1,0 +1,2 @@
+Integration attempt failed: AssertionError; evidence /Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707087959036000-7a565b98
+{"result": "FAIL", "receipt": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707087959036000-7a565b98/receipt.json", "cleanup": {"exact_owned_root_absent": true, "owned_server_stopped": true}}

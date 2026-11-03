@@ -1,0 +1,11 @@
+{
+  "base": "d63fb2b95d3d8e61406ef71a12ed86a3b0bf15fd",
+  "shared_target": "/Users/lhs/Desktop/mcr-build/backend",
+  "exclusive_lease_released": true,
+  "process_recheck": "no cargo/rustc/rustdoc/RPC-test or owned PG process",
+  "owned_pg_root": "/private/tmp/mcr-pg-zn_30gmv",
+  "owned_pg_root_absent": true,
+  "native_receipt": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/attempt-1793705860403297000-c6e61a0d/receipt.json",
+  "retained_commands_passed": 10,
+  "no_more_cargo_without_coordination": true
+}

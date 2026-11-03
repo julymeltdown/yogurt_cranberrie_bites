@@ -1,0 +1,947 @@
+{
+  "scope": "Reviewed Profile RPC/client/SQL deadline and FE15 integration checkpoint; bounded evidence, not full product acceptance",
+  "files": [
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/handoff.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/02e8e0be4b3d-handoff.json",
+      "sha256": "02e8e0be4b3dbbdaec595c78fc60925a8f3cccc7ac245771dbf80680ffcb89d1",
+      "bytes": 15620
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/authority-deadline.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/9b095c89d79a-authority-deadline.log",
+      "sha256": "9b095c89d79af36f3090bc4aba7bf6f24e27d9064aee07ecf1d6bb538660063d",
+      "bytes": 653
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/build-attempt-1.jsonl",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/b0f24fbb6474-build-attempt-1.jsonl",
+      "sha256": "b0f24fbb6474d8a73c0ff131cd56f2faedcde8d30c97e77dab8d0667199cebda",
+      "bytes": 337363
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/build-attempt-1.receipt.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/ca9e641975cf-build-attempt-1.receipt.json",
+      "sha256": "ca9e641975cf63838733e47856438b1ce5dcd7d7ff5aba8b41f19de46e39f4ca",
+      "bytes": 992
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/build-attempt-1.stderr.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/33c7b8313f67-build-attempt-1.stderr.log",
+      "sha256": "33c7b8313f67b0da3c9b4b9c4143035b845139d14a397c2f49b28dcadae41f98",
+      "bytes": 1255
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/build-attempt-2.jsonl",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/4fb818263775-build-attempt-2.jsonl",
+      "sha256": "4fb818263775f2aba613cc02edfac90e3524af90943dc9e35a2ac449e2aec0f5",
+      "bytes": 332581
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/build-attempt-2.receipt.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/61d781d2511a-build-attempt-2.receipt.json",
+      "sha256": "61d781d2511a2d9d82a254ff6cdcbe0a0f9b8ae66f6a776e2777e350ee5612cc",
+      "bytes": 990
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/build-attempt-2.stderr.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/d1a82540b311-build-attempt-2.stderr.log",
+      "sha256": "d1a82540b311298611a71af3d74638378dcbfbaba50d2d2d96b4972e59e1fb85",
+      "bytes": 185
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/controller-attempt-1.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/ec2ba2984796-controller-attempt-1.log",
+      "sha256": "ec2ba29847960805bcd3cfca23a4939c8c88b24b7086c329f5f99ef4169cab54",
+      "bytes": 205
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/friend-generated-fixtures.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/904657bb1273-friend-generated-fixtures.log",
+      "sha256": "904657bb127340af2752305c1225b7e9f22e75e8d79ec17c26df7fcef73dffa5",
+      "bytes": 773
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/gateway-generated-fixture.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/25e922bc2790-gateway-generated-fixture.log",
+      "sha256": "25e922bc2790d7d9586b80db852f7e706838dab8ab0b297bc483604bbd4143c8",
+      "bytes": 2843
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/post-author-contract.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/370888c75fa8-post-author-contract.log",
+      "sha256": "370888c75fa80b173c571bd948d1906c4ef490d15c60e584ca918810771266e5",
+      "bytes": 875
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/preparatory-boundary-usage-failure.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/9386a090f9a1-preparatory-boundary-usage-failure.json",
+      "sha256": "9386a090f9a1db6c86171e47a4a471cb726e4eb45b89ac6889c6c1da2fc59ad5",
+      "bytes": 399
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/private-read-context.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/5ad6e0b8bfc4-private-read-context.log",
+      "sha256": "5ad6e0b8bfc4620eda741e4ec5e486bbfcaf650aacde2337f20e387cb95c7243",
+      "bytes": 2704
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-architecture.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/de795ef13a60-profile-architecture.log",
+      "sha256": "de795ef13a60aa426b0903b4812cf27b9ea1a22b24760501c680c0d5e2f7662b",
+      "bytes": 492
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-bin-check.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/f8be1a4bfd4d-profile-bin-check.log",
+      "sha256": "f8be1a4bfd4d139887f05216924fdf935fcf6f94c4fa9f9cfdd395bd5498fd96",
+      "bytes": 674
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-config.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/037a80084d78-profile-config.log",
+      "sha256": "037a80084d782e9fc8cd126f1a1cc81b572704187ac89fb71a3aa4e05f05f161",
+      "bytes": 1398
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-lib-db-free.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/3dd8c189dcef-profile-lib-db-free.log",
+      "sha256": "3dd8c189dcef13f149bd7a51cce94742b7e482b5ab342783833e988021df5d31",
+      "bytes": 4742
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/profile-lib-with-unconfigured-db-failure.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/00fb12652c67-profile-lib-with-unconfigured-db-failure.log",
+      "sha256": "00fb12652c677e0226150757bd2a7bdab879e0dd508c8ac0f4b0ec8560dba35c",
+      "bytes": 5415
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/release-confirmation.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/16671d9219f2-release-confirmation.json",
+      "sha256": "16671d9219f28d9f6d23f3ccaa6b679847148f2151ac201442396be8b47cc2f0",
+      "bytes": 510
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/retained-checks.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/aa3054334cc8-retained-checks.json",
+      "sha256": "aa3054334cc8d9f69991bbafa2d6ce2d651d6b326a88c03d86a2ee2a1d7d3184",
+      "bytes": 3989
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/retained-failed-docker-dependent-lib.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/6778957d4f8e-retained-failed-docker-dependent-lib.json",
+      "sha256": "6778957d4f8e6f0adf8f8459c7fa2137c593d7d010939678a58bd7bb6bcbca7d",
+      "bytes": 344
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/retained-method-policy.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/c5786ce41c15-retained-method-policy.log",
+      "sha256": "c5786ce41c15237aeb1b594a03b478f14c81c14a544fd5620c3915afae542705",
+      "bytes": 1260
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/scope-audit.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/2ba93ea63301-scope-audit.json",
+      "sha256": "2ba93ea63301a8f4eadb5c6e56529aa2b90e6a023f45636c3b242b8919a47f40",
+      "bytes": 2834
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/static-checks.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/d343399859ac-static-checks.json",
+      "sha256": "d343399859ac541d23e5ca55739c9efe8b8d64fe5feeea4e1784a4c8492eeb47",
+      "bytes": 1436
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-self-rpc/attempt-1793705860403297000-c6e61a0d/receipt.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-rpc/ead55f3e3370-receipt.json",
+      "sha256": "ead55f3e33708f91294adc4e10fb2eb00949ff98620c36d1f7bbecbde91a2353",
+      "bytes": 8802
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/handoff-e132899.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/fee8f9069fcd-handoff-e132899.json",
+      "sha256": "fee8f9069fcd327c0e85d8f20610d4a23e68fe8c6f7db91a378f6e750c820faa",
+      "bytes": 10753
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/01-profile-suite.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/8334ee16a426-01-profile-suite.log",
+      "sha256": "8334ee16a426a5d65464c36bb7f6574a229cd03c9912689fd6aad6f0ea0f6600",
+      "bytes": 2205
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/02-combined.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/a75425125bd2-02-combined.log",
+      "sha256": "a75425125bd2bd6dc4e58786179d7fd779f1e3540231126bb44a12dcb9cbfa1f",
+      "bytes": 5539
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/03-boundary-fix.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/19c1acd8940c-03-boundary-fix.log",
+      "sha256": "19c1acd8940cfdb93cd0f1dcd2b65da68a21c2c63c9c45737682e369da0039fb",
+      "bytes": 2827
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/04-boundary-fix.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/42f9a8da4b19-04-boundary-fix.log",
+      "sha256": "42f9a8da4b191d40616e4eafb977bd64b435a9d4e7ac0ef7d254eb2514f0f455",
+      "bytes": 507
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/05-combined-final.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/8533b8642fb5-05-combined-final.log",
+      "sha256": "8533b8642fb5fe2e6ccf6c040b6f75e4a1597929a786490dd5940dc4d6bd3949",
+      "bytes": 25911
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/06-doctests.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/9b86d64a0c86-06-doctests.log",
+      "sha256": "9b86d64a0c861475342d268c406d239cfe6afb585c7314829bf2e09e73baaebc",
+      "bytes": 1954
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/07-check.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/e1aab2517eea-07-check.log",
+      "sha256": "e1aab2517eeabd8313b589db36ae6825c84be7555d470bd957b036fd8aed479d",
+      "bytes": 808
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/08-build.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/071be695dd5d-08-build.log",
+      "sha256": "071be695dd5d922175721c046f4e125fc6e0468b5d0ef48edaaae2950ffd8443",
+      "bytes": 948
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/boundary-invalid-invocation.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/06501ea8a8cf-boundary-invalid-invocation.txt",
+      "sha256": "06501ea8a8cff34b15d153ba0d56bdab132238b4c3ab2b40dfffdb86a0d335f9",
+      "bytes": 516
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/manual-scope-audit.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/66184ffbd644-manual-scope-audit.json",
+      "sha256": "66184ffbd6441ca4c4eea58a52fd51f2ce2af1275df5a0145a910b989a6695a0",
+      "bytes": 718
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/release-confirmation.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/a5ad5e8a02da-release-confirmation.json",
+      "sha256": "a5ad5e8a02daa9ea765b1ade34569adcdcf1d6c6761d30ecdbaf4f0da4fe6e08",
+      "bytes": 356
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/rust-checks.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/2b2f17840e4f-rust-checks.json",
+      "sha256": "2b2f17840e4f91325464cc3de282ba5d232308582649a7f157544eb240f3a28e",
+      "bytes": 878
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/source-baseline.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/027fdb3fd7bd-source-baseline.json",
+      "sha256": "027fdb3fd7bd59ab09fa3e1662153f79a3c54e8b5b434c5c92a84cefb4d18c3c",
+      "bytes": 2681
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/static-1.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/88606f33d640-static-1.log",
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+      "bytes": 1435
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/static-2.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/39630c4c59fc-static-2.log",
+      "sha256": "39630c4c59fcae8f56a4f4d2868e33af0e0fd07f940ae3cae1adddc8e34ce91b",
+      "bytes": 122
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/static-3.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/e3b0c44298fc-static-3.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/static-4.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/e3b0c44298fc-static-4.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/handoff.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/56430818eb29-handoff.json",
+      "sha256": "56430818eb2977342bfd3b4cc1defc12030e7842476f81a173558bfd7140e2cf",
+      "bytes": 7707
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/release-confirmation.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/95d003edf422-release-confirmation.json",
+      "sha256": "95d003edf422d0cb0fbf86bb63f4b5efc3521267cc04be51caee5780ae1a12ef",
+      "bytes": 345
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/scope-audit.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/4fa4b4f79c70-scope-audit.json",
+      "sha256": "4fa4b4f79c70c492c22da4296a83ef4c97822550af9fa979b4ddc05e6fa2b9b8",
+      "bytes": 1301
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-1.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/fb9ea459725a-static-1.log",
+      "sha256": "fb9ea459725ad95ee57f0feae5619b166738c33616c133e92e1ee879931f5fc4",
+      "bytes": 122
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-0.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/88606f33d640-static-0.log",
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+      "bytes": 1435
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-2.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/e3b0c44298fc-static-2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-3.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/e3b0c44298fc-static-3.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/checks.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/e8d5f0915dd3-checks.json",
+      "sha256": "e8d5f0915dd323be4b2411152a4a263540551539c5e6f80a1e560f7693134833",
+      "bytes": 1138
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-checks.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/b563e3058951-static-checks.json",
+      "sha256": "b563e305895118b73a99d15cf66c1028d50017ce8236fd124afaae342914914f",
+      "bytes": 1123
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/01-controlled-rpc.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/1f21b18f83bc-01-controlled-rpc.log",
+      "sha256": "1f21b18f83bcc5bde0a75fd74b810e81e7b060b8d325a4ad443c3b41ebd0afb1",
+      "bytes": 2318
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/03-owner-compile.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/851225559406-03-owner-compile.log",
+      "sha256": "851225559406e9f73893aaf0899daf38dd054b736022c941142b5b46c5cfeb7b",
+      "bytes": 323
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/04-profile-check.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/e58062b25e7a-04-profile-check.log",
+      "sha256": "e58062b25e7a455ba6d6983ffc69726de945aecda90092f096816c3fa5a943af",
+      "bytes": 941
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/profile-query-bound/02-application.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/query-fix/1f948a36bb55-02-application.log",
+      "sha256": "1f948a36bb55f1661d2d002bf5e25093a1d8124a8b10fa04c8ac9d142e859491",
+      "bytes": 1335
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/handoff.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/1bd0cf51bc2a-handoff.json",
+      "sha256": "1bd0cf51bc2aa6f9b2b41b38c373790c4f5745f5116a8f9f8ca6f1cc5887bbdd",
+      "bytes": 12209
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-1/artifacts.jsonl",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/da3b48b2c726-artifacts.jsonl",
+      "sha256": "da3b48b2c726f4b6801d68910f233a76b4894e09650dfc56a6bcd2c95154ad4a",
+      "bytes": 365265
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-1/exit-code",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/9a271f2a916b-exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-1/stderr.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/a56b966e332c-stderr.log",
+      "sha256": "a56b966e332c1eadbbe985b3151d3b734038078d7b205f5656c39e6e9502fcc4",
+      "bytes": 2992
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-2/artifacts.jsonl",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/77e92aef9705-artifacts.jsonl",
+      "sha256": "77e92aef970578839368c2120e45d1a27953b70cf8666040a66347f91a6955c6",
+      "bytes": 365236
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-2/exit-code",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/9a271f2a916b-exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-2/stderr.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/c5575cfb8c0d-stderr.log",
+      "sha256": "c5575cfb8c0d49135fd9f15ded267243e8ea393714769e55f6e7769f80ef805d",
+      "bytes": 187
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-3/artifacts.jsonl",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/d1aebc55bb42-artifacts.jsonl",
+      "sha256": "d1aebc55bb422d3e9f2f217b5aff2ce194610aafec211f52112875d358c92991",
+      "bytes": 365250
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-3/exit-code",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/9a271f2a916b-exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-3/stderr.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/27f7a7fd9243-stderr.log",
+      "sha256": "27f7a7fd924305bfaf8198b1d968e28904f1d3ba515d4c511523cf1744ee0c78",
+      "bytes": 1258
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707087959036000-7a565b98/native-online.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/8edcee41d93a-native-online.log",
+      "sha256": "8edcee41d93af406e55e46808a80abd491880f9d62a89202f5e41fa18127e7c5",
+      "bytes": 1007
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707087959036000-7a565b98/no-database-guard.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/607948485307-no-database-guard.log",
+      "sha256": "6079484853076df05004c361ca7c5f0a7eee1b0f7402d50a8694ce7d31185316",
+      "bytes": 237
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707087959036000-7a565b98/postgres.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/8fcb7e6711a4-postgres.log",
+      "sha256": "8fcb7e6711a45f0ab0c5f57d5225c9fe49a126bc62106bd82a15521b3abb389e",
+      "bytes": 1200
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707087959036000-7a565b98/receipt.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/1472e1084b25-receipt.json",
+      "sha256": "1472e1084b2592a25c7867cb24231123367f1d63fee22ebeac7bc8dbbad776b5",
+      "bytes": 8136
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707174758436000-f017b49b/native-online.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/06d2bfdb69f7-native-online.log",
+      "sha256": "06d2bfdb69f7041692521888b9ee65b3a9efde7445ebe500dd8e9e4469c960b7",
+      "bytes": 1238
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707174758436000-f017b49b/no-database-guard.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/838a4920b56c-no-database-guard.log",
+      "sha256": "838a4920b56c06f694e7322506acd5a489c2c3681b58e3592c6fc12fa954be21",
+      "bytes": 237
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707174758436000-f017b49b/postgres.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/4ab65b8d7615-postgres.log",
+      "sha256": "4ab65b8d761573a0340555cc63ee659267705f5feb4094bb443ce6d439724d82",
+      "bytes": 1200
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707174758436000-f017b49b/receipt.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/c26d65dd8471-receipt.json",
+      "sha256": "c26d65dd84719e607565ec39704d52fda2613fc001eabf54017c7d3c45ec8c99",
+      "bytes": 8135
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256/native-online.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/1352e823cc10-native-online.log",
+      "sha256": "1352e823cc107c9e672fd391cb775ec61b0ffbad01cd39c9705a265025083cb2",
+      "bytes": 785
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256/native-outage.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/e64052e17482-native-outage.log",
+      "sha256": "e64052e174828f288b7a8ba921852f3a0d980bb8223301e0b206988ba1cb5a15",
+      "bytes": 169
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256/native-restarted.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/d3e544685e80-native-restarted.log",
+      "sha256": "d3e544685e8025f3dc6e71f98cf44c4a481ffd3202ef9ae00c76889ddf7445f1",
+      "bytes": 170
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256/no-database-guard.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/7631413f6487-no-database-guard.log",
+      "sha256": "7631413f648792e09264c730585fd4e35e65bb59bc5745dff9023630b0b933ac",
+      "bytes": 237
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256/postgres.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/6d097c2c6992-postgres.log",
+      "sha256": "6d097c2c6992cd60022f8597c12cbba86c8fea65611a9b7ee55e3579b8981030",
+      "bytes": 1200
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256/receipt.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/a1319c0aa647-receipt.json",
+      "sha256": "a1319c0aa6473a2614b8a016ee852e531b65fe536181b5873058ccb4eeefcf5d",
+      "bytes": 9061
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native-command-3.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/66e7595cbed1-native-command-3.json",
+      "sha256": "66e7595cbed1340cc153d9ce2a799567493280649cf4e6d561ebb13b8c465a1e",
+      "bytes": 583
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native-command.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/a12c201069fc-native-command.json",
+      "sha256": "a12c201069fcee2a740688a7ec83eef226141cb1926187d4a8ce4e57b436d931",
+      "bytes": 583
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native-controller-1.exit",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/4355a46b19d3-native-controller-1.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native-controller-1.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/c19b39fe20df-native-controller-1.log",
+      "sha256": "c19b39fe20df235b825284e2e2f01e220b8e304c486220a7566a218ba0ea99a3",
+      "bytes": 377
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native-controller-2.exit",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/4355a46b19d3-native-controller-2.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native-controller-2.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/d0945190dbe7-native-controller-2.log",
+      "sha256": "d0945190dbe72d26cdd6b25139f669f6ff40cbdbd2b953bcaa844878a950d94a",
+      "bytes": 377
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native-controller-3.exit",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/9a271f2a916b-native-controller-3.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native-controller-3.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/590203bf8f69-native-controller-3.log",
+      "sha256": "590203bf8f698f8170bd78226c23906c2195b6308876fae0dd98fc24c1613c3e",
+      "bytes": 223
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/prerequisite-snapshot.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/93539120e192-prerequisite-snapshot.json",
+      "sha256": "93539120e1926c89e14571dafa61cc189de3a129624999971f9ad4141f8a8d4e",
+      "bytes": 3117
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/release-confirmation-final.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/78eaa837c4f0-release-confirmation-final.json",
+      "sha256": "78eaa837c4f02381855613d274046306fd1396e29b40e524c6d6bed6f431d491",
+      "bytes": 1447
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/release-confirmation.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/7cf4618b10b1-release-confirmation.json",
+      "sha256": "7cf4618b10b114b8e5d992d3d9f111c98574fa6d1a1fbc806beeae86e0012d39",
+      "bytes": 825
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/static/boundaries.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/6197a33273bc-boundaries.log",
+      "sha256": "6197a33273bc8ba548342b098fe5d0563f755ecf0d82fac7fef49781fe6162cb",
+      "bytes": 122
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/static/checks.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/34c44330e5b5-checks.json",
+      "sha256": "34c44330e5b564e6901376a8a79518d59c1c1f867f9ed92bff17ac063c09cee4",
+      "bytes": 1694
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/static/plan.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/88606f33d640-plan.log",
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+      "bytes": 1435
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/static/rustfmt.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/e3b0c44298fc-rustfmt.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/static/whitespace.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/actual-chain/e3b0c44298fc-whitespace.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/gateway-profile-owner/compatibility-review-af8b458-c6404c3.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/profile-client/62ffcbb34043-compatibility-review-af8b458-c6404c3.json",
+      "sha256": "62ffcbb340434468c9893fc45a4a8b0d76d9e8ba71d202a7399d1b53f07211c9",
+      "bytes": 3384
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/receipt.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/0a693454a6f1-receipt.json",
+      "sha256": "0a693454a6f1dfc53fb224f3f6c29601ede7edbc3df849d7a32efe2d6f865874",
+      "bytes": 17342
+    },
+    {
+      "source": "/tmp/mcr-fe15-install.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/67725d797a7d-mcr-fe15-install.txt",
+      "sha256": "67725d797a7da89c2496e751aaaedcdfe84c41b27ebbe57a64a44037f3d58e01",
+      "bytes": 1102
+    },
+    {
+      "source": "/tmp/mcr-fe15-full-tests-boundary.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/ac154808959e-mcr-fe15-full-tests-boundary.txt",
+      "sha256": "ac154808959eb436d544fb3a4ddd49acdf2a3003e15a79ef6c59e54b39dec9ec",
+      "bytes": 259
+    },
+    {
+      "source": "/tmp/mcr-fe15-build-boundary.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/acdf618c9fa8-mcr-fe15-build-boundary.txt",
+      "sha256": "acdf618c9fa87d2f47752771ea3ca41390e45df00f04979548ffc2891ffaa3f4",
+      "bytes": 979
+    },
+    {
+      "source": "/tmp/mcr-fe15-lint-boundary.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/66ca2538aae7-mcr-fe15-lint-boundary.txt",
+      "sha256": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372",
+      "bytes": 28
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-boundary-final.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/411eac983dbe-mcr-fe15-browser-boundary-final.txt",
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3",
+      "bytes": 1638
+    },
+    {
+      "source": "/tmp/mcr-fe15-retained-runtime.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/753ff065cac2-mcr-fe15-retained-runtime.txt",
+      "sha256": "753ff065cac27621f752270a00fd04dd593ff24f127e2f97e9bc6d0d3e9bc0a7",
+      "bytes": 3341
+    },
+    {
+      "source": "/tmp/mcr-fe15-core-generation.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/ab0ac16503eb-mcr-fe15-core-generation.txt",
+      "sha256": "ab0ac16503eb1f7b4ba226deb28d7f17a0db67712698c41480ccdad4653fffa6",
+      "bytes": 33
+    },
+    {
+      "source": "/tmp/mcr-fe15-core-validation.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/dfcf37a714e8-mcr-fe15-core-validation.txt",
+      "sha256": "dfcf37a714e89da5afbc1427019a11a304c9935fde300fdd516e54edfe561cbd",
+      "bytes": 107
+    },
+    {
+      "source": "/tmp/mcr-fe15-assets-final.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/19fa348abd24-mcr-fe15-assets-final.txt",
+      "sha256": "19fa348abd240f607b8a66ea254de4dfd46a65965ce6ae721976eb664fd9afd2",
+      "bytes": 483
+    },
+    {
+      "source": "/tmp/mcr-fe15-assets-regressions.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/304b503e8e9a-mcr-fe15-assets-regressions.txt",
+      "sha256": "304b503e8e9a309f89caa84572cfbcb567e731da878a49d6cffe952a508995ce",
+      "bytes": 126
+    },
+    {
+      "source": "/tmp/mcr-fe15-origin-boundary.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/dfe2099ba8bf-mcr-fe15-origin-boundary.txt",
+      "sha256": "dfe2099ba8bf29136e24e43e21dc3bc2ca638e178915cbff2783dca2d12a722c",
+      "bytes": 393
+    },
+    {
+      "source": "/tmp/mcr-fe15-plan-boundary.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/88606f33d640-mcr-fe15-plan-boundary.json",
+      "sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+      "bytes": 1435
+    },
+    {
+      "source": "/tmp/mcr-fe15-boundaries-boundary.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/462c612f7125-mcr-fe15-boundaries-boundary.txt",
+      "sha256": "462c612f71253fc17349eb832229aecb2394228428360e076b2701c359f5dabe",
+      "bytes": 124
+    },
+    {
+      "source": "/tmp/mcr-fe15-visibility-regression-red.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/d68b3eeff89c-mcr-fe15-visibility-regression-red.txt",
+      "sha256": "d68b3eeff89c13638573fbe6e4500c582548bf4c1d56a8e862265f9c26f356fc",
+      "bytes": 1891
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/movement-1280.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/36578e13b0de-movement-1280.png",
+      "sha256": "36578e13b0dec8f02fa48d4d93bf3c807b49fb5bb5e1724488a77b22e4488523",
+      "bytes": 70759
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/movement-360.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/4d6aff708dfe-movement-360.png",
+      "sha256": "4d6aff708dfe1440f680ed5812227bf0299b707ef99bd4f947b8649e999f8cdf",
+      "bytes": 68802
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/movement-390.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/08d3ffa15b2e-movement-390.png",
+      "sha256": "08d3ffa15b2e9027d823c519122d8d2e6d5f7cd8de20fabb731fa07ec821645a",
+      "bytes": 69589
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/movement-430.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/08f81b7f77c4-movement-430.png",
+      "sha256": "08f81b7f77c4468098f69ec7b792abcc19865544c6d2f3d09967958f6897d96a",
+      "bytes": 68790
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/report.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/f62b565166b1-report.json",
+      "sha256": "f62b565166b12b263b779e843d60a7c3bffd3616442b12b01fe6be81ee652a1e",
+      "bytes": 1637
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/short-controls-1280.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/e3eb87d30b5f-short-controls-1280.png",
+      "sha256": "e3eb87d30b5f7c2aa5fc0eeb69bcde1fdfcc80cc5d09f84b2a32f55bb50f1500",
+      "bytes": 40181
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/short-controls-360.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/839ec7a77dce-short-controls-360.png",
+      "sha256": "839ec7a77dce42d9e17fbd1b9b406a4cd9a0b3451e11a4bb6790cf17253fcfb9",
+      "bytes": 32055
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/short-controls-390.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/6690282d083a-short-controls-390.png",
+      "sha256": "6690282d083adc0e70fda6bd98b428a02eaca1f84862679a88008e178222f118",
+      "bytes": 32490
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/boundary-final/short-controls-430.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/1021f1b9eaa1-short-controls-430.png",
+      "sha256": "1021f1b9eaa1969f98ee516613c452f8506d2bbacca81fe6c4412a08f4b0e872",
+      "bytes": 35393
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/final/resource-pins.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/b6fbe7fc0863-resource-pins.json",
+      "sha256": "b6fbe7fc0863d176cc25802a51c5367437045057ed74076284e0fff176c9c93a",
+      "bytes": 13366
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/failure-390.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/21a768b6cbd2-failure-390.png",
+      "sha256": "21a768b6cbd2a70d63295c334f4b96a03486ee3236f5eac2ec5041a81dde2188",
+      "bytes": 37204
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/hash-390.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/f2829794c5a6-hash-390.png",
+      "sha256": "f2829794c5a6a02e15b4b639c76f2b216d74118dba450789364efea80165f0f4",
+      "bytes": 36580
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/invalid-1280.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/f7b8e50b6b51-invalid-1280.png",
+      "sha256": "f7b8e50b6b5178539ebbf2951e12f4bad03227c9f2ccb4f9d25714b38f467cd3",
+      "bytes": 38224
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/invalid-360.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/7e16333976b4-invalid-360.png",
+      "sha256": "7e16333976b4569ce04f0e1395f9a737d55bfe512233c520d8b40338c303cb07",
+      "bytes": 36562
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/invalid-390.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/f2829794c5a6-invalid-390.png",
+      "sha256": "f2829794c5a6a02e15b4b639c76f2b216d74118dba450789364efea80165f0f4",
+      "bytes": 36580
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/invalid-430.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/7eb150287878-invalid-430.png",
+      "sha256": "7eb1502878781b9da1592f9db5d4b3c637e8c4fd9e12c6e1a472fe490770c82d",
+      "bytes": 36489
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/map-1280.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/2c19d031abe6-map-1280.png",
+      "sha256": "2c19d031abe6560d83f8ae723cabcc3e6acc194f29f359910b33a6aeb182eaa7",
+      "bytes": 38243
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/map-360.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/111c70dffb02-map-360.png",
+      "sha256": "111c70dffb02438d29b6e236e29fb61e0b9e437d3fc991a162c7e1456f977b38",
+      "bytes": 36559
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/map-390.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/5f70da25c62a-map-390.png",
+      "sha256": "5f70da25c62ae5572c6df3396777c161a7b5b3a845383e79a626097337a10b15",
+      "bytes": 36591
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/map-430.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/f3b5dc4f9385-map-430.png",
+      "sha256": "f3b5dc4f9385e5085dcdf0d23c4961267ad707a1f0f024873dca164feffa23d6",
+      "bytes": 36502
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/production-public-390.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/903ee5886a63-production-public-390.png",
+      "sha256": "903ee5886a63322a478f088e3fd8d3ab4a03b3876f28c632286a56fb4ef7b970",
+      "bytes": 30264
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/report.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/5f012373b0be-report.json",
+      "sha256": "5f012373b0be81c1f27f654f9adab3b80b12f490337c80d02e92aa729277d1db",
+      "bytes": 1850
+    },
+    {
+      "source": "/tmp/mcr-fe15-evidence/retained-fe14/slow-390.png",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/397c45eef98a-slow-390.png",
+      "sha256": "397c45eef98a978ca9710762da9cd89d445737eafcc68f235cd3a81f73ea722b",
+      "bytes": 36502
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-edge-final.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/411eac983dbe-mcr-fe15-browser-edge-final.txt",
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3",
+      "bytes": 1638
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-eighth.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/411eac983dbe-mcr-fe15-browser-eighth.txt",
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3",
+      "bytes": 1638
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-fifth.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/411eac983dbe-mcr-fe15-browser-fifth.txt",
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3",
+      "bytes": 1638
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-final.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/652b94233dc2-mcr-fe15-browser-final.txt",
+      "sha256": "652b94233dc21aa31ad012ffdf184c2fd70145449b1714a3481936340173cccc",
+      "bytes": 1780
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-first.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/0ed155caaaf5-mcr-fe15-browser-first.txt",
+      "sha256": "0ed155caaaf53fdf9a54a6a0bf69553c5c05ca67bda5bfae46ecb2d773cc429f",
+      "bytes": 806
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-fourth.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/45864f0b11b0-mcr-fe15-browser-fourth.txt",
+      "sha256": "45864f0b11b0d995e912d64c124a5971921b03d52a3bb97e278a1ff5258530d4",
+      "bytes": 421
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-second.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/6e616a2a1a91-mcr-fe15-browser-second.txt",
+      "sha256": "6e616a2a1a91da2034c3ea619841c09ea1c945d397ff6f1971a01792b4220af5",
+      "bytes": 1018
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-seventh.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/e3b0c44298fc-mcr-fe15-browser-seventh.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-sixth.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/411eac983dbe-mcr-fe15-browser-sixth.txt",
+      "sha256": "411eac983dbe8c126fcaac2ab61b5f61280e56993c3be352fce108ee1cb059d3",
+      "bytes": 1638
+    },
+    {
+      "source": "/tmp/mcr-fe15-browser-third.txt",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15/67b214fc1f66-mcr-fe15-browser-third.txt",
+      "sha256": "67b214fc1f66f5c69245dbde83d8e865cd6c82f616a2c1e3d1a68e9961770261",
+      "bytes": 1251
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/fe15-integration/result.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-parent/478cfcbb4d32-result.json",
+      "sha256": "478cfcbb4d32fb886303bce27cc1dd049f07eebf46e33beaf1058c0b39a93fb1",
+      "bytes": 851
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/fe15-integration/1.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-parent/1e10aa4ebe64-1.log",
+      "sha256": "1e10aa4ebe642eeb8895e6865cddb37a28d0637bafbfc0ab49370ddb3fe69356",
+      "bytes": 307
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/fe15-integration/2.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-parent/894a3a9d707f-2.log",
+      "sha256": "894a3a9d707f76435046f501daf23c99ad61c07481c8f120d9738c7675e9d167",
+      "bytes": 979
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/fe15-integration/3.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-parent/66ca2538aae7-3.log",
+      "sha256": "66ca2538aae723547f89d768b0aaa030f16829fbf93dab8cf4d1f37eb6c7e372",
+      "bytes": 28
+    },
+    {
+      "source": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa-fe15-agy8u3i5/boundary-independent-evidence.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-qa/2598eb790690-boundary-independent-evidence.json",
+      "sha256": "2598eb7906902bc44602037c2d358fce1f54894b35df7ad1e74f1e3aaf0c3c03",
+      "bytes": 3179
+    },
+    {
+      "source": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa-fe15-agy8u3i5/bottom-edge-fixed.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-qa/68c30acc4c44-bottom-edge-fixed.json",
+      "sha256": "68c30acc4c44ffbf3f5cc8af9428b408966c0c2dae2047012a3306becf49fb05",
+      "bytes": 3713
+    },
+    {
+      "source": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa-fe15-agy8u3i5/browser-result-boundary.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-qa/3be2e2c574d8-browser-result-boundary.json",
+      "sha256": "3be2e2c574d809947c942eee72be4d7246868c943be0ebb2d3bacec757adb213",
+      "bytes": 2080
+    },
+    {
+      "source": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa-fe15-agy8u3i5/source-result-fixed.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-qa/698620808852-source-result-fixed.json",
+      "sha256": "698620808852df1e5fe59071924b938c76b1b9949d52dbe4a052b5a0db36f47a",
+      "bytes": 145
+    },
+    {
+      "source": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-qa-fe15-agy8u3i5/bottom-edge-initial.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/fe15-qa/b1eebf0f0620-bottom-edge-initial.json",
+      "sha256": "b1eebf0f0620c7e91fed2dd96e19386a5bfe43a5d72ec16fb92ff7a534708725",
+      "bytes": 773
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/receipt.json",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/current-services/766d7c6c6fd3-receipt.json",
+      "sha256": "766d7c6c6fd392c907bd1216768e2131b04d06ed4eb1fadafd1b1a2259066f0d",
+      "bytes": 154520
+    },
+    {
+      "source": "/Users/lhs/Desktop/mcr-build/current-email-bundle/600582d-1793708008138257000/build.log",
+      "archive": "docs/mcr/evidence/profile-chain-and-movement/current-services/0de388e6048b-build.log",
+      "sha256": "0de388e6048b5ee911134ea8045ba0a0b708883c67ae024ac598682351a994ff",
+      "bytes": 2307
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "released": true,
+  "time_ns": 1793707959989820000,
+  "target": "/Users/lhs/Desktop/mcr-build/backend",
+  "candidate_head": "953bddffb2de7dd6c41869b923f71855a7d19f50",
+  "native_receipt": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256/receipt.json",
+  "native_receipt_sha256": "a1319c0aa6473a2614b8a016ee852e531b65fe536181b5873058ccb4eeefcf5d",
+  "active_rust_test_or_owned_pg": [],
+  "owned_fixtures": [
+    {
+      "receipt": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707087959036000-7a565b98/receipt.json",
+      "owned_root": "/private/tmp/mcr-pg-6jhch8jz",
+      "absent": true,
+      "cleanup": {
+        "exact_owned_root_absent": true,
+        "owned_server_stopped": true
+      }
+    },
+    {
+      "receipt": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707174758436000-f017b49b/receipt.json",
+      "owned_root": "/private/tmp/mcr-pg-g50wn3yi",
+      "absent": true,
+      "cleanup": {
+        "exact_owned_root_absent": true,
+        "owned_server_stopped": true
+      }
+    },
+    {
+      "receipt": "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native/attempt-1793707928112387000-398de256/receipt.json",
+      "owned_root": "/private/tmp/mcr-pg-0n_9hy8e",
+      "absent": true,
+      "cleanup": {
+        "exact_owned_root_absent": true,
+        "owned_server_stopped": true
+      }
+    }
+  ]
+}

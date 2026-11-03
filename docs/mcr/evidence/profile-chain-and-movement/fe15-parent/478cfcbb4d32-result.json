@@ -1,0 +1,40 @@
+{
+  "candidate": "b381d03cdc3b0168eba47eb0599f801843eff827",
+  "checks": [
+    {
+      "command": [
+        "corepack",
+        "pnpm@11.7.0",
+        "--dir",
+        "frontend",
+        "test",
+        "src/world/__tests__/movement.test.ts",
+        "src/world/__tests__/runtime.test.ts"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/fe15-integration/1.log"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm@11.7.0",
+        "--dir",
+        "frontend",
+        "build"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/fe15-integration/2.log"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm@11.7.0",
+        "--dir",
+        "frontend",
+        "lint"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/fe15-integration/3.log"
+    }
+  ]
+}

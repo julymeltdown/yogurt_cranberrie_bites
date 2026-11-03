@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to: 0
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend/src/world/__tests__/movement-browser-smoke.mjs:137:87 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 0,
+  operator: 'notStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

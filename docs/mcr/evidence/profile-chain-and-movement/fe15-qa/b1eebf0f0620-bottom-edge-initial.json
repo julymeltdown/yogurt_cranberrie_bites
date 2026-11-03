@@ -1,0 +1,45 @@
+{
+  "candidate": "0511aeab7916967e65bb4cd41508d9a213d26b4e",
+  "source_sha256": "1e80d5b1553c77ae6255ca9f190ff09da22636ee35713094354bdbf17fe88842",
+  "cases": [
+    {
+      "from": {
+        "x": 48,
+        "y": 48
+      },
+      "to": {
+        "x": 48,
+        "y": 128
+      },
+      "fromWalkable": true,
+      "toWalkable": true,
+      "route": null
+    },
+    {
+      "from": {
+        "x": 48,
+        "y": 128
+      },
+      "to": {
+        "x": 48,
+        "y": 48
+      },
+      "fromWalkable": true,
+      "toWalkable": true,
+      "route": null
+    },
+    {
+      "from": {
+        "x": 48,
+        "y": 128
+      },
+      "to": {
+        "x": 80,
+        "y": 128
+      },
+      "fromWalkable": true,
+      "toWalkable": true,
+      "route": null
+    }
+  ]
+}

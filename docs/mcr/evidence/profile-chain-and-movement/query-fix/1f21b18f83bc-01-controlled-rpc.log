@@ -1,0 +1,28 @@
+   Compiling contracts-build v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/contracts-build)
+   Compiling search-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/search-policy)
+   Compiling recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/recommendation-policy)
+   Compiling profile-domain v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/profile-domain)
+   Compiling platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/platform)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/services/profile-service)
+   Compiling profile-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/profile-application)
+   Compiling migration-runtime v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/migration-runtime)
+   Compiling test-support v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-query-bound/backend/crates/test-support)
+    Finished `test` profile [unoptimized] target(s) in 7.46s
+     Running tests/concert_identity_rpc.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_identity_rpc-d100d9d54a59fa06)
+
+running 12 tests
+test bare_or_constructed_verified_extensions_cannot_replace_private_authority ... ok
+test expired_proof_has_no_strict_authority_even_inside_legacy_skew ... ok
+test signed_gateway_self_returns_only_required_profile_and_no_store ... ok
+test exact_signed_proof_replay_never_redispatches ... ok
+test original_budget_is_required_and_never_restarted ... ok
+test missing_wrong_and_registered_sibling_callers_never_dispatch ... ok
+test signature_audience_method_body_actor_and_missing_proof_never_dispatch ... ok
+test malformed_and_noncanonical_subjects_never_dispatch ... ok
+test missing_malformed_misbound_and_dependency_results_are_fixed_and_uncached ... ok
+test whole_owner_await_and_late_noncooperative_completion_are_deadline_fenced ... ok
+test signed_expiry_shortens_original_and_resource_budgets ... ok
+test retained_gateway_profile_local_ceiling_bounds_a_longer_original_budget ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.71s
+

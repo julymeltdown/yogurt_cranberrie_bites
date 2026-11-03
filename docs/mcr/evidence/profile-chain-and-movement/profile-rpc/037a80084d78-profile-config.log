@@ -1,0 +1,21 @@
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/profile-service)
+    Finished `test` profile [unoptimized] target(s) in 1.14s
+     Running tests/unit.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/unit-0104691b32e26964)
+
+running 13 tests
+test config::profile_metrics_accumulate_and_escape_prometheus_labels ... ok
+test config::app_config_load_rejects_invalid_worker_enabled_boolean ... ok
+test config::app_config_load_rejects_missing_production_retention_actor ... ok
+test config::app_config_load_rejects_invalid_worker_interval ... ok
+test config::app_config_load_accepts_safe_production_settings ... ok
+test config::app_config_load_rejects_invalid_mutation_receipt_retention_interval ... ok
+test config::app_config_load_rejects_unsafe_production_http_bind ... ok
+test config::app_config_load_rejects_unbounded_mutation_receipt_retention_batch_size ... ok
+test config::app_config_load_rejects_missing_required_caller_credential ... ok
+test config::app_config_load_rejects_placeholder_caller_credential ... ok
+test config::app_config_load_rejects_unknown_runtime_mode ... ok
+test config::app_config_load_rejects_invalid_retention_actor_uuid ... ok
+test config::app_config_load_uses_parity_defaults_when_runtime_is_not_production ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 34 filtered out; finished in 0.01s
+

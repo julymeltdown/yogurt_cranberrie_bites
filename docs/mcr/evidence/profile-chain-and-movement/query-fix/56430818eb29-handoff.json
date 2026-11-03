@@ -1,0 +1,213 @@
+{
+  "status": "IN_PROGRESS_INDEPENDENT_NATIVE_GATE_PENDING",
+  "goal": "ACTIVE",
+  "base": "c6404c33e2d284b776652b416d0b96ed45856a28",
+  "commit": "9ff053a95836551bebca3eb9c67966bdbdef0a7e",
+  "branch": "codex/mcr-be-profile-query-bound",
+  "changed_paths": [
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs",
+    "docs/mcr/backend/profile-query-deadline.md"
+  ],
+  "file_sha256": {
+    "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs": "7ea95e3561548373fbbabf66764841289667ca3d2a58c86b01bd7611a6e38e23",
+    "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs": "62ae02b2184a2ddd4d056c0a6c7db6c40111ee6c6e86812f92c4572153921ff0",
+    "docs/mcr/backend/profile-query-deadline.md": "69637e4029e27c4ecabd524d05e414ed5fa633da3ef35749c3cdfd2b3fa7bf06"
+  },
+  "environment": {
+    "Rust": "1.88.0",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_PROFILE_TEST_DEBUG": "0",
+    "CARGO_TARGET_DIR": "/Users/lhs/Desktop/mcr-build/backend",
+    "cargo_flags": [
+      "--locked",
+      "--offline",
+      "-j",
+      "2"
+    ]
+  },
+  "controlled_rpc": {
+    "command": [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "-p",
+      "profile-service",
+      "--test",
+      "concert_identity_rpc",
+      "--",
+      "--skip",
+      "native_"
+    ],
+    "exit_code": 0,
+    "passed": 12,
+    "filtered": 6,
+    "log": "01-controlled-rpc.log",
+    "source_note": "Persistence comment updated after this run; no executable behavior changed. Independent native gate will use exact committed sources."
+  },
+  "other_checks": [
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "-p",
+        "profile-application",
+        "--test",
+        "concert_identity",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--manifest-path",
+        "backend/Cargo.toml"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/02-application.log"
+    },
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "-p",
+        "profile-service",
+        "--test",
+        "concert_identity_owner",
+        "--no-run",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--manifest-path",
+        "backend/Cargo.toml"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/03-owner-compile.log"
+    },
+    {
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "check",
+        "-p",
+        "profile-service",
+        "--lib",
+        "--bins",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--manifest-path",
+        "backend/Cargo.toml"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/04-profile-check.log"
+    }
+  ],
+  "static_checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/mcr/check-plan.py"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-0.log"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "c6404c33e2d284b776652b416d0b96ed45856a28",
+        "--lane",
+        "backend",
+        "--allow-doc",
+        "docs/mcr/backend/profile-query-deadline.md"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-1.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-2.log"
+    },
+    {
+      "command": [
+        "rustup",
+        "run",
+        "1.88.0",
+        "rustfmt",
+        "--edition",
+        "2021",
+        "--check",
+        "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs",
+        "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs"
+      ],
+      "exit_code": 0,
+      "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-3.log"
+    }
+  ],
+  "scope": {
+    "result": "PASS",
+    "base": "c6404c33e2d284b776652b416d0b96ed45856a28",
+    "exact_paths": [
+      "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs",
+      "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs",
+      "docs/mcr/backend/profile-query-deadline.md"
+    ],
+    "content_query_identical": true,
+    "retained_inputs_sha256": {
+      "backend/Cargo.lock": "6f4a6388b0aff3b1f835e6f7f0f545f4c9c99a1bc51857a86cbee3daea4a7cd7",
+      "backend/services/profile-service/Cargo.toml": "88aacb372f17c09b7b909cd039a3babbd3b84e9ad0c04ca9550573fd9745306c",
+      "backend/crates/profile-application/src/concert_identity.rs": "4308b9ae0d5a30f0255f3b559a23618c16f6d6f9b48c879775cab14223879ece",
+      "backend/proto/profile/v1/profile.proto": "1ac74dfaed797919c333829aeaa3aa039c5dc08ea19b97b0a55d2a85fff79485",
+      "backend/crates/platform/src/call_deadline.rs": "e6e9a23d6b7805102962fb742c2baba385a332ce0a445cae77b9e20592af4e58",
+      "backend/services/profile-service/src/adapters/in/grpc/method_policy.rs": "08c2a07bdfeb3bc5fdb85129435155c16d78ebfcf3f561ecdb7ef9237daa0b02",
+      "backend/services/auth-service/src/adapters/out/persistence/concert_identity.rs": "cc7d95999d1bba494e2a58d8ee48138ac89665cd7f8bef22cbcf3692038cc651"
+    },
+    "no_frontend_imports": true
+  },
+  "application_tests": 10,
+  "native_execution": "NOT_RUN: independent actual chain worker owns failing regression",
+  "mapping": "Before actual authority stop fixed DependencyUnavailable allowed; at/after actual captured stop RPC final fences DeadlineExceeded; no enum/wire expansion",
+  "release": {
+    "released": true,
+    "target": "/Users/lhs/Desktop/mcr-build/backend",
+    "timestamp_utc": "2026-11-03T12:08:56.999206+00:00",
+    "active_rust_test_or_owned_pg": [],
+    "owned_pg_started": false,
+    "docker_used": false,
+    "head": "9ff053a95836551bebca3eb9c67966bdbdef0a7e",
+    "git_status": "",
+    "no_further_rust_or_pg_without_transfer": true
+  },
+  "log_sha256": {
+    "release-confirmation.json": "95d003edf422d0cb0fbf86bb63f4b5efc3521267cc04be51caee5780ae1a12ef",
+    "scope-audit.json": "4fa4b4f79c70c492c22da4296a83ef4c97822550af9fa979b4ddc05e6fa2b9b8",
+    "static-1.log": "fb9ea459725ad95ee57f0feae5619b166738c33616c133e92e1ee879931f5fc4",
+    "static-0.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "static-2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "static-3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "checks.json": "e8d5f0915dd323be4b2411152a4a263540551539c5e6f80a1e560f7693134833",
+    "static-checks.json": "b563e305895118b73a99d15cf66c1028d50017ce8236fd124afaae342914914f",
+    "01-controlled-rpc.log": "1f21b18f83bcc5bde0a75fd74b810e81e7b060b8d325a4ad443c3b41ebd0afb1",
+    "03-owner-compile.log": "851225559406e9f73893aaf0899daf38dd054b736022c941142b5b46c5cfeb7b",
+    "04-profile-check.log": "e58062b25e7a455ba6d6983ffc69726de945aecda90092f096816c3fa5a943af",
+    "02-application.log": "1f948a36bb55f1661d2d002bf5e25093a1d8124a8b10fa04c8ac9d142e859491"
+  },
+  "limitations": [
+    "Relative PostgreSQL statement timeout prevents abandoned unbounded query but is not instantaneous wire cancellation",
+    "Exact native lock-held cancellation/shortest-stop/pool1 reuse/setting restoration gate still required",
+    "No production TLS/whole BE04/public admission claim"
+  ]
+}

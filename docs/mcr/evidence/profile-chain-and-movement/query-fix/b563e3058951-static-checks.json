@@ -1,0 +1,48 @@
+[
+  {
+    "command": [
+      "python3",
+      "scripts/mcr/check-plan.py"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-0.log"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/mcr/check-boundaries.py",
+      "--base",
+      "c6404c33e2d284b776652b416d0b96ed45856a28",
+      "--lane",
+      "backend",
+      "--allow-doc",
+      "docs/mcr/backend/profile-query-deadline.md"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-1.log"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-2.log"
+  },
+  {
+    "command": [
+      "rustup",
+      "run",
+      "1.88.0",
+      "rustfmt",
+      "--edition",
+      "2021",
+      "--check",
+      "backend/services/profile-service/src/adapters/out/persistence/concert_identity.rs",
+      "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs"
+    ],
+    "exit_code": 0,
+    "log": "/Users/lhs/Desktop/mcr-build/profile-query-bound/static-3.log"
+  }
+]

@@ -1,0 +1,57 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-movement/frontend
+
+ ❯ src/world/__tests__/movement.test.ts (69 tests | 2 failed) 261ms
+   × honors the latest same-owner visibility update ending in true 5ms
+   × honors the latest same-owner visibility update ending in false 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/world/__tests__/movement.test.ts > honors the latest same-owner visibility update ending in true
+AssertionError: expected [ true, false ] to deeply equal [ true ]
+
+- Expected
++ Received
+
+  [
+    true,
++   false,
+  ]
+
+ ❯ src/world/__tests__/movement.test.ts:285:51
+    283|   runtime.setVisible(!finalVisible)
+    284|   expect(enabled).toHaveBeenLastCalledWith(finalVisible)
+    285|   expect(visible.mock.calls.map(call => call[0])).toEqual([finalVisibl…
+       |                                                   ^
+    286|   expect(runtime.read().phase).toBe('ready')
+    287| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/world/__tests__/movement.test.ts > honors the latest same-owner visibility update ending in false
+AssertionError: expected [ false, true ] to deeply equal [ false ]
+
+- Expected
++ Received
+
+  [
+    false,
++   true,
+  ]
+
+ ❯ src/world/__tests__/movement.test.ts:285:51
+    283|   runtime.setVisible(!finalVisible)
+    284|   expect(enabled).toHaveBeenLastCalledWith(finalVisible)
+    285|   expect(visible.mock.calls.map(call => call[0])).toEqual([finalVisibl…
+       |                                                   ^
+    286|   expect(runtime.read().phase).toBe('ready')
+    287| })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 67 passed (69)
+   Start at  20:44:08
+   Duration  898ms (transform 88ms, setup 0ms, import 125ms, tests 261ms, environment 434ms)
+

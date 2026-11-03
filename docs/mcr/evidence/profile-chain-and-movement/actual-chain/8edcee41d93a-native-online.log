@@ -1,0 +1,22 @@
+
+running 5 tests
+test native_cancelled_in_flight_read_releases_gateway_capacity_and_owner_recovers ... FAILED
+test native_fresh_updates_empty_bio_and_unavailable_content_use_fixed_results ... ok
+test native_lock_timeout_expires_context_then_same_client_and_pool_recover ... ok
+test native_permission_failure_is_fixed_unavailable ... ok
+test native_self_content_is_minimal_four_byte_exact_and_jwt_subject_bound ... ok
+
+failures:
+
+---- native_cancelled_in_flight_read_releases_gateway_capacity_and_owner_recovers stdout ----
+
+thread 'native_cancelled_in_flight_read_releases_gateway_capacity_and_owner_recovers' panicked at services/api-gateway/tests/concert_profile_owner_integration.rs:26:9:
+timed out observing owner lock wait cleared
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    native_cancelled_in_flight_read_releases_gateway_capacity_and_owner_recovers
+
+test result: FAILED. 4 passed; 1 failed; 0 ignored; 0 measured; 4 filtered out; finished in 8.46s
+

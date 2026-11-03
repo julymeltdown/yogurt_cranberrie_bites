@@ -1,0 +1,66 @@
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/profile-service)
+    Finished `test` profile [unoptimized] target(s) in 2.84s
+     Running unittests src/lib.rs (/Users/lhs/Desktop/mcr-build/backend/debug/deps/profile_service-bd52fb39bc482c2b)
+
+running 22 tests
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="unexpected success" category=unexpected success
+test config::tests::external_pool_acceptance::rejection_oracle_tests::restoration_outcome_never_hides_a_single_failure ... ok
+test adapters::r#in::grpc::method_policy::tests::sibling_reachable_writes_are_edge_only ... ok
+test adapters::r#in::grpc::server::tests::avatar_decode_capacity_is_reported_as_service_unavailable ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="renamed required table"test adapters::r#in::grpc::server::tests::wrapped_repository_failures_are_server_errors_without_private_details ... ok
+ category=transport ConnectionRefused
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase=test config::tests::parity_retention_purge_actor_id_uses_local_default ... ok"expected rejection" category=required schema probe rejection
+
+test adapters::out::errors::tests::outbound_classification_sanitizes_wrapped_database_json_cpu_and_codec_details ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=test config::tests::external_pool_acceptance::rejection_oracle_tests::simultaneous_verification_and_restoration_failures_preserve_both_causes ... transport ConnectionRefused
+ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="unexpected success"test config::tests::production_retention_purge_actor_id_must_be_explicit ... ok
+ category=unexpected success
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="unexpected success" category=unexpected success
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="unexpected success" category=unexpected success
+test adapters::out::media::image_avatar_processor::tests::bounded_output_refuses_growth_before_allocating_past_limit ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="wrong rejection" category=required schema probe rejection
+test config::tests::external_pool_acceptance::rejection_oracle_tests::successful_operations_never_satisfy_negative_acceptance ... okEXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control
+" category=pool timeout
+test adapters::r#in::grpc::method_policy::tests::actor_fields_name_the_actor_in_generated_requests ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="misleading context" category=test adapters::r#in::grpc::author_authority::tests::projection_policy_is_post_only_and_requires_exact_author_child ... ok
+required schema probe rejection
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="expected rejection" category=unsuccessful migration receipt
+test adapters::r#in::grpc::server::tests::wire_error_matrix_preserves_codes_messages_and_mutation_metadata ... EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="wrong rejectionok
+" category=unsuccessful migration receipt
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="misleading context" category=unsuccessful migration receipt
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=other SQLx error
+test config::tests::external_pool_acceptance::rejection_oracle_tests::schema_markers_must_be_root_causes_and_match_the_expected_case ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=transport ConnectionRefusedtest adapters::r#in::grpc::method_policy::tests::table_covers_exactly_the_proto_service ... ok
+test adapters::r#in::grpc::author_authority::tests::mismatched_owner_identity_cannot_satisfy_existence ... ok
+
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=pool timeout
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=other SQLx error
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=transport ConnectionRefused
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=pool timeout
+test config::tests::parity_config_allows_local_profile_defaults ... ok
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=other SQLx error
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=transport ConnectionRefused
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative control" category=pool timeout
+EXTERNAL_SCHEMA_EXPECTED_REJECTION phase="negative controltest config::tests::production_config_accepts_explicit_remote_profile_settings ... ok
+" category=other SQLx error
+test config::tests::external_pool_acceptance::rejection_oracle_tests::transport_and_pool_failures_never_satisfy_negative_acceptance ... ok
+test config::tests::external_migration_mode_rejects_schema_damage_without_owner_privileges ... FAILED
+test config::tests::production_config_rejects_unsafe_profile_defaults ... ok
+test adapters::out::media::image_avatar_processor::tests::rejects_an_encoded_image_that_expands_past_the_storage_limit ... ok
+
+failures:
+
+---- config::tests::external_migration_mode_rejects_schema_damage_without_owner_privileges stdout ----
+Error: external schema fixture acquisition
+
+Caused by:
+    container runtime unavailable: container runtime socket /var/run/docker.sock is not accepting connections
+
+
+failures:
+    config::tests::external_migration_mode_rejects_schema_damage_without_owner_privileges
+
+test result: FAILED. 21 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.05s
+
+error: test failed, to rerun pass `-p profile-service --lib`

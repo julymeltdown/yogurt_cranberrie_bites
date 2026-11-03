@@ -1,0 +1,6 @@
+    Checking search-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/search-policy)
+    Checking recommendation-policy v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/recommendation-policy)
+   Compiling profile-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/services/profile-service)
+    Checking platform v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/platform)
+    Checking profile-application v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/be-profile-self-rpc/backend/crates/profile-application)
+    Finished `dev` profile [unoptimized] target(s) in 2.95s

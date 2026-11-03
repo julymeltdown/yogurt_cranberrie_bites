@@ -1,0 +1,56 @@
+[
+  {
+    "name": "format",
+    "args": [
+      "rustfmt",
+      "+1.88.0",
+      "--edition",
+      "2021",
+      "--check",
+      "backend/services/profile-service/src/adapters/in/grpc/concert_identity.rs",
+      "backend/services/profile-service/tests/concert_identity_rpc.rs",
+      "backend/services/profile-service/tests/support/concert_identity_fixture.rs"
+    ],
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "planning",
+    "args": [
+      "python3",
+      "scripts/mcr/check-plan.py"
+    ],
+    "exit_code": 0,
+    "log_sha256": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1"
+  },
+  {
+    "name": "boundary",
+    "args": [
+      "python3",
+      "scripts/mcr/check-boundaries.py",
+      "--base",
+      "d63fb2b95d3d8e61406ef71a12ed86a3b0bf15fd",
+      "--lane",
+      "backend",
+      "--allow-doc",
+      "docs/mcr/backend/profile-self-rpc.md"
+    ],
+    "exit_code": 0,
+    "log_sha256": "b6b477718833393e5fdab993811ebb96f24ceaaf6245a70f0608af0be36bcce4"
+  },
+  {
+    "name": "diff",
+    "args": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "python_ast_and_root",
+    "exit_code": 0,
+    "method": "ast.parse controller and assert parents[5] equals checkout root; no fixture started"
+  }
+]

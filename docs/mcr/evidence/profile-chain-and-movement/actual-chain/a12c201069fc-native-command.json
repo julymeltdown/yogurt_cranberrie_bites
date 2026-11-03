@@ -1,0 +1,14 @@
+[
+  "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+  "backend/services/api-gateway/tests/support/concert_profile_owner_native.py",
+  "--binary",
+  "/Users/lhs/Desktop/mcr-build/backend/debug/deps/concert_profile_owner_integration-9562e919c2615559",
+  "--build-metadata",
+  "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/build-attempt-1/artifacts.jsonl",
+  "--target-dir",
+  "/Users/lhs/Desktop/mcr-build/backend",
+  "--output",
+  "/Users/lhs/Desktop/mcr-build/gateway-profile-integration/native",
+  "--pg-bin",
+  "/opt/homebrew/opt/postgresql@16/bin"
+]
