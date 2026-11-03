@@ -309,19 +309,26 @@ async fn native_direct_sql_scopes_guards_and_rollback() {
     pool.close().await;
 }
 
-async fn serialization_case(pool: &PgPool, rollback: bool) {
+async fn serialization_case(pool: &PgPool, rollback: bool, journal_first: bool) {
     let initial = head(pool).await;
     let mut a = pool.begin().await.unwrap();
     let apid: i32 = sqlx::query_scalar("SELECT pg_backend_pid()")
         .fetch_one(&mut *a)
         .await
         .unwrap();
-    sqlx::query("INSERT INTO user_blocks(blocker_id,blocked_id,created_at) VALUES($1,$2,now())")
+    if journal_first {
+        sqlx::query("INSERT INTO friend_world_invalidation_journal(reason,user_id) VALUES('FRIEND_USER_REMOVED',$1)")
+            .bind(Uuid::new_v4()).execute(&mut *a).await.unwrap();
+    } else {
+        sqlx::query(
+            "INSERT INTO user_blocks(blocker_id,blocked_id,created_at) VALUES($1,$2,now())",
+        )
         .bind(Uuid::new_v4())
         .bind(Uuid::new_v4())
         .execute(&mut *a)
         .await
         .unwrap();
+    }
     let bp = pool.clone();
     let (send, receive) = tokio::sync::oneshot::channel();
     let b = tokio::spawn(async move {
@@ -362,6 +369,24 @@ async fn serialization_case(pool: &PgPool, rollback: bool) {
     let empty = page(pool, initial, 256).await;
     assert!(empty.signals().is_empty());
     assert_eq!(empty.head(), initial);
+    if journal_first {
+        // B is waiting on A's revision lock. If direct journal allocation locked
+        // only head, B would hold revision while awaiting head, and A's source
+        // mutation below would form a cycle. Bound the actual second mutation.
+        tokio::time::timeout(
+            Duration::from_secs(2),
+            sqlx::query(
+                "INSERT INTO user_blocks(blocker_id,blocked_id,created_at) VALUES($1,$2,now())",
+            )
+            .bind(Uuid::new_v4())
+            .bind(Uuid::new_v4())
+            .execute(&mut *a),
+        )
+        .await
+        .unwrap()
+        .unwrap();
+    }
+    let a_signals = if journal_first { 2 } else { 1 };
     if rollback {
         a.rollback().await.unwrap();
     } else {
@@ -371,13 +396,19 @@ async fn serialization_case(pool: &PgPool, rollback: bool) {
     let visible = head(pool).await;
     assert_eq!(
         visible.sequence(),
-        initial.sequence() + i64::from(!rollback)
+        initial.sequence() + if rollback { 0 } else { a_signals }
     );
     let partial = page(pool, initial, 256).await;
-    assert_eq!(partial.signals().len(), usize::from(!rollback));
+    assert_eq!(
+        partial.signals().len(),
+        if rollback { 0 } else { a_signals as usize }
+    );
     btx.commit().await.unwrap();
     let committed = page(pool, initial, 256).await;
-    assert_eq!(committed.signals().len(), if rollback { 1 } else { 2 });
+    assert_eq!(
+        committed.signals().len(),
+        if rollback { 1 } else { a_signals as usize + 1 }
+    );
     assert_eq!(committed.next(), committed.head());
     assert_eq!(page(pool, committed.next(), 256).await.signals().len(), 0);
 }
@@ -385,8 +416,10 @@ async fn serialization_case(pool: &PgPool, rollback: bool) {
 #[ignore = "new owned private cluster required"]
 async fn native_concurrent_commit_and_rollback_never_skip_late_commit() {
     let pool = support::owned_pool().await;
-    Box::pin(serialization_case(&pool, false)).await;
-    Box::pin(serialization_case(&pool, true)).await;
+    for journal_first in [false, true] {
+        Box::pin(serialization_case(&pool, false, journal_first)).await;
+        Box::pin(serialization_case(&pool, true, journal_first)).await;
+    }
     pool.close().await;
 }
 
@@ -460,7 +493,12 @@ async fn native_cancel_and_deadline_are_failures_not_empty_success() {
         ))
         .await
     });
-    tokio::time::sleep(Duration::from_millis(30)).await;
+    let blocked_pid=tokio::time::timeout(Duration::from_millis(400),async {loop {
+        let pid:Option<i32>=sqlx::query_scalar("SELECT pid FROM pg_stat_activity WHERE datname=current_database() AND pid<>pg_backend_pid() AND state='active' AND wait_event_type='Lock' AND query LIKE 'WITH h AS MATERIALIZED%' LIMIT 1")
+            .fetch_optional(&pool).await.unwrap();
+        if let Some(pid)=pid {break pid;}
+        tokio::time::sleep(Duration::from_millis(2)).await;
+    }}).await.unwrap();
     token.cancel();
     assert_eq!(
         tokio::time::timeout(Duration::from_millis(100), task)
@@ -469,6 +507,25 @@ async fn native_cancel_and_deadline_are_failures_not_empty_success() {
             .unwrap(),
         Err(ReadError::Cancelled)
     );
+    // Keep ACCESS EXCLUSIVE held while proving the cancelled backend itself
+    // disappears, so neither a running query nor idle-in-transaction can hide
+    // behind release of the blocker. Server timeout inherits the original stop.
+    tokio::time::timeout(Duration::from_millis(1100), async {
+        loop {
+            let exists: bool =
+                sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM pg_stat_activity WHERE pid=$1)")
+                    .bind(blocked_pid)
+                    .fetch_one(&pool)
+                    .await
+                    .unwrap();
+            if !exists {
+                break;
+            }
+            tokio::time::sleep(Duration::from_millis(5)).await;
+        }
+    })
+    .await
+    .unwrap();
     let inherited = ReadBudget::new(
         Instant::now() + Duration::from_millis(70),
         ReadCancellation::default(),
@@ -490,14 +547,14 @@ async fn native_cancel_and_deadline_are_failures_not_empty_success() {
         .await,
         Err(ReadError::DeadlineExceeded)
     );
+    // Deadline failures also leave no blocked journal read or idle transaction
+    // while the same blocker remains held.
+    tokio::time::timeout(Duration::from_millis(1100),async {loop {
+        let residue:i64=sqlx::query_scalar("SELECT count(*) FROM pg_stat_activity WHERE datname=current_database() AND pid<>pg_backend_pid() AND query LIKE 'SELECT owner_epoch,sequence FROM public.friend_world_invalidation_head%' AND state<>'idle'").fetch_one(&pool).await.unwrap();
+        if residue==0 {break;}tokio::time::sleep(Duration::from_millis(5)).await;
+    }}).await.unwrap();
     lock.rollback().await.unwrap();
     assert_eq!(head(&pool).await, current);
-    // No abandoned query can be returned to another borrower. The server-side
-    // statement timeout is bounded by the original budget even after cancellation.
-    tokio::time::timeout(Duration::from_secs(2),async {loop {
-        let waiting:i64=sqlx::query_scalar("SELECT count(*) FROM pg_stat_activity WHERE datname=current_database() AND pid<>pg_backend_pid() AND state='active' AND wait_event_type='Lock'").fetch_one(&pool).await.unwrap();
-        if waiting==0{break;}tokio::time::sleep(Duration::from_millis(10)).await;
-    }}).await.unwrap();
     pool.close().await;
 }
 
@@ -527,18 +584,24 @@ async fn native_restart_replay_stability() {
 async fn native_corrupt_retained_gap_fails_closed() {
     let pool = support::owned_pool().await;
     let current = head(&pool).await;
-    assert!(current.sequence() > 0);
+    assert!(current.sequence() > 4);
+    for sequence in [current.sequence(), current.sequence() - 3] {
+        Box::pin(gap_case(&pool, current, sequence)).await;
+    }
+    pool.close().await;
+}
+async fn gap_case(pool: &PgPool, current: Cursor, sequence: i64) {
     // This owner-only corruption fixture explicitly bypasses DML guards. Normal
     // application mutations cannot do this. Restore the exact row before return.
     let mut connection = pool.acquire().await.unwrap();
-    sqlx::query("CREATE TEMP TABLE saved_signal AS SELECT * FROM friend_world_invalidation_journal WHERE sequence=$1").bind(current.sequence()).execute(&mut *connection).await.unwrap();
+    sqlx::query("CREATE TEMP TABLE saved_signal AS SELECT * FROM friend_world_invalidation_journal WHERE sequence=$1").bind(sequence).execute(&mut *connection).await.unwrap();
     sqlx::query("BEGIN")
         .execute(&mut *connection)
         .await
         .unwrap();
     sqlx::query("ALTER TABLE friend_world_invalidation_journal DISABLE TRIGGER friend_world_journal_immutable").execute(&mut *connection).await.unwrap();
     sqlx::query("DELETE FROM friend_world_invalidation_journal WHERE sequence=$1")
-        .bind(current.sequence())
+        .bind(sequence)
         .execute(&mut *connection)
         .await
         .unwrap();
@@ -547,10 +610,10 @@ async fn native_corrupt_retained_gap_fails_closed() {
         .execute(&mut *connection)
         .await
         .unwrap();
-    let after = Cursor::new(current.epoch(), current.sequence() - 1).unwrap();
+    let after = Cursor::new(current.epoch(), sequence - 1).unwrap();
     let result = Box::pin(
         PgJournal::new(pool.clone())
-            .read_after(PageQuery::new(identity(), after, 256).unwrap(), &budget()),
+            .read_after(PageQuery::new(identity(), after, 2).unwrap(), &budget()),
     )
     .await;
     sqlx::query("BEGIN")
@@ -578,7 +641,15 @@ async fn native_corrupt_retained_gap_fails_closed() {
         .await
         .unwrap();
     assert_eq!(result, Err(ReadError::Unavailable));
-    assert_eq!(page(&pool, after, 256).await.signals().len(), 1);
+    // Interior removal still fills limit=2 with later rows; cardinality alone
+    // would accept it. Restored rows must again replay as an exact prefix.
+    assert_eq!(
+        page(pool, after, 2).await.signals().len(),
+        if sequence == current.sequence() { 1 } else { 2 }
+    );
+    sqlx::query("DROP TABLE saved_signal")
+        .execute(&mut *connection)
+        .await
+        .unwrap();
     drop(connection);
-    pool.close().await;
 }

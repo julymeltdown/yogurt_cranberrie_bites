@@ -132,7 +132,7 @@ not a claim of successful concurrent account-deletion acceptance.
 - Rust `+1.88.0`, `--locked --offline`, two jobs, dev/test debug info zero,
   `CARGO_INCREMENTAL=0`; standing exclusive MEDIA target lease. Fresh target
   handles were zero before compilation; free space was 8.67 GiB initially and
-  9.69 GiB before the final test build. No third target or dependency install.
+  8.94 GiB before the final review-fix test build. No third target or dependency install.
 - Build: `cargo +1.88.0 test --locked --offline -p friend-service --test concert_invalidation --test concert_relationship --test unit --test architecture --test contract --no-run --message-format=json` — exit 0 after replacing an unavailable macro with the existing runtime migration loader. The first build exited 101 because retained SQLx features do not expose `migrate!`; no manifest change was made.
 - Final native-test rebuild: `cargo +1.88.0 test --locked --offline -p friend-service --test concert_invalidation --no-run --message-format=json` — exit 0. Exact executable paths came from Cargo JSON; copies and SHA-256/source manifests were frozen outside the target. `lsof` reported zero target handles before PostgreSQL started.
 - Frozen new query/wire/budget test: 1 passed, exit 0. Retained Friend units:
@@ -151,11 +151,11 @@ Native command, from repository root, with explicit copied executables:
 
 ```sh
 python3 backend/scripts/mcr/friend_invalidation_smoke.py \
-  --binary /private/tmp/mcr-friend-invalidation-f837bef-20261104/frozen-2/friend-service \
-  --repository-test /private/tmp/mcr-friend-invalidation-f837bef-20261104/frozen-2/concert_invalidation \
-  --relationship-test /private/tmp/mcr-friend-invalidation-f837bef-20261104/frozen-2/concert_relationship \
+  --binary /private/tmp/mcr-friend-invalidation-f837bef-20261104/frozen-3/friend-service \
+  --repository-test /private/tmp/mcr-friend-invalidation-f837bef-20261104/frozen-3/concert_invalidation \
+  --relationship-test /private/tmp/mcr-friend-invalidation-f837bef-20261104/frozen-3/concert_relationship \
   --pg-bin-dir /opt/homebrew/opt/postgresql@16/bin \
-  --report /private/tmp/mcr-friend-invalidation-f837bef-20261104/native-2.json
+  --report /private/tmp/mcr-friend-invalidation-f837bef-20261104/native-3.json
 ```
 
 The runner requires a new report path when repeated. Result: exit 0,
@@ -170,26 +170,61 @@ unchanged. A fresh 0016 head starts at zero without inventing historical signals
 existing relationship state remains available to bootstrap/current reads.
 
 Report SHA-256:
-`31f0f5a21827f5ecd7532032622a4deb452fa374c0a6f4ca8f4eed9267df506f`.
-The report records exact source hashes against base `f837bef676cd26869c26c172a699a91b7842d832`
-(the implementation was uncommitted during qualification), migration receipts,
+`86ce97f3ad9e51987faba221a74cc9b8b91c62a20df7145ed6efb9e51b30bb6f`.
+The final report records exact source hashes against implementation checkpoint
+`414d0c2a` (the test-only review fixes were uncommitted during qualification), migration receipts,
 commands and executable identities. It is a local evidence artifact, not a
 production release receipt. Frozen artifact hashes:
 
 | Copied executable | SHA-256 |
 | --- | --- |
 | Friend service | `bd1b5d995b9d77ed6fe97a0a882cc9ba67ff57cc598e9754b631efdfeb49b2c8` |
-| Journal native tests | `3ac42e66367e15942e348d66269263ec61ce65129eafe2bd876a265d02fb6e9e` |
+| Journal native tests | `5d929dccd792d83d9f008f6066f4e9edbe3319ca62ef4bc419c57763420e561f` |
 | Retained relationship tests | `df8a2b696dde90e36a4642385e7f3dc00674e553d9736c6562cdac7ac5f1df14` |
 
 An earlier native attempt passed upgrade and repository mutation checks, then
 failed a direct-SQL fixture that omitted existing required `created_at`. Only
 the test fixture was corrected. Its report (`native-1.json`) records exit 1 and
-cleanup PASS; it is not counted as qualification. Both actual owned clusters
-were stopped and removed. No active database, Cargo child, or target handle
-is required by the handoff.
+cleanup PASS; it is not counted as qualification. All three actual owned clusters
+were stopped and removed. No active database or Cargo child is required by the handoff. The MEDIA lease
+was explicitly released to Main after the final build copies were frozen and
+zero target handles/build children were freshly verified. No further target
+access is authorized or needed by this owner.
 
 No public RPC, production stack, real multiuser flow, or release gate is accepted
 by these owner-local checks. The broader persistent BE13/BE14 goal remains
 unfinished; this journal increment does not complete it.
 
+## Committed handoff ancestry
+
+Implementation and initial native evidence: `414d0c2a`, directly descended from
+base `f837bef676cd26869c26c172a699a91b7842d832`. The follow-up test/documentation checkpoint addresses all three concrete
+qualification findings and records lease release. Source hashes in `native-3.json`
+match every final runtime source, contract, manifest and lockfile. Delivery integrates these owned commits serially; only the delivery
+integrator may push to `julymeltdown/mcr:master`.
+
+### Concrete qualification review fixes
+
+Three P2 test gaps were corrected after the first passing native report. The
+final native report replaces that earlier qualification evidence; production
+journal/reader code remains identical to `414d0c2a`.
+
+1. Cancellation waits until `pg_stat_activity` confirms the reader backend is
+   actually blocked on the head table, then cancels it. The blocker stays held
+   until that exact backend disappears within the inherited budget plus cleanup
+   allowance, proving absence of both running SQL and idle transaction residue.
+   Deadline cases also drain before the blocking lock is released. This does
+   not claim an immediate network cancel acknowledgement.
+2. Corruption checks cover both a missing tail and an interior missing record
+   with enough later rows to fill limit 2. The full but noncontiguous page must
+   return `Unavailable`; both exact records are restored before continuing.
+3. Concurrency checks cover source-first and direct-journal-first transactions,
+   each under commit and rollback. After observing the second source writer
+   blocked, the journal-first writer makes its own source mutation under a
+   bounded timeout. This exercises the allocator's independent revision-before-
+   head ordering and rejects a cycle even if ordinary source-trigger order alone
+   would have hidden it. Committed pages stay contiguous in all four cases.
+
+The final build exited 0; final native command exited 0 with 8 journal tests and
+1 unchanged owner test, restart PASS and cleanup PASS. No general second review
+or Main approval was imposed as a delivery gate.
