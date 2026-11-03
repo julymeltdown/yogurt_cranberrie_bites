@@ -1,6 +1,6 @@
 # BE08 places & immutable map releases fix review
 
-Status: **Scoped fix review PASS; final candidate verified, awaiting integrator disposition.** This is a bounded implementation review of BE08 fixes through final candidate `83d8c47`, not project-wide BE08/BE09 acceptance.
+Status: **Scoped fix review PASS; final candidate verified, awaiting integrator disposition.** This is a bounded implementation review of BE08 fixes through final candidate `caee1a7`, not project-wide BE08/BE09 acceptance.
 
 ## Candidate and ownership
 
@@ -10,11 +10,13 @@ Initial implementation candidate: `c135bffcb0283aff35180fc14fd9783af975afcb`.
 Review fix commit: `a91ed08668aa8aca53200f94d3c25ae0162c2a85`.
 Post-commit evidence HEAD: `bbc152454ebdf1b30361f955a1ad096ec5599fc2`.
 Tilemap path correction: `f5855351c6b4b51983145a277a27715a94aeeeb0`.
-Provenance URI correction & final handoff candidate: `83d8c47ce6558aa39c7772524d866e515f58548a` (tree `15bee94252a5b8e2dd9eeb60bd61096160f9968d`).
+Intermediate URI candidate: `83d8c47ce6558aa39c7772524d866e515f58548a`.
+Integrator dependency prerequisite: `a518149e7e823548d7a471b72324957e6d13c4c6` / `5bdd6f07fe293114fb4d078d49dbc85101525abb` (retained `iri-string=0.7.12`; integrator-owned prerequisite, outside worker feature scope).
+Final handoff candidate: `caee1a70f882abfaf7a4cb7f635847d4b9bcb1ed` (tree `6fb3005e9310d7e52e861710221624be9c06066f`).
 
 This report (`/Users/lhs/Desktop/mcr-worktrees/qa-places-fixes/docs/mcr/qa/places-fix-review.md`) is the reviewer's sole tracked write. No application code, migrations, contracts, manifests, lockfiles, or root scripts were modified by the reviewer. Main checkout was accessed read-only. No git push was performed.
 
-All 12 changed paths across the final candidate relative to parent `097651c` match the authorized BE08 assignment:
+All 12 changed paths across the final candidate relative to parent `097651c` match the authorized BE08 assignment (excluding the integrator-owned `backend/Cargo.lock`, `backend/crates/concert-domain/Cargo.toml`, and `backend/scripts/mcr/test_concert_core_smoke.py` prerequisite):
 - Domain: `backend/crates/concert-domain/src/{lib.rs,place/mod.rs}`, `backend/crates/concert-domain/tests/place.rs`
 - Application: `backend/crates/concert-application/src/{lib.rs,place/mod.rs}`, `backend/crates/concert-application/tests/place.rs`
 - Persistence: `backend/services/concert-service/src/adapters/out/repository.rs`,
@@ -63,9 +65,9 @@ The prior source review (`docs/mcr/qa/places-review.md` at `fc8c5d9`) identified
 
 ---
 
-## Addendum: C06 parser corrections (commits `f585535` and `83d8c47`)
+## Addendum: C06 parser corrections (commits `f585535` and `caee1a7`)
 
-Following completion audit, two contract mismatches in the domain parser were resolved:
+Following completion audit and C06 oracle verification, two contract mismatches in the domain parser were resolved:
 
 1. **Tilemap path pattern enforcement (`f585535`)**:
    - The frozen C06 schema (`map-manifest.schema.json`) defines tilemap path pattern as `^[a-zA-Z0-9_/-]+\.json$`, permitting exactly one `.json` suffix and forbidding internal dots in the filename stem.
@@ -73,11 +75,14 @@ Following completion audit, two contract mismatches in the domain parser were re
    - Fix strips `.json` via `v.strip_suffix(".json")` and strictly validates `stem.bytes().all(|b| b.is_ascii_alphanumeric() || matches!(b, b'_' | b'-' | b'/'))`. Rehashed invalid manifest test in `tests/place.rs` asserts rejection of `world/a.b.json` and acceptance of canonical `world/a-b_1.json`.
    - **Status: VERIFIED.**
 
-2. **Provenance `source_uri` absolute URI support (`83d8c47`)**:
-   - The frozen C06 schema (`common.schema.json`) defines `source_uri` as general RFC 3986 URI format (`format: "uri"`), which admits non-hierarchical absolute URIs such as `urn:mcr:format-fixture` or `mailto:fixture@example.invalid`.
-   - Initial `uri()` validator required HTTP/HTTPS with a host, over-constraining the schema.
-   - Fix updates `uri()` to validate printable ASCII (`b'!'..=b'~'`), well-formed hex percent escapes (`%[0-9a-fA-F]{2}`), valid URI scheme with content after the scheme delimiter, and host presence for hierarchical URLs (`url.cannot_be_a_base() || url.host_str().is_some()`).
-   - Domain tests in `tests/place.rs` verify acceptance of valid URNs, mailto, and percent-encoded HTTP(S) URIs, and rejection of relative references, bare schemes, raw whitespace/control characters, non-ASCII characters, and malformed percent escapes.
+2. **Provenance `source_uri` RFC 3986 parser adoption (`caee1a7`)**:
+   - The frozen C06 schema (`common.schema.json`) defines `source_uri` as general RFC 3986 URI format (`format: "uri"`).
+   - The intermediate custom parser in `83d8c47` over-constrained valid URIs (e.g. host checks rejecting `file:///reviewed/source` and `custom:/source`).
+   - Commit `caee1a7` replaces the custom parser with standard `iri_string::types::UriStr::new(value).is_ok()`, leveraging the retained `iri-string=0.7.12` crate exposed via parent prerequisite `a518149` / `5bdd6f0`.
+   - The test matrix in `tests/place.rs` was updated and confirmed against the C06 oracle (`/tmp/mcr-contracts-admission/bin/python`):
+     - Valid cases admitted: `file:///reviewed/source`, `custom:/source`, `urn:mcr:format-fixture`, `mailto:fixture@example.invalid`, `https://example.invalid/encoded%20space`.
+     - Invalid cases rejected: relative paths (`relative/path`), bare empty strings (`""`), raw whitespace/controls/newlines (`"https://example.invalid/ref\n"`), non-ASCII characters (`"https://example.invalid/refé"`), raw bracket/angle/brace characters (`"urn:x<y"`, `"urn:x{y}"`, `"urn:x[y]"`, `"https://example.invalid/[docs]"`, `"https://example.invalid/a?x=<y>"`, `"https://example.invalid/a?x={y}"`).
+   - Focused domain test suite `cargo test --locked --offline -j 2 -p concert-domain --test place` passed 4/4 in the transferred compilation target.
    - **Status: VERIFIED.**
 
 ---
@@ -86,12 +91,12 @@ Following completion audit, two contract mismatches in the domain parser were re
 
 1. **Native worker evidence attribution**:
    - Post-commit native report: `/Users/lhs/Desktop/mcr-build/be08/evidence/native-20261103141447-postcommit.json` (SHA-256: `978ddd07ba369956515298c87ebeb7b7dba7ae0c48c51073b0fead476b6d8486`).
-   - Final handoff receipt: `/Users/lhs/Desktop/mcr-build/be08/handoff-bb08-83d8c47.json` (SHA-256: `b3fb90cf05f91f721ac2b084a55f093b2d36e65f00a8892db171b59718fbaebf`).
-   - Handoff `head_tree` matches `git rev-parse 83d8c47^{tree}`: `15bee94252a5b8e2dd9eeb60bd61096160f9968d`.
+   - Final handoff receipt: `/Users/lhs/Desktop/mcr-build/be08/handoff-bb08-caee1a7.json` (SHA-256: `b0b1230ff2ac27c82f864a65376edf476744a61964f532659ff0f295d98f081d`).
+   - Handoff `head_tree` matches `git rev-parse caee1a7^{tree}`: `6fb3005e9310d7e52e861710221624be9c06066f`.
    - **Evidence Attribution Distinction**:
      - The native PostgreSQL test report (`native-20261103141447-postcommit.json`) was executed against commit `a91ed08` / `bbc1524`.
-     - The persistence inputs—repository (`9a6e004fb6d7a54ba43381fef7e13a65da05709ee82edcb6939b7aeff788b660`), migration 0003 (`b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a`), native test suite (`88a848c51094d70074634d70fd39e31a90b12ce1cbc0f58faed7505ce67809c0`), and smoke harness (`ab0d26ef2274a8d2c39622f83645dab80ac14b4926cc26a21ce647d9f37e684f`)—remain byte-for-byte identical across commits `bbc1524`, `f585535`, and `83d8c47`.
-     - The subsequent parser-only fixes (`f585535` and `83d8c47`) affect only `concert-domain` source/tests and documentation, verified via focused domain tests (4/4 passed). PostgreSQL was not rerun and is accurately retained from the `a91ed08` gate.
+     - The persistence inputs—repository (`9a6e004fb6d7a54ba43381fef7e13a65da05709ee82edcb6939b7aeff788b660`), migration 0003 (`b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a`), native test suite (`88a848c51094d70074634d70fd39e31a90b12ce1cbc0f58faed7505ce67809c0`), and smoke harness (`ab0d26ef2274a8d2c39622f83645dab80ac14b4926cc26a21ce647d9f37e684f`)—remain byte-for-byte identical across commits `bbc1524`, `f585535`, `83d8c47`, and `caee1a7`.
+     - The subsequent parser-only fixes affect only `concert-domain` source/tests and documentation, verified via focused domain tests (4/4 passed). PostgreSQL was not rerun and is accurately retained from the `a91ed08` gate.
 
 2. **Planning & consistency checks**:
    - `python3 scripts/mcr/check-plan.py`: exit 0, PASS (118 tasks, 64 IA entries, planning/source preservation verified).
@@ -101,7 +106,7 @@ Following completion audit, two contract mismatches in the domain parser were re
 
 ## Limitations and boundaries
 
-1. This review covers the backend domain, application, and persistence implementation of BE08 (Places & Immutable Map Releases) and fixes up to final candidate `83d8c47`.
+1. This review covers the backend domain, application, and persistence implementation of BE08 (Places & Immutable Map Releases) and fixes up to final candidate `caee1a7`.
 2. Public HTTP endpoints, real client/browser routing, and multiplayer Phaser integration remain separate obligations (FE19/BE09/QA07).
 3. Migration execution in production requires application migration ledger qualification; smoke test verifies direct SQL migration compatibility on PostgreSQL 16.
 4. Goal remains ACTIVE through integrator review disposition.
