@@ -44,7 +44,10 @@ and 51 native state/width cases passed, including unchanged Settings geometry.
 Fresh combined strict types also passed. [My Profile evidence](../frontend/me-visual.md)
 discloses broader-suite failures separately; [environment follow-up](../qa/contract-validation-environment.md)
 resolves the two missing Python format-checker failures without claiming to fix
-the other three intermittent failures. Approved avatar rendering and live profile
+the other three intermittent failures at that checkpoint. Subsequently,
+[QA-WORLD-ASYNC](../qa/world-async-tests.md) corrected the socket/frame test
+readiness races in `4b1f8c4`; the direct-beacon Back failure remains unresolved.
+Approved avatar rendering and live profile
 composition remain unqualified. World/shell and customize adoption remain open.
 Sending the reference to other leads is still distinct from implementation.
 

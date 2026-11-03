@@ -57,3 +57,14 @@ failures and base/changed-tree comparisons remain in
 [UIV04 evidence](../frontend/me-visual.md). No broad suite was repeated merely to
 replace the original result. Their owning implementation/test paths need targeted
 diagnosis under coordinated ownership before release acceptance.
+
+Subsequent scoped correction: [QA-WORLD-ASYNC](world-async-tests.md), author
+`6f45a8a4128d1247b85624d08f99ffe6bc7f9f9b`, integrated as `4b1f8c4`, reproduced
+the transport/socket and room-switch/frame readiness assumptions with controlled
+ticket gates and corrected only the assigned tests/harness. All original
+assertions remain. Its 187 affected tests and five finite repeats passed; Main
+verified four exact paths, 23 source/contract/log hashes, a fresh combined
+187-test pass and strict types. Those two test races now have a source-bound
+correction. The direct-beacon Back failure remains unresolved. The original
+expanded-suite failure is preserved; no full-suite or live-world acceptance is
+inferred from these separate fixes.
