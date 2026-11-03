@@ -662,10 +662,12 @@ async fn closed_event_allows_owner_erasure_without_verification_authority() -> a
     let (pending, _) = begin(&f).await?;
     sqlx::query("with n as materialized(select clock_timestamp() t) update concert_age_claims set verified_at=n.t-interval '2 days',expires_at=n.t-interval '1 day' from n where claim_id=$1").bind(id).execute(&f.p).await?;
     sqlx::query("with n as materialized(select clock_timestamp() t) update concert_age_verifications set created_at=n.t-interval '11 minutes',expires_at=n.t-interval '1 minute' from n where verification_id=$1").bind(pending).execute(&f.p).await?;
-    sqlx::query("update concert_events set phase='CLOSED',revision=revision+1 where event_id=$1")
-        .bind(f.c.event.uuid())
-        .execute(&f.p)
-        .await?;
+    sqlx::query(
+        "update concert_events set phase='READ_ONLY',revision=revision+1 where event_id=$1",
+    )
+    .bind(f.c.event.uuid())
+    .execute(&f.p)
+    .await?;
     assert!(f.s.start(f.c, Uuid::new_v4(), RETURN_TARGET).await.is_err());
     assert_eq!(f.s.expire_states(f.c, 100).await?, 1);
     let erased: bool = sqlx::query_scalar("select age_at_verification is null and next_birthday_at is null from concert_age_claims where claim_id=$1").bind(id).fetch_one(&f.p).await?;
@@ -677,6 +679,11 @@ async fn closed_event_allows_owner_erasure_without_verification_authority() -> a
     .fetch_one(&f.p)
     .await?;
     assert!(digest.is_none());
+    sqlx::query("update concert_events set phase='ARCHIVED',revision=revision+1 where event_id=$1")
+        .bind(f.c.event.uuid())
+        .execute(&f.p)
+        .await?;
+    assert_eq!(f.s.expire_states(f.c, 100).await?, 0);
     sqlx::query("update be26_fixture_authority set allowed=false where actor=$1")
         .bind(f.c.actor.uuid())
         .execute(&f.p)
