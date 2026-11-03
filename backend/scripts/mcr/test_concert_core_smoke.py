@@ -70,7 +70,7 @@ class HarnessTests(unittest.TestCase):
 
 class BoundaryTests(unittest.TestCase):
     def test_runtime_domain_application_dependencies_have_no_framework_or_persistence_edges(self):
-        allowed={"concert-domain":{"chrono","uuid","thiserror"},"concert-application":{"concert-domain","async-trait","chrono","thiserror","uuid","sha2","hmac"}}
+        allowed={"concert-domain":{"chrono","uuid","thiserror","serde","serde_json","sha2","url"},"concert-application":{"concert-domain","async-trait","chrono","thiserror","uuid","sha2","hmac"}}
         for name,edges in allowed.items():
             manifest=tomllib.loads((smoke.ROOT/"backend/crates"/name/"Cargo.toml").read_text())
             self.assertLessEqual(set(manifest["dependencies"]),edges)
@@ -81,7 +81,29 @@ class BoundaryTests(unittest.TestCase):
         current=tomllib.loads((smoke.ROOT/"backend/Cargo.lock").read_text())
         def packages(value):return {(p["name"],p["version"],p.get("source")):p for p in value["package"]}
         old,new=packages(original),packages(current)
-        self.assertTrue(all(new.get(key)==value for key,value in old.items()))
+        for key,value in old.items():
+            self.assertIn(key,new,f"existing package resolution disappeared: {key}")
+            manifest_fields={"name","version","source","checksum"}
+            if key[0] != "auth-service":
+                manifest_fields.add("dependencies")
+            retained={field:item for field,item in new[key].items() if field in manifest_fields}
+            expected={field:item for field,item in value.items() if field in manifest_fields}
+            self.assertEqual(set(retained),set(expected),f"existing package fields changed: {key}")
+            self.assertEqual(retained,expected,f"existing package resolution changed: {key}")
+            if key[0] != "auth-service":
+                self.assertEqual(new[key].get("dependencies"),value.get("dependencies"),f"existing dependency set changed: {key}")
+        self.assertEqual(
+            set(new[("auth-service","0.1.0",None)]["dependencies"])
+            - set(old[("auth-service","0.1.0",None)]["dependencies"]),
+            {"profile-service"},
+            "only the joint owner integration test may add a local Auth dependency",
+        )
+        self.assertEqual(
+            set(old[("auth-service","0.1.0",None)]["dependencies"])
+            - set(new[("auth-service","0.1.0",None)]["dependencies"]),
+            set(),
+            "joint owner integration must not remove an Auth dependency",
+        )
         self.assertEqual({key[0] for key in new.keys()-old.keys()},{"concert-domain","concert-application","concert-service"})
         original=tomllib.loads(subprocess.check_output(["git","show","f795ed4:backend/Cargo.toml"],cwd=smoke.ROOT,text=True))
         current=tomllib.loads((smoke.ROOT/"backend/Cargo.toml").read_text())
