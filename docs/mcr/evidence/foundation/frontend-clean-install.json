@@ -1,0 +1,40 @@
+{
+  "candidate": "a9746c6042ee25b68ccada307375fb6221c9c52b",
+  "scope": "Fresh frontend dependency directory from committed tree; package download cache may be reused",
+  "commands": [
+    {
+      "argv": [
+        "corepack",
+        "pnpm@11.7.0",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.398
+    },
+    {
+      "argv": [
+        "corepack",
+        "pnpm@11.7.0",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.259
+    },
+    {
+      "argv": [
+        "corepack",
+        "pnpm@11.7.0",
+        "run",
+        "lint"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.783
+    }
+  ],
+  "node_modules_existed_before": false,
+  "temporary_checkout_removed": true,
+  "result": "PASS",
+  "log_sha256": "eb66e26f63ce443056970edb1cd84ab831407906e8359689afc87f599b548199"
+}

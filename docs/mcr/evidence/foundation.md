@@ -27,6 +27,16 @@ The MSW install hook is explicitly allowed with pnpm 11's `allowBuilds`; the
 reviewed hook updates a configured worker directory, and none is configured in
 this foundation. No worker or network mocking is claimed by the install result.
 
+Follow-up after the independent foundation review: a fresh `git archive` checkout
+with no `node_modules` now has an explicit [clean-install receipt](foundation/frontend-clean-install.json)
+and [raw log](foundation/frontend-clean-install.log). Candidate `a9746c6` passed
+frozen install, build and lint with exit 0, then removed its own temporary checkout.
+The package download cache was reused; the dependency directory was newly created.
+An earlier run passed install/build but exposed unscoped Oxlint traversing vendor
+files when no root Git ignore was present. The [failure receipt](foundation/frontend-clean-install-before-fix.json)
+is retained, and `a9746c6` scopes lint to authored source/config. This resolves the
+clean-install evidence gap in the historical [review](../qa/foundation-review.md).
+
 Docker daemon execution, backend service startup, migration/DB restart, HTTP
 auth/cookies/CSRF, OAuth providers, production build serving, real devices,
 multiplayer and release are **NOT_RUN** in this evidence. A later isolated

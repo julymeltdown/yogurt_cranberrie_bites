@@ -9,11 +9,11 @@ it is not feature integration or release acceptance.
 |---|---|---|
 | C01 | ACCEPTED | [Source map](source-map.md), two reviewed per-file inventories and exact import whitelist. Headless candidates need their own later extraction approval/tests. |
 | C02 | ACCEPTED | [Foundation qualification](evidence/foundation.md): pinned frozen installation, strict FE build/lint, pinned source and imported full BE workspace builds. Docker execution is NOT_RUN and is not claimed by this minimal build task. |
-| C03 | IN_PROGRESS | [Exact browser auth review](frontend/auth-contract-review.md); core DTOs/fixtures, endpoint and cookie policy freeze pending. |
-| C06 | IN_PROGRESS | Shared asset schemas and golden JSON fixtures assigned to one contract writer; actual production art remains separate. |
+| C03 | IN_PROGRESS | [Core contract draft](core-contract.md), exact inherited auth mapping, public/private DTOs and 25 validated examples; 20 checks pass. Producer/consumer review and OAuth decisions keep freeze pending. |
+| C06 | CONTRACT_READY | Five asset schemas, six golden JSON fixtures and 21 checks pass; all three themes share geometry and avatar identities. Pixel alignment/art/venue truth remain NOT_RUN. |
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | IN_PROGRESS | 1,071 pinned files imported in `909e2bf`, full build passes. Explicit MCR runtime configuration and safe launch qualification remain. |
-| BE02 | IN_PROGRESS | Fresh isolated PostgreSQL migration/restart runner under development; no runtime acceptance inferred from builds. |
+| BE02 | IN_PROGRESS | [Isolated DB report](evidence/be02-migration-smoke.json): 84 migrations in six stores, ledger checksums and six records survive PG restart; cleanup PASS. 24 guard tests pass. Normal service startup/restart, runtime roles and packaging remain NOT_RUN. |
 | FE05 | IN_PROGRESS | New accessible primitives assigned to the frontend-only worker; C02/C08 prerequisites qualified. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **3/112**;
