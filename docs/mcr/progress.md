@@ -14,10 +14,10 @@ it is not feature integration or release acceptance.
 | C08 | ACCEPTED | [Origin gate](qa/ui-origin.md), empty exact allowlist, 14 negative/positive test cases and current source scan pass. Modified copies and visual similarity require manual review; QA02 is not accepted. |
 | BE01 | IN_PROGRESS | 1,071 pinned files imported in `909e2bf`, full build passes. Explicit MCR runtime configuration and safe launch qualification remain. |
 | BE02 | IN_PROGRESS | [Isolated DB report](evidence/be02-migration-smoke.json): 84 migrations in six stores, ledger checksums and six records survive PG restart; cleanup PASS. 24 guard tests pass. Normal service startup/restart, runtime roles and packaging remain NOT_RUN. |
-| FE05 | IN_PROGRESS | New accessible primitives assigned to the frontend-only worker; C02/C08 prerequisites qualified. |
+| FE05 | ACCEPTED | [Integrated evidence](evidence/ui-primitives.json) and [independent review](qa/ui-primitives-review.md): 22 DOM tests, strict build/lint, real Chrome keyboard/focus/dismissal and 44px targets at four viewports. Simultaneous nested-modal issue resolved. Physical devices and screen readers remain separate QA work. |
 
-All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **3/112**;
-accepted total: **3/118**. No required IA entry or IN01–IN05 integration gate has
+All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **4/112**;
+accepted total: **4/118**. No required IA entry or IN01–IN05 integration gate has
 been accepted. Real identity/provider flows, service startup, multiplayer,
 transactions, privacy/revocation, physical place verification, original production
 assets, real devices, load/recovery and deployment remain outstanding.
@@ -37,3 +37,14 @@ unrelated edits. No Bigyeting UI or implementation module was imported.
 
 Each later handoff must update this record with actual evidence and limitations;
 do not advance statuses simply because a worker reports completion.
+
+FE05 integrated as `ae24437`; its exact worker candidate is `8f9ddf7`. A separate
+review reproduced and rechecked the preliminary nested-modal defect, then found
+no remaining actionable issue on that candidate. Parent reran all 22 component
+tests, strict build/lint and the four-viewport Chrome driver after integration.
+
+The next implementation queue is guarded MCR runtime configuration/full service
+startup for BE02, the remaining C03 freeze decisions and BE03 auth hardening,
+then typed frontend transport and the persistent shell. C04/C05 domain/realtime
+contracts remain required before feature lanes diverge. No runtime, OAuth or
+release acceptance follows from the completed component/contract checks.

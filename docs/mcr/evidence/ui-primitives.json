@@ -1,0 +1,61 @@
+{
+  "task": "FE05",
+  "candidate": "ae24437",
+  "worker_commit": "8f9ddf7351c3f504efe9265ed1708e8a986d99bd",
+  "scope": "Original isolated UI primitives, not application flows",
+  "runtime": {
+    "node": "24.22.2",
+    "pnpm": "11.7.0",
+    "browser": "Chrome 156.0.8078.76"
+  },
+  "executed": [
+    {
+      "command": "corepack pnpm@11.7.0 exec vitest run src/shared/ui",
+      "exit_code": 0,
+      "tests_passed": 22
+    },
+    {
+      "command": "corepack pnpm@11.7.0 run build",
+      "exit_code": 0
+    },
+    {
+      "command": "corepack pnpm@11.7.0 run lint",
+      "exit_code": 0
+    },
+    {
+      "command": "MCR_CHROME_EXECUTABLE=<local Chrome> node src/shared/ui/__tests__/browser-smoke.mjs",
+      "exit_code": 0,
+      "viewports": [
+        [
+          360,
+          800
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          430,
+          932
+        ],
+        [
+          1280,
+          800
+        ]
+      ],
+      "page_errors": 0
+    }
+  ],
+  "screenshot": {
+    "path": "docs/mcr/evidence/ui-primitives-390.png",
+    "sha256": "5a1134b4523cb633cb7c92f11eb330c5faf531f35d7a46ff3e7fbe28ca024cf5",
+    "visually_reviewed": true
+  },
+  "independent_review": "docs/mcr/qa/ui-primitives-review.md",
+  "not_run": [
+    "physical mobile",
+    "Safari/Firefox",
+    "screen readers",
+    "real API/user/world flows"
+  ]
+}
