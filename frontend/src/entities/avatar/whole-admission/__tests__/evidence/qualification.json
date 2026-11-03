@@ -114,5 +114,25 @@
     "no live backend or real API/bootstrap/World proof",
     "no new native capture/device/multiuser/IN01/IN05 acceptance",
     "no root/renderer/art/lease/shared-contract writes"
-  ]
+  ],
+  "union_source": "e614997db5dc54bd688c86df1bb94d96d80c4fc4",
+  "post_reconciliation": {
+    "head": "496aa2d5810b5054dfca8792d72c0e2ca9ce5661",
+    "qualified_source_hashes_unchanged": true,
+    "strict_types_exit_code": 0,
+    "generator_check_exit_code": 0,
+    "affected_tests_exit_code": 0,
+    "affected_test_count": 349,
+    "affected_test_files": 28,
+    "affected_test_paths": [
+      "src/entities/avatar/whole-admission",
+      "src/features/auth/__tests__/contract.test.ts",
+      "src/features/auth/__tests__/reference-target",
+      "src/features/me",
+      "src/features/people",
+      "src/features/profile",
+      "src/app/account-entry",
+      "src/app/__tests__/reference-root/root.test.tsx"
+    ]
+  }
 }
