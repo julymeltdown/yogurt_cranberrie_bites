@@ -1,0 +1,56 @@
+{
+  "task": "FE-REF-PROFILE",
+  "status": "MOCK_READY",
+  "originalBase": "f837bef676cd26869c26c172a699a91b7842d832",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "checks": [
+    {
+      "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/me/__tests__/reference-target/runner.ts --configLoader runner --maxWorkers 1 (29/29)",
+      "exit": 0
+    },
+    {
+      "command": "NODE node_modules/typescript/bin/tsc --noEmit --incremental false",
+      "exit": 0
+    },
+    {
+      "command": "NODE node_modules/oxlint/bin/oxlint [exact changed profile UI/helpers/tests]",
+      "exit": 0
+    },
+    {
+      "command": "NODE src/features/me/__tests__/reference-target/build.mjs",
+      "exit": 0
+    },
+    {
+      "command": "NODE src/features/me/__tests__/reference-target/browser.mjs",
+      "exit": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0
+    },
+    {
+      "command": "NODE scripts/mcr/check-ui-origin.mjs",
+      "exit": 0
+    },
+    {
+      "command": "python3 scripts/mcr/check-boundaries.py --base f837bef676cd26869c26c172a699a91b7842d832 --lane frontend --allow-doc docs/mcr/frontend/reference-auth.md --allow-doc docs/mcr/frontend/reference-profile.md",
+      "exit": 0
+    },
+    {
+      "command": "git diff --cached --check (source)",
+      "exit": 0
+    }
+  ],
+  "inputHashes": {
+    "contracts/generated/mcr-domain.openapi.json": "a5fbe73124ed069e6357f5797a264e2d2a1bec93b0179bfc8550bf1122b69fde",
+    "contracts/fixtures/domain/public-post.json": "7015cda316531b4e44c7f1e8a6dcea697eb299dfe4c5d9d6e2ff332d85c8920e",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f"
+  },
+  "limitations": [
+    "Missing reviewed canonical current-user portrait binding; no decorative gallery substituted",
+    "Missing real root authorized-page activity producer; optional partial page only",
+    "Root7201b875 embedding/footer context outside isolated base",
+    "No real server/native device/root ten-route/full visual acceptance"
+  ],
+  "sourceCommit": "6191f740ca53c6f476e951ad75ecbc0e90bf16a5"
+}

@@ -1,0 +1,227 @@
+{
+  "status": "MOCK_READY",
+  "browser": "156.0.8078.80",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "results": [
+    {
+      "width": 360,
+      "geometry": {
+        "frame": {
+          "x": 6,
+          "y": 34,
+          "width": 348,
+          "height": 559.796875
+        },
+        "header": {
+          "x": 10,
+          "y": 82,
+          "width": 340,
+          "height": 186.796875
+        },
+        "portrait": {
+          "x": 18,
+          "y": 92,
+          "width": 118.796875,
+          "height": 118.796875
+        },
+        "bio": {
+          "x": 147.796875,
+          "y": 148.515625,
+          "width": 194.203125,
+          "height": 49.78125
+        },
+        "navigation": {
+          "x": 10,
+          "y": 268.796875,
+          "width": 340,
+          "height": 53
+        },
+        "activity": {
+          "x": 10,
+          "y": 321.796875,
+          "width": 340,
+          "height": 172
+        },
+        "options": {
+          "x": 18,
+          "y": 493.796875,
+          "width": 324,
+          "height": 45
+        },
+        "footerReservation": {
+          "x": 6,
+          "y": 593.796875,
+          "width": 348,
+          "height": 64
+        }
+      },
+      "layoutTargetsNoSubstituteArt": "PASS",
+      "activityScopeNoExtraFetch": "PASS",
+      "navigationKeyboard": "PASS",
+      "saveCancelConflict": "PASS",
+      "pendingPrivacyScrub": "PASS",
+      "publicConsentAndUnavailable": "PASS",
+      "longEmptyErrorLoadingExpired": "PASS"
+    },
+    {
+      "width": 390,
+      "geometry": {
+        "frame": {
+          "x": 6,
+          "y": 34,
+          "width": 378,
+          "height": 569.6875
+        },
+        "header": {
+          "x": 10,
+          "y": 82,
+          "width": 370,
+          "height": 196.6875
+        },
+        "portrait": {
+          "x": 18,
+          "y": 92,
+          "width": 128.6875,
+          "height": 128.6875
+        },
+        "bio": {
+          "x": 157.6875,
+          "y": 150.40625,
+          "width": 214.3125,
+          "height": 49.78125
+        },
+        "navigation": {
+          "x": 10,
+          "y": 278.6875,
+          "width": 370,
+          "height": 53
+        },
+        "activity": {
+          "x": 10,
+          "y": 331.6875,
+          "width": 370,
+          "height": 172
+        },
+        "options": {
+          "x": 18,
+          "y": 503.6875,
+          "width": 354,
+          "height": 45
+        },
+        "footerReservation": {
+          "x": 6,
+          "y": 603.6875,
+          "width": 378,
+          "height": 64
+        }
+      },
+      "layoutTargetsNoSubstituteArt": "PASS",
+      "activityScopeNoExtraFetch": "PASS",
+      "navigationKeyboard": "PASS",
+      "saveCancelConflict": "PASS",
+      "pendingPrivacyScrub": "PASS",
+      "publicConsentAndUnavailable": "PASS",
+      "longEmptyErrorLoadingExpired": "PASS"
+    },
+    {
+      "width": 430,
+      "geometry": {
+        "frame": {
+          "x": 6,
+          "y": 34,
+          "width": 418,
+          "height": 582.890625
+        },
+        "header": {
+          "x": 10,
+          "y": 82,
+          "width": 410,
+          "height": 209.890625
+        },
+        "portrait": {
+          "x": 18,
+          "y": 92,
+          "width": 141.890625,
+          "height": 141.890625
+        },
+        "bio": {
+          "x": 170.890625,
+          "y": 152.921875,
+          "width": 241.109375,
+          "height": 49.78125
+        },
+        "navigation": {
+          "x": 10,
+          "y": 291.890625,
+          "width": 410,
+          "height": 53
+        },
+        "activity": {
+          "x": 10,
+          "y": 344.890625,
+          "width": 410,
+          "height": 172
+        },
+        "options": {
+          "x": 18,
+          "y": 516.890625,
+          "width": 394,
+          "height": 45
+        },
+        "footerReservation": {
+          "x": 6,
+          "y": 616.890625,
+          "width": 418,
+          "height": 64
+        }
+      },
+      "layoutTargetsNoSubstituteArt": "PASS",
+      "activityScopeNoExtraFetch": "PASS",
+      "navigationKeyboard": "PASS",
+      "saveCancelConflict": "PASS",
+      "pendingPrivacyScrub": "PASS",
+      "publicConsentAndUnavailable": "PASS",
+      "longEmptyErrorLoadingExpired": "PASS"
+    }
+  ],
+  "errors": [],
+  "sources": {
+    "frontend/src/features/me/__tests__/reference-target/browser.mjs": "b8e64a9d7c1b6df8bec5c7199e98959f75ff18852107d84d94601d3dd17ba1d8",
+    "frontend/src/features/me/__tests__/reference-target/build.mjs": "2ce5c94e0196b4e74812bf5a9829a6144c9c208296c7d09d6e95b971675e0ea5",
+    "frontend/src/features/me/__tests__/reference-target/data.ts": "1189a55c032110b376ee192368baff1e27b51509163816cf595b0a4b444d240f",
+    "frontend/src/features/me/__tests__/reference-target/presentation.test.tsx": "82d7e357599eb41d0cb725f2776730668635e816bb04efe75731621796d607f0",
+    "frontend/src/features/me/__tests__/reference-target/preview.css": "f0f6111d5871648f1d3aa84541c45bdd9e2d0899985aa029d6c2d4341218f600",
+    "frontend/src/features/me/__tests__/reference-target/preview.html": "d7d77cc0b927db68dbbc8978b0ff30915304a6472ee0dc8b0c53f8e471b5db9c",
+    "frontend/src/features/me/__tests__/reference-target/preview.tsx": "0a6749b034daf8edd81a640999be62ccdd7186f6d2ffc8b043f3740598b04577",
+    "frontend/src/features/me/__tests__/reference-target/runner.ts": "228fd668ad2cf31f48fbe612ecb7c2184b61f1b3078579ea179e0f9c6d8f4aeb",
+    "frontend/src/features/profile/__tests__/reference-target/presentation.test.tsx": "32ffbb8f4fffbdc6d0063b3fdf1f95ff56aa5f33cd61f1735034b59aac7cde30",
+    "frontend/src/features/me/ui/reference-profile/ProfileActivity.tsx": "a86bb391d5868fee047a3f3d86f42efe8e30c1b0c058b56ca5e72b3cd4edc2ea",
+    "frontend/src/features/profile/reference-presentation/ProfileIcon.tsx": "4270973a977604019098e0ae8d180c76dced484a1ed28c585faf2b813ca0fd89",
+    "frontend/src/features/profile/reference-presentation/activity.css": "bc19d8a9c1b2c206a32a1274350368635b3cf6b0595161b76466543506d7c998",
+    "frontend/src/features/me/ui/MePages.tsx": "1d7ab278b3413ce9dd24d62a4175c584633d9ddc87de439f4a156f0c1ffdea64",
+    "frontend/src/features/me/ui/me.css": "d347bb2d79e966bbe19b7250bbb9bd744d8711dc2c6270ade78200ffede2db7f",
+    "frontend/src/features/profile/PublicProfile.tsx": "41733b61619dfcbd6ea58f411f9eec42ebef70f6de68c27b20b80e38bb3357a8",
+    "frontend/src/features/profile/profile.css": "7e545afdf5622611a2feb57c146eb15278727841843a43218930652dd74136b6",
+    "frontend/src/features/me/__tests__/visual-adoption/presentation.test.tsx": "69726098559a181058d123cdf01656744a00dd671caa396b0e5e2b5ffb6f514a",
+    "frontend/src/features/me/ui/AvatarThumbnail.tsx": "b133db946b1c9f7f8f3d546e85092bf9609ecbac85145e97e052a972625cc0c4",
+    "frontend/src/features/profile/Avatar.tsx": "021551ceae705f680a7b4e99515b9d18cae511eb8f7af5c193656ccbe8b124e4",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/features/event-feed/contract.ts": "3752e9f21488cd149af6d4d4e5baa0c09f34502dd7366cad1d14491b574ba860"
+  },
+  "captures": {
+    "frontend/src/features/me/__tests__/reference-target/evidence/me-partial-activity-360.png": "8bd5c16d4f659db336eac46ca6e57e6192259f4c0d808f6263d07ec4f519370f",
+    "frontend/src/features/me/__tests__/reference-target/evidence/me-partial-activity-390.png": "e6fc518acb7d784d87513250c525c0f3b23a0637c80b0051d796bb5a169387ff",
+    "frontend/src/features/me/__tests__/reference-target/evidence/edit-conflict-390.png": "80dda3495ddc0de5971948889e36d9746f60ce6138b6e58ee5efac4ce1279117",
+    "frontend/src/features/me/__tests__/reference-target/evidence/public-partial-activity-390.png": "6305a6ac21856b414dd05ba98b236be1f3a5df14c839614eaa191e4abeb00d72",
+    "frontend/src/features/me/__tests__/reference-target/evidence/me-unavailable-activity-390.png": "ebec913cd68838bd61138e6bcfb5f4a0ee6e0d391b89a375f4bcc5362efbbf14",
+    "frontend/src/features/me/__tests__/reference-target/evidence/me-partial-activity-430.png": "db5343171d9970cb0a6db89b82da9a7edc014697531cd3884798841f8a51f30d"
+  },
+  "limitations": [
+    "Actual production MeHub/ProfileForm/PublicProfile with canonical controllers and synthetic public-schema data",
+    "Missing current-user reviewed AvatarConfig resource binding: exact large square renders honest unavailable state; no selected-static decoration becomes identity",
+    "Root7201b875 embedded window/footer not present at source base; fixture is standalone feature and64px nonillustrated reservation only",
+    "Activity is two own-author posts from one authorized page, not joined parties/reservations or complete activity history",
+    "No real backend/device/root all10route acceptance"
+  ]
+}
