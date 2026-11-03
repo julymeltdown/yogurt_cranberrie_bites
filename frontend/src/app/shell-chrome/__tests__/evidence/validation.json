@@ -1,0 +1,474 @@
+{
+  "task": "FE07-CHROME / UIV02",
+  "status": "MOCK_READY",
+  "base": "d3440e9d1acbd1882a082f9c89d1be1e807bec34",
+  "branch": "codex/mcr-fe-FE07-chrome",
+  "ancestry": "direct child author commit; full SHA in Git/READY handoff",
+  "scope": [
+    "NEW frontend/src/app/shell-chrome/**",
+    "NEW docs/mcr/frontend/shell-chrome.md"
+  ],
+  "source_provenance": "New MCR rendering/CSS; current ShellLink/NavigationMemory/routes/shared ConcertIcon and existing supplied ThemeController. No legacy art/UI, no new dependencies or lifecycle owner.",
+  "node": "v24.22.2",
+  "commands": [
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0,
+      "evidence": "plan.log",
+      "scope": "planning only"
+    },
+    {
+      "command": "MCR_FE14_PYTHON=/Users/lhs/Desktop/mcr-tools/contracts-validation-venv/bin/python node node_modules/vitest/vitest.mjs run --configLoader runner --no-cache src/app/shell-chrome/__tests__/chrome.test.tsx src/features/theme/__tests__/controller.test.tsx src/world/theme/__tests__/replacement.test.ts src/app/__tests__/routes.test.ts",
+      "cwd": "frontend",
+      "exit": 0,
+      "tests": 81,
+      "files": 4,
+      "skipped": 0,
+      "evidence": "focused.log"
+    },
+    {
+      "command": "node frontend/node_modules/typescript/bin/tsc --noEmit --incremental false --project frontend/tsconfig.json",
+      "exit": 0,
+      "evidence": "types.log"
+    },
+    {
+      "command": "node node_modules/oxlint/bin/oxlint src/app/shell-chrome",
+      "cwd": "frontend",
+      "exit": 0,
+      "evidence": "lint.log"
+    },
+    {
+      "command": "node frontend/src/app/shell-chrome/__tests__/native.mjs",
+      "exit": 0,
+      "evidence": "native.log",
+      "build": "production existing index plus module fixture; temp output/cache only",
+      "browser": "156.0.8078.80",
+      "screenshots": 30,
+      "widths": [
+        360,
+        390,
+        430
+      ]
+    },
+    {
+      "command": "Initial optional Python-enabled focused run from repository root with --root frontend",
+      "exit": 1,
+      "evidence": "focused-initial-root-cwd.log",
+      "reason": "existing test relative Python script requires frontend cwd; final command above passes"
+    },
+    {
+      "command": "Initial native sequence expected Reduce after show-from-peek",
+      "exit": 1,
+      "reason": "caller returns to half; corrected runner sequence; production unchanged; final run passes"
+    }
+  ],
+  "source_sha256": {
+    "docs/mcr/frontend/shell-chrome.md": "7c5c2c30264db4dbcb9827f225667cb003a877cfde7568f109ef5c3a37ab8324",
+    "frontend/src/app/shell-chrome/__tests__/chrome.test.tsx": "a8e9bdc9aebf22ccaf75e8c4f409900770ff26aa1f1c0b88a391f3cff6ce7474",
+    "frontend/src/app/shell-chrome/__tests__/native.mjs": "71a1cf53e44e5e319ef6579e9de1c648c40d05e84b5149433b60ae753c8f85b4",
+    "frontend/src/app/shell-chrome/__tests__/preview.css": "32959c78176ccf2fa9c1f05cdb14d8214be0934bd388ffc252be12b517e2fb2e",
+    "frontend/src/app/shell-chrome/__tests__/preview.html": "aabece6155dc038d182f7131f293499950199790da7799d8c1b1f4d1581a9f4d",
+    "frontend/src/app/shell-chrome/__tests__/preview.tsx": "ec5d946783d5af5b777f311422f9843c5a57ad90f299b1f87d9b1585b1c5b9d5",
+    "frontend/src/app/shell-chrome/index.tsx": "744a9c3791d37b170143055561e65acab8c7c405d11b1e31e2da24645d4dfbf3",
+    "frontend/src/app/shell-chrome/shell-chrome.css": "ad70f64fdeea804cb68402f16f71798fef56a6f4b77d1335bbe16d7f8b88afa3"
+  },
+  "readonly_source_contract_reference_sha256": {
+    "AGENTS.md": "cef79d981cd0ef03c5b693d8405c883a6d0dce9e6b0146317ad8572cdee3c872",
+    "frontend/AGENTS.md": "18fa7bba7cd4fd64ab011538b3e2e615bca00320ac951a095ae071b42623eeaf",
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "docs/mcr/project-assessment.md": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+    "docs/mcr/execution-plan.md": "e833d39d89f13f7eed605bd30f6ba82ab81be81d4247435893c3d5435cca5763",
+    "docs/mcr/design/ui-ux-reference-review.md": "0ee0e60b426ce547efbedad0abb1f30b3fef4b50ced32dc5522116c867b92179",
+    "docs/mcr/design/ui-reference-audit-2026-11-04/user-reference.jpg": "2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23",
+    "frontend/src/features/avatar/__tests__/visual-adoption/evidence/account/default-avatar-unavailable-390.png": "3779b6ab269714211f7a8e053446c0f5d72cd107da0f6df035dac4e2d47f70b8",
+    "frontend/src/app/mural-entry/__tests__/evidence/loaded-390.png": "88b5af7d30357525a199eecc48caacf6d1e49f74a5387cadc68d614242ff3a2f",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/tsconfig.json": "4f24f37e8ef13f1e888a0cd69c971b132eace79cc1ef633efd86a8b669b1644d",
+    "frontend/vite.config.ts": "f068812eb2cc54891e2422112ccf14374b2a329c8c1d7d68b6195b7a87f743f8",
+    "frontend/src/main.tsx": "2bdb48c30b305e7540d005a8c1c316d8ae27a38baeaf659013c0722765f09f5a",
+    "frontend/src/app/WorldShell.tsx": "9418ecaa41689bcdf2d1a15872097bb2672d29786602a14e5251fa308f4ed27b",
+    "frontend/src/app/WorldHost.tsx": "8438ad02ad8d21b3fc0e64d76ea2e47fdfb89d8f7ca5db86e57516678170a491",
+    "frontend/src/app/shell.css": "75b74f145de44da52657f3743cc93cdfd6744af39509c596b21639f61ca7b10d",
+    "frontend/src/app/router.tsx": "6626b51bd8bfa3589dff42ab0166ec05bd07438b83cb83e5bffe21b7d32d1eb2",
+    "frontend/src/app/ports.ts": "71741772296f3590ef3d8e04b7c5e462d4410f7e18f575e44cf0775c379b2be7",
+    "frontend/src/app/navigation.tsx": "2efd2d1236536e663f3fae00f74ecaacaea091a3474c45c47c845afa0a2ff1cc",
+    "frontend/src/app/routes.ts": "e49ceffdc2e6e52bfba8e361b727504268fab264763c124878a556ee7f677829",
+    "frontend/src/shared/ui/concert-window/index.tsx": "2a25065a51c20e013a2786f7e798bd2a15ddcf8a61a8b1385b14b7aee790c00e",
+    "frontend/src/shared/ui/concert-window/concert-window.css": "924dc56f3c39e3373aee58f6e865a60d2715f847886eabade1adae1e46b3cd11",
+    "frontend/src/features/theme/model/controller.ts": "0060b976b71c704b658f65e62608a1eca68cd520f0d239c00fbb0eb3bf7b348b",
+    "frontend/src/features/theme/model/preferences.ts": "9f990b199cce12067afbf79d408dbe674cfec826e533f31994c06d27ab95e7ad",
+    "frontend/src/features/theme/ui/ThemeScope.tsx": "04e39f4f89c9608dc5aacfe9c37322ec16736f8361755348d908dabeaab8c17b",
+    "frontend/src/features/theme/ui/ThemeSelector.tsx": "50042fdadce49620b823e2520708336a2e4c75c376a3900deb76a274458eb34b",
+    "frontend/src/features/theme/__tests__/controller.test.tsx": "418f7081073622cc50f60f5b4c86c82f105d191404cc0105a310572d007328cb",
+    "frontend/src/world/theme/loader.ts": "bbddb7db35fcb682eff83ca7d1375814d125b2e50275b5e5f35aafb77fe91053",
+    "frontend/src/world/theme/compatibility.ts": "ee062ad956d2e4bbda88ee96024e32f49f7780a735a337d4495b82eb61db2aeb",
+    "frontend/src/world/theme/__tests__/replacement.test.ts": "64a15a3f097ceca02c4b6a09a2f6b6aca7c967c39f5e4e1ac43741038722b2dd",
+    "frontend/src/world/theme/__tests__/fixtures/releases.ts": "4cb2ca615447615a19a8e48a9ec82a9ea8d07f9a3b11b046c76b4d3ed91f2269",
+    "frontend/src/world/theme/__tests__/fixtures/png.ts": "3c4e83221e18d1c74f59fb9fdc665fbad04e9bace2d8fbf3d1275980bd3f9929",
+    "frontend/src/world/__tests__/fixtures/synthetic.ts": "7f0326dba49112d7297cfed23bd38ef5262605cbd7babc90fef47b4835dd96d7",
+    "frontend/src/world/runtime.ts": "ca4ebd13cecded807d2a283c973503a3428f0ad57af5d62f6223f03b25314ed3",
+    "frontend/src/world/scenes/MapScene.ts": "8fcc8142f04ec44e19992be9029eda4eb2cd78d723881644fe455b842684745e",
+    "frontend/src/world/camera/port.ts": "3722dc120a8dd10f31716c4ff9558fb3e2f05588e77af788ce26d98a2701aaa9",
+    "frontend/src/world/composition/index.ts": "b79f1750a98794e2bb628aa910a9c1e95b7b8b26af8957209aec6c89e0aca245",
+    "frontend/src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "frontend/src/world/network/mock.ts": "20a021ee8948bbc8ef1d8910c6ab3b0e12919833ec1faa6822e2337a53b40368",
+    "frontend/src/features/auth/model/session.ts": "dae6680d1f4a0600b6d3012639fd82c9317d63d1a55eb856e5c4dc81f9a5dc53",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+    "contracts/realtime/v1/policy.json": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+    "contracts/assets/v1/map-manifest.schema.json": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800",
+    "contracts/assets/v1/theme-manifest.schema.json": "7e4b0d9a8e2e21ffe76172870ea5ef44b5282e8f7852671862889c492f38b1d5",
+    "contracts/fixtures/realtime/movement-heartbeat.json": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+    "contracts/fixtures/realtime/ticket-response.json": "8162f1ac19b4caf28ca810d9c565386cf8f532b7e282b356999e06fcec4c1c54",
+    "contracts/fixtures/assets/map-manifest.json": "0cccde2c009a44cc2355dfa15ef2d030bc7b85be6f58bec7470108dba46562f7",
+    "contracts/fixtures/assets/theme-revenge.json": "29c7021569309b741936645b1350c9789c213fc6b729a8650257561b278c892c",
+    "scripts/mcr/validate-assets.py": "94cb9f3eae7b184794fefa626b4d00e4ff690c80975f0c140072f2d094ff8cf0"
+  },
+  "evidence_sha256": {
+    "frontend/src/app/shell-chrome/__tests__/evidence/direct-detail-360.png": "e4990fa09ad2893138dd9a18cfe59d19463d71da38dc8bc4e9601386875f8658",
+    "frontend/src/app/shell-chrome/__tests__/evidence/direct-detail-390.png": "30cfe9e0a85555f5ee2392b448783ec2bced0cf10b701f8156857d049c9f5102",
+    "frontend/src/app/shell-chrome/__tests__/evidence/direct-detail-430.png": "f2d44de2b2fbd10e60882da2f7d88fc2b555a868cd9daa63c6cd6ed86ec4d4b4",
+    "frontend/src/app/shell-chrome/__tests__/evidence/focused-initial-root-cwd.log": "c075c72e27b9cee3c159f7fb1f8f072f4e7fc3559c2922e5db3b3c14a1029836",
+    "frontend/src/app/shell-chrome/__tests__/evidence/focused.log": "7ee46d2acc0d1d0ac0c5d8563921c98769877c1cc4be584be234d56ab417414e",
+    "frontend/src/app/shell-chrome/__tests__/evidence/lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/app/shell-chrome/__tests__/evidence/me-panel-360.png": "c0e3d6c130530976a0f8b568903f61b4a9e767d76f7438b7f547c77fef4e7717",
+    "frontend/src/app/shell-chrome/__tests__/evidence/me-panel-390.png": "9bd9372a0bebcb76e0b6ff48cea5660def3b1447bb842408e1f8e5592068300c",
+    "frontend/src/app/shell-chrome/__tests__/evidence/me-panel-430.png": "d62468d382ce6efe07f2f67e698be27fd84fb4a833231215f5282513f2387730",
+    "frontend/src/app/shell-chrome/__tests__/evidence/native.json": "1177e0ad1fff5548ba18a9e866a9141b28bc184824e71c1b4ccf057cb88edbd4",
+    "frontend/src/app/shell-chrome/__tests__/evidence/native.log": "d031d6d1ae9c746018c394dac7edc853276c1316001b467e50cc49d433110104",
+    "frontend/src/app/shell-chrome/__tests__/evidence/panel-expanded-360.png": "6206190526cb9677033ac5fe0049c6b3db6c4b1baaf9e5646d1f3b3e783dc6e2",
+    "frontend/src/app/shell-chrome/__tests__/evidence/panel-expanded-390.png": "51f9f950f8dda7ffef8f8fe31209ec13815992e3dbac86c771728c279ca8b16b",
+    "frontend/src/app/shell-chrome/__tests__/evidence/panel-expanded-430.png": "d9de24170f5c17ef761ce87beba17590c187adcde103c6313d90accfc7c860c1",
+    "frontend/src/app/shell-chrome/__tests__/evidence/plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "frontend/src/app/shell-chrome/__tests__/evidence/short-viewport-360.png": "19005ac210fbf46da6df295fe00a09486e8aa8ddde524f19550e5bbf33ce7f20",
+    "frontend/src/app/shell-chrome/__tests__/evidence/short-viewport-390.png": "725c4a04a56171e57e910679440208b35a87579aacb7c303a03810cd6879e28a",
+    "frontend/src/app/shell-chrome/__tests__/evidence/short-viewport-430.png": "44d59d9d659c08a7c2b1ebaee61ff5ef9b03b6624ac927e175e8621aa6559092",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-error-360.png": "a06d8b689912cfae1370d033a49a0d9433047147258b54b6a48ae0e854213e82",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-error-390.png": "16e83c89470ba676eca071bdb197560d1b221e74fcbb3cf661a6fc6f9990dee9",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-error-430.png": "65d06e2733da48d50491e4158b1993d495cf69ce887a2808ab8883b9ef7094f9",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-pending-360.png": "e6a13d48da6a8c29d2bd672aba36d416593630f47a1905d51cc1f8c8870c4923",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-pending-390.png": "af28d6329810fd0b994ec79db4568231c8ddf552669d928a81a59d5d706a006a",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-pending-430.png": "520c386d146594b8b47e82b579dc21430ee1739a6914f7f7da605a5d54ee2df4",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-unavailable-360.png": "c7562dd7cb0196f74c84b117ef276db2cccc8455cd512576fccb3105097e5e49",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-unavailable-390.png": "101dac50a4c9653fc32d3ee5c1284583cc0166f5b17a0a187e1e5f71a6fdc492",
+    "frontend/src/app/shell-chrome/__tests__/evidence/theme-unavailable-430.png": "ebff06e47a2754e5fb3a77df2bb684f37750e89a45edf90b33cb9ea3a07ca8d2",
+    "frontend/src/app/shell-chrome/__tests__/evidence/types.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-danger-360.png": "47922d26679003108a7f7cc02724abd0f1868e19bfc5a7cac3a2f3b85b2c54e2",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-danger-390.png": "4a9b99bd8b15806581a44e0642da5702129e87dbce8237c4a08e1ec65fe7280b",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-danger-430.png": "e016c651bc94f024339dc44c039e608e74f8e7f2550df345a8fafa4f44bf7e1b",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-parade-360.png": "197f0848f0b00aff769a9afd4978fe3f7c6ce262dec78bbdc1b01e0a27ad7bfc",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-parade-390.png": "ea622c69832155feb0a2c610b55d11282cff43eef116c8690f87725b3a30864e",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-parade-430.png": "47c9d91b4d2383195384ae9593a43064927faf9df64a426d40dde05b59054491",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-revenge-360.png": "635b6f26988a90f0ff8a755a749d9c282cce13b3fccc412805a375189396e9a0",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-revenge-390.png": "2ff8f657ec0818c3cb62045b3a10e6675b21845ad284f09fb09e1ecf7750be52",
+    "frontend/src/app/shell-chrome/__tests__/evidence/world-revenge-430.png": "47c7d48b20f486161fb44797a9e50f3d4254bd33e0c5b61d6764b4f93062ae9d"
+  },
+  "layout": [
+    {
+      "width": 360,
+      "height": 800,
+      "ready": {
+        "viewport": 800,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 594.5,
+        "worldFraction": 0.743125,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 56.328125
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 56.34375
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 56.328125
+          }
+        ],
+        "reducedMotion": true
+      },
+      "short": {
+        "viewport": 430,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 224.5,
+        "worldFraction": 0.522093023255814,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 56.328125
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 56.34375
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 56.328125
+          }
+        ],
+        "reducedMotion": true
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "ready": {
+        "viewport": 844,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 638.5,
+        "worldFraction": 0.7565165876777251,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 61.328125
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 61.34375
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 61.328125
+          }
+        ],
+        "reducedMotion": true
+      },
+      "short": {
+        "viewport": 430,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 224.5,
+        "worldFraction": 0.522093023255814,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 61.328125
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 61.34375
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 61.328125
+          }
+        ],
+        "reducedMotion": true
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "ready": {
+        "viewport": 932,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 726.5,
+        "worldFraction": 0.7795064377682404,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 68
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 68
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 68
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 68
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 68
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 68
+          }
+        ],
+        "reducedMotion": true
+      },
+      "short": {
+        "viewport": 430,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 224.5,
+        "worldFraction": 0.522093023255814,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 68
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 68
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 68
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 68
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 68
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 68
+          }
+        ],
+        "reducedMotion": true
+      }
+    }
+  ],
+  "root_producer_gates": [
+    "WorldShell JSX replacements inside existing NavigationMemory only; keep one keyed WorldHost",
+    "optional PanelFrame header replacement retains parent Back/focus/scroll/Escape/size callbacks",
+    "current production ports/composition expose no ThemeController; canonical owner must supply qualified controller and withdraw/dispose on identity/event/policy loss",
+    "keep existing read-only status and visualViewport/safe-area logic; module CSS scoped"
+  ],
+  "not_run": [
+    "default WorldShell/root adoption",
+    "production theme release",
+    "approved character/venue art",
+    "live backend/multiuser world",
+    "physical device/keyboard/safe-area",
+    "load/release",
+    "full frontend suite"
+  ],
+  "validation_boundary": "Explicit module composition, actual retained Phaser/ThemeController/FE17 and MockWorldTransport/qualified synthetic map resources; art unavailable. Native pixel palettes and one game/socket/camera/room/outfit/navigation/back/withdrawal verified. Ready world-stage allocation74.3-78.0%; short viewport52.2%, panels can cover it.",
+  "reviewed_images": [
+    "world-revenge-360.png",
+    "theme-pending-360.png",
+    "short-viewport-360.png",
+    "world-parade-390.png",
+    "theme-error-390.png",
+    "panel-expanded-390.png",
+    "theme-unavailable-430.png"
+  ],
+  "staged_whitespace_check": {
+    "exit": 0,
+    "exclusion": "raw evidence/*.log only, preserve terminal output"
+  }
+}

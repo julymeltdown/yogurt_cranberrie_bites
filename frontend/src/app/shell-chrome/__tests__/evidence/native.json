@@ -1,0 +1,349 @@
+{
+  "result": "PASS",
+  "scope": "Module composition only; default WorldShell unchanged. Actual Phaser/ThemeController/FE17 with synthetic qualified map resources and MockWorldTransport; no approved avatar art/live service.",
+  "browser": "156.0.8078.80",
+  "widths": [
+    {
+      "width": 360,
+      "height": 800,
+      "result": "PASS",
+      "readyLayout": {
+        "viewport": 800,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 594.5,
+        "worldFraction": 0.743125,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 56.328125
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 56.34375
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 56.328125
+          }
+        ],
+        "reducedMotion": true
+      },
+      "shortLayout": {
+        "viewport": 430,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 224.5,
+        "worldFraction": 0.522093023255814,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 56.328125
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 56.34375
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 56.328125
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 56.328125
+          }
+        ],
+        "reducedMotion": true
+      },
+      "oneActualPhaser": true,
+      "oneMockSocket": true,
+      "sameCameraRoomOutfit": true,
+      "noInternalDocumentReload": true,
+      "backFocus": true,
+      "explicitThemeCommitAndRollback": true,
+      "renderedPaletteVerified": true,
+      "touchThemeSelection": true,
+      "withdrawalFenced": true,
+      "cleanup": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "result": "PASS",
+      "readyLayout": {
+        "viewport": 844,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 638.5,
+        "worldFraction": 0.7565165876777251,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 61.328125
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 61.34375
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 61.328125
+          }
+        ],
+        "reducedMotion": true
+      },
+      "shortLayout": {
+        "viewport": 430,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 224.5,
+        "worldFraction": 0.522093023255814,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 61.328125
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 61.34375
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 61.328125
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 61.328125
+          }
+        ],
+        "reducedMotion": true
+      },
+      "oneActualPhaser": true,
+      "oneMockSocket": true,
+      "sameCameraRoomOutfit": true,
+      "noInternalDocumentReload": true,
+      "backFocus": true,
+      "explicitThemeCommitAndRollback": true,
+      "renderedPaletteVerified": true,
+      "touchThemeSelection": true,
+      "withdrawalFenced": true,
+      "cleanup": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "result": "PASS",
+      "readyLayout": {
+        "viewport": 932,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 726.5,
+        "worldFraction": 0.7795064377682404,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 68
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 68
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 68
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 68
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 68
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 68
+          }
+        ],
+        "reducedMotion": true
+      },
+      "shortLayout": {
+        "viewport": 430,
+        "header": 54,
+        "era": 50,
+        "footer": 66,
+        "chrome": 170,
+        "world": 224.5,
+        "worldFraction": 0.522093023255814,
+        "qualification": 35.5,
+        "overflow": false,
+        "labels": [
+          {
+            "label": "World",
+            "width": 34.078125,
+            "parent": 68
+          },
+          {
+            "label": "Feed",
+            "width": 24.0625,
+            "parent": 68
+          },
+          {
+            "label": "Meet",
+            "width": 25.0625,
+            "parent": 68
+          },
+          {
+            "label": "Gifts",
+            "width": 26.578125,
+            "parent": 68
+          },
+          {
+            "label": "Wall",
+            "width": 25.5625,
+            "parent": 68
+          },
+          {
+            "label": "Me",
+            "width": 13.53125,
+            "parent": 68
+          }
+        ],
+        "reducedMotion": true
+      },
+      "oneActualPhaser": true,
+      "oneMockSocket": true,
+      "sameCameraRoomOutfit": true,
+      "noInternalDocumentReload": true,
+      "backFocus": true,
+      "explicitThemeCommitAndRollback": true,
+      "renderedPaletteVerified": true,
+      "touchThemeSelection": true,
+      "withdrawalFenced": true,
+      "cleanup": true
+    }
+  ],
+  "screenshots": [
+    "world-revenge-360.png",
+    "theme-pending-360.png",
+    "world-parade-360.png",
+    "theme-error-360.png",
+    "world-danger-360.png",
+    "me-panel-360.png",
+    "panel-expanded-360.png",
+    "short-viewport-360.png",
+    "theme-unavailable-360.png",
+    "direct-detail-360.png",
+    "world-revenge-390.png",
+    "theme-pending-390.png",
+    "world-parade-390.png",
+    "theme-error-390.png",
+    "world-danger-390.png",
+    "me-panel-390.png",
+    "panel-expanded-390.png",
+    "short-viewport-390.png",
+    "theme-unavailable-390.png",
+    "direct-detail-390.png",
+    "world-revenge-430.png",
+    "theme-pending-430.png",
+    "world-parade-430.png",
+    "theme-error-430.png",
+    "world-danger-430.png",
+    "me-panel-430.png",
+    "panel-expanded-430.png",
+    "short-viewport-430.png",
+    "theme-unavailable-430.png",
+    "direct-detail-430.png"
+  ],
+  "errors": []
+}
