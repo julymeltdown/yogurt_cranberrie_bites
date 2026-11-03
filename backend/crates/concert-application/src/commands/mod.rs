@@ -519,3 +519,5 @@ impl Completion {
 pub struct Invalidation {
     pub reference: SafeReference,
 }
+
+pub mod maintenance;

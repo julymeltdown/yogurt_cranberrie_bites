@@ -1,12 +1,13 @@
 //! Durable metadata-only at-least-once outbox. Leases fence acknowledgements, not
 //! external effects; every downstream MUST durably deduplicate the outbox UUID.
-use concert_application::commands::{CommandError, SafeReference};
+use concert_application::commands::{maintenance::InvalidationKind, CommandError, SafeReference};
 use sqlx::{PgPool, Row};
 use uuid::Uuid;
 #[derive(Clone, Debug)]
 pub struct Delivery {
     pub id: Uuid,
-    pub receipt: Uuid,
+    pub receipt: Option<Uuid>,
+    pub kind: InvalidationKind,
     pub event: Uuid,
     pub reference: SafeReference,
     pub attempt: i32,
@@ -38,9 +39,15 @@ impl PgOutbox {
         let result = rows
             .into_iter()
             .map(|r| {
+                let receipt = r.try_get("receipt_id").map_err(unavailable)?;
+                let kind = InvalidationKind::parse(
+                    &r.try_get::<String, _>("kind").map_err(unavailable)?,
+                    receipt,
+                )?;
                 Ok(Delivery {
                     id: r.try_get("outbox_id").map_err(unavailable)?,
-                    receipt: r.try_get("receipt_id").map_err(unavailable)?,
+                    receipt,
+                    kind,
                     event: r.try_get("event_id").map_err(unavailable)?,
                     reference: SafeReference {
                         resource: r.try_get("resource_id").map_err(unavailable)?,

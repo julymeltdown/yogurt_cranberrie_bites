@@ -1,4 +1,5 @@
 pub mod outbox;
+pub mod outbox_maintenance;
 pub mod place;
 pub mod receipt;
 
