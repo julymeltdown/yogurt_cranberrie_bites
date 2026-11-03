@@ -1,0 +1,314 @@
+{
+  "scope": "Native desktop Chrome source-art preview at mobile CSS widths; no device emulation or product acceptance",
+  "result": "PASS",
+  "browser": "Chrome 156.0.8078.80",
+  "playwright": "1.61.1",
+  "resourceChecks": [
+    {
+      "path": "world/themes/revenge.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "sha256:245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6",
+      "bytes": 4975
+    },
+    {
+      "path": "world/themes/parade.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "sha256:3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+      "bytes": 5017
+    },
+    {
+      "path": "world/themes/danger.png",
+      "status": 200,
+      "mime": "image/png",
+      "sha256": "sha256:1dcea83f14d38a5911f6c1cda6226c365475272cf89832d6a4957a7298343a21",
+      "bytes": 4909
+    }
+  ],
+  "previews": [
+    {
+      "theme": "REVENGE",
+      "width": 360,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 360,
+      "canvasWidth": 328,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 105.328125,
+          "height": 44
+        },
+        {
+          "width": 105.34375,
+          "height": 44
+        },
+        {
+          "width": 105.328125,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "revenge-360.png",
+      "screenshot_sha256": "sha256:153bcb8b7562a9be193b1834e08961b40fb57154da482205f44b73b6ab8b81dd",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    },
+    {
+      "theme": "PARADE",
+      "width": 360,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 360,
+      "canvasWidth": 328,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 105.328125,
+          "height": 44
+        },
+        {
+          "width": 105.34375,
+          "height": 44
+        },
+        {
+          "width": 105.328125,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "parade-360.png",
+      "screenshot_sha256": "sha256:d4f0eafb0b2c532428e4f6ac22f5cf075c7a46e214b80e92e9364f7a7205d1f8",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    },
+    {
+      "theme": "DANGER",
+      "width": 360,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 360,
+      "canvasWidth": 328,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 105.328125,
+          "height": 44
+        },
+        {
+          "width": 105.34375,
+          "height": 44
+        },
+        {
+          "width": 105.328125,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "danger-360.png",
+      "screenshot_sha256": "sha256:2d004be875f29e82c67c3d4bb9d915b295b89f537fd8f3da64ea3380b86296fe",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    },
+    {
+      "theme": "REVENGE",
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 390,
+      "canvasWidth": 358,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 115.328125,
+          "height": 44
+        },
+        {
+          "width": 115.34375,
+          "height": 44
+        },
+        {
+          "width": 115.328125,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "revenge-390.png",
+      "screenshot_sha256": "sha256:8f974aa17caa504d05bd49784ca17db8a980e23fe7d75dea8120804c35342ea0",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    },
+    {
+      "theme": "PARADE",
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 390,
+      "canvasWidth": 358,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 115.328125,
+          "height": 44
+        },
+        {
+          "width": 115.34375,
+          "height": 44
+        },
+        {
+          "width": 115.328125,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "parade-390.png",
+      "screenshot_sha256": "sha256:71fdf16f9d8d479f75fd8ab7298737e4268316be8566389d60e9485802c887cf",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    },
+    {
+      "theme": "DANGER",
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 390,
+      "canvasWidth": 358,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 115.328125,
+          "height": 44
+        },
+        {
+          "width": 115.34375,
+          "height": 44
+        },
+        {
+          "width": 115.328125,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "danger-390.png",
+      "screenshot_sha256": "sha256:1bdc910e9ebb81043323e474c1d640d04f6db1534233a6c5c9345e121bf37ff2",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    },
+    {
+      "theme": "REVENGE",
+      "width": 430,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 430,
+      "canvasWidth": 398,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 128.65625,
+          "height": 44
+        },
+        {
+          "width": 128.671875,
+          "height": 44
+        },
+        {
+          "width": 128.671875,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "revenge-430.png",
+      "screenshot_sha256": "sha256:7718ecd87679998f012078526b8100af7a40c951235629bb5a091691c1045756",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    },
+    {
+      "theme": "PARADE",
+      "width": 430,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 430,
+      "canvasWidth": 398,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 128.65625,
+          "height": 44
+        },
+        {
+          "width": 128.671875,
+          "height": 44
+        },
+        {
+          "width": 128.671875,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "parade-430.png",
+      "screenshot_sha256": "sha256:a9414299afc682c006fd71c586b9be8437ae443e4946700f8af834741e2639d4",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    },
+    {
+      "theme": "DANGER",
+      "width": 430,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "scrollWidth": 430,
+      "canvasWidth": 398,
+      "decoded": [
+        256,
+        128
+      ],
+      "buttonBounds": [
+        {
+          "width": 128.65625,
+          "height": 44
+        },
+        {
+          "width": 128.671875,
+          "height": 44
+        },
+        {
+          "width": 128.671875,
+          "height": 44
+        }
+      ],
+      "smoothing": false,
+      "screenshot": "danger-430.png",
+      "screenshot_sha256": "sha256:f0d1226fb285b7bc7294881ef8c37a97231213a99dd292e0ea80ca5cbf4cd456",
+      "theme_switch_same_art_board": "PASS",
+      "browser_page_errors": []
+    }
+  ],
+  "selected_avatar_compatibility": "NOT_RUN",
+  "production_map": "NOT_RUN",
+  "real_ios_safari_android_chrome": "NOT_RUN",
+  "qa06_in01": "NOT_RUN"
+}

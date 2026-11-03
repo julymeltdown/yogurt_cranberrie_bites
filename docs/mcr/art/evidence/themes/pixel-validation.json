@@ -75,6 +75,7 @@
     }
   ],
   "checks": [
+    "C06 source texture/provenance/theme-ID schema fragments (full product manifests NOT_RUN)",
     "fixed row-major shared tile semantics",
     "three distinct source PNGs",
     "all authored integer pixels equal native rendered pixels",

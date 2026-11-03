@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AR04 original world textures · source review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f1ecdf;color:#211f28;font:14px/1.45 ui-monospace,monospace}
+main{max-width:720px;margin:auto;padding:16px}h1{font-size:23px;line-height:1.1;margin:8px 0}p{margin:8px 0}
+.eyebrow{font-size:11px;letter-spacing:.08em}nav{display:flex;gap:6px;margin:14px 0}button{font:inherit;min-height:44px;padding:6px 10px;flex:1;background:#fff9ea;color:#211f28;border:1px solid #211f28;cursor:pointer}
+button[aria-pressed=true]{background:#211f28;color:#fff9ea}button:focus-visible{outline:3px solid #a52b4c;outline-offset:2px}
+figure{margin:12px 0}canvas{display:block;width:100%;height:448px;image-rendering:pixelated;background:#ddd}figcaption{font-size:12px;margin-top:8px}
+h2{font-size:15px;margin:20px 0 8px}.swatches{display:flex;gap:6px}.swatches span{height:24px;flex:1;border:1px solid #211f28}
+.tile-list{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.tile-list div{font-size:10px;min-width:0}.tile-list canvas{width:64px;height:64px;max-width:100%;background:repeating-conic-gradient(#e2ded4 0% 25%,#f6f1e7 0% 50%) 50%/12px 12px}
+.note{font-size:12px}a{color:inherit}
+</style>
+<main>
+<p class="eyebrow">MCR / AR04 / ORIGINAL SOURCE ART</p>
+<h1 id="title">REVENGE</h1>
+<p id="direction"></p>
+<nav aria-label="Texture source"><button data-theme="REVENGE" aria-pressed="true">REVENGE</button><button data-theme="PARADE" aria-pressed="false">PARADE</button><button data-theme="DANGER" aria-pressed="false">DANGER</button></nav>
+<figure><canvas id="world" aria-label="Geometric texture demonstration; no real venue or characters"></canvas>
+<figcaption>GEOMETRIC ART BOARD · Same tile positions for all skins.<br>No real venue, routes, people or release binding.</figcaption></figure>
+<div class="swatches" aria-label="Palette swatches"></div>
+<h2>Tile index · 2× inspection</h2><div class="tile-list"></div>
+<p class="note">1 lawn · 2 paving · 3 alternate paving · 4 gravel · 5 stage deck · 6 roof · 7 wall · 8 water · 9 shrub canopy · 10 flowers · 11 banner · 12 truss · 13 sign · 14 lamp. IDs 15–32 are reserved transparent cells.</p>
+<p class="note">Original pixels and restrained motifs. Selected-avatar compatibility, production map integration, real devices and QA06/IN01 are NOT_RUN.</p>
+</main>
+<script type="module">
+const info={REVENGE:['Claret fabric, warm stone and deep green. Quiet ground; crisp ink silhouettes.',['#6A7C56','#AFA394','#211F28','#BE435B','#EFE2CD']],PARADE:['Bone cloth, silver paving and cool sage. Repeated marching marks stay inside the fabric.',['#788475','#B5B6AE','#25272D','#DFD4B4','#F1E9D5']],DANGER:['Sunlit lawn, cyan metal and signal yellow. A compact lightning motif; no flashing.',['#91A95B','#C6BBA1','#223340','#F6D447','#FFF4D2']]};
+const names=['lawn','paving','alt. paving','gravel','stage','roof','wall','water','canopy','flowers','banner','truss','sign','lamp'];
+const terrain=Array.from({length:14},()=>Array(12).fill(1));
+for(let y=0;y<14;y++)for(let x=4;x<=7;x++)terrain[y][x]=2;
+for(let y=0;y<3;y++)for(let x=2;x<=9;x++)terrain[y][x]=5;
+for(let x=0;x<12;x++)terrain[6][x]=3;
+for(let y=9;y<=11;y++)for(let x=0;x<3;x++)terrain[y][x]=8;
+for(let y=8;y<=10;y++)for(let x=9;x<12;x++)terrain[y][x]=6;
+for(let x=9;x<12;x++)terrain[11][x]=7;
+for(let y=12;y<14;y++)for(let x=0;x<4;x++)terrain[y][x]=4;
+const decorations=[[9,0,4],[9,1,4],[9,10,4],[9,11,4],[9,2,8],[9,3,9],[9,8,12],[10,1,7],[10,9,7],[10,8,4],[11,3,4],[11,8,9],[12,2,0],[12,9,0],[13,3,6],[13,8,11],[14,4,8],[14,7,8]];
+const tile=(ctx,img,id,x,y,size=32)=>ctx.drawImage(img,(id-1)%8*32,Math.floor((id-1)/8)*32,32,32,x,y,size,size);
+const world=document.querySelector('#world'), grid=document.querySelector('.tile-list');
+let image,selected;
+function renderWorld(){
+ const width=Math.round(world.getBoundingClientRect().width);world.width=width;world.height=448;
+ const c=world.getContext('2d');c.imageSmoothingEnabled=false;
+ const offset=Math.round((width-384)/2);
+ terrain.forEach((row,y)=>row.forEach((id,x)=>tile(c,image,id,x*32+offset,y*32)));
+ decorations.forEach(([id,x,y])=>tile(c,image,id,x*32+offset,y*32));
+}
+async function select(theme){
+ const img=new Image();img.src=`/frontend/public/world/themes/${theme.toLowerCase()}.png`;await img.decode();
+ selected=theme;image=img;document.querySelector('#title').textContent=theme;
+ document.querySelector('#direction').textContent=info[theme][0];
+ document.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.theme===theme)));
+ document.querySelector('.swatches').replaceChildren(...info[theme][1].map(color=>{const s=document.createElement('span');s.style.background=color;s.title=color;return s}));
+ grid.replaceChildren(...names.map((name,index)=>{const d=document.createElement('div'),c=document.createElement('canvas');c.width=64;c.height=64;c.setAttribute('aria-label',`${index+1} ${name}`);const ctx=c.getContext('2d');ctx.imageSmoothingEnabled=false;tile(ctx,img,index+1,0,0,64);d.append(c,document.createTextNode(`${index+1} ${name}`));return d}));
+ renderWorld();window.review={theme,decoded:[img.naturalWidth,img.naturalHeight],terrain,decorations,ready:true};
+}
+document.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>select(b.dataset.theme)));
+addEventListener('resize',()=>image&&renderWorld());
+await select(new URL(location.href).searchParams.get('theme')||'REVENGE');
+</script>
+</html>
