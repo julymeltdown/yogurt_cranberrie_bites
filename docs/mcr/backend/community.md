@@ -104,3 +104,12 @@ Auth/Friend integration. Public routes/startup are not added here.
 
 First checkpoint SHA and exact changed paths are delivered separately so this
 file does not claim its own future commit hash or remote ancestry.
+
+Delivery's member-result convention: `SafeReference.resource = Member.user_id`,
+revision = that Member's revision, only under exact authorized event/party/user
+request binding. The canonical HMAC includes party and user path IDs. Community
+`RESOURCE_INVALIDATED` consumption is **coarse event invalidation**: refresh
+party/member queries under fresh authorization. Do not infer party from user ID
+or compare member revisions across parties. A future targeted consumer needs an
+explicit internal metadata extension. Delivery authorized this convention in
+chat, 2026-11-04; FE23 and BE09/19 owners were notified.
