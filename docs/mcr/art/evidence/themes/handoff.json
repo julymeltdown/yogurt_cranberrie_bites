@@ -19,6 +19,7 @@
     "docs/mcr/art/evidence/themes/danger-430.png",
     "docs/mcr/art/evidence/themes/danger.editable.json",
     "docs/mcr/art/evidence/themes/handoff.json",
+    "docs/mcr/art/evidence/themes/map-compatibility.json",
     "docs/mcr/art/evidence/themes/parade-360.png",
     "docs/mcr/art/evidence/themes/parade-390.png",
     "docs/mcr/art/evidence/themes/parade-430.png",
@@ -29,6 +30,7 @@
     "docs/mcr/art/evidence/themes/revenge-390.png",
     "docs/mcr/art/evidence/themes/revenge-430.png",
     "docs/mcr/art/evidence/themes/revenge.editable.json",
+    "docs/mcr/art/evidence/themes/verify-map-compatibility.cjs",
     "docs/mcr/art/evidence/themes/verify.py",
     "docs/mcr/art/theme-packs.md",
     "frontend/public/world/themes/ORIGIN.md",
@@ -60,6 +62,10 @@
     {
       "command": "git diff --check",
       "exit_code": 0
+    },
+    {
+      "command": "MCR_TYPESCRIPT_MODULE=/Users/lhs/Desktop/mcr/frontend/node_modules/typescript node docs/mcr/art/evidence/themes/verify-map-compatibility.cjs",
+      "exit_code": 0
     }
   ],
   "tool_versions": {
@@ -70,19 +76,22 @@
     "playwright": "1.61.1",
     "chrome": "156.0.8078.80",
     "jsonschema": "4.26.0",
-    "referencing": "0.37.0"
+    "referencing": "0.37.0",
+    "typescript": "6.0.3 (immutable FE14 parser transpilation only)"
   },
   "evidence": [
     "docs/mcr/art/evidence/themes/pixel-validation.json",
     "docs/mcr/art/evidence/themes/browser-validation.json",
-    "docs/mcr/art/theme-packs.md"
+    "docs/mcr/art/theme-packs.md",
+    "docs/mcr/art/evidence/themes/map-compatibility.json"
   ],
   "limitations": {
     "production_theme_manifests_and_registry": "NOT_RUN; integrator-owned actual map/avatar pins required",
     "selected_avatar_compatibility": "NOT_RUN; no characters or avatar fixture substitutes used",
-    "actual_ar02_map": "NOT_RUN here; separately owned map lane can pin committed texture sources",
+    "actual_ar02_map": "Committed AR02 source export e394b585 passes current FE14 parser for all three texture pins; actual Phaser/runtime binding NOT_RUN",
     "real_ios_safari_android_chrome": "NOT_RUN",
     "live_two_account_world_qa06_in01_in05": "NOT_RUN",
     "master_delivery_ancestry": "NOT_RUN here; Delivery owns integration/push"
-  }
+  },
+  "source_compatibility_commit": "Commit containing verify-map-compatibility.cjs; follows evidence commit 9ab0a4c28b73051f89f1a0d792a091d1768637db"
 }

@@ -143,6 +143,7 @@ Delivery obligations once real map/avatar sources are committed.
 | `python3 -m http.server 41864 --bind 127.0.0.1` | Local preview server | Served this checkout for review only; stopped after capture |
 | `MCR_PLAYWRIGHT_MODULE=/Users/lhs/Desktop/mcr/frontend/node_modules/@playwright/test node docs/mcr/art/evidence/themes/browser-review.cjs` | 0; PASS | [browser-validation.json](evidence/themes/browser-validation.json): 9 native Chrome captures, 36 theme selections, unchanged art-board tile positions, no horizontal document clipping/page errors, 44px targets, nearest-neighbor 1:1 CSS pixels, 3 exact MIME/status/hash resource reads |
 | `python3 scripts/mcr/check-plan.py` | 0; PASS | Planning provenance/exports and 112-task/61-IA accounting only; application checks NOT_RUN |
+| `MCR_TYPESCRIPT_MODULE=/Users/lhs/Desktop/mcr/frontend/node_modules/typescript node docs/mcr/art/evidence/themes/verify-map-compatibility.cjs` | 0; PASS | [map-compatibility.json](evidence/themes/map-compatibility.json): actual FE14 parser accepts committed AR02 export for all three texture pins; used terrain/overdraw identities match |
 | `git diff --check` / staged equivalent | 0 | Owned-path whitespace check |
 
 Preview tools were system Node **26.7.0** (standalone art-review script only),
@@ -184,9 +185,22 @@ art boards, not a product venue map or app screenshot.
 
 ## Outstanding product qualification
 
+Cross-lane source compatibility was subsequently verified against AR02 commit
+`e394b5851eb2bab203087aee57920f54481d4ea5`, reading committed Git blobs only.
+Its authored 36×28 export passes this checkout's actual immutable FE14
+`validateTiled` parser for all three source texture resources. All used IDs have
+the agreed terrain/overdraw identity; the map's `canopy` name is the explicit
+GID9 alias of this source pack's `shrub_canopy`. Its committed nine-preview
+browser receipt records the same three PNG byte hashes and source commit
+`f711c6a4d15e794504026bd39dc77d20c5d21273`. No map resources are copied into
+this patch. The compatibility check uses TypeScript **6.0.3** as a read-only
+transpilation tool with temporary scratch files and writes only owned evidence.
+It proves source map/texture compatibility, with no final manifest binding,
+Phaser composition, physical geography or product acceptance implication.
+
 Selected-avatar compatibility remains **NOT_RUN**: the separately owned selected
 source pack and animated product manifest were not bound or substituted. Actual
-map rendering and full C06 bundle/registry binding are separate AR02/Delivery
+Phaser map rendering and full C06 bundle/registry binding are separate AR02/Delivery
 work. Desktop source-art previews do not establish iOS Safari/Android Chrome,
 device DPR, frame rate, startup budgets, UI overlays, real two-account theme
 switching, one-game/one-socket behavior or any final QA06/IN01/IN05 gate.
