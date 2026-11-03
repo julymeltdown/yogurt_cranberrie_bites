@@ -73,4 +73,15 @@ class HarnessTests(unittest.TestCase):
                 smoke.exercise(cluster,artifacts,report)
             self.assertNotIn("native_tests",report)
 
+    def test_binary_change_during_pinning_is_refused(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);source=root/"binary";source.write_bytes(b"compiled-owner")
+            hashes={"owner":smoke.digest(source)}
+            pinned=root/"pinned";pinned.mkdir()
+            copies=smoke.copy_artifacts({"owner":source},pinned,hashes)
+            self.assertEqual(copies["owner"].read_bytes(),b"compiled-owner")
+            self.assertEqual(copies["owner"].stat().st_mode & 0o777,0o700)
+            source.write_bytes(b"different-checkout")
+            with self.assertRaises(Exception):smoke.copy_artifacts({"owner":source},pinned,hashes)
+
 if __name__=="__main__":unittest.main()

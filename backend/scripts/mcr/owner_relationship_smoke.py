@@ -55,7 +55,7 @@ def exercise(cluster, artifacts, report):
     cluster.start()
     require(cluster.sql("postgres", "show server_version_num;") == "160014", "postgres-16.14-required")
     urls = {owner: cluster.url(db) for owner, db in DATABASES.items()}
-    secrets = (cluster.password, *urls.values())
+    secrets = (cluster.password, cluster.token, *urls.values())
     manifests = {}
     for owner, db in DATABASES.items():
         cluster.sql("postgres", f"create database {db} template template0;")

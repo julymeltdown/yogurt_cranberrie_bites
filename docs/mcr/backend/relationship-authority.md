@@ -114,7 +114,7 @@ product router composition are qualified by loopback fixtures.
 Source-only checks completed with exit 0:
 
 - `python3 -m unittest discover -s backend/scripts/mcr -p test_owner_relationship_smoke.py -v`
-  — eight refusal, interruption, cleanup, private report, skipped-test and artifact rejection checks.
+  — nine refusal, interruption, cleanup, private report, skipped-test, artifact rejection and binary-pinning checks.
 - `python3 scripts/mcr/check-plan.py` — planning/provenance baseline passes;
   it does not certify this implementation.
 - Rust 1.88.0 `rustfmt` on assigned new modules/tests/build files; `git diff --check`.
