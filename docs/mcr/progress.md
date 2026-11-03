@@ -22,6 +22,7 @@ it is not feature integration or release acceptance.
 | FE01 | ACCEPTED | [Integrated review](evidence/core-foundation-integration.md): 144 transport/error tests plus 22 existing UI tests, strict build/lint; memory-only session, bounded read refresh, cancellation, safe error/upload ports and stale-identity isolation. Real cookies and auth journeys remain BE03/FE09 work. |
 | FE02 | ACCEPTED | [Integrated privacy review](evidence/privacy-local-stack-integration.md): actual QueryClient/observers, canonical private keys, cancellation plus eviction, commit fencing and cleanup ports; 45 new tests and combined 189-test transport/privacy run pass. UI/event/real-server owner wiring remains. |
 | FE07 | MOCK_READY | [Integrated shell review](evidence/world-shell-integration.md), candidate `d7909c0`: 276 tests, frozen build/lint/origin scan, four installed-Chrome viewports and production-entry isolation pass. Review fixes block obsolete initial loader dispatch and bound scroll history. Actual Phaser/socket/camera preservation and device qualification remain; no real-world or IA acceptance. |
+| FE09 | IN_PROGRESS | New frontend goal confirmed active in isolated `fe-session` at `2a5c8e6`; canonical public C03 artifact and explicit event-config input supplied in `153a3dc`. Session/sign-in, cleanup, refresh coordination and validation are assigned; no real auth/browser acceptance yet. |
 
 All unlisted task statuses remain NOT_STARTED. Accepted required tasks: **10/112**;
 accepted total: **10/118**. No required IA entry or IN01–IN05 integration gate has

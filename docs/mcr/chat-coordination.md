@@ -9,7 +9,7 @@ so every shell command and edit must target the assigned worktree explicitly.
 | Role | Visible chat | Chat ID | Worktree / branch |
 |---|---|---|---|
 | Backend | `mcr(be) BE03 browser auth adapter` | `01a19f83-12cc-7f21-8ad3-55749f012d9b` | `/Users/lhs/Desktop/mcr-worktrees/be-auth` / `codex/mcr-be-BE03` |
-| Frontend | `mcr(fe) FE07 persistent world shell` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-shell` / `codex/mcr-fe-FE07` |
+| Frontend | `mcr(fe) FE09 session and sign-in` | `01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c` | `/Users/lhs/Desktop/mcr-worktrees/fe-session` / `codex/mcr-fe-FE09` |
 
 Both assignments were dispatched with model `gpt-6.1-sol` and reasoning `high`.
 The user's standing language instruction is **English only in every chat**, even
@@ -17,7 +17,9 @@ when the user writes in Korean. It covers replies, progress, questions, reviews,
 handoffs and final answers. Both development chats received this instruction
 directly; all future assignments must carry it. Preserve source text and
 identifiers where exact fidelity is needed.
-Both current worktrees start at `69a5624cd153a216f2398cebabf062400dce23eb`.
+The backend worktree starts at `69a5624cd153a216f2398cebabf062400dce23eb`.
+The new FE09 worktree starts at `2a5c8e6`, with integrator prerequisite
+`153a3dc` providing the canonical public core artifact and event-config agreement.
 The user also explicitly requires persistent goals in every development chat.
 Both chats have received instructions to inspect/create their own goals and
 continue their current BE03/FE07 assignments through implementation, meaningful
@@ -25,9 +27,10 @@ verification, documentation, committed handoff, and integration-review fixes.
 Dispatch alone does not establish that a goal was created; actual goal status
 must be confirmed. Future assignments carry this requirement without resetting
 aligned active goals or changing file ownership. No token budget was requested.
-Both chats subsequently confirmed their BE03/FE07 goals active. The frontend
-delivered `d7c720c` / `8ba0081` for review and retains ownership of scoped review
-fixes; no next task or completion has yet been assigned.
+Both chats confirmed their BE03/FE07 goals active. After the [FE07 integration
+recheck](evidence/world-shell-integration.md), the frontend completed its delivered
+shell-increment goal and confirmed its new FE09 goal active. BE03 stays active
+through handoff/review. FE07 remains MOCK_READY for its separate real-world gates.
 The former worktrees are preserved but have no current writer. Earlier delivery
 ancestry and checks are in the [foundation review](evidence/core-foundation-integration.md)
 and [privacy/tooling review](evidence/privacy-local-stack-integration.md).
@@ -45,14 +48,19 @@ email/core routes, Origin/intent/no-store protections, honest provider capabilit
 and real isolated auth qualification. Native helpers are read-only. New binaries
 use `/Users/lhs/Desktop/mcr-build/be03`, preserving the qualified shared artifacts.
 
-Frontend owns `frontend/src/app/**`, `frontend/src/main.tsx`, and
-`docs/mcr/frontend/world-shell.md`. App router/entrypoint composition is an explicit
-bounded delegation. FE07 builds the six-tab persistent shell, nested routes/back,
-safe return targets, lazy public/admin boundaries and injected auth/bootstrap/world
-lifecycle ports. Deterministic lifecycle fixtures must not become production fake
-identity or world data. No shared UI/styles, assets, contracts, dependencies or
-backend edits are assigned. Local app CSS is allowed; shared changes require a
-concrete handoff. Actual Phaser/socket/device behavior remains later qualification.
+Frontend now owns `frontend/src/features/auth/model/**`,
+`frontend/src/features/auth/ui/SignIn.tsx` and feature-local auth CSS/tests/fixtures;
+exact composition files `frontend/src/app/ports.ts`,
+`frontend/src/app/PublicBoundary.tsx`, `frontend/src/app/router.tsx`,
+`frontend/src/main.tsx`, app tests under `frontend/src/app/__tests__/**`, and
+`docs/mcr/frontend/session-sign-in.md`. Root router/main changes are explicitly
+delegated. FE09 must use FE01's single memory identity and FE02 privacy cleanup,
+consume frozen C03 through the [canonical public artifact](browser-contract.md),
+and qualify concurrency/uncertain-cookie behavior before enabling automatic flows.
+Only main reads validated `VITE_MCR_EVENT_ID`; absent configuration cannot become
+a production fixture. Shared implementation/UI/styles, backend, dependencies,
+contracts and assets remain outside worker ownership. The stopped `fe-shell`
+checkout is preserved. Actual Phaser/device/provider behavior remains unqualified.
 
 The main chat reviews diffs, verifies file ownership and failure behavior,
 integrates commits serially, updates evidence, and pushes `master`. Workers
