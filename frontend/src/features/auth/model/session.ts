@@ -114,7 +114,7 @@ export function createSessionController(options: SessionOptions) {
     try { await flight } catch (error) { if (current(attempt, expected)) clear('expired'); throw error }
     finally { if (refreshFlight === flight) refreshFlight = undefined }
   }
-  async function request<T>(input: Omit<HttpRequest<T>, 'refresh'>) {
+  async function requestWithPolicy<T>(input: Omit<HttpRequest<T>, 'refresh'>, allowReadReplay: boolean) {
     // Features cannot opt into FE01's uncoordinated refresh path through this composition.
     if ('refresh' in input || input.path.startsWith('/api/auth/')) throw new TransportError('invalid-request')
     const expected = session.read()
@@ -126,7 +126,7 @@ export function createSessionController(options: SessionOptions) {
     try {
       try { return await execute() }
       catch (error) {
-        if (error instanceof TransportError && error.status === 401 && input.method === 'GET'
+        if (allowReadReplay && error instanceof TransportError && error.status === 401 && input.method === 'GET'
           && input.access === 'protected' && session.isCurrent(expected) && options.qualifiedRefresh) {
           if (session.read().tokenVersion === expected.tokenVersion) await refresh()
           if (!session.isCurrent(expected)) throw new TransportError('session-changed')
@@ -140,8 +140,18 @@ export function createSessionController(options: SessionOptions) {
       throw error
     }
   }
+  async function requestSensitive<T>(input: Omit<HttpRequest<T>, 'refresh'>) {
+    if ('refresh' in input || input.method !== 'GET' || input.access !== 'protected'
+      || input.errorFamily !== 'domain' || input.domainOperation !== 'revealConcertSocialHandle') throw new TransportError('invalid-request')
+    const scope = privacy.capture()
+    return privacy.run(scope, ({ signal }) => requestWithPolicy({ ...input, signal }, false), input.signal)
+  }
+  function request<T>(input: Omit<HttpRequest<T>, 'refresh'>) {
+    // Calling the ordinary entry point cannot bypass the contract's explicit-secret-read rule.
+    return input.domainOperation === 'revealConcertSocialHandle' ? requestSensitive(input) : requestWithPolicy(input, true)
+  }
   return {
-    session, queryClient, privacy, request, enrollment,
+    session, queryClient, privacy, request, requestSensitive, enrollment,
     checkEnrollmentAvailability: () => capabilities(true),
     requestPasswordReset: recovery.request,
     async confirmPasswordReset(token: string, newPassword: string, signal?: AbortSignal) {
