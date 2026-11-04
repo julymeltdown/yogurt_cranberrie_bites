@@ -1,9 +1,9 @@
 # BE-GIFTS-LIVE production producer
 
-Status: IN_PROGRESS. The focused slice compiles and its 20 local tests pass. Canonical-owner business flows and live HTTP acceptance remain NOT_RUN.
+Status: IN_PROGRESS. Published baseline `2363d2cc` has a compiled 20-test local proof. Current business/status source remains uncompiled; canonical-owner business flows and live HTTP acceptance remain NOT_RUN.
 
 The later runtime/media/query candidate described below is not covered by that
-20-test proof. Its compilation and 25 planned focused checks are NOT_RUN pending
+20-test proof. Its compilation and 29 planned focused checks are NOT_RUN pending
 another explicitly allocated existing target. Published baseline: `2363d2cc`.
 
 ## Assignment and source
@@ -17,6 +17,9 @@ BE41 source/branches and published `a93a70ec` are preserved.
 
 Exclusive NEW scope: Concert `src/gift_live/**`, `tests/gift_live*.rs`,
 `tests/gift_live_support/**`, backend `scripts/mcr/gift_live*.py`, and this document.
+Root subsequently granted exactly migration `0033_gift_command_targets.sql` for
+immutable failed/pending command-parent recovery. Other migration paths remain
+unassigned. The additional grant is not yet returned or published.
 Those paths were verified unoccupied across all registered worktrees before writing.
 Existing domain/application/community store, migrations, proto,
 configuration, manifests, lockfiles and routers remain outside this grant.
@@ -100,7 +103,7 @@ until actual canonical scope/client dependencies are published and validated.
 
 ### Unpublished business-runtime candidate
 
-New `GiftRuntime` source dispatches all thirteen operations through actual
+New `GiftRuntime` source parses all thirteen operations through actual
 root-supplied `Arc<OwnerGuardScope>` and retained `PgGifts` mutations. It validates
 the exact scope/request binding, runs under the original scope stop and never
 releases guards. The constructor requires actual PG, receipt/pickup keys, a
@@ -114,7 +117,54 @@ current transport has no such field, so absent context returns unavailable befor
 effects. This is unfinished delivery, not a scope cut. Completed code-issuance
 replay without its one-shot response returns `409 INVALID_TRANSITION`; it neither
 regenerates a code nor reports SUCCEEDED as pending. `202` is PENDING only. Actual
-command-status integration remains coordinated with root.
+command-status transport integration remains coordinated with root. Ordinary
+snapshot/business operations are independent of the private-disclosure seam.
+
+Private `Pickup` and `IssueCode` currently return unavailable before any store
+effect. Their positive code paths are authored but explicitly gated until the
+actual SDK3 `GiftPrivate` child, Gift native prepare/recovery and root before-byte
+validity clip are qualified. Canonical Auth/Friend exclusion alone does not hold
+local reservation, meeting or physical-place locks through delivery. No
+`LocalPublic`/avatar child is relabeled as Gift authority. The frozen future child
+contains exact query/native identity, nonce, closed PICKUP/CODE kind, giveaway and
+reservation IDs, and a disclosure `valid_until`; no code/hash/meeting text enters
+the recovery reference. Business DTO expiry values remain their original values.
+
+### Command status and immutable parent correlation (source candidate)
+
+`GiftRuntime::command_status(actual_scope, RegisteredOperation, key)` validates the
+sealed outer `getConcertCommandStatus` GET binding, empty-body digest and exact
+once-decoded closed query. It accepts only the seven registered Gift mutations.
+It never fabricates an original mutation or an expected-target browser field.
+The readonly producer joins a real receipt to its immutable stored target/root,
+locks and validates the current aggregate and relevant reservation, checks actual
+owner/recipient roles, then uses real canonical/local authority and the retained
+safe receipt repository. Historical committed outcomes can be returned; no
+plaintext code or private meeting is recovered from a receipt.
+
+Migration 0033 consumes an exact transaction-local context installed only after
+the actual live request's canonical/local authorization. Receipt INSERT stores the
+immutable actor/event/operation/key/target/giveaway/receipt correlation on the same
+transaction, before the command-effect savepoint. Thus FAILED or PENDING Reserve
+keeps its actual root even if no reservation row was created. Whole-transaction
+rollback removes both rows. Exact duplicates are idempotent; changed correlation,
+mapping UPDATE/DELETE and root rebinding are denied. There is no code/body/default
+UUID or request-hash inference. Live context installation first checks both actual
+tables and the enabled receipt trigger while retaining table locks against DDL;
+missing or disabled migration fails before receipt admission. Successful live
+return also requires the exact persisted receipt mapping. Historical unwrapped
+headless producers receive no mapping and are not promoted to a live status grant.
+
+`gift_live_targets.py` executes only 0033/native SQL on a new owned socket-only PG,
+including restart and cleanup. It does not use Cargo or a shared target. The first
+run exposed a test-harness PL/pgSQL `SELECT` without a destination after four cases;
+the harness was corrected to `PERFORM`. The next run passed ten cases and cleanup.
+The final run passed all eleven cases, including an exact duplicate, with PG
+16.14, command exit 0 and cleanup PASS. Committed `target-sql-evidence.json`
+records that authoring snapshot and all exact migration hashes; 0033 SHA-256 is
+`f3f07358a78b7d515788f6fe289b6a42bb9b0951035d26cb754278c44844bb12`.
+This is SQL proof, not compilation of the Rust caller. Rust correlation/status
+tests remain NOT_RUN pending allocation.
 
 The candidate media adapter captures the uploader's exact admission/security
 semantics, durably registers the same transaction, validates actual self interaction
@@ -139,7 +189,8 @@ filtering and projecting; large-page/deadline behavior still requires native pro
 The candidate incorporates published canonical SDK2 `c4ad561c`, whose exact full
 acknowledged transaction deduplication replaces repeated network tracking; no local
 PID/connection cache is added. Five planned frozen binaries cover 8 protocol,
-5 cursor, 5 response, 4 local resource and 3 native query tests. Native query tests
+5 cursor, 5 response, 4 local resource, 3 native query, 3 native correlation and
+1 status-query test (29 total). Native query/correlation tests
 exercise actual SQL plus retained Gift mutations with synthetic test-only policy;
 they do not construct canonical scope/subject fixtures or certify Auth/Friend.
 

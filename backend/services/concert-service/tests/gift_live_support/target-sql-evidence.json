@@ -1,0 +1,99 @@
+{
+  "result": "PASS",
+  "scope": "0033 correlation SQL only",
+  "canonical_authority": "NOT_RUN",
+  "runtime_rust": "NOT_RUN",
+  "http": "NOT_RUN",
+  "source_revision": "ba0b2d77c3b659214f95404175bcef6dbc31a8e9",
+  "migration_sha256": {
+    "backend/services/concert-service/migrations/0001_concert_core.sql": "9978e75e569c1ba25cb191ddf5b02bbdffcd5e64f3385173f05a885370d9215a",
+    "backend/services/concert-service/migrations/0002_command_receipts_outbox.sql": "5f5760dfe6384cb2ab5162bcc27fbc0ed75bdca6bb85229012f6389269ee442f",
+    "backend/services/concert-service/migrations/0003_places_map_releases.sql": "b2d4ab07a2addece8ddb4a3e413da2a32605d00ea34082a36f5940d1ff162e7a",
+    "backend/services/concert-service/migrations/0004_bootstrap_admission.sql": "cb1c0093eeaef79dbe783052447c34c78aad5c6daebdc2f6f3dc7f4b17112ac9",
+    "backend/services/concert-service/migrations/0005_world_admission.sql": "100e8de5a8392a4cd11e83337303e44e9ef79cee7c6f3c7547e333bcd9c7b761",
+    "backend/services/concert-service/migrations/0006_relationship_policy.sql": "0905ddf463325c5097a3a732e03a237f99d5f53060c1df255eed126e468b2fd3",
+    "backend/services/concert-service/migrations/0007_community.sql": "6c22de4cbfc51db3b3bc23b151d19e5ad43ddc36a794ffdf7cf4507e19090930",
+    "backend/services/concert-service/migrations/0008_meeting_beacons.sql": "b8259eb000c15059ddcba60db64518562d2cede7d2d68c42de3df8a85b44c655",
+    "backend/services/concert-service/migrations/0009_receipt_domain_failures.sql": "e357529103bb998f337508a30b03bddc372fe387b7e587dcb7f96a8b295fa4c6",
+    "backend/services/concert-service/migrations/0010_feed.sql": "a0d3ac6672e37a1bff26129317ddaafdecfc18701c751b340df219c0859d7997",
+    "backend/services/concert-service/migrations/0011_outbox_maintenance.sql": "8971093dee1293dfd160920c773d663866dcb5cb688fb7cabf6746eaca2eb61b",
+    "backend/services/concert-service/migrations/0012_media.sql": "aae18779fda409d5a9de1844336c3e58d3705197346ce94b9b5e0a926e119224",
+    "backend/services/concert-service/migrations/0016_meeting_deadline_guards.sql": "4375673c48b46096cf20dcbac807eace37d96136e347ac9da3b95a884135ff7d",
+    "backend/services/concert-service/migrations/0018_event_lifecycle.sql": "8a93ed7e1b02345c3071cb0583384d61bb1e0b509e8939daf568f9ea352e2cb0",
+    "backend/services/concert-service/migrations/0019_mural.sql": "50afb9fd802353f6e3e21b47f0506c2faf7413e99ad3575c24bfb01194b8075f",
+    "backend/services/concert-service/migrations/0020_mural_receipt_failures.sql": "293da98d083ebed19ce68875682f707de6db17103649a2da3211f46308ee2912",
+    "backend/services/concert-service/migrations/0021_moderation_operations.sql": "01622e9d134c6cb9e9950a450397e6c542af5289a8e372b331bf7ec52a786506",
+    "backend/services/concert-service/migrations/0022_world_invalidation_receipts.sql": "8b29855de1d27eeb632e6fd9126bc667c6a06cea36e211b1934b56299dcd0c00",
+    "backend/services/concert-service/migrations/0023_world_read_only_barrier.sql": "97d7022115e07df589231a2c132d87b2a4fc3a7c824b30260bdd8ef0608702af",
+    "backend/services/concert-service/migrations/0024_event_read_only_barrier.sql": "99854c56b1eb523e313eefcd48e0113ba2b1b2f8957daa9189d4f013a900d3ce",
+    "backend/services/concert-service/migrations/0025_whole_character_avatar.sql": "2f115e00b8b781225376d46d0b032819e7ff6aef113baed046fe0cd8603a05ae",
+    "backend/services/concert-service/migrations/0033_gift_command_targets.sql": "f3f07358a78b7d515788f6fe289b6a42bb9b0951035d26cb754278c44844bb12"
+  },
+  "cases": [
+    {
+      "name": "rollback_removes_mapping_and_pending_receipt",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "failed_reserve_preserves_root_without_reservation",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "pending_reserve_commits_exact_root_before_effects",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "lost_response_restart_keeps_failed_and_pending_exact_correlation",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "exact_duplicate_is_idempotent",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "altered_actor_id_denied",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "altered_event_id_denied",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "altered_idempotency_key_denied",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "altered_target_id_denied",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "root_rebind_and_mapping_mutation_denied",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "name": "historical_untagged_receipt_is_not_promoted_to_live",
+      "exit_code": 0,
+      "result": "PASS"
+    }
+  ],
+  "postgres_version": "16.14 (Homebrew)",
+  "cleanup": "PASS",
+  "source_state": "authoring snapshot: base commit plus exact migration_sha256; Rust runtime compilation NOT_RUN",
+  "command": [
+    "python3",
+    "backend/scripts/mcr/gift_live_targets.py",
+    "--report",
+    "<private-report>"
+  ],
+  "exit_code": 0
+}
