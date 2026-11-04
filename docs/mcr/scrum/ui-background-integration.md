@@ -262,6 +262,20 @@ publisher commit and its own exact remote proof remain. Existing goal BLOCKED
 metadata remains honest until actual completion, without a goal reset or review
 gate. These are implementation-owner findings, not SL technical validation.
 
+Final title-owner delivery: actual goal COMPLETE. Owner reports fresh independent
+ls-remote/fetch both matched master
+a5c6cad52e630d61aa4ce581e7230c13cc5feb25; comparison of its final0058c8b8
+against remote across all eight owned postimages exited0, whole focus04 seal4591
+against remote exited0, and prior verified delivery4d501d92 ancestry exited0.
+Source/proof/raw seal/qualification provenance remains retained. Its checkout is
+clean; no new tests, rendering or source work was required for this readback.
+Raw native EXIT1/two forced-point failures remain preserved with executed owner
+qualification. This closes TITLE-FOCUS-01 only, not global compliance or design.
+Effective STOP/RETURN covers title-focus-01.md, evidence/title-focus-01/** and
+unused app/__tests__/title-focus-01/** (no files created there); shell-chrome.css
+was already returned. No writer, process, output or other lease remains. The
+finished same chat is eligible for archive with no next assignment inferred.
+
 ## UI-BG-CUSTOMIZE-02: bounded current-candidate improvement
 
 The king requested a developer-owned current visual-gap assessment and one
@@ -388,8 +402,8 @@ recapture/copy, extra approval stage or speculative new chat.
 
 Remaining required outcomes:
 
-- TITLE-FOCUS-01 authorized state-dependent source fix or explicit honest limit,
-  actual affected focus/glyph validation, committed handoff and published readback.
+- TITLE-FOCUS-01 is closed by its implementation owner after actual qualification,
+  published exact readback and actual goal COMPLETE; no further title work remains.
 - MEET-FOCUS-VIS-01 committed fix, finite affected evidence and
   developer disposition/publication under Community; preserve raw prior failure.
 - COM01 final targeted packet documentation/goal/readbacks through Community;
