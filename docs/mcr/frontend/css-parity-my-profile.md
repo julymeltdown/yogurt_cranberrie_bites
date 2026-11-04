@@ -174,7 +174,12 @@ Owner disposition: `docs/mcr/evidence/css-parity-my-profile/owner-disposition.js
 CSS is validated as a bounded contribution, not exact full-photo acceptance.
 Root153 must retain the named content/shared-title/portrait constraints above.
 No KING, SL, QA or main-chat review/acknowledgment is required for integration.
-The actual delivery commit and remote ancestry proof remain to be recorded.
+Published delivery: `6d1b5b36fe014ff0c1efb1e0f6e1648dd462eaa9`.
+The implementation owner independently fetched `origin/master`, verified delivered
+ancestry (exit 0) and compared all 106 owned postimages byte for byte with the
+committed qualified handoff. All match. `publication.json` records each SHA-256
+and the three local-to-published commit mappings. No native job reran. Full-photo
+parity and the original goal remain unfinished.
 
 
 ### Root shared-copy follow-up
