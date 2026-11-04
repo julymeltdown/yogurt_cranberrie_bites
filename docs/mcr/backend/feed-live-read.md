@@ -2,13 +2,13 @@
 
 Status: IN_PROGRESS. No live read acceptance is claimed.
 
-Current gate: the Concert library-test executable compiled successfully at
-40449973. Its corrected five-owner frozen run reached the actual Feed read but
-failed DependencyUnavailable before protected Post SQL. Private database cleanup
-passed. The exact Post-to-Concert callback frame-capture repair and focused
-security regressions are committed, pending a fresh two-library allocation and
-native rerun. The earlier adapter and Post storage receipts remain scoped to
-their recorded source snapshots.
+Current gate: clean 2d7f1b3a passed the two-library build, three dedicated
+callback security regressions, the Post denial regression and the actual
+five-owner PostgreSQL/mTLS Feed list component join. Guards stayed held after
+JSON assembly and settled on explicit component response completion. Gateway
+HTTP completion, actual detail/comments and remaining negative/restart coverage
+are not yet qualified. No target or PostgreSQL instance is held. Master routing
+belongs to the designated integrator; no SL/King acknowledgment is a gate.
 
 ## Objective and completion criteria
 
@@ -585,3 +585,57 @@ Rust execution remains NOT_RUN until a fresh bounded platform plus Concert
 library build. Test-only Feed diagnostics distinguish actor policy from complete
 Post transport failure. The Post adapter now treats PermissionDenied as a whole
 read dependency failure; only explicit NotFound remains resource absence.
+
+
+## Qualified callback repair and real five-owner list read
+
+Exact clean source `2d7f1b3a29a5fca3abe7d05b529312558868d602` compiled exactly
+platform and Concert library tests with Rust 1.88, locked/offline jobs 2,
+dev/test debug 0 and incremental 0. Fresh preflight found 22,090,956,800 free
+bytes, no Cargo/rustc processes and zero handles in the freshly accepted MEDIA
+target. The first attempt evidenced an old be-age-runtime contracts-build
+absolute proto path. Package-only cleanup removed 20 files, 816.4 KiB; the same
+two-library retry passed in 42.11 seconds with zero owned Feed/platform warnings
+and 11 peer World/Party warnings. No source fix or target expansion was needed.
+
+Both Cargo JSON-selected executables, 2,448 source/resource files, compiler JSON
+and warnings were frozen outside the target. Actual lsof reported exit 1 with
+no handles or stderr. MEDIA was unconditionally released before any copied
+executable or PostgreSQL run; no subsequent target access occurred.
+
+Exactly three copied platform callback cases passed: signed dedicated callback
+with exact frame/actor/original deadline; wrong caller/path/body/actor rejection;
+and forwarded/unbounded/noncallback proof rejection. The copied Concert Post
+error-mapping regression passed too: explicit NotFound remains resource absence,
+while PermissionDenied, unauthenticated, unavailable and expired authority fail
+the whole read. All four exact cases report zero failures and zero ignored cases.
+
+The copied Concert native case then passed against the owned five-database
+PostgreSQL 16.14 cluster using actual mTLS services, real Auth/Friend stores,
+actual Concert root callback, real current PublicProfile reader and qualified
+Post producer. It verifies actual stored Post content/current C03 author with no
+private URL canary, same-transaction Post tracking, and Auth/Friend/Concert/Profile
+prepared exclusions still present after C04 JSON assembly. Explicit component
+serialization/response completion settles the guards and leaves zero prepared
+transactions. All five exact migration ledgers match: Auth 17, Friend 17,
+Concert 24, Profile 9 and Post 32. The controller stopped and removed only its
+owned cluster; root absence was independently verified after return.
+
+This supersedes the preceding failed native attempt only for the exact new
+snapshot and list component path. It does not qualify actual Gateway HTTP body
+completion, detail/comments, media/links, other filters, negative-path or process/
+PostgreSQL restart behavior. The temporary platform capture seam was returned
+directly to the root composer with these qualified source commits and receipts.
+
+Evidence: `/private/tmp/mcr-feed-root-capture-v2-20261104/`.
+
+- Focused four-case report SHA-256:
+  `fc51d4228fc4b1f1dc3939a44844db128ade22e54b95a47e9d80d7bd028d2cb7`.
+- Native report SHA-256:
+  `df22917d0f7089687d59eb303efbf49e69f326c053daf2b2a3f61a41aa962dc4`.
+- Platform executable SHA-256:
+  `bd34d902377b500342075acea3a68167e76b76bf2b92e9dc243d9f0718332ced`.
+- Concert executable SHA-256:
+  `4924f9fa32766b92ac3c9a305514f0157e63cb95b2eb0b111ad54e3556f1bc9a`.
+- Native checkpoint SHA-256:
+  `0efa47fee7bec4ff6ae359322a318fd731634ad81b093af6d36ad73808045cd3`.
