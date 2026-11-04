@@ -790,6 +790,22 @@ inference; Map/Profile browser requests remain queued/unheld. PrivateData
 exactID01a1a00c-2690-7bc0-94fc-52609655ea83 supplied20f and actual target/FULL
 receipts routed directly there+21d, no historical bootstrap handle guessed.
 
+### After-hourly actual capacity update — FE browser leases
+
+Social confirms FE10 Browser1 replacement1812 ACTUALACCEPT18:13:01.972816Z,
+work18:18:01.972816/hard18:19:01.972816, NEW160MiB;213 Browser2 ACTUALACCEPT
+18:13:20.662837Z, work18:18:20.662837/hard18:19:20.662837, NEW128MiB. Actual
+FE total288MiB=301,989,888B/TWO workflows, both existing admission floors
+reported passed. MapFULL18:12:27,53dFULL18:10:19,QA06FULL18:08:56; no FE source
+job or Community runtime offer/reservation held. Exact actual FE inventory
+sent directly backend allocator21d, preserving each accepted maximum/clock.
+Next backend admission counts those two FE plus actual other backend jobs
+against global4, not stale unknown envelopes or a physically free source
+letter. FE17 sourceREADY is Social's queue,21e authoring not runtimeREADY;
+no new Community workflow or King acknowledgment requested. Feature status
+and pending FE39 followup publication remain unchanged from hourly ce87cca1.
+This natural handoff is local until the next management consolidation.
+
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
 | FE09 | Original task-local SATISFIED retained;204 bounded goalCOMPLETE/Auth9leasesreturned, now Social FE10 owner, no current Auth9 lease | Source `f3bdc853` published `70a444bf`; all11 latest payloads independently verified,81 targeted fixtures/types/lint/plan PASS reported. No original gap/product edit; execution-plan progress-line drift informational | No remaining bounded FE09 delivery work. Expiry observation NOT_RUN informational, no duration/renewal gate. World reports original IN01 criteria/delivery PASS, actual COMPLETE/leases returned/freeze released; World owns its accounting.204 completed FE40/read-only assessment and subsequently accepted WallB; no current Auth lease |
