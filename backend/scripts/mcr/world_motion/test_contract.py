@@ -49,4 +49,22 @@ class ContractTests(unittest.TestCase):
         t.consume('server',d)
         self.assertEqual(t.motion['position'], s['selfMotion']['position'])
 
+    def test_anchor_without_self_upsert_replaces_stale_self_position(self):
+        t = self.trace(); s = self.fixture['messages'][1]['message']
+        d = {key: copy.deepcopy(s[key]) for key in ('protocolVersion','streamId','roomEpoch','serverTick','ackInputSeq')}
+        d.update(type='delta',streamSeq=1,upserts=[],removes=[],selfMotion=copy.deepcopy(s['selfMotion']))
+        d['serverTick'] += 1
+        d['selfMotion']['serverTick'] = d['serverTick']
+        d['selfMotion']['position']['x'] += 1
+        t.consume('server', d)
+        self.assertEqual(t.players[t.actor]['position'], d['selfMotion']['position'])
+        self.assertEqual(t.motion['position'], d['selfMotion']['position'])
+
+    def test_conflicting_same_frame_self_upsert_is_rejected(self):
+        t = self.trace(); s = self.fixture['messages'][1]['message']
+        d = {key: copy.deepcopy(s[key]) for key in ('protocolVersion','streamId','roomEpoch','serverTick','ackInputSeq')}
+        d.update(type='delta',streamSeq=1,upserts=[copy.deepcopy(t.players[t.actor])],removes=[],selfMotion=copy.deepcopy(s['selfMotion']))
+        d['selfMotion']['position']['x'] += 1
+        with self.assertRaises(rt.WireError): t.consume('server', d)
+
 if __name__ == '__main__': unittest.main()

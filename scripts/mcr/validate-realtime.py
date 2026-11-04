@@ -399,7 +399,9 @@ class Trace:
         if not enabled:
             return
         motion = message['selfMotion']
-        require(motion['position'] == players[self.actor]['position'], 'motion anchor differs from self state')
+        same_frame_self = initial or any(row['userId'] == self.actor for row in message.get('upserts', []))
+        if same_frame_self:
+            require(motion['position'] == players[self.actor]['position'], 'motion anchor conflicts with same-frame self state')
         held = motion['heldInput']
         require(held is None or held['remainingHoldMs'] <= self.snapshot['motionProfile']['holdMs'], 'held duration exceeds profile')
         if not initial:
@@ -408,6 +410,7 @@ class Trace:
             require(motion['droppedTicks'] >= self.motion['droppedTicks'], 'discarded tick count regressed')
             if message['ackInputSeq'] == self.ack:
                 require(motion['inputAppliedTicks'] >= self.motion['inputAppliedTicks'], 'input duration regressed')
+        players[self.actor]['position'] = copy.deepcopy(motion['position'])
         self.motion = copy.deepcopy(motion)
 
 
