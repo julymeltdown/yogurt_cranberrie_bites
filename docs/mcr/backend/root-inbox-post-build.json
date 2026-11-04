@@ -1,0 +1,224 @@
+{
+  "status": "IN_PROGRESS",
+  "qualified_boundary": "locked offline targeted compilation plus four ordinary configuration cases; no actual main execution/public HTTP/IN03",
+  "source_commit": "c5fe8473eb08c9e40093d74c4dfba0d52eb79622",
+  "source_pins_count": 3671,
+  "commands": [
+    [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "--config",
+      "profile.dev.package.contracts-build.opt-level=2",
+      "-p",
+      "concert-service",
+      "--test",
+      "inbox_runtime",
+      "--no-run",
+      "--message-format=json"
+    ],
+    [
+      "cargo",
+      "+1.88.0",
+      "test",
+      "--manifest-path",
+      "backend/Cargo.toml",
+      "--locked",
+      "--offline",
+      "-j",
+      "2",
+      "--config",
+      "profile.dev.package.contracts-build.opt-level=2",
+      "-p",
+      "post-service",
+      "--test",
+      "concert_read_runtime",
+      "--no-run",
+      "--message-format=json"
+    ]
+  ],
+  "build_results": [
+    {
+      "abort": null,
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--test",
+        "inbox_runtime",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 40.93175745900953,
+      "exit_code": 0,
+      "maximum_whole_bytes": 1383395328,
+      "minimum_free_bytes": 17166766080,
+      "source_commit": "c5fe8473eb08c9e40093d74c4dfba0d52eb79622"
+    },
+    {
+      "abort": null,
+      "argv": [
+        "cargo",
+        "+1.88.0",
+        "test",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "post-service",
+        "--test",
+        "concert_read_runtime",
+        "--no-run",
+        "--message-format=json"
+      ],
+      "elapsed_seconds": 12.427248292020522,
+      "exit_code": 0,
+      "maximum_whole_bytes": 1551536128,
+      "minimum_free_bytes": 16991248384,
+      "source_commit": "c5fe8473eb08c9e40093d74c4dfba0d52eb79622"
+    }
+  ],
+  "copied_artifacts": {
+    "concert-service": {
+      "binary": "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/concert-service",
+      "binary_bytes": 55619904,
+      "binary_sha256": "132f2102cb92baf9b7e2a0e8763e4a0b50a3631e0c730f5c700588001a4e1726"
+    },
+    "concert_read_runtime": {
+      "binary": "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/concert_read_runtime-tests",
+      "binary_bytes": 1491424,
+      "binary_sha256": "35e7ddb2c122b012d92560d0707e422a2bf5a85e8cc622742bdde439114a47e1"
+    },
+    "inbox_runtime": {
+      "binary": "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/inbox_runtime-tests",
+      "binary_bytes": 1139616,
+      "binary_sha256": "24441d0b7038cbba55b1f697314bd745d66a3d7bcb9c89fe8d78b55e1e08dc1f"
+    },
+    "post-service": {
+      "binary": "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/post-service",
+      "binary_bytes": 49372768,
+      "binary_sha256": "64ddc03e6e50e39d5de04cd06945234968bacaa3c19a2c922a959791b87b4714"
+    }
+  },
+  "target_release": {
+    "before_any_copied_test_or_pg": true,
+    "fixed_target_growth_bytes": 518393856,
+    "offer": "ROOT-INBOX-POST-MEDIA-202611041041Z",
+    "owned_cargo_group_absent": true,
+    "released_at": 1793789055.6715782,
+    "retained_evidence_carry_bytes": 965795840,
+    "state": "RELEASED",
+    "target_access_after_receipt": "NONE",
+    "target_open_handles": 0
+  },
+  "full_release": {
+    "state": "FULLY_RELEASED",
+    "offer": "ROOT-INBOX-POST-MEDIA-202611041041Z",
+    "source_commit": "c5fe8473eb08c9e40093d74c4dfba0d52eb79622",
+    "released_at": 1793789082.478088,
+    "elapsed_from_accept_seconds": 119.61537384986877,
+    "elapsed_from_target_release_seconds": 26.806509733200073,
+    "ordinary_checks": [
+      {
+        "argv": [
+          "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/inbox_runtime-tests",
+          "--test-threads=1"
+        ],
+        "elapsed_seconds": 0.24432175001129508,
+        "exit_code": 0,
+        "name": "inbox_runtime"
+      },
+      {
+        "argv": [
+          "/private/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/concert_read_runtime-tests",
+          "--test-threads=1"
+        ],
+        "elapsed_seconds": 0.24773695901967585,
+        "exit_code": 0,
+        "name": "concert_read_runtime"
+      }
+    ],
+    "evidence_open_handles": 0,
+    "last_compile_process_group_absent": true,
+    "all_cargo_commands_waited_exit_zero": true,
+    "pg_listener_browser_main_execution": "NONE",
+    "target_access_after_target_release": "NONE",
+    "whole_bytes_at_release": 1593237504,
+    "free_bytes": 17060040704,
+    "retained_artifacts": "4 copied ordinary EXEs and exact evidence retained; no runtime TMP/cluster was created"
+  },
+  "evidence": {
+    "offer-acceptance.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/offer-acceptance.json",
+      "sha256": "19dc971f2532a7b9d94fa00528125c6a637935054b277f8c9739e0adadf881b4"
+    },
+    "retained-carry-inventory.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/retained-carry-inventory.json",
+      "sha256": "77a4b26a812c6fd849977b4fb6b4a4c439d070550df6807b0d25ccbd27c66316"
+    },
+    "source-pins.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/source-pins.json",
+      "sha256": "1e566ef2a8e44dd3e676bd595138c6cc1760669baddcda004fe8ce6891d0b73d"
+    },
+    "checkpoint.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/checkpoint.json",
+      "sha256": "583c89b9e4e883c7e406f8ad83a055dd8b786820d965bebd9079eba65d697b53"
+    },
+    "inbox_runtime-build-receipt.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/inbox_runtime-build-receipt.json",
+      "sha256": "2bbc5fe0719854a21d638f233db61f7c8c72d5d0f4ebfb886fd07d5a1c2c0a66"
+    },
+    "concert_read_runtime-build-receipt.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/concert_read_runtime-build-receipt.json",
+      "sha256": "c285f98b9fe8c2bf691b4f5a192b4a6cc80127b5bccceb755a2c0c6ec1f9a6eb"
+    },
+    "target-release.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/target-release.json",
+      "sha256": "289bd6a2147e20c3f3885cdd707196d885127cdf046fd5ea0ac16450624f12ba"
+    },
+    "pure-results.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/pure-results.json",
+      "sha256": "3246e07382a66a9021cb06ee6996fb0728b0cb2547c5e2c2fd6d22bcf1b0690a"
+    },
+    "inbox_runtime-pure.log": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/inbox_runtime-pure.log",
+      "sha256": "728faf56c29a6a3a388cc8e4e4f579b2df5b977067e7b9640dc62d4212dfe51c"
+    },
+    "concert_read_runtime-pure.log": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/concert_read_runtime-pure.log",
+      "sha256": "49a0108ccc8990ee8a928aec6cca9f3807da1f6daa9791efbeba1aafbad33a25"
+    },
+    "full-release.json": {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-inbox-post-startup-20wvwptr/full-release.json",
+      "sha256": "e8b28f23eb443359ccd0cd2b7bab788f760f2da50a7046fd78288f58b6608c90"
+    }
+  },
+  "limitations": [
+    "No PG, listener, browser, native service workflow or actual main execution",
+    "Earlier Intro startup proof does not qualify the new Inbox opt-in",
+    "Missing Notification target authority/ingress and canonical Social provider/WS remain independent production prerequisites",
+    "Target was not accessed after its release",
+    "Whole allocation is sampled guard evidence, not a proof of unsampled peaks"
+  ]
+}

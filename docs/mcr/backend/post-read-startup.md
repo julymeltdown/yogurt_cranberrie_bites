@@ -1,6 +1,6 @@
 # Qualified Post read startup
 
-Status: IN_PROGRESS. New startup compilation/native/public Gateway proof: NOT_RUN.
+Status: IN_PROGRESS. New startup targeted compilation and two configuration cases: PASS. Native/public Gateway proof: NOT_RUN.
 
 `POST_CONCERT_READ_MODE=read` explicitly mounts the real qualified Concert read
 service and its producer settlement service on the existing Post mTLS listener.
@@ -23,3 +23,5 @@ The qualified source lineage is retained by merge from
 capture repair. Its historical eight native component cases do not qualify
 this new main-process composition. No unavailable owner, synthetic authority,
 caller-supplied digest or test provider activates a successful read.
+
+The exact clean source `c5fe8473eb08c9e40093d74c4dfba0d52eb79622` passed the bounded locked/offline Rust 1.88 check. All four ordinary cases passed across the two startup modules. Actual main executables were compiled and frozen, never executed. The build target was released before ordinary checks; all resources were released after 119.62 seconds. See [the source-bound build receipt](root-inbox-post-build.json) for commands, hashes, floors, accounting and limitations.

@@ -1,6 +1,6 @@
 # Shared inbox startup
 
-Status: IN_PROGRESS. Compilation and native/public HTTP qualification: NOT_RUN.
+Status: IN_PROGRESS. Targeted compilation and two configuration cases: PASS. Native/public HTTP qualification: NOT_RUN.
 
 `CONCERT_NOTIFICATION_INBOX_MODE=live` explicitly adds the four frozen inbox
 operations to the existing shared live Intro/Participant production composition.
@@ -22,3 +22,5 @@ finished-root recovery path.
 
 Validation is pending a fresh bounded resource offer for the combined source.
 The earlier qualified Intro-only startup is not evidence for this new opt-in.
+
+The exact clean source `c5fe8473eb08c9e40093d74c4dfba0d52eb79622` passed the bounded locked/offline Rust 1.88 check. All four ordinary cases passed across the two startup modules. Actual main executables were compiled and frozen, never executed. The build target was released before ordinary checks; all resources were released after 119.62 seconds. See [the source-bound build receipt](root-inbox-post-build.json) for commands, hashes, floors, accounting and limitations.
