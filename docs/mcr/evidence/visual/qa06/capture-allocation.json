@@ -1,0 +1,55 @@
+{
+  "task": "QA06",
+  "at": "2026-11-04T03:35:21.035296+00:00",
+  "status": "QUEUED_SECOND_NOT_RUNNING",
+  "prerequisites": [
+    "Root153 actual v10 Map/root native workflow first, validated source published",
+    "Explicit BackendSL capacity release for QA06 slot",
+    "Fresh own >=8GiB and process preflight",
+    "Single frontend browser/native workflow"
+  ],
+  "latestObservation": {
+    "freeGiB": 8.72,
+    "releaseReceived": false,
+    "mapValidatedPublicationReceived": false
+  },
+  "estimate": {
+    "measuredEarlierFeedMeMeetPNGs": 36,
+    "measuredEarlierFeedMeMeetBytes": 2373548,
+    "measuredEarlierV10PNGs": 24,
+    "measuredEarlierV10Bytes": 9589741,
+    "minimumExpectedEvidenceMiB": 15,
+    "reservedEvidenceMiB": 20,
+    "temporaryCacheBudgetMiB": 100,
+    "hardNewOutputGiB": 0.2
+  },
+  "stages": [
+    {
+      "scope": "scene",
+      "cases": 9,
+      "captures": 24,
+      "criteria": "All3widths/eras; actual source/root six sprites; fit/reset and six labels clear of caption/zoom;390x554/754 reference aspects; zero cleanup; UNREVIEWED map7005 not admitted"
+    },
+    {
+      "scope": "repairs",
+      "cases": 27,
+      "captures": 57,
+      "criteria": "Feed/Me/Meet all3widths/eras; reduced420;390x637 same3rowsMeet; duplicate links absent; cold activity honest; account controls;zero cleanup"
+    },
+    {
+      "scope": "motion-candidate",
+      "cases": 3,
+      "captures": 3,
+      "criteria": "Actual pinned candidate component/right5rail/selectedHair6; no public adoption inferred"
+    }
+  ],
+  "runnerChecks": {
+    "syntax": "PASS",
+    "oxlint": "PASS",
+    "runtime": "NOT_RUN",
+    "outputReserveBeforeCaseMiB": 16,
+    "cleanupAssertions": "Published scene socket/canvas/cache/blobURL; default-root socket/canvas/disposed"
+  },
+  "noUnrelatedRerun": true,
+  "singleCoordinator": "BackendSL01a1a21d-39ec-7912-84cb-910058e7a110"
+}

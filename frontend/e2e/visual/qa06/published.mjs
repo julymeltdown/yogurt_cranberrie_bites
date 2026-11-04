@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict'
 import {execFileSync} from 'node:child_process'
 import {createHash} from 'node:crypto'
-import {readFile,writeFile,mkdir} from 'node:fs/promises'
+import {readFile,writeFile,mkdir,readdir,stat} from 'node:fs/promises'
 import {resolve,posix,extname} from 'node:path'
 import {createRequire} from 'node:module'
 import {createServer} from 'vite'
@@ -23,6 +23,8 @@ for(const find of ['react/jsx-runtime','react/jsx-dev-runtime','react-dom/client
 aliases.sort((a,b)=>b.find.length-a.find.length)
 const cacheDir=temporaryCache('published'),port=await reservePort(),errors=[]
 const report={task:'QA06',scope,status:'IN_PROGRESS',candidate:pin,originMaster:git('rev-parse','origin/master').toString().trim(),qualification:'ACTUAL_PUBLISHED_SOURCE_WITH_CORRECTED_SYNTHETIC_HTTP_C05_DESKTOP_ONLY',harnessSha256:hash(await readFile(new URL(import.meta.url))),fixtureSha256:hash(ownFixture),sourceHashes,cases:[],errors,physicalIOS:'NOT_RUN',physicalAndroid:'NOT_RUN'}
+// Four full-viewport PNGs plus two JSON receipts fit within this conservative reserve.
+async function beforeCase(){await requireCaptureSpace(repo);const files=await readdir(out,{withFileTypes:true});const sizes=await Promise.all(files.filter(f=>f.isFile()).map(async f=>(await stat(resolve(out,f.name))).size));assert(sizes.reduce((a,b)=>a+b,0)+16*1024**2<=.2*1024**3,'0.2GiB output ceiling with next-case reserve')}
 const server=await createServer({configFile:false,root:resolve(repo,'frontend'),cacheDir,logLevel:'error',esbuild:{jsx:'automatic'},resolve:{alias:aliases},server:{host:'127.0.0.1',port,strictPort:true,hmr:false,fs:{allow:[repo,'/Users/lhs/Desktop/mcr/frontend']}},plugins:[{name:'qa06-frozen-published-source',enforce:'pre',resolveId(source,importer){
  if(source.startsWith(prefix))return source
  if(source.startsWith('.')&&importer?.startsWith(prefix)){
@@ -42,7 +44,7 @@ try{await server.listen();browser=await chromium.launch({channel:'chrome',headle
  if(scope==='scene'){
   const labels=JSON.parse(blob('frontend/src/world/reference-scene/spatial-v5/map-labels-source.json')).labels
   sceneCases: for(const width of [360,390,430])for(const era of ['REVENGE','PARADE','DANGER']){
-   await requireCaptureSpace(repo);const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),pageErrors=[];page.on('pageerror',e=>pageErrors.push(e.message));page.setDefaultTimeout(20000)
+   await beforeCase();const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),pageErrors=[];page.on('pageerror',e=>pageErrors.push(e.message));page.setDefaultTimeout(20000)
    const c={width,era,status:'IN_PROGRESS',errors:pageErrors}
    try{await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'));await page.goto(`http://127.0.0.1:${port}/__qa06/scene.html?era=${era}`);await expect.poll(()=>page.evaluate(()=>window.__SCENE_V5_ROOT__?.state().overview?.themeId)).toBe(era);await page.waitForLoadState('networkidle')
     c.state=await page.evaluate(()=>window.__SCENE_V5_ROOT__.state());c.world=await page.evaluate(()=>window.__SCENE_V5_ROOT__.inspectWorld());assert.equal(c.world.sprites,6);assert.equal(c.world.games,1);assert.equal(c.state.map.revision,7005);assert.equal(c.state.originalMapProvenance.review_state,'UNREVIEWED');assert.equal(c.state.productionAdmitted,false)
@@ -62,13 +64,13 @@ try{await server.listen();browser=await chromium.launch({channel:'chrome',headle
     if(width===390){await page.setViewportSize({width,height:754});await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));c.referenceMap=await mapCheck();c.mapReferenceScreenshot=`map-${era.toLowerCase()}-${width}-h754.png`;await page.screenshot({path:resolve(out,c.mapReferenceScreenshot)})}
     assert.deepEqual(pageErrors,[]);c.status='PASS'
    }catch(e){c.status='FAIL';c.error=e.message}
-   finally{await page.evaluate(()=>window.__SCENE_V5_ROOT__?.dispose()).catch(()=>{});c.cleanup=await page.evaluate(()=>window.__SCENE_V5_ROOT__?.state()).catch(()=>null);await context.close()}
+   finally{try{await page.evaluate(()=>window.__SCENE_V5_ROOT__?.dispose());if(await page.evaluate(()=>!!window.__SCENE_V5_ROOT__)){await expect.poll(()=>page.evaluate(()=>window.__SCENE_V5_ROOT__.state().activeSockets)).toBe(0);await expect.poll(()=>page.evaluate(()=>window.__SCENE_V5_ROOT__.state().canvases)).toBe(0);c.cleanup=await page.evaluate(()=>window.__SCENE_V5_ROOT__.state());assert(c.cleanup.disposed);assert(c.cleanup.sourceCaches.every(v=>v.disposed&&v.entries===0&&v.residentBytes===0));assert(c.cleanup.urls.created.every(v=>c.cleanup.urls.revoked.includes(v)))}}catch(e){c.status='FAIL';c.cleanupError=e.message}await context.close()}
    report.cases.push(c);console.log(JSON.stringify({scope,width,era,status:c.status,error:c.error}));await writeFile(resolve(out,'report.partial.json'),JSON.stringify(report,null,2)+'\n');if(c.status==='FAIL')break sceneCases
   }
   report.status=report.cases.length===9&&report.cases.every(c=>c.status==='PASS')?'BOUNDED_PUBLISHED_SCENE_PASS':'FAIL'
  }else{
  captures: for(const width of [360,390,430])for(const era of ['REVENGE','PARADE','DANGER'])for(const kind of ['feed','me','meet']){
-  await requireCaptureSpace(repo);const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),pageErrors=[];page.on('pageerror',e=>pageErrors.push(e.message));page.setDefaultTimeout(20000)
+  await beforeCase();const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),pageErrors=[];page.on('pageerror',e=>pageErrors.push(e.message));page.setDefaultTimeout(20000)
   const c={width,era,kind,status:'IN_PROGRESS',errors:pageErrors}
   try{await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'));await page.goto(`http://127.0.0.1:${port}/__qa06/start.html?`+new URLSearchParams({entry:'/'+kind,era}));await expect.poll(()=>page.evaluate(()=>window.__QA06__?.state().published)).toBe(true);await page.waitForLoadState('networkidle');await page.evaluate(()=>document.fonts.ready)
    c.state=await page.evaluate(()=>window.__QA06__.state());assert.equal(c.state.theme.selected,era);assert.equal(c.state.canvases,1);assert(c.state.socketPeak<=1);assert.equal(c.state.sockets,0)
@@ -84,7 +86,7 @@ try{await server.listen();browser=await chromium.launch({channel:'chrome',headle
    for(const height of (kind==='meet'&&width===390?[637,420]:[420])){await page.setViewportSize({width,height});c['height'+height]=await check(height);const shot=`${kind}-${era.toLowerCase()}-${width}-h${height}.png`;await page.screenshot({path:resolve(out,shot)});c['screenshot'+height]=shot}
    assert.deepEqual(pageErrors,[]);c.status='PASS'
   }catch(e){c.status='FAIL';c.error=e.message}
-  finally{await page.evaluate(()=>window.__QA06__?.dispose()).catch(()=>{});c.cleanup=await page.evaluate(()=>({canvases:document.querySelectorAll('canvas').length,state:window.__QA06__?.state()})).catch(()=>null);await context.close()}
+  finally{try{await page.evaluate(()=>window.__QA06__?.dispose());if(await page.evaluate(()=>!!window.__QA06__)){await expect.poll(()=>page.evaluate(()=>window.__QA06__.state().activeSockets)).toBe(0);await expect.poll(()=>page.evaluate(()=>document.querySelectorAll('canvas').length)).toBe(0);c.cleanup=await page.evaluate(()=>window.__QA06__.state());assert(c.cleanup.disposed)}}catch(e){c.status='FAIL';c.cleanupError=e.message}await context.close()}
   report.cases.push(c);console.log(JSON.stringify({width,era,kind,status:c.status,error:c.error}));await writeFile(resolve(out,'report.partial.json'),JSON.stringify(report,null,2)+'\n');if(c.status==='FAIL')break captures
  }
  report.status=report.cases.length===27&&report.cases.every(c=>c.status==='PASS')?'BOUNDED_PUBLISHED_REPAIRS_PASS':'FAIL'
