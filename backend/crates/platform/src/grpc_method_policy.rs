@@ -245,29 +245,153 @@ impl MethodPolicy {
         );
         // Only exact reserved observation services accept a dedicated Concert
         // issuer. Existing actor-bound methods remain Gateway-only.
-        let reserved_relationship = matches!(self.service,
-            "relationship.v1.AuthConcertRelationshipService" |
-            "relationship.v1.FriendConcertRelationshipService");
-        let relationship_read = matches!((self.service,self.workload),
-            ("relationship.v1.AuthConcertRelationshipService",Some(Workload::Auth)) |
-            ("relationship.v1.FriendConcertRelationshipService",Some(Workload::Friend)))
-            && self.methods.len()==1 && self.methods[0].0=="ReadCurrent"
-            && self.methods[0].1==[Workload::Concert]
-            && self.actor_fields.len()==1 && self.actor_fields[0].0=="ReadCurrent"
-            && self.actor_fields[0].1.len()==1 && self.actor_fields[0].1[0]==[1];
+        let reserved_relationship = matches!(
+            self.service,
+            "relationship.v1.AuthConcertRelationshipService"
+                | "relationship.v1.FriendConcertRelationshipService"
+        );
+        let relationship_read = matches!(
+            (self.service, self.workload),
+            (
+                "relationship.v1.AuthConcertRelationshipService",
+                Some(Workload::Auth)
+            ) | (
+                "relationship.v1.FriendConcertRelationshipService",
+                Some(Workload::Friend)
+            )
+        ) && self.methods.len() == 1
+            && self.methods[0].0 == "ReadCurrent"
+            && self.methods[0].1 == [Workload::Concert]
+            && self.actor_fields.len() == 1
+            && self.actor_fields[0].0 == "ReadCurrent"
+            && self.actor_fields[0].1.len() == 1
+            && self.actor_fields[0].1[0] == [1];
         anyhow::ensure!(!reserved_relationship || relationship_read,
             "reserved relationship read policy must match its exact owner, method, caller and actor field");
         let reserved_profile = self.service == "profile.v1.ConcertWorldProfileService";
-        let world_profile_read = reserved_profile && self.workload == Some(Workload::Profile)
-            && self.methods.len() == 1 && self.methods[0].0 == "ReadCurrent"
+        let world_profile_read = reserved_profile
+            && self.workload == Some(Workload::Profile)
+            && self.methods.len() == 1
+            && self.methods[0].0 == "ReadCurrent"
             && self.methods[0].1 == [Workload::Concert]
-            && self.actor_fields.len() == 1 && self.actor_fields[0].0 == "ReadCurrent"
-            && self.actor_fields[0].1.len() == 1 && self.actor_fields[0].1[0] == [1];
-        anyhow::ensure!(!reserved_profile || world_profile_read,
-            "reserved world Profile policy must match exact owner, method, caller and actor field");
+            && self.actor_fields.len() == 1
+            && self.actor_fields[0].0 == "ReadCurrent"
+            && self.actor_fields[0].1.len() == 1
+            && self.actor_fields[0].1[0] == [1];
+        anyhow::ensure!(
+            !reserved_profile || world_profile_read,
+            "reserved world Profile policy must match exact owner, method, caller and actor field"
+        );
+        let reserved_public_profile =
+            self.service == "profile.concert_public.v1.ConcertPublicProfileService";
+        let public_profile_read = reserved_public_profile
+            && self.workload == Some(Workload::Profile)
+            && self.methods
+                == [
+                    ("ReadCurrent", &[Workload::Concert][..]),
+                    ("Check", &[Workload::Concert][..]),
+                    ("Complete", &[Workload::Concert][..]),
+                ]
+            && self.actor_fields.len() == 3
+            && self
+                .actor_fields
+                .iter()
+                .zip(["ReadCurrent", "Check", "Complete"])
+                .all(|((method, fields), expected)| *method == expected && *fields == [&[1][..]]);
+        anyhow::ensure!(!reserved_public_profile || public_profile_read,
+            "reserved public Profile policy must match exact owner, methods, caller and actor fields");
+        let reserved_post_read = self.service == "post.concert.v1.PostConcertFeedReadService";
+        let qualified_post_read = reserved_post_read
+            && self.workload == Some(Workload::Post)
+            && self.methods.len() == 4
+            && self.actor_fields.len() == 4
+            && self
+                .methods
+                .iter()
+                .zip(self.actor_fields)
+                .zip(["GetPost", "ListPosts", "GetComment", "ListComments"])
+                .all(|(((method, callers), (actor_method, fields)), expected)| {
+                    *method == expected
+                        && *actor_method == expected
+                        && *callers == [Workload::Concert]
+                        && *fields == [&[1, 1, 1][..]]
+                });
+        anyhow::ensure!(!reserved_post_read || qualified_post_read,
+            "reserved qualified Post read policy must match exact owner, methods, caller and actor fields");
+        let reserved_owner = matches!(
+            self.service,
+            "authority.lease.v1.AuthOwnerAuthorityService"
+                | "authority.lease.v1.FriendOwnerAuthorityService"
+        );
+        let owner_authority = reserved_owner
+            && matches!(
+                (self.service, self.workload),
+                (
+                    "authority.lease.v1.AuthOwnerAuthorityService",
+                    Some(Workload::Auth)
+                ) | (
+                    "authority.lease.v1.FriendOwnerAuthorityService",
+                    Some(Workload::Friend)
+                )
+            )
+            && self.methods
+                == [
+                    ("Acquire", &[Workload::Concert][..]),
+                    (
+                        "Check",
+                        &[Workload::Concert, Workload::Post, Workload::Profile][..],
+                    ),
+                    (
+                        "Enroll",
+                        &[Workload::Concert, Workload::Post, Workload::Profile][..],
+                    ),
+                    (
+                        "Track",
+                        &[Workload::Concert, Workload::Post, Workload::Profile][..],
+                    ),
+                    ("Complete", &[Workload::Concert][..]),
+                ]
+            && self.actor_fields == [("Acquire", &[&[1, 1][..]][..])];
+        anyhow::ensure!(!reserved_owner || owner_authority,
+            "reserved owner authority policy must match exact owner, methods, callers and Acquire actor field");
+        let reserved_settlement = self.service == "authority.lease.v1.ProducerSettlementService";
+        let settlement = reserved_settlement
+            && matches!(
+                self.workload,
+                Some(Workload::Concert | Workload::Post | Workload::Profile)
+            )
+            && self.methods
+                == [
+                    (
+                        "ResolveTransaction",
+                        &[Workload::Auth, Workload::Friend][..],
+                    ),
+                    ("ResolveScope", &[Workload::Auth, Workload::Friend][..]),
+                ]
+            && self.actor_fields.is_empty();
+        anyhow::ensure!(
+            !reserved_settlement || settlement,
+            "reserved producer settlement policy accepts only Auth/Friend system queries"
+        );
+        let reserved_decision =
+            self.service == "concert.participant.v1.ConcertParticipantDecisionService";
+        let decision = reserved_decision
+            && self.workload == Some(Workload::Concert)
+            && self.methods == [("ResolveDecision", &[Workload::Profile][..])]
+            && self.actor_fields == [("ResolveDecision", &[&[1][..]][..])];
+        anyhow::ensure!(
+            !reserved_decision || decision,
+            "reserved Participant decision resolver requires exact signed Profile query"
+        );
         for (method, fields) in self.actor_fields {
             anyhow::ensure!(
-                self.callers(method) == Some(&[Workload::Gateway][..]) || relationship_read || world_profile_read,
+                self.callers(method) == Some(&[Workload::Gateway][..])
+                    || relationship_read
+                    || world_profile_read
+                    || public_profile_read
+                    || qualified_post_read
+                    || owner_authority
+                    || decision,
                 "{}/{method} acts for a user and must accept only the Gateway",
                 self.service
             );
@@ -745,3 +869,6 @@ mod tests {
 mod relationship_read_tests;
 #[cfg(test)]
 mod world_profile_tests;
+
+#[cfg(test)]
+mod owner_authority_tests;

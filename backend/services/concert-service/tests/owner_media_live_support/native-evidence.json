@@ -1,7 +1,7 @@
 {
   "task": "BE-OWNER-MEDIA-LIVE",
   "status": "IN_PROGRESS",
-  "build_source_revision": "1a7a5c8bdd6b61b4343aac626a099f7a4f2b51df",
+  "build_source_revision": "71a91da09c95c39a89cfeefc88e376d032e7171d",
   "build_exit_code": 0,
   "toolchain": "rustc 1.88.0 (6b00bc388 2025-06-23)",
   "build_constraints": {
@@ -11,10 +11,10 @@
     "locked": true,
     "offline": true
   },
-  "artifact_sha256": "040e902a105fd459f9e63ae1ab24078b26d4a654911354d5b4da690edd090dc2",
-  "source_pin_count": 1580,
+  "artifact_sha256": "5f5fee9b432d35179fccb506ee56941d384c11e483561776789ae9d70ec9cb35",
+  "source_pin_count": 1599,
   "runtime_tests": {
-    "passed": 9,
+    "passed": 10,
     "failed": 0,
     "ignored": 0
   },
@@ -48,5 +48,7 @@
   "planning_provenance_check": {
     "result": "PASS",
     "exit_code": 0
-  }
+  },
+  "shared_policy_capture": "NATIVE_FIXTURE_PASS",
+  "http_delivery_lifetime": "CONTRACT_ONLY_NOT_RUN"
 }

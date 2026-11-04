@@ -1,0 +1,248 @@
+{
+  "version": 5,
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "world_scenery": "scenery.json",
+  "layout": "layout.json",
+  "overview_representations": [
+    {
+      "id": "stage_venue_representation",
+      "replaces_prop_id": "main_stage",
+      "frame": "west_hall",
+      "x": 132,
+      "y": 260,
+      "width": 406,
+      "height": 292,
+      "depth_y": 552,
+      "interaction_id": "stage_info",
+      "kind": "semantic_map_landmark_not_a_world_solid"
+    },
+    {
+      "id": "plaza_seating_representation",
+      "frame": "plaza_furniture",
+      "x": 292,
+      "y": 630,
+      "width": 144,
+      "height": 94,
+      "depth_y": 724,
+      "interaction_id": null,
+      "kind": "unbound_map_illustration_not_a_world_solid"
+    },
+    {
+      "id": "west_edge_venue_illustration",
+      "frame": "north_hall",
+      "x": -75,
+      "y": 500,
+      "width": 200,
+      "height": 180,
+      "depth_y": 680,
+      "interaction_id": null,
+      "kind": "cropped_unbound_map_architecture_not_a_world_solid"
+    },
+    {
+      "id": "east_edge_venue_illustration",
+      "frame": "north_hall",
+      "x": 710,
+      "y": 430,
+      "width": 210,
+      "height": 160,
+      "depth_y": 590,
+      "interaction_id": null,
+      "kind": "cropped_unbound_map_architecture_not_a_world_solid"
+    },
+    {
+      "id": "south_west_venue_illustration",
+      "frame": "west_hall",
+      "x": -75,
+      "y": 1050,
+      "width": 240,
+      "height": 220,
+      "depth_y": 1270,
+      "interaction_id": null,
+      "kind": "cropped_unbound_map_architecture_not_a_world_solid"
+    },
+    {
+      "id": "south_east_venue_illustration",
+      "frame": "north_hall",
+      "x": 700,
+      "y": 1110,
+      "width": 220,
+      "height": 180,
+      "depth_y": 1290,
+      "interaction_id": null,
+      "kind": "cropped_unbound_map_architecture_not_a_world_solid"
+    }
+  ],
+  "overview_zone_policy": "Green Plaza is a semantic gathering-zone overlay on the overview, not a second terrain/collision map or a claim of physical lawn. WORLD shows its walkable paved surface. Map hall art represents the same stage_info venue; only WORLD prop footprints are solid.",
+  "zone_rendering": {
+    "mode": "solid",
+    "fill": "#7a8742",
+    "fill_rgba_native": [
+      0.48,
+      0.53,
+      0.26,
+      1
+    ],
+    "stroke": "#b4a27d",
+    "stroke_width_px": 6,
+    "optional_ground_sample": {
+      "x": 0,
+      "y": 0,
+      "width": 48,
+      "height": 48
+    },
+    "resources": "Use the already loaded ground and atlas only; no surface-source fetch."
+  },
+  "plaza_parcel": [
+    [
+      238,
+      563
+    ],
+    [
+      432,
+      555
+    ],
+    [
+      515,
+      659
+    ],
+    [
+      440,
+      754
+    ],
+    [
+      303,
+      777
+    ],
+    [
+      226,
+      688
+    ]
+  ],
+  "map_labels": [
+    {
+      "label": "MAIN STAGE",
+      "x": 434,
+      "y": 370,
+      "interaction_id": "stage_info"
+    },
+    {
+      "label": "PLAZA",
+      "x": 370,
+      "y": 640,
+      "interaction_id": null
+    },
+    {
+      "label": "MERCH",
+      "x": 118,
+      "y": 929,
+      "interaction_id": "gifts_info"
+    },
+    {
+      "label": "FOOD",
+      "x": 658,
+      "y": 937,
+      "interaction_id": null
+    },
+    {
+      "label": "MEETUP ZONE",
+      "x": 372,
+      "y": 1118,
+      "interaction_id": null
+    },
+    {
+      "label": "GIVEAWAY BOOTH",
+      "x": 540,
+      "y": 1260,
+      "interaction_id": null
+    }
+  ],
+  "places": [
+    {
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+      "label": "Virtual Culture Park lawn",
+      "place_kind": "VIRTUAL_CONCEPT",
+      "verification_state": "CONCEPT_ONLY",
+      "closure_state": "OPEN",
+      "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+      "provenance": {
+        "source_id": "ar02_original_courtyard",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+        "source_uri": null,
+        "author": "MCR AR02 map author",
+        "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+      "label": "Virtual stage",
+      "place_kind": "VIRTUAL_CONCEPT",
+      "verification_state": "CONCEPT_ONLY",
+      "closure_state": "OPEN",
+      "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+      "provenance": {
+        "source_id": "ar02_original_courtyard",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+        "source_uri": null,
+        "author": "MCR AR02 map author",
+        "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+      "label": "Virtual gift corner",
+      "place_kind": "VIRTUAL_CONCEPT",
+      "verification_state": "CONCEPT_ONLY",
+      "closure_state": "OPEN",
+      "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+      "provenance": {
+        "source_id": "ar02_original_courtyard",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+        "source_uri": null,
+        "author": "MCR AR02 map author",
+        "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+      "label": "Virtual pixel wall",
+      "place_kind": "VIRTUAL_CONCEPT",
+      "verification_state": "CONCEPT_ONLY",
+      "closure_state": "OPEN",
+      "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+      "provenance": {
+        "source_id": "ar02_original_courtyard",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+        "source_uri": null,
+        "author": "MCR AR02 map author",
+        "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "camera": {
+    "x": 0,
+    "y": 0,
+    "width": 768,
+    "height": 1296
+  },
+  "authority": "Semantic MAP rendering only. Geometry/IDs remain in the pinned proposal; null label bindings stay unbound."
+}

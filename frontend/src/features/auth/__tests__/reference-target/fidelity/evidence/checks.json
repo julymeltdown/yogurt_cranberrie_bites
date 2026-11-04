@@ -1,0 +1,73 @@
+{
+  "task": "FE-REF-AUTH-FIDELITY",
+  "status": "MOCK_READY",
+  "sourceCandidate": "8cf4d29c928bafb9fe9dd8991db132901d9a3179",
+  "reconciledParent": "1cbb1823c506e7fe04d6754f9698ee855f98bc40",
+  "node": "24.22.2",
+  "commands": [
+    {
+      "cwd": "frontend",
+      "command": "NODE node_modules/vitest/vitest.mjs run --config src/features/auth/__tests__/reference-target/fidelity/checks.ts --configLoader runner",
+      "exitCode": 0,
+      "result": "156/156 tests in 8 files"
+    },
+    {
+      "cwd": "frontend",
+      "command": "NODE node_modules/typescript/bin/tsc --noEmit --incremental false",
+      "exitCode": 0
+    },
+    {
+      "cwd": "frontend",
+      "command": "NODE node_modules/oxlint/bin/oxlint src/features/auth/ui src/features/auth/__tests__/reference-target/fidelity/{app.tsx,native.mjs,build.mjs,checks.ts}",
+      "exitCode": 0
+    },
+    {
+      "cwd": "frontend",
+      "command": "NODE src/features/auth/__tests__/reference-target/fidelity/build.mjs",
+      "exitCode": 0,
+      "result": "455 modules; existing >500kB chunk warnings retained; public asset copying disabled"
+    },
+    {
+      "cwd": "frontend",
+      "command": "NODE src/features/auth/__tests__/reference-target/fidelity/native.mjs",
+      "exitCode": 0,
+      "result": "Actual app router on /login at 360/390/430; zero page errors; synthetic HTTP/cookie policy"
+    },
+    {
+      "cwd": "repository",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0
+    },
+    {
+      "cwd": "repository",
+      "command": "NODE scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0
+    },
+    {
+      "cwd": "repository",
+      "command": "python3 scripts/mcr/check-boundaries.py --base 1cbb1823c506e7fe04d6754f9698ee855f98bc40 --lane frontend --allow-doc docs/mcr/frontend/reference-auth.md",
+      "exitCode": 0
+    },
+    {
+      "cwd": "repository",
+      "command": "git diff --cached --check",
+      "exitCode": 0
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "finding": "Native footer clearance failed at 390px when small graves intruded into the final row",
+      "fix": "Reserve 66px below content; place large side crosses outside the centered form; final three-width clearance and foreground-control hit checks pass"
+    },
+    {
+      "finding": "Regular dot grain and a continuous dark side treatment diverged from the requested treatment",
+      "fix": "Irregular original SVG noise; retain ordinary symmetric frame without decorative vertical rails"
+    }
+  ],
+  "limitations": [
+    "Synthetic Auth fetch/cookie policy, deliberately denied world bootstrap; no live backend/provider or hardware qualification",
+    "360 and 390px require normal vertical scrolling at reference-aspect heights; no horizontal overflow or target shrinking",
+    "Original target pixels remain unchanged; new cemetery vectors and grain are not pixel-identical artwork"
+  ],
+  "cleanup": "Owned caches removed; temporary dependency symlink removed; no installed or copied dependencies"
+}
