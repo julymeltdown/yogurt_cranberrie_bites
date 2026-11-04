@@ -1,0 +1,15 @@
+{
+  "command": "python3 -B frontend/public/world/reference-scene-v2/map-layout-v2/verify.py",
+  "exit_code": 0,
+  "result": {
+    "status": "PASS_STRUCTURAL_ONLY",
+    "labels": 6,
+    "decorations": 10,
+    "changed_unbound_decorations": 2,
+    "new_decoration_surface_pixel_checks": 1428,
+    "maximum_text_panel_center_error_source_px": 0.48387096774195015,
+    "new_native_export": "NOT_RUN",
+    "new_mobile_comparison": "NOT_RUN",
+    "canonical_geometry_or_runtime_mutations": 0
+  }
+}

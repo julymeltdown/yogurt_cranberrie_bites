@@ -1,0 +1,68 @@
+{
+  "task_id": "FE-REF-SCENE / AR01-AR02-AR04 source-fidelity follow-up",
+  "status": "IN_PROGRESS",
+  "goal_metadata_observed": "BLOCKED; same unfinished objective reused after concrete resumption input, no replacement goal",
+  "qualified_consumer_input": "d5c0c9d188f68acb749d7ed2940706f34b2a8be1",
+  "published_consumer_checkpoint": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+  "publication_verified_at_remote_snapshot": "e449890ad62e57f6708c69c9f76dc2f6f5ee5269",
+  "capture_packet": {
+    "path": "docs/mcr/evidence/reference-scene-v5/capture-packet.json",
+    "sha256": "sha256:93770ac73a785f4b9da190da8d2929e130bbc7d54fa81c13b90278c9ca24eb96",
+    "artifacts": 49,
+    "bytes": 13863345
+  },
+  "reports": [
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/renderer-qualified/native.json",
+      "sha256": "sha256:e0249c9176b2800475ac7eff95f04bd558f5b68cecfbba176f4c4465d084f050",
+      "coverage": "360/390/430; all three eras, two cycles, strict zero-difference landmarks/occlusion"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/root-verified/native.json",
+      "sha256": "sha256:27a9dad326f60f8da806dcea4b1e44b36abe9ae2764ca56e7468cf069acd9cb8",
+      "coverage": "16 cases; short WORLD/MAP; compact closed/unavailable targets, caption, fit/reset, guarded failures and cleanup"
+    }
+  ],
+  "independent_checks": {
+    "all_49_capture_bytes_and_hashes": "PASS",
+    "published_checkpoint_ancestry": "PASS",
+    "represented_candidate_source_pins": 105,
+    "published_source_pins_checked": 105,
+    "published_capture_pins_checked": 49
+  },
+  "inspected_images": [
+    "docs/mcr/evidence/reference-scene-v5/root-verified/world-parade-360.png",
+    "docs/mcr/evidence/reference-scene-v5/root-verified/world-parade-390.png",
+    "docs/mcr/evidence/reference-scene-v5/root-verified/world-parade-430.png",
+    "docs/mcr/evidence/reference-scene-v5/root-verified/map-parade-360.png",
+    "docs/mcr/evidence/reference-scene-v5/root-verified/map-parade-390.png",
+    "docs/mcr/evidence/reference-scene-v5/root-verified/map-parade-430.png"
+  ],
+  "findings": [
+    {
+      "id": "consumer-world-framing",
+      "state": "RESOLVED_IN_FROZEN_PACKET",
+      "evidence": "Authored stage and Culture Park sign remain visible in reviewed 360/390/430 captures."
+    },
+    {
+      "id": "consumer-map-obstruction",
+      "state": "RESOLVED_IN_FROZEN_PACKET",
+      "evidence": "Two compact icons preserve targets; caption has a reserved row. Strict checks are input-specific."
+    },
+    {
+      "id": "source-map-label-registration",
+      "state": "METADATA_CORRECTION_PREPARED_RENDER_NOT_RUN",
+      "evidence": "target-measurements.json records each measured panel, old offset and new coordinates. This finding remains open until matching rendering is validated."
+    }
+  ],
+  "remaining": [
+    "Explicit owner adoption of BOTH new metadata sidecars and display-anchor overrides; no implicit runtime ownership.",
+    "Updated editable/native composition, new visibility/occlusion and actual mobile comparisons for the proposed layout have NOT_RUN. The d5c0c9d1 captures represent the OLD layout.",
+    "Full layout/proportion/architecture/texture/character composition comparison remains open; this panel-center correction is not whole-reference acceptance or a new critic score."
+  ],
+  "limits": [
+    "No new browser/native/raster generation executed.",
+    "No new physical place, source review, release admission, live server, multiuser or device evidence.",
+    "Canonical geometry ef52, collisions, WORLD props and supplied character originals are unchanged."
+  ]
+}
