@@ -220,11 +220,12 @@ async fn owned_pool(db: &str) -> Result<PgPool> {
         marker["token"].as_str() == Some(&std::env::var("BE42_OWNER_TOKEN")?),
         "foreign fixture marker"
     );
-    let options = PgConnectOptions::from_str(&std::env::var(if db == "mcr_be42_auth" {
-        "BE42_AUTH_URL"
-    } else {
-        "BE42_CONCERT_URL"
-    })?)?;
+    let options =
+        PgConnectOptions::from_str(&std::env::var(if db == "mcr_world_deletion_auth" {
+            "BE42_AUTH_URL"
+        } else {
+            "BE42_CONCERT_URL"
+        })?)?;
     anyhow::ensure!(
         options.get_database() == Some(db)
             && options.get_username() == "mcr_owner"
@@ -401,8 +402,8 @@ async fn wait_user_lock(pool: &PgPool) -> Result<()> {
 #[tokio::test]
 #[ignore = "fresh allocator-owned marker/inode PG16 only; explicit component test transport"]
 async fn native_actual_auth_bounded_replay_rollback_and_ticket_races() -> Result<()> {
-    let auth = owned_pool("mcr_be42_auth").await?;
-    let mut pool = owned_pool("mcr_be42_concert").await?;
+    let auth = owned_pool("mcr_world_deletion_auth").await?;
+    let mut pool = owned_pool("mcr_world_deletion_concert").await?;
     let user = actual_auth_user(&auth).await?;
     let other = actual_auth_user(&auth).await?;
     let race = actual_auth_user(&auth).await?;
@@ -495,7 +496,7 @@ async fn native_actual_auth_bounded_replay_rollback_and_ticket_races() -> Result
     drop(deletion);
     drop(repo);
     pool.close().await;
-    pool = owned_pool("mcr_be42_concert").await?;
+    pool = owned_pool("mcr_world_deletion_concert").await?;
     let deletion = TicketDeletion::new(pool.clone(), authority.clone());
     let receipt = deletion
         .apply(command.clone(), deadline())
