@@ -1,0 +1,20 @@
+# Corrected Wall and bounded community accessibility
+
+Candidate `cc20832a897f18cd83482dcd21b6c2fc1d226942` uses the delivered 390×780 Wall SVG (`18e6e4db`, SHA256 `22e2de672776682693bca71c57f501f2450bc9a28bc6314df44c26d6d193efc7`). The actual before/after captures restore only that SVG to the old `8972b0b6` bytes for the baseline. All three 360/390/430 pairs preserve ordinary text, controls including summaries, typography, geometry, actual visible character records, guarded Wall state and one game/socket. Broad blush, sage and lilac fields now continue through the lower panel. Root directly viewed all three candidate Wall images; artist inspection remains a separate owner disposition.
+
+`ROOT-WALL-COM-A11Y-202611040820Z` ran nine actual router/Phaser contexts and retained25 PNGs, including explicitly labeled text-backing probes. Node syntax exited0; the native command exited1 with findings, preserved verbatim. The new immutable packet is `docs/mcr/evidence/cozy-backgrounds-v1/wall-com-03/`. Its report SHA256 is `8056cea82655a3ae95e6520952a351890a3eb921953262378ebf260ca89b4c5f`; all725 loaded-source/asset and physical clean-checkout CSS pins match Git. Nested CSS pins are physical checkout evidence, not invented individual Vite import receipts.
+
+| Actual 390px sample | Normal text minimum | Representative focus |
+| --- | ---: | --- |
+| Wall guarded status / header Back | 9.546:1 | 15.114:1,2px, all four samples visible |
+| Feed post copy / options summary | 15.623:1 | 6.020:1,3px, all four samples visible |
+| Meet unavailable member text / filters summary | 5.499:1 | Top/right visible; bottom/left clipped by existing scroll container |
+| Gifts footnote / filters summary | 7.464:1 | 6.586:1,2px, all four samples visible |
+
+Every queried summary/Back target is at least44×44px and focus leaves its rectangle unchanged. Computed colors, fonts, opacity, ancestor backgrounds and clipping rectangles are retained. Normal text uses a conservative actual composed-backing raster minimum over visible text-range boxes, with opaque normal-blend ancestors required and original inline styles restored.
+
+The raw forced-color checks expose two harness assumptions. Forced colors override transparent text fill, leaving glyphs in the supposed backing mask and producing a false1:1 result. System outlines are semitransparent `rgba(5,0,73,.8)`, so their actual composited pixels differ from the uncomposited RGB triplet. `qualification.json` preserves those failures and separately inspects actual unmasked glyph/backplate samples and alpha-composited focus pixels. Wall/Feed/Gifts forced outline samples are visible at9.377:1 or higher. Actual queried forced text uses black system text on white backplates; retained per-fragment raster spots are explicitly limited evidence, not a replacement complete backing mask. Forced colors and reduced motion are active, and ordinary geometry/state/character records restore exactly afterward.
+
+Meet summary clipping is a real inherited limitation, independently visible in both normal and forced captures. Its enclosing `.meet-discovery` has `overflow:auto`; the left and bottom outline extend beyond that box. The relevant feature and shell CSS bytes equal the original corrected capture candidate `8972b0b6`. The user froze foreground focus/layout in this background-only change; no clipping repair is claimed or silently introduced. The separately documented inherited heading ring2.41:1 also remains under the existing UI owner's constrained feasibility assignment. Neither issue is attributed to the new Wall SVG, and neither is concealed by a passing background comparison.
+
+Full release: actual completion `2026-11-04T08:17:32.004653Z`,30.390seconds. Whole peak38,899,712bytes includes7,413,760 retained ART bytes; temp29,978,624, durable1,609,728; minimum free36,644,380,672bytes. Browser/server/process group exited; owned temp/cache/dependency link were removed. No build/install/full-matrix rerun occurred. The controlled HTTP/C05 fixture and guarded Wall do not establish live mural editing, physical-device, global WCAG or whole-project acceptance.

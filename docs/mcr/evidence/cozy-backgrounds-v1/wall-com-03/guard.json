@@ -1,0 +1,23 @@
+{
+  "carried_art_bytes": 7413760,
+  "syntax_exit": 0,
+  "job": "ROOT-WALL-COM-A11Y-202611040820Z",
+  "candidate": "cc20832a897f18cd83482dcd21b6c2fc1d226942",
+  "driver_sha256": "84b23c4d4de54d7126447cc6a282b042db216d72a3311eb4b30febc965e7db6f",
+  "command": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "src/app/__tests__/cozy-wall-accessibility-v1/native.mjs"
+  ],
+  "exit_code": 1,
+  "failure": "native exit 1",
+  "elapsed_seconds": 30.39045120800438,
+  "peaks": {
+    "whole": 38899712,
+    "temp": 29978624,
+    "durable": 1609728
+  },
+  "minimum_free_bytes": 36644380672,
+  "temp_absent": true,
+  "owned_link_absent": true,
+  "finished_at": "2026-11-04T08:17:32.004653+00:00"
+}
