@@ -1,7 +1,9 @@
 //! Notification-owned durable Concert inbox over inherited notification lifecycle.
 //! No default production authority or actor-forwarding shortcut is installed.
 pub mod authority;
+pub mod delivery;
 mod repository;
+pub mod target_client;
 pub mod transport;
 pub mod wire;
 pub use repository::PgConcertInbox;
