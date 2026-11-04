@@ -256,3 +256,11 @@ native restart/cleanup evidence. Direct committed handoff uses Root's canonical
 publisher receipt without a consumer proof or king/SL acknowledgment gate.
 Positive composed-service/public Gateway, IN03 and whole BE36/BE38 acceptance
 remain open; performance qualification is deferred.
+
+The subsequent public USER/OwnReports assignment reuses this unchanged startup
+configuration and its already qualified constructor/dispatch interface. Its
+Report-specific Gateway route and terminal 200 projection fixes are documented
+in `own-reports-http.md`. They add no startup listener, provider, alternate core
+or second lifecycle. The new real seven-service HTTP journey is NOT_RUN pending
+the developer's fresh resource allocation; historical startup checks do not
+certify that public boundary.

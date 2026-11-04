@@ -533,3 +533,24 @@ The broad existing BE36/BE38 goal remains truthfully unfinished/BLOCKED with
 historical metadata; it was not duplicated, reset or falsely completed. Latest
 human no-review/publication-receipt rules override its obsolete review language.
 Performance qualification remains deferred.
+
+## Public USER/OwnReports vertical follow-up
+
+The prior scoped series is canonically published at
+`0177cca15c46bb91dc01204e10e2c9f27a0345fd`; no consumer proof or ACK follows.
+The next original BE36 assignment adds actual Gateway HTTP qualification using
+real signup/verification/login/C03 principals. Its source work identified two
+previously unqualified public boundaries: absent Gateway Report routes and a
+SUCCEEDED receipt returned as HTTP 202. Root explicitly transferred only the
+affected Gateway route hunks, the OperationsRuntime CreateReport branch/minimal
+safe projection and affected Report tests/docs to this developer.
+
+The authored fix returns terminal success as the frozen 200 safe actual Report,
+202 only for actual PENDING, and documented errors for actual failed receipts;
+the same canonical scope, receipt/outbox/native and delivery lifecycle remains.
+Report quota errors use RATE_LIMITED. Updated native cases retain their actual
+receipt/resource/replay/failure assertions with the public response shape.
+These new Rust changes are NOT_RUN until their fresh allocated compile/runtime
+qualification. The previous 23 PASS results remain valid historical component
+evidence and are not retroactively relabeled public HTTP success. See
+`own-reports-http.md` for exact ownership, required public journey and status.

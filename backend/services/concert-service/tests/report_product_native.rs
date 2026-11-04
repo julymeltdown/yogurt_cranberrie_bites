@@ -397,9 +397,9 @@ async fn own_reports_are_private_paginated_and_cursor_bound_to_caller_and_query(
             .await?;
         assert_eq!(code, Code::Ok);
         let output = output.unwrap();
-        assert_eq!(output.status, 202);
+        assert_eq!(output.status, 200);
         let receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
-        mine.push(receipt["resource_id"].as_str().unwrap().to_owned());
+        mine.push(receipt["report_id"].as_str().unwrap().to_owned());
         f.finish(output.delivery.unwrap()).await?;
     }
     mine.sort();
@@ -417,9 +417,9 @@ async fn own_reports_are_private_paginated_and_cursor_bound_to_caller_and_query(
     let (code, output) = f.call(&request, false).await?;
     assert_eq!(code, Code::Ok);
     let output = output.unwrap();
-    assert_eq!(output.status, 202);
+    assert_eq!(output.status, 200);
     let other_receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
-    let other_report = other_receipt["resource_id"].as_str().unwrap().to_owned();
+    let other_report = other_receipt["report_id"].as_str().unwrap().to_owned();
     f.finish(output.delivery.unwrap()).await?;
     let effects = f.effect_counts().await?;
     assert_eq!(effects, (3, 3, 3, 3));
@@ -495,7 +495,7 @@ async fn own_report_read_retains_current_auth_until_actual_terminal_and_revocati
     let f = Fixture::new(false).await?;
     let (_, output) = f.call(&f.input(Uuid::new_v4()), false).await?;
     let output = output.unwrap();
-    assert_eq!(output.status, 202);
+    assert_eq!(output.status, 200);
     f.finish(output.delivery.unwrap()).await?;
     let (code, output) = f.call(&f.own_reports(""), false).await?;
     assert_eq!(code, Code::Ok);
@@ -554,44 +554,43 @@ async fn concurrent_duplicate_reports_persist_one_effect_and_replay_the_safe_fai
     let f = Fixture::new(false).await?;
     let requests = [f.input(Uuid::new_v4()), f.input(Uuid::new_v4())];
     let (left, right) = tokio::join!(f.call(&requests[0], false), f.call(&requests[1], false));
-    let mut receipts = Vec::new();
-    // Both responses remain retained until their own actual Root terminals.
-    // Completing one cannot assert that the other scope has already settled.
-    for result in [left, right] {
+    let mut failed_index = None;
+    for (index, result) in [left, right].into_iter().enumerate() {
         let (code, output) = result?;
         assert_eq!(code, Code::Ok);
         let output = output.unwrap();
-        assert_eq!(output.status, 202);
+        let value: serde_json::Value = serde_json::from_slice(&output.body)?;
         assert!(!String::from_utf8_lossy(&output.body).contains("private reporter canary"));
-        assert!(!String::from_utf8_lossy(&output.body).contains(&f.subject.to_string()));
-        receipts.push(serde_json::from_slice::<serde_json::Value>(&output.body)?);
+        match output.status {
+            200 => {
+                assert_eq!(value["state"], "OPEN");
+                assert_eq!(value["target_id"], f.subject.to_string());
+                assert!(value.get("reporter_id").is_none());
+            }
+            404 => {
+                assert_eq!(value["details"]["reason"], "RESOURCE_UNAVAILABLE");
+                assert!(failed_index.replace(index).is_none());
+            }
+            other => panic!("Unexpected Report terminal {other}"),
+        }
         f.finish_delivery(output.delivery.unwrap()).await?;
     }
     f.assert_settled().await?;
-    assert_eq!(
-        receipts
-            .iter()
-            .filter(|r| r["state"] == "SUCCEEDED")
-            .count(),
-        1
-    );
-    let failed = receipts
-        .iter()
-        .position(|r| r["state"] == "FAILED")
-        .unwrap();
-    assert_eq!(receipts[failed]["failure_reason"], "RESOURCE_UNAVAILABLE");
-    assert!(receipts[failed]["resource_id"].is_null());
+    let failed = failed_index.expect("One real duplicate must be rejected");
     assert_eq!(f.effect_counts().await?, (1, 2, 1, 1));
-
-    let key = Uuid::parse_str(receipts[failed]["idempotency_key"].as_str().unwrap())?;
+    let key = Uuid::parse_str(&requests[failed].idempotency_key)?;
+    let actual: (String, String, Option<Uuid>) = sqlx::query_as("select state,failure_reason,resource_id from concert_command_receipts where event_id=$1 and actor_id=$2 and idempotency_key=$3")
+        .bind(f.event).bind(f.actor).bind(key).fetch_one(&f.concert).await?;
+    assert_eq!(
+        actual,
+        ("FAILED".into(), "RESOURCE_UNAVAILABLE".into(), None)
+    );
     let (code, replay) = f.call(&f.input(key), false).await?;
     assert_eq!(code, Code::Ok);
     let replay = replay.unwrap();
-    assert_eq!(replay.status, 202);
-    assert_eq!(
-        serde_json::from_slice::<serde_json::Value>(&replay.body)?,
-        receipts[failed]
-    );
+    assert_eq!(replay.status, 404);
+    let error: serde_json::Value = serde_json::from_slice(&replay.body)?;
+    assert_eq!(error["details"]["reason"], "RESOURCE_UNAVAILABLE");
     f.finish(replay.delivery.unwrap()).await?;
     assert_eq!(f.effect_counts().await?, (1, 2, 1, 1));
     Ok(())
@@ -617,9 +616,9 @@ async fn actual_hourly_quota_preserves_replay_and_conflict_without_new_effects(
         let (code, output) = f.call(&f.input_target(key, *target), false).await?;
         assert_eq!(code, Code::Ok);
         let output = output.unwrap();
-        assert_eq!(output.status, 202);
+        assert_eq!(output.status, 200);
         let receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
-        assert_eq!(receipt["state"], "SUCCEEDED");
+        assert_eq!(receipt["state"], "OPEN");
         if index == 0 {
             first_receipt = Some(receipt);
         }
@@ -633,14 +632,14 @@ async fn actual_hourly_quota_preserves_replay_and_conflict_without_new_effects(
     let output = output.unwrap();
     assert_eq!(output.status, 429);
     let error: serde_json::Value = serde_json::from_slice(&output.body)?;
-    assert_eq!(error["details"]["reason"], "CAPACITY_EXCEEDED");
+    assert_eq!(error["details"]["reason"], "RATE_LIMITED");
     assert!(!String::from_utf8_lossy(&output.body).contains("private reporter canary"));
     f.finish(output.delivery.unwrap()).await?;
 
     let (code, replay) = f.call(&f.input(first_key), false).await?;
     assert_eq!(code, Code::Ok);
     let replay = replay.unwrap();
-    assert_eq!(replay.status, 202);
+    assert_eq!(replay.status, 200);
     assert_eq!(
         serde_json::from_slice::<serde_json::Value>(&replay.body)?,
         first_receipt.unwrap()
@@ -712,9 +711,9 @@ async fn outbox_failure_rolls_back_report_audit_receipt_and_budget_then_same_key
     let (code, retry) = f.call(&f.input(key), false).await?;
     assert_eq!(code, Code::Ok);
     let retry = retry.unwrap();
-    assert_eq!(retry.status, 202);
+    assert_eq!(retry.status, 200);
     let receipt: serde_json::Value = serde_json::from_slice(&retry.body)?;
-    assert_eq!(receipt["state"], "SUCCEEDED");
+    assert_eq!(receipt["state"], "OPEN");
     f.finish(retry.delivery.unwrap()).await?;
     assert_eq!(f.effect_counts().await?, (1, 1, 1, 1));
     let after: i64 = sqlx::query_scalar("select receipts_used from concert_command_budget")
@@ -734,10 +733,12 @@ async fn original_report_runs_actual_product_rpc_receipt_outbox_and_delivery_the
     let (code, output) = f.call(&request, false).await?;
     assert_eq!(code, Code::Ok);
     let output = output.unwrap();
-    assert_eq!(output.status, 202);
+    assert_eq!(output.status, 200);
     let receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
-    assert_eq!(receipt["state"], "SUCCEEDED");
-    assert_eq!(receipt["actor_id"], f.actor.to_string());
+    assert_eq!(receipt["state"], "OPEN");
+    assert!(receipt.get("actor_id").is_none());
+    assert!(receipt.get("reporter_id").is_none());
+    assert_eq!(receipt["target_id"], f.subject.to_string());
     assert_eq!(receipt["event_id"], f.event.to_string());
     assert!(!String::from_utf8_lossy(&output.body).contains("private reporter canary"));
     let cap = output.delivery.unwrap();
@@ -759,9 +760,19 @@ async fn original_report_runs_actual_product_rpc_receipt_outbox_and_delivery_the
     let (code, replay) = f.call(&f.input(key), false).await?;
     assert_eq!(code, Code::Ok);
     let replay = replay.unwrap();
-    assert_eq!(replay.status, 202);
+    assert_eq!(replay.status, 200);
     let replay_receipt: serde_json::Value = serde_json::from_slice(&replay.body)?;
-    assert_eq!(replay_receipt["receipt_id"], receipt["receipt_id"]);
+    assert_eq!(replay_receipt, receipt);
+    let status: (String, i16, Uuid) = sqlx::query_as("select state,result_status,resource_id from concert_command_receipts where event_id=$1 and actor_id=$2 and idempotency_key=$3")
+        .bind(f.event).bind(f.actor).bind(key).fetch_one(&f.concert).await?;
+    assert_eq!(
+        status,
+        (
+            "SUCCEEDED".into(),
+            200,
+            Uuid::parse_str(receipt["report_id"].as_str().unwrap())?
+        )
+    );
     f.finish(replay.delivery.unwrap()).await?;
     let counts:(i64,i64,i64)=sqlx::query_as("select (select count(*) from concert_reports where event_id=$1),(select count(*) from concert_command_receipts where event_id=$1),(select count(*) from concert_outbox where event_id=$1)").bind(f.event).fetch_one(&f.concert).await?;
     assert_eq!(counts, (1, 1, 1));
@@ -782,7 +793,7 @@ async fn canonical_revocation_waits_for_actual_root_terminal_and_replay_is_denie
     let key = Uuid::new_v4();
     let (_, output) = f.call(&f.input(key), false).await?;
     let output = output.unwrap();
-    assert_eq!(output.status, 202);
+    assert_eq!(output.status, 200);
     let mut connection = f.auth.acquire().await?;
     let pid: i32 = sqlx::query_scalar("select pg_backend_pid()")
         .fetch_one(&mut *connection)
@@ -872,9 +883,9 @@ async fn safety_target_policy_and_unsupported_routes_preserve_original_guards() 
     assert_eq!(code, Code::Ok);
     let output = output.unwrap();
     suspended.finish(output.delivery.clone().unwrap()).await?;
-    assert_eq!(output.status, 202);
+    assert_eq!(output.status, 200);
     let receipt: serde_json::Value = serde_json::from_slice(&output.body)?;
-    assert_eq!(receipt["state"], "SUCCEEDED");
+    assert_eq!(receipt["state"], "OPEN");
     let reports: i64 = sqlx::query_scalar("select count(*) from concert_reports where event_id=$1")
         .bind(suspended.event)
         .fetch_one(&suspended.concert)

@@ -5,6 +5,8 @@ use std::collections::BTreeMap;
 
 pub(super) fn router() -> Router<Arc<AppState>> {
     Router::new()
+        .route("/api/concert/events/:event_id/reports", post(dispatch))
+        .route("/api/concert/events/:event_id/me/reports", get(dispatch))
         .route("/api/concert/events/:event_id/me/age-status", get(dispatch))
         .route(
             "/api/concert/events/:event_id/me/age-verifications",
@@ -51,6 +53,8 @@ pub(super) fn router() -> Router<Arc<AppState>> {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub(super) enum FeatureRoute {
+    CreateReport,
+    OwnReports,
     AgeStatus,
     StartAgeVerification,
     CompleteAgeVerification,
@@ -69,7 +73,8 @@ impl FeatureRoute {
     pub(super) fn mutation(self) -> bool {
         matches!(
             self,
-            Self::StartAgeVerification
+            Self::CreateReport
+                | Self::StartAgeVerification
                 | Self::CompleteAgeVerification
                 | Self::SetIntro
                 | Self::PublishIntro
@@ -80,6 +85,7 @@ impl FeatureRoute {
     }
     pub(super) fn body_limit(self) -> usize {
         match self {
+            Self::CreateReport => 64 * 1024,
             Self::SetIntro | Self::PublishIntro | Self::CloseIntro => 16 * 1024,
             Self::MarkRead
             | Self::MarkAllRead
@@ -91,6 +97,8 @@ impl FeatureRoute {
     #[cfg(test)]
     fn operation(self) -> &'static str {
         match self {
+            Self::CreateReport => "createConcertReport",
+            Self::OwnReports => "listOwnConcertReports",
             Self::AgeStatus => "getConcertAgeStatus",
             Self::StartAgeVerification => "startConcertAgeVerification",
             Self::CompleteAgeVerification => "completeConcertAgeVerification",
@@ -113,7 +121,11 @@ fn tail(path: &str) -> Option<(&str, &str)> {
 }
 pub(super) fn protects(path: &str) -> bool {
     tail(path).is_some_and(|(_, tail)| {
-        tail == "me/age-status"
+        tail == "reports"
+            || tail.starts_with("reports/")
+            || tail == "me/reports"
+            || tail.starts_with("me/reports/")
+            || tail == "me/age-status"
             || tail.starts_with("me/age-status/")
             || tail == "me/age-verifications"
             || tail.starts_with("me/age-verifications/")
@@ -133,6 +145,8 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
         method.as_str(),
         tail.split('/').collect::<Vec<_>>().as_slice(),
     ) {
+        ("POST", ["reports"]) => Some(CreateReport),
+        ("GET", ["me", "reports"]) => Some(OwnReports),
         ("GET", ["me", "age-status"]) => Some(AgeStatus),
         ("POST", ["me", "age-verifications"]) => Some(StartAgeVerification),
         ("POST", ["me", "age-verifications", "callback"]) => Some(CompleteAgeVerification),
@@ -162,10 +176,16 @@ pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
     if query.is_empty()
         || !matches!(
             route,
-            FeatureRoute::ListIntros | FeatureRoute::ListNotifications
+            FeatureRoute::ListIntros | FeatureRoute::ListNotifications | FeatureRoute::OwnReports
         )
     {
         return false;
+    }
+    if route == FeatureRoute::OwnReports {
+        // The owner signs and validates these exact raw bytes; no percent aliases.
+        if query.contains(['%', '+', '?']) {
+            return false;
+        }
     }
     let mut fields = BTreeMap::new();
     for pair in query.split('&') {
@@ -183,7 +203,10 @@ pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
         "limit" => {
             !value.is_empty()
                 && value.bytes().all(|b| b.is_ascii_digit())
-                && value.parse::<u32>().is_ok_and(|n| (1..=100).contains(&n))
+                && value.parse::<u32>().is_ok_and(|n| {
+                    (1..=100).contains(&n)
+                        && (route != FeatureRoute::OwnReports || n.to_string() == value)
+                })
         }
         "cursor" => {
             !value.is_empty()
@@ -191,6 +214,12 @@ pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
                 && value
                     .bytes()
                     .all(|b| b.is_ascii_alphanumeric() || matches!(b, b'_' | b'-'))
+        }
+        "state" if route == FeatureRoute::OwnReports => {
+            matches!(
+                value.as_str(),
+                "OPEN" | "IN_REVIEW" | "RESOLVED" | "DISMISSED"
+            )
         }
         "q" if route == FeatureRoute::ListIntros => (1..=100).contains(&value.chars().count()),
         "unread_only" if route == FeatureRoute::ListNotifications => {
@@ -322,6 +351,73 @@ mod tests {
                 }
             }
         }
-        assert_eq!(count, 13);
+        assert_eq!(count, 15);
+    }
+}
+
+#[cfg(test)]
+mod report_tests {
+    use super::*;
+    #[test]
+    fn report_boundary_uses_frozen_routes_receipts_and_raw_private_query() {
+        let root = format!("/api/concert/events/{}", Uuid::new_v4());
+        let create = format!("{root}/reports");
+        let own = format!("{root}/me/reports");
+        assert_eq!(
+            route(&Method::POST, &create),
+            Some(FeatureRoute::CreateReport)
+        );
+        assert_eq!(route(&Method::GET, &own), Some(FeatureRoute::OwnReports));
+        assert!(owns_receipt(&Method::POST, &create));
+        assert!(!owns_receipt(&Method::GET, &own));
+        assert_eq!(FeatureRoute::CreateReport.body_limit(), 65536);
+        assert_eq!(FeatureRoute::OwnReports.body_limit(), 0);
+        assert!(valid_target(
+            FeatureRoute::OwnReports,
+            &format!("{own}?limit=1&state=OPEN&cursor=abc_DEF-12")
+        ));
+        for query in [
+            "",
+            "limit=01",
+            "limit=0",
+            "limit=101",
+            "limit=1&limit=2",
+            "reporter_id=foreign",
+            "user_id=foreign",
+            "target_type=USER",
+            "state=open",
+            "state=%4fPEN",
+            "cursor=a+b",
+            "cursor=a?b",
+        ] {
+            assert!(
+                !valid_target(FeatureRoute::OwnReports, &format!("{own}?{query}")),
+                "{query}"
+            );
+        }
+        assert!(!valid_target(
+            FeatureRoute::CreateReport,
+            &format!("{create}?limit=1")
+        ));
+        for path in [format!("{create}/privileged"), format!("{own}/foreign")] {
+            assert!(protects(&path));
+            assert!(route(&Method::GET, &path).is_none());
+            assert!(route(&Method::POST, &path).is_none());
+        }
+        let origins = vec!["https://mcr.example".to_owned()];
+        let mut headers = HeaderMap::new();
+        assert!(request_metadata(&Method::POST, &create, &headers, &origins).is_err());
+        headers.insert("origin", HeaderValue::from_static("https://mcr.example"));
+        headers.insert("x-mcr-intent", HeaderValue::from_static("browser"));
+        headers.insert("content-type", HeaderValue::from_static("application/json"));
+        headers.insert(
+            "idempotency-key",
+            HeaderValue::from_str(&Uuid::new_v4().to_string()).unwrap(),
+        );
+        assert!(request_metadata(&Method::POST, &create, &headers, &origins).is_ok());
+        assert!(request_metadata(&Method::GET, &own, &headers, &origins).is_err());
+        headers.remove("content-type");
+        headers.remove("idempotency-key");
+        assert!(request_metadata(&Method::GET, &own, &headers, &origins).is_ok());
     }
 }

@@ -16,12 +16,12 @@ use crate::adapters::out::{
 use chrono::Utc;
 use concert_application::{
     admin::{notices::NoticeState, Actor},
-    commands::{CommandError, FingerprintKeys, SafeReceipt},
+    commands::{CommandError, FingerprintKeys, ReceiptState, SafeFailure, SafeReceipt},
     report::ReportFilter,
 };
 use concert_domain::report::{ReportState, TargetType};
 use serde_json::{json, Value};
-use sqlx::PgPool;
+use sqlx::{PgPool, Row};
 use std::sync::Arc;
 
 #[derive(Debug)]
@@ -128,15 +128,86 @@ impl OperationsRuntime {
         let limit = request.query.limit;
         let (status, schema, body) = match request.action {
             Operation::CreateReport(input) => {
-                let receipt = reports
+                let receipt = match reports
                     .create(
                         actor,
                         request.key.ok_or(CommandError::InvalidInput)?,
                         input,
                         &self.keys,
                     )
-                    .await?;
-                (202, "Domain_common_CommandReceipt", receipt_value(receipt))
+                    .await
+                {
+                    Ok(receipt) => Some(receipt),
+                    Err(CommandError::Capacity) => None,
+                    Err(error) => return Err(error.into()),
+                };
+                match receipt {
+                    None => (
+                        429,
+                        "Domain_common_DomainError",
+                        report_error(429, "RATE_LIMITED", scope.binding().request_id()),
+                    ),
+                    Some(receipt) => match receipt.state {
+                        ReceiptState::Pending => {
+                            (202, "Domain_common_CommandReceipt", receipt_value(receipt))
+                        }
+                        ReceiptState::Succeeded => {
+                            let reference = receipt.reference.ok_or(CommandError::InvalidState)?;
+                            if receipt.result_status != Some(200) {
+                                return Err(CommandError::InvalidState.into());
+                            }
+                            // Read the actual committed resource under the SAME retained
+                            // canonical scope. Never synthesize a Report from the request
+                            // or return a terminal SUCCEEDED receipt as pending HTTP 202.
+                            let row = sqlx::query("select report_id,event_id,target_type,target_id,state,revision,created_at from concert_reports where event_id=$1 and reporter_id=$2 and report_id=$3 and revision=$4")
+                                .bind(actor.event).bind(actor.actor).bind(reference.resource).bind(reference.revision)
+                                .fetch_optional(&self.pool).await.map_err(super::unavailable)?
+                                .ok_or(OperationsError::ResourceUnavailable)?;
+                            let report = concert_domain::report::Report {
+                                report_id: row.try_get("report_id").map_err(super::unavailable)?,
+                                event_id: row.try_get("event_id").map_err(super::unavailable)?,
+                                target_type: TargetType::parse(
+                                    &row.try_get::<String, _>("target_type")
+                                        .map_err(super::unavailable)?,
+                                )
+                                .map_err(|_| CommandError::InvalidState)?,
+                                target_id: row.try_get("target_id").map_err(super::unavailable)?,
+                                state: ReportState::parse(
+                                    &row.try_get::<String, _>("state")
+                                        .map_err(super::unavailable)?,
+                                )
+                                .map_err(|_| CommandError::InvalidState)?,
+                                revision: row.try_get("revision").map_err(super::unavailable)?,
+                                created_at: row
+                                    .try_get("created_at")
+                                    .map_err(super::unavailable)?,
+                            };
+                            (200, "Domain_admin_Report", json!(report))
+                        }
+                        ReceiptState::Failed => {
+                            let (status, reason) = match receipt
+                                .failure
+                                .ok_or(CommandError::InvalidState)?
+                            {
+                                SafeFailure::ResourceUnavailable => (404, "RESOURCE_UNAVAILABLE"),
+                                SafeFailure::EventReadOnly => (409, "EVENT_READ_ONLY"),
+                                SafeFailure::InvalidInput => (400, "INVALID_INPUT"),
+                                SafeFailure::InvalidTransition => (409, "INVALID_TRANSITION"),
+                                SafeFailure::VersionConflict => (409, "VERSION_CONFLICT"),
+                                SafeFailure::DependencyUnavailable => {
+                                    (503, "DEPENDENCY_UNAVAILABLE")
+                                }
+                                _ => (500, "INTERNAL_ERROR"),
+                            };
+                            (
+                                status,
+                                "Domain_common_DomainError",
+                                report_error(status, reason, scope.binding().request_id()),
+                            )
+                        }
+                        ReceiptState::Retired => return Err(CommandError::Expired.into()),
+                    },
+                }
             }
             Operation::Event(command, id) => {
                 let receipt = operations
@@ -323,4 +394,11 @@ fn error_reply(error: OperationsError, request: uuid::Uuid) -> OperationsReply {
             "details":{"reason":reason},
         }),
     }
+}
+
+/// Report-only public terminal; never includes private input or receipt internals.
+fn report_error(status: u16, reason: &str, request: uuid::Uuid) -> Value {
+    json!({"code":format!("CONCERT_{status}"),"message":"Report request unavailable",
+        "traceId":request,"timestamp":Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Millis,true),
+        "details":{"reason":reason}})
 }
