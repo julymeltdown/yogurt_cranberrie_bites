@@ -6,6 +6,35 @@ import { setTimeout as delay } from 'node:timers/promises'
 import { observeWorldPage, inspectActualRenderer } from './browser-observer.mjs'
 import { assertPairConverged } from './observations.mjs'
 
+export function createSessionDisposer({ pages, extraPages, observers, contexts, takeVisibilityHandle, retire }) {
+  let cleanup
+  return function dispose() {
+    if (cleanup) return cleanup
+    retire()
+    // Assign the shared promise before any resource callback can synchronously
+    // emit a close event and reenter disposal.
+    cleanup = Promise.resolve().then(async () => {
+      const failures = new Set()
+      const attempt = async (label, fn) => {
+        try { await fn() } catch { failures.add(label) }
+      }
+      const handle = takeVisibilityHandle()
+      if (handle) {
+        await attempt('VISIBILITY_LISTENER', () => handle.evaluate(value => value.dispose()))
+        await attempt('VISIBILITY_HANDLE', () => handle.dispose())
+      }
+      // Complete every cleanup phase even if an earlier resource is gone or
+      // refuses closure. Error text contains fixed labels, never private data.
+      await Promise.all([...new Set([...pages, ...extraPages])].map(page => attempt('PAGE', () => page.close())))
+      await Promise.all(observers.map(observer => attempt('OBSERVER', () => observer.dispose())))
+      await Promise.all(contexts.map(context => attempt('CONTEXT', () => context.close())))
+      extraPages.clear()
+      if (failures.size) throw new Error('QA05_SESSION_CLEANUP_FAILED:' + [...failures].join(','))
+    })
+    return cleanup
+  }
+}
+
 export async function attachAppPair({ browser, binding, origin, phaserModuleUrl, principals, secondRoom, guard, signal }) {
   assert.equal(typeof guard, 'function', 'A current independently checked allocation is required')
   assert(signal instanceof AbortSignal, 'The owning window must supply its abort signal')
@@ -14,7 +43,11 @@ export async function attachAppPair({ browser, binding, origin, phaserModuleUrl,
   assert.equal(principals.length, 2); assert.notEqual(principals[0].id, principals[1].id)
   assert(principals.every(p => ['id', 'email', 'password'].every(key => typeof p[key] === 'string' && p[key].length > 0)))
   const contexts = [], pages = [], observers = [], visibility = []
+  const extraPages = new Set()
   let visibilityHandle, retired = false, pageErrors = 0
+  const dispose = createSessionDisposer({ pages, extraPages, observers, contexts,
+    takeVisibilityHandle: () => { const handle = visibilityHandle; visibilityHandle = undefined; return handle },
+    retire: () => { retired = true } })
   // The native browser must be a fresh dedicated profile connected using
   // noDefaults:true. The default context is needed for trusted tab visibility;
   // the second principal gets separate cookies/storage, never a second Auth ID.
@@ -89,6 +122,7 @@ export async function attachAppPair({ browser, binding, origin, phaserModuleUrl,
   async function foreground() {
     await check(); await visibilityHandle.evaluate(value => value.clear())
     const cover = await nativeContext.newPage()
+    extraPages.add(cover)
     try {
       await cover.goto('about:blank'); await cover.bringToFront()
       await until(async () => {
@@ -96,7 +130,10 @@ export async function attachAppPair({ browser, binding, origin, phaserModuleUrl,
         await observers[0].drain()
         return events.some(v => v.hidden && v.trusted) && observers[0].observation.read().activeSockets === 0
       }, 5000)
-    } finally { await cover.close(); await pages[0].bringToFront() }
+    } finally {
+      try { await cover.close(); extraPages.delete(cover) }
+      finally { await pages[0].bringToFront() }
+    }
   }
   async function switchRoom() {
     assert(secondRoom && typeof secondRoom.id === 'string' && typeof secondRoom.label === 'string', 'Actual second available room required')
@@ -110,19 +147,6 @@ export async function attachAppPair({ browser, binding, origin, phaserModuleUrl,
       await page.getByText('Room switch confirmed.', { exact: true }).waitFor()
       await page.getByRole('link', { name: 'Back to world', exact: true }).click()
     }
-  }
-  async function dispose() {
-    if (retired) return
-    retired = true
-    if (visibilityHandle) {
-      await visibilityHandle.evaluate(value => value.dispose()).catch(() => {})
-      await visibilityHandle.dispose()
-    }
-    // Close actual sockets before discarding observation listeners. Root's
-    // separate owning membership observation still certifies server cleanup.
-    await Promise.all(pages.map(page => page.close()))
-    await Promise.all(observers.map(o => o.dispose()))
-    await Promise.all(contexts.map(context => context.close()))
   }
   try {
     await check()

@@ -1,0 +1,43 @@
+{
+  "status": "SOURCE_VALIDATED_CLEANUP_HANDOFF_ACTUAL_BROWSER_NOT_RUN",
+  "base": "53fcac65d707921a38c6e32ef63a14e094396adb",
+  "sourceCommits": [
+    "7498130f77127432258df50c75294ba272830cf0",
+    "cac3073030b72681e70b2f85ee4c7086e9885b96"
+  ],
+  "sourcePins": {
+    "frontend/e2e/qa05-functional-recovery/session-cleanup.test.mjs": "b26d69e8ccc1032d702f7116e5c918c8fee9f8b2bd799ade1b9771bf34163ee8",
+    "frontend/e2e/qa05-functional-recovery/session.mjs": "605f3ddf932c0abb63b77948609ae9adfdde8552ffaeda08709cc1ae5cf88e82"
+  },
+  "checks": [
+    {
+      "label": "session-cleanup",
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "exit": 0
+    },
+    {
+      "label": "syntax-0",
+      "exit": 0
+    },
+    {
+      "label": "syntax-1",
+      "exit": 0
+    },
+    {
+      "label": "whitespace",
+      "exit": 0
+    }
+  ],
+  "syntheticTests": 6,
+  "failures": 0,
+  "slot": "QA05-SESSION-CLEANUP-SOURCE-20261104T2050Z",
+  "fullUTC": "2026-11-04T20:44:54.849536+00:00",
+  "resourcesHeld": 0,
+  "guardianSha256": "ef6f4c0621de97131512a5b63a3997177c4bbd5c2993f72306d8d8513163a52f",
+  "scope": "Retained QA05 session/test/doc/qualification paths only; returned frame utility and Root real server/relay remain untouched.",
+  "publication": "Direct Root153 handoff requested next; not yet observed.",
+  "originalQA05": "IN_PROGRESS; actual combined current App/Auth/Rust fault-convergence, owner membership and cleanup evidence still NOT_RUN. Persistent goal active."
+}

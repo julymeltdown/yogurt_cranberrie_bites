@@ -92,7 +92,8 @@ def main():
     assert offer_path.is_absolute() and offer_path.stat().st_mode & 0o077 == 0
     offer = json.loads(offer_path.read_text())
     utility = offer.get('suite') == 'frame-faults'
-    validation_base = '3bacfe03472a41a641ddaaa9a15c314f9171953c' if utility else BASE
+    lifecycle = offer.get('suite') == 'session-cleanup'
+    validation_base = '53fcac65d707921a38c6e32ef63a14e094396adb' if lifecycle else '3bacfe03472a41a641ddaaa9a15c314f9171953c' if utility else BASE
     assert offer['issuer'] == '01a1a21d-39ec-7912-84cb-910058e7a110'
     assert offer['acceptance'] == 'ACCEPT' and offer['mode'] == 'SOURCE'
     assert offer['slot'] and offer['sourceCommit'] == git('rev-parse', 'HEAD')
@@ -101,7 +102,8 @@ def main():
     assert ROOT == Path('/Users/lhs/Desktop/mcr-worktrees/fe-ref-map') and Path.cwd() == ROOT
     assert git('branch', '--show-current') == 'codex/mcr-fe-QA05-functional-recovery'
     assert hashlib.sha256(NODE.read_bytes()).hexdigest() == 'b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a'
-    readset = json.loads((EVIDENCE / ('frame-faults-readset.json' if utility else 'readset.json')).read_text())
+    readset_file = 'session-cleanup-readset.json' if lifecycle else 'frame-faults-readset.json' if utility else 'readset.json'
+    readset = json.loads((EVIDENCE / readset_file).read_text())
     for path, digest in {**readset['files'], **readset['readonly']}.items():
         assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == digest, 'Frozen readset mismatch: ' + path
     assert not (ROOT / 'frontend/node_modules').exists() and not (ROOT / 'frontend/node_modules').is_symlink()
@@ -111,6 +113,8 @@ def main():
     source = sorted(path for path in set(changed + untracked) if path.endswith('.mjs') and path.startswith('frontend/'))
     if utility:
         assert source == ['frontend/e2e/qa05-functional-recovery/frame-faults.mjs', 'frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs']
+    if lifecycle:
+        assert source == ['frontend/e2e/qa05-functional-recovery/session-cleanup.test.mjs', 'frontend/e2e/qa05-functional-recovery/session.mjs']
     assert source and all((ROOT / path).is_file() for path in source)
     pins = {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest() for path in source}
     caps = offer['caps']
@@ -125,12 +129,12 @@ def main():
     output.mkdir()
     temporary = Path(tempfile.mkdtemp(prefix='mcr-qa05-source-', dir='/private/tmp'))
     env = {**os.environ, 'TMPDIR': str(temporary), 'TMP': str(temporary), 'TEMP': str(temporary), 'XDG_CACHE_HOME': str(temporary / 'cache')}
-    test_file = 'frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs' if utility else 'frontend/src/world/network/__tests__/qa05-functional-recovery/oracles.test.mjs'
-    commands = [('frame-faults' if utility else 'oracles', [str(NODE), '--test', str(ROOT / test_file)]),
+    test_file = 'frontend/e2e/qa05-functional-recovery/session-cleanup.test.mjs' if lifecycle else 'frontend/e2e/qa05-functional-recovery/frame-faults.test.mjs' if utility else 'frontend/src/world/network/__tests__/qa05-functional-recovery/oracles.test.mjs'
+    commands = [('session-cleanup' if lifecycle else 'frame-faults' if utility else 'oracles', [str(NODE), '--test', str(ROOT / test_file)]),
                 ('lint', [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', *source]),
                 *[(f'syntax-{index}', [str(NODE), '--check', path]) for index, path in enumerate(source)],
                 ('whitespace', ['git', 'diff', '--check', validation_base])]
-    if not utility:
+    if not utility and not lifecycle:
         commands.append(('plan', ['python3', 'scripts/mcr/check-plan.py']))
     report = {'slot': offer['slot'], 'sourceCommit': offer['sourceCommit'], 'sourcePins': pins,
               'inventory': carried, 'offer': offer, 'commands': [], 'status': 'FAIL',

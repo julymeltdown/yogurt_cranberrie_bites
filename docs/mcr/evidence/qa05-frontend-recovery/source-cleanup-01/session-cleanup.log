@@ -1,0 +1,14 @@
+✔ all cleanup phases execute after private handle/page/observer failures and report only fixed labels (1.2465ms)
+✔ concurrent and later cleanup calls share one result and never skip pending context closure (0.115542ms)
+✔ cleanup of a partially initialized App still closes its acquired context (0.080334ms)
+✔ a synchronous close event can reenter disposal without creating another cleanup (0.074625ms)
+✔ a failed owned context is reported after all contexts have been attempted (0.114709ms)
+✔ the same owned page registered as a cover is closed once, before listeners and contexts (0.094541ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 43.13025

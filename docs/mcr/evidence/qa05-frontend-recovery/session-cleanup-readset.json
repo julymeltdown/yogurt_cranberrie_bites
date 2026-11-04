@@ -1,0 +1,17 @@
+{
+  "status": "SOURCE_FROZEN_NOT_RUN",
+  "suite": "session-cleanup",
+  "base": "53fcac65d707921a38c6e32ef63a14e094396adb",
+  "defect": "Old async dispose awaited visibility/page cleanup before remaining phases. A rejection skipped observers/contexts; retired=true made later calls return early. Cover tab was not retained when its first close failed.",
+  "behavior": "Shared single cleanup Promise, all phases attempted despite rejections, fixed phase-only error labels, owned cover retained until cleanup, no Root native-context/browser or service ownership acquired.",
+  "files": {
+    "frontend/e2e/qa05-functional-recovery/session.mjs": "605f3ddf932c0abb63b77948609ae9adfdde8552ffaeda08709cc1ae5cf88e82",
+    "frontend/e2e/qa05-functional-recovery/session-cleanup.test.mjs": "b26d69e8ccc1032d702f7116e5c918c8fee9f8b2bd799ade1b9771bf34163ee8",
+    "docs/mcr/evidence/qa05-frontend-recovery/qualify-source.py": "45cc94e602ebb67ec26c6849d8f82adff874f03358283cc6d4b3dd497685c5fa",
+    "docs/mcr/evidence/qa05-frontend-recovery/guardian.py": "ccb9d755d7864af50f220decb05f9f9aa1cfd7dc8b11b177d364e2d997e2693f"
+  },
+  "readonly": {
+    "frontend/e2e/qa05-functional-recovery/browser-observer.mjs": "c9a8529a1bb433f91c105bf8ec3197f5bb1f47e72a2085f9f46d9d6a353ce3f1"
+  },
+  "validation": "Six new synthetic lifecycle-failure tests +2syntax/scopedlint/whitespace only; no old19/21/matrix/browser rerun. Actual Root window still required."
+}
