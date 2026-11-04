@@ -61,7 +61,7 @@ async fn write(pool: &PgPool, event: Uuid, gift: Uuid) -> anyhow::Result<bool> {
     sqlx::query("set local lock_timeout='60ms'")
         .execute(&mut *tx)
         .await?;
-    let result=sqlx::query("update concert_community_giveaways set updated_at=clock_timestamp() where event_id=$1 and giveaway_id=$2")
+    let result=sqlx::query("update concert_community_giveaways set revision=revision+1,aggregate=jsonb_set(aggregate,'{revision}',to_jsonb(revision+1)) where event_id=$1 and giveaway_id=$2")
         .bind(event).bind(gift).execute(&mut *tx).await;
     let allowed = match result {
         Ok(r) => r.rows_affected() == 1,

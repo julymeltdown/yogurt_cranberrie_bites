@@ -306,6 +306,11 @@ existing shorter statement timeout. The corrected helper clamps that limit,
 treats zero as unbounded and leaves the existing lock timeout unchanged. An
 additional actual-SQL test checks both retained limits and a real statement
 cancellation, plus the zero-to-bounded case; it is also **NOT_RUN** currently.
+Source follow-up preserves the actual scope's shorter wall/monotonic deadline
+inside the opaque private request. It also requires the already-materialized
+reservation policy pair instead of inserting one inside a prepared read. Missing
+pair state fails closed. The native competing update changes indexed and JSON
+revision consistently and rolls back its test mutation.
 
 Pickup/IssueCode dispatch remains default-unavailable. Root must compose the
 actual Gift settler and enforce the returned clip before every positive response

@@ -126,8 +126,9 @@ pub(super) async fn metadata_in(
     } else {
         (root.owner, i.actor)
     };
-    sqlx::query("insert into concert_relationship_pairs(event_id,low_user,high_user) values($1,$2,$3) on conflict do nothing")
-        .bind(i.event).bind(low).bind(high).execute(&mut *c).await.map_err(db)?;
+    // A real reservation's mutation policy has already materialized this pair.
+    // Missing metadata fails closed; a prepared read must not create pair state
+    // or enter a generic mutation/deferred-commit authority path.
     let pair=sqlx::query("select revision,low_blocks_high,high_blocks_low from concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share")
         .bind(i.event).bind(low).bind(high).fetch_one(&mut *c).await.map_err(db)?;
     if pair.try_get::<i64, _>("revision").map_err(db)? < 1
