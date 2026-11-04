@@ -100,7 +100,7 @@ Real HTTP/live multiuser IN04, device and full-product acceptance are separate
 open outcomes. The new caller assembly is assigned functioning frontend work,
 not an added condition on the already satisfied original FE33 fixture criteria.
 
-## Current bounded FE33-ENTRY / FE37 regression assignment
+## Delivered bounded FE33-ENTRY / FE37 regression assignment
 
 Frontend king appointed Community sole allocator for existing FE09 broad
 diagnostic residuals, not a new review stage. Candidate
@@ -118,7 +118,10 @@ Actual receiving receipt: `get_goal` returned null, then NEW unbudgeted ACTIVE
 goal `1793756572` was created covering diagnosis, necessary bounded fixes,
 validation/docs, direct non-force publication and concrete fixes. Developer
 verified clean exact base and accepted the initial lease; bounded assignment
-status IN_PROGRESS. No incompatible goal was paused, reset or falsely completed.
+status DELIVERED. Final lifecycle receipt: the SAME goal `1793756572` returned
+COMPLETE after published handoff, followed immediately by `get_goal: null`;
+802 seconds, unbudgeted. Clean STOP and all exact leases returned, with no
+unfinished goal. No incompatible goal was paused, reset or falsely completed.
 
 Exact initial exclusive writes only:
 
@@ -135,9 +138,11 @@ AvatarConfig's layered/whole union was rejected before valid member rows were
 read, causing the four downstream member failures; this is a developer-reported
 product decoder issue, not an SL source review. Both valid wire variants and
 malformed/hybrid/private-field regressions stay in the already leased
-`controller.test.ts`. No other production path or hunk is granted. Mural text
-assertions are only preliminarily identified as stale pending owner-run actual
-route, retained-owner and raster qualification; no PASS claim yet.
+`controller.test.ts`. No other production path or hunk was granted. Owner
+qualified both mural failures as removed text after `7b567acb`; strengthened
+route/owner/command/snapshot/pixel and synchronous privacy-cleanup assertions
+pass with no mural production edit. The exact RGBA evidence is a real sink to
+memory-scene fixture with stubbed jsdom canvas contexts, not native raster proof.
 
 Exact temporary operational exception: an untracked
 `fe-ref-customize/frontend/node_modules` symlink to the retained
@@ -152,10 +157,38 @@ report `target_type`/member-filter failures. The developer must establish
 test-versus-product causes, preserve meaningful invariants, identify exact
 feature source hunks before any added lease, implement required bounded fixes,
 run relevant checks, document evidence and safely publish non-force with clean
-STOP and actual completed-goal receipt. No delivered correction commit or
-test result exists in this assignment receipt yet. Original FE33 satisfaction
-is not recounted; FE37 whole-task acceptance is unchanged, and broad NOTGREEN
-is not promoted to PASS by routing.
+STOP and actual completed-goal receipt, all now reported delivered below.
+Original FE33 satisfaction is not recounted; FE37 whole-task acceptance is
+unchanged, and historical broad NOTGREEN is not promoted to PASS.
+
+Owner-reported publication: source `ccd71cb4b7c4557fa2463ae8057b853a9b877866`,
+docs/evidence `23c6111aeb80c15aa2fd58ace98df60330c5a649`, final qualification
+`ad0700bd27990c674946dac39d02485f3a022093`, non-force master publication
+`047d892cc6ad5eec6125322b84cf1efc2380078f`. Owner reports fresh fetch and
+ls-remote matched, all own commits plus preserved peer `5ca13d44` are remote
+ancestors after reconciling a non-fast-forward rejection; no duplicate publish
+or cherry-pick is needed. Exact net change was 30 owned paths.
+
+Owner-run results: baseline six failed/46 passed; eleven meaningful new Admin
+regressions fail their valid positives before the decoder repair; final 63
+focused cases PASS. Affected 17 files/263 tests, strict types, scoped lint,
+production build, planning and provenance PASS, with relevant reruns after
+peer shell/world/test merges. Native Chrome 156.0.8078.80 reports nine
+reports/members/content configurations at 360/390/430 PASS; nine pinned
+captures and original report retained. All reported source/contract/native/
+artifact pins checked by owner after final reconciliation. These are developer
+receipts, not manager inspections or reruns. Durable evidence is
+[mural/admin regressions](../frontend/mural-admin-regressions.md) and
+`docs/mcr/evidence/mural-admin-regressions/`, including validation,
+reconciliation, baseline, before-fix, affected-suite and native reports.
+
+Native moderation HTTP/roles/media are synthetic. Live backend/root World,
+multiuser, physical device, full FE33/FE37, IN04/IN05 and full visual acceptance
+remain NOT_RUN. No parent/task count is added. Owner reports clean final
+checkout, exact dependency link removed/retained target untouched, temporary
+outputs/processes removed, two separately allocated read-only Auth PNGs exact
+HEAD with no asset diff. Existing tests, bounded validator hunk and new
+doc/evidence leases are returned; no old Customize rights remain.
 
 No app/root/shared/contracts/generated/manifests/locks/composition, other tests,
 backend, art, caller or QA07 ownership is inherited. Feature source requests
