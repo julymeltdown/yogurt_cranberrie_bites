@@ -82,6 +82,7 @@ pub struct PhotoFrame {
     pub method: &'static str,
     pub target: String,
     pub body_sha256: [u8; 32],
+    pub content_type: String,
     intent_sha256: Option<[u8; 32]>,
 }
 impl PhotoFrame {
@@ -90,9 +91,18 @@ impl PhotoFrame {
         beacon: Uuid,
         key: Uuid,
         mutation: &PhotoMutation,
+        content_type: &str,
         raw: &[u8],
     ) -> Result<Self, CommandError> {
         mutation.validate()?;
+        let expected_type = if matches!(mutation, PhotoMutation::Revoke { .. }) {
+            ""
+        } else {
+            "application/json"
+        };
+        if content_type != expected_type {
+            return Err(CommandError::InvalidInput);
+        }
         if [actor.actor, actor.event, beacon, key]
             .iter()
             .any(Uuid::is_nil)
@@ -137,6 +147,7 @@ impl PhotoFrame {
             method,
             target,
             body_sha256: Sha256::digest(raw).into(),
+            content_type: content_type.into(),
             intent_sha256: Some(mutation_digest(mutation)?),
         })
     }
@@ -172,6 +183,7 @@ impl PhotoFrame {
             method: "GET",
             target,
             body_sha256: Sha256::digest([]).into(),
+            content_type: String::new(),
             intent_sha256: None,
         })
     }
@@ -235,6 +247,21 @@ impl<A: MeetingAuthority + 'static, G: PhotoTransactionGuard + 'static> PhotoBea
         {
             return Err(CommandError::Denied);
         }
+        let root = format!("/api/concert/events/{}/beacons", frame.actor.event);
+        let (method, target) = match &mutation {
+            PhotoMutation::Create(_) => ("POST", root),
+            PhotoMutation::Update(_) => ("PATCH", format!("{root}/{}", frame.beacon)),
+            PhotoMutation::Revoke { expected_revision } => (
+                "DELETE",
+                format!(
+                    "{root}/{}?expected_revision={expected_revision}",
+                    frame.beacon
+                ),
+            ),
+        };
+        if frame.method != method || frame.target != target {
+            return Err(CommandError::Denied);
+        }
         let scope = Scope {
             actor: frame.actor.actor,
             event: frame.actor.event,
@@ -275,7 +302,15 @@ impl<A: MeetingAuthority + 'static, G: PhotoTransactionGuard + 'static> PhotoBea
             .await
     }
     pub async fn read(&self, frame: PhotoFrame) -> Result<PhotoBeacon, CommandError> {
-        if frame.operation != "getConcertBeacon" || frame.key.is_some() {
+        if frame.operation != "getConcertBeacon"
+            || frame.key.is_some()
+            || frame.method != "GET"
+            || frame.target
+                != format!(
+                    "/api/concert/events/{}/beacons/{}",
+                    frame.actor.event, frame.beacon
+                )
+        {
             return Err(CommandError::Denied);
         }
         let mut tx = self.pool.begin().await.map_err(storage)?;
@@ -319,7 +354,11 @@ impl<A: MeetingAuthority + 'static, G: PhotoTransactionGuard + 'static> PhotoBea
         .ok_or(CommandError::Denied)
     }
     pub async fn metadata(&self, frame: PhotoFrame, id: Uuid) -> Result<Metadata, CommandError> {
-        if frame.operation != "getConcertMedia" || frame.key.is_some() {
+        if frame.operation != "getConcertMedia"
+            || frame.key.is_some()
+            || frame.method != "GET"
+            || frame.target != format!("/api/concert/events/{}/media/{id}", frame.actor.event)
+        {
             return Err(CommandError::Denied);
         }
         let media = self.media(frame.clone(), PhotoMode::Read { media: id });
@@ -331,7 +370,15 @@ impl<A: MeetingAuthority + 'static, G: PhotoTransactionGuard + 'static> PhotoBea
         Ok(value)
     }
     pub async fn content(&self, frame: PhotoFrame, id: Uuid) -> Result<PrivateImage, CommandError> {
-        if frame.operation != "readConcertMedia" || frame.key.is_some() {
+        if frame.operation != "readConcertMedia"
+            || frame.key.is_some()
+            || frame.method != "GET"
+            || frame.target
+                != format!(
+                    "/api/concert/events/{}/media/{id}/content",
+                    frame.actor.event
+                )
+        {
             return Err(CommandError::Denied);
         }
         let media = self.media(frame.clone(), PhotoMode::Read { media: id });
@@ -541,7 +588,12 @@ impl PhotoFrame {
         if let Some(key) = self.key {
             h.update(key.as_bytes());
         }
-        for part in [self.operation, self.method, self.target.as_str()] {
+        for part in [
+            self.operation,
+            self.method,
+            self.target.as_str(),
+            self.content_type.as_str(),
+        ] {
             h.update((part.len() as u64).to_be_bytes());
             h.update(part.as_bytes());
         }

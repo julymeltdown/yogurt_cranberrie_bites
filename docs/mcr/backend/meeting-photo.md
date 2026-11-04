@@ -107,3 +107,11 @@ preserved old media/checksum/replay. Native tests are NOT_RUN until the actual
 shared target is leased and exact binaries are executed. FixtureGuard is synthetic
 remote owner proof only; production SDK/RPC/HTTP/device/rights and IN02 remain
 unqualified. Earlier reports are not photo evidence.
+
+Request-frame hardening additionally checks closed typed intent against the raw
+body before sealing, validates JSON content type, and binds target/method/key/
+content-type/body digest plus parsed intent in the request-specific guard digest.
+Metadata/content methods compare the actual media ID to the sealed HTTP target;
+argument substitution cannot fetch another current photo under an old URL.
+The producer source checkpoint is `cd4b7362`; later hardening is tested separately
+before publication. No source checkpoint alone is native qualification.

@@ -115,3 +115,31 @@ configuration name, not a server capability or automatic root activation flag.
 Absent configuration preserves text-only behavior. Schema inputs are frozen here;
 generated OpenAPI/TypeScript outputs remain with root/230 until their coordinated
 regeneration. Runtime support is NOT_RUN and must not be inferred from this marker.
+
+## Producer composition port
+
+The owned producer facade is `meeting_photo::PhotoBeacons<A, G>`, composed with
+actual `PgMeetingAuthority<GuardedAuthority>` and request-bound
+`CanonicalPhotoGuard::from_request(actual_scope, &frame)`. Construct the frame
+from verified canonical actor/event plus the actual method target, key, JSON
+content type and raw body; `PhotoFrame::mutation` closes/compares the typed input.
+The root must use the actual held scope, register/retain it before work, and keep
+it beyond reply production/serialization through qualified terminal settlement.
+No success fixture/default owner authority may be composed in production.
+
+`execute(frame, mutation)` returns the original safe BE15 receipt;
+`read(frame)` returns the authorized combined beacon/photo-ID projection.
+`metadata(frame, media_id)` and `content(frame, media_id)` use BE24 same-transaction
+ports and reject disagreement with the sealed HTTP media path. Root may use
+`target_hint(event, media_id)` only as an internal untrusted lookup, then prelock
+and recheck the exact current association. There is no public beacon query added
+to media routes. A bounded `cleanup_expired_in` caller-transaction helper requires
+an actual qualified current owner/job scope and exact expired target; it is not a
+browser delete API or an enabled scheduler. Its caller owns durable job outcome.
+
+MEETING_PHOTO settlement references are closed version 1 and include the full
+photo-frame fingerprint. Root must authenticate the owner workload, match the
+actual durable registration and exact stored reference, and use the producer's
+`canonical::validate_settlement_reference` opaque getters. Shape alone is not
+SQL outcome or a release grant. Photo reference resolution and product dispatch
+remain separate root composition obligations before runtime enablement.

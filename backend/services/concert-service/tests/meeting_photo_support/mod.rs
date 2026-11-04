@@ -163,7 +163,19 @@ pub fn frame(f: &Fixture, beacon: Uuid, key: Uuid, m: &PhotoMutation) -> PhotoFr
         PhotoMutation::Update(v) => serde_json::to_vec(v).unwrap(),
         _ => Vec::new(),
     };
-    PhotoFrame::mutation(f.actor(f.owner), beacon, key, m, &raw).unwrap()
+    PhotoFrame::mutation(
+        f.actor(f.owner),
+        beacon,
+        key,
+        m,
+        if matches!(m, PhotoMutation::Revoke { .. }) {
+            ""
+        } else {
+            "application/json"
+        },
+        &raw,
+    )
+    .unwrap()
 }
 pub fn read(f: &Fixture, beacon: Uuid, actor: Uuid) -> PhotoFrame {
     PhotoFrame::read(f.actor(actor), beacon, None).unwrap()
