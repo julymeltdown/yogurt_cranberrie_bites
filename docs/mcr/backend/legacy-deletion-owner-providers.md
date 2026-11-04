@@ -183,3 +183,33 @@ actual direct predecessor release and fresh numeric admission.
 Publication and functional acceptance remain pending developer-owned qualification,
 fixes and the named publishing developer's normal committed handoff. One canonical
 publication receipt is sufficient; no manager readback or acknowledgment is needed.
+
+### First allocated build and declaration correction
+
+The first actual warm-target turn accepted source `0deeeae9` at epoch
+`1793817757.2146208`, after Media's literal target and full releases. Admission
+measured 14,022,230,016 free bytes and conservatively reserved the still-reported
+Intro/QA06 allocations plus this turn's entire 2 GiB ALLNEW; 10,532,569,088 bytes
+remained, above the required 9 GiB. The independent guardian ran before the
+controller. Byte-identical `build.rs` freshness updates touched only this owned
+checkout and recorded before/after hashes and mtimes.
+
+The exact Profile Cargo command exited **101** with `E0407`/`E0599`: the new
+`apply_user_deletion_with_receipt` default had been placed on
+`ProfileMutationReceiptMaintenancePort`, while its existing adapter, Arc forward
+and use case implement or require `ProfileRepositoryPort`. This correction moves
+the unchanged fail-closed default onto `ProfileRepositoryPort`; it does not add a
+maintenance dependency or fall back to the legacy unit result. Friend and Post
+already declare their defaults on their respective lifecycle repository traits.
+
+The controller released the preserved target at epoch `1793817765.636936` on the
+failure path with no handles. The guardian exited, and full release at epoch
+`1793817787.433255` recorded compiler/children/PG/workflows/reservation all zero.
+Report received the direct target handoff. Observed target growth was 20,480 bytes;
+peak WHOLE was 4,828,655,616 bytes, maximum process count 6, and guardian peak RSS
+556,679,168 bytes. The failure and all retained history remain under
+`/private/tmp/mcr-be42-legacy-675134b1/`, including the build result, original Cargo
+JSON, watchdog result and target/full release receipts. No executable was frozen.
+The other three builds and all native RPC/SQL/restart scenarios remain `NOT_RUN`.
+This source correction requires a fresh allocated build turn; the released turn
+will not be reentered or its clocks reset.
