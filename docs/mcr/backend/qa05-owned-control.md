@@ -1,7 +1,7 @@
 # QA05 owned fault control
 
-Status: IN_PROGRESS. Source authored; source protocol tests and actual managed
-attachment are NOT_RUN. This is the remaining original QA05 combined App/Auth/
+Status: IN_PROGRESS. Source protocol checks PASS; actual managed attachment is
+NOT_RUN. This is the remaining original QA05 combined App/Auth/
 World frontier, not a new IN04 gate or QA08/performance qualification.
 
 ## Objective and completion criteria
@@ -144,7 +144,7 @@ client snapshots, frames, renderer state, foreground events or convergence.
 
 ## Validation plan and current limits
 
-Source qualification command, once an actual bounded SOURCE offer is accepted:
+Executed source qualification command (exit 0):
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 backend/scripts/mcr/in04_wall_runtime/test_owner_control.py -v
@@ -159,9 +159,57 @@ private descriptor custody, expiry, inode checks, foreign responses, exact
 actions, duplicate JSON keys and bounded socket frames. It creates no product
 principals, Rust services or PostgreSQL.
 
-SOURCE and actual attachment results remain NOT_RUN until explicitly recorded.
-Current resource state: no target, compile, native, browser, PG or live control
-window. A future source offer is requested; retained evidence/copies count toward
-whole-workflow highwater, at least 9,876,881,408 bytes or a higher fresh measured
-maximum. Actual attachment requires Root's real single-stack allocation and
-developer-owned validation/fixes. No standalone duplicate fault driver is added.
+The frozen implementation is `915d45c4790e105574a559ac7e8f0b32fbdfc46c`
+(initial implementation `20965b19b`, then exclusive-event guard). All three code
+files remain byte-identical to that executed source; later edits only record
+documentation/evidence. There are **21 passing synthetic tests, zero failures**,
+including the actual Node data-URL/private Unix-socket protocol fixture. This is
+one set of 21 cases executed twice, not 42 independent cases or actual service
+qualification. All 129 source/helper/controller input hashes were checked before
+and after both runs. `git diff --check` passed for the exact new four-path patch.
+
+The first SOURCE round accepted at 2026-11-04T20:24:15.909761Z and fully released
+at 20:24:17.341364Z. Tests passed; its independent live resource watcher passed.
+The primary enforced admission, deadlines, pins and cleanup but did not separately
+sample live resources. The original overly broad "both guards passed" statement
+was explicitly corrected before sealing this handoff. Its logs and FULL receipt
+are retained at `/private/tmp/mcr-qa05-owner-control-source-20261105`; no spent
+offer or clock was reopened.
+
+A distinct corrected SOURCE offer accepted at **20:28:42.965162Z** and fully
+released at **20:28:44.350168Z**. Both primary and independent controllers sampled
+live new/whole bytes, all descendant processes including each other and Node,
+RSS, free space and deadlines. Both report failure `null`. The command exited 0;
+test execution reported 21 passes in 0.157s, 1.348s including guarded supervision.
+The offer allowed 90s work/150s FULL, 128 MiB total new growth, 12 GiB whole,
+8 all-processes and 512 MiB RSS, with fresh 11 GiB start, after-all-reservations
+9 GiB and continuous 8 GiB floors. Fresh free space was 17,365,274,624 bytes;
+after the permitted conservative OTHER 4 GiB plus this 128 MiB reservation,
+12,936,089,600 bytes remained. Actual other-position census and ordinary prep
+were recorded once; future A workflows were not summed as simultaneous jobs.
+
+Observed maxima across both controllers: 65,536 new bytes, 9,944,113,152 whole
+bytes, 4 processes and 88,145,920 RSS bytes; minimum free space 16,744,398,848 bytes.
+All owned groups and the watcher were reaped, no PG existed and no target was
+accessed. Literal FULL went directly to next BE38 SQL owner, allocator21d and385
+before this documentation. There is no current resource hold.
+
+Corrected evidence root:
+`/private/tmp/mcr-qa05-owner-control-source-correction-20261105`.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `full-release.json` | `690381c19f1bbb6cb7c7e8cf08114c866757fa44b5a6801feb38fd63267cac15` |
+| `source-pins.json` | `697a40f21c9aca6faec06d24d9620b50b9ec0bd8e442c36983ee49cde571dc55` |
+| `plan.json` | `302fc3020223f16cfd1c043f7186ea2cbd43cb2f5a5dcb89ca0b223b220b313a` |
+| `supervisor.py` | `7b8ac8829fb24e695c90a496d7d8f8edfedeeab9016fb5323feab9a1edaa093f` |
+| `guard.py` | `2ab11c1522cf049c6c97b66e514723b3bddb51d9b47828ceeccd07a232207a96` |
+
+Retain both attempts and their original fidelity. Future carry is at least
+9,944,113,152 bytes or a higher fresh/prior maximum. Actual managed attachment,
+real process/PG restart and App/Auth convergence remain NOT_RUN for this control.
+Root owns launcher/descriptor/window composition; implementation owners resolve
+any actual faults directly and World20f fixes its assigned control if needed.
+No standalone duplicate fault driver is added. Publication of this source
+component does not close the original combined QA05 or IN04 flow. The persistent
+goal remains active while those required assigned outcomes are unfinished.
