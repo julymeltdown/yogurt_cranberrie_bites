@@ -1,0 +1,42 @@
+{
+  "publisher": "Root153",
+  "base": "410816c1",
+  "qualifiedNativeCandidate": "e3ed13f735953aea9e03b65554cd7710deb9cfcc",
+  "sourcePacket": "af7dd7ad730bb1f2aee13a4c9cd73d1ab398d70b",
+  "sourceQualified": "7456a857121231263270b5a4bd2563f324fd8a6d",
+  "art": "77a4d405f65f82dc14edda98d2447d5f0ed302b7",
+  "status": "BOUNDED_NATIVE_PASS_VISUAL_GAPS_OPEN",
+  "publishPaths": [
+    "frontend/public/world/map-reference-composition-v1/README.md",
+    "frontend/public/world/map-reference-composition-v1/build.py",
+    "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+    "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+    "frontend/public/world/map-reference-composition-v1/layout.json",
+    "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+    "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+    "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+    "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+    "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+    "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+    "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+    "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+    "docs/mcr/evidence/map-production-binding/source-round07/",
+    "docs/mcr/evidence/map-art05-default-app/",
+    "docs/mcr/frontend/map-art05-default-app.md",
+    "frontend/src/app/world-entry/__tests__/art05-default-entry/"
+  ],
+  "alreadyPublicReadonlyCarry": "fccee9369ff8929db699f2f09af4d639e4be35e6:frontend/public/reference-window-controls-v2/",
+  "source07Append": "docs/mcr/evidence/map-art05-default-app/source07-owner-append.md",
+  "noSharedProseReplacement": true,
+  "reportSha256": "dbbbafd9a37e2ffe396999eb6fe25dad02ca9336d8b017792da55a604a05eef5",
+  "fullReleaseAt": "2026-11-04T17:14:08.881074+00:00",
+  "goalStatus": "Historical BLOCKED metadata unchanged; original objective unfinished; no resume-status API",
+  "limits": [
+    "Only explicit eligible-attendee HTTP/C05 fixtures; no real operator/admission/live/device claim.",
+    "Changed ART05 only, no ART04 replay/build; original Map4/geometry/theme/avatar pins.",
+    "World invariance compares the same actual App before/after Map/control/route navigation; no historical framebuffer equivalence claim.",
+    "Full ten-screen fidelity remains open."
+  ]
+}

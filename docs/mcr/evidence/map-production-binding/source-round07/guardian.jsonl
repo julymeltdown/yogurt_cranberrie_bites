@@ -1,0 +1,18 @@
+{"lease": "ART05-MAP-SOURCE-A-202611041642Z", "guardianPid": 38269, "startedAt": "2026-11-04T16:43:44.765398+00:00", "activeDeadline": "2026-11-04T16:48:17+00:00", "hardDeadline": "2026-11-04T16:49:17+00:00"}
+{"startedAt": "2026-11-04T16:43:44.767920+00:00", "argv": ["python3", "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/map-production-binding/source-round07/supervisor.py", "registration"], "pid": 38345}
+{"observedDescendants": {"38345": [38269, 38345, 3952, "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"]}}
+{"finishedAt": "2026-11-04T16:43:45.126923+00:00", "pid": 38345, "exitCode": 0}
+{"startedAt": "2026-11-04T16:43:45.129068+00:00", "argv": ["git", "add", "--", "frontend/src/world/reference-scene/map4-service-v2/registration.ts", "frontend/src/world/reference-scene/map4-service-v2/current.ts"], "pid": 38424}
+{"observedDescendants": {"38424": [38269, 38424, 4640, "(git)"]}}
+{"finishedAt": "2026-11-04T16:43:45.485251+00:00", "pid": 38424, "exitCode": 0}
+{"startedAt": "2026-11-04T16:43:45.489536+00:00", "argv": ["git", "commit", "-m", "feat(map): atomically register ART05 architectural composition"], "pid": 38430}
+{"observedDescendants": {"38430": [38269, 38430, 4624, "(git)"]}}
+{"finishedAt": "2026-11-04T16:43:45.867005+00:00", "pid": 38430, "exitCode": 0}
+{"startedAt": "2026-11-04T16:43:45.870379+00:00", "argv": ["python3", "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/map-production-binding/source-round07/supervisor.py", "tests", "types", "lint", "registration-check"], "pid": 38436}
+{"observedDescendants": {"38436": [38269, 38436, 6224, "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"]}}
+{"observedDescendants": {"38438": [38436, 38438, 163216, "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"]}}
+{"observedDescendants": {"38569": [38436, 38569, 125488, "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"]}}
+{"observedDescendants": {"38734": [38436, 38734, 0, "<defunct>"]}}
+{"observedDescendants": {"38750": [38436, 38750, 100016, "(node)"], "38838": [38750, 38750, 4544, "(git)"]}}
+{"finishedAt": "2026-11-04T16:43:51.959344+00:00", "pid": 38436, "exitCode": 0}
+{"guardianFinishedAt": "2026-11-04T16:43:51.959585+00:00", "allObservedDescendants": [38345, 38424, 38430, 38436, 38438, 38569, 38734, 38750, 38838], "peak": {"processes": 4, "rssBytes": 628539392, "additionalBytes": 26873749}}

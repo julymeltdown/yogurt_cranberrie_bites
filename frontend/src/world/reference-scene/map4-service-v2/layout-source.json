@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "version": "map4-reference-composition-v1",
-  "recipeRevision": "reference-correction-04",
+  "recipeRevision": "reference-correction-05",
   "coordinateSpace": "MAP_ILLUSTRATION_ONLY",
   "renderMode": "full-composition",
   "dimensions": {
@@ -156,8 +156,8 @@
     {
       "themeId": "REVENGE",
       "path": "world/map-reference-composition-v1/revenge-scene.png",
-      "bytes": 713028,
-      "sha256": "sha256:ad378c9b889d1a7f33c49ed3cceabef140cda3cbe5d64e46d5a2139516d0a148",
+      "bytes": 668934,
+      "sha256": "sha256:ebb27be3cfa4e2b56426f8bdc6fbe806121ff5e0c2174e3df731d3823451938c",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -165,8 +165,8 @@
     {
       "themeId": "PARADE",
       "path": "world/map-reference-composition-v1/parade-scene.png",
-      "bytes": 731192,
-      "sha256": "sha256:dbcc63274381f1ffe6128cc6b9caaedb2e406618f8464f218f554ec6294edabc",
+      "bytes": 685505,
+      "sha256": "sha256:b523405660ebc40d247bba7d24d1a862bd89177c76bd6551472996fea6d795b4",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -174,8 +174,8 @@
     {
       "themeId": "DANGER",
       "path": "world/map-reference-composition-v1/danger-scene.png",
-      "bytes": 720445,
-      "sha256": "sha256:a2dcf7f7346f01702b7dc033e4c85f2441165678a794b9563087f04bf07908e3",
+      "bytes": 675662,
+      "sha256": "sha256:1ac966073fcc98ab48fafee731277d6428df8dbbe54af692441bf14ba34ed85e",
       "width": 768,
       "height": 1296,
       "mime": "image/png"
@@ -502,38 +502,6 @@
       "crop_role": "canopy"
     },
     {
-      "id": "map_only_interior_tree_04",
-      "frame": "tree_green",
-      "rect": [
-        595,
-        95,
-        49,
-        42
-      ],
-      "depth_y": 137,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
-      "id": "map_only_grove_02_tree_2",
-      "frame": "tree_green",
-      "rect": [
-        599,
-        109,
-        37,
-        31
-      ],
-      "depth_y": 140,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
       "id": "map_only_interior_tree_01",
       "frame": "tree_yellow",
       "rect": [
@@ -548,70 +516,6 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "whole"
-    },
-    {
-      "id": "map_only_parcel_00_canopy_015",
-      "frame": "tree_dark",
-      "rect": [
-        50,
-        125,
-        32,
-        27
-      ],
-      "depth_y": 152,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_00_canopy_033",
-      "frame": "tree_green",
-      "rect": [
-        -2,
-        131,
-        32,
-        27
-      ],
-      "depth_y": 158,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_00_canopy_020",
-      "frame": "tree_dark",
-      "rect": [
-        18,
-        131,
-        36,
-        30
-      ],
-      "depth_y": 161,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_02_canopy_015",
-      "frame": "tree_green",
-      "rect": [
-        593,
-        132,
-        40,
-        34
-      ],
-      "depth_y": 166,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
     },
     {
       "id": "map_only_parcel_00_canopy_018",
@@ -646,38 +550,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_parcel_02_canopy_036",
-      "frame": "tree_green",
-      "rect": [
-        627,
-        136,
-        40,
-        34
-      ],
-      "depth_y": 170,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_00_canopy_010",
-      "frame": "tree_dark",
-      "rect": [
-        71,
-        138,
-        40,
-        34
-      ],
-      "depth_y": 172,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_east_edge_tree_01",
       "frame": "tree_dark",
       "rect": [
@@ -692,70 +564,6 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "whole"
-    },
-    {
-      "id": "map_only_west_edge_tree_01",
-      "frame": "tree_yellow",
-      "rect": [
-        5,
-        125,
-        59,
-        50
-      ],
-      "depth_y": 175,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
-      "id": "map_only_parcel_00_canopy_007",
-      "frame": "tree_green",
-      "rect": [
-        37,
-        147,
-        40,
-        34
-      ],
-      "depth_y": 181,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_02_canopy_023",
-      "frame": "tree_green",
-      "rect": [
-        613,
-        158,
-        32,
-        27
-      ],
-      "depth_y": 185,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_00_canopy_012",
-      "frame": "tree_green",
-      "rect": [
-        18,
-        163,
-        32,
-        27
-      ],
-      "depth_y": 190,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
     },
     {
       "id": "map_only_grove_00_tree_1",
@@ -774,52 +582,36 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_parcel_02_canopy_010",
-      "frame": "tree_green",
+      "id": "map_only_north_east_annex",
+      "frame": "giveaway_pavilion",
       "rect": [
-        583,
-        164,
-        36,
-        30
+        576,
+        136,
+        86,
+        64
       ],
-      "depth_y": 194,
+      "depth_y": 200,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
       "world_solid": false,
-      "crop_role": "canopy"
+      "crop_role": "whole"
     },
     {
-      "id": "map_only_parcel_00_canopy_002",
-      "frame": "tree_green",
+      "id": "map_only_north_west_annex",
+      "frame": "meeting_pavilion",
       "rect": [
-        57,
-        165,
-        36,
-        30
+        8,
+        136,
+        86,
+        64
       ],
-      "depth_y": 195,
+      "depth_y": 200,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
       "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_00_canopy_025",
-      "frame": "tree_dark",
-      "rect": [
-        -9,
-        163,
-        40,
-        34
-      ],
-      "depth_y": 197,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
+      "crop_role": "whole"
     },
     {
       "id": "map_only_grove_00_tree_0",
@@ -1286,6 +1078,22 @@
       "crop_role": "whole"
     },
     {
+      "id": "map_only_plaza_courtyard_seating",
+      "frame": "plaza_furniture",
+      "rect": [
+        320,
+        410,
+        55,
+        32
+      ],
+      "depth_y": 442,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_parcel_04_canopy_022",
       "frame": "tree_green",
       "rect": [
@@ -1398,22 +1206,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_grove_03_tree_2",
-      "frame": "tree_green",
-      "rect": [
-        685,
-        444,
-        37,
-        31
-      ],
-      "depth_y": 475,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
       "id": "map_only_parcel_04_canopy_009",
       "frame": "tree_dark",
       "rect": [
@@ -1423,22 +1215,6 @@
         30
       ],
       "depth_y": 475,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_03_canopy_001",
-      "frame": "tree_green",
-      "rect": [
-        647,
-        443,
-        40,
-        34
-      ],
-      "depth_y": 477,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
@@ -1558,38 +1334,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_parcel_03_canopy_000",
-      "frame": "tree_green",
-      "rect": [
-        647,
-        474,
-        32,
-        27
-      ],
-      "depth_y": 501,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_03_canopy_007",
-      "frame": "tree_green",
-      "rect": [
-        691,
-        467,
-        40,
-        34
-      ],
-      "depth_y": 501,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_parcel_04_canopy_004",
       "frame": "tree_dark",
       "rect": [
@@ -1599,38 +1343,6 @@
         27
       ],
       "depth_y": 502,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_grove_03_tree_3",
-      "frame": "tree_dark",
-      "rect": [
-        643,
-        459,
-        55,
-        46
-      ],
-      "depth_y": 505,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
-      "id": "map_only_parcel_03_canopy_002",
-      "frame": "tree_green",
-      "rect": [
-        670,
-        478,
-        36,
-        30
-      ],
-      "depth_y": 508,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
@@ -1686,22 +1398,6 @@
       "crop_role": "canopy"
     },
     {
-      "id": "map_only_parcel_03_canopy_015",
-      "frame": "tree_green",
-      "rect": [
-        707,
-        493,
-        32,
-        27
-      ],
-      "depth_y": 520,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_parcel_04_canopy_012",
       "frame": "tree_green",
       "rect": [
@@ -1734,38 +1430,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_parcel_03_canopy_005",
-      "frame": "tree_green",
-      "rect": [
-        649,
-        498,
-        36,
-        30
-      ],
-      "depth_y": 528,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_03_canopy_029",
-      "frame": "tree_green",
-      "rect": [
-        576,
-        500,
-        36,
-        30
-      ],
-      "depth_y": 530,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_edge_venue_15",
       "frame": "white_merch_booth",
       "rect": [
@@ -1775,6 +1439,22 @@
         100
       ],
       "depth_y": 531,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
+      "id": "map_only_east_arcade",
+      "frame": "north_hall",
+      "rect": [
+        648,
+        472,
+        86,
+        64
+      ],
+      "depth_y": 536,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
@@ -1860,22 +1540,6 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "whole"
-    },
-    {
-      "id": "map_only_parcel_03_canopy_021",
-      "frame": "tree_green",
-      "rect": [
-        604,
-        516,
-        32,
-        27
-      ],
-      "depth_y": 543,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
     },
     {
       "id": "map_only_interior_tree_09",
@@ -2004,6 +1668,22 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "map_only_east_courtyard",
+      "frame": "west_hall",
+      "rect": [
+        552,
+        520,
+        86,
+        64
+      ],
+      "depth_y": 584,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
     },
     {
       "id": "map_only_grove_06_tree_2",
@@ -2166,22 +1846,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_parcel_07_canopy_018",
-      "frame": "tree_green",
-      "rect": [
-        463,
-        596,
-        36,
-        30
-      ],
-      "depth_y": 626,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_grove_06_tree_3",
       "frame": "tree_green",
       "rect": [
@@ -2196,22 +1860,6 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "whole"
-    },
-    {
-      "id": "map_only_parcel_07_canopy_013",
-      "frame": "tree_green",
-      "rect": [
-        501,
-        603,
-        32,
-        27
-      ],
-      "depth_y": 630,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
     },
     {
       "id": "map_only_parcel_07_canopy_050",
@@ -2246,22 +1894,6 @@
       "crop_role": "canopy"
     },
     {
-      "id": "map_only_grove_07_tree_1",
-      "frame": "tree_yellow",
-      "rect": [
-        477,
-        597,
-        49,
-        41
-      ],
-      "depth_y": 638,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
       "id": "map_only_parcel_06_canopy_010",
       "frame": "tree_green",
       "rect": [
@@ -2271,54 +1903,6 @@
         34
       ],
       "depth_y": 644,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_grove_07_tree_0",
-      "frame": "tree_green",
-      "rect": [
-        439,
-        610,
-        43,
-        36
-      ],
-      "depth_y": 646,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
-      "id": "map_only_parcel_07_canopy_010",
-      "frame": "tree_green",
-      "rect": [
-        456,
-        621,
-        32,
-        27
-      ],
-      "depth_y": 648,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_07_canopy_005",
-      "frame": "tree_green",
-      "rect": [
-        480,
-        618,
-        40,
-        34
-      ],
-      "depth_y": 652,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
@@ -2342,86 +1926,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_grove_07_tree_2",
-      "frame": "tree_green",
-      "rect": [
-        498,
-        630,
-        37,
-        31
-      ],
-      "depth_y": 661,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
-      "id": "map_only_interior_tree_26",
-      "frame": "tree_dark",
-      "rect": [
-        477,
-        620,
-        56,
-        48
-      ],
-      "depth_y": 668,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
-      "id": "map_only_parcel_07_canopy_015",
-      "frame": "tree_green",
-      "rect": [
-        428,
-        639,
-        36,
-        30
-      ],
-      "depth_y": 669,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_07_canopy_000",
-      "frame": "tree_green",
-      "rect": [
-        493,
-        645,
-        36,
-        30
-      ],
-      "depth_y": 675,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_07_canopy_002",
-      "frame": "tree_dark",
-      "rect": [
-        464,
-        642,
-        40,
-        34
-      ],
-      "depth_y": 676,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_parcel_07_canopy_028",
       "frame": "tree_green",
       "rect": [
@@ -2436,6 +1940,22 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "map_only_central_workshop",
+      "frame": "meeting_pavilion",
+      "rect": [
+        440,
+        616,
+        86,
+        64
+      ],
+      "depth_y": 680,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
     },
     {
       "id": "map_only_grove_07_tree_4",
@@ -2502,22 +2022,6 @@
       "crop_role": "canopy"
     },
     {
-      "id": "map_only_parcel_07_canopy_020",
-      "frame": "tree_green",
-      "rect": [
-        418,
-        672,
-        40,
-        34
-      ],
-      "depth_y": 706,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_parcel_07_canopy_004",
       "frame": "tree_green",
       "rect": [
@@ -2550,22 +2054,6 @@
       "crop_role": "canopy"
     },
     {
-      "id": "map_only_parcel_07_canopy_033",
-      "frame": "tree_green",
-      "rect": [
-        409,
-        697,
-        36,
-        30
-      ],
-      "depth_y": 727,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_parcel_07_canopy_009",
       "frame": "tree_green",
       "rect": [
@@ -2582,22 +2070,6 @@
       "crop_role": "canopy"
     },
     {
-      "id": "map_only_interior_tree_28",
-      "frame": "tree_green",
-      "rect": [
-        407,
-        689,
-        49,
-        42
-      ],
-      "depth_y": 731,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
       "id": "map_only_parcel_07_canopy_025",
       "frame": "tree_green",
       "rect": [
@@ -2612,6 +2084,22 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "canopy"
+    },
+    {
+      "id": "map_only_central_kiosk",
+      "frame": "giveaway_pavilion",
+      "rect": [
+        360,
+        680,
+        86,
+        64
+      ],
+      "depth_y": 744,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
     },
     {
       "id": "map_only_parcel_07_canopy_017",
@@ -3094,6 +2582,22 @@
       "crop_role": "whole"
     },
     {
+      "id": "map_only_meet_courtyard_seating",
+      "frame": "plaza_furniture",
+      "rect": [
+        344,
+        840,
+        62,
+        28
+      ],
+      "depth_y": 868,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_grove_11_tree_4",
       "frame": "tree_green",
       "rect": [
@@ -3254,22 +2758,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_interior_tree_13",
-      "frame": "tree_yellow",
-      "rect": [
-        635,
-        868,
-        49,
-        42
-      ],
-      "depth_y": 910,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
       "id": "map_only_grove_10_tree_2",
       "frame": "tree_green",
       "rect": [
@@ -3286,38 +2774,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_parcel_11_canopy_022",
-      "frame": "tree_green",
-      "rect": [
-        572,
-        886,
-        36,
-        30
-      ],
-      "depth_y": 916,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_11_canopy_017",
-      "frame": "tree_green",
-      "rect": [
-        612,
-        890,
-        32,
-        27
-      ],
-      "depth_y": 917,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
       "id": "map_only_parcel_09_canopy_034",
       "frame": "tree_dark",
       "rect": [
@@ -3327,22 +2783,6 @@
         34
       ],
       "depth_y": 928,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_11_canopy_009",
-      "frame": "tree_green",
-      "rect": [
-        590,
-        904,
-        40,
-        34
-      ],
-      "depth_y": 938,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
@@ -3364,38 +2804,6 @@
       "interaction_id": null,
       "world_solid": false,
       "crop_role": "whole"
-    },
-    {
-      "id": "map_only_interior_tree_12",
-      "frame": "tree_green",
-      "rect": [
-        579,
-        907,
-        42,
-        36
-      ],
-      "depth_y": 943,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
-      "id": "map_only_parcel_11_canopy_012",
-      "frame": "tree_green",
-      "rect": [
-        634,
-        909,
-        40,
-        34
-      ],
-      "depth_y": 943,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
     },
     {
       "id": "map_only_grove_10_tree_3",
@@ -3439,6 +2847,22 @@
         48
       ],
       "depth_y": 951,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
+      "id": "map_only_meet_east_annex",
+      "frame": "west_hall",
+      "rect": [
+        584,
+        888,
+        86,
+        64
+      ],
+      "depth_y": 952,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
@@ -3926,6 +3350,22 @@
       "crop_role": "canopy"
     },
     {
+      "id": "map_only_south_courtyard_seating",
+      "frame": "plaza_furniture",
+      "rect": [
+        348,
+        1044,
+        58,
+        32
+      ],
+      "depth_y": 1076,
+      "interactive": false,
+      "place_id": null,
+      "interaction_id": null,
+      "world_solid": false,
+      "crop_role": "whole"
+    },
+    {
       "id": "map_only_east_edge_tree_16",
       "frame": "tree_yellow",
       "rect": [
@@ -4134,38 +3574,6 @@
       "crop_role": "whole"
     },
     {
-      "id": "map_only_interior_tree_36",
-      "frame": "tree_green",
-      "rect": [
-        253,
-        1140,
-        42,
-        36
-      ],
-      "depth_y": 1176,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
-      "id": "map_only_interior_tree_15",
-      "frame": "tree_red",
-      "rect": [
-        241,
-        1149,
-        42,
-        36
-      ],
-      "depth_y": 1185,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "whole"
-    },
-    {
       "id": "map_only_parcel_13_canopy_016",
       "frame": "tree_green",
       "rect": [
@@ -4175,22 +3583,6 @@
         27
       ],
       "depth_y": 1196,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_13_canopy_029",
-      "frame": "tree_green",
-      "rect": [
-        286,
-        1164,
-        40,
-        34
-      ],
-      "depth_y": 1198,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
@@ -4262,36 +3654,20 @@
       "crop_role": "canopy"
     },
     {
-      "id": "map_only_parcel_13_canopy_021",
-      "frame": "tree_green",
+      "id": "map_only_south_courtyard",
+      "frame": "north_hall",
       "rect": [
-        289,
-        1191,
-        36,
-        30
+        248,
+        1176,
+        86,
+        64
       ],
-      "depth_y": 1221,
+      "depth_y": 1240,
       "interactive": false,
       "place_id": null,
       "interaction_id": null,
       "world_solid": false,
-      "crop_role": "canopy"
-    },
-    {
-      "id": "map_only_parcel_13_canopy_013",
-      "frame": "tree_dark",
-      "rect": [
-        308,
-        1212,
-        32,
-        27
-      ],
-      "depth_y": 1239,
-      "interactive": false,
-      "place_id": null,
-      "interaction_id": null,
-      "world_solid": false,
-      "crop_role": "canopy"
+      "crop_role": "whole"
     },
     {
       "id": "map_only_grove_16_tree_1",

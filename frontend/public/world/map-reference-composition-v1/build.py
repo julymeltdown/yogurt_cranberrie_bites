@@ -15,9 +15,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 BASE = 'frontend/public/world/reference-scene-v2/'
 VERSION = 'map4-reference-composition-v1'
-RECIPE_REVISION = 'reference-correction-04'
+RECIPE_REVISION = 'reference-correction-05'
 # Keep the consumer's layout identity/schema; a future intake must pin new bytes.
-PREVIOUS_HANDOFF = '94c47a8b3219efc76a4be9646014cfeaad2f1957'
+PREVIOUS_HANDOFF = '97d9d3f40e0d17ab536ac696bdb2140093225f6a'
 FACADE_SOURCE_START = 0.54
 FACADE_HEIGHT_SCALE = 0.80
 ROOF_EAVE = 0.65
@@ -96,6 +96,19 @@ PALETTES = {
 }
 VENUES = {'meeting_pavilion', 'giveaway_pavilion', 'north_hall', 'west_hall'}
 TREES = {'tree_green', 'tree_dark', 'tree_yellow', 'tree_red'}
+# Named architecture fills existing gaps, with conservative 82px centerline
+# clearance for each 86x64 slot (half diagonal54px + path half-width23px +5px).
+# These are Map-only buildings, not new destinations or source-place identities.
+INFILL = [
+    ('north_west_annex', 'meeting_pavilion', 8, 136, 86, 64),
+    ('north_east_annex', 'giveaway_pavilion', 576, 136, 86, 64),
+    ('east_arcade', 'north_hall', 648, 472, 86, 64),
+    ('east_courtyard', 'west_hall', 552, 520, 86, 64),
+    ('central_workshop', 'meeting_pavilion', 440, 616, 86, 64),
+    ('central_kiosk', 'giveaway_pavilion', 360, 680, 86, 64),
+    ('meet_east_annex', 'west_hall', 584, 888, 86, 64),
+    ('south_courtyard', 'north_hall', 248, 1176, 86, 64),
+]
 
 
 def digest(data):
@@ -161,6 +174,14 @@ def placements():
         (666, 167, 'white_food_booth', 103, 108), (401, 1210, 'north_hall', 231, 121),
     ]):
         add('edge_venue_%02d' % i, frame, x, y, w, h)
+    for name, frame, x, y, w, h in INFILL:
+        rect = [x, y, w, h]
+        center = (x+w/2, y+h/2)
+        assert not any(intersects(rect, row['rect']) for row in rows if row['frame'] in VENUES | {'food_counter', 'white_food_booth', 'white_merch_booth'})
+        assert all(segment_distance(center, a, b) >= 82
+                   for path in PATHS for a, b in zip(path, path[1:]))
+        assert all(math.dist(center, (ax, ay)) >= 84 for _, ax, ay, _, _ in CANONICAL)
+        add(name, frame, x, y, w, h)
     # Small tree clusters close the perimeter without one large repeated canopy.
     tree_frames = ['tree_green', 'tree_yellow', 'tree_dark', 'tree_red']
     for side, x0 in [('west', -12), ('east', 715)]:
@@ -187,6 +208,10 @@ def placements():
         add('garden_bed_%02d' % i, 'shrub_bed', x, y, w, h)
     add('plaza_north_seating', 'plaza_furniture', 310, 414, 88, 56)
     add('meeting_north_seating', 'plaza_furniture', 342, 829, 93, 57)
+    for name, x, y, w, h in [('plaza_courtyard_seating', 320, 410, 55, 32),
+                             ('meet_courtyard_seating', 344, 840, 62, 28),
+                             ('south_courtyard_seating', 348, 1044, 58, 32)]:
+        add(name, 'plaza_furniture', x, y, w, h)
     # Unequal, overlapping groups sit within/along planting, not a regular ring.
     groves = [(68, 181), (211, 108), (568, 105), (654, 440), (88, 481),
               (269, 415), (393, 565), (467, 626), (536, 737), (667, 802),
@@ -202,7 +227,8 @@ def placements():
                 cx+ox, cy+oy, width, round(width*0.84))
     # Complete original silhouettes avoid cut-off lower foliage. A deterministic
     # area spiral replaces rows; parcel polygons are invisible placement bounds.
-    architecture = [r['rect'] for r in rows if r['frame'] in VENUES]
+    infill_ids = {'map_only_'+name for name, *_ in INFILL}
+    architecture = [r['rect'] for r in rows if r['frame'] in VENUES and r['id'] not in infill_ids]
     for parcel, polygon in enumerate(PLANTING):
         left, right = min(p[0] for p in polygon), max(p[0] for p in polygon)
         top, bottom = min(p[1] for p in polygon), max(p[1] for p in polygon)
@@ -230,6 +256,13 @@ def placements():
                 continue
             add('parcel_%02d_canopy_%03d' % (parcel, sample),
                 'tree_dark' if seed % 5 == 0 else 'tree_green', *rect, crop_role='canopy')
+    # Keep adjoining complete foliage for natural roof-edge overlap. Only roots
+    # inside the new building slots are removed, avoiding large cleared lawns.
+    infill_rects = [[x, y, w, h] for _, _, x, y, w, h in INFILL]
+    rows = [r for r in rows if r['frame'] not in TREES or
+            not any(box[0] <= r['rect'][0]+r['rect'][2]/2 < box[0]+box[2]
+                    and box[1] <= r['rect'][1]+r['rect'][3] < box[1]+box[3]
+                    for box in infill_rects)]
     assert len({r['id'] for r in rows}) == len(rows)
     assert all(not intersects(r['rect'], e) for r in rows for e in exclusions())
     return sorted(rows, key=lambda r: (r['depth_y'], r['id']))
@@ -280,37 +313,100 @@ def surface(era):
     return image, svg, 0
 
 
+def roof_profile(name):
+    if name.endswith('stage_central_hall'):
+        return 'cross_gable'
+    if name.endswith('stage_west_wing'):
+        return 'long_gable'
+    if name.endswith('stage_east_wing'):
+        return 'hip'
+    return ['hip', 'long_gable', 'cross_gable', 'pavilion'][sum(name.encode()) % 4]
+
+
 def overhead_roof(canvas, svg, name, x, y, w, h, palette):
-    """Quantized hip roof with short staggered clusters, not continuous bands."""
+    """Original pixel architecture: varied profiles, tile relief and small details."""
     draw = ImageDraw.Draw(canvas)
+    profile = roof_profile(name)
+    seed = sum(name.encode())
+    # Only authored roof vectors vary; retained atlas/facade pixels are untouched.
+    palette = {**palette, 'roof': mix(palette['roof'], palette['roofDark'], 0.20 + (seed % 3)*0.08),
+               'roofLight': mix(palette['roofLight'], palette['roof'], 0.30),
+               'roofDark': mix(palette['roofDark'], '#65525b', 0.18)}
     def point(u, v):
         return (x+min(w-1, max(0, 2*round(w*u/2))),
                 y+min(h-1, max(0, 2*round(h*v/2))))
+    def polygon(points, fill, outline=None):
+        draw.polygon(points, fill=fill, outline=outline, width=1)
+        encoded = ' '.join(f'{px},{py}' for px, py in points)
+        svg.append(f'<polygon points="{encoded}" fill="{fill}"' + (f' stroke="{outline}"' if outline else '') + '/>')
+    def line(points, color, width=1):
+        draw.line(points, fill=color, width=width)
+        encoded = ' '.join(f'{px},{py}' for px, py in points)
+        svg.append(f'<polyline points="{encoded}" fill="none" stroke="{color}" stroke-width="{width}"/>')
+    def rect(px, py, rw, rh, fill):
+        draw.rectangle((px, py, px+rw-1, py+rh-1), fill=fill)
+        svg.append(f'<rect x="{px}" y="{py}" width="{rw}" height="{rh}" fill="{fill}"/>')
+
     a, b, c, d = [point(*p) for p in [(0.08, 0.08), (0.89, 0.08), (1, ROOF_EAVE), (0, ROOF_EAVE)]]
-    r, s = point(0.22, 0.26), point(0.76, 0.26)
-    svg.append(f'<g id="{name}_original_overhead_roof" shape-rendering="crispEdges">')
+    ridge = {'hip': (0.22, 0.76, 0.26), 'long_gable': (0.08, 0.89, 0.19),
+             'cross_gable': (0.19, 0.79, 0.23), 'pavilion': (0.46, 0.54, 0.18)}[profile]
+    r, s = point(ridge[0], ridge[2]), point(ridge[1], ridge[2])
+    svg.append(f'<g id="{name}_original_overhead_roof" data-profile="{profile}" shape-rendering="crispEdges">')
+    # A narrow stepped eave gives a distinct roof/facade edge without flattening
+    # the retained facade or adding a free-standing drop-shadow rectangle.
+    polygon([point(0, 0.59), point(1, 0.59), point(1, 0.69), point(0, 0.69)], palette['roofDark'])
     planes = [([a, b, s, r], palette['roofLight']), ([r, s, c, d], palette['roof']),
               ([a, r, d], palette['roofDark']), ([b, c, s], palette['roofDark'])]
-    for index, (polygon, color) in enumerate(planes):
-        draw.polygon(polygon, fill=color, outline='#7b6b68', width=1)
-        points = ' '.join(f'{px},{py}' for px, py in polygon)
+    for index, (plane, color) in enumerate(planes):
+        draw.polygon(plane, fill=color, outline='#7b6b68', width=1)
+        points = ' '.join(f'{px},{py}' for px, py in plane)
         svg.append(f'<polygon points="{points}" fill="{color}" stroke="#7b6b68"/>')
         # Local mask keeps all clusters off silhouette/hip seams. Short tile
         # groups have 2px details and staggered offsets; no roof-wide stripes.
         mask = Image.new('1', (w+3, h+3))
-        ImageDraw.Draw(mask).polygon([(px-x, py-y) for px, py in polygon], fill=1)
+        ImageDraw.Draw(mask).polygon([(px-x, py-y) for px, py in plane], fill=1)
         pixels = mask.load()
         for ty in range(2, h-4, 6):
             for tx in range(2+((ty//6) % 2)*4, w-8, 8):
                 n = (tx*17+ty*23+index*11+len(name)) % 19
                 if n > 10 or not all(pixels[tx+dx, ty+dy] for dx in range(6) for dy in range(3)):
                     continue
-                tint = mix(color, palette['roofLight'] if n < 6 else palette['roofDark'], 0.20)
+                tint = mix(color, palette['roofLight'] if n < 6 else palette['roofDark'], 0.32)
                 draw.rectangle((x+tx, y+ty, x+tx+5, y+ty+2), fill=tint)
                 svg.append(f'<rect x="{x+tx}" y="{y+ty}" width="6" height="3" fill="{tint}"/>')
+                draw.line([(x+tx+1, y+ty+3), (x+tx+5, y+ty+3)], fill=mix(color, palette['roofDark'], 0.45), width=1)
+                svg.append(f'<path d="M{x+tx+1} {y+ty+3}h4" stroke="{mix(color, palette["roofDark"], 0.45)}"/>')
     for p, q in [(r, s), (r, d), (s, c)]:
-        draw.line([p, q], fill=palette['roofDark'], width=2)
-        svg.append(f'<path d="M{p[0]} {p[1]}L{q[0]} {q[1]}" stroke="{palette["roofDark"]}" stroke-width="2"/>')
+        line([p, q], palette['roofDark'], 2)
+    line([(r[0], r[1]-1), (s[0], s[1]-1)], palette['roofLight'], 1)
+
+    # The central cross-gable breaks the large uninterrupted front roof plane.
+    if profile == 'cross_gable':
+        gable = [point(*p) for p in [(0.32, 0.64), (0.32, 0.43), (0.49, 0.24), (0.66, 0.43), (0.66, 0.64)]]
+        polygon(gable, palette['roofDark'], '#65525b')
+        line([gable[1], gable[2], gable[3]], palette['roofLight'], 2)
+        gx, gy = point(0.45, 0.46)
+        rect(gx, gy, max(4, w//12), max(3, h//10), '#f5dca4')
+        line([(gx+w//24, gy), (gx+w//24, gy+max(3, h//10)-1)], '#725c5c')
+
+    # Small roofs get one skylight; larger halls get unequal dormer groups.
+    count = 1 if w < 110 else 2 if w < 200 else 3
+    for k in range(count):
+        u = 0.22 + k*(0.57/max(1, count-1)) if count > 1 else 0.58
+        if profile == 'cross_gable' and 0.34 < u < 0.66:
+            continue
+        cx, cy = point(u, 0.42 + 0.03*(k % 2))
+        dw, dh = max(6, 2*(w//28)), max(5, 2*(h//20))
+        rect(cx-dw//2, cy, dw, dh, palette['roofDark'])
+        rect(cx-dw//2+2, cy+2, max(2, dw-4), max(2, dh-3), '#edcf94')
+        line([(cx-dw//2-2, cy), (cx, cy-4), (cx+dw//2+2, cy)], palette['roofLight'], 2)
+        line([(cx, cy+2), (cx, cy+dh-2)], '#755b5b')
+    # Offset brick chimney and ridge cap distinguish neighboring roof masses.
+    cx, cy = point(0.28 if seed % 2 else 0.70, 0.13)
+    cw, ch = max(4, w//24), max(5, h//12)
+    rect(cx, cy, cw, ch, '#8b7170')
+    rect(cx-1, cy-2, cw+2, 3, '#594b53')
+    line([(cx+1, cy+ch//2), (cx+cw-1, cy+ch//2)], '#c6a796')
     svg.append('</g>')
 
 
@@ -429,6 +525,16 @@ def produce():
                                       'roofCoordinateQuantumPx': 2,
                                       'roofTextureCellPx': [8, 6],
                                       'policy': 'ORIGINAL_MAP_ONLY_PIXEL_HIP_ROOF_NO_WORLD_ATLAS_MUTATION'},
+                  'architectureFollowup': {
+                      'basis': 'Actual ART04 default App reference comparison: repeated uniform roofs and sparse architecture',
+                      'roofProfiles': {row['id']: roof_profile(row['id']) for row in decorations if row['frame'] in VENUES},
+                      'details': ['stepped eaves', 'staggered tile relief', 'cross gables', 'dormer/skylight groups', 'brick chimneys'],
+                      'infillSlots': [{'id': 'map_only_'+name, 'frame': frame, 'rect': [x, y, w, h]} for name, frame, x, y, w, h in INFILL],
+                      'infillPathCenterlineClearancePx': 82,
+                      'infillCanonicalCenterClearancePx': 84,
+                      'facadePolicy': 'EXACT_ORIGINAL_CROP_RGBA_EXISTING_PROJECTION_NO_RECOLOR',
+                      'foliagePolicy': 'RETAIN_COMPLETE_SOURCE_SILHOUETTES_AND_EDGE_OVERLAP_REMOVE_ROOTS_INSIDE_INFILL',
+                      'scope': 'MAP_ONLY_NONINTERACTIVE_NO_NEW_PLACE_OR_NAVIGATION_IDENTITY'},
                   'planting': {'parcels': PLANTING, 'paintedGroundPixelsByTheme': planted_areas,
                                'pathClearancePx': PATH_PLANT_CLEARANCE,
                                'gardenEdgeClearancePx': GARDEN_PLANT_CLEARANCE,

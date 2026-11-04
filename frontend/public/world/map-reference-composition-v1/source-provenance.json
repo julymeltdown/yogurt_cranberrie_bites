@@ -3,8 +3,8 @@
   "status": "SOURCE_VALIDATED_NATIVE_NOT_RUN",
   "version": "map4-reference-composition-v1",
   "sourceBaseCommit": "6bb850755f1b6540a8d013f84106c673c5567069",
-  "previousSourceCandidate": "94c47a8b3219efc76a4be9646014cfeaad2f1957",
-  "recipeRevision": "reference-correction-04",
+  "previousSourceCandidate": "97d9d3f40e0d17ab536ac696bdb2140093225f6a",
+  "recipeRevision": "reference-correction-05",
   "sourceInputs": [
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
@@ -206,6 +206,32 @@
     },
     {
       "themeId": "REVENGE",
+      "frame": "meeting_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:e26a699d3d251ce364f12e670403a1004314ff3247231623f58fcce766be696d",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 6,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:11ee01e381215365fe2f3cce482dcd9b5d25a72e776bf1f82c416ece01801c48",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
       "frame": "tree_red",
       "atlas": {
         "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
@@ -240,6 +266,27 @@
         "height": 224
       },
       "rgbaSha256": "sha256:23c10f40880c32074173bebec1496f823bb17b315408dae0d8fc8ad364c2dcca",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "REVENGE",
+      "frame": "plaza_furniture",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/revenge/atlas.png",
+        "bytes": 1176781,
+        "sha256": "sha256:54b5a72a1e16062f84248602f8bebaee500ca086fb58285b1689d665618dfdbd"
+      },
+      "sourceRect": {
+        "x": 268,
+        "y": 815,
+        "width": 231,
+        "height": 161
+      },
+      "rgbaSha256": "sha256:b63e47ce5e6b440c32540c827a6f1a8dbeb3e2bf550e6494eafe045d3467c37f",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
       "facadeRgbaSha256": null,
@@ -441,6 +488,32 @@
     },
     {
       "themeId": "PARADE",
+      "frame": "meeting_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:5367400ec9518305373c114b43d00ee86e4cf4e8a8a910b19e07b40b9860ec23",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 6,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:a4a776138cf1fe86373eff91f11944fcc24717a90c0895e29553853840e8b6cc",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
       "frame": "tree_red",
       "atlas": {
         "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
@@ -475,6 +548,27 @@
         "height": 224
       },
       "rgbaSha256": "sha256:dfb76e1b0ccc57846919ba8f501188d2fe899afb0de3b57b45dfdf33f20ee899",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "PARADE",
+      "frame": "plaza_furniture",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+        "bytes": 1201118,
+        "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+      },
+      "sourceRect": {
+        "x": 268,
+        "y": 815,
+        "width": 231,
+        "height": 161
+      },
+      "rgbaSha256": "sha256:3e969812a402cb3f8e8199159a8307c52d51cfa5c9d802771aba565cdd97288a",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
       "facadeRgbaSha256": null,
@@ -676,6 +770,32 @@
     },
     {
       "themeId": "DANGER",
+      "frame": "meeting_pavilion",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 6,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "rgbaSha256": "sha256:9709709a299238f1246bf5366723b379a96615f6670dce3fdb18bb995116abbd",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": {
+        "x": 6,
+        "y": 647,
+        "width": 244,
+        "height": 83
+      },
+      "facadeRgbaSha256": "sha256:b0c2eb3e0b3a18dce5826317dd58971fce07686a21687b5ebbbdb2afa950dcf8",
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
       "frame": "tree_red",
       "atlas": {
         "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
@@ -710,6 +830,27 @@
         "height": 221
       },
       "rgbaSha256": "sha256:2209fc308e88ff452b43fe98785a8e831e1cd6ffe8e9d13b9467439aa61aa7bc",
+      "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
+      "usedFacadeSourceRect": null,
+      "facadeRgbaSha256": null,
+      "usedCanopySourceRect": null,
+      "canopyRgbaSha256": null
+    },
+    {
+      "themeId": "DANGER",
+      "frame": "plaza_furniture",
+      "atlas": {
+        "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/danger/atlas.png",
+        "bytes": 1178440,
+        "sha256": "sha256:3184e26c5b83cf95c31f692b3087112faa93a0ef270bd5416e36fc9952d9a17a"
+      },
+      "sourceRect": {
+        "x": 269,
+        "y": 815,
+        "width": 229,
+        "height": 161
+      },
+      "rgbaSha256": "sha256:84afa3a865f100e11ef2872b5de3d5b03a8134e9e8cf2daa462709bfaf595942",
       "alphaPolicy": "EXACT_CROP_RGBA_NO_RETOUCH",
       "usedFacadeSourceRect": null,
       "facadeRgbaSha256": null,
@@ -762,44 +903,44 @@
   "outputs": [
     {
       "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
-      "bytes": 713028,
-      "sha256": "sha256:ad378c9b889d1a7f33c49ed3cceabef140cda3cbe5d64e46d5a2139516d0a148"
+      "bytes": 668934,
+      "sha256": "sha256:ebb27be3cfa4e2b56426f8bdc6fbe806121ff5e0c2174e3df731d3823451938c"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
-      "bytes": 1827514,
-      "sha256": "sha256:747c73424bf28099fd4f08a1b5aeae90b11df926464478be3e053ed02a0b3211"
+      "bytes": 1934634,
+      "sha256": "sha256:54ca7c00a8be0685ab236290442904229c0e2698b8a62b9294ac00fb91a61a29"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
-      "bytes": 731192,
-      "sha256": "sha256:dbcc63274381f1ffe6128cc6b9caaedb2e406618f8464f218f554ec6294edabc"
+      "bytes": 685505,
+      "sha256": "sha256:b523405660ebc40d247bba7d24d1a862bd89177c76bd6551472996fea6d795b4"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
-      "bytes": 1859962,
-      "sha256": "sha256:0c6bc6256506b000dc6669940c482d5d8b057b95957e21732f8451209566b0eb"
+      "bytes": 1967082,
+      "sha256": "sha256:06af5eec689d129407eb5669d9780dbc04e1a8c366163af0d620756578b772b7"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
-      "bytes": 720445,
-      "sha256": "sha256:a2dcf7f7346f01702b7dc033e4c85f2441165678a794b9563087f04bf07908e3"
+      "bytes": 675662,
+      "sha256": "sha256:1ac966073fcc98ab48fafee731277d6428df8dbbe54af692441bf14ba34ed85e"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
-      "bytes": 1829726,
-      "sha256": "sha256:e743bef95981fc5a434c80bf36fc839c67b0bfcf6b2a2b54d657339c9de7c6f6"
+      "bytes": 1936846,
+      "sha256": "sha256:ec4b3fb22e3613a4a821f7e57b9d0e6af450a32f29c544033905342d406848d5"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/layout.json",
-      "bytes": 108021,
-      "sha256": "sha256:2c14cc0145e19054ce4c65c8edef574e6156cf3eab7a14dff224b6c008c37f8d"
+      "bytes": 95579,
+      "sha256": "sha256:ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1"
     }
   ],
   "recipe": {
     "path": "frontend/public/world/map-reference-composition-v1/build.py",
-    "bytes": 29706,
-    "sha256": "sha256:51abee3bfcb78d34eb9d3e3934d225c23b9963a45905355d719814145d0e0d19"
+    "bytes": 36363,
+    "sha256": "sha256:369d0c9f5ac0046abebab2a6c3a7004d2d44ce7303d5a5826e8e3e075767c047"
   },
   "referenceUse": "DIRECT_VISUAL_INSPECTION_ONLY_NO_REFERENCE_PIXELS_SAMPLED",
   "authorship": "New editable paths/gardens/placement geometry; retained original built-in generated warm atlas crops. No new generation, stock, character or font input.",
@@ -814,6 +955,125 @@
       6
     ],
     "policy": "ORIGINAL_MAP_ONLY_PIXEL_HIP_ROOF_NO_WORLD_ATLAS_MUTATION"
+  },
+  "architectureFollowup": {
+    "basis": "Actual ART04 default App reference comparison: repeated uniform roofs and sparse architecture",
+    "roofProfiles": {
+      "map_only_edge_venue_01": "long_gable",
+      "map_only_edge_venue_00": "hip",
+      "map_only_edge_venue_02": "cross_gable",
+      "map_only_north_east_annex": "cross_gable",
+      "map_only_north_west_annex": "hip",
+      "map_only_stage_west_wing": "long_gable",
+      "map_only_stage_east_wing": "hip",
+      "map_only_stage_central_hall": "cross_gable",
+      "map_only_edge_venue_03": "pavilion",
+      "map_only_edge_venue_04": "hip",
+      "map_only_east_arcade": "cross_gable",
+      "map_only_east_courtyard": "pavilion",
+      "map_only_central_workshop": "pavilion",
+      "map_only_central_kiosk": "pavilion",
+      "map_only_meet_east_annex": "cross_gable",
+      "map_only_edge_venue_10": "long_gable",
+      "map_only_edge_venue_07": "pavilion",
+      "map_only_south_courtyard": "long_gable",
+      "map_only_edge_venue_11": "cross_gable",
+      "map_only_edge_venue_09": "long_gable"
+    },
+    "details": [
+      "stepped eaves",
+      "staggered tile relief",
+      "cross gables",
+      "dormer/skylight groups",
+      "brick chimneys"
+    ],
+    "infillSlots": [
+      {
+        "id": "map_only_north_west_annex",
+        "frame": "meeting_pavilion",
+        "rect": [
+          8,
+          136,
+          86,
+          64
+        ]
+      },
+      {
+        "id": "map_only_north_east_annex",
+        "frame": "giveaway_pavilion",
+        "rect": [
+          576,
+          136,
+          86,
+          64
+        ]
+      },
+      {
+        "id": "map_only_east_arcade",
+        "frame": "north_hall",
+        "rect": [
+          648,
+          472,
+          86,
+          64
+        ]
+      },
+      {
+        "id": "map_only_east_courtyard",
+        "frame": "west_hall",
+        "rect": [
+          552,
+          520,
+          86,
+          64
+        ]
+      },
+      {
+        "id": "map_only_central_workshop",
+        "frame": "meeting_pavilion",
+        "rect": [
+          440,
+          616,
+          86,
+          64
+        ]
+      },
+      {
+        "id": "map_only_central_kiosk",
+        "frame": "giveaway_pavilion",
+        "rect": [
+          360,
+          680,
+          86,
+          64
+        ]
+      },
+      {
+        "id": "map_only_meet_east_annex",
+        "frame": "west_hall",
+        "rect": [
+          584,
+          888,
+          86,
+          64
+        ]
+      },
+      {
+        "id": "map_only_south_courtyard",
+        "frame": "north_hall",
+        "rect": [
+          248,
+          1176,
+          86,
+          64
+        ]
+      }
+    ],
+    "infillPathCenterlineClearancePx": 82,
+    "infillCanonicalCenterClearancePx": 84,
+    "facadePolicy": "EXACT_ORIGINAL_CROP_RGBA_EXISTING_PROJECTION_NO_RECOLOR",
+    "foliagePolicy": "RETAIN_COMPLETE_SOURCE_SILHOUETTES_AND_EDGE_OVERLAP_REMOVE_ROOTS_INSIDE_INFILL",
+    "scope": "MAP_ONLY_NONINTERACTIVE_NO_NEW_PLACE_OR_NAVIGATION_IDENTITY"
   },
   "planting": {
     "parcels": [
@@ -1242,7 +1502,7 @@
     ],
     "gardenBorderPx": 22,
     "canopySourceEndFraction": 1.0,
-    "canopyPlacements": 145,
+    "canopyPlacements": 109,
     "excludes": [
       "six exact label rectangles",
       "declared path corridors",

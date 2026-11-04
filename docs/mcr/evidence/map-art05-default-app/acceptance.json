@@ -1,0 +1,23 @@
+{
+  "lease": "MAP-ART05-DEFAULT-BROWSER1-DIRECT-202611041708Z",
+  "acceptedAt": "2026-11-04T17:09:34.483279+00:00",
+  "activeDeadline": "2026-11-04T17:14:34.483279+00:00",
+  "hardDeadline": "2026-11-04T17:15:34.483279+00:00",
+  "freeBytes": 31407362048,
+  "reservedMarginBytes": 30987931648,
+  "candidate": "7ce60b9098b0a6dd83f1abaca2e4b6fb48e41499",
+  "readsetSha256": "a1f0040a71d3ab14dda1b688863902108231a597152b54f2576dbec6facdb07a",
+  "port": 5321,
+  "tmp": "/private/tmp/mcr-art05-1708",
+  "predecessorFull": "2026-11-04T17:07:43.330200Z",
+  "limits": {
+    "processes": 16,
+    "rssBytes": 3758096384,
+    "wholeBytes": 2147483648,
+    "newBytes": 209715200,
+    "tmpBytes": 209715200,
+    "workSeconds": 300,
+    "cleanupSeconds": 60
+  },
+  "round": "round01"
+}

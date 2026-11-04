@@ -1,0 +1,1 @@
+src/app/world-entry/__tests__/art05-default-entry/native.mjs:70:128: warning eslint(no-useless-escape): Unnecessary escape character '"' help: Replace `\"` with `"`.

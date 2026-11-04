@@ -1,0 +1,7 @@
+{
+  "method": "Union objects reachable from preserved af7 owner branch and current candidate, excluding frozen shared410 ancestry; cat-file logical+disk sizes. New retained evidence objects remain within conservative24MiB reserve.",
+  "objectCount": 829,
+  "logicalBytes": 25631181,
+  "storedBytes": 13565900,
+  "conservativeGitReserveBytes": 25165824
+}

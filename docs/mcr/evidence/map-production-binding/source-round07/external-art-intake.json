@@ -1,0 +1,92 @@
+{
+  "source": "77a4d405f65f82dc14edda98d2447d5f0ed302b7",
+  "oldQualifiedArt": "97d9d3f40e0d17ab536ac696bdb2140093225f6a",
+  "method": "Read-only exact ten Git postimages/modes; no builder or previews copied",
+  "bytes": 8059737,
+  "unchangedFields": [
+    "schemaVersion",
+    "version",
+    "coordinateSpace",
+    "renderMode",
+    "dimensions",
+    "originalMap4",
+    "serviceLabelAnchors",
+    "canonicalDisplayAnchors",
+    "sourceInputs",
+    "paths",
+    "gardenParcels",
+    "authority"
+  ],
+  "pins": [
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/README.md",
+      "mode": "100644",
+      "gitBlob": "3334ae7c1a60b88b6ba4e08cf8c3c6a2544c94d7",
+      "bytes": 15942,
+      "sha256": "df104147260c16b3e3c271e42c08dff302c36dc4de6f5a575686a24b10361a90"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/build.py",
+      "mode": "100644",
+      "gitBlob": "1c6e7b337d9c8381893fbb40d5e08a4295f878f8",
+      "bytes": 36363,
+      "sha256": "369d0c9f5ac0046abebab2a6c3a7004d2d44ce7303d5a5826e8e3e075767c047"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "mode": "100644",
+      "gitBlob": "f2aeab76a0d8357e0ee2020fe8e1684cbc22b378",
+      "bytes": 675662,
+      "sha256": "1ac966073fcc98ab48fafee731277d6428df8dbbe54af692441bf14ba34ed85e"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "mode": "100644",
+      "gitBlob": "895565f283dad919d60dd4c8a33f7c2719db7909",
+      "bytes": 1936846,
+      "sha256": "ec4b3fb22e3613a4a821f7e57b9d0e6af450a32f29c544033905342d406848d5"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+      "mode": "100644",
+      "gitBlob": "02644dc3749dd9667178b2c72e31688e26fb2655",
+      "bytes": 95579,
+      "sha256": "ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "mode": "100644",
+      "gitBlob": "c45677c6f5706542b43cf633f51e788a849b9e2a",
+      "bytes": 685505,
+      "sha256": "b523405660ebc40d247bba7d24d1a862bd89177c76bd6551472996fea6d795b4"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "mode": "100644",
+      "gitBlob": "cf311599ef1df3808da3f243e681d421a55bad01",
+      "bytes": 1967082,
+      "sha256": "06af5eec689d129407eb5669d9780dbc04e1a8c366163af0d620756578b772b7"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "mode": "100644",
+      "gitBlob": "aa485672cd218ddb6e42b1017feb56f2997b528f",
+      "bytes": 668934,
+      "sha256": "ebb27be3cfa4e2b56426f8bdc6fbe806121ff5e0c2174e3df731d3823451938c"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "mode": "100644",
+      "gitBlob": "29517209369280f8bc742064632424079ff7b348",
+      "bytes": 1934634,
+      "sha256": "54ca7c00a8be0685ab236290442904229c0e2698b8a62b9294ac00fb91a61a29"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+      "mode": "100644",
+      "gitBlob": "9e013543b70e133277562f84e8706de458937014",
+      "bytes": 43190,
+      "sha256": "282803af862cc3e2ff413cc45b603813f672caa5a8e53a2b5416e95725018d2a"
+    }
+  ]
+}

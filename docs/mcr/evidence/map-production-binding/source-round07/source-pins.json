@@ -1,0 +1,186 @@
+{
+  "qualifiedSource": "7456a857121231263270b5a4bd2563f324fd8a6d",
+  "artSource": "77a4d405f65f82dc14edda98d2447d5f0ed302b7",
+  "pins": [
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/README.md",
+      "bytes": 15942,
+      "sha256": "df104147260c16b3e3c271e42c08dff302c36dc4de6f5a575686a24b10361a90"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/build.py",
+      "bytes": 36363,
+      "sha256": "369d0c9f5ac0046abebab2a6c3a7004d2d44ce7303d5a5826e8e3e075767c047"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "bytes": 675662,
+      "sha256": "1ac966073fcc98ab48fafee731277d6428df8dbbe54af692441bf14ba34ed85e"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "bytes": 1936846,
+      "sha256": "ec4b3fb22e3613a4a821f7e57b9d0e6af450a32f29c544033905342d406848d5"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+      "bytes": 95579,
+      "sha256": "ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "bytes": 685505,
+      "sha256": "b523405660ebc40d247bba7d24d1a862bd89177c76bd6551472996fea6d795b4"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "bytes": 1967082,
+      "sha256": "06af5eec689d129407eb5669d9780dbc04e1a8c366163af0d620756578b772b7"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "bytes": 668934,
+      "sha256": "ebb27be3cfa4e2b56426f8bdc6fbe806121ff5e0c2174e3df731d3823451938c"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "bytes": 1934634,
+      "sha256": "54ca7c00a8be0685ab236290442904229c0e2698b8a62b9294ac00fb91a61a29"
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+      "bytes": 43190,
+      "sha256": "282803af862cc3e2ff413cc45b603813f672caa5a8e53a2b5416e95725018d2a"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/composition-overview.test.ts",
+      "bytes": 4930,
+      "sha256": "4a7b217db534327c242a1f3b0a780a636c8811af69686699bfd734a7ab811697"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/consumer.test.tsx",
+      "bytes": 7091,
+      "sha256": "93dfc152d249d1b64f0ea418318d907e28274ef010a22a84f23306ecba8f8ccd"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/contract.test.ts",
+      "bytes": 5158,
+      "sha256": "5ca42486576aea3db187fc78d766d994402786773261dddb5f979db574c86aac"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/fixture.ts",
+      "bytes": 3503,
+      "sha256": "554796ed0d28fcfd77504ec6f5d1952afc8ea579f58918db692abfccf9155673"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/labels.test.ts",
+      "bytes": 5561,
+      "sha256": "14f6cbc05f0b2089d8afd6ee6afefc0fa2df94023a8cc808fc8e3a172725598a"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/loader.test.ts",
+      "bytes": 7450,
+      "sha256": "aa16c13824ace93b076267af09b347bf800ccf95b04b78f02fdb38a239a49cdd"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+      "bytes": 8354,
+      "sha256": "8d2c3b5e2714d0e91a3473410042b1fe6487729d8742e6537a24b8e5b3f37c57"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "bytes": 6592,
+      "sha256": "0daae0b5da2bec71b096febbc1b595d0ef760f3f9a1b0af10e2b8b76aa9cdc50"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/tsconfig.json",
+      "bytes": 271,
+      "sha256": "de92b0c2d06bc5e8dee256cb8cfa32b1d8218f815e73b11156efd67ccacbfaa6"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/vitest.config.ts",
+      "bytes": 823,
+      "sha256": "8b6664da0f01be6183c8102d1976f5a1e5a4c6d6c23324308ff0cc0489f8762f"
+    },
+    {
+      "path": "frontend/src/app/world-entry/map-presentation-v2/loader.ts",
+      "bytes": 4549,
+      "sha256": "de7b0839c27726a38b7dc3b6e9e1b7603ddc05c13f73cce01e6408838e52593c"
+    },
+    {
+      "path": "frontend/src/app/world-entry/reference-scene-overview.ts",
+      "bytes": 3552,
+      "sha256": "5586a2e9b149b89460441db1e421a1e5ca6c09d30716ec5482916cff57c1b937"
+    },
+    {
+      "path": "frontend/src/features/places/ui/IllustratedMap.tsx",
+      "bytes": 19526,
+      "sha256": "a655570fcaef239ee8ec72b876a881c2b76b03815b0a7fa08125588b7f076112"
+    },
+    {
+      "path": "frontend/src/features/places/ui/reference-scene/map-service-links.tsx",
+      "bytes": 2368,
+      "sha256": "d1c259404fcde6ba0eba4b7e434e232f958809a4041c6872c27936122481a339"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/contract.ts",
+      "bytes": 7036,
+      "sha256": "43be2545f73c029b4b34c9f6b9035f675c2098c8953f61551a403ad2078825e6"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/current.ts",
+      "bytes": 358,
+      "sha256": "43c3f1e0270741b6f9be7ea39173a839e59037562799aef7bd87c609522eeaab"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/labels.ts",
+      "bytes": 5609,
+      "sha256": "43b93f873276a99dcc5eeb99230cb83c390827bbefccf6f306afb50db7c9a34d"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "bytes": 95579,
+      "sha256": "ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/model.ts",
+      "bytes": 4269,
+      "sha256": "13020517c600a4b2a7bf30ca2fdfb15f9571d40edea612bae0853f56e9e6b0fa"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/presentation-json.ts",
+      "bytes": 837,
+      "sha256": "58df0486f53cf7c3a1778e7266b5f4dc88a091f585b164a72a4903f63d656939"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "bytes": 445,
+      "sha256": "cddd2636fbc1370d028e381642e29387c1e29a30811ffeba5a50f800eac56a96"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+      "bytes": 1131,
+      "sha256": "9071d1b91ed7d5194be6b896fce8081a645280652a62e00a62eabf4e40d7b7df"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/semantics.ts",
+      "bytes": 1068,
+      "sha256": "cf5ff7240e4674407ba47f247e8a64eaf91ee8dc59f6ed962b77ab752ad1dfff"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style-source.json",
+      "bytes": 9173,
+      "sha256": "a7468e7208e70db82c402db7676b7046b739fec681d017082f121d99798c3305"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style.ts",
+      "bytes": 372,
+      "sha256": "c5f96d6a8616398f2922a0af19285c43cb62d2906a1db8d142af79e050c28c04"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/overview.ts",
+      "bytes": 7735,
+      "sha256": "1c64590a29a57071026f33d0cdd602cb601e4662d25e7476596ab6967beb3474"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "lease": "ART05-MAP-SOURCE-A-202611041642Z",
+  "acceptedAt": "2026-11-04T16:43:17Z",
+  "workDeadline": "2026-11-04T16:48:17Z",
+  "hardDeadline": "2026-11-04T16:49:17Z",
+  "receivingSource": "0f74fc184695ce31987a4ccdc49a6a7f74d3546a",
+  "preflightFreeBytes": 14539784192,
+  "freshFloorBytes": 12884901888,
+  "continuousFloorBytes": 8589934592,
+  "preflightAdditionalIncludingGitReserveBytes": 25366562,
+  "conservativeWholeUpperBoundBytes": 37748736,
+  "additionalLimitBytes": 33554432,
+  "wholeLimitBytes": 67108864,
+  "gitReserveBytes": 25165824,
+  "gitReserveChargedInAdditionalAndWhole": true,
+  "maxAllOwnedProcesses": 4,
+  "maxAggregateRssBytes": 2684354560,
+  "childSeconds": 180,
+  "commands": "regwrite/exact2pathcommit; six v2 test files only; scoped types; scoped lint; regcheck",
+  "exclusions": [
+    "v1 suite",
+    "full app types",
+    "browser/native/server",
+    "ART generation",
+    "shared cache writes",
+    "new checkout",
+    "private C03"
+  ]
+}

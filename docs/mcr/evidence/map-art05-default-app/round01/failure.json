@@ -1,0 +1,7 @@
+{
+  "status": "ABORTED_BY_GUARDIAN",
+  "reason": "Temporary profile file was atomically renamed during size measurement; no application assertion result",
+  "reportAbsent": true,
+  "originalClockRetained": true,
+  "finishedAt": "2026-11-04T17:09:59.950931Z"
+}

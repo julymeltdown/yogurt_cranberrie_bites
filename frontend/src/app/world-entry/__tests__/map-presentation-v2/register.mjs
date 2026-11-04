@@ -15,7 +15,7 @@ const resources = JSON.parse(await readFile(resolve(model, 'resources.json'), 'u
 const styleBytes = await readFile(resolve(model, 'style-source.json'))
 const style = JSON.parse(styleBytes)
 const sha = bytes => 'sha256:' + createHash('sha256').update(bytes).digest('hex')
-const artSource = '97d9d3f40e0d17ab536ac696bdb2140093225f6a'
+const artSource = '77a4d405f65f82dc14edda98d2447d5f0ed302b7'
 const gitBytes = path => execFileSync('git', ['show', artSource + ':' + path], { maxBuffer: 8 * 1024 * 1024 })
 const sharedInputPins = []
 for (const name of ['build.py', 'layout.json', 'source-provenance.json', 'README.md',
@@ -45,7 +45,7 @@ for (const pin of JSON.parse(layout).sourceInputs) {
   if (bytes.length !== pin.bytes || sha(bytes) !== pin.sha256) throw Error('Original input provenance mismatch: ' + pin.path)
 }
 const provenance = await readFile('public/world/map-reference-composition-v1/source-provenance.json')
-if (provenance.length !== 35518 || sha(provenance) !== 'sha256:741f5eb2ee4dd91070fd43f0b1f839d69b3b95406b59df6e730052257d63638c') throw Error('Corrected artist provenance pin')
+if (provenance.length !== 43190 || sha(provenance) !== 'sha256:282803af862cc3e2ff413cc45b603813f672caa5a8e53a2b5416e95725018d2a') throw Error('Corrected artist provenance pin')
 // Static advances from the exact original font, not a raster export or browser stand-in.
 const retainedStyleBytes = await readFile('src/world/reference-scene/map4-service-v1/style-source.json')
 const retainedStyle = JSON.parse(retainedStyleBytes)
@@ -93,12 +93,12 @@ const fontAdvanceMeasurements = serviceSemantics.map(label => {
     originalHitWidth: source.width, originalHitHeight: 78, minimumShortTypePixels: style.style.font_size * 265.5 / 768 }
 })
 const presentationHash = sha(canonical({ version: compositionVersion, layout: resources.layout, assets: resources.assets, semantics: serviceSemantics, style }))
-const registration = `// Deterministic registration of corrected ART 97d9d3f40e0d17ab536ac696bdb2140093225f6a.\nimport resources from './resources.json'\nimport { compositionVersion } from './semantics'\nimport type { CompositionRegistration } from './contract'\n\nexport const compositionRegistration = { ...resources, version: compositionVersion,\n  presentationHash: '${presentationHash}' } as CompositionRegistration\n`
+const registration = `// Deterministic registration of corrected ART 77a4d405f65f82dc14edda98d2447d5f0ed302b7.\nimport resources from './resources.json'\nimport { compositionVersion } from './semantics'\nimport type { CompositionRegistration } from './contract'\n\nexport const compositionRegistration = { ...resources, version: compositionVersion,\n  presentationHash: '${presentationHash}' } as CompositionRegistration\n`
 const current = `import layout from './layout-source.json'\nimport { createCompositionModel } from './model'\nimport { compositionRegistration } from './registration'\n\n// Immutable Map-only candidate; original release/World authority remains unchanged.\nconst model = createCompositionModel(layout, compositionRegistration)\nexport function currentComposition() { return model }\n`
 for (const [name, content] of [['registration.ts', registration], ['current.ts', current]]) {
   const path = resolve(model, name)
   if (mode[0] === '--write') await writeFile(path, content)
   else if (await readFile(path, 'utf8') !== content) throw Error('Registration postimage mismatch: ' + name)
 }
-process.stdout.write(JSON.stringify({ mode: mode[0], source: '97d9d3f40e0d17ab536ac696bdb2140093225f6a', presentationHash,
+process.stdout.write(JSON.stringify({ mode: mode[0], source: '77a4d405f65f82dc14edda98d2447d5f0ed302b7', presentationHash,
   resources: rows, styleSha256: sha(styleBytes), fontAdvanceMeasurements, sharedInputPins, originalInputPins: 9, provenanceSha256: sha(provenance), publicArtifactsModified: false }) + '\n')

@@ -1,0 +1,111 @@
+{
+  "status": "BOUNDED_NATIVE_PASS_VISUAL_REFERENCE_GAPS_OPEN",
+  "nativeCandidate": "e3ed13f735953aea9e03b65554cd7710deb9cfcc",
+  "reportSha256": "dbbbafd9a37e2ffe396999eb6fe25dad02ca9336d8b017792da55a604a05eef5",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "sourcePacket": "af7dd7ad730bb1f2aee13a4c9cd73d1ab398d70b",
+  "presentationHash": "sha256:f7a89dc6d176f2414f845139de39607ba75830a54e5e623f2de2cd6fc76bed17",
+  "images": [
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-danger-360.png",
+      "bytes": 192109,
+      "sha256": "332d57c846018335b2f4ab49309b4a5cb8da4752195286b9c7ac4ba60f2877b7",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-danger-390.png",
+      "bytes": 211609,
+      "sha256": "7c173dcf3b75c82e76989f75376bcc22eb2b10a30e51f14d470384c4b8cebc07",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-danger-430.png",
+      "bytes": 249366,
+      "sha256": "6255b0fdf2d1792904a39d2d9981b4a392fd349134d71588b361d2881dc507bb",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-parade-360.png",
+      "bytes": 193466,
+      "sha256": "3eb451df8d026f9272a51ffc4badb63180086f60803f4b640b62a34f24ba6637",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-parade-390-short.png",
+      "bytes": 82832,
+      "sha256": "8fcd195aa79edfd748c5c88dcc928d028abef4250dce9756e70f420a0aa09c87",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-parade-390.png",
+      "bytes": 213150,
+      "sha256": "ada42b697e80bd107d269e5f47ef19a60bf36ceb2101b0642d3f5018eecbb102",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-parade-430.png",
+      "bytes": 251532,
+      "sha256": "9db3f353cf293bf6ed59fae8c180aa7112a3f7a887a19fd1e737be2e384dcbc8",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-revenge-360.png",
+      "bytes": 190951,
+      "sha256": "b4907963d5e5d0f816762131239ab15e0fd6a8e6bed21d32c07f2a978dcfb155",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-revenge-390.png",
+      "bytes": 210388,
+      "sha256": "09887427a4b31fdda37dd96c885c7b57e70a24be06be2be7ba490b044fce74d1",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/art05-revenge-430.png",
+      "bytes": 247602,
+      "sha256": "6d36996f4367b157c5b83c5e450a4845fe11f527638311d9d87e19a32b32f311",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/forced-focus-parade-390-short.png",
+      "bytes": 76970,
+      "sha256": "837e2ae33dc91536debe6cd1aaeef72856ed9b6ce429de548d6724d8a20f201a",
+      "directlyOpened": true
+    },
+    {
+      "path": "docs/mcr/evidence/map-art05-default-app/round04/forced-focus-parade-390.png",
+      "bytes": 200545,
+      "sha256": "181df262a1361e46349bfe15f3cf1750d87205d4a2cf2618b83ce954735e703b",
+      "directlyOpened": true
+    }
+  ],
+  "counts": {
+    "contexts": 10,
+    "screenshots": 12,
+    "rasterComparedPixelsPerContext": 833600,
+    "rasterMismatches": 0,
+    "virtualRouteKeyboardBackFocusCases": 40,
+    "controlsAtLeast44CssPixels": 60,
+    "independentOriginalFontMetricRows": 60,
+    "worldRgbaObjectsCameraPairs": 10,
+    "worldObjectsPerContext": 29
+  },
+  "assessment": [
+    "Directly opened all nine full-height era/width captures, short390 and both forced-focus captures beside exact fourth reference panel.",
+    "Distinct roof gables/chimneys/small houses and original furniture are visible; facade variety is still limited and some details are obscured by retained canonical markers.",
+    "All six full-height labels remain readable at360/390/430. Type projects16.979/18.542/20.625 CSSpx; short13.826 CSSpx, with local scroll and not all six labels simultaneously visible.",
+    "Forced-color Fit focus is a solid >=3px outline at normal and short390; source navigation targets stay >=44px.",
+    "Large open lawns, broad pale paths/junctions, repeated long building silhouettes, warm pastel palette and portrait contain bands remain materially different from compact dense reference.",
+    "Three broken header images belong to the supplied410fixture missing already-public SVG carry, now explicitly amended read-only after capture; no native rerun or current-public defect claim.",
+    "Denied mural tools retry storm in410 is real shared authority behavior; exact finding handed directly toRoot and kept outside this native write lease."
+  ],
+  "limits": [
+    "Only explicit eligible-attendee HTTP/C05 fixtures; no real operator/admission/live/device claim.",
+    "Changed ART05 only, no ART04 replay/build; original Map4/geometry/theme/avatar pins.",
+    "World invariance compares the same actual App before/after Map/control/route navigation; no historical framebuffer equivalence claim.",
+    "Full ten-screen fidelity remains open.",
+    "No historical World framebuffer comparison: these ten pairs compare the same actual default App before/after Map navigation.",
+    "Post-run six-SVG/manifest intake is metadata-verified only; screenshots intentionally retain the earlier missing-asset state.",
+    "ART06 af298e32 is a separately source-qualified next candidate; not registered or qualified by these ART05 captures."
+  ]
+}

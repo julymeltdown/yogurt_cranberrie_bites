@@ -1,8 +1,9 @@
 # Map4 reference composition v1
 
-Recipe status: **SOURCE_VALIDATED_NATIVE_NOT_RUN**, `reference-correction-04`.
-The eight saved generated files are the separately validated correction04
-candidate. Correction03 remains preserved at94c47a8b, correction02 at1f2f9ff6.
+Recipe status: **SOURCE_VALIDATED_NATIVE_NOT_RUN**, `reference-correction-05`.
+The eight saved generated files are the separately validated correction05
+candidate. Qualified correction04 remains preserved at97d9d3f4 with its own
+later App captures/publication; correction03 at94c47a8b, correction02 at1f2f9ff6.
 No consumer's qualified scene/paint combination is implicitly replaced.
 Immutable8fcd1287 and46180268 handoffs remain preserved in Git history.
 This source is a complete Map-only illustration, with
@@ -158,6 +159,68 @@ requires its own atomic consumer registration and Root's fresh native captures;
 source previews do not qualify runtime labels/hits, World invariance or reference
 approval. Root remains sole native custodian. No job, temporary file or allocation
 is held; the existing frozen ART03 runtime candidate remains separate.
+
+Correction05 follows the actual ART04 App comparison, whose targeted planting
+fixes are visible but whose uniform roof masses and sparse architecture still
+differ from the supplied fourth Map reference. This is one architectural-density
+correction, confined to the same ten-file source pack and ART document:
+
+- Four deterministic roof profiles replace a single repeated hip-roof formula.
+  The central hall has a cross gable, flanking wings differ, and named buildings
+  retain stable varied silhouettes. Short tile relief, stepped eaves, warm
+  dormer/skylight groups and offset brick chimneys break uninterrupted roof
+  planes. Only original roof vectors receive varied shaded tones; exact atlas
+  facade RGBA and its existing nearest projection are unchanged.
+- Eight86x64 noninteractive secondary buildings fill authored gaps outside all
+  six112px label exclusions. Their centers clear every path centerline by82px
+  (half diagonal54px + outer path half-width23px +5px) and canonical centers by
+  at least84px. Existing buildings/paths/labels are not moved. Trees rooted inside
+  these new building footprints are removed; adjoining foliage retains natural
+  edge overlap, whole source silhouettes and the irregular spiral placement rule,
+  without colored substrate or broad cleared lawns.
+- Three small courtyard-furniture crops add detail above the Plaza/Meet labels
+  and in the southern courtyard. These are exact existing original atlas crops,
+  without actors, service symbols, navigation identities or physical claims.
+
+The approved warm era direction, seven path centerlines/widths, garden geometry,
+six service anchors/exclusions, four canonical display points/World cells, nine
+input pins, original Map4 tuples and layout schema/version remain fixed.
+Contain bands, marker leader lines, consumer code and selected characters remain
+outside this source patch. The new recipe/provenance/pixels require their own
+atomic source registration and relevant changed-source/native checks; neither
+ART04's source qualification nor its runtime PASS qualifies this candidate.
+No full visual match, SVG parity, live or device result is claimed.
+
+The first1556 source allocation failed its disk admission before any temporary
+directory or work child started. Its original clock was returned, without
+generation or an implicit extension. A fresh accepted
+`ART05-SOURCE-OUTPUT-A-202611041614Z` allocation ran the frozen b511f503 recipe,
+deterministic verification and the frozen868-byte preview child, once each:
+all exited0, with no warnings or retries. All eight generated files reproduced
+exactly; their total is8,007,432bytes. Ten-file size at resource release was
+8,057,602bytes, including the frozen authoring README.
+
+All three full-size PNGs and nine temporary source previews were directly
+opened at360x608,390x658,430x726 before independent cleanup. The central cross
+gable and differing ridge forms are visible at these scales; small windows,
+chimneys and added secondary buildings add architectural rhythm around the
+unchanged paths. Existing warm facades and complete foliage remain coherent.
+Courtyard furniture adds detail above reserved label space. Nevertheless, broad
+reserved lawns, large roof footprints and repeated facade sources still differ
+from the reference's darker, more intricate, compact overhead town. This is
+an incremental source improvement, without a fidelity score or final acceptance.
+Actual client labels/markers may obscure small roof details and require new
+candidate-specific native inspection after atomic intake.
+
+Last work ended16:15:42.988058Z on2026-11-04. Early guardian cleanup finished
+16:16:48.879023Z, and independent FULL release was checked16:17:21.371418Z,
+before the original16:18:40Z hard deadline. All nine previews/private directory
+were removed; no job, server, cache, output handle or allocation remains. Peak
+WHOLE77,162,719bytes, TMP1,930,717bytes and RSS including reserve142,491,648bytes
+stayed within96MiB/4MiB/512MiB; max ALL-owned processes4, one sequential child.
+The retained preview/output hashes, commands, source pins, failure and limitations
+are recorded in the ART document. Temporary previews are not durable evidence,
+App captures or proof of runtime labels, World invariance or physical admission.
 
 Run only inside a fresh accepted source-output allocation:
 

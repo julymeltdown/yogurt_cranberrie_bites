@@ -1,0 +1,227 @@
+{
+  "status": "SOURCE_NATIVE_OWNER_QUALIFIED_ROOT_FULLTYPES_PASS",
+  "source": "e587f6a667d68a9392949b9b569f99eeb0ff0048",
+  "atomicPins": [
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/README.md",
+      "beforeSha256": "3f06ba77952f8245ca19a4d1ad6f4973b184fe76cd926e24432f58d80f1764d2",
+      "afterSha256": "df104147260c16b3e3c271e42c08dff302c36dc4de6f5a575686a24b10361a90",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/build.py",
+      "beforeSha256": "51abee3bfcb78d34eb9d3e3934d225c23b9963a45905355d719814145d0e0d19",
+      "afterSha256": "369d0c9f5ac0046abebab2a6c3a7004d2d44ce7303d5a5826e8e3e075767c047",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
+      "beforeSha256": "a2dcf7f7346f01702b7dc033e4c85f2441165678a794b9563087f04bf07908e3",
+      "afterSha256": "1ac966073fcc98ab48fafee731277d6428df8dbbe54af692441bf14ba34ed85e",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
+      "beforeSha256": "e743bef95981fc5a434c80bf36fc839c67b0bfcf6b2a2b54d657339c9de7c6f6",
+      "afterSha256": "ec4b3fb22e3613a4a821f7e57b9d0e6af450a32f29c544033905342d406848d5",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/layout.json",
+      "beforeSha256": "2c14cc0145e19054ce4c65c8edef574e6156cf3eab7a14dff224b6c008c37f8d",
+      "afterSha256": "ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
+      "beforeSha256": "dbcc63274381f1ffe6128cc6b9caaedb2e406618f8464f218f554ec6294edabc",
+      "afterSha256": "b523405660ebc40d247bba7d24d1a862bd89177c76bd6551472996fea6d795b4",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
+      "beforeSha256": "0c6bc6256506b000dc6669940c482d5d8b057b95957e21732f8451209566b0eb",
+      "afterSha256": "06af5eec689d129407eb5669d9780dbc04e1a8c366163af0d620756578b772b7",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
+      "beforeSha256": "ad378c9b889d1a7f33c49ed3cceabef140cda3cbe5d64e46d5a2139516d0a148",
+      "afterSha256": "ebb27be3cfa4e2b56426f8bdc6fbe806121ff5e0c2174e3df731d3823451938c",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
+      "beforeSha256": "747c73424bf28099fd4f08a1b5aeae90b11df926464478be3e053ed02a0b3211",
+      "afterSha256": "54ca7c00a8be0685ab236290442904229c0e2698b8a62b9294ac00fb91a61a29",
+      "changed": true
+    },
+    {
+      "path": "frontend/public/world/map-reference-composition-v1/source-provenance.json",
+      "beforeSha256": "741f5eb2ee4dd91070fd43f0b1f839d69b3b95406b59df6e730052257d63638c",
+      "afterSha256": "282803af862cc3e2ff413cc45b603813f672caa5a8e53a2b5416e95725018d2a",
+      "changed": true
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/composition-overview.test.ts",
+      "beforeSha256": "4a7b217db534327c242a1f3b0a780a636c8811af69686699bfd734a7ab811697",
+      "afterSha256": "4a7b217db534327c242a1f3b0a780a636c8811af69686699bfd734a7ab811697",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/consumer.test.tsx",
+      "beforeSha256": "93dfc152d249d1b64f0ea418318d907e28274ef010a22a84f23306ecba8f8ccd",
+      "afterSha256": "93dfc152d249d1b64f0ea418318d907e28274ef010a22a84f23306ecba8f8ccd",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/contract.test.ts",
+      "beforeSha256": "5ca42486576aea3db187fc78d766d994402786773261dddb5f979db574c86aac",
+      "afterSha256": "5ca42486576aea3db187fc78d766d994402786773261dddb5f979db574c86aac",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/fixture.ts",
+      "beforeSha256": "554796ed0d28fcfd77504ec6f5d1952afc8ea579f58918db692abfccf9155673",
+      "afterSha256": "554796ed0d28fcfd77504ec6f5d1952afc8ea579f58918db692abfccf9155673",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/labels.test.ts",
+      "beforeSha256": "14f6cbc05f0b2089d8afd6ee6afefc0fa2df94023a8cc808fc8e3a172725598a",
+      "afterSha256": "14f6cbc05f0b2089d8afd6ee6afefc0fa2df94023a8cc808fc8e3a172725598a",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/loader.test.ts",
+      "beforeSha256": "aa16c13824ace93b076267af09b347bf800ccf95b04b78f02fdb38a239a49cdd",
+      "afterSha256": "aa16c13824ace93b076267af09b347bf800ccf95b04b78f02fdb38a239a49cdd",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/register.mjs",
+      "beforeSha256": "b0f1003f490b0f8dce6b902811d79900e7ea4faa8c011f9eef1464bf3adff784",
+      "afterSha256": "8d2c3b5e2714d0e91a3473410042b1fe6487729d8742e6537a24b8e5b3f37c57",
+      "changed": true
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/registration.test.ts",
+      "beforeSha256": "2b624a7e840e9555ae9499f4656f0949afa3385ba6f40eb17cfcb1204a767853",
+      "afterSha256": "0daae0b5da2bec71b096febbc1b595d0ef760f3f9a1b0af10e2b8b76aa9cdc50",
+      "changed": true
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/tsconfig.json",
+      "beforeSha256": "de92b0c2d06bc5e8dee256cb8cfa32b1d8218f815e73b11156efd67ccacbfaa6",
+      "afterSha256": "de92b0c2d06bc5e8dee256cb8cfa32b1d8218f815e73b11156efd67ccacbfaa6",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/map-presentation-v2/vitest.config.ts",
+      "beforeSha256": "8b6664da0f01be6183c8102d1976f5a1e5a4c6d6c23324308ff0cc0489f8762f",
+      "afterSha256": "8b6664da0f01be6183c8102d1976f5a1e5a4c6d6c23324308ff0cc0489f8762f",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/map-presentation-v2/loader.ts",
+      "beforeSha256": "de7b0839c27726a38b7dc3b6e9e1b7603ddc05c13f73cce01e6408838e52593c",
+      "afterSha256": "de7b0839c27726a38b7dc3b6e9e1b7603ddc05c13f73cce01e6408838e52593c",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/app/world-entry/reference-scene-overview.ts",
+      "beforeSha256": "5586a2e9b149b89460441db1e421a1e5ca6c09d30716ec5482916cff57c1b937",
+      "afterSha256": "5586a2e9b149b89460441db1e421a1e5ca6c09d30716ec5482916cff57c1b937",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/features/places/ui/IllustratedMap.tsx",
+      "beforeSha256": "a655570fcaef239ee8ec72b876a881c2b76b03815b0a7fa08125588b7f076112",
+      "afterSha256": "a655570fcaef239ee8ec72b876a881c2b76b03815b0a7fa08125588b7f076112",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/features/places/ui/reference-scene/map-service-links.tsx",
+      "beforeSha256": "d1c259404fcde6ba0eba4b7e434e232f958809a4041c6872c27936122481a339",
+      "afterSha256": "d1c259404fcde6ba0eba4b7e434e232f958809a4041c6872c27936122481a339",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/contract.ts",
+      "beforeSha256": "43be2545f73c029b4b34c9f6b9035f675c2098c8953f61551a403ad2078825e6",
+      "afterSha256": "43be2545f73c029b4b34c9f6b9035f675c2098c8953f61551a403ad2078825e6",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/current.ts",
+      "beforeSha256": "43c3f1e0270741b6f9be7ea39173a839e59037562799aef7bd87c609522eeaab",
+      "afterSha256": "43c3f1e0270741b6f9be7ea39173a839e59037562799aef7bd87c609522eeaab",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/labels.ts",
+      "beforeSha256": "43b93f873276a99dcc5eeb99230cb83c390827bbefccf6f306afb50db7c9a34d",
+      "afterSha256": "43b93f873276a99dcc5eeb99230cb83c390827bbefccf6f306afb50db7c9a34d",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/layout-source.json",
+      "beforeSha256": "2c14cc0145e19054ce4c65c8edef574e6156cf3eab7a14dff224b6c008c37f8d",
+      "afterSha256": "ea467e5e9b8b689c23a1ff13032192f686068b82d0b3d15338e664a2eac4f8b1",
+      "changed": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/model.ts",
+      "beforeSha256": "13020517c600a4b2a7bf30ca2fdfb15f9571d40edea612bae0853f56e9e6b0fa",
+      "afterSha256": "13020517c600a4b2a7bf30ca2fdfb15f9571d40edea612bae0853f56e9e6b0fa",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/presentation-json.ts",
+      "beforeSha256": "58df0486f53cf7c3a1778e7266b5f4dc88a091f585b164a72a4903f63d656939",
+      "afterSha256": "58df0486f53cf7c3a1778e7266b5f4dc88a091f585b164a72a4903f63d656939",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/registration.ts",
+      "beforeSha256": "a9c1797b8dec84ab18a3906e21d2b8f22a155da9107011a85ed792914a9d8809",
+      "afterSha256": "cddd2636fbc1370d028e381642e29387c1e29a30811ffeba5a50f800eac56a96",
+      "changed": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/resources.json",
+      "beforeSha256": "4b92b8b9c2e3e1c1a04e6f53a53c0188d2bdc4fab0b5d118ea75ad1116bd8d3a",
+      "afterSha256": "9071d1b91ed7d5194be6b896fce8081a645280652a62e00a62eabf4e40d7b7df",
+      "changed": true
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/semantics.ts",
+      "beforeSha256": "cf5ff7240e4674407ba47f247e8a64eaf91ee8dc59f6ed962b77ab752ad1dfff",
+      "afterSha256": "cf5ff7240e4674407ba47f247e8a64eaf91ee8dc59f6ed962b77ab752ad1dfff",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style-source.json",
+      "beforeSha256": "a7468e7208e70db82c402db7676b7046b739fec681d017082f121d99798c3305",
+      "afterSha256": "a7468e7208e70db82c402db7676b7046b739fec681d017082f121d99798c3305",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map4-service-v2/style.ts",
+      "beforeSha256": "c5f96d6a8616398f2922a0af19285c43cb62d2906a1db8d142af79e050c28c04",
+      "afterSha256": "c5f96d6a8616398f2922a0af19285c43cb62d2906a1db8d142af79e050c28c04",
+      "changed": false
+    },
+    {
+      "path": "frontend/src/world/reference-scene/overview.ts",
+      "beforeSha256": "1c64590a29a57071026f33d0cdd602cb601e4662d25e7476596ab6967beb3474",
+      "afterSha256": "1c64590a29a57071026f33d0cdd602cb601e4662d25e7476596ab6967beb3474",
+      "changed": false
+    }
+  ],
+  "source07": "af7dd7ad",
+  "qualifiedNative": "e3ed13f735953aea9e03b65554cd7710deb9cfcc",
+  "preservedConcurrentRootProse": true,
+  "limits": "controlledHTTP/C05only; fullvisual/live/deviceOPEN",
+  "combinedSource": "docs/mcr/evidence/root-map-profile-integration/source-01/run/release.json"
+}

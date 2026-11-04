@@ -1,0 +1,45 @@
+{
+  "id": "ROOT-MAP-PROFILE-SOURCE-B-202611041724Z",
+  "task": "ROOT-MAP-PROFILE-INTEGRATION",
+  "accepted": true,
+  "acceptedAt": "2026-11-04T17:23:00.951817+00:00",
+  "head": "01ea833d6cf3d7e51653fd998dafa58d981cf47a",
+  "kind": "source",
+  "startupFloorBytes": 12884901888,
+  "hardDeadline": "2026-11-04T17:26:00.951817+00:00",
+  "cleanupSeconds": 60,
+  "limits": {
+    "processes": 4,
+    "rssBytes": 2684354560,
+    "wholeBytes": 2147483648,
+    "tempBytes": 83886080,
+    "outputBytes": 25165824,
+    "newTotalBytes": 134217728
+  },
+  "commands": [
+    [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+      "--project",
+      "tsconfig.json",
+      "--noEmit",
+      "--incremental",
+      "false",
+      "--allowImportingTsExtensions",
+      "--pretty",
+      "false"
+    ],
+    [
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+      "--deny-warnings",
+      "src/app/account-entry/panels.tsx"
+    ]
+  ],
+  "preflight": {
+    "freeBytes": 29761163264,
+    "conservativeAggregateReservationsBytes": 2147483648,
+    "remainingBytes": 27613679616,
+    "authorization": "actual213Source-BFULL17:18:44directRootcallercombinedchecknext",
+    "scope": "fullapptypesafteratomicART05source+cachedcounterpart871+Root2fcaller; scopedcallerlintonly"
+  }
+}
