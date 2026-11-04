@@ -347,6 +347,9 @@ impl GiftRequest {
     pub fn input(&self) -> &GiftInput {
         &self.input
     }
+    pub(crate) fn into_input(self) -> GiftInput {
+        self.input
+    }
 }
 pub enum GiftReply {
     Json { status: u16, body: Value },

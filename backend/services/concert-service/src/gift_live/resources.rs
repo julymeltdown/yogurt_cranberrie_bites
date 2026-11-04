@@ -110,16 +110,7 @@ impl<M: GiftMediaLink> CommunityResources for PgGiftResources<M> {
         event: Uuid,
     ) -> Result<GiftSettings, CommandError> {
         self.bind(c, event, None).await?;
-        let row=sqlx::query("select s.pickup_grace_seconds,m.event_cutoff from concert_event_settings s join concert_meeting_settings m using(event_id) where s.event_id=$1 for share of s,m")
-            .bind(event).fetch_optional(c).await.map_err(db)?.ok_or(CommandError::Unavailable)?;
-        let grace: i64 = row.try_get("pickup_grace_seconds").map_err(db)?;
-        if !(0..=86400).contains(&grace) {
-            return Err(CommandError::Unavailable);
-        }
-        Ok(GiftSettings {
-            pickup_grace_seconds: grace as i32,
-            event_cutoff: row.try_get("event_cutoff").map_err(db)?,
-        })
+        current_settings_in(c, event).await
     }
     async fn gift_media_in(
         &self,
@@ -162,9 +153,23 @@ impl<M: GiftMediaLink> CommunityResources for PgGiftResources<M> {
             Some((meeting.map_revision, meeting.place_revision)),
         )
         .await?;
-        // Commit-time protection covers a meeting that expires during later work.
         crate::community::policy::pin_effect_until(c, meeting.expires_at).await
     }
+}
+pub(crate) async fn current_settings_in(
+    c: &mut PgConnection,
+    event: Uuid,
+) -> Result<GiftSettings, CommandError> {
+    let row=sqlx::query("select s.pickup_grace_seconds,m.event_cutoff from concert_event_settings s join concert_meeting_settings m using(event_id) where s.event_id=$1 for share of s,m")
+            .bind(event).fetch_optional(c).await.map_err(db)?.ok_or(CommandError::Unavailable)?;
+    let grace: i64 = row.try_get("pickup_grace_seconds").map_err(db)?;
+    if !(0..=86400).contains(&grace) {
+        return Err(CommandError::Unavailable);
+    }
+    Ok(GiftSettings {
+        pickup_grace_seconds: grace as i32,
+        event_cutoff: row.try_get("event_cutoff").map_err(db)?,
+    })
 }
 async fn select_place(
     c: &mut PgConnection,

@@ -37,6 +37,9 @@ pub fn checked_reply(
 ) -> Result<GiftReply, ProjectionError> {
     use super::protocol::GiftOperation::*;
     let schema = if status == 202 && operation.mutation() {
+        if body["state"] != "PENDING" {
+            return Err(ProjectionError);
+        }
         "Domain_common_CommandReceipt"
     } else if status == 200 {
         match operation {

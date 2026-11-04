@@ -2,6 +2,10 @@
 
 Status: IN_PROGRESS. The focused slice compiles and its 20 local tests pass. Canonical-owner business flows and live HTTP acceptance remain NOT_RUN.
 
+The later runtime/media/query candidate described below is not covered by that
+20-test proof. Its compilation and 25 planned focused checks are NOT_RUN pending
+another explicitly allocated existing target. Published baseline: `2363d2cc`.
+
 ## Assignment and source
 
 Sole producer owner: chat `01a1a267-37a0-7723-a4e9-a3a6f5b27f52`.
@@ -93,6 +97,51 @@ Concert `PublicProfileReader::read(&GuardedSubject)` assembly is still unqualifi
 until actual canonical scope/client dependencies are published and validated.
 
 ## Validation and remaining work
+
+### Unpublished business-runtime candidate
+
+New `GiftRuntime` source dispatches all thirteen operations through actual
+root-supplied `Arc<OwnerGuardScope>` and retained `PgGifts` mutations. It validates
+the exact scope/request binding, runs under the original scope stop and never
+releases guards. The constructor requires actual PG, receipt/pickup keys, a
+dedicated cursor key, sanitizer and mandatory `GiftProfiles` port accepting only
+sealed `GuardedSubject`. No default profile, UUID-only authority or positive
+canonical fixture is supplied. The qualified concrete Concert PublicProfile reader
+adapter remains an external prerequisite before route activation.
+
+Claim requires root's sealed stable keyed network bucket. Root confirms the
+current transport has no such field, so absent context returns unavailable before
+effects. This is unfinished delivery, not a scope cut. Completed code-issuance
+replay without its one-shot response returns `409 INVALID_TRANSITION`; it neither
+regenerates a code nor reports SUCCEEDED as pending. `202` is PENDING only. Actual
+command-status integration remains coordinated with root.
+
+The candidate media adapter captures the uploader's exact admission/security
+semantics, durably registers the same transaction, validates actual self interaction
+policy, domain transition, settings/cutoff and the exact requested image/target.
+New create targets are admitted only through validated server-derived create intent
+before retained row persistence. Actual `PgMedia::link_owned_in` remains the media
+writer on the same connection, so later Gift failure rolls back the link. Media
+owner's announced `prelock_target_in` extension is not yet published and must be
+implemented explicitly on that exact pin; no default-linked fallback is assumed.
+
+Frozen C04 requires `created_at DESC,id DESC` and a fixed upper snapshot; retained
+Gift list/management use ascending order. New Gift-owned queries implement the
+contract without changing retained stores. They validate aggregate/header identity
+and counters, reauthorize each selected subject, bind cursors to operation as well
+as actor/event/collection/filters/limit, and keep the upper boundary encrypted in
+version-2 tokens. Reservation creation time is read from the actual retained
+aggregate. Root resolution uses an internal unlocked hint, then locks Gift root
+before rechecking/locking the exact reservation, matching mutation lock order.
+Management invokes retained durable DB-clock readiness/expiry transitions before
+filtering and projecting; large-page/deadline behavior still requires native proof.
+
+The candidate incorporates published canonical SDK2 `c4ad561c`, whose exact full
+acknowledged transaction deduplication replaces repeated network tracking; no local
+PID/connection cache is added. Five planned frozen binaries cover 8 protocol,
+5 cursor, 5 response, 4 local resource and 3 native query tests. Native query tests
+exercise actual SQL plus retained Gift mutations with synthetic test-only policy;
+they do not construct canonical scope/subject fixtures or certify Auth/Friend.
 
 Authored protocol tests cover all thirteen route/body shapes, authority injection,
 missing/duplicate fields, method/event/identity mismatch, strict queries, mutation

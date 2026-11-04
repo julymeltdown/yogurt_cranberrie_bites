@@ -124,7 +124,7 @@ impl FencedRelationshipAuthority for TrackedCanonical {
 }
 
 pub struct ScopedGiftAuthority<M> {
-    inner: SharedCommunityAuthority<TrackedCanonical, PgGiftResources<M>>,
+    inner: Arc<SharedCommunityAuthority<TrackedCanonical, PgGiftResources<M>>>,
     safety: bool,
 }
 impl<M: GiftMediaLink> ScopedGiftAuthority<M> {
@@ -136,10 +136,10 @@ impl<M: GiftMediaLink> ScopedGiftAuthority<M> {
     ) -> Result<Self, CommandError> {
         let canonical = TrackedCanonical::new(request, scope).map_err(command)?;
         Ok(Self {
-            inner: SharedCommunityAuthority::new(
+            inner: Arc::new(SharedCommunityAuthority::new(
                 PgRelationshipPolicy::new(pool, canonical),
                 PgGiftResources::new(request, media)?,
-            ),
+            )),
             safety: request.operation() == GiftOperation::Cancel,
         })
     }
@@ -150,6 +150,14 @@ impl<M: GiftMediaLink> ScopedGiftAuthority<M> {
             CommunityAccess::SafetyGifts
         } else {
             access
+        }
+    }
+}
+impl<M> Clone for ScopedGiftAuthority<M> {
+    fn clone(&self) -> Self {
+        Self {
+            inner: self.inner.clone(),
+            safety: self.safety,
         }
     }
 }
