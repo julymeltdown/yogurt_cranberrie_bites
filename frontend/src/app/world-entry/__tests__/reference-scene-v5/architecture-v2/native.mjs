@@ -44,7 +44,7 @@ async function resourceGuard() {
  const disk=await statfs(root),freeBytes=disk.bavail*disk.bsize
  const size=async path=>{let total=0;for(const entry of await readdir(path,{withFileTypes:true})){const p=resolve(path,entry.name);if(entry.isDirectory())total+=await size(p);else if(entry.isFile())total+=(await stat(p)).size}return total}
  const outputBytes=await size(resolve(output,'..'))
- const mains=execFileSync('ps',['-axo','command='],{encoding:'utf8'}).split('\n').filter(line=>line.includes('/Google Chrome.app/Contents/MacOS/Google Chrome ')&&line.includes('--headless'))
+ const mains=execFileSync('ps',['-axo','command='],{encoding:'utf8'}).split('\n').filter(line=>line.trimStart().startsWith('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome ')&&line.includes('--headless'))
  resourceSamples.push({freeBytes,outputBytes,headlessChromeMains:mains.length})
  assert(freeBytes>=8*1024**3,'Fresh8GiBfloor');assert(outputBytes<=0.2*1024**3,'Newoutput/cachehardcap');assert(mains.length<=(browser?1:0),'Another headless capture is active')
 }
