@@ -184,7 +184,10 @@ async fn every_child_query_identity_expiry_digest_and_own_subject_must_match() {
     for field in 0..9 {
         let mut v = q.clone();
         match field {
-            0 => v.actor = Uuid::new_v4(),
+            0 => {
+                v.actor = Uuid::new_v4();
+                v.subject = v.actor;
+            }
             1 => v.event = Uuid::new_v4(),
             2 => v.family = Uuid::new_v4(),
             3 => v.request = Uuid::new_v4(),
