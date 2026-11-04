@@ -1,0 +1,12 @@
+{
+  "kind": "Updated actual allocator inventory after conservative acceptance; no clock change",
+  "epoch": 1793823462.5146492,
+  "acceptedConservativeAll": 2986344448,
+  "currentActualOther": 2193850368,
+  "currentActualAll": 2630057984,
+  "inventory": "A Media1.75GiB +DAdmin128MiB +remainingprep180584448 +JOINT416MiB; noLegacy/Artist/oldB reservations",
+  "freshFreeBytes": 19999412224,
+  "freshFreeMinusActualAll": 17369354240,
+  "workDeadline": "2026-11-04T20:22:10.010422+00:00",
+  "hardDeadline": "2026-11-04T20:23:10.010422+00:00"
+}

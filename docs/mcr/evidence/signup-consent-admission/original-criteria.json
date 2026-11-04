@@ -13,9 +13,9 @@
         "frontend/src/features/auth/ui/VerifyEmail.tsx",
         "frontend/src/features/auth/model/enrollment-contract.ts"
       ],
-      "state": "IN_PROGRESS",
-      "disposition": "Canonical signup/verification source published and controlled native forms inspected360/390/430; actualproducerbrowserpairing stillopen",
-      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
+      "state": "INTEGRATED",
+      "disposition": "Canonicalnewformsactual390main/Auth/mailqualified; controllednative360/390/430 retained; realWorldphase2OPEN",
+      "freshValidation": "Feature191/source+affectedcentral63+controllednative7unchanged; freshactualcanonicalmain/Auth-only5casesPASS2015, noerrors/repairs, zeroWorldunknownsocketattempts; realWorldphase2OPEN"
     },
     {
       "id": "validation",
@@ -24,9 +24,9 @@
         "frontend/src/features/auth/model/enrollment-contract.ts",
         "frontend/src/features/auth/model/recovery-contract.ts"
       ],
-      "state": "IN_PROGRESS",
-      "disposition": "RawUTF8 validation source-qualified; rendered native submit/secret-clearing checks pass; realproducerbrowserpairing stillopen",
-      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
+      "state": "INTEGRATED",
+      "disposition": "RawUTF8/email/code source-qualified; actualrenderedsubmit/secretchecks/opaqueURLscrub passed withrealproducer",
+      "freshValidation": "Feature191/source+affectedcentral63+controllednative7unchanged; freshactualcanonicalmain/Auth-only5casesPASS2015, noerrors/repairs, zeroWorldunknownsocketattempts; realWorldphase2OPEN"
     },
     {
       "id": "consent",
@@ -37,8 +37,8 @@
         "frontend/src/features/auth/model/enrollment.ts"
       ],
       "state": "IN_PROGRESS",
-      "disposition": "Internal client implemented; production approved document publication not supplied, no invented fixture acceptance",
-      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
+      "disposition": "Actualsyntheticoperatorpolicyrotation\u2192canonicalCONSENT_REQUIRED\u2192exactexplicitacks/protectedconsentonce\u2192freshADMITTED PASS. Approvedproductiondocumentsstillabsent; no inventedlegal/ageacceptance.",
+      "freshValidation": "Feature191/source+affectedcentral63+controllednative7unchanged; freshactualcanonicalmain/Auth-only5casesPASS2015, noerrors/repairs, zeroWorldunknownsocketattempts; realWorldphase2OPEN"
     },
     {
       "id": "expiry",
@@ -47,9 +47,9 @@
         "frontend/src/features/auth/model/enrollment.ts",
         "frontend/src/features/auth/ui/SignUp.tsx"
       ],
-      "state": "IN_PROGRESS",
-      "disposition": "Known local attempt expiry blocks dispatch; server remains authority for generic challenge expiry, no fabricated challenge-expires field; explicit restart only",
-      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
+      "state": "INTEGRATED",
+      "disposition": "Knownlocalattemptexpiry blocksdispatch; realcorrectcode withnegativelyexpiredcanonicalchallenge returned422 withoutcompletion; latestrealresendcode verified",
+      "freshValidation": "Feature191/source+affectedcentral63+controllednative7unchanged; freshactualcanonicalmain/Auth-only5casesPASS2015, noerrors/repairs, zeroWorldunknownsocketattempts; realWorldphase2OPEN"
     },
     {
       "id": "resend",
@@ -58,9 +58,9 @@
         "frontend/src/features/auth/model/enrollment.ts",
         "frontend/src/features/auth/ui/SignUp.tsx"
       ],
-      "state": "IN_PROGRESS",
-      "disposition": "Receipt resendAvailableAt and Retry-After control monotonic waits; no invented duration or mail delivery claim",
-      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
+      "state": "INTEGRATED",
+      "disposition": "Realpredeadline202 sameauthoritativedeadline/noadditionalmail; actual60sUIwait/noautoPOST; explicitfreshresend/latestactualworker captureverified; serverremainsquotaauthority",
+      "freshValidation": "Feature191/source+affectedcentral63+controllednative7unchanged; freshactualcanonicalmain/Auth-only5casesPASS2015, noerrors/repairs, zeroWorldunknownsocketattempts; realWorldphase2OPEN"
     },
     {
       "id": "double-submit",
@@ -69,9 +69,9 @@
         "frontend/src/features/auth/model/enrollment.ts",
         "frontend/src/features/auth/ui/SignUp.tsx"
       ],
-      "state": "IN_PROGRESS",
-      "disposition": "Synchronous UI/controller reservation; body UUID; no automatic replay; explicit unknown retry retains exact request",
-      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
+      "state": "INTEGRATED",
+      "disposition": "Actualdoubleformsignup oneattempt+onesignup; loginone; explicitdoubleconsent onePOST; unknownretry source/nativeevidenceunchanged",
+      "freshValidation": "Feature191/source+affectedcentral63+controllednative7unchanged; freshactualcanonicalmain/Auth-only5casesPASS2015, noerrors/repairs, zeroWorldunknownsocketattempts; realWorldphase2OPEN"
     },
     {
       "id": "real-vertical-flow",
@@ -80,16 +80,16 @@
         "frontend/src/features/auth/__tests__/enrollment-browser-smoke.mjs",
         "frontend/src/features/auth/__tests__/enrollment-main-browser.mjs"
       ],
-      "state": "IN_PROGRESS",
-      "disposition": "Real Auth/RPC/Gateway/mail producer owner-qualified and published22b11054. Actual main client source authored; paired Auth-only browser pending. Coherent real concert/bootstrap/World producer not ready; no synthetic success claim.",
-      "freshValidation": "Feature/source191PASS, affectedcentral63PASS/types/lint0; controllednative7casesPASS360/390/430; actualcurrentAuth/mail/mainbrowser/WorldflowNOT_RUN"
+      "state": "INTEGRATED",
+      "disposition": "Actualsignup\u2192canonicalmailworker\u2192verification\u2192canonicalsign-in/currentconsent/admission Auth-onlyPASS2015; actualbootstrap503/canvas0/WorldUnknown0 deliberate. CoherentrealWorldcontinuation remainsrequiredOPEN.",
+      "freshValidation": "Feature191/source+affectedcentral63+controllednative7unchanged; freshactualcanonicalmain/Auth-only5casesPASS2015, noerrors/repairs, zeroWorldunknownsocketattempts; realWorldphase2OPEN"
     }
   ],
   "externalInputs": [
     "Actual approved legal/eligibility publication remains absent",
     "Restricted-age provider remains independent of basic signup; no invented verified-age or eligibility boolean"
   ],
-  "resourceState": "NativefeatureFULL18:52:04.687118Z; no resourcehold. ActualmainAuthmailpair awaits207qualifiedfixture; realWorldphase2 separate",
+  "resourceState": "Both2015actorsFULL20:19:31.832471Z latest; allresource0/nohold. RealWorldphase2awaitscoherentproducer.",
   "historicalEvidence": [
     {
       "path": "docs/mcr/evidence/real-email-flow/index.json",
@@ -160,5 +160,22 @@
     "qualification": "browser-main-01/qualification.json",
     "disposition": "Actualcanonical main/Auth/mail/expiry422/server60s/latestverify/renewedconsent/admission/bootstrap503 reached; finalunclassifiedsocket3vs0FAILED, nooverallPASS. Repairsourceauthored; freshfixture/rerunrequired.",
     "resources": "BothactorsFULL19:59:37.371093Z latest; resource0, nohold"
+  },
+  "currentClientSource": "b76023025528ab6a262255bba710f6ea08b4392b",
+  "currentCanonicalClientSource": "7804fbaef9f6c41177b45e391a9f5c7b6e1d6a06",
+  "actualMainBrowser2015": {
+    "state": "INTEGRATED",
+    "qualification": "browser-main-02/qualification.json",
+    "disposition": "Actualcanonicalmain/Auth/mail/expiry422/real60s/latestverify/renewedexplicitconsent/currentADMITTED PASS; actualdevHmr4/WorldUnknown0/bootstrap503/canvas0. CoherentWorld/externalmail/productionlegal stillopen.",
+    "resourceFull": "2026-11-04T20:19:04.297074+00:00",
+    "backendResourceFull": "2026-11-04T20:19:31.832471Z",
+    "repairs": 0
+  },
+  "latestCanonicalPublication": {
+    "source": "b76023025528ab6a262255bba710f6ea08b4392b",
+    "published": "7804fbaef9f6c41177b45e391a9f5c7b6e1d6a06",
+    "responsiblePublisher": "Root153",
+    "receipt": "/private/tmp/mcr-root-avatar-profile-auth-publication-receipt.json",
+    "scope": "Exact28ownedharness/Consentlayout/doc/evidence chain; ports/policyexcluded; nowactualphase1qualifiedseparately, no oldfailureupgrade"
   }
 }

@@ -1,0 +1,9 @@
+{
+  "policyRevision": "f4ef20e0-3995-4f67-8156-f03e2b1c47b5",
+  "previousRevision": "e65d6827-f485-4674-a8ef-31d3a5393c78",
+  "requiredAcknowledgementIds": [
+    "isolated-browser-terms-v2"
+  ],
+  "serverTime": "2026-11-04T20:18:32.915122Z",
+  "syntheticPolicyOnly": true
+}

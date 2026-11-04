@@ -1,0 +1,28 @@
+{
+  "allocation": "AUTH-JOINT-207-204-20261104T2015Z",
+  "state": "BOTH_FULL",
+  "observed_epoch": 1793823571.895797,
+  "BE_FULL_epoch": 1793823571.8324711,
+  "BE_receipt": "/private/tmp/mcr-enrollment207-pair-9qqn4tjq/full-release.json",
+  "BE_sha256": "da0510098fe4581e8acca170aaee9943556f82ccfc232af43ea1570c980c096f",
+  "FE_FULL_epoch": 1793823544.297354,
+  "FE_receipt": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/docs/mcr/evidence/signup-consent-admission/browser-main-02/release.json",
+  "FE_sha256": "5d9dc8222cb36692ade3cbc79eef188f2ab53c50cfb4a3037ef6e4d82c8a446a",
+  "FE_owner_verdict": "Five actual Auth-only main journey cases PASS, command/guard0, exactVITE_HMR4/World_or_unknown_attempt0/zeroCanvas/bootstrap503; no coherent World/externalmail/legal claim",
+  "BE_resources": {
+    "workflow": 0,
+    "compiler": 0,
+    "guardians": 0,
+    "children": 0,
+    "postgres": 0,
+    "rpc_http_mail": 0,
+    "copied_binary_readers": 0,
+    "target_access": 0,
+    "new_exe_copies": 0
+  },
+  "FE_owner_resource_disposition": "all own PIDs/guard/listener3000/link/scratch/cache0; exact owned external singleton0; prior208B4 preserved",
+  "successors": {
+    "B": "01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c",
+    "C": "01a1a1fe-1ab7-79b0-adbc-d4c025701acb"
+  }
+}
