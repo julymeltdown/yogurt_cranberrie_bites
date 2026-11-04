@@ -50,9 +50,11 @@ def wait_pending(cluster,count):
   require(time.monotonic()<stop,"prepared-count")
   time.sleep(.01)
 def source_manifest():
- files=[ROOT/"backend/Cargo.toml",ROOT/"backend/Cargo.lock"]
- for folder in ("backend/services","backend/crates","backend/proto","backend/scripts/mcr"):
-  files.extend(p for p in (ROOT/folder).rglob("*") if p.is_file() and p.suffix in {".rs",".toml",".sql",".proto",".py",".json"})
+ files=[ROOT/"backend/Cargo.lock"]
+ for folder in ("backend","contracts"):
+  files.extend(p for p in (ROOT/folder).rglob("*") if p.is_file()
+      and not any(part in {"target","__pycache__","node_modules",".git"} for part in p.relative_to(ROOT).parts)
+      and p.suffix in {".rs",".toml",".sql",".proto",".py",".json",".md",".patch"})
  return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(set(files))}
 def request(url,event,token,origin,partial=False):
  target=urlsplit(url);connection=socket.create_connection((target.hostname,target.port),timeout=5)
@@ -230,7 +232,7 @@ def run(args):
             reply=wait_file(stack.cluster.root/f"retention-reply-{selected}.json",host)
             wait_pending(stack.cluster,len(negatives)*2+2)
             # TTL passage never substitutes for body/producer terminal proof.
-            time.sleep(1.1)
+            time.sleep(max(0,reply["original_expiry"]/1_000_000-time.time())+.1)
             state=observe(stack.cluster,reply["scope_id"])
             require(state["serialized"] and not state["delivered"] and not state["abandoned"] and not state["cancellation_settled"],"negative-stays-quarantined")
             negatives.append({"mode":selected,"root":state,"partial_data":dropped["partial_data"],"prepared":pending(stack.cluster)})
