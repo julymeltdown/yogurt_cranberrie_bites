@@ -245,3 +245,41 @@ and verifies the charge cannot be deleted during its live window. Capabilities
 must retain the consumed 256 cells; a second 256-cell action reaches 512 and the
 next one-cell edit is denied. This covers receipt/history retirement without a
 synthetic clock or fabricated authority. It remains NOT_RUN until allocated PG.
+
+## Native allocation enforcement
+
+The native controller now requires the exact already accepted allocation ID,
+deadline, free-space floor and owned-byte ceiling on its command line. These
+arguments record an allocation; they do not grant one. It measures only its
+marker-owned cluster, without following links or inspecting Cargo targets.
+Every native test runs in a controller-owned process group with checks at
+250 ms intervals. Deadline, floor, ceiling and per-test timeout failures stop
+that live child group, retain redacted diagnostics in the report, and reach the
+existing owned-cluster cleanup. Cluster startup, PKI and restart also have
+checks around their bounded helper calls; a whole-round external guardian is
+still required if the accepted offer requires a hard deadline across those
+helpers. The controller does not implicitly extend an accepted allocation.
+
+Source-only guardian tests pass (two cases, exit 0), including an injected
+free-space breach that stops its own live child, retains its failure/output,
+and leaves a separate process running. This exercises no Cargo, PostgreSQL or
+browser. Native behavior and cleanup under actual PostgreSQL remain NOT_RUN.
+
+## Contract-only publication packet
+
+The frozen 21-path contract commit is
+`c18d5ba9fd27a73356d9be68614863172303c81f`. A selective public readset at
+`db661820d6af1770839cfda8d0dc6b9ada1ece1b` (237 files, 3,801,760 bytes)
+passed the unchanged OpenAPI and transport checks before the overlay. Applying
+exact C18 postimages then passed 101 domain regressions, five Wall regressions,
+the domain validator (114 operations/55 fixtures), and both generated checks,
+all exit 0. Both unchanged generators reproduced the exact three C18 outputs.
+There is no current-public projection adjustment at that recorded revision.
+The TypeScript blob is `69546e8f5ddf0dc4fc7e0acd6c0980646bfe2ad5`, SHA-256
+`29496fd06ebb6f8567499a980c793b778ca3580e6eae1230bf7d3ddb49937117`;
+both OpenAPI mirrors retain the Wall output hash recorded above. Root received
+the exact path list, public/source/output manifests and command/exit records.
+This handoff excludes later engine, native, startup and migration commits and
+confers no runtime acceptance. If publication inputs change, retain unrelated
+operations and regenerate from the receiving public base with the unchanged
+generators rather than overwriting newer contract work.

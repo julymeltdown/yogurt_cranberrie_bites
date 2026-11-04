@@ -8,7 +8,6 @@ import argparse
 import hashlib
 import json
 import re
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -19,6 +18,8 @@ from migration_smoke import (Cluster, PG_TOOLS, SmokeError, check_ledger,
                              executable, execute, migration_manifest)
 from auth_invalidation_smoke import frozen_binary
 from invalidation_clients_smoke import pki
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from resource_guard import NativeBudget
 
 OWNERS = ("auth", "friend", "concert", "profile")
 DATABASES = {owner: ("mcr_concert_wall_b" if owner == "concert" else f"mcr_canonical_{owner}")
@@ -30,7 +31,9 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def source_manifest() -> dict[str, str]:
-    paths = {ROOT / "backend/Cargo.toml", ROOT / "backend/Cargo.lock", ROOT / "scripts/mcr/validate-domain.py", Path(__file__).resolve()}
+    paths = {Path(__file__).resolve().with_name("resource_guard.py"),
+             ROOT / "backend/Cargo.toml", ROOT / "backend/Cargo.lock",
+             ROOT / "scripts/mcr/validate-domain.py", Path(__file__).resolve()}
     for prefix in ("backend/crates", "backend/proto", "backend/services/auth-service",
                    "backend/services/friend-service", "backend/services/concert-service",
                    "backend/services/profile-service", "contracts"):
@@ -77,27 +80,29 @@ def profile_pki(cluster: Cluster) -> None:
         execute([str(openssl),*args],env=cluster.env,cwd=directory,phase="fixture-profile-pki",timeout=30)
     (directory/"profile.key").chmod(0o600)
 
-def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
+def qualify(checkpoint: dict, pg: Path, report: dict, budget: NativeBudget) -> None:
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     if checkpoint["source_commit"] != commit or checkpoint["source_sha256"] != source_manifest():
         raise SmokeError("preflight", "source checkpoint changed")
     if subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True).strip():
         raise SmokeError("preflight", "clean committed fixture source required")
     binary = frozen_binary(Path(checkpoint["binary"]), checkpoint["binary_sha256"])
-    if shutil.disk_usage(ROOT).free < 8 * 1024**3:
-        raise SmokeError("preflight", "8 GiB free required")
+    budget.check()
     tools = {name: executable(pg / name) for name in PG_TOOLS}
     cluster = Cluster(tools)
     report.update(source_commit=commit, source_sha256=checkpoint["source_sha256"],
                   binary_sha256=checkpoint["binary_sha256"], owned_root=str(cluster.root), phases={})
     try:
+        budget.check(cluster)
         cluster.init()
+        budget.check(cluster)
         with (cluster.data / "postgresql.conf").open("a") as stream:
             # Holds both source-owner guards plus full-page local children.
             stream.write("\nmax_prepared_transactions=256\n")
         cluster.start()
         pki(cluster)
         profile_pki(cluster)
+        budget.check(cluster)
         version = cluster.sql("postgres", "show server_version_num;")
         if int(version) // 10000 != 16:
             raise SmokeError("preflight", "PG16 required")
@@ -111,11 +116,12 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
                "MCR_CANONICAL_SYSTEM": cluster.sql("postgres", "select system_identifier from pg_control_system();")}
         report["migration_receipts"] = {}
         report["pure"] = {}
-        result=execute([str(binary), "--test-threads=1", "--nocapture"], env=env, phase="pure", cwd=ROOT/"backend")
+        result=budget.execute([str(binary), "--test-threads=1", "--nocapture"], cluster=cluster, env=env, phase="pure", cwd=ROOT/"backend")
         if "test result: ok. 1 passed; 0 failed; 7 ignored;" not in result.stdout:
             raise SmokeError("inventory", "exact one pure and seven native cases required")
         report["pure"]={"exit_code":result.returncode,"stdout":result.stdout}
         for index,case in enumerate(CASES):
+            budget.check(cluster)
             # Every native case receives a fresh four-store fixture. Selected
             # release event IDs stay canonical without cross-test rows.
             for owner in OWNERS:
@@ -124,7 +130,7 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
                     cluster.sql("postgres", f"drop database {db} with (force);")
                 execute([str(tools["createdb"]), "--no-password", "--maintenance-db=postgres", db], env=cluster.client_env("postgres"),phase=f"create-{owner}",cwd=cluster.root)
                 env[f"MCR_CANONICAL_{owner.upper()}_URL"]=cluster.url(db)
-            result=execute([str(binary),"--ignored","--exact",case,"--test-threads=1","--nocapture"],env=env,phase=case,cwd=ROOT/"backend",timeout=60)
+            result=budget.execute([str(binary),"--ignored","--exact",case,"--test-threads=1","--nocapture"],cluster=cluster,env=env,phase=case,cwd=ROOT/"backend",timeout=60)
             if "test result: ok. 1 passed; 0 failed;" not in result.stdout:
                 raise SmokeError("inventory","expected one exact native test")
             report["phases"][case]={"status":"PASS","exit_code":result.returncode,"stdout":result.stdout,"contract_responses":validate_responses(result.stdout)}
@@ -141,7 +147,9 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
         before=cluster.sql(DATABASES["concert"],"select md5(string_agg(to_jsonb(s)::text,',' order by event_id)) from concert_mural_state s;")
         before_pid=cluster.assert_postmaster()
         before_start=cluster.sql("postgres","select pg_postmaster_start_time();")
+        budget.check(cluster)
         cluster.stop(); cluster.start()
+        budget.check(cluster)
         after_pid=cluster.assert_postmaster()
         after_start=cluster.sql("postgres","select pg_postmaster_start_time();")
         after=cluster.sql(DATABASES["concert"],"select md5(string_agg(to_jsonb(s)::text,',' order by event_id)) from concert_mural_state s;")
@@ -151,6 +159,7 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
         if source_manifest() != checkpoint["source_sha256"] or sha(binary) != checkpoint["binary_sha256"]:
             raise SmokeError("provenance", "source or frozen artifact drifted")
     finally:
+        report["resource"] = budget.receipt()
         cluster.cleanup()
         report["cleanup"] = {"status": "PASS", "owned_root_absent": not cluster.root.exists()}
 
@@ -159,6 +168,10 @@ def main() -> int:
     parser.add_argument("--checkpoint", type=Path, required=True)
     parser.add_argument("--pg-bin-dir", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
+    parser.add_argument("--lease-id", required=True, help="exact already accepted native allocation ID")
+    parser.add_argument("--deadline-unix", type=float, required=True)
+    parser.add_argument("--min-free-bytes", type=int, required=True)
+    parser.add_argument("--max-owned-bytes", type=int, required=True)
     args = parser.parse_args()
     if not args.report.is_absolute() or args.report.exists() or not args.pg_bin_dir.is_absolute():
         parser.error("new absolute report and explicit absolute PG directory required")
@@ -167,7 +180,8 @@ def main() -> int:
         "Actual startup/Gateway HTTP, persistent Phaser, two-client world and complete IN04 remain NOT_RUN.",
         "Performance/load qualification is DEFERRED_BY_USER."]}
     try:
-        qualify(json.loads(args.checkpoint.read_text()), args.pg_bin_dir, report)
+        budget=NativeBudget(args.lease_id,args.deadline_unix,args.min_free_bytes,args.max_owned_bytes)
+        qualify(json.loads(args.checkpoint.read_text()), args.pg_bin_dir, report, budget)
         report["status"] = "PASS"
     except SmokeError as error:
         report["failure"] = error.detail
