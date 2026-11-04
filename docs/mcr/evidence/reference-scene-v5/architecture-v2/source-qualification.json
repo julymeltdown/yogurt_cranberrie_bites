@@ -1,0 +1,149 @@
+{
+  "status": "PASS_BOUNDED_CONSUMER",
+  "base": "9530caa3fa6a31fd86a5d060d6b8adf7eda77adf",
+  "candidate": "4cb162b71133446e73533ce3471b06fffea6327b",
+  "protected": [
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/source-inputs.json",
+      "bytes": 56822,
+      "sha256": "6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/tile-pin.json",
+      "bytes": 210,
+      "sha256": "cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json",
+      "bytes": 502,
+      "sha256": "6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/camera.ts",
+      "bytes": 1410,
+      "sha256": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/build-source-inputs.py",
+      "bytes": 12880,
+      "sha256": "5a69bce8b29ce8068c679e7a1d9a4163164cef893b342647df1134a78a3a5c57"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/build-map-landscape-inputs.py",
+      "bytes": 3899,
+      "sha256": "47f07eaabfa3ebf2d1baf88f506e09d5975412eabb76e0a312b1f8c1f974e7e6"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json",
+      "bytes": 14099,
+      "sha256": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-labels-pins.json",
+      "bytes": 1212,
+      "sha256": "77f2d9b7696901dd7b54034cb5057cd772d99e614146cc44f088807e105c819c"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json",
+      "bytes": 13276,
+      "sha256": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json",
+      "bytes": 1042,
+      "sha256": "9134da02d3e436ce082c230dcd380326064fcc842b8650e490d1744478db5a8c"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-labels.ts",
+      "bytes": 4597,
+      "sha256": "9c63a3373f2def4c16e2c7898613823623840f624309a40e9875111e913f18ec"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/__tests__/spatial-v5/map-layout-v2.test.ts",
+      "bytes": 4857,
+      "sha256": "580d1eff002a212d290eb635d7c45b7f7787223921575767c3aa95f0576b46d7"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "bytes": 18750,
+      "sha256": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f"
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "bytes": 11771,
+      "sha256": "4e9f90a76c20b6bdb405f4d30add4ec0b45f0468c61a4fc9ef1092db746f53d3"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "bytes": 10893,
+      "sha256": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056"
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "bytes": 21976,
+      "sha256": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/runtime/spatial-v5/canonical-map.json",
+      "bytes": 24058,
+      "sha256": "e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/runtime/spatial-v5/source-binding.json",
+      "bytes": 16840,
+      "sha256": "8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041"
+    }
+  ],
+  "tests": {
+    "regressions": 286,
+    "suites": 26,
+    "final_focused": 48,
+    "types_diagnostics": 0,
+    "lint_warnings": 0
+  },
+  "native": "PASS_NATIVE_04",
+  "limits": [
+    "NOT_ADMITTED",
+    "NOT_RELEASE_BOUND",
+    "No whole AR02/AR04/FE06 or target/device/live acceptance"
+  ],
+  "nativeReportSha256": "29e39e09cd54df338a5860faa67156a9b0ca133aed53fd6c6d25697b977d9cf5",
+  "resource": {
+    "allocation": "ARCHITECTURE-NATIVE-202611040508Z",
+    "minimumFreeBytes": 38994702336,
+    "sampledMaximumNewBytes": 59703897,
+    "scope": "Entire architecture evidence prefix including owned browser profile and Vite cache",
+    "maximumNewGiB": 0.2,
+    "durableMaxMiB": 30,
+    "released": true,
+    "cleanup": {
+      "browserClosed": true,
+      "serverClosed": true,
+      "ownedCacheAndBrowserTempRemoved": true
+    },
+    "dependencyLinkRemoved": true
+  },
+  "capturePacketSha256": "9473012bc6f9fcb4733f24ff32668f6b5a9a469c3bcf44a5d492660ca590723a",
+  "diagnostics": [
+    {
+      "attempt": "native-01",
+      "status": "FAIL",
+      "finding": "Cross-era case reused stable display-list ordering after intentionally moving a synthetic avatar through building depth probes"
+    },
+    {
+      "attempt": "native-02",
+      "status": "PREFLIGHT_FAIL_NO_BROWSER",
+      "finding": "Process guard matched the enclosing shell text; fixed to match the Chrome executable prefix"
+    },
+    {
+      "attempt": "native-03",
+      "status": "FAIL_DIAGNOSTIC",
+      "finding": "Actual/expected samples confirm50channels inside overlapping equal-depth test avatars; original and restored feet identical, ordering differs"
+    },
+    {
+      "attempt": "native-04",
+      "status": "PASS",
+      "fix": "Fresh era case, capture before deliberate depth mutations, record paint order before/after. No production/geometry/feet/art change or threshold waiver."
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import source from '../../spatial-v5/source-inputs.json'
 import tile from '../../spatial-v5/tile-pin.json'
+import architecture from '../../spatial-v5/architecture-source.json'
 import { spatialV5Fixture } from './fixture'
 import { loadReferenceScene, requireReferenceScene, referenceSceneFor, getReferenceOverviewMetadata, spatialV5ThemeIds } from '../..'
 import { contentHash } from '../../../map/json'
@@ -23,7 +24,7 @@ async function setup(id: typeof spatialV5ThemeIds[number] = 'PARADE') {
   })
   return { f, images, read, decode, input: { mapText: JSON.stringify(f.map), themeText: JSON.stringify(f.theme), pin: f.pin, resources: { read }, decode } }
 }
-it('projects exact frozen artist source, public Tiled bytes and independent distinct theme resources', async () => {
+it('preserves frozen base pins and projects exact architecture resources with public Tiled bytes', async () => {
   for (const [path, pin] of Object.entries(source.inputs)) expect(hash(await bytes('world/reference-scene-v2/'+path)),path).toBe(pin)
   const seen = new Set<string>()
   for (const id of spatialV5ThemeIds) {
@@ -39,7 +40,7 @@ it('projects exact frozen artist source, public Tiled bytes and independent dist
 })
 it.each(spatialV5ThemeIds)('loads %s on one new canonical geometry, exact packed frames and separate MAP semantics', async id => {
   const s = await setup(id), map = await loadReferenceScene(s.input, new AbortController().signal), binding = requireReferenceScene(map)
-  expect(referenceSceneFor(map)).not.toBeNull(); expect(binding.loaded.manifest).toEqual(source.scenes[id].scenery)
+  expect(referenceSceneFor(map)).not.toBeNull(); expect(binding.loaded.manifest).toEqual(architecture.scenes[id].scenery)
   expect(binding.loaded.manifest.objects).toHaveLength(34); expect(binding.overview).toHaveLength(49)
   expect(binding.worldCamera.y).toBe(13); expect(binding.loaded.manifest.objects.find(o=>o.id==='northern_hall')!.y).toBe(-94)
   expect(binding.overview.find(o=>o.id==='stage_venue_representation')).toMatchObject({x:185,y:163,width:300,height:210,depth_y:373})
@@ -79,6 +80,22 @@ it('releases an abort-resistant decoded image and cannot publish a spatial lease
   const load=loadReferenceScene({...s.input,decode:()=>new Promise<DecodedImage>(r=>{finish=r})},abort.signal)
   const rejected=expect(load).rejects.toThrow();await vi.waitFor(()=>expect(finish).toBeTypeOf('function'));abort.abort();await rejected
   const dispose=vi.fn();finish({image:{} as HTMLImageElement,dispose});await Promise.resolve();await Promise.resolve();expect(dispose).toHaveBeenCalledOnce()
+})
+
+it.each(['old-atlas', 'old-objects', 'cross-era-atlas', 'foreign-geometry-claim'] as const)('rejects architecture %s before resources even after rehashing manifests', async fault => {
+  const s = await setup(), { map, theme } = s.f
+  if (fault === 'old-atlas') Object.assign(theme.scenery!, { atlases: structuredClone(source.scenes.PARADE.scenery.atlases) })
+  if (fault === 'old-objects') Object.assign(theme.scenery!, { objects: structuredClone(source.scenes.PARADE.scenery.objects) })
+  if (fault === 'cross-era-atlas') Object.assign(theme.scenery!, { atlases: structuredClone(architecture.scenes.DANGER.scenery.atlases) })
+  if (fault === 'foreign-geometry-claim') {
+    const old = await import('../../spatial-v4/source-inputs.json')
+    map.geometry = structuredClone(old.default.geometry); map.geometry_hash = old.default.geometry_hash; theme.geometry_hash = map.geometry_hash
+    map.tilemap.path = 'world/foreign/canonical.json'
+    Object.assign(theme.scenery!.ground, { path: 'world/foreign/ground.png' })
+  }
+  map.content_hash = await contentHash(map); theme.map_content_hash = map.content_hash; theme.content_hash = await contentHash(theme)
+  await expect(loadReferenceScene({ ...s.input, mapText: JSON.stringify(map), themeText: JSON.stringify(theme), pin: { ...s.f.pin, mapHash: map.content_hash, themeHash: theme.content_hash } }, new AbortController().signal)).rejects.toThrow()
+  expect(s.read).not.toHaveBeenCalled(); expect(s.decode).not.toHaveBeenCalled()
 })
 
 it('preserves all v8 non-terrain authority while deriving exactly560 changed terrain cells', async () => {

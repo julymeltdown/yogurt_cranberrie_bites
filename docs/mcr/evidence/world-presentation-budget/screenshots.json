@@ -1,0 +1,79 @@
+{
+  "status": "OWNER_QUALIFIED",
+  "screenshots": [
+    {
+      "absolutePNG": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/world-presentation-budget/native-02/candidate-parade-390-h554.png",
+      "repositoryPath": "docs/mcr/evidence/world-presentation-budget/native-02/candidate-parade-390-h554.png",
+      "sha256": "3362e0aacbb892e93d0311b96289e509220d4ed979c4e4aa27eedad74b5318ba",
+      "captureCompletedAtUTC": "2026-11-04T05:05:15.134814+00:00",
+      "timestampProvenance": "Original unmodified PNG write-completion mtime, recorded immediately after this actual capture workflow",
+      "screen": "World / PARADE",
+      "viewport": {
+        "width": 390,
+        "height": 554
+      },
+      "branch": "codex/mcr-fe-world-reference-budget",
+      "sourceCommit": "5619da572b7e9ba0b4ca614852a90f65666719a4",
+      "qualification": "Actual default Root/Phaser desktop Chrome with synthetic source7005 HTTP/Socket fixture",
+      "privacyReview": "Only synthetic fixture fan identity and source-controlled scene; no actual user, message, location, credential or private event data",
+      "renderedReview": "Owner directly viewed rendered PNG; geometry assertions pass.",
+      "publication": "Unpublished worker source at capture; Root153 publication pending",
+      "limits": [
+        "Not public/live backend admission",
+        "Not physical-device/software-keyboard qualification",
+        "Not full original reference fidelity"
+      ]
+    },
+    {
+      "absolutePNG": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/world-presentation-budget/native-02/tools-expanded-390-h554.png",
+      "repositoryPath": "docs/mcr/evidence/world-presentation-budget/native-02/tools-expanded-390-h554.png",
+      "sha256": "808ced0e15d251c290c2b6441acbe2195b43b606322830cff72a35a1f0def0af",
+      "captureCompletedAtUTC": "2026-11-04T05:05:16.397590+00:00",
+      "timestampProvenance": "Original unmodified PNG write-completion mtime, recorded immediately after this actual capture workflow",
+      "screen": "World tools expanded after panel returns",
+      "viewport": {
+        "width": 390,
+        "height": 554
+      },
+      "branch": "codex/mcr-fe-world-reference-budget",
+      "sourceCommit": "5619da572b7e9ba0b4ca614852a90f65666719a4",
+      "qualification": "Actual default Root/Phaser desktop Chrome with synthetic source7005 HTTP/Socket fixture",
+      "privacyReview": "Only synthetic fixture fan identity and source-controlled scene; no actual user, message, location, credential or private event data",
+      "renderedReview": "Owner directly viewed rendered PNG; geometry assertions pass.",
+      "publication": "Unpublished worker source at capture; Root153 publication pending",
+      "limits": [
+        "Not public/live backend admission",
+        "Not physical-device/software-keyboard qualification",
+        "Not full original reference fidelity"
+      ]
+    },
+    {
+      "absolutePNG": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/world-presentation-budget/native-02/keyboard-reduced-390-h420.png",
+      "repositoryPath": "docs/mcr/evidence/world-presentation-budget/native-02/keyboard-reduced-390-h420.png",
+      "sha256": "365901c878244930e978d9d8110495f08b2d071a45fb4079dc909a7665ec9f3b",
+      "captureCompletedAtUTC": "2026-11-04T05:05:17.873780+00:00",
+      "timestampProvenance": "Original unmodified PNG write-completion mtime, recorded immediately after this actual capture workflow",
+      "screen": "World after settled reduced-height transition",
+      "viewport": {
+        "width": 390,
+        "height": 420
+      },
+      "branch": "codex/mcr-fe-world-reference-budget",
+      "sourceCommit": "5619da572b7e9ba0b4ca614852a90f65666719a4",
+      "qualification": "Actual default Root/Phaser desktop Chrome with synthetic source7005 HTTP/Socket fixture",
+      "privacyReview": "Only synthetic fixture fan identity and source-controlled scene; no actual user, message, location, credential or private event data",
+      "renderedReview": "Owner directly viewed rendered PNG; geometry assertions pass.",
+      "publication": "Unpublished worker source at capture; Root153 publication pending",
+      "limits": [
+        "Not public/live backend admission",
+        "Not physical-device/software-keyboard qualification",
+        "Not full original reference fidelity"
+      ]
+    }
+  ],
+  "excludedInitialCaptures": [
+    "native-01/tools-expanded-390-h554.png",
+    "native-01/keyboard-reduced-390-h420.png"
+  ],
+  "exclusionReason": "Preserved initial prepaint/stale-resize evidence, replaced in qualified handoff by focused native-02 captures; no duplicate capture workflow."
+}

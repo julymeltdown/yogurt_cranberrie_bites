@@ -1,0 +1,1432 @@
+{
+  "result": "PASS",
+  "qualification": "TEST_ONLY actual MotionEditor/Phaser component geometry, not production Root/service/device admission",
+  "sourceCommit": "14d61ee7d179732d3fd582de0876de664613ff79",
+  "slot": "MOTION-PORTRAIT-RETRY-202611040501Z",
+  "minimumFreeBytes": 8804682956.8,
+  "initialFreeBytes": 41129091072,
+  "cases": [
+    {
+      "width": 360,
+      "height": 698,
+      "geometry": {
+        "panel": {
+          "x": 20,
+          "y": 378.875,
+          "width": 320,
+          "height": 653.984375
+        },
+        "figure": {
+          "x": 29,
+          "y": 431.875,
+          "width": 239,
+          "height": 287
+        },
+        "frame": {
+          "x": 29,
+          "y": 431.875,
+          "width": 239,
+          "height": 239
+        },
+        "canvas": {
+          "x": 30,
+          "y": 432.875,
+          "width": 237,
+          "height": 237
+        },
+        "buffer": {
+          "width": 64,
+          "height": 64
+        },
+        "smoothing": false,
+        "categories": [
+          {
+            "x": 273,
+            "y": 431.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "x": 273,
+            "y": 489.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "x": 273,
+            "y": 547.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "x": 273,
+            "y": 605.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "x": 273,
+            "y": 663.875,
+            "width": 58,
+            "height": 55
+          }
+        ],
+        "options": [
+          {
+            "x": 81.65625,
+            "y": 810.46875,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 151.984375,
+            "y": 810.46875,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 222.328125,
+            "y": 810.46875,
+            "width": 56,
+            "height": 56
+          }
+        ],
+        "controls": [
+          {
+            "label": "View",
+            "x": 29,
+            "y": 674.875,
+            "width": 117.5,
+            "height": 44
+          },
+          {
+            "label": "Preview walk",
+            "x": 150.5,
+            "y": 674.875,
+            "width": 117.5,
+            "height": 44
+          },
+          {
+            "label": "Hair",
+            "x": 273,
+            "y": 431.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "label": "Outfit",
+            "x": 273,
+            "y": 489.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "label": "Accessory",
+            "x": 273,
+            "y": 547.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "label": "Skin / body",
+            "x": 273,
+            "y": 605.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "label": "Eyes",
+            "x": 273,
+            "y": 663.875,
+            "width": 58,
+            "height": 55
+          },
+          {
+            "label": "Presets",
+            "x": 29,
+            "y": 723.875,
+            "width": 148.5,
+            "height": 44
+          },
+          {
+            "label": "Dress up",
+            "x": 182.5,
+            "y": 723.875,
+            "width": 148.5,
+            "height": 44
+          },
+          {
+            "label": "Previous Hair choices",
+            "x": 29,
+            "y": 806.46875,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 4",
+            "x": 76,
+            "y": 806.46875,
+            "width": 67.328125,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 5",
+            "x": 146.328125,
+            "y": 806.46875,
+            "width": 67.328125,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 6",
+            "x": 216.65625,
+            "y": 806.46875,
+            "width": 67.34375,
+            "height": 83
+          },
+          {
+            "label": "Next Hair choices",
+            "x": 287,
+            "y": 806.46875,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "hair 1hair 2hair 3hair 4hair 5hair 6",
+            "x": 149.8125,
+            "y": 893.46875,
+            "width": 181.1875,
+            "height": 44
+          },
+          {
+            "label": "Reset draft",
+            "x": 29,
+            "y": 979.859375,
+            "width": 148.5,
+            "height": 44
+          },
+          {
+            "label": "Save outfit",
+            "x": 182.5,
+            "y": 979.859375,
+            "width": 148.5,
+            "height": 44
+          }
+        ],
+        "page": {
+          "width": 360,
+          "height": 698,
+          "scrollWidth": 360,
+          "scrollHeight": 1053
+        }
+      },
+      "fixedPresets": [
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "profile": {
+        "x": 144,
+        "y": 462.59375,
+        "width": 72,
+        "height": 72
+      },
+      "poseFrames": [
+        "4",
+        "2",
+        "1",
+        "3"
+      ],
+      "saveAfterScroll": {
+        "x": 182.5,
+        "y": 624.859375,
+        "width": 148.5,
+        "height": 44
+      },
+      "lifecycle": {
+        "mounts": 1,
+        "worldSockets": 0,
+        "artRequests": 2
+      },
+      "cleanup": {
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "decodedAtlases": 0,
+          "leases": 0,
+          "clockListeners": 0,
+          "composition": null,
+          "disposed": true
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 698,
+      "geometry": {
+        "panel": {
+          "x": 20,
+          "y": 378.875,
+          "width": 350,
+          "height": 683.984375
+        },
+        "figure": {
+          "x": 29,
+          "y": 431.875,
+          "width": 269,
+          "height": 317
+        },
+        "frame": {
+          "x": 29,
+          "y": 431.875,
+          "width": 269,
+          "height": 269
+        },
+        "canvas": {
+          "x": 30,
+          "y": 432.875,
+          "width": 267,
+          "height": 267
+        },
+        "buffer": {
+          "width": 64,
+          "height": 64
+        },
+        "smoothing": false,
+        "categories": [
+          {
+            "x": 303,
+            "y": 431.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "x": 303,
+            "y": 495.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "x": 303,
+            "y": 559.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "x": 303,
+            "y": 623.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "x": 303,
+            "y": 687.875,
+            "width": 58,
+            "height": 61
+          }
+        ],
+        "options": [
+          {
+            "x": 86.65625,
+            "y": 840.46875,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 166.984375,
+            "y": 840.46875,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 247.328125,
+            "y": 840.46875,
+            "width": 56,
+            "height": 56
+          }
+        ],
+        "controls": [
+          {
+            "label": "View",
+            "x": 29,
+            "y": 704.875,
+            "width": 132.5,
+            "height": 44
+          },
+          {
+            "label": "Preview walk",
+            "x": 165.5,
+            "y": 704.875,
+            "width": 132.5,
+            "height": 44
+          },
+          {
+            "label": "Hair",
+            "x": 303,
+            "y": 431.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Outfit",
+            "x": 303,
+            "y": 495.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Accessory",
+            "x": 303,
+            "y": 559.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Skin / body",
+            "x": 303,
+            "y": 623.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Eyes",
+            "x": 303,
+            "y": 687.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Presets",
+            "x": 29,
+            "y": 753.875,
+            "width": 163.5,
+            "height": 44
+          },
+          {
+            "label": "Dress up",
+            "x": 197.5,
+            "y": 753.875,
+            "width": 163.5,
+            "height": 44
+          },
+          {
+            "label": "Previous Hair choices",
+            "x": 29,
+            "y": 836.46875,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 4",
+            "x": 76,
+            "y": 836.46875,
+            "width": 77.328125,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 5",
+            "x": 156.328125,
+            "y": 836.46875,
+            "width": 77.328125,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 6",
+            "x": 236.65625,
+            "y": 836.46875,
+            "width": 77.34375,
+            "height": 83
+          },
+          {
+            "label": "Next Hair choices",
+            "x": 317,
+            "y": 836.46875,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "hair 1hair 2hair 3hair 4hair 5hair 6",
+            "x": 161.8125,
+            "y": 923.46875,
+            "width": 199.1875,
+            "height": 44
+          },
+          {
+            "label": "Reset draft",
+            "x": 29,
+            "y": 1009.859375,
+            "width": 163.5,
+            "height": 44
+          },
+          {
+            "label": "Save outfit",
+            "x": 197.5,
+            "y": 1009.859375,
+            "width": 163.5,
+            "height": 44
+          }
+        ],
+        "page": {
+          "width": 390,
+          "height": 698,
+          "scrollWidth": 390,
+          "scrollHeight": 1083
+        }
+      },
+      "fixedPresets": [
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "profile": {
+        "x": 159,
+        "y": 462.59375,
+        "width": 72,
+        "height": 72
+      },
+      "poseFrames": [
+        "2",
+        "4",
+        "3",
+        "1"
+      ],
+      "saveAfterScroll": {
+        "x": 197.5,
+        "y": 631.859375,
+        "width": 163.5,
+        "height": 44
+      },
+      "lifecycle": {
+        "mounts": 1,
+        "worldSockets": 0,
+        "artRequests": 2
+      },
+      "cleanup": {
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "decodedAtlases": 0,
+          "leases": 0,
+          "clockListeners": 0,
+          "composition": null,
+          "disposed": true
+        }
+      }
+    },
+    {
+      "width": 430,
+      "height": 698,
+      "geometry": {
+        "panel": {
+          "x": 20,
+          "y": 362.9375,
+          "width": 390,
+          "height": 723.984375
+        },
+        "figure": {
+          "x": 29,
+          "y": 415.9375,
+          "width": 309,
+          "height": 357
+        },
+        "frame": {
+          "x": 29,
+          "y": 415.9375,
+          "width": 309,
+          "height": 309
+        },
+        "canvas": {
+          "x": 30,
+          "y": 416.9375,
+          "width": 307,
+          "height": 307
+        },
+        "buffer": {
+          "width": 64,
+          "height": 64
+        },
+        "smoothing": false,
+        "categories": [
+          {
+            "x": 343,
+            "y": 415.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "x": 343,
+            "y": 487.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "x": 343,
+            "y": 559.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "x": 343,
+            "y": 631.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "x": 343,
+            "y": 703.9375,
+            "width": 58,
+            "height": 69
+          }
+        ],
+        "options": [
+          {
+            "x": 93.328125,
+            "y": 864.53125,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 186.984375,
+            "y": 864.53125,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 280.65625,
+            "y": 864.53125,
+            "width": 56,
+            "height": 56
+          }
+        ],
+        "controls": [
+          {
+            "label": "View",
+            "x": 29,
+            "y": 728.9375,
+            "width": 152.5,
+            "height": 44
+          },
+          {
+            "label": "Preview walk",
+            "x": 185.5,
+            "y": 728.9375,
+            "width": 152.5,
+            "height": 44
+          },
+          {
+            "label": "Hair",
+            "x": 343,
+            "y": 415.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "label": "Outfit",
+            "x": 343,
+            "y": 487.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "label": "Accessory",
+            "x": 343,
+            "y": 559.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "label": "Skin / body",
+            "x": 343,
+            "y": 631.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "label": "Eyes",
+            "x": 343,
+            "y": 703.9375,
+            "width": 58,
+            "height": 69
+          },
+          {
+            "label": "Presets",
+            "x": 29,
+            "y": 777.9375,
+            "width": 183.5,
+            "height": 44
+          },
+          {
+            "label": "Dress up",
+            "x": 217.5,
+            "y": 777.9375,
+            "width": 183.5,
+            "height": 44
+          },
+          {
+            "label": "Previous Hair choices",
+            "x": 29,
+            "y": 860.53125,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 4",
+            "x": 76,
+            "y": 860.53125,
+            "width": 90.65625,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 5",
+            "x": 169.65625,
+            "y": 860.53125,
+            "width": 90.671875,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 6",
+            "x": 263.328125,
+            "y": 860.53125,
+            "width": 90.65625,
+            "height": 83
+          },
+          {
+            "label": "Next Hair choices",
+            "x": 357,
+            "y": 860.53125,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "hair 1hair 2hair 3hair 4hair 5hair 6",
+            "x": 177.8125,
+            "y": 947.53125,
+            "width": 223.1875,
+            "height": 44
+          },
+          {
+            "label": "Reset draft",
+            "x": 29,
+            "y": 1033.921875,
+            "width": 183.5,
+            "height": 44
+          },
+          {
+            "label": "Save outfit",
+            "x": 217.5,
+            "y": 1033.921875,
+            "width": 183.5,
+            "height": 44
+          }
+        ],
+        "page": {
+          "width": 430,
+          "height": 698,
+          "scrollWidth": 430,
+          "scrollHeight": 1107
+        }
+      },
+      "fixedPresets": [
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "profile": {
+        "x": 179,
+        "y": 446.65625,
+        "width": 72,
+        "height": 72
+      },
+      "poseFrames": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "saveAfterScroll": {
+        "x": 217.5,
+        "y": 631.921875,
+        "width": 183.5,
+        "height": 44
+      },
+      "lifecycle": {
+        "mounts": 1,
+        "worldSockets": 0,
+        "artRequests": 2
+      },
+      "cleanup": {
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "decodedAtlases": 0,
+          "leases": 0,
+          "clockListeners": 0,
+          "composition": null,
+          "disposed": true
+        }
+      }
+    },
+    {
+      "width": 320,
+      "height": 554,
+      "geometry": {
+        "panel": {
+          "x": 20,
+          "y": 378.875,
+          "width": 280,
+          "height": 613.984375
+        },
+        "figure": {
+          "x": 29,
+          "y": 431.875,
+          "width": 199,
+          "height": 247
+        },
+        "frame": {
+          "x": 29,
+          "y": 431.875,
+          "width": 199,
+          "height": 199
+        },
+        "canvas": {
+          "x": 30,
+          "y": 432.875,
+          "width": 197,
+          "height": 197
+        },
+        "buffer": {
+          "width": 64,
+          "height": 64
+        },
+        "smoothing": false,
+        "categories": [
+          {
+            "x": 233,
+            "y": 431.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "x": 233,
+            "y": 481.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "x": 233,
+            "y": 531.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "x": 233,
+            "y": 581.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "x": 233,
+            "y": 631.875,
+            "width": 58,
+            "height": 47
+          }
+        ],
+        "options": [
+          {
+            "x": 80,
+            "y": 770.46875,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 137,
+            "y": 770.46875,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 194,
+            "y": 770.46875,
+            "width": 56,
+            "height": 56
+          }
+        ],
+        "controls": [
+          {
+            "label": "View",
+            "x": 29,
+            "y": 634.875,
+            "width": 97.5,
+            "height": 44
+          },
+          {
+            "label": "Preview walk",
+            "x": 130.5,
+            "y": 634.875,
+            "width": 97.5,
+            "height": 44
+          },
+          {
+            "label": "Hair",
+            "x": 233,
+            "y": 431.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "label": "Outfit",
+            "x": 233,
+            "y": 481.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "label": "Accessory",
+            "x": 233,
+            "y": 531.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "label": "Skin / body",
+            "x": 233,
+            "y": 581.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "label": "Eyes",
+            "x": 233,
+            "y": 631.875,
+            "width": 58,
+            "height": 47
+          },
+          {
+            "label": "Presets",
+            "x": 29,
+            "y": 683.875,
+            "width": 128.5,
+            "height": 44
+          },
+          {
+            "label": "Dress up",
+            "x": 162.5,
+            "y": 683.875,
+            "width": 128.5,
+            "height": 44
+          },
+          {
+            "label": "Previous Hair choices",
+            "x": 29,
+            "y": 766.46875,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 4",
+            "x": 76,
+            "y": 766.46875,
+            "width": 54,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 5",
+            "x": 133,
+            "y": 766.46875,
+            "width": 54,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 6",
+            "x": 190,
+            "y": 766.46875,
+            "width": 54,
+            "height": 83
+          },
+          {
+            "label": "Next Hair choices",
+            "x": 247,
+            "y": 766.46875,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "hair 1hair 2hair 3hair 4hair 5hair 6",
+            "x": 133.8125,
+            "y": 853.46875,
+            "width": 157.1875,
+            "height": 44
+          },
+          {
+            "label": "Reset draft",
+            "x": 29,
+            "y": 939.859375,
+            "width": 128.5,
+            "height": 44
+          },
+          {
+            "label": "Save outfit",
+            "x": 162.5,
+            "y": 939.859375,
+            "width": 128.5,
+            "height": 44
+          }
+        ],
+        "page": {
+          "width": 320,
+          "height": 554,
+          "scrollWidth": 320,
+          "scrollHeight": 1013
+        }
+      },
+      "fixedPresets": [
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "profile": {
+        "x": 124,
+        "y": 415.59375,
+        "width": 72,
+        "height": 72
+      },
+      "poseFrames": [
+        "1",
+        "2",
+        "4",
+        "3"
+      ],
+      "saveAfterScroll": {
+        "x": 162.5,
+        "y": 480.859375,
+        "width": 128.5,
+        "height": 44
+      },
+      "lifecycle": {
+        "mounts": 1,
+        "worldSockets": 0,
+        "artRequests": 2
+      },
+      "cleanup": {
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "decodedAtlases": 0,
+          "leases": 0,
+          "clockListeners": 0,
+          "composition": null,
+          "disposed": true
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "geometry": {
+        "panel": {
+          "x": 20,
+          "y": 126.875,
+          "width": 350,
+          "height": 683.984375
+        },
+        "figure": {
+          "x": 29,
+          "y": 179.875,
+          "width": 269,
+          "height": 317
+        },
+        "frame": {
+          "x": 29,
+          "y": 179.875,
+          "width": 269,
+          "height": 269
+        },
+        "canvas": {
+          "x": 30,
+          "y": 180.875,
+          "width": 267,
+          "height": 267
+        },
+        "buffer": {
+          "width": 64,
+          "height": 64
+        },
+        "smoothing": false,
+        "categories": [
+          {
+            "x": 303,
+            "y": 179.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "x": 303,
+            "y": 243.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "x": 303,
+            "y": 307.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "x": 303,
+            "y": 371.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "x": 303,
+            "y": 435.875,
+            "width": 58,
+            "height": 61
+          }
+        ],
+        "options": [
+          {
+            "x": 86.65625,
+            "y": 588.46875,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 166.984375,
+            "y": 588.46875,
+            "width": 56,
+            "height": 56
+          },
+          {
+            "x": 247.328125,
+            "y": 588.46875,
+            "width": 56,
+            "height": 56
+          }
+        ],
+        "controls": [
+          {
+            "label": "View",
+            "x": 29,
+            "y": 452.875,
+            "width": 132.5,
+            "height": 44
+          },
+          {
+            "label": "Preview walk",
+            "x": 165.5,
+            "y": 452.875,
+            "width": 132.5,
+            "height": 44
+          },
+          {
+            "label": "Hair",
+            "x": 303,
+            "y": 179.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Outfit",
+            "x": 303,
+            "y": 243.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Accessory",
+            "x": 303,
+            "y": 307.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Skin / body",
+            "x": 303,
+            "y": 371.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Eyes",
+            "x": 303,
+            "y": 435.875,
+            "width": 58,
+            "height": 61
+          },
+          {
+            "label": "Presets",
+            "x": 29,
+            "y": 501.875,
+            "width": 163.5,
+            "height": 44
+          },
+          {
+            "label": "Dress up",
+            "x": 197.5,
+            "y": 501.875,
+            "width": 163.5,
+            "height": 44
+          },
+          {
+            "label": "Previous Hair choices",
+            "x": 29,
+            "y": 584.46875,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 4",
+            "x": 76,
+            "y": 584.46875,
+            "width": 77.328125,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 5",
+            "x": 156.328125,
+            "y": 584.46875,
+            "width": 77.328125,
+            "height": 83
+          },
+          {
+            "label": "Choose hair 6",
+            "x": 236.65625,
+            "y": 584.46875,
+            "width": 77.34375,
+            "height": 83
+          },
+          {
+            "label": "Next Hair choices",
+            "x": 317,
+            "y": 584.46875,
+            "width": 44,
+            "height": 83
+          },
+          {
+            "label": "hair 1hair 2hair 3hair 4hair 5hair 6",
+            "x": 161.8125,
+            "y": 671.46875,
+            "width": 199.1875,
+            "height": 44
+          },
+          {
+            "label": "Reset draft",
+            "x": 29,
+            "y": 757.859375,
+            "width": 163.5,
+            "height": 44
+          },
+          {
+            "label": "Save outfit",
+            "x": 197.5,
+            "y": 757.859375,
+            "width": 163.5,
+            "height": 44
+          }
+        ],
+        "page": {
+          "width": 390,
+          "height": 420,
+          "scrollWidth": 390,
+          "scrollHeight": 1083
+        }
+      },
+      "fixedPresets": [
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        },
+        {
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "profile": {
+        "x": 159,
+        "y": 323.59375,
+        "width": 72,
+        "height": 72
+      },
+      "poseFrames": [
+        "1",
+        "2",
+        "4",
+        "3"
+      ],
+      "saveAfterScroll": {
+        "x": 197.5,
+        "y": 346.859375,
+        "width": 163.5,
+        "height": 44
+      },
+      "lifecycle": {
+        "mounts": 1,
+        "worldSockets": 0,
+        "artRequests": 2
+      },
+      "cleanup": {
+        "mounts": 1,
+        "destroys": 1,
+        "canvases": 0,
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "owner": {
+          "decodedAtlases": 0,
+          "leases": 0,
+          "clockListeners": 0,
+          "composition": null,
+          "disposed": true
+        }
+      }
+    }
+  ],
+  "artifacts": {
+    "component-360x698.png": "101d4cb393c3be726f9768da61b0fe40bc3a6929b7ee4d6ce86e067bc6196ab3",
+    "component-390x698.png": "c4cb177d72ae8ebe9dcc57ef28a5880abb7171aaa88429b275db847d6a5d7af2",
+    "component-430x698.png": "e8a062534887bf7f1e31c8e59c22ef667b7f786d35739936908b9f8a44d31a1b",
+    "component-320x554.png": "ebf7ff1ecda55c93d4229dc2dfd43e4f5635729b537eb8af19cbcf199407213b",
+    "component-390x420.png": "9cdef7356d3c79785d1c0d932f5672f7e0556c21311d198ded5697d96c44d8d7"
+  },
+  "errors": [],
+  "httpWrites": 0,
+  "peakProcessTreeRssBytes": 2222571520,
+  "peakWorkflowBytes": 29560832,
+  "workflowBudgetBytes": 201326592,
+  "stopAtBytes": 134217728,
+  "sourcePins": {
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "975ffb0031341a61ca538125178396f13247213427d183ae9c2c13827b957423",
+    "frontend/src/features/avatar/motion-adoption/MotionView.tsx": "7a6aa970cdc85130d836e0a21a6048ac9e6f51e4e2634854127f91d0744d8b02",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "bb244fc1d9cc6727a2bf3ecf1679950a3c75007104000599b62bdb10ba74345c",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx": "97eeea2b778eaaead074ea26c9cc4427b4ddb152059e98b54a9fb4ce19e26146",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/portrait-native.mjs": "06db1e533f06c8c1944973f4cd655e2855899c196cbdbf3339fdf71d02849821"
+  },
+  "httpObservation": "All page HTTP requests except GET/HEAD are counted and blocked before network; server rejects non-GET/HEAD on every path. No service-save proof.",
+  "browser": "156.0.8078.80"
+}

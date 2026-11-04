@@ -1,0 +1,19 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+50 !== 0
+
+    at rendererCases (file://<workspace>/frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/native.mjs:142:12)
+    at async file://<workspace>/frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/native.mjs:158:124 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 50,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

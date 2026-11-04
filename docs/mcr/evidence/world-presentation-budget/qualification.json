@@ -1,0 +1,68 @@
+{
+  "status": "VALIDATED_HANDOFF_READY_PUBLICATION_PENDING",
+  "base": "d1a5deaae0f6b79b365cb4c451d921711573ab8c",
+  "sourceGrant": "e6312ce472a4b00f64d0c874424c0f715b5e4e89",
+  "testSentinelGrant": "46d3999555e30295afa2b75330f1c42dcdaea180",
+  "goal": 1793766233,
+  "applicationSourcePins": {
+    "frontend/src/app/WorldShell.tsx": "ef0aeb98a10d93c5dcdb89c7e6b25f0292260e699e093311506c06a4cc10f19d",
+    "frontend/src/app/shell.css": "02cfa90906fce69ab896777f44388a1990b2d670a1b0b47bc8099d0cf1ef669f",
+    "frontend/src/app/world-presentation/WorldTools.tsx": "1b4206cb413700246803c38b71cb16ebf3875008af65767774d7b89e36bf69a1",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "ef986573f544278ee891602305d56e7a0b72bd3f2cb6d886e454afa7088659db",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.html": "6218d6246ad676d54bef02368359b33c82894caafd0b0d1adc9ffe511e2c095e",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb"
+  },
+  "reports": [
+    {
+      "path": "native-01/report.json",
+      "sha256": "46bfada6aba20bf65bdb5a6d8c67b9ec3353b6685027f8f42eaf8ea608efe8d8",
+      "source": "e93b92ad0058f3ad62d9bc639f7dc8c5df1db23c",
+      "status": "PASS",
+      "cases": 24,
+      "interactions": 5
+    },
+    {
+      "path": "native-02/report.json",
+      "sha256": "b245a6268c5c936bfba0eb1fe076b7cce7d5c88b06b2c4c0976245753e75173d",
+      "source": "5619da572b7e9ba0b4ca614852a90f65666719a4",
+      "status": "PASS",
+      "cases": 2,
+      "interactions": 5
+    }
+  ],
+  "tests": {
+    "passed": 110,
+    "suites": 7,
+    "fullApplicationTypesExit": 0,
+    "targetedLintExit": 0
+  },
+  "actualApplicationBuild": {
+    "result": "PASS",
+    "actualEntry": "frontend/index.html and src/main.tsx",
+    "copyPublicDir": false,
+    "outputs": 1,
+    "plugins": "retained frontend/vite.config.ts React/Tailwind",
+    "sequentialAfterBrowser": true
+  },
+  "focusedBuild": "NOT_RERUN; application/fixture sourcePins asserted identical to original actual build",
+  "planningProvenanceCheck": {
+    "command": "python3 scripts/mcr/check-plan.py",
+    "exitCode": 0,
+    "result": "PASS",
+    "scope": "Planning provenance only; not application/device/release acceptance"
+  },
+  "reviewFixes": [
+    "QA06 nonclosed CSS scope leak corrected in a5b475f5; native full/half/peek maximum rectdelta0 at390x554+844",
+    "Initial prepaint tools and stale reduced420 evidence preserved; 5619da57 focused driver proves settled viewport/canvas/controls/camera/projection and repaint before final captures"
+  ],
+  "limits": [
+    "Desktop Chrome viewports; no physical iOS/Android/software-keyboard/notch acceptance",
+    "Existing source7005 synthetic C03/C05 fixture, not public/live/backend6 admission",
+    "Six-player fixture positions and approved art are unchanged; no full ten-screen fidelity acceptance"
+  ],
+  "publication": "Root153 sole serialized publisher; no self push"
+}

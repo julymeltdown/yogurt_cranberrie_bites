@@ -1,0 +1,26 @@
+{
+  "assignmentBase": "096858b96c3bc11ca92222a3b87cd026ee412ede",
+  "contractVersion": "0.1.0",
+  "wireVersion": "1.0.0",
+  "pins": {
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+    "docs/mcr/project-assessment.md": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+    "docs/mcr/execution-plan.md": "80f32a8dfa2dd45eb820ef917de2b3ac960137d648cbeed3a20a09ca31ee3d4e",
+    "docs/mcr/party-gift-consumer-contract.md": "5999292d00fc62220e0fad533b2079d83ceba87e078a226a55c947fab24cc056",
+    "contracts/generated/mcr-core.openapi.json": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978",
+    "contracts/generated/mcr-domain.openapi.json": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887",
+    "contracts/domain/v1/operations.json": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112",
+    "contracts/domain/v1/party.schema.json": "7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03",
+    "contracts/domain/v1/giveaway.schema.json": "3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d",
+    "contracts/domain/v1/common.schema.json": "65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584",
+    "contracts/fixtures/assets/selected-static/avatar-manifest.json": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "frontend/e2e/reference-integrated/whole/data.ts": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/src/features/party-discovery/__tests__/qa06-meet-cta/preview.tsx": "ce889431a8077e6e954d3a7685766b7a00454ab8cd201220aaec5987dc1f1309",
+    "frontend/src/features/party-discovery/__tests__/fixtures/data.ts": "10bb942e4b0cd9f3969bdd0294a139d0eb5aee5176ed173eb77d86acfad1d59a",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts": "79993cf295f0f398a508ca6b3f70a3d10cbd1b992b9ac72a98db14d8730a35be"
+  },
+  "initialNativeSource": "51b1dba40ca0eae7ac31a1e44c53e41226005d92",
+  "qualifiedSource": "93517018b2733c7e7f6ed09b97d83d1bdb85940b"
+}

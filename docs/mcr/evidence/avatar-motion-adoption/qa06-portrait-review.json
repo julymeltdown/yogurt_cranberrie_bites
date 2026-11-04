@@ -1,0 +1,62 @@
+{
+  "review": "QA06-CUSTOMIZE-PORTRAIT-01",
+  "status": "REVIEWED_READY_FOR_EXACT_ALLOCATION",
+  "recordedAt": "2026-11-04T04:30:04.206284+00:00",
+  "checkoutHead": "04ea146e65a7e6730b9ce5846380ece57bc638c2",
+  "qaPacket": {
+    "commit": "e8dac180",
+    "path": "docs/mcr/evidence/visual/qa06/customize-portrait-packet.json",
+    "sha256": "d895c7f079bcbe1be637dcf7da44acb7c93114e3fbf3b7513c50c1c1abcb812d"
+  },
+  "verifiedInputs": [
+    {
+      "path": "docs/mcr/evidence/visual/qa06/reference-target.png",
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+      "bytes": 2967126
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-motion-04ea/report.json",
+      "sha256": "195086ceed3886b71c9ad0ee2ab514cc5d09e0f3f0dbe9e636f53565ae36f5bd",
+      "bytes": 430116
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-motion-04ea/customize-component-390.png",
+      "sha256": "eb45e2341d96061fb2912809347a90b02f0abddabc9acab079a11c89d913edfc",
+      "bytes": 55951
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-review/compare-customize.png",
+      "sha256": "ac82168437123c0f4fc6618c0e5c8e3b1aba231b269f682f0fe4c7fc8963bc1e",
+      "bytes": 455127
+    }
+  ],
+  "sourcePins": {
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "086e081eb9f63729fca1641f63baf5eb07e5db64eb95f32f16b9823216eca2ae",
+    "frontend/src/features/avatar/motion-adoption/MotionView.tsx": "39ba203d0d4110af82b78ea53fb26b5cb776b3c5d5a22e05949356b5338e7b30",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "e876d73bc32bba8fb674c618dbbdf06ce0ff102bcacf86ed60720fbcd5a5d214"
+  },
+  "observed": [
+    "Pinned reference/report/component/comparison length and SHA256 all matched",
+    "Current MotionEditor and motion.css match the QA source pins",
+    "Read-only visual inspection confirms fixed 192px preview has a smaller portrait hierarchy than the unchanged target",
+    "Current canvas inline width and height are fixed; max-width alone is insufficient for a larger responsive square"
+  ],
+  "proposedRepair": [
+    "Use the available figure width for a square stage preview while retaining the intrinsic 64x64 draw buffer and source UVs",
+    "Adjust only stage/figure/preview space allocation",
+    "Keep all five real category controls and 44px minimum targets",
+    "Preserve pose/walk, preset/dress-up, selected item paging, draft/reset/save and every loading/error/reconcile state"
+  ],
+  "notRepairs": [
+    "Reference-only sixth icon, palette/random or different portrait do not establish supported capability defects",
+    "No source art replacement, recoloring, generated artwork or fixture repositioning"
+  ],
+  "ownership": "Exact implementation lease requested from WorldSL before application writes; packet itself grants no new lease",
+  "validationPlan": [
+    "Targeted existing component/controller and type/lint checks after an authorized edit",
+    "If a capture slot is separately allocated, measure square bounds/no overflow/right rail and visually compare actual unstretched output at 360/390/430",
+    "Keep public Root/runtime/service/device gates separate"
+  ],
+  "workPerformed": "Existing source/evidence reading, hash verification and technical review only; no application writes, browser or build started",
+  "remaining": "Original AR03 unfinished; positive public Root/runtime, real save/reload, live multiuser and physical-device proof remain NOT_RUN"
+}

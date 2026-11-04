@@ -5,7 +5,7 @@ import { canonicalJson } from '../../../world/map/json'
 
 /** Profile stays idle; the editor can sample the one existing Phaser clock. Never owns a RAF/timer. */
 export function MotionView<C>({ runtime, config, label, size = 64, direction = 'down', walking = false }: {
-  readonly runtime: MotionRuntime<C>; readonly config: C; readonly label: string; readonly size?: 56 | 64 | 72 | 192
+  readonly runtime: MotionRuntime<C>; readonly config: C; readonly label: string; readonly size?: 56 | 64 | 72 | 192 | 'fill'
   readonly direction?: MotionDirection; readonly walking?: boolean
 }) {
   const host = useRef<HTMLCanvasElement>(null), [ready, setReady] = useState(false)
@@ -35,8 +35,8 @@ export function MotionView<C>({ runtime, config, label, size = 64, direction = '
     // key is the validated config projection; object identity must not reload equivalent avatars.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [runtime, key, direction, walking])
-  return <span data-motion-state={ready && key ? 'ready' : 'unavailable'}>
-    <canvas ref={host} width={64} height={64} style={{ width: size, height: size, imageRendering: 'pixelated', display: ready && key ? 'block' : 'none' }} role="img" aria-label={label} />
+  return <span data-motion-state={ready && key ? 'ready' : 'unavailable'} style={size === 'fill' ? { display: 'block', width: '100%' } : undefined}>
+    <canvas ref={host} width={64} height={64} style={{ ...(size === 'fill' ? { width: '100%', height: 'auto' } : { width: size, height: size }), imageRendering: 'pixelated', display: ready && key ? 'block' : 'none' }} role="img" aria-label={label} />
     {!(ready && key) && <span role="status">Character unavailable</span>}
   </span>
 }

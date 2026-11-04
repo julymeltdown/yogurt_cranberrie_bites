@@ -4,6 +4,7 @@ import labelInput from './map-labels-source.json'
 import labelPin from './map-labels-pins.json'
 import landscapePin from './map-landscape-pin.json'
 import tile from './tile-pin.json'
+import { spatialV5ArchitectureScenery } from './architecture'
 import { canonicalJson, requireMap, sha256 } from '../../map/json'
 import type { LoadedMap } from '../../map/resources'
 import { validateLoadedScenery, type Scenery, type SceneryObject } from '../../illustrated/model'
@@ -63,8 +64,9 @@ export async function verifySpatialV5MapLayoutPair(label = labels, plants = land
 }
 validateSpatialV5MapLayoutPair()
 const scenes = new Map(spatialV5ThemeIds.map(themeId => {
-  const data = source.scenes[themeId], scenery = data.scenery as Scenery
-  requireMap(canonicalJson(landscape.themes.find(t => t.theme_id === themeId)?.atlas) === canonicalJson(scenery.atlases[0]))
+  const data = source.scenes[themeId], baseScenery = data.scenery as Scenery
+  requireMap(canonicalJson(landscape.themes.find(t => t.theme_id === themeId)?.atlas) === canonicalJson(baseScenery.atlases[0]))
+  const scenery = freeze(spatialV5ArchitectureScenery(themeId, baseScenery))
   const replacements = new Set(source.overview_representations.flatMap(p => 'replaces_prop_id' in p ? [p.replaces_prop_id] : []))
   const frames = data.frames as Readonly<Record<string, Readonly<{ x: number; y: number; width: number; height: number }>>>
   const overview: readonly SceneryObject[] = freeze([...scenery.objects.filter(o => !replacements.has(o.id)),
@@ -93,7 +95,7 @@ export function isSpatialV5ReferenceClaim(value: Pick<SceneMetadata, 'map' | 'th
   return value.map.geometry_hash === spatialV5SceneIdentity.geometryHash
     || value.map.tilemap.path?.startsWith('world/reference-scene-v2/runtime/spatial-v5/') === true
     || [value.theme.scenery?.ground.path, ...value.theme.scenery?.atlases.map(a => a.path) ?? []]
-      .some(path => path?.startsWith('world/reference-scene-v2/quality-v10/'))
+      .some(path => path?.startsWith('world/reference-scene-v2/quality-v10/') || path?.startsWith('world/reference-scene-v2/architecture-v2/'))
 }
 export function validateSpatialV5Metadata(value: SceneMetadata) {
   const { map, theme } = value, scene = scenes.get(theme.theme_id as SpatialV5ThemeId), expected = spatialV5SceneIdentity

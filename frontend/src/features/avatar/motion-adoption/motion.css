@@ -1,8 +1,8 @@
 .mcr-motion-editor { width:100%; min-width:0; max-width:27rem; margin-inline:auto; color:#211e1c; }
 .mcr-motion-editor .concert-window__body { min-width:0; padding:6px; }
 .mcr-motion-stage { display:grid; grid-template-columns:minmax(0,1fr) 58px; align-items:stretch; gap:5px; }
-.mcr-motion-figure { display:grid; grid-template-rows:minmax(192px,1fr) auto; min-width:0; }
-.mcr-motion-preview { display:grid; place-items:center; min-height:192px; border:1px solid #827765; background:#e7dfcf; }
+.mcr-motion-figure { display:grid; grid-template-rows:auto auto; align-content:start; min-width:0; }
+.mcr-motion-preview { display:grid; place-items:center; width:100%; aspect-ratio:1; box-sizing:border-box; min-height:0; border:1px solid #827765; background:#e7dfcf; }
 .mcr-motion-preview canvas { max-width:100%; }
 .mcr-motion-pose { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:center; gap:4px; margin-top:4px; }
 .mcr-motion-editor button,.mcr-motion-editor select { min-height:44px; min-width:0; border:1px solid #786a56; border-radius:1px; background:#eee5d5; color:#241d19; padding:5px; font:700 12px/1.25 "Arial Narrow",Arial,sans-serif; }

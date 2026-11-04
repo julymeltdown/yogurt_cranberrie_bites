@@ -1,0 +1,74 @@
+{
+  "format": "MCR_MAP_MASSING_STATIC_ALPHA_ANALYSIS",
+  "presentation_sha256": "06c6d4dad6b2c141079f3b54f7407dd0458e9e918d043c46f20524f56d0a37c7",
+  "method": "Destination pixel centers; nearest source alpha>=32; only later-depth object alpha occludes. Source metadata analysis without image output.",
+  "limits": "No native antialiasing, GPU masks, mobile visibility or real-avatar occlusion proof. Labels/gardens are rectangle-disjoint by build.py. Actual consumer renders remain NOT_RUN.",
+  "results": [
+    {
+      "era": "revenge",
+      "annex": "map_stage_west_annex",
+      "source_alpha_points": 17386,
+      "unoccluded_points": 7379,
+      "ratio": 0.4244219486943518,
+      "occluders": {
+        "stage_venue_representation": 6941,
+        "rooted_tree_04": 3043,
+        "west_edge_venue_illustration": 23
+      }
+    },
+    {
+      "era": "revenge",
+      "annex": "map_stage_east_annex",
+      "source_alpha_points": 8887,
+      "unoccluded_points": 8143,
+      "ratio": 0.9162822099696185,
+      "occluders": {
+        "stage_venue_representation": 744
+      }
+    },
+    {
+      "era": "parade",
+      "annex": "map_stage_west_annex",
+      "source_alpha_points": 17316,
+      "unoccluded_points": 7335,
+      "ratio": 0.4235966735966736,
+      "occluders": {
+        "stage_venue_representation": 6911,
+        "rooted_tree_04": 3056,
+        "west_edge_venue_illustration": 14
+      }
+    },
+    {
+      "era": "parade",
+      "annex": "map_stage_east_annex",
+      "source_alpha_points": 8847,
+      "unoccluded_points": 8101,
+      "ratio": 0.9156776308353114,
+      "occluders": {
+        "stage_venue_representation": 746
+      }
+    },
+    {
+      "era": "danger",
+      "annex": "map_stage_west_annex",
+      "source_alpha_points": 17167,
+      "unoccluded_points": 7055,
+      "ratio": 0.41096289392438984,
+      "occluders": {
+        "stage_venue_representation": 7068,
+        "rooted_tree_04": 3021,
+        "west_edge_venue_illustration": 23
+      }
+    },
+    {
+      "era": "danger",
+      "annex": "map_stage_east_annex",
+      "source_alpha_points": 8760,
+      "unoccluded_points": 7952,
+      "ratio": 0.9077625570776255,
+      "occluders": {
+        "stage_venue_representation": 808
+      }
+    }
+  ]
+}

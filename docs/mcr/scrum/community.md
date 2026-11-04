@@ -26,47 +26,261 @@ milestones, ready unstaffed work, blockers/decisions and links to owner records.
 Immediate escalation is limited to cross-lane conflicts unresolved directly,
 genuinely unattended critical work or human-required product/access decisions.
 
-## Hourly reconciliation — 2026-11-04 13:34 KST
+## Hourly reconciliation — 2026-11-04 14:34 KST
 
-This checkpoint uses compact current chat snapshots and existing owner delivery
-records only. No implementation inspection or checks were performed. Rows below
-deduplicate original feature IDs; bounded worker goals are not extra outcomes.
-`UNRECONCILED` means that a current criterion-level owner receipt is missing,
-not zero progress or NOT_STARTED. Unchanged historical deliveries are retained
-without inventing work since the previous check. The QA/IN table below remains
-the task record for QA01/QA05/QA07/QA08/QA09/QA10/IN04/IN05.
+This checkpoint reconciles the queued hourly request with evidence available
+at 14:34 KST, using compact current chat snapshots and existing owner reports.
+No source, query, visual, runtime or application checks were performed by SL.
+Rows deduplicate original IDs; helper goals and five source commits are not
+additional tasks. UNRECONCILED means a current criterion-level disposition is
+missing, not zero progress or NOT_STARTED. The QA/IN table below is retained
+for QA01/QA05/QA07/QA08/QA09/QA10/IN04/IN05; QA06 is recorded separately here.
 
-Since the previous 12:34 checkpoint, QA06 independently verified the bounded
-published Meet repair and published its exact postfix evidence and retained
-failure diagnostics. The latest owner readback confirms 122 unique delivered
-files and all 111 artifacts (18,720,495 bytes), superseding the earlier
-119-path handoff-stage count. This completes evidence publication, not original
-FE21/FE23/QA06 acceptance. No new original task completion is established.
-The already-published Party/mural bounded repairs, FE33 frozen-client outcome
-and Social FE27/FE28 satisfied dispositions remain retained without recounting.
-All other unchanged parent evidence, criteria, named dependencies and next
-actions remain below. Missing current whole-task evidence stays UNRECONCILED,
-not zero/NOT_STARTED. No source/visual/test review or application rerun was
-performed by this coordinator. All 112 tasks and 61 IA entries remain required.
+Since the previous checkpoint, FE21 and FE24 each received an explicit owner
+receipt satisfying every original pure-client criterion at MOCK_READY. Both
+are published through designated Root153, and owner204 independently verified
+the fresh remote ancestry and all 52 latest delivered payloads at master
+`4bf9022f943e601c0f876d7ca7e5fdc54036b8e6`. Three real client defects were
+fixed: Party title touch interception, Gifts reload after context replacement,
+and My gifts reload after restored access. The SAME unbudgeted goal is actually
+COMPLETE (24m15s), immediate goal readback null, checkout clean, all resources
+closed and exact leases returned. Current compact chat is completed/idle.
+This closes two original client criteria sets, without promoting live/device/
+IN02 or release acceptance. All 112 tasks and 61 IA entries remain required.
+
+Other original dispositions remain as recorded below. QA06's separately owned
+World/architecture saved-evidence readbacks progressed, but full reference
+fidelity, physical-mobile and live acceptance remain open. World now owns an
+actually accepted FE18 assignment for former Community context26e; no Community
+reservation exists. Original FE32 and FE37–40 remain unreconciled at task level,
+with prior owner deliveries preserved. FE32 has deterministic C04 prerequisites
+and an existing MOCK_READY owner report; exact incumbent clearance is being
+coordinated directly with World before any new source lease. No idle worker
+is counted as staffed merely because a proposal was sent.
 
 | Original ID | Owner / current task-level disposition | Work since previous checkpoint / latest retained publication | Remaining original criteria, dependency owner and next action |
 |---|---|---|---|
 | FE20 | Former owner `3ff2`; SATISFIED at MOCK_READY per explicit photo-completion receipt; no current Community writer | No newer task receipt; published `6c908472` retained | No identified original frontend gap in that receipt. Genuine provider/IN02 qualification stays with Product root `1fc`; do not reopen frozen criteria or divert the owner's later Auth scope |
-| FE21 | Whole-task disposition UNRECONCILED; bounded Party-action repair DELIVERED, former owner `204` actual COMPLETE then null/clean STOP/returned leases/archived | Repair source `52f7b2f9` → publication `30e52fac`, ancestor of owner-fresh master `ddd279e4`; all 17 payloads byte-equal local/published/latest master. Only three feature CSS container hunks changed; TSX/root/shared/row style/capability/art unchanged. Owner seven native cases/46 regressions/types/lint/production build PASS | QA06 independently VERIFIED the bounded published fix at `12a5d394`; evidence `e3173efb` → `ed311858` and follow-up `e8dac180` → `fa78c065` are published, with owner readback of all 122 unique files/111 artifacts. No additional concrete Meet fix or current Community source writer/waiting goal. Existing whole-task filters/list/detail/apply/cancel/receipt/MY PLAN/privacy/state criteria still require their own explicit full disposition; no FE21/FE23/QA06 closure inferred |
+| FE21 | MOCK_READY; original pure-client criteria SATISFIED by owner204; actual goal COMPLETE → fresh null / clean STOP / exact leases returned | Five scoped source commits through `531c4672` published through `4bf9022f`; all 52 latest payloads, 46 runtime source hashes and 17 authority/contract/art/lock pins owner-verified against fresh master. Party title touch defect fixed; original filters/list/detail/apply-cancel/capability/MY PLAN/states/uncertain-receipt criteria met in owner report | No original pure-client gap remains in explicit receipt. Publication and owner readback complete. Real IN02 remains separate with Product root1fc and producer owners; no device/live promotion or SL review |
 | FE22 | Former authoring owner `6ec9`, now Backend-allocated; last explicit frontend criteria SATISFIED | No new delivery; source `1c38ad4` → published `e82a220`, final KST correction `d8778b8` retained | No identified task-local gap: form/validation/draft/conflict criteria met in retained receipt. Root `1fc` owns actual producer/configuration; real IN02 remains separate; no old writer wake |
 | FE23 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED; bounded QA06 follow-up `204` complete/null/clean STOP | Original `7342058`/`58e18ab` → `aa103a8`/`48bb3e8`, KST `d8778b8` retained. Shared Party-action visual repair `30e52fac` delivered as described once under FE21; no new whole-parent outcome | No identified original member-decision/rally/conflict/removal/moved-card gap in retained receipt. Shared QA06 published postfix is independently VERIFIED as recorded under FE21; Product root/Gift counterparts own real IN02 inputs, not a new original frontend gate |
-| FE24 | Historical Gift discovery owner; current whole-task disposition UNRECONCILED, existing environment MOCK_READY | No new task receipt; historical `3cb3f9c`/`8c33ba3` and touch follow-up `9055af1e` retained | Current owner must reconcile public privacy, stock/time filters, GIVING/RECEIVING and paused/sold-out/ended action eligibility. Gift `267` supplies genuine producer inputs; lack of current receipt does not erase delivered fixtures |
+| FE24 | MOCK_READY; original pure-client criteria SATISFIED by same owner; same goal actually COMPLETE/null/STOP and leases returned | Joint published `4bf9022f`, source tip `531c4672`, all 52 payloads verified once. Gifts context-replacement reload and My gifts restored-access reload fixed. Owner original list/detail/GIVING-RECEIVING/filter/eligibility/recipient-privacy/invalid-state criteria satisfied; 148 tests and three-width actual-root native evidence retained | No original pure-client gap remains in receipt. Published and independently read back; no new helper count. Gift267/Product root1fc retain genuine producers/IN02, with FE25/26 unchanged |
 | FE25 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | No new delivery; `dee1392` → `95d9f37`, KST `d8778b8` retained | No identified task-local form/photo/inventory/conflict/owner-route gap in receipt. Qualified upload may be frozen; actual BE24/root upload is a separate integration responsibility, not a new original-task prerequisite |
 | FE26 | Former authoring owner `6ec9`; last explicit frontend criteria SATISFIED | Public pickup and actual route-fixture pointers now sent directly to QA06/World; historical `d127b74` → `941d36c`, KST `d8778b8` explicitly labeled historical, not current requalification | No identified original client gap in retained receipt: intent/hold/expiry/code/claim/cancel and timeout/reload/no-fake-success. QA06 owner pins usable current fixtures; Gift `267`/root `1fc` supply genuine authority. No FE31 substitution or live/device promotion |
 | FE27 | Social ledger retains original SATISFIED/MOCK_READY; bounded latest fidelity owner `202` complete/null/clean STOP/returned leases/archived; no Community feature lease | Existing `9f72a71`/`cf7836a`/`a413e69` retained. Since checkpoint, Social reports bounded source `576f9848` → `ddd279e4`, final receipt `203db3a4` → `6393b451`, all 44 final payloads owner-verified; duplicate root action/bottom compose repair with owner native three widths/244 affected tests | No identified original fixture criterion gap in Social's explicit receipt. QA06 postfix evidence is published with unfinished whole-visual acceptance preserved; real Feed/media providers and IN03 remain separate. Actual evidence/ownership primary is Social, not a new Community acceptance or count |
 | FE28 | Social ledger retains original SATISFIED/MOCK_READY; historical Social author has no new lease | Existing published `5bc0055`/`a413e69`/`b392f56` owner registry pointers newly reconciled here; no new original-task delivery inferred this hour | Original composer/thread/recovery/privacy criteria already recorded in Social owner evidence; no known task-local gap in that receipt. Real service/media and QA04/IN03 are separate dependencies, not grounds for withholding fixture-satisfied original criteria |
-| FE32 | Historical mural author `213`, archived/preserved; current whole-task UNRECONCILED | No new criterion receipt; `832c7de9` → published `7b567acb` retained | Grid/palette/pan/zoom/preview/confirm, touch disambiguation/DOM controls and no drag-placement plus 360px bounds/color/cooldown require an explicit owner disposition; FE33 delivery does not silently close this parent |
+| FE32 | Whole-task UNRECONCILED; historical author213 now Backend-allocated, former editor lease stopped; no current Community writer | Retained source `832c7de9` → published `7b567acb`. Existing owner `mural-editor.md` reports MOCK_READY with deterministic C04 command ports, 55 tests and native 360/390/430; no fresh original-criterion disposition inferred | Reconcile original grid/palette/pan/zoom/preview/confirm/touch/DOM/no-drag-placement and 360px bounds/color/cooldown with responsible implementation owner. FE05/C04 permit client work now; direct World incumbent check pending before exact new staffing. FE33/real IN04 remain separate |
 | FE33 | Former owner `230`, now Backend allocator-owned; original frozen-client criteria SATISFIED | Published module `7c2f3af7` and caller `eeae69be` fixture references routed to QA06/World; no new original outcome | No identified original frozen-client gap. Ordinary production remains closed without supplier. Wall `21e`, root `1fc`, SDK `207`, BE World `20f` and FE Root153 own genuine inputs/activation; IN04 separate |
 | FE37 | Bounded repair owner `26e` COMPLETE/null/STOP; whole-task UNRECONCILED | No new parent receipt; decoder/route regressions published `047d892c` retained | Moderator report/member/content/reason/role-route and truthful failure criteria require the implementation owner's whole-task receipt. Bounded canonical decoder fix is delivered, not whole FE37 acceptance; Root supplies actual role inputs |
 | FE38 | Current frontend whole-task owner/disposition UNRECONCILED | Existing operator work retained; no fresh exact task pin supplied | Event/settings/place review/closure/notices/capability/audit, risky confirmation/stale conflict/source provenance remain to reconcile with actual owner; Root `1fc` is composition dependency contact. No fabricated NOT_STARTED conclusion |
-| FE39 | Current frontend whole-task owner/disposition UNRECONCILED | BE Wall dependency receipt `bcf81212` is committed/handed to `1fc`; publication not established by that receipt; not a frontend completion | Reconcile pause/lock/restore confirmation and partial-closure retry with frontend owner at natural handoff. Frozen C04 work need not await actual operator principal; genuine operator/closure inputs belong to `21e`/`1fc` |
+| FE39 | Current frontend whole-task owner/disposition UNRECONCILED | Retained BE Wall `bcf81212` handoff; latest Wall owner reports Root imported C06 payload with parity and Gateway patch applies, uncompiled/publication/activation pending. This is dependency progress, not frontend completion | Reconcile pause/lock/restore confirmation and partial-closure retry with frontend owner at natural handoff. Frozen C04 work need not await actual operator principal; genuine operator/closure inputs belong to21e/1fc |
 | FE40 | Current frontend whole-task owner/disposition UNRECONCILED | Existing archive work retained; no fresh exact task pin supplied | Reconcile permitted final mural/feed, removed write/private controls, absent handles/beacons and inaccessible deleted content against actual owner receipt. Root owns actual final/closed candidate interfaces; no archive acceptance inferred from Wall delivery |
 | IN02 | Real journey task NOT_RUN in latest retained lane receipt; former `6ec9` harness work preserved, no current Community writer | No new real two-client receipt or exact publication pin; earlier harness activity is not full journey acceptance | Party approval, physical rally/beacon, reservation and confirmed pickup against real services remain open. Product root `1fc`, Gift `267` and actual IN01/party producer owners supply interfaces; next genuinely ready isolated owner receives exact real-spec lease. Virtual walking never establishes physical arrival |
+
+## Current FE21/FE24 original-client delivery assignment
+
+Frontend King identified genuinely available compatible `204` and requested
+actual original-client completion work, not another review or waiting report.
+Community is sole next allocator; fresh compact metadata still shows the
+completed prior Party turn/notLoaded, with last actual COMPLETE→null/clean
+STOP/leases returned and no newer assignment. Preserved `fe-ref-feed` checkout
+is clean. Community has no competing feature writer/reservation, and current
+World presentation/MAP/avatar/IN01 scopes do not include the three feature
+subtrees below. Community grants the exact disjoint source lease before edits.
+
+Original IDs are FE21 and FE24 only. Isolated retained checkout
+`/Users/lhs/Desktop/mcr-worktrees/fe-ref-feed`, NEW branch
+`codex/mcr-fe-FE21-FE24-client`, published base
+`096858b96c3bc11ca92222a3b87cd026ee412ede`; old branches/artifacts preserved.
+Exclusive writes: `frontend/src/features/party-discovery/**`,
+`frontend/src/features/gift-discovery/**`, `frontend/src/features/my-gifts/**`,
+their existing task docs `docs/mcr/frontend/party-discovery.md` and
+`docs/mcr/frontend/gift-discovery.md`, NEW
+`frontend/e2e/community-client/fe21-fe24/**`, NEW
+`docs/mcr/evidence/fe21-fe24-client/**`, NEW
+`docs/mcr/frontend/fe21-fe24-client-delivery.md`. Git tree metadata shows the
+three feature subtrees exist and new runner/evidence/doc paths absent;
+receiver must fresh-verify actual checkout/base/no WIP and prefix absence.
+No FE23/25/26 authoring/management/pickup/rally writes or reopening of their
+satisfied criteria. No app/root/router/WorldShell/shell CSS/shared/generated/
+contracts/manifest/lockfile/CI/backend rights; concrete necessary outside hunks
+require explicit separate allocation before edits, not an approval queue.
+
+Finish-to-delivery objective is implementation-owner self-qualification of all
+original FE21/FE24 criteria from current source/frozen contracts, completing
+any missing client behavior, meaningful relevant interactions/native evidence,
+precise task-level disposition/limits, scoped commits/direct Root153 handoff
+and fixes, actual publication/remote payload verification and clean STOP.
+FE21 retains filters/list/detail/apply-cancel/capability actions/MY PLAN,
+empty/full/private/cancelled states and uncertain-receipt recovery without a
+duplicate application. FE24 retains list/detail/GIVING/RECEIVING, stock/time
+filters/current eligibility, public recipient privacy and invalid action
+prevention for paused/sold-out/ended. Real IN02/provider/device work stays
+separate; frozen-capable client criteria do not wait for it. No artificial code
+change is required if implementation-owned evidence establishes an existing
+criterion, and no remaining original behavior may be omitted as documentation.
+Developer owns source inspection, technical decisions, all qualification and
+fixes; no SL/King technical review or extra acceptance gate. Same selected
+model/reasoning; fresh goal inspection first, aligned unfinished goal reused
+or NEW unbudgeted concrete goal only when none unfinished. No incompatible
+goal reset/pause/false completion. Actual receiving acceptance now confirms fresh `get_goal: null` → NEW
+unbudgeted goal, clean exact checkout/branch/base, all three new runner/
+evidence/report paths and dependency link absent, and acceptance of the exact
+three feature trees/two owner docs/new prefixes with no inherited rights.
+Owner started source/contract inspection. This is actual acceptance, not
+merely dispatch; no goal ID is invented. Native queue only when source is ready, with
+exact min/peak/scope to `21d`+Community, explicit slot release/fresh ≥16 GiB start and actual 8 GiB stop floor/
+process preflight/one workflow ≤0.2 GiB and no shared cleanup or extra target.
+
+Native/build readiness update: owner204 reports source ready, all 142
+baseline and 144 final focused tests, application/fixture noemit and scoped
+lint PASS. Named request `FE21-FE24-204` was routed to BackendSL21d as one
+job, not a duplicate reservation. Exact runner is
+`frontend/e2e/community-client/fe21-fe24/native.mjs` in the assigned checkout:
+actual default app/router/Phaser/selected art, labeled synthetic HTTP/C05,
+serial Chrome contexts 360/390/430×844, Party filters/detail/original-key
+lost-response status recovery/cancel and Gift filters/detail/stock eligibility/
+GIVING-RECEIVING/privacy. Estimate 3–5 minutes, ≤0.02 GiB retained evidence,
+≤0.08 GiB temporary peak, hard ≤0.2 GiB new output. A temporary no-public-copy
+production build follows serially, ≤0.03 GiB; no parallel browser/build,
+install/Cargo/new shared target or cleanup. Existing IN01 priority and actual
+holders remain preserved. No native/build has started; source/docs continue
+in the same goal pending EXPLICIT named21d release plus owner fresh≥16 GiB start/8 GiB stop/
+process preflight. Owner closes its own resources/cache and reports release
+to21d+Community. No SL capacity grant, goal pause or King technical review.
+
+Coordinator21d confirms this is the SAME job, not a second reservation.
+Architecture holder FE153 has now reported actual PASS/full browser release.
+Named offer `FE21-FE24-NATIVE-202611040517Z` was sent DIRECT204 for clean
+source `0bf53e67`; explicit worker ACCEPT and fresh ≥16 GiB/process preflight
+remain pending, not inferred from the offer. No actual IN01 slot is in use.
+The plan remains one serial browser then build, hard ≤0.2 GiB new output and
+≤0.02 GiB durable. Current start/stop policy is ≥16 GiB to START and actual
+8 GiB STOP floor, superseding earlier 8 GiB start wording. No Community
+technical approval, new source rights, shared target or cleanup is granted.
+
+Owner clean-ready receipt: full source
+`0bf53e67ae78dec16cf28f7579687fefb449b6f8`, base `096858b9`, same isolated
+branch/checkout and fresh aligned ACTIVE unbudgeted goal, no reset/pause.
+Git status is clean and own dependency link removed while queued. Criterion
+report is committed; initial two failing regression logs/final 144 checks are
+retained. Native fixture source is committed, browser/build not yet reported
+started. Frozen domain bundle SHA-256
+`905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887`,
+selected manifest
+`04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e`
+and source pack
+`f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f`
+are owner-reported pins; whole-character fixture/read-only Git artwork stay
+unchanged. Advisory source-only disk snapshot 36.31 GiB is not a launch
+clearance: owner rechecks actual capacity/processes at the named offer.
+Same goal continues through native/build qualification, exact task-level
+outcomes, Root publication and fresh remote payload verification.
+
+Actual slot acceptance supersedes the pending offer above: owner204 ACCEPTED
+`FE21-FE24-NATIVE-202611040517Z` on replacement frozen candidate
+`51b1dba40ca0eae7ac31a1e44c53e41226005d92`, same base/branch/ACTIVE
+unbudgeted goal. Production was unchanged from `0bf53e67`; fixture correction
+and four schema-decoder preflights PASS were committed with initial fixture
+failure retained. Fresh owner disk 36.278 GiB and process inventory passed;
+user Chrome/interactive MCP browser were preserved, with no other validation
+browser reported. Exactly one owned headless workflow launched; serial build
+only after owned browser/server/cache closure. No native/build PASS inferred.
+
+Current compact owner progress reports the first native attempt found a real
+FE21 touch failure: meeting-time text overlaps the title link and intercepts
+its center tap. Failure trace/capture retained. Implementation owner is fixing
+the hit area inside its assigned feature scope while preserving row appearance,
+then rerunning the same failure-driven workflow under its held slot. This is
+an assigned client defect, not unattended work, an SL code review or a backend/
+device dependency. Same goal remains active; meaningful remaining native/
+build qualification, original criterion receipts and publication stay pending.
+
+FULL native/build release receipt now supersedes the in-progress stages:
+`FE21-FE24-NATIVE-202611040517Z` is fully released. Final qualified source
+`93517018b2733c7e7f6ed09b97d83d1bdb85940b` passed actual default-root native
+journeys at 360/390/430×844, eight criterion checks plus five captures each.
+Serial no-public-copy production build passed after owned browser cleanup;
+148 focused/fixture checks also PASS. The first native attempt found and
+fixed the actual in-scope FE21 touch interception; the second failure was a
+synthetic full-row fixture mismatch. All initial failures remain retained.
+Final retained output is 1.80 MiB, below 0.02 GiB; owner fresh global disk
+reports 34.8 GiB, not a future slot/capacity grant. Process inventory reports
+no owned/other headless validation browser; own server/cache/build paths
+and task dependency link gone, user Chrome/interactive MCP preserved. No
+install/Cargo/shared target/art/root edits. No further native requested.
+SAME original-client goal remains ACTIVE for exact task-level criterion
+outcomes/documentation, scoped committed handoff/fixes, Root publication and
+fresh remote verification; no terminal/archive or whole FE21/FE24 acceptance
+is inferred from these checks. No IN01/backend/device acceptance is claimed.
+
+Original-client criterion receipt is now explicit, not inferred from checks:
+owner204 reports FE21 and FE24 ORIGINAL PURE-CLIENT CRITERIA individually
+SATISFIED at MOCK_READY. Base
+`096858b96c3bc11ca92222a3b87cd026ee412ede` → final tip
+`531c4672123e6f25b4f82ceb704b09d078792fb9`, five ordered scoped commits
+and exact 52-path manifest sent DIRECT Root153. Three production fixes are
+actual Party title touch interception, retained Gifts reload on context
+replacement, and My gifts reload after current access restoration. Owner
+reports 148 tests/12 files, app+fixture TypeScript/lint/build/source-origin/
+planning PASS; actual default root/router/Phaser native 360/390/430 touch
+journeys (three of three, 15 captures), runtime pin `93517018`, 46 current-
+matching source hashes and fresh relevant-remote-input no drift. Initial
+failures and exact frozen-contract limits remain in
+`docs/mcr/frontend/fe21-fe24-client-delivery.md`.
+
+This is the responsible developer's original-criterion disposition, not an
+SL/King technical review or automatic live/device/IN02 acceptance. FE23/25/26
+satisfied criteria remain unchanged. Worktree is reported clean, all native/
+build resources gone, own link absent and coordinator slot fully released.
+Writer is quiescent pending publication; SAME goal stays ACTIVE until actual
+Root receipt plus fresh remote ancestry/all 52 payload equality and clean
+STOP. Exact leases remain allocated; no archive/new assignment yet. The
+original-ID criterion changes are batched into the next existing hourly digest,
+not a per-commit King/Main packet; no replacement aggregate count is computed.
+
+### Actual FE21/FE24 publication and terminal owner receipt — 14:34 KST
+
+Root153 reports safe serialized non-force publication to master
+`4bf9022f943e601c0f876d7ca7e5fdc54036b8e6`. Ordered source→publisher mappings:
+`0bf53e67`→`2fc01813`, `51b1dba4`→`d7a8f74a`, `2c904fd3`→`e1dc4511`,
+`93517018`→`57df70b0`, `531c4672`→`4bf9022f`. Owner204 fresh fetch and
+independent ls-remote match; all five published commits are ancestors, all 52
+sealed latest payloads equal source on published/current master, all 46 native
+source hashes and 17 authority/contract/art/lock pins match. Publisher reports
+its independent 148 tests/12 files, app+fixture types and lint PASS; no extra
+native/build run. Owner native/build evidence retains its original limits.
+
+Actual SAME persistent goal COMPLETE, elapsed1455s, immediate get_goal null.
+Source branch/tip `codex/mcr-fe-FE21-FE24-client` / `531c4672` preserved clean;
+no dependency link, server/native/build/temp resources or held capacity slot.
+All three feature trees, two owner docs and three new runner/evidence/report
+prefixes above are explicitly RETURNED. No continuing source writer. New
+staffing is independent and requires an exact disjoint grant/actual acceptance;
+no unfinished goal reset, archive or completion is inferred from a chat alone.
+Owner report: `docs/mcr/frontend/fe21-fe24-client-delivery.md`.
+
+### Current QA06 shared evidence and explicit design direction
+
+QA06 remains World-owned IN_PROGRESS; latest bounded readback turn is idle,
+not a completed original goal. Existing Meet postfix publication remains
+verified. New owner readbacks verify World delivery `9356b943` (78 payloads)
+and architecture delivery `a0db1770` (84 payloads/46 artifacts). Captures retain
+their represented source: later World CSS and the source-only 51-object wings
+are not combined-current-master pixel qualification. Saved-image target
+comparison still finds building massing/landscape-density differences. Full
+original ten-screen fidelity/admission/device/live outcomes remain open.
+No additional Community source lease, validation or resource request follows.
+
+Frontend King relayed new explicit human reference steering: match composition,
+proportions, pixel scale, distressed black/cream/red chrome, typography and
+density while using genuine MCR content and actions. Reference provenance:
+`/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/327C1E99-C917-4D55-96F7-C83C59A70F90/1-Photo-1.jpg`.
+Root153+Artist own immediate MAP FOOD→FEED, MERCH→WALL and MEET/GIFTS icons/
+actions. Apply at natural developer-owned fidelity/fix handoffs; actual target
+comparison stays distinct from renderer/source/unit evidence. No fabricated
+stock/private data, literal fictional FOOD service or required-feature cuts;
+no interruption or reopening of the published FE21/FE24 original-client result.
 
 ### Shared QA06 input handoff and available staffing
 
@@ -922,7 +1136,7 @@ handoffs and never falsely complete, reset or relabel them.
 | QA01 | `6ec9`; original criteria SATISFIED for exact pinned canonical inputs, environment CONTRACT_READY; same goal `1793754012` COMPLETE then null, clean STOP | Every fixture/generated response shape coverage and drift/missing-operation/broken-schema/unknown-enum/empty-success failure requirements reported delivered without waived criteria. No whole C07/live/device/IN acceptance | Implementation `6e2038fccbfc09f0dedc344823ef3a494a0da7d3`, evidence `19d7441f`, non-force publication `bd103c101b07e1df30c424cbc1e8a3ea62ca5315`; owner reports all ancestry present under remote `cb9abce48d78227bbdedf7ea59ce95e9e0270c4a`. Both qa01-coverage leases returned; no remaining QA01 required work or new task goal |
 | QA07 (World-owned; Community input contribution) | `230`; closed/published `ced8ec12` per Main record | Original QA07 closure is reported; no additional lane count is computed | World owns final task evidence and lifecycle; developer subsequently accepted QA08, so QA07 closure does not confer current availability |
 | QA08 frontend contribution (World-owned) | `230`; bounded goal COMPLETE then null/clean STOP/all leases returned; original task PARTIAL | Package `81196de6` published as `32def3dc` under master `980fc4d8`; owner actual COMPLETE/null/STOP receipt confirmed, historical baseline distinct from current narrow compatibility probe | Physical-mobile/real-service capacity proof remain NOT_RUN; World explicitly released context; Backend staffing is sole next BE39 allocator, startup pending; Community made no assignment or reservation |
-| QA05 | Original task PARTIAL / IN_PROGRESS; bounded World and mural contributions published. Mural goal `1793760667` actually COMPLETE 21m20s then fresh COMPLETE OBJECT/clean STOP/returned leases; context `26e` has since completed World canonical work and accepted separate World presentation work, no current QA05 lease | World source `a9517e04`. Mural corrected 29 paths (7 source/1 doc/21 evidence), serial source through `f7a0bbc9` published as `1ccb116b`/`c23937d3`/`3bc7dd4b`/`83d3df86` under `8502c143`. Owner fresh ancestry/all 29 payloads/six PNG hashes verified. Frozen `7195d78c` native three widths/34 checkpoints/1,261 pins and 124 tests/six files/two probes/other scoped checks PASS with initial failures and fixture limits retained | Allocated mural contribution delivered; no Community reservation or source rights. World owns remaining whole-QA05 criterion reconciliation: real ticket/server restart/room membership remain open; device/IN04 separate. World canonical contribution is now delivered; current separate World presentation goal `1793766233` is accepted, not a QA05 result or Community lease. `21e` owns real Wall inputs; `21d` sole disk coordinator |
+| QA05 | Original task PARTIAL / IN_PROGRESS; bounded World and mural contributions published. Mural goal `1793760667` actually COMPLETE 21m20s then fresh COMPLETE OBJECT/clean STOP/returned leases; context `26e` has since completed World canonical work and completed separate World presentation work and actually accepted World FE18 goal1793769944, no current QA05 lease | World source `a9517e04`. Mural corrected 29 paths (7 source/1 doc/21 evidence), serial source through `f7a0bbc9` published as `1ccb116b`/`c23937d3`/`3bc7dd4b`/`83d3df86` under `8502c143`. Owner fresh ancestry/all 29 payloads/six PNG hashes verified. Frozen `7195d78c` native three widths/34 checkpoints/1,261 pins and 124 tests/six files/two probes/other scoped checks PASS with initial failures and fixture limits retained | Allocated mural contribution delivered; no Community reservation or source rights. World owns remaining whole-QA05 criterion reconciliation: real ticket/server restart/room membership remain open; device/IN04 separate. World canonical contribution is now delivered; subsequent World presentation goal `1793766233` is complete; current FE18 goal1793769944 is accepted, not a QA05 result or Community lease. `21e` owns real Wall inputs; `21d` sole disk coordinator |
 | QA06 (World-owned; Community input/repair contribution) | `1ab7` remains World-owned; original task IN_PROGRESS with unfinished full acceptance, not terminal merely because the readback turn completed | Independent bounded Meet postfix VERIFIED at `12a5d394` containing `30e52fac`; no further concrete Meet fix. Source `e3173efb` → `ed311858`, `e8dac180` → `fa78c065` published through `62571d83`; latest owner verifies all 122 unique files and 111 artifacts by SHA-256/size (18,720,495 bytes). Initial driver failures and unfinished dispositions retained; no tests/captures rerun for readback | World/QA06 own original actual iOS Safari/Android Chrome, keyboard/safe area/skins/legibility/reachability and full target fidelity disposition. Existing device question stays pending without duplication. Slot closed/released; stopped204 remains archived. Any future capture needs `21d` explicit allocation/fresh owner ≥8 GiB/process preflight; no new device/backend gate on delivered client repair |
 | QA09 | Original whole-task disposition UNRECONCILED; frontend contribution unallocated, not evidence of zero whole-task progress; backend primary `267` at natural Gift/operator handoff | No new full-rehearsal receipt. Cover resumable partial closure/retry and frontend lifecycle around actual database restart/backup restoration, outbox replay, pending pickup and deletion; supporting restart tests do not certify whole task | Product root `1fc` owns BE44 restore/outbox interfaces, Social backend `16e1` BE42 deletion; FE39 frozen closure/retry input and exact shared recovery child-prefix lease required. Frozen-contract authoring can proceed independently when allocated; actual rehearsal requires candidate interfaces and scoped backup resources. No frontend contribution commit/push reported |
 | QA10 frontend provenance contribution | `26e` bounded frontend contribution DELIVERED; SAME goal `1793757526` COMPLETE then null/clean STOP/all leases returned; whole original QA10 PARTIAL; Product root `1fc` remains sole `scripts/mcr/release-check.sh` implementation owner | Own published-candidate ten-gate frontend PASS/PARTIAL, 3,503 Vitest + 22 Node tests PASS; backend/service/device/three real journeys remain NOT_RUN. Candidate versions, genuine checks, production mock/secret exclusion, task-to-commit evidence. Missing evidence stays NOT_RUN/BLOCKED and stale revisions cannot replace current candidate | BE43 remains root's hardening increment; QA01/QA02 same-candidate evidence required. Exact NEW `frontend/e2e/release/qa10/**`, `docs/mcr/evidence/release/qa10/**` and new release-candidate doc only. No release-script grant; only exact separately allocated loader hunk in an existing shared test. Serial handoff through `544d45ae` published by Root under `980fc4d8`; owner post-repair full qualification PASS reported; final evidence `d6009343` published as `d165dd7a` under `a9517e04`, actual owner ancestry and COMPLETE/null/STOP receipt confirmed |
@@ -1032,6 +1246,19 @@ worker branch, not a verified chat sender. New Gift staffing above is explicit;
 SELF/Auth scope is unchanged.
 
 ## Exact World presentation incumbent clearance
+
+Later FE18 feature-prefix incumbent inquiry: Community has NO current writer,
+reservation or successor allocation on
+`frontend/src/features/world-rooms/**` or
+`frontend/src/features/world-nearby/**`. Any residual historical Community
+reservation is relinquished. Current `204` remains exclusively FE21/FE24
+Party/Gift/my-gifts client work and its exact tests/docs. This clearance adds
+no WorldShell/composition/Map/network/HTTP/world-panels/shared-seam rights and
+does not assign or alter World-owned `26e`'s goal. World records its concrete
+ready FE18 receiving allocation/acceptance independently. No existing worker
+stop/switch, technical review, King acknowledgment or generic live/device
+prerequisite is introduced. Concise no-incumbent result was sent directly
+to World.
 
 World requested actual incumbent truth for a separate ready presentation
 correction. Community has NO current writer, new allocation or reservation on

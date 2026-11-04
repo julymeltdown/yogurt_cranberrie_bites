@@ -1,0 +1,436 @@
+{
+  "status": "VALIDATED_COMMITTED_HANDOFF_PUBLICATION_PENDING",
+  "task": "FE06/QA06 bounded World presentation budget correction",
+  "branch": "codex/mcr-fe-world-reference-budget",
+  "sourceBase": "d1a5deaae0f6b79b365cb4c451d921711573ab8c",
+  "payloadCommit": "c19bad16245a86b4d0ccf27b93d5686c00422bcb",
+  "payloadCommits": [
+    "bf61d241e5cf4b0ed51d118bcb70e34020643097",
+    "7aa66644b7085795745b84f3765823370d853741",
+    "947755d66c83c6f6a37f6d20fd83a8d3206e49ea",
+    "a5b475f5802d3019cfd7a1fba919be10a386c751",
+    "e93b92ad0058f3ad62d9bc639f7dc8c5df1db23c",
+    "033263117baf37068ad2b669ccd040440ac0bfa6",
+    "93825a6000c07044fb0d24f5d27a2702c51a95bb",
+    "1c4652dd64ad824ab5e12abfde158308647412c7",
+    "7c2f27262ca2b52c6bd745d1ad80828f238873cc",
+    "5619da572b7e9ba0b4ca614852a90f65666719a4",
+    "c19bad16245a86b4d0ccf27b93d5686c00422bcb"
+  ],
+  "payload": [
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/baseline-parade-360-h554.png",
+      "bytes": 217072,
+      "sha256": "403d0d47084b81235d5023d26d5f3aa61272bde98b0cb7a5630707cfbca8fab3"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/baseline-parade-360-h844.png",
+      "bytes": 412099,
+      "sha256": "4f60ed107b298172468da6b5ea271844793e7f625d78f55259216b365b172b97"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/baseline-parade-390-h554.png",
+      "bytes": 231564,
+      "sha256": "71f4a58478241753e44cf1f3e5a25fcef54823f9548a996df068414c39a031db"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/baseline-parade-390-h844.png",
+      "bytes": 431399,
+      "sha256": "6ad98424e84c5d0b355e9b7b23caba4cd0ca35a970faa6998ba6139a6c7201c1"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/baseline-parade-430-h554.png",
+      "bytes": 240797,
+      "sha256": "222fc0b71168ff0452612a27193665e6a9a4fa9446ebe29e1443875ca1ec7287"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/baseline-parade-430-h844.png",
+      "bytes": 481268,
+      "sha256": "b9d891c83c8f00a9938ff0f8320c29f679fd413b7fbd8e151583aad9033707ca"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-danger-360-h554.png",
+      "bytes": 256249,
+      "sha256": "ce4000be6eef4f7b9b69352f40491ab31e1075e40043833c906d0db02f62dd31"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-danger-360-h844.png",
+      "bytes": 452892,
+      "sha256": "bf794e567415c4ab01c798566e399642407df83ec131938174469980cd523f7f"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-danger-390-h554.png",
+      "bytes": 273143,
+      "sha256": "926424d0dd5598c99237dc2f45a71827132f7f0b4ce1309fe9db6c72f058a8c8"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-danger-390-h844.png",
+      "bytes": 474596,
+      "sha256": "23ddbcad74934d27aebc8b375a15c1f173a255e0b990bd4f2c10dc52584c78a1"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-danger-430-h554.png",
+      "bytes": 301771,
+      "sha256": "f8b3f6a2296ecfd5dec2a1cd13136be9cbe4910289eda19206fc959a995cc417"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-danger-430-h844.png",
+      "bytes": 525834,
+      "sha256": "7f1e1e6e7097b74e1764190420d20ef16b861d650f984410eb5475ad9998c0f0"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-parade-360-h554.png",
+      "bytes": 255385,
+      "sha256": "47d6c48716f958b3bc5ebf4dd0776937b0fb541ce8905011fb46418fa2de2942"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-parade-360-h844.png",
+      "bytes": 452128,
+      "sha256": "c25416c98584e523fab7b5040dbca25a7265c3768cc836487025dbce3850f06a"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-parade-390-h554.png",
+      "bytes": 272326,
+      "sha256": "f53ff9e60518af8320ad474cf28b3951668219661cb85a75007ebae0e9141036"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-parade-390-h844.png",
+      "bytes": 473824,
+      "sha256": "783a06e79714c6df6c2677a30a7090edcec51451336ed8694878a321c26a5668"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-parade-430-h554.png",
+      "bytes": 301059,
+      "sha256": "718da9830df994c857fcfda8472b07bdc31a14ae2f5997140532664b6b66751d"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-parade-430-h844.png",
+      "bytes": 524778,
+      "sha256": "40edc3b13a0579d5d476290ac9daa6e2bd13b6273c5f7f63e93ed97c39ffee40"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-revenge-360-h554.png",
+      "bytes": 256534,
+      "sha256": "c9052578fc8915c66d2351ead801640f094518359bad07d54de3341f643e0a9d"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-revenge-360-h844.png",
+      "bytes": 453120,
+      "sha256": "e367489fb84e8f264c1045c5c07e6f47403be60ad64ba0bce2b575dabc17546a"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-revenge-390-h554.png",
+      "bytes": 273354,
+      "sha256": "72d7063552f3993052d041b33ebb13737f07bc83c8e03e42d7f86341dab0ff8e"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-revenge-390-h844.png",
+      "bytes": 474422,
+      "sha256": "5c5b15f64eff995d80d577ff26d54eb4fbdfb8f175b8cad05493d69df96f5e53"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-revenge-430-h554.png",
+      "bytes": 302107,
+      "sha256": "adec7655d61de8dec04b14d37f13ef202af059ae8b560e3ddf8eea37c0da4e8e"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/candidate-revenge-430-h844.png",
+      "bytes": 525706,
+      "sha256": "238c123dded9241e21bfeeb6ed9f24dea9133f81020403301988e7a7454164a5"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/comparison.html",
+      "bytes": 1402,
+      "sha256": "52331db800fb003fcb2f21cffa1d4123a32c7d189e090fe66b6cae9531c0e595"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/comparison.png",
+      "bytes": 957410,
+      "sha256": "259271922c919c00126853b22e763c98cfc733650b22bd78c5dfd3e45cd61d51"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/critical-retry-390-h554.png",
+      "bytes": 27245,
+      "sha256": "30f3eb1de3227af5c4fe0a48cf09b879e9b5e6df2300bc8e5d2fcd81b0bbe379"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/disconnected-390-h554.png",
+      "bytes": 230325,
+      "sha256": "f37f4184728c81ebf1c98cdc2ebe6dcea96c1d14872fce017a41ccfeda4460a5"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/keyboard-reduced-390-h420.png",
+      "bytes": 161294,
+      "sha256": "365901c878244930e978d9d8110495f08b2d071a45fb4079dc909a7665ec9f3b"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/privacy-withdrawn-390-h554.png",
+      "bytes": 22002,
+      "sha256": "f374a32e6555eb8277f0df980c4dfae39f9c034595da98bdf2ddd186868ab33b"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/production-denied-390-h554.png",
+      "bytes": 4855,
+      "sha256": "6aa54904d8f13722e5fd3d288ba68dbb71acaab0a8ff9d2f1fee45bc2f981408"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/reference-target.png",
+      "bytes": 2967126,
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/report.json",
+      "bytes": 819813,
+      "sha256": "46bfada6aba20bf65bdb5a6d8c67b9ec3353b6685027f8f42eaf8ea608efe8d8"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/review.json",
+      "bytes": 977,
+      "sha256": "3f34d6930685501c7555155689a0d7a0e2d9eaeca7a00e181097f27a432d658d"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/route-feed-390-h554.png",
+      "bytes": 35919,
+      "sha256": "a89600488063cddd917caff70fd13cefc572a50f3a6801cce2eb49d95e4773cc"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/route-gifts-390-h554.png",
+      "bytes": 40397,
+      "sha256": "990b1149cd82f31527b4c006279df2523921fe0b6c00812190f02608d200f995"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/route-me-390-h554.png",
+      "bytes": 36916,
+      "sha256": "2b36118f826b29928eb877a6997720a8c7659757758104d056c9cebe9d1c3e14"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/route-meet-390-h554.png",
+      "bytes": 41517,
+      "sha256": "925b2a9d97fd8d21ec4daf57dd9151eb7048d8bf435d8e8b3cf7b45974eb4378"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/route-wall-390-h554.png",
+      "bytes": 35032,
+      "sha256": "3b048d68eb7f0c3f28d0375b456607ea46b4a9a623cf2f04c122ffa7921f1c7c"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/route-world-390-h554.png",
+      "bytes": 272326,
+      "sha256": "f53ff9e60518af8320ad474cf28b3951668219661cb85a75007ebae0e9141036"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/settling-review.json",
+      "bytes": 959,
+      "sha256": "79f2fa81db55f5058dc014429b13201c4bc1ff12f201765fe2587bd2720920de"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-01/tools-expanded-390-h554.png",
+      "bytes": 31518,
+      "sha256": "17d407b7b1a247ffb0c33ea454828062020e0d6e2315aeeb82842c4736922bf2"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/baseline-parade-390-h554.png",
+      "bytes": 231564,
+      "sha256": "71f4a58478241753e44cf1f3e5a25fcef54823f9548a996df068414c39a031db"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/candidate-parade-390-h554.png",
+      "bytes": 272306,
+      "sha256": "3362e0aacbb892e93d0311b96289e509220d4ed979c4e4aa27eedad74b5318ba"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/comparison.html",
+      "bytes": 1402,
+      "sha256": "52331db800fb003fcb2f21cffa1d4123a32c7d189e090fe66b6cae9531c0e595"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/comparison.png",
+      "bytes": 957398,
+      "sha256": "87ed48b154c83624d6747c59ab9f83021df294423494e4252a098a814533cb78"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/critical-retry-390-h554.png",
+      "bytes": 27245,
+      "sha256": "30f3eb1de3227af5c4fe0a48cf09b879e9b5e6df2300bc8e5d2fcd81b0bbe379"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/disconnected-390-h554.png",
+      "bytes": 230325,
+      "sha256": "f37f4184728c81ebf1c98cdc2ebe6dcea96c1d14872fce017a41ccfeda4460a5"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/keyboard-reduced-390-h420.png",
+      "bytes": 161294,
+      "sha256": "365901c878244930e978d9d8110495f08b2d071a45fb4079dc909a7665ec9f3b"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/privacy-withdrawn-390-h554.png",
+      "bytes": 22002,
+      "sha256": "f374a32e6555eb8277f0df980c4dfae39f9c034595da98bdf2ddd186868ab33b"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/production-denied-390-h554.png",
+      "bytes": 4855,
+      "sha256": "6aa54904d8f13722e5fd3d288ba68dbb71acaab0a8ff9d2f1fee45bc2f981408"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/reference-target.png",
+      "bytes": 2967126,
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/report.json",
+      "bytes": 146451,
+      "sha256": "b245a6268c5c936bfba0eb1fe076b7cce7d5c88b06b2c4c0976245753e75173d"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/review.json",
+      "bytes": 1444,
+      "sha256": "2487587f8dce5626dfdbfeaf42c73be9459638b3b92dae602a9205c7ae708cf1"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/route-feed-390-h554.png",
+      "bytes": 35919,
+      "sha256": "a89600488063cddd917caff70fd13cefc572a50f3a6801cce2eb49d95e4773cc"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/route-gifts-390-h554.png",
+      "bytes": 43338,
+      "sha256": "7a65a9bf1312bd45e931ac47a5a1a4544219b86804388721d537597acd6f79bb"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/route-me-390-h554.png",
+      "bytes": 46684,
+      "sha256": "6f4468c81010d2d6194281b3aef9938097430366603c058d5d02f1a68502fedf"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/route-meet-390-h554.png",
+      "bytes": 52481,
+      "sha256": "f1da70deca1560c8d244846a7573f4feaee4db14c272ea3799b446ebce42ece8"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/route-wall-390-h554.png",
+      "bytes": 40634,
+      "sha256": "2f4d6db51c82a05827e7183818501fc24caac8d07c2fc73e9a771133ca79a14b"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/route-world-390-h554.png",
+      "bytes": 272306,
+      "sha256": "3362e0aacbb892e93d0311b96289e509220d4ed979c4e4aa27eedad74b5318ba"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/native-02/tools-expanded-390-h554.png",
+      "bytes": 230782,
+      "sha256": "808ced0e15d251c290c2b6441acbe2195b43b606322830cff72a35a1f0def0af"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/qualification.json",
+      "bytes": 3496,
+      "sha256": "a4792308bfe4bbc66b051e46effa833d353c526871f349c6bf1886a5eee2bead"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/regressions.log",
+      "bytes": 246,
+      "sha256": "b05cc0e072103b85e1e7078f18fcdc221923d122020fbe8751dcd52ed42598bb"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/screenshots.json",
+      "bytes": 4693,
+      "sha256": "c7fb01cb21d1e869c54a70a0cff1cfb4f06411a9ccec4237c9eaa7b8e952bc7a"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/shell-regressions.log",
+      "bytes": 246,
+      "sha256": "74b8400022e075ebe32ce9cc257bee2bd10539df2f8ae9ffa67e9d8739309451"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/source-ready.json",
+      "bytes": 3903,
+      "sha256": "c70403ed6dc828af4c4aa6f521c0fa516956c9e9269eaacab1cb9dee910cfb56"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/tools-tests.log",
+      "bytes": 244,
+      "sha256": "107fe8dc2e7be1e6722aba3a75a5dad8c068d0f206e8f1c71ab6e4253a679df7"
+    },
+    {
+      "path": "docs/mcr/evidence/world-presentation-budget/types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/frontend/world-presentation-budget.md",
+      "bytes": 9751,
+      "sha256": "87d833813112af4756210d460b62cfa1f6ec0a5c3a45517c00bf35aa54081eb1"
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "bytes": 11316,
+      "sha256": "ef0aeb98a10d93c5dcdb89c7e6b25f0292260e699e093311506c06a4cc10f19d"
+    },
+    {
+      "path": "frontend/src/app/__tests__/default-shell/chrome.test.tsx",
+      "bytes": 3224,
+      "sha256": "2483ca761fe14f49db12c28e8933245c17dccdeec1651b9309783c3cd094efc6"
+    },
+    {
+      "path": "frontend/src/app/__tests__/reference-root/root.test.tsx",
+      "bytes": 3748,
+      "sha256": "6c8dc32eeeed9cbffa4f691bcb25ceb85e4bdab0acdb0a95bf1f0e9d7f6274fa"
+    },
+    {
+      "path": "frontend/src/app/__tests__/world-presentation-budget/native.mjs",
+      "bytes": 24347,
+      "sha256": "f335b58c4b5bd7680cc41dd5fbe3c4a5101968bd74ed896eba4ab9f0adaf4ec8"
+    },
+    {
+      "path": "frontend/src/app/__tests__/world-presentation-budget/tools.test.tsx",
+      "bytes": 4323,
+      "sha256": "a363dd369c9ca33eb81105d20c1cfec9466ce7f6a3896534976b1470252fcf21"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "bytes": 12061,
+      "sha256": "02cfa90906fce69ab896777f44388a1990b2d670a1b0b47bc8099d0cf1ef669f"
+    },
+    {
+      "path": "frontend/src/app/world-presentation/WorldTools.tsx",
+      "bytes": 1534,
+      "sha256": "1b4206cb413700246803c38b71cb16ebf3875008af65767774d7b89e36bf69a1"
+    }
+  ],
+  "manifestNote": "This handoff manifest is added by the next receipt commit; publisher should integrate through the exact final HEAD sent with the handoff. Payload map covers the complete pre-manifest tree; final remote comparison also includes this manifest.",
+  "scopeAudit": {
+    "allChangedPathsAllocated": true,
+    "existingSentinelEdits": 3,
+    "crossLaneImports": false,
+    "protectedFilesByteIdenticalToBase": [
+      "frontend/src/world/composition/index.ts",
+      "frontend/src/world/scenes/MapScene.ts",
+      "frontend/src/world/reference-scene/spatial-v5/camera.ts",
+      "frontend/src/entities/avatar/character-source-pack.json",
+      "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts"
+    ],
+    "docsSourceBackendManifestsLocksCIChanged": false
+  },
+  "qualification": "qualification.json and immutable native-01/native-02 report hashes;110 tests, fulltypes/lint,24matrixcases+focused2,actualoptimizedbuild,QA06 saved-evidence review findings resolved",
+  "resources": "Both named slots explicitly released; own browser/server/cache/profile/link removed. Measured workflow/durable caps pass.",
+  "publisher": "Root153 sole serialized integrator/publisher; no self push",
+  "requiredAfterHandoff": [
+    "Integrate validated commits serially preserving concurrent changes",
+    "Run relevant combined checks in publisher isolation",
+    "Publish non-force to julymeltdown/mcr master",
+    "Worker fresh fetch/ls-remote and payload/ancestry readback before goal completion"
+  ],
+  "goal": 1793766233,
+  "limits": [
+    "Synthetic source7005 fixtures, not live backend/public admission",
+    "Desktop Chrome, not physical device/software keyboard",
+    "Bounded scene-height improvement, not full original ten-screen fidelity"
+  ]
+}

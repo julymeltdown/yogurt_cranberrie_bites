@@ -1,0 +1,53 @@
+{
+  "format": "MCR_MAP_VENUE_MASSING_V1_HANDOFF",
+  "status": "CONTRACT_READY_METADATA_RENDER_VALIDATION_NOT_RUN",
+  "task_ids": [
+    "AR02",
+    "AR04"
+  ],
+  "source_parent_commit": "56a6ed6bd566bcada32260198e619ebef3b497ab",
+  "payloads": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-venue-massing-v1/build.py",
+      "bytes": 7653,
+      "sha256": "sha256:e22f9f589f4181a3ad6985910b220cd33bab87af7fe122fb0aa6c55de7cf7e68"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-venue-massing-v1/analyze-visibility.py",
+      "bytes": 3114,
+      "sha256": "sha256:2c740525893b4af3b29bd14bb54765b0f28262f65df523f74cfd934f8d7062be"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-venue-massing-v1/README.md",
+      "bytes": 2874,
+      "sha256": "sha256:6fd2e5996895c7c0fc509d7646dc400b9ca9cc1fc684245366cb9602054989f2"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-venue-massing-v1/presentation.json",
+      "bytes": 12965,
+      "sha256": "sha256:06c6d4dad6b2c141079f3b54f7407dd0458e9e918d043c46f20524f56d0a37c7"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-venue-massing-v1/visibility-analysis.json",
+      "bytes": 2245,
+      "sha256": "sha256:8518be439ab4692f681820798021242f9587ce7842848972f7ba39f237b012a1"
+    }
+  ],
+  "validation": [
+    {
+      "command": "python3 -B frontend/public/world/reference-scene-v2/map-venue-massing-v1/build.py --verify",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -B frontend/public/world/reference-scene-v2/map-venue-massing-v1/analyze-visibility.py --verify",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "evidence_limits": "Existing native04 shows prior49-object architecture, not these51-object wings. Static alpha/clearance checks do not qualify native/mobile occlusion or full target fidelity.",
+  "consumer_followup": "Explicit new source-only sidecar lease and paired-pins consumption; no implied runtime/root ownership transfer. Actual native/mobile/source comparisons remain required.",
+  "new_raster_or_browser_jobs": 0
+}

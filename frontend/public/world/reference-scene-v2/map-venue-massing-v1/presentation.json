@@ -1,0 +1,385 @@
+{
+  "format": "MCR_MAP_VENUE_MASSING_V1",
+  "version": 1,
+  "status": "CONTRACT_READY_METADATA_RENDER_VALIDATION_NOT_RUN",
+  "view": "MAP_ONLY",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "required_labels": {
+    "path": "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json",
+    "bytes": 14099,
+    "sha256": "sha256:f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
+  },
+  "required_landscape": {
+    "path": "frontend/public/world/reference-scene-v2/map-layout-v2/landscape-presentation.json",
+    "bytes": 13276,
+    "sha256": "sha256:789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf"
+  },
+  "required_architecture": {
+    "path": "frontend/public/world/reference-scene-v2/architecture-v2/atlas-handoff.json",
+    "bytes": 8302,
+    "sha256": "sha256:98484ffd7c3301f7ba3b8cc5221be29d48386ec1dcc2eb67015c2dffc76a5fc0"
+  },
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "bytes": 2967126,
+    "sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+  },
+  "evidence": {
+    "capture_source_commit": "4cb162b71133446e73533ce3471b06fffea6327b",
+    "retained_artifact_prefix": "docs/mcr/evidence/reference-scene-v5/architecture-v2/native-04/",
+    "publication_at_comparison": "PENDING",
+    "map": {
+      "file": "map-parade-390.png",
+      "bytes": 409928,
+      "sha256": "sha256:19d05754866c6ab54004a89dbb3e6026cf3b5b2b7b2e33c5f5a749ff1c907e03"
+    },
+    "editable": {
+      "file": "editable-parade.svg",
+      "bytes": 2657147,
+      "sha256": "sha256:cb34694ac25ffa5e488aa2c98094f23a0c4950a3eb5622ed590d21f606db4cb5"
+    },
+    "editable_raster": {
+      "file": "editable-parade.png",
+      "bytes": 1476218,
+      "sha256": "sha256:9156109e82573868a1a9d24585f305b890353a96889392b34988359c590ba524"
+    },
+    "finding": "Matching MAP source view shows a narrow standalone central block; original reference depicts a venue complex with flanking wings. Existing taller facade source survives packing/rendering, but does not complete the architectural mass."
+  },
+  "annexes": [
+    {
+      "id": "map_stage_west_annex",
+      "frame": "north_hall",
+      "x": 117,
+      "y": 244,
+      "width": 169,
+      "height": 128,
+      "depth_y": 372,
+      "view": "MAP_ONLY",
+      "interaction_id": null,
+      "place_id": null,
+      "kind": "unbound_map_architecture_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_stage_east_annex",
+      "frame": "north_hall",
+      "x": 436,
+      "y": 280,
+      "width": 122,
+      "height": 90,
+      "depth_y": 370,
+      "view": "MAP_ONLY",
+      "interaction_id": null,
+      "place_id": null,
+      "kind": "unbound_map_architecture_illustration_not_a_world_solid"
+    }
+  ],
+  "themes": [
+    {
+      "theme_id": "REVENGE",
+      "layout": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/revenge/layout.json",
+        "bytes": 25334,
+        "sha256": "sha256:7769f6b6ef754f2c64fccc000ce995a4d0d87d1423e87f9bd8aacc4776b2f043"
+      },
+      "scenery": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/revenge/scenery.json",
+        "bytes": 10636,
+        "sha256": "sha256:68e23383ac162d2bcfe0a28019a9aa7685da6a81edb8d304c69a8d306b0388dd"
+      },
+      "atlas": {
+        "id": "revenge_architecture_v2_atlas",
+        "path": "world/reference-scene-v2/architecture-v2/revenge/atlas.png",
+        "sha256": "sha256:108d5483711e6bd755b328d08d3535141954ef81adc6eabfd066a88d8fe278aa",
+        "width_px": 1024,
+        "height_px": 1024,
+        "bytes": 1272098
+      },
+      "native_atlas": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/revenge/native-atlas.png",
+        "bytes": 1317461,
+        "sha256": "sha256:d93cee0b2a1a68f4e8933b5969a5d5fedd5048d10b85559ba95b0847a3a5ec6f"
+      },
+      "source_provenance": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/revenge/provenance.json",
+        "bytes": 6301,
+        "sha256": "sha256:732a9587dc11d09f9e0dae41611f7fcd2c0716ef6b9749062610fa6f1a7cc220"
+      },
+      "frame": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "source_transform": {
+        "frame": "north_hall",
+        "source_rect": [
+          25,
+          649,
+          378,
+          260
+        ],
+        "frame_rect": {
+          "x": 518,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "packed_rect": [
+          520,
+          563,
+          240,
+          165
+        ],
+        "scale": 0.6349206349206349,
+        "resampling": "nearest",
+        "rounding": "nearest ties away from zero",
+        "source_rgba_policy": "Exact crop RGBA, no thresholding or repaint; recorded rectangle omits exterior faint residue.",
+        "padding": "Transparent, horizontally centered, bottom-aligned2px."
+      },
+      "runtime_pngs": 2,
+      "runtime_bytes": 1821253,
+      "runtime_pixels": 2043904
+    },
+    {
+      "theme_id": "PARADE",
+      "layout": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/layout.json",
+        "bytes": 25333,
+        "sha256": "sha256:1dabdcd979ae3d64ebfdb834ce0319f25869d20f6d354e69f0f2c2e8d68f619d"
+      },
+      "scenery": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/scenery.json",
+        "bytes": 10600,
+        "sha256": "sha256:11241a53b1ccd5e11a70e920d0a9e90e34213ded5174684fba34daf93e41fe18"
+      },
+      "atlas": {
+        "id": "parade_architecture_v2_atlas",
+        "path": "world/reference-scene-v2/architecture-v2/parade/atlas.png",
+        "sha256": "sha256:aab0383b8963f1b681acf81d22d2be88e130744554311e74f0793efbe388e529",
+        "width_px": 1024,
+        "height_px": 1024,
+        "bytes": 1284429
+      },
+      "native_atlas": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/native-atlas.png",
+        "bytes": 1329909,
+        "sha256": "sha256:e8cf8eb7e1b073f93ebbeda06b2095390f1508136effa95e33e70fc6c945be59"
+      },
+      "source_provenance": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/parade/provenance.json",
+        "bytes": 6301,
+        "sha256": "sha256:e59c51c9504d41dc5277b7f6e804732d3afba4c8b25ffd0589f1ec25b2ca35d0"
+      },
+      "frame": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "source_transform": {
+        "frame": "north_hall",
+        "source_rect": [
+          433,
+          649,
+          379,
+          260
+        ],
+        "frame_rect": {
+          "x": 518,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "packed_rect": [
+          520,
+          563,
+          240,
+          165
+        ],
+        "scale": 0.633245382585752,
+        "resampling": "nearest",
+        "rounding": "nearest ties away from zero",
+        "source_rgba_policy": "Exact crop RGBA, no thresholding or repaint; recorded rectangle omits exterior faint residue.",
+        "padding": "Transparent, horizontally centered, bottom-aligned2px."
+      },
+      "runtime_pngs": 2,
+      "runtime_bytes": 1833584,
+      "runtime_pixels": 2043904
+    },
+    {
+      "theme_id": "DANGER",
+      "layout": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/danger/layout.json",
+        "bytes": 25333,
+        "sha256": "sha256:1dbea3beddbba01f62fae1170b3f626a5b65eae138e1aab2c0171c85888b2b9a"
+      },
+      "scenery": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/danger/scenery.json",
+        "bytes": 10600,
+        "sha256": "sha256:60595eceb1207e91eaca34cc5868fadd10d51be3b99aabd344abe7dc99ee7255"
+      },
+      "atlas": {
+        "id": "danger_architecture_v2_atlas",
+        "path": "world/reference-scene-v2/architecture-v2/danger/atlas.png",
+        "sha256": "sha256:20f218966eb17f50992191f1128b45ca02aac9b00a1c1f39ba71637b68afa29d",
+        "width_px": 1024,
+        "height_px": 1024,
+        "bytes": 1271456
+      },
+      "native_atlas": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/danger/native-atlas.png",
+        "bytes": 1315627,
+        "sha256": "sha256:4fb8ea46a44803416abebe436f34c94f6ec1099ccb6d5f6db49d8b923eaac4d3"
+      },
+      "source_provenance": {
+        "path": "frontend/public/world/reference-scene-v2/architecture-v2/danger/provenance.json",
+        "bytes": 6302,
+        "sha256": "sha256:a2de9c8598cb3c1b23658169235de63621c621daa2c69eb4b25d49b02a5ac377"
+      },
+      "frame": {
+        "x": 518,
+        "y": 550,
+        "width": 244,
+        "height": 180
+      },
+      "source_transform": {
+        "frame": "north_hall",
+        "source_rect": [
+          841,
+          649,
+          383,
+          260
+        ],
+        "frame_rect": {
+          "x": 518,
+          "y": 550,
+          "width": 244,
+          "height": 180
+        },
+        "packed_rect": [
+          520,
+          565,
+          240,
+          163
+        ],
+        "scale": 0.6266318537859008,
+        "resampling": "nearest",
+        "rounding": "nearest ties away from zero",
+        "source_rgba_policy": "Exact crop RGBA, no thresholding or repaint; recorded rectangle omits exterior faint residue.",
+        "padding": "Transparent, horizontally centered, bottom-aligned2px."
+      },
+      "runtime_pngs": 2,
+      "runtime_bytes": 1820611,
+      "runtime_pixels": 2043904
+    }
+  ],
+  "composition": "Add two existing-atlas illustrations into MAP stable ascending depth_y ordering, behind unchanged stage_venue_representation at373. Preserve all current objects, labels, gardens and marker order. WORLD ignores this input.",
+  "authority": "Unbound virtual MAP art only. Never emit canonical objects, collisions, destinations, interaction targets, selected states or physical eligibility.",
+  "unchanged": [
+    "34 WORLD placements and source geometry",
+    "existing stage_venue_representation",
+    "all frame rectangles and PNG bytes",
+    "all six labels and ten gardens",
+    "canonical feet, spawns, interactions, camera and release bindings"
+  ],
+  "bounds": {
+    "original_stage_frame": [
+      185,
+      163,
+      300,
+      210
+    ],
+    "proposed_combined_frame_envelope": [
+      117,
+      163,
+      441,
+      210
+    ],
+    "metric_scope": "Frame rectangles, not a pixel-perfect reference measurement or visible-alpha envelope."
+  },
+  "validation": {
+    "new_images": 0,
+    "new_native_exports": 0,
+    "new_browser_runs": 0,
+    "label_and_garden_rectangles_disjoint": true,
+    "canonical_point_checks": [
+      {
+        "annex": "map_stage_west_annex",
+        "point": "stage_info",
+        "kind": "interaction",
+        "distance_px": 202.98768435548004
+      },
+      {
+        "annex": "map_stage_west_annex",
+        "point": "park_info",
+        "kind": "interaction",
+        "distance_px": 336.93322780634145
+      },
+      {
+        "annex": "map_stage_west_annex",
+        "point": "gifts_info",
+        "kind": "interaction",
+        "distance_px": 404.0
+      },
+      {
+        "annex": "map_stage_west_annex",
+        "point": "wall_info",
+        "kind": "interaction",
+        "distance_px": 612.0
+      },
+      {
+        "annex": "map_stage_west_annex",
+        "point": "courtyard_entry",
+        "kind": "spawn",
+        "distance_px": 193.13207915827965
+      },
+      {
+        "annex": "map_stage_west_annex",
+        "point": "community_entry",
+        "kind": "spawn",
+        "distance_px": 445.04831198421596
+      },
+      {
+        "annex": "map_stage_east_annex",
+        "point": "stage_info",
+        "kind": "interaction",
+        "distance_px": 22.0
+      },
+      {
+        "annex": "map_stage_east_annex",
+        "point": "park_info",
+        "kind": "interaction",
+        "distance_px": 90.9065454189081
+      },
+      {
+        "annex": "map_stage_east_annex",
+        "point": "gifts_info",
+        "kind": "interaction",
+        "distance_px": 461.7748369064733
+      },
+      {
+        "annex": "map_stage_east_annex",
+        "point": "wall_info",
+        "kind": "interaction",
+        "distance_px": 647.0023183884274
+      },
+      {
+        "annex": "map_stage_east_annex",
+        "point": "courtyard_entry",
+        "kind": "spawn",
+        "distance_px": 54.0
+      },
+      {
+        "annex": "map_stage_east_annex",
+        "point": "community_entry",
+        "kind": "spawn",
+        "distance_px": 390.0
+      }
+    ],
+    "native_visibility_occlusion": "NOT_RUN",
+    "runtime_adoption": "NOT_RUN",
+    "mobile_reference_comparison": "NOT_RUN",
+    "full_reference_fidelity": "IN_PROGRESS_NOT_ACCEPTED"
+  },
+  "consumer": "Requires a newly recorded exact consumer lease and explicit paired hash validation. Existing native04 renders do not qualify these new wings. No mandatory manager review."
+}

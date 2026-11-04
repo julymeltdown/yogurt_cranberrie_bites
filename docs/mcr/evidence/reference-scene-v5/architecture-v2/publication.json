@@ -1,0 +1,81 @@
+{
+  "status": "PASS_BOUNDED_PUBLISHED",
+  "verifiedAtUtc": "2026-11-04T05:29:04.874111+00:00",
+  "publishedHeadAtReadback": "80b499975b9bf3f4d5e67b00e321192f758375f2",
+  "source": "90ba48799a7ade9e66197ad82fe20344c5cc6aee",
+  "exactOwnPostimages": 76,
+  "nativeArtifactsShaSizeVerified": 46,
+  "sourceMappings": [
+    {
+      "source": "8f1d2be5a22b04bcfba420279cb1c0057ee57825",
+      "published": "55a12c446f6258d1e531fb20df6c2cfe43e264fe"
+    },
+    {
+      "source": "551e6e29f4bbeceb86620b05e26d249737b0ba2c",
+      "published": "8c07ade2fcd72b0e8db55aac432e7d50e602ea8b"
+    },
+    {
+      "source": "2c2b5e4eede8301bc295e1430421414ba9014aec",
+      "published": "49ddc04d88f657806229f72c133e492c2f6ae55e"
+    },
+    {
+      "source": "cd6decc0f9b75aabb049b1d52d6169ac764e2176",
+      "published": "72bec31471c43288a1b5ac8e55d0700e42686e16"
+    },
+    {
+      "source": "9e6e8e05d5176fc65f691fdc46c0bfacc35f686f",
+      "published": "672283e74ead5943bf687c2f55f0716d9e1dff15"
+    },
+    {
+      "source": "872af3309660f6b03180f1b6d1c67da57994ab50",
+      "published": "1d486d477af4389d5c8f6e98e7566995b2038207"
+    },
+    {
+      "source": "e25cf3d8bd28439fdef5185f8082697172066ebe",
+      "published": "6c1029bbdc472e381d3831039bd07541851edb60"
+    },
+    {
+      "source": "a0c88b5c7db6eb456b71efd559bad15d5371d0b4",
+      "published": "ea402c539052dcfd4fdc84f0ecae316384431d3e"
+    },
+    {
+      "source": "22f2f18a0a23629da712a75d13b72233bee51659",
+      "published": "38fb2d55cdb098686789e9426631397efc22a654"
+    },
+    {
+      "source": "186327ffe196a40bec93716ec0b6bbd7cfa3ce63",
+      "published": "aa7eb9387b2ef633849243bc0c3ca1589c6f76b1"
+    },
+    {
+      "source": "4cb162b71133446e73533ce3471b06fffea6327b",
+      "published": "62244f3883b8120782d91132be399a871022d708"
+    },
+    {
+      "source": "90ba48799a7ade9e66197ad82fe20344c5cc6aee",
+      "published": "002d0458034307abd607ca15052c47a586817978"
+    }
+  ],
+  "combinedChecks": {
+    "reference": {
+      "tests": 286,
+      "suites": 26
+    },
+    "world": {
+      "tests": 110,
+      "suites": 7
+    },
+    "motion": {
+      "tests": 290,
+      "suites": 11
+    },
+    "typesDiagnostics": 0,
+    "scopedLintWarnings": 0,
+    "generator": "EXACT_THREE_OUTPUTS",
+    "plan": "PASS_13_ARCHIVES"
+  },
+  "captureSourceDeltasOnPublishedMaster": [
+    "frontend/src/app/WorldShell.tsx",
+    "frontend/src/app/shell.css"
+  ],
+  "limits": "Native source4cb162b7 uses earlier World UI. Published9356b943 WorldShell/CSS are separately qualified, not captured in architecture packet. No whole target fidelity/live/device/production admission claim. Native allocation released; implementation and publisher dependency links removed."
+}

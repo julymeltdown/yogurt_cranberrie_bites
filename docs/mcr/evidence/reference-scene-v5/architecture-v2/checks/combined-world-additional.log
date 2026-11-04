@@ -1,0 +1,8 @@
+
+ RUN  v4.1.9 <PUBLISH_WORKTREE>/frontend
+
+
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+   Start at  14:27:11
+   Duration  2.38s (transform 708ms, setup 0ms, import 380ms, tests 1.37s, environment 503ms)

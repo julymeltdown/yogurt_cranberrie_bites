@@ -1,0 +1,39 @@
+{
+  "result": "FAIL",
+  "qualification": "TEST_ONLY actual MotionEditor/Phaser component geometry, not production Root/service/device admission",
+  "sourceCommit": "5871334d5029e6bf7cca3617d44bc21b1bce137e",
+  "slot": "MOTION-PORTRAIT-202611040456Z",
+  "minimumFreeBytes": 8804682956.8,
+  "initialFreeBytes": 41295937536,
+  "cases": [],
+  "artifacts": {},
+  "errors": [],
+  "httpWrites": 0,
+  "peakProcessTreeRssBytes": 1579417600,
+  "peakWorkflowBytes": 23760896,
+  "workflowBudgetBytes": 201326592,
+  "stopAtBytes": 134217728,
+  "sourcePins": {
+    "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx": "975ffb0031341a61ca538125178396f13247213427d183ae9c2c13827b957423",
+    "frontend/src/features/avatar/motion-adoption/MotionView.tsx": "7a6aa970cdc85130d836e0a21a6048ac9e6f51e4e2634854127f91d0744d8b02",
+    "frontend/src/features/avatar/motion-adoption/motion.css": "bb244fc1d9cc6727a2bf3ecf1679950a3c75007104000599b62bdb10ba74345c",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx": "97eeea2b778eaaead074ea26c9cc4427b4ddb152059e98b54a9fb4ce19e26146",
+    "frontend/src/app/character-entry/__tests__/motion-adoption/portrait-native.mjs": "7955734f7b7a0a608ee07ccd573add5700e48bbb25e38fdd04dca6f363014dfc"
+  },
+  "httpObservation": "All page HTTP requests except GET/HEAD are counted and blocked before network; server rejects non-GET/HEAD on every path. No service-save proof.",
+  "browser": "156.0.8078.80",
+  "failure": "Error: page.evaluate: TypeError: Cannot read properties of undefined (reading 'state')\n    at eval (eval at evaluate (:303:30), <anonymous>:1:28)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+  "failureDom": "TEST ONLY \u00b7 candidate motion artwork \u00b7 no public inventory or live admission",
+  "attempt": 1,
+  "reportedExit": 1,
+  "cleanupVerified": {
+    "headlessValidationRoots": 0,
+    "matchingPortraitWorkflows": 0,
+    "ownedTemporaryCacheDirectories": 0
+  },
+  "failureScreenshot": {
+    "path": "attempt-1-startup.png",
+    "sha256": "da53229e2aac88e84c751e3c834bd2d6ef3990d33783991fb78071b0ad18e140",
+    "qualification": "Startup harness timing failure before fixture initialization; not a product component capture"
+  }
+}

@@ -366,3 +366,131 @@ and bootstrap validation using deterministic fixtures. The actual application
 registry remains closed to the staged reviewed release. The real-application
 bundle is delegated to Root153's combined publisher check; no second browser
 capture or local live-service/device proof was started.
+
+
+## QA06 portrait hierarchy correction
+
+QA06 packet `e8dac180`, augmented by source-only technical review `0f4b030f`,
+identifies the fixed 192px draft preview as a ready client presentation issue.
+The unchanged target, prior actual component and comparison hashes were verified
+and the actual unresized comparison was inspected. This does not authorize a
+reference-only sixth layer, palette/random feature or replacement character.
+The technical review is committed as `43075968`.
+
+World recorded the exact implementation lease before application edits in
+`docs/mcr/scrum/world.md`, commit `9ab53082`: only MotionEditor's draft-preview
+size, MotionView's necessary size/local layout style, and stage/figure/preview
+CSS sizing; matching owned geometry tests and AR03 documentation/evidence.
+Implementation source `bae99bb7` gives only the draft preview a responsive `fill`
+size. The canvas uses its parent's available width with automatic square height;
+the preview frame reserves square space. Its intrinsic buffer remains 64×64.
+Preset 64px, option 56px and saved Profile 72px callers are unchanged, as are frame
+extraction, UVs, smoothing, acquire/cleanup, scene clock, categories and all
+interaction/state logic. No generic layout, Root, backend, schema or art changed.
+
+All 290 existing cases pass; 782 full-application TS files report zero
+diagnostics; source/harness lint, harness syntax and diff checks pass.
+`portrait-source-checks.json` records those checks. The geometry-only
+`portrait-native.mjs` requires an explicitly named capture slot and a fresh disk
+preflight before starting its one local Vite/Chrome workflow. It measures square
+canvas bounds/containment, preserved 64×64 buffers and fixed-size callers, five
+44px categories, pose/mode/action hit targets, focus and reachable footer actions
+at 360/390/430, a narrow 320px panel, and reduced 390×420 height. It records actual
+unresized component captures, source pins, lifecycle cleanup and sampled process
+tree RSS; mutation requests are counted and rejected. It reuses the unchanged
+component/Phaser fixture and does not replay the full art matrix.
+
+The source checkpoint above preceded native qualification below. A new sequential slot was
+requested directly from BackendSL/World. The initial conservative 256 MiB
+temporary budget was corrected before any run to a 192 MiB whole-workflow
+estimate, within the coordinator's 0.2 GiB cap, with 1.5 GiB estimated process-tree
+RSS. Vite scans only the single unchanged fixture; its cache and Chrome profile/
+artifacts share one measured temporary directory. A 128 MiB observed-use stop
+leaves 64 MiB reserve; all five widths/height checks remain required. All page
+non-GET/HEAD HTTP requests are counted and blocked, with server rejection on
+every path; service workers are blocked for this bounded check. These are
+proposed budgets, not observed peaks; actual bytes/RSS will be recorded. No run
+has started; no prior slot is inherited. An actually
+runnable expiring IN01 consumer takes priority, and no live holder is preempted.
+The source was committed for qualification, with publication held until
+that concrete component check and visual readback finished. Actual public Root,
+service save/reload, live multiuser and device proof remain separate obligations.
+
+
+## Portrait bounded native qualification
+
+BackendSL released `MOTION-PORTRAIT-202611040456Z` after the prior holder's actual
+cleanup. An initial run failed before fixture initialization because the new
+harness dereferenced `window.motionJourney` too early. Its exit-1 report and
+startup image are retained, with zero remaining browser/process/cache verified.
+Only the harness startup wait changed in `14d61ee7`; the three product blobs
+remain exactly those of source `bae99bb7`, already covered by 290 passing tests,
+782 application TS files with zero diagnostics and scoped lint.
+
+The explicitly allocated retry `MOTION-PORTRAIT-RETRY-202611040501Z` ran all five
+registered cases and exited 0. It proved square contained canvas sizes of
+237/267/307px at viewport widths 360/390/430, 197px at 320×554, and 267px at
+390×420. Every drawing buffer remains 64×64; preset/option/Profile views remain
+64/56/72px. All five categories and visible controls meet 44px minimums. Pose and
+walk frames, draft reset/Save enablement, Save focus and footer reachability after
+scroll, one game, no live world socket, two artwork requests and complete owned
+cleanup passed. The all-page request guard observed zero HTTP write attempts;
+this readonly fixture performs no actual service save.
+
+The owner viewed saved 390, narrow320,430 and reduced-height390 component PNGs at
+native size alongside the unchanged reference comparison. The canvas now uses
+its available figure width, improving portrait hierarchy without changing the
+selected artwork, supported categories or fixed-size callers. At390 the measured
+DOM panel is350×683.984375; its actual unresized element PNG is350×685 due to pixel
+rounding. At430 the DOM panel is390×723.984375 and legitimately needs scrolling.
+Reduced-height actions remained reachable; these are component captures, not
+public390×698 Root captures, device proof or whole-screen fidelity acceptance.
+
+The actual sampled whole-workflow peak was29,560,832B (28.191MiB), including the
+controlled Chrome profile/artifacts, Vite temporary cache and durable output.
+Sampled aggregate process-tree RSS peaked at2,222,571,520B (2.070GiB), slightly
+above the estimated2GiB; it is not a whole-machine or physical incremental memory
+measurement. Durable output including the retained failure totaled329,608B before
+this handoff document. Final checks found zero validation browsers, portrait
+workflows or owned temporary cache directories and38.301GiB free. BackendSL/World
+received the actual release so the queued replay could proceed. No more browser
+or build was launched.
+
+`portrait-responsive/handoff.json` pins the exact source, commands, exit code,
+geometry, PNG dimensions/hashes, first failure, measured resources and limits.
+This closes the bounded available-width portrait correction for integration;
+actual public Root/runtime, service persistence, live multiuser, device and full
+AR03 acceptance remain unfinished. Goal metadata was checked and remains BLOCKED;
+no goal reset or false completion was performed.
+
+
+## Portrait delivery and ownership readback
+
+The bounded portrait payload is published at
+`a93d91b1ed0db15de43e5b00e1d56c17adcaf475`. Fresh owner fetch and independent
+`ls-remote` agree on that exact commit. All seven serialized source/integration
+mappings, changed-path sets, per-commit postimages and ancestry were verified;
+all 17 latest distinct payload files, eight indexed artifact hashes/sizes and
+four handoff source pins match. The published native report SHA-256 is
+`6bcc367f524787f0501d051f37033df5306432af828ef2756e70cfd1ef95727c`.
+`portrait-responsive/publication.json` records the complete mappings and state.
+
+Publisher independently passed 290 tests across 11 suites, full application
+types and path/whitespace checks. QA06 independently checked the saved source,
+artifacts, unchanged reference and remote payload; the bounded fixed-192px
+scale/aspect finding is resolved, with no additional concrete issue established.
+No runtime/test/build/capture was repeated for this documentation readback.
+
+The exact three-file portrait grant is delivered; no further portrait application
+writes or resources are held. Owned portrait processes, temporary caches and local
+dependency links are absent. Other interactive/peer browsers remain untouched;
+no global zero-browser claim is made. The approved screenshot set retains its
+original capture times/source and privacy review; World confirms one actual image
+was sent to King under the explicit hourly screenshot requirement. No duplicate
+capture or screenshot-only job was started.
+
+Any next assignment or ownership transfer is explicit. Fresh `get_goal` returned
+the original AR03 goal as BLOCKED and unfinished; the goal was not reset, replaced
+or completed. The bounded delivery does not certify positive production Root/
+runtime adoption, public service persistence, live multiuser, physical devices,
+full AR03 or whole-screen QA06 acceptance.

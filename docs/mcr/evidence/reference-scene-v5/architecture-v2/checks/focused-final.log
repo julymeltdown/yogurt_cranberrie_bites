@@ -1,0 +1,8 @@
+
+ RUN  v4.1.9 <workspace>/frontend
+
+
+ Test Files  2 passed (2)
+      Tests  48 passed (48)
+   Start at  13:51:19
+   Duration  814ms (transform 147ms, setup 0ms, import 223ms, tests 950ms, environment 0ms)

@@ -1,0 +1,512 @@
+{
+  "format": "MCR_ARCHITECTURE_V2_CAPTURE_PACKET",
+  "status": "PASS_BOUNDED_CONSUMER_NOT_WHOLE_FIDELITY",
+  "base": "9530caa3fa6a31fd86a5d060d6b8adf7eda77adf",
+  "representedCommit": "4cb162b71133446e73533ce3471b06fffea6327b",
+  "branch": "codex/mcr-fe-architecture-v2-adoption",
+  "nativeReport": {
+    "path": "native-04/native.json",
+    "sha256": "29e39e09cd54df338a5860faa67156a9b0ca133aed53fd6c6d25697b977d9cf5"
+  },
+  "nativeSourcePins": {
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "098458026cd6e0b8b80185ccca2822aeb067e69b6db78b8bb3425a2a3244f45f",
+    "frontend/src/app/WorldShell.tsx": "4e9f90a76c20b6bdb405f4d30add4ec0b45f0468c61a4fc9ef1092db746f53d3",
+    "frontend/src/app/world-entry/production.ts": "e34d9715e45c8c33fcbc86eadb11d81f0e267d071c3ff032c5f60a1144de76d3",
+    "frontend/src/app/world-entry/resolver.ts": "bb49ed5c1d9c6d1985ada6dd9d53c8e1b579c6303cdcb30fb88e38a5c80a6d80",
+    "frontend/src/app/world-panels/index.tsx": "4c99a2746715940524cc1a7ad1e2a002f99707f02bfedc9faf4fb3f028c35d69",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/world/composition/release.ts": "61e59b28ea397889f510c386fccb68c22293135ddeb90b75e0b86e50cf8fb636",
+    "frontend/src/world/theme/compatibility.ts": "f1aa9bfd3eae5f30f30069609882f385085cdabb97bba005019e8bbe78376b3c",
+    "frontend/src/features/places/ui/IllustratedMap.tsx": "961959c20225719185c83c1890ef2051bf9065a3f8617651f619023c5b3457e9",
+    "frontend/src/features/places/ui/reference-scene/spatial-v5-label-obstacles.ts": "1c5e3b7d4424e825c8b0520a09abc38396a30176c3e146a3c2f6566de09717b7",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/presentation.json": "f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/handoff.json": "a3cfaf56d880bca913f34e91fea72c70aefa8b8c8e3bc8aa8b30f76e3b473686",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/map-labels-bold.ttf": "f44e493f61e2d91c2156dd5abc720eeb6274a9c02b11d9097d1ea38d50011e8b",
+    "frontend/public/world/reference-scene-v2/map-labels-v1/OFL.txt": "0e4cc6ece88573545be2ed25835363662a6182ba4a4c1b5c8feda52add30e8a6",
+    "frontend/src/world/reference-scene/model.ts": "139f92df0ae1ae1abf7fbb9822beee82faa4fdb4c51ee873a3cdbb7d267a715a",
+    "frontend/src/world/reference-scene/metadata.ts": "e5eb4619b49d437960e281a8f51af7a089fb826fdc7a9f4f30427246af892d26",
+    "frontend/src/world/reference-scene/index.ts": "dc94f51cef56507336d13150bd826858e3bf036aa26712309e372a7bf8811e45",
+    "frontend/src/world/reference-scene/loader.ts": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+    "frontend/src/world/reference-scene/phaser.ts": "b01001452caa199723bbb34f672e7985687f146850f46e28d7bd4801faa707b8",
+    "frontend/src/world/reference-scene/overview.ts": "919218fd36390ba379def36772c46e15946b877b72295753a71a885293768a8e",
+    "frontend/src/world/reference-scene/spatial-v5/model.ts": "3626d4cce526e8bcaf97764a7301bdb1ec87ca48809d0d068b53582ae175a07b",
+    "frontend/src/world/reference-scene/spatial-v5/source-inputs.json": "6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b",
+    "frontend/src/world/reference-scene/spatial-v5/tile-pin.json": "cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1",
+    "frontend/src/world/reference-scene/spatial-v5/build-source-inputs.py": "5a69bce8b29ce8068c679e7a1d9a4163164cef893b342647df1134a78a3a5c57",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels.ts": "9c63a3373f2def4c16e2c7898613823623840f624309a40e9875111e913f18ec",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54",
+    "frontend/src/world/reference-scene/spatial-v5/map-labels-pins.json": "77f2d9b7696901dd7b54034cb5057cd772d99e614146cc44f088807e105c819c",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+    "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json": "9134da02d3e436ce082c230dcd380326064fcc842b8650e490d1744478db5a8c",
+    "frontend/src/world/reference-scene/spatial-v5/build-map-landscape-inputs.py": "47f07eaabfa3ebf2d1baf88f506e09d5975412eabb76e0a312b1f8c1f974e7e6",
+    "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json": "6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060",
+    "frontend/src/world/reference-scene/spatial-v5/camera.ts": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "d236e2769abbda946444fb8eda64cf525f48a1c830e42a0715ce8f812e518599",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.html": "6218d6246ad676d54bef02368359b33c82894caafd0b0d1adc9ffe511e2c095e",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/native.mjs": "f07870b29e8dfa3c5cf7330df1319f7c0ce5ec064045f4a80388663c1038d38b",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/contracts.test.ts": "f2bc4fba449540fffb977b29545ce6629a072d30f6e3e8f33edc6410cfdb6c3e",
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v5/canonical-map.json": "e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078",
+    "frontend/public/world/reference-scene-v2/runtime/spatial-v5/source-binding.json": "8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2.mjs": "f19985b2005ef2c1a2feed85fcbe06775211edc39073fd6e7cf54a75add3ab4c",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2-probe.ts": "ebe7a46becfc56fe96f7d600891505b871c0e9651df6b666c29f27565cf24047",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/map-layout-v2-editable.mjs": "d4775b07b0e29c351e1c314e65ae29dcc4dc21a517bacedf8af851406791ed89",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/handoff.json": "f4094dffd71a661663f34b94874f2a908aaaa7bdf0dbf587a6bee291e8c107c0",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json": "f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/landscape-presentation.json": "789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/target-measurements.json": "7a9e6315c90c47adb9ab17037ba3af992bb2c957b7a0f3fcc670c9e229a88142",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/verification.json": "f6a5872b1fbe6f288237a8a6e1913cd76c75861866356b97a40e7a16140e4154",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/map-layout-v2.test.ts": "580d1eff002a212d290eb635d7c45b7f7787223921575767c3aa95f0576b46d7",
+    "frontend/src/world/reference-scene/spatial-v5/build-architecture-inputs.py": "d148343f2e084e453efa3141e90cce4d7c449636418323997fd19f4a8c3860ca",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-source.json": "4669d061d213d299b6e7f0987667919be2a766d30efab629a1f5138a5434440a",
+    "frontend/src/world/reference-scene/spatial-v5/architecture-pin.json": "072e32f442257e54e271c485304779de0ce8ff6f6165c163e23bce1452d1e99b",
+    "frontend/src/world/reference-scene/spatial-v5/architecture.ts": "e4565a2fd80bfcb5ca8756511aa26bd83a66800fdf5cd90d2e345af75d72eab4",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/native.mjs": "4aa45330ea333b63bf305f735ef279d30d27e80c8e5e09d4c7c1462a12ff4726",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/renderer.ts": "a7e6642c20c6c99e73a84204ece2b323699562486f56047b1f1841e2d8b2b0ed",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/renderer.html": "8047ffefe9e5381bbef8e65a9a63cb08feafc8ca3d442deafdd941328d00f038",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/editable.mjs": "5d23f2093e89096aa7d6ce4a5f96660c3f4d93bcce74196e6c5df3bbd96ef6c8",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/probe.ts": "82cb9e9ce15eb44ed8b5bf6ddfaa4e61ff230e0c378a039bdf6f2bdda304fa63",
+    "frontend/src/world/reference-scene/__tests__/spatial-v5/architecture.test.ts": "c45cf1126d6ed32e20e153237c04aacb97da3a9920e40bbe200611535010ab8c",
+    "frontend/public/world/reference-scene-v2/runtime/architecture-v2/source-binding.json": "17ae9c7c16862123a5ba56a4a5b106eed839819aae7187cd6b173f965bd5e336",
+    "frontend/public/world/reference-scene-v2/architecture-v2/atlas-handoff.json": "98484ffd7c3301f7ba3b8cc5221be29d48386ec1dcc2eb67015c2dffc76a5fc0",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/atlas.png": "108d5483711e6bd755b328d08d3535141954ef81adc6eabfd066a88d8fe278aa",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/native-atlas.png": "d93cee0b2a1a68f4e8933b5969a5d5fedd5048d10b85559ba95b0847a3a5ec6f",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/layout.json": "7769f6b6ef754f2c64fccc000ce995a4d0d87d1423e87f9bd8aacc4776b2f043",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/scenery.json": "68e23383ac162d2bcfe0a28019a9aa7685da6a81edb8d304c69a8d306b0388dd",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/resource-inputs.json": "0cbb8451b04afe87bdbc16188a438d11d3c774fe1f0d0bf86e0258980a0b9fea",
+    "frontend/public/world/reference-scene-v2/architecture-v2/revenge/provenance.json": "732a9587dc11d09f9e0dae41611f7fcd2c0716ef6b9749062610fa6f1a7cc220",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/atlas.png": "aab0383b8963f1b681acf81d22d2be88e130744554311e74f0793efbe388e529",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/native-atlas.png": "e8cf8eb7e1b073f93ebbeda06b2095390f1508136effa95e33e70fc6c945be59",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/layout.json": "1dabdcd979ae3d64ebfdb834ce0319f25869d20f6d354e69f0f2c2e8d68f619d",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/scenery.json": "11241a53b1ccd5e11a70e920d0a9e90e34213ded5174684fba34daf93e41fe18",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/resource-inputs.json": "da49d22a143ff5d57631b9dc8b8bf5e18f3ef8405ddfe226a710e4b9cb26046e",
+    "frontend/public/world/reference-scene-v2/architecture-v2/parade/provenance.json": "e59c51c9504d41dc5277b7f6e804732d3afba4c8b25ffd0589f1ec25b2ca35d0",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/atlas.png": "20f218966eb17f50992191f1128b45ca02aac9b00a1c1f39ba71637b68afa29d",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/native-atlas.png": "4fb8ea46a44803416abebe436f34c94f6ec1099ccb6d5f6db49d8b923eaac4d3",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/layout.json": "1dbea3beddbba01f62fae1170b3f626a5b65eae138e1aab2c0171c85888b2b9a",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/scenery.json": "60595eceb1207e91eaca34cc5868fadd10d51be3b99aabd344abe7dc99ee7255",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/resource-inputs.json": "ee5e2f4389cde753cdb6a79599dd9aaf6ad708047f8395b59ea81964e8c5406b",
+    "frontend/public/world/reference-scene-v2/architecture-v2/danger/provenance.json": "a2de9c8598cb3c1b23658169235de63621c621daa2c69eb4b25d49b02a5ac377",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-revenge.svg": "4ff8f0e6a987eb1b917ced7404b77b429e5e787a79defd18d918e2180f9ee8dc",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-parade.svg": "ce7527927525bbf3339d7880a67ddd7dd955832fa50a4f56a605c18b5bdc4566",
+    "docs/mcr/evidence/reference-scene-v5/map-layout-v2/qualified-v2/editable-danger.svg": "39b7de9a3b2f10fd5e9f3eca77587b17c124b3cd685c6da6c002fdfdd46262aa"
+  },
+  "supplementalSourcePinsAtRepresentedCommit": {
+    "frontend/src/app/shell.css": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056",
+    "frontend/src/shared/styles/base.css": "b360af38fefb8651262d2cfccc91e5a71d5691da8831d5dda6349a88ab9a8d42"
+  },
+  "artifacts": {
+    "native-01/native.json": {
+      "bytes": 21562,
+      "sha256": "474bbbdf90d4ae978c1dc99457422c58d36c33d98847f1a8e8f3b09720f059c3"
+    },
+    "native-01/renderer-revenge-360.png": {
+      "bytes": 517101,
+      "sha256": "a36f915dfe26822a00dac0b18dd100ee229e91115ca493e1d16d7edb33c1bb5d",
+      "originalSavedAtUTC": "2026-11-04T05:09:49.090309+00:00",
+      "pngDimensions": [
+        360,
+        800
+      ]
+    },
+    "native-02/native.json": {
+      "bytes": 13253,
+      "sha256": "5729368cbda4461149c27a79ec644077d75b57a8b219f0d17014f12022662cb5"
+    },
+    "native-03/diagnostic-actual.png": {
+      "bytes": 647330,
+      "sha256": "8bba9757757852d2f11c1651b340c724b55e52359a9a17a5aedfc05237a94cb8",
+      "originalSavedAtUTC": "2026-11-04T05:11:59.213364+00:00",
+      "pngDimensions": [
+        360,
+        703
+      ]
+    },
+    "native-03/diagnostic-expected.png": {
+      "bytes": 647382,
+      "sha256": "447ddadbcec4dad8d0c308b3a9ee85332e43b3b23d5cbb33cb7b46c3c3c4f884",
+      "originalSavedAtUTC": "2026-11-04T05:11:59.213751+00:00",
+      "pngDimensions": [
+        360,
+        703
+      ]
+    },
+    "native-03/native.json": {
+      "bytes": 30229,
+      "sha256": "f97245d3912dcf35fe549a217d8cebd6f387e4328439399c047c1ab565508f49"
+    },
+    "native-03/renderer-revenge-360.png": {
+      "bytes": 517101,
+      "sha256": "a36f915dfe26822a00dac0b18dd100ee229e91115ca493e1d16d7edb33c1bb5d",
+      "originalSavedAtUTC": "2026-11-04T05:11:58.960636+00:00",
+      "pngDimensions": [
+        360,
+        800
+      ]
+    },
+    "native-04/editable-danger.png": {
+      "bytes": 1477229,
+      "sha256": "b0cc920898355f1ca60e6267f39abf086f2532a468c3059901c9f7d19a2b4fc4",
+      "originalSavedAtUTC": "2026-11-04T05:15:45.178565+00:00",
+      "pngDimensions": [
+        768,
+        1296
+      ]
+    },
+    "native-04/editable-danger.svg": {
+      "bytes": 2639851,
+      "sha256": "e1afecde18613fb46a15e033fa80a3451ddcf5fd2f04d2a16b0e4c3f333bec24",
+      "originalSavedAtUTC": "2026-11-04T05:15:44.850853+00:00"
+    },
+    "native-04/editable-parade.png": {
+      "bytes": 1476218,
+      "sha256": "9156109e82573868a1a9d24585f305b890353a96889392b34988359c590ba524",
+      "originalSavedAtUTC": "2026-11-04T05:15:44.779828+00:00",
+      "pngDimensions": [
+        768,
+        1296
+      ]
+    },
+    "native-04/editable-parade.svg": {
+      "bytes": 2657147,
+      "sha256": "cb34694ac25ffa5e488aa2c98094f23a0c4950a3eb5622ed590d21f606db4cb5",
+      "originalSavedAtUTC": "2026-11-04T05:15:44.445337+00:00"
+    },
+    "native-04/editable-revenge.png": {
+      "bytes": 1472867,
+      "sha256": "c357e4b8510b26df2f05ac5a53f1b69305e276aa02005daab6b1da2a91749265",
+      "originalSavedAtUTC": "2026-11-04T05:15:44.372647+00:00",
+      "pngDimensions": [
+        768,
+        1296
+      ]
+    },
+    "native-04/editable-revenge.svg": {
+      "bytes": 2640711,
+      "sha256": "5d523da5e32d51fd02be22f819b1f40a0990420dc76abd2627ecf5ff649169f0",
+      "originalSavedAtUTC": "2026-11-04T05:15:44.027950+00:00"
+    },
+    "native-04/map-danger-360.png": {
+      "bytes": 360137,
+      "sha256": "a54bec599ceb7710b90a12b2bb64e05a5ea50a9a41ceee2945da6486a6aeed18",
+      "originalSavedAtUTC": "2026-11-04T05:15:22.254002+00:00",
+      "pngDimensions": [
+        360,
+        844
+      ]
+    },
+    "native-04/map-danger-390-h754.png": {
+      "bytes": 408949,
+      "sha256": "d1f44fbcaf6fa46e495af72b20376e58476606717c55781be3227ea5c3abaed5",
+      "originalSavedAtUTC": "2026-11-04T05:15:31.152065+00:00",
+      "pngDimensions": [
+        390,
+        754
+      ]
+    },
+    "native-04/map-danger-390.png": {
+      "bytes": 410747,
+      "sha256": "079dfa878418af2036eeb9b242884c26279354db32500a06d2e7e61cf372f149",
+      "originalSavedAtUTC": "2026-11-04T05:15:30.635670+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/map-danger-430.png": {
+      "bytes": 483284,
+      "sha256": "e797ef85fe825b05337a26fc69948d56cdbaa9140d65760157ace5b12797823f",
+      "originalSavedAtUTC": "2026-11-04T05:15:38.914876+00:00",
+      "pngDimensions": [
+        430,
+        844
+      ]
+    },
+    "native-04/map-parade-360.png": {
+      "bytes": 359589,
+      "sha256": "dfbaee653de228814bee9396d9b825cf4c64fa3cb7bcbbd5a2f9fc9f6fc13d14",
+      "originalSavedAtUTC": "2026-11-04T05:15:19.511985+00:00",
+      "pngDimensions": [
+        360,
+        844
+      ]
+    },
+    "native-04/map-parade-390-h754.png": {
+      "bytes": 408637,
+      "sha256": "9bdeea28ffe0dc67b92174cdd51b091e047fcd0b60dddad686b8cc3f9f04991f",
+      "originalSavedAtUTC": "2026-11-04T05:15:28.351739+00:00",
+      "pngDimensions": [
+        390,
+        754
+      ]
+    },
+    "native-04/map-parade-390.png": {
+      "bytes": 409928,
+      "sha256": "19d05754866c6ab54004a89dbb3e6026cf3b5b2b7b2e33c5f5a749ff1c907e03",
+      "originalSavedAtUTC": "2026-11-04T05:15:27.837377+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/map-parade-430.png": {
+      "bytes": 483195,
+      "sha256": "5b7757fd80c1abb5d88a90ec32c1254716973d2fd074c5cb70cef095df8569df",
+      "originalSavedAtUTC": "2026-11-04T05:15:36.198818+00:00",
+      "pngDimensions": [
+        430,
+        844
+      ]
+    },
+    "native-04/map-revenge-360.png": {
+      "bytes": 358875,
+      "sha256": "5dbb2623d8b044bb438e2e80f4f8f6b079f8eab544ad307fd33e2482e5e730bf",
+      "originalSavedAtUTC": "2026-11-04T05:15:16.738640+00:00",
+      "pngDimensions": [
+        360,
+        844
+      ]
+    },
+    "native-04/map-revenge-390-h754.png": {
+      "bytes": 408217,
+      "sha256": "8e89d19b8a1f8a7e5a1b3c27cee43039e3b89554d99323f3bef2b1095e8ef0d6",
+      "originalSavedAtUTC": "2026-11-04T05:15:25.548162+00:00",
+      "pngDimensions": [
+        390,
+        754
+      ]
+    },
+    "native-04/map-revenge-390.png": {
+      "bytes": 409223,
+      "sha256": "dcc4ccadf064753e45eec044aa2cbfa99e966420d7978776e6c5a39b06d1a36d",
+      "originalSavedAtUTC": "2026-11-04T05:15:24.981986+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/map-revenge-430.png": {
+      "bytes": 482009,
+      "sha256": "2e1da49b0390a1671402149989d1fe0556524c1a99dfc74b82232b037b831292",
+      "originalSavedAtUTC": "2026-11-04T05:15:33.424109+00:00",
+      "pngDimensions": [
+        430,
+        844
+      ]
+    },
+    "native-04/marker-closed-390.png": {
+      "bytes": 410504,
+      "sha256": "5c821cea8f8755144b1c6a4505e773400228aa63f09d916671f975eaca56a793",
+      "originalSavedAtUTC": "2026-11-04T05:15:41.533547+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/marker-unavailable-390.png": {
+      "bytes": 411539,
+      "sha256": "e8ca3c3f380322edaf59f41e008197cd9d673a455730cea5f81ca8fe20f2b7bc",
+      "originalSavedAtUTC": "2026-11-04T05:15:43.939421+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/native.json": {
+      "bytes": 331134,
+      "sha256": "29e39e09cd54df338a5860faa67156a9b0ca133aed53fd6c6d25697b977d9cf5"
+    },
+    "native-04/renderer-danger-360.png": {
+      "bytes": 517465,
+      "sha256": "4e78dbfdd34b1bb5b79cacb3fb35bfb110581c4252277e484c797b5358ec6e95",
+      "originalSavedAtUTC": "2026-11-04T05:14:59.506254+00:00",
+      "pngDimensions": [
+        360,
+        800
+      ]
+    },
+    "native-04/renderer-danger-390.png": {
+      "bytes": 581436,
+      "sha256": "58f3cc80021482c0e607132ebf72bc2a7833bbf4cb81a512fdfe579d3374223f",
+      "originalSavedAtUTC": "2026-11-04T05:15:06.211210+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/renderer-danger-430.png": {
+      "bytes": 733831,
+      "sha256": "ab36458fbef48dfacd23e7cbb7b6f606fc48c1b1a80aa08419dd6abb6891cee8",
+      "originalSavedAtUTC": "2026-11-04T05:15:12.951199+00:00",
+      "pngDimensions": [
+        430,
+        932
+      ]
+    },
+    "native-04/renderer-parade-360.png": {
+      "bytes": 516274,
+      "sha256": "e7563935f0b89ac7c24b0d8ca90fcfd69e33b149de895adb3a9b9c86aa883166",
+      "originalSavedAtUTC": "2026-11-04T05:14:57.268953+00:00",
+      "pngDimensions": [
+        360,
+        800
+      ]
+    },
+    "native-04/renderer-parade-390.png": {
+      "bytes": 580606,
+      "sha256": "cbd8add2e38b07a8be233268258dff951d96bcbc1b8a4f7b579287c317b481f7",
+      "originalSavedAtUTC": "2026-11-04T05:15:03.989856+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/renderer-parade-430.png": {
+      "bytes": 732202,
+      "sha256": "bb539fb19ddcc44c81ba41f63da1117800463435ed417861ba559095b623604b",
+      "originalSavedAtUTC": "2026-11-04T05:15:10.720913+00:00",
+      "pngDimensions": [
+        430,
+        932
+      ]
+    },
+    "native-04/renderer-revenge-360.png": {
+      "bytes": 517106,
+      "sha256": "6f186354c7acad7730e0cccbd4bd17b6daadd1edf24f87db796cf896675b1478",
+      "originalSavedAtUTC": "2026-11-04T05:14:55.015512+00:00",
+      "pngDimensions": [
+        360,
+        800
+      ]
+    },
+    "native-04/renderer-revenge-390.png": {
+      "bytes": 581440,
+      "sha256": "cc56ee4a64dee487300b66e9a58c1f33cd4f9b2fd4c85aa808f26eec1f8977e2",
+      "originalSavedAtUTC": "2026-11-04T05:15:01.768085+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/renderer-revenge-430.png": {
+      "bytes": 733548,
+      "sha256": "ed15b5d0e2d4113ac9d0c7fc810b5425bf3569c8ae5d2dca2d983e3a7734a27c",
+      "originalSavedAtUTC": "2026-11-04T05:15:08.449774+00:00",
+      "pngDimensions": [
+        430,
+        932
+      ]
+    },
+    "native-04/world-danger-360.png": {
+      "bytes": 419304,
+      "sha256": "d26c0ebcd7122820cbee58d9142e2e548d8bb1efe49c6c72e1351dfaddc9856f",
+      "originalSavedAtUTC": "2026-11-04T05:15:21.309865+00:00",
+      "pngDimensions": [
+        360,
+        844
+      ]
+    },
+    "native-04/world-danger-390.png": {
+      "bytes": 438061,
+      "sha256": "8ffe93b4449fe278b459f7f0a041f86cf778f2997eb6a24f5973f546fda53825",
+      "originalSavedAtUTC": "2026-11-04T05:15:29.692514+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/world-danger-430.png": {
+      "bytes": 485264,
+      "sha256": "f5fc35f9ac9aa48e4c818cdc5c06b28613ae147969218c5e5ed2dd5cf9c85a05",
+      "originalSavedAtUTC": "2026-11-04T05:15:37.968827+00:00",
+      "pngDimensions": [
+        430,
+        844
+      ]
+    },
+    "native-04/world-parade-360.png": {
+      "bytes": 418193,
+      "sha256": "31ccb076c60ce07cdf3b001e7edbd9bcd28cbb6ae64cffe0f6a5cac10294d5d5",
+      "originalSavedAtUTC": "2026-11-04T05:15:18.567564+00:00",
+      "pngDimensions": [
+        360,
+        844
+      ]
+    },
+    "native-04/world-parade-390.png": {
+      "bytes": 437028,
+      "sha256": "0324f35db49b5089e3387ae96653c16e0e602f0beacc76e57497543ecf3c92d8",
+      "originalSavedAtUTC": "2026-11-04T05:15:26.892051+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/world-parade-430.png": {
+      "bytes": 483573,
+      "sha256": "3f73414929a061472a38b4bafb8dbfb5d2cd797b608d0476311552d1909d64a3",
+      "originalSavedAtUTC": "2026-11-04T05:15:35.236507+00:00",
+      "pngDimensions": [
+        430,
+        844
+      ]
+    },
+    "native-04/world-revenge-360.png": {
+      "bytes": 419298,
+      "sha256": "d9d2bfdc538e156829f56dd76862f384dcc0eda1d3e8c807a013199406a490bc",
+      "originalSavedAtUTC": "2026-11-04T05:15:15.778285+00:00",
+      "pngDimensions": [
+        360,
+        844
+      ]
+    },
+    "native-04/world-revenge-390.png": {
+      "bytes": 438145,
+      "sha256": "71b515fe0d745aafac1c7f8b3d4b00ae915270d8c6fa1fe97475a9cfaf9f84a6",
+      "originalSavedAtUTC": "2026-11-04T05:15:24.037507+00:00",
+      "pngDimensions": [
+        390,
+        844
+      ]
+    },
+    "native-04/world-revenge-430.png": {
+      "bytes": 485121,
+      "sha256": "340cef9e9980a29fec49f3bf77b714303029c05969dc1ade0ceb65e1cd0a458c",
+      "originalSavedAtUTC": "2026-11-04T05:15:32.479257+00:00",
+      "pngDimensions": [
+        430,
+        844
+      ]
+    }
+  },
+  "counts": {
+    "rendererWorldMapCases": 9,
+    "rootMapCases": 9,
+    "markerCases": 2,
+    "canonicalClearFootDepthComparisons": 90,
+    "newEditableSVGs": 3,
+    "newEditableRenders": 3
+  },
+  "strictPixelChannelDifferences": 0,
+  "postCaptureOwnRuntimeChanges": [],
+  "separatePublishedChanges": {
+    "worldPresentation": {
+      "commit": "9356b943900ae4b4bf2c45f11118555e2c5d72ff",
+      "paths": [
+        "frontend/src/app/WorldShell.tsx",
+        "frontend/src/app/shell.css",
+        "frontend/src/app/world-presentation/WorldTools.tsx"
+      ],
+      "capturedInThisPacket": false
+    }
+  },
+  "limits": [
+    "Synthetic7005; allocation6 NOT_ADMITTED",
+    "No inherited SVG qualification or changed original art",
+    "Desktop Chrome viewports; not iOS/Android/physical keyboard/notch qualification",
+    "No live Auth/server/multiuser or production admission",
+    "Whole reference massing/density/fidelity and original AR02/AR04/FE06 acceptance remain open",
+    "Eventual combined master World presentation is not this captured candidate"
+  ]
+}

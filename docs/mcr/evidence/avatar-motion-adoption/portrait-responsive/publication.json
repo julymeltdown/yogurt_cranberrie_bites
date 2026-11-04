@@ -1,0 +1,97 @@
+{
+  "status": "BOUNDED_PORTRAIT_DELIVERED_REMOTE_VERIFIED",
+  "recordedAtUTC": "2026-11-04T05:11:46.907596+00:00",
+  "parent": "57c4fbb1554e25ef3a1756e0d4ea9cfe2147ab91",
+  "fetchedMaster": "a93d91b1ed0db15de43e5b00e1d56c17adcaf475",
+  "independentLsRemote": "a93d91b1ed0db15de43e5b00e1d56c17adcaf475",
+  "serializedMappings": [
+    {
+      "source": "43075968d8f31150e5bd4d9f61268f3b58ec5b3d",
+      "integration": "4cb537288c1702e103e3ad6f6140c1a8d4039fab"
+    },
+    {
+      "source": "bae99bb73e26fe5bb6970b8b6ec617c1aeb865e5",
+      "integration": "e5d0f358a6d9d3f84c7140472fab6c318158226a"
+    },
+    {
+      "source": "0a1107be8a07b3a6abfd0c8ab7b852250b4297e1",
+      "integration": "ae38892a6acfd9841da60ff03145ffb72e77e618"
+    },
+    {
+      "source": "5871334d5029e6bf7cca3617d44bc21b1bce137e",
+      "integration": "8cfc84b56b3558ed5a428990c79054db59101dfb"
+    },
+    {
+      "source": "14d61ee7d179732d3fd582de0876de664613ff79",
+      "integration": "25c06d47d0f1a3c6c8e08422f38b21dd587bd1df"
+    },
+    {
+      "source": "68fb527b61f7029a7de8a289f2d21c62e2410e8c",
+      "integration": "2266f7b1058c3d1199bd76693fb840c8486e64cf"
+    },
+    {
+      "source": "57c4fbb1554e25ef3a1756e0d4ea9cfe2147ab91",
+      "integration": "a93d91b1ed0db15de43e5b00e1d56c17adcaf475"
+    }
+  ],
+  "verified": {
+    "eachChangedPathSet": true,
+    "eachPerCommitPostimage": true,
+    "eachIntegrationAncestor": true,
+    "latestDistinctPayloadPaths": 17,
+    "allEightIndexedArtifactsHashSize": true,
+    "fourHandoffSourcePins": true,
+    "nativeReportSha256": "6bcc367f524787f0501d051f37033df5306432af828ef2756e70cfd1ef95727c"
+  },
+  "validation": {
+    "ownerSourceTests": 290,
+    "ownerNativeViewportCases": 5,
+    "ownerApplicationTsDiagnostics": 0,
+    "publisherTests": 290,
+    "publisherSuites": 11,
+    "publisherFullApplicationTsDiagnostics": 0,
+    "qa06IndependentSourceArtifactReferenceAndRemoteReadback": "PASS; no additional concrete bounded issue",
+    "rerunForThisDocumentation": "NONE"
+  },
+  "ownership": {
+    "exactPortraitGrant": "9ab53082: MotionEditor preview allocation; MotionView necessary size/local layout style; motion.css stage/figure/preview sizing; owned geometry tests/docs/evidence",
+    "boundedGrantState": "DELIVERED; no active portrait application writes",
+    "nextAssignment": "Requires explicit allocator scope; no broader ownership transfer inferred",
+    "originalAR03Goal": "BLOCKED and unfinished, freshly verified using get_goal; no reset/new goal/completion"
+  },
+  "resources": {
+    "releasedSlot": "MOTION-PORTRAIT-RETRY-202611040501Z",
+    "heldResources": 0,
+    "freshOwnedPortraitProcessCount": 0,
+    "freshOwnedTemporaryCaches": [],
+    "localNodeModulesLinkOrDirectory": false,
+    "independentInteractiveAndPeerBrowsers": "Untouched; no global zero-browser claim",
+    "observedNativePeakWorkflowBytes": 29560832,
+    "observedNativePeakAggregateRssBytes": 2222571520
+  },
+  "screenshots": {
+    "manifest": "screenshot-set.json",
+    "exactCaptureSource": "14d61ee7d179732d3fd582de0876de664613ff79",
+    "primaryOriginalCaptureUTC": "2026-11-04T05:01:42.318928+00:00",
+    "primaryOriginalCaptureKST": "2026-11-04T14:01:42.318928+09:00",
+    "primaryViewport": [
+      390,
+      698
+    ],
+    "primaryNativePngDimensions": [
+      350,
+      685
+    ],
+    "ownerPrivacyAndRenderedReview": "PASS",
+    "actualOwnerSetRouted": "World and Root153; World confirms one actual image sent to King under explicit hourly requirement",
+    "newCaptureForThisRecord": false
+  },
+  "remainingOriginalGates": [
+    "positive production Root/runtime adoption",
+    "real public service save/reload/reconciliation",
+    "live multiuser World",
+    "physical device and keyboard/safe-area qualification",
+    "full AR03 and full QA06 acceptance"
+  ],
+  "limits": "Bounded portrait geometry/reference/source/publication proof only; preserved first failure is not relabeled; no public activation or live service/device inference."
+}

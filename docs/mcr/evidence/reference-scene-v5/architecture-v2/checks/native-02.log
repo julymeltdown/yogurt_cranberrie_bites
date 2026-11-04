@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Another headless capture is active
+    at resourceGuard (file://<workspace>/frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/native.mjs:49:106)
+    at async file://<workspace>/frontend/src/app/world-entry/__tests__/reference-scene-v5/architecture-v2/native.mjs:157:2 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

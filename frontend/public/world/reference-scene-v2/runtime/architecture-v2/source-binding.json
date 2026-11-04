@@ -1,0 +1,131 @@
+{
+  "format": "MCR_SPATIAL5_ARCHITECTURE_V2_BINDING",
+  "version": 1,
+  "status": "NOT_RELEASE_BOUND",
+  "production_status": "NOT_ADMITTED",
+  "published_revision": "921cb3d850925a489302ebcc5483fba71ac835a5",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "handoff": {
+    "path": "frontend/public/world/reference-scene-v2/architecture-v2/atlas-handoff.json",
+    "bytes": 8302,
+    "sha256": "sha256:98484ffd7c3301f7ba3b8cc5221be29d48386ec1dcc2eb67015c2dffc76a5fc0"
+  },
+  "document": {
+    "path": "frontend/src/world/reference-scene/spatial-v5/architecture-source.json",
+    "bytes": 19461,
+    "sha256": "sha256:4669d061d213d299b6e7f0987667919be2a766d30efab629a1f5138a5434440a"
+  },
+  "frozen_inputs": [
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/source-inputs.json",
+      "bytes": 56822,
+      "sha256": "sha256:6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/tile-pin.json",
+      "bytes": 210,
+      "sha256": "sha256:cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/backend-allocation.json",
+      "bytes": 502,
+      "sha256": "sha256:6b48366434524390a031cf29ea609794b2797d494132f2719c0c18e4b34d8060"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json",
+      "bytes": 14099,
+      "sha256": "sha256:f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-labels-pins.json",
+      "bytes": 1212,
+      "sha256": "sha256:77f2d9b7696901dd7b54034cb5057cd772d99e614146cc44f088807e105c819c"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json",
+      "bytes": 13276,
+      "sha256": "sha256:789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json",
+      "bytes": 1042,
+      "sha256": "sha256:9134da02d3e436ce082c230dcd380326064fcc842b8650e490d1744478db5a8c"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/runtime/spatial-v5/canonical-map.json",
+      "bytes": 24058,
+      "sha256": "sha256:e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/runtime/spatial-v5/source-binding.json",
+      "bytes": 16840,
+      "sha256": "sha256:8cb8d18a9c6bc07eead30e7a2474ca5fb9adb3f23ddade911840aad6bf134041"
+    }
+  ],
+  "scenes": [
+    {
+      "theme_id": "REVENGE",
+      "runtime_resources": [
+        {
+          "id": "quality_v10_route_edge_ground",
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 549155
+        },
+        {
+          "id": "revenge_architecture_v2_atlas",
+          "path": "world/reference-scene-v2/architecture-v2/revenge/atlas.png",
+          "sha256": "sha256:108d5483711e6bd755b328d08d3535141954ef81adc6eabfd066a88d8fe278aa",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1272098
+        }
+      ]
+    },
+    {
+      "theme_id": "PARADE",
+      "runtime_resources": [
+        {
+          "id": "quality_v10_route_edge_ground",
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 549155
+        },
+        {
+          "id": "parade_architecture_v2_atlas",
+          "path": "world/reference-scene-v2/architecture-v2/parade/atlas.png",
+          "sha256": "sha256:aab0383b8963f1b681acf81d22d2be88e130744554311e74f0793efbe388e529",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1284429
+        }
+      ]
+    },
+    {
+      "theme_id": "DANGER",
+      "runtime_resources": [
+        {
+          "id": "quality_v10_route_edge_ground",
+          "path": "world/reference-scene-v2/quality-v10/ground.png",
+          "sha256": "sha256:dd70d8fb02e1c6e57e9a9f9e96d69dc7c15999bc076678a7075161281c929887",
+          "width_px": 768,
+          "height_px": 1296,
+          "bytes": 549155
+        },
+        {
+          "id": "danger_architecture_v2_atlas",
+          "path": "world/reference-scene-v2/architecture-v2/danger/atlas.png",
+          "sha256": "sha256:20f218966eb17f50992191f1128b45ca02aac9b00a1c1f39ba71637b68afa29d",
+          "width_px": 1024,
+          "height_px": 1024,
+          "bytes": 1271456
+        }
+      ]
+    }
+  ],
+  "authority": "Supplemental source identity only. No backend reservation, release admission, REVIEWED provenance, physical destination or live qualification."
+}

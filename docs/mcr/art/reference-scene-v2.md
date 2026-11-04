@@ -449,3 +449,68 @@ Tesseract project, native scene export, consumer edit or new capture is included
 Existing paired label/planting sidecars retain their original resource pins;
 new atlas adoption requires an explicitly assigned matching pin closure.
 Full scene massing/density, occlusion and mobile reference fidelity remain open.
+
+## AR02/AR04 retained partial World diagnostic
+
+The existing Root153 native01 REVENGE frame is517,101B, SHA
+`a36f915dfe26822a00dac0b18dd100ee229e91115ca493e1d16d7edb33c1bb5d`,
+actual360×800. ART independently checked these bytes and viewed the original
+alongside the unchanged target. Published architecture source921cb3d8 is an
+ancestor of capture sourcea0c88b5c, and all25 architecture-folder Git postimages
+match at capture. This is an unpublished retained owner artifact, not a new
+ART render. `architecture-v2/diagnostics/native-01-revenge-360.json` and `.md`
+record exact inputs, findings and limits without copying the image.
+
+The visible meeting hall's two-storey façade and reduced roof share survive
+actual rendering. The MAP main `west_hall` representation is not shown, so its
+known narrower massing remains open. The reported360×703 World canvas differs
+from the reference354×360 PARADE World scenery crop; the extra lower streets,
+lawn and architecture cannot justify camera, road, canonical-foot or fixture
+changes. This frame does not establish a further raster correction.
+
+Root reports zero differences in this completed REVENGE case and ten clear-foot
+building-depth comparisons; ART did not rerun them. The next PARADE overlap case
+failed50 channels, leaving native01 as a whole **FAIL**. Consumer/oracle diagnosis
+remains with Root. No all-era, native, runtime, occlusion, mobile or whole-fidelity
+acceptance follows. The original AR02/AR04 criteria remain open under the same
+goal, whose metadata remains **BLOCKED**. No additional browser/export/resource
+job or manager review gate was introduced.
+
+## AR02/AR04 completed MAP view and venue assembly correction
+
+Root's retained native04 PARADE MAP390×844 (409,928B,
+`19d05754866c6ab54004a89dbb3e6026cf3b5b2b7b2e33c5f5a749ff1c907e03`),
+NEW editable768×1296 SVG (2,657,147B,
+`cb34694ac25ffa5e488aa2c98094f23a0c4950a3eb5622ed590d21f606db4cb5`)
+and actual Chrome SVG raster (1,476,218B,
+`9156109e82573868a1a9d24585f305b890353a96889392b34988359c590ba524`)
+were independently byte/hash checked. Both actual PNGs were viewed against the
+unchanged original target and the unchanged reference half of QA06's earlier
+pair. All25 published architecture postimages match capture source4cb162b7;
+source921cb3d8 is its ancestor. The source/artifacts were publication-pending at
+comparison. No image was copied or exported by ART.
+
+Root reports native04's full bounded technical matrix PASS; ART did not rerun
+it. That capture uses prior World presentation and cannot prove later combined
+master pixels. The matching MAP view now establishes an architectural difference:
+the central building reads as a narrow standalone block, while the reference
+venue has flanking wings. Taller floors alone do not complete its massing.
+
+New additive `map-venue-massing-v1/presentation.json` addresses that shape with
+two unbound MAP-only annexes sampled from the existing three-era `north_hall`
+frame. West117,244,169×128/depth372 and east436,280,122×90/depth370 draw behind
+the unchanged stage representation at185,163,300×210/depth373. The frame envelope
+widens from300 to441px; this is an assembly metric, not reference segmentation
+or visual acceptance. All atlas/source pixels,34 World props, six labels, ten
+gardens, identities, geometry, feet, cameras and bindings remain unchanged.
+
+Source checks validate pins, exact base placements/frames, label/garden
+disjointness and12 canonical spawn/interaction clearances (minimum22px). Separate
+static alpha point analysis records partial annex occlusion by the central hall
+and existing trees across all three eras, without writing a raster. It is not
+a native-render or real-avatar visibility proof. New composition has51 MAP
+objects rather than49 and requires an explicitly recorded consumer follow-up.
+Native04 evidence qualifies the earlier input only. Actual new-wing visibility,
+massing, mobile captures, landscape density and full original fidelity remain
+open. The same original goal remains metadata BLOCKED; no new artist browser,
+export, resource job, manager review or false completion is introduced.
