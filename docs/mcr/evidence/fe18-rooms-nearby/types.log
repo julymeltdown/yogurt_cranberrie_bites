@@ -1,0 +1,2 @@
+frontend/src/features/world-rooms/__tests__/completion/preview.ts(61,26): error TS2339: Property 'matrix' does not exist on type 'Camera'.
+frontend/src/features/world-rooms/__tests__/completion/preview.ts(62,30): error TS2339: Property 'matrix' does not exist on type 'Camera'.

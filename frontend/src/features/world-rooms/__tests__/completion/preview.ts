@@ -58,8 +58,10 @@ async function actorProbe(id: string) {
   const sprite = scene.children.list.find(o => o.type === 'Sprite' && Reflect.get(o, 'x') === player.position.x && Reflect.get(o, 'y') === player.position.y) as PhaserType.GameObjects.Sprite | undefined
   if (!sprite?.visible) throw Error('Authorized actor has no visible actual Phaser sprite')
   const b = sprite.getBounds(), camera = scene.cameras.main
-  const x = Math.max(0, Math.floor((b.x - camera.scrollX) * camera.zoom)), y = Math.max(0, Math.floor((b.y - camera.scrollY) * camera.zoom))
-  const width = Math.min(g.canvas.width - x, Math.ceil(b.width * camera.zoom)), height = Math.min(g.canvas.height - y, Math.ceil(b.height * camera.zoom))
+  const topLeft = camera.matrix.transformPoint(b.x - camera.scrollX, b.y - camera.scrollY)
+  const bottomRight = camera.matrix.transformPoint(b.right - camera.scrollX, b.bottom - camera.scrollY)
+  const x = Math.max(0, Math.floor(topLeft.x)), y = Math.max(0, Math.floor(topLeft.y))
+  const width = Math.min(g.canvas.width - x, Math.ceil(bottomRight.x) - x), height = Math.min(g.canvas.height - y, Math.ceil(bottomRight.y) - y)
   if (width < 4 || height < 4) throw Error('Actor paint region is not visible on actual canvas')
   const pixels = g.canvas.getContext('2d')!.getImageData(x, y, width, height).data
   probe = { id, foot: player.position, x, y, width, height, pixels, hash: await sha256(new Uint8Array(pixels)) }

@@ -1,7 +1,8 @@
 # FE18 rooms and authorized Nearby client completion
 
-Status: IN_PROGRESS. Source validation is underway; actual targeted native Root,
-Phaser/DOM removal and application build remain NOT_RUN until a new named slot.
+Status: IN_PROGRESS. Source checks pass; the first targeted native attempt
+failed a pixel-oracle assertion and is preserved. A corrected targeted retry and
+actual application build remain pending a new named slot.
 
 ## Authority and ownership
 
@@ -107,3 +108,24 @@ zero other validation Chrome roots and preserved interactive browser are require
 A NEW named allocation and explicit acceptance of the committed clean source are
 required; no old World slot is inherited. Actual optimized app build follows
 browser closure sequentially with public asset copying disabled.
+
+
+## First targeted native attempt
+
+Source `691768d02fad0e01275444a84b3398f809bb803c` ran in explicitly accepted
+slot `FE18-CLIENT-NATIVE-202611040538Z`, with36,240,809,984 bytes free and no
+competing validation browser. The360px case reached ordinary catalog full/
+unavailable,503 recovery,403 target denial, pending/rejected/correlated admitted
+membership, keyboard result focus and DOM/sprite removal. Its strict painted
+region assertion failed before that case completed. No full native pass or
+application build is inferred. The original three images/report remain in
+`native-01/`; `review.json` records the failure and bounded diagnosis.
+
+The initial pixel oracle used `(world-scroll)*zoom` and omitted Phaser's camera
+matrix origin. Only the owned test probe changes to the actual public camera
+matrix transform; `changedChannels >20` stays mandatory. The new runner retains
+partial case metrics and the after-removal image before asserting. No production
+renderer/camera/authority/art/feet change. Types and scoped lint pass after the
+probe correction. Initial measured peak77,455,513 bytes; own browser/server/temp
+and borrowed link were removed, and the slot was explicitly returned before
+requesting a new named retry allocation.

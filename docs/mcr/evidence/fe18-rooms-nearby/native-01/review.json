@@ -1,0 +1,16 @@
+{
+  "status": "FAIL_PRESERVED",
+  "source": "691768d02fad0e01275444a84b3398f809bb803c",
+  "commandExit": 1,
+  "observed": "360px full/unavailable/503 recovery/denied target/server rejection/correlated admission/focus checks reached actual removal. DOM name absent and actual sprite count5, but changedChannels>20 assertion failed. Case was not completed; no full native acceptance or app build inferred.",
+  "diagnosis": "Probe used manual (world-scroll)*zoom, omitting Phaser camera matrix origin. Corrected owned probe uses actual public camera.matrix.transformPoint; the pixel assertion stays strict. Production camera, renderer, feet and contracts unchanged.",
+  "retryCoverage": "Failed targeted three-width run only; no prior completed native case to repeat. Partial row metrics and after-removal image now recorded before strict assertions.",
+  "resources": {
+    "measuredPeakBytes": 77455513,
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryRemoved": true,
+    "borrowedDependencyLinkRemoved": true,
+    "slotExplicitlyReleased": true
+  }
+}

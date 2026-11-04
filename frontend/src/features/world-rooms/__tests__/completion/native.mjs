@@ -89,7 +89,7 @@ try {
     const change = () => page.getByRole('button', { name: 'Switch to SECOND ROOM', exact: true })
     const refresh = () => page.getByRole('button', { name: 'Refresh rooms', exact: true }).click()
     await expect(change()).toBeVisible(); await current('MAIN STAGE')
-    const rowResult = { width, before: await single(page), states: [] }
+    const rowResult = { width, status: 'IN_PROGRESS', before: await single(page), states: [] }; report.cases.push(rowResult)
     for (const availability of ['FULL', 'UNAVAILABLE']) {
       await page.evaluate(value => window.__FE18_COMPLETION__.catalog(value), availability); await refresh()
       await expect(change()).toBeDisabled(); await expect(page.getByText(`Capacity 50 · ${availability === 'FULL' ? 'Full' : 'Unavailable'}`, { exact: true })).toBeVisible()
@@ -135,10 +135,10 @@ try {
     await expect(roster.getByRole('link', { name: actor.name, exact: true })).toHaveCount(0)
     await expect.poll(async () => (await engine(page)).sprites).toBe(5); await paint(page)
     rowResult.paintAfter = await page.evaluate(() => window.__FE18_COMPLETION__.removedPaint())
+    await capture(page, `nearby-removed-${width}.png`, 'One filtered projection removes the name and actual painted avatar')
     assert(rowResult.paintAfter.changedChannels > 20); assert.notEqual(rowResult.paintAfter.beforeHash, rowResult.paintAfter.afterHash)
     assert.equal(rowResult.paintAfter.removedActorSpritePresent, false)
     assert.equal((await single(page)).entities, 5)
-    await capture(page, `nearby-removed-${width}.png`, 'One filtered projection removes the name and actual painted avatar')
     await page.evaluate(() => window.__FE18_COMPLETION__.epochSelfOnly())
     await expect(roster).toHaveCount(0); await expect.poll(async () => (await engine(page)).sprites).toBe(1)
     rowResult.epoch = await single(page)
@@ -160,7 +160,7 @@ try {
       assert.equal(await page.getByText(actor.name, { exact: true }).count(), 0)
       await capture(page, 'privacy-cancelled-late-admission.png', 'Privacy cancellation rejects late pending admission and clears private presentation')
     }
-    rowResult.cleanup = await dispose(page); report.cases.push(rowResult); await budget()
+    rowResult.cleanup = await dispose(page); rowResult.status = 'PASS'; await budget()
   }
   await context.close(); context = null
   await server.close(); server = null
