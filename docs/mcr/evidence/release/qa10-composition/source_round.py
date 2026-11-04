@@ -65,6 +65,8 @@ def process_usage(parent):
 def guardian(config):
     out = Path(config['out'])
     maxima = {'processes': 0, 'rss': 0, 'new_bytes': 0, 'whole_bytes': 0}
+    # Establish that the native probe works before any work child is admitted.
+    process_usage(config['supervisor'])
     write(out / 'guardian-ready.json', {'pid': os.getpid(), 'at': stamp()})
     breach = None
     while not (out / 'stop').exists():
@@ -88,7 +90,7 @@ def guardian(config):
             if worker.exists():
                 try:
                     os.killpg(json.loads(worker.read_text())['pid'], signal.SIGKILL)
-                except ProcessLookupError:
+                except (OSError, ValueError, KeyError):
                     pass
             break
         time.sleep(0.1)
