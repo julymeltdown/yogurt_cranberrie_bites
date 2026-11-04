@@ -208,7 +208,8 @@ impl PgScopeLedger {
                         || reservation_id.is_nil()
                         || *valid_until_unix_micros <= 0
                         || *valid_until_unix_micros > q.expires_unix_micros
-                        || chrono::DateTime::from_timestamp_micros(*valid_until_unix_micros).is_none()
+                        || chrono::DateTime::from_timestamp_micros(*valid_until_unix_micros)
+                            .is_none()
                     {
                         return Err(invalid());
                     }
@@ -315,6 +316,64 @@ impl PgScopeLedger {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn gift_private_reference_stays_authenticated_and_recoverable_after_disclosure_expiry() {
+        use crate::adapters::out::relationship_authority::guarded::{
+            ChildNativeIdentity, ChildQuery, GiftPrivateKind,
+        };
+        let scope = ScopeKey {
+            instance: Uuid::from_u128(1),
+            scope: Uuid::from_u128(2),
+            binding_digest: [3; 32],
+        };
+        let reference = ChildRecoveryReference::GiftPrivate {
+            query: ChildQuery {
+                actor: Uuid::from_u128(4),
+                event: Uuid::from_u128(5),
+                subject: Uuid::from_u128(4),
+                family: Uuid::from_u128(6),
+                request: Uuid::from_u128(7),
+                expires_unix_micros: 2_000_000,
+                binding_digest: scope.binding_digest,
+            },
+            child_nonce: Uuid::from_u128(8),
+            native: ChildNativeIdentity {
+                system_identifier: "1234".into(),
+                database_oid: 42,
+                full_xid: "90".into(),
+                backend_pid: 12,
+                backend_started_unix_micros: 1,
+                producer_instance_id: scope.instance,
+            },
+            private_kind: GiftPrivateKind::Pickup,
+            giveaway_id: Uuid::from_u128(9),
+            reservation_id: Uuid::from_u128(10),
+            valid_until_unix_micros: 1_000_000,
+        };
+        assert!(reference.check_content_time().is_err());
+        let keys =
+            ChildRecoveryKeys::new(ChildRecoveryKey::new("gift", &[41; 32]).unwrap(), vec![])
+                .unwrap();
+        let sealed = keys.seal(&scope, &reference).unwrap();
+        let intent = reference.intent_id().unwrap();
+        assert!(
+            keys.open(&scope, "GIFT_PRIVATE", intent, "gift", &sealed)
+                .unwrap()
+                == reference
+        );
+        assert!(keys
+            .open(&scope, "LOCAL_PUBLIC", intent, "gift", &sealed)
+            .is_err());
+        assert_eq!(
+            reference.local_prepared_gid().unwrap(),
+            format!("mcr-gift-private:{}", intent.simple())
+        );
+        let mut changed = reference.clone();
+        if let ChildRecoveryReference::GiftPrivate { private_kind, .. } = &mut changed {
+            *private_kind = GiftPrivateKind::Code;
+        }
+        assert_ne!(digest(&reference).unwrap(), digest(&changed).unwrap());
+    }
     use crate::adapters::out::relationship_authority::guarded::ChildQuery;
     #[test]
     fn private_intent_ciphertext_authenticates_every_storage_coordinate_and_retains_old_keys() {
