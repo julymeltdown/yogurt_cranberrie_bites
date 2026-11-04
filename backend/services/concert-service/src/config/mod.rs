@@ -14,6 +14,7 @@ pub mod intro_runtime;
 pub mod native_resolver;
 pub mod notification_target_runtime;
 pub mod participant_runtime;
+pub mod party_runtime;
 pub mod product_runtime;
 pub mod report_runtime;
 pub mod social_delivery;
