@@ -1,0 +1,192 @@
+
+ RUN  v4.1.9 <FE17_WORKTREE>/frontend
+
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > consumes canonical filtered-viewer stream for 00000000-0000-4000-8000-000000000001 64ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical wire rejection binary-message.json 6ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical wire rejection duplicate-key.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical trace epoch-replacement.json 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical trace movement-heartbeat.json 14ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical wire rejection non-finite.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical wire rejection oversized-client.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical trace resync.json 10ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical trace revoke.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical trace room-switch.json 15ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical wire rejection unknown-field.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical wire rejection unknown-message.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > canonical wire rejection wrong-version.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > waits for a newly authorized socket while ticket readiness is deferred 8ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > requires a fresh ticket and only explicit reconnection 11ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > rejects second connect and gates sends before admission/after dispose 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > cancels ticket and ignores late generation 14ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > cancels opening and ignores late generation 9ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > cancels active and ignores late generation 9ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > session generation change closes immediately and fences pending ticket 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounded ticket handshake 7ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounded opening handshake 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounded authenticate handshake 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong protocolVersion 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong eventId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong roomId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong mapId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong mapRevision 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong avatarManifestId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong avatarManifestVersion 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong selfUserId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on wrong roomEpoch 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > rejects malformed, oversized, binary, deeply nested and invalid Unicode 10ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > rejects duplicates, gaps, future acknowledgements and regressed tick 5ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > suspends input and discards queued deltas until correlated resync 1ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > ping/pong matching, missing ping and missing pong deadlines 4ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > terminal reset/revoke clears references, listeners and timers 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounds send buffers and rate, never replays old input 5ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > recovers gap/epoch {"streamSeq":2} with one notification 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > recovers gap/epoch {"roomEpoch":"00000000-0000-4000-8000-000000000001"} with one notification 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > recovers gap/epoch {"streamId":"00000000-0000-4000-8000-000000000001"} with one notification 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounds recovery with no consumer response and rejects invalid wire during resync 4ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounds the native buffer frame count even with small queued bytes 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > ignores stale timer callbacks after reconnect 4ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > reports safe documented server close codes without copying close reasons 11ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > rejects a reused ticket response on a new connection 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > rejects wrong ticket binding, TTL, path and failed acquisition without leaking errors 1ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fails closed on incompatible native subprotocol and socket errors 3ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > consumes canonical filtered-viewer stream for 00000000-0000-4000-8000-000000000002 52ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > consumes canonical filtered-viewer stream for 00000000-0000-4000-8000-000000000003 53ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > replaces snapshots, applies atomic upserts/removals and never retains snapshot.players 52ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > interpolates only remote positions within one 100ms window and never extrapolates/local-predicts 54ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > rejects duplicate roster, omitted self, invalid manifest, unsafe numeric and correlation frames 12ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > validates atomic delta removals, manifests, overlapping and duplicate IDs 9ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves captured access deadline and enforces expiry 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounds control timeouts, reused requests and resync spacing 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > fences reentrant disconnect at ticket/opening/live notifications 15ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves the old room on target ticket 403/PERMISSION_DENIED before send 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves the old room on target ticket 404/RESOURCE_UNAVAILABLE before send 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves the old room on target ticket 409/RESOURCE_UNAVAILABLE before send 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves the old room on target ticket 429/RATE_LIMITED before send 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves the old room on target ticket 500/INTERNAL_ERROR before send 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves the old room on target ticket 503/DEPENDENCY_UNAVAILABLE before send 1ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves the old room on target ticket 504/DEADLINE_EXCEEDED before send 1ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves old authority on uncertain target issuance network 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > preserves old authority on uncertain target issuance timeout 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounds a pending ticket acquisition without destroying the old room or sending its late result 8ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > bounds ticket processing cancellation while its fingerprint computation is pending 8ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed: authentication-required. 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed: session-changed. 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed: invalid-response. 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Unknown adapter failure 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 401). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 409). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 410). 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 403). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 503). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > does not roll back a wrong target ticket binding or a post-send failure 6ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > cancels an outstanding room-ticket request without a late switch send 8ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > accepts tick skips without treating viewer-filtered changes as missing deltas 51ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > epoch mismatch requests epoch recovery and clears old positions 54ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > rejects an unsolicited switch result while ticket acquisition is pending 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > mock common lifecycle/fixtures > accepts an unsolicited epoch reset and disposes it cleanly 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical wire rejection binary-message.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical wire rejection duplicate-key.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical trace epoch-replacement.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical trace movement-heartbeat.json 14ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical wire rejection non-finite.json 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical wire rejection oversized-client.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical trace resync.json 8ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical trace revoke.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical trace room-switch.json 15ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical wire rejection unknown-field.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical wire rejection unknown-message.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > canonical wire rejection wrong-version.json 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > waits for a newly authorized socket while ticket readiness is deferred 7ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > requires a fresh ticket and only explicit reconnection 10ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > rejects second connect and gates sends before admission/after dispose 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > cancels ticket and ignores late generation 15ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > cancels opening and ignores late generation 10ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > cancels active and ignores late generation 10ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > session generation change closes immediately and fences pending ticket 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounded ticket handshake 7ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounded opening handshake 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounded authenticate handshake 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong protocolVersion 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong eventId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong roomId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong mapId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong mapRevision 1ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong avatarManifestId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong avatarManifestVersion 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong selfUserId 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on wrong roomEpoch 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > rejects malformed, oversized, binary, deeply nested and invalid Unicode 10ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > rejects duplicates, gaps, future acknowledgements and regressed tick 5ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > suspends input and discards queued deltas until correlated resync 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > ping/pong matching, missing ping and missing pong deadlines 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > terminal reset/revoke clears references, listeners and timers 4ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounds send buffers and rate, never replays old input 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > recovers gap/epoch {"streamSeq":2} with one notification 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > recovers gap/epoch {"roomEpoch":"00000000-0000-4000-8000-000000000001"} with one notification 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > recovers gap/epoch {"streamId":"00000000-0000-4000-8000-000000000001"} with one notification 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounds recovery with no consumer response and rejects invalid wire during resync 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounds the native buffer frame count even with small queued bytes 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > ignores stale timer callbacks after reconnect 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > reports safe documented server close codes without copying close reasons 13ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > rejects a reused ticket response on a new connection 1ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > rejects wrong ticket binding, TTL, path and failed acquisition without leaking errors 1ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fails closed on incompatible native subprotocol and socket errors 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > rejects duplicate roster, omitted self, invalid manifest, unsafe numeric and correlation frames 12ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > validates atomic delta removals, manifests, overlapping and duplicate IDs 7ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > retains at most the current capacity roster under repeated coalesced position changes 67ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > a gap clears ghosts, requests one resync, discards queued old changes and replaces the complete baseline 54ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves captured access deadline and enforces expiry 4ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounds control timeouts, reused requests and resync spacing 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > fences reentrant disconnect at ticket/opening/live notifications 13ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves the old room on target ticket 403/PERMISSION_DENIED before send 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves the old room on target ticket 404/RESOURCE_UNAVAILABLE before send 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves the old room on target ticket 409/RESOURCE_UNAVAILABLE before send 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves the old room on target ticket 429/RATE_LIMITED before send 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves the old room on target ticket 500/INTERNAL_ERROR before send 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves the old room on target ticket 503/DEPENDENCY_UNAVAILABLE before send 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves the old room on target ticket 504/DEADLINE_EXCEEDED before send 1ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves old authority on uncertain target issuance network 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > preserves old authority on uncertain target issuance timeout 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounds a pending ticket acquisition without destroying the old room or sending its late result 8ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > bounds ticket processing cancellation while its fingerprint computation is pending 8ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed: authentication-required. 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed: session-changed. 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed: invalid-response. 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Unknown adapter failure 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 401). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 409). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 410). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 403). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a terminal ticket proof Request failed (HTTP 503). 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > does not roll back a wrong target ticket binding or a post-send failure 7ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > cancels an outstanding room-ticket request without a late switch send 8ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > rejects an unsolicited switch result while ticket acquisition is pending 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > native common lifecycle/fixtures > accepts an unsolicited epoch reset and disposes it cleanly 2ms
+ ✓ src/world/network/__tests__/transport.test.ts > canonical schema checks > validates every fixture frame and projection through canonical schemas 3ms
+ ✓ src/world/network/__tests__/transport.test.ts > canonical schema checks > checks HTTP ticket TTL and schema 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > canonical schema checks > rejects unsafe origin https://mcr.example/ 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > canonical schema checks > rejects unsafe origin https://mcr.example?ticket=x 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > canonical schema checks > rejects unsafe origin https://user:pass@mcr.example 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > canonical schema checks > rejects unsafe origin http://mcr.example 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > canonical schema checks > rejects unsafe origin wss://mcr.example 0ms
+ ✓ src/world/network/__tests__/transport.test.ts > canonical schema checks > rejects unsafe origin null 0ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 authoritative entity projection > spaces repeated resyncs without adding another recovery or reconnect loop 51ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > coalesces normalized axes to 20Hz, sends interactions once and reconciles acknowledgements without replay 54ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > bounds unacknowledged input at 64 and recovers instead of growing a replay queue 53ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > does not accumulate an idle replay ledger or run an idle cadence after sending neutral once 52ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > terminal MAP_VERSION_MISMATCH clears roster without an in-place resync 52ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > terminal BACKPRESSURE clears roster without an in-place resync 53ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > responds to the existing heartbeat event without owning a heartbeat timer 52ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > hidden teardown removes ghosts/listeners, foreground gets a fresh ticket once and replays no old intent 59ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > can start hidden without acquiring a ticket until first foreground 7ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > does not reconnect on unexpected close until explicit retry 59ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > canonical owner replacement while a ticket is pending disposes and ignores its eventual result 7ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > revoke clears all data and disables visibility takeover and retries 53ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > sink failure and reentrant disposal cannot leave an active transport, timers or later commits 60ms
+ ✓ src/world/network/__tests__/replication.test.ts > FE17 bounded input and transport lifecycle > room ticket denial preserves old baseline and movement; target snapshot atomically resets roster 54ms
+
+ Test Files  2 passed (2)
+      Tests  183 passed (183)
+   Start at  10:49:14
+   Duration  1.41s (transform 213ms, setup 0ms, import 333ms, tests 1.78s, environment 0ms)
+

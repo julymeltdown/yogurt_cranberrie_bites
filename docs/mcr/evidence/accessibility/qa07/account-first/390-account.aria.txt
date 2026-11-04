@@ -1,0 +1,16 @@
+- main:
+  - paragraph: Synthetic FE36 qualification only
+  - navigation "Fixture routes":
+    - button "Open report"
+    - button "Blocked users"
+    - button "Account"
+  - region "Account controls":
+    - button "Back"
+    - heading "Account controls" [level=1]
+    - paragraph: Signing out clears private views and drafts on this device immediately.
+    - button "Sign out"
+    - heading "Delete account" [level=2]
+    - paragraph: Deletion may remain pending or need recovery. A request acknowledgment does not mean deletion is complete.
+    - button "Request account deletion"
+    - status
+    - button "Check deletion progress"

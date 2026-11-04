@@ -8,6 +8,7 @@ type Schema = {
     const?: unknown;
     enum?: unknown[];
     anyOf?: Schema[];
+    oneOf?: Schema[];
     properties?: Record<string, Schema>;
     required?: string[];
     additionalProperties?: boolean;
@@ -26,7 +27,7 @@ const schemas = spec.components.schemas as unknown as Record<string, Schema>;
 export function adminValue<T>(name: string, value: unknown): T {
     const budget = { remaining: 100000 };
     function valid(v: unknown, s: Schema, depth = 0): boolean {
-        if (--budget.remaining < 0 || depth > 30 || Object.keys(s).some(k => !['$ref', 'type', 'const', 'enum', 'anyOf', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'minLength', 'maxLength', 'minimum', 'maximum', 'format', 'pattern', 'description'].includes(k)))
+        if (--budget.remaining < 0 || depth > 30 || Object.keys(s).some(k => !['$ref', 'type', 'const', 'enum', 'anyOf', 'oneOf', 'properties', 'required', 'additionalProperties', 'items', 'minItems', 'maxItems', 'minLength', 'maxLength', 'minimum', 'maximum', 'format', 'pattern', 'description'].includes(k)))
             return false;
         if (s.$ref) {
             const n = s.$ref.replace('#/components/schemas/', '');
@@ -34,6 +35,8 @@ export function adminValue<T>(name: string, value: unknown): T {
         }
         if (s.anyOf)
             return s.anyOf.some(t => valid(v, t, depth + 1));
+        if (s.oneOf)
+            return s.oneOf.filter(t => valid(v, t, depth + 1)).length === 1;
         if ('const' in s && v !== s.const || s.enum && !s.enum.includes(v))
             return false;
         if (s.type === 'null')

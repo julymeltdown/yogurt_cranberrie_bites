@@ -1,0 +1,12 @@
+- paragraph: GIFTS / YOUR PICKUP
+- heading "Fan badges" [level=1]
+- paragraph: A reservation holds an item. Only a server-confirmed collection completes pickup.
+- status: The original command was confirmed by current authorized state.
+- button "Read current reservation"
+- heading "Reservation status" [level=2]
+- paragraph: HELD
+- paragraph: "Expiry: 07 Nov 2026, 18:15 KST."
+- button "Read private pickup details"
+- checkbox "Cancel this reservation and release the held item."
+- text: Cancel this reservation and release the held item.
+- button "Confirm reservation cancellation" [disabled]

@@ -1,0 +1,358 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "FE26 fixture qualification"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "sectionheader",
+    "name": ""
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Read current reservation"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "Authorized pickup details"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "Fan badges"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "Show this short-lived code only at the current pickup. It does not confirm collection."
+  },
+  {
+    "role": "StaticText",
+    "name": "Read current reservation"
+  },
+  {
+    "role": "heading",
+    "name": "Reservation status"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Read private pickup details"
+  },
+  {
+    "role": "checkbox",
+    "name": "Cancel this reservation and release the held item."
+  },
+  {
+    "role": "button",
+    "name": "Confirm reservation cancellation"
+  },
+  {
+    "role": "heading",
+    "name": "Current pickup plan"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "Confirmation code"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Rotate pickup code"
+  },
+  {
+    "role": "status",
+    "name": "Pickup confirmation code"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "GIFTS / YOUR PICKUP"
+  },
+  {
+    "role": "StaticText",
+    "name": "Fan badges"
+  },
+  {
+    "role": "StaticText",
+    "name": "A reservation holds an item. Only a server-confirmed collection completes pickup."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Show this short-lived code only at the "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "current pickup. It does not confirm "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "collection."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Read current reservation"
+  },
+  {
+    "role": "StaticText",
+    "name": "Reservation status"
+  },
+  {
+    "role": "StaticText",
+    "name": "READY"
+  },
+  {
+    "role": "StaticText",
+    "name": "Expiry: "
+  },
+  {
+    "role": "StaticText",
+    "name": "07 Nov 2026, 18:15 KST"
+  },
+  {
+    "role": "StaticText",
+    "name": "."
+  },
+  {
+    "role": "StaticText",
+    "name": "Read private pickup details"
+  },
+  {
+    "role": "StaticText",
+    "name": "Confirm reservation cancellation"
+  },
+  {
+    "role": "StaticText",
+    "name": "Current pickup plan"
+  },
+  {
+    "role": "StaticText",
+    "name": "Private pickup fixture instructions"
+  },
+  {
+    "role": "StaticText",
+    "name": "How to identify the giver: "
+  },
+  {
+    "role": "StaticText",
+    "name": "Fixture badge"
+  },
+  {
+    "role": "StaticText",
+    "name": "Valid until "
+  },
+  {
+    "role": "StaticText",
+    "name": "07 Nov 2026, 18:15 KST"
+  },
+  {
+    "role": "StaticText",
+    "name": "."
+  },
+  {
+    "role": "StaticText",
+    "name": "Virtual movement does not establish physical arrival."
+  },
+  {
+    "role": "StaticText",
+    "name": "Confirmation code"
+  },
+  {
+    "role": "StaticText",
+    "name": "Request a short-lived code after checking the current pickup plan. A code does not confirm collection."
+  },
+  {
+    "role": "StaticText",
+    "name": "Rotate pickup code"
+  },
+  {
+    "role": "StaticText",
+    "name": "654321"
+  },
+  {
+    "role": "StaticText",
+    "name": "Code expires "
+  },
+  {
+    "role": "StaticText",
+    "name": "07 Nov 2026, 17:07 KST"
+  },
+  {
+    "role": "StaticText",
+    "name": ". Share it only at pickup."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "GIFTS / YOUR PICKUP"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Fan badges"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "A reservation holds an item. Only a server-"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "confirmed collection completes pickup."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Reservation status"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "READY"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Expiry: "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "07 Nov 2026, 18:15 KST"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Read private pickup details"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Confirm reservation cancellation"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Current pickup plan"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Private pickup fixture instructions"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "How to identify the giver: "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Fixture badge"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Valid until "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "07 Nov 2026, 18:15 KST"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Virtual movement does not establish physical "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "arrival."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Confirmation code"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Request a short-lived code after checking "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "the current pickup plan. A code does not "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "confirm collection."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Rotate pickup code"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "654321"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Code expires "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "07 Nov 2026, 17:07 KST"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": ". Share "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "it only at pickup."
+  }
+]

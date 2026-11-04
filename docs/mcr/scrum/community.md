@@ -114,8 +114,11 @@ source was inspected or checks rerun by this coordinator.
 Prepared isolated checkout `/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize`,
 NEW branch `codex/mcr-fe-mural-admin-regressions`, exact base
 `7ea11efdbdc1e2a447ece669a660c10f12b43463`; old branches/history preserved.
-Assignment sent; actual receiving goal/startup acceptance is pending. No
-incompatible goal may be paused, reset or falsely completed for reassignment.
+Actual receiving receipt: `get_goal` returned null, then NEW unbudgeted ACTIVE
+goal `1793756572` was created covering diagnosis, necessary bounded fixes,
+validation/docs, direct non-force publication and concrete fixes. Developer
+verified clean exact base and accepted the initial lease; bounded assignment
+status IN_PROGRESS. No incompatible goal was paused, reset or falsely completed.
 
 Exact initial exclusive writes only:
 
@@ -123,6 +126,24 @@ Exact initial exclusive writes only:
 - `frontend/src/features/admin/reports/__tests__/controller.test.ts`
 - NEW `docs/mcr/frontend/mural-admin-regressions.md`
 - NEW `docs/mcr/evidence/mural-admin-regressions/**`
+
+Subsequent exact feature hunk allocated on the developer's concrete source
+diagnosis: `frontend/src/features/admin/reports/model/validate.ts`, only
+Schema/keyword whitelist and `oneOf` evaluation compatibility, preserving
+existing budget/depth/closed-field behavior. Owner reports canonical
+AvatarConfig's layered/whole union was rejected before valid member rows were
+read, causing the four downstream member failures; this is a developer-reported
+product decoder issue, not an SL source review. Both valid wire variants and
+malformed/hybrid/private-field regressions stay in the already leased
+`controller.test.ts`. No other production path or hunk is granted. Mural text
+assertions are only preliminarily identified as stale pending owner-run actual
+route, retained-owner and raster qualification; no PASS claim yet.
+
+Exact temporary operational exception: an untracked
+`fe-ref-customize/frontend/node_modules` symlink to the retained
+`/Users/lhs/Desktop/mcr/frontend/node_modules`, only if absent, target read-only,
+no installs/manifest/lock/shared writes. Developer removes only its own exact
+link before final handoff; no target deletion or other write rights.
 
 Existing owner packet: frozen `cb9abce4`, diagnostic publication `62b4bf80`,
 `frontend/src/app/__tests__/production-refresh/evidence/broad-diagnostic.log`.
@@ -143,6 +164,19 @@ route to its incumbent. Motion and QA07 continue undiverted. Privacy
 `live-gate.test.mjs` collection mismatch was separately routed to actual QA04
 owner `01a1a202-3ff2-7a93-95c3-374c6df97281` and Social, with no implicit
 shared-config fix lease or demonstrated product-fault claim.
+
+Privacy owner subsequently reported the discovery residual delivered: source
+`647432c2`, publication `f2ab50a57076fadf53a5278ee73be2e26bc43442`, remote
+HEAD verified and clean checkout. Byte-identical Node selftest rename to
+`live-gate.node.mjs` and explicit `node --test` documentation remove its Vitest
+discovery match; nine Node tests pass. Owned discovery probe reports zero
+privacy/two positive social-sharing matches without executing test modules;
+no config/app/other-lane edits, new goal or review. Evidence remains in
+`docs/mcr/evidence/privacy-frontend/node-discovery.json`, companion logs and
+README. Frozen `62b4bf80` broad diagnostic is unchanged, NOT_GREEN and not
+rerun. This closes the collection residual only; original real-service QA04
+goal remains BLOCKED on actual principal/seed/HTTP/WS/cache handoff, with no
+new acceptance/count or counterpart checks requested.
 
 ## Current QA07 ownership and hourly checkpoint
 

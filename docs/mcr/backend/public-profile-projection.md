@@ -5,9 +5,12 @@ Status: **IN_PROGRESS**. The dedicated internal protocol is published at
 verified remote ancestry. The Profile producer is compiled and independently qualified as recorded below.
 The caller-intent recovery increment is independently qualified at source
 `52000b758da0fd96ab0a4bccbedb6feb31a0d8c2`. The Concert adapter compiles against
-SDK2 and its closed C03 schema tests pass: **CONTRACT_READY**. Its actual local
-prepared child, joined canonical Auth/Friend flow and final HTTP response
-qualification remain **NOT_RUN**; this is not joined acceptance.
+SDK2 and its closed C03 schema tests pass: **CONTRACT_READY**. At exact source
+`c04070be4219e381bd2bf2d132ac1a17a4adc73e`, the actual local prepared child,
+canonical Auth/Friend enrollment, production reader construction, Profile mTLS
+read, serialization hold and nine denial scenarios pass the focused joined-core
+qualification below. Final Gateway HTTP delivery and complete Feed/C04 response
+remain **NOT_RUN**; whole-feature acceptance remains open.
 No production capability flag is enabled by this work.
 
 The original assignment base was `8430cd57`; current source incorporated avatar
@@ -398,3 +401,263 @@ Controller regressions (5), planning provenance check and `git diff --check`
 passed again, all exit 0. The intended direct non-force publication carries the
 independently qualified producer and CONTRACT_READY compiled adapter; actual
 merged build and joined response acceptance remain explicit open gates.
+
+
+### Joined core follow-up source (qualification pending)
+
+The qualified component was published non-force at
+`9119073a4dfd954798a59276ad971cc729a21c3c`; fresh fetch verified both that
+commit and `52000b75` in remote ancestry. Master advanced to `22f97715` before
+the ancestry fetch, so this is an ancestry verification, not an assertion that
+9119073a remained remote HEAD.
+
+Feed peer review found that generic PermissionDenied was mapped to skippable
+ResourceUnavailable. Follow-up `41ea9f68` reserves skippable mapping for explicit
+NotFound and makes authority denial, cancellation and transport failures fail
+the whole request. Its focused regression awaits the fresh combined build.
+The SDK owner separately owns normalization of upstream owner/child NotFound
+and true subject denial; this adapter cannot infer validity from a status alone.
+
+Own `adapters/out/public_profile/native.rs` plus `native/{capture,environment,owners}.rs`
+compose an actual signed Gateway parent, production Auth/Friend guard services,
+real Profile public RPC over mTLS, production private root ledger and actual
+local Concert prepared-child methods. The three helper source copies are from
+`owner_authority_support/{capture,environment,owners}.rs` at qualified owner
+source `3e22615eb39a8912c71c7bbcb003930cfc24f373`, published through `ea7ccaf4`.
+Each copy records its original SHA-256. Changes are crate-local references and
+the fourth exact-owned Profile database in the ownership checker. The original
+helpers remain read-only and exclusively owned by the authority developer.
+Dependencies are retained service dev-dependencies, platform, root SDK/ledger,
+SQLx, tonic, Tokio, futures, JSON and the unchanged selected avatar catalog.
+
+Two ignored native cases exercise shared viewer/author holds, repeated author
+reuse, held privacy/avatar updates through internal serialization, direct core
+terminal settlement, and actual local missing-avatar/admission/participant/block
+and private-Profile denials without fallback data. The viewer has no public
+Profile or avatar. `--joined` requires the exact debug-zero Concert lib artifact
+in addition to the two existing test artifacts. Six controller-selection
+regressions pass, exit 0. Rust/native execution of these new cases is NOT_RUN.
+
+The private cfg(test) constructor skips product release/art construction only.
+The root owner confirmed that no complete admitted product bundle currently
+exists: map engineering/source records alone do not supply admitted Bootstrap
+and ThemeManifest composition. Production `connect` remains unchanged and
+fail-closed. These core tests cannot certify product construction, approved
+map/theme art, final Gateway HTTP bytes or complete Feed/C04 routes. No positive
+GuardedSubject is fabricated. Failed native runs remain failures even if exact
+private fixture teardown rolls back known child/owner GIDs; unknown quarantine
+retains its owned root. All follow-up work remains IN_PROGRESS.
+
+
+### Production constructor prerequisite consumed
+
+Root publication `95afbfc98dc12db7f87b3331d8ee49dbae8b9e45` closes the earlier
+source-bound release prerequisite. Its portable constructor receipt records
+actual clean source `c7fdd2581a9543e1748929739865ae79d436f870`, whole Concert
+library/product-runtime compilation exit 0 and five copied-binary tests passing.
+The production `ProductReleaseBundle::from_source_bound_files` actually reads
+the inert Bootstrap, byte-preserved selected avatar, map4, three real theme
+descriptors, public resources and source bindings; unrelated resources fail.
+All capabilities stay false, with no operator/physical/fidelity/HTTP admission.
+The receipt is `backend/releases/operator-bundle/quality-v6/constructor-qualification.json`;
+this is peer-owned constructor evidence, not execution of this joined fixture.
+
+Own source `cb7ac1bb` now calls that production constructor followed by actual
+`PublicProfileReader::connect`. The private reader struct initializer/catalog
+bypass is removed. The copied signed-parent capture helper accepts the exact
+release event while retaining production Gateway proof verification; isolated
+fixture SQL seeds actual owner/event/admission/participant/avatar/Profile rows.
+The inert release event is not promoted to admission. The controller additionally
+pins all tracked `frontend/public` resource bytes and the character source
+registry because production construction now reads these inputs.
+
+Fresh comparison confirms all portable qualified constructor input hashes match
+except the public module, whose own pending native cfg(test) hook changes its
+bytes. Therefore Root's receipt qualifies its exact constructor snapshot, and
+does not certify this new native binary. Six controller regressions and
+`git diff --check` pass, exit 0. The actual joined Rust/native cases remain
+NOT_RUN pending the existing fresh three-artifact target request.
+
+The compile candidate remains on `codex/mcr-be-public-profile-joined`, consuming
+published master `9edf2275` and the source-bound fixture without the SDK3 draft.
+SDK3 and its three-line unsupported-Gift handoff `56f18703` are preserved on
+`codex/mcr-be-public-profile-sdk3`; the draft is not a prerequisite for qualifying
+this published SDK2 component. Root's published mapper and SDK subject-status
+normalization are consumed as source. Actual final callback/Post/Gateway HTTP
+acceptance and joined restart cleanup remain separate open obligations.
+
+
+### Bounded actual subject-denial evidence
+
+The authority owner's native report at compiled clean source
+`e5f922ddc1a57aa7b461ae74c5415c12a860fcdb` records five individual PG16.14
+phases passing with exit 0: held source writers, 100 subjects/callback permit
+drain, registered actual transaction with distinct scope/effect digests and
+native-abort proof, cancelled unexposed acquisition recovery, and reserved
+subject NotFound versus wrong-binding/sealed whole-scope failures. The latter
+adds actual native evidence for the previously source/compile-qualified status
+normalization. This report's overall status remains FAIL: its sixth case,
+`product::produced_errors_keep_real_guards_until_terminal_delivery`, exited 101
+with `actual producer never dispatched`. It does not qualify the new Product
+error wrapper, the public reader join or outer HTTP. The owner is diagnosing
+that fixture before a focused rebuild.
+
+The exact report was independently read; SHA-256
+`6e1242c2f81e20a4282521942574fbb168b08b00e7e8d6c602e606426656be9c`,
+frozen binary SHA-256
+`7bd28f449226397ec642ed0a959c9f189134134042e98f99cd622c05732a843a`.
+It records exact-owned cleanup PASS and the owned root absent. Five passing
+phases remain bounded evidence; there is no six-case suite PASS, physical
+restart, committed-effect, actual Profile/Post child or HTTP acceptance claim.
+The public fixture's own joined Rust/native execution remains NOT_RUN.
+
+
+### Fresh three-artifact run: compiled, joined failure retained
+
+A fresh named BACKEND allocation was accepted at clean source
+`d8eb13bfe623a711447426849c5e2a6adc351cc5`. Preflight showed 56 GiB free and
+no open target handles. An initial Concert build failed because cached
+contracts-build paths shadowed this checkout's authority proto with the prior
+authority checkout. Scoped cleanup of contracts-build only removed 20 files /
+816.3 KiB; no source workaround, second target or installation was used.
+All final locked/offline Rust 1.88 jobs2/debug0/incremental0 builds exited 0:
+Profile transport 7.39s, Concert schema test 20.51s and Concert lib 17.78s.
+Profile had zero warnings; Concert test/lib had 16/11 inherited warnings and
+zero warnings in this public adapter's paths.
+
+The exact three outputs, Cargo JSON hashes and 2,379 source/resource pins were
+frozen, then BACKEND was unconditionally released after an empty lsof check.
+Only the private copies were executed. Pin SHA-256
+`29a53e6cc0040a11ca081748afe31586a28282db51afec93666e77771b2bd7fc`.
+
+| Frozen executable | SHA-256 |
+| --- | --- |
+| Profile concert_public_profile | `c77e12646694b5f049c979a700cd97f712f0c07c97dbe61e024ea9e5ed28c39e` |
+| Concert public_profile_projection | `ca4218aea019310147b374fa9352327026ab73c8265ab3520df2cccbb102e267` |
+| Concert lib tests | `7de7960a470bd48b9eafaed769b60e8dde5a652b6fcc0da086a64756f27b57fa` |
+
+Nine signed Profile tests, three C03 tests, the new whole-scope denial mapper
+regression and all nine explicit owner PG phases passed, exit 0 (22 checks).
+The first actual joined reader case then failed, exit 101, at viewer local
+policy with DependencyUnavailable; the second joined case was NOT_RUN. The
+overall native report remains FAIL. Exact report SHA-256
+`812bd19d77adfde991e9506bcc9959c68eebbde82c38e1b3dbc5a1bb899a7d0c`
+at private receipt `mcr-public-profile-frozen-y3epk5s_`.
+
+Failure teardown rolled back two known private owner holds, verified zero
+prepared transactions, stopped the owned server and removed the exact root.
+These rollbacks are cleanup, not successful runtime settlement or a passing
+joined flow. No target or PostgreSQL fixture remains held.
+
+Diagnostic source `31691c4d` separates the actual viewer scope check, local
+acquisition, native prepared check and reused public policy. Underlying local
+SQL/type failures are printed only under cfg(test); product errors remain
+closed. Controller `2d0d00e7` adds --joined-only so a fresh one-lib focused
+build cannot claim older owner/schema artifacts against changed source. Seven
+controller regressions pass, exit 0. The focused Rust/native run is NOT_RUN
+until a fresh allocation. This task remains IN_PROGRESS; no new joined, final
+HTTP or multiuser acceptance is claimed.
+
+
+### Actual deferred-guard failure and bounded source correction
+
+Feed independently reproduced the same frozen Concert lib failure without a
+rebuild or shared target. The diagnostic verified 665 runtime migrations and
+resources against the existing pin and used its own private PostgreSQL 16 root.
+The server reported SQLSTATE `23514`, `relationship authority expired`, at
+PREPARE TRANSACTION inside `concert_relationship_deadline_guard()`. The
+sanitized diagnostic is a failure reproduction, not passing qualification;
+its exact-owned cleanup passed.
+
+Migration 0006 requires the transaction-local
+`mcr.relationship_authority_until` for the pair metadata reservation's deferred
+guard. The adapter previously set only statement_timeout. The correction uses
+the existing owning `relationship::pin_deadline` helper with the original
+verified scope's absolute expiry; its least-existing-deadline semantics cannot
+extend an earlier limit. No migration, trigger or authority check is bypassed.
+The two blocked-pair denial fixture writes also use the actual scope budget
+in an explicit transaction so their deferred guard remains enabled.
+
+Rustfmt and diff checks pass; all seven Python controller regressions pass,
+exit 0. The corrected Rust source and focused joined native run are NOT_RUN
+until a fresh named one-lib allocation and immutable artifact freeze. Overall
+joined acceptance remains open.
+
+
+### Focused actual joined-core qualification: PASS
+
+The deferred-guard correction is compiled and executed at exact clean source
+`c04070be4219e381bd2bf2d132ac1a17a4adc73e` on the SDK2 qualification branch.
+This is a new passing focused result; the prior failed report is retained above.
+No SDK3 candidate or subsequently merged master snapshot is certified by it.
+
+A fresh named BACKEND allocation was accepted before target access. Preflight
+showed 41 GiB free, no target handles and no existing Cargo/rustc process. The
+first no-run attempt exited 101 on stale contracts-build proto paths from the
+previous checkout. Scoped cleanup of contracts-build only removed 20 files /
+816.3 KiB. The identical command then exited 0 in 29.29 seconds. There were
+11 inherited compiler warnings and zero warnings in public_profile paths.
+
+```sh
+CARGO_TARGET_DIR=<allocated-backend-target> CARGO_BUILD_JOBS=2 \
+CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 CARGO_INCREMENTAL=0 \
+cargo +1.88.0 test --locked --offline -p concert-service --lib \
+  --no-run --message-format=json
+
+python3 backend/scripts/mcr/public_profile_projection_smoke.py \
+  --joined-only --cargo-json <outside-target>/concert-lib-2.jsonl
+# Freeze exit 0, then unconditional target release with lsof empty (exit 1).
+python3 backend/scripts/mcr/public_profile_projection_smoke.py \
+  --pinned <private-frozen-directory>/pin.json
+# Native controller exit 0. No target access during native execution.
+```
+
+The frozen inventory contains only the fresh Concert lib executable, the exact
+Cargo JSON digest, and 2,379 source/resource hashes. Its private receipt directory
+is `mcr-public-profile-frozen-dy94cel9`. Hashes:
+
+| Receipt | SHA-256 |
+| --- | --- |
+| pin.json | `d779cf1f00da7447d0976381fd6b3101263fc9ac9099e5a60202b338cdb6d4ba` |
+| Concert lib executable | `be49b6d562e481e39de136ad6977dd7b4c7379b0e5937238e73299b311c2a22b` |
+| native-report.json | `47d795fc75696236ad0544ef3e792f94806bb60333dcfe41807ba381d1facf55` |
+
+All three explicit commands passed with exit 0:
+
+| Check | Executed tests | Duration |
+| --- | --- | --- |
+| Whole-scope denial mapper | 1 | 0.74s |
+| Actual owner/public reader hold through serialization | 1 | 1.33s |
+| Actual local denials and failed Profile intent settlement | 1, looping nine scenarios | 8.23s |
+
+The owned PostgreSQL host was 16.14, max_prepared_transactions 256. Actual Auth,
+Friend, Concert and Profile databases were migrated from the pinned source.
+The first joined test uses the production source-bound ProductReleaseBundle and
+PublicProfileReader::connect, real sealed Auth/Friend scopes and the real Profile
+mTLS service. It proves the viewer needs neither avatar nor public Profile,
+repeated author enrichment reuses exactly three child intents, C03 contains the
+canonical name/bio/selected avatar without the private URL canary, Profile
+privacy and Concert avatar writers stay blocked through serialization, actual
+settlement releases both writers, and a sealed root is a whole-read dependency
+failure. No alternate positive grant or private reader constructor is used.
+
+The second joined test covers missing avatar, missing admission, suspended
+admission, missing participant, each direction of local blocking, DRAFT event,
+ARCHIVED event and private Profile. Every scenario rejects a fallback author
+and finishes actual root settlement with no prepared children left. The
+blocked-pair fixture writes obey the same enabled deferred deadline trigger.
+
+The controller reports PASS and **zero forced cleanup rollbacks**. Actual test
+settlement left zero prepared transactions; the owned server stopped and its
+exact private root was removed. No shared target or PostgreSQL fixture remains
+held. This focused run does not rerun or silently promote the historical signed
+Profile/schema/restart checks to the new source. Actual Gateway HTTP terminal
+callbacks, the complete Feed/C04/Post route, SDK3 compilation, art fidelity and
+production capability activation remain outside this receipt. Assignment status
+remains IN_PROGRESS for the required consumer/delivery gates.
+
+Feed accepted the exact eight-line production fix as source-only consumer commit
+`6d9ef8c436732e208a51142429e4659f0443c4e4`, using its existing closed unavailable
+error mapping because the diagnostic helper is absent on that base. Root
+reported its analogous production-only consumption; neither consumer imports
+this private fixture or inherits this run's qualification for its own snapshot.

@@ -1,0 +1,626 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "FE33 caller assembly fixture"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Withdraw fixture qualification"
+  },
+  {
+    "role": "button",
+    "name": "Supply fresh fixture qualification"
+  },
+  {
+    "role": "button",
+    "name": "Invalidate fixture privacy"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "SYNTHETIC FE33 caller assembly. Actual production adapter, World composition, MapScene/Phaser and WorldPanels. Fixture resources, admission, HTTP, anchor and eligibility; no live server."
+  },
+  {
+    "role": "region",
+    "name": "World scene and controls"
+  },
+  {
+    "role": "StaticText",
+    "name": "Withdraw fixture qualification"
+  },
+  {
+    "role": "StaticText",
+    "name": "Supply fresh fixture qualification"
+  },
+  {
+    "role": "StaticText",
+    "name": "Invalidate fixture privacy"
+  },
+  {
+    "role": "region",
+    "name": "Wall editor"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "SYNTHETIC FE33 caller assembly. Actual "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "production adapter, World composition, "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MapScene/Phaser and WorldPanels. Fixture "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "resources, admission, HTTP, anchor and "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "eligibility; no live server."
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Withdraw fixture qualification"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Supply fresh fixture qualification"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Invalidate fixture privacy"
+  },
+  {
+    "role": "region",
+    "name": "WALL"
+  },
+  {
+    "role": "group",
+    "name": "World movement map. Arrow keys or W A S D move. E interacts. R recenters."
+  },
+  {
+    "role": "region",
+    "name": "World movement controls"
+  },
+  {
+    "role": "StaticText",
+    "name": "Connected. Avatar artwork is unavailable."
+  },
+  {
+    "role": "StaticText",
+    "name": "Virtual position is not physical arrival."
+  },
+  {
+    "role": "sectionheader",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "128 × 128 PIXEL WALL"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": "Palette · color 0"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "REV 11 · EDITABLE"
+  },
+  {
+    "role": "StaticText",
+    "name": "16 COLORS · SCROLL →"
+  },
+  {
+    "role": "status",
+    "name": "Wall command status"
+  },
+  {
+    "role": "status",
+    "name": "Wall synchronization status"
+  },
+  {
+    "role": "group",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": ""
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Connected. Avatar artwork is unavailable."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Virtual position is not physical arrival."
+  },
+  {
+    "role": "heading",
+    "name": "WALL"
+  },
+  {
+    "role": "StaticText",
+    "name": "128"
+  },
+  {
+    "role": "StaticText",
+    "name": " × "
+  },
+  {
+    "role": "StaticText",
+    "name": "128"
+  },
+  {
+    "role": "StaticText",
+    "name": " PIXEL WALL"
+  },
+  {
+    "role": "group",
+    "name": "Mural pixel preview"
+  },
+  {
+    "role": "group",
+    "name": "Wall view controls"
+  },
+  {
+    "role": "Legend",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": "Wall palette"
+  },
+  {
+    "role": "StaticText",
+    "name": "16"
+  },
+  {
+    "role": "StaticText",
+    "name": " server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "REV 11 · EDITABLE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "16 COLORS · SCROLL →"
+  },
+  {
+    "role": "StaticText",
+    "name": "Server confirmed the pixel. The server checks every cooldown and permission."
+  },
+  {
+    "role": "StaticText",
+    "name": "Wall synchronized at revision 11."
+  },
+  {
+    "role": "DisclosureTriangle",
+    "name": "Coordinates & help"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "group",
+    "name": "Pixel coordinates · 0–127"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Refresh confirmed wall"
+  },
+  {
+    "role": "button",
+    "name": "Movement joystick. Arrow keys or W A S D when focused"
+  },
+  {
+    "role": "button",
+    "name": "Interact: Virtual fixture landmark"
+  },
+  {
+    "role": "button",
+    "name": "Recenter"
+  },
+  {
+    "role": "DisclosureTriangle",
+    "name": "Controls & help"
+  },
+  {
+    "role": "StaticText",
+    "name": "Movement paused."
+  },
+  {
+    "role": "StaticText",
+    "name": "WALL"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "128"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " × "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "128"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " PIXEL WALL"
+  },
+  {
+    "role": "button",
+    "name": "Pencil preview"
+  },
+  {
+    "role": "button",
+    "name": "Pan wall"
+  },
+  {
+    "role": "status",
+    "name": "Zoom level"
+  },
+  {
+    "role": "button",
+    "name": "Zoom in"
+  },
+  {
+    "role": "button",
+    "name": "Zoom out"
+  },
+  {
+    "role": "button",
+    "name": "Fit wall"
+  },
+  {
+    "role": "StaticText",
+    "name": "Palette · color "
+  },
+  {
+    "role": "StaticText",
+    "name": "0"
+  },
+  {
+    "role": "button",
+    "name": "Color 0 #FAF6ED"
+  },
+  {
+    "role": "button",
+    "name": "Color 1 #201D1D"
+  },
+  {
+    "role": "button",
+    "name": "Color 2 #A22635"
+  },
+  {
+    "role": "button",
+    "name": "Color 3 #605952"
+  },
+  {
+    "role": "button",
+    "name": "Color 4 #E5DFD4"
+  },
+  {
+    "role": "button",
+    "name": "Color 5 #713B70"
+  },
+  {
+    "role": "button",
+    "name": "Color 6 #244C69"
+  },
+  {
+    "role": "button",
+    "name": "Color 7 #42736B"
+  },
+  {
+    "role": "button",
+    "name": "Color 8 #7E8245"
+  },
+  {
+    "role": "button",
+    "name": "Color 9 #BD8E46"
+  },
+  {
+    "role": "button",
+    "name": "Color 10 #CF6845"
+  },
+  {
+    "role": "button",
+    "name": "Color 11 #D4A2AC"
+  },
+  {
+    "role": "button",
+    "name": "Color 12 #938EB0"
+  },
+  {
+    "role": "button",
+    "name": "Color 13 #8EBDD0"
+  },
+  {
+    "role": "button",
+    "name": "Color 14 #ACCB96"
+  },
+  {
+    "role": "button",
+    "name": "Color 15 #FFFFFF"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "16"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": " server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Server confirmed the pixel. The server checks every cooldown and permission."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Wall synchronized at revision 11."
+  },
+  {
+    "role": "StaticText",
+    "name": "Coordinates & help"
+  },
+  {
+    "role": "StaticText",
+    "name": "Pencil previews one pixel; drag to pan. Pan mode never selects. Only Confirm pixel sends a placement."
+  },
+  {
+    "role": "StaticText",
+    "name": "In Pencil mode, arrow keys select a pixel. In Pan mode, arrow keys move the view. Escape cancels. Coordinates work without the canvas."
+  },
+  {
+    "role": "Legend",
+    "name": ""
+  },
+  {
+    "role": "form",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "The server decides cooldown and region permissions. Completed pixels cannot be undone here."
+  },
+  {
+    "role": "StaticText",
+    "name": "Refresh confirmed wall"
+  },
+  {
+    "role": "StaticText",
+    "name": "Interact: Virtual fixture landmark"
+  },
+  {
+    "role": "StaticText",
+    "name": "Recenter"
+  },
+  {
+    "role": "StaticText",
+    "name": "Controls & help"
+  },
+  {
+    "role": "StaticText",
+    "name": "?"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "?"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Movement paused."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "WALL"
+  },
+  {
+    "role": "StaticText",
+    "name": "1"
+  },
+  {
+    "role": "StaticText",
+    "name": "×"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Palette · color "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "0"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Coordinates & help"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Pencil previews one pixel; drag to pan. Pan mode never selects. Only Confirm "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "pixel sends a placement."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "In Pencil mode, arrow keys select a pixel. In Pan mode, arrow keys move the "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "view. Escape cancels. Coordinates work without the canvas."
+  },
+  {
+    "role": "StaticText",
+    "name": "Pixel coordinates · 0–127"
+  },
+  {
+    "role": "LabelText",
+    "name": ""
+  },
+  {
+    "role": "LabelText",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Preview pixel"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "The server decides cooldown and region permissions. Completed pixels "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "cannot be undone here."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Refresh confirmed wall"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Interact: Virtual fixture "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "landmark"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Recenter"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Controls & help"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "?"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "1"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "×"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Pixel coordinates · 0–127"
+  },
+  {
+    "role": "StaticText",
+    "name": "X"
+  },
+  {
+    "role": "spinbutton",
+    "name": "X"
+  },
+  {
+    "role": "StaticText",
+    "name": "Y"
+  },
+  {
+    "role": "spinbutton",
+    "name": "Y"
+  },
+  {
+    "role": "StaticText",
+    "name": "Preview pixel"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "X"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Y"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Preview pixel"
+  },
+  {
+    "role": "StaticText",
+    "name": "12"
+  },
+  {
+    "role": "StaticText",
+    "name": "13"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "12"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "13"
+  }
+]

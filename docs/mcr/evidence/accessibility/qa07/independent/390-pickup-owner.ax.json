@@ -1,0 +1,186 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": "FE26 fixture qualification"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "sectionheader",
+    "name": ""
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Read current reservation"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "Fan badges"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "The server confirmed one-time collection."
+  },
+  {
+    "role": "StaticText",
+    "name": "Read current reservation"
+  },
+  {
+    "role": "heading",
+    "name": "Reservation status"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "heading",
+    "name": "Collection receipt"
+  },
+  {
+    "role": "paragraph",
+    "name": ""
+  },
+  {
+    "role": "StaticText",
+    "name": "GIFTS / YOUR PICKUP"
+  },
+  {
+    "role": "StaticText",
+    "name": "Fan badges"
+  },
+  {
+    "role": "StaticText",
+    "name": "A reservation holds an item. Only a server-confirmed collection completes pickup."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "The server confirmed one-time collection."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Read current reservation"
+  },
+  {
+    "role": "StaticText",
+    "name": "Reservation status"
+  },
+  {
+    "role": "StaticText",
+    "name": "CLAIMED"
+  },
+  {
+    "role": "StaticText",
+    "name": "Expiry: "
+  },
+  {
+    "role": "StaticText",
+    "name": "07 Nov 2026, 18:15 KST"
+  },
+  {
+    "role": "StaticText",
+    "name": "."
+  },
+  {
+    "role": "StaticText",
+    "name": "Collection receipt"
+  },
+  {
+    "role": "StaticText",
+    "name": "Claimed at "
+  },
+  {
+    "role": "StaticText",
+    "name": "07 Nov 2026, 17:05 KST"
+  },
+  {
+    "role": "StaticText",
+    "name": ". The server confirmed one collection."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "GIFTS / YOUR PICKUP"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Fan badges"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "A reservation holds an item. Only a server-"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "confirmed collection completes pickup."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Reservation status"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "CLAIMED"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Expiry: "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "07 Nov 2026, 18:15 KST"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "."
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Collection receipt"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Claimed at "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "07 Nov 2026, 17:05 KST"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": ". The server "
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "confirmed one collection."
+  }
+]

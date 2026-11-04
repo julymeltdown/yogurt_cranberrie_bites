@@ -1,0 +1,8 @@
+- main:
+  - paragraph: Synthetic FE36 qualification only
+  - navigation "Fixture routes":
+    - button "Open report"
+    - button "Blocked users"
+    - button "Account"
+  - button "Block user"
+  - status

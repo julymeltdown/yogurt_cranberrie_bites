@@ -1,0 +1,274 @@
+[
+  {
+    "role": "RootWebArea",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "link",
+    "name": "Skip to content"
+  },
+  {
+    "role": "banner",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "World era"
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "navigation",
+    "name": "Main navigation"
+  },
+  {
+    "role": "StaticText",
+    "name": "Skip to content"
+  },
+  {
+    "role": "link",
+    "name": "MCR Concert World"
+  },
+  {
+    "role": "link",
+    "name": "Inbox"
+  },
+  {
+    "role": "link",
+    "name": "Settings"
+  },
+  {
+    "role": "group",
+    "name": "Choose an era"
+  },
+  {
+    "role": "status",
+    "name": ""
+  },
+  {
+    "role": "region",
+    "name": "World viewport"
+  },
+  {
+    "role": "main",
+    "name": ""
+  },
+  {
+    "role": "link",
+    "name": "WORLD"
+  },
+  {
+    "role": "link",
+    "name": "FEED"
+  },
+  {
+    "role": "link",
+    "name": "MEET"
+  },
+  {
+    "role": "link",
+    "name": "GIFTS"
+  },
+  {
+    "role": "link",
+    "name": "WALL"
+  },
+  {
+    "role": "link",
+    "name": "ME"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Skip to content"
+  },
+  {
+    "role": "strong",
+    "name": ""
+  },
+  {
+    "role": "generic",
+    "name": ""
+  },
+  {
+    "role": "button",
+    "name": "Revenge"
+  },
+  {
+    "role": "button",
+    "name": "Parade"
+  },
+  {
+    "role": "button",
+    "name": "Danger"
+  },
+  {
+    "role": "StaticText",
+    "name": "Parade selected."
+  },
+  {
+    "role": "heading",
+    "name": "World"
+  },
+  {
+    "role": "navigation",
+    "name": "World tools"
+  },
+  {
+    "role": "StaticText",
+    "name": "WORLD"
+  },
+  {
+    "role": "StaticText",
+    "name": "FEED"
+  },
+  {
+    "role": "StaticText",
+    "name": "MEET"
+  },
+  {
+    "role": "StaticText",
+    "name": "GIFTS"
+  },
+  {
+    "role": "StaticText",
+    "name": "WALL"
+  },
+  {
+    "role": "StaticText",
+    "name": "ME"
+  },
+  {
+    "role": "StaticText",
+    "name": "Scene fixture fan"
+  },
+  {
+    "role": "StaticText",
+    "name": "Synthetic contract fixture"
+  },
+  {
+    "role": "StaticText",
+    "name": "REVENGE"
+  },
+  {
+    "role": "StaticText",
+    "name": "PARADE"
+  },
+  {
+    "role": "StaticText",
+    "name": "DANGER"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Parade selected."
+  },
+  {
+    "role": "StaticText",
+    "name": "World"
+  },
+  {
+    "role": "link",
+    "name": "Map"
+  },
+  {
+    "role": "link",
+    "name": "Rooms"
+  },
+  {
+    "role": "link",
+    "name": "Nearby"
+  },
+  {
+    "role": "link",
+    "name": "Help"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "WORLD"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "FEED"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "MEET"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "GIFTS"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "WALL"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "ME"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Scene fixture fan"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Synthetic contract fixture"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "REVENGE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "PARADE"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "DANGER"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "World"
+  },
+  {
+    "role": "StaticText",
+    "name": "Map"
+  },
+  {
+    "role": "StaticText",
+    "name": "Rooms"
+  },
+  {
+    "role": "StaticText",
+    "name": "Nearby"
+  },
+  {
+    "role": "StaticText",
+    "name": "Help"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Map"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Rooms"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Nearby"
+  },
+  {
+    "role": "InlineTextBox",
+    "name": "Help"
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "candidate": "5eb418391012cb2cc435ef3dcb08884b95055720",
+  "status": "PASS",
+  "nativeCases": 36,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "browser": "156.0.8078.80",
+  "nativeAxUnnamedControls": 0,
+  "rootSameGamePeakOneAndOneSocketAllWidths": "PASS",
+  "hashedInputs": 2077,
+  "changedPinnedInputs": [],
+  "commands": [
+    {
+      "command": "node e2e/accessibility/qa07/native.mjs",
+      "exitCode": 0,
+      "evidence": "current/native.json"
+    },
+    {
+      "command": "tsc -p tsconfig.json --incremental --tsBuildInfoFile e2e/accessibility/qa07/.cache/application.tsbuildinfo",
+      "exitCode": 0,
+      "evidence": "application-typecheck.log"
+    },
+    {
+      "command": "tsc -p e2e/accessibility/qa07/tsconfig.json --incremental --tsBuildInfoFile e2e/accessibility/qa07/.cache/qa07.tsbuildinfo",
+      "exitCode": 0,
+      "evidence": "typecheck.log"
+    },
+    {
+      "command": "oxlint --deny-warnings e2e/accessibility/qa07/fixture.tsx e2e/accessibility/qa07/native.mjs",
+      "exitCode": 0,
+      "evidence": "lint.log"
+    },
+    {
+      "command": "vitest run [six exact feature suites listed in README] --cache=false --reporter=dot",
+      "exitCode": 0,
+      "files": 6,
+      "tests": 90,
+      "evidence": "component-tests.log"
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exitCode": 0,
+      "evidence": "plan.log"
+    },
+    {
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exitCode": 0,
+      "evidence": "ui-origin.log"
+    }
+  ],
+  "originalCriteriaDisposition": "SATISFIED_TASK_LOCAL_NATIVE_CLIENT_FIXTURES",
+  "integrationStatus": "MOCK_READY",
+  "liveDeviceAndRealScreenReader": "NOT_RUN"
+}

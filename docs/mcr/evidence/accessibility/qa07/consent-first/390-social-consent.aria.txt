@@ -1,0 +1,14 @@
+- paragraph: QA07 synthetic consent fixture; no live reciprocal consent.
+- region "Sharing request detail":
+  - heading "SHARING REQUEST" [level=1]
+  - paragraph: Sharing lets the other person see your selected account name. It does not follow anyone automatically. Revoking stops future access here; it cannot erase a name someone already saw or copied. Unblocking does not restore previous consent.
+  - status: APPROVED
+  - paragraph:
+    - text: Expires
+    - time: 11/7/2026, 7:00:00 PM
+  - region "Approved platforms":
+    - heading "Approved exchange" [level=2]
+    - paragraph: Approval is metadata, not a displayed account name. Reveal explicitly when needed.
+    - button "Reveal Instagram"
+  - button "Revoke sharing"
+  - paragraph: The server confirmed this change.
