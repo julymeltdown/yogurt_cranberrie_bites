@@ -223,3 +223,13 @@ Original3-case PASS remains bound to its recorded source without replay. Raw log
 and FULL20:12:41.733206Z are retained under `actual-source-01-old-registry`.
 Root also identified the actual settings-read producer join and Gateway28 mount
 as necessary open backend work; frontend cannot manufacture that response.
+
+Canonical148/runtime-adapter intake completed after FULL by normal merge of
+`2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c`. Three add/add conflicts were exact
+previously published4170208b copies of the owned docs/guardian; later owned
+real-driver additions were preserved. Ports now match the canonical file exactly,
+including FE41; no central integration hunk was rewritten. The next source stage
+`actual-remaining` runs only full TypeScript and scoped lint, preserving the new
+three-case PASS without replay. Actual runtime remains NOT_RUN until the shared
+owner supplies the current settings producer, Gateway28, Concert, private
+descriptor and genuine operator fixture.

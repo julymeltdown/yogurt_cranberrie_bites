@@ -146,6 +146,7 @@ def run(prefix,kind,pin,offer,accepted,work_seconds,total_seconds):
         if kind=='source' and os.environ.get('ADMIN_SOURCE_STAGE')=='remaining': cmds=cmds[1:]
         if kind=='source' and os.environ.get('ADMIN_SOURCE_STAGE')=='actual-inputs':
             cmds[0]=[str(NODE),str(DEPS/'vitest/vitest.mjs'),'run','--config',PREFIX+'/actual-inputs.config.ts'];cmds=cmds[:3]
+        if kind=='source' and os.environ.get('ADMIN_SOURCE_STAGE')=='actual-remaining': cmds=cmds[1:3]
         if kind=='actual': cmds=[[str(NODE),str(DEPS/'@playwright/test/cli.js'),'test','--config',PREFIX+'/actual-main.config.ts']]
         for i,cmd in enumerate(cmds):
             with (prefix/f'{i+1}.log').open('wb') as log:
