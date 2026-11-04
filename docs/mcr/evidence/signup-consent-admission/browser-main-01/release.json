@@ -1,0 +1,44 @@
+{
+  "state": "FULL",
+  "actualFullAt": "2026-11-04T19:59:37.371093+00:00",
+  "epoch": 1793822377.3717718,
+  "allocation": "AUTH-JOINT-207-204-20261104T1955Z",
+  "head": "e0f2e41e463845dad855dd970597726cb0188982",
+  "qualification": "FAILED_RETAINED; no whole PASS",
+  "guardianExit": 130,
+  "reason": "Developer SIGINT while guardian awaited repair2 after browser ended, allowing owned cleanup; once-only controls alreadyconsumed",
+  "ownedProcesses": 0,
+  "ownedGuardian": 0,
+  "ownedListeners": 0,
+  "dependencyLinkAbsent": true,
+  "scratchCacheAbsent": true,
+  "exactExternalSingletonRemaining": 0,
+  "priorUnconfirmedExternalCarry": {
+    "bytes": 208,
+    "entries": 4,
+    "untouched": true
+  },
+  "peakNew": {
+    "bytes": 33409319,
+    "rss": 2501033984,
+    "processes": 12
+  },
+  "peakWhole": {
+    "bytes": 3504899426,
+    "entries": 37706
+  },
+  "finalWhole": {
+    "bytes": 3475397651,
+    "entries": 37233,
+    "measuredAt": 165925.0468455,
+    "error": null
+  },
+  "workDeadline": "2026-11-04T20:01:11.197982+00:00",
+  "hardDeadline": "2026-11-04T20:02:11.197982+00:00",
+  "allReserveAmendment": "reservation-amendment.json",
+  "failedLogs": [
+    "01.log",
+    "101.log"
+  ],
+  "passedWholeJourney": false
+}

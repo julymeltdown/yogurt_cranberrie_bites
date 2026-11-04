@@ -3,7 +3,9 @@ import datetime, hashlib, json, os, subprocess, sys
 from pathlib import Path
 root = Path(__file__).resolve().parents[4]
 evidence = root / 'docs/mcr/evidence/signup-consent-admission'
-ready = json.loads((evidence / 'main-browser-ready.json').read_text())
+ready_name = sys.argv[4] if len(sys.argv) > 4 else 'main-browser-ready.json'
+assert ready_name in ['main-browser-ready.json', 'main-browser-next-ready.json']
+ready = json.loads((evidence / ready_name).read_text())
 identifier, expires, other = sys.argv[1], datetime.datetime.fromisoformat(sys.argv[2].replace('Z', '+00:00')), int(sys.argv[3])
 assert identifier.startswith('AUTH-JOINT-207-204-') and expires.tzinfo is not None
 assert other >= 0
@@ -11,9 +13,11 @@ assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True
 for relative, digest in ready['controllerAndSourceSha256'].items():
     assert hashlib.sha256((root / relative).read_bytes()).hexdigest() == digest, relative
 assert not (root / 'frontend/node_modules').exists() and not (root / 'frontend/node_modules').is_symlink()
-assert not Path(ready['newScratchOnly']).exists() and not (evidence / 'browser-main-01').exists()
+output = (root / ready['retainedOutput']).resolve()
+assert output.parent == evidence and output.name.startswith('browser-main-')
+assert not Path(ready['newScratchOnly']).exists() and not output.exists()
 backend = Path(ready['pairedBackendOutput'])
-assert backend == Path('/private/tmp/mcr-enrollment207-pair-4mnomt5v')
+assert backend.resolve().parent == Path('/private/tmp') and backend.name.startswith('mcr-enrollment207-pair-')
 shared = json.loads((backend / 'acceptance.json').read_text())
 assert shared['state'] == 'ACCEPTED'
 shared_work = datetime.datetime.fromtimestamp(shared['work_stop'], datetime.timezone.utc)
@@ -48,5 +52,5 @@ lease = {**ready, 'id': identifier, 'accepted': True, 'acceptedAt': now.isoforma
     'scratch': ready['newScratchOnly'], 'maxRepairRounds': 2, 'measuredFreeBytes': free, 'otherReservationsBytes': other,
     'remainingAfterReservationsBytes': free - other - ready['maxBytes'],
     'measuredWholeBytes': max(size, ready['measuredWholeBytes']), 'measuredWholeEntries': max(entries, ready['measuredWholeEntries'])}
-output = evidence / 'browser-main-01'; output.mkdir(); (output / 'offer.json').write_text(json.dumps(lease, indent=2) + '\n')
+output.mkdir(); (output / 'offer.json').write_text(json.dumps(lease, indent=2) + '\n')
 print(json.dumps({k: lease[k] for k in ['id','head','acceptedAt','workDeadline','hardDeadline','measuredFreeBytes','remainingAfterReservationsBytes','measuredWholeBytes','measuredWholeEntries']}))

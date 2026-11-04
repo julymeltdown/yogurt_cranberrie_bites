@@ -1,0 +1,33 @@
+{
+  "status": "FAILED_RETAINED_REPAIR_SOURCE_NOT_RUN",
+  "allocation": "AUTH-JOINT-207-204-20261104T1955Z",
+  "candidate": "7acfac3aed91f1eb06fa48eee63ce3da1431fadc",
+  "backendSource": "857a69559631db52f1febdb7692888f089a9575c",
+  "backendBinarySha256": "8c0c8f06e290717ac877c6d068d023ee58f2e60434327850180d1171c31a2e55",
+  "firstFailure": "Server-only Tailwind optimizer include;01.log; fixed within original clock before real app/API",
+  "secondFailure": "Socket counter3!=0 after actual bootstrap503/unavailable and zero canvases;101.log; no final acceptance",
+  "retainedSocketUrlProtocolEvidence": "ABSENT; old observer counted only, noURL/protocol/nonce metadata. Cannot reconcile old run to PASS from Vite source or screenshots.",
+  "currentSourceRepair": "Observe actual ChromeCDP socketCreated/handshake events without replacingWebSocket/appstate. Classify VITE_HMR only exactws localhost3000 root path/single token=actualservernonce/protocolvite-hmr. Every unclassified/nonHMR attempted socket fails; no World/no bootstrap bypass. Persist failedrun observations for diagnosis.",
+  "runtimeRepairStatus": "NOT_RUN; needs fresh isolated backendE/control pair and fresh allocation because once controls consumed",
+  "ownerSourceEvidence": {
+    "viteClient": "Installed pinned Vite8.1.3 dist/client/client.mjs:850+ always constructs nonce-bound vite-hmr connection",
+    "reactPlugin": "Installed @vitejs/plugin-react checks config.server.hmr false to skip FastRefresh; this does not remove Vite clienttransport"
+  },
+  "originalSharedWorkDeadline": "2026-11-04T20:01:11.197982Z",
+  "originalSharedFullDeadline": "2026-11-04T20:02:11.197982Z",
+  "clockReset": false,
+  "frontendRelease": "release.json",
+  "backendRelease": "backend-full-release.json",
+  "jointRelease": "joint-full.json",
+  "backendCounts": {
+    "actualMails": 2,
+    "actualAccounts": 1
+  },
+  "notClaimed": [
+    "Overall actualmainPASS",
+    "Retrospective socket classification",
+    "CoherentWorldacceptance",
+    "Approved productionlegal",
+    "Externalmailboxdelivery"
+  ]
+}

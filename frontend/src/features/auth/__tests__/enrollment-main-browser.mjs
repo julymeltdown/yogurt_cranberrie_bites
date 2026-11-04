@@ -49,7 +49,7 @@ const eventId = process.env.MCR_FE10_EVENT_ID
 assert.match(eventId ?? '', /^[a-f0-9-]{36}$/, 'Explicit event only; does not fabricate a concert producer')
 await mkdir(evidence, { recursive: true })
 const suffix = crypto.randomUUID(), email = `fe10-${suffix}@example.invalid`, password = `  Synthetic-${suffix}  `
-const calls = [], decisions = [], wireOutcomes = [], errors = [], results = []
+const calls = [], decisions = [], wireOutcomes = [], socketObservations = [], errors = [], results = []
 let browser, dev, sockets = 0
 const boundedEnd = Date.now() + 150_000
 async function mailFor(attemptId, afterCapture = -1) {
@@ -98,7 +98,26 @@ async function resend(page) {
   return response.json()
 }
 
-function observe(page) {
+async function observe(page) {
+  // Observe transport handshakes without replacing WebSocket or application state.
+  // Vite8's actual dev client still connects with server.hmr:false; only an exact
+  // nonce-bound vite-hmr handshake is development infrastructure. Every other
+  // attempted socket remains unknown and fails the Auth-only World invariant.
+  const cdp = await page.context().newCDPSession(page), byId = new Map()
+  cdp.on('Network.webSocketCreated', ({ requestId, url }) => {
+    const parsed = new URL(url), row = { kind: 'UNKNOWN', origin: parsed.origin, path: parsed.pathname }
+    byId.set(requestId, { parsed, row }); socketObservations.push(row)
+  })
+  cdp.on('Network.webSocketWillSendHandshakeRequest', ({ requestId, request }) => {
+    const observed = byId.get(requestId); if (!observed) return
+    const { parsed, row } = observed
+    const protocol = Object.entries(request.headers).find(([name]) => name.toLowerCase() === 'sec-websocket-protocol')?.[1]
+    const exactDevTransport = parsed.protocol === 'ws:' && parsed.host === 'localhost:3000' && parsed.pathname === '/'
+      && parsed.hash === '' && [...parsed.searchParams.keys()].length === 1
+      && parsed.searchParams.get('token') === dev.config.webSocketToken && protocol === 'vite-hmr'
+    if (exactDevTransport) Object.assign(row, { kind: 'VITE_HMR', protocol: 'vite-hmr', sameServerNonceMatched: true })
+  })
+  await cdp.send('Network.enable')
   page.on('pageerror', error => errors.push(String(error)))
   page.on('websocket', () => { sockets += 1 })
   page.on('request', request => {
@@ -157,7 +176,7 @@ try {
       },
     }],
     define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify(eventId) },
-    optimizeDeps: { include: [...Object.keys(manifest.dependencies), 'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@hookform/resolvers/zod'], noDiscovery: true },
+    optimizeDeps: { include: [...Object.keys(manifest.dependencies).filter(name => name !== '@tailwindcss/vite' && name !== 'tailwindcss'), 'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@hookform/resolvers/zod'], noDiscovery: true },
     server: { host: 'localhost', port: 3000, strictPort: true, hmr: false, watch: null, cors: false,
       fs: { strict: true, allow: [frontendRoot, dependencies, process.env.MCR_FE10_CACHE] },
       proxy: { '/api': { target: ready.gatewayLoopbackOrigin, changeOrigin: false } } } })
@@ -165,7 +184,7 @@ try {
   browser = await chromium.launch({ channel: 'chrome', headless: true,
     args: ['--disable-background-networking', '--disable-component-update'] })
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' }), page = await context.newPage()
-  observe(page); await page.goto('http://localhost:3000/signup')
+  await observe(page); await page.goto('http://localhost:3000/signup')
   await page.getByRole('heading', { name: 'Create account' }).waitFor()
   assert(await page.getByRole('button', { name: 'Create account' }).isDisabled())
   await page.getByRole('button', { name: 'Load current agreements' }).click()
@@ -193,7 +212,7 @@ try {
   assert(binding?.httpOnly); assert.equal(binding.sameSite, 'Strict')
   // A second browser has no bound capability. Its real denial must not verify the account.
   const other = await browser.newContext({ viewport: { width: 360, height: 844 } }), foreign = await other.newPage()
-  await foreign.goto(link.href); await foreign.waitForURL('http://localhost:3000/verify-email')
+  await observe(foreign); await foreign.goto(link.href); await foreign.waitForURL('http://localhost:3000/verify-email')
   await foreign.getByRole('button', { name: 'Verify email', exact: true }).click()
   await foreign.getByText(/This attempt is unavailable in this browser/).waitFor(); await clean(foreign, mail.verificationCode)
   assert.equal(await foreign.getByText('Email verified. Sign in to continue.').count(), 0); await other.close()
@@ -282,7 +301,9 @@ try {
   await page.waitForURL('http://localhost:3000/world')
   await page.getByRole('heading', { name: 'Your event is unavailable', exact: true }).waitFor()
   assert(wireOutcomes.some(r => r.path === `/api/concert/events/${eventId}/bootstrap` && r.status === 503), 'Auth-only fixture must deny real bootstrap')
-  assert.equal(await page.locator('canvas').count(), 0); assert.equal(sockets, 0)
+  assert.equal(await page.locator('canvas').count(), 0)
+  assert.equal(socketObservations.length, sockets, 'Every attempted socket must have a retained classification')
+  assert(socketObservations.every(row => row.kind === 'VITE_HMR'), 'Auth-only run attempted a World or unclassified socket')
   assert.equal(calls.filter(c => c.path === '/api/auth/login').length, 1)
   assert(decisions.some(d => d.status === 200 && d.decision === 'ADMITTED' && d.policyRevision === rotated.policyRevision && d.acceptedRevision === rotated.policyRevision))
   await clean(page, mail.verificationCode); await page.screenshot({ path: path.join(evidence, 'main-authorized-world-continuation-pending-390.png') })
@@ -293,9 +314,22 @@ try {
     frontendRevision, frontendRepo, loaderRevision, loaderSha256, frontendSourceReceipts: source.receipts(),
     frontendOrigin: ready.frontendOrigin, backendOrigin: ready.gatewayOrigin, upstream: ready.gatewayLoopbackOrigin,
     backendBinarySha256: ready.binarySha256, backendSourceRevision: ready.sourceRevision, runtimeMigrationSha256: ready.runtimeMigrationSha256, initialPolicyRevision: ready.policyRevision, policyRevision: rotated.policyRevision,
-    node: process.version, browser: browser.version(), results, calls, wireOutcomes, decisions, errors, sockets,
+    node: process.version, browser: browser.version(), results, calls, wireOutcomes, decisions, errors, sockets, socketObservations,
     worldContinuation: 'OPEN: Auth-only fixture does not contain coherent Concert/Profile/Friend producers; no World/canvas/socket success claimed',
     externalMail: 'NOT_RUN', productionLegalPublication: 'ABSENT_NOT_CLAIMED'
   }, null, 2) + '\n')
   await context.close()
+} catch (error) {
+  const sanitize = value => String(value).replaceAll(password, '[redacted-password]')
+    .replace(/\b[0-9]{6}\b/g, '[redacted-six-digit]')
+    .replace(/\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/g, '[redacted-jwt]')
+  await writeFile(path.join(evidence, 'main-browser-failure-report.json'), JSON.stringify({
+    qualification: 'FAILED_NO_OVERALL_ACCEPTANCE', frontendRevision, loaderRevision, loaderSha256,
+    backendBinarySha256: ready.binarySha256, backendSourceRevision: ready.sourceRevision,
+    results, calls, wireOutcomes, decisions, sockets, socketObservations,
+    errors: errors.map(sanitize), sourceReceipts: source.receipts(),
+    failure: { name: error.name, stack: sanitize(error.stack ?? error.message) },
+    worldContinuation: 'OPEN; no World/canvas/socket success inferred from Auth-only fixture'
+  }, null, 2) + '\n')
+  throw new Error(sanitize(error.stack ?? error.message))
 } finally { await browser?.close(); await dev?.close() }

@@ -1,0 +1,14 @@
+{
+  "kind": "Allocator live reservation amendment; original acceptance and absolute clocks preserved",
+  "epoch": 1793822212.939975,
+  "originalAllReservedBytes": 1543503872,
+  "updatedAllReservedBytes": 1849688064,
+  "updatedOtherReservedBytes": 1681915904,
+  "acceptedFreeBytes": 13124976640,
+  "acceptedFreeMinusUpdatedAllBytes": 11275288576,
+  "freshFreeBytes": 13144834048,
+  "freshFreeMinusUpdatedAllBytes": 11295145984,
+  "includes": "A1GiB +joint416MiB +D68MiB +BE38/Reportprep256MiB",
+  "workDeadline": "2026-11-04T20:01:11.197982+00:00",
+  "hardDeadline": "2026-11-04T20:02:11.197982+00:00"
+}

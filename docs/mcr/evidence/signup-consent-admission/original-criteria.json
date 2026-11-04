@@ -154,5 +154,11 @@
     "scope": "Actual expiry422, predeadline202/no mail, real server countdown/fresh resend/latest captured mail, policy rotation/current explicit consent and fresh admission. BE control source frozen; needs fresh compiled/boot-qualified serving cohort plus paired allocations.",
     "world": "OPEN; no coherent actual World runtime descriptor available",
     "backendControlSource": "e7123c412283ad6d0f95d7404e23922790e628fc"
+  },
+  "actualMainBrowser1955": {
+    "state": "IN_PROGRESS",
+    "qualification": "browser-main-01/qualification.json",
+    "disposition": "Actualcanonical main/Auth/mail/expiry422/server60s/latestverify/renewedconsent/admission/bootstrap503 reached; finalunclassifiedsocket3vs0FAILED, nooverallPASS. Repairsourceauthored; freshfixture/rerunrequired.",
+    "resources": "BothactorsFULL19:59:37.371093Z latest; resource0, nohold"
   }
 }

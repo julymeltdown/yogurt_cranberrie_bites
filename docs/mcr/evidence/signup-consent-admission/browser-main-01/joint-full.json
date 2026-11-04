@@ -1,0 +1,17 @@
+{
+  "allocation": "AUTH-JOINT-207-204-20261104T1955Z",
+  "state": "BOTH_FULL",
+  "observed_epoch": 1793822419.976128,
+  "BE_FULL_epoch": 1793822373.780203,
+  "BE_receipt": "/private/tmp/mcr-enrollment207-pair-4mnomt5v/full-release.json",
+  "BE_sha256": "f93128af5a513aef8b965f0c278668de99a884722551b1a05d228f826a959479",
+  "FE_FULL_epoch_reported": 1793822377.3717718,
+  "FE_receipt": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/docs/mcr/evidence/signup-consent-admission/browser-main-01/release.json",
+  "FE_sha256": "e63a08d84177cc35e14e5570dc9aaaa2de07c6673e8543fa8adf8973175817ce",
+  "FE_owner_report": "all observed PIDs, guardian, listener3000=0; owned scratch/cache/link absent; owned external singletons0",
+  "browser_verdict": "FAILED_FINAL_SOCKET_ASSERTION_3_VS_0_NO_ACCEPTANCE",
+  "successors": {
+    "B": "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
+    "C": "01a1a5d9-332b-7822-a8f7-40c576fad94a"
+  }
+}

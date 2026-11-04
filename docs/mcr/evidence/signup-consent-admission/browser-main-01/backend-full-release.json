@@ -1,0 +1,53 @@
+{
+  "state": "FULL",
+  "allocation": "AUTH-JOINT-207-204-20261104T1955Z",
+  "epoch": 1793822373.780203,
+  "accepted_epoch": 1793822171.1979818,
+  "work_stop": 1793822471.1979818,
+  "full_stop": 1793822531.1979818,
+  "resources": {
+    "workflow": 0,
+    "compiler": 0,
+    "guardians": 0,
+    "children": 0,
+    "postgres": 0,
+    "rpc_http_mail": 0,
+    "copied_binary_readers": 0,
+    "target_access": 0,
+    "new_exe_copies": 0
+  },
+  "owned_root_absent": true,
+  "owned_pid_pgid_remaining": [],
+  "prepared_transactions_before_cleanup": 0,
+  "new_highwater_bytes": 85319680,
+  "whole_peak_bytes": 5054676992,
+  "peak": {
+    "evidence_growth": 94208,
+    "pg_growth": 84303872,
+    "source_growth": 0,
+    "common_git_growth": 921600,
+    "rss_peak": 391528448,
+    "process_peak": 14,
+    "whole_peak": 5054558208
+  },
+  "no_target_access": true,
+  "no_target_reentry": true,
+  "browser_verdict": "NO_ACCEPTANCE_CLAIM_FE_FINAL_SOCKET_ASSERTION_FAILED_3_VS_0",
+  "serving_controller_exit": 0,
+  "serving_test_exit": 0,
+  "actualServingFacts": {
+    "accounts": 1,
+    "bootHttp": {
+      "actualPublishedPolicy": 200,
+      "boundBegin": 201,
+      "missingOriginBegin": 403
+    },
+    "capturedMails": 2,
+    "explicitStop": true,
+    "negativeExpiryControlled": true,
+    "syntheticPolicyRotationControlled": true,
+    "verdict": "NO_BROWSER_ACCEPTANCE_VERDICT"
+  },
+  "FE_FULL_pending": true,
+  "joint_resources_returned": false
+}
