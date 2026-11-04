@@ -4,7 +4,7 @@
 
 ## Original criteria and disposition
 
-The unchanged specification is `MCR_IMPLEMENTATION_PLAN_V2_EN.md`, §7.5, §10 FE17 and §11 QA05. Its exact FE17 implementation criterion includes “Snapshot baseline, interpolation, bounded prediction/reconciliation, epoch reset and visibility-driven reconnect.” The original acceptance also requires gap resync, restart ghost removal and no old pickup/reservation replay. No task or IA count is amended here.
+The unchanged specification is `MCR_IMPLEMENTATION_PLAN_V2_EN.md`, §7.5, §12 FE17 and §13 QA05. Its exact FE17 implementation criterion includes “Snapshot baseline, interpolation, bounded prediction/reconciliation, epoch reset and visibility-driven reconnect.” The original acceptance also requires gap resync, restart ghost removal and no old pickup/reservation replay. No task or IA count is amended here.
 
 | Original behavior | Delivered evidence and remaining boundary |
 | --- | --- |
