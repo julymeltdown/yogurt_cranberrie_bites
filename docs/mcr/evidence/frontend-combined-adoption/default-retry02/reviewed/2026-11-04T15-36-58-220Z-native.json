@@ -1,0 +1,16 @@
+{
+  "run": "2026-11-04T15-36-58-220Z",
+  "result": "FAIL",
+  "qualification": "ACTUAL_MAIN_SYNTHETIC_HTTP_C05_REVIEWED_C06_NOT_LIVE",
+  "widths": [],
+  "screenshots": [
+    "2026-11-04T15-36-58-220Z-reviewed-world-before-360.png",
+    "2026-11-04T15-36-58-220Z-reviewed-all-layer-draft-360.png",
+    "2026-11-04T15-36-58-220Z-reviewed-saved-360.png"
+  ],
+  "errors": [
+    "360/profile-and-world-readback: Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('#panel-title')\nExpected: \"Me\"\nReceived: \"My profile\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.text\" with timeout 5000ms\n  - waiting for locator('#panel-title')\n    14 × locator resolved to <h1 tabindex=\"-1\" id=\"panel-title\">My profile</h1>\n       - unexpected value \"My profile\"\n\n    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)\n    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)\n    at Object.toHaveText (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)\n    at /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs:91:48"
+  ],
+  "server": "http://127.0.0.1:5173",
+  "browser": "156.0.8078.80"
+}

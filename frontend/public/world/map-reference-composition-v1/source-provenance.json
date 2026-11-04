@@ -3,8 +3,8 @@
   "status": "SOURCE_VALIDATED_NATIVE_NOT_RUN",
   "version": "map4-reference-composition-v1",
   "sourceBaseCommit": "6bb850755f1b6540a8d013f84106c673c5567069",
-  "previousSourceCandidate": "1f2f9ff6bac13467d76c430ff67a26e51b421727",
-  "recipeRevision": "reference-correction-03",
+  "previousSourceCandidate": "94c47a8b3219efc76a4be9646014cfeaad2f1957",
+  "recipeRevision": "reference-correction-04",
   "sourceInputs": [
     {
       "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
@@ -75,9 +75,9 @@
         "x": 6,
         "y": 286,
         "width": 244,
-        "height": 148
+        "height": 195
       },
-      "canopyRgbaSha256": "sha256:1de81a17176095cae94137f7e7d7bcfae57c61b8326304c86a55d1ea230c673b"
+      "canopyRgbaSha256": "sha256:78c68a28eb7cd3ffea9c17e0d2db6265a7e2850c96095e34444b09702e0e8aa3"
     },
     {
       "themeId": "REVENGE",
@@ -127,9 +127,9 @@
         "x": 518,
         "y": 288,
         "width": 244,
-        "height": 145
+        "height": 191
       },
-      "canopyRgbaSha256": "sha256:1e1ad45e39bbc28ab6661a7aa5595872b8d0ce5c30866432a9d66b108d92f857"
+      "canopyRgbaSha256": "sha256:2971696fb213b79c7df05692bf0554d63d4dab5fc7a502c39557f80a776b1646"
     },
     {
       "themeId": "REVENGE",
@@ -310,9 +310,9 @@
         "x": 6,
         "y": 286,
         "width": 244,
-        "height": 148
+        "height": 195
       },
-      "canopyRgbaSha256": "sha256:c87b1c8218660802ff18a1b662a3fdbbe9599e1748aa12390c498de468905d98"
+      "canopyRgbaSha256": "sha256:9bc375fa477dd46931540d59845594f12ea29aa3609fc748575c67135aa01c6a"
     },
     {
       "themeId": "PARADE",
@@ -362,9 +362,9 @@
         "x": 518,
         "y": 288,
         "width": 244,
-        "height": 145
+        "height": 191
       },
-      "canopyRgbaSha256": "sha256:5f3b48650758b05da906d0f98ee47b53484eb4020e2db90436dfd17759b29a57"
+      "canopyRgbaSha256": "sha256:d62f3ad173e536b54d38ba46d54b92c59d375ccc63f4988209e283df9c5f5b37"
     },
     {
       "themeId": "PARADE",
@@ -545,9 +545,9 @@
         "x": 6,
         "y": 286,
         "width": 244,
-        "height": 148
+        "height": 195
       },
-      "canopyRgbaSha256": "sha256:b2b4e590e08d749bc021607706563584ab13dda279263787609f85581ba31926"
+      "canopyRgbaSha256": "sha256:a3a614254da351c14c8f88bc8ee579fc27cb1156eafe74e118b8ed4e8fcd2d72"
     },
     {
       "themeId": "DANGER",
@@ -597,9 +597,9 @@
         "x": 518,
         "y": 288,
         "width": 244,
-        "height": 145
+        "height": 191
       },
-      "canopyRgbaSha256": "sha256:33d953a9e6ee73562742af04f46149608b035f65e2be346a097ca819de2b77e3"
+      "canopyRgbaSha256": "sha256:1dcb013eb4419cec72bd857764415872c0ff3b6642c08f82d0d015ec573e907e"
     },
     {
       "themeId": "DANGER",
@@ -762,48 +762,48 @@
   "outputs": [
     {
       "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.png",
-      "bytes": 677852,
-      "sha256": "sha256:b503fde72ebd8c46181609cd1256809bd58eaf34b24f8811781246abbef675bc"
+      "bytes": 713028,
+      "sha256": "sha256:ad378c9b889d1a7f33c49ed3cceabef140cda3cbe5d64e46d5a2139516d0a148"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/revenge-scene.svg",
-      "bytes": 1834992,
-      "sha256": "sha256:6deee6f006ba023d1e9bf28a284e4a7d3a63fec0948ec1847bd21bfa252c2e66"
+      "bytes": 1827514,
+      "sha256": "sha256:747c73424bf28099fd4f08a1b5aeae90b11df926464478be3e053ed02a0b3211"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/parade-scene.png",
-      "bytes": 697466,
-      "sha256": "sha256:0a25503095d2ed62960e5ff23731a35d87159301e9a3993a12ead671c057ac06"
+      "bytes": 731192,
+      "sha256": "sha256:dbcc63274381f1ffe6128cc6b9caaedb2e406618f8464f218f554ec6294edabc"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/parade-scene.svg",
-      "bytes": 1867440,
-      "sha256": "sha256:dc7447be761db0719746f2aa2afedaff85ead22955c99f70a526a53d71b70117"
+      "bytes": 1859962,
+      "sha256": "sha256:0c6bc6256506b000dc6669940c482d5d8b057b95957e21732f8451209566b0eb"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/danger-scene.png",
-      "bytes": 686555,
-      "sha256": "sha256:8cc354d6666e48d183173bc73ed5c459286bdc8e28a11cce3bc2bdb0f852fbd1"
+      "bytes": 720445,
+      "sha256": "sha256:a2dcf7f7346f01702b7dc033e4c85f2441165678a794b9563087f04bf07908e3"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/danger-scene.svg",
-      "bytes": 1837204,
-      "sha256": "sha256:431a705f83865ddd25b33df4ee4940d055c8a29d8204edbd216c0ea09aec0b8b"
+      "bytes": 1829726,
+      "sha256": "sha256:e743bef95981fc5a434c80bf36fc839c67b0bfcf6b2a2b54d657339c9de7c6f6"
     },
     {
       "path": "frontend/public/world/map-reference-composition-v1/layout.json",
-      "bytes": 101203,
-      "sha256": "sha256:3dd7c80f6612c83da97aaae4733d236acbfc8057c18d65b6f8c9d0f40dad6792"
+      "bytes": 108021,
+      "sha256": "sha256:2c14cc0145e19054ce4c65c8edef574e6156cf3eab7a14dff224b6c008c37f8d"
     }
   ],
   "recipe": {
     "path": "frontend/public/world/map-reference-composition-v1/build.py",
-    "bytes": 31720,
-    "sha256": "sha256:a58fb7a47e8c9f9f7692041f998961b1e9bb1cd3e4c9abeafa5d0eb61b1f46b4"
+    "bytes": 29706,
+    "sha256": "sha256:51abee3bfcb78d34eb9d3e3934d225c23b9963a45905355d719814145d0e0d19"
   },
   "referenceUse": "DIRECT_VISUAL_INSPECTION_ONLY_NO_REFERENCE_PIXELS_SAMPLED",
   "authorship": "New editable paths/gardens/placement geometry; retained original built-in generated warm atlas crops. No new generation, stock, character or font input.",
-  "transform": "Whole and upper76percent canopy crops retain uniform nearest fit, centered X/bottom Y. Venue bottom46percent source crops retain width and receive explicit 0.80 vertical nearest projection, bottom-aligned; original RGBA unchanged before sampling.",
+  "transform": "Whole frames including complete foliage silhouettes retain uniform nearest fit, centered X/bottom Y. Venue bottom46percent source crops retain width and receive explicit 0.80 vertical nearest projection, bottom-aligned; original RGBA unchanged before sampling.",
   "venueProjection": {
     "sourceStartFraction": 0.54,
     "facadeHeightScale": 0.8,
@@ -1229,9 +1229,9 @@
       ]
     ],
     "paintedGroundPixelsByTheme": {
-      "REVENGE": 232892,
-      "PARADE": 232892,
-      "DANGER": 232892
+      "REVENGE": 0,
+      "PARADE": 0,
+      "DANGER": 0
     },
     "pathClearancePx": 60,
     "gardenEdgeClearancePx": 30,
@@ -1241,14 +1241,16 @@
       28
     ],
     "gardenBorderPx": 22,
-    "canopySourceEndFraction": 0.76,
-    "canopyPlacements": 123,
+    "canopySourceEndFraction": 1.0,
+    "canopyPlacements": 145,
     "excludes": [
       "six exact label rectangles",
       "declared path corridors",
       "declared garden edges"
     ],
-    "coverageMeaning": "Continuous substrate-mask painted pixels before original canopy/scenery occlusion, not vegetation coverage or reference/runtime similarity"
+    "substratePolicy": "NONE_KEEP_EXISTING_TEXTURED_GROUND",
+    "placementSampler": "DETERMINISTIC_AREA_SPIRAL_NO_ROW_GRID",
+    "coverageMeaning": "Zero new substrate pixels: parcels are invisible placement domains, not vegetation coverage or reference/runtime similarity"
   },
   "surfacePaletteByTheme": {
     "REVENGE": {
@@ -1293,11 +1295,6 @@
       "roofLight": "#d5e0c9",
       "roofDark": "#7a968b"
     }
-  },
-  "plantPaletteByTheme": {
-    "REVENGE": "#a4b692",
-    "PARADE": "#9fb68a",
-    "DANGER": "#a2bba8"
   },
   "svgPolicy": "Editable SVG embeds the exact era atlas; Pillow PNG is raster authority. SVG engine parity NOT_RUN.",
   "checks": {

@@ -1,0 +1,11 @@
+{
+  "slot": "ROOT-FE-COMBINED-NATIVE-202611041530Z",
+  "originalDeadline": "2026-11-04T15:41:40.891463+00:00",
+  "retainedFailedRound": "default-round01",
+  "retainedNewBytes": 7649509,
+  "retryCarryBytes": 171032967,
+  "typesChanged": false,
+  "resume": "fe41-native + not-yet-run reviewed-native ONLY",
+  "reason": "Embedded ConcertWindow internal title is intentionally hidden under the visible outer panel heading; assert actual visible error region/status and absence of separate World-connection overlay.",
+  "recorded": "2026-11-04T15:34:33.610470+00:00"
+}

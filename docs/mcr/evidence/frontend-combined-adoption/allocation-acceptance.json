@@ -1,0 +1,29 @@
+{
+  "slot": "ROOT-FE-COMBINED-NATIVE-202611041530Z",
+  "pin": "002c123a306c7853f52161f33b423e875c21ad2c",
+  "accepted": "2026-11-04T15:31:40.891463+00:00",
+  "workDeadline": "2026-11-04T15:40:40.891463+00:00",
+  "deadline": "2026-11-04T15:41:40.891463+00:00",
+  "carryBytes": 163383458,
+  "carryFiles": 1110,
+  "actualRetainedBytes": 146606992,
+  "remainingOfferedCarryReserve": 16776466,
+  "preflightCarryCorrection": [
+    {
+      "path": "docs/mcr/evidence/frontend-combined-adoption/ready.md",
+      "oldBytes": 2588,
+      "newBytes": 3338,
+      "sha256": "fa58e883ed2bdb17add4b11e71e8aad88b0415bc5f856093de7c918a3c69592a",
+      "reason": "002c pre-OFFER purpose-only correction; 750B absorbed by already-offered carry reserve"
+    }
+  ],
+  "freshFree": 26526445568,
+  "pins": {
+    "docs/mcr/evidence/frontend-combined-adoption/supervisor.py": "bd6e92caf1fe66a18da0befe7863c25973945be50a910ecf979605c87f0536c2",
+    "docs/mcr/evidence/frontend-combined-adoption/carry.json": "deaacdb8b916ce84c15161dff74eb88d4409b7dc491a99ef1aeb0791e911b94f",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/native.mjs": "bc5c4669958be5ba0fc64ea2c57ddf2a4da8899a3017b3582d6d2339d3c2ea33",
+    "frontend/src/app/errors/__tests__/default-entry/native.mjs": "ced0ee498bd157dd2c7433b0e2ec90d4b0361a32ff5cf8662be401ff1d350dc1",
+    "frontend/src/app/character-entry/__tests__/reviewed-production/default-entry/native.mjs": "d3e8673d69f02ff2350010fe5474616628f8d82f1ff96964899c33554337e415"
+  },
+  "output": "docs/mcr/evidence/frontend-combined-adoption/default-round01"
+}

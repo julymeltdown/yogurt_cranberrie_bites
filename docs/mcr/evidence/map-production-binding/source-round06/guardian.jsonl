@@ -1,0 +1,19 @@
+{"lease": "FE19-ART04-SOURCE06-A-202611041455Z", "guardianPid": 40638, "startedAt": "2026-11-04T14:57:09.991915+00:00", "activeDeadline": "2026-11-04T15:01:34+00:00", "hardDeadline": "2026-11-04T15:02:34+00:00"}
+{"startedAt": "2026-11-04T14:57:09.994252+00:00", "argv": ["python3", "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/map-production-binding/source-round06/supervisor.py", "registration"], "pid": 40716}
+{"observedDescendants": {"40716": [40638, 40716, 5216, "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"]}}
+{"finishedAt": "2026-11-04T14:57:10.355252+00:00", "pid": 40716, "exitCode": 0}
+{"startedAt": "2026-11-04T14:57:10.357943+00:00", "argv": ["git", "add", "--", "frontend/src/world/reference-scene/map4-service-v2/registration.ts", "frontend/src/world/reference-scene/map4-service-v2/current.ts"], "pid": 40801}
+{"observedDescendants": {"40801": [40638, 40801, 4544, "(git)"]}}
+{"finishedAt": "2026-11-04T14:57:10.723015+00:00", "pid": 40801, "exitCode": 0}
+{"startedAt": "2026-11-04T14:57:10.731808+00:00", "argv": ["git", "commit", "-m", "feat(map): register compact measured v2 label paint"], "pid": 40803}
+{"observedDescendants": {"40803": [40638, 40803, 4464, "(git)"]}}
+{"finishedAt": "2026-11-04T14:57:11.108756+00:00", "pid": 40803, "exitCode": 0}
+{"startedAt": "2026-11-04T14:57:11.111159+00:00", "argv": ["python3", "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/docs/mcr/evidence/map-production-binding/source-round06/supervisor.py", "tests", "types", "fulltypes", "lint", "registration-check"], "pid": 40809}
+{"observedDescendants": {"40809": [40638, 40809, 5120, "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"]}}
+{"observedDescendants": {"40811": [40809, 40811, 153008, "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"]}}
+{"observedDescendants": {"41292": [40809, 41292, 231472, "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"]}}
+{"observedDescendants": {"41310": [40809, 41310, 134400, "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"]}}
+{"observedDescendants": {"41421": [40809, 41421, 0, "<defunct>"]}}
+{"observedDescendants": {"41548": [40809, 41548, 99504, "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"], "41604": [41548, 41548, 0, "(git)"]}}
+{"finishedAt": "2026-11-04T14:57:28.386544+00:00", "pid": 40809, "exitCode": 0}
+{"guardianFinishedAt": "2026-11-04T14:57:28.387818+00:00", "allObservedDescendants": [40716, 40801, 40803, 40809, 40811, 41292, 41310, 41421, 41548, 41604], "peak": {"processes": 4, "rssBytes": 1401143296, "additionalBytes": 2037021}}

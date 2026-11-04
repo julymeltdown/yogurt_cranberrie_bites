@@ -1,0 +1,11 @@
+{
+  "slot": "ROOT-FE-COMBINED-NATIVE-202611041530Z",
+  "originalDeadline": "2026-11-04T15:41:40.891463+00:00",
+  "retainedFailedRound": "default-retry02",
+  "retainedNewBytes": 307558,
+  "retryCarryBytes": 173880225,
+  "typesChanged": false,
+  "resume": "reviewed-native ONLY",
+  "reason": "Actual Me parent title is My profile, not the bottom navigation label Me; preserve native observation and correct exact harness heading.",
+  "recorded": "2026-11-04T15:38:10.384180+00:00"
+}

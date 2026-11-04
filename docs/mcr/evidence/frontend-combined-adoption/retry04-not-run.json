@@ -1,0 +1,7 @@
+{
+  "status": "NOT_RUN",
+  "reason": "retry04 start rejected before child/output/link/TMP creation by existing supervisor minimum120s-before-hard guard; no bypass/extension",
+  "pin": "7b97f922a141a2299c3b44f9935324a826acb2a3",
+  "originalDeadline": "2026-11-04T15:41:40.891463+00:00",
+  "recorded": "2026-11-04T15:40:27.000645+00:00"
+}

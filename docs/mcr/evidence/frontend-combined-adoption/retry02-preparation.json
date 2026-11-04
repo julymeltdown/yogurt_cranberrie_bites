@@ -1,0 +1,11 @@
+{
+  "slot": "ROOT-FE-COMBINED-NATIVE-202611041530Z",
+  "originalDeadline": "2026-11-04T15:41:40.891463+00:00",
+  "retainedFailedRound": "default-retry01",
+  "retainedNewBytes": 2539700,
+  "retryCarryBytes": 173572667,
+  "typesChanged": false,
+  "resume": "reviewed-native ONLY",
+  "reason": "Real mobile full panels intentionally hide Main navigation; use genuine Back to previous panel for Avatar to Me and Me to World rather than hidden bottom links.",
+  "recorded": "2026-11-04T15:36:57.100810+00:00"
+}

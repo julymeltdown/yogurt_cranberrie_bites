@@ -1,0 +1,64 @@
+12:33:05 AM [vite] (client) [console.warn] You are trying to use a blocker on a POP navigation to a location that was not created by @remix-run/router. This will fail silently in production. This can happen if you are navigating outside the router via `window.history.pushState`/`window.location.hash` instead of using router navigation APIs.  This can also happen if you are using createHashRouter and the user manually changes the URL.
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toBeVisible() failed
+
+Locator:  getByRole('heading', { name: 'Page not found' })
+Expected: visible
+Received: hidden
+Timeout:  5000ms
+
+Call log:
+  - Expect "to.be.visible" with timeout 5000ms
+  - waiting for getByRole('heading', { name: 'Page not found' })
+    14 × locator resolved to <h1 id="_r_8_">Page not found</h1>
+       - unexpected value "hidden"
+
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/src/app/errors/__tests__/default-entry/native.mjs:90:73 {
+  matcherResult: {
+    message: 'expect(locator).toBeVisible() failed\n' +
+      '\n' +
+      "Locator:  getByRole('heading', { name: 'Page not found' })\n" +
+      'Expected: visible\n' +
+      'Received: hidden\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "to.be.visible" with timeout 5000ms\n' +
+      "  - waiting for getByRole('heading', { name: 'Page not found' })\n" +
+      '    14 × locator resolved to <h1 id="_r_8_">Page not found</h1>\n' +
+      '       - unexpected value "hidden"\n',
+    pass: false,
+    actual: 'hidden',
+    name: 'toBeVisible',
+    expected: 'visible',
+    log: [
+      '  - Expect "to.be.visible" with timeout 5000ms',
+      "  - waiting for getByRole('heading', { name: 'Page not found' })",
+      '    14 × locator resolved to <h1 id="_r_8_">Page not found</h1>',
+      '       - unexpected value "hidden"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- link "Skip to content":\n' +
+      '  - /url: "#shell-content"\n' +
+      '- main "Unavailable":\n' +
+      '  - heading "Unavailable" [level=1]\n' +
+      '  - button "Reduce panel" [expanded]\n' +
+      '  - button "Minimize panel" [expanded]\n' +
+      '  - button "Back to previous panel"\n' +
+      '  - region "Page not found":\n' +
+      '    - heading "Page not found" [level=1]\n' +
+      '    - status: This page is unavailable or no longer exists.\n' +
+      '    - link "Back to world":\n' +
+      '      - /url: /world\n' +
+      '    - link "Back to home":\n' +
+      '      - /url: /'
+  }
+}
+
+Node.js v24.22.2
