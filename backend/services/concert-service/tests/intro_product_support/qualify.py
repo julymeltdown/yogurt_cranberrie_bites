@@ -86,6 +86,7 @@ def qualify(checkpoint: dict, pg: Path, report: dict) -> None:
         report["postgres_version"] = cluster.sql("postgres", "show server_version;")
         env = {**cluster.env,
                "CONCERT_SERVICE_CREDENTIAL": "concert-fixture",
+               "RUST_MIN_STACK": "16777216", # unoptimized in-process four-service fixture
                "MCR_CANONICAL_ROOT": str(cluster.root),
                "MCR_CANONICAL_ROOT_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}",
                "MCR_CANONICAL_ROOT_TOKEN": cluster.token,
