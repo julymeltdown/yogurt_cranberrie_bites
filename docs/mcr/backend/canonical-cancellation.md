@@ -1,6 +1,6 @@
 # CR08 canonical producer cancellation
 
-Status: IN_PROGRESS. Source and nine owned-PG regression cases are authored. Compilation, native qualification, Participant integration, serving, and master delivery are NOT_RUN until their exact receipts are recorded. This document does not upgrade the earlier e692 live incident or any old test receipt.
+Status: INTEGRATED for the static source handoff. Exact core validation: PASS on the source below. All nine actual core PG16/mTLS cases passed. Participant HTTP, coherent production main, serving, and master delivery remain separate pending acceptance. This document does not upgrade the earlier e692 live incident or any old test receipt.
 
 ## Observed trigger and source ownership
 
@@ -60,5 +60,27 @@ Participant209 separately owns interrupted actual public HTTP, fresh real Auth l
 
 - Rustfmt and Python AST checks: PASS (exit 0), source authoring only.
 - Source review: two concrete findings corrected before qualification: abandoned/unsettled capacity accounting and expired-ready-work dispatch/handoff races.
-- Compile/native checks: NOT_RUN on this source revision.
-- Committed handoff, integration ancestry, and master delivery: pending.
+- Compile/native checks: PASS on exact source `2e721109c2d30d8413e5be0c36ca64391ad05db3`, as recorded below.
+- Committed source handoff: `2e721109c2d30d8413e5be0c36ca64391ad05db3`; Root static integration `e589f10e491e66bca831f59dd971dc42e0ef2667`. Eight postimages are exact; scope/lifecycle merges differ only by the separately owned Notification subject check and producer arm. Master delivery is not verified.
+
+
+## Fresh core qualification receipt
+
+The actual named MEDIA allocation produced one copied `owner_authority_cancellation` executable from clean source `2e721109c2d30d8413e5be0c36ca64391ad05db3`, with 1,481 source hashes. Successful exact locked/offline Rust 1.88 command above exited 0 in 29.49 seconds, with jobs 2, debug 0 and incremental 0. The binary is 33,301,888 bytes, SHA-256 `e19e8c6b50fc8f292700b7c50958cd7360e3b50a703d753202cbaed2e7b2df86`.
+
+The first compile attempt exited 101 because the borrowed target treated old `concert_application` metadata as fresh even though the current source exports the missing modules. Its failed receipt/logs are preserved as `first-stale-app-*`. A package-specific mtime refresh of the current application library plus the existing contract build inputs forced the correct rebuild. No source bytes, dependency resolutions, or source revision changed, and no broad cleanup was used.
+
+Cargo JSON, copied executable, full source checkpoint, build receipt and target release receipt are frozen outside the target in the private `mcr-cancellation-build-cq_8da0u` evidence directory. A fresh zero-handle check and explicit target release occurred before PG startup. Build monitoring enforced a 0.7 GiB growth bound and actual 8 GiB free floor; copied runtime monitored the whole 1.4 GiB workflow bound. No resource abort occurred.
+
+All nine inventory cases ran individually with exit 0 and exact one-test success, each in a new owned socket-only PG16 cluster with actual Auth/Friend/Concert databases and workload mTLS. Migration receipts verified Auth 17, Friend 17, and Concert 33 migrations including additive 0048. Each private native receipt carries the original source and executable hashes; `qualification.json` and `native-summary.json` index their digests.
+
+The four positive cases (returned producer error, actual caller cancellation, drained late callback, already expired original deadline) ended with actual prepared counts Auth 0 / Friend 0 / Concert 0. The five negative cases (unfinished callback past expiry, live registered native transaction, successful handoff followed by dropped body token, destructor panic, unpublished but unsettled cancellation capacity) retained exactly Auth 1 / Friend 1 / Concert 0 before owned teardown. No negative case receives normal-native-settlement credit. Every fixture cleanup passed with its exact owned root absent. Cluster teardown is not a settlement receipt.
+
+Key receipt SHA-256 values:
+
+- Build: `56a6fd66ad80dcdcd79a6593b55443676e7a4c9f78807b161214cc1cd41565e2`.
+- Full checkpoint: `efdf8385409dc6225b2cd3a2111e91ee2da07aff8246a812adfd8254268b6ff6`.
+- Target release: `7f36b6300710916f9fa31a1155e63e148cdf33818a82575aec7907c28f3af89e`.
+- Nine-case summary: `4ca70ea2dcf27c9e404d788db3fff829c4d049171e0123601a34bd5f16599427`.
+
+This documentation successor records validation of the original source commit; it does not relabel a new source HEAD as having been built. The qualifier still requires the exact original checkpoint. Participant209's actual public HTTP/reset/fresh-login/unknown-native evidence, Root's coherent serving build, physical restart qualification, and master delivery remain separate obligations.
