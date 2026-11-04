@@ -8,6 +8,7 @@ import type { ActiveScope } from '../ports'
 import { createMuralClosureEntry, type MuralClosureEntry } from '../admin-entry/mural-closure'
 import { createOperationsEntry, type OperationsAccessContext, type OperationsEntryOptions } from '../operations-entry'
 import { sameOperationsScope, validOperationsScope } from '../operations-entry/contract'
+import { createReportsEntry, type ReportsEntry } from './reports'
 
 // Actual report/evidence/moderation producers remain owned by Operations205.
 // A role response does not supply their data or a reviewed place write release.
@@ -18,6 +19,7 @@ export interface AdminCompositionState {
   readonly settings: Settings | null
   readonly operations: OperationsController | null
   readonly muralClosure: MuralClosureEntry | null
+  readonly reports: ReportsEntry | null
 }
 interface Bundle {
   readonly decision: OperationsAccessContext
@@ -27,23 +29,27 @@ interface Bundle {
   readonly stop: () => void
   readonly withdraw: () => void
 }
-const empty = (phase: AdminCompositionState['phase']): AdminCompositionState => Object.freeze({ phase, decision: null, settings: null, operations: null, muralClosure: null })
+const empty = (phase: AdminCompositionState['phase']): AdminCompositionState => Object.freeze({ phase, decision: null, settings: null, operations: null, muralClosure: null, reports: null })
 
 /** One full-scope lifetime above Admin panels; no independent Auth/cache/socket. */
 export function createAdminComposition(auth: SessionController, scope: PrivacyScope,
   options: Pick<OperationsEntryOptions, 'timeline'> = {}) {
   const expected = Object.freeze({ ...scope }), lifetime = new AbortController(), listeners = new Set<() => void>()
   let state = empty('idle'), disposed = false, started = false, bundle: Bundle | null = null
+  let reports: ReportsEntry | null = null
   let version = 0, join: AbortController | null = null, joining: Promise<void> = Promise.resolve(), stopAccess = () => {}, stopPrivacy = () => {}
   const access = createOperationsEntry({ auth, signal: lifetime.signal, ...options })
   const notify = () => { for (const fn of Array.from(listeners)) { try { fn() } catch { /* Independent borrowers. */ } } }
   const current = () => !disposed && validOperationsScope(expected) && auth.privacy.isCurrent(expected) && auth.session.isCurrent(expected)
-  function clear(phase: AdminCompositionState['phase']) {
+  function clear(phase: AdminCompositionState['phase'], retainReports = false) {
     ++version
     const previous = bundle, pending = join
-    bundle = null; join = null; state = empty(phase)
+    const previousReports = reports
+    reports = retainReports && previousReports?.isCurrent() ? previousReports : null
+    bundle = null; join = null; state = Object.freeze({ ...empty(phase), reports, decision: reports?.decision ?? null })
     // Publish null before abort, child cleanup or any reentrant consumer callback.
     notify(); pending?.abort()
+    if (previousReports !== reports) previousReports?.dispose()
     if (previous) { previous.withdraw(); previous.stop(); previous.muralClosure.dispose(); previous.operations.dispose() }
   }
   function dispose() {
@@ -95,9 +101,9 @@ export function createAdminComposition(auth: SessionController, scope: PrivacySc
       bundle = { decision, context, operations, muralClosure, stop, withdraw() { contextValue = null; contextChanged(); contextListeners.clear() } }
       partialOperations = null; partialMural = null
       join = null
-      state = Object.freeze({ phase: 'ready', decision, settings, operations, muralClosure }); notify()
+      state = Object.freeze({ phase: 'ready', decision, settings, operations, muralClosure, reports }); notify()
     } catch {
-      if (attempt === version && current()) clear('unavailable')
+      if (attempt === version && current()) clear('unavailable', true)
     } finally {
       partialMural?.dispose(); partialOperations?.dispose()
     }
@@ -106,8 +112,12 @@ export function createAdminComposition(auth: SessionController, scope: PrivacySc
     if (disposed) return
     const decision = access.read()
     clear(decision ? 'checking' : 'unavailable')
+    if (decision && sameOperationsScope(decision.scope, expected)) {
+      reports = createReportsEntry({ auth, scope: expected, decision, access, signal: lifetime.signal })
+      state = Object.freeze({ ...state, decision, reports: reports.isCurrent() ? reports : null }); notify()
+    }
     if (decision?.role === 'OPERATOR' && sameOperationsScope(decision.scope, expected)) joining = qualify(decision)
-    else if (decision) { state = Object.freeze({ ...empty('unavailable'), decision }); notify() }
+    else if (decision) { state = Object.freeze({ ...empty('unavailable'), decision, reports }); notify() }
   }
   stopAccess = access.subscribe(changed)
   stopPrivacy = auth.privacy.registerCleanup(dispose)
@@ -115,12 +125,13 @@ export function createAdminComposition(auth: SessionController, scope: PrivacySc
   async function refresh() {
     if (!current()) { dispose(); return }
     clear('checking'); await access.refresh(); await joining
-    if (!disposed && state.phase === 'checking') clear('unavailable')
+    if (!disposed && state.phase === 'checking') clear('unavailable', true)
   }
   return Object.freeze({ scope: expected,
     read() {
       if (!current()) dispose()
       else if (bundle && !bound(bundle.decision)) clear('unavailable')
+      else if (reports && !reports.isCurrent()) clear('unavailable')
       return state
     },
     subscribe(fn: () => void) { if (disposed) return () => {}; listeners.add(fn); return () => { listeners.delete(fn) } },
@@ -145,7 +156,8 @@ export function createDefaultAdmin(auth: SessionController, options: Pick<Operat
     async authorize(scope: ActiveScope, signal: AbortSignal) {
       if (signal.aborted) return false
       const entry = open(scope); await entry?.start()
-      return !signal.aborted && auth.session.isCurrent(scope) && entry?.read().phase === 'ready'
+      const state = entry?.read()
+      return !signal.aborted && auth.session.isCurrent(scope) && (state?.phase === 'ready' || state?.reports?.isCurrent() === true)
     },
     dispose() { if (disposed) return; disposed = true; const previous = owner; owner = null; previous?.dispose() },
   })

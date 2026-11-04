@@ -1,0 +1,147 @@
+{
+  "allocation": "FE37-NINE-CONTEXT-NATIVE-20261104T2342Z",
+  "class": "native",
+  "candidate": "4f4a6de3829675ec1e3f674fd4d7f7f897cfcb67",
+  "acceptedUtc": "2026-11-04T23:39:39.545971+00:00",
+  "acceptedFreeBytes": 14839341056,
+  "otherReserveBytes": 3221225472,
+  "workUtc": "2026-11-04T23:42:39.545971+00:00",
+  "hardUtc": "2026-11-04T23:43:39.545971+00:00",
+  "sourceSha256": {
+    "frontend/src/app/operations-composition/reports/evidence.ts": "e6fea429c2a3f3c98622943a6a9458a2407daa037c995aed4b3c02e536c72b63",
+    "frontend/src/app/operations-composition/reports/index.ts": "b449d7fee64b9274e2373ca549576202e5c38cf5d876018ecc1f44f59b437a46",
+    "frontend/src/app/operations-composition/__tests__/reports-production/composition.test.tsx": "679810ba1978967f3c3a56cb143adc0c63b4ad023e7234b657e3a1e1c2175653",
+    "frontend/src/app/operations-composition/__tests__/reports-production/native.mjs": "f7a29dea977421ee4924ee9895bfdec35d0074a9be97f61d0a0854b1717bcdeb",
+    "frontend/src/app/operations-composition/__tests__/reports-production/runner.ts": "652fa59634e54332d0b676890eb4477463ea9ae79b823af036bf43e66b484eca",
+    "frontend/src/app/operations-composition/__tests__/reports-production/harness.ts": "e9b444dc0629b359bb64730899d2ce03187346f82afa4465a2ac89229516c587",
+    "frontend/src/app/operations-composition/__tests__/reports-production/server.ts": "7a7ae2a1396e51b3fba9cdd4400cbc494912245dfe1e85d063b5a3092d190288",
+    "frontend/src/features/admin/reports/__tests__/production/recovery.test.ts": "63de1f88c53536e2eba1af9c8964a16fad3be50db2cf319228604578825f0819",
+    "docs/mcr/evidence/reports-production-integration/run-allocated.py": "9ec6d5a312b060d892e511a8343ed06a448bebb3912dfe8d1e9db1495773039c",
+    "docs/mcr/evidence/reports-production-integration/supervise-allocated.py": "20c3bf2110fe57ddad36a4bad281e4c181ba925dfe33e547bd03a3e078743766",
+    "docs/mcr/evidence/reports-production-integration/git_carry.py": "da3fda5c3c477c984141105c00fd33071ae333b54d134cad855807dc0c85d2f9",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/tsconfig.json": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528",
+    "frontend/src/app/operations-composition/owner.ts": "0cca44c74fbd5a8d3622b54cb33898659d9a690424bb15ce70a5d8c21b0f1e1c",
+    "frontend/src/app/operations-composition/panel.tsx": "829c4b95046f48b549a37d22a04799c12edcb83528c1989c1423b1d28fa8952e",
+    "frontend/src/app/operations-composition/__tests__/server.ts": "46a7f16ba4b68b04a4ab1ba2f12d9e50d980e9fa2fa75b65b11006d790650b8c",
+    "frontend/src/app/operations-composition/__tests__/wire.json": "1bbc87d42b9eb5a1059c60b9b51fff40e8ab39830c0eba2467ea28e73dc2ce9e",
+    "frontend/src/app/operations-composition/__tests__/composition.test.tsx": "bcb233fa59f404650bdda371b8146d87d2d693dde73cd69f65ddd6d3c0538b07",
+    "frontend/src/app/operations-entry/index.ts": "d6139ce9279c61b7e430495ba1f2c7a15ec6b5f4157726df5309b625769ce437",
+    "frontend/src/app/community-authority/timeline.ts": "52a85e3d0263cd3980c22f838d3ab3b971eb93f12ac98d730371239ef64f3448",
+    "frontend/src/features/auth/model/session.ts": "12289039f5d10a0d87b1403220e80dd8a4da2feda8452c5b73a9b241052104f7",
+    "frontend/src/shared/query/privacy.ts": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+    "frontend/src/shared/api/http.ts": "23dc24d55f9d91f769af10106930e2fc0a7ac78dbc6aa3294f6c5ea526947fee",
+    "frontend/src/shared/api/domain.ts": "a32887227334720f8d73530ceabc61edcca5f91bde648d81faebe9117d371741",
+    "frontend/src/shared/api/domain-operations.generated.ts": "424ebe6045fddce3231b299e80236981c278ae12f82775d87e81db6ab7cb2df8",
+    "frontend/src/features/admin/reports/model/controller.ts": "cd5a614c9432c400df20d6a128ab53f37638740176d227f0ed860235d510cddb",
+    "frontend/src/features/admin/reports/model/contract.ts": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8",
+    "frontend/src/features/admin/reports/model/validate.ts": "6ef318a0da70e08b04e7a5797816fd09a868a1a6e3e54b999d867e880db9ed37",
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": "a03bc69c25c073140cb8dbe6c8675ebe520d557b1a313ecabd465d33e1239619",
+    "contracts/domain/v1/admin.schema.json": "ee24c4bd99ce6057ca55007c5b8fc02aed9370ad4ea6e1eb4b42b393a7c94d4b",
+    "contracts/domain/v1/operations.json": "0b5941eca26241e8be9389aae23f29f6f6147bf36e1c27de1dbf9f092d4e8066",
+    "contracts/generated/mcr-domain.openapi.json": "9ae294507f6c2587c7354bd5014d45e76686a8a1cec3d783dfd79db6b6c49d65",
+    "frontend/src/main.tsx": "73dcb049c45fc5125de1637587a09373664c31d4899ef15dea0119a0ace3d5a6",
+    "frontend/src/app/AdminBoundary.tsx": "da057524a77573a6b1c7ff65849ee0d3a9471b491209fe721c976075e62b25a6",
+    "frontend/src/app/ports.ts": "a5a87476b1f32525a5228e9e7e5ee22dcc6df3680e46a689b966e42951936660"
+  },
+  "guardianPid": 72149,
+  "outerPid": 72117,
+  "standingBeforeChildrenUtc": "2026-11-04T23:39:40.729151+00:00",
+  "retained": {
+    "checkoutBytes": 1341542400,
+    "gitMetadataBytes": 2252800,
+    "readOnlyDependencyLogicalBytes": 408236853,
+    "readOnlyDependencyAllocatedBytes": 438317056,
+    "readOnlyDependencyChargeBytes": 438317056,
+    "readOnlyNodeRuntimeBytes": 122564432,
+    "readOnlyNodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "readOnlyChromeLogicalBytes": 1524099438,
+    "readOnlyChromeAllocatedBytes": 1527132160,
+    "readOnlyChromeChargeBytes": 1527132160,
+    "ownedSharedGitInventory": {
+      "bytes": 31170560,
+      "objectCount": 202,
+      "inodes": [
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-39bcfbe7f783871b000f74fcd7087f41d2ee16f9.idx",
+          "logicalBytes": 142696,
+          "allocatedBytes": 143360,
+          "chargeBytes": 143360
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-39bcfbe7f783871b000f74fcd7087f41d2ee16f9.pack",
+          "logicalBytes": 22206014,
+          "allocatedBytes": 22208512,
+          "chargeBytes": 22208512
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-39bcfbe7f783871b000f74fcd7087f41d2ee16f9.rev",
+          "logicalBytes": 20284,
+          "allocatedBytes": 20480,
+          "chargeBytes": 20480
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d63c18119fc5fcf9ca042e272ee11b3ad2e20ec6.idx",
+          "logicalBytes": 19972,
+          "allocatedBytes": 20480,
+          "chargeBytes": 20480
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d63c18119fc5fcf9ca042e272ee11b3ad2e20ec6.pack",
+          "logicalBytes": 8770775,
+          "allocatedBytes": 8773632,
+          "chargeBytes": 8773632
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d63c18119fc5fcf9ca042e272ee11b3ad2e20ec6.rev",
+          "logicalBytes": 2752,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        }
+      ]
+    },
+    "sharedGitCommonDirReadOnly": "/Users/lhs/Desktop/mcr/.git",
+    "copiedGitCarryBytes": 0
+  },
+  "caps": {
+    "wholeBytes": 4294967296,
+    "newBytes": 209715200,
+    "temporaryBytes": 167772160,
+    "durableBytes": 41943040,
+    "rssBytes": 4294967296,
+    "processes": 32
+  },
+  "peaks": {
+    "wholeBytes": 3494915920,
+    "newBytes": 31936512,
+    "temporaryBytes": 30265344,
+    "durableBytes": 1961984,
+    "rssBytes": 2265890816,
+    "processes": 11
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/src/app/operations-composition/__tests__/reports-production/native.mjs"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 30.236583708
+    }
+  ],
+  "status": "PASS",
+  "sourcePlan": "full",
+  "portRebound": 56094,
+  "fullUtc": "2026-11-04T23:40:11.054407+00:00",
+  "cleanupSeconds": 0.05891204199999933,
+  "remainingProcesses": [],
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "freeAfterBytes": 14945853440,
+  "finishedBeforeHardDeadline": true,
+  "released": true,
+  "logSha256": {
+    "00.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

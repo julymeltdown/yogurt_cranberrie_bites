@@ -3,12 +3,13 @@ import { Link, useLocation } from 'react-router-dom'
 import { EventOperations } from '../../features/admin/event'
 import { PlacesOperations } from '../../features/admin/places'
 import { AuditOperations } from '../../features/admin/audit'
+import { ReportReviewScreen } from '../../features/admin/reports'
 import { MuralClosurePanel } from '../admin-entry/mural-closure/MuralClosurePanel'
 import { usePorts } from '../access'
 import type { ActiveScope, ShellPorts } from '../ports'
 import type { AdminComposition, AdminCompositionState } from './owner'
 
-const initial: AdminCompositionState = Object.freeze({ phase: 'idle', decision: null, settings: null, operations: null, muralClosure: null })
+const initial: AdminCompositionState = Object.freeze({ phase: 'idle', decision: null, settings: null, operations: null, muralClosure: null, reports: null })
 const noSubscription = () => () => {}
 const initialRead = () => initial
 const unavailable: AdminCompositionState = Object.freeze({ ...initial, phase: 'unavailable' })
@@ -36,13 +37,15 @@ export function DefaultAdminPanel({ scope }: { scope: ActiveScope }) {
   }
   const pending = state.phase === 'idle' || state.phase === 'checking'
   const ready = state.phase === 'ready' && state.operations && state.muralClosure
-  const unsupported = ['/admin/reports', '/admin/content'].includes(pathname) || pathname.startsWith('/admin/users/')
-  return <main id="main" tabIndex={-1} className="shell-gate">
+  const reportController = state.reports?.borrow() ?? null
+  const Container = pathname === '/admin/reports' && reportController ? 'div' : 'main'
+  const unsupported = pathname === '/admin/content' || pathname.startsWith('/admin/users/')
+  return <Container id="main" tabIndex={-1} className="shell-gate">
     <Link className="shell-link" to="/">MCR Concert World</Link>
     <h1>Event administration</h1>
     <nav className="shell-actions" aria-label="Administration sections">{navigation.map(([path, label]) => <Link key={path}
       className="shell-link" to={path} aria-current={pathname === path ? 'page' : undefined}>{label}</Link>)}</nav>
-    {ready ? <>
+    {pathname === '/admin/reports' && reportController ? <ReportReviewScreen controller={reportController} /> : ready ? <>
       <p>Current event: {state.settings?.event.title} · {state.settings?.event.phase} · revision {state.settings?.event.revision}.</p>
       {pathname === '/admin' || pathname === '/admin/event' ? <EventOperations controller={state.operations!} summaryOnly={pathname === '/admin'} />
         : pathname === '/admin/places' ? <PlacesOperations controller={state.operations!} />
@@ -51,11 +54,11 @@ export function DefaultAdminPanel({ scope }: { scope: ActiveScope }) {
               : <UnavailableReports />}
     </> : <section aria-label="Administration access"><h2>{pending ? 'Checking current access' : unsupported ? 'Review tools unavailable' : 'Administration unavailable'}</h2>
       <p role="status">{pending ? 'Checking current operator access and authorized event information.'
-        : state.decision?.role === 'MODERATOR' ? 'Moderator access does not grant event operator controls. Report and evidence review is currently unavailable.'
+        : state.decision?.role === 'MODERATOR' ? 'Moderator access grants report review. Current operator access is required for event controls.'
           : 'Current operator access and authorized event information are required. Previous controls and private progress are hidden.'}</p></section>}
     <div className="shell-actions"><button type="button" disabled={pending} onClick={refresh}>Check current access</button>
       <Link className="shell-link" to="/world">Back to world</Link><Link className="shell-link" to="/">Back to home</Link></div>
-  </main>
+  </Container>
 }
 function UnavailableReports() {
   return <section aria-label="Review tools unavailable"><h2>Review tools unavailable</h2>

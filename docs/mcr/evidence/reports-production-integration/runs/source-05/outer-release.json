@@ -1,0 +1,483 @@
+{
+  "allocation": "FE37-REPORTS-TYPES-LINT-SOURCE05-20261104T2138Z",
+  "outerPid": 17892,
+  "pins": {
+    "run-allocated.py": "022e84dd310e232a0221e1f34916a1f1eb098e24fd6df84567236a968bad9ff6",
+    "supervise-allocated.py": "67829ebfda7c1f71133affad0c0d49eae72d4488bd09f301b0845932d3669128"
+  },
+  "standingUtc": "2026-11-04T21:30:50.138378+00:00",
+  "carryBytes": 1904639824,
+  "samples": [
+    {
+      "utc": "2026-11-04T21:30:50.243529+00:00",
+      "pids": [
+        17892,
+        17900,
+        17901
+      ],
+      "processes": 3,
+      "rssBytes": 27869184,
+      "wholeBytes": 1904643920,
+      "newBytes": 4096,
+      "temporaryBytes": 4096,
+      "durableBytes": 253952,
+      "freeBytes": 22672482304
+    },
+    {
+      "utc": "2026-11-04T21:30:50.591810+00:00",
+      "pids": [
+        17892,
+        17900,
+        17910,
+        17911
+      ],
+      "processes": 4,
+      "rssBytes": 52035584,
+      "wholeBytes": 1904643920,
+      "newBytes": 4096,
+      "temporaryBytes": 4096,
+      "durableBytes": 253952,
+      "freeBytes": 22672482304
+    },
+    {
+      "utc": "2026-11-04T21:30:50.944658+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        17927
+      ],
+      "processes": 4,
+      "rssBytes": 306348032,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22672465920
+    },
+    {
+      "utc": "2026-11-04T21:30:51.304499+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        17963
+      ],
+      "processes": 4,
+      "rssBytes": 530235392,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22672392192
+    },
+    {
+      "utc": "2026-11-04T21:30:51.671758+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        18154
+      ],
+      "processes": 4,
+      "rssBytes": 665845760,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22673600512
+    },
+    {
+      "utc": "2026-11-04T21:30:52.028957+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        18477
+      ],
+      "processes": 4,
+      "rssBytes": 798179328,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22673580032
+    },
+    {
+      "utc": "2026-11-04T21:30:52.387725+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        18527
+      ],
+      "processes": 4,
+      "rssBytes": 967802880,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22673571840
+    },
+    {
+      "utc": "2026-11-04T21:30:52.745216+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        18539
+      ],
+      "processes": 4,
+      "rssBytes": 1088585728,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22673563648
+    },
+    {
+      "utc": "2026-11-04T21:30:53.113508+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        18586
+      ],
+      "processes": 4,
+      "rssBytes": 1176289280,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22673563648
+    },
+    {
+      "utc": "2026-11-04T21:30:53.480284+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        18728
+      ],
+      "processes": 4,
+      "rssBytes": 1240907776,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22673448960
+    },
+    {
+      "utc": "2026-11-04T21:30:53.841014+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        18890
+      ],
+      "processes": 4,
+      "rssBytes": 1304903680,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22673395712
+    },
+    {
+      "utc": "2026-11-04T21:30:54.204619+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19004
+      ],
+      "processes": 4,
+      "rssBytes": 1353105408,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22675013632
+    },
+    {
+      "utc": "2026-11-04T21:30:54.565954+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19020
+      ],
+      "processes": 4,
+      "rssBytes": 1395916800,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22674989056
+    },
+    {
+      "utc": "2026-11-04T21:30:54.926109+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19034
+      ],
+      "processes": 4,
+      "rssBytes": 1421459456,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22674980864
+    },
+    {
+      "utc": "2026-11-04T21:30:55.293973+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19065
+      ],
+      "processes": 4,
+      "rssBytes": 1446133760,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22674063360
+    },
+    {
+      "utc": "2026-11-04T21:30:55.639047+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19134
+      ],
+      "processes": 4,
+      "rssBytes": 1470775296,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22674063360
+    },
+    {
+      "utc": "2026-11-04T21:30:55.990318+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19147
+      ],
+      "processes": 4,
+      "rssBytes": 1491025920,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22674046976
+    },
+    {
+      "utc": "2026-11-04T21:30:56.344444+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19176
+      ],
+      "processes": 4,
+      "rssBytes": 1509228544,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22673772544
+    },
+    {
+      "utc": "2026-11-04T21:30:56.701319+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19210
+      ],
+      "processes": 4,
+      "rssBytes": 1526923264,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22676021248
+    },
+    {
+      "utc": "2026-11-04T21:30:57.072250+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19226
+      ],
+      "processes": 4,
+      "rssBytes": 1573486592,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22675685376
+    },
+    {
+      "utc": "2026-11-04T21:30:57.441765+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19283
+      ],
+      "processes": 4,
+      "rssBytes": 1612857344,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22675898368
+    },
+    {
+      "utc": "2026-11-04T21:30:57.811336+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19345
+      ],
+      "processes": 4,
+      "rssBytes": 1657913344,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22686076928
+    },
+    {
+      "utc": "2026-11-04T21:30:58.184047+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19435
+      ],
+      "processes": 4,
+      "rssBytes": 1700610048,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22685007872
+    },
+    {
+      "utc": "2026-11-04T21:30:58.560860+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19475
+      ],
+      "processes": 4,
+      "rssBytes": 1736769536,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22684950528
+    },
+    {
+      "utc": "2026-11-04T21:30:58.963321+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19499
+      ],
+      "processes": 4,
+      "rssBytes": 1777483776,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22684905472
+    },
+    {
+      "utc": "2026-11-04T21:30:59.343391+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19568
+      ],
+      "processes": 4,
+      "rssBytes": 1864269824,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22684839936
+    },
+    {
+      "utc": "2026-11-04T21:30:59.712401+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19800
+      ],
+      "processes": 4,
+      "rssBytes": 1913831424,
+      "wholeBytes": 1904648016,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 253952,
+      "freeBytes": 22691782656
+    },
+    {
+      "utc": "2026-11-04T21:31:00.095045+00:00",
+      "pids": [
+        17892,
+        17900,
+        17920,
+        19909
+      ],
+      "processes": 4,
+      "rssBytes": 173637632,
+      "wholeBytes": 1906011984,
+      "newBytes": 1372160,
+      "temporaryBytes": 1372160,
+      "durableBytes": 253952,
+      "freeBytes": 22688935936
+    },
+    {
+      "utc": "2026-11-04T21:31:00.476882+00:00",
+      "pids": [
+        17892,
+        17900,
+        19948,
+        19975
+      ],
+      "processes": 4,
+      "rssBytes": 173604864,
+      "wholeBytes": 1906011984,
+      "newBytes": 1372160,
+      "temporaryBytes": 1372160,
+      "durableBytes": 253952,
+      "freeBytes": 22683643904
+    }
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "remainingBeforeFinalReap": [],
+  "remainingProcesses": [],
+  "fullUtc": "2026-11-04T21:31:00.800551+00:00",
+  "outerTemporaryAbsent": true,
+  "finishedBeforeHardDeadline": true,
+  "freeAfterBytes": 22698418176
+}

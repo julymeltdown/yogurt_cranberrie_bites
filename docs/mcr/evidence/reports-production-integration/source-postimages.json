@@ -1,0 +1,81 @@
+{
+  "base": "2492e35bb9fb61380bf97fa936983ec16c0722f4",
+  "sourceSnapshot": "4f4a6de3829675ec1e3f674fd4d7f7f897cfcb67",
+  "scope": "Exact granted Reports composition, production tests, and narrow command-status failure classification. Shared owner/panel Reports hunks only.",
+  "sourceChecks": {
+    "tests": "53/53 PASS in source-04",
+    "fullTypes": "PASS in source-05 after erased type fixes",
+    "scopedLint": "PASS in source-05",
+    "nativeWorkerSyntax": "PASS in source-04, worker unchanged"
+  },
+  "native": "PASS; runs/native-01: 9 controlled contexts at 360/390/430px, Moderator/Operator/no assignment; 15 original captures manually inspected. FE37-NINE-CONTEXT-NATIVE-20261104T2342Z ACCEPT 2026-11-04T23:39:39.545971Z, FULL 2026-11-04T23:40:11.441449Z; both guards PASS, full cleanup. Real backend cohort, dedicated evidence bytes/EOF and physical device NOT_RUN.",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "postimages": [
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/reports-production/composition.test.tsx",
+      "bytes": 12578,
+      "sha256": "679810ba1978967f3c3a56cb143adc0c63b4ad023e7234b657e3a1e1c2175653",
+      "baseSha256": null
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/reports-production/harness.ts",
+      "bytes": 1846,
+      "sha256": "e9b444dc0629b359bb64730899d2ce03187346f82afa4465a2ac89229516c587",
+      "baseSha256": null
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/reports-production/native.mjs",
+      "bytes": 10952,
+      "sha256": "f7a29dea977421ee4924ee9895bfdec35d0074a9be97f61d0a0854b1717bcdeb",
+      "baseSha256": null
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/reports-production/runner.ts",
+      "bytes": 550,
+      "sha256": "652fa59634e54332d0b676890eb4477463ea9ae79b823af036bf43e66b484eca",
+      "baseSha256": null
+    },
+    {
+      "path": "frontend/src/app/operations-composition/__tests__/reports-production/server.ts",
+      "bytes": 3745,
+      "sha256": "7a7ae2a1396e51b3fba9cdd4400cbc494912245dfe1e85d063b5a3092d190288",
+      "baseSha256": null
+    },
+    {
+      "path": "frontend/src/app/operations-composition/owner.ts",
+      "bytes": 10497,
+      "sha256": "0cca44c74fbd5a8d3622b54cb33898659d9a690424bb15ce70a5d8c21b0f1e1c",
+      "baseSha256": "ea09fd1ad1617bc7e0d043cd9138593f28ddaa4e7749aad2843ceace82fe8cb0"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/panel.tsx",
+      "bytes": 5037,
+      "sha256": "829c4b95046f48b549a37d22a04799c12edcb83528c1989c1423b1d28fa8952e",
+      "baseSha256": "88d218218a1f20cc7164d0fc9bda3e4e8a4d9cca6496299dad95936929895afa"
+    },
+    {
+      "path": "frontend/src/app/operations-composition/reports/evidence.ts",
+      "bytes": 3744,
+      "sha256": "e6fea429c2a3f3c98622943a6a9458a2407daa037c995aed4b3c02e536c72b63",
+      "baseSha256": null
+    },
+    {
+      "path": "frontend/src/app/operations-composition/reports/index.ts",
+      "bytes": 2984,
+      "sha256": "b449d7fee64b9274e2373ca549576202e5c38cf5d876018ecc1f44f59b437a46",
+      "baseSha256": null
+    },
+    {
+      "path": "frontend/src/features/admin/reports/__tests__/production/recovery.test.ts",
+      "bytes": 4461,
+      "sha256": "63de1f88c53536e2eba1af9c8964a16fad3be50db2cf319228604578825f0819",
+      "baseSha256": null
+    },
+    {
+      "path": "frontend/src/features/admin/reports/model/controller.ts",
+      "bytes": 19535,
+      "sha256": "cd5a614c9432c400df20d6a128ab53f37638740176d227f0ed860235d510cddb",
+      "baseSha256": "1f3602075f054ae645f732e212938871b0d3b67c6f9f6134c2a7cd783dab3f57"
+    }
+  ]
+}

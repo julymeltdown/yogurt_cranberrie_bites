@@ -342,8 +342,12 @@ export function createModeration(options: ModerationOptions) {
                 await accept(r, x);
         }
         catch (e) {
-            if (alive(x))
-                failure(e, true);
+            if (alive(x)) {
+                if (e instanceof TransportError && (e.status === 401 || e.status === 403))
+                    failure(e, true);
+                else
+                    emit({ phase: 'unknown', confirm: false, message: 'The original command status is unavailable. Its outcome remains unknown. Check this same command again.' });
+            }
         }
     }
     return { lane, read: () => state, subscribe(f: () => void) {
