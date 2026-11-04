@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import source from '../../spatial-v5/source-inputs.json'
 import tile from '../../spatial-v5/tile-pin.json'
+import { getSpatialV5Scenery } from '../../spatial-v5/model'
 import architecture from '../../spatial-v5/architecture-source.json'
 import { spatialV5Fixture } from './fixture'
 import { loadReferenceScene, requireReferenceScene, referenceSceneFor, getReferenceOverviewMetadata, spatialV5ThemeIds } from '../..'
@@ -40,7 +41,7 @@ it('preserves frozen base pins and projects exact architecture resources with pu
 })
 it.each(spatialV5ThemeIds)('loads %s on one new canonical geometry, exact packed frames and separate MAP semantics', async id => {
   const s = await setup(id), map = await loadReferenceScene(s.input, new AbortController().signal), binding = requireReferenceScene(map)
-  expect(referenceSceneFor(map)).not.toBeNull(); expect(binding.loaded.manifest).toEqual(architecture.scenes[id].scenery)
+  expect(referenceSceneFor(map)).not.toBeNull(); expect(binding.loaded.manifest).toEqual(getSpatialV5Scenery(id))
   expect(binding.loaded.manifest.objects).toHaveLength(34); expect(binding.overview).toHaveLength(51)
   expect(binding.worldCamera.y).toBe(13); expect(binding.loaded.manifest.objects.find(o=>o.id==='northern_hall')!.y).toBe(-94)
   expect(binding.overview.find(o=>o.id==='stage_venue_representation')).toMatchObject({x:185,y:163,width:300,height:210,depth_y:373})

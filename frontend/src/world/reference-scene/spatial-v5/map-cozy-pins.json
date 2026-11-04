@@ -1,0 +1,120 @@
+{
+  "format": "MCR_SPATIAL5_MAP_COZY_V1_PINS",
+  "source_revision": "70f22a683ab029751548331df5cf46f2ad16baf8",
+  "production_status": "NOT_ADMITTED",
+  "handoff": {
+    "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/handoff.json",
+    "bytes": 2528,
+    "sha256": "sha256:c11b404958d8332732c1335cbc137c29ab5ba623eec0b68b4e3c824eb31079ab"
+  },
+  "outputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/README.md",
+      "bytes": 4702,
+      "sha256": "sha256:6d3b4edc18de98c696200e475960e46cb85b828f9f438d97e2c9f6e4fd6f7665"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/build.py",
+      "bytes": 19955,
+      "sha256": "sha256:6f9c122c97ceab201202a9693575edcd4f1989fb1c4b95324a21574cdf54937f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/prompt.txt",
+      "bytes": 3426,
+      "sha256": "sha256:f6e3fe63e363b7323476c8c96ed4455867e83c7b34938ed32ba301ba6cc57ac4"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-original.png",
+      "bytes": 2120690,
+      "sha256": "sha256:db77361f6366157de19e32fb73b988e5f04883269c1f0a53d9a1a086a1d0b514"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/source-registration.json",
+      "bytes": 16615,
+      "sha256": "sha256:f38f19148b8d9ee80dc7340de2ae1fa4388583977aeff1c0602514b006792121"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/ground.svg",
+      "bytes": 741981,
+      "sha256": "sha256:e52f9acdaf4bc491664125585776ae42fe34848a59f5edc0205880095a19de40"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/ground-provenance.json",
+      "bytes": 22883,
+      "sha256": "sha256:b03be9a7f8cdfd1d2f1613f3930ecb90918fd81c748c0f913af1f41c25120c0a"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json",
+      "bytes": 5836,
+      "sha256": "sha256:0b2be1fa5773f9c98f221ac83d1fd729fee89f0e0c3a8bf2bf71c81d2bf35217"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/atlas.png",
+      "bytes": 1201118,
+      "sha256": "sha256:9c77e42eb377fbab1df485d6c1e8e47221ac33aebbc03e9aecba3cc7bbcded9f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-cozy-v1/parade/ground.png",
+      "bytes": 850849,
+      "sha256": "sha256:09d77ad8aa85f9d6464fa5248dae3eb91498f57b0c2183af1f90fc2e79b0dd45"
+    }
+  ],
+  "frozen_inputs": [
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/source-inputs.json",
+      "bytes": 56822,
+      "sha256": "sha256:6a28b3578eb5c5caa317e2078a10166987143d3b05c43441442344db56944e9b"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/architecture-source.json",
+      "bytes": 19461,
+      "sha256": "sha256:4669d061d213d299b6e7f0987667919be2a766d30efab629a1f5138a5434440a"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/architecture-pin.json",
+      "bytes": 7552,
+      "sha256": "sha256:072e32f442257e54e271c485304779de0ce8ff6f6165c163e23bce1452d1e99b"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-service-source.json",
+      "bytes": 10760,
+      "sha256": "sha256:dbf628ed48d8cd7c85e13c633a48c6bf42b257047b11775b429b968af3714b5f"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-service-pins.json",
+      "bytes": 5119,
+      "sha256": "sha256:5cc09e3800007d2ef49511d1555e037a87fe2f1ce7e6cc79c4c70165c6be657d"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-labels-source.json",
+      "bytes": 14099,
+      "sha256": "sha256:f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-labels-pins.json",
+      "bytes": 1212,
+      "sha256": "sha256:77f2d9b7696901dd7b54034cb5057cd772d99e614146cc44f088807e105c819c"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-landscape-source.json",
+      "bytes": 13276,
+      "sha256": "sha256:789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/map-landscape-pin.json",
+      "bytes": 1042,
+      "sha256": "sha256:9134da02d3e436ce082c230dcd380326064fcc842b8650e490d1744478db5a8c"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/tile-pin.json",
+      "bytes": 210,
+      "sha256": "sha256:cd600fe144b481616c229d2a3542482b7dc4abb4ca656808194587eac6b381b1"
+    }
+  ],
+  "document_sha256": "sha256:4f9d7394add8872720bba0c4f86a9ebfd3f1e330b94e6e415ead2c2385fa46af",
+  "document": {
+    "path": "frontend/src/world/reference-scene/spatial-v5/map-cozy-source.json",
+    "bytes": 1676,
+    "sha256": "sha256:ac0920a92db119387fffde5a1d15dae5d39b01e69189c367457b0b09ae433277"
+  }
+}
