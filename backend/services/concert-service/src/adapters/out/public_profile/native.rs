@@ -412,7 +412,12 @@ async fn actual_local_denials_and_failed_profile_intent_settle_without_fallback(
                 } else {
                     (f.subject, f.actor)
                 };
-                sqlx::query("insert into concert_relationship_pairs(event_id,low_user,high_user,low_blocks_high,high_blocks_low) values($1,$2,$3,$4,$5)").bind(event).bind(low).bind(high).bind(denial=="blocked-low").bind(denial=="blocked-high").execute(&f.concert).await?;
+                // Fixture writes obey the same deferred SQL deadline guard;
+                // use the actual scope budget, never disable the trigger.
+                let mut tx = f.concert.begin().await?;
+                local::budget(&mut tx, f.scope.binding().deadline()).await?;
+                sqlx::query("insert into concert_relationship_pairs(event_id,low_user,high_user,low_blocks_high,high_blocks_low) values($1,$2,$3,$4,$5)").bind(event).bind(low).bind(high).bind(denial=="blocked-low").bind(denial=="blocked-high").execute(&mut *tx).await?;
+                tx.commit().await?;
             }
             "private-profile" => {
                 sqlx::query("update profiles set account_visibility='PRIVATE' where user_id=$1")

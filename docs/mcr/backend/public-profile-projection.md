@@ -554,3 +554,28 @@ build cannot claim older owner/schema artifacts against changed source. Seven
 controller regressions pass, exit 0. The focused Rust/native run is NOT_RUN
 until a fresh allocation. This task remains IN_PROGRESS; no new joined, final
 HTTP or multiuser acceptance is claimed.
+
+
+### Actual deferred-guard failure and bounded source correction
+
+Feed independently reproduced the same frozen Concert lib failure without a
+rebuild or shared target. The diagnostic verified 665 runtime migrations and
+resources against the existing pin and used its own private PostgreSQL 16 root.
+The server reported SQLSTATE `23514`, `relationship authority expired`, at
+PREPARE TRANSACTION inside `concert_relationship_deadline_guard()`. The
+sanitized diagnostic is a failure reproduction, not passing qualification;
+its exact-owned cleanup passed.
+
+Migration 0006 requires the transaction-local
+`mcr.relationship_authority_until` for the pair metadata reservation's deferred
+guard. The adapter previously set only statement_timeout. The correction uses
+the existing owning `relationship::pin_deadline` helper with the original
+verified scope's absolute expiry; its least-existing-deadline semantics cannot
+extend an earlier limit. No migration, trigger or authority check is bypassed.
+The two blocked-pair denial fixture writes also use the actual scope budget
+in an explicit transaction so their deferred guard remains enabled.
+
+Rustfmt and diff checks pass; all seven Python controller regressions pass,
+exit 0. The corrected Rust source and focused joined native run are NOT_RUN
+until a fresh named one-lib allocation and immutable artifact freeze. Overall
+joined acceptance remains open.
