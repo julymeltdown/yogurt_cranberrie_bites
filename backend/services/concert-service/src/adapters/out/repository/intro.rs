@@ -13,6 +13,70 @@ use uuid::Uuid;
 
 pub const SCHEMA_V1: &str = include_str!("intro_schema_v1.sql");
 
+/// Canonical runtime calls this BEFORE its existing event/owner/policy locks.
+/// The retained synthetic engine is unchanged; absence of a production fence
+/// table is an error, never permission to recreate deleted private text.
+pub async fn lock_intro_actor_for_deletion_fence(
+    c: &mut PgConnection,
+    actor: Uuid,
+) -> Result<(), intro::IntroError> {
+    use crate::world::account_deletion::lock_user_in;
+    lock_user_in(c, actor)
+        .await
+        .map_err(|_| intro::IntroError::Unavailable)?;
+    if sqlx::query_scalar::<_, bool>(
+        "select exists(select 1 from public.concert_world_account_deletion_fences where user_id=$1)",
+    )
+        .bind(actor)
+        .fetch_one(&mut *c)
+        .await
+        .map_err(|_| intro::IntroError::Unavailable)?
+    {
+        return Err(intro::IntroError::Denied);
+    }
+    Ok(())
+}
+
+/// Explicit BE42 owner transition. It never pretends to be an Intro edit and
+/// never disables the normal 0049 runtime/update guards. The forward migration
+/// permits DELETE only under the exact, live owner-effect receipt in this TX.
+pub(crate) async fn erase_account_page_in(
+    c: &mut PgConnection,
+    command: &crate::world::account_deletion::WorldDeletionCommand,
+    source: &crate::world::account_deletion::VerifiedDeletionSource,
+    deadline: tokio::time::Instant,
+    after: Option<Uuid>,
+    limit: i64,
+) -> Result<(Option<Uuid>, i64), crate::world::account_deletion::DeletionFailure> {
+    use crate::world::account_deletion::{DeletionFailure, WorldDeletionTarget};
+    source.check(command, deadline)?;
+    if command.target != WorldDeletionTarget::PrivateData || !(1..=128).contains(&limit) {
+        return Err(DeletionFailure::InvalidCommand);
+    }
+    let events: Vec<Uuid> = sqlx::query_scalar("select event_id from public.concert_intros where owner_id=$1 and ($2::uuid is null or event_id>$2) order by event_id limit $3")
+        .bind(command.user_id).bind(after).bind(limit).fetch_all(&mut *c).await.map_err(|_| DeletionFailure::Unavailable)?;
+    let mut removed = 0_i64;
+    for event in &events {
+        // Same event-first order as Intro/Social writers, after the user fence.
+        sqlx::query("select event_id from public.concert_events where event_id=$1 for update")
+            .bind(event)
+            .fetch_one(&mut *c)
+            .await
+            .map_err(|_| DeletionFailure::Unavailable)?;
+        source.check(command, deadline)?;
+        removed +=
+            sqlx::query("delete from public.concert_intros where event_id=$1 and owner_id=$2")
+                .bind(event)
+                .bind(command.user_id)
+                .execute(&mut *c)
+                .await
+                .map_err(|_| DeletionFailure::Unavailable)?
+                .rows_affected() as i64;
+    }
+    source.check(command, deadline)?;
+    Ok((events.last().copied(), removed))
+}
+
 #[async_trait]
 pub trait IntroPolicy: Send + Sync {
     /// Must lock current authority and set `mcr.intro_authority_until` on this

@@ -1,4 +1,5 @@
 //! Original BE27 product facade. Root alone acquires and settles owner scopes.
+pub mod account_deletion;
 mod authority;
 mod cursor;
 mod profile;

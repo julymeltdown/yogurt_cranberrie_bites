@@ -68,6 +68,9 @@ impl ScopedIntroExecutor {
         write: bool,
     ) -> Result<(), intro::IntroError> {
         self.context(context)?;
+        if write {
+            engine::lock_intro_actor_for_deletion_fence(c, context.actor.uuid()).await?;
+        }
         register_intro_transaction(c, &self.scope).await?;
         if write {
             // Acquire the final event mode before actor authorization takes a
