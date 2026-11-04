@@ -59,7 +59,7 @@ pub(super) async fn binding(
         request_id: request_id.to_string(),
         http_method: "GET".into(),
         http_target: target.clone(),
-        http_body: b"{}".to_vec(),
+        http_body: Vec::new(),
         authority_expires_unix_micros: deadline.expires_micros(),
         auth_observed_at_unix_micros: now,
         profile_observed_at_unix_micros: now,
@@ -126,7 +126,7 @@ pub(super) async fn binding(
             "listConcertFeed",
             "GET",
             &target,
-            Sha256::digest(b"{}").into(),
+            Sha256::digest(b"").into(),
             deadline,
         )?,
     )

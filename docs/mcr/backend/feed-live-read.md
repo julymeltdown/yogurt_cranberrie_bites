@@ -477,3 +477,25 @@ NOT_RUN; the earlier adapter result qualifies the unchanged `236a2839` snapshot.
 The next bounded request is a single Concert library-test build, followed by
 frozen copies and a separate owned PostgreSQL run after unconditional target
 release. No prior target grant is retained or reused.
+
+
+## Fixed PublicProfile dependency now qualified
+
+The owner's fresh focused `c04070be4219e381bd2bf2d132ac1a17a4adc73e` report and
+pin were read and hash-verified. Real PostgreSQL 16.14/mTLS with the production
+reader passed the authority mapper, actual held-reader case and the nine-scenario
+local/Profile denial case: three exact cases, exit 0. Cleanup reports the owned
+server stopped and root absent; the owner reports zero prepared work and zero
+forced rollbacks. This resolves the owner's earlier PREPARE deadline failure for
+that exact snapshot; our consumer adaptation still needs its own build/run.
+
+Evidence: `/private/tmp/mcr-public-profile-frozen-dy94cel9/pin.json`, SHA-256
+`d779cf1f00da7447d0976381fd6b3101263fc9ac9099e5a60202b338cdb6d4ba`;
+`native-report.json`, SHA-256
+`47d795fc75696236ad0544ef3e792f94806bb60333dcfe41807ba381d1facf55`.
+No full Feed/C04/Gateway HTTP acceptance follows from those dependency cases.
+
+The Feed native signed-parent fixture now uses an empty HTTP GET body and its
+matching digest, preserving the release event and actual Gateway signature
+verification. The single Concert library-test build remains queued under a fresh
+explicit target allocation; no target or PostgreSQL instance is retained.
