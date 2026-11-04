@@ -36,7 +36,9 @@ def source_manifest() -> dict[str, str]:
              ROOT / "scripts/mcr/validate-domain.py", Path(__file__).resolve()}
     for prefix in ("backend/crates", "backend/proto", "backend/services/auth-service",
                    "backend/services/friend-service", "backend/services/concert-service",
-                   "backend/services/profile-service", "contracts"):
+                   "backend/services/profile-service", "backend/services/api-gateway",
+                   "backend/services/notification-service", "backend/services/post-service",
+                   "contracts"):
         paths.update(p for p in (ROOT / prefix).rglob("*")
                      if p.is_file() and p.suffix in {".rs", ".sql", ".toml", ".proto", ".py", ".json"})
     for config in (".cargo/config.toml", "backend/.cargo/config.toml", "rust-toolchain.toml", "backend/rust-toolchain.toml"):
