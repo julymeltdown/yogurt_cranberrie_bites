@@ -1,5 +1,6 @@
 //! Isolated Phase A producer. Not registered by product startup or Gateway.
 pub mod context;
+pub mod live;
 pub mod ports;
 use concert_application::avatar::{AvatarAuthority, AvatarError, AvatarGrant, AvatarOperation};
 use context::VerifiedParticipantRequest;
@@ -9,7 +10,7 @@ use serde_json::{json, Value};
 use std::sync::{Arc, OnceLock};
 use tonic::{Request, Response, Status};
 pub mod proto {
-    tonic::include_proto!("concert.participant.v1");
+    include!(concat!(env!("OUT_DIR"), "/participant/concert.participant.v1.rs"));
 }
 pub const POLICY: MethodPolicy = MethodPolicy {
     service: "concert.participant.v1.ConcertParticipantService",
@@ -99,6 +100,8 @@ impl ParticipantService {
         context.check()?;
         let mut response = Response::new(proto::ParticipantResponse {
             response_json: bytes,
+            delivery: None,
+            failure: None,
         });
         response
             .metadata_mut()
@@ -108,6 +111,16 @@ impl ParticipantService {
     async fn produce(&self, context: &VerifiedParticipantRequest) -> Result<Value, Status> {
         context.check()?;
         if context.release_digest() != self.store.release_digest() {
+            return Err(status(AvatarError::Unavailable));
+        }
+        // The full C03 syntax is recognized by the verified context. Until the
+        // actual canonical SELF/coordinator adapter is composed, profile edits
+        // fail before any owner call or local preference mutation.
+        if context.operation() == Operation::UpdatePreferences
+            && live::update::ParticipantUpdate::parse(context.raw_body())
+                .map_err(status)?
+                .changes_profile()
+        {
             return Err(status(AvatarError::Unavailable));
         }
         let auth = self.auth.read(context).await.map_err(status)?;
@@ -200,6 +213,9 @@ struct CheckedAuthority<'a> {
     permit: Option<&'a dyn MutationPermit>,
 }
 impl AvatarAuthority for CheckedAuthority<'_> {
+    fn effect_fence(&self) -> Option<&dyn concert_application::avatar::AvatarEffectFence> {
+        self.permit.and_then(|permit| permit.effect_fence())
+    }
     fn check(&self) -> Result<AvatarGrant, AvatarError> {
         self.context
             .check()
