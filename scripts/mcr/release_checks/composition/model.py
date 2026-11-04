@@ -55,13 +55,15 @@ def owned(path, patterns):
     return False
 
 
-def binding(repo, record, expected, receipts):
+def binding(repo, record, expected, receipts, coverage_kind):
     commit = record["commit"]
     source.require(isinstance(commit, str) and source.HEX40.fullmatch(commit), "binding.commit")
     repo.git("merge-base", "--is-ancestor", commit, expected)
     paths = names(record["paths"], "binding.paths")
     checks = names(record["receipt_ids"], "binding.receipts")
     source.require(all(c in receipts for c in checks), "binding.receipt-not-qualified")
+    source.require(any(record["id"] in receipts[c]["coverage"][coverage_kind] for c in checks),
+                   "binding.criteria-not-qualified")
     for path in paths:
         repo.path(path)
         source.require(any(path in receipts[c]["pins"] for c in checks), "binding.source-not-qualified")
@@ -149,6 +151,9 @@ def evaluate(root, expected, manifest=None):
                 result["receipts"].append({"id": identity, "status": status})
                 continue
             checked = evidence(repo, report, expected, str(PurePosixPath(ref["path"]).parent))
+            source.require(set(checked["coverage"]["task_ids"]) <= set(tasks) - {"QA08"}
+                           and set(checked["coverage"]["ia_ids"]) <= set(screens)
+                           and set(checked["coverage"]["gate_ids"]) <= set(GATES), "evidence.unknown-coverage")
             if checked["counts"]["skipped"]:
                 gaps.append("evidence." + identity + ".skipped")
             else:
@@ -158,6 +163,8 @@ def evaluate(root, expected, manifest=None):
                                        "counts": checked["counts"]})
         missing_categories = CATEGORIES - {r["category"] for r in receipts.values()}
         gaps.extend("category." + c + ".NOT_RUN" for c in sorted(missing_categories))
+        if not any(r["producer"] == "frontend-v1" for r in receipts.values()):
+            gaps.append("frontend.v1.NOT_RUN")
         deferred = deferral(repo, document, expected, tasks)
         result["qa08"] = "DEFERRED_BY_USER" if deferred else "NOT_RUN"
         if not deferred:
@@ -175,7 +182,7 @@ def evaluate(root, expected, manifest=None):
             if not record or record["status"] != "ACCEPTED":
                 missing_tasks.append(identity)
                 continue
-            binding(repo, record, expected, receipts)
+            binding(repo, record, expected, receipts, "task_ids")
             source.require(all(owned(p, task["owned_paths"]) for p in record["paths"]), "tasks.path-outside-original-task")
         missing_ia = []
         for identity, screen in screens.items():
@@ -183,7 +190,9 @@ def evaluate(root, expected, manifest=None):
             if not record or record["status"] != "ACCEPTED":
                 missing_ia.append(identity)
                 continue
-            binding(repo, record, expected, receipts)
+            binding(repo, record, expected, receipts, "ia_ids")
+            source.require(any(receipts[c]["level"] in ("live", "device") for c in record["receipt_ids"]),
+                           "ia.unit-as-product")
             source.require(all(t in tasks for t in screen["task_ids"]), "ia.unknown-task")
             source.require(all(any(owned(p, tasks[t]["owned_paths"]) for t in screen["task_ids"])
                                for p in record["paths"]), "ia.unrelated-source")
@@ -204,7 +213,7 @@ def evaluate(root, expected, manifest=None):
                 gaps.append("gate." + identity + "." + state)
                 result["gates"].append({"id": identity, "status": state})
                 continue
-            binding(repo, record, expected, receipts)
+            binding(repo, record, expected, receipts, "gate_ids")
             selected = [receipts[c] for c in record["receipt_ids"]]
             source.require(any(r["level"] in levels for r in selected), "gates.unit-as-live")
             if identity == "QA06":

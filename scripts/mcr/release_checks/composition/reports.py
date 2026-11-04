@@ -180,9 +180,10 @@ def evidence(repo, report, expected, folder):
     if report.get("schema") == "mcr.qa10.frontend.v1":
         counts = source.check_frontend(repo, report, expected, folder)
         return {"category": "frontend", "level": "unit", "counts": counts,
-                "pins": report["source_pins"], "context": None}
+                "pins": report["source_pins"], "context": None, "producer": "frontend-v1",
+                "coverage": {"task_ids": [], "ia_ids": [], "gate_ids": []}}
     closed(report, ("schema", "id", "candidate", "same_candidate_end", "status", "owner", "category",
-                    "level", "command", "source_pins", "test_files", "log", "report", "context"),
+                    "level", "command", "source_pins", "test_files", "log", "report", "context", "coverage"),
            "evidence.shape")
     source.require(report["schema"] == SCHEMA and report["status"] == "PASS"
                    and isinstance(report["owner"], str) and report["owner"], "evidence.schema-or-owner")
@@ -190,6 +191,11 @@ def evidence(repo, report, expected, folder):
     source.require(report["same_candidate_end"] is True, "candidate.end-fence-missing")
     source.require(report["category"] in CATEGORIES and report["level"] in LEVELS,
                    "evidence.classification")
+    coverage = report["coverage"]
+    closed(coverage, ("task_ids", "ia_ids", "gate_ids"), "evidence.coverage-shape")
+    for ids in coverage.values():
+        source.require(isinstance(ids, list) and all(isinstance(i, str) for i in ids)
+                       and len(ids) == len(set(ids)), "evidence.coverage-ids")
     source.require((report["category"] not in ("device", "operator")
                     or report["level"] == report["category"])
                    and (report["category"] != "service" or report["level"] == "live"),
@@ -228,4 +234,4 @@ def evidence(repo, report, expected, folder):
         counts = observation_counts(repo, data, report, expected)
     observed = context(repo, report["context"], expected, report["level"])
     return {"category": report["category"], "level": report["level"], "counts": counts,
-            "pins": report["source_pins"], "context": observed}
+            "pins": report["source_pins"], "context": observed, "producer": SCHEMA, "coverage": coverage}

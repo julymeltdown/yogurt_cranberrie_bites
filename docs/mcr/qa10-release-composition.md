@@ -101,7 +101,7 @@ New `mcr.qa10.composition-evidence.v1` PASS envelopes have exactly:
 
 ```text
 schema, id, candidate, same_candidate_end, status, owner,
-category, level, command, source_pins, test_files, log, report, context
+category, level, command, source_pins, test_files, log, report, context, coverage
 ```
 
 Category is backend/frontend/service/device/operator; level is
@@ -110,6 +110,14 @@ device/operator categories require matching levels. Each category needs a
 nonempty qualified contribution. `command` retains real argv/cwd, attempted=true,
 integer exit0 and no signal. Logs/reports are nonempty pinned artifacts. Every
 test file is source-pinned and explicitly dispatched. Supported report formats:
+
+`coverage` has exactly task_ids, ia_ids and gate_ids, restricted to the original
+catalogs. An accepted binding must be explicitly covered by its immutable owner
+report; a manifest label alone cannot reuse an unrelated report. IA bindings
+also need live/device level. A frontend-v1 receipt is required as a bounded
+contribution; its PARTIAL source result alone grants no task/IA/gate acceptance.
+
+Supported report formats:
 
 - `tap` and `vitest-json` reuse source-v1 validation and can qualify unit level
   only. The published frontend-v1 adapter also qualifies only bounded frontend

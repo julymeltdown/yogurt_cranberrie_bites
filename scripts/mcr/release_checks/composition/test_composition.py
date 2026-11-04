@@ -43,9 +43,12 @@ class Composition(unittest.TestCase):
             self.paths[row["id"]] = p
             self.write(p, b"Synthetic parser source, never executed.\n")
         self.node = "frontend/e2e/qa10-parser.node.mjs"
+        self.vitest = "frontend/src/qa10-parser.test.ts"
         self.native = "backend/services/concert-service/tests/qa10_parser.rs"
         self.write(self.node, b"import {test} from 'node:test'; // parser fixture only\n")
+        self.write(self.vitest, b"import {test} from 'vitest'; // parser fixture only\n")
         self.write(self.native, b"// parser fixture only\n")
+        self.write("contracts/parser-fixture.json", b"{}\n")
         self.write(AUTHORITY, b"| QA08 | DEFERRED_BY_USER |\nDefer QA08; preserve 111 active tasks.\n")
         self.write("generated/TASKS_EN.json", self.bytes(self.plan))
         self.write("generated/IA_EN.json", self.bytes(self.ia))
@@ -53,7 +56,7 @@ class Composition(unittest.TestCase):
         self.commit("Synthetic parser sources, not application evidence")
         self.sha = self.git("rev-parse", "HEAD")
         self.candidate = {"commit": self.sha, "tree": self.git("rev-parse", "HEAD^{tree}"), "dirty": False}
-        self.pins = {p: self.pin(p) for p in set(self.paths.values()) | {self.node, self.native}}
+        self.pins = {p: self.pin(p) for p in set(self.paths.values()) | {self.node, self.native, self.vitest}}
         self.command = {"argv": ["node", "--test", self.node], "cwd": ".", "attempted": True,
                         "exit_code": 0, "signal": None}
         self.source_test = {"schema": source.COMMAND_SCHEMA, "id": "source-tests", "kind": "tests", "status": "PASS",
@@ -78,6 +81,7 @@ class Composition(unittest.TestCase):
                                           ("live", "service", "live"), ("ios", "device", "device"),
                                           ("android", "device", "device"), ("operator", "operator", "operator")]:
             self.reports[identity] = self.make_report(identity, category, level)
+        self.reports["frontend"] = self.frontend_report()
         self.manifest = {"schema": SCHEMA, "candidate": self.candidate, "source_manifest": None,
                          "receipts": [], "tasks": [], "ia": [], "gates": [], "deferrals": [{
                              "task_id": "QA08", "status": "DEFERRED_BY_USER", "blocking": False,
@@ -89,7 +93,7 @@ class Composition(unittest.TestCase):
             if row["priority"] == "P0":
                 self.manifest["ia"].append(self.record(row["id"], [self.paths[row["task_ids"][0]]], ["live"]))
         for gate, levels in GATES.items():
-            receipts = ["ios", "android"] if gate == "QA06" else ["frontend"] if gate == "QA01" else ["operator"] if gate == "QA02" else ["backend"] if "native" in levels else ["live"]
+            receipts = ["ios", "android"] if gate == "QA06" else ["backend"] if gate == "QA01" else ["operator"] if gate == "QA02" else ["backend"] if "native" in levels else ["live"]
             self.manifest["gates"].append(self.record(gate, [self.native], receipts))
         self.manifest["gates"].append(self.record("QA08", [], [], "DEFERRED_BY_USER"))
 
@@ -161,7 +165,32 @@ class Composition(unittest.TestCase):
         return {"schema": EVIDENCE_SCHEMA, "id": identity, "candidate": copy.deepcopy(self.candidate), "same_candidate_end": True,
                 "status": "PASS", "owner": "parser-fixture-owner", "category": category, "level": level,
                 "command": command, "source_pins": self.pins, "test_files": files, "log": self.ref(identity + ".log", data),
-                "report": {"format": fmt, "artifact": self.ref(identity + "-report", data)}, "context": context}
+                "report": {"format": fmt, "artifact": self.ref(identity + "-report", data)}, "context": context,
+                "coverage": {"task_ids": sorted(set(self.paths) - {"QA08"}),
+                             "ia_ids": [r["id"] for r in self.ia["screens"] if r["priority"] == "P0"],
+                             "gate_ids": sorted(GATES)}}
+
+    def frontend_report(self):
+        inventory = {"node": [self.node], "vitest": [self.vitest], "playwright": [], "unsupported": []}
+        values = {"test-inventory.json": self.bytes(inventory), "node-tests.log": TAP,
+                  "vitest.json": self.bytes({"numTotalTests": 1, "numPassedTests": 1, "numFailedTests": 0,
+                      "numPendingTests": 0, "success": True, "testResults": [{"name": self.vitest,
+                      "status": "passed", "assertionResults": [{"status": "passed"}]}]}),
+                  "build-audit.json": self.bytes({"assets": [{"path": "app.js", "sha256": "ab" * 32}],
+                                                  "modules": ["frontend/src/main.ts"], "findings": []})}
+        commands = []
+        for gate in sorted(source.FRONTEND_GATES):
+            log = gate + ".log"
+            values.setdefault(log, b"synthetic frontend command record\n")
+            argv = ["node", "--test", self.node] if gate == "node-tests" else ["node", "vitest", self.vitest] if gate == "vitest" else ["node", "fixture-command"]
+            commands.append({**self.command, "id": gate, "argv": argv, "log": log, "status": "PASS",
+                             "nonempty_count": 1, "report_hash": source.digest(values[log])})
+        for path, data in values.items():
+            self.ref(path, data)
+        return {"schema": "mcr.qa10.frontend.v1", "candidate": self.candidate, "same_candidate_end": True,
+                "status": "PARTIAL", "unsupported": [{"criterion": "actual product", "status": "NOT_RUN"}],
+                "source_pins": self.pins, "contract_pins": {"contracts/parser-fixture.json": self.pin("contracts/parser-fixture.json")},
+                "artifact_pins": {p: source.digest(b) for p, b in values.items()}, "test_inventory": inventory, "commands": commands}
 
     def run_check(self):
         self.manifest["source_manifest"] = self.ref("source-manifest.json", self.bytes(self.source_manifest))
@@ -258,6 +287,14 @@ class Composition(unittest.TestCase):
     def test_wrong_original_task_path_refused(self):
         self.manifest["tasks"][0]["paths"] = [self.native]
         self.rule("tasks.path-outside-original-task")
+
+    def test_gate_requires_immutable_owner_report_coverage_not_a_manifest_label(self):
+        self.reports["live"]["coverage"]["gate_ids"].remove("IN02")
+        self.rule("binding.criteria-not-qualified")
+
+    def test_partial_frontend_cannot_grant_live_ia_acceptance(self):
+        self.manifest["ia"][0]["receipt_ids"] = ["frontend"]
+        self.rule("binding.criteria-not-qualified")
 
     def test_duplicate_or_unknown_original_id_refused(self):
         self.manifest["tasks"][0]["id"] = "INVENTED"
