@@ -1,0 +1,114 @@
+{
+  "artifact_metadata_sha256": "24dab405754166f4294031a665a887021d9281e496bd230385117783acd0e101",
+  "checks": {
+    "build_exit_code": 0,
+    "model_unit_passed": 4,
+    "native_exit_code": 0,
+    "native_passed": 11,
+    "planning_check_exit_code": 0,
+    "pure_in_runner": 2,
+    "total_passed": 17
+  },
+  "cleanup": {
+    "owned_root_absent": true,
+    "status": "PASS"
+  },
+  "contract_sha256": "e0d1d839bbf3e6be2070236c04253ba77b963f59aef19cbc796ff250b68f1b1a",
+  "frozen_executable_sha256": {
+    "auth-bin-test": "67ccbddfc3ddfebe95fcdffe8afde9bb201891501cba8073b65e912eb5ada682",
+    "auth-native": "3cee0f3041275a633d750ec2491ca9d7b8d61adfb8c1890ad2145557c386ade9",
+    "auth-server": "d89ae929ea030a00a4ce49f478dd7e437ae3f3d411262b069d6b159334cbb6b9",
+    "auth-unit": "28ef335a7fc58e3b7acd5c687419c00b637c3db65c6c61432c5489fe4125fc9a",
+    "friend-bin-test": "773121b9e004aa6408043850bb341f059356be9115ed261b084deb294cb0bf98",
+    "friend-native": "b0647e7af189775af02aed45e0644ac09249bf4b38d7440050ff85376d51da1e",
+    "friend-server": "28654896a5d3dfb07de09caa2157db6bba19a268706e15ea90946cc403f97931",
+    "friend-unit": "6e321974b6d09ccf941036aea522c3537f773bcc612933dd71ac26be2e1df251"
+  },
+  "limitations": [
+    "Actual compiled main processes exercised with parity application configuration, real mTLS and strict authority caller credentials; production deployment/secrets/readiness not certified.",
+    "Owner-store component evidence; canonical Gateway/root/public HTTP/child restart acceptance remains with authority owner207 and producer owners.",
+    "Post/Profile settlement integration and release/task-wide acceptance are separate; no fabricated completion for unknown outcomes."
+  ],
+  "migration_0017_sha384": {
+    "auth": "102a80f97651ed1c386da666649489e239e0393749926d9e3bc3d3e8a55c55f2365ecad9d473e53894bd304fe47e84e2",
+    "friend": "a80d6a5a8f93a8fea1d072a252417416295fc223981fba586f4787979d3e8bad8a2f7802abcbacef7caace5facd0c533"
+  },
+  "native_report_sha256": "823b053949dae916a3f59de72a98587e324e3150979eaef64b608bdc700bbe5b",
+  "phases": {
+    "auth:native::actual_security_generation_distinguishes_rotation_and_invalidation": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "aef7e2d0523bae7af1c7b14530a3d128420c0ad9fd7cb81f3b59ea44dbd4d159"
+    },
+    "auth:native::actual_transactions_enrollment_sealing_and_quarantine": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "0f4e1db913d7c85e3c1d62bc7873bd6550cfc92acf2e8abea3f25d99282bf290"
+    },
+    "auth:native::cancellation_and_capacity_survive_expiry": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "b9c692e2fc29ab047f4fdf3c8994c715f0b5ab3d4dfe1b33610f2712650671aa"
+    },
+    "auth:native::prepare_restart": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "94b7f211aa6a11fb08d80bbcf45ceac06e4284d44b49494e05d6fb9f8b35c3d3"
+    },
+    "auth:native::recover_restart": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "032eed92d8f1361b9df845f1b0181d7ae2220feb1a1a93f063eda9f611cadda3"
+    },
+    "auth:pure": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "df14494998b63a2d51edd2f6dda598ddd51186728f962b01d1fda65917ea0750"
+    },
+    "auth:transport::owner_rpc_requires_actual_workload_and_signed_acquisition": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "23e54d833dbcb678801d53b3dd7d4c01b9ffa049e16e66ce8a55bfba407ce09b"
+    },
+    "friend:native::actual_transactions_enrollment_sealing_and_quarantine": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "2f115ce356b495f8177b306993e611424bd9368ee404d47737f978cf21a79fde"
+    },
+    "friend:native::cancellation_and_capacity_survive_expiry": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "031141ab54565a17a13ee0e9318dc90fd66d7ce67f4c9af4d7672961dbb7a4b3"
+    },
+    "friend:native::prepare_restart": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "8f7aa8accd098d897cf6c6371f5ed24abc350381ae10ad7127045dda4f9f1f38"
+    },
+    "friend:native::recover_restart": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "12ccd775428c0ec9a608403a9731d3b04109f3567604ef6faf91ab492a7e7dc0"
+    },
+    "friend:pure": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "d29a597d718d534edd4cb3c4a6c6ebaf146dadd27e1e7720d56bc2b36ff45ca2"
+    },
+    "friend:transport::owner_rpc_requires_actual_workload_and_signed_acquisition": {
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout_sha256": "60fc3db6cc8907c2aea13436c30c067f320dab938e90b98e343f2a16dd337b01"
+    }
+  },
+  "postgres_version": "16.14 (Homebrew)",
+  "qualified_source_commit": "d4c604f03b4645b19cf6448526d4ff4577336f96",
+  "restart": {
+    "after_pid": 81337,
+    "before_pid": 79634,
+    "status": "PASS"
+  },
+  "source_manifest_sha256": "7deef3416e70fbda66e7912e4de4aad8cf209b79380a9a46a3e68b2c95502b52",
+  "status": "INTEGRATED",
+  "task_id": "BE-OWNER-AUTHORITY-STORES"
+}

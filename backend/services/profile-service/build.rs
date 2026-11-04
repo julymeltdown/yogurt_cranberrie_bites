@@ -14,6 +14,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 proto,
                 contracts_build::source_authority_proto(),
                 contracts_build::proto_root().join("profile/v1/concert_public_profile.proto"),
+                contracts_build::proto_root().join("profile/v1/concert_self_profile.proto"),
+                contracts_build::proto_root().join("authority/v1/lease.proto"),
+                contracts_build::proto_root().join("concert/v1/participant.proto"),
             ],
             &[include_dir],
         )?;
@@ -32,5 +35,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .join("profile/v1/concert_public_profile.proto")
             .display()
     );
+    for relative in [
+        "profile/v1/concert_self_profile.proto",
+        "authority/v1/lease.proto",
+        "concert/v1/participant.proto",
+    ] {
+        println!(
+            "cargo:rerun-if-changed={}",
+            contracts_build::proto_root().join(relative).display()
+        );
+    }
     Ok(())
 }

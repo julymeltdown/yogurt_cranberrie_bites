@@ -3,7 +3,7 @@ import type { createPhaserMuralScene } from './mural/phaser'
 import type { MuralScenePort } from './mural/sink'
 import type { AvatarScenePort } from './avatar/scene'
 import type { SceneryDiagnostics } from './illustrated/model'
-import { createSceneryOverview } from './illustrated/overview'
+import { createSceneryOverview, type SceneryOverviewPort } from './illustrated/overview'
 import { MapError } from './map/json'
 import { limits } from './map/manifest'
 import { abortable, type LoadedMap } from './map/resources'
@@ -29,17 +29,26 @@ export interface ControlAttachment { setEnabled(value: boolean): void; dispose()
 export interface ControlContext { readonly host: HTMLElement; readonly map: LoadedMap; readonly camera: WorldCamera; readonly signal: AbortSignal; readonly avatarScene?: AvatarScenePort; readonly muralScene?: IncumbentMuralScene }
 export type AttachControls = (context: ControlContext) => ControlAttachment
 export type EngineFactory = (host: HTMLElement, map: LoadedMap) => EngineLease
+/** Owned projection of this runtime's loaded map. It receives no engine or network authority. */
+export interface RuntimeOverview extends SceneryOverviewPort {
+  replace(map: LoadedMap | null): void
+  dispose(): void
+}
+export type OverviewFactory = () => RuntimeOverview
 export interface RuntimeOptions {
   host: HTMLElement
   load(signal: AbortSignal): Promise<LoadedMap>
   importEngine?: () => Promise<EngineFactory>
   timeoutMs?: number
   attachControls?: AttachControls
+  /** One owner per runtime; omitted callers retain the incumbent scenery projection. */
+  createOverview?: OverviewFactory
 }
 const claimedHosts = new WeakMap<HTMLElement, { owner: object }>()
 /** Explicitly started resource owner. No auth, network admission, avatar or production shell wiring. */
 export function createWorldRuntime(options: RuntimeOptions) {
-  const overview = createSceneryOverview()
+  const overview = (options.createOverview ?? createSceneryOverview)()
+  const replaceOverview = (map: LoadedMap | null) => { try { overview.replace(map) } catch { /* Projection failure must not strand the engine or source lease. */ } }
   let state: RuntimeState = Object.freeze({ phase: 'stopped' }), generation = 0, disposed = false, visible = true, inputBlocked = false, visibilityRevision = 0
   let active: { controller: AbortController; mount: HTMLDivElement; engine: EngineLease | null; map: LoadedMap | null; controls: ControlAttachment | null;
     observer: ResizeObserver | null; resize: (() => void) | null; frame: number | null; detach: () => void; claim: { owner: object }; creating: boolean; finish: () => void } | null = null
@@ -54,7 +63,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
     if (!old) return
     skinFlight?.abort(); skinFlight = null
     ++generation; active = null; flight = null; old.controller.abort(); old.detach()
-    overview.replace(null)
+    replaceOverview(null)
     old.observer?.disconnect()
     if (old.resize) window.removeEventListener('resize', old.resize)
     if (old.frame !== null) cancelAnimationFrame(old.frame)
@@ -138,7 +147,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
         const g = map.map.geometry
         publish({ phase: 'ready', widthPx: map.widthPx, heightPx: map.heightPx,
           spawnFoot: Object.freeze({ x: (map.spawn.cell_x + .5) * g.tile_width_px, y: (map.spawn.cell_y + .5) * g.tile_height_px }) })
-        if (current()) overview.replace(map)
+        if (current()) replaceOverview(map)
       } catch (error) {
         if (!current()) return state
         const next: RuntimeState = error instanceof MapError && error.reason === 'unavailable' ? { phase: 'unavailable' }
@@ -189,7 +198,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
         // no longer roll it back. The next request will inherit this live skin.
         if (active !== owned || owned.controller.signal.aborted) throw new MapError('cancelled')
         owned.map = next; committed = true
-        overview.replace(next)
+        replaceOverview(next)
         previous.dispose()
       } finally { skinCommitting = false }
     } finally {
@@ -213,7 +222,7 @@ export function createWorldRuntime(options: RuntimeOptions) {
       if (active === owned && revision === visibilityRevision) owned?.engine?.setVisible(value)
     },
     setInputBlocked(value: boolean) { inputBlocked = value; active?.controls?.setEnabled(visible && !inputBlocked) },
-    dispose() { if (disposed) return; disposed = true; stop(); overview.dispose(); publish({ phase: 'disposed' }); listeners.clear() },
+    dispose() { if (disposed) return; disposed = true; stop(); try { overview.dispose() } catch { /* Complete independent runtime teardown. */ } publish({ phase: 'disposed' }); listeners.clear() },
     /** Allows a host adapter to await engine teardown before transferring ownership. */
     settled: () => drain,
   }

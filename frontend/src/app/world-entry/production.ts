@@ -16,10 +16,11 @@ export interface ProductionWorldOptions {
   readonly load?: (options: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry }) => Promise<WorldComposition>
 }
 async function loadProduction({ auth, origin, localInput, characters }: { auth: SessionController; origin: string; localInput: LocalInputConfiguration; characters?: RootCharacterRegistry }) {
-  const [{ createWorldComposition }, { createWorldEntryResolver }, { createWholeCharacterWorldRenderer }] = await Promise.all([
+  const [{ createWorldComposition }, { createWorldEntryResolver }, { createWholeCharacterWorldRenderer }, { createRootSceneOverview }] = await Promise.all([
     import('../../world/composition'), import('./resolver'), import('../../world/avatar/whole-character'),
+    import('./reference-scene-overview'),
   ])
-  return createWorldComposition({ auth, resolveRelease: createWorldEntryResolver({ auth, origin, localInput }),
+  return createWorldComposition({ auth, resolveRelease: createWorldEntryResolver({ auth, origin, localInput }), createOverview: createRootSceneOverview,
     ...(characters ? { renderer: createWholeCharacterWorldRenderer({ resolveRuntime(context) {
       const manifest = context.release.avatarManifest
       if (manifest.representation !== 'whole_character' || typeof manifest.manifest_id !== 'string'

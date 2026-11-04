@@ -1,3 +1,4 @@
+import { getSpatialOverviewMetadata } from './spatial-v3/model'
 /** Frozen projection of artist milestone 8f89d190; these are virtual illustration coordinates. */
 export const referenceSceneIdentity = Object.freeze({
   sourceRevision: '8f89d1905a86143d34ff77d2951fc60651ab2497',
@@ -19,5 +20,5 @@ const metadata = Object.freeze({ ...referenceSceneIdentity, mapLabels })
 /** Illustration offsets only. Callers still resolve current catalog authorization and actual place IDs. */
 export function getReferenceOverviewMetadata(identity: ReferenceOverviewIdentity) {
   return identity.geometryHash === metadata.geometryHash && identity.width === metadata.width
-    && identity.height === metadata.height && identity.themeId === metadata.themeId ? metadata : null
+    && identity.height === metadata.height && identity.themeId === metadata.themeId ? metadata : getSpatialOverviewMetadata(identity)
 }

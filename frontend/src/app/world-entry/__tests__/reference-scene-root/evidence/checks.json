@@ -1,0 +1,115 @@
+{
+  "task": "FE-SCENE-R3-ROOT",
+  "status": "PASS",
+  "qualification": "MOCK_READY_SOURCE_FIXTURE_ONLY",
+  "sourceCommit": "167d1426",
+  "reconciledCandidate": "38a880e554d3f88bd59bf61a0711ebab2ceee0ee",
+  "peerBase": "a3526254a716e14e3134de551c3b277379a1096f",
+  "environment": {
+    "node": "24.22.2",
+    "vitest": "4.1.9",
+    "browser": "156.0.8078.80",
+    "dependencies": "Existing retained workspace resolution; removable link; no install/copy",
+    "python": "Existing contracts-validation venv required by incumbent differential checks"
+  },
+  "checks": [
+    {
+      "name": "affected unit suite",
+      "command": "node node_modules/vitest/vitest.mjs run --maxWorkers=2 src/app/world-entry/__tests__ src/world/__tests__/runtime.test.ts src/world/composition/__tests__ src/world/reference-scene/__tests__ src/world/__tests__/illustrated/overview.test.ts src/world/theme/__tests__/replacement.test.ts",
+      "exit": 0,
+      "tests": 318,
+      "files": 14
+    },
+    {
+      "name": "full typecheck",
+      "command": "node node_modules/typescript/bin/tsc -b",
+      "exit": 0
+    },
+    {
+      "name": "scoped lint",
+      "command": "node node_modules/oxlint/bin/oxlint src/world/runtime.ts src/world/composition/index.ts src/world/__tests__/runtime.test.ts src/world/composition/__tests__/composition.test.ts src/app/world-entry/production.ts src/app/world-entry/resolver.ts src/app/world-entry/reference-scene-overview.ts src/app/world-entry/__tests__/reference-scene-root",
+      "exit": 0
+    },
+    {
+      "name": "production build",
+      "command": "node node_modules/vite/bin/vite.js build",
+      "exit": 0,
+      "warning": "Existing large Phaser chunk advisory"
+    },
+    {
+      "name": "new native fixture",
+      "command": "MCR_SCENE_ROOT_OUTPUT=/absolute/new/output node src/app/world-entry/__tests__/reference-scene-root/native.mjs",
+      "exit": 0,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "defaultProductionDenial": "PASS",
+      "receipt": "native.json"
+    },
+    {
+      "name": "retained default-loader native",
+      "command": "QA_WIDTH=390 MCR_WHOLE_ROOT_OUTPUT=/absolute/new/legacy-output node e2e/reference-integrated/whole/native.mjs",
+      "exit": 0,
+      "widths": [
+        390
+      ],
+      "receipt": "legacy-default-loader.json",
+      "note": "Executed with then-uncommitted source changes; retained receipt sourceHashes identify actual files, candidate field is previous base HEAD"
+    },
+    {
+      "name": "planning provenance",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0
+    },
+    {
+      "name": "UI source origin",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exit": 0,
+      "violations": 0
+    },
+    {
+      "name": "assigned frontend boundaries",
+      "command": "python3 scripts/mcr/check-boundaries.py --base a3526254a716e14e3134de551c3b277379a1096f --lane frontend --allow-doc docs/mcr/frontend/reference-scene-root.md",
+      "exit": 0
+    },
+    {
+      "name": "whitespace",
+      "command": "git diff --check",
+      "exit": 0
+    }
+  ],
+  "corrections": [
+    "Host Python lacked incumbent format-checker dependencies; existing pinned venv used instead",
+    "One broad concurrent run exceeded an existing 1-second lazy-route deadline; bounded two-worker affected rerun passed",
+    "First negative native assertion expected outer module-load error; corrected to actual inner world-admission error and reran",
+    "After peer merge sparse checkout omitted newly tracked Auth PNGs; included original tracked assets and reran affected suite/types/build",
+    "Attempted ESLint executable absent; used repository Oxlint script, which passed"
+  ],
+  "limits": [
+    "Positive new-scene journeys use explicit nonauthoritative source resolver, actual root/composition/runtime/default Phaser/Places",
+    "Negative journey uses actual default production loader and denies unchanged UNREVIEWED source before scene asset loading",
+    "Virtual concept records and hashes preserved; no fabricated REVIEWED or physical proof",
+    "No production/live/multiuser/device/full-art-fidelity/global-parent acceptance",
+    "Original FE07/FE14/FE19 dispositions and exact next owners recorded in reference-scene-root.md"
+  ],
+  "captureReview": {
+    "status": "INSPECTED",
+    "captures": [
+      "world-360.png",
+      "map-430.png"
+    ],
+    "finding": "Actual scene and four virtual labels visible; no fidelity acceptance inferred"
+  },
+  "evidenceSha256": {
+    "legacy-default-loader.json": "c05beafe8b14d7ff5456dfb1411ee82d47f2fcb6a4590c996b8404337acd2d62",
+    "map-360.png": "315971ed3a7cd0b68d34249a4ed9adc399a693ddf3decc81a528096e31770297",
+    "map-390.png": "06601d3637df7bc7df853612c0207782907f93d096d7e48e7c76c8bbbacb1b4d",
+    "map-430.png": "982ca1206d7ab955d30fbd9ae23fcf7e510ce91bea6c4f8e519274f9a15d8017",
+    "native.json": "277f47df9c8500331299c33d3f0e5fad0c9f452af9052198e43d2ff75ac8e55f",
+    "world-360.png": "cd2bf97228dcb480b78b840af1982b0bcdf6aba5e060cade481ad03359a498e0",
+    "world-390.png": "7bd179664092f167d634e039fb10a52423a7b440f638d2a9d1ce81f3b7110c89",
+    "world-430.png": "da3fc287e24f70939e8131859d9aa542bfc3b57b1c28f6302493bad40f22945f"
+  }
+}

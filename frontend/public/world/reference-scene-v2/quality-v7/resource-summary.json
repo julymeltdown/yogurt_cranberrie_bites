@@ -1,0 +1,33 @@
+{
+  "version": 7,
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "themes": [
+    {
+      "theme_id": "REVENGE",
+      "bytes": 1712617,
+      "pixels": 2043904,
+      "atlas_sha256": "sha256:7cb3dc89ef4afd11914141ac14cf748b84c28b0acc42fc3de615477e42492dcf"
+    },
+    {
+      "theme_id": "PARADE",
+      "bytes": 1733123,
+      "pixels": 2043904,
+      "atlas_sha256": "sha256:99fd6891a0e8b6fba627e6c92e3aba24726cffe84500169f5f4b8e766d8ccbdf"
+    },
+    {
+      "theme_id": "DANGER",
+      "bytes": 1715601,
+      "pixels": 2043904,
+      "atlas_sha256": "sha256:589def1802e6c7ab240b3766465de18ce214c9dc14811ed27e5c460c83819942"
+    }
+  ],
+  "ground": {
+    "id": "quality_v6_shared_ground",
+    "path": "world/reference-scene-v2/quality-v6/ground.png",
+    "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+    "width_px": 768,
+    "height_px": 1296,
+    "bytes": 531480
+  }
+}

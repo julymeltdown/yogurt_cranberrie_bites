@@ -3,6 +3,7 @@ export type { MeetingBeaconController, MeetingBeaconState, BeaconDraft, DetailPh
 export type { MeetingBeaconOptions, MeetingAuthority, MeetingAuthorityPort, MeetingPhotoPort, QualifiedMeetingPhoto } from './model/ports'
 export type { Audience, MeetBeacon, MeetingDescription } from './model/contract'
 export { audienceKey } from './model/contract'
+export type { MeetingPhotoConfiguration } from './model/photo-client'
 export { MeetingBeaconForm, MeetingBeaconDetail } from './ui/MeetingBeacon'
 export { ExplicitArrivalControls } from './ui/ExplicitArrivalControls'
 export type { ExplicitArrivalControlsProps, ExplicitArrivalIntent, ArrivalState } from './ui/ExplicitArrivalControls'
