@@ -13,7 +13,8 @@ import { chromium, expect } from '@playwright/test'
 const slot = process.env.MCR_NATIVE_SLOT
 assert(/^ARCHIVE-ROOT-204-\d{12}Z$/.test(slot ?? ''), 'Fresh named Archive Root 204 offer/ACCEPT required')
 const repo = resolve(import.meta.dirname, '../../../../..'), frontend = resolve(repo, 'frontend')
-const out = resolve(repo, 'docs/mcr/evidence/archive-root-composition/native')
+const evidence = resolve(repo, 'docs/mcr/evidence/archive-root-composition')
+const out = resolve(evidence, 'native')
 const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim()
 const head = git('rev-parse', 'HEAD')
 assert.equal(head, process.env.MCR_ARCHIVE_ROOT_HEAD, 'Exact qualified combined source HEAD required')
@@ -24,7 +25,10 @@ async function size(path) {
   let total = 0
   for (const e of await readdir(path, { withFileTypes: true }).catch(() => [])) {
     const p = resolve(path, e.name)
-    total += e.isDirectory() ? await size(p) : (await lstat(p)).size
+    total += e.isDirectory() ? await size(p) : await lstat(p).then(s => s.size, error => {
+      if (error.code === 'ENOENT') return 0 // Browser cache entries may disappear during a sample.
+      throw error
+    })
   }
   return total
 }
@@ -52,7 +56,7 @@ let server, browser, resourceTimer, resourceFailure
 let resourceTask = Promise.resolve()
 async function checkResources() {
   const temporaryBytes = await size(temporary) + await size(resolve(frontend, 'node_modules'))
-  const durableBytes = await size(out), free = await freeGiB()
+  const durableBytes = await size(evidence), free = await freeGiB()
   report.resourceSamples++
   report.sampledPeakWholeBytes = Math.max(report.sampledPeakWholeBytes, temporaryBytes + durableBytes)
   report.sampledPeakTemporaryBytes = Math.max(report.sampledPeakTemporaryBytes, temporaryBytes)
@@ -138,6 +142,7 @@ try {
 } finally {
   clearInterval(resourceTimer)
   await resourceTask
+  if (resourceFailure) { report.result = 'FAIL'; report.resourceFailure = String(resourceFailure) }
   await browser?.close()
   await server?.close()
   if (previousTemporary === undefined) delete process.env.TMPDIR
