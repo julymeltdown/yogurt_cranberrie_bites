@@ -196,6 +196,28 @@ def build_document():
                           {"$ref": "#/components/schemas/OriginErrorResponse"}]}
             target["parameters"].append({"name": "X-MCR-Intent", "in": "header", "required": True,
                                          "schema": {"type": "string", "const": "browser"}})
+        if operation.get("enrollmentContractVersion"):
+            success = target["responses"].pop("200")
+            status = str(operation["successStatus"])
+            target["responses"][status] = success
+            target["x-mcr-enrollment-contract-version"] = "1.0"
+            target["x-mcr-retry"] = "EXPLICIT_SAME_BODY_IDEMPOTENCY_KEY_ONLY" if method == "post" else "NO_AUTOMATIC_REPLAY"
+            target["x-mcr-cookie-binding"] = {
+                "name": "__Secure-mcr-enrollment", "httpOnly": True, "secure": True,
+                "sameSite": "Strict", "path": "/api/auth/enrollment", "credentials": "include"}
+            target["x-mcr-runtime-status"] = "IMPLEMENTATION_IN_PROGRESS"
+            enrollment_errors = {403: ["ACCOUNT_INACTIVE", "PERMISSION_DENIED", "CONSENT_REQUIRED"],
+                404: ["ATTEMPT_INVALID"], 409: ["POLICY_STALE", "IDEMPOTENCY_CONFLICT"],
+                410: ["ATTEMPT_EXPIRED"], 422: ["INVALID_INPUT", "ACKNOWLEDGEMENTS_REQUIRED", "VERIFICATION_FAILED"],
+                503: ["POLICY_UNAVAILABLE", "DEPENDENCY_UNAVAILABLE"]}
+            for code, reasons in enrollment_errors.items():
+                target["responses"][str(code)] = {"description": "Enrollment command or policy denial",
+                    "content": {"application/json": {"schema": {"allOf": [
+                        {"$ref": "#/components/schemas/CoreErrorResponse"},
+                        {"properties": {"details": {"properties": {"reason": {"enum": reasons}}}}}]}}}}
+            if identity == "beginEnrollmentAttempt":
+                success["headers"] = {"Set-Cookie": {"schema": {"type": "string"},
+                    "description": "Opaque browser binding; HttpOnly Secure SameSite=Strict; no Domain; never JavaScript-readable."}}
         document["paths"].setdefault(path, {})[method] = target
     document["paths"] = dict(sorted(document["paths"].items()))
     # Exclude unrelated inherited content DTOs from the browser core surface.
