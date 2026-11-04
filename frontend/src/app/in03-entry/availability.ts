@@ -8,6 +8,7 @@ import { decodeAge } from '../../features/age-status/controller'
 import { decoder, type Page, type Post } from '../../features/event-feed/contract'
 import { page as notificationPage } from '../../features/inbox/model/contract'
 import { decode, handleList, requestList } from '../../features/social-sharing/model/contract'
+import { qualifiedSocialAvailability } from '../social-entry/availability-lifetime'
 
 /** The serving owner pins this to the actual adapter source commit. No default revision. */
 export const sourceRevision: string = import.meta.env.VITE_MCR_IN03_AVAILABILITY_REVISION ?? ''
@@ -114,4 +115,11 @@ export function createIN03Availability(context: SocialContext): IN03Availability
 /** Synchronous construction stays unavailable until the caller explicitly awaits prepare(). */
 export function availability(context: SocialContext): IN03AvailabilityPort | null {
   return /^[0-9a-f]{40}$/.test(sourceRevision) ? createIN03Availability(context) : null
+}
+
+/** Production factory: Root supplies its real incumbent policy + serving-readiness reader.
+ * Unlike the explicit IN03 diagnostic above, this performs no HTTP probes (including /feed).
+ */
+export function productionAvailability(context: SocialContext, incumbent?: SocialAvailabilityPort | null): SocialAvailabilityPort {
+  return qualifiedSocialAvailability(context, incumbent)
 }

@@ -1,0 +1,16 @@
+{
+  "allocation": "FE209-AVAILABILITY-LIFETIME-SOURCE-B-20261104T1742Z",
+  "acceptedAt": "2026-11-04T17:42:34.430631+00:00",
+  "activeUntil": "2026-11-04T17:46:34.430631+00:00",
+  "hardUntil": "2026-11-04T17:47:34.430631+00:00",
+  "source": "0fd3846914e82ddefc3cc7352ebac234ecbd1a91",
+  "guardianSha256": "ac25dad819a2367314c86bd4f02084c18eaaaa034161d42b83d581fa09d9b5f3",
+  "otherNewBytes": 343932928,
+  "otherConservativeReserveBytes": 2147483648,
+  "ownConservativeReserveBytes": 3221225472,
+  "freeBytes": 27001393152,
+  "newBytes": 134217728,
+  "repair": "Retain immutable synthetic reader snapshot; prior13pass/1fail retained, production unchanged",
+  "priorAttemptSource": "46bd06696e567fa001402b3fdcc127a9aed0cf39",
+  "priorAttemptExit": 1
+}

@@ -1,0 +1,21 @@
+{
+  "utc": "2026-11-04T17:42:34.361011+00:00",
+  "source": "46bd06696e567fa001402b3fdcc127a9aed0cf39",
+  "pins": {
+    "docs/mcr/frontend/in03-production-availability.md": "c32c809f7d5bf3df166daf0c7ccf44c90eacdaae7fdd5a01a2f3770682b7c7ec",
+    "frontend/e2e/real/social/serve.mjs": "a103738c0acb748ba5ea24d6e336e029669e2c1875f05d7d276f1e611ea830d0",
+    "frontend/e2e/real/social/serve.test.mjs": "7f3e4fa0a180bb0f8236908afd4f7ff90830a9ee415c8cbb5cf95744f0772821",
+    "frontend/src/app/feed-entry/__tests__/qualify.mjs": "296ade3a2f7ff0483d94cf6a3a5a8523e420ab9f450464777e9fd00fb78781f1",
+    "frontend/src/app/in03-entry/availability.ts": "84ab5f8f6aac84052a1e3d4d33a1755b58a0650f7c377ebd6a92e1a040aeef9c",
+    "frontend/src/app/social-entry/__tests__/availability-lifetime/lifetime.test.ts": "d05a655b27b7d77cc1a25b974046d2fa7395d6e153dd00d23aa3f2363d5bd40d",
+    "frontend/src/app/social-entry/__tests__/availability-lifetime/root.test.tsx": "90861551f2a9743f5a560240ebcb9674b33ac87ff70ac93a5bf4a1ed8ccd677a",
+    "frontend/src/app/social-entry/__tests__/availability-lifetime/tsconfig.json": "10477472f9f991a5bd1a152a2aa71fb39fa170feb9c21c0847d5913ff891c0ce",
+    "frontend/src/app/social-entry/__tests__/availability-lifetime/vitest.config.ts": "cd5a15a08fa7caa43e058c015ee7fc5ecc4b25c1c00b510a3abddc84752f561e",
+    "frontend/src/app/social-entry/availability-lifetime.ts": "3f17f2516d2d58a5943302c627298f6ceaf83c218acb1f4a01cf6a633f55b13f",
+    "frontend/src/app/world-panels/social.tsx": "f560ae58cb5dcef2f56b439a68a7de3a77f3d9053b5be47d9956f6065d6ae9bb"
+  },
+  "guardianSha256": "d53fb0ad86b991f56827a95b01cb6036f06f17bab51aa13e138132bd3f22d304",
+  "freeBytes": 27001393152,
+  "previousFULL": "2026-11-04T17:36:01.173417Z",
+  "status": ""
+}

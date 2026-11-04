@@ -1,0 +1,42 @@
+{
+  "utc": "2026-11-04T17:42:47.342143+00:00",
+  "allocation": "FE209-AVAILABILITY-LIFETIME-SOURCE-B-20261104T1742Z",
+  "source": "46bd06696e567fa001402b3fdcc127a9aed0cf39",
+  "exit": 1,
+  "initialWholeBytes": 1633698420,
+  "finalWholeBytes": 1633701355,
+  "initial": {
+    "files": 1303,
+    "bytes": 16834498,
+    "temporaryBytes": 0,
+    "freeBytes": 26956075008
+  },
+  "final": {
+    "files": 1307,
+    "bytes": 16837433,
+    "temporaryBytes": 0,
+    "freeBytes": 26946482176
+  },
+  "peakAllProcesses": 5,
+  "peakAllRssBytes": 1140228096,
+  "violations": [],
+  "ownedPidsObserved": [
+    48444,
+    48536,
+    48539,
+    48540,
+    48559,
+    48565,
+    48761,
+    48769,
+    48809,
+    48838,
+    48941,
+    48942,
+    48943,
+    48947,
+    48952,
+    48962
+  ],
+  "independentGuardianIntervalMs": 250
+}

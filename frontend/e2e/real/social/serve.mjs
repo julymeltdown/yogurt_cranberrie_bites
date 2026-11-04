@@ -57,13 +57,15 @@ export function acceptsRequest(request, config) {
   } catch { return false }
 }
 
-export function servingOptions(config, paths, plugins = []) {
+export function servingOptions(config, paths, plugins, eventId) {
+  if (typeof eventId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(eventId)) return unavailable()
   const origin = new URL(config.origin)
   return {
     configFile: false, root: paths.frontend, cacheDir: paths.cache, plugins,
     // Neither root .env files nor ambient VITE_* values are exposed to this harness.
     envDir: false, envPrefix: [], clearScreen: false, logLevel: 'silent',
-    define: { 'import.meta.env.VITE_MCR_IN03_AVAILABILITY_REVISION': JSON.stringify(config.availabilityRevision) },
+    define: { 'import.meta.env.VITE_MCR_IN03_AVAILABILITY_REVISION': JSON.stringify(config.availabilityRevision),
+      'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify(eventId) },
     server: {
       host: '127.0.0.1', port: Number(origin.port), strictPort: true, origin: config.origin,
       allowedHosts: ['127.0.0.1'], cors: false, hmr: false, ws: false,
@@ -103,11 +105,15 @@ export async function serve(env = process.env) {
     const source = execFileSync('git', ['show', `${pin}:${path}`], { cwd: actualRepository, stdio: ['ignore', 'pipe', 'ignore'] })
     if (digest(source) !== digest(readFileSync(resolve(actualRepository, path)))) return unavailable()
   }
+  let eventId = null
   const readPacket = () => {
     const packet = readRunConfig(config.runtimePacket)
     if (!Number.isSafeInteger(packet.pid) || packet.pid < 2 || packet.uid !== process.getuid()) return unavailable()
     process.kill(packet.pid, 0)
-    return bindRuntimePacket(config, packet)
+    const deadline = bindRuntimePacket(config, packet)
+    if (eventId !== null && packet.runtime.eventId !== eventId) return unavailable()
+    eventId = packet.runtime.eventId
+    return deadline
   }
   readPacket()
   let server = null, timer = null, stopping = false
@@ -130,7 +136,7 @@ export async function serve(env = process.env) {
           response.writeHead(421, { 'Content-Type': 'text/plain', 'Cache-Control': 'no-store' }); response.end('Origin unavailable.')
         })
       } }, react(), tailwindcss(),
-    ]))
+    ], eventId))
     process.on('SIGTERM', terminate); process.on('SIGINT', terminate)
     timer = setInterval(() => { try { if (readPacket() <= Date.now()) throw Error(); } catch { void stop('borrowed-runtime-or-clock-ended') } }, 250)
     readPacket(); await server.listen()

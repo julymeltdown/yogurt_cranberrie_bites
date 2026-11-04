@@ -1,4 +1,4 @@
-import { useCallback, useMemo, type ReactNode } from 'react'
+import { useCallback, useLayoutEffect, useMemo, useState, type ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SocialFeatures, SocialNavigationBoundary } from '../social-composition'
 import { canonicalSharingRequests } from '../social-composition/sharing'
@@ -8,10 +8,11 @@ import type { ShellBootstrap } from '../ports'
 import './social.css'
 import { usePorts } from '../access'
 import { useWorldPanelOwnership } from './ownership'
+import { createSocialAvailabilityLifetime, type SocialAvailabilityFactory } from '../social-entry/availability-lifetime'
 /** Explicit application producer configuration; C03 capability alone never asserts live service readiness. */
 export interface SocialProductionPorts {
   /** Pure projection factory; reads/observers belong to the returned port, not render-time side effects. */
-  availability(context: SocialContext): SocialAvailabilityPort | null
+  availability: SocialAvailabilityFactory
   readonly requests?: SocialOptions['requests']
   readonly media?: SocialOptions['media']
   readonly avatars?: SocialOptions['avatars']
@@ -21,10 +22,19 @@ const unavailable: SocialAvailabilityPort = { read: () => null, subscribe: () =>
 export function RootSocialFeatures({ bootstrap, scope, children }: { bootstrap: ShellBootstrap; scope: PrivacyScope | null; children: ReactNode }) {
   const ports = usePorts(), navigate = useNavigate(), ownership = useWorldPanelOwnership()
   const { auth, social } = ports
-  const availability = useMemo(() => {
-    if (!auth || !scope || !auth.privacy.isCurrent(scope)) return unavailable
-    try { return social?.availability({ auth, bootstrap, scope }) ?? unavailable } catch { return unavailable }
+  const context = useMemo(() => {
+    if (!auth || !scope || !social) return null
+    return { auth, bootstrap, scope }
   }, [auth, bootstrap, scope, social])
+  const [binding, setBinding] = useState<{ context: SocialContext; port: ReturnType<typeof createSocialAvailabilityLifetime> } | null>(null)
+  useLayoutEffect(() => {
+    if (!ownership.social || !context || !social) return
+    const lifetime = createSocialAvailabilityLifetime(context, value => social.availability(value))
+    setBinding({ context, port: lifetime })
+    lifetime.start()
+    return lifetime.dispose
+  }, [ownership.social, context, social])
+  const availability = ownership.social && context && binding?.context === context ? binding.port : unavailable
   const navigateSocial = useCallback((destination: SocialDestination) => {
     if (auth && scope && destination.scope.userId === scope.userId && destination.scope.eventId === scope.eventId
       && destination.scope.generation === scope.generation && destination.scope.policyGeneration === scope.policyGeneration && destination.scope.gate === scope.gate

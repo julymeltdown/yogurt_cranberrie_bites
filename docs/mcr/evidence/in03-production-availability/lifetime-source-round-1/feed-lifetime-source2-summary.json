@@ -1,0 +1,61 @@
+{
+  "allocation": "FE209-AVAILABILITY-LIFETIME-SOURCE-B-20261104T1742Z",
+  "run": "lifetime-source2",
+  "source": "46bd06696e567fa001402b3fdcc127a9aed0cf39",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "initial": {
+    "files": 1312,
+    "bytes": 16848897,
+    "temporaryBytes": 0,
+    "freeBytes": 26948902912
+  },
+  "jobs": [
+    {
+      "name": "social-lifetime-types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "src/app/social-entry/__tests__/availability-lifetime/tsconfig.json",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--pretty",
+        "false"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T17:43:17.841Z",
+      "milliseconds": 2903
+    },
+    {
+      "name": "social-lifetime-unit",
+      "args": [
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/social-entry/__tests__/availability-lifetime/vitest.config.ts"
+      ],
+      "exit": 1,
+      "signal": null,
+      "startUTC": "2026-11-04T17:43:20.776Z",
+      "milliseconds": 1853
+    }
+  ],
+  "liveIN03": "NOT_RUN",
+  "status": "FAILED",
+  "error": "Failed social-lifetime-unit; retain evidence and repair only inside the accepted lease",
+  "final": {
+    "files": 1314,
+    "bytes": 16852419,
+    "temporaryBytes": 0,
+    "freeBytes": 26948485120
+  },
+  "releasedUTC": "2026-11-04T17:43:22.633Z",
+  "linkRemoved": true,
+  "peakProcesses": 4,
+  "peakRssBytes": 1026670592
+}

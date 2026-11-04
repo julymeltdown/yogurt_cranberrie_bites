@@ -30,7 +30,7 @@ const env = { ...process.env, PATH: dirname(pinned) + ':' + process.env.PATH, TM
 delete env.NODE_COMPILE_CACHE
 assert.equal(execFileSync('node', ['--version'], { env, encoding: 'utf8' }).trim(), 'v24.22.2')
 const sources = ['frontend/src/app/feed-entry', 'docs/mcr/frontend/feed-root-composition.md', 'docs/mcr/evidence/feed-root-composition',
-  'frontend/src/app/in03-entry', 'docs/mcr/frontend/in03-production-availability.md', 'docs/mcr/evidence/in03-production-availability',
+  'frontend/src/app/in03-entry', 'frontend/src/app/social-entry', 'frontend/src/app/world-panels/social.tsx', 'docs/mcr/frontend/in03-production-availability.md', 'docs/mcr/evidence/in03-production-availability',
   'frontend/src/features/feed-thread/FeedThread.tsx', 'frontend/src/features/event-feed/__tests__/thread-author',
   'frontend/e2e/real/social', 'frontend/e2e/real/social.spec.ts', 'frontend/src/shared/api/__tests__/c07-social-client',
   'docs/mcr/frontend/c07-social-client-in03.md', 'docs/mcr/frontend/in03-public-journey.md', 'docs/mcr/evidence/c07-social-client-in03', 'docs/mcr/evidence/in03-public-journey'].map(path => join(root, path))
@@ -85,6 +85,13 @@ if (process.env.MCR_IN03_SERVE_SOURCE === '1') jobs.splice(0, jobs.length,
   ['in03-serving-guards', ['--test', 'e2e/real/social/serve.test.mjs']],
   ['in03-serving-syntax', ['--check', 'e2e/real/social/serve.mjs']],
   ['in03-serving-lint', ['node_modules/oxlint/bin/oxlint', '--deny-warnings', 'e2e/real/social/serve.mjs', 'e2e/real/social/serve.test.mjs']],
+  ['supervisor-syntax', ['--check', prefix + 'qualify.mjs']])
+if (process.env.MCR_SOCIAL_LIFETIME_SOURCE === '1') jobs.splice(0, jobs.length,
+  ['social-lifetime-types', ['node_modules/typescript/bin/tsc', '-p', 'src/app/social-entry/__tests__/availability-lifetime/tsconfig.json', '--noEmit', '--incremental', 'false', '--pretty', 'false']],
+  ['social-lifetime-unit', ['node_modules/vitest/vitest.mjs', 'run', '--configLoader', 'native', '--config', 'src/app/social-entry/__tests__/availability-lifetime/vitest.config.ts']],
+  ['social-lifetime-lint', ['node_modules/oxlint/bin/oxlint', '--deny-warnings', 'src/app/social-entry', 'src/app/world-panels/social.tsx', 'src/app/in03-entry/availability.ts', 'e2e/real/social/serve.mjs', 'e2e/real/social/serve.test.mjs']],
+  ['in03-serving-changed-guards', ['--test', 'e2e/real/social/serve.test.mjs']],
+  ['in03-serving-syntax', ['--check', 'e2e/real/social/serve.mjs']],
   ['supervisor-syntax', ['--check', prefix + 'qualify.mjs']])
 const summary = { allocation, run, source: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
   node: process.version, nodeSha256: hash(pinned), lockSha256: hash(join(frontend, 'pnpm-lock.yaml')), initial, jobs: [], liveIN03: 'NOT_RUN', status: 'IN_PROGRESS' }

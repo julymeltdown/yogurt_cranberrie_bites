@@ -1,0 +1,15 @@
+{
+  "allocation": "FE209-AVAILABILITY-LIFETIME-SOURCE-B-20261104T1742Z",
+  "status": "FULL",
+  "utc": "2026-11-04T17:44:11.662269+00:00",
+  "source": "0fd3846914e82ddefc3cc7352ebac234ecbd1a91",
+  "actualPidsGroups": [],
+  "linkTmpCache": [],
+  "freeBytes": 27261255680,
+  "attempts": 3,
+  "peakAllProcesses": 6,
+  "peakAllRssBytes": 1184350208,
+  "actualIN03": "NOT_RUN",
+  "server": "NOT_RUN",
+  "browser": "NOT_RUN"
+}

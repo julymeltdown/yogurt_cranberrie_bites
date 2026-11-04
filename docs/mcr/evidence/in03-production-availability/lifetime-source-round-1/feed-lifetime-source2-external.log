@@ -1,0 +1,3 @@
+{"name":"social-lifetime-types","args":["node_modules/typescript/bin/tsc","-p","src/app/social-entry/__tests__/availability-lifetime/tsconfig.json","--noEmit","--incremental","false","--pretty","false"],"exit":0,"signal":null,"startUTC":"2026-11-04T17:43:17.841Z","milliseconds":2903}
+{"name":"social-lifetime-unit","args":["node_modules/vitest/vitest.mjs","run","--configLoader","native","--config","src/app/social-entry/__tests__/availability-lifetime/vitest.config.ts"],"exit":1,"signal":null,"startUTC":"2026-11-04T17:43:20.776Z","milliseconds":1853}
+{"status":"FAILED","final":{"files":1314,"bytes":16852419,"temporaryBytes":0,"freeBytes":26948485120},"releasedUTC":"2026-11-04T17:43:22.633Z","linkRemoved":true}

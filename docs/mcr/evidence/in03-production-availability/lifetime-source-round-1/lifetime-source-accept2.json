@@ -1,0 +1,16 @@
+{
+  "allocation": "FE209-AVAILABILITY-LIFETIME-SOURCE-B-20261104T1742Z",
+  "acceptedAt": "2026-11-04T17:42:34.430631+00:00",
+  "activeUntil": "2026-11-04T17:46:34.430631+00:00",
+  "hardUntil": "2026-11-04T17:47:34.430631+00:00",
+  "source": "46bd06696e567fa001402b3fdcc127a9aed0cf39",
+  "guardianSha256": "d53fb0ad86b991f56827a95b01cb6036f06f17bab51aa13e138132bd3f22d304",
+  "otherNewBytes": 343932928,
+  "otherConservativeReserveBytes": 2147483648,
+  "ownConservativeReserveBytes": 3221225472,
+  "freeBytes": 27001393152,
+  "newBytes": 134217728,
+  "repair": "Self-imposed file ceiling 1400 increased to 1800; offered bytes/process/clock unchanged; failed attempt retained",
+  "priorAttemptSource": "46bd06696e567fa001402b3fdcc127a9aed0cf39",
+  "priorAttemptExit": 1
+}

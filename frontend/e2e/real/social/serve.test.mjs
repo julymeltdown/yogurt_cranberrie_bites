@@ -65,9 +65,12 @@ test('rejects absolute/protocol-relative paths, traversal and invalid encoding',
   }
 })
 test('uses isolated Vite options, pinned public revision and a cookie/Origin-preserving API-only proxy', () => {
-  const options = servingOptions(configuration(), { repository: '/unit/repository', frontend: '/unit/repository/frontend', dependencies: '/unit/deps', cache: '/unit/private-cache' })
+  const options = servingOptions(configuration(), { repository: '/unit/repository', frontend: '/unit/repository/frontend', dependencies: '/unit/deps', cache: '/unit/private-cache' }, [], packet().event_id)
   assert.equal(options.configFile, false); assert.equal(options.envDir, false); assert.deepEqual(options.envPrefix, [])
   assert.equal(options.define['import.meta.env.VITE_MCR_IN03_AVAILABILITY_REVISION'], JSON.stringify(configuration().availabilityRevision))
+  assert.equal(options.define['import.meta.env.VITE_MCR_EVENT_ID'], JSON.stringify(packet().event_id))
+  assert.throws(() => servingOptions(configuration(), {}, [], undefined))
+  assert.throws(() => servingOptions(configuration(), {}, [], 'guessed-event'))
   assert.equal(options.server.host, '127.0.0.1'); assert.equal(options.server.port, 5173); assert.equal(options.server.strictPort, true)
   assert.equal(options.server.hmr, false); assert.equal(options.server.ws, false); assert.equal(options.server.cors, false)
   const [pattern, proxy] = Object.entries(options.server.proxy)[0]
@@ -77,7 +80,7 @@ test('uses isolated Vite options, pinned public revision and a cookie/Origin-pre
   assert.equal(proxy.rewrite, undefined); assert.equal(proxy.headers, undefined); assert.equal(proxy.cookieDomainRewrite, undefined)
 })
 test('proxy failure emits an unqualified plain 502, never a fabricated domain denial or 200', () => {
-  const proxy = Object.values(servingOptions(configuration(), {}).server.proxy)[0]
+  const proxy = Object.values(servingOptions(configuration(), {}, [], packet().event_id).server.proxy)[0]
   let handler, status, content, body
   proxy.configure({ on(event, callback) { assert.equal(event, 'error'); handler = callback } })
   handler(Error('unit-private-upstream-detail'), {}, { headersSent: false, writeHead(code, headers) { status = code; content = headers }, end(value) { body = value } })

@@ -1,0 +1,31 @@
+
+ RUN  v4.1.9 <FEED_WORKTREE>/frontend
+
+stderr | src/app/social-entry/__tests__/availability-lifetime/root.test.tsx > replacing bootstrap withdraws the old port before the next factory and policy loss clears current UI
+The result of getSnapshot should be cached to avoid an infinite loop
+
+ ❯ src/app/social-entry/__tests__/availability-lifetime/root.test.tsx (2 tests | 1 failed) 30ms
+   × replacing bootstrap withdraws the old port before the next factory and policy loss clears current UI 8ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/social-entry/__tests__/availability-lifetime/root.test.tsx > replacing bootstrap withdraws the old port before the next factory and policy loss clears current UI
+Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+ ❯ getRootForUpdatedFiber ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:4624:11
+ ❯ enqueueConcurrentRenderForLane ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:4588:14
+ ❯ forceStoreRerender ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8261:18
+ ❯ updateStoreInstance ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8241:39
+ ❯ Object.react_stack_bottom_frame ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20
+ ❯ runWithFiberInDEV ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13
+ ❯ commitHookEffectListMount ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29
+ ❯ commitHookPassiveMountEffects ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11
+ ❯ commitPassiveMountOnFiber ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13
+ ❯ recursivelyTraversePassiveMountEffects ../../../mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 13 passed (14)
+   Start at  02:43:20
+   Duration  1.64s (transform 439ms, setup 0ms, import 798ms, tests 142ms, environment 522ms)

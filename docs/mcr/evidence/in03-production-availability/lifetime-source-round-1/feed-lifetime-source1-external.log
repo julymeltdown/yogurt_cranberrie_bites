@@ -1,0 +1,4 @@
+{"name":"social-lifetime-types","args":["node_modules/typescript/bin/tsc","-p","src/app/social-entry/__tests__/availability-lifetime/tsconfig.json","--noEmit","--incremental","false","--pretty","false"],"exit":0,"signal":null,"startUTC":"2026-11-04T17:42:43.034Z","milliseconds":2936}
+{"guardViolation":{"utc":"2026-11-04T17:42:47.064Z","state":{"files":1414,"bytes":27252609,"temporaryBytes":10417702,"freeBytes":26936504320},"processes":{"count":4,"rssBytes":849608704}}}
+{"name":"social-lifetime-unit","args":["node_modules/vitest/vitest.mjs","run","--configLoader","native","--config","src/app/social-entry/__tests__/availability-lifetime/vitest.config.ts"],"exit":143,"signal":null,"startUTC":"2026-11-04T17:42:46.007Z","milliseconds":1068}
+{"status":"FAILED","final":{"files":1306,"bytes":16835324,"temporaryBytes":0,"freeBytes":26947178496},"releasedUTC":"2026-11-04T17:42:47.084Z","linkRemoved":true}

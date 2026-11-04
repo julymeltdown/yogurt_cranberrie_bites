@@ -1,0 +1,13 @@
+{
+  "allocation": "FE209-AVAILABILITY-LIFETIME-SOURCE-B-20261104T1742Z",
+  "acceptedAt": "2026-11-04T17:42:34.430631+00:00",
+  "activeUntil": "2026-11-04T17:46:34.430631+00:00",
+  "hardUntil": "2026-11-04T17:47:34.430631+00:00",
+  "source": "46bd06696e567fa001402b3fdcc127a9aed0cf39",
+  "guardianSha256": "64b57ec51fcde30e5a222c6981561b66d2349d0fd249a5399e0eaa9b02f18a0c",
+  "otherNewBytes": 343932928,
+  "otherConservativeReserveBytes": 2147483648,
+  "ownConservativeReserveBytes": 3221225472,
+  "freeBytes": 27001393152,
+  "newBytes": 134217728
+}
