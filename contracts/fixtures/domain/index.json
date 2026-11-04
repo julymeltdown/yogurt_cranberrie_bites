@@ -233,5 +233,45 @@
     "file": "closure-resume-invalid-job.json",
     "schema": "admin.CloseEvent",
     "expected": "reject"
+  },
+  {
+    "file": "wall-tools-b/own-fill-256.json",
+    "schema": "mural.OwnAction",
+    "expected": "accept"
+  },
+  {
+    "file": "wall-tools-b/tools-qualified.json",
+    "schema": "mural.ToolCapabilities",
+    "expected": "accept"
+  },
+  {
+    "file": "wall-tools-b/fill-257.json",
+    "schema": "mural.OwnAction",
+    "expected": "reject"
+  },
+  {
+    "file": "wall-tools-b/false-pixel-delta.json",
+    "schema": "mural.OwnAction",
+    "expected": "reject"
+  },
+  {
+    "file": "wall-tools-b/private-history-leak.json",
+    "schema": "mural.OwnAction",
+    "expected": "reject"
+  },
+  {
+    "file": "wall-tools-b/wrong-background.json",
+    "schema": "mural.ToolCapabilities",
+    "expected": "reject"
+  },
+  {
+    "file": "wall-tools-b/budget-513.json",
+    "schema": "mural.ToolCapabilities",
+    "expected": "reject"
+  },
+  {
+    "file": "wall-tools-b/foreign-history.json",
+    "schema": "mural.ToolCapabilities",
+    "expected": "reject"
   }
 ]
