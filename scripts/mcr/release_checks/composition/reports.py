@@ -27,7 +27,7 @@ def rust_counts(data):
     source.require(len(summaries) == 1, "rust.summary")
     status, passed, failed, skipped, measured, _ = summaries[0]
     passed, failed, skipped, measured = map(int, (passed, failed, skipped, measured))
-    cases = re.findall(r"^test (\S+) \.\.\. (ok|FAILED|ignored)(?:\s.*)?$", text, re.M)
+    cases = re.findall(r"^test (\S+) \.\.\. (ok|FAILED|ignored)(?:[ \t,][^\n]*)?$", text, re.M)
     running = re.findall(r"^running (\d+) tests?$", text, re.M)
     source.require(len(running) == 1 and int(running[0]) == passed + failed + skipped
                    and len(cases) == int(running[0]) and measured == 0, "rust.inventory")
