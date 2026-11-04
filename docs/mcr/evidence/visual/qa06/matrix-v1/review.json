@@ -1,0 +1,43 @@
+{
+  "task": "QA06",
+  "status": "DESKTOP_EVIDENCE_VERIFIED_ORIGINAL_TASK_IN_PROGRESS",
+  "modalReportSha256": "d37f4ef2b90b6b6345d8aa76fc9f6cc1cc2bfc94c6343a5a74a5c61c4a863bd6",
+  "reportSha256": "e84d5f2676b9c13fa9dadac8f80177868d18066a05560c04ebd3adea812ae264",
+  "checks": [
+    {
+      "name": "78 screen/width/era records and9 source cases; every capture PNG has exact viewport dimensions",
+      "status": "PASS",
+      "screenshots": 135
+    },
+    {
+      "name": "No recorded page errors/overflow/broken DOM images. Baseline enabled targets/reachability and reduced-height states pass. Nine supplementary native-modal cases prove44px active controls/focus/scroll/return; intentionally blocked background excluded",
+      "status": "PASS"
+    },
+    {
+      "name": "Nine source cases render six sprites/one game, preserve UNREVIEWED map7004, and separately deny default production with no canvas/socket",
+      "status": "PASS"
+    },
+    {
+      "name": "Physical iOS Safari / Android Chrome, software keyboard and hardware safe areas",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "Qualified Wall visual acceptance",
+      "status": "NOT_RUN"
+    },
+    {
+      "name": "Comparison11sections and contact sheets render with all local image links loaded",
+      "status": "PASS"
+    }
+  ],
+  "sourceDefects": [],
+  "requiredOpenCriteria": [
+    "Physical iOS Safari",
+    "Physical Android Chrome",
+    "Actual software keyboard",
+    "Actual hardware safe areas",
+    "Qualified current-world Wall visuals",
+    "Genuine product art/release admission"
+  ],
+  "physicalDeviceEmulationIsAcceptance": false
+}

@@ -1,0 +1,1568 @@
+{
+  "task": "QA06",
+  "qualification": "DESKTOP_NATIVE_MODAL_ACTIVE_SCOPE_ONLY",
+  "candidate": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "harnessSha256": "463f0612fff97ce631fed483da5e917ad41d7acb1e41c3c9e4f931f31d719120",
+  "cases": [
+    {
+      "width": 360,
+      "era": "REVENGE",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-revenge-360.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 282,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 34,
+            "right": 207.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 34,
+            "right": 296.984375
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 262.984375,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-revenge-360.png"
+    },
+    {
+      "width": 360,
+      "era": "PARADE",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-parade-360.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 282,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 34,
+            "right": 207.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 34,
+            "right": 296.984375
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 262.984375,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-parade-360.png"
+    },
+    {
+      "width": 360,
+      "era": "DANGER",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-danger-360.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 282,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 34,
+            "right": 326
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 292,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 34,
+            "right": 207.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 34,
+            "right": 296.984375
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 262.984375,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-danger-360.png"
+    },
+    {
+      "width": 390,
+      "era": "REVENGE",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-revenge-390.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 312,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 34,
+            "right": 207.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 34,
+            "right": 353.140625
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 319.140625,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-revenge-390.png"
+    },
+    {
+      "width": 390,
+      "era": "PARADE",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-parade-390.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 312,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 34,
+            "right": 207.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 34,
+            "right": 353.140625
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 319.140625,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-parade-390.png"
+    },
+    {
+      "width": 390,
+      "era": "DANGER",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-danger-390.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 312,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 34,
+            "right": 356
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 322,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 34,
+            "right": 207.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 34,
+            "right": 353.140625
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 319.140625,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-danger-390.png"
+    },
+    {
+      "width": 430,
+      "era": "REVENGE",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-revenge-430.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 351,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 35,
+            "right": 208.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 35,
+            "right": 354.140625
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 319.140625,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-revenge-430.png"
+    },
+    {
+      "width": 430,
+      "era": "PARADE",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-parade-430.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 351,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 35,
+            "right": 208.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 35,
+            "right": 354.140625
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 319.140625,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-parade-430.png"
+    },
+    {
+      "width": 430,
+      "era": "DANGER",
+      "errors": [],
+      "status": "PASS",
+      "initialScreenshot": "modal-search-danger-430.png",
+      "backgroundFocusBlocked": true,
+      "controls": [
+        {
+          "reachable": true,
+          "rect": {
+            "top": 57,
+            "bottom": 101,
+            "left": 351,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Close map information",
+          "width": 44,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 131,
+            "bottom": 175,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "INPUT",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 189,
+            "bottom": 233,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual Culture Park lawn",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 272.1875,
+            "bottom": 316.1875,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual stage",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 331.375,
+            "bottom": 375.375,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual gift corner",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 215.5625,
+            "bottom": 259.5625,
+            "left": 35,
+            "right": 395
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Virtual pixel wall",
+          "width": 360,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 300.75,
+            "bottom": 344.75,
+            "left": 35,
+            "right": 208.53125
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Refresh place information",
+          "width": 173.53125,
+          "height": 44,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": true
+        },
+        {
+          "reachable": true,
+          "rect": {
+            "top": 306.75,
+            "bottom": 369.75,
+            "left": 35,
+            "right": 354.140625
+          },
+          "dialogRect": {
+            "top": 42,
+            "bottom": 378
+          },
+          "name": "Controls and meeting safety",
+          "width": 319.140625,
+          "height": 63,
+          "focused": true,
+          "inDialog": true,
+          "fullyVisible": true,
+          "centerHit": false
+        }
+      ],
+      "reverseTabInside": true,
+      "returnedFocus": "Places",
+      "closedScreenshot": "modal-closed-danger-430.png"
+    }
+  ],
+  "status": "PASS",
+  "physicalKeyboard": "NOT_RUN",
+  "browser": "156.0.8078.80"
+}

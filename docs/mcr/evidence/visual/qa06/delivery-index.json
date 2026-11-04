@@ -1,0 +1,2145 @@
+{
+  "task": "QA06",
+  "status": "IN_PROGRESS",
+  "sourceCommit": "59f88f9c1d8d3b1aa4568581b8c496981208e371",
+  "baseline": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "artifacts": [
+    {
+      "path": "candidate-review/customize-reference-fit-390.jpg",
+      "bytes": 56020,
+      "sha256": "931b53da629dea709d3bf53c743bed9c3be61021f4818a01e4bb8f620f66dd7c"
+    },
+    {
+      "path": "candidate-review/feed-short-390.png",
+      "bytes": 61389,
+      "sha256": "5113d80e90beefb592f366755676e2cbf1df74bcbe2ac091d222f6524c1db997"
+    },
+    {
+      "path": "candidate-review/map-parade-390-h754.png",
+      "bytes": 398644,
+      "sha256": "17d54cf40769596621371e47264e00f50e512e82f4ea229297c437f4a24b0a15"
+    },
+    {
+      "path": "candidate-review/me-cold-390.png",
+      "bytes": 65288,
+      "sha256": "99415d5cf4c798d4a2aa1df0ce85b760656cfb2f4d08b8ec19c7b2a04c12b768"
+    },
+    {
+      "path": "candidate-review/meet-390x637.png",
+      "bytes": 81023,
+      "sha256": "5ebc158f41f09930c7f29b55e0f4fb4099c1ec738936f59a562120711cfd451e"
+    },
+    {
+      "path": "candidate-review/review.json",
+      "bytes": 4548,
+      "sha256": "f658bf09dee51774dd9f92459692fa3bb7769a3bea03eca1063a58a642d33aed"
+    },
+    {
+      "path": "candidate-review/world-parade-390-h554.png",
+      "bytes": 231578,
+      "sha256": "d1f18ce82bb742fd6f32cb039053b62de71f65ed9b1c985b86228aa29853ac47"
+    },
+    {
+      "path": "consumers-v3/age-360-reduced420.png",
+      "bytes": 38696,
+      "sha256": "228d012deec32c20c80a5c1d5cad02fc67dde3dcf16cf7070c55791cc9b88d23"
+    },
+    {
+      "path": "consumers-v3/age-360.png",
+      "bytes": 70846,
+      "sha256": "cc9494d247c9c86b6d19917d2bdfbcdbebf2b244367d75930bb8ea112de1d071"
+    },
+    {
+      "path": "consumers-v3/age-390-reduced420.png",
+      "bytes": 44801,
+      "sha256": "d424afcb20c6c322ba967e34d21b1aab2c34648c3f55e4843671865bf251a2f9"
+    },
+    {
+      "path": "consumers-v3/age-390.png",
+      "bytes": 74869,
+      "sha256": "a249ccd3b914713cd1bf7c7ac4b9e7064a6430fd4857304431bef8cc97ea1679"
+    },
+    {
+      "path": "consumers-v3/age-430-reduced420.png",
+      "bytes": 45362,
+      "sha256": "b41e522428730bd24b14c59674ab951b7fcda489d9098c39d43a235089522bb7"
+    },
+    {
+      "path": "consumers-v3/age-430.png",
+      "bytes": 77638,
+      "sha256": "10ba13cba5e30a551b43a8e92e0c1fa65deff44f3a534b2ee13f21d76c7cbdbc"
+    },
+    {
+      "path": "consumers-v3/gift-pickup-360-reduced420.png",
+      "bytes": 29116,
+      "sha256": "1c718ff7a104586790919cfe6d7e0239285205a5692e02e5aa7120076fac7db2"
+    },
+    {
+      "path": "consumers-v3/gift-pickup-360.png",
+      "bytes": 54463,
+      "sha256": "3c436ceb99b198454802389b752dbbfaf54ffbecfde35e82e719753a8daafa28"
+    },
+    {
+      "path": "consumers-v3/gift-pickup-390-reduced420.png",
+      "bytes": 28722,
+      "sha256": "177d5eb0fc97f3f6bbd0c03e794c12de9c31ff3a4e98c0e26b6d3264af2b548a"
+    },
+    {
+      "path": "consumers-v3/gift-pickup-390.png",
+      "bytes": 55415,
+      "sha256": "5c80d3874525805a08a69d0bc51406c1429013f24fd1ad2147eac911b5e0b9a0"
+    },
+    {
+      "path": "consumers-v3/gift-pickup-430-reduced420.png",
+      "bytes": 29247,
+      "sha256": "49b8b70fc16d187b5e3a77ceb51c0a69a69be528b0f7050f8dfe6ae531a015ed"
+    },
+    {
+      "path": "consumers-v3/gift-pickup-430.png",
+      "bytes": 56907,
+      "sha256": "26281eb5cb251545ab93566d2ba6ed8d7f5567248ed8c48bffefff2feb687a6c"
+    },
+    {
+      "path": "consumers-v3/intro-360-reduced420.png",
+      "bytes": 29451,
+      "sha256": "94fa8fb58836dd377aebab21c583b030f4920ecb5e50e0da5e1c67b59c0539f9"
+    },
+    {
+      "path": "consumers-v3/intro-360.png",
+      "bytes": 64112,
+      "sha256": "d512dc5966d8fd36ec11c4e4f6e9cf5ff69a6d3d754ab2523aee3533c48873ba"
+    },
+    {
+      "path": "consumers-v3/intro-390-reduced420.png",
+      "bytes": 29782,
+      "sha256": "e32f83919ef8ce9c0d8922fe6c69b1fe5f50621fdb73f4f3d207354d75c43baf"
+    },
+    {
+      "path": "consumers-v3/intro-390.png",
+      "bytes": 67494,
+      "sha256": "d064e899eb37611f3dfff26b8047a33bf350d98ae7818a4fc02355bace7af8d4"
+    },
+    {
+      "path": "consumers-v3/intro-430-reduced420.png",
+      "bytes": 29040,
+      "sha256": "47060b23d8820f413d8e97cd290d1c60f4721397b8d8d70fa4ba8895b1508517"
+    },
+    {
+      "path": "consumers-v3/intro-430.png",
+      "bytes": 68672,
+      "sha256": "8cf6d313734999bdd5c49fda3ff6ad460f233f854fb7d10132d945db5b96357c"
+    },
+    {
+      "path": "consumers-v3/profile-360.png",
+      "bytes": 65364,
+      "sha256": "87b22895d959bc3734c49b245bd86d4c95ae6fb666ad15213d92e4c142e69016"
+    },
+    {
+      "path": "consumers-v3/profile-390.png",
+      "bytes": 66938,
+      "sha256": "870ac02abf9254ae35086e2d5307bf69cca41233e612eed9186825f348a338f5"
+    },
+    {
+      "path": "consumers-v3/profile-430.png",
+      "bytes": 70048,
+      "sha256": "e56a051d9f387061523da9ce31addc2fe31910ef22de73c45634440a79da42d3"
+    },
+    {
+      "path": "consumers-v3/report.json",
+      "bytes": 38997,
+      "sha256": "493f7482a4171515ca3d16bb6e42235dbf864dc30ebf39c19a0eb316916c897e"
+    },
+    {
+      "path": "consumers-v3/report.partial.json",
+      "bytes": 38982,
+      "sha256": "dcf57d6fabbf5e51739de65d76696a1206331e19ee73a778ff64e0c834e5dc16"
+    },
+    {
+      "path": "consumers-v3/wall-caller-360.png",
+      "bytes": 52767,
+      "sha256": "1269b0b3365ae605a57f284f11891ec584c38c79c61a88be2af31aa7eec3f310"
+    },
+    {
+      "path": "consumers-v3/wall-caller-390.png",
+      "bytes": 51612,
+      "sha256": "23676c765159542a6d6b737388cd2898c2f20dec2ebe2a8607932de4ee54f5c7"
+    },
+    {
+      "path": "consumers-v3/wall-caller-430.png",
+      "bytes": 50190,
+      "sha256": "cd1c71f4772f4abb6f2b584fd0fdaf3bbf8f47402d7af74ba63f517035846944"
+    },
+    {
+      "path": "fidelity-v1/compare-customize-390.png",
+      "bytes": 455042,
+      "sha256": "b282e80b84877d47191c767c5b0c3ac9b2c326a84d6674ed1cff7a436a0cc9d3"
+    },
+    {
+      "path": "fidelity-v1/compare-feed-390.png",
+      "bytes": 438018,
+      "sha256": "fca959b63ff21d27a58d4cc7a2c2f78a6cdd43efd3d9a988c863ef0035700f00"
+    },
+    {
+      "path": "fidelity-v1/compare-gifts-390.png",
+      "bytes": 464969,
+      "sha256": "0a7ef02ce83a68e0b20190d7cd86f0312007ffbffd002ed00891299bf765f3df"
+    },
+    {
+      "path": "fidelity-v1/compare-landing-390.png",
+      "bytes": 665113,
+      "sha256": "f08e519fcbd11d5ae4350a77fcd8947668d97e5391ccf70d368655608b22f075"
+    },
+    {
+      "path": "fidelity-v1/compare-login-390.png",
+      "bytes": 815307,
+      "sha256": "3c35a4e0626c66bb6603f746820531c3b6f44be781725d3692f40c6cf91f4982"
+    },
+    {
+      "path": "fidelity-v1/compare-map-390.png",
+      "bytes": 703113,
+      "sha256": "c2870def0dea22bdb1745fbe87f19dfdb868535cd79f3f8d131d31290038ea00"
+    },
+    {
+      "path": "fidelity-v1/compare-me-390.png",
+      "bytes": 420787,
+      "sha256": "3ebc727d4162a303a03c54d8d39ef37eaff468b2d9b85a6bc9f19a7c0124b16c"
+    },
+    {
+      "path": "fidelity-v1/compare-meet-390.png",
+      "bytes": 471113,
+      "sha256": "e81a4c426ef29138396d6adcafda03d83888d4a66bdcf0f715e2d5fd23225a45"
+    },
+    {
+      "path": "fidelity-v1/compare-wall-390.png",
+      "bytes": 412995,
+      "sha256": "716d6ba92981d486768428c51efbe0ef1d09c747c1ec3e36057ddf815ed8f73a"
+    },
+    {
+      "path": "fidelity-v1/compare-world-390.png",
+      "bytes": 566329,
+      "sha256": "9b9f3d1a16ce7bd10b3bf7f6b3082acf349c5e9015b2604e0bae4e2cc918474a"
+    },
+    {
+      "path": "fidelity-v1/comparison.html",
+      "bytes": 5427,
+      "sha256": "18247e6afa841271ab32ad32baedba0a1b2e5c0689e5833c02b442f4a91a6847"
+    },
+    {
+      "path": "fidelity-v1/equal-customize-390.png",
+      "bytes": 52315,
+      "sha256": "3fb63a9ebb1e7820b1b2d207192c37659e5f6190a58725fa98888bb58de3f1f1"
+    },
+    {
+      "path": "fidelity-v1/equal-feed-390.png",
+      "bytes": 49427,
+      "sha256": "7134cc4cd17ec90473b9c329e6a174a827bbbdff473ac6c38fe641142a359b91"
+    },
+    {
+      "path": "fidelity-v1/equal-gifts-390.png",
+      "bytes": 72123,
+      "sha256": "3a9a82dc67f53948b36cd6a6165d4be9e68979b703ee2024458e50cedf25f271"
+    },
+    {
+      "path": "fidelity-v1/equal-landing-390.png",
+      "bytes": 235736,
+      "sha256": "0a979de9e0fa7d5c9b7839756f2825eda5358c2c6db34465e18a67a6470bb637"
+    },
+    {
+      "path": "fidelity-v1/equal-login-390.png",
+      "bytes": 362657,
+      "sha256": "f3b79abb641ba8e2d8dad61f472f4f449a7e07b35bc567f0aee14231ce78bead"
+    },
+    {
+      "path": "fidelity-v1/equal-map-390.png",
+      "bytes": 137931,
+      "sha256": "4152458a34715f165ddba0ff27415eb1980fc7e47f24d19bc0e959666d4e5be0"
+    },
+    {
+      "path": "fidelity-v1/equal-me-390.png",
+      "bytes": 47675,
+      "sha256": "a2fe59aecae21a07daa629e7efb689e5256b0e1809b253c573a9b0bf3844c3ae"
+    },
+    {
+      "path": "fidelity-v1/equal-meet-390.png",
+      "bytes": 80462,
+      "sha256": "303b0b5516803fbfb514b55aaad6436f145ab29395d964312349ab9031e9aaea"
+    },
+    {
+      "path": "fidelity-v1/equal-wall-390.png",
+      "bytes": 45919,
+      "sha256": "bbbabdc36c82b3fa6929b7ae2199080a2f968e2e9d8fc5667cca1aaa7d079cc0"
+    },
+    {
+      "path": "fidelity-v1/equal-world-390.png",
+      "bytes": 115063,
+      "sha256": "b948daa34689c3b89f50649f5ae71e3f4ca7f17cc5d57c28f437de4c9ad3cc30"
+    },
+    {
+      "path": "fidelity-v1/report.json",
+      "bytes": 64598,
+      "sha256": "a81a4405ec33d0851083d8013fe97288fbf456b10f3f73186d0f396e137e0e55"
+    },
+    {
+      "path": "fidelity-v1/source-map-fitted-390-h554.png",
+      "bytes": 215088,
+      "sha256": "675cb833c6283bc37a92898ca6eab75626bee06ec199e81a3f7453628c1e1cb8"
+    },
+    {
+      "path": "fidelity-v1/source-map-fitted-390-h754.png",
+      "bytes": 370291,
+      "sha256": "44813ba5a1021d7cdd0b18de084920683e3f614fcd2cc6677e985628b619b686"
+    },
+    {
+      "path": "fidelity-v1/source-map-fitted-390-h844.png",
+      "bytes": 393654,
+      "sha256": "12e13b10639da7b50e5dd9ce22d038c24a461dabcd5a7ca1cb8ae6672ca7c6bf"
+    },
+    {
+      "path": "fidelity-v1/source-map-initial-390-h554.png",
+      "bytes": 252664,
+      "sha256": "32caa3d1df615fbf9929a9e223ae9802e13dfe3cd2b9996d41c856ae9ac25089"
+    },
+    {
+      "path": "fidelity-v1/source-map-initial-390-h754.png",
+      "bytes": 372558,
+      "sha256": "0b3776019685566c500b45daf3ec43848d015cf355c0ef1ca64c0c57b7e2b3f0"
+    },
+    {
+      "path": "fidelity-v1/source-map-initial-390-h844.png",
+      "bytes": 432158,
+      "sha256": "9ab9a85f235721fa8703eec2bb0169370243e054654e743215f7bef7bd21ebb1"
+    },
+    {
+      "path": "fidelity-v1/source-world-parade-390-h554.png",
+      "bytes": 164574,
+      "sha256": "75c1abbc24602419ad47802c110978e660b8546782394049e57b4a9e732b6e7d"
+    },
+    {
+      "path": "fidelity-v1/source-world-parade-390-h754.png",
+      "bytes": 273244,
+      "sha256": "97dded2d546b37b9e5428e59aaae8ee85f6f918d3b453329f50d8e18b6ad26b1"
+    },
+    {
+      "path": "fidelity-v1/source-world-parade-390-h844.png",
+      "bytes": 315162,
+      "sha256": "40688137a8628b9f49c84738ecb7fb17457d6bf8e62232a16286c7171d3a7e17"
+    },
+    {
+      "path": "fidelity-v2/equal-customize-390.png",
+      "bytes": 52315,
+      "sha256": "3fb63a9ebb1e7820b1b2d207192c37659e5f6190a58725fa98888bb58de3f1f1"
+    },
+    {
+      "path": "fidelity-v2/equal-feed-390.png",
+      "bytes": 49427,
+      "sha256": "7134cc4cd17ec90473b9c329e6a174a827bbbdff473ac6c38fe641142a359b91"
+    },
+    {
+      "path": "fidelity-v2/equal-gifts-390.png",
+      "bytes": 72242,
+      "sha256": "8717c30724a0dbd1a7983b4ea129e810a599b1b2a57545d8fff208116f39d635"
+    },
+    {
+      "path": "fidelity-v2/equal-landing-390.png",
+      "bytes": 235736,
+      "sha256": "0a979de9e0fa7d5c9b7839756f2825eda5358c2c6db34465e18a67a6470bb637"
+    },
+    {
+      "path": "fidelity-v2/equal-login-390.png",
+      "bytes": 362657,
+      "sha256": "f3b79abb641ba8e2d8dad61f472f4f449a7e07b35bc567f0aee14231ce78bead"
+    },
+    {
+      "path": "fidelity-v2/equal-map-390.png",
+      "bytes": 137931,
+      "sha256": "4152458a34715f165ddba0ff27415eb1980fc7e47f24d19bc0e959666d4e5be0"
+    },
+    {
+      "path": "fidelity-v2/equal-me-390.png",
+      "bytes": 47675,
+      "sha256": "a2fe59aecae21a07daa629e7efb689e5256b0e1809b253c573a9b0bf3844c3ae"
+    },
+    {
+      "path": "fidelity-v2/equal-meet-390.png",
+      "bytes": 80462,
+      "sha256": "303b0b5516803fbfb514b55aaad6436f145ab29395d964312349ab9031e9aaea"
+    },
+    {
+      "path": "fidelity-v2/equal-wall-390.png",
+      "bytes": 45919,
+      "sha256": "bbbabdc36c82b3fa6929b7ae2199080a2f968e2e9d8fc5667cca1aaa7d079cc0"
+    },
+    {
+      "path": "fidelity-v2/equal-world-390.png",
+      "bytes": 115077,
+      "sha256": "3a6add8caef2a42f398a4935a464aa3aecbd2c0540e052086ff6580d3986f62f"
+    },
+    {
+      "path": "fidelity-v2/report.json",
+      "bytes": 64598,
+      "sha256": "675089f8702b2e882503864e9696f385fe655a7e541a5fe12d1ba96b6187f572"
+    },
+    {
+      "path": "fidelity-v2/source-map-fitted-390-h554.png",
+      "bytes": 215088,
+      "sha256": "675cb833c6283bc37a92898ca6eab75626bee06ec199e81a3f7453628c1e1cb8"
+    },
+    {
+      "path": "fidelity-v2/source-map-fitted-390-h754.png",
+      "bytes": 370291,
+      "sha256": "44813ba5a1021d7cdd0b18de084920683e3f614fcd2cc6677e985628b619b686"
+    },
+    {
+      "path": "fidelity-v2/source-map-fitted-390-h844.png",
+      "bytes": 393654,
+      "sha256": "12e13b10639da7b50e5dd9ce22d038c24a461dabcd5a7ca1cb8ae6672ca7c6bf"
+    },
+    {
+      "path": "fidelity-v2/source-map-initial-390-h554.png",
+      "bytes": 252664,
+      "sha256": "32caa3d1df615fbf9929a9e223ae9802e13dfe3cd2b9996d41c856ae9ac25089"
+    },
+    {
+      "path": "fidelity-v2/source-map-initial-390-h754.png",
+      "bytes": 372558,
+      "sha256": "0b3776019685566c500b45daf3ec43848d015cf355c0ef1ca64c0c57b7e2b3f0"
+    },
+    {
+      "path": "fidelity-v2/source-map-initial-390-h844.png",
+      "bytes": 432158,
+      "sha256": "9ab9a85f235721fa8703eec2bb0169370243e054654e743215f7bef7bd21ebb1"
+    },
+    {
+      "path": "fidelity-v2/source-world-parade-390-h554.png",
+      "bytes": 164574,
+      "sha256": "75c1abbc24602419ad47802c110978e660b8546782394049e57b4a9e732b6e7d"
+    },
+    {
+      "path": "fidelity-v2/source-world-parade-390-h754.png",
+      "bytes": 273264,
+      "sha256": "35f95ff0b27fd1a6ade00b769ec7aefd54d86f7c715ae07fcfa0bb66a189f9d0"
+    },
+    {
+      "path": "fidelity-v2/source-world-parade-390-h844.png",
+      "bytes": 315162,
+      "sha256": "40688137a8628b9f49c84738ecb7fb17457d6bf8e62232a16286c7171d3a7e17"
+    },
+    {
+      "path": "fidelity-v3/compare-customize-390.png",
+      "bytes": 455042,
+      "sha256": "b282e80b84877d47191c767c5b0c3ac9b2c326a84d6674ed1cff7a436a0cc9d3"
+    },
+    {
+      "path": "fidelity-v3/compare-feed-390.png",
+      "bytes": 438018,
+      "sha256": "fca959b63ff21d27a58d4cc7a2c2f78a6cdd43efd3d9a988c863ef0035700f00"
+    },
+    {
+      "path": "fidelity-v3/compare-gifts-390.png",
+      "bytes": 465112,
+      "sha256": "84de234fc2f0d819e50381ff9411ee5cd76fddd4f872266cf4ebde9e5c177e4a"
+    },
+    {
+      "path": "fidelity-v3/compare-landing-390.png",
+      "bytes": 665113,
+      "sha256": "f08e519fcbd11d5ae4350a77fcd8947668d97e5391ccf70d368655608b22f075"
+    },
+    {
+      "path": "fidelity-v3/compare-login-390.png",
+      "bytes": 815307,
+      "sha256": "3c35a4e0626c66bb6603f746820531c3b6f44be781725d3692f40c6cf91f4982"
+    },
+    {
+      "path": "fidelity-v3/compare-map-390.png",
+      "bytes": 703113,
+      "sha256": "c2870def0dea22bdb1745fbe87f19dfdb868535cd79f3f8d131d31290038ea00"
+    },
+    {
+      "path": "fidelity-v3/compare-me-390.png",
+      "bytes": 420787,
+      "sha256": "3ebc727d4162a303a03c54d8d39ef37eaff468b2d9b85a6bc9f19a7c0124b16c"
+    },
+    {
+      "path": "fidelity-v3/compare-meet-390.png",
+      "bytes": 471113,
+      "sha256": "e81a4c426ef29138396d6adcafda03d83888d4a66bdcf0f715e2d5fd23225a45"
+    },
+    {
+      "path": "fidelity-v3/compare-wall-390.png",
+      "bytes": 412995,
+      "sha256": "716d6ba92981d486768428c51efbe0ef1d09c747c1ec3e36057ddf815ed8f73a"
+    },
+    {
+      "path": "fidelity-v3/compare-world-390.png",
+      "bytes": 566339,
+      "sha256": "9043e4cd8c2fb185cbac45cca601632738e1e4958d293490431361f491b3f04d"
+    },
+    {
+      "path": "fidelity-v3/comparison.html",
+      "bytes": 5427,
+      "sha256": "18247e6afa841271ab32ad32baedba0a1b2e5c0689e5833c02b442f4a91a6847"
+    },
+    {
+      "path": "fidelity-v3/equal-customize-390.png",
+      "bytes": 52315,
+      "sha256": "3fb63a9ebb1e7820b1b2d207192c37659e5f6190a58725fa98888bb58de3f1f1"
+    },
+    {
+      "path": "fidelity-v3/equal-feed-390.png",
+      "bytes": 49427,
+      "sha256": "7134cc4cd17ec90473b9c329e6a174a827bbbdff473ac6c38fe641142a359b91"
+    },
+    {
+      "path": "fidelity-v3/equal-gifts-390.png",
+      "bytes": 72242,
+      "sha256": "8717c30724a0dbd1a7983b4ea129e810a599b1b2a57545d8fff208116f39d635"
+    },
+    {
+      "path": "fidelity-v3/equal-landing-390.png",
+      "bytes": 235736,
+      "sha256": "0a979de9e0fa7d5c9b7839756f2825eda5358c2c6db34465e18a67a6470bb637"
+    },
+    {
+      "path": "fidelity-v3/equal-login-390.png",
+      "bytes": 362657,
+      "sha256": "f3b79abb641ba8e2d8dad61f472f4f449a7e07b35bc567f0aee14231ce78bead"
+    },
+    {
+      "path": "fidelity-v3/equal-map-390.png",
+      "bytes": 137931,
+      "sha256": "4152458a34715f165ddba0ff27415eb1980fc7e47f24d19bc0e959666d4e5be0"
+    },
+    {
+      "path": "fidelity-v3/equal-me-390.png",
+      "bytes": 47675,
+      "sha256": "a2fe59aecae21a07daa629e7efb689e5256b0e1809b253c573a9b0bf3844c3ae"
+    },
+    {
+      "path": "fidelity-v3/equal-meet-390.png",
+      "bytes": 80462,
+      "sha256": "303b0b5516803fbfb514b55aaad6436f145ab29395d964312349ab9031e9aaea"
+    },
+    {
+      "path": "fidelity-v3/equal-wall-390.png",
+      "bytes": 45919,
+      "sha256": "bbbabdc36c82b3fa6929b7ae2199080a2f968e2e9d8fc5667cca1aaa7d079cc0"
+    },
+    {
+      "path": "fidelity-v3/equal-world-390.png",
+      "bytes": 115077,
+      "sha256": "3a6add8caef2a42f398a4935a464aa3aecbd2c0540e052086ff6580d3986f62f"
+    },
+    {
+      "path": "fidelity-v3/report.json",
+      "bytes": 64616,
+      "sha256": "67962a1c32be5632b31a1b5193e55f8aa8cefaf4d1de996e4805c581f0e099c7"
+    },
+    {
+      "path": "fidelity-v3/source-map-fitted-390-h554.png",
+      "bytes": 215088,
+      "sha256": "675cb833c6283bc37a92898ca6eab75626bee06ec199e81a3f7453628c1e1cb8"
+    },
+    {
+      "path": "fidelity-v3/source-map-fitted-390-h754.png",
+      "bytes": 370291,
+      "sha256": "44813ba5a1021d7cdd0b18de084920683e3f614fcd2cc6677e985628b619b686"
+    },
+    {
+      "path": "fidelity-v3/source-map-fitted-390-h844.png",
+      "bytes": 393654,
+      "sha256": "12e13b10639da7b50e5dd9ce22d038c24a461dabcd5a7ca1cb8ae6672ca7c6bf"
+    },
+    {
+      "path": "fidelity-v3/source-map-initial-390-h554.png",
+      "bytes": 252664,
+      "sha256": "32caa3d1df615fbf9929a9e223ae9802e13dfe3cd2b9996d41c856ae9ac25089"
+    },
+    {
+      "path": "fidelity-v3/source-map-initial-390-h754.png",
+      "bytes": 372558,
+      "sha256": "0b3776019685566c500b45daf3ec43848d015cf355c0ef1ca64c0c57b7e2b3f0"
+    },
+    {
+      "path": "fidelity-v3/source-map-initial-390-h844.png",
+      "bytes": 432158,
+      "sha256": "9ab9a85f235721fa8703eec2bb0169370243e054654e743215f7bef7bd21ebb1"
+    },
+    {
+      "path": "fidelity-v3/source-world-parade-390-h554.png",
+      "bytes": 164574,
+      "sha256": "75c1abbc24602419ad47802c110978e660b8546782394049e57b4a9e732b6e7d"
+    },
+    {
+      "path": "fidelity-v3/source-world-parade-390-h754.png",
+      "bytes": 273244,
+      "sha256": "97dded2d546b37b9e5428e59aaae8ee85f6f918d3b453329f50d8e18b6ad26b1"
+    },
+    {
+      "path": "fidelity-v3/source-world-parade-390-h844.png",
+      "bytes": 315162,
+      "sha256": "40688137a8628b9f49c84738ecb7fb17457d6bf8e62232a16286c7171d3a7e17"
+    },
+    {
+      "path": "matrix-v1/comparison.html",
+      "bytes": 15277,
+      "sha256": "a927434d24d573c4ea4fcf467781fa3969bdc4916d3f598fc7e2091d8808048c"
+    },
+    {
+      "path": "matrix-v1/contact-sheet.html",
+      "bytes": 1783,
+      "sha256": "7c4cda93c8f36cdfedc2dd93828dbe8f86108d88fdc36ee269dd18521a38cb30"
+    },
+    {
+      "path": "matrix-v1/contact-sheet.png",
+      "bytes": 1854069,
+      "sha256": "42b861f5f19406ed3b99c87f197c3a40fc6f6f2bd36959ac965b178c2ab6b039"
+    },
+    {
+      "path": "matrix-v1/customize-danger-360-reduced420.png",
+      "bytes": 37869,
+      "sha256": "3b349d4e469b4ba642374842b5b8f988efaf7fafdd80d481168e661920b7d9fb"
+    },
+    {
+      "path": "matrix-v1/customize-danger-360.png",
+      "bytes": 59404,
+      "sha256": "82e7f80b353f4e8a1fdb2da594b81e2d0163017cf5777d58c1e2f0e5c5a2f4e7"
+    },
+    {
+      "path": "matrix-v1/customize-danger-390-reduced420.png",
+      "bytes": 38423,
+      "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+    },
+    {
+      "path": "matrix-v1/customize-danger-390.png",
+      "bytes": 61268,
+      "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+    },
+    {
+      "path": "matrix-v1/customize-danger-430-reduced420.png",
+      "bytes": 39037,
+      "sha256": "16010502f125d30d7500c4c5e8de65a60acaff06256e4a54d2df8b5a4990cce5"
+    },
+    {
+      "path": "matrix-v1/customize-danger-430.png",
+      "bytes": 63108,
+      "sha256": "110e81a730e469bb6f4685c3a6ac613cf2a745164daf27be8691b3fbc7254999"
+    },
+    {
+      "path": "matrix-v1/customize-parade-360-reduced420.png",
+      "bytes": 37869,
+      "sha256": "3b349d4e469b4ba642374842b5b8f988efaf7fafdd80d481168e661920b7d9fb"
+    },
+    {
+      "path": "matrix-v1/customize-parade-360.png",
+      "bytes": 59404,
+      "sha256": "82e7f80b353f4e8a1fdb2da594b81e2d0163017cf5777d58c1e2f0e5c5a2f4e7"
+    },
+    {
+      "path": "matrix-v1/customize-parade-390-reduced420.png",
+      "bytes": 38423,
+      "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+    },
+    {
+      "path": "matrix-v1/customize-parade-390.png",
+      "bytes": 61268,
+      "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+    },
+    {
+      "path": "matrix-v1/customize-parade-430-reduced420.png",
+      "bytes": 39037,
+      "sha256": "16010502f125d30d7500c4c5e8de65a60acaff06256e4a54d2df8b5a4990cce5"
+    },
+    {
+      "path": "matrix-v1/customize-parade-430.png",
+      "bytes": 63108,
+      "sha256": "110e81a730e469bb6f4685c3a6ac613cf2a745164daf27be8691b3fbc7254999"
+    },
+    {
+      "path": "matrix-v1/customize-revenge-360-reduced420.png",
+      "bytes": 37869,
+      "sha256": "3b349d4e469b4ba642374842b5b8f988efaf7fafdd80d481168e661920b7d9fb"
+    },
+    {
+      "path": "matrix-v1/customize-revenge-360.png",
+      "bytes": 59404,
+      "sha256": "82e7f80b353f4e8a1fdb2da594b81e2d0163017cf5777d58c1e2f0e5c5a2f4e7"
+    },
+    {
+      "path": "matrix-v1/customize-revenge-390-reduced420.png",
+      "bytes": 38423,
+      "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+    },
+    {
+      "path": "matrix-v1/customize-revenge-390.png",
+      "bytes": 61268,
+      "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+    },
+    {
+      "path": "matrix-v1/customize-revenge-430-reduced420.png",
+      "bytes": 39037,
+      "sha256": "16010502f125d30d7500c4c5e8de65a60acaff06256e4a54d2df8b5a4990cce5"
+    },
+    {
+      "path": "matrix-v1/customize-revenge-430.png",
+      "bytes": 63108,
+      "sha256": "110e81a730e469bb6f4685c3a6ac613cf2a745164daf27be8691b3fbc7254999"
+    },
+    {
+      "path": "matrix-v1/feed-danger-360-reduced420.png",
+      "bytes": 30828,
+      "sha256": "48ea72be88904a72c94d43294d4a6898545c58338adeeb5b2e593bded0fabdf8"
+    },
+    {
+      "path": "matrix-v1/feed-danger-360.png",
+      "bytes": 59161,
+      "sha256": "c2953f1eefaaf3e1f44dec507fc088f5e7b3eba3d762260d92c88991b1dfeef4"
+    },
+    {
+      "path": "matrix-v1/feed-danger-390-reduced420.png",
+      "bytes": 32175,
+      "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+    },
+    {
+      "path": "matrix-v1/feed-danger-390.png",
+      "bytes": 62634,
+      "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+    },
+    {
+      "path": "matrix-v1/feed-danger-430-reduced420.png",
+      "bytes": 33631,
+      "sha256": "f05c0e0c0db2c7c640d80efe97be7c0406e82062f69b63717485bde270a7d621"
+    },
+    {
+      "path": "matrix-v1/feed-danger-430.png",
+      "bytes": 65853,
+      "sha256": "8cf3ead5fb2898c0622473f29522bd9ca6b8df718ae39ae934fa3b56abea8e69"
+    },
+    {
+      "path": "matrix-v1/feed-parade-360-reduced420.png",
+      "bytes": 30828,
+      "sha256": "48ea72be88904a72c94d43294d4a6898545c58338adeeb5b2e593bded0fabdf8"
+    },
+    {
+      "path": "matrix-v1/feed-parade-360.png",
+      "bytes": 59161,
+      "sha256": "c2953f1eefaaf3e1f44dec507fc088f5e7b3eba3d762260d92c88991b1dfeef4"
+    },
+    {
+      "path": "matrix-v1/feed-parade-390-reduced420.png",
+      "bytes": 32175,
+      "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+    },
+    {
+      "path": "matrix-v1/feed-parade-390.png",
+      "bytes": 62634,
+      "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+    },
+    {
+      "path": "matrix-v1/feed-parade-430-reduced420.png",
+      "bytes": 33631,
+      "sha256": "f05c0e0c0db2c7c640d80efe97be7c0406e82062f69b63717485bde270a7d621"
+    },
+    {
+      "path": "matrix-v1/feed-parade-430.png",
+      "bytes": 65853,
+      "sha256": "8cf3ead5fb2898c0622473f29522bd9ca6b8df718ae39ae934fa3b56abea8e69"
+    },
+    {
+      "path": "matrix-v1/feed-revenge-360-reduced420.png",
+      "bytes": 30828,
+      "sha256": "48ea72be88904a72c94d43294d4a6898545c58338adeeb5b2e593bded0fabdf8"
+    },
+    {
+      "path": "matrix-v1/feed-revenge-360.png",
+      "bytes": 59161,
+      "sha256": "c2953f1eefaaf3e1f44dec507fc088f5e7b3eba3d762260d92c88991b1dfeef4"
+    },
+    {
+      "path": "matrix-v1/feed-revenge-390-reduced420.png",
+      "bytes": 32175,
+      "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+    },
+    {
+      "path": "matrix-v1/feed-revenge-390.png",
+      "bytes": 62634,
+      "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+    },
+    {
+      "path": "matrix-v1/feed-revenge-430-reduced420.png",
+      "bytes": 33631,
+      "sha256": "f05c0e0c0db2c7c640d80efe97be7c0406e82062f69b63717485bde270a7d621"
+    },
+    {
+      "path": "matrix-v1/feed-revenge-430.png",
+      "bytes": 65853,
+      "sha256": "8cf3ead5fb2898c0622473f29522bd9ca6b8df718ae39ae934fa3b56abea8e69"
+    },
+    {
+      "path": "matrix-v1/gifts-danger-360.png",
+      "bytes": 92248,
+      "sha256": "dacdb63f26d3be5077c767ca786ec785dfe9d73622128de9835d6cc5ad602b4e"
+    },
+    {
+      "path": "matrix-v1/gifts-danger-390.png",
+      "bytes": 97300,
+      "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+    },
+    {
+      "path": "matrix-v1/gifts-danger-430.png",
+      "bytes": 102676,
+      "sha256": "608a714b0a02ee5b47dafc8188586b4bc96ff8af1664fe571c8f58adb8adef14"
+    },
+    {
+      "path": "matrix-v1/gifts-parade-360.png",
+      "bytes": 92248,
+      "sha256": "dacdb63f26d3be5077c767ca786ec785dfe9d73622128de9835d6cc5ad602b4e"
+    },
+    {
+      "path": "matrix-v1/gifts-parade-390.png",
+      "bytes": 97300,
+      "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+    },
+    {
+      "path": "matrix-v1/gifts-parade-430.png",
+      "bytes": 102676,
+      "sha256": "608a714b0a02ee5b47dafc8188586b4bc96ff8af1664fe571c8f58adb8adef14"
+    },
+    {
+      "path": "matrix-v1/gifts-revenge-360.png",
+      "bytes": 92248,
+      "sha256": "dacdb63f26d3be5077c767ca786ec785dfe9d73622128de9835d6cc5ad602b4e"
+    },
+    {
+      "path": "matrix-v1/gifts-revenge-390.png",
+      "bytes": 97300,
+      "sha256": "df524cccd38b991e699085939d17229f8702ee6c884411922918dd262a0bab10"
+    },
+    {
+      "path": "matrix-v1/gifts-revenge-430.png",
+      "bytes": 102676,
+      "sha256": "608a714b0a02ee5b47dafc8188586b4bc96ff8af1664fe571c8f58adb8adef14"
+    },
+    {
+      "path": "matrix-v1/landing-revenge-360.png",
+      "bytes": 221689,
+      "sha256": "a8ba5739c8a3eaeeb4fda35264e95438d552a9bd89dc8ee6b785b07b2063af54"
+    },
+    {
+      "path": "matrix-v1/landing-revenge-390.png",
+      "bytes": 248289,
+      "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+    },
+    {
+      "path": "matrix-v1/landing-revenge-430.png",
+      "bytes": 280961,
+      "sha256": "5b5795ffc225bb590b83f7d2d51779d7f0ca3fbb4dae461534fa27a62a14c85d"
+    },
+    {
+      "path": "matrix-v1/login-revenge-360-reduced420.png",
+      "bytes": 172229,
+      "sha256": "59afd1ad2c05359e7c09a42f00b9fee9671c75e99a3b27bde82f0848562d495e"
+    },
+    {
+      "path": "matrix-v1/login-revenge-360.png",
+      "bytes": 300967,
+      "sha256": "be754369584e870885f77453814bf17b998e9d725a1e6a2b3990af1e50072b87"
+    },
+    {
+      "path": "matrix-v1/login-revenge-390-reduced420.png",
+      "bytes": 199502,
+      "sha256": "b0d529c6f6285b50d89cc66d66fdcb53e77745e6c21b90ce9bbdf6e927acc848"
+    },
+    {
+      "path": "matrix-v1/login-revenge-390.png",
+      "bytes": 368543,
+      "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+    },
+    {
+      "path": "matrix-v1/login-revenge-430-reduced420.png",
+      "bytes": 196994,
+      "sha256": "2f01dca9238564c8851bea26f9b687f8f54a58d44056b3497a3c8db567fe0269"
+    },
+    {
+      "path": "matrix-v1/login-revenge-430.png",
+      "bytes": 399301,
+      "sha256": "1726ffd80b120a16a15cc88dfe9868d9d32ba01bd64ce7fca6c95b41dabbc4e0"
+    },
+    {
+      "path": "matrix-v1/map-danger-360-reduced420.png",
+      "bytes": 78856,
+      "sha256": "b5f368108f5a8fc8f0220f5c8b2f83f4e355e680a01f4e0eb453683206b6f0a6"
+    },
+    {
+      "path": "matrix-v1/map-danger-360.png",
+      "bytes": 155846,
+      "sha256": "d0c1aeed6c7d6143aaa3aa092ac1dae3e11a0149f4c777a8f9c12e0479bcba92"
+    },
+    {
+      "path": "matrix-v1/map-danger-390-reduced420.png",
+      "bytes": 86352,
+      "sha256": "f7bccf7061723f320fda00efe99786dfc6c352e73558f02b9df6d5d9d7c8b47f"
+    },
+    {
+      "path": "matrix-v1/map-danger-390.png",
+      "bytes": 163343,
+      "sha256": "bde8421d9713f81d91f39ef2b8694eec25b7cc7adb9af3a00d7295190446ff01"
+    },
+    {
+      "path": "matrix-v1/map-danger-430-reduced420.png",
+      "bytes": 92865,
+      "sha256": "13173b0ae013bffb7127b9197907b62fe3917080b12ee94bed8459cf5ce6c955"
+    },
+    {
+      "path": "matrix-v1/map-danger-430.png",
+      "bytes": 174932,
+      "sha256": "0f6f4e80051ba61be29b5717b9d22e08af194279e48f431d8c708516991bb157"
+    },
+    {
+      "path": "matrix-v1/map-parade-360-reduced420.png",
+      "bytes": 78727,
+      "sha256": "d18a36c1d49773a962f0c4f09eb921764a4061cea052af180b194200dda52548"
+    },
+    {
+      "path": "matrix-v1/map-parade-360.png",
+      "bytes": 155920,
+      "sha256": "fbef23a312261fd727244d22ee907dd9824ecf54687306ee5f94b5cffa4924b3"
+    },
+    {
+      "path": "matrix-v1/map-parade-390-reduced420.png",
+      "bytes": 86094,
+      "sha256": "59d31beec17236b4c0e346416fe496ba367a7a37a730210de810c225e893e38e"
+    },
+    {
+      "path": "matrix-v1/map-parade-390.png",
+      "bytes": 163380,
+      "sha256": "7dabab8c28369caa569ddf632ebaab5d811fd7837ddd9e74b1d44e9df64ff62f"
+    },
+    {
+      "path": "matrix-v1/map-parade-430-reduced420.png",
+      "bytes": 92246,
+      "sha256": "e96eca4aac9d69f1b8c17f4e1a513163bebe48ef47e861b98bba8feeda5ccbc2"
+    },
+    {
+      "path": "matrix-v1/map-parade-430.png",
+      "bytes": 174654,
+      "sha256": "47f8448a5378cd7bf1ead4270d7bc4068a7b251ab1f3300e9c6e5f182087e6ad"
+    },
+    {
+      "path": "matrix-v1/map-revenge-360-reduced420.png",
+      "bytes": 78571,
+      "sha256": "954ad0da721eccd4f2b09b3b577b5150933612ec597e4e710e17d6d44f85414b"
+    },
+    {
+      "path": "matrix-v1/map-revenge-360.png",
+      "bytes": 155080,
+      "sha256": "00b7d7b87aca068ef9c66c13fd53d2427d5ac2c8e6a7d6f948330b9c492b2f64"
+    },
+    {
+      "path": "matrix-v1/map-revenge-390-reduced420.png",
+      "bytes": 85895,
+      "sha256": "3c3ccb3aa7d8893d76bd17d36fb0b0a733ddf8c23b6d8c4fe0d66951cb86358c"
+    },
+    {
+      "path": "matrix-v1/map-revenge-390.png",
+      "bytes": 162839,
+      "sha256": "9beacd7938fe6638d540fb8ddf95775576fa1cf8404b8a1a47c3e32f09034ae2"
+    },
+    {
+      "path": "matrix-v1/map-revenge-430-reduced420.png",
+      "bytes": 92337,
+      "sha256": "b5687b42eb82ff29714d62c5406827c46e6b94e42ccd5f7b854338d77b21f729"
+    },
+    {
+      "path": "matrix-v1/map-revenge-430.png",
+      "bytes": 174241,
+      "sha256": "f9f53a814639014dffc51bbf8c93db37cb914e881ff59bfaedf5e5b8bb356485"
+    },
+    {
+      "path": "matrix-v1/me-danger-360.png",
+      "bytes": 70874,
+      "sha256": "3ac0a3b0bece46f94023e8860f47a7a9eef5be0231a75748be0010bb0270ec43"
+    },
+    {
+      "path": "matrix-v1/me-danger-390.png",
+      "bytes": 73397,
+      "sha256": "43a8c54b9cb71ddd4fdaa3319f01e553852ff95d39ffa6b011e7c4e92ec7127f"
+    },
+    {
+      "path": "matrix-v1/me-danger-430.png",
+      "bytes": 73757,
+      "sha256": "f325d3dbcf0825d2a5769c3a6975dec7b15082a2b1bd3f00026e53bbfc95dc7f"
+    },
+    {
+      "path": "matrix-v1/me-parade-360.png",
+      "bytes": 70839,
+      "sha256": "8b03462a17c8298ce2cbe57b88c7b17f5525a5612fee20be0ab43c913e393f35"
+    },
+    {
+      "path": "matrix-v1/me-parade-390.png",
+      "bytes": 73362,
+      "sha256": "f230b61254ed15a7cd9583d92dbc8becf57d259a190a87241b4cbcc35c1bb340"
+    },
+    {
+      "path": "matrix-v1/me-parade-430.png",
+      "bytes": 73714,
+      "sha256": "91781e2e15f26a37391491b819ce360de24571ad75148e07db97cf6007f783cd"
+    },
+    {
+      "path": "matrix-v1/me-revenge-360.png",
+      "bytes": 70954,
+      "sha256": "5d9be5828eec113615f1321b2293398b483920bced53b1aa6f0314f1a22c017f"
+    },
+    {
+      "path": "matrix-v1/me-revenge-390.png",
+      "bytes": 73424,
+      "sha256": "6f59de1d34b97194ccfebb9dd2c4eff46d5332bb75a9c1903b5a2a7d4dd5953c"
+    },
+    {
+      "path": "matrix-v1/me-revenge-430.png",
+      "bytes": 73742,
+      "sha256": "9378233afe7902ecafb9e07fd369f3cfe46ff9ffb2f1a7ee88ef79a481bce673"
+    },
+    {
+      "path": "matrix-v1/meet-danger-360.png",
+      "bytes": 91222,
+      "sha256": "dce6f4a4646729d7930c18118cfad8f090fd45193fc9fa459e08c0bade5a6adc"
+    },
+    {
+      "path": "matrix-v1/meet-danger-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "matrix-v1/meet-danger-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "matrix-v1/meet-parade-360.png",
+      "bytes": 91222,
+      "sha256": "dce6f4a4646729d7930c18118cfad8f090fd45193fc9fa459e08c0bade5a6adc"
+    },
+    {
+      "path": "matrix-v1/meet-parade-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "matrix-v1/meet-parade-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "matrix-v1/meet-revenge-360.png",
+      "bytes": 91222,
+      "sha256": "dce6f4a4646729d7930c18118cfad8f090fd45193fc9fa459e08c0bade5a6adc"
+    },
+    {
+      "path": "matrix-v1/meet-revenge-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "matrix-v1/meet-revenge-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "matrix-v1/report.json",
+      "bytes": 1609870,
+      "sha256": "e84d5f2676b9c13fa9dadac8f80177868d18066a05560c04ebd3adea812ae264"
+    },
+    {
+      "path": "matrix-v1/report.partial.json",
+      "bytes": 1609807,
+      "sha256": "220560b7ce74a6166aa7ab4ccb81ac2bc402fd96622679049fa546be05d7ddaa"
+    },
+    {
+      "path": "matrix-v1/review.json",
+      "bytes": 1624,
+      "sha256": "c1e16e191b7e7b7742787fe8436b19094e66cec7b40ef7f15fd6651219bd86ae"
+    },
+    {
+      "path": "matrix-v1/source-contact-sheet.html",
+      "bytes": 2885,
+      "sha256": "5bcfb674dd294f227846a8a19656f58089c49a20e9ce7e38c507a7f678b88a49"
+    },
+    {
+      "path": "matrix-v1/source-contact-sheet.png",
+      "bytes": 884891,
+      "sha256": "15f33da523621d27b5cb9ac00a3da139bbfecfa907baa909a698255692ab3f4f"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-danger-360-reduced420.png",
+      "bytes": 33301,
+      "sha256": "6ccf795ce27259681bbd7eb43f8584bdadaa8731ed2ff92c38823bdc16256522"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-danger-360.png",
+      "bytes": 386467,
+      "sha256": "49985ab2cbd96dfd6c366b39cac1d39ea564a0b0799e540ac0b193bde6861951"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-danger-390-reduced420.png",
+      "bytes": 33284,
+      "sha256": "b9a0a8fd5b4f6b10b99e30963c496dfee1d329f795d120764b4d41dbab02849f"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-danger-390.png",
+      "bytes": 431702,
+      "sha256": "562646f6b30733cb6644e8ade67640a02f376267d0ab8fbbd3b0277bb8ac5df6"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-danger-430-reduced420.png",
+      "bytes": 34982,
+      "sha256": "84d0f232b21367f74f0b16d67f4d01f6249184aaeba4674015a7c2ecb8ea00ae"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-danger-430.png",
+      "bytes": 490515,
+      "sha256": "5f5ed3344a06c8bb1cfb820b37f0ffe3701fa716f21381030b791054f36abce2"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-parade-360-reduced420.png",
+      "bytes": 33302,
+      "sha256": "57d90e9eb2b542ecb0608e8d34b8328dc3687614f26850c9186e7affaf87711d"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-parade-360.png",
+      "bytes": 386730,
+      "sha256": "eb2cdc02c71f88ad2f028da514ca5ab8d5111e74b8c8ea2b67043c426532c97c"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-parade-390-reduced420.png",
+      "bytes": 33285,
+      "sha256": "b9b8df8df3c7266ec79062f4db3d4f39cc2f5537a895b516ad3455beebb0874a"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-parade-390.png",
+      "bytes": 432158,
+      "sha256": "9ab9a85f235721fa8703eec2bb0169370243e054654e743215f7bef7bd21ebb1"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-parade-430-reduced420.png",
+      "bytes": 34974,
+      "sha256": "bca895915d1c1fa1296271ce3e38824d29163ba1b379e0d455f4b38ec9712453"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-parade-430.png",
+      "bytes": 490969,
+      "sha256": "48ab4e69eac488a520c7136887520bffe6ece081960e05b9e94d37bfc4c3dc61"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-revenge-360-reduced420.png",
+      "bytes": 33303,
+      "sha256": "faf205a0e59052c0d91a7aaf5942233db0bf2ab29bc265085b10260bed5d3fdd"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-revenge-360.png",
+      "bytes": 385688,
+      "sha256": "76f33fb9521c547a2ea027bfccb416560e53320710161e82e5016377a23167c1"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-revenge-390-reduced420.png",
+      "bytes": 33283,
+      "sha256": "e4bf7633b9318108727408ddb05f5f75ba0c19c37d114505d31351e60919dd68"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-revenge-390.png",
+      "bytes": 431002,
+      "sha256": "d85bac8a9d393b0307efc8889390ab475917f972ea0f1abc000ec5a28fd65dc7"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-revenge-430-reduced420.png",
+      "bytes": 34974,
+      "sha256": "f220162508aef437a20244b3cb552cb1dcee15f581f26faa9375d1dfcb6f6b2c"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-map-revenge-430.png",
+      "bytes": 489662,
+      "sha256": "bcc15904c3c35a785e480da5f390fd3a6d077a9362abf25331770211c55476bb"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-danger-360.png",
+      "bytes": 293845,
+      "sha256": "4ac8d8be0473c418c79db178b24af6716409316f589504602f4a103a20ae7a1a"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-danger-390.png",
+      "bytes": 315620,
+      "sha256": "907d67912fd2339796f8539883b4f077bdfd021144ea65e3850370e7e4b13dd9"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-danger-430.png",
+      "bytes": 348043,
+      "sha256": "ef618435e53d5dee80a1128f9cd7b7303ebfd8f85de3bdaa7bcd095b2bffe196"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-parade-360.png",
+      "bytes": 293473,
+      "sha256": "3d287c3acbb986253f776ecc72b64f5e3903c5703d1b376ac80be07db0b5b909"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-parade-390.png",
+      "bytes": 315162,
+      "sha256": "40688137a8628b9f49c84738ecb7fb17457d6bf8e62232a16286c7171d3a7e17"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-parade-430.png",
+      "bytes": 347963,
+      "sha256": "0643d063b6a477c116fb3b9756e6d49a1a55600a0d23b9b32833bcaff006c46b"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-revenge-360.png",
+      "bytes": 293985,
+      "sha256": "88cc810da22e172f5ac997badf37621d9742a86582e86116662d0a1c18c3f4b1"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-revenge-390.png",
+      "bytes": 315643,
+      "sha256": "9a2ddc8302d755800038a60fd23fcc0e12cbeacdf77d474a495b7f92cd959cd9"
+    },
+    {
+      "path": "matrix-v1/spatial-v4-world-revenge-430.png",
+      "bytes": 348041,
+      "sha256": "a8f01a5ba45dbe0ce7fb404619d302d10f3c3e507455a989ddf9bfd84ebb003f"
+    },
+    {
+      "path": "matrix-v1/wall-danger-360.png",
+      "bytes": 55226,
+      "sha256": "91edac2b8cebf11a2e7b5ae6d33c313bd257d64d8396745dfdb175e2f3c9dc0e"
+    },
+    {
+      "path": "matrix-v1/wall-danger-390.png",
+      "bytes": 58727,
+      "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+    },
+    {
+      "path": "matrix-v1/wall-danger-430.png",
+      "bytes": 62622,
+      "sha256": "10f3c505eb7dba837a912fd9480fbd866d8e346f7c4edecc4955ec7b6a0e1b4b"
+    },
+    {
+      "path": "matrix-v1/wall-parade-360.png",
+      "bytes": 55226,
+      "sha256": "91edac2b8cebf11a2e7b5ae6d33c313bd257d64d8396745dfdb175e2f3c9dc0e"
+    },
+    {
+      "path": "matrix-v1/wall-parade-390.png",
+      "bytes": 58727,
+      "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+    },
+    {
+      "path": "matrix-v1/wall-parade-430.png",
+      "bytes": 62622,
+      "sha256": "10f3c505eb7dba837a912fd9480fbd866d8e346f7c4edecc4955ec7b6a0e1b4b"
+    },
+    {
+      "path": "matrix-v1/wall-revenge-360.png",
+      "bytes": 55226,
+      "sha256": "91edac2b8cebf11a2e7b5ae6d33c313bd257d64d8396745dfdb175e2f3c9dc0e"
+    },
+    {
+      "path": "matrix-v1/wall-revenge-390.png",
+      "bytes": 58727,
+      "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+    },
+    {
+      "path": "matrix-v1/wall-revenge-430.png",
+      "bytes": 62622,
+      "sha256": "10f3c505eb7dba837a912fd9480fbd866d8e346f7c4edecc4955ec7b6a0e1b4b"
+    },
+    {
+      "path": "matrix-v1/world-danger-360.png",
+      "bytes": 204891,
+      "sha256": "127685cd31bdc922c3f62485a29220252c58862ab21abb7098b1c690761c4b4e"
+    },
+    {
+      "path": "matrix-v1/world-danger-390.png",
+      "bytes": 209133,
+      "sha256": "9794472218d99eb366337badc2b67b9b2f99ccae86185aaf9bfc061a7815749d"
+    },
+    {
+      "path": "matrix-v1/world-danger-430.png",
+      "bytes": 215593,
+      "sha256": "5b95c77ef2e4d36c51c9c8ba6b4ac0abea63231159952bb4e2abc7cfeed4129b"
+    },
+    {
+      "path": "matrix-v1/world-parade-360.png",
+      "bytes": 199153,
+      "sha256": "4e5a17d532b4d08fdc3f6946a9da707989096eb2dd34b333a3ecad12061b4941"
+    },
+    {
+      "path": "matrix-v1/world-parade-390.png",
+      "bytes": 203471,
+      "sha256": "88cc51fc4a4e5b207ddbdac6d66a6c30394b0ff529e0acfb938515da6466054f"
+    },
+    {
+      "path": "matrix-v1/world-parade-430.png",
+      "bytes": 210457,
+      "sha256": "178a96a5f148be5e0ed174dd123cb146a03bc16a57fe2e543fee46a9fe017f1d"
+    },
+    {
+      "path": "matrix-v1/world-revenge-360.png",
+      "bytes": 205850,
+      "sha256": "2bf7bcf126b3a6f36436893805c7d5e9095be46b901802ef89d7e25540693d92"
+    },
+    {
+      "path": "matrix-v1/world-revenge-390.png",
+      "bytes": 210070,
+      "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+    },
+    {
+      "path": "matrix-v1/world-revenge-430.png",
+      "bytes": 216206,
+      "sha256": "c60cfffd2c986240e556a1fe1597274f05bb52ce235b186f2bcce91bd9ca583f"
+    },
+    {
+      "path": "matrix-v3/comparison.html",
+      "bytes": 15277,
+      "sha256": "a927434d24d573c4ea4fcf467781fa3969bdc4916d3f598fc7e2091d8808048c"
+    },
+    {
+      "path": "matrix-v3/contact-sheet.html",
+      "bytes": 1783,
+      "sha256": "7c4cda93c8f36cdfedc2dd93828dbe8f86108d88fdc36ee269dd18521a38cb30"
+    },
+    {
+      "path": "matrix-v3/contact-sheet.png",
+      "bytes": 1854107,
+      "sha256": "0268b986b8179a7944bc5aae0a685efac3322d114d67841082be64a05903998f"
+    },
+    {
+      "path": "matrix-v3/customize-danger-360-reduced420.png",
+      "bytes": 37869,
+      "sha256": "3b349d4e469b4ba642374842b5b8f988efaf7fafdd80d481168e661920b7d9fb"
+    },
+    {
+      "path": "matrix-v3/customize-danger-360.png",
+      "bytes": 59404,
+      "sha256": "82e7f80b353f4e8a1fdb2da594b81e2d0163017cf5777d58c1e2f0e5c5a2f4e7"
+    },
+    {
+      "path": "matrix-v3/customize-danger-390-reduced420.png",
+      "bytes": 38423,
+      "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+    },
+    {
+      "path": "matrix-v3/customize-danger-390.png",
+      "bytes": 61268,
+      "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+    },
+    {
+      "path": "matrix-v3/customize-danger-430-reduced420.png",
+      "bytes": 39037,
+      "sha256": "16010502f125d30d7500c4c5e8de65a60acaff06256e4a54d2df8b5a4990cce5"
+    },
+    {
+      "path": "matrix-v3/customize-danger-430.png",
+      "bytes": 63108,
+      "sha256": "110e81a730e469bb6f4685c3a6ac613cf2a745164daf27be8691b3fbc7254999"
+    },
+    {
+      "path": "matrix-v3/customize-parade-360-reduced420.png",
+      "bytes": 37869,
+      "sha256": "3b349d4e469b4ba642374842b5b8f988efaf7fafdd80d481168e661920b7d9fb"
+    },
+    {
+      "path": "matrix-v3/customize-parade-360.png",
+      "bytes": 59404,
+      "sha256": "82e7f80b353f4e8a1fdb2da594b81e2d0163017cf5777d58c1e2f0e5c5a2f4e7"
+    },
+    {
+      "path": "matrix-v3/customize-parade-390-reduced420.png",
+      "bytes": 38423,
+      "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+    },
+    {
+      "path": "matrix-v3/customize-parade-390.png",
+      "bytes": 61268,
+      "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+    },
+    {
+      "path": "matrix-v3/customize-parade-430-reduced420.png",
+      "bytes": 39037,
+      "sha256": "16010502f125d30d7500c4c5e8de65a60acaff06256e4a54d2df8b5a4990cce5"
+    },
+    {
+      "path": "matrix-v3/customize-parade-430.png",
+      "bytes": 63108,
+      "sha256": "110e81a730e469bb6f4685c3a6ac613cf2a745164daf27be8691b3fbc7254999"
+    },
+    {
+      "path": "matrix-v3/customize-revenge-360-reduced420.png",
+      "bytes": 37869,
+      "sha256": "3b349d4e469b4ba642374842b5b8f988efaf7fafdd80d481168e661920b7d9fb"
+    },
+    {
+      "path": "matrix-v3/customize-revenge-360.png",
+      "bytes": 59404,
+      "sha256": "82e7f80b353f4e8a1fdb2da594b81e2d0163017cf5777d58c1e2f0e5c5a2f4e7"
+    },
+    {
+      "path": "matrix-v3/customize-revenge-390-reduced420.png",
+      "bytes": 38423,
+      "sha256": "442c9bedb0bdbd72952000d32b545087d9a1fe00307b81601321e9e9dd90dd12"
+    },
+    {
+      "path": "matrix-v3/customize-revenge-390.png",
+      "bytes": 61268,
+      "sha256": "b6d320887196179f18b3dc0b6ae81648080b56d390ae23af9baa86c83f25e677"
+    },
+    {
+      "path": "matrix-v3/customize-revenge-430-reduced420.png",
+      "bytes": 39037,
+      "sha256": "16010502f125d30d7500c4c5e8de65a60acaff06256e4a54d2df8b5a4990cce5"
+    },
+    {
+      "path": "matrix-v3/customize-revenge-430.png",
+      "bytes": 63108,
+      "sha256": "110e81a730e469bb6f4685c3a6ac613cf2a745164daf27be8691b3fbc7254999"
+    },
+    {
+      "path": "matrix-v3/feed-danger-360-reduced420.png",
+      "bytes": 30828,
+      "sha256": "48ea72be88904a72c94d43294d4a6898545c58338adeeb5b2e593bded0fabdf8"
+    },
+    {
+      "path": "matrix-v3/feed-danger-360.png",
+      "bytes": 59161,
+      "sha256": "c2953f1eefaaf3e1f44dec507fc088f5e7b3eba3d762260d92c88991b1dfeef4"
+    },
+    {
+      "path": "matrix-v3/feed-danger-390-reduced420.png",
+      "bytes": 32175,
+      "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+    },
+    {
+      "path": "matrix-v3/feed-danger-390.png",
+      "bytes": 62634,
+      "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+    },
+    {
+      "path": "matrix-v3/feed-danger-430-reduced420.png",
+      "bytes": 33631,
+      "sha256": "f05c0e0c0db2c7c640d80efe97be7c0406e82062f69b63717485bde270a7d621"
+    },
+    {
+      "path": "matrix-v3/feed-danger-430.png",
+      "bytes": 65853,
+      "sha256": "8cf3ead5fb2898c0622473f29522bd9ca6b8df718ae39ae934fa3b56abea8e69"
+    },
+    {
+      "path": "matrix-v3/feed-parade-360-reduced420.png",
+      "bytes": 30828,
+      "sha256": "48ea72be88904a72c94d43294d4a6898545c58338adeeb5b2e593bded0fabdf8"
+    },
+    {
+      "path": "matrix-v3/feed-parade-360.png",
+      "bytes": 59161,
+      "sha256": "c2953f1eefaaf3e1f44dec507fc088f5e7b3eba3d762260d92c88991b1dfeef4"
+    },
+    {
+      "path": "matrix-v3/feed-parade-390-reduced420.png",
+      "bytes": 32175,
+      "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+    },
+    {
+      "path": "matrix-v3/feed-parade-390.png",
+      "bytes": 62634,
+      "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+    },
+    {
+      "path": "matrix-v3/feed-parade-430-reduced420.png",
+      "bytes": 33631,
+      "sha256": "f05c0e0c0db2c7c640d80efe97be7c0406e82062f69b63717485bde270a7d621"
+    },
+    {
+      "path": "matrix-v3/feed-parade-430.png",
+      "bytes": 65853,
+      "sha256": "8cf3ead5fb2898c0622473f29522bd9ca6b8df718ae39ae934fa3b56abea8e69"
+    },
+    {
+      "path": "matrix-v3/feed-revenge-360-reduced420.png",
+      "bytes": 30828,
+      "sha256": "48ea72be88904a72c94d43294d4a6898545c58338adeeb5b2e593bded0fabdf8"
+    },
+    {
+      "path": "matrix-v3/feed-revenge-360.png",
+      "bytes": 59161,
+      "sha256": "c2953f1eefaaf3e1f44dec507fc088f5e7b3eba3d762260d92c88991b1dfeef4"
+    },
+    {
+      "path": "matrix-v3/feed-revenge-390-reduced420.png",
+      "bytes": 32175,
+      "sha256": "301d8bb2f51961040943f8097369b0297bd894429020a60b64caeb613d5ef9c0"
+    },
+    {
+      "path": "matrix-v3/feed-revenge-390.png",
+      "bytes": 62634,
+      "sha256": "2ac956c4c04dcd468721a158684dc59a2b7b8c8b3c43f3b136170c9b46faaed1"
+    },
+    {
+      "path": "matrix-v3/feed-revenge-430-reduced420.png",
+      "bytes": 33631,
+      "sha256": "f05c0e0c0db2c7c640d80efe97be7c0406e82062f69b63717485bde270a7d621"
+    },
+    {
+      "path": "matrix-v3/feed-revenge-430.png",
+      "bytes": 65853,
+      "sha256": "8cf3ead5fb2898c0622473f29522bd9ca6b8df718ae39ae934fa3b56abea8e69"
+    },
+    {
+      "path": "matrix-v3/gifts-danger-360.png",
+      "bytes": 92408,
+      "sha256": "c5954787e8e724e5066206a33456b440d7a85ed87470426fbc81eb25e8b8334a"
+    },
+    {
+      "path": "matrix-v3/gifts-danger-390.png",
+      "bytes": 97329,
+      "sha256": "8a21df7d2cfc98f8145314390e6f15beb778cd50a6bd5c28580b470758136496"
+    },
+    {
+      "path": "matrix-v3/gifts-danger-430.png",
+      "bytes": 102798,
+      "sha256": "8711cd3c553ae0eb404bdbe4fa13c0d468d794debc911e2af6f0a68b7d318d6d"
+    },
+    {
+      "path": "matrix-v3/gifts-parade-360.png",
+      "bytes": 92408,
+      "sha256": "c5954787e8e724e5066206a33456b440d7a85ed87470426fbc81eb25e8b8334a"
+    },
+    {
+      "path": "matrix-v3/gifts-parade-390.png",
+      "bytes": 97329,
+      "sha256": "8a21df7d2cfc98f8145314390e6f15beb778cd50a6bd5c28580b470758136496"
+    },
+    {
+      "path": "matrix-v3/gifts-parade-430.png",
+      "bytes": 102798,
+      "sha256": "8711cd3c553ae0eb404bdbe4fa13c0d468d794debc911e2af6f0a68b7d318d6d"
+    },
+    {
+      "path": "matrix-v3/gifts-revenge-360.png",
+      "bytes": 92408,
+      "sha256": "c5954787e8e724e5066206a33456b440d7a85ed87470426fbc81eb25e8b8334a"
+    },
+    {
+      "path": "matrix-v3/gifts-revenge-390.png",
+      "bytes": 97329,
+      "sha256": "8a21df7d2cfc98f8145314390e6f15beb778cd50a6bd5c28580b470758136496"
+    },
+    {
+      "path": "matrix-v3/gifts-revenge-430.png",
+      "bytes": 102798,
+      "sha256": "8711cd3c553ae0eb404bdbe4fa13c0d468d794debc911e2af6f0a68b7d318d6d"
+    },
+    {
+      "path": "matrix-v3/landing-revenge-360.png",
+      "bytes": 221689,
+      "sha256": "a8ba5739c8a3eaeeb4fda35264e95438d552a9bd89dc8ee6b785b07b2063af54"
+    },
+    {
+      "path": "matrix-v3/landing-revenge-390.png",
+      "bytes": 248289,
+      "sha256": "dbb09ff5b80b7ceb578c17778b3021722655ff2c55f9af1904ded21345e288cc"
+    },
+    {
+      "path": "matrix-v3/landing-revenge-430.png",
+      "bytes": 280961,
+      "sha256": "5b5795ffc225bb590b83f7d2d51779d7f0ca3fbb4dae461534fa27a62a14c85d"
+    },
+    {
+      "path": "matrix-v3/login-revenge-360-reduced420.png",
+      "bytes": 172229,
+      "sha256": "59afd1ad2c05359e7c09a42f00b9fee9671c75e99a3b27bde82f0848562d495e"
+    },
+    {
+      "path": "matrix-v3/login-revenge-360.png",
+      "bytes": 300967,
+      "sha256": "be754369584e870885f77453814bf17b998e9d725a1e6a2b3990af1e50072b87"
+    },
+    {
+      "path": "matrix-v3/login-revenge-390-reduced420.png",
+      "bytes": 199502,
+      "sha256": "b0d529c6f6285b50d89cc66d66fdcb53e77745e6c21b90ce9bbdf6e927acc848"
+    },
+    {
+      "path": "matrix-v3/login-revenge-390.png",
+      "bytes": 368543,
+      "sha256": "ea52a7559e8bcba3b79f3630b1cec7af429ee07fada24d79defb58fa6fa2bd7a"
+    },
+    {
+      "path": "matrix-v3/login-revenge-430-reduced420.png",
+      "bytes": 196991,
+      "sha256": "7c71a92ee2089f59852ba5dc9ea46026c9fa7e470f7561997a27dafff2fc23a6"
+    },
+    {
+      "path": "matrix-v3/login-revenge-430.png",
+      "bytes": 399301,
+      "sha256": "1726ffd80b120a16a15cc88dfe9868d9d32ba01bd64ce7fca6c95b41dabbc4e0"
+    },
+    {
+      "path": "matrix-v3/map-danger-360-reduced420.png",
+      "bytes": 78856,
+      "sha256": "b5f368108f5a8fc8f0220f5c8b2f83f4e355e680a01f4e0eb453683206b6f0a6"
+    },
+    {
+      "path": "matrix-v3/map-danger-360.png",
+      "bytes": 155846,
+      "sha256": "d0c1aeed6c7d6143aaa3aa092ac1dae3e11a0149f4c777a8f9c12e0479bcba92"
+    },
+    {
+      "path": "matrix-v3/map-danger-390-reduced420.png",
+      "bytes": 86352,
+      "sha256": "f7bccf7061723f320fda00efe99786dfc6c352e73558f02b9df6d5d9d7c8b47f"
+    },
+    {
+      "path": "matrix-v3/map-danger-390.png",
+      "bytes": 163351,
+      "sha256": "b459eac34e0f77653a89af03ee7ce89c2c6b552becd769536c9aeab274e47297"
+    },
+    {
+      "path": "matrix-v3/map-danger-430-reduced420.png",
+      "bytes": 92865,
+      "sha256": "13173b0ae013bffb7127b9197907b62fe3917080b12ee94bed8459cf5ce6c955"
+    },
+    {
+      "path": "matrix-v3/map-danger-430.png",
+      "bytes": 174943,
+      "sha256": "c57529db79cdce46c36861a5543c9083fb702193743a2b1ee74a9b8033d2cd4f"
+    },
+    {
+      "path": "matrix-v3/map-parade-360-reduced420.png",
+      "bytes": 78727,
+      "sha256": "d18a36c1d49773a962f0c4f09eb921764a4061cea052af180b194200dda52548"
+    },
+    {
+      "path": "matrix-v3/map-parade-360.png",
+      "bytes": 155920,
+      "sha256": "fbef23a312261fd727244d22ee907dd9824ecf54687306ee5f94b5cffa4924b3"
+    },
+    {
+      "path": "matrix-v3/map-parade-390-reduced420.png",
+      "bytes": 86094,
+      "sha256": "59d31beec17236b4c0e346416fe496ba367a7a37a730210de810c225e893e38e"
+    },
+    {
+      "path": "matrix-v3/map-parade-390.png",
+      "bytes": 163380,
+      "sha256": "7dabab8c28369caa569ddf632ebaab5d811fd7837ddd9e74b1d44e9df64ff62f"
+    },
+    {
+      "path": "matrix-v3/map-parade-430-reduced420.png",
+      "bytes": 92246,
+      "sha256": "e96eca4aac9d69f1b8c17f4e1a513163bebe48ef47e861b98bba8feeda5ccbc2"
+    },
+    {
+      "path": "matrix-v3/map-parade-430.png",
+      "bytes": 174654,
+      "sha256": "47f8448a5378cd7bf1ead4270d7bc4068a7b251ab1f3300e9c6e5f182087e6ad"
+    },
+    {
+      "path": "matrix-v3/map-revenge-360-reduced420.png",
+      "bytes": 78571,
+      "sha256": "954ad0da721eccd4f2b09b3b577b5150933612ec597e4e710e17d6d44f85414b"
+    },
+    {
+      "path": "matrix-v3/map-revenge-360.png",
+      "bytes": 155080,
+      "sha256": "00b7d7b87aca068ef9c66c13fd53d2427d5ac2c8e6a7d6f948330b9c492b2f64"
+    },
+    {
+      "path": "matrix-v3/map-revenge-390-reduced420.png",
+      "bytes": 85895,
+      "sha256": "3c3ccb3aa7d8893d76bd17d36fb0b0a733ddf8c23b6d8c4fe0d66951cb86358c"
+    },
+    {
+      "path": "matrix-v3/map-revenge-390.png",
+      "bytes": 162846,
+      "sha256": "fff9ab6af83bf3e4461201372ad6d40e62627efeb3472ab87058744b70fabe25"
+    },
+    {
+      "path": "matrix-v3/map-revenge-430-reduced420.png",
+      "bytes": 92337,
+      "sha256": "b5687b42eb82ff29714d62c5406827c46e6b94e42ccd5f7b854338d77b21f729"
+    },
+    {
+      "path": "matrix-v3/map-revenge-430.png",
+      "bytes": 174241,
+      "sha256": "f9f53a814639014dffc51bbf8c93db37cb914e881ff59bfaedf5e5b8bb356485"
+    },
+    {
+      "path": "matrix-v3/me-danger-360.png",
+      "bytes": 70874,
+      "sha256": "3ac0a3b0bece46f94023e8860f47a7a9eef5be0231a75748be0010bb0270ec43"
+    },
+    {
+      "path": "matrix-v3/me-danger-390.png",
+      "bytes": 73397,
+      "sha256": "43a8c54b9cb71ddd4fdaa3319f01e553852ff95d39ffa6b011e7c4e92ec7127f"
+    },
+    {
+      "path": "matrix-v3/me-danger-430.png",
+      "bytes": 73757,
+      "sha256": "f325d3dbcf0825d2a5769c3a6975dec7b15082a2b1bd3f00026e53bbfc95dc7f"
+    },
+    {
+      "path": "matrix-v3/me-parade-360.png",
+      "bytes": 70839,
+      "sha256": "8b03462a17c8298ce2cbe57b88c7b17f5525a5612fee20be0ab43c913e393f35"
+    },
+    {
+      "path": "matrix-v3/me-parade-390.png",
+      "bytes": 73362,
+      "sha256": "f230b61254ed15a7cd9583d92dbc8becf57d259a190a87241b4cbcc35c1bb340"
+    },
+    {
+      "path": "matrix-v3/me-parade-430.png",
+      "bytes": 73714,
+      "sha256": "91781e2e15f26a37391491b819ce360de24571ad75148e07db97cf6007f783cd"
+    },
+    {
+      "path": "matrix-v3/me-revenge-360.png",
+      "bytes": 70954,
+      "sha256": "5d9be5828eec113615f1321b2293398b483920bced53b1aa6f0314f1a22c017f"
+    },
+    {
+      "path": "matrix-v3/me-revenge-390.png",
+      "bytes": 73424,
+      "sha256": "6f59de1d34b97194ccfebb9dd2c4eff46d5332bb75a9c1903b5a2a7d4dd5953c"
+    },
+    {
+      "path": "matrix-v3/me-revenge-430.png",
+      "bytes": 73742,
+      "sha256": "9378233afe7902ecafb9e07fd369f3cfe46ff9ffb2f1a7ee88ef79a481bce673"
+    },
+    {
+      "path": "matrix-v3/meet-danger-360.png",
+      "bytes": 91224,
+      "sha256": "a21361b3e24190158e1f6423780d753344295e5768ff738a87f7699b5ca94fe1"
+    },
+    {
+      "path": "matrix-v3/meet-danger-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "matrix-v3/meet-danger-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "matrix-v3/meet-parade-360.png",
+      "bytes": 91222,
+      "sha256": "dce6f4a4646729d7930c18118cfad8f090fd45193fc9fa459e08c0bade5a6adc"
+    },
+    {
+      "path": "matrix-v3/meet-parade-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "matrix-v3/meet-parade-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "matrix-v3/meet-revenge-360.png",
+      "bytes": 91222,
+      "sha256": "dce6f4a4646729d7930c18118cfad8f090fd45193fc9fa459e08c0bade5a6adc"
+    },
+    {
+      "path": "matrix-v3/meet-revenge-390.png",
+      "bytes": 96449,
+      "sha256": "e646c50ee6a0a1314f8527838820ace303f90ad0384eed9077663ec2031bd7da"
+    },
+    {
+      "path": "matrix-v3/meet-revenge-430.png",
+      "bytes": 101208,
+      "sha256": "942e95187594f5d48f586acf1a050279038aaa91b4652f50a5c37e6338a5d37f"
+    },
+    {
+      "path": "matrix-v3/report.json",
+      "bytes": 1609635,
+      "sha256": "24cfbe74077817b495a18c922964a22f20dc32d396dc01fe8cc26d557da227bc"
+    },
+    {
+      "path": "matrix-v3/report.partial.json",
+      "bytes": 1609572,
+      "sha256": "4f3800a95ca53c9b4b9ebd8df44951176bba6f56d711e039769b277f0f8b7149"
+    },
+    {
+      "path": "matrix-v3/review.json",
+      "bytes": 1624,
+      "sha256": "98cd2e58a7ccdc086c70690702bd890023f91463bfcd7692a666d97b94ef8b85"
+    },
+    {
+      "path": "matrix-v3/source-contact-sheet.html",
+      "bytes": 2885,
+      "sha256": "5bcfb674dd294f227846a8a19656f58089c49a20e9ce7e38c507a7f678b88a49"
+    },
+    {
+      "path": "matrix-v3/source-contact-sheet.png",
+      "bytes": 879721,
+      "sha256": "45162b755df22ba731b29a1e7900c050cf37a3f0f7ec80dc1ee06f7b598ffb8d"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-danger-360-reduced420.png",
+      "bytes": 33301,
+      "sha256": "6ccf795ce27259681bbd7eb43f8584bdadaa8731ed2ff92c38823bdc16256522"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-danger-360.png",
+      "bytes": 386467,
+      "sha256": "49985ab2cbd96dfd6c366b39cac1d39ea564a0b0799e540ac0b193bde6861951"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-danger-390-reduced420.png",
+      "bytes": 33284,
+      "sha256": "b9a0a8fd5b4f6b10b99e30963c496dfee1d329f795d120764b4d41dbab02849f"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-danger-390.png",
+      "bytes": 431702,
+      "sha256": "562646f6b30733cb6644e8ade67640a02f376267d0ab8fbbd3b0277bb8ac5df6"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-danger-430-reduced420.png",
+      "bytes": 34982,
+      "sha256": "84d0f232b21367f74f0b16d67f4d01f6249184aaeba4674015a7c2ecb8ea00ae"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-danger-430.png",
+      "bytes": 490515,
+      "sha256": "5f5ed3344a06c8bb1cfb820b37f0ffe3701fa716f21381030b791054f36abce2"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-parade-360-reduced420.png",
+      "bytes": 33302,
+      "sha256": "57d90e9eb2b542ecb0608e8d34b8328dc3687614f26850c9186e7affaf87711d"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-parade-360.png",
+      "bytes": 386730,
+      "sha256": "eb2cdc02c71f88ad2f028da514ca5ab8d5111e74b8c8ea2b67043c426532c97c"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-parade-390-reduced420.png",
+      "bytes": 33285,
+      "sha256": "b9b8df8df3c7266ec79062f4db3d4f39cc2f5537a895b516ad3455beebb0874a"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-parade-390.png",
+      "bytes": 432158,
+      "sha256": "9ab9a85f235721fa8703eec2bb0169370243e054654e743215f7bef7bd21ebb1"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-parade-430-reduced420.png",
+      "bytes": 34974,
+      "sha256": "bca895915d1c1fa1296271ce3e38824d29163ba1b379e0d455f4b38ec9712453"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-parade-430.png",
+      "bytes": 490969,
+      "sha256": "48ab4e69eac488a520c7136887520bffe6ece081960e05b9e94d37bfc4c3dc61"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-revenge-360-reduced420.png",
+      "bytes": 33303,
+      "sha256": "faf205a0e59052c0d91a7aaf5942233db0bf2ab29bc265085b10260bed5d3fdd"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-revenge-360.png",
+      "bytes": 385688,
+      "sha256": "76f33fb9521c547a2ea027bfccb416560e53320710161e82e5016377a23167c1"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-revenge-390-reduced420.png",
+      "bytes": 33283,
+      "sha256": "e4bf7633b9318108727408ddb05f5f75ba0c19c37d114505d31351e60919dd68"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-revenge-390.png",
+      "bytes": 431002,
+      "sha256": "d85bac8a9d393b0307efc8889390ab475917f972ea0f1abc000ec5a28fd65dc7"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-revenge-430-reduced420.png",
+      "bytes": 34974,
+      "sha256": "f220162508aef437a20244b3cb552cb1dcee15f581f26faa9375d1dfcb6f6b2c"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-map-revenge-430.png",
+      "bytes": 489662,
+      "sha256": "bcc15904c3c35a785e480da5f390fd3a6d077a9362abf25331770211c55476bb"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-danger-360.png",
+      "bytes": 293845,
+      "sha256": "4ac8d8be0473c418c79db178b24af6716409316f589504602f4a103a20ae7a1a"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-danger-390.png",
+      "bytes": 315620,
+      "sha256": "907d67912fd2339796f8539883b4f077bdfd021144ea65e3850370e7e4b13dd9"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-danger-430.png",
+      "bytes": 348043,
+      "sha256": "ef618435e53d5dee80a1128f9cd7b7303ebfd8f85de3bdaa7bcd095b2bffe196"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-parade-360.png",
+      "bytes": 293473,
+      "sha256": "3d287c3acbb986253f776ecc72b64f5e3903c5703d1b376ac80be07db0b5b909"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-parade-390.png",
+      "bytes": 315162,
+      "sha256": "40688137a8628b9f49c84738ecb7fb17457d6bf8e62232a16286c7171d3a7e17"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-parade-430.png",
+      "bytes": 347963,
+      "sha256": "0643d063b6a477c116fb3b9756e6d49a1a55600a0d23b9b32833bcaff006c46b"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-revenge-360.png",
+      "bytes": 293985,
+      "sha256": "88cc810da22e172f5ac997badf37621d9742a86582e86116662d0a1c18c3f4b1"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-revenge-390.png",
+      "bytes": 315643,
+      "sha256": "9a2ddc8302d755800038a60fd23fcc0e12cbeacdf77d474a495b7f92cd959cd9"
+    },
+    {
+      "path": "matrix-v3/spatial-v4-world-revenge-430.png",
+      "bytes": 348041,
+      "sha256": "a8f01a5ba45dbe0ce7fb404619d302d10f3c3e507455a989ddf9bfd84ebb003f"
+    },
+    {
+      "path": "matrix-v3/wall-danger-360.png",
+      "bytes": 55226,
+      "sha256": "91edac2b8cebf11a2e7b5ae6d33c313bd257d64d8396745dfdb175e2f3c9dc0e"
+    },
+    {
+      "path": "matrix-v3/wall-danger-390.png",
+      "bytes": 58727,
+      "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+    },
+    {
+      "path": "matrix-v3/wall-danger-430.png",
+      "bytes": 62622,
+      "sha256": "10f3c505eb7dba837a912fd9480fbd866d8e346f7c4edecc4955ec7b6a0e1b4b"
+    },
+    {
+      "path": "matrix-v3/wall-parade-360.png",
+      "bytes": 55226,
+      "sha256": "91edac2b8cebf11a2e7b5ae6d33c313bd257d64d8396745dfdb175e2f3c9dc0e"
+    },
+    {
+      "path": "matrix-v3/wall-parade-390.png",
+      "bytes": 58727,
+      "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+    },
+    {
+      "path": "matrix-v3/wall-parade-430.png",
+      "bytes": 62622,
+      "sha256": "10f3c505eb7dba837a912fd9480fbd866d8e346f7c4edecc4955ec7b6a0e1b4b"
+    },
+    {
+      "path": "matrix-v3/wall-revenge-360.png",
+      "bytes": 55226,
+      "sha256": "91edac2b8cebf11a2e7b5ae6d33c313bd257d64d8396745dfdb175e2f3c9dc0e"
+    },
+    {
+      "path": "matrix-v3/wall-revenge-390.png",
+      "bytes": 58727,
+      "sha256": "8b9e8e4e21ea42bf2c83710d15c31179868988727b01f493119757a651ebb3e6"
+    },
+    {
+      "path": "matrix-v3/wall-revenge-430.png",
+      "bytes": 62622,
+      "sha256": "10f3c505eb7dba837a912fd9480fbd866d8e346f7c4edecc4955ec7b6a0e1b4b"
+    },
+    {
+      "path": "matrix-v3/world-danger-360.png",
+      "bytes": 204891,
+      "sha256": "127685cd31bdc922c3f62485a29220252c58862ab21abb7098b1c690761c4b4e"
+    },
+    {
+      "path": "matrix-v3/world-danger-390.png",
+      "bytes": 209109,
+      "sha256": "4801d6a6664e1958df215ab042bb8e00ae645e5d3a71acbf9f0b283958a4a100"
+    },
+    {
+      "path": "matrix-v3/world-danger-430.png",
+      "bytes": 215593,
+      "sha256": "5b95c77ef2e4d36c51c9c8ba6b4ac0abea63231159952bb4e2abc7cfeed4129b"
+    },
+    {
+      "path": "matrix-v3/world-parade-360.png",
+      "bytes": 199153,
+      "sha256": "4e5a17d532b4d08fdc3f6946a9da707989096eb2dd34b333a3ecad12061b4941"
+    },
+    {
+      "path": "matrix-v3/world-parade-390.png",
+      "bytes": 203471,
+      "sha256": "88cc51fc4a4e5b207ddbdac6d66a6c30394b0ff529e0acfb938515da6466054f"
+    },
+    {
+      "path": "matrix-v3/world-parade-430.png",
+      "bytes": 210457,
+      "sha256": "178a96a5f148be5e0ed174dd123cb146a03bc16a57fe2e543fee46a9fe017f1d"
+    },
+    {
+      "path": "matrix-v3/world-revenge-360.png",
+      "bytes": 205850,
+      "sha256": "2bf7bcf126b3a6f36436893805c7d5e9095be46b901802ef89d7e25540693d92"
+    },
+    {
+      "path": "matrix-v3/world-revenge-390.png",
+      "bytes": 210070,
+      "sha256": "168152eafc8182691125732838f17801aee31b0e31290222c42f478345171b28"
+    },
+    {
+      "path": "matrix-v3/world-revenge-430.png",
+      "bytes": 216206,
+      "sha256": "c60cfffd2c986240e556a1fe1597274f05bb52ce235b186f2bcce91bd9ca583f"
+    },
+    {
+      "path": "modal-v2/modal-closed-danger-360.png",
+      "bytes": 168183,
+      "sha256": "19d086050ceaf4efa66cdcaaa65abceb43f4aff23cb7627e6d9ebd28fbfd4158"
+    },
+    {
+      "path": "modal-v2/modal-closed-danger-390.png",
+      "bytes": 186401,
+      "sha256": "b1bac0997241c91b8a86801311650a463bd3db80c7a5636861be2c4a9d8b903b"
+    },
+    {
+      "path": "modal-v2/modal-closed-danger-430.png",
+      "bytes": 181365,
+      "sha256": "a640384d107530b6b843b1193299b962ed4f274df6a4163a288db3b6c29d561e"
+    },
+    {
+      "path": "modal-v2/modal-closed-parade-360.png",
+      "bytes": 168346,
+      "sha256": "dcf7eb026d4cd90d13342a3bd3a03578f92cefde70954ac8f6be8203874655f9"
+    },
+    {
+      "path": "modal-v2/modal-closed-parade-390.png",
+      "bytes": 186538,
+      "sha256": "77c94aa8cc852f7f3aef1bbcf6d4de17a6c6a3e80e24ef496972127632d321ba"
+    },
+    {
+      "path": "modal-v2/modal-closed-parade-430.png",
+      "bytes": 181542,
+      "sha256": "63f1ac374411ef62a7f0ea700948d4c04ee9cdaf2e2ec54725b7011ff5eb9625"
+    },
+    {
+      "path": "modal-v2/modal-closed-revenge-360.png",
+      "bytes": 168008,
+      "sha256": "f6a17ea07832989fa4825d70ce93eda84880d8a21d422c05a348b9881a0c14f6"
+    },
+    {
+      "path": "modal-v2/modal-closed-revenge-390.png",
+      "bytes": 186066,
+      "sha256": "0362203ef575e416e9e9da8522748d0cc099467eab83ce4ee8d25e727c24aca9"
+    },
+    {
+      "path": "modal-v2/modal-closed-revenge-430.png",
+      "bytes": 181218,
+      "sha256": "e865af93bb97cea4fac18eb6258927ba2b0a650ac8924d5801a8bb90b7ab4b4f"
+    },
+    {
+      "path": "modal-v2/modal-search-danger-360.png",
+      "bytes": 27411,
+      "sha256": "f7366db5a09bd0966d7a678449c87b638470c1cb15898f202997d6255a75f83a"
+    },
+    {
+      "path": "modal-v2/modal-search-danger-390.png",
+      "bytes": 27582,
+      "sha256": "7077968761e319a9e3d76829740c31e605af43bbe496719c9b716b76125b2874"
+    },
+    {
+      "path": "modal-v2/modal-search-danger-430.png",
+      "bytes": 29118,
+      "sha256": "ae591e721c231855dd3f5c1535e8c9cbb8c55bd08f2523f9546bfc768b28f7b9"
+    },
+    {
+      "path": "modal-v2/modal-search-parade-360.png",
+      "bytes": 27407,
+      "sha256": "9873782231c90567573f905705afdd66d28a82d67d1950436ddf238236e6b4e3"
+    },
+    {
+      "path": "modal-v2/modal-search-parade-390.png",
+      "bytes": 27584,
+      "sha256": "9cf39dfdf974b16de17e0c0882a670f30c266a47fc4b271de485d8cb52362e69"
+    },
+    {
+      "path": "modal-v2/modal-search-parade-430.png",
+      "bytes": 29106,
+      "sha256": "20fbf6113f93b2da9f3d7a00c963fbf833c31c5cabe3758984b46a8402764e2a"
+    },
+    {
+      "path": "modal-v2/modal-search-revenge-360.png",
+      "bytes": 27407,
+      "sha256": "b833eb7a966dc167c1f56247c9a8051437d060a5e458e09a1af9ae0a8f10a84a"
+    },
+    {
+      "path": "modal-v2/modal-search-revenge-390.png",
+      "bytes": 27585,
+      "sha256": "3eb377156a5ba264e74740c62fdd746f7d6257361a6c1500f6cae1bc5236b624"
+    },
+    {
+      "path": "modal-v2/modal-search-revenge-430.png",
+      "bytes": 29128,
+      "sha256": "97977bec4bdaae97df9e01947344299cd131c37bc75214554e7bc761b1a43d9b"
+    },
+    {
+      "path": "modal-v2/report.json",
+      "bytes": 38245,
+      "sha256": "d37f4ef2b90b6b6345d8aa76fc9f6cc1cc2bfc94c6343a5a74a5c61c4a863bd6"
+    }
+  ],
+  "commands": [
+    {
+      "command": "native.mjs QA06_OUTPUT=matrix-v3",
+      "exitCode": 0,
+      "records": "78screen+9source;135screenshots"
+    },
+    {
+      "command": "comparison.mjs matrix-v3; review.mjs matrix-v3",
+      "exitCode": 0
+    },
+    {
+      "command": "fidelity.mjs QA06_FIDELITY_OUTPUT=fidelity-v3; fidelity-review.mjs fidelity-v3",
+      "exitCode": 0
+    },
+    {
+      "command": "consumers.mjs QA06_CONSUMER_OUTPUT=consumers-v5",
+      "exitCode": 1,
+      "reason": "8GiB guard; stopped before mkdir/server/browser"
+    },
+    {
+      "command": "node --check motion-candidate.mjs; oxlint frontend/e2e/visual/qa06",
+      "exitCode": 0
+    },
+    {
+      "command": "motion-candidate.mjs runtime",
+      "status": "NOT_RUN",
+      "reason": "capacity hold"
+    }
+  ],
+  "limitations": [
+    "No physical device/real software keyboard/safe area acceptance",
+    "Candidate static review is not independent runtime",
+    "Current corrected evidence remains pinned production980fc4d; not latest master",
+    "Historical pre-correction evidence explicitly labeled",
+    "Original ten-screen fidelity unresolved; Map caption repair newly routed",
+    "Wall/current product art/admission not accepted"
+  ]
+}

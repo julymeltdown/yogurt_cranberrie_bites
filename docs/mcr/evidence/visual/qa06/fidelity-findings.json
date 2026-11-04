@@ -1,0 +1,269 @@
+{
+  "task": "QA06",
+  "status": "IN_PROGRESS",
+  "candidate": "980fc4d85020f297b36fee8195e1ca92079ff33f",
+  "referenceSha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+  "method": "Developer directly inspected all ten unchanged reference/current equal-aspect comparison panels, plus native844 world/map and v4 source contact sheets; corrected foreign-owner Gifts recapture independently viewed. No invented fidelity score, capture-count acceptance, SL/King/human review gate.",
+  "baselineLimit": "Corrected matrix-v3 completed exit0:78 screen cases+9 source cases;135 exact-size screenshots; fidelity-v3 completed exit0:ten equal-aspect screens+three source variants. Both preserve production baseline980fc4d; source-only harness59f88 changes no product source. Historicalv1/v2 preserved; v2 command exited130 after raw captures, not counted exit0.",
+  "screens": [
+    {
+      "screen": "landing",
+      "referenceCrop": {
+        "x": 4,
+        "y": 3,
+        "width": 300,
+        "height": 526
+      },
+      "viewport": {
+        "width": 390,
+        "height": 684
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "The distressed band-name poster, rose, moon/skyline, four selected characters, stacked tagline and red entry action preserve the target composition.",
+      "observedDifferences": "Character poses/expressions and title/entry contours differ; current public legal/status content follows the poster outside the supplied crop.",
+      "sourceVsFixtureClassification": "Selected pack derivatives replace reference character pixels by explicit constraint; legal/status text is functional. No newly actionable layout defect from this comparison.",
+      "followup": "No additional repair routed; physical/public-state coverage remains open.",
+      "captureHashes": {
+        "fidelity-v1/compare-landing-390.png": "f08e519fcbd11d5ae4350a77fcd8947668d97e5391ccf70d368655608b22f075",
+        "fidelity-v2/equal-landing-390.png": "0a979de9e0fa7d5c9b7839756f2825eda5358c2c6db34465e18a67a6470bb637",
+        "fidelity-v3/equal-landing-390.png": "0a979de9e0fa7d5c9b7839756f2825eda5358c2c6db34465e18a67a6470bb637",
+        "fidelity-v3/compare-landing-390.png": "f08e519fcbd11d5ae4350a77fcd8947668d97e5391ccf70d368655608b22f075"
+      }
+    },
+    {
+      "screen": "login",
+      "referenceCrop": {
+        "x": 309,
+        "y": 3,
+        "width": 275,
+        "height": 526
+      },
+      "viewport": {
+        "width": 390,
+        "height": 746
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Cream sign-in form within black cemetery/cross/star framing, large email/password fields, red sign-in, recovery and provider/create-account areas are in corresponding positions.",
+      "observedDifferences": "Reference has Remember me; current form has additional blank spacing and explicitly unavailable providers. Border/title/cross contours are newly authored.",
+      "sourceVsFixtureClassification": "Do not invent persistent access tokens/unsupported providers to match reference decoration. Exact source text/account capability differs from a layout defect.",
+      "followup": "No new source repair; actual mobile keyboard/provider/public qualification open.",
+      "captureHashes": {
+        "fidelity-v1/compare-login-390.png": "3c35a4e0626c66bb6603f746820531c3b6f44be781725d3692f40c6cf91f4982",
+        "fidelity-v2/equal-login-390.png": "f3b79abb641ba8e2d8dad61f472f4f449a7e07b35bc567f0aee14231ce78bead",
+        "fidelity-v3/equal-login-390.png": "f3b79abb641ba8e2d8dad61f472f4f449a7e07b35bc567f0aee14231ce78bead",
+        "fidelity-v3/compare-login-390.png": "3c35a4e0626c66bb6603f746820531c3b6f44be781725d3692f40c6cf91f4982"
+      }
+    },
+    {
+      "screen": "world",
+      "referenceCrop": {
+        "x": 589,
+        "y": 3,
+        "width": 370,
+        "height": 526
+      },
+      "viewport": {
+        "width": 390,
+        "height": 554
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Six selected characters, era bar and six main destinations are visible in real client rendering.",
+      "observedDifferences": "Default-loader baseline is sparse studio scenery, materially unlike festival target. Separate spatial-v4/v8 source is closer but stage is cropped at left/default self camera. Current safety/status/tools consume additional vertical space.",
+      "sourceVsFixtureClassification": "No level/points/chat fabricated. Synthetic local input/camera/framing is not admitted movement or product art authority.",
+      "followup": "QA06-WORLD-MAP to Root153; v10 actual adoption and stage framing still require independent post-fix qualification.",
+      "captureHashes": {
+        "fidelity-v1/compare-world-390.png": "9b9f3d1a16ce7bd10b3bf7f6b3082acf349c5e9015b2604e0bae4e2cc918474a",
+        "fidelity-v2/equal-world-390.png": "3a6add8caef2a42f398a4935a464aa3aecbd2c0540e052086ff6580d3986f62f",
+        "fidelity-v3/equal-world-390.png": "3a6add8caef2a42f398a4935a464aa3aecbd2c0540e052086ff6580d3986f62f",
+        "fidelity-v3/compare-world-390.png": "9043e4cd8c2fb185cbac45cca601632738e1e4958d293490431361f491b3f04d"
+      }
+    },
+    {
+      "screen": "map",
+      "referenceCrop": {
+        "x": 963,
+        "y": 3,
+        "width": 272,
+        "height": 526
+      },
+      "viewport": {
+        "width": 390,
+        "height": 754
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Real illustrated overview, labeled virtual landmarks, zoom controls and DOM Places alternatives exist.",
+      "observedDifferences": "Old default baseline studio map is not target venue. v8/spatial-v4 initial image covers viewport and crops FOOD/right and GIVEAWAY/bottom; explicit Fit reveals the whole source. Planting differs from the newly supplied sidecar.",
+      "sourceVsFixtureClassification": "Panning is supported, but initial whole-map reference composition is not proved by a cropped initial view. Physical status text is required.",
+      "followup": "QA06-WORLD-MAP to Root153. Corrected diagonal v10 SOURCE, current v8 runtime, and unadopted MAP planting9ff remain distinct.",
+      "captureHashes": {
+        "fidelity-v1/compare-map-390.png": "c2870def0dea22bdb1745fbe87f19dfdb868535cd79f3f8d131d31290038ea00",
+        "fidelity-v2/equal-map-390.png": "4152458a34715f165ddba0ff27415eb1980fc7e47f24d19bc0e959666d4e5be0",
+        "fidelity-v3/equal-map-390.png": "4152458a34715f165ddba0ff27415eb1980fc7e47f24d19bc0e959666d4e5be0",
+        "fidelity-v3/compare-map-390.png": "c2870def0dea22bdb1745fbe87f19dfdb868535cd79f3f8d131d31290038ea00"
+      }
+    },
+    {
+      "screen": "customize",
+      "referenceCrop": {
+        "x": 1240,
+        "y": 3,
+        "width": 294,
+        "height": 526
+      },
+      "viewport": {
+        "width": 390,
+        "height": 698
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Large selected-character preview, bounded choice carousel, reset/random/save controls preserve the basic editor hierarchy.",
+      "observedDifferences": "Current1.1 editor has whole-preset carousel rather than reference right category rail, hair variants and palette. Different source-selected pose/character.",
+      "sourceVsFixtureClassification": "No legacy/reference replacement art or fabricated layer editing. Active motion2.0 candidate is not a public production fix.",
+      "followup": "AR03 Motion83 received exact reference/captures. Static candidate JPG independently inspected: real extra controls but horizontal categories remain a reference-fit gap; public adoption pending.",
+      "captureHashes": {
+        "fidelity-v1/compare-customize-390.png": "b282e80b84877d47191c767c5b0c3ac9b2c326a84d6674ed1cff7a436a0cc9d3",
+        "fidelity-v2/equal-customize-390.png": "3fb63a9ebb1e7820b1b2d207192c37659e5f6190a58725fa98888bb58de3f1f1",
+        "fidelity-v3/equal-customize-390.png": "3fb63a9ebb1e7820b1b2d207192c37659e5f6190a58725fa98888bb58de3f1f1",
+        "fidelity-v3/compare-customize-390.png": "b282e80b84877d47191c767c5b0c3ac9b2c326a84d6674ed1cff7a436a0cc9d3"
+      }
+    },
+    {
+      "screen": "feed",
+      "referenceCrop": {
+        "x": 3,
+        "y": 539,
+        "width": 298,
+        "height": 482
+      },
+      "viewport": {
+        "width": 390,
+        "height": 631
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Filter tabs, selected-author portrait, post body/reaction row and primary red compose action have corresponding roles.",
+      "observedDifferences": "Compose is immediately below a short row, not bottom of panel; generic New post arrow duplicates it. Current fixture has one text-only post rather than two media-rich posts.",
+      "sourceVsFixtureClassification": "Optional absent media/row count are fixture content; no invented photos or posts are a production fix.",
+      "followup": "QA06-FEED-COMPOSE to actual202 feature/conditional root-hunk owner; independently verify delivered fix.",
+      "captureHashes": {
+        "fidelity-v1/compare-feed-390.png": "fca959b63ff21d27a58d4cc7a2c2f78a6cdd43efd3d9a988c863ef0035700f00",
+        "fidelity-v2/equal-feed-390.png": "7134cc4cd17ec90473b9c329e6a174a827bbbdff473ac6c38fe641142a359b91",
+        "fidelity-v3/equal-feed-390.png": "7134cc4cd17ec90473b9c329e6a174a827bbbdff473ac6c38fe641142a359b91",
+        "fidelity-v3/compare-feed-390.png": "fca959b63ff21d27a58d4cc7a2c2f78a6cdd43efd3d9a988c863ef0035700f00"
+      }
+    },
+    {
+      "screen": "meet",
+      "referenceCrop": {
+        "x": 307,
+        "y": 539,
+        "width": 295,
+        "height": 482
+      },
+      "viewport": {
+        "width": 390,
+        "height": 637
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Party tabs, three bordered rows, owner portraits, capacity and red Join-review actions align closely in row height at equal width/aspect.",
+      "observedDifferences": "Reference member portraits are absent. Filter/refresh block and fixed footer change spacing; at390x637 Create Party is initially clipped at lower scroll-body boundary. Ornament silhouettes differ.",
+      "sourceVsFixtureClassification": "Retracted earlier row-height impression. No fake public member roster or capability. Disabled action state is separate from clipping.",
+      "followup": "QA06-MEET-CTA to Community for exclusive repair owner; exact source hashes/hunks/reproduction in repair-packets.json.",
+      "captureHashes": {
+        "fidelity-v1/compare-meet-390.png": "e81a4c426ef29138396d6adcafda03d83888d4a66bdcf0f715e2d5fd23225a45",
+        "fidelity-v2/equal-meet-390.png": "303b0b5516803fbfb514b55aaad6436f145ab29395d964312349ab9031e9aaea",
+        "fidelity-v3/equal-meet-390.png": "303b0b5516803fbfb514b55aaad6436f145ab29395d964312349ab9031e9aaea",
+        "fidelity-v3/compare-meet-390.png": "e81a4c426ef29138396d6adcafda03d83888d4a66bdcf0f715e2d5fd23225a45"
+      }
+    },
+    {
+      "screen": "gifts",
+      "referenceCrop": {
+        "x": 607,
+        "y": 539,
+        "width": 309,
+        "height": 482
+      },
+      "viewport": {
+        "width": 390,
+        "height": 608
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Three illustrated-slot discovery rows, quantities/location/time and primary Reserve areas correspond. Corrected foreign-owner fixture renders red eligible Reserve controls.",
+      "observedDifferences": "Synthetic rows have No photo rather than reference giveaway imagery, different titles/quantities and explicit KST windows. Filter/extra section links and bottom ornament differ.",
+      "sourceVsFixtureClassification": "No row-height defect. Baseline-v1 disabled Reserve was the QA self-owner data bug, corrected in own fixture; no production fix or fabricated product photos required.",
+      "followup": "Corrected78-case matrix pending capacity; optional image-state fidelity remains explicitly unqualified. Generic root links separately leased; no featureCSS defect invented.",
+      "captureHashes": {
+        "fidelity-v1/compare-gifts-390.png": "0a7ef02ce83a68e0b20190d7cd86f0312007ffbffd002ed00891299bf765f3df",
+        "fidelity-v2/equal-gifts-390.png": "8717c30724a0dbd1a7983b4ea129e810a599b1b2a57545d8fff208116f39d635",
+        "fidelity-v3/equal-gifts-390.png": "8717c30724a0dbd1a7983b4ea129e810a599b1b2a57545d8fff208116f39d635",
+        "fidelity-v3/compare-gifts-390.png": "84de234fc2f0d819e50381ff9411ee5cd76fddd4f872266cf4ebde9e5c177e4a"
+      }
+    },
+    {
+      "screen": "wall",
+      "referenceCrop": {
+        "x": 920,
+        "y": 539,
+        "width": 294,
+        "height": 482
+      },
+      "viewport": {
+        "width": 390,
+        "height": 639
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Current actual unavailable state is readable and preserves the source qualification guard.",
+      "observedDifferences": "Reference has complete mural image/title/editor/palette/cooldown; actual default panel has none while current-world source is unqualified.",
+      "sourceVsFixtureClassification": "Do not insert fake anchor, panel override or target mural image. Independently captured qualified synthetic MapScene caller is geometric/synthetic and cannot stand in for default product Wall.",
+      "followup": "Actual qualified producer/anchor/release to frontend activation owner required; original Wall visual criterion remains NOT_RUN.",
+      "captureHashes": {
+        "fidelity-v1/compare-wall-390.png": "716d6ba92981d486768428c51efbe0ef1d09c747c1ec3e36057ddf815ed8f73a",
+        "fidelity-v2/equal-wall-390.png": "bbbabdc36c82b3fa6929b7ae2199080a2f968e2e9d8fc5667cca1aaa7d079cc0",
+        "fidelity-v3/equal-wall-390.png": "bbbabdc36c82b3fa6929b7ae2199080a2f968e2e9d8fc5667cca1aaa7d079cc0",
+        "fidelity-v3/compare-wall-390.png": "716d6ba92981d486768428c51efbe0ef1d09c747c1ec3e36057ddf815ed8f73a"
+      }
+    },
+    {
+      "screen": "me",
+      "referenceCrop": {
+        "x": 1218,
+        "y": 539,
+        "width": 316,
+        "height": 482
+      },
+      "viewport": {
+        "width": 390,
+        "height": 595
+      },
+      "status": "IN_PROGRESS",
+      "observedMatches": "Selected-character profile, name/bio, four actions, activity/party/gifts tabs and footer ornament preserve the broad hierarchy.",
+      "observedDifferences": "Reference has compact social/provider actions and real joined/reserved activity rows. Current cold profile explicitly lacks loaded activity; generic root links repeat existing destinations in844px view.",
+      "sourceVsFixtureClassification": "No fake level/points, reserved/joined history, private external handles or current-feed activity. Cold missing activity is a genuine input state.",
+      "followup": "QA06-ME-NAV to actual202 owner; preserve real actions/destinations and optional data while fixing duplicate root navigation.",
+      "captureHashes": {
+        "fidelity-v1/compare-me-390.png": "3ebc727d4162a303a03c54d8d39ef37eaff468b2d9b85a6bc9f19a7c0124b16c",
+        "fidelity-v2/equal-me-390.png": "a2fe59aecae21a07daa629e7efb689e5256b0e1809b253c573a9b0bf3844c3ae",
+        "fidelity-v3/equal-me-390.png": "a2fe59aecae21a07daa629e7efb689e5256b0e1809b253c573a9b0bf3844c3ae",
+        "fidelity-v3/compare-me-390.png": "3ebc727d4162a303a03c54d8d39ef37eaff468b2d9b85a6bc9f19a7c0124b16c"
+      }
+    }
+  ],
+  "motionCandidateStaticReview": {
+    "candidateCommits": [
+      "df0522fa7fa93fd9f66db3a8b0ec38b95db0d6ee",
+      "d6185d2625f0e757a1128b2bb95ddbbf08c2db38"
+    ],
+    "ownerCapture": "docs/mcr/evidence/avatar-motion-adoption/customize-390-revenge.jpg",
+    "sha256": "1bb81f96a96f9f6795202f5f05283f99000d38df3ebf423bbb99845268ed9421",
+    "bytes": 87364,
+    "qualification": "STATIC_OWNER_CAPTURE_INDEPENDENTLY_VIEWED_AND_BYTES_VERIFIED_NOT_FRESH_NATIVE_OR_PRODUCTION_ADOPTION",
+    "observation": "Candidate has walk/view and real category/choice controls. Categories remain horizontal rather than target right rail; owner fixture also includes World/test navigation above editor, so whole-page height is not asserted as production clipping."
+  },
+  "physicalDevices": "NOT_RUN",
+  "latestEvidence": {
+    "matrix": "matrix-v3/report.json",
+    "review": "matrix-v3/review.json",
+    "paired": "fidelity-v3/comparison.html",
+    "candidateReview": "candidate-review/review.json"
+  },
+  "candidateReviewStatus": "Bounded source repair captures independently inspected; actual fresh candidate runtime pending. New Map caption obscures GIVEAWAY BOOTH; routed Root153. No whole-screen fidelity acceptance."
+}

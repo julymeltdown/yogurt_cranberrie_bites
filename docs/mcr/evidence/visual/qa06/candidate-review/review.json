@@ -1,0 +1,85 @@
+{
+  "task": "QA06",
+  "at": "2026-11-04T03:21:34.813095+00:00",
+  "status": "IN_PROGRESS",
+  "method": "Developer independently viewed actual owner captures, read exact source diffs, compared supplied unchanged target. No fresh independent candidate runtime/device claim.",
+  "artifacts": [
+    {
+      "artifact": "feed-short-390.png",
+      "sourcePath": "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/feed-short-390.png",
+      "candidate": "576f98489ca68576790d4bd90c32409f25abaf23",
+      "sha256": "5113d80e90beefb592f366755676e2cbf1df74bcbe2ac091d222f6524c1db997",
+      "bytes": 61389
+    },
+    {
+      "artifact": "me-cold-390.png",
+      "sourcePath": "frontend/src/features/event-feed/__tests__/qa06-fidelity/evidence/after/me-cold-390.png",
+      "candidate": "576f98489ca68576790d4bd90c32409f25abaf23",
+      "sha256": "99415d5cf4c798d4a2aa1df0ce85b760656cfb2f4d08b8ec19c7b2a04c12b768",
+      "bytes": 65288
+    },
+    {
+      "artifact": "meet-390x637.png",
+      "sourcePath": "docs/mcr/evidence/visual/qa06-meet-cta/after/meet-390x637.png",
+      "candidate": "52f7b2f9f47282c820de21b1f791213e61076ddb",
+      "sha256": "5ebc158f41f09930c7f29b55e0f4fb4099c1ec738936f59a562120711cfd451e",
+      "bytes": 81023
+    },
+    {
+      "artifact": "world-parade-390-h554.png",
+      "sourcePath": "docs/mcr/evidence/reference-scene-v5/root-qualified/world-parade-390-h554.png",
+      "candidate": "owner capture; v10 publication pending",
+      "sha256": "d1f18ce82bb742fd6f32cb039053b62de71f65ed9b1c985b86228aa29853ac47",
+      "bytes": 231578
+    },
+    {
+      "artifact": "map-parade-390-h754.png",
+      "sourcePath": "docs/mcr/evidence/reference-scene-v5/root-qualified/map-parade-390-h754.png",
+      "candidate": "owner capture; v10 publication pending",
+      "sha256": "17d54cf40769596621371e47264e00f50e512e82f4ea229297c437f4a24b0a15",
+      "bytes": 398644
+    },
+    {
+      "artifact": "customize-reference-fit-390.jpg",
+      "sourcePath": "docs/mcr/evidence/avatar-motion-adoption/customize-reference-fit-390.jpg",
+      "candidate": "228e1cd49e174f31795e648284b96a0f4ff0c44c",
+      "sha256": "931b53da629dea709d3bf53c743bed9c3be61021f4818a01e4bb8f620f66dd7c",
+      "bytes": 56020
+    }
+  ],
+  "findings": [
+    {
+      "screen": "Feed",
+      "disposition": "Concrete requested bottom compose and duplicate root link repairs visible at390px. Exact source576f9848 reviewed; no new repair from static evidence.",
+      "remaining": "Independent published-candidate runtime at360/390/430; content/media fixture differences remain."
+    },
+    {
+      "screen": "Me",
+      "disposition": "Compact activity/profile and collapsed preserved account options visible; cold unavailable state remains honest. Exact source576f9848 reviewed.",
+      "remaining": "Independent published-candidate runtime and real authorized activity inputs."
+    },
+    {
+      "screen": "Meet",
+      "disposition": "Complete Create Party and availability copy above footer, same three rows at390x637. Three scoped CSS hunks reviewed.",
+      "remaining": "Independent published-candidate runtime/reduced-height/touch flow."
+    },
+    {
+      "screen": "World",
+      "disposition": "v10 actual-root owner capture shows full stage and six selected avatars at390x554.",
+      "remaining": "Independent frozen published runtime qualification; synthetic source/admission remain separate."
+    },
+    {
+      "screen": "Map",
+      "disposition": "New concrete defect: GIVEAWAY BOOTH painted label bottom is obscured by absolute status caption in390x754 capture. Routed directly to actual Map writer Root153. Image containment alone is insufficient.",
+      "source": "places.css66 absolute bottom44 caption; IllustratedMap.tsx165; caption overlaps label near y659..694.",
+      "remaining": "Owner repair and direct painted-label/caption/zoom visibility checks, independent capture."
+    },
+    {
+      "screen": "Customize",
+      "disposition": "New228e component now has five-item RIGHT category rail, compact preview/pose and selected Hair6 control; exact owner JPG independently hash-verified and viewed.",
+      "remaining": "Fresh independent candidate component capture held at disk floor; public Root adoption/producer canonical authority still unavailable."
+    }
+  ],
+  "resourceHold": "Fresh7.756GiB<8 floor refused consumers-v5 before server/browser; current candidate captures on hold via single disk coordinator.",
+  "physicalDevices": "NOT_RUN; original connection question pending, no Mirroring polling."
+}
