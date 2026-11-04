@@ -1,0 +1,48 @@
+{
+  "job": "CSS-MEET-DENSITY-BROWSER1-202611041623Z",
+  "status": "FULL",
+  "releasedEpoch": 1793809464.6832829,
+  "candidate": "0024191782bcdbe6eca34d5f247d1b45df6fb202",
+  "guardianStatus": "PASS",
+  "nativeStatus": "PASS",
+  "nativeCases": 9,
+  "noRemainingOwnDescendants": true,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true,
+    "portClosed": true
+  },
+  "port5298ReuseBind": true,
+  "peakProcesses": 12,
+  "peakRssKiB": 2472592,
+  "peakWholeBytes": 1344147456,
+  "peakTempBytes": 29966228,
+  "peakOutputBytes": 1318555,
+  "pngCount": 15,
+  "pngBytes": 968463,
+  "commands": [
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "docs/mcr/evidence/css-parity-meet-density/native.mjs"
+      ],
+      "startedEpoch": 1793809387.815517,
+      "exitCode": 0,
+      "finishedEpoch": 1793809388.2089841
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "docs/mcr/evidence/css-parity-meet-density/native.mjs"
+      ],
+      "startedEpoch": 1793809388.2090182,
+      "exitCode": 0,
+      "finishedEpoch": 1793809434.6201012
+    }
+  ],
+  "beforeOriginalDeadline": true
+}

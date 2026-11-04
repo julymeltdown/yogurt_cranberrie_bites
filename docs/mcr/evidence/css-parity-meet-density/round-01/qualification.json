@@ -1,0 +1,102 @@
+{
+  "task": "CSS-MEET-DENSITY",
+  "status": "MOCK_READY",
+  "developerValidation": "PASS",
+  "publication": "PENDING_ROOT153",
+  "candidate": "0024191782bcdbe6eca34d5f247d1b45df6fb202",
+  "base": "3cbaeae5e5c33d4ef3327b6f0f3e0f27c9544254",
+  "featureCssSha256": "4bcd821855f976b558c5fd979ce759a97cbb1d4032fdf445dfdf3f468833b6db",
+  "sharedCssSha256": "7abaf7ebc23945b75a97bef8e384a7f6dcf81b4bc0edca177ac2871109e0ad7e",
+  "nativeCases": 9,
+  "originalTaskClosure": false,
+  "fullVisualParity": false,
+  "referenceRows": [
+    {
+      "width": 360,
+      "height": 588,
+      "before": [
+        109,
+        109,
+        109
+      ],
+      "after": [
+        80,
+        80,
+        80
+      ],
+      "completeRowsInFirstView": 3,
+      "discoveryHeight": 252.25
+    },
+    {
+      "width": 390,
+      "height": 637,
+      "before": [
+        118,
+        118,
+        118
+      ],
+      "after": [
+        80,
+        80,
+        80
+      ],
+      "completeRowsInFirstView": 3,
+      "discoveryHeight": 285.25
+    },
+    {
+      "width": 430,
+      "height": 703,
+      "before": [
+        130,
+        130,
+        130
+      ],
+      "after": [
+        80,
+        80,
+        80
+      ],
+      "completeRowsInFirstView": 3,
+      "discoveryHeight": 301
+    }
+  ],
+  "short480RowsReachable": true,
+  "ctaAndPrintGeometryUnchanged": true,
+  "assets": {
+    "commonHashMatches": 18,
+    "commonHashMismatches": [],
+    "newRequests": []
+  },
+  "commands": [
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "docs/mcr/evidence/css-parity-meet-density/native.mjs"
+      ],
+      "startedEpoch": 1793809387.815517,
+      "exitCode": 0,
+      "finishedEpoch": 1793809388.2089841
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "docs/mcr/evidence/css-parity-meet-density/native.mjs"
+      ],
+      "startedEpoch": 1793809388.2090182,
+      "exitCode": 0,
+      "finishedEpoch": 1793809434.6201012
+    }
+  ],
+  "guardianPass": true,
+  "release": "release.json",
+  "limitations": [
+    "Existing labeled synthetic HTTP/C05 fixture; no live-service or physical-device acceptance",
+    "Selected host portraits remain unchanged; absent member portraits are still truthfully labeled",
+    "Disabled Create and explanation remain server/capability truthful",
+    "Short480 first view shows one complete row; all three rows and filters remain reachable by native focus/scroll",
+    "Full-screen parity remains open for existing shared controls, spacing and unavailable member-portrait markup; this scoped card-density defect is resolved"
+  ]
+}
