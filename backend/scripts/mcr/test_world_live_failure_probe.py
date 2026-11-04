@@ -157,6 +157,21 @@ class FixtureNetwork:
 
 
 class DriverTests(unittest.IsolatedAsyncioTestCase):
+    async def test_admission_refusal_reports_only_numeric_status_without_retry(self):
+        config = configuration()
+        contracts = Contracts()
+        network = FixtureNetwork(config, contracts)
+        calls = []
+        async def refused(path, token, payload=None):
+            calls.append((path, token))
+            return 503, {"detail": "SECRET-PRIVATE-RESPONSE"}
+        network.http = refused
+        result = await run(config, capacity=False, network=network, contracts=contracts)
+        self.assertEqual(result["failure"], "public-bootstrap-status-503")
+        self.assertEqual(len(calls), len(config["principals"]))
+        self.assertEqual(len(calls), len(set(calls)))
+        self.assertNotIn("SECRET", json.dumps(result))
+
     async def execute(self, config, **kwargs):
         contracts = Contracts()
         network = FixtureNetwork(config, contracts)
