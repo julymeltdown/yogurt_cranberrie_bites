@@ -32,7 +32,7 @@ class RealtimeContractTests(unittest.TestCase):
             self.assertEqual(raised.exception.code, code)
 
     def test_all_indexed_fixtures(self):
-        self.assertEqual(rt.validate_fixtures(), 26)
+        self.assertEqual(rt.validate_fixtures(), 31)
 
     def policy(self, trace, kind='policy.baseline', revision=1):
         value = {'protocolVersion': '1.0.0', 'type': kind,
