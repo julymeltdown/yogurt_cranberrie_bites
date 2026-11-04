@@ -275,8 +275,8 @@ unknown metadata cannot independently release a child or close a root scope.
 | --- | --- |
 | Dedicated canonical arbitrary-subject Profile read, minimal content, privacy exclusion, native restart primitive | Independently qualified and published `d4ee53f5` via `b09db61e` |
 | Pre-dispatch intents and idempotent Profile owner completion | Implemented `68d7b109` plus focused follow-ups; compile/native NOT_RUN, public Profile developer owns qualification |
-| Exact C03 assembly, canonical avatar union and shared local policy | Implemented `0b3c5a87` plus `cabec413`; compile/schema execution NOT_RUN pending additive child SDK, public Profile developer owns qualification |
-| Durable child intent API and native canonical Auth/Friend producer availability | Authority developer owns SDK and owner-store qualification; compiled base `888cb6bd` is consumed, additive child SDK remains source-only |
+| Exact C03 assembly, canonical avatar union and shared local policy | Implemented `0b3c5a87` plus `cabec413`; compile/schema execution NOT_RUN against consumed SDK2; public Profile developer owns qualification |
+| Durable child intent API and native canonical Auth/Friend producer availability | Authority developer owns SDK and owner-store qualification; compiled base `888cb6bd` and published additive SDK2 `c4ad561c` are consumed; actual owner-store native qualification remains separate |
 | Root private ledger, HTTP completion, actual joined Feed/C04 response and restart cleanup | Root developer owns ledger/HTTP; public Profile developer validates this adapter in the actual joined flow with consumer owners |
 | Final combined validation, documentation, qualified committed publication and remote ancestry | Still required for the unpublished increments; no main-chat or scrum-lead approval stage |
 
@@ -285,3 +285,13 @@ commit `d88751fd` and sent to that owner for combined compilation with its exact
 new module and protocol. They are not part of this public recovery branch or an
 acceptance claim. The public Profile developer remains sole writer of the four
 existing Profile registration paths; no ownership transfer was implied.
+
+
+SDK2 `c4ad561cd813f0f7f1e14f21cb2ee90592e09eea` was fetched from actual
+master and merged without conflicts. Its actual `HeldChildGuard` reference
+method, subject intent/capture methods and required lifecycle hooks match this
+reader's source. The authority owner's 40 passing Concert library tests and 202
+platform tests qualify that SDK checkpoint; they are not a new run of this
+reader's tests. This removes the SDK source prerequisite for the combined
+Profile/Concert compile. A fresh shared target allocation is still pending;
+reader compilation and joined native acceptance remain NOT_RUN.
