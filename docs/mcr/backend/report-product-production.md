@@ -1,6 +1,7 @@
 # OPS-PRODUCT-01 — original USER report production leaf
 
-Status: IN_PROGRESS. Base: `cb944f7210f6c55fdf1d0e897c96ea7ef0ba8325`, freshly
+Status: developer validation PASS; publication pending. Original capability
+IN_PROGRESS until remote delivery is verified. Base: `cb944f7210f6c55fdf1d0e897c96ea7ef0ba8325`, freshly
 fetched from `julymeltdown/mcr` master. Isolated existing worktree:
 `/Users/lhs/Desktop/mcr-worktrees/be-operations-runtime`, new task branch
 `codex/mcr-be-OPS-PRODUCT-01`. The prior Operations branch and all frozen evidence
@@ -128,7 +129,110 @@ amended cap; no time/free-space/cap cutoff fired. Resources were fully released
 well before the original release deadline. The native report SHA-256 is
 `502851b8dfc6bad0e7747590938267fd66fa4b601c2114a820c109c7313e782a`.
 
-This failed run does not qualify the native capability. The corrected fixture
-requires a fresh named build/runtime offer; Rust/native reruns remain pending.
-No old target/runtime lease is reused and no public Gateway or whole-task
-acceptance is claimed.
+That failed run does not qualify the native capability. The corrected fixture
+was committed as `7f0d50592022c6764173b1d6747aa0182598ae68` and qualified only
+by the distinct fresh follow-up below. No old lease was reused or failed evidence
+rewritten. No public Gateway or whole-task acceptance is claimed.
+
+## Qualified corrected-source follow-up
+
+Fresh offer `OPS-PRODUCT-01-FIX-BACKEND-202611041310Z` was accepted at
+2026-11-04 22:11:32.946388 KST (13:11:32.946388 UTC), with free space
+17,271,046,144 bytes, exceeding the 16 GiB starting floor. Its whole-output
+allowance was explicitly amended to 2,684,354,560 bytes without changing source,
+target, scope or the original ten-minute clock. All retained historical output
+remained conservatively charged at 2,082,742,272 bytes; no artifacts or caches
+were deleted. Fresh controller/baseline, new target output, copies, private
+database cluster, logs and temporary files were charged in addition.
+
+Validated code source: `7f0d50592022c6764173b1d6747aa0182598ae68`.
+Source ancestry after the published base: `50fec38b2e41a77c9e431e039affc802a720857a`
+→ `8501b058ee14efe83dd69a5528064cb9c8faa391`
+→ `3f79e686aec286de622e6e16809e10f45517ac4e`
+→ `7f0d50592022c6764173b1d6747aa0182598ae68`.
+The evidence successor changes only this document; no Rust or SQL changed after
+the successful frozen-source execution. No dependencies or lockfiles changed.
+
+Exact build command, from the assigned worktree's `backend/` directory:
+
+```sh
+env -u RUSTFLAGS -u CARGO_ENCODED_RUSTFLAGS \
+  RUSTUP_TOOLCHAIN=1.88.0 CARGO_INCREMENTAL=0 \
+  CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 \
+  CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/backend \
+  /Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo \
+  test --locked --offline -p concert-service \
+  --test report_product_admission --test report_product_native \
+  --no-run --message-format=json -j 2
+```
+
+The controller also selected the same toolchain's rustc/rustdoc and prepended its
+binary directory to PATH. Build passed, exit 0, 5.091 seconds; no mtime exception
+was used. Exact Cargo JSON, commands, toolchain/runtime/actual fixed-path PKI
+executable hashes and resource receipts are retained in
+`/private/tmp/mcr-report-product-retry-0oyd18ln`.
+
+Exactly two executables were copied in 0.830 seconds and frozen with 2,366
+backend/contract source hashes, including all consumed fixture helpers and SQL
+migrations, plus runtime/controller pins:
+`/private/tmp/mcr-report-product-frozen-wdi33fse/pin.json`.
+Pin SHA-256: `eee0260226b77aa8053ea38fe2252d0b986a0ac63c49aa17afc309f03fc7fe19`.
+
+| Frozen executable | Bytes | SHA-256 |
+| --- | ---: | --- |
+| report_product_admission | 7,625,264 | `0580919f55a471268cbac0bb75a08891ff9cd6a82550d2056880a679bae2b80c` |
+| report_product_native | 44,866,448 | `d6f8d18920f2084360c286c2e2eaa77c478138d5938b1df8f493aaab6cb8ff1a` |
+
+The target was unconditionally released with zero handles at
+22:12:51.596814 KST, before every copied test. It was not accessed afterward.
+The actual copied commands and results were:
+
+```text
+/private/tmp/mcr-report-product-frozen-wdi33fse/report_product_admission --nocapture --test-threads=1
+exit 0; 5 passed; 0.500 seconds
+/private/tmp/mcr-report-product-frozen-wdi33fse/report_product_native --ignored --nocapture --test-threads=1
+exit 0; 4 passed; 2.525 seconds
+```
+
+The five admission cases prove the exact C04 route, typed limits, original signed
+frame and refusal boundaries. The four native cases prove actual original
+USER/no-media report/receipt/outbox/replay through ProductRpcService and the same
+canonical scope; current actor revocation waiting until actual Root terminal and
+then denying replay; foreign actor/session, expired parent and post-admission body
+rebinding refusal; and the deliberate suspended-target safety behavior, missing
+event-target denial and unavailable privileged/read/media routes. Actual terminal
+completion is distinct from response serialization; ordinary membership never
+grants an operator role.
+
+One owned PostgreSQL 16.14 cluster served exactly the private Auth/Friend/Concert
+databases. Migration ledgers matched all pinned sources (18/18/40). A new
+postmaster preserved witness, receipt and outbox digests and the migration ledgers;
+all retained native witnesses resolved COMMITTED. Actual prepared transaction
+count before owned teardown was **0**. All captured PostgreSQL descendant PIDs
+were absent after stop, copied children were reaped, and exact owned root
+`/private/tmp/mcr-pg-l907wiu4` was absent. Teardown itself is not settlement proof;
+the successful native terminal assertions and observed zero count supply that
+evidence.
+
+Measured whole peak: 2,412,408,832 bytes, including all conservative historical
+carry and 183,427,072 bytes of new positive target output, below the explicitly
+amended cap. Free space at completion: 18,588,078,080 bytes. No time, free-space
+or cap stop fired. Full release was recorded at 22:16:59.552661 KST, before the
+original work stop 22:20:32.946388 and hard release 22:21:32.946388 KST.
+
+Native report:
+`/private/tmp/mcr-report-product-frozen-wdi33fse/native-report.json`, SHA-256
+`c7bf2bb456a2b127e1119c28bab09956e13bf88c63c2709c3f4adeb03c330385`.
+Resource report SHA-256:
+`3a7255dbfaea3cb60a302aa3eaad18a2c3c3c4289f1249be0635b986c7410c96`.
+Admission log SHA-256:
+`f576ae48e2d3cd4efd65a0f96917c10b921e0a81619fc439b4ca01b66bef6f14`.
+Native log SHA-256:
+`6fa6f53e7a3005765de64b0585bfa5fb40c3d32af6f6aff5653fb56fab3844d1`.
+
+This qualifies only the original report product leaf and its real internal
+owner/delivery flow. Public Gateway dispatch, Root startup composition and
+publication remain the named Root publishing developer's scope. Broad
+BE36/BE38/BE39, media, moderator access, public multiuser IN03 and product
+acceptance remain open. Direct committed handoff needs no king/SL review or
+acknowledgment; the implementation owner must verify actual remote delivery.
