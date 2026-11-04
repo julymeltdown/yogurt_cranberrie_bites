@@ -154,6 +154,34 @@ async function mapParity() {
   actual.width=actual.height=expected.width=expected.height=0;return{different,channels:x.length,pins}
 }
 const api = { state, parity, mapParity, signature,
+  async architectureOcclusion() {
+    // Synthetic diagnostic positions only. Never changes canonical geometry or any server state.
+    const previous = view, rows = []
+    try {
+      for (const prop of artistScenes[fixture.theme.theme_id as SpatialV5ThemeId].objects.filter(o => o.frame.y === 550)) {
+        for (const side of ['behind', 'front'] as const) {
+          const feet = []
+          for (let cy = 0; cy < fixture.map.geometry.height_cells; cy++) for (let cx = 0; cx < fixture.map.geometry.width_cells; cx++) {
+            const foot = collision.center(cx, cy)
+            if ((side === 'behind' ? foot.y < prop.depth_y : foot.y >= prop.depth_y)
+              && Math.abs(foot.y - prop.depth_y) <= 40 && foot.x + 32 > prop.x && foot.x - 32 < prop.x + prop.width
+              && foot.y > prop.y && foot.y - 60 < prop.y + prop.height && collision.walkable(foot)) feet.push(foot)
+          }
+          feet.sort((a, b) => Math.abs(a.x - prop.x - prop.width / 2) + Math.abs(a.y - prop.depth_y) - Math.abs(b.x - prop.x - prop.width / 2) - Math.abs(b.y - prop.depth_y))
+          const foot = feet[0]
+          if (!foot) { rows.push({ prop: prop.id, side, status: 'NO_CLEAR_CANONICAL_FOOT' }); continue }
+          view = { ...previous, entities: previous.entities.map(e => e.self ? { ...e, position: foot } : e) }
+          avatars.replace(view); engine.camera!.center(foot, 1); await frame()
+          rows.push({ prop: prop.id, side, status: 'PASS_SOURCE_COMPOSITION', foot, depth: prop.depth_y, pixels: await parity(), signature: await signature() })
+        }
+      }
+    } finally {
+      view = previous; avatars.replace(view)
+      // This harness was initially centered on the authored stage; restore it without touching fixture feet.
+      engine.camera!.center({ x: 452, y: 305 }, 1); await frame()
+    }
+    return rows
+  },
   async occlusion() {
     const previous = view, rows = []
     try {

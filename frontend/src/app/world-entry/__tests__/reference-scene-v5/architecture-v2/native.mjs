@@ -113,12 +113,13 @@ async function rendererCases() {
    await expect.poll(async()=>(await call('state')).avatars.sprites).toBe(6)
    for(const era of ['REVENGE','PARADE','DANGER']) {
     await call('era',era);await expect.poll(async()=>(await call('state')).overview?.themeId).toBe(era)
-    const worldPixels=await call('parity'),mapPixels=await call('mapParity'),occlusion=await call('occlusion')
+    const worldPixels=await call('parity'),mapPixels=await call('mapParity'),occlusion=await call('occlusion'),architectureOcclusion=await call('architectureOcclusion')
     assert.equal(worldPixels.different,0);assert.equal(mapPixels.different,0);assert(occlusion.every(r=>r.pixels.different===0))
+    assert(architectureOcclusion.filter(r=>r.pixels).every(r=>r.pixels.different===0))
     const s=await call('state');assert.equal(s.mounts,1);assert.equal(s.canvases,1);assert.equal(s.scene.textures,2);assert.equal(s.scene.objects,35);assert.equal(s.avatars.sprites,6)
     assert(s.requests.filter(p=>p.endsWith('.png')).every(p=>p.includes('/quality-v10/ground.png')||p.includes('/architecture-v2/')))
     await page.screenshot({path:resolve(output,`renderer-${era.toLowerCase()}-${width}.png`)})
-    report.renderer.push({width,height,era,worldPixels,mapPixels,occlusion,state:s})
+    report.renderer.push({width,height,era,worldPixels,mapPixels,occlusion,architectureOcclusion,state:s})
    }
    const cleanup=await call('dispose');assert.equal(cleanup.scene.textures,0);assert.equal(cleanup.decodedImages,0);assert.equal(cleanup.cache.residentBytes,0);assert.equal(cleanup.canvases,0);assert.equal(cleanup.owner.leases,0)
    assert.deepEqual(errors,[]);report.renderer.at(-1).cleanup=cleanup
