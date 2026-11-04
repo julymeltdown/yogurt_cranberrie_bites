@@ -1,0 +1,389 @@
+{
+  "state": "PASS",
+  "commands": {
+    "auth--migrate": 0,
+    "auth--verify-migrations": 0,
+    "friend--migrate": 0,
+    "friend--verify-migrations": 0,
+    "profile--migrate": 0,
+    "profile--verify-migrations": 0,
+    "participant::live::joined_tests::native_actual_owner_profile_participant_save_reload_and_abort": 0
+  },
+  "scope": "actual native owner/Profile/Participant join and strict source-bound release constructor; initial rows are fixtures; no public HTTP/operator acceptance",
+  "source_commit": "e7c0cbb8bb3be40d49f64f737c8ffe19cc29924c",
+  "binary_sha256": "cd04d48ac0d222013dfef75f7c752d1991102fafd81d115f737aaef2912db1c1",
+  "owner_source_commit": "d4c604f03b4645b19cf6448526d4ff4577336f96",
+  "profile_source_commit": "a8776a61f853f4552825eb41e965f29f2274625e",
+  "peer_binary_sha256": {
+    "auth": "d89ae929ea030a00a4ce49f478dd7e437ae3f3d411262b069d6b159334cbb6b9",
+    "friend": "28654896a5d3dfb07de09caa2157db6bba19a268706e15ea90946cc403f97931",
+    "profile": "b70fcd6b8a52aef19e516f0a7a53253958bbe1d0da04f9cf7c3187a852f42a32"
+  },
+  "driver_sha256": "eac89ffe934abeaa6a399eaa270c975d42075ff8b405a97d6eea428fb822db86",
+  "concert_migration_sha384": {
+    "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+    "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+    "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+    "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+    "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+    "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+    "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+    "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+    "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7",
+    "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+    "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+    "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+    "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+    "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+    "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+    "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+    "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+    "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+    "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+    "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+    "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+    "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+    "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+    "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+    "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+    "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+    "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+    "42": "4d09541234e44f86cc2867d05e931aeab18a22b0dbe3b0bf135a4c121ed44496f48028ee764fb78bb86f0994860fdb8b"
+  },
+  "source_bound_release": {
+    "bundle_sha256": "b5903a556baf43de37bd4c9d65ac8c853a98a848d1d14fbbb4df2bb2d0739251",
+    "constructor": "ProductReleaseBundle::from_source_bound_files; AvatarPersistence::from_product",
+    "operator_admission": "NOT_RUN"
+  },
+  "native_output": "\nrunning 1 test\ntest participant::live::joined_tests::native_actual_owner_profile_participant_save_reload_and_abort ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 93 filtered out; finished in 5.04s\n\n",
+  "actual_save_reload": "PASS",
+  "actual_profile_prepare_commit": "PASS",
+  "actual_expired_prepare_abort": "PASS",
+  "actual_owner_delivery_completion": "PASS",
+  "gateway_http": "NOT_RUN",
+  "operator_admission": "NOT_RUN",
+  "aborted_lost_envelope_scope": "quarantined; no fabricated serialization/completion",
+  "diagnostics": {
+    "root_scopes": [
+      {
+        "phase": "ROOT_FINISHED",
+        "method": "GET",
+        "serialized": true,
+        "completed": true
+      },
+      {
+        "phase": "ROOT_FINISHED",
+        "method": "PATCH",
+        "serialized": true,
+        "completed": true
+      },
+      {
+        "phase": "ROOT_FINISHED",
+        "method": "PUT",
+        "serialized": true,
+        "completed": true
+      },
+      {
+        "phase": "ROOT_FINISHED",
+        "method": "PATCH",
+        "serialized": true,
+        "completed": true
+      },
+      {
+        "phase": "ROOT_FINISHED",
+        "method": "PATCH",
+        "serialized": true,
+        "completed": true
+      },
+      {
+        "phase": "ROOT_FINISHED",
+        "method": "GET",
+        "serialized": true,
+        "completed": true
+      },
+      {
+        "phase": "ACTIVE",
+        "method": "PATCH",
+        "serialized": false,
+        "completed": false
+      }
+    ],
+    "effect_witnesses": [
+      {
+        "mutation_kind": "AVATAR",
+        "expected_revision": 1,
+        "committed_revision": 2,
+        "concert_full_xid": "927",
+        "native_status": "committed"
+      },
+      {
+        "mutation_kind": "PREFERENCES",
+        "expected_revision": 1,
+        "committed_revision": 2,
+        "concert_full_xid": "1018",
+        "native_status": "committed"
+      }
+    ],
+    "concert_profile_operations": [
+      {
+        "decision": "COMMIT",
+        "expected_revision": 2,
+        "committed_revision": 3,
+        "concert_full_xid": "1113",
+        "native_status": "committed"
+      },
+      {
+        "decision": "PENDING",
+        "expected_revision": 1,
+        "committed_revision": null,
+        "concert_full_xid": "1296",
+        "native_status": "aborted"
+      },
+      {
+        "decision": "PENDING",
+        "expected_revision": 3,
+        "committed_revision": null,
+        "concert_full_xid": "1367",
+        "native_status": "aborted"
+      }
+    ],
+    "profile_operations": [
+      {
+        "full_xid": "1150",
+        "native_status": "committed"
+      },
+      {
+        "full_xid": "1404",
+        "native_status": "aborted"
+      }
+    ],
+    "profile_observations": [
+      {
+        "observed_status": "COMMITTED"
+      },
+      {
+        "observed_status": "ABORTED"
+      }
+    ],
+    "auth_leases": [
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "SEALED",
+        "scope_settled": false
+      }
+    ],
+    "auth_participants": [
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "COMMITTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "COMMITTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "COMMITTED"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "COMMITTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "PENDING"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "PENDING"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "PENDING"
+      }
+    ],
+    "friend_leases": [
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "COMPLETED",
+        "scope_settled": true
+      },
+      {
+        "state": "SEALED",
+        "scope_settled": false
+      }
+    ],
+    "friend_participants": [
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "COMMITTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "COMMITTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "COMMITTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "COMMITTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "ABORTED"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "PENDING"
+      },
+      {
+        "producer": "CONCERT",
+        "state": "PENDING"
+      },
+      {
+        "producer": "PROFILE",
+        "state": "PENDING"
+      }
+    ],
+    "redacted_peer_logs": {
+      "profile": "",
+      "auth": "",
+      "friend": ""
+    }
+  },
+  "process_cleanup": [
+    {
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "forced": false,
+      "exit_code": 0
+    }
+  ],
+  "cleanup": "PASS"
+}

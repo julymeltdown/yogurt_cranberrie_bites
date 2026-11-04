@@ -1,0 +1,12 @@
+
+running 8 tests
+test actual_live_opt_in_requires_guarded_listener_and_exact_mode ... ok
+test complete_configuration_is_explicit_and_independent_of_optional_products ... ok
+test default_and_explicit_off_create_no_runtime_or_authority ... ok
+test encryption_key_rotation_is_bounded_unique_nonzero_and_closed ... ok
+test endpoint_configuration_rejects_plaintext_credentials_queries_and_implicit_ports ... ok
+test failures_do_not_echo_endpoint_or_key_or_credential_values ... ok
+test release_and_instance_are_canonical_not_browser_or_random_defaults ... ok
+test workload_and_rotation_credentials_cannot_collapse_authorities ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

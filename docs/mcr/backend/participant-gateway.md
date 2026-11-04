@@ -124,10 +124,12 @@ included in this handoff.
 
 The production factory is committed separately at
 `e7c0cbb8bb3be40d49f64f737c8ffe19cc29924c`, based on Root's `f2683a7c`.
-Its status is IN_PROGRESS: a targeted read-only Profile/Decision/recovery review
-found no actionable issues; its Rust build and runtime checks are NOT_RUN and
-queued for a named allocation. Earlier Gateway/native evidence does not certify
-this new factory.
+Its compile/configuration status is CONTRACT_READY. A targeted read-only
+Profile/Decision/recovery review found no actionable issues; fresh Rust build,
+eight configuration tests and one key-role test pass. A fresh actual native
+producer join also passes. Production factory mounting and the public C03 flow
+remain IN_PROGRESS / NOT_RUN; earlier Gateway/native evidence does not certify
+those remaining boundaries.
 
 Root calls `ParticipantRuntimeSettings::load(grpc_enabled)` before opening the
 database and `settings.compose(pool, active_release)` with the actual
@@ -164,8 +166,8 @@ rejects known parity identities and overlap among Gateway, relationship, SELF
 and Decision roles. It creates no optional public/Gift/Social authority: C03's
 child settler refuses unsupported intents and leaves them unresolved. Recovery
 reuses the actual Profile client and persisted original binding, and never
-reissues a mutation or renews admission. These are source/review findings until
-fresh qualification and the actual public C03 flow pass.
+reissues a mutation or renews admission. These configuration and native checks are qualified as described below; actual
+production mounting and the public C03 flow remain required.
 
 
 The callable public probe is
@@ -181,3 +183,26 @@ both principals write. It requires private-response headers on success and error
 Syntax validation passes; actual public execution is NOT_RUN. The launcher must
 separately inspect native owner/root settlement and clean process/database
 shutdown. The probe explicitly cannot certify those from HTTP status alone.
+
+
+Fresh factory qualification at e7c0cbb8 used Rust1.88.0, locked/offline jobs2,
+incremental0 and dev/testdebug0. The exact `concert-service --lib --test
+participant_runtime_config --no-run --message-format=json` build exited0 in32.17s.
+The first attempt exited101 because `contracts-build` retained another
+worktree's proto path; cleaning that package alone removed20 files/816.4KiB.
+The same unchanged source then built. There were27 retained unused/dead-code
+warnings and zero new factory warnings. Original Cargo streams, all source pins
+and three copied executables are retained privately. The target was released
+and no open handles were confirmed before executing copied tests.
+
+`runtime-binaries-e7c0cbb8.json` records sanitized Cargo receipts and hashes,
+including all206 producer pins and9 runtime/test pins.
+`runtime-config-e7c0cbb8.txt` records eight configuration passes;
+`runtime-key-roles-e7c0cbb8.txt` records the role-separation pass. The copied
+producer lib also passed the exact existing actual Auth/Friend/Profile MAIN join
+through `participant_live_join_smoke.py`: canonical Profile COMMIT/save/reload,
+expired-PREPARE ABORT, six root/owner completions and lost-envelope quarantine.
+`runtime-native-join-e7c0cbb8.json` records all migration commands and clean peer
+exits/owned-PG cleanup. This join uses its existing guarded native composition;
+it does not execute Root's production factory mount or public HTTP journey.
+No build target or PG resources remain held.
