@@ -68,6 +68,18 @@ async fn call(
     op: &str,
     req: proto::ProductRequest,
 ) -> anyhow::Result<(u32, Value)> {
+    let response = call_scoped(f, r, op, req).await?;
+    f.assert_clean().await?;
+    Ok(response)
+}
+// Settle each original scope independently. The caller of concurrent requests
+// checks global prepared-transaction quiescence only after both scopes finish.
+async fn call_scoped(
+    f: &fixture::Fixture,
+    r: &MuralToolsRuntime,
+    op: &str,
+    req: proto::ProductRequest,
+) -> anyhow::Result<(u32, Value)> {
     let captured = json!({"operation_id":op,"actor_id":req.user_id,"event_id":req.event_id,"target":req.http_target,"idempotency_key":req.idempotency_key,"original_body":if req.http_body.is_empty(){Value::Null}else{serde_json::from_slice::<Value>(&req.http_body)?}});
     let (b, parent, req) = capture::capture(req, op).await?;
     let scope = f.fence.acquire(b).await?;
@@ -93,7 +105,6 @@ async fn call(
     );
     scope.mark_serialized().await?;
     scope.finish_response().await?;
-    f.assert_clean().await?;
     Ok((response.status, body))
 }
 async fn setup(n: usize) -> anyhow::Result<fixture::Fixture> {
@@ -457,11 +468,12 @@ async fn canonical_tabs_revision_cooldown_pause_and_admission_are_server_owned(
     );
     b.session_family_id = second_family.to_string();
     let (a, b) = tokio::join!(
-        call(&f, &r, "fillConcertMuralRegion", a),
-        call(&f, &r, "fillConcertMuralRegion", b)
+        call_scoped(&f, &r, "fillConcertMuralRegion", a),
+        call_scoped(&f, &r, "fillConcertMuralRegion", b)
     );
     let a = a?;
     let b = b?;
+    f.assert_clean().await?;
     assert!(
         matches!((a.0, b.0), (200, 409) | (409, 200)),
         "a={a:?}, b={b:?}"

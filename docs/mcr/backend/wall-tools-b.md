@@ -300,3 +300,27 @@ qualification can emit a new private `--live-owner` receipt containing its exact
 cluster inode and marker hash, allowing an independent deadline guardian to
 rescue only that owned cluster. Contract runtime checks use the retained strict
 Python environment with URI and date-time checkers, without dependency changes.
+
+## First native qualification disposition
+
+The first build round stopped at its 1 GiB resource ceiling during the Gateway
+build; its measured new peak was 1,078,116,352 bytes. Target and full release
+occurred at 17:05:00 UTC; no binary copy or PostgreSQL job ran in that round.
+The allocated narrow continuation reused the passed domain/application/config
+and startup evidence, froze one native executable before Gateway, and passed all
+nine Gateway cases. Its build resource peak was 1,009,004,544 bytes, under the
+new 2 GiB allowance. Target release was 17:16:39 UTC with zero open handles.
+
+The copied binary at source `bb40c0eac1fffd038dd2bec59fa8abdfc24e8339` then
+passed the pure case and three canonical native cases: fill/undo/budget/recovery,
+257-cell/no-op/region-lock atomic denial, and pencil/shared-budget/storage-failure
+rollback. Sixteen actual responses passed the strict C04 oracle and every
+completed case had zero prepared transactions. The fourth case exposed a test
+fixture error: its per-call global zero-prepared assertion observed the other
+deliberately concurrent request still running. Each request still performs its
+actual original-scope settlement; global zero-prepared validation now occurs
+after both joined requests finish. Serial calls retain the per-call check.
+This is a candidate test fix, not a passing native rerun. All failures remain
+recorded. Native cleanup passed, the private PostgreSQL root was removed and
+the guardian reaped at 17:17:27 UTC. The later native cases, physical restart,
+production default-app/two-client flow and IN04 remain unaccepted.
