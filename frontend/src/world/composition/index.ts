@@ -62,6 +62,7 @@ export interface WorldPresentationRelease {
 }
 export interface WorldPresentationPort { read(): WorldPresentationRelease | null; subscribe(listener: () => void): () => void }
 export interface WorldCompositionOptions {
+  readonly motionProfileVersion?: '1.0.0'
   readonly mural?: MuralQualificationFactory
   readonly auth: SessionController
   readonly resolveRelease: WorldReleaseResolver
@@ -240,10 +241,12 @@ export function createWorldComposition(options: WorldCompositionOptions) {
         zoom = prepared.zoom
         owned.rooms = new Set(prepared.rooms.items.map(room => room.room_id))
         const transport = new WebSocketWorldTransport({ session: auth.session, origin: location.origin,
+          ...(options.motionProfileVersion ? { motionProfileVersion: options.motionProfileVersion } : {}),
           acquireTicket: createTicketAcquirer(auth, privacyScope) })
         owned.policy = attachWorldSocialPolicy({ auth, scope: privacyScope, transport, signal: attempt.signal })
         cleanup.push(owned.policy.subscribe(notify))
-        owned.replication = createWorldReplication({ session: auth.session, transport, resources: prepared.resources, sink: { replace } })
+        owned.replication = createWorldReplication({ session: auth.session, transport, resources: prepared.resources, sink: { replace },
+          ...(options.motionProfileVersion ? { motion: { version: options.motionProfileVersion, map: prepared.map } } : {}) })
         step = 'runtime'
         runtime = createWorldRuntime({ host: stage, load: signal => loadMap(prepared.mapInput, signal),
           ...(options.createOverview ? { createOverview: options.createOverview } : {}),

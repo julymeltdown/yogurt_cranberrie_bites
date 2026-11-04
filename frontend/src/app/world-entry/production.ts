@@ -39,7 +39,7 @@ async function loadProduction({ auth, origin, localInput, characters, mural }: {
     return owner.runtime
   } }) : null
   const muralFactory = createProductionMuralFactory({ auth, configuration: mural })
-  return createWorldComposition({ auth, ...(muralFactory ? { mural: muralFactory } : {}), resolveRelease: createWorldEntryResolver({ auth, origin, localInput, ...(characters ? { characters } : {}) }), createOverview: createRootSceneOverview,
+  return createWorldComposition({ auth, motionProfileVersion: '1.0.0', ...(muralFactory ? { mural: muralFactory } : {}), resolveRelease: createWorldEntryResolver({ auth, origin, localInput, ...(characters ? { characters } : {}) }), createOverview: createRootSceneOverview,
     ...(whole && reviewed ? { renderer: { mount(context: Parameters<WorldRendererPort['mount']>[0]) {
       const representation = context.release.avatarManifest.representation
       if (representation === 'whole_character') return whole.mount(context)
