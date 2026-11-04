@@ -1,4 +1,128 @@
-# Feed CSS foreground parity
+# Feed presentation: current retro iteration
+
+## Current human direction supersedes the historical photo criterion
+
+Bounded CSS/fixture status: MOCK_READY; native qualification PASS.
+Product integration remains IN_PROGRESS; publication handoff follows below. The human rejected
+the prior 390px Feed and requested a substantial retro imageboard presentation:
+flat warm paper, charcoal text, restrained burgundy, thin square thread frames,
+compact author/time/body hierarchy, framed complete thumbnails and clear board
+tabs/composer. No literal third-party branding, invented content, pastel waves,
+sparkles, gradient cards, decorative left bars or oversized rounded cards.
+The old exact-photo/background-preservation clauses below are historical and
+superseded for the Feed surface only. They are not additional acceptance gates.
+Historical reports remain immutable and do not qualify this new iteration.
+
+Body text is 15px and remains complete. Controls retain at least 44px effective
+targets and visible keyboard focus. Thumbnails use contain and unchanged source
+bytes. Shared 48px portrait sizing/rendering and all generic Thread/composer
+primitives remain unchanged; only Feed portrait placement changes. All product
+writes remain in `frontend/src/features/event-feed/feed.css`. Root153 owns shared
+shell/markup and publication; owner209 owns the actual default-shell Feed fixture.
+The header variables cannot inherit upward from Feed: Root must set its chosen
+palette on an ancestor of the header. No ownership transfers are implied.
+
+The standalone preview has a fixed minimum frame height. Its beige bottom area
+is not evidence of a default-shell height defect. Actual default-shell DOM and
+scroll/composer reachability must be measured before any height correction.
+The current source preserves the original root min-height expression and uses a
+normal-flow composer to avoid overlapping post actions. Native 360/390/430 and
+short-viewport before/after checks remain required. Synthetic fixture rows are
+explicitly not live admission evidence. The same approved native crops and
+identities/counts stay frozen. No separate king/SL review or acknowledgment applies.
+
+Current supplied images (untouched external inputs):
+- `1-Photo-1.jpg` SHA-256 `5402ff40b98368eb7f17f05deef170b283a6f0d21f91f124953c8179a2a3cd7a`.
+- `2-Photo-2.jpg` SHA-256 `2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23`.
+
+The existing persistent goal remains BLOCKED in tool metadata. Work has resumed
+under the latest human direction; no exposed API can change it to active. It is
+not reset, replaced or falsely completed. Implementation, developer-owned native
+validation/fixes, documentation, committed handoff and publication remain required.
+
+## Retro native result and handoff
+
+Validated product source: `1a90734394540b2f4ba7303c02e973a730baa2c6`;
+CSS SHA-256 `14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8`.
+Runtime checkpoint: `ea9f5a0e446789b0df3f3ca19a347b2b0e71f7a1`.
+The source sequence is `2c710b89` (retro CSS), `560058d1` (new driver),
+`1a907343` (44px Notice Source link), `ea9f5a0e` (ALL-process accounting).
+Generic Thread/portrait pixels and input assets remain unchanged. Retained
+Root fixture commit `008248295c120c75c08c8a4bb8fa2ca2c1c6026a` and artist input
+`8f6fe07f389f73f09d9fc61a6012b49846b24ce6` match byte for byte; all eight input
+hashes and the actual-shell fixture hash are in the raw report/preflight.
+No `docs/source/`, backend, shared product code, fixture or asset source was edited.
+
+Fresh named allocation `FEED-RETRO-NATIVE-BROWSER-202611041355Z` was explicitly
+accepted at epoch `1793800592.29` (2026-11-04 13:56:32.290 UTC). Its original
+work cutoff was 13:58:22.290 UTC and hard cleanup deadline 13:59:32.290 UTC.
+The absolute Node runtime reported v24.22.2; matching pinned dependency lock,
+absent-only private dependency link, free 29,980,143,616 bytes and a fresh port5292
+bind were checked. No install/build/database/shared-cache work ran.
+
+Command: `python3 docs/mcr/evidence/css-parity-feed/run-retro-slot.py --slot FEED-RETRO-NATIVE-BROWSER-202611041355Z --accepted-epoch 1793800592.29`.
+The guarded absolute-Node driver exited 0 after 45.970s; supervisor exited 0.
+No failures, retries or browser page errors occurred. The old matrix was not rerun.
+
+| Developer-owned native check | Result |
+| --- | --- |
+| Same-input Feed before/after, 360/390/430 × 843 | PASS |
+| Actual canonical Auth/router/Phaser shell before/after, same widths | PASS; explicitly synthetic HTTP/C05 |
+| Both surfaces at 360/390/430 × 480, scroll and unobscured composer hit target | PASS |
+| Full 15px post text, no horizontal document overflow | PASS |
+| Whole approved 197×67 / 197×46 media, unchanged bytes/intrinsics | PASS |
+| 48px portrait dimensions / actual selected-character canvas in shell | PASS |
+| All visible Feed controls including Notice Source / checkbox label effective targets ≥44px | PASS |
+| Body/author/time/tab/compose text contrast | PASS; minimum 6.04:1 |
+| Real keyboard navigation, visible solid 3px focus, forced colors | PASS |
+| Actual Thread, options/filter, notice Source, refresh and compose | PASS |
+| Privacy revocation and disposal remove all private object URLs | PASS |
+| Empty, read-only, unavailable, loading and error at 390×480 | PASS |
+| Default shell lifetime | One canvas / socket peak one; zero after dispose |
+
+[Raw report](../evidence/css-parity-feed/retro1/report.json),
+[comparison index](../evidence/css-parity-feed/retro-comparison.html),
+[preflight](../evidence/css-parity-feed/preflight-retro.json) and
+[automatic release](../evidence/css-parity-feed/release-FEED-RETRO-NATIVE-BROWSER-202611041355Z.json)
+preserve source pins, commands, geometry, screenshot hashes, limits and limitations.
+The supplied Photo1/Photo2 were also manually compared against saved candidate
+images; immutable byte-identical evidence copies are linked in the comparison.
+Photo1 is the rejected before, not the acceptance target. Photo2 remains historical
+context. All three candidate widths and actual-shell short captures were inspected:
+full copy/complete thumbnails and clear square rows are visible, with no composer
+collision or selected-character pixel/framing change. Shared old chrome and the
+standalone fixed frame remain explicit limitations, not Feed CSS acceptance claims.
+
+Actual-shell sizing was measured before considering a height change. At390×843,
+body is y57/h779, Feed y63/h765 and footer y767/h61. At390×480, the composer is
+y413/h44 and unobscured. No actual-shell gap defect reproduced; no speculative
+height fix was made. Its single frozen post correctly leaves available paper
+space with the composer at the bottom. The standalone fixed preview's beige
+outside-frame area does not imply a product scroll defect.
+
+One shared-owner finding remains: old shell-body paint is still pink/waved at
+its narrow inset. Exact selector:
+`:root .shell-panel[data-mcr-panel='feed'] > .shell-panel-body`.
+Root owns this surface and should replace `background-image` with `none` and
+use matching flat paper. Owner213 owns the assigned burgundy header variables
+on the ancestor; owner209 owns the new same-input protected-media/default-shell
+fixture. Both received the qualified CSS pin directly. Their integration evidence
+remains separate; this older-shell matrix does not certify those newer patches.
+
+Automatic FULL release completed at epoch1793800651.648543 (59.359s total):
+ALL-process peak13, aggregate RSS peak2,564,194,304 bytes (<3GiB), whole peak
+42,711,910 bytes, private temporary peak29,666,885 bytes and durable peak
+13,504,071 bytes. Minimum free29,925,384,192 bytes. No owned process, dependency
+link, TMP/cache/profile or listener remained;5292 rebound successfully. The allocator
+was informed immediately. Subsequent work was source/docs/evidence and Git only.
+
+This is a committed developer-owned handoff to Root153 for publication, with no
+king/SL correctness gate. Full live admission, latest shared chrome and owner209
+combined integration remain open. The persistent goal is not falsely completed.
+
+---
+
+# Historical Feed CSS foreground parity
 
 Task: CSS-FEED, related F01/FE27 and shared F03/FE28 styling. Bounded CSS status:
 MOCK_READY. Full foreground/photo parity: IN_PROGRESS with exact constraints below.

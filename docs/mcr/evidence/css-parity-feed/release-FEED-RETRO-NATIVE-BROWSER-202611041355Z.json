@@ -1,0 +1,23 @@
+{
+  "slot": "FEED-RETRO-NATIVE-BROWSER-202611041355Z",
+  "acceptedEpoch": 1793800592.29,
+  "argv": [
+    "python3",
+    "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/supervisor-intrinsic.py",
+    "--slot",
+    "FEED-RETRO-NATIVE-BROWSER-202611041355Z",
+    "--accepted-epoch",
+    "1793800592.29",
+    "--driver",
+    "retro"
+  ],
+  "processPeak": 13,
+  "rssPeakBytes": 2564194304,
+  "supervisorExit": 0,
+  "releasedEpoch": 1793800651.648543,
+  "elapsedSinceAccept": 59.358542919158936,
+  "ownLinkRemoved": true,
+  "ownTmpRemoved": true,
+  "port5292Bindable": true,
+  "remainingOwnedProcesses": []
+}

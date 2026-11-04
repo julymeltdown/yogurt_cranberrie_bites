@@ -1,0 +1,20 @@
+{
+  "utc": "2026-11-04T13:56:20.083873+00:00",
+  "head": "ea9f5a0e446789b0df3f3ca19a347b2b0e71f7a1",
+  "node": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+  "version": "v24.22.2",
+  "pins": {
+    "frontend/src/features/event-feed/feed.css": "14424bc829a47e3e4d0f28ac5c3fe59a6e07df6548906af4cb520407eceb5ef8",
+    "docs/mcr/evidence/css-parity-feed/native-retro.mjs": "ea9a782a8f2d47cfd0c574f630cbfcefc3b5cf6f31a9a4757676b5972c74023e",
+    "docs/mcr/evidence/css-parity-feed/run-retro-slot.py": "962f1c46643bb31251906f286576278ccb1f8f07a5cd649c421e1edb86e5f3df",
+    "docs/mcr/evidence/css-parity-feed/supervisor-intrinsic.py": "16e3b36d4942be62ede0c81e6790f1d90844cd6c13b343cb606bb39e038e50a5",
+    "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.tsx": "83b55a7d2152093a0222ec909a43f462add7c783cfb2a885d8283a508c9ce294",
+    "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.css": "227da7bbfd2bbc6d99bc01682be4124e15b92e82882b3044fbd4316be6b590a1",
+    "frontend/src/features/event-feed/__tests__/css-parity-feed/preview.html": "edd92dc9f7eb10c3e66c15e81cd1baf28101b2a1253f75cc068995b2e2812a8f",
+    "frontend/src/app/__tests__/cozy-backgrounds-v1/preview.tsx": "5fb0fed19cf9b2fe14a8179052d5cfd639514c879952beab67e1d64b9529e261"
+  },
+  "carryBytes": 11234376,
+  "freeBytes": 29980143616,
+  "port5292Bindable": true,
+  "ownLinkAbsent": true
+}

@@ -1,0 +1,3 @@
+{"argv": ["/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node", "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native-retro.mjs"], "phase": "retro1", "exit": 0, "elapsedSinceAccept": 45.969663858413696}
+OWNER_FLAGS /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-css-feed-retro-wtnu51_9/mcr-css-feed-intrinsic-slot-8cinntip : finish or retry
+SUPERVISOR_DONE /Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/supervisor-FEED-RETRO-NATIVE-BROWSER-202611041355Z.json

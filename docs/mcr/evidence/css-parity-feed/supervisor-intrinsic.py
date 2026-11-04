@@ -12,7 +12,7 @@ import time
 parser = argparse.ArgumentParser()
 parser.add_argument('--slot', required=True)
 parser.add_argument('--accepted-epoch', required=True, type=float)
-parser.add_argument('--driver', choices=['intrinsic', 'reference'], default='intrinsic')
+parser.add_argument('--driver', choices=['intrinsic', 'reference', 'retro'], default='intrinsic')
 args = parser.parse_args()
 root = Path('/Users/lhs/.codex/worktrees/d51f/mcr')
 assert Path.cwd().resolve() == root
@@ -23,7 +23,7 @@ env.update(PATH=node_bin + ':' + env['PATH'], MCR_FEED_REPO=str(root), MCR_FEED_
 tmp = Path(tempfile.mkdtemp(prefix='mcr-css-feed-intrinsic-slot-'))
 env['TMPDIR'] = str(tmp)
 kind = args.driver
-driver = 'native-intrinsic.mjs' if kind == 'intrinsic' else 'native-reference-media.mjs'
+driver = {'intrinsic': 'native-intrinsic.mjs', 'reference': 'native-reference-media.mjs', 'retro': 'native-retro.mjs'}[kind]
 deadline = args.accepted_epoch + 110
 report = {'slot': args.slot, 'acceptedEpoch': args.accepted_epoch,
           'commands': [], 'freeMinimum': shutil.disk_usage(root).free, 'wholePeak': 0}

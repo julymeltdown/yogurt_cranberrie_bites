@@ -1,0 +1,24 @@
+{
+  "slot": "FEED-RETRO-NATIVE-BROWSER-202611041355Z",
+  "acceptedEpoch": 1793800592.29,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/.codex/worktrees/d51f/mcr/docs/mcr/evidence/css-parity-feed/native-retro.mjs"
+      ],
+      "phase": "retro1",
+      "exit": 0,
+      "elapsedSinceAccept": 45.969663858413696
+    }
+  ],
+  "freeMinimum": 29925384192,
+  "wholePeak": 42711910,
+  "temporaryPeak": 29666885,
+  "durablePeak": 13504071,
+  "retainedInputBytes": 60438,
+  "ownedSourceBytes": 53679,
+  "activeEndedEpoch": 1793800651.050636,
+  "elapsedSinceAccept": 58.760637044906616,
+  "privateTmpRemoved": true
+}
