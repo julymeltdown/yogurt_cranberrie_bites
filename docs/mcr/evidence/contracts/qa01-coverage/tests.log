@@ -1,0 +1,12 @@
+test_catalog_duplicate_and_traversal_are_rejected (__main__.CoverageTests.test_catalog_duplicate_and_traversal_are_rejected) ... ok
+test_duplicate_and_nonfinite_json_are_rejected (__main__.CoverageTests.test_duplicate_and_nonfinite_json_are_rejected) ... ok
+test_missing_dependencies_are_not_silent_success (__main__.CoverageTests.test_missing_dependencies_are_not_silent_success) ... ok
+test_missing_optional_format_plugins_fail_closed (__main__.CoverageTests.test_missing_optional_format_plugins_fail_closed) ... ok
+test_missing_schema_family_cannot_be_an_empty_pass (__main__.CoverageTests.test_missing_schema_family_cannot_be_an_empty_pass) ... ok
+test_positive_public_entrypoint_is_nonempty (__main__.CoverageTests.test_positive_public_entrypoint_is_nonempty) ... ok
+test_public_cli_rejects_real_mutations (__main__.CoverageTests.test_public_cli_rejects_real_mutations) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 8.491s
+
+OK
