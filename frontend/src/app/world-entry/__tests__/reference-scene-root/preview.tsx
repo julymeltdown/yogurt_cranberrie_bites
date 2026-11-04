@@ -8,7 +8,10 @@ import { createSessionController } from '../../../../features/auth/model/session
 import { capabilities, authResponse, isolatedCookiePolicy } from '../../../../features/auth/__tests__/fixtures/data'
 import { createWorldComposition } from '../../../../world/composition'
 import { createWholeCharacterWorldRenderer } from '../../../../world/avatar/whole-character'
+import { isThemeId } from '../../../../features/theme/model/preferences'
 import { referenceFixtureResources } from '../../../../world/reference-scene/__tests__/fixture'
+import { spatialFixtureResources } from '../../../../world/reference-scene/__tests__/spatial-v3/fixture'
+import { getReferenceOverviewMetadata } from '../../../../world/reference-scene'
 import { validateManifests } from '../../../../world/map/manifest'
 import { sha256 } from '../../../../world/map/json'
 import { MockSocket } from '../../../../world/network/mock'
@@ -20,7 +23,9 @@ import { sceneData, snapshot, localInput } from './data'
 import '../../../../shared/styles/base.css'
 import '../../../shell.css'
 
-const data = await sceneData(), requests: { path: string; method: string }[] = [], sockets: Socket[] = []
+const parameters = new URLSearchParams(location.search), initial = parameters.get('era')
+const data = await sceneData(parameters.get('version') === 'legacy' ? 'legacy' : 'spatial', initial === 'REVENGE' || initial === 'DANGER' ? initial : 'PARADE'), requests: { path: string; method: string }[] = [], sockets: Socket[] = []
+const caches: { diagnostics(): unknown; dispose(): void }[] = []
 const sourceOnly = new URLSearchParams(location.search).get('mode') !== 'production-denied'
 let disposed = false, factoryCalls = 0, socketPeak = 0, canvasPeak = 0, firstCamera: unknown = null
 let firstGame: PhaserType.Game | null = null, peakGames = 0
@@ -72,10 +77,17 @@ const ports = createProductionPorts(auth, { origin: location.origin, localInput,
  ...(sourceOnly ? { load: async ({ auth: canonical, characters }: Parameters<NonNullable<import('../../production').ProductionWorldOptions['load']>>[0]) => createWorldComposition({
   auth: canonical, createOverview: () => { factoryCalls++; return createRootSceneOverview() },
   resolveRelease: async request => {
-   const metadata = await validateManifests(JSON.stringify(data.map), JSON.stringify(data.theme), data.pin)
-   preflightReferenceScene(metadata)
-   const files = referenceFixtureResources(data, location.origin, { signal: request.signal })
-   return { bootstrap: request.bootstrap.document!, privacyScope: request.privacyScope, themeId: 'PARADE', availableThemeIds: ['PARADE'],
+   for (const theme of data.bootstrap.theme_manifests.filter(t => t.texture.image_state === 'PROVIDED')) {
+    const metadata = await validateManifests(JSON.stringify(data.map), JSON.stringify(theme), { ...data.pin, themeHash: theme.content_hash })
+    preflightReferenceScene(metadata)
+   }
+   const files = data.version === 'spatial' ? spatialFixtureResources(location.origin, { signal: request.signal })
+    : referenceFixtureResources(data, location.origin, { signal: request.signal })
+   caches.push(files); request.signal.addEventListener('abort', files.dispose, { once: true })
+   const themeId = data.theme.theme_id
+   if (!isThemeId(themeId)) throw Error('Invalid fixture era')
+   // Unreviewed original test descriptors cannot authorize optional skins. Each initial era is qualified separately.
+   return { bootstrap: request.bootstrap.document!, privacyScope: request.privacyScope, themeId, availableThemeIds: [themeId],
     rooms: rooms(), roomId: rooms().default_room_id, resources: files.resources, movementPolicy: localInput.movementPolicy, zoom: localInput.zoom }
   },
   renderer: createWholeCharacterWorldRenderer({ resolveRuntime(context) {
@@ -91,9 +103,11 @@ function state() {
  const binding = ports.worldAccess?.read(), presentation = binding?.presentation?.read(), view = binding?.replication.read()
  if (presentation && !firstCamera) firstCamera = presentation.camera
  const runtime = ports.characters?.read(auth.privacy.capture(), data.avatar)
- return { sourceOnly, productionAdmitted: false, originalMapProvenance: data.map.provenance, originalPlaces: data.map.places,
+ const overview = presentation?.overview?.read()
+ return { version: data.version, sourceOnly, productionAdmitted: false, originalMapProvenance: data.map.provenance, originalPlaces: data.map.places,
   path: router.state.location.pathname, published: !!presentation, factoryCalls, requests, camera: presentation?.camera.read(), sameCamera: presentation ? presentation.camera === firstCamera : null,
-  map: presentation?.map.expected, overview: presentation?.overview?.read(), phase: view?.phase, entities: view?.entities.length,
+  map: presentation?.map.expected, overview, theme: presentation?.theme.read(), metadata: overview ? getReferenceOverviewMetadata(overview) : null,
+  sourceCaches: caches.map(c => c.diagnostics()), phase: view?.phase, entities: view?.entities.length,
   socketPeak, sockets: sockets.length, activeSockets: sockets.filter(s => s.readyState < 2).length, canvasPeak,
   canvases: document.querySelectorAll('.shell-world-host canvas').length, runtime: runtime?.diagnostics(), urls: structuredClone(urls), disposed }
 }
@@ -108,7 +122,7 @@ async function overviewPixels() {
 }
 const api = { state, inspectWorld, overviewPixels, navigate: (path: string) => router.navigate(path),
  suspend() { auth.privacy.changePolicy(auth.privacy.capture(), 'suspended') },
- async dispose() { if (disposed) return; disposed = true; root.unmount(); router.dispose(); ports.dispose?.(); auth.dispose(); mutation.disconnect(); URL.createObjectURL = createURL; URL.revokeObjectURL = revokeURL },
+ async dispose() { if (disposed) return; disposed = true; root.unmount(); router.dispose(); ports.dispose?.(); auth.dispose(); caches.forEach(c => c.dispose()); mutation.disconnect(); URL.createObjectURL = createURL; URL.revokeObjectURL = revokeURL },
 }
 Object.assign(window, { __SCENE_ROOT__: api })
 declare global { interface Window { __SCENE_ROOT__: typeof api } }
