@@ -1,5 +1,5 @@
 {
-  "candidate": "ca0d2d7b3d3a73abb7a338dada30d5cdd5987d94",
+  "candidate": "705da35a5f77e2207dc805d38efd518968085e26",
   "pins": {
     "src/features/safety/controller.ts": "ea8e95f49ff85fe4988da2aa5dea4d3020c42a793598783fcd5753e25f7f9086",
     "src/features/safety/panels.tsx": "20ec17735ca3707edc70696c89276cf0c612228d322caa9d76f95e6c4d315875",
