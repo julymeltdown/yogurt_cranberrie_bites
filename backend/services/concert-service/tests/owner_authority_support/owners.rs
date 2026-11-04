@@ -22,15 +22,17 @@ impl Drop for Running {
 }
 
 pub(super) fn signer() -> anyhow::Result<RelationshipReadSigner> {
-    let gateway =
-        ActorDelegationVerifier::new(Workload::Concert, &[capture::gateway()?.public_key()])?;
+    signer_for_gateway(capture::gateway()?.public_key())
+}
+pub(super) fn signer_for_gateway(key: [u8; 32]) -> anyhow::Result<RelationshipReadSigner> {
+    let gateway = ActorDelegationVerifier::new(Workload::Concert, &[key])?;
     RelationshipReadSigner::from_seed(&[75; 32], &gateway)
 }
-fn verifier(owner: Workload) -> anyhow::Result<RelationshipReadVerifier> {
+fn verifier(owner: Workload, key: [u8; 32]) -> anyhow::Result<RelationshipReadVerifier> {
     RelationshipReadVerifier::new(
         owner,
-        &[signer()?.public_key()],
-        &ActorDelegationVerifier::new(owner, &[capture::gateway()?.public_key()])?,
+        &[signer_for_gateway(key)?.public_key()],
+        &ActorDelegationVerifier::new(owner, &[key])?,
     )
 }
 fn incoming(
@@ -43,6 +45,13 @@ fn incoming(
 }
 
 pub(super) async fn auth(pool: PgPool, producer_url: &str) -> anyhow::Result<Running> {
+    auth_for_gateway(pool, producer_url, capture::gateway()?.public_key()).await
+}
+pub(super) async fn auth_for_gateway(
+    pool: PgPool,
+    producer_url: &str,
+    key: [u8; 32],
+) -> anyhow::Result<Running> {
     use auth_service::concert_authority::{proto, PgOwnerAuthority, RpcSettlementResolver};
     let tls = environment::tls(Workload::Auth)?;
     let resolver = RpcSettlementResolver::new(
@@ -54,7 +63,7 @@ pub(super) async fn auth(pool: PgPool, producer_url: &str) -> anyhow::Result<Run
     let server = auth_service::adapters::r#in::grpc::concert_authority::guarded_server(
         store,
         auth_service::concert_authority::owner_caller_registry()?,
-        verifier(Workload::Auth)?,
+        verifier(Workload::Auth, key)?,
     )?;
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
     let url = format!("https://{}", listener.local_addr()?);
@@ -70,6 +79,13 @@ pub(super) async fn auth(pool: PgPool, producer_url: &str) -> anyhow::Result<Run
     Ok(Running { url, task })
 }
 pub(super) async fn friend(pool: PgPool, producer_url: &str) -> anyhow::Result<Running> {
+    friend_for_gateway(pool, producer_url, capture::gateway()?.public_key()).await
+}
+pub(super) async fn friend_for_gateway(
+    pool: PgPool,
+    producer_url: &str,
+    key: [u8; 32],
+) -> anyhow::Result<Running> {
     use friend_service::concert_authority::{proto, PgOwnerAuthority, RpcSettlementResolver};
     let tls = environment::tls(Workload::Friend)?;
     let resolver = RpcSettlementResolver::new(
@@ -81,7 +97,7 @@ pub(super) async fn friend(pool: PgPool, producer_url: &str) -> anyhow::Result<R
     let server = friend_service::adapters::r#in::grpc::concert_authority::guarded_server(
         store,
         friend_service::concert_authority::owner_caller_registry()?,
-        verifier(Workload::Friend)?,
+        verifier(Workload::Friend, key)?,
     )?;
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await?;
     let url = format!("https://{}", listener.local_addr()?);

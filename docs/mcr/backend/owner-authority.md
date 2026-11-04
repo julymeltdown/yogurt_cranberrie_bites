@@ -429,8 +429,9 @@ Portable evidence pins for the bounded five-case result:
 - Immutable report/checkpoint/Cargo output are retained with the frozen
   executable in the owner-controlled evidence directory.
 
-SDK3 source `0576c359` and response-wide ceiling follow-up `f646f015` are
-separate, uncompiled, unpublished source handoffs. They define only the closed
+At the earlier five-case checkpoint, SDK3 source `0576c359` and response-wide
+ceiling follow-up `f646f015` were separate, uncompiled, unpublished source
+handoffs. They define the closed
 Gift-private intent and the minimum original/intended/held-child disclosure
 ceiling. Root and Gift still own the matching encrypted recovery, database,
 private producer and before-byte transport qualifications. Expiry does not
@@ -482,10 +483,142 @@ producer-receipt qualification.
 No real Gateway outer HTTP body, positive Product/Gift representation, full
 Profile/Post/Media child join or physical consumer/PostgreSQL restart is claimed
 by this run. The separate actual Gateway HTTP fixture is authored source only
-and has not been compiled or run. SDK3 remains a separate source cohort.
+and has not been compiled or run. SDK3 has separate component evidence below.
 
 Portable proof pins:
 
 - Copied executable SHA-256: `42a215c8011deba1990cc3a9028900e9bef0c2f7424ae7e52cb80f5a9e87b0a0`.
 - Canonically sorted source-manifest SHA-256: `0277c0e683e86c8211ff6435a45feb069459d25a861431c0c2dc0ae279083be6`.
 - Overall six-case PASS report SHA-256: `3f319481b00eabaf4dd8f42c5a0d270ae90c0ef3904cc4b81bfc7ee1c851c8f0`.
+
+### Published SDK3 components and pending public HTTP qualification
+
+The designated integrator delivered the six-case patch as `d0d4d4a5`, within
+master `4d5c044fa1b09cfd794a519d963bcd63d22c26d8`. Original handoff `837b16ab`
+was cherry-picked; it is not claimed as an ancestor of that master commit.
+
+Root's separate exact-source `5329d3f4` component qualification is recorded in
+[product SDK3 evidence](product-sdk3-qualification.json) and
+[product runtime history](product-api-runtime.md). Its four fresh test builds,
+22 focused tests, five native ledger tests and 30 SQL/runner commands passed.
+The guarded child-reference tests include closed Gift-private metadata. The
+cohort consumes SDK follow-up `4b306c8d`, which clips the response-wide minimum
+to both actual Auth/Friend owner-view expiries, immutable intended children and
+retained children, preserving the original monotonic stop. Root's HTTP
+disclosure completion tests use an explicit counter double; those results do
+not qualify actual canonical-owner HTTP. Gift's independent prepared-read and
+restart evidence is recorded in [Gift live qualification](gift-live.md).
+
+The exclusive test target `owner_authority_http` and its controller
+`tests/owner_authority_support/qualify_http.py` passed the actual native case
+on exact `8bb61f85`. The earlier actual native failure at `26579458` is preserved
+below with its source diagnosis and setup retries. Authored source
+constructs actual `AppConfig`, `build_state`, the full public router and
+`with_transport_layers`, serves a real socket with actual `ConnectInfo`, and
+obtains current identity through the real JWT/Auth/Profile path. The controller
+uses the existing owned DevStack environment builder, real email signup,
+private verification mail and real login. It passes the token only through the
+test process's standard-input pipe. No `HttpConcertAccess`, verified client
+address, positive owner scope or successful application producer is fabricated.
+
+The negative producer deliberately refuses after checking durable delivery
+publication. A test-only outer gate delays polling the unchanged production
+HTTP body, preserving every data/error/trailer frame. Planned checks cover real
+owner writer exclusion before body consumption, actual EOF settlement, real
+TCP reset with observed destruction of the unopened HTTP body, and expiry
+before first body disclosure with continued quarantine. Actual identity
+main processes use parity transport; the explicit Concert/owner/settlement
+clients use fixture mTLS. Positive product/Gift, production startup
+registration and physical consumer restart remain separate open requirements.
+The Root-granted Gateway dev-dependency changes only the Concert package edge;
+normal/build dependency traversal confirms no Concert cycle and no lockfile
+resolution change. The exact passing HTTP execution and its limited scope are recorded below;
+this authored description does not itself supply additional runtime proof.
+
+The controller's separate `--prepare-only` run returned exit 0 and truthful
+**PARTIAL**, with canonical HTTP **NOT_RUN**, on source `b412e9a9`. All six
+frozen main binaries matched their recorded hashes and current migration
+manifests. Actual PG16.14 started with prepared-transaction support; the existing
+readiness checks passed. Real email signup, verification via private Auth mail
+and login each returned 200. Read-only SQL observed the service-created ACTIVE
+user and a live real login session in `mcr_canonical_auth`, the same owned
+database the subsequent owner fixture will fence. No canonical identity was
+created by SQL. All services stopped and marker/inode-owned cleanup passed,
+with the root directory absent. This verifies the real-identity setup, not
+Gateway canonical body delivery. Immutable preparation report SHA-256 is
+`c2028515cbf8a17f2a749e82060ec02a2cb84a9921634b341f3ae46cfd14b660`.
+
+The exact `26579458` HTTP fixture compiled with Rust1.88 locked/offline, j2,
+debug0/incremental0 in 34.44 seconds (exit 0). The copied binary SHA-256 is
+`2995a24b28229a6ae743b6744fcc357d4e83f41e6f5bf98a5785c2a4ae2ee08a`.
+The shared target was released with no open handles before native execution.
+The native test returned exit101 after 4.22 seconds: `deadline has elapsed`
+while awaiting the actual producer observation. Real signup, verification and
+login each returned 200; all owned services and the private root were cleaned
+up successfully. This is **FAIL**, not HTTP acceptance or a passing restart.
+The immutable report is `http-native-1.json` in the frozen HTTP evidence
+directory, retained alongside the exact source/build checkpoint. The follow-up
+fixture observes the actual response first and reports only its numeric status
+if the producer was never invoked; it does not manufacture a scope to satisfy
+the assertion. That follow-up is **NOT_RUN** pending a fresh source-bound build.
+
+Static follow-up found the controller omitted public self-Profile initialization:
+Auth signup alone does not supply the Profile required by the actual Gateway
+identity join. The controller now performs real authenticated `PUT /api/profile/{id}`
+and checks its actual owner response before handing the real bearer to the
+HTTP test. No Profile row or identity observation is fabricated. This is a
+source diagnosis pending native confirmation, not a reclassification of the
+preserved first failure.
+
+The first preparation retry returned actual Profile HTTP422 because the new
+fixture payload omitted required `avatarUrl`; inspection also found its username
+exceeded the 20-character domain bound. The payload now uses the existing
+selected-pack derivative URI and an 18-character username. This retry's
+owned-stack cleanup passed; it remains a preserved setup failure.
+
+### Actual canonical-owner HTTP qualification
+
+Exact source `8bb61f854aab29e32129f4fb46d2693d8c7ce7e9` passed the single exact
+ignored native case (exit 0, 2.31 s). Real signup, private-mail verification, login
+and public self-Profile creation each returned 200. The copied fixture loaded
+actual Gateway config/state/JWT keys, current Auth/Profile identity, the full
+public router and production transport layers, then served a real HTTP listener
+with real normalized socket identity. Canonical Auth/Friend stores used the
+same real Auth user's database/session and strict fixture mTLS owner clients.
+
+The real refusing producer checked durable delivery publication before refusing.
+Before each body was consumed, actual Auth and Friend prepared guards excluded
+real invalidating writers with SQL55P03. Actual successful HTTP EOF delivered
+the closed safe403 representation and settled both owners; invalidating writes
+then executed and rolled back. The private producer diagnostic never escaped.
+A second real TCP connection was reset while its unchanged production body was
+unopened; actual server body destruction was observed and both guards remained
+prepared and writer-blocking. A third response was delayed beyond its original
+minimum disclosure ceiling; the protected representation was not emitted, and
+both guards remained quarantined. Auth2/Friend2/Concert0 prepared work was
+expected before exact owned-fixture teardown. Neither reset nor expiry was
+reported as successful terminal delivery. All services stopped and cleanup
+passed with the private root absent. All 17 Auth, 17 Friend and 28 Concert actual
+migrations matched.
+
+The single two-artifact no-run command used Rust1.88, locked/offline, j2, debug0
+and incremental0; exit0 in35.066s. The shared target was explicitly released
+with zero handles after copying and before any native PostgreSQL execution.
+All 1860 HTTP source/migration/contract pins and six actual main binary hashes
+were checked. The six identity mains retain their recorded older qualification
+revision; this is a mixed-source identity/component composition, not a claim
+that current production mains or the whole latest master were qualified.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Copied HTTP test executable | `ce413db00be84ca67e3457154e80b06c85a4870b2cdf61b13cb7b14e26db7a36` |
+| Exact HTTP native PASS report | `64c58365342333e2a9aa85e4235d8729b2e21a5c6bfc0fc02c8d491ef51d4a63` |
+| Real Auth/Profile preparation PASS report (truthful PARTIAL/HTTP NOT_RUN) | `be81d9cbefe3a855212f6d9608521a5787922a21554163707bdaa0a286bbe5cf` |
+
+Immutable evidence basename `mcr-child-recovery-la1v60q4` contains
+`http-native-2.json`, `owner_authority_http-checkpoint.json`, complete Cargo JSON
+and release receipts. Earlier `26579458` failure and both preparation failures
+remain preserved separately. Positive Product/Gift, a full child-composer join,
+physical Root restart and current main activation remain separate open gates.
+The concurrent three native child-recovery component results are documented
+in `child-recovery-runtime.md`; they do not certify those remaining flows.
