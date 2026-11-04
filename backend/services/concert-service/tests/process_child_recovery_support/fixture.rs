@@ -82,6 +82,17 @@ impl Drop for Fixture {
 }
 impl Fixture {
     pub async fn new(instance: Uuid, deny_auth_complete: bool) -> anyhow::Result<Self> {
+        let keys = Arc::new(ChildRecoveryKeys::new(
+            ChildRecoveryKey::new("public-native-v1", &[89; 32])?,
+            vec![],
+        )?);
+        Self::with_keys(instance, deny_auth_complete, keys).await
+    }
+    pub async fn with_keys(
+        instance: Uuid,
+        deny_auth_complete: bool,
+        keys: Arc<ChildRecoveryKeys>,
+    ) -> anyhow::Result<Self> {
         let auth = environment::pool("auth").await?;
         let friend = environment::pool("friend").await?;
         let concert = environment::pool("concert").await?;
@@ -135,11 +146,6 @@ impl Fixture {
             "concert-fixture",
             Some(&environment::tls(Workload::Concert)?),
             owners::signer()?,
-        )?);
-        // Explicit fixture key preserved in BOTH physical process modes.
-        let keys = Arc::new(ChildRecoveryKeys::new(
-            ChildRecoveryKey::new("public-native-v1", &[89; 32])?,
-            vec![],
         )?);
         let ledger = PgScopeLedger::new(
             concert.clone(),
@@ -202,9 +208,9 @@ impl Fixture {
     pub fn make_child_settlement_unavailable(&self) {
         self.child_unavailable.store(true, Ordering::SeqCst);
     }
-    /// Actual post-restart owner reconciliation. Call only after children ACK
-    /// and the saved original root deadline has passed; expiry selects a sweep,
-    /// while the actual RootFinished RPC proof authorizes each owner release.
+    /// Actual bounded owner sweep. Original expiry selects candidate leases;
+    /// only genuine RootFinished RPC proof authorizes release. Unfinished-root
+    /// scenarios invoke this as a negative case and must retain their guards.
     pub async fn recover_owners(&self) -> anyhow::Result<()> {
         use auth_service::concert_authority::{
             proto as auth_proto, OperationBudget as AuthBudget, PgOwnerAuthority as AuthOwner,

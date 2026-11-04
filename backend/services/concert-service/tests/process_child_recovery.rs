@@ -9,6 +9,8 @@ mod environment;
 mod fault;
 #[path = "process_child_recovery_support/fixture.rs"]
 mod fixture;
+#[path = "process_child_recovery_support/missing_key.rs"]
+mod missing_key;
 #[path = "process_child_recovery_support/owners.rs"]
 mod owners;
 #[path = "process_child_recovery_support/release.rs"]
@@ -724,12 +726,19 @@ async fn old_content_denied(
     Ok(())
 }
 async fn restart(run: Uuid, instance: Uuid) -> anyhow::Result<()> {
+    let f = fixture::Fixture::new(instance, false).await?;
+    restart_with_fixture(run, instance, f).await
+}
+async fn restart_with_fixture(
+    run: Uuid,
+    instance: Uuid,
+    f: fixture::Fixture,
+) -> anyhow::Result<()> {
     let state = load(run)?;
     anyhow::ensure!(
         state.instance == instance && state.old_pid != std::process::id(),
         "physical restart identity required"
     );
-    let f = fixture::Fixture::new(instance, false).await?;
     let view = authority::RootReadView::decode(state.root_view.as_slice())?;
     let capability = proto::ResponseDelivery::decode(state.delivery.as_slice())?;
     let key = scope_key(
@@ -873,4 +882,10 @@ async fn process_root_child_recovery_cr01() -> anyhow::Result<()> {
         "restart" => tokio::time::timeout(Duration::from_secs(90), restart(run, instance)).await?,
         _ => anyhow::bail!("unsupported mode; only bounded CR01 is authored"),
     }
+}
+
+#[tokio::test]
+#[ignore = "requires owned PG16 and source-bound three-process CR04 controller"]
+async fn process_root_child_recovery_cr04() -> anyhow::Result<()> {
+    missing_key::run().await
 }

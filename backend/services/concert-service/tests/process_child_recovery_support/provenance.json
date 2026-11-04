@@ -9,6 +9,13 @@
     "scope": "Actual ACTIVE and SEALED physical restart variants; no direct lifecycle or ACK write; all four native guards intentionally retained for explicit owned cluster teardown.",
     "static_review": "Full new module and controller/runner delta inspected; no concrete unresolved source finding. No compiler or runtime credit."
   },
+  "CR04_extension": {
+    "base_commit": "ef90021867332e159651f7f0ddbcc2dcb7f38d6b",
+    "compile": "NOT_RUN",
+    "native": "NOT_RUN",
+    "scope": "Actual omitted-key production drain then new-active plus retained-original key restoration across three physical Root PIDs. Full shared CR01 restart verifier and actual adapters; no direct ACK/phase/native release fixture shortcut.",
+    "static_validation": "Rustfmt and Python AST; focused read-only review pending. This does not supply runtime evidence."
+  },
   "authoring_source_head_historical": "2ee8ac6dc4d42fc8a63e0f2fba68130c7248d632",
   "dependencies": "Existing concert-service development dependencies only; no manifest or lockfile changes.",
   "destination_paths": [
