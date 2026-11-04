@@ -133,6 +133,21 @@ async fn actual_intro_and_canonical_claim_rows_bind_exact_sharing_context() {
     assert!(proof.allowed);
     assert_eq!(proof.context, f.sharing);
     assert!(proof.expires_at <= f.request.expires_at);
+    sqlx::query("update concert_age_claims set age_at_verification=40 where user_id=$1")
+        .bind(f.sharing.requester.uuid())
+        .execute(&f.p)
+        .await
+        .unwrap();
+    assert!(
+        f.check(f.sharing).await.is_err(),
+        "exclusive audience maximum"
+    );
+    sqlx::query("update concert_age_claims set age_at_verification=18 where user_id=$1")
+        .bind(f.sharing.requester.uuid())
+        .execute(&f.p)
+        .await
+        .unwrap();
+    f.check(f.sharing).await.unwrap();
     for index in 0..4 {
         let mut s = f.sharing;
         match index {
@@ -157,6 +172,18 @@ async fn actual_intro_and_canonical_claim_rows_bind_exact_sharing_context() {
 async fn newest_unsupported_claim_never_falls_back_to_older_verified_proof() {
     let f = Fixture::new().await;
     f.check(f.sharing).await.unwrap();
+    sqlx::query("update fixture_social_verifier set available=false where id=1")
+        .execute(&f.p)
+        .await
+        .unwrap();
+    assert!(matches!(
+        f.check(f.sharing).await,
+        Err(RelationshipError::Unavailable)
+    ));
+    sqlx::query("update fixture_social_verifier set available=true where id=1")
+        .execute(&f.p)
+        .await
+        .unwrap();
     Fixture::claim(
         &f.p,
         f.request.event.uuid(),
