@@ -64,8 +64,9 @@ Concert issuer and dedicated base64 key variables. It rejects Gateway trust and
 Gateway/Concert/Profile parity keys. Its exact new-file ownership was transferred
 by canonical authority; the parent module export and method policy remain theirs.
 
-The new RPC modules remain source-only, NOT_RUN. Amended 0008 has separate SQL
-qualification below; the historical binary qualification cannot certify new RPCs.
+The new RPC modules now compile; their actual external RPC qualification is
+NOT_RUN. Amended 0008 has SQL and current-binary qualification below. Neither
+storage qualification certifies a real owner/coordinator RPC flow.
 
 ## Amended schema SQL qualification
 
@@ -148,11 +149,44 @@ instance, command/effect digest and current Profile version on the same database
 connection. A different connection must not forge the receipt. The expanded
 native test covers that refusal; it is NOT_RUN pending a new allocated build.
 
-Remaining BE-PROFILE-SELF gates belong to this developer: compile the current
-Profile test and production binary, run deterministic/native tests and migration
-CLI against exact frozen artifacts, fix findings, then qualify the actual
+Remaining BE-PROFILE-SELF gates belong to this developer: qualify the actual
 Auth/Friend Check/Track and Concert decision/settlement RPC path with their real
 owners. Owner16e1 supplies qualified Auth/Friend stores and artifacts; owner209
 supplies the actual participant coordinator/decision endpoint. These are direct
 implementation interfaces, not king/SL review gates. The original goal stays
 active through that validation, documentation and non-force publication.
+
+## Current compiled component
+
+Source `5c921e28872ce3d24f7d930f63fdce9572b66ab3` compiled with Rust 1.88,
+locked/offline, one job, debug 0 and incremental disabled. The final Profile test
+target and production binary builds exited 0 with no warnings. Eight deterministic
+tests passed. Three current native PostgreSQL 16.14 tests passed, including the
+new durable read-reference rollback, a foreign connection refusing a receipt
+even when its visible Profile version matches, actual prepared commit/abort,
+legacy-write exclusion, restart persistence and cleanup. The current binary's
+empty-store refusal, migrate, verify, reapply and post-restart verify all passed
+against every exact source migration checksum.
+
+The first attempt reused stale generated outputs. Only the Profile/contracts-build
+package caches were refreshed (75 files, 72.1 MiB); other packages were retained.
+Subsequent compiler findings fixed Prost's generated `profile.self_.v1.rs`
+filename and signed-channel/interceptor composition. The wire package/service is
+still `profile.self.v1`. Production registration remained the exact owner205
+patch. Test-only isolated module embedding omits startup entry points by design.
+
+Evidence: `/private/tmp/mcr-profile-self-906e69ab-20261104/` contains failed and
+successful commands/Cargo JSON, 1490 compile-input hashes, source-bound frozen
+binaries, eight-test log, `native-report-2.json` and `target-release-3.json`.
+The allocated BACKEND target was released before native PG execution; no later
+target access occurred. Frozen test SHA-256:
+`86505e9073e14c08f65f95bf84f58158c692ebe03f62366996cea383a16992d7`;
+production Profile SHA-256:
+`e7483ca02811ee835a0c63cc83c2dca343a812f67dab937f5cc9951cc7004ec8`.
+
+The new external actual-owner read/Track/abort controller and ignored native RPC
+probe compile but remain NOT_RUN until exact Auth/Friend artifact prerequisites
+arrive. The actual Concert decision endpoint is supplied separately by owner209.
+ReadOperation/Reconcile may inspect only their exact existing persisted operation
+under a fresh signed query; original binding expiry is not renewed into mutation
+authority, and no fresh owner-view grant or caller-selected decision is invented.
