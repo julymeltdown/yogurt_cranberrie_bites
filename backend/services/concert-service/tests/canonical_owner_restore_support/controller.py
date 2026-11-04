@@ -33,7 +33,7 @@ def manifest(directory):
 class Child:
     def __init__(self,binary,env,log):
         self.log=os.fdopen(os.open(log,os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600),'wb')
-        try:self.p=subprocess.Popen([str(binary),'--ignored','--exact',TEST,'--test-threads=1','--nocapture'],env=env,stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,close_fds=True,start_new_session=True)
+        try:self.p=subprocess.Popen([str(binary),'--ignored','--exact',TEST,'--test-threads=1','--nocapture','--format','terse'],env=env,stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,close_fds=True,start_new_session=True)
         except BaseException:self.log.close();raise
         os.set_blocking(self.p.stdout.fileno(),False);self.selector=selectors.DefaultSelector();self.selector.register(self.p.stdout,selectors.EVENT_READ);self.buffer=b'';self.lines=set();self.eof=False;self.size=0
     def pump(self,duration):
