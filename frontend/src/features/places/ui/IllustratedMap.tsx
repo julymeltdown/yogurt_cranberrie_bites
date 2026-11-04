@@ -4,7 +4,9 @@ import { useNavigationType } from 'react-router-dom'
 import { ConcertIcon } from '../../../shared/ui/concert-window'
 import type { PlacesController, PlacesState } from '../model/controller'
 import { physicalStatus } from '../model/contract'
-import { layoutPlaques } from './plaque-layout'
+import { getReferenceOverviewMetadata } from '../../../world/reference-scene'
+import { mapViewport, overviewIdentity } from './reference-scene/viewport'
+import { referenceAnnotations, type AnnotationRect } from './reference-scene/annotations'
 
 function LandmarkIcon({ interaction }: { interaction: string }) {
   if (/gifts?/.test(interaction)) return <ConcertIcon name="gifts" />
@@ -17,25 +19,35 @@ const clamp = (value: number, low: number, high: number) => Math.max(low, Math.m
 // Exact controller lifetime, weakly held; only a user-selected public place ID.
 const selections = new WeakMap<PlacesController, { mapHash: string; id: string }>()
 
+const ownerKeys = new WeakMap<PlacesController, number>()
+let nextOwnerKey = 0
+type MapProps = { controller: PlacesController; state: PlacesState; fallback: ReactNode; legend: ReactNode }
+/** A new controller or snapshot cannot retain an earlier image decode or view state. */
+export function IllustratedMap(props: MapProps) {
+  if (!ownerKeys.has(props.controller)) ownerKeys.set(props.controller, ++nextOwnerKey)
+  return <IllustratedViewport key={`${ownerKeys.get(props.controller)}:${overviewIdentity(props.state.overview!)}`} {...props} />
+}
+
 /** Local DOM viewport over the incumbent owner's static pixels. No world camera writes. */
-export function IllustratedMap({ controller, state, fallback, legend }: {
-  controller: PlacesController; state: PlacesState; fallback: ReactNode; legend: ReactNode
-}) {
+function IllustratedViewport({ controller, state, fallback, legend }: MapProps) {
   const image = state.overview!, map = state.map!, items = state.list.data?.items ?? []
   const viewport = useRef<HTMLDivElement>(null), sheet = useRef<HTMLDialogElement>(null)
+  const zoomControls = useRef<HTMLDivElement>(null), caption = useRef<HTMLDivElement>(null)
+  const [obstacles, setObstacles] = useState<AnnotationRect[]>([])
   const returnFocus = useRef<HTMLElement | null>(null), drag = useRef<{ x: number; y: number; left: number; top: number } | null>(null)
-  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState(1)
+  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState<number | 'fit'>(1)
   const saved = selections.get(controller), navigation = useNavigationType(), restored = useRef(false)
   const [loaded, setLoaded] = useState(''), [failed, setFailed] = useState(''), [selected, setSelected] = useState<string | null>(saved?.mapHash === map.content_hash ? saved.id : null)
   const [panel, setPanel] = useState<'places' | 'legend' | null>(null), [search, setSearch] = useState('')
   const [reset, setReset] = useState(0)
   const [scroll, setScroll] = useState({ left: 0, top: 0 })
   const ready = loaded === image.imageUrl && failed !== image.imageUrl
-  const baseWidth = Math.max(size.width, size.height * image.width / image.height)
-  const minZoom = Math.min(1, size.width / baseWidth)
-  // A shorter viewport changes the fit bound; retain a valid local zoom after resize.
-  const effectiveZoom = clamp(zoom, minZoom, 3)
-  const scale = baseWidth * effectiveZoom / image.width, width = image.width * scale, height = image.height * scale
+  const { minZoom, effectiveZoom, width, height, offsetX, offsetY } = mapViewport(size, image, zoom === 'fit' ? -1 : zoom)
+  const candidate = getReferenceOverviewMetadata(image)
+  // This metadata changes label placement only; the existing controller/root still
+  // admits the image, catalog, geometry and exact release identity together.
+  const reference = candidate?.mapId === map.map_id && candidate.mapRevision === map.map_revision
+    && image.mapId === map.map_id && image.mapRevision === map.map_revision ? candidate : null
   const current = items.find(p => p.place_id === selected)
   const supported = !!current && current.closure_state === 'OPEN' && !state.unavailablePlaceIds.includes(current.place_id)
   const target = supported ? map.geometry.interactions.find(p => p.place_id === selected) : null
@@ -43,7 +55,15 @@ export function IllustratedMap({ controller, state, fallback, legend }: {
     const point = map.geometry.interactions.find(p => p.place_id === place.place_id)
     return point ? [{ id: place.place_id, x: (point.cell_x + .5) / map.geometry.width_cells * width, y: (point.cell_y + .5) / map.geometry.height_cells * height }] : []
   })
-  const plaques = layoutPlaques(anchors, { ...scroll, ...size }, height)
+  const annotationAnchors = anchors.map(point => {
+    const interaction = map.geometry.interactions.find(p => p.place_id === point.id)
+    const label = reference?.mapLabels.find(p => p.interactionId !== null && p.interactionId === interaction?.interaction_id)
+    return label ? { id: point.id, x: label.x / image.width * width, y: label.y / image.height * height } : point
+  })
+  const portrait = image.height > image.width
+  const view = { left: scroll.left - (portrait ? offsetX : 0), top: scroll.top - (portrait ? offsetY : 0),
+    width: size.width, height: size.height }
+  const plaques = referenceAnnotations(annotationAnchors, view, obstacles.map(r => ({ ...r, left: r.left + view.left, top: r.top + view.top })))
   function select(id: string) { selections.set(controller, { mapHash: map.content_hash, id }); setSelected(id) }
   useEffect(() => {
     if (ready && navigation === 'POP' && !restored.current && saved?.mapHash === map.content_hash) {
@@ -54,8 +74,18 @@ export function IllustratedMap({ controller, state, fallback, legend }: {
   useLayoutEffect(() => {
     const element = viewport.current
     if (!element) return
-    const update = () => { const r = element.getBoundingClientRect(); if (r.width > 0 && r.height > 0) setSize({ width: r.width, height: r.height }) }
+    const update = () => {
+      const r = element.getBoundingClientRect()
+      if (r.width <= 0 || r.height <= 0) return
+      setSize({ width: r.width, height: r.height })
+      setObstacles([zoomControls.current, caption.current].flatMap(control => {
+        const b = control?.getBoundingClientRect()
+        return b && b.width > 0 && b.height > 0 ? [{ left: b.left - r.left, top: b.top - r.top, width: b.width, height: b.height }] : []
+      }))
+    }
     update(); const observer = new ResizeObserver(update); observer.observe(element)
+    if (zoomControls.current) observer.observe(zoomControls.current)
+    if (caption.current) observer.observe(caption.current)
     return () => observer.disconnect()
   }, [])
   useLayoutEffect(() => {
@@ -78,8 +108,8 @@ export function IllustratedMap({ controller, state, fallback, legend }: {
     select(id); setPanel(null)
     requestAnimationFrame(() => { const element = document.getElementById(`map-place-${id}`); element?.focus(); element?.scrollIntoView({ block: 'center', inline: 'center' }) })
   }
-  return <div className="places-map-surface">
-    <div className="places-map-viewport" ref={viewport} tabIndex={0} role="region" aria-label="Illustrated virtual map; drag or use arrow keys to pan" onKeyDown={panKey}
+  return <div className="places-map-surface" data-map-presentation={reference ? 'reference-scene' : 'incumbent'}>
+    <div className={`places-map-viewport${image.height > image.width ? ' places-map-viewport--portrait' : ''}`} ref={viewport} tabIndex={0} role="region" aria-label="Illustrated virtual map; drag or use arrow keys to pan" onKeyDown={panKey}
       onScroll={event => setScroll({ left: event.currentTarget.scrollLeft, top: event.currentTarget.scrollTop })}
       onPointerDown={event => { if (event.pointerType === 'mouse' && event.button === 0 && event.target === event.currentTarget.querySelector('img')) { drag.current = { x: event.clientX, y: event.clientY, left: event.currentTarget.scrollLeft, top: event.currentTarget.scrollTop }; event.currentTarget.setPointerCapture(event.pointerId) } }}
       onPointerMove={event => { const start = drag.current; if (start) { event.currentTarget.scrollLeft = start.left - event.clientX + start.x; event.currentTarget.scrollTop = start.top - event.clientY + start.y } }}
@@ -111,15 +141,15 @@ export function IllustratedMap({ controller, state, fallback, legend }: {
         </span>}
       </div>
     </div>
-    <div className="places-map-zoom" aria-label="Map view zoom">
+    <div ref={zoomControls} className="places-map-zoom" aria-label="Map view zoom">
       <button type="button" aria-label="Zoom in map view" disabled={effectiveZoom >= 3 || !ready} onClick={() => setZoom(clamp(effectiveZoom + .25, minZoom, 3))}>+</button>
       <button type="button" aria-label="Zoom out map view" disabled={effectiveZoom <= minZoom || !ready} onClick={() => setZoom(clamp(effectiveZoom - .25, minZoom, 3))}>−</button>
     </div>
-    <div className="places-map-caption" role="status">{current ? `${current.label} · ${supported ? 'virtual target selected' : physicalStatus(current)}` : 'Virtual map · select a landmark'}<span>No physical arrival is implied.</span></div>
+    <div ref={caption} className="places-map-caption" role="status">{current ? `${current.label} · ${supported ? 'virtual target selected' : physicalStatus(current)}` : 'Virtual map · select a landmark'}<span>No physical arrival is implied.</span></div>
     <div className="places-map-tools">
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('places') }}><ConcertIcon name="world" />Places</button>
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('legend') }}>Legend</button>
-      <button type="button" disabled={!ready} onClick={() => { setZoom(minZoom); setReset(r => r + 1) }}>Fit map</button>
+      <button type="button" disabled={!ready} onClick={() => { setZoom('fit'); setReset(r => r + 1) }}>Fit map</button>
       <button type="button" disabled={!ready} onClick={() => { setZoom(1); selections.delete(controller); setSelected(null); setReset(r => r + 1) }}>Reset view</button>
     </div>
     <dialog ref={sheet} className="places-map-sheet" aria-labelledby="places-map-sheet-title"
