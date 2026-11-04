@@ -32,3 +32,15 @@ The additional Rust source does not amend these frozen bytes. Source-art origina
 old 1.0.0/1.1.0 schemas, frontend implementation and existing parsers/proto/registries
 are unchanged. The only existing central change is the granted one-line
 `pub mod avatar_motion_v2;` export.
+
+## Independent consumer evidence
+
+Motion83 committed consumer checkpoint `df0522fa7fa93fd9f66db3a8b0ec38b95db0d6ee`. The producer inspected its
+`docs/mcr/evidence/avatar-motion-adoption/v2-checkpoint.json` Git blob and exact
+producer-manifest hash. It records eight commands exiting 0, 60 unit cases,
+all 6720 layered combinations, all 31 shared config fixture outcomes, source/UV/palette
+bindings and canonical v2 native rendering at widths 360/390/430 in all themes.
+It reports no mapping mismatch and preserves production default denial. Native
+fixture sockets are zero: this is MOCK_READY consumer evidence, not real multiuser
+service or public release acceptance. These commands were run by the consumer;
+they do not replace this producer's pending Rust execution.
