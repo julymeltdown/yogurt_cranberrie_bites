@@ -13,7 +13,7 @@ const output = process.env.MCR_ARCHITECTURE_V2_OUTPUT
 assert(output?.startsWith('/'), 'Set MCR_ARCHITECTURE_V2_OUTPUT to a new absolute output directory')
 assert(process.env.MCR_CAPTURE_ALLOCATION, 'A fresh named BackendSL capture allocation is required')
 const disk = await statfs(root); assert(disk.bavail * disk.bsize >= 8 * 1024 ** 3, '8GiB disk floor')
-await mkdir(output, { recursive: true, mode: 0o700 })
+await mkdir(output, { recursive: false, mode: 0o700 }) // A retry must use a new directory and retain its predecessor.
 const labelSource = JSON.parse(await readFile(resolve(frontend, 'src/world/reference-scene/spatial-v5/map-labels-source.json'), 'utf8'))
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 const report = { status: 'IN_PROGRESS', qualification: 'ARCHITECTURE_V2_ACTUAL_ROOT_RENDERER_MAP_AND_NEW_EDITABLE_SOURCE_FIXTURES',
