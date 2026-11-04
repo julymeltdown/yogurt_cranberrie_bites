@@ -12,6 +12,8 @@ import { decode } from '../../../../world/network/transport/contract'
 import { bootstrapFor } from '../../../__tests__/fixtures/ports'
 import { createRootCharacterRegistry } from '../../runtime'
 import { readPinnedProducer } from '../../../../world/avatar/__tests__/motion-adoption/producer-inputs'
+import { readReviewedProducer } from '../../../../world/avatar/__tests__/motion-adoption/producer-inputs'
+import { REVIEWED_MOTION } from '../../../../entities/avatar/runtime/motion-adoption/reviewed-manifest'
 
 const producer = (path: string) => new TextDecoder().decode(readPinnedProducer(path))
 const manifestText = producer(MOTION_V2_CANDIDATE.path), candidate = JSON.parse(manifestText)
@@ -40,7 +42,7 @@ it('the actual application registry refuses the candidate and forged eligibility
   } finally { root.dispose(); auth.dispose() }
 })
 
-it('C03, C05 and public avatar reads deny v2 until canonical schema generation and a separately admitted release exist', async () => {
+it('C03, C05 and public avatar reads keep denying the immutable unreviewed candidate after reviewed schema generation', async () => {
   const state = { revision: 1, config }
   expect(() => decodeAvatarState(state)).toThrow()
   await expect(validateManifest(manifestText, pin)).rejects.toThrow()
@@ -52,4 +54,21 @@ it('C03, C05 and public avatar reads deny v2 until canonical schema generation a
   if (snapshot.type !== 'snapshot' || !('players' in snapshot)) throw Error('Missing immutable C05 snapshot')
   const frame = { ...snapshot, players: snapshot.players.map(player => ({ ...player, avatar: state })) }
   expect(() => decode(JSON.stringify(frame), 'server')).toThrow()
+})
+
+it('keeps the staged reviewed release out of the actual production registry after canonical DTO validation succeeds', async () => {
+  const reviewed = JSON.parse(new TextDecoder().decode(readReviewedProducer(REVIEWED_MOTION.manifest.path)))
+  const reviewedPin = { manifest_id: REVIEWED_MOTION.manifestId, manifest_version: 2, content_hash: REVIEWED_MOTION.contentHash }
+  expect(await validateManifest(JSON.stringify(reviewed), reviewedPin)).toEqual(reviewed)
+  expect(decodeAvatarState({ revision: 1, config: reviewed.presets[0].config }).config).toEqual(reviewed.presets[0].config)
+  const fetch = vi.fn(async () => { throw Error('Staged validation cannot allocate production resources') })
+  const auth = createSessionController({ eventId: bootstrap.event.event_id, cookiePolicy: isolatedCookiePolicy(), fetch })
+  auth.session.replace(auth.session.read().generation, { userId: bootstrap.participant.user_id, eventId: bootstrap.event.event_id, accessToken: 'TEST_ONLY_reviewed_denial' })
+  const scope = auth.privacy.capture(), root = createRootCharacterRegistry(auth, 'http://localhost')
+  try {
+    const shell = bootstrapFor({ generation: scope.generation, userId: bootstrap.participant.user_id, eventId: bootstrap.event.event_id })
+    expect(root.get(scope, { ...shell, document: { avatar_manifest: reviewed } })).toBeNull()
+    expect(root.read(scope, reviewedPin)).toBeNull()
+    expect(fetch).not.toHaveBeenCalled()
+  } finally { root.dispose(); auth.dispose() }
 })

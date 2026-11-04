@@ -12,11 +12,12 @@ await mkdir(evidence, { recursive: true })
 const node = process.execPath, config = 'src/world/avatar/__tests__/motion-adoption/vitest.config.mjs'
 const prefixes = ['src/entities/avatar/runtime/motion-adoption', 'src/world/avatar/motion-adoption', 'src/features/avatar/motion-adoption',
   'src/world/avatar/__tests__/motion-adoption', 'src/features/avatar/__tests__/motion-adoption', 'src/app/character-entry/__tests__/motion-adoption']
+const publicPaths = ['src/entities/avatar/whole-admission/index.ts', 'src/entities/avatar/whole-admission/__tests__/admission.test.ts']
 const checks = [
   ['unit', node, [resolve(require.resolve('vitest/package.json'), '../vitest.mjs'), 'run', '--configLoader', 'runner', '--root', frontend, '--config', resolve(frontend, config)]],
   ['types', node, [resolve(frontend, 'src/world/avatar/__tests__/motion-adoption/typecheck.mjs')]],
   ['application-types', node, [resolve(frontend, 'src/world/avatar/__tests__/motion-adoption/typecheck.mjs'), '--application']],
-  ['lint', node, [resolve(dependencies, 'node_modules/oxlint/bin/oxlint'), ...prefixes.map(p => resolve(frontend, p))]],
+  ['lint', node, [resolve(dependencies, 'node_modules/oxlint/bin/oxlint'), ...[...prefixes, ...publicPaths].map(p => resolve(frontend, p))]],
   ['build', node, [resolve(frontend, 'src/world/avatar/__tests__/motion-adoption/build.mjs')]],
   ['plan', 'python3', [resolve(checkout, 'scripts/mcr/check-plan.py')]],
   ['ui-origin', node, [resolve(checkout, 'scripts/mcr/check-ui-origin.mjs')]],
@@ -37,6 +38,7 @@ try {
     const relative = `frontend/${prefix}/${name}`
     report.sourcePins[relative] = createHash('sha256').update(await readFile(resolve(checkout, relative))).digest('hex')
   }
+  for (const path of publicPaths) report.sourcePins[`frontend/${path}`] = createHash('sha256').update(await readFile(resolve(frontend, path))).digest('hex')
   report.result = 'PASS'
 } catch (error) { report.failure = String(error); process.exitCode = 1 }
 finally { await writeFile(resolve(evidence, 'checks.json'), JSON.stringify(report, null, 2) + '\n'); await rm(temporary, { recursive: true, force: true }) }

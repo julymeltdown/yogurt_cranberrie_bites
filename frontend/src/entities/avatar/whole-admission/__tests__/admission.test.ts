@@ -14,7 +14,8 @@ import {
   AvatarError, decodeConfig, validateConfig, validateManifest,
   type AvatarConfig, type LayeredAvatarConfig, type WholeCharacterConfig,
 } from '..'
-import type { AvatarConfig as WireAvatarConfig } from '../../../../world/network/transport/wire-types'
+import type { AvatarState as WireAvatarState } from '../../../../world/network/transport/wire-types'
+type WireAvatarConfig = WireAvatarState['config']
 
 afterEach(() => vi.restoreAllMocks())
 const configs = wholeManifest.presets.map(preset => preset.config)
@@ -35,6 +36,7 @@ it('admits both actual manifest versions without fetching artwork or external sc
     const manifest = await validateManifest(canonicalJson(source), source)
     expect(canonicalJson(manifest)).toBe(canonicalJson(source))
     expect(Object.isFrozen(manifest.presets)).toBe(true)
+    if (manifest.contract_version === '2.0.0') throw Error('Unexpected reviewed manifest in legacy fixture')
     expect(Object.isFrozen(manifest.atlas.texture)).toBe(true)
   }
   expect(fetcher).not.toHaveBeenCalled()

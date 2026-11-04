@@ -14,6 +14,8 @@ export default {
   resolve: { alias: Object.entries(aliases).sort(([a], [b]) => b.length - a.length).map(([name, replacement]) => ({ find: name, replacement })) },
   cacheDir: process.env.MCR_MOTION_CACHE ?? '/private/tmp/mcr-motion-adoption-vitest-cache',
   test: { include: ['src/world/avatar/__tests__/motion-adoption/**/*.test.ts', 'src/features/avatar/__tests__/motion-adoption/**/*.test.tsx',
-    'src/app/character-entry/__tests__/motion-adoption/**/*.test.ts'],
+    'src/app/character-entry/__tests__/motion-adoption/**/*.test.ts',
+    'src/entities/avatar/whole-admission/__tests__/admission.test.ts',
+    'src/world/network/__tests__/reviewed-motion-v2/boundary.test.ts'],
     environment: 'node', maxWorkers: 1, fileParallelism: false },
 }

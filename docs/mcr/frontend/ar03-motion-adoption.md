@@ -297,3 +297,52 @@ The prior QA06 source `228e1cd4` is now verified published as
 `6518d793921bf86854837a5d81cf174f01b5d969`, with all 23 payload blobs matching
 source and all 28 source pins intact. That receipt does not publish this newer
 reviewed-successor helper checkpoint.
+
+
+## Canonical reviewed public parser
+
+The reviewed schemas, strict helpers and generated boundary are now actually
+published through `a67fc1342b351750ce766a783052c470dc9a9907`: producer source
+`0dd9f443` integrated as `d839bc20`, helper source `24c573fb` as `fe6a7a1d`,
+and boundary source `7dc84e84` as `a67fc134`. Owner verification against fresh
+fetched master and `ls-remote`, both `14f04a12edad80149740055a11740a1a55e40507`,
+confirmed all 12 helper payload blobs, all 36 consumed producer input pins and
+all four boundary payload blobs exactly. The integrator preserved concurrent
+Intro GET/policy changes in the separate generated domain mirror; that mirror
+is outside these 36 consumer inputs. Publication still does not establish a
+production-eligible runtime release.
+
+Parser continuation uses isolated branch `codex/mcr-fe-AR03-reviewed-admission`
+in the same assigned worktree. The previous source branch remains preserved.
+The validation base consumes the actual immutable producer/helper/boundary
+commits locally; none of those dependency files is authored in this patch.
+The public `AvatarConfig` alias now derives exactly from generated
+`AvatarState['config']`. The generator's separate `AvatarConfig` definition
+correctly remains legacy-only. No parallel public union or cast enlarges it.
+
+`whole-admission/index.ts` now delegates reviewed config decoding to the strict
+closed decoder and reviewed manifests to the full canonical-hash verifier.
+Config validation preserves family/revision and exact preset membership or
+slotted item membership. Existing decodeState/decodeConfig functions inherit
+these branches without changing their revision, strict-text or error handling.
+Old layered/whole-character paths, old runtime schemas and the 1.1-only contract
+remain unchanged. World allocation `e847e431` permits only the exact canonical
+wire import alias and explicit reviewed rejection in the legacy-fixture loop
+of the existing admission test; every equality/frozen/membership/malformed and
+legacy assertion is preserved.
+
+The checkpoint passes 243 cases across ten suites, including the unchanged
+legacy admission behavior, canonical C05 boundary, all 31 reviewed public
+fixtures and actual Root rejection after successful reviewed DTO validation.
+There are 23 scoped and 781 application TS files, both with zero diagnostics;
+all seven qualification commands pass, including scoped/public-file lint and
+the fixture build. The preceding failure was a test-local narrowing loss
+inside a callback, corrected with a stable local const rather than a cast.
+The qualifier now hashes both actual public parser/test files in addition to
+its assigned helper prefixes.
+
+The actual production registry still rejects this staged reviewed document and
+allocates no resources. The independently owned Auth bootstrap branch and its
+combined checks follow as a separate committed handoff. No new native capture,
+real service mutation, two-account World, physical-device or positive Root
+qualification is implied. The original AR03 goal remains unfinished.
