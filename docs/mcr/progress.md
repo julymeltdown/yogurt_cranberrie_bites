@@ -1,8 +1,12 @@
 # Execution record
 
-Updated **2026-11-04T22:08:04+09:00** from the frontend 12:57 UTC and backend 13:01:24 UTC hourly reports, live lead outcomes through 13:04 UTC, and publication metadata through 6628415e. Kings record owner dispositions and major staffing/publication outcomes without technical re-review. All **112 required tasks and 61 required IA entries** remain in scope.
+Updated **2026-11-04T22:35:06+09:00** with the 13:33 UTC staffing correction and publication metadata through 5f72fcf0. Original-task accounting retains the frontend 12:57 UTC and backend 13:01:24 UTC hourly dispositions. Kings record owner dispositions and major staffing/publication outcomes without technical re-review. All **112 required tasks and 61 required IA entries** remain in scope.
 
 ## Current task accounting
+
+The newer [staffing correction](#staffing-correction-2026-11-04-1333-utc)
+records actual receiving assignments and the latest Feed direction. The hourly
+original-task dispositions below remain unchanged; new staffing is not completion.
 
 **The old 11/112 number counted historical formal acceptances; it did not count all implemented work. The central ledger failed to incorporate later task-local completion dispositions.**
 
@@ -77,6 +81,51 @@ This reconciliation preserves the owners' actual dispositions: FE08 is explicitl
 | Release | Existing lane-level source/native/browser receipts are preserved. | **IN01 completed; IN02–IN05 remain open.** Real devices, accessibility, capacity/recovery, qualified real-stack startup, remaining physical-place/operator inputs and full 61-entry IA accounting remain open. |
 
 ## Portfolio and staffing update
+
+### Staffing correction: 2026-11-04 13:33 UTC
+
+The human identified unused developer and artist capacity. Frontend KING's 13:25
+receiving-owner matrix, direct chat snapshots and Root153's subsequent source
+report establish seven concrete assignments in existing isolated checkouts:
+
+| Existing owner | Accepted work | Current boundary |
+| --- | --- | --- |
+| Art534-4fcf | Reference window controls and Gifts media identity/sizing work | New active goal; item-specific Gifts art awaits an authorized catalog/media mapping. Window-control art proceeds independently. |
+| Art534-4fd0 | Parade footer print for Meet, Gifts and Profile | New active goal; source/export revision underway with the shared-frame consumer. |
+| Map artist231 | Existing roof and open-space recipe corrections | Existing aligned scope resumed; `50adff5f` is authored, not built or visually accepted. |
+| Frontend213-61d6 | Shared reference chrome and footer in the actual scroll flow | New active goal; exact shared-frame paths transferred after the former writer stopped. |
+| Avatar frontend83-2c2a | Catalog-derived BODY/SKIN palette and pure selection adapter | Existing aligned unfinished goal preserved as BLOCKED; nine new files frozen at `bfaf7318`, source checks NOT_RUN. Existing toolbar behavior is not duplicated. |
+| Community frontend53d-36b8 | FE21/22 clock/place authority projection | Prior FE34 goal is complete; the new community goal is active. Existing Profile actions are not duplicated. |
+| Social frontend209 | Feed readiness/media leaf, then its IN03 stack helper | Same owner works sequentially. Actual aligned IN03 goal remains BLOCKED while source work is active; these are not two workers. |
+
+These are accepted assignments and reported source activity, not seven new original
+task completions. Nine screen workers retain CSS-only ownership. Frontend KING
+owns frontend/art allocation; the resource lead owns backend allocation and shared
+validation capacity. Source editing does not wait for a browser or Rust slot.
+
+Backend Root reports accepted deletion-ordering validation and Social stack-helper
+work. Owner207 requested a compatible test-package transfer. The remaining BE41/
+BE42 production transfers are not yet confirmed; validation helpers do not imply
+those capabilities were delegated or completed. The resource lead is resolving
+the exact ownership directly with the implementation owners.
+
+Root153 reports combined Customize/FE41 source checks passed at `48218edb`, with
+the initial failure retained. Required default-App browser qualification remains
+NOT_RUN. The backend publisher reports the first real 200-user provisioning
+attempt failed and a fresh QA08 attempt is being prepared; no capacity result is
+accepted. Publication metadata reaches `5f72fcf0` on master.
+
+At 13:31 UTC, the human directly instructed the frontend chat to adopt a more
+retro imageboard-style design while preserving modern UI usability. That chat is
+starting with Feed and has asked whether the direction covers all ten screens.
+The broader scope remains unanswered. Earlier Feed reference-parity records are
+historical evidence, not acceptance of this new design direction; other screen
+assignments continue under their existing instructions pending clarification.
+
+Delivery requires no king or SL review, acknowledgment or ledger update.
+Developers own validation and fixes; designated publishers commit and push.
+
+### Hourly portfolio retained at 13:04 UTC
 
 Both hourly portfolios report **no new unique original-task closure**. The total remains **39/112**: 13 acceptance dispositions and 26 additional original-task criteria outcomes. QA01 and FE40 are each counted once. C07 and QA10 remain unreconciled; IN01 remains accepted and IN02–IN05 remain open.
 

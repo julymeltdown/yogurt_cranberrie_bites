@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-04T22:08:04+09:00",
-  "published_snapshot": "6628415e96d063578e81e20e818d9f408936650c",
+  "updated_at": "2026-11-04T22:35:06+09:00",
+  "published_snapshot": "5f72fcf00fa7ba12599d6417d2f4744c5c49fbcb",
   "method": "Hourly management reconciliation of responsible-owner/SL original-task dispositions and publication metadata. No king inspection of implementation, queries, tests, screenshots or technical evidence; no reruns or approval gate.",
   "required_tasks": 112,
   "required_ia_entries": 61,
@@ -2044,5 +2044,67 @@
       "criteria_outcomes": 39,
       "note": "Frontend12:57 digest and Backend13:01:24 digest plus live13:04 allocation outcomes. Record actual QA08/QA09/FE41/BE36 staffing, scoped delivery, Feed display clarification and resource recovery/remaining waits. All original identities/dispositions/counts and112/61 scope unchanged."
     }
-  ]
+  ],
+  "staffing_update": {
+    "at": "2026-11-04T13:25:00Z",
+    "source": "Frontend KING385 actual-acceptance matrix",
+    "artists": [
+      {
+        "threadId": "01a1a534-4fcf-7291-abe3-a9af7b895a45",
+        "scope": "Reference window controls; Gifts media identity/sizing audit",
+        "goal": "ACTIVE",
+        "limit": "Item-specific Gifts artwork waiting authorized catalog/media mapping"
+      },
+      {
+        "threadId": "01a1a534-4fd0-7ba1-8fe8-4cc95674080f",
+        "scope": "Reference Parade footer print",
+        "goal": "ACTIVE"
+      },
+      {
+        "threadId": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+        "scope": "Existing Map roof/open-space recipe gaps",
+        "goal": "aligned resumed per lead"
+      }
+    ],
+    "developers": [
+      {
+        "threadId": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+        "scope": "Shared reference chrome and in-flow footer",
+        "goal": "ACTIVE"
+      },
+      {
+        "threadId": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+        "scope": "Catalog-derived BODY/SKIN palette and pure selection adapter; existing toolbar is not duplicated",
+        "goal": "BLOCKED aligned goal preserved; source work active",
+        "source": "bfaf7318; nine new files; source checks NOT_RUN"
+      },
+      {
+        "threadId": "01a1a53d-36b8-7522-ae11-646f5e6f0b30",
+        "scope": "FE21/22 community clock/place projection",
+        "goal": "ACTIVE"
+      },
+      {
+        "threadId": "01a1a209-80da-7e53-a295-b64cfe09c1d7",
+        "scope": "Feed readiness/media leaf",
+        "goal": "BLOCKED aligned IN03 preserved; source work active"
+      }
+    ],
+    "constraints": "Disjoint ownership, isolated checkouts, direct owner validation/publisher delivery, no main acknowledgment; no original task closure inferred",
+    "recorded_source_cutoff": "2026-11-04T13:33:00Z",
+    "backend": {
+      "actualAssignments": "Auth deletion-ordering validation and Social stack helper accepted per Root; owner207 requested a compatible test-package transfer",
+      "productionTransfers": "BE41/BE42 not yet confirmed; resource lead resolving exact ownership"
+    },
+    "direction": {
+      "sourceChat": "01a1a385-9f32-73c2-8715-ff54bd1e0497",
+      "humanAt": "2026-11-04T13:31:00Z",
+      "instruction": "More retro imageboard-style design while preserving modern UI usability",
+      "currentScope": "Frontend chat starts Feed; whether all ten screens are included remains unanswered"
+    },
+    "boundedOutcomes": {
+      "frontendSource": "Root reports combined Customize/FE41 source qualification 48218edb passed; actual default-App browser qualification NOT_RUN",
+      "backendCapacity": "Root reports first real200 provisioning attempt failed; fresh QA08 attempt preparation is not acceptance",
+      "publication": "5f72fcf00fa7ba12599d6417d2f4744c5c49fbcb"
+    }
+  }
 }

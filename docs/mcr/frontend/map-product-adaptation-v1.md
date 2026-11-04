@@ -1,8 +1,8 @@
 # Map product adaptation: evidence and remaining work
 
-Updated 2026-11-04 12:28 UTC. This is the bounded Map4 adaptation record, not
+Updated 2026-11-04 13:36 UTC. This is the bounded Map4 adaptation record, not
 full Map reference acceptance, live admission or a new original-task closure.
-The complete 19-context bounded client comparison passed. The exact caption source checks now pass; publication is proceeding; full reference composition convergence is active.
+The complete 19-context bounded client comparison and exact caption source checks passed. The bounded v1 delivery is published with independent remote proof; full reference composition convergence remains active.
 
 ## Actual implementation boundary
 
@@ -41,9 +41,9 @@ framing and display sizing remain frozen. World consumes its original resources.
 | At most one game/socket and correct resource lifetime | All route actions preserve one canvas/constructed socket/active socket and camera; all 19 contexts dispose to zero canvases/active sockets with balanced URLs. Native03 fully released at 12:05:05.929783 UTC. | No resources remain held. Full accounting and failed attempts stay immutable. |
 | Source regressions, types and lint | FE19 source round: 87 tests/12 files, types, lint, three MJS syntax checks and preflight exits 2/0/2 passed. Native03 driver syntax and actual client exited 0. | Fresh source03 passed 115 tests/17 files, actual caption-hunk TypeScript and lint at `43b80c91`; failures01/02 are retained. Inactive v2 code is excluded from v1 publication. |
 | Real reference comparison | Owner viewed all 19 saved images and target; Artist reopened all ten after images and before PARADE390. Both declare bounded fixture PASS and retain visual gaps. | Compact overhead architecture, density, narrow paths, gardens, stage silhouettes and framing remain ACTIVE v2 work. |
-| Related massing scope | Old DEVv5 massing has a separate lineage and is not Map4 adoption. New Map-only full-composition source is authored under the existing Artist/developer leases. | First ART export remains HOLD, with denser garden/era/roof correction queued. No first-candidate pins are bound. |
+| Related massing scope | Old DEVv5 massing has a separate lineage and is not Map4 adoption. New Map-only full-composition source is authored under the existing Artist/developer leases. | Corrected ART `8fcd1287` is separately pinned for pending v2 source04. A further roof/planting recipe `50adff5f` is AUTHORED_NOT_BUILT and has not replaced those generated assets. |
 | Corrected screenshots and provenance | Native03 retry01 has 19 PNGs, actual Node capture times, raw report, 26-entry artifact index and full-release receipt, sealed at `48539248`. | Earlier disabled, cap-exceeded, short-caption and measurement failures remain failed. No screenshot is relabelled as live or v2 evidence. |
-| Serialized delivery and independent remote proof | Shared wire types are published; bounded Map4 source, ground and immutable evidence remain on Root's candidate branch. | Normal non-force Map publication with fresh remote postimage proofs and return of old v1 leases; renewed v2 leases remain active. |
+| Serialized delivery and independent remote proof | Bounded source `0ecc8e24` was normally published as `40bbf457`; the owner independently matched all 214 scoped postimages at fresh remote HEAD. | Old v1 writer leases are returned. Renewed v2 art/developer leases remain active; CSS retains its separate owned file and Root retains canonical native capture. |
 
 ## Preserved failures and correction
 
@@ -167,3 +167,14 @@ body in memory and retain only the approved public-resource/capability projectio
 explicitly labelled `NOT_BYTE_EXACT_FULL_C03`, with a projection-only hash. None
 of the labelled fixture images is evidence for a live service, physical device,
 real cohort, current production admission or IN02–IN05 closure.
+
+
+## Published v1 and current v2 continuation
+
+Root normally published the exact 214-path bounded v1 cohort as `40bbf457158ef506b8b49b0b4593152e6c07bd28`, from source `0ecc8e246237201010b7ac9882e511e38deafcbd`. The independent developer proof `b49f99b70c038f6c38f34a378b305ca335d427bf` was published in `5dc57096`; Artist ground postimages were checked separately. No inactive v2 source or unvalidated Root reviewed-character activation was included. All earlier failed probes and immutable screenshots remain retained.
+
+The corrected Map-only composition candidate is ART `8fcd1287496aedbde12ef0d2e426855f8f8ec4d6`: three 768x1296 era PNGs and editable sources, with 128 noninteractive placements and unchanged six semantic anchors/four canonical mappings. Root and Artist directly inspected its real images; roof texture, path intricacy, planted density and framing still need convergence. Developer source04 at `e4967ef0ed83b313788b6ed7e47f3f47ddfdc460` carries those exact generated assets and raw layout/resource pins; its planned 120-test round remains NOT_RUN pending an explicitly accepted allocation. The active composition remains v1 until qualified registration and default-application native comparison.
+
+Artist source-only correction02 `50adff5f1baeefbc246291cbfd7543fa8e3a4f7d` changes the roof/planting recipe, README and art record. Its eight generated files remain byte-exact to `8fcd1287`; it is AUTHORED_NOT_BUILT, not another admitted scene. Its own finite build/verify and direct image assessment must precede a separate handoff. Root alone owns the canonical next three-era/mobile/native comparison; the developer and Artist assess actual immutable returned images and fix their owned sources.
+
+The sanitized QA05 public-resource projection is published at `docs/mcr/evidence/map-production-binding/qa05-rw5-public-resource-projection.json`, 22,068 bytes, SHA256 `c1606256a0a061aff988ff9dd14e3d11534bdbc5e8875b123dbf196360520e3f`. Its fidelity is NOT_BYTE_EXACT_FULL_C03 and resource manifests are incomplete. It has eight top-level public keys and does not itself embed producer provenance/source pins; those bind through the separately retained sanitized producer report. The real authenticated full C03 was validated in RAM only. This corroborates public inputs, not frontend native/live/device/production admission or reviewed-motion activation.
