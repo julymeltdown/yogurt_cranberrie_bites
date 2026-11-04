@@ -1,0 +1,16 @@
+--- a/backend/services/notification-service/Cargo.toml
++++ b/backend/services/notification-service/Cargo.toml
+@@ -15,0 +16,2 @@
++concert-domain = { path = "../../crates/concert-domain" }
++concert-application = { path = "../../crates/concert-application" }
+--- a/backend/services/concert-service/Cargo.toml
++++ b/backend/services/concert-service/Cargo.toml
+@@ -36,0 +37 @@
++notification-service = { path = "../notification-service" }
+--- a/backend/Cargo.lock
++++ b/backend/Cargo.lock
+@@ -752,0 +753 @@
++ "notification-service",
+@@ -2335,0 +2337,2 @@
++ "concert-application",
++ "concert-domain",

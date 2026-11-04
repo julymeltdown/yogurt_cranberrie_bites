@@ -187,6 +187,13 @@ impl PgScopeLedger {
         }
         reference.intent_id()?;
         match reference {
+            ChildRecoveryReference::NotificationInbox { query, .. } => {
+                // Remote Notification owns its actual native identity. The
+                // common binding checks and intent_id validate query/capability.
+                if query.subject != binding.actor_id {
+                    return Err(invalid());
+                }
+            }
             ChildRecoveryReference::ProfilePublic {
                 completion_secret, ..
             } => {

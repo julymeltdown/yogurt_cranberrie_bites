@@ -29,3 +29,22 @@ validation passes all 15 positive/16 negative fixtures, 38 resource occurrences,
 source/raster checks and nine tamper refusals. The candidate remains denied for
 production. The planning checker and whitespace check pass; neither is a
 substitute for coherent Rust or actual public runtime qualification.
+
+## Notification producer and remote child
+
+The exact BE33 scoped patch from common base `819d30c3` to committed handoff
+`b2554fd4` was integrated as one coherent packet, including the initial inbox,
+actual producer SDK, child transport, native witness, migrations and both returned
+Root match arms. `root-notification-intake.json` lists every path and exact worker
+postimage versus deliberate Root composition. Four conflicts were adjacent module
+exports/dependencies; both Root and Notification entries were retained. Existing
+Party/Social/Age/Participant/C06 and CR07 source was preserved. Only the explicit
+Notification producer mapping was added in the lifecycle adapter; CR08's separate
+cancellation methods remain assigned to Canonical.
+
+The original worker build qualifies five artifacts and 215 tests at `9bb4a98b`,
+plus production Notification migration CLI and actual SQL/WAL probes. Root has
+not rerun or relabeled those checks. Current Root source passes the three native
+harness refusal tests, planning and whitespace validation. Coherent Rust compile,
+actual canonical owner RPC, real target fencing, and the four public inbox flows
+remain NOT_RUN. Missing providers stay unavailable; no product route was enabled.

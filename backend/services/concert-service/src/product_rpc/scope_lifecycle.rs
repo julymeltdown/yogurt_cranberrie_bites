@@ -59,6 +59,7 @@ pub(super) fn transaction(
             proto::Producer::Concert => "CONCERT",
             proto::Producer::Post => "POST",
             proto::Producer::Profile => "PROFILE",
+            proto::Producer::Notification => "NOTIFICATION",
             _ => return Err(invalid()),
         }
         .into(),

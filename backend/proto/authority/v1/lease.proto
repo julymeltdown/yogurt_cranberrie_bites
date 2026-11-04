@@ -53,7 +53,7 @@ message EnrollRequest { GuardView view = 1; GuardBinding binding = 2; repeated s
 // Actual producer connection identity, captured before any protected effect.
 // The producer must register durably before continuing. It is not supplied by
 // the external client, and a caller-selected status/receipt is never settlement.
-enum Producer { PRODUCER_UNSPECIFIED = 0; CONCERT = 1; POST = 2; PROFILE = 3; }
+enum Producer { PRODUCER_UNSPECIFIED = 0; CONCERT = 1; POST = 2; PROFILE = 3; NOTIFICATION = 4; }
 message TransactionIdentity {
   Producer producer = 1;
   string full_xid = 2;

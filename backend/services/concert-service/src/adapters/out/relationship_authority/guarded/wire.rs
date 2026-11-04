@@ -95,6 +95,7 @@ impl ProducerTransaction {
                 ProducerKind::Concert => 1,
                 ProducerKind::Post => 2,
                 ProducerKind::Profile => 3,
+                ProducerKind::Notification => 4,
             },
             full_xid: self.full_xid.clone(),
             backend_pid: self.backend_pid,
@@ -139,6 +140,7 @@ impl ProducerKind {
             Self::Concert => "CONCERT",
             Self::Post => "POST",
             Self::Profile => "PROFILE",
+            Self::Notification => "NOTIFICATION",
         }
     }
 }

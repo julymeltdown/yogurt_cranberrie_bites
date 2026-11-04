@@ -480,6 +480,13 @@ impl OwnerGuardScope {
         self.binding.check()?;
         reference.validate_for(&self.binding)?;
         reference.check_content_time()?;
+        if let super::ChildRecoveryReference::NotificationInbox { query, .. } = reference {
+            if query.subject != self.binding.actor() {
+                return Err(Status::permission_denied(
+                    "Notification inbox child is not actor-owned",
+                ));
+            }
+        }
         if let super::ChildRecoveryReference::LocalPublic { native, .. }
         | super::ChildRecoveryReference::GiftPrivate { native, .. }
         | super::ChildRecoveryReference::SocialRead { native, .. } = reference

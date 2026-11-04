@@ -30,3 +30,5 @@ pub mod meeting_photo;
 pub mod social_live;
 
 pub mod moderation_live;
+
+pub mod notification_live;

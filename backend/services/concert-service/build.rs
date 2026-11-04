@@ -69,5 +69,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             &[contracts_build::proto_root()],
         )?;
     println!("cargo:rerun-if-changed={}", participant_proto.display());
+    let notification_proto = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../../proto/notification/v1/concert_inbox.proto");
+    let notification_output =
+        std::path::PathBuf::from(std::env::var("OUT_DIR")?).join("notification_authority");
+    std::fs::create_dir_all(&notification_output)?;
+    tonic_prost_build::configure()
+        .build_server(true)
+        .build_client(true)
+        .out_dir(&notification_output)
+        .extern_path(
+            ".authority.lease.v1",
+            "crate::adapters::out::relationship_authority::guarded::proto",
+        )
+        .compile_protos(
+            &[notification_proto.clone()],
+            &[std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../proto")],
+        )?;
+    println!("cargo:rerun-if-changed={}", notification_proto.display());
     Ok(())
 }

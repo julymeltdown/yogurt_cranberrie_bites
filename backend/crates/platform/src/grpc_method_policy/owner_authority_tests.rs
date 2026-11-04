@@ -72,21 +72,42 @@ fn owner_acquire_and_system_settlement_have_separate_exact_policies() {
                 ("Acquire", &[Workload::Concert]),
                 (
                     "Check",
-                    &[Workload::Concert, Workload::Post, Workload::Profile],
+                    &[
+                        Workload::Concert,
+                        Workload::Post,
+                        Workload::Profile,
+                        Workload::Notification,
+                    ],
                 ),
                 (
                     "Enroll",
-                    &[Workload::Concert, Workload::Post, Workload::Profile],
+                    &[
+                        Workload::Concert,
+                        Workload::Post,
+                        Workload::Profile,
+                        Workload::Notification,
+                    ],
                 ),
                 (
                     "Track",
-                    &[Workload::Concert, Workload::Post, Workload::Profile],
+                    &[
+                        Workload::Concert,
+                        Workload::Post,
+                        Workload::Profile,
+                        Workload::Notification,
+                    ],
                 ),
                 ("Complete", &[Workload::Concert]),
             ],
             actor_fields: &[("Acquire", &[&[1, 1]])],
         };
         exact.validate(service).unwrap();
+        for method in ["Check", "Enroll", "Track"] {
+            assert!(exact.allows(&format!("/{service}/{method}"), Workload::Notification));
+        }
+        for method in ["Acquire", "Complete"] {
+            assert!(!exact.allows(&format!("/{service}/{method}"), Workload::Notification));
+        }
         assert!(!exact.allows(&format!("/{service}/Complete"), Workload::Post));
         assert!(!exact.allows(&format!("/{service}/Acquire"), Workload::Profile));
         assert!(MethodPolicy {
@@ -106,6 +127,19 @@ fn owner_acquire_and_system_settlement_have_separate_exact_policies() {
         actor_fields: &[],
     };
     exact.validate(exact.service).unwrap();
+    let notification = MethodPolicy {
+        workload: Some(Workload::Notification),
+        ..exact
+    };
+    notification.validate(notification.service).unwrap();
+    for method in ["ResolveTransaction", "ResolveScope"] {
+        assert!(!notification.allows(
+            &format!("/{}/{method}", exact.service),
+            Workload::Notification
+        ));
+        assert!(notification.allows(&format!("/{}/{method}", exact.service), Workload::Auth));
+        assert!(notification.allows(&format!("/{}/{method}", exact.service), Workload::Friend));
+    }
     for caller in [
         Workload::Gateway,
         Workload::Post,
@@ -192,6 +226,50 @@ fn self_profile_never_accepts_gateway_or_an_unbound_subject() {
             ("PrepareUpdate", &[&[1, 1, 1]]),
             ("ReadOperation", &[&[1, 1, 1]]),
             ("Reconcile", &[&[1, 1, 1]])
+        ],
+        ..exact
+    }
+    .validate(exact.service)
+    .is_err());
+}
+
+#[test]
+fn notification_inbox_is_dedicated_concert_capability_transport() {
+    let exact = MethodPolicy {
+        service: "notification.concert.v1.ConcertInboxService",
+        workload: Some(Workload::Notification),
+        methods: &[
+            ("Execute", &[Workload::Concert]),
+            ("Check", &[Workload::Concert]),
+            ("Complete", &[Workload::Concert]),
+        ],
+        actor_fields: &[],
+    };
+    exact.validate(exact.service).unwrap();
+    for method in ["Execute", "Check", "Complete"] {
+        let path = format!("/{}/{method}", exact.service);
+        assert!(exact.allows(&path, Workload::Concert));
+        for caller in [
+            Workload::Gateway,
+            Workload::Auth,
+            Workload::Friend,
+            Workload::Notification,
+        ] {
+            assert!(!exact.allows(&path, caller));
+        }
+        assert!(!exact.allows(&(path + "Extra"), Workload::Concert));
+    }
+    assert!(MethodPolicy {
+        workload: Some(Workload::Concert),
+        ..exact
+    }
+    .validate(exact.service)
+    .is_err());
+    assert!(MethodPolicy {
+        methods: &[
+            ("Execute", &[Workload::Concert, Workload::Gateway]),
+            ("Check", &[Workload::Concert]),
+            ("Complete", &[Workload::Concert])
         ],
         ..exact
     }

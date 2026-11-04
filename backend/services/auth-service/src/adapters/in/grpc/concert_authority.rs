@@ -30,15 +30,30 @@ pub const POLICY: MethodPolicy = MethodPolicy {
         ("Acquire", &[Workload::Concert]),
         (
             "Check",
-            &[Workload::Concert, Workload::Post, Workload::Profile],
+            &[
+                Workload::Concert,
+                Workload::Post,
+                Workload::Profile,
+                Workload::Notification,
+            ],
         ),
         (
             "Enroll",
-            &[Workload::Concert, Workload::Post, Workload::Profile],
+            &[
+                Workload::Concert,
+                Workload::Post,
+                Workload::Profile,
+                Workload::Notification,
+            ],
         ),
         (
             "Track",
-            &[Workload::Concert, Workload::Post, Workload::Profile],
+            &[
+                Workload::Concert,
+                Workload::Post,
+                Workload::Profile,
+                Workload::Notification,
+            ],
         ),
         ("Complete", &[Workload::Concert]),
     ],
@@ -125,7 +140,10 @@ fn caller<T>(request: &Request<T>, root: bool) -> Result<Workload, Status> {
     if if root {
         who != Workload::Concert
     } else {
-        !matches!(who, Workload::Concert | Workload::Post | Workload::Profile)
+        !matches!(
+            who,
+            Workload::Concert | Workload::Post | Workload::Profile | Workload::Notification
+        )
     } {
         return Err(Status::permission_denied("Owner caller denied"));
     }

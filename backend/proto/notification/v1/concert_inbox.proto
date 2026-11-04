@@ -1,0 +1,103 @@
+syntax = "proto3";
+package notification.concert.v1;
+import "authority/v1/lease.proto";
+
+// Dedicated internal capability transport. The canonical Concert root remains
+// the sole authority acquirer/completer. Notification never receives its owner
+// completion secrets. No field is a browser authentication or admission grant.
+service ConcertInboxService {
+  rpc Execute(ExecuteRequest) returns (ExecuteResponse);
+  rpc Check(GuardRequest) returns (GuardReply);
+  rpc Complete(GuardRequest) returns (GuardReply);
+}
+message ParentScope {
+  authority.lease.v1.GuardBinding binding = 1;
+  authority.lease.v1.GuardView auth_view = 2;
+  authority.lease.v1.GuardView friend_view = 3;
+  authority.lease.v1.RootReadView root_view = 4;
+}
+message InboxIntent {
+  string child_id = 1; // Preallocated nonnil canonical UUID.
+  bytes completion_secret = 2; // Exactly 32 private bytes, never public output.
+}
+enum InboxOperation {
+  INBOX_OPERATION_UNSPECIFIED = 0;
+  LIST = 1;
+  UNREAD_COUNT = 2;
+  MARK_READ = 3;
+  MARK_ALL_READ = 4;
+}
+message ListInput {
+  uint32 limit = 1; // 1..100; caller resolves public default 20.
+  bool unread_only = 2;
+  optional string cursor = 3;
+}
+message CountInput {}
+message MarkReadInput {
+  string notification_id = 1;
+  int64 expected_revision = 2;
+  string idempotency_key = 3;
+}
+message MarkAllInput { string idempotency_key = 1; }
+message ExecuteRequest {
+  ParentScope scope = 1;
+  InboxIntent intent = 2;
+  InboxOperation operation = 3;
+  oneof input {
+    ListInput list = 4;
+    CountInput count = 5;
+    MarkReadInput mark_read = 6;
+    MarkAllInput mark_all = 7;
+  }
+}
+enum NotificationKind {
+  NOTIFICATION_KIND_UNSPECIFIED = 0;
+  PARTY = 1;
+  GIVEAWAY = 2;
+  SOCIAL = 3;
+  MODERATION = 4;
+  NOTICE = 5;
+  FEED = 6;
+}
+enum TargetType {
+  TARGET_TYPE_UNSPECIFIED = 0;
+  TARGET_PARTY = 1;
+  APPLICATION = 2;
+  TARGET_GIVEAWAY = 3;
+  RESERVATION = 4;
+  SOCIAL_REQUEST = 5;
+  POST = 6;
+  TARGET_NOTICE = 7;
+  REPORT = 8;
+}
+message Target { TargetType target_type = 1; string target_id = 2; }
+message Notification {
+  string notification_id = 1;
+  string event_id = 2;
+  NotificationKind kind = 3;
+  Target target = 4;
+  int64 created_at_unix_micros = 5;
+  optional int64 read_at_unix_micros = 6;
+  int64 revision = 7;
+}
+message NotificationList { repeated Notification items = 1; optional string next_cursor = 2; }
+message UnreadCount {
+  string actor_id = 1;
+  string event_id = 2;
+  int64 unread_total = 3;
+  int64 as_of_unix_micros = 4;
+}
+message ReadAllResult { int32 read_count = 1; int64 read_at_unix_micros = 2; }
+message ExecuteResponse {
+  string child_id = 1;
+  bytes binding_digest = 2;
+  int64 expires_unix_micros = 3;
+  oneof output {
+    NotificationList list = 4;
+    UnreadCount count = 5;
+    Notification mark_read = 6;
+    ReadAllResult mark_all = 7;
+  }
+}
+message GuardRequest { ParentScope scope = 1; InboxIntent intent = 2; }
+message GuardReply { bool held = 1; bool settled = 2; }

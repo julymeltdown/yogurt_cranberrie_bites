@@ -167,7 +167,10 @@ pub(super) fn identity(value: &proto::TransactionIdentity) -> Result<(), Status>
     uuid(&value.producer_instance_id)?;
     if !matches!(
         proto::Producer::try_from(value.producer),
-        Ok(proto::Producer::Concert | proto::Producer::Post | proto::Producer::Profile)
+        Ok(proto::Producer::Concert
+            | proto::Producer::Post
+            | proto::Producer::Profile
+            | proto::Producer::Notification)
     ) || xid < 3
         || value.full_xid != xid.to_string()
         || system == 0

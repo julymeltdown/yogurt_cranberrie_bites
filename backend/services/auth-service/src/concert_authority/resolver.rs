@@ -42,6 +42,7 @@ impl RpcSettlementResolver {
                 proto::Producer::Concert => Workload::Concert,
                 proto::Producer::Post => Workload::Post,
                 proto::Producer::Profile => Workload::Profile,
+                proto::Producer::Notification => Workload::Notification,
                 _ => return Err(model::invalid()),
             };
             if !url.starts_with("https://") || channels.contains_key(&(*producer as i32)) {

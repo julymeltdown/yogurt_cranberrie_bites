@@ -36,6 +36,10 @@ pub async fn configured_store(
             proto::Producer::Profile,
             "AUTHORITY_PROFILE_SETTLEMENT_ENDPOINT",
         ),
+        (
+            proto::Producer::Notification,
+            "AUTHORITY_NOTIFICATION_SETTLEMENT_ENDPOINT",
+        ),
     ] {
         match std::env::var(key) {
             Ok(url) => endpoints.push((producer, url)),
@@ -113,7 +117,12 @@ pub fn owner_caller_registry() -> anyhow::Result<platform::grpc_auth::CallerRegi
     use platform::grpc_auth::Workload;
     platform::config::build_caller_registry(
         true,
-        &[Workload::Concert, Workload::Post, Workload::Profile],
+        &[
+            Workload::Concert,
+            Workload::Post,
+            Workload::Profile,
+            Workload::Notification,
+        ],
         &[Workload::Concert],
     )
 }

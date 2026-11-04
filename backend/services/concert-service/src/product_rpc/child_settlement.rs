@@ -16,10 +16,18 @@ pub trait GiftPrivateIntentSettler: Send + Sync {
 pub trait SocialReadIntentSettler: Send + Sync {
     async fn recover_social_read(&self, reference: &ChildRecoveryReference) -> Result<(), Status>;
 }
+#[async_trait::async_trait]
+pub trait NotificationInboxIntentSettler: Send + Sync {
+    async fn recover_notification_inbox(
+        &self,
+        reference: &ChildRecoveryReference,
+    ) -> Result<(), Status>;
+}
 pub struct CompositeChildIntentSettler {
     public: Arc<PublicProfileReader>,
     gift: Arc<dyn GiftPrivateIntentSettler>,
     social: Option<Arc<dyn SocialReadIntentSettler>>,
+    notification: Option<Arc<dyn NotificationInboxIntentSettler>>,
 }
 impl CompositeChildIntentSettler {
     pub fn new(public: Arc<PublicProfileReader>, gift: Arc<dyn GiftPrivateIntentSettler>) -> Self {
@@ -27,7 +35,15 @@ impl CompositeChildIntentSettler {
             public,
             gift,
             social: None,
+            notification: None,
         }
+    }
+    pub fn with_notification(
+        mut self,
+        notification: Arc<dyn NotificationInboxIntentSettler>,
+    ) -> Self {
+        self.notification = Some(notification);
+        self
     }
     pub fn with_social(mut self, social: Arc<dyn SocialReadIntentSettler>) -> Self {
         self.social = Some(social);
@@ -38,6 +54,16 @@ impl CompositeChildIntentSettler {
 impl ChildIntentSettler for CompositeChildIntentSettler {
     async fn recover_one(&self, reference: &ChildRecoveryReference) -> Result<(), Status> {
         match reference {
+            ChildRecoveryReference::NotificationInbox { .. } => {
+                self.notification
+                    .as_ref()
+                    .ok_or_else(|| {
+                        Status::failed_precondition("Notification inbox recovery is unavailable")
+                    })?
+                    .recover_notification_inbox(reference)
+                    .await
+            }
+
             ChildRecoveryReference::ProfilePublic { .. }
             | ChildRecoveryReference::LocalPublic { .. } => {
                 self.public.recover_one(reference).await
