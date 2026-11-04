@@ -1,4 +1,14 @@
 {
+  "CR03_extension": {
+    "base_commit": "0f93c1e73471c8c6acd14105717262fc0c80074f",
+    "compile": "NOT_RUN",
+    "copied_fixture_source": {
+      "backend/services/concert-service/tests/process_child_recovery.rs": "241c70a22213d5d23024a793d09c329bad8d35e159c976eed3bfca6a1fa5579e"
+    },
+    "native": "NOT_RUN",
+    "scope": "Actual ACTIVE and SEALED physical restart variants; no direct lifecycle or ACK write; all four native guards intentionally retained for explicit owned cluster teardown.",
+    "static_review": "Full new module and controller/runner delta inspected; no concrete unresolved source finding. No compiler or runtime credit."
+  },
   "authoring_source_head_historical": "2ee8ac6dc4d42fc8a63e0f2fba68130c7248d632",
   "dependencies": "Existing concert-service development dependencies only; no manifest or lockfile changes.",
   "destination_paths": [

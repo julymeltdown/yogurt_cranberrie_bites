@@ -13,6 +13,8 @@ mod fixture;
 mod owners;
 #[path = "process_child_recovery_support/release.rs"]
 mod release;
+#[path = "process_child_recovery_support/unfinished.rs"]
+mod unfinished;
 
 use concert_service::{
     adapters::out::relationship_authority::guarded::{proto as authority, OwnerGuardScope},

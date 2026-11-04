@@ -19,6 +19,7 @@ import migration_smoke as migration
 OWNERS = ("auth", "friend", "concert", "profile")
 
 def run(args, report):
+    prefix = "process-" + args.case.lower().replace("_", "-")
     repo = args.repo.resolve(strict=True)
     binary, digest, commit = pin.verify_checkpoint(repo, args.checkpoint)
     if shutil.disk_usage(repo).free < 8*1024**3:
@@ -51,11 +52,11 @@ def run(args, report):
                          env=cluster.client_env("postgres"),cwd=cluster.root,phase="create-"+owner)
             env["MCR_CANONICAL_"+owner.upper()+"_URL"] = cluster.url(db)
         command = [sys.executable, str(Path(__file__).with_name("controller.py")),
-                   "--execute", "--checkpoint", str(args.checkpoint), "--repo", str(repo)]
+                   "--execute", "--case", args.case, "--checkpoint", str(args.checkpoint), "--repo", str(repo)]
         with subprocess.Popen(command, cwd=repo/"backend", env=env,
                               stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True) as child:
             try:
-                stdout, stderr = child.communicate(timeout=260)
+                stdout, stderr = child.communicate(timeout=300)
             except subprocess.TimeoutExpired:
                 # SIGTERM enters the controller's finally and kills/reaps its
                 # exact two Popen children before PostgreSQL cleanup.
@@ -71,12 +72,16 @@ def run(args, report):
                 "stderr":migration.redact(stderr,(cluster.password,cluster.token))}
             if child.returncode != 0:
                 raise core.SmokeError("physical-root-restart","exact owned process controller failed")
-        observations = list(cluster.root.glob("process-cr01-*-observations.json"))
+        observations = list(cluster.root.glob(f"{prefix}-*-observations.json"))
         if len(observations) != 1:
             raise core.SmokeError("physical-root-restart","one exact process observation required")
         observed = json.loads(observations[0].read_text())
         if observed.get("old_pid") == observed.get("new_pid") or not observed.get("old_reaped_after_sigkill"):
             raise core.SmokeError("physical-root-restart","distinct PID/kill/reap proof missing")
+        if observed.get("runtime_case_status") != "PASS" or observed.get("case") != ("CR01" if args.case == "CR01" else "CR03"):
+            raise core.SmokeError("physical-root-restart", "exact runtime case receipt missing")
+        if args.case != "CR01" and observed.get("variant") != args.case.removeprefix("CR03_"):
+            raise core.SmokeError("physical-root-restart", "CR03 variant receipt mismatch")
         report["process_observations"] = observed
         handoffs = [p for p in cluster.root.glob("process-cr01-*.json") if not p.name.endswith("-observations.json")]
         if len(handoffs) != 1:
@@ -90,14 +95,21 @@ def run(args, report):
         remaining = {owner:int(cluster.sql("mcr_canonical_"+owner,
             "select count(*) from pg_prepared_xacts where database=current_database();")) for owner in OWNERS}
         report["remaining_prepared"] = remaining
-        if any(remaining.values()):
-            raise core.SmokeError("cleanup","normal actual owner/child recovery must leave zero prepared work")
+        if args.case == "CR01":
+            if any(remaining.values()):
+                raise core.SmokeError("cleanup","normal actual owner/child recovery must leave zero prepared work")
+        else:
+            if remaining != {owner: 1 for owner in OWNERS}:
+                raise core.SmokeError("quarantine", "CR03 must retain all four real prepared guards")
+            report["quarantine_before_owned_teardown"] = dict(remaining)
+            report["normal_native_settlement"] = False
+            report["fixture_teardown"] = "STOP_AND_REMOVE_EXACT_OWNED_CLUSTER_WITH_QUARANTINED_DATA"
     finally:
         # Preserve only bounded fixed error diagnostics before removing private
         # logs/capabilities. Never copy arbitrary raw child output into reports.
         diagnostics = []
         if cluster.root.exists():
-            for path in cluster.root.glob("process-cr01-*.log"):
+            for path in cluster.root.glob(f"{prefix}-*.log"):
                 for line in path.read_text(errors="replace").splitlines():
                     if line.startswith("Error: "):
                         value = migration.redact(line[:600],tuple(env.values())+(cluster.password,cluster.token))
@@ -107,11 +119,13 @@ def run(args, report):
         if diagnostics:
             report["fixed_child_error_diagnostics"] = diagnostics[:8]
         cluster.cleanup()
-        report["cleanup"]={"status":"PASS","owned_root_absent":not cluster.root.exists()}
+        report["cleanup"]={"status":"PASS","owned_root_absent":not cluster.root.exists(),
+            "kind":"OWNED_CLUSTER_TEARDOWN", "certifies_native_settlement":False}
         env.clear()
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--case",choices=("CR01","CR03_ACTIVE","CR03_SEALED"),default="CR01")
     parser.add_argument("--checkpoint",type=Path,required=True)
     parser.add_argument("--pg-bin-dir",type=Path,required=True)
     parser.add_argument("--report",type=Path,required=True)
@@ -119,10 +133,10 @@ def main():
     args=parser.parse_args()
     if not args.report.is_absolute() or args.report.exists() or not args.pg_bin_dir.is_absolute():
         parser.error("new absolute report and explicit absolute PG directory required")
-    report={"status":"FAIL","case":"CR01","limitations":[
+    report={"status":"FAIL","case":("CR01" if args.case == "CR01" else "CR03"),"variant":args.case,"limitations":[
         "Actual Product/Delivery services and retained body EOF run in the owned Root child; external Gateway HTTP and actual main activation are separate gates.",
         "Actual Auth/Friend/Profile fixture RPC services share each Root child PID; independently surviving owner service processes are not claimed.",
-        "CR02-CR06 remain separate open cases; one physical restart does not complete the persistent owner-authority goal."]}
+        "Only the selected case/variant is exercised; all other cases and production main activation need their own evidence."]}
     try:
         run(args,report)
         report["status"]="PASS"

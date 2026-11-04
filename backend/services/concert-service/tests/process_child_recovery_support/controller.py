@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CR01 DRAFT controller. Never builds, starts PostgreSQL, edits a repository, or accepts CR.
+"""CR01/CR03 DRAFT controller. Never builds, starts PostgreSQL, edits a repository, or accepts CR.
 Only --execute with an actual complete clean prebuilt checkpoint starts a test executable.
 No child output, environment secrets, handoff capabilities, or root views reach reports/stdout.
 """
@@ -22,6 +22,11 @@ HERE = Path(__file__).resolve().parent
 TEST = "process_root_child_recovery_cr01"
 READY = b"MCR_CR01_OLD_READY"
 OBSERVED = b"MCR_CR01_RESTART_OBSERVED"
+CASES = {
+    "CR01": (TEST, READY, OBSERVED),
+    "CR03_ACTIVE": ("unfinished::process_root_child_recovery_cr03", b"MCR_CR03_ACTIVE_OLD_READY", b"MCR_CR03_ACTIVE_RESTART_OBSERVED"),
+    "CR03_SEALED": ("unfinished::process_root_child_recovery_cr03", b"MCR_CR03_SEALED_OLD_READY", b"MCR_CR03_SEALED_RESTART_OBSERVED"),
+}
 
 class CheckFailed(Exception):
     pass
@@ -63,11 +68,12 @@ def kill_reap(child: subprocess.Popen) -> int:
     return child.wait(timeout=10)
 
 class Child:
-    def __init__(self, binary: Path, env: dict[str, str], log: Path):
+    def __init__(self, binary: Path, env: dict[str, str], log: Path, *, test=TEST, ready=READY, observed=OBSERVED):
+        self.ready, self.observed = ready, observed
         self.log = os.fdopen(os.open(log, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "wb")
         try:
             self.process = subprocess.Popen(
-                [str(binary), "--exact", TEST, "--ignored", "--nocapture", "--quiet", "--test-threads=1"],
+                [str(binary), "--exact", test, "--ignored", "--nocapture", "--quiet", "--test-threads=1"],
                 env=env, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT, close_fds=True)
         except BaseException:
@@ -96,7 +102,7 @@ class Child:
             self.buffer += block
             while b"\n" in self.buffer:
                 line, self.buffer = self.buffer.split(b"\n", 1)
-                if line.rstrip(b"\r") in (READY, OBSERVED):
+                if line.rstrip(b"\r") in (self.ready, self.observed):
                     self.seen.add(line.rstrip(b"\r"))
             require(len(self.buffer) <= 65536, "child line bound exceeded")
 
@@ -127,17 +133,19 @@ def execute(args: argparse.Namespace) -> None:
     require(args.checkpoint is not None, "actual complete clean prebuilt checkpoint required")
     binary, binary_sha256, source_commit = verify_checkpoint(args.repo, args.checkpoint)
     root = owned_root()
+    test, ready, observed = CASES[args.case]
+    prefix = "process-" + args.case.lower().replace("_", "-")
     run = uuid.uuid4()
     instance = uuid.uuid4()
     env = os.environ.copy()
-    env.update(MCR_PROCESS_RUN=str(run), MCR_PROCESS_INSTANCE=str(instance))
+    env.update(MCR_PROCESS_RUN=str(run), MCR_PROCESS_INSTANCE=str(instance), MCR_PROCESS_CASE=args.case)
     old = restarted = None
     old_pid = new_pid = None
     try:
         env["MCR_PROCESS_MODE"] = "old"
-        old = Child(binary, env, root / f"process-cr01-{run.hex}-old.log")
+        old = Child(binary, env, root / f"{prefix}-{run.hex}-old.log", test=test, ready=ready, observed=observed)
         old_pid = old.process.pid
-        old.wait_line(READY, 90)
+        old.wait_line(ready, 90)
         require(old.process.poll() is None, "old process must still await forever at READY")
         state_path = root / f"process-cr01-{run.hex}.json"
         state = json.loads(private_file(state_path, os.getuid()))
@@ -149,10 +157,10 @@ def execute(args: argparse.Namespace) -> None:
         require((fresh_binary, fresh_sha256, fresh_commit) == (binary, binary_sha256, source_commit),
                 "build checkpoint changed between processes")
         env["MCR_PROCESS_MODE"] = "restart"
-        restarted = Child(binary, env, root / f"process-cr01-{run.hex}-restart.log")
+        restarted = Child(binary, env, root / f"{prefix}-{run.hex}-restart.log", test=test, ready=ready, observed=observed)
         new_pid = restarted.process.pid
         require(new_pid != old_pid, "distinct physical restart PID required")
-        restarted.wait_line(OBSERVED, 100)
+        restarted.wait_line(observed, 100)
         require(restarted.finish(10) == 0, "restart integration test failed")
         # Only non-secret runtime-case observations after assertions and test exit zero.
         # This does not infer release or production main acceptance.
@@ -165,11 +173,24 @@ def execute(args: argparse.Namespace) -> None:
                   "old_process_worker": {"attempted":2,"completed":0,"pending":2,"actual_profile_complete_unavailable":True},
                   "main_activation": "INTEGRATOR_OWNED_EXTERNAL_GATE",
                   "source_commit": source_commit, "binary_sha256": binary_sha256}
-        report_path = root / f"process-cr01-{run.hex}-observations.json"
+        if args.case != "CR01":
+            report = {"case": "CR03", "variant": args.case.removeprefix("CR03_"),
+                      "other_CR03_variant": "NOT_RUN",
+                      "runtime_case_status": "PASS", "other_CR_cases": "NOT_RUN",
+                      "old_pid": old_pid, "new_pid": new_pid, "old_reaped_after_sigkill": True,
+                      "phase_unchanged": args.case.removeprefix("CR03_"),
+                      "worker_selected": 0, "worker_ACKs": 0, "pending_children": 2,
+                      "retained_prepared": {owner: 1 for owner in ("auth", "friend", "concert", "profile")},
+                      "owner_sweep": "SEALED_WITHOUT_ROOT_PROOF_PREPARED_RETAINED",
+                      "delivery_completed": False, "content_denied": True,
+                      "normal_native_settlement": False,
+                      "native_cleanup": "INTENTIONALLY_RETAINED_FOR_OWNED_CLUSTER_TEARDOWN",
+                      "source_commit": source_commit, "binary_sha256": binary_sha256}
+        report_path = root / f"{prefix}-{run.hex}-observations.json"
         with os.fdopen(os.open(report_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "w") as handle:
             json.dump(report, handle, indent=2)
             handle.write("\n")
-        print("CR01 runtime_case_status=PASS; other_CR_cases=NOT_RUN; release/main acceptance is not inferred.")
+        print(f"{args.case} runtime_case_status=PASS; other_CR_cases=NOT_RUN; release/main acceptance is not inferred.")
     finally:
         if restarted is not None:
             restarted.close()
@@ -181,6 +202,7 @@ def execute(args: argparse.Namespace) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--execute", action="store_true")
+    parser.add_argument("--case", choices=tuple(CASES), default="CR01")
     parser.add_argument("--checkpoint", type=Path,
                         help="receiving owner's actual clean build source/binary checkpoint")
     parser.add_argument("--repo", type=Path,
@@ -197,7 +219,7 @@ def main() -> int:
         return 0
     except Exception:
         # Never relay arbitrary child output, capability-bearing exceptions or environment.
-        print("CR01 observation failed; inspect the private owned logs. Acceptance unchanged.", file=sys.stderr)
+        print("Selected physical case failed; inspect the private owned logs. Acceptance unchanged.", file=sys.stderr)
         return 1
 
 if __name__ == "__main__":
