@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T03:24:00+09:00",
+  "updated_at": "2026-11-05T03:25:55+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 39,
-      "IN_PROGRESS": 58,
+      "DONE": 40,
+      "IN_PROGRESS": 57,
       "WAITING_INPUT": 3,
       "REOPENED": 7,
       "OPEN": 4,
       "DEFERRED_BY_USER": 1
     },
-    "done_tasks": 39,
-    "remaining_active_tasks": 72,
-    "task_completion_percentage": 35.1,
+    "done_tasks": 40,
+    "remaining_active_tasks": 71,
+    "task_completion_percentage": 36.0,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -94,10 +94,11 @@
       "FE04",
       "FE11",
       "AR03",
-      "FE35"
+      "FE35",
+      "C06"
     ],
-    "current_original_criteria_outcomes": 46,
-    "progress_updated_at": "2026-11-05T03:24:00+09:00",
+    "current_original_criteria_outcomes": 47,
+    "progress_updated_at": "2026-11-05T03:25:55+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -394,35 +395,46 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "FOUNDATION",
         "priority": 1,
         "original_scope": "Define atlas frames/anchor, layer IDs, map version, collisions, interactions, and place-source metadata.",
         "original_acceptance": "Small golden asset fixtures validate and align across all themes.",
         "updated_scope": "Define atlas frames/anchor, layer IDs, map version, collisions, interactions, and place-source metadata.",
-        "remaining_work": [
-          "Finalize source-derived avatar atlas/layer/anchor and map/theme manifests, including the selected character pack and current motion assets.",
-          "Keep original user images immutable and client-side reusable atlases/cache keys consistent; no legacy or synthetic product fallback."
-        ],
+        "remaining_work": [],
         "complete_when": "Small golden asset fixtures validate and align across all themes.",
-        "reason": "Selected static and motion contracts are delivered in parts; whole original closure not reported.",
+        "reason": "Responsible contract owner explicitly accepted all five original C06 criteria and published the three-file disposition at6504448f. Existing current schemas, byte-identical six golden assets and retained qualified avatar/map/theme consumers satisfy the original contract scope; the owner ran one existing six-golden validator for the actual validator/scenery delta. No asset, contract or application source changed in this disposition. Original artwork, real integration, full reference and device outcomes retain their separate task boundaries. Main records the canonical owner receipt without technical re-review or repeated validation.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
-        "depends_on_for_remaining_work": [
-          "C01"
-        ],
+        "depends_on_for_remaining_work": [],
         "interface_collaborators_not_completion_barriers": [],
         "related_validation_gates": [],
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Backend implementation lead; exact shared-file delegates",
         "coordination_owner": "backend_staffing",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [
-          "docs/mcr/contracts/selected-static-avatar.md"
+          "docs/mcr/contracts/selected-static-avatar.md",
+          "docs/mcr/c06-original-disposition.md",
+          "6504448fa682b10c53b3f6cd3e0aeef4d75b1483"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_completion": {
+          "recorded_at": "2026-11-05T03:25:55+09:00",
+          "owner_chat": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+          "published_commit": "6504448fa682b10c53b3f6cd3e0aeef4d75b1483",
+          "basis": "Responsible contract owner explicitly accepted all five original C06 criteria and published the three-file disposition at6504448f. Existing current schemas, byte-identical six golden assets and retained qualified avatar/map/theme consumers satisfy the original contract scope; the owner ran one existing six-golden validator for the actual validator/scenery delta. No asset, contract or application source changed in this disposition. Original artwork, real integration, full reference and device outcomes retain their separate task boundaries. Main records the canonical owner receipt without technical re-review or repeated validation.",
+          "manager_technical_review": false
+        }
+      },
+      "latest_owner_activity": {
+        "reported_at": "2026-11-05T03:25:55+09:00",
+        "source_chat": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+        "scope": "Responsible contract owner explicitly accepted all five original C06 criteria and published the three-file disposition at6504448f. Existing current schemas, byte-identical six golden assets and retained qualified avatar/map/theme consumers satisfy the original contract scope; the owner ran one existing six-golden validator for the actual validator/scenery delta. No asset, contract or application source changed in this disposition. Original artwork, real integration, full reference and device outcomes retain their separate task boundaries. Main records the canonical owner receipt without technical re-review or repeated validation."
       }
     },
     {

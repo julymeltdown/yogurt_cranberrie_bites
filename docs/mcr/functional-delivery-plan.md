@@ -2,25 +2,27 @@
 
 This is the current user-authorized execution amendment to the original [112-task specification](../../MCR_IMPLEMENTATION_PLAN_V2_EN.md). It revises each remaining task, scheduling, ownership and progress while preserving all original IDs and all 61 required IA entries. The source archive and generated planning exports remain unchanged. Historical analysis and task outcomes do not silently override this amendment.
 
-Snapshot: **2026-11-05T03:24:00+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `a9c04eb256e7b50e6efc99bfd076eca9a8293100`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
+Snapshot: **2026-11-05T03:25:55+09:00**. Baseline read set: `7eac13ce30d6dd6be4df30727f75d5df90d3489d`; later delivery milestones are canonical publisher receipts through `6504448fa682b10c53b3f6cd3e0aeef4d75b1483`. The user explicitly requested this full replan. It is a management reconciliation, not a king review of code, queries, screenshots or tests.
 
 ## Progress under the revised scope
 
-- **39/111 active tasks complete (35.1%)**; **72 active tasks remain**.
+- **40/111 active tasks complete (36.0%)**; **71 active tasks remain**.
 - **1 task deferred: QA08**. Original total remains 112; performance qualification is neither passed nor completed.
-- The frozen replan baseline remains **39/112** original-task outcomes. Seven newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35) bring the current original-criteria total to **46/112**. **7** historically closed IDs have explicit new or unresolved current-scope work: **FE19, FE21, FE24, FE32, FE33, QA01, QA07**.
+- The frozen replan baseline remains **39/112** original-task outcomes. Eight newly published original closures (C07, FE03, FE04, FE11, FE16, AR03, FE35, C06) bring the current original-criteria total to **47/112**. **7** historically closed IDs have explicit new or unresolved current-scope work: **FE19, FE21, FE24, FE32, FE33, QA01, QA07**.
 - This is an unweighted task fraction, not a product-readiness or time estimate. IN02–IN05, full reference/device acceptance and61-entry IA reconciliation remain open.
 
 | Revised state | Tasks |
 | --- | ---: |
-| DONE | 39 |
-| IN_PROGRESS | 58 |
+| DONE | 40 |
+| IN_PROGRESS | 57 |
 | WAITING_INPUT | 3 |
 | OPEN | 4 |
 | REOPENED | 7 |
 | DEFERRED_BY_USER | 1 |
 
 `DONE` records an explicit original-task closure and canonical publication with no identified current remainder. `REOPENED` preserves that history but has a specific current delta. `IN_PROGRESS` includes partial delivered implementation and its remaining work. `OPEN` does not mean no code exists. `WAITING_INPUT` identifies a necessary external decision. Resource/publication waits are queue facts rather than fake review states. The machine register retains old evidence states such as MOCK_READY, CONTRACT_READY and ACCEPTED separately.
+
+Original **C06** is now accepted and published at `6504448f` through the responsible owner's [disposition](c06-original-disposition.md). All five original criteria are covered; the existing six golden assets and qualified consumers remain the evidence basis. This does not close separate live, visual or device gates.
 
 Hosted CI is **qualified and published**. The responsible developer reports successful frozen installation, full QA01 and all eight C07 checks in runs [41883941337](https://github.com/julymeltdown/mcr/actions/runs/41883941337) and [41883753649](https://github.com/julymeltdown/mcr/actions/runs/41883753649). Repair `28a3716e` preserved pinned resolutions and every check; final evidence is published at `13baed63`. Historical failures remain recorded. This is scoped hosted contract qualification, not application, device, multiuser or release acceptance. New enrollment contract inputs receive their own generated-output update.
 
@@ -78,7 +80,7 @@ The original specification remains the full baseline. Every row below preserves 
 | C03 — Core HTTP and identity contract | DONE / 2 | FOUNDATION | Retain delivered outcome; no identified task-local remainder. | Schema-valid success/failure examples; exact frontend/backend auth mapping reviewed. | None for remaining scope |
 | C04 — Domain HTTP and transition contracts | IN_PROGRESS / 0 | FOUNDATION | Finish domain contract/transition coverage for the remaining production flows; Add the selected Wall B command, capability, quota, error, retry, private-history and recovery semantics; freeze FE/BE interfaces early. | Every command has actor, precondition, resulting state, error reason, and retry rule. | C03 |
 | C05 — Realtime wire protocol | DONE / 2 | FOUNDATION | Retain delivered outcome; no identified task-local remainder. | Reject unknown/oversized messages; filtered streams have no false sequence gaps. | None for remaining scope |
-| C06 — Map and avatar interfaces | IN_PROGRESS / 1 | FOUNDATION | Finalize source-derived avatar atlas/layer/anchor and map/theme manifests, including the selected character pack and current motion assets; Keep original user images immutable and client-side reusable atlases/cache keys consistent; no legacy or synthetic product fallback. | Small golden asset fixtures validate and align across all themes. | C01 |
+| C06 — Map and avatar interfaces | DONE / 1 | FOUNDATION | Retain the published original map/avatar contract acceptance; no task-local remainder. | Small golden asset fixtures validate and align across all themes. | None for remaining scope |
 | C07 — Generated clients and fixture harness | DONE / 0 | FOUNDATION | Retain the delivered original-task outcome; no identified task-local remainder. | Generated output is reproducible; a deliberate schema mismatch fails CI. | None for remaining scope |
 | C08 — New-UI and source-boundary gate | DONE / 2 | FOUNDATION | Retain delivered outcome; no identified task-local remainder. | Gate detects an imported or copied legacy control; manual visual review remains required. | None for remaining scope |
 
