@@ -422,3 +422,25 @@ post-publication interruption point through actual HTTP and native owners.
 Spontaneous browser timing, production runtime activation, the same-candidate
 IN01 browser rerun, release acceptance and final master publication remain
 Root/FE obligations; none are inferred from this dedicated integration fixture.
+
+### Consumer cache-provenance follow-up
+
+The original C03 native behavior result above remains PASS for its exact frozen
+peer cohort. Its 1772 hashes pin the input snapshot; they do not independently
+establish that reused platform metadata came from those same source bytes.
+The successful Cargo JSON records `platform` as `fresh=true`. Earlier in that
+same lease, other borrowed local packages demonstrably retained foreign proto
+paths or stale application exports. This does not establish that the original
+C03 platform artifact itself was stale, and no original report is relabelled.
+
+Root subsequently reported a copied owner-policy mismatch in combined consumer
+qualification. Canonical's source readback found the current owner policies
+aligned with the current platform policy, while Root's frozen compile log
+recorded reused test-profile platform metadata. A clean, named-allocation
+platform rebuild and exact copied consumer rerun remain required to resolve that
+provenance boundary; they are Root/Canonical owned. No Participant handler fix
+has been established by this finding. The [successor provenance note](../../../backend/services/concert-service/tests/participant_cancellation_support/platform_provenance_followup.json)
+preserves the original artifact/report hashes, observed Fresh metadata and the
+bounded follow-up. This goal remains active through the qualified successor,
+concrete consumer fixes if any, and verified Root publication. No additional
+Cargo, PostgreSQL or shared-target work is started by this documentation patch.

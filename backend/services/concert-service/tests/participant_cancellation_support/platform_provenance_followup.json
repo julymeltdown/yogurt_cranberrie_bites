@@ -1,0 +1,30 @@
+{
+  "task": "C03-CANCEL01",
+  "status": "IN_PROGRESS",
+  "reason": "Consumer qualification exposed a source-cache provenance boundary; no C03 functional failure established",
+  "original_compiled_source": "f8aeca1f541fbb82777089e9281c333479c25f74",
+  "original_binary_sha256": "9a0bb77d3bef921a5302c656e99804ef6d6ec4b372bec3d1a9d92612d20f0f73",
+  "original_native_report_sha256": "f66c5f652b1a03dee89003d17aa5ee11d1ceb0f8cb155d0e1c3be990e0c0b7f3",
+  "original_behavior": "PASS against exact frozen3710 MAIN cohort; normal EOF, cancelled read/fence/login recovery, callback and native unknown quarantine unchanged",
+  "original_platform_cargo_artifacts": [
+    {
+      "fresh": true,
+      "target_name": "platform",
+      "target_kind": [
+        "lib"
+      ],
+      "profile_test": false,
+      "artifact_paths": [
+        "libplatform-eec4ca7d15f3db56.rlib",
+        "libplatform-eec4ca7d15f3db56.rmeta"
+      ]
+    }
+  ],
+  "original_cargo_json_sha256": "53a5662a8db21e43b082024eb47a7784d1ec08f31db3688e555aa02ead040a2a",
+  "established_limit": "1772 hashes describe the input snapshot. They are not independent proof that borrowed Fresh platform rmeta was compiled from those exact bytes. No assertion is made that the original C03 platform artifact itself was stale.",
+  "consumer_finding": "Root reported a copied owner-policy mismatch; Canonical source readback found current owner and platform policies aligned, while frozen Root logs reported reused test-profile platform metadata. Exact clean-platform rebuild and rerun are Root-owned under a fresh named lease.",
+  "required_followup": "Preserve original failed and passing attempts; record the clean Root consumer source/artifact/report pins and any concrete Participant fix before completion/publication.",
+  "source_changes_required": "None established in Participant handler; this successor records provenance limitations only",
+  "resources_held": false,
+  "production_browser_in01": "Root/FE owned; NOT_RUN by this worker"
+}
