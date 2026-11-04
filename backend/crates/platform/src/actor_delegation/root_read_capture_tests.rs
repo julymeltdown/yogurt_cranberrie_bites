@@ -211,4 +211,22 @@ async fn callback_capture_does_not_convert_forwarded_or_unbounded_proofs() {
         .extensions()
         .get::<exchange::VerifiedParentAuthority>()
         .is_none());
+    let other = "/authority.lease.v1.ConcertRootReadService/Other";
+    let (body, _) = frame(actor);
+    let token = signer().issue(Workload::Concert, other, actor, None, &body, now());
+    let verified_other = crate::call_deadline::scope(
+        Instant::now() + Duration::from_secs(1),
+        verify_request(
+            request(other, Workload::Post, body, token),
+            Workload::Post,
+            &[&[1, 3, 1]],
+            &verifier(),
+        ),
+    )
+    .await
+    .unwrap();
+    assert!(verified_other
+        .extensions()
+        .get::<exchange::VerifiedParentAuthority>()
+        .is_none());
 }
