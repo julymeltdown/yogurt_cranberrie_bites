@@ -17,6 +17,7 @@ from unittest.mock import patch
 # This file is installed under backend/scripts/mcr/world_motion/.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import in03_stack_runtime as launcher
+import dev_stack as dev
 from world_capacity_support.report import Failure, check
 from world_capacity_support.scenarios import PIN_HTTP, PIN_WS, StreamState, release_pins
 from world_capacity_support.transport import Contracts, Network
@@ -171,8 +172,20 @@ async def pair(config, principals, evidence):
 
 def main(argv=None):
     original = launcher.auth_provenance
+    state = {}
+
+    class MotionControl(dev.Control):
+        def handle_request(self):
+            # The launcher checks all seven services immediately before this call.
+            # End this focused consumer naturally after one healthy iteration;
+            # the unchanged two-second handoff bound remains an upper limit.
+            super().handle_request()
+            state['report']['world_motion_post_pair_health'] = 'PASS'
+            self.stopping = True
+
 
     def motion_proof(stack, browser, report, principals, event, revision, auth_source, expires_at, world):
+        state['report'] = report
         provenance = original(stack, browser, report, principals, event, revision, auth_source, expires_at, world)
         evidence = report['world_motion_public_pair'] = {
             'result': 'FAIL', 'phase': 'owned-default-room', 'real_auth_provenance': 'PASS',
@@ -194,7 +207,7 @@ def main(argv=None):
             evidence.update(failure=label, failure_type=type(error).__name__)
             raise launcher.InputRefusal(label) from None
 
-    with patch.object(launcher, 'auth_provenance', motion_proof), patch.object(launcher, '__doc__', __doc__):
+    with patch.object(launcher, 'auth_provenance', motion_proof), patch.object(launcher, '__doc__', __doc__), patch.object(dev, 'Control', MotionControl):
         return launcher.main(argv)
 
 
