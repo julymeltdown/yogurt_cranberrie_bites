@@ -204,8 +204,10 @@ executing the exported startup in the actual composed service remains Root's
 implementation validation duty. No public-route or multiuser acceptance follows
 from this bounded leaf qualification.
 
-## Root startup mount, pending combined qualification
+## Root startup mount and bounded combined qualification
 
 After the exact three-path validated handoff, Root exports `config::report_runtime` and loads its settings before connecting the database. The shared Intro/Participant composition retains its existing native resolver union and guarded settlement/delivery services. The Report overlay attaches after the existing Inbox, Feed and Social overlays with that same core/fence and pool; off mode preserves the prior producer. Only USER/no-media Report create is activated by explicit `CONCERT_REPORT_MODE=user` with its managed inputs. No privileged role, review/media provider, new listener, background worker or child-read settler is added.
 
-The owner's seven copied tests qualify its unchanged leaf. The modified Root main still requires a fresh current combined compilation and actual pre-database refusal checks; no prior Social startup or owner-only result is being reused as proof for this changed main. Public Gateway Report and full-stack behavior remain NOT_RUN.
+The owner's seven copied tests qualify its unchanged leaf. Root subsequently compiled the actual non-test Concert, Gateway, Post and Notification mains from `fb00cf5337df98e4ffdfca4893b6bdc35d19a2f0`: four locked/offline Rust 1.88 builds exited 0. All 3,726 frozen inputs matched before publication. Six actual-main pre-database refusal checks passed, including USER Report without shared composition and invalid Report mode. See `product-four-main-build.json` for exact artifact hashes, commands, exit codes and receipts.
+
+The first copied check stopped at a harness omission (`CONCERT_METRICS_ADDR is required`); its failed evidence and five NOT_RUN cases are retained. A fresh copied-only allocation supplied the required metrics address, reused the exact frozen binaries without a rebuild, and passed all six checks. Compiler/target release preceded all copied execution; final copied-only FULL RELEASE was 2026-11-04 14:02:59.408684 UTC, 3.335 seconds after actual ACCEPT. No PostgreSQL was provisioned. Public Gateway Report, positive production stack and full multiuser behavior remain NOT_RUN.

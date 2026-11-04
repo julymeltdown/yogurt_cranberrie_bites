@@ -1,0 +1,220 @@
+{
+  "status": "COMPILED_STARTUP_NEGATIVE",
+  "source_commit": "fb00cf5337df98e4ffdfca4893b6bdc35d19a2f0",
+  "compiled_input_count": 3726,
+  "compiled_input_inventory_sha256": "012caed020cd4172c00bd0408806058cf4675201d63c5b3d29b8dfd7954b7723",
+  "evidence_directory": "/private/tmp/mcr-root-four-mains-dkdgo9xd",
+  "copied_only_evidence_directory": "/private/tmp/mcr-root-four-mains-copied-sc10fu25",
+  "artifacts": {
+    "api-gateway": {
+      "bytes": 57300224,
+      "sha256": "af18e0ffbd6a13678a1995b38bbbe2fe3dd62b47b8fd4f3e1b42a08e00c3eba2",
+      "cargo_profile_test": false,
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "api-gateway",
+        "--bin",
+        "api-gateway",
+        "--message-format=json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 17.89519329200266
+    },
+    "concert-service": {
+      "bytes": 65460352,
+      "sha256": "176828f9c9d70038ef025bb4369399830fabe82ed56de3ff13589097118cf52e",
+      "cargo_profile_test": false,
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "concert-service",
+        "--bin",
+        "concert-service",
+        "--message-format=json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 28.480759500002023
+    },
+    "notification-service": {
+      "bytes": 34518016,
+      "sha256": "3c3a1efa8a3d3a9c92167906924afa82d5f992b26be5eb5adbd9f4725b89049f",
+      "cargo_profile_test": false,
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "notification-service",
+        "--bin",
+        "notification-service",
+        "--message-format=json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.348314000002574
+    },
+    "post-service": {
+      "bytes": 48987456,
+      "sha256": "b788e894f55c11d18d1add220fc26b2913fb6aa3b0c9fc42b895e38a4749f241",
+      "cargo_profile_test": false,
+      "command": [
+        "cargo",
+        "+1.88.0",
+        "build",
+        "--manifest-path",
+        "backend/Cargo.toml",
+        "--locked",
+        "--offline",
+        "-j",
+        "2",
+        "--config",
+        "profile.dev.package.contracts-build.opt-level=2",
+        "-p",
+        "post-service",
+        "--bin",
+        "post-service",
+        "--message-format=json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 12.52766520800651
+    }
+  },
+  "compile_release": {
+    "accepted_to_release_seconds": 72.86661219596863,
+    "final_free_bytes": 29616832512,
+    "no_pg_services_listeners": true,
+    "offer": "ROOT-IN03-FOUR-MAINS-MEDIA-202611041352Z",
+    "own_open_handles": 0,
+    "owned_groups_absent": true,
+    "owned_pki_tmp_removed": true,
+    "released_at": 1793800743.520869,
+    "state": "FULLY_RELEASED",
+    "target_access_after_target_release": "NONE",
+    "target_to_full_release_seconds": 2.371083974838257,
+    "whole_upper_bound_including_receipt_reserve_bytes": 5123235840
+  },
+  "target_release": {
+    "before_any_copied_test_or_pg": true,
+    "fixed_target_growth_bytes": 48275456,
+    "offer": "ROOT-IN03-FOUR-MAINS-MEDIA-202611041352Z",
+    "owned_cargo_group_absent": true,
+    "released_at": 1793800741.149787,
+    "retained_evidence_carry_bytes": 4830097408,
+    "state": "RELEASED",
+    "target_access_after_receipt": "NONE",
+    "target_open_handles": 0
+  },
+  "copied_only_release": {
+    "state": "FULLY_RELEASED",
+    "offer": "ROOT-FOUR-MAINS-COPIED-ONLY-202611041401Z",
+    "released_at": 1793800979.408684,
+    "accepted_to_release_seconds": 3.3354620933532715,
+    "checks_exit_code": 0,
+    "all_owned_groups_absent": true,
+    "own_handles": 0,
+    "owned_tmp_removed": true,
+    "no_target_access_or_pg_or_new_binary_copies": true,
+    "whole_upper_bound_bytes": 5123301376,
+    "final_free_bytes": 29274710016
+  },
+  "actual_main_refusals": [
+    {
+      "name": "report-without-shared",
+      "binary": "concert-service",
+      "exit_code": 1,
+      "expected_startup_refusal": "USER reports require guarded gRPC and Root's shared canonical composition",
+      "observed_expected_error": true,
+      "output_sha256": "ab5686d3b37a57af5d846f51530eb932a25d246a02463f3ca14729fa577e93d3"
+    },
+    {
+      "name": "invalid-report-mode",
+      "binary": "concert-service",
+      "exit_code": 1,
+      "expected_startup_refusal": "CONCERT_REPORT_MODE must be off or user",
+      "observed_expected_error": true,
+      "output_sha256": "b955737247d0a0d186e5c6cc73e299b3b44f842abb8de3fa4f1051c27dfef024"
+    },
+    {
+      "name": "invalid-social-mode",
+      "binary": "concert-service",
+      "exit_code": 1,
+      "expected_startup_refusal": "CONCERT_SOCIAL_MODE must be off or live",
+      "observed_expected_error": true,
+      "output_sha256": "888122f8c6a2e198dbede11815129e45d0abf97f10fecd27131aa7234803b39e"
+    },
+    {
+      "name": "gateway-invalid-mode",
+      "binary": "api-gateway",
+      "exit_code": 1,
+      "expected_startup_refusal": "GATEWAY_RUNTIME_MODE must be production or parity",
+      "observed_expected_error": true,
+      "output_sha256": "ad7162fe39f2784fb9c4d936c3678dddcc4b1912acec31818441306ebea20596"
+    },
+    {
+      "name": "post-invalid-mode",
+      "binary": "post-service",
+      "exit_code": 1,
+      "expected_startup_refusal": "POST_RUNTIME_MODE must be production or parity",
+      "observed_expected_error": true,
+      "output_sha256": "4f70f8801f4f8a1c8be6e2b9afbb038a344c1b9befec0a1fe10b911be931f6c0"
+    },
+    {
+      "name": "notification-invalid-mode",
+      "binary": "notification-service",
+      "exit_code": 1,
+      "expected_startup_refusal": "NOTIFICATION_RUNTIME_MODE must be production or parity",
+      "observed_expected_error": true,
+      "output_sha256": "eee3e8009eb58ff8edf605f42e9e60b1609e2258bca94d9e7333ccd5eb17ddc2"
+    }
+  ],
+  "retained_initial_failure": {
+    "kind": "HARNESS_REQUIRED_METRICS_ADDRESS_OMITTED",
+    "actual_error": "CONCERT_METRICS_ADDR is required",
+    "application_source_change": "NONE",
+    "remaining_cases": "NOT_RUN",
+    "corrected_fresh_allocation": "ROOT-FOUR-MAINS-COPIED-ONLY-202611041401Z"
+  },
+  "limitations": [
+    "No PostgreSQL was started.",
+    "No positive stack startup, authenticated product mutation, public Gateway Report, IN03, QA08 or full BE41/BE42 acceptance.",
+    "SocialGrants owner exported but not registered in cleanup composition; closure invalidation-source gap remains.",
+    "Report enabled only through explicit USER mode and existing shared canonical composition."
+  ],
+  "compile_receipt_sha256": {
+    "full-release.json": "99aa240de57e10d3679f977ecf43d1327ca69dc061c4a51f1ffb0c7c2b9f474e",
+    "target-release.json": "96e053981789172d867b6b186b3d87fc91005db656c259981fda83efe18640f2",
+    "source-freeze-receipt.json": "73452143c1c1ec6eb42e94d62522872cb4f941a2b966d5874b55bc2bda512d49"
+  },
+  "copied_only_receipt_sha256": {
+    "full-release.json": "44a171c1a5c3b777c0d5f8f23b72fdaa94b5d4092216be3c146ef67802941630",
+    "copied-results.json": "f84ab69d66dbd44e411575de6c2c79bb16fd1068f02dc673fa93f580bec1f549"
+  }
+}
