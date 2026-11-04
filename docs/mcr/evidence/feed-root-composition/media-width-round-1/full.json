@@ -1,0 +1,263 @@
+{
+  "utc": "2026-11-04T16:53:42.611437+00:00",
+  "allocation": "FE209-WIDTH-POSTMEDIA-NATIVE-202611041649Z",
+  "ownedProcesses": [],
+  "listener5279": "",
+  "bind5279": "PASS",
+  "dependencyLinkPresent": false,
+  "cacheTMPPresent": [],
+  "freeBytes": 29325647872,
+  "peakAllProcesses": 13,
+  "peakAllRssBytes": 2587918336,
+  "summaryStatus": "SYNTHETIC_NATIVE_PASSED",
+  "cases": 6,
+  "errors": [],
+  "geometry": [
+    {
+      "name": "feed-360x843",
+      "images": [
+        [
+          290,
+          98.625,
+          298,
+          308
+        ],
+        [
+          290,
+          67.703125,
+          298,
+          308
+        ]
+      ],
+      "scroll": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -396,
+          "scrollHeight": 2358,
+          "scrollTop": 634,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      }
+    },
+    {
+      "name": "feed-390x843",
+      "images": [
+        [
+          290,
+          98.625,
+          298,
+          338
+        ],
+        [
+          290,
+          67.703125,
+          298,
+          338
+        ]
+      ],
+      "scroll": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -396,
+          "scrollHeight": 2358,
+          "scrollTop": 634,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      }
+    },
+    {
+      "name": "feed-430x843",
+      "images": [
+        [
+          290,
+          98.625,
+          298,
+          378
+        ],
+        [
+          290,
+          67.703125,
+          298,
+          378
+        ]
+      ],
+      "scroll": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -396,
+          "scrollHeight": 2358,
+          "scrollTop": 634,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 238,
+          "scrollHeight": 2358,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      }
+    },
+    {
+      "name": "thread-360x843",
+      "images": [
+        [
+          268,
+          91.140625,
+          276,
+          276
+        ]
+      ],
+      "scroll": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 91.140625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2530,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 91.140625,
+          "frameTop": -387.8125,
+          "scrollHeight": 2530,
+          "scrollTop": 630,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 91.140625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2530,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      }
+    },
+    {
+      "name": "thread-390x843",
+      "images": [
+        [
+          290,
+          98.625,
+          298,
+          306
+        ]
+      ],
+      "scroll": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2538,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -395.8125,
+          "scrollHeight": 2538,
+          "scrollTop": 638,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2538,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      }
+    },
+    {
+      "name": "thread-430x843",
+      "images": [
+        [
+          290,
+          98.625,
+          298,
+          346
+        ]
+      ],
+      "scroll": {
+        "driverOnlySpacer": true,
+        "observerMargin": 200,
+        "before": {
+          "frameHeight": 98.625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2538,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "outside": {
+          "frameHeight": 98.625,
+          "frameTop": -395.8125,
+          "scrollHeight": 2538,
+          "scrollTop": 638,
+          "imagePresent": false
+        },
+        "returned": {
+          "frameHeight": 98.625,
+          "frameTop": 242.1875,
+          "scrollHeight": 2538,
+          "scrollTop": 0,
+          "imagePresent": true
+        },
+        "geometryPreservedOnExit": true,
+        "geometryRestoredOnReturn": true
+      }
+    }
+  ]
+}

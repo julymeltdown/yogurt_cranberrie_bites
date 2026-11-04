@@ -13,6 +13,7 @@ const results = [], errors = []
 const remaining = process.env.MCR_FEED_REMAINING === '1'
 const postOnly = process.env.MCR_FEED_POST_ONLY === '1'
 const threadAuthorOnly = process.env.MCR_FEED_THREAD_AUTHOR_ONLY === '1'
+const mediaWidthOnly = process.env.MCR_FEED_MEDIA_WIDTH_ONLY === '1'
 async function open(mode, width, height) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 1, reducedMotion: 'reduce' })
   const page = await context.newPage()
@@ -34,7 +35,13 @@ async function metrics(page) {
     }
     return { viewport: { width: innerWidth, height: innerHeight },
       regions: Object.fromEntries(['.world-shell', '.shell-panel', '.mcr-chrome-panel-header', '.shell-panel-body', '.event-feed', '.feed-footer'].map(selector => [selector, document.querySelector(selector) ? rect(document.querySelector(selector)) : null])),
-      images: [...document.querySelectorAll('.feed-image')].map(image => ({ ...rect(image), naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight, blob: image.src.startsWith('blob:') })),
+      images: [...document.querySelectorAll('.feed-image')].map(image => {
+        const figure = image.closest('figure'), container = image.closest('.feed-media'), css = getComputedStyle(figure)
+        return { ...rect(image), naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight, blob: image.src.startsWith('blob:'),
+          figureWidth: figure.getBoundingClientRect().width, containerWidth: container.getBoundingClientRect().width,
+          heightCap: parseFloat(getComputedStyle(image).maxHeight),
+          figureInset: ['paddingLeft', 'paddingRight', 'borderLeftWidth', 'borderRightWidth'].reduce((sum, key) => sum + parseFloat(css[key]), 0) }
+      }),
       mediaFrames: [...document.querySelectorAll('.feed-media .root-media-view--post')].map(rect),
       postSurfaces: [...document.querySelectorAll('.feed-post, .event-feed[aria-label="Post thread"] > article, section[aria-label="Comments"] > .feed-list > li, .feed-notice-detail')].map(rect),
       controls: Object.fromEntries(['.feed-browse', '.mcr-tab[aria-selected="true"]', '.feed-compose', '.feed-footer'].map(selector => [selector, document.querySelector(selector) ? rect(document.querySelector(selector)) : null])),
@@ -95,8 +102,19 @@ function assertPostSurface(surface) {
   assert.equal(surface.background, 'rgb(241, 236, 223)')
   assert.equal(surface.fontSize, '15px'); assert(surface.fontFamily.includes('Verdana'))
 }
+function assertMediaWidth(images) {
+  assert(images.length > 0, 'Width cohort has no authorized media')
+  for (const image of images) {
+    const expectedFigureWidth = Math.min(298, image.containerWidth)
+    assert(Math.abs(image.figureWidth - expectedFigureWidth) <= 1, 'Post media width does not follow the responsive 298px ceiling')
+    assert.equal(image.figureInset, 8)
+    assert(Math.abs(image.width - (expectedFigureWidth - image.figureInset)) <= 1, 'Image width does not fill the figure content')
+    assert(Math.abs(image.height - image.width * image.naturalHeight / image.naturalWidth) <= 1, 'Post image natural ratio changed')
+    assert(Number.isFinite(image.heightCap) && image.height <= image.heightCap && image.objectFit === 'contain', 'Post media cap or containment changed')
+  }
+}
 try {
-  for (const [width, height] of threadAuthorOnly ? [] : remaining ? [[390, 480]] : [[360, 843], [390, 843], [430, 843], [390, 480]]) {
+  for (const [width, height] of threadAuthorOnly ? [] : mediaWidthOnly ? [[360, 843], [390, 843], [430, 843]] : remaining ? [[390, 480]] : [[360, 843], [390, 843], [430, 843], [390, 480]]) {
     const { context, page } = await open('loaded', width, height)
     try {
       await page.locator('.feed-posts > li').last().scrollIntoViewIfNeeded()
@@ -121,6 +139,7 @@ try {
       }
       assert.deepEqual(observed.images.map(image => [image.naturalWidth, image.naturalHeight]), [[197, 67], [197, 46]])
       assert(observed.images.every(image => image.blob))
+      if (mediaWidthOnly) assertMediaWidth(observed.images)
       if (process.env.MCR_FEED_COMPACT_MEDIA === '1') {
         assert.equal(observed.mediaFrames.length, 2)
         observed.mediaFrames.forEach((frame, index) => {
@@ -156,7 +175,7 @@ try {
       throw error
     } finally { await context.close() }
   }
-  for (const mode of threadAuthorOnly ? [] : ['no-readiness', 'denied-media']) {
+  for (const mode of threadAuthorOnly || mediaWidthOnly ? [] : ['no-readiness', 'denied-media']) {
     const { context, page } = await open(mode, 390, 843)
     try {
       if (mode === 'no-readiness') {
@@ -177,8 +196,12 @@ try {
       results.push({ mode, ...observed, invalidationWithdrawal: true })
     } finally { await context.close() }
   }
-  if (threadAuthorOnly || process.env.MCR_FEED_POST_SHAPES === '1') for (const mode of threadAuthorOnly ? ['thread', 'thread-legacy'] : ['thread', 'notice']) {
-    const { context, page } = await open(mode, 390, 843)
+  const articleCases = mediaWidthOnly ? [360, 390, 430].map(width => ['thread', width])
+    : threadAuthorOnly ? [['thread', 390], ['thread-legacy', 390]]
+      : process.env.MCR_FEED_POST_SHAPES === '1' ? [['thread', 390], ['notice', 390]] : []
+  for (const [mode, width] of articleCases) {
+    const name = `${mode}-${width}x843`
+    const { context, page } = await open(mode, width, 843)
     try {
       const isThread = mode.startsWith('thread')
       const selector = isThread ? '.event-feed[aria-label="Post thread"] > article' : '.feed-notice-detail'
@@ -189,7 +212,7 @@ try {
         await page.getByText('A test reply', { exact: true }).waitFor()
         await article.scrollIntoViewIfNeeded()
         await page.waitForFunction(() => document.querySelector('.feed-image')?.naturalWidth === 197)
-        if (threadAuthorOnly && mode === 'thread') await page.waitForFunction(() => document.querySelector('.feed-portrait [data-whole-character-state="ready"]'))
+        if ((threadAuthorOnly || mediaWidthOnly) && mode === 'thread') await page.waitForFunction(() => document.querySelector('.feed-portrait [data-whole-character-state="ready"]'))
       } else {
         assert.equal(await article.locator('h2').innerText(), 'Fixture notice')
         assert.equal(await article.getByRole('link', { name: 'Source', exact: true }).getAttribute('href'), 'https://example.com/notice')
@@ -197,7 +220,8 @@ try {
       const observed = await metrics(page)
       assert.equal(observed.horizontalOverflow, false)
       observed.postSurfaces.forEach(assertPostSurface)
-      if (threadAuthorOnly) {
+      if (mediaWidthOnly) assertMediaWidth(observed.images)
+      if (threadAuthorOnly || mediaWidthOnly) {
         assert.equal(observed.authors.length, 1)
         if (mode === 'thread') {
           assert.equal(observed.authors[0].ready, 'ready'); assert(observed.authors[0].paintedPixels > 0)
@@ -207,22 +231,22 @@ try {
           assert.equal(observed.authors[0].canvas, null)
           assert.equal(await article.getByRole('img', { name: 'Encore fan: avatar unavailable' }).innerText(), 'E')
         }
-        await article.locator('.feed-portrait').screenshot({ path: join(output, `${mode}-author-390x843.png`) })
+        await article.locator('.feed-portrait').screenshot({ path: join(output, `${name}-author.png`) })
       }
       if (isThread) {
         const comment = page.locator('section[aria-label="Comments"] > .feed-list > li')
         assert.equal(await comment.count(), 1)
         const style = await comment.evaluate(element => ({ background: getComputedStyle(element).backgroundColor, fontSize: getComputedStyle(element).fontSize, fontFamily: getComputedStyle(element).fontFamily }))
         assertPostSurface(style)
-        await comment.screenshot({ path: join(output, `${mode}-comment-390x843.png`) })
+        await comment.screenshot({ path: join(output, `${name}-comment.png`) })
       }
-      await article.screenshot({ path: join(output, `${mode}-article-390x843.png`) })
+      await article.screenshot({ path: join(output, `${name}-article.png`) })
       await page.locator('.shell-panel-body').evaluate(element => { element.scrollTop = 0 })
-      await page.screenshot({ path: join(output, `${mode}-390x843.png`) })
+      await page.screenshot({ path: join(output, `${name}.png`) })
       const targets = await article.locator('button, a').evaluateAll(elements => elements.map(element => ({ width: element.getBoundingClientRect().width, height: element.getBoundingClientRect().height })))
       assert(targets.length > 0 && targets.every(target => target.width >= 44 && target.height >= 44))
       const focus = await keyboardFocus(page, article.locator('button, a').first())
-      if (isThread) scrolling = await scrollProbe(page, `${mode}-390x843`, selector)
+      if (isThread) scrolling = await scrollProbe(page, name, selector)
       else {
         await page.evaluate(() => window.__FEED_SHELL__.navigate('/feed'))
         await page.getByRole('tab', { name: /^NOTICE$/i }).click()
@@ -234,12 +258,12 @@ try {
       await page.waitForFunction(() => window.__FEED_SHELL__.resources() === 0 && document.querySelectorAll('.feed-image, .feed-notice-detail, section[aria-label="Comments"] > .feed-list > li').length === 0)
       await page.evaluate(() => window.__FEED_SHELL__.dispose())
       assert.equal(await page.evaluate(() => window.__FEED_SHELL__.resources()), 0)
-      results.push({ name: `${mode}-390x843`, mode, ...observed, targets, focus, scrolling, invalidationWithdrawal: true, disposedBlobUrls: 0 })
+      results.push({ name, mode, ...observed, targets, focus, scrolling, invalidationWithdrawal: true, disposedBlobUrls: 0 })
     } finally { await context.close() }
   }
   assert.deepEqual(errors, [])
   assert.deepEqual(results.filter(result => result.scrolling && (!result.scrolling.geometryPreservedOnExit || !result.scrolling.geometryRestoredOnReturn)).map(result => result.name), [], 'Offscreen media withdrawal changed Feed geometry')
 } finally {
   await browser.close()
-  await writeFile(join(output, 'native.json'), JSON.stringify({ synthetic: true, postOnly, threadAuthorOnly, remainingCasesOnly: remaining, browser: browser.version(), liveIN03: 'NOT_RUN', results, errors }, null, 2) + '\n')
+  await writeFile(join(output, 'native.json'), JSON.stringify({ synthetic: true, postOnly, threadAuthorOnly, mediaWidthOnly, remainingCasesOnly: remaining, browser: browser.version(), liveIN03: 'NOT_RUN', results, errors }, null, 2) + '\n')
 }

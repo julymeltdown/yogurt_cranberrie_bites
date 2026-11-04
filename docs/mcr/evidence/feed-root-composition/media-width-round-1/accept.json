@@ -1,0 +1,23 @@
+{
+  "allocation": "FE209-WIDTH-POSTMEDIA-NATIVE-202611041649Z",
+  "run": "width1",
+  "acceptedUTC": "2026-11-04T16:52:09.684741+00:00",
+  "activeUntil": "2026-11-04T16:57:09.684741+00:00",
+  "hardUntil": "2026-11-04T16:58:09.684741+00:00",
+  "source": "8eee70df2956fffc37c7b3ef30ef3411fefefdbb",
+  "preflightUTC": "2026-11-04T16:51:41.067861+00:00",
+  "files": 993,
+  "bytes": 12371351,
+  "freeBytes": 29645324288,
+  "reservationBytes": 2717908992,
+  "freeAfterReservations": 26927415296,
+  "jobs": [
+    "supervisor-syntax",
+    "native-syntax",
+    "native-six-feed-thread-width-contexts"
+  ],
+  "in03SourceExecuted": false,
+  "guardInitialFloorBytes": 17179869184,
+  "offerInitialFloorBytes": 12884901888,
+  "liveFloorBytes": 8589934592
+}

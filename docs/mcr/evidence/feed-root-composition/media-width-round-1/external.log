@@ -1,0 +1,4 @@
+{"name":"supervisor-syntax","args":["--check","src/app/feed-entry/__tests__/qualify.mjs"],"exit":0,"signal":null,"startUTC":"2026-11-04T16:53:00.049Z","milliseconds":26}
+{"name":"native-syntax","args":["--check","src/app/feed-entry/__tests__/native.mjs"],"exit":0,"signal":null,"startUTC":"2026-11-04T16:53:00.101Z","milliseconds":26}
+{"name":"native","args":["src/app/feed-entry/__tests__/native.mjs"],"exit":0,"signal":null,"startUTC":"2026-11-04T16:53:00.475Z","milliseconds":12760}
+{"status":"SYNTHETIC_NATIVE_PASSED","final":{"files":1031,"bytes":13681431,"temporaryBytes":0,"freeBytes":29238718464},"releasedUTC":"2026-11-04T16:53:13.262Z","linkRemoved":true}

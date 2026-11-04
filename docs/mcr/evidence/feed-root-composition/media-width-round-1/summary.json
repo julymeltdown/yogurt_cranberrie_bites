@@ -1,0 +1,111 @@
+{
+  "allocation": "FE209-WIDTH-POSTMEDIA-NATIVE-202611041649Z",
+  "run": "width1",
+  "source": "8eee70df2956fffc37c7b3ef30ef3411fefefdbb",
+  "node": "v24.22.2",
+  "nodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "initial": {
+    "files": 995,
+    "bytes": 12372093,
+    "temporaryBytes": 0,
+    "freeBytes": 29293944832
+  },
+  "jobs": [
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.049Z",
+      "milliseconds": 26
+    },
+    {
+      "name": "native-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.101Z",
+      "milliseconds": 26
+    },
+    {
+      "name": "native",
+      "args": [
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.475Z",
+      "milliseconds": 12760
+    },
+    {
+      "name": "vite",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vite.config.ts",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5279",
+        "--strictPort"
+      ],
+      "exit": 143,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.153Z",
+      "milliseconds": 13104
+    }
+  ],
+  "liveIN03": "NOT_RUN",
+  "status": "SYNTHETIC_NATIVE_PASSED",
+  "cssInputs": [
+    {
+      "revision": "ac399c44074a157a7d6bfe9475382672997cc109",
+      "sha256": "0793335a6ba7007d271cc7afdb54493aa3996cb2f08391b179c8e2144efb5feb",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "file": "<carry>/feed-width1-feed-owner.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "375c73dfebf778a8949403001662b33bada4345e",
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "file": "<carry>/feed-width1-root-owner.css",
+      "readonlyBorrow": true
+    }
+  ],
+  "moduleInputs": [
+    {
+      "revision": "49b8bfde47d7f232f7b9dfddfa8c07cf83fdcba6",
+      "sha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+      "path": "frontend/src/app/media-entry/RootMediaView.tsx",
+      "file": "<carry>/feed-width1-root-owner.tsx",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "5447e338f7b1cf70cc10f6e1628ae61dec0f10b7",
+      "sha256": "e275d9da90744514c9fc468bd754410091d9f866b7e959733d4b1b1dac1b25ce",
+      "path": "frontend/src/app/social-composition/panels.tsx",
+      "file": "<carry>/feed-width1-social-owner.tsx",
+      "readonlyBorrow": true
+    }
+  ],
+  "final": {
+    "files": 1031,
+    "bytes": 13681431,
+    "temporaryBytes": 0,
+    "freeBytes": 29238718464
+  },
+  "releasedUTC": "2026-11-04T16:53:13.262Z",
+  "linkRemoved": true,
+  "peakProcesses": 11,
+  "peakRssBytes": 2565881856
+}

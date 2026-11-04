@@ -1,0 +1,380 @@
+{
+  "allocation": "FE209-WIDTH-POSTMEDIA-NATIVE-202611041649Z",
+  "source": "8eee70df2956fffc37c7b3ef30ef3411fefefdbb",
+  "selectedWidthReadsetIdenticalTo": "c74bd94e0232a0f985ce8459009e30dfd7b91510",
+  "acceptedUTC": "2026-11-04T16:52:09.684741+00:00",
+  "workUntil": "2026-11-04T16:57:09.684741+00:00",
+  "hardUntil": "2026-11-04T16:58:09.684741+00:00",
+  "fullUTC": "2026-11-04T16:53:42.611437+00:00",
+  "status": "SYNTHETIC_WIDTH_PASS",
+  "liveIN03": "NOT_RUN",
+  "in03SourceChecks": "NOT_RUN",
+  "commands": [
+    {
+      "name": "supervisor-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/qualify.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.049Z",
+      "milliseconds": 26
+    },
+    {
+      "name": "native-syntax",
+      "args": [
+        "--check",
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.101Z",
+      "milliseconds": 26
+    },
+    {
+      "name": "native",
+      "args": [
+        "src/app/feed-entry/__tests__/native.mjs"
+      ],
+      "exit": 0,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.475Z",
+      "milliseconds": 12760
+    },
+    {
+      "name": "vite",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--configLoader",
+        "native",
+        "--config",
+        "src/app/feed-entry/__tests__/vite.config.ts",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5279",
+        "--strictPort"
+      ],
+      "exit": 143,
+      "signal": null,
+      "startUTC": "2026-11-04T16:53:00.153Z",
+      "milliseconds": 13104
+    }
+  ],
+  "cases": 6,
+  "codePins": [
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/native.mjs",
+      "sha256": "4685faeff0312d4c152323b12b0210e8e26723a5544fceadbba05a9ae79d47cb"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/qualify.mjs",
+      "sha256": "951ac1db21270fa6a9889bdab8cc3202a340f5813c6382ca634e79a54508e969"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/fixture.ts",
+      "sha256": "ac367892772b56734e4d7b7e6fe4e70ae762ff1eeeb3dd3622ab03ca3350ae60"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/preview.tsx",
+      "sha256": "6a8d0967644309215343ef0338cefcdbf925bbf33247f6adce2a94d1c960a431"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/vite.config.ts",
+      "sha256": "b2a88926ba7c68ac0ed337ce960388d4c82dd529999be6c13c9d0fc896f4c705"
+    },
+    {
+      "path": "frontend/src/app/feed-entry/__tests__/tsconfig.json",
+      "sha256": "45c628ad36d2f831e7f09b1f77bd2a42f50809723fbc2779d654ae9ecc60c79c"
+    },
+    {
+      "path": "frontend/src/features/feed-thread/FeedThread.tsx",
+      "sha256": "5f3059b60a7087d324e83e775784ced89f595db0c19759cc0c3b56e3eb57c49a"
+    }
+  ],
+  "ownerInputs": [
+    {
+      "revision": "ac399c44074a157a7d6bfe9475382672997cc109",
+      "sha256": "0793335a6ba7007d271cc7afdb54493aa3996cb2f08391b179c8e2144efb5feb",
+      "path": "frontend/src/features/event-feed/feed.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "375c73dfebf778a8949403001662b33bada4345e",
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "49b8bfde47d7f232f7b9dfddfa8c07cf83fdcba6",
+      "sha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+      "path": "frontend/src/app/media-entry/RootMediaView.tsx",
+      "readonlyBorrow": true
+    },
+    {
+      "revision": "5447e338f7b1cf70cc10f6e1628ae61dec0f10b7",
+      "sha256": "e275d9da90744514c9fc468bd754410091d9f866b7e959733d4b1b1dac1b25ce",
+      "path": "frontend/src/app/social-composition/panels.tsx",
+      "readonlyBorrow": true
+    }
+  ],
+  "ownImageAssessment": "All six full Feed/Thread native captures inspected; larger source images retain natural proportions, responsive Thread360 containment, selected approved character painting, actual post/comment paper surfaces and established surrounding controls. No full visual/release acceptance claimed.",
+  "reuse": [
+    "sealed Feed/Notice negative and short-height cases",
+    "legacy author case",
+    "unchanged passed types/unit/lint and C07 guards"
+  ],
+  "limitations": [
+    "Synthetic declared fixtures only; no actual multiuser/provider acceptance.",
+    "HTTP/WS/cache IN03 source bundle is unexecuted and unrelated to this width result."
+  ],
+  "artifacts": [
+    {
+      "path": "accept.json",
+      "bytes": 742,
+      "rawSha256": "dff13201dc22a5bf0c09010310acaf37b2c73729642f23df1bddcc75078e877f",
+      "portableSha256": "dff13201dc22a5bf0c09010310acaf37b2c73729642f23df1bddcc75078e877f"
+    },
+    {
+      "path": "external.log",
+      "bytes": 666,
+      "rawSha256": "1378b6d39656b1a20146c17d3dcde72a9bf87214d7d83c3027504730f89d7e9e",
+      "portableSha256": "1378b6d39656b1a20146c17d3dcde72a9bf87214d7d83c3027504730f89d7e9e"
+    },
+    {
+      "path": "feed-owner.css",
+      "bytes": 16635,
+      "rawSha256": "0793335a6ba7007d271cc7afdb54493aa3996cb2f08391b179c8e2144efb5feb",
+      "portableSha256": "0793335a6ba7007d271cc7afdb54493aa3996cb2f08391b179c8e2144efb5feb"
+    },
+    {
+      "path": "full.json",
+      "bytes": 5973,
+      "rawSha256": "376e9fe48c8c86fb74247f6819dbd43c06af5e0fba1683d66b803f3800d2473d",
+      "portableSha256": "376e9fe48c8c86fb74247f6819dbd43c06af5e0fba1683d66b803f3800d2473d"
+    },
+    {
+      "path": "guardian.json",
+      "bytes": 1413,
+      "rawSha256": "1abde3208d715d6320036e28a8980a719c758f75b0b5d566323ee640aba94640",
+      "portableSha256": "1abde3208d715d6320036e28a8980a719c758f75b0b5d566323ee640aba94640"
+    },
+    {
+      "path": "native/feed-360x843-author-1.png",
+      "bytes": 3155,
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "portableSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe"
+    },
+    {
+      "path": "native/feed-360x843-author-2.png",
+      "bytes": 2730,
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "portableSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94"
+    },
+    {
+      "path": "native/feed-360x843-media-1.png",
+      "bytes": 41363,
+      "rawSha256": "9c986b88de7edfa85edf2fd0f359b69d487afe5fd16d836ade54fb1e3e5179a9",
+      "portableSha256": "9c986b88de7edfa85edf2fd0f359b69d487afe5fd16d836ade54fb1e3e5179a9"
+    },
+    {
+      "path": "native/feed-360x843-media-2.png",
+      "bytes": 34590,
+      "rawSha256": "6a6d1846b7c74343357c00537d84ec7460fc9734684ac7d677e2298a4ec35f6a",
+      "portableSha256": "6a6d1846b7c74343357c00537d84ec7460fc9734684ac7d677e2298a4ec35f6a"
+    },
+    {
+      "path": "native/feed-360x843.png",
+      "bytes": 126579,
+      "rawSha256": "db9e164619d85b58fc25a048c5b4d0cc325f68c53f5f66cf47f6f85a7b246433",
+      "portableSha256": "db9e164619d85b58fc25a048c5b4d0cc325f68c53f5f66cf47f6f85a7b246433"
+    },
+    {
+      "path": "native/feed-390x843-author-1.png",
+      "bytes": 3155,
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "portableSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe"
+    },
+    {
+      "path": "native/feed-390x843-author-2.png",
+      "bytes": 2730,
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "portableSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94"
+    },
+    {
+      "path": "native/feed-390x843-media-1.png",
+      "bytes": 41365,
+      "rawSha256": "fd1953a9c443642c35a1c0cf5ba7b38d76c8bdd84d2b906dea8198426818b48b",
+      "portableSha256": "fd1953a9c443642c35a1c0cf5ba7b38d76c8bdd84d2b906dea8198426818b48b"
+    },
+    {
+      "path": "native/feed-390x843-media-2.png",
+      "bytes": 34605,
+      "rawSha256": "4e79b649d972dc11afd7386f1e43f8b5c7e0166b9e1eb9527b24e906b64becb3",
+      "portableSha256": "4e79b649d972dc11afd7386f1e43f8b5c7e0166b9e1eb9527b24e906b64becb3"
+    },
+    {
+      "path": "native/feed-390x843.png",
+      "bytes": 127754,
+      "rawSha256": "14c256605a38c75999971076b08b5e1c59ffbad502d350d737e165c9d18200bf",
+      "portableSha256": "14c256605a38c75999971076b08b5e1c59ffbad502d350d737e165c9d18200bf"
+    },
+    {
+      "path": "native/feed-430x843-author-1.png",
+      "bytes": 3155,
+      "rawSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe",
+      "portableSha256": "bed7a482dcf7d35b78e9791a676cbc1e03cdf5d5b56230632f9937560bbde5fe"
+    },
+    {
+      "path": "native/feed-430x843-author-2.png",
+      "bytes": 2730,
+      "rawSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94",
+      "portableSha256": "01c4c8e51c2372d4a393fb26840c8ac1d9724cb543d747fa0157566c43903f94"
+    },
+    {
+      "path": "native/feed-430x843-media-1.png",
+      "bytes": 41365,
+      "rawSha256": "fd1953a9c443642c35a1c0cf5ba7b38d76c8bdd84d2b906dea8198426818b48b",
+      "portableSha256": "fd1953a9c443642c35a1c0cf5ba7b38d76c8bdd84d2b906dea8198426818b48b"
+    },
+    {
+      "path": "native/feed-430x843-media-2.png",
+      "bytes": 34605,
+      "rawSha256": "4e79b649d972dc11afd7386f1e43f8b5c7e0166b9e1eb9527b24e906b64becb3",
+      "portableSha256": "4e79b649d972dc11afd7386f1e43f8b5c7e0166b9e1eb9527b24e906b64becb3"
+    },
+    {
+      "path": "native/feed-430x843.png",
+      "bytes": 128789,
+      "rawSha256": "670c98ebbf9eec03a0f8108aa91725037315bf4df6a4c93d7a40a729bf6619e3",
+      "portableSha256": "670c98ebbf9eec03a0f8108aa91725037315bf4df6a4c93d7a40a729bf6619e3"
+    },
+    {
+      "path": "native/native.json",
+      "bytes": 89540,
+      "rawSha256": "ad0539c16342baa90003b61aae243bc9a6d2d112dc1de31a27299cb0c63fc8fd",
+      "portableSha256": "ad0539c16342baa90003b61aae243bc9a6d2d112dc1de31a27299cb0c63fc8fd"
+    },
+    {
+      "path": "native/thread-360x843-article.png",
+      "bytes": 55993,
+      "rawSha256": "54dd91fa4b51ecf17db5ce2df7049b471a47fd841fac783e6555c80745791645",
+      "portableSha256": "54dd91fa4b51ecf17db5ce2df7049b471a47fd841fac783e6555c80745791645"
+    },
+    {
+      "path": "native/thread-360x843-author.png",
+      "bytes": 3165,
+      "rawSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09",
+      "portableSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09"
+    },
+    {
+      "path": "native/thread-360x843-comment.png",
+      "bytes": 7282,
+      "rawSha256": "6e1f779fceac0c4ebf5f138fd32b0e369a906d6069d229f4f5ca6df438017349",
+      "portableSha256": "6e1f779fceac0c4ebf5f138fd32b0e369a906d6069d229f4f5ca6df438017349"
+    },
+    {
+      "path": "native/thread-360x843.png",
+      "bytes": 110343,
+      "rawSha256": "bb62af4380539ca93be1c042736bc804ec32520d7a636d252fe6e373974721f0",
+      "portableSha256": "bb62af4380539ca93be1c042736bc804ec32520d7a636d252fe6e373974721f0"
+    },
+    {
+      "path": "native/thread-390x843-article.png",
+      "bytes": 61258,
+      "rawSha256": "07021f3ca352bed8cb433cb9db05caaed14dc88bada678d291027de30c3767cf",
+      "portableSha256": "07021f3ca352bed8cb433cb9db05caaed14dc88bada678d291027de30c3767cf"
+    },
+    {
+      "path": "native/thread-390x843-author.png",
+      "bytes": 3165,
+      "rawSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09",
+      "portableSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09"
+    },
+    {
+      "path": "native/thread-390x843-comment.png",
+      "bytes": 7358,
+      "rawSha256": "78f7c4790a2319a82f402cb2217479e5b3f562be95f03461641351038377ba3e",
+      "portableSha256": "78f7c4790a2319a82f402cb2217479e5b3f562be95f03461641351038377ba3e"
+    },
+    {
+      "path": "native/thread-390x843.png",
+      "bytes": 115907,
+      "rawSha256": "59ea76b73c000be53b3cfabd3438458ab0884107faaca140dedf9613c5f3469f",
+      "portableSha256": "59ea76b73c000be53b3cfabd3438458ab0884107faaca140dedf9613c5f3469f"
+    },
+    {
+      "path": "native/thread-430x843-article.png",
+      "bytes": 61918,
+      "rawSha256": "2ac81c8b7b8316bea66adc1c8c52b7972d3570464b9747fa1ad9fce085bee397",
+      "portableSha256": "2ac81c8b7b8316bea66adc1c8c52b7972d3570464b9747fa1ad9fce085bee397"
+    },
+    {
+      "path": "native/thread-430x843-author.png",
+      "bytes": 3165,
+      "rawSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09",
+      "portableSha256": "242b95b96b5a2bef4c72ee22322fc1232ee0bafc3782ac6ecb01252abc306a09"
+    },
+    {
+      "path": "native/thread-430x843-comment.png",
+      "bytes": 7445,
+      "rawSha256": "83832fca6b76a3678427eebaeb255d070717f7102c1932371274314aae8654fc",
+      "portableSha256": "83832fca6b76a3678427eebaeb255d070717f7102c1932371274314aae8654fc"
+    },
+    {
+      "path": "native/thread-430x843.png",
+      "bytes": 118327,
+      "rawSha256": "283f663a9f505775e0cbb741503a5c23d2bd661dabc845aab5788889d3b3f004",
+      "portableSha256": "283f663a9f505775e0cbb741503a5c23d2bd661dabc845aab5788889d3b3f004"
+    },
+    {
+      "path": "native-syntax.log",
+      "bytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native.log",
+      "bytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "root-owner.css",
+      "bytes": 2260,
+      "rawSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "portableSha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504"
+    },
+    {
+      "path": "root-owner.tsx",
+      "bytes": 9328,
+      "rawSha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a",
+      "portableSha256": "f22e034423804ec41658fa26760d07926f4f2ebce339fed685072fbf09542d9a"
+    },
+    {
+      "path": "social-owner.tsx",
+      "bytes": 7021,
+      "rawSha256": "e275d9da90744514c9fc468bd754410091d9f866b7e959733d4b1b1dac1b25ce",
+      "portableSha256": "e275d9da90744514c9fc468bd754410091d9f866b7e959733d4b1b1dac1b25ce"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 3189,
+      "rawSha256": "399d00aec0497b2d8f3c1b5947ae3dd5266813bd9376f13f0dee57f7ff728f54",
+      "portableSha256": "f39731fb2cd9c26357e5c768b3623644b4a62cbf00db85ccdc33f1b0772ac002"
+    },
+    {
+      "path": "supervisor-syntax.log",
+      "bytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "portableSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vite.log",
+      "bytes": 72,
+      "rawSha256": "d62e825867e01cb71f5868ea4281736ca3d053c5257b3888ef18da5a18a48c56",
+      "portableSha256": "d62e825867e01cb71f5868ea4281736ca3d053c5257b3888ef18da5a18a48c56"
+    }
+  ]
+}
