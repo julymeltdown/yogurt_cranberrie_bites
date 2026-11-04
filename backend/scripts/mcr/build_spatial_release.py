@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 import struct
 import subprocess
+import zlib
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE_COMMIT = '8f89d1905a86143d34ff77d2951fc60651ab2497'
@@ -43,6 +44,7 @@ class Inputs(NamedTuple):
     tiled_hash: str = TILED_HASH
     map_revision: int = MAP_REVISION
     reviewed_at: str = SOURCE_REVIEWED_AT
+    world_objects: int = 22
 
 
 BASELINE = Inputs()
@@ -59,6 +61,20 @@ QUALITY_V6 = Inputs(
     tiled_hash='sha256:60364d5f35bcc8ff82931b7e3a0724a4580880d4a481610e90475d73dcb6ceb9',
     map_revision=4, reviewed_at='2026-11-04T00:38:46Z',
 )
+QUALITY_V8 = Inputs(
+    source_commit='492160b15465818eca172f4017f3816d58c989a9',
+    art_commit='492160b15465818eca172f4017f3816d58c989a9',
+    tiled_commit='cf48c0fe01f8207f5a39e91daf238cc4c85a3980',
+    geometry_path=BASE + 'spatial-v4/geometry-proposal.json',
+    geometry_hash='sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f',
+    proposal_version=4, runtime=BASE + 'quality-v8/', art_version=8,
+    manifest_hash='sha256:0aa7ffc44d4fa69ad8d0ac9dfb8ab30907ce0e785aa461a03a1452b8461518d6',
+    manifest_bytes=6216, projection_path=BASE + 'spatial-v4/integer-projection.json',
+    tiled_path=BASE + 'runtime/spatial-v4/canonical-map.json',
+    tiled_hash='sha256:c589b9b01c3e9f7162ccf7443782363bc9c132dd807b5fe15557686df584cf6f',
+    map_revision=5, reviewed_at='2026-11-04T02:11:03Z', world_objects=34,
+)
+CANDIDATES = {'baseline': BASELINE, 'quality-v6': QUALITY_V6, 'quality-v8': QUALITY_V8}
 spec = importlib.util.spec_from_file_location('mcr_spatial_assets', ROOT / 'scripts/mcr/validate-assets.py')
 assets = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(assets)
@@ -92,6 +108,75 @@ def png_size(data):
     width, height = struct.unpack('>II', data[16:24])
     require(width > 0 and height > 0, 'empty PNG')
     return width, height
+
+
+def decode_png(data):
+    # The v8 review records a real integrity and complete pixel decode, rather
+    # than deriving that claim from the dimensions in the IHDR alone. These
+    # pinned RGB/RGBA8 non-interlaced inputs need no new validation dependency.
+    width, height = png_size(data)
+    bits, color, compression, filtering, interlace = data[24:29]
+    require(bits == 8 and color in (2, 6) and (compression, filtering, interlace) == (0, 0, 0),
+            'unsupported pinned PNG encoding')
+    channels = 3 if color == 2 else 4
+    offset, compressed, ended = 8, bytearray(), False
+    while offset < len(data):
+        require(offset + 12 <= len(data), 'truncated PNG chunk')
+        size = struct.unpack('>I', data[offset:offset + 4])[0]
+        kind = data[offset + 4:offset + 8]
+        end = offset + 8 + size
+        require(end + 4 <= len(data), 'truncated PNG payload')
+        chunk = data[offset + 4:end]
+        require(zlib.crc32(chunk) == struct.unpack('>I', data[end:end + 4])[0], 'PNG CRC mismatch')
+        if kind == b'IDAT':
+            compressed.extend(data[offset + 8:end])
+        offset = end + 4
+        if kind == b'IEND':
+            require(size == 0 and offset == len(data), 'invalid PNG ending')
+            ended = True
+            break
+    require(ended and compressed, 'incomplete PNG stream')
+    decoded = zlib.decompress(compressed)
+    stride = width * channels
+    require(len(decoded) == height * (stride + 1), 'PNG pixel stream size mismatch')
+    previous = bytearray(stride)
+    for y in range(height):
+        start = y * (stride + 1)
+        filter_kind = decoded[start]
+        require(filter_kind in range(5), 'invalid PNG row filter')
+        row = bytearray(decoded[start + 1:start + stride + 1])
+        for x in range(stride):
+            left = row[x - channels] if x >= channels else 0
+            up = previous[x]
+            corner = previous[x - channels] if x >= channels else 0
+            p = left + up - corner
+            distances = (abs(p - left), abs(p - up), abs(p - corner))
+            paeth = (left, up, corner)[distances.index(min(distances))]
+            predictor = (0, left, up, (left + up) // 2, paeth)[filter_kind]
+            row[x] = (row[x] + predictor) & 255
+        previous = row
+
+
+def verify_v8_revision(proposal, evidence):
+    previous = json.loads(published_input(QUALITY_V6.geometry_path, QUALITY_V6.source_commit))
+    old_geometry, geometry = previous['geometry'], proposal['geometry']
+    require(proposal['places'] == previous['places'], 'v8 changes original place provenance')
+    require({k: v for k, v in geometry.items() if k not in ('collision_id', 'collision_grid')}
+            == {k: v for k, v in old_geometry.items() if k not in ('collision_id', 'collision_grid')},
+            'v8 changes frozen terrain, overdraw, dimensions, spawns or interactions')
+    changes = []
+    for y, (before, after) in enumerate(zip(old_geometry['collision_grid'], geometry['collision_grid'])):
+        for x, (old, new) in enumerate(zip(before, after)):
+            if old != new:
+                require((old, new) == (0, 1), 'v8 removes a blocked cell')
+                changes.append({'cell_x': x, 'cell_y': y, 'previous': old, 'proposed': new})
+    require(len(changes) == 72 and changes == evidence['changed_cells'], 'v8 collision evidence mismatch')
+    require(evidence['base_geometry_hash'] == QUALITY_V6.geometry_hash
+            and evidence['geometry_hash'] == QUALITY_V8.geometry_hash, 'v8 evidence geometry mismatch')
+    old_props = {p['id']: p for p in previous['placements']}
+    new_props = {p['id']: p for p in proposal['placements']}
+    require(len(new_props) == 34 and all(new_props.get(k) == v for k, v in old_props.items())
+            and len(new_props.keys() - old_props.keys()) == 12, 'v8 changes frozen props or root additions')
 
 
 def candidate_map(proposal, inputs=BASELINE):
@@ -165,9 +250,9 @@ def build(inputs=BASELINE):
     require(sha(projection_data) == art['integer_projection']['sha256'], 'integer source projection mismatch')
     projection = json.loads(projection_data)
     common_sources = []
-    if inputs.art_version == 6:
-        require(art['format'] == 'MCR_REFERENCE_SCENE_SPATIAL3_QUALITY6'
-                and art['geometry_revision'] == 3, 'unknown quality-v6 source')
+    if inputs.art_version in (6, 8):
+        require(art['format'] == f'MCR_REFERENCE_SCENE_SPATIAL{inputs.proposal_version}_QUALITY{inputs.art_version}'
+                and art['geometry_revision'] == inputs.proposal_version, 'unknown source generation')
         for pin in [art['source_metadata']] + art['sources']:
             require('..' not in pin['path'].split('/') and not pin['path'].startswith('/'),
                     'invalid common source path')
@@ -176,6 +261,14 @@ def build(inputs=BASELINE):
             require(sha(raw) == pin['sha256'] and ('bytes' not in pin or len(raw) == pin['bytes']),
                     'common source pin mismatch')
             common_sources.append(file_pin(path, raw))
+    if inputs.art_version == 8:
+        evidence_path = BASE + 'spatial-v4/revision-evidence.json'
+        evidence_raw = published_input(evidence_path, inputs.art_commit)
+        require(sha(evidence_raw) == art['geometry_revision_evidence']['sha256'], 'v8 revision evidence pin mismatch')
+        verify_v8_revision(proposal, json.loads(evidence_raw))
+        common_sources.append(file_pin(evidence_path, evidence_raw))
+        require(projection['version'] == 4 and projection['geometry_hash'] == inputs.geometry_hash,
+                'v8 integer projection identity mismatch')
     scenes = []
     budgets = {}
     reference = None
@@ -203,7 +296,7 @@ def build(inputs=BASELINE):
         assets.Draft202012Validator({'$ref': '#/components/schemas/Scenery',
                                     'components': api['components']}).validate(scenery)
         assets.validate_scenery(scenery, geometry)
-        require(len(scenery['objects']) == len(layout['placements']) == 22
+        require(len(scenery['objects']) == len(layout['placements']) == inputs.world_objects
                 and len(layout['overview_representations']) == 6, 'unexpected WORLD/MAP projection')
         for obj, placement in zip(scenery['objects'], layout['placements']):
             require(all(obj[k] == placement[k] for k in ['id', 'x', 'y', 'width', 'height', 'depth_y']),
@@ -211,10 +304,17 @@ def build(inputs=BASELINE):
             require(obj['frame'] == layout['frames'][placement['frame']], 'scenery changes authored frame')
             source = next(p for p in proposal['placements'] if p['id'] == obj['id'])
             require(source['footprint'] == placement['footprint'], 'era changes collision footprint')
-        for pin in projection['objects']:
-            obj = next(obj for obj in layout[pin['group']] if obj['id'] == pin['id'])
-            require(obj['id'] == pin['id'] and all(type(obj[k]) is int and obj[k] == v
-                    for k, v in pin['runtime'].items()), 'era changes canonical integer projection')
+        if inputs.art_version == 8:
+            for group in ('placements', 'overview_representations'):
+                require(layout[group] == projection[group], 'era changes v8 authored integer projection')
+            require(all(type(p[k]) is int for group in ('placements', 'overview_representations')
+                        for p in projection[group] for k in ('x', 'y', 'width', 'height', 'depth_y')),
+                    'v8 fractional runtime projection')
+        else:
+            for pin in projection['objects']:
+                obj = next(obj for obj in layout[pin['group']] if obj['id'] == pin['id'])
+                require(obj['id'] == pin['id'] and all(type(obj[k]) is int and obj[k] == v
+                        for k, v in pin['runtime'].items()), 'era changes canonical integer projection')
         destinations = [{k: obj[k] for k in ['id', 'x', 'y', 'width', 'height', 'depth_y']}
                         for obj in scenery['objects']]
         if reference is None:
@@ -228,6 +328,8 @@ def build(inputs=BASELINE):
             require(all(pin[k] == descriptor[k] for k in ['path', 'sha256', 'bytes', 'width_px', 'height_px'])
                     and sha(raw) == pin['sha256'] and len(raw) == pin['bytes'], 'runtime scenery/resource mismatch')
             require(png_size(raw) == (pin['width_px'], pin['height_px']), 'runtime dimension mismatch')
+            if inputs.art_version == 8:
+                decode_png(raw)
             runtime.append({k: pin[k] for k in ['path', 'sha256', 'bytes', 'width_px', 'height_px']})
         require(runtime[1]['sha256'] not in atlas_hashes, 'distinct eras must not alias the same atlas')
         atlas_hashes.add(runtime[1]['sha256'])
@@ -279,14 +381,14 @@ def build(inputs=BASELINE):
     }
     outputs = {'map-manifest.json': manifest, 'source-binding.json': binding, 'readiness.json': readiness,
                'engineering-source-review.json': review}
-    if inputs == QUALITY_V6:
+    if inputs in (QUALITY_V6, QUALITY_V8):
         # A separate source-level review for exact scenery/texture inputs. This
         # neither rewrites artist records nor reviews arbitrary theme/avatar DTOs.
         qualified = []
         for scene in scenes:
             theme_id = scene['theme_id']
             provenance = {
-                'source_id': 'mcr_quality_v6_' + theme_id.lower() + '_scenery',
+                'source_id': f'mcr_quality_v{inputs.art_version}_' + theme_id.lower() + '_scenery',
                 'source_kind': 'ORIGINAL_ART',
                 'source_revision': inputs.art_commit + '; scenery ' + scene['scenery_source']['sha256']
                     + '; source-binding ' + review['source_binding_sha256'],
@@ -295,7 +397,8 @@ def build(inputs=BASELINE):
                 'author': 'MCR reference scene source author; source-bound scenery packaging',
                 'license': 'Original MCR virtual scenery source inputs; attribution retained in pinned artist documents.',
                 'review_state': 'REVIEWED', 'reviewed_by': SOURCE_REVIEWER,
-                'reviewed_at': '2026-11-04T00:58:55Z', 'photo_permission': 'NOT_APPLICABLE',
+                'reviewed_at': '2026-11-04T00:58:55Z' if inputs == QUALITY_V6 else inputs.reviewed_at,
+                'photo_permission': 'NOT_APPLICABLE',
             }
             assets.Draft202012Validator({'$ref': '#/components/schemas/Provenance',
                                         'components': api['components']}).validate(provenance)
@@ -326,12 +429,12 @@ def build(inputs=BASELINE):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check', action='store_true')
-    parser.add_argument('--candidate', choices=['baseline', 'quality-v6'], default='baseline')
+    parser.add_argument('--candidate', choices=list(CANDIDATES), default='baseline')
     args = parser.parse_args()
     directory = ROOT / 'backend/releases/reference-scene-v2'
-    if args.candidate == 'quality-v6':
-        directory /= 'quality-v6'
-    outputs = build(QUALITY_V6 if args.candidate == 'quality-v6' else BASELINE)
+    if args.candidate != 'baseline':
+        directory /= args.candidate
+    outputs = build(CANDIDATES[args.candidate])
     for name, document in outputs.items():
         # Canonical map bytes are accepted by the owning domain CatalogRelease.
         raw = assets.canonical_bytes(document) if name == 'map-manifest.json' else (
