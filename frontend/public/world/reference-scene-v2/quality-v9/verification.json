@@ -1,0 +1,93 @@
+{
+  "status": "PASS_V9_SOURCE_COMPOSITION_ONLY",
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "ground_changed_pixels": 49996,
+  "ground_change_scope": "Only within7px independent raster-union edge neighborhood; lossless native-RGB parity.",
+  "canonical_geometry_and_original_places_unchanged": true,
+  "themes": [
+    {
+      "era": "revenge",
+      "schema": "PASS",
+      "world_props": 34,
+      "map_representations": 8,
+      "runtime_pngs": 2,
+      "bytes": 1762305,
+      "pixels": 2043904,
+      "native_projects": 2
+    },
+    {
+      "era": "parade",
+      "schema": "PASS",
+      "world_props": 34,
+      "map_representations": 8,
+      "runtime_pngs": 2,
+      "bytes": 1773492,
+      "pixels": 2043904,
+      "native_projects": 2
+    },
+    {
+      "era": "danger",
+      "schema": "PASS",
+      "world_props": 34,
+      "map_representations": 8,
+      "runtime_pngs": 2,
+      "bytes": 1759797,
+      "pixels": 2043904,
+      "native_projects": 2
+    }
+  ],
+  "north_facade_probes": [
+    {
+      "era": "revenge",
+      "id": "north_west_facade_representation",
+      "near_opaque_source_samples": 304,
+      "v9_visible_matches": 260,
+      "v8_same_region_matches": 57,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "revenge",
+      "id": "north_east_facade_representation",
+      "near_opaque_source_samples": 325,
+      "v9_visible_matches": 247,
+      "v8_same_region_matches": 50,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "parade",
+      "id": "north_west_facade_representation",
+      "near_opaque_source_samples": 323,
+      "v9_visible_matches": 269,
+      "v8_same_region_matches": 58,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "parade",
+      "id": "north_east_facade_representation",
+      "near_opaque_source_samples": 342,
+      "v9_visible_matches": 238,
+      "v8_same_region_matches": 37,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "danger",
+      "id": "north_west_facade_representation",
+      "near_opaque_source_samples": 305,
+      "v9_visible_matches": 244,
+      "v8_same_region_matches": 41,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    },
+    {
+      "era": "danger",
+      "id": "north_east_facade_representation",
+      "near_opaque_source_samples": 316,
+      "v9_visible_matches": 225,
+      "v8_same_region_matches": 37,
+      "threshold": "At least40percent source-color matches and30more than old rendering; direct static color samples, not a critic or fidelity score."
+    }
+  ],
+  "limits": [
+    "Painted route edges do not certify geometric route-hierarchy fidelity.",
+    "No fourth critic score, application, source qualification, backend admission, physical or multiuser acceptance."
+  ]
+}
