@@ -1,0 +1,2 @@
+Guard process exit 1: AssertionError: Undeclared reachable symlink target
+During full-custody census at stage 1, before completion. The command process tree was terminated and declared private scratch/link removed.

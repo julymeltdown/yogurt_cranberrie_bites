@@ -6,6 +6,7 @@ import { SignIn } from '../features/auth/ui/SignIn'
 import { ResetPassword } from '../features/auth/ui/ResetPassword'
 import { SignUp } from '../features/auth/ui/SignUp'
 import { VerifyEmail } from '../features/auth/ui/VerifyEmail'
+import { AdmissionBoundary } from '../features/auth/ui/AdmissionBoundary'
 import { Callback } from '../features/auth/ui/Callback'
 import { AccountDeletionRecovery } from './account-deletion-entry/recovery'
 
@@ -16,11 +17,11 @@ export default function PublicBoundary() {
   const location = useLocation(), params = useParams()
   if (location.pathname === '/account/deleted') return <AccountDeletionRecovery />
   if (location.pathname === '/') return <FoundationApp />
-  if (location.pathname === '/signup') return <SignUp />
-  if (location.pathname === '/verify-email') return <VerifyEmail />
-  if (location.pathname === '/login') return <SignIn />
+  if (location.pathname === '/signup') return <AdmissionBoundary><SignUp /></AdmissionBoundary>
+  if (location.pathname === '/verify-email') return <AdmissionBoundary><VerifyEmail /></AdmissionBoundary>
+  if (location.pathname === '/login') return <AdmissionBoundary><SignIn /></AdmissionBoundary>
   if (location.pathname === '/reset-password') return <ResetPassword />
-  if (location.pathname === '/auth/callback') return <Callback />
+  if (location.pathname === '/auth/callback') return <AdmissionBoundary><Callback /></AdmissionBoundary>
   if (location.pathname.startsWith('/legal/')) return <DocumentPage document={params.document} />
   if (location.pathname === '/archive') return <Suspense fallback={<p role="status">Opening archive…</p>}><ArchiveRoute /></Suspense>
   const title = location.pathname === '/login' ? 'Sign in'

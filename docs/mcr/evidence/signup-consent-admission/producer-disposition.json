@@ -1,0 +1,31 @@
+{
+  "owner": "backend207",
+  "evidenceKind": "responsible owner report; not rerun or independently reviewed by frontend204",
+  "compiledSource": "2f7992d4",
+  "controllerSource": "5a9a67dd",
+  "contractSource": "ed50c2f1",
+  "disposition": "PASS owner-owned PG/RPC/Gateway and mail-worker capture; canonical publication pending",
+  "cases": [
+    "pure consent case",
+    "real PostgreSQL16/19 Auth SQL",
+    "guarded Auth RPC and actual Gateway HTTP",
+    "physical process restart with fresh PID",
+    "mail-worker HTTP capture asserts attempt/code-only verification link",
+    "expired pending password-proven resume",
+    "wrong-password and active-identity shadow neutrality",
+    "exact generic receipt without UUID",
+    "durable consent and superseding-policy gate",
+    "atomic rollback"
+  ],
+  "reportedSeconds": {
+    "source": 10.736,
+    "restart": 2.542
+  },
+  "actualResourceFull": "2026-11-04T18:05:52.668491Z",
+  "limitations": [
+    "No actual frontend browser proof claimed by backend owner",
+    "No external real mailbox proof claimed",
+    "Production approved policy remains absent; POLICY_UNAVAILABLE is intentional",
+    "Requires actual approved operator publication and configured AUTH_ENROLLMENT_VERIFICATION_URL"
+  ]
+}

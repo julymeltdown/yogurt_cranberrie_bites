@@ -1,0 +1,11 @@
+{
+  "id": "FE10-CONSENT-BROWSER1-20261104T1810Z",
+  "status": "DECLINED_EXPIRED_BEFORE_ACCEPTANCE",
+  "admissionExpiry": "2026-11-04T18:11:30Z",
+  "finalCheck": "2026-11-04T18:11:49Z",
+  "workloadStarted": false,
+  "linkCreated": false,
+  "scratchCreated": false,
+  "offerFileCreated": false,
+  "freeBytes": 18385686528
+}

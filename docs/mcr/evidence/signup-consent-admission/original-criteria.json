@@ -1,0 +1,107 @@
+{
+  "task": "FE10",
+  "specification": "MCR_IMPLEMENTATION_PLAN_V2_EN.md:516",
+  "sourcePin": "b13ed1592ba2e68a0f739a6c6717bc146bb49344",
+  "contractPin": "ed50c2f1",
+  "overall": "IN_PROGRESS; no original FE10 acceptance claim",
+  "rows": [
+    {
+      "id": "mapped-forms",
+      "criterion": "New signup and verification forms using mapped server flow",
+      "paths": [
+        "frontend/src/features/auth/ui/SignUp.tsx",
+        "frontend/src/features/auth/ui/VerifyEmail.tsx",
+        "frontend/src/features/auth/model/enrollment-contract.ts"
+      ],
+      "state": "IN_PROGRESS",
+      "disposition": "Source authored against registered ed50c2f1; fresh qualification NOT_RUN",
+      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+    },
+    {
+      "id": "validation",
+      "criterion": "Validate raw UTF8 password, email and six-digit code",
+      "paths": [
+        "frontend/src/features/auth/model/enrollment-contract.ts",
+        "frontend/src/features/auth/model/recovery-contract.ts"
+      ],
+      "state": "IN_PROGRESS",
+      "disposition": "Existing password predicate retained; new policy/attempt controller paths require focused checks",
+      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+    },
+    {
+      "id": "consent",
+      "criterion": "Explicit consent bound to approved published policy",
+      "paths": [
+        "frontend/src/features/auth/ui/EnrollmentPolicy.tsx",
+        "frontend/src/features/auth/ui/ConsentAdmission.tsx",
+        "frontend/src/features/auth/model/enrollment.ts"
+      ],
+      "state": "IN_PROGRESS",
+      "disposition": "Internal client implemented; production approved document publication not supplied, no invented fixture acceptance",
+      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+    },
+    {
+      "id": "expiry",
+      "criterion": "Expired verification cannot complete",
+      "paths": [
+        "frontend/src/features/auth/model/enrollment.ts",
+        "frontend/src/features/auth/ui/SignUp.tsx"
+      ],
+      "state": "IN_PROGRESS",
+      "disposition": "Known local attempt expiry blocks dispatch; server remains authority for generic challenge expiry, no fabricated challenge-expires field; explicit restart only",
+      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+    },
+    {
+      "id": "resend",
+      "criterion": "Server resend countdown and quota",
+      "paths": [
+        "frontend/src/features/auth/model/enrollment.ts",
+        "frontend/src/features/auth/ui/SignUp.tsx"
+      ],
+      "state": "IN_PROGRESS",
+      "disposition": "Receipt resendAvailableAt and Retry-After control monotonic waits; no invented duration or mail delivery claim",
+      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+    },
+    {
+      "id": "double-submit",
+      "criterion": "Double submit does not create extra requests",
+      "paths": [
+        "frontend/src/features/auth/model/enrollment.ts",
+        "frontend/src/features/auth/ui/SignUp.tsx"
+      ],
+      "state": "IN_PROGRESS",
+      "disposition": "Synchronous UI/controller reservation; body UUID; no automatic replay; explicit unknown retry retains exact request",
+      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+    },
+    {
+      "id": "real-vertical-flow",
+      "criterion": "Real signup to mail verification to canonical sign-in",
+      "paths": [
+        "frontend/src/features/auth/__tests__/enrollment-browser-smoke.mjs"
+      ],
+      "state": "IN_PROGRESS",
+      "disposition": "Controlled client/native qualification NOT_RUN; new real Auth/RPC/Gateway/mail binding qualification owned207; Root central admission composition pending; old email receipts are historical only",
+      "freshValidation": "Focused source checks PASS; native browser NOT_RUN; real current Auth/mail/admission vertical flow NOT_RUN"
+    }
+  ],
+  "externalInputs": [
+    "Actual approved legal/eligibility publication remains absent",
+    "Restricted-age provider remains independent of basic signup; no invented verified-age or eligibility boolean"
+  ],
+  "resourceState": "Source FULL, no current runtime hold; single browser READY queued",
+  "historicalEvidence": [
+    {
+      "path": "docs/mcr/evidence/real-email-flow/index.json",
+      "sha256": "3d25fa94c8607331e3e2bbae3d1777724340d4538ce6168f4e6171adfcf12c1b",
+      "scope": "Historical legacy email/reset journey only. New enrollment policy, attempt, opaque verification link, durable consent and admission are outside that proof."
+    }
+  ],
+  "sourceQualification": {
+    "tests": 191,
+    "files": 4,
+    "scopedTypesExit": 0,
+    "ownedLintExit": 0,
+    "receipt": "source-01/release.json",
+    "qualification": "controlled feature/transport fixtures; no actual Auth/mail/legal publication proof"
+  }
+}

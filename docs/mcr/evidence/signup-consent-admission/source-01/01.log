@@ -1,0 +1,34 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204/frontend
+
+ ❯ src/shared/api/__tests__/enrollment-transport/transport.test.ts (16 tests | 5 failed) 15ms
+   × includes bound cookie via canonical transport for exactly attempts; no secret/header aliases 2ms
+   × includes bound cookie via canonical transport for exactly signup; no secret/header aliases 1ms
+   × includes bound cookie via canonical transport for exactly verify; no secret/header aliases 1ms
+   × includes bound cookie via canonical transport for exactly resend; no secret/header aliases 1ms
+   × includes bound cookie via canonical transport for exactly consent; no secret/header aliases 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/shared/api/__tests__/enrollment-transport/transport.test.ts > includes bound cookie via canonical transport for exactly attempts; no secret/header aliases
+ FAIL  src/shared/api/__tests__/enrollment-transport/transport.test.ts > includes bound cookie via canonical transport for exactly signup; no secret/header aliases
+ FAIL  src/shared/api/__tests__/enrollment-transport/transport.test.ts > includes bound cookie via canonical transport for exactly verify; no secret/header aliases
+ FAIL  src/shared/api/__tests__/enrollment-transport/transport.test.ts > includes bound cookie via canonical transport for exactly resend; no secret/header aliases
+ FAIL  src/shared/api/__tests__/enrollment-transport/transport.test.ts > includes bound cookie via canonical transport for exactly consent; no secret/header aliases
+TypeError: Body is unusable: Body has already been read
+ ❯ src/shared/api/__tests__/enrollment-transport/transport.test.ts:22:47
+     20|   expect(r.headers.get('Idempotency-Key')).toBeNull(); expect(r.header…
+     21|   expect(r.headers.get('X-MCR-Intent')).toBe(method(path) === 'POST' ?…
+     22|   if (method(path) === 'POST') expect(await r.json()).toEqual({ idempo…
+       |                                               ^
+     23| })
+     24| it.each(paths)('rejects method/access/refresh/error family/header/top-…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  5 failed | 186 passed (191)
+   Start at  03:01:50
+   Duration  2.72s (transform 332ms, setup 0ms, import 676ms, tests 1.25s, environment 501ms)
+

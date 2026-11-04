@@ -12,6 +12,7 @@ import { ConcertWindowEmbedding } from '../shared/ui/concert-window'
 import { WorldTools } from './world-presentation/WorldTools'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
+import { AdmissionBoundary } from '../features/auth/ui/AdmissionBoundary'
 import { ConnectionStatus } from '../features/connection-status'
 import { beginCommunityBootstrap, type CommunityBootstrapBinding } from './community-adoption/bootstrap'
 
@@ -27,8 +28,7 @@ const MeetingEntryFeatures = lazy(() => import('./meeting-entry').then(module =>
 
 export function WorldBoundary() {
   const { scope } = useAccess()
-  if (!scope) return <AccessNotice />
-  return <BootstrapBoundary key={scopeKey(scope)} scope={scope} />
+  return <AdmissionBoundary>{scope ? <BootstrapBoundary key={scopeKey(scope)} scope={scope} /> : <AccessNotice />}</AdmissionBoundary>
 }
 function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
   const ports = usePorts()
@@ -176,9 +176,9 @@ export function PanelScreen({ route, children }: { route: PanelRoute; children?:
     <p>It may have changed or you may not have access.</p><ShellLink className="shell-link" to="/world">Back to world</ShellLink>
   </Feedback>
   return <>
-    {compactSections && <details className="shell-more-sections"><summary>More actions</summary>{sections}</details>}
     {children ?? <div className="shell-unavailable"><p className="shell-kicker">Still taking shape</p>
       <h2>{route.title} is not available yet</h2><p>This part of the event is still being prepared. You can browse the other sections.</p></div>}
+    {compactSections && <details className="shell-more-sections"><summary>More actions</summary>{sections}</details>}
     {!compactSections && sections}
   </>
 }
