@@ -72,6 +72,9 @@ def add_schemas(document, root):
     references, inputs = {}, []
     for family in ("assets", "core", "domain", "realtime"):
         paths = sorted((root / "contracts" / family / "v1").glob("*.schema.json"))
+        if family == "assets":
+            paths += [root / "contracts/assets/v2/reviewed" / name for name in
+                      ("avatar-config.schema.json", "avatar-manifest.schema.json")]
         if not paths:
             raise ValueError(f"Missing schema family: {family}")
         for path in paths:

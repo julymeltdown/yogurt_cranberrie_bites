@@ -86,6 +86,8 @@ class Contract:
     def __init__(self):
         paths = [DIRECTORY / 'world.schema.json', ROOT / 'contracts/core/v1/core.schema.json']
         paths += sorted((ROOT / 'contracts/assets/v1').glob('*.schema.json'))
+        paths += [ROOT / 'contracts/assets/v2/reviewed' / name for name in
+                  ('avatar-config.schema.json', 'avatar-manifest.schema.json')]
         documents = [read(path) for path in paths]
         for document in documents:
             Draft202012Validator.check_schema(document)

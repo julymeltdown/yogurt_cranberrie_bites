@@ -81,6 +81,9 @@ def offline_only(uri):
 def validators(schema_dir=SCHEMAS):
     schemas = [read_json(path) for path in sorted(schema_dir.glob("*.schema.json"))]
     require(len(schemas) == 5, "expected all five v1 asset schemas")
+    # Add the separately reviewed version; do not register the candidate.
+    schemas += [read_json(ROOT / "contracts/assets/v2/reviewed" / name) for name in
+                ("avatar-config.schema.json", "avatar-manifest.schema.json")]
     resources = []
     for schema in schemas:
         Draft202012Validator.check_schema(schema)
@@ -131,7 +134,12 @@ def validate_document(document, checks, label):
     canonical_bytes(document)
     kind = document.get("kind")
     require(isinstance(kind, str) and kind in checks, f"{label}: unknown document kind {kind!r}")
-    errors = sorted(checks[kind].iter_errors(document), key=lambda error: str(error.json_path))
+    check = checks[kind]
+    if document.get("contract_version") == "2.0.0" and kind in ("avatar_config", "avatar_manifest"):
+        suffix = "config" if kind == "avatar_config" else "manifest"
+        schema = read_json(ROOT / f"contracts/assets/v2/reviewed/avatar-{suffix}.schema.json")
+        check = Draft202012Validator(schema)
+    errors = sorted(check.iter_errors(document), key=lambda error: str(error.json_path))
     if errors:
         error = errors[0]
         raise AssetError(f"{label}: schema {error.json_path}: {error.message}")
@@ -152,6 +160,10 @@ def index_unique(entries, field, label):
 def validate_config(config, avatar, items=None, tones=None):
     require((config["manifest_id"], config["manifest_version"]) ==
             (avatar["manifest_id"], avatar["manifest_version"]), "avatar manifest identity/version mismatch")
+    if config.get("contract_version") == "2.0.0":
+        schema = read_json(ROOT / "contracts/assets/v2/reviewed/avatar-config.schema.json")
+        Draft202012Validator(schema).validate(config)
+        return
     if config.get("representation") == "whole_character":
         require(avatar.get("representation") == "whole_character", "avatar representation mismatch")
         presets = index_unique(avatar["presets"], "preset_id", "avatar")
@@ -168,6 +180,13 @@ def validate_config(config, avatar, items=None, tones=None):
 
 
 def validate_avatar(avatar, configs):
+    if avatar.get("contract_version") == "2.0.0":
+        schema = read_json(ROOT / "contracts/assets/v2/reviewed/avatar-manifest.schema.json")
+        Draft202012Validator(schema).validate(avatar)
+        require(avatar["content_hash"] == content_hash(avatar), "reviewed avatar hash mismatch")
+        for config in [*configs, *(preset["config"] for preset in avatar["presets"])]:
+            validate_config(config, avatar)
+        return
     if avatar.get("representation") == "whole_character":
         presets = index_unique(avatar["presets"], "preset_id", "avatar")
         require(avatar["default_preset_id"] in presets, "unknown default_preset_id")
@@ -284,7 +303,7 @@ def validate_bundle(documents, checks=None):
                 "documents_validated": len(documents),
                 "manifest_pin": {key: avatar[key] for key in ("manifest_id", "manifest_version", "content_hash")},
                 "capabilities": avatar["capabilities"],
-                "atlas_image_state": avatar["atlas"]["texture"]["image_state"],
+                "atlas_image_state": ("PROVIDED" if avatar.get("contract_version") == "2.0.0" else avatar["atlas"]["texture"]["image_state"]),
                 "atlas_image_coverage": "NOT_RUN", "resource_bytes_and_hashes": "NOT_RUN",
                 "limits": "Schema, canonical hash and preset mapping only. No animation, layered customization, "
                           "rendering, mobile, backend persistence or World acceptance implied."}
@@ -321,7 +340,7 @@ def validate_bundle(documents, checks=None):
         "status": "CONTRACT_READY", "documents_validated": len(documents),
         "themes": sorted(themes), "contract_version": avatar["contract_version"],
         "atlas_image_coverage": "NOT_RUN",
-        "atlas_image_state": avatar["atlas"]["texture"]["image_state"],
+        "atlas_image_state": ("PROVIDED" if avatar.get("contract_version") == "2.0.0" else avatar["atlas"]["texture"]["image_state"]),
         "resource_bytes_and_hashes": "NOT_RUN",
         "limits": "Metadata and geometry only. No PNG/Tiled file bytes, pixel coverage, clipping, "
                   "contrast, license truth, physical venue truth, AR03 or mobile acceptance validated. "

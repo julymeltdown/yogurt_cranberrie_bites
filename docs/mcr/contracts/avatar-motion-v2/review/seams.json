@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "scope": "Independent composition alpha bounds/foot and optional-layer coverage, not visual judgment",
+  "manifest_sha256": "9a555f726a9e421f14ed876117be87bb1bb8fa128ac401ab38f8927760776fd6",
+  "atlas_sha256": "1cd8f05af8d76d58243e2f6e143961953b4d4291fdd553df8c8d33aabd700dbd",
+  "cases": 4800,
+  "groups": {
+    "all-body-outfit-direction-phase": 960,
+    "undressed-all-body-hair-gait": 960,
+    "optional-layer-eye-hair-accessory": 2880
+  },
+  "bounds": "0 < minX/minY; maxX < 64; exclusive maxY == 60",
+  "body_clip_y_exclusive": 42,
+  "hand_palette_color_index": 2,
+  "rear_eyes_transparent": true,
+  "source_images_modified": false,
+  "images_generated": false
+}
