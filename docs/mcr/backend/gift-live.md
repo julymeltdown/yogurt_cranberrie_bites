@@ -95,9 +95,10 @@ revision is a stable actual per-actor security scalar. Use its binding-only
 then use actual `PgMedia::link_owned_in` with a
 Gift-scoped MediaAuthority. Uploader-only authority deliberately denies Link and
 must not be loosened or reused as a Gift permission.
-Public-profile owner reports the Profile producer published at `b09db61e`; the
-Concert `PublicProfileReader::read(&GuardedSubject)` assembly is still unqualified
-until actual canonical scope/client dependencies are published and validated.
+Public-profile owner subsequently published Concert's
+`PublicProfileReader::read(&GuardedSubject)` assembly at `9119073a`, with component
+validation pinned to `52000b75`. Actual joined canonical/local-child and final
+HTTP qualification remains unrun. Gifts incorporates that published revision.
 
 ## Validation and remaining work
 
@@ -109,8 +110,11 @@ the exact scope/request binding, runs under the original scope stop and never
 releases guards. The constructor requires actual PG, receipt/pickup keys, a
 dedicated cursor key, sanitizer and mandatory `GiftProfiles` port accepting only
 sealed `GuardedSubject`. No default profile, UUID-only authority or positive
-canonical fixture is supplied. The qualified concrete Concert PublicProfile reader
-adapter remains an external prerequisite before route activation.
+canonical fixture is supplied. `gift_live/profile.rs` implements the port directly
+for the actual published Concert `PublicProfileReader`; no independent client or
+fallback projection is constructed. The new combined Gifts adapter is uncompiled.
+Actual joined canonical/local-child and final HTTP qualification remains an
+external prerequisite before activation.
 
 Claim requires root's sealed stable keyed network bucket. Root confirms the
 current transport has no such field, so absent context returns unavailable before

@@ -7,6 +7,7 @@ pub mod authority;
 mod correlation;
 pub mod cursor;
 pub mod media;
+mod profile;
 mod queries;
 pub mod runtime;
 mod status;
