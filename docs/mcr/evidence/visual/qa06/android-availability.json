@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-04T03:28:07.572486+00:00",
+  "tool": "standard macOS Android SDK adb; no install",
+  "command": "adb devices -l",
+  "exitCode": 0,
+  "deviceCount": 0,
+  "statuses": [],
+  "serialsRecorded": false,
+  "physicalBrowserAcceptance": "NOT_RUN"
+}
