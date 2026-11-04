@@ -1,0 +1,185 @@
+{
+  "task": "FE-SPATIAL-V3-WORLD",
+  "status": "INTEGRATED",
+  "scope": "Bounded original FE14/FE15/FE19 geometry and World/MAP consumer increment; no parent/product/fidelity acceptance",
+  "base_commit": "67e7ecabeac661edd2f327b37a02f072d5e97dca",
+  "source_handoff": "48cf47e9b2c922de42673d1a29c1758a55fcf883",
+  "source_publication": "72685ad98f26437ce88ec7a51ffde0aa2bc29539",
+  "implementation_commit": "8d7cff5dbf749f336682cdbf64ee162f5d25f2ff",
+  "implementation_publication": "0fa4c767167867496a1bd47ad70c2845113cadec",
+  "changed_paths": [
+    "docs/mcr/frontend/reference-scene-world.md",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/landmark1-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/landmark2-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/landmark3-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-danger-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-danger-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-danger-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-parade-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-parade-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-parade-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-revenge-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-revenge-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/map-revenge-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/native.json",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-danger-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-danger-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-danger-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-parade-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-parade-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-parade-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-revenge-360.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-revenge-390.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/evidence/world-revenge-430.jpg",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/fixture.ts",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/model.test.ts",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/native.html",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/native.mjs",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/native.ts",
+    "frontend/src/world/reference-scene/__tests__/spatial-v3/theme-gate.test.ts",
+    "frontend/src/world/reference-scene/index.ts",
+    "frontend/src/world/reference-scene/metadata.ts",
+    "frontend/src/world/reference-scene/model.ts",
+    "frontend/src/world/reference-scene/spatial-v3/build-source-inputs.py",
+    "frontend/src/world/reference-scene/spatial-v3/model.ts",
+    "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+    "frontend/src/world/reference-scene/spatial-v3/tile-pin.json",
+    "frontend/src/world/theme/compatibility.ts"
+  ],
+  "shared_file_allocation": {
+    "path": "frontend/src/world/theme/compatibility.ts",
+    "record": "docs/mcr/scrum/world.md at10cd3a0b",
+    "exclusive": "WorldSL and frontend allocation recorded; Root153 confirmed no lease/conflict; no other shared file grants"
+  },
+  "source_revision": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "checks": [
+    {
+      "command": "MCR_FE14_PYTHON=<contract-validation-python> vitest run src/world/reference-scene src/world/__tests__/movement.test.ts src/world/__tests__/runtime.test.ts src/world/__tests__/illustrated src/world/theme/__tests__/replacement.test.ts src/world/avatar/__tests__/whole-character/renderer.test.ts src/world/composition/__tests__",
+      "exit_code": 0,
+      "tests": 414,
+      "files": 18,
+      "revision": "0fa4c767"
+    },
+    {
+      "command": "tsc -b --pretty false",
+      "exit_code": 0,
+      "revision": "0fa4c767"
+    },
+    {
+      "command": "vite build",
+      "exit_code": 0,
+      "revision": "0fa4c767",
+      "note": "First attempt failed on two tracked auth artwork PNGs excluded by sparse checkout. Materialized their exact Git bytes; rerun passed, no source edits. Existing large-chunk advisory remains."
+    },
+    {
+      "command": "oxlint src/world/reference-scene src/world/theme/compatibility.ts",
+      "exit_code": 0
+    },
+    {
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exit_code": 0,
+      "files_scanned": 2112
+    },
+    {
+      "command": "python3 scripts/mcr/check-boundaries.py --base 0d03e7a87ac38078ce1277ef64d6a87c056911a6 --lane frontend --allow-doc docs/mcr/frontend/reference-scene-world.md",
+      "exit_code": 0,
+      "paths": 37,
+      "note": "Actual invocation used separate --base argument. Initial invocation without required args exited2; corrected invocation passed."
+    },
+    {
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit_code": 0,
+      "scope": "Planning provenance only"
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/runtime/spatial-v3/build-tiled.py",
+      "exit_code": 0,
+      "outputs_unchanged": true
+    },
+    {
+      "command": "python3 frontend/src/world/reference-scene/spatial-v3/build-source-inputs.py",
+      "exit_code": 0,
+      "outputs_unchanged": true
+    },
+    {
+      "command": "node frontend/src/world/reference-scene/__tests__/spatial-v3/native.mjs",
+      "exit_code": 0,
+      "receipt": "native.json",
+      "browser": "156.0.8078.80",
+      "viewports": 3,
+      "era_swaps": 18,
+      "avatar_stage_depth_positions": 36,
+      "captures": 21
+    },
+    {
+      "command": "Independent SHA-256 checks of all47 native sources and21 captures after merge",
+      "exit_code": 0
+    },
+    {
+      "command": "Independent Git-byte comparison of previous four public runtime artifacts, old source-inputs.json and docs/source/ against67e7ecab",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/runtime/spatial-v3/build-candidate-pin.py 85a791d8 before publication",
+      "exit_code": 1,
+      "expected": "Local-only ancestor fence rejected the checkpoint and wrote no pin"
+    },
+    {
+      "command": "python3 frontend/public/world/reference-scene-v2/runtime/spatial-v3/build-candidate-pin.py e66597df4a8f8010b66eea97464115328ea0fc5f",
+      "exit_code": 0,
+      "result": "Published source ancestry and exact canonical/source/artifact pins match"
+    },
+    {
+      "command": "tsc -b --pretty false",
+      "exit_code": 0,
+      "revision": "15188c2917f93a9436a6f0cfbce25fc019b8142c"
+    },
+    {
+      "command": "MCR_FE14_PYTHON=<contract-validation-python> vitest run src/world/reference-scene src/world/composition/__tests__ src/world/__tests__/runtime.test.ts src/world/mural-entry-lifecycle/__tests__/assembly.test.tsx",
+      "exit_code": 0,
+      "revision": "15188c2917f93a9436a6f0cfbce25fc019b8142c",
+      "tests": 229,
+      "files": 11,
+      "scope": "Final concurrent FE33 composition integration"
+    },
+    {
+      "command": "vite build",
+      "exit_code": 0,
+      "revision": "15188c2917f93a9436a6f0cfbce25fc019b8142c"
+    },
+    {
+      "command": "python3 scripts/mcr/check-boundaries.py --base 4e9c57e3838a8f9b3de30e0962e4d2ff01133937 --lane frontend --allow-doc docs/mcr/frontend/reference-scene-world.md",
+      "exit_code": 0,
+      "paths": 4
+    }
+  ],
+  "canonical_backend_pin": {
+    "path": "frontend/public/world/reference-scene-v2/runtime/spatial-v3/candidate-map-v4-pin.json",
+    "revision": "e66597df4a8f8010b66eea97464115328ea0fc5f",
+    "map_content_hash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+    "backend_rust_native_at_source_checkpoint": "NOT_RUN",
+    "admission": "NOT_ADMITTED"
+  },
+  "limits": [
+    "No live Auth/server/socket or real multiuser proof",
+    "No physical device or verified physical place authority",
+    "Original virtual places stay VIRTUAL_CONCEPT / CONCEPT_ONLY / UNREVIEWED",
+    "Required perimeter density/final composition/target visual acceptance remains artist-owned IN_PROGRESS",
+    "Root owns coherent current-bundle admission and real product integration; Map/Places/help owners own full original FE19 UI acceptance",
+    "Native source hashes, not test-parent alone, bind tested implementation bytes"
+  ],
+  "task_disposition_document": "docs/mcr/frontend/reference-scene-world.md",
+  "cleanup": {
+    "own_dependency_symlink_removed": true,
+    "native_server_browser_temp_closed": true,
+    "debug_captures_removed": true
+  },
+  "remaining_assigned_work": "None after containing final pin/audit publication; parent-product, backend native and required artist fidelity acceptance remain separately owned.",
+  "canonical_pin_delivery_commit": "0167a092",
+  "canonical_pin_publication": "15188c2917f93a9436a6f0cfbce25fc019b8142c",
+  "handoff_limits": {
+    "root_optional_era_gate": "composition/release.ts69-73 requires optional enabled themes top-level ORIGINAL_ART/REVIEWED with reviewer/date. Native consumer fixture deliberately bypasses Product composition admission, without changing source provenance. No existing qualification seam identified; Root/BE own honest derived-theme qualification and remaining product integration.",
+    "later_art_choice": "quality-v7/12f6fbf8 is independently published future art; frozen bc731 quality-v6 is not silently switched."
+  }
+}

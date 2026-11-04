@@ -123,7 +123,12 @@ impl PublicRecord {
 #[async_trait]
 pub trait PublicProfileRepository: Send + Sync {
     /// Must query current owner privacy and deletion fences in the same statement.
-    async fn read_public(&self, binding: ReadBinding) -> Result<HeldPublicRecord, ReadError>;
+    async fn read_public(
+        &self,
+        binding: ReadBinding,
+        child_id: &str,
+        secret: &str,
+    ) -> Result<HeldPublicRecord, ReadError>;
     async fn check(&self, binding: ReadBinding, child_id: &str) -> Result<(), ReadError>;
     /// Terminal settlement only. No data returned and no authority extension.
     async fn complete(
