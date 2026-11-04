@@ -4,7 +4,7 @@ import type { PrivacyScope } from '../../shared/query/privacy'
 import type { WorldCamera, Point } from '../camera/port'
 import { attachMovement, type MovementAttachment } from '../input/controller'
 import { abortable, loadMap, type LoadedMap } from '../map/resources'
-import { createWorldRuntime, type EngineFactory, type RuntimeState, type WorldRuntime } from '../runtime'
+import { createWorldRuntime, type EngineFactory, type OverviewFactory, type RuntimeState, type WorldRuntime } from '../runtime'
 import { createWorldReplication, type ReplicationView, type WorldReplication } from '../network/replication'
 import { WebSocketWorldTransport } from '../network/websocket'
 import { immutable } from '../entities/replicated'
@@ -63,6 +63,8 @@ export interface WorldCompositionOptions {
   /** Existing FE14 engine seam. Omit in production to dynamically load actual Phaser. */
   readonly importEngine?: () => Promise<EngineFactory>
   readonly timeoutMs?: number
+  /** Runtime-owned projection factory; the default remains the incumbent overview. */
+  readonly createOverview?: OverviewFactory
 }
 export type WorldMountContext = Parameters<WorldLifecyclePort['mount']>[1] & { readonly privacyScope?: PrivacyScope | null }
 const sessionOwners = new WeakMap<SessionController, { owner: object | null; drain: Promise<void> }>()
@@ -229,6 +231,7 @@ export function createWorldComposition(options: WorldCompositionOptions) {
         owned.replication = createWorldReplication({ session: auth.session, transport, resources: prepared.resources, sink: { replace } })
         step = 'runtime'
         runtime = createWorldRuntime({ host: stage, load: signal => loadMap(prepared.mapInput, signal),
+          ...(options.createOverview ? { createOverview: options.createOverview } : {}),
           ...(options.importEngine ? { importEngine: options.importEngine } : {}), ...(options.timeoutMs ? { timeoutMs: options.timeoutMs } : {}),
           attachControls: control => {
             if (!isBootCurrent()) throw new Error('World authority unavailable')

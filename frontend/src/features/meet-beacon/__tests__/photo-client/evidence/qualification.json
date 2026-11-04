@@ -1,0 +1,113 @@
+{
+  "task": "ORIGINAL FE20 / FE20-PHOTO-CLIENT",
+  "status": "MOCK_READY",
+  "frontend_original_criteria": "SATISFIED under frozen-contract/deterministic-fixture scope",
+  "remaining_feature_frontend_behavior": [],
+  "base_commit": "1249430fa09537fa7a5b3499916e29ad0683fe32",
+  "contract": "meeting-photo/v1",
+  "contract_source": "17fd2e93",
+  "published_contract_master": "a3526254a716e14e3134de551c3b277379a1096f",
+  "first_agreed_port": "89ce3df69299ed04b57413fd0510705197a27ba2",
+  "support_commit": "591040ff565a4b09a93bd751e2eac316558341dd",
+  "projection_commit": "65f91166a0faa94c58ecdc3f2aa4089734c76f7b",
+  "pins": {
+    "contracts/domain/v1/beacon.schema.json": "183186acc1c3ac916e1011c022174041c6557a148347dd135ffaf6ee84385573",
+    "contracts/domain/v1/feed.schema.json": "f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed",
+    "scripts/mcr/generate-domain-transport.py": "7a85c1d47978df991f767989ad4264345f7b0a057bc54259a8f8c0bdc9cb941b",
+    "frontend/src/shared/api/domain-operations.generated.ts": "a38ffacb0cc989e62b63f6baecedff113b7ac8f87979dd3773aa2ae26b12ee74",
+    "frontend/src/shared/media/types.ts": "46ceae52f349d6d673f587a2970372726de89477d83897a100ca896040789d45",
+    "frontend/src/shared/media/contract.ts": "af30fed17cb420563836623b2613c716668116437d9fd855e1f329e0e79c9dbf",
+    "frontend/src/shared/media/transport.ts": "8d71000a955dd035263074a3f961589e8b0f7a8f0bfdb3f708b99a75eb2e841c",
+    "frontend/src/shared/media/read-media.ts": "a91aa13d5a3d074985e50ea2252728ef17b526376c798171138f8bd63f802cd8",
+    "frontend/src/shared/media/prepare-image.ts": "a1ac4b47bdc744afd1065e82bc950a83c0d01c3d7946e098e0e6adb6171db128",
+    "frontend/src/shared/media/image-policy.ts": "7ae571867a1e2d5d54a3bb571eb11f38636676a45920142db76e3593e370cdb1",
+    "frontend/src/shared/media/image-compression.worker.ts": "846969bb63af2d8328f766675f393fb5276d47b78b70e30acba614d57073096d",
+    "frontend/src/features/media/model/upload-controller.ts": "e187899b6e8c4c22956eb1f1849420265603d80d56699c2a0baff76334f3e571",
+    "frontend/src/features/event-feed/FeedImage.tsx": "a2d64bb338b0a658aae383c41f48a83330dc82735e3db11fedcb043bf60d06f1",
+    "frontend/src/features/feed-thread/media.ts": "e3f06b82385da20ac93681412316d3476b2e32bd2eff8a49d35ce4a70022762e",
+    "frontend/src/features/meet-beacon/__tests__/photo-client/frozen-contract.json": "0a8b39b3c4fb36170a5d3a2d7082e15d809482983800d3474f1d7bf75792340e",
+    "frontend/src/features/meet-beacon/model/contract.ts": "2bfbbcd160d0f6ad90874627dd2ff5f5798220275ce811f71f75fd18469824fd",
+    "frontend/src/features/meet-beacon/model/photo-client.ts": "39158c91d063b0aecfd874080708a67377cf64de66a497aa7231572e4aea1bd5",
+    "frontend/src/features/meet-beacon/model/ports.ts": "b0f89bf9294a88906efc5ab1411b83284e227d7049f68442db79c752278f79d4",
+    "frontend/src/features/meet-beacon/model/photo-scope.ts": "1b9a658ab09f5eb07a10291b0ea33913d5857bc1d8e6306c69979c2448719417",
+    "frontend/src/features/meet-beacon/model/controller.ts": "d8ee07eb9bd021687bdd8b70825e7c632caa00d30513e09db38ebd028e22f784",
+    "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx": "ccbc170ff1ade8193fc16667a48527241805f920b2b28acef9558c4392bb3871",
+    "frontend/src/features/meet-beacon/ui/ExplicitArrivalControls.tsx": "c5b17f78054462929ed558dbb0aaf7b519c840c281627e121f90dff2ab7df93b",
+    "frontend/src/features/meet-beacon/ui/meeting-beacon.css": "69358f493b4ad89f7e237d44f73339f216713e5577c1e0a754fab19a8b390db9",
+    "frontend/src/features/meet-beacon/__tests__/photo-client/preview.html": "a8f981223d637785d4188f4bd7e6c0ae5e32772cb0fa8df279612cb721900979",
+    "frontend/src/features/meet-beacon/__tests__/photo-client/preview.tsx": "da73ccf9a0d15d3015efc5da7b1bb4243209d84d763bbc3ca034318dc22873b8",
+    "frontend/src/features/meet-beacon/__tests__/photo-client/browser.mjs": "2ce1f45ad2d94665d4ecd5b42895d4b4f329f42e7269a024953cc472eb3e65f1",
+    "frontend/src/features/meet-beacon/__tests__/photo-client/purpose-compatibility.test.tsx": "dcb05445f9fd9fef08fcfb10cfe0068cfd2f93ef507ffcd18b5cc7a31a7ee28d",
+    "frontend/src/features/meet-beacon/__tests__/photo-client/client.test.ts": "dc690dd4bb118ad9a220a1d533be1f9711a180cf44292b03d16aa077f0ca4fd7",
+    "frontend/src/features/meet-beacon/__tests__/photo-client/harness.ts": "d2971174eddae9849371e11f7584dece3920c67d2ace33aff67805ab13d1485c"
+  },
+  "checks": [
+    {
+      "check": "205 tests / 14 files",
+      "command": "node node_modules/vitest/vitest.mjs run src/features/meet-beacon/__tests__ src/features/media/model/__tests__ src/features/feed-thread/__tests__/controller.test.ts src/features/event-feed/__tests__/presentation.test.tsx src/app/media-entry/__tests__/owner.test.ts src/features/auth/__tests__/domain-request.test.ts",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "tests.log"
+    },
+    {
+      "check": "native Chrome four cases",
+      "command": "node src/features/meet-beacon/__tests__/photo-client/browser.mjs",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "browser.log"
+    },
+    {
+      "check": "typecheck",
+      "command": "node node_modules/typescript/bin/tsc -p tsconfig.json --incremental --tsBuildInfoFile /tmp/mcr-fe20-photo-types.tsbuildinfo --pretty false",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "types.log"
+    },
+    {
+      "check": "scoped lint",
+      "command": "node node_modules/oxlint/bin/oxlint src/features/meet-beacon src/shared/media/types.ts src/shared/media/contract.ts src/shared/api/domain-operations.generated.ts src/features/event-feed/FeedImage.tsx src/features/feed-thread/media.ts",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "lint.log"
+    },
+    {
+      "check": "production build",
+      "command": "node node_modules/vite/bin/vite.js build --outDir /tmp/mcr-fe20-photo-build",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "log": "build.log"
+    },
+    {
+      "check": "planning provenance only",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": "repository",
+      "exit_code": 0,
+      "log": "plan.log"
+    },
+    {
+      "check": "UI source origin",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "cwd": "repository",
+      "exit_code": 0,
+      "log": "origin.log"
+    },
+    {
+      "check": "canonical generated projection",
+      "command": "python3 scripts/mcr/generate-domain-transport.py --check",
+      "cwd": "repository",
+      "exit_code": 0,
+      "log": "generator.log"
+    }
+  ],
+  "limitations": [
+    "Actual client/FE04 worker/request construction and Blob decode; deterministic in-memory HTTP persistence, identity/audience/place/photo permission",
+    "Root composition/producer readiness unchanged; no live backend durability or server authorization/atomicity acceptance",
+    "No operator venue/photo rights, device, multiuser or IN02 claim",
+    "No browser draft/command persistence; uncertain writes retained within current controller only"
+  ],
+  "remaining_owners": {
+    "meeting_photo_producer": "01a1a202-3b96-7822-ab54-2f7d29aa42e5",
+    "media_lifetime": "01a1a213-03de-72d3-9ecf-2f72b574cf82",
+    "root_integration_readiness": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08"
+  }
+}

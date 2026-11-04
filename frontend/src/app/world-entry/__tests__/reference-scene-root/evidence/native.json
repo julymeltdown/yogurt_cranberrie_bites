@@ -1,0 +1,4057 @@
+{
+  "status": "PASS",
+  "qualification": "MOCK_READY_SOURCE_FIXTURE_ONLY",
+  "candidate": "38a880e554d3f88bd59bf61a0711ebab2ceee0ee",
+  "sourcePins": {
+    "frontend/src/world/runtime.ts": "5acd1bd73385aeae1d0559f1a8e97978c5b939349a5f2cb84bc23b9fbc409868",
+    "frontend/src/world/composition/index.ts": "b51a180d80a0612b8650101c857aac52208cf2828dec331a6cb55bf5b50d98c9",
+    "frontend/src/world/reference-scene/model.ts": "056c9506d632ec94ab9399951dd1cca45d5db5d15fb4d3070bf4130024d5aecf",
+    "frontend/src/world/reference-scene/overview.ts": "afebcad7e084ac416bd00eb54500aeebf4c64657323541ea606ab1422a15e4c9",
+    "frontend/src/world/scenes/MapScene.ts": "c172568f4b3c1a01894fbc4e5e41e3c887601fa9c2d3eb0c4c79dc76117a7363",
+    "frontend/src/features/places/ui/IllustratedMap.tsx": "0e9b4f4f9054931e4c3da3f5106d221d500856b9084e373c7944c48845145c40",
+    "frontend/src/app/world-entry/production.ts": "e34d9715e45c8c33fcbc86eadb11d81f0e267d071c3ff032c5f60a1144de76d3",
+    "frontend/src/app/world-entry/resolver.ts": "bb49ed5c1d9c6d1985ada6dd9d53c8e1b579c6303cdcb30fb88e38a5c80a6d80",
+    "frontend/src/app/world-entry/reference-scene-overview.ts": "3708c3cf5522fa7b4012441ec11fecdb1dd0f4706764c394d8d694b52144a15b",
+    "frontend/src/app/world-entry/__tests__/reference-scene-root/data.ts": "259566d71895a639bb54d4559c7d703b9f570f0bfc12e6fabd42e863d9f35716",
+    "frontend/src/app/world-entry/__tests__/reference-scene-root/preview.tsx": "48ff65bd4fdeb841c4913c8f01217c42b89c682a00ce3620d491d813cfa7d3dd",
+    "frontend/src/app/world-entry/__tests__/reference-scene-root/native.mjs": "e073f739f079138cd81bc8d0641cff8cda97889d89df81b2fa6accf52df4c037",
+    "frontend/public/world/reference-scene-v2/runtime/canonical-map-v2.json": "5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f",
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-ground.png": "5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-atlas.png": "ff68a358fad4e03ceaaf5fd610a9e6cdad9a167963e3ec00545c909ba6bb0dfe"
+  },
+  "checks": [
+    {
+      "width": 360,
+      "mode": "source-resolver",
+      "status": "PASS",
+      "samples": [
+        {
+          "name": "world-cold",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 282,
+                "scrollY": 315,
+                "width": 348,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+            },
+            "phase": "live",
+            "entities": 6,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 7,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+                "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+                "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+                "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346",
+                "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "map-first",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/map",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 282,
+                "scrollY": 204.5,
+                "width": 348,
+                "height": 791
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+                "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+                "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+                "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346",
+                "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "virtual-place",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 282,
+                "scrollY": 204.5,
+                "width": 348,
+                "height": 791
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+                "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+                "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+                "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346",
+                "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "world-return",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 282,
+                "scrollY": 315,
+                "width": 348,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+            },
+            "phase": "live",
+            "entities": 6,
+            "socketPeak": 1,
+            "sockets": 2,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 7,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+                "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+                "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+                "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346",
+                "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "map-warm",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/map",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 282,
+                "scrollY": 315,
+                "width": 348,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 2,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+                "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+                "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+                "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346",
+                "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        }
+      ],
+      "pixels": {
+        "width": 768,
+        "height": 1296,
+        "bytes": 2114297,
+        "pngHash": "sha256:041af9e128649a8668fc562373cccf540e0b7c5b1f02c2df838519f9f4fe848a",
+        "rgbaHash": "sha256:9f25d4d50d96e8c27686471100ea55ec06ca3bbfcf1503434817250a7f4c56f4"
+      },
+      "sceneRequests": [
+        "/world/reference-scene-v2/runtime/canonical-map-v2.json",
+        "/world/reference-scene-v2/runtime-v4/parade-ground.png",
+        "/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+      ],
+      "withdrawn": {
+        "sourceOnly": true,
+        "productionAdmitted": false,
+        "originalMapProvenance": {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        "originalPlaces": [
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+            "label": "Virtual Culture Park lawn",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+            "label": "Virtual stage",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+            "label": "Virtual gift corner",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+            "label": "Virtual pixel wall",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          }
+        ],
+        "path": "/world/map",
+        "published": false,
+        "factoryCalls": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          }
+        ],
+        "sameCamera": null,
+        "socketPeak": 1,
+        "sockets": 2,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+            "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+            "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+            "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346",
+            "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+            "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317",
+            "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+            "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+            "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346"
+          ]
+        },
+        "disposed": false
+      },
+      "cleanup": {
+        "sourceOnly": true,
+        "productionAdmitted": false,
+        "originalMapProvenance": {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        "originalPlaces": [
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+            "label": "Virtual Culture Park lawn",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+            "label": "Virtual stage",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+            "label": "Virtual gift corner",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+            "label": "Virtual pixel wall",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          }
+        ],
+        "path": "/world/map",
+        "published": false,
+        "factoryCalls": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          }
+        ],
+        "sameCamera": null,
+        "socketPeak": 1,
+        "sockets": 2,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+            "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+            "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+            "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346",
+            "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/5b0117ff-ed28-455f-a946-12bab6a9da46",
+            "blob:http://127.0.0.1:5173/2ef71653-caa4-4591-88ae-d14c96cdb317",
+            "blob:http://127.0.0.1:5173/7bf6de2e-b50f-4453-85af-32797c269d1c",
+            "blob:http://127.0.0.1:5173/007b47cc-03fc-4462-9212-720c6b351b56",
+            "blob:http://127.0.0.1:5173/9c996393-bd63-41ca-ba1d-d9938316f346"
+          ]
+        },
+        "disposed": true
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "mode": "source-resolver",
+      "status": "PASS",
+      "samples": [
+        {
+          "name": "world-cold",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 267,
+                "scrollY": 315,
+                "width": 378,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+            },
+            "phase": "live",
+            "entities": 6,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 7,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+                "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+                "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+                "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160",
+                "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "map-first",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/map",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 267,
+                "scrollY": 204.5,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+                "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+                "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+                "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160",
+                "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "virtual-place",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 267,
+                "scrollY": 204.5,
+                "width": 378,
+                "height": 791
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+                "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+                "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+                "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160",
+                "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "world-return",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 267,
+                "scrollY": 315,
+                "width": 378,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+            },
+            "phase": "live",
+            "entities": 6,
+            "socketPeak": 1,
+            "sockets": 2,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 7,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+                "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+                "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+                "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160",
+                "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "map-warm",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/map",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 267,
+                "scrollY": 315,
+                "width": 378,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 2,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+                "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+                "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+                "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160",
+                "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        }
+      ],
+      "pixels": {
+        "width": 768,
+        "height": 1296,
+        "bytes": 2114297,
+        "pngHash": "sha256:041af9e128649a8668fc562373cccf540e0b7c5b1f02c2df838519f9f4fe848a",
+        "rgbaHash": "sha256:9f25d4d50d96e8c27686471100ea55ec06ca3bbfcf1503434817250a7f4c56f4"
+      },
+      "sceneRequests": [
+        "/world/reference-scene-v2/runtime/canonical-map-v2.json",
+        "/world/reference-scene-v2/runtime-v4/parade-ground.png",
+        "/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+      ],
+      "withdrawn": {
+        "sourceOnly": true,
+        "productionAdmitted": false,
+        "originalMapProvenance": {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        "originalPlaces": [
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+            "label": "Virtual Culture Park lawn",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+            "label": "Virtual stage",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+            "label": "Virtual gift corner",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+            "label": "Virtual pixel wall",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          }
+        ],
+        "path": "/world/map",
+        "published": false,
+        "factoryCalls": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          }
+        ],
+        "sameCamera": null,
+        "socketPeak": 1,
+        "sockets": 2,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+            "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+            "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+            "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160",
+            "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+            "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b",
+            "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+            "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+            "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160"
+          ]
+        },
+        "disposed": false
+      },
+      "cleanup": {
+        "sourceOnly": true,
+        "productionAdmitted": false,
+        "originalMapProvenance": {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        "originalPlaces": [
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+            "label": "Virtual Culture Park lawn",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+            "label": "Virtual stage",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+            "label": "Virtual gift corner",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+            "label": "Virtual pixel wall",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          }
+        ],
+        "path": "/world/map",
+        "published": false,
+        "factoryCalls": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          }
+        ],
+        "sameCamera": null,
+        "socketPeak": 1,
+        "sockets": 2,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+            "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+            "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+            "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160",
+            "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/439a8d93-c575-449e-a7e1-6e82795fbb50",
+            "blob:http://127.0.0.1:5173/b469f36d-63ef-48f5-b60a-03bedecfb61b",
+            "blob:http://127.0.0.1:5173/baf33ffc-a699-4f63-8bf7-8bb0afd30fcf",
+            "blob:http://127.0.0.1:5173/d6e55fe0-08ba-4150-b4bf-e51606e3d71e",
+            "blob:http://127.0.0.1:5173/db1db636-9023-482f-b5b6-a8e3c267b160"
+          ]
+        },
+        "disposed": true
+      },
+      "errors": []
+    },
+    {
+      "width": 430,
+      "mode": "source-resolver",
+      "status": "PASS",
+      "samples": [
+        {
+          "name": "world-cold",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 247,
+                "scrollY": 315,
+                "width": 418,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+            },
+            "phase": "live",
+            "entities": 6,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 7,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+                "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+                "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+                "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c",
+                "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "map-first",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/map",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 247,
+                "scrollY": 204.5,
+                "width": 418,
+                "height": 791
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+                "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+                "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+                "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c",
+                "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "virtual-place",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 247,
+                "scrollY": 204.5,
+                "width": 418,
+                "height": 791
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 1,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+                "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+                "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+                "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c",
+                "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "world-return",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 247,
+                "scrollY": 315,
+                "width": 418,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+            },
+            "phase": "live",
+            "entities": 6,
+            "socketPeak": 1,
+            "sockets": 2,
+            "activeSockets": 1,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 7,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+                "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+                "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+                "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c",
+                "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 6,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        },
+        {
+          "name": "map-warm",
+          "state": {
+            "sourceOnly": true,
+            "productionAdmitted": false,
+            "originalMapProvenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            },
+            "originalPlaces": [
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+                "label": "Virtual Culture Park lawn",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+                "label": "Virtual stage",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+                "label": "Virtual gift corner",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              },
+              {
+                "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+                "label": "Virtual pixel wall",
+                "place_kind": "VIRTUAL_CONCEPT",
+                "verification_state": "CONCEPT_ONLY",
+                "closure_state": "OPEN",
+                "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+                "provenance": {
+                  "source_id": "ar02_original_courtyard",
+                  "source_kind": "ORIGINAL_ART",
+                  "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+                  "source_uri": null,
+                  "author": "MCR AR02 map author",
+                  "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+                  "review_state": "UNREVIEWED",
+                  "reviewed_by": null,
+                  "reviewed_at": null,
+                  "photo_permission": "NOT_APPLICABLE"
+                }
+              }
+            ],
+            "path": "/world/map",
+            "published": true,
+            "factoryCalls": 1,
+            "requests": [
+              {
+                "path": "/api/auth/capabilities",
+                "method": "GET"
+              },
+              {
+                "path": "/api/auth/login",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+                "method": "GET"
+              },
+              {
+                "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+                "method": "POST"
+              }
+            ],
+            "camera": {
+              "following": true,
+              "camera": {
+                "zoom": 1,
+                "scrollX": 247,
+                "scrollY": 315,
+                "width": 418,
+                "height": 570
+              }
+            },
+            "sameCamera": true,
+            "map": {
+              "mapId": "mcr_reference_scene_r3",
+              "revision": 2,
+              "contentHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5"
+            },
+            "overview": {
+              "width": 768,
+              "height": 1296,
+              "mapId": "mcr_reference_scene_r3",
+              "mapRevision": 2,
+              "mapHash": "sha256:3a91a8bccfcce71447e9c446243b5af062e94b343bd02382c6fad2753ab64572",
+              "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+              "themeId": "PARADE",
+              "themeRevision": 1,
+              "themeHash": "sha256:8c1831fc4dcd40062647e709b72ae6cc71f41e39175d319e8924eccb2a5b9b13",
+              "imageUrl": "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+            },
+            "phase": "suspended",
+            "entities": 0,
+            "socketPeak": 1,
+            "sockets": 2,
+            "activeSockets": 0,
+            "canvasPeak": 1,
+            "canvases": 1,
+            "runtime": {
+              "disposed": false,
+              "leases": 1,
+              "pending": 0,
+              "cleanupFailures": 0,
+              "decodedAtlases": 1
+            },
+            "urls": {
+              "created": [
+                "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+                "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+                "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+                "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c",
+                "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+              ],
+              "revoked": []
+            },
+            "disposed": false
+          },
+          "world": {
+            "games": 1,
+            "peakGames": 1,
+            "totalGames": 1,
+            "sameGame": true,
+            "sprites": 0,
+            "referenceObjects": 23
+          },
+          "sceneResourceRequests": 3
+        }
+      ],
+      "pixels": {
+        "width": 768,
+        "height": 1296,
+        "bytes": 2114297,
+        "pngHash": "sha256:041af9e128649a8668fc562373cccf540e0b7c5b1f02c2df838519f9f4fe848a",
+        "rgbaHash": "sha256:9f25d4d50d96e8c27686471100ea55ec06ca3bbfcf1503434817250a7f4c56f4"
+      },
+      "sceneRequests": [
+        "/world/reference-scene-v2/runtime/canonical-map-v2.json",
+        "/world/reference-scene-v2/runtime-v4/parade-ground.png",
+        "/world/reference-scene-v2/runtime-v4/parade-atlas.png"
+      ],
+      "withdrawn": {
+        "sourceOnly": true,
+        "productionAdmitted": false,
+        "originalMapProvenance": {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        "originalPlaces": [
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+            "label": "Virtual Culture Park lawn",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+            "label": "Virtual stage",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+            "label": "Virtual gift corner",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+            "label": "Virtual pixel wall",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          }
+        ],
+        "path": "/world/map",
+        "published": false,
+        "factoryCalls": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          }
+        ],
+        "sameCamera": null,
+        "socketPeak": 1,
+        "sockets": 2,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+            "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+            "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+            "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c",
+            "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+            "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a",
+            "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+            "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+            "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c"
+          ]
+        },
+        "disposed": false
+      },
+      "cleanup": {
+        "sourceOnly": true,
+        "productionAdmitted": false,
+        "originalMapProvenance": {
+          "source_id": "ar02_original_courtyard",
+          "source_kind": "ORIGINAL_ART",
+          "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+          "source_uri": null,
+          "author": "MCR AR02 map author",
+          "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+          "review_state": "UNREVIEWED",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "photo_permission": "NOT_APPLICABLE"
+        },
+        "originalPlaces": [
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+            "label": "Virtual Culture Park lawn",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+            "label": "Virtual stage",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+            "label": "Virtual gift corner",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          },
+          {
+            "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+            "label": "Virtual pixel wall",
+            "place_kind": "VIRTUAL_CONCEPT",
+            "verification_state": "CONCEPT_ONLY",
+            "closure_state": "OPEN",
+            "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+            "provenance": {
+              "source_id": "ar02_original_courtyard",
+              "source_kind": "ORIGINAL_ART",
+              "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+              "source_uri": null,
+              "author": "MCR AR02 map author",
+              "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+              "review_state": "UNREVIEWED",
+              "reviewed_by": null,
+              "reviewed_at": null,
+              "photo_permission": "NOT_APPLICABLE"
+            }
+          }
+        ],
+        "path": "/world/map",
+        "published": false,
+        "factoryCalls": 1,
+        "requests": [
+          {
+            "path": "/api/auth/capabilities",
+            "method": "GET"
+          },
+          {
+            "path": "/api/auth/login",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places/6a5c196b-58e1-47d5-99bb-000000000003",
+            "method": "GET"
+          },
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/world-tickets",
+            "method": "POST"
+          }
+        ],
+        "sameCamera": null,
+        "socketPeak": 1,
+        "sockets": 2,
+        "activeSockets": 0,
+        "canvasPeak": 1,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+            "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+            "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+            "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c",
+            "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/81228fbb-5fe8-47d1-89f4-af316ad13b5f",
+            "blob:http://127.0.0.1:5173/819fdc22-6132-43f2-b6a3-f4547fc25f9a",
+            "blob:http://127.0.0.1:5173/31a78727-b650-411b-9f78-fb6fd082340e",
+            "blob:http://127.0.0.1:5173/e4f2d7d7-fa9c-4038-a6d6-b8f3c8b6b9d4",
+            "blob:http://127.0.0.1:5173/e02f8de4-e47e-435e-8393-f89ec4f60c5c"
+          ]
+        },
+        "disposed": true
+      },
+      "errors": []
+    }
+  ],
+  "limits": [
+    "Explicit nonauthoritative source resolver for positive journeys; no fabricated REVIEWED metadata",
+    "Actual default MapScene/Phaser, production runtime/composition/root/Places views",
+    "Default production resolver separately rejects current UNREVIEWED top-level source",
+    "No production/live/multiuser/device/fidelity acceptance"
+  ],
+  "browser": "156.0.8078.80",
+  "productionDenial": {
+    "status": "PASS",
+    "sceneAssetRequests": 0,
+    "world": {
+      "games": 0,
+      "peakGames": 0,
+      "totalGames": 0,
+      "sameGame": null,
+      "sprites": 0,
+      "referenceObjects": 0
+    },
+    "state": {
+      "sourceOnly": false,
+      "productionAdmitted": false,
+      "originalMapProvenance": {
+        "source_id": "ar02_original_courtyard",
+        "source_kind": "ORIGINAL_ART",
+        "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+        "source_uri": null,
+        "author": "MCR AR02 map author",
+        "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+        "review_state": "UNREVIEWED",
+        "reviewed_by": null,
+        "reviewed_at": null,
+        "photo_permission": "NOT_APPLICABLE"
+      },
+      "originalPlaces": [
+        {
+          "place_id": "6a5c196b-58e1-47d5-99bb-000000000002",
+          "label": "Virtual Culture Park lawn",
+          "place_kind": "VIRTUAL_CONCEPT",
+          "verification_state": "CONCEPT_ONLY",
+          "closure_state": "OPEN",
+          "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+          "provenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        },
+        {
+          "place_id": "6a5c196b-58e1-47d5-99bb-000000000003",
+          "label": "Virtual stage",
+          "place_kind": "VIRTUAL_CONCEPT",
+          "verification_state": "CONCEPT_ONLY",
+          "closure_state": "OPEN",
+          "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+          "provenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        },
+        {
+          "place_id": "6a5c196b-58e1-47d5-99bb-000000000004",
+          "label": "Virtual gift corner",
+          "place_kind": "VIRTUAL_CONCEPT",
+          "verification_state": "CONCEPT_ONLY",
+          "closure_state": "OPEN",
+          "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+          "provenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        },
+        {
+          "place_id": "6a5c196b-58e1-47d5-99bb-000000000005",
+          "label": "Virtual pixel wall",
+          "place_kind": "VIRTUAL_CONCEPT",
+          "verification_state": "CONCEPT_ONLY",
+          "closure_state": "OPEN",
+          "accessibility_notes": "Virtual landmark only. Physical routes, accessibility, closure and meeting eligibility are not established.",
+          "provenance": {
+            "source_id": "ar02_original_courtyard",
+            "source_kind": "ORIGINAL_ART",
+            "source_revision": "ar02_courtyard_v1; source-pack sha256:22aa34f920c7772a5e4d339c279a54a22d5f2974f40fe26ffc0d5d9e9ae6910c",
+            "source_uri": null,
+            "author": "MCR AR02 map author",
+            "license": "Original MCR geometry and metadata; no third-party raster or map artwork included.",
+            "review_state": "UNREVIEWED",
+            "reviewed_by": null,
+            "reviewed_at": null,
+            "photo_permission": "NOT_APPLICABLE"
+          }
+        }
+      ],
+      "path": "/world",
+      "published": false,
+      "factoryCalls": 0,
+      "requests": [
+        {
+          "path": "/api/auth/capabilities",
+          "method": "GET"
+        },
+        {
+          "path": "/api/auth/login",
+          "method": "POST"
+        },
+        {
+          "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+          "method": "GET"
+        }
+      ],
+      "sameCamera": null,
+      "socketPeak": 0,
+      "sockets": 0,
+      "activeSockets": 0,
+      "canvasPeak": 0,
+      "canvases": 0,
+      "runtime": {
+        "disposed": false,
+        "leases": 1,
+        "pending": 0,
+        "cleanupFailures": 0,
+        "decodedAtlases": 1
+      },
+      "urls": {
+        "created": [
+          "blob:http://127.0.0.1:5173/3ce3027a-8100-4269-9d7a-366106fb96fa"
+        ],
+        "revoked": []
+      },
+      "disposed": false
+    }
+  }
+}
