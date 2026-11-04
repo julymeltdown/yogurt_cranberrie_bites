@@ -84,3 +84,54 @@ Key receipt SHA-256 values:
 - Nine-case summary: `4ca70ea2dcf27c9e404d788db3fff829c4d049171e0123601a34bd5f16599427`.
 
 This documentation successor records validation of the original source commit; it does not relabel a new source HEAD as having been built. The qualifier still requires the exact original checkpoint. Participant209's actual public HTTP/reset/fresh-login/unknown-native evidence, Root's coherent serving build, physical restart qualification, and master delivery remain separate obligations.
+
+
+## Repaired combined-source qualification at d0f063d1
+
+This later checkpoint records actual core qualification at Root source `d0f063d18a0549935f80a536077c30962d89f9e9`. The original source-specific receipts above and the failed first combined cohort retain their original outcomes.
+
+The first combined cohort failed before producer work with `reserved owner authority policy must match exact owner, methods, callers and Acquire actor field`; owned cleanup passed. Source inspection found the actual Auth/Friend policies already matched the platform policy, including Notification, and the fixture delegates those production guarded servers. Frozen Cargo JSON marked the test-profile platform artifact fresh while rebuilding both owner libraries. Production main used a different platform artifact, so refreshing main did not certify the test artifact.
+
+Root used the named `ROOT-SEVEN-CACHE-REPAIR-D0F-20261104` allocation and cleaned only the `platform` package. Source revision and bytes were unchanged. The repaired first test compile records platform and the actual Auth/Friend libraries as `fresh: false`. Its observer raced deletion of an ephemeral compiler file; that interrupted attempt receives no validation credit. Root stopped only its owned process group 7571, preserved the failure, repaired the observer and retried within the same allocation. The successful retry reused artifacts rebuilt during that same repair attempt, exited 0 in 22.5 seconds and did not reuse the original stale platform artifact. Debug information and incremental compilation were disabled. No owner policy or fixture permission changed.
+
+All seven artifacts compiled successfully and were copied outside target. Target release at `2026-11-04T05:34:09.719291+00:00` recorded zero open handles and no compiler processes before copied tests or PostgreSQL startup. No resource abort occurred. Independent implementation-owner readback compared all 2,151 frozen source hashes to the exact Git tree, checked the 1,515 core checkpoint hashes as its subset, and rehashed all seven executables. This required no target access or separate allocation.
+
+These before/after observations resolve the exact policy mismatch. Source hashes alone are not general proof of every cached dependency's compiled revision, including dependencies in older receipts. The first combined native failure is not upgraded.
+
+Successful exact compile command (workspace-relative manifest spelling):
+
+```sh
+cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 --config profile.dev.package.contracts-build.opt-level=2 --message-format=json -p concert-service --lib --test canonical_runtime_config --test owner_authority_cancellation --test participant_cancellation --no-run
+```
+
+The copied `owner-cancellation-tests` executable is 33,332,448 bytes, SHA-256 `7b8473db16c24e265b22a786ad7d483c9131e23ff21a04d241998f6d49648f96`. Each case ran individually through the existing qualifier as `owner-cancellation-tests --ignored --exact cases::<case> --test-threads=1` in a fresh owned PG16/mTLS fixture: exit 0, one test passed. Migration receipts verified Auth 18, Friend 18 and Concert 36, including 0048. Every report matches that exact executable, source revision and full checkpoint. Every resource guard exited 0 without abort; every fixture cleanup passed with its exact owned root absent.
+
+| Case | Prepared Auth / Friend / Concert before teardown | Native report SHA-256 |
+| --- | --- | --- |
+| `returned_error_records_abandonment_without_delivery` | 0 / 0 / 0 | `3b42047dc0469b185ff8acb9ada169ea676fa0b95860e7fafa58d23109103d62` |
+| `caller_cancellation_destroys_actual_work_before_owner_release` | 0 / 0 / 0 | `8dd3830d170a5558bfbeb826d9eed04b35cec0615410089226d7fa2b77ff71a2` |
+| `unresolved_callback_and_expiry_never_prove_abandonment` | 1 / 1 / 0 | `b83b6ae657f0ce4ef4268a68f1384f1158476111fe7555448f59ee8283feac1a` |
+| `active_native_transaction_prevents_cancellation_settlement` | 1 / 1 / 0 | `faed3c52dd4268ca6ea7a0b0a0cc5803acb2d17892a563d40d28afd30fc320fe` |
+| `successful_handoff_retains_existing_unserialized_quarantine` | 1 / 1 / 0 | `300587355866389a62f559d12f5402e190b00c85ee2a1c7bc6ac87ca74fa5f5f` |
+| `drained_late_callback_allows_true_abandonment` | 0 / 0 / 0 | `198bf7d6705014a38a19bd2959195a2664debcbb8f1094efde5976b5b3071cd8` |
+| `expired_original_deadline_never_polls_ready_producer` | 0 / 0 / 0 | `2184de0c409d052d4b721dfcdd2555e62dff9afa8372dc638763192a884f2c78` |
+| `failed_work_destruction_never_reaches_terminal_proof` | 1 / 1 / 0 | `2f7a6ec10eea9a3b37e8e7825d21adb925db54450a47cc4d0aaae478aede7ecc` |
+| `unpublished_unsettled_abandonment_remains_in_durable_capacity` | 1 / 1 / 0 | `e591bd1c95e497544747ab4ba8e7dab72fa4fb58b6047230475d8ac9d47d2d42` |
+
+The four zero-count positive cases certify actual owner settlement. The five expected negative cases certify retained quarantine, including destructor failure and unpublished/unsettled capacity; their teardown is not settlement.
+
+Portable receipt identities from cohort `mcr-root-seven-repair-d0f063d1-5fp4vkh7`:
+
+| Receipt | SHA-256 |
+| --- | --- |
+| `source-pins.json` | `da1057e2e3a5d77292e91926cc006f3aba6a8c6e2fdf3b0561e888383ff08692` |
+| `owner-cancellation-checkpoint.json` | `cdcbba4fc42386923f14154ebd0f6fcfcc572e87676fc33d0961a2b5946900de` |
+| `concert-tests-2-receipt.json` | `8375a8c94f2a84e03d429f4917ffc207d1a2f31c1970176d78f95a61776aa7bf` |
+| `platform-clean.json` | `6e1e8829d8f826a608f98b2226570f920768cf79e5058c95fcefe10a6a221488` |
+| `guard-observation-failure.json` | `b0f7e53bc2235c2500f6e5b04deeec17328cf46a0e6d4170b5c724f672bfdef9` |
+| `build-guard.json` | `0d0d4afdc4f85f362a9b676569d3f6927b6b22ccdef6fdff18ce64e242ef5d62` |
+| `target-release.json` | `2e7185253fd539348ebb89c4256cff724407bcf8513ab6916c266d8cdd3f49db` |
+| `core-native-summary.json` | `1a3bb4ba1d65711e609d4f001b7bcbbe927d2b65aa8eab22fe6a336ee2a12e2a` |
+| `pure-test-receipts.json` | `9192dc66934e5d5d7fb05d29862d20dc0d16d214b079a96d23ef49375aa314da` |
+
+The same cohort reran all three CR07 constructor tests successfully; see `canonical-runtime-composition.md`. The repaired Participant C03 attempt stopped during migration preflight: retained expectations used Auth 17 while the current manifest contains 18. Actual protected HTTP cancellation was NOT_RUN, prepared count was zero, and owned cleanup passed. These core results do not qualify C03. Typed cross-producer composition, native resolver coverage, supervised child recovery in production main, browser flow and scoped validated master delivery remain open.
