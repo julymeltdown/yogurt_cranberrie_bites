@@ -12,7 +12,8 @@ const output=process.env.MCR_COZY_OUTPUT,temp=process.env.MCR_COZY_TEMP
 assert(output?.startsWith(repo+'/docs/mcr/evidence/cozy-backgrounds-v1/'))
 assert(temp?.startsWith('/private/tmp/mcr-cozy-panel-'))
 const git=(...a)=>execFileSync('git',a,{cwd:repo,maxBuffer:64*1024**2}),hash=b=>createHash('sha256').update(b).digest('hex')
-const candidate=git('rev-parse','HEAD').toString().trim(),base='7c25078f118da53dd9a524d0a58e707cca190f0f'
+const candidate=process.env.MCR_COZY_CANDIDATE??git('rev-parse','HEAD').toString().trim(),base='7c25078f118da53dd9a524d0a58e707cca190f0f'
+assert(/^[a-f0-9]{40}$/.test(candidate));assert.equal(git('rev-parse',candidate).toString().trim(),candidate)
 const restored=['frontend/src/app/shell.css','frontend/src/app/shell-chrome/shell-chrome.css','frontend/src/shared/styles/base.css','frontend/src/app/WorldShell.tsx']
 const changed=git('diff','--name-only',base,candidate).toString().trim().split('\n')
 assert(!changed.some(p=>/frontend\/(public\/(avatars|characters)|src\/(entities\/avatar|world\/renderers|features\/(whole-character-editor|avatar|character)))/.test(p)),'Frozen character sources changed')
