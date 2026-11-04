@@ -33,7 +33,9 @@ const server = await createServer({ root: frontend, configFile: false, plugins: 
     response.end(await server.transformIndexHtml(request.url, await readFile(resolve(frontend, `.${fixture}`), 'utf8')))
   }) },
 }], cacheDir: resolve(scratch, 'vite'), logLevel: 'warn',
-  resolve: { alias: Object.entries(browserAliases).sort(([a], [b]) => b.length - a.length).map(([find, replacement]) => ({ find, replacement })) },
+  resolve: { alias: Object.entries(browserAliases).map(([name, replacement]) => ({
+    find: new RegExp('^' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '$'), replacement,
+  })) },
   define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify('00000000-0000-4000-8000-000000000201'),
     'import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG': JSON.stringify(JSON.stringify(input)) },
   server: { host: '127.0.0.1', port: 0, strictPort: false, watch: null, fs: { allow: [frontend, dependencies] } } })
