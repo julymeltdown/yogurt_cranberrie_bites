@@ -232,7 +232,7 @@ async fn aggregate_native() -> Result<()> {
     .bind(user)
     .fetch_one(&p)
     .await?;
-    anyhow::ensure!(post_replay_complete == 1);
+    anyhow::ensure!(post_replay_complete == expected_progress.len() as i64);
     let core_state: String =
         sqlx::query_scalar("select state from concert_private_data_deletion_core where user_id=$1")
             .bind(user)
