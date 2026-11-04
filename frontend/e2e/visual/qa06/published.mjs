@@ -9,8 +9,10 @@ import {createServer} from 'vite'
 import {chromium,expect} from '@playwright/test'
 import {requireCaptureSpace,reservePort,temporaryCache,clearTemporaryCache} from './resources.mjs'
 const repo=resolve(import.meta.dirname,'../../../..'),pin=process.env.QA06_PUBLISHED_PIN,out=process.env.QA06_PUBLISHED_OUTPUT,scope=process.env.QA06_PUBLISHED_SCOPE??'repairs'
+const startAt=Number(process.env.QA06_PUBLISHED_START??0)
 assert(/^[a-f0-9]{40}$/.test(pin??'')&&out?.startsWith(resolve(repo,'docs/mcr/evidence/visual/qa06/')+'/'))
 assert(['repairs','scene'].includes(scope))
+assert(Number.isInteger(startAt)&&startAt>=0&&startAt<27)
 const git=(...args)=>execFileSync('git',args,{cwd:repo,maxBuffer:64*1024*1024}),hash=b=>createHash('sha256').update(b).digest('hex')
 git('merge-base','--is-ancestor',pin,'origin/master')
 await requireCaptureSpace(repo);await mkdir(out,{mode:0o700})
@@ -22,7 +24,7 @@ const aliases=Object.keys(packages.dependencies).filter(n=>!n.startsWith('@types
 for(const find of ['react/jsx-runtime','react/jsx-dev-runtime','react-dom/client'])aliases.push({find,replacement:require.resolve(find)})
 aliases.sort((a,b)=>b.find.length-a.find.length)
 const cacheDir=temporaryCache('published'),port=await reservePort(),errors=[]
-const report={task:'QA06',scope,status:'IN_PROGRESS',candidate:pin,originMaster:git('rev-parse','origin/master').toString().trim(),qualification:'ACTUAL_PUBLISHED_SOURCE_WITH_CORRECTED_SYNTHETIC_HTTP_C05_DESKTOP_ONLY',harnessSha256:hash(await readFile(new URL(import.meta.url))),fixtureSha256:hash(ownFixture),sourceHashes,cases:[],errors,physicalIOS:'NOT_RUN',physicalAndroid:'NOT_RUN'}
+const report={task:'QA06',scope,startAt,status:'IN_PROGRESS',candidate:pin,originMaster:git('rev-parse','origin/master').toString().trim(),qualification:'ACTUAL_PUBLISHED_SOURCE_WITH_CORRECTED_SYNTHETIC_HTTP_C05_DESKTOP_ONLY',harnessSha256:hash(await readFile(new URL(import.meta.url))),fixtureSha256:hash(ownFixture),sourceHashes,cases:[],errors,physicalIOS:'NOT_RUN',physicalAndroid:'NOT_RUN'}
 // Four full-viewport PNGs plus two JSON receipts fit within this conservative reserve.
 async function beforeCase(){await requireCaptureSpace(repo);const files=await readdir(out,{withFileTypes:true});const sizes=await Promise.all(files.filter(f=>f.isFile()).map(async f=>(await stat(resolve(out,f.name))).size));assert(sizes.reduce((a,b)=>a+b,0)+16*1024**2<=.2*1024**3,'0.2GiB output ceiling with next-case reserve')}
 const server=await createServer({configFile:false,root:resolve(repo,'frontend'),cacheDir,logLevel:'error',esbuild:{jsx:'automatic'},resolve:{alias:aliases},server:{host:'127.0.0.1',port,strictPort:true,hmr:false,fs:{allow:[repo,'/Users/lhs/Desktop/mcr/frontend']}},plugins:[{name:'qa06-frozen-published-source',enforce:'pre',resolveId(source,importer){
@@ -69,7 +71,9 @@ try{await server.listen();browser=await chromium.launch({channel:'chrome',headle
   }
   report.status=report.cases.length===9&&report.cases.every(c=>c.status==='PASS')?'BOUNDED_PUBLISHED_SCENE_PASS':'FAIL'
  }else{
+ let ordinal=0
  captures: for(const width of [360,390,430])for(const era of ['REVENGE','PARADE','DANGER'])for(const kind of ['feed','me','meet']){
+  if(ordinal++<startAt)continue
   await beforeCase();const context=await browser.newContext({viewport:{width,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'}),page=await context.newPage(),pageErrors=[];page.on('pageerror',e=>pageErrors.push(e.message));page.setDefaultTimeout(20000)
   const c={width,era,kind,status:'IN_PROGRESS',errors:pageErrors}
   try{await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'));await page.goto(`http://127.0.0.1:${port}/__qa06/start.html?`+new URLSearchParams({entry:'/'+kind,era}));await expect.poll(()=>page.evaluate(()=>window.__QA06__?.state().published)).toBe(true);await page.waitForLoadState('networkidle');await page.evaluate(()=>document.fonts.ready)
@@ -78,18 +82,19 @@ try{await server.listen();browser=await chromium.launch({channel:'chrome',headle
     const metrics=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,brokenImages:[...document.images].filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.alt)}));assert.equal(metrics.overflow,false);assert.deepEqual(metrics.brokenImages,[])
     if(kind==='feed'){const compose=page.getByRole('button',{name:'Write a post',exact:true});await expect(compose).toHaveCount(1);const b=await compose.boundingBox();assert(b.height>=44);assert(b.y+b.height<=height);if(height===844)assert(b.y>height-120);await expect(page.getByRole('navigation',{name:'Feed sections',exact:true})).toHaveCount(0);metrics.compose=b}
     if(kind==='me'){await expect(page.getByRole('navigation',{name:'Me sections',exact:true})).toHaveCount(0);assert(!c.state.requests.some(r=>r.path.endsWith('/feed')));await expect(page.getByText('Recent activity is unavailable in this connection.',{exact:true})).toBeVisible()}
-    if(kind==='meet'){const action=page.locator('.meet-create__action'),copy=page.locator('.meet-create__unavailable');for(const e of [action,copy]){const r=await e.boundingBox();assert(r.y>=0&&r.y+r.height<=height-70)}metrics.create=await action.boundingBox()}
+    if(kind==='meet'){const action=page.locator('.meet-create__action'),copy=page.locator('.meet-create__unavailable');for(const e of [action,copy]){const r=await e.boundingBox();assert(r.y>=0&&r.y+r.height<=height-70,JSON.stringify({height,rect:r}))}metrics.create=await action.boundingBox()}
     return metrics
    }
    c.metrics=await check(844);c.screenshot=`${kind}-${era.toLowerCase()}-${width}.png`;await page.screenshot({path:resolve(out,c.screenshot)})
    if(kind==='me'){await page.getByText('Profile options',{exact:true}).click();const options=page.getByRole('navigation',{name:'More account options',exact:true});for(const a of await options.getByRole('link').all()){await a.scrollIntoViewIfNeeded();const r=await a.boundingBox();assert(r.height>=44);await a.focus();await expect(a).toBeFocused()}await page.getByText('Profile options',{exact:true}).click()}
-   for(const height of (kind==='meet'&&width===390?[637,420]:[420])){await page.setViewportSize({width,height});c['height'+height]=await check(height);const shot=`${kind}-${era.toLowerCase()}-${width}-h${height}.png`;await page.screenshot({path:resolve(out,shot)});c['screenshot'+height]=shot}
+   const referenceHeight={feed:631,me:595,meet:637}[kind]
+   for(const height of (width===390?[referenceHeight,420]:[420])){await page.setViewportSize({width,height});await expect.poll(()=>page.evaluate(()=>parseFloat(document.querySelector('.world-shell').style.getPropertyValue('--shell-viewport-height')))).toBe(height);await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));c['height'+height]=await check(height);const shot=`${kind}-${era.toLowerCase()}-${width}-h${height}.png`;await page.screenshot({path:resolve(out,shot)});c['screenshot'+height]=shot}
    assert.deepEqual(pageErrors,[]);c.status='PASS'
   }catch(e){c.status='FAIL';c.error=e.message}
   finally{try{await page.evaluate(()=>window.__QA06__?.dispose());if(await page.evaluate(()=>!!window.__QA06__)){await expect.poll(()=>page.evaluate(()=>window.__QA06__.state().activeSockets)).toBe(0);await expect.poll(()=>page.evaluate(()=>document.querySelectorAll('canvas').length)).toBe(0);c.cleanup=await page.evaluate(()=>window.__QA06__.state());assert(c.cleanup.disposed)}}catch(e){c.status='FAIL';c.cleanupError=e.message}await context.close()}
   report.cases.push(c);console.log(JSON.stringify({width,era,kind,status:c.status,error:c.error}));await writeFile(resolve(out,'report.partial.json'),JSON.stringify(report,null,2)+'\n');if(c.status==='FAIL')break captures
  }
- report.status=report.cases.length===27&&report.cases.every(c=>c.status==='PASS')?'BOUNDED_PUBLISHED_REPAIRS_PASS':'FAIL'
+ report.status=report.cases.length===27-startAt&&report.cases.every(c=>c.status==='PASS')?'BOUNDED_PUBLISHED_REPAIRS_PASS':'FAIL'
  }
 }catch(e){report.status='FAIL';report.error=e.message}
 finally{await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();await server.close();await clearTemporaryCache(cacheDir)}

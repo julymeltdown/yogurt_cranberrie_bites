@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "status": "CONTRACT_READY_SOURCE_PRESENTATION_NOT_RELEASE_BOUND",
+  "version": 3,
+  "status": "CONTRACT_READY_METADATA_RENDER_VALIDATION_NOT_RUN",
   "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
   "dimensions": {
     "width": 768,
@@ -695,16 +695,16 @@
   "labels": [
     {
       "label": "MAIN STAGE",
-      "x": 335,
-      "y": 147,
+      "x": 422,
+      "y": 201,
       "interaction_id": "stage_info",
       "lines": [
         "MAIN STAGE"
       ],
       "icon": "stage",
       "rect": {
-        "x": 179,
-        "y": 108,
+        "x": 266,
+        "y": 162,
         "width": 312,
         "height": 78
       },
@@ -712,16 +712,16 @@
     },
     {
       "label": "PLAZA",
-      "x": 370,
-      "y": 461,
+      "x": 327,
+      "y": 529,
       "interaction_id": null,
       "lines": [
         "PLAZA"
       ],
       "icon": null,
       "rect": {
-        "x": 298,
-        "y": 422,
+        "x": 255,
+        "y": 490,
         "width": 143,
         "height": 78
       },
@@ -729,16 +729,16 @@
     },
     {
       "label": "MERCH",
-      "x": 118,
-      "y": 750,
+      "x": 177,
+      "y": 700,
       "interaction_id": "gifts_info",
       "lines": [
         "MERCH"
       ],
       "icon": "merch",
       "rect": {
-        "x": 8,
-        "y": 711,
+        "x": 67,
+        "y": 661,
         "width": 221,
         "height": 78
       },
@@ -746,16 +746,16 @@
     },
     {
       "label": "FOOD",
-      "x": 658,
-      "y": 758,
+      "x": 652,
+      "y": 685,
       "interaction_id": null,
       "lines": [
         "FOOD"
       ],
       "icon": "food",
       "rect": {
-        "x": 562,
-        "y": 719,
+        "x": 556,
+        "y": 646,
         "width": 192,
         "height": 78
       },
@@ -763,8 +763,8 @@
     },
     {
       "label": "MEETUP ZONE",
-      "x": 372,
-      "y": 1024.836257,
+      "x": 371,
+      "y": 918,
       "interaction_id": null,
       "lines": [
         "MEETUP",
@@ -772,8 +772,8 @@
       ],
       "icon": "people",
       "rect": {
-        "x": 252,
-        "y": 971,
+        "x": 251,
+        "y": 864,
         "width": 240,
         "height": 108
       },
@@ -781,8 +781,8 @@
     },
     {
       "label": "GIVEAWAY BOOTH",
-      "x": 540,
-      "y": 1241.157895,
+      "x": 518,
+      "y": 1159,
       "interaction_id": null,
       "lines": [
         "GIVEAWAY",
@@ -790,8 +790,8 @@
       ],
       "icon": "gift",
       "rect": {
-        "x": 400,
-        "y": 1183,
+        "x": 378,
+        "y": 1105,
         "width": 280,
         "height": 108
       },
@@ -842,14 +842,15 @@
     },
     "font_upstream": "https://raw.githubusercontent.com/google/fonts/69d0549e8fc7ad72e1531734c81237be401ec4fd/ofl/robotocondensed/RobotoCondensed%5Bwght%5D.ttf",
     "font_transform": "fontTools instantiateVariableFont wght800; unique MCR Map Labels names; fixed source timestamps; no glyph edits.",
-    "label_text_anchors_bindings": "Exact immutable quality-v8 MAP metadata; visible rectangle centers clamp to5px scene edges, authored anchors unchanged."
+    "label_text_anchors_bindings": "Strings and existing/null bindings remain frozen. This sidecar deliberately changes presentation anchors using target-measurements.json; no target raster is copied into product artwork."
   },
   "source_lineage_commit": "ab8e93ba79332df62d5105bb4aa187c8c7f5cd48",
-  "publication": "Unpublished candidate; this lineage commit does not contain the new geometry or presentation.",
+  "publication": "Unpublished source correction; requires explicit matching consumer pin adoption.",
   "base_presentation": {
-    "path": "frontend/public/world/reference-scene-v2/map-labels-v1/presentation.json",
-    "bytes": 13268,
-    "sha256": "sha256:f9599a9859fe0b660fee591440dee2f7ab8e025a5f525df82091b61b091b23cc"
+    "path": "frontend/public/world/reference-scene-v2/quality-v10/map-label-presentation.json",
+    "bytes": 13881,
+    "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
   },
-  "derivation": "Explicit spatial-v5 binding of the byte-equivalent v1 drawing values: dimensions, labels, anchors, null/existing bindings, style, icons and font. New geometry requires fresh consumer validation; no prior review, release or server allocation is inherited."
+  "derivation": "Explicit MAP-only anchor/rectangle translation from measured target text-paper centers. Retains six strings, existing/null interaction bindings, rectangle sizes, vectors, style and exact font. Overrides the frozen proposal display anchors only when explicitly adopted; canonical geometry is unchanged. No new render, visual acceptance, release admission or source review is inherited.",
+  "source_layout_version": "map-layout-v2"
 }

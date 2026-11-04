@@ -1,0 +1,22 @@
+{
+  "task": "QA06",
+  "at": "2026-11-04T04:08:38.614596+00:00",
+  "allocation": "QA06-SECOND-20261104T0359Z",
+  "status": "RELEASED",
+  "newCaptureAndComparisonBytes": 18720495,
+  "newMiB": 17.85325527191162,
+  "durableReservationMiB": 20,
+  "freeGiB": 9.418621063232422,
+  "ownBrowserServerRunnerCount": 0,
+  "ownTemporaryCacheCount": 0,
+  "taskDependencyLinkRemoved": true,
+  "checks": {
+    "scene": "exit0/PASS9",
+    "repairsInitial": "exit1/driver-resize-barrier diagnosis;9selectedwidth360passes retained",
+    "repairsTail": "exit0/PASS18; combined27unique",
+    "motion": "exit0/3candidatecomponentcaptures after exactclean04ea source/228e componentpins",
+    "comparisonReview": "exit0/6panels/allimagesloaded",
+    "nodeSyntaxOxlint": "exit0"
+  },
+  "wholeGoal": "UNFINISHED; existing alignedBLOCKEDgoal preserved percoordinator; no physical/publicart/Wall/live acceptance"
+}

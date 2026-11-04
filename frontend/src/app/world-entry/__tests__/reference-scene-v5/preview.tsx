@@ -1,3 +1,4 @@
+import { probeMapLayoutV2 } from './map-layout-v2-probe'
 // TEST ONLY: explicit source resolver, real default MapScene/Phaser, actual root/Places providers.
 import { createRoot } from 'react-dom/client'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
@@ -139,7 +140,12 @@ function cameraProjection() {
  return { self, surface: { left: surface.left, top: surface.top, right: surface.right, bottom: surface.bottom },
   points: points.map(world => { const client = camera.unproject(world); return { world, client, roundtrip: client ? camera.project(client) : null } }) }
 }
-const api = { state, inspectWorld, overviewPixels, cameraProjection, prepareCatalogRecovery() { const url = new URL(location.href); url.searchParams.delete('catalog'); history.replaceState(history.state, '', url) }, navigate: (path: string) => router.navigate(path),
+const api = { state, inspectWorld, overviewPixels, cameraProjection,
+ async layoutV2() {
+  const value = ports.worldAccess?.read()?.presentation?.read()?.overview?.read()
+  if (!value) throw Error('Overview unavailable')
+  return probeMapLayoutV2(value.imageUrl, value.themeId as 'REVENGE' | 'PARADE' | 'DANGER')
+ }, prepareCatalogRecovery() { const url = new URL(location.href); url.searchParams.delete('catalog'); history.replaceState(history.state, '', url) }, navigate: (path: string) => router.navigate(path),
  suspend() { auth.privacy.changePolicy(auth.privacy.capture(), 'suspended') },
  // Keep document-local URL probes through asynchronous teardown; closing the browser context releases them.
  async dispose() { if (disposed) return; disposed = true; root.unmount(); router.dispose(); ports.dispose?.(); auth.dispose(); caches.forEach(c => c.dispose()); mutation.disconnect() },

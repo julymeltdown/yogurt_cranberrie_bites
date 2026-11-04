@@ -31,6 +31,7 @@ it('fences an abort-resistant fetch after disposal, without registering a late f
   const s = setup(); let release!: (r: Response) => void
   s.fetcher.mockImplementation(() => new Promise(r => { release = r }))
   const pending = s.owner.prepare(), rejected = expect(pending).rejects.toThrow('disposed')
+  await vi.waitFor(() => expect(s.fetcher).toHaveBeenCalledOnce())
   s.owner.dispose(); release(new Response(bytes)); await rejected
   expect(s.load).not.toHaveBeenCalled(); expect(s.faces.size).toBe(0)
 })
@@ -41,4 +42,10 @@ it('fences a late native FontFace decode after disposal', async () => {
   const pending = s.owner.prepare(), rejected = expect(pending).rejects.toThrow('disposed')
   await vi.waitFor(() => expect(release).toBeTypeOf('function'))
   s.owner.dispose(); release({}); await rejected; expect(s.faces.size).toBe(0)
+})
+
+it('disposes during paired hash validation without fetching or registering the font', async () => {
+  const s = setup(), pending = s.owner.prepare()
+  s.owner.dispose(); await expect(pending).rejects.toThrow('disposed')
+  expect(s.fetcher).not.toHaveBeenCalled(); expect(s.faces.size).toBe(0)
 })

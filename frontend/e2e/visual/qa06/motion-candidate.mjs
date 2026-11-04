@@ -10,9 +10,12 @@ import {chromium,expect} from '@playwright/test'
 import {requireCaptureSpace,reservePort,temporaryCache,clearTemporaryCache} from './resources.mjs'
 const qa=resolve(import.meta.dirname,'../../../..'),repo=process.env.QA06_MOTION_REPO,out=process.env.QA06_MOTION_OUTPUT
 assert(repo&&out?.startsWith(resolve(qa,'docs/mcr/evidence/visual/qa06/')+'/'))
-const pin='228e1cd49e174f31795e648284b96a0f4ff0c44c',git=(...args)=>execFileSync('git',args,{cwd:repo,maxBuffer:64*1024*1024}),hash=b=>createHash('sha256').update(b).digest('hex')
+const originalRepair='228e1cd49e174f31795e648284b96a0f4ff0c44c',pin=process.env.QA06_MOTION_PIN??originalRepair,git=(...args)=>execFileSync('git',args,{cwd:repo,maxBuffer:64*1024*1024}),hash=b=>createHash('sha256').update(b).digest('hex')
+assert(/^[a-f0-9]{40}$/.test(pin))
+const unchangedRepairPaths=['frontend/src/features/avatar/motion-adoption/MotionEditor.tsx','frontend/src/features/avatar/motion-adoption/motion.css','frontend/src/app/character-entry/__tests__/motion-adoption/fixture.tsx','frontend/src/world/avatar/__tests__/motion-adoption/producer-inputs.json']
+for(const p of unchangedRepairPaths)assert.equal(hash(git('show',pin+':'+p)),hash(git('show',originalRepair+':'+p)),p)
 assert.equal(git('diff','--name-only','--','frontend/src').toString(),'','Candidate source must be clean')
-const paths=git('ls-tree','-r','--name-only',pin,'frontend/src').toString().trim().split('\n'),sourceHashes={}
+const paths=git('ls-tree','-r','--name-only',pin,'frontend/src').toString().trim().split('\n').filter(p=>!(p.includes('/evidence/')&&/\.(png|jpe?g|webp|gif)$/.test(p))),sourceHashes={}
 for(const p of paths){const actual=await readFile(resolve(repo,p));sourceHashes[p]=hash(actual);assert.equal(sourceHashes[p],hash(git('show',pin+':'+p)),p)}
 process.env.MCR_FRONTEND_DEPENDENCIES='/Users/lhs/Desktop/mcr/frontend'
 const helper=resolve(repo,'frontend/src/world/avatar/__tests__/motion-adoption')
@@ -22,7 +25,7 @@ const manifest=readPinnedProducer('backend/releases/selected-character-motion-v2
 await requireCaptureSpace(qa);await mkdir(out,{mode:0o700})
 const tracked=new Set(git('ls-tree','-r','--name-only',pin,'frontend/public').toString().trim().split('\n')),bytes=new Map(),cacheDir=temporaryCache('motion'),port=await reservePort()
 let writes=0,browser
-const report={task:'QA06',status:'IN_PROGRESS',qualification:'TEST_ONLY_CANDIDATE_COMPONENT_NOT_PUBLIC_ROOT_OR_DEVICE_ACCEPTANCE',sourceCommit:pin,checkoutHead:git('rev-parse','HEAD').toString().trim(),sourceHashes,harnessSha256:hash(await readFile(new URL(import.meta.url))),producer:producerInputs,cases:[]}
+const report={task:'QA06',status:'IN_PROGRESS',qualification:'TEST_ONLY_CANDIDATE_COMPONENT_NOT_PUBLIC_ROOT_OR_DEVICE_ACCEPTANCE',sourceCommit:pin,originalRepair,unchangedRepairPaths,checkoutHead:git('rev-parse','HEAD').toString().trim(),sourceHashes,harnessSha256:hash(await readFile(new URL(import.meta.url))),producer:producerInputs,cases:[]}
 const server=await createServer({configFile:false,root:resolve(repo,'frontend'),cacheDir,logLevel:'error',resolve:{alias:Object.entries(aliases).sort(([a],[b])=>b.length-a.length).map(([find,replacement])=>({find,replacement}))},server:{host:'127.0.0.1',port,strictPort:true,hmr:false,fs:{allow:[repo,process.env.MCR_FRONTEND_DEPENDENCIES]}},plugins:[{name:'qa06-readonly-motion',configureServer(s){s.middlewares.use((req,res,next)=>{
  const path=new URL(req.url,'http://fixture.test').pathname
  if(path.startsWith('/__motion/')){if(req.method!=='GET'){writes++;res.writeHead(405);res.end();return}res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(path==='/__motion/candidate'?manifest:JSON.stringify({revision:1,config:preset}));return}

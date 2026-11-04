@@ -1,8 +1,21 @@
 {
-  "source_revision": "f19027fa96abd90eb11ffda825deda95c3091647",
-  "path": "world/reference-scene-v2/map-landscape-v1/presentation.json",
-  "sha256": "sha256:90402525366769febb1f8d5b779d9b293e4680858f105c88af4bf808965cc35e",
-  "bytes": 12497,
+  "source_revision": "196cd0a2f5e006b4e14b1867b8c51b9a91dbaf19",
+  "path": "world/reference-scene-v2/map-layout-v2/landscape-presentation.json",
+  "sha256": "sha256:789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf",
+  "bytes": 13276,
   "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
-  "authority": "MAP-only decoration, no additional PNG/font/World solids/place/interaction/admission."
+  "layout_pair": {
+    "labels": {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json",
+      "bytes": 14099,
+      "sha256": "sha256:f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
+    },
+    "landscape": {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/landscape-presentation.json",
+      "bytes": 13276,
+      "sha256": "sha256:789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf"
+    }
+  },
+  "document_sha256": "sha256:9a7ef8663787474e0e95421599dcc1d289c23221b3210a23966b622df20ab33a",
+  "authority": "Paired MAP-only layout-v2 planting; no World tuple, resource, place or admission change."
 }

@@ -1,0 +1,192 @@
+{
+  "packet": "QA06-WORLD-PRESENTATION-BUDGET-01",
+  "status": "IN_PROGRESS",
+  "purpose": "Existing-evidence implementation packet; required original reference fidelity remains open.",
+  "deliveryEvidenceCommit": "e3173efb095f7d8d329f822993a4d88ae21cd81b",
+  "runtimeBaseline": {
+    "sourceCommit": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+    "harnessSha256": "bb1811cc9ba907e80688c28f8df87f2cb253058975670c06ff5bad1a5dbafa01",
+    "sourceFixtureSha256": "ef986573f544278ee891602305d56e7a0b72bd3f2cb6d886e454afa7088659db",
+    "browser": "156.0.8078.80",
+    "report": {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-scene/report.json",
+      "sha256": "f51809282d804619e62d41e8b07ce02838f6ee185ce5807bda6757e2cfc0dd21",
+      "bytes": 322981
+    },
+    "qualification": "Actual product component/Phaser source with synthetic source7005 UNREVIEWED data. No public production admission, backend revision6, live multiuser or physical-device inference.",
+    "geometryHash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+    "tiledHash": "sha256:e5837dfe08a8d2f1f7cdb4428b87965b4a7c6ecdb1458b8fe910e3f4c2112078"
+  },
+  "reference": {
+    "artifact": {
+      "path": "docs/mcr/evidence/visual/qa06/reference-target.png",
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+      "bytes": 2967126
+    },
+    "original": "docs/mcr/design/reference-target-2026-11-04.png",
+    "crop": {
+      "x": 589,
+      "y": 3,
+      "width": 370,
+      "height": 526
+    },
+    "proportionalActualViewport": {
+      "width": 390,
+      "height": 554
+    }
+  },
+  "visualArtifacts": [
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-scene/world-parade-390-h554.png",
+      "sha256": "71f4a58478241753e44cf1f3e5a25fcef54823f9548a996df068414c39a031db",
+      "bytes": 231564
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-review/compare-world.png",
+      "sha256": "40a2b62d7f49c72d56eb904e974be678a230256fb75f8625ab882a4ef4ea08a7",
+      "bytes": 675304
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-scene/map-parade-390-h754.png",
+      "sha256": "b10382bae8de4eb3adb9f253f1b6c63773e09f0ce555b24db556e328575f06c5",
+      "bytes": 410974
+    },
+    {
+      "path": "docs/mcr/evidence/visual/qa06/postfix-12a5-review/compare-map.png",
+      "sha256": "f2bcae9c2dd87f75d19c59c20e1f2c82c68e3a4de9290bb1debc6ffde28b3338",
+      "bytes": 962220
+    }
+  ],
+  "observations": [
+    {
+      "kind": "observed_existing_raster_approximate",
+      "finding": "World canvas occupies about y108..389 (~281px) at390x554. Separate status/virtual-arrival and Map/Rooms/Nearby/Help rows consume about90px before six-destination navigation. Pixel estimates are not DOM bounding-rect measurements."
+    },
+    {
+      "kind": "observed_reference_comparison",
+      "finding": "Reference scene runs directly toward bottom navigation with larger foreground actors and broader visual spread. Current full stage/sign is visible, but required scale/canvas composition still differs."
+    },
+    {
+      "kind": "recorded_runtime_at_initial_390x844",
+      "camera": {
+        "following": true,
+        "camera": {
+          "zoom": 0.6472602739726028,
+          "scrollX": 263,
+          "scrollY": 155.3174603174603,
+          "width": 378,
+          "height": 570
+        }
+      },
+      "world": {
+        "games": 1,
+        "peakGames": 1,
+        "totalGames": 1,
+        "sameGame": true,
+        "sprites": 6,
+        "referenceObjects": 35
+      }
+    },
+    {
+      "kind": "source_derived_not_measured_at_554",
+      "math": "At unchanged390 width, initial570px camera height minus(844-554)=280px. Both heights exceed550px breakpoint. Source fit min(1,378/584,280/584) implies zoom0.4794520548 at logical zoom1. A logical64px frame projects to30.6849px versus41.4247px at recorded0.64726027397. This is expected projection, not sampled554px zoom or a painted-body bounding box."
+    },
+    {
+      "kind": "fixture_only_formation",
+      "finding": "snapshot() deliberately uses offsets[0,1],[-5,-3],[5,-3],[0,-3],[-5,1],[5,1] around default spawn,16px cells. Roster center span160x64 worldpx is deterministic test content, not proof of production placement failure. Client scale reduces its displayed spacing; do not move server feet or fake fixture positions to imitate target."
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "revision": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "sha256": "4e9f90a76c20b6bdb405f4d30add4ec0b45f0468c61a4fc9ef1092db746f53d3"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "revision": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "sha256": "8bed1fbb014dfd0dfe31adcf015aa2bf78814ae08b4ea65623f0412569e3a056"
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "revision": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "sha256": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/camera.ts",
+      "revision": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "sha256": "b2dfdfdd4f7b6636849d96f2497339e41fddbb8954cc1d1acec8872f27b46f1a"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "revision": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "sha256": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f"
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts",
+      "revision": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "sha256": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb"
+    },
+    {
+      "path": "frontend/src/world/avatar/whole-character.ts",
+      "revision": "12a5d394eeabc89e1c7b0012fb51038f737c9a7f",
+      "sha256": "4e9295799f1a905e53c9866c4621538243bb677ab173f5db6b2ffd3309f8ab85"
+    }
+  ],
+  "implementationPointers": [
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "lines": "104-115",
+      "symbol": "WorldShell closed-world tools branch",
+      "scope": "Closed-world tools presentation only. Root reports its current implementation as WorldShellRootContent; resolve equivalent hunk on assigned base, not obsolete line numbers. Preserve destinations, content heading, focus and six bottom destinations."
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "lines": "23;83-85;91-94;112-121",
+      "symbol": "shell-stage / shell-world-tools / world-composition-summary / world-controls-stage",
+      "scope": "Closed-world-specific row budget and summary/tools presentation only. Scope overrides to closed world; preserve full/half/peek panels and other routes. No shared decorative or global redesign."
+    },
+    {
+      "path": "frontend/src/world/composition/index.ts",
+      "lines": "110-119;131-142",
+      "symbol": "mount summary construction / renderStatus",
+      "scope": "Root/WorldSL explicitly routed presentation-only summary/status hunks to26e. Retain accurate connected/loading/unavailable/paused/disconnected states, role=status, virtual-position warning and working reconnect. No runtime ownership, replication, authorization or lifecycle rewrite."
+    },
+    {
+      "path": "frontend/src/world/reference-scene/spatial-v5/camera.ts",
+      "lines": "7-18",
+      "symbol": "spatialV5CameraPresentation",
+      "scope": "READ ONLY: explains viewport height amplification. No camera/helper grant in current26e lease."
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "lines": "131-146",
+      "symbol": "refreshCamera",
+      "scope": "READ ONLY call-site context; no camera, input projection, geometry or renderer grant."
+    },
+    {
+      "path": "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts",
+      "lines": "27-42",
+      "symbol": "snapshot",
+      "scope": "READ ONLY fixture provenance. Do not change its positions as a product correction."
+    }
+  ],
+  "ownership": {
+    "responsibleImplementationOwner": "26e / 01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+    "allocator": "WorldSL",
+    "publisher": "Root153",
+    "allocationRecordReportedByWorldSL": "e6312ce4; owner acceptance pending at dispatch",
+    "allowedValidation": "New independent world-presentation-budget test/doc/evidence paths only, per explicit allocator scope. Existing shared tests and QA06 evidence remain with their owners.",
+    "excluded": "Root MAP eight-file metadata/layout-v2 lease; camera helpers; geometry/Tiled tuple; server/player feet; source artwork or approved avatars; other functional routes; shared manifests, contracts, CI and lockfiles.",
+    "artRoute": "Artist231 separately owns actual building/scene-art mismatch. This packet grants no ART edits.",
+    "rootLease": "Root153 retains exact eight-file MAP lease; World packet is not an expansion."
+  },
+  "implementationAcceptance": [
+    "Increase reference-size World scene use and foreground visual scale with measured before/after row/canvas budget; independently compare same390x554 aspect with unchanged reference. Implementation design remains owner choice; no invented fidelity percentage.",
+    "Keep all four tools and six primary destinations reachable with visible keyboard focus and>=44px interactive targets; preserve status/virtual-arrival/reconnect meaning and unavailable/disconnected behavior.",
+    "Preserve one persistent Phaser game and one world connection, pointer/touch controls, navigation/panel focus/visibility, and accurate cleanup. No virtual coordinate implies physical arrival.",
+    "Do not turn deterministic roster positioning, missing optional content, public admission, device evidence or backend state into a client-layout patch. Ready client layout work proceeds independently of those separate acceptance obligations.",
+    "Commit only assigned presentation hunks and new owned tests/docs/evidence; report base, exact changed paths, commands/exit codes, limitations and reviewed handoff. Later runtime capture requires its own named resource allocation."
+  ],
+  "currentEvidenceLimit": "No new browser, native runner, build, fixture or matrix rerun used to produce this packet. Prior slot RELEASED. New MAP layout-v2 has not been independently captured by QA06;12a5 proof is not its qualification. Original QA06 goal remains BLOCKED, scope retained, not complete/cleanSTOP/IN02."
+}

@@ -1,7 +1,10 @@
 import input from './source-inputs.json'
 import landscapeInput from './map-landscape-source.json'
+import labelInput from './map-labels-source.json'
+import labelPin from './map-labels-pins.json'
+import landscapePin from './map-landscape-pin.json'
 import tile from './tile-pin.json'
-import { canonicalJson, requireMap } from '../../map/json'
+import { canonicalJson, requireMap, sha256 } from '../../map/json'
 import type { LoadedMap } from '../../map/resources'
 import { validateLoadedScenery, type Scenery, type SceneryObject } from '../../illustrated/model'
 import type { ReferenceSceneBinding } from '../model'
@@ -16,8 +19,49 @@ function freeze<T>(value: T): T {
   if (value && typeof value === 'object') { for (const child of Object.values(value)) freeze(child); Object.freeze(value) }
   return value
 }
-const source = freeze(structuredClone(input)), landscape = freeze(structuredClone(landscapeInput))
-requireMap(landscape.geometry_hash === source.geometry_hash && landscape.view === 'MAP_ONLY')
+const source = freeze(structuredClone(input)), landscape = freeze(landscapeInput), labels = freeze(labelInput)
+
+/** Display-only sidecars must form one pinned pair before metadata or rendering is exposed. */
+export function validateSpatialV5MapLayoutPair(label = labels, plants = landscape, labelPins = labelPin, plantPins = landscapePin) {
+  requireMap(label?.source_layout_version === 'map-layout-v2' && plants?.source_layout_version === 'map-layout-v2'
+    && label.geometry_hash === source.geometry_hash && plants.geometry_hash === source.geometry_hash
+    && label.view === 'MAP_ONLY' && plants.view === 'MAP_ONLY'
+    && label.dimensions.width === 768 && label.dimensions.height === 1296
+    && plants.dimensions.width === 768 && plants.dimensions.height === 1296
+    && labelPins.source_revision === plantPins.source_revision && labelPins.source_revision === labelPin.source_revision
+    && labelPins.document_sha256 === labelPin.document_sha256 && plantPins.document_sha256 === landscapePin.document_sha256
+    && canonicalJson(labelPins.layout_pair) === canonicalJson(labelPin.layout_pair)
+    && canonicalJson(labelPins.layout_pair) === canonicalJson(plantPins.layout_pair)
+    && canonicalJson(plants.required_label_presentation) === canonicalJson(labelPins.layout_pair.labels)
+    && labelPins.presentation.path === labelPins.layout_pair.labels.path.replace('frontend/public/', '')
+    && labelPins.presentation.sha256 === labelPins.layout_pair.labels.sha256
+    && labelPins.presentation.bytes === labelPins.layout_pair.labels.bytes
+    && plantPins.path === plantPins.layout_pair.landscape.path.replace('frontend/public/', '')
+    && plantPins.sha256 === plantPins.layout_pair.landscape.sha256 && plantPins.bytes === plantPins.layout_pair.landscape.bytes
+    && label.labels.length === source.map_labels.length && plants.decorations.length === 10)
+  label.labels.forEach((item, index) => {
+    const original = source.map_labels[index]!, r = item.rect
+    requireMap(item.label === original.label && item.interaction_id === original.interaction_id
+      && [item.x, item.y, r.x, r.y, r.width, r.height].every(Number.isSafeInteger)
+      && r.width > 0 && r.height > 0 && r.x >= 0 && r.y >= 0 && r.x + r.width <= 768 && r.y + r.height <= 1296
+      && Math.abs(item.x - r.x - r.width / 2) <= .5 && Math.abs(item.y - r.y - r.height / 2) <= .5)
+  })
+  const ids = new Set<string>()
+  for (const item of plants.decorations) {
+    requireMap(item.view === 'MAP_ONLY' && item.interaction_id === null && item.frame === 'shrub_bed'
+      && item.id.startsWith('map_garden_') && !ids.has(item.id)
+      && [item.x, item.y, item.width, item.height, item.depth_y].every(Number.isSafeInteger)
+      && item.x >= 0 && item.y >= 0 && item.width > 0 && item.height > 0
+      && item.x + item.width <= 768 && item.y + item.height <= 1296 && item.depth_y === item.y + item.height)
+    ids.add(item.id)
+  }
+}
+export async function verifySpatialV5MapLayoutPair(label = labels, plants = landscape, labelPins = labelPin, plantPins = landscapePin) {
+  validateSpatialV5MapLayoutPair(label, plants, labelPins, plantPins)
+  const hash = (value: unknown) => sha256(new TextEncoder().encode(JSON.stringify(value)))
+  requireMap(await hash(label) === labelPins.document_sha256 && await hash(plants) === plantPins.document_sha256)
+}
+validateSpatialV5MapLayoutPair()
 const scenes = new Map(spatialV5ThemeIds.map(themeId => {
   const data = source.scenes[themeId], scenery = data.scenery as Scenery
   requireMap(canonicalJson(landscape.themes.find(t => t.theme_id === themeId)?.atlas) === canonicalJson(scenery.atlases[0]))
@@ -28,7 +72,7 @@ const scenes = new Map(spatialV5ThemeIds.map(themeId => {
       x: p.x, y: p.y, width: p.width, height: p.height, depth_y: p.depth_y })),
     ...landscape.decorations.map(p => ({ id: p.id, atlas_id: scenery.atlases[0]!.id, frame: frames[p.frame]!,
       x: p.x, y: p.y, width: p.width, height: p.height, depth_y: p.depth_y }))])
-  const mapLabels: readonly ReferenceOverviewLabel[] = freeze(source.map_labels.map(p => ({ label: p.label, x: p.x, y: p.y, interactionId: p.interaction_id })))
+  const mapLabels: readonly ReferenceOverviewLabel[] = freeze(labels.labels.map(p => ({ label: p.label, x: p.x, y: p.y, interactionId: p.interaction_id })))
   return [themeId, Object.freeze({ scenery, overview, expected: canonicalJson(scenery),
     metadata: Object.freeze({ ...spatialV5SceneIdentity, themeId, mapLabels }) })] as const
 }))
