@@ -1,0 +1,165 @@
+{
+  "commands": [
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "create",
+        "--project",
+        "quality-v7/danger/danger-world.tsrct"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "import-asset",
+        "--project",
+        "quality-v7/danger/danger-world.tsrct",
+        "--file",
+        "quality-v7/danger/native-atlas.png",
+        "--asset-id",
+        "scenery-d773f889d5553366",
+        "--kind",
+        "image"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "import-asset",
+        "--project",
+        "quality-v7/danger/danger-world.tsrct",
+        "--file",
+        "quality-v7/danger/../../quality-v6/ground.png",
+        "--asset-id",
+        "ground-e2d9f785d31ea9e9",
+        "--kind",
+        "image"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "quality-v7/danger/danger-world.tsrct",
+        "--output",
+        "quality-v7/danger/danger-world-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "quality-v7/danger/danger-world.tsrct",
+        "--file",
+        "quality-v7/danger/danger-world-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "quality-v7/danger/danger-world.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "quality-v7/danger/danger-world-native.png"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "create",
+        "--project",
+        "quality-v7/danger/danger-map.tsrct"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "import-asset",
+        "--project",
+        "quality-v7/danger/danger-map.tsrct",
+        "--file",
+        "quality-v7/danger/native-atlas.png",
+        "--asset-id",
+        "scenery-d773f889d5553366",
+        "--kind",
+        "image"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "import-asset",
+        "--project",
+        "quality-v7/danger/danger-map.tsrct",
+        "--file",
+        "quality-v7/danger/../../quality-v6/ground.png",
+        "--asset-id",
+        "ground-e2d9f785d31ea9e9",
+        "--kind",
+        "image"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "checkout",
+        "--project",
+        "quality-v7/danger/danger-map.tsrct",
+        "--output",
+        "quality-v7/danger/danger-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "project",
+        "commit",
+        "--project",
+        "quality-v7/danger/danger-map.tsrct",
+        "--file",
+        "quality-v7/danger/danger-map-editable.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "tsrct",
+        "preview",
+        "--project",
+        "quality-v7/danger/danger-map.tsrct",
+        "--time",
+        "1",
+        "--output",
+        "quality-v7/danger/danger-map-native.png"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "map_limit": "Native overview uses approved solid green fill; SVG/runtime also outline it. Identical physical geometry. No app/server authority.",
+  "assets": "Exactly two packaged sources per project (one transparently padded era derivative atlas and shared ground); named independently editable image layers with explicit rectangular crop masks. Source pixels unchanged.",
+  "renderer_workaround": "InstalledCLI0.4 accepted sourceRect but neighboring atlas pixels remained visible; explicit mask/full-source transform renders the intended crop. Asset IDs are content hashes to prevent stale imports."
+}

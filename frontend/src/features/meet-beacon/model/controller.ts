@@ -1,4 +1,5 @@
 import { TransportError } from '../../../shared/api/errors'
+import type { JsonValue } from '../../../shared/api/errors'
 import type { HttpRequest } from '../../../shared/api/http'
 import type { PrivacyScope } from '../../../shared/query/privacy'
 import { placeSchema, sourceLink } from '../../places/model/contract'
@@ -6,8 +7,11 @@ import type { Place } from '../../places/model/contract'
 import { audienceKey, audienceSchema, decodeBeacon, decodeCommand, decodeReceipt, freeze, meetingSchema, revision, sameMeeting, utc, uuid,
   type CommandBinding, type MeetBeacon, type MeetingDescription, type Receipt } from './contract'
 import type { MeetingAuthority, MeetingBeaconOptions, QualifiedMeetingPhoto } from './ports'
+import { createMeetingPhotoClient, type MeetingPhotoClient } from './photo-client'
+import type { UploadState } from '../../../shared/media/types'
 
-export interface BeaconDraft { readonly placeId: string; readonly audienceId: string; readonly instructions: string; readonly identification: string; readonly ttlSeconds: number; readonly acknowledged: boolean }
+export interface BeaconDraft { readonly placeId: string; readonly audienceId: string; readonly instructions: string; readonly identification: string; readonly ttlSeconds: number; readonly acknowledged: boolean
+  readonly mediaId: string | null; readonly photoPermissionAcknowledged: boolean }
 export type DetailPhase = 'idle' | 'loading' | 'current' | 'moved' | 'stale' | 'expired' | 'revoked' | 'unavailable'
 export type CommandPhase = 'idle' | 'sending' | 'uncertain' | 'pending' | 'checking' | 'succeeded' | 'failed' | 'retired'
 export type MeetingNotice = 'unavailable' | 'denied' | 'changed' | 'map-mismatch' | 'invalid' | 'rate' | 'read-only' | null
@@ -16,18 +20,21 @@ export interface MeetingBeaconState {
   readonly photo: QualifiedMeetingPhoto | null; readonly draft: BeaconDraft; readonly canRead: boolean; readonly canWrite: boolean
   readonly notice: MeetingNotice; readonly retryAt: number
   readonly command: { readonly phase: CommandPhase; readonly operation: CommandBinding['operation'] | null }
-  readonly places: readonly { readonly id: string; readonly label: string }[]
+  readonly places: readonly { readonly id: string; readonly label: string; readonly photoAllowed?: boolean }[]
   readonly audiences: readonly { readonly id: string; readonly label: string }[]
   readonly maxTtlSeconds: number
+  readonly photoDraft: UploadState | null
+  readonly photoLoading: boolean
+  readonly photoSupported: boolean
 }
 export const meetingNotice: Record<Exclude<MeetingNotice, null>, string> = {
   unavailable: 'Meeting information is unavailable. Check current access before trying again.', denied: 'Your current access does not allow this meeting.',
   changed: 'Meeting information changed. Read the latest revision before acting.', 'map-mismatch': 'Place or map information changed. Reload current places.',
   invalid: 'Check the place, audience, identification, expiry, and physical acknowledgement.', rate: 'Please wait before checking again.', 'read-only': 'Meeting changes are unavailable for this event.',
 }
-const draft = (): BeaconDraft => ({ placeId: '', audienceId: '', instructions: '', identification: '', ttlSeconds: 900, acknowledged: false })
+const draft = (): BeaconDraft => ({ placeId: '', audienceId: '', instructions: '', identification: '', ttlSeconds: 900, acknowledged: false, mediaId: null, photoPermissionAcknowledged: false })
 const initial = (): MeetingBeaconState => ({ epoch: 0, phase: 'idle', beacon: null, place: null, photo: null, draft: draft(), canRead: false,
-  canWrite: false, notice: null, retryAt: 0, command: { phase: 'idle', operation: null }, places: [], audiences: [], maxTtlSeconds: 0 })
+  canWrite: false, notice: null, retryAt: 0, command: { phase: 'idle', operation: null }, places: [], audiences: [], maxTtlSeconds: 0, photoDraft: null, photoLoading: false, photoSupported: false })
 export const sameMeetingScope = (a: PrivacyScope, b: PrivacyScope) => a.userId === b.userId && a.eventId === b.eventId
   && a.generation === b.generation && a.policyGeneration === b.policyGeneration && a.gate === b.gate
 const unresolved = (phase: CommandPhase) => ['sending', 'uncertain', 'pending', 'checking', 'retired'].includes(phase)
@@ -48,6 +55,8 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
   let binding: CommandBinding | null = null, receiptExpiry: number | null = null
   let watermark = 0, needsConfirmation = false, terminal: 'expired' | 'revoked' | null = null
   let timer: ReturnType<typeof setTimeout> | undefined
+  let photoClient: MeetingPhotoClient | null = null, stopUpload: (() => void) | null = null
+  let photoReader: ReturnType<MeetingPhotoClient['preview']> | null = null, stopReader: (() => void) | null = null, photoAttempt = 0
   const listeners = new Set<() => void>()
   const now = () => { const time = options.now(); return typeof time === 'number' && Number.isFinite(time) ? time : null }
   const emit = (patch: Partial<MeetingBeaconState>) => {
@@ -56,6 +65,44 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
     for (const listener of Array.from(listeners)) { try { listener() } catch { /* Eviction reaches all consumers. */ } }
   }
   const command = (phase: CommandPhase) => emit({ command: { phase, operation: binding?.operation ?? null } })
+  function clearPhoto() {
+    photoAttempt++; stopReader?.(); stopReader = null; photoReader?.dispose(); photoReader = null
+    emit({ photo: null, photoLoading: false })
+  }
+  function clearPhotoClient() {
+    clearPhoto(); stopUpload?.(); stopUpload = null; photoClient?.dispose(); photoClient = null
+    emit({ photoDraft: null })
+  }
+  function client() {
+    if (!options.photoClient || !authority()?.canRead) return null
+    if (photoClient?.isCurrent()) return photoClient
+    clearPhotoClient()
+    photoClient = createMeetingPhotoClient(auth, () => !!authority()?.canRead, options.photoClient, () => now() ?? Infinity)
+    stopUpload = photoClient.upload.subscribe(() => {
+      const value = photoClient?.upload.read(), attachment = value?.attachment
+      emit({ photoDraft: value ?? null, ...(value?.phase === 'ready' && attachment?.purpose === 'BEACON'
+        ? { draft: { ...state.draft, mediaId: attachment.media_id } } : {}) })
+    })
+    emit({ photoDraft: photoClient.upload.read() }); return photoClient
+  }
+  function loadPhoto(b: MeetBeacon, p: Place) {
+    if (!b.meeting.media_id || p.provenance.photo_permission !== 'GRANTED') return
+    clearPhoto()
+    const owner = client(); if (!owner) return
+    const ticket = photoAttempt, id = b.meeting.media_id, reader = owner.preview(id); photoReader = reader
+    const sync = () => {
+      if (disposed || ticket !== photoAttempt || state.beacon !== b || !['current', 'moved'].includes(state.phase)
+        || !owner.isCurrent() || !qualified(b, authority())) return
+      const value = reader.read()
+      emit({ photoLoading: value.phase === 'loading', photo: value.phase === 'ready' && value.media?.media_id === id
+        && value.media.purpose === 'BEACON' && value.previewUrl?.startsWith('blob:') ? {
+          scope: owner.scope, beaconId: b.beacon_id, beaconRevision: b.revision, placeId: p.place_id,
+          audienceKey: audienceKey(b.meeting.audience), expiresAt: b.meeting.expires_at,
+          permission: 'GRANTED', review: 'REVIEWED', src: value.previewUrl, alt: 'Shared meeting identification photo', mediaId: id,
+        } : null })
+    }
+    stopReader = reader.subscribe(sync); void reader.load(); sync()
+  }
   function authority(): MeetingAuthority | null {
     const a = options.authority.read(), s = auth.privacy.capture(), time = now()
     if (!a || time === null || !auth.privacy.isCurrent(s) || !sameMeetingScope(a.scope, s)
@@ -87,6 +134,12 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       && a.placeRevisions.some(v => v.placeId === b.meeting.place_id && v.revision === b.meeting.place_revision) ? p ?? null : null
   }
   function photo(b: MeetBeacon, p: Place): QualifiedMeetingPhoto | null {
+    if (b.meeting.media_id) {
+      const value = state.photo
+      return value?.mediaId === b.meeting.media_id && value.beaconId === b.beacon_id && value.beaconRevision === b.revision
+        && value.placeId === p.place_id && p.provenance.photo_permission === 'GRANTED' && auth.privacy.isCurrent(value.scope)
+        && value.src.startsWith('blob:') && Date.parse(value.expiresAt) > (now() ?? Infinity) ? value : null
+    }
     const value = options.photos?.read(), time = now()
     if (!value || time === null || p.provenance.photo_permission !== 'GRANTED' || value.permission !== 'GRANTED' || value.review !== 'REVIEWED'
       || !sameMeetingScope(value.scope, auth.privacy.capture()) || value.beaconId !== b.beacon_id || value.beaconRevision !== b.revision
@@ -107,22 +160,34 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
     if (disposed) return
     const a = authority(), time = now(), valid = places(a), b = state.beacon
     const write = !!a?.canRead && a.canWrite && time !== null && Date.parse(a.eventCutoff) > time
-    emit({ canRead: !!a?.canRead, canWrite: write, places: valid.map(p => ({ id: p.place_id, label: p.label })),
-      audiences: a?.canRead ? a.audiences.map(v => ({ id: v.id, label: v.label })) : [], maxTtlSeconds: a?.maxTtlSeconds ?? 0 })
+    emit({ canRead: !!a?.canRead, canWrite: write, places: valid.map(p => ({ id: p.place_id, label: p.label,
+      ...(options.photoClient ? { photoAllowed: p.provenance.photo_permission === 'GRANTED' } : {}) })),
+      audiences: a?.canRead ? a.audiences.map(v => ({ id: v.id, label: v.label })) : [], maxTtlSeconds: a?.maxTtlSeconds ?? 0,
+      photoSupported: !!a?.canRead && !!options.photoClient })
+    if (!write && photoClient && !['idle', 'cancelled'].includes(photoClient.upload.read().phase)) photoClient.upload.cancel()
+    if (state.draft.placeId && valid.find(p => p.place_id === state.draft.placeId)?.provenance.photo_permission !== 'GRANTED') {
+      photoClient?.upload.cancel()
+      if (state.draft.mediaId || state.draft.photoPermissionAcknowledged) emit({ draft: { ...state.draft, mediaId: null, photoPermissionAcknowledged: false, acknowledged: false } })
+    }
     if (a && state.draft.ttlSeconds === 900 && !state.draft.placeId && !state.draft.audienceId && !state.draft.instructions && !state.draft.identification) {
       emit({ draft: { ...state.draft, ttlSeconds: a.maxTtlSeconds } })
     }
     if (!a?.canRead) {
+      clearPhotoClient()
       if (state.beacon || state.draft.instructions || state.draft.identification || state.draft.audienceId || state.draft.placeId) scrub(false)
       emit({ phase: 'unavailable', beacon: null, place: null, photo: null, canRead: false, canWrite: false })
     } else if (b) {
-      if (time !== null && Date.parse(b.meeting.expires_at) <= time) { terminal = 'expired'; emit({ phase: 'expired', beacon: null, place: null, photo: null, draft: draft(), epoch: state.epoch + 1 }) }
-      else { const p = qualified(b, a); if (!p) emit({ phase: 'stale', beacon: null, place: null, photo: null, draft: draft(), epoch: state.epoch + 1 }); else emit({ place: p, photo: photo(b, p) }) }
+      if (time !== null && Date.parse(b.meeting.expires_at) <= time) { clearPhotoClient(); terminal = 'expired'; emit({ phase: 'expired', beacon: null, place: null, photo: null, draft: draft(), epoch: state.epoch + 1 }) }
+      else { const p = qualified(b, a); if (!p) { clearPhotoClient(); emit({ phase: 'stale', beacon: null, place: null, photo: null, draft: draft(), epoch: state.epoch + 1 }) } else {
+        if (p.provenance.photo_permission !== 'GRANTED') clearPhoto()
+        emit({ place: p, photo: photo(b, p) })
+      } }
     }
     if (state.draft.placeId && !valid.some(p => p.place_id === state.draft.placeId)
       || state.draft.audienceId && !a?.audiences.some(v => v.id === state.draft.audienceId)) emit({ draft: draft(), epoch: state.epoch + 1 })
   }
   function scrub(clearCommand = true) {
+    clearPhotoClient()
     ++attempt; readAbort?.abort(); readAbort = null
     if (clearCommand) { commandAbort?.abort(); commandAbort = null; binding = null; receiptExpiry = null }
     emit({ ...initial(), epoch: state.epoch + 1, ...(clearCommand ? {} : { command: state.command }) })
@@ -143,6 +208,7 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
     readAbort?.abort(); readAbort = abort
     const current = () => !disposed && ticket === attempt && selected === id && !abort.signal.aborted && auth.privacy.isCurrent(scope) && !!authority()?.canRead
     const previous = state.beacon?.revision ?? watermark
+    clearPhoto()
     emit({ phase: 'loading', beacon: null, place: null, photo: null, notice: null })
     try {
       const b = await request(scope, abort.signal, { path: `/api/concert/events/${scope.eventId}/beacons/${id}`,
@@ -154,7 +220,7 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       if (!p) { emit({ phase: 'stale', notice: 'map-mismatch' }); return }
       needsConfirmation ||= previous > 0 && b.revision > previous
       watermark = b.revision
-      emit({ phase: needsConfirmation ? 'moved' : 'current', beacon: b, place: p, photo: photo(b, p) }); schedule()
+      emit({ phase: needsConfirmation ? 'moved' : 'current', beacon: b, place: p, photo: photo(b, p) }); loadPhoto(b, p); schedule()
     } catch (error) {
       if (!current()) return
       const time = now() ?? 0
@@ -169,9 +235,13 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       || !Number.isInteger(d.ttlSeconds) || d.ttlSeconds < 1 || d.ttlSeconds > a.maxTtlSeconds) return null
     const expires = Math.min(time + d.ttlSeconds * 1000, Date.parse(a.eventCutoff))
     if (expires <= time || !d.instructions.trim() || !d.identification.trim()) return null
+    const upload = photoClient?.upload.read()
+    if (upload && !['idle', 'cancelled', 'ready'].includes(upload.phase)) return null
+    if (d.mediaId && (!options.photoClient || !d.photoPermissionAcknowledged || place.provenance.photo_permission !== 'GRANTED')) return null
     const value = meetingSchema.safeParse({ place_id: place.place_id, map_revision: options.places.read().map?.map_revision,
       place_revision: a.placeRevisions.find(v => v.placeId === place.place_id)?.revision,
-      instructions: d.instructions.trim(), identification: d.identification.trim(), audience: audience.audience, expires_at: new Date(expires).toISOString() })
+      instructions: d.instructions.trim(), identification: d.identification.trim(), audience: audience.audience, expires_at: new Date(expires).toISOString(),
+      ...(d.mediaId ? { media_id: d.mediaId } : {}) })
     return value.success ? value.data : null
   }
   async function send(operation: CommandBinding['operation']) {
@@ -188,6 +258,11 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       expectedRevision: operation === 'createConcertBeacon' ? 0 : old!.revision }
     const captured = binding, abort = new AbortController(); commandAbort = abort
     const path = `/api/concert/events/${a.scope.eventId}/beacons${captured.beaconId ? `/${captured.beaconId}` : ''}`
+    const meetingBody: Record<string, JsonValue> = meeting ? {
+      place_id: meeting.place_id, map_revision: meeting.map_revision, place_revision: meeting.place_revision,
+      instructions: meeting.instructions, identification: meeting.identification, audience: meeting.audience, expires_at: meeting.expires_at,
+      ...(meeting.media_id ? { media_id: meeting.media_id } : {}),
+    } : {}
     command('sending'); emit({ notice: null })
     // Reentrant UI/authority changes cannot dispatch a command under a revoked lease.
     if (binding !== captured || !authority()?.canWrite || !auth.privacy.isCurrent(a.scope)) return false
@@ -195,7 +270,9 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       const result = await request(a.scope, abort.signal, { path, method: operation === 'createConcertBeacon' ? 'POST' : operation === 'updateConcertBeacon' ? 'PATCH' : 'DELETE',
         access: 'protected', errorFamily: 'domain', domainOperation: operation, idempotencyKey: key,
         ...(operation === 'revokeConcertBeacon' ? { query: { expected_revision: captured.expectedRevision } }
-          : { body: { json: { meeting: meeting!, physical_presence_acknowledged: true, ...(operation === 'updateConcertBeacon' ? { expected_revision: captured.expectedRevision } : {}) } } }),
+          : { body: { json: { meeting: meetingBody, physical_presence_acknowledged: true,
+            ...(meeting?.media_id ? { photo_permission_acknowledged: true } : {}),
+            ...(operation === 'updateConcertBeacon' ? { expected_revision: captured.expectedRevision } : {}) } } }),
         decode: decodeCommand(captured) })
       if (disposed || binding !== captured || !auth.privacy.isCurrent(a.scope)) return false
       if ('receipt_id' in result) {
@@ -203,7 +280,7 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
         receiptExpiry = Date.parse(result.expires_at); command(receiptExpiry <= (now() ?? Infinity) ? 'retired' : 'pending'); return false
       }
       if ('meeting' in result && !sameMeeting(result.meeting, meeting!)) throw new TransportError('invalid-response', { uncertain: true })
-      command('succeeded'); emit({ draft: draft(), epoch: state.epoch + 1 })
+      command('succeeded'); clearPhotoClient(); emit({ draft: draft(), epoch: state.epoch + 1 })
       if (selected === result.beacon_id && (result.revision < watermark || terminal === 'revoked' && result.revision <= watermark)) return true
       if (selected && result.beacon_id !== selected && operation !== 'createConcertBeacon') return true
       selected = result.beacon_id; watermark = result.revision; needsConfirmation = operation === 'updateConcertBeacon'; terminal = operation === 'revokeConcertBeacon' ? 'revoked' : null
@@ -215,6 +292,8 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       const uncertain = !(error instanceof TransportError) || error.uncertain
       command(uncertain ? 'uncertain' : 'failed')
       const n = notice(error)
+      if (n === 'changed' || n === 'map-mismatch' || n === 'denied' || n === 'unavailable') clearPhoto()
+      if (n === 'denied') clearPhotoClient()
       emit({ notice: n, ...(n === 'changed' || n === 'map-mismatch' || n === 'denied' || n === 'unavailable' ? { beacon: null, place: null, photo: null, phase: 'stale' } : {}),
         ...(n === 'denied' ? { draft: draft(), epoch: state.epoch + 1 } : {}),
         retryAt: error instanceof TransportError && error.status === 429 ? (now() ?? time) + (error.retryAfterMs ?? 1000) : 0 })
@@ -236,7 +315,7 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       if (receiptExpiry <= (now() ?? Infinity) || r.state === 'RETIRED') { command('retired'); return }
       if (r.state === 'PENDING') { command('pending'); return }
       if (r.state === 'FAILED') { command('failed'); emit({ notice: 'changed', beacon: null, place: null, photo: null, phase: 'stale' }); return }
-      command('succeeded')
+      command('succeeded'); clearPhotoClient()
       if (selected === r.resource_id && (r.resource_revision! < watermark || terminal === 'revoked' && r.resource_revision! <= watermark)) return
       selected = r.resource_id; watermark = r.resource_revision!; needsConfirmation = true
       terminal = b.operation === 'revokeConcertBeacon' ? 'revoked' : null
@@ -254,6 +333,8 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
     start() { if (!started && !disposed) { started = true; refreshTime(); schedule(); if (selected) void load() } },
     select(id: string | null) {
       if (disposed) return
+      if (state.photoDraft?.phase === 'uncertain' && selected !== id) { emit({ notice: 'unavailable' }); return }
+      clearPhotoClient()
       ++attempt; readAbort?.abort()
       if (selected !== id) { watermark = 0; needsConfirmation = false; terminal = null }
       selected = id
@@ -261,9 +342,13 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       if (id) return load()
     },
     refresh: load, refreshTime,
-    setDraft(patch: Partial<BeaconDraft>) {
+    setDraft(patch: Partial<Omit<BeaconDraft, 'mediaId'>>) {
       if (disposed || unresolved(state.command.phase) || !authority()?.canWrite) return
-      emit({ draft: { ...state.draft, ...patch }, notice: null })
+      const changed = patch.placeId !== undefined && patch.placeId !== state.draft.placeId
+        || patch.audienceId !== undefined && patch.audienceId !== state.draft.audienceId
+        || patch.ttlSeconds !== undefined && patch.ttlSeconds !== state.draft.ttlSeconds
+      const { mediaId: _ignored, ...safe } = patch as Partial<BeaconDraft>
+      emit({ draft: { ...state.draft, ...safe, ...(changed ? { photoPermissionAcknowledged: false } : {}) }, notice: null })
     },
     editCurrent() {
       const b = state.beacon, a = authority()
@@ -271,7 +356,8 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
       const choice = a.audiences.find(v => audienceKey(v.audience) === audienceKey(b.meeting.audience))
       if (!choice) return false
       emit({ draft: { placeId: b.meeting.place_id, audienceId: choice.id, instructions: b.meeting.instructions,
-        identification: b.meeting.identification, ttlSeconds: Math.min(900, a.maxTtlSeconds), acknowledged: false } }); return true
+        identification: b.meeting.identification, ttlSeconds: Math.min(900, a.maxTtlSeconds), acknowledged: false,
+        mediaId: b.meeting.media_id ?? null, photoPermissionAcknowledged: false } }); return true
     },
     confirmRevision() {
       refreshTime()
@@ -281,8 +367,29 @@ export function createMeetingBeaconController(options: MeetingBeaconOptions) {
     invalidate(event: { readonly beaconId: string; readonly revision: number; readonly state?: 'EXPIRED' | 'REVOKED' }) {
       if (disposed || event.beaconId !== selected || !revision.safeParse(event.revision).success || event.revision < watermark) return
       ++attempt; readAbort?.abort(); watermark = event.revision; needsConfirmation = true
+      clearPhotoClient()
       terminal = event.state === 'EXPIRED' ? 'expired' : event.state === 'REVOKED' ? 'revoked' : null
       emit({ phase: terminal ?? 'moved', beacon: null, place: null, photo: null, draft: draft(), epoch: state.epoch + 1 })
+    },
+    async selectPhoto(file: File) {
+      refreshTime()
+      const p = places(authority()).find(p => p.place_id === state.draft.placeId)
+      if (!state.canWrite || unresolved(state.command.phase) || p?.provenance.photo_permission !== 'GRANTED') return
+      const owner = client(); if (!owner || owner.upload.read().phase === 'uncertain') return
+      emit({ draft: { ...state.draft, mediaId: null, photoPermissionAcknowledged: false, acknowledged: false } })
+      await owner.upload.select(file)
+    },
+    async uploadPhoto() {
+      refreshTime()
+      const p = places(authority()).find(p => p.place_id === state.draft.placeId)
+      if (!state.canWrite || unresolved(state.command.phase) || !state.draft.photoPermissionAcknowledged || p?.provenance.photo_permission !== 'GRANTED') return
+      await client()?.upload.upload()
+    },
+    async checkPhotoUpload() { refreshTime(); if (state.canWrite && !unresolved(state.command.phase)) await photoClient?.upload.recover() },
+    async retryPhotoPreparation() { refreshTime(); if (state.canWrite && !unresolved(state.command.phase)) await photoClient?.upload.retry() },
+    removePhoto() {
+      if (!state.canWrite || unresolved(state.command.phase)) return
+      photoClient?.upload.cancel(); emit({ draft: { ...state.draft, mediaId: null, photoPermissionAcknowledged: false, acknowledged: false } })
     },
     create: () => send('createConcertBeacon'), update: () => send('updateConcertBeacon'), revoke: () => send('revokeConcertBeacon'), checkCommand,
     dispose() {

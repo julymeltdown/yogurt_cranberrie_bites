@@ -1,0 +1,637 @@
+{
+  "status": "PASS_PROJECTED_VENUE_BASES",
+  "measure": "Actual alpha>=32 projected to unchanged destination rectangles; original source proportions use bottom-aligned transparent frame padding.",
+  "limits": "Opaque base is at most7px above authored depth. This is an art-root alignment check, not target-match scoring, collision authority or moving-avatar proof.",
+  "instances": [
+    {
+      "era": "REVENGE",
+      "id": "meeting_pavilion",
+      "image_box": [
+        256,
+        779,
+        236,
+        206
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        43,
+        241,
+        177
+      ],
+      "opaque_base_y": 981.5666666666666,
+      "authored_depth_y": 985,
+      "base_to_depth_gap_px": 3.433333333333394,
+      "visible_projected_width": 230.19672131147541,
+      "visible_projected_height": 153.35555555555555
+    },
+    {
+      "era": "REVENGE",
+      "id": "giveaway_pavilion",
+      "image_box": [
+        440,
+        1044,
+        236,
+        206
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        35,
+        241,
+        177
+      ],
+      "opaque_base_y": 1246.5666666666666,
+      "authored_depth_y": 1250,
+      "base_to_depth_gap_px": 3.433333333333394,
+      "visible_projected_width": 230.19672131147541,
+      "visible_projected_height": 162.5111111111111
+    },
+    {
+      "era": "REVENGE",
+      "id": "northern_hall",
+      "image_box": [
+        12,
+        -94,
+        248,
+        190
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 92.83333333333331,
+      "authored_depth_y": 96,
+      "base_to_depth_gap_px": 3.1666666666666856,
+      "visible_projected_width": 241.9016393442623,
+      "visible_projected_height": 129.83333333333334
+    },
+    {
+      "era": "REVENGE",
+      "id": "north_eastern_hall",
+      "image_box": [
+        472,
+        -94,
+        248,
+        190
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        35,
+        241,
+        177
+      ],
+      "opaque_base_y": 92.83333333333331,
+      "authored_depth_y": 96,
+      "base_to_depth_gap_px": 3.1666666666666856,
+      "visible_projected_width": 241.9016393442623,
+      "visible_projected_height": 149.88888888888889
+    },
+    {
+      "era": "REVENGE",
+      "id": "merch_venue_hall",
+      "image_box": [
+        8,
+        551,
+        212,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 728.0,
+      "authored_depth_y": 731,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 206.78688524590163,
+      "visible_projected_height": 123.0
+    },
+    {
+      "era": "REVENGE",
+      "id": "stage_venue_representation",
+      "image_box": [
+        185,
+        163,
+        300,
+        210
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        35,
+        241,
+        177
+      ],
+      "opaque_base_y": 369.5,
+      "authored_depth_y": 373,
+      "base_to_depth_gap_px": 3.5,
+      "visible_projected_width": 292.6229508196721,
+      "visible_projected_height": 165.66666666666666
+    },
+    {
+      "era": "REVENGE",
+      "id": "west_edge_venue_illustration",
+      "image_box": [
+        -75,
+        321,
+        200,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 498.0,
+      "authored_depth_y": 501,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 195.08196721311475,
+      "visible_projected_height": 123.0
+    },
+    {
+      "era": "REVENGE",
+      "id": "east_edge_venue_illustration",
+      "image_box": [
+        710,
+        251,
+        210,
+        160
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 408.3333333333333,
+      "authored_depth_y": 411,
+      "base_to_depth_gap_px": 2.6666666666666856,
+      "visible_projected_width": 204.8360655737705,
+      "visible_projected_height": 109.33333333333334
+    },
+    {
+      "era": "REVENGE",
+      "id": "south_west_venue_illustration",
+      "image_box": [
+        -75,
+        1036,
+        240,
+        220
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        35,
+        241,
+        177
+      ],
+      "opaque_base_y": 1252.3333333333333,
+      "authored_depth_y": 1256,
+      "base_to_depth_gap_px": 3.6666666666667425,
+      "visible_projected_width": 234.0983606557377,
+      "visible_projected_height": 173.55555555555554
+    },
+    {
+      "era": "REVENGE",
+      "id": "south_east_venue_illustration",
+      "image_box": [
+        700,
+        1107,
+        220,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 1284.0,
+      "authored_depth_y": 1287,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 214.59016393442622,
+      "visible_projected_height": 123.0
+    },
+    {
+      "era": "PARADE",
+      "id": "meeting_pavilion",
+      "image_box": [
+        256,
+        779,
+        236,
+        206
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        43,
+        241,
+        177
+      ],
+      "opaque_base_y": 981.5666666666666,
+      "authored_depth_y": 985,
+      "base_to_depth_gap_px": 3.433333333333394,
+      "visible_projected_width": 230.19672131147541,
+      "visible_projected_height": 153.35555555555555
+    },
+    {
+      "era": "PARADE",
+      "id": "giveaway_pavilion",
+      "image_box": [
+        440,
+        1044,
+        236,
+        206
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        35,
+        241,
+        177
+      ],
+      "opaque_base_y": 1246.5666666666666,
+      "authored_depth_y": 1250,
+      "base_to_depth_gap_px": 3.433333333333394,
+      "visible_projected_width": 230.19672131147541,
+      "visible_projected_height": 162.5111111111111
+    },
+    {
+      "era": "PARADE",
+      "id": "northern_hall",
+      "image_box": [
+        12,
+        -94,
+        248,
+        190
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 92.83333333333331,
+      "authored_depth_y": 96,
+      "base_to_depth_gap_px": 3.1666666666666856,
+      "visible_projected_width": 241.9016393442623,
+      "visible_projected_height": 129.83333333333334
+    },
+    {
+      "era": "PARADE",
+      "id": "north_eastern_hall",
+      "image_box": [
+        472,
+        -94,
+        248,
+        190
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        33,
+        241,
+        177
+      ],
+      "opaque_base_y": 92.83333333333331,
+      "authored_depth_y": 96,
+      "base_to_depth_gap_px": 3.1666666666666856,
+      "visible_projected_width": 241.9016393442623,
+      "visible_projected_height": 152.0
+    },
+    {
+      "era": "PARADE",
+      "id": "merch_venue_hall",
+      "image_box": [
+        8,
+        551,
+        212,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 728.0,
+      "authored_depth_y": 731,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 206.78688524590163,
+      "visible_projected_height": 123.0
+    },
+    {
+      "era": "PARADE",
+      "id": "stage_venue_representation",
+      "image_box": [
+        185,
+        163,
+        300,
+        210
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        33,
+        241,
+        177
+      ],
+      "opaque_base_y": 369.5,
+      "authored_depth_y": 373,
+      "base_to_depth_gap_px": 3.5,
+      "visible_projected_width": 292.6229508196721,
+      "visible_projected_height": 168.0
+    },
+    {
+      "era": "PARADE",
+      "id": "west_edge_venue_illustration",
+      "image_box": [
+        -75,
+        321,
+        200,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 498.0,
+      "authored_depth_y": 501,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 195.08196721311475,
+      "visible_projected_height": 123.0
+    },
+    {
+      "era": "PARADE",
+      "id": "east_edge_venue_illustration",
+      "image_box": [
+        710,
+        251,
+        210,
+        160
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 408.3333333333333,
+      "authored_depth_y": 411,
+      "base_to_depth_gap_px": 2.6666666666666856,
+      "visible_projected_width": 204.8360655737705,
+      "visible_projected_height": 109.33333333333334
+    },
+    {
+      "era": "PARADE",
+      "id": "south_west_venue_illustration",
+      "image_box": [
+        -75,
+        1036,
+        240,
+        220
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        33,
+        241,
+        177
+      ],
+      "opaque_base_y": 1252.3333333333333,
+      "authored_depth_y": 1256,
+      "base_to_depth_gap_px": 3.6666666666667425,
+      "visible_projected_width": 234.0983606557377,
+      "visible_projected_height": 176.0
+    },
+    {
+      "era": "PARADE",
+      "id": "south_east_venue_illustration",
+      "image_box": [
+        700,
+        1107,
+        220,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        54,
+        241,
+        177
+      ],
+      "opaque_base_y": 1284.0,
+      "authored_depth_y": 1287,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 214.59016393442622,
+      "visible_projected_height": 123.0
+    },
+    {
+      "era": "DANGER",
+      "id": "meeting_pavilion",
+      "image_box": [
+        256,
+        779,
+        236,
+        206
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        44,
+        241,
+        177
+      ],
+      "opaque_base_y": 981.5666666666666,
+      "authored_depth_y": 985,
+      "base_to_depth_gap_px": 3.433333333333394,
+      "visible_projected_width": 230.19672131147541,
+      "visible_projected_height": 152.2111111111111
+    },
+    {
+      "era": "DANGER",
+      "id": "giveaway_pavilion",
+      "image_box": [
+        440,
+        1044,
+        236,
+        206
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        35,
+        241,
+        177
+      ],
+      "opaque_base_y": 1246.5666666666666,
+      "authored_depth_y": 1250,
+      "base_to_depth_gap_px": 3.433333333333394,
+      "visible_projected_width": 230.19672131147541,
+      "visible_projected_height": 162.5111111111111
+    },
+    {
+      "era": "DANGER",
+      "id": "northern_hall",
+      "image_box": [
+        12,
+        -94,
+        248,
+        190
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        55,
+        241,
+        177
+      ],
+      "opaque_base_y": 92.83333333333331,
+      "authored_depth_y": 96,
+      "base_to_depth_gap_px": 3.1666666666666856,
+      "visible_projected_width": 241.9016393442623,
+      "visible_projected_height": 128.77777777777777
+    },
+    {
+      "era": "DANGER",
+      "id": "north_eastern_hall",
+      "image_box": [
+        472,
+        -94,
+        248,
+        190
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        34,
+        241,
+        177
+      ],
+      "opaque_base_y": 92.83333333333331,
+      "authored_depth_y": 96,
+      "base_to_depth_gap_px": 3.1666666666666856,
+      "visible_projected_width": 241.9016393442623,
+      "visible_projected_height": 150.94444444444443
+    },
+    {
+      "era": "DANGER",
+      "id": "merch_venue_hall",
+      "image_box": [
+        8,
+        551,
+        212,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        55,
+        241,
+        177
+      ],
+      "opaque_base_y": 728.0,
+      "authored_depth_y": 731,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 206.78688524590163,
+      "visible_projected_height": 122.0
+    },
+    {
+      "era": "DANGER",
+      "id": "stage_venue_representation",
+      "image_box": [
+        185,
+        163,
+        300,
+        210
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        34,
+        241,
+        177
+      ],
+      "opaque_base_y": 369.5,
+      "authored_depth_y": 373,
+      "base_to_depth_gap_px": 3.5,
+      "visible_projected_width": 292.6229508196721,
+      "visible_projected_height": 166.83333333333331
+    },
+    {
+      "era": "DANGER",
+      "id": "west_edge_venue_illustration",
+      "image_box": [
+        -75,
+        321,
+        200,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        55,
+        241,
+        177
+      ],
+      "opaque_base_y": 498.0,
+      "authored_depth_y": 501,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 195.08196721311475,
+      "visible_projected_height": 122.0
+    },
+    {
+      "era": "DANGER",
+      "id": "east_edge_venue_illustration",
+      "image_box": [
+        710,
+        251,
+        210,
+        160
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        55,
+        241,
+        177
+      ],
+      "opaque_base_y": 408.3333333333333,
+      "authored_depth_y": 411,
+      "base_to_depth_gap_px": 2.6666666666666856,
+      "visible_projected_width": 204.8360655737705,
+      "visible_projected_height": 108.44444444444446
+    },
+    {
+      "era": "DANGER",
+      "id": "south_west_venue_illustration",
+      "image_box": [
+        -75,
+        1036,
+        240,
+        220
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        34,
+        241,
+        177
+      ],
+      "opaque_base_y": 1252.3333333333333,
+      "authored_depth_y": 1256,
+      "base_to_depth_gap_px": 3.6666666666667425,
+      "visible_projected_width": 234.0983606557377,
+      "visible_projected_height": 174.77777777777777
+    },
+    {
+      "era": "DANGER",
+      "id": "south_east_venue_illustration",
+      "image_box": [
+        700,
+        1107,
+        220,
+        180
+      ],
+      "opaque_bounds_in_frame": [
+        3,
+        55,
+        241,
+        177
+      ],
+      "opaque_base_y": 1284.0,
+      "authored_depth_y": 1287,
+      "base_to_depth_gap_px": 3.0,
+      "visible_projected_width": 214.59016393442622,
+      "visible_projected_height": 122.0
+    }
+  ]
+}

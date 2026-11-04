@@ -13,7 +13,9 @@ export const audienceSchema = z.union([
   z.strictObject({ kind: z.literal('EXPLICIT_USERS'), user_ids: z.array(uuid).min(1).max(50).refine(ids => new Set(ids).size === ids.length) }),
 ])
 export const meetingSchema = z.strictObject({ place_id: uuid, map_revision: revision, place_revision: revision,
-  instructions: text(1000), identification: text(240), audience: audienceSchema, expires_at: utc })
+  instructions: text(1000), identification: text(240), audience: audienceSchema, expires_at: utc,
+  // Published meeting-photo consumer agreement 89ce3df6; optional for text-only C04 compatibility.
+  media_id: uuid.nullable().optional() })
 export const beaconSchema = z.strictObject({ beacon_id: uuid, event_id: uuid, owner_id: uuid, meeting: meetingSchema,
   created_at: utc, updated_at: utc, state: z.enum(['ACTIVE', 'EXPIRED', 'REVOKED']), revision })
   .refine(b => Date.parse(b.created_at) <= Date.parse(b.updated_at) && Date.parse(b.updated_at) < Date.parse(b.meeting.expires_at))
@@ -34,7 +36,7 @@ export function audienceKey(a: Audience): string { return a.kind === 'PARTY_MEMB
 export function sameMeeting(a: MeetingDescription, b: MeetingDescription): boolean {
   return a.place_id === b.place_id && a.place_revision === b.place_revision && a.map_revision === b.map_revision
     && a.instructions === b.instructions && a.identification === b.identification && audienceKey(a.audience) === audienceKey(b.audience)
-    && Date.parse(a.expires_at) === Date.parse(b.expires_at)
+    && Date.parse(a.expires_at) === Date.parse(b.expires_at) && (a.media_id ?? null) === (b.media_id ?? null)
 }
 export function freeze<T>(value: T): T {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) { Object.values(value).forEach(freeze); Object.freeze(value) }

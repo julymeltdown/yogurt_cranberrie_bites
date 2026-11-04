@@ -1,0 +1,51 @@
+{
+  "art_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+  "blockers": [
+    "PRODUCT_BOOTSTRAP_NOT_CONFIGURED",
+    "ART_FIDELITY_NOT_ACCEPTED"
+  ],
+  "bootstrap": null,
+  "fractional_depth_count": 0,
+  "limits": [
+    "No art fidelity acceptance",
+    "No physical place qualification",
+    "Published Tiled resource binds the same canonical grids",
+    "No event-current map publication or production admission"
+  ],
+  "map": {
+    "content_hash": "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8",
+    "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+    "map_id": "mcr_reference_scene_r3",
+    "map_revision": 4
+  },
+  "scenery_budget": {
+    "DANGER": {
+      "bytes": 1712974,
+      "max_bytes": 2097152,
+      "max_pixels": 2097152,
+      "pixels": 2043904
+    },
+    "PARADE": {
+      "bytes": 1727221,
+      "max_bytes": 2097152,
+      "max_pixels": 2097152,
+      "pixels": 2043904
+    },
+    "REVENGE": {
+      "bytes": 1707562,
+      "max_bytes": 2097152,
+      "max_pixels": 2097152,
+      "pixels": 2043904
+    }
+  },
+  "skins": {
+    "DANGER": "CONTRACT_READY",
+    "PARADE": "CONTRACT_READY",
+    "REVENGE": "CONTRACT_READY"
+  },
+  "source_commit": "bc731ed868ec30b33ae5dd1e6f13e97e68ecabd9",
+  "state": "NOT_ADMITTED",
+  "task": "BE-SPATIAL-RELEASE",
+  "theme_manifests": null,
+  "tilemap_commit": "48cf47e9b2c922de42673d1a29c1758a55fcf883"
+}
