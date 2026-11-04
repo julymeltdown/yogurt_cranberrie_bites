@@ -375,3 +375,197 @@ async fn encrypted_predispatch_intent_survives_lost_handles_and_requires_actual_
     assert!(recovered.delivery_completed(&key).await.unwrap());
     pool.close().await;
 }
+
+#[tokio::test]
+async fn settlement_requires_exact_owner_registration_and_native_abort_after_lost_track_reply() {
+    use concert_service::{
+        adapters::out::relationship_authority::guarded::proto,
+        media_runtime::settlement::MediaTransactionIdentity,
+        product_rpc::settlement::{
+            NativeTransactionResolver, PgNativeAbortResolver, ProducerSettlementService,
+        },
+    };
+    use platform::grpc_auth::VerifiedCaller;
+    use proto::producer_settlement_service_server::ProducerSettlementService as _;
+    fn system<T>(value: T, owner: Workload) -> tonic::Request<T> {
+        // Service-level double, not a claim of authenticated mTLS execution.
+        let mut request = tonic::Request::new(value);
+        request.extensions_mut().insert(VerifiedCaller(owner));
+        request
+    }
+    let pool = pool().await;
+    let ledger = new_ledger(&pool, Uuid::new_v4());
+    let binding = binding();
+    let key = ScopeKey {
+        instance: ledger.instance(),
+        scope: Uuid::new_v4(),
+        binding_digest: binding.digest().unwrap(),
+    };
+    ledger.register(&key, &binding).await.unwrap();
+    let mut tx = pool.begin().await.unwrap();
+    let actual = MediaTransactionIdentity::capture_in(&mut tx).await.unwrap();
+    let identity = ProducerTransaction {
+        producer: "CONCERT".into(),
+        system_identifier: actual.system_identifier().into(),
+        database_oid: actual.database_oid() as u32,
+        full_xid: actual.xid().into(),
+        backend_pid: actual.backend_pid(),
+        backend_started_unix_micros: actual.backend_started_at().timestamp_micros(),
+        effect_binding_digest: key.binding_digest,
+        producer_instance: key.instance,
+        settlement_reference: b"native-abort-fixture".to_vec(),
+    };
+    ledger.register_transaction(&key, &identity).await.unwrap();
+    let auth = Uuid::new_v4();
+    let lost_friend = Uuid::new_v4();
+    ledger
+        .record_tracking(&key, &identity, Workload::Auth, auth)
+        .await
+        .unwrap();
+    let resolver = Arc::new(PgNativeAbortResolver::new(pool.clone(), key.instance).unwrap());
+    let service = ProducerSettlementService::new(ledger.clone(), resolver.clone());
+    let wire = proto::TransactionIdentity {
+        producer: proto::Producer::Concert as i32,
+        system_identifier: identity.system_identifier.clone(),
+        database_oid: identity.database_oid,
+        full_xid: identity.full_xid.clone(),
+        backend_pid: identity.backend_pid,
+        backend_started_unix_micros: identity.backend_started_unix_micros,
+        effect_binding_digest: identity.effect_binding_digest.to_vec(),
+        producer_instance_id: key.instance.to_string(),
+        settlement_reference: identity.settlement_reference.clone(),
+    };
+    let request = proto::ResolveTransactionRequest {
+        binding: Some(proto::GuardBinding {
+            actor_id: binding.actor_id.to_string(),
+            event_id: binding.event_id.to_string(),
+            session_family_id: binding.session_family_id.to_string(),
+            request_id: binding.request_id.to_string(),
+            operation: binding.operation.clone(),
+            subject_ids: vec![],
+            expires_unix_micros: binding.expires_unix_micros,
+            parent_digest: binding.parent_digest.to_vec(),
+            parent_body_digest: binding.parent_body_digest.to_vec(),
+            parent_method: binding.parent_method.clone(),
+            http_method: binding.http_method.clone(),
+            http_target: binding.http_target.clone(),
+            body_digest: binding.body_digest.to_vec(),
+        }),
+        transaction: Some(wire),
+        registration_id: auth.to_string(),
+    };
+    assert_eq!(
+        service
+            .resolve_transaction(system(request.clone(), Workload::Gateway))
+            .await
+            .unwrap_err()
+            .code(),
+        tonic::Code::Unauthenticated
+    );
+    assert_eq!(
+        service
+            .resolve_transaction(system(request.clone(), Workload::Auth))
+            .await
+            .unwrap()
+            .into_inner()
+            .status,
+        proto::TransactionStatus::Unknown as i32
+    );
+    ledger.seal(&key).await.unwrap();
+    ledger.finish_root_work(&key).await.unwrap();
+    assert_eq!(
+        service
+            .resolve_transaction(system(request.clone(), Workload::Auth))
+            .await
+            .unwrap()
+            .into_inner()
+            .status,
+        proto::TransactionStatus::InProgress as i32
+    );
+    let mut missing_ack = request.clone();
+    missing_ack.registration_id = lost_friend.to_string();
+    assert_eq!(
+        service
+            .resolve_transaction(system(missing_ack.clone(), Workload::Friend))
+            .await
+            .unwrap()
+            .into_inner()
+            .status,
+        proto::TransactionStatus::Unknown as i32
+    );
+    assert!(service
+        .resolve_transaction(system(missing_ack.clone(), Workload::Auth))
+        .await
+        .is_err());
+    let mut altered = request.clone();
+    altered
+        .transaction
+        .as_mut()
+        .unwrap()
+        .settlement_reference
+        .push(0);
+    assert!(service
+        .resolve_transaction(system(altered, Workload::Auth))
+        .await
+        .is_err());
+    tx.rollback().await.unwrap();
+    let settled = service
+        .resolve_transaction(system(missing_ack, Workload::Friend))
+        .await
+        .unwrap();
+    assert_eq!(settled.metadata().get("cache-control").unwrap(), "no-store");
+    assert_eq!(
+        settled.into_inner().status,
+        proto::TransactionStatus::Aborted as i32
+    );
+    let scope = proto::ProducerScope {
+        instance_id: key.instance.to_string(),
+        scope_id: key.scope.to_string(),
+        binding_digest: key.binding_digest.to_vec(),
+    };
+    assert!(
+        service
+            .resolve_scope(system(
+                proto::ResolveScopeRequest {
+                    scope: Some(scope.clone())
+                },
+                Workload::Auth
+            ))
+            .await
+            .unwrap()
+            .into_inner()
+            .sealed_and_finished
+    );
+    let missing = proto::ProducerScope {
+        scope_id: Uuid::new_v4().to_string(),
+        ..scope
+    };
+    assert!(
+        !service
+            .resolve_scope(system(
+                proto::ResolveScopeRequest {
+                    scope: Some(missing)
+                },
+                Workload::Friend
+            ))
+            .await
+            .unwrap()
+            .into_inner()
+            .sealed_and_finished
+    );
+    // A raw native COMMIT has no same-transaction product witness here.
+    let mut tx = pool.begin().await.unwrap();
+    let actual = MediaTransactionIdentity::capture_in(&mut tx).await.unwrap();
+    let committed = ProducerTransaction {
+        full_xid: actual.xid().into(),
+        backend_pid: actual.backend_pid(),
+        backend_started_unix_micros: actual.backend_started_at().timestamp_micros(),
+        ..identity
+    };
+    tx.commit().await.unwrap();
+    assert_eq!(
+        resolver.resolve(&binding, &committed).await.unwrap().status,
+        proto::TransactionStatus::Unknown
+    );
+    pool.close().await;
+}
