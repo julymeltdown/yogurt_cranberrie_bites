@@ -1,6 +1,8 @@
 // TEST ONLY adaptation of owned native.ts at72685ad9; actual new source/C06/Phaser, no live producer.
 import { spatialV4Fixture, spatialV4FixtureResources } from './fixture'
 import source from '../../spatial-v4/source-inputs.json'
+// @ts-expect-error Independent published artist JavaScript rendering oracle.
+import { drawLabels } from './label-reference.js'
 import { spatialV4ThemeIds, type SpatialV4ThemeId } from '../../spatial-v4/model'
 import { loadReferenceScene, requireReferenceScene, createReferenceSceneOverview } from '../..'
 import { loadPhaserEngine } from '../../../scenes/MapScene'
@@ -105,6 +107,7 @@ async function mapParity() {
   const replacements=new Set(source.overview_representations.flatMap(p=>'replaces_prop_id'in p?[p.replaces_prop_id]:[])),frames=data.frames as Record<string,{x:number;y:number;width:number;height:number}>
   const rows=[...data.scenery.objects.filter(o=>!replacements.has(o.id)),...source.overview_representations.map(o=>({...o,atlas_id:data.scenery.atlases[0]!.id,frame:frames[o.frame]!}))]
   for(const o of rows.sort((a,b)=>a.depth_y-b.depth_y)){const f=o.frame;b.drawImage(textures.get(o.atlas_id)!,f.x,f.y,f.width,f.height,o.x,o.y,o.width,o.height)}
+  drawLabels(b, 1)
   const x=a.getImageData(0,0,768,1296).data,y=b.getImageData(0,0,768,1296).data;let different=0;for(let i=0;i<x.length;i++)if(x[i]!==y[i])different++
   actual.width=actual.height=expected.width=expected.height=0;return{different,channels:x.length,pins}
 }
