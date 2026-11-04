@@ -1,0 +1,61 @@
+{
+  "version": 5,
+  "theme_id": "DANGER",
+  "status": "PROPOSAL_NOT_RELEASE_BOUND",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "scenery": "scenery.json",
+  "layout": "layout.json",
+  "integer_projection": "../../runtime-v4/parade-integer-projection.json",
+  "map_metadata": "map-metadata.json",
+  "provenance": "provenance.json",
+  "art_review_state": "NOT_ACCEPTED",
+  "physical_place_provenance": "UNREVIEWED",
+  "resources": [
+    {
+      "id": "parade_runtime_v4_ground",
+      "path": "world/reference-scene-v2/runtime-v4/parade-ground.png",
+      "sha256": "sha256:5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+      "width_px": 768,
+      "height_px": 1296,
+      "bytes": 693939
+    },
+    {
+      "id": "danger_v5_atlas",
+      "path": "world/reference-scene-v2/eras-v5/danger/atlas.png",
+      "sha256": "sha256:32d0b99c95798f8d329e7394a9f590c687a448497b9e40e36997b761338406ec",
+      "width_px": 1024,
+      "height_px": 1024,
+      "bytes": 1125227
+    }
+  ],
+  "combined_pixels": 2043904,
+  "combined_bytes": 1819166,
+  "budget_pass": true,
+  "metadata_pins": [
+    {
+      "path": "scenery.json",
+      "sha256": "sha256:220e318a663ef491ee5ef15f389350f1ab2151312c628a05c0fac10d7283b934",
+      "bytes": 6769
+    },
+    {
+      "path": "layout.json",
+      "sha256": "sha256:c922442e1f161d79d3344fff6b7897be6849030faa7b289e4b7b0bb4ac829881",
+      "bytes": 16927
+    },
+    {
+      "path": "map-metadata.json",
+      "sha256": "sha256:4bd187afa4ac70d6361864563ce82da3821f7d123a15fc9b22367c2236a399cf",
+      "bytes": 7405
+    },
+    {
+      "path": "provenance.json",
+      "sha256": "sha256:6876293ffbd5977e4e54944aaffe7a946e59813382411d49e06a4f670f5fd03b",
+      "bytes": 11149
+    },
+    {
+      "path": "prompt.md",
+      "sha256": "sha256:232a0828baf10326c229ef45c5afa90b0930e573eedb65a1c8c42662a216a7ee",
+      "bytes": 2637
+    }
+  ]
+}

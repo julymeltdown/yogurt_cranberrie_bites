@@ -1,0 +1,50 @@
+{
+  "status": "PASS_THREE_ORIGINAL_ERA_ART_INPUTS_ONLY",
+  "geometry_hash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+  "eras": [
+    {
+      "era": "REVENGE",
+      "closed_C06_schema": "PASS",
+      "bytes": 1820481,
+      "pixels": 2043904,
+      "physical_objects": 22,
+      "map_only_representations": 6,
+      "frames": 16,
+      "native_projects": 2,
+      "source_sha256": "sha256:0b45b757048b36b46e9fcd07273db97b4487145f08b9d709186a645113d483a5",
+      "atlas_sha256": "sha256:3692e79621a812bfe5e56d21e3ea44c05f59708a851ba548e18b846a0ddf350e"
+    },
+    {
+      "era": "PARADE",
+      "closed_C06_schema": "PASS",
+      "bytes": 1839826,
+      "pixels": 2043904,
+      "physical_objects": 22,
+      "map_only_representations": 6,
+      "frames": 16,
+      "native_projects": 2,
+      "source_sha256": "sha256:881afb5cbf1c7db96b92feb164b69ce1181f625750ca6eba96a80a89b7f33b18",
+      "atlas_sha256": "sha256:e27587a0de0bde6eb63b83e2689ac22ed8040a415851d1877a13826ce7b7b274"
+    },
+    {
+      "era": "DANGER",
+      "closed_C06_schema": "PASS",
+      "bytes": 1819166,
+      "pixels": 2043904,
+      "physical_objects": 22,
+      "map_only_representations": 6,
+      "frames": 16,
+      "native_projects": 2,
+      "source_sha256": "sha256:8473efaf6b25b8547d7fe46b673c7fe5279437c7e42dbb015cfda32fa22fe80f",
+      "atlas_sha256": "sha256:32d0b99c95798f8d329e7394a9f590c687a448497b9e40e36997b761338406ec"
+    }
+  ],
+  "identical_integer_placements_and_footprints": true,
+  "distinct_original_sources_and_atlases": true,
+  "shared_ground": "Intentional common quiet ground, not atlas/skin aliases.",
+  "limitations": [
+    "Art contract inputs only; no current app/server release, physical venue/operator qualification or multiplayer proof.",
+    "Alpha silhouettes vary by art skin; collision and rooted destination rectangles do not.",
+    "No fourth critic score or reference-target acceptance claimed."
+  ]
+}

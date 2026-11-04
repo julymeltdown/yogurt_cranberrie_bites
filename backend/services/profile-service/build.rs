@@ -10,7 +10,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .build_server(true)
         .build_client(true)
         .compile_protos(
-            &[proto, contracts_build::source_authority_proto()],
+            &[
+                proto,
+                contracts_build::source_authority_proto(),
+                contracts_build::proto_root().join("profile/v1/concert_public_profile.proto"),
+            ],
             &[include_dir],
         )?;
 
@@ -21,6 +25,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!(
         "cargo:rerun-if-changed={}",
         contracts_build::source_authority_proto().display()
+    );
+    println!(
+        "cargo:rerun-if-changed={}",
+        contracts_build::proto_root()
+            .join("profile/v1/concert_public_profile.proto")
+            .display()
     );
     Ok(())
 }
