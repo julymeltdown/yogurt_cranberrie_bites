@@ -163,6 +163,14 @@ published the three Party operation variants and the retained product scope seam
 actual Party composition, HTTP and multiuser flow remain **NOT_RUN**. No
 synthetic route or owner fixture is installed here.
 
+The joined reader mapping is typed and fail closed. Only
+`FeedError::ResourceUnavailable` at the Profile reader or a canonical subject's
+dedicated `NotFound` means that one row is unavailable; list scans may skip it
+and direct lookup returns not found. Every other guard, owner, privacy, scope,
+deadline or dependency error aborts the response. A generic `PermissionDenied`
+never becomes an empty page or hidden Party, and transport settlement retains
+the same held scope through the actual response boundary.
+
 ## Validation
 
 Rust candidates 4e9c57e3 and d273c377 at 1.88.0 compiled with `--locked

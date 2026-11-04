@@ -1,0 +1,203 @@
+{
+  "status": "MEASURED_SOURCE_DENSITY_CHANGE",
+  "input_manifests": [
+    {
+      "path": "../quality-v7/manifest.json",
+      "sha256": "sha256:156d416606e648dc357a686bc1fd18ec67e425c32ee0955e164277ab229d1e87"
+    },
+    {
+      "path": "../quality-v8/manifest.json",
+      "sha256": "sha256:0aa7ffc44d4fa69ad8d0ac9dfb8ab30907ce0e785aa461a03a1452b8461518d6"
+    }
+  ],
+  "method": "Nearest-raster projection of actual PNG alpha>128 in depth order; non-tree opaque foreground erases tree coverage. Exact source views; side bands are sceneX0..179 and588..767. No UI labels/characters.",
+  "limitations": "Not a target match percentage, critic score, native/browser exact-pixel parity claim or runtime/avatar proof. Regions were fixed by the authored perimeter intent, not optimized for this metric.",
+  "comparisons": [
+    {
+      "era": "REVENGE",
+      "view": "WORLD",
+      "before_v7": {
+        "tree_props": 11,
+        "camera": {
+          "x": 160,
+          "y": 13,
+          "width": 584,
+          "height": 584,
+          "notes": "Same close-view composition after upper-district translation179px; not a player teleport or physical position claim."
+        },
+        "visible_tree_pixels": 68579,
+        "edge_band_visible_tree_pixels": 32524,
+        "camera_pixels": 341056
+      },
+      "after_v8": {
+        "tree_props": 23,
+        "camera": {
+          "x": 160,
+          "y": 13,
+          "width": 584,
+          "height": 584,
+          "notes": "Same close-view composition after upper-district translation179px; not a player teleport or physical position claim."
+        },
+        "visible_tree_pixels": 87478,
+        "edge_band_visible_tree_pixels": 43799,
+        "camera_pixels": 341056
+      },
+      "visible_tree_pixel_ratio": 1.275579988042987,
+      "edge_band_pixel_ratio": 1.346667076620342
+    },
+    {
+      "era": "REVENGE",
+      "view": "MAP",
+      "before_v7": {
+        "tree_props": 11,
+        "camera": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1296
+        },
+        "visible_tree_pixels": 159383,
+        "edge_band_visible_tree_pixels": 106915,
+        "camera_pixels": 995328
+      },
+      "after_v8": {
+        "tree_props": 23,
+        "camera": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1296
+        },
+        "visible_tree_pixels": 292233,
+        "edge_band_visible_tree_pixels": 214386,
+        "camera_pixels": 995328
+      },
+      "visible_tree_pixel_ratio": 1.8335267876749717,
+      "edge_band_pixel_ratio": 2.00520039283543
+    },
+    {
+      "era": "PARADE",
+      "view": "WORLD",
+      "before_v7": {
+        "tree_props": 11,
+        "camera": {
+          "x": 160,
+          "y": 13,
+          "width": 584,
+          "height": 584,
+          "notes": "Same close-view composition after upper-district translation179px; not a player teleport or physical position claim."
+        },
+        "visible_tree_pixels": 68394,
+        "edge_band_visible_tree_pixels": 32480,
+        "camera_pixels": 341056
+      },
+      "after_v8": {
+        "tree_props": 23,
+        "camera": {
+          "x": 160,
+          "y": 13,
+          "width": 584,
+          "height": 584,
+          "notes": "Same close-view composition after upper-district translation179px; not a player teleport or physical position claim."
+        },
+        "visible_tree_pixels": 87623,
+        "edge_band_visible_tree_pixels": 43858,
+        "camera_pixels": 341056
+      },
+      "visible_tree_pixel_ratio": 1.2811503933093547,
+      "edge_band_pixel_ratio": 1.350307881773399
+    },
+    {
+      "era": "PARADE",
+      "view": "MAP",
+      "before_v7": {
+        "tree_props": 11,
+        "camera": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1296
+        },
+        "visible_tree_pixels": 158449,
+        "edge_band_visible_tree_pixels": 106467,
+        "camera_pixels": 995328
+      },
+      "after_v8": {
+        "tree_props": 23,
+        "camera": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1296
+        },
+        "visible_tree_pixels": 291940,
+        "edge_band_visible_tree_pixels": 214078,
+        "camera_pixels": 995328
+      },
+      "visible_tree_pixel_ratio": 1.8424855947339522,
+      "edge_band_pixel_ratio": 2.0107451135093504
+    },
+    {
+      "era": "DANGER",
+      "view": "WORLD",
+      "before_v7": {
+        "tree_props": 11,
+        "camera": {
+          "x": 160,
+          "y": 13,
+          "width": 584,
+          "height": 584,
+          "notes": "Same close-view composition after upper-district translation179px; not a player teleport or physical position claim."
+        },
+        "visible_tree_pixels": 67396,
+        "edge_band_visible_tree_pixels": 32039,
+        "camera_pixels": 341056
+      },
+      "after_v8": {
+        "tree_props": 23,
+        "camera": {
+          "x": 160,
+          "y": 13,
+          "width": 584,
+          "height": 584,
+          "notes": "Same close-view composition after upper-district translation179px; not a player teleport or physical position claim."
+        },
+        "visible_tree_pixels": 87498,
+        "edge_band_visible_tree_pixels": 43807,
+        "camera_pixels": 341056
+      },
+      "visible_tree_pixel_ratio": 1.2982669594634697,
+      "edge_band_pixel_ratio": 1.3673023502606199
+    },
+    {
+      "era": "DANGER",
+      "view": "MAP",
+      "before_v7": {
+        "tree_props": 11,
+        "camera": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1296
+        },
+        "visible_tree_pixels": 156790,
+        "edge_band_visible_tree_pixels": 105481,
+        "camera_pixels": 995328
+      },
+      "after_v8": {
+        "tree_props": 23,
+        "camera": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 1296
+        },
+        "visible_tree_pixels": 292455,
+        "edge_band_visible_tree_pixels": 214603,
+        "camera_pixels": 995328
+      },
+      "visible_tree_pixel_ratio": 1.8652656419414504,
+      "edge_band_pixel_ratio": 2.0345180648647623
+    }
+  ]
+}

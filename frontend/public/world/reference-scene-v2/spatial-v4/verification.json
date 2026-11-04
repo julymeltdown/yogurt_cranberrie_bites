@@ -1,0 +1,74 @@
+{
+  "status": "PASS_SPATIAL_V4_PROPOSAL_ONLY",
+  "geometry_hash": "sha256:0448d5086dc251c6a7aed8c136dbbbf751f95038ea1f7f98e3e40fe6e8067e6f",
+  "collision_cells_checked": 3888,
+  "new_solid_cells": 72,
+  "physical_props": 34,
+  "new_unbound_roots": 12,
+  "new_place_or_interaction_ids": 0,
+  "old22props_exact": true,
+  "terrain_paving_cells_spawns_interactions_cameras_places_unchanged": true,
+  "routes": [
+    {
+      "from": "courtyard_entry",
+      "to": "courtyard_entry",
+      "steps": 0
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "community_entry",
+      "steps": 25
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "stage_info",
+      "steps": 3
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "park_info",
+      "steps": 10
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "gifts_info",
+      "steps": 38
+    },
+    {
+      "from": "courtyard_entry",
+      "to": "wall_info",
+      "steps": 50
+    },
+    {
+      "from": "community_entry",
+      "to": "courtyard_entry",
+      "steps": 25
+    },
+    {
+      "from": "community_entry",
+      "to": "community_entry",
+      "steps": 0
+    },
+    {
+      "from": "community_entry",
+      "to": "stage_info",
+      "steps": 28
+    },
+    {
+      "from": "community_entry",
+      "to": "park_info",
+      "steps": 27
+    },
+    {
+      "from": "community_entry",
+      "to": "gifts_info",
+      "steps": 19
+    },
+    {
+      "from": "community_entry",
+      "to": "wall_info",
+      "steps": 31
+    }
+  ],
+  "limits": "Virtual candidate. No release/Tiled authority, physical safety/arrival, moving-avatar or target acceptance."
+}
