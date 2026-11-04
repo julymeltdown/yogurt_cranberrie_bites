@@ -489,3 +489,20 @@ reuse rejection and exact witness restart persistence. Actual sealed
 BoundParticipantAuthority/owner-protocol qualification remains Participant209's
 separate joined proof. These new native cases remain NOT_RUN at this source
 checkpoint, pending coherent migration consumption and a named build lease.
+
+### Frozen-binary controller selection
+
+At base `b7ffb3ce181a09b6413c272b3a570d628b1ec0b3`, the backend resource
+coordinator explicitly assigned this owner the sole metadata-selection edit in
+`backend/scripts/mcr/avatar_smoke.py`. In pinned mode the original absolute
+compiler executable path is now a lexical receipt key; it is never resolved,
+statted or executed after the shared target has been released. The frozen copy
+still requires an executable-file check and an exact SHA256 match. Default
+nonpinned selection retains its existing live executable validation.
+
+A hermetic Python selection check passed (exit0), trapping any resolve or
+executable validation of the released target, selecting the frozen copy, stopping
+before PostgreSQL, and refusing missing/failed/ambiguous compiler records, a
+foreign manifest and a bad snapshot checksum. It also verified legacy executable
+validation. `git diff --check` passed. These checks certify controller selection
+only; the two-target avatar build and actual native witness cases remain NOT_RUN.
