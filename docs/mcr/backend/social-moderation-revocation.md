@@ -144,3 +144,32 @@ and executable hash; an unchanged deterministic hash must not be disguised by
 inventing a source revision. The queued two-test offer above excludes main and
 PG and cannot perform this correction. Source custody planning requires no
 cache deletion or product-code change.
+
+### Packaged migration directory implementation
+
+Root subsequently assigned exactly `config::migration_directory`, its CLI and
+serving call sites, focused private path tests, and the single cancellation
+fixture caller adaptation to this developer. The coordinated API is now
+`migration_directory() -> anyhow::Result<PathBuf>`.
+
+`CONCERT_MIGRATION_DIRECTORY` selects an explicit operator-packaged directory.
+Absence retains the existing compile-checkout default. Empty/relative paths,
+dot/parent components, symlink directory ancestors, missing or nondirectory
+paths, nonregular/symlink entries and packages without regular `.sql` files
+fail closed with a redacted configuration error. The resolved path is shared
+by standalone migration/verification and normal serving. CLI help, release
+inspection and the initial no-argument command path retain their early behavior;
+serving validates the migration path before opening its database pool.
+
+Root owns materializing the exact SQL package and passing the override for its
+CLI/catalog/serving process set. Path validation does not freeze bytes or grant
+an environment-selected path to browser callers. Root's runtime custody must
+still verify the producing source's exact manifest and keep it unchanged for
+the complete execution. Existing copied binaries do not gain this override.
+
+Four private tests cover accepted packaging/default behavior, invalid paths,
+symlink ancestors/SQL entries and nonregular entries without process-global
+environment mutation. Rust syntax parsing and `git diff --check` pass; these
+tests, actual main compilation, override-based migration execution and exact
+ledger verification remain NOT_RUN. They require a fresh named workload that
+includes main/library tests and PG; the two-test queued offer is unchanged.
