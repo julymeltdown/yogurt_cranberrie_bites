@@ -459,6 +459,16 @@ async fn age_expiry_shortens_actual_root_disclosure_ceiling() -> anyhow::Result<
         s.disclosure_ceiling()?.expires_micros(),
         expires.timestamp_micros()
     );
+    let captured = s.disclosure_ceiling()?;
+    // A later policy read cannot renew either clock or exceed original authority.
+    s.limit_disclosure_until(Utc::now() + Duration::days(1))?;
+    let repeated = s.disclosure_ceiling()?;
+    assert_eq!(repeated.expires_micros(), captured.expires_micros());
+    assert!(repeated.stop() <= captured.stop());
+    assert!(repeated.stop() <= s.binding().deadline().stop());
+    assert!(s
+        .limit_disclosure_until(Utc::now() - Duration::seconds(1))
+        .is_err());
     let mut tx = f.concert.begin().await?;
     ScopedAgeAuthority::new(s.clone())
         .authorize_in(&mut tx, c, Access::Read)
@@ -488,5 +498,8 @@ async fn age_expiry_shortens_actual_root_disclosure_ceiling() -> anyhow::Result<
         "Age-expired representation cannot pass the root disclosure boundary"
     );
     finish(&s).await?;
+    assert!(s
+        .limit_disclosure_until(Utc::now() + Duration::seconds(1))
+        .is_err());
     Ok(())
 }

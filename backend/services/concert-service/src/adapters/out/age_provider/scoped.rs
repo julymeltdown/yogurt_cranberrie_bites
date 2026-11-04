@@ -47,6 +47,11 @@ impl ScopedProjectionAuthority {
 }
 #[async_trait]
 impl ProjectionAuthority for ScopedProjectionAuthority {
+    fn disclose_until(&self, until: chrono::DateTime<Utc>) -> Result<(), PolicyError> {
+        self.scope
+            .limit_disclosure_until(until)
+            .map_err(|_| PolicyError::Unavailable)
+    }
     fn accepts_claim(&self, verifier: &str, revision: &str) -> bool {
         self.trust.accepts(verifier, revision)
     }
@@ -79,6 +84,11 @@ impl ScopedAgeAuthority {
 }
 #[async_trait]
 impl Authority for ScopedAgeAuthority {
+    fn disclose_until(&self, until: chrono::DateTime<Utc>) -> Result<(), CommandError> {
+        self.scope
+            .limit_disclosure_until(until)
+            .map_err(|_| CommandError::Unavailable)
+    }
     async fn authorize_in(
         &self,
         c: &mut PgConnection,
