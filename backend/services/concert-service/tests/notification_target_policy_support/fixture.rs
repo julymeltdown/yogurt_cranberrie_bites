@@ -68,7 +68,7 @@ use concert_domain::{
     },
     notification::{Target, TargetType},
 };
-use sqlx::{PgConnection, Row};
+use sqlx::PgConnection;
 use uuid::Uuid;
 
 pub struct Fixture {
@@ -87,7 +87,14 @@ pub struct Fixture {
 impl Fixture {
     pub async fn new() -> anyhow::Result<Self> {
         let pool = owned_pool().await?;
-        sqlx::migrate!("./migrations").run(&pool).await?;
+        let migrations = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("migrations");
+        migration_runtime::prepare_database(
+            &pool,
+            &migrations,
+            migration_runtime::MigrationMode::Startup,
+            &[],
+        )
+        .await?;
         let f = Self {
             pool,
             actor: Uuid::new_v4(),

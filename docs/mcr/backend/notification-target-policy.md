@@ -107,3 +107,8 @@ Source revision for every following entry: `cde817b2ade8caabcf8c3a96508121053997
 ## Targeted source review
 
 A read-only peer review of `edfe6cd2` found one concrete fixture bug: notice confirmation used `clock_timestamp()` while the actual immediate 0021 CHECK requires `confirmed_at <= statement_timestamp()`. The fixture now uses the owning constraint's `statement_timestamp()`. This repair changes no policy, authority or scope. Review performed no builds, PG, target or network activity and reported no other actionable findings in the frozen local-component scope. Compilation/runtime remain NOT_RUN until the named offer.
+
+
+## First allocated compilation and exact repair
+
+Under `NB03-L-TARGET-POLICY-BACKEND-202611040854Z`, clean `f59d56c96a4f5ffe44528bb58de8308ee71dcfc0` failed compilation (exit 101, 40.37 seconds): the retained SQLx feature set exposes no `sqlx::migrate!` macro. Only the owned fixture was affected. The repair uses the existing `migration_runtime::prepare_database` with Startup mode and the actual `env!("CARGO_MANIFEST_DIR")/migrations` path; no manifest/lock/feature change or schema repair. The fixture still migrates the central owner directory and the qualifier still requires exact ledger checksums. Failed Cargo JSON/stderr, full source inventory and 919.63 MiB source archive are preserved in private `/tmp/mcr-nb03-local-f59d56c9`. Fresh lsof found zero target handles before unconditional release; no PG process or copied test ran. Retry requires a fresh named offer, preserving the same original time/byte baseline and failure evidence.
