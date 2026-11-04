@@ -324,3 +324,60 @@ This is a candidate test fix, not a passing native rerun. All failures remain
 recorded. Native cleanup passed, the private PostgreSQL root was removed and
 the guardian reaped at 17:17:27 UTC. The later native cases, physical restart,
 production default-app/two-client flow and IN04 remain unaccepted.
+
+## Completed native qualification and publication handoff
+
+The corrected executable at source
+`cd7f658407c1c0a9cda9687226e23cde7758b3c8` passed its pure case and all
+seven canonical native cases, exit 0, using PostgreSQL 16.14. The strict C04
+oracle accepted all 35 actual producer responses. Every case finished with zero
+prepared transactions. Actor/event budget isolation, concurrent settlement,
+receipt expiry and history retirement passed alongside the original three cases.
+All seven cases applied the actual migration chains: Auth 18, Concert 44,
+Friend 18 and Profile 9. These are native canonical Auth/Friend transaction and
+Wall Product facade results, not synthetic successful authority objects.
+
+The controller stopped and restarted its actual PostgreSQL postmaster
+(PID 90734 to 94179, distinct server start times), recovered unchanged durable
+state digest `766287a13b0bf41d0ed6e4dbc60d2376`, and passed its post-restart
+check. It removed its exact marker-owned root and reaped the independent guardian.
+The frozen executable SHA-256 is
+`d711b161e5ecbb75dec518cbeb1646ccadf5ee7a90fece592c67f46d44f55d69`.
+Its source checkpoint records 3,637 file hashes, including build/dependency,
+migration, contract and native-oracle inputs. No target access occurred after
+release, and the copied executable and checkpoint were checked for drift.
+
+The final accepted resource round retained previous failed outputs. Build NEW
+peaked at 739,631,104 bytes; the native round peaked at 837,779,456 bytes,
+21 processes and 511,508,480 bytes RSS, within the original 2 GiB NEW/12 GiB
+whole allowance. Actual target release was 2026-11-04 17:23:56 UTC with zero
+compiler/target handles, sent directly to the next owner. Native FULL release
+was 17:24:42 UTC. No resource remains held. The earlier resource breach and
+fixture failure above remain historical failures; this passing rerun supersedes
+their pending qualification disposition.
+
+The retained focused Rust results are domain five, application commands eight,
+service configuration two and Gateway nine, all passing, plus the production
+Concert executable `cargo check` exit 0. Rust 1.88, locked/offline single-job
+builds used debug info 0, incremental off and the retained contract-package
+optimization overrides. The only changes after those focused checks were the
+native checkpoint closure and concurrent-test fixture correction; the final
+native executable compiled that corrected source successfully.
+
+Committed evidence is
+`backend/scripts/mcr/wall_tools_b/native-qualification-2026-11-05.json`: exact
+source/executable pins, commands/exits, per-case results, migration counts,
+resource/restart/cleanup receipts and hashes of the private detailed evidence.
+Private round evidence remains in `/private/tmp/mcr-wall-race-fix-2x7_ll20`;
+earlier failed rounds remain in `mcr-wall-compile-gu7d9h2_` and
+`mcr-wall-retry-ifm40w2y` under the same temporary directory. Private locations
+are diagnostic evidence, not portable deployment inputs.
+
+This backend scope is ready for the named publisher Root to integrate directly
+with its current shared-file owners and relevant combined checks. Frozen C18
+contracts are already published as `e7bd68cfa35fb620e2eed060a71a72e50718b9dc`;
+do not overwrite newer public contracts with this branch's older complete files.
+Actual startup/Gateway HTTP, default App with persistent Phaser, two real clients
+and complete IN04 remain NOT_RUN. Performance/load qualification remains
+DEFERRED_BY_USER. The separately assigned initial mural seed producer remains
+an open follow-up; this handoff does not qualify an unprovided art pack.
