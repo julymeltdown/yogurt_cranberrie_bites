@@ -1,0 +1,41 @@
+{
+  "task": "MAP-VIEWPORT-FOREGROUND-FIT-01",
+  "candidate": "3ba8cbee1c062fbf0736d97b9d3ef2103446041b",
+  "sourceStatus": "PASS",
+  "tests": 17,
+  "types": "PASS_NONINCREMENTAL_FULL_FRONTEND",
+  "lint": "PASS_SCOPED",
+  "nativeStatus": "NOT_RUN",
+  "files": [
+    {
+      "path": "docs/mcr/evidence/map-viewport-fit/source01/command-00.log",
+      "sha256": "7d7a4573fd793d2fd5ff5ceadbb7e6258deb57f6de9f80ff7ccc1cc692d878ff",
+      "bytes": 246
+    },
+    {
+      "path": "docs/mcr/evidence/map-viewport-fit/source01/command-01.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/map-viewport-fit/source01/command-02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/map-viewport-fit/source01/guardian.jsonl",
+      "sha256": "3b20f597cd9420ce13e81bb46021e4874eaab9cc43c0224a7ccd19d9b76e4cd5",
+      "bytes": 2075
+    },
+    {
+      "path": "docs/mcr/evidence/map-viewport-fit/source01/release.json",
+      "sha256": "59c5d7cd3d6007225ff0fc48d10d1b4313f4983e863e03f613be70b77bb1550b",
+      "bytes": 561
+    },
+    {
+      "path": "docs/mcr/evidence/map-viewport-fit/source01-controller.jsonl",
+      "sha256": "e36713a3854eff911ff79972b7e478e03c7de278e77d9e6d4a85c9a901de8408",
+      "bytes": 883
+    }
+  ]
+}

@@ -75,6 +75,11 @@
 .places-map-full .places-map-tools { flex: 0 0 44px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); background: #eee5d3; border-top: 2px solid #30291f; z-index: 4; }
 .places-map-full .places-map-tools button { display: flex; align-items: center; justify-content: center; gap: 4px; min-width: 0; min-height: 44px; padding: 2px; border: 1px solid #746855; background: transparent; color: #211d17; font: 800 14px/1.1 "Arial Narrow",sans-serif; }
 .places-map-full .places-map-tools svg { width: 18px; height: 18px; }
+/* Qualified compositions keep controls outside their pixels. The whole raster
+   remains in the local scroller at reading scale, including on short screens. */
+.places-map-full .places-map-surface[data-map-framing] .places-map-zoom--docked { position: static; flex: 0 0 44px; display: flex; align-items: center; justify-content: flex-end; min-height: 44px; border-top: 1px solid #746855; background: #eee5d3; }
+.places-map-full .places-map-zoom--docked > span { flex: 1 1 auto; min-width: 0; padding: 4px 8px; font: 750 13px/1.15 "Arial Narrow",sans-serif; }
+.places-map-full .places-map-zoom--docked button { flex: 0 0 44px; }
 /* Inset rings remain visible at the clipped map edge and beside the toolbar. */
 .places-map-full .places-map-viewport:focus-visible,
 .places-map-full .places-map-zoom button:focus-visible,

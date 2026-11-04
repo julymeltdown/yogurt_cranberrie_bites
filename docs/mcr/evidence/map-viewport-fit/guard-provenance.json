@@ -1,0 +1,18 @@
+{
+  "task": "MAP-VIEWPORT-FOREGROUND-FIT-01",
+  "reuse": "Independent outer controller and inner guardian adapted for exact new paths, commands, readset and current 12GiB source admission; no peer file changes.",
+  "sources": [
+    {
+      "sourceCommit": "7468f1fe03f6fe667f41975467fabb385caa218a",
+      "sourcePath": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/controller.py",
+      "sourceSha256": "f0850e457886cb0e56b32432484f4cde4c1e3d9f3fa043ed46bc7fe6911804f7",
+      "destination": "docs/mcr/evidence/map-viewport-fit/controller.py"
+    },
+    {
+      "sourceCommit": "7468f1fe03f6fe667f41975467fabb385caa218a",
+      "sourcePath": "frontend/src/app/world-entry/__tests__/map-roof-street-uptake/guardian.py",
+      "sourceSha256": "43ebe734e11f921951b92940ecd474fa6ed1069e7a81db8b410ce09f64cf1d9e",
+      "destination": "docs/mcr/evidence/map-viewport-fit/guardian.py"
+    }
+  ]
+}

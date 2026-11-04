@@ -1,0 +1,37 @@
+{
+  "observedAt": "2026-11-04T21:24:39.595368+00:00",
+  "baseCanonical": "0d17f1a0a60b073eb9dedba5fd05e723fcc22ba2",
+  "rows": [
+    {
+      "label": "exclusiveLoan",
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+      "logicalBytesDeduplicated": 1757038927,
+      "allocatedBytesDeduplicated": 1822318592,
+      "files": 26870
+    },
+    {
+      "label": "sharedGitIncludingArchivedHistory",
+      "path": "/Users/lhs/Desktop/mcr/.git",
+      "logicalBytesDeduplicated": 1151051706,
+      "allocatedBytesDeduplicated": 1161392128,
+      "files": 2961
+    },
+    {
+      "label": "sharedRetainedDependencies",
+      "path": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "logicalBytesDeduplicated": 408236853,
+      "allocatedBytesDeduplicated": 438317056,
+      "files": 11104
+    },
+    {
+      "label": "fullRetainedTools",
+      "path": "/Users/lhs/Desktop/mcr-tools",
+      "logicalBytesDeduplicated": 402344564,
+      "allocatedBytesDeduplicated": 418672640,
+      "files": 6678
+    }
+  ],
+  "logicalWholeBytes": 3718672050,
+  "allocatedWholeBytes": 3840700416,
+  "historicalCarryQualification": "Complete loan includes existing local dependencies and prior proofs; canonical dependencies, full shared Git history and entire retained tools root globally inode-deduplicated. Prior MAX never shrinks."
+}

@@ -1,0 +1,13 @@
+{
+  "lease": "MAP-VIEWPORT-FOREGROUND-FIT-SOURCE-20261104T2125Z",
+  "candidate": "e48168b2a5c8a3fe60904c8190180c09eff6dcc4",
+  "actualAccept": "2026-11-04T21:22:55.017141+00:00",
+  "actualFull": "2026-11-04T21:23:02.665270+00:00",
+  "status": "PREFLIGHT_FAIL",
+  "reason": "Historical real frontend/node_modules directory; absent-link guard failed before any child",
+  "childrenLaunched": 0,
+  "resources": 0,
+  "outputCreated": false,
+  "privateTmpCreated": false,
+  "retainedDependenciesChanged": false
+}

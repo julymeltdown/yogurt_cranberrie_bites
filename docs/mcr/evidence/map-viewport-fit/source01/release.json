@@ -1,0 +1,26 @@
+{
+  "type": "FULL",
+  "lease": "MAP-VIEWPORT-READONLY-DEPS-RETRY-SOURCE-20261104T2135Z",
+  "mode": "source",
+  "at": "2026-11-04T21:29:46.231842+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 3,
+    "rssBytes": 1859551232,
+    "newBytes": 40685568,
+    "tmpBytes": 1368064,
+    "wholeBytes": 3879735296
+  },
+  "minimumFreeBytes": 22664732672,
+  "finalFreeBytes": 22682234880,
+  "seenPids": [
+    11076,
+    11931,
+    13067
+  ],
+  "livePids": [],
+  "retainedDependenciesPreserved": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}

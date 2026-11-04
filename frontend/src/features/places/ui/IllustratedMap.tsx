@@ -15,6 +15,7 @@ import { isMap4Presentation, map4LabelObstacles } from '../../../world/reference
 import { map4LocalZoom, map4ServiceTargets, packMap4Markers } from '../../../world/reference-scene/map4-service-v1/layout'
 import { currentComposition } from '../../../world/reference-scene/map4-service-v2/current'
 import approvedComposition from '../../../world/reference-scene/map4-service-v2/layout-source.json'
+import { readableMapFrame, reframeScroll, revealLandmark, type MapViewMode } from './map-viewport-fit/framing'
 
 const architecturalFrames = new Set(['meeting_pavilion', 'giveaway_pavilion', 'north_hall', 'west_hall', 'white_food_booth', 'white_merch_booth'])
 /** Map-only decoration footprints from the approved composition, never World collision bounds. */
@@ -55,15 +56,18 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   const zoomControls = useRef<HTMLDivElement>(null), caption = useRef<HTMLDivElement>(null)
   const [obstacles, setObstacles] = useState<AnnotationRect[]>([])
   const returnFocus = useRef<HTMLElement | null>(null), drag = useRef<{ x: number; y: number; left: number; top: number } | null>(null)
-  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState<number | 'fit'>(() => getSpatialV5OverviewMetadata(image) || qualifiedMap4 ? 'fit' : 1)
+  const [size, setSize] = useState({ width: 360, height: 600 }), [zoom, setZoom] = useState<MapViewMode>(() => qualifiedComposition ? 'readable' : getSpatialV5OverviewMetadata(image) || qualifiedMap4 ? 'fit' : 1)
+  const previousFrame = useRef<{ width: number; height: number; slotWidth: number; slotHeight: number; reset: number } | null>(null)
   const saved = selections.get(controller), navigation = useNavigationType(), restored = useRef(false)
   const [loaded, setLoaded] = useState(''), [failed, setFailed] = useState(''), [selected, setSelected] = useState<string | null>(saved?.mapHash === map.content_hash ? saved.id : null)
   const [panel, setPanel] = useState<'places' | 'legend' | null>(null), [search, setSearch] = useState('')
   const [reset, setReset] = useState(0)
   const [scroll, setScroll] = useState({ left: 0, top: 0 })
   const ready = loaded === image.imageUrl && failed !== image.imageUrl
-  const requestedZoom = qualifiedMap4 ? map4LocalZoom(size, zoom === 'fit' ? -1 : zoom) : zoom === 'fit' ? -1 : zoom
-  const { minZoom: baseMinZoom, effectiveZoom, width, height, offsetX, offsetY } = mapViewport(size, image, requestedZoom)
+  const numericZoom = typeof zoom === 'number' ? zoom : zoom === 'fit' ? -1 : 1
+  const requestedZoom = qualifiedMap4 ? map4LocalZoom(size, numericZoom) : numericZoom
+  const frame = qualifiedComposition ? readableMapFrame(size, image, zoom) : mapViewport(size, image, requestedZoom)
+  const { minZoom: baseMinZoom, effectiveZoom, width, height, offsetX, offsetY } = frame
   const minZoom = qualifiedMap4 ? Math.max(baseMinZoom, map4LocalZoom(size, -1)) : baseMinZoom
   const candidate = getReferenceOverviewMetadata(image)
   // This metadata changes label placement only; the existing controller/root still
@@ -110,19 +114,20 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
       const id = opener?.mapHash === map.content_hash ? `map-feature-${opener.intent}`
         : saved?.mapHash === map.content_hash ? `map-place-${saved.id}` : null
       restored.current = true
-      if (id) document.getElementById(id)?.focus()
+      if (id) document.getElementById(id)?.focus({ preventScroll: qualifiedComposition })
     }
-  }, [ready, navigation, saved, map.content_hash, controller])
+  }, [ready, navigation, saved, map.content_hash, controller, qualifiedComposition])
   useLayoutEffect(() => {
     const element = viewport.current
     if (!element) return
     const update = () => {
       const r = element.getBoundingClientRect()
       if (r.width <= 0 || r.height <= 0) return
-      setSize({ width: r.width, height: r.height })
+      setSize({ width: element.clientWidth, height: element.clientHeight })
       setObstacles([zoomControls.current, caption.current].flatMap(control => {
         const b = control?.getBoundingClientRect()
-        return b && b.width > 0 && b.height > 0 ? [{ left: b.left - r.left, top: b.top - r.top, width: b.width, height: b.height }] : []
+        return b && b.width > 0 && b.height > 0 && b.top < r.bottom && b.bottom > r.top
+          ? [{ left: b.left - r.left, top: b.top - r.top, width: b.width, height: b.height }] : []
       }))
     }
     update(); const observer = new ResizeObserver(update); observer.observe(element)
@@ -132,7 +137,16 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   }, [])
   useLayoutEffect(() => {
     const element = viewport.current
-    if (element) { element.scrollLeft = Math.max(0, (width - size.width) / 2); element.scrollTop = Math.max(0, (height - size.height) / 2); setScroll({ left: element.scrollLeft, top: element.scrollTop }) }
+    if (element) {
+      const old = previousFrame.current
+      const next = qualifiedComposition ? reframeScroll(old && old.reset === reset ? {
+        plane: { width: old.width, height: old.height }, slot: { width: old.slotWidth, height: old.slotHeight }, scroll,
+      } : null, { width, height }, size)
+        : { left: Math.max(0, (width - size.width) / 2), top: Math.max(0, (height - size.height) / 2) }
+      element.scrollLeft = next.left; element.scrollTop = next.top
+      setScroll({ left: element.scrollLeft, top: element.scrollTop })
+      previousFrame.current = { width, height, slotWidth: size.width, slotHeight: size.height, reset }
+    }
   }, [width, height, size.width, size.height, reset])
   useEffect(() => {
     const dialog = sheet.current
@@ -142,16 +156,30 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
   }, [panel])
   function panKey(event: KeyboardEvent<HTMLDivElement>) {
     if (event.target !== event.currentTarget) return
-    const direction: Record<string, [number, number]> = { ArrowLeft: [-64, 0], ArrowRight: [64, 0], ArrowUp: [0, -64], ArrowDown: [0, 64] }
+    const direction: Record<string, [number, number]> = { ArrowLeft: [-64, 0], ArrowRight: [64, 0], ArrowUp: [0, -64], ArrowDown: [0, 64],
+      PageUp: [0, -size.height * .8], PageDown: [0, size.height * .8], Home: [-width, -height], End: [width, height] }
     const delta = direction[event.key]
     if (delta) { event.preventDefault(); event.currentTarget.scrollBy(...delta) }
   }
+  function reveal(element: HTMLElement) {
+    const host = viewport.current
+    if (!host || !qualifiedComposition) return
+    const a = element.getBoundingClientRect(), b = host.getBoundingClientRect()
+    const next = revealLandmark({ left: host.scrollLeft, top: host.scrollTop }, size,
+      { width: host.scrollWidth, height: host.scrollHeight },
+      { left: a.left - b.left + host.scrollLeft, top: a.top - b.top + host.scrollTop, width: a.width, height: a.height })
+    host.scrollLeft = next.left; host.scrollTop = next.top
+  }
   function find(id: string) {
     select(id); setPanel(null)
-    requestAnimationFrame(() => { const element = document.getElementById(`map-place-${id}`); element?.focus(); element?.scrollIntoView({ block: 'center', inline: 'center' }) })
+    requestAnimationFrame(() => { const element = document.getElementById(`map-place-${id}`); element?.focus({ preventScroll: qualifiedComposition });
+      if (element && qualifiedComposition) reveal(element)
+      else element?.scrollIntoView({ block: 'center', inline: 'center' }) })
   }
-  return <div className="places-map-surface" data-map-presentation={reference ? 'reference-scene' : 'incumbent'}>
+  return <div className="places-map-surface" data-map-presentation={reference ? 'reference-scene' : 'incumbent'} data-map-framing={qualifiedComposition ? typeof zoom === 'number' ? 'manual' : zoom === 'fit' ? 'overview' : 'readable' : undefined}>
     <div className={`places-map-viewport${image.height > image.width ? ' places-map-viewport--portrait' : ''}`} ref={viewport} tabIndex={0} role="region" aria-label="Illustrated virtual map; drag or use arrow keys to pan" onKeyDown={panKey}
+      aria-describedby={qualifiedComposition ? 'map-pan-instructions' : undefined}
+      onFocusCapture={event => { if (event.target instanceof HTMLElement && event.target !== event.currentTarget) reveal(event.target) }}
       onScroll={event => setScroll({ left: event.currentTarget.scrollLeft, top: event.currentTarget.scrollTop })}
       onPointerDown={event => { if (event.pointerType === 'mouse' && event.button === 0 && event.target === event.currentTarget.querySelector('img')) { drag.current = { x: event.clientX, y: event.clientY, left: event.currentTarget.scrollLeft, top: event.currentTarget.scrollTop }; event.currentTarget.setPointerCapture(event.pointerId) } }}
       onPointerMove={event => { const start = drag.current; if (start) { event.currentTarget.scrollLeft = start.left - event.clientX + start.x; event.currentTarget.scrollTop = start.top - event.clientY + start.y } }}
@@ -194,7 +222,8 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
         </span>}
       </div>
     </div>
-    <div ref={zoomControls} className="places-map-zoom" style={labelObstacles.length ? v5LabelObstacles.length ? { top: spatialV5ZoomTop(view, labelObstacles), bottom: 'auto' } : { bottom: spatialV4ZoomBottom(view, labelObstacles) } : undefined} aria-label="Map view zoom">
+    <div ref={zoomControls} className={`places-map-zoom${qualifiedComposition ? ' places-map-zoom--docked' : ''}`} style={!qualifiedComposition && labelObstacles.length ? v5LabelObstacles.length ? { top: spatialV5ZoomTop(view, labelObstacles), bottom: 'auto' } : { bottom: spatialV4ZoomBottom(view, labelObstacles) } : undefined} aria-label="Map view zoom">
+      {qualifiedComposition && <span id="map-pan-instructions">Drag map or use arrow keys to pan</span>}
       <button type="button" aria-label="Zoom in map view" disabled={effectiveZoom >= 3 || !ready} onClick={() => setZoom(clamp(effectiveZoom + .25, minZoom, 3))}>+</button>
       <button type="button" aria-label="Zoom out map view" disabled={effectiveZoom <= minZoom || !ready} onClick={() => setZoom(clamp(effectiveZoom - .25, minZoom, 3))}>−</button>
     </div>
@@ -203,13 +232,13 @@ function IllustratedViewport({ controller, state, fallback, legend }: MapProps) 
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('places') }}><ConcertIcon name="world" />Places</button>
       <button type="button" onClick={event => { returnFocus.current = event.currentTarget; setPanel('legend') }}>Legend</button>
       <button type="button" disabled={!ready} onClick={() => { setZoom('fit'); setReset(r => r + 1) }}>Fit map</button>
-      <button type="button" disabled={!ready} onClick={() => { setZoom(getSpatialV5OverviewMetadata(image) || qualifiedMap4 ? 'fit' : 1); selections.delete(controller); setSelected(null); setReset(r => r + 1) }}>Reset view</button>
+      <button type="button" disabled={!ready} onClick={() => { setZoom(qualifiedComposition ? 'readable' : getSpatialV5OverviewMetadata(image) || qualifiedMap4 ? 'fit' : 1); selections.delete(controller); setSelected(null); setReset(r => r + 1) }}>Reset view</button>
     </div>
     <dialog ref={sheet} className="places-map-sheet" aria-labelledby="places-map-sheet-title"
       onKeyDown={event => { if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); setPanel(null) } }}
       onCancel={event => { event.preventDefault(); setPanel(null) }}>
       <header><h2 id="places-map-sheet-title">{panel === 'legend' ? 'Map legend' : 'Places'}</h2><button type="button" aria-label="Close map information" onClick={() => setPanel(null)}>×</button></header>
-      {panel === 'legend' ? <>{legend}<p>Drag the map or focus it and use arrow keys. + and − change this overview only. Fit map shows the entire source composition.</p><p>Map revision {map.map_revision} · {image.themeId} revision {image.themeRevision}</p></> : <>
+      {panel === 'legend' ? <>{legend}<p>Drag the map or focus it and use arrow keys. + and − change this overview only. {qualifiedComposition ? 'Fit map returns to the overview; short screens still scroll to keep landmarks readable. Reset view returns to reading scale. Home and End reach the map edges.' : 'Fit map shows the entire source composition.'}</p><p>Map revision {map.map_revision} · {image.themeId} revision {image.themeRevision}</p></> : <>
         <label className="places-map-search">Find a place<input type="search" value={search} maxLength={512} onChange={event => setSearch(event.target.value)} /></label>
         <ol>{items.filter(p => p.label.toLowerCase().includes(search.trim().toLowerCase())).map(place => <li key={place.place_id}>
           <button type="button" onClick={() => find(place.place_id)}>{place.label}</button><p>{state.unavailablePlaceIds.includes(place.place_id) ? 'Currently unavailable' : physicalStatus(place)}</p>
