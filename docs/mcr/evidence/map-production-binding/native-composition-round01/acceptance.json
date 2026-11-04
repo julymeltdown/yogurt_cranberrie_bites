@@ -1,0 +1,16 @@
+{
+  "slot": "ROOT-MAP4-COMPOSITION-NATIVE-202611041400Z",
+  "accepted": "2026-11-04T14:01:22.289007+00:00",
+  "workDeadline": "2026-11-04T14:07:22.289007+00:00",
+  "hardDeadline": "2026-11-04T14:08:22.289007+00:00",
+  "pin": "6b11faca8855e19ef16c4198de3c1c8fdf3a3dfa",
+  "freeBytes": 29354303488,
+  "actualRetainedBytes": 99501365,
+  "carryBytes": 109837768,
+  "pins": {
+    "docs/mcr/evidence/map-production-binding/root-v2-native-supervisor.py": "b4a175294cdb99f2e7d81fb04005ad1cb74bc13094593c8a642801e18eee3eab",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v2/native.mjs": "9e5f3062c95ce25e3b8efb8b038cd781117aa4c80bc0f11833b4b28125d32650",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "output": "docs/mcr/evidence/map-production-binding/native-composition-round01"
+}

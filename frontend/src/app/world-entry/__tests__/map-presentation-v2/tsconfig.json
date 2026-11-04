@@ -1,0 +1,6 @@
+{
+  "extends": "../../../../../tsconfig.json",
+  "compilerOptions": { "incremental": true },
+  "include": ["./*.ts", "./*.tsx", "../../map-presentation-v2/*.ts", "../../reference-scene-overview.ts", "../../../../features/places/ui/IllustratedMap.tsx"],
+  "exclude": []
+}

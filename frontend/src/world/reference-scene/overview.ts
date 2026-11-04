@@ -8,6 +8,7 @@ import { isSpatialV5ReferenceClaim } from './spatial-v5/model'
 import { createSpatialV5Labels } from './spatial-v5/map-labels'
 
 export interface ReferenceMapPaint {
+  readonly mode?: 'ground'
   readonly ground: HTMLImageElement
   readonly plazaFill: string
   readonly presentationVersion?: string
@@ -15,13 +16,28 @@ export interface ReferenceMapPaint {
   drawLabels?(context: CanvasRenderingContext2D): void
   dispose(): void
 }
-export type ReferenceMapPaintProvider = (map: LoadedMap, signal: AbortSignal) => Promise<ReferenceMapPaint | null>
+/** A complete Map illustration is separate from the original WORLD scenery resources. */
+export interface ReferenceMapCompositionPaint {
+  readonly mode: 'full-composition'
+  readonly scene: HTMLImageElement
+  readonly presentationVersion: string
+  readonly presentationHash: string
+  drawLabels?(context: CanvasRenderingContext2D): void
+  dispose(): void
+}
+export type ReferenceMapPresentation = ReferenceMapPaint | ReferenceMapCompositionPaint
+export type ReferenceMapPaintProvider<T extends ReferenceMapPresentation = ReferenceMapPaint> =
+  (map: LoadedMap, signal: AbortSignal) => Promise<T | null>
 
 /** MAP-only semantic projection; never mutates the shared WORLD collision or actor canvas. */
-export function drawReferenceOverview(context: CanvasRenderingContext2D, binding: ReferenceSceneBinding, paint?: ReferenceMapPaint | null) {
+export function drawReferenceOverview(context: CanvasRenderingContext2D, binding: ReferenceSceneBinding, paint?: ReferenceMapPresentation | null) {
   const { loaded, overview, plaza } = binding
-  const images = new Map(loaded.assets.map(a => [a.descriptor.id, a.image]))
   context.imageSmoothingEnabled = false
+  if (paint?.mode === 'full-composition') {
+    context.drawImage(paint.scene, 0, 0)
+    return // Never double-draw incumbent plaza or props over a qualified complete Map scene.
+  }
+  const images = new Map(loaded.assets.map(a => [a.descriptor.id, a.image]))
   context.drawImage(paint?.ground ?? images.get(loaded.manifest.ground.id)!, 0, 0)
   context.save()
   try {
@@ -38,7 +54,7 @@ export function drawReferenceOverview(context: CanvasRenderingContext2D, binding
 }
 
 /** Same public pixel/identity port as the incumbent overview. Root owns release and privacy binding. */
-export function createReferenceSceneOverview(options: { paint?: ReferenceMapPaintProvider } = {}) {
+export function createReferenceSceneOverview(options: { paint?: ReferenceMapPaintProvider<ReferenceMapPresentation> } = {}) {
   let labels = createSpatialV4Labels(), labelsVersion = 4
   type Raster = { canvas: HTMLCanvasElement; ticket: number; pins: Omit<SceneryOverview, 'imageUrl'> }
   let disposed = false, generation = 0, encoding = false, active: Raster | null = null, pending: Raster | null = null
@@ -79,7 +95,7 @@ export function createReferenceSceneOverview(options: { paint?: ReferenceMapPain
     if (version && labelsVersion !== version) {
       labels.dispose(); labels = version === 5 ? createSpatialV5Labels() : createSpatialV4Labels(); labelsVersion = version
     }
-    const render = (paint: ReferenceMapPaint | null = null) => {
+    const render = (paint: ReferenceMapPresentation | null = null) => {
      if (disposed || generation !== expected) { paint?.dispose(); return }
      let canvas: HTMLCanvasElement | null = null
      try {
