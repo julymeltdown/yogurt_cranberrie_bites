@@ -1,0 +1,29 @@
+{
+  "assignment": "AR03-MOTION-DERIVATIVES",
+  "assignmentBase": "a3526254a716e14e3134de551c3b277379a1096f",
+  "qualifiedHead": "30cf548f8fb08b4437184e8062059fbb7e42e430",
+  "implementationCommitResolution": [
+    "30cf548f8fb08b4437184e8062059fbb7e42e430 fix(mcr/AR03): retain logical dependency path for pnpm tool lookup",
+    "b19be88ca8933ede034c6f55dd67c44de02abf4b perf(mcr/AR03): keep runtime descriptor compact and automate art qualification",
+    "4c21612909076ffab728c6de37817f6e49a22442 feat(mcr/AR03): reconstruct selected motion and composable wardrobe candidates"
+  ],
+  "ownership": [
+    "frontend/public/world/avatars/derived-v1/motion-candidates-v1/**",
+    "frontend/src/entities/avatar/derived-assets/motion-candidates-v1/**",
+    "docs/mcr/art/selected-character-motion.md",
+    "docs/mcr/art/evidence/motion-candidates-v1/**"
+  ],
+  "publicationProtocol": "Developer-owned direct non-force master, reconcile peers serially; remote ancestry receipt follows publication. No king/SL review gate.",
+  "candidateEntry": "frontend/public/world/avatars/derived-v1/motion-candidates-v1/combined-release-candidate.json",
+  "runtimePayload": {
+    "descriptorBytes": 42925,
+    "atlasBytes": 470010,
+    "initialAvatarRequests": 2,
+    "interactionAvatarRequests": 0
+  },
+  "checks": 44,
+  "publicFiles": 373,
+  "qualification": "Complete assigned candidate-art categories/poses locally implemented and qualified; no automatic registry/product/Phaser/device/multiuser acceptance.",
+  "requiredMissingSourceOrMethodPermission": null,
+  "productAdmission": "NOT_RUN"
+}
