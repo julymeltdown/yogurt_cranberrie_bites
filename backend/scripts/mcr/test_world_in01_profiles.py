@@ -319,12 +319,15 @@ class ProfileTests(unittest.TestCase):
             raw50 = live.subprocess.run(["/usr/bin/git", "show", live.CONCERT_NOTIFICATION_MIGRATION_SOURCE+":"+live.CONCERT_NOTIFICATION_MIGRATION_PATH],
                 cwd=live.ROOT, capture_output=True, check=True).stdout
             (concert / "0050_fixture.sql").write_bytes(raw50)
+            raw51 = live.subprocess.run(["/usr/bin/git", "show", live.CONCERT_SOCIAL_MIGRATION_SOURCE+":"+live.CONCERT_SOCIAL_MIGRATION_PATH],
+                cwd=live.ROOT, capture_output=True, check=True).stdout
+            (concert / "0051_fixture.sql").write_bytes(raw51)
             with patch.object(live, "POST_RUNTIME_MIGRATION_ROOT", root):
                 bound, receipt = live.qualified_runtime_migrations(original)
-                (concert / "0051_fixture.sql").write_text("unqualified future runtime input")
+                (concert / "0052_fixture.sql").write_text("unqualified future runtime input")
                 with self.assertRaisesRegex(prep.auth.CheckFailure, "concert-runtime-manifest"):
                     live.qualified_runtime_migrations(original)
-                (concert / "0051_fixture.sql").unlink()
+                (concert / "0052_fixture.sql").unlink()
                 (root / "0001_fixture.sql").write_text("changed runtime input")
                 with self.assertRaisesRegex(prep.auth.CheckFailure, "runtime-migration-manifest"):
                     live.qualified_runtime_migrations(original)
@@ -340,11 +343,14 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(receipt["compiled_source_unchanged"], "d0f063d18a0549935f80a536077c30962d89f9e9")
         self.assertEqual(receipt["runtime_input_source_revision"], live.POST_RUNTIME_MIGRATION_SOURCE)
         self.assertEqual(receipt["generic_ledger_check"], "UNCHANGED_EXACT_MATCH")
-        self.assertEqual(len(bound["concert-service"]), 39)
+        self.assertEqual(len(bound["concert-service"]), 40)
         self.assertNotIn(49, original["concert-service"])
         self.assertNotIn(50, original["concert-service"])
+        self.assertNotIn(51, original["concert-service"])
+        self.assertEqual(bound["concert-service"][51], live.CONCERT_SOCIAL_MIGRATION_SHA384)
         self.assertEqual(receipt["concert_runtime_input"]["runtime_input_source_revision"], live.CONCERT_RUNTIME_MIGRATION_SOURCE)
         self.assertEqual(receipt["concert_runtime_input"]["notification_runtime_input"]["source_revision"], live.CONCERT_NOTIFICATION_MIGRATION_SOURCE)
+        self.assertEqual(receipt["concert_runtime_input"]["social_runtime_input"]["source_revision"], live.CONCERT_SOCIAL_MIGRATION_SOURCE)
         with self.assertRaisesRegex(prep.auth.CheckFailure, "runtime-versions"):
             live.qualified_runtime_migrations({"post-service": {**bound["post-service"], 33: "a"*96}})
 

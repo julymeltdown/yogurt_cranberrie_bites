@@ -152,12 +152,15 @@ From the existing `be-world-capacity` checkout, after a named fresh offer has be
   --report <FRESH_PRIVATE_OUTPUT>/report.json \
   --provision-timeout-seconds 120 --probe-timeout-seconds 120 \
   --measurement-seconds 20 --input-hz 15 --arrival-concurrency 2 \
-  --whole-timeout-seconds 600 --whole-byte-limit <ACCEPTED_WHOLE_BYTES> \
+  --whole-timeout-seconds 580 --whole-byte-limit <ACCEPTED_WHOLE_BYTES> \
+  --allocation-work-deadline-epoch <ORIGINAL_ACCEPT_WORK_EPOCH> \
+  --allocation-release-deadline-epoch <ORIGINAL_ACCEPT_RELEASE_EPOCH> \
+  --max-owned-processes <ACCEPTED_OWNED_PROCESS_CAP> \
   --retained-carry-bytes <FRESH_MEASURED_COHORT_SOURCE_PROOF_CARRY> \
   --restart-world --retain-public-projection
 ```
 
-The two explicit placeholders for accepted limits/carry are mandatory and cannot be truthfully replaced before allocator disposition. Optional projection does not require a frontend process; an exact provided frontend consumer commit can be recorded with `--frontend-source-revision`, separately from `frontend_runtime: NOT_RUN`. The source-qualified FE reference supplied during preparation is `7be5e20bb4f5fa667878dd4aee98331144634b6a`; receiving FE HEAD was `b4325b82d34686feacf52147142721a954841934`. Neither pin claims actual native admission or a final future consumer candidate.
+All explicit placeholders must bind the actual offer, measured full carry and original ACCEPT's absolute cutoffs. The child timeout must also fit the remaining original clock; the guard clamps it to both absolute deadlines with 240 seconds of cleanup, including on retry. Optional projection does not require a frontend process; an exact provided frontend consumer commit can be recorded with `--frontend-source-revision`, separately from `frontend_runtime: NOT_RUN`. The source-qualified FE reference supplied during preparation is `7be5e20bb4f5fa667878dd4aee98331144634b6a`; receiving FE HEAD was `b4325b82d34686feacf52147142721a954841934`. Neither pin claims actual native admission or a final future consumer candidate.
 
 The proposed round requires one BACKEND workflow and one new isolated PostgreSQL cluster, the six qualified peer services, Concert, Redis, private mail/control helpers and Python controller/probe. No Cargo, native artifact copy/build, frontend browser, new checkout, cache or installation is required. Root measured retained native allocated bytes as 259,817,472 for the peer directory and 49,524,736 for Concert: **309,342,208 bytes** before source/proof and new owned outputs. Logical file totals differ (259,806,464 plus 49,521,632) and are not substituted for allocated carry. Prospective whole estimates must add source/proof carry, owned PG/TMP/logs/reports and optional projection; no implicit one-GiB waiver or extension exists.
 
@@ -278,3 +281,11 @@ One timing defect was also identified: the first producer watchdog began about 2
 All three attempts cleaned up successfully; every recorded native/Redis PID was confirmed absent and every owned PG root absent before full release. No process groups were created. Workflow resources and RW4 were fully released at `2026-11-04T12:14:25.004584Z`, with 18,673,217,536 bytes free, permitting Root's migration 51 intake afterward. The final proof directory occupied 245,760 allocated bytes and stays charged to the next workflow. SHA-256 receipts: `report.json` `dd3e770311f29b87dc0603a65a10d577fcd403191c0d8dcf5a3fe7ded2153052`; `report2.json` `79ae363eaac8cc1775d574b112c899d33169be63f85a7c365f6847a7c333fc65`; `report3.json` `eb47fa5fcc87fc3f18707471a36c22679cd02d3e1b9cefedeb8c00c88f3df2b5`; `lease-release.json` `a971dd3eef5d8bda2e213425f10f33acc14157cb08ef39c7416dafe26f20643a`.
 
 No job remains active. Another attempt requires current source/input preparation, a fresh whole-carry/free/hash snapshot, a fresh allocator offer and actual named immutable window, and explicit ACCEPT binding the original absolute cutoffs. QA08's already-authorized real 200-person/four-room, device/network/recovery scope remains independent and unfinished; neither these pair observations nor the offline suites certify it.
+
+### Published input 51 and next-stage source readiness
+
+After RW4 release, fresh fetched `origin/master` `cb944f7210f6c55fdf1d0e897c96ea7ef0ba8325` contains delivered public migration source `92fb5c11a42cb133d4162548263c35853906afbf`, path `backend/services/concert-service/migrations/0051_social_policy_invalidation.sql`, 6,846 bytes, SHA-384 `d9672f6fbdbfc363a1624b69f3e26e7dd260b5d1426a9e674983ab8157c2ef7b3253ff13c63864a8bf64c4ebaadc5091`. The producer separately pins that immutable public blob, then requires all 40 actual Concert runtime checksums. Compiled Concert remains `7cd1e900` with unchanged executable SHA-256; the prior real round remains labelled 39 inputs and is not retroactively relabelled. Unknown runtime migration 52 or modified prior SQL fails closed. No SQL file was written or copied by this owner.
+
+Static checking matched every actual runtime manifest to the producer's expected map, counts 17/18/9/18/32/6/40. The three offline suites passed 57 tests in 5.645 seconds, exit zero, covering exact public input 51 and refusal of unqualified 52. No native service, PG cluster or listener was started. Fresh read-only custody and resource allocation are still required for a run; these static results do not diagnose or repair the actual replacement exit.
+
+The owner separately verified already published `a68569fe` → `ad7d4942` (all three changed postimages) and `ee5477ba` → `23052f56` (one document), exact bytes and delivery ancestry in the same fresh remote ref, exit zero. The subsequent immutable handoff through `5bc12ec982e49556feeb6f2642eca599d9654930` is routed to Root for normal publication. Continuing this public-input preparation in the owner's separate granted checkout does not wait for a technical acknowledgment or publication approval.

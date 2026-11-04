@@ -37,6 +37,9 @@ CONCERT_RUNTIME_MIGRATION_SHA384 = "2c292352935615e7569206712ff88c001e6a64e35d32
 CONCERT_NOTIFICATION_MIGRATION_SOURCE = "4394b409684d87a33eb3e4504268d395f813ff34"
 CONCERT_NOTIFICATION_MIGRATION_PATH = "backend/services/concert-service/migrations/0050_notification_target_child_intents.sql"
 CONCERT_NOTIFICATION_MIGRATION_SHA384 = "5b1d2e9830dfc946cd591e3498555fb7e2d5ffcf27242c06cae2d84c862cd33ce65ef3c0688cbd8bc78ca57caf0199d4"
+CONCERT_SOCIAL_MIGRATION_SOURCE = "92fb5c11a42cb133d4162548263c35853906afbf"
+CONCERT_SOCIAL_MIGRATION_PATH = "backend/services/concert-service/migrations/0051_social_policy_invalidation.sql"
+CONCERT_SOCIAL_MIGRATION_SHA384 = "d9672f6fbdbfc363a1624b69f3e26e7dd260b5d1426a9e674983ab8157c2ef7b3253ff13c63864a8bf64c4ebaadc5091"
 
 
 class QualificationGuard:
@@ -241,8 +244,9 @@ def qualified_runtime_migrations(manifests):
         prep.auth.require(len(raw) == 8384 and hashlib.sha384(raw).hexdigest() == CONCERT_RUNTIME_MIGRATION_SHA384,
                           "qualification-concert-runtime-source")
         concert = dict(manifests["concert-service"])
-        prep.auth.require(len(concert) in (37, 38, 39) and (49 not in concert or concert[49] == CONCERT_RUNTIME_MIGRATION_SHA384)
-                          and (50 not in concert or concert[50] == CONCERT_NOTIFICATION_MIGRATION_SHA384),
+        prep.auth.require(len(concert) in (37, 38, 39, 40) and (49 not in concert or concert[49] == CONCERT_RUNTIME_MIGRATION_SHA384)
+                          and (50 not in concert or concert[50] == CONCERT_NOTIFICATION_MIGRATION_SHA384)
+                          and (51 not in concert or concert[51] == CONCERT_SOCIAL_MIGRATION_SHA384),
                           "qualification-concert-runtime-versions")
         concert[49] = CONCERT_RUNTIME_MIGRATION_SHA384
         raw50 = subprocess.run(["/usr/bin/git", "show", CONCERT_NOTIFICATION_MIGRATION_SOURCE + ":" + CONCERT_NOTIFICATION_MIGRATION_PATH],
@@ -250,6 +254,11 @@ def qualified_runtime_migrations(manifests):
         prep.auth.require(len(raw50) == 409 and hashlib.sha384(raw50).hexdigest() == CONCERT_NOTIFICATION_MIGRATION_SHA384,
                           "qualification-concert-notification-runtime-source")
         concert[50] = CONCERT_NOTIFICATION_MIGRATION_SHA384
+        raw51 = subprocess.run(["/usr/bin/git", "show", CONCERT_SOCIAL_MIGRATION_SOURCE + ":" + CONCERT_SOCIAL_MIGRATION_PATH],
+            cwd=ROOT, env={"PATH": "/usr/bin:/bin"}, capture_output=True, timeout=5, check=True).stdout
+        prep.auth.require(len(raw51) == 6846 and hashlib.sha384(raw51).hexdigest() == CONCERT_SOCIAL_MIGRATION_SHA384,
+                          "qualification-concert-social-runtime-source")
+        concert[51] = CONCERT_SOCIAL_MIGRATION_SHA384
         directory = POST_RUNTIME_MIGRATION_ROOT.parents[1] / "concert-service/migrations"
         prep.auth.require(directory.is_dir() and directory.resolve() == directory, "qualification-concert-runtime-directory")
         for path in directory.glob("*.sql"):
@@ -262,8 +271,10 @@ def qualified_runtime_migrations(manifests):
             "runtime_input_sha384": CONCERT_RUNTIME_MIGRATION_SHA384, "runtime_input_bytes": len(raw),
             "notification_runtime_input": {"source_revision": CONCERT_NOTIFICATION_MIGRATION_SOURCE,
                 "path": CONCERT_NOTIFICATION_MIGRATION_PATH, "bytes": len(raw50), "sha384": CONCERT_NOTIFICATION_MIGRATION_SHA384},
-            "actual_runtime_directory": str(directory), "actual_all_39_disk_checksums": "MATCH_EXPECTED",
-            "expected_migrations": 39, "expected_manifest_sha384": concert, "generic_ledger_check": "UNCHANGED_EXACT_MATCH"}
+            "social_runtime_input": {"source_revision": CONCERT_SOCIAL_MIGRATION_SOURCE,
+                "path": CONCERT_SOCIAL_MIGRATION_PATH, "bytes": len(raw51), "sha384": CONCERT_SOCIAL_MIGRATION_SHA384},
+            "actual_runtime_directory": str(directory), "actual_all_40_disk_checksums": "MATCH_EXPECTED",
+            "expected_migrations": 40, "expected_manifest_sha384": concert, "generic_ledger_check": "UNCHANGED_EXACT_MATCH"}
     return bound, receipt
 
 
