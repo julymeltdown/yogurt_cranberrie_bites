@@ -14,6 +14,7 @@ use axum::{
 };
 use std::sync::{Arc, OnceLock};
 use uuid::Uuid;
+mod disclosure;
 
 pub fn router(state: Arc<AppState>) -> Router {
     Router::new()
@@ -373,7 +374,17 @@ async fn dispatch(
     {
         return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");
     }
-    let mut response = Response::new(Body::from(result.body));
+    let original = match access.rpc_deadline() {
+        Ok(value) => value,
+        Err(_) => return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED"),
+    };
+    let body = match disclosure::DisclosureBody::new(
+        Body::from(result.body), result.content_expires_unix_micros, original,
+    ) {
+        Ok(body) => Body::new(body),
+        Err(_) => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
+    };
+    let mut response = Response::new(body);
     *response.status_mut() = status;
     response.headers_mut().insert(
         header::CONTENT_TYPE,

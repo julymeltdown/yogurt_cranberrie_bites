@@ -85,6 +85,7 @@ impl ProductOwner for ScopedProductOwner {
             content_type: representation.content_type,
             body: representation.body,
             delivery: Some(delivery),
+            content_expires_unix_micros: scope.disclosure_ceiling()?.expires_micros(),
         });
         response.extensions_mut().insert(token);
         response.metadata_mut().insert(

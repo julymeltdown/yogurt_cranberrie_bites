@@ -24,6 +24,10 @@ message ProductResponse {
   string content_type = 2;
   bytes body = 3;
   ResponseDelivery delivery = 4; // Internal only; NEVER serialize into HTTP JSON/headers.
+  // Actual root-wide disclosure ceiling, clipped by every retained private
+  // child. Gateway checks it before each HTTP data frame, using the original
+  // access monotonic stop as an additional ceiling. Zero is not authority.
+  int64 content_expires_unix_micros = 5;
 }
 
 // Completion is a separate bounded system operation, never renewed content

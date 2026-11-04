@@ -75,6 +75,7 @@ dependencies = [
  "gateway-domain",
  "hmac",
  "http",
+ "http-body",
  "http-body-util",
  "image",
  "jsonwebtoken",
