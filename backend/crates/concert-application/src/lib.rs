@@ -190,3 +190,5 @@ pub mod intro;
 pub mod event_lifecycle;
 
 pub mod mural;
+
+pub mod age_verification;

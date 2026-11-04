@@ -1,4 +1,5 @@
 //! Actual owned PostgreSQL, with explicitly synthetic transaction-locked authority/verifier.
+pub use concert_service::{adapters, product_rpc, relationship};
 pub use concert_application::{age_policy, identity};
 pub use concert_service::adapters::out::repository;
 mod age_claims_support;
@@ -331,7 +332,7 @@ async fn provider_unavailable_does_not_erase_valid_claim() -> anyhow::Result<()>
         None,
         f.clock.clone(),
         keys(),
-    );
+    ).with_claim_trust(trust::ClaimTrust::new(&[("fixture", "fixture-v1")])?);
     assert!(matches!(
         missing.start(f.c, Uuid::new_v4(), RETURN_TARGET).await,
         Err(Error::ProviderUnavailable)
@@ -535,7 +536,7 @@ async fn durable_restart_verify() -> anyhow::Result<()> {
         None,
         clock,
         keys(),
-    );
+    ).with_claim_trust(trust::ClaimTrust::new(&[("fixture", "fixture-v1")])?);
     let c = restart_context();
     let status = s.status(c).await?;
     assert_eq!(status.status, AgeStatus::Verified);
