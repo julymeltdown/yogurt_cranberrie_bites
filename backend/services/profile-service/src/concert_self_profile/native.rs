@@ -185,8 +185,8 @@ async fn native_prepare_preserves_visibility_and_blocks_legacy_writes() -> anyho
         // owner admission; actual Check/Track RPC qualification is separate.
         operation.register(&pool, deadline()).await?;
         let content = update_in(&mut effect, actor, version, command.profile().unwrap()).await?;
-        // A different actual connection cannot forge the original effect's
-        // receipt, even when handed the exact command and proposed content.
+        // Use the foreign connection's visible version, so MVCC hiding the new
+        // version cannot alone explain refusal. Native identity still differs.
         let mut foreign = EffectConnection::open(
             &pool,
             operation.identity.producer_instance,
@@ -194,11 +194,22 @@ async fn native_prepare_preserves_visibility_and_blocks_legacy_writes() -> anyho
             deadline(),
         )
         .await?;
-        assert!(
-            receipt_in(&mut foreign, id, actor, event, command_hash, &content)
-                .await
-                .is_err()
-        );
+        let foreign_visible = Content::new(
+            actor,
+            "Current".into(),
+            Some("Existing bio".into()),
+            version,
+        )?;
+        assert!(receipt_in(
+            &mut foreign,
+            id,
+            actor,
+            event,
+            command_hash,
+            &foreign_visible
+        )
+        .await
+        .is_err());
         foreign.rollback().await?;
         receipt_in(&mut effect, id, actor, event, command_hash, &content).await?;
         effect.prepare(id).await?;
