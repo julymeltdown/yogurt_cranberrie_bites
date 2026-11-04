@@ -377,7 +377,9 @@ Native log SHA-256:
 
 Developer validation is complete for this bounded continuation. Direct committed
 handoff routes to the named Root publisher without a king/SL review or ACK gate;
-the developer must still verify fresh remote delivery. The broad historical goal
+the canonical publisher receipt establishes remote delivery under the latest
+human override; no consumer fetch/readback, ACK or proof-only commit is required.
+The broad historical goal
 remains truthfully BLOCKED, not reset or falsely completed. Moderator/evidence
 routes, operator authority, public Gateway delivery, IN03 and whole BE36/BE38
 remain outside this scoped qualification.
@@ -427,8 +429,105 @@ prove an actual Auth revocation writer waits for the read's authenticated Root
 terminal before a subsequent read is denied. Seven earlier native regressions
 remain in that binary.
 
-Status: implementation authored; compilation, native execution and current
-startup/admission regression checks NOT_RUN. Relevant functional validation,
-documentation, committed direct Root handoff and developer-owned fixes remain
-required. Moderator detail/evidence, operator routes, public Gateway/IN03 and
-whole BE36/BE38 acceptance are not established by this slice.
+Status: developer functional validation PASS for this bounded slice. Source
+`e8968df79c957679dce483542c201d98740963f8` implements the eight-file extension;
+`34c3dce69e9c1a7744b147ac615a6dcf6d28a401` rejects a bare trailing `?` before
+owner acquisition, matching the existing native resolver's nonempty query rule.
+Both descend from the published base above. No Rust changed after the execution
+pin. Committed handoff goes directly to the named Root publisher; its canonical
+publication receipt establishes remote delivery. Moderator detail/evidence,
+operator routes, public Gateway/IN03 and whole BE36/BE38 acceptance remain open.
+
+### Functional qualification and retained failed attempt
+
+The first bounded compile on source `34c3dce6`, offer
+`BE36-OWN-REPORTS-MEDIA-202611041621Z`, exited 101 after 26.665 seconds.
+The cached Auth build script expected `account_deletion.proto`, absent from
+this pinned source; the pinned own-worktree Auth build script contains no such
+reference. No product test ran. ACCEPT was `2026-11-04T16:22:12.148041Z`, target
+release with zero handles `16:22:41.057928Z`, FULL `16:22:41.366208Z`.
+Retained evidence: `/private/tmp/mcr-own-reports-bbaq1mnv`, resource report
+SHA-256 `82e2074855b4115aec038a1e1019a3e1ea8b3cac77bbe54b32320939f15eb824`.
+Positive target bytes were 223,113,216, NEW peak 229,781,504 and whole peak
+4,691,202,048. No executable copy or PostgreSQL fixture ran; no target reentry
+occurred under that offer. This failure remains charged and is not a failed
+functional case or retroactively approved workload.
+
+The subsequent 16:26 offer was refused before ACCEPT because free space was
+15,909,011,456 bytes, below 16 GiB. The 16:47 offer's whole ceiling was explicitly
+amended from 6 to 7 GiB after measuring the full 1,290,579,968-byte worktree;
+the NEW allowance remained 1 GiB. Neither preflight refusal started workload.
+Small numeric receipts remain in `/private/tmp/mcr-own-reports-retry-7std9xp2`.
+No full-checkout snapshot or bulk archive was made.
+
+Accepted offer: `BE36-OWN-REPORTS-FOUR-SCRIPT-MEDIA-202611041647Z-WHOLE7GiB`.
+ACCEPT `2026-11-04T16:53:19.857737Z`; free space 29,228,240,896 bytes.
+The explicit resource grant refreshed timestamps only on this worktree's Auth,
+Concert, Notification and api-gateway `build.rs`. SHA-256, size, mode, UID/GID,
+device and inode remained identical; before/after timestamps are recorded in
+`four-script-metadata-refresh.json`. No content edit, rebase or target deletion
+was used. An independent guardian preceded the sole Cargo command:
+
+```text
+cargo +1.88.0 test --locked --offline -p concert-service --test report_product_admission --test report_product_native --test report_runtime --no-run --message-format=json -j 2
+```
+
+Both Rustflags variables and compiler wrappers were unset, dev/test debug info
+was 0, incremental was disabled, and explicit dev/test package overrides used
+optimization level 2 for `api-contracts` and `contracts-build`. The exact argument
+vector is in `build-report.json`. Build exit 0, 47.459 seconds; positive target
+output 640,126,976 bytes. Final link size plus projected copies was checked before
+freeze, followed by a post-freeze cap check before copied execution.
+
+Exactly three Cargo JSON artifacts were frozen outside the target with 2,395
+source/helper/SQL/proto/contract hashes, seven runtime binary hashes and retained
+Cargo JSON. Pin: `/private/tmp/mcr-report-product-frozen-6rfc9b_j/pin.json`,
+SHA-256 `6858a8aca6c7cb21ad02e37ebcd42222f98b2dd4581f293ea9f5b85ae1e059e3`.
+Original source/runtime/executable pins matched before execution.
+
+| Copied executable | Bytes | Cases passed | Exit | Seconds |
+| --- | ---: | ---: | ---: | ---: |
+| `report_product_admission` | 7,723,056 | 7 | 0 | 0.516 |
+| `report_runtime` | 7,754,976 | 7 | 0 | 0.403 |
+| `report_product_native` | 45,145,088 | 9 | 0 | 9.705 |
+
+Each copy ran `--nocapture --test-threads=1`; native additionally used `--ignored`.
+Target release with compiler complete and zero handles was
+`2026-11-04T16:54:11.509878Z`, before every copied executable and PostgreSQL
+fixture. No target access followed. The released MEDIA slot was handed directly
+to the queued Party developer, with Wall next, without waiting for documentation,
+publication or coordinator acknowledgment.
+
+The two new native cases passed actual caller isolation, safe status projection,
+pagination and caller/filter/limit cursor binding with no read command effects;
+and actual Auth writer blocking through the authenticated Root read terminal,
+followed by denial after revocation. The seven retained create/replay/quota/
+rollback/authority cases also passed. Admission and recording startup checks
+confirm frame/dispatch behavior; they do not supply successful authority proof.
+
+One private marked PostgreSQL 16.14 cluster served exactly the owned Auth,
+Friend and Concert test databases. Actual migration ledgers matched 18/18/43
+source files. A real postmaster restart preserved witness, receipt and outbox
+digests, migration ledgers stayed unchanged and native witnesses were COMMITTED.
+Prepared transactions before teardown: **0**. All six captured PostgreSQL PIDs
+were absent and exact root `/private/tmp/mcr-pg-dlw1s976` was removed. Teardown
+itself does not certify native settlement.
+
+Actual FULL was `2026-11-04T16:54:25.872622Z`, after guardian reap, 14.363 seconds
+after target release. Carry 5,982,244,864 bytes includes all historical failures,
+the nonshrinking Git baseline and full current worktree. NEW peak 798,146,560
+bytes was below 1 GiB; whole peak 6,780,391,424 was below the explicit 7 GiB.
+Outside-target peak 158,019,584 bytes was below 384 MiB; maximum owned processes
+21 was below both phase limits. Completion free space: 29,108,023,296 bytes.
+No resource remains held; no cutoff fired and no target reentry is permitted.
+
+Native report: `/private/tmp/mcr-report-product-frozen-6rfc9b_j/native-report.json`,
+SHA-256 `953f06dc615d19c31a578df4bf3e59f9a03f90f014490dc150d39e757257a405`.
+Resource report: `/private/tmp/mcr-own-reports-retry-7std9xp2/resource-report.json`,
+SHA-256 `6f04260ea4fb112a947fdeaa3341fa010e718267e812d40122a7d513d720bcd9`.
+The pin includes executable hashes; the native report includes exact commands,
+exit codes, log hashes, restart digests, migration counts and cleanup evidence.
+The broad existing BE36/BE38 goal remains truthfully unfinished/BLOCKED with
+historical metadata; it was not duplicated, reset or falsely completed. Latest
+human no-review/publication-receipt rules override its obsolete review language.
+Performance qualification remains deferred.

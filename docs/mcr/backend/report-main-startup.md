@@ -228,7 +228,31 @@ The owned overlay transport check now includes the original signed Own query
 and verifies both Report calls use the existing Report owner while unrelated
 frames delegate unchanged. Actual private read authorization, caller isolation,
 cursor binding and held Auth revocation are covered by the two new native
-Report cases, pending execution. See `report-product-production.md` for scope,
-source provenance and eventual functional qualification. The historical seven
-configuration/transport results do not certify this new behavior until rerun on
-the changed source; no performance or public Gateway acceptance is implied.
+Report cases. Both passed in the current functional qualification on
+`34c3dce69e9c1a7744b147ac615a6dcf6d28a401`, descending from implementation
+`e8968df79c957679dce483542c201d98740963f8` and the published base above.
+
+The updated seven configuration/transport checks were rebuilt and rerun from
+the exact frozen copy, exit 0, 0.403 seconds, including both typed Report routes
+and unchanged delegation of unrelated operations. The same round passed seven
+signed admission and nine actual native cases. Recording transport refusals
+remain dispatch evidence; the native cases supply the actual owner/settlement
+evidence. No Rust changed after execution.
+
+Frozen runtime executable: 7,754,976 bytes, SHA-256
+`bff09e0a097e332940207247bd89b299e5395b53f9153ce4a67c3098c2e81605`.
+Pin: `/private/tmp/mcr-report-product-frozen-6rfc9b_j/pin.json`, SHA-256
+`6858a8aca6c7cb21ad02e37ebcd42222f98b2dd4581f293ea9f5b85ae1e059e3`.
+Runtime log SHA-256:
+`8c78358c32387cbed8836b26085f68e19b1f693ec5950b1f24902341ac586143`.
+The copied command was `report_runtime --nocapture --test-threads=1`, after
+unconditional zero-handle target release at `2026-11-04T16:54:11.509878Z`.
+All private PostgreSQL resources were removed, prepared transactions were zero,
+and FULL release completed at `16:54:25.872622Z`. No target reentry followed.
+
+See `report-product-production.md` for exact build/provenance, retained earlier
+cached-script failure, bounded resource accounting, current 23-case results and
+native restart/cleanup evidence. Direct committed handoff uses Root's canonical
+publisher receipt without a consumer proof or king/SL acknowledgment gate.
+Positive composed-service/public Gateway, IN03 and whole BE36/BE38 acceptance
+remain open; performance qualification is deferred.
