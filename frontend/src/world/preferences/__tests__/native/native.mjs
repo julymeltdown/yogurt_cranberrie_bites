@@ -34,6 +34,7 @@ await mkdir(output)
 const temporary = await mkdtemp('/private/tmp/mcr-world-preferences-native-'), profile = resolve(temporary, 'profile')
 // Keep browser/framework default temporary artifacts inside the monitored owned tree.
 process.env.TMPDIR = temporary; process.env.TMP = temporary; process.env.TEMP = temporary
+let minimumFreeBytes = report.preflight.availableBytes
 let server, context, peak = 0, monitorTimer, monitorBusy = false, monitorFlight = Promise.resolve(), resourceFailure = null
 async function budget() {
  const durable = await bytes(resolve(root, 'docs/mcr/evidence/world-runtime-preferences')), working = await bytes(temporary), link = await lstat(resolve(frontend, 'node_modules'))
@@ -41,7 +42,8 @@ async function budget() {
  peak = Math.max(peak, durable + working + linkBytes)
  assert(durable <= 40 * 1024 ** 2, 'Accumulated durable cap40MiB')
  assert(durable + working + linkBytes <= .18 * 1024 ** 3, 'Early whole-workflow stop0.18GiB before hard0.2GiB')
- const disk = await statfs(root); assert(disk.bavail * disk.bsize >= 8 * 1024 ** 3, '8GiB stop floor')
+ const disk = await statfs(root), available = disk.bavail * disk.bsize; minimumFreeBytes = Math.min(minimumFreeBytes, available)
+ assert(available >= 8 * 1024 ** 3, '8GiB stop floor')
 }
 const state = page => page.evaluate(() => window.__WORLD_PREFERENCES_ROOT__.state())
 const engine = page => page.evaluate(() => window.__WORLD_PREFERENCES_ROOT__.engine())
@@ -70,6 +72,7 @@ async function measure(page, ms) {
   tweenDelta: after.tweenValue - before.tweenValue, before, after }
 }
 try {
+ await budget() // Record even failures that settle before the first periodic sample.
  monitorTimer = setInterval(() => {
   if (monitorBusy || resourceFailure) return
   monitorBusy = true
@@ -77,7 +80,9 @@ try {
    resourceFailure = String(error); await Promise.allSettled([context?.close(), server?.close()])
   }).finally(() => { monitorBusy = false })
  }, 150)
- const paths = execFileSync('git', ['ls-files', 'frontend/src/world', 'frontend/src/features/theme', 'frontend/src/features/settings', 'frontend/src/features/me', 'frontend/src/app/account-entry', 'frontend/src/app/world-panels', 'frontend/src/app/ports.ts', 'frontend/src/entities/avatar/character-source-pack.json', 'contracts/fixtures/core', 'contracts/fixtures/realtime', 'contracts/realtime/v1', 'frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts'], { cwd: root, encoding: 'utf8' }).trim().split('\n')
+ const paths = execFileSync('git', ['ls-files', 'frontend/src/world', 'frontend/src/features/theme', 'frontend/src/features/settings', 'frontend/src/features/me', 'frontend/src/app/account-entry', 'frontend/src/app/world-panels', 'frontend/src/app/ports.ts', 'frontend/src/entities/avatar/character-source-pack.json', 'contracts/fixtures/core', 'contracts/fixtures/realtime', 'contracts/realtime/v1', 'frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts'], { cwd: root, encoding: 'utf8' }).trim().split('\n').filter(path => !path.includes('/evidence/') && /\.(?:[cm]?[jt]sx?|json|css|html|proto)$/.test(path))
+ // Supplementary tracked source/contract pins; the committed HEAD pins the complete tree.
+ // Archived screenshot evidence can be tracked but intentionally unmaterialized.
  for (const path of paths) report.pins[path] = createHash('sha256').update(await readFile(resolve(root, path))).digest('hex')
  context = await chromium.launchPersistentContext(profile, { channel: 'chrome', headless: true, reducedMotion: 'no-preference', viewport: { width: 390, height: 844 } })
  context.on('page', page => page.on('pageerror', e => report.errors.push(e.message)))
@@ -168,6 +173,7 @@ finally {
  report.cleanup = { browserClosed: closed[0].status === 'fulfilled', serverClosed: closed[1].status === 'fulfilled', temporaryRemoved: true }
  if (closed.some(x => x.status === 'rejected')) { report.status = 'FAIL'; process.exitCode = 1 }
  report.peakMeasuredWorkflowBytes = peak
+ report.minimumFreeBytes = minimumFreeBytes
  report.completedAtUTC = new Date().toISOString(); report.completedAtKST = kst(new Date())
  report.resourceLimits = { expectedMiB: 160, earlyStopGiB: .18, hardGiB: .2, accumulatedDurableMiB: 40, launchFreeGiB: 16, stopFreeGiB: 8, borrowedLinkIncluded: true }
  await writeFile(resolve(output, 'report.json'), JSON.stringify(report, null, 2) + '\n')

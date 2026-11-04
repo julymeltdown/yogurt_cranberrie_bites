@@ -164,3 +164,30 @@ matrix is requested. Browser/server/profile/cache will be removed before the
 application build. All failures, source pins, original UTC/KST capture times,
 commands, limits and cleanup will be retained. There is no standalone adopter
 native run and no duplicate 206-test producer run.
+
+
+## First native attempt and retained failure
+
+The final published source `9e7952fc` was freshly fetched and independently
+verified. All 26 producer postimages and nine producer/adopter/integration
+ancestry checks passed; ordinary-merged worker `9095dc51` had an identical
+tracked tree. The actual motion-only stylesheet and production import were
+read, and Root source-04 recorded 35 affected tests, full types, lint and
+syntax checks passing.
+
+The first named native attempt exited 1 before creating Chrome, Vite or a build.
+Its supplemental source-pin glob included a tracked historical screenshot that
+is deliberately absent from this checkout, producing ENOENT. Original
+`native-01/report.json`, exact driver output and a separate qualification note
+are preserved. There were zero captures. The failure settled before the first
+150-ms monitor sample: the original peak field of zero is NOT_MEASURED, not
+measured zero usage. Post-cleanup evidence was 40,960 bytes; with no child runtime
+started and an empty private temporary tree, the qualification note records a
+conservative whole-workflow bound below 1 MiB. Own temporary path and dependency
+link were removed and the allocation was fully released.
+
+The owned harness fix excludes archived screenshot evidence and pins tracked
+source/contract formats, with the complete committed tree still identified by
+HEAD. An initial budget sample now precedes pinning, and minimum available disk
+is retained. No product code, fixture behavior, assertion or acceptance threshold
+was weakened. The corrected native attempt requires a fresh allocation.
