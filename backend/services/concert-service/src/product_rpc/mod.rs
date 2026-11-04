@@ -22,6 +22,8 @@ pub mod child_settlement;
 mod owner_media;
 mod query;
 mod feature_admission;
+mod age_admission;
+pub use age_admission::AgeOperation;
 pub use feature_admission::IntroOperation;
 pub use query::CommandStatusQuery;
 pub mod root_read;
@@ -61,6 +63,7 @@ pub enum Operation {
     Social(crate::social_live::protocol::SocialOperation),
     Intro(IntroOperation),
     Notification(crate::notification_live::NotificationOperation),
+    Age(AgeOperation),
 }
 impl Operation {
     pub fn contract_id(self) -> &'static str {
@@ -85,6 +88,7 @@ impl Operation {
             Self::Social(operation) => operation.id(),
             Self::Intro(operation) => operation.id(),
             Self::Notification(operation) => operation.id(),
+            Self::Age(operation) => operation.id(),
         }
     }
 }
@@ -113,6 +117,9 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     }
     if let Ok(intro) = feature_admission::intro_route(event, method, target) {
         return Ok(Operation::Intro(intro));
+    }
+    if let Ok(age) = age_admission::route(event, method, target) {
+        return Ok(Operation::Age(age));
     }
     if let Ok(notification) =
         crate::notification_live::NotificationOperation::route(event, method, target)
@@ -319,6 +326,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if let Operation::Social(social) = operation {
         query::social_request(m, social)?;
     }
+    if let Operation::Age(age) = operation {
+        query::age_request(m, age)?;
+    }
     if matches!(operation, Operation::Intro(_) | Operation::Notification(_)) {
         feature_admission::request(m, operation)?;
     }
@@ -336,11 +346,12 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     );
     if matches!(
         operation,
-        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_)
+        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.
-        // Social additionally owns keyed bodyless DELETE; none are generic reads.
+        // Age owns its bodyless status and keyed POSTs. Social additionally owns
+        // keyed bodyless DELETE; none are generic reads.
     } else if mutation {
         canonical_uuid(&m.idempotency_key)?;
         let bodyless = matches!(

@@ -54,6 +54,7 @@ impl ProductOwner for OwnerMediaRuntime {
             Operation::Social(_)
             | Operation::Intro(_)
             | Operation::Notification(_)
+            | Operation::Age(_)
             | Operation::Feed
             | Operation::Post(_)
             | Operation::Comments(_)
