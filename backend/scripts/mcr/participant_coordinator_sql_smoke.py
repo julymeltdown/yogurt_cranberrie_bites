@@ -6,6 +6,7 @@ helper's revision and the exact migration manifest are included in the report.
 """
 from __future__ import annotations
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -20,6 +21,8 @@ import migration_smoke as migration
 
 DATABASE = "mcr_participant_coordinator_sql"
 NATIVE_TEST = "participant::live::coordinator_tests::native_guarded_coordinator_cas_rollback_and_decision_recovery"
+ENDPOINT_TEST = "participant::live::decision_endpoint_tests::native_decision_service_endpoint"
+CLIENT_TEST = "participant::live::decision_endpoint_tests::native_decision_service_client"
 
 
 def require(value, message):
@@ -141,6 +144,61 @@ def validate_binary(binary, receipt, repo):
     return pin
 
 
+def decision_endpoint_probe(cluster, binary, env, repo):
+    """Two external processes using the real handler and dedicated key helpers.
+
+    Node's built-in crypto derives public keys from fresh in-memory Ed25519 test
+    seeds. No new package, fallback key, production secret or key file is used.
+    """
+    node = shutil.which("node")
+    require(node is not None, "Node with built-in Ed25519 crypto required for endpoint probe")
+    seeds = [base64.b64encode(os.urandom(32)).decode() for _ in range(2)]
+    script = """const crypto=require('node:crypto');let input='';process.stdin.on('data',x=>input+=x);process.stdin.on('end',()=>{const keys=JSON.parse(input).map(seed=>{const key=crypto.createPrivateKey({key:Buffer.concat([Buffer.from('302e020100300506032b657004220420','hex'),Buffer.from(seed,'base64')]),format:'der',type:'pkcs8'});return crypto.createPublicKey(key).export({format:'der',type:'spki'}).subarray(-32).toString('base64')});process.stdout.write(JSON.stringify(keys))});"""
+    derived = subprocess.run([node, "-e", script], input=json.dumps(seeds), text=True,
+                             capture_output=True, check=True, timeout=5, env=cluster.env)
+    keys = json.loads(derived.stdout)
+    private_env = {**env, "ACTOR_DELEGATION_VERIFYING_KEYS": keys[0],
+                   "PROFILE_PARTICIPANT_DECISION_VERIFYING_KEYS": keys[1],
+                   "PROFILE_PARTICIPANT_DECISION_SIGNING_SEED": seeds[1],
+                   "MCR_PARTICIPANT_DECISION_PROFILE_TOKEN": uuid.uuid4().hex}
+    ready = cluster.root / "participant-decision-ready.json"
+    stop = cluster.root / "participant-decision-stop"
+    # Output stays in the private owned root; no key/token is logged.
+    log = cluster.root / "participant-decision-host.log"
+    fd = os.open(log, os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
+    process = None
+    with os.fdopen(fd, "w+") as output:
+        try:
+            process = subprocess.Popen([str(binary), "--ignored", "--exact", ENDPOINT_TEST, "--nocapture"],
+                                       env=private_env, cwd=repo, stdout=output, stderr=subprocess.STDOUT)
+            deadline = time.monotonic() + 5
+            while not ready.exists():
+                require(process.poll() is None, "actual decision endpoint failed before readiness")
+                require(time.monotonic() < deadline, "decision readiness exceeded bound")
+                time.sleep(0.025)
+            result = migration.execute([str(binary), "--ignored", "--exact", CLIENT_TEST, "--nocapture"],
+                                       env=private_env, phase="decision-client", cwd=repo, timeout=10)
+            require("1 passed; 0 failed; 0 ignored" in result.stdout, "exact decision client test required")
+            stop_fd = os.open(stop, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+            os.close(stop_fd)
+            require(process.wait(timeout=5) == 0, "decision endpoint did not stop successfully")
+            output.seek(0)
+            require("1 passed; 0 failed; 0 ignored" in output.read(), "exact decision host test required")
+            require(not ready.exists(), "endpoint readiness was not retired")
+            return {"state": "PASS", "host_test": ENDPOINT_TEST, "client_test": CLIENT_TEST,
+                    "checks": ["dedicated signed unknown query stays unresolved", "no-store exact query echo",
+                               "wrong workload credential denied", "foreign signed actor denied", "bounded clean endpoint shutdown"],
+                    "limitation": "separate actual handler/client processes; no real Profile prepare or owner store join"}
+        finally:
+            if process is not None and process.poll() is None:
+                process.terminate()
+                try:
+                    process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    process.kill()
+                    process.wait(timeout=5)
+
+
 def run(pg_bin, binary=None, receipt=None):
     backend = Path(__file__).resolve().parents[2]
     repo = backend.parent
@@ -148,7 +206,7 @@ def run(pg_bin, binary=None, receipt=None):
     pin = validate_binary(binary, receipt, repo) if binary is not None else None
     require(shutil.disk_usage(repo).free >= 8 * 1024**3, "at least 8GiB free required")
     cluster = migration.Cluster({name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS})
-    report = {"state": "FAIL", "scope": "0027 SQL-only native constraints; no Rust, guard or fullLive acceptance", "checks": {},
+    report = {"state": "FAIL", "scope": "Concert coordinator/native decision half plus SQL constraints; explicit Profile/eligibility fixtures; no full Live acceptance" if pin else "0027 SQL-only native constraints; no Rust, guard or full Live acceptance", "checks": {},
               "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip(),
               "driver_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "cluster_helper_sha256": hashlib.sha256(Path(migration.__file__).read_bytes()).hexdigest()}
@@ -177,6 +235,7 @@ def run(pg_bin, binary=None, receipt=None):
             require("1 passed; 0 failed; 0 ignored" in result.stdout, "exact native test did not pass")
             report["native_rust"] = {"test": NATIVE_TEST, "exit_code": result.returncode,
                                      "binary_sha256": pin["sha256"], "stdout": result.stdout}
+            report["decision_endpoint"] = decision_endpoint_probe(cluster, binary, env, repo)
         cluster.sql(DATABASE, "CREATE TABLE public.coordinator_sql_effect_probe(operation_id uuid PRIMARY KEY);")
 
         committed = Session(cluster)

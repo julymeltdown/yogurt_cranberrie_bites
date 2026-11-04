@@ -1,5 +1,4 @@
-//! Adapter over the actual sealed canonical owner scope. This file is staged
-//! for the guard owner's qualified SDK; it is not yet exported by live/mod.rs.
+//! Adapter over the actual sealed canonical owner scope and qualified SDK.
 //! It owns no Complete/finish_response path and never releases on Drop/error.
 use super::{
     coordinator::{CoordinatorAuthority, NativeTransaction, ParticipantProfileJournal},
@@ -53,7 +52,10 @@ impl BoundParticipantAuthority {
     pub fn scope(&self) -> &Arc<OwnerGuardScope> {
         &self.scope
     }
-    fn check_bound(&self, request: &VerifiedParticipantRequest) -> Result<(), AvatarError> {
+    pub(crate) fn check_bound(
+        &self,
+        request: &VerifiedParticipantRequest,
+    ) -> Result<(), AvatarError> {
         request.check().map_err(owner_error)?;
         self.request.check().map_err(owner_error)?;
         let parent = request.parent_authority().map_err(owner_error)?;

@@ -145,3 +145,27 @@ NOT_RUN. The persistent full Live goal remains active. Phase A validation does
 not certify these new paths. Required completion still includes implementation,
 meaningful native/public-route validation, committed non-force delivery,
 documentation and concrete fixes.
+
+## Next source checkpoint (not yet qualified)
+
+`live/service.rs` stages the live producer with concrete Auth/SELF clients, the
+actual CanonicalOwnerFence, Journal and a root-supplied delivery publisher. It
+acquires against the sealed original C03 context, publishes delivery before
+protected work, uses the canonical avatar effect fence, coordinates full Profile
+PATCH, and joins local snapshot -> fresh Profile -> final visibility gate. It
+attaches only the internal typed delivery capability and response-scope extension;
+it never certifies serialization or owner completion on return/error/Drop.
+`live/recovery.rs` stages a restartable worker over persisted original operations,
+using bounded terminal queries and keyset pagination so old unknown operations
+cannot starve newer settlements. These files remain unexported and NOT_RUN.
+
+The external decision endpoint fixture now uses the real guarded handler with
+explicit production-format dedicated keys, private PG ownership checks, loopback
+readiness, an owned stop marker and a bounded lifetime. The native harness will
+run it and its signed generated client in separate copied-binary processes.
+Additional native journal assertions cover recovery of the original binding,
+terminal receipt agreement/idempotency, settled visibility and stale snapshot
+refusal. These additions are NOT_RUN until the next allocated compile/native
+turn. Neither synthetic terminal metadata nor an endpoint fixture qualifies the
+actual canonical Profile producer. The SELF generated include now uses Prost's
+escaped filename `profile.self_.v1`, while the wire package stays `profile.self.v1`.

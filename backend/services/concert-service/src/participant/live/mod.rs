@@ -12,6 +12,9 @@ mod auth_tests;
 #[cfg(test)]
 mod coordinator_tests;
 
+#[cfg(test)]
+mod decision_endpoint_tests;
+
 use super::{context::VerifiedParticipantRequest, ports::CurrentAuth};
 use concert_application::avatar::AvatarError;
 use std::time::Duration;

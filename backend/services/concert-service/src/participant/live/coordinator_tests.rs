@@ -82,6 +82,8 @@ impl CoordinatorAuthority for FixtureAuthority {
 struct Captured {
     query: proto::ParticipantDecisionRequest,
     native: NativeTransaction,
+    request: VerifiedParticipantRequest,
+    effect: ExpectedProfileEffect,
 }
 struct Entry {
     pool: PgPool,
@@ -141,6 +143,8 @@ impl proto::concert_participant_service_server::ConcertParticipantService for En
         let effect = tx.expected_profile().clone();
         *self.captured.lock().unwrap() = Some(Captured {
             native: tx.native_transaction().clone(),
+            request: context.clone(),
+            effect: effect.clone(),
             query: proto::ParticipantDecisionRequest {
                 actor_id: context.key().user_id.uuid().to_string(),
                 event_id: context.key().event_id.uuid().to_string(),
@@ -237,7 +241,7 @@ async fn collected(response: axum::http::Response<tonic::body::Body>) -> (tonic:
     );
     (code, body.to_bytes().to_vec())
 }
-async fn owned_pool() -> anyhow::Result<PgPool> {
+pub(super) async fn owned_pool() -> anyhow::Result<PgPool> {
     let root = PathBuf::from(std::env::var("MCR_PARTICIPANT_COORDINATOR_ROOT")?);
     let info = std::fs::symlink_metadata(&root)?;
     anyhow::ensure!(
@@ -493,6 +497,152 @@ async fn native_guarded_coordinator_cas_rollback_and_decision_recovery() -> anyh
                     0
                 }
             );
+        }
+        let journal = ParticipantProfileJournal::for_fixture(pool.clone());
+        let original = journal
+            .recovery_operation(captured.request.request_id())
+            .await
+            .map_err(crate::participant::status)?;
+        assert_eq!(original.actor, user);
+        assert_eq!(original.binding.body_digest, captured.query.body_digest);
+        assert_eq!(
+            crate::adapters::out::relationship_authority::guarded::wire_binding_digest(
+                &original.binding
+            )?
+            .as_slice(),
+            captured.query.guard_binding_digest.as_slice()
+        );
+        assert_eq!(original.expected_profile.gid(), captured.effect.gid());
+        assert_eq!(original.expected_profile.digest(), captured.effect.digest());
+        let page = journal
+            .recovery_page(None)
+            .await
+            .map_err(crate::participant::status)?;
+        if mode == "stale" {
+            assert!(page.is_empty(), "stale CAS never dispatched PrepareUpdate");
+            journal
+                .ensure_visible(&captured.request, None)
+                .await
+                .map_err(crate::participant::status)?;
+        } else {
+            assert_eq!(page.len(), 1);
+            assert_eq!(page[0].1, captured.request.request_id());
+            assert!(journal
+                .recovery_page(Some(page[0]))
+                .await
+                .map_err(crate::participant::status)?
+                .is_empty());
+            assert_eq!(
+                journal.ensure_visible(&captured.request, None).await,
+                Err(AvatarError::Unavailable)
+            );
+            // Explicitly synthetic canonical Profile terminal metadata. These
+            // assertions qualify the journal gate/idempotency, not the real
+            // authenticated owner client or native Profile prepared operation.
+            let outcome = if mode == "commit" {
+                ProfileTerminalOutcome::Committed
+            } else {
+                ProfileTerminalOutcome::Aborted
+            };
+            let opposite = if mode == "commit" {
+                ProfileTerminalOutcome::Aborted
+            } else {
+                ProfileTerminalOutcome::Committed
+            };
+            let fixture_native = NativeTransaction {
+                system_identifier: "9999".into(),
+                database_oid: 9999,
+                full_xid: "9999".into(),
+                backend_pid: 9999,
+                backend_started: chrono::Utc::now(),
+            };
+            assert!(ProfileTerminalReceipt::from_owner_response(
+                captured.request.request_id(),
+                &captured.effect,
+                "foreign-gid",
+                captured.effect.digest(),
+                fixture_native.clone(),
+                outcome
+            )
+            .is_err());
+            let wrong = ProfileTerminalReceipt::from_owner_response(
+                captured.request.request_id(),
+                &captured.effect,
+                captured.effect.gid(),
+                captured.effect.digest(),
+                fixture_native.clone(),
+                opposite,
+            )
+            .map_err(crate::participant::status)?;
+            assert_eq!(
+                journal.record_terminal(&wrong).await,
+                Err(AvatarError::Unavailable)
+            );
+            let terminal = ProfileTerminalReceipt::from_owner_response(
+                captured.request.request_id(),
+                &captured.effect,
+                captured.effect.gid(),
+                captured.effect.digest(),
+                fixture_native.clone(),
+                outcome,
+            )
+            .map_err(crate::participant::status)?;
+            assert_eq!(
+                terminal.outcome() == ProfileTerminalOutcome::Committed,
+                mode == "commit"
+            );
+            journal
+                .record_terminal(&terminal)
+                .await
+                .map_err(crate::participant::status)?;
+            journal
+                .record_terminal(&terminal)
+                .await
+                .map_err(crate::participant::status)?;
+            let mut foreign_native = fixture_native;
+            foreign_native.backend_pid += 1;
+            let rebound = ProfileTerminalReceipt::from_owner_response(
+                captured.request.request_id(),
+                &captured.effect,
+                captured.effect.gid(),
+                captured.effect.digest(),
+                foreign_native,
+                outcome,
+            )
+            .map_err(crate::participant::status)?;
+            assert_eq!(
+                journal.record_terminal(&rebound).await,
+                Err(AvatarError::Unavailable)
+            );
+            assert!(journal
+                .recovery_page(None)
+                .await
+                .map_err(crate::participant::status)?
+                .is_empty());
+            journal
+                .ensure_visible(&captured.request, Some(Revision::new(revision)?))
+                .await
+                .map_err(crate::participant::status)?;
+            if mode == "commit" {
+                assert_eq!(
+                    journal
+                        .ensure_visible(&captured.request, Some(Revision::new(expected)?))
+                        .await,
+                    Err(AvatarError::Unavailable),
+                    "a settled later Profile cannot join an old participant snapshot"
+                );
+            }
+        }
+        if mode == "rollback" {
+            tokio::time::sleep(Duration::from_millis(1850)).await;
+            assert!(captured.request.check().is_err());
+            // Restoring the old operation after expiry does not produce a fresh
+            // VerifiedParticipantRequest or authorize another mutation/read.
+            let expired = journal
+                .recovery_operation(captured.request.request_id())
+                .await
+                .map_err(crate::participant::status)?;
+            assert_eq!(expired.binding, original.binding);
         }
     }
     pool.close().await;

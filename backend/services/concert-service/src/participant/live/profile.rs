@@ -24,7 +24,7 @@ use tonic::{service::interceptor::InterceptedService, transport::Channel, Respon
 use uuid::Uuid;
 
 pub mod proto {
-    tonic::include_proto!("profile.self.v1");
+    tonic::include_proto!("profile.self_.v1");
 }
 type Transport =
     InterceptedService<ActorDelegationClient<Channel>, ServiceIdentityClientInterceptor>;

@@ -87,6 +87,9 @@ pub(crate) struct ProfileTerminalReceipt {
     outcome: ProfileTerminalOutcome,
 }
 impl ProfileTerminalReceipt {
+    pub(crate) fn outcome(&self) -> ProfileTerminalOutcome {
+        self.outcome
+    }
     /// The owning client calls this ONLY after authenticating and validating the
     /// bounded canonical Profile response. No HTTP/request field supplies it.
     pub(crate) fn from_owner_response(
@@ -248,6 +251,7 @@ pub(crate) struct RecoveryOperation {
     pub binding: lease::GuardBinding,
     pub expected_profile: ExpectedProfileEffect,
 }
+pub(crate) type RecoveryCursor = (DateTime<Utc>, Uuid);
 pub struct ParticipantProfileTransaction {
     tx: Transaction<'static, Postgres>,
     pool: PgPool,
@@ -258,6 +262,18 @@ pub struct ParticipantProfileTransaction {
     preferences: Option<Preferences>,
 }
 impl ParticipantProfileJournal {
+    /// Keyset pagination gives unresolved old operations bounded retries without
+    /// starving newer ones. Missing/timeout outcomes never manufacture ABORT.
+    pub(crate) async fn recovery_page(
+        &self,
+        after: Option<RecoveryCursor>,
+    ) -> Result<Vec<RecoveryCursor>, AvatarError> {
+        let (time, operation) = after.map_or((None, None), |(time, operation)| {
+            (Some(time), Some(operation))
+        });
+        sqlx::query_as("select registered_at,operation_id from public.concert_participant_profile_operations op where (op.decision='COMMIT' or exists(select 1 from public.concert_participant_profile_prepare_attempts a where a.operation_id=op.operation_id)) and not exists(select 1 from public.concert_participant_profile_terminal_receipts r where r.operation_id=op.operation_id) and ($1::timestamptz is null or (registered_at,operation_id)>($1,$2::uuid)) order by registered_at,operation_id limit 16")
+            .bind(time).bind(operation).fetch_all(&self.pool).await.map_err(unavailable)
+    }
     /// Runtime must supply the actual validated deployed release and isolated
     /// Concert database with migration 0027. A signed client digest is not enough.
     pub fn from_product(
