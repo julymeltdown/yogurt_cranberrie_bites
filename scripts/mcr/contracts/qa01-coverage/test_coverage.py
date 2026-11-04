@@ -193,5 +193,70 @@ class C18NestedCatalogTests(unittest.TestCase):
                 coverage.verify_catalog([{"file": "wall-tools-b/alias.json"}], ["wall-tools-b/alias.json"], "domain")
 
 
+class C05NestedMotionCatalogTests(unittest.TestCase):
+    def test_published_five_motion_files_have_exact_inventory(self):
+        rows = coverage.read(ROOT / "contracts/fixtures/realtime/index.json")
+        files = [p.relative_to(ROOT / "contracts/fixtures/realtime").as_posix()
+                 for p in (ROOT / "contracts/fixtures/realtime").rglob("*.json") if p.name != "index.json"]
+        expected = {"motion-v1/" + name + ".json" for name in
+                    ("vectors", "negotiated", "unsupported-version", "null-version", "boolean-version")}
+        self.assertEqual({r["file"] for r in rows if r["file"].startswith("motion-v1/")}, expected)
+        prefix = "contracts/fixtures/realtime"
+        directories = {prefix, prefix + "/motion-v1"}
+        extracted = [Path(p).relative_to(prefix).as_posix() for p in map(coverage.relative, coverage.fixture_paths())
+                     if str(Path(p).parent) in directories and Path(p).name != "index.json"]
+        self.assertEqual(set(extracted), set(files))
+        coverage.verify_catalog(rows, files, "realtime")
+        for missing in expected:
+            with self.subTest(missing=missing), self.assertRaisesRegex(ValueError, "unindexed/missing"):
+                coverage.verify_catalog(rows, [name for name in files if name != missing], "realtime")
+        with self.assertRaisesRegex(ValueError, "unindexed/missing"):
+            coverage.verify_catalog(rows, files + ["motion-v1/unindexed.json"], "realtime")
+
+    def test_motion_paths_preserve_traversal_depth_and_family_guards(self):
+        for name in ("../outside.json", "/absolute.json", "motion-v1/../outside.json",
+                     "motion-v1//vectors.json", "motion-v1/./vectors.json", "motion-v1/subdir/a.json",
+                     "unknown/a.json", "motion-v1/a\\b.json"):
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, "unsafe"):
+                coverage.verify_catalog([{"file": name}], [name], "realtime")
+        for family in ("assets", "core", "domain", "test"):
+            with self.subTest(family=family), self.assertRaisesRegex(ValueError, "unsafe"):
+                coverage.verify_catalog([{"file": "motion-v1/vectors.json"}], ["motion-v1/vectors.json"], family)
+
+    def test_motion_symlink_alias_still_fails_closed(self):
+        import tempfile
+        with tempfile.TemporaryDirectory(prefix="mcr-c05-catalog-") as directory:
+            root = Path(directory); folder = root / "contracts/fixtures/realtime/motion-v1"
+            folder.mkdir(parents=True)
+            (root / "target.json").write_text("{}")
+            (folder / "alias.json").symlink_to(root / "target.json")
+            with patch.object(coverage, "ROOT", root), self.assertRaisesRegex(ValueError, "unsafe"):
+                coverage.verify_catalog([{"file": "motion-v1/alias.json"}], ["motion-v1/alias.json"], "realtime")
+
+    def test_dispatch_invokes_published_vector_validator_and_preserves_rejections(self):
+        from copy import deepcopy
+        modules = {f: coverage.load("c05_dispatch_" + f, "scripts/mcr/validate-" + f + ".py")
+                   for f in coverage.FAMILIES}
+        realtime = modules["realtime"]
+        path = "contracts/fixtures/realtime/motion-v1/vectors.json"
+        vector = coverage.read(ROOT / path)
+        indexes = {"core": [], "domain": [], "realtime": [{"file": "motion-v1/vectors.json", "kind": "motion-vectors"}]}
+        original = realtime.validate_motion_vectors
+        class Validated(Exception): pass
+        def validate_then_stop(value):
+            original(value)
+            raise Validated()
+        with patch.object(realtime, "validate_motion_vectors", side_effect=validate_then_stop) as call:
+            with self.assertRaises(Validated):
+                coverage.fixture_checks(modules, indexes, {path: vector}, [])
+            call.assert_called_once_with(vector)
+        broken = deepcopy(vector); broken["geometryHash"] = "invalid"
+        with self.assertRaisesRegex(realtime.WireError, "motion geometry mismatch"):
+            coverage.fixture_checks(modules, indexes, {path: broken}, [])
+        indexes["realtime"][0]["kind"] = "unknown-motion-kind"
+        with self.assertRaisesRegex(ValueError, "unknown realtime fixture kind"):
+            coverage.fixture_checks(modules, indexes, {path: vector}, [])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
