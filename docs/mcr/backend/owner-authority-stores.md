@@ -1,6 +1,6 @@
 # BE-OWNER-AUTHORITY-STORES
 
-Status: IN_PROGRESS. Both owner libraries, production executables and dedicated tests compile; six pure tests pass. Friend owner native tests and physical PostgreSQL restart pass. Auth core native tests pass; its corrected generation fixture and final combined restart run remain open. This is an owner-store handoff, not combined producer or release acceptance.
+Status: INTEGRATED (assigned owner-store component). Implementation, native qualification, targeted peer review and committed evidence are complete. Canonical root/public-transport and producer acceptance remain separate.
 
 ## Assigned source and ownership
 
@@ -24,6 +24,24 @@ Auth 0017 adds tombstone-preserving per-user generations. Retained hard-delete U
 
 ## Validation and limits
 
-Dedicated `concert_authority` tests and support exist in both owners. The native runner checks exact clean source/artifact hashes, uses newly owned socket-only PG16 databases, canonical migrations and configured mTLS, and physically restarts PostgreSQL. The actual compiled consumer SDK 888cb6bd30846d891286b92a9a66e921e8d1ce78 was reconciled via published master 482d02c4ac63db4faff2926156e266ef216a4b5a before qualification. Friend native source d7cfc9a905ba10bb1a86f1d935e832ab96242655 passed five frozen tests with a real PG16.14 restart (postmaster 50599 to 51385), retained prepared GID/owner epoch, unresolved-scope quarantine and confirmed-scope recovery. Its private cluster was stopped and removed. Only unrelated Auth fixture and runner source had changed when this bounded Friend proof ran; all Friend and shared inputs were hash-verified. The canonical combined run and exact publication ancestry will be recorded after the final Auth fixture qualification. Combined producer routing, real product response-lifetime orchestration and release acceptance remain authority owner207's scope.
+Qualified source: `d4c604f03b4645b19cf6448526d4ff4577336f96`, including published peer master `5714aa8a3d04f564eee1fcda5332fa83082bf840`. Canonical lease contract revision `79f7bc870a909977ce79519503b79de2d5730f4f` remains unchanged. Machine-readable receipts and exact executable/contract/migration hashes are in [native-evidence.json](../../../backend/services/auth-service/tests/concert_authority_support/native-evidence.json).
+
+All 17 selected checks pass: eleven native tests, two pure policy/budget tests and four model/capability/ledger encoding tests. The canonical native runner passed all thirteen phases against a newly owned socket-only PG16.14 cluster with four isolated owner/producer databases and `max_prepared_transactions=64`. Both services' complete migration receipts were checked before and after the physical restart. Postmaster changed from 79634 to 81337. Both prepared GIDs and owner epochs survived; unresolved scopes remained fenced, then independently confirmed scope completion released them. All test main processes and the private cluster were stopped/removed. Build targets were explicitly released with zero handles before native execution.
+
+The RPC tests launch the actual frozen Auth/Friend main executables, with parity application configuration, real internal mTLS and the strict dedicated authority registry. Signed Concert acquisition succeeds; Post and Profile can Check using a valid private view; forged views and unauthorized completion fail. Profile remains unauthenticated on retained Auth GetSigningKeys and Friend ListFollowers. This proves the new registry did not widen those retained APIs. These are actual process/routing checks, not production deployment or readiness certification.
+
+The native store checks cover a real password/block mutation waiting on a prepared blocker, cumulative Enroll completing behind that waiting writer, actual producer COMMITTED plus same-transaction receipt and ABORTED outcomes, sealing and post-seal registration rejection, stable registration/completion retries, cancelled acquisition recovery with exact preparer identity, sixteen quarantines consuming capacity after expiry, and root-finish-only release. Auth checks actual refresh-store rotation/login stability, revocation increments, password/suspension/deletion increments, rollback and unrelated-user stability, fake ROTATED rejection, permanent hard-delete retirement, truncate capture and generation preservation through a permitted reinsert. Earlier fixture setup errors were corrected; only the final fully passing run is qualifying evidence. Read-only concurrency peer review found no actionable defects in acquisition cancellation, settlement/recovery ordering and generation semantics.
+
+Commands, each exit 0, with explicit existing-target leases and no new target/install:
+
+```sh
+CARGO_TARGET_DIR="$MCR_OWNER_BUILD_TARGET" CARGO_INCREMENTAL=0 CARGO_PROFILE_DEV_DEBUG=0 CARGO_PROFILE_TEST_DEBUG=0 rustup run 1.88.0 cargo test --locked --offline -j 2 -p auth-service -p friend-service --lib --bins --test concert_authority --no-run --message-format=json
+python3 backend/services/auth-service/tests/concert_authority_support/qualify.py --artifacts "$MCR_OWNER_EVIDENCE_DIR/artifacts.json" --pg-bin-dir "$MCR_OWNER_PG_BIN_DIR" --report "$MCR_OWNER_EVIDENCE_DIR/native-report.json"
+python3 scripts/mcr/check-plan.py
+```
+
+The pure integration artifacts ran with `--test-threads=1`; each owner library artifact ran filter `concert_authority::model::tests::`. All eight exact executable copies, source hashes and full native transcripts remain in the private frozen handoff; the committed evidence contains hashes without local paths. A stale cross-worktree contracts-build helper cache caused a protoc include-path shadow; only that package's files in the explicitly allocated target were invalidated, then the exact full build passed. No shared helper source was changed.
+
+The next required canonical flow is owned by authority implementation owner207: join these actual Auth/Friend services to the actual Concert root scope, Gateway/public transport, producer transaction receipts, response lifetime and restart behavior. Profile owner1fd consumes the frozen actual owner executables for its child-flow probe. This component does not claim those owners' acceptance or IN05 closure. Full production configuration, deployed credentials and release readiness remain NOT_RUN here.
 
 PostgreSQL source: [PREPARE TRANSACTION](https://www.postgresql.org/docs/16/sql-prepare-transaction.html) documents retained prepared locks and disk persistence; [transaction status and blocking functions](https://www.postgresql.org/docs/16/functions-info.html) support xid resolution and prepared-blocker observation. These mechanisms require the implemented durable recovery manager; expiry is not a cleanup proof.
