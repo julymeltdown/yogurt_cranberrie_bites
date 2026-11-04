@@ -114,8 +114,11 @@ source was inspected or checks rerun by this coordinator.
 Prepared isolated checkout `/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize`,
 NEW branch `codex/mcr-fe-mural-admin-regressions`, exact base
 `7ea11efdbdc1e2a447ece669a660c10f12b43463`; old branches/history preserved.
-Assignment sent; actual receiving goal/startup acceptance is pending. No
-incompatible goal may be paused, reset or falsely completed for reassignment.
+Actual receiving receipt: `get_goal` returned null, then NEW unbudgeted ACTIVE
+goal `1793756572` was created covering diagnosis, necessary bounded fixes,
+validation/docs, direct non-force publication and concrete fixes. Developer
+verified clean exact base and accepted the initial lease; bounded assignment
+status IN_PROGRESS. No incompatible goal was paused, reset or falsely completed.
 
 Exact initial exclusive writes only:
 
