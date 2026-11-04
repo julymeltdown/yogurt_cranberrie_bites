@@ -1,5 +1,4 @@
-//! SDK3 Gift-private child producer. This module does not enable product routes.
-//! GiftRuntime keeps its default-unavailable gate until joined qualification.
+//! SDK3 Gift-private child producer. Root owns route activation and settlement.
 mod locks;
 mod native;
 #[cfg(test)]
@@ -89,6 +88,9 @@ pub struct GiftPrivateRuntime {
     keys: Arc<PickupKeys>,
 }
 impl GiftPrivateRuntime {
+    pub(crate) fn pickup_keys(&self) -> Arc<PickupKeys> {
+        self.keys.clone()
+    }
     pub fn new(pool: PgPool, keys: Arc<PickupKeys>) -> Self {
         Self { pool, keys }
     }

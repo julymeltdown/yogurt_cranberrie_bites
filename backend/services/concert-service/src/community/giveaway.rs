@@ -23,6 +23,17 @@ pub struct GiftSettings {
 }
 #[async_trait]
 pub trait GiftAuthority: CommunityAuthority {
+    /// Optional owning adapter witness on this exact receipt transaction.
+    /// The default supplies no canonical committed-transaction evidence.
+    async fn completed_in(
+        &self,
+        _c: &mut PgConnection,
+        _scope: Scope,
+        _target: Uuid,
+        _receipt: &SafeReceipt,
+    ) -> Result<(), CommandError> {
+        Ok(())
+    }
     async fn settings_in(
         &self,
         c: &mut PgConnection,
@@ -363,6 +374,18 @@ impl<A> GiftProducer<'_, A> {
 }
 #[async_trait]
 impl<A: GiftAuthority> CommandProducer for GiftProducer<'_, A> {
+    async fn completed(
+        &self,
+        c: &mut PgConnection,
+        scope: Scope,
+        target: Uuid,
+        receipt: &SafeReceipt,
+    ) -> Result<(), CommandError> {
+        if scope != self.command.scope()? || target != self.command.target() {
+            return Err(CommandError::Denied);
+        }
+        self.authority.completed_in(c, scope, target, receipt).await
+    }
     async fn authorize(
         &self,
         c: &mut PgConnection,

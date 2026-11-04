@@ -1,6 +1,91 @@
 # BE-GIFTS-LIVE production producer
 
-Status: IN_PROGRESS. Business/status source compiles at `e9b761fb`; all 29 focused checks pass. Canonical-owner Gift business flows and live HTTP acceptance remain NOT_RUN.
+Status: IN_PROGRESS. The current functional continuation below is source-only pending its allocated validation round. Earlier checks are pinned historical evidence; canonical-owner Gift business flows and live HTTP acceptance remain NOT_RUN here.
+
+## Functional continuation — 2026-11-05
+
+Base: `30a9c07bb1c0b0a7d1bd76d6c85dfc072bcd3694`, branch
+`codex/mcr-be-gifts-functional`, retained isolated `be-gifts-live`
+checkout. Old Gift `12566f8f` and the returned QA09 branch are preserved.
+RootBE (`01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08`) is the publishing and
+shared-composition owner. The old BE41 persistent goal remains BLOCKED and
+incompatible; this is the explicitly authorized manual Gift assignment, not a
+new or falsely completed goal. The current human direction removes obsolete
+king/SL/QA review or acknowledgment gates; developer validation remains required.
+
+Exact Root grants add `src/config/gift_runtime.rs`, only the `pub mod
+gift_runtime;` export in `src/config/mod.rs`, migration
+`0060_gift_native_completion.sql`, and the `GiftAuthority::completed_in` /
+`GiftProducer::completed` slice in `src/community/giveaway.rs` to the retained
+Gift leaf/test/runner/doc scope. Paths without a prefix are under
+`backend/services/concert-service/`. No existing migration, contract, manifest,
+lockfile, main/router, resolver union or frontend is owned by this increment.
+
+The actual scoped producer now parses all thirteen frozen C04 Gift operations
+from `VerifiedProduct`, and routes Gift command status without reconstructing a
+mutation. Claim consumes `VerifiedProduct::trusted_pickup_context()`, backed by
+the existing authenticated ProductRequest field14; older statements below about
+missing network transport are historical. No raw IP, new proto or caller-granted
+permission is introduced. Root still owns the closed operation parser and route
+admission; adding this producer/factory does not activate public endpoints.
+
+Pickup uses the SDK3 `GiftPrivateRuntime::prepare_pickup` path; IssueCode passes
+only the newly issued one-shot value through `prepare_code`. Their actual child
+intent must be durably acknowledged before protected content selection, and the
+returned deadline clips the response-wide scope ceiling consumed by Root's
+before-byte delivery boundary. No ordinary `PgGifts::pickup` read bypass remains
+in the runtime. A replay cannot regenerate or retrieve plaintext: it remains a
+durable successful receipt available through command status, while the code
+endpoint refuses a missing one-shot value. These source changes supersede the
+old runtime-level unavailable gates; public activation remains Root-owned and
+NOT_RUN here.
+
+`GiftRuntimeSettings` is off by default. Live mode requires guarded gRPC, the
+existing canonical composition, nonzero independent cursor/retained receipt
+secrets and an actual bounded image sanitizer. Composition reuses the core's
+`PublicProfileReader`, Gift child settler/pickup key ring, fence and publisher;
+it acquires no second canonical core and creates no listener/background worker.
+Gift media linking still calls the actual `PgMedia::link_owned` adapter and
+current Gift target/media/place policy. A nullable image is not a fabricated
+media record or authority grant.
+
+Migration0060 stores exact native identity witnesses separately from immutable
+safe receipt snapshots. Both are written on the registered actual connection;
+receipt snapshots are inserted by BE15's completed hook after verified success,
+safe failure or exact replay. Authorization/read/guess-admission transactions
+have only a local-transaction witness; read-only status does not mutate or
+recreate command outcomes. The resolver requires matching instance, system,
+database, full XID, backend identity, parent/effect/reference binding, durable
+confirmed owner registration and a finished serialized root. A committed XID
+without its exact witness stays UNKNOWN. COMMITTED describes a native
+transaction, not a successful command or picked-up item. Receipt retirement
+must not rewrite historical snapshots. Prepared Gift-private children continue
+through their distinct exact typed recovery adapter.
+
+New meaningful checks cover the closed thirteen-operation selection; off/live
+configuration and key independence; forged parent/reference/key rejection;
+success/failure/replay completion callbacks and aggregate/receipt/outbox rollback
+when completion fails; commit versus abort/missing witness/unfinished root;
+foreign backend/instance/database/binding rejection; same-transaction receipt
+snapshot guards, immutable retirement evidence; and two-process witness
+recovery around an actual PostgreSQL restart. The local native SQL fixtures use
+explicitly synthetic ledger correlation and ACL metadata. They do not qualify
+actual Auth/Friend acquisition, protected-media HTTP, code delivery or IN02.
+
+Runtime command when a fresh guarded allocation is accepted:
+`python3 backend/scripts/mcr/gift_live_resources.py --queries-test
+[frozen-lib] --private-test [same-frozen-lib] --settlement-test
+[same-frozen-lib] --report [new-owned-report]`. The runner never builds, checks
+named tests/counts, starts only its marker/inode-owned PostgreSQL, checks actual
+postmaster replacement, verifies source/executable hashes and cleans its owned
+root. It must be run under the allocator's external deadline/process/disk guards.
+
+Current validation: Rust formatting/parser and diff whitespace checked; no
+current Cargo compile, Rust tests, PG/native execution, canonical business flow,
+public HTTP or two-user IN02 result is claimed. These remain NOT_RUN until the
+fresh resource queue admits them. No target, copied executable, full source
+archive or database was allocated for source work. Existing historical results
+below retain their original source pins and limitations.
 
 The current 29-test proof is pinned to `e9b761fb90bc02db570c2aee8f999d3a8b48f993`,
 with exact executable and 1,639 source hashes. It supersedes the earlier local
