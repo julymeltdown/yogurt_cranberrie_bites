@@ -133,20 +133,24 @@ def exercise(cluster, ports, children, own, owners, report, case):
         label = "actual-owners-read-rpc"
     else:
         name = "concert_self_profile::native_prepare::actual_owner_prepare_and_recovery_quarantine"
-        label = "actual-owners-prepare-rpc"
-        env["MCR_SELF_PROFILE_PREPARE_PHASE"] = "prepare"
+        label = "actual-owners-" + case + "-rpc"
+        env["MCR_SELF_PROFILE_PREPARE_PHASE"] = case
     probe(report, label, own["test"], name, env, cluster, redactions)
     for child in children:
         require(child.listeners(), "owned-service-must-remain-alive")
     require(cluster.sql(native.DB, "select count(*) from concert_self_profile_read_references;") == "1", "exact-read-reference-required")
     require(cluster.sql(native.DB, "select count(*) from concert_self_profile_receipts;") == "0", "read-must-not-create-write-receipt")
     time.sleep(6)  # Original request expires; no completion proof may be invented.
-    if case == "prepare":
-        env["MCR_SELF_PROFILE_PREPARE_PHASE"] = "recover"
+    if case != "read":
+        env["MCR_SELF_PROFILE_PREPARE_PHASE"] = "recover-conflict" if case == "conflict" else "recover"
         probe(report, "actual-owners-expired-recovery-rpc", own["test"], name, env, cluster, redactions)
         require(cluster.sql(native.DB, "select count(*) from concert_self_profile_operations;") == "1", "one-original-operation-required")
-        require(cluster.sql(native.DB, "select count(*) from pg_prepared_xacts where database=current_database();") == "1", "missing-decision-must-retain-profile-effect")
-        report.update(actual_prepare_invisibility="PASS", expired_original_recovery="PASS", missing_decision_quarantine="PASS")
+        expected = "0" if case == "conflict" else "1"
+        require(cluster.sql(native.DB, "select count(*) from pg_prepared_xacts where database=current_database();") == expected, "exact-native-effect-state-required")
+        if case == "conflict":
+            report.update(actual_profile_cas_native_abort="PASS", expired_original_recovery="PASS")
+        else:
+            report.update(actual_prepare_invisibility="PASS", expired_original_recovery="PASS", missing_decision_quarantine="PASS")
     for role in ("auth", "friend"):
         count = cluster.sql("mcr_self_owner_" + role, "select count(*) from pg_prepared_xacts where database=current_database();")
         require(count == "1", "missing-root-must-retain-owner-guard:" + role)
@@ -159,7 +163,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("cargo-json", "frozen-artifacts", "owner-artifacts", "owner-source-root", "pg-bin", "report"):
         parser.add_argument("--" + name, type=Path, required=True)
-    parser.add_argument("--case", choices=("read", "prepare"), default="read")
+    parser.add_argument("--case", choices=("read", "prepare", "conflict"), default="read")
     args = parser.parse_args()
     require(all(path.is_absolute() for path in vars(args).values() if isinstance(path, Path)), "absolute-inputs-required")
     fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)

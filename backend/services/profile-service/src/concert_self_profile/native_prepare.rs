@@ -113,7 +113,7 @@ async fn acquire(actor: Uuid) -> anyhow::Result<proto::SelfScope> {
     })
 }
 
-async fn unchanged(pool: &PgPool, actor: Uuid) -> anyhow::Result<()> {
+async fn unchanged(pool: &PgPool, actor: Uuid, prepared: i64) -> anyhow::Result<()> {
     let row: (String, String, String) =
         sqlx::query_as("select nickname,bio,avatar_url from profiles where user_id=$1")
             .bind(actor)
@@ -145,8 +145,19 @@ async fn unchanged(pool: &PgPool, actor: Uuid) -> anyhow::Result<()> {
         )
         .fetch_one(pool)
         .await?,
-        1
+        prepared
     );
+    Ok(())
+}
+
+fn save(path: PathBuf, query: &proto::SelfOperationRequest) -> anyhow::Result<()> {
+    let mut file = std::fs::OpenOptions::new()
+        .create_new(true)
+        .write(true)
+        .mode(0o600)
+        .open(path)?;
+    file.write_all(&query.encode_to_vec())?;
+    file.sync_all()?;
     Ok(())
 }
 
@@ -159,7 +170,7 @@ async fn actual_owner_prepare_and_recovery_quarantine() -> anyhow::Result<()> {
     let path = root.join("prepared-self-recovery.bin");
     let mut profile = profile().await?;
     match required("MCR_SELF_PROFILE_PREPARE_PHASE")?.as_str() {
-        "prepare" => {
+        phase @ ("prepare" | "conflict") => {
             let scope = acquire(actor).await?;
             let binding = scope.binding.as_ref().unwrap();
             let current = profile
@@ -174,7 +185,12 @@ async fn actual_owner_prepare_and_recovery_quarantine() -> anyhow::Result<()> {
                 .into_inner()
                 .content
                 .unwrap();
-            let version = current.version.unwrap();
+            let mut version = current.version.unwrap();
+            if phase == "conflict" {
+                // A valid but stale internal CAS token. The actual registered
+                // transaction must abort; the RPC error alone proves nothing.
+                version.revision += 1;
+            }
             let query = proto::PrepareSelfUpdateRequest {
                 scope: Some(scope.clone()),
                 subject_id: actor.to_string(),
@@ -200,9 +216,36 @@ async fn actual_owner_prepare_and_recovery_quarantine() -> anyhow::Result<()> {
                 .await?,
                 0
             );
-            let prepared = profile
-                .prepare_update(signed(query.clone(), actor)?)
-                .await?;
+            let result = profile.prepare_update(signed(query.clone(), actor)?).await;
+            if phase == "conflict" {
+                assert_eq!(result.unwrap_err().code(), tonic::Code::Aborted);
+                let recovery = proto::SelfOperationRequest {
+                    operation_id: binding.request_id.clone(),
+                    scope: Some(scope),
+                };
+                let stop = tokio::time::Instant::now() + std::time::Duration::from_secs(2);
+                loop {
+                    let observed = profile
+                        .read_operation(signed(recovery.clone(), actor)?)
+                        .await?
+                        .into_inner();
+                    if observed.status == proto::SelfOperationStatus::Aborted as i32 {
+                        assert!(observed.transaction.is_some());
+                        assert_eq!(observed.effect_binding_digest.len(), 32);
+                        break;
+                    }
+                    anyhow::ensure!(
+                        tokio::time::Instant::now() < stop,
+                        "actual CAS transaction did not abort"
+                    );
+                    tokio::time::sleep(std::time::Duration::from_millis(20)).await;
+                }
+                unchanged(&pool, actor, 0).await?;
+                save(path, &recovery)?;
+                pool.close().await;
+                return Ok(());
+            }
+            let prepared = result?;
             assert_eq!(
                 prepared.metadata().get("cache-control").unwrap(),
                 "no-store"
@@ -248,20 +291,14 @@ async fn actual_owner_prepare_and_recovery_quarantine() -> anyhow::Result<()> {
                     .code(),
                 tonic::Code::Aborted
             );
-            unchanged(&pool, actor).await?;
+            unchanged(&pool, actor, 1).await?;
             let recovery = proto::SelfOperationRequest {
                 scope: Some(scope),
                 operation_id: operation.to_string(),
             };
-            let mut file = std::fs::OpenOptions::new()
-                .create_new(true)
-                .write(true)
-                .mode(0o600)
-                .open(path)?;
-            file.write_all(&recovery.encode_to_vec())?;
-            file.sync_all()?;
+            save(path, &recovery)?;
         }
-        "recover" => {
+        phase @ ("recover" | "recover-conflict") => {
             let info = std::fs::symlink_metadata(&path)?;
             anyhow::ensure!(
                 info.is_file()
@@ -281,10 +318,12 @@ async fn actual_owner_prepare_and_recovery_quarantine() -> anyhow::Result<()> {
                 .read_operation(signed(query.clone(), actor)?)
                 .await?;
             assert_eq!(status.metadata().get("cache-control").unwrap(), "no-store");
-            assert_eq!(
-                status.into_inner().status,
-                proto::SelfOperationStatus::Prepared as i32
-            );
+            let expected = if phase == "recover-conflict" {
+                proto::SelfOperationStatus::Aborted
+            } else {
+                proto::SelfOperationStatus::Prepared
+            };
+            assert_eq!(status.into_inner().status, expected as i32);
             let mut altered = query.clone();
             altered
                 .scope
@@ -304,23 +343,26 @@ async fn actual_owner_prepare_and_recovery_quarantine() -> anyhow::Result<()> {
             );
             // A fresh signed recovery query may inspect only the registered
             // effect. A missing decision endpoint cannot choose rollback.
-            assert_eq!(
-                profile
-                    .reconcile(signed(query.clone(), actor)?)
-                    .await
-                    .unwrap_err()
-                    .code(),
-                tonic::Code::Unavailable
-            );
+            let result = profile.reconcile(signed(query.clone(), actor)?).await;
+            if phase == "recover-conflict" {
+                assert_eq!(result?.into_inner().status, expected as i32);
+            } else {
+                assert_eq!(result.unwrap_err().code(), tonic::Code::Unavailable);
+            }
             assert_eq!(
                 profile
                     .read_operation(signed(query, actor)?)
                     .await?
                     .into_inner()
                     .status,
-                proto::SelfOperationStatus::Prepared as i32
+                expected as i32
             );
-            unchanged(&pool, actor).await?;
+            unchanged(
+                &pool,
+                actor,
+                if phase == "recover-conflict" { 0 } else { 1 },
+            )
+            .await?;
         }
         _ => anyhow::bail!("explicit prepare/recover phase required"),
     }

@@ -280,3 +280,11 @@ signed recovery after the original scope expires. With Concert unavailable, the
 probe must retain the Profile prepared effect and actual owner guards; altered
 binding recovery must fail. This probe supplies no terminal decision, has not
 compiled or run yet, and cannot accept the actual Journal/HTTP flow.
+
+The same pending probe also covers `--case conflict`: a syntactically valid but
+stale internal Profile version reaches the actual registered transaction, is
+refused by server CAS, and must resolve through the actual retained PostgreSQL
+XID as ABORTED. Fresh signed status/reconcile after expiry must preserve that
+proof without a fabricated write receipt or coordinator decision. This is still
+NOT_RUN until the queued native qualification; an RPC conflict alone is not
+settlement evidence.
