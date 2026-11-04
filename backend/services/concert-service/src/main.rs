@@ -2,8 +2,13 @@ use concert_service::{
     bootstrap::{BootstrapFeatures, BootstrapService, ProductReleaseBundle},
     config, health, rpc, world_rpc,
 };
+mod in01_catalog;
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    let arguments: Vec<_> = std::env::args_os().skip(1).collect();
+    if arguments.len() == 1 && arguments[0] == "--prepare-in01-catalog" {
+        return in01_catalog::run().await;
+    }
     let command = migration_runtime::parse_command(std::env::args_os().skip(1))?;
     if matches!(
         command,

@@ -1,0 +1,227 @@
+#!/usr/bin/env python3
+"""Create real, disposable Auth principals and owned World startup inputs.
+
+This command does not enable World or certify IN01. Native service binaries are
+explicit inputs. All credentials and database URLs stay in the owned private
+directory; stdout and the external report contain paths and sanitized results.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+from pathlib import Path
+import secrets
+import signal
+import time
+from unittest.mock import patch
+from uuid import UUID, uuid4
+
+import browser_auth_smoke as auth
+from browser_refresh import current_readiness
+import dev_stack as dev
+
+ROOT = Path(__file__).resolve().parents[3]
+RELEASE = ROOT / "backend/releases/operator-bundle/quality-v6"
+
+
+def private_json(path, value):
+    dev.runtime.private_file(path, dev.encode(value))
+
+
+def quote(value):
+    """SQL literal for validated local seed data, never shell interpolation."""
+    return "'" + str(value).replace("'", "''") + "'"
+
+
+def release_inputs():
+    bundle = json.loads((RELEASE / "bundle.json").read_bytes())
+    for pin in [bundle["map"], bundle["avatar"], bundle["source_binding"], *bundle["outputs"]]:
+        path = (ROOT / pin["path"]).resolve()
+        auth.require(path.is_relative_to(ROOT) and path.is_file(), "release-path")
+        auth.require(path.stat().st_size == pin["bytes"]
+                     and "sha256:" + dev.runtime.digest(path) == pin["sha256"], "release-pin")
+    return {
+        "CONCERT_BOOTSTRAP_FILE": str(RELEASE / "bootstrap.json"),
+        "CONCERT_AVATAR_MANIFEST_FILE": str(ROOT / bundle["avatar"]["path"]),
+        "CONCERT_MAP_MANIFEST_FILE": str(ROOT / bundle["map"]["path"]),
+        **{f"CONCERT_{theme}_MANIFEST_FILE": str(RELEASE / f"theme-{theme.lower()}.json")
+           for theme in ("REVENGE", "PARADE", "DANGER")},
+        "source_binding": str(ROOT / bundle["source_binding"]["path"]),
+        "asset_root": str(ROOT / "frontend/public"),
+    }
+
+
+def principal(stack, browser, ordinal):
+    email = f"mcr-in01-{secrets.token_hex(12)}@example.test"
+    password = secrets.token_urlsafe(24)
+    _, created = browser.request(f"principal-{ordinal}-signup", "/api/auth/email/signup",
+                                  {"email": email, "password": password})
+    user = str(UUID(created["userId"]))
+    auth.require(created["userId"] == user and UUID(user).int != 0, "canonical-principal")
+    deadline = time.monotonic() + 20
+    code = None
+    while time.monotonic() < deadline and code is None:
+        stack.cluster.assert_owned()
+        for path in stack.mail.directory.glob("*.json"):
+            auth.require(not path.is_symlink() and path.stat().st_mode & 0o077 == 0, "private-inbox")
+            message = json.loads(path.read_bytes())
+            if message["kind"] == "VERIFY_EMAIL" and message["payload"]["email"] == email:
+                code = message["payload"]["verification_code"]
+                break
+        if code is None:
+            time.sleep(0.1)
+    auth.require(code is not None, "real-verification-delivery")
+    _, verified = browser.request(f"principal-{ordinal}-verify", "/api/auth/email/verify",
+                                   {"email": email, "code": code})
+    auth.require(verified["userId"] == user, "verified-principal")
+    headers, logged_in = browser.request(f"principal-{ordinal}-login", "/api/auth/login",
+                                         {"email": email, "password": password})
+    auth.require(logged_in["userId"] == user and logged_in["accessToken"]
+                 and logged_in["refreshToken"] == "", "real-login-identity")
+    auth.refresh_cookie(headers)
+    # No JWT decoding, forged session, canonical claim SQL, or token persistence.
+    path = stack.cluster.root / f"in01-principal-{ordinal}.json"
+    private_json(path, {"user_id": user, "email": email, "password": password,
+                        "login_path": "/api/auth/login", "access_token": "MEMORY_ONLY"})
+    return user, path
+
+
+def seed_concert(stack, binary, report, publish_catalog):
+    """Use the real migration command; seed only this invocation's new database."""
+    cluster = stack.cluster
+    cluster.assert_owned()
+    binary = dev.migration.executable(binary)
+    database = "mcr_concert"
+    dev.migration.execute([str(cluster.tools["createdb"]), "--no-password",
+                           "--maintenance-db=postgres", database],
+                          env=cluster.client_env("postgres"), cwd=cluster.root, phase="concert-create")
+    env = {**cluster.env, "CONCERT_DATABASE_URL": cluster.url(database)}
+    for flag in ("--migrate", "--verify-migrations"):
+        dev.migration.execute([str(binary), flag], env=env, cwd=cluster.root, phase="concert" + flag)
+    manifest = dev.migration.migration_manifest(ROOT / "backend", "concert-service")
+    count = dev.migration.check_ledger(cluster, database, manifest)
+    probe = (ROOT / "backend/services/concert-service/src/config/schema-probe.sql").read_text()
+    auth.require(cluster.sql(database, probe) == "t", "current-concert-schema-probe")
+    negative = cluster.sql(database, "BEGIN; ALTER TABLE concert_avatar_settings DROP CONSTRAINT "
+                           "concert_avatar_representation; " + probe + "; ROLLBACK;")
+    auth.require("f" in negative.splitlines() and cluster.sql(database, probe) == "t",
+                 "missing-avatar-constraint-refused-and-restored")
+    template = json.loads((RELEASE / "bootstrap.json").read_bytes())
+    event = str(UUID(template["event"]["event_id"]))
+    room = str(uuid4())
+    avatar = template["avatar_manifest"]
+    # Event/room configuration is operator-owned. Admission, participant and
+    # avatar creation must come from the actual authenticated bootstrap request.
+    statements = ["BEGIN", "INSERT INTO concert_events(event_id,slug,title,phase) VALUES(" +
+                  ",".join(map(quote, [event, "in01-owned-" + uuid4().hex[:16],
+                                        "Owned IN01 startup", "OPEN"])) + ")"]
+    map_ = template["map_manifest"]
+    statements += [
+        "INSERT INTO concert_world_rooms(event_id,room_id,label,capacity,map_id,map_revision,"
+        "avatar_manifest_id,avatar_manifest_version,is_default) VALUES(" +
+        ",".join(map(quote, [event, room, "Owned IN01 room", 2, map_["map_id"],
+                             map_["map_revision"], avatar["manifest_id"], avatar["manifest_version"]])) + ",true)",
+        "COMMIT",
+    ]
+    cluster.sql(database, ";\n".join(statements) + ";")
+    for table in ("concert_participants", "concert_event_admissions", "concert_avatar_settings"):
+        auth.require(cluster.sql(database, f"SELECT count(*) FROM {table}") == "0", "bootstrap-owned-state-absent")
+    catalog = "NOT_RUN"
+    if publish_catalog:
+        release = release_inputs()
+        result = dev.migration.execute([str(binary), "--prepare-in01-catalog"],
+            env={**env, **{name: value for name, value in release.items() if name.startswith("CONCERT_")},
+                 "CONCERT_RUNTIME_MODE": "local", "CONCERT_WORLD_EVENT_ID": event,
+                 "CONCERT_SOURCE_BINDING_FILE": release["source_binding"],
+                 "CONCERT_ASSET_ROOT": release["asset_root"]},
+            cwd=cluster.root, phase="real-source-bound-catalog")
+        auth.require(result.stdout.strip() == "IN01_CATALOG_PUBLISHED=4", "catalog-command-result")
+        catalog = "PASS"
+    report["concert_seed"] = {"result": "PARTIAL", "migration_commands_exit": [0, 0],
+                               "ledger_count": count, "binary_sha256": dev.runtime.digest(binary),
+                               "migration_sha384": manifest,
+                               "schema_probe": "PASS; missing avatar representation constraint refused",
+                               "source_bound_catalog_publication": catalog,
+                               "limits": ["Owner runtime registration pending.",
+                                          "Participants, admissions and avatars await real authenticated bootstrap.",
+                                          "No World listener, ticket, or connection has been started."]}
+    path = cluster.root / "in01-concert-inputs.json"
+    private_json(path, {"CONCERT_DATABASE_URL": cluster.url(database), "CONCERT_RUNTIME_MODE": "local",
+                        "CONCERT_MIGRATION_MODE": "external", "CONCERT_WORLD_EVENT_ID": event,
+                        "CONCERT_WORLD_OWNER_ID": str(uuid4()),
+                        "CONCERT_WORLD_ROOMS_JSON": json.dumps([{"room_id": room, "capacity": 2}]),
+                        "CONCERT_PUBLIC_FEED_MODE": "off", "CONCERT_OWNER_MEDIA_MODE": "off",
+                        "release_inputs": release_inputs(),
+                        "world_activation": "CLOSED_PENDING_NATIVE_QUALIFICATION"})
+    return path
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--bin-dir", type=Path, required=True)
+    parser.add_argument("--concert-bin", type=Path)
+    parser.add_argument("--publish-catalog", action="store_true",
+                        help="Requires a freshly compiled binary with --prepare-in01-catalog")
+    parser.add_argument("--report", type=Path, required=True)
+    parser.add_argument("--hold-seconds", type=int, default=0)
+    args = parser.parse_args()
+    if (not args.report.is_absolute() or not args.bin_dir.is_absolute()
+            or (args.concert_bin is not None and not args.concert_bin.is_absolute())
+            or (args.publish_catalog and args.concert_bin is None)
+            or not 0 <= args.hold_seconds <= 3600):
+        parser.error("absolute new report path and hold-seconds in 0..3600 required")
+    fd = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    report = {"scope": "IN01 isolated startup preparation", "result": "FAIL", "statuses": {},
+              "world_two_client": "NOT_RUN", "world_activation": "CLOSED",
+              "script_sha256": dev.runtime.digest(Path(__file__))}
+    stack = dev.DevStack(args.bin_dir, Path("/opt/homebrew/bin"),
+                         Path("/opt/homebrew/bin/redis-server"), Path("/opt/homebrew/bin/openssl"))
+    previous = {sig: signal.signal(sig, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
+                for sig in (signal.SIGINT, signal.SIGTERM)}
+    try:
+        release = release_inputs()
+        report["release_pins"] = "EXACT_BUNDLE_BYTES_VERIFIED; no new constructor qualification"
+        with patch.object(dev.runtime, "readiness_value", current_readiness):
+            descriptor = stack.start()
+        browser = auth.Browser(descriptor["gateway_url"], report)
+        principals = [principal(stack, browser, n) for n in (1, 2)]
+        auth.require(principals[0][0] != principals[1][0], "distinct-canonical-principals")
+        inputs = {"gateway_url": descriptor["gateway_url"],
+                  "principals": [str(path) for _, path in principals],
+                  "release_inputs": release,
+                  "world": "CLOSED", "lifetime": "Valid only while this owned process is holding"}
+        if args.concert_bin:
+            inputs["concert"] = str(seed_concert(stack, args.concert_bin, report, args.publish_catalog))
+        path = stack.cluster.root / "in01-runtime-inputs.json"
+        private_json(path, inputs)
+        report.update(result="PARTIAL", principal_count=2, private_inputs=str(path),
+                      input_lifetime="REMOVED_ON_OWNED_SHUTDOWN")
+        print(json.dumps({"result": "PARTIAL", "private_inputs": str(path),
+                          "world_activation": "CLOSED"}), flush=True)
+        deadline = time.monotonic() + args.hold_seconds
+        while time.monotonic() < deadline:
+            stack.health()
+            time.sleep(min(0.25, max(0, deadline - time.monotonic())))
+    except BaseException as error:
+        report["failure"] = (str(error) if isinstance(error, auth.CheckFailure)
+                             else error.detail if isinstance(error, dev.SmokeError)
+                             else type(error).__name__)
+        report["result"] = "FAIL"
+    finally:
+        try:
+            stack.close()
+        except BaseException:
+            stack.report["cleanup"] = "FAIL"
+        report["owned_stack"] = stack.report
+        if stack.report.get("cleanup") != "PASS":
+            report["result"] = "FAIL"
+        for sig, handler in previous.items():
+            signal.signal(sig, handler)
+        dev.write_fd(fd, report)
+    print(json.dumps({"result": report["result"], "cleanup": stack.report.get("cleanup")}), flush=True)
+    return int(report["result"] == "FAIL")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
