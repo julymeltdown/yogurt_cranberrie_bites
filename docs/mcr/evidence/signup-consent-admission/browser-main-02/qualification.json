@@ -1,0 +1,228 @@
+{
+  "status": "PASS_ACTUAL_AUTH_ONLY_JOURNEY",
+  "allocation": "AUTH-JOINT-207-204-20261104T2015Z",
+  "frontendSource": "7804fbaef9f6c41177b45e391a9f5c7b6e1d6a06",
+  "runnerSource": "b76023025528ab6a262255bba710f6ea08b4392b",
+  "backendSource": "857a69559631db52f1febdb7692888f089a9575c",
+  "backendBinarySha256": "8c0c8f06e290717ac877c6d068d023ee58f2e60434327850180d1171c31a2e55",
+  "publicContract": "ed50c2f1",
+  "node": "v24.22.2",
+  "browser": "156.0.8078.80",
+  "results": [
+    {
+      "case": "real-bound-cookie-rejects-second-browser",
+      "passed": true
+    },
+    {
+      "case": "actual-expired-challenge-cannot-verify-negative-only-fixture",
+      "passed": true
+    },
+    {
+      "case": "real-server-resend-deadline-without-automatic-replay",
+      "passed": true
+    },
+    {
+      "case": "actual-main-signup-mailworker-latest-bound-link-verification",
+      "passed": true
+    },
+    {
+      "case": "canonical-login-renewed-explicit-consent-and-real-current-admission",
+      "passed": true
+    }
+  ],
+  "postCounts": {
+    "attempts": 1,
+    "signup": 1,
+    "resend": 2,
+    "verify": 3,
+    "consent": 1,
+    "login": 1
+  },
+  "httpOutcomes": [
+    {
+      "path": "/api/auth/capabilities",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/policy",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/attempts",
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "path": "/api/auth/enrollment/signup",
+      "method": "POST",
+      "status": 202
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/verify",
+      "method": "POST",
+      "status": 404
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/verify",
+      "method": "POST",
+      "status": 422
+    },
+    {
+      "path": "/api/auth/enrollment/resend",
+      "method": "POST",
+      "status": 202
+    },
+    {
+      "path": "/api/auth/enrollment/resend",
+      "method": "POST",
+      "status": 202
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/verify",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/admission",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/policy",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/consent",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/admission",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/admission",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/enrollment/admission",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/concert/events/e62e371e-3f7e-42b3-8332-6c9e0a74328b/bootstrap",
+      "method": "GET",
+      "status": 503
+    }
+  ],
+  "admissionDecisions": [
+    {
+      "status": 200,
+      "decision": "CONSENT_REQUIRED",
+      "policyRevision": "f4ef20e0-3995-4f67-8156-f03e2b1c47b5",
+      "acceptedRevision": "e65d6827-f485-4674-a8ef-31d3a5393c78"
+    },
+    {
+      "status": 200,
+      "decision": "ADMITTED",
+      "policyRevision": "f4ef20e0-3995-4f67-8156-f03e2b1c47b5",
+      "acceptedRevision": "f4ef20e0-3995-4f67-8156-f03e2b1c47b5"
+    },
+    {
+      "status": 200,
+      "decision": "ADMITTED",
+      "policyRevision": "f4ef20e0-3995-4f67-8156-f03e2b1c47b5",
+      "acceptedRevision": "f4ef20e0-3995-4f67-8156-f03e2b1c47b5"
+    },
+    {
+      "status": 200,
+      "decision": "ADMITTED",
+      "policyRevision": "f4ef20e0-3995-4f67-8156-f03e2b1c47b5",
+      "acceptedRevision": "f4ef20e0-3995-4f67-8156-f03e2b1c47b5"
+    }
+  ],
+  "socketObservation": {
+    "actualAttempted": 4,
+    "devHmr": 4,
+    "worldOrUnknown": 0,
+    "proof": "ActualChromeCDP-created/handshake events, exactsameownedservernonce/rootorigin/protocolvite-hmr; no WebSocket/appstate replacement",
+    "metadata": [
+      {
+        "kind": "VITE_HMR",
+        "origin": "ws://localhost:3000",
+        "path": "/",
+        "protocol": "vite-hmr",
+        "sameServerNonceMatched": true
+      },
+      {
+        "kind": "VITE_HMR",
+        "origin": "ws://localhost:3000",
+        "path": "/",
+        "protocol": "vite-hmr",
+        "sameServerNonceMatched": true
+      },
+      {
+        "kind": "VITE_HMR",
+        "origin": "ws://localhost:3000",
+        "path": "/",
+        "protocol": "vite-hmr",
+        "sameServerNonceMatched": true
+      },
+      {
+        "kind": "VITE_HMR",
+        "origin": "ws://localhost:3000",
+        "path": "/",
+        "protocol": "vite-hmr",
+        "sameServerNonceMatched": true
+      }
+    ],
+    "nonceValuesPersisted": false
+  },
+  "bootstrap": "Actual503/unavailable afterexplicitContinue, zeroCanvas; noWorldsuccess",
+  "secretChecks": "password/code absentfromDOM/history/URL/browserstorage aftersubmit; tokenserialization guard passed; opaque link scrubbed",
+  "duplicateChecks": "Actualdoubleformsignup oneattempt/onesignup; doublelogin onerequest; doubleexplicitconsent onePOST; noauto resend",
+  "repairs": 0,
+  "pageErrors": [],
+  "actualMail": "Canonicalmailworker localHTTPcapture, latestnewerindex afterreal60sdeadline",
+  "policy": "Explicitisolatedsyntheticoperatorv1/v2, no productionlegalapproval/ageeligibility/providerclaim",
+  "native390VisualOwnerInspection": "Currentconsentlink nowownseparaterow; readableack/revision/controls; finalWorldunavailablepaneldisplayed. Does notcertifyalltenreference screens.",
+  "release": "release.json",
+  "backendRelease": "backend-full-release.json",
+  "jointRelease": "joint-full.json",
+  "report": "native/main-browser-report.json",
+  "reportSha256": "5ac1a0d3b0d4c9244aae01a09041487818aae743f0804b6b852d0dac7eed5aab",
+  "historical1955": "browser-main-01 FAILED_RETAINED remainsunchanged; new2015runisfreshfixture/no oldcontrolsreplay",
+  "openInternal": [
+    "Coherentcurrent7serviceWorldcontinuation/Phaser/socketflow; Auth-onlyfixtureintentionallycannotprovideit"
+  ],
+  "openExternal": [
+    "Approvedproductionlegalpublication",
+    "Externalmailboxdelivery",
+    "Provider/restrictedageavailability remainsseparate"
+  ]
+}

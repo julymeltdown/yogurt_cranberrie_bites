@@ -32,7 +32,7 @@
   "publishedCommit": "22b11054c57eb724022050cc017a665852b521c5",
   "reportedMasterAfterDocsOnly": "6504448fa682b10c53b3f6cd3e0aeef4d75b1483",
   "nativeReportSha256": "4fd95bb8dc771191f2e3fbeb1d39e75d6aa2a79e815808e97258bb63006c28c6",
-  "pairedBrowserFixture": {
+  "pairedBrowserFixtureHistorical": {
     "source": "9f5cfc0f",
     "status": "SOURCE_FROZEN_NOT_COMPILED_NOT_RUN",
     "actualMailLinkKeys": [
@@ -49,5 +49,22 @@
     },
     "authOnly": "Explicit authOnly:true; non-/api/auth/ responds503; no synthetic foundation/bootstrap",
     "resource": "Replacement ENROLLMENT-BROWSER-FIXTURE-MEDIA-20261104T1902Z QUEUED after16e/Ops/Wall/Party, NOT_ACCEPTED; no backend/frontend runtime hold"
+  },
+  "pairedBrowserFixture": {
+    "source": "857a69559631db52f1febdb7692888f089a9575c",
+    "binarySha256": "8c0c8f06e290717ac877c6d068d023ee58f2e60434327850180d1171c31a2e55",
+    "status": "COMPILED_AUTH_ONLY_PAIRED_BROWSER_PASS_FULL_RELEASED",
+    "ownerBackendEvidenceCommit": "5de7cb0b25661daad8038bb0b00487443f8164ab",
+    "ownerBackendEvidencePath": "docs/mcr/backend/enrollment-browser-2015.md",
+    "frontendQualification": "browser-main-02/qualification.json",
+    "backendReceipt": "browser-main-02/backend-full-release.json",
+    "jointReceipt": "browser-main-02/joint-full.json",
+    "actualResourceFull": "2026-11-04T20:19:31.832471Z",
+    "scope": "Current real enrollment policy/attempt/signup/verify/resend/consent/admission, PostgreSQL/RPC/Gateway/mail-worker local capture, synthetic policy rotation and negative-only challenge expiry. No positive identity/consent fixture insertion.",
+    "limitations": [
+      "Auth-only bootstrap503 is intentional; real World remains open",
+      "External mailbox, approved production legal publication, provider/verified-age success remain unclaimed"
+    ],
+    "attribution": "Backend owner validation attributed to207; actual five-case canonical frontend journey validated by204. Neither owner performs king/SL review."
   }
 }

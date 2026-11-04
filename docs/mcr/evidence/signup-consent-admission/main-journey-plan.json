@@ -1,11 +1,11 @@
 {
   "task": "FE10",
-  "status": "SOURCE_AUTHORED_NOT_RUN",
+  "status": "INTEGRATED_AUTH_ONLY_JOURNEY_WORLD_OPEN",
   "runner": "frontend/src/features/auth/__tests__/enrollment-main-browser.mjs",
-  "runnerSha256": "bea7c22945cc989e71bd32abad469b85cb4b498bc6cee878bc375037e1283073",
+  "runnerSha256": "e6c5c4951ce0f6ce1ba176b4b8682d11fde6e5512c3d755e28ac5bbd1021aebb",
   "contractRevision": "ed50c2f1",
   "backendOwner": "developer207",
-  "backendControlSource": "e7123c412283ad6d0f95d7404e23922790e628fc",
+  "backendControlSource": "857a69559631db52f1febdb7692888f089a9575c",
   "origin": "http://localhost:3000",
   "proxy": "Actual descriptor gatewayLoopbackOrigin; changeOrigin false; canonical browser Origin/cookie/intent protections unchanged",
   "stages": [
@@ -37,7 +37,7 @@
   ],
   "controlPublication": "Private0600 once via own .fe204-<exact-input>-<UUID>.tmp and atomic no-replace hardlink; exact input/temp grant required in fresh paired allocation",
   "mailSelection": "Actual browser-mail-N.json sorted descending; post-resend index must exceed original; exact attemptId/code keys; no code equality/inequality assumption",
-  "resourceState": "NO_ACTIVE_WORKLOAD_OR_LEASE; backend compile offer withdrawn pre-accept for critical startup priority; fresh allocation required",
+  "resourceState": "AUTH-JOINT-207-204-20261104T2015Z both FULL; no active lease or workload",
   "futureResourceClass": {
     "frontend": "One bounded native browser with existing qualified guardian; no installs, builds, databases or targets",
     "port": 3000,
@@ -55,6 +55,15 @@
     "Provider or verified-age success"
   ],
   "unchangedEvidence": "191 feature/transport tests;63 affected canonical tests;7 controlled native cases remain scoped historical qualification and are not replayed for this test-only source change",
-  "backendControlStatus": "Responsible owner frozen source report; NOT_COMPILED/NOT_RUN",
-  "authOnlyBoundary": "Descriptor authOnly:true required; non-/api/auth/ returns503. After explicit Continue actual bootstrap must503, unavailable heading rendered, zero canvas/socket. No synthetic foundation success."
+  "backendControlStatus": "Compiled frozen executable 8c0c8f06 and exact runtime SQL pins; fresh actual Auth-only browser journey PASS",
+  "authOnlyBoundary": "Actual non-/api/auth/503 and unavailable heading after explicit Continue; zero canvas and zero World/unknown sockets. Four exact nonce-bound vite-hmr transports independently observed. No World success.",
+  "historicalPreparation": {
+    "status": "SOURCE_AUTHORED_NOT_RUN",
+    "runnerSha256": "bea7c22945cc989e71bd32abad469b85cb4b498bc6cee878bc375037e1283073",
+    "backendControlSource": "e7123c412283ad6d0f95d7404e23922790e628fc",
+    "resourceState": "NO_ACTIVE_WORKLOAD_OR_LEASE; backend compile offer withdrawn pre-accept for critical startup priority; fresh allocation required",
+    "backendControlStatus": "Responsible owner frozen source report; NOT_COMPILED/NOT_RUN"
+  },
+  "latestQualification": "browser-main-02/qualification.json",
+  "internalRemaining": "Coherent current backend cohort, real World/Phaser/connection continuation, fresh bounded allocation and qualification; normal committed evidence publication"
 }

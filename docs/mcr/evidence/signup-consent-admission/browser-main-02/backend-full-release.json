@@ -1,0 +1,55 @@
+{
+  "state": "FULL",
+  "allocation": "AUTH-JOINT-207-204-20261104T2015Z",
+  "epoch": 1793823571.8324711,
+  "accepted_epoch": 1793823430.010422,
+  "work_stop": 1793823730.010422,
+  "full_stop": 1793823790.010422,
+  "resources": {
+    "workflow": 0,
+    "compiler": 0,
+    "guardians": 0,
+    "children": 0,
+    "postgres": 0,
+    "rpc_http_mail": 0,
+    "copied_binary_readers": 0,
+    "target_access": 0,
+    "new_exe_copies": 0
+  },
+  "owned_root_absent": true,
+  "owned_pid_pgid_remaining": [],
+  "prepared_transactions_before_cleanup": 0,
+  "new_highwater_bytes": 85327872,
+  "whole_peak_bytes": 5142237184,
+  "peak": {
+    "evidence_growth": 102400,
+    "pg_growth": 83976192,
+    "source_growth": 0,
+    "common_git_growth": 1249280,
+    "rss_peak": 389382144,
+    "process_peak": 15,
+    "whole_peak": 5142204416
+  },
+  "no_target_access": true,
+  "no_target_reentry": true,
+  "browser_verdict": "FE_OWNED_SEE_FINAL_FE_RECEIPT_NOT_INFERRED_FROM_SERVING_EXIT",
+  "serving_controller_exit": 0,
+  "serving_controller_failure": null,
+  "serving_test_exit": 0,
+  "guardian_failure": null,
+  "actualServingFacts": {
+    "accounts": 1,
+    "bootHttp": {
+      "actualPublishedPolicy": 200,
+      "boundBegin": 201,
+      "missingOriginBegin": 403
+    },
+    "capturedMails": 2,
+    "explicitStop": true,
+    "negativeExpiryControlled": true,
+    "syntheticPolicyRotationControlled": true,
+    "verdict": "NO_BROWSER_ACCEPTANCE_VERDICT"
+  },
+  "FE_FULL_pending": true,
+  "joint_resources_returned": false
+}

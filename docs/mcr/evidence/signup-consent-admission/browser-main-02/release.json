@@ -1,0 +1,47 @@
+{
+  "state": "FULL",
+  "actualFullAt": "2026-11-04T20:19:04.297074+00:00",
+  "epoch": 1793823544.297354,
+  "allocation": "AUTH-JOINT-207-204-20261104T2015Z",
+  "head": "b76023025528ab6a262255bba710f6ea08b4392b",
+  "frontendRevision": "7804fbaef9f6c41177b45e391a9f5c7b6e1d6a06",
+  "qualification": "PASS_ACTUAL_AUTH_ONLY_JOURNEY; World/externalmail/productionlegal remainOPEN",
+  "guardianExit": 0,
+  "commands": 1,
+  "repairs": 0,
+  "ownedProcesses": 0,
+  "ownedGuardian": 0,
+  "ownedListeners": 0,
+  "dependencyLinkAbsent": true,
+  "scratchCacheAbsent": true,
+  "exactExternalSingletonRemaining": 0,
+  "priorUnconfirmedExternalCarry": {
+    "bytes": 208,
+    "entries": 4,
+    "untouched": true
+  },
+  "peakNew": {
+    "bytes": 33709358,
+    "rss": 2510241792,
+    "processes": 13
+  },
+  "peakWhole": {
+    "bytes": 3504899426,
+    "entries": 37706
+  },
+  "finalWhole": {
+    "bytes": 3463793504,
+    "entries": 37360,
+    "measuredAt": 167082.546934541,
+    "error": null
+  },
+  "workDeadline": "2026-11-04T20:22:10.010422+00:00",
+  "hardDeadline": "2026-11-04T20:23:10.010422+00:00",
+  "allReserveAmendment": "reservation-amendment.json",
+  "actualBrowserReport": "native/main-browser-report.json",
+  "passedActualAuthCases": 5,
+  "observedDevHmrSockets": 4,
+  "observedWorldOrUnknownSockets": 0,
+  "node": "v24.22.2",
+  "browser": "156.0.8078.80"
+}
