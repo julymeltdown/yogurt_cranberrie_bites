@@ -1,0 +1,378 @@
+{
+  "version": 2,
+  "status": "CONTRACT_READY_METADATA_RENDER_VALIDATION_NOT_RUN",
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "view": "MAP_ONLY",
+  "dimensions": {
+    "width": 768,
+    "height": 1296
+  },
+  "base_source_published_commit": "06562ff1962be525ed929ef431a54bb589860373",
+  "source_execution_base": "93ef0d895dcc4b247b727e2cccba0bb84576b262",
+  "frozen_inputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/manifest.json",
+      "bytes": 7749,
+      "sha256": "sha256:9048d45753f4d47828082c422061ed17418f8bfb93b51cf3e9879e821eeb0cf6"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/quality-v10/map-label-presentation.json",
+      "bytes": 13881,
+      "sha256": "sha256:850c96b38253f4953778ac4b30d3b10372d091630b09d8a69bc425a28bcc4fd0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/spatial-v5/geometry-proposal.json",
+      "bytes": 184445,
+      "sha256": "sha256:a2cdd0e60c1f9cc7c3f093643760000e91a01e1fadffb51f9a76bd2c3a7a3a0f"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/spatial-v5/integer-projection.json",
+      "bytes": 22508,
+      "sha256": "sha256:ce72d8311287067d8c280f136c852a4f0024610f6550a83b12d42e4df2b82651"
+    }
+  ],
+  "decorations": [
+    {
+      "id": "map_garden_plaza_north_west",
+      "frame": "shrub_bed",
+      "x": 265,
+      "y": 388,
+      "width": 54,
+      "height": 32,
+      "depth_y": 420,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "semantic_plaza",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_plaza_north_east",
+      "frame": "shrub_bed",
+      "x": 363,
+      "y": 384,
+      "width": 56,
+      "height": 33,
+      "depth_y": 417,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "semantic_plaza",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_plaza_east",
+      "frame": "shrub_bed",
+      "x": 443,
+      "y": 434,
+      "width": 32,
+      "height": 20,
+      "depth_y": 454,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "semantic_plaza",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_plaza_south_west",
+      "frame": "shrub_bed",
+      "x": 240,
+      "y": 468,
+      "width": 30,
+      "height": 20,
+      "depth_y": 488,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "semantic_plaza",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_plaza_south_east",
+      "frame": "shrub_bed",
+      "x": 405,
+      "y": 539,
+      "width": 36,
+      "height": 23,
+      "depth_y": 562,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "semantic_plaza",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_meeting_north",
+      "frame": "shrub_bed",
+      "x": 406,
+      "y": 727,
+      "width": 64,
+      "height": 38,
+      "depth_y": 765,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "canonical_lawn",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_meeting_east",
+      "frame": "shrub_bed",
+      "x": 500,
+      "y": 884,
+      "width": 52,
+      "height": 31,
+      "depth_y": 915,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "canonical_lawn",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_meeting_west",
+      "frame": "shrub_bed",
+      "x": 218,
+      "y": 936,
+      "width": 30,
+      "height": 22,
+      "depth_y": 958,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "canonical_lawn",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_giveaway_west",
+      "frame": "shrub_bed",
+      "x": 300,
+      "y": 1202,
+      "width": 62,
+      "height": 37,
+      "depth_y": 1239,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "canonical_lawn",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    },
+    {
+      "id": "map_garden_giveaway_south_west",
+      "frame": "shrub_bed",
+      "x": 240,
+      "y": 1242,
+      "width": 72,
+      "height": 42,
+      "depth_y": 1284,
+      "interaction_id": null,
+      "view": "MAP_ONLY",
+      "surface": "canonical_lawn",
+      "kind": "unbound_map_planting_illustration_not_a_world_solid"
+    }
+  ],
+  "themes": [
+    {
+      "source_provenance": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v8/parade/provenance.json",
+        "bytes": 9479,
+        "sha256": "sha256:ae7a43abea4a67505423c407939f91142067a759cee3fe4082a718cc5c2b14da"
+      },
+      "original_source": {
+        "path": "frontend/public/world/reference-scene-v2/eras-v5/parade/source-atlas.png",
+        "bytes": 2098979,
+        "sha256": "sha256:881afb5cbf1c7db96b92feb164b69ce1181f625750ca6eba96a80a89b7f33b18"
+      },
+      "atlas_transform": {
+        "frame": "shrub_bed",
+        "source": "../../eras-v5/parade/source-atlas.png",
+        "source_rect": {
+          "x": 916,
+          "y": 1019,
+          "width": 334,
+          "height": 213
+        },
+        "packed_rect": {
+          "x": 774,
+          "y": 818,
+          "width": 244,
+          "height": 156
+        },
+        "scale": 0.7305389221556886,
+        "resampling": "nearest",
+        "rounding": "nearest ties away from zero"
+      },
+      "theme_id": "PARADE",
+      "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+      "base_scene": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/parade/scenery.json",
+        "bytes": 10420,
+        "sha256": "sha256:0c304c9d5e64e5652af20e412d4403890a7388a010101af7fbf3bab589faa855"
+      },
+      "layout": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/parade/layout.json",
+        "bytes": 25422,
+        "sha256": "sha256:4d459ce7d17df9bd3bbca9debe128df6ad3770d80425777e334b7725addf5465"
+      },
+      "atlas": {
+        "id": "parade_quality_v8_atlas",
+        "path": "world/reference-scene-v2/quality-v8/parade/atlas.png",
+        "sha256": "sha256:0428f976140a3ee1d59368d3016efae605a6e2b7b1470233f523e7721ec806c1",
+        "width_px": 1024,
+        "height_px": 1024,
+        "bytes": 1215028
+      },
+      "native_atlas": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/parade/native-atlas.png",
+        "bytes": 1259947,
+        "sha256": "sha256:f62569baaab7eecbbf236c0a7026f8c1014a438cd1f192d5366d8ed3fcaa5d32"
+      },
+      "frame": {
+        "x": 774,
+        "y": 818,
+        "width": 244,
+        "height": 156
+      },
+      "runtime_pngs": 2,
+      "runtime_bytes": 1764183,
+      "runtime_pixels": 2043904
+    },
+    {
+      "source_provenance": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v8/revenge/provenance.json",
+        "bytes": 9512,
+        "sha256": "sha256:d85b9f37269178539be64dd6c24c0f6fd02c09d55b1bc2d1168db8e9cf681b7b"
+      },
+      "original_source": {
+        "path": "frontend/public/world/reference-scene-v2/eras-v5/revenge/source-atlas.png",
+        "bytes": 2032361,
+        "sha256": "sha256:0b45b757048b36b46e9fcd07273db97b4487145f08b9d709186a645113d483a5"
+      },
+      "atlas_transform": {
+        "frame": "shrub_bed",
+        "source": "../../eras-v5/revenge/source-atlas.png",
+        "source_rect": {
+          "x": 916,
+          "y": 1021,
+          "width": 335,
+          "height": 211
+        },
+        "packed_rect": {
+          "x": 774,
+          "y": 819,
+          "width": 244,
+          "height": 154
+        },
+        "scale": 0.7283582089552239,
+        "resampling": "nearest",
+        "rounding": "nearest ties away from zero"
+      },
+      "theme_id": "REVENGE",
+      "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+      "base_scene": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/revenge/scenery.json",
+        "bytes": 10456,
+        "sha256": "sha256:ecdc17d2a010e3697b5b813fdd079d5cd4d44b2d0ee09d6b81272c2ffecfc9d5"
+      },
+      "layout": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/revenge/layout.json",
+        "bytes": 25423,
+        "sha256": "sha256:96c42600750bc582269114abd1a402c45c23e45229d20cbf8a084dfe58102553"
+      },
+      "atlas": {
+        "id": "revenge_quality_v8_atlas",
+        "path": "world/reference-scene-v2/quality-v8/revenge/atlas.png",
+        "sha256": "sha256:ee93dcde891054f6ef965d182af8237a09d10464ba762d017168d2bd9326bccd",
+        "width_px": 1024,
+        "height_px": 1024,
+        "bytes": 1203841
+      },
+      "native_atlas": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/revenge/native-atlas.png",
+        "bytes": 1248600,
+        "sha256": "sha256:5a9ee2dff0acc53a7e7f945e8dae7d992e629a192b4b3157e0c991731179e018"
+      },
+      "frame": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "runtime_pngs": 2,
+      "runtime_bytes": 1752996,
+      "runtime_pixels": 2043904
+    },
+    {
+      "source_provenance": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v8/danger/provenance.json",
+        "bytes": 9510,
+        "sha256": "sha256:0f9d485df98f1fd920c9ff3d8c73e4a08ddf908cc54b96e720fd2c7f9b5041dc"
+      },
+      "original_source": {
+        "path": "frontend/public/world/reference-scene-v2/eras-v5/danger/source-atlas.png",
+        "bytes": 2023523,
+        "sha256": "sha256:8473efaf6b25b8547d7fe46b673c7fe5279437c7e42dbb015cfda32fa22fe80f"
+      },
+      "atlas_transform": {
+        "frame": "shrub_bed",
+        "source": "../../eras-v5/danger/source-atlas.png",
+        "source_rect": {
+          "x": 914,
+          "y": 1020,
+          "width": 336,
+          "height": 212
+        },
+        "packed_rect": {
+          "x": 774,
+          "y": 819,
+          "width": 244,
+          "height": 154
+        },
+        "scale": 0.7261904761904762,
+        "resampling": "nearest",
+        "rounding": "nearest ties away from zero"
+      },
+      "theme_id": "DANGER",
+      "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+      "base_scene": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/danger/scenery.json",
+        "bytes": 10420,
+        "sha256": "sha256:1f64295a45a9698c75f5d008e42753896c783000698fa5b44e7dde6e8f0b6990"
+      },
+      "layout": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/danger/layout.json",
+        "bytes": 25422,
+        "sha256": "sha256:3216dcf4845fef5f95532fc25baaf027517926c305bce483dee29cb9ef5e0df8"
+      },
+      "atlas": {
+        "id": "danger_quality_v8_atlas",
+        "path": "world/reference-scene-v2/quality-v8/danger/atlas.png",
+        "sha256": "sha256:61948cb2f642de55721257fd4104fad4a7162a49c5fcf5bef9ed4d81d969ba12",
+        "width_px": 1024,
+        "height_px": 1024,
+        "bytes": 1201333
+      },
+      "native_atlas": {
+        "path": "frontend/public/world/reference-scene-v2/quality-v10/danger/native-atlas.png",
+        "bytes": 1245239,
+        "sha256": "sha256:31c7ae3bb8ddaa70e8d72eac7280843b57b9df438f5235c660f256d68cb9a1e7"
+      },
+      "frame": {
+        "x": 774,
+        "y": 819,
+        "width": 244,
+        "height": 154
+      },
+      "runtime_pngs": 2,
+      "runtime_bytes": 1750488,
+      "runtime_pixels": 2043904
+    }
+  ],
+  "composition": "Combine unchanged MAP props and these original atlas decorations by stable ascending depth_y; draw map-layout-v2 label-presentation.json afterward, then actual runtime markers. Adopt both sidecars together. WORLD ignores them; no extra PNG/font.",
+  "authority": "Unbound MAP illustrations only: never emit WORLD objects, collision cells, place/destination identities, interaction targets, physical eligibility or selected location from this sidecar. Existing canonical geometry and source review/release state remain unchanged.",
+  "provenance": "All decorations reuse the original independently authored shrub_bed frame from the exact frozen era atlas; no reference, selected-character or legacy raster sampling, generation, recoloring or alpha resealing.",
+  "source_layout_version": "map-layout-v2",
+  "base_presentation": {
+    "path": "frontend/public/world/reference-scene-v2/map-landscape-v1/presentation.json",
+    "bytes": 12497,
+    "sha256": "sha256:90402525366769febb1f8d5b779d9b293e4680858f105c88af4bf808965cc35e"
+  },
+  "derivation": "Only two unbound PLAZA garden placements differ from map-landscape-v1 to clear the corrected label; original atlas crops and all canonical metadata remain unchanged. Visibility/native/mobile follow-up is NOT_RUN.",
+  "required_label_presentation": {
+    "path": "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json",
+    "bytes": 14099,
+    "sha256": "sha256:f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
+  }
+}

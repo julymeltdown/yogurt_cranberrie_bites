@@ -1,0 +1,420 @@
+{
+  "target": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "bytes": 2967126,
+    "sha256": "sha256:d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+  },
+  "map_crop_xywh": [
+    975,
+    95,
+    248,
+    420
+  ],
+  "normalization": {
+    "width": 768,
+    "height": 1296
+  },
+  "method": "4-connected RGB components: R>210,G>200,B>170,max-min<65; area>80. Named text-paper components are identified at the recorded original-crop bounds. Compare paper-panel centers; preserve the original vector icon cell and rectangle sizes.",
+  "limits": "Component bounds exclude tinted icon cells and do not measure complete label edges, glyph outlines, perspective, road topology or whole-scene fidelity. Integer anchor rounding is measured separately; this is not a critic score or rendered acceptance.",
+  "labels": [
+    {
+      "label": "MAIN STAGE",
+      "target_text_paper_bbox": [
+        108,
+        54,
+        187,
+        76
+      ],
+      "threshold_component_pixels": 1207,
+      "target_normalized_text_paper_center": [
+        456.7741935483871,
+        200.57142857142858
+      ],
+      "old_text_paper_center": [
+        370.0,
+        147.0
+      ],
+      "proposed_text_paper_center": [
+        457.0,
+        201.0
+      ],
+      "old_anchor": [
+        335,
+        147
+      ],
+      "proposed_anchor": [
+        422,
+        201
+      ],
+      "old_center_error_source_px": [
+        -86.77419354838707,
+        -53.571428571428584
+      ],
+      "proposed_center_error_source_px": [
+        0.22580645161292523,
+        0.4285714285714164
+      ]
+    },
+    {
+      "label": "PLAZA",
+      "target_text_paper_bbox": [
+        81,
+        158,
+        130,
+        185
+      ],
+      "threshold_component_pixels": 833,
+      "target_normalized_text_paper_center": [
+        326.7096774193548,
+        529.2
+      ],
+      "old_text_paper_center": [
+        369.5,
+        461.0
+      ],
+      "proposed_text_paper_center": [
+        326.5,
+        529.0
+      ],
+      "old_anchor": [
+        370,
+        461
+      ],
+      "proposed_anchor": [
+        327,
+        529
+      ],
+      "old_center_error_source_px": [
+        42.79032258064518,
+        -68.20000000000005
+      ],
+      "proposed_center_error_source_px": [
+        -0.20967741935481854,
+        -0.20000000000004547
+      ]
+    },
+    {
+      "label": "MERCH",
+      "target_text_paper_bbox": [
+        43,
+        216,
+        94,
+        238
+      ],
+      "threshold_component_pixels": 771,
+      "target_normalized_text_paper_center": [
+        212.1290322580645,
+        700.4571428571429
+      ],
+      "old_text_paper_center": [
+        153.5,
+        750.0
+      ],
+      "proposed_text_paper_center": [
+        212.5,
+        700.0
+      ],
+      "old_anchor": [
+        118,
+        750
+      ],
+      "proposed_anchor": [
+        177,
+        700
+      ],
+      "old_center_error_source_px": [
+        -58.62903225806451,
+        49.54285714285709
+      ],
+      "proposed_center_error_source_px": [
+        0.37096774193548754,
+        -0.45714285714291236
+      ]
+    },
+    {
+      "label": "FOOD",
+      "target_text_paper_bbox": [
+        202,
+        211,
+        242,
+        233
+      ],
+      "threshold_component_pixels": 603,
+      "target_normalized_text_paper_center": [
+        687.483870967742,
+        685.0285714285715
+      ],
+      "old_text_paper_center": [
+        693.0,
+        758.0
+      ],
+      "proposed_text_paper_center": [
+        687.0,
+        685.0
+      ],
+      "old_anchor": [
+        658,
+        758
+      ],
+      "proposed_anchor": [
+        652,
+        685
+      ],
+      "old_center_error_source_px": [
+        5.51612903225805,
+        72.97142857142853
+      ],
+      "proposed_center_error_source_px": [
+        -0.48387096774195015,
+        -0.02857142857146755
+      ]
+    },
+    {
+      "label": "MEETUP ZONE",
+      "target_text_paper_bbox": [
+        105,
+        280,
+        157,
+        315
+      ],
+      "threshold_component_pixels": 1163,
+      "target_normalized_text_paper_center": [
+        405.6774193548387,
+        918.0
+      ],
+      "old_text_paper_center": [
+        407.0,
+        1025.0
+      ],
+      "proposed_text_paper_center": [
+        406.0,
+        918.0
+      ],
+      "old_anchor": [
+        372,
+        1024.836257
+      ],
+      "proposed_anchor": [
+        371,
+        918
+      ],
+      "old_center_error_source_px": [
+        1.3225806451612812,
+        107.0
+      ],
+      "proposed_center_error_source_px": [
+        0.32258064516128115,
+        0.0
+      ]
+    },
+    {
+      "label": "GIVEAWAY BOOTH",
+      "target_text_paper_bbox": [
+        148,
+        358,
+        209,
+        393
+      ],
+      "threshold_component_pixels": 1400,
+      "target_normalized_text_paper_center": [
+        552.7741935483871,
+        1158.6857142857143
+      ],
+      "old_text_paper_center": [
+        575.0,
+        1237.0
+      ],
+      "proposed_text_paper_center": [
+        553.0,
+        1159.0
+      ],
+      "old_anchor": [
+        540,
+        1241.157895
+      ],
+      "proposed_anchor": [
+        518,
+        1159
+      ],
+      "old_center_error_source_px": [
+        22.225806451612925,
+        78.31428571428569
+      ],
+      "proposed_center_error_source_px": [
+        0.22580645161292523,
+        0.3142857142856883
+      ]
+    }
+  ],
+  "planting_relocations": [
+    {
+      "id": "map_garden_plaza_south_west",
+      "before": {
+        "id": "map_garden_plaza_south_west",
+        "frame": "shrub_bed",
+        "x": 305,
+        "y": 551,
+        "width": 62,
+        "height": 35,
+        "depth_y": 586,
+        "interaction_id": null,
+        "view": "MAP_ONLY",
+        "surface": "semantic_plaza",
+        "kind": "unbound_map_planting_illustration_not_a_world_solid"
+      },
+      "after": {
+        "id": "map_garden_plaza_south_west",
+        "frame": "shrub_bed",
+        "x": 240,
+        "y": 468,
+        "width": 30,
+        "height": 20,
+        "depth_y": 488,
+        "interaction_id": null,
+        "view": "MAP_ONLY",
+        "surface": "semantic_plaza",
+        "kind": "unbound_map_planting_illustration_not_a_world_solid"
+      }
+    },
+    {
+      "id": "map_garden_plaza_south_east",
+      "before": {
+        "id": "map_garden_plaza_south_east",
+        "frame": "shrub_bed",
+        "x": 384,
+        "y": 548,
+        "width": 36,
+        "height": 23,
+        "depth_y": 571,
+        "interaction_id": null,
+        "view": "MAP_ONLY",
+        "surface": "semantic_plaza",
+        "kind": "unbound_map_planting_illustration_not_a_world_solid"
+      },
+      "after": {
+        "id": "map_garden_plaza_south_east",
+        "frame": "shrub_bed",
+        "x": 405,
+        "y": 539,
+        "width": 36,
+        "height": 23,
+        "depth_y": 562,
+        "interaction_id": null,
+        "view": "MAP_ONLY",
+        "surface": "semantic_plaza",
+        "kind": "unbound_map_planting_illustration_not_a_world_solid"
+      }
+    }
+  ],
+  "frozen_label_values_before": [
+    {
+      "label": "MAIN STAGE",
+      "x": 335,
+      "y": 147,
+      "interaction_id": "stage_info",
+      "lines": [
+        "MAIN STAGE"
+      ],
+      "icon": "stage",
+      "rect": {
+        "x": 179,
+        "y": 108,
+        "width": 312,
+        "height": 78
+      },
+      "binding_policy": "Existing interaction only"
+    },
+    {
+      "label": "PLAZA",
+      "x": 370,
+      "y": 461,
+      "interaction_id": null,
+      "lines": [
+        "PLAZA"
+      ],
+      "icon": null,
+      "rect": {
+        "x": 298,
+        "y": 422,
+        "width": 143,
+        "height": 78
+      },
+      "binding_policy": "Decorative, no hit target or invented place"
+    },
+    {
+      "label": "MERCH",
+      "x": 118,
+      "y": 750,
+      "interaction_id": "gifts_info",
+      "lines": [
+        "MERCH"
+      ],
+      "icon": "merch",
+      "rect": {
+        "x": 8,
+        "y": 711,
+        "width": 221,
+        "height": 78
+      },
+      "binding_policy": "Existing interaction only"
+    },
+    {
+      "label": "FOOD",
+      "x": 658,
+      "y": 758,
+      "interaction_id": null,
+      "lines": [
+        "FOOD"
+      ],
+      "icon": "food",
+      "rect": {
+        "x": 562,
+        "y": 719,
+        "width": 192,
+        "height": 78
+      },
+      "binding_policy": "Decorative, no hit target or invented place"
+    },
+    {
+      "label": "MEETUP ZONE",
+      "x": 372,
+      "y": 1024.836257,
+      "interaction_id": null,
+      "lines": [
+        "MEETUP",
+        "ZONE"
+      ],
+      "icon": "people",
+      "rect": {
+        "x": 252,
+        "y": 971,
+        "width": 240,
+        "height": 108
+      },
+      "binding_policy": "Decorative, no hit target or invented place"
+    },
+    {
+      "label": "GIVEAWAY BOOTH",
+      "x": 540,
+      "y": 1241.157895,
+      "interaction_id": null,
+      "lines": [
+        "GIVEAWAY",
+        "BOOTH"
+      ],
+      "icon": "gift",
+      "rect": {
+        "x": 400,
+        "y": 1183,
+        "width": 280,
+        "height": 108
+      },
+      "binding_policy": "Decorative, no hit target or invented place"
+    }
+  ],
+  "validation": {
+    "structural": "See verify.py",
+    "new_native_export": "NOT_RUN",
+    "new_mobile_comparison": "NOT_RUN"
+  }
+}

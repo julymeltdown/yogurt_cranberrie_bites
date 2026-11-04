@@ -1,0 +1,80 @@
+{
+  "task_id": "FE-REF-SCENE / AR01-AR02-AR04 measured MAP layout correction",
+  "status": "CONTRACT_READY_METADATA_RENDER_VALIDATION_NOT_RUN",
+  "execution_base": "9ff741f944b9b85f3868e6c18a3f26ecd320e407",
+  "branch": "codex/mcr-art-map-landscape-v1",
+  "changed_paths": [
+    "docs/mcr/art/reference-scene-v2.md",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/README.md",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/build.py",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/consumer-review.json",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/handoff.json",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/landscape-presentation.json",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/target-measurements.json",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/verification.json",
+    "frontend/public/world/reference-scene-v2/map-layout-v2/verify.py"
+  ],
+  "files": [
+    {
+      "path": "docs/mcr/art/reference-scene-v2.md",
+      "bytes": 54839,
+      "sha256": "sha256:b44a99bd89023be5861fa969b42616e5ca3e14fe13e68b7d7d869b2c24714f89"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/README.md",
+      "bytes": 4800,
+      "sha256": "sha256:dc52e3a933f739ac91edd99e38f1f7e7e0468553926df728f376d1b52c6f93fe"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/build.py",
+      "bytes": 7971,
+      "sha256": "sha256:56b946577e7f710109a06875855d1925b4f90c3ceb6d8ff444b1ae4b31e508f0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/consumer-review.json",
+      "bytes": 3602,
+      "sha256": "sha256:ea97fc7ff6e2ce0ef6c8989fc461f485a4565067bd22b9b4bb95448f9754aea7"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/label-presentation.json",
+      "bytes": 14099,
+      "sha256": "sha256:f5c3207617919fb15a8a2d9707c8cc64765c8289523b403c6e6dbb029b1cda54"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/landscape-presentation.json",
+      "bytes": 13276,
+      "sha256": "sha256:789258ec826a5bb3a2a8ff47deaab9700c207d2bd66ccb735dd3616436c648cf"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/target-measurements.json",
+      "bytes": 9247,
+      "sha256": "sha256:7a9e6315c90c47adb9ab17037ba3af992bb2c957b7a0f3fcc670c9e229a88142"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/verification.json",
+      "bytes": 492,
+      "sha256": "sha256:f6a5872b1fbe6f288237a8a6e1913cd76c75861866356b97a40e7a16140e4154"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/map-layout-v2/verify.py",
+      "bytes": 5354,
+      "sha256": "sha256:b57a8b2a818ad27261cdea9def0d0a9523055a2368504aa267e5d58d721bb88e"
+    }
+  ],
+  "geometry_hash": "sha256:ef52c8b05af6a882f2e82285c9879c9a4cb78ab513336e4bb3cd483c9b123395",
+  "scope": "Only additive map-layout-v2/** and the assigned ART lane document; no runtime/application/shared/character/frozen-source mutation.",
+  "behavior": "Six measured label translations and two coupled unbound PLAZA planting relocations. Same strings, bindings, style, icon vectors, font, era atlas resources, canonical geometry and WORLD.",
+  "validation": {
+    "build_exit_code": 0,
+    "structural_verifier_exit_code": 0,
+    "new_native_export": "NOT_RUN",
+    "new_mobile_reference_comparison": "NOT_RUN",
+    "planning_check_exit_code": 0,
+    "diff_check_exit_code": 0
+  },
+  "represented_existing_consumer": "d5c0c9d188f68acb749d7ed2940706f34b2a8be1; old layout only",
+  "publication": "Requested exact committed handoff through retained publisher Root153; no implicit current release/adoption.",
+  "consumer_requirements": "Record a new exact implementation lease; pin/adopt BOTH sidecars and derived display-anchor metadata, then validate matching native/editable/mobile inputs. Former v10 implementation lease returned.",
+  "limitations": "Not final source/whole-reference acceptance, new critic score, reviewed physical source or release/live/device/multiuser admission."
+}

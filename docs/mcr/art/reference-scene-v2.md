@@ -1,6 +1,6 @@
 # FE-REF-SCENE: original WORLD/MAP scenery proposal
 
-Status: **IN_PROGRESS** final source/consumer composition. Published **spatial-v5 / quality-v10** corrects the southwest diagonal route, preserving collision and all34 WORLD props. The separate **map-landscape-v1** source refinement adds ten original MAP-only planting illustrations with no new textures, geometry or world solids. Earlier sources and release bindings remain frozen. These are source-art inputs, not reference acceptance, a current asset release, backend spatial authority, a physical venue map or a multiuser result. See the latest sections below; earlier sections document frozen checkpoints.
+Status: **IN_PROGRESS** final source/consumer composition. Published **spatial-v5 / quality-v10** corrects the southwest diagonal route, preserving collision and all34 WORLD props. The separate **map-landscape-v1** source refinement adds ten original MAP-only planting illustrations with no new textures, geometry or world solids. New **map-layout-v2** is a measured, metadata-only label/planting correction with matching native/mobile validation **NOT_RUN**. Earlier sources and release bindings remain frozen. These are source-art inputs, not reference acceptance, a current asset release, backend spatial authority, a physical venue map or a multiuser result. See the latest sections below; earlier sections document frozen checkpoints.
 
 ## Source and scope
 
@@ -334,3 +334,54 @@ All three actual native MAP variants remain768×1296. Removing the ten new image
 Actual exits: authoring/native exports0, source verifier0, browser check0, plan/archive check0 and scoped whitespace check0. Browser evidence records36 cases at360/390/430 over two era cycles in planting/base modes,216 label checks and216 added-decoration foot samples, exact geometry/resource dimensions, font/advance fit, one canvas, no errors/overflow. These foot samples concern the added illustrations, not complete moving-avatar occlusion. Nine target/candidate captures, all three native PNGs and PARADE comparisons at all three widths were inspected. Native viewer-open returned queued; actual CLI PNGs provide render evidence.
 
 `map-landscape-v1/ADOPTION.md` specifies hash/era validation and stable depth ordering, labels afterward and actual runtime markers last. The designated publisher receives an exact committed handoff; adoption needs a new explicit pinned consumer patch. No routine Main/FrontendKing CC or approval/acknowledgment gate is added. The same artist goal stays active for full reference fidelity and concrete consumer findings. No fourth critic panel, new8.5 score, application/Phaser/server/source-review/release/device/multiuser/physical acceptance is claimed. Only the new source folder and this lane document are written.
+
+## Exact-target registration follow-up: MAP layout v2
+
+The frozen consumer packet for candidate `d5c0c9d188f68acb749d7ed2940706f34b2a8be1`
+is independently verified: `capture-packet.json` SHA
+`93770ac73a785f4b9da190da8d2929e130bbc7d54fa81c13b90278c9ca24eb96`, all49
+artifact byte/hash pins and all65 renderer plus40 root source pins match the
+represented Git input. Published checkpoint
+`12a5d394eeabc89e1c7b0012fb51038f737c9a7f` is an ancestor of inspected remote
+snapshot `e449890ad62e57f6708c69c9f76dc2f6f5ee5269`; all49 artifact and105 source
+pins match its Git blobs too. The full stage/sign framing, compact park/wall
+markers and reserved caption row resolve their earlier consumer findings for
+that input. Strict zero-difference renderer checks and16 root cases are bounded
+technical evidence, not reference acceptance.
+
+Actual PARADE WORLD/MAP captures at360/390/430 were compared with the unchanged
+ten-screen target. The source MAP label registration still materially differs:
+the old MAIN STAGE text-paper center is86.77px left and53.57px above the measured
+target center; PLAZA is42.79px right/68.20px above; MEETUP ZONE is107px below;
+GIVEAWAY BOOTH is78.31px below. These are source-coordinate differences after
+normalizing the original248×420 MAP crop to768×1296, not subjective fidelity
+scores. All six measurements and the explicit paper-pixel selection rule are in
+`map-layout-v2/target-measurements.json`.
+
+The additive `map-layout-v2/label-presentation.json` corrects the six nominal
+anchors to422,201;327,529;177,700;652,685;371,918;518,1159, respectively. It retains
+all strings, existing/null bindings, rectangle sizes, original icons, typography
+and exact font/license. Matching `landscape-presentation.json` changes only two
+unbound PLAZA garden placements to clear the new label. No new image, native
+project, font, WORLD prop, collision, identity or canonical geometry is authored.
+Both old sidecars and every frozen source remain intact.
+
+`build.py` and read-only `verify.py` exit0. Structural checks cover target-image
+hash/component bounds, six text-paper center errors at most0.484 source pixels,
+unchanged drawing/identity inputs, no label/planting rectangle overlaps and all
+1,428 relocated destination pixel centers inside the existing PLAZA parcel.
+These checks cannot prove the new visual result. Matching editable/native
+composition, garden visibility/occlusion, mobile reference comparison and
+explicit runtime adoption remain **NOT_RUN**; the old packet must not be reused
+as their proof. `consumer-review.json`, `verification.json` and `README.md`
+record the evidence and exact consumer follow-up.
+
+The original unfinished goal is reused. Its tool metadata was still **BLOCKED**
+when concrete captures and publication inputs arrived; source comparison and
+this bounded correction resumed without creating or falsely completing a goal.
+Full layout/proportion/architecture/texture/character composition acceptance
+remains **IN_PROGRESS**. No fourth scored panel,8.5 pass, reviewed place source,
+production/release, live-server, physical, device or multiuser acceptance is
+claimed. Only the new source folder and this lane document change. Any consumer
+follow-up needs an explicit new exact lease because the former v10 owner has
+returned its implementation paths.
