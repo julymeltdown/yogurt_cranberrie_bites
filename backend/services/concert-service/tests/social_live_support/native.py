@@ -44,6 +44,10 @@ def run(args,report):
     report['checks']['pure-input-tests']={'exit_code':pure.returncode,'stdout':pure.stdout}
     cluster=Cluster({name:executable(args.pg_bin/name) for name in PG_TOOLS})
     report['owned_root']=str(cluster.root)
+    def prepared_zero(phase):
+        n=int(cluster.sql('postgres','select count(*) from pg_prepared_xacts;'))
+        report.setdefault('prepared_checks',{})[phase]={'count':n,'status':'PASS' if n==0 else 'FAIL'}
+        if n:raise SmokeError('prepared-cleanup','residual prepared transactions before owned stop')
     try:
         cluster.init()
         # Owned cluster only; exercise actual read-only prepared exclusions.
@@ -81,10 +85,6 @@ def run(args,report):
                 if r.returncode:raise SmokeError(f'{phase}-{name}','native test failure; see sanitized check output',r.returncode)
                 if f'test result: ok. {count} passed; 0 failed;' not in r.stdout:raise SmokeError('inventory',f'{name} exact test inventory required')
         tests('before-restart')
-        def prepared_zero(phase):
-            n=int(cluster.sql('postgres','select count(*) from pg_prepared_xacts;'))
-            report.setdefault('prepared_checks',{})[phase]={'count':n,'status':'PASS' if n==0 else 'FAIL'}
-            if n:raise SmokeError('prepared-cleanup','residual prepared transactions before owned stop')
         prepared_zero('before-restart-stop')
         persisted={database:cluster.sql(database,'select (select count(*) from concert_command_receipts),(select count(*) from concert_outbox),(select count(*) from concert_social_effect_witnesses),(select count(*) from concert_social_policy_signals),(select coalesce(sum(revision),0) from concert_social_policy_generations);') for database in ['mcr_social_concert','mcr_concert_be_commands']}
         before=cluster.assert_postmaster();cluster.stop();cluster.start();after=cluster.assert_postmaster()
@@ -96,7 +96,10 @@ def run(args,report):
         prepared_zero('before-final-stop')
         if source_manifest()!=meta['source_sha256']:raise SmokeError('source','source changed during run')
     finally:
-        cluster.cleanup();report['cleanup']={'status':'PASS','owned_root_absent':not cluster.root.exists()}
+        try:
+            if cluster.started:prepared_zero('before-teardown-finally')
+        finally:
+            cluster.cleanup();report['cleanup']={'status':'PASS','owned_root_absent':not cluster.root.exists()}
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--artifacts',required=True,type=Path);p.add_argument('--report',required=True,type=Path);p.add_argument('--pg-bin',type=Path,default=Path('/opt/homebrew/opt/postgresql@16/bin'));a=p.parse_args()

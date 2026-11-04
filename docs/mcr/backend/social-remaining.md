@@ -725,7 +725,7 @@ Root serial intake preserves the above worker source/hashes and all previous Roo
 
 ## BE28–30/37 Social policy invalidation — 0051 candidate
 
-Status: **IN_PROGRESS; compilation/native qualification NOT_RUN**. Source base is
+Status: **IN_PROGRESS; first candidate compiled but failed native checks; repaired successor NOT_RUN**. Source base is
 published `145a8e939fb7bede7e46931d6559adb2c51f62a7`, in the same isolated Social
 worktree on `codex/mcr-social-invalidation-0051`. The old `66197e24` handoff is
 retained as `codex/mcr-social-retained-66197e24`. Root explicitly stopped writing
@@ -743,8 +743,9 @@ Shared config/main, resolver union, Gateway, contracts, World and common
 receipt/outbox files remain with their named owners.
 
 The migration adds actor/event generations beginning at one and metadata-only
-durable signals. A successful retained command transition creates signals in
-the same transaction, requiring the exact same-transaction outbox record,
+durable signals. A deferred trigger on the actual outbox insert creates signals
+at commit in the same transaction, requiring the completed successful receipt and
+the exact same-transaction outbox record,
 receipt/event/resource/revision tuple and recognized operation. Handle and Intro
 changes include affected active or same-transaction revoked peers; historical
 unrelated peers are excluded. Consent operations bind both actual request
@@ -815,3 +816,44 @@ the unchanged World snapshot; `policy.invalidate` uses the same five reason
 strings and integer range 1–9007199254740991. Contract files remain Root-owned
 and were not imported into this branch. No socket implementation, test pass or
 runtime acceptance is inferred from this source compatibility observation.
+
+### First 0051 qualification round — failed, resources released
+
+Source `61f9e895c6eb4af3367640a7f93791b126eb5d8d` ran under the accepted
+`SOCIAL-0051-MEDIA-202611041127Z` resource allocation. The first two builds
+exited 101 on cross-checkout stale Concert/Notification build scripts requesting
+a proto absent from this source. The exact authorized timestamp-only repairs
+preserved bytes, modes and ownership; no cache deletion or proto edit occurred.
+The third identical four-target Rust 1.88 locked/offline j2 no-run build passed
+in 50.54 seconds. Four external executables total 135,387,200 logical bytes.
+All tracked backend/contract dependencies, fixtures, migrations and Cargo output
+are frozen under the private `mcr-social-0051-osdh2ize` evidence directory.
+
+The target was unconditionally released at 11:39:33 UTC, with fresh zero-handle
+and zero-owned-compiler checks. No target access followed. The copied library's
+two selected pure checks and the live executable's eight pure checks passed.
+The first native phase failed: **10 passed, 5 failed**. The remaining/receipt
+phases and physical restart were **NOT_RUN**. The PostgreSQL cluster was stopped
+and removed; fresh process inspection found no remaining owned runtime. Full
+release occurred at 11:40:37 UTC, within the original deadline. Peak sampled
+whole allocation was 1,323,876,352 bytes, including 984,330,240 bytes of retained
+historical carry; no budget/floor/deadline abort occurred. Final prepared-zero
+was **NOT_OBSERVED** on this failed path; cleanup alone does not prove it.
+
+Failure evidence remains unchanged. `all-artifacts.json` SHA256 is
+`37de880e38d3583d6a616f125cfa412dd7a3b9cdcd753953ba3f34b9c7d0833f`;
+`native-report.json` is
+`e8678632a3bf89b355b505c6414e78c66a80a8094a73447ba9a8c0a5e45c0ca3`;
+`full-source.tar.gz` is
+`1a6300f1163603d36fa5072aab856f54ec24916918dae77539bfaf7e501049a3`.
+
+The repair uses the retained `concert_social_own_visible_xmin` helper rather
+than comparing row xmin to the top-level XID, because real kernel writes use
+savepoints. Moving emission to the deferred actual-outbox trigger binds the
+completed receipt at commit while leaving receipt-only synthetic witness
+fixtures outside the policy source. No old witness test or shared kernel file
+is modified. The new expiry storage fixture now supplies the required local
+relationship deadline to the retained SQL guard, explicitly without claiming
+canonical authority. The runner records prepared-zero in `finally` before
+teardown even when native checks fail. These repairs require a **fresh build
+allocation and rerun**; no post-release executable rebuild or test occurred.
