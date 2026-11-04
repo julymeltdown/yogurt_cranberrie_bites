@@ -22,7 +22,8 @@ export async function probeServiceMap(imageUrl: string, era: keyof typeof source
     try { await verifySpatialV5MapLayoutPair(l, p); invalid.push(false) } catch { invalid.push(true) }
   }
   const original = { REVENGE: revenge, PARADE: parade, DANGER: danger }[era]
-  const scenery = era === 'PARADE' ? { ...original, ground: { ...cozy.ground!, id: original.ground.id }, atlases: [cozy.atlas] } : original
+  const tuple = cozy.eras[era]
+  const scenery = { ...original, ground: { ...tuple.ground, id: original.ground.id }, atlases: [tuple.atlas] }
   const data = { ...source.scenes[era], scenery }, textures = new Map<string, HTMLImageElement>(), decoded: HTMLImageElement[] = []
   const load = async (url: string) => { const image = new Image(); image.src = url; await image.decode(); decoded.push(image); return image }
   for (const item of [data.scenery.ground, ...data.scenery.atlases]) textures.set(item.id, await load('/' + item.path))
