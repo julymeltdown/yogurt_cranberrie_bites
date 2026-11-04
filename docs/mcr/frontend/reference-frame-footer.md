@@ -15,22 +15,25 @@ checkout is unchanged; current source baseline is published
 tests, docs and evidence. Goal1793771449 remains ACTIVE and unbudgeted. New work
 follows the superseding human direction; its old wording is historical.
 
-Root's first World/MAP proposal is implemented in three explicitly granted
+Root's first World/MAP proposal is implemented in four explicitly granted
 background declarations: `.mcr-chrome-header` and `.mcr-chrome-panel-header`
 use warm berry `#614252`, and `.world-shell` uses peach `#fff3ec`. Existing
 `#f2eadf` header text is unchanged; calculated sRGB contrast is7.31:1. Dark
 `#191817` text against peach is16.28:1 where that pairing is actually used.
 These are arithmetic source checks, not browser-computed style evidence.
-All other CSS declarations, foreground colors, control state backgrounds,
+The existing `.world-shell::after` now has a pastel rose/lavender/mint
+`background-image` gradient, within its unchanged perimeter mask. The original
+background shorthand retains its non-image defaults; only the image is
+overridden. All other CSS declarations, foreground colors, control state backgrounds,
 typography, borders, masks, layout and artwork remain unchanged. In particular
 `parade-footer.tsx` is READONLY for this stage. No source pack, avatar pixel,
 portrait crop, world actor, landscape image or renderer is edited.
 
-The proposed fourth paint, `.world-shell::after` background within its unchanged
-perimeter mask, is not explicitly named in the recorded selector list. It is
-left unchanged while the exact additional property is coordinated with Root
-and World. There is no wait on a technical approval gate for the three ready
-properties. Further panel backdrop work is a distinct later source pass.
+The fourth paint was left untouched until World explicitly recorded the exact
+`.world-shell::after` background-color/image/size extension at `2ccf628c`.
+The owner read and accepted that record before editing. No pseudo-element
+geometry, padding, border, position, z-index, pointer behavior or mask changed.
+Further panel backdrop work is a distinct later source pass.
 
 `git diff --check` passes for these source edits. No native/build/browser or
 install has run. The first actual390px before/after World and MAP views will
