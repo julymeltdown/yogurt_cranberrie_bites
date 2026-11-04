@@ -13,6 +13,7 @@ pub enum Purpose {
     Post,
     Giveaway,
     Report,
+    Beacon,
 }
 impl Purpose {
     pub fn as_str(self) -> &'static str {
@@ -20,6 +21,7 @@ impl Purpose {
             Self::Post => "POST",
             Self::Giveaway => "GIVEAWAY",
             Self::Report => "REPORT",
+            Self::Beacon => "BEACON",
         }
     }
     pub fn parse(v: &str) -> Result<Self, CommandError> {
@@ -27,6 +29,7 @@ impl Purpose {
             "POST" => Ok(Self::Post),
             "GIVEAWAY" => Ok(Self::Giveaway),
             "REPORT" => Ok(Self::Report),
+            "BEACON" => Ok(Self::Beacon),
             _ => Err(CommandError::InvalidInput),
         }
     }
