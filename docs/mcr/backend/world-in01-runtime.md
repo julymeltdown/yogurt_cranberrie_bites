@@ -1,7 +1,10 @@
 # Isolated World startup
 
-Status: `IN_PROGRESS`. World remains `CLOSED`; IN01 two-client execution is
-`NOT_RUN`. Optional Age, Social, Gift, Feed and media modes are not prerequisites.
+Status: `IN_PROGRESS`. Public backend C03 and a bounded actual two-client World
+flow passed. Sustained World serving subsequently failed, so no live frontend
+handoff is available and browser IN01 remains `NOT_RUN`. The historical startup
+baseline below is superseded by the dated followups. Optional Age, Social, Gift,
+Feed and media modes are not prerequisites.
 
 `backend/scripts/mcr/world_in01_prepare.py` owns disposable PostgreSQL, Redis,
 six native services, real Auth mail delivery and, with `--bootstrap`, the actual
@@ -127,6 +130,51 @@ cleanup can finish, rather than abandoning them on the first error.
 only its digest without opening a database/listener. Runtime tooling can use
 this value for the Gateway and Participant release bindings rather than copying
 a digest from a different feature configuration.
+
+## Actual EOF correction and World hold qualification, 2026-11-04
+
+Gateway source `3710a029d083e4b5123df45b82867056f64b3c8b` removes scoped
+Content-Length and hides the inner exact byte count until response completion.
+All three advertised build targets passed with Rust 1.88, locked/offline, two
+jobs and no debug/incremental output. The copied executables were frozen and
+the target was released with zero handles before execution. Three platform
+body tests and three actual TCP framing tests passed, including fixed-length,
+zero-length and unchanged unscoped responses. This fixes the concrete terminal
+polling defect without manually completing an owner scope.
+
+The same real two-principal public C03 flow then passed all 18 HTTP checks.
+All 16 Root responses reached durable delivery completion, both Auth and Friend
+recorded 16 scope-settlement proofs, two canonical Profile receipts and native
+commits existed, and no prepared transaction remained. The later held runs
+strengthened the oracle: each owner had 16 leases in `COMPLETED`, and both
+participant ledgers contained zero `PENDING` rows. The first public C03 report
+did not query those additional columns; its evidence keeps that distinction.
+The passing C03 evidence is in
+[public-c03-3710a029-after-eof-fix.json](participant-live-evidence/public-c03-3710a029-after-eof-fix.json).
+
+The World-enabled launcher used actual public signup/login and the same frozen
+Gateway plus Concert `f2898a64` production binaries. Probe source `c3a0d4b4`
+obtained two public tickets, authenticated two real sockets, verified mutual
+membership, consumed movement and stop acknowledgements, peer replication and
+disconnect removal. Read-only database checks confirmed two issued/consumed
+tickets, zero remaining memberships and zero prepared transactions. The bounded
+run stopped Concert with unforced exit 0 and removed its owned cluster. The
+probe's ten local tests are separate fixture coverage, not this live proof.
+
+The prolonged hold is still a real open gate. Its first attempt exposed a
+launcher-only readiness parser mismatch after startup; source `50e7f0b9`
+corrected that scope. The next attempt passed C03 and the World probe but Concert
+then exited 1 with `world authority is unavailable`. Owned cleanup passed, but
+this is not sustained-serving acceptance. The World owner is investigating the
+actual maintenance/replay/lease path. Neither expired private descriptor was
+handed to the frontend, and no browser consumer is reserved against it.
+
+[root-native-3710a029.json](root-native-3710a029.json) preserves exact build,
+binary, original-report and test-log hashes, source revisions, measured counts,
+release ordering and both failed holds. Source-bound map4 and the approved
+selected static avatar remain the runtime release. New spatial/art candidates,
+optional producers, a negotiated movement profile, real-stack revocation,
+browser IN01 and physical/device validation remain separate unqualified gates.
 
 The qualified World source `82803760` was integrated as `2658000b`, including the
 missing immutable migration 0026 and the full 18-path final packet. Earlier

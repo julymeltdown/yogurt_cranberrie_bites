@@ -1,0 +1,288 @@
+{
+  "status": "PARTIAL",
+  "source_commit": "3710a029d083e4b5123df45b82867056f64b3c8b",
+  "source_pins_sha256": "45489acf927e5fce1c15bd1e08356712edf20a39f54e0cc2438027761b81759f",
+  "source_pin_count": 1945,
+  "rustc": "1.88.0",
+  "locked": true,
+  "offline": true,
+  "jobs": 2,
+  "debug": 0,
+  "incremental": false,
+  "builds": [
+    {
+      "phase": "platform-lib",
+      "exit_code": 0,
+      "seconds": 5.77,
+      "artifact_sha256": "ff9c5b59b10c0770f08f061310e432cba04d058a87c41dc139b6abf1194874a7",
+      "cargo_json_sha256": "91e11f2ba429d8ad649815c730d54694044f3fbfa4b89f72d82903a65312a184",
+      "stderr_sha256": "b6ce24bfe18723497dcc68cef24e1171aa1c44912dac02ef99ed9027844b83c4",
+      "command": "cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 --message-format=json -p platform --lib --no-run"
+    },
+    {
+      "phase": "gateway-http",
+      "exit_code": 0,
+      "seconds": 21.44,
+      "artifact_sha256": "5d294e706669cfec6852c354a5711d67706d7f95063de7f8c6aa2c85439a4539",
+      "cargo_json_sha256": "60278ccb38cd50c3c3dcb52ba189e9b95b98c087155e1723eede78e7e27d58d4",
+      "stderr_sha256": "88fc416c2874411bd450892702f6ec1d397d2f248d91fbe0f75b3eb0dc14d279",
+      "command": "cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 --message-format=json -p api-gateway --test response_scope_http --no-run"
+    },
+    {
+      "phase": "gateway-bin",
+      "exit_code": 0,
+      "seconds": 15.64,
+      "artifact_sha256": "857e0874dd6a62544e9104c79fc0701f0300b55772828cc978d4c5dcc6e6512b",
+      "cargo_json_sha256": "5a900dbd35194e9a43d58cf3721022446db5cc993c940987b22e6284476dd738",
+      "stderr_sha256": "7fd5659be6514b18aa2858d767e3832591c05e4c4460edb8635bcf0038daaaac",
+      "command": "cargo +1.88.0 build --manifest-path backend/Cargo.toml --locked --offline -j 2 --message-format=json -p api-gateway --bin api-gateway"
+    }
+  ],
+  "failed_attempts": [],
+  "release_before_tests": {
+    "released_at": "2026-11-04T03:49:26.348531+00:00",
+    "target_handles": 0,
+    "free_bytes": 10591252480,
+    "total_free_delta_bytes": 334098432,
+    "tests_or_pg_before_release": false
+  },
+  "focused_tests": [
+    {
+      "label": "platform-response-scope",
+      "argv": [
+        "platform-lib-tests",
+        "actor_delegation::response_scope::tests",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5,
+      "log_sha256": "c8980d9e6083703628a14dbfb787894d932ea561257d8911ac9f8e59ccba0bfa",
+      "summary": "test result: ok. 3 passed; 0 failed; 0 ignored;"
+    },
+    {
+      "label": "actual-http-framing",
+      "argv": [
+        "response-scope-http-tests",
+        "--nocapture"
+      ],
+      "exit_code": 0,
+      "seconds": 0.317,
+      "log_sha256": "2f5303354f9a5880188442d76e49826a5678b055ceba2fc453b770e1660cf404",
+      "summary": "test result: ok. 3 passed; 0 failed; 0 ignored;"
+    }
+  ],
+  "public_runtime_reports": [
+    {
+      "report": "public-c03-1.json",
+      "original_sha256": "e143d176c89ddd1f9c9abb2982ec79e86913750ba0479e285ecc2d1e5fe8181a",
+      "launcher_source_commit": "3710a029d083e4b5123df45b82867056f64b3c8b",
+      "driver_sha256": "8b3e8813fc53af2b48c07089a2aa5bcb855675b03978b37fdb8dbf6df038e629",
+      "result": "PARTIAL",
+      "browser_in01": "NOT_RUN",
+      "world_two_client": "NOT_RUN",
+      "c03_public_step_count": 18,
+      "c03_public_status": "PASS",
+      "c03_database_observed": {
+        "root_delivery_16": "16",
+        "profile_commit_2": "2",
+        "concert_native_commit_2": "2",
+        "auth_settlement_16": "16",
+        "friend_settlement_16": "16",
+        "no_prepared_transactions": "0"
+      },
+      "concert_stop": {
+        "exit_code": 0,
+        "forced": false
+      },
+      "owned_cleanup": "PASS",
+      "owned_root_removed": true
+    },
+    {
+      "report": "public-world-1.json",
+      "original_sha256": "4e1e9294f03ea4ed2ca9775d4355f4a1b032c2b000570b5a95080263c56a3644",
+      "launcher_source_commit": "4cebbdae33d7428de5f4acf4f20e1136027bc925",
+      "driver_sha256": "26f770172368980f4708cc6c24b896c29afad301c757f98d09fa698863d61a63",
+      "result": "PARTIAL",
+      "browser_in01": "NOT_RUN",
+      "world_two_client": "PASS",
+      "c03_public_step_count": 18,
+      "c03_public_status": "PASS",
+      "c03_database_observed": {
+        "root_delivery_16": "16",
+        "profile_commit_2": "2",
+        "concert_native_commit_2": "2",
+        "auth_settlement_16": "16",
+        "friend_settlement_16": "16",
+        "no_prepared_transactions": "0"
+      },
+      "concert_stop": {
+        "exit_code": 0,
+        "forced": false
+      },
+      "owned_cleanup": "PASS",
+      "owned_root_removed": true,
+      "world_probe": {
+        "result": "PASS",
+        "scope": "public-two-principal-world",
+        "phase": "complete",
+        "credential_values_recorded": false,
+        "cleanup": {
+          "opened": 2,
+          "close_acknowledged": 2
+        },
+        "actor_count": 2,
+        "mutual_membership": "PASS",
+        "movement": "PASS",
+        "consumed_input_ack": 2,
+        "source_bound_speed_check": "PASS; 8px/serverTick (BE12), not a negotiated prediction profile",
+        "peer_observed_removal": "PASS",
+        "stream_frames": [
+          4,
+          4
+        ]
+      },
+      "world_database_observed": {
+        "issued_tickets_2": "2",
+        "consumed_tickets_2": "2",
+        "released_memberships_0": "0",
+        "no_prepared_transactions": "0"
+      }
+    },
+    {
+      "report": "public-world-held-1.json",
+      "original_sha256": "57c8f088d55fc03abadbc60dd61ad99be039af48cfacae2382964712c6457203",
+      "launcher_source_commit": "81a84b9fc3a2844f06fd34e8c72bfb44914f348d",
+      "driver_sha256": "c75aff9885c70837852abdf18e077f17cfaeacfc50fe916e207ab68a7f6e889c",
+      "result": "FAIL",
+      "browser_in01": "NOT_RUN",
+      "world_two_client": "PASS",
+      "c03_public_step_count": 18,
+      "c03_public_status": "PASS",
+      "c03_database_observed": {
+        "root_delivery_16": "16",
+        "profile_commit_2": "2",
+        "concert_native_commit_2": "2",
+        "auth_settlement_16": "16",
+        "friend_settlement_16": "16",
+        "auth_pending_participants_0": "0",
+        "friend_pending_participants_0": "0",
+        "no_prepared_transactions": "0"
+      },
+      "concert_stop": {
+        "exit_code": 0,
+        "forced": false
+      },
+      "owned_cleanup": "PASS",
+      "owned_root_removed": true,
+      "world_probe": {
+        "result": "PASS",
+        "scope": "public-two-principal-world",
+        "phase": "complete",
+        "credential_values_recorded": false,
+        "cleanup": {
+          "opened": 2,
+          "close_acknowledged": 2
+        },
+        "actor_count": 2,
+        "mutual_membership": "PASS",
+        "movement": "PASS",
+        "consumed_input_ack": 2,
+        "source_bound_speed_check": "PASS; 8px/serverTick (BE12), not a negotiated prediction profile",
+        "peer_observed_removal": "PASS",
+        "stream_frames": [
+          4,
+          4
+        ]
+      },
+      "world_database_observed": {
+        "issued_tickets_2": "2",
+        "consumed_tickets_2": "2",
+        "released_memberships_0": "0",
+        "no_prepared_transactions": "0"
+      },
+      "failure": {
+        "phase": "readiness",
+        "diagnostic": "malformed or inconsistent readiness report",
+        "exit_code": null
+      }
+    },
+    {
+      "report": "public-world-held-2.json",
+      "original_sha256": "76844e1fc2b52e092e6bd4c2ffd57eada4763a2d3a73af4f5ff4045827f5b10d",
+      "launcher_source_commit": "50e7f0b9141652d2eda7c90a0cd10e8557462a6c",
+      "driver_sha256": "25848870ac80a54193c85d13d9c01a75ce784cfd0bc283a01fa69ca8779ba0dd",
+      "result": "FAIL",
+      "browser_in01": "NOT_RUN",
+      "world_two_client": "PASS",
+      "c03_public_step_count": 18,
+      "c03_public_status": "PASS",
+      "c03_database_observed": {
+        "root_delivery_16": "16",
+        "profile_commit_2": "2",
+        "concert_native_commit_2": "2",
+        "auth_settlement_16": "16",
+        "friend_settlement_16": "16",
+        "auth_pending_participants_0": "0",
+        "friend_pending_participants_0": "0",
+        "no_prepared_transactions": "0"
+      },
+      "concert_stop": {
+        "exit_code": 1,
+        "forced": false,
+        "unexpected_exit": true
+      },
+      "owned_cleanup": "PASS",
+      "owned_root_removed": true,
+      "world_probe": {
+        "result": "PASS",
+        "scope": "public-two-principal-world",
+        "phase": "complete",
+        "credential_values_recorded": false,
+        "cleanup": {
+          "opened": 2,
+          "close_acknowledged": 2
+        },
+        "actor_count": 2,
+        "mutual_membership": "PASS",
+        "movement": "PASS",
+        "consumed_input_ack": 2,
+        "source_bound_speed_check": "PASS; 8px/serverTick (BE12), not a negotiated prediction profile",
+        "peer_observed_removal": "PASS",
+        "stream_frames": [
+          4,
+          4
+        ]
+      },
+      "world_database_observed": {
+        "issued_tickets_2": "2",
+        "consumed_tickets_2": "2",
+        "released_memberships_0": "0",
+        "no_prepared_transactions": "0"
+      },
+      "failure": {
+        "phase": "concert-service:startup",
+        "diagnostic": "[redacted]ON[redacted]ERT_HEALTH_LISTENER=1[redacted]7.0.0.1:[redacted]8060\n[redacted]ON[redacted]ERT_WORLD_LISTENER=1[redacted]7.0.0.1:[redacted]8061\nError: world authority is unavailable\n",
+        "exit_code": 1
+      }
+    }
+  ],
+  "runtime_binaries": {
+    "gateway": {
+      "source_commit": "3710a029d083e4b5123df45b82867056f64b3c8b",
+      "sha256": "857e0874dd6a62544e9104c79fc0701f0300b55772828cc978d4c5dcc6e6512b"
+    },
+    "concert": {
+      "source_commit": "f2898a642848cbf015cb32664ce3a41b9d83314d",
+      "sha256": "35167d39524ee19e8dd34272e7bd925b762022c8860c1f74acd81ca57068c3ac"
+    },
+    "other_services": "Five retained production MAIN binaries; exact independent hashes and provenance retained in participant-live-evidence/public-c03-3710a029-after-eof-fix.json."
+  },
+  "limitations": [
+    "Build/test qualification covers exactly source3710 and three advertised targets, not all current master services.",
+    "C03 public HTTP and native settlement passed; the first public run queried non-null owner scope-settlement records, while held runs additionally required COMPLETED and zero PENDING participants.",
+    "Bounded actual World tickets, sockets, movement and disconnect passed. Sustained serving failed after the probe; no live FE descriptor was delivered.",
+    "Held1 failed a launcher readiness-parser compatibility check; held2 used the corrected parser and actual Concert exited1 with world authority unavailable.",
+    "Browser IN01, physical/device qualification and real-stack revocation remain NOT_RUN.",
+    "Original private reports and frozen binaries are preserved; this portable receipt omits credential paths, principal IDs, process IDs and host checkout paths."
+  ]
+}
