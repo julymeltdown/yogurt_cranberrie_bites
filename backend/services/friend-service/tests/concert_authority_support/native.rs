@@ -6,7 +6,6 @@ use sqlx::{PgPool, Row};
 use std::sync::Arc;
 
 const OWNER: &str = "friend";
-const ROLE: Workload = Workload::Friend;
 const REVISION: &str = "friend_concert_relationship_revision";
 
 pub(super) async fn pool(producer: bool) -> anyhow::Result<PgPool> {
