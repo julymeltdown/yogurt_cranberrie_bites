@@ -9,9 +9,7 @@ use concert_application::{
     },
     commands::{FingerprintKeys, SigningKey},
 };
-use concert_domain::{
-    avatar::AvatarCatalog, AuthUserId, EventId, ParticipantKey, Preferences, Revision, Theme,
-};
+use concert_domain::{avatar::AvatarCatalog, AuthUserId, EventId, ParticipantKey};
 use concert_service::adapters::out::relationship_authority::guarded::proto::TransactionStatus as Outcome;
 use concert_service::{
     adapters::out::{
@@ -232,7 +230,10 @@ async fn actual_producer_witnesses_dispatch_without_unknown_or_error_fallback() 
     let preset = &manifest["presets"][0]["config"];
     sqlx::query("insert into concert_avatar_settings(event_id,user_id,contract_version,representation,preset_id,manifest_id,manifest_version) values($1,$2,'1.1.0','whole_character',$3,$4,1)")
         .bind(event).bind(actor).bind(preset["preset_id"].as_str().unwrap()).bind(manifest["manifest_id"].as_str().unwrap()).execute(&f.concert).await?;
-    let body = br#"{"expected_revision":1,"theme":"PARADE"}"#.to_vec();
+    let body = br#"{"expected_revision":1,"preferences":{"theme":"PARADE","low_power":false,"reduced_motion":false,"sound_enabled":false}}"#.to_vec();
+    let (expected, preferences) =
+        concert_service::adapters::out::repository::avatar::parse_preferences(&body)
+            .map_err(|e| anyhow::anyhow!("actual preference parser {e:?}"))?;
     let (binding, _) = participant_capture::binding(
         actor,
         family,
@@ -258,13 +259,8 @@ async fn actual_producer_witnesses_dispatch_without_unknown_or_error_fallback() 
         .execute(
             key,
             AvatarMutation::Preferences {
-                expected: Revision::new(1).unwrap(),
-                value: Preferences {
-                    theme: Theme::Parade,
-                    low_power: false,
-                    reduced_motion: false,
-                    sound_enabled: false,
-                },
+                expected,
+                value: preferences,
             },
             &catalog,
             &"8".repeat(64),
