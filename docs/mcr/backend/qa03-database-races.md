@@ -27,7 +27,7 @@ restarts. Its dependencies are BE17, BE22, BE23, and BE34. The invariants in Â§Â
   Concert application/domain/service crates; no new dependency is introduced.
 - Lifecycle/ledger code is imported read-only from
   `backend/scripts/mcr/migration_smoke.py` at that baseline. The new controller
-  owns a distinct `mcr_qa03` database and marker/inode-bound private cluster.
+  owns a distinct `mcr_qa_races` database and marker/inode-bound private cluster.
 - Exact runtime source and domain-contract hashes are captured before build,
   checked after compilation, and checked again before native execution. Cargo
   output and copied binary are digest-bound in the build receipt. The successful

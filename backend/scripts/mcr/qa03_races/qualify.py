@@ -37,7 +37,7 @@ AFTER = (
     "gifts::restarted_worker_drains_expiry_exactly_once",
     "wall::restart_retains_operation_receipt_and_cooldown",
 )
-DATABASE = "mcr_qa03"
+DATABASE = "mcr_qa_races"
 
 
 def sha(path: Path) -> str:
@@ -158,6 +158,8 @@ def run(args) -> dict:
         report["status"] = "PASS"
     except BaseException as error:
         report["failure"] = str(error) if isinstance(error, RuntimeError) else type(error).__name__
+        if isinstance(error, migration.SmokeError):
+            report["failure_detail"] = error.detail
     finally:
         signal.signal(signal.SIGTERM, previous)
         try:
