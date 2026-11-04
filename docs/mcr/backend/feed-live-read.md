@@ -425,3 +425,35 @@ Diagnostic receipt and private logs are external at
 failure reproduction, not passing qualification. Its controller removed only its
 marker/inode-bound owned cluster. The five-owner Feed join remains NOT_RUN until
 the owner's real fix and a fresh Feed build/execution.
+
+
+## Current 20-case adapter checkpoint
+
+Exact clean source `236a283937b391104fe4ba09222edf4c134a2cef` compiled the three
+integration targets with Rust 1.88, locked/offline jobs 2, dev/test debug 0 and
+incremental 0. This includes the importing Post protocol and exported real Feed
+policy/resources/read composition against consumed root and PublicProfile source.
+The compile passed with zero errors and zero Feed/Post warnings; 16 warnings
+belong to peer World/Party paths and are recorded separately in `warnings.json`.
+The lib unit-test target was not compiled by this narrowly allocated run.
+
+Fresh free disk was 52,446,256 KiB. Within the explicitly allocated BACKEND target,
+only the stale contracts-build package was cleaned (20 files, 816.3 KiB), then the
+build finished in 28.64 seconds. Cargo JSON, 1,584 source files and all three
+executables were copied outside the target. An actual zero-open-handle check
+preceded unconditional release; there was no subsequent target access.
+
+The frozen runner then executed exactly **20 passed, zero failed/ignored/filtered**:
+nine Concert facade/filter cases, eight Post adapter cases and three wire cases.
+Future-before fixed snapshots and the raw-batch author-filter boundary case are
+now executed, superseding their previous NOT_RUN labels for this exact snapshot.
+The actual owner/HTTP/native join remains NOT_RUN in this adapter report; it does
+not qualify the staged cfg(test) five-owner library case or PublicProfile's
+uncompiled local deadline correction.
+
+External evidence: `/private/tmp/mcr-feed-adapter-current-20261104/` contains
+`cargo.jsonl`, `cargo.stderr`, `binaries.json`, `source/`, `source-manifest.json`,
+`warnings.json`, `target-handles.json` and `adapter-report.json`. Report SHA-256:
+`ba8ed3a5731574fedaf32b23f65c438cb9faef863842831d579570551b2c4c47`.
+The historical Post-only native five-case result remains tied to `4552ccf9`.
+No positive native/HTTP acceptance or target ownership is carried forward.
