@@ -20,8 +20,13 @@ use crate::{
     },
     product_rpc::{
         delivery::DeliveryPublisher,
-        scope_ledger::{ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys},
-        settlement::ProducerSettlementService,
+        scope_ledger::{
+            ChildIntentSettler, ChildRecoveryKey, ChildRecoveryKeys, ProducerTransaction,
+        },
+        settlement::{
+            NativeTransactionResolution, NativeTransactionResolver, PgNativeAbortResolver,
+            ProducerSettlementService,
+        },
     },
 };
 use concert_application::{bootstrap::ValidatedProductRelease, community::giveaway::PickupKeys};
@@ -338,10 +343,9 @@ impl ParticipantRuntimeSettings {
             &self.tls,
             self.relationship.clone(),
         )?);
-        let settlement = canonical.settlement_service(Arc::new(ParticipantNativeResolver::new(
-            pool.clone(),
-            self.settings.instance,
-        )?));
+        let settlement = canonical.settlement_service(Arc::new(
+            ParticipantStandaloneResolver::new(pool.clone(), self.settings.instance)?,
+        ));
         self.assemble(pool, release, canonical, fence, settlement)
     }
 
@@ -493,6 +497,40 @@ pub struct ParticipantRuntime {
     pub recovery: ParticipantRecovery,
     pub callers: CallerRegistry,
     pub gateway_verifier: ActorDelegationVerifier,
+}
+/// Standalone C03 reads register actual rolled-back local transactions too.
+/// Only that exact immutable read route uses native abort proof. Mutations keep
+/// the dedicated Participant witness adapter; no other Product domain is added.
+struct ParticipantStandaloneResolver {
+    participant: ParticipantNativeResolver,
+    reads: PgNativeAbortResolver,
+}
+impl ParticipantStandaloneResolver {
+    fn new(pool: sqlx::PgPool, instance: Uuid) -> Result<Self, Status> {
+        Ok(Self {
+            participant: ParticipantNativeResolver::new(pool.clone(), instance)?,
+            reads: PgNativeAbortResolver::new(pool, instance)?,
+        })
+    }
+}
+#[async_trait::async_trait]
+impl NativeTransactionResolver for ParticipantStandaloneResolver {
+    async fn resolve(
+        &self,
+        binding: &platform::actor_delegation::owner_binding::OwnerBinding,
+        identity: &ProducerTransaction,
+    ) -> Result<NativeTransactionResolution, Status> {
+        if binding.parent_method
+            == "/concert.participant.v1.ConcertParticipantService/GetParticipant"
+            && binding.operation == "getConcertParticipant"
+            && binding.http_method == "GET"
+            && binding.http_target == format!("/api/concert/events/{}/me", binding.event_id)
+        {
+            self.reads.resolve(binding, identity).await
+        } else {
+            self.participant.resolve(binding, identity).await
+        }
+    }
 }
 /// C03 never creates public/Gift/Social child intents. An unexpected existing
 /// intent must stay unresolved; another product cannot gain C03's ledger authority.

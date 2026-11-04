@@ -307,7 +307,7 @@ async fn negative_composition(f: &fixture::Fixture, instance: Uuid) -> anyhow::R
 #[tokio::test]
 #[ignore = "requires frozen CF02 executable and exact owned PG16/mTLS controller"]
 async fn shared_participant_core_and_real_profile_native() -> anyhow::Result<()> {
-    let f = fixture::Fixture::new().await?;
+    let mut f = fixture::Fixture::new().await?;
     let instance = Uuid::new_v4();
     negative_composition(&f, instance).await?;
     let shared = fixture::configured(instance, f.product.source_digest())?.compose_shared(
@@ -435,6 +435,7 @@ async fn shared_participant_core_and_real_profile_native() -> anyhow::Result<()>
     assert_eq!(decisions, vec!["COMMIT".to_string()]);
     assert_eq!(f.prepared().await?, vec![0, 0, 0, 0]);
     mounted.stop().await?;
+    f.restart_owners().await?;
     // Existing standalone composition still has its original dedicated core and
     // Participant native resolver. No shared factory is needed for C03 alone.
     let standalone = fixture::configured(Uuid::new_v4(), f.product.source_digest())?
@@ -450,6 +451,41 @@ async fn shared_participant_core_and_real_profile_native() -> anyhow::Result<()>
         )
         .await
     );
+    assert_eq!(f.prepared().await?, vec![0, 0, 0, 0]);
+    let (patch, document) = invoke(
+        &single,
+        &f,
+        Some(serde_json::json!({
+            "expected_revision": 2,
+            "display_name": "CF02 standalone canonical",
+            "bio": "CF02 standalone actual committed Profile"
+        })),
+    )
+    .await?;
+    assert_eq!(document["revision"], 3);
+    assert_eq!(
+        document["profile"]["display_name"],
+        "CF02 standalone canonical"
+    );
+    assert!(
+        eof(
+            single.core.clone(),
+            patch
+                .delivery
+                .ok_or_else(|| anyhow::anyhow!("standalone PATCH delivery"))?
+        )
+        .await
+    );
+    let nickname: String = sqlx::query_scalar("select nickname from profiles where user_id=$1")
+        .bind(f.actor)
+        .fetch_one(&f.profile)
+        .await?;
+    assert_eq!(nickname, "CF02 standalone canonical");
+    let decisions: Vec<String> =
+        sqlx::query_scalar("select decision from concert_participant_profile_operations")
+            .fetch_all(&f.concert)
+            .await?;
+    assert_eq!(decisions, vec!["COMMIT".to_string(), "COMMIT".to_string()]);
     assert_eq!(f.prepared().await?, vec![0, 0, 0, 0]);
     single.stop().await?;
     println!("CF02 actual shared Participant/core/typed Profile/native recovery, closed union coordinated PATCH, original EOF and standalone C03 PASS");

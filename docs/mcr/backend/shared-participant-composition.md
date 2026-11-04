@@ -64,7 +64,14 @@ once. The factory starts no listeners or workers.
 ## Standalone and key-role preservation
 
 Existing `compose(pool, release)` retains the standalone core,
-`ParticipantOnlyChildren` quarantine and `ParticipantNativeResolver` behavior.
+`ParticipantOnlyChildren` quarantine and dedicated `ParticipantNativeResolver`
+mutation witness behavior. A private closed standalone dispatcher sends only
+the exact `GetParticipant`/`getConcertParticipant`/`GET`/event-`me` tuple to the
+same-store `PgNativeAbortResolver`. The prior standalone adapter refused that
+read transaction, leaving actual terminal delivery unresolved even though its
+read work rolled back. The abort-only adapter cannot certify COMMIT; all other
+tuples still go to the dedicated Participant resolver. Shared mode continues
+to use the existing full closed union.
 Both modes call one private assembly method for actual canonical Auth reads,
 SELF Profile client, AvatarPersistence, ProfileJournal, Decision service,
 retained delivery and ParticipantRecovery. No fake successful owner is added.
@@ -104,7 +111,10 @@ The host is designed to check:
   ciphertext and permits original delivery retry without inventing a new scope.
 - Actual coordinated Profile PATCH exercises distinct SELF/Decision signatures,
   ProfileJournal/native decision and the existing closed union. Standalone C03
-  Get and terminal delivery still work after the shared assembly stops.
+  Get, terminal delivery and coordinated PATCH retain actual abort/commit proof
+  after the shared assembly stops. The fixture gracefully stops listeners and
+  restarts actual owners before the standalone instance, ensuring fresh owner
+  settlement channels rather than cached dispatch into the old producer.
 - Wrong release, mismatched SELF/public owner, unsafe Notification endpoint,
   foreign/closed pool and invalid decision-role keys fail construction.
 

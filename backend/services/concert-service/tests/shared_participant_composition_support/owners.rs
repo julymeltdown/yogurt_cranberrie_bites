@@ -13,16 +13,25 @@ use platform::{
 use sqlx::PgPool;
 use std::sync::Arc;
 
-pub(crate) struct Running(tokio::task::JoinHandle<()>);
+pub(crate) struct Running {
+    task: tokio::task::JoinHandle<()>,
+    shutdown: Option<tokio::sync::oneshot::Sender<()>>,
+}
 impl Running {
-    pub(crate) async fn stop(mut self) {
-        self.0.abort();
-        let _ = (&mut self.0).await;
+    pub(crate) async fn stop(mut self) -> anyhow::Result<()> {
+        if let Some(shutdown) = self.shutdown.take() {
+            let _ = shutdown.send(());
+        }
+        tokio::time::timeout(std::time::Duration::from_secs(3), &mut self.task).await??;
+        Ok(())
     }
 }
 impl Drop for Running {
     fn drop(&mut self) {
-        self.0.abort();
+        if let Some(shutdown) = self.shutdown.take() {
+            let _ = shutdown.send(());
+        }
+        self.task.abort();
     }
 }
 pub(crate) fn signer() -> anyhow::Result<RelationshipReadSigner> {
@@ -43,10 +52,12 @@ fn incoming(
 }
 fn spawn(
     f: impl std::future::Future<Output = Result<(), tonic::transport::Error>> + Send + 'static,
+    shutdown: tokio::sync::oneshot::Sender<()>,
 ) -> Running {
-    Running(tokio::spawn(async move {
-        f.await.expect("actual CF02 owner server")
-    }))
+    Running {
+        task: tokio::spawn(async move { f.await.expect("actual CF02 owner server") }),
+        shutdown: Some(shutdown),
+    }
 }
 pub(crate) async fn auth(pool: PgPool) -> anyhow::Result<Running> {
     use auth_service::adapters::r#in::grpc::concert_relationship as rel;
@@ -67,13 +78,17 @@ pub(crate) async fn auth(pool: PgPool) -> anyhow::Result<Running> {
     )?;
     let relationship=guard(&rel::POLICY,rel::proto::auth_concert_relationship_service_server::AuthConcertRelationshipServiceServer::new(rel::RelationshipServer::from_pool(pool)),CallerRegistry::new().register(Workload::Concert,"concert-fixture")?,verifier(Workload::Auth)?.into_inner())?;
     let listener = tokio::net::TcpListener::bind(environment::address("auth")?).await?;
+    let (shutdown, stopped) = tokio::sync::oneshot::channel();
     Ok(spawn(
         tonic::transport::Server::builder()
             .tls_config(tls.server_config()?)?
             .layer(CallDeadlineLayer)
             .add_service(owner)
             .add_service(relationship)
-            .serve_with_incoming(incoming(listener)),
+            .serve_with_incoming_shutdown(incoming(listener), async move {
+                let _ = stopped.await;
+            }),
+        shutdown,
     ))
 }
 pub(crate) async fn friend(pool: PgPool) -> anyhow::Result<Running> {
@@ -93,12 +108,16 @@ pub(crate) async fn friend(pool: PgPool) -> anyhow::Result<Running> {
         verifier(Workload::Friend)?,
     )?;
     let listener = tokio::net::TcpListener::bind(environment::address("friend")?).await?;
+    let (shutdown, stopped) = tokio::sync::oneshot::channel();
     Ok(spawn(
         tonic::transport::Server::builder()
             .tls_config(tls.server_config()?)?
             .layer(CallDeadlineLayer)
             .add_service(owner)
-            .serve_with_incoming(incoming(listener)),
+            .serve_with_incoming_shutdown(incoming(listener), async move {
+                let _ = stopped.await;
+            }),
+        shutdown,
     ))
 }
 pub(crate) async fn profile(
@@ -144,6 +163,7 @@ pub(crate) async fn profile(
         Arc::new(std::sync::atomic::AtomicUsize::new(0)),
     );
     let listener = tokio::net::TcpListener::bind(environment::address("profile")?).await?;
+    let (shutdown, stopped) = tokio::sync::oneshot::channel();
     Ok(spawn(
         tonic::transport::Server::builder()
             .tls_config(tls.server_config()?)?
@@ -151,7 +171,10 @@ pub(crate) async fn profile(
             .add_service(self_service)
             .add_service(settlement)
             .add_service(public)
-            .serve_with_incoming(incoming(listener)),
+            .serve_with_incoming_shutdown(incoming(listener), async move {
+                let _ = stopped.await;
+            }),
+        shutdown,
     ))
 }
 pub(crate) async fn concert(
@@ -175,12 +198,16 @@ pub(crate) async fn concert(
         decision_keys,
     )?;
     let listener = tokio::net::TcpListener::bind(environment::address("concert")?).await?;
+    let (shutdown, stopped) = tokio::sync::oneshot::channel();
     Ok(spawn(
         tonic::transport::Server::builder()
             .tls_config(environment::tls(Workload::Concert)?.server_config()?)?
             .layer(CallDeadlineLayer)
             .add_service(settlement)
             .add_service(decision)
-            .serve_with_incoming(incoming(listener)),
+            .serve_with_incoming_shutdown(incoming(listener), async move {
+                let _ = stopped.await;
+            }),
+        shutdown,
     ))
 }

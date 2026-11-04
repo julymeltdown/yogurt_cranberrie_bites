@@ -139,6 +139,19 @@ impl Fixture {
             _servers: servers,
         })
     }
+    /// A different producer instance must get fresh actual owner dispatch
+    /// channels. Never reuse cached calls into the preceding Concert listener.
+    pub(crate) async fn restart_owners(&mut self) -> anyhow::Result<()> {
+        for server in self._servers.drain(..) {
+            server.stop().await?;
+        }
+        self._servers = vec![
+            owners::auth(self.auth.clone()).await?,
+            owners::friend(self.friend.clone()).await?,
+            owners::profile(self.profile.clone(), self.deny_complete.clone()).await?,
+        ];
+        Ok(())
+    }
     pub(crate) async fn prepared(&self) -> anyhow::Result<Vec<i64>> {
         let mut out = Vec::new();
         for p in [&self.auth, &self.friend, &self.concert, &self.profile] {
@@ -199,7 +212,7 @@ impl Mounted {
             tokio::time::timeout(std::time::Duration::from_secs(3), task).await??;
         }
         if let Some(root) = self.root.take() {
-            root.stop().await;
+            root.stop().await?;
         }
         Ok(())
     }
