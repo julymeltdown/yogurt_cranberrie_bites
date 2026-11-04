@@ -1,0 +1,225 @@
+{
+  "status": "PASS",
+  "scopeStatus": "MOCK_READY",
+  "wholeFE17": "INCOMPLETE - public motion profile/apply timing contract and authoritative consumer remain",
+  "liveQA05": "NOT_RUN",
+  "IN01": "NOT_RUN",
+  "IN05": "NOT_RUN",
+  "base": "bb7d21b3e931a9dc88056c1c1c436eb9817292da",
+  "branch": "codex/mcr-fe-FE17-QA05-client-recovery",
+  "publicationRoute": "Root153 designated integrator; no worker master push",
+  "source": {
+    "backend/crates/concert-domain/src/world/mod.rs": {
+      "readOnlyCheckpoint": "d73296f582a459eb94d55123f8480e78b52a0d21",
+      "sha256": "5bed3adce15687b7f952e117a2550e54a090205dc066b513e2ec034aeefa7e1e",
+      "lastSourceCommit": "2d3faaa6e07e0ccce0ad23682cc9aff1b7bd633f",
+      "sameAsAssignmentBase": true
+    },
+    "backend/services/concert-service/src/world/simulation.rs": {
+      "readOnlyCheckpoint": "d73296f582a459eb94d55123f8480e78b52a0d21",
+      "sha256": "8e732b789057a89dabaffbe93e0f74fe1d447db6abb1fb31f1b063c45e13c106",
+      "lastSourceCommit": "8a716f5546418b60aeee77c7ff5d70292cbc74d1",
+      "sameAsAssignmentBase": true
+    },
+    "backend/services/concert-service/src/config/world_runtime.rs": {
+      "readOnlyCheckpoint": "d73296f582a459eb94d55123f8480e78b52a0d21",
+      "sha256": "2515ccb9cfb5850c1b850c7bed706ffd0ace1eb8c2a48da4f9131389b7e32ee5",
+      "lastSourceCommit": "1d008582bbd9cbec6316e7e238fa381cab0c3db8",
+      "sameAsAssignmentBase": true
+    },
+    "backend/services/concert-service/tests/world_simulation.rs": {
+      "readOnlyCheckpoint": "d73296f582a459eb94d55123f8480e78b52a0d21",
+      "sha256": "bd75d5b424c93467001e1b1afad3ab4eb3a67cad1b0a08032455387b82424032",
+      "lastSourceCommit": "8a716f5546418b60aeee77c7ff5d70292cbc74d1",
+      "sameAsAssignmentBase": true
+    },
+    "contracts/realtime/v1/world.schema.json": {
+      "readOnlyCheckpoint": "d73296f582a459eb94d55123f8480e78b52a0d21",
+      "sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+      "lastSourceCommit": "69a5624cd153a216f2398cebabf062400dce23eb",
+      "sameAsAssignmentBase": true
+    },
+    "contracts/realtime/v1/policy.json": {
+      "readOnlyCheckpoint": "d73296f582a459eb94d55123f8480e78b52a0d21",
+      "sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+      "lastSourceCommit": "69a5624cd153a216f2398cebabf062400dce23eb",
+      "sameAsAssignmentBase": true
+    },
+    "contracts/realtime/v1/operations.json": {
+      "readOnlyCheckpoint": "d73296f582a459eb94d55123f8480e78b52a0d21",
+      "sha256": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
+      "lastSourceCommit": "3371e6f91af14d7ba14d395911439ad3cab7e3cb",
+      "sameAsAssignmentBase": true
+    }
+  },
+  "native": {
+    "exit": 0,
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "observations": 42,
+    "browser": "156.0.8078.80",
+    "sourcePins": 971,
+    "sourcePinsRechecked": true
+  },
+  "commands": [
+    {
+      "cwd": ".",
+      "command": "node frontend/e2e/realtime/world/qa05/native.mjs",
+      "exit": 0,
+      "log": "native-run.txt"
+    },
+    {
+      "cwd": ".",
+      "command": "node frontend/e2e/realtime/world/qa05/check-types.mjs",
+      "exit": 0,
+      "log": "typecheck-fixture.txt"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/vitest run src/world/network/__tests__/replication.test.ts src/world/network/__tests__/transport.test.ts src/world/composition/__tests__/composition.test.ts src/world/composition/__tests__/presentation-release.test.ts src/features/world-rooms/__tests__/world-access.test.ts src/features/world-rooms/__tests__/ui.test.tsx --maxWorkers=2 --reporter=verbose",
+      "exit": 0,
+      "tests": 242,
+      "files": 6,
+      "log": "focused-tests.txt"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/tsc -b --pretty false",
+      "exit": 0,
+      "log": "typecheck-frontend.txt"
+    },
+    {
+      "cwd": "frontend",
+      "command": "node_modules/.bin/oxlint e2e/realtime/world/qa05",
+      "exit": 0,
+      "log": "lint.txt"
+    },
+    {
+      "cwd": ".",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "exit": 0,
+      "log": "plan.json"
+    },
+    {
+      "cwd": ".",
+      "command": "node scripts/mcr/check-ui-origin.mjs",
+      "exit": 0,
+      "log": "ui-origin.txt"
+    },
+    {
+      "cwd": ".",
+      "command": [
+        "python3",
+        "scripts/mcr/check-boundaries.py",
+        "--base",
+        "bb7d21b3e931a9dc88056c1c1c436eb9817292da",
+        "--lane",
+        "frontend",
+        "--allow-doc",
+        "docs/mcr/frontend/fe17-client-failure-journey.md",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/boundaries.txt",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/checks.json",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/diff-check.txt",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/focused-tests.txt",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/lint.txt",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/native-run.txt",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/native.json",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/plan.json",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/typecheck-fixture.txt",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/typecheck-frontend.txt",
+        "--allow-doc",
+        "docs/mcr/evidence/realtime/world-client/ui-origin.txt"
+      ],
+      "exit": 0,
+      "log": "boundaries.txt"
+    },
+    {
+      "cwd": ".",
+      "command": "git diff --cached --check",
+      "exit": 0,
+      "log": "diff-check.txt"
+    }
+  ],
+  "provenance": {
+    "applicationFixture": {
+      "source": "frontend/src/world/__tests__/fe15-application-input/preview.tsx",
+      "revision": "977b773deec35226e899bd017d4d946c200fd05f",
+      "sha256": "5788a165ceb0c2b16cc43343209e3d8db552fb9e06420009e61e9a8bc0367db3",
+      "destination": "frontend/e2e/realtime/world/qa05/preview.tsx",
+      "adaptation": "Retained source/Auth/application/renderer ports; native socket/ticket authority replaces mock socket; read-only observer."
+    },
+    "framing": {
+      "source": "frontend/src/world/network/__tests__/replication-browser.mjs",
+      "revision": "79e45560b9fff757f4e4caf541cf5308d4856587",
+      "sha256": "5176e98a8ff930e2e8344bed479af91559f0bd0a6874d0dab38fb47417e4d255",
+      "destination": "frontend/e2e/realtime/world/qa05/peer.mjs"
+    },
+    "dependencies": "Retained Node24.22.2/frontend lock resolutions/Playwright1.61.1/Chrome156/Phaser3.90.0. No install, backend implementation import, legacy art or rendering copy."
+  },
+  "limits": [
+    "Source-only explicit Auth/HTTP/resource and local C05 authority; production resource guard not admitted.",
+    "No Rust server process restart, backend atomic replay consumption, two principals, actual room leases/capacity or authoritative physics certification.",
+    "ACK fixtures and remote absolute-position vectors are not BE12 simulation or server cadence/load evidence.",
+    "Pickup/reservation durable HTTP recovery and actual whole QA05/IN01/IN05 NOT_RUN.",
+    "No production, existing test, shared contract, lockfile, central configuration or art changes."
+  ],
+  "artifacts": {
+    "docs/mcr/evidence/realtime/world-client/focused-tests.txt": "b56a534a61cb546b884d4c54c5d556b7a7e75e018d52727e60203bc898d08368",
+    "docs/mcr/evidence/realtime/world-client/lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/realtime/world-client/native-run.txt": "e1bfed923afb47d1f2c55b41d5782ec2bd51c932ac5df48d82b7b1a9deb49d72",
+    "docs/mcr/evidence/realtime/world-client/native.json": "0ba664f270eb84e6a5e77b4094b675a4ef75d8f5de9a00b85ea55377533b63be",
+    "docs/mcr/evidence/realtime/world-client/plan.json": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "docs/mcr/evidence/realtime/world-client/typecheck-fixture.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/realtime/world-client/typecheck-frontend.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/mcr/evidence/realtime/world-client/ui-origin.txt": "6ad0f576f81d55d833d687cf2206273cc17382fc50b1cb1551e84bce7f9b2423",
+    "frontend/e2e/realtime/world/qa05/captures/gap-360.png": "8405c4c127fd5e28be696562fa3de5fe7b1f5d24e1fc0fa48da990f5300eed9e",
+    "frontend/e2e/realtime/world/qa05/captures/gap-390.png": "fa2f3c4e81b0d9ef3f597fdbfc265b33aab5184d12cebb02afbdaf9c7add0110",
+    "frontend/e2e/realtime/world/qa05/captures/gap-430.png": "789cfd31707bb64e90f694049828302048b90aad24acd1f032319273663e59f0",
+    "frontend/e2e/realtime/world/qa05/captures/recovered-360.png": "940cbe562924b447039154bfbd29ec362656965434f11ba5d4197ee469ce1adb",
+    "frontend/e2e/realtime/world/qa05/captures/recovered-390.png": "c09b0ce99037366b8d4c3e644d6b3435286358ac25447d73f9ef622523c57135",
+    "frontend/e2e/realtime/world/qa05/captures/recovered-430.png": "e00510fa2097d115ce877a6aa703050976c9f8790577faf047b1898efe4eb67f",
+    "docs/mcr/evidence/realtime/world-client/boundaries.txt": "9e7dc64fde87ff1481600fee278e5270305a836404efd18c4670a0061bfdea1c",
+    "docs/mcr/evidence/realtime/world-client/diff-check.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "changedPaths": [
+    "docs/mcr/evidence/realtime/world-client/boundaries.txt",
+    "docs/mcr/evidence/realtime/world-client/checks.json",
+    "docs/mcr/evidence/realtime/world-client/diff-check.txt",
+    "docs/mcr/evidence/realtime/world-client/focused-tests.txt",
+    "docs/mcr/evidence/realtime/world-client/lint.txt",
+    "docs/mcr/evidence/realtime/world-client/native-run.txt",
+    "docs/mcr/evidence/realtime/world-client/native.json",
+    "docs/mcr/evidence/realtime/world-client/plan.json",
+    "docs/mcr/evidence/realtime/world-client/typecheck-fixture.txt",
+    "docs/mcr/evidence/realtime/world-client/typecheck-frontend.txt",
+    "docs/mcr/evidence/realtime/world-client/ui-origin.txt",
+    "docs/mcr/frontend/fe17-client-failure-journey.md",
+    "frontend/e2e/realtime/world/qa05/browser.mjs",
+    "frontend/e2e/realtime/world/qa05/captures/gap-360.png",
+    "frontend/e2e/realtime/world/qa05/captures/gap-390.png",
+    "frontend/e2e/realtime/world/qa05/captures/gap-430.png",
+    "frontend/e2e/realtime/world/qa05/captures/recovered-360.png",
+    "frontend/e2e/realtime/world/qa05/captures/recovered-390.png",
+    "frontend/e2e/realtime/world/qa05/captures/recovered-430.png",
+    "frontend/e2e/realtime/world/qa05/check-types.mjs",
+    "frontend/e2e/realtime/world/qa05/native.mjs",
+    "frontend/e2e/realtime/world/qa05/peer.mjs",
+    "frontend/e2e/realtime/world/qa05/preview.html",
+    "frontend/e2e/realtime/world/qa05/preview.tsx"
+  ],
+  "scopeVerified": true,
+  "evidenceNormalization": "Checkout path replaced with <FE17_WORKTREE>; terminal blank lines trimmed in focused log. Test content/results preserved."
+}
