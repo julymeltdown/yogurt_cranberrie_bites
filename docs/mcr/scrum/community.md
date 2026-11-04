@@ -3,8 +3,14 @@
 <!-- current-lane-record:start -->
 Updated 2026-11-04 (Asia/Seoul) from existing developer handoffs and explicit
 ownership allocations. This is management bookkeeping, not implementation,
-query, visual, test or runtime review. Developers own all qualification, fixes
-and direct non-force publication. No work waits for king/SL technical approval.
+query, visual, test or runtime review. Developers own qualification, fixes and
+exact committed handoffs. Current publication routing follows the user's
+integrator-only clause: only the existing designated delivery integrator
+publishes new work through safe non-force integration. Its actual identity is
+being resolved through Main's existing routing; Product root is not assumed to
+be that publisher without confirmation. No king/SL technical review or new
+approval stage is introduced; implementation continues. Previously published
+owner receipts below remain historical facts, not future push authorization.
 
 ## Current original FE33 disposition and delivered caller assignment
 
@@ -235,8 +241,14 @@ required; stale candidate evidence must not substitute for current results.
 Missing backend/service/device or other original criteria remain explicitly
 NOT_RUN/BLOCKED with their owner. No generic backend wave blocks independently
 ready frontend work; no full QA10/IN05 acceptance is inferred from this bounded
-contribution. Developer owns checks/fixes/docs/scoped direct non-force
-publication and actual completed-goal/clean-STOP handoff.
+contribution. Developer owns checks/fixes/docs/exact scoped commits and delivers
+base, changed paths, pins, commands/results and limitations to the existing
+designated delivery integrator for publication. Earlier direct-owner-push
+instructions for this new QA10 goal are withdrawn. Same ACTIVE goal
+`1793757526` continues, with required publication unfinished until the actual
+integrator receipt; no false goal completion, feature halt or king/SL review.
+Already-published `047d892c` and other history are preserved without duplicate
+integration or rewrites. No duplicate human confirmation question is requested.
 
 Root `1fc` retains `scripts/mcr/release-check.sh`, decision publication and
 shared harness composition. Known node:test collection files
