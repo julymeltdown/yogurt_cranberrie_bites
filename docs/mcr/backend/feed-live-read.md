@@ -314,3 +314,21 @@ Feed tests. It is not compile or joined runtime evidence. The actual root
 callback implementation and coherent participant-owned three-pass Concert
 generation fix remain prerequisites. No substitute positive authority or root
 constructor is claimed.
+
+
+## Concert generation prerequisite consumed
+
+Merge `afa7cc2e44bf0c4c982459b807ae32da4449548e` consumes participant owner's
+published `cb057d43fb4535c4a9b5867f228caef64e5b556b` generation fix. Canonical
+lease output and its guarded include both use `OUT_DIR/owner_authority`; the
+main pass generates SELF alongside the importing Post service, and the separate
+Participant pass uses its own output directory with explicit external package
+paths. Static inspection and ancestry verification passed. The merge preserved
+all owned Feed/Post producer and adapter test source bytes. The participant
+owner's compilation does not qualify this branch's importing Post IDL.
+
+A short existing-target lease is requested for the exact three integration
+executables: nine Concert facade/filter, eight Post adapter and three wire cases.
+This will also compile the newly exported real policy/resources/read composition.
+No shared target has been accessed while queued. Real guarded/HTTP checks remain
+NOT_RUN, and the unpublished SDK/PublicProfile denial fixes are not yet consumed.
