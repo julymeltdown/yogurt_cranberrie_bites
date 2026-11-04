@@ -671,6 +671,8 @@ async fn native_internal_resolver_binds_actual_instance_cluster_request_and_rece
         operation: r.binding().operation.into(),
         guard_digest,
         body_digest: r.binding().body_sha256,
+        media_binding_digest: r.binding().digest(),
+        idempotency_key: r.binding().key,
         registration_id: Uuid::new_v4(),
     };
     let mut transaction = MediaResolveTransaction {
@@ -690,6 +692,41 @@ async fn native_internal_resolver_binds_actual_instance_cluster_request_and_rece
     // This committed read-only fixture has no command receipt. Absence never
     // rewrites its transaction outcome into an asserted rollback.
     assert!(settled.receipt_evidence.is_empty());
+    // The system resolver must be given the root's durable full fingerprint and
+    // key, not just the canonical owner's HTTP/body digest. MIME and key are
+    // independently meaningful producer inputs even when the raw body matches.
+    let original_digest = binding.media_binding_digest;
+    binding.media_binding_digest = [8; 32];
+    assert!(matches!(
+        resolve_transaction(&p, instance, &binding, &transaction).await,
+        Err(CommandError::Denied)
+    ));
+    binding.media_binding_digest = [0; 32];
+    assert!(matches!(
+        resolve_transaction(&p, instance, &binding, &transaction).await,
+        Err(CommandError::InvalidInput)
+    ));
+    binding.media_binding_digest = original_digest;
+    let original_key = binding.idempotency_key;
+    binding.idempotency_key = Some(Uuid::new_v4());
+    assert!(matches!(
+        resolve_transaction(&p, instance, &binding, &transaction).await,
+        Err(CommandError::Denied)
+    ));
+    binding.idempotency_key = original_key;
+    let original_reference = transaction.settlement_reference.clone();
+    let mut legacy: serde_json::Value = serde_json::from_slice(&original_reference).unwrap();
+    legacy["version"] = serde_json::json!(1);
+    legacy
+        .as_object_mut()
+        .unwrap()
+        .remove("media_binding_digest");
+    transaction.settlement_reference = serde_json::to_vec(&legacy).unwrap();
+    assert!(matches!(
+        resolve_transaction(&p, instance, &binding, &transaction).await,
+        Err(CommandError::InvalidInput)
+    ));
+    transaction.settlement_reference = original_reference;
     binding.request_id = Uuid::new_v4();
     assert!(matches!(
         resolve_transaction(&p, instance, &binding, &transaction).await,
@@ -709,6 +746,59 @@ async fn native_internal_resolver_binds_actual_instance_cluster_request_and_rece
         MediaTransactionState::Unknown
     );
     p.close().await;
+}
+
+#[test]
+fn settlement_reference_binds_full_media_frame_and_rejects_legacy_or_open_shapes() {
+    use media_runtime::settlement::*;
+    let i = identity();
+    let request = request(i, "initConcertUpload", Uuid::new_v4(), None, init(&png())).unwrap();
+    let original = request.binding();
+    let bytes = settlement_reference(original, [7; 32]).unwrap();
+    let validated = validate_settlement_reference(&bytes).unwrap();
+    assert_eq!(validated.media_binding_digest(), original.digest());
+    assert_eq!(validated.idempotency_key(), original.key);
+    let mut changed = OwnerMediaBinding {
+        identity: i,
+        operation: original.operation,
+        method: original.method,
+        target: original.target.clone(),
+        content_type: "image/png".into(),
+        key: original.key,
+        body_sha256: original.body_sha256,
+    };
+    let mime =
+        validate_settlement_reference(&settlement_reference(&changed, [7; 32]).unwrap()).unwrap();
+    assert_ne!(
+        mime.media_binding_digest(),
+        validated.media_binding_digest()
+    );
+    changed.content_type = original.content_type.clone();
+    changed.key = Some(Uuid::new_v4());
+    let key =
+        validate_settlement_reference(&settlement_reference(&changed, [7; 32]).unwrap()).unwrap();
+    assert_ne!(key.media_binding_digest(), validated.media_binding_digest());
+    let value: serde_json::Value = serde_json::from_slice(&bytes).unwrap();
+    for field in ["version", "media_binding_digest", "key", "actor", "extra"] {
+        let mut bad = value.clone();
+        match field {
+            "version" => bad[field] = serde_json::json!(1),
+            "media_binding_digest" => bad
+                .as_object_mut()
+                .unwrap()
+                .remove(field)
+                .map(|_| ())
+                .unwrap(),
+            "key" => bad[field] = serde_json::json!(null),
+            "actor" => bad[field] = serde_json::json!(Uuid::nil()),
+            _ => bad[field] = serde_json::json!(true),
+        }
+        assert!(matches!(
+            validate_settlement_reference(&serde_json::to_vec(&bad).unwrap()),
+            Err(CommandError::InvalidInput)
+        ));
+    }
+    assert!(validate_settlement_reference(&vec![b' '; 2049]).is_err());
 }
 
 #[tokio::test]
