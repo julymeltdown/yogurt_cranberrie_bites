@@ -1,6 +1,6 @@
 # CSS-PARITY-LANDING — foreground spacing
 
-Status: **INTEGRATED locally; publication pending**. The responsible developer
+Status: **ACCEPTED for the bounded CSS foreground task**, published and read back. The responsible developer
 completed the residual CSS implementation and validation described below. The
 first-pass publication was a milestone, not automatic screen-goal closure.
 Whole-screen exact parity remains open for the explicit artwork/background and
@@ -115,10 +115,19 @@ by Root as `f33c9f14`). Candidate source commits are `e9f7aa1379e11220888375c1b1
 and `46143c6f2ecdf0ecdeddf24e64f13026cb688518`; final handoff adds the validated
 border iteration, harness, evidence and this document. The cumulative residual
 postimages must be delivered, not the final border-only diff in isolation.
-Root153 remains sole publisher. Fresh publication ancestry/postimage readback
-is pending; no king/SL technical inspection or acknowledgment is required.
-The persistent residual goal remains unfinished until that delivery duty is met;
-its prior resource-blocked metadata has no manual resume operation.
+Root153 remains sole publisher. Root published cumulative worker `5b704a8564645525f097287773417ba86aadaf99`
+as `7aa86b28df216b6a74ed534d752b839dfec2c95f`. Fresh owner fetch and independent
+`git ls-remote` both observed master
+`f198147e3c07d171b72bb086c4403b87dac5356b`; published ancestry exited 0.
+All **35** cumulative owned postimages equal worker, published and latest master
+byte for byte, including the tested CSS hash above. The earlier handoff message
+miscounted these as 36; there is no missing 36th source path. See
+`round-02/publication-readback.json`. No king/SL review or acknowledgment applies.
+Implementation, relevant owner validation, developer fixes, committed handoff and
+publication readback duties are fulfilled for this bounded CSS scope. The
+persistent goal can now truthfully complete despite its earlier resource-blocked
+metadata. Exact gallery/background/header-source parity and real-provider/device
+acceptance remain outside this task; cleanup compliance remains a recorded MISS.
 
 ## Historical first-pass scope and provenance
 
