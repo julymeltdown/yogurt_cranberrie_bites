@@ -1,0 +1,46 @@
+{
+  "format": "MCR_ATTACHED_REFERENCE_CANOPY_COLOR_COMPARISON",
+  "reference": {
+    "path": "frontend/public/world/reference-scene-v2/map-service-labels-v1/original-target.jpg",
+    "bytes": 482737,
+    "sha256": "sha256:2b3988d546f87b813d78ca13bf267730a6dd19118bd6535a2d3c3032b6f12d23"
+  },
+  "reference_dimensions": [
+    1280,
+    853
+  ],
+  "retained_actual": {
+    "published_commit": "a0db1770b048161c5df818f7e4e2417923c8d542",
+    "path": "docs/mcr/evidence/reference-scene-v5/architecture-v2/native-04/editable-parade.png",
+    "bytes": 1476218,
+    "sha256": "sha256:9156109e82573868a1a9d24585f305b890353a96889392b34988359c590ba524"
+  },
+  "attached_map_crop_approx_xywh": [
+    812.5,
+    79.16666666666667,
+    206.66666666666666,
+    350.0
+  ],
+  "normalized_source_roi_xyxy": [
+    210,
+    0,
+    542,
+    160
+  ],
+  "rgb_rule": "R>1.25G and R>1.15B and R-G>=25",
+  "results": [
+    {
+      "input": "attached_reference",
+      "red_classified_points": 481,
+      "sample_points": 53120,
+      "fraction": 0.009054969879518072
+    },
+    {
+      "input": "actual_native04",
+      "red_classified_points": 28935,
+      "sample_points": 53120,
+      "fraction": 0.5447100903614458
+    }
+  ],
+  "limits": "Coarse fixed-band color proxy after actual image inspection; not foliage segmentation, a target-fidelity score or an independently rerun native render. JPEG sampling repeats low-resolution source pixels. No corrected output image is created."
+}

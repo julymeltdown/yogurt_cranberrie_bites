@@ -556,3 +556,30 @@ wing visibility, mobile density/framing and full attached-target fidelity remain
 **NOT_RUN/OPEN**. Root owns those checks under an exact recorded consumer lease;
 no King/SL review gate applies. The same original ART goal remains metadata
 **BLOCKED**, reused without reset, new goal or false completion.
+
+## Independent attached-target canopy palette correction
+
+After sealing the service-label source, the actual attached target and published
+native04 PARADE MAP raster reveal a northern-district palette difference: four
+large crimson crowns dominate the candidate band between façades, whereas the
+reference uses muted green/yellow foliage. Coarse matched source-coordinate
+region210,0–542,160 samples contain481/53,120 red-classified points in the
+attached reference versus28,935/53,120 in the actual saved raster (0.91%/54.47%).
+`map-canopy-palette-v1/reference-analysis.json` records both exact input hashes,
+approximate JPEG crop and RGB rule. This is a color proxy supporting actual image
+inspection, not foliage segmentation, corrected render or fidelity score.
+
+The separately versioned source overlay replaces tree_red with the existing
+tree_green frame for rooted_tree_01/rooted_tree_02/grove_north_west/grove_north_gap
+in PARADE MAP only. All four IDs/destination rectangles/depths,34 World props,
+geometry, feet, source pixels, labels, wings, gardens, cameras and authority stay
+unchanged. It adds no props, PNG, font or random filler. Original source-alpha
+base ratios differ by less than0.01 source pixels at these instance heights.
+The existing saved PNG is read from published Git bytes; no image copy, browser,
+export or media job is created.
+
+This source correction has its own pinned handoff and does not mutate or block
+the sealed service bundle. Consumer adoption needs a separate exact recorded
+scope. Actual corrected canopy visibility/palette/native/mobile comparison is
+**NOT_RUN**; composition, density, framing and overall attached-target fidelity
+remain open. Same original goal metadata remains **BLOCKED**.
