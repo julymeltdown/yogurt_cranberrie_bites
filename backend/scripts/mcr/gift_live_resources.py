@@ -45,11 +45,14 @@ def main():
     parser.add_argument("--private-test", type=Path, help="same frozen Concert lib binary; native prepared exclusion/recovery only, no canonical or Root qualification")
     parser.add_argument("--settlement-test", type=Path, help="same frozen lib; exact native/receipt witness SQL with synthetic ledger metadata")
     parser.add_argument("--pg-bin", type=Path, default=Path("/opt/homebrew/opt/postgresql@16/bin"))
+    parser.add_argument("--owned-root", type=Path, help="optional absolute fresh cluster root inside the allocated evidence boundary")
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args()
     if not any((args.repository_test, args.queries_test, args.private_test, args.settlement_test)):
         parser.error("select at least one frozen native binary")
     require(args.report.is_absolute(), "absolute evidence path required")
+    if args.owned_root is not None:
+        require(args.owned_root.is_absolute(), "absolute fresh owned cluster root required")
     descriptor = os.open(args.report, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     report = {"scope": "BE-GIFTS-LIVE selected local Concert native checks only", "result": "NOT_RUN",
               "canonical_auth_friend": "NOT_RUN", "media_link": "NOT_RUN", "public_profile": "NOT_RUN",
@@ -77,7 +80,7 @@ def main():
             report["private_binary_sha256"] = sha(private)
             if queries is not None:
                 require(sha(queries) == sha(private), "query/private binaries must be the same frozen Concert lib build")
-        cluster = migration.Cluster({n: migration.executable(args.pg_bin / n) for n in migration.PG_TOOLS})
+        cluster = migration.Cluster({n: migration.executable(args.pg_bin / n) for n in migration.PG_TOOLS}, root=args.owned_root)
         report["owned_root"] = str(cluster.root)
         cluster.init()
         cluster.start()
