@@ -189,7 +189,7 @@ try {
     await editor.getByRole('button', { name:'Stop walking', exact:true }).click()
     await shot('reviewed-all-layer-draft')
     await editor.getByRole('button', { name:'Random character', exact:true }).click()
-    await editor.getByRole('button', { name:'Reset draft', exact:true }).click()
+    await editor.getByRole('button', { name:'Cancel changes', exact:true }).click()
     await expect(editor.getByRole('button', { name:'Save outfit', exact:true })).toBeDisabled()
     await editor.getByRole('button', { name:'Dress up', exact:true }).click()
     await editor.getByRole('button', { name:'Skin / body', exact:true }).click()

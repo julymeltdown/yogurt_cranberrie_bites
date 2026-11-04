@@ -1,0 +1,36 @@
+{
+  "offer": "AVATAR-CANCEL-SOURCE-20261104T2002Z",
+  "actualFULL": "2026-11-04T20:01:59.665985+00:00",
+  "source": "73542e304f999d8bb8743fe1d36a1b3b4c583493",
+  "commands": [
+    {
+      "label": "tests",
+      "exit": 0
+    },
+    {
+      "label": "lint",
+      "exit": 0
+    },
+    {
+      "label": "types",
+      "exit": 0
+    },
+    {
+      "label": "syntax",
+      "exit": 0
+    }
+  ],
+  "tests": 35,
+  "newCases": 7,
+  "guardBreach": null,
+  "aliveOwnedPids": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "resourcesHeld": 0,
+  "peakALL": 6,
+  "peakRSS": 1748238336,
+  "peakNEW": 5931963,
+  "peakWHOLE": 93085611,
+  "finalFree": 12745097216,
+  "native": "NOT_RUN_NOT_ALLOCATED"
+}

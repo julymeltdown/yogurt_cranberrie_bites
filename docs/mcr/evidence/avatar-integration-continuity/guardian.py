@@ -1,0 +1,81 @@
+"""Independent guard for one explicitly accepted continuity source allocation."""
+import json
+import os
+from pathlib import Path
+import signal
+import subprocess as sp
+import sys
+import time
+
+
+def size(path):
+    if path.is_file():
+        return path.stat().st_size
+    return sum(p.lstat().st_size for p in path.rglob('*') if p.is_file() or p.is_symlink()) if path.exists() else 0
+
+
+def fresh_bytes(config):
+    root = Path(config['root'])
+    objects = {row.split()[0] for row in sp.check_output(['git', 'rev-list', '--objects', config['base'] + '..HEAD'], cwd=root, text=True).splitlines()}
+    git_bytes = sum(int(row) for row in sp.check_output(['git', 'cat-file', '--batch-check=%(objectsize)'], cwd=root,
+        input='\n'.join(sorted(objects)) + '\n', text=True).splitlines()) if objects else 0
+    git_bytes += size(Path(sp.check_output(['git', 'rev-parse', '--absolute-git-dir'], cwd=root, text=True).strip()))
+    return git_bytes + sum(size(root / path) for path in config['freshPaths'])
+
+
+def sample(config):
+    rows = [tuple(map(int, row.split())) for row in sp.check_output(['ps', '-axo', 'pid=,ppid=,pgid=,rss='], text=True).splitlines() if row.strip()]
+    ids = {config['supervisor']}
+    while True:
+        more = ids | {pid for pid, parent, _, _ in rows if parent in ids}
+        if more == ids:
+            break
+        ids = more
+    temporary = size(Path(config['temporary']))
+    fresh = fresh_bytes(config) + temporary
+    return {'pids': sorted(ids), 'processes': len(ids), 'rss': sum(rss * 1024 for pid, _, _, rss in rows if pid in ids),
+            'temporary': temporary, 'durable': size(Path(config['evidence'])), 'new': fresh,
+            'whole': config['fixedCarry'] + fresh, 'free': __import__('shutil').disk_usage(config['root']).free}
+
+
+def breach(config, values):
+    caps = config['offer']
+    return ('deadline' if time.time() >= config['workDeadline'] else
+            'live free' if values['free'] < caps['continuousFreeBytes'] else
+            'after ALL free' if values['free'] - caps['newBytes'] - caps['otherUpperBytes'] < caps['afterAllFreeBytes'] else
+            next((key for key, field in [('processes', 'processes'), ('rss', 'rssBytes'), ('temporary', 'temporaryBytes'),
+                  ('durable', 'durableBytes'), ('new', 'newBytes'), ('whole', 'wholeBytes')] if values[key] > caps[field]), None))
+
+
+def main():
+    path = Path(sys.argv[1]); config = json.loads(path.read_text())
+    report = {'breach': None, 'samples': 0, 'peaks': {}}
+    try:
+        while not Path(config['stop']).exists():
+            os.kill(config['supervisor'], 0)
+            values = sample(config); report['samples'] += 1
+            for key in ['processes', 'rss', 'temporary', 'durable', 'new', 'whole']:
+                report['peaks'][key] = max(report['peaks'].get(key, 0), values[key])
+            report['minimumFree'] = min(report.get('minimumFree', values['free']), values['free'])
+            failed = breach(config, values)
+            if failed:
+                report['breach'] = failed
+                active = Path(config['activeChild'])
+                if active.exists():
+                    try:
+                        os.killpg(int(active.read_text()), signal.SIGTERM)
+                    except ProcessLookupError:
+                        pass
+                os.kill(config['supervisor'], signal.SIGTERM)
+                break
+            Path(config['ready']).touch()
+            time.sleep(.4)
+    except ProcessLookupError:
+        report['breach'] = report['breach'] or 'supervisor disappeared'
+    finally:
+        Path(config['report']).write_text(json.dumps(report, indent=2) + '\n')
+    return 1 if report['breach'] else 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
