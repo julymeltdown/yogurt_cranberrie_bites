@@ -396,12 +396,15 @@ async fn actual_auth_worker_refuses_hostile_receipts_and_cancellation_keeps_step
     let c = begin(&p).await?;
     let before = server.peer.calls.load(Ordering::SeqCst);
     let w = worker(&p, d.clone());
-    assert!(
-        tokio::time::timeout(Duration::from_millis(80), w.run_once(Utc::now()))
-            .await
-            .is_err()
-    );
-    assert!(server.peer.calls.load(Ordering::SeqCst) > before);
+    let task = tokio::spawn(async move { w.run_once(Utc::now()).await });
+    tokio::time::timeout(Duration::from_secs(3), async {
+        while server.peer.calls.load(Ordering::SeqCst) == before {
+            tokio::time::sleep(Duration::from_millis(5)).await;
+        }
+    })
+    .await?;
+    task.abort();
+    assert!(task.await.unwrap_err().is_cancelled());
     tokio::time::sleep(Duration::from_millis(280)).await;
     assert!(saga(&p, c.saga_id)
         .await?
