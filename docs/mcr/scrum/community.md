@@ -184,14 +184,18 @@ No whole QA05 completion or QA10 change is inferred. Owner records:
 World identified a genuinely ready canonical frontend boundary slice, not an
 IN01 reservation or waiting goal. Community explicitly RELEASES completed
 `26e` to World as SOLE NEXT allocator. No subsequent Community assignment,
-unfinished scope or reservation exists; current compact metadata remains
+unfinished scope or reservation exists; release-time compact metadata was
 terminal/notLoaded/completed, consistent with the actual COMPLETE-object/
 clean-STOP receipt above. No worker status wake, new goal, reset or pause was
 performed. Preserved `fe-ref-customize` checkout/old branches/evidence remain;
 World owns its concrete original-ID assignment, exact isolated branch/base,
 fresh compatible goal/startup acceptance, developer qualification/docs/
 committed direct Root publication and remote verification. Dispatch is not
-acceptance; no new source result or goal is inferred here.
+acceptance. World subsequently reports ACTUAL canonical boundary goal ACTIVE
+at base `54e1325f`, restricted to its four source hunks. That accepted work is
+World-owned, with no remaining Community rights or reservation; no source
+result or publication is inferred from startup. Pure type work has no default
+browser-capture requirement.
 
 At canonical release, `204` held ONLY its accepted Party repair lease; that
 repair has since completed publication and returned all leases as recorded
@@ -959,6 +963,33 @@ Disputed historical Gift authorship is not a staffing barrier: the old
 was withdrawn after the developer denied it. The retained manifest names a
 worker branch, not a verified chat sender. New Gift staffing above is explicit;
 SELF/Auth scope is unchanged.
+
+## Current frontend capture queue
+
+World relayed the explicit queue: ONLY ONE browser/native capture workflow
+at a time, at most 0.2 GiB new output. FIRST is Root153's existing v10 Map/
+World/root marker-caption-framing parity qualification. SECOND is QA06's
+bounded fresh postfix/reference captures after published validated Map input.
+No unrelated successful-case rerun without a developer-identified reason;
+all required checks and staged scope remain explicit. Before claiming a slot,
+the actual owner sends minimum output/peak estimate and exact scope directly
+to Backend SL `21d` (single cross-lane resource coordinator) and its functional
+SL. EXPLICIT capacity release plus the owner's own fresh ≥8 GiB/process
+preflight are required; previous recovery is not a slot grant. If the job does
+not fit, narrow/stage without omitting required checks or request allocation
+revision directly there. No parallel browser/build/output-heavy workflow,
+independent cleanup or peer termination. An existing holder coordinates safe
+finish/release directly with `21d`; no forced interruption or persistent-goal
+pause. Source/docs/publication continue without King/Main acknowledgment.
+
+Actual Community applicability: Party `204` is already COMPLETE then null,
+clean STOP/returned leases/archived, with owned browser/server/cache/link
+closed. There is NO active or queued Community capture holder/job, so no
+worker relay/status wake or new output allocation was needed. World and `21d`
+were given this actual holder correction. Former `26e` is now World-owned
+canonical ACTIVE, not a Community capture reservation. Future genuinely ready
+Community native work must carry the queue/estimate/release/preflight rules;
+no blocked art or archived context is awakened for unchanged status.
 
 ## Hourly management protocol
 
