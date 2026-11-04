@@ -834,8 +834,9 @@ Root preserves the original qualified worker document as Git blob `0ca013839824b
 
 ## NB01 — durable original root binding recovery
 
-Status: `IN_PROGRESS`; source implementation complete, native qualification
-`NOT_RUN` pending a fresh named backend-SL resource offer and explicit acceptance.
+Status: `IN_PROGRESS` for BE33 overall. NB01 implementation and native lookup
+qualification are complete; Root integration and canonical/public acceptance
+remain `NOT_RUN`.
 
 Source base: Root `73e89bceadc4b456522d0d979ccc768eea8e367e`, isolated branch
 `codex/mcr-be-NB01`. Original BE33 handoff and worktree remain preserved.
@@ -884,6 +885,92 @@ fields; valid-fingerprint operation/path relabeling; and bounded pool-starvation
 caller-deadline and locked-table refusal. Synthetic historical rows are explicitly
 lookup fixtures, not canonical owner admission or positive Track acknowledgements.
 
-Source checks: targeted Rust 1.88 rustfmt and Python runner AST parse exited 0;
-the unchanged-parent byte assertion passed; `python3 scripts/mcr/check-plan.py`
-exited 0. Cargo, shared-target and PostgreSQL access have not occurred for NB01.
+Before native qualification: targeted Rust 1.88 rustfmt and Python runner AST
+parse exited 0; the unchanged-parent byte assertion passed;
+`python3 scripts/mcr/check-plan.py` exited 0.
+
+
+### NB01 qualified committed handoff
+
+Compiled/native source pin: `41e81a3702c389fc30a9d0dc2c8a936d2f766382`.
+Handoff ancestry is Root `73e89bce` → implementation `dc01de3b` → evidence-runner
+hardening `52d6373f` → actor-mismatch regression improvement `41e81a37` → the
+following documentation-only qualification commit. All tracked backend bytes
+remain identical to the compiled pin. No manifest, lockfile or public contract
+changed. Notification contract `backend/proto/notification/v1/concert_inbox.proto`
+remains SHA-256 `a77385e06a567a59d91e93d8fe2e7acda9e1613705c5bfbf8d1dc4cffb554e76`.
+
+Changed paths, relative to Root base:
+
+- `backend/services/concert-service/src/product_rpc/scope_ledger/notification_binding.rs`
+- `backend/services/concert-service/src/product_rpc/scope_ledger.rs` (one module declaration)
+- `backend/services/concert-service/tests/notification_root_binding.rs`
+- `backend/services/concert-service/tests/notification_root_binding_support/mod.rs`
+- `backend/services/concert-service/tests/notification_root_binding_support/run.py`
+- `docs/mcr/backend/notifications.md` (this appended NB01 section)
+
+A fresh explicitly accepted `NB01-BACKEND-202611040523Z` allocation provided one
+existing BACKEND target and one serial copied-artifact owned PostgreSQL slot.
+Fresh preflight had 36492264 KiB free and zero target handles. All Cargo work used
+Rust 1.88.0, `--locked --offline`, jobs 2, dev/test debug 0 and incremental 0.
+The same single test artifact was requested on both attempts:
+
+```sh
+cargo +1.88.0 test --locked --offline -p concert-service --test notification_root_binding --no-run --message-format=json
+```
+
+| Check/command | Exit/result |
+|---|---|
+| First compile | 101; retained stale-cache evidence, not a source regression |
+| `cargo +1.88.0 clean -p contracts-build -p concert-domain -p concert-application` | 0; exactly three evidenced stale packages |
+| Same single-artifact compile retry | 0; exact Cargo-emitted test frozen and hashed |
+| Original migration 0028, then original migration 0048 | 0 each in a new socket-only PostgreSQL 16.14 cluster |
+| Frozen `notification_root_binding --test-threads=1` | 0; **7 passed, 0 failed, 0 ignored**, 0.66 s |
+| Committed owned-fixture runner | 0; PASS, 2.19 s, owned stop and deletion PASS |
+| Final targeted rustfmt check, runner AST, unchanged parent/doc-prefix and complete backend pin assertions | 0/PASS |
+
+The initial failure reported existing domain/application modules missing while
+Cargo marked both libraries fresh, plus protoc shadowing this checkout with the
+previous writer's checkout through a fresh `contracts-build` output. First Cargo
+JSON/stderr/receipt are retained. The lease explicitly allowed evidenced
+package-only repair; no broad clean, second target or source workaround occurred.
+
+The exact test binary was frozen before unconditional target release. Incidental
+`concert-service` main executable metadata is recorded but it was not executed.
+After own Cargo process-group exit, the target handle scan returned no handles;
+there was no target access after release. Native tests used only the frozen test
+binary and strict marker/token/inode/system-identifier-owned PostgreSQL fixture.
+The original encrypted intent and real completion capability/proof requirements
+were neither forged nor bypassed. The actual registry constructed in the test is
+empty, and the lookup itself never calls the rejecting child settler.
+
+The conservative combined bound over both compile attempts, frozen evidence and
+owned PostgreSQL was 199225344 bytes, below the hard 1 GiB limit. Whole compile,
+freeze, native qualification and release completed in 190.68 s, below ten minutes;
+final free space was 37210398720 bytes, above the 8 GiB floor. All owned resources
+were released. Portable evidence under `<NB01_ARTIFACT_DIR>`:
+
+| Evidence | SHA-256 |
+|---|---|
+| `notification_root_binding` (13757952 bytes) | `e33dcd37f50e6a69fe1f2a7e55be2ae5ffc8083a4efd893e9643e8b16f383a95` |
+| `backend-source.tar.gz` | `655bc9629fa7f0fa5f8337846b9084c4cdb1107579a6df8c20c09e5af2cdd9b6` |
+| `artifact-receipt.json` | `f020028d2968bf92ddcb7fc828010bcb54c1ca9f622f30d112cce6489606333e` |
+| `qualification-report.json` | `a01d0ae4e126a0439f7db03f253be39f2b223b08e3c9a73abb0df6f8f97a784d` |
+| `target-release.json` | `25cfd5ad466951e1346b95f1729642509d4acdc4ba1d23f441b7fff738496ff2` |
+| `copied-release.json` | `091f92eb6b78eba3bf7f947ae5458f332f703505404c0dac08e7640634112cb1` |
+| `first-artifact-receipt.json` | `ba565430375234f1a8f8716d10931ded13aa258f3563205af313b9a6255ce7f1` |
+| `build.py` (bounded exact-artifact wrapper) | `7727b96ee9c5c6001d3fdcc97e3a9915f79e95ef8848f884dd94c9a38f1714a9` |
+
+Reproduction uses the committed runner with the frozen binary/receipt, PG16 tool
+directory and a report destination. It verifies the emitted test identity, complete
+source manifest and artifact digest before creating its own database:
+
+```sh
+python3 backend/services/concert-service/tests/notification_root_binding_support/run.py --artifact <NB01_ARTIFACT_DIR>/notification_root_binding --receipt <NB01_ARTIFACT_DIR>/artifact-receipt.json --pg-bin <PG16_BIN> --report <NB01_ARTIFACT_DIR>/qualification-report.json
+```
+
+These results qualify the NB01 durable original-binding lookup mechanics only.
+Root still owns runtime/client/settler/public operation composition and the actual
+canonical owner/transaction authority and authenticated four-operation vertical
+journeys. BE33 overall and its original persistent goal remain unfinished; this
+handoff makes no public activation, product acceptance or master-push claim.
