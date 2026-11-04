@@ -11,7 +11,7 @@ import type { ThemeController } from '../theme/model/controller'
 /** Existing shell adapter: honor signal for the entire applied lifetime, stop audio/release effects on abort.
  * Begin with sound off; apply is only invoked by an explicit click after a saved value. Never allocate a second runtime. */
 export interface RuntimePreferencesPort { apply(preferences: Readonly<Preferences>, scope: PrivacyScope, signal: AbortSignal): Promise<void> }
-export function SettingsPage({ controller, auth, runtime, theme }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; runtime?: RuntimePreferencesPort; theme?: ThemeController }) {
+export function SettingsPage({ controller, auth, runtime, theme }: { controller: MeController; auth: Pick<SessionController, 'privacy'>; runtime?: RuntimePreferencesPort; theme?: Pick<ThemeController, 'read' | 'subscribe' | 'select'> }) {
   const s = useMe(controller), [application, setApplication] = useState(''), [applying, setApplying] = useState(false)
   const disabled = !s.participant || ['loading', 'saving', 'expired', 'disposed'].includes(s.phase)
   const [lifetime] = useState(() => ({ current: new AbortController() }))

@@ -3,7 +3,7 @@ import type { ThemeController } from '../model/controller'
 import { themeIds } from '../model/preferences'
 import './theme-selector.css'
 
-export function ThemeSelector({ controller }: { controller: ThemeController }) {
+export function ThemeSelector({ controller }: { controller: Pick<ThemeController, 'read' | 'subscribe' | 'select'> }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read), id = useId()
   return <section className="mcr-theme-selector" aria-labelledby={`${id}-title`}>
     <h2 id={`${id}-title`}>CHOOSE AN ERA</h2>

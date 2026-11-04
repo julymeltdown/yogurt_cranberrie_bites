@@ -35,6 +35,7 @@ export function WorldPanels({ source, scope, children }: { source: WorldPresenta
   const wall = ownership.mural ? <MuralEntryProvider auth={auth ?? null} scope={scope} release={mural}>{children}</MuralEntryProvider> : children
   return <Context value={current}>{ownership.places ? <PlacesEntryProvider auth={auth ?? null} source={places}>{wall}</PlacesEntryProvider> : wall}</Context>
 }
+export function useWorldPresentation() { return useContext(Context) }
 export function ProductionEraControls() { const release = useContext(Context); return <EraControls controller={release?.theme ?? null} /> }
 export function ProductionThemePanel() { return <><ProductionEraControls /><p>Era preferences are saved on this device for this account and event. Server preference synchronization is unavailable.</p></> }
 export function ProductionMapPanel() { return <div className="mcr-root-map"><PlacesOverviewRoute /></div> }
