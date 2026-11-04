@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
-import { mkdir, mkdtemp, readFile, readdir, rm, stat, statfs, writeFile } from 'node:fs/promises'
+import { lstat, mkdir, mkdtemp, readFile, readdir, rm, statfs, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { chromium, expect } from '@playwright/test'
@@ -18,9 +18,15 @@ const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 const git = (...args) => execFileSync('git', args, { cwd: root, maxBuffer: 16 * 1024 ** 2 })
 async function bytes(path) {
   let total = 0
-  for (const entry of await readdir(path, { withFileTypes: true })) {
+  let entries
+  try { entries = await readdir(path, { withFileTypes: true }) }
+  catch (error) { if (error.code === 'ENOENT') return 0; throw error }
+  for (const entry of entries) {
     const file = resolve(path, entry.name)
-    total += entry.isDirectory() ? await bytes(file) : (await stat(file)).size
+    try {
+      if (entry.isDirectory()) total += await bytes(file)
+      else { const info = await lstat(file); total += Math.max(info.size, info.blocks * 512) }
+    } catch (error) { if (error.code !== 'ENOENT') throw error }
   }
   return total
 }
@@ -285,10 +291,10 @@ try {
 } catch (error) {
   report.status = 'FAIL'; report.error = String(error?.stack ?? error); process.exitCode = 1
 } finally {
-  await context?.close()
-  await server?.close()
+  const closures = await Promise.allSettled([context?.close(), server?.close()])
   await rm(temporary, { recursive: true, force: true })
-  report.cleanup = { browserClosed: true, serverClosed: true, temporaryRemoved: true }
+  report.cleanup = { browserClosed: closures[0].status === 'fulfilled', serverClosed: closures[1].status === 'fulfilled', temporaryRemoved: true }
+  if (closures.some(result => result.status === 'rejected')) { report.status = 'FAIL'; process.exitCode = 1 }
   await writeFile(resolve(output, 'report.json'), JSON.stringify(report, null, 2) + '\n')
   console.log(JSON.stringify({ status: report.status, candidate: report.candidate, cases: report.cases.length, interactions: report.interactions.length, cleanup: report.cleanup }))
 }
