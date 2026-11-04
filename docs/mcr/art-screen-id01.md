@@ -188,12 +188,20 @@ correction still requires fresh rendered evidence after integration.
 
 Root then granted the equivalent exact Me outer-paper rule before writes:
 `:root .shell-panel[data-mcr-panel='me'] > .shell-panel-body`. It uses only
-background paint with the same pinned `me-scrapbook.svg`, `center top`,
+background paint with the same pinned `me-scrapbook.svg`, `center bottom`,
 `100% auto`, `no-repeat`, and solid `#fff0e7`. Root owns the existing
 route-marker expression extension for exactly `/me`. This replaces the old
 blank lower paper while keeping the original opaque portrait, all character
 pixels, controls, layout, and footer unchanged. It also needs fresh rendered
 evidence; the first packet does not include this rule.
+
+The initial Me outer-paper placement was `center top`. The asset owner mapped
+its 390×240 image to the actual 372×780 shell paper: it ends around y=286,
+almost entirely behind the opaque header/navigation. Root granted the exact
+one-property correction to `center bottom` before it was changed, exposing the
+large cloud/scallop shapes in the lower blank area. Asset bytes, sizing and all
+foreground geometry stay unchanged. Actual follow-up rendering still has to
+confirm that placement.
 
 The first packet reports unchanged control geometry/type/color/state and body
 text, no errors, no horizontal overflow, and a visible focus outline for each

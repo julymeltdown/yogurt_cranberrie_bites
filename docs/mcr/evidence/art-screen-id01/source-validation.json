@@ -2,7 +2,7 @@
   "task": "ART-SCREEN-ID01",
   "status": "IN_PROGRESS",
   "base": "7c25078f118da53dd9a524d0a58e707cca190f0f",
-  "sourceSha256": "a04b89dec0857521a89e69cf5af508f2cdb4280dfe3a7722391e32ee1e95945e",
+  "sourceSha256": "d2d2a708e9692d5a5770a57149a28a61f383c7604b313be932a82705725a3b79",
   "grantedSelectorCount": 20,
   "closedAssets": [
     {
