@@ -375,3 +375,41 @@ and its receipt, returning PASS/cleanup PASS. Copied library/runtime binaries ra
 with `--test-threads=1`. `python3 scripts/mcr/check-plan.py` and `git diff --check`
 exited 0. Initial startup probes omitted required local metrics configuration;
 those refusals were not credited, and corrected explicit-local probes were run.
+
+
+## SDK3 private Gift composition: source checkpoint only
+
+Unpublished source consumes SDK `0576c359` and response-wide ceiling
+`f646f015`, plus PublicProfile's explicit unsupported-Gift recovery arm
+`56f18703`. Root `82ec8b89`/`c9a5081c` adds migration0037, the encrypted-ledger
+Gift kind and strict composite recovery dispatch. Published0028 remains unchanged.
+The 202-child cap and lifecycle/FK/immutability barriers remain in place. Gift
+shape validation is time independent for restart recovery; expiry never certifies
+rollback. `GiftPrivateIntentSettler` requires a real Gift native read-child adapter;
+public Profile/local-avatar recovery cannot substitute for it.
+
+Root `0797bdd6`/`22590db0` adds internal ProductResponse field5
+`content_expires_unix_micros`. ScopedProductOwner obtains the actual minimum
+across all durable intents and held children, preserving the original monotonic
+stop. Gateway validates that ceiling against original access authority and checks
+wall and monotonic time immediately before every HTTP data frame. Expired content
+produces a body error, leaving the retained scope unresolved. EOF after valid
+data may still settle existing work after expiry; it grants no renewed content.
+The new direct http-body manifest/lock edge reuses the workspace resolution.
+
+A privately constructible VerifiedClientAddress is minted only by the actual
+Gateway ConnectInfo/trusted-proxy normalizer. It is not a browser-header grant.
+The typed-address test and three disclosure-body boundary tests are authored,
+**NOT_RUN**. The privacy HMAC/network ProductRequest binding is still absent;
+Gift Claim remains unavailable without it. Pickup/code stay closed until the
+actual native Gift adapter, coherent build and terminal boundary are qualified.
+
+The updated owned PostgreSQL16 SQL runner applies0028 then0037. Its first run
+correctly reached restart but failed an old one-row assertion after adding the
+second Gift child; cleanup passed. The assertion now checks both pending rows.
+Retry `/private/tmp/mcr-product-sdk3-child-sql-20261104-retry.json` reports PASS,
+29 recorded commands (two migration applications and27 lifecycle/kind checks),
+physical restart and owned cleanup PASS. No Cargo, owner RPC or Rust binary was
+used by these SQL runs. Full SDK3 Rust compilation, cipher regression, Gateway
+boundary tests, actual private-child recovery and HTTP remain **NOT_RUN**.
+Do not apply the earlier SDK2/native/operator evidence to these new sources.
