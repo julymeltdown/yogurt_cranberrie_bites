@@ -1,0 +1,217 @@
+{
+  "candidate": "aea02a262f7d834be7ef2267368812520a5d9c0c",
+  "job": "ERA-WORLD-MAP-NATIVE-202611040754Z",
+  "baseline": "7c25078f118da53dd9a524d0a58e707cca190f0f",
+  "technical_result": "PASS_18_CONTEXTS_36_WIDTH_MATCHED_WORLD_MAP_SCREENSHOTS",
+  "visual_result": "PENDING_ARTIST_OWNED_NEW_ERA_INSPECTION",
+  "source_asset_git_pins_verified": 640,
+  "report_sha256": "8475506428171eb935c9be1b55c72768075b14d88b2978c175d50855b6724134",
+  "limits": "Actual root/Places/Phaser/selected whole-character renderer. Existing explicit source fixture, synthetic C03/C05 map7005, NOT_ADMITTED provenance retained. All three actual era-specific scenery tuples; exact width-matched baseline/candidate comparisons. No live authority or physical-device acceptance.",
+  "artifacts": [
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-danger-360.png",
+      "bytes": 361268,
+      "sha256": "a66f426a14ed82cd79c112f0074f77d5ef3ecd9ae1c726eb8413b37d55e2b396"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-danger-390.png",
+      "bytes": 410308,
+      "sha256": "e49978115643047240bd45796a5ff99f6f8ecfb0863e1fbdc5853f38cb902ee0"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-danger-430.png",
+      "bytes": 482478,
+      "sha256": "5fb1292f9af7934a0136116641c31321b4c4ce4d87b922e980d69ab4e004d96d"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-parade-360.png",
+      "bytes": 361118,
+      "sha256": "26871060ff95555d3258fab486812ed8927bb64ab94f544018aad108593cfa37"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-parade-390.png",
+      "bytes": 410326,
+      "sha256": "87ab843422292a7701e2a3fe39a4419ef95e52721c6c2b052b617c6c2d135b01"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-parade-430.png",
+      "bytes": 483148,
+      "sha256": "b76e8a3fe2c7c2b1104e6642ae94046cac1f20f312b794a7f4df6e8bedfb118c"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-revenge-360.png",
+      "bytes": 360466,
+      "sha256": "dca6b8d318b510c55cad00ea9b1df08bc3a1d537722e34c9651f609871e292fd"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-revenge-390.png",
+      "bytes": 409286,
+      "sha256": "d936ca969414b7c5fb8fcbfc8775b2e54c76962920070ca0569b375fd5f0f4ae"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-map-revenge-430.png",
+      "bytes": 481970,
+      "sha256": "6b0bb1835adc8dd2326d22a5dedf4ac264f62f33582d409e10024b1ac63e9c43"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-danger-360.png",
+      "bytes": 459654,
+      "sha256": "8766403c120d5e96453e4ecd651747bc3cbe7d87594ca1bf03e3ed8603988533"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-danger-390.png",
+      "bytes": 482145,
+      "sha256": "760aebef9301678327e1c8f801137d09faa8141403fe1937fd55fd6780ac3de8"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-danger-430.png",
+      "bytes": 532772,
+      "sha256": "7be197bcd60d0c2151b2c1b689f968562fdf9e0a04d7818966317093f41d289c"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-parade-360.png",
+      "bytes": 458677,
+      "sha256": "273975e71c2ce1aa865d00bf931460b1aef9c9e809053a8282347734396f7b05"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-parade-390.png",
+      "bytes": 481199,
+      "sha256": "14e1efb9dba2f1df6c8d77add598147d9a7449bf61d3df3ca7267f3327fb8504"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-parade-430.png",
+      "bytes": 531418,
+      "sha256": "c86a3ab05857e86f35f2ae29a8c43817d99032229e4b549f5030ed21d0fb9428"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-revenge-360.png",
+      "bytes": 459591,
+      "sha256": "4f2f0214ccc2f2088a0749ffa8d4acfd92a3ab26e28cc34730104928132a1720"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-revenge-390.png",
+      "bytes": 481752,
+      "sha256": "b6d0cb0753dfc5e1e2ba4831473b3057dd69813888b49a0a4457ff58c8f5c7bf"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/baseline-world-revenge-430.png",
+      "bytes": 532781,
+      "sha256": "a6c8b181dd35a34d0a45b047b735cc4c5255c745c153c48088466cb2c36d1130"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-danger-360.png",
+      "bytes": 337621,
+      "sha256": "f4ec1abd3271eb48c5ebb4992e01a62175d131a3a3738cdd1f87086880d2229f"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-danger-390.png",
+      "bytes": 381665,
+      "sha256": "d62c8eef74663ed6b41dcf4eb7faf272eb59538a0734803d8853df40b0acf1f2"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-danger-430.png",
+      "bytes": 445088,
+      "sha256": "7037198a37c29f21a3aaed877c707818a93e61b76d15ed2937be256d58337e1e"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-parade-360.png",
+      "bytes": 341497,
+      "sha256": "1b4966674269db735b2a832f94e47c125725fdaa85b845a201e77882f5dc4c9b"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-parade-390.png",
+      "bytes": 386087,
+      "sha256": "0a87dcdf04eeb737892cfd27ad5cabc67a9f2ccfb7fffa41d8e26cfdc2ac15f7"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-parade-430.png",
+      "bytes": 450601,
+      "sha256": "d0fcc011697cc1ba632508f9ff3d8f155a367749475f938b54bedc96fb24b522"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-revenge-360.png",
+      "bytes": 335612,
+      "sha256": "7c7899be9cb14d43b5f55e67923d3b992d910189efa40c9d837b89449646b0bc"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-revenge-390.png",
+      "bytes": 379545,
+      "sha256": "875ff6d6976ed2ed0ba8bef148a593e29d5154d8cf7254334d320dedc2152c11"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-map-revenge-430.png",
+      "bytes": 442183,
+      "sha256": "b804e551233e7ed1e8d0c97878ec10f1f17f5b301571e94ab7cc033a9c169e49"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-danger-360.png",
+      "bytes": 424444,
+      "sha256": "a738bf457891609f847e85cd33fa97aed9b86f2ddd433ad0df75e76aa3b31789"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-danger-390.png",
+      "bytes": 446157,
+      "sha256": "d3ef55beadefbfbfd25e2dd38405887adc686b1e7c70f5f6e34cbd92e6a36659"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-danger-430.png",
+      "bytes": 493333,
+      "sha256": "58f7ce434c64827154c08234a40d2261f07ab1bfe97116ecd4e427d3f2d5e4c6"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-parade-360.png",
+      "bytes": 427242,
+      "sha256": "c41e1e7b035d83ddd5865056fd471289e7af95024d8e9a678bb7406256bf6edb"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-parade-390.png",
+      "bytes": 449001,
+      "sha256": "ff25b45a3d9f05729705fe628a82ea8ecfcda3392dde63b6951de754c2c829a8"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-parade-430.png",
+      "bytes": 496509,
+      "sha256": "4783bc10b6bc79b9f8cd27fffbe8a1087b50aff8dc378d20f9077b6a463ed2cb"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-revenge-360.png",
+      "bytes": 423261,
+      "sha256": "48138187275dc493b13b3d24e7cb30441641f12e6c9c041c1ad2eb7caf28e14c"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-revenge-390.png",
+      "bytes": 445301,
+      "sha256": "ceecadcd2caf635258a585fa5768c99c1553295fd3139494a57203abf353904c"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/candidate-world-revenge-430.png",
+      "bytes": 492305,
+      "sha256": "89f60b5bd612a9eb65952012fbe879c1848d18999d40de4be34a3ad2ca09ee46"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/driver.mjs.snapshot",
+      "bytes": 10065,
+      "sha256": "ad5209540f8c057b44c9681231a077dac55c33aff8f33e87dfa464912ce18fd3"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/guard.json",
+      "bytes": 714,
+      "sha256": "223a0ab00c381562552951bff7e1c3aa6c0007556a1971eac23a4b44387b8ed3"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/guard.py.snapshot",
+      "bytes": 2938,
+      "sha256": "a1e5c54a84671d4d8c463f1c20155d2e6d0c79b531f847295daf72ab6bc76271"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/native.log.gz",
+      "bytes": 2255,
+      "sha256": "1cf0a8f031c93687ce176e1b98a4641a83fe08fcaeb3086069f43cd5968a4480"
+    },
+    {
+      "path": "docs/mcr/evidence/reference-scene-v5/map-cozy-v1/native-03/report.json",
+      "bytes": 1019913,
+      "sha256": "8475506428171eb935c9be1b55c72768075b14d88b2978c175d50855b6724134"
+    }
+  ]
+}
