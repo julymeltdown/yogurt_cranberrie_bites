@@ -16,6 +16,7 @@ use std::sync::Arc;
 use uuid::Uuid;
 
 pub struct SocialWorldPolicy {
+    pool: PgPool,
     pub transport: SocketTransport,
     pub sink: SocialInvalidationSink,
     /// The SAME sealed publisher/registry used by `sink`, for canonical deletion
@@ -23,6 +24,16 @@ pub struct SocialWorldPolicy {
     pub publisher: Arc<dyn SocialPolicyPublisher>,
 }
 impl SocialWorldPolicy {
+    /// SOCIAL-only removal leaf sharing this exact incumbent sink/publisher.
+    /// The moderation aggregate remains responsible for other private owners.
+    pub fn moderation_revocation(
+        &self,
+    ) -> crate::social_live::moderation_revocation::SocialModerationRevocation {
+        crate::social_live::moderation_revocation::SocialModerationRevocation::new(
+            self.pool.clone(),
+            self.sink.clone(),
+        )
+    }
     pub fn compose(pool: PgPool) -> Self {
         let transport = SocketTransport::default();
         // The publisher retains only the shared socket registry. Create it
@@ -31,9 +42,10 @@ impl SocialWorldPolicy {
             world: transport.policy_publisher(),
             pool: pool.clone(),
         });
-        let sink = SocialInvalidationSink::new(pool, publisher.clone());
+        let sink = SocialInvalidationSink::new(pool.clone(), publisher.clone());
         let transport = transport.with_policy_baseline(Arc::new(HeldBaseline(sink.clone())));
         Self {
+            pool,
             transport,
             sink,
             publisher,

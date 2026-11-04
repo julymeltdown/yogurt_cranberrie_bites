@@ -1,6 +1,6 @@
 //! New bridge modules are compiled here until Root owns their public export.
 //! Synthetic native checks do not manufacture an OwnerGuardScope.
-pub use concert_service::{adapters, product_rpc, relationship, world};
+pub use concert_service::{adapters, moderation_live, product_rpc, relationship, world};
 pub use concert_service::workers;
 #[path = "social_live_support/hooks.rs"]
 mod hook_tests;

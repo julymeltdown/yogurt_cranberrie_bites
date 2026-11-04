@@ -3,6 +3,7 @@ pub mod account_deletion;
 mod cursor;
 pub mod invalidation;
 pub mod keys;
+pub mod moderation_revocation;
 mod producer;
 pub mod protocol;
 pub mod provenance;

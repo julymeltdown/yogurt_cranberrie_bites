@@ -117,6 +117,40 @@ impl BaselineGuard {
     }
 }
 impl SocialInvalidationSink {
+    /// A separate PENDING-parent source, never an ordinary outbox or Sharing
+    /// deletion signal. The caller retains its actual role/Root fence and SQL
+    /// transaction across publication, then rechecks both before committing.
+    pub(super) async fn publish_moderation_in(
+        &self,
+        c: &mut PgConnection,
+        receipt: Uuid,
+        claim: Uuid,
+        actor: Uuid,
+    ) -> Result<(), DeliveryFailure> {
+        let row = sqlx::query("select a.event_id,a.policy_revision,a.published_at from concert_social_moderation_audience a join concert_social_moderation_revocations j using(owner_receipt) join concert_social_moderation_claims c using(owner_receipt) join concert_command_receipts r on r.receipt_id=j.command_receipt join concert_moderation_commands m on m.receipt_id=r.receipt_id join concert_event_admissions e on e.event_id=j.event_id and e.user_id=j.target_id where a.owner_receipt=$1 and a.actor_id=$2 and c.claim_id=$3 and c.authority_until>clock_timestamp() and clock_timestamp()<nullif(current_setting('mcr.moderation_authority_until',true),'')::timestamptz and r.state='PENDING' and r.expires_at>clock_timestamp() and m.operation_id='moderateConcertUser' and m.input->>'action'='SUSPEND' and e.state='SUSPENDED' and e.restriction_revision=j.source_revision and exists(select 1 from concert_social_moderation_witnesses w where w.claim_id=c.claim_id and w.owner_receipt=j.owner_receipt and w.phase='PUBLISH' and w.audience_actor=a.actor_id and w.native_identity->>'full_xid'=pg_current_xact_id()::text) for update of a")
+            .bind(receipt).bind(actor).bind(claim).fetch_optional(&mut *c).await.map_err(retry)?.ok_or(DeliveryFailure::Rejected)?;
+        if row
+            .get::<Option<DateTime<Utc>>, _>("published_at")
+            .is_some()
+        {
+            return Ok(());
+        }
+        let signal = VerifiedSocialInvalidation {
+            signal: receipt,
+            event: row.get("event_id"),
+            actor,
+            revision: row.get("policy_revision"),
+            reason: PolicyReason::CanonicalPolicyChanged,
+        };
+        self.publish(&signal).await?;
+        let result = sqlx::query("update concert_social_moderation_audience a set published_at=clock_timestamp() where owner_receipt=$1 and actor_id=$2 and published_at is null and exists(select 1 from concert_social_moderation_claims where claim_id=$3 and owner_receipt=$1 and authority_until>clock_timestamp())")
+            .bind(receipt).bind(actor).bind(claim).execute(c).await.map_err(retry)?;
+        if result.rows_affected() != 1 {
+            return Err(DeliveryFailure::Retryable);
+        }
+        Ok(())
+    }
+
     pub fn new(pool: PgPool, publisher: Arc<dyn SocialPolicyPublisher>) -> Self {
         Self {
             pool,
