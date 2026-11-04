@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-05T02:28:19+09:00",
+  "updated_at": "2026-11-05T03:10:54+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
-  "published_snapshot": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+  "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
   "required_tasks": 112,
   "required_ia_entries": 61,
@@ -17,16 +17,16 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 37,
-      "IN_PROGRESS": 55,
-      "WAITING_INPUT": 2,
-      "OPEN": 10,
+      "DONE": 38,
+      "IN_PROGRESS": 59,
+      "WAITING_INPUT": 3,
+      "OPEN": 4,
       "REOPENED": 7,
       "DEFERRED_BY_USER": 1
     },
-    "done_tasks": 37,
-    "remaining_active_tasks": 74,
-    "task_completion_percentage": 33.3,
+    "done_tasks": 38,
+    "remaining_active_tasks": 73,
+    "task_completion_percentage": 34.2,
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE19",
@@ -43,7 +43,7 @@
     "integration_gates": {
       "IN01": "historically ACCEPTED; changed-feature deltas tracked separately",
       "IN02": "OPEN",
-      "IN03": "OPEN",
+      "IN03": "WAITING_INPUT for actual authorized claim/provider provenance; internal implementation also remains incomplete. No duplicate human question.",
       "IN04": "OPEN, expandedWallB",
       "IN05": "OPEN, functional decision with explicitQA08 deferral"
     },
@@ -92,10 +92,41 @@
       "FE16",
       "FE03",
       "FE04",
-      "FE11"
+      "FE11",
+      "AR03"
     ],
-    "current_original_criteria_outcomes": 44,
-    "progress_updated_at": "2026-11-05T02:28:19+09:00"
+    "current_original_criteria_outcomes": 45,
+    "progress_updated_at": "2026-11-05T03:10:54+09:00",
+    "hosted_ci": {
+      "state": "REPAIR_PUBLISHED_QUALIFICATION_PENDING",
+      "observed_at": "2026-11-04T18:11:00Z",
+      "workflow": "MCR contract generation",
+      "original_failed_run": 41880082996,
+      "failure_boundary": "Frontend frozen dependency installation; QA01/C07 steps skipped on the inspected failing run. Latest ten runs at initial discovery were failures.",
+      "owner": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+      "repair_commit": "28a3716e",
+      "owner_diagnosis": "Corepack selected repository-root pnpm instead of the existing frontend package-manager pin; owner authored a working-directory-only workflow repair without changing fixed dependency resolutions or weakening checks.",
+      "current_runs_observed": [
+        41883753649,
+        41883730056
+      ],
+      "current_result": "Owner reports run41883753649/1be2c687 has passed frozen installation and full QA01; C07 step still running. Whole hosted PASS unverified.",
+      "accounting": "Prior original-task local criteria and receipts remain preserved. Current hosted execution is an open release obligation; developer owns diagnosis, remaining fixes and task-level impact. No manager code/log/test review."
+    },
+    "external_input_boundary_update": {
+      "reported_by": "Root1fc from actual Social owner16e",
+      "at": "2026-11-04T18:11:00Z",
+      "scope": "IN03 positive and isolated policy-denial journeys",
+      "need": "Genuine current authorized claims for both actors with accepted issuer/source revision, plus actual Intro/admission/handle/consent scenario resources.",
+      "not_equivalent": [
+        "C03 flag true",
+        "UNKNOWN age",
+        "storage fixtures",
+        "generic provider-unavailable denial"
+      ],
+      "existing_claims": "Still-current genuine claims may qualify while verification-start provider is unavailable; none is presently supplied.",
+      "handling": "Retain the existing provider/input request; no duplicate human question, fabricated claims or scope cut. Internal source work continues; no unnecessary runtime/browser hold."
+    }
   },
   "historical_accounting": {
     "baseline_revision": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
@@ -578,7 +609,8 @@
           "docs/mcr/frontend/combined-root-adoption.md:3",
           "docs/mcr/frontend/combined-root-adoption.md:5",
           "docs/mcr/scrum/world.md:1679",
-          "U_MAP"
+          "U_MAP",
+          "609ae393"
         ],
         "active_delivery_requirement": true
       }
@@ -599,18 +631,17 @@
         "scope": "Additional owner/source runs365/857 are reported passed and reviewed editor owner029b445c is published. These software/motion checks do not establish all original atlas/art, default-App or native criteria."
       },
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "VISUAL",
         "priority": 0,
         "original_scope": "Deliver six presets and agreed layered assets using the fixed anchor and direction/frame layout.",
         "original_acceptance": "No clipping, missing frames, or theme-dependent identity changes at actual mobile scale.",
         "updated_scope": "Complete original atlas/preset/layer/direction coverage using only exact supplied characters and reviewed derivatives, preserving originals and intentional white details.",
         "remaining_work": [
-          "Published3b91525d reload/movement-peer and persistence/motion consumer checks are credited; do not repeat the completed bounded owner assignment.",
-          "Reconcile original six-presets/layer counts, anchors and four-direction idle/walk coverage against approved derivatives; finish any missing source art and actual mobile visual criteria without substituting synthetic fixtures."
+          "Retain the delivered original AR03 artwork outcome; no identified task-local art remainder."
         ],
         "complete_when": "No clipping, missing frames, or theme-dependent identity changes at actual mobile scale.",
-        "reason": "Original AR03 remains unclosed. BODY+Community 5da64426 is bounded controlled evidence; its completion does not establish all original art or production coverage.",
+        "reason": "Original AR03 artwork criteria explicitly accepted by the restored responsible owner using current approved deliveries. Six presets, required layers, four directions/five phases, anchors, clipping and theme identity are covered by retained source-bound evidence. Two-file disposition published by Root; actual aligned goal COMPLETE. No new artwork, legacy fallback or redundant pack was introduced. Whole C06, live/device and full-reference acceptance remain separate.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -627,7 +658,7 @@
         "owner_role": "Existing art and frontend owners; developers perform their own visual/device checks",
         "coordination_owner": "frontend_delivery",
         "known_current_owner_chats": [
-          "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
+          "01a1a1fe-1eed-7d12-a247-879cd521e0ec"
         ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "AR03 art/character implementation owner83 with FE consumer developers",
@@ -639,9 +670,18 @@
           "docs/mcr/frontend/combined-root-adoption.md:9",
           "U_BODY",
           "U_AR03",
-          "3b91525dd1af091a82ffbd7f43b5461aa241787d"
+          "3b91525dd1af091a82ffbd7f43b5461aa241787d",
+          "3198cc8d6ec9b5d03c8bc778fd2ab9a0a8e69758",
+          "docs/mcr/art/selected-character-original-completion.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "current_completion": {
+          "recorded_at": "2026-11-05T03:10:54+09:00",
+          "owner_chat": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+          "published_commit": "3198cc8d6ec9b5d03c8bc778fd2ab9a0a8e69758",
+          "basis": "Original AR03 artwork criteria explicitly accepted by the restored responsible owner using current approved deliveries. Six presets, required layers, four directions/five phases, anchors, clipping and theme identity are covered by retained source-bound evidence. Two-file disposition published by Root; actual aligned goal COMPLETE. No new artwork, legacy fallback or redundant pack was introduced. Whole C06, live/device and full-reference acceptance remain separate.",
+          "manager_technical_review": false
+        }
       }
     },
     {
@@ -690,7 +730,8 @@
           "frontend/public/world/reference-scene-v2/ADOPTION.md",
           "docs/mcr/frontend/combined-root-adoption.md:3",
           "docs/mcr/frontend/combined-root-adoption.md:5",
-          "U_MAP"
+          "U_MAP",
+          "609ae393"
         ],
         "active_delivery_requirement": true
       }
@@ -4127,7 +4168,7 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "OPEN",
+        "state": "IN_PROGRESS",
         "package": "WORLD",
         "priority": 0,
         "original_scope": "Snapshot baseline, interpolation, bounded prediction/reconciliation, epoch reset and visibility-driven reconnect.",
@@ -4138,7 +4179,7 @@
           "Complete only uncovered prediction/reconciliation and restart/ghost/no-command-replay criteria, reusing delivered bounded fault evidence."
         ],
         "complete_when": "Missing delta requests resync; restart removes ghosts; no replay of old pickup/reservation commands.",
-        "reason": "Latest management says original prediction/reconciliation is unreconciled; bounded fault handling is delivered. No fresh missing-producer assertion or whole-task closure is justified.",
+        "reason": "Actual active FE17 completion goal in an isolated branch; six replication/entity/test leaves plus explicitly delegated prediction leaves. Original backend World20f supplies the separate negotiated C05 motion producer; Root retains untransferred interfaces.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -4153,7 +4194,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing identity/World/character developers",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE replication developer with BE World implementation counterpart",
         "current_scope_evidence": [
@@ -4164,6 +4207,11 @@
           "U_RECONCILIATION"
         ],
         "active_delivery_requirement": true
+      },
+      "latest_owner_activity": {
+        "reported_at": "2026-11-05T03:10:54+09:00",
+        "source_chat": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+        "scope": "Actual active FE17 completion goal in an isolated branch; six replication/entity/test leaves plus explicitly delegated prediction leaves. Original backend World20f supplies the separate negotiated C05 motion producer; Root retains untransferred interfaces."
       }
     },
     {
@@ -4269,7 +4317,9 @@
           "docs/mcr/frontend/combined-root-adoption.md:5",
           "docs/mcr/scrum/world.md:1678",
           "U_MAP",
-          "ff96d53eb817c93dd1bafb5c4f125630f995413b"
+          "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+          "609ae393",
+          "82787782"
         ],
         "active_delivery_requirement": true
       }
@@ -4846,7 +4896,7 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "OPEN",
+        "state": "IN_PROGRESS",
         "package": "SOCIAL",
         "priority": 0,
         "original_scope": "New handle settings, explicit request consent, decisions, reveal, revoke and expiry views; no-store sensitive fetch.",
@@ -4857,7 +4907,7 @@
           "Complete current policy-invalidation/authorized-reveal integration with counterpart owners and repair resulting client defects; preserve no-handle-before-consent and no automatic-follow claim."
         ],
         "complete_when": "Network payload before approval contains no handle; revocation clears UI/cache; no auto-follow claim.",
-        "reason": "Bounded MOCK_READY feature and shell-entry records explicitly decline whole FE31 closure. Older root-not-wired claims are superseded by default-shell delivery; live policy limits remain.",
+        "reason": "Original private-sharing client scope accepted by the existing developer with returned exclusive leases; source-qualified work published in the social/account packet. Full original task disposition is being reconciled by that developer; no completion inferred from assertion counts.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -4875,7 +4925,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing social/Auth/Notification developers and corresponding frontend owners",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a21e-ab80-7012-b9fa-cdb69eed097b"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE sharing/privacy developer with BE sharing/policy developers",
         "current_scope_evidence": [
@@ -4884,9 +4936,15 @@
           "docs/mcr/frontend/social-sharing.md",
           "docs/mcr/frontend/social-sharing-entry.md:3",
           "docs/mcr/frontend/social-policy-production.md:3",
-          "U_RECONCILIATION"
+          "U_RECONCILIATION",
+          "be6af4e9"
         ],
         "active_delivery_requirement": true
+      },
+      "latest_owner_activity": {
+        "reported_at": "2026-11-05T03:10:54+09:00",
+        "source_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "scope": "Original private-sharing client scope accepted by the existing developer with returned exclusive leases; source-qualified work published in the social/account packet. Full original task disposition is being reconciled by that developer; no completion inferred from assertion counts."
       }
     },
     {
@@ -5083,7 +5141,7 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "OPEN",
+        "state": "IN_PROGRESS",
         "package": "SOCIAL",
         "priority": 2,
         "original_scope": "New unread count/list, mark-read/all-read and safe deep-link routing with stale-target handling.",
@@ -5094,7 +5152,7 @@
           "Qualify original-key mark-read/read-all recovery, concurrent cutoff, deduplication, stale-target denial and identity/block/revoke cleanup with the actual BE33 producer."
         ],
         "complete_when": "Duplicate notification event does not duplicate UI; inaccessible target never exposes cached details.",
-        "reason": "Bounded frontend is MOCK_READY; original completion is not recorded. A Notification backend leaf or active continuation does not establish full frontend/root integration.",
+        "reason": "Original inbox scope has an actual implementation owner, qualified source fixes and published packet. Responsible-owner original/current criterion disposition remains pending; live IN03 remains separate.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -5109,7 +5167,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing social/Auth/Notification developers and corresponding frontend owners",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a21e-ab80-7012-b9fa-cdb69eed097b"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE Inbox developer with BE Notification and Root developers",
         "current_scope_evidence": [
@@ -5117,9 +5177,15 @@
           "docs/mcr/task-progress-2026-11-04.json#/tasks/90",
           "docs/mcr/frontend/inbox.md",
           "docs/mcr/frontend/inbox.md:40",
-          "U_RECONCILIATION"
+          "U_RECONCILIATION",
+          "be6af4e9"
         ],
         "active_delivery_requirement": true
+      },
+      "latest_owner_activity": {
+        "reported_at": "2026-11-05T03:10:54+09:00",
+        "source_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "scope": "Original inbox scope has an actual implementation owner, qualified source fixes and published packet. Responsible-owner original/current criterion disposition remains pending; live IN03 remains separate."
       }
     },
     {
@@ -5133,7 +5199,7 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "OPEN",
+        "state": "IN_PROGRESS",
         "package": "SOCIAL",
         "priority": 0,
         "original_scope": "New report dialog, block list/unblock, logout/delete confirmation and progress views; clear private state.",
@@ -5144,7 +5210,7 @@
           "Carry real authorization and multi-target deletion recovery with BE36/BE37/BE42 counterparts; pending/partial/unknown is never complete, and unblock never restores old consent."
         ],
         "complete_when": "Blocking closes affected panels; unblock does not restore old consent; failed deletion is not displayed as complete.",
-        "reason": "No original FE36 closure is recorded. Canonical deletion composition is already delivered at fixture level, so do not label all root wiring absent or redo it.",
+        "reason": "Original report/block/account controls have an actual implementation owner and published privacy/account fixes. Full original/current criterion disposition remains pending; real deletion convergence is not inferred from client checks.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -5157,7 +5223,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing social/Auth/Notification developers and corresponding frontend owners",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a21e-ab80-7012-b9fa-cdb69eed097b"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE safety/account developer with BE safety/deletion developers",
         "current_scope_evidence": [
@@ -5165,9 +5233,15 @@
           "docs/mcr/task-progress-2026-11-04.json#/tasks/91",
           "docs/mcr/frontend/safety-account.md",
           "docs/mcr/frontend/account-deletion-composition.md:3",
-          "U_RECONCILIATION"
+          "U_RECONCILIATION",
+          "be6af4e9"
         ],
         "active_delivery_requirement": true
+      },
+      "latest_owner_activity": {
+        "reported_at": "2026-11-05T03:10:54+09:00",
+        "source_chat": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "scope": "Original report/block/account controls have an actual implementation owner and published privacy/account fixes. Full original/current criterion disposition remains pending; real deletion convergence is not inferred from client checks."
       }
     },
     {
@@ -5219,7 +5293,9 @@
           "docs/mcr/frontend/moderation.md",
           "docs/mcr/frontend/moderation.md:3",
           "docs/mcr/scrum/community.md:710",
-          "U_RECONCILIATION"
+          "U_RECONCILIATION",
+          "9a44bc29",
+          "cf1ca629"
         ],
         "active_delivery_requirement": true
       },
@@ -5300,7 +5376,7 @@
       ],
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task. Later closure-resume integration supersedes the old retry-contract BLOCKED header; do not report that old blocker as current.",
       "revised_plan": {
-        "state": "OPEN",
+        "state": "IN_PROGRESS",
         "package": "OPERATIONS",
         "priority": 2,
         "original_scope": "New pause/region lock/restore controls and closure step-progress/retry presentation.",
@@ -5311,7 +5387,7 @@
           "Resolve current actual admin authorization/closure entry with the owning backend/root developers and qualify recovery from partial failure; do not repeat the fixed retry-contract implementation."
         ],
         "complete_when": "Restore confirmation names snapshot; partial closure failure is visible and recoverable.",
-        "reason": "Old retry blocker is superseded by b880c55/5c92862. Whole FE39 remains unreconciled; the recorded admin.authorize=false integration issue needs a current owner disposition, not a fresh asserted absence.",
+        "reason": "Exact returned admin/closure leaves accepted with active goal. Qualified control/closure packet published a9c04eb2; owner found a terminal-disposal callback inconsistency and is correcting it. Production Admin composition remains open.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -5327,7 +5403,9 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Frontend Wall-control and event-closure implementation owner assigned by frontend delivery; preserve active Wall/Root leases and coordinate backend lifecycle interfaces.",
         "coordination_owner": "frontend_delivery",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a53d-36b8-7522-ae11-646f5e6f0b30"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "FE wall-control/closure developer with BE lifecycle and Root developers",
         "current_scope_evidence": [
@@ -5336,9 +5414,15 @@
           "docs/mcr/frontend/closure-resume-integration.md",
           "docs/mcr/frontend/closure-resume-integration.md:3",
           "docs/mcr/scrum/community.md:712",
-          "U_RECONCILIATION"
+          "U_RECONCILIATION",
+          "a9c04eb256e7b50e6efc99bfd076eca9a8293100"
         ],
         "active_delivery_requirement": true
+      },
+      "latest_owner_activity": {
+        "reported_at": "2026-11-05T03:10:54+09:00",
+        "source_chat": "01a1a53d-36b8-7522-ae11-646f5e6f0b30",
+        "scope": "Exact returned admin/closure leaves accepted with active goal. Qualified control/closure packet published a9c04eb2; owner found a terminal-disposal callback inconsistency and is correcting it. Production Admin composition remains open."
       }
     },
     {
@@ -6082,7 +6166,7 @@
       "evidence": [],
       "note": "No completed original integration/release gate is established by the current delivery receipts.",
       "revised_plan": {
-        "state": "OPEN",
+        "state": "WAITING_INPUT",
         "package": "SOCIAL",
         "priority": 0,
         "original_scope": "Intro discovery, feed/comment, consent/reveal/revoke, notifications and block propagation.",
@@ -6093,7 +6177,7 @@
           "Verify restricted-age, revoked and blocked cases fail closed on HTTP, websocket and client cache with actual production interfaces."
         ],
         "complete_when": "Restricted age and revoked/blocked cases fail closed on HTTP, WS and client cache.",
-        "reason": "Published Feed visual/fixture and policy cohorts are not live social/privacy acceptance.",
+        "reason": "Responsible backend composition owner reports no current genuine authorized age-claim/provider-provenance packet for both actors. Positive social and isolated expired/revoked/blocked/unrelated scenarios therefore await the already-requested external input. Actual C03 flags, UNKNOWN age and storage fixtures do not establish positive eligibility. Independent internal implementation and narrow startup qualification continue; generic unavailability is not isolated-denial proof.",
         "historical_criteria_closed": false,
         "reopened_for_current_scope": false,
         "depends_on_for_remaining_work": [
@@ -6113,7 +6197,11 @@
         "dependency_interpretation": "Interface/read-set readiness for source work; actual producers for live integration. No full-wave or manager approval barrier.",
         "owner_role": "Existing social/Auth/Notification developers and corresponding frontend owners",
         "coordination_owner": "joint_feature_leads",
-        "known_current_owner_chats": [],
+        "known_current_owner_chats": [
+          "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+          "01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c",
+          "01a1a209-80da-7e53-a295-b64cfe09c1d7"
+        ],
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [],
@@ -6393,6 +6481,13 @@
       "owner_chat": "01a1a204-c583-7670-965a-4891b8b1289e",
       "receipt_commit": "bc75182e8f552e3621fcb5b033f22dafdcacc009",
       "disposition": "Original password-recovery client criteria explicitly satisfied by implementation owner and exact foundation handoff published. Existing real-email evidence reused; broader Auth/provider and live-system scope remains separate."
+    },
+    {
+      "recorded_at": "2026-11-05T03:10:54+09:00",
+      "task": "AR03",
+      "owner_chat": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+      "receipt_commit": "3198cc8d6ec9b5d03c8bc778fd2ab9a0a8e69758",
+      "disposition": "Original AR03 artwork criteria explicitly accepted by the restored responsible owner using current approved deliveries. Six presets, required layers, four directions/five phases, anchors, clipping and theme identity are covered by retained source-bound evidence. Two-file disposition published by Root; actual aligned goal COMPLETE. No new artwork, legacy fallback or redundant pack was introduced. Whole C06, live/device and full-reference acceptance remain separate."
     }
   ],
   "coverage_updates": [
@@ -7124,27 +7219,48 @@
       "current_original_criteria_outcomes": 44,
       "revised_done_tasks": 37,
       "note": "Five explicit owner completions and canonical publication receipts reconciled. Frozen historical39 retained; QA01 new delta remains conservatively open until explicit task disposition, despite passing C07 cohort."
+    },
+    {
+      "recorded_at": "2026-11-05T03:10:54+09:00",
+      "new_unique_original_closures": [
+        "AR03"
+      ],
+      "current_original_criteria_outcomes": 45,
+      "revised_done_tasks": 38,
+      "note": "Reconcile actual original AR03 acceptance/publication and five newly active original FE scopes. Hosted CI failure/setup repair remains explicitly unqualified; all original IDs/scope/acceptance and61IA preserved. No repeated application verification by Main."
     }
   ],
   "staffing_update": {
-    "at": "2026-11-05T02:28:19+09:00",
-    "basis": "Compact actual receiving-chat states and canonical publisher receipts; no manager code/test/runtime review.",
-    "actually_active": {
-      "FE34": "01a1a213-61d6-7a20-a8e7-476649312f8c",
-      "FE37": "01a1a230-6acc-7e82-9e4b-92506decc745",
-      "FE38": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
-      "shared_reference_chrome": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
-      "backend": "Social16e, Giveaway267, Party83, Operations205, Wall202, deletion00c and authority/consent207 remain in their exclusive source/runtime queues."
+    "at": "2026-11-05T03:10:54+09:00",
+    "basis": "Frontend18:00 UTC digest, actual receiving-goal reports and canonical publisher receipts. Backend17:00 per-task report retained; later direct material staffing/publication outcomes incorporated without new status census.",
+    "new_original_closure": "AR03 explicit responsible-owner acceptance, canonical3198cc8d, actual goalCOMPLETE. C06 not inferred closed.",
+    "actual_frontend_owners": {
+      "FE17": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+      "FE31": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+      "FE35": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+      "FE36": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+      "FE39": "01a1a53d-36b8-7522-ae11-646f5e6f0b30"
     },
-    "next_dispatches_sent": {
-      "Community": "Reuse released Gifts53d for FE39 after actual incumbent return, or another ready nonoverlapping Community scope. This is a lead dispatch, not yet a receiving-owner acceptance.",
-      "World": "Map26e ART06 App intake; reuse released AR03 owner only for a real remaining character/World requirement. Source-qualified art does not count as adopted.",
-      "UI": "Direct art231 to a concrete remaining density/reference asset scope or retire it; keep shared chrome CSS exclusive.",
-      "Identity": "After original FE03/FE04/FE11 goal closure, reuse204 for ready internal Identity/Social work with exact leases; no full-backend barrier."
+    "original_art_mobile": {
+      "AR03": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+      "C06": "Whole map+avatar interface outcome remains open; current AR03 artwork closure alone does not establish it.",
+      "AR04": "Source/art231 and current Map26e intake retained; ART06 controlled delivery credited, whole reference/device scope separate.",
+      "QA06": "Original owner01a1a1fe-1ab7-79b0-adbc-d4c025701acb actually restored with aligned unfinished historical BLOCKED goal and exact returned original visual prefixes. Paired iPhone discovery is not device acceptance; Android remains unproved."
     },
-    "blocked_work": "IN03 consumer209 needs a genuine runtime READY packet; QA09 live cases remain NOT_RUN. Do not launch meaningless proof work or misclassify these as finished.",
-    "operating_rule": "No synchronous chat wait, king/SL review, fresh acknowledgment or ledger/publication dependency. Developers validate/fix; publishers normally push; leads manage ready next work and truthful retirement.",
-    "scope_preservation": "All112 tasks,61IA and functional/visual/device/recovery obligations retained; QA08 alone deferred."
+    "backend_motion": {
+      "owner": "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
+      "state": "Actually reactivated; Root granted existing World producer and temporary C05 contract scope. Independent implementation is underway alongside FE17."
+    },
+    "deletion_service_providers": {
+      "Sessions": "207",
+      "Sharing": "16e",
+      "PrivateData": "00c",
+      "Profile/Friend/Post": "Original Notification232 actually reactivated and given exact legacy provider grants.",
+      "collision": "C07 owner21e already had FE31/35/36; crossed BE assignment withdrawn, frontend work uninterrupted."
+    },
+    "deletion_domain_hooks": "Root reports all second-level Concert PrivateData hooks accepted exact existing-owner grants: Intro, Age, Media, Beacon/Rally, Party/Gift and Mural. These remain implementation/qualification work, not completed deletion.",
+    "ci": "Finished shared-chrome50a8 reused under a new actual ACTIVE unbudgeted CI goal and exclusive sl-world checkout loan; World stopped before transfer, old branches preserved. Repair is published; hosted qualification pending.",
+    "operating_policy": "Current schedules preserve111 functional tasks plus QA08 deferral, direct publication and source/resource handoffs without king/SL review or acknowledgment. Existing screenshot cadence uses the current two-job capacity under actual admission, not the obsolete single queue. Developers own all technical repairs; SL fixture-edit role creep was corrected without reverting delivered work."
   },
   "staffing_history": [
     {
@@ -7317,6 +7433,26 @@
         "wall": "FE204 assigned;6ec9 QA09 goal preserved, no Wall source edits.21d selects an aligned/available backend owner with Root.",
         "publishing": "One canonical publisher receipt; no mandatory repeated identical readbacks, proof-only goals or standalone managerial acknowledgment rounds."
       }
+    },
+    {
+      "at": "2026-11-05T02:28:19+09:00",
+      "basis": "Compact actual receiving-chat states and canonical publisher receipts; no manager code/test/runtime review.",
+      "actually_active": {
+        "FE34": "01a1a213-61d6-7a20-a8e7-476649312f8c",
+        "FE37": "01a1a230-6acc-7e82-9e4b-92506decc745",
+        "FE38": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+        "shared_reference_chrome": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+        "backend": "Social16e, Giveaway267, Party83, Operations205, Wall202, deletion00c and authority/consent207 remain in their exclusive source/runtime queues."
+      },
+      "next_dispatches_sent": {
+        "Community": "Reuse released Gifts53d for FE39 after actual incumbent return, or another ready nonoverlapping Community scope. This is a lead dispatch, not yet a receiving-owner acceptance.",
+        "World": "Map26e ART06 App intake; reuse released AR03 owner only for a real remaining character/World requirement. Source-qualified art does not count as adopted.",
+        "UI": "Direct art231 to a concrete remaining density/reference asset scope or retire it; keep shared chrome CSS exclusive.",
+        "Identity": "After original FE03/FE04/FE11 goal closure, reuse204 for ready internal Identity/Social work with exact leases; no full-backend barrier."
+      },
+      "blocked_work": "IN03 consumer209 needs a genuine runtime READY packet; QA09 live cases remain NOT_RUN. Do not launch meaningless proof work or misclassify these as finished.",
+      "operating_rule": "No synchronous chat wait, king/SL review, fresh acknowledgment or ledger/publication dependency. Developers validate/fix; publishers normally push; leads manage ready next work and truthful retirement.",
+      "scope_preservation": "All112 tasks,61IA and functional/visual/device/recovery obligations retained; QA08 alone deferred."
     }
   ],
   "delivery_priority": {
@@ -8277,6 +8413,12 @@
       "state": "DONE",
       "commit": "bc75182e8f552e3621fcb5b033f22dafdcacc009",
       "basis": "Original password-recovery client criteria explicitly satisfied by implementation owner and exact foundation handoff published. Existing real-email evidence reused; broader Auth/provider and live-system scope remains separate."
+    },
+    {
+      "task": "AR03",
+      "state": "DONE",
+      "commit": "3198cc8d6ec9b5d03c8bc778fd2ab9a0a8e69758",
+      "basis": "Original AR03 artwork criteria explicitly accepted by the restored responsible owner using current approved deliveries. Six presets, required layers, four directions/five phases, anchors, clipping and theme identity are covered by retained source-bound evidence. Two-file disposition published by Root; actual aligned goal COMPLETE. No new artwork, legacy fallback or redundant pack was introduced. Whole C06, live/device and full-reference acceptance remain separate."
     }
   ]
 }
