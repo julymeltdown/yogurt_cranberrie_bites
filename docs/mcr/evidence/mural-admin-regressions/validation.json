@@ -1,0 +1,328 @@
+{
+  "scope": "Original FE33-ENTRY/FE37 bounded residual repair only; no new tasks/counts/parent acceptance. MOCK_READY, not a current global suite pass.",
+  "createdAtUtc": "2026-11-04T01:52:44.682470+00:00",
+  "assignmentBase": "7ea11efdbdc1e2a447ece669a660c10f12b43463",
+  "sourceCommit": "ccd71cb4b7c4557fa2463ae8057b853a9b877866",
+  "validatedReconciliation": "813684f9f2ce1b4128b63f252bbff075f987a60e",
+  "documentationOnlyReconciliation": "c33c6e21e03619b622055a7175730ff1e549a002",
+  "preservedPeerTip": "16fde48ab9842b3a5e9b5e4aab3719c926191ac9",
+  "historicalBroadSource": "cb9abce48d78227bbdedf7ea59ce95e9e0270c4a",
+  "historicalBroadPublication": "62b4bf80dc24d72984d16f0db4e03fce44e3f750",
+  "canonicalAvatarUnionSource": "3398d8331863775ecc0180e5eccebddd179fedd5",
+  "ownedSourcePaths": [
+    "frontend/src/app/mural-entry/__tests__/routes.test.tsx",
+    "frontend/src/features/admin/reports/__tests__/controller.test.ts",
+    "frontend/src/features/admin/reports/model/validate.ts"
+  ],
+  "ownedDocumentation": "docs/mcr/frontend/mural-admin-regressions.md",
+  "checks": [
+    {
+      "check": "Fresh baseline, original two files",
+      "command": "NODE24.22.2 node_modules/vitest/vitest.mjs run src/app/mural-entry/__tests__/routes.test.tsx src/features/admin/reports/__tests__/controller.test.ts --configLoader runner --no-cache --maxWorkers=1",
+      "exitCode": 1,
+      "tests": 52,
+      "failed": 6,
+      "passed": 46,
+      "log": "baseline.log"
+    },
+    {
+      "check": "New regression tests before production repair",
+      "exitCode": 1,
+      "tests": 63,
+      "failed": 7,
+      "passed": 56,
+      "log": "regressions-before-fix.log"
+    },
+    {
+      "check": "Focused repaired tests",
+      "exitCode": 0,
+      "tests": 63,
+      "files": 2,
+      "log": "focused.log"
+    },
+    {
+      "check": "Affected suites before reconciliation",
+      "command": "NODE24.22.2 node_modules/vitest/vitest.mjs run src/app/mural-entry/__tests__ src/features/mural src/world/mural src/features/admin/reports/__tests__/controller.test.ts --configLoader runner --no-cache --maxWorkers=1",
+      "exitCode": 0,
+      "tests": 263,
+      "files": 17,
+      "log": "affected.log"
+    },
+    {
+      "check": "Affected suites after shell/world reconciliation",
+      "command": "NODE24.22.2 node_modules/vitest/vitest.mjs run src/app/mural-entry/__tests__ src/features/mural src/world/mural src/features/admin/reports/__tests__/controller.test.ts --configLoader runner --no-cache --maxWorkers=1",
+      "exitCode": 0,
+      "tests": 263,
+      "files": 17,
+      "log": "reconciled-affected.log"
+    },
+    {
+      "check": "Strict frontend TypeScript",
+      "command": "NODE24.22.2 node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+      "exitCode": 0,
+      "log": "typecheck.log"
+    },
+    {
+      "check": "Reconciled strict frontend TypeScript",
+      "command": "NODE24.22.2 node_modules/typescript/bin/tsc --noEmit --incremental false --pretty false",
+      "exitCode": 0,
+      "log": "reconciled-typecheck.log"
+    },
+    {
+      "check": "Scoped lint",
+      "command": "NODE24.22.2 node_modules/oxlint/bin/oxlint src/app/mural-entry/__tests__/routes.test.tsx src/features/admin/reports/__tests__/controller.test.ts src/features/admin/reports/model/validate.ts",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "check": "Default app build, initial sparse asset omission",
+      "command": "Vite programmatic default build, configLoader=runner, private output/cache",
+      "exitCode": 1,
+      "log": "build-sparse.log"
+    },
+    {
+      "check": "Default app build, exact tracked assets materialized",
+      "command": "Vite programmatic default build, configLoader=runner, private output/cache, finally rm owned temporary output",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "check": "Reconciled default app build",
+      "command": "Vite programmatic default build, configLoader=runner, private output/cache, finally rm owned temporary output",
+      "exitCode": 0,
+      "log": "reconciled-build.log"
+    },
+    {
+      "check": "Existing native moderation runner",
+      "command": "MCR_FE37_EVIDENCE=<owned-evidence>/native NODE24.22.2 src/features/admin/reports/__tests__/browser.mjs",
+      "exitCode": 0,
+      "configs": 9,
+      "widths": [
+        360,
+        390,
+        430
+      ],
+      "browser": "Chrome 156.0.8078.80",
+      "log": "native.log",
+      "report": "native/report.json"
+    },
+    {
+      "check": "Planning provenance",
+      "command": "python3 scripts/mcr/check-plan.py",
+      "cwd": "repository root",
+      "exitCode": 0,
+      "log": "plan.log"
+    },
+    {
+      "check": "Final latest-peer strict frontend TypeScript",
+      "command": "NODE24.22.2 frontend/node_modules/typescript/bin/tsc --project frontend/tsconfig.json --noEmit --incremental false --pretty false",
+      "exitCode": 0,
+      "log": "final-peer-typecheck.log"
+    }
+  ],
+  "sourcePins": {
+    "frontend/src/app/mural-entry/__tests__/routes.test.tsx": {
+      "sha256": "a52d47f07154311f52ffc4219f789f79a0ddd15ee1cb8c8aeda7643b562bc527",
+      "gitBlob": "ac30757faa029dd6371e7ed04a4e8d27b3e2fee4",
+      "lastPathCommit": "ccd71cb4b7c4557fa2463ae8057b853a9b877866"
+    },
+    "frontend/src/features/admin/reports/__tests__/controller.test.ts": {
+      "sha256": "aa0733b4881dc85737e9a8ae08bf399b5769bc92e0e039152d65b202f2544c0a",
+      "gitBlob": "f29e6ece2932f9f5f979e44febd197fcaa3b3c27",
+      "lastPathCommit": "ccd71cb4b7c4557fa2463ae8057b853a9b877866"
+    },
+    "frontend/src/features/admin/reports/model/validate.ts": {
+      "sha256": "6ef318a0da70e08b04e7a5797816fd09a868a1a6e3e54b999d867e880db9ed37",
+      "gitBlob": "bb903ab65ccaa77c1faeb0a1cf1337907da1f0da",
+      "lastPathCommit": "ccd71cb4b7c4557fa2463ae8057b853a9b877866"
+    },
+    "frontend/src/app/mural-entry/owner.ts": {
+      "sha256": "d798f2804ebd569a422da17692b9b0f3764053bceaca98488b156a00ef31a4c9",
+      "gitBlob": "7677565598d54c5105d162fb8ecc1e99a84e13c3",
+      "lastPathCommit": "aedbb020e637993fe9ef1831e31bd6ae5316ae0c"
+    },
+    "frontend/src/app/mural-entry/provider.tsx": {
+      "sha256": "975918620fb178f68e2af0110a494926ef5aee28fb044b50549ecc1a7e646d60",
+      "gitBlob": "e36b30f3ac12d0d1730c3e6b5a9c165c66b37cf5",
+      "lastPathCommit": "aedbb020e637993fe9ef1831e31bd6ae5316ae0c"
+    },
+    "frontend/src/app/mural-entry/__tests__/fixtures.ts": {
+      "sha256": "c54b34a241daa112e225a25357a3c23d04af840e2e434a32b0e8063b67d4fe3a",
+      "gitBlob": "69710624a133f2d4c1f3d7163915636b9f1907c8",
+      "lastPathCommit": "aedbb020e637993fe9ef1831e31bd6ae5316ae0c"
+    },
+    "frontend/src/app/router.tsx": {
+      "sha256": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+      "gitBlob": "90fe4b5bc429cb0242ef4dc636b5ee6f6e69b907",
+      "lastPathCommit": "b756e9d9d16e1541d8155e09537fcb142317aa44"
+    },
+    "frontend/src/app/WorldShell.tsx": {
+      "sha256": "9ab07b46c077bde4381ea2ec5918c146e2d05dfe7dc355bafad7448d9ff2d5f9",
+      "gitBlob": "b7062d72b1b35574a5fa49318959c2defa9cdf69",
+      "lastPathCommit": "416b4e5f1adf6c1e6d1ad7f376dbdd92b7573a63"
+    },
+    "frontend/src/features/mural/editor/MuralEditor.tsx": {
+      "sha256": "a5bbb147d4e56c1039428234ae9b02cf36da529b96d658cff217c503b37ec762",
+      "gitBlob": "6b5d4f3d54e025f2f8ecdb94cf368cebff8d0182",
+      "lastPathCommit": "7b567acb6026d0bab6b5afefce6bc704e4440f2a"
+    },
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": {
+      "sha256": "70c86e0b4804e6ad9e560aad31e7de73eaa58098941b716fd070018a7aaeaebe",
+      "gitBlob": "a1052dafce2801d3eebe3ef80bd726424399cc3b",
+      "lastPathCommit": "7b567acb6026d0bab6b5afefce6bc704e4440f2a"
+    },
+    "frontend/src/features/mural/sync/controller.ts": {
+      "sha256": "7d352e7404f81fd0addcb59415bac137f385c37014c5545a629b175d95a58b2b",
+      "gitBlob": "56450be6041679fd30fe973d1a8da19e16eb6455",
+      "lastPathCommit": "36d703d825d3bdafe244442c00be96f77fce4a4a"
+    },
+    "frontend/src/features/mural/sync/__tests__/fixture.ts": {
+      "sha256": "c61d33f5258a19541a8d70989686ebfdfa19a5711a9bcf44d2e22ae9b0d52a56",
+      "gitBlob": "8b7700d22b8653d5498033a1e8f388bbc65130ba",
+      "lastPathCommit": "36d703d825d3bdafe244442c00be96f77fce4a4a"
+    },
+    "frontend/src/world/mural/sink.ts": {
+      "sha256": "105180874d00863e00ce2d3918051103f9a2ec25ba9e79eb5c330d737c15e1e8",
+      "gitBlob": "8115a48585c5d97dc3cb0a00fc85bea85dcbb16e",
+      "lastPathCommit": "36d703d825d3bdafe244442c00be96f77fce4a4a"
+    },
+    "frontend/src/features/admin/reports/model/contract.ts": {
+      "sha256": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8",
+      "gitBlob": "ab84568867f69684c98369b743288d291610b12e",
+      "lastPathCommit": "b786e648dd889e9bdf064c0e4e637a1dc4075a70"
+    },
+    "frontend/src/features/admin/reports/model/controller.ts": {
+      "sha256": "6eea30d9e0feaf91a20577a2f6d36a19ea1ac8e546824672c749d7c6efc7c65f",
+      "gitBlob": "187818540b9c2c448d6ce7fc9fd11753164dbbb9",
+      "lastPathCommit": "b786e648dd889e9bdf064c0e4e637a1dc4075a70"
+    },
+    "frontend/src/features/admin/reports/__tests__/fixtures/harness.ts": {
+      "sha256": "a817d1cee8671f5a54f41b944e482f3e94ababb1de023b4a519f9addad9906bb",
+      "gitBlob": "9dda5e52df96ea25bffac4cc31155fb207ed6ad4",
+      "lastPathCommit": "b786e648dd889e9bdf064c0e4e637a1dc4075a70"
+    },
+    "frontend/src/features/admin/reports/__tests__/browser.mjs": {
+      "sha256": "653d8081b522a6d0b1c2f57019784109375c5aa85402843906d7c469279fd0b2",
+      "gitBlob": "e0eb662f978f01aed5b2ca46d3a17dbfaca25954",
+      "lastPathCommit": "e4b9c0dd969b0251a610cac6123ee25645edd9ec"
+    },
+    "frontend/src/features/auth/__tests__/fixtures/data.ts": {
+      "sha256": "00577a6ebb610df3279996d36a88d512d0c4df838a6c11e7877238b1e079986f",
+      "gitBlob": "34caf585b112c46cd8a0b8d780323ae35d9e82a6",
+      "lastPathCommit": "26cacaeaf07ec2cdc9d18721021eb25ae4351b37"
+    },
+    "contracts/fixtures/core/bootstrap-open.json": {
+      "sha256": "d29e699f7b2ca9d6a1dfc34af56590bac5f7c3f103644ab02625b6f1707a17e6",
+      "gitBlob": "c077d3c9810bbbf50194609775caa9bebdda2046",
+      "lastPathCommit": "325e39caf31f60992076448c0f58573432dbdec1"
+    },
+    "contracts/fixtures/assets/selected-static/photo01_front_01.json": {
+      "sha256": "a49ec9dcf405f2d783041fe332d687c59337fbc736f2394f6f7c5d93c4e5574b",
+      "gitBlob": "4d575ffd618c2d062a5ce859bc60f4028e45b4a1",
+      "lastPathCommit": "3398d8331863775ecc0180e5eccebddd179fedd5"
+    },
+    "contracts/assets/v1/avatar-config.schema.json": {
+      "sha256": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+      "gitBlob": "fb8adbc2ab2196e71ade8d593e4c41ad0593de71",
+      "lastPathCommit": "3398d8331863775ecc0180e5eccebddd179fedd5"
+    },
+    "contracts/core/v1/core.schema.json": {
+      "sha256": "9ddf3cd3c853ef6a8258a6215c546bd84eccde620ee73b636888d868cfca1c88",
+      "gitBlob": "efe1edbd01d42f58d1ccc90bc99bebf1e0c2e9a1",
+      "lastPathCommit": "2d9198a684ec363c476ae75835ddf4289e47762c"
+    },
+    "contracts/domain/v1/admin.schema.json": {
+      "sha256": "953e78a482d998e35c9612c30467600adcead3c9e9d4fb6ab7679a2164aef640",
+      "gitBlob": "bfbe77c76d78b547e9808c9994ebb0e52c541758",
+      "lastPathCommit": "911f15665379425afeb52c1401626f39f5298739"
+    },
+    "contracts/domain/v1/operations.json": {
+      "sha256": "622c0e0eba6e1c835c5e953a3acd6825f97ed43aff9bc32b982c207fdfe31839",
+      "gitBlob": "dee2f0f2f999b35186764ccdd0a86b06539155b8",
+      "lastPathCommit": "911f15665379425afeb52c1401626f39f5298739"
+    },
+    "contracts/generated/mcr-domain.openapi.json": {
+      "sha256": "79a066b88119e53f6f16876d7e3fe59a18ee956be6ed6d2af7ee1efa187e0feb",
+      "gitBlob": "260f4f62eb80e463c0aa8e005c32c9ae45d29c9e",
+      "lastPathCommit": "b9423cabc112da5605eb7f4393adfdee5c93d767"
+    },
+    "frontend/package.json": {
+      "sha256": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "gitBlob": "d3c1adc42639ce34c38c62de7b02d40d55fa9b42",
+      "lastPathCommit": "a9746c6042ee25b68ccada307375fb6221c9c52b"
+    },
+    "frontend/pnpm-lock.yaml": {
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "gitBlob": "7717408b8c7e5dca744e85aa55ea792e09ab5c5c",
+      "lastPathCommit": "605b858b3baa2bb93ce4a01a6620cd25bc648c14"
+    },
+    "frontend/vite.config.ts": {
+      "sha256": "f068812eb2cc54891e2422112ccf14374b2a329c8c1d7d68b6195b7a87f743f8",
+      "gitBlob": "eb07f77f928bcf8cd1fd3b9699f70632e079949b",
+      "lastPathCommit": "605b858b3baa2bb93ce4a01a6620cd25bc648c14"
+    },
+    "frontend/src/app/__tests__/production-refresh/evidence/broad-diagnostic.log": {
+      "sha256": "9a8d3884a46dd042ab35e07d91d3da9de6e36e80f813253e1c5d537d2864ddd2",
+      "gitBlob": "8a82a1f203fdf71334d33472ca3e22cdf7dd45f0",
+      "lastPathCommit": "dc88c2489dc2ec475f3375de480cfe3206874d46"
+    },
+    "docs/mcr/frontend/production-refresh.md": {
+      "sha256": "22ac3c51e7a2070d504a54110dce995e8443d4fd420f9b9dda0b1bf8f735f729",
+      "gitBlob": "9f87d5f42e9ecd23854c87906fca028e3ac16da8",
+      "lastPathCommit": "dc88c2489dc2ec475f3375de480cfe3206874d46"
+    },
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-top-v1.png": {
+      "sha256": "230480492acf6eb841c4aa1dbb66e622e8ef866aed2694f91308d50572b6b072",
+      "gitBlob": "4174202f3859e4fa5e2b3a326ce4423070b20572",
+      "lastPathCommit": "4c76934825a129e3430031678b75f3967ce80317"
+    },
+    "frontend/src/features/auth/ui/reference-sign-in/artwork/cemetery-bottom-v1.png": {
+      "sha256": "104e4b1acdb16ac40c671e62fd858917b1507b87935d43a80334fe7622bb4c92",
+      "gitBlob": "141bdc92c9d169ff608749c55e604b71434bdfc2",
+      "lastPathCommit": "4c76934825a129e3430031678b75f3967ce80317"
+    }
+  },
+  "evidenceSha256": {
+    "affected.log": "487070990b2fcbaf288f928410523908ea01d4dd344fb7b012d9e0da9f825fe5",
+    "baseline.log": "d7e73920aef09dca2f2917be1d3652237bd25e0074cd1ebf7b9a404e5a07d0fa",
+    "build-sparse.log": "2d5157a8f1b03dffbd9196765ea63483c06d22ffec47d00f22ab30a29895dad4",
+    "build.log": "dcb8adcd819a1a3a981d5eeccfe3a57745ca249d12fdd01c319bab8385f22f8e",
+    "final-peer-typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "focused.log": "3d4239a3aa654e813ff9a483cd1ee1adfacca92f161ced0130dc660297d2f190",
+    "lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native/360-content-confirmation.png": "3edb333c2e12b40030191c7739b353a297a9f05960e514be397f73325d88b1a2",
+    "native/360-members-confirmation.png": "1c86c57474db383fb2b471ed112b463726cbb226ce66a37ccf31b5a24d998729",
+    "native/360-reports-confirmation.png": "cc29c38826847a9466e63de1b07baf41578e42ec9c3f84d0a8434bda52c53f46",
+    "native/390-content-confirmation.png": "8c1ffd47e38a0042b726f86dc18335ff790b392e86354859786f7057e5d89bd6",
+    "native/390-members-confirmation.png": "d85576e4defb38d2ff71ad6988d8982af9a3c194428a3deba8e2c6a3ae3f98f9",
+    "native/390-reports-confirmation.png": "b5672e49da0d9cf7f7332a6b08757d0f4c5601ecfb962461e238674350579353",
+    "native/430-content-confirmation.png": "f6d065df9eab0b8acbcf83200c4949b511b205be3426f4dcd8e2ef7be15e24ed",
+    "native/430-members-confirmation.png": "3fd8258f32e298ce87d720caa511d90f35908e2074c5d37a0d704d9748be50cd",
+    "native/430-reports-confirmation.png": "ddc96c9f095e7dfd3d552253c71ea5fc5ef0dca362cf6f2b0127156b29f675de",
+    "native/report.json": "5605c6246bacf8590cfa47415464b01dbddcef56a2abd21cd596cbb60e84b3d5",
+    "native.log": "2b91861e0161589f103cd3b03d0c67533eb9f894d88e19fff562b7fc29888be1",
+    "plan.log": "88606f33d640a29811a4cbdc9748fc0f1e16225b81ad7e697deaf3b20c9b86e1",
+    "reconciled-affected.log": "159b813e6db62ce636f29765f464b17d33945ebe3594500f2a64245945bde2e9",
+    "reconciled-build.log": "c85cace0f8e4488ca3c751224df92572b443b96b8ff5df4d0693ff209e2026f9",
+    "reconciled-typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reconciliation.json": "e56af645b0b8a9cd6f66fb5e5f2cfaa60d3c25cc140cd479e0f39aec3d2e1118",
+    "regressions-before-fix.log": "b4998b603a267a1255f20f0bc63ef211a931f80f181a6c0817a496014167ebd7",
+    "typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "documentationSha256": "d5a16fb86ccb6ed7ab096f28ff0b9df71b491d94bf6e68b216f6e84411b240f9",
+  "limitations": [
+    "Broad unfiltered suite remains historical NOT GREEN, not rerun",
+    "No live backend / actual root-world propagation / multiuser / physical devices / IN04 or IN05 / whole FE33 or FE37 acceptance",
+    "Mural canvas DOM contexts stubbed in jsdom; exact RGBA assertion qualifies real sink into in-memory scene fixture, not native browser raster",
+    "Native moderation HTTP, role and evidence fixtures synthetic; original runner report old assignmentBase is historical, sourceHashes bind this run"
+  ],
+  "cleanup": {
+    "dependencyLink": "Only exact worker-created frontend/node_modules symlink is removed before publication; retained target is read-only",
+    "privateBuildOutput": "All owned default-build temp directories removed in finally",
+    "nativeOutput": "Generated native site and 36 non-retained captures removed; nine pinned confirmation captures plus report retained",
+    "materializedAuthAssets": "Two tracked assets exactly match HEAD, no tracked asset diff",
+    "sourceArchiveDiff": "none"
+  },
+  "finalReconciliation": "a25c9147182d556288501e8bc4cd00fa2ccd72cb",
+  "finalPreservedPeerTip": "ef1b6c60afdd06a1847f49c91d805421904552fc"
+}

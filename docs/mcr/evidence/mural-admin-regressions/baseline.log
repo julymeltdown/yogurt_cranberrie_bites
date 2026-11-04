@@ -1,0 +1,797 @@
+
+ RUN  v4.1.9 <checkout>/frontend
+
+ ❯ src/features/admin/reports/__tests__/controller.test.ts (49 tests | 4 failed) 52ms
+     × binds exact members command actor/event/target/revision/key with no replay 2ms
+     × uses the frozen user_id filter for a direct member route and retains minimal fields 2ms
+     × supports the reverse members action against the new revision 1ms
+   × uses a fresh key only for a separately reviewed intent after refresh 0ms
+ ❯ src/app/mural-entry/__tests__/routes.test.tsx (3 tests | 2 failed) 2110ms
+   × keeps the same owner and unknown command across actual Wall/world/other-panel navigation and reconnect 1034ms
+   × removes protected DOM and raster on privacy closure and never installs a replacement owner for the expired scope 1015ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/mural-entry/__tests__/routes.test.tsx > keeps the same owner and unknown command across actual Wall/world/other-panel navigation and reconnect
+TestingLibraryElementError: Unable to find an element with the text: Confirmed revision 10. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="world-shell"
+      data-mcr-shell=""
+      data-panel-size="half"
+    >
+      <a
+        class="skip-link"
+        href="#shell-content"
+      >
+        Skip to content
+      </a>
+      <header
+        class="concert-kit mcr-chrome-header"
+      >
+        <a
+          aria-label="MCR Concert World"
+          class="mcr-chrome-brand"
+          data-discover="true"
+          href="/world"
+          id="shell-brand"
+        >
+          <span
+            aria-hidden="true"
+            class="mcr-chrome-identity-visual"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="mcr-chrome-identity-copy"
+          >
+            <strong>
+              MCR Concert World
+            </strong>
+            <span
+              class="mcr-chrome-event"
+              title="Shell review · test event"
+            >
+              Shell review · test event
+            </span>
+          </span>
+        </a>
+        <div
+          class="mcr-chrome-header__actions"
+        >
+          <a
+            aria-label="Inbox"
+            data-discover="true"
+            href="/notifications"
+            id="shell-inbox"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"
+              />
+            </svg>
+          </a>
+          <a
+            aria-label="Settings"
+            data-discover="true"
+            href="/me/settings"
+            id="shell-settings"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="3"
+              />
+            </svg>
+          </a>
+        </div>
+      </header>
+      <div
+        class="shell-era-region"
+      >
+        <section
+          aria-label="World era"
+          class="concert-kit mcr-chrome-eras"
+        >
+          <div
+            aria-describedby="_r_1_-status"
+            aria-label="Choose an era"
+            class="mcr-chrome-eras__choices"
+            role="group"
+          >
+            <button
+              aria-label="Revenge"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              REVENGE
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+            <button
+              aria-label="Parade"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              PARADE
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+            <button
+              aria-label="Danger"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              DANGER
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+          </div>
+          <p
+            aria-atomic="true"
+            aria-live="polite"
+            class="mcr-chrome-eras__status"
+            id="_r_1_-status"
+            role="status"
+          >
+            Eras unavailable.
+         ...
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="world-shell"
+      data-mcr-shell=""
+      data-panel-size="half"
+    >
+      <a
+        class="skip-link"
+        href="#shell-content"
+      >
+        Skip to content
+      </a>
+      <header
+        class="concert-kit mcr-chrome-header"
+      >
+        <a
+          aria-label="MCR Concert World"
+          class="mcr-chrome-brand"
+          data-discover="true"
+          href="/world"
+          id="shell-brand"
+        >
+          <span
+            aria-hidden="true"
+            class="mcr-chrome-identity-visual"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="mcr-chrome-identity-copy"
+          >
+            <strong>
+              MCR Concert World
+            </strong>
+            <span
+              class="mcr-chrome-event"
+              title="Shell review · test event"
+            >
+              Shell review · test event
+            </span>
+          </span>
+        </a>
+        <div
+          class="mcr-chrome-header__actions"
+        >
+          <a
+            aria-label="Inbox"
+            data-discover="true"
+            href="/notifications"
+            id="shell-inbox"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"
+              />
+            </svg>
+          </a>
+          <a
+            aria-label="Settings"
+            data-discover="true"
+            href="/me/settings"
+            id="shell-settings"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="3"
+              />
+            </svg>
+          </a>
+        </div>
+      </header>
+      <div
+        class="shell-era-region"
+      >
+        <section
+          aria-label="World era"
+          class="concert-kit mcr-chrome-eras"
+        >
+          <div
+            aria-describedby="_r_1_-status"
+            aria-label="Choose an era"
+            class="mcr-chrome-eras__choices"
+            role="group"
+          >
+            <button
+              aria-label="Revenge"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              REVENGE
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+            <button
+              aria-label="Parade"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              PARADE
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+            <button
+              aria-label="Danger"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              DANGER
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+          </div>
+          <p
+            aria-atomic="true"
+            aria-live="polite"
+            class="mcr-chrome-eras__status"
+            id="_r_1_-status"
+            role="status"
+          >
+            Eras unavailable.
+         ...
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/mural-entry/__tests__/routes.test.tsx:35:35
+     33| }
+     34| it('keeps the same owner and unknown command across actual Wall/world/…
+     35|   const h = setup(); await screen.findByText('Confirmed revision 10');…
+       |                                   ^
+     36|   h.f.server.mode('lost')
+     37|   await act(async () => { sync.editor.select(2, 3); await sync.editor.…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/app/mural-entry/__tests__/routes.test.tsx > removes protected DOM and raster on privacy closure and never installs a replacement owner for the expired scope
+TestingLibraryElementError: Unable to find an element with the text: Confirmed revision 10. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="world-shell"
+      data-mcr-shell=""
+      data-panel-size="half"
+      style="--shell-viewport-height: 768px;"
+    >
+      <a
+        class="skip-link"
+        href="#shell-content"
+      >
+        Skip to content
+      </a>
+      <header
+        class="concert-kit mcr-chrome-header"
+      >
+        <a
+          aria-label="MCR Concert World"
+          class="mcr-chrome-brand"
+          data-discover="true"
+          href="/world"
+          id="shell-brand"
+        >
+          <span
+            aria-hidden="true"
+            class="mcr-chrome-identity-visual"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="mcr-chrome-identity-copy"
+          >
+            <strong>
+              MCR Concert World
+            </strong>
+            <span
+              class="mcr-chrome-event"
+              title="Shell review · test event"
+            >
+              Shell review · test event
+            </span>
+          </span>
+        </a>
+        <div
+          class="mcr-chrome-header__actions"
+        >
+          <a
+            aria-label="Inbox"
+            data-discover="true"
+            href="/notifications"
+            id="shell-inbox"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"
+              />
+            </svg>
+          </a>
+          <a
+            aria-label="Settings"
+            data-discover="true"
+            href="/me/settings"
+            id="shell-settings"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="3"
+              />
+            </svg>
+          </a>
+        </div>
+      </header>
+      <div
+        class="shell-era-region"
+      >
+        <section
+          aria-label="World era"
+          class="concert-kit mcr-chrome-eras"
+        >
+          <div
+            aria-describedby="_r_5_-status"
+            aria-label="Choose an era"
+            class="mcr-chrome-eras__choices"
+            role="group"
+          >
+            <button
+              aria-label="Revenge"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              REVENGE
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+            <button
+              aria-label="Parade"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              PARADE
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+            <button
+              aria-label="Danger"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              DANGER
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+          </div>
+          <p
+            aria-atomic="true"
+            aria-live="polite"
+            class="mcr-chrome-eras__status"
+            id="_r_5_-status"
+            role="status"
+   ...
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="world-shell"
+      data-mcr-shell=""
+      data-panel-size="half"
+      style="--shell-viewport-height: 768px;"
+    >
+      <a
+        class="skip-link"
+        href="#shell-content"
+      >
+        Skip to content
+      </a>
+      <header
+        class="concert-kit mcr-chrome-header"
+      >
+        <a
+          aria-label="MCR Concert World"
+          class="mcr-chrome-brand"
+          data-discover="true"
+          href="/world"
+          id="shell-brand"
+        >
+          <span
+            aria-hidden="true"
+            class="mcr-chrome-identity-visual"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="mcr-chrome-identity-copy"
+          >
+            <strong>
+              MCR Concert World
+            </strong>
+            <span
+              class="mcr-chrome-event"
+              title="Shell review · test event"
+            >
+              Shell review · test event
+            </span>
+          </span>
+        </a>
+        <div
+          class="mcr-chrome-header__actions"
+        >
+          <a
+            aria-label="Inbox"
+            data-discover="true"
+            href="/notifications"
+            id="shell-inbox"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5ZM10 21h4M12 2v2"
+              />
+            </svg>
+          </a>
+          <a
+            aria-label="Settings"
+            data-discover="true"
+            href="/me/settings"
+            id="shell-settings"
+          >
+            <svg
+              aria-hidden="true"
+              class="concert-icon"
+              fill="none"
+              focusable="false"
+              stroke="currentColor"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m9 3 1 3h4l1-3 3 2-1 3 2 3 3 1-1 4h-3l-2 3v3h-4l-1-3-3-1-3 1-2-3 2-2V9L2 7l3-3 3 2Z"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="3"
+              />
+            </svg>
+          </a>
+        </div>
+      </header>
+      <div
+        class="shell-era-region"
+      >
+        <section
+          aria-label="World era"
+          class="concert-kit mcr-chrome-eras"
+        >
+          <div
+            aria-describedby="_r_5_-status"
+            aria-label="Choose an era"
+            class="mcr-chrome-eras__choices"
+            role="group"
+          >
+            <button
+              aria-label="Revenge"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              REVENGE
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+            <button
+              aria-label="Parade"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              PARADE
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+            <button
+              aria-label="Danger"
+              aria-pressed="false"
+              disabled=""
+              type="button"
+            >
+              DANGER
+              <span
+                aria-hidden="true"
+                class="mcr-chrome-eras__pending"
+              />
+            </button>
+          </div>
+          <p
+            aria-atomic="true"
+            aria-live="polite"
+            class="mcr-chrome-eras__status"
+            id="_r_5_-status"
+            role="status"
+   ...
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/app/mural-entry/__tests__/routes.test.tsx:62:35
+     60| })
+     61| it('removes protected DOM and raster on privacy closure and never inst…
+     62|   const h = setup(); await screen.findByText('Confirmed revision 10');…
+       |                                   ^
+     63|   const canvas = document.querySelector('.mcr-mural__surface canvas') …
+     64|   act(() => { h.r.scene.frame(); h.f.auth.privacy.changePolicy(h.f.sco…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > explicit revision/reason and truthful commands > binds exact members command actor/event/target/revision/key with no replay
+TypeError: Cannot use 'in' operator to search for 'target_type' in undefined
+ ❯ rowKey src/features/admin/reports/model/contract.ts:54:35
+     52| }
+     53| export const rowId = (r: Row) => 'report_id' in r ? r.report_id : 'use…
+     54| export const rowKey = (r: Row) => 'target_type' in r && !('report_id' …
+       |                                   ^
+     55| export const rowSchema = (lane: Lane) => lane === 'reports' ? 'Report'…
+     56| export function row(lane: Lane, value: unknown, event: string): Row {
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:21:31
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:116:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > private evidence, direct member entry and command recovery > uses the frozen user_id filter for a direct member route and retains minimal fields
+AssertionError: expected null to match object { Object (user_id) }
+
+- Expected:
+{
+  "user_id": "00000000-0000-4000-8000-000000000400",
+}
+
++ Received:
+null
+
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:275:39
+    273|             await c.load();
+    274|             expect(new URL(h.requests[0]!.url).searchParams.get('user_…
+    275|             expect(c.read().selected).toMatchObject({ user_id: id(400)…
+       |                                       ^
+    276|             expect(Object.keys((c.read().selected as {
+    277|                 profile: object;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > private evidence, direct member entry and command recovery > supports the reverse members action against the new revision
+TypeError: Cannot use 'in' operator to search for 'target_type' in undefined
+ ❯ rowKey src/features/admin/reports/model/contract.ts:54:35
+     52| }
+     53| export const rowId = (r: Row) => 'report_id' in r ? r.report_id : 'use…
+     54| export const rowKey = (r: Row) => 'target_type' in r && !('report_id' …
+       |                                   ^
+     55| export const rowSchema = (lane: Lane) => lane === 'reports' ? 'Report'…
+     56| export function row(lane: Lane, value: unknown, event: string): Row {
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:21:31
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:294:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/features/admin/reports/__tests__/controller.test.ts > uses a fresh key only for a separately reviewed intent after refresh
+TypeError: Cannot use 'in' operator to search for 'target_type' in undefined
+ ❯ rowKey src/features/admin/reports/model/contract.ts:54:35
+     52| }
+     53| export const rowId = (r: Row) => 'report_id' in r ? r.report_id : 'use…
+     54| export const rowKey = (r: Row) => 'target_type' in r && !('report_id' …
+       |                                   ^
+     55| export const rowSchema = (lane: Lane) => lane === 'reports' ? 'Report'…
+     56| export function row(lane: Lane, value: unknown, event: string): Row {
+ ❯ prepare src/features/admin/reports/__tests__/controller.test.ts:21:31
+ ❯ src/features/admin/reports/__tests__/controller.test.ts:354:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  6 failed | 46 passed (52)
+   Start at  10:44:30
+   Duration  3.63s (transform 824ms, setup 0ms, import 738ms, tests 2.16s, environment 569ms)
+
