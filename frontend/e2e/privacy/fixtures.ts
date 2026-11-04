@@ -17,6 +17,7 @@ import party from '../../../contracts/fixtures/domain/party-full.json'
 import giveaway from '../../../contracts/fixtures/domain/giveaway-management.json'
 import beacon from '../../../contracts/fixtures/domain/private-beacon.json'
 import { roles, operations, markers, check, assertAbsent, deferred, until, type Cell, type Role } from './oracle'
+import { evidenceCells } from './evidence-fixtures'
 
 const eventId = approved.event_id, owner = approved.requester_id, member = approved.recipient_id
 const id = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`
@@ -174,9 +175,10 @@ export async function runFixtures() {
   check(cells.length === roles.length * operations.length, 'matrix complete without dropped cells')
   check(new Set(cells.map(cell => cell.role + ':' + cell.operation)).size === cells.length, 'unique matrix cells')
   const domains = ['handle', 'claim', 'evidence', 'beacon', 'recipient']
+  const evidence = (await Promise.all(roles.map(role => evidenceCells(role)))).flat()
   const domainMatrix = domains.flatMap(domain => cells.map(cell => ({ domain, role: cell.role, operation: cell.operation,
-    status: domain === 'handle' || cell.operation === 'cache' ? cell.status : 'UNSUPPORTED', provenance: 'SYNTHETIC_FIXTURE',
-    evidence: domain === 'handle' || cell.operation === 'cache' ? cell.evidence : 'Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated.' })))
+    status: domain === 'evidence' && evidence.some(result => result.role === cell.role && result.operation === cell.operation) ? 'PASS' : domain === 'handle' || cell.operation === 'cache' ? cell.status : 'UNSUPPORTED', provenance: 'SYNTHETIC_FIXTURE',
+    evidence: domain === 'evidence' ? evidence.find(result => result.role === cell.role && result.operation === cell.operation)?.evidence ?? cell.evidence : domain === 'handle' || cell.operation === 'cache' ? cell.evidence : 'Public DTO leak-rejection checks are separate; this role/domain operation has no seeded authorization/service fixture in this increment. Backend role/seed contract and feature-specific runtime input required; no result fabricated.' })))
   return { task: 'QA04', result: 'MOCK_READY', originalTask: 'IN_PROGRESS', qualification: 'SYNTHETIC_CLIENT_FIXTURE_ONLY', cells, domainMatrix, projections: projections(),
     realService: 'NOT_RUN', remaining: ['Actual seeded principals and registered public services', 'HTTP/WS role authorization, real revocation delivery and cached product UI qualification'],
     nonClaims: ['No QA04 live acceptance', 'No IN02/IN03/QA07/FE09 production acceptance', 'No server role-policy proof', 'No actual WS/cache service execution'] }

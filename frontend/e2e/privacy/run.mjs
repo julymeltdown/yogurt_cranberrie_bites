@@ -41,7 +41,7 @@ try {
     'frontend/src/features/safety/contract.ts',
     'frontend/src/features/meet-beacon/model/contract.ts',
     ...['approved-social-request', 'public-intro', 'public-post', 'party-full', 'giveaway-management', 'private-beacon'].map(name => `contracts/fixtures/domain/${name}.json`),
-    ...['fixtures.ts', 'oracle.ts', 'browser.ts', 'runtime.mjs', 'run.mjs'].map(name => `frontend/e2e/privacy/${name}`),
+    ...['fixtures.ts', 'evidence-fixtures.ts', 'oracle.ts', 'browser.ts', 'runtime.mjs', 'run.mjs'].map(name => `frontend/e2e/privacy/${name}`),
   ]
   for (const module of server.environments.client.moduleGraph.idToModuleMap.values()) {
     if (module.file?.startsWith(root + '/') && /\.(?:ts|tsx|json)$/.test(module.file) && !module.file.includes('/node_modules/')) files.push(module.file.slice(root.length + 1))
