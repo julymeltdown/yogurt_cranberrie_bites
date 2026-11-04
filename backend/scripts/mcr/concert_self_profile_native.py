@@ -75,7 +75,8 @@ def exercise(cluster, pinned, report):
     ]:
         command(report, label, [pinned["profile-bin"], *args], env, cluster.root, success=success, secrets=secrets)
     manifest = migration.migration_manifest(ROOT / "backend", "profile-service")
-    require(len(manifest) == 8 and migration.check_ledger(cluster, DB, manifest) == 8, "exact-eight-migrations-required")
+    require(8 in manifest and (ROOT / "backend/services/profile-service/migrations/0008_concert_self_profile.sql").is_file(), "owned-self-migration-required")
+    require(migration.check_ledger(cluster, DB, manifest) == len(manifest), "exact-source-migration-ledger-required")
     report["migration_sha384"] = manifest
     env = {**cluster.env, "MCR_SELF_PROFILE_ROOT": str(cluster.root), "MCR_SELF_PROFILE_TOKEN": cluster.token,
            "MCR_SELF_PROFILE_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}", "MCR_SELF_PROFILE_URL": url}

@@ -83,22 +83,25 @@ impl Owners {
         }
         let original = platform::call_deadline::current()
             .ok_or_else(|| Status::invalid_argument("Original self Profile deadline required"))?;
-        let deadline = AuthorityRpcDeadline::within_original(
-            binding.expires_unix_micros.min(verified.expires_micros()),
-            original.min(verified.stop().into_std()),
-            BUDGET,
-        )?;
+        let mut expires = binding.expires_unix_micros.min(verified.expires_micros());
         let digest = binding_digest(binding)?;
         for view in [&wire.auth_view, &wire.friend_view] {
             let view = view.as_ref().ok_or_else(denied)?;
             canonical(&view.guard_id)?;
             if view.binding_digest != digest
                 || view.view_secret.len() != 32
-                || view.expires_unix_micros != binding.expires_unix_micros
+                || view.expires_unix_micros > binding.expires_unix_micros
+                || view.expires_unix_micros <= chrono::Utc::now().timestamp_micros()
             {
                 return Err(denied());
             }
+            expires = expires.min(view.expires_unix_micros);
         }
+        let deadline = AuthorityRpcDeadline::within_original(
+            expires,
+            original.min(verified.stop().into_std()),
+            BUDGET,
+        )?;
         let checked = CheckedScope {
             wire,
             digest,
@@ -271,7 +274,7 @@ pub(super) fn binding_digest(binding: &lease::GuardBinding) -> Result<[u8; 32], 
         || binding.parent_body_digest.len() != 32
         || binding.body_digest.len() != 32
         || binding.expires_unix_micros <= 0
-        || binding.subject_ids.len() > 100
+        || binding.subject_ids.len() > 101
         || !matches!(
             binding.http_method.as_str(),
             "GET" | "PATCH" | "POST" | "PUT" | "DELETE"
@@ -284,8 +287,15 @@ pub(super) fn binding_digest(binding: &lease::GuardBinding) -> Result<[u8; 32], 
     {
         return Err(denied());
     }
+    let mut subjects = std::collections::BTreeSet::new();
     for subject in &binding.subject_ids {
-        canonical(subject)?;
+        let id = canonical(subject)?;
+        if id != ids[0] && !subjects.insert(id) {
+            return Err(denied());
+        }
+    }
+    if subjects.len() > 100 {
+        return Err(denied());
     }
     binding_digest(&OwnerBinding {
         actor_id: ids[0],
