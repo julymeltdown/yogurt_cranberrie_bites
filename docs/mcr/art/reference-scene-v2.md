@@ -475,3 +475,42 @@ remains with Root. No all-era, native, runtime, occlusion, mobile or whole-fidel
 acceptance follows. The original AR02/AR04 criteria remain open under the same
 goal, whose metadata remains **BLOCKED**. No additional browser/export/resource
 job or manager review gate was introduced.
+
+## AR02/AR04 completed MAP view and venue assembly correction
+
+Root's retained native04 PARADE MAP390×844 (409,928B,
+`19d05754866c6ab54004a89dbb3e6026cf3b5b2b7b2e33c5f5a749ff1c907e03`),
+NEW editable768×1296 SVG (2,657,147B,
+`cb34694ac25ffa5e488aa2c98094f23a0c4950a3eb5622ed590d21f606db4cb5`)
+and actual Chrome SVG raster (1,476,218B,
+`9156109e82573868a1a9d24585f305b890353a96889392b34988359c590ba524`)
+were independently byte/hash checked. Both actual PNGs were viewed against the
+unchanged original target and the unchanged reference half of QA06's earlier
+pair. All25 published architecture postimages match capture source4cb162b7;
+source921cb3d8 is its ancestor. The source/artifacts were publication-pending at
+comparison. No image was copied or exported by ART.
+
+Root reports native04's full bounded technical matrix PASS; ART did not rerun
+it. That capture uses prior World presentation and cannot prove later combined
+master pixels. The matching MAP view now establishes an architectural difference:
+the central building reads as a narrow standalone block, while the reference
+venue has flanking wings. Taller floors alone do not complete its massing.
+
+New additive `map-venue-massing-v1/presentation.json` addresses that shape with
+two unbound MAP-only annexes sampled from the existing three-era `north_hall`
+frame. West117,244,169×128/depth372 and east436,280,122×90/depth370 draw behind
+the unchanged stage representation at185,163,300×210/depth373. The frame envelope
+widens from300 to441px; this is an assembly metric, not reference segmentation
+or visual acceptance. All atlas/source pixels,34 World props, six labels, ten
+gardens, identities, geometry, feet, cameras and bindings remain unchanged.
+
+Source checks validate pins, exact base placements/frames, label/garden
+disjointness and12 canonical spawn/interaction clearances (minimum22px). Separate
+static alpha point analysis records partial annex occlusion by the central hall
+and existing trees across all three eras, without writing a raster. It is not
+a native-render or real-avatar visibility proof. New composition has51 MAP
+objects rather than49 and requires an explicitly recorded consumer follow-up.
+Native04 evidence qualifies the earlier input only. Actual new-wing visibility,
+massing, mobile captures, landscape density and full original fidelity remain
+open. The same original goal remains metadata BLOCKED; no new artist browser,
+export, resource job, manager review or false completion is introduced.
