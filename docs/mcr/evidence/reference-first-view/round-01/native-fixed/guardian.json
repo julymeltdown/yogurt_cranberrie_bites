@@ -1,0 +1,68 @@
+{
+  "job": "FE-REFERENCE-FIRSTVIEW-03-BROWSER2-202611041552Z",
+  "status": "FAIL",
+  "startedEpoch": 1793807639.920625,
+  "workDeadline": 1793807824.941159,
+  "cleanupDeadline": 1793807884.941159,
+  "head": "3b1d51ec58e6e4b4c83678cef727942711d24feb",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 209715200,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "historicalAndNewPngs": 93,
+    "pngBytes": 12582912,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "commands": [
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/reference-chrome-v2/first-view/native.mjs"
+      ],
+      "startedEpoch": 1793807639.9279108,
+      "exitCode": 0,
+      "finishedEpoch": 1793807640.3656662
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "src/app/reference-chrome-v2/first-view"
+      ],
+      "startedEpoch": 1793807640.36569,
+      "exitCode": 0,
+      "finishedEpoch": 1793807640.799436
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/reference-chrome-v2/first-view/native.mjs"
+      ],
+      "startedEpoch": 1793807640.799455,
+      "exitCode": 1,
+      "finishedEpoch": 1793807644.8544059
+    }
+  ],
+  "peakProcesses": 11,
+  "peakRssKiB": 2442000,
+  "peakWholeBytes": 1472004096,
+  "peakTempBytes": 29637542,
+  "peakOutputBytes": 7677658,
+  "typeCheckDisposition": "NOT_NEEDED: production change is CSS composition only; no TypeScript source or declarations modified",
+  "error": "native failed; retained log/report",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793807645.0277781,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

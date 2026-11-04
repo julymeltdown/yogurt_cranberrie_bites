@@ -1,0 +1,87 @@
+{
+  "job": "FE-REFERENCE-FIRSTVIEW-03-BROWSER2-202611041552Z",
+  "status": "FAIL",
+  "startedEpoch": 1793807600.480962,
+  "workDeadline": 1793807824.941159,
+  "cleanupDeadline": 1793807884.941159,
+  "head": "3b1d51ec58e6e4b4c83678cef727942711d24feb",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 209715200,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "historicalAndNewPngs": 93,
+    "pngBytes": 12582912,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "commands": [
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/reference-chrome-v2/first-view/native.mjs"
+      ],
+      "startedEpoch": 1793807600.487115,
+      "exitCode": 0,
+      "finishedEpoch": 1793807600.876228
+    },
+    {
+      "label": "source-tests",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "src/app/reference-chrome-v2/source.vitest.config.ts",
+        "--configLoader",
+        "runner",
+        "--maxWorkers=1",
+        "--no-file-parallelism",
+        "src/app/reference-chrome-v2/chrome.test.tsx",
+        "src/features/party-discovery/__tests__/reference-presentation.test.tsx"
+      ],
+      "startedEpoch": 1793807600.87625,
+      "exitCode": 0,
+      "finishedEpoch": 1793807603.279505
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "src/app/reference-chrome-v2/first-view"
+      ],
+      "startedEpoch": 1793807603.279636,
+      "exitCode": 0,
+      "finishedEpoch": 1793807603.687347
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/reference-chrome-v2/first-view/native.mjs"
+      ],
+      "startedEpoch": 1793807603.68738,
+      "exitCode": 1,
+      "finishedEpoch": 1793807607.000799
+    }
+  ],
+  "peakProcesses": 10,
+  "peakRssKiB": 2433008,
+  "peakWholeBytes": 1476943872,
+  "peakTempBytes": 29616224,
+  "peakOutputBytes": 7588720,
+  "typeCheckDisposition": "NOT_NEEDED: production change is CSS composition only; no TypeScript source or declarations modified",
+  "error": "native failed; retained log/report",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793807607.151142,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

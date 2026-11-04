@@ -1,0 +1,22 @@
+{
+  "releasedAt": "2026-11-04T15:55:31.206080+00:00",
+  "status": "FULL",
+  "port5302ReuseBind": true,
+  "ownDependencyLinkAbsent": true,
+  "privateTmpCacheAbsent": true,
+  "remainingOwnDescendants": [],
+  "freeBytes": 17598971904,
+  "totalHistoricalAndNewPngs": 93,
+  "pngBytes": 7666873,
+  "peakProcesses": 11,
+  "peakRssKiB": 2512016,
+  "peakWholeBytes": 1478221824,
+  "peakTempBytes": 29661475,
+  "peakOutputBytes": 9096665,
+  "sources": {
+    "frontend/src/app/reference-chrome-v2/chrome.css": "7abaf7ebc23945b75a97bef8e384a7f6dcf81b4bc0edca177ac2871109e0ad7e",
+    "frontend/src/app/reference-chrome-v2/first-view/native.mjs": "19a3f9190b84ae818aa4d0f5333df3e36827ae4b5579e3534bbe28908b13f32d",
+    "frontend/src/app/reference-chrome-v2/first-view/round.py": "7af927f902e100eebc56355eaf0345c84000df4946629bfdf2c5735286d8d43d",
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "b6e0523eea6105e700d01d905b39027026feae6e5e21d4ad945bf9afa45d7f29"
+  }
+}

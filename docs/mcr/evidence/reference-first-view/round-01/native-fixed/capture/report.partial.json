@@ -1,0 +1,1338 @@
+{
+  "task": "FE-REFERENCE-FIRSTVIEW-03",
+  "status": "IN_PROGRESS",
+  "job": "FE-REFERENCE-FIRSTVIEW-03-BROWSER2-202611041552Z",
+  "candidate": "3b1d51ec58e6e4b4c83678cef727942711d24feb",
+  "diffSha256": "84a01664da585db4cd77ab7a7f42d21327084db1b84a0f95d0967fd45de997d5",
+  "qualification": "Real default App/router/Phaser/Meet components with existing DEV synthetic HTTP/C05 fixture. No capability injection or feature/source overlays.",
+  "reference": {
+    "path": "docs/mcr/design/reference-target-2026-11-04.png",
+    "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617"
+  },
+  "baseline": {
+    "path": "docs/mcr/evidence/reference-chrome-v2/native-05/capture/report.json",
+    "sha256": "92feccc7be2622283838f934e6d7cf83e2ed73a520f54f9f00e5530df264d662",
+    "cases": [
+      {
+        "width": 360,
+        "viewport": {
+          "width": 360,
+          "height": 588
+        },
+        "screenshot": "meet-360.png",
+        "actionPrintGeometry": {
+          "actionBottom": 575,
+          "printTop": 598.75,
+          "gap": 23.75
+        }
+      },
+      {
+        "width": 390,
+        "viewport": {
+          "width": 390,
+          "height": 637
+        },
+        "screenshot": "meet-390.png",
+        "actionPrintGeometry": {
+          "actionBottom": 624,
+          "printTop": 647.75,
+          "gap": 23.75
+        }
+      },
+      {
+        "width": 430,
+        "viewport": {
+          "width": 430,
+          "height": 703
+        },
+        "screenshot": "meet-430.png",
+        "actionPrintGeometry": {
+          "actionBottom": 666,
+          "printTop": 689.75,
+          "gap": 23.75
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "sha256": "7abaf7ebc23945b75a97bef8e384a7f6dcf81b4bc0edca177ac2871109e0ad7e"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "sha256": "b6e0523eea6105e700d01d905b39027026feae6e5e21d4ad945bf9afa45d7f29"
+    },
+    {
+      "path": "frontend/e2e/visual/qa06/preview.tsx",
+      "sha256": "1c59c73e787566dbedea0e876bbf282b897bb1bf161ad41e6040ca20b492a2bd"
+    }
+  ],
+  "limitations": [
+    "No live service, physical device, software keyboard or full release acceptance",
+    "Historical baseline is the matched reference aspect, not an844px viewport",
+    "Only shared Meet flow composition changes; per-screen fonts, rows, artwork and authorization remain unchanged"
+  ],
+  "cases": [
+    {
+      "width": 360,
+      "height": 588,
+      "kind": "reference",
+      "errors": [],
+      "initial": {
+        "viewport": {
+          "width": 360,
+          "height": 588
+        },
+        "horizontalOverflow": false,
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 342,
+          "height": 524,
+          "bottom": 581,
+          "right": 351,
+          "clientHeight": 524,
+          "scrollHeight": 524,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "flow": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 512,
+          "bottom": 575,
+          "right": 345
+        },
+        "content": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 424,
+          "bottom": 487,
+          "right": 345
+        },
+        "party": {
+          "x": 15,
+          "y": 113,
+          "width": 330,
+          "height": 374,
+          "bottom": 487,
+          "right": 345
+        },
+        "discovery": {
+          "x": 15,
+          "y": 161,
+          "width": 330,
+          "height": 252.25,
+          "bottom": 413.25,
+          "right": 345,
+          "clientHeight": 252,
+          "scrollHeight": 388,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "create": {
+          "x": 15,
+          "y": 417.25,
+          "width": 330,
+          "height": 69.75,
+          "bottom": 487,
+          "right": 345
+        },
+        "action": {
+          "x": 72,
+          "y": 417.25,
+          "width": 216,
+          "height": 46,
+          "bottom": 463.25,
+          "right": 288,
+          "disabled": true,
+          "tag": "BUTTON"
+        },
+        "unavailableCopy": "Party creation is currently unavailable.",
+        "print": {
+          "x": 15,
+          "y": 487,
+          "width": 330,
+          "height": 88,
+          "bottom": 575,
+          "right": 345,
+          "inert": "true",
+          "pointerEvents": "none"
+        },
+        "rowTitles": [
+          "Area A Queue Group",
+          "After Show Hangout",
+          "Photo Walk (Parade ver.)"
+        ],
+        "rowMetrics": [
+          {
+            "x": 15,
+            "y": 161,
+            "width": 330,
+            "height": 109,
+            "bottom": 270,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 275,
+            "width": 330,
+            "height": 109,
+            "bottom": 384,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 389,
+            "width": 330,
+            "height": 109,
+            "bottom": 498,
+            "right": 345,
+            "font": "18px"
+          }
+        ],
+        "canvasCount": 1,
+        "brokenImages": []
+      },
+      "screenshot": "../../run/capture/meet-360-reference.png",
+      "rowKeyboard": [
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "Area A Queue Group",
+          "row": "Area A Queue Group",
+          "width": 169.28125,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 0
+        },
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "Join",
+          "row": "Area A Queue Group",
+          "width": 68,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 0
+        },
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "After Show Hangout",
+          "row": "After Show Hangout",
+          "width": 169.28125,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 0
+        },
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "Join",
+          "row": "After Show Hangout",
+          "width": 68,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 0
+        },
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "Photo Walk (Parade ver.)",
+          "row": "Photo Walk (Parade ver.)",
+          "width": 169.28125,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 30
+        },
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "Join",
+          "row": "Photo Walk (Parade ver.)",
+          "width": 68,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 136
+        }
+      ],
+      "innerEnd": {
+        "viewport": {
+          "width": 360,
+          "height": 588
+        },
+        "horizontalOverflow": false,
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 342,
+          "height": 524,
+          "bottom": 581,
+          "right": 351,
+          "clientHeight": 524,
+          "scrollHeight": 524,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "flow": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 512,
+          "bottom": 575,
+          "right": 345
+        },
+        "content": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 424,
+          "bottom": 487,
+          "right": 345
+        },
+        "party": {
+          "x": 15,
+          "y": 113,
+          "width": 330,
+          "height": 374,
+          "bottom": 487,
+          "right": 345
+        },
+        "discovery": {
+          "x": 15,
+          "y": 161,
+          "width": 330,
+          "height": 252.25,
+          "bottom": 413.25,
+          "right": 345,
+          "clientHeight": 252,
+          "scrollHeight": 388,
+          "scrollTop": 136,
+          "overflowY": "auto"
+        },
+        "create": {
+          "x": 15,
+          "y": 417.25,
+          "width": 330,
+          "height": 69.75,
+          "bottom": 487,
+          "right": 345
+        },
+        "action": {
+          "x": 72,
+          "y": 417.25,
+          "width": 216,
+          "height": 46,
+          "bottom": 463.25,
+          "right": 288,
+          "disabled": true,
+          "tag": "BUTTON"
+        },
+        "unavailableCopy": "Party creation is currently unavailable.",
+        "print": {
+          "x": 15,
+          "y": 487,
+          "width": 330,
+          "height": 88,
+          "bottom": 575,
+          "right": 345,
+          "inert": "true",
+          "pointerEvents": "none"
+        },
+        "rowTitles": [
+          "Area A Queue Group",
+          "After Show Hangout",
+          "Photo Walk (Parade ver.)"
+        ],
+        "rowMetrics": [
+          {
+            "x": 15,
+            "y": 25,
+            "width": 330,
+            "height": 109,
+            "bottom": 134,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 139,
+            "width": 330,
+            "height": 109,
+            "bottom": 248,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 253,
+            "width": 330,
+            "height": 109,
+            "bottom": 362,
+            "right": 345,
+            "font": "18px"
+          }
+        ],
+        "canvasCount": 1,
+        "brokenImages": []
+      },
+      "filterKeyboard": [
+        {
+          "tag": "INPUT",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "ticket_section",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 313
+        },
+        {
+          "tag": "SELECT",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "state",
+          "text": "All statesopenclosedcancelledcompleted",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 313
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_after",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_after",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_after",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_after",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_after",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": false,
+          "name": "starts_after",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "none",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_before",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_before",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_before",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_before",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": "starts_before",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "INPUT",
+          "type": "datetime-local",
+          "focusWithin": true,
+          "focusVisible": false,
+          "name": "starts_before",
+          "text": "",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "none",
+          "bodyScroll": 0,
+          "discoveryScroll": 463
+        },
+        {
+          "tag": "BUTTON",
+          "type": "submit",
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "Show parties",
+          "row": null,
+          "width": 271.546875,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 623
+        }
+      ],
+      "filtersOpen": {
+        "viewport": {
+          "width": 360,
+          "height": 588
+        },
+        "horizontalOverflow": false,
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 342,
+          "height": 524,
+          "bottom": 581,
+          "right": 351,
+          "clientHeight": 524,
+          "scrollHeight": 524,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "flow": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 512,
+          "bottom": 575,
+          "right": 345
+        },
+        "content": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 424,
+          "bottom": 487,
+          "right": 345
+        },
+        "party": {
+          "x": 15,
+          "y": 113,
+          "width": 330,
+          "height": 374,
+          "bottom": 487,
+          "right": 345
+        },
+        "discovery": {
+          "x": 15,
+          "y": 161,
+          "width": 330,
+          "height": 252.25,
+          "bottom": 413.25,
+          "right": 345,
+          "clientHeight": 252,
+          "scrollHeight": 875,
+          "scrollTop": 623,
+          "overflowY": "auto"
+        },
+        "create": {
+          "x": 15,
+          "y": 417.25,
+          "width": 330,
+          "height": 69.75,
+          "bottom": 487,
+          "right": 345
+        },
+        "action": {
+          "x": 72,
+          "y": 417.25,
+          "width": 216,
+          "height": 46,
+          "bottom": 463.25,
+          "right": 288,
+          "disabled": true,
+          "tag": "BUTTON"
+        },
+        "unavailableCopy": "Party creation is currently unavailable.",
+        "print": {
+          "x": 15,
+          "y": 487,
+          "width": 330,
+          "height": 88,
+          "bottom": 575,
+          "right": 345,
+          "inert": "true",
+          "pointerEvents": "none"
+        },
+        "rowTitles": [
+          "Area A Queue Group",
+          "After Show Hangout",
+          "Photo Walk (Parade ver.)"
+        ],
+        "rowMetrics": [
+          {
+            "x": 15,
+            "y": -462,
+            "width": 330,
+            "height": 109,
+            "bottom": -353,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": -348,
+            "width": 330,
+            "height": 109,
+            "bottom": -239,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": -234,
+            "width": 330,
+            "height": 109,
+            "bottom": -125,
+            "right": 345,
+            "font": "18px"
+          }
+        ],
+        "canvasCount": 1,
+        "brokenImages": []
+      },
+      "moreKeyboard": [
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "Create party→",
+          "row": null,
+          "width": 330,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 0
+        },
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "People→",
+          "row": null,
+          "width": 330,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 0
+        },
+        {
+          "tag": "A",
+          "type": null,
+          "focusWithin": true,
+          "focusVisible": true,
+          "name": null,
+          "text": "Your intro→",
+          "row": null,
+          "width": 330,
+          "height": 44,
+          "visibleHeight": 44,
+          "outline": "solid",
+          "bodyScroll": 0,
+          "discoveryScroll": 0
+        }
+      ],
+      "moreOpen": {
+        "viewport": {
+          "width": 360,
+          "height": 588
+        },
+        "horizontalOverflow": false,
+        "body": {
+          "x": 9,
+          "y": 53,
+          "width": 342,
+          "height": 528,
+          "bottom": 581,
+          "right": 351,
+          "clientHeight": 528,
+          "scrollHeight": 792,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "flow": {
+          "x": 15,
+          "y": 59,
+          "width": 330,
+          "height": 779.75,
+          "bottom": 838.75,
+          "right": 345
+        },
+        "content": {
+          "x": 15,
+          "y": 59,
+          "width": 330,
+          "height": 691.75,
+          "bottom": 750.75,
+          "right": 345
+        },
+        "party": {
+          "x": 15,
+          "y": 241,
+          "width": 330,
+          "height": 509.75,
+          "bottom": 750.75,
+          "right": 345
+        },
+        "discovery": {
+          "x": 15,
+          "y": 289,
+          "width": 330,
+          "height": 388,
+          "bottom": 677,
+          "right": 345,
+          "clientHeight": 388,
+          "scrollHeight": 388,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "create": {
+          "x": 15,
+          "y": 681,
+          "width": 330,
+          "height": 69.75,
+          "bottom": 750.75,
+          "right": 345
+        },
+        "action": {
+          "x": 72,
+          "y": 681,
+          "width": 216,
+          "height": 46,
+          "bottom": 727,
+          "right": 288,
+          "disabled": true,
+          "tag": "BUTTON"
+        },
+        "unavailableCopy": "Party creation is currently unavailable.",
+        "print": {
+          "x": 15,
+          "y": 750.75,
+          "width": 330,
+          "height": 88,
+          "bottom": 838.75,
+          "right": 345,
+          "inert": "true",
+          "pointerEvents": "none"
+        },
+        "rowTitles": [
+          "Area A Queue Group",
+          "After Show Hangout",
+          "Photo Walk (Parade ver.)"
+        ],
+        "rowMetrics": [
+          {
+            "x": 15,
+            "y": 289,
+            "width": 330,
+            "height": 109,
+            "bottom": 398,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 403,
+            "width": 330,
+            "height": 109,
+            "bottom": 512,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 517,
+            "width": 330,
+            "height": 109,
+            "bottom": 626,
+            "right": 345,
+            "font": "18px"
+          }
+        ],
+        "canvasCount": 1,
+        "brokenImages": []
+      },
+      "moreOpenEnd": {
+        "viewport": {
+          "width": 360,
+          "height": 588
+        },
+        "horizontalOverflow": false,
+        "body": {
+          "x": 9,
+          "y": 53,
+          "width": 342,
+          "height": 528,
+          "bottom": 581,
+          "right": 351,
+          "clientHeight": 528,
+          "scrollHeight": 792,
+          "scrollTop": 264,
+          "overflowY": "auto"
+        },
+        "flow": {
+          "x": 15,
+          "y": -205,
+          "width": 330,
+          "height": 779.75,
+          "bottom": 574.75,
+          "right": 345
+        },
+        "content": {
+          "x": 15,
+          "y": -205,
+          "width": 330,
+          "height": 691.75,
+          "bottom": 486.75,
+          "right": 345
+        },
+        "party": {
+          "x": 15,
+          "y": -23,
+          "width": 330,
+          "height": 509.75,
+          "bottom": 486.75,
+          "right": 345
+        },
+        "discovery": {
+          "x": 15,
+          "y": 25,
+          "width": 330,
+          "height": 388,
+          "bottom": 413,
+          "right": 345,
+          "clientHeight": 388,
+          "scrollHeight": 388,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "create": {
+          "x": 15,
+          "y": 417,
+          "width": 330,
+          "height": 69.75,
+          "bottom": 486.75,
+          "right": 345
+        },
+        "action": {
+          "x": 72,
+          "y": 417,
+          "width": 216,
+          "height": 46,
+          "bottom": 463,
+          "right": 288,
+          "disabled": true,
+          "tag": "BUTTON"
+        },
+        "unavailableCopy": "Party creation is currently unavailable.",
+        "print": {
+          "x": 15,
+          "y": 486.75,
+          "width": 330,
+          "height": 88,
+          "bottom": 574.75,
+          "right": 345,
+          "inert": "true",
+          "pointerEvents": "none"
+        },
+        "rowTitles": [
+          "Area A Queue Group",
+          "After Show Hangout",
+          "Photo Walk (Parade ver.)"
+        ],
+        "rowMetrics": [
+          {
+            "x": 15,
+            "y": 25,
+            "width": 330,
+            "height": 109,
+            "bottom": 134,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 139,
+            "width": 330,
+            "height": 109,
+            "bottom": 248,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 253,
+            "width": 330,
+            "height": 109,
+            "bottom": 362,
+            "right": 345,
+            "font": "18px"
+          }
+        ],
+        "canvasCount": 1,
+        "brokenImages": []
+      },
+      "myPlan": {
+        "reachablePrint": true
+      },
+      "restored": {
+        "viewport": {
+          "width": 360,
+          "height": 588
+        },
+        "horizontalOverflow": false,
+        "body": {
+          "x": 9,
+          "y": 57,
+          "width": 342,
+          "height": 524,
+          "bottom": 581,
+          "right": 351,
+          "clientHeight": 524,
+          "scrollHeight": 524,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "flow": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 512,
+          "bottom": 575,
+          "right": 345
+        },
+        "content": {
+          "x": 15,
+          "y": 63,
+          "width": 330,
+          "height": 424,
+          "bottom": 487,
+          "right": 345
+        },
+        "party": {
+          "x": 15,
+          "y": 113,
+          "width": 330,
+          "height": 374,
+          "bottom": 487,
+          "right": 345
+        },
+        "discovery": {
+          "x": 15,
+          "y": 161,
+          "width": 330,
+          "height": 252.25,
+          "bottom": 413.25,
+          "right": 345,
+          "clientHeight": 252,
+          "scrollHeight": 388,
+          "scrollTop": 0,
+          "overflowY": "auto"
+        },
+        "create": {
+          "x": 15,
+          "y": 417.25,
+          "width": 330,
+          "height": 69.75,
+          "bottom": 487,
+          "right": 345
+        },
+        "action": {
+          "x": 72,
+          "y": 417.25,
+          "width": 216,
+          "height": 46,
+          "bottom": 463.25,
+          "right": 288,
+          "disabled": true,
+          "tag": "BUTTON"
+        },
+        "unavailableCopy": "Party creation is currently unavailable.",
+        "print": {
+          "x": 15,
+          "y": 487,
+          "width": 330,
+          "height": 88,
+          "bottom": 575,
+          "right": 345,
+          "inert": "true",
+          "pointerEvents": "none"
+        },
+        "rowTitles": [
+          "Area A Queue Group",
+          "After Show Hangout",
+          "Photo Walk (Parade ver.)"
+        ],
+        "rowMetrics": [
+          {
+            "x": 15,
+            "y": 161,
+            "width": 330,
+            "height": 109,
+            "bottom": 270,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 275,
+            "width": 330,
+            "height": 109,
+            "bottom": 384,
+            "right": 345,
+            "font": "18px"
+          },
+          {
+            "x": 15,
+            "y": 389,
+            "width": 330,
+            "height": 109,
+            "bottom": 498,
+            "right": 345,
+            "font": "18px"
+          }
+        ],
+        "canvasCount": 1,
+        "brokenImages": []
+      },
+      "persistence": {
+        "sameCanvas": true,
+        "state": {
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "PARADE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 82.72000000000003,
+              "scrollY": 308.20000000000005,
+              "width": 348,
+              "height": 535
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\n0 !== 1\n"
+    }
+  ],
+  "assets": [
+    {
+      "path": "frontend/public/world/maps/geometry.json",
+      "sha256": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+      "bytes": 29538
+    },
+    {
+      "path": "frontend/public/world/maps/virtual-places.json",
+      "sha256": "0edef366bdfa7799d94312f479a539f3fffa9aad1c877c6f07e9fc2818535c83",
+      "bytes": 4446
+    },
+    {
+      "path": "frontend/public/world/maps/binding-inputs.json",
+      "sha256": "cd37c2e5eb728049b0b4ad866d405c45bf1cb42d50418c806576b72d6f66bdeb",
+      "bytes": 1231
+    },
+    {
+      "path": "frontend/public/world/themes/binding-inputs.json",
+      "sha256": "06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f",
+      "bytes": 7736
+    },
+    {
+      "path": "frontend/public/world/illustrated-runtime/bindings.json",
+      "sha256": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba",
+      "bytes": 35434
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/reduce.svg",
+      "sha256": "536c5bc9c8f8902eaf6ea4fa5112f9eaad6e885da92ca36f273c30211eb56ac5",
+      "bytes": 257
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/back.svg",
+      "sha256": "a8b6905c1442c519674e63feb28f4166f46d82c63cd82625522ebbc60add6ec2",
+      "bytes": 223
+    },
+    {
+      "path": "frontend/public/reference-window-controls-v2/close.svg",
+      "sha256": "1b7041e386117aaae58a44d153abd8612bce1873300b350f357410d2af688f72",
+      "bytes": 198
+    },
+    {
+      "path": "frontend/public/reference-parade-print-v2/parade-print.svg",
+      "sha256": "e7b401a8f431651c05b88a6c52d02b8aabc059f697bf960b41454ba59ae95a10",
+      "bytes": 5894
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677",
+      "bytes": 1898
+    },
+    {
+      "path": "frontend/public/backgrounds/cute-community-v1/meet-backdrop.svg",
+      "sha256": "b792df37b1a31a5abd681096fcac6e0541b5de0ee9422cd2408b98414b158ca8",
+      "bytes": 989
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+      "bytes": 36030
+    },
+    {
+      "path": "frontend/public/world/maps/courtyard-tiled.json",
+      "sha256": "a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d",
+      "bytes": 34456
+    },
+    {
+      "path": "frontend/public/world/themes/parade.png",
+      "sha256": "3ecb77e72c67e1befb1f345f45f12b7b6f931e3ce62c0a43c1b69de319db6c70",
+      "bytes": 5017
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-ground.png",
+      "sha256": "19a2450268ae02dd52331bbcac6b19b4d5a36462eeacf973c36af688bf638dea",
+      "bytes": 96414
+    },
+    {
+      "path": "frontend/public/world/illustrated/parade-landmarks-atlas.png",
+      "sha256": "06314ddf23ef02c2fa0432ded5c3f317287d9a08d014fcb1b382aeaf8af577ed",
+      "bytes": 423491
+    },
+    {
+      "path": "frontend/public/world/illustrated-runtime/parade-details.png",
+      "sha256": "8719a7704ec247667ba67c24a02ae2be448715cf6f5e53b569e747bdd96652c7",
+      "bytes": 9841
+    }
+  ],
+  "startedAt": "2026-11-04T15:54:01.069Z",
+  "reusedScreenshots": [
+    {
+      "name": "meet-360-reference.png",
+      "path": "../../run/capture/meet-360-reference.png",
+      "sha256": "34017df7f79a8e1ffca8ada195e23da9d7ccfcc305f1561c633d35945a0e74ec"
+    }
+  ],
+  "browser": "156.0.8078.80"
+}

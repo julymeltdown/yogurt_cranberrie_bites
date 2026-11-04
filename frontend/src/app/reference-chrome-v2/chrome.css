@@ -1,6 +1,12 @@
 /* Composition only. Screen owners retain their content, imagery and typography. */
 .mcr-reference-panel-flow { display:flex; flex-direction:column; min-block-size:100%; min-inline-size:0; }
 .mcr-reference-panel-content { flex:1 0 auto; min-inline-size:0; }
+/* Give Meet's existing discovery scroller a definite remaining height. Expanded
+   outer actions and My Plan retain the natural, fully reachable outer flow. */
+.mcr-reference-panel-flow:has(.party-browse .meet-discovery):not(:has(.shell-more-sections[open])) { block-size:100%; }
+.mcr-reference-panel-flow:has(.party-browse .meet-discovery):not(:has(.shell-more-sections[open])) > .mcr-reference-panel-content { display:flex; flex-direction:column; flex:1 1 0; min-block-size:0; }
+.mcr-reference-panel-flow:has(.party-browse .meet-discovery):not(:has(.shell-more-sections[open])) > .mcr-reference-panel-content > .shell-more-sections { flex:0 0 auto; }
+.mcr-reference-panel-flow:has(.party-browse .meet-discovery):not(:has(.shell-more-sections[open])) > .mcr-reference-panel-content > .party-browse { flex:1 1 0; block-size:auto; min-block-size:0; }
 .mcr-reference-window-ink { display:block; inline-size:24px; block-size:24px; object-fit:contain; pointer-events:none; user-select:none; }
 .mcr-reference-window-ink--stars { inline-size:72px; }
 .mcr-reference-window-ink--collapse { transform:rotate(-90deg); }

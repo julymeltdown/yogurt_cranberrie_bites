@@ -1,0 +1,9 @@
+{"width":360,"height":588,"kind":"reference","status":"FAIL","error":"Expected values to be strictly equal:\n\n0 !== 1\n"}
+file:///Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/reference-chrome-v2/first-view/native.mjs:202
+    if (report.cases.at(-1).status === 'FAIL') throw Error('Resolve first retained affected-cohort failure')
+                                                     ^
+
+Error: Resolve first retained affected-cohort failure
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/reference-chrome-v2/first-view/native.mjs:202:54
+
+Node.js v24.22.2

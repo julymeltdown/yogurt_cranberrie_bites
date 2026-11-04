@@ -1,0 +1,67 @@
+{
+  "job": "FE-REFERENCE-FIRSTVIEW-03-BROWSER2-202611041552Z",
+  "status": "PASS",
+  "startedEpoch": 1793807679.638496,
+  "workDeadline": 1793807824.941159,
+  "cleanupDeadline": 1793807884.941159,
+  "head": "3b1d51ec58e6e4b4c83678cef727942711d24feb",
+  "limits": {
+    "workSeconds": 300,
+    "cleanupSeconds": 60,
+    "wholeBytes": 2147483648,
+    "privateGitReserveBytes": 2097152,
+    "tempBytes": 209715200,
+    "additionalDurableBytes": 16777216,
+    "logsBytes": 2097152,
+    "historicalAndNewPngs": 93,
+    "pngBytes": 12582912,
+    "processes": 24,
+    "rssMiB": 4096
+  },
+  "commands": [
+    {
+      "label": "syntax",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "src/app/reference-chrome-v2/first-view/native.mjs"
+      ],
+      "startedEpoch": 1793807679.648133,
+      "exitCode": 0,
+      "finishedEpoch": 1793807680.114996
+    },
+    {
+      "label": "source-lint",
+      "command": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "src/app/reference-chrome-v2/first-view"
+      ],
+      "startedEpoch": 1793807680.115021,
+      "exitCode": 0,
+      "finishedEpoch": 1793807680.595254
+    },
+    {
+      "label": "native",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "src/app/reference-chrome-v2/first-view/native.mjs"
+      ],
+      "startedEpoch": 1793807680.595277,
+      "exitCode": 0,
+      "finishedEpoch": 1793807710.848136
+    }
+  ],
+  "peakProcesses": 10,
+  "peakRssKiB": 2512016,
+  "peakWholeBytes": 1478221824,
+  "peakTempBytes": 29661475,
+  "peakOutputBytes": 9096665,
+  "typeCheckDisposition": "NOT_NEEDED: production change is CSS composition only; no TypeScript source or declarations modified",
+  "remainingOwnDescendants": [],
+  "finishedEpoch": 1793807711.00257,
+  "cleanup": {
+    "linkAbsent": true,
+    "tempAbsent": true,
+    "beforeOriginalDeadline": true
+  }
+}

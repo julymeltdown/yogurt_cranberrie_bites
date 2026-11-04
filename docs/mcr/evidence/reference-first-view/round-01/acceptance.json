@@ -1,0 +1,16 @@
+{
+  "offer": "FE-REFERENCE-FIRSTVIEW-03-BROWSER2-202611041552Z",
+  "acceptedAt": "2026-11-04T15:52:04.941326+00:00",
+  "startedEpoch": 1793807524.941159,
+  "workDeadlineEpoch": 1793807824.941159,
+  "cleanupDeadlineEpoch": 1793807884.941159,
+  "freeBytes": 18770501632,
+  "pins": {
+    "frontend/src/app/reference-chrome-v2/chrome.css": "7abaf7ebc23945b75a97bef8e384a7f6dcf81b4bc0edca177ac2871109e0ad7e",
+    "frontend/src/app/reference-chrome-v2/first-view/native.mjs": "97c4c75969e6e13b078504b1742866b9ded8b2ba43f8e8f4378414dda377506b",
+    "frontend/src/app/reference-chrome-v2/first-view/round.py": "90609a6423784d98ca3fafdab6c155d0010ba3474bddc9bed5e39b744988e16b"
+  },
+  "head": "3b1d51ec58e6e4b4c83678cef727942711d24feb",
+  "monitorIntervalMs": 250,
+  "carry": "1229056\t/Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer\n48584\t/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor\n62180\t/Users/lhs/Desktop/mcr-worktrees/fe-wall-reference-target\n71088\t/Users/lhs/Desktop/mcr-worktrees/be-party-runtime\n"
+}
