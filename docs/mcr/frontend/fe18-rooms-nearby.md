@@ -1,8 +1,9 @@
 # FE18 rooms and authorized Nearby client completion
 
-Status: IN_PROGRESS. The corrected three-width native qualification and actual
-application build passed on source d5247c9c. A focused 390px scrolling/keyboard
-check remains for the additional Nearby focus recovery, followed by publication.
+Status: CONTRACT_READY for the original FE18 client scope: implemented and
+qualified against frozen fixtures, with a committed handoff to Root153 pending
+publication. This does not accept live backend filtering, full W04 invitations,
+IN01 or IN05.
 
 ## Authority and ownership
 
@@ -158,3 +159,46 @@ person disappears, while preserving deliberate focus elsewhere. Two added unit
 cases cover those distinct behaviors; the combined regression run passes 223
 checks in 13 files. The focused run includes a new sequential app build because
 this additional Nearby accessibility behavior changes product source.
+
+
+## Final focused qualification and delivery
+
+`native-03/report.json` is PASS on exact capture source
+`4248e580fac41741ebc05a7f6804067aaaacd401`, allocated slot
+`FE18-FOCUS-202611040602Z`. The 390 x 844 check scrolls the actual person link
+inside the half-panel (44px high), tabs to the next person, restores focus to the
+first person, and applies the frozen filtered delta. The name disappears and
+focus moves to Other people. The actual Phaser actor is absent, with 2704 changed
+paint channels and five remaining sprites. Direct visual inspection of both PNGs
+confirms visible names and world canvas together. Epoch self-only, privacy
+cancellation, late admission disposal and object-URL cleanup pass. Four original
+captures preserve exact source, UTC times and synthetic-data limits.
+
+The relevant optimized app build passes after browser/server/profile cleanup.
+Measured whole-task peak81,191,065 bytes, accumulated durable4,193,385 bytes at
+release; hard0.2GiB/40MiB respected. Own dependency link, browser, server and all
+own temporary directories are absent; zero validation Chrome roots remain and
+the interactive MCP browser is preserved. The slot was explicitly RELEASED
+immediately after cleanup. No runtime allocation remains held for documentation.
+
+Final source checks:223 tests/13 files; full application types; scoped lint;
+driver syntax; planning and UI-origin guards pass. Historical `types.log` contains
+the retained Phaser matrix declaration failure; `types-final.log` is the actual
+corrected exit0 result. Earlier failed native evidence is preserved. No test
+assertion, contract, source pack, renderer, camera, fixture coordinate or backend
+implementation was weakened or changed.
+
+`qualification.json` records commands/results/limits; `screenshots.json` is the
+small privacy-safe owner-qualified screenshot handoff with absolute paths, UTC
+and Asia/Seoul capture times and original capture commits. `handoff.json` records
+base, worker source commits, exact changed paths and payload hashes (excluding
+itself to avoid recursive self-hashing). Root153 is the sole authorized serialized
+publisher; this worker does not push. Root integration and fresh remote blob/
+ancestry verification are reported separately, preserving original capture
+identity even when delivery commits differ. The worker returns its write lease
+when the final handoff is committed and does not edit after ownership transfer.
+
+The remaining W04 invitation criterion stays OPEN_UNRESOLVED_AUTHORITY_INTERFACE
+/ NOT_IMPLEMENTED with the named producer and shared contract owner above. That
+separate product work has not been cut and does not falsely block or inflate the
+completed original FE18 client scope. All112 required tasks/61 IA remain intact.

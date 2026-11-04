@@ -1,0 +1,236 @@
+{
+  "status": "PASS",
+  "slot": "FE18-FOCUS-202611040602Z",
+  "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+  "runKind": "FOCUSED_SCROLL_KEYBOARD",
+  "capturedAtUTC": "2026-11-04T06:03:33.027Z",
+  "preflight": {
+    "availableBytes": 33291374592,
+    "otherValidationBrowserRoots": 0,
+    "interactiveBrowsersPreserved": 1
+  },
+  "pins": {
+    "frontend/src/features/world-nearby/WorldNearby.tsx": "84a515f457f9b9c70778c10bb73f935cd48273bf4d0b1b3fc9c5753cef9c6f32",
+    "frontend/src/features/world-nearby/index.ts": "046a850dbb590d0671c76bc67bea2111a4bc73e23fcefa5c6fb805a203203d38",
+    "frontend/src/features/world-nearby/projection.ts": "d6f8f83482196eb46acdb7d5c9a9fc91b9df052e2c71e88244e104682ad49a27",
+    "frontend/src/features/world-rooms/__tests__/browser-smoke.mjs": "ac9a83ef916da7997a6499f3d7f4b16ae34a82d0b670135661c8f5b9b249d0f1",
+    "frontend/src/features/world-rooms/__tests__/completion/focus.test.tsx": "377ba6cd3e8779890b94279119e39dcc04d27cde8e57c1541f30d419abcceb1e",
+    "frontend/src/features/world-rooms/__tests__/completion/native.mjs": "14a4b33496183c7cf08b19031bc7d744d2e854b5cfc2c8e304810d35d586a41c",
+    "frontend/src/features/world-rooms/__tests__/completion/preview.html": "7c2d322b42206f41db2e1edb7d4569109731ab5c6105e8f05e3ddceba11ed181",
+    "frontend/src/features/world-rooms/__tests__/completion/preview.ts": "5e3c3f50750c641dd818777f9913003b6a47f2c2d22588118ac16d085b3d7298",
+    "frontend/src/features/world-rooms/__tests__/fixtures/harness.ts": "2a502b513c4ab51734393dee64f2b46983b14bb7c01dd4c9e32b55d8d9b0653d",
+    "frontend/src/features/world-rooms/__tests__/fixtures/preview.html": "21499beea9d9e9c0daa1cec43df9d55b54f710117fe3e8d69ba249794839dfe0",
+    "frontend/src/features/world-rooms/__tests__/fixtures/preview.tsx": "b53606009d9987c3a8cfe0fd89a3821d22c870b5f4a853d9d87dbcf30304312e",
+    "frontend/src/features/world-rooms/__tests__/ui.test.tsx": "3f86f3e176fde80bd7177ca53d14f1dde64712e6919eafd537c334912291ef4f",
+    "frontend/src/features/world-rooms/__tests__/world-access.test.ts": "a4130e1e19e08e4d1b2234c12204170c9762427ed2aa50df32c4cb8970cf648a",
+    "frontend/src/features/world-rooms/index.ts": "6822da877cf4d0eef2fc4288fffaba386d047b7109a52aa94e80bd353ba83965",
+    "frontend/src/features/world-rooms/model/contract.ts": "d3e19484a27d801d3f9b00d9c7ef37bbda00400338f70decf7f6e05c436c57d3",
+    "frontend/src/features/world-rooms/model/controller.ts": "a2e676f2623ef7cf6c07420312a0bd76adcd02108ad4348f262ead8520358ebc",
+    "frontend/src/features/world-rooms/ui/WorldRooms.tsx": "7dffc0db4327b7453421226c62282330c2122e073fa0d8ebe555e5fc2b84f361",
+    "frontend/src/features/world-rooms/ui/world-access.css": "fdde6e1f0118145f9431b0ac1d90f23358861f4cb907565372c8553535850b3d",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx": "d236e2769abbda946444fb8eda64cf525f48a1c830e42a0715ce8f812e518599",
+    "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts": "097697b0c0b12ed6fc61799b6c563bb14205da95e6ac8bec21d0ac6432d4c4bb",
+    "frontend/src/app/world-entry/root-features.tsx": "8d63946b05879cf6a191b7eeb584846549416b4334c4d0328f444be2322fc9b4",
+    "frontend/src/world/composition/index.ts": "90ca131868b60f0c7c5df344503b89ccf17686df85186e9f968742c311718974",
+    "frontend/src/world/scenes/MapScene.ts": "739bea4ff4f470f48ea01038e14f9d3a0ae09fda52c3e7f5bab3eb570b8ace5f",
+    "frontend/src/world/network/replication.ts": "568dda7c23f6d66f9cf5c8239bacf1f58ff1744b0746e07d6cc72812f76f1dd2",
+    "frontend/src/entities/avatar/character-source-pack.json": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "contracts/realtime/v1/operations.json": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
+    "contracts/realtime/v1/world.schema.json": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36",
+    "contracts/realtime/v1/policy.json": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b",
+    "contracts/fixtures/realtime/rooms.json": "d04837604d57a40106e823596bc7f7c9d6eb07d8d8829ef0675849348d332529",
+    "contracts/fixtures/realtime/movement-heartbeat.json": "fba34f3b7cba90286ae3b1a1ecd6578a79da496e79d88b920b89bd7d783499dd",
+    "contracts/fixtures/realtime/ticket-response.json": "8162f1ac19b4caf28ca810d9c565386cf8f532b7e282b356999e06fcec4c1c54",
+    "contracts/fixtures/realtime/filtered-viewers.json": "c29bbe1808dca4030ad9efc49192c671ba6ff2afaacc1a42aae368de3745dd36"
+  },
+  "cases": [
+    {
+      "width": 390,
+      "status": "PASS",
+      "before": {
+        "phase": "live",
+        "entities": 6,
+        "activeSockets": 1,
+        "games": 1,
+        "sameGame": true,
+        "sprites": 6
+      },
+      "states": [],
+      "scrolledKeyboard": {
+        "actor": "00000000-0000-4000-8000-000000000901",
+        "box": {
+          "x": 15,
+          "y": 590.75,
+          "width": 118.796875,
+          "height": 44
+        },
+        "panel": {
+          "x": 9,
+          "y": 456.359375,
+          "width": 372,
+          "height": 312.640625
+        },
+        "nextPersonFocusedByTab": "00000000-0000-4000-8000-000000000902"
+      },
+      "paintBefore": {
+        "id": "00000000-0000-4000-8000-000000000901",
+        "foot": {
+          "x": 392,
+          "y": 376
+        },
+        "region": {
+          "x": 129,
+          "y": 204,
+          "width": 42,
+          "height": 42
+        },
+        "beforeHash": "sha256:8d164634f5a96a0afe85aedc7f03376fddf53d2e0b91f346765bf9b26d631534",
+        "texture": "mcr-avatar-2"
+      },
+      "paintAfter": {
+        "id": "00000000-0000-4000-8000-000000000901",
+        "beforeHash": "sha256:8d164634f5a96a0afe85aedc7f03376fddf53d2e0b91f346765bf9b26d631534",
+        "afterHash": "sha256:1c6dee18d2546ffb457232e48a84237922212a89a175c8ba031f6de174a69958",
+        "changedChannels": 2704,
+        "removedActorSpritePresent": false,
+        "actualSpriteCount": 5,
+        "canvas": {
+          "width": 378,
+          "height": 618
+        }
+      },
+      "epoch": {
+        "phase": "live",
+        "entities": 1,
+        "activeSockets": 1,
+        "games": 1,
+        "sameGame": true,
+        "sprites": 1
+      },
+      "geometry": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Choose a room",
+            "width": 109.75,
+            "height": 44
+          },
+          {
+            "name": "Back to world",
+            "width": 98.578125,
+            "height": 44
+          }
+        ]
+      },
+      "cleanup": {
+        "disposed": true,
+        "activeSockets": 0,
+        "canvases": 0,
+        "urls": {
+          "created": [
+            "blob:http://127.0.0.1:5173/bbf0ae1f-102a-49e4-9847-53fdf9f835e8",
+            "blob:http://127.0.0.1:5173/d128033e-84fc-4de4-a377-8cc7d90a3842",
+            "blob:http://127.0.0.1:5173/c91fd21e-7627-4691-9cca-10b7a79f1786",
+            "blob:http://127.0.0.1:5173/df9b3a2d-e141-4bad-a9f8-ed9306df556d",
+            "blob:http://127.0.0.1:5173/1deb5651-720e-4210-b3bd-8ba33e0ce79a"
+          ],
+          "revoked": [
+            "blob:http://127.0.0.1:5173/bbf0ae1f-102a-49e4-9847-53fdf9f835e8",
+            "blob:http://127.0.0.1:5173/1deb5651-720e-4210-b3bd-8ba33e0ce79a",
+            "blob:http://127.0.0.1:5173/d128033e-84fc-4de4-a377-8cc7d90a3842",
+            "blob:http://127.0.0.1:5173/c91fd21e-7627-4691-9cca-10b7a79f1786",
+            "blob:http://127.0.0.1:5173/df9b3a2d-e141-4bad-a9f8-ed9306df556d"
+          ]
+        }
+      }
+    }
+  ],
+  "captures": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-before-390.png",
+      "screen": "Authorized roster and actual Phaser before filtered removal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T06:03:36.575Z",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-removed-390.png",
+      "screen": "One filtered projection removes the name and actual painted avatar",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T06:03:36.908Z",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-03/nearby-epoch-self-only.png",
+      "screen": "Epoch replacement removes every previous remote person",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T06:03:37.107Z",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-customize/docs/mcr/evidence/fe18-rooms-nearby/native-03/privacy-cancelled-late-admission.png",
+      "screen": "Privacy cancellation rejects late pending admission and clears private presentation",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capturedAtUTC": "2026-11-04T06:03:37.623Z",
+      "source": "4248e580fac41741ebc05a7f6804067aaaacd401",
+      "privacy": "Only synthetic source-controlled fan/character fixtures; no real account, message, location or credential data"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Synthetic canonical Auth/C03/C05 source7005 fixture, not live backend or real BE37 block enforcement",
+    "Actual default Phaser + authorized DOM client behavior; not production art admission or whole reference fidelity",
+    "Automated desktop Chrome keyboard/touch events and viewports, not physical devices/software keyboards",
+    "W04 invitation authority unresolved; capacity is not measured occupancy"
+  ],
+  "priorThreeWidthQualification": {
+    "path": "../native-02/report.json",
+    "sha256": "f34c27b8c31ee8acb46f986f1ee5c53c3427ff36f9f1c2ddadb0705709ef7b21",
+    "source": "d5247c9c87233621afc58fc556d7e4423786b26e",
+    "cases": 3,
+    "sharedPinsIdentical": [
+      "frontend/src/app/world-entry/__tests__/reference-scene-v5/preview.tsx",
+      "frontend/src/app/world-entry/__tests__/reference-scene-v5/data.ts",
+      "frontend/src/app/world-entry/root-features.tsx",
+      "frontend/src/world/composition/index.ts",
+      "frontend/src/world/scenes/MapScene.ts",
+      "frontend/src/world/network/replication.ts",
+      "frontend/src/entities/avatar/character-source-pack.json",
+      "contracts/realtime/v1/operations.json",
+      "contracts/realtime/v1/world.schema.json",
+      "contracts/realtime/v1/policy.json",
+      "contracts/fixtures/realtime/rooms.json",
+      "contracts/fixtures/realtime/movement-heartbeat.json",
+      "contracts/fixtures/realtime/ticket-response.json",
+      "contracts/fixtures/realtime/filtered-viewers.json"
+    ]
+  },
+  "browser": "156.0.8078.80",
+  "applicationBuild": {
+    "result": "PASS",
+    "entry": "frontend/index.html/src/main.tsx",
+    "sequentialAfterBrowser": true,
+    "copyPublicDir": false
+  },
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryRemoved": true
+  },
+  "peakMeasuredWorkflowBytes": 81191065
+}
