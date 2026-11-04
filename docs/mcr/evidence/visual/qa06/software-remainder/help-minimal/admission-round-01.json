@@ -1,0 +1,51 @@
+{
+  "job": "QA06-HELP-TWO-CONTEXT-BROWSER-20261104T1958Z",
+  "issuer": "21d existing1958offer; exact current inventory forwarded Map26e20:05UTC; no reported subsequent A/D change",
+  "candidate": "32cb7933179777ae7cceaf7886190edb3de872d5",
+  "cohort": "help-minimal",
+  "acceptedAt": 1793822812.8706172,
+  "workDeadline": 1793823112.8706172,
+  "cleanupDeadline": 1793823172.8706172,
+  "startFloorBytes": 11811160064,
+  "liveFloorBytes": 8589934592,
+  "afterAllReservedFloorBytes": 9663676416,
+  "actualPhysicalCarryBytes": 1306402816,
+  "chargedCarryBytes": 1306402816,
+  "historicalCarryFloorBytes": 1290555392,
+  "freeBytes": 18192216064,
+  "otherWorstNewBytes": 2483027968,
+  "aggregateWorstNewBytes": 2751463424,
+  "afterAllReservedBytes": 15440752640,
+  "allInventory": [
+    "A Age1831 actualNEW2GiB2147483648; notLifecycle3GiB",
+    "B Core1955 andRoot1958 preACCEPTDECLINED0;BE42queuedNOTeligible0",
+    "D Artist1958 eligible64MiB afterFE34FULL20:02:54.528556",
+    "BE38+Report ordinaryprep128MiBEACH untilclosed=256MiB",
+    "this QA06Help256MiB"
+  ],
+  "eligibility": "QA07 actualFULL20:02:37.501533Z/resources0 and Map1958CLOSED_UNACCEPTED/no process/clock/link/TMP/lease; not fabricatedMapFULL",
+  "globalJobs": 3,
+  "sourceJobs": 1,
+  "browserJobs": 1,
+  "ceilings": {
+    "global": 4,
+    "source": 2,
+    "browser": 2
+  },
+  "all70OriginalHashes": "PASS",
+  "port19878Free": true,
+  "protectedProductPathsClean": true,
+  "guardSha256": "7e694f3034165ca3b9121e0dbdb714b6203450616595e548441609273dbf9880",
+  "runnerSha256": "e94084298dc82c53a7f3b7fb5399ea790be91277b6da2c9197db2d924efb1b1b",
+  "helperSha256": "16ab70b1a019800e48148dce8f3ed180ac2188ad862856c74e1fd8c95aadb784",
+  "caps": {
+    "WHOLE": 2147483648,
+    "NEW": 268435456,
+    "TEMP": 209715200,
+    "durable": 33554432,
+    "ALLPIDs": 24,
+    "RSS": 4294967296,
+    "allPNGs": 8
+  },
+  "cases": "2exact Help PARAdE360/DANGER430,2plannedPNG, nootherwork; owner390journey reused"
+}

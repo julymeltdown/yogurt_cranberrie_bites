@@ -1,0 +1,17 @@
+{
+  "recordedAtUTC": "2026-11-04T20:08:13.092131+00:00",
+  "chronology": "21d smaller-current-inventory message arrived after actualACCEPT/launch; original admission and native report remain immutable. No new acceptance/clock/caps/workload.",
+  "originalAdmissionAggregateBytes": 2751463424,
+  "originalSnapshot": "Mapforward20:05UTC: Age1831A2GiB+B0+ArtistD64MiB+BE38/Reportprep256MiB+own256MiB",
+  "supersedingCurrentInventory": [
+    "Age1831FULL0, newAgeCOPIED2010A640MiB noCompiler",
+    "CORE2010B128MiB",
+    "Theme2010D100MiB",
+    "ordinaryBE38+Reportprep256MiBcombined",
+    "thisHelpC256MiB"
+  ],
+  "supersedingOtherWorstNewBytes": 1178599424,
+  "supersedingAggregateWorstNewBytes": 1447034880,
+  "monitorDisposition": "Retained higher2,751,463,424B reservation through exit0/FULL; stricter residual arithmetic. Old jobs not held afterupdate. WarmLegacycompilerDEFERRED0.",
+  "resourceReturn": "Immediate FULL to21d/Frontend385/Avatar1eed/Map26e/Community beforeimageassessment/docs/publication; NEW0"
+}
