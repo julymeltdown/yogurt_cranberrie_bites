@@ -12,6 +12,7 @@ import { ConcertWindowEmbedding } from '../shared/ui/concert-window'
 import { WorldTools } from './world-presentation/WorldTools'
 import { projectCapabilities } from './capabilities'
 import type { PrivacyScope } from '../shared/query/privacy'
+import { AdmissionBoundary } from '../features/auth/ui/AdmissionBoundary'
 import { ConnectionStatus } from '../features/connection-status'
 import { beginCommunityBootstrap, type CommunityBootstrapBinding } from './community-adoption/bootstrap'
 
@@ -27,8 +28,7 @@ const MeetingEntryFeatures = lazy(() => import('./meeting-entry').then(module =>
 
 export function WorldBoundary() {
   const { scope } = useAccess()
-  if (!scope) return <AccessNotice />
-  return <BootstrapBoundary key={scopeKey(scope)} scope={scope} />
+  return <AdmissionBoundary>{scope ? <BootstrapBoundary key={scopeKey(scope)} scope={scope} /> : <AccessNotice />}</AdmissionBoundary>
 }
 function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
   const ports = usePorts()
