@@ -205,3 +205,55 @@ cannot stand in for that driver. The independent native checkpoint below uses
 explicit Profile/eligibility fixtures only. A concrete root guard-digest/effect-
 digest conflation was reported and its owner supplied a separate source fix;
 producer-specific commit witnesses and the actual join remain open.
+
+## Qualified component checkpoint: `726c6da7`
+
+Status: IN_PROGRESS for BE-PARTICIPANT-LIVE. The previously described exported
+modules and external decision endpoint now have fresh component qualification.
+This does not activate startup or accept a signed-in public flow.
+
+Source `726c6da708100fba1b88833d4003790790f7c373` includes published root fixes
+`72b1233f` and SELF `4e9c57e3`. The root's extended generation grant isolates the
+third Participant pass in `OUT_DIR/participant` with its owned matching include;
+this prevents imported Product service generation from replacing canonical
+Product messages. The canonical lease pass/include and SELF second-pass changes
+are delivered together. The Profile owner supplied `2500b180`, consumed as
+`54a9f571`, adding only the generated `concert::product::v1` sibling module in
+Profile's local wire tree. This was required by Participant's new typed internal
+delivery field; its initial absence produced a concrete compiler error. No new
+dependency or lockfile resolution was added. The subsequent missing tracing
+dependency was removed from the recovery worker without changing its fail-closed
+durable behavior.
+
+Command: `cargo test --manifest-path backend/Cargo.toml --locked --offline -j2
+-p concert-service --lib --test participant_producer --no-run
+--message-format=json`, Rust 1.88.0, incremental 0, dev/test debug 0: exit 0.
+The final compile took 18.24 seconds. Exact emitted library, integration-test and
+server artifacts were privately copied and SHA256 pinned before releasing the
+allocated target; no database test used a shared build artifact. The library
+copy SHA256 is `4ce26434dd9425eaec2f47cda920dbe92a80751371f4118477dd3baf53b3b652`.
+See `participant-live-evidence/binary-726c6da7.json` for the source and artifact
+receipts; absolute machine paths are retained only in the private originals.
+
+Copied-binary validation, all exit 0:
+
+- `concert-lib-726c6da7 participant::live --nocapture`: 7 passed, 3 ignored.
+- `participant-producer-tests-726c6da7 --nocapture`: 8 passed, 2 ignored.
+- Python artifact-boundary suite: 4 passed.
+- `participant_coordinator_sql_smoke.py --pg-bin <PG16.14> --binary
+  <private-copy> --receipt <exact-Cargo-receipt>`: actual journal test passed;
+  8 SQL checks, restart and private owned-cluster cleanup passed.
+- The same native driver ran actual dedicated signed decision server and client
+  in separate private-copy processes with mTLS Concert/Profile identities. Exact
+  no-store unresolved echo, wrong workload credential refusal, foreign signed
+  actor refusal and bounded clean shutdown passed. No plaintext downgrade.
+
+The actual journal test additionally proves in-progress refusal, original binding
+reconstruction after expiry, immutable matching terminal metadata, idempotency,
+and stale-snapshot visibility gates. Its Profile prepared/terminal metadata and
+eligibility remain explicit fixtures. The endpoint test queries an unknown
+operation, so it does not prove actual Profile prepare or commit/abort delivery.
+The exported service/client/recovery now compile, but their complete real
+Auth/Friend/Profile-to-Journal join and successful HTTP save/reload are NOT_RUN.
+Avatar/preference committed settlement still needs the separately assigned 0035
+same-transaction witness. Full acceptance and the persistent goal remain open.
