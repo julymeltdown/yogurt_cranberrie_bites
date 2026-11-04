@@ -1,7 +1,7 @@
 # BE42-AUTH-SOURCE-BRIDGE-01
 
-Status: **IN_PROGRESS**. Source is authored; compilation, native qualification
-and publication are **NOT_RUN**. This bridge does not accept BE42, PrivateData
+Status: **IN_PROGRESS**, developer qualification **PASS**; committed handoff
+awaits the named publisher. This bridge does not accept BE42, PrivateData
 erasure or the unfinished canonical-authority goal.
 
 ## Ownership and provenance
@@ -134,12 +134,85 @@ the eight-target release flow.
 | `rustfmt +1.88.0 --edition 2021 --config skip_children=true --check` on the four new Rust files | 0 | Source formatting only. |
 | `git diff --check` | 0 | Whitespace only. |
 | `python3 scripts/mcr/check-plan.py` | 0 | PASS; planning provenance only. All 15 source originals also match the base byte for byte. |
-| `cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 --config profile.dev.package.contracts-build.opt-level=2 -p auth-service --test concert_deletion_source --no-run --message-format=json` | NOT_RUN | Requires allocator OFFER and ACCEPT. |
-| Same build for `-p concert-service --test deletion_source_rpc` | NOT_RUN | Requires the same bounded allocation. |
-| Frozen Auth and Concert pure tests | NOT_RUN | Run after target release. |
-| Frozen Concert native test, `--ignored --exact canonical_auth_deletion_source_rpc --test-threads=1 --nocapture`, phases `SOURCE`, then `RESTARTED` | NOT_RUN | Actual store/RPC/restart qualification remains open. |
+| `cargo +1.88.0 test --manifest-path backend/Cargo.toml --locked --offline -j 2 --config profile.dev.package.contracts-build.opt-level=2 -p auth-service --test concert_deletion_source --no-run --message-format=json` | 0 | Auth source/pure executable compiled. |
+| Same build for `-p concert-service --test deletion_source_rpc` | 0 | Corrected consumer and actual RPC test compiled. |
+| Frozen Auth executable, `--test-threads=1 --nocapture` | 0 | 2 pure tests passed. |
+| Frozen Concert executable, `--test-threads=1 --nocapture` | 0 | 1 pure test passed; native accurately ignored in this invocation. |
+| Frozen Concert executable, `--ignored --exact canonical_auth_deletion_source_rpc --test-threads=1 --nocapture`, `MCR_BE42_SOURCE_PHASE=SOURCE` | 0 | 1 native case passed, 4.13 s test body; actual Auth use cases, source mTLS, negative cases and common Ticket consumer. |
+| Identical frozen executable and argv, `MCR_BE42_SOURCE_PHASE=RESTARTED` after physical owned PostgreSQL restart | 0 | 1 native case passed, 0.09 s test body; changed PostgreSQL/test PID, stable source binding and actual receipt replay. |
 
-One bounded validation round is requested from allocator21d. No Cargo, PG,
-native execution, archive restore or new worktree may start on an expired or
-unaccepted offer. Evidence will record source and binary pins, commands and
-exit codes, runtime limitations, target/full release and published ancestry.
+## Qualified source and resource evidence
+
+Source commit `7da00d747fdca2dc57dfc998c2cc1204a4016f20` contains the eleven-path
+bridge. The first Auth build passed; the first Concert build exited 101 because
+the specialized client alias applied its identity interceptor twice. The
+implementation owner corrected that constructor in
+`50a3e0543b47aed6eaa9f8da0ec8019138c1f58c`, within the accepted lease and exact
+owned path. Both test executables then compiled and all cases above passed.
+The original compiler JSON, diagnostics, source pins and failed receipt remain
+in private evidence under `failed-build-1`. No native retry, assertion relaxation
+or test-only positive authority was needed. Only documentation changes after
+the successful qualification checkpoint.
+
+| Frozen executable | Bytes | SHA256 |
+|---|---:|---|
+| `concert_deletion_source-tests` | 1,254,704 | `4869acd4723cc3a756b217bdb6d53397e7178c46d3b44c172acb410f81cd4423` |
+| `deletion_source_rpc-tests` | 26,646,752 | `3d403679a21fc5b65e7598abe2e7de82ed35432272b6da5527bf4424b2e37316` |
+
+Allocator21d's accepted offer was
+`BE42-AUTH-SOURCE-BRIDGE-MEDIA-202611041453Z`, actual acceptance
+`2026-11-04T14:54:32.480674Z`. The original compile/freeze cutoff was
+15:04:32.480674Z, work cutoff 15:08:32.480674Z and full-release deadline
+15:09:32.480674Z. After unconditional target release, the stricter native and
+full-release cutoffs became 15:00:41.853875Z and 15:01:41.853875Z respectively.
+The original clock was never extended.
+
+The accepted whole cap was 5 GiB, including fresh carry 3,768,156,160 bytes:
+the entire checkout, entire shared Git directory, retained evidence/custody,
+all historical positive target charges and an additional conservative double
+charge for the earlier CF02 peak. Live shared-Git growth remained charged.
+Initial free space was 25,424,596,992 bytes, above the 16 GiB start floor;
+the 8 GiB runtime floor and 80-process cap held. Rust 1.88, locked/offline,
+two jobs, dev/test debug zero, incremental zero, contracts-build dev optimization
+two and both Rust flag variables unset were enforced.
+
+The first failed build took 43.936 s and the successful guarded build/freeze
+36.301 s. The two copied executables total 27,901,456 bytes, below the 96 MiB
+aggregate cap. Automatically produced binaries were charged as target growth;
+no main was explicitly built, copied or run. Source/runtime/migration/tool
+readsets, Cargo JSON and executable hashes were pinned outside the target.
+Fresh absent-compiler and zero-handle proof released the media target at
+`2026-11-04T14:57:41.853875Z`, before every copied test and PostgreSQL process.
+There was no target access after release.
+
+One owned Unix-socket PG16 cluster created exactly the five
+`mcr_canonical_{auth,friend,concert,profile,notification}` databases. Both
+SOURCE and RESTARTED verified all 18 Auth and 41 Concert migration receipts
+against source/checksums. Friend, Profile and Notification migration execution
+is explicitly **NOT_RUN**, not a five-owner schema qualification. Native wrapper
+time was 21.469 s. Every database had zero prepared transactions before teardown.
+Actual PostgreSQL and test PIDs changed across restart. Auth's eight target
+steps stayed pending throughout the actual source and Ticket replay checks.
+
+Private evidence is retained under `mcr-be42-auth-source-_wjw9yve`, including
+`checkpoint.json`, `source-pins.json`, both Cargo streams, both native phase
+streams, `native-report.json`, `highwater.json`, `target-release.json` and
+`full-release.json`. The native report SHA256 is
+`27a2c9292b4e6f1eeb10e2629cf88135aa4aa7234803c3ae04fa1e0bf18f401b`.
+Whole allocation peaked at 4,161,785,856 bytes, positive target growth at
+251,740,160 bytes (retained as historical charge), and new outside allocation
+at 135,262,208 bytes, below its 256 MiB cap.
+
+Full release was `2026-11-04T14:59:20.893884Z`, 99.040 s after target release:
+owned PostgreSQL/PKI/TMP absent, all saved processes/groups absent and zero
+remaining evidence handles. The frozen executables and bounded failure/results
+evidence remain retained. No source archive was restored and no new worktree
+was created. Actual flag-enabled startup, Root's composition of the three
+owning production adapters, downstream business population and full public
+deletion/BE42 acceptance remain the respective implementation owners' work.
+
+Delivery ancestry is the published base, excluded local World input,
+`7da00d74`, `50a3e054`, then this documentation-only results commit. RootBE
+cherry-picks the owner's three commits and obtains the common World dependency
+from its responsible owner. Normal master publication and the implementation
+owner's remote readback remain pending; no manager inspection or ACK is required.
