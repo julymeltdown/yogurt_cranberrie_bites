@@ -188,6 +188,9 @@ def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
     binary = migration.executable(Path(row['snapshot']))
     bootstrap.require(hashlib.sha256(binary.read_bytes()).hexdigest() == row['sha256'], 'frozen checksum mismatch')
     tools = {name: migration.executable(pg_bin / name) for name in migration.PG_TOOLS}
+    outputs = builder.build(inputs)
+    expected = {**outputs['readiness.json']['map'],
+                'source_commit': inputs.source_commit, 'art_commit': inputs.art_commit}
     cluster = migration.Cluster(tools)
     cluster.env['MCR_SPATIAL_TEST_CANDIDATE'] = 'quality-v6' if inputs == builder.QUALITY_V6 else 'baseline'
     report = {'state': 'FAIL', 'commands': {}, 'source_commit': receipt['source_commit'],
@@ -195,9 +198,6 @@ def run_native(metadata, pg_bin, pinned_binaries, inputs=builder.BASELINE):
               'art_commit': inputs.art_commit, 'admission': 'NOT_ADMITTED'}
     def interrupted(number, _frame):
         raise migration.SmokeError('signal', f'interrupted by signal {number}')
-    outputs = builder.build(inputs)
-    expected = {**outputs['readiness.json']['map'],
-                'source_commit': inputs.source_commit, 'art_commit': inputs.art_commit}
     def run_selected(name):
         env = {**cluster.env, 'MCR_BOOTSTRAP_ROOT': str(cluster.root),
                'MCR_BOOTSTRAP_TOKEN': cluster.token, 'MCR_BOOTSTRAP_INODE': str(cluster.identity[1]),
