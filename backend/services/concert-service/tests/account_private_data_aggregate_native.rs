@@ -99,14 +99,22 @@ async fn aggregate_native() -> Result<()> {
         sqlx::query("insert into concert_avatar_settings(event_id,user_id,contract_version,representation,preset_id,manifest_id,manifest_version) values($1,$2,'1.1.0','whole_character','photo01_front_01','mcr_selected_static_20261103',1)").bind(event).bind(user).execute(&p).await?;
     }
     let authority: Arc<dyn DeletionAuthority> = Arc::new(TestAuthority);
-    let core: Arc<dyn PrivateDataCategoryOwner> = Arc::new(CorePrivateDataOwner::new(
-        PrivateDataCoreDeletion::new(p.clone(), authority.clone()),
-    ));
-    let coordinator = PrivateDataAggregateCoordinator::new(
-        p.clone(),
-        authority.clone(),
-        PrivateDataCategoryOwners::core_only(core),
-    );
+    let coordinator = if restart {
+        PrivateDataAggregateCoordinator::new(
+            p.clone(),
+            authority,
+            PrivateDataCategoryOwners::empty(),
+        )
+    } else {
+        let core: Arc<dyn PrivateDataCategoryOwner> = Arc::new(CorePrivateDataOwner::new(
+            PrivateDataCoreDeletion::new(p.clone(), authority.clone()),
+        ));
+        PrivateDataAggregateCoordinator::new(
+            p.clone(),
+            authority,
+            PrivateDataCategoryOwners::core_only(core),
+        )
+    };
     // This fixture runs one phase per test process. The first process performs
     // the sole owner round. The restart process opens a fresh pool and only
     // projects/replays the durable receipt; it must not invoke the owner again.
@@ -161,28 +169,34 @@ async fn aggregate_native() -> Result<()> {
     .fetch_one(&p)
     .await?;
     anyhow::ensure!(completed.is_none());
-    if !fenced {
-        let progress = coordinator
-            .progress(user)
-            .await
-            .map_err(|e| anyhow::anyhow!("progress: {e:?}"))?
-            .ok_or_else(|| anyhow::anyhow!("progress"))?;
-        anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len() - 1);
-        anyhow::ensure!(!progress.completed.is_empty() && !progress.missing.is_empty());
-        anyhow::ensure!(progress.command.retention_until == c.retention_until);
-        anyhow::ensure!(progress.command.retention_until.timestamp_subsec_nanos() == 123_456_000);
-        anyhow::ensure!(progress.fence_revision > 0);
-    }
+    // This read runs in both phases through the coordinator built by the
+    // current process. On restart it therefore proves durable progress through
+    // a newly constructed empty-owner registry, not cached first-process state.
+    let progress = coordinator
+        .progress(user)
+        .await
+        .map_err(|e| anyhow::anyhow!("progress: {e:?}"))?
+        .ok_or_else(|| anyhow::anyhow!("progress"))?;
+    anyhow::ensure!(progress.cursor == PrivateDataCategory::ALL.len() - 1);
+    anyhow::ensure!(!progress.completed.is_empty() && !progress.missing.is_empty());
+    anyhow::ensure!(progress.completed == vec![PrivateDataCategory::CorePreferencesAndAvatar]);
+    anyhow::ensure!(progress.missing.len() == 6);
+    anyhow::ensure!(progress.command.retention_until == c.retention_until);
+    anyhow::ensure!(progress.command.retention_until.timestamp_subsec_nanos() == 123_456_000);
+    anyhow::ensure!(progress.fence_revision > 0);
     let persisted_fence: i64 = sqlx::query_scalar(
         "select fence_revision from concert_private_data_owner_progress where user_id=$1",
     )
     .bind(user)
     .fetch_one(&p)
     .await?;
-    let second = coordinator
-        .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
-        .await;
-    anyhow::ensure!(matches!(second, Err(DeletionFailure::Incomplete)));
+    anyhow::ensure!(progress.fence_revision == persisted_fence as u64);
+    if !fenced {
+        let second = coordinator
+            .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
+            .await;
+        anyhow::ensure!(matches!(second, Err(DeletionFailure::Incomplete)));
+    }
     let replay_whole_ack: Option<chrono::DateTime<Utc>> = sqlx::query_scalar(
         "select completed_at from concert_private_data_owner_progress where user_id=$1",
     )
