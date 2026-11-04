@@ -332,7 +332,7 @@ async fn provider_unavailable_does_not_erase_valid_claim() -> anyhow::Result<()>
         None,
         f.clock.clone(),
         keys(),
-    );
+    ).with_claim_trust(trust::ClaimTrust::new(&[("fixture", "fixture-v1")])?);
     assert!(matches!(
         missing.start(f.c, Uuid::new_v4(), RETURN_TARGET).await,
         Err(Error::ProviderUnavailable)

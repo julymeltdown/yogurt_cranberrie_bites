@@ -17,7 +17,9 @@ adds a private native transaction witness. No raw birth date or proof is added.
 
 This owner changes only age application/provider subtrees, the named migration,
 new age runtime tests/support, this document, and exact delegated module exports
-and the `age_claims.rs` aliases needed by its retained path-included adapter.
+and the `age_claims.rs` aliases needed by its retained path-included adapter. Exact
+additional test grants declare accepted fixture provenance in the old reader
+authority and the old unavailable-provider producer initializer.
 Root owns Operation variants, Gateway/Concert HTTP dispatch, process config,
 capability composition, and the composite settlement resolver. Intro owns its
 read/write policy, row locks, routes, schema and runtime acceptance.
@@ -54,12 +56,23 @@ which C04 already permits. It never fabricates or recovers a raw state token.
 Callback replay returns the same receipt/status, never another exchange.
 Uncertain exchange/commit preserves Pending and requires the original command
 identity for recovery. An available persisted claim remains valid when the
-provider is unavailable. Own-status reassesses temporal validity after COMMIT.
+provider is unavailable. Own-status reassesses temporal validity after COMMIT. Both own-status and restricted
+projection require the canonical newest record to match explicit accepted source
+provenance before assessment.
 
 ## Intro shared-transaction projection
 
+`trust::ClaimTrust::new(&[(verifier_id, source_revision)])` defines the immutable
+accepted source set (up to16 pairs). `ClaimTrust::none()` denies unknown sources.
+Configured mode derives its active source by default; unavailable mode derives
+an empty set. `runtime.with_claim_trust(trust)` explicitly retains accepted prior
+sources during an operational outage or rotates the accepted set. Omitting the
+configured active source also disables new starts. Source trust is not a browser
+input, a proof, or an operational availability flag.
+
 `runtime.projection(scope)` returns `PgClaimProjection` using
-`scoped::ScopedProjectionAuthority::new(scope, verification_available)`.
+`scoped::ScopedProjectionAuthority::with_claim_trust(scope, verification_available, trust)`.
+The compatibility `new(scope, bool)` constructor has empty trust and denies claims.
 It reuses Intro's already registered native transaction and does not allocate
 another settlement reference. It checks the viewer's exact original scope and
 current participant eligibility. Unrestricted discovery bypasses claim reads.
@@ -97,7 +110,8 @@ this patch does not delete evidence early.
 
 The new tests use actual canonical Auth/Friend services over fixture mTLS and an
 owned socket-only PostgreSQL16 store. Only provider proof verification is
-synthetic. Fixture support is adapted from `tests/owner_authority_support/` at
+synthetic; the dedicated provenance-policy case also seeds explicitly synthetic
+private records to exercise rejection of an unaccepted newest source. Fixture support is adapted from `tests/owner_authority_support/` at
 the base pin; migration/tool ownership checks remain intact. Tests and receipts
 must be run from frozen hash-checked artifacts after releasing the named Cargo
 target. Runtime HTTP composition and real provider/browser callback delivery
