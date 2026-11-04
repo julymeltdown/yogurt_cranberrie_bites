@@ -205,7 +205,7 @@ async fn immutable_evidence_permanent_deny_and_bounded_purge_remain_real() -> an
     for sql in [
         "update notification_deletion_receipts_v1 set actor_id=actor_id where saga_id=$1",
         "delete from notification_deletion_receipts_v1 where saga_id=$1",
-        "update notification_deletion_fences_v1 set fence_revision=fence_revision where subject_id=$1",
+        "update notification_deletion_fences_v1 set recorded_at=recorded_at where subject_id=$1",
         "delete from notification_deletion_fences_v1 where subject_id=$1",
         "update notification_user_deletion_receipts set actor_id=actor_id where saga_id=$1",
         "delete from notification_user_deletion_receipts where saga_id=$1",
