@@ -120,3 +120,9 @@ handles. Build/freeze took 97.193 seconds and native teardown completed after
 74.824 seconds. Peak sampled whole outputs were 87,865,218 bytes, minimum native
 free disk 31,747,448,832 bytes. A fresh named offer is required for the corrected
 source build and new owned native workflow; the failed attempt is not overwritten.
+
+Fresh retry offer `BE41-MURAL-OWNER-RETRY-BACKEND-202611040854Z` grants at most
+360 seconds build/freeze and 240 seconds copied native, including the 60-second
+cleanup reserve. Its whole 1 GiB cap includes all retained prior evidence and
+prior target growth. The runner accepts explicit `--carry-bytes` for this retained
+prior allocation, in addition to current frozen target growth and new proof/PG.
