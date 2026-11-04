@@ -79,65 +79,69 @@ connection, and locks event/admission/participant before the stale-revision chec
 It writes the participant CAS and decision in that actual transaction. The
 dedicated Profile-only ResolveDecision RPC reads the exact operation binding and
 this store's actual pg_xact_status; a new recovery query cannot create an operation
-or choose an outcome. These new Rust paths remain unqualified at this checkpoint.
+or choose an outcome. The independent Rust Concert half is qualified below; its real cross-store composition remains unfinished.
 The actual held-owner adapter, real Profile prepare/reconcile, cross-store crash
 and visibility proofs, and public route remain unfinished.
 
 ## Validation
 
-Auth source `ab01b9dc`: Rust 1.88 locked/offline jobs=2 debug=0 incremental=0
-compile exit 0, exact Cargo-emitted library-test copy SHA256
-`5b0427dbb72034bd15c7ba6253bc800abc5be243325cb09c87354941b3a1c715`.
-An initial cached contracts-build path pointed to a different checkout; selective
-`cargo clean -p contracts-build` repaired only that package. The subsequent compile
-caught a fixture helper shadowing its function; that was fixed before the passing
-build. From the frozen private copy: deadline/credential Auth test PASS; full Auth
-reply-case test FAIL because the synthetic "stale" observation was only one
-microsecond old and could still be fresh. Its fixture now uses an actual three
-second-old observation; rerun pending. No receiving authority check was relaxed.
-Both C03 parser tests PASS, including frozen-schema comparisons and duplicate keys.
+Independent checkpoint `4c84ca8f82737b9476888a3bb01446f83be82678`:
+Rust 1.88.0, locked/offline, jobs=2, debug=0, incremental=0. The exact bounded
+`cargo test --manifest-path backend/Cargo.toml --locked --offline -j2 -p
+concert-service --lib participant::live --no-run --message-format=json` exited 0.
+The exact Cargo-emitted test executable was copied and SHA256 checked as
+`d284cf849d7e8d6fcda79ee17bd547078de2823606041fc136ac6fff1cabfc2b`.
+The MEDIA build target was explicitly released before running that private copy.
 
-SQL-only command `python3 backend/scripts/mcr/participant_coordinator_sql_smoke.py
---pg-bin /opt/homebrew/opt/postgresql@16/bin`: exit 0 on actual private PG16.14,
-eight checks PASS and owned cluster cleanup PASS. All current Concert SQL applied;
-another connection could not decide; the exact registered transaction committed
-effect and decision together; rollback retained PENDING but neither effect nor
-decision; binding/Profile receipt/terminal decision were immutable; restart retained
-the decision/effect and actual aborted status. The prepare marker and terminal
-receipt tables also refused UPDATE. Their Profile identity metadata are explicitly
-synthetic structural fixtures. This exercises SQL using an explicit effect-probe
-table, not the Rust participant implementation or actual Profile. Exact migration
-and driver hashes are in `participant-live-evidence/coordinator-sql.json`.
+Four focused tests PASS: two actual-network Auth client tests (14 exact/fault
+owner replies, wrong credential and original deadline) and two C03 parser tests.
+The stale Auth fixture was corrected to three seconds old after the earlier
+one-microsecond case failed to establish staleness. The coordinator test's response
+body mapping was corrected after its initial compile failure. No receiving
+security check was relaxed. Focused output and source/artifact pins are in
+`participant-live-evidence/focused-4c84ca8f.txt` and
+`participant-live-evidence/coordinator-binary-4c84ca8f.json`.
 
-Decision IDL at `3bb9c295`: standalone vendored protoc exit 0; source SHA256
+Command `python3 backend/scripts/mcr/participant_coordinator_sql_smoke.py
+--pg-bin /opt/homebrew/opt/postgresql@16/bin --binary <private-copy>
+--receipt <exact-cargo-receipt>` exited 0 against private PostgreSQL 16.14.
+The actual guarded Rust Concert coordinator native test PASS: original signed
+C03 context, same-connection identity registration, event/admission/participant
+locks, stale CAS refusal before prepare, profile-only preference preservation,
+actual UPDATE followed by revocation rollback, COMMIT/ABORT decision queries and
+foreign-body UNRESOLVED. A Concert commit without a canonical Profile terminal
+receipt remains invisible. Owner eligibility and Profile prepared replies in this
+test are explicitly synthetic fixtures; it does not qualify actual owner stores,
+Profile prepare/reconcile, or a public HTTP route.
+
+The same run passed eight SQL checks, restart and owned cleanup. Every current
+Concert migration applied. Another connection could not decide; the registered
+transaction committed effect and decision together; rollback retained PENDING
+without either effect or COMMIT; original binding and prepare/terminal records
+were immutable; restart retained committed effect, decision and aborted status.
+The SQL-only portion uses an explicit effect probe and synthetic Profile terminal
+metadata. Full report: `participant-live-evidence/coordinator-native-4c84ca8f.json`.
+Its legacy scope string describes only the SQL portion; the separate `native_rust`
+field identifies the additional exact Rust test. The earlier SQL-only report is
+retained separately. Four Python artifact-boundary tests also PASS.
+
+The compile emits inherited warnings and unused recovery/terminal seams, because
+the staged SELF client has not been exported. Warnings were not suppressed.
+The real held-owner adapter compiles against published SDK `888cb6bd`; actual
+Auth/Friend native qualification and its use in a live participant flow remain
+separate obligations. Qualified canonical avatar hooks `60991c53` are consumed
+without changing their implementation. The typed SELF client in `live/profile.rs`
+is unexported and NOT_RUN until coherent producer/proto-generation inputs arrive.
+
+The additive decision IDL alone is published as `43cb9e9f`, CONTRACT_READY.
+Vendored protoc exit 0; source SHA256
 `8f5df61f1cdce1ed7e386da17a7ed8e3ea914eb24a117a39a85ec17cae26d6b9`, descriptor
 SHA256 `639b449a2f27eee0d221cef74435afd14cc1389f6b77a1e91a445130cf7ae2e0`.
-This is syntax qualification, not server execution. The root-owned response
-delivery extension is agreed but not imported into this checkpoint.
+The root-owned response delivery extension is agreed but not imported here.
 
-Canonical avatar hook source `2561baa7` was consumed locally as `7a8fab63`.
-Its owner still owes native qualification. Participant MutationPermit and
-CheckedAuthority now forward its effect fence; default None is refused by product
-writes. The actual BoundParticipantAuthority adapter is in `live/guarded.rs`.
-Compiled SDK `888cb6bd` is now consumed and the adapter exported for its next
-qualification build. The adapter itself is still NOT_RUN. It binds the exact sealed
-parent, request, release and original deadline to the real OwnerGuardScope and
-registers the repository's actual transaction. It owns no completion/release API.
-This source is not a qualified real authority adapter yet.
-
-The qualified canonical avatar handoff `60991c53` is now consumed. The only
-repository merge difference was its fixture checkpoint-count correction; the
-qualified canonical file was retained exactly. The new typed SELF client is staged
-in `live/profile.rs`, unexported until qualified producer/generation inputs arrive.
-It uses shared platform keys, exact held-owner views, original deadlines, actual
-Profile versions and prepared transaction identity, and a durable marker before
-PrepareUpdate. Recovery only queries persisted original operations with a fresh
-bounded signature; it cannot recreate a mutation. This client is NOT_RUN.
-
-New journal/resolver Rust compile and native application test: NOT_RUN. Actual live
-owner mutation, root/Gateway composition, browser and full signed-in multiuser
-acceptance: NOT_RUN. Formatting, `git diff --check` and the plan checker PASS.
-Phase A validation in `participant-producer.md` does not qualify these new changes.
-
-Required completion remains implementation, meaningful native and public-route
-validation, committed non-force delivery, documentation, and concrete review fixes.
+Actual Profile client/terminal/recovery, full live producer orchestration,
+root/Gateway composition, real save/reload and browser/multiuser acceptance remain
+NOT_RUN. The persistent full Live goal remains active. Phase A validation does
+not certify these new paths. Required completion still includes implementation,
+meaningful native/public-route validation, committed non-force delivery,
+documentation and concrete fixes.
