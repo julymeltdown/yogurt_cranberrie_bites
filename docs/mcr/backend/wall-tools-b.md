@@ -226,3 +226,11 @@ and values beyond MAX_REVISION remain rejected. The existing pure/native/Gateway
 candidate cases now include those encodings; inventory is unchanged. The actual
 C04 target oracle confirmed the three equivalent valid forms and rejected the
 leading-zero and duplicate-alias examples. Rust/native execution is still queued.
+
+
+The source SQL integration pass also found the new application command registry
+was not yet reflected in BE15's `concert_command_operations` table. Migration
+0058 now inserts exactly the three frozen mutation IDs before tools are used;
+otherwise the receipt foreign key would reject every new action. Existing
+canonical Fill/Erase/Undo native cases exercise that actual FK path when run.
+No historical migration or unrelated operation registry entry is changed.

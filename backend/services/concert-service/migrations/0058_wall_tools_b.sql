@@ -1,5 +1,8 @@
 -- Wall B; native witness adapted from0049 at7d5d91bd. No prior migration is changed.
 -- Provision explicitly; absence disables B. Index0 assigns a role without recoloring.
+-- The BE15 receipt FK must recognize the same three frozen mutation IDs.
+INSERT INTO public.concert_command_operations(operation_id) VALUES
+ ('eraseConcertMuralPixel'),('fillConcertMuralRegion'),('undoConcertMuralAction');
 CREATE TABLE public.concert_mural_tool_config (
  event_id uuid PRIMARY KEY REFERENCES public.concert_mural_state(event_id),
  background_index smallint NOT NULL CHECK(background_index=0)
