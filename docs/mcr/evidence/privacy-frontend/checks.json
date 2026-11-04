@@ -128,5 +128,10 @@
     },
     "liveRuntimeHandoff": "Not published in merged candidate; ProductRoot constructor qualification is not actual seven-principal public service handoff",
     "originalGoal": "ACTIVE; no completion claim"
+  },
+  "publicationRetry": {
+    "reason": "non-fast-forward; serial peer-preserving merge",
+    "mergedRemote": "0c1f81c7d8f709daa2728ab4829e0d17ea9234fe",
+    "qualifiedSourcePins": "all108 unchanged; no new runtime claim"
   }
 }
