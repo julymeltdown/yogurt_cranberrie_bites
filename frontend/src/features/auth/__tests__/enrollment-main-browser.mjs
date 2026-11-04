@@ -9,7 +9,18 @@ const evidence = process.env.MCR_FE10_EVIDENCE, serving = process.env.MCR_FE10_B
 assert(evidence && serving, 'Allocated private evidence and independently owned backend output required')
 const ready = JSON.parse(await readFile(path.join(serving, 'browser-ready.json'), 'utf8'))
 assert.equal(ready.frontendOrigin, 'http://localhost:3000'); assert.equal(ready.syntheticPolicyOnly, true)
-assert.match(ready.gatewayOrigin, /^http:\/\/localhost:\d+$/); assert.match(ready.policyRevision, /^[a-f0-9-]{36}$/)
+assert.match(ready.gatewayOrigin, /^http:\/\/localhost:\d+$/)
+assert.match(ready.gatewayLoopbackOrigin, /^http:\/\/127\.0\.0\.1:\d+$/)
+assert.equal(new URL(ready.gatewayOrigin).port, new URL(ready.gatewayLoopbackOrigin).port)
+assert.match(ready.binarySha256, /^[a-f0-9]{64}$/); assert.match(ready.sourceRevision, /^[a-f0-9]{40}$/)
+assert.equal(ready.binarySha256, process.env.MCR_FE10_BACKEND_BINARY_SHA, 'Fresh paired binary pin required')
+assert.equal(ready.sourceRevision, process.env.MCR_FE10_BACKEND_SOURCE, 'Fresh paired source pin required')
+for (const service of ['auth-service', 'api-gateway']) {
+  assert(path.isAbsolute(ready.runtimeMigrationPaths[service]))
+  assert(Object.keys(ready.runtimeMigrationSha256[service]).length > 0)
+  for (const digest of Object.values(ready.runtimeMigrationSha256[service])) assert.match(digest, /^[a-f0-9]{64}$/)
+}
+assert.match(ready.policyRevision, /^[a-f0-9-]{36}$/)
 assert.equal(ready.verdict, 'SERVING_FIXTURE_ONLY_BROWSER_ACCEPTANCE_REMAINS_FE_OWNED')
 const eventId = process.env.MCR_FE10_EVENT_ID
 assert.match(eventId ?? '', /^[a-f0-9-]{36}$/, 'Explicit event only; does not fabricate a concert producer')
@@ -56,7 +67,7 @@ try {
   dev = await createServer({ configLoader: 'runner', cacheDir: process.env.MCR_FE10_CACHE,
     define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify(eventId) },
     server: { host: 'localhost', port: 3000, strictPort: true,
-      proxy: { '/api': { target: ready.gatewayOrigin, changeOrigin: false } } } })
+      proxy: { '/api': { target: ready.gatewayLoopbackOrigin, changeOrigin: false } } } })
   await dev.listen()
   browser = await chromium.launch({ channel: 'chrome', headless: true,
     args: ['--disable-background-networking', '--disable-component-update'] })
@@ -113,7 +124,8 @@ try {
   assert.deepEqual(errors, [])
   await writeFile(path.join(evidence, 'main-browser-report.json'), JSON.stringify({
     qualification: 'Actual main entry; real Auth RPC/Gateway/private DB and canonical mail-worker local capture; explicit synthetic test policy only',
-    frontendOrigin: ready.frontendOrigin, backendOrigin: ready.gatewayOrigin, policyRevision: ready.policyRevision,
+    frontendOrigin: ready.frontendOrigin, backendOrigin: ready.gatewayOrigin, upstream: ready.gatewayLoopbackOrigin,
+    backendBinarySha256: ready.binarySha256, backendSourceRevision: ready.sourceRevision, runtimeMigrationSha256: ready.runtimeMigrationSha256, policyRevision: ready.policyRevision,
     node: process.version, browser: browser.version(), results, calls, decisions, errors,
     worldContinuation: 'OPEN: Auth-only fixture does not contain coherent Concert/Profile/Friend producers; no World/canvas/socket success claimed',
     externalMail: 'NOT_RUN', productionLegalPublication: 'ABSENT_NOT_CLAIMED'

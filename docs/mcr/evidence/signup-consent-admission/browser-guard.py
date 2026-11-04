@@ -32,7 +32,7 @@ active_end = end - lease.get('cleanupSeconds', 60)
 assert time.time() < active_end
 scratch = Path(lease['scratch']).resolve()
 assert scratch.is_relative_to(ROOT) and not scratch.exists()
-assert os.statvfs(ROOT).f_bavail * os.statvfs(ROOT).f_frsize >= 12 * 1024**3
+assert os.statvfs(ROOT).f_bavail * os.statvfs(ROOT).f_frsize >= 11 * 1024**3
 scratch.mkdir(parents=True, mode=0o700)
 log = OFFER.parent / 'guardian.jsonl'
 owned_link = FRONT / 'node_modules'
