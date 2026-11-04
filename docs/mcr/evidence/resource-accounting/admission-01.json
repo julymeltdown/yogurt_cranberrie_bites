@@ -1,0 +1,27 @@
+{
+  "offer": "TOOLS-FS-01-SOURCE-20261104T2120Z",
+  "preflightEpoch": 1793825883.026927,
+  "source": "185f544a9645573daed38c25cbbcec25b1ff93e5",
+  "pins": {
+    "scripts/mcr/resource-accounting/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+    "scripts/mcr/tests/resource-accounting/qualify.py": "06d4d2536d12ae5da5e4ec5d2ad620ad85708ec3aef21ccec942f35ca4f9018a",
+    "scripts/mcr/tests/resource-accounting/test_accounting.py": "ae092fd1a11c6ab6ed0a2ec51eb1b7178d0c2cf2a78cf7e5f6755ff7ad504aad"
+  },
+  "predecessorFull": "/private/tmp/mcr-world-managed-attach-20261105/full-release.json",
+  "predecessorFullEpoch": 1793825716.56196,
+  "predecessorSha256": "324306793455b86bf9fb8b1ba33823fccbb753292f9d1b9ad3a7087172c02f11",
+  "free": 17421627392,
+  "otherClaimsBytes": 3117000500,
+  "newWorstCase": 67108864,
+  "afterAll": 14237518028,
+  "concurrency": "WorldC FULL0 verified; RootA<=1,ArtSOURCEB<=1,AvatarbrowserD<=1,ownC<=1; global<=4/SOURCE<=2/browser<=2 per current offer",
+  "workSeconds": 120,
+  "fullSeconds": 180,
+  "pidCap": 16,
+  "rssCap": 1073741824,
+  "newCap": 67108864,
+  "wholeCap": 4294967296,
+  "retainedNew": 41158065,
+  "retainedWhole": 1901942193,
+  "reservation": 4194304
+}

@@ -1,0 +1,29 @@
+{
+  "offer": "TOOLS-FS-01-RETRY-SOURCE-20261104T2130Z",
+  "preflightEpoch": 1793826408.544467,
+  "source": "fd66380a17199e71ceeb4761e750ce5a47b79575",
+  "codeCommit": "4062c346e",
+  "pins": {
+    "scripts/mcr/resource-accounting/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+    "scripts/mcr/tests/resource-accounting/qualify.py": "8883f0baf88a6b883c7eb0434ddadf3ccf90fb212b655781213b2177b9bd677e",
+    "scripts/mcr/tests/resource-accounting/test_accounting.py": "ae092fd1a11c6ab6ed0a2ec51eb1b7178d0c2cf2a78cf7e5f6755ff7ad504aad"
+  },
+  "predecessorFull": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/pre-world-service-policy/expiryA.json",
+  "predecessorFullEpoch": 1793826360.087483,
+  "predecessorSha256": "b49682d8e96d776dfcd7feb0428ec82f4f1b1fcaafe12f43551e34f36dfbba5a",
+  "free": 14577336320,
+  "otherClaimsBytes": 3184752980,
+  "otherClaimsPolicy": "higher conservative previously literal3,184,752,980 retained; latest offer BE06+FE37+ordinary<=2GiB covered, FE41nowFULL0",
+  "newWorstCase": 67108864,
+  "afterAll": 11325474476,
+  "concurrency": "FE41C FULL0 independently verified; BE06A/FE37B plusownC <=global4 andSOURCE2 perfresh2130offer",
+  "workSeconds": 120,
+  "fullSeconds": 180,
+  "pidCap": 16,
+  "rssCap": 1073741824,
+  "newCap": 67108864,
+  "wholeCap": 4294967296,
+  "retainedNew": 41158065,
+  "retainedWhole": 1901942193,
+  "reservation": 4194304
+}

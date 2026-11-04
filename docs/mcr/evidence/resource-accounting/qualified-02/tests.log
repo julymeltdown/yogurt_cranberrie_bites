@@ -1,0 +1,30 @@
+test_actual_atomic_heartbeat_churn_keeps_complete_samples (__main__.AccountingChecks.test_actual_atomic_heartbeat_churn_keeps_complete_samples) ... ok
+test_actual_resource_boundary_stops_and_reaps_scan_child (__main__.AccountingChecks.test_actual_resource_boundary_stops_and_reaps_scan_child) ... ok
+test_checkpoint_can_stop_during_live_du_child (__main__.AccountingChecks.test_checkpoint_can_stop_during_live_du_child) ... ok
+test_complete_fresh_retry_never_uses_failed_subtotal (__main__.AccountingChecks.test_complete_fresh_retry_never_uses_failed_subtotal) ... ok
+test_continuous_disappearance_is_bounded_and_fails_closed (__main__.AccountingChecks.test_continuous_disappearance_is_bounded_and_fails_closed) ... ok
+test_diagnostic_overflow_is_bounded_and_fails_closed (__main__.AccountingChecks.test_diagnostic_overflow_is_bounded_and_fails_closed) ... ok
+test_malformed_success_fails_closed (__main__.AccountingChecks.test_malformed_success_fails_closed) ... ok
+test_mixed_error_not_retried (__main__.AccountingChecks.test_mixed_error_not_retried) ... ok
+test_native_actual_child_removal_retains_subtotal_then_fresh_retry (__main__.AccountingChecks.test_native_actual_child_removal_retains_subtotal_then_fresh_retry) ... ok
+test_native_actual_churn_complete_samples (__main__.AccountingChecks.test_native_actual_churn_complete_samples) ... ok
+test_native_entry_bound_and_deadline_never_admit_partial (__main__.AccountingChecks.test_native_entry_bound_and_deadline_never_admit_partial) ... ok
+test_native_permission_io_unknown_errors_never_retry (__main__.AccountingChecks.test_native_permission_io_unknown_errors_never_retry) ... ok
+test_native_persistent_enoent_retains_known_bytes_fails_closed (__main__.AccountingChecks.test_native_persistent_enoent_retains_known_bytes_fails_closed) ... ok
+test_nonowned_enoent_not_retried (__main__.AccountingChecks.test_nonowned_enoent_not_retried) ... ok
+test_nonshrinking_carry_and_positive_growth (__main__.AccountingChecks.test_nonshrinking_carry_and_positive_growth) ... ok
+test_permission_error_not_retried (__main__.AccountingChecks.test_permission_error_not_retried) ... ok
+test_pinned_link_replacement_fails_closed (__main__.AccountingChecks.test_pinned_link_replacement_fails_closed) ... ok
+test_real_du_does_not_follow_child_symlink_or_double_count_hardlink (__main__.AccountingChecks.test_real_du_does_not_follow_child_symlink_or_double_count_hardlink) ... ok
+test_replaced_root_fails_identity_check (__main__.AccountingChecks.test_replaced_root_fails_identity_check) ... ok
+test_root_enoent_not_retried (__main__.AccountingChecks.test_root_enoent_not_retried) ... ok
+test_root_symlink_is_rejected (__main__.AccountingChecks.test_root_symlink_is_rejected) ... ok
+test_timeout_reaps_actual_child (__main__.AccountingChecks.test_timeout_reaps_actual_child) ... ok
+test_union_deduplicates_overlaps_hardlinks_and_pinned_alias (__main__.AccountingChecks.test_union_deduplicates_overlaps_hardlinks_and_pinned_alias) ... ok
+test_work_deadline_is_not_renewed_by_retry (__main__.AccountingChecks.test_work_deadline_is_not_renewed_by_retry) ... ok
+test_wrong_exit_not_retried (__main__.AccountingChecks.test_wrong_exit_not_retried) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.944s
+
+OK

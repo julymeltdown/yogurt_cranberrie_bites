@@ -1,0 +1,62 @@
+{
+  "task": "TOOLS-FS-01",
+  "status": "PASS_SOURCE_ACCOUNTING_ONLY",
+  "implementationCommit": "185f544a9645573daed38c25cbbcec25b1ff93e5",
+  "fixedRunnerCommit": "4062c346e",
+  "firstRound": {
+    "offer": "TOOLS-FS-01-SOURCE-20261104T2120Z",
+    "result": "FAIL_CLOSED_BEFORE_WORKLOAD",
+    "testCasesRun": 0,
+    "rawFull": "failed-01-FULL.json",
+    "fullSha256": "4d7a81a4e1237ed90f5d0665e163a552c967fdc1e13b1afb9fe5fb19ec9c1065",
+    "actualFullEpoch": 1793825891.094336,
+    "cause": "bounded baseline deadline; live process-measurement throttle used pre-measurement timestamp",
+    "knownIncompleteSubtotal": 1217462272,
+    "entriesObserved": 14120,
+    "unsafeSubtotalAdmitted": false,
+    "ownedChildren": 0,
+    "remainingReservation": 0
+  },
+  "correction": "Timestamp live-throttle completion after the measured process snapshot; per-entry fixed-deadline checks remain. No bound/cap enlargement. Preserve failed receipt and use a fresh finite offer after actual FULL0.",
+  "scope": "Only25new meaningful filesystem/accounting SOURCE tests and dual-guard qualification; no product/build/SQL/browser replay.",
+  "publication": "Qualified committed evidence and designated publisher handoff follow; no shared controller changed. Owner adoption is explicit and does not gate independent Root work.",
+  "qualifiedSource": "fd66380a17199e71ceeb4761e750ce5a47b79575",
+  "qualifiedCodeCommit": "4062c346e",
+  "offer": "TOOLS-FS-01-RETRY-SOURCE-20261104T2130Z",
+  "actualAcceptEpoch": 1793826408.589041,
+  "actualFullEpoch": 1793826411.2484028,
+  "testsRun": 25,
+  "failures": 0,
+  "errors": 0,
+  "workloadSeconds": 0.944,
+  "controllerSeconds": 2.6593618392944336,
+  "guards": {
+    "primaryFailure": null,
+    "independentFailure": null,
+    "independentExit": 0,
+    "samplesEach": 5
+  },
+  "retained": {
+    "priorNew": 41158065,
+    "priorWhole": 1901942193,
+    "reservation": 4194304
+  },
+  "peak": {
+    "new": 45495729,
+    "whole": 2625007616,
+    "allProcesses": 7,
+    "rss": 153255936,
+    "minimumFreeBoth": 14574551040
+  },
+  "cleanup": {
+    "ownedChildren": [],
+    "workflow": 0,
+    "remainingReservation": 0,
+    "withinFullDeadline": true
+  },
+  "raceEvidence": {
+    "actualAtomicChurn": "30du +30native complete samples, no naturally occurring ENOENT observed in those samples",
+    "deterministicRealChildRemoval": "actual unlink immediately before real stat creates ENOENT; first attempt incomplete with known subtotal, second fresh complete",
+    "persistentAndUnsafeFaults": "controlled injection labeled in tests; persistentENOENT/EACCES/EIO/EINVAL/incomplete/timeout/root custody faults fail closed"
+  }
+}

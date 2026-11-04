@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "failure": null,
+  "offer": "TOOLS-FS-01-RETRY-SOURCE-20261104T2130Z",
+  "source": "fd66380a17199e71ceeb4761e750ce5a47b79575",
+  "actualFullEpoch": 1793826411.2484028,
+  "workflow": 0,
+  "remainingNewReservation": 0,
+  "ownedChildren": [],
+  "testExit": 0,
+  "primary": {
+    "failure": null,
+    "samples": 5,
+    "peak": {
+      "new": 45495729,
+      "whole": 2625007616,
+      "processes": 7,
+      "rss": 153255936
+    },
+    "minimumFree": 14574620672
+  },
+  "guardianExit": 0,
+  "withinFullDeadline": true
+}

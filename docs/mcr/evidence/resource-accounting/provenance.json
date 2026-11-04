@@ -1,0 +1,118 @@
+{
+  "inspectedEpoch": 1793825171.248836,
+  "goalStatusAtAcceptance": "active; initial get_goal null then new unbudgeted goal created",
+  "scopeAmendment": "Final explicit Root153 sole-writer STOP/grant supersedes prior preparation prefixes: ONLY scripts/mcr/resource-accounting/**, scripts/mcr/tests/resource-accounting/**, docs/mcr/engineering/resource-accounting.md, docs/mcr/evidence/resource-accounting/**. New branch codex/mcr-resource-accounting-reliability from canonical2492e35bb9fb61380bf97fa936983ec16c0722f4. Own prepared files moved intact then obsolete own empty prefixes removed. Same aligned ACTIVE goal retained; initial metadata names superseded scope, this effective objective is documented once here; no duplicate goal/reset/false completion. QA07 refs/source46/publicationd196 remain untouched.",
+  "sources": [
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-concert-in04-build-w66_h_xx/metrics.py",
+      "sha256": "47773b4fb5a00f199e3655bdf95d9b9be6efd9cfb4278b489cf9d3d301aa93c9",
+      "bytes": 1608,
+      "classification": "observed RuntimeError only; ENOENT cause INFERENCE; raw stderr absent"
+    },
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-concert-in04-build-w66_h_xx/guardian.py",
+      "sha256": "2bce57ed29897a4dd8220e52c5ab1c4bec75a607fd58f4b5e467438c709c1cf8",
+      "bytes": 704,
+      "classification": "observed RuntimeError only; ENOENT cause INFERENCE; raw stderr absent"
+    },
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-concert-in04-build-w66_h_xx/controller.py",
+      "sha256": "3cd51de7e32b155c6e32734a771f2660d113ef5736a93d69faedf5ccb35304c6",
+      "bytes": 6060,
+      "classification": "observed RuntimeError only; ENOENT cause INFERENCE; raw stderr absent"
+    },
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-concert-in04-build-w66_h_xx/FULL.json",
+      "sha256": "4f38f9675e4413c1ac0fd07858bbde347dfba59961e16d37e7f085857d300685",
+      "bytes": 870,
+      "classification": "observed RuntimeError only; ENOENT cause INFERENCE; raw stderr absent"
+    },
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-concert-in04-retry-qewz0i6b/metrics.py",
+      "sha256": "e3d3cd420b3346305a245d205205898034490f480a9869267933ff3c1b1aad87",
+      "bytes": 2160,
+      "classification": "retry FULL observed RuntimeError build failed; guardian failure null, compiler failure separate; not helper qualification"
+    },
+    {
+      "repository": "be-service-policy-16e",
+      "source": "29da57b0ebe4ba5039a00d9a4e82ff2c978cd5a7",
+      "path": "backend/scripts/mcr/service_policy/qualify_sql.py",
+      "sha256": "16d88722a1abd4972a311440881d16cbc0c56b0db848045362f08525e7c13b62",
+      "classification": "qualified whole-freshscan retry; owner PASS_SQL_ONLY, not Root/native proof"
+    },
+    {
+      "repository": "be-service-policy-16e",
+      "source": "29da57b0ebe4ba5039a00d9a4e82ff2c978cd5a7",
+      "path": "backend/scripts/mcr/service_policy/watch_sql.py",
+      "sha256": "b12c4a66dc5b09cb5af3669e1c6c6dd0f92ccf2c38a77e25961ca1d47860bfac",
+      "classification": "qualified whole-freshscan retry; owner PASS_SQL_ONLY, not Root/native proof"
+    },
+    {
+      "source": "46f7f49940d27e387262687270f78c8e296dd874",
+      "path": "docs/mcr/evidence/qa07-input-delta/guard_disk.py",
+      "sha256": "b5c6e73c353134217d2f740cb9c827fdee0ac55e16607bada2e5c8d4e42a9358",
+      "classification": "qualified private Chrome TMP partial-subtotal tolerance; not authoritative whole-tree accounting policy"
+    },
+    {
+      "source": "46f7f49940d27e387262687270f78c8e296dd874",
+      "path": "docs/mcr/evidence/qa07-input-delta/release-native-03.json",
+      "sha256": "8489bfd08a72e247dbc974d4a86ce08c89834532bb8b5ac5405e0bd172a94164",
+      "classification": "qualified private Chrome TMP partial-subtotal tolerance; not authoritative whole-tree accounting policy"
+    },
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-concert-in04-build-w66_h_xx/plan.json",
+      "sha256": "70b5bdd26cb6769012926521f53d4a89026b59d2a2759c21b3042aafe55cafd0",
+      "bytes": 1568,
+      "classification": "read-only exact owner provenance; retry FULL preserves compiler failure separately from accounting"
+    },
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-concert-in04-build-w66_h_xx/readset.json",
+      "sha256": "ef35420220e4fdaaebf949e6e3d788c63d2d146eab7afd5ced5c0af3797563ef",
+      "bytes": 341663,
+      "classification": "read-only exact owner provenance; retry FULL preserves compiler failure separately from accounting"
+    },
+    {
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-root-concert-in04-retry-qewz0i6b/FULL.json",
+      "sha256": "f7156d6ee28295f3c871bab2abd400902ddda20764b23cb624b10e7e71a89c48",
+      "bytes": 874,
+      "classification": "read-only exact owner provenance; retry FULL preserves compiler failure separately from accounting"
+    },
+    {
+      "path": "/private/tmp/mcr-be38-policy-5k362itu/release.json",
+      "sha256": "8633cb7743a0f5532dc5257575b8b78413663c901f15ced02e28757740adf2fe",
+      "bytes": 317,
+      "classification": "direct receipt verified read-only, historical BE38 source; not TOOLS-FS-01 qualification"
+    },
+    {
+      "path": "/private/tmp/mcr-be38-policy-6cjsmcoe/result.json",
+      "sha256": "7492558d73745f2ce01e3fef939cad32aec9f4750889f094a0a5fa2b5fb3e728",
+      "bytes": 15843,
+      "classification": "direct receipt verified read-only, historical BE38 source; not TOOLS-FS-01 qualification"
+    },
+    {
+      "path": "/private/tmp/mcr-be38-policy-6cjsmcoe/release.json",
+      "sha256": "7a3af45e8c832e656d6b3dd141009879de0247d7b6524fb2c31d283ca7857789",
+      "bytes": 316,
+      "classification": "direct receipt verified read-only, historical BE38 source; not TOOLS-FS-01 qualification"
+    }
+  ],
+  "preservedFailure": "Root2040 original FULL remains immutable; missing stderr not reconstructed. BE38 prior failure and QA07 failed finalization stay in their original evidence.",
+  "productionAdoption": "Owner-applied after committed qualified handoff, no controller edits/STOP transfer held and no Root retry gate.",
+  "candidatePins": [
+    {
+      "path": "scripts/mcr/resource-accounting/accounting.py",
+      "sha256": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "bytes": 14496
+    },
+    {
+      "path": "scripts/mcr/tests/resource-accounting/qualify.py",
+      "sha256": "8883f0baf88a6b883c7eb0434ddadf3ccf90fb212b655781213b2177b9bd677e",
+      "bytes": 10285
+    },
+    {
+      "path": "scripts/mcr/tests/resource-accounting/test_accounting.py",
+      "sha256": "ae092fd1a11c6ab6ed0a2ec51eb1b7178d0c2cf2a78cf7e5f6755ff7ad504aad",
+      "bytes": 18152
+    }
+  ]
+}

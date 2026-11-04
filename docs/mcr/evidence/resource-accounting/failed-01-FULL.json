@@ -1,0 +1,29 @@
+{
+  "status": "FAIL",
+  "failure": "AccountingError('scan deadline')",
+  "offer": "TOOLS-FS-01-SOURCE-20261104T2120Z",
+  "actualFullEpoch": 1793825891.094336,
+  "workflow": 0,
+  "remainingNewReservation": 0,
+  "ownedChildren": [],
+  "phase": "baseline/pre-child; no workload admitted",
+  "accounting": {
+    "reason": "scan deadline",
+    "attempts": [
+      {
+        "attempt": 1,
+        "complete": false,
+        "knownBytes": 1217462272,
+        "scopes": {
+          "checkout": 1217462272,
+          "git": 0,
+          "private": 0
+        },
+        "races": [],
+        "entries": 14120,
+        "finishedMonotonic": 169458.745007708
+      }
+    ],
+    "complete": false
+  }
+}

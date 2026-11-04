@@ -1,0 +1,57 @@
+{
+  "offer": "TOOLS-FS-01-RETRY-SOURCE-20261104T2130Z",
+  "parent": 76906,
+  "acceptedEpoch": 1793826408.589041,
+  "deadline": 170096.240863375,
+  "fullDeadline": 170156.240863375,
+  "retainedNew": 41158065,
+  "priorWhole": 1901942193,
+  "reservation": 4194304,
+  "caps": {
+    "free_floor": 8589934592,
+    "new": 67108864,
+    "whole": 4294967296,
+    "processes": 16,
+    "rss": 1073741824
+  },
+  "roots": {
+    "checkout": {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b",
+      "device": 16777229,
+      "inode": 547602312,
+      "owner": 501,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    },
+    "git": {
+      "path": "/Users/lhs/Desktop/mcr/.git",
+      "device": 16777229,
+      "inode": 536659365,
+      "owner": 501,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    },
+    "private": {
+      "path": "/private/tmp/mcr-resource-accounting-332b-round02",
+      "device": 16777229,
+      "inode": 548379970,
+      "owner": 501,
+      "read_only_target": null,
+      "link_identity": null,
+      "link_text": null
+    }
+  },
+  "pins": {
+    "scripts/mcr/resource-accounting/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+    "scripts/mcr/tests/resource-accounting/qualify.py": "8883f0baf88a6b883c7eb0434ddadf3ccf90fb212b655781213b2177b9bd677e",
+    "scripts/mcr/tests/resource-accounting/test_accounting.py": "ae092fd1a11c6ab6ed0a2ec51eb1b7178d0c2cf2a78cf7e5f6755ff7ad504aad"
+  },
+  "source": "fd66380a17199e71ceeb4761e750ce5a47b79575",
+  "baseline": {
+    "checkout": 1465360384,
+    "git": 1155309568,
+    "private": 0
+  }
+}
