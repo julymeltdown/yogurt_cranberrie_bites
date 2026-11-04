@@ -134,10 +134,11 @@ async function parity() {
   ctx.restore()
   const a = actual.getContext('2d')!.getImageData(0, 0, actual.width, actual.height).data, b = ctx.getImageData(0, 0, canvas.width, canvas.height).data
   let different = 0, max = 0
-  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) { different++; max = Math.max(max, Math.abs(a[i]! - b[i]!)) }
+  const samples = []
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) { different++; max = Math.max(max, Math.abs(a[i]! - b[i]!)); if (samples.length < 24) samples.push({ x: Math.floor(i / 4) % actual.width, y: Math.floor(i / 4 / actual.width), channel: i % 4, actual: a[i], expected: b[i] }) }
   if (different) Object.assign(window, { referenceExpected: canvas.toDataURL() })
   canvas.width = canvas.height = 0
-  return { different, max, channels: a.length }
+  return { different, max, channels: a.length, samples, camera }
 }
 async function mapParity() {
   const pins=overview.read();if(!pins)throw Error('Overview not ready')

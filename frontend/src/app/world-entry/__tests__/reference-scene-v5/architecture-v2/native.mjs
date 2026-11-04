@@ -43,7 +43,7 @@ const resourceSamples=[]
 async function resourceGuard() {
  const disk=await statfs(root),freeBytes=disk.bavail*disk.bsize
  const size=async path=>{let total=0;for(const entry of await readdir(path,{withFileTypes:true})){const p=resolve(path,entry.name);if(entry.isDirectory())total+=await size(p);else if(entry.isFile())total+=(await stat(p)).size}return total}
- const outputBytes=await size(output)
+ const outputBytes=await size(resolve(output,'..'))
  const mains=execFileSync('ps',['-axo','command='],{encoding:'utf8'}).split('\n').filter(line=>line.includes('/Google Chrome.app/Contents/MacOS/Google Chrome ')&&line.includes('--headless'))
  resourceSamples.push({freeBytes,outputBytes,headlessChromeMains:mains.length})
  assert(freeBytes>=8*1024**3,'Fresh8GiBfloor');assert(outputBytes<=0.2*1024**3,'Newoutput/cachehardcap');assert(mains.length<=(browser?1:0),'Another headless capture is active')
@@ -133,8 +133,15 @@ async function rendererCases() {
    await expect.poll(async()=>(await call('state')).avatars.sprites).toBe(6)
    for(const era of ['REVENGE','PARADE','DANGER']) {
     await call('era',era);await expect.poll(async()=>(await call('state')).overview?.themeId).toBe(era)
-    const worldPixels=await call('parity'),mapPixels=await call('mapParity'),occlusion=await call('occlusion'),architectureOcclusion=await call('architectureOcclusion')
-    assert.equal(worldPixels.different,0);assert.equal(mapPixels.different,0);assert(occlusion.every(r=>r.pixels.different===0))
+    const worldPixels=await call('parity')
+    if(worldPixels.different){
+     report.rendererFailure={width,height,era,worldPixels,state:await call('state')}
+     const images=await page.evaluate(()=>({actual:document.querySelector('#world canvas').toDataURL(),expected:window.referenceExpected}))
+     for(const [key,url] of Object.entries(images))if(url)await writeFile(resolve(output,`diagnostic-${key}.png`),Buffer.from(url.split(',')[1],'base64'))
+    }
+    assert.equal(worldPixels.different,0)
+    const mapPixels=await call('mapParity'),occlusion=await call('occlusion'),architectureOcclusion=await call('architectureOcclusion')
+    assert.equal(mapPixels.different,0);assert(occlusion.every(r=>r.pixels.different===0))
     assert(architectureOcclusion.filter(r=>r.pixels).every(r=>r.pixels.different===0))
     const s=await call('state');assert.equal(s.mounts,1);assert.equal(s.canvases,1);assert.equal(s.scene.textures,2);assert.equal(s.scene.objects,35);assert.equal(s.avatars.sprites,6)
     assert(s.requests.filter(p=>p.endsWith('.png')).every(p=>p.includes('/quality-v10/ground.png')||p.includes('/architecture-v2/')))
