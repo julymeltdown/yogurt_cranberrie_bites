@@ -57655,11 +57655,48 @@
           },
           "physical_presence_acknowledged": {
             "const": true
+          },
+          "photo_permission_acknowledged": {
+            "type": "boolean",
+            "default": false,
+            "description": "Uploader permission assertion, required true for every non-null photo attachment or reconfirmation."
           }
         },
         "required": [
           "meeting",
           "physical_presence_acknowledged"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "meeting": {
+                  "type": "object",
+                  "properties": {
+                    "media_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "media_id"
+                  ]
+                }
+              },
+              "required": [
+                "meeting"
+              ]
+            },
+            "then": {
+              "properties": {
+                "photo_permission_acknowledged": {
+                  "const": true
+                }
+              },
+              "required": [
+                "photo_permission_acknowledged"
+              ]
+            }
+          }
         ]
       },
       "Domain_beacon_MeetBeacon": {
@@ -57734,6 +57771,17 @@
           },
           "expires_at": {
             "$ref": "#/components/schemas/Domain_common_UtcTimestamp"
+          },
+          "media_id": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Domain_common_Uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Optional authorized BEACON media identifier; missing/null means no photo."
           }
         },
         "required": [
@@ -57758,12 +57806,49 @@
           },
           "physical_presence_acknowledged": {
             "const": true
+          },
+          "photo_permission_acknowledged": {
+            "type": "boolean",
+            "default": false,
+            "description": "Uploader permission assertion, required true for every non-null photo attachment or reconfirmation."
           }
         },
         "required": [
           "expected_revision",
           "meeting",
           "physical_presence_acknowledged"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "meeting": {
+                  "type": "object",
+                  "properties": {
+                    "media_id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "media_id"
+                  ]
+                }
+              },
+              "required": [
+                "meeting"
+              ]
+            },
+            "then": {
+              "properties": {
+                "photo_permission_acknowledged": {
+                  "const": true
+                }
+              },
+              "required": [
+                "photo_permission_acknowledged"
+              ]
+            }
+          }
         ]
       },
       "Domain_common_AgeBounds": {
@@ -58812,7 +58897,8 @@
             "enum": [
               "POST",
               "GIVEAWAY",
-              "REPORT"
+              "REPORT",
+              "BEACON"
             ]
           },
           "content_type": {
@@ -58875,7 +58961,8 @@
             "enum": [
               "POST",
               "GIVEAWAY",
-              "REPORT"
+              "REPORT",
+              "BEACON"
             ]
           },
           "read_path": {

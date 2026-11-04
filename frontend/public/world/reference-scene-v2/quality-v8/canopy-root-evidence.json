@@ -1,0 +1,489 @@
+{
+  "status": "PASS_SOURCE_ROOT_ALIGNMENT",
+  "limits": "Actual alpha>=32 base projected to unchanged/new image boxes, within5px above authored depth; no physical-source or avatar proof.",
+  "instances": [
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_01",
+      "opaque_base_to_authored_depth_gap_px": 0.8071065989847739,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_02",
+      "opaque_base_to_authored_depth_gap_px": 0.8223350253807098,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_03",
+      "opaque_base_to_authored_depth_gap_px": 0.8375634517766457,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_04",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 385,
+      "depth_y": 382
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_05",
+      "opaque_base_to_authored_depth_gap_px": 0.680203045685289,
+      "footprint_max_y": 353.67,
+      "depth_y": 354
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_06",
+      "opaque_base_to_authored_depth_gap_px": 0.6410256410256352,
+      "footprint_max_y": 580.49,
+      "depth_y": 580
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_07",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 700,
+      "depth_y": 697
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_08",
+      "opaque_base_to_authored_depth_gap_px": 0.837563451776532,
+      "footprint_max_y": 1148.230994,
+      "depth_y": 1148
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_09",
+      "opaque_base_to_authored_depth_gap_px": 0.7539267015706628,
+      "footprint_max_y": 956.236842,
+      "depth_y": 953
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_10",
+      "opaque_base_to_authored_depth_gap_px": 0.7539267015706628,
+      "footprint_max_y": 1283.766082,
+      "depth_y": 1281
+    },
+    {
+      "era": "REVENGE",
+      "id": "rooted_tree_11",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 620,
+      "depth_y": 617
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_north_west",
+      "opaque_base_to_authored_depth_gap_px": 0.8629441624365484,
+      "footprint_max_y": 136.0,
+      "depth_y": 136
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_north_gap",
+      "opaque_base_to_authored_depth_gap_px": 0.8426395939086433,
+      "footprint_max_y": 136.0,
+      "depth_y": 136
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_east_court",
+      "opaque_base_to_authored_depth_gap_px": 0.8020304568528047,
+      "footprint_max_y": 232.0,
+      "depth_y": 232
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_east_middle",
+      "opaque_base_to_authored_depth_gap_px": 0.738461538461479,
+      "footprint_max_y": 616.0,
+      "depth_y": 616
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_east_connector",
+      "opaque_base_to_authored_depth_gap_px": 0.7487179487179674,
+      "footprint_max_y": 824.0,
+      "depth_y": 824
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_east_lower",
+      "opaque_base_to_authored_depth_gap_px": 0.8586387434554581,
+      "footprint_max_y": 1032.0,
+      "depth_y": 1032
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_east_exit",
+      "opaque_base_to_authored_depth_gap_px": 0.7817258883248996,
+      "footprint_max_y": 1224.0,
+      "depth_y": 1224
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_west_upper",
+      "opaque_base_to_authored_depth_gap_px": 0.8512820512820554,
+      "footprint_max_y": 264.0,
+      "depth_y": 264
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_west_middle",
+      "opaque_base_to_authored_depth_gap_px": 0.86294416243652,
+      "footprint_max_y": 504.0,
+      "depth_y": 504
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_west_lower",
+      "opaque_base_to_authored_depth_gap_px": 0.8923076923076678,
+      "footprint_max_y": 856.0,
+      "depth_y": 856
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_west_bottom",
+      "opaque_base_to_authored_depth_gap_px": 0.8586387434554581,
+      "footprint_max_y": 968.0,
+      "depth_y": 968
+    },
+    {
+      "era": "REVENGE",
+      "id": "grove_south_lawn",
+      "opaque_base_to_authored_depth_gap_px": 0.8923076923076678,
+      "footprint_max_y": 1192.0,
+      "depth_y": 1192
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_01",
+      "opaque_base_to_authored_depth_gap_px": 0.8071065989847739,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_02",
+      "opaque_base_to_authored_depth_gap_px": 0.8223350253807098,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_03",
+      "opaque_base_to_authored_depth_gap_px": 0.8375634517766457,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_04",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 385,
+      "depth_y": 382
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_05",
+      "opaque_base_to_authored_depth_gap_px": 0.680203045685289,
+      "footprint_max_y": 353.67,
+      "depth_y": 354
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_06",
+      "opaque_base_to_authored_depth_gap_px": 0.6410256410256352,
+      "footprint_max_y": 580.49,
+      "depth_y": 580
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_07",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 700,
+      "depth_y": 697
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_08",
+      "opaque_base_to_authored_depth_gap_px": 0.837563451776532,
+      "footprint_max_y": 1148.230994,
+      "depth_y": 1148
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_09",
+      "opaque_base_to_authored_depth_gap_px": 0.7539267015706628,
+      "footprint_max_y": 956.236842,
+      "depth_y": 953
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_10",
+      "opaque_base_to_authored_depth_gap_px": 0.7539267015706628,
+      "footprint_max_y": 1283.766082,
+      "depth_y": 1281
+    },
+    {
+      "era": "PARADE",
+      "id": "rooted_tree_11",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 620,
+      "depth_y": 617
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_north_west",
+      "opaque_base_to_authored_depth_gap_px": 0.8629441624365484,
+      "footprint_max_y": 136.0,
+      "depth_y": 136
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_north_gap",
+      "opaque_base_to_authored_depth_gap_px": 0.8426395939086433,
+      "footprint_max_y": 136.0,
+      "depth_y": 136
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_east_court",
+      "opaque_base_to_authored_depth_gap_px": 0.8020304568528047,
+      "footprint_max_y": 232.0,
+      "depth_y": 232
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_east_middle",
+      "opaque_base_to_authored_depth_gap_px": 0.738461538461479,
+      "footprint_max_y": 616.0,
+      "depth_y": 616
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_east_connector",
+      "opaque_base_to_authored_depth_gap_px": 0.7487179487179674,
+      "footprint_max_y": 824.0,
+      "depth_y": 824
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_east_lower",
+      "opaque_base_to_authored_depth_gap_px": 0.8586387434554581,
+      "footprint_max_y": 1032.0,
+      "depth_y": 1032
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_east_exit",
+      "opaque_base_to_authored_depth_gap_px": 0.7817258883248996,
+      "footprint_max_y": 1224.0,
+      "depth_y": 1224
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_west_upper",
+      "opaque_base_to_authored_depth_gap_px": 0.8512820512820554,
+      "footprint_max_y": 264.0,
+      "depth_y": 264
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_west_middle",
+      "opaque_base_to_authored_depth_gap_px": 0.86294416243652,
+      "footprint_max_y": 504.0,
+      "depth_y": 504
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_west_lower",
+      "opaque_base_to_authored_depth_gap_px": 0.8923076923076678,
+      "footprint_max_y": 856.0,
+      "depth_y": 856
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_west_bottom",
+      "opaque_base_to_authored_depth_gap_px": 0.8586387434554581,
+      "footprint_max_y": 968.0,
+      "depth_y": 968
+    },
+    {
+      "era": "PARADE",
+      "id": "grove_south_lawn",
+      "opaque_base_to_authored_depth_gap_px": 0.8923076923076678,
+      "footprint_max_y": 1192.0,
+      "depth_y": 1192
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_01",
+      "opaque_base_to_authored_depth_gap_px": 0.8071065989847739,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_02",
+      "opaque_base_to_authored_depth_gap_px": 0.8223350253807098,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_03",
+      "opaque_base_to_authored_depth_gap_px": 0.8375634517766457,
+      "footprint_max_y": 140,
+      "depth_y": 137
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_04",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 385,
+      "depth_y": 382
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_05",
+      "opaque_base_to_authored_depth_gap_px": 0.680203045685289,
+      "footprint_max_y": 353.67,
+      "depth_y": 354
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_06",
+      "opaque_base_to_authored_depth_gap_px": 0.6410256410256352,
+      "footprint_max_y": 580.49,
+      "depth_y": 580
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_07",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 700,
+      "depth_y": 697
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_08",
+      "opaque_base_to_authored_depth_gap_px": 0.837563451776532,
+      "footprint_max_y": 1148.230994,
+      "depth_y": 1148
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_09",
+      "opaque_base_to_authored_depth_gap_px": 0.7539267015706628,
+      "footprint_max_y": 956.236842,
+      "depth_y": 953
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_10",
+      "opaque_base_to_authored_depth_gap_px": 0.7539267015706628,
+      "footprint_max_y": 1283.766082,
+      "depth_y": 1281
+    },
+    {
+      "era": "DANGER",
+      "id": "rooted_tree_11",
+      "opaque_base_to_authored_depth_gap_px": 0.8307692307691923,
+      "footprint_max_y": 620,
+      "depth_y": 617
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_north_west",
+      "opaque_base_to_authored_depth_gap_px": 0.8629441624365484,
+      "footprint_max_y": 136.0,
+      "depth_y": 136
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_north_gap",
+      "opaque_base_to_authored_depth_gap_px": 0.8426395939086433,
+      "footprint_max_y": 136.0,
+      "depth_y": 136
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_east_court",
+      "opaque_base_to_authored_depth_gap_px": 0.8020304568528047,
+      "footprint_max_y": 232.0,
+      "depth_y": 232
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_east_middle",
+      "opaque_base_to_authored_depth_gap_px": 0.738461538461479,
+      "footprint_max_y": 616.0,
+      "depth_y": 616
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_east_connector",
+      "opaque_base_to_authored_depth_gap_px": 0.7487179487179674,
+      "footprint_max_y": 824.0,
+      "depth_y": 824
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_east_lower",
+      "opaque_base_to_authored_depth_gap_px": 0.8586387434554581,
+      "footprint_max_y": 1032.0,
+      "depth_y": 1032
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_east_exit",
+      "opaque_base_to_authored_depth_gap_px": 0.7817258883248996,
+      "footprint_max_y": 1224.0,
+      "depth_y": 1224
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_west_upper",
+      "opaque_base_to_authored_depth_gap_px": 0.8512820512820554,
+      "footprint_max_y": 264.0,
+      "depth_y": 264
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_west_middle",
+      "opaque_base_to_authored_depth_gap_px": 0.86294416243652,
+      "footprint_max_y": 504.0,
+      "depth_y": 504
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_west_lower",
+      "opaque_base_to_authored_depth_gap_px": 0.8923076923076678,
+      "footprint_max_y": 856.0,
+      "depth_y": 856
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_west_bottom",
+      "opaque_base_to_authored_depth_gap_px": 0.8586387434554581,
+      "footprint_max_y": 968.0,
+      "depth_y": 968
+    },
+    {
+      "era": "DANGER",
+      "id": "grove_south_lawn",
+      "opaque_base_to_authored_depth_gap_px": 0.8923076923076678,
+      "footprint_max_y": 1192.0,
+      "depth_y": 1192
+    }
+  ]
+}

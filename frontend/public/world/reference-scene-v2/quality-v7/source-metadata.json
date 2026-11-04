@@ -1,0 +1,194 @@
+{
+  "version": 7,
+  "status": "ORIGINAL_ART_NOT_REFERENCE_ACCEPTED",
+  "source_sheet": {
+    "path": "sources/venue-sheet.png",
+    "sha256": "sha256:051a063e048f50e1abd3ec143e8c74f0cfb61545f927aeb08e6eb640f5aed122",
+    "bytes": 2110439,
+    "width": 1254,
+    "height": 1254
+  },
+  "source_grid": [
+    {
+      "row": 0,
+      "y": [
+        0,
+        313
+      ],
+      "columns": [
+        0,
+        418,
+        835,
+        1254
+      ]
+    },
+    {
+      "row": 1,
+      "y": [
+        313,
+        627
+      ],
+      "columns": [
+        0,
+        418,
+        836,
+        1254
+      ]
+    },
+    {
+      "row": 2,
+      "y": [
+        627,
+        940
+      ],
+      "columns": [
+        0,
+        418,
+        830,
+        1254
+      ]
+    },
+    {
+      "row": 3,
+      "y": [
+        940,
+        1254
+      ],
+      "columns": [
+        0,
+        418,
+        833,
+        1254
+      ]
+    }
+  ],
+  "venue_frames": [
+    {
+      "era": "revenge",
+      "frame": "meeting_pavilion",
+      "rect": {
+        "x": 28,
+        "y": 73,
+        "width": 382,
+        "height": 217
+      }
+    },
+    {
+      "era": "parade",
+      "frame": "meeting_pavilion",
+      "rect": {
+        "x": 425,
+        "y": 73,
+        "width": 383,
+        "height": 217
+      }
+    },
+    {
+      "era": "danger",
+      "frame": "meeting_pavilion",
+      "rect": {
+        "x": 835,
+        "y": 73,
+        "width": 386,
+        "height": 217
+      }
+    },
+    {
+      "era": "revenge",
+      "frame": "giveaway_pavilion",
+      "rect": {
+        "x": 19,
+        "y": 363,
+        "width": 396,
+        "height": 238
+      }
+    },
+    {
+      "era": "parade",
+      "frame": "giveaway_pavilion",
+      "rect": {
+        "x": 427,
+        "y": 363,
+        "width": 397,
+        "height": 238
+      }
+    },
+    {
+      "era": "danger",
+      "frame": "giveaway_pavilion",
+      "rect": {
+        "x": 836,
+        "y": 363,
+        "width": 398,
+        "height": 238
+      }
+    },
+    {
+      "era": "revenge",
+      "frame": "north_hall",
+      "rect": {
+        "x": 14,
+        "y": 676,
+        "width": 404,
+        "height": 210
+      }
+    },
+    {
+      "era": "parade",
+      "frame": "north_hall",
+      "rect": {
+        "x": 423,
+        "y": 677,
+        "width": 400,
+        "height": 209
+      }
+    },
+    {
+      "era": "danger",
+      "frame": "north_hall",
+      "rect": {
+        "x": 830,
+        "y": 676,
+        "width": 405,
+        "height": 210
+      }
+    },
+    {
+      "era": "revenge",
+      "frame": "west_hall",
+      "rect": {
+        "x": 12,
+        "y": 961,
+        "width": 402,
+        "height": 242
+      }
+    },
+    {
+      "era": "parade",
+      "frame": "west_hall",
+      "rect": {
+        "x": 423,
+        "y": 961,
+        "width": 400,
+        "height": 243
+      }
+    },
+    {
+      "era": "danger",
+      "frame": "west_hall",
+      "rect": {
+        "x": 833,
+        "y": 961,
+        "width": 402,
+        "height": 243
+      }
+    }
+  ],
+  "prompt": "sources/prompt.md",
+  "base_manifest": {
+    "path": "../quality-v6/manifest.json",
+    "sha256": "sha256:a78fbd045e9123e18ffa01efc669dfef9965bbeccb1cd378b886b9b975247aed"
+  },
+  "geometry_hash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+  "unchanged": "v6 ground,12 other atlas frames,physical coordinates/footprints/collision/spawns/interactions/cameras/MAP representations/labels/places."
+}

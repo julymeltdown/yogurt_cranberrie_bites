@@ -3,7 +3,7 @@ use super::{
     contract::*,
     network::{Owner, OwnerClients},
     proto,
-    registry::ScopeRegistry,
+    registry::{ScopeRegistry, UnexposedAcquisition},
     wire,
 };
 use chrono::{DateTime, Utc};
@@ -52,6 +52,7 @@ impl CanonicalOwnerFence {
             .fill(&mut root_secret)
             .map_err(|_| Status::unavailable("Authority entropy unavailable"))?;
         let producer = self.registry.reserve(&binding, &root_secret)?;
+        let mut cleanup = UnexposedAcquisition::new(self.registry.clone(), producer.clone());
         let stop = binding.deadline().stop();
         let result = tokio::time::timeout_at(
             stop,
@@ -61,22 +62,11 @@ impl CanonicalOwnerFence {
         .map_err(|_| Status::deadline_exceeded("Canonical acquisition deadline"))
         .and_then(|r| r);
         if result.is_err() {
-            // No scope was exposed and effects cannot have started. Persist that
-            // proof so owner-local recovery can settle even a lost Acquire reply.
-            self.registry.seal(&producer)?;
-            let lifecycle = self.registry.lifecycle.clone();
-            let scope = producer.clone();
-            let cleanup = async {
-                lifecycle.seal(&scope).await?;
-                lifecycle.finish_root_work(&scope).await
-            };
-            if tokio::time::timeout(Duration::from_secs(2), cleanup)
-                .await
-                .is_ok_and(|r| r.is_ok())
-            {
-                self.registry.retire(&producer)?;
-            }
+            cleanup.settle().await;
         }
+        // No await separates successful construction from disarming: a scope
+        // capable of work cannot be mistaken for an unexposed cancellation.
+        cleanup.disarm();
         result
     }
     async fn acquire_registered(
@@ -143,12 +133,15 @@ impl CanonicalOwnerFence {
             auth_completion: auth.completion_secret,
             friend_completion: friend.completion_secret,
             serial: tokio::sync::Mutex::new(()),
+            settlement: tokio::sync::Mutex::new(()),
             state: Mutex::new(State {
                 auth: auth_states,
                 friend: friend_states,
                 subjects: BTreeSet::new(),
                 children: Vec::new(),
                 completed_children: 0,
+                child_intents: BTreeMap::new(),
+                attached_children: BTreeSet::new(),
                 registered: Vec::new(),
                 serialized: false,
                 sealed: false,
@@ -163,8 +156,10 @@ struct State {
     auth: BTreeMap<Uuid, proto::SubjectState>,
     friend: BTreeMap<Uuid, proto::SubjectState>,
     subjects: BTreeSet<Uuid>,
-    children: Vec<Arc<dyn HeldChildGuard>>,
+    children: Vec<(super::ChildRecoveryReference, Arc<dyn HeldChildGuard>)>,
     completed_children: usize,
+    child_intents: BTreeMap<(u8, Uuid), super::ChildRecoveryReference>,
+    attached_children: BTreeSet<(u8, Uuid)>,
     registered: Vec<ProducerTransaction>,
     serialized: bool,
     sealed: bool,
@@ -182,6 +177,7 @@ pub struct OwnerGuardScope {
     auth_completion: Vec<u8>,
     friend_completion: Vec<u8>,
     serial: tokio::sync::Mutex<()>,
+    settlement: tokio::sync::Mutex<()>,
     state: Mutex<State>,
 }
 impl OwnerGuardScope {
@@ -372,7 +368,18 @@ impl OwnerGuardScope {
                     subject_allowed: subject.active && friend.active,
                     inherited_block: friend.actor_blocks_subject || friend.subject_blocks_actor,
                 },
-                state.children.clone(),
+                state
+                    .children
+                    .iter()
+                    .filter(|(reference, _)| {
+                        reference.query().subject == query.subject.uuid()
+                            || (matches!(
+                                reference,
+                                super::ChildRecoveryReference::LocalPublic { .. }
+                            ) && reference.query().subject == self.binding.actor())
+                    })
+                    .map(|(_, child)| child.clone())
+                    .collect::<Vec<_>>(),
             )
         };
         // Only check existing children. Acquiring a local subject fence here
@@ -387,28 +394,102 @@ impl OwnerGuardScope {
     }
 
     pub async fn check_subject(&self, query: PolicyQuery) -> Result<(), Status> {
-        let fresh = self.fresh(query, Utc::now()).await?;
-        if !fresh.actor_allowed
-            || (!matches!(query.field, Field::SafetySelf | Field::SafetyInteraction)
-                && (!fresh.subject_allowed || fresh.inherited_block))
-        {
-            return Err(Status::permission_denied("Subject is not eligible"));
+        // NotFound is reserved at this API boundary for an actual subject-only
+        // denial. An unknown owner view or child handle must fail the whole read,
+        // never become a skippable author or a success-shaped empty page.
+        let fresh = self.fresh(query, Utc::now()).await.map_err(|status| {
+            if status.code() == tonic::Code::NotFound {
+                Status::unavailable("Owner or child authority unresolved")
+            } else {
+                status
+            }
+        })?;
+        if !fresh.actor_allowed {
+            return Err(Status::permission_denied("Actor is not eligible"));
         }
+        if !matches!(query.field, Field::SafetySelf | Field::SafetyInteraction)
+            && (!fresh.subject_allowed || fresh.inherited_block)
+        {
+            return Err(Status::not_found("Subject is unavailable"));
+        }
+        Ok(())
+    }
+    pub async fn register_child_intent(
+        &self,
+        reference: &super::ChildRecoveryReference,
+    ) -> Result<(), Status> {
+        self.binding.check()?;
+        reference.validate_for(&self.binding)?;
+        if let super::ChildRecoveryReference::LocalPublic { native, .. } = reference {
+            if native.producer_instance_id.to_string() != self.producer.instance_id {
+                return Err(Status::permission_denied("Child producer mismatch"));
+            }
+        }
+        let _serial = tokio::time::timeout_at(self.binding.deadline().stop(), self.serial.lock())
+            .await
+            .map_err(|_| Status::deadline_exceeded("Child intent admission deadline"))?;
+        let key = reference.key()?;
+        {
+            let state = self.state.lock().map_err(unavailable)?;
+            if state.sealed {
+                return Err(Status::permission_denied("Root scope sealed"));
+            }
+            if !state.auth.contains_key(&reference.query().subject) {
+                return Err(Status::permission_denied("Child subject not enrolled"));
+            }
+            if let Some(old) = state.child_intents.get(&key) {
+                return if old == reference {
+                    Ok(())
+                } else {
+                    Err(Status::permission_denied("Child intent rebound"))
+                };
+            }
+            if state.child_intents.len() >= 202 {
+                return Err(Status::resource_exhausted("Child intent capacity"));
+            }
+        }
+        let registry = self
+            .registry
+            .upgrade()
+            .ok_or_else(|| Status::unavailable("Root registry unavailable"))?;
+        tokio::time::timeout_at(
+            self.binding.deadline().stop(),
+            registry
+                .lifecycle
+                .register_child_intent(&self.producer, reference),
+        )
+        .await
+        .map_err(|_| Status::deadline_exceeded("Child intent persistence deadline"))??;
+        self.binding.check()?;
+        self.state
+            .lock()
+            .map_err(unavailable)?
+            .child_intents
+            .insert(key, reference.clone());
         Ok(())
     }
     pub async fn retain_child(&self, child: Arc<dyn HeldChildGuard>) -> Result<(), Status> {
         self.binding.check()?;
+        let reference = child.recovery_reference()?;
+        reference.validate_for(&self.binding)?;
+        let key = reference.key()?;
         let mut state = self.state.lock().map_err(unavailable)?;
         if state.sealed {
             return Err(Status::permission_denied("Root scope sealed"));
         }
-        if state.children.iter().any(|old| Arc::ptr_eq(old, &child)) {
+        if state.child_intents.get(&key) != Some(&reference) {
+            return Err(Status::permission_denied(
+                "Child has no exact pre-dispatch intent",
+            ));
+        }
+        if state.attached_children.contains(&key) {
             return Ok(());
         }
         if state.children.len() >= 202 {
             return Err(Status::resource_exhausted("Child guard capacity"));
         }
-        state.children.push(child);
+        state.children.push((reference, child));
+        state.attached_children.insert(key);
         Ok(())
     }
     pub async fn register_transaction_in(
@@ -449,16 +530,27 @@ impl OwnerGuardScope {
         {
             return Err(Status::permission_denied("Transaction producer mismatch"));
         }
+        let wire = transaction.wire()?;
         {
-            if self.state.lock().map_err(unavailable)?.sealed {
+            let state = self.state.lock().map_err(unavailable)?;
+            if state.sealed {
                 return Err(Status::permission_denied("Root scope sealed"));
+            }
+            // Cache only an EXACT full identity after both owner acknowledgements
+            // and durable confirmation. A partial/lost Track is retried through
+            // the owners' idempotent registration, never treated as a grant.
+            if state
+                .registered
+                .iter()
+                .any(|known| known.wire().is_ok_and(|registered| registered == wire))
+            {
+                return Ok(());
             }
         }
         let registry = self
             .registry
             .upgrade()
             .ok_or_else(|| Status::unavailable("Root registry unavailable"))?;
-        let wire = transaction.wire()?;
         registry
             .lifecycle
             .register_transaction(&self.producer, &wire)
@@ -541,7 +633,10 @@ impl OwnerGuardScope {
             Utc::now().timestamp_micros() + 2_000_000,
             Duration::from_secs(2),
         )?;
-        let _serial = tokio::time::timeout_at(budget.stop(), self.serial.lock())
+        let _settlement = tokio::time::timeout_at(budget.stop(), self.settlement.lock())
+            .await
+            .map_err(|_| Status::unavailable("Scope settlement already running"))?;
+        let serial = tokio::time::timeout_at(budget.stop(), self.serial.lock())
             .await
             .map_err(|_| Status::unavailable("Scope settlement busy"))?;
         {
@@ -559,6 +654,9 @@ impl OwnerGuardScope {
             .upgrade()
             .ok_or_else(|| Status::unavailable("Root registry unavailable"))?;
         let inflight = registry.seal(&self.producer)?;
+        // A previously admitted callback may still need the admission mutex to
+        // observe sealed state and return. Never hold it while draining permits.
+        drop(serial);
         let settlement = async {
             registry.lifecycle.seal(&self.producer).await?;
             while inflight.load(Ordering::Acquire) != 0 {
@@ -589,10 +687,18 @@ impl OwnerGuardScope {
                 let state = self.state.lock().map_err(unavailable)?;
                 (state.children.clone(), state.completed_children)
             };
-            for child in children.into_iter().skip(completed) {
+            for (reference, child) in children.into_iter().skip(completed) {
                 child.complete_settled().await?;
+                registry
+                    .lifecycle
+                    .record_child_completed(&self.producer, &reference)
+                    .await?;
                 self.state.lock().map_err(unavailable)?.completed_children += 1;
             }
+            registry
+                .lifecycle
+                .settle_child_intents(&self.producer)
+                .await?;
             self.state.lock().map_err(unavailable)?.complete = true;
             registry.retire(&self.producer)?;
             Ok(())

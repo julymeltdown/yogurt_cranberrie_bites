@@ -43,6 +43,39 @@ async fn main() -> anyhow::Result<()> {
             pool.clone(),
         );
     let public_profile_server = profile_service::adapters::r#in::grpc::concert_public_profile::PublicProfileServer::from_pool(pool.clone());
+    let production = platform::config::runtime_mode_is_production(
+        &std::env::var("PROFILE_RUNTIME_MODE").unwrap_or_else(|_| "production".into()),
+        "PROFILE_RUNTIME_MODE",
+    )?;
+    let self_profile =
+        profile_service::concert_self_profile::server::SelfProfileService::configured(
+            pool.clone(),
+            &config.actor_delegation,
+            production,
+            config.tls_material.as_ref(),
+        )?;
+    let self_recovery = self_profile.as_ref().map(|(service, _)| service.clone());
+    let self_profile_servers = self_profile
+        .map(|(service, verifier)| {
+            Ok::<_, anyhow::Error>((
+                platform::grpc_method_policy::guard(
+                    &profile_service::concert_self_profile::server::SELF_POLICY,
+                    service.clone().server(),
+                    config.caller_registry.clone(),
+                    verifier,
+                )?,
+                platform::grpc_method_policy::guard_without_delegation(
+                    &profile_service::concert_self_profile::settlement::SETTLEMENT_POLICY,
+                    service.settlement_server(),
+                    config.caller_registry.clone(),
+                )?,
+            ))
+        })
+        .transpose()?;
+    let (self_profile_server, self_settlement_server) = match self_profile_servers {
+        Some((profile, settlement)) => (Some(profile), Some(settlement)),
+        None => (None, None),
+    };
     let state = Arc::new(build_state(&config, pool).await?);
     let world_profile_verifier = platform::actor_delegation::relationship_read::RelationshipReadVerifier::configured_from_env(
         platform::grpc_auth::Workload::Profile, &config.actor_delegation,
@@ -115,6 +148,8 @@ async fn main() -> anyhow::Result<()> {
                 .add_service(readiness.grpc_service(config.caller_registry.clone())?)
                 .add_optional_service(world_profile)
                 .add_optional_service(public_profile)
+                .add_optional_service(self_profile_server)
+                .add_optional_service(self_settlement_server)
                 .add_service(platform::grpc_method_policy::guard(
                     &profile_service::adapters::r#in::grpc::method_policy::PROFILE_METHOD_POLICY,
                     ProfileServiceServer::new(server),
@@ -158,7 +193,16 @@ async fn main() -> anyhow::Result<()> {
                 platform::shutdown::idle().await
             }
         };
-        tokio::try_join!(http, grpc, retention, mutation_receipt_retention)?;
+        let self_profile_recovery = async move {
+            if let Some(service)=self_recovery {
+                platform::shutdown::periodic(
+                    "profile-self-recovery",Duration::from_secs(5),||service.reconcile_pending(),
+                ).await
+            } else {
+                platform::shutdown::idle().await
+            }
+        };
+        tokio::try_join!(http, grpc, retention, mutation_receipt_retention,self_profile_recovery)?;
         Ok(())
     })
     .await;

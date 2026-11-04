@@ -3,10 +3,10 @@
 ## Current checkpoint
 
 The [current progress reconciliation](progress.md#current-task-accounting) records
-22 task-criteria outcomes: 12 recorded acceptance dispositions plus 10 additional
+29 task-criteria outcomes: 12 recorded acceptance dispositions plus 17 additional
 task-local SATISFIED dispositions. The latest owner-declared original-task closures
-are FE08 and BE25. Another 75 original tasks
-have partial or unreconciled implementation evidence, 10 statuses remain
+are FE14, FE19, QA01, QA02 and FE09. Another 69 original tasks
+have partial or unreconciled implementation evidence, 9 statuses remain
 unreconciled, and all 5 IN gates remain open. The [112-row register](task-progress-2026-11-04.json)
 states the evidence and limitations. Historical 11/112 statements later in this
 document are not current implementation progress, and no effort-weighted

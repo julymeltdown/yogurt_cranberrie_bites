@@ -1,55 +1,397 @@
-# Canonical Concert SELF Profile prerequisite
+# Canonical Concert self Profile producer
 
-Status: IN_PROGRESS. This checkpoint publishes only the additive owning Profile
-migration and source-bound SQL qualification tools. It does not enable the new
-SELF RPC service or accept the full C03 participant flow. Its source task is
-BE-PROFILE-SELF; developer checkout `codex/mcr-be-profile-self` preserves the
-continuing implementation separately. Existing public, World and legacy Profile
-producers are preserved. The public Profile owner retains all four existing
-registration files and owns its separate migration 0009.
+Status: IN_PROGRESS. Base: `8f89d1905a86143d34ff77d2951fc60651ab2497`.
+BE-PROFILE-SELF owns only newly assigned Profile SELF files and the explicitly
+allocated new migration `0008_concert_self_profile.sql`. Public Profile retains
+all four existing registration files; ParticipantLive owns client/orchestration;
+canonical authority owns actual Auth/Friend guard and settlement contracts.
 
-Migration 0008 adds internal epoch/revision tracking of canonical nickname/bio,
-including retained legacy updates and deletion changes. Username/avatar remain
-unchanged. Protected writes use a durable operation identity and same-transaction
-content/receipt/audit with a prepared transaction; a proposed result is not yet
-committed. Separate read references retain actual SQL identity without a dummy
-write version or receipt. Recovery observations are scheduling hints only; they
-never prove a native outcome or grant mutation authority.
+The canonical stored content remains `profiles.nickname` and `profiles.bio`.
+Display names are 1..40 Unicode scalars, nonblank and control-free; bio is at most
+160 scalars and control-free. Omitted bio preserves it; explicit null clears it;
+empty stored bio projects as absent. Username, avatar, counts and privacy do not
+belong to this producer. Private self content is not a public profile DTO.
 
-The schema SQL controller applied all eight exact current Profile migration SQL
-files to marker/inode-owned PostgreSQL 16.14. Three frozen historical storage
-cases passed: legacy versions/tombstones, invisible prepared effects with blocked
-racing updates, and controlled-restart commit/abort with exact receipts. A new
-native read-reference case held the actual full XID live, independently committed
-its read reference before positive SELECT, proved ABORTED after rollback, retained
-the reference and created no write receipt. Prepared effects survived restart.
-Cleanup passed. No mutable Cargo target was accessed.
+The dedicated `profile.self.v1.ConcertSelfProfileService` takes both actual owner
+GuardView capabilities and exact GuardBinding. No bounded Auth observation is
+converted into mutation authority. PrepareUpdate consumes exact signed PATCH
+bytes and derives selected content fields. `operation_id` is the existing request
+UUID; no browser idempotency header is added. Profile epoch/revision is internal
+and distinct from the C03 event participant `expected_revision`.
 
-Amended 0008 SHA-384:
+Cross-store writes require durable preparation, participant CAS and an actual
+coordinator decision. A proposed value is not committed content. Unknown native
+transaction outcomes retain exclusion and prepared effects; deadline expiry is
+not permission to release them or guess rollback. ReadOperation and Reconcile
+cannot originate another mutation. Full coordinator/guard interface and native
+qualification are in progress; nothing here certifies a live PATCH flow yet.
+
+Source authored for this task; no rendering or dependency upgrade. Production registration compiles and actual owner read RPC checks pass below.
+The native multi-store Prepare/decision flow remains NOT_RUN.
+
+## Guarded RPC source checkpoint
+
+The new handler checks the dedicated Concert workload and verified signed actor,
+the original verified deadline, exact SELF subject, both actual owner views,
+Auth live session/active actor/positive security revision, and Friend active actor
+without either malformed self-block flag. Profile privacy remains valid for SELF.
+The binding digest delegates to the shared published `owner_binding` helper.
+Both actual owner Track calls finish before any protected content read or write.
+
+Positive reads retain a separate durable read reference and actual SQL identity,
+then roll back before returning content. They create no dummy write revision or
+receipt. PrepareUpdate records an immutable operation identity before Track,
+derives only selected fields from the exact body, checks the internal Profile
+version, and prepares content, receipt and audit in the same actual transaction.
+
+Reconcile queries the configured Concert decision service using the dedicated
+Profile decision signing key. The response must echo the exact stored binding,
+GID and effect digest. Unknown replies retain prepared effects. Serialized
+settlement rechecks native PG state; committed status additionally requires the
+exact effect/command receipt. The background recovery method discovers existing
+unresolved operations with fair scheduling hints; those hints never prove a
+transaction outcome. Auth/Friend settlement queries use the same native proof.
+Profile ResolveScope always reports unfinished because Concert owns HTTP delivery.
+
+Runtime configuration is additive: missing `CONCERT_PROFILE_SELF_VERIFYING_KEYS`
+disables SELF registration. If present, it must be valid and requires explicit
+`PROFILE_SELF_AUTH_GRPC_ENDPOINT`, `PROFILE_SELF_FRIEND_GRPC_ENDPOINT`,
+`PROFILE_SELF_CONCERT_GRPC_ENDPOINT`, and
+`PROFILE_PARTICIPANT_DECISION_SIGNING_SEED`. No endpoint or decision seed is
+guessed. The shared `concert_self_profile.rs` key helper was adapted from the
+audited platform `concert_read.rs` at base `30be9c9c`, with fixed Profile audience,
+Concert issuer and dedicated base64 key variables. It rejects Gateway trust and
+Gateway/Concert/Profile parity keys. Its exact new-file ownership was transferred
+by canonical authority; the parent module export and method policy remain theirs.
+
+The new RPC modules compile; actual Auth/Friend read/Track/abort RPC
+qualification passes below. Concert Prepare/decision qualification is NOT_RUN. Amended 0008 has SQL and current-binary qualification below. Neither
+storage qualification certifies a real owner/coordinator RPC flow.
+
+## Amended schema SQL qualification
+
+`concert_self_profile_schema.py` applies the exact current migration SQL to its
+own marker/inode-checked PostgreSQL 16.14 instance. The first attempt applied all
+DDL then refused a missing exact test match caused by a doubled prefix; its
+cleanup passed. After fixing that runner filter, `schema-report-2.json` passed
+three historical frozen storage tests plus a direct native read-reference test.
+The read connection's actual full XID is live while an independent reference
+commits; positive content is read afterward, rollback proves ABORTED, the control
+reference remains and no write receipt exists. Prepared write effects survive a
+controlled restart; exact native commit/abort and receipt behavior pass. Cleanup
+passed. Amended migration 0008 SHA-384:
 `302533481e533b98362d2452db7f91f85eb6d08fe13a8d307877de05de57588e6358547f577f3d910418d48f7f61afa3`.
-Historical helper SHA-256:
-`1564b5f50ab484ba14dfd36c4af9aba798e460570904aa942e415ef2497bdf0a`.
-The helper is selected through its successful Cargo JSON and frozen-artifact
-receipt, not a mutable target path. The first schema attempt applied the DDL but
-refused a missing exact test match caused by a doubled filter prefix; cleanup
-passed. The corrected second run exited 0.
 
-Command, from the developer checkout:
+This is source SQL qualification using the private historical storage test binary
+SHA-256 `1564b5f50ab484ba14dfd36c4af9aba798e460570904aa942e415ef2497bdf0a`,
+selected through its exact Cargo JSON/frozen-artifact receipt. New Rust RPCs and
+the amended binary migration CLI remain NOT_RUN. No build target was accessed.
+Receipt: `/private/tmp/mcr-profile-self-8f89d190-20261104/schema-report-2.json`.
 
-```sh
-PYTHONDONTWRITEBYTECODE=1 python3 backend/scripts/mcr/concert_self_profile_schema.py \
-  --cargo-json /private/tmp/mcr-profile-self-8f89d190-20261104/build-combined-1.jsonl \
-  --frozen-artifacts /private/tmp/mcr-profile-self-8f89d190-20261104/frozen-artifacts-1.json \
-  --pg-bin /opt/homebrew/opt/postgresql@16/bin \
-  --report /private/tmp/mcr-profile-self-8f89d190-20261104/schema-report-2.json
-```
+## Qualified storage prerequisite
 
-The private evidence directory preserves both attempts, source migration checksums,
-frozen binaries, original Rust 1.88 locked/offline build receipts and cleanup
-receipts. This schema check intentionally uses synthetic local binding metadata;
-it proves SQL mechanics only. The amended migration binary CLI, new Rust RPCs,
-actual Auth/Friend guard admission, actual Concert decision recovery and joined
-multi-store/HTTP flow remain NOT_RUN. No fake guard grants, guessed coordinator
-decisions, or timeout-derived aborts are acceptance evidence. New source files are
-authored for this task; no source-pack files or retained dependency resolutions
-were changed in this checkpoint.
+Source checkpoints `30b9b71a716ab952c3edac394f613f50914facba`,
+`0fdcc27fee15125d0d0e0b7a104e59030198dd49`, and
+`c43345f5` add the dedicated draft wire, content/parser, native identity,
+version/operation/receipt schema and storage primitives. These do not enable a
+runtime SELF service. Only the exact granted one-line `sha2.workspace = true`
+and matching Profile lock dependency reference were added; retained sha2 0.10.9
+resolution/checksum stayed unchanged.
+
+First compile refused the missing lock bookkeeping under `--locked`; its receipt
+is preserved. After the precise shared-entry grant, both commands exited 0 using
+Rust 1.88.0, locked/offline, one job, dev/test debug 0 and incremental disabled:
+
+- `cargo +1.88.0 test --locked --offline -j1 -p profile-service --test concert_self_profile --no-run --message-format=json`
+- `cargo +1.88.0 build --locked --offline -j1 -p profile-service --bin profile-service --message-format=json`
+
+The frozen test binary passed six model/parser/fingerprint tests. The isolated
+`concert_self_profile_native.py` controller passed three actual PostgreSQL 16.14
+cases: legacy content writes advance the immutable epoch/revision and tombstones
+refuse late writes; prepared writes remain invisible and exclude racing legacy
+writes; prepared effects survive a controlled restart and fixture commit/abort
+produce exactly the corresponding native status and committed receipt.
+All eight migration checksums, empty-store refusal, migrate/verify/reapply and
+post-restart verification passed. The marker/inode-owned fixture was removed.
+These tests intentionally use synthetic local scope metadata to qualify SQL
+mechanics. They do not claim actual Auth/Friend guard admission or an authoritative
+cross-store decision. Those production RPC checks remain NOT_RUN.
+
+Evidence: `/private/tmp/mcr-profile-self-8f89d190-20261104/` includes original
+Cargo JSON/commands, private frozen binaries and receipts, source hashes,
+`deterministic-1.log`, `native-report-1.json` and `target-release-2.json`.
+MEDIA was released after executable/source freeze and before native execution,
+under the explicit slice grant; PostgreSQL ran only from private binary copies.
+
+The schema-only prerequisite was published independently to `master` as
+`cc97f510703ca360b167ab448cf19a7848814dec`; fetched remote ancestry was verified.
+It contains only 0008, the two owned native/schema controllers and their scope
+report. Continuing RPC implementation is preserved on this development branch;
+publishing the prerequisite did not complete BE-PROFILE-SELF.
+
+## Current qualification inputs and remaining gates
+
+The developer checkout has consumed the published SDK/key/policy checkpoint
+`888cb6bd30846d891286b92a9a66e921e8d1ce78` and the published decision IDL
+`43cb9e9f`. Public Profile's exact three-file registration patch `d88751fd` was
+cherry-picked as `e2ca87e09924065a1adc3be9893c639cde5a6705`, without transferring
+or manually editing its existing-file ownership. It adds the generated contracts,
+optional dedicated SELF and settlement services, and supervised bounded recovery.
+The public child protocol uses its own Complete method and does not register a
+second ProducerSettlementService. Missing SELF keys preserve that separate path.
+
+Read admission permits only exact C03 triples: getConcertParticipant/GET/me,
+updateConcertParticipant/PATCH/me, and setConcertAvatar/PUT/me/avatar. Avatar
+admission is read-only here; only update/PATCH/me can prepare Profile writes.
+Both signatures and actual owner capabilities remain necessary. The new receipt
+INSERT also checks the actual registered full XID, cluster/database, PID/start,
+instance, command/effect digest and current Profile version on the same database
+connection. A different connection must not forge the receipt. The expanded
+native test covers that refusal and passed in the current qualification below.
+
+Remaining BE-PROFILE-SELF gates belong to this developer: qualify the actual
+Auth/Friend Check/Track and Concert decision/settlement RPC path with their real
+owners. Owner16e1 supplies qualified Auth/Friend stores and artifacts; owner209
+supplies the actual participant coordinator/decision endpoint. These are direct
+implementation interfaces, not king/SL review gates. The original goal stays
+active through that validation, documentation and non-force publication.
+
+## Current compiled component
+
+Source `5c921e28872ce3d24f7d930f63fdce9572b66ab3` compiled with Rust 1.88,
+locked/offline, one job, debug 0 and incremental disabled. The final Profile test
+target and production binary builds exited 0 with no warnings. Eight deterministic
+tests passed. Three current native PostgreSQL 16.14 tests passed, including the
+new durable read-reference rollback, a foreign connection refusing a receipt
+even when its visible Profile version matches, actual prepared commit/abort,
+legacy-write exclusion, restart persistence and cleanup. The current binary's
+empty-store refusal, migrate, verify, reapply and post-restart verify all passed
+against every exact source migration checksum.
+
+The first attempt reused stale generated outputs. Only the Profile/contracts-build
+package caches were refreshed (75 files, 72.1 MiB); other packages were retained.
+Subsequent compiler findings fixed Prost's generated `profile.self_.v1.rs`
+filename and signed-channel/interceptor composition. The wire package/service is
+still `profile.self.v1`. Production registration remained the exact owner205
+patch. Test-only isolated module embedding omits startup entry points by design.
+
+Evidence: `/private/tmp/mcr-profile-self-906e69ab-20261104/` contains failed and
+successful commands/Cargo JSON, 1490 compile-input hashes, source-bound frozen
+binaries, eight-test log, `native-report-2.json` and `target-release-3.json`.
+The allocated BACKEND target was released before native PG execution; no later
+target access occurred. Frozen test SHA-256:
+`86505e9073e14c08f65f95bf84f58158c692ebe03f62366996cea383a16992d7`;
+production Profile SHA-256:
+`e7483ca02811ee835a0c63cc83c2dca343a812f67dab937f5cc9951cc7004ec8`.
+
+The external actual-owner read/Track/abort probe passed as recorded below.
+The actual Concert decision endpoint is supplied separately by owner209.
+ReadOperation/Reconcile may inspect only their exact existing persisted operation
+under a fresh signed query; original binding expiry is not renewed into mutation
+authority, and no fresh owner-view grant or caller-selected decision is invented.
+
+## Actual owner read RPC qualification
+
+`rpc-report-2.json` is PASS using the current frozen Profile binaries and actual
+Auth/Friend production binaries from owner publication
+`dc70d62049d8e8430c88b9ebfc6f071740020538` (qualified source `d4c604f0`).
+The owner metadata and exact source/binary hashes were checked before launch.
+All three production mains used a new isolated PostgreSQL 16.14 fixture, fresh
+private mTLS identities, explicit endpoints and separate standard-Base64 signing
+keys. All three migrate/verify pairs exited 0. The exact external read test
+exited 0 with one passing test: actual signed owner Acquire, both owner Check/Track,
+Profile protected read, persisted native read identity, and actual Auth workload
+querying Profile settlement with native ABORTED proof. Wrong subject and wrong
+Friend credential were refused without another read reference. Exactly one read
+reference and no write receipt remained.
+
+The unavailable private Concert root endpoint was intentional for this bounded
+read component. After original expiry, both actual owner guards remained prepared;
+expiry did not fabricate root completion or grant release. Root scope release,
+actual Concert decision and Gateway HTTP remain NOT_RUN. All three service mains
+shut down normally with exit 0, no forced stops; owned PG cleanup passed.
+The first runner failed before service launch because system LibreSSL could not
+derive an Ed25519 public key. The controller now uses installed OpenSSL 3 for that
+fixture step, with no package install. Both attempts and cleanup are preserved.
+
+Evidence: `/private/tmp/mcr-profile-self-906e69ab-20261104/rpc-report-2.json`,
+controller SHA-256 `9ce31ae9c2fcbad5298013af9a50a5a1243c2b820c2b8715d78da13c81954a4b`,
+owner metadata SHA-256 `dadd2b3ddab4c19e2eb165def6c2e8e8d9cc079ee3c8fa14b7bdc3aa9beb4b8b`.
+No mutable Cargo target was used for this RPC run. The full assigned goal remains
+active through actual Prepare/Concert decision/reconcile validation and delivery.
+
+## Published SELF contract prerequisite
+
+The dedicated `backend/proto/profile/v1/concert_self_profile.proto` is published
+independently to unblock actual Concert client generation. The exact contract
+compiled in Profile source `5c921e28872ce3d24f7d930f63fdce9572b66ab3`, with the
+production main and test target exiting 0 under Rust 1.88 locked/offline.
+Its guarded Read endpoint also passed the actual Auth/Friend/Profile production
+mTLS read/Track/native-abort probe. Receipt:
+`/private/tmp/mcr-profile-self-906e69ab-20261104/rpc-report-2.json`.
+The protobuf package is `profile.self.v1`; Prost generates `profile.self_.v1.rs`
+because `self` is a Rust keyword.
+
+This two-path prerequisite contains the IDL and this report only. It does not
+enable the SELF runtime, publish the continuing implementation, or certify
+Prepare/Concert decision/reconcile and HTTP delivery. Those remain IN_PROGRESS
+in the assigned developer chat. The earlier schema prerequisite is `cc97f510`.
+
+## Qualified runtime source publication boundary
+
+The continuing guarded producer is published as a qualified component to unblock
+the participant developer's actual joined harness. Status remains IN_PROGRESS;
+Prepare against real owners, actual Concert Journal commit/abort reconciliation,
+and Gateway HTTP delivery are still open. ParticipantLive owner209 owns the joined
+driver using its actual ParticipantProfileJournal, BoundParticipantAuthority and
+typed Profile client. A decision-reader fixture alone cannot accept that flow.
+
+Publication base is fetched master `b222805c`; the preserved schema prerequisite
+is `cc97f510`. The new delta owns the `src/concert_self_profile/` tree, its exact
+test entry, native/RPC controllers and this report. The only shared edits are the
+explicitly granted Profile `sha2` manifest/lock entry and the unchanged owner205
+three-file registration handoff `d88751fd` (local cherry-pick `e2ca87e0`). The new
+IDL was published independently in `b222805c`. No application implementation was
+imported across services or from the frontend, and no source archive was changed.
+The exact changed-path list and compiled input comparison are retained in
+`/private/tmp/mcr-profile-self-906e69ab-20261104/prepublish-1.json`.
+
+After incorporating peer history, every Profile source/manifest/lock input and
+its generated Profile/authority/participant contract bytes still matched the
+qualified build. The shared platform delta changes two test fixture operation
+labels only; the unrelated product-delivery IDL is not generated by Profile.
+No mutable target was used or claimed for another build. The planning check exited
+0 with original archive checksums intact; its first sparse-checkout invocation
+refused missing planning files, then passed after materializing those tracked
+inputs. The planning result certifies no application runtime gate.
+
+The runtime component was delivered as `4e9c57e3838a8f9b3de30e0962e4d2ff01133937`
+and fetched remote ancestry was verified. Exact Profile manifest/lock slot was
+returned to ProductAPIroot after that publication. Existing Profile registration
+ownership remains with owner205.
+
+## Prepare probe source before qualification
+
+A separate ignored `native_prepare` probe and `concert_self_profile_rpc.py --case
+prepare` are staged for the next allocated target. They use actual Auth/Friend
+guards and production Profile MAIN to check exact-body refusal, Prepare identity
+and digest, invisible proposed content, duplicate-operation refusal, and fresh
+signed recovery after the original scope expires. With Concert unavailable, the
+probe must retain the Profile prepared effect and actual owner guards; altered
+binding recovery must fail. This probe supplies no terminal decision, has not
+compiled or run yet, and cannot accept the actual Journal/HTTP flow.
+
+The same pending probe also covers `--case conflict`: a syntactically valid but
+stale internal Profile version reaches the actual registered transaction, is
+refused by server CAS, and must resolve through the actual retained PostgreSQL
+XID as ABORTED. Fresh signed status/reconcile after expiry must preserve that
+proof without a fabricated write receipt or coordinator decision. This is still
+NOT_RUN until the queued native qualification; an RPC conflict alone is not
+settlement evidence.
+
+## Imported Product delivery contract repair
+
+Participant owner209's updated IDL imports `concert/v1/product.proto` and adds
+`concert.product.v1.ResponseDelivery` to the internal Participant response. The
+generated Participant Rust type refers to its sibling `concert::product::v1`;
+Profile's local wire tree originally omitted that sibling. Exact owner fix
+`2500b18098020a57b2b44c9215cc95d53f0fae87` adds only that generated module, with
+no implementation import or shared build-script edit. Owner209 consumed it as
+`54a9f571` alongside the updated Participant IDL. The wire file SHA-256 matches
+in both checkouts: `fc53255599f5e2b56d9efdd6b8e18ef7e4da1f24dccae6021d5246817372c311`.
+
+Combined source `726c6da708100fba1b88833d4003790790f7c373` compiled successfully
+in the owner's allocated BACKEND slot using Rust 1.88, locked/offline, two jobs,
+debug 0 and incremental disabled. Its retained `compiler-fixed.jsonl` shows a
+new Profile library artifact (`fresh=false`), followed by an unrelated Concert
+recovery dependency error; `compiler-final.jsonl` then records build success
+and the same cached Profile dependency. Owner209 fixed its own recovery source.
+The frozen Concert lib SHA-256 was independently checked as
+`4ce26434dd9425eaec2f47cda920dbe92a80751371f4118477dd3baf53b3b652`.
+Receipts are under `/private/tmp/mcr-participant-live-ca73fb71/`; the final Cargo
+JSON has `build-finished.success=true` and no compiler errors. No shared target
+was accessed by this chat. This proves the contract composition compiles; it
+does not prove the actual multi-store or HTTP flow.
+
+The module repair requires that updated Participant IDL in the same generation
+pass. Owner209 will publish the coherent IDL/generation/wire patch after its
+checks; the wire repair is not published alone against the older IDL. This chat's
+pending Prepare/CAS tests still need their allocated build and native run.
+
+## Coherent Participant publication consumed
+
+Published `cb057d43fb4535c4a9b5867f228caef64e5b556b` is fetched and verified
+as an ancestor of remote master, then merged into this checkout. Its updated
+Participant IDL and Profile wire module match exactly after merge; the pending
+Prepare/CAS test source remains preserved. The imported Product delivery module
+now has its required generation input for the next Profile build.
+
+The published participant component receipts qualify source `726c6da7`: seven
+focused tests, eight integration tests, four Python checks, one actual native
+Journal test, eight SQL/restart/cleanup checks, and a separate dedicated signed
+mTLS decision host/client. The native report explicitly retains synthetic
+Profile/eligibility metadata for its Journal test and an unknown-operation query
+for its endpoint test. It cannot substitute for actual Profile Prepare or
+terminal cross-store delivery. Relevant source-bound receipts are in
+`docs/mcr/backend/participant-live-evidence/`; the full real owner/Profile Journal
+join remains assigned to owner209. No Cargo target or private PG was used by
+this chat to consume the publication.
+
+## Actual Prepare and CAS-abort qualification
+
+Source `a8776a61f853f4552825eb41e965f29f2274625e` consumes the coherent
+`cb057d43` Participant contract and unchanged published Party compatibility fix
+`f0d0663a` (local cherry-pick `6229c543`). It built both the Profile integration
+test target and production binary with Rust 1.88, locked/offline, one job, debug
+0 and incremental disabled; both exited 0 with no warnings. The first test
+compile found a concrete alias-induced double interceptor in the new probe;
+`a8776a61` fixes only that test constructor. The first preflight refused an
+incorrect source root before Cargo ran. Artifact freezing also refused duplicate
+production-bin emissions across the test/build commands, then verified that both
+refer to the same exact executable and source before copying. Failed attempts
+are retained alongside the successful receipts.
+
+The MEDIA allocation was explicitly released after copies and hashes, with no
+Cargo-lock handles and over 56 GiB free, before any PostgreSQL fixture started.
+All native work ran from private copies. Eight deterministic tests passed. The
+current binary passed three native storage tests, all nine migration checksums,
+empty-store refusal, migrate/verify/reapply, prepared persistence across restart,
+post-restart verification and owned-cluster cleanup.
+
+Three independent actual Auth/Friend/Profile MAIN mTLS fixtures passed. Each
+used exact frozen owner publication `dc70d620`, fresh private identities, separate
+keys, explicit endpoints and socket-only PostgreSQL 16.14:
+
+- `--case prepare`: actual Acquire/Check/Track and protected Read/Prepare;
+  body-digest mismatch refused before registration; prepared content and receipt
+  invisible outside the native transaction; exact native identity/GID/effect;
+  duplicate operation refused; fresh signed ReadOperation after original expiry;
+  altered original binding refused; unavailable Concert decision retains Profile
+  preparation and both actual owner guards. No rollback decision is guessed.
+- `--case conflict`: a valid stale internal Profile CAS token reaches the actual
+  registered/Tracked transaction, whose native XID is then observed ABORTED.
+  Fresh status and Reconcile after original expiry preserve that native proof,
+  with no write receipt and no invented Concert decision. The RPC error alone
+  never supplies settlement proof. Root unavailability still retains both guards.
+- `--case read`: the prior real-owner read/Track/native rollback settlement probe
+  passes against the current binary and migrations, including wrong subject and
+  wrong Friend credential refusal, one durable read reference and no write receipt.
+
+All migrate/verify commands and exact native test invocations exited 0. Each
+fixture's three production services shut down normally with exit 0 and no forced
+stops; all marker/inode-owned PG roots were removed. Evidence:
+`/private/tmp/mcr-profile-self-6229c543-20261104/qualification-summary.json`,
+`prepare-report-1.json`, `conflict-report-1.json`, `read-report-1.json`,
+`native-report-1.json`, Cargo command/JSON/exit receipts and 1559 compile-input hashes.
+Frozen test SHA-256:
+`b4543d45944064e08edd6fac4854f3586ee5d345ae3ad26c99ae34a5bc3bfd17`;
+production Profile SHA-256:
+`b70fcd6b8a52aef19e516f0a7a53253958bbe1d0da04f9cf7c3187a852f42a32`.
+
+Status remains IN_PROGRESS for the full BE-PROFILE-SELF objective. These probes
+use trusted fixture root envelopes and intentionally unavailable Concert root/
+decision endpoints. Actual ParticipantProfileJournal terminal commit/abort join,
+root HTTP body completion/release and signed-in HTTP save/reload remain NOT_RUN.
+Owner209 retains the actual joined driver; it has received the current frozen
+Profile binary and receipts. Goal API still reports BLOCKED after the explicit
+resource-resume message; no false ACTIVE/reset/complete transition is asserted.
