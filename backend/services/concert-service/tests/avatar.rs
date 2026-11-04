@@ -605,6 +605,8 @@ async fn native_selected_avatar_transactions() {
         serde_json::to_vec(&row).unwrap(),
     )
     .unwrap();
+    // A distinct event keeps the selected-avatar restart oracle unchanged.
+    native_actual_effect_fence(&pool, release.clone()).await;
     pool.close().await;
 }
 #[tokio::test]
@@ -644,4 +646,231 @@ async fn native_selected_avatar_restart_persistence() {
         AvatarError::ReadOnly
     );
     pool.close().await;
+}
+
+// Component-only fence. It observes a real native transaction but is not the
+// external Auth/Friend scope adapter and never claims distributed settlement.
+struct NativeEffectFence {
+    pool: sqlx::PgPool,
+    registered: std::sync::Mutex<Option<AvatarTransactionIdentity>>,
+    reject_registration: bool,
+    reject_after_effect: bool,
+}
+#[async_trait::async_trait]
+impl AvatarEffectFence for NativeEffectFence {
+    async fn register(&self, identity: AvatarTransactionIdentity) -> Result<(), AvatarError> {
+        let active: (i64, String, chrono::DateTime<chrono::Utc>, String) = sqlx::query_as(
+            "select datid::bigint,backend_xid::text,backend_start,state from pg_stat_activity where pid=$1"
+        ).bind(identity.backend_pid).fetch_one(&self.pool).await.unwrap();
+        assert_eq!(active.0, i64::from(identity.database_oid));
+        assert_eq!(
+            active.1.parse::<u64>().unwrap(),
+            identity.full_xid.parse::<u64>().unwrap() & 0xffff_ffff
+        );
+        assert_eq!(active.2, identity.backend_started);
+        assert_eq!(active.3, "idle in transaction");
+        let sysid: String =
+            sqlx::query_scalar("select system_identifier::text from pg_control_system()")
+                .fetch_one(&self.pool)
+                .await
+                .unwrap();
+        assert_eq!(identity.system_identifier, sysid);
+        *self.registered.lock().unwrap() = Some(identity);
+        if self.reject_registration {
+            Err(AvatarError::Unavailable)
+        } else {
+            Ok(())
+        }
+    }
+    async fn check(&self) -> Result<(), AvatarError> {
+        let identity = self
+            .registered
+            .lock()
+            .unwrap()
+            .clone()
+            .expect("registered before checks");
+        if self.reject_after_effect {
+            let query: String =
+                sqlx::query_scalar("select query from pg_stat_activity where pid=$1")
+                    .bind(identity.backend_pid)
+                    .fetch_one(&self.pool)
+                    .await
+                    .unwrap();
+            if query.starts_with("update public.concert_") {
+                return Err(AvatarError::Denied);
+            }
+        }
+        Ok(())
+    }
+}
+struct FencedAvatarAuthority {
+    base: support::Authority,
+    fence: NativeEffectFence,
+}
+impl AvatarAuthority for FencedAvatarAuthority {
+    fn check(&self) -> Result<AvatarGrant, AvatarError> {
+        self.base.check()
+    }
+    fn effect_fence(&self) -> Option<&dyn AvatarEffectFence> {
+        Some(&self.fence)
+    }
+}
+async fn native_actual_effect_fence(
+    pool: &sqlx::PgPool,
+    release: Arc<concert_application::bootstrap::ValidatedProductRelease>,
+) {
+    let event = Uuid::new_v4();
+    let user = Uuid::new_v4();
+    let own = key(event, user);
+    support::seed(pool, event).await;
+    BootstrapPostgresRepository::new(pool.clone())
+        .bootstrap(
+            &support::admission(event, user),
+            release.release().defaults(),
+        )
+        .await
+        .unwrap();
+    let document: Value = serde_json::from_slice(release.release().bootstrap_json()).unwrap();
+    let catalog = concert_domain::avatar::AvatarCatalog::from_validated_manifest(
+        &document["avatar_manifest"],
+    )
+    .unwrap();
+    let repository = PgAvatarRepository::new(pool.clone());
+    let selection = release.release().defaults().avatar.clone();
+    let mutation = || {
+        AvatarMutation::Avatar(concert_domain::avatar::SetAvatar {
+            expected: Revision::new(1).unwrap(),
+            selection: selection.clone(),
+        })
+    };
+    let unfenced =
+        support::Authority::new(own, AvatarOperation::SetAvatar, release.source_digest());
+    assert_eq!(
+        repository
+            .execute(
+                own,
+                mutation(),
+                &catalog,
+                release.source_digest(),
+                &unfenced
+            )
+            .await
+            .unwrap_err(),
+        AvatarError::Unavailable
+    );
+    let reader = support::Authority::new(own, AvatarOperation::Read, release.source_digest());
+    let before = repository
+        .execute(
+            own,
+            AvatarMutation::Read,
+            &catalog,
+            release.source_digest(),
+            &reader,
+        )
+        .await
+        .unwrap();
+    // The actual update's trigger records its identity in the same transaction.
+    sqlx::raw_sql("create table mcr_avatar_effect_probe (table_name text,system_identifier text,database_oid bigint,full_xid text,backend_pid int,backend_started timestamptz); create function mcr_avatar_effect_probe_fn() returns trigger language plpgsql as $$ begin insert into mcr_avatar_effect_probe select TG_TABLE_NAME,c.system_identifier::text,d.oid::bigint,pg_current_xact_id()::text,a.pid,a.backend_start from pg_control_system() c join pg_database d on d.datname=current_database() join pg_stat_activity a on a.pid=pg_backend_pid(); return NEW; end $$; create trigger mcr_avatar_effect_probe_avatar after update on concert_avatar_settings for each row execute function mcr_avatar_effect_probe_fn(); create trigger mcr_avatar_effect_probe_preferences after update on concert_participants for each row execute function mcr_avatar_effect_probe_fn();")
+        .execute(pool).await.unwrap();
+    let authority = |op, reject_registration, reject_after_effect| FencedAvatarAuthority {
+        base: support::Authority::new(own, op, release.source_digest()),
+        fence: NativeEffectFence {
+            pool: pool.clone(),
+            registered: std::sync::Mutex::new(None),
+            reject_registration,
+            reject_after_effect,
+        },
+    };
+    for (registration, after, error) in [
+        (true, false, AvatarError::Unavailable),
+        (false, true, AvatarError::Denied),
+    ] {
+        let fence = authority(AvatarOperation::SetAvatar, registration, after);
+        assert_eq!(
+            repository
+                .execute(own, mutation(), &catalog, release.source_digest(), &fence)
+                .await
+                .unwrap_err(),
+            error
+        );
+        assert!(fence.fence.registered.lock().unwrap().is_some());
+        assert_eq!(
+            repository
+                .execute(
+                    own,
+                    AvatarMutation::Read,
+                    &catalog,
+                    release.source_digest(),
+                    &reader
+                )
+                .await
+                .unwrap(),
+            before
+        );
+        let effects: i64 = sqlx::query_scalar("select count(*) from mcr_avatar_effect_probe")
+            .fetch_one(pool)
+            .await
+            .unwrap();
+        assert_eq!(
+            effects, 0,
+            "registration/precommit rejection must roll back effects and trigger evidence"
+        );
+    }
+    let fence = authority(AvatarOperation::SetAvatar, false, false);
+    let changed = repository
+        .execute(own, mutation(), &catalog, release.source_digest(), &fence)
+        .await
+        .unwrap();
+    assert_eq!(changed.avatar.revision.get(), 2);
+    let identity = fence.fence.registered.lock().unwrap().clone().unwrap();
+    let actual:(String,String,i64,String,i32,chrono::DateTime<chrono::Utc>)=sqlx::query_as("select table_name,system_identifier,database_oid,full_xid,backend_pid,backend_started from mcr_avatar_effect_probe").fetch_one(pool).await.unwrap();
+    assert_eq!(
+        actual,
+        (
+            "concert_avatar_settings".into(),
+            identity.system_identifier,
+            i64::from(identity.database_oid),
+            identity.full_xid,
+            identity.backend_pid,
+            identity.backend_started
+        )
+    );
+    sqlx::query("truncate mcr_avatar_effect_probe")
+        .execute(pool)
+        .await
+        .unwrap();
+    let fence = authority(AvatarOperation::SetPreferences, false, false);
+    let changed = repository
+        .execute(
+            own,
+            AvatarMutation::Preferences {
+                expected: Revision::new(1).unwrap(),
+                value: Preferences {
+                    theme: Theme::Danger,
+                    low_power: true,
+                    reduced_motion: true,
+                    sound_enabled: false,
+                },
+            },
+            &catalog,
+            release.source_digest(),
+            &fence,
+        )
+        .await
+        .unwrap();
+    assert_eq!(changed.participant.revision.get(), 2);
+    let identity = fence.fence.registered.lock().unwrap().clone().unwrap();
+    let actual:(String,String,i64,String,i32,chrono::DateTime<chrono::Utc>)=sqlx::query_as("select table_name,system_identifier,database_oid,full_xid,backend_pid,backend_started from mcr_avatar_effect_probe").fetch_one(pool).await.unwrap();
+    assert_eq!(
+        actual,
+        (
+            "concert_participants".into(),
+            identity.system_identifier,
+            i64::from(identity.database_oid),
+            identity.full_xid,
+            identity.backend_pid,
+            identity.backend_started
+        )
+    );
+    sqlx::raw_sql("drop trigger mcr_avatar_effect_probe_avatar on concert_avatar_settings; drop trigger mcr_avatar_effect_probe_preferences on concert_participants; drop function mcr_avatar_effect_probe_fn(); drop table mcr_avatar_effect_probe;").execute(pool).await.unwrap();
 }

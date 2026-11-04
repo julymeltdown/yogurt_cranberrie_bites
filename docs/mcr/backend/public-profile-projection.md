@@ -237,3 +237,24 @@ Native report SHA-256: `d7693d2dda4b133f48abab0fbc2056924f16a6437f34596a9df5df9c
 | native-capacity | `0dc886b5c8de2b4563a437c6f3d2d82a6025684ae28d6025ea1b88681972615f` |
 | native-owner-before-restart | `dadad92b659eea5d77dec47d001efa5a2372b13c3c0e8dd9ff6e1765495212bb` |
 | native-settlement-after-restart | `1e880cd4e9c93a7fc766aa7ca8f9a12eb2b27f9248a2e700cbd5f4e94fea021f` |
+
+### Recovery increment in progress
+
+The independently qualified producer above is not joined restart acceptance.
+A subsequent unpublished increment adds caller-preallocated `child_id` and
+`completion_secret` to ReadCurrent. The root must durably register that exact
+private intent before dispatch. New owner migration 0009 is exclusively allocated
+for minimal child control receipts; no Profile content or plaintext key is stored.
+A receipt captures the actual full transaction ID, immutable cluster/database and
+role identity before PREPARE. Cancellation before dispatch reserves a terminal
+nonce so a late read cannot create a child. Completion accepts only an exact
+scope/key receipt and either its durable terminal state or proof that its actual
+recorded transaction aborted; missing prepared state alone is insufficient.
+PostgreSQL documents [transaction status and its unknown-state limits](https://www.postgresql.org/docs/16/functions-info.html).
+
+The recovery increment's Rust/native execution is NOT_RUN until a fresh target
+allocation. Its new tests cover lost read replies, rollback-before-ack loss,
+idempotent retries, pre-dispatch cancellation, and active/committed/misbound
+receipts. Durable root child registration and Concert restart reconstruction
+remain coordinated with the canonical authority and root owners; no automatic
+TTL/Drop cleanup or joined capability is enabled.

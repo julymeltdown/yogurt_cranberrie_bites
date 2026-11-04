@@ -21,6 +21,8 @@ async fn arbitrary_subject_is_not_self_and_only_public_owner_fields_cross_rpc() 
     assert_eq!(b.event_id, m.event_id);
     assert_eq!(b.session_family_id, m.session_family_id);
     assert_eq!(b.request_id, m.request_id);
+    assert_eq!(b.child_id, m.child_id);
+    assert_eq!(b.completion_secret, m.completion_secret);
     assert_eq!(b.display_name, "Mira");
     assert_eq!(b.bio.as_deref(), Some("Public bio 音楽"));
     assert!(b.observed_at_unix_micros > 0);
@@ -31,7 +33,7 @@ async fn arbitrary_subject_is_not_self_and_only_public_owner_fields_cross_rpc() 
 async fn signed_scope_mutation_and_wrong_purpose_are_denied_before_owner() -> anyhow::Result<()> {
     let (mut s, owner) = controlled(Mode::Success).await?;
     let m = message(Uuid::new_v4());
-    for field in 0..7 {
+    for field in 0..9 {
         let proof = token(&m);
         let mut changed = m.clone();
         match field {
@@ -41,7 +43,9 @@ async fn signed_scope_mutation_and_wrong_purpose_are_denied_before_owner() -> an
             3 => changed.session_family_id = Uuid::new_v4().to_string(),
             4 => changed.request_id = Uuid::new_v4().to_string(),
             5 => changed.purpose = 2,
-            _ => changed.expires_unix_micros += 1,
+            6 => changed.expires_unix_micros += 1,
+            7 => changed.child_id.push('a'),
+            _ => changed.completion_secret = Uuid::new_v4().simple().to_string(),
         }
         let e = s
             .client
@@ -281,6 +285,7 @@ async fn native_current_public_privacy_tombstones_and_minimal_wire() -> anyhow::
     let make = || {
         let mut m = message(Uuid::new_v4());
         m.subject_id = subject.to_string();
+        allocate(&mut m);
         m
     };
     assert_eq!(
@@ -339,6 +344,7 @@ async fn native_current_public_privacy_tombstones_and_minimal_wire() -> anyhow::
     sqlx::query("insert into profile_user_deletion_tombstones(user_id,saga_id,actor_id,retention_until) values($1,$2,$3,now()+interval '1 day')").bind(tomb).bind(Uuid::new_v4()).bind(Uuid::new_v4()).execute(&pool).await?;
     let mut m = make();
     m.subject_id = tomb.to_string();
+    allocate(&mut m);
     assert_eq!(call(&mut s, m).await.unwrap_err().code(), Code::NotFound);
     s.stop().await?;
     pool.close().await;
@@ -357,6 +363,7 @@ async fn native_prepared_child_excludes_privacy_and_direct_tombstone_until_settl
     let mut s = Running::start(PublicProfileServer::from_pool(pool.clone())).await?;
     let mut m = message(Uuid::new_v4());
     m.subject_id = subject.to_string();
+    allocate(&mut m);
     let b = call(&mut s, m.clone()).await?.into_inner();
     for direct_tombstone in [false, true] {
         let mut tx = pool.begin().await?;
@@ -393,6 +400,7 @@ async fn native_prepared_child_excludes_privacy_and_direct_tombstone_until_settl
         .await?;
     let mut denied = m.clone();
     denied.expires_unix_micros = chrono::Utc::now().timestamp_micros() + 1_900_000;
+    allocate(&mut denied);
     assert_eq!(
         call(&mut s, denied).await.unwrap_err().code(),
         Code::NotFound
@@ -413,6 +421,7 @@ async fn native_prepare_restart_quarantine() -> anyhow::Result<()> {
     let mut s = Running::start(PublicProfileServer::from_pool(pool.clone())).await?;
     let mut m = message(Uuid::new_v4());
     m.subject_id = subject.to_string();
+    allocate(&mut m);
     let b = call(&mut s, m.clone()).await?.into_inner();
     let path = std::path::PathBuf::from(std::env::var("MCR_PUBLIC_PROFILE_RESTART_FILE")?);
     let content = serde_json::json!({"actor":m.actor_id,"event":m.event_id,"subject":m.subject_id,"family":m.session_family_id,"request":m.request_id,"child":b.child_id,"secret":b.completion_secret});
@@ -454,6 +463,9 @@ async fn native_settle_after_database_restart_and_original_expiry() -> anyhow::R
         .await
         .is_err());
     // Expired contexts cannot read data; separate terminal settlement still works.
+    finish(&mut s, &m, &b).await?;
+    s.stop().await?;
+    let mut s = Running::start(PublicProfileServer::from_pool(pool.clone())).await?;
     finish(&mut s, &m, &b).await?;
     let subject = Uuid::parse_str(&m.subject_id)?;
     sqlx::query("update profiles set account_visibility='PRIVATE' where user_id=$1")
@@ -505,6 +517,7 @@ async fn native_original_budget_bounds_owner_lock_wait_and_recovers() -> anyhow:
         .await?;
     let mut m = message(Uuid::new_v4());
     m.subject_id = subject.to_string();
+    allocate(&mut m);
     m.expires_unix_micros = chrono::Utc::now().timestamp_micros() + 100_000;
     let start = std::time::Instant::now();
     let e = call(&mut s, m).await.unwrap_err();
@@ -516,6 +529,7 @@ async fn native_original_budget_bounds_owner_lock_wait_and_recovers() -> anyhow:
     blocked.rollback().await?;
     let mut m = message(Uuid::new_v4());
     m.subject_id = subject.to_string();
+    allocate(&mut m);
     let b = call(&mut s, m.clone()).await?.into_inner();
     finish(&mut s, &m, &b).await?;
     s.stop().await?;
@@ -536,11 +550,13 @@ async fn native_full_hundred_child_capacity_and_fail_closed_overflow() -> anyhow
     for _ in 0..=100 {
         let mut m = message(Uuid::new_v4());
         m.subject_id = subject.to_string();
+        allocate(&mut m);
         let b = call(&mut s, m.clone()).await?.into_inner();
         held.push((m, b));
     }
     let mut overflow = message(Uuid::new_v4());
     overflow.subject_id = subject.to_string();
+    allocate(&mut overflow);
     assert_eq!(
         call(&mut s, overflow).await.unwrap_err().code(),
         Code::Unavailable
@@ -550,6 +566,7 @@ async fn native_full_hundred_child_capacity_and_fail_closed_overflow() -> anyhow
     }
     let mut recovered = message(Uuid::new_v4());
     recovered.subject_id = subject.to_string();
+    allocate(&mut recovered);
     let b = call(&mut s, recovered.clone()).await?.into_inner();
     finish(&mut s, &recovered, &b).await?;
     s.stop().await?;
@@ -593,4 +610,142 @@ fn opaque_children_bind_all_dimensions_and_unique_nonce_with_separate_completion
     ] {
         assert!(binding.validate_completion(&child, malformed).is_err());
     }
+}
+
+#[tokio::test]
+#[ignore = "requires explicitly owned native PostgreSQL controller"]
+async fn native_pre_dispatch_cancellation_prevents_late_read() -> anyhow::Result<()> {
+    let pool = owner_pool().await?;
+    let mut s = Running::start(PublicProfileServer::from_pool(pool.clone())).await?;
+    let m = message(Uuid::new_v4());
+    let intent = Reply {
+        child_id: m.child_id.clone(),
+        completion_secret: m.completion_secret.clone(),
+        ..Default::default()
+    };
+    finish(&mut s, &m, &intent).await?;
+    finish(&mut s, &m, &intent).await?;
+    assert_eq!(
+        call(&mut s, m.clone()).await.unwrap_err().code(),
+        Code::NotFound
+    );
+    let mut wrong = control(&m, &intent, true);
+    wrong.completion_secret = Uuid::new_v4().simple().to_string();
+    assert!(s
+        .client
+        .complete(control_request(
+            wrong,
+            "/profile.concert_public.v1.ConcertPublicProfileService/Complete"
+        ))
+        .await
+        .is_err());
+    let state: String =
+        sqlx::query_scalar("select state from concert_public_profile_children where child_id=$1")
+            .bind(&m.child_id)
+            .fetch_one(&pool)
+            .await?;
+    assert_eq!(state, "CANCELLED");
+    s.stop().await?;
+    pool.close().await;
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "requires explicitly owned native PostgreSQL controller"]
+async fn native_lost_read_and_completion_replies_recover_from_actual_receipt() -> anyhow::Result<()>
+{
+    let pool = owner_pool().await?;
+    let subject = seed(&pool, "Lost owner reply", "").await?;
+    sqlx::query("update profiles set account_visibility='PUBLIC' where user_id=$1")
+        .bind(subject)
+        .execute(&pool)
+        .await?;
+    let mut s = Running::start(PublicProfileServer::from_pool(pool.clone())).await?;
+    for lose_completion_ack in [false, true] {
+        let mut m = message(Uuid::new_v4());
+        m.subject_id = subject.to_string();
+        allocate(&mut m);
+        // Discard the entire actual ReadCurrent response. The pre-dispatch
+        // intent is sufficient to recover; no response-only secret is required.
+        drop(call(&mut s, m.clone()).await?);
+        let intent = Reply {
+            child_id: m.child_id.clone(),
+            completion_secret: m.completion_secret.clone(),
+            ..Default::default()
+        };
+        if lose_completion_ack {
+            let digest: String = sqlx::query_scalar(
+                "select completion_digest from concert_public_profile_children where child_id=$1",
+            )
+            .bind(&m.child_id)
+            .fetch_one(&pool)
+            .await?;
+            assert!(!digest.contains(&m.completion_secret));
+            let gid = format!("{}:{}", m.child_id, digest);
+            // Crash point after the actual rollback but before the owner has
+            // persisted or acknowledged completion. GID absence is insufficient.
+            sqlx::query(&format!("rollback prepared '{gid}'"))
+                .execute(&pool)
+                .await?;
+        }
+        s.stop().await?;
+        s = Running::start(PublicProfileServer::from_pool(pool.clone())).await?;
+        finish(&mut s, &m, &intent).await?;
+        finish(&mut s, &m, &intent).await?;
+        let state: String = sqlx::query_scalar(
+            "select state from concert_public_profile_children where child_id=$1",
+        )
+        .bind(&m.child_id)
+        .fetch_one(&pool)
+        .await?;
+        assert_eq!(state, "SETTLED");
+        assert!(call(&mut s, m).await.is_err());
+    }
+    s.stop().await?;
+    pool.close().await;
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "requires explicitly owned native PostgreSQL controller"]
+async fn native_gid_absence_never_settles_active_committed_or_misbound_receipt(
+) -> anyhow::Result<()> {
+    let pool = owner_pool().await?;
+    let mut s = Running::start(PublicProfileServer::from_pool(pool.clone())).await?;
+    let m = message(Uuid::new_v4());
+    let intent = Reply {
+        child_id: m.child_id.clone(),
+        completion_secret: m.completion_secret.clone(),
+        ..Default::default()
+    };
+    let mut tx = pool.begin().await?;
+    let xid: String = sqlx::query_scalar("select pg_current_xact_id()::text")
+        .fetch_one(&mut *tx)
+        .await?;
+    let bytes = format!(
+        "mcr public Profile completion v1|{}|{}",
+        m.child_id, m.completion_secret
+    )
+    .into_bytes();
+    sqlx::query("insert into concert_public_profile_children(child_id,completion_digest,system_identifier,database_oid,owner_oid,full_xid,state) select $1,translate(rtrim(encode(sha256($2::bytea),'base64'),'='),'+/','-_'),(pg_control_system()).system_identifier::text,(select oid::bigint from pg_database where datname=current_database()),(select oid::bigint from pg_roles where rolname=current_user),$3,'REGISTERED'")
+        .bind(&m.child_id).bind(bytes).bind(&xid).execute(&pool).await?;
+    assert!(finish(&mut s, &m, &intent).await.is_err());
+    tx.commit().await?;
+    assert!(finish(&mut s, &m, &intent).await.is_err());
+    sqlx::query(
+        "update concert_public_profile_children set database_oid=database_oid+1 where child_id=$1",
+    )
+    .bind(&m.child_id)
+    .execute(&pool)
+    .await?;
+    assert!(finish(&mut s, &m, &intent).await.is_err());
+    let state: String =
+        sqlx::query_scalar("select state from concert_public_profile_children where child_id=$1")
+            .bind(&m.child_id)
+            .fetch_one(&pool)
+            .await?;
+    assert_eq!(state, "REGISTERED");
+    s.stop().await?;
+    pool.close().await;
+    Ok(())
 }

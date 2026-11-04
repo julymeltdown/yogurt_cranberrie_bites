@@ -114,7 +114,7 @@ impl Drop for Running {
     }
 }
 pub fn message(actor: Uuid) -> Msg {
-    Msg {
+    let mut m = Msg {
         actor_id: actor.to_string(),
         subject_id: Uuid::new_v4().to_string(),
         event_id: Uuid::new_v4().to_string(),
@@ -122,7 +122,22 @@ pub fn message(actor: Uuid) -> Msg {
         request_id: Uuid::new_v4().to_string(),
         purpose: 1,
         expires_unix_micros: chrono::Utc::now().timestamp_micros() + 1_900_000,
-    }
+        child_id: String::new(),
+        completion_secret: String::new(),
+    };
+    allocate(&mut m);
+    m
+}
+pub fn allocate(m: &mut Msg) {
+    let binding = ReadBinding {
+        actor: Uuid::parse_str(&m.actor_id).unwrap(),
+        event: Uuid::parse_str(&m.event_id).unwrap(),
+        subject: Uuid::parse_str(&m.subject_id).unwrap(),
+        family: Uuid::parse_str(&m.session_family_id).unwrap(),
+        request: Uuid::parse_str(&m.request_id).unwrap(),
+    };
+    m.child_id = binding.new_child_id().unwrap();
+    m.completion_secret = Uuid::new_v4().simple().to_string();
 }
 pub fn frame(m: &Msg) -> Vec<u8> {
     let b = m.encode_to_vec();
@@ -189,7 +204,12 @@ impl Drop for Dropped<'_> {
 }
 #[async_trait::async_trait]
 impl PublicProfileRepository for Controlled {
-    async fn read_public(&self, binding: ReadBinding) -> Result<HeldPublicRecord, ReadError> {
+    async fn read_public(
+        &self,
+        binding: ReadBinding,
+        child_id: &str,
+        secret: &str,
+    ) -> Result<HeldPublicRecord, ReadError> {
         self.calls.fetch_add(1, Ordering::SeqCst);
         let _drop = Dropped(&self.dropped);
         let mode = *self.mode.lock().unwrap();
@@ -221,8 +241,9 @@ impl PublicProfileRepository for Controlled {
                     _ => chrono::Duration::zero(),
                 },
         };
-        let child_id = binding.new_child_id()?;
-        let completion_secret = Uuid::new_v4().simple().to_string();
+        binding.validate_completion(child_id, secret)?;
+        let child_id = child_id.to_owned();
+        let completion_secret = secret.to_owned();
         self.held
             .lock()
             .unwrap()

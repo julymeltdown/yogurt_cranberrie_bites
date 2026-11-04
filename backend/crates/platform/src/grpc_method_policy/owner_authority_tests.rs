@@ -130,3 +130,71 @@ fn owner_acquire_and_system_settlement_have_separate_exact_policies() {
     .validate(exact.service)
     .is_err());
 }
+#[test]
+fn root_callback_and_external_delivery_are_distinct_capabilities() {
+    let root = MethodPolicy {
+        service: "authority.lease.v1.ConcertRootReadService",
+        workload: Some(Workload::Concert),
+        methods: &[("CheckSubject", &[Workload::Post])],
+        actor_fields: &[("CheckSubject", &[&[1, 3, 1]])],
+    };
+    root.validate(root.service).unwrap();
+    assert!(MethodPolicy {
+        actor_fields: &[],
+        ..root
+    }
+    .validate(root.service)
+    .is_err());
+    let delivery = MethodPolicy {
+        service: "concert.product.v1.ProductDeliveryService",
+        workload: Some(Workload::Concert),
+        methods: &[("CompleteResponse", &[Workload::Gateway])],
+        actor_fields: &[],
+    };
+    delivery.validate(delivery.service).unwrap();
+    assert!(!delivery.allows(
+        "/concert.product.v1.ProductDeliveryService/CompleteResponse",
+        Workload::Post
+    ));
+    assert!(MethodPolicy {
+        methods: &[("CompleteResponse", &[Workload::Concert])],
+        ..delivery
+    }
+    .validate(delivery.service)
+    .is_err());
+}
+#[test]
+fn self_profile_never_accepts_gateway_or_an_unbound_subject() {
+    let exact = MethodPolicy {
+        service: "profile.self.v1.ConcertSelfProfileService",
+        workload: Some(Workload::Profile),
+        methods: &[
+            ("Read", &[Workload::Concert]),
+            ("PrepareUpdate", &[Workload::Concert]),
+            ("ReadOperation", &[Workload::Concert]),
+            ("Reconcile", &[Workload::Concert]),
+        ],
+        actor_fields: &[
+            ("Read", &[&[1, 1, 1], &[2]]),
+            ("PrepareUpdate", &[&[1, 1, 1], &[2]]),
+            ("ReadOperation", &[&[1, 1, 1]]),
+            ("Reconcile", &[&[1, 1, 1]]),
+        ],
+    };
+    exact.validate(exact.service).unwrap();
+    assert!(!exact.allows(
+        "/profile.self.v1.ConcertSelfProfileService/PrepareUpdate",
+        Workload::Gateway
+    ));
+    assert!(MethodPolicy {
+        actor_fields: &[
+            ("Read", &[&[1, 1, 1]]),
+            ("PrepareUpdate", &[&[1, 1, 1]]),
+            ("ReadOperation", &[&[1, 1, 1]]),
+            ("Reconcile", &[&[1, 1, 1]])
+        ],
+        ..exact
+    }
+    .validate(exact.service)
+    .is_err());
+}

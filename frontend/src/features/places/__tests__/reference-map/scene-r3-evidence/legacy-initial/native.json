@@ -1,0 +1,182 @@
+{
+  "result": "FAIL",
+  "qualification": "Actual production Places/router/Auth/owner/Phaser with existing TEST ONLY in-process HTTP/C05/review metadata; Published root deb5865d (author7201b875), no preview layout override. Original orthogonal1152x896 scenery; diagonal portrait reference fidelity remains incomplete. Not live/device/character acceptance.",
+  "cases": [],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "geometry": [
+    {
+      "s": ".world-shell",
+      "r": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 844,
+        "top": 0,
+        "right": 360,
+        "bottom": 844,
+        "left": 0
+      },
+      "display": "grid",
+      "grid": "836px",
+      "height": "844px",
+      "flex": "0 1 auto",
+      "classes": "world-shell"
+    },
+    {
+      "s": ".shell-header"
+    },
+    {
+      "s": ".shell-era-region",
+      "r": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "display": "none",
+      "grid": "none",
+      "height": "auto",
+      "flex": "0 1 auto",
+      "classes": "shell-era-region"
+    },
+    {
+      "s": ".shell-stage",
+      "r": {
+        "x": 4,
+        "y": 4,
+        "width": 352,
+        "height": 836,
+        "top": 4,
+        "right": 356,
+        "bottom": 840,
+        "left": 4
+      },
+      "display": "grid",
+      "grid": "836px 0px",
+      "height": "836px",
+      "flex": "0 1 auto",
+      "classes": "shell-stage"
+    },
+    {
+      "s": ".shell-panel",
+      "r": {
+        "x": 6,
+        "y": 4,
+        "width": 348,
+        "height": 836,
+        "top": 4,
+        "right": 354,
+        "bottom": 840,
+        "left": 6
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "836px",
+      "flex": "0 1 auto",
+      "classes": "shell-panel"
+    },
+    {
+      "s": ".shell-panel-body",
+      "r": {
+        "x": 9,
+        "y": 57,
+        "width": 342,
+        "height": 780,
+        "top": 57,
+        "right": 351,
+        "bottom": 837,
+        "left": 9
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "780px",
+      "flex": "1 1 auto",
+      "classes": "shell-panel-body"
+    },
+    {
+      "s": ".mcr-root-map",
+      "r": {
+        "x": 15,
+        "y": 63,
+        "width": 330,
+        "height": 768,
+        "top": 63,
+        "right": 345,
+        "bottom": 831,
+        "left": 15
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "768px",
+      "flex": "1 1 0px",
+      "classes": "mcr-root-map"
+    },
+    {
+      "s": ".places-map-full",
+      "r": {
+        "x": 15,
+        "y": 63,
+        "width": 330,
+        "height": 768,
+        "top": 63,
+        "right": 345,
+        "bottom": 831,
+        "left": 15
+      },
+      "display": "block",
+      "grid": "none",
+      "height": "768px",
+      "flex": "0 1 auto",
+      "classes": "places-view places-overview places-map-full"
+    },
+    {
+      "s": ".places-map-surface",
+      "r": {
+        "x": 15,
+        "y": 63,
+        "width": 330,
+        "height": 768,
+        "top": 63,
+        "right": 345,
+        "bottom": 831,
+        "left": 15
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "768px",
+      "flex": "0 1 auto",
+      "classes": "places-map-surface"
+    },
+    {
+      "s": ".places-map-viewport",
+      "r": {
+        "x": 17,
+        "y": 65,
+        "width": 326,
+        "height": 718,
+        "top": 65,
+        "right": 343,
+        "bottom": 783,
+        "left": 17
+      },
+      "display": "flex",
+      "grid": "none",
+      "height": "718px",
+      "flex": "1 1 auto",
+      "classes": "places-map-viewport"
+    },
+    {
+      "s": ".shell-tabs"
+    }
+  ],
+  "failure": {
+    "stage": "360/local",
+    "error": "AssertionError [ERR_ASSERTION]: Fit map plaque labels overlap",
+    "text": "Skip to content\nMAP\n−\n▾\nVIRTUAL STUDIO LANDMARK\nVIRTUAL CULTURE PARK LAWN\nVIRTUAL STAGE\nVIRTUAL GIFT CORNER\nVIRTUAL PIXEL WALL\n+\n−\nVirtual map · select a landmark\nNo physical arrival is implied.\nPlaces\nLegend\nFit map\nReset view"
+  }
+}

@@ -383,6 +383,45 @@ impl MethodPolicy {
             !reserved_decision || decision,
             "reserved Participant decision resolver requires exact signed Profile query"
         );
+        let reserved_root = self.service == "authority.lease.v1.ConcertRootReadService";
+        let root_read = reserved_root
+            && self.workload == Some(Workload::Concert)
+            && self.methods == [("CheckSubject", &[Workload::Post][..])]
+            && self.actor_fields == [("CheckSubject", &[&[1, 3, 1][..]][..])];
+        anyhow::ensure!(
+            !reserved_root || root_read,
+            "reserved root read callback requires exact Post-bound envelope"
+        );
+        let reserved_delivery = self.service == "concert.product.v1.ProductDeliveryService";
+        let delivery = reserved_delivery
+            && self.workload == Some(Workload::Concert)
+            && self.methods == [("CompleteResponse", &[Workload::Gateway][..])]
+            && self.actor_fields.is_empty();
+        anyhow::ensure!(
+            !reserved_delivery || delivery,
+            "reserved delivery completion requires exact Gateway capability method"
+        );
+        let reserved_self = self.service == "profile.self.v1.ConcertSelfProfileService";
+        let self_profile = reserved_self
+            && self.workload == Some(Workload::Profile)
+            && self.methods
+                == [
+                    ("Read", &[Workload::Concert][..]),
+                    ("PrepareUpdate", &[Workload::Concert][..]),
+                    ("ReadOperation", &[Workload::Concert][..]),
+                    ("Reconcile", &[Workload::Concert][..]),
+                ]
+            && self.actor_fields
+                == [
+                    ("Read", &[&[1, 1, 1][..], &[2][..]][..]),
+                    ("PrepareUpdate", &[&[1, 1, 1][..], &[2][..]][..]),
+                    ("ReadOperation", &[&[1, 1, 1][..]][..]),
+                    ("Reconcile", &[&[1, 1, 1][..]][..]),
+                ];
+        anyhow::ensure!(
+            !reserved_self || self_profile,
+            "reserved SELF Profile policy requires exact Concert-signed scope and subjects"
+        );
         for (method, fields) in self.actor_fields {
             anyhow::ensure!(
                 self.callers(method) == Some(&[Workload::Gateway][..])
@@ -391,7 +430,9 @@ impl MethodPolicy {
                     || public_profile_read
                     || qualified_post_read
                     || owner_authority
-                    || decision,
+                    || decision
+                    || root_read
+                    || self_profile,
                 "{}/{method} acts for a user and must accept only the Gateway",
                 self.service
             );

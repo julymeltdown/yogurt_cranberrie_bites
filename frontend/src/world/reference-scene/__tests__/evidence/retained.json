@@ -1,0 +1,178 @@
+{
+  "result": "PASS",
+  "qualification": "Retained isolated real-art whole-character/illustrated-scene fixture with changed MapScene dispatch; not default product bootstrap/live acceptance.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "initial": {
+        "status": "ready",
+        "scene": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 40,
+          "scrollY": 195,
+          "width": 360,
+          "height": 701
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "contract": {
+        "rejected": 7,
+        "pixelHash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+      },
+      "cleanup": {
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "canvases": 0,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "mounts": 1,
+        "destroys": 1
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "status": "ready",
+        "scene": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 25,
+          "scrollY": 137,
+          "width": 390,
+          "height": 759
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "contract": {
+        "rejected": 7,
+        "pixelHash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+      },
+      "cleanup": {
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "canvases": 0,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "mounts": 1,
+        "destroys": 1
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "initial": {
+        "status": "ready",
+        "scene": {
+          "textures": 6,
+          "sprites": 6,
+          "listeners": 1
+        },
+        "owner": {
+          "disposed": false,
+          "leases": 6,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 1
+        },
+        "requests": [
+          "http://127.0.0.1:5173/world/avatars/derived-v1/static-release.json",
+          "http://127.0.0.1:5173/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png"
+        ],
+        "mounts": 1,
+        "destroys": 0,
+        "canvases": 1,
+        "camera": {
+          "zoom": 1,
+          "scrollX": 5,
+          "scrollY": 49,
+          "width": 430,
+          "height": 847
+        },
+        "geometry": "sha256:463a46ba69bcb48fc691cc33c76e53a43328473edf8b8b61c235d96043dc9e27"
+      },
+      "contract": {
+        "rejected": 7,
+        "pixelHash": "sha256:a4a6b1ceac075574b988f94f45fe839efc3e14692db73f8fdcfd8131ba3681d5"
+      },
+      "cleanup": {
+        "scene": {
+          "textures": 0,
+          "sprites": 0,
+          "listeners": 0
+        },
+        "canvases": 0,
+        "owner": {
+          "disposed": true,
+          "leases": 0,
+          "pending": 0,
+          "cleanupFailures": 0,
+          "decodedAtlases": 0
+        },
+        "mounts": 1,
+        "destroys": 1
+      }
+    }
+  ],
+  "artifacts": {
+    "retained-360.jpg": "9adc4103bfe9d14843414a378e0d6415368d63881f3f30e085aaaffe9fa0fcb9",
+    "retained-390.jpg": "68cde8baa11eff860f5c2681b61983930b6943aba631453bb80038d6a3ae8094",
+    "retained-430.jpg": "22d5620b11b30611ac484bfb052f524fb74abc42da7865cf28b135b13aec26bd"
+  },
+  "errors": [],
+  "mapSceneSha256": "c172568f4b3c1a01894fbc4e5e41e3c887601fa9c2d3eb0c4c79dc76117a7363"
+}
