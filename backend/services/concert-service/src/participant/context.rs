@@ -3,17 +3,19 @@ use super::{proto, Operation};
 use concert_domain::{avatar::SetAvatar, AuthUserId, EventId, ParticipantKey};
 use platform::{
     actor_delegation::{
-        authority_deadline::AuthorityRpcDeadline, read_authority::VerifiedReadAuthority,
-        VerifiedActor,
+        authority_deadline::AuthorityRpcDeadline, exchange::VerifiedParentAuthority,
+        read_authority::VerifiedReadAuthority, VerifiedActor,
     },
     grpc_auth::{VerifiedCaller, Workload},
 };
+use prost::Message;
 use sha2::{Digest, Sha256};
 use std::time::Duration;
 use tonic::{Request, Status};
 use uuid::Uuid;
 
 pub const BUDGET: Duration = Duration::from_secs(2);
+#[derive(Clone)]
 pub struct VerifiedParticipantRequest {
     key: ParticipantKey,
     session: Uuid,
@@ -24,6 +26,7 @@ pub struct VerifiedParticipantRequest {
     body: Vec<u8>,
     digest: String,
     deadline: AuthorityRpcDeadline,
+    parent: Option<VerifiedParentAuthority>,
 }
 impl std::fmt::Debug for VerifiedParticipantRequest {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -61,6 +64,14 @@ impl VerifiedParticipantRequest {
     pub fn deadline(&self) -> AuthorityRpcDeadline {
         self.deadline
     }
+    /// Captured by the actual platform guard, never reconstructed from request
+    /// metadata. This is input to live owner acquisition, not a write grant.
+    pub fn parent_authority(&self) -> Result<&VerifiedParentAuthority, Status> {
+        self.check()?;
+        self.parent
+            .as_ref()
+            .ok_or_else(|| Status::unauthenticated("Verified participant parent required"))
+    }
     pub fn check(&self) -> Result<(), Status> {
         self.deadline
             .remaining(BUDGET, self.deadline.expires_micros())
@@ -88,6 +99,33 @@ impl VerifiedParticipantRequest {
                 Status::unauthenticated("Original signed transport authority required")
             })?;
         let m = request.get_ref();
+        let parent = request
+            .extensions()
+            .get::<VerifiedParentAuthority>()
+            .cloned();
+        if let Some(parent) = &parent {
+            let expected_method = match operation {
+                Operation::GetParticipant => {
+                    "/concert.participant.v1.ConcertParticipantService/GetParticipant"
+                }
+                Operation::SetAvatar => {
+                    "/concert.participant.v1.ConcertParticipantService/SetAvatar"
+                }
+                Operation::UpdatePreferences => {
+                    "/concert.participant.v1.ConcertParticipantService/UpdatePreferences"
+                }
+            };
+            let decoded = parent
+                .message()
+                .ok()
+                .and_then(|bytes| proto::ParticipantRequest::decode(bytes).ok());
+            if parent.actor() != actor
+                || parent.request().method != expected_method
+                || decoded.as_ref() != Some(m)
+            {
+                return Err(Status::permission_denied("Participant parent mismatch"));
+            }
+        }
         let id = |s: &str| {
             Uuid::parse_str(s)
                 .ok()
@@ -128,10 +166,8 @@ impl VerifiedParticipantRequest {
                     .map_err(|_| Status::invalid_argument("Invalid avatar request"))?;
             }
             Operation::UpdatePreferences => {
-                crate::adapters::out::repository::avatar::parse_preferences(&m.request_json)
-                    .map_err(|_| {
-                        Status::invalid_argument("Only preference updates are supported")
-                    })?;
+                super::live::update::ParticipantUpdate::parse(&m.request_json)
+                    .map_err(|_| Status::invalid_argument("Invalid participant update"))?;
             }
             _ => {}
         }
@@ -171,6 +207,7 @@ impl VerifiedParticipantRequest {
             body: m.request_json.clone(),
             digest: m.release_digest.clone(),
             deadline,
+            parent,
         };
         value.check()?;
         Ok(value)

@@ -132,6 +132,25 @@ class QualityV6Tests(unittest.TestCase):
                 self.assertEqual(builder.sha(raw), pin['sha256'])
                 self.assertEqual(builder.png_size(raw), (pin['width_px'], pin['height_px']))
 
+    def test_scene_source_review_qualifies_only_exact_supplied_inputs(self):
+        packet = self.outputs['scene-source-qualification.json']
+        binding = self.outputs['source-binding.json']
+        self.assertEqual(packet['admission'], 'NOT_ADMITTED')
+        self.assertEqual(packet['source_binding_sha256'], self.outputs['engineering-source-review.json']['source_binding_sha256'])
+        self.assertEqual(len(packet['scenes']), 3)
+        for qualified, source in zip(packet['scenes'], binding['scenes']):
+            self.assertEqual(qualified['theme_id'], source['theme_id'])
+            self.assertEqual(qualified['scenery_source'], source['scenery_source'])
+            self.assertEqual(qualified['runtime_resources'], source['runtime_resources'])
+            self.assertIn(qualified['artist_provenance_source'], source['scene_sources'])
+            self.assertTrue(qualified['artist_provenance_source']['path'].endswith('/provenance.json'))
+            provenance = qualified['source_provenance']
+            self.assertEqual(provenance['review_state'], 'REVIEWED')
+            self.assertIn(source['scenery_source']['sha256'], provenance['source_revision'])
+            self.assertIn(packet['source_binding_sha256'], provenance['source_revision'])
+            self.assertNotIn('avatar_manifest', qualified)
+        self.assertIn('No supplied ThemeManifest or Bootstrap', packet['limits'])
+
     def test_native_receipt_rejects_missing_or_wrong_candidate_observations(self):
         expected = {'map_revision': 4, 'geometry_hash': builder.QUALITY_V6.geometry_hash}
         valid = 'test native ... MCR_SPATIAL_CANDIDATE ' + json.dumps(expected) + '\n'
