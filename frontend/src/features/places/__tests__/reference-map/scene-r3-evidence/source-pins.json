@@ -1,0 +1,279 @@
+{
+  "task": "FE-SCENE-R3-MAP",
+  "status": "MOCK_READY",
+  "candidateAdmission": "NOT_ADMITTED",
+  "assignmentBase": "8f89d1905a86143d34ff77d2951fc60651ab2497",
+  "sourceCommits": [
+    "c1f7b4e886c8e128cd52666c3fac0819a6ea8f0e",
+    "9c498fad8dc11baeda6694fdd9f98ff039832aab",
+    "325644e603e8a5478e414887a9b1eaed0098d213"
+  ],
+  "combinedTestTree": "9c498fad8dc11baeda6694fdd9f98ff039832aab",
+  "legacyRunnerQualificationTree": "325644e603e8a5478e414887a9b1eaed0098d213",
+  "publishedDependencies": {
+    "artSource": "8f89d1905a86143d34ff77d2951fc60651ab2497",
+    "boundedRuntime": "e3af146ae4757794ca153363fd1408300ffde29e",
+    "worldLoaderMapProducer": "aa3e2f3d67afc1f288aee63f994dc829fcc81e7b",
+    "metadataEarlyDelivery": "6510c3af1fac490bfbf0aced3d6657857256dc14"
+  },
+  "candidate": {
+    "mapId": "mcr_reference_scene_r3",
+    "revision": 2,
+    "geometryHash": "sha256:20168a1df64cd3c72ea3b8cb576ca895dcff8c7edfb0e77886cc647fb1df37e5",
+    "tilemapPath": "world/reference-scene-v2/runtime/canonical-map-v2.json",
+    "tilemapSha256": "5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f"
+  },
+  "fixturePolicy": "TEST ONLY manifests and HTTP. Shared factory loads actual canonical public Tiled and exact two runtime-v4 PNGs; no fabricated production admission or scene Phaser host. Backend content pins are not imported or republished as test authority.",
+  "preservation": {
+    "docs/source": "no changed paths from assignment base",
+    "historicalReferenceMapEvidence": "no changed paths from assignment base"
+  },
+  "newConsumerChangedPaths": [
+    "frontend/src/features/places/__tests__/reference-map/admission.test.ts",
+    "frontend/src/features/places/__tests__/reference-map/native.mjs",
+    "frontend/src/features/places/__tests__/reference-map/portrait.test.ts",
+    "frontend/src/features/places/__tests__/reference-map/scene-admission.html",
+    "frontend/src/features/places/__tests__/reference-map/scene-admission.tsx",
+    "frontend/src/features/places/__tests__/reference-map/scene-data.ts",
+    "frontend/src/features/places/__tests__/reference-map/scene-fixture.html",
+    "frontend/src/features/places/__tests__/reference-map/scene-fixture.tsx",
+    "frontend/src/features/places/__tests__/reference-map/scene-native.mjs",
+    "frontend/src/features/places/__tests__/reference-map/view.test.tsx",
+    "frontend/src/features/places/ui/IllustratedMap.tsx",
+    "frontend/src/features/places/ui/places.css",
+    "frontend/src/features/places/ui/reference-scene/annotations.ts",
+    "frontend/src/features/places/ui/reference-scene/viewport.ts"
+  ],
+  "inputs": {
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md": {
+      "sha256": "e19732ac9c5c5d5397652bf047645da0640ec72c97f59869974680c4e7f69a36",
+      "bytes": 93063
+    },
+    "contracts/assets/v1/avatar-config.schema.json": {
+      "sha256": "615eba53a0cc4810c7fd1a1c71235a18e6a237bf40f5bd931070b8b1b3c35bb4",
+      "bytes": 3235
+    },
+    "contracts/assets/v1/avatar-manifest.schema.json": {
+      "sha256": "88a3f3899eb29aada6b05ef5c8f0eca2f4148a33dfca51db9c254a6a687753f8",
+      "bytes": 14997
+    },
+    "contracts/assets/v1/common.schema.json": {
+      "sha256": "b7be87ce387dd286bcd2ea895da04f1a8b886c1ea3dc35494f761ac05aad75b4",
+      "bytes": 5744
+    },
+    "contracts/assets/v1/map-manifest.schema.json": {
+      "sha256": "ed01d26b2f561c9885ad3fc5fe66912ee8175334393e49a85652756e301d6800",
+      "bytes": 10295
+    },
+    "contracts/assets/v1/theme-manifest.schema.json": {
+      "sha256": "1cd7b7da879f73768b657f8802c7502164ba9b023ea9707519df75a82de3271d",
+      "bytes": 7468
+    },
+    "docs/mcr/design/reference-target-2026-11-04.png": {
+      "sha256": "d9a8fae2f96a82253542019ab673589b3938627956eace15c8594c702b5c4617",
+      "bytes": 2967126
+    },
+    "docs/mcr/execution-plan.md": {
+      "sha256": "b54b7790c2af7fa7c9bf2d512c90bfdd827dcb6f765858df8b565b5d73155b94",
+      "bytes": 13690
+    },
+    "docs/mcr/project-assessment.md": {
+      "sha256": "e8203528b95d46faa2bfd92d2929e5723b99f52df61dc6febd613696d69ca807",
+      "bytes": 8910
+    },
+    "frontend/pnpm-lock.yaml": {
+      "sha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+      "bytes": 80328
+    },
+    "frontend/public/world/reference-scene-v2/geometry-proposal.json": {
+      "sha256": "d2650b06842b577eb8a8a455446a10e8f69ef5f9c6cfa2dd2d6008fcc7b89542",
+      "bytes": 176405
+    },
+    "frontend/public/world/reference-scene-v2/painted/layout.json": {
+      "sha256": "29d5e131d6ad342265d937571d3ed7c5591a900984f7e81bde2e2dbd5df939e1",
+      "bytes": 17653
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/ADOPTION.md": {
+      "sha256": "9f242d1205a81cd89f59a346f613bbe458282292da5394e408090ff054333926",
+      "bytes": 4259
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/browser-verification.json": {
+      "sha256": "65893bab58ece8af013867919ed0688b2ad6107c3a8b49300b20b3f57abee5e7",
+      "bytes": 10825
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/comparison-map-360.png": {
+      "sha256": "e550f0a7a0a1e72359fe1564346aad963889251448600cedab53aff63122390e",
+      "bytes": 709444
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/comparison-map-390.png": {
+      "sha256": "7c7cab6e2a8dc405c442ce9b535b538badf65c374f2eaa8cb4fd54482a6fe3a1",
+      "bytes": 822301
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/comparison-map-430.png": {
+      "sha256": "bb458f770ee6f57441506252b2a72ca93e7165060a4264d3670a84d29e7408cf",
+      "bytes": 1026133
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/comparison-world-360.png": {
+      "sha256": "fc3276dd3421b15fc437463810aeb84a586dfacaf22eeb45f8b70274604fa8c6",
+      "bytes": 436546
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/comparison-world-390.png": {
+      "sha256": "e78087e520b1233c9b75632fa81995571703e79ca26e0d063270b371de057e3a",
+      "bytes": 507935
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/comparison-world-430.png": {
+      "sha256": "7ca8e34a1fce966e3d45a6537c60ec6405eb53f28c6f3897062cea724258d0ae",
+      "bytes": 616807
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-atlas.png": {
+      "sha256": "ff68a358fad4e03ceaaf5fd610a9e6cdad9a167963e3ec00545c909ba6bb0dfe",
+      "bytes": 1253878
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-ground.png": {
+      "sha256": "5e27d2e223ba4fd36d1464577c3e9d9ff8d3f2db5db984e0306587a5d2143af5",
+      "bytes": 693939
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-integer-projection.json": {
+      "sha256": "0fcdae9b173e2dfcc7c5b1f852b8f93bbeca025951c5d27a9a174a740f662fde",
+      "bytes": 17116
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-layout.json": {
+      "sha256": "99bb3318fbfed6f82b88f05d0c501c9dd7667b8426bbf6ec661765b5cfc72985",
+      "bytes": 16795
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-map-metadata.json": {
+      "sha256": "0c02f23d572b521ca19d06c168aa77a09377eaf4b2825435dcf9d4e21a25c184",
+      "bytes": 7419
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-resource-inputs.json": {
+      "sha256": "e75180cd99cca6ac3b32592188061aee32a8dd71994e40141d981f80821549ae",
+      "bytes": 7969
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/parade-scenery.json": {
+      "sha256": "53d4b4cf6e580de724053cd1d6ff11b87ef77b56fa4d5399f294a63c0a4b4594",
+      "bytes": 6952
+    },
+    "frontend/public/world/reference-scene-v2/runtime-v4/verification.json": {
+      "sha256": "9c9fca549a482962132fa89566d69ba2d0da9d21d5ae368fa5e922b7e4d1d6e7",
+      "bytes": 659
+    },
+    "frontend/public/world/reference-scene-v2/runtime/build-tiled.py": {
+      "sha256": "7757f3f6409802e32740cd6480653b163b16f4d40b54b0af35a038af56116d69",
+      "bytes": 3025
+    },
+    "frontend/public/world/reference-scene-v2/runtime/canonical-map-v2.json": {
+      "sha256": "5436a99d36c9b91a4c59302ee65130f327214e4ca78981620759846bb40e919f",
+      "bytes": 24058
+    },
+    "frontend/public/world/reference-scene-v2/runtime/source-binding-v2.json": {
+      "sha256": "1fc65dab0ee743ad7f0cd2eeeeb34bde629ea352f16a0a69333e6e8ff06da2e2",
+      "bytes": 1451
+    },
+    "frontend/src/app/places-entry/index.ts": {
+      "sha256": "bf86889f5bc5dc3ffb560dd65212261a0d76e4e07186dc0e78ce9c0a66b05cd5",
+      "bytes": 213
+    },
+    "frontend/src/app/places-entry/owner.ts": {
+      "sha256": "88ed274fe63ee33cc488a065af8553b66c74105f121cde9da210b64b13dd67ff",
+      "bytes": 4646
+    },
+    "frontend/src/app/places-entry/provider.tsx": {
+      "sha256": "ca59285cd6b4556a0f3b59144288ef9ae1bda6e974cfe704581ea48317e33e4c",
+      "bytes": 2124
+    },
+    "frontend/src/app/ports.ts": {
+      "sha256": "ecd97ae81cd65ba7e2078fc949f607cd4662cdaa9cb1e3af015eb63417dbaa59",
+      "bytes": 5129
+    },
+    "frontend/src/app/router.tsx": {
+      "sha256": "8ce076a0c8929b3cb7dbf16e3683f2e1c3fab77be7385b519a36f282d8119eba",
+      "bytes": 7160
+    },
+    "frontend/src/app/world-entry/production.ts": {
+      "sha256": "e27fdf77fc828529086cbfa373af4321e176cbbcece1e9db8f695fa3d6c95b82",
+      "bytes": 8433
+    },
+    "frontend/src/features/auth/model/bootstrap.ts": {
+      "sha256": "028fce14336c1e8357ce7e836631e1b05fb937a005b178344f0941b7db8fa87e",
+      "bytes": 7838
+    },
+    "frontend/src/features/auth/model/session.ts": {
+      "sha256": "6665d52e018a8b9b900ed79cce627309889084202498d80420c47fd44a2a44b1",
+      "bytes": 14115
+    },
+    "frontend/src/features/places/model/contract.ts": {
+      "sha256": "9a7ef5be91cb3d470347bdde9177b3f69d1dd37ff075ec2a82dd5337b33718ee",
+      "bytes": 4543
+    },
+    "frontend/src/features/places/model/controller.ts": {
+      "sha256": "48ef5e9ca08fe76f4d6308155a7f46a6098df021dda7a7f09fed1ff7d9172a09",
+      "bytes": 16127
+    },
+    "frontend/src/features/places/ui/Places.tsx": {
+      "sha256": "4b20a826d5d9dba9d0bd2603039c3352043990d2a0e9c3fc56c9229e234e38e4",
+      "bytes": 12420
+    },
+    "frontend/src/world/illustrated/overview.ts": {
+      "sha256": "fd56872a8697c54c5e6ef36885a97dce40520e5bb061ba31b97359a0d95c19e3",
+      "bytes": 4809
+    },
+    "frontend/src/world/reference-scene/__tests__/fixture.ts": {
+      "sha256": "1bb3ee7097687970c8b0b6830dd7e20c0d3c71a3b09a464e32ed8d55d6df8cb1",
+      "bytes": 4425
+    },
+    "frontend/src/world/reference-scene/__tests__/lease-fixture.ts": {
+      "sha256": "261e8936e775c78f893b5df589ecb51eabeeab0619536bdfabe1b88dd3403081",
+      "bytes": 1032
+    },
+    "frontend/src/world/reference-scene/__tests__/metadata.test.ts": {
+      "sha256": "c08a28dd007de9a0f1d35f903200b06452e46476e5dbdd3e23f3805f832a0a03",
+      "bytes": 1301
+    },
+    "frontend/src/world/reference-scene/__tests__/model.test.ts": {
+      "sha256": "646a24e79d224ff4ed01c38394944b2bd0a002c3c0574d597a2859bc4d02908f",
+      "bytes": 6094
+    },
+    "frontend/src/world/reference-scene/__tests__/overview.test.ts": {
+      "sha256": "8d6a9857df61e11e2a52bd3af5e368db8799ec0c1cdc4765afc28e078040f62a",
+      "bytes": 4640
+    },
+    "frontend/src/world/reference-scene/__tests__/tiled.test.ts": {
+      "sha256": "7abfbc52d58df453297e396bbafe69405255ceb61aad149e4fac53f2545e32fb",
+      "bytes": 1572
+    },
+    "frontend/src/world/reference-scene/index.ts": {
+      "sha256": "bb0ec561ec0bf58f4b73303659ee13f3672117d0d8e1fe292c1c715a1f0a8573",
+      "bytes": 431
+    },
+    "frontend/src/world/reference-scene/loader.ts": {
+      "sha256": "cc879c6c96fd6a26a1cf6f8d32299d5c3449c64629636fa030c96532c99ae920",
+      "bytes": 836
+    },
+    "frontend/src/world/reference-scene/metadata.ts": {
+      "sha256": "37613da89c96801f58af3312fc68a53a6890ec2228d5e9609272418b522387b7",
+      "bytes": 1721
+    },
+    "frontend/src/world/reference-scene/model.ts": {
+      "sha256": "056c9506d632ec94ab9399951dd1cca45d5db5d15fb4d3070bf4130024d5aecf",
+      "bytes": 3894
+    },
+    "frontend/src/world/reference-scene/overview.ts": {
+      "sha256": "afebcad7e084ac416bd00eb54500aeebf4c64657323541ea606ab1422a15e4c9",
+      "bytes": 4582
+    },
+    "frontend/src/world/reference-scene/source-inputs.json": {
+      "sha256": "b25ee458e987912f91a4b3c55b87f53be5e0baada96a8372e5225fb8ada909aa",
+      "bytes": 35512
+    }
+  },
+  "postQualificationReconciliation": {
+    "head": "76cc5ae5a63f13b8ead8b1406f033672ee426170",
+    "runtimeInputsUnchanged": true,
+    "changedInput": {
+      "path": "docs/mcr/execution-plan.md",
+      "qualifiedSha256": "b54b7790c2af7fa7c9bf2d512c90bfdd827dcb6f765858df8b565b5d73155b94",
+      "currentSha256": "0cc412e8cd158096290a6df726214ec9581cbb182c0e99c720dd79f00bfb09a7",
+      "reason": "Peer-added task progress accounting only; reviewed diff. No runtime or contract changes."
+    }
+  }
+}
